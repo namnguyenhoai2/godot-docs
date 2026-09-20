@@ -1,36 +1,43 @@
-GD0104: Property được export chỉ có quyền ghi
-=============================================
+GD0104: Thuộc tính được export chỉ cho phép ghi
+===============================================
 
-==================================== ====================================== Giá trị ==================================== ====================================== **ID quy tắc** GD0104 **Danh mục** Cách sử dụng **Bản sửa lỗi có phá vỡ tương thích hay không** Không phá vỡ tương thích **Được bật theo mặc định** Có ==================================== ======================================
+====================================  ======================================
+                                      Value
+====================================  ======================================
+**Rule ID**                           GD0104
+**Category**                          Usage
+**Fix is breaking or non-breaking**   Non-breaking
+**Enabled by default**                Yes
+====================================  ======================================
 
 Nguyên nhân
 -----------
 
-Một property chỉ có quyền ghi được chú thích bằng attribute ``[Export]``. Các property chỉ có quyền ghi không thể được export.
+Một thuộc tính chỉ cho phép ghi được chú thích bằng thuộc tính ``[Export]``. Không thể export các thuộc tính chỉ cho phép ghi.
 
 Mô tả quy tắc
 -------------
 
-Godot không cho phép export các property chỉ có quyền ghi.
+Godot không cho phép export các thuộc tính chỉ cho phép ghi.
 
 .. code-block:: csharp
 
     private int _backingField;
 
-    // Các property chỉ có quyền ghi không thể được export.
+    // Không thể export các thuộc tính chỉ cho phép ghi.
     [Export]
     public int InvalidProperty { set => _backingField = value; }
 
-    // Property này có thể được export vì nó có cả getter và setter.
+    // Thuộc tính này có thể được export vì có cả getter và setter.
     [Export]
     public int ValidProperty { get; set; }
 
-Cách khắc phục các vi phạm
---------------------------
+Cách khắc phục vi phạm
+----------------------
 
-Để khắc phục vi phạm quy tắc này, hãy đảm bảo property khai báo cả getter và setter, hoặc xóa attribute ``[Export]``.
+Để khắc phục vi phạm quy tắc này, hãy đảm bảo thuộc tính khai báo cả getter và setter, hoặc xóa thuộc tính ``[Export]``.
 
 Khi nào cần tắt cảnh báo
 ------------------------
 
-Không nên tắt cảnh báo từ quy tắc này. Các member chỉ có quyền ghi không thể được export, vì vậy chúng sẽ bị Godot bỏ qua, dẫn đến lỗi runtime.
+Không nên tắt cảnh báo từ quy tắc này. Các member chỉ cho phép ghi không thể được export, vì vậy Godot sẽ bỏ qua chúng và gây ra lỗi runtime.

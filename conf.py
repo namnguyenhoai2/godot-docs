@@ -154,7 +154,7 @@ html_theme_options = {
     "logo_only": True,
 
     "collapse_navigation": True,
-    "navigation_depth": 2,
+    # "navigation_depth": 2,
     "titles_only": True,
 
     "version_selector": False,

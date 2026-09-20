@@ -1,7 +1,14 @@
 GD0402: Lớp không được là generic
 =================================
 
-==================================== ====================================== Giá trị ==================================== ====================================== **ID quy tắc** GD0402 **Danh mục** Cách sử dụng **Bản sửa lỗi có phá vỡ tương thích hay không** Có phá vỡ tương thích **Được bật theo mặc định** Có ==================================== ======================================
+====================================  ======================================
+                                      Value
+====================================  ======================================
+**Rule ID**                           GD0402
+**Category**                          Usage
+**Fix is breaking or non-breaking**   Breaking
+**Enabled by default**                Yes
+====================================  ======================================
 
 Nguyên nhân
 -----------
@@ -11,7 +18,7 @@ Một kiểu generic được chú thích bằng thuộc tính ``[GlobalClass]``
 Mô tả quy tắc
 -------------
 
-Godot editor giả định rằng mọi :ref:`global class <doc_c_sharp_global_classes>` đều có thể được khởi tạo, nhưng các kiểu generic không thể được khởi tạo vì các tham số kiểu chưa được liên kết.
+Trình chỉnh sửa Godot giả định rằng mọi :ref:`global class <doc_c_sharp_global_classes>` đều có thể được khởi tạo, nhưng các kiểu generic không thể được khởi tạo vì các tham số kiểu chưa được liên kết.
 
 .. code-block:: csharp
 
@@ -26,9 +33,9 @@ Godot editor giả định rằng mọi :ref:`global class <doc_c_sharp_global_c
 Cách khắc phục vi phạm
 ----------------------
 
-Để khắc phục vi phạm quy tắc này, hãy thay đổi kiểu để loại bỏ các tham số kiểu generic hoặc xóa thuộc tính ``[GlobalClass]``.
+Để khắc phục vi phạm quy tắc này, hãy thay đổi kiểu để loại bỏ các tham số kiểu generic hoặc loại bỏ thuộc tính ``[GlobalClass]``.
 
-Khi nào nên tắt cảnh báo
-------------------------
+Khi nào nên bỏ qua cảnh báo
+---------------------------
 
-Không nên tắt cảnh báo từ quy tắc này. Việc thêm ``[GlobalClass]`` vào một kiểu generic là một lỗi dễ mắc phải, và cảnh báo này giúp người dùng nhận ra rằng điều đó có thể dẫn đến các lỗi không mong muốn.
+Không nên bỏ qua cảnh báo từ quy tắc này. Việc thêm ``[GlobalClass]`` vào một kiểu generic là một lỗi dễ mắc phải và cảnh báo này giúp người dùng nhận ra rằng điều đó có thể dẫn đến các lỗi không mong muốn.

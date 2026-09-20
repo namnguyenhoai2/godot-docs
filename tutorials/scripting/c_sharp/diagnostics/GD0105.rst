@@ -1,12 +1,19 @@
 GD0105: Property được export là một indexer
 ===========================================
 
-==================================== ====================================== Giá trị ==================================== ====================================== **ID quy tắc** GD0105 **Danh mục** Cách sử dụng **Bản sửa lỗi có gây breaking change hay không** Không breaking **Được bật theo mặc định** Có ==================================== ======================================
+====================================  ======================================
+                                      Value
+====================================  ======================================
+**Rule ID**                           GD0105
+**Category**                          Usage
+**Fix is breaking or non-breaking**   Non-breaking
+**Enabled by default**                Yes
+====================================  ======================================
 
 Nguyên nhân
 -----------
 
-Một indexer được chú thích bằng thuộc tính ``[Export]``. Không thể export các indexer.
+Một indexer được chú thích bằng attribute ``[Export]``. Không thể export indexer.
 
 Mô tả quy tắc
 -------------
@@ -17,7 +24,7 @@ Godot không cho phép export các property indexer.
 
     private int[] _backingField;
 
-    // Không thể export các indexer.
+    // Không thể export indexer.
     [Export]
     public int this[int index]
     {
@@ -28,9 +35,9 @@ Godot không cho phép export các property indexer.
 Cách khắc phục vi phạm
 ----------------------
 
-Để khắc phục vi phạm quy tắc này, hãy xóa thuộc tính ``[Export]``.
+Để khắc phục vi phạm quy tắc này, hãy xóa attribute ``[Export]``.
 
-Khi nào cần tắt cảnh báo
-------------------------
+Khi nào cần suppression warning
+-------------------------------
 
-Không tắt cảnh báo từ quy tắc này. Không thể export các indexer, vì vậy chúng sẽ bị Godot bỏ qua, dẫn đến lỗi runtime.
+Không suppress warning từ quy tắc này. Không thể export indexer, vì vậy Godot sẽ bỏ qua chúng, dẫn đến lỗi runtime.

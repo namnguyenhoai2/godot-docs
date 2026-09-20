@@ -1,9 +1,15 @@
-GD0202: Tham số trong chữ ký delegate của signal không được hỗ trợ
-==================================================================
+GD0202: Tham số của delegate signature của signal không được hỗ trợ
+===================================================================
 
-==================================== ====================================== Giá trị ==================================== ====================================== **ID quy tắc** GD0202 **Danh mục** Cách sử dụng **Bản sửa lỗi có breaking change hay không** Breaking - Nếu kiểu của tham số bị thay đổi
+====================================  ======================================
+                                      Value
+====================================  ======================================
+**Rule ID**                           GD0202
+**Category**                          Usage
+**Fix is breaking or non-breaking**   Breaking - If the parameter type is changed
 
-                                      Non-breaking - Nếu thuộc tính ``[Signal]`` bị xóa **Được bật theo mặc định** Có ==================================== ======================================
+                                      Không gây gián đoạn - Nếu thuộc tính ``[Signal]`` bị xóa **Được bật theo mặc định** Có
+====================================  ======================================
 
 Nguyên nhân
 -----------
@@ -21,10 +27,10 @@ Mọi tham số của signal phải tương thích với Variant để có thể
     class SomeType { }
 
     // SomeType không phải là kiểu tham số hợp lệ vì nó không kế thừa từ GodotObject,
-    // nên không tương thích với Variant.
+    // do đó không tương thích với Variant.
     public void InvalidSignalEventHandler(SomeType someType);
 
-    // System.Int32 là một kiểu hợp lệ vì nó tương thích với Variant.
+    // System.Int32 là kiểu hợp lệ vì nó tương thích với Variant.
     public void ValidSignalEventHandler(int someInt);
 
 Hãy xem tài liệu về :ref:`C# signals <doc_c_sharp_signals>` để biết thêm thông tin về cách khai báo và sử dụng signal.
@@ -36,9 +42,9 @@ Cách khắc phục vi phạm
 
 .. tip::
 
-    Nếu signal không cần tương tác với Godot, hãy cân nhắc sử dụng trực tiếp `C# events <https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/events/>`_. Các event C# thuần cho phép bạn sử dụng bất kỳ kiểu C# nào cho tham số của chúng.
+    Nếu signal không cần tương tác với Godot, hãy cân nhắc sử dụng `C# events <https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/events/>`_ trực tiếp. Các event C# thuần cho phép bạn sử dụng bất kỳ kiểu C# nào cho tham số của chúng.
 
-Khi nào nên bỏ qua cảnh báo
----------------------------
+Khi nào nên suppress cảnh báo
+-----------------------------
 
-Không nên bỏ qua cảnh báo từ quy tắc này. Các delegate của signal có tham số không thể được marshal sẽ gây ra lỗi runtime khi phát signal hoặc gọi các callback.
+Không nên suppress cảnh báo từ quy tắc này. Các signal delegate có tham số không thể được marshal sẽ gây ra lỗi runtime khi phát signal hoặc gọi các callback.

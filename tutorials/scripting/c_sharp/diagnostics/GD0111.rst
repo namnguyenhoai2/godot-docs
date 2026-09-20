@@ -1,35 +1,42 @@
-GD0111: Nút công cụ được export phải là property có thân biểu thức
-==================================================================
+GD0111: Nút công cụ được export phải là thuộc tính có thân biểu thức
+====================================================================
 
-==================================== ====================================== Giá trị ==================================== ====================================== **ID quy tắc** GD0111 **Danh mục** Sử dụng **Bản sửa lỗi có breaking hay không** Không breaking **Được bật theo mặc định** Có ==================================== ======================================
+====================================  ======================================
+                                      Value
+====================================  ======================================
+**Rule ID**                           GD0111
+**Category**                          Usage
+**Fix is breaking or non-breaking**   Non-breaking
+**Enabled by default**                Yes
+====================================  ======================================
 
 Nguyên nhân
 -----------
 
-Một property được chú thích bằng attribute ``[ExportToolButton]`` nhưng không phải là `expression-bodied property`_.
+Một thuộc tính được chú thích bằng attribute ``[ExportToolButton]`` nhưng không phải là `expression-bodied property`_.
 
 Mô tả quy tắc
 -------------
 
-Khi reload assembly .NET, Godot sẽ cố serialize các member được export để bảo toàn giá trị của chúng. Một field hoặc property có backing field lưu trữ ``Callable`` có thể ngăn assembly được unload.
+Khi tải lại assembly .NET, Godot sẽ cố gắng serialize các member được export để giữ nguyên giá trị của chúng. Một field hoặc thuộc tính có backing field lưu trữ ``Callable`` có thể ngăn assembly được unload.
 
-Một property có thân biểu thức không có backing field và sẽ không lưu trữ ``Callable``, vì vậy Godot sẽ không cố serialize nó, điều này sẽ giúp việc reload assembly .NET thành công.
+Thuộc tính có thân biểu thức không có backing field và sẽ không lưu trữ ``Callable``, vì vậy Godot sẽ không cố gắng serialize thuộc tính đó. Điều này sẽ giúp tải lại assembly .NET thành công.
 
 .. code-block:: csharp
 
     [ExportToolButton("Click me!")]
     public Callable ValidClickMeButton => Callable.From(ClickMe);
 
-    // Không hợp lệ vì Callable sẽ được lưu trong backing field của property.
+    // Không hợp lệ vì Callable sẽ được lưu trữ trong backing field của thuộc tính.
     [ExportToolButton("Click me!")]
     public Callable InvalidClickMeButton { get; } = Callable.From(ClickMe);
 
 Cách khắc phục các vi phạm
 --------------------------
 
-Để khắc phục vi phạm quy tắc này, hãy thay thế phần triển khai property bằng một `expression-bodied property`_.
+Để khắc phục vi phạm quy tắc này, hãy thay thế phần triển khai thuộc tính bằng một `expression-bodied property`_.
 
-Khi nào cần bỏ qua cảnh báo
+Khi nào nên bỏ qua cảnh báo
 ---------------------------
 
 Không bỏ qua cảnh báo từ quy tắc này. Các instance ``Callable`` có thể ngăn assembly .NET được unload.

@@ -1,24 +1,31 @@
-GD0107: Các type không kế thừa từ Node không được export các thành viên của Node
-================================================================================
+GD0107: Các type không kế thừa từ Node không được export các member của Node
+============================================================================
 
-==================================== ====================================== Giá trị ==================================== ====================================== **Mã quy tắc** GD0107 **Danh mục** Cách sử dụng **Bản sửa lỗi có breaking hoặc non-breaking** Breaking **Được bật theo mặc định** Có ==================================== ======================================
+====================================  ======================================
+                                      Value
+====================================  ======================================
+**Rule ID**                           GD0107
+**Category**                          Usage
+**Fix is breaking or non-breaking**   Breaking
+**Enabled by default**                Yes
+====================================  ======================================
 
 Nguyên nhân
 -----------
 
 Một type không kế thừa từ ``Node`` chứa một field hoặc property được export có kiểu kế thừa từ ``Node``.
 
-Mô tả quy tắc
--------------
+Mô tả rule
+----------
 
-Các node được export sẽ được serialize dưới dạng ``NodePath``. Chỉ các type kế thừa từ ``Node`` mới có thể lấy instance của node từ ``NodePath``.
+Các node được serialize dưới dạng ``NodePath``. Chỉ các type kế thừa từ ``Node`` mới có thể lấy instance của node từ ``NodePath``.
 
 Cách khắc phục vi phạm
 ----------------------
 
-Để khắc phục vi phạm quy tắc này, tránh export các member ``Node`` trên một type không kế thừa từ ``Node``, hoặc cân nhắc export một ``NodePath``.
+Để khắc phục vi phạm rule này, hãy tránh export các member ``Node`` trên một type không kế thừa từ ``Node``, hoặc cân nhắc export một ``NodePath``.
 
-Khi nào nên suppress cảnh báo
------------------------------
+Khi nào cần suppress warning
+----------------------------
 
-Không nên suppress cảnh báo từ quy tắc này. Các type không kế thừa từ ``Node`` sẽ không thể truy xuất đúng instance của node cho các member ``Node`` được export, dẫn đến các lỗi runtime ngoài dự kiến.
+Không suppress warning từ rule này. Các type không kế thừa từ ``Node`` sẽ không thể lấy đúng instance của node cho các member ``Node`` được export, dẫn đến các lỗi runtime không mong muốn.

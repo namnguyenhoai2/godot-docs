@@ -1,19 +1,25 @@
 GD0203: Chữ ký delegate của signal phải trả về void
 ===================================================
 
-==================================== ====================================== Giá trị ==================================== ====================================== **ID quy tắc** GD0203 **Danh mục** Cách sử dụng **Bản sửa lỗi có gây breaking change hay không** Gây breaking change - Nếu kiểu trả về bị thay đổi
+====================================  ======================================
+                                      Value
+====================================  ======================================
+**Rule ID**                           GD0203
+**Category**                          Usage
+**Fix is breaking or non-breaking**   Breaking - If the return type is changed
 
-                                      Không gây breaking change - Nếu attribute ``[Signal]`` bị xóa **Được bật theo mặc định** Có ==================================== ======================================
+                                      Không gây gián đoạn - Nếu thuộc tính ``[Signal]`` bị xóa **Được bật theo mặc định** Có
+====================================  ======================================
 
 Nguyên nhân
 -----------
 
-Một delegate được chú thích bằng attribute ``[Signal]`` có kiểu trả về trong khi dự kiến là ``void``.
+Một delegate được chú thích bằng thuộc tính ``[Signal]`` có kiểu trả về trong khi ожида đợi ``void``.
 
-Mô tả quy tắc
--------------
+Mô tả rule
+----------
 
-Mọi signal phải trả về ``void``. Mỗi signal có thể đăng ký nhiều callback; nếu callback của signal có thể trả về một giá trị nào đó thì sẽ không thể xác định nên sử dụng giá trị nào trong các giá trị được trả về.
+Mọi signal phải trả về ``void``. Có thể đăng ký nhiều callback cho mỗi signal; nếu callback của signal có thể trả về một giá trị nào đó thì sẽ không thể xác định nên sử dụng giá trị nào trong các giá trị được trả về.
 
 .. code-block:: csharp
 
@@ -23,18 +29,18 @@ Mọi signal phải trả về ``void``. Mỗi signal có thể đăng ký nhi�
     // Delegate của signal này hợp lệ vì trả về void.
     public void ValidSignalEventHandler();
 
-Xem tài liệu :ref:`C# signals <doc_c_sharp_signals>` để biết thêm thông tin về cách khai báo và sử dụng signal.
+Hãy xem tài liệu :ref:`C# signals <doc_c_sharp_signals>` để biết thêm thông tin về cách khai báo và sử dụng signal.
 
 Cách khắc phục vi phạm
 ----------------------
 
-Để khắc phục vi phạm quy tắc này, hãy thay đổi delegate để trả về ``void`` hoặc xóa attribute ``[Signal]`` khỏi delegate. Lưu ý rằng việc xóa attribute sẽ khiến signal không được đăng ký.
+Để khắc phục vi phạm rule này, hãy thay đổi delegate để trả về ``void`` hoặc xóa thuộc tính ``[Signal]`` khỏi delegate. Lưu ý rằng việc xóa thuộc tính sẽ khiến signal không được đăng ký.
 
 .. tip::
 
-    Nếu signal không cần tương tác với Godot, hãy cân nhắc sử dụng trực tiếp `C# events <https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/events/>`_. C# event thuần túy cho phép bạn sử dụng bất kỳ kiểu C# nào cho các tham số của event.
+    Nếu signal không cần tương tác với Godot, hãy cân nhắc sử dụng trực tiếp `C# events <https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/events/>`_. Event C# thuần cho phép bạn sử dụng bất kỳ kiểu C# nào cho các tham số của event.
 
-Khi nào cần bỏ qua cảnh báo
----------------------------
+Khi nào nên loại bỏ cảnh báo
+----------------------------
 
-Không nên bỏ qua cảnh báo từ quy tắc này. Các signal delegate trả về một giá trị sẽ dẫn đến lỗi runtime ngoài dự kiến.
+Không nên loại bỏ cảnh báo từ rule này. Các delegate của signal trả về một giá trị sẽ gây ra lỗi runtime ngoài dự kiến.

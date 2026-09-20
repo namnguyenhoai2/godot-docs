@@ -1,7 +1,14 @@
 GD0002: Thiếu modifier partial trong khai báo kiểu chứa các lớp lồng nhau kế thừa từ GodotObject
 ================================================================================================
 
-==================================== ====================================== Giá trị ==================================== ====================================== **Mã quy tắc** GD0002 **Danh mục** Cách sử dụng **Việc khắc phục có gây breaking change hay không** Không gây breaking change **Được bật theo mặc định** Có ==================================== ======================================
+====================================  ======================================
+                                      Value
+====================================  ======================================
+**Rule ID**                           GD0002
+**Category**                          Usage
+**Fix is breaking or non-breaking**   Non-breaking
+**Enabled by default**                Yes
+====================================  ======================================
 
 Nguyên nhân
 -----------
@@ -11,7 +18,7 @@ Một kiểu kế thừa từ ``GodotObject`` được chứa trong một khai b
 Mô tả quy tắc
 -------------
 
-Các source generator của Godot thêm code được sinh vào các kiểu do người dùng định nghĩa để triển khai việc tích hợp với engine. Source generator không thể thêm code được sinh vào các kiểu không được khai báo là partial.
+Các source generator của Godot thêm mã được tạo vào những kiểu do người dùng định nghĩa để triển khai khả năng tích hợp với engine. Source generator không thể thêm mã được tạo vào các kiểu không được khai báo là partial.
 
 .. code-block:: csharp
 
@@ -34,7 +41,7 @@ Cách khắc phục vi phạm
 
 Để khắc phục vi phạm quy tắc này, hãy thêm từ khóa ``partial`` vào khai báo kiểu.
 
-Khi nào nên tắt cảnh báo
+Khi nào cần tắt cảnh báo
 ------------------------
 
-Không nên tắt cảnh báo từ quy tắc này. Các kiểu kế thừa từ ``GodotObject`` nhưng không phải partial không thể được source generator nâng cấp, dẫn đến các lỗi runtime không mong muốn.
+Không tắt cảnh báo từ quy tắc này. Các kiểu kế thừa từ ``GodotObject`` nhưng không phải partial không thể được source generator nâng cấp, dẫn đến các lỗi runtime ngoài dự kiến.

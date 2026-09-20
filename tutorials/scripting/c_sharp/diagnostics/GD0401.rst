@@ -1,9 +1,15 @@
 GD0401: Lớp phải kế thừa từ Godot.GodotObject hoặc một lớp dẫn xuất
 ===================================================================
 
-==================================== ====================================== Giá trị ==================================== ====================================== **ID quy tắc** GD0401 **Danh mục** Cách sử dụng **Việc sửa lỗi có phá vỡ tương thích hay không** Phá vỡ tương thích - Nếu thay đổi chuỗi kế thừa
+====================================  ======================================
+                                      Value
+====================================  ======================================
+**Rule ID**                           GD0401
+**Category**                          Usage
+**Fix is breaking or non-breaking**   Breaking - If changing the inheritance chain
 
-                                      Không phá vỡ tương thích - Nếu xóa thuộc tính ``[GlobalClass]`` **Được bật theo mặc định** Có ==================================== ======================================
+                                      Không gây gián đoạn - Nếu xóa thuộc tính ``[GlobalClass]`` **Được bật theo mặc định** Có
+====================================  ======================================
 
 Nguyên nhân
 -----------
@@ -17,26 +23,26 @@ Mô tả quy tắc
 
 .. code-block:: csharp
 
-    // Kiểu này không được đăng ký làm global class vì không kế thừa từ GodotObject.
+    // Kiểu này không được đăng ký dưới dạng lớp global vì không kế thừa từ GodotObject.
     [GlobalClass]
     class SomeType { }
 
-    // Kiểu này là một global class vì nó kế thừa từ Godot.Node
+    // Kiểu này là một lớp global vì nó kế thừa từ Godot.Node
     // mà cuối cùng kế thừa từ GodotObject.
     [GlobalClass]
     class MyNode : Node { }
 
-    // Kiểu này là một global class vì nó kế thừa từ Godot.Resource
+    // Kiểu này là một lớp global vì nó kế thừa từ Godot.Resource
     // mà cuối cùng kế thừa từ GodotObject.
     [GlobalClass]
     class MyResource : Resource { }
 
-Cách khắc phục các vi phạm
---------------------------
+Cách khắc phục vi phạm
+----------------------
 
 Để khắc phục vi phạm quy tắc này, hãy thay đổi kiểu để kế thừa từ ``GodotObject`` hoặc xóa thuộc tính ``[GlobalClass]``.
 
-Khi nào cần bỏ qua cảnh báo
+Khi nào nên bỏ qua cảnh báo
 ---------------------------
 
 Không nên bỏ qua cảnh báo từ quy tắc này. Việc thêm ``[GlobalClass]`` vào một kiểu không kế thừa từ ``GodotObject`` là một lỗi dễ mắc phải, và cảnh báo này giúp người dùng nhận ra rằng điều đó có thể dẫn đến các lỗi không mong muốn.

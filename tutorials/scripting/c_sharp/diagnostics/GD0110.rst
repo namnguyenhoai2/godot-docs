@@ -1,26 +1,32 @@
-GD0110: Nút tool được export không phải là Callable
-===================================================
+GD0110: Nút tool được export không phải là một Callable
+=======================================================
 
-==================================== ====================================== Giá trị ==================================== ====================================== **ID quy tắc** GD0110 **Danh mục** Cách sử dụng **Bản sửa lỗi có gây breaking change hay không** Gây breaking change - Nếu kiểu của thuộc tính được đổi thành ``Callable``
+====================================  ======================================
+                                      Value
+====================================  ======================================
+**Rule ID**                           GD0110
+**Category**                          Usage
+**Fix is breaking or non-breaking**   Breaking - If the property's type is changed to ``Callable``
 
-                                      Không gây breaking change - Nếu ``[ExportToolButton]`` được thay thế bằng ``[Export]`` **Được bật theo mặc định** Có ==================================== ======================================
+                                      Không gây gián đoạn - Nếu ``[ExportToolButton]`` được thay thế bằng ``[Export]`` **Được bật theo mặc định** Có
+====================================  ======================================
 
 Nguyên nhân
 -----------
 
-Một thuộc tính có kiểu khác ``Callable`` được chú thích bằng thuộc tính ``[ExportToolButton]``.
+Một thuộc tính của kiểu khác với ``Callable`` được chú thích bằng attribute ``[ExportToolButton]``.
 
 Mô tả quy tắc
 -------------
 
-Thuộc tính ``[ExportToolButton]`` được dùng để tạo các nút có thể nhấp trong inspector, vì vậy thuộc tính này phải là một ``Callable`` sẽ được thực thi khi nhấp vào nút.
+Attribute ``[ExportToolButton]`` được dùng để tạo các nút có thể nhấp trong inspector, vì vậy thuộc tính phải là một ``Callable`` sẽ được thực thi khi nhấp vào nút.
 
-Cách khắc phục các lỗi vi phạm
-------------------------------
+Cách khắc phục vi phạm
+----------------------
 
-Để khắc phục lỗi vi phạm quy tắc này, hãy đổi kiểu của thuộc tính thành ``Callable``. Ngoài ra, nếu bạn định export một thuộc tính thông thường, hãy thay thuộc tính ``[ExportToolButton]`` bằng ``[Export]``.
+Để khắc phục vi phạm quy tắc này, hãy thay đổi kiểu của thuộc tính thành ``Callable``. Ngoài ra, nếu bạn định export một thuộc tính thông thường, hãy thay thế attribute ``[ExportToolButton]`` bằng ``[Export]``.
 
-Khi nào nên tắt cảnh báo
-------------------------
+Khi nào nên bỏ qua cảnh báo
+---------------------------
 
-Không nên tắt cảnh báo từ quy tắc này. Thuộc tính được export phải là một ``Callable`` để có thể được thực thi trong editor khi nhấp vào nút trong inspector.
+Không nên bỏ qua cảnh báo từ quy tắc này. Thuộc tính được export phải là một ``Callable`` để có thể được thực thi trong editor khi nhấp vào nút trong inspector.

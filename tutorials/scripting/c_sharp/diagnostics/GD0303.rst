@@ -1,7 +1,14 @@
 GD0303: Symbol cha của một đối số kiểu phải tương thích với Variant nhưng chưa được xử lý
 =========================================================================================
 
-==================================== ====================================== Giá trị ==================================== ====================================== **ID quy tắc** GD0303 **Danh mục** Cách sử dụng **Bản sửa lỗi có gây gián đoạn hay không** Không thể sửa **Được bật theo mặc định** Có ==================================== ======================================
+====================================  ======================================
+                                      Value
+====================================  ======================================
+**Rule ID**                           GD0303
+**Category**                          Usage
+**Fix is breaking or non-breaking**   Not fixable
+**Enabled by default**                Yes
+====================================  ======================================
 
 Nguyên nhân
 -----------
@@ -11,7 +18,7 @@ Nguyên nhân
 Mô tả quy tắc
 -------------
 
-``MustBeVariantAnalyzer`` đã phát hiện một trường hợp chưa được xử lý trong mã nguồn của người dùng. Vui lòng mở một `issue <https://github.com/godotengine/godot/issues>`_ và đính kèm một project tái hiện tối thiểu để có thể sửa lỗi này.
+``MustBeVariantAnalyzer`` đã phát hiện một trường hợp chưa được xử lý trong mã nguồn của người dùng. Vui lòng mở một `issue <https://github.com/godotengine/godot/issues>`_ và đính kèm một project tái hiện tối thiểu để lỗi này có thể được khắc phục.
 
 
 Cách khắc phục các vi phạm
@@ -19,7 +26,7 @@ Cách khắc phục các vi phạm
 
 Không thể khắc phục các vi phạm quy tắc này.
 
-Khi nào cần tắt cảnh báo
-------------------------
+Khi nào nên bỏ qua cảnh báo
+---------------------------
 
-Việc tắt cảnh báo từ quy tắc này có thể dẫn đến các lỗi không mong muốn, vì trường hợp được analyzer phát hiện có thể cần được người dùng xử lý để ngăn các kiểu không tương thích với Variant truyền đến engine. Việc cố gắng marshal các kiểu không tương thích sẽ dẫn đến lỗi runtime.
+Việc bỏ qua cảnh báo từ quy tắc này có thể dẫn đến các lỗi không mong muốn, vì trường hợp được analyzer phát hiện có thể cần được người dùng xử lý để ngăn các kiểu không tương thích với Variant đến được engine. Việc cố gắng marshal các kiểu không tương thích sẽ dẫn đến lỗi runtime.

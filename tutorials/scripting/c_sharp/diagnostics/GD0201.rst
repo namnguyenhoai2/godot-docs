@@ -1,7 +1,14 @@
 GD0201: Tên của delegate phải kết thúc bằng 'EventHandler'
 ==========================================================
 
-==================================== ====================================== Giá trị ==================================== ====================================== **ID quy tắc** GD0201 **Danh mục** Cách sử dụng **Bản sửa lỗi có làm thay đổi khả năng tương thích hay không** Breaking **Được bật theo mặc định** Có ==================================== ======================================
+====================================  ======================================
+                                      Value
+====================================  ======================================
+**Rule ID**                           GD0201
+**Category**                          Usage
+**Fix is breaking or non-breaking**   Breaking
+**Enabled by default**                Yes
+====================================  ======================================
 
 Nguyên nhân
 -----------
@@ -11,9 +18,9 @@ Một delegate được chú thích bằng thuộc tính ``[Signal]`` có tên k
 Mô tả quy tắc
 -------------
 
-Các source generator của Godot sẽ tạo các event C# bằng cách sử dụng tên của delegate sau khi loại bỏ hậu tố 'EventHandler'. Việc thêm hậu tố 'EventHandler' vào tên của các delegate được sử dụng trong event là một `.NET naming convention <https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/names-of-classes-structs-and-interfaces#names-of-common-types>`_.
+Các source generator của Godot sẽ tạo các sự kiện C# bằng cách sử dụng tên của delegate sau khi loại bỏ hậu tố 'EventHandler'. Việc thêm hậu tố 'EventHandler' vào tên của các delegate được sử dụng trong sự kiện là một `.NET naming convention <https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/names-of-classes-structs-and-interfaces#names-of-common-types>`_.
 
-Việc sử dụng hậu tố cho delegate cho phép event được tạo ra sử dụng tên không có hậu tố, nhờ đó tránh xung đột tên.
+Việc sử dụng hậu tố cho delegate cho phép sự kiện được tạo sử dụng tên không có hậu tố, tránh xung đột tên.
 
 .. code-block:: csharp
 
@@ -27,12 +34,12 @@ Việc sử dụng hậu tố cho delegate cho phép event được tạo ra s�
 
 Hãy xem tài liệu :ref:`C# signals <doc_c_sharp_signals>` để biết thêm thông tin về cách khai báo và sử dụng signal.
 
-Cách khắc phục vi phạm
-----------------------
+Cách khắc phục các vi phạm
+--------------------------
 
 Để khắc phục vi phạm quy tắc này, hãy thêm 'EventHandler' vào cuối tên delegate.
 
-Khi nào cần tắt cảnh báo
-------------------------
+Khi nào cần bỏ qua cảnh báo
+---------------------------
 
-Không tắt cảnh báo từ quy tắc này. Các signal delegate không có hậu tố sẽ bị source generator bỏ qua, vì vậy signal sẽ không được đăng ký.
+Không bỏ qua cảnh báo từ quy tắc này. Các signal delegate không có hậu tố sẽ bị source generator bỏ qua, vì vậy signal sẽ không được đăng ký.

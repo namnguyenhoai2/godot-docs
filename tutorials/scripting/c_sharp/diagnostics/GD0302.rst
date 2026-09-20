@@ -1,7 +1,14 @@
 GD0302: Tham số kiểu generic phải được chú thích bằng thuộc tính '[MustBeVariant]'.
 ===================================================================================
 
-==================================== ====================================== Giá trị ==================================== ====================================== **ID quy tắc** GD0302 **Danh mục** Cách sử dụng **Bản sửa lỗi có gây breaking change hay không** Breaking **Được bật theo mặc định** Có ==================================== ======================================
+====================================  ======================================
+                                      Value
+====================================  ======================================
+**Rule ID**                           GD0302
+**Category**                          Usage
+**Fix is breaking or non-breaking**   Breaking
+**Enabled by default**                Yes
+====================================  ======================================
 
 Nguyên nhân
 -----------
@@ -13,7 +20,7 @@ nhưng kiểu generic được chỉ định không được chú thích bằng 
 Mô tả quy tắc
 -------------
 
-Khi một tham số kiểu generic được chú thích bằng thuộc tính ``[MustBeVariant]``, kiểu generic đó bắt buộc phải là kiểu tương thích với Variant. Khi kiểu được sử dụng cũng là một kiểu generic, kiểu generic này cũng phải được chú thích bằng thuộc tính ``[MustBeVariant]``. Ví dụ: kiểu generic ``Godot.Collections.Array<T>`` chỉ hỗ trợ các phần tử có kiểu có thể được chuyển đổi thành Variant; một kiểu generic có thể được chỉ định nếu nó được chú thích đúng cách.
+Khi một tham số kiểu generic được chú thích bằng thuộc tính ``[MustBeVariant]``, kiểu generic đó bắt buộc phải là kiểu tương thích với Variant. Khi kiểu được sử dụng cũng là một kiểu generic, kiểu generic này cũng phải được chú thích bằng thuộc tính ``[MustBeVariant]``. Ví dụ, kiểu generic ``Godot.Collections.Array<T>`` chỉ hỗ trợ các phần tử có kiểu có thể được chuyển đổi thành Variant; một kiểu generic có thể được chỉ định nếu nó được chú thích đúng cách.
 
 .. code-block:: csharp
 
@@ -30,12 +37,12 @@ Khi một tham số kiểu generic được chú thích bằng thuộc tính ``[
         var validArray = new Godot.Collections.Array<T>();
     }
 
-Cách khắc phục vi phạm
-----------------------
+Cách khắc phục các vi phạm
+--------------------------
 
-Để khắc phục vi phạm quy tắc này, hãy thêm thuộc tính ``[MustBeVariant]`` vào kiểu generic được sử dụng làm đối số kiểu generic bắt buộc phải tương thích với Variant.
+Để khắc phục vi phạm quy tắc này, hãy thêm thuộc tính ``[MustBeVariant]`` vào kiểu generic được sử dụng làm đối số kiểu generic và phải tương thích với Variant.
 
-Khi nào nên chặn cảnh báo
--------------------------
+Khi nào cần bỏ qua cảnh báo
+---------------------------
 
-Không nên chặn cảnh báo từ quy tắc này. API chứa các đối số kiểu generic được chú thích bằng thuộc tính ``[MustBeVariant]`` thường có yêu cầu này vì các giá trị sẽ được truyền đến engine; nếu không thể marshal kiểu đó, lỗi runtime sẽ xảy ra.
+Không được bỏ qua cảnh báo từ quy tắc này. API chứa các đối số kiểu generic được chú thích bằng thuộc tính ``[MustBeVariant]`` thường có yêu cầu này vì các giá trị sẽ được truyền đến engine; nếu không thể marshal kiểu đó, lỗi runtime sẽ xảy ra.

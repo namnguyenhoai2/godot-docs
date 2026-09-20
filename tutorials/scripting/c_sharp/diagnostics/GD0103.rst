@@ -1,7 +1,14 @@
 GD0103: Thành viên được export là chỉ đọc
 =========================================
 
-==================================== ====================================== Giá trị ==================================== ====================================== **ID quy tắc** GD0103 **Danh mục** Cách sử dụng **Bản sửa lỗi có phá vỡ hay không phá vỡ** Không phá vỡ **Được bật theo mặc định** Có ==================================== ======================================
+====================================  ======================================
+                                      Value
+====================================  ======================================
+**Rule ID**                           GD0103
+**Category**                          Usage
+**Fix is breaking or non-breaking**   Non-breaking
+**Enabled by default**                Yes
+====================================  ======================================
 
 Nguyên nhân
 -----------
@@ -19,7 +26,7 @@ Godot không cho phép export các thành viên chỉ đọc.
     [Export]
     public readonly int invalidField;
 
-    // Có thể export trường này vì trường không được khai báo là 'readonly'.
+    // Có thể export trường này vì nó không được khai báo là 'readonly'.
     [Export]
     public int validField;
 
@@ -27,7 +34,7 @@ Godot không cho phép export các thành viên chỉ đọc.
     [Export]
     public int InvalidProperty { get; }
 
-    // Có thể export thuộc tính này vì thuộc tính có cả getter và setter.
+    // Có thể export thuộc tính này vì nó có cả getter và setter.
     [Export]
     public int ValidProperty { get; set; }
 
@@ -38,7 +45,7 @@ Cách khắc phục vi phạm
 
 Để khắc phục vi phạm quy tắc này đối với các thuộc tính, hãy đảm bảo thuộc tính khai báo cả getter và setter, hoặc xóa thuộc tính ``[Export]``.
 
-Khi nào cần tắt cảnh báo
-------------------------
+Khi nào nên ngăn cảnh báo
+-------------------------
 
-Không tắt cảnh báo từ quy tắc này. Không thể export các thành viên chỉ đọc, vì vậy Godot sẽ bỏ qua chúng, dẫn đến lỗi runtime.
+Không ngăn cảnh báo từ quy tắc này. Không thể export các thành viên chỉ đọc, vì vậy Godot sẽ bỏ qua chúng, dẫn đến lỗi runtime.

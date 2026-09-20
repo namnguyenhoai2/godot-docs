@@ -1,12 +1,19 @@
 GD0108: Nút công cụ được export không nằm trong một lớp công cụ
 ===============================================================
 
-==================================== ====================================== Giá trị ==================================== ====================================== **ID quy tắc** GD0108 **Danh mục** Cách sử dụng **Bản sửa lỗi có gây breaking change hay không** Không gây breaking change **Được bật theo mặc định** Có ==================================== ======================================
+====================================  ======================================
+                                      Value
+====================================  ======================================
+**Rule ID**                           GD0108
+**Category**                          Usage
+**Fix is breaking or non-breaking**   Non-breaking
+**Enabled by default**                Yes
+====================================  ======================================
 
 Nguyên nhân
 -----------
 
-Một property được chú thích bằng attribute ``[ExportToolButton]`` trong một class **không** được chú thích bằng attribute ``[Tool]``.
+Một thuộc tính được chú thích bằng attribute ``[ExportToolButton]`` trong một lớp **không** được chú thích bằng attribute ``[Tool]``.
 
 Mô tả quy tắc
 -------------
@@ -28,12 +35,12 @@ Mô tả quy tắc
         }
     }
 
-Cách khắc phục các vi phạm
---------------------------
+Cách khắc phục vi phạm
+----------------------
 
-Để khắc phục vi phạm quy tắc này, hãy thêm attribute ``[Tool]`` vào class chứa member được chú thích bằng attribute ``[ExportToolButton]``.
+Để khắc phục vi phạm quy tắc này, hãy thêm attribute ``[Tool]`` vào lớp chứa member được chú thích bằng attribute ``[ExportToolButton]``.
 
-Khi nào cần bỏ qua cảnh báo
----------------------------
+Khi nào nên tắt cảnh báo
+------------------------
 
-Không bỏ qua cảnh báo từ quy tắc này. Các nút có thể nhấp trong inspector sẽ không hoạt động nếu script của chúng không được chú thích bằng attribute ``[Tool]``.
+Không nên tắt cảnh báo từ quy tắc này. Các nút có thể nhấp trong inspector sẽ không hoạt động nếu script của chúng không được chú thích bằng attribute ``[Tool]``.

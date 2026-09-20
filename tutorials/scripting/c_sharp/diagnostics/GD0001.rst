@@ -1,24 +1,31 @@
-GD0001: Thiếu bộ bổ nghĩa partial trong khai báo kiểu kế thừa từ GodotObject
-============================================================================
+GD0001: Thiếu modifier partial trong khai báo kiểu kế thừa từ GodotObject
+=========================================================================
 
-==================================== ====================================== Giá trị ==================================== ====================================== **ID quy tắc** GD0001 **Danh mục** Cách sử dụng **Sửa lỗi có phá vỡ hay không** Không phá vỡ **Được bật theo mặc định** Có ==================================== ======================================
+====================================  ======================================
+                                      Value
+====================================  ======================================
+**Rule ID**                           GD0001
+**Category**                          Usage
+**Fix is breaking or non-breaking**   Non-breaking
+**Enabled by default**                Yes
+====================================  ======================================
 
 Nguyên nhân
 -----------
 
-Một kiểu kế thừa từ ``GodotObject`` không được khai báo với partial.
+Một kiểu kế thừa từ ``GodotObject`` chưa được khai báo là partial.
 
 Mô tả quy tắc
 -------------
 
-Các source generator của Godot thêm mã được tạo vào những kiểu do người dùng định nghĩa để triển khai tích hợp với engine. Source generator không thể thêm mã được tạo vào những kiểu không được khai báo với partial.
+Source generator của Godot thêm mã được sinh vào các kiểu do người dùng định nghĩa để triển khai tích hợp với engine. Source generator không thể thêm mã được sinh vào các kiểu chưa được khai báo là partial.
 
 .. code-block:: csharp
 
-    // Source generator không thể tăng cường kiểu này để kiểu này hoạt động với Godot.
+    // Source generator không thể nâng cấp kiểu này để hoạt động với Godot.
     public class InvalidNode : Node { }
 
-    // Source generator có thể tăng cường kiểu này để kiểu này hoạt động với Godot.
+    // Source generator có thể nâng cấp kiểu này để hoạt động với Godot.
     public partial class ValidNode : Node { }
 
 Cách khắc phục vi phạm
@@ -26,7 +33,7 @@ Cách khắc phục vi phạm
 
 Để khắc phục vi phạm quy tắc này, hãy thêm từ khóa ``partial`` vào khai báo kiểu.
 
-Khi nào cần ngăn cảnh báo
--------------------------
+Khi nào cần suppress cảnh báo
+-----------------------------
 
-Không ngăn cảnh báo từ quy tắc này. Các kiểu kế thừa từ ``GodotObject`` nhưng không có partial không thể được source generator tăng cường, dẫn đến các lỗi runtime ngoài dự kiến.
+Không suppress cảnh báo từ quy tắc này. Các kiểu kế thừa từ ``GodotObject`` nhưng không phải là partial không thể được source generator nâng cấp, dẫn đến các lỗi runtime không mong muốn.

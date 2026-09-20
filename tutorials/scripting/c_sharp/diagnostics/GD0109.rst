@@ -1,17 +1,24 @@
 GD0109: Không thể sử dụng thuộc tính '[ExportToolButton]' cùng với một thuộc tính '[Export]' khác
 =================================================================================================
 
-==================================== ====================================== Giá trị ==================================== ====================================== **Mã quy tắc** GD0109 **Danh mục** Sử dụng **Bản sửa lỗi có gây lỗi phá vỡ hay không** Không gây lỗi phá vỡ **Được bật theo mặc định** Có ==================================== ======================================
+====================================  ======================================
+                                      Value
+====================================  ======================================
+**Rule ID**                           GD0109
+**Category**                          Usage
+**Fix is breaking or non-breaking**   Non-breaking
+**Enabled by default**                Yes
+====================================  ======================================
 
 Nguyên nhân
 -----------
 
-Một thuộc tính được chú thích bằng cả hai thuộc tính ``[ExportToolButton]`` và ``[Export]``.
+Một property được chú thích bằng cả thuộc tính ``[ExportToolButton]`` và ``[Export]``.
 
 Mô tả quy tắc
 -------------
 
-Thuộc tính ``[ExportToolButton]`` vốn đã ngầm bao gồm việc export member, vì vậy ``[Export]`` là không cần thiết.
+Thuộc tính ``[ExportToolButton]`` đã ngầm bao gồm việc export member, vì vậy ``[Export]`` là không cần thiết.
 
 Cách khắc phục các vi phạm
 --------------------------
@@ -21,4 +28,4 @@ Cách khắc phục các vi phạm
 Khi nào cần suppress cảnh báo
 -----------------------------
 
-Không suppress cảnh báo từ quy tắc này. Nhiều thuộc tính export có thể dẫn đến các member bị trùng lặp, gây ra lỗi runtime ngoài dự kiến.
+Không suppress cảnh báo từ quy tắc này. Nhiều thuộc tính export có thể dẫn đến các member bị trùng lặp, gây ra lỗi runtime không mong muốn.

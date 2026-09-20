@@ -1,27 +1,33 @@
-GD0102: Kiểu của member được export không được hỗ trợ
-=====================================================
+GD0102: Kiểu của thành viên được export không được hỗ trợ
+=========================================================
 
-==================================== ====================================== Giá trị ==================================== ====================================== **ID quy tắc** GD0102 **Danh mục** Cách sử dụng **Bản sửa lỗi có breaking hay không** Breaking - Nếu kiểu của member được thay đổi
+====================================  ======================================
+                                      Value
+====================================  ======================================
+**Rule ID**                           GD0102
+**Category**                          Usage
+**Fix is breaking or non-breaking**   Breaking - If the member type is changed
 
-                                      Non-breaking - Nếu attribute ``[Export]`` được xóa **Được bật theo mặc định** Có ==================================== ======================================
+                                      Không phá vỡ - Nếu thuộc tính ``[Export]`` bị xóa **Được bật theo mặc định** Có
+====================================  ======================================
 
 Nguyên nhân
 -----------
 
-Một kiểu không được hỗ trợ được chỉ định cho một member có chú thích bằng attribute ``[Export]`` khi một
+Một kiểu không được hỗ trợ được chỉ định cho một thành viên có chú thích bằng thuộc tính ``[Export]`` khi một
 :ref:`Variant-compatible type <c_sharp_variant_compatible_types>` is expected.
 
 Mô tả quy tắc
 -------------
 
-Mọi member được export phải tương thích với Variant để engine có thể marshal member đó.
+Mọi thành viên được export phải tương thích với Variant để engine có thể marshal thành viên đó.
 
 .. code-block:: csharp
 
     class SomeType { }
 
-    // SomeType không phải là kiểu member hợp lệ vì nó không kế thừa từ GodotObject,
-    // do đó không tương thích với Variant.
+    // SomeType không phải là kiểu thành viên hợp lệ vì nó không kế thừa từ GodotObject,
+    // nên không tương thích với Variant.
     [Export]
     public SomeType InvalidProperty { get; set; }
 
@@ -32,9 +38,9 @@ Mọi member được export phải tương thích với Variant để engine c�
 Cách khắc phục vi phạm
 ----------------------
 
-Để khắc phục vi phạm quy tắc này, hãy thay đổi kiểu của member thành kiểu tương thích với Variant hoặc xóa attribute ``[Export]``.
+Để khắc phục vi phạm quy tắc này, hãy thay đổi kiểu của thành viên thành một kiểu tương thích với Variant hoặc xóa thuộc tính ``[Export]``.
 
-Khi nào nên bỏ qua cảnh báo
----------------------------
+Khi nào nên tắt cảnh báo
+------------------------
 
-Không nên bỏ qua cảnh báo từ quy tắc này. Các member có kiểu không thể marshal sẽ gây ra lỗi runtime.
+Không nên tắt cảnh báo từ quy tắc này. Các thành viên có kiểu không thể marshal sẽ gây ra lỗi runtime.
