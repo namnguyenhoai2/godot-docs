@@ -1,131 +1,84 @@
 .. _doc_audio_buses:
 
-Audio buses
-===========
+Các bus âm thanh
+================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Godot's audio processing code has been written with games in mind, with the aim
-of achieving an optimal balance between performance and sound quality.
+Mã xử lý âm thanh của Godot được viết dành cho game, nhằm đạt được sự cân bằng tối ưu giữa hiệu năng và chất lượng âm thanh.
 
-Godot's audio engine allows any number of audio buses to be created and any
-number of effect processors can be added to each bus. Only the hardware of the
-device running your game will limit the number of buses and effects that can be
-used before performance starts to suffer.
+Audio engine của Godot cho phép tạo bất kỳ số lượng bus âm thanh nào và thêm bất kỳ số lượng effect processor nào vào mỗi bus. Chỉ phần cứng của thiết bị chạy game mới giới hạn số lượng bus và effect có thể sử dụng trước khi hiệu năng bắt đầu suy giảm.
 
-Decibel scale
+Thang decibel
 -------------
 
-Godot's sound interface is designed to meet the expectations of sound design
-professionals. To this end, it primarily uses the decibel scale.
+Giao diện âm thanh của Godot được thiết kế để đáp ứng kỳ vọng của các chuyên gia sound design. Vì mục đích này, giao diện chủ yếu sử dụng thang decibel.
 
-For those unfamiliar with it, it can be explained with a few facts:
+Đối với những người chưa quen với thang này, có thể giải thích bằng một vài điểm sau:
 
-- The decibel (dB) scale is a relative scale. It represents the ratio of
-  sound power by using 20 times the base 10 logarithm of the ratio
-  (20 × log\ :sub:`10`\ (P/P\ :sub:`0`\ )).
-- For every 6 dB, sound amplitude doubles or halves. 12 dB represents a factor
-  of 4, 18 dB a factor of 8, 20 dB a factor of 10, 40 dB a factor of 100, etc.
-- Since the scale is logarithmic, true zero (no audio) can't be represented.
-- 0 dB is the maximum amplitude possible in a digital audio system.
-  This limit is not the human limit, but a limit from the sound hardware.
-  Audio with amplitudes that are too high to be represented properly below 0 dB
-  create a kind of distortion called *clipping*.
-- To avoid clipping, your sound mix should be arranged so that the output of the
-  *master bus* (more on that later) never exceeds 0 dB.
-- Every 6 dB below the 0 dB limit, sound energy is *halved*.
-  It means the sound volume at -6 dB is half as loud as 0dB.
-  -12 dB is half as loud as -6 dB and so on.
-- When working with decibels, sound is considered no longer audible
-  between -60 dB and -80 dB. This makes your working range generally
-  between -60 dB and 0 dB.
+- Thang decibel (dB) là một thang tương đối. Nó biểu thị tỷ lệ công suất âm thanh bằng cách sử dụng 20 lần logarit cơ số 10 của tỷ lệ (20 × log\ :sub:`10`\ (P/P\ :sub:`0`\ )). - Với mỗi 6 dB, biên độ âm thanh tăng gấp đôi hoặc giảm một nửa. 12 dB biểu thị hệ số 4, 18 dB là hệ số 8, 20 dB là hệ số 10, 40 dB là hệ số 100, v.v. - Vì đây là thang logarit nên không thể biểu thị giá trị 0 thực sự (không có âm thanh). - 0 dB là biên độ tối đa có thể có trong một hệ thống âm thanh kỹ thuật số. Đây không phải là giới hạn của con người mà là giới hạn của phần cứng âm thanh. Âm thanh có biên độ quá cao để được biểu thị chính xác dưới 0 dB sẽ tạo ra một dạng méo gọi là *clipping*. - Để tránh clipping, bản mix âm thanh của bạn nên được sắp xếp sao cho đầu ra của *master bus* (sẽ nói thêm về bus này sau) không bao giờ vượt quá 0 dB. - Cứ mỗi 6 dB dưới giới hạn 0 dB, năng lượng âm thanh lại *giảm một nửa*. Điều đó có nghĩa là âm lượng ở -6 dB chỉ bằng một nửa 0 dB. -12 dB chỉ bằng một nửa -6 dB, v.v. - Khi làm việc với decibel, âm thanh được xem là không còn nghe được trong khoảng từ -60 dB đến -80 dB. Vì vậy, phạm vi làm việc của bạn thường nằm trong khoảng từ -60 dB đến 0 dB.
 
-This can take a bit getting used to, but it's friendlier in the end
-and will allow you to communicate better with audio professionals.
+Có thể bạn sẽ cần một chút thời gian để làm quen, nhưng về sau cách này sẽ dễ sử dụng hơn và giúp bạn giao tiếp tốt hơn với các chuyên gia âm thanh.
 
-Audio buses
------------
+Các bus âm thanh
+----------------
 
-Audio buses can be found in the bottom panel of the Godot editor:
+Bạn có thể tìm thấy các bus âm thanh trong panel phía dưới của Godot editor:
 
 .. image:: img/audio_buses1.webp
 
-An *audio bus* (also called an *audio channel*) can be considered a place that
-audio is channeled through on the way to playback through a device's speakers.
-Audio data can be *modified* and *re-routed* by an audio bus. An audio bus
-has a VU meter (the bars that light up when sound is played) which indicates the
-amplitude of the signal passing through.
+Một *audio bus* (còn gọi là *audio channel*) có thể được xem là nơi âm thanh đi qua trên đường đến quá trình phát bằng loa của thiết bị. Dữ liệu âm thanh có thể được *sửa đổi* và *định tuyến lại* bởi một audio bus. Một audio bus có VU meter (các thanh sáng lên khi âm thanh được phát), cho biết biên độ của tín hiệu đi qua.
 
-The leftmost bus is the *master bus*. This bus outputs the mix to your speakers
-so, as mentioned in the *Decibel scale* section above, make sure that your mix
-level doesn't reach 0 dB in this bus. The rest of the audio buses can be
-flexibly routed. After modifying the sound, they send it to another bus to
-the left. The destination bus can be specified for each of the non-master audio
-buses. Routing always passes audio from buses on the right to buses further
-to the left. This avoids infinite routing loops.
+Bus ngoài cùng bên trái là *master bus*. Bus này xuất bản mix đến loa, vì vậy, như đã đề cập trong phần *Thang decibel* ở trên, hãy đảm bảo mức mix của bạn trong bus này không đạt đến 0 dB. Các bus âm thanh còn lại có thể được định tuyến linh hoạt. Sau khi sửa đổi âm thanh, chúng sẽ gửi âm thanh đó đến một bus khác ở bên trái. Có thể chỉ định bus đích cho từng audio bus không phải master. Việc định tuyến luôn truyền âm thanh từ các bus bên phải đến các bus xa hơn về bên trái. Điều này tránh các vòng lặp định tuyến vô hạn.
 
 .. image:: img/audio_buses2.webp
 
-In the above image, the output of *Bus 2* has been routed to the *Master* bus.
+Trong hình trên, đầu ra của *Bus 2* đã được định tuyến đến bus *Master*.
 
-Playback of audio through a bus
--------------------------------
+Phát âm thanh qua một bus
+-------------------------
 
-To test passing audio to a bus, create an AudioStreamPlayer node, load an
-AudioStream and select a target bus for playback:
+Để kiểm tra việc truyền âm thanh đến một bus, hãy tạo một node AudioStreamPlayer, tải một AudioStream và chọn bus đích để phát:
 
 .. image:: img/audio_buses3.webp
 
-Finally, toggle the **Playing** property to **On** and sound will flow.
+Cuối cùng, chuyển thuộc tính **Playing** sang **On** để âm thanh bắt đầu phát.
 
 .. seealso::
 
-    You may also be interested in reading about :ref:`doc_audio_streams` now.
+    Bạn cũng có thể quan tâm đến việc đọc về :ref:`doc_audio_streams` ngay bây giờ.
 
-Adding effects
---------------
+Thêm effect
+-----------
 
 .. warning::
 
-    This feature is not supported on the web platform if the AudioStreamPlayer's
-    playback mode is set to **Sample**, which is the default. It will only work if the
-    playback mode is set to **Stream**, at the cost of increased latency if threads
-    are not enabled.
+    Tính năng này không được hỗ trợ trên nền tảng web nếu playback mode của AudioStreamPlayer được đặt thành **Sample**, là giá trị mặc định. Tính năng này chỉ hoạt động khi playback mode được đặt thành **Stream**, với cái giá là latency tăng nếu các thread chưa được bật.
 
-    See :ref:`Audio playback in the Exporting for the Web documentation <doc_exporting_for_web_audio_playback>`
-    for details.
+    Xem :ref:`Audio playback in the Exporting for the Web documentation <doc_exporting_for_web_audio_playback>` để biết chi tiết.
 
-Audio buses can contain all sorts of effects. These effects modify the sound in
-one way or another and are applied in order.
+Các bus âm thanh có thể chứa đủ loại effect. Những effect này sửa đổi âm thanh theo cách này hay cách khác và được áp dụng theo thứ tự.
 
 .. image:: img/audio_buses4.webp
 
-For information on what each effect does, see :ref:`doc_audio_effects`.
+Để biết từng effect thực hiện chức năng gì, hãy xem :ref:`doc_audio_effects`.
 
-Automatic bus disabling
+Tự động vô hiệu hóa bus
 -----------------------
 
-There is no need to disable buses manually when not in use. Godot detects
-that the bus has been silent for a few seconds and disables it (including
-all effects).
+Bạn không cần phải vô hiệu hóa bus theo cách thủ công khi không sử dụng. Godot phát hiện bus đã im lặng trong vài giây và vô hiệu hóa bus đó (bao gồm tất cả effect).
 
 .. figure:: img/audio_buses5.webp
 
    Disabled buses have a dark blue VU meter instead of a red-green one.
 
-Bus rearrangement
------------------
+Sắp xếp lại bus
+---------------
 
-Stream Players use bus names to identify a bus, which allows adding, removing
-and moving buses around while the reference to them is kept. However, if a bus
-is renamed, the reference will be lost and the Stream Player will output
-to Master. This system was chosen because rearranging buses is a more common
-process than renaming them.
+Stream Player sử dụng tên bus để nhận diện một bus, cho phép thêm, xóa và di chuyển các bus mà vẫn giữ nguyên tham chiếu đến chúng. Tuy nhiên, nếu một bus được đổi tên, tham chiếu sẽ bị mất và Stream Player sẽ xuất âm thanh đến Master. Hệ thống này được chọn vì việc sắp xếp lại bus phổ biến hơn việc đổi tên chúng.
 
-Default bus layout
-------------------
+Bố cục bus mặc định
+-------------------
 
-The default bus layout is automatically saved to the
-``res://default_bus_layout.tres`` file. Custom bus arrangements can be saved
-and loaded from disk.
+Bố cục bus mặc định được tự động lưu vào tệp ``res://default_bus_layout.tres``. Bạn có thể lưu các cách sắp xếp bus tùy chỉnh vào ổ đĩa và tải chúng từ đó.

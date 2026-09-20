@@ -2,41 +2,36 @@
 
 .. _doc_sync_with_audio:
 
-Sync the gameplay with audio and music
-=======================================
+Đồng bộ gameplay với âm thanh và nhạc
+=====================================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-In any application or game, sound and music playback will have a slight delay. For games, this delay is often so small that it is negligible. Sound effects will come out a few milliseconds after any play() function is called. For music this does not matter as in most games it does not interact with the gameplay.
+Trong bất kỳ ứng dụng hoặc trò chơi nào, việc phát âm thanh và nhạc sẽ có một độ trễ nhỏ. Đối với trò chơi, độ trễ này thường nhỏ đến mức không đáng kể. Hiệu ứng âm thanh sẽ phát ra sau vài mili giây kể từ khi gọi bất kỳ hàm play() nào. Đối với nhạc, điều này không quan trọng vì trong hầu hết trò chơi, nhạc không tương tác với gameplay.
 
-Still, for some games (mainly, rhythm games), it may be required to synchronize player actions with something happening in a song (usually in sync with the BPM). For this, having more precise timing information for an exact playback position is useful.
+Tuy vậy, đối với một số trò chơi (chủ yếu là trò chơi rhythm), có thể cần đồng bộ hành động của người chơi với một sự kiện xảy ra trong bài hát (thường đồng bộ theo BPM). Để làm được điều này, thông tin thời gian chính xác hơn về vị trí phát hiện tại sẽ rất hữu ích.
 
-Achieving very low playback timing precision is difficult. This is because many factors are at play during audio playback:
+Việc đạt được độ chính xác thời gian phát rất cao là khó. Điều này là do có nhiều yếu tố ảnh hưởng trong quá trình phát âm thanh:
 
-* Audio is mixed in chunks (not continuously), depending on the size of audio buffers used (check latency in project settings).
-* Mixed chunks of audio are not played immediately.
-* Graphics APIs display two or three frames late.
-* When playing on TVs, some delay may be added due to image processing.
+* Âm thanh được trộn theo từng khối (không liên tục), tùy thuộc vào kích thước của các audio buffer được sử dụng (hãy kiểm tra latency trong cài đặt project). * Các khối âm thanh đã trộn không được phát ngay lập tức. * Graphics API hiển thị trễ hai hoặc ba frame. * Khi phát trên TV, độ trễ có thể tăng thêm do quá trình xử lý hình ảnh.
 
-The most common way to reduce latency is to shrink the audio buffers (again, by editing the latency setting in the project settings). The problem is that when latency is too small, sound mixing will require considerably more CPU. This increases the risk of skipping (a crack in sound because a mix callback was lost).
+Cách phổ biến nhất để giảm latency là thu nhỏ audio buffer (một lần nữa, bằng cách chỉnh cài đặt latency trong cài đặt project). Vấn đề là khi latency quá nhỏ, việc trộn âm thanh sẽ cần nhiều CPU hơn đáng kể. Điều này làm tăng nguy cơ bị ngắt quãng (âm thanh bị rè do một mix callback bị mất).
 
-This is a common tradeoff, so Godot ships with sensible defaults that should not need to be altered.
+Đây là một sự đánh đổi phổ biến, vì vậy Godot đi kèm các giá trị mặc định hợp lý và thường không cần thay đổi.
 
-The problem, in the end, is not this slight delay but synchronizing graphics and
-audio for games that require it. Some helpers are available to obtain more
-precise playback timing.
+Cuối cùng, vấn đề không nằm ở độ trễ nhỏ này mà là ở việc đồng bộ graphics và audio cho những trò chơi cần điều đó. Có một số helper giúp lấy thông tin thời gian phát chính xác hơn.
 
-Using the system clock to sync
-------------------------------
+Sử dụng system clock để đồng bộ
+-------------------------------
 
-As mentioned before, If you call :ref:`AudioStreamPlayer.play()<class_AudioStreamPlayer_method_play>`, sound will not begin immediately, but when the audio thread processes the next chunk.
+Như đã đề cập trước đó, nếu bạn gọi :ref:`AudioStreamPlayer.play()<class_AudioStreamPlayer_method_play>`, âm thanh sẽ không bắt đầu ngay lập tức mà chỉ bắt đầu khi audio thread xử lý khối tiếp theo.
 
-This delay can't be avoided but it can be estimated by calling :ref:`AudioServer.get_time_to_next_mix()<class_AudioServer_method_get_time_to_next_mix>`.
+Không thể tránh được độ trễ này, nhưng có thể ước tính nó bằng cách gọi :ref:`AudioServer.get_time_to_next_mix()<class_AudioServer_method_get_time_to_next_mix>`.
 
-The output latency (what happens after the mix) can also be estimated by calling :ref:`AudioServer.get_output_latency()<class_AudioServer_method_get_output_latency>`.
+Output latency (những gì xảy ra sau khi trộn) cũng có thể được ước tính bằng cách gọi :ref:`AudioServer.get_output_latency()<class_AudioServer_method_get_output_latency>`.
 
-Add these two and it's possible to guess almost exactly when sound or music will begin playing in the speakers during *_process()*:
+Cộng hai giá trị này lại, ta có thể đoán gần như chính xác thời điểm âm thanh hoặc nhạc bắt đầu phát ra từ loa trong *_process()*:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -52,11 +47,11 @@ Add these two and it's possible to guess almost exactly when sound or music will
 
 
     func _process(delta):
-        # Obtain from ticks.
+        # Lấy từ ticks.
         var time = (Time.get_ticks_usec() - time_begin) / 1000000.0
-        # Compensate for latency.
+        # Bù cho latency.
         time -= time_delay
-        # May be below 0 (did not begin yet).
+        # Có thể nhỏ hơn 0 (chưa bắt đầu).
         time = max(0, time)
         print("Time is: ", time)
 
@@ -80,19 +75,19 @@ Add these two and it's possible to guess almost exactly when sound or music will
     }
 
 
-In the long run, though, as the sound hardware clock is never exactly in sync with the system clock, the timing information will slowly drift away.
+Tuy nhiên, về lâu dài, vì clock của phần cứng âm thanh không bao giờ hoàn toàn đồng bộ với system clock, thông tin thời gian sẽ dần bị lệch.
 
-For a rhythm game where a song begins and ends after a few minutes, this approach is fine (and it's the recommended approach). For a game where playback can last a much longer time, the game will eventually go out of sync and a different approach is needed.
+Đối với một rhythm game trong đó bài hát bắt đầu và kết thúc sau vài phút, cách tiếp cận này là phù hợp (và đây là cách tiếp cận được khuyến nghị). Đối với một trò chơi có thời lượng phát dài hơn nhiều, trò chơi cuối cùng sẽ bị mất đồng bộ và cần một cách tiếp cận khác.
 
-Using the sound hardware clock to sync
---------------------------------------
+Sử dụng sound hardware clock để đồng bộ
+---------------------------------------
 
-Using :ref:`AudioStreamPlayer.get_playback_position()<class_AudioStreamPlayer_method_get_playback_position>` to obtain the current position for the song sounds ideal, but it's not that useful as-is. This value will increment in chunks (every time the audio callback mixed a block of sound), so many calls can return the same value. Added to this, the value will be out of sync with the speakers too because of the previously mentioned reasons.
+Sử dụng :ref:`AudioStreamPlayer.get_playback_position()<class_AudioStreamPlayer_method_get_playback_position>` để lấy vị trí hiện tại của bài hát có vẻ lý tưởng, nhưng bản thân giá trị này không hữu ích lắm. Giá trị sẽ tăng theo từng khối (mỗi khi audio callback trộn xong một khối âm thanh), vì vậy nhiều lần gọi có thể trả về cùng một giá trị. Ngoài ra, giá trị này cũng sẽ không đồng bộ với loa vì những lý do đã đề cập trước đó.
 
-To compensate for the "chunked" output, there is a function that can help: :ref:`AudioServer.get_time_since_last_mix()<class_AudioServer_method_get_time_since_last_mix>`.
+Để bù cho đầu ra theo "khối", có một hàm có thể hỗ trợ: :ref:`AudioServer.get_time_since_last_mix()<class_AudioServer_method_get_time_since_last_mix>`.
 
 
-Adding the return value from this function to *get_playback_position()* increases precision:
+Cộng giá trị trả về từ hàm này vào *get_playback_position()* sẽ tăng độ chính xác:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -104,7 +99,7 @@ Adding the return value from this function to *get_playback_position()* increase
     double time = GetNode<AudioStreamPlayer>("Player").GetPlaybackPosition() + AudioServer.GetTimeSinceLastMix();
 
 
-To increase precision, subtract the latency information (how much it takes for the audio to be heard after it was mixed):
+Để tăng độ chính xác, hãy trừ thông tin latency (thời gian cần thiết để nghe được âm thanh sau khi âm thanh đã được trộn):
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -115,9 +110,9 @@ To increase precision, subtract the latency information (how much it takes for t
 
     double time = GetNode<AudioStreamPlayer>("Player").GetPlaybackPosition() + AudioServer.GetTimeSinceLastMix() - AudioServer.GetOutputLatency();
 
-The result may be a bit jittery due how multiple threads work. Just check that the value is not less than in the previous frame (discard it if so). This is also a less precise approach than the one before, but it will work for songs of any length, or synchronizing anything (sound effects, as an example) to music.
+Kết quả có thể hơi giật do cách nhiều thread hoạt động. Chỉ cần kiểm tra để bảo đảm giá trị không nhỏ hơn giá trị ở frame trước (nếu nhỏ hơn thì loại bỏ). Đây cũng là cách tiếp cận kém chính xác hơn cách trước, nhưng sẽ hoạt động với các bài hát có độ dài bất kỳ hoặc khi đồng bộ bất kỳ thứ gì (chẳng hạn như hiệu ứng âm thanh) với nhạc.
 
-Here is the same code as before using this approach:
+Dưới đây là đoạn code trước đó sử dụng cách tiếp cận này:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -129,7 +124,7 @@ Here is the same code as before using this approach:
 
     func _process(delta):
         var time = $Player.get_playback_position() + AudioServer.get_time_since_last_mix()
-        # Compensate for output latency.
+        # Bù cho output latency.
         time -= AudioServer.get_output_latency()
         print("Time is: ", time)
 
@@ -143,7 +138,7 @@ Here is the same code as before using this approach:
     public override void _Process(double delta)
     {
         double time = GetNode<AudioStreamPlayer>("Player").GetPlaybackPosition() + AudioServer.GetTimeSinceLastMix();
-        // Compensate for output latency.
+        // Bù cho output latency.
         time -= AudioServer.GetOutputLatency();
         GD.Print(string.Format("Time is: {0}", time));
     }

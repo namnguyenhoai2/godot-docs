@@ -2,64 +2,42 @@
 
 .. _doc_audio_streams:
 
-Audio streams
-=============
+Luồng âm thanh
+==============
 
-Introduction
-------------
+Giới thiệu
+----------
 
-As you might have already read in :ref:`doc_audio_buses`, sound is sent to
-each bus via an AudioStreamPlayer node. There are different kinds
-of AudioStreamPlayers. Each one loads an AudioStream and plays it back.
+Như bạn có thể đã đọc trong :ref:`doc_audio_buses`, âm thanh được gửi đến từng bus thông qua một node AudioStreamPlayer. Có nhiều loại AudioStreamPlayer khác nhau. Mỗi loại sẽ tải một AudioStream và phát lại nó.
 
 AudioStream
 -----------
 
-An audio stream is an abstract object that emits sound. The sound can come from
-many places, but is most commonly loaded from the filesystem. Audio files can be
-loaded as AudioStreams and placed inside an AudioStreamPlayer. You can find
-information on supported formats and differences in :ref:`doc_importing_audio_samples`.
+AudioStream là một đối tượng trừu tượng phát ra âm thanh. Âm thanh có thể đến từ nhiều nơi, nhưng thường được tải từ filesystem nhất. Các tệp âm thanh có thể được tải dưới dạng AudioStream và đặt bên trong một AudioStreamPlayer. Bạn có thể tìm thông tin về các định dạng được hỗ trợ và điểm khác biệt trong :ref:`doc_importing_audio_samples`.
 
-There are other types of AudioStreams, such as :ref:`AudioStreamRandomizer<class_AudioStreamRandomizer>`.
-This one picks a different audio stream from a list of streams each time it's played
-back, and applies random pitch and volume shifting. This can be helpful for adding
-variation to sounds that are played back often.
+Có các loại AudioStream khác, chẳng hạn như :ref:`AudioStreamRandomizer<class_AudioStreamRandomizer>`. Loại này chọn một audio stream khác từ danh sách các stream mỗi lần được phát lại, đồng thời áp dụng thay đổi ngẫu nhiên về cao độ và âm lượng. Điều này hữu ích để tạo sự đa dạng cho những âm thanh được phát lại thường xuyên.
 
 AudioStreamPlayer
 -----------------
 
 .. image:: img/audio_stream_player.webp
 
-This is the standard, non-positional stream player. It can play to any bus.
-In 5.1 sound setups, it can send audio to stereo mix or front speakers.
+Đây là stream player tiêu chuẩn, không có vị trí. Nó có thể phát đến bất kỳ bus nào. Trong các thiết lập âm thanh 5.1, nó có thể gửi âm thanh đến bản trộn stereo hoặc các loa phía trước.
 
-.. UPDATE: Experimental. When Playback Type is no longer experimental, update
-.. this paragraph.
+.. CẬP NHẬT: Thử nghiệm. Khi Playback Type không còn là tính năng thử nghiệm, hãy cập nhật .. đoạn này.
 
-Playback Type is an experimental setting, and could change in future versions
-of Godot. It exists so Web exports use Web Audio-API based samples instead of
-streaming all sounds to the browser, unlike most platforms. This prevents the
-audio from being garbled in single-threaded Web exports. By default, only the
-Web platform will use samples. Changing this setting is not recommended, unless
-you have an explicit reason to. You can change the default playback type
-for the web and other platforms in the project settings under **Audio > General**
-(advanced settings must be turned on to see the setting).
+Playback Type là một thiết lập thử nghiệm và có thể thay đổi trong các phiên bản Godot tương lai. Thiết lập này tồn tại để các bản export Web sử dụng các sample dựa trên Web Audio-API thay vì streaming tất cả âm thanh đến trình duyệt, không giống như hầu hết các nền tảng. Điều này ngăn âm thanh bị méo trong các bản export Web đơn luồng. Theo mặc định, chỉ nền tảng Web sử dụng sample. Không khuyến nghị thay đổi thiết lập này, trừ khi bạn có lý do cụ thể. Bạn có thể thay đổi playback type mặc định cho web và các nền tảng khác trong project settings, tại **Audio > General** (phải bật các thiết lập nâng cao để thấy thiết lập này).
 
 AudioStreamPlayer2D
 -------------------
 
 .. image:: img/audio_stream_2d.webp
 
-This is a variant of AudioStreamPlayer, but emits sound in a 2D positional
-environment. When close to the left of the screen, the panning will go left.
-When close to the right side, it will go right.
+Đây là một biến thể của AudioStreamPlayer, nhưng phát ra âm thanh trong môi trường có vị trí 2D. Khi ở gần phía bên trái màn hình, âm thanh sẽ được pan sang trái. Khi ở gần phía bên phải, âm thanh sẽ được pan sang phải.
 
 .. note::
 
-    Area2Ds can be used to divert sound from any AudioStreamPlayer2Ds they
-    contain to specific buses. This makes it possible to create buses with
-    different reverb or sound qualities to handle action happening in a
-    particular parts of your game world.
+    Có thể sử dụng Area2D để chuyển hướng âm thanh từ bất kỳ AudioStreamPlayer2D nào nằm bên trong nó đến các bus cụ thể. Điều này cho phép tạo các bus có reverb hoặc chất lượng âm thanh khác nhau để xử lý hành động diễn ra tại một phần cụ thể trong thế giới game.
 
 .. image:: img/audio_stream_2d_area.webp
 
@@ -68,71 +46,46 @@ AudioStreamPlayer3D
 
 .. image:: img/audio_stream_3d.webp
 
-This is a variant of AudioStreamPlayer, but emits sound in a 3D positional
-environment. Depending on the location of the player relative to the screen,
-it can position sound in stereo, 5.1 or 7.1 depending on the chosen audio setup.
+Đây là một biến thể của AudioStreamPlayer, nhưng phát ra âm thanh trong môi trường có vị trí 3D. Tùy thuộc vào vị trí của player so với màn hình, nó có thể định vị âm thanh ở dạng stereo, 5.1 hoặc 7.1, tùy theo thiết lập âm thanh đã chọn.
 
-Similar to AudioStreamPlayer2D, an Area3D can divert the sound to an audio bus.
+Tương tự AudioStreamPlayer2D, Area3D có thể chuyển hướng âm thanh đến một audio bus.
 
 .. image:: img/audio_stream_3d_area.webp
 
-Unlike for 2D, the 3D version of AudioStreamPlayer has a few more advanced options:
+Không giống như phiên bản 2D, phiên bản 3D của AudioStreamPlayer có thêm một số tùy chọn nâng cao:
 
 .. _doc_audio_streams_reverb_buses:
 
-Reverb buses
-~~~~~~~~~~~~
+Các bus reverb
+~~~~~~~~~~~~~~
 
 .. warning::
 
-    This feature is not supported on the web platform if the AudioStreamPlayer's
-    playback mode is set to **Sample**, which is the default. It will only work if the
-    playback mode is set to **Stream**, at the cost of increased latency if threads
-    are not enabled.
+    Tính năng này không được hỗ trợ trên nền tảng web nếu playback mode của AudioStreamPlayer được đặt thành **Sample**, đây là giá trị mặc định. Tính năng này chỉ hoạt động khi playback mode được đặt thành **Stream**, với cái giá là latency tăng nếu không bật thread.
 
-    See :ref:`Audio playback in the Exporting for the Web documentation <doc_exporting_for_web_audio_playback>`
-    for details.
+    Xem :ref:`Audio playback in the Exporting for the Web documentation <doc_exporting_for_web_audio_playback>` để biết chi tiết.
 
-Godot allows for 3D audio streams that enter a specific Area3D node to send dry
-and wet audio to separate buses. This is useful when you have several reverb
-configurations for different types of rooms. This is done by enabling this type
-of reverb in the **Reverb Bus** section of the Area3D's properties:
+Godot cho phép các audio stream 3D đi vào một node Area3D cụ thể gửi âm thanh dry và wet đến các bus riêng biệt. Điều này hữu ích khi bạn có nhiều cấu hình reverb cho các loại phòng khác nhau. Để thực hiện, hãy bật loại reverb này trong phần **Reverb Bus** thuộc các thuộc tính của Area3D:
 
 .. image:: img/audio_stream_reverb_bus.webp
 
-At the same time, a special bus layout is created where each Area3D receives the
-reverb info from each Area3D. A Reverb effect needs to be created and configured
-in each reverb bus to complete the setup for the desired effect:
+Đồng thời, một bus layout đặc biệt được tạo, trong đó mỗi Area3D nhận thông tin reverb từ từng Area3D. Cần tạo và cấu hình một hiệu ứng Reverb trong mỗi bus reverb để hoàn tất thiết lập cho hiệu ứng mong muốn:
 
 .. image:: img/audio_stream_reverb_bus2.webp
 
-The Area3D's **Reverb Bus** section also has a parameter named **Uniformity**.
-Some types of rooms bounce sounds more than others (like a warehouse), so
-reverberation can be heard almost uniformly across the room even though the
-source may be far away. Playing around with this parameter can simulate
-that effect.
+Phần **Reverb Bus** của Area3D cũng có một tham số tên là **Uniformity**. Một số loại phòng phản xạ âm thanh nhiều hơn các loại khác (chẳng hạn như nhà kho), vì vậy âm vang có thể được nghe gần như đồng đều khắp phòng dù nguồn âm thanh có thể ở rất xa. Việc điều chỉnh tham số này có thể mô phỏng hiệu ứng đó.
 
 Doppler
 ~~~~~~~
 
 .. warning::
 
-    This feature is not supported on the web platform if the AudioStreamPlayer's
-    playback mode is set to **Sample**, which is the default. It will only work if the
-    playback mode is set to **Stream**, at the cost of increased latency if threads
-    are not enabled.
+    Tính năng này không được hỗ trợ trên nền tảng web nếu playback mode của AudioStreamPlayer được đặt thành **Sample**, đây là giá trị mặc định. Tính năng này chỉ hoạt động khi playback mode được đặt thành **Stream**, với cái giá là latency tăng nếu không bật thread.
 
-    See :ref:`Audio playback in the Exporting for the Web documentation <doc_exporting_for_web_audio_playback>`
-    for details.
+    Xem :ref:`Audio playback in the Exporting for the Web documentation <doc_exporting_for_web_audio_playback>` để biết chi tiết.
 
-When the relative velocity between an emitter and listener changes, this is
-perceived as an increase or decrease in the pitch of the emitted sound.
-Godot can track velocity changes in the AudioStreamPlayer3D and Camera nodes.
-Both nodes have this property, which must be enabled manually:
+Khi vận tốc tương đối giữa emitter và listener thay đổi, điều này được cảm nhận như sự tăng hoặc giảm cao độ của âm thanh được phát ra. Godot có thể theo dõi các thay đổi vận tốc trong các node AudioStreamPlayer3D và Camera. Cả hai node đều có thuộc tính này, nhưng phải bật thủ công:
 
 .. image:: img/audio_stream_doppler.webp
 
-Enable it by setting it depending on how objects will be moved:
-use **Idle** for objects moved using ``_process``, or **Physics**
-for objects moved using ``_physics_process``. The tracking will
-happen automatically.
+Bật tính năng này bằng cách đặt nó tùy theo cách các đối tượng sẽ được di chuyển: sử dụng **Idle** cho các đối tượng được di chuyển bằng ``_process``, hoặc **Physics** cho các đối tượng được di chuyển bằng ``_physics_process``. Việc theo dõi sẽ diễn ra tự động.
