@@ -2,371 +2,187 @@
 
 .. _doc_system_requirements:
 
-System requirements
-===================
+Yêu cầu hệ thống
+================
 
-This page contains system requirements for the editor and exported projects.
-These specifications are given for informative purposes only, but they can be
-referred to if you're looking to build or upgrade a system to use Godot on.
+Trang này chứa các yêu cầu hệ thống đối với trình chỉnh sửa và các dự án đã xuất. Các thông số kỹ thuật này chỉ nhằm mục đích tham khảo, nhưng bạn có thể xem chúng nếu đang muốn xây dựng hoặc nâng cấp một hệ thống để sử dụng Godot.
 
-Godot editor
-------------
+Trình chỉnh sửa Godot
+---------------------
 
-These are the **minimum** specifications required to run the Godot editor and work
-on a simple 2D or 3D project:
+Đây là các thông số **tối thiểu** cần thiết để chạy trình chỉnh sửa Godot và làm việc trên một dự án 2D hoặc 3D đơn giản:
 
-Desktop or laptop PC - Minimum
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PC để bàn hoặc máy tính xách tay - Tối thiểu
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. When adjusting specifications, make sure to only mention hardware that can run the required OS version.
-.. For example, the oldest Mac model that can run macOS 13 is the 2017 iMac,
-.. so the x86 CPU requirement for macOS should not be set earlier than that.
+.. Khi điều chỉnh thông số kỹ thuật, hãy đảm bảo chỉ đề cập đến phần cứng có thể chạy phiên bản hệ điều hành cần thiết. .. Ví dụ: mẫu Mac cũ nhất có thể chạy macOS 13 là iMac 2017, .. vì vậy yêu cầu CPU x86 cho macOS không nên được đặt trước mẫu đó.
 
-+----------------------+-----------------------------------------------------------------------------------------+
-| **CPU**              | - **Windows:** x86_32 CPU with SSE2 support, x86_64 CPU with SSE4.2 support, ARMv8 CPU  |
-|                      |                                                                                         |
-|                      |   - *Example: Intel Core 2 Duo E8200, AMD FX-4100, Snapdragon X Elite*                  |
-|                      |                                                                                         |
-|                      | - **macOS:** x86_64 or ARM CPU (Apple Silicon)                                          |
-|                      |                                                                                         |
-|                      |   - *Example: Intel 7th Gen (Kaby Lake) CPU, Apple M1*                                  |
-|                      |                                                                                         |
-|                      | - **Linux:** x86_32 CPU with SSE2 support, x86_64 CPU with SSE4.2 support, ARMv7 or     |
-|                      |   ARMv8 CPU                                                                             |
-|                      |                                                                                         |
-|                      |   - *Example: Intel Core 2 Duo E8200, AMD FX-4100, Raspberry Pi 4*                      |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **GPU**              | - **Forward+ renderer:** Integrated graphics with full Vulkan 1.0 support               |
-|                      |                                                                                         |
-|                      |   - *Example: Intel HD Graphics 510 (Skylake), AMD Radeon R5 Graphics (Kaveri)*         |
-|                      |                                                                                         |
-|                      | - **Mobile renderer:** Integrated graphics with full Vulkan 1.0 support                 |
-|                      |                                                                                         |
-|                      |   - *Example: Intel HD Graphics 510 (Skylake), AMD Radeon R5 Graphics (Kaveri)*         |
-|                      |                                                                                         |
-|                      | - **Compatibility renderer:** Integrated graphics with full OpenGL 3.3 support          |
-|                      |                                                                                         |
-|                      |   - *Example: Intel HD Graphics 2500 (Ivy Bridge), AMD Radeon R5 Graphics (Kaveri)*     |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **RAM**              | - **Native editor:** 4 GB                                                               |
-|                      | - **Web editor:** 8 GB                                                                  |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **Storage**          | 200 MB (used for the executable, project files, and cache).                             |
-|                      | Exporting projects requires downloading export templates separately                     |
-|                      | (up to 1.5 GB after installation, depending on the target platforms chosen).            |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **Operating system** | - **Native editor:** Windows 10, macOS 11 (Intel Macs), macOS 13 (Apple Silicon Macs),  |
-|                      |   Linux distribution released after 2018                                                |
-|                      | - **Web editor:** Recent versions of mainstream browsers: Firefox and derivatives       |
-|                      |   (including ESR), Chrome and Chromium derivatives, Safari and WebKit derivatives.      |
-+----------------------+-----------------------------------------------------------------------------------------+
++----------------------+-----------------------------------------------------------------------------------------+ | **CPU** | - **Windows:** CPU x86_32 hỗ trợ SSE2, CPU x86_64 hỗ trợ SSE4.2, CPU ARMv8 | | | | | | - *Ví dụ: Intel Core 2 Duo E8200, AMD FX-4100, Snapdragon X Elite* | | | | | | - **macOS:** CPU x86_64 hoặc ARM (Apple Silicon) | | | | | | - *Ví dụ: CPU Intel thế hệ 7 (Kaby Lake), Apple M1* | | | | | | - **Linux:** CPU x86_32 hỗ trợ SSE2, CPU x86_64 hỗ trợ SSE4.2, CPU ARMv7 hoặc | | | ARMv8 | | | |
+| | - *Ví dụ: Intel Core 2 Duo E8200, AMD FX-4100, Raspberry Pi 4* |
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **GPU** | - **Trình kết xuất Forward+:** Đồ họa tích hợp hỗ trợ đầy đủ Vulkan 1.0 | | | | | | - *Ví dụ: Intel HD Graphics 510 (Skylake), AMD Radeon R5 Graphics (Kaveri)* | | | | | | - **Trình kết xuất Mobile:** Đồ họa tích hợp hỗ trợ đầy đủ Vulkan 1.0 | | | | | | - *Ví dụ: Intel HD Graphics 510 (Skylake), AMD Radeon R5 Graphics (Kaveri)* | | | | | | - **Trình kết xuất Compatibility:** Đồ họa tích hợp hỗ trợ đầy đủ OpenGL 3.3 | | | |
+| | - *Ví dụ: Intel HD Graphics 2500 (Ivy Bridge), AMD Radeon R5 Graphics (Kaveri)* |
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **RAM** | - **Trình chỉnh sửa Native:** 4 GB |
+| | - **Trình chỉnh sửa Web:** 8 GB |
++++++++++++++++++++++++++++++++++++++
+| **Bộ nhớ lưu trữ** | 200 MB (dùng cho tệp thực thi, tệp dự án và bộ nhớ đệm). | | | Việc xuất dự án yêu cầu tải riêng các mẫu xuất |
+| | (lên đến 1,5 GB sau khi cài đặt, tùy thuộc vào các nền tảng đích được chọn). |
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **Hệ điều hành** | - **Trình chỉnh sửa Native:** Windows 10, macOS 11 (máy Mac Intel), macOS 13 (máy Mac Apple Silicon), | | | bản phân phối Linux phát hành sau năm 2018 | | | - **Trình chỉnh sửa Web:** Các phiên bản gần đây của những trình duyệt phổ biến: Firefox và các biến thể |
+| | (bao gồm ESR), Chrome và các biến thể Chromium, Safari và các biến thể WebKit. |
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. note::
 
-    If your x86_64 CPU does not support SSE4.2, you can still run the 32-bit Godot
-    executable which only has a SSE2 requirement (all x86_64 CPUs support SSE2).
+    Nếu CPU x86_64 của bạn không hỗ trợ SSE4.2, bạn vẫn có thể chạy tệp thực thi Godot 32-bit, vốn chỉ yêu cầu SSE2 (tất cả CPU x86_64 đều hỗ trợ SSE2).
 
-    While supported on Linux, we have no official minimum requirements for running on
-    rv64 (RISC-V), ppc64 & ppc32 (PowerPC), and loongarch64. In addition you must
-    compile the editor for that platform (as well as export templates) yourself,
-    no official downloads are currently provided. RISC-V compiling instructions can
-    be found on the :ref:`doc_compiling_for_linuxbsd` page.
+    Mặc dù được hỗ trợ trên Linux, chúng tôi không có yêu cầu tối thiểu chính thức để chạy trên rv64 (RISC-V), ppc64 và ppc32 (PowerPC), cũng như loongarch64. Ngoài ra, bạn phải tự biên dịch trình chỉnh sửa cho nền tảng đó (cũng như các mẫu xuất); hiện chưa có bản tải xuống chính thức. Bạn có thể tìm thấy hướng dẫn biên dịch RISC-V trên trang :ref:`doc_compiling_for_linuxbsd`.
 
-Mobile device (smartphone/tablet) - Minimum
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Thiết bị di động (điện thoại thông minh/máy tính bảng) - Tối thiểu
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-+----------------------+-----------------------------------------------------------------------------------------+
-| **CPU**              | - **Android:** SoC with any 32-bit or 64-bit ARM or x86 CPU                             |
-|                      |                                                                                         |
-|                      |   - *Example: Qualcomm Snapdragon 430, Samsung Exynos 5 Octa 5430*                      |
-|                      |                                                                                         |
-|                      | - **iOS:** *Cannot run the editor*                                                      |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **GPU**              | - **Forward+ renderer:** SoC featuring GPU with full Vulkan 1.0 support                 |
-|                      |                                                                                         |
-|                      |   - *Example: Qualcomm Adreno 505, Mali-G71 MP2*                                        |
-|                      |                                                                                         |
-|                      | - **Mobile renderer:** SoC featuring GPU with full Vulkan 1.0 support                   |
-|                      |                                                                                         |
-|                      |   - *Example: Qualcomm Adreno 505, Mali-G71 MP2*                                        |
-|                      |                                                                                         |
-|                      | - **Compatibility renderer:** SoC featuring GPU with full OpenGL ES 3.0 support         |
-|                      |                                                                                         |
-|                      |   - *Example: Qualcomm Adreno 306, Mali-T628 MP6*                                       |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **RAM**              | - **Native editor:** 3 GB                                                               |
-|                      | - **Web editor:** 6 GB                                                                  |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **Storage**          | 200 MB (used for the executable, project files, and cache).                             |
-|                      | Exporting projects requires downloading export templates separately                     |
-|                      | (up to 1.5 GB after installation, depending on the target platforms chosen).            |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **Operating system** | - **Native editor:** Android 7.0 (Compatibility) or Android 9.0 (Forward+/Mobile)       |
-|                      | - **Web editor:** Recent versions of mainstream browsers: Firefox and derivatives       |
-|                      |   (including ESR), Chrome and Chromium derivatives, Safari and WebKit derivatives.      |
-+----------------------+-----------------------------------------------------------------------------------------+
++----------------------+-----------------------------------------------------------------------------------------+ | **CPU** | - **Android:** SoC với CPU ARM hoặc x86 32-bit hoặc 64-bit bất kỳ | | | | | | - *Ví dụ: Qualcomm Snapdragon 430, Samsung Exynos 5 Octa 5430* | | | |
+| | - **iOS:** *Không thể chạy trình chỉnh sửa* |
++++++++++++++++++++++++++++++++++++++++++++++++++
+| **GPU** | - **Trình kết xuất Forward+:** SoC tích hợp GPU hỗ trợ đầy đủ Vulkan 1.0 | | | | | | - *Ví dụ: Qualcomm Adreno 505, Mali-G71 MP2* | | | | | | - **Trình kết xuất Mobile:** SoC tích hợp GPU hỗ trợ đầy đủ Vulkan 1.0 | | | | | | - *Ví dụ: Qualcomm Adreno 505, Mali-G71 MP2* | | | | | | - **Trình kết xuất Compatibility:** SoC tích hợp GPU hỗ trợ đầy đủ OpenGL ES 3.0 | | | |
+| | - *Ví dụ: Qualcomm Adreno 306, Mali-T628 MP6* |
++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **RAM** | - **Trình chỉnh sửa Native:** 3 GB |
+| | - **Trình chỉnh sửa Web:** 6 GB |
++++++++++++++++++++++++++++++++++++++
+| **Bộ nhớ lưu trữ** | 200 MB (dùng cho tệp thực thi, tệp dự án và bộ nhớ đệm). | | | Việc xuất dự án yêu cầu tải riêng các mẫu xuất |
+| | (lên đến 1,5 GB sau khi cài đặt, tùy thuộc vào các nền tảng đích được chọn). |
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **Hệ điều hành** | - **Trình chỉnh sửa Native:** Android 7.0 (Compatibility) hoặc Android 9.0 (Forward+/Mobile) | | | - **Trình chỉnh sửa Web:** Các phiên bản gần đây của những trình duyệt phổ biến: Firefox và các biến thể |
+| | (bao gồm ESR), Chrome và các biến thể Chromium, Safari và các biến thể WebKit. |
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-These are the **recommended** specifications to get a smooth experience with the
-Godot editor on a simple 2D or 3D project:
+Đây là các thông số **khuyến nghị** để có trải nghiệm mượt mà với trình chỉnh sửa Godot trên một dự án 2D hoặc 3D đơn giản:
 
-Desktop or laptop PC - Recommended
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PC để bàn hoặc máy tính xách tay - Khuyến nghị
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-+----------------------+---------------------------------------------------------------------------------------------+
-| **CPU**              | - **Windows:** x86_64 CPU with SSE4.2 support, with 4 physical cores or more, ARMv8 CPU     |
-|                      |                                                                                             |
-|                      |   - *Example: Intel Core i5-6600K, AMD Ryzen 5 1600, Snapdragon X Elite*                    |
-|                      |                                                                                             |
-|                      | - **macOS:** x86_64 or ARM CPU (Apple Silicon)                                              |
-|                      |                                                                                             |
-|                      |   - *Example: Intel Core i5-8500, Apple M1*                                                 |
-|                      |                                                                                             |
-|                      | - **Linux:** x86_64 CPU with SSE4.2 support, ARMv7 or ARMv8 CPU                             |
-|                      |                                                                                             |
-|                      |   - *Example: Intel Core i5-6600K, AMD Ryzen 5 1600, Raspberry Pi 5 with overclocking*      |
-+----------------------+---------------------------------------------------------------------------------------------+
-| **GPU**              | - **Forward+ renderer:** Dedicated graphics with full Vulkan 1.2 support                    |
-|                      |                                                                                             |
-|                      |   - *Example: NVIDIA GeForce GTX 1050 (Pascal), AMD Radeon RX 460 (GCN 4.0)*                |
-|                      |                                                                                             |
-|                      | - **Mobile renderer:** Dedicated graphics with full Vulkan 1.2 support                      |
-|                      |                                                                                             |
-|                      |   - *Example: NVIDIA GeForce GTX 1050 (Pascal), AMD Radeon RX 460 (GCN 4.0)*                |
-|                      |                                                                                             |
-|                      | - **Compatibility renderer:** Dedicated graphics with full OpenGL 4.6 support               |
-|                      |                                                                                             |
-|                      |   - *Example: NVIDIA GeForce GTX 650 (Kepler), AMD Radeon HD 7750 (GCN 1.0)*                |
-+----------------------+---------------------------------------------------------------------------------------------+
-| **RAM**              | - **Native editor:** 8 GB                                                                   |
-|                      | - **Web editor:** 12 GB                                                                     |
-+----------------------+---------------------------------------------------------------------------------------------+
-| **Storage**          | 2 GB (used for the executable, project files, all export templates, and cache)              |
-+----------------------+---------------------------------------------------------------------------------------------+
-| **Operating system** | - **Native editor:** Windows 11, macOS 13, Linux distribution released after 2020           |
-|                      | - **Web editor:** Latest version of Firefox, Chrome, Edge, Safari, Opera                    |
-+----------------------+---------------------------------------------------------------------------------------------+
++----------------------+---------------------------------------------------------------------------------------------+ | **CPU** | - **Windows:** CPU x86_64 hỗ trợ SSE4.2, có từ 4 lõi vật lý trở lên, CPU ARMv8 | | | | | | - *Ví dụ: Intel Core i5-6600K, AMD Ryzen 5 1600, Snapdragon X Elite* | | | | | | - **macOS:** CPU x86_64 hoặc ARM (Apple Silicon) | | | | | | - *Ví dụ: Intel Core i5-8500, Apple M1* | | | | | | - **Linux:** CPU x86_64 hỗ trợ SSE4.2, CPU ARMv7 hoặc ARMv8 | | | |
+| | - *Ví dụ: Intel Core i5-6600K, AMD Ryzen 5 1600, Raspberry Pi 5 có ép xung* |
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **GPU** | - **Trình kết xuất Forward+:** Đồ họa rời hỗ trợ đầy đủ Vulkan 1.2 | | | | | | - *Ví dụ: NVIDIA GeForce GTX 1050 (Pascal), AMD Radeon RX 460 (GCN 4.0)* | | | | | | - **Trình kết xuất Mobile:** Đồ họa rời hỗ trợ đầy đủ Vulkan 1.2 | | | | | | - *Ví dụ: NVIDIA GeForce GTX 1050 (Pascal), AMD Radeon RX 460 (GCN 4.0)* | | | | | | - **Trình kết xuất Compatibility:** Đồ họa rời hỗ trợ đầy đủ OpenGL 4.6 | | | |
+| | - *Ví dụ: NVIDIA GeForce GTX 650 (Kepler), AMD Radeon HD 7750 (GCN 1.0)* |
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **RAM** | - **Trình chỉnh sửa Native:** 8 GB |
+| | - **Trình chỉnh sửa Web:** 12 GB |
+++++++++++++++++++++++++++++++++++++++
+| **Bộ nhớ lưu trữ** | 2 GB (dùng cho tệp thực thi, tệp dự án, tất cả mẫu xuất và bộ nhớ đệm) |
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **Hệ điều hành** | - **Trình chỉnh sửa Native:** Windows 11, macOS 13, bản phân phối Linux phát hành sau năm 2020 |
+| | - **Trình chỉnh sửa Web:** Phiên bản mới nhất của Firefox, Chrome, Edge, Safari, Opera |
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Mobile device (smartphone/tablet) - Recommended
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Thiết bị di động (điện thoại thông minh/máy tính bảng) - Khuyến nghị
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-+----------------------+-----------------------------------------------------------------------------------------+
-| **CPU**              | - **Android:** SoC with 64-bit ARM or x86 CPU, with 3 "performance" cores or more       |
-|                      |                                                                                         |
-|                      |   - *Example: Qualcomm Snapdragon 845, Samsung Exynos 9810*                             |
-|                      |                                                                                         |
-|                      | - **iOS:** *Cannot run the editor*                                                      |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **GPU**              | - **Forward+ renderer:** SoC featuring GPU with full Vulkan 1.2 support                 |
-|                      |                                                                                         |
-|                      |   - *Example: Qualcomm Adreno 630, Mali-G72 MP18*                                       |
-|                      |                                                                                         |
-|                      | - **Mobile renderer:** SoC featuring GPU with full Vulkan 1.2 support                   |
-|                      |                                                                                         |
-|                      |   - *Example: Qualcomm Adreno 630, Mali-G72 MP18*                                       |
-|                      |                                                                                         |
-|                      | - **Compatibility renderer:** SoC featuring GPU with full OpenGL ES 3.2 support         |
-|                      |                                                                                         |
-|                      |   - *Example: Qualcomm Adreno 630, Mali-G72 MP18*                                       |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **RAM**              | - **Native editor:** 6 GB                                                               |
-|                      | - **Web editor:** 8 GB                                                                  |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **Storage**          | 2 GB (used for the executable, project files, all export templates, and cache)          |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **Operating system** | - **Native editor:** Android 11.0                                                       |
-|                      | - **Web editor:** Latest version of Firefox, Chrome, Edge, Safari, Opera,               |
-|                      |   Samsung Internet                                                                      |
-+----------------------+-----------------------------------------------------------------------------------------+
++----------------------+-----------------------------------------------------------------------------------------+ | **CPU** | - **Android:** SoC với CPU ARM hoặc x86 64-bit, có từ 3 lõi "hiệu năng" trở lên | | | | | | - *Ví dụ: Qualcomm Snapdragon 845, Samsung Exynos 9810* | | | |
+| | - **iOS:** *Không thể chạy trình chỉnh sửa* |
++++++++++++++++++++++++++++++++++++++++++++++++++
+| **GPU** | - **Trình kết xuất Forward+:** SoC tích hợp GPU hỗ trợ đầy đủ Vulkan 1.2 | | | | | | - *Ví dụ: Qualcomm Adreno 630, Mali-G72 MP18* | | | | | | - **Trình kết xuất Mobile:** SoC tích hợp GPU hỗ trợ đầy đủ Vulkan 1.2 | | | | | | - *Ví dụ: Qualcomm Adreno 630, Mali-G72 MP18* | | | | | | - **Trình kết xuất Compatibility:** SoC tích hợp GPU hỗ trợ đầy đủ OpenGL ES 3.2 | | | |
+| | - *Ví dụ: Qualcomm Adreno 630, Mali-G72 MP18* |
++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **RAM** | - **Trình chỉnh sửa Native:** 6 GB |
+| | - **Trình chỉnh sửa Web:** 8 GB |
++++++++++++++++++++++++++++++++++++++
+| **Bộ nhớ lưu trữ** | 2 GB (dùng cho tệp thực thi, tệp dự án, tất cả mẫu xuất và bộ nhớ đệm) |
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **Hệ điều hành** | - **Trình chỉnh sửa Native:** Android 11.0 | | | - **Trình chỉnh sửa Web:** Phiên bản mới nhất của Firefox, Chrome, Edge, Safari, Opera, |
+| | Samsung Internet |
+++++++++++++++++++++++
 
-Exported Godot project
-----------------------
+Dự án Godot đã xuất
+-------------------
 
 .. warning::
 
-    The requirements below are a baseline for a **simple** 2D or 3D project,
-    with basic scripting and few visual flourishes. CPU, GPU, RAM and
-    storage requirements will heavily vary depending on your project's scope,
-    its renderer, viewport resolution and graphics settings chosen.
-    Other programs running on the system while the project is running
-    will also compete for resources, including RAM and video RAM.
+    Các yêu cầu dưới đây là mức cơ sở cho một dự án 2D hoặc 3D **đơn giản**, với tập lệnh cơ bản và ít hiệu ứng hình ảnh. Yêu cầu về CPU, GPU, RAM và bộ nhớ lưu trữ sẽ thay đổi đáng kể tùy thuộc vào phạm vi dự án, trình kết xuất, độ phân giải khung nhìn và các cài đặt đồ họa được chọn. Các chương trình khác đang chạy trên hệ thống trong khi dự án chạy cũng sẽ tranh giành tài nguyên, bao gồm RAM và RAM video.
 
-    It is strongly recommended to do your own testing on low-end hardware to
-    make sure your project runs at the desired speed. To provide scalability for
-    low-end hardware, you will also need to introduce a
-    `graphics options menu <https://github.com/godotengine/godot-demo-projects/tree/master/3d/graphics_settings>`__
-    to your project.
+    Bạn được khuyến nghị mạnh mẽ nên tự kiểm thử trên phần cứng cấp thấp để đảm bảo dự án chạy ở tốc độ mong muốn. Để cung cấp khả năng mở rộng cho phần cứng cấp thấp, bạn cũng cần thêm một `graphics options menu <https://github.com/godotengine/godot-demo-projects/tree/master/3d/graphics_settings>`__ vào dự án.
 
-These are the **minimum** specifications required to run a simple 2D or 3D
-project exported with Godot:
+Đây là các thông số **tối thiểu** cần thiết để chạy một dự án 2D hoặc 3D đơn giản được xuất bằng Godot:
 
-Desktop or laptop PC - Minimum
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PC để bàn hoặc máy tính xách tay - Tối thiểu
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. When adjusting specifications, make sure to only mention hardware that can run the required OS version.
-.. For example, the oldest Mac model that can run macOS 13 is the 2017 iMac,
-.. so the x86 CPU requirement for macOS should not be set earlier than that.
+.. Khi điều chỉnh thông số kỹ thuật, hãy đảm bảo chỉ đề cập đến phần cứng có thể chạy phiên bản hệ điều hành cần thiết. .. Ví dụ: mẫu Mac cũ nhất có thể chạy macOS 13 là iMac 2017, .. vì vậy yêu cầu CPU x86 cho macOS không nên được đặt trước mẫu đó.
 
-+----------------------+-----------------------------------------------------------------------------------------+
-| **CPU**              | - **Windows:** x86_32 CPU with SSE2 support, x86_64 CPU with SSE4.2 support,            |
-|                      |   ARMv8 CPU                                                                             |
-|                      |                                                                                         |
-|                      |   - *Example: Intel Core 2 Duo E8200, AMD FX-4100, Snapdragon X Elite*                  |
-|                      |                                                                                         |
-|                      | - **macOS:** x86_64 or ARM CPU (Apple Silicon)                                          |
-|                      |                                                                                         |
-|                      |   - *Example: Intel 7th Gen (Kaby Lake) CPU, Apple M1*                                  |
-|                      |                                                                                         |
-|                      | - **Linux:** x86_32 CPU with SSE2 support, x86_64 CPU with SSE4.2 support,              |
-|                      |   ARMv7 or ARMv8 CPU                                                                    |
-|                      |                                                                                         |
-|                      |   - *Example: Intel Core 2 Duo E8200, AMD FX-4100, Raspberry Pi 4*                      |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **GPU**              | - **Forward+ renderer:** Integrated graphics with full Vulkan 1.0 support,              |
-|                      |   Metal 3 support (macOS) or Direct3D 12 (12_0 feature level) support (Windows)         |
-|                      |                                                                                         |
-|                      |   - *Example: Intel HD Graphics 510 (Skylake), AMD Radeon R5 Graphics (Kaveri)*         |
-|                      |                                                                                         |
-|                      | - **Mobile renderer:** Integrated graphics with full Vulkan 1.0 support,                |
-|                      |   Metal 3 support (macOS) or Direct3D 12 (12_0 feature level) support (Windows)         |
-|                      |                                                                                         |
-|                      |   - *Example: Intel HD Graphics 510 (Skylake), AMD Radeon R5 Graphics (Kaveri)*         |
-|                      |                                                                                         |
-|                      | - **Compatibility renderer:** Integrated graphics with full OpenGL 3.3 support          |
-|                      |   or Direct3D 11 support (Windows).                                                     |
-|                      |                                                                                         |
-|                      |   - *Example: Intel HD Graphics 2500 (Ivy Bridge), AMD Radeon R5 Graphics (Kaveri)*     |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **RAM**              | - **For native exports:** 2 GB                                                          |
-|                      | - **For web exports:** 4 GB                                                             |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **Storage**          | 150 MB (used for the executable, project files, and cache)                              |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **Operating system** | - **For native exports:** Windows 10, macOS 11 (Intel Macs), macOS 13 (Apple Silicon    |
-|                      |   Macs), Linux distribution released after 2018                                         |
-|                      | - **Web editor:** Recent versions of mainstream browsers: Firefox and derivatives       |
-|                      |   (including ESR), Chrome and Chromium derivatives, Safari and WebKit derivatives.      |
-+----------------------+-----------------------------------------------------------------------------------------+
++----------------------+-----------------------------------------------------------------------------------------+ | **CPU** | - **Windows:** CPU x86_32 hỗ trợ SSE2, CPU x86_64 hỗ trợ SSE4.2, | | | ARMv8 CPU | | | | | | - *Ví dụ: Intel Core 2 Duo E8200, AMD FX-4100, Snapdragon X Elite* | | | | | | - **macOS:** CPU x86_64 hoặc ARM (Apple Silicon) | | | | | | - *Ví dụ: CPU Intel thế hệ 7 (Kaby Lake), Apple M1* | | | | | | - **Linux:** CPU x86_32 hỗ trợ SSE2, CPU x86_64 hỗ trợ SSE4.2, | | | CPU ARMv7 hoặc ARMv8 | | | |
+| | - *Ví dụ: Intel Core 2 Duo E8200, AMD FX-4100, Raspberry Pi 4* |
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **GPU** | - **Trình kết xuất Forward+:** Đồ họa tích hợp với hỗ trợ đầy đủ Vulkan 1.0, | | | hỗ trợ Metal 3 (macOS) hoặc hỗ trợ Direct3D 12 (cấp tính năng 12_0) (Windows) | | | | | | - *Ví dụ: Intel HD Graphics 510 (Skylake), AMD Radeon R5 Graphics (Kaveri)* | | | | | | - **Trình kết xuất Mobile:** Đồ họa tích hợp với hỗ trợ đầy đủ Vulkan 1.0, | | | hỗ trợ Metal 3 (macOS) hoặc hỗ trợ Direct3D 12 (cấp tính năng 12_0) (Windows) | | | | | | - *Ví dụ: Intel HD Graphics 510 (Skylake), AMD Radeon R5 Graphics (Kaveri)* | | | | | | - **Trình kết xuất Compatibility:** Đồ họa tích hợp với hỗ trợ đầy đủ OpenGL 3.3 | | | hoặc hỗ trợ Direct3D 11 (Windows). | | | |
+| | - *Ví dụ: Intel HD Graphics 2500 (Ivy Bridge), AMD Radeon R5 Graphics (Kaveri)* |
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **RAM** | - **Đối với bản xuất native:** 2 GB |
+| | - **Đối với bản xuất web:** 4 GB |
+++++++++++++++++++++++++++++++++++++++
+| **Bộ nhớ lưu trữ** | 150 MB (dùng cho tệp thực thi, tệp dự án và bộ nhớ đệm) |
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **Hệ điều hành** | - **Đối với bản xuất native:** Windows 10, macOS 11 (máy Mac Intel), macOS 13 (máy | | | Mac Apple Silicon), bản phân phối Linux phát hành sau năm 2018 | | | - **Trình chỉnh sửa web:** Các phiên bản gần đây của những trình duyệt phổ biến: Firefox và các biến thể |
+| | (bao gồm ESR), Chrome và các biến thể Chromium, Safari và các biến thể WebKit. |
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Mobile device (smartphone/tablet) - Minimum
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Thiết bị di động (điện thoại thông minh/máy tính bảng) - Tối thiểu
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-+----------------------+-----------------------------------------------------------------------------------------+
-| **CPU**              | - **Android:** SoC with any 32-bit or 64-bit ARM or x86 CPU                             |
-|                      |                                                                                         |
-|                      |   - *Example: Qualcomm Snapdragon 430, Samsung Exynos 5 Octa 5430*                      |
-|                      |                                                                                         |
-|                      | - **iOS:** SoC with any 64-bit ARM CPU                                                  |
-|                      |                                                                                         |
-|                      |   - *Example: Apple A7 (iPhone 5S)*                                                     |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **GPU**              | - **Forward+ renderer:** SoC featuring GPU with full Vulkan 1.0 support, or             |
-|                      |   Metal 3 support (iOS/iPadOS)                                                          |
-|                      |                                                                                         |
-|                      |   - *Example (Vulkan): Qualcomm Adreno 505, Mali-G71 MP2, Apple A12 (iPhone XR/XS)*     |
-|                      |   - *Example (Metal): Apple A12 (iPhone XR/XS)*                                         |
-|                      |                                                                                         |
-|                      | - **Mobile renderer:** SoC featuring GPU with full Vulkan 1.0 support, or               |
-|                      |   Metal 3 support (iOS/iPadOS)                                                          |
-|                      |                                                                                         |
-|                      |   - *Example (Vulkan): Qualcomm Adreno 505, Mali-G71 MP2, Apple A12 (iPhone XR/XS)*     |
-|                      |   - *Example (Metal): Apple A12 (iPhone XR/XS)*                                         |
-|                      |                                                                                         |
-|                      | - **Compatibility renderer:** SoC featuring GPU with full OpenGL ES 3.0 support         |
-|                      |                                                                                         |
-|                      |   - *Example: Qualcomm Adreno 306, Mali-T628 MP6, Apple A7 (iPhone 5S)*                 |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **RAM**              | - **For native exports:** 1 GB                                                          |
-|                      | - **For web exports:** 2 GB                                                             |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **Storage**          | 150 MB (used for the executable, project files, and cache)                              |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **Operating system** | - **For native exports:** Android 7.0 (Compatibility), Android 9.0 (Forward+/Mobile),   |
-|                      |   iOS 15.0 (Forward+/Mobile with Vulkan), iOS 16.0 (Forward+/Mobile with Metal)         |
-|                      | - **Web editor:** Recent versions of mainstream browsers: Firefox and derivatives       |
-|                      |   (including ESR), Chrome and Chromium derivatives, Safari and WebKit derivatives.      |
-+----------------------+-----------------------------------------------------------------------------------------+
++----------------------+-----------------------------------------------------------------------------------------+ | **CPU** | - **Android:** SoC với bất kỳ CPU ARM hoặc x86 32-bit hay 64-bit nào | | | | | | - *Ví dụ: Qualcomm Snapdragon 430, Samsung Exynos 5 Octa 5430* | | | | | | - **iOS:** SoC với bất kỳ CPU ARM 64-bit nào | | | |
+| | - *Ví dụ: Apple A7 (iPhone 5S)* |
++++++++++++++++++++++++++++++++++++++
+| **GPU** | - **Trình kết xuất Forward+:** SoC có GPU với hỗ trợ đầy đủ Vulkan 1.0 hoặc | | | hỗ trợ Metal 3 (iOS/iPadOS) | | | | | | - *Ví dụ (Vulkan): Qualcomm Adreno 505, Mali-G71 MP2, Apple A12 (iPhone XR/XS)* | | | - *Ví dụ (Metal): Apple A12 (iPhone XR/XS)* | | | | | | - **Trình kết xuất Mobile:** SoC có GPU với hỗ trợ đầy đủ Vulkan 1.0 hoặc | | | hỗ trợ Metal 3 (iOS/iPadOS) | | | | | | - *Ví dụ (Vulkan): Qualcomm Adreno 505, Mali-G71 MP2, Apple A12 (iPhone XR/XS)* | | | - *Ví dụ (Metal): Apple A12 (iPhone XR/XS)* | | | | | | - **Trình kết xuất Compatibility:** SoC có GPU với hỗ trợ đầy đủ OpenGL ES 3.0 | | | |
+| | - *Ví dụ: Qualcomm Adreno 306, Mali-T628 MP6, Apple A7 (iPhone 5S)* |
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **RAM** | - **Đối với bản xuất native:** 1 GB |
+| | - **Đối với bản xuất web:** 2 GB |
+++++++++++++++++++++++++++++++++++++++
+| **Bộ nhớ lưu trữ** | 150 MB (dùng cho tệp thực thi, tệp dự án và bộ nhớ đệm) |
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **Hệ điều hành** | - **Đối với bản xuất native:** Android 7.0 (Compatibility), Android 9.0 (Forward+/Mobile), | | | iOS 15.0 (Forward+/Mobile với Vulkan), iOS 16.0 (Forward+/Mobile với Metal) | | | - **Trình chỉnh sửa web:** Các phiên bản gần đây của những trình duyệt phổ biến: Firefox và các biến thể |
+| | (bao gồm ESR), Chrome và các biến thể Chromium, Safari và các biến thể WebKit. |
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-These are the **recommended** specifications to get a smooth experience with a
-simple 2D or 3D project exported with Godot:
+Đây là các thông số **khuyến nghị** để có trải nghiệm mượt mà với một dự án 2D hoặc 3D đơn giản được xuất bằng Godot:
 
-Desktop or laptop PC - Recommended
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PC để bàn hoặc máy tính xách tay - Khuyến nghị
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-+----------------------+----------------------------------------------------------------------------------------------+
-| **CPU**              | - **Windows:** x86_64 CPU with SSE4.2 support, with 4 physical cores or more, ARMv8 CPU      |
-|                      |                                                                                              |
-|                      |   - *Example: Intel Core i5-6600K, AMD Ryzen 5 1600, Snapdragon X Elite*                     |
-|                      |                                                                                              |
-|                      | - **macOS:** x86_64 or ARM CPU (Apple Silicon)                                               |
-|                      |                                                                                              |
-|                      |   - *Example: Intel Core i5-8500, Apple M1*                                                  |
-|                      |                                                                                              |
-|                      | - **Linux:** x86_64 CPU with SSE4.2 support, with 4 physical cores or more,                  |
-|                      |   ARMv7 or ARMv8 CPU                                                                         |
-|                      |                                                                                              |
-|                      |   - *Example: Intel Core i5-6600K, AMD Ryzen 5 1600, Raspberry Pi 5 with overclocking*       |
-+----------------------+----------------------------------------------------------------------------------------------+
-| **GPU**              | - **Forward+ renderer:** Dedicated graphics with full Vulkan 1.2 support,                    |
-|                      |   Metal 3 support (macOS), or Direct3D 12 (12_0 feature level) support (Windows)             |
-|                      |                                                                                              |
-|                      |   - *Example: NVIDIA GeForce GTX 1050 (Pascal), AMD Radeon RX 460 (GCN 4.0)*                 |
-|                      |                                                                                              |
-|                      | - **Mobile renderer:** Dedicated graphics with full Vulkan 1.2 support,                      |
-|                      |   Metal 3 support (macOS), or Direct3D 12 (12_0 feature level) support (Windows)             |
-|                      |                                                                                              |
-|                      |   - *Example: NVIDIA GeForce GTX 1050 (Pascal), AMD Radeon RX 460 (GCN 4.0)*                 |
-|                      |                                                                                              |
-|                      | - **Compatibility renderer:** Dedicated graphics with full OpenGL 4.6 support                |
-|                      |                                                                                              |
-|                      |   - *Example: NVIDIA GeForce GTX 650 (Kepler), AMD Radeon HD 7750 (GCN 1.0)*                 |
-+----------------------+----------------------------------------------------------------------------------------------+
-| **RAM**              | - **For native exports:** 4 GB                                                               |
-|                      | - **For web exports:** 8 GB                                                                  |
-+----------------------+----------------------------------------------------------------------------------------------+
-| **Storage**          | 150 MB (used for the executable, project files, and cache)                                   |
-+----------------------+----------------------------------------------------------------------------------------------+
-| **Operating system** | - **For native exports:** Windows 11, macOS 13, Linux distribution released after 2020       |
-|                      | - **For web exports:** Latest version of Firefox, Chrome, Edge, Safari, Opera                |
-+----------------------+----------------------------------------------------------------------------------------------+
++----------------------+----------------------------------------------------------------------------------------------+ | **CPU** | - **Windows:** CPU x86_64 hỗ trợ SSE4.2, với từ 4 lõi vật lý trở lên, CPU ARMv8 | | | | | | - *Ví dụ: Intel Core i5-6600K, AMD Ryzen 5 1600, Snapdragon X Elite* | | | | | | - **macOS:** CPU x86_64 hoặc ARM (Apple Silicon) | | | | | | - *Ví dụ: Intel Core i5-8500, Apple M1* | | | | | | - **Linux:** CPU x86_64 hỗ trợ SSE4.2, với từ 4 lõi vật lý trở lên, | | | CPU ARMv7 hoặc ARMv8 | | | |
+| | - *Ví dụ: Intel Core i5-6600K, AMD Ryzen 5 1600, Raspberry Pi 5 có ép xung* |
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **GPU** | - **Trình kết xuất Forward+:** Đồ họa rời với hỗ trợ đầy đủ Vulkan 1.2, | | | hỗ trợ Metal 3 (macOS) hoặc hỗ trợ Direct3D 12 (cấp tính năng 12_0) (Windows) | | | | | | - *Ví dụ: NVIDIA GeForce GTX 1050 (Pascal), AMD Radeon RX 460 (GCN 4.0)* | | | | | | - **Trình kết xuất Mobile:** Đồ họa rời với hỗ trợ đầy đủ Vulkan 1.2, | | | hỗ trợ Metal 3 (macOS) hoặc hỗ trợ Direct3D 12 (cấp tính năng 12_0) (Windows) | | | | | | - *Ví dụ: NVIDIA GeForce GTX 1050 (Pascal), AMD Radeon RX 460 (GCN 4.0)* | | | | | | - **Trình kết xuất Compatibility:** Đồ họa rời với hỗ trợ đầy đủ OpenGL 4.6 | | | |
+| | - *Ví dụ: NVIDIA GeForce GTX 650 (Kepler), AMD Radeon HD 7750 (GCN 1.0)* |
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **RAM** | - **Đối với bản xuất native:** 4 GB |
+| | - **Đối với bản xuất web:** 8 GB |
+++++++++++++++++++++++++++++++++++++++
+| **Bộ nhớ lưu trữ** | 150 MB (dùng cho tệp thực thi, tệp dự án và bộ nhớ đệm) |
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **Hệ điều hành** | - **Đối với bản xuất native:** Windows 11, macOS 13, bản phân phối Linux phát hành sau năm 2020 |
+| | - **Đối với bản xuất web:** Phiên bản mới nhất của Firefox, Chrome, Edge, Safari, Opera |
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Mobile device (smartphone/tablet) - Recommended
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Thiết bị di động (điện thoại thông minh/máy tính bảng) - Khuyến nghị
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-+----------------------+-----------------------------------------------------------------------------------------+
-| **CPU**              | - **Android:** SoC with 64-bit ARM or x86 CPU, with 3 "performance" cores or more       |
-|                      |                                                                                         |
-|                      |   - *Example: Qualcomm Snapdragon 845, Samsung Exynos 9810*                             |
-|                      |                                                                                         |
-|                      | - **iOS:** SoC with 64-bit ARM CPU                                                      |
-|                      |                                                                                         |
-|                      |   - *Example: Apple A14 (iPhone 12)*                                                    |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **GPU**              | - **Forward+ renderer:** SoC featuring GPU with full Vulkan 1.2 support, or             |
-|                      |   Metal 3 support (iOS/iPadOS)                                                          |
-|                      |                                                                                         |
-|                      |   - *Example: Qualcomm Adreno 630, Mali-G72 MP18, Apple A14 (iPhone 12)*                |
-|                      |                                                                                         |
-|                      | - **Mobile renderer:** SoC featuring GPU with full Vulkan 1.2 support, or               |
-|                      |   Metal 3 support (iOS/iPadOS)                                                          |
-|                      |                                                                                         |
-|                      |   - *Example: Qualcomm Adreno 630, Mali-G72 MP18, Apple A14 (iPhone 12)*                |
-|                      |                                                                                         |
-|                      | - **Compatibility renderer:** SoC featuring GPU with full OpenGL ES 3.2 support         |
-|                      |                                                                                         |
-|                      |   - *Example: Qualcomm Adreno 630, Mali-G72 MP18, Apple A14 (iPhone 12)*                |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **RAM**              | - **For native exports:** 2 GB                                                          |
-|                      | - **For web exports:** 4 GB                                                             |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **Storage**          | 150 MB (used for the executable, project files, and cache)                              |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **Operating system** | - **For native exports:** Android 9.0, iOS 16.0                                         |
-|                      | - **For web exports:** Latest version of Firefox, Chrome, Edge, Safari, Opera,          |
-|                      |   Samsung Internet                                                                      |
-+----------------------+-----------------------------------------------------------------------------------------+
++----------------------+-----------------------------------------------------------------------------------------+ | **CPU** | - **Android:** SoC với CPU ARM hoặc x86 64-bit, có từ 3 lõi "hiệu năng" trở lên | | | | | | - *Ví dụ: Qualcomm Snapdragon 845, Samsung Exynos 9810* | | | | | | - **iOS:** SoC với CPU ARM 64-bit | | | |
+| | - *Ví dụ: Apple A14 (iPhone 12)* |
+++++++++++++++++++++++++++++++++++++++
+| **GPU** | - **Trình kết xuất Forward+:** SoC có GPU với hỗ trợ đầy đủ Vulkan 1.2 hoặc | | | hỗ trợ Metal 3 (iOS/iPadOS) | | | | | | - *Ví dụ: Qualcomm Adreno 630, Mali-G72 MP18, Apple A14 (iPhone 12)* | | | | | | - **Trình kết xuất Mobile:** SoC có GPU với hỗ trợ đầy đủ Vulkan 1.2 hoặc | | | hỗ trợ Metal 3 (iOS/iPadOS) | | | | | | - *Ví dụ: Qualcomm Adreno 630, Mali-G72 MP18, Apple A14 (iPhone 12)* | | | | | | - **Trình kết xuất Compatibility:** SoC có GPU với hỗ trợ đầy đủ OpenGL ES 3.2 | | | |
+| | - *Ví dụ: Qualcomm Adreno 630, Mali-G72 MP18, Apple A14 (iPhone 12)* |
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **RAM** | - **Đối với bản xuất native:** 2 GB |
+| | - **Đối với bản xuất web:** 4 GB |
+++++++++++++++++++++++++++++++++++++++
+| **Bộ nhớ lưu trữ** | 150 MB (dùng cho tệp thực thi, tệp dự án và bộ nhớ đệm) |
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **Hệ điều hành** | - **Đối với bản xuất native:** Android 9.0, iOS 16.0 | | | - **Đối với bản xuất web:** Phiên bản mới nhất của Firefox, Chrome, Edge, Safari, Opera, |
+| | Samsung Internet |
+++++++++++++++++++++++
 
 .. note::
 
-    Godot doesn't use OpenGL/OpenGL ES extensions introduced after OpenGL
-    3.3/OpenGL ES 3.0, but GPUs supporting newer OpenGL/OpenGL ES versions
-    generally have fewer driver issues.
+    Godot không sử dụng các phần mở rộng OpenGL/OpenGL ES được giới thiệu sau OpenGL 3.3/OpenGL ES 3.0, nhưng GPU hỗ trợ các phiên bản OpenGL/OpenGL ES mới hơn nhìn chung sẽ ít gặp sự cố trình điều khiển hơn.

@@ -1,37 +1,27 @@
 :allow_comments: False
 
-Godot Docs – *4.7* branch
+Tài liệu Godot – nhánh *4.7*
 ============================
 
 .. only:: not i18n
 
   .. note:: Godot's documentation is available in various languages and versions.
-            Expand the "Read the Docs" panel at the bottom of the sidebar to see
-            the list.
+            Mở rộng bảng "Read the Docs" ở cuối thanh bên để xem danh sách.
 
 .. only:: i18n
 
   .. note:: This documentation is translated from the `original English one
-            <https://docs.godotengine.org/en/stable>`_ by community members
-            on `Weblate <https://hosted.weblate.org/projects/godot-engine/godot-docs>`_.
+            <https://docs.godotengine.org/en/stable>`_ bởi các thành viên cộng đồng trên `Weblate <https://hosted.weblate.org/projects/godot-engine/godot-docs>`_.
 
-            Depending on the translation effort's completion level, you may
-            find paragraphs or whole pages which are still in English. You can
-            help the community by providing new translations or reviewing existing
-            ones on Weblate.
+            Tùy thuộc vào mức độ hoàn thiện của quá trình dịch, bạn có thể bắt gặp những đoạn văn hoặc toàn bộ trang vẫn còn bằng tiếng Anh. Bạn có thể hỗ trợ cộng đồng bằng cách cung cấp bản dịch mới hoặc xem xét các bản dịch hiện có trên Weblate.
 
-            For the time being, localized translations are only available for
-            the "stable" branch. You can still view the English documentation for
-            other engine versions using the "Read the Docs" panel at the bottom
-            of the sidebar.
+            Hiện tại, bản dịch bản địa hóa chỉ có sẵn cho nhánh "stable". Bạn vẫn có thể xem tài liệu tiếng Anh cho các phiên bản engine khác bằng bảng "Read the Docs" ở cuối thanh bên.
 
-Welcome to the official documentation of `Godot Engine <https://godotengine.org>`__,
-the free and open source community-driven 2D and 3D game engine! If you are new
-to this documentation, we recommend that you read the
+Chào mừng bạn đến với tài liệu chính thức của `Godot Engine <https://godotengine.org>`__, engine trò chơi 2D và 3D miễn phí, mã nguồn mở, do cộng đồng phát triển! Nếu bạn mới làm quen với tài liệu này, chúng tôi khuyên bạn nên đọc
 :ref:`introduction page <doc_about_intro>` to get an overview of what this
-documentation has to offer.
+những gì tài liệu cung cấp.
 
-To begin reading the relevant documentation, select the tile that matches your profile:
+Để bắt đầu đọc tài liệu liên quan, hãy chọn ô phù hợp với hồ sơ của bạn:
 
 .. raw:: html
 
@@ -108,37 +98,25 @@ To begin reading the relevant documentation, select the tile that matches your p
     </div>
     <br>
 
-You can also use the table of contents in the sidebar to easily access
-any section of the documentation for your topic of interest. You can
-also use the search function in the top-left corner.
+Bạn cũng có thể sử dụng mục lục trong thanh bên để dễ dàng truy cập bất kỳ phần nào của tài liệu về chủ đề bạn quan tâm. Bạn cũng có thể sử dụng chức năng tìm kiếm ở góc trên bên trái.
 
-Get involved
-------------
+Tham gia đóng góp
+-----------------
 
-Godot Engine is an open source project developed by a community of volunteers.
-The documentation team can always use your feedback and help to improve the
-tutorials and class reference. If you don't understand something, or cannot find
-what you are looking for in the docs, help us make the documentation better
-by letting us know!
+Godot Engine là một dự án mã nguồn mở do cộng đồng tình nguyện viên phát triển. Nhóm tài liệu luôn cần phản hồi và sự trợ giúp của bạn để cải thiện các hướng dẫn và tài liệu tham khảo lớp. Nếu bạn không hiểu điều gì đó hoặc không thể tìm thấy nội dung mình cần trong tài liệu, hãy giúp chúng tôi làm tài liệu tốt hơn bằng cách cho chúng tôi biết!
 
-Submit an issue or pull request on the `GitHub repository <https://github.com/godotengine/godot-docs/issues>`_,
-help us `translate the documentation <https://hosted.weblate.org/engage/godot-engine/>`_
-into your language, or talk to us on the ``#documentation`` channel on the
-`Godot Contributors Chat <https://chat.godotengine.org/>`_!
+Gửi issue hoặc pull request trên `GitHub repository <https://github.com/godotengine/godot-docs/issues>`_, giúp chúng tôi `translate the documentation <https://hosted.weblate.org/engage/godot-engine/>`_ sang ngôn ngữ của bạn, hoặc trò chuyện với chúng tôi trên kênh ``#documentation`` tại `Godot Contributors Chat <https://chat.godotengine.org/>`_!
 
 .. centered:: |weblate_widget|
 
-Offline documentation
----------------------
+Tài liệu ngoại tuyến
+--------------------
 
-To browse the documentation offline, you can download an HTML copy (updated every Monday): `stable <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-html-stable.zip>`__, `latest <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-html-master.zip>`__, `3.6 <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-html-3.6.zip>`__. Extract the ZIP archive then open
-the top-level ``index.html`` in a web browser.
+Để xem tài liệu ngoại tuyến, bạn có thể tải xuống bản HTML (được cập nhật vào thứ Hai hằng tuần): `stable <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-html-stable.zip>`__, `latest <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-html-master.zip>`__, `3.6 <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-html-3.6.zip>`__. Giải nén kho lưu trữ ZIP, sau đó mở ``index.html`` cấp cao nhất trong trình duyệt web.
 
-For mobile devices or e-readers, you can also download an ePub copy (updated every Monday): `stable <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-epub-stable.zip>`__, `latest <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-epub-master.zip>`__, `3.6 <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-epub-3.6.zip>`__. Extract the ZIP archive then open
-the ``GodotEngine.epub`` file in an e-book reader application.
+Đối với thiết bị di động hoặc thiết bị đọc sách điện tử, bạn cũng có thể tải xuống bản ePub (được cập nhật vào thứ Hai hằng tuần): `stable <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-epub-stable.zip>`__, `latest <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-epub-master.zip>`__, `3.6 <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-epub-3.6.zip>`__. Giải nén kho lưu trữ ZIP, sau đó mở tệp ``GodotEngine.epub`` trong ứng dụng đọc sách điện tử.
 
-.. Below is the main table-of-content tree of the documentation website.
-   It is hidden on the page itself, but it makes up the sidebar for navigation.
+.. Bên dưới là cây mục lục chính của trang web tài liệu. Cây này bị ẩn trên chính trang đó, nhưng tạo thành thanh bên dùng để điều hướng.
 
 .. toctree::
    :hidden:
@@ -166,9 +144,7 @@ the ``GodotEngine.epub`` file in an e-book reader application.
    getting_started/first_3d_game/index
 
 
-.. Sections below are split into two groups. First come meta sections, covering
-   general matters. Below that different areas of the engine are listed.
-   These sections are sorted alphabetically. Please keep them that way.
+.. Các phần bên dưới được chia thành hai nhóm. Trước tiên là các phần meta, bao quát những vấn đề chung. Bên dưới đó là danh sách các lĩnh vực khác nhau của engine. Các phần này được sắp xếp theo thứ tự bảng chữ cái. Vui lòng giữ nguyên thứ tự đó.
 .. toctree::
    :hidden:
    :maxdepth: 1
