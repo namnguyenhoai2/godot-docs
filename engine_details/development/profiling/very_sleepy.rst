@@ -5,22 +5,10 @@ VerySleepy
 
 .. seealso:: Please see the :ref:`sampling profiler instructions <doc_sampling_profilers>` for more information.
 
-- Start the Godot editor or your project first.
-  If you start the Project Manager, make sure to edit or run a project first.
-  Otherwise, the profiler will not track the child process since the Project Manager
-  will spawn a child process for every project edited or run.
-- Open `VerySleepy <https://github.com/VerySleepy/verysleepy>`__ and
-  select the Godot executable in the list of processes on the left:
+- Trước tiên, hãy khởi động trình chỉnh sửa Godot hoặc dự án của bạn. Nếu khởi động Project Manager, hãy đảm bảo bạn chỉnh sửa hoặc chạy một dự án trước. Nếu không, profiler sẽ không theo dõi tiến trình con vì Project Manager sẽ tạo một tiến trình con cho mỗi dự án được chỉnh sửa hoặc chạy. - Mở `VerySleepy <https://github.com/VerySleepy/verysleepy>`__ và chọn tệp thực thi Godot trong danh sách các tiến trình ở bên trái:
 
 .. image:: img/cpp_profiler_verysleepy_select_process.png
 
-- Click the **Profile All** button on the right to start profiling.
-- Perform the actions you wish to profile in the editor or project. When you're done, click **Stop** (*not* Abort).
-- Wait for the results window to appear.
-- Once the results window appears, filter the view to remove external modules (such as the graphics driver).
-  You can filter by module by finding a line whose **Module** matches the Godot
-  executable name, right-clicking that line then choosing
-  **Filter Module to <Godot executable name>** in the dropdown that appears.
-- Your results window should now look something like this:
+- Nhấp vào nút **Profile All** ở bên phải để bắt đầu lập hồ sơ. - Thực hiện các thao tác bạn muốn lập hồ sơ trong trình chỉnh sửa hoặc dự án. Khi hoàn tất, hãy nhấp vào **Stop** (*không phải* **Abort**). - Chờ cửa sổ kết quả xuất hiện. - Khi cửa sổ kết quả xuất hiện, hãy lọc chế độ xem để loại bỏ các mô-đun bên ngoài (chẳng hạn như trình điều khiển đồ họa). Bạn có thể lọc theo mô-đun bằng cách tìm một dòng có **Module** khớp với tên tệp thực thi Godot, nhấp chuột phải vào dòng đó rồi chọn **Filter Module to <Godot executable name>** trong menu thả xuống xuất hiện. - Cửa sổ kết quả của bạn lúc này sẽ trông tương tự như sau:
 
 .. image:: img/cpp_profiler_verysleepy_results_filtered.png

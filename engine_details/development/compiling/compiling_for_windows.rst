@@ -1,237 +1,151 @@
 .. _doc_compiling_for_windows:
 
-Compiling for Windows
+Biên dịch cho Windows
 =====================
 
 .. highlight:: shell
 
 .. seealso::
 
-    This page describes how to compile Windows editor and export template binaries from source.
-    If you're looking to export your project to Windows instead, read :ref:`doc_exporting_for_windows`.
+    Trang này mô tả cách biên dịch các tệp nhị phân của trình chỉnh sửa Windows và các mẫu xuất từ mã nguồn. Nếu bạn muốn xuất dự án của mình sang Windows, hãy đọc :ref:`doc_exporting_for_windows`.
 
-Requirements
-------------
+Yêu cầu
+-------
 
-For compiling under Windows, the following is required:
+Để biên dịch trên Windows, cần có những thành phần sau:
 
-- A C++ compiler. Use one of the following:
+- Một trình biên dịch C++. Sử dụng một trong các tùy chọn sau:
 
-    - `Visual Studio Community <https://www.visualstudio.com/vs/community/>`_,
-      version 2019 or later. Visual Studio 2022 is recommended.
-      **During installation make sure to select C++ in the list of workflows, and select the following individual components:**
+    - `Visual Studio Community <https://www.visualstudio.com/vs/community/>`_, phiên bản 2019 trở lên. Khuyến nghị sử dụng Visual Studio 2022. **Trong quá trình cài đặt, hãy nhớ chọn C++ trong danh sách quy trình làm việc và chọn các thành phần riêng lẻ sau:**
 
       .. tabs::
 
           .. tab:: Visual Studio 2019
-              - **MSVC v142 - VS 2019 C++ {arch} build tools (Latest)** for the target architectures.
-              - **Windows 11 SDK (10.0.22621.0)** (exact version).
+              - **MSVC v142 - VS 2019 C++ {arch} build tools (Latest)** cho các kiến trúc đích. - **Windows 11 SDK (10.0.22621.0)** (đúng phiên bản).
 
           .. tab:: Visual Studio 2022
-              - **MSVC v143 - VS 2022 C++ {arch} build tools (Latest)** for the target architectures.
-              - **Windows 11 SDK (10.0.22621.0)** or newer.
+              - **MSVC v143 - VS 2022 C++ {arch} build tools (Latest)** cho các kiến trúc đích. - **Windows 11 SDK (10.0.22621.0)** hoặc mới hơn.
 
           .. tab:: Visual Studio 2026
-              - **MSVC Build Tools for {arch} (Latest)** for the target architectures.
-              - **Windows 11 SDK (10.0.22621.0)** or newer.
+              - **MSVC Build Tools for {arch} (Latest)** cho các kiến trúc đích. - **Windows 11 SDK (10.0.22621.0)** hoặc mới hơn.
 
-      If you've already installed Visual Studio without C++ support for the target architecture,
-      or without the Windows SDK, run the installer again; it should present you a **Modify** button.
-      Supports ``x86_64``, ``x86_32``, and ``arm64``.
-    - `MinGW-w64 <https://mingw-w64.org/>`_ with GCC can be used as an alternative to
-      Visual Studio. Be sure to install/configure it to use the ``posix`` thread model.
-      **Important:** When using MinGW to compile the ``master`` branch, you need GCC 12 or later.
-      Supports ``x86_64`` and ``x86_32`` only.
-    - `MinGW-LLVM <https://github.com/mstorsjo/llvm-mingw/releases>`_ with clang can be used as
-      an alternative to Visual Studio and MinGW-w64.
-      **Important:** When using MinGW to compile the ``master`` branch, you need clang 14 or later.
-      Supports ``x86_64``, ``x86_32``, and ``arm64``.
-- `Python 3.9+ <https://www.python.org/downloads/windows/>`_.
-  **Make sure to enable the option to add Python to the** ``PATH`` **in the installer.**
-- `SCons 4.4+ <https://scons.org/pages/download.html>`_ build system. Using the
-  latest release is recommended, especially for proper support of recent Visual
-  Studio releases.
-- :ref:`Direct3D 12 dependencies <doc_compiling_for_windows_installing_d3d12_requirements>`
-  (can be skipped with the ``d3d12=no`` SCons option if Direct3D 12 support is not desired).
+      Nếu bạn đã cài đặt Visual Studio nhưng không có hỗ trợ C++ cho kiến trúc đích hoặc không có Windows SDK, hãy chạy lại trình cài đặt; trình cài đặt sẽ hiển thị nút **Modify**. Hỗ trợ ``x86_64``, ``x86_32`` và ``arm64``. - Có thể sử dụng `MinGW-w64 <https://mingw-w64.org/>`_ với GCC thay cho Visual Studio. Hãy đảm bảo cài đặt/cấu hình để sử dụng mô hình luồng ``posix``. **Quan trọng:** Khi sử dụng MinGW để biên dịch nhánh ``master``, bạn cần GCC 12 trở lên. Chỉ hỗ trợ ``x86_64`` và ``x86_32``. - Có thể sử dụng `MinGW-LLVM <https://github.com/mstorsjo/llvm-mingw/releases>`_ với clang thay cho Visual Studio và MinGW-w64. **Quan trọng:** Khi sử dụng MinGW để biên dịch nhánh ``master``, bạn cần clang 14 trở lên. Hỗ trợ ``x86_64``, ``x86_32`` và ``arm64``. - `Python 3.9+ <https://www.python.org/downloads/windows/>`_. **Hãy nhớ bật tùy chọn thêm Python vào** ``PATH`` **trong trình cài đặt.** - Hệ thống build `SCons 4.4+ <https://scons.org/pages/download.html>`_. Khuyến nghị sử dụng bản phát hành mới nhất, đặc biệt để hỗ trợ tốt các bản Visual Studio gần đây. - :ref:`Direct3D 12 dependencies <doc_compiling_for_windows_installing_d3d12_requirements>` (có thể bỏ qua bằng tùy chọn SCons ``d3d12=no`` nếu không cần hỗ trợ Direct3D 12).
 
 .. note:: If you have `Scoop <https://scoop.sh/>`_ installed, you can easily
-          install MinGW and other dependencies using the following command:
+          cài đặt MinGW và các phần phụ thuộc khác bằng lệnh sau:
 
           ::
 
               scoop install python mingw
 
-          Scons will still need to be installed via pip
+          Scons vẫn cần được cài đặt thông qua pip
 .. note:: If you have `MSYS2 <https://www.msys2.org/>`_ installed, you can easily
-          install MinGW and other dependencies using the following command:
+          cài đặt MinGW và các phần phụ thuộc khác bằng lệnh sau:
 
           ::
 
               pacman -S mingw-w64-x86_64-gcc mingw-w64-i686-gcc make python-pip
 
-          For each MSYS2 MinGW subsystem, you should then run
-          `pip3 install scons` in its shell.
+          Đối với mỗi hệ thống con MSYS2 MinGW, bạn nên chạy `pip3 install scons` trong shell của hệ thống đó.
 
 .. seealso:: To get the Godot source code for compiling, see
              :ref:`doc_getting_source`.
 
-             For a general overview of SCons usage for Godot, see
+             Để xem tổng quan về cách sử dụng SCons cho Godot, hãy xem
              :ref:`doc_introduction_to_the_buildsystem`.
 
-Setting up SCons
-----------------
+Thiết lập SCons
+---------------
 
-To install SCons, open the command prompt and run the following command:
+Để cài đặt SCons, hãy mở command prompt và chạy lệnh sau:
 
 ::
 
     python -m pip install scons
 
-If you are prompted with the message
-``Defaulting to user installation because normal site-packages is not
-writeable``, you may have to run that command again using elevated
-permissions. Open a new command prompt as an Administrator then run the command
-again to ensure that SCons is available from the ``PATH``.
+Nếu bạn nhận được thông báo ``Defaulting to user installation because normal site-packages is not writeable``, có thể bạn phải chạy lại lệnh đó với quyền nâng cao. Hãy mở một command prompt mới với tư cách Administrator rồi chạy lại lệnh để đảm bảo SCons khả dụng từ ``PATH``.
 
-To check whether you have installed Python and SCons correctly, you can
-type ``python --version`` and ``scons --version`` into a command prompt
-(``cmd.exe``).
+Để kiểm tra xem bạn đã cài đặt Python và SCons đúng cách chưa, bạn có thể nhập ``python --version`` và ``scons --version`` vào command prompt (``cmd.exe``).
 
-If the commands above don't work, make sure to add Python to your ``PATH``
-environment variable after installing it, then check again.
-You can do so by running the Python installer again and enabling the option
-to add Python to the ``PATH``.
+Nếu các lệnh trên không hoạt động, hãy đảm bảo thêm Python vào biến môi trường ``PATH`` sau khi cài đặt, rồi kiểm tra lại. Bạn có thể thực hiện việc này bằng cách chạy lại trình cài đặt Python và bật tùy chọn thêm Python vào ``PATH``.
 
-If SCons cannot detect your Visual Studio installation, it might be that your
-SCons version is too old. Update it to the latest version with
-``python -m pip install --upgrade scons``.
+Nếu SCons không thể phát hiện bản cài đặt Visual Studio của bạn, có thể phiên bản SCons đã quá cũ. Hãy cập nhật lên phiên bản mới nhất bằng ``python -m pip install --upgrade scons``.
 
 .. _doc_compiling_for_windows_install_vs:
 
-Downloading Godot's source
---------------------------
+Tải mã nguồn Godot
+------------------
 
-Refer to :ref:`doc_getting_source` for detailed instructions.
+Tham khảo :ref:`doc_getting_source` để xem hướng dẫn chi tiết.
 
-The tutorial will assume from now on that you placed the source code in
-``C:\godot``.
+Từ đây trở đi, hướng dẫn sẽ giả định rằng bạn đã đặt mã nguồn tại ``C:\godot``.
 
 .. warning::
 
-    To prevent slowdowns caused by continuous virus scanning during compilation,
-    add the Godot source folder to the list of exceptions in your antivirus
-    software.
+    Để tránh tình trạng chậm do quá trình quét vi-rút liên tục trong khi biên dịch, hãy thêm thư mục mã nguồn Godot vào danh sách ngoại lệ trong phần mềm diệt vi-rút của bạn.
 
-    For Windows Defender, hit the :kbd:`Windows` key, type "Windows Security"
-    then hit :kbd:`Enter`. Click on **Virus & threat protection** on the left
-    panel. Under **Virus & threat protection settings** click on **Manage Settings**
-    and scroll down to **Exclusions**. Click **Add or remove exclusions** then
-    add the Godot source folder.
+    Đối với Windows Defender, nhấn phím :kbd:`Windows`, nhập "Windows Security" rồi nhấn :kbd:`Enter`. Nhấp vào **Virus & threat protection** ở bảng bên trái. Trong **Virus & threat protection settings**, nhấp vào **Manage Settings** rồi cuộn xuống **Exclusions**. Nhấp vào **Add or remove exclusions**, sau đó thêm thư mục mã nguồn Godot.
 
-Compiling
+Biên dịch
 ---------
 
-Selecting a compiler
+Chọn trình biên dịch
 ~~~~~~~~~~~~~~~~~~~~
 
-SCons will automatically find and use an existing Visual Studio installation.
-If you do not have Visual Studio installed, it will attempt to use
-MinGW instead. If you already have Visual Studio installed and want to
-use MinGW-w64, pass ``use_mingw=yes`` to the SCons command line. Note that MSVC
-builds cannot be performed from the MSYS2 or MinGW shells. Use either
-``cmd.exe`` or PowerShell instead. If you are using MinGW-LLVM, pass both
-``use_mingw=yes`` and ``use_llvm=yes`` to the SCons command line.
+SCons sẽ tự động tìm và sử dụng bản cài đặt Visual Studio hiện có. Nếu bạn chưa cài đặt Visual Studio, SCons sẽ thử sử dụng MinGW. Nếu bạn đã cài đặt Visual Studio nhưng muốn sử dụng MinGW-w64, hãy truyền ``use_mingw=yes`` vào dòng lệnh SCons. Lưu ý rằng không thể thực hiện bản build MSVC từ shell MSYS2 hoặc MinGW. Thay vào đó, hãy sử dụng ``cmd.exe`` hoặc PowerShell. Nếu bạn sử dụng MinGW-LLVM, hãy truyền cả ``use_mingw=yes`` và ``use_llvm=yes`` vào dòng lệnh SCons.
 
 .. tip::
 
-    During development, using the Visual Studio compiler is usually a better
-    idea, as it links the Godot binary much faster than MinGW. However, MinGW
-    can produce more optimized binaries using link-time optimization (see
-    below), making it a better choice for production use. This is particularly
-    the case for the GDScript VM which performs much better with MinGW compared
-    to MSVC. Therefore, it's recommended to use MinGW to produce builds that you
-    distribute to players.
+    Trong quá trình phát triển, việc sử dụng trình biên dịch Visual Studio thường là lựa chọn tốt hơn, vì nó liên kết tệp nhị phân Godot nhanh hơn nhiều so với MinGW. Tuy nhiên, MinGW có thể tạo ra các tệp nhị phân được tối ưu hóa tốt hơn bằng cách sử dụng tối ưu hóa lúc liên kết (xem bên dưới), khiến nó trở thành lựa chọn tốt hơn cho việc sử dụng trong môi trường sản xuất. Điều này đặc biệt đúng với GDScript VM, vốn hoạt động tốt hơn nhiều với MinGW so với MSVC. Do đó, bạn nên sử dụng MinGW để tạo các bản build phân phối cho người chơi.
 
-    All official Godot binaries are built in
-    `custom containers <https://github.com/godotengine/build-containers>`__
-    using MinGW.
+    Tất cả các tệp nhị phân Godot chính thức đều được build trong `custom containers <https://github.com/godotengine/build-containers>`__ bằng MinGW.
 
-Running SCons
-~~~~~~~~~~~~~
+Chạy SCons
+~~~~~~~~~~
 
-After opening a command prompt, change to the root directory of
-the engine source code (using ``cd``) and type:
+Sau khi mở command prompt, chuyển đến thư mục gốc của mã nguồn engine (bằng ``cd``) rồi nhập:
 
 .. code-block:: doscon
 
     C:\godot> scons platform=windows
 
 .. note:: When compiling with multiple CPU threads, SCons may warn about
-          pywin32 being missing. You can safely ignore this warning.
+          Thiếu pywin32. Bạn có thể an toàn bỏ qua cảnh báo này.
 
 .. tip::
-    If you are compiling Godot to make changes or contribute to the engine,
-    you may want to use the SCons options ``dev_build=yes`` or ``dev_mode=yes``.
-    See :ref:`doc_introduction_to_the_buildsystem_development_and_production_aliases`
-    for more info.
+    Nếu bạn đang biên dịch Godot để thực hiện thay đổi hoặc đóng góp cho engine, bạn có thể muốn sử dụng các tùy chọn SCons ``dev_build=yes`` hoặc ``dev_mode=yes``. Xem :ref:`doc_introduction_to_the_buildsystem_development_and_production_aliases` để biết thêm thông tin.
 
-If all goes well, the resulting binary executable will be placed in
-``C:\godot\bin\`` with the name ``godot.windows.editor.x86_32.exe`` or
-``godot.windows.editor.x86_64.exe``. By default, SCons will build a binary matching
-your CPU architecture, but this can be overridden using ``arch=x86_64``,
-``arch=x86_32``, or ``arch=arm64``.
+Nếu mọi việc diễn ra thuận lợi, tệp thực thi nhị phân kết quả sẽ được đặt tại ``C:\godot\bin\`` với tên ``godot.windows.editor.x86_32.exe`` hoặc ``godot.windows.editor.x86_64.exe``. Theo mặc định, SCons sẽ build một tệp nhị phân phù hợp với kiến trúc CPU của bạn, nhưng bạn có thể ghi đè bằng ``arch=x86_64``, ``arch=x86_32`` hoặc ``arch=arm64``.
 
-This executable file contains the whole engine and runs without any
-dependencies. Running it will bring up the Project Manager.
+Tệp thực thi này chứa toàn bộ engine và chạy mà không cần bất kỳ phần phụ thuộc nào. Chạy tệp này sẽ mở Project Manager.
 
 .. tip:: If you are compiling Godot for production use, you can
-         make the final executable smaller and faster by adding the
-         SCons option ``production=yes``. This enables additional compiler
-         optimizations and link-time optimization.
+         làm cho tệp thực thi cuối cùng nhỏ hơn và nhanh hơn bằng cách thêm tùy chọn SCons ``production=yes``. Tùy chọn này bật các tối ưu hóa bổ sung của trình biên dịch và tối ưu hóa lúc liên kết.
 
-         LTO takes some time to run and requires up to 30 GB of available RAM
-         while compiling (depending on toolchain). If you're running out of memory
-         with the above option, use ``production=yes lto=none`` or ``production=yes lto=thin``
-         (LLVM only) for a lightweight but less effective form of LTO.
+         LTO cần một khoảng thời gian để chạy và yêu cầu tối đa 30 GB RAM khả dụng trong quá trình biên dịch (tùy thuộc vào toolchain). Nếu bạn hết bộ nhớ khi sử dụng tùy chọn trên, hãy dùng ``production=yes lto=none`` hoặc ``production=yes lto=thin`` (chỉ LLVM) để có một dạng LTO nhẹ hơn nhưng kém hiệu quả hơn.
 
 .. note:: If you want to use separate editor settings for your own Godot builds
-          and official releases, you can enable
+          và các bản phát hành chính thức, bạn có thể bật
           :ref:`doc_data_paths_self_contained_mode` by creating a file called
-          ``._sc_`` or ``_sc_`` in the ``bin/`` folder.
+          ``._sc_`` hoặc ``_sc_`` trong thư mục ``bin/``.
 
 .. _doc_compiling_for_windows_installing_d3d12_requirements:
 
-Installing Direct3D 12 requirements
+Cài đặt các yêu cầu của Direct3D 12
 -----------------------------------
 
-By default, Windows builds of Godot contain support for the Direct3D 12 graphics
-API. Compiling with Direct3D 12 support requires additional dependencies
-to be installed. If you wish to skip this step, you can use the ``d3d12=no``
-SCons option; Vulkan and OpenGL support will remain available if you do so.
+Theo mặc định, các bản build Godot trên Windows có hỗ trợ API đồ họa Direct3D 12. Việc biên dịch với hỗ trợ Direct3D 12 yêu cầu cài đặt thêm các phần phụ thuộc. Nếu muốn bỏ qua bước này, bạn có thể sử dụng tùy chọn SCons ``d3d12=no``; khi đó, hỗ trợ Vulkan và OpenGL vẫn khả dụng.
 
-You can install the required dependencies by running
-``python misc/scripts/install_d3d12_sdk_windows.py``
-in the Godot source repository. After running this script, compile Godot as usual.
-This will use the default paths for the various dependencies, which match the
-ones used in the script.
+Bạn có thể cài đặt các phần phụ thuộc cần thiết bằng cách chạy ``python misc/scripts/install_d3d12_sdk_windows.py`` trong kho mã nguồn Godot. Sau khi chạy tập lệnh này, hãy biên dịch Godot như bình thường. Tập lệnh sẽ sử dụng các đường dẫn mặc định cho từng phần phụ thuộc, trùng với các đường dẫn được dùng trong tập lệnh.
 
-You can find the detailed steps below if you wish to set up dependencies
-manually, but the above script handles everything for you (including the
-optional PIX and Agility SDK components).
+Nếu muốn thiết lập các phần phụ thuộc theo cách thủ công, bạn có thể tìm thấy các bước chi tiết bên dưới, nhưng tập lệnh trên sẽ xử lý mọi việc cho bạn (bao gồm cả các thành phần PIX và Agility SDK tùy chọn).
 
-- `godot-nir-static library <https://github.com/godotengine/godot-nir-static/releases/>`_.
-  We compile the Mesa libraries you will need into a static library. Download it
-  anywhere, unzip it and remember the path to the unzipped folder, you will
-  need it below.
+- `godot-nir-static library <https://github.com/godotengine/godot-nir-static/releases/>`_. Chúng tôi biên dịch các thư viện Mesa bạn cần thành một thư viện tĩnh. Hãy tải thư viện này đến bất kỳ vị trí nào, giải nén và ghi nhớ đường dẫn đến thư mục đã giải nén, vì bạn sẽ cần đường dẫn đó ở các bước bên dưới.
 
 .. note:: You can optionally build the godot-nir-static libraries yourself with
-          the following steps:
+          các bước sau:
 
-          1. Install the Python package `mako <https://www.makotemplates.org>`_
-             which is needed to generate some files.
-          2. Clone the `godot-nir-static <https://github.com/godotengine/godot-nir-static>`_
-             directory and navigate to it.
-          3. Run the following:
+          1. Cài đặt gói Python `mako <https://www.makotemplates.org>`_ cần thiết để tạo một số tệp. 2. Sao chép thư mục `godot-nir-static <https://github.com/godotengine/godot-nir-static>`_ và chuyển đến thư mục đó. 3. Chạy lệnh sau:
 
           ::
 
@@ -239,40 +153,21 @@ optional PIX and Agility SDK components).
               ./update_mesa.sh
               scons
 
-          If you are building with MinGW-w64, add ``use_mingw=yes`` to the ``scons``
-          command, you can also specify the build architecture using ``arch={architecture}``.
-          If you are building with MinGW-LLVM, add both ``use_mingw=yes`` and
-          ``use_llvm=yes`` to the ``scons`` command.
+          Nếu bạn đang build bằng MinGW-w64, hãy thêm ``use_mingw=yes`` vào lệnh ``scons``; bạn cũng có thể chỉ định kiến trúc build bằng ``arch={architecture}``. Nếu bạn đang build bằng MinGW-LLVM, hãy thêm cả ``use_mingw=yes`` và ``use_llvm=yes`` vào lệnh ``scons``.
 
-          If you are building with MinGW and the binaries are not located in
-          the ``PATH``, add ``mingw_prefix="/path/to/mingw"`` to the ``scons``
-          command.
+          Nếu bạn đang build bằng MinGW và các tệp nhị phân không nằm trong ``PATH``, hãy thêm ``mingw_prefix="/path/to/mingw"`` vào lệnh ``scons``.
 
-          The Mesa static library should be built using the same compiler and the
-          same CRT (if you are building with MinGW) you are using for building
-          Godot.
+          Thư viện tĩnh Mesa nên được build bằng cùng trình biên dịch và cùng CRT (nếu bạn đang build bằng MinGW) mà bạn sử dụng để build Godot.
 
-Optionally, you can compile with the following for additional features:
+Bạn cũng có thể biên dịch với các tùy chọn sau để có thêm tính năng:
 
-- `PIX <https://devblogs.microsoft.com/pix/download>`_ is a performance tuning
-  and debugging application for Direct3D12 applications. If you compile-in
-  support for it, you can get much more detailed information through PIX that
-  will help you optimize your game and troubleshoot graphics bugs. To use it,
-  download the WinPixEventRuntime package. You will be taken to a NuGet package
-  page where you can click "Download package" to get it. Once downloaded, change
-  the file extension to .zip and unzip the file to some path.
-- `Agility SDK <https://devblogs.microsoft.com/directx/directx12agility>`_ can
-  be used to provide access to the latest Direct3D 12 features without relying
-  on driver updates. To use it, download the latest Agility SDK package. You
-  will be taken to a NuGet package page where you can click "Download package"
-  to get it. Once downloaded, change the file extension to .zip and unzip the
-  file to some path.
+- `PIX <https://devblogs.microsoft.com/pix/download>`_ là một ứng dụng tinh chỉnh hiệu năng và gỡ lỗi dành cho các ứng dụng Direct3D12. Nếu bạn biên dịch tích hợp hỗ trợ cho ứng dụng này, bạn có thể nhận được nhiều thông tin chi tiết hơn thông qua PIX, giúp bạn tối ưu hóa trò chơi và khắc phục các lỗi đồ họa. Để sử dụng, hãy tải gói WinPixEventRuntime xuống. Bạn sẽ được chuyển đến trang gói NuGet, tại đó bạn có thể nhấp vào "Download package" để tải gói. Sau khi tải xuống, hãy đổi phần mở rộng tệp thành .zip và giải nén tệp vào một đường dẫn bất kỳ. - `Agility SDK <https://devblogs.microsoft.com/directx/directx12agility>`_ có thể được sử dụng để cung cấp quyền truy cập vào các tính năng Direct3D 12 mới nhất mà không phụ thuộc vào các bản cập nhật trình điều khiển. Để sử dụng, hãy tải gói Agility SDK mới nhất xuống. Bạn sẽ được chuyển đến trang gói NuGet, tại đó bạn có thể nhấp vào "Download package" để tải gói. Sau khi tải xuống, hãy đổi phần mở rộng tệp thành .zip và giải nén tệp vào một đường dẫn bất kỳ.
 
 .. note:: If you use a preview version of the Agility SDK, remember to enable
-          developer mode in Windows; otherwise it won't be used.
+          chế độ nhà phát triển trong Windows; nếu không, nó sẽ không được sử dụng.
 
 .. note:: If you want to use a PIX with MinGW build, navigate to PIX runtime
-          directory and use the following commands to generate import library:
+          thư mục đó và sử dụng các lệnh sau để tạo thư viện import:
 
           ::
 
@@ -284,13 +179,13 @@ Optionally, you can compile with the following for additional features:
             gendef ./bin/ARM64/WinPixEventRuntime.dll
             dlltool --machine arm64 --no-leading-underscore -d WinPixEventRuntime.def -D WinPixEventRuntime.dll -l ./bin/ARM64/libWinPixEventRuntime.a
 
-When building Godot, you will need to tell SCons where to look for the additional libraries:
+Khi xây dựng Godot, bạn cần cho SCons biết nơi tìm các thư viện bổ sung:
 
 .. code-block:: doscon
 
     C:\godot> scons platform=windows mesa_libs=<...>
 
-Or, with all options enabled:
+Hoặc với tất cả tùy chọn được bật:
 
 .. code-block:: doscon
 
@@ -298,35 +193,25 @@ Or, with all options enabled:
 
 .. note::
 
-    PIX support is disabled by default, even if you have it installed.
-    To enable it, pass ``use_pix=yes`` to SCons.
+    Hỗ trợ PIX bị tắt theo mặc định, ngay cả khi bạn đã cài đặt nó. Để bật, hãy truyền ``use_pix=yes`` cho SCons.
 
 .. note::
 
-    For the Agility SDK's DLLs, you have to explicitly choose the kind of
-    workflow. Single-arch is the default (DLLs copied to ``bin/``). If you pass
-    ``agility_sdk_multi_arch=yes`` to SCons, you'll opt-in for multi-arch.
-    DLLs will be copied to the appropriate ``bin/<arch>/`` subdirectories
-    and at runtime, the right one will be loaded.
+    Đối với các DLL của Agility SDK, bạn phải chọn rõ loại quy trình làm việc. Single-arch là mặc định (các DLL được sao chép vào ``bin/``). Nếu truyền ``agility_sdk_multi_arch=yes`` cho SCons, bạn sẽ chọn multi-arch. Các DLL sẽ được sao chép vào các thư mục con ``bin/<arch>/`` thích hợp và trong thời gian chạy, thư mục phù hợp sẽ được tải.
 
-Compiling with AccessKit support
---------------------------------
+Biên dịch với hỗ trợ AccessKit
+------------------------------
 
-AccessKit provides support for screen readers.
+AccessKit cung cấp hỗ trợ cho trình đọc màn hình.
 
-Compiling with AccessKit requires additional dependencies to be installed.
-If you wish to skip this step, you can use the ``accesskit=no`` SCons option.
+Việc biên dịch với AccessKit yêu cầu cài đặt thêm các phần phụ thuộc. Nếu muốn bỏ qua bước này, bạn có thể sử dụng tùy chọn SCons ``accesskit=no``.
 
-You can install the required dependencies by running
-``python misc/scripts/install_accesskit.py``
-in the Godot source repository. After running this script, compile Godot as usual.
+Bạn có thể cài đặt các phần phụ thuộc bắt buộc bằng cách chạy ``python misc/scripts/install_accesskit.py`` trong kho mã nguồn Godot. Sau khi chạy tập lệnh này, hãy biên dịch Godot như bình thường.
 
 .. note:: You can optionally build the AccessKit libraries yourself with
-          the following steps:
+          các bước sau:
 
-          1. Clone the `godot-accesskit-c-static <https://github.com/godotengine/godot-accesskit-c-static/>`_
-             directory and navigate to it.
-          2. Run the following command:
+          1. Sao chép thư mục `godot-accesskit-c-static <https://github.com/godotengine/godot-accesskit-c-static/>`_ và chuyển đến thư mục đó. 2. Chạy lệnh sau:
 
           ::
 
@@ -335,35 +220,27 @@ in the Godot source repository. After running this script, compile Godot as usua
               cmake --build build
               cmake --install build
 
-          The AccessKit static library should be built using the same compiler and the
-          same CRT (if you are building with MinGW) you are using for building
-          Godot.
+          Thư viện tĩnh AccessKit phải được xây dựng bằng cùng trình biên dịch và cùng CRT (nếu bạn xây dựng bằng MinGW) mà bạn sử dụng để xây dựng Godot.
 
-          To compile Godot with a custom build of AccessKit, add ``accesskit_sdk_path={path}`` to
-          tell SCons where to look for the AccessKit libraries:
+          Để biên dịch Godot với bản dựng tùy chỉnh của AccessKit, hãy thêm ``accesskit_sdk_path={path}`` để cho SCons biết nơi tìm các thư viện AccessKit:
 
           ::
 
               scons platform=windows accesskit_sdk_path=<...>
 
-Compiling with WinRT support
-----------------------------
+Biên dịch với hỗ trợ WinRT
+--------------------------
 
-WinRT provides support for OneCore TTS (accessing Windows 10+ voices), HDR color information monitoring, and emoji picker.
+WinRT cung cấp hỗ trợ cho OneCore TTS (truy cập các giọng nói Windows 10+), giám sát thông tin màu HDR và bộ chọn emoji.
 
-If you are building with MinGW, compiling with WinRT requires additional dependencies to be installed.
-If you wish to skip this step, you can use the ``winrt=no`` SCons option.
+Nếu bạn xây dựng bằng MinGW, việc biên dịch với WinRT yêu cầu cài đặt thêm các phần phụ thuộc. Nếu muốn bỏ qua bước này, bạn có thể sử dụng tùy chọn SCons ``winrt=no``.
 
-You can install the required dependencies by running
-``python misc/scripts/install_winrt.py``
-in the Godot source repository. After running this script, compile Godot as usual.
+Bạn có thể cài đặt các phần phụ thuộc bắt buộc bằng cách chạy ``python misc/scripts/install_winrt.py`` trong kho mã nguồn Godot. Sau khi chạy tập lệnh này, hãy biên dịch Godot như bình thường.
 
 .. note:: You can optionally build the WinRT headers yourself with
-          the following steps:
+          các bước sau:
 
-          1. Clone the `winrt-mingw <https://github.com/godotengine/winrt-mingw>`_
-             directory and navigate to it.
-          2. Run the following command:
+          1. Sao chép thư mục `winrt-mingw <https://github.com/godotengine/winrt-mingw>`_ và chuyển đến thư mục đó. 2. Chạy lệnh sau:
 
           ::
 
@@ -372,33 +249,25 @@ in the Godot source repository. After running this script, compile Godot as usua
               cmake --build build
               ./build/cppwinrt.exe -input windows-rs/crates/libs/bindgen/default/ -output include/
 
-          To compile Godot with a custom build of WinRT, add ``winrt_path={path}`` to
-          tell SCons where to look for the AccessKit headers:
+          Để biên dịch Godot với bản dựng tùy chỉnh của WinRT, hãy thêm ``winrt_path={path}`` để cho SCons biết nơi tìm các header AccessKit:
 
           ::
 
               scons platform=windows winrt_path=<...>
 
-Compiling with ANGLE support
-----------------------------
+Biên dịch với hỗ trợ ANGLE
+--------------------------
 
-ANGLE provides a translation layer from OpenGL ES 3.x to Direct3D 11 and can be used
-to improve support for the Compatibility renderer on some older GPUs with outdated
-OpenGL drivers and on Windows for ARM.
+ANGLE cung cấp một lớp chuyển đổi từ OpenGL ES 3.x sang Direct3D 11 và có thể được sử dụng để cải thiện khả năng hỗ trợ trình kết xuất Compatibility trên một số GPU cũ có trình điều khiển OpenGL lỗi thời, cũng như trên Windows dành cho ARM.
 
-Compiling with ANGLE requires additional dependencies to be installed.
-If you wish to skip this step, you can use the ``angle=no`` SCons option.
+Việc biên dịch với ANGLE yêu cầu cài đặt thêm các phần phụ thuộc. Nếu muốn bỏ qua bước này, bạn có thể sử dụng tùy chọn SCons ``angle=no``.
 
-You can install the required dependencies by running
-``python misc/scripts/install_angle.py``
-in the Godot source repository. After running this script, compile Godot as usual.
+Bạn có thể cài đặt các phần phụ thuộc bắt buộc bằng cách chạy ``python misc/scripts/install_angle.py`` trong kho mã nguồn Godot. Sau khi chạy tập lệnh này, hãy biên dịch Godot như bình thường.
 
 .. note:: You can optionally build the godot-angle-static libraries yourself with
-          the following steps:
+          các bước sau:
 
-          1. Clone the `godot-angle-static <https://github.com/godotengine/godot-angle-static>`_
-             directory and navigate to it.
-          2. Run the following command:
+          1. Sao chép thư mục `godot-angle-static <https://github.com/godotengine/godot-angle-static>`_ và chuyển đến thư mục đó. 2. Chạy lệnh sau:
 
           ::
 
@@ -406,91 +275,64 @@ in the Godot source repository. After running this script, compile Godot as usua
               ./update_angle.sh
               scons
 
-          If you are buildng with MinGW, add ``use_mingw=yes`` to the command,
-          you can also specify the build architecture using ``arch={architecture}``.
-          If you are building with MinGW-LLVM, add both ``use_mingw=yes`` and
-          ``use_llvm=yes`` to the ``scons`` command.
+          Nếu bạn xây dựng bằng MinGW, hãy thêm ``use_mingw=yes`` vào lệnh; bạn cũng có thể chỉ định kiến trúc bản dựng bằng ``arch={architecture}``. Nếu bạn xây dựng bằng MinGW-LLVM, hãy thêm cả ``use_mingw=yes`` và ``use_llvm=yes`` vào lệnh ``scons``.
 
-          If you are building with MinGW and the binaries are not located in
-          the ``PATH``, add ``mingw_prefix="/path/to/mingw"`` to the ``scons``
-          command.
+          Nếu bạn xây dựng bằng MinGW và các tệp nhị phân không nằm trong ``PATH``, hãy thêm ``mingw_prefix="/path/to/mingw"`` vào lệnh ``scons``.
 
-          The ANGLE static library should be built using the same compiler and the
-          same CRT (if you are building with MinGW) you are using for building
-          Godot.
+          Thư viện tĩnh ANGLE phải được xây dựng bằng cùng trình biên dịch và cùng CRT (nếu bạn xây dựng bằng MinGW) mà bạn sử dụng để xây dựng Godot.
 
-          To compile Godot with a custom build of ANGLE, add ``angle_libs={path}`` to
-          tell SCons where to look for the ANGLE libraries:
+          Để biên dịch Godot với bản dựng tùy chỉnh của ANGLE, hãy thêm ``angle_libs={path}`` để cho SCons biết nơi tìm các thư viện ANGLE:
 
           ::
 
               scons platform=windows angle_libs=<...>
 
-Development in Visual Studio
-----------------------------
+Phát triển trong Visual Studio
+------------------------------
 
-Using an IDE is not required to compile Godot, as SCons takes care of everything.
-But if you intend to do engine development or debugging of the engine's C++ code,
-you may be interested in configuring a code editor or an IDE.
+Không bắt buộc phải sử dụng IDE để biên dịch Godot vì SCons xử lý mọi việc. Tuy nhiên, nếu bạn định phát triển engine hoặc gỡ lỗi mã C++ của engine, bạn có thể quan tâm đến việc cấu hình trình chỉnh sửa mã hoặc IDE.
 
-Folder-based editors don't require any particular setup to start working with Godot's
-codebase. To edit projects with Visual Studio they need to be set up as a solution.
+Các trình chỉnh sửa dựa trên thư mục không yêu cầu thiết lập cụ thể nào để bắt đầu làm việc với mã nguồn Godot. Để chỉnh sửa các dự án bằng Visual Studio, chúng cần được thiết lập dưới dạng một solution.
 
-You can create a Visual Studio solution via SCons by running SCons with
-the ``vsproj=yes`` parameter, like this:
+Bạn có thể tạo solution Visual Studio thông qua SCons bằng cách chạy SCons với tham số ``vsproj=yes``, như sau:
 
 ::
 
    scons platform=windows vsproj=yes
 
-You will be able to open Godot's source in a Visual Studio solution now,
-and able to build Godot using Visual Studio's **Build** button.
+Bây giờ bạn có thể mở mã nguồn Godot trong một solution Visual Studio và xây dựng Godot bằng nút **Build** của Visual Studio.
 
 .. seealso:: See :ref:`doc_configuring_an_ide_vs` for further details.
 
-Troubleshooting
+Khắc phục sự cố
 ~~~~~~~~~~~~~~~
 
-If you get a compilation failure when using MSVC, make sure to apply the
-latest updates. You can do so by starting the Visual Studio IDE and using
+Nếu gặp lỗi biên dịch khi sử dụng MSVC, hãy đảm bảo đã cài đặt các bản cập nhật mới nhất. Bạn có thể thực hiện việc này bằng cách khởi động IDE Visual Studio và sử dụng
 :button:`Continue without code`, then :menu:`Help > Check for Updates` in the
-menu bar at the top. Install all updates, then try compiling again.
+thanh menu ở trên cùng. Cài đặt tất cả bản cập nhật, sau đó thử biên dịch lại.
 
-Cross-compiling for Windows from other operating systems
---------------------------------------------------------
+Biên dịch chéo cho Windows từ các hệ điều hành khác
+---------------------------------------------------
 
-If you are a Linux or macOS user, you need to install
-`MinGW-w64 <https://www.mingw-w64.org/>`__, which typically comes in 32-bit
-and 64-bit variants, or `MinGW-LLVM <https://github.com/mstorsjo/llvm-mingw/releases>`_,
-which comes as a single archive for all target architectures.
-The package names may differ based on your distribution, here are some known ones:
+Nếu bạn là người dùng Linux hoặc macOS, bạn cần cài đặt `MinGW-w64 <https://www.mingw-w64.org/>`__, thường có các biến thể 32-bit và 64-bit, hoặc `MinGW-LLVM <https://github.com/mstorsjo/llvm-mingw/releases>`_, được cung cấp dưới dạng một kho lưu trữ duy nhất cho mọi kiến trúc đích. Tên gói có thể khác nhau tùy theo bản phân phối của bạn; dưới đây là một số tên phổ biến:
 
-+----------------+--------------------------------------------------------------+
-| **Arch Linux** | ::                                                           |
-|                |                                                              |
-|                |     pacman -S mingw-w64                                      |
-+----------------+--------------------------------------------------------------+
-| **Debian** /   | ::                                                           |
-| **Ubuntu**     |                                                              |
-|                |     apt install mingw-w64                                    |
-+----------------+--------------------------------------------------------------+
-| **Fedora**     | ::                                                           |
-|                |                                                              |
-|                |     dnf install mingw64-gcc-c++ mingw64-winpthreads-static \ |
-|                |                 mingw32-gcc-c++ mingw32-winpthreads-static   |
-+----------------+--------------------------------------------------------------+
-| **macOS**      | ::                                                           |
-|                |                                                              |
-|                |     brew install mingw-w64                                   |
-+----------------+--------------------------------------------------------------+
-| **Mageia**     | ::                                                           |
-|                |                                                              |
-|                |     urpmi mingw64-gcc-c++ mingw64-winpthreads-static \       |
-|                |           mingw32-gcc-c++ mingw32-winpthreads-static         |
-+----------------+--------------------------------------------------------------+
++----------------+--------------------------------------------------------------+ | **Arch Linux** | :: | | | |
+| | pacman -S mingw-w64 |
++++++++++++++++++++++++++
+| **Debian** / | :: | | **Ubuntu** | |
+| | apt install mingw-w64 |
++++++++++++++++++++++++++++
+| **Fedora** | :: | | | | | | dnf install mingw64-gcc-c++ mingw64-winpthreads-static \ |
+| | mingw32-gcc-c++ mingw32-winpthreads-static |
+++++++++++++++++++++++++++++++++++++++++++++++++
+| **macOS** | :: | | | |
+| | brew install mingw-w64 |
+++++++++++++++++++++++++++++
+| **Mageia** | :: | | | | | | urpmi mingw64-gcc-c++ mingw64-winpthreads-static \ |
+| | mingw32-gcc-c++ mingw32-winpthreads-static |
+++++++++++++++++++++++++++++++++++++++++++++++++
 
-Before attempting the compilation, SCons will check for
-the following binaries in your ``PATH`` environment variable:
+Trước khi bắt đầu biên dịch, SCons sẽ kiểm tra các tệp nhị phân sau trong biến môi trường ``PATH`` của bạn:
 
 ::
 
@@ -503,21 +345,15 @@ the following binaries in your ``PATH`` environment variable:
     i686-w64-mingw32-clang
     x86_64-w64-mingw32-clang
 
-If the binaries are not located in the ``PATH`` (e.g. ``/usr/bin``),
-you can define the following environment variable to give a hint to
-the build system:
+Nếu các tệp nhị phân không nằm trong ``PATH`` (ví dụ: ``/usr/bin``), bạn có thể định nghĩa biến môi trường sau để cung cấp gợi ý cho hệ thống xây dựng:
 
 ::
 
     export MINGW_PREFIX="/path/to/mingw"
 
-Where ``/path/to/mingw`` is the path containing the ``bin`` directory where
-``i686-w64-mingw32-gcc`` and ``x86_64-w64-mingw32-gcc`` are located (e.g.
-``/opt/mingw-w64`` if the binaries are located in ``/opt/mingw-w64/bin``).
+Trong đó ``/path/to/mingw`` là đường dẫn chứa thư mục ``bin``, nơi ``i686-w64-mingw32-gcc`` và ``x86_64-w64-mingw32-gcc`` được đặt (ví dụ: ``/opt/mingw-w64`` nếu các tệp nhị phân nằm trong ``/opt/mingw-w64/bin``).
 
-To make sure you are doing things correctly, executing the following in
-the shell should result in a working compiler (the version output may
-differ based on your system):
+Để đảm bảo bạn đang thực hiện đúng, việc chạy lệnh sau trong shell sẽ cho kết quả là một trình biên dịch hoạt động được (đầu ra phiên bản có thể khác nhau tùy theo hệ thống của bạn):
 
 ::
 
@@ -526,18 +362,14 @@ differ based on your system):
 
 .. note:: If you are building with MinGW-LLVM, add ``use_llvm=yes`` to the ``scons`` command.
 .. note:: When cross-compiling for Windows using MinGW-w64, keep in mind only
-          ``x86_64`` and ``x86_32`` architectures are supported. MinGW-LLVM supports
-          ``arm64`` as well. Be sure to specify the right ``arch=`` option when
-          invoking SCons if building from a different architecture.
+          Các kiến trúc ``x86_64`` và ``x86_32`` được hỗ trợ. MinGW-LLVM cũng hỗ trợ ``arm64``. Hãy đảm bảo chỉ định đúng tùy chọn ``arch=`` khi gọi SCons nếu xây dựng từ một kiến trúc khác.
 
-Troubleshooting
+Khắc phục sự cố
 ~~~~~~~~~~~~~~~
 
-Cross-compiling from some Ubuntu versions may lead to
-`this bug <https://github.com/godotengine/godot/issues/9258>`_,
-due to a default configuration lacking support for POSIX threading.
+Biên dịch chéo từ một số phiên bản Ubuntu có thể dẫn đến `lỗi này <https://github.com/godotengine/godot/issues/9258>`_, do cấu hình mặc định không hỗ trợ luồng POSIX.
 
-You can change that configuration following those instructions, for 64-bit:
+Bạn có thể thay đổi cấu hình đó bằng cách làm theo các hướng dẫn sau, đối với 64-bit:
 
 ::
 
@@ -546,7 +378,7 @@ You can change that configuration following those instructions, for 64-bit:
     sudo update-alternatives --config x86_64-w64-mingw32-g++
     <choose x86_64-w64-mingw32-g++-posix from the list>
 
-And for 32-bit:
+Và đối với 32-bit:
 
 ::
 
@@ -555,11 +387,10 @@ And for 32-bit:
     sudo update-alternatives --config i686-w64-mingw32-g++
     <choose i686-w64-mingw32-g++-posix from the list>
 
-Creating Windows export templates
----------------------------------
+Tạo template xuất Windows
+-------------------------
 
-Windows export templates are created by compiling Godot without the editor,
-with the following flags:
+Các template xuất Windows được tạo bằng cách biên dịch Godot mà không có editor, với các cờ sau:
 
 .. code-block:: doscon
 
@@ -570,15 +401,13 @@ with the following flags:
     C:\godot> scons platform=windows target=template_debug arch=arm64
     C:\godot> scons platform=windows target=template_release arch=arm64
 
-If you plan on replacing the standard export templates, copy these to the
-following location, replacing ``<version>`` with the version identifier
-(such as ``4.2.1.stable`` or ``4.3.dev``):
+Nếu dự định thay thế các template xuất tiêu chuẩn, hãy sao chép chúng vào vị trí sau, thay ``<version>`` bằng mã nhận dạng phiên bản (chẳng hạn như ``4.2.1.stable`` hoặc ``4.3.dev``):
 
 .. code-block:: none
 
     %APPDATA%\Godot\export_templates\<version>\
 
-With the following names:
+Với các tên sau:
 
 ::
 
@@ -595,13 +424,8 @@ With the following names:
     windows_release_arm64_console.exe
     windows_release_arm64.exe
 
-However, if you are using custom modules or custom engine code, you
-may instead want to configure your binaries as custom export templates
-in the project export menu. You must have **Advanced Options** enabled
-to set this.
+Tuy nhiên, nếu đang sử dụng các module tùy chỉnh hoặc mã engine tùy chỉnh, thay vào đó bạn có thể muốn cấu hình các tệp nhị phân của mình dưới dạng template xuất tùy chỉnh trong menu xuất dự án. Bạn phải bật **Advanced Options** để thiết lập tùy chọn này.
 
 .. image:: img/wintemplates.webp
 
-You don't need to copy them in this case, just reference the resulting
-files in the ``bin\`` directory of your Godot source folder, so the next
-time you build, you will automatically have the custom templates referenced.
+Trong trường hợp này, bạn không cần sao chép chúng; chỉ cần tham chiếu đến các tệp kết quả trong thư mục ``bin\`` của thư mục mã nguồn Godot, để lần xây dựng tiếp theo sẽ tự động tham chiếu các template tùy chỉnh.

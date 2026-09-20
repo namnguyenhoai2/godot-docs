@@ -3,16 +3,12 @@
 Android Studio
 ==============
 
-`Android Studio <https://developer.android.com/studio>`_ is a free
-IDE for Android development made by `Google <https://about.google/>`_ and `JetBrains <https://www.jetbrains.com/>`_.
-It's based on `IntelliJ IDEA <https://www.jetbrains.com/idea/>`_ and has a
-feature-rich editor which supports Java and C/C++. It can be used to
-work on Godot's core engine as well as the Android platform codebase.
+`Android Studio <https://developer.android.com/studio>`_ là một IDE miễn phí dành cho việc phát triển Android, do `Google <https://about.google/>`_ và `JetBrains <https://www.jetbrains.com/>`_ tạo ra. IDE này dựa trên `IntelliJ IDEA <https://www.jetbrains.com/idea/>`_ và có trình soạn thảo giàu tính năng, hỗ trợ Java và C/C++. Bạn có thể dùng IDE này để làm việc trên engine cốt lõi của Godot cũng như codebase của nền tảng Android.
 
-Importing the project
----------------------
+Nhập dự án
+----------
 
-- From the Android Studio's welcome window select **Open**.
+- Từ cửa sổ chào mừng của Android Studio, chọn **Open**.
 
 .. figure:: img/android_studio_setup_project_1.png
    :figclass: figure-w480
@@ -20,98 +16,84 @@ Importing the project
 
    Android Studio's welcome window.
 
-- Navigate to ``<Godot root directory>/platform/android/java`` and select the ``settings.gradle`` file.
-- Android Studio will import and index the project.
+- Điều hướng đến ``<Godot root directory>/platform/android/java`` và chọn tệp ``settings.gradle``. - Android Studio sẽ nhập và lập chỉ mục dự án.
 
-Android Studio project layout
+Bố cục dự án Android Studio
+---------------------------
+
+Dự án được tổ chức bằng `các module của Android Studio <https://developer.android.com/studio/projects#ApplicationModules>`_:
+
+- Module **lib**:
+
+   - Nằm trong ``<Godot root directory>/platform/android/java/lib``, đây là một **module thư viện** dùng để tổ chức mã Java và mã native của Godot, đồng thời cung cấp chúng dưới dạng một `thư viện Android <https://developer.android.com/studio/projects/android-library>`_ có thể tái sử dụng. - :ref:`Godot Android library <doc_android_library>` được tạo ra sẽ khả dụng cho các module / dự án Android khác thông qua `MavenCentral <https://central.sonatype.com/artifact/org.godotengine/godot>`_, cùng với `tài liệu của nó <https://javadoc.io/doc/org.godotengine/godot/latest/index.html>`_.
+
+- Module **editor**:
+
+   - Nằm trong ``<Godot root directory>/platform/android/java/editor``, đây là một **module ứng dụng** chứa mã nguồn cho `các bản chuyển của Android và XR <https://godotengine.org/download/android/>`_ của Godot Editor. - Module này phụ thuộc vào module **lib**.
+
+- Module **app**:
+
+   - Nằm trong ``<Godot root directory>/platform/android/java/app``, đây là một **module ứng dụng** chứa mã nguồn cho các template build Android. - Module này phụ thuộc vào module **lib**.
+
+Build và gỡ lỗi module editor
 -----------------------------
 
-The project is organized using `Android Studio's modules <https://developer.android.com/studio/projects#ApplicationModules>`_:
+- Để build module ``editor``:
 
-- **lib** module:
-
-   - Located under ``<Godot root directory>/platform/android/java/lib``, this is a **library module** that organizes the Godot java and native code and make it available as a reusable `Android library <https://developer.android.com/studio/projects/android-library>`_.
-   - The generated :ref:`Godot Android library <doc_android_library>` is made available for other Android modules / projects via `MavenCentral <https://central.sonatype.com/artifact/org.godotengine/godot>`_, along with `its documentation <https://javadoc.io/doc/org.godotengine/godot/latest/index.html>`_.
-
-- **editor** module:
-
-   - Located under ``<Godot root directory>/platform/android/java/editor``, this is an **application module** that holds the source code for the `Android and XR ports <https://godotengine.org/download/android/>`_ of the Godot Editor.
-   - This module has a dependency on the **lib** module.
-
-- **app** module:
-
-   - Located under ``<Godot root directory>/platform/android/java/app``, this is an **application module** that holds the source code for the Android build templates.
-   - This module has a dependency on the **lib** module.
-
-Building & debugging the editor module
---------------------------------------
-
-- To build the ``editor`` module:
-
-   - Select the `Run/Debug Configurations drop down <https://developer.android.com/studio/run/rundebugconfig#running>`_ and select ``editor``.
+   - Chọn `menu thả xuống Run/Debug Configurations <https://developer.android.com/studio/run/rundebugconfig#running>`_ rồi chọn ``editor``.
 
    .. figure:: img/android_studio_editor_configurations_drop_down.webp
       :figclass: figure-w480
       :align: center
 
-   - Select **Run > Run 'editor'** from the top menu or `click the Run icon <https://developer.android.com/studio/run/rundebugconfig#running>`_.
+   - Chọn **Run > Run 'editor'** từ menu trên cùng hoặc `nhấp vào biểu tượng Run <https://developer.android.com/studio/run/rundebugconfig#running>`_.
 
-- To debug the ``editor`` module:
+- Để gỡ lỗi module ``editor``:
 
-   - Open the **Build Variants** window using **View > Tools Windows > Build Variants** from the top menu.
-   - In the **Build Variants** window, make sure that in the **Active Build Variant** column, the ``:editor`` entry is set to one of the **Debug** variants.
+   - Mở cửa sổ **Build Variants** bằng cách chọn **View > Tools Windows > Build Variants** từ menu trên cùng. - Trong cửa sổ **Build Variants**, hãy đảm bảo rằng trong cột **Active Build Variant**, mục ``:editor`` được đặt thành một trong các biến thể **Debug**.
 
    .. figure:: img/android_studio_editor_build_variant.webp
       :figclass: figure-w480
       :align: center
 
-   - Open the **Run/Debug Configurations** window by clicking on **Run > Edit Configurations...** on the top menu.
-   - In the **Run/Debug Configurations** window, select the ``editor`` entry, and under **Debugger** make sure the **Debug Type** is set to ``Dual (Java + Native)``
-   - Click the ``+`` sign under the **Symbol Directories** section, and add the ``platform/android/java/lib/libs/tools/debug`` directory.
+   - Mở cửa sổ **Run/Debug Configurations** bằng cách nhấp vào **Run > Edit Configurations...** trên menu trên cùng. - Trong cửa sổ **Run/Debug Configurations**, chọn mục ``editor``, rồi trong **Debugger**, đảm bảo **Debug Type** được đặt thành ``Dual (Java + Native)`` - Nhấp vào dấu ``+`` trong phần **Symbol Directories**, rồi thêm thư mục ``platform/android/java/lib/libs/tools/debug``.
 
    .. figure:: img/android_studio_editor_debug_type_setup.webp
       :figclass: figure-w480
       :align: center
 
-   - Select **Run > Debug 'editor'** from the top menu or `click the Debug icon <https://developer.android.com/studio/run/rundebugconfig#running>`_.
+   - Chọn **Run > Debug 'editor'** từ menu trên cùng hoặc `nhấp vào biểu tượng Debug <https://developer.android.com/studio/run/rundebugconfig#running>`_.
 
-Building & debugging the app module
------------------------------------
+Build và gỡ lỗi module app
+--------------------------
 
-The ``app`` module requires the presence of a Godot project in its ``assets`` directory (``<Godot root directory>/platform/android/java/app/src/main/assets``) to run.
-This is usually handled by the Godot Editor during the export process.
-While developing in Android Studio, it's necessary to manually add a Godot project under that directory to replicate the export process.
-Once that's done, you can follow the instructions below to run/debug the ``app`` module:
+Module ``app`` yêu cầu có một dự án Godot trong thư mục ``assets`` (``<Godot root directory>/platform/android/java/app/src/main/assets``) để chạy. Việc này thường được Godot Editor xử lý trong quá trình export. Khi phát triển bằng Android Studio, bạn cần tự thêm một dự án Godot vào thư mục đó để mô phỏng quá trình export. Sau khi hoàn tất, bạn có thể làm theo hướng dẫn dưới đây để chạy/gỡ lỗi module ``app``:
 
-- To build the ``app`` module:
+- Để build module ``app``:
 
-   - Select the `Run/Debug Configurations drop down <https://developer.android.com/studio/run/rundebugconfig#running>`_ and select ``app``.
+   - Chọn `menu thả xuống Run/Debug Configurations <https://developer.android.com/studio/run/rundebugconfig#running>`_ rồi chọn ``app``.
 
    .. figure:: img/android_studio_app_configurations_drop_down.webp
       :figclass: figure-w480
       :align: center
 
-   - Select **Run > Run 'app'** from the top menu or `click the Run icon <https://developer.android.com/studio/run/rundebugconfig#running>`_.
+   - Chọn **Run > Run 'app'** từ menu trên cùng hoặc `nhấp vào biểu tượng Run <https://developer.android.com/studio/run/rundebugconfig#running>`_.
 
-- To debug the ``app`` module:
+- Để gỡ lỗi module ``app``:
 
-   - Open the **Build Variants** window using **View > Tools Windows > Build Variants** from the top menu.
-   - In the **Build Variants** window, make sure that in the **Active Build Variant** column, the ``:app`` entry is set to one of the **Debug** variants.
+   - Mở cửa sổ **Build Variants** bằng cách chọn **View > Tools Windows > Build Variants** từ menu trên cùng. - Trong cửa sổ **Build Variants**, hãy đảm bảo rằng trong cột **Active Build Variant**, mục ``:app`` được đặt thành một trong các biến thể **Debug**.
 
    .. figure:: img/android_studio_app_build_variant.webp
       :figclass: figure-w480
       :align: center
 
-   - Open the **Run/Debug Configurations** window by clicking on **Run > Edit Configurations...** on the top menu.
-   - In the **Run/Debug Configurations** window, select the ``app`` entry, and under **Debugger** make sure the **Debug Type** is set to ``Dual (Java + Native)``
-   - Click the ``+`` sign under the **Symbol Directories** section, and add the ``platform/android/java/lib/libs/debug`` directory.
+   - Mở cửa sổ **Run/Debug Configurations** bằng cách nhấp vào **Run > Edit Configurations...** trên menu trên cùng. - Trong cửa sổ **Run/Debug Configurations**, chọn mục ``app``, rồi trong **Debugger**, đảm bảo **Debug Type** được đặt thành ``Dual (Java + Native)`` - Nhấp vào dấu ``+`` trong phần **Symbol Directories**, rồi thêm thư mục ``platform/android/java/lib/libs/debug``.
 
    .. figure:: img/android_studio_app_debug_type_setup.webp
       :figclass: figure-w480
       :align: center
 
-   - Select **Run > Debug 'app'** from the top menu or `click the Debug icon <https://developer.android.com/studio/run/rundebugconfig#running>`_.
+   - Chọn **Run > Debug 'app'** từ menu trên cùng hoặc `nhấp vào biểu tượng Debug <https://developer.android.com/studio/run/rundebugconfig#running>`_.
 
 
-If you run into any issues, ask for help in
-`Godot's Android dev channel <https://chat.godotengine.org/channel/android>`__.
+Nếu gặp bất kỳ vấn đề nào, hãy yêu cầu trợ giúp trong `kênh phát triển Android của Godot <https://chat.godotengine.org/channel/android>`__.

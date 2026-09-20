@@ -1,42 +1,31 @@
 .. _doc_compiling_for_macos:
 
-Compiling for macOS
+Biên dịch cho macOS
 ===================
 
 .. highlight:: shell
 
 .. note::
 
-    This page describes how to compile macOS editor and export template binaries from source.
-    If you're looking to export your project to macOS instead, read :ref:`doc_exporting_for_macos`.
+    Trang này mô tả cách biên dịch các tệp nhị phân của trình chỉnh sửa macOS và các mẫu xuất từ mã nguồn. Nếu bạn muốn xuất dự án của mình sang macOS, hãy đọc :ref:`doc_exporting_for_macos`.
 
-Requirements
-------------
+Yêu cầu
+-------
 
-For compiling under macOS, the following is required:
+Để biên dịch trên macOS, cần có những thành phần sau:
 
-- `Python 3.9+ <https://www.python.org/downloads/macos/>`_.
-- `SCons 4.4+ <https://scons.org/pages/download.html>`_ build system.
-- `Xcode <https://apps.apple.com/us/app/xcode/id497799835>`_
-  (or the more lightweight Command Line Tools for Xcode).
-- `Vulkan SDK <https://sdk.lunarg.com/sdk/download/latest/mac/vulkan-sdk.dmg>`_
-  for MoltenVK (macOS doesn't support Vulkan out of the box).
-  The latest Vulkan SDK version can be installed quickly by running
-  ``misc/scripts/install_vulkan_sdk_macos.sh`` within the Godot source repository.
+- `Python 3.9+ <https://www.python.org/downloads/macos/>`_. - hệ thống build `SCons 4.4+ <https://scons.org/pages/download.html>`_. - `Xcode <https://apps.apple.com/us/app/xcode/id497799835>`_ (hoặc Command Line Tools for Xcode nhẹ hơn). - `Vulkan SDK <https://sdk.lunarg.com/sdk/download/latest/mac/vulkan-sdk.dmg>`_ cho MoltenVK (macOS không hỗ trợ Vulkan ngay từ đầu). Có thể nhanh chóng cài đặt phiên bản Vulkan SDK mới nhất bằng cách chạy ``misc/scripts/install_vulkan_sdk_macos.sh`` trong kho mã nguồn Godot.
 
 .. note:: If you have `Homebrew <https://brew.sh/>`_ installed, you can easily
-          install SCons using the following command:
+          cài đặt SCons bằng lệnh sau:
 
           ::
 
               brew install scons
 
-          Installing Homebrew will also fetch the Command Line Tools
-          for Xcode automatically if you don't have them already.
+          Việc cài đặt Homebrew cũng sẽ tự động tải Command Line Tools for Xcode nếu bạn chưa có.
 
-          Similarly, if you have `MacPorts <https://www.macports.org/>`_
-          installed, you can easily install SCons using the
-          following command:
+          Tương tự, nếu đã cài đặt `MacPorts <https://www.macports.org/>`_, bạn có thể dễ dàng cài đặt SCons bằng lệnh sau:
 
           ::
 
@@ -45,63 +34,52 @@ For compiling under macOS, the following is required:
 .. seealso:: To get the Godot source code for compiling, see
              :ref:`doc_getting_source`.
 
-             For a general overview of SCons usage for Godot, see
+             Để xem tổng quan về cách sử dụng SCons cho Godot, hãy xem
              :ref:`doc_introduction_to_the_buildsystem`.
 
-Compiling
+Biên dịch
 ---------
 
-Start a terminal, go to the root directory of the engine source code.
+Mở terminal và đi đến thư mục gốc của mã nguồn engine.
 
-To compile for Intel (x86-64) powered Macs, use:
+Để biên dịch cho máy Mac sử dụng Intel (x86-64), hãy dùng:
 
 ::
 
     scons platform=macos arch=x86_64
 
-To compile for Apple Silicon (ARM64) powered Macs, use:
+Để biên dịch cho máy Mac sử dụng Apple Silicon (ARM64), hãy dùng:
 
 ::
 
     scons platform=macos arch=arm64
 
 .. tip::
-    If you are compiling Godot to make changes or contribute to the engine,
-    you may want to use the SCons options ``dev_build=yes`` or ``dev_mode=yes``.
-    See :ref:`doc_introduction_to_the_buildsystem_development_and_production_aliases`
-    for more info.
+    Nếu đang biên dịch Godot để thực hiện thay đổi hoặc đóng góp cho engine, bạn có thể muốn sử dụng các tùy chọn SCons ``dev_build=yes`` hoặc ``dev_mode=yes``. Xem :ref:`doc_introduction_to_the_buildsystem_development_and_production_aliases` để biết thêm thông tin.
 
-If all goes well, the resulting binary executable will be placed in the
-``bin/`` subdirectory. This executable file contains the whole engine and
-runs without any dependencies. Executing it will bring up the Project
-Manager.
+Nếu mọi việc diễn ra suôn sẻ, tệp thực thi nhị phân thu được sẽ được đặt trong thư mục con ``bin/``. Tệp thực thi này chứa toàn bộ engine và chạy mà không cần bất kỳ phần phụ thuộc nào. Việc thực thi tệp sẽ mở Project Manager.
 
 .. note:: Using a standalone editor executable is not recommended, it should be always packaged into a
-          ``.app`` bundle to avoid UI activation issues.
+          gói ``.app`` để tránh các vấn đề kích hoạt giao diện người dùng.
 
 .. note:: If you want to use separate editor settings for your own Godot builds
-          and official releases, you can enable
+          và các bản phát hành chính thức, bạn có thể bật
           :ref:`doc_data_paths_self_contained_mode` by creating a file called
-          ``._sc_`` or ``_sc_`` in the ``bin/`` folder.
+          ``._sc_`` hoặc ``_sc_`` trong thư mục ``bin/``.
 
-Compiling with AccessKit support
---------------------------------
+Biên dịch với hỗ trợ AccessKit
+------------------------------
 
-AccessKit provides support for screen readers.
+AccessKit cung cấp hỗ trợ cho trình đọc màn hình.
 
-Compiling with AccessKit requires additional dependencies to be installed.
-If you wish to skip this step, you can use the ``accesskit=no`` SCons option.
+Việc biên dịch với AccessKit yêu cầu cài đặt thêm các phần phụ thuộc. Nếu muốn bỏ qua bước này, bạn có thể sử dụng tùy chọn SCons ``accesskit=no``.
 
-You can install the required dependencies by running
-``python misc/scripts/install_accesskit.py``
-in the Godot source repository. After running this script, compile Godot as usual.
+Bạn có thể cài đặt các phần phụ thuộc bắt buộc bằng cách chạy ``python misc/scripts/install_accesskit.py`` trong kho mã nguồn Godot. Sau khi chạy tập lệnh này, hãy biên dịch Godot như bình thường.
 
 .. note:: You can optionally build the godot-accesskit-static libraries yourself with
-          the following steps:
+          các bước sau:
 
-          1. Clone the `godot-accesskit-c-static <https://github.com/godotengine/godot-accesskit-c-static/>`_
-             directory and navigate to it.
-          2. Run the following command:
+          1. Sao chép thư mục `godot-accesskit-c-static <https://github.com/godotengine/godot-accesskit-c-static/>`_ và đi đến thư mục đó. 2. Chạy lệnh sau:
 
           ::
 
@@ -110,36 +88,27 @@ in the Godot source repository. After running this script, compile Godot as usua
               cmake --build build
               cmake --install build
 
-          The AccessKit static library should be built using the same compiler you are
-          using for building Godot.
+          Thư viện tĩnh AccessKit phải được build bằng cùng trình biên dịch mà bạn sử dụng để build Godot.
 
-          To compile Godot with a custom build of AccessKit, add ``accesskit_sdk_path={path}`` to
-          tell SCons where to look for the AccessKit libraries:
+          Để biên dịch Godot với bản build tùy chỉnh của AccessKit, hãy thêm ``accesskit_sdk_path={path}`` để cho SCons biết nơi tìm các thư viện AccessKit:
 
           ::
 
               scons platform=macos accesskit_sdk_path=<...>
 
-Compiling with ANGLE support
-----------------------------
+Biên dịch với hỗ trợ ANGLE
+--------------------------
 
-ANGLE provides a translation layer from OpenGL ES 3.x to Metal and can be used
-to improve support for the Compatibility renderer on some older GPUs with outdated
-OpenGL drivers.
+ANGLE cung cấp một lớp chuyển đổi từ OpenGL ES 3.x sang Metal và có thể được dùng để cải thiện khả năng hỗ trợ trình kết xuất Compatibility trên một số GPU cũ hơn có trình điều khiển OpenGL lỗi thời.
 
-Compiling with ANGLE requires additional dependencies to be installed.
-If you wish to skip this step, you can use the ``angle=no`` SCons option.
+Việc biên dịch với ANGLE yêu cầu cài đặt thêm các phần phụ thuộc. Nếu muốn bỏ qua bước này, bạn có thể sử dụng tùy chọn SCons ``angle=no``.
 
-You can install the required dependencies by running
-``python misc/scripts/install_angle.py``
-in the Godot source repository. After running this script, compile Godot as usual.
+Bạn có thể cài đặt các phần phụ thuộc bắt buộc bằng cách chạy ``python misc/scripts/install_angle.py`` trong kho mã nguồn Godot. Sau khi chạy tập lệnh này, hãy biên dịch Godot như bình thường.
 
 .. note:: You can optionally build the godot-angle-static libraries yourself with
-          the following steps:
+          các bước sau:
 
-          1. Clone the `godot-angle-static <https://github.com/godotengine/godot-angle-static>`_
-             directory and navigate to it.
-          2. Run the following command:
+          1. Sao chép thư mục `godot-angle-static <https://github.com/godotengine/godot-angle-static>`_ và đi đến thư mục đó. 2. Chạy lệnh sau:
 
           ::
 
@@ -147,41 +116,36 @@ in the Godot source repository. After running this script, compile Godot as usua
               ./update_angle.sh
               scons
 
-          You can also specify the build architecture using ``arch={architecture}``.
+          Bạn cũng có thể chỉ định kiến trúc build bằng ``arch={architecture}``.
 
-          The ANGLE static library should be built using the same compiler you are
-          using for building Godot.
+          Thư viện tĩnh ANGLE phải được build bằng cùng trình biên dịch mà bạn sử dụng để build Godot.
 
-          To compile Godot with a custom build of ANGLE, add ``angle_libs={path}`` to
-          tell SCons where to look for the ANGLE libraries:
+          Để biên dịch Godot với bản build tùy chỉnh của ANGLE, hãy thêm ``angle_libs={path}`` để cho SCons biết nơi tìm các thư viện ANGLE:
 
           ::
 
               scons platform=macos angle_libs=<...>
 
-Automatic ``.app`` bundle creation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tự động tạo gói ``.app``
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-To automatically create a ``.app`` bundle like in the official builds, use the ``generate_bundle=yes`` option on the *last*
-SCons command used to build editor:
+Để tự động tạo gói ``.app`` như trong các bản build chính thức, hãy sử dụng tùy chọn ``generate_bundle=yes`` trong lệnh SCons *cuối cùng* dùng để build trình chỉnh sửa:
 
 ::
 
     scons platform=macos arch=x86_64
     scons platform=macos arch=arm64 generate_bundle=yes
 
-Manual ``.app`` bundle creation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tạo gói ``.app`` thủ công
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To support both architectures in a single "Universal 2" binary,
-run the above two commands and then use ``lipo`` to bundle them together:
+Để hỗ trợ cả hai kiến trúc trong một tệp nhị phân "Universal 2", hãy chạy hai lệnh ở trên rồi sử dụng ``lipo`` để gộp chúng lại:
 
 ::
 
     lipo -create bin/godot.macos.editor.x86_64 bin/godot.macos.editor.arm64 -output bin/godot.macos.editor.universal
 
-To create a ``.app`` bundle, you need to use the template located in ``misc/dist/macos_tools.app``. Typically, for an optimized
-editor binary built with ``dev_build=yes``:
+Để tạo gói ``.app``, bạn cần sử dụng mẫu nằm tại ``misc/dist/macos_tools.app``. Thông thường, đối với tệp nhị phân trình chỉnh sửa đã tối ưu được build bằng ``dev_build=yes``:
 
 ::
 
@@ -193,57 +157,49 @@ editor binary built with ``dev_build=yes``:
 
 .. note::
 
-    If you are building the ``master`` branch, you also need to include support
-    for the MoltenVK Vulkan portability library. By default, it will be linked
-    statically from your installation of the Vulkan SDK for macOS.
-    You can also choose to link it dynamically by passing ``use_volk=yes`` and
-    including the dynamic library in your ``.app`` bundle:
+    Nếu đang build nhánh ``master``, bạn cũng cần thêm hỗ trợ cho thư viện khả chuyển Vulkan MoltenVK. Theo mặc định, thư viện này sẽ được liên kết tĩnh từ bản cài đặt Vulkan SDK cho macOS. Bạn cũng có thể chọn liên kết động bằng cách truyền ``use_volk=yes`` và đưa thư viện động vào gói ``.app`` của mình:
 
     ::
 
         mkdir -p <Godot bundle name>.app/Contents/Frameworks
         cp <Vulkan SDK path>/macOS/lib/libMoltenVK.dylib <Godot bundle name>.app/Contents/Frameworks/libMoltenVK.dylib
 
-Running a headless/server build
--------------------------------
+Chạy bản build headless/server
+------------------------------
 
-To run in *headless* mode which provides editor functionality to export
-projects in an automated manner, use the normal build:
+Để chạy ở chế độ *headless*, cung cấp chức năng của trình chỉnh sửa nhằm xuất dự án theo cách tự động, hãy sử dụng bản build thông thường:
 
 ::
 
     scons platform=macos target=editor
 
-And then use the ``--headless`` command line argument:
+Sau đó sử dụng đối số dòng lệnh ``--headless``:
 
 ::
 
     ./bin/godot.macos.editor.x86_64 --headless
 
-To compile a debug *server* build which can be used with
+Để biên dịch bản build *server* debug có thể sử dụng với
 :ref:`remote debugging tools <doc_command_line_tutorial>`, use:
 
 ::
 
     scons platform=macos target=template_debug
 
-To compile a release *server* build which is optimized to run dedicated game servers, use:
+Để biên dịch bản build *server* release được tối ưu để chạy các máy chủ game chuyên dụng, hãy dùng:
 
 ::
 
     scons platform=macos target=template_release production=yes
 
-Building export templates
--------------------------
+Build các mẫu xuất
+------------------
 
-To build macOS export templates, you have to compile using the targets without
-the editor: ``target=template_release`` (release template) and
-``target=template_debug``.
+Để build các mẫu xuất macOS, bạn phải biên dịch bằng các target không có trình chỉnh sửa: ``target=template_release`` (mẫu release) và ``target=template_debug``.
 
-Official templates are *Universal 2* binaries which support both ARM64 and Intel
-x86_64 architectures.
+Các mẫu chính thức là các tệp nhị phân *Universal 2*, hỗ trợ cả kiến trúc ARM64 và Intel x86_64.
 
-- To support ARM64 (Apple Silicon) + Intel x86_64:
+- Để hỗ trợ ARM64 (Apple Silicon) + Intel x86_64:
 
     ::
 
@@ -252,105 +208,78 @@ x86_64 architectures.
         scons platform=macos target=template_debug arch=x86_64
         scons platform=macos target=template_release arch=x86_64 generate_bundle=yes
 
-- To support ARM64 (Apple Silicon) only (smaller file size, but less compatible with older hardware):
+- Để chỉ hỗ trợ ARM64 (Apple Silicon) (kích thước tệp nhỏ hơn nhưng kém tương thích hơn với phần cứng cũ):
 
     ::
 
         scons platform=macos target=template_debug arch=arm64
         scons platform=macos target=template_release arch=arm64 generate_bundle=yes
 
-To create a ``.app`` bundle like in the official builds, you need to use the
-template located in ``misc/dist/macos_template.app``. This process can be automated by using
-the ``generate_bundle=yes`` option on the *last* SCons command used to build export templates
-(so that all binaries can be included). This will create a ``godot_macos.zip`` file in ``bin/``
-and additionally takes care of calling ``lipo`` to create a *Universal 2* binary from two separate
-ARM64 and x86_64 binaries (if both were compiled beforehand).
+Để tạo gói ``.app`` như trong các bản build chính thức, bạn cần sử dụng mẫu nằm tại ``misc/dist/macos_template.app``. Có thể tự động hóa quy trình này bằng cách sử dụng tùy chọn ``generate_bundle=yes`` trong lệnh SCons *cuối cùng* dùng để build các mẫu xuất (để tất cả tệp nhị phân có thể được đưa vào). Thao tác này sẽ tạo tệp ``godot_macos.zip`` trong ``bin/`` và đồng thời đảm nhiệm việc gọi ``lipo`` để tạo một tệp nhị phân *Universal 2* từ hai tệp nhị phân ARM64 và x86_64 riêng biệt (nếu cả hai đã được biên dịch trước đó).
 
 .. note::
 
-    You also need to include support for the MoltenVK Vulkan portability
-    library. By default, it will be linked statically from your installation of
-    the Vulkan SDK for macOS. You can also choose to link it dynamically by
-    passing ``use_volk=yes`` and including the dynamic library in your ``.app``
-    bundle:
+    Bạn cũng cần thêm hỗ trợ cho thư viện khả chuyển Vulkan MoltenVK. Theo mặc định, thư viện này sẽ được liên kết tĩnh từ bản cài đặt Vulkan SDK cho macOS. Bạn cũng có thể chọn liên kết động bằng cách truyền ``use_volk=yes`` và đưa thư viện động vào gói ``.app`` của mình:
 
     ::
 
         mkdir -p macos_template.app/Contents/Frameworks
         cp <Vulkan SDK path>/macOS/libs/libMoltenVK.dylib macos_template.app/Contents/Frameworks/libMoltenVK.dylib
 
-    In most cases, static linking should be preferred as it makes distribution
-    easier. The main upside of dynamic linking is that it allows updating
-    MoltenVK without having to recompile export templates.
+    Trong hầu hết trường hợp, nên ưu tiên liên kết tĩnh vì việc phân phối sẽ dễ dàng hơn. Ưu điểm chính của liên kết động là cho phép cập nhật MoltenVK mà không cần biên dịch lại các mẫu xuất.
 
-If you created the ``.app`` manually, you can zip the ``macos_template.app`` folder
-to reproduce the ``macos.zip`` template from the official Godot distribution:
+Nếu đã tạo ``.app`` theo cách thủ công, bạn có thể nén thư mục ``macos_template.app`` để tái tạo mẫu ``macos.zip`` từ bản phân phối Godot chính thức:
 
 ::
 
     zip -r9 macos.zip macos_template.app
 
-To use your custom export templates, you can select the ``godot_macos.zip`` file in
-the advanced options of your export presets:
+Để sử dụng các mẫu xuất tùy chỉnh, bạn có thể chọn tệp ``godot_macos.zip`` trong các tùy chọn nâng cao của các cấu hình xuất:
 
 .. image:: img/mactemplates.webp
 
-Alternatively, if you want all your presets to use your custom export template, you
-can rename the ``godot_macos.zip`` file to ``macos.zip`` and move it to the default
-location for export templates:
+Ngoài ra, nếu muốn tất cả cấu hình xuất sử dụng mẫu xuất tùy chỉnh, bạn có thể đổi tên tệp ``godot_macos.zip`` thành ``macos.zip`` rồi di chuyển tệp đến vị trí mặc định của các mẫu xuất:
 
-::
-    ~/Library/Application Support/Godot/export_templates/<GODOT_VERSION>/macos.zip
+:: ~/Library/Application Support/Godot/export_templates/<GODOT_VERSION>/macos.zip
 
-Cross-compiling for macOS from Linux
-------------------------------------
+Biên dịch chéo cho macOS từ Linux
+---------------------------------
 
-It is possible to compile for macOS in a Linux environment (and maybe also in
-Windows using the Windows Subsystem for Linux). For that, you'll need to install
-`OSXCross <https://github.com/tpoechtrager/osxcross>`__ to be able to use macOS
-as a target. First, follow the instructions to install it:
+Có thể biên dịch cho macOS trong môi trường Linux (và có thể cả trên Windows bằng Windows Subsystem for Linux). Để thực hiện việc này, bạn cần cài đặt `OSXCross <https://github.com/tpoechtrager/osxcross>`__ để có thể sử dụng macOS làm target. Trước tiên, hãy làm theo hướng dẫn để cài đặt:
 
-Clone the `OSXCross repository <https://github.com/tpoechtrager/osxcross>`__
-somewhere on your machine (or download a ZIP file and extract it somewhere), e.g.:
+Sao chép `kho OSXCross <https://github.com/tpoechtrager/osxcross>`__ vào một vị trí nào đó trên máy (hoặc tải xuống tệp ZIP rồi giải nén vào một vị trí), ví dụ:
 
 ::
 
     git clone --depth=1 https://github.com/tpoechtrager/osxcross.git "$HOME/osxcross"
 
-1. Follow the instructions to package the SDK:
-   https://github.com/tpoechtrager/osxcross#packaging-the-sdk
-2. Follow the instructions to install OSXCross:
-   https://github.com/tpoechtrager/osxcross#installation
+1. Làm theo hướng dẫn để đóng gói SDK: https://github.com/tpoechtrager/osxcross#packaging-the-sdk 2. Làm theo hướng dẫn để cài đặt OSXCross: https://github.com/tpoechtrager/osxcross#installation
 
-After that, you will need to define the ``OSXCROSS_ROOT`` as the path to
-the OSXCross installation (the same place where you cloned the
-repository/extracted the zip), e.g.:
+Sau đó, bạn cần định nghĩa ``OSXCROSS_ROOT`` là đường dẫn đến bản cài đặt OSXCross (cùng vị trí mà bạn đã sao chép kho lưu trữ/giải nén tệp zip), ví dụ:
 
 ::
 
     export OSXCROSS_ROOT="$HOME/osxcross"
 
-Now you can compile with SCons like you normally would:
+Bây giờ bạn có thể biên dịch bằng SCons như bình thường:
 
 ::
 
     scons platform=macos
 
-If you have an OSXCross SDK version different from the one expected by the SCons buildsystem, you can specify a custom one with the ``osxcross_sdk`` argument:
+Nếu bạn có phiên bản SDK OSXCross khác với phiên bản mà hệ thống build SCons mong đợi, bạn có thể chỉ định phiên bản tùy chỉnh bằng đối số ``osxcross_sdk``:
 
 ::
 
     scons platform=macos osxcross_sdk=darwin15
 
-Troubleshooting
+Khắc phục sự cố
 ---------------
 
-Fatal error: 'cstdint' file not found
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Lỗi nghiêm trọng: không tìm thấy tệp 'cstdint'
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you get a compilation error of this form early on, it's likely because
-the Xcode command line tools installation needs to be repaired after
-a macOS or Xcode update:
+Nếu gặp lỗi biên dịch có dạng này ngay từ đầu, nguyên nhân có thể là do cần sửa chữa việc cài đặt các công cụ dòng lệnh Xcode sau khi cập nhật macOS hoặc Xcode:
 
 .. code:: text
 
@@ -358,12 +287,11 @@ a macOS or Xcode update:
     45 | #include <cstdint>
        |          ^~~~~~~~~
 
-Run these two commands to reinstall Xcode command line tools
-(enter your administrator password as needed):
+Chạy hai lệnh này để cài đặt lại các công cụ dòng lệnh Xcode (nhập mật khẩu quản trị viên khi được yêu cầu):
 
 ::
 
     sudo rm -rf /Library/Developer/CommandLineTools
     sudo xcode-select --install
 
-If it still does not work, try updating Xcode from the Mac App Store and try again.
+Nếu vẫn không hoạt động, hãy thử cập nhật Xcode từ Mac App Store rồi thử lại.

@@ -4,36 +4,24 @@ Instruments
 ===========
 
 .. seealso:: Please see the :ref:`sampling profiler instructions <doc_sampling_profilers>`
-             and the :ref:`tracing profiler instructions <doc_tracing_profilers>` for
-             more information.
+             và :ref:`tracing profiler instructions <doc_tracing_profilers>` để biết thêm thông tin.
 
-- Open `Xcode <https://developer.apple.com/xcode/>`__.
-  Select **Open Developer Tool** - **Instruments** from the **Xcode** app menu:
-- Double-click on **Time Profiler** in the **Instruments** window:
+- Mở `Xcode <https://developer.apple.com/xcode/>`__. Chọn **Open Developer Tool** - **Instruments** từ menu ứng dụng **Xcode**: - Nhấp đúp vào **Time Profiler** trong cửa sổ **Instruments**:
 
 .. image:: img/cpp_profiler_xcode_menu.png
 
-- In the Time Profiler window, click on the **Target** menu, select **Choose target...**
-  and specify the path to the Godot binary, command line arguments, and environment variables
-  in the next window.
+- Trong cửa sổ Time Profiler, nhấp vào menu **Target**, chọn **Choose target...** rồi chỉ định đường dẫn đến tệp nhị phân Godot, các đối số dòng lệnh và các biến môi trường trong cửa sổ tiếp theo.
 
 .. image:: img/cpp_profiler_time_profiler.png
 
-- You can also attach the Time Profiler to a running process by selecting it from the **Target**
-  menu.
+- Bạn cũng có thể đính kèm Time Profiler vào một tiến trình đang chạy bằng cách chọn tiến trình đó từ menu **Target**.
 
-- Click the **Start an immediate mode recording** button to start profiling.
+- Nhấp vào nút **Start an immediate mode recording** để bắt đầu lập hồ sơ hiệu năng.
 
 .. image:: img/cpp_profiler_time_profiler_record.png
 
-- Perform the actions you wish to profile in the editor or project. When you're done,
-  click the **Stop** button.
+- Thực hiện các thao tác bạn muốn lập hồ sơ hiệu năng trong trình chỉnh sửa hoặc dự án. Khi hoàn tất, nhấp vào nút **Stop**.
 
-- Wait for the results to appear.
-- At the bottom of the window you will see a call tree for all CPU threads started, and
-  the **Heaviest Stack Trace** overview.
-- Select **Hide system libraries** in the **Call Tree** menu (at the bottom of the window) to
-  remove external modules.
-- You can use the timeline at the top of the window to display details for the specific time period.
+- Chờ kết quả xuất hiện. - Ở cuối cửa sổ, bạn sẽ thấy cây lời gọi cho tất cả các luồng CPU đã khởi chạy và phần tổng quan **Heaviest Stack Trace**. - Chọn **Hide system libraries** trong menu **Call Tree** (ở cuối cửa sổ) để loại bỏ các mô-đun bên ngoài. - Bạn có thể sử dụng dòng thời gian ở đầu cửa sổ để hiển thị thông tin chi tiết cho khoảng thời gian cụ thể.
 
 .. image:: img/cpp_profiler_time_profiler_result.png

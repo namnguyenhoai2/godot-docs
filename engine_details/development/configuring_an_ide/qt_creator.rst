@@ -3,110 +3,85 @@
 Qt Creator
 ==========
 
-`Qt Creator <https://doc.qt.io/qtcreator/index.html>`_ is a free, open source IDE for all desktop platforms.
+`Qt Creator <https://doc.qt.io/qtcreator/index.html>`_ là một IDE mã nguồn mở, miễn phí dành cho tất cả các nền tảng máy tính để bàn.
 
-Importing the project
----------------------
+Nhập dự án
+----------
 
-- From the Qt Creator's main screen select **New Project > Import Project > Import Existing Project**.
+- Từ màn hình chính của Qt Creator, chọn **New Project > Import Project > Import Existing Project**.
 
 .. figure:: img/qtcreator-new-project.png
    :figclass: figure-w480
    :align: center
 
-- Under **Location** select the Godot root folder.
+- Trong **Location**, chọn thư mục gốc của Godot.
 
 .. figure:: img/qtcreator-set-project-path.png
    :figclass: figure-w480
    :align: center
 
-- Next, you can choose which folders and files will be visible to the project.
-  While C/C++ files are added automatically, other extensions can be potentially useful:
-  ``*.glsl`` for shader files, ``*.py`` for buildsystem files,
-  ``*.java`` for Android platform development, ``*.mm`` for macOS platform development.
+- Tiếp theo, bạn có thể chọn những thư mục và tệp sẽ hiển thị trong dự án. Mặc dù các tệp C/C++ được tự động thêm vào, các phần mở rộng khác cũng có thể hữu ích: ``*.glsl`` cho các tệp shader, ``*.py`` cho các tệp hệ thống xây dựng, ``*.java`` cho việc phát triển trên nền tảng Android, ``*.mm`` cho việc phát triển trên nền tảng macOS.
 
 .. figure:: img/qtcreator-apply-import-filter.png
    :figclass: figure-w480
    :align: center
 
 .. note:: You can change this configuration later by right-clicking on your project
-          and selecting the **Edit Files...** option.
+          và chọn tùy chọn **Edit Files...**.
 
           .. figure:: img/qtcreator-edit-files-menu.png
             :figclass: figure-w480
             :align: center
 
 
-- Finish the import.
-- Open the ``project_name.includes`` file and add a line containing ``.`` to it
-  to correctly enable the code completion.
+- Hoàn tất việc nhập. - Mở tệp ``project_name.includes`` và thêm một dòng chứa ``.`` vào tệp để bật tính năng tự động hoàn thành mã một cách chính xác.
 
 .. figure:: img/qtcreator-project-name-includes.png
    :figclass: figure-w480
    :align: center
 
-- From the left-side menu select **Projects** and open the **Build** tab.
-- Delete the predefined ``make`` build step.
+- Từ menu bên trái, chọn **Projects** và mở tab **Build**. - Xóa bước xây dựng ``make`` được định sẵn.
 
 .. figure:: img/qtcreator-projects-build.png
    :figclass: figure-w480
    :align: center
 
-- Click **Add Build Step > Custom Process Step** to add a new build step
-  with the following settings:
+- Nhấp vào **Add Build Step > Custom Process Step** để thêm một bước xây dựng mới với các cài đặt sau:
 
-  +-----------+------------------------------------------------------------------------------+
-  | Command   | **scons**                                                                    |
-  +-----------+------------------------------------------------------------------------------+
-  | Arguments | See :ref:`doc_introduction_to_the_buildsystem` for a full list of arguments. |
-  +-----------+------------------------------------------------------------------------------+
+  +-----------+------------------------------------------------------------------------------+ | Command | **scons** | +-----------+------------------------------------------------------------------------------+ | Arguments | Xem :ref:`doc_introduction_to_the_buildsystem` để biết danh sách đầy đủ các đối số. | +-----------+------------------------------------------------------------------------------+
 
 .. figure:: img/qtcreator-set-scons-command.png
    :figclass: figure-w480
    :align: center
 
 .. note:: If the build fails with ``Could not start process "scons"``, it can mean that ``scons``
-          is not in your ``PATH`` environment variable. In this case, you'll have to specify the
-          full path to the SCons binary.
+          không nằm trong biến môi trường ``PATH`` của bạn. Trong trường hợp này, bạn sẽ phải chỉ định đường dẫn đầy đủ đến tệp nhị phân SCons.
 
-Debugging the project
----------------------
+Gỡ lỗi dự án
+------------
 
-- From the left-side menu select **Projects** and open the **Run** tab.
-- Under **Executable** specify the path to your executable located in
-  the ``<Godot root directory>/bin`` folder. The name depends on your build configuration,
-  e.g. ``godot.linuxbsd.editor.dev.x86_64`` for 64-bit LinuxBSD platform with
-  ``platform=editor`` and ``dev_build=yes``.
-  You can use ``%{buildDir}`` to reference the project root, e.g: ``%{buildDir}/bin/godot.linuxbsd.editor.dev.x86_64``.
-- If you want to run a specific project, specify its root folder under **Working directory**.
-- If you want to run the editor, add ``-e`` to the **Command line arguments** field.
+- Từ menu bên trái, chọn **Projects** và mở tab **Run**. - Trong **Executable**, chỉ định đường dẫn đến tệp thực thi nằm trong thư mục ``<Godot root directory>/bin``. Tên tệp phụ thuộc vào cấu hình xây dựng của bạn, ví dụ ``godot.linuxbsd.editor.dev.x86_64`` cho nền tảng LinuxBSD 64-bit với ``platform=editor`` và ``dev_build=yes``. Bạn có thể sử dụng ``%{buildDir}`` để tham chiếu đến thư mục gốc của dự án, ví dụ: ``%{buildDir}/bin/godot.linuxbsd.editor.dev.x86_64``. - Nếu muốn chạy một dự án cụ thể, hãy chỉ định thư mục gốc của dự án đó trong **Working directory**. - Nếu muốn chạy trình chỉnh sửa, hãy thêm ``-e`` vào trường **Command line arguments**.
 
 .. figure:: img/qtcreator-run-command.png
    :figclass: figure-w480
    :align: center
 
-To learn more about command line arguments, refer to the
+Để tìm hiểu thêm về các đối số dòng lệnh, hãy tham khảo
 :ref:`command line tutorial <doc_command_line_tutorial>`.
 
-Code style configuration
-------------------------
+Cấu hình kiểu mã
+----------------
 
-Developers must follow the project's `code style <https://contributing.godotengine.org/en/latest/engine/guidelines/code_style.html>`__
-and the IDE should help them follow it. By default, Qt Creator uses spaces
-for indentation which doesn't match the Godot code style guidelines. You can
-change this behavior by changing the **Code Style** in **Tools > Options > C++**.
+Các nhà phát triển phải tuân theo `kiểu mã <https://contributing.godotengine.org/en/latest/engine/guidelines/code_style.html>`__ của dự án và IDE phải hỗ trợ họ tuân theo kiểu mã đó. Theo mặc định, Qt Creator sử dụng khoảng trắng để thụt lề, điều này không phù hợp với hướng dẫn về kiểu mã của Godot. Bạn có thể thay đổi hành vi này bằng cách thay đổi **Code Style** trong **Tools > Options > C++**.
 
 .. figure:: img/qtcreator-options-cpp.png
    :figclass: figure-w480
    :align: center
 
-Click on **Edit** to change the current settings, then click on
-**Copy Built-in Code Style** button to set a new code style. Set a name for it
-(e.g. Godot) and change the Tab policy to be **Tabs Only**.
+Nhấp vào **Edit** để thay đổi cài đặt hiện tại, sau đó nhấp vào nút **Copy Built-in Code Style** để thiết lập một kiểu mã mới. Đặt tên cho kiểu mã đó (ví dụ: Godot) và thay đổi chính sách Tab thành **Tabs Only**.
 
 .. figure:: img/qtcreator-edit-codestyle.png
    :figclass: figure-w480
    :align: center
 
-If you run into any issues, ask for help in one of
-`Godot's community channels <https://godotengine.org/community>`__.
+Nếu gặp bất kỳ vấn đề nào, hãy yêu cầu trợ giúp trong một trong các `kênh cộng đồng của Godot <https://godotengine.org/community>`__.

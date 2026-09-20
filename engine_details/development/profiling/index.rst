@@ -1,108 +1,76 @@
 .. _doc_using_cpp_profilers:
 
-Using C++ profilers
-===================
+Sử dụng trình phân tích hiệu năng C++
+=====================================
 
-To optimize Godot's performance, you need to know what to optimize first.
-To this end, profilers are useful tools.
+Để tối ưu hóa hiệu năng của Godot, trước tiên bạn cần biết nên tối ưu phần nào. Trình phân tích hiệu năng là công cụ hữu ích cho mục đích này.
 
 .. note::
 
-    There is a :ref:`built-in GDScript profiler <doc_the_profiler>` in the editor,
-    but using a C++ profiler may be useful in cases where the GDScript profiler
-    is not accurate enough or is missing information due to bugs in the profiler.
+    Trong trình chỉnh sửa có :ref:`built-in GDScript profiler <doc_the_profiler>`, nhưng việc sử dụng trình phân tích hiệu năng C++ có thể hữu ích trong những trường hợp trình phân tích GDScript không đủ chính xác hoặc thiếu thông tin do lỗi trong trình phân tích.
 
-There are two main types of profilers: sampling profilers and tracing profilers.
+Có hai loại trình phân tích hiệu năng chính: trình phân tích lấy mẫu và trình phân tích truy vết.
 
-Sampling profilers periodically interrupt the running program and take a "sample",
-which records which functions are running. Using this information, the profiler
-estimates which functions the program spent the most time in.
+Trình phân tích lấy mẫu định kỳ ngắt chương trình đang chạy và lấy một "mẫu", ghi lại những hàm đang chạy. Dựa trên thông tin này, trình phân tích ước tính những hàm mà chương trình đã dành nhiều thời gian nhất để thực thi.
 
-Tracing profilers work by recording application-specific events (such as the
-start and end of a single frame), producing a log called a "trace". The profiler
-can use the trace to produce a graph showing an accurate high-level timeline of
-what happened. However, any code that is not explicitly instrumented will not
-appear in a tracing profiler's timeline!
+Trình phân tích truy vết hoạt động bằng cách ghi lại các sự kiện cụ thể của ứng dụng (chẳng hạn như thời điểm bắt đầu và kết thúc của một khung hình), tạo ra một nhật ký gọi là "trace". Trình phân tích có thể sử dụng trace để tạo biểu đồ hiển thị dòng thời gian cấp cao chính xác về những gì đã xảy ra. Tuy nhiên, mọi mã không được chèn mã đo lường một cách rõ ràng sẽ không xuất hiện trên dòng thời gian của trình phân tích truy vết!
 
-Godot supports both sampling profilers and tracing profilers, and already
-includes the logging code for common Godot events for use with a tracing profiler!
+Godot hỗ trợ cả trình phân tích lấy mẫu và trình phân tích truy vết, đồng thời đã tích hợp sẵn mã ghi nhật ký cho các sự kiện Godot phổ biến để sử dụng với trình phân tích truy vết!
 
-Different problems may be easier to debug with one kind of profiler over the other,
-but it's difficult to provide a set of rules for which to use. Give both a try,
-and see what you can learn from them!
+Các vấn đề khác nhau có thể dễ gỡ lỗi hơn bằng một loại trình phân tích này so với loại kia, nhưng rất khó đưa ra một bộ quy tắc về việc nên sử dụng loại nào. Hãy thử cả hai và xem bạn có thể học được gì từ chúng!
 
 .. _doc_sampling_profilers:
 
-Sampling profilers
-------------------
+Trình phân tích lấy mẫu
+-----------------------
 
-We recommend the following sampling profilers:
+Chúng tôi khuyến nghị các trình phân tích lấy mẫu sau:
 
-- :ref:`VerySleepy <doc_profiler_very_sleepy>` (Windows only)
-- :ref:`Hotspot <doc_profiler_hotspot>` (Linux only)
-- :ref:`Instruments <doc_profiler_instruments>` (Apple only)
+- :ref:`VerySleepy <doc_profiler_very_sleepy>` (chỉ dành cho Windows) - :ref:`Hotspot <doc_profiler_hotspot>` (chỉ dành cho Linux) - :ref:`Instruments <doc_profiler_instruments>` (chỉ dành cho Apple)
 
-These profilers may not be the most powerful or flexible options, but their
-standalone operation and limited feature set tends to make them easier to use.
+Những trình phân tích này có thể không phải là các tùy chọn mạnh mẽ hoặc linh hoạt nhất, nhưng khả năng hoạt động độc lập và tập tính năng hạn chế thường khiến chúng dễ sử dụng hơn.
 
-Setting up Godot
-~~~~~~~~~~~~~~~~
+Thiết lập Godot
+~~~~~~~~~~~~~~~
 
-To get useful profiling information, it is **absolutely required** to use a Godot
-build that includes debugging symbols. Official binaries do not include debugging
-symbols, since these would make the download size significantly larger.
+Để nhận được thông tin phân tích hiệu năng hữu ích, **bắt buộc** phải sử dụng bản dựng Godot có chứa ký hiệu gỡ lỗi. Các tệp nhị phân chính thức không chứa ký hiệu gỡ lỗi, vì chúng sẽ làm kích thước tải xuống tăng đáng kể.
 
-To get profiling data that best matches the production environment (but with debugging symbols),
-you should compile binaries with the ``production=yes debug_symbols=yes`` SCons options.
+Để có dữ liệu phân tích hiệu năng phù hợp nhất với môi trường phát hành (nhưng vẫn có ký hiệu gỡ lỗi), bạn nên biên dịch các tệp nhị phân với các tùy chọn SCons ``production=yes debug_symbols=yes``.
 
-It is possible to run a profiler on less optimized builds (e.g. ``target=template_debug`` without LTO),
-but results will naturally be less representative of real world conditions.
+Có thể chạy trình phân tích hiệu năng trên các bản dựng được tối ưu hóa ít hơn (ví dụ: ``target=template_debug`` không có LTO), nhưng kết quả đương nhiên sẽ ít phản ánh các điều kiện thực tế hơn.
 
 .. warning::
 
-    Do *not* strip debugging symbols on the binaries using the ``strip`` command
-    after compiling the binaries. Otherwise, you will no longer get useful
-    profiling information when running a profiler.
+    *Không* được tước bỏ ký hiệu gỡ lỗi khỏi các tệp nhị phân bằng lệnh ``strip`` sau khi biên dịch chúng. Nếu không, bạn sẽ không còn nhận được thông tin phân tích hiệu năng hữu ích khi chạy trình phân tích.
 
-Benchmarking startup/shutdown times
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Đo thời gian khởi động/tắt máy
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you're looking into optimizing Godot's startup/shutdown performance,
-you can tell the profiler to use the ``--quit`` command line option on the Godot binary.
-This will exit Godot just after it's done starting.
-The ``--quit`` option works with ``--editor``, ``--project-manager``, and
-``--path <path to project directory>`` (which runs a project directly).
+Nếu bạn đang tìm cách tối ưu hiệu năng khởi động/tắt máy của Godot, bạn có thể yêu cầu trình phân tích sử dụng tùy chọn dòng lệnh ``--quit`` trên tệp nhị phân Godot. Tùy chọn này sẽ thoát Godot ngay sau khi quá trình khởi động hoàn tất. Tùy chọn ``--quit`` hoạt động với ``--editor``, ``--project-manager`` và ``--path <path to project directory>`` (tùy chọn này chạy trực tiếp một dự án).
 
 .. seealso::
 
-    See :ref:`doc_command_line_tutorial` for more command line arguments
-    supported by Godot.
+    Xem :ref:`doc_command_line_tutorial` để biết thêm các đối số dòng lệnh được Godot hỗ trợ.
 
 .. _doc_tracing_profilers:
 
-Tracing profilers
------------------
+Trình phân tích truy vết
+------------------------
 
-Godot currently supports three tracing profilers:
+Hiện tại Godot hỗ trợ ba trình phân tích truy vết:
 
-- :ref:`Tracy <doc_profiler_tracy>`
-- :ref:`Perfetto <doc_profiler_perfetto>`
-- :ref:`Instruments <doc_profiler_instruments>` (Apple only)
+- :ref:`Tracy <doc_profiler_tracy>` - :ref:`Perfetto <doc_profiler_perfetto>` - :ref:`Instruments <doc_profiler_instruments>` (chỉ dành cho Apple)
 
 .. note::
 
-    Perfetto is the default tracing system for Android, so pre-built export templates
-    with Perfetto built-in and enabled are provided from
-    the `GitHub Releases page <https://github.com/godotengine/godot-builds/releases>`__.
+    Perfetto là hệ thống truy vết mặc định cho Android, vì vậy các mẫu xuất dựng sẵn có tích hợp và bật Perfetto được cung cấp tại `GitHub Releases page <https://github.com/godotengine/godot-builds/releases>`__.
 
-In order to use either of them, you'll need to build the engine from source.
-If you've never done this before, please read
+Để sử dụng một trong hai trình phân tích này, bạn sẽ cần biên dịch engine từ mã nguồn. Nếu trước đây bạn chưa từng làm việc này, vui lòng đọc
 :ref:`these docs <doc_compiling_index>` for the platform you want to profile on.
-You'll need to perform the same steps here, but with some additional arguments
-for ``scons``.
+Bạn sẽ cần thực hiện các bước tương tự ở đây, nhưng với một số đối số bổ sung cho ``scons``.
 
-All recommended profilers
--------------------------
+Tất cả trình phân tích hiệu năng được khuyến nghị
+-------------------------------------------------
 
 .. toctree::
    :maxdepth: 1

@@ -1,14 +1,12 @@
 .. _doc_compiling_for_visionos:
 
-Compiling for visionOS
+Biên dịch cho visionOS
 ======================
 
 .. seealso::
 
-    This page describes how to compile visionOS export template binaries from source.
-    If you're looking to export your project to visionOS instead, see :ref:`doc_exporting_for_visionos`.
+    Trang này mô tả cách biên dịch các tệp nhị phân mẫu xuất visionOS từ mã nguồn. Nếu bạn muốn xuất dự án của mình sang visionOS, hãy xem :ref:`doc_exporting_for_visionos`.
 
-Compiling instructions for visionOS are currently identical to
+Các hướng dẫn biên dịch cho visionOS hiện giống hệt với
 :ref:`doc_compiling_for_ios`, except you should replace instances of
-``platform=ios`` with ``platform=visionos`` in the SCons options.
-See the linked page for details.
+``platform=ios`` với ``platform=visionos`` trong các tùy chọn SCons. Hãy xem trang được liên kết để biết chi tiết.

@@ -2,19 +2,15 @@
 
 .. _doc_gdextension:
 
-The GDExtension system
-======================
+Hệ thống GDExtension
+====================
 
-**GDExtension** is a Godot-specific technology that lets the engine interact with
-native `shared libraries <https://en.wikipedia.org/wiki/Shared_library>`__
-at runtime. You can use it to run native code without compiling it with the engine.
+**GDExtension** là một công nghệ dành riêng cho Godot, cho phép engine tương tác với các `thư viện dùng chung <https://en.wikipedia.org/wiki/Shared_library>`__ gốc trong thời gian chạy. Bạn có thể sử dụng công nghệ này để chạy mã gốc mà không cần biên dịch mã đó cùng với engine.
 
 .. note:: GDExtension is *not* a scripting language and has no relation to
           :ref:`GDScript <doc_gdscript>`.
 
-This section describes how GDExtension works, and is generally aimed at people wanting to make a GDExtension from
-scratch, for example to create language bindings. If you want to use existing language bindings, please refer to other
-articles instead, such as the articles about :ref:`C++ (godot-cpp) <doc_godot_cpp>` or one of the
+Phần này mô tả cách GDExtension hoạt động và nhìn chung dành cho những người muốn tự xây dựng một GDExtension từ đầu, chẳng hạn như để tạo các binding ngôn ngữ. Nếu bạn muốn sử dụng các binding ngôn ngữ hiện có, vui lòng tham khảo các bài viết khác, chẳng hạn như các bài viết về :ref:`C++ (godot-cpp) <doc_godot_cpp>` hoặc một trong các
 :ref:`community-made ones <doc_what_is_gdnative_third_party_bindings>`.
 
 .. toctree::

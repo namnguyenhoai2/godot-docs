@@ -5,72 +5,55 @@ Perfetto
 
 .. seealso:: Please see the :ref:`tracing profiler instructions <doc_tracing_profilers>` for more information.
 
-`Perfetto <https://perfetto.dev>`__ is the default tracing system for Android. In fact, its system tracing
-service has been built into the platform since Android 9.
+`Perfetto <https://perfetto.dev>`__ là hệ thống tracing mặc định cho Android. Trên thực tế, dịch vụ tracing của hệ thống đã được tích hợp vào nền tảng kể từ Android 9.
 
-Using official Perfetto templates
----------------------------------
+Sử dụng các template Perfetto chính thức
+----------------------------------------
 
-Starting with Godot 4.7, Perfetto export templates are provided for every stable Godot release and can be
-downloaded from the `GitHub Releases page <https://github.com/godotengine/godot/releases/>`_.
+Kể từ Godot 4.7, các template xuất Perfetto được cung cấp cho mọi bản phát hành Godot ổn định và có thể được tải xuống từ `trang GitHub Releases <https://github.com/godotengine/godot/releases/>`_.
 
-Using the Gradle build template
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sử dụng template build Gradle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Navigate to the release page and download the ``Godot_v<godot_version>_android_source.perfetto.zip``
-  release artifact where ``godot_version`` corresponds to the version of the engine being used.
-- In the **Project > Export** dialog, **Advanced Options** and **Use Gradle Build** must be enabled.
-- Point **Android Source Template** to the downloaded export template.
+- Đi đến trang phát hành và tải xuống artifact phát hành ``Godot_v<godot_version>_android_source.perfetto.zip``, trong đó ``godot_version`` tương ứng với phiên bản engine đang được sử dụng. - Trong hộp thoại **Project > Export**, phải bật **Advanced Options** và **Use Gradle Build**. - Trỏ **Android Source Template** đến template xuất đã tải xuống.
 
 .. image:: img/cpp_profiler_perfetto_gradle_build_config.webp
 
-Follow the instructions in the :ref:`Configuration section <doc_profiler_perfetto_configuration>` to
-learn how to configure and create a trace.
+Làm theo hướng dẫn trong :ref:`Configuration section <doc_profiler_perfetto_configuration>` để tìm hiểu cách cấu hình và tạo trace.
 
-Using non-gradle build templates
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sử dụng các template build không dùng Gradle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Navigate to the release page and download the following release artifacts
-  where ``godot_version`` corresponds to the version of the engine being used:
+- Đi đến trang phát hành và tải xuống các artifact phát hành sau, trong đó ``godot_version`` tương ứng với phiên bản engine đang được sử dụng:
 
-  - ``Godot_v<godot_version>_android_debug.perfetto.apk`` (for debug builds)
-  - ``Godot_v<godot_version>_android_release.perfetto.apk`` (for release builds)
+  - ``Godot_v<godot_version>_android_debug.perfetto.apk`` (dành cho các bản build debug) - ``Godot_v<godot_version>_android_release.perfetto.apk`` (dành cho các bản build release)
 
-- In the **Project > Export** dialog:
+- Trong hộp thoại **Project > Export**:
 
-  - **Advanced Options** must be enabled
-  - **Use Gradle Build** must be disabled
+  - Phải bật **Advanced Options** - Phải tắt **Use Gradle Build**
 
-- Point **Custom Template** to the downloaded export templates.
+- Trỏ **Custom Template** đến các template xuất đã tải xuống.
 
 .. image:: img/cpp_profiler_perfetto_non_gradle_build_config.webp
 
-Follow the instructions in the :ref:`Configuration section <doc_profiler_perfetto_configuration>` to
-learn how to configure and create a trace.
+Làm theo hướng dẫn trong :ref:`Configuration section <doc_profiler_perfetto_configuration>` để tìm hiểu cách cấu hình và tạo trace.
 
-Custom Godot builds with Perfetto support
------------------------------------------
+Các bản build Godot tùy chỉnh có hỗ trợ Perfetto
+------------------------------------------------
 
-From the ``godot`` root directory, run the following python script to install
-the latest version of the Perfetto SDK under ``thirdparty/perfetto``:
+Từ thư mục gốc ``godot``, chạy script python sau để cài đặt phiên bản mới nhất của Perfetto SDK vào ``thirdparty/perfetto``:
 
 .. code-block:: shell
 
     python misc/scripts/install_perfetto.py
 
-Next, build the Android debug or release templates for your architecture using
-``scons`` (per :ref:`Compiling for Android <doc_compiling_for_android>`), but
-adding the ``profiler=perfetto`` argument.
+Tiếp theo, build các template Android debug hoặc release cho kiến trúc của bạn bằng ``scons`` (theo :ref:`Compiling for Android <doc_compiling_for_android>`), nhưng thêm đối số ``profiler=perfetto``.
 
 .. note::
 
-    It's generally recommended to profile release templates, because that is
-    the version your players will use, and it will perform differently than
-    other types of builds. However, in the case of Android, it can sometimes
-    be useful to use debug templates, because Godot can only do remote
-    debugging of games exported from debug templates.
+    Nhìn chung, bạn nên profile các template release vì đó là phiên bản mà người chơi sẽ sử dụng, và hiệu năng của nó sẽ khác với các loại build khác. Tuy nhiên, trong trường hợp Android, đôi khi việc sử dụng các template debug có thể hữu ích, vì Godot chỉ có thể gỡ lỗi từ xa các game được xuất từ các template debug.
 
-For example, to build the release templates for arm64:
+Ví dụ, để build các template release cho arm64:
 
 .. code-block:: shell
 
@@ -78,12 +61,12 @@ For example, to build the release templates for arm64:
 
 .. _doc_profiler_perfetto_configuration:
 
-Configuration
--------------
+Cấu hình
+--------
 
-Perfetto requires a configuration file to tell it which events to track.
+Perfetto yêu cầu một tệp cấu hình để xác định các sự kiện cần theo dõi.
 
-Create a file called ``godot.config`` with this content:
+Tạo một tệp có tên ``godot.config`` với nội dung sau:
 
 .. code-block:: text
 
@@ -111,51 +94,37 @@ Create a file called ``godot.config`` with this content:
 
 .. note::
 
-    Godot records two categories of track events:
+    Godot ghi lại hai danh mục sự kiện track:
 
-    - **godot**: Used to record Godot engine events. This is used for performance analysis.
-      Event tracing overhead should not significantly impact performance.
-      This should be the typical tracing mode for most developers.
-    - **godot_scripting**: Used to record Godot scripting events.
-      This is a slow category as it profiles the entire game scripting logic.
-      This is used for code understanding / debugging / finding what caused a frame hitch.
-      Performance is much slower, but it helps to find that one problematic function call that was otherwise hidden.
+    - **godot**: Dùng để ghi lại các sự kiện của engine Godot. Danh mục này được dùng để phân tích hiệu năng. Chi phí phát sinh từ việc tracing sự kiện không nên ảnh hưởng đáng kể đến hiệu năng. Đây nên là chế độ tracing thông thường đối với hầu hết nhà phát triển. - **godot_scripting**: Dùng để ghi lại các sự kiện scripting của Godot. Đây là một danh mục chậm vì nó profile toàn bộ logic scripting của game. Danh mục này được dùng để tìm hiểu mã / gỡ lỗi / tìm nguyên nhân gây ra hiện tượng giật khung hình. Hiệu năng chậm hơn nhiều, nhưng nó giúp tìm ra một lời gọi hàm có vấn đề vốn bị che khuất.
 
-Record a trace
---------------
+Ghi lại một trace
+-----------------
 
-Finally, launch your game on an Android device using the export templates you
-built earlier.
+Cuối cùng, khởi chạy game trên thiết bị Android bằng các template xuất mà bạn đã build trước đó.
 
-When you're ready to record a trace (for example, when you've hit the part of
-your game that is exhibiting performance issues), you can
-use `this script from the Perfetto GitHub repository <https://github.com/google/perfetto/blob/main/tools/record_android_trace>`_.
+Khi bạn sẵn sàng ghi lại một trace (ví dụ: khi đã đến phần game đang gặp vấn đề về hiệu năng), bạn có thể sử dụng `script này từ kho GitHub của Perfetto <https://github.com/google/perfetto/blob/main/tools/record_android_trace>`_.
 
 .. code-block:: shell
 
     ./record_android_trace -c /path/to/godot.config
 
-This will record for 10 seconds (per the configuration), or until you press
+Thao tác này sẽ ghi lại trong 10 giây (theo cấu hình), hoặc cho đến khi bạn nhấn
 :kbd:`Ctrl + C`.
 
-Examining the trace
--------------------
+Kiểm tra trace
+--------------
 
-As soon as that script exits, it will launch the Perfetto UI in a web browser.
+Ngay khi script đó kết thúc, nó sẽ mở Perfetto UI trong trình duyệt web.
 
-To see the Godot events, expand the row for your application by clicking on its
-Android *Unique Name* / *Package Name* / *App ID* (Perfetto will also include some events from system
-services in the trace).
+Để xem các sự kiện của Godot, hãy mở rộng hàng của ứng dụng bằng cách nhấp vào *Unique Name* / *Package Name* / *App ID* Android của ứng dụng (Perfetto cũng sẽ đưa vào trace một số sự kiện từ các dịch vụ hệ thống).
 
 .. image:: img/cpp_profiler_perfetto.webp
 
-Then you can use the ``WASD`` keys to navigate the graph:
+Sau đó, bạn có thể sử dụng các phím ``WASD`` để điều hướng trên biểu đồ:
 
-- Press :kbd:`A` or :kbd:`D` to navigate forward or backward along the timeline
-- Press :kbd:`W` or :kbd:`S` to zoom in or out
+- Nhấn :kbd:`A` hoặc :kbd:`D` để di chuyển tiến hoặc lùi trên dòng thời gian - Nhấn :kbd:`W` hoặc :kbd:`S` để phóng to hoặc thu nhỏ
 
-You'll probably need to zoom a bit before you're able to see the individual
-events from Godot.
+Có lẽ bạn sẽ cần phóng to một chút trước khi có thể thấy từng sự kiện riêng lẻ từ Godot.
 
-To learn more, see the
-`Perfetto UI documentation <https://perfetto.dev/docs/visualization/perfetto-ui>`_.
+Để tìm hiểu thêm, hãy xem `tài liệu Perfetto UI <https://perfetto.dev/docs/visualization/perfetto-ui>`_.

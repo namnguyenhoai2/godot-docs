@@ -1,52 +1,41 @@
 .. _doc_compiling_with_script_encryption_key:
 
-Compiling with PCK encryption key
-=================================
+Biên dịch với khóa mã hóa PCK
+=============================
 
 .. highlight:: shell
 
-The export dialog gives you the option to encrypt your PCK file with a 256-bit
-AES key when releasing your project. This will make sure your scenes, scripts
-and other resources are not stored in plain text and can not easily be ripped
-by some script kiddie.
+Hộp thoại export cho phép bạn mã hóa tệp PCK bằng khóa AES 256-bit khi phát hành dự án. Điều này đảm bảo các cảnh, tập lệnh và tài nguyên khác của bạn không được lưu dưới dạng văn bản thuần túy và không dễ dàng bị trích xuất bởi một script kiddie nào đó.
 
-Of course, the key needs to be stored in the binary, but if it's compiled,
-optimized and without symbols, it would take some effort to find it.
+Tất nhiên, khóa này cần được lưu trong tệp nhị phân, nhưng nếu tệp đã được biên dịch, tối ưu hóa và không có symbol thì sẽ cần một chút công sức để tìm thấy khóa.
 
-For this to work, you need to build the export templates from source,
-with that same key.
+Để tính năng này hoạt động, bạn cần build các export template từ mã nguồn với cùng khóa đó.
 
 .. warning::
 
-    This will **not** work if you use official, precompiled export templates.
-    It is absolutely **required** to compile your own export templates to use
-    PCK encryption.
+    Điều này **sẽ không** hoạt động nếu bạn sử dụng các export template chính thức, được biên dịch sẵn. Bạn **bắt buộc** phải tự biên dịch các export template của mình để sử dụng tính năng mã hóa PCK.
 
-Step by step
-------------
+Từng bước
+---------
 
-1. Generate a 256-bit AES key in hexadecimal format. You can use the aes-256-cbc variant from
-   `this service <https://asecuritysite.com/encryption/keygen>`_.
+1. Tạo khóa AES 256-bit ở định dạng hệ thập lục phân. Bạn có thể sử dụng biến thể aes-256-cbc từ `dịch vụ này <https://asecuritysite.com/encryption/keygen>`_.
 
-   Alternatively, you can generate it yourself using
-   `OpenSSL <https://www.openssl.org/>`__ command-line tools:
+   Ngoài ra, bạn có thể tự tạo khóa bằng các công cụ dòng lệnh `OpenSSL <https://www.openssl.org/>`__:
 
    ::
 
        openssl rand -hex 32 > godot.gdkey
 
-   The output in ``godot.gdkey`` should be similar to:
+   Đầu ra trong ``godot.gdkey`` sẽ tương tự như sau:
 
    ::
 
        # NOTE: Do not use the key below! Generate your own key instead.
        aeb1bc56aaf580cc31784e9c41551e9ed976ecba10d315db591e749f3f64890f
 
-   You can generate the key without redirecting the output to a file, but
-   that way you can minimize the risk of exposing the key.
+   Bạn có thể tạo khóa mà không chuyển hướng đầu ra vào một tệp, nhưng làm như vậy có thể giảm thiểu nguy cơ để lộ khóa.
 
-2. Set this key as environment variable in the console that you will use to
-   compile Godot, like this:
+2. Đặt khóa này làm biến môi trường trong console mà bạn sẽ sử dụng để biên dịch Godot, như sau:
 
    .. tabs::
     .. code-tab:: bash Linux/macOS
@@ -61,38 +50,29 @@ Step by step
 
        $env:SCRIPT_AES256_ENCRYPTION_KEY="your_generated_key"
 
-   Note that the commands suggested above do **not** persist the variables
-   across terminal sessions.
+   Lưu ý rằng các lệnh được đề xuất ở trên **không** lưu các biến này qua các phiên terminal.
 
-3. Compile Godot export templates and set them as custom export templates
-   in the export preset options. If the environment variable is set correctly,
-   the following message is printed at the beginning of compilation:
+3. Biên dịch các export template của Godot và đặt chúng làm export template tùy chỉnh trong các tùy chọn export preset. Nếu biến môi trường được đặt chính xác, thông báo sau sẽ được in ở đầu quá trình biên dịch:
 
    ::
 
       *** IMPORTANT: Compiling Godot with custom `SCRIPT_AES256_ENCRYPTION_KEY` set as environment variable.
       *** Make sure to use templates compiled with this key when exporting a project with encryption.
 
-4. Set the encryption key in the **Encryption** tab of the export preset:
+4. Đặt khóa mã hóa trong tab **Encryption** của export preset:
 
    .. image:: img/encryption_key.png
 
-   If performing an export from the :ref:`command line <doc_command_line_tutorial>`,
-   before exporting, set the ``GODOT_SCRIPT_ENCRYPTION_KEY`` environment variable
-   to the same value as the one used to compile the export templates
-   (``SCRIPT_AES256_ENCRYPTION_KEY``).
+   Nếu thực hiện export từ :ref:`command line <doc_command_line_tutorial>`, trước khi export, hãy đặt biến môi trường ``GODOT_SCRIPT_ENCRYPTION_KEY`` thành cùng giá trị với giá trị được sử dụng để biên dịch các export template (``SCRIPT_AES256_ENCRYPTION_KEY``).
 
-5. Add filters for the files/folders to encrypt. **By default**, include filters
-   are empty and **nothing will be encrypted**.
+5. Thêm bộ lọc cho các tệp/thư mục cần mã hóa. **Theo mặc định**, các bộ lọc bao gồm đều trống và **sẽ không có gì được mã hóa**.
 
-6. Export the project. The project should run with the files encrypted now.
+6. Export dự án. Bây giờ dự án sẽ chạy với các tệp đã được mã hóa.
 
-Troubleshooting
+Khắc phục sự cố
 ---------------
 
-If you get an error like below, it means the key wasn't properly included in
-your Godot build. Godot is encrypting PCK file during export, but can't read
-it at runtime.
+Nếu bạn gặp lỗi như bên dưới, điều đó có nghĩa là khóa chưa được đưa đúng cách vào bản build Godot của bạn. Godot đang mã hóa tệp PCK trong quá trình export nhưng không thể đọc tệp này lúc chạy.
 
 ::
 

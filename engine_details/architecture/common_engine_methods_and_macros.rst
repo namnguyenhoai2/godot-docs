@@ -1,13 +1,11 @@
 .. _doc_common_engine_methods_and_macros:
 
-Common engine methods and macros
-================================
+Các phương thức và macro phổ biến của engine
+============================================
 
-Godot's C++ codebase makes use of dozens of custom methods and macros which are
-used in almost every file. This page is geared towards beginner contributors,
-but it can also be useful for those writing custom C++ modules.
+Cơ sở mã C++ của Godot sử dụng hàng chục phương thức và macro tùy chỉnh, được dùng trong hầu hết mọi tệp. Trang này hướng đến những người mới đóng góp, nhưng cũng có thể hữu ích cho những người viết mô-đun C++ tùy chỉnh.
 
-Print text
+In văn bản
 ----------
 
 .. code-block:: cpp
@@ -39,14 +37,12 @@ Print text
     ERR_PRINT_ONCE("Message");
     WARN_PRINT_ONCE("Message");
 
-If you need to add placeholders in your messages, use format strings as
-described below.
+Nếu cần thêm placeholder vào thông báo, hãy sử dụng chuỗi định dạng như mô tả bên dưới.
 
-Format a string
+Định dạng chuỗi
 ---------------
 
-The ``vformat()`` function returns a formatted :ref:`class_String`. It behaves
-in a way similar to C's ``sprintf()``:
+Hàm ``vformat()`` trả về một :ref:`class_String` đã được định dạng. Cách hoạt động của nó tương tự như ``sprintf()`` của C:
 
 .. code-block:: cpp
 
@@ -59,14 +55,12 @@ in a way similar to C's ``sprintf()``:
     // to a method that expects a `const char *` instead of a String.
     vformat("My name is %s.", "Godette").utf8().get_data();
 
-In most cases, try to use ``vformat()`` instead of string concatenation as it
-makes for more readable code.
+Trong hầu hết trường hợp, hãy cố gắng sử dụng ``vformat()`` thay vì nối chuỗi, vì cách này giúp mã dễ đọc hơn.
 
-Convert an integer or float to a string
----------------------------------------
+Chuyển đổi số nguyên hoặc số thực thành chuỗi
+---------------------------------------------
 
-This is not needed when printing numbers using ``print_line()``, but you may
-still need to perform manual conversion for some other use cases.
+Điều này không cần thiết khi in số bằng ``print_line()``, nhưng bạn vẫn có thể cần thực hiện chuyển đổi thủ công cho một số trường hợp sử dụng khác.
 
 .. code-block:: cpp
 
@@ -76,18 +70,12 @@ still need to perform manual conversion for some other use cases.
     // Stores the string "123.45" using real-to-string conversion.
     String real_to_string = rtos(123.45);
 
-Internationalize a string
--------------------------
+Quốc tế hóa chuỗi
+-----------------
 
-There are two types of internationalization in Godot's codebase:
+Có hai loại quốc tế hóa trong cơ sở mã của Godot:
 
-- ``TTR()``: **Editor ("tools") translations** will only be processed in the
-  editor. If a user uses the same text in one of their projects, it won't be
-  translated if they provide a translation for it. When contributing to the
-  engine, this is generally the macro you should use for localizable strings.
-- ``RTR()``: **Runtime translations** will be automatically localized in
-  projects if they provide a translation for the given string. This kind of
-  translation shouldn't be used in editor-only code.
+- ``TTR()``: **Bản dịch Editor ("tools")** chỉ được xử lý trong editor. Nếu người dùng sử dụng cùng văn bản đó trong một dự án của họ, văn bản sẽ không được dịch nếu họ cung cấp bản dịch cho nó. Khi đóng góp cho engine, đây thường là macro bạn nên sử dụng cho các chuỗi có thể bản địa hóa. - ``RTR()``: **Bản dịch Runtime** sẽ được tự động bản địa hóa trong các dự án nếu chúng cung cấp bản dịch cho chuỗi tương ứng. Không nên sử dụng loại bản dịch này trong mã chỉ dành cho editor.
 
 .. code-block:: cpp
 
@@ -96,8 +84,7 @@ There are two types of internationalization in Godot's codebase:
     // The localization template is generated automatically; don't modify it.
     TTR("Exit the editor?");
 
-To insert placeholders in localizable strings, wrap the localization macro in a
-``vformat()`` call as follows:
+Để chèn placeholder vào các chuỗi có thể bản địa hóa, hãy bọc macro bản địa hóa trong một lời gọi ``vformat()`` như sau:
 
 .. code-block:: cpp
 
@@ -106,16 +93,12 @@ To insert placeholders in localizable strings, wrap the localization macro in a
 
 .. note::
 
-    When using ``vformat()`` and a translation macro together, always wrap the
-    translation macro in ``vformat()``, not the other way around. Otherwise, the
-    string will never match the translation as it will have the placeholder
-    already replaced when it's passed to TranslationServer.
+    Khi sử dụng ``vformat()`` cùng với một macro dịch, luôn bọc macro dịch trong ``vformat()``, không làm ngược lại. Nếu không, chuỗi sẽ không bao giờ khớp với bản dịch vì placeholder đã được thay thế trước khi chuỗi được truyền đến TranslationServer.
 
-Clamp a value
--------------
+Giới hạn một giá trị
+--------------------
 
-Godot provides macros for clamping a value with a lower bound (``MAX``), an
-upper bound (``MIN``) or both (``CLAMP``):
+Godot cung cấp các macro để giới hạn một giá trị với cận dưới (``MAX``), cận trên (``MIN``) hoặc cả hai (``CLAMP``):
 
 .. code-block:: cpp
 
@@ -126,14 +109,12 @@ upper bound (``MIN``) or both (``CLAMP``):
     MIN(2, a); // 2
     CLAMP(a, 10, 30); // 10
 
-This works with any type that can be compared to other values (like ``int`` and
-``float``).
+Cách này hoạt động với mọi kiểu có thể được so sánh với các giá trị khác (chẳng hạn như ``int`` và ``float``).
 
-Microbenchmarking
------------------
+Đo hiệu năng vi mô
+------------------
 
-If you want to benchmark a piece of code but don't know how to use a profiler,
-use this snippet:
+Nếu muốn đo hiệu năng một đoạn mã nhưng không biết cách sử dụng trình phân tích hiệu năng, hãy dùng đoạn mã sau:
 
 .. code-block:: cpp
 
@@ -144,20 +125,18 @@ use this snippet:
     uint64_t end = Time::get_singleton()->get_ticks_usec();
     print_line(vformat("Snippet took %d microseconds", end - begin));
 
-This will print the time spent between the ``begin`` declaration and the ``end``
-declaration.
+Đoạn mã này sẽ in ra thời gian đã sử dụng giữa khai báo ``begin`` và khai báo ``end``.
 
 .. note::
 
-    You may have to ``#include "core/os/time.h"`` if it's not present already.
+    Bạn có thể phải ``#include "core/os/time.h"`` nếu nó chưa có sẵn.
 
-    When opening a pull request, make sure to remove this snippet as well as the
-    include if it wasn't there previously.
+    Khi mở một pull request, hãy nhớ xóa cả đoạn mã này lẫn include nếu trước đó chưa có include này.
 
-Get project/editor settings
----------------------------
+Lấy cài đặt dự án/editor
+------------------------
 
-There are four macros available for this:
+Có bốn macro được cung cấp cho việc này:
 
 .. code-block:: cpp
 
@@ -169,8 +148,7 @@ There are four macros available for this:
     // defaulting to "Untitled" if it doesn't exist.
     EDITOR_DEF("section/subsection/value", "Untitled");
 
-If a default value has been specified elsewhere, don't specify it again to avoid
-repetition:
+Nếu một giá trị mặc định đã được chỉ định ở nơi khác, đừng chỉ định lại để tránh lặp lại:
 
 .. code-block:: cpp
 
@@ -179,36 +157,26 @@ repetition:
     // Returns the value of the editor setting.
     EDITOR_GET("section/subsection/value");
 
-It's recommended to use ``GLOBAL_DEF``/``EDITOR_DEF`` only once per setting and
-use ``GLOBAL_GET``/``EDITOR_GET`` in all other places where it's referenced.
+Bạn nên chỉ sử dụng ``GLOBAL_DEF``/``EDITOR_DEF`` một lần cho mỗi cài đặt và sử dụng ``GLOBAL_GET``/``EDITOR_GET`` ở mọi nơi khác có tham chiếu đến cài đặt đó.
 
 .. _doc_common_engine_methods_and_macros_error_macros:
 
-Error macros
-------------
+Các macro lỗi
+-------------
 
-Godot features many error macros to make error reporting more convenient.
+Godot cung cấp nhiều macro lỗi để việc báo cáo lỗi trở nên thuận tiện hơn.
 
 .. warning::
 
-    Conditions in error macros work in the **opposite** way of GDScript's
-    built-in ``assert()`` function. An error is reached if the condition inside
-    evaluates to ``true``, not ``false``.
+    Các điều kiện trong macro lỗi hoạt động theo cách **ngược lại** với hàm ``assert()`` tích hợp sẵn của GDScript. Lỗi xảy ra nếu điều kiện bên trong đánh giá thành ``true``, chứ không phải ``false``.
 
 .. note::
 
-    Only variants with custom messages are documented here, as these should
-    always be used in new contributions. Make sure the custom message provided
-    includes enough information for people to diagnose the issue, even if they
-    don't know C++. In case a method was passed invalid arguments, you can print
-    the invalid value in question to ease debugging.
+    Ở đây chỉ ghi lại các biến thể có thông báo tùy chỉnh, vì đây là những biến thể luôn nên được sử dụng trong các đóng góp mới. Hãy đảm bảo thông báo tùy chỉnh được cung cấp chứa đủ thông tin để mọi người chẩn đoán vấn đề, ngay cả khi họ không biết C++. Nếu một phương thức được truyền các đối số không hợp lệ, bạn có thể in giá trị không hợp lệ đó để giúp việc gỡ lỗi dễ dàng hơn.
 
-    For internal error checking where displaying a human-readable message isn't
-    necessary, remove ``_MSG`` at the end of the macro name and don't supply a
-    message argument.
+    Đối với việc kiểm tra lỗi nội bộ khi không cần hiển thị thông báo dễ hiểu cho con người, hãy xóa ``_MSG`` ở cuối tên macro và không cung cấp đối số thông báo.
 
-    Also, always try to return processable data so the engine can keep running
-    well.
+    Ngoài ra, hãy luôn cố gắng trả về dữ liệu có thể xử lý để engine có thể tiếp tục chạy ổn định.
 
 .. code-block:: cpp
 
@@ -251,10 +219,6 @@ Godot features many error macros to make error reporting more convenient.
 
 .. seealso::
 
-    See `core/error/error_macros.h <https://github.com/godotengine/godot/blob/master/core/error/error_macros.h>`__
-    in Godot's codebase for more information about each error macro.
+    Xem `core/error/error_macros.h <https://github.com/godotengine/godot/blob/master/core/error/error_macros.h>`__ trong cơ sở mã của Godot để biết thêm thông tin về từng macro lỗi.
 
-    Some functions return an error code (materialized by a return type of
-    ``Error``). This value can be returned directly from an error macro.
-    See the list of available error codes in
-    `core/error/error_list.h <https://github.com/godotengine/godot/blob/master/core/error/error_list.h>`__.
+    Một số hàm trả về mã lỗi (được thể hiện bằng kiểu trả về ``Error``). Giá trị này có thể được trả về trực tiếp từ một macro lỗi. Xem danh sách các mã lỗi có sẵn trong `core/error/error_list.h <https://github.com/godotengine/godot/blob/master/core/error/error_list.h>`__.

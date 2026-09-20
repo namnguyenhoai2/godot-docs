@@ -5,70 +5,52 @@ Tracy
 
 .. seealso:: Please see the :ref:`tracing profiler instructions <doc_tracing_profilers>` for more information.
 
-`Tracy <https://github.com/wolfpld/tracy>`__ is an Open Source profiler that runs on a wide variety of platforms,
-including Windows, Linux, and macOS. While it is primarily a tracing profiler,
-it can also periodically sample data like a
+`Tracy <https://github.com/wolfpld/tracy>`__ là một trình phân tích hiệu năng mã nguồn mở chạy trên nhiều nền tảng, bao gồm Windows, Linux và macOS. Mặc dù chủ yếu là trình phân tích dựa trên tracing, nó cũng có thể định kỳ lấy mẫu dữ liệu như một
 :ref:`sampling profiler <doc_sampling_profilers>`, giving some of the benefits
-of both approaches.
+của cả hai phương pháp.
 
-Build Godot with Tracy support
-------------------------------
+Xây dựng Godot với hỗ trợ Tracy
+-------------------------------
 
-First, clone the latest version of the Tracy source code ("0.13.0" at the
-time of writing) using Git:
+Trước tiên, hãy clone phiên bản mới nhất của mã nguồn Tracy ("0.13.0" tại thời điểm viết bài) bằng Git:
 
 .. code-block:: shell
 
     git clone -b v0.13.0 --single-branch https://github.com/wolfpld/tracy.git
 
-This will create a ``tracy`` directory - you can place this anywhere.
+Lệnh này sẽ tạo một thư mục ``tracy`` - bạn có thể đặt thư mục này ở bất kỳ đâu.
 
-Next, build the release templates for your platform using ``scons``, but adding
-the ``profiler=tracy profiler_path=path/to/tracy`` arguments with the real path
-to the ``tracy`` directory, as well as ``debug_symbols=yes`` to allow Tracy's
-sampling features to work.
+Tiếp theo, hãy xây dựng các release template cho nền tảng của bạn bằng ``scons``, nhưng thêm các đối số ``profiler=tracy profiler_path=path/to/tracy`` với đường dẫn thực tế đến thư mục ``tracy``, đồng thời thêm ``debug_symbols=yes`` để các tính năng lấy mẫu của Tracy hoạt động.
 
 .. note::
 
-    You don't have to build release templates, you could also build debug
-    templates, or even the editor. However, it's generally recommended to
-    profile release templates, because that is the version your players will
-    use, and it will perform differently than other types of builds.
+    Bạn không nhất thiết phải xây dựng release template; bạn cũng có thể xây dựng debug template, hoặc thậm chí editor. Tuy nhiên, nhìn chung bạn nên phân tích release template, vì đó là phiên bản mà người chơi sẽ sử dụng và hiệu năng của nó sẽ khác với các loại bản build khác.
 
-For example, to build release templates for Windows:
+Ví dụ, để xây dựng release template cho Windows:
 
 .. code-block:: shell
 
     scons platform=windows target=template_release debug_symbols=yes profiler=tracy profiler_path=path/to/tracy
 
-Get the Tracy "server"
+Lấy "server" của Tracy
 ----------------------
 
-In Tracy terminology, the application you are profiling is the "client", and
-the one receiving the data is the "server".
+Theo thuật ngữ của Tracy, ứng dụng mà bạn đang phân tích là "client", còn ứng dụng nhận dữ liệu là "server".
 
-If you are on Windows, you can download a pre-built ``tracy-profiler.exe``
-from the Tracy `releases page <https://github.com/wolfpld/tracy/releases>`_.
+Nếu sử dụng Windows, bạn có thể tải xuống ``tracy-profiler.exe`` được build sẵn từ `trang phát hành <https://github.com/wolfpld/tracy/releases>`_ của Tracy.
 
-However, if you're on Linux or macOS, you'll either need to find a pre-built
-binary from a package manager (like ``brew`` or ``nix``), or build it from
-source yourself.
+Tuy nhiên, nếu bạn sử dụng Linux hoặc macOS, bạn sẽ cần tìm một binary được build sẵn từ trình quản lý gói (như ``brew`` hoặc ``nix``), hoặc tự build nó từ mã nguồn.
 
 .. note::
 
-    If you do use a pre-built binary, be sure to use the same version that
-    you used when building Godot.
+    Nếu sử dụng binary được build sẵn, hãy đảm bảo dùng cùng phiên bản với phiên bản bạn đã sử dụng khi build Godot.
 
-Build the Tracy server from source
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Build Tracy server từ mã nguồn
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In order to build Tracy, you'll need to install ``cmake``, which can be
-downloaded from the `CMake website <https://cmake.org/download/>`_, or
-possibly installed via a package manager (like ``brew`` or ``nix``).
+Để build Tracy, bạn sẽ cần cài đặt ``cmake``, có thể tải xuống từ `trang web CMake <https://cmake.org/download/>`_, hoặc có thể cài đặt thông qua trình quản lý gói (như ``brew`` hoặc ``nix``).
 
-The full instructions for building Tracy from source can be found in the
-`Tracy manual <https://github.com/wolfpld/tracy/releases/latest/download/tracy.pdf>`_,
-but here is the TL;DR:
+Bạn có thể tìm thấy hướng dẫn đầy đủ để build Tracy từ mã nguồn trong `sổ tay Tracy <https://github.com/wolfpld/tracy/releases/latest/download/tracy.pdf>`_, nhưng dưới đây là phần tóm tắt:
 
 .. code-block:: shell
 
@@ -76,39 +58,28 @@ but here is the TL;DR:
     cmake -B profiler/build -S profiler -DCMAKE_BUILD_TYPE=Release
     cmake --build profiler/build --config Release --parallel
 
-This will place the binary at ``tracy/profiler/build/tracy-profiler`` or
-``tracy/profiler/build/tracy-profiler.exe`` (on Windows).
+Lệnh này sẽ đặt binary tại ``tracy/profiler/build/tracy-profiler`` hoặc ``tracy/profiler/build/tracy-profiler.exe`` (trên Windows).
 
-Record a trace
---------------
+Ghi trace
+---------
 
-Launch the Tracy server - you'll see something like this:
+Khởi chạy Tracy server - bạn sẽ thấy giao diện tương tự như sau:
 
 .. image:: img/cpp_profiler_tracy_start.webp
 
-Press "connect". This will ensure tracy makes a connection immediately when
-the game launches. If you forget to press "connect", Tracy will store system
-events in RAM, which can quickly blow up your memory usage (see the
-``TRACY_ON_DEMAND`` documentation).
+Nhấn "connect". Thao tác này sẽ đảm bảo tracy lập tức kết nối khi game khởi chạy. Nếu quên nhấn "connect", Tracy sẽ lưu các sự kiện hệ thống trong RAM, điều này có thể nhanh chóng làm tăng vọt mức sử dụng bộ nhớ (xem tài liệu ``TRACY_ON_DEMAND``).
 
-Now, export your game using the release templates you built above, and run it.
-As soon as both are running, and you have pressed the "Connect" button in
-Tracy, you'll see data coming in:
+Bây giờ, hãy export game bằng các release template bạn đã build ở trên rồi chạy game. Ngay khi cả hai đang chạy và bạn đã nhấn nút "Connect" trong Tracy, bạn sẽ thấy dữ liệu được truyền đến:
 
 .. image:: img/cpp_profiler_tracy_recording.webp
 
-When you think you've gathered enough data, press the "Stop" button. If you
-clicked somewhere and the box with the "Stop" button disappeared, you can
-click the top-left most icon to bring it back.
+Khi cho rằng mình đã thu thập đủ dữ liệu, hãy nhấn nút "Stop". Nếu bạn nhấp vào đâu đó và hộp có nút "Stop" biến mất, bạn có thể nhấp vào biểu tượng ngoài cùng bên trái ở phía trên để hiển thị lại.
 
-Examining the trace
--------------------
+Kiểm tra trace
+--------------
 
-Here are some of the basic controls:
+Dưới đây là một số điều khiển cơ bản:
 
-- Zoom in/out with the mouse wheel
-- Right click and drag to move forward/backward on the timeline
-- In the top bar, click the left and right arrow buttons by "Frames" to move a single frame on the timeline
+- Phóng to/thu nhỏ bằng con lăn chuột - Nhấp chuột phải và kéo để di chuyển tiến/lùi trên dòng thời gian - Trên thanh phía trên, nhấp vào các nút mũi tên trái và phải bên cạnh "Frames" để di chuyển từng frame trên dòng thời gian
 
-To learn more, see the
-`Tracy manual <https://github.com/wolfpld/tracy/releases/latest/download/tracy.pdf>`_.
+Để tìm hiểu thêm, hãy xem `sổ tay Tracy <https://github.com/wolfpld/tracy/releases/latest/download/tracy.pdf>`_.

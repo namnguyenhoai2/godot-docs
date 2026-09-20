@@ -3,74 +3,51 @@
 Visual Studio
 =============
 
-`Visual Studio Community <https://visualstudio.microsoft.com>`__ is a Windows-only IDE
-by `Microsoft <https://microsoft.com>`_ that's free for individual use or non-commercial use within organizations.
-It has many useful features, such as memory view, performance view, source
-control and more.
+`Visual Studio Community <https://visualstudio.microsoft.com>`__ là một IDE chỉ dành cho Windows do `Microsoft <https://microsoft.com>`_ phát triển, miễn phí cho mục đích sử dụng cá nhân hoặc sử dụng phi thương mại trong các tổ chức. IDE này có nhiều tính năng hữu ích, chẳng hạn như chế độ xem bộ nhớ, chế độ xem hiệu suất, quản lý mã nguồn và nhiều tính năng khác.
 
 .. note::
 
-    This documentation is for contributions to the game engine, and not using
-    Visual Studio as a C# editor. To code C# in an external editor, see
+    Tài liệu này dành cho việc đóng góp cho game engine, không phải sử dụng Visual Studio làm trình soạn thảo C#. Để viết mã C# trong một trình soạn thảo bên ngoài, hãy xem
     :ref:`the C# guide to configure an external editor <doc_c_sharp_setup_external_editor>`.
 
-Importing the project
----------------------
+Nhập dự án
+----------
 
-Visual Studio requires a solution file to work on a project. While Godot does not come
-with the solution file, it can be generated using SCons.
+Visual Studio yêu cầu một tệp solution để làm việc với một dự án. Mặc dù Godot không đi kèm tệp solution, bạn có thể tạo tệp này bằng SCons.
 
-- Navigate to the Godot root folder and open a Command Prompt or PowerShell window.
-- | Run ``scons platform=windows vsproj=yes dev_build=yes`` to generate the solution with debug symbols.
-  | The ``vsproj`` parameter signals that you want Visual Studio solution generated.
-  | The ``dev_build`` parameter makes sure the debug symbols are included, allowing to e.g. step through code using breakpoints.
-- You can now open the project by double-clicking on the ``godot.sln`` in the project root
-  or by using the **Open a project or solution** option inside of the Visual Studio.
-- Use the **Build** top menu to build the project.
+- Đi đến thư mục gốc của Godot và mở cửa sổ Command Prompt hoặc PowerShell. - | Chạy ``scons platform=windows vsproj=yes dev_build=yes`` để tạo solution cùng với các ký hiệu gỡ lỗi. | Tham số ``vsproj`` báo hiệu rằng bạn muốn tạo solution Visual Studio. | Tham số ``dev_build`` đảm bảo các ký hiệu gỡ lỗi được đưa vào, cho phép bạn, chẳng hạn, thực thi từng bước mã bằng các điểm ngắt. - Bây giờ bạn có thể mở dự án bằng cách nhấp đúp vào ``godot.sln`` trong thư mục gốc của dự án hoặc sử dụng tùy chọn **Open a project or solution** trong Visual Studio. - Sử dụng menu trên cùng **Build** để build dự án.
 
 .. warning:: Visual Studio must be configured with the C++ package. It can be selected
-             in the installer:
+             trong trình cài đặt:
 
              .. figure:: img/vs_1_install_cpp_package.png
                 :align: center
 
-Debugging the project
----------------------
+Gỡ lỗi dự án
+------------
 
-Visual Studio features a powerful debugger. This allows the user to examine Godot's
-source code, stop at specific points in the code, inspect the current execution context,
-and make live changes to the codebase.
+Visual Studio có một trình gỡ lỗi mạnh mẽ. Trình gỡ lỗi này cho phép người dùng kiểm tra mã nguồn của Godot, dừng tại các điểm cụ thể trong mã, kiểm tra ngữ cảnh thực thi hiện tại và thực hiện các thay đổi trực tiếp đối với mã nguồn.
 
-You can launch the project with the debugger attached using the **Debug > Start Debugging**
-option from the top menu. However, unless you want to debug the Project Manager specifically,
-you'd need to configure debugging options first. This is due to the fact that when the Godot
-Project Manager opens a project, the initial process is terminated and the debugger gets detached.
+Bạn có thể khởi chạy dự án với trình gỡ lỗi được đính kèm bằng tùy chọn **Debug > Start Debugging** trong menu trên cùng. Tuy nhiên, trừ khi bạn muốn gỡ lỗi riêng Project Manager, trước tiên bạn cần cấu hình các tùy chọn gỡ lỗi. Nguyên nhân là khi Godot Project Manager mở một dự án, tiến trình ban đầu sẽ bị kết thúc và trình gỡ lỗi bị tách khỏi tiến trình đó.
 
-- To configure the launch options to use with the debugger use **Project > Properties**
-  from the top menu:
+- Để cấu hình các tùy chọn khởi chạy dùng với trình gỡ lỗi, hãy chọn **Project > Properties** từ menu trên cùng:
 
 .. figure:: img/vs_2_project_properties.png
    :align: center
 
-- Open the **Debugging** section and under **Command Arguments** add two new arguments:
-  the ``-e`` flag opens the editor instead of the Project Manager, and the ``--path`` argument
-  tells the executable to open the specified project (must be provided as an *absolute* path
-  to the project root, not the ``project.godot`` file; if the path contains spaces be sure to pass it inside double quotation marks).
+- Mở phần **Debugging** và trong **Command Arguments**, thêm hai đối số mới: cờ ``-e`` sẽ mở trình soạn thảo thay vì Project Manager, còn đối số ``--path`` yêu cầu tệp thực thi mở dự án được chỉ định (phải được cung cấp dưới dạng đường dẫn *tuyệt đối* đến thư mục gốc của dự án, không phải tệp ``project.godot``; nếu đường dẫn chứa khoảng trắng, hãy nhớ đặt đường dẫn trong dấu ngoặc kép).
 
 .. figure:: img/vs_3_debug_command_line.webp
    :align: center
 
-To learn more about command line arguments, refer to the
+Để tìm hiểu thêm về các đối số dòng lệnh, hãy tham khảo
 :ref:`command line tutorial <doc_command_line_tutorial>`.
 
-Even if you start the project without a debugger attached it can still be connected to the running
-process using **Debug > Attach to Process...** menu.
+Ngay cả khi bạn khởi động dự án mà không đính kèm trình gỡ lỗi, bạn vẫn có thể kết nối trình gỡ lỗi với tiến trình đang chạy bằng menu **Debug > Attach to Process...**.
 
-To check that everything is working, put a breakpoint in ``main.cpp`` and press :kbd:`F5` to
-start debugging.
+Để kiểm tra mọi thứ đang hoạt động, hãy đặt một điểm ngắt trong ``main.cpp`` và nhấn :kbd:`F5` để bắt đầu gỡ lỗi.
 
 .. figure:: img/vs_4_debugging_main.png
    :align: center
 
-If you run into any issues, ask for help in one of
-`Godot's community channels <https://godotengine.org/community>`__.
+Nếu gặp bất kỳ vấn đề nào, hãy yêu cầu trợ giúp trong một trong các `kênh cộng đồng của Godot <https://godotengine.org/community>`__.

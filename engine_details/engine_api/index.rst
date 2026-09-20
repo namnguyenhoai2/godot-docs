@@ -2,19 +2,14 @@
 
 .. _doc_engine_module_api:
 
-Engine extension APIs
-=====================
+API mở rộng engine
+==================
 
-This section introduces various ways in which you can extend the engine with C++ code.
-You can use these APIs by creating a :ref:`module <doc_custom_modules_in_cpp>`.
-Note that you can change the engine in many more ways than presented here — this section just presents
-a subselection of common and useful ways to do it.
+Phần này giới thiệu nhiều cách khác nhau để bạn mở rộng engine bằng mã C++. Bạn có thể sử dụng các API này bằng cách tạo một :ref:`module <doc_custom_modules_in_cpp>`. Lưu ý rằng bạn có thể thay đổi engine theo nhiều cách hơn so với những cách được trình bày ở đây — phần này chỉ giới thiệu một tập hợp con các cách phổ biến và hữu ích để thực hiện việc đó.
 
-Alternatively, some of the functions presented here are also available through the
+Ngoài ra, một số hàm được trình bày ở đây cũng có sẵn thông qua
 :ref:`GDExtension <doc_what_is_gdextension>` API.
-You can use them in C++ by creating a :ref:`godot-cpp <doc_about_godot_cpp>` based GDExtension,
-or with any of the :ref:`community-created GDExtension implementations <doc_scripting_languages>`. Note though
-that some aspects of the code or directory structures may be different in GDExtension compared to the module APIs.
+Bạn có thể sử dụng chúng trong C++ bằng cách tạo một GDExtension dựa trên :ref:`godot-cpp <doc_about_godot_cpp>`, hoặc với bất kỳ :ref:`community-created GDExtension implementations <doc_scripting_languages>` nào. Tuy nhiên, lưu ý rằng một số khía cạnh của mã hoặc cấu trúc thư mục có thể khác trong GDExtension so với các API module.
 
 .. toctree::
    :maxdepth: 1

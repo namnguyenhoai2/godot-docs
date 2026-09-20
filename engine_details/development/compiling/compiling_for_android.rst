@@ -1,130 +1,101 @@
 .. _doc_compiling_for_android:
 
-Compiling for Android
+Biên dịch cho Android
 =====================
 
 .. highlight:: shell
 
 .. seealso::
 
-    This page describes how to compile Android export template binaries from source.
-    If you're looking to export your project to Android instead, read :ref:`doc_exporting_for_android`.
+    Trang này mô tả cách biên dịch các tệp nhị phân mẫu xuất Android từ mã nguồn. Nếu bạn muốn xuất dự án của mình sang Android, hãy đọc :ref:`doc_exporting_for_android`.
 
-Note
-----
+Lưu ý
+-----
 
-In most cases, using the built-in deployer and export templates is good
-enough. Compiling the Android APK manually is mostly useful for custom
-builds or custom packages for the deployer.
+Trong hầu hết trường hợp, sử dụng trình triển khai tích hợp sẵn và các mẫu xuất là đủ tốt. Việc biên dịch APK Android thủ công chủ yếu hữu ích cho các bản dựng tùy chỉnh hoặc các gói tùy chỉnh dành cho trình triển khai.
 
-Also, you still need to follow the steps mentioned in the
+Ngoài ra, bạn vẫn cần làm theo các bước được đề cập trong
 :ref:`doc_exporting_for_android` tutorial before attempting to build
-a custom export template.
+mẫu xuất tùy chỉnh.
 
-Requirements
-------------
+Yêu cầu
+-------
 
-For compiling under Windows, Linux or macOS, the following is required:
+Để biên dịch trên Windows, Linux hoặc macOS, cần có những thành phần sau:
 
-- `Python 3.9+ <https://www.python.org/downloads/>`_.
-- `SCons 4.4+ <https://scons.org/pages/download.html>`_ build system.
-- Android SDK
+- `Python 3.9+ <https://www.python.org/downloads/>`_. - hệ thống dựng `SCons 4.4+ <https://scons.org/pages/download.html>`_. - Android SDK
 
-   - To install the Android SDK, follow the steps `here <https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html>`_.
-   - On Linux, **do not use an Android SDK provided by your distribution's repositories** as it will often be outdated.
-   - On macOS, **do not use an Android SDK provided by Homebrew** as it will not be installed in a unified location.
+   - Để cài đặt Android SDK, hãy làm theo các bước `tại đây <https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html>`_. - Trên Linux, **không sử dụng Android SDK do kho của bản phân phối cung cấp** vì SDK này thường đã lỗi thời. - Trên macOS, **không sử dụng Android SDK do Homebrew cung cấp** vì SDK sẽ không được cài đặt tại một vị trí thống nhất.
 
-- Gradle (will be downloaded and installed automatically if missing).
-- JDK 17 (either OpenJDK or Oracle JDK).
+- Gradle (sẽ được tự động tải xuống và cài đặt nếu chưa có). - JDK 17 (OpenJDK hoặc Oracle JDK).
 
-   - You can download a build from `Adoptium <https://adoptium.net/temurin/releases?variant=openjdk17&version=17&os=any&arch=any>`_.
+   - Bạn có thể tải xuống một bản dựng từ `Adoptium <https://adoptium.net/temurin/releases?variant=openjdk17&version=17&os=any&arch=any>`_.
 
 .. seealso:: To get the Godot source code for compiling, see
              :ref:`doc_getting_source`.
 
-             For a general overview of SCons usage for Godot, see
+             Để xem tổng quan về cách sử dụng SCons cho Godot, hãy xem
              :ref:`doc_introduction_to_the_buildsystem`.
 
 .. _doc_android_setting_up_the_buildsystem:
 
-Setting up the buildsystem
---------------------------
+Thiết lập hệ thống dựng
+-----------------------
 
--  Set the environment variable ``ANDROID_HOME`` to point to the Android
-   SDK. If you downloaded the Android command-line tools, this would be
-   the folder where you extracted the contents of the ZIP archive.
+-  Đặt biến môi trường ``ANDROID_HOME`` trỏ đến Android SDK. Nếu bạn đã tải xuống các công cụ dòng lệnh Android, đây sẽ là thư mục nơi bạn đã giải nén nội dung của tệp lưu trữ ZIP.
 
-    -  Windows: Press :kbd:`Windows + R`, type "control system",
-       then click on **Advanced system settings** in the left pane,
-       then click on **Environment variables** on the window that appears.
+    -  Windows: Nhấn :kbd:`Windows + R`, nhập "control system", sau đó nhấp vào **Advanced system settings** trong ngăn bên trái, rồi nhấp vào **Environment variables** trong cửa sổ xuất hiện.
 
-    -  Linux or macOS: Add the text ``export ANDROID_HOME="/path/to/android-sdk"``
-       to your ``.bashrc`` or ``.zshrc`` where ``/path/to/android-sdk`` points to
-       the root of the SDK directories.
+    -  Linux hoặc macOS: Thêm văn bản ``export ANDROID_HOME="/path/to/android-sdk"`` vào ``.bashrc`` hoặc ``.zshrc`` của bạn, trong đó ``/path/to/android-sdk`` trỏ đến thư mục gốc của các thư mục SDK.
 
--  After setting up the SDK and environment variables, be sure to
-   **restart your terminal** to apply the changes. If you are using
-   an IDE with an integrated terminal, you need to restart the IDE.
+-  Sau khi thiết lập SDK và các biến môi trường, hãy nhớ **khởi động lại terminal** để áp dụng các thay đổi. Nếu bạn đang sử dụng IDE có terminal tích hợp, bạn cần khởi động lại IDE.
 
--  Run ``scons platform=android``. If this fails, go back and check the steps.
-   If you completed the setup correctly, the NDK will begin downloading.
-   If you are trying to compile GDExtension, you need to first compile
-   the engine to download the NDK, then you can compile GDExtension.
+-  Chạy ``scons platform=android``. Nếu lệnh này không thành công, hãy quay lại và kiểm tra các bước. Nếu bạn đã hoàn tất thiết lập đúng cách, NDK sẽ bắt đầu được tải xuống. Nếu bạn đang cố biên dịch GDExtension, trước tiên bạn cần biên dịch engine để tải xuống NDK, sau đó mới có thể biên dịch GDExtension.
 
-Building the export templates
------------------------------
+Xây dựng các mẫu xuất
+---------------------
 
-Godot needs three export templates for Android: the optimized "release"
-template (``android_release.apk``), the debug template (``android_debug.apk``),
-and the Gradle build template (``android_source.zip``).
-As Google requires all APKs to include ARMv8 (64-bit) libraries since August 2019,
-the commands below build templates containing both ARMv7 and ARMv8 libraries.
+Godot cần ba mẫu xuất cho Android: mẫu "release" được tối ưu hóa (``android_release.apk``), mẫu debug (``android_debug.apk``) và mẫu dựng Gradle (``android_source.zip``). Vì Google yêu cầu tất cả APK phải bao gồm các thư viện ARMv8 (64-bit) kể từ tháng 8 năm 2019, các lệnh dưới đây sẽ xây dựng các mẫu chứa cả thư viện ARMv7 và ARMv8.
 
-Compiling the standard export templates is done by calling SCons from the Godot
-root directory with the following arguments:
+Việc biên dịch các mẫu xuất tiêu chuẩn được thực hiện bằng cách gọi SCons từ thư mục gốc của Godot với các đối số sau:
 
--  Release template (used when exporting with **Debugging Enabled** unchecked)
+-  Mẫu Release (được sử dụng khi xuất với **Debugging Enabled** không được chọn)
 
 ::
 
     scons platform=android target=template_release arch=arm32
     scons platform=android target=template_release arch=arm64 generate_android_binaries=yes
 
--  Debug template (used when exporting with **Debugging Enabled** checked)
+-  Mẫu Debug (được sử dụng khi xuất với **Debugging Enabled** được chọn)
 
 ::
 
     scons platform=android target=template_debug arch=arm32
     scons platform=android target=template_debug arch=arm64 generate_android_binaries=yes
 
-The resulting templates will be located under the ``bin`` directory:
+Các mẫu kết quả sẽ nằm trong thư mục ``bin``:
 
-- ``bin/android_release.apk`` for the release template
-- ``bin/android_debug.apk`` for the debug template
-- ``bin/android_source.zip`` for the Gradle build template
+- ``bin/android_release.apk`` cho mẫu release - ``bin/android_debug.apk`` cho mẫu debug - ``bin/android_source.zip`` cho mẫu dựng Gradle
 
 .. note::
 
-   - If you are changing the list of architectures you're building, remember to add ``generate_android_binaries=yes`` to the *last* architecture you're building, so that the template files are generated after the build.
+   - Nếu bạn thay đổi danh sách các kiến trúc đang xây dựng, hãy nhớ thêm ``generate_android_binaries=yes`` vào kiến trúc *cuối cùng* mà bạn xây dựng, để các tệp mẫu được tạo sau khi quá trình xây dựng hoàn tất.
 
-   - To enable dev build (for use when troubleshooting) in the generated templates, add the ``dev_build=yes`` parameters to the SCons command.
+   - Để bật bản dựng dev (dùng khi khắc phục sự cố) trong các mẫu được tạo, hãy thêm các tham số ``dev_build=yes`` vào lệnh SCons.
 
-   - To include debug symbols in the generated templates, add the ``debug_symbols=yes`` parameters to the SCons command.
+   - Để đưa các ký hiệu debug vào các mẫu được tạo, hãy thêm các tham số ``debug_symbols=yes`` vào lệnh SCons.
 
-       - Note that you can include ``separate_debug_symbols=yes`` to generate the debug symbols in a separate ``*-native-debug-symbols.zip`` file.
+       - Lưu ý rằng bạn có thể thêm ``separate_debug_symbols=yes`` để tạo các ký hiệu debug trong một tệp ``*-native-debug-symbols.zip`` riêng.
 
 .. seealso::
 
-    If you want to enable Vulkan validation layers, see
+    Nếu muốn bật các lớp xác thực Vulkan, hãy xem
     :ref:`Vulkan validation layers on Android <doc_vulkan_validation_layers_android>`.
 
-Adding support for x86 devices
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Thêm hỗ trợ cho thiết bị x86
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you also want to include support for x86 and x86_64 devices, run the SCons
-command a third and fourth time with the ``arch=x86_32``, and
-``arch=x86_64`` arguments before building the APK with Gradle. For
-example, for the release template:
+Nếu cũng muốn bao gồm hỗ trợ cho các thiết bị x86 và x86_64, hãy chạy lệnh SCons lần thứ ba và thứ tư với các đối số ``arch=x86_32`` và ``arch=x86_64`` trước khi xây dựng APK bằng Gradle. Ví dụ, đối với mẫu release:
 
 ::
 
@@ -133,15 +104,12 @@ example, for the release template:
     scons platform=android target=template_release arch=x86_32
     scons platform=android target=template_release arch=x86_64 generate_android_binaries=yes
 
-This will create template binaries that works on all platforms.
-The final binary size of exported projects will depend on the platforms you choose
-to support when exporting; in other words, unused platforms will be removed from
-the binary.
+Thao tác này sẽ tạo các tệp nhị phân mẫu hoạt động trên tất cả các nền tảng. Kích thước tệp nhị phân cuối cùng của các dự án đã xuất sẽ phụ thuộc vào những nền tảng bạn chọn hỗ trợ khi xuất; nói cách khác, các nền tảng không được sử dụng sẽ bị loại bỏ khỏi tệp nhị phân.
 
-Cleaning the generated export templates
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Dọn dẹp các mẫu xuất đã tạo
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can use the following commands to remove the generated export templates:
+Bạn có thể sử dụng các lệnh sau để xóa các mẫu xuất đã tạo:
 
 ::
 
@@ -152,50 +120,34 @@ You can use the following commands to remove the generated export templates:
     ./gradlew clean
 
 
-Using the export templates
---------------------------
+Sử dụng các mẫu xuất
+--------------------
 
-Godot needs release and debug binaries that were compiled against the same
-version/commit as the editor. If you are using official binaries
-for the editor, make sure to install the matching export templates,
-or build your own from the same version.
+Godot cần các tệp nhị phân release và debug được biên dịch dựa trên cùng phiên bản/commit với trình chỉnh sửa. Nếu bạn đang sử dụng các tệp nhị phân chính thức cho trình chỉnh sửa, hãy đảm bảo cài đặt các mẫu xuất tương ứng hoặc tự xây dựng chúng từ cùng phiên bản.
 
-When exporting your game, Godot uses the templates as a base, and updates their content as needed.
+Khi xuất trò chơi, Godot sử dụng các mẫu làm nền tảng và cập nhật nội dung của chúng khi cần.
 
-Installing the templates
-~~~~~~~~~~~~~~~~~~~~~~~~
+Cài đặt các mẫu
+~~~~~~~~~~~~~~~
 
-The newly-compiled templates (``android_debug.apk``
-, ``android_release.apk``, and ``android_source.zip``) must be copied to Godot's templates folder
-with their respective names. The templates folder can be located in:
+Các mẫu mới biên dịch (``android_debug.apk``, ``android_release.apk`` và ``android_source.zip``) phải được sao chép vào thư mục mẫu của Godot với tên tương ứng. Thư mục mẫu có thể nằm tại:
 
--  Windows: ``%APPDATA%\Godot\export_templates\<version>\``
--  Linux: ``$HOME/.local/share/godot/export_templates/<version>/``
--  macOS: ``$HOME/Library/Application Support/Godot/export_templates/<version>/``
+-  Windows: ``%APPDATA%\Godot\export_templates\<version>\`` - Linux: ``$HOME/.local/share/godot/export_templates/<version>/`` - macOS: ``$HOME/Library/Application Support/Godot/export_templates/<version>/``
 
-``<version>`` is of the form ``major.minor[.patch].status`` using values from
-``version.py`` in your Godot source repository (e.g. ``4.1.3.stable`` or ``4.2.dev``).
-You also need to write this same version string to a ``version.txt`` file located
-next to your export templates.
+``<version>`` có dạng ``major.minor[.patch].status`` và sử dụng các giá trị từ ``version.py`` trong kho mã nguồn Godot của bạn (ví dụ: ``4.1.3.stable`` hoặc ``4.2.dev``). Bạn cũng cần ghi chuỗi phiên bản này vào tệp ``version.txt`` nằm cạnh các mẫu xuất.
 
-.. TODO: Move these paths to a common reference page
+.. TODO: Di chuyển các đường dẫn này đến một trang tham chiếu chung
 
-However, if you are writing your custom modules or custom C++ code, you
-might instead want to configure your template binaries as custom export templates
-in the project export menu. You must have **Advanced Options** enabled to set this.
+Tuy nhiên, nếu bạn đang viết các mô-đun tùy chỉnh hoặc mã C++ tùy chỉnh, thay vào đó bạn có thể muốn cấu hình các tệp nhị phân mẫu của mình thành các mẫu xuất tùy chỉnh trong menu xuất dự án. Bạn phải bật **Advanced Options** để thiết lập tùy chọn này.
 
 .. image:: img/andtemplates.webp
 
-You don't even need to copy them, you can just reference the resulting
-file in the ``bin\`` directory of your Godot source folder, so that the
-next time you build you will automatically have the custom templates
-referenced.
+Bạn thậm chí không cần sao chép chúng; chỉ cần tham chiếu đến tệp kết quả trong thư mục ``bin\`` của thư mục mã nguồn Godot, để lần tiếp theo bạn xây dựng, các mẫu tùy chỉnh sẽ tự động được tham chiếu.
 
-Building the Godot editor
--------------------------
+Xây dựng trình chỉnh sửa Godot
+------------------------------
 
-Compiling the editor is done by calling SCons from the Godot
-root directory with the following arguments:
+Việc biên dịch trình chỉnh sửa được thực hiện bằng cách gọi SCons từ thư mục gốc của Godot với các đối số sau:
 
 ::
 
@@ -204,22 +156,22 @@ root directory with the following arguments:
    scons platform=android arch=x86_32 production=yes target=editor
    scons platform=android arch=x86_64 production=yes target=editor generate_android_binaries=yes
 
-- You can add the ``dev_build=yes`` parameter to generate a dev build of the Godot editor.
+- Bạn có thể thêm tham số ``dev_build=yes`` để tạo bản dựng dev của trình chỉnh sửa Godot.
 
-- You can add the ``debug_symbols=yes`` parameters to include the debug symbols in the generated build.
+- Bạn có thể thêm các tham số ``debug_symbols=yes`` để đưa các ký hiệu debug vào bản dựng được tạo.
 
-    - Note that you can include ``separate_debug_symbols=yes`` to the *last* architecture you're building, to generate the debug symbols in a separate ``*-native-debug-symbols.zip`` file.
+    - Lưu ý rằng bạn có thể thêm ``separate_debug_symbols=yes`` vào kiến trúc *cuối cùng* đang xây dựng để tạo các ký hiệu debug trong một tệp ``*-native-debug-symbols.zip`` riêng.
 
-- You can skip certain architectures depending on your target device to speed up compilation.
+- Bạn có thể bỏ qua một số kiến trúc nhất định tùy thuộc vào thiết bị đích để tăng tốc quá trình biên dịch.
 
-Remember to add ``generate_android_binaries=yes`` to the *last* architecture you're building, so that binaries are generated after the build.
+Hãy nhớ thêm ``generate_android_binaries=yes`` vào kiến trúc *cuối cùng* đang xây dựng để các tệp nhị phân được tạo sau khi quá trình xây dựng hoàn tất.
 
-The resulting binaries will be located under ``bin/android_editor_builds/``.
+Các tệp nhị phân kết quả sẽ nằm trong ``bin/android_editor_builds/``.
 
-Removing the Editor binaries
-----------------------------
+Xóa các tệp nhị phân của trình chỉnh sửa
+----------------------------------------
 
-You can use the following commands to remove the generated editor binaries:
+Bạn có thể sử dụng các lệnh sau để xóa các tệp nhị phân của trình chỉnh sửa đã tạo:
 
 ::
 
@@ -229,59 +181,43 @@ You can use the following commands to remove the generated editor binaries:
    # On Linux and macOS
    ./gradlew clean
 
-Installing the Godot editor APK
--------------------------------
+Cài đặt APK trình chỉnh sửa Godot
+---------------------------------
 
-With an Android device with Developer Options enabled, connect the Android device to your computer via its charging cable to a USB/USB-C port.
-Open up a Terminal/Command Prompt and run the following commands from the root directory with the following arguments:
+Khi đã bật Developer Options trên thiết bị Android, hãy kết nối thiết bị Android với máy tính bằng cáp sạc của thiết bị qua cổng USB/USB-C. Mở Terminal/Command Prompt và chạy các lệnh sau từ thư mục gốc với các đối số sau:
 
 ::
 
    adb install ./bin/android_editor_builds/android_editor-android-debug.apk
 
-Troubleshooting
+Khắc phục sự cố
 ---------------
 
-Platform doesn't appear in SCons
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Nền tảng không xuất hiện trong SCons
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Double-check that you've set the ``ANDROID_HOME``
-environment variable. This is required for the platform to appear in SCons'
-list of detected platforms.
-See :ref:`Setting up the buildsystem <doc_android_setting_up_the_buildsystem>`
-for more information.
+Kiểm tra lại để đảm bảo bạn đã đặt biến môi trường ``ANDROID_HOME``. Đây là yêu cầu để nền tảng xuất hiện trong danh sách các nền tảng được SCons phát hiện. Xem :ref:`Setting up the buildsystem <doc_android_setting_up_the_buildsystem>` để biết thêm thông tin.
 
-Application not installed
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Ứng dụng không được cài đặt
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Android might complain the application is not correctly installed.
-If so:
+Android có thể báo rằng ứng dụng chưa được cài đặt chính xác. Nếu vậy:
 
--  Check that the debug keystore is properly generated.
--  Check that the jarsigner executable is from JDK 8.
+-  Kiểm tra xem debug keystore đã được tạo đúng cách chưa. - Kiểm tra xem tệp thực thi jarsigner có phải đến từ JDK 8 hay không.
 
-If it still fails, open a command line and run `logcat <https://developer.android.com/studio/command-line/logcat>`_:
+Nếu vẫn không thành công, hãy mở dòng lệnh và chạy `logcat <https://developer.android.com/studio/command-line/logcat>`_:
 
 ::
 
     adb logcat
 
-Then check the output while the application is installed;
-the error message should be presented there.
-Seek assistance if you can't figure it out.
+Sau đó kiểm tra đầu ra trong khi ứng dụng được cài đặt; thông báo lỗi sẽ xuất hiện ở đó. Hãy tìm sự trợ giúp nếu bạn không thể xác định nguyên nhân.
 
-Application exits immediately
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Ứng dụng thoát ngay lập tức
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If the application runs but exits immediately, this might be due to
-one of the following reasons:
+Nếu ứng dụng chạy nhưng thoát ngay lập tức, nguyên nhân có thể là một trong những lý do sau:
 
--  Make sure to use export templates that match your editor version; if
-   you use a new Godot version, you *have* to update the templates too.
--  ``libgodot_android.so`` is not in ``libs/<arch>/``
-   where ``<arch>`` is the device's architecture.
--  The device's architecture does not match the exported one(s).
-   Make sure your templates were built for that device's architecture,
-   and that the export settings included support for that architecture.
+-  Đảm bảo sử dụng các mẫu xuất khớp với phiên bản trình chỉnh sửa; nếu sử dụng phiên bản Godot mới, bạn *phải* cập nhật cả các mẫu. - ``libgodot_android.so`` không nằm trong ``libs/<arch>/``, trong đó ``<arch>`` là kiến trúc của thiết bị. - Kiến trúc của thiết bị không khớp với kiến trúc đã xuất. Hãy đảm bảo các mẫu được xây dựng cho kiến trúc của thiết bị đó và cài đặt xuất đã bao gồm hỗ trợ cho kiến trúc đó.
 
-In any case, ``adb logcat`` should also show the cause of the error.
+Trong mọi trường hợp, ``adb logcat`` cũng sẽ hiển thị nguyên nhân của lỗi.

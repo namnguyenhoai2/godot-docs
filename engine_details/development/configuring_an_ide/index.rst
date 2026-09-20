@@ -2,15 +2,12 @@
 
 .. _doc_configuring_an_ide:
 
-Configuring an IDE
-==================
+Cấu hình IDE
+============
 
-We assume that you have already `cloned <https://github.com/godotengine/godot>`_
-and :ref:`compiled <toc-devel-compiling>` Godot.
+Chúng tôi giả định rằng bạn đã `cloned <https://github.com/godotengine/godot>`_ và :ref:`compiled <toc-devel-compiling>` Godot.
 
-You can easily develop Godot with any text editor and by invoking ``scons``
-on the command line, but if you want to work with an IDE (Integrated
-Development Environment), here are setup instructions for some popular ones:
+Bạn có thể dễ dàng phát triển Godot bằng bất kỳ trình soạn thảo văn bản nào và bằng cách gọi ``scons`` trên dòng lệnh, nhưng nếu muốn làm việc với một IDE (Môi trường Phát triển Tích hợp), dưới đây là hướng dẫn thiết lập cho một số IDE phổ biến:
 
 .. toctree::
    :maxdepth: 1
@@ -26,11 +23,9 @@ Development Environment), here are setup instructions for some popular ones:
    visual_studio_code
    xcode
 
-It is possible to use other IDEs, but their setup is not documented yet.
+Bạn có thể sử dụng các IDE khác, nhưng hiện chưa có tài liệu hướng dẫn thiết lập cho chúng.
 
-If your editor supports the `language server protocol <https://microsoft.github.io/language-server-protocol/>`__,
-you can use `clangd <https://clangd.llvm.org>`__ for completion, diagnostics, and more.
-You can generate a compilation database for use with clangd one of two ways:
+Bạn có thể sử dụng `clangd <https://clangd.llvm.org>`__ để hoàn thành mã, chẩn đoán lỗi và nhiều tính năng khác nếu trình soạn thảo của bạn hỗ trợ `language server protocol <https://microsoft.github.io/language-server-protocol/>`__. Bạn có thể tạo cơ sở dữ liệu biên dịch để sử dụng với clangd theo một trong hai cách sau:
 
 .. code-block:: shell
 

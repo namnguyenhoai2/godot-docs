@@ -1,77 +1,62 @@
 .. _doc_compiling_for_web:
 
-Compiling for the Web
-=====================
+Biên dịch cho Web
+=================
 
 .. seealso::
 
-    This page describes how to compile HTML5 editor and export template binaries from source.
-    If you're looking to export your project to HTML5 instead, read :ref:`doc_exporting_for_web`.
+    Trang này mô tả cách biên dịch trình chỉnh sửa HTML5 và các tệp nhị phân mẫu xuất từ mã nguồn. Nếu bạn muốn xuất dự án của mình sang HTML5, hãy đọc :ref:`doc_exporting_for_web`.
 
 .. highlight:: shell
 
-Requirements
-------------
+Yêu cầu
+-------
 
-To compile export templates for the Web, the following is required:
+Để biên dịch các mẫu xuất cho Web, cần có những thành phần sau:
 
-- `Emscripten 4.0.0+ <https://emscripten.org>`__.
-- `Python 3.9+ <https://www.python.org/>`__.
-- `SCons 4.4+ <https://scons.org/pages/download.html>`__ build system.
+- `Emscripten 4.0.0+ <https://emscripten.org>`__. - `Python 3.9+ <https://www.python.org/>`__. - hệ thống xây dựng `SCons 4.4+ <https://scons.org/pages/download.html>`__.
 
 .. seealso:: To get the Godot source code for compiling, see
              :ref:`doc_getting_source`.
 
-             For a general overview of SCons usage for Godot, see
+             Để xem tổng quan chung về cách sử dụng SCons cho Godot, hãy xem
              :ref:`doc_introduction_to_the_buildsystem`.
 
-Building export templates
--------------------------
+Xây dựng các mẫu xuất
+---------------------
 
-Before starting, confirm that ``emcc`` is available in your PATH. This is
-usually configured by the Emscripten SDK, e.g. when invoking ``emsdk activate``
-and ``source ./emsdk_env.sh``/``emsdk_env.bat``.
+Trước khi bắt đầu, hãy xác nhận rằng ``emcc`` có trong PATH của bạn. Thông thường, điều này được cấu hình bởi Emscripten SDK, chẳng hạn khi gọi ``emsdk activate`` và ``source ./emsdk_env.sh``/``emsdk_env.bat``.
 
-Open a terminal and navigate to the root directory of the engine source code.
-Then instruct SCons to build the Web platform. Specify ``target`` as
-either ``template_release`` for a release build or ``template_debug`` for a debug build:
+Mở một terminal và chuyển đến thư mục gốc của mã nguồn engine. Sau đó, yêu cầu SCons xây dựng nền tảng Web. Chỉ định ``target`` là ``template_release`` cho bản dựng phát hành hoặc ``template_debug`` cho bản dựng gỡ lỗi:
 
 ::
 
     scons platform=web target=template_release
     scons platform=web target=template_debug
 
-By default, the :ref:`JavaScriptBridge singleton <doc_web_javascript_bridge>` will be built
-into the engine. Official export templates also have the JavaScript singleton
-enabled. Since ``eval()`` calls can be a security concern, the
-``javascript_eval`` option can be used to build without the singleton:
+Theo mặc định, :ref:`JavaScriptBridge singleton <doc_web_javascript_bridge>` sẽ được xây dựng vào engine. Các mẫu xuất chính thức cũng bật singleton JavaScript. Vì các lệnh gọi ``eval()`` có thể gây ra vấn đề bảo mật, có thể sử dụng tùy chọn ``javascript_eval`` để xây dựng mà không có singleton:
 
 ::
 
     scons platform=web target=template_release javascript_eval=no
     scons platform=web target=template_debug javascript_eval=no
 
-By default, WebWorker threads support is enabled. To disable it and only use a single thread,
-the ``threads`` option can be used to build the web template without threads support:
+Theo mặc định, hỗ trợ các luồng WebWorker được bật. Để tắt tính năng này và chỉ sử dụng một luồng, có thể dùng tùy chọn ``threads`` để xây dựng mẫu web không có hỗ trợ luồng:
 
 ::
 
     scons platform=web target=template_release threads=no
     scons platform=web target=template_debug threads=no
 
-The engine will now be compiled to WebAssembly by Emscripten. Once finished,
-the resulting file will be placed in the ``bin`` subdirectory. Its name is
-``godot.web.template_release.wasm32.zip`` for release or ``godot.web.template_debug.wasm32.zip``
-for debug.
+Engine giờ đây sẽ được Emscripten biên dịch sang WebAssembly. Khi hoàn tất, tệp kết quả sẽ được đặt trong thư mục con ``bin``. Tên của tệp là ``godot.web.template_release.wasm32.zip`` đối với bản phát hành hoặc ``godot.web.template_debug.wasm32.zip`` đối với bản gỡ lỗi.
 
-Finally, rename the zip archive to ``web_release.zip`` for the
-release template:
+Cuối cùng, đổi tên tệp lưu trữ zip thành ``web_release.zip`` cho mẫu phát hành:
 
 ::
 
     mv bin/godot.web.template_release.wasm32.zip bin/web_release.zip
 
-And ``web_debug.zip`` for the debug template:
+Và ``web_debug.zip`` cho mẫu gỡ lỗi:
 
 ::
 
@@ -80,66 +65,49 @@ And ``web_debug.zip`` for the debug template:
 GDExtension
 -----------
 
-The default export templates do not include GDExtension support for
-performance and compatibility reasons. See the
+Các mẫu xuất mặc định không bao gồm hỗ trợ GDExtension vì lý do hiệu năng và khả năng tương thích. Hãy xem
 :ref:`export page <doc_javascript_export_options>` for more info.
 
-You can build the export templates using the option ``dlink_enabled=yes``
-to enable GDExtension support:
+Bạn có thể xây dựng các mẫu xuất bằng tùy chọn ``dlink_enabled=yes`` để bật hỗ trợ GDExtension:
 
 ::
 
     scons platform=web dlink_enabled=yes target=template_release
     scons platform=web dlink_enabled=yes target=template_debug
 
-Once finished, the resulting file will be placed in the ``bin`` subdirectory.
-Its name will have ``_dlink`` added.
+Khi hoàn tất, tệp kết quả sẽ được đặt trong thư mục con ``bin``. Tên của tệp sẽ được thêm ``_dlink``.
 
-Finally, rename the zip archives to ``web_dlink_release.zip`` and
-``web_dlink_release.zip`` for the release template:
+Cuối cùng, đổi tên các tệp lưu trữ zip thành ``web_dlink_release.zip`` và ``web_dlink_release.zip`` cho mẫu phát hành:
 
 ::
 
     mv bin/godot.web.template_release.wasm32.dlink.zip bin/web_dlink_release.zip
     mv bin/godot.web.template_debug.wasm32.dlink.zip bin/web_dlink_debug.zip
 
-Building the editor
--------------------
+Xây dựng trình chỉnh sửa
+------------------------
 
-It is also possible to build a version of the Godot editor that can run in the
-browser. The editor version is not recommended
-over the native build. You can build the editor with:
+Bạn cũng có thể xây dựng một phiên bản trình chỉnh sửa Godot có thể chạy trong trình duyệt. Không nên sử dụng phiên bản trình chỉnh sửa này thay cho bản dựng gốc. Bạn có thể xây dựng trình chỉnh sửa bằng:
 
 ::
 
     scons platform=web target=editor
 
-Once finished, the resulting file will be placed in the ``bin`` subdirectory.
-Its name will be ``godot.web.editor.wasm32.zip``. You can upload the
-zip content to your web server and visit it with your browser to use the editor.
+Khi hoàn tất, tệp kết quả sẽ được đặt trong thư mục con ``bin``. Tên của tệp sẽ là ``godot.web.editor.wasm32.zip``. Bạn có thể tải nội dung tệp zip lên máy chủ web của mình và truy cập bằng trình duyệt để sử dụng trình chỉnh sửa.
 
-Refer to the :ref:`export page <doc_javascript_export_options>` for the web
-server requirements.
+Tham khảo :ref:`export page <doc_javascript_export_options>` để biết các yêu cầu đối với máy chủ web.
 
 .. tip::
 
-    The Godot repository includes a
-    `Python script to host a local web server <https://raw.githubusercontent.com/godotengine/godot/master/platform/web/serve.py>`__.
-    This can be used to test the web editor locally.
+    Kho lưu trữ Godot bao gồm một `Tập lệnh Python để lưu trữ máy chủ web cục bộ <https://raw.githubusercontent.com/godotengine/godot/master/platform/web/serve.py>`__. Có thể dùng tập lệnh này để kiểm thử trình chỉnh sửa web trên máy cục bộ.
 
-    After compiling the editor, extract the ZIP archive that was created in the
-    ``bin/`` folder, then run the following command in the Godot repository
-    root:
+    Sau khi biên dịch trình chỉnh sửa, hãy giải nén tệp lưu trữ ZIP được tạo trong thư mục ``bin/``, sau đó chạy lệnh sau trong thư mục gốc của kho lưu trữ Godot:
 
     ::
 
         # You may need to replace `python` with `python3` on some platforms.
         python platform/web/serve.py
 
-    This will serve the contents of the ``bin/`` folder and open the default web
-    browser automatically. In the page that opens, access ``godot.editor.html``
-    and you should be able to test the web editor this way.
+    Lệnh này sẽ cung cấp nội dung của thư mục ``bin/`` và tự động mở trình duyệt web mặc định. Trong trang được mở, truy cập ``godot.editor.html`` và bạn sẽ có thể kiểm thử trình chỉnh sửa web theo cách này.
 
-    Note that for production use cases, this Python-based web server should not
-    be used. Instead, you should use an established web server such as Apache or
-    nginx.
+    Lưu ý rằng không nên sử dụng máy chủ web dựa trên Python này cho các trường hợp sử dụng trong môi trường production. Thay vào đó, bạn nên sử dụng một máy chủ web đã được thiết lập như Apache hoặc nginx.

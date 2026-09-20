@@ -1,5 +1,5 @@
-Inheritance class tree
-======================
+Cây lớp kế thừa
+===============
 
 Object
 ------
@@ -26,4 +26,4 @@ Node3D
 
 .. image:: img/Node3D.webp
 
-Source files: :download:`class_tree.zip <files/class_tree.zip>`.
+Tệp nguồn: :download:`class_tree.zip <files/class_tree.zip>`.

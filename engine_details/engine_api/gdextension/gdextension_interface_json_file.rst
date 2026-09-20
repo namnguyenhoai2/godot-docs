@@ -1,29 +1,23 @@
 .. _doc_gdextension_interface_json_file:
 
-The C interface JSON file
-=========================
+Tệp JSON giao diện C
+====================
 
-The ``gdextension_interface.json`` file is the "source of truth" for the C API that
-Godot uses to communicate with GDExtensions.
+Tệp ``gdextension_interface.json`` là "nguồn chân lý" cho API C mà Godot sử dụng để giao tiếp với GDExtension.
 
-You can use the Godot executable to dump the file by using the following command:
+Bạn có thể sử dụng tệp thực thi Godot để kết xuất tệp bằng lệnh sau:
 
 .. code-block:: shell
 
     godot --headless --dump-gdextension-interface-json
 
-This file is intended to be used by GDExtension language bindings to generate code for
-using this API in whatever form makes the most sense for that language.
+Tệp này предназначается cho các liên kết ngôn ngữ GDExtension sử dụng để tạo mã cho việc dùng API này theo hình thức phù hợp nhất với ngôn ngữ đó.
 
 .. note::
 
-    This is not to be confused with the ``extension_api.json``, which is also used by
-    GDExtension language bindings, and contains information about the classes and
-    methods that are exposed by Godot. The ``gdextension_interface.json`` is more
-    low-level, and is used to interact with those higher-level classes and methods.
+    Không nên nhầm tệp này với ``extension_api.json``, vốn cũng được các liên kết ngôn ngữ GDExtension sử dụng và chứa thông tin về các lớp và phương thức được Godot cung cấp. ``gdextension_interface.json`` ở mức thấp hơn và được sử dụng để tương tác với các lớp và phương thức cấp cao hơn đó.
 
-For languages that can be extended via C, or provide tools for interacting with C code,
-it's also possible to use the Godot executable to dump a generated C header file:
+Đối với các ngôn ngữ có thể được mở rộng thông qua C hoặc cung cấp công cụ để tương tác với mã C, bạn cũng có thể sử dụng tệp thực thi Godot để kết xuất một tệp tiêu đề C được tạo tự động:
 
 .. code-block:: shell
 
@@ -31,120 +25,66 @@ it's also possible to use the Godot executable to dump a generated C header file
 
 .. note::
 
-    The header file is compatible with earlier versions of the header file that were included
-    with Godot 4.5 and earlier, which means it preserves some typos in names in order to
-    ensure compatibility.
+    Tệp tiêu đề này tương thích với các phiên bản trước của tệp tiêu đề được đi kèm với Godot 4.5 trở về trước, nghĩa là nó giữ lại một số lỗi chính tả trong tên để đảm bảo khả năng tương thích.
 
-The goal of this page is to explain the JSON format for the GDExtension language bindings that
-would like to do their own code generation from the JSON.
+Mục tiêu của trang này là giải thích định dạng JSON cho các liên kết ngôn ngữ GDExtension muốn tự tạo mã từ JSON.
 
-Overall structure
+Cấu trúc tổng thể
 -----------------
 
-The JSON file is broken up into 3 sections:
+Tệp JSON được chia thành 3 phần:
 
-- The header, which includes some miscellaneous information at the top-level of the JSON file.
-- The ``types`` key, which defines all the types used in the GDExtension interface.
-- The ``interface`` key, which defines all the function pointers that can be loaded via the
-  ``GDExtensionInterfaceGetProcAddress`` function pointer, which is passed to all GDExtensions
-  when they are loaded.
+- Phần tiêu đề, bao gồm một số thông tin linh tinh ở cấp cao nhất của tệp JSON. - Khóa ``types``, định nghĩa tất cả các kiểu được sử dụng trong giao diện GDExtension. - Khóa ``interface``, định nghĩa tất cả các con trỏ hàm có thể được tải thông qua con trỏ hàm ``GDExtensionInterfaceGetProcAddress``, được truyền cho mọi GDExtension khi chúng được tải.
 
-There is a complete `JSON schema <https://github.com/godotengine/godot/blob/master/core/extension/gdextension_interface.schema.json>`__
-included in Godot's source code.
+Mã nguồn Godot có kèm theo một `lược đồ JSON hoàn chỉnh <https://github.com/godotengine/godot/blob/master/core/extension/gdextension_interface.schema.json>`__.
 
-Even though we may add new types and interface functions with each minor release of Godot, we
-strive to **never** change them in a backwards incompatible way, or remove them. Every
-interface function is labeled with the version of Godot it was introduced in (the ``since``
-key), so you can always use the latest version of the file, and simply refrain from using
-anything in versions of Godot that are newer than the version you are targeting.
+Mặc dù chúng tôi có thể bổ sung các kiểu và hàm giao diện mới trong mỗi bản phát hành phụ của Godot, chúng tôi cố gắng **không bao giờ** thay đổi chúng theo cách không tương thích ngược hoặc xóa chúng. Mỗi hàm giao diện đều được gắn nhãn phiên bản Godot mà nó được giới thiệu (khóa ``since``), vì vậy bạn luôn có thể sử dụng phiên bản tệp mới nhất và chỉ cần tránh sử dụng bất kỳ thứ gì trong các phiên bản Godot mới hơn phiên bản bạn đang nhắm đến.
 
-Header
-------
+Tiêu đề
+-------
 
-The "header" is made up of 3 miscellaneous keys at the top-level of the file:
+"Tiêu đề" gồm 3 khóa linh tinh ở cấp cao nhất của tệp:
 
-- ``_copyright``: The standard copyright and license text that Godot includes in all source
-  code files.
-- ``$schema``: Points to the JSON schema relative to this file. It can be useful to place
-  the schema in the same directory, if you're viewing it with a code editor that understands
-  JSON schema.
-- ``format_version``: An integer for the version of the file format (meaning the schema).
-  Right now, there is only one format version (``1``). If we ever change the file format in
-  an incompatible way, we will increment this number. This *doesn't* reflect the version
-  of the data in the file (so it won't change between Godot versions), only its format.
-  Hopefully, we'll never have to use it, but it allows code generators to error early if they
-  encounter an unexpected value here.
+- ``_copyright``: Văn bản bản quyền và giấy phép tiêu chuẩn mà Godot đưa vào tất cả các tệp mã nguồn. - ``$schema``: Trỏ đến lược đồ JSON tương đối so với tệp này. Việc đặt lược đồ trong cùng thư mục có thể hữu ích nếu bạn xem tệp bằng trình soạn thảo mã hiểu lược đồ JSON. - ``format_version``: Một số nguyên biểu thị phiên bản của định dạng tệp (tức là lược đồ). Hiện tại chỉ có một phiên bản định dạng (``1``). Nếu chúng tôi thay đổi định dạng tệp theo cách không tương thích, chúng tôi sẽ tăng số này. Số này *không* phản ánh phiên bản dữ liệu trong tệp (vì vậy sẽ không thay đổi giữa các phiên bản Godot), mà chỉ phản ánh định dạng của tệp. Hy vọng rằng chúng tôi sẽ không bao giờ phải sử dụng đến nó, nhưng nó cho phép các trình tạo mã báo lỗi sớm nếu gặp một giá trị không mong đợi tại đây.
 
-Types
------
+Kiểu
+----
 
-The ``types`` section is an array of types that will be used by other types, and the interface
-functions that will be in the last section.
+Phần ``types`` là một mảng các kiểu sẽ được các kiểu khác và các hàm giao diện trong phần cuối cùng sử dụng.
 
-The types should be evaluated in order. Later types may refer to earlier types, but earlier
-types will not refer to later types.
+Các kiểu phải được đánh giá theo thứ tự. Các kiểu đứng sau có thể tham chiếu đến các kiểu đứng trước, nhưng các kiểu đứng trước sẽ không tham chiếu đến các kiểu đứng sau.
 
-There is a small set of built-in types which aren't explicitly listed in the JSON:
+Có một tập hợp nhỏ các kiểu dựng sẵn không được liệt kê rõ ràng trong JSON:
 
-- ``void``
-- ``int8_t``
-- ``uint8_t``
-- ``int16_t``
-- ``uint16_t``
-- ``int32_t``
-- ``uint32_t``
-- ``int64_t``
-- ``uint64_t``
-- ``size_t`` (``uint32_t`` on 32-bit architectures, and ``uint64_t`` on 64-bit architectures)
-- ``char``
-- ``char16_t``
-- ``char32_t``
-- ``wchar_t``
-- ``float``
-- ``double``
+- ``void`` - ``int8_t`` - ``uint8_t`` - ``int16_t`` - ``uint16_t`` - ``int32_t`` - ``uint32_t`` - ``int64_t`` - ``uint64_t`` - ``size_t`` (``uint32_t`` trên kiến trúc 32-bit và ``uint64_t`` trên kiến trúc 64-bit) - ``char`` - ``char16_t`` - ``char32_t`` - ``wchar_t`` - ``float`` - ``double``
 
-These correspond to their equivalent C types.
+Các kiểu này tương ứng với những kiểu C tương đương.
 
-Additionally, types can include modifiers such as:
+Ngoài ra, kiểu có thể bao gồm các bổ từ như sau:
 
-- ``*`` (e.g. ``int8_t*``) to indicate a pointer to the type
-- ``const`` (e.g. ``const int8_t*``) to indicate a const type
+- ``*`` (ví dụ: ``int8_t*``) để biểu thị con trỏ đến kiểu - ``const`` (ví dụ: ``const int8_t*``) để biểu thị kiểu hằng
 
-Each type defined in the JSON file falls into one of 5 "kinds":
+Mỗi kiểu được định nghĩa trong tệp JSON thuộc một trong 5 "loại":
 
-- ``enum``
-- ``handle``
-- ``alias``
-- ``struct``
-- ``function``
+- ``enum`` - ``handle`` - ``alias`` - ``struct`` - ``function``
 
-Regardless of the "kind", all types can have the following keys:
+Bất kể thuộc "loại" nào, mọi kiểu đều có thể có các khóa sau:
 
-- ``kind`` (required): The type's "kind".
-- ``name`` (required): The name of the type, which could be used as a valid C identifier.
-- ``description``: An array of strings documenting the type, where each string is a line of
-  documentation (this format for ``description`` is used throughout the JSON file).
-- ``deprecated``: An object with its own keys for the Godot version the type was deprecated in
-  (``since``), a message explaining the deprecation (``message``), and optionally a replacement
-  to use instead (``replacement``).
+- ``kind`` (bắt buộc): "Loại" của kiểu. - ``name`` (bắt buộc): Tên của kiểu, có thể được sử dụng như một định danh C hợp lệ. - ``description``: Một mảng các chuỗi mô tả kiểu, trong đó mỗi chuỗi là một dòng tài liệu (định dạng này cho ``description`` được sử dụng xuyên suốt tệp JSON). - ``deprecated``: Một đối tượng có các khóa riêng, gồm phiên bản Godot mà kiểu bị phản đối (``since``), thông báo giải thích việc phản đối (``message``) và, tùy chọn, một kiểu thay thế nên sử dụng (``replacement``).
 
-Enums
-~~~~~
+Enum
+~~~~
 
-Enums are 32-bit integers with a fixed set of possible values. In C, they could be represented
-as an ``enum``.
+Enum là các số nguyên 32-bit có một tập hợp giá trị khả dĩ cố định. Trong C, chúng có thể được biểu diễn dưới dạng ``enum``.
 
-They have the following keys:
+Chúng có các khóa sau:
 
-- ``is_bitfield``: If true, this enum is a bitfield, where the enum values can be bitwise OR'd together.
-  It is false by default.
-- ``values``: The array of fixed values for this enum, each with a ``name``, ``value``, and ``description``.
+- ``is_bitfield``: Nếu là true, enum này là một trường bit, trong đó các giá trị enum có thể được kết hợp bằng phép OR theo bit. Mặc định là false. - ``values``: Mảng các giá trị cố định cho enum này, mỗi giá trị có ``name``, ``value`` và ``description``.
 
-An enum should be represented as an ``int32_t``, unless ``is_bitfield`` is true, in which case a ``uint32_t``
-should be used.
+Một enum nên được biểu diễn dưới dạng ``int32_t``, trừ khi ``is_bitfield`` là true; khi đó nên sử dụng ``uint32_t``.
 
-Example
-+++++++
+Ví dụ
++++++
 
 .. code-block:: json
 
@@ -175,25 +115,19 @@ Example
         ]
     }
 
-Handles
-~~~~~~~
+Handle
+~~~~~~
 
-Handles are pointers to opaque structs. In C, they could be represented as ``void *`` or ``struct{} *``.
+Handle là các con trỏ đến những struct không hiển thị cấu trúc. Trong C, chúng có thể được biểu diễn dưới dạng ``void *`` hoặc ``struct{} *``.
 
-They have the following keys:
+Chúng có các khóa sau:
 
-- ``is_const``: If true, this handle type is to be treated as a "const pointer", meaning its internal
-  data will not be changed. It is false by default.
-- ``is_uninitialized``: If true, this handle type is to be treated as pointing to uninitialized memory
-  (which may be initialized using interface functions). It is false by default.
-- ``parent``: The optional name of another handle type, if this handle type is the const or uninitialized
-  version of the parent type. This only makes sense if either ``is_const`` or ``is_uninitialized`` is true.
+- ``is_const``: Nếu là true, kiểu handle này được xử lý như một "con trỏ hằng", nghĩa là dữ liệu bên trong sẽ không bị thay đổi. Mặc định là false. - ``is_uninitialized``: Nếu là true, kiểu handle này được xử lý như trỏ đến vùng nhớ chưa khởi tạo (có thể được khởi tạo bằng các hàm giao diện). Mặc định là false. - ``parent``: Tên tùy chọn của một kiểu handle khác, nếu kiểu handle này là phiên bản hằng hoặc chưa khởi tạo của kiểu cha. Điều này chỉ có ý nghĩa nếu ``is_const`` hoặc ``is_uninitialized`` là true.
 
-Handles are the size of pointers on the given architecture (so, 64-bit on x86_64 and 32-bit on x86_32,
-for example).
+Handle có kích thước bằng kích thước con trỏ trên kiến trúc tương ứng (ví dụ: 64-bit trên x86_64 và 32-bit trên x86_32).
 
-Example
-+++++++
+Ví dụ
++++++
 
 .. code-block:: json
 
@@ -202,19 +136,19 @@ Example
         "kind": "handle"
     }
 
-Aliases
+Bí danh
 ~~~~~~~
 
-Aliases are alternative names for a type. In C, they could be represented as a ``typedef``.
+Bí danh là các tên thay thế cho một kiểu. Trong C, chúng có thể được biểu diễn dưới dạng ``typedef``.
 
-They have only one additional key:
+Chúng chỉ có thêm một khóa:
 
-- ``type``: The type the alias is an alternative name for. It may include modifiers as described above.
+- ``type``: Kiểu mà bí danh là tên thay thế. Kiểu này có thể bao gồm các bổ từ như mô tả ở trên.
 
-These should be represented using the same C type as the type they refer to.
+Các kiểu này phải được biểu diễn bằng cùng kiểu C với kiểu mà chúng tham chiếu đến.
 
-Example
-+++++++
+Ví dụ
++++++
 
 .. code-block:: json
 
@@ -224,19 +158,17 @@ Example
         "type": "int64_t"
     }
 
-Structs
-~~~~~~~
+Struct
+~~~~~~
 
-Structs represent C ``struct``\ s (aka a block of memory made up of the given members in order), and should
-follow all the same layout and alignment rules as C structs.
+Struct biểu diễn C ``struct``\ s (hay còn gọi là một khối bộ nhớ gồm các thành viên đã cho theo thứ tự) và phải tuân theo mọi quy tắc bố cục và căn chỉnh giống như struct C.
 
-They have only one additional key:
+Chúng chỉ có thêm một khóa:
 
-- ``members``: An array of objects which have a ``name``, ``type`` (which may include modifiers), and
-  ``description``.
+- ``members``: Một mảng các đối tượng có ``name``, ``type`` (có thể bao gồm các bổ từ) và ``description``.
 
-Example
-+++++++
+Ví dụ
++++++
 
 .. code-block:: json
 
@@ -259,22 +191,18 @@ Example
         ]
     }
 
-Functions
-~~~~~~~~~
+Hàm
+~~~
 
-Functions represent C function pointer types, with a list of arguments and a return type, and should
-follow the same size and alignment requirements as C function pointers.
+Hàm biểu diễn các kiểu con trỏ hàm C, với một danh sách đối số và một kiểu trả về, đồng thời phải tuân theo các yêu cầu về kích thước và căn chỉnh giống như con trỏ hàm C.
 
-They have the following members:
+Chúng có các thành viên sau:
 
-- ``return_value``: An object which has a ``type`` (which may include modifiers) and ``description``.
-  If the function has no return value, this will be omitted.
-- ``arguments`` (required): An array of function arguments which each has a ``type`` (which may include modifiers),
-  ``name``, and ``description``.
+- ``return_value``: Một đối tượng có ``type`` (có thể bao gồm các bổ từ) và ``description``. Nếu hàm không có giá trị trả về, khóa này sẽ bị bỏ qua. - ``arguments`` (bắt buộc): Một mảng các đối số hàm, trong đó mỗi đối số có ``type`` (có thể bao gồm các bổ từ), ``name`` và ``description``.
 
 
-Example
-+++++++
+Ví dụ
++++++
 
 .. code-block:: json
 
@@ -293,32 +221,21 @@ Example
         ]
     }
 
-Interface
+Giao diện
 ---------
 
-The ``interface`` section of the JSON file is the list of interface functions, which can be loaded
-by ``name`` using the ``GDExtensionInterfaceGetProcAddress`` function pointer, which is
-passed to all GDExtensions when they are loaded.
+Phần ``interface`` của tệp JSON là danh sách các hàm giao diện, có thể được tải bởi ``name`` bằng con trỏ hàm ``GDExtensionInterfaceGetProcAddress``, được truyền cho mọi GDExtension khi chúng được tải.
 
-Interface functions have some of the same keys as types, including ``name`` (required),
-``deprecated``, and ``description``.
+Các hàm giao diện có một số khóa giống như kiểu, bao gồm ``name`` (bắt buộc), ``deprecated`` và ``description``.
 
-And they also have ``return_value`` and ``arguments`` (required) that have the same format
-as the equivalent keys on function types (as described in the previous section).
+Ngoài ra, chúng có ``return_value`` và ``arguments`` (bắt buộc), với định dạng giống các khóa tương đương trên kiểu hàm (như mô tả trong phần trước).
 
-There are only a handful of unique keys:
+Chỉ có một số ít khóa riêng biệt:
 
-- ``since`` (required): The Godot version that introduced this interface function.
-- ``see``: An array of strings describing external references with more information, for example,
-  names of classes or functions in the Godot source code, or URLs pointing to documentation.
-- ``legacy_type_name``: The legacy name used for the function pointer type in the header generated
-  by Godot, when the legacy name doesn't match the pattern used for these type names. This field
-  only exists so that we can generate the header in a way that is backwards compatible with the
-  header from Godot 4.5 or earlier, and it shouldn't be used unless you also need to maintain
-  compatibility with the old header.
+- ``since`` (bắt buộc): Phiên bản Godot đã giới thiệu hàm giao diện này. - ``see``: Một mảng các chuỗi mô tả những tham chiếu bên ngoài chứa thêm thông tin, chẳng hạn như tên các lớp hoặc hàm trong mã nguồn Godot hoặc URL trỏ đến tài liệu. - ``legacy_type_name``: Tên cũ được sử dụng cho kiểu con trỏ hàm trong tệp tiêu đề do Godot tạo ra, khi tên cũ không khớp với mẫu được sử dụng cho các tên kiểu này. Trường này chỉ tồn tại để chúng tôi có thể tạo tệp tiêu đề theo cách tương thích ngược với tệp tiêu đề từ Godot 4.5 trở về trước và không nên được sử dụng trừ khi bạn cũng cần duy trì khả năng tương thích với tệp tiêu đề cũ.
 
-Example
-~~~~~~~
+Ví dụ
+~~~~~
 
 .. code-block:: json
 

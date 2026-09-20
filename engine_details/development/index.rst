@@ -2,12 +2,10 @@
 
 .. _doc_contributing_to_the_engine:
 
-Engine development
-==================
+Phát triển engine
+=================
 
-The guides below explain how to work on the engine's codebase.
-If you plan to contribute to the engine, please make sure to also read the
-`contribution guidelines <https://contributing.godotengine.org/en/latest/engine/introduction.html>`__.
+Các hướng dẫn dưới đây giải thích cách làm việc với mã nguồn của engine. Nếu bạn dự định đóng góp cho engine, hãy đảm bảo bạn cũng đọc `hướng dẫn đóng góp <https://contributing.godotengine.org/en/latest/engine/introduction.html>`__.
 
 .. toctree::
    :maxdepth: 1

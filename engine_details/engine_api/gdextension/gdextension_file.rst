@@ -1,52 +1,41 @@
 .. _doc_gdextension_file:
 
-The .gdextension file
-=====================
+Tệp .gdextension
+================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-The ``.gdextension`` file in your project contains the instructions for how to load
-the GDExtension. The instructions are separated into specific sections. This page
-should give you a quick overview of the different options available to you. For an introduction
-how to get started with C++ (godot-cpp), take a look at the :ref:`GDExtension C++ Example <doc_godot_cpp_getting_started>`.
+Tệp ``.gdextension`` trong dự án của bạn chứa các chỉ dẫn về cách tải GDExtension. Các chỉ dẫn được phân tách thành những phần cụ thể. Trang này cung cấp cho bạn cái nhìn tổng quan nhanh về các tùy chọn khác nhau hiện có. Để tìm hiểu cách bắt đầu với C++ (godot-cpp), hãy xem :ref:`GDExtension C++ Example <doc_godot_cpp_getting_started>`.
 
-Configuration section
----------------------
+Phần cấu hình
+-------------
 
 +-------------------------------+------------+------------------------------------------------------------------------------------------------------+
-| Property                      | Type       | Description                                                                                          |
-+===============================+============+======================================================================================================+
-| **entry_symbol**              | String     | Name of the entry function for initializing the GDExtension. This function should be defined in      |
-|                               |            | the ``register_types.cpp`` file when using godot-cpp. Adding this is necessary for the extension to  |
-|                               |            | work.                                                                                                |
-+-------------------------------+------------+------------------------------------------------------------------------------------------------------+
-| **compatibility_minimum**     | String     | Minimum compatible version. This prevents older versions of Godot from loading extensions that       |
-|                               |            | depend on features from newer versions of Godot. **Only supported in Godot 4.1 or later**            |
-+-------------------------------+------------+------------------------------------------------------------------------------------------------------+
-| **compatibility_maximum**     | String     | Maximum compatible version. This prevents newer versions of Godot from loading the extension.        |
-|                               |            | **Only supported in Godot 4.3 or later**                                                             |
-+-------------------------------+------------+------------------------------------------------------------------------------------------------------+
-| **reloadable**                | Boolean    | Reloads the extension upon recompilation. Reloading is supported for the godot-cpp binding in        |
-|                               |            | Godot 4.2 or later. Other language bindings may or may not support it as well. This flag should be   |
-|                               |            | mainly used for developing or debugging an extension.                                                |
-+-------------------------------+------------+------------------------------------------------------------------------------------------------------+
-| **android_aar_plugin**        | Boolean    | The GDExtension is part of a :ref:`v2 Android plugin <doc_android_plugin>`. During export this flag  |
-|                               |            | will indicate to the editor that the GDExtension native shared libraries are exported by the Android |
-|                               |            | plugin AAR binaries.                                                                                 |
-+-------------------------------+------------+------------------------------------------------------------------------------------------------------+
+| Thuộc tính | Kiểu | Mô tả |
++++++++++++++++++++++++++++++
+| **entry_symbol** | String | Tên của hàm entry để khởi tạo GDExtension. Hàm này phải được định nghĩa trong | | | | tệp ``register_types.cpp`` khi sử dụng godot-cpp. Việc thêm thuộc tính này là cần thiết để extension |
+| | | hoạt động. |
+++++++++++++++++++
+| **compatibility_minimum** | String | Phiên bản tương thích tối thiểu. Điều này ngăn các phiên bản Godot cũ hơn tải những extension |
+| | | phụ thuộc vào các tính năng từ những phiên bản Godot mới hơn. **Chỉ được hỗ trợ trong Godot 4.1 trở lên** |
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **compatibility_maximum** | String | Phiên bản tương thích tối đa. Điều này ngăn các phiên bản Godot mới hơn tải extension. |
+| | | **Chỉ được hỗ trợ trong Godot 4.3 trở lên** |
++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **reloadable** | Boolean | Tải lại extension sau khi biên dịch lại. Việc tải lại được hỗ trợ cho binding godot-cpp trong | | | | Godot 4.2 trở lên. Các binding ngôn ngữ khác có thể hỗ trợ hoặc không. Cờ này chủ yếu nên được |
+| | | sử dụng để phát triển hoặc gỡ lỗi extension. |
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **android_aar_plugin** | Boolean | GDExtension là một phần của :ref:`v2 Android plugin <doc_android_plugin>`. Khi xuất, cờ này | | | | sẽ cho trình biên tập biết rằng các thư viện chia sẻ native của GDExtension được xuất bởi các tệp nhị phân |
+| | | AAR của plugin Android. |
++++++++++++++++++++++++++++++++
 
-Libraries section
------------------
+Phần thư viện
+-------------
 
-In this section you can set the paths to the compiled binaries of your GDExtension libraries.
-By specifying feature flags you can filter which version should be loaded and exported with your
-game depending on which feature flags are active. Every feature flag must match to Godot's
-feature flags or your custom export flags to be loaded in an exported game. For instance ``macos.debug``
-means that it will be loaded if Godot has both the ``macos`` and ``debug`` flag active. Each
-line of the section is evaluated from top to bottom.
+Trong phần này, bạn có thể thiết lập đường dẫn đến các tệp nhị phân đã biên dịch của thư viện GDExtension. Bằng cách chỉ định các cờ tính năng, bạn có thể lọc phiên bản nào sẽ được tải và xuất cùng trò chơi, tùy thuộc vào các cờ tính năng đang hoạt động. Mỗi cờ tính năng phải khớp với các cờ tính năng của Godot hoặc các cờ xuất tùy chỉnh của bạn để được tải trong trò chơi đã xuất. Ví dụ, ``macos.debug`` có nghĩa là nó sẽ được tải nếu Godot có cả cờ ``macos`` và ``debug`` đang hoạt động. Mỗi dòng trong phần này được đánh giá từ trên xuống dưới.
 
-Here is an example of what that can look like:
+Dưới đây là một ví dụ về cách phần này có thể trông như thế nào:
 
 .. code-block:: none
 
@@ -66,12 +55,9 @@ Here is an example of what that can look like:
     linux.debug.rv64 = "./bin/libgdexample.linux.template_debug.rv64.so"
     linux.release.rv64 = "./bin/libgdexample.linux.template_release.rv64.so"
 
-Paths can be relative or absolute (starting with ``res://``). Relative paths are recommended,
-as they allow the extension to keep working if it's installed to a different folder than what's
-specified in the path.
+Đường dẫn có thể là tương đối hoặc tuyệt đối (bắt đầu bằng ``res://``). Khuyến nghị sử dụng đường dẫn tương đối vì chúng cho phép extension tiếp tục hoạt động nếu được cài đặt vào một thư mục khác với thư mục được chỉ định trong đường dẫn.
 
-Entries are matched in order, so if two sets of feature tags could match
-the same system, be sure to put the more specific ones first:
+Các mục được đối chiếu theo thứ tự, vì vậy nếu hai tập thẻ tính năng có thể khớp với cùng một hệ thống, hãy đảm bảo đặt các mục cụ thể hơn trước:
 
 .. code-block:: none
 
@@ -80,72 +66,71 @@ the same system, be sure to put the more specific ones first:
     linux.release.editor.x86_64 = "./bin/libgdexample.linux.template_release.x86_64.so"
     linux.release.x86_64 = "./bin/libgdexample.linux.noeditor.template_release.x86_64.so"
 
-Here are lists of some of the available built-in options (for more look at the :ref:`feature tags <doc_feature_tags>`):
+Dưới đây là danh sách một số tùy chọn tích hợp sẵn hiện có (xem :ref:`feature tags <doc_feature_tags>` để biết thêm):
 
-Running system
-~~~~~~~~~~~~~~
-
-+-------------------------------+------------------------------------------------------------------------------------------------------+
-| Flag                          | Description                                                                                          |
-+===============================+======================================================================================================+
-| **windows**                   | Windows operating system                                                                             |
-+-------------------------------+------------------------------------------------------------------------------------------------------+
-| **macos**                     | Mac operating system                                                                                 |
-+-------------------------------+------------------------------------------------------------------------------------------------------+
-| **linux**                     | Linux operating system                                                                               |
-+-------------------------------+------------------------------------------------------------------------------------------------------+
-| **bsd**                       | BSD operating system                                                                                 |
-+-------------------------------+------------------------------------------------------------------------------------------------------+
-| **linuxbsd**                  | Linux or BSD operating system                                                                        |
-+-------------------------------+------------------------------------------------------------------------------------------------------+
-| **android**                   | Android operating system                                                                             |
-+-------------------------------+------------------------------------------------------------------------------------------------------+
-| **ios**                       | iOS operating system                                                                                 |
-+-------------------------------+------------------------------------------------------------------------------------------------------+
-| **web**                       | Web browser                                                                                          |
-+-------------------------------+------------------------------------------------------------------------------------------------------+
-
-Build
-~~~~~
+Hệ thống đang chạy
+~~~~~~~~~~~~~~~~~~
 
 +-------------------------------+------------------------------------------------------------------------------------------------------+
-| Flag                          | Description                                                                                          |
-+===============================+======================================================================================================+
-| **debug**                     | Build with debugging features (editor builds always have debugging features)                         |
-+-------------------------------+------------------------------------------------------------------------------------------------------+
-| **release**                   | Optimized build without debugging features                                                           |
-+-------------------------------+------------------------------------------------------------------------------------------------------+
-| **editor**                    | Editor build                                                                                         |
-+-------------------------------+------------------------------------------------------------------------------------------------------+
+| Cờ | Mô tả |
+++++++++++++++
+| **windows** | Hệ điều hành Windows |
+++++++++++++++++++++++++++++++++++++++
+| **macos** | Hệ điều hành Mac |
+++++++++++++++++++++++++++++++++
+| **linux** | Hệ điều hành Linux |
+++++++++++++++++++++++++++++++++++
+| **bsd** | Hệ điều hành BSD |
+++++++++++++++++++++++++++++++
+| **linuxbsd** | Hệ điều hành Linux hoặc BSD |
+++++++++++++++++++++++++++++++++++++++++++++++
+| **android** | Hệ điều hành Android |
+++++++++++++++++++++++++++++++++++++++
+| **ios** | Hệ điều hành iOS |
+++++++++++++++++++++++++++++++
+| **web** | Trình duyệt web |
++++++++++++++++++++++++++++++
 
-Architecture
-~~~~~~~~~~~~
+Bản dựng
+~~~~~~~~
 
 +-------------------------------+------------------------------------------------------------------------------------------------------+
-| Flag                          | Description                                                                                          |
-+===============================+======================================================================================================+
-| **double**                    | double-precision build                                                                               |
-+-------------------------------+------------------------------------------------------------------------------------------------------+
-| **single**                    | single-precision build                                                                               |
-+-------------------------------+------------------------------------------------------------------------------------------------------+
-| **x86_64**                    | 64-bit x86 build                                                                                     |
-+-------------------------------+------------------------------------------------------------------------------------------------------+
-| **arm64**                     | 64-bit ARM build                                                                                     |
-+-------------------------------+------------------------------------------------------------------------------------------------------+
-| **rv64**                      | 64-bit RISC-V build                                                                                  |
-+-------------------------------+------------------------------------------------------------------------------------------------------+
-| **riscv**                     | RISC-V build (any bitness)                                                                           |
-+-------------------------------+------------------------------------------------------------------------------------------------------+
-| **wasm32**                    | 32-bit WebAssembly build                                                                             |
-+-------------------------------+------------------------------------------------------------------------------------------------------+
+| Cờ | Mô tả |
+++++++++++++++
+| **debug** | Bản dựng có các tính năng gỡ lỗi (các bản dựng trình biên tập luôn có các tính năng gỡ lỗi) |
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **release** | Bản dựng được tối ưu hóa không có các tính năng gỡ lỗi |
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **editor** | Bản dựng trình biên tập |
+++++++++++++++++++++++++++++++++++++++++
 
-Icons section
--------------
+Kiến trúc
+~~~~~~~~~
 
-By default, Godot uses the Node icon in the scene dock for GDExtension nodes.
-A custom icon can be set by reference to its name and resource path of an SVG file.
++-------------------------------+------------------------------------------------------------------------------------------------------+
+| Cờ | Mô tả |
+++++++++++++++
+| **double** | Bản dựng độ chính xác kép |
+++++++++++++++++++++++++++++++++++++++++++
+| **single** | Bản dựng độ chính xác đơn |
+++++++++++++++++++++++++++++++++++++++++++
+| **x86_64** | Bản dựng x86 64-bit |
+++++++++++++++++++++++++++++++++++++
+| **arm64** | Bản dựng ARM 64-bit |
++++++++++++++++++++++++++++++++++++
+| **rv64** | Bản dựng RISC-V 64-bit |
++++++++++++++++++++++++++++++++++++++
+| **riscv** | Bản dựng RISC-V (bất kỳ số bit nào) |
++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **wasm32** | Bản dựng WebAssembly 32-bit |
+++++++++++++++++++++++++++++++++++++++++++++
 
-For example:
+Phần biểu tượng
+---------------
+
+Theo mặc định, Godot sử dụng biểu tượng Node trong dock scene cho các node GDExtension. Có thể đặt biểu tượng tùy chỉnh bằng cách tham chiếu đến tên và đường dẫn tài nguyên của một tệp SVG.
+
+Ví dụ:
 
 .. code-block:: none
 
@@ -153,28 +138,20 @@ For example:
 
     GDExample = "res://icons/gd_example.svg"
 
-The path should point to a 16×16 pixel SVG image, with two options enabled on the
-image in the Import dock:
+Đường dẫn phải trỏ đến một hình ảnh SVG có kích thước 16×16 pixel, với hai tùy chọn được bật trên hình ảnh trong dock Import:
 
-- **Editor > Scale with Editor Scale**.
-- **Editor > Convert Colors with Editor Theme**.
+- **Editor > Scale with Editor Scale**. - **Editor > Convert Colors with Editor Theme**.
 
-Enabling both options ensures the icon behaves as closely as possible to
-the stock editor icons. Read the guide for :ref:`creating icons <doc_editor_icons>`
-for more information.
+Việc bật cả hai tùy chọn đảm bảo biểu tượng hoạt động gần giống nhất có thể với các biểu tượng trình biên tập có sẵn. Đọc hướng dẫn về :ref:`creating icons <doc_editor_icons>` để biết thêm thông tin.
 
-Dependencies section
---------------------
+Phần phụ thuộc
+--------------
 
-In this section, you set the paths of the GDExtension dependencies. This is used internally to export the dependencies
-when exporting your game executable. You are able to set which dependency is loaded depending on the feature flags
-of the exported executable. In addition, you are able to set an optional subdirectory to move your dependencies into.
-If no path is supplied, Godot will move the libraries into the same directory as your game executable.
+Trong phần này, bạn thiết lập đường dẫn đến các phần phụ thuộc của GDExtension. Đường dẫn này được sử dụng nội bộ để xuất các phần phụ thuộc khi xuất tệp thực thi trò chơi. Bạn có thể thiết lập phần phụ thuộc nào được tải tùy thuộc vào các cờ tính năng của tệp thực thi đã xuất. Ngoài ra, bạn có thể thiết lập một thư mục con tùy chọn để di chuyển các phần phụ thuộc vào đó. Nếu không cung cấp đường dẫn, Godot sẽ di chuyển các thư viện vào cùng thư mục với tệp thực thi trò chơi.
 
 .. warning::
 
-    On macOS, it is necessary to have shared libraries inside a folder called ``Frameworks``
-    with a directory structure like this: ``Game.app/Contents/Frameworks``.
+    Trên macOS, các thư viện chia sẻ cần nằm trong một thư mục có tên là ``Frameworks`` với cấu trúc thư mục như sau: ``Game.app/Contents/Frameworks``.
 
 .. code-block:: none
 

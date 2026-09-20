@@ -1,53 +1,35 @@
 .. _doc_cross-compiling_for_ios_on_linux:
 
-Cross-compiling for iOS on Linux
-================================
+Biên dịch chéo cho iOS trên Linux
+=================================
 
 .. highlight:: shell
 
-The procedure for this is somewhat complex and requires a lot of steps,
-but once you have the environment properly configured you can
-compile Godot for iOS anytime you want.
+Quy trình này tương đối phức tạp và yêu cầu thực hiện nhiều bước, nhưng một khi đã cấu hình môi trường đúng cách, bạn có thể biên dịch Godot cho iOS bất cứ khi nào muốn.
 
-Disclaimer
-----------
+Tuyên bố miễn trừ trách nhiệm
+-----------------------------
 
-While it is possible to compile for iOS on a Linux environment, Apple is
-very restrictive about the tools to be used (especially hardware-wise),
-allowing pretty much only their products to be used for development. So
-this is **not official**. However, in 2010 Apple said they relaxed some of the
-`App Store review guidelines <https://developer.apple.com/app-store/review/guidelines/>`__
-to allow any tool to be used, as long as the resulting binary does not
-download any code, which means it should be OK to use the procedure
-described here and cross-compiling the binary.
+Mặc dù có thể biên dịch cho iOS trong môi trường Linux, Apple rất hạn chế về các công cụ được phép sử dụng (đặc biệt là về phần cứng), gần như chỉ cho phép sử dụng các sản phẩm của họ để phát triển. Vì vậy, đây **không phải là quy trình chính thức**. Tuy nhiên, vào năm 2010, Apple cho biết họ đã nới lỏng một số `App Store review guidelines <https://developer.apple.com/app-store/review/guidelines/>`__ để cho phép sử dụng bất kỳ công cụ nào, miễn là tệp nhị phân tạo ra không tải xuống bất kỳ mã nào, điều đó có nghĩa là việc sử dụng quy trình được mô tả ở đây và biên dịch chéo tệp nhị phân sẽ không có vấn đề gì.
 
-Requirements
-------------
+Yêu cầu
+-------
 
-- `XCode with the iOS SDK <https://developer.apple.com/download/all/?q=Xcode>`__
-  (you must be logged into an Apple ID to download Xcode).
-- `Clang >= 3.5 <https://clang.llvm.org>`__ for your development
-  machine installed and in the ``PATH``. It has to be version >= 3.5
-  to target ``arm64`` architecture.
-- `xar <https://mackyle.github.io/xar/>`__ and `pbzx <https://github.com/NiklasRosenstein/pbzx>`__
-  (required to extract the ``.xip`` archive Xcode comes in).
+- `XCode with the iOS SDK <https://developer.apple.com/download/all/?q=Xcode>`__ (bạn phải đăng nhập vào Apple ID để tải Xcode). - `Clang >= 3.5 <https://clang.llvm.org>`__ cho máy phát triển của bạn, được cài đặt trong ``PATH``. Phiên bản này phải là >= 3.5 để nhắm đến kiến trúc ``arm64``. - `xar <https://mackyle.github.io/xar/>`__ và `pbzx <https://github.com/NiklasRosenstein/pbzx>`__ (cần thiết để giải nén kho lưu trữ ``.xip`` đi kèm với Xcode).
 
-  - For building xar and pbzx, you may want to follow
-    `this guide <https://gist.github.com/phracker/1944ce190e01963c550566b749bd2b54>`__.
+  - Để xây dựng xar và pbzx, bạn có thể làm theo `this guide <https://gist.github.com/phracker/1944ce190e01963c550566b749bd2b54>`__.
 
-- `cctools-port <https://github.com/tpoechtrager/cctools-port>`__
-  for the needed build tools. The procedure for building is quite
-  peculiar and is described below.
+- `cctools-port <https://github.com/tpoechtrager/cctools-port>`__ để có các công cụ xây dựng cần thiết. Quy trình xây dựng khá đặc thù và được mô tả bên dưới.
 
-  - This also has some extra dependencies: automake, autogen, libtool.
+  - Quy trình này cũng có một số dependency bổ sung: automake, autogen, libtool.
 
-Configuring the environment
----------------------------
+Cấu hình môi trường
+-------------------
 
-Preparing the SDK
-~~~~~~~~~~~~~~~~~
+Chuẩn bị SDK
+~~~~~~~~~~~~
 
-Extract the Xcode ``.xip`` file you downloaded from Apple's developer website:
+Giải nén tệp ``.xip`` của Xcode mà bạn đã tải xuống từ trang web dành cho nhà phát triển của Apple:
 
 ::
 
@@ -58,12 +40,9 @@ Extract the Xcode ``.xip`` file you downloaded from Apple's developer website:
     [...]
     ######### Blocks
 
-Note that for the commands below, you will need to replace the version (``x.x``)
-with whatever iOS SDK version you're using. If you don't know your iPhone SDK
-version, you can see the JSON file inside of
-``Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs``.
+Lưu ý rằng đối với các lệnh bên dưới, bạn sẽ cần thay thế phiên bản (``x.x``) bằng phiên bản iOS SDK mà bạn đang sử dụng. Nếu không biết phiên bản iPhone SDK của mình, bạn có thể xem tệp JSON bên trong ``Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs``.
 
-Extract the iOS SDK:
+Giải nén iOS SDK:
 
 ::
 
@@ -73,7 +52,7 @@ Extract the iOS SDK:
     cp -r xcode/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/* iPhoneSDK/iPhoneOS${IOS_SDK_VERSION}.sdk/usr/include/c++
     fusermount -u xcode
 
-Pack the SDK so that cctools can use it:
+Đóng gói SDK để cctools có thể sử dụng:
 
 ::
 
@@ -83,7 +62,7 @@ Pack the SDK so that cctools can use it:
 Toolchain
 ~~~~~~~~~
 
-Build cctools:
+Xây dựng cctools:
 
 ::
 
@@ -91,36 +70,27 @@ Build cctools:
     cd cctools-port/usage_examples/ios_toolchain
     ./build.sh /path/iPhoneOS${IOS_SDK_VERSION}.sdk.tar.xz arm64
 
-Copy the tools to a nicer place. Note that the SCons scripts for
-building will look under ``usr/bin`` inside the directory you provide
-for the toolchain binaries, so you must copy to such subdirectory, akin
-to the following commands:
+Sao chép các công cụ vào một vị trí dễ quản lý hơn. Lưu ý rằng các tập lệnh SCons dùng để xây dựng sẽ tìm trong ``usr/bin`` bên trong thư mục bạn cung cấp cho các tệp nhị phân của toolchain, vì vậy bạn phải sao chép vào thư mục con đó, tương tự như các lệnh sau:
 
 ::
 
     mkdir -p "$HOME/iostoolchain/usr"
     cp -r target/bin "$HOME/iostoolchain/usr/"
 
-Now you should have the iOS toolchain binaries in
-``$HOME/iostoolchain/usr/bin``.
+Bây giờ bạn sẽ có các tệp nhị phân của toolchain iOS trong ``$HOME/iostoolchain/usr/bin``.
 
-Compiling Godot for iPhone
+Biên dịch Godot cho iPhone
 --------------------------
 
-Once you've done the above steps, you should keep two things in your
-environment: the built toolchain and the iPhoneOS SDK directory. Those
-can stay anywhere you want since you have to provide their paths to the
-SCons build command.
+Sau khi hoàn tất các bước trên, trong môi trường của bạn sẽ cần có hai thứ: toolchain đã xây dựng và thư mục iPhoneOS SDK. Bạn có thể đặt chúng ở bất kỳ đâu vì phải cung cấp đường dẫn đến chúng cho lệnh xây dựng SCons.
 
-For the iPhone platform to be detected, you need the ``OSXCROSS_IOS``
-environment variable defined to anything.
+Để nền tảng iPhone được nhận diện, bạn cần định nghĩa biến môi trường ``OSXCROSS_IOS`` với bất kỳ giá trị nào.
 
 ::
 
     export OSXCROSS_IOS="anything"
 
-Now you can compile for iPhone using SCons like the standard Godot
-way, with some additional arguments to provide the correct paths:
+Bây giờ bạn có thể biên dịch cho iPhone bằng SCons theo cách tiêu chuẩn của Godot, với một số đối số bổ sung để cung cấp các đường dẫn chính xác:
 
 ::
 

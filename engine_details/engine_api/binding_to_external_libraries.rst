@@ -1,23 +1,20 @@
 .. _doc_binding_to_external_libraries:
 
-Binding to external libraries
-=============================
+Liên kết với các thư viện bên ngoài
+===================================
 
-Modules
--------
+Các mô-đun
+----------
 
-The Summator example in :ref:`doc_custom_modules_in_cpp` is great for small,
-custom modules, but what if you want to use a larger, external library?
-Let's look at an example using `Festival <https://www.cstr.ed.ac.uk/projects/festival/>`_,
-a speech synthesis (text-to-speech) library written in C++.
+Ví dụ Summator trong :ref:`doc_custom_modules_in_cpp` rất phù hợp cho các mô-đun nhỏ, tùy chỉnh, nhưng nếu bạn muốn sử dụng một thư viện bên ngoài lớn hơn thì sao? Hãy xem một ví dụ sử dụng `Festival <https://www.cstr.ed.ac.uk/projects/festival/>`_, một thư viện tổng hợp giọng nói (chuyển văn bản thành giọng nói) được viết bằng C++.
 
-To bind to an external library, set up a module directory similar to the Summator example:
+Để liên kết với một thư viện bên ngoài, hãy thiết lập một thư mục mô-đun tương tự như ví dụ Summator:
 
 .. code-block:: none
 
     godot/modules/tts/
 
-Next, you will create a header file with a TTS class:
+Tiếp theo, bạn sẽ tạo một tệp tiêu đề với một lớp TTS:
 
 .. code-block:: cpp
     :caption: godot/modules/tts/tts.h
@@ -38,7 +35,7 @@ Next, you will create a header file with a TTS class:
         TTS();
     };
 
-And then you'll add the cpp file.
+Sau đó, bạn sẽ thêm tệp cpp.
 
 .. code-block:: cpp
     :caption: godot/modules/tts/tts.cpp
@@ -62,8 +59,7 @@ And then you'll add the cpp file.
         festival_initialize(true, 210000); //not the best way to do it as this should only ever be called once.
     }
 
-Just as before, the new class needs to be registered somehow, so two more files
-need to be created:
+Cũng như trước đây, lớp mới cần được đăng ký theo một cách nào đó, vì vậy cần tạo thêm hai tệp:
 
 .. code-block:: none
 
@@ -71,10 +67,9 @@ need to be created:
     register_types.cpp
 
 .. important::
-    These files must be in the top-level folder of your module (next to your
-    ``SCsub`` and ``config.py`` files) for the module to be registered properly.
+    Các tệp này phải nằm trong thư mục cấp cao nhất của mô-đun (bên cạnh các tệp ``SCsub`` và ``config.py`` của bạn) để mô-đun được đăng ký đúng cách.
 
-These files should contain the following:
+Các tệp này phải chứa nội dung sau:
 
 .. code-block:: cpp
     :caption: godot/modules/tts/register_types.h
@@ -102,8 +97,7 @@ These files should contain the following:
         // Nothing to do here in this example.
     }
 
-Next, you need to create an ``SCsub`` file so the build system compiles
-this module:
+Tiếp theo, bạn cần tạo một tệp ``SCsub`` để hệ thống xây dựng biên dịch mô-đun này:
 
 .. code-block:: python
     :caption: godot/modules/tts/SCsub
@@ -113,9 +107,7 @@ this module:
     env_tts = env.Clone()
     env_tts.add_source_files(env.modules_sources, "*.cpp") # Add all cpp files to the build
 
-You'll need to install the external library on your machine to get the .a library files. See the library's official
-documentation for specific instructions on how to do this for your operating system. We've included the
-installation commands for Linux below, for reference.
+Bạn cần cài đặt thư viện bên ngoài trên máy của mình để có các tệp thư viện .a. Hãy xem tài liệu chính thức của thư viện để biết hướng dẫn cụ thể về cách thực hiện việc này trên hệ điều hành của bạn. Dưới đây là các lệnh cài đặt cho Linux để bạn tham khảo.
 
 .. code-block:: shell
 
@@ -124,23 +116,16 @@ installation commands for Linux below, for reference.
     sudo apt-get install festvox-don festvox-rablpc16k festvox-kallpc16k festvox-kdlpc16k  # Installs voices
 
 .. important::
-    The voices that Festival uses (and any other potential external/3rd-party
-    resource) all have varying licenses and terms of use; some (if not most) of them may be
-    be problematic with Godot, even if the Festival Library itself is MIT License compatible.
-    Please be sure to check the licenses and terms of use.
+    Các giọng nói mà Festival sử dụng (và mọi tài nguyên bên ngoài/bên thứ ba tiềm năng khác) đều có giấy phép và điều khoản sử dụng khác nhau; một số (nếu không muốn nói là hầu hết) có thể gây vấn đề với Godot, ngay cả khi bản thân Festival Library tương thích với Giấy phép MIT. Hãy nhớ kiểm tra giấy phép và điều khoản sử dụng.
 
-The external library will also need to be installed inside your module to make the source
-files accessible to the compiler, while also keeping the module code self-contained. The
-festival and speech_tools libraries can be installed from the modules/tts/ directory via
-git using the following commands:
+Thư viện bên ngoài cũng cần được cài đặt bên trong mô-đun để giúp trình biên dịch có thể truy cập các tệp mã nguồn, đồng thời giữ cho mã mô-đun độc lập. Có thể cài đặt các thư viện festival và speech_tools từ thư mục modules/tts/ thông qua git bằng các lệnh sau:
 
 .. code-block:: shell
 
     git clone https://github.com/festvox/festival
     git clone https://github.com/festvox/speech_tools
 
-If you don't want the external repository source files committed to your repository, you
-can link to them instead by adding them as submodules (from within the modules/tts/ directory), as seen below:
+Nếu không muốn các tệp mã nguồn của kho bên ngoài được commit vào kho của mình, bạn có thể liên kết đến chúng bằng cách thêm chúng dưới dạng các mô-đun con (từ bên trong thư mục modules/tts/), như dưới đây:
 
 .. code-block:: shell
 
@@ -148,13 +133,9 @@ can link to them instead by adding them as submodules (from within the modules/t
     git submodule add https://github.com/festvox/speech_tools
 
 .. important::
-    Please note that Git submodules are not used in the Godot repository. If
-    you are developing a module to be merged into the main Godot repository, you should not
-    use submodules. If your module doesn't get merged in, you can always try to implement
-    the external library as a GDExtension.
+    Lưu ý rằng các mô-đun con Git không được sử dụng trong kho Godot. Nếu bạn đang phát triển một mô-đun để hợp nhất vào kho Godot chính, bạn không nên sử dụng các mô-đun con. Nếu mô-đun của bạn không được hợp nhất, bạn luôn có thể thử triển khai thư viện bên ngoài dưới dạng một GDExtension.
 
-To add include directories for the compiler to look at you can append it to the
-environment's paths:
+Để thêm các thư mục include mà trình biên dịch sẽ xem xét, bạn có thể nối chúng vào các đường dẫn của môi trường:
 
 .. code-block:: python
     :caption: godot/modules/tts/SCsub
@@ -174,9 +155,7 @@ environment's paths:
     # files should be included/linked.
     env.Append(LIBS=['Festival', 'estools', 'estbase', 'eststring'])
 
-If you want to add custom compiler flags when building your module, you need to clone
-`env` first, so it won't add those flags to whole Godot build (which can cause errors).
-Example `SCsub` with custom flags:
+Nếu muốn thêm các cờ trình biên dịch tùy chỉnh khi xây dựng mô-đun, trước tiên bạn cần sao chép `env`, để các cờ đó không được thêm vào toàn bộ bản dựng Godot (điều này có thể gây lỗi). Ví dụ về `SCsub` với các cờ tùy chỉnh:
 
 .. code-block:: python
     :caption: godot/modules/tts/SCsub
@@ -191,7 +170,7 @@ Example `SCsub` with custom flags:
     # - Append CFLAGS for C code only.
     # - Append CXXFLAGS for C++ code only.
 
-The final module should look like this:
+Mô-đun hoàn chỉnh sẽ có dạng như sau:
 
 .. code-block:: none
 
@@ -208,10 +187,10 @@ The final module should look like this:
     godot/modules/tts/register_types.cpp
     godot/modules/tts/SCsub
 
-Using the module
-----------------
+Sử dụng mô-đun
+--------------
 
-You can now use your newly created module from any script:
+Bây giờ bạn có thể sử dụng mô-đun mới tạo từ bất kỳ tập lệnh nào:
 
 ::
 
@@ -220,4 +199,4 @@ You can now use your newly created module from any script:
     var is_spoken = t.say_text(script)
     print('is_spoken: ', is_spoken)
 
-And the output will be ``is_spoken: True`` if the text is spoken.
+Và đầu ra sẽ là ``is_spoken: True`` nếu văn bản được đọc thành tiếng.

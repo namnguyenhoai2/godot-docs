@@ -1,45 +1,35 @@
 .. _doc_compiling_for_linuxbsd:
 
-Compiling for Linux, \*BSD
+Biên dịch cho Linux, \*BSD
 ==========================
 
 .. highlight:: shell
 
 .. seealso::
 
-    This page describes how to compile Linux editor and export template binaries from source.
-    If you're looking to export your project to Linux instead, read :ref:`doc_exporting_for_linux`.
+    Trang này mô tả cách biên dịch các tệp nhị phân của trình chỉnh sửa Linux và các template xuất từ mã nguồn. Nếu bạn muốn xuất dự án sang Linux, hãy đọc :ref:`doc_exporting_for_linux`.
 
-Requirements
-------------
+Yêu cầu
+-------
 
-For compiling under Linux or other Unix variants, the following is
-required:
+Để biên dịch trên Linux hoặc các biến thể Unix khác, cần có những thành phần sau:
 
-- GCC 9+ or Clang 6+.
-- `Python 3.9+ <https://www.python.org/downloads/>`_.
-- `SCons 4.4+ <https://scons.org/pages/download.html>`_ build system.
-- pkg-config (used to detect the development libraries listed below).
-- Development libraries:
+- GCC 9+ hoặc Clang 6+. - `Python 3.9+ <https://www.python.org/downloads/>`_. - Hệ thống build `SCons 4.4+ <https://scons.org/pages/download.html>`_. - pkg-config (dùng để phát hiện các thư viện phát triển được liệt kê bên dưới). - Các thư viện phát triển:
 
-  - X11, Xcursor, Xinerama, Xi and XRandR.
-  - Wayland and wayland-scanner.
-  - Mesa.
-  - ALSA.
-  - PulseAudio.
+  - X11, Xcursor, Xinerama, Xi và XRandR. - Wayland và wayland-scanner. - Mesa. - ALSA. - PulseAudio.
 
-- *Optional* - libudev (build with ``udev=yes``).
+- *Tùy chọn* - libudev (build với ``udev=yes``).
 
 .. seealso::
 
-    To get the Godot source code for compiling, see :ref:`doc_getting_source`.
+    Để lấy mã nguồn Godot dùng cho việc biên dịch, xem :ref:`doc_getting_source`.
 
-    For a general overview of SCons usage for Godot, see :ref:`doc_introduction_to_the_buildsystem`.
+    Để xem tổng quan về cách sử dụng SCons cho Godot, xem :ref:`doc_introduction_to_the_buildsystem`.
 
 .. _doc_compiling_for_linuxbsd_oneliners:
 
-Distro-specific one-liners
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Các lệnh một dòng theo bản phân phối
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. tabs::
 
@@ -244,10 +234,10 @@ Distro-specific one-liners
               alsa-lib-devel \
               pulseaudio-devel
 
-Compiling
+Biên dịch
 ---------
 
-Start a terminal, go to the root dir of the engine source code and type:
+Mở terminal, đi đến thư mục gốc của mã nguồn engine rồi nhập:
 
 ::
 
@@ -255,83 +245,59 @@ Start a terminal, go to the root dir of the engine source code and type:
 
 .. note::
 
-    Prior to Godot 4.0, the Linux/\*BSD target was called ``x11`` instead of
-    ``linuxbsd``. If you are looking to compile Godot 3.x, make sure to use the
-    `3.x branch of this documentation <https://docs.godotengine.org/en/3.6/development/compiling/compiling_for_x11.html>`__.
+    Trước Godot 4.0, target Linux/\*BSD được gọi là ``x11`` thay vì ``linuxbsd``. Nếu bạn muốn biên dịch Godot 3.x, hãy đảm bảo sử dụng `nhánh 3.x của tài liệu này <https://docs.godotengine.org/en/3.6/development/compiling/compiling_for_x11.html>`__.
 
 .. tip::
-    If you are compiling Godot to make changes or contribute to the engine,
-    you may want to use the SCons options ``dev_build=yes`` or ``dev_mode=yes``.
-    See :ref:`doc_introduction_to_the_buildsystem_development_and_production_aliases`
-    for more info.
+    Nếu bạn biên dịch Godot để thực hiện thay đổi hoặc đóng góp cho engine, bạn có thể muốn sử dụng các tùy chọn SCons ``dev_build=yes`` hoặc ``dev_mode=yes``. Xem :ref:`doc_introduction_to_the_buildsystem_development_and_production_aliases` để biết thêm thông tin.
 
-If all goes well, the resulting binary executable will be placed in the
-"bin" subdirectory. This executable file contains the whole engine and
-runs without any dependencies. Executing it will bring up the Project
-Manager.
+Nếu mọi việc diễn ra suôn sẻ, tệp thực thi nhị phân kết quả sẽ được đặt trong thư mục con "bin". Tệp thực thi này chứa toàn bộ engine và chạy mà không cần bất kỳ dependency nào. Thực thi tệp này sẽ mở Project Manager.
 
 .. note::
 
-    If you wish to compile using Clang rather than GCC, use this command:
+    Nếu muốn biên dịch bằng Clang thay vì GCC, hãy sử dụng lệnh này:
 
     ::
 
         scons platform=linuxbsd use_llvm=yes
 
-    Using Clang appears to be a requirement for OpenBSD, otherwise fonts
-    would not build.
-    For RISC-V architecture devices, use the Clang compiler instead of the GCC compiler.
+    Việc sử dụng Clang dường như là yêu cầu đối với OpenBSD, nếu không font sẽ không được build. Đối với các thiết bị có kiến trúc RISC-V, hãy sử dụng trình biên dịch Clang thay cho trình biên dịch GCC.
 
 .. note::
 
-    Compiling on some platforms such as OpenBSD may require more memory than
-    available by default.
-    To increase the memory limit on OpenBSD within the maximum for the current user,
-    run ``ulimit -d {new amount in kB}``.
+    Việc biên dịch trên một số nền tảng như OpenBSD có thể cần nhiều bộ nhớ hơn mức mặc định. Để tăng giới hạn bộ nhớ trên OpenBSD trong phạm vi giới hạn tối đa dành cho người dùng hiện tại, hãy chạy ``ulimit -d {new amount in kB}``.
 
 .. tip:: If you are compiling Godot for production use, you can
-         make the final executable smaller and faster by adding the
-         SCons option ``production=yes``. This enables additional compiler
-         optimizations and link-time optimization.
+         làm cho tệp thực thi cuối cùng nhỏ hơn và nhanh hơn bằng cách thêm tùy chọn SCons ``production=yes``. Tùy chọn này bật các tối ưu hóa trình biên dịch bổ sung và tối ưu hóa khi liên kết.
 
-         LTO takes some time to run and requires about 7 GB of available RAM
-         while compiling. If you're running out of memory with the above option,
-         use ``production=yes lto=none`` or ``production=yes lto=thin`` for a
-         lightweight but less effective form of LTO.
+         LTO cần một khoảng thời gian để chạy và yêu cầu khoảng 7 GB RAM khả dụng trong khi biên dịch. Nếu hết bộ nhớ khi dùng tùy chọn trên, hãy sử dụng ``production=yes lto=none`` hoặc ``production=yes lto=thin`` để có một dạng LTO nhẹ hơn nhưng kém hiệu quả hơn.
 
 .. note:: If you want to use separate editor settings for your own Godot builds
-          and official releases, you can enable
+          và các bản phát hành chính thức, bạn có thể bật
           :ref:`doc_data_paths_self_contained_mode` by creating a file called
-          ``._sc_`` or ``_sc_`` in the ``bin/`` folder.
+          ``._sc_`` hoặc ``_sc_`` trong thư mục ``bin/``.
 
-Compiling with AccessKit support
---------------------------------
+Biên dịch với hỗ trợ AccessKit
+------------------------------
 
-AccessKit provides support for screen readers.
+AccessKit cung cấp hỗ trợ cho trình đọc màn hình.
 
-By default, Godot is built with AccessKit dynamically linked. You can use it by placing
-``accesskit.so`` alongside the executable.
+Theo mặc định, Godot được build với AccessKit liên kết động. Bạn có thể sử dụng tính năng này bằng cách đặt ``accesskit.so`` cùng với tệp thực thi.
 
 .. note:: You can use dynamically linked AccessKit with export templates as well, rename
-          the SO to ``accesskit.{architecture}.so``
-          and place them alongside the export template executables, and the libraries will
-          be automatically copied during the export process.
+          SO vào ``accesskit.{architecture}.so`` và đặt chúng cùng với các tệp thực thi template xuất, các thư viện sẽ được tự động sao chép trong quá trình xuất.
 
-To compile Godot with statically linked AccessKit:
+Để biên dịch Godot với AccessKit liên kết tĩnh:
 
-- Download the pre-built static libraries from `godot-accesskit-c-static library <https://github.com/godotengine/godot-accesskit-c-static/releases>`_, and unzip them.
-- When building Godot, add ``accesskit_sdk_path={path}`` to tell SCons where to look for the AccessKit libraries:
+- Tải các thư viện tĩnh dựng sẵn từ `thư viện godot-accesskit-c-static <https://github.com/godotengine/godot-accesskit-c-static/releases>`_, rồi giải nén. - Khi build Godot, thêm ``accesskit_sdk_path={path}`` để cho SCons biết nơi tìm các thư viện AccessKit:
 
     ::
 
         scons platform=linuxbsd accesskit_sdk_path=<...>
 
 .. note:: You can optionally build the godot-angle-static libraries yourself with
-          the following steps:
+          các bước sau:
 
-          1. Clone the `godot-accesskit-c-static <https://github.com/godotengine/godot-accesskit-c-static/>`_
-             directory and navigate to it.
-          2. Run the following command:
+          1. Sao chép thư mục `godot-accesskit-c-static <https://github.com/godotengine/godot-accesskit-c-static/>`_ và điều hướng đến đó. 2. Chạy lệnh sau:
 
           ::
 
@@ -340,77 +306,68 @@ To compile Godot with statically linked AccessKit:
               cmake --build build
               cmake --install build
 
-          The AccessKit static library should be built using the same compiler you are
-          using for building Godot.
+          Thư viện tĩnh AccessKit nên được build bằng cùng trình biên dịch mà bạn đang dùng để build Godot.
 
-Running a headless/server build
--------------------------------
+Chạy bản build headless/server
+------------------------------
 
-To run in *headless* mode which provides editor functionality to export
-projects in an automated manner, use the normal build:
+Để chạy ở chế độ *headless*, cung cấp chức năng của trình chỉnh sửa nhằm xuất dự án theo cách tự động, hãy sử dụng bản build thông thường:
 
 ::
 
     scons platform=linuxbsd target=editor
 
-And then use the ``--headless`` command line argument:
+Sau đó sử dụng đối số dòng lệnh ``--headless``:
 
 ::
 
     ./bin/godot.linuxbsd.editor.x86_64 --headless
 
-To compile a debug *server* build which can be used with
+Để biên dịch bản build *server* debug có thể được sử dụng với
 :ref:`remote debugging tools <doc_command_line_tutorial>`, use:
 
 ::
 
     scons platform=linuxbsd target=template_debug
 
-To compile a *server* build which is optimized to run dedicated game servers, use:
+Để biên dịch bản build *server* được tối ưu hóa để chạy các máy chủ game chuyên dụng, hãy sử dụng:
 
 ::
 
     scons platform=linuxbsd target=template_release production=yes
 
-Building export templates
--------------------------
+Build các template xuất
+-----------------------
 
 .. warning:: Linux binaries usually won't run on distributions that are
-             older than the distribution they were built on. If you wish to
-             distribute binaries that work on most distributions,
-             you should build them on an old distribution such as Ubuntu 20.04.
-             You can use a virtual machine or a container to set up a suitable
-             build environment.
+             cũ hơn bản phân phối nơi chúng được build. Nếu muốn phân phối các tệp nhị phân hoạt động trên hầu hết các bản phân phối, bạn nên build chúng trên một bản phân phối cũ như Ubuntu 20.04. Bạn có thể sử dụng máy ảo hoặc container để thiết lập môi trường build phù hợp.
 
 
-To build Linux or \*BSD export templates, run the build system with the
-following parameters:
+Để build các template xuất Linux hoặc \*BSD, hãy chạy hệ thống build với các tham số sau:
 
--  (32 bits)
+-  (32 bit)
 
 ::
 
     scons platform=linuxbsd target=template_release arch=x86_32
     scons platform=linuxbsd target=template_debug arch=x86_32
 
--  (64 bits)
+-  (64 bit)
 
 ::
 
     scons platform=linuxbsd target=template_release arch=x86_64
     scons platform=linuxbsd target=template_debug arch=x86_64
 
-Note that cross-compiling for the opposite bits (64/32) as your host
-platform is not always straight-forward and might need a chroot environment.
+Lưu ý rằng việc cross-compile cho số bit đối lập (64/32) so với nền tảng máy chủ không phải lúc nào cũng đơn giản và có thể cần môi trường chroot.
 
-To create standard export templates, the resulting files in the ``bin/`` folder
-must be copied to:
+Để tạo các template xuất tiêu chuẩn, các tệp kết quả trong thư mục ``bin/`` phải được sao chép vào:
 
 ::
 
     $HOME/.local/share/godot/export_templates/<version>/
 
-and named like this (even for \*BSD which is seen as "Linux/X11" by Godot):
+và được đặt tên như sau (kể cả với \*BSD, hệ điều hành được Godot xem là "Linux/X11"):
 
 .. code:: text
 
@@ -423,48 +380,30 @@ and named like this (even for \*BSD which is seen as "Linux/X11" by Godot):
     linux_release.x86_32
     linux_release.x86_64
 
-However, if you are writing your custom modules or custom C++ code, you
-might instead want to configure your binaries as custom export templates
-in the project export menu. You must have **Advanced Options** enabled
-to set this.
+Tuy nhiên, nếu bạn viết các module tùy chỉnh hoặc mã C++ tùy chỉnh, thay vào đó bạn có thể muốn cấu hình các tệp nhị phân của mình làm template xuất tùy chỉnh trong menu xuất dự án. Bạn phải bật **Advanced Options** để thiết lập tùy chọn này.
 
 .. image:: img/lintemplates.webp
 
-You don't even need to copy them, you can just reference the resulting
-files in the ``bin/`` directory of your Godot source folder, so the next
-time you build, you automatically have the custom templates referenced.
+Bạn thậm chí không cần sao chép chúng; chỉ cần tham chiếu đến các tệp kết quả trong thư mục ``bin/`` của thư mục mã nguồn Godot, để lần build tiếp theo, bạn tự động có các template tùy chỉnh được tham chiếu.
 
-Cross-compiling for RISC-V devices
-----------------------------------
+Cross-compile cho thiết bị RISC-V
+---------------------------------
 
-To cross-compile Godot for RISC-V devices, we need to setup the following items:
+Để cross-compile Godot cho các thiết bị RISC-V, chúng ta cần thiết lập các thành phần sau:
 
-- `riscv-gnu-toolchain <https://github.com/riscv-collab/riscv-gnu-toolchain/releases>`__.
-  While we are not going to use this directly, it provides us with a sysroot, as well
-  as header and libraries files that we will need. There are many versions to choose
-  from, however, the older the toolchain, the more compatible our final binaries will be.
-  If in doubt, `use this version <https://github.com/riscv-collab/riscv-gnu-toolchain/releases/tag/2023.07.07>`__,
-  and download ``riscv64-glibc-ubuntu-20.04-gcc-nightly-2023.07.07-nightly.tar.gz``. Extract
-  it somewhere and remember its path.
-- `mold <https://github.com/rui314/mold/releases>`__. This fast linker,
-  is the only one that correctly links the resulting binary. Download it, extract it,
-  and make sure to add its ``bin`` folder to your PATH. Run
-  ``mold --help | grep support`` to check if your version of Mold supports RISC-V.
-  If you don't see RISC-V, your Mold may need to be updated.
+- `riscv-gnu-toolchain <https://github.com/riscv-collab/riscv-gnu-toolchain/releases>`__. Mặc dù chúng ta sẽ không sử dụng trực tiếp công cụ này, nó cung cấp cho chúng ta một sysroot, cùng các tệp header và thư viện cần thiết. Có nhiều phiên bản để lựa chọn; tuy nhiên, toolchain càng cũ thì các tệp nhị phân cuối cùng càng tương thích. Nếu không chắc chắn, `hãy sử dụng phiên bản này <https://github.com/riscv-collab/riscv-gnu-toolchain/releases/tag/2023.07.07>`__, và tải xuống ``riscv64-glibc-ubuntu-20.04-gcc-nightly-2023.07.07-nightly.tar.gz``. Giải nén nó vào một nơi nào đó và ghi nhớ đường dẫn. - `mold <https://github.com/rui314/mold/releases>`__. Trình liên kết nhanh này là trình duy nhất liên kết chính xác tệp nhị phân kết quả. Hãy tải xuống, giải nén và đảm bảo thêm thư mục ``bin`` của nó vào PATH. Chạy ``mold --help | grep support`` để kiểm tra xem phiên bản Mold của bạn có hỗ trợ RISC-V hay không. Nếu không thấy RISC-V, có thể Mold của bạn cần được cập nhật.
 
-To make referencing our toolchain easier, we can set an environment
-variable like this:
+Để việc tham chiếu đến toolchain dễ dàng hơn, chúng ta có thể đặt một biến môi trường như sau:
 
 ::
 
     export RISCV_TOOLCHAIN_PATH="path to toolchain here"
 
-This way, we won't have to manually set the directory location
-each time we want to reference it.
+Như vậy, chúng ta sẽ không phải tự đặt vị trí thư mục mỗi lần muốn tham chiếu đến nó.
 
-With all the above setup, we are now ready to build Godot.
+Với toàn bộ thiết lập trên, giờ chúng ta đã sẵn sàng build Godot.
 
-Go to the root of the source code, and execute the following build command:
+Đi đến thư mục gốc của mã nguồn và thực thi lệnh build sau:
 
 ::
 
@@ -475,84 +414,54 @@ Go to the root of the source code, and execute the following build command:
 
 .. note::
 
-    RISC-V GCC has `bugs with its atomic operations <https://github.com/riscv-collab/riscv-gcc/issues/15>`__
-    which prevent it from compiling Godot correctly. That's why Clang is used instead. Make sure that
-    it *can* compile to RISC-V. You can verify by executing this command ``clang -print-targets``,
-    make sure you see ``riscv64`` on the list of targets.
+    RISC-V GCC có `lỗi trong các thao tác atomic <https://github.com/riscv-collab/riscv-gcc/issues/15>`__ khiến nó không thể biên dịch Godot chính xác. Đó là lý do Clang được sử dụng thay thế. Hãy đảm bảo rằng nó *có thể* biên dịch sang RISC-V. Bạn có thể xác minh bằng cách thực thi lệnh này ``clang -print-targets``, đảm bảo bạn thấy ``riscv64`` trong danh sách các target.
 
 .. warning:: The code above includes adding ``$RISCV_TOOLCHAIN_PATH/bin`` to the PATH,
-             but only for the following ``scons`` command. Since riscv-gnu-toolchain uses
-             its own Clang located in the ``bin`` folder, adding ``$RISCV_TOOLCHAIN_PATH/bin``
-             to your user's PATH environment variable may block you from accessing another
-             version of Clang if one is installed. For this reason it's not recommended to make
-             adding the bin folder permanent. You can also omit the ``PATH="$RISCV_TOOLCHAIN_PATH/bin:$PATH"`` line
-             if you want to use scons with self-installed version of Clang, but it may have
-             compatibility issues with riscv-gnu-toolchain.
+             nhưng chỉ dành cho lệnh ``scons`` sau đây. Vì riscv-gnu-toolchain sử dụng Clang riêng nằm trong thư mục ``bin``, việc thêm ``$RISCV_TOOLCHAIN_PATH/bin`` vào biến môi trường PATH của người dùng có thể khiến bạn không truy cập được phiên bản Clang khác nếu đã cài đặt. Vì lý do này, không nên thêm vĩnh viễn thư mục bin. Bạn cũng có thể bỏ qua dòng ``PATH="$RISCV_TOOLCHAIN_PATH/bin:$PATH"`` nếu muốn sử dụng scons với phiên bản Clang tự cài đặt, nhưng phiên bản đó có thể gặp vấn đề tương thích với riscv-gnu-toolchain.
 
-The command is similar in nature, but with some key changes. ``ccflags`` and
-``linkflags`` append additional flags to the build. ``--sysroot`` points to
-a folder simulating a Linux system, it contains all the headers, libraries,
-and ``.so`` files Clang will use. ``--gcc-toolchain`` tells Clang where
-the complete toolchain is, and ``-target riscv64-unknown-linux-gnu``
-indicates to Clang the target architecture, and OS we want to build for.
+Lệnh này tương tự về bản chất, nhưng có một số thay đổi quan trọng. ``ccflags`` và ``linkflags`` thêm các cờ bổ sung vào bản build. ``--sysroot`` trỏ đến một thư mục mô phỏng hệ thống Linux, chứa tất cả header, thư viện và các tệp ``.so`` mà Clang sẽ sử dụng. ``--gcc-toolchain`` cho Clang biết toolchain hoàn chỉnh nằm ở đâu, còn ``-target riscv64-unknown-linux-gnu`` cho Clang biết kiến trúc đích và hệ điều hành mà chúng ta muốn build.
 
-If all went well, you should now see a ``bin`` directory, and within it,
-a binary similar to the following:
+Nếu mọi việc diễn ra suôn sẻ, bây giờ bạn sẽ thấy một thư mục ``bin``, bên trong có một tệp nhị phân tương tự như sau:
 
 .. code:: text
 
     godot.linuxbsd.editor.rv64.llvm
 
-You can now copy this executable to your favorite RISC-V device,
-then launch it there by double-clicking, which should bring up
-the project manager.
+Giờ bạn có thể sao chép tệp thực thi này vào thiết bị RISC-V yêu thích, rồi khởi chạy tại đó bằng cách nhấp đúp; thao tác này sẽ mở trình quản lý dự án.
 
-If you later decide to compile the export templates, copy the above
-build command but change the value of ``target`` to ``template_debug`` for
-a debug build, or ``template_release`` for a release build.
+Nếu sau đó bạn quyết định biên dịch các template xuất, hãy sao chép lệnh build ở trên nhưng thay đổi giá trị của ``target`` thành ``template_debug`` cho bản build debug hoặc ``template_release`` cho bản build release.
 
-Using Clang and LLD for faster development
-------------------------------------------
+Sử dụng Clang và LLD để phát triển nhanh hơn
+--------------------------------------------
 
-You can also use Clang and LLD to build Godot. This has two upsides compared to
-the default GCC + GNU ld setup:
+Bạn cũng có thể sử dụng Clang và LLD để build Godot. So với thiết lập GCC + GNU ld mặc định, cách này có hai ưu điểm:
 
-- LLD links Godot significantly faster compared to GNU ld or gold. This leads to
-  faster iteration times.
-- Clang tends to give more useful error messages compared to GCC.
+- LLD liên kết Godot nhanh hơn đáng kể so với GNU ld hoặc gold. Điều này giúp rút ngắn thời gian lặp lại. - Clang thường cung cấp các thông báo lỗi hữu ích hơn so với GCC.
 
-To do so, install Clang and the ``lld`` package from your distribution's package manager
-then use the following SCons command:
+Để thực hiện việc này, hãy cài đặt Clang và gói ``lld`` từ trình quản lý gói của bản phân phối, sau đó sử dụng lệnh SCons sau:
 
 ::
 
     scons platform=linuxbsd use_llvm=yes linker=lld
 
-After the build is completed, a new binary with a ``.llvm`` suffix will be
-created in the ``bin/`` folder.
+Sau khi quá trình build hoàn tất, một tệp nhị phân mới có hậu tố ``.llvm`` sẽ được tạo trong thư mục ``bin/``.
 
-It's still recommended to use GCC for production builds as it's the compiler used
-for official builds and is more rigorously tested.
+Bạn vẫn nên sử dụng GCC cho các bản build dùng trong môi trường production vì đây là trình biên dịch được sử dụng cho các bản build chính thức và đã được kiểm thử nghiêm ngặt hơn.
 
-If this error occurs:
+Nếu xảy ra lỗi này:
 
 .. code:: text
 
     /usr/bin/ld: cannot find -l:libatomic.a: No such file or directory
 
-There are two solutions:
+Có hai giải pháp:
 
-- In your SCons command, add the parameter ``use_static_cpp=no``.
-- Follow `these instructions <https://github.com/ivmai/libatomic_ops#installation-and-usage>`__ to configure, build, and
-  install ``libatomic_ops``. Then, copy ``/usr/lib/libatomic_ops.a`` to ``/usr/lib/libatomic.a``, or create a soft link
-  to ``libatomic_ops`` by command ``ln -s /usr/lib/libatomic_ops.a /usr/lib/libatomic.a``. The soft link can ensure the
-  latest ``libatomic_ops`` will be used without the need to copy it every time when it is updated.
+- Trong lệnh SCons, hãy thêm tham số ``use_static_cpp=no``. - Làm theo `các hướng dẫn này <https://github.com/ivmai/libatomic_ops#installation-and-usage>`__ để cấu hình, build và cài đặt ``libatomic_ops``. Sau đó, sao chép ``/usr/lib/libatomic_ops.a`` vào ``/usr/lib/libatomic.a``, hoặc tạo liên kết mềm đến ``libatomic_ops`` bằng lệnh ``ln -s /usr/lib/libatomic_ops.a /usr/lib/libatomic.a``. Liên kết mềm đảm bảo ``libatomic_ops`` mới nhất sẽ được sử dụng mà không cần sao chép mỗi lần nó được cập nhật.
 
-Using mold for faster development
----------------------------------
+Sử dụng mold để phát triển nhanh hơn
+------------------------------------
 
-For even faster linking compared to LLD, you can use `mold <https://github.com/rui314/mold>`__.
-mold can be used with either GCC or Clang.
+Để liên kết nhanh hơn nữa so với LLD, bạn có thể sử dụng `mold <https://github.com/rui314/mold>`__. mold có thể được sử dụng với GCC hoặc Clang.
 
 .. tabs::
     .. tab:: Debian/Ubuntu
@@ -574,32 +483,22 @@ mold can be used with either GCC or Clang.
 
             pacman -Sy --noconfirm --needed mold
 
-Once mold is installed, use the following SCons command when compiling Godot:
+Sau khi cài đặt mold, hãy sử dụng lệnh SCons sau khi biên dịch Godot:
 
   ::
 
     scons platform=linuxbsd linker=mold
 
-Using system libraries for faster development
----------------------------------------------
+Sử dụng các thư viện hệ thống để phát triển nhanh hơn
+-----------------------------------------------------
 
-`Godot bundles the source code of various third-party libraries. <https://github.com/godotengine/godot/tree/master/thirdparty>`__
-You can choose to use system versions of third-party libraries instead.
-This makes the Godot binary faster to link, as third-party libraries are
-dynamically linked. Therefore, they don't need to be statically linked
-every time you build the engine (even on small incremental changes).
+`Godot tích hợp mã nguồn của nhiều thư viện bên thứ ba. <https://github.com/godotengine/godot/tree/master/thirdparty>`__ Thay vào đó, bạn có thể chọn sử dụng các phiên bản hệ thống của thư viện bên thứ ba. Điều này giúp liên kết tệp nhị phân Godot nhanh hơn, vì các thư viện bên thứ ba được liên kết động. Do đó, chúng không cần được liên kết tĩnh mỗi lần bạn build engine (kể cả khi chỉ có những thay đổi gia tăng nhỏ).
 
-However, not all Linux distributions have packages for third-party libraries
-available (or they may not be up-to-date).
+Tuy nhiên, không phải tất cả các bản phân phối Linux đều có sẵn các gói cho thư viện bên thứ ba (hoặc các gói này có thể chưa được cập nhật).
 
-Moving to system libraries can reduce linking times by several seconds on slow
-CPUs, but it requires manual testing depending on your Linux distribution. Also,
-you may not be able to use system libraries for everything due to bugs in the
-system library packages (or in the build system, as this feature is less
-tested).
+Việc chuyển sang sử dụng các thư viện hệ thống có thể giảm thời gian liên kết vài giây trên các CPU chậm, nhưng bạn cần kiểm thử thủ công tùy theo bản phân phối Linux của mình. Ngoài ra, bạn có thể không sử dụng được thư viện hệ thống cho mọi thứ do lỗi trong các gói thư viện hệ thống (hoặc trong hệ thống build, vì tính năng này ít được kiểm thử hơn).
 
-To compile Godot with system libraries, install these dependencies **on top** of the ones
-listed in the :ref:`doc_compiling_for_linuxbsd_oneliners`:
+Để biên dịch Godot với các thư viện hệ thống, hãy cài đặt các phần phụ thuộc này **bổ sung** cho những phần được liệt kê trong :ref:`doc_compiling_for_linuxbsd_oneliners`:
 
 .. tabs::
 
@@ -648,25 +547,18 @@ listed in the :ref:`doc_compiling_for_linuxbsd_oneliners`:
               miniupnpc-devel \
               SDL3-devel
 
-After installing all required packages, use the following command to build Godot:
+Sau khi cài đặt tất cả các gói bắt buộc, hãy sử dụng lệnh sau để build Godot:
 
-.. NOTE: Some `builtin_` options aren't used here because they break the build as of January 2023
-   (tested on Fedora 37).
+.. NOTE: Một số tùy chọn `builtin_` không được sử dụng ở đây vì chúng làm hỏng quá trình build kể từ tháng 1 năm 2023 (đã kiểm thử trên Fedora 37).
 
 ::
 
     scons platform=linuxbsd builtin_embree=no builtin_enet=no builtin_freetype=no builtin_graphite=no builtin_harfbuzz=no builtin_libogg=no builtin_libpng=no builtin_libtheora=no builtin_libvorbis=no builtin_libwebp=no builtin_mbedtls=no builtin_miniupnpc=no builtin_pcre2=no builtin_sdl=no builtin_zlib=no builtin_zstd=no
 
-On Debian stable, you will need to remove `builtin_embree=no` as the system-provided
-Embree version is too old to work with Godot's latest `master` branch
-(which requires Embree 4).
+Trên Debian stable, bạn sẽ cần xóa `builtin_embree=no` vì phiên bản Embree do hệ thống cung cấp quá cũ để hoạt động với nhánh `master` mới nhất của Godot (yêu cầu Embree 4).
 
-You can view a list of all built-in libraries that have system alternatives by
-running ``scons -h``, then looking for options starting with ``builtin_``.
+Bạn có thể xem danh sách tất cả các thư viện tích hợp có thư viện thay thế trong hệ thống bằng cách chạy ``scons -h``, sau đó tìm các tùy chọn bắt đầu bằng ``builtin_``.
 
 .. warning::
 
-    When using system libraries, the resulting binary is **not** portable
-    across Linux distributions anymore. Do not use this approach for creating
-    binaries you intend to distribute to others, unless you're creating a
-    package for a Linux distribution.
+    Khi sử dụng các thư viện hệ thống, tệp nhị phân kết quả sẽ **không** còn khả chuyển giữa các bản phân phối Linux. Không sử dụng phương pháp này để tạo các tệp nhị phân mà bạn dự định phân phối cho người khác, trừ khi bạn đang tạo một gói cho một bản phân phối Linux.

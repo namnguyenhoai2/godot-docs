@@ -1,88 +1,60 @@
 .. _doc_introduction_to_editor_development:
 
-Introduction to editor development
-==================================
+Giới thiệu về phát triển trình chỉnh sửa
+========================================
 
-On this page, you will learn:
+Trên trang này, bạn sẽ tìm hiểu:
 
-- The **design decisions** behind the Godot editor.
-- How to work efficiently on the Godot editor's C++ code.
+- **Các quyết định thiết kế** đằng sau trình chỉnh sửa Godot. - Cách làm việc hiệu quả với mã C++ của trình chỉnh sửa Godot.
 
-This guide is aimed at current or future engine contributors.
-To create editor plugins in GDScript, see :ref:`doc_making_plugins` instead.
+Hướng dẫn này dành cho những người đang hoặc sẽ đóng góp cho engine. Để tạo plugin trình chỉnh sửa bằng GDScript, hãy xem :ref:`doc_making_plugins`.
 
 .. seealso::
 
-    If you are new to Godot, we recommended you to read
+    Nếu bạn mới làm quen với Godot, chúng tôi khuyên bạn nên đọc
     :ref:`doc_godot_design_philosophy` before continuing. Since the Godot editor
-    is a Godot project written in C++, much of the engine's philosophy applies
-    to the editor.
+    là một dự án Godot được viết bằng C++, nên phần lớn triết lý của engine cũng được áp dụng cho trình chỉnh sửa.
 
-Technical choices
------------------
+Các lựa chọn kỹ thuật
+---------------------
 
-The Godot editor is drawn using Godot's renderer and
+Trình chỉnh sửa Godot được vẽ bằng trình kết xuất của Godot và
 :ref:`UI system <doc_user_interface>`. It does *not* rely on a toolkit
-such as GTK or Qt. This is similar in spirit to software like Blender.
-While using toolkits makes it easier to achieve a "native" appearance, they are
-also quite heavy and their licensing is not compatible with Godot's.
+chẳng hạn như GTK hoặc Qt. Xét về tinh thần, cách này tương tự các phần mềm như Blender. Mặc dù việc sử dụng các bộ công cụ giúp dễ đạt được giao diện "bản địa" hơn, chúng cũng khá nặng và giấy phép của chúng không tương thích với Godot.
 
-The editor is fully written in C++. It can't contain any GDScript or C# code.
+Trình chỉnh sửa được viết hoàn toàn bằng C++. Nó không thể chứa mã GDScript hoặc C#.
 
-Directory structure
--------------------
+Cấu trúc thư mục
+----------------
 
-The editor's code is fully self-contained in the
-`editor/ <https://github.com/godotengine/godot/tree/master/editor>`__ folder
-of the Godot source repository.
+Mã của trình chỉnh sửa được chứa hoàn toàn trong thư mục `editor/ <https://github.com/godotengine/godot/tree/master/editor>`__ của kho mã nguồn Godot.
 
-Some editor functionality is also implemented via
+Một số chức năng của trình chỉnh sửa cũng được triển khai thông qua
 :ref:`modules <doc_custom_modules_in_cpp>`. Some of these are only enabled in
-editor builds to decrease the binary size of export templates. See the
-`modules/ <https://github.com/godotengine/godot/tree/master/modules>`__ folder
-in the Godot source repository.
+các bản dựng của trình chỉnh sửa để giảm kích thước nhị phân của các mẫu xuất. Hãy xem thư mục `modules/ <https://github.com/godotengine/godot/tree/master/modules>`__ trong kho mã nguồn Godot.
 
-Some important files in the editor are:
+Một số tệp quan trọng trong trình chỉnh sửa là:
 
-- `editor/editor_node.cpp <https://github.com/godotengine/godot/blob/master/editor/editor_node.cpp>`__:
-  Main editor initialization file. Effectively the "main scene" of the editor.
-- `editor/project_manager/project_manager.cpp <https://github.com/godotengine/godot/blob/master/editor/project_manager/project_manager.cpp>`__:
-  Main Project Manager initialization file. Effectively the "main scene" of the Project Manager.
-- `editor/scene/canvas_item_editor_plugin.cpp <https://github.com/godotengine/godot/blob/master/editor/scene/canvas_item_editor_plugin.cpp>`__:
-  The 2D editor viewport and related functionality (toolbar at the top, editing modes, overlaid helpers/panels, …).
-- `editor/scene/3d/node_3d_editor_plugin.cpp <https://github.com/godotengine/godot/blob/master/editor/scene/3d/node_3d_editor_plugin.cpp>`__:
-  The 3D editor viewport and related functionality (toolbar at the top, editing modes, overlaid panels, …).
-- `editor/scene/3d/node_3d_editor_gizmos.cpp <https://github.com/godotengine/godot/blob/master/editor/scene/3d/node_3d_editor_gizmos.cpp>`__:
-  Where the 3D editor gizmos are defined and drawn.
-  This file doesn't have a 2D counterpart as 2D gizmos are drawn by the nodes themselves.
+- `editor/editor_node.cpp <https://github.com/godotengine/godot/blob/master/editor/editor_node.cpp>`__: Tệp khởi tạo chính của trình chỉnh sửa. Về cơ bản là "cảnh chính" của trình chỉnh sửa. - `editor/project_manager/project_manager.cpp <https://github.com/godotengine/godot/blob/master/editor/project_manager/project_manager.cpp>`__: Tệp khởi tạo chính của Project Manager. Về cơ bản là "cảnh chính" của Project Manager. - `editor/scene/canvas_item_editor_plugin.cpp <https://github.com/godotengine/godot/blob/master/editor/scene/canvas_item_editor_plugin.cpp>`__: Khung nhìn trình chỉnh sửa 2D và các chức năng liên quan (thanh công cụ ở trên cùng, các chế độ chỉnh sửa, các trình trợ giúp/bảng phủ lên, …). - `editor/scene/3d/node_3d_editor_plugin.cpp <https://github.com/godotengine/godot/blob/master/editor/scene/3d/node_3d_editor_plugin.cpp>`__: Khung nhìn trình chỉnh sửa 3D và các chức năng liên quan (thanh công cụ ở trên cùng, các chế độ chỉnh sửa, các bảng phủ lên, …). - `editor/scene/3d/node_3d_editor_gizmos.cpp <https://github.com/godotengine/godot/blob/master/editor/scene/3d/node_3d_editor_gizmos.cpp>`__: Nơi các gizmo của trình chỉnh sửa 3D được định nghĩa và vẽ. Tệp này không có bản tương ứng cho 2D vì các gizmo 2D được chính các node vẽ.
 
-Editor dependencies in ``scene/`` files
----------------------------------------
+Các dependency của trình chỉnh sửa trong các tệp ``scene/``
+-----------------------------------------------------------
 
-When working on an editor feature, you may have to modify files in
-Godot's GUI nodes, which you can find in the ``scene/`` folder.
+Khi làm việc trên một tính năng của trình chỉnh sửa, bạn có thể phải chỉnh sửa các tệp trong các node GUI của Godot, nằm trong thư mục ``scene/``.
 
-One rule to keep in mind is that you must **not** introduce new dependencies to
-``editor/`` includes in other folders such as ``scene/``. This applies even if
-you use ``#ifdef TOOLS_ENABLED``.
+Một quy tắc cần ghi nhớ là bạn **không được** thêm các dependency mới đến các include của ``editor/`` trong những thư mục khác như ``scene/``. Quy tắc này vẫn áp dụng ngay cả khi bạn sử dụng ``#ifdef TOOLS_ENABLED``.
 
-To make the codebase easier to follow and more self-contained, the allowed
-dependency order is:
+Để cơ sở mã dễ theo dõi và tự chứa hơn, thứ tự dependency được phép là:
 
 - ``editor/`` -> ``scene/`` -> ``servers/`` -> ``core/``
 
-This means that files in ``editor/`` can depend on includes from ``scene/``,
-``servers/``, and ``core/``. But, for example, while ``scene/`` can depend on includes
-from ``servers/`` and ``core/``, it cannot depend on includes from ``editor/``.
+Điều này có nghĩa là các tệp trong ``editor/`` có thể phụ thuộc vào các include từ ``scene/``, ``servers/`` và ``core/``. Tuy nhiên, ví dụ, mặc dù ``scene/`` có thể phụ thuộc vào các include từ ``servers/`` và ``core/``, nó không thể phụ thuộc vào các include từ ``editor/``.
 
-Currently, there are some dependencies to ``editor/`` includes in ``scene/``
-files, but
-`they are in the process of being removed <https://github.com/godotengine/godot/issues/53295>`__.
+Hiện tại, có một số dependency đến các include của ``editor/`` trong các tệp ``scene/``, nhưng `chúng đang được loại bỏ <https://github.com/godotengine/godot/issues/53295>`__.
 
-Development tips
-----------------
+Mẹo phát triển
+--------------
 
-To iterate quickly on the editor, we recommend to set up a test project and
+Để nhanh chóng lặp lại quá trình phát triển trình chỉnh sửa, chúng tôi khuyên bạn thiết lập một dự án kiểm thử và
 :ref:`open it from the command line <doc_command_line_tutorial>` after compiling
-the editor. This way, you don't have to go through the Project Manager every
-time you start Godot.
+trình chỉnh sửa. Bằng cách này, bạn không phải đi qua Project Manager mỗi khi khởi động Godot.

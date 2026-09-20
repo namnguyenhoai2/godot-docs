@@ -5,46 +5,24 @@ Hotspot
 
 .. seealso:: Please see the :ref:`sampling profiler instructions <doc_sampling_profilers>` for more information.
 
-- Open `Hotspot <https://github.com/KDAB/hotspot>`__. Click **Record Data**:
+- Mở `Hotspot <https://github.com/KDAB/hotspot>`__. Nhấp **Record Data**:
 
 .. image:: img/cpp_profiler_hotspot_welcome.png
 
-- In the next window, specify the path to the Godot binary that includes debug symbols.
-- Specify command line arguments to run a specific project, with or without the editor.
-- The path to the working directory can be anything if an absolute path is used
-  for the ``--path`` command line argument. Otherwise, it must be set so that
-  the relative path to the project is valid.
-- Make sure **Elevate Privileges** is checked if you have administrative privileges.
-  While not essential for profiling Godot, this will ensure all events can be captured.
-  Otherwise, some events may be missing from the capture.
-  Your settings should now look something like this:
+- Trong cửa sổ tiếp theo, chỉ định đường dẫn đến tệp nhị phân Godot có chứa ký hiệu gỡ lỗi. - Chỉ định các đối số dòng lệnh để chạy một dự án cụ thể, có hoặc không có trình chỉnh sửa. - Đường dẫn đến thư mục làm việc có thể là bất kỳ đường dẫn nào nếu sử dụng đường dẫn tuyệt đối cho đối số dòng lệnh ``--path``. Nếu không, đường dẫn này phải được thiết lập để đường dẫn tương đối đến dự án hợp lệ. - Hãy đảm bảo **Elevate Privileges** được chọn nếu bạn có quyền quản trị. Mặc dù không thiết yếu để lập hồ sơ Godot, tùy chọn này sẽ đảm bảo tất cả sự kiện đều được ghi lại. Nếu không, một số sự kiện có thể bị thiếu trong dữ liệu thu thập. Lúc này, các thiết lập của bạn sẽ trông tương tự như sau:
 
 .. image:: img/cpp_profiler_hotspot_record.png
 
-- Click **Start Recording** and perform the actions you wish to profile in the editor/project.
-- Quit the editor/project normally or use the **Stop Profiling** button in Hotspot
-  to stop profiling early. Stopping profiling early can result in cleaner profiles
-  if you're not interested in the engine's shutdown procedure.
-- Click **View Results** and wait for the profiling visualization to be generated:
+- Nhấp **Start Recording** và thực hiện các thao tác bạn muốn lập hồ sơ trong trình chỉnh sửa/dự án. - Thoát trình chỉnh sửa/dự án theo cách thông thường hoặc sử dụng nút **Stop Profiling** trong Hotspot để dừng lập hồ sơ sớm. Việc dừng lập hồ sơ sớm có thể tạo ra các hồ sơ rõ ràng hơn nếu bạn không quan tâm đến quy trình tắt máy của engine. - Nhấp **View Results** và đợi phần trực quan hóa dữ liệu lập hồ sơ được tạo:
 
 .. image:: img/cpp_profiler_hotspot_view_results.png
 
-- Use the tabs at the top to navigate between the different views. These views
-  show the same data, but in different ways. The **Flame Graph** tab is a good
-  way to see which functions take up the most time at a glance. These functions
-  are therefore the most important ones to optimize, since optimizing them will
-  improve performance the most.
-- At the bottom of all tabs except **Summary**, you will also see a list of CPU threads
-  started by the engine along with the CPU utilization for each thread.
-  This lets you see threads that can be a bottleneck at a given point in time.
+- Sử dụng các thẻ ở trên cùng để chuyển đổi giữa những chế độ xem khác nhau. Các chế độ xem này hiển thị cùng một dữ liệu nhưng theo những cách khác nhau. Thẻ **Flame Graph** là một cách hữu ích để nhanh chóng xem những hàm nào chiếm nhiều thời gian nhất. Do đó, đây là những hàm quan trọng nhất cần tối ưu, vì việc tối ưu chúng sẽ cải thiện hiệu suất nhiều nhất. - Ở cuối tất cả các thẻ, ngoại trừ **Summary**, bạn cũng sẽ thấy danh sách các luồng CPU do engine khởi chạy cùng với mức sử dụng CPU của từng luồng. Điều này cho phép bạn nhận biết những luồng có thể trở thành nút thắt cổ chai tại một thời điểm nhất định.
 
 .. image:: img/cpp_profiler_hotspot_flame_graph.png
 
 .. note::
 
-    If you don't want the startup procedure to be included in the profile, you
-    can also attach Hotspot to a running process by clicking **Record Data**
-    then setting the **Launch Application** dropdown option to **Attach To
-    Process(es)**.
+    Nếu không muốn quy trình khởi động được đưa vào hồ sơ, bạn cũng có thể gắn Hotspot vào một tiến trình đang chạy bằng cách nhấp **Record Data**, sau đó đặt tùy chọn trong danh sách thả xuống **Launch Application** thành **Attach To Process(es)**.
 
-    This process attachment-based workflow is similar to the one used by VerySleepy.
+    Quy trình dựa trên việc gắn vào tiến trình này tương tự như quy trình được VerySleepy sử dụng.

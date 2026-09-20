@@ -3,36 +3,31 @@
 JetBrains Rider
 ===============
 
-`JetBrains Rider <https://www.jetbrains.com/rider/>`_ is a commercial
-`JetBrains <https://www.jetbrains.com/>`_ IDE for C++, C# and GDScript that uses the same solution system as Visual Studio.
+`JetBrains Rider <https://www.jetbrains.com/rider/>`_ là một IDE thương mại `JetBrains <https://www.jetbrains.com/>`_ dành cho C++, C# và GDScript, sử dụng cùng hệ thống solution như Visual Studio.
 
 .. note::
 
-    This documentation is for contributing to the game engine, not for using
-    JetBrains Rider as a C# or GDScript editor. To code C# or GDScript in an external editor, see
+    Tài liệu này dành cho việc đóng góp cho game engine, không dành cho việc sử dụng JetBrains Rider làm trình chỉnh sửa C# hoặc GDScript. Để viết mã C# hoặc GDScript trong một trình chỉnh sửa bên ngoài, hãy xem
     :ref:`the C# guide to configure an external editor <doc_c_sharp_setup_external_editor>`.
 
-Importing the project
----------------------
+Nhập project
+------------
 
 .. tip:: If you already use Visual Studio as your main IDE, you can use the same solution file in Rider.
-         Rider and Visual Studio use the same solution format, so you can switch between the two IDEs without rebuilding the solution file.
-         Debug configurations need to be changed when going from one IDE to another.
+         Rider và Visual Studio sử dụng cùng định dạng solution, vì vậy bạn có thể chuyển đổi giữa hai IDE mà không cần xây dựng lại tệp solution. Cần thay đổi các cấu hình gỡ lỗi khi chuyển từ IDE này sang IDE khác.
 
-If you are starting from the scratch, please follow :ref:`instructions<doc_compiling_index>`, specifically:
+Nếu bạn bắt đầu từ đầu, vui lòng làm theo :ref:`instructions<doc_compiling_index>`, cụ thể là:
 
-- Install all the dependencies.
-- Figure out the scons command for compiling to target a specific platform.
+- Cài đặt tất cả các dependency. - Xác định lệnh scons để biên dịch cho một nền tảng cụ thể.
 
-Provide scons with additional arguments to request a solution file generation:
+Cung cấp cho scons các tham số bổ sung để yêu cầu tạo tệp solution:
 
-- Add `vsproj=yes dev_build=yes` to the scons command
+- Thêm `vsproj=yes dev_build=yes` vào lệnh scons
 
-The ``vsproj`` parameter signals that you want Visual Studio solution generated.
-The ``dev_build`` parameter ensures the debug symbols are included, allowing to e.g. step through code using breakpoints.
+Tham số ``vsproj`` cho biết bạn muốn tạo solution Visual Studio. Tham số ``dev_build`` đảm bảo các ký hiệu gỡ lỗi được đưa vào, cho phép bạn, chẳng hạn, đi qua từng dòng mã bằng các breakpoint.
 
 .. note:: Each SCons run only generates the ``.generated.props`` file for a single
-          Solution Configuration. Please run SCons once per target you plan to use:
+          Cấu hình Solution. Vui lòng chạy SCons một lần cho mỗi target bạn định sử dụng:
 
           .. code-block:: shell
 
@@ -40,73 +35,64 @@ The ``dev_build`` parameter ensures the debug symbols are included, allowing to 
              scons vsproj=yes dev_build=yes target=template_debug
              scons vsproj=yes dev_build=yes target=template_release
 
-- Open the generated ``godot.sln`` in Rider.
+- Mở ``godot.sln`` đã tạo trong Rider.
 
 .. note:: Ensure that the appropriate Solution configuration is selected on the
-          Rider toolbar. It affects resolve of the SDKs, code analysis, build, run,
-          etc.
+          Thanh công cụ Rider. Thanh công cụ này ảnh hưởng đến việc phân giải SDK, phân tích mã, build, chạy, v.v.
 
-Compiling and debugging the project
------------------------------------
-Rider comes with a built-in debugger that can be used to debug the Godot project. You can launch the debugger
-by pressing the **Debug** icon at the top of the screen, this only works for the Project Manager,
-if you want to debug the editor, you need to configure the debugger first.
+Biên dịch và gỡ lỗi project
+---------------------------
+Rider tích hợp sẵn trình gỡ lỗi có thể được sử dụng để gỡ lỗi project Godot. Bạn có thể khởi chạy trình gỡ lỗi bằng cách nhấn biểu tượng **Debug** ở đầu màn hình; tính năng này chỉ hoạt động với Project Manager. Nếu muốn gỡ lỗi editor, trước tiên bạn cần cấu hình trình gỡ lỗi.
 
 .. figure:: img/rider_run_debug.webp
    :align: center
 
-- Click on the **Godot > Edit Configurations** option at the top of the screen.
+- Nhấp vào tùy chọn **Godot > Edit Configurations** ở đầu màn hình.
 
 .. figure:: img/rider_configurations.webp
    :align: center
 
-- Ensure the following values for the C++ Project Run Configuration:
+- Đảm bảo các giá trị sau cho C++ Project Run Configuration:
 
-    - Exe Path : ``$(LocalDebuggerCommand)``
-    - Program Arguments: ``-e --path <path to the Godot project>``
-    - Working Directory: ``$(LocalDebuggerWorkingDirectory)``
-    - Before Launch has a value of "Build Project"
+    - Exe Path : ``$(LocalDebuggerCommand)`` - Program Arguments: ``-e --path <path to the Godot project>`` - Working Directory: ``$(LocalDebuggerWorkingDirectory)`` - Before Launch có giá trị là "Build Project"
 
-This will tell the executable to debug the specified project without opening the Project Manager.
-Use the root path to the project folder, not ``project.godot`` file path.
+Điều này sẽ yêu cầu tệp thực thi gỡ lỗi project được chỉ định mà không mở Project Manager. Sử dụng đường dẫn gốc đến thư mục project, không phải đường dẫn tệp ``project.godot``.
 
 .. figure:: img/rider_configurations_changed.webp
    :align: center
 
-- Finally click on "Apply" and "OK" to save the changes.
+- Cuối cùng, nhấp vào "Apply" và "OK" để lưu các thay đổi.
 
-- When you press the **Debug** icon at the top of the screen, JetBrains Rider will launch the Godot editor with the debugger attached.
+- Khi nhấn biểu tượng **Debug** ở đầu màn hình, JetBrains Rider sẽ khởi chạy editor Godot với trình gỡ lỗi được đính kèm.
 
-Alternatively you can use **Run > Attach to Process** to attach the debugger to a running Godot instance.
+Ngoài ra, bạn có thể sử dụng **Run > Attach to Process** để đính kèm trình gỡ lỗi vào một phiên bản Godot đang chạy.
 
 .. figure:: img/rider_attach_to_process.webp
    :align: center
 
-- You can find the Godot instance by searching for ``godot.editor`` and then clicking ``Attach with LLDB``
+- Bạn có thể tìm phiên bản Godot bằng cách tìm kiếm ``godot.editor`` rồi nhấp vào ``Attach with LLDB``
 
 .. figure:: img/rider_attach_to_process_dialog.webp
    :align: center
 
 |
 
-Debug visualizers
------------------
-Debug visualizers customize how complex data structures are displayed during debugging.
-The "natvis" (short for "Native Visualization") files built-in with Godot are automatically used.
+Trình trực quan hóa gỡ lỗi
+--------------------------
+Trình trực quan hóa gỡ lỗi tùy chỉnh cách hiển thị các cấu trúc dữ liệu phức tạp trong khi gỡ lỗi. Các tệp "natvis" (viết tắt của "Native Visualization") được tích hợp trong Godot sẽ tự động được sử dụng.
 
 .. note:: On macOS and Linux, natvis support requires Rider 2026.2 or later.
 
-Unit testing
-------------
-Leverage Rider :ref:`doctest<doc_unit_testing>` support.
-Please refer to `the instructions <https://github.com/JetBrains/godot-support/wiki/Godot-doctest-Unit-Tests>`_.
+Kiểm thử đơn vị
+---------------
+Tận dụng hỗ trợ :ref:`doctest<doc_unit_testing>` của Rider. Vui lòng tham khảo `hướng dẫn <https://github.com/JetBrains/godot-support/wiki/Godot-doctest-Unit-Tests>`_.
 
-Profiling
----------
-Please refer to `the profiling instructions <https://github.com/JetBrains/godot-support/wiki/Profiling-Godot-engine-(native-code)-with-dotTrace-or-JetBrains-Rider>`_.
+Lập hồ sơ hiệu năng
+-------------------
+Vui lòng tham khảo `hướng dẫn lập hồ sơ hiệu năng <https://github.com/JetBrains/godot-support/wiki/Profiling-Godot-engine-(native-code)-with-dotTrace-or-JetBrains-Rider>`_.
 
-Please consult the `JetBrains Rider documentation <https://www.jetbrains.com/rider/documentation/>`_ for any specific information about the JetBrains IDE.
+Vui lòng tham khảo `tài liệu JetBrains Rider <https://www.jetbrains.com/rider/documentation/>`_ để biết thông tin cụ thể về IDE JetBrains.
 
-Known issues
-------------
-Debugging Windows MinGV build - symbols are not loaded. Reported `RIDER-106816 <https://youtrack.jetbrains.com/issue/RIDER-106816/Upgrade-LLDB-to-actual-version>`_.
+Các vấn đề đã biết
+------------------
+Gỡ lỗi bản build MinGW trên Windows - các ký hiệu chưa được tải. Đã báo cáo tại `RIDER-106816 <https://youtrack.jetbrains.com/issue/RIDER-106816/Upgrade-LLDB-to-actual-version>`_.

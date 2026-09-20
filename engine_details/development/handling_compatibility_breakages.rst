@@ -1,40 +1,34 @@
 .. _doc_handling_compatibility_breakages:
 
-Handling compatibility breakages
-================================
+Xử lý các vấn đề phá vỡ tính tương thích
+========================================
 
-.. TODO: Elaborate on types of compatibility and procedure.
+.. TODO: Bổ sung chi tiết về các loại tính tương thích và quy trình.
 
-So you've added a new parameter to a method, changed the return type,
-changed the type of a parameter, or changed its default value,
-and now the automated testing is complaining about compatibility breakages?
+Vậy là bạn đã thêm một tham số mới vào một phương thức, thay đổi kiểu trả về, thay đổi kiểu của một tham số hoặc thay đổi giá trị mặc định của tham số đó, và giờ hệ thống kiểm thử tự động đang báo lỗi về các vấn đề phá vỡ tính tương thích?
 
-Breaking compatibility should be avoided, but when necessary there are systems in place
-to handle this in a way that makes the transition as smooth as possible.
+Nên tránh phá vỡ tính tương thích, nhưng khi cần thiết, đã có các hệ thống để xử lý việc này theo cách giúp quá trình chuyển đổi diễn ra suôn sẻ nhất có thể.
 
-A practical example
--------------------
+Một ví dụ thực tế
+-----------------
 
-.. TODO: Add example that showcases more details like original default arguments etc.
+.. TODO: Thêm ví dụ minh họa nhiều chi tiết hơn, chẳng hạn như các đối số mặc định ban đầu, v.v.
 
-These changes are taken from `pull request #88047 <https://github.com/godotengine/godot/pull/88047>`_, which added
-new pathing options to ``AStarGrid2D`` and other AStar classes.
-Among other changes, these methods were modified in ``core/math/a_star_grid_2d.h``:
+Những thay đổi này được lấy từ `pull request #88047 <https://github.com/godotengine/godot/pull/88047>`_, trong đó đã thêm các tùy chọn định tuyến mới vào ``AStarGrid2D`` và các lớp AStar khác. Trong số những thay đổi khác, các phương thức sau đã được sửa đổi trong ``core/math/a_star_grid_2d.h``:
 
 .. code-block:: cpp
 
     Vector<Vector2> get_point_path(const Vector2i &p_from, const Vector2i &p_to);
     TypedArray<Vector2i> get_id_path(const Vector2i &p_from, const Vector2i &p_to);
 
-To:
+Thành:
 
 .. code-block:: cpp
 
     Vector<Vector2> get_point_path(const Vector2i &p_from, const Vector2i &p_to, bool p_allow_partial_path = false);
     TypedArray<Vector2i> get_id_path(const Vector2i &p_from, const Vector2i &p_to, bool p_allow_partial_path = false);
 
-This meant adding new compatibility method bindings to the file, which should be in the ``protected`` section of
-the code, usually placed next to ``_bind_methods()``:
+Điều này có nghĩa là phải thêm các liên kết phương thức tương thích mới vào tệp, nằm trong phần ``protected`` của mã, thường được đặt ngay bên cạnh ``_bind_methods()``:
 
 .. code-block:: cpp
 
@@ -44,9 +38,7 @@ the code, usually placed next to ``_bind_methods()``:
         static void _bind_compatibility_methods();
     #endif
 
-They should start with an ``_`` to indicate that they are internal, and end with ``_bind_compat_`` followed by the PR number
-that introduced the change (``88047`` in this example). These compatibility methods need to be implemented in a dedicated file,
-like ``core/math/a_star_grid_2d.compat.inc`` in this case:
+Chúng phải bắt đầu bằng ``_`` để cho biết rằng chúng là các thành phần nội bộ, và kết thúc bằng ``_bind_compat_`` theo sau là số PR đã giới thiệu thay đổi (``88047`` trong ví dụ này). Các phương thức tương thích này cần được triển khai trong một tệp riêng, chẳng hạn như ``core/math/a_star_grid_2d.compat.inc`` trong trường hợp này:
 
 .. code-block:: cpp
     :caption: core/math/a_star_grid_2d.compat.inc
@@ -100,11 +92,9 @@ like ``core/math/a_star_grid_2d.compat.inc`` in this case:
 
     #endif // DISABLE_DEPRECATED
 
-Unless the change in compatibility is complex, the compatibility method should call the modified method directly,
-instead of duplicating that method. Make sure to match the default arguments for that method (in the example above this would be ``false``).
+Trừ khi thay đổi về tính tương thích phức tạp, phương thức tương thích nên gọi trực tiếp phương thức đã sửa đổi thay vì sao chép phương thức đó. Hãy đảm bảo khớp các đối số mặc định của phương thức đó (trong ví dụ trên, giá trị này sẽ là ``false``).
 
-This file should always be placed next to the original file, and have ``.compat.inc`` at the end instead of ``.cpp`` or ``.h``.
-Next, this should be included in the ``.cpp`` file we're adding compatibility methods to, so ``core/math/a_star_grid_2d.cpp``:
+Tệp này luôn phải được đặt cạnh tệp ban đầu và có ``.compat.inc`` ở cuối thay vì ``.cpp`` hoặc ``.h``. Tiếp theo, tệp này cần được đưa vào tệp ``.cpp`` mà chúng ta đang thêm các phương thức tương thích, do đó ``core/math/a_star_grid_2d.cpp``:
 
 .. code-block:: cpp
     :caption: core/math/a_star_grid_2d.cpp
@@ -114,8 +104,7 @@ Next, this should be included in the ``.cpp`` file we're adding compatibility me
 
     #include "core/variant/typed_array.h"
 
-Finally, the GDExtension API changes need to be recorded. To do this, first compile Godot on the ``master`` branch, and
-then run it with the ``--dump-extension-api`` flag:
+Cuối cùng, các thay đổi đối với API GDExtension cần được ghi lại. Để thực hiện việc này, trước tiên hãy biên dịch Godot trên nhánh ``master``, sau đó chạy nó với cờ ``--dump-extension-api``:
 
 .. code-block:: shell
 
@@ -123,8 +112,7 @@ then run it with the ``--dump-extension-api`` flag:
     scons
     godot --dump-extension-api
 
-This will create a file named ``extension_api.json`` in your current directory. Switch to your feature branch, recompile Godot,
-and then run it with the ``--validate-extension-api`` flag followed by the path to the ``extension_api.json`` file you just generated:
+Thao tác này sẽ tạo một tệp có tên ``extension_api.json`` trong thư mục hiện tại của bạn. Chuyển sang nhánh tính năng, biên dịch lại Godot, sau đó chạy nó với cờ ``--validate-extension-api`` theo sau là đường dẫn đến tệp ``extension_api.json`` mà bạn vừa tạo:
 
 .. code-block:: shell
 
@@ -132,7 +120,7 @@ and then run it with the ``--validate-extension-api`` flag followed by the path 
     scons
     godot --validate-extension-api /path/to/extension_api.json
 
-This will generate some lines starting with ``Validate extension JSON`` like so:
+Thao tác này sẽ tạo ra một số dòng bắt đầu bằng ``Validate extension JSON`` như sau:
 
 .. code-block:: text
 
@@ -145,22 +133,15 @@ This will generate some lines starting with ``Validate extension JSON`` like so:
 
 .. attention::
 
-    If you get a ``Hash changed`` error for a method, it means that the compatibility binding is missing or incorrect.
-    Such lines shouldn't be added to the validation file, but fixed by binding the proper compatibility method.
-    Make sure to double-check the following:
+    Nếu bạn nhận được lỗi ``Hash changed`` đối với một phương thức, điều đó có nghĩa là liên kết tương thích bị thiếu hoặc không chính xác. Không nên thêm những dòng như vậy vào tệp xác thực; thay vào đó, hãy sửa bằng cách liên kết đúng phương thức tương thích. Hãy đảm bảo kiểm tra kỹ những điều sau:
 
-    - For the compatibility method (the one whose name ends with the PR number), the argument types, names, and default
-      values must be identical to the version of the method from before your changes.
-    - In ``_bind_compatibility_methods()``, argument names provided to the ``D_METHOD()`` macro in ``ClassDB::bind_compatibility_method()``
-      must be identical to those from the ``ClassDB::bind_method()`` call for the original method.
+    - Đối với phương thức tương thích (phương thức có tên kết thúc bằng số PR), kiểu, tên và giá trị mặc định của các đối số phải giống hệt phiên bản phương thức trước khi bạn thay đổi. - Trong ``_bind_compatibility_methods()``, tên các đối số được cung cấp cho macro ``D_METHOD()`` trong ``ClassDB::bind_compatibility_method()`` phải giống hệt tên trong lệnh gọi ``ClassDB::bind_method()`` của phương thức ban đầu.
 
-Add these lines, followed by a comment explaining what the API change was and the actions taken to prevent breakage,
-to a validation file named after the GitHub pull request ID and placed in the folder of the Godot version it would have broken compatibility for.
+Thêm các dòng này, kèm theo một chú thích giải thích thay đổi API là gì và các hành động đã thực hiện để ngăn việc phá vỡ tính tương thích, vào một tệp xác thực được đặt tên theo ID pull request trên GitHub và đặt trong thư mục của phiên bản Godot mà thay đổi đó lẽ ra sẽ phá vỡ tính tương thích.
 
-Since this example was for PR #88047, its file name would be ``GH-88047.txt``, and because this was done during
-the development of 4.3 (thus changing from 4.2), the file would be in the ``misc/extension_api_validation/4.2-stable/`` folder.
+Vì ví dụ này dành cho PR #88047, tên tệp sẽ là ``GH-88047.txt``, và vì việc này được thực hiện trong quá trình phát triển phiên bản 4.3 (do đó thay đổi từ 4.2), tệp sẽ nằm trong thư mục ``misc/extension_api_validation/4.2-stable/``.
 
-See below for a complete example of such a file for this PR:
+Xem bên dưới để biết ví dụ hoàn chỉnh về một tệp như vậy cho PR này:
 
 .. code-block:: text
     :caption: misc/extension_api_validation/4.2-stable/GH-88047.txt
@@ -177,7 +158,6 @@ See below for a complete example of such a file for this PR:
     Added optional "allow_partial_path" argument to get_id_path and get_point_path methods in AStar classes.
     Compatibility methods registered.
 
-And that's it! You might run into a bit more complicated cases, like rearranging arguments,
-changing return types, etc., but this covers the basics on how to use this system.
+Vậy là xong! Bạn có thể gặp những trường hợp phức tạp hơn một chút, chẳng hạn như sắp xếp lại các đối số, thay đổi kiểu trả về, v.v., nhưng phần này đã trình bày những điều cơ bản về cách sử dụng hệ thống này.
 
-For more information, see `pull request #76446 <https://github.com/godotengine/godot/pull/76446>`_.
+Để biết thêm thông tin, hãy xem `pull request #76446 <https://github.com/godotengine/godot/pull/76446>`_.

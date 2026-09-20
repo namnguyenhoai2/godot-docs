@@ -1,78 +1,56 @@
 .. _doc_introduction_to_the_buildsystem:
 
-Introduction to the buildsystem
-===============================
+Giới thiệu về buildsystem
+=========================
 
 .. highlight:: shell
 
 
-Godot is a primarily C++ project and it :ref:`uses the SCons build system. <doc_faq_why_scons>`
-We love SCons for how maintainable and easy to set up it makes our buildsystem. And thanks to
-that compiling Godot from source can be as simple as running:
+Godot chủ yếu là một dự án C++ và nó :ref:`uses the SCons build system. <doc_faq_why_scons>` Chúng tôi yêu thích SCons vì tính dễ bảo trì và dễ thiết lập mà nó mang lại cho buildsystem của chúng tôi. Nhờ đó, việc biên dịch Godot từ mã nguồn có thể đơn giản như chạy:
 
 ::
 
     scons
 
-This produces an editor build for your current platform, operating system, and architecture.
-You can change what gets built by specifying a target, a platform, and/or an architecture.
-For example, to build an export template used for running exported games, you can run:
+Thao tác này tạo một bản build editor cho nền tảng, hệ điều hành và kiến trúc hiện tại của bạn. Bạn có thể thay đổi nội dung được build bằng cách chỉ định target, nền tảng và/hoặc kiến trúc. Ví dụ, để build một export template dùng cho việc chạy các game đã export, bạn có thể chạy:
 
 ::
 
     scons target=template_release
 
-If you plan to debug or develop the engine, then you might want to enable the ``dev_build``
-option to enable dev-only debugging code:
+Nếu dự định debug hoặc phát triển engine, bạn có thể muốn bật tùy chọn ``dev_build`` để bật mã debug chỉ dành cho dev:
 
 ::
 
     scons dev_build=yes
 
-Following sections in the article will explain these and other universal options in more detail. But
-before you can compile Godot, you need to install a few prerequisites. Please refer to the platform
-documentation to learn more:
+Các phần tiếp theo trong bài viết sẽ giải thích chi tiết hơn về những tùy chọn phổ dụng này và các tùy chọn khác. Tuy nhiên, trước khi có thể biên dịch Godot, bạn cần cài đặt một số điều kiện tiên quyết. Vui lòng tham khảo tài liệu dành cho nền tảng để tìm hiểu thêm:
 
-- :ref:`doc_compiling_for_android`
-- :ref:`doc_compiling_for_ios`
-- :ref:`doc_compiling_for_linuxbsd`
-- :ref:`doc_compiling_for_macos`
-- :ref:`doc_compiling_for_web`
-- :ref:`doc_compiling_for_windows`
+- :ref:`doc_compiling_for_android` - :ref:`doc_compiling_for_ios` - :ref:`doc_compiling_for_linuxbsd` - :ref:`doc_compiling_for_macos` - :ref:`doc_compiling_for_web` - :ref:`doc_compiling_for_windows`
 
-These articles cover in great detail both how to setup your environment to compile Godot on a specific
-platform, and how to compile for that platform. Please feel free to go back and forth between them and
-this article to reference platform-specific and universal configuration options.
+Các bài viết này trình bày rất chi tiết cả cách thiết lập môi trường để biên dịch Godot trên một nền tảng cụ thể, lẫn cách biên dịch cho nền tảng đó. Bạn có thể thoải mái chuyển qua lại giữa các bài viết này và bài viết hiện tại để tham khảo các tùy chọn cấu hình dành riêng cho nền tảng cũng như các tùy chọn phổ dụng.
 
-Using multi-threading
----------------------
+Sử dụng đa luồng
+----------------
 
-The build process may take a while, depending on how powerful your system is. By default, Godot's
-SCons setup is configured to use all CPU threads but one (to keep the system responsive during
-compilation). If the system has 4 CPU threads or fewer, it will use all threads by default.
+Quá trình build có thể mất một khoảng thời gian, tùy thuộc vào mức độ mạnh của hệ thống. Theo mặc định, thiết lập SCons của Godot được cấu hình để sử dụng tất cả các luồng CPU trừ một luồng (nhằm giữ cho hệ thống phản hồi trong quá trình biên dịch). Nếu hệ thống có 4 luồng CPU trở xuống, theo mặc định hệ thống sẽ sử dụng tất cả các luồng.
 
-If you want to adjust how many CPU threads SCons will use, use the ``-j<threads>``
-parameter to specify how many threads will be used for the build.
+Nếu muốn điều chỉnh số luồng CPU mà SCons sử dụng, hãy dùng tham số ``-j<threads>`` để chỉ định số luồng sẽ được dùng cho bản build.
 
-Example for using 12 threads:
+Ví dụ sử dụng 12 luồng:
 
 ::
 
     scons -j12
 
-Platform selection
-------------------
+Lựa chọn nền tảng
+-----------------
 
-Godot's build system will begin by detecting the platforms it can build
-for. If not detected, the platform will simply not appear on the list of
-available platforms. The build requirements for each platform are
-described in the rest of this tutorial section.
+Build system của Godot sẽ bắt đầu bằng cách phát hiện các nền tảng mà nó có thể build. Nếu không được phát hiện, nền tảng đó sẽ không xuất hiện trong danh sách các nền tảng khả dụng. Các yêu cầu build cho từng nền tảng được mô tả trong phần còn lại của mục hướng dẫn này.
 
-SCons is invoked by just calling ``scons``. If no platform is specified,
-SCons will detect the target platform automatically based on the host platform.
-It will then start building for the target platform right away.
+SCons được gọi chỉ bằng cách gọi ``scons``. Nếu không chỉ định nền tảng, SCons sẽ tự động phát hiện nền tảng target dựa trên nền tảng host. Sau đó, SCons sẽ ngay lập tức bắt đầu build cho nền tảng target.
 
-To list the available target platforms, use ``scons platform=list``:
+Để liệt kê các nền tảng target khả dụng, hãy dùng ``scons platform=list``:
 
 .. code:: text
 
@@ -89,8 +67,7 @@ To list the available target platforms, use ``scons platform=list``:
 
     Please run SCons again and select a valid platform: platform=<string>
 
-To build for a platform (for example, ``linuxbsd``), run with the ``platform=``
-(or ``p=`` to make it short) argument:
+Để build cho một nền tảng (ví dụ: ``linuxbsd``), hãy chạy với đối số ``platform=`` (hoặc ``p=`` để viết ngắn):
 
 ::
 
@@ -98,61 +75,47 @@ To build for a platform (for example, ``linuxbsd``), run with the ``platform=``
 
 .. _doc_introduction_to_the_buildsystem_resulting_binary:
 
-Resulting binary
-----------------
+Binary tạo ra
+-------------
 
-The resulting binaries will be placed in the ``bin/`` subdirectory,
-generally with this naming convention:
+Các binary tạo ra sẽ được đặt trong thư mục con ``bin/``, thường theo quy ước đặt tên sau:
 
 ::
 
     godot.<platform>.<target>[.dev][.double].<arch>[.<extra_suffix>][.<ext>]
 
-For the previous build attempt, the result would look like this:
+Đối với lần thử build trước đó, kết quả sẽ có dạng như sau:
 
 .. code-block:: console
 
     ls bin
     bin/godot.linuxbsd.editor.x86_64
 
-This means that the binary is for Linux *or* \*BSD (*not* both), is not optimized, has the
-whole editor compiled in, and is meant for 64 bits.
+Điều này có nghĩa binary dành cho Linux *hoặc* \*BSD (*không phải* cả hai), chưa được tối ưu hóa, có toàn bộ editor được biên dịch bên trong và dành cho 64 bit.
 
-A Windows binary with the same configuration will look like this:
+Một binary Windows với cùng cấu hình sẽ có dạng như sau:
 
 .. code-block:: doscon
 
     C:\godot> dir bin/
     godot.windows.editor.64.exe
 
-Copy that binary to any location you like, as it contains the Project Manager,
-editor and all means to execute the game. However, it lacks the data to export
-it to the different platforms. For that the export templates are needed (which
-can be either downloaded from `godotengine.org <https://godotengine.org/>`__, or
-you can build them yourself).
+Sao chép binary đó đến bất kỳ vị trí nào bạn muốn, vì nó chứa Project Manager, editor và mọi thành phần cần thiết để thực thi game. Tuy nhiên, nó thiếu dữ liệu để export sang các nền tảng khác nhau. Để làm được điều đó, cần có các export template (có thể tải xuống từ `godotengine.org <https://godotengine.org/>`__, hoặc tự build chúng).
 
-Aside from that, there are a few standard options that can be set in all
-build targets, and which will be explained below.
+Ngoài ra, có một số tùy chọn tiêu chuẩn có thể được thiết lập trong tất cả các target build và sẽ được giải thích bên dưới.
 
 .. _doc_introduction_to_the_buildsystem_target:
 
 Target
 ------
 
-The ``target`` option controls if the editor is compiled and debug flags are used.
-Optimization levels (``optimize``) and whether each build contains debug symbols
-(``debug_symbols``) is controlled separately from the target. Each mode means:
+Tùy chọn ``target`` kiểm soát việc editor có được biên dịch hay không và có sử dụng các cờ debug hay không. Các mức tối ưu hóa (``optimize``) và việc mỗi bản build có chứa debug symbol hay không (``debug_symbols``) được kiểm soát riêng với target. Mỗi chế độ có nghĩa là:
 
--  ``target=editor``: Build an editor binary (defines ``TOOLS_ENABLED`` and ``DEBUG_ENABLED``)
--  ``target=template_debug``: Build a debug export template (defines ``DEBUG_ENABLED``)
--  ``target=template_release``: Build a release export template
+-  ``target=editor``: Build một editor binary (định nghĩa ``TOOLS_ENABLED`` và ``DEBUG_ENABLED``) - ``target=template_debug``: Build một debug export template (định nghĩa ``DEBUG_ENABLED``) - ``target=template_release``: Build một release export template
 
-The editor is enabled by default in all PC targets (Linux, Windows, macOS),
-disabled for everything else. Disabling the editor produces a binary that can
-run projects but does not include the editor or the Project Manager.
+Editor được bật theo mặc định trong tất cả target PC (Linux, Windows, macOS) và bị tắt trong mọi target khác. Việc tắt editor tạo ra một binary có thể chạy các project nhưng không bao gồm editor hoặc Project Manager.
 
-The list of :ref:`command line arguments <doc_command_line_tutorial>`
-available varies depending on the build type.
+Danh sách :ref:`command line arguments <doc_command_line_tutorial>` khả dụng thay đổi tùy theo loại build.
 
 ::
 
@@ -160,143 +123,81 @@ available varies depending on the build type.
 
 .. _doc_introduction_to_the_buildsystem_development_and_production_aliases:
 
-Development and production aliases
-----------------------------------
+Bí danh dành cho development và production
+------------------------------------------
 
-When creating builds for development (running debugging/:ref:`profiling <doc_using_cpp_profilers>`
-tools), you often have different goals compared to production builds
-(making binaries as fast and small as possible).
+Khi tạo các bản build cho development (chạy các công cụ debugging/:ref:`profiling <doc_using_cpp_profilers>`), bạn thường có các mục tiêu khác so với các bản build production (tạo binary nhanh và nhỏ nhất có thể).
 
-Godot provides two aliases for this purpose:
+Godot cung cấp hai bí danh cho mục đích này:
 
-- ``dev_mode=yes`` is an alias for ``verbose=yes warnings=extra werror=yes
-  tests=yes``. This enables warnings-as-errors behavior (similar to Godot's
-  continuous integration setup) and also builds :ref:`unit tests
-  <doc_unit_testing>` so you can run them locally.
-- ``production=yes`` is an alias for ``use_static_cpp=yes debug_symbols=no
-  lto=auto``. Statically linking libstdc++ allows for better binary portability
-  when compiling for Linux. This alias also enables link-time optimization when
-  compiling for Linux, Web and Windows with MinGW, but keeps LTO disabled when
-  compiling for macOS, iOS or Windows with MSVC. This is because LTO on those
-  platforms is very slow to link or has issues with the generated code.
+- ``dev_mode=yes`` là bí danh cho ``verbose=yes warnings=extra werror=yes tests=yes``. Bí danh này bật cơ chế warnings-as-errors (tương tự thiết lập continuous integration của Godot) và cũng build :ref:`unit tests <doc_unit_testing>` để bạn có thể chạy chúng cục bộ. - ``production=yes`` là bí danh cho ``use_static_cpp=yes debug_symbols=no lto=auto``. Việc liên kết tĩnh libstdc++ cho phép binary có tính di động tốt hơn khi biên dịch cho Linux. Bí danh này cũng bật link-time optimization khi biên dịch cho Linux, Web và Windows với MinGW, nhưng giữ LTO ở trạng thái tắt khi biên dịch cho macOS, iOS hoặc Windows với MSVC. Nguyên nhân là LTO trên các nền tảng đó liên kết rất chậm hoặc gặp vấn đề với mã được tạo ra.
 
-You can manually override options from those aliases by specifying them on the
-same command line with different values. For example, you can use ``scons
-production=yes debug_symbols=yes`` to create production-optimized binaries with
-debugging symbols included.
+Bạn có thể ghi đè thủ công các tùy chọn từ những bí danh đó bằng cách chỉ định chúng trên cùng dòng lệnh với các giá trị khác. Ví dụ, bạn có thể dùng ``scons production=yes debug_symbols=yes`` để tạo các binary được tối ưu hóa cho production nhưng vẫn bao gồm debug symbol.
 
 Dev build
 ---------
 
 .. note::
 
-    ``dev_build`` should **not** be confused with ``dev_mode``, which is an
-    alias for several development-related options (see above).
+    ``dev_build`` **không nên** bị nhầm với ``dev_mode``, vốn là bí danh cho một số tùy chọn liên quan đến development (xem ở trên).
 
-When doing engine development the ``dev_build`` option can be used together
-with ``target`` to enable dev-specific code. ``dev_build`` defines ``DEV_ENABLED``,
-disables optimization (``-O0``/``/0d``), enables generating debug symbols, and
-does not define ``NDEBUG`` (so ``assert()`` works in thirdparty libraries).
+Khi phát triển engine, có thể sử dụng tùy chọn ``dev_build`` cùng với ``target`` để bật mã dành riêng cho dev. ``dev_build`` định nghĩa ``DEV_ENABLED``, tắt tối ưu hóa (``-O0``/``/0d``), bật việc tạo debug symbol và không định nghĩa ``NDEBUG`` (để ``assert()`` hoạt động trong các thư viện thirdparty).
 
 ::
 
     scons platform=<platform> dev_build=yes
 
-This flag appends the ``.dev`` suffix (for development) to the generated
-binary name.
+Cờ này thêm hậu tố ``.dev`` (dành cho development) vào tên binary được tạo ra.
 
 .. seealso::
 
-    There are additional SCons options to enable *sanitizers*, which are tools
-    you can enable at compile-time to better debug certain engine issues.
-    See :ref:`doc_using_sanitizers` for more information.
+    Có thêm các tùy chọn SCons để bật *sanitizer*, là những công cụ bạn có thể bật trong thời gian biên dịch nhằm debug tốt hơn một số vấn đề nhất định của engine. Xem :ref:`doc_using_sanitizers` để biết thêm thông tin.
 
 .. _doc_introduction_to_the_buildsystem_debugging_symbols:
 
-Debugging symbols
------------------
+Debug symbol
+------------
 
-By default, ``debug_symbols=no`` is used, which means **no** debugging symbols
-are included in compiled binaries. Use ``debug_symbols=yes`` to include debug
-symbols within compiled binaries, which allows debuggers and profilers to work
-correctly. Debugging symbols are also required for Godot's crash stacktraces to
-display with references to source code files and lines.
+Theo mặc định, ``debug_symbols=no`` được sử dụng, nghĩa là **không** có debug symbol nào được đưa vào các binary đã biên dịch. Hãy dùng ``debug_symbols=yes`` để đưa debug symbol vào các binary đã biên dịch, cho phép debugger và profiler hoạt động chính xác. Debug symbol cũng cần thiết để stacktrace crash của Godot hiển thị tham chiếu đến các tệp và dòng mã nguồn.
 
-The downside is that debugging symbols are large files (significantly larger
-than the binaries themselves). As a result, official binaries currently do not
-include debugging symbols. This means you need to compile Godot yourself to have
-access to debugging symbols.
+Nhược điểm là debug symbol là các tệp lớn (lớn hơn đáng kể so với bản thân các binary). Vì vậy, các binary chính thức hiện không bao gồm debug symbol. Điều này có nghĩa là bạn cần tự biên dịch Godot để có quyền truy cập vào debug symbol.
 
-When using ``debug_symbols=yes``, you can also use
-``separate_debug_symbols=yes`` to put debug information in a separate file with
-a ``.debug`` suffix. This allows distributing both files independently. Note
-that on Windows, when compiling with MSVC, debugging information is *always*
-written to a separate ``.pdb`` file regardless of ``separate_debug_symbols``.
+Khi sử dụng ``debug_symbols=yes``, bạn cũng có thể dùng ``separate_debug_symbols=yes`` để đặt thông tin debug vào một tệp riêng với hậu tố ``.debug``. Điều này cho phép phân phối hai tệp độc lập với nhau. Lưu ý rằng trên Windows, khi biên dịch bằng MSVC, thông tin debug *luôn* được ghi vào một tệp ``.pdb`` riêng bất kể ``separate_debug_symbols``.
 
 .. tip::
 
-    Use the ``strip <path/to/binary>`` command to remove debugging symbols from
-    a binary you've already compiled.
+    Dùng lệnh ``strip <path/to/binary>`` để xóa debug symbol khỏi một binary mà bạn đã biên dịch.
 
-Optimization level
-------------------
+Mức tối ưu hóa
+--------------
 
-Several compiler optimization levels can be chosen from:
+Có thể chọn một trong các mức tối ưu hóa compiler sau:
 
-- ``optimize=speed_trace`` *(default when targeting non-Web platforms)*: Favors
-  execution speed at the cost of larger binary size. Optimizations may sometimes
-  negatively impact debugger usage (stack traces may be less accurate. If this
-  occurs to you, use ``optimize=debug`` instead.
-- ``optimize=speed``: Favors even more execution speed, at the cost of even
-  larger binary size compared to ``optimize=speed_trace``. Even less friendly to
-  debugging compared to ``optimize=debug``, as this uses the most aggressive
-  optimizations available.
-- ``optimize=size`` *(default when targeting the Web platform)*: Favors small
-  binaries at the cost of slower execution speed.
-- ``optimize=size_extra``: Favors even smaller binaries, at the cost of even
-  slower execution speed compared to ``optimize=size``.
-- ``optimize=debug``: Only enables optimizations that do not impact debugging in
-  any way. This results in faster binaries than ``optimize=none``, but slower
-  binaries than ``optimize=speed_trace``.
-- ``optimize=none``: Do not perform any optimization. This provides the fastest
-  build times, but the slowest execution times.
-- ``optimize=custom`` *(advanced users only)*: Do not pass optimization
-  arguments to the C/C++ compilers. You will have to pass arguments manually
-  using the ``cflags``, ``ccflags`` and ``cxxflags`` SCons options.
+- ``optimize=speed_trace`` *(mặc định khi target các nền tảng không phải Web)*: Ưu tiên tốc độ thực thi với đánh đổi là kích thước binary lớn hơn. Việc tối ưu hóa đôi khi có thể ảnh hưởng tiêu cực đến việc sử dụng debugger (stack trace có thể kém chính xác hơn. Nếu gặp trường hợp này, hãy dùng ``optimize=debug`` thay thế. - ``optimize=speed``: Ưu tiên tốc độ thực thi cao hơn nữa, với đánh đổi là kích thước binary còn lớn hơn so với ``optimize=speed_trace``. Ít thân thiện với việc debug hơn ``optimize=debug``, vì sử dụng các tối ưu hóa mạnh nhất hiện có. - ``optimize=size`` *(mặc định khi target nền tảng Web)*: Ưu tiên binary nhỏ với đánh đổi là tốc độ thực thi chậm hơn. - ``optimize=size_extra``: Ưu tiên binary còn nhỏ hơn nữa, với đánh đổi là tốc độ thực thi còn chậm hơn so với ``optimize=size``. - ``optimize=debug``: Chỉ bật các tối ưu hóa không ảnh hưởng đến việc debug theo bất kỳ cách nào. Kết quả là binary nhanh hơn ``optimize=none``, nhưng chậm hơn ``optimize=speed_trace``. - ``optimize=none``: Không thực hiện bất kỳ tối ưu hóa nào. Cách này mang lại thời gian build nhanh nhất nhưng thời gian thực thi chậm nhất. - ``optimize=custom`` *(chỉ dành cho người dùng nâng cao)*: Không truyền các đối số tối ưu hóa cho compiler C/C++. Bạn sẽ phải truyền các đối số thủ công bằng các tùy chọn SCons ``cflags``, ``ccflags`` và ``cxxflags``.
 
-Architecture
-------------
+Kiến trúc
+---------
 
-The ``arch`` option is meant to control the CPU or OS version intended to run the
-binaries. It is focused mostly on desktop platforms and ignored everywhere
-else.
+Tùy chọn ``arch`` dùng để kiểm soát phiên bản CPU hoặc OS dự kiến sẽ chạy các binary. Tùy chọn này chủ yếu tập trung vào các nền tảng desktop và bị bỏ qua ở mọi nơi khác.
 
-Supported values for the ``arch`` option are **auto**, **x86_32**, **x86_64**,
-**arm32**, **arm64**, **rv64**, **ppc32**, **ppc64** and **wasm32**.
+Các giá trị được hỗ trợ cho tùy chọn ``arch`` là **auto**, **x86_32**, **x86_64**, **arm32**, **arm64**, **rv64**, **ppc32**, **ppc64** và **wasm32**.
 
 ::
 
     scons platform=<platform> arch={auto|x86_32|x86_64|arm32|arm64|rv64|ppc32|ppc64|wasm32}
 
-This flag appends the value of ``arch`` to resulting binaries when
-relevant. The default value ``arch=auto`` detects the architecture
-that matches the host platform.
+Cờ này sẽ nối giá trị của ``arch`` vào các tệp nhị phân tạo ra khi thích hợp. Giá trị mặc định ``arch=auto`` sẽ phát hiện kiến trúc khớp với nền tảng máy chủ.
 
 .. _doc_buildsystem_custom_modules:
 
-Custom modules
---------------
+Mô-đun tùy chỉnh
+----------------
 
-It's possible to compile modules residing outside of Godot's directory
-tree, along with the built-in modules.
+Bạn có thể biên dịch các mô-đun nằm bên ngoài cây thư mục của Godot cùng với các mô-đun tích hợp sẵn.
 
-A ``custom_modules`` build option can be passed to the command line before
-compiling. The option represents a comma-separated list of directory paths
-containing a collection of independent C++ modules that can be seen as C++
-packages, just like the built-in ``modules/`` directory.
+Có thể truyền tùy chọn xây dựng ``custom_modules`` vào dòng lệnh trước khi biên dịch. Tùy chọn này biểu thị một danh sách đường dẫn thư mục được phân tách bằng dấu phẩy, chứa một tập hợp các mô-đun C++ độc lập có thể được xem như các gói C++, tương tự như thư mục ``modules/`` tích hợp sẵn.
 
-For instance, it's possible to provide both relative, absolute, and user
-directory paths containing such modules:
+Ví dụ, bạn có thể cung cấp các đường dẫn thư mục tương đối, tuyệt đối và thư mục người dùng chứa những mô-đun như vậy:
 
 ::
 
@@ -304,46 +205,35 @@ directory paths containing such modules:
 
 .. note::
 
-    If there's any custom module with the exact directory name as a built-in
-    module, the engine will only compile the custom one. This logic can be used
-    to override built-in module implementations.
+    Nếu có mô-đun tùy chỉnh có tên thư mục trùng khớp hoàn toàn với một mô-đun tích hợp sẵn, engine sẽ chỉ biên dịch mô-đun tùy chỉnh đó. Logic này có thể được dùng để ghi đè các phần triển khai mô-đun tích hợp sẵn.
 
 .. seealso::
 
     :ref:`doc_custom_modules_in_cpp`
 
-Cleaning generated files
-------------------------
+Dọn dẹp các tệp đã tạo
+----------------------
 
-Sometimes, you may encounter an error due to generated files being present. You
-can remove them by using ``scons --clean <options>``, where ``<options>`` is the
-list of build options you've used to build Godot previously.
+Đôi khi, bạn có thể gặp lỗi do các tệp đã tạo vẫn còn tồn tại. Bạn có thể xóa chúng bằng cách sử dụng ``scons --clean <options>``, trong đó ``<options>`` là danh sách các tùy chọn xây dựng bạn đã dùng trước đó để xây dựng Godot.
 
-Alternatively, you can use ``git clean -fixd`` which will clean build artifacts
-for all platforms and configurations. Beware, as this will remove all untracked
-and ignored files in the repository. Don't run this command if you have
-uncommitted work!
+Ngoài ra, bạn có thể sử dụng ``git clean -fixd``, lệnh này sẽ dọn dẹp các phần tử tạo tác xây dựng cho mọi nền tảng và cấu hình. Hãy cẩn thận vì lệnh này sẽ xóa tất cả các tệp chưa được theo dõi và bị bỏ qua trong kho lưu trữ. Đừng chạy lệnh này nếu bạn có công việc chưa commit!
 
-Other build options
--------------------
+Các tùy chọn xây dựng khác
+--------------------------
 
-There are several other build options that you can use to configure the
-way Godot should be built (compiler, debug options, etc.) as well as the
-features to include/disable.
+Có một số tùy chọn xây dựng khác mà bạn có thể sử dụng để cấu hình cách Godot được xây dựng (trình biên dịch, các tùy chọn gỡ lỗi, v.v.) cũng như những tính năng cần включ vào hoặc tắt đi.
 
-Check the output of ``scons --help`` for details about each option for
-the version you are willing to compile.
+Kiểm tra đầu ra của ``scons --help`` để xem chi tiết về từng tùy chọn cho phiên bản mà bạn muốn biên dịch.
 
 .. _doc_overriding_build_options:
 
-Overriding the build options
+Ghi đè các tùy chọn xây dựng
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Using a file
-^^^^^^^^^^^^
+Sử dụng tệp
+^^^^^^^^^^^
 
-The default ``custom.py`` file can be created at the root of the Godot Engine
-source to initialize any SCons build options passed via the command line:
+Có thể tạo tệp ``custom.py`` mặc định tại thư mục gốc của mã nguồn Godot Engine để khởi tạo mọi tùy chọn xây dựng SCons được truyền qua dòng lệnh:
 
 .. code-block:: python
     :caption: custom.py
@@ -353,27 +243,22 @@ source to initialize any SCons build options passed via the command line:
     use_llvm = "yes"
     extra_suffix = "game_title"
 
-You can also disable some of the built-in modules before compiling, saving some
-time it takes to build the engine. See :ref:`doc_optimizing_for_size` page for more details.
+Bạn cũng có thể tắt một số mô-đun tích hợp sẵn trước khi biên dịch, nhờ đó tiết kiệm một phần thời gian xây dựng engine. Xem trang :ref:`doc_optimizing_for_size` để biết thêm chi tiết.
 
 .. seealso::
 
-    You can use the online
-    `Godot build options generator <https://godot-build-options-generator.github.io/>`__
-    to generate a ``custom.py`` file containing SCons options.
-    You can then save this file and place it at the root of your Godot source directory.
+    Bạn có thể sử dụng `Godot build options generator <https://godot-build-options-generator.github.io/>`__ trực tuyến để tạo tệp ``custom.py`` chứa các tùy chọn SCons. Sau đó, bạn có thể lưu tệp này và đặt nó tại thư mục gốc của thư mục mã nguồn Godot.
 
-Another custom file can be specified explicitly with the ``profile`` command
-line option, both overriding the default build configuration:
+Bạn có thể chỉ định rõ một tệp tùy chỉnh khác bằng tùy chọn dòng lệnh ``profile``, đồng thời ghi đè cấu hình xây dựng mặc định:
 
 .. code-block:: shell
 
     scons profile=path/to/custom.py
 
 .. note:: Build options set from the file can be overridden by the command line
-          options.
+          các tùy chọn.
 
-It's also possible to override the options conditionally:
+Bạn cũng có thể ghi đè các tùy chọn theo điều kiện:
 
 .. code-block:: python
     :caption: custom.py
@@ -386,14 +271,12 @@ It's also possible to override the options conditionally:
     elif version.major == 4:
         pass
 
-Using the SCONSFLAGS
-^^^^^^^^^^^^^^^^^^^^
+Sử dụng SCONSFLAGS
+^^^^^^^^^^^^^^^^^^
 
-``SCONSFLAGS`` is an environment variable which is used by the SCons to set the
-options automatically without having to supply them via the command line.
+``SCONSFLAGS`` là một biến môi trường được SCons sử dụng để tự động thiết lập các tùy chọn mà không cần cung cấp chúng qua dòng lệnh.
 
-For instance, you may want to force a number of CPU threads with the
-aforementioned ``-j`` option for all future builds:
+Ví dụ: bạn có thể muốn buộc sử dụng một số lượng luồng CPU nhất định bằng tùy chọn ``-j`` đã đề cập ở trên cho tất cả các lần xây dựng sau này:
 
 .. tabs::
  .. code-tab:: bash Linux/macOS
@@ -408,38 +291,24 @@ aforementioned ``-j`` option for all future builds:
 
      $env:SCONSFLAGS="-j4"
 
-SCU (single compilation unit) build
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Bản dựng SCU (single compilation unit)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Regular builds tend to be bottlenecked by including large numbers of headers
-in each compilation translation unit. Primarily to speed up development (rather
-than for production builds), Godot offers a "single compilation unit" build
-(aka "Unity / Jumbo" build).
+Các bản dựng thông thường thường bị nghẽn do phải đưa một số lượng lớn tệp tiêu đề vào mỗi đơn vị biên dịch. Chủ yếu nhằm tăng tốc quá trình phát triển (thay vì các bản dựng sản phẩm), Godot cung cấp bản dựng "single compilation unit" (còn gọi là bản dựng "Unity / Jumbo").
 
-For the folders accelerated by this option, multiple ``.cpp`` files are
-compiled in each translation unit, so headers can be shared between multiple
-files, which can dramatically decrease build times.
+Đối với các thư mục được tùy chọn này tăng tốc, nhiều tệp ``.cpp`` được biên dịch trong mỗi đơn vị biên dịch, nhờ đó các tệp tiêu đề có thể được chia sẻ giữa nhiều tệp, giúp giảm đáng kể thời gian xây dựng.
 
-To perform an SCU build, use the ``scu_build=yes`` SCons option.
+Để thực hiện bản dựng SCU, hãy sử dụng tùy chọn SCons ``scu_build=yes``.
 
 .. note:: When developing a pull request using SCU builds, be sure to make a
-          regular build prior to submitting the PR. This is because SCU builds
-          by nature include headers from earlier ``.cpp`` files in the
-          translation unit, therefore won't catch all the includes you will
-          need in a regular build. The CI will catch these errors, but it will
-          usually be faster to catch them on a local build on your machine.
+          bản dựng thông thường trước khi gửi PR. Nguyên nhân là do các bản dựng SCU vốn đưa các tệp tiêu đề từ những tệp ``.cpp`` trước đó vào đơn vị biên dịch, vì vậy sẽ không phát hiện được tất cả các tệp tiêu đề mà bạn cần trong bản dựng thông thường. CI sẽ phát hiện những lỗi này, nhưng thông thường việc phát hiện chúng trong một bản dựng cục bộ trên máy của bạn sẽ nhanh hơn.
 
-Export templates
-----------------
+Mẫu xuất
+--------
 
-Official export templates are downloaded from the Godot Engine site:
-`godotengine.org <https://godotengine.org/>`__. However, you might want
-to build them yourself (in case you want newer ones, you are using custom
-modules, or simply don't trust your own shadow).
+Các mẫu xuất chính thức được tải xuống từ trang Godot Engine: `godotengine.org <https://godotengine.org/>`__. Tuy nhiên, bạn có thể muốn tự xây dựng chúng (trong trường hợp muốn có các mẫu mới hơn, đang sử dụng mô-đun tùy chỉnh hoặc đơn giản là không tin vào cái bóng của chính mình).
 
-If you download the official export templates package and unzip it, you
-will notice that most files are optimized binaries or packages for each
-platform:
+Nếu tải xuống gói mẫu xuất chính thức và giải nén, bạn sẽ nhận thấy hầu hết các tệp là tệp nhị phân hoặc gói đã được tối ưu hóa cho từng nền tảng:
 
 .. code-block:: none
 
@@ -478,19 +347,8 @@ platform:
     windows_release_arm64_console.exe
     windows_release_arm64.exe
 
-To create those yourself, follow the instructions detailed for each
-platform in this same tutorial section. Each platform explains how to
-create its own template.
+Để tự tạo các mẫu đó, hãy làm theo hướng dẫn chi tiết cho từng nền tảng trong cùng phần hướng dẫn này. Mỗi nền tảng đều giải thích cách tạo mẫu riêng.
 
-The ``version.txt`` file should contain the corresponding Godot version
-identifier. This file is used to install export templates in a version-specific
-directory to avoid conflicts. For instance, if you are building export templates
-for Godot 4.4.1, ``version.txt`` should contain ``4.4.1.stable`` on the first
-line (and nothing else). This version identifier is based on the ``major``,
-``minor``, ``patch`` (if present) and ``status`` lines of the
-`version.py file in the Godot Git repository <https://github.com/godotengine/godot/blob/master/version.py>`__.
+Tệp ``version.txt`` phải chứa mã định danh phiên bản Godot tương ứng. Tệp này được sử dụng để cài đặt các mẫu xuất vào một thư mục dành riêng cho từng phiên bản nhằm tránh xung đột. Ví dụ: nếu bạn đang xây dựng mẫu xuất cho Godot 4.4.1, ``version.txt`` phải chứa ``4.4.1.stable`` ở dòng đầu tiên (và không có gì khác). Mã định danh phiên bản này dựa trên các dòng ``major``, ``minor``, ``patch`` (nếu có) và ``status`` trong `version.py file in the Godot Git repository <https://github.com/godotengine/godot/blob/master/version.py>`__.
 
-If you are developing for multiple platforms, macOS is definitely the most
-convenient host platform for cross-compilation, since you can cross-compile for
-every target. Linux and Windows come in second place,
-but Linux has the advantage of being the easier platform to set this up.
+Nếu bạn phát triển cho nhiều nền tảng, macOS chắc chắn là nền tảng máy chủ thuận tiện nhất để biên dịch chéo, vì bạn có thể biên dịch chéo cho mọi mục tiêu. Linux và Windows đứng thứ hai, nhưng Linux có lợi thế là nền tảng dễ thiết lập hơn.

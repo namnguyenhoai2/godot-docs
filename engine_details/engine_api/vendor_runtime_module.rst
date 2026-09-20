@@ -1,44 +1,33 @@
 .. _doc_vendor_runtime_module:
 
-Vendor Runtime Module
-=====================
+Mô-đun runtime của nhà cung cấp
+===============================
 
-A Vendor Runtime Module is a :ref:`Godot module <doc_custom_modules_in_cpp>`
-which is only applicable at runtime in a running project.
-It is created like a regular :ref:`custom C++ module <doc_custom_modules_in_cpp>`, but is
-packaged using an :ref:`editor plugin <doc_making_plugins>` to make the functionality
-it provides easily accessible and usable within a *stock* Godot project.
+Mô-đun runtime của nhà cung cấp là một :ref:`Godot module <doc_custom_modules_in_cpp>` chỉ áp dụng trong runtime của một dự án đang chạy. Mô-đun này được tạo như một :ref:`custom C++ module <doc_custom_modules_in_cpp>` thông thường, nhưng được đóng gói bằng :ref:`editor plugin <doc_making_plugins>` để chức năng mà nó cung cấp có thể dễ dàng truy cập và sử dụng trong một dự án Godot *stock*.
 
-What for?
----------
+Dùng để làm gì?
+---------------
 
-Vendor runtime modules provide developers with access to vendor-specific optimizations, features,
-and/or platforms for their running projects.
+Các mô-đun runtime của nhà cung cấp cung cấp cho nhà phát triển quyền truy cập vào những tối ưu hóa, tính năng và/hoặc nền tảng dành riêng cho nhà cung cấp trong các dự án đang chạy của họ.
 
-This provides benefits to vendors who are able to expose their technologies to all developers,
-and improve and refine them in a rapid, iterative, and frictionless manner.
-This also provides benefits to developers and users who are able to access and use a diverse range of vendor
-technologies to improve their games.
+Điều này mang lại lợi ích cho các nhà cung cấp, những bên có thể cung cấp công nghệ của mình cho tất cả nhà phát triển, đồng thời cải thiện và hoàn thiện chúng theo cách nhanh chóng, lặp lại và không gặp trở ngại. Điều này cũng mang lại lợi ích cho các nhà phát triển và người dùng, những bên có thể truy cập và sử dụng nhiều loại công nghệ đa dạng từ các nhà cung cấp để cải thiện trò chơi của mình.
 
-Creating a vendor runtime module
---------------------------------
+Tạo mô-đun runtime của nhà cung cấp
+-----------------------------------
 
-Generating export templates
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tạo các export template
+~~~~~~~~~~~~~~~~~~~~~~~
 
-Make sure to follow the :ref:`instructions for creating a custom C++ module <doc_creating_custom_modules_in_cpp>`.
+Hãy nhớ làm theo :ref:`instructions for creating a custom C++ module <doc_creating_custom_modules_in_cpp>`.
 
-Since this is a runtime module whose functionality is meant to only be accessed from the running project, you must
-generate an export template for every platform you plan to support.
-See the :ref:`Compiling <toc-devel-compiling>` pages for more information.
+Vì đây là một mô-đun runtime có chức năng chỉ được truy cập từ dự án đang chạy, bạn phải tạo một export template cho mỗi nền tảng mà bạn dự định hỗ trợ. Hãy xem các trang :ref:`Compiling <toc-devel-compiling>` để biết thêm thông tin.
 
-Creating the wrapper editor plugin
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tạo editor plugin wrapper
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Once the export templates are generated, you must create an editor plugin to package them and make them easily
-accessible to end users via the `Godot Asset Store <https://store.godotengine.org/>`_.
+Sau khi các export template được tạo, bạn phải tạo một editor plugin để đóng gói chúng và giúp người dùng cuối dễ dàng truy cập thông qua `Godot Asset Store <https://store.godotengine.org/>`_.
 
-Follow :ref:`these instructions <doc_making_plugins_template>` to start creating the plugin. Your base plugin script should look like the following:
+Làm theo :ref:`these instructions <doc_making_plugins_template>` để bắt đầu tạo plugin. Tập lệnh plugin cơ sở của bạn sẽ có dạng như sau:
 
 .. code-block:: gdscript
 
@@ -56,11 +45,9 @@ Follow :ref:`these instructions <doc_making_plugins_template>` to start creating
         pass
 
 
-The next step is to define and instantiate an :ref:`EditorExportPlugin<class_EditorExportPlugin>` instance.
-The :ref:`EditorExportPlugin<class_EditorExportPlugin>` instance is used to hook into the export flow and
-replace the default export templates with the ones generated from the vendor runtime module.
+Bước tiếp theo là định nghĩa và khởi tạo một thực thể :ref:`EditorExportPlugin<class_EditorExportPlugin>`. Thực thể :ref:`EditorExportPlugin<class_EditorExportPlugin>` được dùng để móc vào quy trình export và thay thế các export template mặc định bằng những template được tạo từ mô-đun runtime của nhà cung cấp.
 
-Using our base editor plugin template code above, an example implementation looks like this:
+Sử dụng mã mẫu editor plugin cơ sở ở trên, một cách triển khai mẫu sẽ có dạng như sau:
 
 .. code-block:: gdscript
 
@@ -112,7 +99,4 @@ Using our base editor plugin template code above, an example implementation look
 
 .. tip::
 
-    This section covers the basics to wrap and expose a vendor runtime module via an editor plugin, but
-    editor plugins have a lot more functionality that can be used to customize the editor further.
-    Feel free to :ref:`explore and leverage those functionalities <toc-tutorials-plugins>` to improve the
-    user experience for your vendor runtime module.
+    Phần này trình bày những kiến thức cơ bản để bao bọc và cung cấp quyền truy cập vào một mô-đun runtime của nhà cung cấp thông qua editor plugin, nhưng editor plugin còn có nhiều chức năng khác có thể được sử dụng để tùy chỉnh trình soạn thảo hơn nữa. Bạn có thể :ref:`explore and leverage those functionalities <toc-tutorials-plugins>` để cải thiện trải nghiệm người dùng đối với mô-đun runtime của nhà cung cấp.

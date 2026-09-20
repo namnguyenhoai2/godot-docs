@@ -1,33 +1,26 @@
 .. _doc_getting_source:
 
-Getting the source
-==================
+Lấy mã nguồn
+============
 
 .. highlight:: shell
 
-Downloading the Godot source code
----------------------------------
+Tải mã nguồn Godot
+------------------
 
-Before :ref:`getting into the SCons build system <doc_introduction_to_the_buildsystem>`
-and compiling Godot, you need to actually download the Godot source code.
+Trước khi :ref:`getting into the SCons build system <doc_introduction_to_the_buildsystem>` và biên dịch Godot, bạn cần thực sự tải mã nguồn Godot xuống.
 
-The source code is available on `GitHub <https://github.com/godotengine/godot>`__
-and while you can manually download it via the website, in general you want to
-do it via the ``git`` version control system.
+Mã nguồn có sẵn trên `GitHub <https://github.com/godotengine/godot>`__ và mặc dù bạn có thể tải xuống thủ công thông qua trang web, nhìn chung bạn nên thực hiện việc này thông qua hệ thống kiểm soát phiên bản ``git``.
 
-If you are compiling in order to make contributions or pull requests, you should
-follow the instructions from the `Pull request workflow <https://contributing.godotengine.org/en/latest/organization/pull_requests/creating_pull_requests.html>`__ page.
+Nếu bạn biên dịch để đóng góp hoặc tạo pull request, bạn nên làm theo hướng dẫn trên trang `Quy trình pull request <https://contributing.godotengine.org/en/latest/organization/pull_requests/creating_pull_requests.html>`__.
 
-If you don't know much about ``git`` yet, there are a great number of
-`tutorials <https://git-scm.com/book>`__ available on various websites.
+Nếu bạn chưa biết nhiều về ``git``, có rất nhiều `hướng dẫn <https://git-scm.com/book>`__ trên nhiều trang web khác nhau.
 
-In general, you need to install ``git`` and/or one of the various GUI clients.
+Nhìn chung, bạn cần cài đặt ``git`` và/hoặc một trong nhiều ứng dụng GUI client.
 
-Afterwards, to get the latest development version of the Godot source code
-(the unstable ``master`` branch), you can use ``git clone``.
+Sau đó, để lấy phiên bản phát triển mới nhất của mã nguồn Godot (nhánh ``master`` không ổn định), bạn có thể sử dụng ``git clone``.
 
-If you are using the ``git`` command line client, this is done by entering
-the following in a terminal:
+Nếu bạn đang sử dụng ứng dụng dòng lệnh ``git``, hãy nhập nội dung sau trong terminal:
 
 ::
 
@@ -35,12 +28,9 @@ the following in a terminal:
     # You can add the --depth 1 argument to omit the commit history (shallow clone).
     # A shallow clone is faster, but not all Git operations (like blame) will work.
 
-For any stable release, visit the `release page <https://github.com/godotengine/godot/releases>`__
-and click on the link for the release you want.
-You can then download and extract the source from the download link on the page.
+Đối với bất kỳ bản phát hành ổn định nào, hãy truy cập `trang bản phát hành <https://github.com/godotengine/godot/releases>`__ và nhấp vào liên kết của bản phát hành bạn muốn. Sau đó, bạn có thể tải xuống và giải nén mã nguồn từ liên kết tải xuống trên trang đó.
 
-With ``git``, you can also clone a stable release by specifying its branch or tag
-after the ``--branch`` (or just ``-b``) argument:
+Với ``git``, bạn cũng có thể sao chép một bản phát hành ổn định bằng cách chỉ định nhánh hoặc thẻ của bản phát hành đó sau đối số ``--branch`` (hoặc chỉ ``-b``):
 
 ::
 
@@ -56,12 +46,8 @@ after the ``--branch`` (or just ``-b``) argument:
     cd godot
     git checkout f4af8201bac157b9d47e336203d3e8a8ef729de2
 
-The `maintenance branches <https://github.com/godotengine/godot/branches/all>`__
-are used to release further patches on each minor version.
+Các `nhánh bảo trì <https://github.com/godotengine/godot/branches/all>`__ được sử dụng để phát hành các bản vá tiếp theo cho từng phiên bản phụ.
 
-You can get the source code for each release and pre-release in ``.tar.xz`` format from
-`godotengine/godot-builds on GitHub <https://github.com/godotengine/godot-builds/releases>`__.
-This lacks version control information but has a slightly smaller download size.
+Bạn có thể lấy mã nguồn của từng bản phát hành và bản phát hành thử ở định dạng ``.tar.xz`` từ `godotengine/godot-builds trên GitHub <https://github.com/godotengine/godot-builds/releases>`__. Các tệp này không chứa thông tin kiểm soát phiên bản nhưng có dung lượng tải xuống nhỏ hơn một chút.
 
-After downloading the Godot source code,
-you can :ref:`continue to compiling Godot <doc_introduction_to_the_buildsystem>`.
+Sau khi tải mã nguồn Godot xuống, bạn có thể :ref:`continue to compiling Godot <doc_introduction_to_the_buildsystem>`.

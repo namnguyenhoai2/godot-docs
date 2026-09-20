@@ -3,118 +3,108 @@
 CLion
 =====
 
-`CLion <https://www.jetbrains.com/clion/>`_ is a
-`JetBrains <https://www.jetbrains.com/>`_ IDE for C++ that's free for individual, non-commercial development.
+`CLion <https://www.jetbrains.com/clion/>`_ là một IDE `JetBrains <https://www.jetbrains.com/>`_ dành cho C++, miễn phí cho mục đích phát triển cá nhân, phi thương mại.
 
-Importing the project
----------------------
+Nhập dự án
+----------
 
-CLion can import a project's `compilation database file <https://clang.llvm.org/docs/JSONCompilationDatabase.html>`_, commonly named ``compile_commands.json``. To generate the compilation database file, open the terminal, change to the Godot root directory, and run:
+CLion có thể nhập `tệp cơ sở dữ liệu biên dịch <https://clang.llvm.org/docs/JSONCompilationDatabase.html>`_ của dự án, thường có tên là ``compile_commands.json``. Để tạo tệp cơ sở dữ liệu biên dịch, hãy mở terminal, chuyển đến thư mục gốc của Godot và chạy:
 
 ::
 
     scons compiledb=yes compile_commands.json
 
-Then, open the Godot root directory with CLion and wait for the project to be fully
-indexed. If code completion, parameter information, or refactoring are not enabled,
-you will need to load the project with CMake. To do this, find the ``CMakeLists.txt``
-file in the ``platform\android\java\nativeSrcsConfigs`` directory, right click and
-select :button:`Load CMake Project`. Once the project reloads, a ``godot`` build configuration
-will be added. This configuration can be safely deleted as the CMake file will not
-build the project and only exists for loading the project in JetBrains IDEs.
+Tiếp theo, mở thư mục gốc của Godot bằng CLion và chờ dự án được lập chỉ mục hoàn toàn. Nếu tính năng tự động hoàn tất mã, thông tin tham số hoặc tái cấu trúc chưa được bật, bạn sẽ cần tải dự án bằng CMake. Để thực hiện việc này, hãy tìm tệp ``CMakeLists.txt`` trong thư mục ``platform\android\java\nativeSrcsConfigs``, nhấp chuột phải và chọn :button:`Load CMake Project`. Sau khi dự án được tải lại, một cấu hình build ``godot`` sẽ được thêm vào. Bạn có thể an toàn xóa cấu hình này vì tệp CMake sẽ không build dự án mà chỉ tồn tại để tải dự án trong các IDE của JetBrains.
 
    .. note:: Windows Users:
 
-      For ``compile_commands.json`` to load correctly in CLion, you must first have the Visual Studio toolchain configured for CLion.
+      Để ``compile_commands.json`` được tải chính xác trong CLion, trước tiên bạn phải cấu hình toolchain Visual Studio cho CLion.
 
-      - Navigate to **Settings > Build, Execution, Deployment > Toolchains**
-      - Click the **+** button and select ``Visual Studio``
-      - CLion will attempt to detect your Visual Studio installation. If it is unsuccessful, use the file icon to the right of ``Toolset:`` to select the directory with your Visual Studio installation.
+      - Đi đến **Settings > Build, Execution, Deployment > Toolchains** - Nhấp vào nút **+** và chọn ``Visual Studio`` - CLion sẽ cố gắng phát hiện bản cài đặt Visual Studio của bạn. Nếu không thành công, hãy sử dụng biểu tượng tệp ở bên phải ``Toolset:`` để chọn thư mục chứa bản cài đặt Visual Studio của bạn.
 
-      You may exit and reload CLion and it will reload ``compile_commands.json``
+      Bạn có thể thoát và tải lại CLion; khi đó CLion sẽ tải lại ``compile_commands.json``
 
 .. figure:: img/clion_visual_studio_toolchain.webp
    :align: center
 
-Compiling and debugging the project
------------------------------------
+Biên dịch và gỡ lỗi dự án
+-------------------------
 
-CLion does not support compiling and debugging Godot via SCons out of the box. This can be achieved by creating a custom build target and run configuration in CLion. Before creating a custom build target, you must :ref:`compile Godot <toc-devel-compiling>` once on the command line, to generate the Godot executable. Open the terminal, change into the Godot root directory, and execute:
+CLion không hỗ trợ biên dịch và gỡ lỗi Godot thông qua SCons ngay từ đầu. Bạn có thể thực hiện việc này bằng cách tạo một đích build tùy chỉnh và cấu hình chạy trong CLion. Trước khi tạo đích build tùy chỉnh, bạn phải :ref:`compile Godot <toc-devel-compiling>` một lần trên dòng lệnh để tạo tệp thực thi Godot. Hãy mở terminal, chuyển đến thư mục gốc của Godot và thực thi:
 
 ::
 
     scons dev_build=yes
 
-To add a custom build target that invokes SCons for compilation:
+Để thêm một đích build tùy chỉnh gọi SCons để biên dịch:
 
-- Open CLion and navigate to **Settings > Build, Execution, Deployment > Custom Build Targets**
+- Mở CLion và đi đến **Settings > Build, Execution, Deployment > Custom Build Targets**
 
 .. figure:: img/clion-preferences.png
    :align: center
 
-- Click **Add target** and give the target a name, e.g. ``Godot debug``.
+- Nhấp vào **Add target** và đặt tên cho đích, ví dụ: ``Godot debug``.
 
 .. figure:: img/clion-target.png
    :align: center
 
-- Click **...** next to the **Build:** selectbox, then click the **+** button in the **External Tools** dialog to add a new external tool.
+- Nhấp vào **...** bên cạnh hộp chọn **Build:**, sau đó nhấp vào nút **+** trong hộp thoại **External Tools** để thêm một công cụ bên ngoài mới.
 
 .. figure:: img/clion-external-tools.png
    :align: center
 
-- Give the tool a name, e.g. ``Build Godot debug``, set **Program** to ``scons``, set **Arguments** to the compilation settings you want (see :ref:`compiling Godot <toc-devel-compiling>`), and set the **Working directory** to ``$ProjectFileDir$``, which equals the Godot root directory. Click **OK** to create the tool.
+- Đặt tên cho công cụ, ví dụ: ``Build Godot debug``, đặt **Program** thành ``scons``, đặt **Arguments** thành các tùy chọn biên dịch bạn muốn (xem :ref:`compiling Godot <toc-devel-compiling>`), và đặt **Working directory** thành ``$ProjectFileDirĐặt tên cho công cụ, ví dụ: ``Build Godot debug``, đặt **Program** thành ``scons``, đặt **Arguments** thành các tùy chọn biên dịch bạn muốn (xem :ref:`compiling Godot <toc-devel-compiling>`), và đặt **Working directory** thành `, tương ứng với thư mục gốc của Godot. Nhấp **OK** để tạo công cụ.
 
    .. note:: CLion does not expand shell commands like ``scons -j$(nproc)``. Use concrete values instead, e.g. ``scons -j8``.
 
 .. figure:: img/clion-create-build-tool.webp
    :align: center
 
-- Back in the **External Tools** dialog, click the **+** again to add a second external tool for cleaning the Godot build via SCons. Give the tool a name, e.g. ``Clean Godot debug``, set **Program** to ``scons``, set **Arguments** to ``-c`` (which will clean the build), and set the **Working directory** to ``$ProjectFileDir$``. Click **OK** to create the tool.
+- Quay lại hộp thoại **External Tools**, nhấp lại vào **+** để thêm công cụ bên ngoài thứ hai nhằm dọn dẹp bản build Godot thông qua SCons. Đặt tên cho công cụ, ví dụ: ``Clean Godot debug``, đặt **Program** thành ``scons``, đặt **Arguments** thành ``-c`` (tùy chọn này sẽ dọn dẹp bản build), và đặt **Working directory** thành ``$ProjectFileDirQuay lại hộp thoại **External Tools**, nhấp lại vào **+** để thêm công cụ bên ngoài thứ hai nhằm dọn dẹp bản build Godot thông qua SCons. Đặt tên cho công cụ, ví dụ: ``Clean Godot debug``, đặt **Program** thành ``scons``, đặt **Arguments** thành ``-c`` (tùy chọn này sẽ dọn dẹp bản build), và đặt **Working directory** thành `. Nhấp **OK** để tạo công cụ.
 
 .. figure:: img/clion-create-clean-tool.png
    :align: center
 
-- Close the **External Tools** dialog. In the **Custom Build Target** dialog for the custom ``Godot debug`` build target, select the **Build Godot debug** tool from the **Build** select box, and select the **Clean Godot debug** tool from the **Clean** select box. Click **OK** to create the custom build target.
+- Đóng hộp thoại **External Tools**. Trong hộp thoại **Custom Build Target** dành cho đích build tùy chỉnh ``Godot debug``, chọn công cụ **Build Godot debug** từ hộp chọn **Build**, và chọn công cụ **Clean Godot debug** từ hộp chọn **Clean**. Nhấp **OK** để tạo đích build tùy chỉnh.
 
 .. figure:: img/clion-select-tools.png
    :align: center
 
-- In the main IDE window, click **Add Configuration**.
+- Trong cửa sổ IDE chính, nhấp vào **Add Configuration**.
 
 .. figure:: img/clion-add-configuration.png
    :align: center
 
-- In the **Run/Debug Configuration** dialog, click **Add new...**, then select **Custom Build Application** to create a new custom run/debug configuration.
+- Trong hộp thoại **Run/Debug Configuration**, nhấp vào **Add new...**, sau đó chọn **Custom Build Application** để tạo cấu hình chạy/gỡ lỗi tùy chỉnh mới.
 
 .. figure:: img/clion-add-custom-build-application.png
    :align: center
 
-- Give the run/debug configuration a name, e.g. ``Godot debug``, select the ``Godot debug`` custom build target as the **Target**. Select the Godot executable in the ``bin/`` folder as the **Executable**, and set the **Program arguments** to ``--editor --path path-to-your-project/``, where ``path-to-your-project/`` should be a path pointing to an existing Godot project. If you omit the ``--path`` argument, you will only be able to debug the Godot Project Manager window. Click **OK** to create the run/debug configuration.
+- Đặt tên cho cấu hình chạy/gỡ lỗi, ví dụ: ``Godot debug``, chọn đích build tùy chỉnh ``Godot debug`` làm **Target**. Chọn tệp thực thi Godot trong thư mục ``bin/`` làm **Executable**, và đặt **Program arguments** thành ``--editor --path path-to-your-project/``, trong đó ``path-to-your-project/`` phải là đường dẫn trỏ đến một dự án Godot hiện có. Nếu bỏ qua đối số ``--path``, bạn sẽ chỉ có thể gỡ lỗi cửa sổ Godot Project Manager. Nhấp **OK** để tạo cấu hình chạy/gỡ lỗi.
 
 .. figure:: img/clion-run-configuration.png
    :align: center
 
-You can now build, run, debug, profile, and Valgrind check the Godot editor via the run configuration.
+Giờ đây, bạn có thể build, chạy, gỡ lỗi, lập hồ sơ và kiểm tra Valgrind cho trình chỉnh sửa Godot thông qua cấu hình chạy.
 
 .. figure:: img/clion-build-run.png
    :align: center
 
-When playing a scene, the Godot editor will spawn a separate process. You can debug this process in CLion by going to **Run > Attach to process...**, typing ``godot``, and selecting the Godot process with the highest **pid** (process ID), which will usually be the running project.
+Khi chạy một cảnh, trình chỉnh sửa Godot sẽ tạo một tiến trình riêng. Bạn có thể gỡ lỗi tiến trình này trong CLion bằng cách đi đến **Run > Attach to process...**, nhập ``godot`` và chọn tiến trình Godot có **pid** (ID tiến trình) cao nhất; đây thường sẽ là dự án đang chạy.
 
-Ignoring object and library files
------------------------------------
+Bỏ qua các tệp đối tượng và thư viện
+------------------------------------
 
-After building Godot in CLion, you may see the object and library files showing up in the **Project** view.
+Sau khi build Godot trong CLion, bạn có thể thấy các tệp đối tượng và thư viện xuất hiện trong chế độ xem **Project**.
 
 .. figure:: img/clion-object-library-files-in-project-view.webp
    :align: center
 
-You can configure CLion to ignore those files:
+Bạn có thể cấu hình CLion để bỏ qua các tệp này:
 
-- Open CLion and navigate to **Settings > Editor > File Types > Ignored Files and Folders**
-- Click the **+** button to add ``*.o`` and ``*.a`` to the list. In Windows, you would add ``*.obj`` and ``*.dll``.
+- Mở CLion và đi đến **Settings > Editor > File Types > Ignored Files and Folders** - Nhấp vào nút **+** để thêm ``*.o`` và ``*.a`` vào danh sách. Trong Windows, bạn sẽ thêm ``*.obj`` và ``*.dll``.
 
 .. figure:: img/clion-ignore-object-library-files.webp
    :align: center
 
-Now, the files should be ignored in the Project view.
+Giờ đây, các tệp sẽ được bỏ qua trong chế độ xem Project.
