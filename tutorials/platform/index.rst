@@ -1,17 +1,15 @@
 :allow_comments: False
 
-Platform-specific
-=================
+Theo từng nền tảng
+==================
 
-Godot supports both running the editor and exporting projects on several
-platforms. Usage of the engine is generally similar across platforms, but there
-are some platform-specific considerations, which are covered in this section.
+Godot hỗ trợ chạy editor và export project trên nhiều nền tảng. Cách sử dụng engine nhìn chung tương tự giữa các nền tảng, nhưng có một số điểm cần lưu ý riêng cho từng nền tảng, được trình bày trong phần này.
 
 .. seealso::
 
-   For platform-specific versions of the editor, see :ref:`doc_using_the_xr_editor`,
+   Để xem các phiên bản editor dành riêng cho từng nền tảng, hãy xem :ref:`doc_using_the_xr_editor`,
    :ref:`doc_using_the_android_editor`, and :ref:`doc_using_the_web_editor`. For
-   exporting to specific platforms, see the :ref:`doc_export_index` section.
+   để xem thông tin về việc export sang các nền tảng cụ thể, hãy xem phần :ref:`doc_export_index`.
 
 .. toctree::
    :maxdepth: 1

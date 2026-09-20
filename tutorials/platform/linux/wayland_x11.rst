@@ -3,94 +3,59 @@
 Wayland/X11
 ===========
 
-Overview
---------
+Tổng quan
+---------
 
-One of the important components of any operating system is its display server.
-Windows, macOS, iOS, visionOS, and Android only provide one option.
-However, Linux has two options: X11 and Wayland.
+Một trong những thành phần quan trọng của bất kỳ hệ điều hành nào là display server. Windows, macOS, iOS, visionOS và Android chỉ cung cấp một tùy chọn. Tuy nhiên, Linux có hai tùy chọn: X11 và Wayland.
 
-X11 is an older standard and is being gradually phased out by the majority of
-Linux distributions in favor of supporting Wayland, which has been developed as
-a replacement. Wayland aims to provide modern functionality while featuring a
-more robust security model compared to X11. Applications running on X11 can
-still work when a distribution is using Wayland, thanks to a compatibility layer
-known as Xwayland.
+X11 là một tiêu chuẩn cũ hơn và đang dần được phần lớn các Linux distribution loại bỏ để chuyển sang hỗ trợ Wayland, vốn được phát triển nhằm thay thế X11. Wayland hướng đến việc cung cấp các chức năng hiện đại, đồng thời có mô hình bảo mật mạnh mẽ hơn so với X11. Các ứng dụng chạy trên X11 vẫn có thể hoạt động khi distribution sử dụng Wayland, nhờ một compatibility layer có tên là Xwayland.
 
-Godot's support is still a work in progress, so for now, X11 remains the default
-setting for projects. This will likely change in a future version.
+Hỗ trợ Wayland của Godot vẫn đang trong quá trình hoàn thiện, vì vậy hiện tại X11 vẫn là thiết lập mặc định cho các project. Điều này nhiều khả năng sẽ thay đổi trong một phiên bản tương lai.
 
-When to use Wayland
--------------------
+Khi nào nên sử dụng Wayland
+---------------------------
 
-If you're an engine developer who wants to help improve support, or if you think
-Xwayland might be causing visual glitches in your exported project for whatever
-reason, then we would recommend using Wayland. But outside of that it's recommended
-to stick with X11 for now. It's important to note that while X11 applications can
-run on Wayland, the reverse is not true.
+Nếu bạn là engine developer muốn giúp cải thiện khả năng hỗ trợ, hoặc nếu bạn cho rằng Xwayland có thể đang gây ra các lỗi hiển thị trong project đã export của mình vì bất kỳ lý do nào, chúng tôi khuyến nghị bạn sử dụng Wayland. Ngoài những trường hợp đó, hiện tại bạn nên tiếp tục sử dụng X11. Điều quan trọng cần lưu ý là mặc dù các ứng dụng X11 có thể chạy trên Wayland, điều ngược lại thì không đúng.
 
-As of June 2026, most popular distributions are using Wayland by default,
-including (but not limited to) the following:
+Tính đến tháng 6 năm 2026, hầu hết các distribution phổ biến đều sử dụng Wayland theo mặc định, bao gồm (nhưng không giới hạn ở) các distribution sau:
 
-- SteamOS
-- Bazzite
-- CachyOS
-- Fedora
-- Fedora Silverblue
-- Ubuntu
-- OpenSUSE
+- SteamOS - Bazzite - CachyOS - Fedora - Fedora Silverblue - Ubuntu - OpenSUSE
 
-Keep in mind that for some distributions like Ubuntu, users may have
-changed the display server to X11 manually themselves.
+Hãy lưu ý rằng đối với một số distribution như Ubuntu, người dùng có thể đã tự thay đổi display server sang X11 theo cách thủ công.
 
 .. _doc_wayland_x11_changing_display_server:
 
-Changing the display server setting
------------------------------------
+Thay đổi thiết lập display server
+---------------------------------
 
-To change your display server to Wayland, click on :menu:`Project > Project Settings`,
-from here, go to :button:`Display Server` and change the :button:`driver.linuxbsd`
-option to ``wayland``.
+Để thay đổi display server sang Wayland, hãy nhấp vào :menu:`Project > Project Settings`, sau đó đi đến :button:`Display Server` và thay đổi tùy chọn :button:`driver.linuxbsd` thành ``wayland``.
 
-It's also possible to temporarily override the display server using the
-``--display-server <x11|wayland>`` :ref:`command line argument <doc_command_line_tutorial>`
-when launching the project.
+Bạn cũng có thể tạm thời ghi đè display server bằng ``--display-server <x11|wayland>`` :ref:`command line argument <doc_command_line_tutorial>` khi khởi chạy project.
 
 .. note::
 
-    Regardless of how the display server is defined, if the project is
-    configured to use Wayland, it will automatically fall back to X11 if Wayland
-    is not available.
+    Bất kể display server được xác định như thế nào, nếu project được cấu hình để sử dụng Wayland, project sẽ tự động chuyển về X11 nếu Wayland không khả dụng.
 
-    This also occurs the other way around; if the project is configured to use
-    X11, it will fall back to Wayland if X11 is not available (i.e. when
-    Xwayland isn't present on the system).
+    Điều này cũng xảy ra theo chiều ngược lại; nếu project được cấu hình để sử dụng X11, project sẽ chuyển về Wayland nếu X11 không khả dụng (tức là khi Xwayland không có trên hệ thống).
 
-Disabling libdecor loading
---------------------------
+Tắt tải libdecor
+----------------
 
-`libdecor <https://github.com/neonkore/libdecor>`__ loading on Wayland
-has some quirks; it may be useful to disable it depending on your situation.
-To do that, you need to set the ``GODOT_WAYLAND_DISABLE_LIBDECOR``
-environment variable to ``1`` like this:
+`libdecor <https://github.com/neonkore/libdecor>`__ loading trên Wayland có một số điểm bất thường; tùy vào tình huống, việc tắt nó có thể hữu ích. Để thực hiện việc đó, bạn cần đặt biến môi trường ``GODOT_WAYLAND_DISABLE_LIBDECOR`` thành ``1`` như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     OS.set_environment("GODOT_WAYLAND_DISABLE_LIBDECOR", "1")
 
-High dynamic range support
---------------------------
+Hỗ trợ dải tương phản động cao
+------------------------------
 
-Godot supports :ref:`HDR output <doc_hdr_output>` on Linux since 4.7. However,
-due to display server limitations, HDR output is only supported on Wayland, not
-on X11 (even through Xwayland).
+Godot hỗ trợ :ref:`HDR output <doc_hdr_output>` trên Linux kể từ phiên bản 4.7. Tuy nhiên, do các hạn chế của display server, đầu ra HDR chỉ được hỗ trợ trên Wayland, không phải trên X11 (kể cả thông qua Xwayland).
 
-Therefore, to make use of HDR output, you must
+Do đó, để sử dụng đầu ra HDR, bạn phải
 :ref:`set the display server to Wayland <doc_wayland_x11_changing_display_server>`.
 
 .. note::
 
-   GNOME versions prior to 50 have a bug that prevents HDR output from working
-   on Wayland. If you are using an older version of GNOME, you will need to
-   upgrade to version 50 or later to use HDR output on Wayland.
+   Các phiên bản GNOME trước phiên bản 50 có một lỗi khiến đầu ra HDR không hoạt động trên Wayland. Nếu bạn đang sử dụng phiên bản GNOME cũ hơn, bạn sẽ cần nâng cấp lên phiên bản 50 hoặc mới hơn để sử dụng đầu ra HDR trên Wayland.

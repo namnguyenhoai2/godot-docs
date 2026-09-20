@@ -1,26 +1,15 @@
 .. _doc_customizing_html5_shell:
 
-Custom HTML page for Web export
-====================================
+Trang HTML tùy chỉnh cho Web export
+===================================
 
-While Web export templates provide a default HTML page fully capable of launching
-the project without any further customization, it may be beneficial to create a custom
-HTML page. While the game itself cannot easily be directly controlled from the outside yet,
-such page allows to customize the initialization process for the engine.
+Mặc dù các template Web export cung cấp một trang HTML mặc định có đầy đủ khả năng khởi chạy project mà không cần tùy chỉnh thêm, việc tạo một trang HTML tùy chỉnh có thể hữu ích. Mặc dù hiện tại bản thân game chưa thể dễ dàng được điều khiển trực tiếp từ bên ngoài, trang này cho phép tùy chỉnh quá trình khởi tạo engine.
 
-Some use-cases where customizing the default page is useful include:
+Một số trường hợp việc tùy chỉnh trang mặc định có thể hữu ích gồm:
 
-- Loading files from a different directory than the page;
-- Loading a ``.zip`` file instead of a ``.pck`` file as the main pack;
-- Loading the engine from a different directory than the main pack file;
-- Adding a click-to-play button so that games can be started in the fullscreen mode;
-- Loading some extra files before the engine starts, making them available in
-  the project file system as soon as possible;
-- Passing custom command line arguments, e.g. ``-s`` to start a ``MainLoop`` script.
+- Tải các file từ một thư mục khác với thư mục chứa trang; - Tải file ``.zip`` thay vì file ``.pck`` làm pack chính; - Tải engine từ một thư mục khác với thư mục chứa file pack chính; - Thêm nút click-to-play để có thể khởi chạy game ở chế độ fullscreen; - Tải một số file bổ sung trước khi engine khởi động, giúp chúng có sẵn trong file system của project sớm nhất có thể; - Truyền các đối số dòng lệnh tùy chỉnh, chẳng hạn như ``-s``, để khởi chạy script ``MainLoop``.
 
-The default HTML page is available in the Godot Engine repository at
-`/misc/dist/html/full-size.html <https://github.com/godotengine/godot/blob/master/misc/dist/html/full-size.html>`__
-but the following template can be used as a much simpler example:
+Trang HTML mặc định có sẵn trong repository của Godot Engine tại `/misc/dist/html/full-size.html <https://github.com/godotengine/godot/blob/master/misc/dist/html/full-size.html>`__ nhưng bạn có thể sử dụng template sau đây như một ví dụ đơn giản hơn nhiều:
 
 .. code-block:: html
 
@@ -40,104 +29,65 @@ but the following template can be used as a much simpler example:
         </body>
     </html>
 
-Setup
------
-As shown by the example above, it is mostly a regular HTML document, with few placeholders
-which needs to be replaced during export, an html ``<canvas>`` element, and some simple
-JavaScript code that calls the :js:class:`Engine` class.
+Thiết lập
+---------
+Như ví dụ trên cho thấy, đây phần lớn là một tài liệu HTML thông thường, với một vài placeholder cần được thay thế trong quá trình export, một phần tử html ``<canvas>``, và một số mã JavaScript đơn giản gọi class :js:class:`Engine`.
 
-The only required placeholders are:
+Các placeholder bắt buộc duy nhất là:
 
-- ``$GODOT_URL``:
-  The name of the main JavaScript file, which provides the :js:class:`Engine` class required
-  to start the engine and that must be included in the HTML as a ``<script>``.
-  The name is generated from the *Export Path* during the export process.
+- ``$GODOT_URL``: Tên của file JavaScript chính, cung cấp class :js:class:`Engine` cần thiết để khởi động engine và phải được đưa vào HTML dưới dạng ``<script>``. Tên này được tạo từ *Export Path* trong quá trình export.
 
-- ``$GODOT_CONFIG``:
-  A JavaScript object, containing the export options and can be later overridden.
-  See :js:attr:`EngineConfig` for the full list of overrides.
+- ``$GODOT_CONFIG``: Một object JavaScript chứa các tùy chọn export và có thể được ghi đè về sau. Xem :js:attr:`EngineConfig` để biết danh sách đầy đủ các tùy chọn ghi đè.
 
-The following optional placeholders will enable some extra features in your custom HTML template.
+Các placeholder tùy chọn sau đây sẽ bật một số tính năng bổ sung trong template HTML tùy chỉnh của bạn.
 
-- ``$GODOT_PROJECT_NAME``:
-  The project name as defined in the
+- ``$GODOT_PROJECT_NAME``: Tên project được định nghĩa trong
   :ref:`Name <class_ProjectSettings_property_application/config/name>` setting
-  in **Project Settings > Application > Config**.
-  It is a good idea to use it as a ``<title>`` in your template.
+  trong **Project Settings > Application > Config**. Bạn nên sử dụng nó làm ``<title>`` trong template của mình.
 
-- ``$GODOT_HEAD_INCLUDE``:
-  A custom string to include in the HTML document just before the end of the ``<head>`` tag. It
-  is customized in the export options under the *Html / Head Include* section. While you fully
-  control the HTML page you create, this variable can be useful for configuring parts of the
-  HTML ``head`` element from the Godot Editor, e.g. for different Web export presets.
+- ``$GODOT_HEAD_INCLUDE``: Một chuỗi tùy chỉnh được đưa vào tài liệu HTML ngay trước phần cuối của thẻ ``<head>``. Chuỗi này được tùy chỉnh trong các tùy chọn export, tại phần *Html / Head Include*. Mặc dù bạn toàn quyền kiểm soát trang HTML mình tạo, biến này có thể hữu ích khi cấu hình các phần của phần tử HTML ``head`` từ Godot Editor, chẳng hạn như cho các Web export preset khác nhau.
 
-- ``$GODOT_SPLASH``:
-  The path to the image used as the boot splash as defined in the
+- ``$GODOT_SPLASH``: Đường dẫn đến hình ảnh được sử dụng làm boot splash, được định nghĩa trong
   :ref:`Image <class_ProjectSettings_property_application/boot_splash/image>` setting
-  in **Project Settings > Application > Boot Splash**.
+  trong **Project Settings > Application > Boot Splash**.
 
-- ``$GODOT_SPLASH_COLOR``
-  The splash screen background color as defined in the
+- ``$GODOT_SPLASH_COLOR`` Màu nền của splash screen, được định nghĩa trong
   :ref:`BG Color <class_ProjectSettings_property_application/boot_splash/bg_color>` setting
-  in **Project Settings > Application > Boot Splash**, converted to a hex color code.
+  trong **Project Settings > Application > Boot Splash**, được chuyển đổi thành mã màu hex.
 
-- ``$GODOT_SPLASH_CLASSES``:
-  This placeholder provides a string of setting names and their values, which affect the splash screen.
-  This string is meant to be used as a set of CSS class names, which allows styling the splash image
-  based on the splash project settings.
-  The following settings from **Project Settings > Application > Boot Splash** are provided,
-  represented by the class names shown below depending on the setting's boolean value:
+- ``$GODOT_SPLASH_CLASSES``: Placeholder này cung cấp một chuỗi gồm tên các setting và giá trị của chúng, ảnh hưởng đến splash screen. Chuỗi này được dùng làm một tập hợp tên class CSS, cho phép tạo style cho hình ảnh splash dựa trên các setting của project. Các setting sau đây từ **Project Settings > Application > Boot Splash** được cung cấp, được biểu diễn bằng các tên class bên dưới tùy theo giá trị boolean của setting:
 
-  - :ref:`Show Image <class_ProjectSettings_property_application/boot_splash/show_image>`:
-    ``show-image--true``, ``show-image--false``
-  - :ref:`Stretch Mode <class_ProjectSettings_property_application/boot_splash/stretch_mode>`:
-    ``fullsize--true`` (if **not** Disabled), ``fullsize--false``
-  - :ref:`Use Filter <class_ProjectSettings_property_application/boot_splash/use_filter>`:
-    ``use-filter--true``, ``use-filter--false``
+  - :ref:`Show Image <class_ProjectSettings_property_application/boot_splash/show_image>`: ``show-image--true``, ``show-image--false`` - :ref:`Stretch Mode <class_ProjectSettings_property_application/boot_splash/stretch_mode>`: ``fullsize--true`` (nếu **not** Disabled), ``fullsize--false`` - :ref:`Use Filter <class_ProjectSettings_property_application/boot_splash/use_filter>`: ``use-filter--true``, ``use-filter--false``
 
-When the custom page is ready, it can be selected in the export options under the *Html / Custom Html Shell*
-section.
+Khi trang tùy chỉnh đã sẵn sàng, bạn có thể chọn trang này trong các tùy chọn export, tại phần *Html / Custom Html Shell*.
 
 .. image:: img/html5_export_options.png
 
-Starting the project
---------------------
-To be able to start the game, you need to write a script that initializes the engine — the control
-code. This process consists of three steps, but as shown here, most of them can be skipped depending on
-how much customization is needed.
+Khởi chạy project
+-----------------
+Để có thể khởi chạy game, bạn cần viết một script khởi tạo engine — phần code điều khiển. Quy trình này gồm ba bước, nhưng như minh họa ở đây, phần lớn các bước có thể được bỏ qua tùy theo mức độ tùy chỉnh cần thiết.
 
-See the :ref:`HTML5 shell class reference <doc_html5_shell_classref>`, for the full list of methods and options available.
+Xem :ref:`HTML5 shell class reference <doc_html5_shell_classref>` để biết danh sách đầy đủ các method và tùy chọn hiện có.
 
-First, the engine must be loaded, then it needs to be initialized, and after this the project
-can finally be started. You can perform every of these steps manually and with great control.
-However, in the simplest case all you need to do is to create an instance of the :js:class:`Engine`
-class with the exported configuration, and then call the :js:meth:`engine.startGame <Engine.prototype.startGame>` method
-optionally overriding any :js:attr:`EngineConfig` parameters.
+Trước tiên, engine phải được tải, sau đó cần được khởi tạo, và cuối cùng project mới có thể được khởi chạy. Bạn có thể thực hiện thủ công từng bước với mức độ kiểm soát cao. Tuy nhiên, trong trường hợp đơn giản nhất, bạn chỉ cần tạo một instance của class :js:class:`Engine` với cấu hình đã export, sau đó gọi method :js:meth:`engine.startGame <Engine.prototype.startGame>`, tùy chọn ghi đè bất kỳ tham số :js:attr:`EngineConfig` nào.
 
 .. code-block:: js
 
     const engine = new Engine($GODOT_CONFIG);
     engine.startGame({
-        // Optional override configuration, for example:
+        // Cấu hình ghi đè tùy chọn, ví dụ:
         // unloadAfterInit: false,
         // canvasResizePolicy: 0,
         // ...
     });
 
-This snippet of code automatically loads and initializes the engine before starting the game.
-It uses the given configuration to load the engine. The :js:meth:`engine.startGame <Engine.prototype.startGame>`
-method is asynchronous and returns a ``Promise``. This allows your control code to track if
-the game was loaded correctly without blocking execution or relying on polling.
+Đoạn code này tự động tải và khởi tạo engine trước khi khởi chạy game. Đoạn code sử dụng cấu hình đã cho để tải engine. Method :js:meth:`engine.startGame <Engine.prototype.startGame>` là asynchronous và trả về một ``Promise``. Nhờ đó, code điều khiển của bạn có thể theo dõi xem game đã được tải đúng cách hay chưa mà không chặn việc thực thi hoặc phụ thuộc vào polling.
 
-In case your project needs to have special control over the start arguments and dependency files,
-the :js:meth:`engine.start <Engine.prototype.start>` method can be used instead. Note, that this method do not
-automatically preload the ``pck`` file, so you will probably want to manually preload it
-(and any other extra file) via the :js:meth:`engine.preloadFile <Engine.prototype.preloadFile>` method.
+Nếu project của bạn cần kiểm soát đặc biệt đối với các đối số khởi chạy và file dependency, bạn có thể sử dụng method :js:meth:`engine.start <Engine.prototype.start>` thay thế. Lưu ý rằng method này không tự động preload file ``pck``, vì vậy có lẽ bạn sẽ muốn tự preload file đó (cùng với bất kỳ file bổ sung nào khác) thông qua method :js:meth:`engine.preloadFile <Engine.prototype.preloadFile>`.
 
-Optionally, you can also manually :js:meth:`engine.init <Engine.prototype.init>` to perform specific actions after
-the module initialization, but before the engine starts.
+Ngoài ra, bạn cũng có thể tự :js:meth:`engine.init <Engine.prototype.init>` để thực hiện các hành động cụ thể sau khi module được khởi tạo nhưng trước khi engine khởi chạy.
 
-This process is a bit more complex, but gives you full control over the engine startup process.
+Quy trình này phức tạp hơn một chút, nhưng cho phép bạn toàn quyền kiểm soát quá trình khởi động engine.
 
 .. code-block:: js
 
@@ -145,58 +95,46 @@ This process is a bit more complex, but gives you full control over the engine s
     const myPck = 'mygame.pck';
     const engine = new Engine();
     Promise.all([
-        // Load and init the engine
+        // Tải và khởi tạo engine
         engine.init(myWasm),
-        // And the pck concurrently
+        // Và pck đồng thời
         engine.preloadFile(myPck),
     ]).then(() => {
-        // Now start the engine.
+        // Bây giờ khởi chạy engine.
         return engine.start({ args: ['--main-pack', myPck] });
     }).then(() => {
         console.log('Engine has started!');
     });
 
-To load the engine manually the :js:meth:`Engine.load` static method must be called. As
-this method is static, multiple engine instances can be spawned if the share the same ``wasm``.
+Để tải engine thủ công, phải gọi static method :js:meth:`Engine.load`. Vì method này là static, nhiều instance engine có thể được tạo nếu chúng dùng chung ``wasm``.
 
 .. note:: Multiple instances cannot be spawned by default, as the engine is immediately unloaded after it is initialized.
-          To prevent this from happening see the :js:attr:`unloadAfterInit` override option. It is still possible
-          to unload the engine manually afterwards by calling the :js:meth:`Engine.unload` static method. Unloading the engine
-          frees browser memory by unloading files that are no longer needed once the instance is initialized.
+          Để ngăn điều này xảy ra, hãy xem tùy chọn ghi đè :js:attr:`unloadAfterInit`. Sau đó, bạn vẫn có thể unload engine thủ công bằng cách gọi static method :js:meth:`Engine.unload`. Việc unload engine giải phóng bộ nhớ của trình duyệt bằng cách unload các file không còn cần thiết sau khi instance được khởi tạo.
 
-Customizing the behavior
-------------------------
-In the Web environment several methods can be used to guarantee that the game will work as intended.
+Tùy chỉnh hành vi
+-----------------
+Trong môi trường Web, có thể sử dụng một số method để đảm bảo game hoạt động như dự kiến.
 
-If you target a specific version of WebGL, or just want to check if WebGL is available at all,
-you can call the :js:meth:`Engine.isWebGLAvailable` method. It optionally takes an argument that
-allows to test for a specific major version of WebGL.
+Nếu bạn nhắm đến một phiên bản WebGL cụ thể hoặc chỉ muốn kiểm tra xem WebGL có khả dụng hay không, bạn có thể gọi method :js:meth:`Engine.isWebGLAvailable`. Method này nhận một đối số tùy chọn, cho phép kiểm tra một major version cụ thể của WebGL.
 
-As the real executable file does not exist in the Web environment, the engine only stores a virtual
-filename formed from the base name of loaded engine files. This value affects the output of the
+Vì file executable thực tế không tồn tại trong môi trường Web, engine chỉ lưu một filename ảo được tạo từ base name của các file engine đã tải. Giá trị này ảnh hưởng đến output của
 :ref:`OS.get_executable_path() <class_OS_method_get_executable_path>` method and defines the name of
-the automatically started main pack. The :js:attr:`executable` override option can be
-used to override this value.
+pack chính được tự động khởi chạy. Tùy chọn ghi đè :js:attr:`executable` có thể được sử dụng để ghi đè giá trị này.
 
-Customizing the presentation
-----------------------------
-Several configuration options can be used to further customize the look and behavior of the game on your page.
+Tùy chỉnh phần hiển thị
+-----------------------
+Có thể sử dụng một số tùy chọn cấu hình để tùy chỉnh thêm giao diện và hành vi của game trên trang của bạn.
 
-By default, the first canvas element on the page is used for rendering. To use a different canvas
-element the :js:attr:`canvas` override option can be used. It requires a reference to the DOM
-element itself.
+Theo mặc định, phần tử canvas đầu tiên trên trang được sử dụng để render. Để sử dụng một phần tử canvas khác, bạn có thể dùng tùy chọn ghi đè :js:attr:`canvas`. Tùy chọn này yêu cầu một tham chiếu đến chính phần tử DOM đó.
 
 .. code-block:: js
 
     const canvasElement = document.querySelector("#my-canvas-element");
     engine.startGame({ canvas: canvasElement });
 
-The way the engine resize the canvas can be configured via the :js:attr:`canvasResizePolicy`
-override option.
+Cách engine resize canvas có thể được cấu hình thông qua tùy chọn ghi đè :js:attr:`canvasResizePolicy`.
 
-If your game takes some time to load, it may be useful to display a custom loading UI which tracks
-the progress. This can be achieved with the :js:attr:`onProgress` callback option, which
-allows to set up a callback function that will be called regularly as the engine loads new bytes.
+Nếu game của bạn mất một khoảng thời gian để tải, việc hiển thị một loading UI tùy chỉnh để theo dõi tiến trình có thể hữu ích. Bạn có thể thực hiện điều này bằng tùy chọn callback :js:attr:`onProgress`, cho phép thiết lập một callback function được gọi thường xuyên khi engine tải các byte mới.
 
 .. code-block:: js
 
@@ -205,22 +143,15 @@ allows to set up a callback function that will be called regularly as the engine
     }
     engine.startGame({ onProgress: printProgress });
 
-Be aware that in some cases ``total`` can be ``0``. This means that it cannot be calculated.
+Hãy lưu ý rằng trong một số trường hợp, ``total`` có thể là ``0``. Điều này có nghĩa là không thể tính toán giá trị đó.
 
-If your game supports multiple languages, the :js:attr:`locale` override option can be used to
-force a specific locale, provided you have a valid language code string. It may be good to use server-side
-logic to determine which languages a user may prefer. This way the language code can be taken from the
-``Accept-Language`` HTTP header, or determined by a GeoIP service.
+Nếu game của bạn hỗ trợ nhiều ngôn ngữ, tùy chọn ghi đè :js:attr:`locale` có thể được sử dụng để buộc chọn một locale cụ thể, miễn là bạn có một chuỗi mã ngôn ngữ hợp lệ. Bạn có thể sử dụng logic phía server để xác định ngôn ngữ nào người dùng có thể ưu tiên. Theo cách này, mã ngôn ngữ có thể được lấy từ HTTP header ``Accept-Language`` hoặc được xác định bởi một dịch vụ GeoIP.
 
 Debugging
 ---------
-To debug exported projects, it may be useful to read the standard output and error streams generated
-by the engine. This is similar to the output shown in the editor console window. By default, standard
-``console.log`` and ``console.warn`` are used for the output and error streams respectively. This
-behavior can be customized by setting your own functions to handle messages.
+Để debug các project đã export, việc đọc các stream output và error tiêu chuẩn do engine tạo ra có thể hữu ích. Điều này tương tự output hiển thị trong cửa sổ console của editor. Theo mặc định, standard ``console.log`` và ``console.warn`` lần lượt được sử dụng cho các stream output và error. Bạn có thể tùy chỉnh hành vi này bằng cách thiết lập các function riêng để xử lý message.
 
-Use the :js:attr:`onPrint` override option to set a callback function for the output stream,
-and the :js:attr:`onPrintError` override option to set a callback function for the error stream.
+Sử dụng tùy chọn ghi đè :js:attr:`onPrint` để thiết lập callback function cho stream output, và tùy chọn ghi đè :js:attr:`onPrintError` để thiết lập callback function cho stream error.
 
 .. code-block:: js
 
@@ -232,5 +163,4 @@ and the :js:attr:`onPrintError` override option to set a callback function for t
     }
     engine.startGame({ onPrint: print, onPrintError: printError });
 
-When handling the engine output, keep in mind that it may not be desirable to print it out in the
-finished product.
+Hãy nhớ rằng khi xử lý output của engine, việc in output đó ra trong sản phẩm hoàn thiện có thể không phải là điều mong muốn.

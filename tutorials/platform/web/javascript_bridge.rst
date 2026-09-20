@@ -1,149 +1,124 @@
 .. _doc_web_javascript_bridge:
 
-The JavaScriptBridge singleton
-==============================
+Singleton JavaScriptBridge
+==========================
 
-In web builds, the :ref:`JavaScriptBridge <class_JavaScriptBridge>` singleton
-allows interaction with JavaScript and web browsers, and can be used to implement some
-functionalities unique to the web platform.
+Trong các bản build web, singleton :ref:`JavaScriptBridge <class_JavaScriptBridge>` cho phép tương tác với JavaScript và trình duyệt web, đồng thời có thể được dùng để triển khai một số chức năng chỉ có trên nền tảng web.
 
-Interacting with JavaScript
----------------------------
+Tương tác với JavaScript
+------------------------
 
-Sometimes, when exporting Godot for the Web, it might be necessary to interface
-with external JavaScript code like third-party SDKs, libraries, or
-simply to access browser features that are not directly exposed by Godot.
+Đôi khi, khi export Godot cho Web, bạn có thể cần giao tiếp với mã JavaScript bên ngoài, chẳng hạn như SDK của bên thứ ba, các thư viện, hoặc đơn giản là truy cập những tính năng của trình duyệt không được Godot cung cấp trực tiếp.
 
-The ``JavaScriptBridge`` singleton provides methods to wrap a native JavaScript object into
-a Godot :ref:`JavaScriptObject <class_JavaScriptObject>` that tries to feel
-natural in the context of Godot scripting (e.g. GDScript and C#).
+Singleton ``JavaScriptBridge`` cung cấp các phương thức để bọc một đối tượng JavaScript native thành một :ref:`JavaScriptObject <class_JavaScriptObject>` của Godot, nhằm mang lại cảm giác tự nhiên trong ngữ cảnh viết script Godot (ví dụ: GDScript và C#).
 
-The :ref:`JavaScriptBridge.get_interface() <class_JavaScriptBridge_method_get_interface>`
-method retrieves an object in the global scope.
+Phương thức :ref:`JavaScriptBridge.get_interface() <class_JavaScriptBridge_method_get_interface>` lấy một đối tượng trong phạm vi global.
 
 .. code-block:: gdscript
 
     extends Node
 
     func _ready():
-        # Retrieve the `window.console` object.
+        # Lấy đối tượng `window.console`.
         var console = JavaScriptBridge.get_interface("console")
-        # Call the `window.console.log()` method.
+        # Gọi phương thức `window.console.log()`.
         console.log("test")
 
-The :ref:`JavaScriptBridge.create_object() <class_JavaScriptBridge_method_create_object>`
-creates a new object via the JavaScript ``new`` constructor.
+:ref:`JavaScriptBridge.create_object() <class_JavaScriptBridge_method_create_object>` tạo một đối tượng mới thông qua constructor JavaScript ``new``.
 
 .. code-block:: gdscript
 
     extends Node
 
     func _ready():
-        # Call the JavaScript `new` operator on the `window.Array` object.
-        # Passing 10 as argument to the constructor:
+        # Gọi toán tử JavaScript `new` trên đối tượng `window.Array`.
+        # Truyền 10 làm đối số cho constructor:
         # JS: `new Array(10);`
         var arr = JavaScriptBridge.create_object("Array", 10)
-        # Set the first element of the JavaScript array to the number 42.
+        # Đặt phần tử đầu tiên của mảng JavaScript thành số 42.
         arr[0] = 42
-        # Call the `pop` function on the JavaScript array.
+        # Gọi hàm `pop` trên mảng JavaScript.
         arr.pop()
-        # Print the value of the `length` property of the array (9 after the pop).
+        # In giá trị của thuộc tính `length` của mảng (9 sau khi gọi pop).
         print(arr.length)
 
-As you can see, by wrapping JavaScript objects into ``JavaScriptObject`` you can
-interact with them like they were native Godot objects, calling their methods,
-and retrieving (or even setting) their properties.
+Như bạn có thể thấy, bằng cách bọc các đối tượng JavaScript vào ``JavaScriptObject``, bạn có thể tương tác với chúng như thể chúng là các đối tượng native của Godot, gọi các phương thức của chúng và lấy (hoặc thậm chí đặt) các thuộc tính của chúng.
 
-Base types (int, floats, strings, booleans) are automatically converted (floats
-might lose precision when converted from Godot to JavaScript). Anything else
-(i.e. objects, arrays, functions) are seen as ``JavaScriptObjects`` themselves.
+Các kiểu cơ bản (int, float, string, boolean) được tự động chuyển đổi (float có thể mất độ chính xác khi được chuyển đổi từ Godot sang JavaScript). Mọi kiểu khác (tức là object, array, function) đều được xem như chính ``JavaScriptObjects``.
 
-Callbacks
----------
+Callback
+--------
 
-Calling JavaScript code from Godot is nice, but sometimes you need to call a
-Godot function from JavaScript instead.
+Gọi mã JavaScript từ Godot rất tiện, nhưng đôi khi bạn cần gọi một hàm Godot từ JavaScript thay vào đó.
 
-This case is a bit more complicated. JavaScript relies on garbage collection,
-while Godot uses reference counting for memory management. This means you have
-to explicitly create callbacks (which are returned as ``JavaScriptObjects``
-themselves) and you have to keep their reference.
+Trường hợp này phức tạp hơn một chút. JavaScript dựa vào garbage collection, trong khi Godot sử dụng reference counting để quản lý bộ nhớ. Điều này có nghĩa là bạn phải chủ động tạo callback (được trả về dưới dạng chính ``JavaScriptObjects``) và phải giữ lại tham chiếu đến chúng.
 
-Arguments passed by JavaScript to the callback will be passed as a single Godot
-``Array``.
+Các đối số do JavaScript truyền vào callback sẽ được truyền dưới dạng một ``Array`` duy nhất của Godot.
 
 .. code-block:: gdscript
 
     extends Node
 
-    # Here we create a reference to the `_my_callback` function (below).
-    # This reference will be kept until the node is freed.
+    # Ở đây, chúng ta tạo một tham chiếu đến hàm `_my_callback` (bên dưới).
+    # Tham chiếu này sẽ được giữ lại cho đến khi node được giải phóng.
     var _callback_ref = JavaScriptBridge.create_callback(_my_callback)
 
     func _ready():
-        # Get the JavaScript `window` object.
+        # Lấy đối tượng JavaScript `window`.
         var window = JavaScriptBridge.get_interface("window")
-        # Set the `window.onbeforeunload` DOM event listener.
+        # Đặt trình lắng nghe sự kiện DOM `window.onbeforeunload`.
         window.onbeforeunload = _callback_ref
 
     func _my_callback(args):
-        # Get the first argument (the DOM event in our case).
+        # Lấy đối số đầu tiên (trong trường hợp này là sự kiện DOM).
         var js_event = args[0]
-        # Call preventDefault and set the `returnValue` property of the DOM event.
+        # Gọi preventDefault và đặt thuộc tính `returnValue` của sự kiện DOM.
         js_event.preventDefault()
         js_event.returnValue = ''
 
 .. warning::
 
-    Callback methods created via :ref:`JavaScriptBridge.get_interface() <class_JavaScriptBridge_method_get_interface>`
-    (``_my_callback`` in the above example) **must** take exactly one :ref:`Array<class_Array>`
-    argument, which is going to be the JavaScript `arguments object <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments>`__
-    converted to an array. Otherwise, the callback method will not be called.
+    Các phương thức callback được tạo thông qua :ref:`JavaScriptBridge.get_interface() <class_JavaScriptBridge_method_get_interface>` (``_my_callback`` trong ví dụ trên) **phải** nhận chính xác một đối số :ref:`Array<class_Array>`, đối số này sẽ là `arguments object <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments>`__ của JavaScript được chuyển đổi thành một mảng. Nếu không, phương thức callback sẽ không được gọi.
 
-Here is another example that asks the user for the `Notification permission <https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API>`__
-and waits asynchronously to deliver a notification if the permission is
-granted:
+Dưới đây là một ví dụ khác yêu cầu người dùng cấp `Notification permission <https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API>`__ và chờ bất đồng bộ để gửi thông báo nếu quyền được cấp:
 
 .. code-block:: gdscript
 
     extends Node
 
-    # Here we create a reference to the `_on_permissions` function (below).
-    # This reference will be kept until the node is freed.
+    # Ở đây, chúng ta tạo một tham chiếu đến hàm `_on_permissions` (bên dưới).
+    # Tham chiếu này sẽ được giữ lại cho đến khi node được giải phóng.
     var _permission_callback = JavaScriptBridge.create_callback(_on_permissions)
 
     func _ready():
         # NOTE: This is done in `_ready` for simplicity, but SHOULD BE done in response
-        # to user input instead (e.g. during `_input`, or `button_pressed` event, etc.),
-        # otherwise it might not work.
+        # thay vào đó cho thao tác nhập của người dùng (ví dụ: trong sự kiện `_input` hoặc `button_pressed`, v.v.),
+        # nếu không, thao tác này có thể không hoạt động.
 
-        # Get the `window.Notification` JavaScript object.
+        # Lấy đối tượng JavaScript `window.Notification`.
         var notification = JavaScriptBridge.get_interface("Notification")
-        # Call the `window.Notification.requestPermission` method which returns a JavaScript
-        # Promise, and bind our callback to it.
+        # Gọi phương thức `window.Notification.requestPermission`, phương thức này trả về một JavaScript
+        # Promise và bind callback của chúng ta vào đó.
         notification.requestPermission().then(_permission_callback)
 
     func _on_permissions(args):
-        # The first argument of this callback is the string "granted" if the permission is granted.
+        # Đối số đầu tiên của callback này là chuỗi "granted" nếu quyền được cấp.
         var permission = args[0]
         if permission == "granted":
             print("Permission granted, sending notification.")
-            # Create the notification: `new Notification("Hi there!")`
+            # Tạo thông báo: `new Notification("Hi there!")`
             JavaScriptBridge.create_object("Notification", "Hi there!")
         else:
             print("No notification permission.")
 
-Can I use my favorite library?
-------------------------------
+Tôi có thể sử dụng thư viện yêu thích của mình không?
+-----------------------------------------------------
 
-You most likely can. First, you have to
-include your library in the page. You can customize the
+Rất có thể là được. Trước tiên, bạn phải đưa thư viện của mình vào trang. Bạn có thể tùy chỉnh
 :ref:`Head Include <doc_javascript_export_options>` during export (see below),
-or even :ref:`write your own template <doc_customizing_html5_shell>`.
+hoặc thậm chí :ref:`write your own template <doc_customizing_html5_shell>`.
 
-In the example below, we customize the ``Head Include`` to add an external library
-(`axios <https://axios-http.com/>`__) from a content delivery network, and a
-second ``<script>`` tag to define our own custom function:
+Trong ví dụ dưới đây, chúng ta tùy chỉnh ``Head Include`` để thêm một thư viện bên ngoài (`axios <https://axios-http.com/>`__) từ một content delivery network và thêm một thẻ ``<script>`` thứ hai để định nghĩa hàm tùy chỉnh của riêng mình:
 
 .. code-block:: html
 
@@ -156,38 +131,34 @@ second ``<script>`` tag to define our own custom function:
     }
     </script>
 
-We can then access both the library and the function from Godot, like we did in
-previous examples:
+Sau đó, chúng ta có thể truy cập cả thư viện và hàm từ Godot, như trong các ví dụ trước:
 
 .. code-block:: gdscript
 
     extends Node
 
-    # Here create a reference to the `_on_get` function (below).
-    # This reference will be kept until the node is freed.
+    # Ở đây, hãy tạo một tham chiếu đến hàm `_on_get` (bên dưới).
+    # Tham chiếu này sẽ được giữ lại cho đến khi node được giải phóng.
     var _callback = JavaScriptBridge.create_callback(_on_get)
 
     func _ready():
-        # Get the `window` object, where globally defined functions are.
+        # Lấy đối tượng `window`, nơi chứa các hàm được định nghĩa global.
         var window = JavaScriptBridge.get_interface("window")
-        # Call the JavaScript `myFunc` function defined in the custom HTML head.
+        # Gọi hàm JavaScript `myFunc` được định nghĩa trong phần head HTML tùy chỉnh.
         window.myFunc()
-        # Get the `axios` library (loaded from a CDN in the custom HTML head).
+        # Lấy thư viện `axios` (được tải từ một CDN trong phần head HTML tùy chỉnh).
         var axios = JavaScriptBridge.get_interface("axios")
-        # Make a GET request to the current location, and receive the callback when done.
+        # Gửi yêu cầu GET đến location hiện tại và nhận callback khi hoàn tất.
         axios.get(window.location.toString()).then(_callback)
 
     func _on_get(args):
         OS.alert("On Get")
 
 
-The eval interface
-------------------
+Giao diện eval
+--------------
 
-The ``eval`` method works similarly to the JavaScript function of the same
-name. It takes a string as an argument and executes it as JavaScript code.
-This allows interacting with the browser in ways not possible with script
-languages integrated into Godot.
+Phương thức ``eval`` hoạt động tương tự hàm JavaScript cùng tên. Phương thức này nhận một chuỗi làm đối số và thực thi chuỗi đó dưới dạng mã JavaScript. Điều này cho phép tương tác với trình duyệt theo những cách không thể thực hiện bằng các ngôn ngữ script được tích hợp trong Godot.
 
 .. tabs::
  .. code-tab:: gdscript
@@ -202,36 +173,28 @@ languages integrated into Godot.
         JavaScriptBridge.Eval("alert('Calling JavaScript per C#!');")
     }
 
-The value of the last JavaScript statement is converted to a GDScript value and
-returned by ``eval()`` under certain circumstances:
+Giá trị của câu lệnh JavaScript cuối cùng được chuyển đổi thành một giá trị GDScript và được ``eval()`` trả về trong một số trường hợp nhất định:
 
- * JavaScript ``number`` is returned as :ref:`class_float`
- * JavaScript ``boolean`` is returned as :ref:`class_bool`
- * JavaScript ``string`` is returned as :ref:`class_String`
- * JavaScript ``ArrayBuffer``, ``TypedArray``, and ``DataView`` are returned as :ref:`PackedByteArray<class_PackedByteArray>`
+ * JavaScript ``number`` được trả về dưới dạng :ref:`class_float` * JavaScript ``boolean`` được trả về dưới dạng :ref:`class_bool` * JavaScript ``string`` được trả về dưới dạng :ref:`class_String` * JavaScript ``ArrayBuffer``, ``TypedArray`` và ``DataView`` được trả về dưới dạng :ref:`PackedByteArray<class_PackedByteArray>`
 
 .. tabs::
  .. code-tab:: gdscript
 
     func my_func2():
         var js_return = JavaScriptBridge.eval("var myNumber = 1; myNumber + 2;")
-        print(js_return) # prints '3.0'
+        print(js_return) # in ra '3.0'
 
  .. code-tab:: csharp
 
     private void MyFunc2()
     {
         var jsReturn = JavaScriptBridge.Eval("var myNumber = 1; myNumber + 2;");
-        GD.Print(jsReturn); // prints '3.0'
+        GD.Print(jsReturn); // in ra '3.0'
     }
 
-Any other JavaScript value is returned as ``null``.
+Mọi giá trị JavaScript khác đều được trả về dưới dạng ``null``.
 
-HTML5 export templates may be :ref:`built <doc_compiling_for_web>` without
-support for the singleton to improve security. With such templates, and on
-platforms other than HTML5, calling ``JavaScriptBridge.eval`` will also return
-``null``. The availability of the singleton can be checked with the
-``web`` :ref:`feature tag <doc_feature_tags>`:
+Các template export HTML5 có thể được :ref:`built <doc_compiling_for_web>` mà không hỗ trợ singleton này nhằm cải thiện bảo mật. Với các template như vậy và trên những nền tảng khác ngoài HTML5, việc gọi ``JavaScriptBridge.eval`` cũng sẽ trả về ``null``. Có thể kiểm tra khả dụng của singleton bằng ``web`` :ref:`feature tag <doc_feature_tags>`:
 
 .. tabs::
  .. code-tab:: gdscript
@@ -259,74 +222,69 @@ platforms other than HTML5, calling ``JavaScriptBridge.eval`` will also return
     }
 
 .. tip:: GDScript's multi-line strings, surrounded by 3 quotes ``"""`` as in
-         ``my_func3()`` above, are useful to keep JavaScript code readable.
+         ``my_func3()`` ở trên hữu ích để giữ cho mã JavaScript dễ đọc.
 
-The ``eval`` method also accepts a second, optional Boolean argument, which
-specifies whether to execute the code in the global execution context,
-defaulting to ``false`` to prevent polluting the global namespace:
+Phương thức ``eval`` cũng chấp nhận đối số Boolean thứ hai, không bắt buộc, chỉ định có thực thi mã trong global execution context hay không; mặc định là ``false`` để tránh làm ô nhiễm global namespace:
 
 .. tabs::
  .. code-tab:: gdscript
 
     func my_func4():
-        # execute in global execution context,
-        # thus adding a new JavaScript global variable `SomeGlobal`
+        # thực thi trong global execution context,
+        # do đó thêm một biến global JavaScript mới `SomeGlobal`
         JavaScriptBridge.eval("var SomeGlobal = {};", true)
 
  .. code-tab:: csharp
 
     private void MyFunc4()
     {
-        // execute in global execution context,
-        // thus adding a new JavaScript global variable `SomeGlobal`
+        // thực thi trong global execution context,
+        // do đó thêm một biến global JavaScript mới `SomeGlobal`
         JavaScriptBridge.Eval("var SomeGlobal = {};", true);
     }
 
 
 .. _doc_web_downloading_files:
 
-Downloading files
------------------
+Tải xuống tệp
+-------------
 
-Downloading files (e.g. a save game) from the Godot Web export to the user's computer can be done by directly interacting with JavaScript, but given it is a
-very common use case, Godot exposes this functionality to scripting via
-a dedicated :ref:`JavaScriptBridge.download_buffer() <class_JavaScriptBridge_method_download_buffer>`
-function which lets you download any generated buffer.
+Có thể tải các tệp (ví dụ: một file save game) từ bản export Godot Web xuống máy tính của người dùng bằng cách tương tác trực tiếp với JavaScript, nhưng vì đây là một trường hợp sử dụng rất phổ biến, Godot cung cấp chức năng này cho việc viết script thông qua một hàm :ref:`JavaScriptBridge.download_buffer() <class_JavaScriptBridge_method_download_buffer>` chuyên dụng, cho phép bạn tải xuống bất kỳ buffer nào được tạo ra.
 
-Here is a minimal example on how to use it:
+Dưới đây là ví dụ tối thiểu về cách sử dụng:
 
 extends Node
 
 .. code-block:: gdscript
 
     func _ready():
-        # Asks the user download a file called "hello.txt" whose content will be the string "Hello".
+        # Yêu cầu người dùng tải xuống một tệp có tên "hello.txt", với nội dung là chuỗi "Hello".
         JavaScriptBridge.download_buffer("Hello".to_utf8_buffer(), "hello.txt")
 
-And here is a more complete example on how to download a previously saved file:
+Dưới đây là một ví dụ đầy đủ hơn về cách tải xuống một tệp đã được lưu trước đó:
 
 .. code-block:: gdscript
 
     extends Node
 
-    # Open a file for reading and download it via the JavaScript singleton.
+    # Mở một tệp để đọc và tải xuống tệp đó thông qua singleton JavaScript.
     func _download_file(path):
         var file = FileAccess.open(path, FileAccess.READ)
         if file == null:
             push_error("Failed to load file")
             return
-        # Get the file name.
+        # Lấy tên tệp.
         var fname = path.get_file()
-        # Read the whole file to memory.
+        # Đọc toàn bộ tệp vào bộ nhớ.
         var buffer = file.get_buffer(file.get_len())
-        # Prompt the user to download the file (will have the same name as the input file).
+        # Yêu cầu người dùng tải xuống tệp (tệp sẽ có cùng tên với tệp đầu vào).
         JavaScriptBridge.download_buffer(buffer, fname)
 
     func _ready():
-        # Create a temporary file.
+        # Tạo một tệp tạm thời.
         var config = ConfigFile.new()
         config.set_value("option", "one", false)
         config.save("/tmp/test.cfg")
 
-        # Download it
+        # Tải xuống tệp đó
         _download_file("/tmp/test.cfg")

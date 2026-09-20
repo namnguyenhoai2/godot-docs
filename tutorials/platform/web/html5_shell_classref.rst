@@ -2,21 +2,17 @@
 
 .. _doc_html5_shell_classref:
 
-HTML5 shell class reference
-===========================
+Tham chiếu lớp HTML5 shell
+==========================
 
-Projects exported for the Web expose the :js:class:`Engine` class to the JavaScript environment, that allows
-fine control over the engine's start-up process.
+Các project được export cho Web expose lớp :js:class:`Engine` vào môi trường JavaScript, cho phép kiểm soát chi tiết quá trình khởi động của engine.
 
-This API is built in an asynchronous manner and requires basic understanding
-of `Promises <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises>`__.
+API này được xây dựng theo phương thức bất đồng bộ và yêu cầu hiểu biết cơ bản về `Promises <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises>`__.
 
 Engine
 ------
 
-The ``Engine`` class provides methods for loading and starting exported projects on the Web. For default export
-settings, this is already part of the exported HTML page. To understand practical use of the ``Engine`` class,
-see :ref:`Custom HTML page for Web export <doc_customizing_html5_shell>`.
+Lớp ``Engine`` cung cấp các method để load và start các project đã export trên Web. Với các thiết lập export mặc định, lớp này đã là một phần của trang HTML được export. Để hiểu cách sử dụng thực tế lớp ``Engine``, hãy xem :ref:`Custom HTML page for Web export <doc_customizing_html5_shell>`.
 
 Static Methods
 ~~~~~~~~~~~~~~
@@ -48,40 +44,37 @@ Instance Methods
 
 .. js:class:: Engine( initConfig )
 
-   Create a new Engine instance with the given configuration.
+   Tạo một instance Engine mới với cấu hình đã cho.
 
-   :param EngineConfig initConfig:
-      The initial config for this instance.
+   :param EngineConfig initConfig: Cấu hình ban đầu cho instance này.
 
    **Static Methods**
 
    .. js:function:: load( basePath )
 
-      Load the engine from the specified base path.
+      Load engine từ base path được chỉ định.
 
-      :param string basePath:
-         Base path of the engine to load.
+      :param string basePath: Base path của engine cần load.
 
       :return:
-         A Promise that resolves once the engine is loaded.
+         Một Promise được resolve sau khi engine được load.
 
       :rtype: Promise
 
    .. js:function:: unload( )
 
-      Unload the engine to free memory.
+      Unload engine để giải phóng bộ nhớ.
 
-      This method will be called automatically depending on the configuration. See :js:attr:`unloadAfterInit`.
+      Method này sẽ được tự động gọi tùy theo cấu hình. Xem :js:attr:`unloadAfterInit`.
 
    .. js:function:: isWebGLAvailable( [ majorVersion=1 ] )
 
-      Check whether WebGL is available. Optionally, specify a particular version of WebGL to check for.
+      Kiểm tra xem WebGL có khả dụng hay không. Có thể chỉ định một phiên bản WebGL cụ thể để kiểm tra.
 
-      :param number majorVersion:
-         The major WebGL version to check for.
+      :param number majorVersion: Phiên bản WebGL chính cần kiểm tra.
 
       :return:
-         If the given major version of WebGL is available.
+         Nếu phiên bản WebGL chính đã cho khả dụng.
 
       :rtype: boolean
 
@@ -89,98 +82,85 @@ Instance Methods
 
    .. js:function:: prototype.init( [ basePath ] )
 
-      Initialize the engine instance. Optionally, pass the base path to the engine to load it,
-      if it hasn't been loaded yet. See :js:meth:`Engine.load`.
+      Khởi tạo instance engine. Có thể truyền base path của engine để load engine nếu engine chưa được load. Xem :js:meth:`Engine.load`.
 
-      :param string basePath:
-         Base path of the engine to load.
+      :param string basePath: Base path của engine cần load.
 
       :return:
-         A ``Promise`` that resolves once the engine is loaded and initialized.
+         Một ``Promise`` được resolve sau khi engine được load và khởi tạo.
 
       :rtype: Promise
 
    .. js:function:: prototype.preloadFile( file [, path ] )
 
-      Load a file so it is available in the instance's file system once it runs. Must be called **before** starting the
-      instance.
+      Load một file để file này có sẵn trong file system của instance khi instance chạy. Phải được gọi **trước** khi start instance.
 
-      If not provided, the ``path`` is derived from the URL of the loaded file.
+      Nếu không được cung cấp, ``path`` sẽ được suy ra từ URL của file đã load.
 
-      :param string\|ArrayBuffer file:
-         The file to preload.
+      :param string\|ArrayBuffer file: File cần preload.
 
-         If a ``string`` the file will be loaded from that path.
+         Nếu là một ``string``, file sẽ được load từ path đó.
 
-         If an ``ArrayBuffer`` or a view on one, the buffer will used as the content of the file.
+         Nếu là một ``ArrayBuffer`` hoặc một view trên đó, buffer sẽ được sử dụng làm nội dung của file.
 
-      :param string path:
-         Path by which the file will be accessible. Required, if ``file`` is not a string.
+      :param string path: Path mà qua đó file sẽ có thể được truy cập. Bắt buộc nếu ``file`` không phải là một string.
 
       :return:
-         A Promise that resolves once the file is loaded.
+         Một Promise được resolve sau khi file được load.
 
       :rtype: Promise
 
    .. js:function:: prototype.start( override )
 
-      Start the engine instance using the given override configuration (if any).
+      Start instance engine bằng cấu hình override đã cho (nếu có).
       :js:meth:`startGame <Engine.prototype.startGame>` can be used in typical cases instead.
 
-      This will initialize the instance if it is not initialized. For manual initialization, see :js:meth:`init <Engine.prototype.init>`.
-      The engine must be loaded beforehand.
+      Thao tác này sẽ khởi tạo instance nếu instance chưa được khởi tạo. Để khởi tạo thủ công, hãy xem :js:meth:`init <Engine.prototype.init>`. Engine phải được load trước.
 
-      Fails if a canvas cannot be found on the page, or not specified in the configuration.
+      Thao tác này sẽ thất bại nếu không tìm thấy canvas trên trang hoặc canvas không được chỉ định trong cấu hình.
 
-      :param EngineConfig override:
-         An optional configuration override.
+      :param EngineConfig override: Cấu hình override tùy chọn.
 
       :return:
-         Promise that resolves once the engine started.
+         Promise được resolve sau khi engine start.
 
       :rtype: Promise
 
    .. js:function:: prototype.startGame( override )
 
-      Start the game instance using the given configuration override (if any).
+      Start instance game bằng cấu hình override đã cho (nếu có).
 
-      This will initialize the instance if it is not initialized. For manual initialization, see :js:meth:`init <Engine.prototype.init>`.
+      Thao tác này sẽ khởi tạo instance nếu instance chưa được khởi tạo. Để khởi tạo thủ công, hãy xem :js:meth:`init <Engine.prototype.init>`.
 
-      This will load the engine if it is not loaded, and preload the main pck.
+      Thao tác này sẽ load engine nếu engine chưa được load và preload pck chính.
 
-      This method expects the initial config (or the override) to have both the :js:attr:`executable` and :js:attr:`mainPack`
-      properties set (normally done by the editor during export).
+      Method này yêu cầu config ban đầu (hoặc override) có cả hai property :js:attr:`executable` và :js:attr:`mainPack` được thiết lập (thông thường được thực hiện bởi editor trong quá trình export).
 
-      :param EngineConfig override:
-         An optional configuration override.
+      :param EngineConfig override: Cấu hình override tùy chọn.
 
       :return:
-         Promise that resolves once the game started.
+         Promise được resolve sau khi game start.
 
       :rtype: Promise
 
    .. js:function:: prototype.copyToFS( path, buffer )
 
-      Create a file at the specified ``path`` with the passed as ``buffer`` in the instance's file system.
+      Tạo một file tại ``path`` đã chỉ định với giá trị được truyền vào dưới dạng ``buffer`` trong file system của instance.
 
-      :param string path:
-         The location where the file will be created.
+      :param string path: Vị trí nơi file sẽ được tạo.
 
-      :param ArrayBuffer buffer:
-         The content of the file.
+      :param ArrayBuffer buffer: Nội dung của file.
 
    .. js:function:: prototype.requestQuit( )
 
-      Request that the current instance quit.
+      Yêu cầu instance hiện tại thoát.
 
-      This is akin the user pressing the close button in the window manager, and will
-      have no effect if the engine has crashed, or is stuck in a loop.
+      Thao tác này tương tự như việc người dùng nhấn nút đóng trong window manager và sẽ không có tác dụng nếu engine đã bị crash hoặc bị mắc kẹt trong một vòng lặp.
 
-Engine configuration
---------------------
+Cấu hình engine
+---------------
 
-An object used to configure the Engine instance based on godot export options, and to override those in custom HTML
-templates if needed.
+Một object được dùng để cấu hình instance Engine dựa trên các tùy chọn export của godot và override các tùy chọn đó trong custom HTML template nếu cần.
 
 Properties
 ~~~~~~~~~~
@@ -215,15 +195,15 @@ Properties
 
 .. js:attribute:: EngineConfig
 
-   The Engine configuration object. This is just a typedef, create it like a regular object, e.g.:
+   Object cấu hình Engine. Đây chỉ là một typedef; hãy tạo nó như một object thông thường, ví dụ:
 
    ``const MyConfig = { executable: 'godot', unloadAfterInit: false }``
 
-   **Property Descriptions**
+   **Mô tả Property**
 
    .. js:attribute:: unloadAfterInit
 
-      Whether the unload the engine automatically after the instance is initialized.
+      Có unload engine tự động sau khi instance được khởi tạo hay không.
 
       :type: boolean
 
@@ -231,9 +211,9 @@ Properties
 
    .. js:attribute:: canvas
 
-      The HTML DOM Canvas object to use.
+      HTML DOM Canvas object cần sử dụng.
 
-      By default, the first canvas element in the document will be used is none is specified.
+      Theo mặc định, phần tử canvas đầu tiên trong document sẽ được sử dụng nếu không có phần tử nào được chỉ định.
 
       :type: HTMLCanvasElement
 
@@ -241,7 +221,7 @@ Properties
 
    .. js:attribute:: executable
 
-      The name of the WASM file without the extension. (Set by Godot Editor export process).
+      Tên của file WASM không có phần mở rộng. (Được thiết lập bởi quy trình export của Godot Editor).
 
       :type: string
 
@@ -249,7 +229,7 @@ Properties
 
    .. js:attribute:: mainPack
 
-      An alternative name for the game pck to load. The executable name is used otherwise.
+      Tên thay thế cho game pck cần load. Nếu không, tên executable sẽ được sử dụng.
 
       :type: string
 
@@ -257,9 +237,9 @@ Properties
 
    .. js:attribute:: locale
 
-      Specify a language code to select the proper localization for the game.
+      Chỉ định mã ngôn ngữ để chọn bản localization phù hợp cho game.
 
-      The browser locale will be used if none is specified. See complete list of
+      Locale của browser sẽ được sử dụng nếu không được chỉ định. Xem danh sách đầy đủ của
       :ref:`supported locales <doc_locales>`.
 
       :type: string
@@ -268,14 +248,13 @@ Properties
 
    .. js:attribute:: canvasResizePolicy
 
-      The canvas resize policy determines how the canvas should be resized by Godot.
+      Chính sách resize canvas xác định cách canvas được Godot resize.
 
-      ``0`` means Godot won't do any resizing. This is useful if you want to control the canvas size from
-      JavaScript code in your template.
+      ``0`` có nghĩa là Godot sẽ không thực hiện resize nào. Điều này hữu ích nếu bạn muốn kiểm soát kích thước canvas từ code JavaScript trong template.
 
-      ``1`` means Godot will resize the canvas on start, and when changing window size via engine functions.
+      ``1`` có nghĩa là Godot sẽ resize canvas khi start và khi thay đổi kích thước cửa sổ thông qua các function của engine.
 
-      ``2`` means Godot will adapt the canvas size to match the whole browser window.
+      ``2`` có nghĩa là Godot sẽ điều chỉnh kích thước canvas để khớp với toàn bộ cửa sổ browser.
 
       :type: number
 
@@ -283,11 +262,11 @@ Properties
 
    .. js:attribute:: args
 
-      The arguments to be passed as command line arguments on startup.
+      Các argument sẽ được truyền dưới dạng command-line argument khi khởi động.
 
-      See :ref:`command line tutorial <doc_command_line_tutorial>`.
+      Xem :ref:`command line tutorial <doc_command_line_tutorial>`.
 
-      **Note**: :js:meth:`startGame <Engine.prototype.startGame>` will always add the ``--main-pack`` argument.
+      **Lưu ý**: :js:meth:`startGame <Engine.prototype.startGame>` sẽ luôn thêm argument ``--main-pack``.
 
       :type: Array.<string>
 
@@ -295,59 +274,48 @@ Properties
 
    .. js:function:: onExecute( path, args )
 
-      A callback function for handling Godot's ``OS.execute`` calls.
+      Một callback function để xử lý các lệnh gọi ``OS.execute`` của Godot.
 
-      This is for example used in the Web Editor template to switch between Project Manager and editor, and for running the game.
+      Ví dụ, function này được sử dụng trong Web Editor template để chuyển đổi giữa Project Manager và editor, cũng như để chạy game.
 
-      :param string path:
-         The path that Godot's wants executed.
+      :param string path: Path mà Godot muốn thực thi.
 
-      :param Array.<string> args:
-         The arguments of the "command" to execute.
+      :param Array.<string> args: Các argument của "command" cần thực thi.
 
    .. js:function:: onExit( status_code )
 
-      A callback function for being notified when the Godot instance quits.
+      Một callback function để thông báo khi instance Godot thoát.
 
-      **Note**: This function will not be called if the engine crashes or become unresponsive.
+      **Lưu ý**: Function này sẽ không được gọi nếu engine bị crash hoặc trở nên không phản hồi.
 
-      :param number status_code:
-         The status code returned by Godot on exit.
+      :param number status_code: Status code do Godot trả về khi thoát.
 
    .. js:function:: onProgress( current, total )
 
-      A callback function for displaying download progress.
+      Một callback function để hiển thị tiến trình download.
 
-      The function is called once per frame while downloading files, so the usage of ``requestAnimationFrame()``
-      is not necessary.
+      Function được gọi một lần mỗi frame trong khi download file, vì vậy không cần sử dụng ``requestAnimationFrame()``.
 
-      If the callback function receives a total amount of bytes as 0, this means that it is impossible to calculate.
-      Possible reasons include:
+      Nếu callback function nhận tổng số byte là 0, điều đó có nghĩa là không thể tính toán. Các lý do có thể gồm:
 
-      -  Files are delivered with server-side chunked compression
-      -  Files are delivered with server-side compression on Chromium
-      -  Not all file downloads have started yet (usually on servers without multi-threading)
+      -  File được phân phối bằng chunked compression phía server - File được phân phối bằng compression phía server trên Chromium - Chưa bắt đầu download tất cả file (thường xảy ra trên các server không hỗ trợ multi-threading)
 
-      :param number current:
-         The current amount of downloaded bytes so far.
+      :param number current: Số byte hiện đã download được.
 
-      :param number total:
-         The total amount of bytes to be downloaded.
+      :param number total: Tổng số byte cần download.
 
    .. js:function:: onPrint( [ ...var_args ] )
 
-      A callback function for handling the standard output stream. This method should usually only be used in debug pages.
+      Một callback function để xử lý standard output stream. Method này thường chỉ nên được sử dụng trong các debug page.
 
-      By default, ``console.log()`` is used.
+      Theo mặc định, ``console.log()`` được sử dụng.
 
-      :param * var_args:
-         A variadic number of arguments to be printed.
+      :param * var_args: Số lượng argument biến thiên cần được in.
 
    .. js:function:: onPrintError( [ ...var_args ] )
 
-      A callback function for handling the standard error stream. This method should usually only be used in debug pages.
+      Một callback function để xử lý standard error stream. Method này thường chỉ nên được sử dụng trong các debug page.
 
-      By default, ``console.error()`` is used.
+      Theo mặc định, ``console.error()`` được sử dụng.
 
-      :param * var_args:
-         A variadic number of arguments to be printed as errors.
+      :param * var_args: Số lượng argument biến thiên cần được in dưới dạng lỗi.

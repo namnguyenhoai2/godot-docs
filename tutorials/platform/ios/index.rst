@@ -1,7 +1,7 @@
 :allow_comments: False
 
-iOS plugins
-===========
+Các plugin iOS
+==============
 
 .. toctree::
    :maxdepth: 1
