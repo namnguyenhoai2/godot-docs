@@ -1,60 +1,44 @@
 .. _doc_version_control_systems:
 
-Version control systems
-=======================
+Hệ thống kiểm soát phiên bản
+============================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Godot aims to be VCS-friendly and generate mostly readable and mergeable files.
+Godot hướng đến khả năng tương thích với VCS và tạo ra các tệp hầu hết đều dễ đọc, dễ merge.
 
-Version control plugins
------------------------
+Plugin kiểm soát phiên bản
+--------------------------
 
-Godot also supports the use of version control systems in the editor itself.
-However, version control in the editor requires a plugin for the specific VCS
-you're using.
+Godot cũng hỗ trợ sử dụng hệ thống kiểm soát phiên bản ngay trong editor. Tuy nhiên, tính năng kiểm soát phiên bản trong editor yêu cầu plugin dành cho VCS cụ thể mà bạn đang sử dụng.
 
-As of October 2025, there is only a Git plugin available, but the community may
-create additional VCS plugins.
+Tính đến tháng 10 năm 2025, hiện chỉ có plugin Git, nhưng cộng đồng có thể tạo thêm các plugin VCS khác.
 
-Official Git plugin
-~~~~~~~~~~~~~~~~~~~
+Plugin Git chính thức
+~~~~~~~~~~~~~~~~~~~~~
 
-Using Git from inside the editor is supported with an official plugin.
-You can find the latest releases on
-`GitHub <https://github.com/godotengine/godot-git-plugin/releases>`__.
+Việc sử dụng Git bên trong editor được hỗ trợ thông qua một plugin chính thức. Bạn có thể tìm các bản phát hành mới nhất tại `GitHub <https://github.com/godotengine/godot-git-plugin/releases>`__.
 
-Documentation on how to use the Git plugin can be found on its
-`wiki <https://github.com/godotengine/godot-git-plugin/wiki>`__.
+Tài liệu hướng dẫn sử dụng plugin Git có tại `wiki <https://github.com/godotengine/godot-git-plugin/wiki>`__.
 
-Files to exclude from VCS
--------------------------
+Các tệp cần loại trừ khỏi VCS
+-----------------------------
 
 .. note::
 
-    This lists files and folders that should be ignored from version control in
-    Godot 4.1 and later.
+    Danh sách này liệt kê các tệp và thư mục cần được bỏ qua khỏi việc kiểm soát phiên bản trong Godot 4.1 trở lên.
 
-    The list of files of folders that should be ignored from version control in
-    Godot 3.x and Godot 4.0 is **entirely** different. This is important, as Godot
-    3.x and 4.0 may store sensitive credentials in ``export_presets.cfg`` (unlike Godot
-    4.1 and later).
+    Danh sách các tệp và thư mục cần được bỏ qua khỏi việc kiểm soát phiên bản trong Godot 3.x và Godot 4.0 **hoàn toàn** khác. Điều này rất quan trọng, vì Godot 3.x và 4.0 có thể lưu thông tin xác thực nhạy cảm trong ``export_presets.cfg`` (không giống Godot 4.1 trở lên).
 
-    If you are using Godot 3, check the ``3.6`` version of this documentation page
-    instead.
+    Nếu bạn đang sử dụng Godot 3, hãy xem ``3.6`` của trang tài liệu này thay thế.
 
-There are some files and folders Godot automatically creates when opening a
-project in the editor for the first time. To avoid bloating your version control
-repository with generated data, you should add them to your VCS ignore:
+Có một số tệp và thư mục mà Godot tự động tạo khi mở một project lần đầu trong editor. Để tránh làm repository kiểm soát phiên bản của bạn phình to do dữ liệu được tạo tự động, bạn nên thêm chúng vào danh sách ignore của VCS:
 
-- ``.godot/``: This folder stores various project cache data.
-- ``*.translation``: These files are binary imported
+- ``.godot/``: Thư mục này lưu nhiều loại dữ liệu cache của project. - ``*.translation``: Các tệp này là dữ liệu nhị phân được import
   :ref:`translations <doc_internationalizing_games>` generated from CSV files.
 
-You can make the Godot project manager generate version control metadata for you
-automatically when creating a project. When choosing the **Git** option, this
-creates ``.gitignore`` and ``.gitattributes`` files in the project root:
+Bạn có thể yêu cầu Godot project manager tự động tạo metadata kiểm soát phiên bản cho bạn khi tạo project. Khi chọn tùy chọn **Git**, thao tác này sẽ tạo các tệp ``.gitignore`` và ``.gitattributes`` trong thư mục gốc của project:
 
 .. figure:: img/version_control_systems_generate_metadata.webp
    :align: center
@@ -62,89 +46,61 @@ creates ``.gitignore`` and ``.gitattributes`` files in the project root:
 
    Creating version control metadata in the project manager's **New Project** dialog
 
-In existing projects, select the **Project** menu at the top of the editor, then
-choose **Version Control > Generate Version Control Metadata**. This creates the
-same files as if the operation was performed in the project manager.
+Trong các project hiện có, chọn menu **Project** ở đầu editor, sau đó chọn **Version Control > Generate Version Control Metadata**. Thao tác này tạo ra các tệp giống như khi thực hiện trong project manager.
 
-Working with Git on Windows
----------------------------
+Làm việc với Git trên Windows
+-----------------------------
 
-Most Git for Windows clients are configured with the ``core.autocrlf`` set to
-``true``. This can lead to files unnecessarily being marked as modified by Git
-due to their line endings being converted from LF to CRLF automatically.
+Hầu hết các client Git for Windows được cấu hình với ``core.autocrlf`` được đặt thành ``true``. Điều này có thể khiến Git đánh dấu các tệp là đã sửa đổi một cách không cần thiết do line ending của chúng tự động được chuyển đổi từ LF sang CRLF.
 
-It is better to set this option as:
+Tốt hơn là đặt tùy chọn này thành:
 
 ::
 
     git config --global core.autocrlf input
 
-Creating version control metadata using the project manager or editor will
-automatically enforce LF line endings using the ``.gitattributes`` file.
-In this case, you don't need to change your Git configuration.
+Việc tạo metadata kiểm soát phiên bản bằng project manager hoặc editor sẽ tự động buộc sử dụng line ending LF thông qua tệp ``.gitattributes``. Trong trường hợp này, bạn không cần thay đổi cấu hình Git.
 
 Git LFS
 -------
 
-Git LFS (Large File Storage) is a Git extension that allows you to manage large
-files in your repository. It replaces large files with text pointers inside Git,
-while storing the file contents on a remote server. This is useful for
-managing large assets, such as textures, audio files, and 3D models, without
-bloating your Git repository.
+Git LFS (Large File Storage) là một extension của Git cho phép bạn quản lý các tệp lớn trong repository. Nó thay thế các tệp lớn bằng các con trỏ dạng văn bản bên trong Git, đồng thời lưu nội dung tệp trên một server từ xa. Tính năng này hữu ích khi quản lý các asset lớn như texture, tệp âm thanh và model 3D mà không làm repository Git phình to.
 
 .. note::
 
-    When using Git LFS you will want to ensure it is setup before you commit any files to your repository.
-    If you have already committed files to your repository, you will need to
-    remove them from the repository and re-add them after setting up Git LFS.
+    Khi sử dụng Git LFS, bạn cần đảm bảo đã setup xong trước khi commit bất kỳ tệp nào vào repository. Nếu bạn đã commit tệp vào repository, bạn sẽ cần xóa chúng khỏi repository rồi thêm lại sau khi setup Git LFS.
 
-    It is possible to use ``git lfs migrate`` to convert existing files in your repository, but this is more in-depth and
-    requires a good understanding of Git.
+    Bạn có thể sử dụng ``git lfs migrate`` để chuyển đổi các tệp hiện có trong repository, nhưng cách này chuyên sâu hơn và đòi hỏi hiểu biết tốt về Git.
 
-    A common approach is setting up a new repository with Git LFS (and a proper ``.gitattributes``), then
-    copying the files from the old repository to the new one. This way, you
-    can ensure that all files are tracked by LFS from the start.
+    Một cách tiếp cận phổ biến là setup một repository mới với Git LFS (và một ``.gitattributes`` phù hợp), sau đó sao chép các tệp từ repository cũ sang repository mới. Bằng cách này, bạn có thể đảm bảo mọi tệp đều được LFS theo dõi ngay từ đầu.
 
-To use Git LFS with Godot, you need to install the Git LFS extension and
-configure it to track the file types you want to manage. You can do this by
-running the following command in your terminal:
-::
+Để sử dụng Git LFS với Godot, bạn cần cài đặt extension Git LFS và cấu hình nó để theo dõi các loại tệp bạn muốn quản lý. Bạn có thể thực hiện việc này bằng cách chạy lệnh sau trong terminal: ::
 
     git lfs install
 
-This will create a ``.gitattributes`` file in your repository that tells Git to
-use LFS for the specified file types. You can add more file types by modifying
-the ``.gitattributes`` file. For example, to track all GLB files, you can do this by
-running the following command in your terminal:
-::
+Thao tác này sẽ tạo một tệp ``.gitattributes`` trong repository, cho Git biết cần sử dụng LFS cho các loại tệp được chỉ định. Bạn có thể thêm các loại tệp khác bằng cách chỉnh sửa tệp ``.gitattributes``. Ví dụ: để theo dõi tất cả các tệp GLB, bạn có thể chạy lệnh sau trong terminal: ::
 
     git lfs track "*.glb"
 
-When you add or modify files that are tracked by LFS, Git will automatically
-store them in LFS instead of the regular Git history. You can push and pull
-LFS files just like regular Git files, but keep in mind that LFS files are
-stored separately from the rest of your Git history. This means that you may
-need to install Git LFS on any machine that you clone the repository to in
-order to access the LFS files.
+Khi bạn thêm hoặc sửa đổi các tệp được LFS theo dõi, Git sẽ tự động lưu chúng trong LFS thay vì lịch sử Git thông thường. Bạn có thể push và pull các tệp LFS giống như các tệp Git thông thường, nhưng hãy nhớ rằng các tệp LFS được lưu riêng khỏi phần còn lại của lịch sử Git. Điều này có nghĩa là bạn có thể cần cài đặt Git LFS trên bất kỳ máy nào mà bạn clone repository để truy cập các tệp LFS.
 
-Below is an example ``.gitattributes`` file that you can use as a starting point for Git LFS.
-These file types were chosen because they are commonly used, but you can modify the list to include any binary types you may have in your project.
+Dưới đây là một tệp ``.gitattributes`` mẫu mà bạn có thể dùng làm điểm bắt đầu cho Git LFS. Các loại tệp này được chọn vì chúng thường được sử dụng, nhưng bạn có thể sửa đổi danh sách để thêm bất kỳ loại nhị phân nào có trong project.
 
 .. code-block:: unixconfig
 
-    # Normalize EOL for all files that Git considers text files.
+    # Chuẩn hóa EOL cho tất cả các tệp mà Git xem là tệp văn bản.
     * text=auto eol=lf
 
-    # Git LFS Tracking (Assets)
+    # Theo dõi Git LFS (Asset)
 
-    # 3D Models
+    # Model 3D
     *.fbx filter=lfs diff=lfs merge=lfs -text
     *.gltf filter=lfs diff=lfs merge=lfs -text
     *.glb filter=lfs diff=lfs merge=lfs -text
     *.blend filter=lfs diff=lfs merge=lfs -text
     *.obj filter=lfs diff=lfs merge=lfs -text
 
-    # Images
+    # Hình ảnh
     *.png filter=lfs diff=lfs merge=lfs -text
     *.svg filter=lfs diff=lfs merge=lfs -text
     *.jpg filter=lfs diff=lfs merge=lfs -text
@@ -156,7 +112,7 @@ These file types were chosen because they are commonly used, but you can modify 
     *.hdr filter=lfs diff=lfs merge=lfs -text
     *.dds filter=lfs diff=lfs merge=lfs -text
 
-    # Audio
+    # Âm thanh
     *.mp3 filter=lfs diff=lfs merge=lfs -text
     *.wav filter=lfs diff=lfs merge=lfs -text
     *.ogg filter=lfs diff=lfs merge=lfs -text
@@ -166,7 +122,7 @@ These file types were chosen because they are commonly used, but you can modify 
     *.otf filter=lfs diff=lfs merge=lfs -text
     *.ico filter=lfs diff=lfs merge=lfs -text
 
-    # Godot LFS Specific
+    # Dành riêng cho Godot LFS
     *.scn filter=lfs diff=lfs merge=lfs -text
     *.res filter=lfs diff=lfs merge=lfs -text
     *.material filter=lfs diff=lfs merge=lfs -text
@@ -174,5 +130,4 @@ These file types were chosen because they are commonly used, but you can modify 
     *.mesh filter=lfs diff=lfs merge=lfs -text
     *.lmbake filter=lfs diff=lfs merge=lfs -text
 
-For more information on Git LFS, check the official documentation:
-https://git-lfs.github.com/ and https://docs.github.com/en/repositories/working-with-files/managing-large-files.
+Để biết thêm thông tin về Git LFS, hãy xem tài liệu chính thức: https://git-lfs.github.com/ và https://docs.github.com/en/repositories/working-with-files/managing-large-files.

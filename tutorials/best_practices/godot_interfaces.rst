@@ -1,69 +1,65 @@
 .. _doc_godot_interfaces:
 
-Godot interfaces
-================
+Các interface của Godot
+=======================
 
-Often one needs scripts that rely on other objects for features. There
-are 2 parts to this process:
+Thông thường, ta cần các script phụ thuộc vào những object khác để cung cấp các tính năng. Quy trình này gồm 2 phần:
 
-1. Acquiring a reference to the object that presumably has the features.
+1. Lấy reference đến object được cho là có các tính năng đó.
 
-2. Accessing the data or logic from the object.
+2. Truy cập dữ liệu hoặc logic từ object.
 
-The rest of this tutorial outlines the various ways of doing all this.
+Phần còn lại của tutorial này trình bày các cách khác nhau để thực hiện tất cả những việc trên.
 
-Acquiring object references
----------------------------
+Lấy reference đến object
+------------------------
 
-For all :ref:`Object <class_Object>`\s, the most basic way of referencing them
-is to get a reference to an existing object from another acquired instance.
+Đối với tất cả :ref:`Object <class_Object>`\s, cách cơ bản nhất để tham chiếu đến chúng là lấy reference đến một object hiện có từ một instance đã được lấy trước đó.
 
 .. tabs::
   .. code-tab:: gdscript GDScript
 
-    var obj = node.object # Property access.
-    var obj = node.get_object() # Method access.
+    var obj = node.object # Truy cập property.
+    var obj = node.get_object() # Truy cập method.
 
   .. code-tab:: csharp
 
-    GodotObject obj = node.Object; // Property access.
-    GodotObject obj = node.GetObject(); // Method access.
+    GodotObject obj = node.Object; // Truy cập property.
+    GodotObject obj = node.GetObject(); // Truy cập method.
 
-The same principle applies for :ref:`RefCounted <class_RefCounted>` objects.
-While users often access :ref:`Node <class_Node>` and
+Nguyên tắc tương tự cũng áp dụng cho các object :ref:`RefCounted <class_RefCounted>`. Mặc dù người dùng thường truy cập :ref:`Node <class_Node>` và
 :ref:`Resource <class_Resource>` this way, alternative measures are available.
 
-Instead of property or method access, one can get Resources by load
-access.
+Thay vì truy cập property hoặc method, ta có thể lấy Resources bằng cách load.
 
 .. tabs::
   .. code-tab:: gdscript GDScript
 
-    # If you need an "export const var" (which doesn't exist), use a conditional
-    # setter for a tool script that checks if it's executing in the editor.
-    # The `@tool` annotation must be placed at the top of the script.
+    # Nếu cần một "export const var" (vốn không tồn tại), hãy sử dụng một conditional
+    # setter cho tool script để kiểm tra xem nó có đang được thực thi trong editor hay không.
+    # Annotation `@tool` phải được đặt ở đầu script.
     @tool
 
-    # Load resource during scene load.
+    # Load resource trong khi scene được load.
     var preres = preload(path)
-    # Load resource when program reaches statement.
+    # Load resource khi chương trình chạy đến statement.
     var res = load(path)
 
     # Note that users load scenes and scripts, by convention, with PascalCase
-    # names (like typenames), often into constants.
+    # tên (chẳng hạn như typename), thường vào các constant.
     const MyScene = preload("my_scene.tscn") # Static load
     const MyScript = preload("my_script.gd")
 
-    # This type's value varies, i.e. it is a variable, so it uses snake_case.
+    # Giá trị của type này thay đổi, tức là nó là một variable, nên sử dụng snake_case.
     @export var script_type: Script
 
-    # Must configure from the editor, defaults to null.
+    # Phải được cấu hình từ editor, mặc định là null.
     @export var const_script: Script:
         set(value):
             if Engine.is_editor_hint():
                 const_script = value
 
-    # Warn users if the value hasn't been set.
+    # Cảnh báo người dùng nếu giá trị chưa được thiết lập.
     func _get_configuration_warnings():
         if not const_script:
             return ["Must initialize property 'const_script'."]
@@ -72,26 +68,26 @@ access.
 
   .. code-tab:: csharp
 
-    // Tool script added for the sake of the "const [Export]" example.
+    // Thêm tool script cho ví dụ "const [Export]".
     [Tool]
     public MyType
     {
-        // Property initializations load during Script instancing, i.e. .new().
-        // No "preload" loads during scene load exists in C#.
+        // Các property initialization được load trong quá trình khởi tạo Script, tức là .new().
+        // Trong C# không có thao tác "preload" nào được thực hiện trong quá trình load scene.
 
-        // Initialize with a value. Editable at runtime.
+        // Khởi tạo với một giá trị. Có thể chỉnh sửa trong runtime.
         public Script MyScript = GD.Load<Script>("res://Path/To/MyScript.cs");
 
-        // Initialize with same value. Value cannot be changed.
+        // Khởi tạo với cùng một giá trị. Không thể thay đổi giá trị.
         public readonly Script MyConstScript = GD.Load<Script>("res://Path/To/MyScript.cs");
 
-        // Like 'readonly' due to inaccessible setter.
-        // But, value can be set during constructor, i.e. MyType().
+        // Tương tự 'readonly' vì setter không thể truy cập.
+        // Tuy nhiên, giá trị có thể được thiết lập trong constructor, tức là MyType().
         public Script MyNoSetScript { get; } = GD.Load<Script>("res://Path/To/MyScript.cs");
 
-        // If need a "const [Export]" (which doesn't exist), use a
-        // conditional setter for a tool script that checks if it's executing
-        // in the editor.
+        // Nếu cần một "const [Export]" (vốn không tồn tại), hãy sử dụng một
+        // conditional setter cho tool script để kiểm tra xem nó có đang được thực thi
+        // trong editor hay không.
         private PackedScene _enemyScn;
 
         [Export]
@@ -107,7 +103,7 @@ access.
             }
         };
 
-        // Warn users if the value hasn't been set.
+        // Cảnh báo người dùng nếu giá trị chưa được thiết lập.
         public string[] _GetConfigurationWarnings()
         {
             if (EnemyScn == null)
@@ -118,73 +114,71 @@ access.
         }
     }
 
-Note the following:
+Lưu ý những điều sau:
 
-1. There are many ways in which a language can load such resources.
+1. Có nhiều cách để một ngôn ngữ có thể load các resource như vậy.
 
-2. When designing how objects will access data, don't forget
-   that one can pass resources around as references as well.
+2. Khi thiết kế cách các object truy cập dữ liệu, đừng quên rằng ta cũng có thể truyền các resource đi dưới dạng reference.
 
-3. Keep in mind that loading a resource fetches the cached resource
-   instance maintained by the engine. To get a new object, one must
+3. Hãy nhớ rằng việc load một resource sẽ lấy instance resource được cache và duy trì bởi engine. Để lấy một object mới, ta phải
    :ref:`duplicate <class_Resource_method_duplicate>` an existing reference
-   or instantiate one from scratch with ``new()``.
+   hoặc khởi tạo một object từ đầu bằng ``new()``.
 
-Nodes likewise have an alternative access point: the SceneTree.
+Các Node cũng có một điểm truy cập thay thế: SceneTree.
 
 .. tabs::
   .. code-tab:: gdscript GDScript
 
     extends Node
 
-    # Slow.
+    # Chậm.
     func dynamic_lookup_with_dynamic_nodepath():
         print(get_node("Child"))
 
-    # Faster. GDScript only.
+    # Nhanh hơn. Chỉ dành cho GDScript.
     func dynamic_lookup_with_cached_nodepath():
         print($Child)
 
-    # Fastest. Doesn't break if node moves later.
+    # Nhanh nhất. Không bị ảnh hưởng nếu node được di chuyển về sau.
     # Note that `@onready` annotation is GDScript-only.
-    # Other languages must do...
-    #     var child
-    #     func _ready():
-    #         child = get_node("Child")
+    # Các ngôn ngữ khác phải làm như sau...
+    # var child
+    # func _ready():
+    # child = get_node("Child")
     @onready var child = $Child
     func lookup_and_cache_for_future_access():
         print(child)
 
-    # Fastest. Doesn't break if node is moved in the Scene tree dock.
-    # Node must be selected in the inspector as it's an exported property.
+    # Nhanh nhất. Không bị ảnh hưởng nếu node được di chuyển trong Scene tree dock.
+    # Node phải được chọn trong inspector vì đây là một exported property.
     @export var child: Node
     func lookup_and_cache_for_future_access():
         print(child)
 
-    # Delegate reference assignment to an external source.
-    # Con: need to perform a validation check.
-    # Pro: node makes no requirements of its external structure.
-    #      'prop' can come from anywhere.
+    # Ủy quyền việc gán reference cho một nguồn bên ngoài.
+    # Nhược điểm: cần thực hiện kiểm tra validation.
+    # Ưu điểm: node không yêu cầu gì từ cấu trúc bên ngoài.
+    # 'prop' có thể đến từ bất kỳ đâu.
     var prop
     func call_me_after_prop_is_initialized_by_parent():
-        # Validate prop in one of three ways.
+        # Validate prop theo một trong ba cách.
 
-        # Fail with no notification.
+        # Thất bại mà không có thông báo.
         if not prop:
             return
 
-        # Fail with an error message.
+        # Thất bại với một thông báo lỗi.
         if not prop:
             printerr("'prop' wasn't initialized")
             return
 
-        # Fail and terminate.
+        # Thất bại và kết thúc.
         # NOTE: Scripts run from a release export template don't run `assert`s.
         assert(prop, "'prop' wasn't initialized")
 
-    # Use an autoload.
-    # Dangerous for typical nodes, but useful for true singleton nodes
-    # that manage their own data and don't interfere with other objects.
+    # Sử dụng autoload.
+    # Nguy hiểm đối với các node thông thường, nhưng hữu ích cho các singleton node thực sự
+    # tự quản lý dữ liệu của chúng và không can thiệp vào các object khác.
     func reference_a_global_autoloaded_variable():
         print(globals)
         print(globals.prop)
@@ -198,14 +192,14 @@ Nodes likewise have an alternative access point: the SceneTree.
 
     public class MyNode : Node
     {
-        // Slow
+        // Chậm
         public void DynamicLookupWithDynamicNodePath()
         {
             GD.Print(GetNode("Child"));
         }
 
-        // Fastest. Lookup node and cache for future access.
-        // Doesn't break if node moves later.
+        // Nhanh nhất. Tìm node và cache nó để truy cập trong tương lai.
+        // Không bị ảnh hưởng nếu node được di chuyển về sau.
         private Node _child;
         public void _Ready()
         {
@@ -216,42 +210,42 @@ Nodes likewise have an alternative access point: the SceneTree.
             GD.Print(_child);
         }
 
-        // Delegate reference assignment to an external source.
-        // Con: need to perform a validation check.
-        // Pro: node makes no requirements of its external structure.
-        //      'prop' can come from anywhere.
+        // Ủy quyền việc gán reference cho một nguồn bên ngoài.
+        // Nhược điểm: cần thực hiện kiểm tra validation.
+        // Ưu điểm: node không yêu cầu gì từ cấu trúc bên ngoài.
+        // 'prop' có thể đến từ bất kỳ đâu.
         public object Prop { get; set; }
         public void CallMeAfterPropIsInitializedByParent()
         {
-            // Validate prop in one of three ways.
+            // Validate prop theo một trong ba cách.
 
-            // Fail with no notification.
+            // Thất bại mà không có thông báo.
             if (prop == null)
             {
                 return;
             }
 
-            // Fail with an error message.
+            // Thất bại với một thông báo lỗi.
             if (prop == null)
             {
                 GD.PrintErr("'Prop' wasn't initialized");
                 return;
             }
 
-            // Fail with an exception.
+            // Thất bại với một exception.
             if (prop == null)
             {
                 throw new InvalidOperationException("'Prop' wasn't initialized.");
             }
 
-            // Fail and terminate.
+            // Thất bại và kết thúc.
             // Note: Scripts run from a release export template don't run `Debug.Assert`s.
             Debug.Assert(Prop, "'Prop' wasn't initialized");
         }
 
-        // Use an autoload.
-        // Dangerous for typical nodes, but useful for true singleton nodes
-        // that manage their own data and don't interfere with other objects.
+        // Sử dụng autoload.
+        // Nguy hiểm đối với các node thông thường, nhưng hữu ích cho các singleton node thực sự
+        // tự quản lý dữ liệu của chúng và không can thiệp vào các object khác.
         public void ReferenceAGlobalAutoloadedVariable()
         {
             MyNode globals = GetNode<MyNode>("/root/Globals");
@@ -263,79 +257,60 @@ Nodes likewise have an alternative access point: the SceneTree.
 
 .. _doc_accessing_data_or_logic_from_object:
 
-Accessing data or logic from an object
---------------------------------------
+Truy cập dữ liệu hoặc logic từ một object
+-----------------------------------------
 
-Godot's scripting API is duck-typed. This means that if a script executes an
-operation, Godot doesn't validate that it supports the operation by **type**.
-It instead checks that the object **implements** the individual method.
+Scripting API của Godot sử dụng duck typing. Điều này có nghĩa là khi một script thực thi một operation, Godot không xác thực rằng object đó hỗ trợ operation bằng **type**. Thay vào đó, nó kiểm tra xem object có **implements** method riêng lẻ đó hay không.
 
-For example, the :ref:`CanvasItem <class_CanvasItem>` class has a ``visible``
-property. All properties exposed to the scripting API are in fact a setter and
-getter pair bound to a name. If one tried to access
+Ví dụ, class :ref:`CanvasItem <class_CanvasItem>` có property ``visible``. Tất cả property được expose cho scripting API thực chất là một cặp setter và getter được liên kết với một name. Nếu thử truy cập
 :ref:`CanvasItem.visible <class_CanvasItem_property_visible>`, then Godot would do the
-following checks, in order:
+các bước kiểm tra sau, theo thứ tự:
 
-- If the object has a script attached, it will attempt to set the property
-  through the script. This leaves open the opportunity for scripts to override
-  a property defined on a base object by overriding the setter method for the
-  property.
+- Nếu object có một script được gắn vào, nó sẽ cố gắng thiết lập property thông qua script. Điều này cho phép script override một property được định nghĩa trên base object bằng cách override setter method của property đó.
 
-- If the script does not have the property, it performs a HashMap lookup in
-  the ClassDB for the "visible" property against the CanvasItem class and all
-  of its inherited types. If found, it will call the bound setter or getter.
-  For more information about HashMaps, see the
+- Nếu script không có property này, nó thực hiện tra cứu HashMap trong ClassDB để tìm property "visible" trên class CanvasItem và tất cả các type mà class này kế thừa. Nếu tìm thấy, nó sẽ gọi bound setter hoặc getter. Để biết thêm thông tin về HashMap, hãy xem
   :ref:`data preferences <doc_data_preferences>` docs.
 
-- If not found, it does an explicit check to see if the user wants to access
-  the "script" or "meta" properties.
+- Nếu không tìm thấy, nó sẽ kiểm tra rõ ràng xem người dùng có muốn truy cập các property "script" hoặc "meta" hay không.
 
-- If not, it checks for a ``_set``/``_get`` implementation (depending on type
-  of access) in the CanvasItem and its inherited types. These methods can
-  execute logic that gives the impression that the Object has a property. This
-  is also the case with the ``_get_property_list`` method.
+- If not, it checks for a ``_set``/``_get`` implementation (depending on type of access) in the CanvasItem and its inherited types. These methods can execute logic that gives the impression that the Object has a property. This is also the case with the ``_get_property_list`` method.
 
-  - Note that this happens even for non-legal symbol names, such as names
-    starting with a digit or containing a slash.
+  - Lưu ý rằng điều này xảy ra ngay cả với các symbol name không hợp lệ, chẳng hạn như name bắt đầu bằng chữ số hoặc chứa dấu gạch chéo.
 
-As a result, this duck-typed system can locate a property either in the script,
-the object's class, or any class that object inherits, but only for things
-which extend Object.
+Do đó, hệ thống duck typing này có thể tìm property trong script, class của object hoặc bất kỳ class nào mà object kế thừa, nhưng chỉ áp dụng cho những đối tượng kế thừa Object.
 
-Godot provides a variety of options for performing runtime checks on these
-accesses:
+Godot cung cấp nhiều tùy chọn để thực hiện các runtime check đối với những thao tác truy cập này:
 
-- A duck-typed property access. These will be property checks (as described above).
-  If the operation isn't supported by the object, execution will halt.
+- Truy cập property bằng duck typing. Đây sẽ là các property check (như mô tả ở trên). Nếu operation không được object hỗ trợ, quá trình thực thi sẽ dừng.
 
   .. tabs::
     .. code-tab:: gdscript GDScript
 
-      # All Objects have duck-typed get, set, and call wrapper methods.
+      # Tất cả Object đều có các wrapper method get, set và call sử dụng duck typing.
       get_parent().set("visible", false)
 
-      # Using a symbol accessor, rather than a string in the method call,
-      # will implicitly call the `set` method which, in turn, calls the
-      # setter method bound to the property through the property lookup
-      # sequence.
+      # Việc sử dụng symbol accessor thay vì string trong method call
+      # sẽ ngầm gọi method `set`, method này lần lượt gọi
+      # setter method được liên kết với property thông qua chuỗi
+      # tra cứu property.
       get_parent().visible = false
 
       # Note that if one defines a _set and _get that describe a property's
-      # existence, but the property isn't recognized in any _get_property_list
-      # method, then the set() and get() methods will work, but the symbol
-      # access will claim it can't find the property.
+      # tồn tại, nhưng property không được nhận diện trong bất kỳ method _get_property_list
+      # nào, thì các method set() và get() vẫn hoạt động, nhưng việc truy cập symbol
+      # sẽ báo rằng không thể tìm thấy property.
 
     .. code-tab:: csharp
 
-      // All Objects have duck-typed Get, Set, and Call wrapper methods.
+      // Tất cả Object đều có các wrapper method Get, Set và Call sử dụng duck typing.
       GetParent().Set("visible", false);
 
-      // C# is a static language, so it has no dynamic symbol access, e.g.
-      // `GetParent().Visible = false` won't work.
+      // C# là một ngôn ngữ static, vì vậy nó không có dynamic symbol access, ví dụ
+      // `GetParent().Visible = false` sẽ không hoạt động.
 
-- A method check. In the case of
+- Kiểm tra method. Trong trường hợp
   :ref:`CanvasItem.visible <class_CanvasItem_property_visible>`, one can
-  access the methods, ``set_visible`` and ``is_visible`` like any other method.
+  truy cập các method, ``set_visible`` và ``is_visible`` như mọi method khác.
 
   .. tabs::
     .. code-tab:: gdscript GDScript
@@ -345,56 +320,56 @@ accesses:
       # Dynamic lookup.
       child.call("set_visible", false)
 
-      # Symbol-based dynamic lookup.
-      # GDScript aliases this into a 'call' method behind the scenes.
+      # Dynamic lookup dựa trên symbol.
+      # GDScript thực hiện việc này bằng cách alias thành method 'call' ở phía sau.
       child.set_visible(false)
 
-      # Dynamic lookup, checks for method existence first.
+      # Dynamic lookup, trước tiên kiểm tra method có tồn tại hay không.
       if child.has_method("set_visible"):
           child.set_visible(false)
 
-      # Cast check, followed by dynamic lookup.
-      # Useful when you make multiple "safe" calls knowing that the class
-      # implements them all. No need for repeated checks.
-      # Tricky if one executes a cast check for a user-defined type as it
-      # forces more dependencies.
+      # Kiểm tra cast, sau đó là dynamic lookup.
+      # Hữu ích khi bạn thực hiện nhiều lệnh gọi "an toàn" và biết rằng class triển khai tất cả chúng. Không cần kiểm tra lặp lại.
+      # Hữu ích khi bạn thực hiện nhiều lệnh gọi "an toàn" và biết rằng class triển khai tất cả chúng. Không cần kiểm tra lặp lại.
+      # Có thể phức tạp nếu thực hiện kiểm tra cast cho một type do người dùng định nghĩa vì điều đó tạo thêm dependency.
+      # Có thể phức tạp nếu thực hiện kiểm tra cast cho một type do người dùng định nghĩa vì điều đó tạo thêm dependency.
       if child is CanvasItem:
           child.set_visible(false)
           child.show_on_top = true
 
-      # If one does not wish to fail these checks without notifying users,
-      # one can use an assert instead. These will trigger runtime errors
-      # immediately if not true.
+      # Nếu không muốn các kiểm tra này thất bại mà không thông báo cho người dùng,
+      # ta có thể sử dụng assert thay thế. Những assert này sẽ kích hoạt runtime error
+      # ngay lập tức nếu điều kiện không đúng.
       assert(child.has_method("set_visible"))
       assert(child.is_in_group("offer"))
       assert(child is CanvasItem)
 
-      # Can also use object labels to imply an interface, i.e. assume it
-      # implements certain methods.
-      # There are two types, both of which only exist for Nodes: Names and
-      # Groups.
+      # Cũng có thể sử dụng label của object để biểu thị một interface, tức là giả định object đó
+      # triển khai một số method nhất định.
+      # Có hai loại, cả hai đều chỉ tồn tại đối với Node: Name và
+      # Group.
 
-      # Assuming...
-      # A "Quest" object exists and 1) that it can "complete" or "fail" and
-      # that it will have text available before and after each state...
+      # Giả sử...
+      # Một object "Quest" tồn tại và 1) nó có thể "complete" hoặc "fail", đồng thời
+      # có text khả dụng trước và sau mỗi state...
 
-      # 1. Use a name.
+      # 1. Sử dụng một name.
       var quest = $Quest
       print(quest.text)
-      quest.complete() # or quest.fail()
-      print(quest.text) # implied new text content
+      quest.complete() # hoặc quest.fail()
+      print(quest.text) # nội dung text mới được ngầm định
 
-      # 2. Use a group.
+      # 2. Sử dụng một group.
       for a_child in get_children():
           if a_child.is_in_group("quest"):
               print(quest.text)
-              quest.complete() # or quest.fail()
-              print(quest.text) # implied new text content
+              quest.complete() # hoặc quest.fail()
+              print(quest.text) # nội dung text mới được ngầm định
 
       # Note that these interfaces are project-specific conventions the team
-      # defines (which means documentation! But maybe worth it?).
-      # Any script that conforms to the documented "interface" of the name or
-      # group can fill in for it.
+      # defines (điều này có nghĩa là documentation! Nhưng có lẽ cũng đáng làm?).
+      # Bất kỳ script nào tuân theo "interface" được document của name hoặc
+      # group đều có thể thay thế cho nó.
 
     .. code-tab:: csharp
 
@@ -403,77 +378,75 @@ accesses:
       // Dynamic lookup.
       child.Call("SetVisible", false);
 
-      // Dynamic lookup, checks for method existence first.
+      // Dynamic lookup, trước tiên kiểm tra method có tồn tại hay không.
       if (child.HasMethod("SetVisible"))
       {
           child.Call("SetVisible", false);
       }
 
-      // Use a group as if it were an "interface", i.e. assume it implements
-      // certain methods.
-      // Requires good documentation for the project to keep it reliable
-      // (unless you make editor tools to enforce it at editor time).
+      // Sử dụng một group như thể đó là một "interface", tức là giả định rằng nó triển khai
+      // một số phương thức nhất định.
+      // Cần có tài liệu tốt để dự án duy trì được độ tin cậy
+      // (trừ khi bạn tạo các công cụ editor để thực thi điều này ngay trong editor).
       // Note, this is generally not as good as using an actual interface in
-      // C#, but you can't set C# interfaces from the editor since they are
-      // language-level features.
+      // C#, nhưng bạn không thể thiết lập các interface của C# từ editor vì chúng là
+      // các tính năng ở cấp độ ngôn ngữ.
       if (child.IsInGroup("Offer"))
       {
           child.Call("Accept");
           child.Call("Reject");
       }
 
-      // Cast check, followed by static lookup.
+      // Kiểm tra cast, sau đó tra cứu tĩnh.
       CanvasItem ci = GetParent() as CanvasItem;
       if (ci != null)
       {
           ci.SetVisible(false);
 
-          // useful when you need to make multiple safe calls to the class
+          // hữu ích khi bạn cần thực hiện nhiều lần gọi an toàn đến class
           ci.ShowOnTop = true;
       }
 
-      // If one does not wish to fail these checks without notifying users,
-      // one can use an assert instead. These will trigger runtime errors
-      // immediately if not true.
+      // Nếu không muốn các kiểm tra này thất bại mà không thông báo cho người dùng,
+      // bạn có thể sử dụng assert thay thế. Các assert này sẽ ngay lập tức kích hoạt lỗi runtime
+      // nếu điều kiện không đúng.
       Debug.Assert(child.HasMethod("set_visible"));
       Debug.Assert(child.IsInGroup("offer"));
       Debug.Assert(CanvasItem.InstanceHas(child));
 
-      // Can also use object labels to imply an interface, i.e. assume it
-      // implements certain methods.
-      // There are two types, both of which only exist for Nodes: Names and
-      // Groups.
+      // Bạn cũng có thể sử dụng object label để ngụ ý một interface, tức là giả định rằng nó
+      // triển khai một số phương thức nhất định.
+      // Có hai loại, cả hai chỉ tồn tại đối với Node: Name và
+      // Group.
 
-      // Assuming...
-      // A "Quest" object exists and 1) that it can "Complete" or "Fail" and
-      // that it will have Text available before and after each state...
+      // Giả sử...
+      // Một object "Quest" tồn tại và 1) nó có thể "Complete" hoặc "Fail", và
+      // nó sẽ có Text khả dụng trước và sau mỗi trạng thái...
 
-      // 1. Use a name.
+      // 1. Sử dụng một name.
       Node quest = GetNode("Quest");
       GD.Print(quest.Get("Text"));
-      quest.Call("Complete"); // or "Fail".
-      GD.Print(quest.Get("Text")); // Implied new text content.
+      quest.Call("Complete"); // hoặc "Fail".
+      GD.Print(quest.Get("Text")); // Nội dung text mới được ngầm định.
 
-      // 2. Use a group.
+      // 2. Sử dụng một group.
       foreach (Node AChild in GetChildren())
       {
           if (AChild.IsInGroup("quest"))
           {
             GD.Print(quest.Get("Text"));
-            quest.Call("Complete"); // or "Fail".
-            GD.Print(quest.Get("Text")); // Implied new text content.
+            quest.Call("Complete"); // hoặc "Fail".
+            GD.Print(quest.Get("Text")); // Nội dung text mới được ngầm định.
           }
       }
 
       // Note that these interfaces are project-specific conventions the team
-      // defines (which means documentation! But maybe worth it?).
-      // Any script that conforms to the documented "interface" of the
-      // name or group can fill in for it. Also note that in C#, these methods
-      // will be slower than static accesses with traditional interfaces.
+      // mà nó định nghĩa (điều này có nghĩa là phải có tài liệu! Nhưng có lẽ vẫn đáng làm?).
+      // Bất kỳ script nào tuân theo "interface" đã được mô tả trong tài liệu của
+      // name hoặc group đều có thể thay thế nó. Cũng lưu ý rằng trong C#, các phương thức này
+      // sẽ chậm hơn so với các truy cập tĩnh bằng interface truyền thống.
 
-- Outsource the access to a :ref:`Callable <class_Callable>`. These may be useful
-  in cases where one needs the max level of freedom from dependencies. In
-  this case, one relies on an external context to setup the method.
+- Ủy quyền việc truy cập cho :ref:`Callable <class_Callable>`. Cách này có thể hữu ích trong những trường hợp cần mức độ tự do tối đa khỏi các dependency. Trong trường hợp này, ta dựa vào một context bên ngoài để thiết lập phương thức.
 
 .. tabs::
   .. code-tab:: gdscript GDScript
@@ -533,5 +506,4 @@ accesses:
         }
     }
 
-These strategies contribute to Godot's flexible design. Between them, users
-have a breadth of tools to meet their specific needs.
+Các chiến lược này góp phần tạo nên thiết kế linh hoạt của Godot. Kết hợp chúng, người dùng có một loạt công cụ để đáp ứng các nhu cầu cụ thể của mình.

@@ -1,63 +1,32 @@
 .. _doc_node_alternatives:
 
-When and how to avoid using nodes for everything
-================================================
+Khi nào và làm thế nào để tránh sử dụng node cho mọi thứ
+========================================================
 
-Nodes are cheap to produce, but even they have their limits. A project may
-have tens of thousands of nodes all doing things. The more complex their
-behavior though, the larger the strain each one adds to a project's
-performance.
+Node rất dễ tạo, nhưng ngay cả chúng cũng có giới hạn. Một project có thể có hàng chục nghìn node cùng thực hiện các tác vụ. Tuy nhiên, hành vi của chúng càng phức tạp thì mỗi node càng gây nhiều áp lực lên performance của project.
 
-Godot provides more lightweight objects for creating APIs which nodes use.
-Be sure to keep these in mind as options when designing how you wish to build
-your project's features.
+Godot cung cấp các object nhẹ hơn để tạo các API mà node sử dụng. Hãy luôn cân nhắc chúng như những lựa chọn khi thiết kế cách xây dựng các tính năng cho project của bạn.
 
-1. :ref:`Object <class_Object>`: The ultimate lightweight object, the original
-   Object must use manual memory management. With that said, it isn't too
-   difficult to create one's own custom data structures, even node structures,
-   that are also lighter than the :ref:`Node <class_Node>` class.
+1. :ref:`Object <class_Object>`: Object nhẹ nhất, Object nguyên bản yêu cầu quản lý bộ nhớ thủ công. Dù vậy, việc tự tạo các cấu trúc dữ liệu tùy chỉnh của riêng mình, kể cả các cấu trúc node, cũng không quá khó; và chúng còn nhẹ hơn class :ref:`Node <class_Node>`.
 
-   - **Example:** See the :ref:`Tree <class_Tree>` node. It supports a high level
-     of customization for a table of content with an arbitrary number of
-     rows and columns. The data that it uses to generate its visualization
-     though is actually a tree of :ref:`TreeItem <class_TreeItem>` Objects.
+   - **Ví dụ:** Xem node :ref:`Tree <class_Tree>`. Nó hỗ trợ mức độ tùy biến cao cho một bảng nội dung có số hàng và cột tùy ý. Tuy nhiên, dữ liệu được dùng để tạo phần trực quan hóa của nó thực chất là một cây gồm các Object :ref:`TreeItem <class_TreeItem>`.
 
-   - **Advantages:** Simplifying one's API to smaller scoped objects helps improve
-     its accessibility and improve iteration time. Rather than working with the
-     entire Node library, one creates an abbreviated set of Objects from which
-     a node can generate and manage the appropriate sub-nodes.
+   - **Ưu điểm:** Đơn giản hóa API thành các object có phạm vi nhỏ hơn giúp cải thiện khả năng tiếp cận và rút ngắn thời gian lặp. Thay vì làm việc với toàn bộ thư viện Node, ta tạo một tập hợp Object rút gọn để node có thể tạo và quản lý các sub-node phù hợp.
 
    .. note::
 
-       One should be careful when handling them. One can store an Object
-       into a variable, but these references can become invalid without warning.
-       For example, if the object's creator decides to delete it out of nowhere,
-       this would trigger an error state when one next accesses it.
+       Cần cẩn thận khi xử lý chúng. Ta có thể lưu một Object vào một biến, nhưng các tham chiếu này có thể trở nên không hợp lệ mà không có cảnh báo. Ví dụ, nếu đối tượng tạo ra nó đột nhiên quyết định xóa nó, trạng thái lỗi sẽ được kích hoạt vào lần tiếp theo ta truy cập nó.
 
-2. :ref:`RefCounted <class_RefCounted>`: Only a little more complex than Object.
-   They track references to themselves, only deleting loaded memory when no
-   further references to themselves exist. These are useful in the majority of
-   cases where one needs data in a custom class.
+2. :ref:`RefCounted <class_RefCounted>`: Chỉ phức tạp hơn Object một chút. Chúng theo dõi các tham chiếu đến chính mình và chỉ xóa vùng nhớ đã cấp phát khi không còn tham chiếu nào khác đến chúng. Chúng hữu ích trong phần lớn trường hợp cần dữ liệu trong một class tùy chỉnh.
 
-   - **Example:** See the :ref:`FileAccess <class_FileAccess>` object. It functions
-     just like a regular Object except that one need not delete it themselves.
+   - **Ví dụ:** Xem object :ref:`FileAccess <class_FileAccess>`. Nó hoạt động giống hệt một Object thông thường, ngoại trừ việc ta không cần tự xóa nó.
 
-   - **Advantages:** same as the Object.
+   - **Ưu điểm:** giống như Object.
 
-3. :ref:`Resource <class_Resource>`: Only slightly more complex than RefCounted.
-   They have the innate ability to serialize/deserialize (i.e. save and load)
-   their object properties to/from Godot resource files.
+3. :ref:`Resource <class_Resource>`: Chỉ phức tạp hơn RefCounted một chút. Chúng có khả năng tích hợp để serialize/deserialize (tức là lưu và tải) các thuộc tính object của mình vào/từ các file resource của Godot.
 
-   - **Example:** Scripts, PackedScene (for scene files), and other types like
-     each of the :ref:`AudioEffect <class_AudioEffect>` classes. Each of these
-     can be saved and loaded, therefore they extend from Resource.
+   - **Ví dụ:** Scripts, PackedScene (dùng cho các file scene), và các loại khác như từng class :ref:`AudioEffect <class_AudioEffect>`. Tất cả các loại này đều có thể được lưu và tải, vì vậy chúng kế thừa từ Resource.
 
-   - **Advantages:** Much has
+   - **Ưu điểm:** Có rất nhiều
      :ref:`already been said <doc_resources>`
-     on :ref:`Resource <class_Resource>`'s advantages over traditional data
-     storage methods. In the context of using Resources over Nodes though,
-     their main advantage is in Inspector-compatibility. While nearly as
-     lightweight as Object/RefCounted, they can still display and export
-     properties in the Inspector. This allows them to fulfill a purpose much
-     like sub-Nodes on the usability front, but also improve performance if
-     one plans to have many such Resources/Nodes in their scenes.
+     về các ưu điểm của :ref:`Resource <class_Resource>` so với các phương pháp lưu trữ dữ liệu truyền thống. Tuy nhiên, trong bối cảnh sử dụng Resource thay cho Node, ưu điểm chính của chúng là khả năng tương thích với Inspector. Dù nhẹ gần như Object/RefCounted, chúng vẫn có thể hiển thị và export các thuộc tính trong Inspector. Điều này cho phép chúng đảm nhiệm vai trò tương tự như sub-Node về mặt khả năng sử dụng, đồng thời cải thiện performance nếu dự định có nhiều Resource/Node như vậy trong các scene của mình.

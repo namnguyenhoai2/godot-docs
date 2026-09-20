@@ -1,107 +1,67 @@
 .. _doc_autoloads_versus_regular_nodes:
 
-Autoloads versus regular nodes
-==============================
+Autoload và node thông thường
+=============================
 
-Godot offers a feature to automatically load nodes at the root of your project,
-allowing you to access them globally, that can fulfill the role of a Singleton:
+Godot cung cấp một tính năng tự động load các node tại root của project, cho phép bạn truy cập chúng trên toàn cục và có thể đảm nhiệm vai trò của một Singleton:
 :ref:`doc_singletons_autoload`. These autoloaded nodes are not freed when you
-change the scene from code with :ref:`SceneTree.change_scene_to_file <class_SceneTree_method_change_scene_to_file>`.
+thay đổi scene từ code bằng :ref:`SceneTree.change_scene_to_file <class_SceneTree_method_change_scene_to_file>`.
 
-In this guide, you will learn when to use the Autoload feature, and techniques
-you can use to avoid it.
+Trong hướng dẫn này, bạn sẽ tìm hiểu khi nào nên sử dụng tính năng Autoload và những kỹ thuật có thể dùng để tránh sử dụng nó.
 
-The cutting audio issue
+Vấn đề âm thanh bị ngắt
 -----------------------
 
-Other engines can encourage the use of creating manager classes, singletons that
-organize a lot of functionality into a globally accessible object. Godot offers
-many ways to avoid global state thanks to the node tree and signals.
+Các engine khác có thể khuyến khích việc tạo các manager class, tức những singleton tổ chức nhiều chức năng vào một object có thể truy cập trên toàn cục. Godot cung cấp nhiều cách để tránh global state nhờ node tree và signal.
 
-For example, let's say we are building a platformer and want to collect coins
-that play a sound effect. There's a node for that: the :ref:`AudioStreamPlayer
-<class_AudioStreamPlayer>`. But if we call the ``AudioStreamPlayer`` while it is
-already playing a sound, the new sound interrupts the first.
+Ví dụ, giả sử chúng ta đang xây dựng một platformer và muốn thu thập các coin phát ra sound effect. Có một node dành cho việc đó: :ref:`AudioStreamPlayer <class_AudioStreamPlayer>`. Nhưng nếu chúng ta gọi ``AudioStreamPlayer`` khi nó đang phát âm thanh, âm thanh mới sẽ ngắt âm thanh đầu tiên.
 
-A solution is to code a global, autoloaded sound manager class. It generates a
-pool of ``AudioStreamPlayer`` nodes that cycle through as each new request for
-sound effects comes in. Say we call that class ``Sound``, you can use it from
-anywhere in your project by calling ``Sound.play("coin_pickup.ogg")``. This
-solves the problem in the short term but causes more problems:
+Một giải pháp là viết code cho một sound manager class được autoload trên toàn cục. Class này tạo một pool các node ``AudioStreamPlayer`` và luân phiên sử dụng chúng khi có yêu cầu sound effect mới. Giả sử chúng ta gọi class đó là ``Sound``, bạn có thể sử dụng nó ở bất kỳ đâu trong project bằng cách gọi ``Sound.play("coin_pickup.ogg")``. Cách này giải quyết vấn đề trong ngắn hạn nhưng lại gây ra nhiều vấn đề hơn:
 
-1. **Global state**: one object is now responsible for all objects' data. If the
-   ``Sound`` class has errors or doesn't have an AudioStreamPlayer available,
-   all the nodes calling it can break.
+1. **Global state**: một object hiện chịu trách nhiệm về dữ liệu của tất cả object. Nếu class ``Sound`` có lỗi hoặc không có sẵn một AudioStreamPlayer, tất cả node gọi đến nó đều có thể gặp lỗi.
 
-2. **Global access**: now that any object can call ``Sound.play(sound_path)``
-   from anywhere, there's no longer an easy way to find the source of a bug.
+2. **Global access**: giờ đây bất kỳ object nào cũng có thể gọi ``Sound.play(sound_path)`` từ bất kỳ đâu, nên không còn cách dễ dàng để tìm ra nguồn gốc của một bug.
 
-3. **Global resource allocation**: with a pool of ``AudioStreamPlayer`` nodes
-   stored from the start, you can either have too few and face bugs, or too many
-   and use more memory than you need.
+3. **Global resource allocation**: với một pool các node ``AudioStreamPlayer`` được lưu trữ ngay từ đầu, bạn có thể tạo quá ít node và gặp bug, hoặc tạo quá nhiều node và sử dụng nhiều memory hơn mức cần thiết.
 
 .. note::
 
-   About global access, the problem is that any code anywhere could pass wrong
-   data to the ``Sound`` autoload in our example. As a result, the domain to
-   explore to fix the bug spans the entire project.
+   Về global access, vấn đề là bất kỳ code nào ở bất kỳ đâu cũng có thể truyền dữ liệu sai vào autoload ``Sound`` trong ví dụ của chúng ta. Do đó, phạm vi cần kiểm tra để sửa bug bao trùm toàn bộ project.
 
-   When you keep code inside a scene, only one or two scripts may be
-   involved in audio.
+   Khi bạn giữ code bên trong một scene, chỉ một hoặc hai script có thể liên quan đến phần âm thanh.
 
-Contrast this with each scene keeping as many ``AudioStreamPlayer`` nodes as it
-needs within itself and all these problems go away:
+Ngược lại, nếu mỗi scene tự giữ số lượng node ``AudioStreamPlayer`` cần thiết bên trong nó, tất cả những vấn đề này sẽ biến mất:
 
-1. Each scene manages its own state information. If there is a problem with the
-   data, it will only cause issues in that one scene.
+1. Mỗi scene quản lý thông tin state của riêng mình. Nếu dữ liệu có vấn đề, nó chỉ gây ra sự cố trong scene đó.
 
-2. Each scene accesses only its own nodes. Now, if there is
-   a bug, it's easy to find which node is at fault.
+2. Mỗi scene chỉ truy cập các node của riêng mình. Khi đó, nếu có bug, bạn sẽ dễ dàng tìm ra node gây lỗi.
 
-3. Each scene allocates exactly the amount of resources it needs.
+3. Mỗi scene phân bổ đúng lượng resource mà nó cần.
 
-Managing shared functionality or data
--------------------------------------
+Quản lý chức năng hoặc dữ liệu dùng chung
+-----------------------------------------
 
-Another reason to use an Autoload can be that you want to reuse the same method
-or data across many scenes.
+Một lý do khác để sử dụng Autoload là bạn muốn tái sử dụng cùng một method hoặc dữ liệu trong nhiều scene.
 
-In the case of functions, you can create a new type of ``Node`` that provides
-that feature for an individual scene using the :ref:`class_name
-<doc_gdscript_basics_class_name>` keyword in GDScript.
+Đối với function, bạn có thể tạo một kiểu ``Node`` mới cung cấp tính năng đó cho một scene riêng lẻ bằng keyword :ref:`class_name <doc_gdscript_basics_class_name>` trong GDScript.
 
-When it comes to data, you can either:
+Đối với dữ liệu, bạn có thể:
 
-1. Create a new type of :ref:`Resource <class_Resource>` to share the data.
+1. Tạo một kiểu :ref:`Resource <class_Resource>` mới để chia sẻ dữ liệu.
 
-2. Store the data in an object to which each node has access, for example using
-   the ``owner`` property to access the scene's root node.
+2. Lưu dữ liệu trong một object mà mỗi node đều có thể truy cập, chẳng hạn sử dụng property ``owner`` để truy cập root node của scene.
 
-When you should use an Autoload
--------------------------------
+Khi nào nên sử dụng Autoload
+----------------------------
 
-GDScript supports the creation of ``static`` functions using ``static func``.
-When combined with ``class_name``, this makes it possible to create libraries of
-helper functions without having to create an instance to call them. The
-limitation of static functions is that they can't reference member variables,
-non-static functions or ``self``.
+GDScript hỗ trợ tạo các function ``static`` bằng ``static func``. Khi kết hợp với ``class_name``, tính năng này cho phép tạo các thư viện helper function mà không cần tạo một instance để gọi chúng. Hạn chế của static function là chúng không thể tham chiếu đến member variable, non-static function hoặc ``self``.
 
-Since Godot 4.1, GDScript also supports ``static`` variables using ``static var``.
-This means you can now share variables across instances of a class without
-having to create a separate autoload.
+Kể từ Godot 4.1, GDScript cũng hỗ trợ các variable ``static`` bằng ``static var``. Điều này có nghĩa là giờ đây bạn có thể chia sẻ variable giữa các instance của một class mà không cần tạo một autoload riêng.
 
-Still, autoloaded nodes can simplify your code for systems with a wide scope. If
-the autoload is managing its own information and not invading the data of other
-objects, then it's a great way to create systems that handle broad-scoped tasks.
-For example, a quest or a dialogue system.
+Tuy vậy, các node được autoload vẫn có thể đơn giản hóa code của bạn đối với những system có phạm vi hoạt động rộng. Nếu autoload tự quản lý thông tin của nó và không can thiệp vào dữ liệu của các object khác, thì đây là một cách tuyệt vời để tạo các system xử lý những task có phạm vi rộng. Ví dụ: system quest hoặc dialogue.
 
 .. note::
 
-   An autoload is *not* necessarily a singleton. Nothing prevents you from
-   instantiating copies of an autoloaded node. An autoload is only a tool that
-   makes a node load automatically as a child of the root of your scene tree,
-   regardless of your game's node structure or which scene you run, e.g. by
-   pressing the :kbd:`F6` key.
+   Một autoload *không nhất thiết* là một singleton. Không có gì ngăn bạn tạo các bản sao của một node được autoload. Autoload chỉ là một công cụ giúp một node tự động được load như một child của root trong scene tree, bất kể cấu trúc node của game hoặc scene mà bạn chạy, chẳng hạn bằng cách nhấn phím :kbd:`F6`.
 
-   As a result, you can get the autoloaded node, for example an autoload called
-   ``Sound``, by calling ``get_node("/root/Sound")``.
+   Do đó, bạn có thể lấy node được autoload, chẳng hạn một autoload có tên ``Sound``, bằng cách gọi ``get_node("/root/Sound")``.

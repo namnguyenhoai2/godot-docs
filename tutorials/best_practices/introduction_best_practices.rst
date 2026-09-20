@@ -1,29 +1,18 @@
 .. _doc_introduction_best_practices:
 
-Introduction
-============
+Giới thiệu
+==========
 
-This series is a collection of best practices to help you work efficiently with
-Godot.
+Loạt bài này là tập hợp các best practice giúp bạn làm việc hiệu quả với Godot.
 
-Godot allows for a great amount of flexibility in how you structure a project's
-codebase and break it down into scenes. Each approach has its pros and
-cons, and they can be hard to weigh until you've worked with the engine for long enough.
+Godot mang đến rất nhiều sự linh hoạt trong cách bạn cấu trúc codebase của một dự án và chia nhỏ dự án đó thành các scene. Mỗi cách tiếp cận đều có ưu và nhược điểm, và có thể rất khó cân nhắc cho đến khi bạn đã làm việc với engine đủ lâu.
 
-There are always many ways to structure your code and solve specific programming
-problems. It would be impossible to cover them all here.
+Luôn có nhiều cách để cấu trúc code và giải quyết các vấn đề lập trình cụ thể. Sẽ không thể đề cập đến tất cả trong tài liệu này.
 
-That is why each article starts from a real-world problem. We will break down
-each problem in fundamental questions, suggest solutions, analyze the pros and
-cons of each option, and highlight the best course of action for the problem at hand.
+Đó là lý do mỗi bài viết đều bắt đầu từ một vấn đề thực tế. Chúng ta sẽ phân tích từng vấn đề thành các câu hỏi nền tảng, đề xuất giải pháp, phân tích ưu và nhược điểm của từng lựa chọn, đồng thời nêu bật hướng xử lý tốt nhất cho vấn đề đang xét.
 
-You should start by reading :ref:`doc_what_are_godot_classes`. It explains how
-Godot's nodes and scenes relate to classes and objects in other
-Object-Oriented programming languages. It will help you make sense of the rest of the series.
+Bạn nên bắt đầu bằng cách đọc :ref:`doc_what_are_godot_classes`. Tài liệu này giải thích mối liên hệ giữa các node và scene của Godot với class và object trong các ngôn ngữ lập trình hướng đối tượng (Object-Oriented) khác. Tài liệu sẽ giúp bạn hiểu phần còn lại của loạt bài.
 
 .. note::
 
-   The best practices in Godot rely on Object-Oriented design principles. We
-   use tools like the `single responsibility
-   <https://en.wikipedia.org/wiki/Single_responsibility_principle>`_ principle and
-   `encapsulation <https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)>`_.
+   Các best practice trong Godot dựa trên những nguyên tắc thiết kế hướng đối tượng (Object-Oriented). Chúng ta sử dụng các công cụ như nguyên tắc `single responsibility <https://en.wikipedia.org/wiki/Single_responsibility_principle>`_ và `encapsulation <https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)>`_.

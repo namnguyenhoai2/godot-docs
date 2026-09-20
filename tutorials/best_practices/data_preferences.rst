@@ -2,236 +2,143 @@
 
 .. _doc_data_preferences:
 
-Data preferences
+Tùy chọn dữ liệu
 ================
 
-Ever wondered whether one should approach problem X with data structure
-Y or Z? This article covers a variety of topics related to these dilemmas.
+Bạn đã bao giờ tự hỏi nên tiếp cận bài toán X bằng cấu trúc dữ liệu Y hay Z chưa? Bài viết này trình bày nhiều chủ đề liên quan đến những vấn đề nan giải đó.
 
 .. note::
 
-    This article makes references to "[something]-time" operations. This
-    terminology comes from algorithm analysis'
-    `Big O Notation <https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation/>`_.
+    Bài viết này đề cập đến các thao tác "[something]-time". Thuật ngữ này xuất phát từ `Big O Notation <https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation/>`_ trong phân tích thuật toán.
 
-    Long-story short, it describes the worst-case scenario of runtime length.
-    In laymen's terms:
+    Nói ngắn gọn, nó mô tả trường hợp xấu nhất về thời lượng runtime. Nói theo cách dễ hiểu:
 
-    "As the size of a problem domain increases, the runtime length of the
-    algorithm..."
+    "Khi kích thước của miền bài toán tăng lên, thời lượng runtime của thuật toán..."
 
-    - Constant-time, ``O(1)``: "...does not increase."
-    - Logarithmic-time, ``O(log n)``: "...increases at a slow rate."
-    - Linear-time, ``O(n)``: "...increases at the same rate."
-    - Etc.
+    - Constant-time, ``O(1)``: "...không tăng." - Logarithmic-time, ``O(log n)``: "...tăng với tốc độ chậm." - Linear-time, ``O(n)``: "...tăng với cùng một tốc độ." - Vân vân.
 
-    Imagine if one had to process 3 million data points within a single frame. It
-    would be impossible to craft the feature with a linear-time algorithm since
-    the sheer size of the data would increase the runtime far beyond the time allotted.
-    In comparison, using a constant-time algorithm could handle the operation without
-    issue.
+    Hãy thử tưởng tượng phải xử lý 3 triệu điểm dữ liệu trong một frame duy nhất. Sẽ không thể xây dựng tính năng bằng một thuật toán linear-time, vì kích thước dữ liệu quá lớn sẽ khiến runtime tăng vượt xa khoảng thời gian được phân bổ. Ngược lại, sử dụng thuật toán constant-time có thể xử lý thao tác này mà không gặp vấn đề gì.
 
-    By and large, developers want to avoid engaging in linear-time operations as
-    much as possible. But, if one keeps the scale of a linear-time operation
-    small, and if one does not need to perform the operation often, then it may
-    be acceptable. Balancing these requirements and choosing the right
-    algorithm / data structure for the job is part of what makes programmers'
-    skills valuable.
+    Nhìn chung, các developer muốn tránh thực hiện các thao tác linear-time nhiều nhất có thể. Tuy nhiên, nếu giữ quy mô của một thao tác linear-time ở mức nhỏ và không cần thực hiện thao tác đó thường xuyên, thì nó có thể chấp nhận được. Cân bằng các yêu cầu này và chọn đúng thuật toán / cấu trúc dữ liệu cho công việc là một phần khiến kỹ năng của programmer trở nên có giá trị.
 
-Array vs. Dictionary vs. Object
--------------------------------
+Array so với Dictionary so với Object
+-------------------------------------
 
-Godot stores all variables in the scripting API in the
+Godot lưu trữ tất cả biến trong scripting API dưới dạng
 :ref:`Variant <doc_variant_class>` class.
-Variants can store Variant-compatible data structures such as
+Variant có thể lưu trữ các cấu trúc dữ liệu tương thích với Variant như
 :ref:`Array <class_Array>` and :ref:`Dictionary <class_Dictionary>` as well
-as :ref:`Objects <class_Object>`.
+dưới dạng :ref:`Objects <class_Object>`.
 
-Godot implements Array as a ``Vector<Variant>``. The engine stores the Array
-contents in a contiguous section of memory, i.e. they are in a row adjacent
-to each other.
+Godot triển khai Array dưới dạng ``Vector<Variant>``. Engine lưu trữ nội dung của Array trong một vùng bộ nhớ liền kề, tức là chúng nằm nối tiếp nhau trên một hàng.
 
 .. note::
 
-    For those unfamiliar with C++, a Vector is the name of the
-    array object in traditional C++ libraries. It is a "templated"
-    type, meaning that its records can only contain a particular type (denoted
-    by angled brackets). So, for example, a
+    Đối với những người chưa quen với C++, Vector là tên của đối tượng array trong các thư viện C++ truyền thống. Đây là một kiểu "templated", nghĩa là các record của nó chỉ có thể chứa một kiểu cụ thể (được biểu thị bằng dấu ngoặc nhọn). Ví dụ, một
     :ref:`PackedStringArray <class_PackedStringArray>` would be something like
-    a ``Vector<String>``.
+    một ``Vector<String>``.
 
-Contiguous memory stores imply the following operation performance:
+Việc lưu trữ trong bộ nhớ liền kề dẫn đến hiệu năng của các thao tác sau:
 
-- **Iterate:** Fastest. Great for loops.
+- **Duyệt:** Nhanh nhất. Rất phù hợp cho các vòng lặp.
 
-    - Op: All it does is increment a counter to get to the next record.
+    - Thao tác: Tất cả những gì nó làm là tăng một bộ đếm để đi đến record tiếp theo.
 
-- **Insert, Erase, Move:** Position-dependent. Generally slow.
+- **Chèn, Xóa, Di chuyển:** Phụ thuộc vào vị trí. Nhìn chung là chậm.
 
-    - Op: Adding/removing/moving content involves moving the adjacent records
-      over (to make room / fill space).
+    - Thao tác: Việc thêm/xóa/di chuyển nội dung bao gồm việc di chuyển các record liền kề sang vị trí khác (để tạo khoảng trống / lấp đầy khoảng trống).
 
-    - Fast add/remove *from the end*.
+    - Thêm/xóa *ở cuối* nhanh.
 
-    - Slow add/remove *from an arbitrary position*.
+    - Thêm/xóa *tại một vị trí bất kỳ* chậm.
 
-    - Slowest add/remove *from the front*.
+    - Thêm/xóa *ở đầu* chậm nhất.
 
-    - If doing many inserts/removals *from the front*, then...
+    - Nếu thực hiện nhiều thao tác chèn/xóa *ở đầu*, thì hãy...
 
-        1. invert the array.
+        1. đảo ngược array.
 
-        2. do a loop which executes the Array changes *at the end*.
+        2. thực hiện một vòng lặp áp dụng các thay đổi cho Array *ở cuối*.
 
-        3. re-invert the array.
+        3. đảo ngược array lại.
 
-      This makes only 2 copies of the array (still constant time, but slow)
-      versus copying roughly 1/2 of the array, on average, N times (linear time).
+      Cách này chỉ tạo 2 bản sao của array (vẫn là constant time, nhưng chậm) thay vì sao chép khoảng 1/2 array trung bình N lần (linear time).
 
-- **Get, Set:** Fastest *by position*. E.g. can request 0th, 2nd, 10th record, etc.
-  but cannot specify which record you want.
+- **Lấy, Gán:** Nhanh nhất *theo vị trí*. Ví dụ, có thể yêu cầu record thứ 0, thứ 2, thứ 10, v.v. nhưng không thể chỉ định record cụ thể mà bạn muốn.
 
-    - Op: 1 addition operation from array start position up to desired index.
+    - Thao tác: 1 thao tác cộng từ vị trí bắt đầu của array đến index mong muốn.
 
-- **Find:** Slowest. Identifies the index/position of a value.
+- **Tìm:** Chậm nhất. Xác định index/vị trí của một giá trị.
 
-    - Op: Must iterate through array and compare values until one finds a match.
+    - Thao tác: Phải duyệt qua array và so sánh các giá trị cho đến khi tìm thấy giá trị khớp.
 
-        - Performance is also dependent on whether one needs an exhaustive
-          search.
+        - Hiệu năng cũng phụ thuộc vào việc có cần tìm kiếm toàn diện hay không.
 
-    - If kept ordered, custom search operations can bring it to logarithmic
-      time (relatively fast). Laymen users won't be comfortable with this
-      though. Done by re-sorting the Array after every edit and writing an
-      ordered-aware search algorithm.
+    - Nếu được giữ theo thứ tự, các thao tác tìm kiếm tùy chỉnh có thể đưa nó về logarithmic time (tương đối nhanh). Tuy nhiên, người dùng thông thường sẽ không thấy thoải mái với cách này. Cách thực hiện là sắp xếp lại Array sau mỗi lần chỉnh sửa và viết một thuật toán tìm kiếm có nhận biết thứ tự.
 
-Godot implements Dictionary as a ``HashMap<Variant, Variant, VariantHasher, StringLikeVariantComparator>``. The engine
-stores a small array (initialized to 2^3 or 8 records) of key-value pairs. When
-one attempts to access a value, they provide it a key. It then *hashes* the
-key, i.e. converts it into a number. The "hash" is used to calculate the index
-into the array. As an array, the HM then has a quick lookup within the "table"
-of keys mapped to values. When the HashMap becomes too full, it increases to
-the next power of 2 (so, 16 records, then 32, etc.) and rebuilds the structure.
+Godot triển khai Dictionary dưới dạng ``HashMap<Variant, Variant, VariantHasher, StringLikeVariantComparator>``. Engine lưu trữ một array nhỏ (được khởi tạo với 2^3 hay 8 record) gồm các cặp key-value. Khi muốn truy cập một giá trị, người dùng cung cấp cho nó một key. Sau đó, nó *hash* key đó, tức là chuyển nó thành một số. "Hash" được dùng để tính index trong array. Với tư cách là một array, HM sau đó có thể tra cứu nhanh trong "table" gồm các key được ánh xạ đến các value. Khi HashMap trở nên quá đầy, nó tăng lên lũy thừa tiếp theo của 2 (16 record, rồi 32, v.v.) và xây dựng lại cấu trúc.
 
-Hashes are to reduce the chance of a key collision. If one occurs, the table
-must recalculate another index for the value that takes the previous position
-into account. In all, this results in constant-time access to all records at
-the expense of memory and some minor operational efficiency.
+Hash nhằm giảm khả năng xảy ra xung đột key. Nếu xảy ra xung đột, table phải tính lại một index khác cho value, có tính đến vị trí trước đó. Nhìn chung, điều này tạo ra khả năng truy cập constant-time đến mọi record, đánh đổi bằng bộ nhớ và một phần nhỏ hiệu quả vận hành.
 
-1. Hashing every key an arbitrary number of times.
+1. Hash mỗi key một số lần tùy ý.
 
-    - Hash operations are constant-time, so even if an algorithm must do more
-      than one, as long as the number of hash calculations doesn't become
-      too dependent on the density of the table, things will stay fast.
-      Which leads to...
+    - Các thao tác hash là constant-time, vì vậy ngay cả khi một thuật toán phải thực hiện nhiều hơn một thao tác, miễn là số lần tính hash không trở nên quá phụ thuộc vào mật độ của table thì mọi thứ vẫn sẽ nhanh. Điều này dẫn đến...
 
-2. Maintaining an ever-growing size for the table.
+2. Duy trì kích thước ngày càng tăng cho table.
 
-    - HashMaps maintain gaps of unused memory interspersed in the table
-      on purpose to reduce hash collisions and maintain the speed of
-      accesses. This is why it constantly increases in size exponentially by
-      powers of 2.
+    - HashMap cố ý duy trì các khoảng bộ nhớ chưa sử dụng xen kẽ trong table để giảm xung đột hash và duy trì tốc độ truy cập. Đây là lý do kích thước của nó liên tục tăng theo cấp số nhân bằng các lũy thừa của 2.
 
-As one might be able to tell, Dictionaries specialize in tasks that Arrays
-do not. An overview of their operational details is as follows:
+Có thể thấy, Dictionary chuyên dụng cho những tác vụ mà Array không phù hợp. Tổng quan về chi tiết vận hành của chúng như sau:
 
-- **Iterate:** Fast.
+- **Duyệt:** Nhanh.
 
-    - Op: Iterate over the map's internal vector of hashes. Return each key.
-      Afterwards, users then use the key to jump to and return the desired
-      value.
+    - Thao tác: Duyệt qua vector hash nội bộ của map. Trả về từng key. Sau đó, người dùng sử dụng key để nhảy đến và trả về value mong muốn.
 
-- **Insert, Erase, Move:** Fastest.
+- **Chèn, Xóa, Di chuyển:** Nhanh nhất.
 
-    - Op: Hash the given key. Do 1 addition operation to look up the
-      appropriate value (array start + offset). Move is two of these
-      (one insert, one erase). The map must do some maintenance to preserve
-      its capabilities:
+    - Thao tác: Hash key được cung cấp. Thực hiện 1 thao tác cộng để tra cứu value thích hợp (đầu array + offset). Di chuyển là hai thao tác như vậy (một lần chèn, một lần xóa). Map phải thực hiện một số công việc bảo trì để duy trì các khả năng của nó:
 
-        - update ordered List of records.
+        - cập nhật List record được sắp xếp theo thứ tự.
 
-        - determine if table density mandates a need to expand table capacity.
+        - xác định xem mật độ của table có yêu cầu mở rộng dung lượng table hay không.
 
-    - The Dictionary remembers in what
-      order users inserted its keys. This enables it to execute reliable iterations.
+    - Dictionary ghi nhớ thứ tự mà người dùng đã chèn các key. Điều này cho phép nó thực hiện các lần duyệt đáng tin cậy.
 
-- **Get, Set:** Fastest. Same as a lookup *by key*.
+- **Lấy, Gán:** Nhanh nhất. Giống như tra cứu *theo key*.
 
-    - Op: Same as insert/erase/move.
+    - Thao tác: Giống như chèn/xóa/di chuyển.
 
-- **Find:** Slowest. Identifies the key of a value.
+- **Tìm:** Chậm nhất. Xác định key của một value.
 
-    - Op: Must iterate through records and compare the value until a match is
-      found.
+    - Thao tác: Phải duyệt qua các record và so sánh value cho đến khi tìm thấy giá trị khớp.
 
-    - Note that Godot does not provide this feature out-of-the-box (because
-      they aren't meant for this task).
+    - Lưu ý rằng Godot không cung cấp tính năng này out-of-the-box (vì chúng không dành cho tác vụ này).
 
-Godot implements Objects as stupid, but dynamic containers of data content.
-Objects query data sources when posed questions. For example, to answer
-the question, "do you have a property called, 'position'?", it might ask
-its :ref:`script <class_Script>` or the :ref:`ClassDB <class_ClassDB>`.
-One can find more information about what objects are and how they work in
-the :ref:`doc_what_are_godot_classes` article.
+Godot triển khai Object dưới dạng các container dữ liệu đơn giản nhưng dynamic. Object truy vấn các nguồn dữ liệu khi được đặt câu hỏi. Ví dụ, để trả lời câu hỏi "bạn có property tên là 'position' không?", nó có thể hỏi :ref:`script <class_Script>` hoặc :ref:`ClassDB <class_ClassDB>`. Bạn có thể tìm thêm thông tin về Object là gì và cách chúng hoạt động trong bài viết :ref:`doc_what_are_godot_classes`.
 
-The important detail here is the complexity of the Object's task. Every time
-it performs one of these multi-source queries, it runs through *several*
-iteration loops and HashMap lookups. What's more, the queries are linear-time
-operations dependent on the Object's inheritance hierarchy size. If the class
-the Object queries (its current class) doesn't find anything, the request
-defers to the next base class, all the way up until the original Object class.
-While these are each fast operations in isolation, the fact that it must make
-so many checks is what makes them slower than both of the alternatives for
-looking up data.
+Chi tiết quan trọng ở đây là độ phức tạp của tác vụ mà Object thực hiện. Mỗi khi thực hiện một trong các truy vấn từ nhiều nguồn này, nó chạy qua *một số* vòng lặp duyệt và các lần tra cứu HashMap. Hơn nữa, các truy vấn này là những thao tác linear-time phụ thuộc vào kích thước của hệ thống phân cấp kế thừa của Object. Nếu class mà Object truy vấn (class hiện tại của nó) không tìm thấy gì, yêu cầu sẽ được chuyển tiếp đến base class tiếp theo, cho đến tận class Object ban đầu. Mặc dù mỗi thao tác này đều nhanh khi thực hiện riêng lẻ, việc phải thực hiện quá nhiều lần kiểm tra khiến chúng chậm hơn cả hai lựa chọn còn lại khi tra cứu dữ liệu.
 
 .. note::
 
-  When developers mention how slow the scripting API is, it is this chain
-  of queries they refer to. Compared to compiled C++ code where the
-  application knows exactly where to go to find anything, it is inevitable
-  that scripting API operations will take much longer. They must locate the
-  source of any relevant data before they can attempt to access it.
+  Khi developer đề cập đến việc scripting API chậm như thế nào, họ đang nói đến chuỗi truy vấn này. So với code C++ đã compile, nơi application biết chính xác phải đi đâu để tìm bất kỳ thứ gì, việc các thao tác của scripting API mất nhiều thời gian hơn là điều không thể tránh khỏi. Chúng phải xác định nguồn của mọi dữ liệu liên quan trước khi có thể cố gắng truy cập dữ liệu đó.
 
-  The reason GDScript is slow is because every operation it performs passes
-  through this system.
+  Lý do GDScript chậm là vì mọi thao tác mà nó thực hiện đều đi qua hệ thống này.
 
-  C# can process some content at higher speeds via more optimized bytecode.
-  But, if the C# script calls into an engine class'
-  content or if the script tries to access something external to it, it will
-  go through this pipeline.
+  C# có thể xử lý một số nội dung với tốc độ cao hơn nhờ bytecode được tối ưu hóa tốt hơn. Tuy nhiên, nếu script C# gọi đến nội dung của một engine class hoặc cố gắng truy cập thứ gì đó bên ngoài nó, script sẽ đi qua pipeline này.
 
-  NativeScript C++ goes even further and keeps everything internal by default.
-  Calls into external structures will go through the scripting API. In
-  NativeScript C++, registering methods to expose them to the scripting API is
-  a manual task. It is at this point that external, non-C++ classes will use
-  the API to locate them.
+  NativeScript C++ tiến xa hơn nữa và mặc định giữ mọi thứ ở bên trong. Các lệnh gọi đến cấu trúc bên ngoài sẽ đi qua scripting API. Trong NativeScript C++, việc đăng ký các method để expose chúng cho scripting API là một tác vụ thủ công. Đây là lúc các class bên ngoài, không phải C++, sẽ sử dụng API để định vị chúng.
 
-So, assuming one extends from Reference to create a data structure, like
-an Array or Dictionary, why choose an Object over the other two options?
+Vậy, nếu một người kế thừa từ Reference để tạo một cấu trúc dữ liệu, chẳng hạn như Array hoặc Dictionary, tại sao lại chọn Object thay vì hai tùy chọn còn lại?
 
-1. **Control:** With objects comes the ability to create more sophisticated
-   structures. One can layer abstractions over the data to ensure the external
-   API doesn't change in response to internal data structure changes. What's
-   more, Objects can have signals, allowing for reactive behavior.
+1. **Kiểm soát:** Với Object, bạn có khả năng tạo ra các cấu trúc tinh vi hơn. Có thể xây dựng các abstraction trên dữ liệu để đảm bảo API bên ngoài không thay đổi khi cấu trúc dữ liệu bên trong thay đổi. Hơn nữa, Object có thể có signal, cho phép tạo ra hành vi reactive.
 
-2. **Clarity:** Objects are a reliable data source when it comes to the data
-   that scripts and engine classes define for them. Properties may not hold the
-   values one expects, but one doesn't need to worry about whether the property
-   exists in the first place.
+2. **Tính rõ ràng:** Object là một nguồn dữ liệu đáng tin cậy khi nói đến dữ liệu mà script và engine class định nghĩa cho chúng. Property có thể không chứa các giá trị mà người ta mong đợi, nhưng không cần lo lắng liệu property đó có tồn tại ngay từ đầu hay không.
 
-3. **Convenience:** If one already has a similar data structure in mind, then
-   extending from an existing class makes the task of building the data
-   structure much easier. In comparison, Arrays and Dictionaries don't
-   fulfill all use cases one might have.
+3. **Sự tiện lợi:** Nếu đã có sẵn một cấu trúc dữ liệu tương tự trong đầu, việc kế thừa từ một class hiện có sẽ giúp công việc xây dựng cấu trúc dữ liệu dễ dàng hơn nhiều. Ngược lại, Array và Dictionary không đáp ứng được mọi trường hợp sử dụng có thể phát sinh.
 
-Objects also give users the opportunity to create even more specialized data
-structures. With it, one can design their own List, Binary Search Tree, Heap,
-Splay Tree, Graph, Disjoint Set, and any host of other options.
+Object cũng mang đến cho người dùng cơ hội tạo ra những cấu trúc dữ liệu chuyên biệt hơn nữa. Với chúng, ta có thể thiết kế List, Binary Search Tree, Heap, Splay Tree, Graph, Disjoint Set của riêng mình, cùng vô số lựa chọn khác.
 
-"Why not use Node for tree structures?" one might ask. Well, the Node
-class contains things that won't be relevant to one's custom data structure.
-As such, it can be helpful to construct one's own node type when building
-tree structures.
+"Tại sao không dùng Node cho các cấu trúc cây?" có thể ai đó sẽ hỏi. Vâng, class Node chứa những thành phần không liên quan đến cấu trúc dữ liệu tùy chỉnh của ta. Vì vậy, việc tự xây dựng kiểu node riêng có thể hữu ích khi tạo các cấu trúc cây.
 
 .. tabs::
   .. code-tab:: gdscript GDScript
@@ -254,7 +161,7 @@ tree structures.
     using Godot;
     using System.Collections.Generic;
 
-    // Can decide whether to expose getters/setters for properties later
+    // Có thể quyết định sau có expose getter/setter cho các property hay không
     public partial class TreeNode : GodotObject
     {
         private TreeNode _parent = null;
@@ -275,91 +182,51 @@ tree structures.
         }
     }
 
-From here, one can then create their own structures with specific features,
-limited only by their imagination.
+Từ đây, ta có thể tạo ra các cấu trúc của riêng mình với những tính năng cụ thể, chỉ bị giới hạn bởi trí tưởng tượng.
 
-Enumerations: int vs. string
-----------------------------
+Enumeration: int so với string
+------------------------------
 
-Most languages offer an enumeration type option. GDScript is no different, but
-unlike most other languages, it allows one to use either integers or strings for
-the enum values (the latter only when using the ``@export_enum`` annotation in GDScript).
-The question then arises, "which should one use?"
+Hầu hết các ngôn ngữ đều cung cấp tùy chọn kiểu enumeration. GDScript cũng không ngoại lệ, nhưng khác với hầu hết các ngôn ngữ khác, nó cho phép sử dụng either integer hoặc string cho các giá trị enum (loại sau chỉ khi sử dụng annotation ``@export_enum`` trong GDScript). Khi đó, câu hỏi đặt ra là: "nên dùng loại nào?"
 
-The short answer is, "whichever you are more comfortable with." This
-is a feature specific to GDScript and not Godot scripting in general;
-The languages prioritizes usability over performance.
+Câu trả lời ngắn gọn là: "loại nào khiến bạn cảm thấy thoải mái hơn." Đây là một tính năng riêng của GDScript chứ không phải của việc scripting trong Godot nói chung; ngôn ngữ này ưu tiên tính dễ sử dụng hơn hiệu năng.
 
-On a technical level, integer comparisons (constant-time) will happen
-faster than string comparisons (linear-time). If one wants to keep
-up other languages' conventions though, then one should use integers.
+Ở cấp độ kỹ thuật, phép so sánh integer (constant-time) sẽ nhanh hơn phép so sánh string (linear-time). Tuy nhiên, nếu muốn tuân theo quy ước của các ngôn ngữ khác, bạn nên sử dụng integer.
 
-The primary issue with using integers comes up when one wants to *print*
-an enum value. As integers, attempting to print ``MY_ENUM`` will print
-``5`` or what-have-you, rather than something like ``"MyEnum"``. To
-print an integer enum, one would have to write a Dictionary that maps the
-corresponding string value for each enum.
+Vấn đề chính khi sử dụng integer xuất hiện lúc muốn *in* một giá trị enum. Với integer, việc cố in ``MY_ENUM`` sẽ in ra ``5`` hoặc một giá trị tương tự, thay vì thứ gì đó như ``"MyEnum"``. Để in một enum integer, ta phải viết một Dictionary ánh xạ giá trị string tương ứng cho mỗi enum.
 
-If the primary purpose of using an enum is for printing values and one wishes
-to group them together as related concepts, then it makes sense to use them as
-strings. That way, a separate data structure to execute on the printing is
-unnecessary.
+Nếu mục đích chính của việc sử dụng enum là in các giá trị và muốn nhóm chúng lại thành những khái niệm có liên quan, thì sử dụng chúng dưới dạng string là hợp lý. Nhờ vậy, không cần một cấu trúc dữ liệu riêng để thực hiện việc in.
 
-AnimatedTexture vs. AnimatedSprite2D vs. AnimationPlayer vs. AnimationTree
---------------------------------------------------------------------------
+AnimatedTexture so với AnimatedSprite2D so với AnimationPlayer so với AnimationTree
+-----------------------------------------------------------------------------------
 
-Under what circumstances should one use each of Godot's animation classes?
-The answer may not be immediately clear to new Godot users.
+Trong những trường hợp nào nên sử dụng từng class animation của Godot? Câu trả lời có thể không ngay lập tức rõ ràng với những người dùng Godot mới.
 
 :ref:`AnimatedTexture <class_AnimatedTexture>` is a texture that
-the engine draws as an animated loop rather than a static image.
-Users can manipulate...
+engine sẽ vẽ dưới dạng một vòng lặp animation thay vì một hình ảnh tĩnh. Người dùng có thể thao tác...
 
-1. the rate at which it moves across each section of the texture (FPS).
+1. tốc độ di chuyển qua từng phần của texture (FPS).
 
-2. the number of regions contained within the texture (frames).
+2. số lượng region nằm trong texture (frame).
 
-Godot's :ref:`RenderingServer <class_RenderingServer>` then draws
-the regions in sequence at the prescribed rate. The good news is that this
-involves no extra logic on the part of the engine. The bad news is
-that users have very little control.
+:ref:`RenderingServer <class_RenderingServer>` của Godot sau đó sẽ vẽ các region theo thứ tự với tốc độ đã quy định. Tin tốt là việc này không yêu cầu engine thực hiện thêm logic nào. Tin xấu là người dùng có rất ít quyền kiểm soát.
 
-Also note that AnimatedTexture is a :ref:`Resource <class_Resource>` unlike
-the other :ref:`Node <class_Node>` objects discussed here. One might create
-a :ref:`Sprite2D <class_Sprite2D>` node that uses AnimatedTexture as its texture.
-Or (something the others can't do) one could add AnimatedTextures as tiles
-in a :ref:`TileSet <class_TileSet>` and integrate it with a
+Cũng lưu ý rằng AnimatedTexture là một :ref:`Resource <class_Resource>`, không giống các object :ref:`Node <class_Node>` khác được thảo luận ở đây. Ta có thể tạo một node :ref:`Sprite2D <class_Sprite2D>` sử dụng AnimatedTexture làm texture. Hoặc (điều mà các loại khác không thể làm) ta có thể thêm AnimatedTexture dưới dạng tile trong một :ref:`TileSet <class_TileSet>` và tích hợp nó với một
 :ref:`TileMapLayer <class_TileMapLayer>` for many auto-animating backgrounds that
-all render in a single batched draw call.
+đều được render trong một draw call được batch duy nhất.
 
-The :ref:`AnimatedSprite2D <class_AnimatedSprite2D>` node, in combination with the
+node :ref:`AnimatedSprite2D <class_AnimatedSprite2D>`, kết hợp với
 :ref:`SpriteFrames <class_SpriteFrames>` resource, allows one to create a
-variety of animation sequences through spritesheets, flip between animations,
-and control their speed, regional offset, and orientation. This makes them
-well-suited to controlling 2D frame-based animations.
+nhiều animation sequence thông qua spritesheet, chuyển đổi giữa các animation, đồng thời điều khiển speed, regional offset và orientation của chúng. Điều này khiến chúng rất phù hợp để điều khiển các animation 2D dựa trên frame.
 
-If one needs to trigger other effects in relation to animation changes (for
-example, create particle effects, call functions, or manipulate other
-peripheral elements besides the frame-based animation), then one will need to use
-an :ref:`AnimationPlayer <class_AnimationPlayer>` node in conjunction with
-the AnimatedSprite2D.
+Nếu cần kích hoạt các hiệu ứng khác liên quan đến những thay đổi của animation (ví dụ: tạo particle effect, gọi function hoặc thao tác với các thành phần ngoại vi khác ngoài animation dựa trên frame), bạn sẽ cần sử dụng một node :ref:`AnimationPlayer <class_AnimationPlayer>` kết hợp với AnimatedSprite2D.
 
-AnimationPlayers are also the tool one will need to use if they wish to design
-more complex 2D animation systems, such as...
+AnimationPlayer cũng là công cụ cần dùng nếu muốn thiết kế các hệ thống animation 2D phức tạp hơn, chẳng hạn như...
 
-1. **Cut-out animations:** editing sprites' transforms at runtime.
+1. **Animation cut-out:** chỉnh sửa transform của sprite tại runtime.
 
-2. **2D Mesh animations:** defining a region for the sprite's texture and
-   rigging a skeleton to it. Then one animates the bones which
-   stretch and bend the texture in proportion to the bones' relationships to
-   each other.
+2. **Animation 2D Mesh:** xác định một region cho texture của sprite và rig một skeleton cho nó. Sau đó, ta animate các bone, khiến texture kéo giãn và uốn cong theo tỷ lệ tương ứng với mối quan hệ giữa các bone.
 
-3. A mix of the above.
+3. Kết hợp các loại trên.
 
-While one needs an AnimationPlayer to design each of the individual
-animation sequences for a game, it can also be useful to combine animations
-for blending, i.e. enabling smooth transitions between these animations. There
-may also be a hierarchical structure between animations that one plans out for
-their object. These are the cases where the :ref:`AnimationTree <class_AnimationTree>`
-shines. See the :ref:`in-depth guide on using the AnimationTree <doc_animation_tree>`
-for more details.
+Mặc dù cần một AnimationPlayer để thiết kế từng animation sequence riêng lẻ cho game, công cụ này cũng có thể hữu ích trong việc kết hợp các animation để blending, tức là cho phép chuyển tiếp mượt mà giữa các animation đó. Ngoài ra, giữa các animation được lên kế hoạch cho object của mình có thể tồn tại một cấu trúc phân cấp. Đây là những trường hợp :ref:`AnimationTree <class_AnimationTree>` phát huy hiệu quả. Xem :ref:`in-depth guide on using the AnimationTree <doc_animation_tree>` để biết thêm chi tiết.

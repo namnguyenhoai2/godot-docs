@@ -1,7 +1,7 @@
 :allow_comments: False
 
-Best practices
-==============
+Các phương pháp hay nhất
+========================
 
 .. toctree::
    :maxdepth: 1

@@ -1,17 +1,15 @@
 .. _doc_godot_notifications:
 
-Godot notifications
+Thông báo của Godot
 ===================
 
-Every Object in Godot implements a
+Mỗi Object trong Godot đều triển khai một
 :ref:`_notification <class_Object_private_method__notification>` method. Its purpose is to
-allow the Object to respond to a variety of engine-level callbacks that may
-relate to it. For example, if the engine tells a
+cho phép Object phản hồi nhiều callback ở cấp engine có thể liên quan đến nó. Ví dụ, nếu engine thông báo cho một
 :ref:`CanvasItem <class_CanvasItem>` to "draw", it will call
 ``_notification(NOTIFICATION_DRAW)``.
 
-Some of these notifications, like draw, are useful to override in scripts. So
-much so that Godot exposes many of them with dedicated functions:
+Một số thông báo này, chẳng hạn như draw, rất hữu ích khi override trong script. Đến mức Godot cung cấp nhiều thông báo trong số đó dưới dạng các hàm chuyên biệt:
 
 - ``_ready()``: ``NOTIFICATION_READY``
 
@@ -25,56 +23,39 @@ much so that Godot exposes many of them with dedicated functions:
 
 - ``_draw()``: ``NOTIFICATION_DRAW``
 
-What users might *not* realize is that notifications exist for types other
-than Node alone, for example:
+Điều mà người dùng có thể *không* nhận ra là thông báo cũng tồn tại cho các type khác ngoài Node, chẳng hạn như:
 
-- :ref:`Object::NOTIFICATION_POSTINITIALIZE <class_Object_constant_NOTIFICATION_POSTINITIALIZE>`:
-  a callback that triggers during object initialization. Not accessible to scripts.
+- :ref:`Object::NOTIFICATION_POSTINITIALIZE <class_Object_constant_NOTIFICATION_POSTINITIALIZE>`: callback được kích hoạt trong quá trình khởi tạo object. Không thể truy cập từ script.
 
-- :ref:`Object::NOTIFICATION_PREDELETE <class_Object_constant_NOTIFICATION_PREDELETE>`:
-  a callback that triggers before the engine deletes an Object, i.e. a
-  "destructor".
+- :ref:`Object::NOTIFICATION_PREDELETE <class_Object_constant_NOTIFICATION_PREDELETE>`: callback được kích hoạt trước khi engine xóa một Object, tức là một "destructor".
 
-And many of the callbacks that *do* exist in Nodes don't have any dedicated
-methods, but are still quite useful.
+Và nhiều callback *có* tồn tại trong Node không có method chuyên biệt, nhưng vẫn khá hữu ích.
 
-- :ref:`Node::NOTIFICATION_PARENTED <class_Node_constant_NOTIFICATION_PARENTED>`:
-  a callback that triggers anytime you add a child node to another node.
+- :ref:`Node::NOTIFICATION_PARENTED <class_Node_constant_NOTIFICATION_PARENTED>`: callback được kích hoạt mỗi khi bạn thêm một node con vào node khác.
 
-- :ref:`Node::NOTIFICATION_UNPARENTED <class_Node_constant_NOTIFICATION_UNPARENTED>`:
-  a callback that triggers anytime you remove a child node from another
-  node.
+- :ref:`Node::NOTIFICATION_UNPARENTED <class_Node_constant_NOTIFICATION_UNPARENTED>`: callback được kích hoạt mỗi khi bạn xóa một node con khỏi node khác.
 
-The universal ``_notification()`` method provides access to all these custom
-notifications.
+Method ``_notification()`` dùng chung cung cấp quyền truy cập vào tất cả các thông báo tùy chỉnh này.
 
 .. note::
-  Methods in the documentation labeled as "virtual" are also intended to be
-  overridden by scripts.
+  Các method trong tài liệu được gắn nhãn là "virtual" cũng được thiết kế để script override.
 
-  A classic example is the
+  Một ví dụ kinh điển là
   :ref:`_init <class_Object_private_method__init>` method in Object. While it has no
-  ``NOTIFICATION_*`` equivalent, the engine still calls the method. Most languages
-  (except C#) rely on it as a constructor.
+  tương đương với ``NOTIFICATION_*``, engine vẫn gọi method này. Hầu hết các ngôn ngữ (ngoại trừ C#) đều dựa vào nó như một constructor.
 
-So, when should you use each of these notifications or
-virtual functions?
+Vậy khi nào bạn nên sử dụng từng thông báo hoặc hàm virtual này?
 
-_process vs. _physics_process vs. \*_input
-------------------------------------------
+_process so với _physics_process so với \*_input
+------------------------------------------------
 
-Use ``_process()`` when you need a framerate-dependent delta time between
-frames. If code that updates object data needs to update as often as
-possible, this is the right place. Recurring logic checks and data caching
-often execute here, but it comes down to how often
-the evaluations need to update. If they don't need to execute every frame, then
-implementing a Timer-timeout loop is another option.
+Sử dụng ``_process()`` khi bạn cần delta time phụ thuộc vào framerate giữa các frame. Nếu code cập nhật dữ liệu của object cần được cập nhật thường xuyên nhất có thể, đây là nơi phù hợp. Các lần kiểm tra logic lặp lại và việc caching dữ liệu thường được thực hiện tại đây, nhưng điều đó phụ thuộc vào tần suất cần cập nhật các phép đánh giá. Nếu chúng không cần thực thi ở mỗi frame, thì triển khai một vòng lặp Timer-timeout là một lựa chọn khác.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Allows for recurring operations that don't trigger script logic
-    # every frame (or even every fixed frame).
+    # Cho phép thực hiện các thao tác lặp lại mà không kích hoạt logic của script
+    # ở mỗi frame (hoặc thậm chí ở mỗi fixed frame).
     func _ready():
         var timer = Timer.new()
         timer.autostart = true
@@ -90,8 +71,8 @@ implementing a Timer-timeout loop is another option.
 
     public partial class MyNode : Node
     {
-        // Allows for recurring operations that don't trigger script logic
-        // every frame (or even every fixed frame).
+        // Cho phép thực hiện các thao tác lặp lại mà không kích hoạt logic của script
+        // ở mỗi frame (hoặc thậm chí ở mỗi fixed frame).
         public override void _Ready()
         {
             var timer = new Timer();
@@ -110,8 +91,8 @@ implementing a Timer-timeout loop is another option.
         GDCLASS(MyNode, Node)
 
     public:
-        // Allows for recurring operations that don't trigger script logic
-        // every frame (or even every fixed frame).
+        // Cho phép thực hiện các thao tác lặp lại mà không kích hoạt logic của script
+        // ở mỗi frame (hoặc thậm chí ở mỗi fixed frame).
         virtual void _ready() override {
             Timer *timer = memnew(Timer);
             timer->set_autostart(true);
@@ -125,30 +106,21 @@ implementing a Timer-timeout loop is another option.
         }
     };
 
-Use ``_physics_process()`` when you need a framerate-independent delta time
-between frames. If code needs consistent updates over time, regardless
-of how fast or slow time advances, this is the right place.
-Recurring kinematic and object transform operations should execute here.
+Sử dụng ``_physics_process()`` khi bạn cần delta time độc lập với framerate giữa các frame. Nếu code cần được cập nhật nhất quán theo thời gian, bất kể thời gian trôi nhanh hay chậm, đây là nơi phù hợp. Các thao tác kinematic và biến đổi transform của object lặp lại nên được thực hiện tại đây.
 
-While it is possible, to achieve the best performance, you should avoid
-making input checks during these callbacks. ``_process()`` and
-``_physics_process()`` will trigger at every opportunity (they do not "rest" by
-default). In contrast, ``*_input()`` callbacks will trigger only on frames in
-which the engine has actually detected the input.
+Mặc dù có thể làm vậy, để đạt hiệu năng tốt nhất, bạn nên tránh thực hiện việc kiểm tra input trong các callback này. ``_process()`` và ``_physics_process()`` sẽ được kích hoạt ở mọi cơ hội (theo mặc định, chúng không "nghỉ"). Ngược lại, các callback ``*_input()`` sẽ chỉ được kích hoạt ở những frame mà engine thực sự phát hiện input.
 
-You can check for input actions within the input callbacks just the same.
-If you want to use delta time, you can fetch it from the related
-delta time methods as needed.
+Bạn vẫn có thể kiểm tra các input action trong các input callback theo cách tương tự. Nếu muốn sử dụng delta time, bạn có thể lấy nó từ các method delta time liên quan khi cần.
 
 .. tabs::
   .. code-tab:: gdscript GDScript
 
-    # Called every frame, even when the engine detects no input.
+    # Được gọi ở mỗi frame, ngay cả khi engine không phát hiện input.
     func _process(delta):
         if Input.is_action_just_pressed("ui_select"):
             print(delta)
 
-    # Called during every input event.
+    # Được gọi trong mỗi sự kiện input.
     func _unhandled_input(event):
         match event.get_class():
             "InputEventKey":
@@ -162,7 +134,7 @@ delta time methods as needed.
     public partial class MyNode : Node
     {
 
-        // Called every frame, even when the engine detects no input.
+        // Được gọi ở mỗi frame, ngay cả khi engine không phát hiện input.
         public void _Process(double delta)
         {
             if (Input.IsActionJustPressed("ui_select"))
@@ -171,7 +143,7 @@ delta time methods as needed.
             }
         }
 
-        // Called during every input event. Equally true for _input().
+        // Được gọi trong mỗi sự kiện input. Điều này cũng đúng với _input().
         public void _UnhandledInput(InputEvent @event)
         {
             switch (@event)
@@ -195,14 +167,14 @@ delta time methods as needed.
         GDCLASS(MyNode, Node)
 
     public:
-        // Called every frame, even when the engine detects no input.
+        // Được gọi ở mỗi frame, ngay cả khi engine không phát hiện input.
         virtual void _process(double p_delta) override {
             if (Input::get_singleton->is_action_just_pressed("ui_select")) {
                 UtilityFunctions::print(p_delta);
             }
         }
 
-        // Called during every input event. Equally true for _input().
+        // Được gọi trong mỗi sự kiện input. Điều này cũng đúng với _input().
         virtual void _unhandled_input(const Ref<InputEvent> &p_event) override {
             Ref<InputEventKey> key_event = event;
             if (key_event.is_valid() && Input::get_singleton->is_action_just_pressed("ui_accept")) {
@@ -211,43 +183,36 @@ delta time methods as needed.
         }
     };
 
-_init vs. initialization vs. export
------------------------------------
+_init so với initialization so với export
+-----------------------------------------
 
-If the script initializes its own node subtree, without a scene,
-that code should execute in ``_init()``. Other property or SceneTree-independent
-initializations should also run here.
+Nếu script khởi tạo subtree node của riêng nó mà không có scene, code đó nên được thực thi trong ``_init()``. Các quá trình khởi tạo property khác hoặc không phụ thuộc vào SceneTree cũng nên chạy tại đây.
 
 .. note::
-  The C# equivalent to GDScript's ``_init()`` method is the constructor.
+  Tương đương trong C# với method ``_init()`` của GDScript là constructor.
 
-``_init()`` triggers before ``_enter_tree()`` or ``_ready()``, but after a script
-creates and initializes its properties. When instantiating a scene, property
-values will set up according to the following sequence:
+``_init()`` được kích hoạt trước ``_enter_tree()`` hoặc ``_ready()``, nhưng sau khi script tạo và khởi tạo các property của nó. Khi instantiate một scene, các giá trị property sẽ được thiết lập theo trình tự sau:
 
-1. **Initial value assignment:** the property is assigned its initialization value,
-   or its default value if one is not specified. If a setter exists, it is not used.
+1. **Gán giá trị ban đầu:** property được gán giá trị khởi tạo hoặc giá trị mặc định nếu không chỉ định giá trị khởi tạo. Nếu có setter, setter sẽ không được sử dụng.
 
-2. ``_init()`` **assignment:** the property's value is replaced by any assignments
-   made in ``_init()``, triggering the setter.
+2. **Gán ``_init()``:** giá trị của property được thay thế bằng mọi phép gán được thực hiện trong ``_init()``, kích hoạt setter.
 
-3. **Exported value assignment:** an exported property's value is again replaced by
-   any value set in the Inspector, triggering the setter.
+3. **Gán giá trị export:** giá trị của property được export một lần nữa bị thay thế bằng bất kỳ giá trị nào được đặt trong Inspector, kích hoạt setter.
 
 .. tabs::
   .. code-tab:: gdscript GDScript
 
-    # test is initialized to "one", without triggering the setter.
+    # test được khởi tạo thành "one" mà không kích hoạt setter.
     @export var test: String = "one":
         set(value):
             test = value + "!"
 
     func _init():
-        # Triggers the setter, changing test's value from "one" to "two!".
+        # Kích hoạt setter, thay đổi giá trị của test từ "one" thành "two!".
         test = "two"
 
-    # If you set test to "three" from the Inspector, it would trigger
-    # the setter, changing test's value from "two!" to "three!".
+    # Nếu bạn đặt test thành "three" trong Inspector, thao tác đó sẽ kích hoạt
+    # setter, thay đổi giá trị của test từ "two!" thành "three!".
 
   .. code-tab:: csharp
 
@@ -266,12 +231,12 @@ values will set up according to the following sequence:
 
         public MyNode()
         {
-            // Triggers the setter, changing _test's value from "one" to "two!".
+            // Kích hoạt setter, thay đổi giá trị của _test từ "one" thành "two!".
             Test = "two";
         }
 
-        // If you set Test to "three" in the Inspector, it would trigger
-        // the setter, changing _test's value from "two!" to "three!".
+        // Nếu bạn đặt Test thành "three" trong Inspector, thao tác đó sẽ kích hoạt
+        // setter, thay đổi giá trị của _test từ "two!" thành "three!".
     }
 
   .. code-tab:: cpp C++
@@ -295,38 +260,24 @@ values will set up according to the following sequence:
         void set_test(String p_test) { test = p_test + "!"; }
 
         MyNode() {
-            // Triggers the setter, changing _test's value from "one" to "two!".
+            // Kích hoạt setter, thay đổi giá trị của _test từ "one" thành "two!".
             set_test("two");
         }
 
-        // If you set test to "three" in the Inspector, it would trigger
-        // the setter, changing test's value from "two!" to "three!".
+        // Nếu bạn đặt test thành "three" trong Inspector, thao tác đó sẽ kích hoạt
+        // setter, thay đổi giá trị của test từ "two!" thành "three!".
     };
 
-As a result, instantiating a script versus a scene may affect both the
-initialization *and* the number of times the engine calls the setter.
+Do đó, việc instantiate một script thay vì một scene có thể ảnh hưởng đến cả quá trình khởi tạo *và* số lần engine gọi setter.
 
-_ready vs. _enter_tree vs. NOTIFICATION_PARENTED
-------------------------------------------------
+_ready so với _enter_tree so với NOTIFICATION_PARENTED
+------------------------------------------------------
 
-When instantiating a scene connected to the first executed scene, Godot will
-instantiate nodes down the tree (making ``_init()`` calls) and build the tree
-going downwards from the root. This causes ``_enter_tree()`` calls to cascade
-down the tree. Once the tree is complete, leaf nodes call ``_ready``. A node
-will call this method once all child nodes have finished calling theirs. This
-then causes a reverse cascade going up back to the tree's root.
+Khi instantiate một scene được kết nối với scene đầu tiên được thực thi, Godot sẽ instantiate các node theo chiều đi xuống trong tree (thực hiện các lời gọi ``_init()``) và xây dựng tree theo hướng đi xuống từ root. Điều này khiến các lời gọi ``_enter_tree()`` lan truyền xuống tree. Khi tree hoàn tất, các node lá gọi ``_ready``. Một node sẽ gọi method này sau khi tất cả node con đã hoàn tất việc gọi method của chúng. Việc này sau đó tạo ra một làn sóng ngược đi lên về phía root của tree.
 
-When instantiating a script or a standalone scene, nodes are not
-added to the SceneTree upon creation, so no ``_enter_tree()`` callbacks
-trigger. Instead, only the ``_init()`` call occurs. When the scene is added
-to the SceneTree, the ``_enter_tree()`` and ``_ready()`` calls occur.
+Khi instantiate một script hoặc một scene độc lập, các node không được thêm vào SceneTree lúc tạo, vì vậy không có callback ``_enter_tree()`` nào được kích hoạt. Thay vào đó, chỉ có lời gọi ``_init()`` diễn ra. Khi scene được thêm vào SceneTree, các lời gọi ``_enter_tree()`` và ``_ready()`` sẽ diễn ra.
 
-If you need to trigger behavior that occurs as nodes parent to another,
-regardless of whether it occurs as part of the main/active scene or not, you
-can use the :ref:`PARENTED <class_Node_constant_NOTIFICATION_PARENTED>` notification.
-For example, here is a snippet that connects a node's method to
-a custom signal on the parent node without failing. Useful on data-centric
-nodes potentially created at runtime.
+Nếu cần kích hoạt hành vi xảy ra khi các node trở thành node cha của node khác, bất kể việc đó xảy ra như một phần của scene chính/đang hoạt động hay không, bạn có thể sử dụng thông báo :ref:`PARENTED <class_Node_constant_NOTIFICATION_PARENTED>`. Ví dụ, sau đây là một đoạn mã kết nối method của một node với một signal tùy chỉnh trên node cha mà không gây lỗi. Hữu ích cho các node tập trung vào dữ liệu có thể được tạo trong runtime.
 
 .. tabs::
   .. code-tab:: gdscript GDScript

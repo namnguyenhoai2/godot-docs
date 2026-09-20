@@ -1,46 +1,31 @@
 .. _doc_logic_preferences:
 
-Logic preferences
-=================
+Tùy chọn logic
+==============
 
-Ever wondered whether one should approach problem X with strategy Y or Z?
-This article covers a variety of topics related to these dilemmas.
+Bạn có từng tự hỏi liệu nên tiếp cận vấn đề X bằng chiến lược Y hay Z không? Bài viết này đề cập đến nhiều chủ đề liên quan đến những tình huống khó xử này.
 
-Adding nodes and changing properties: which first?
---------------------------------------------------
+Thêm node và thay đổi thuộc tính: việc nào trước?
+-------------------------------------------------
 
-When initializing nodes from a script at runtime, you may need to change
-properties such as the node's name or position. A common dilemma is, when
-should you change those values?
+Khi khởi tạo node từ một script trong runtime, bạn có thể cần thay đổi các thuộc tính như tên hoặc vị trí của node. Một tình huống khó xử thường gặp là: khi nào nên thay đổi các giá trị đó?
 
-It is the best practice to change values on a node before adding it to the
-scene tree. Some properties' setters have code to update other
-corresponding values, and that code can be slow! For most cases, this code
-has no impact on your game's performance, but in heavy use cases such as
-procedural generation, it can bring your game to a crawl.
+Cách làm tốt nhất là thay đổi các giá trị trên node trước khi thêm nó vào scene tree. Setter của một số thuộc tính có code để cập nhật các giá trị tương ứng khác, và code đó có thể chạy chậm! Trong hầu hết trường hợp, code này không ảnh hưởng đến hiệu năng game, nhưng trong các trường hợp sử dụng nhiều như procedural generation, nó có thể khiến game chạy chậm đến mức gần như không thể chơi được.
 
-For these reasons, it is usually best practice to set the initial values
-of a node before adding it to the scene tree. There are some exceptions where
-values *can't* be set before being added to the scene tree, like setting global
-position.
+Vì những lý do này, thông thường cách làm tốt nhất là đặt các giá trị ban đầu của node trước khi thêm nó vào scene tree. Có một số trường hợp ngoại lệ mà các giá trị *không thể* được đặt trước khi thêm node vào scene tree, chẳng hạn như đặt global position.
 
-Loading vs. preloading
-----------------------
+Loading và preloading
+---------------------
 
-In GDScript, there exists the global
+Trong GDScript, có global
 :ref:`preload <class_@GDScript_method_preload>` method. It loads resources as
-early as possible to front-load the "loading" operations and avoid loading
-resources while in the middle of performance-sensitive code.
+sớm nhất có thể để đưa các thao tác "loading" lên trước và tránh loading resource khi đang ở giữa đoạn code nhạy cảm về hiệu năng.
 
-Its counterpart, the :ref:`load <class_@GDScript_method_load>` method, loads a
-resource only when it reaches the load statement. That is, it will load a
-resource in-place which can cause slowdowns when it occurs in the middle of
-sensitive processes. The ``load()`` function is also an alias for
+Phương thức :ref:`load <class_@GDScript_method_load>` tương ứng của nó chỉ load resource khi thực thi đến câu lệnh load. Nói cách khác, nó sẽ load resource tại chỗ, điều này có thể gây chậm khi xảy ra ở giữa các quy trình nhạy cảm. Hàm ``load()`` cũng là một bí danh của
 :ref:`ResourceLoader.load(path) <class_ResourceLoader_method_load>` which is
-accessible to *all* scripting languages.
+có thể được truy cập bởi *tất cả* các ngôn ngữ scripting.
 
-So, when exactly does preloading occur versus loading, and when should one use
-either? Let's see an example:
+Vậy chính xác thì preloading xảy ra khi nào so với loading, và khi nào nên sử dụng từng cách? Hãy xem một ví dụ:
 
 .. tabs::
   .. code-tab:: gdscript GDScript
@@ -49,55 +34,55 @@ either? Let's see an example:
     extends Node
 
     # Note how constant scripts/scenes have a different naming scheme than
-    # their property variants.
+    # các biến thể thuộc tính của chúng.
 
-    # This value is a constant, so it spawns when the Script object loads.
-    # The script is preloading the value. The advantage here is that the editor
-    # can offer autocompletion since it must be a static path.
+    # Giá trị này là một hằng số, vì vậy nó được khởi tạo khi đối tượng Script được load.
+    # Script đang preload giá trị này. Ưu điểm ở đây là editor
+    # có thể cung cấp tính năng tự động hoàn thành vì đường dẫn phải là đường dẫn tĩnh.
     const BuildingScn = preload("res://building.tscn")
 
-    # 1. The script preloads the value, so it will load as a dependency
-    #    of the 'my_buildings.gd' script file. But, because this is a
-    #    property rather than a constant, the object won't copy the preloaded
-    #    PackedScene resource into the property until the script instantiates
-    #    with .new().
+    # 1. Script preload giá trị này, vì vậy nó sẽ được load như một dependency
+    # của file script 'my_buildings.gd'. Tuy nhiên, vì đây là một
+    # property chứ không phải constant, object sẽ không sao chép
+    # resource PackedScene đã preload vào property cho đến khi script được khởi tạo
+    # bằng .new().
     #
-    # 2. The preloaded value is inaccessible from the Script object alone. As
-    #    such, preloading the value here actually does not provide any benefit.
+    # 2. Giá trị đã preload không thể được truy cập chỉ từ Script object. Vì
+    # vậy, việc preload giá trị ở đây thực sự không mang lại lợi ích nào.
     #
-    # 3. Because the user exports the value, if this script stored on
-    #    a node in a scene file, the scene instantiation code will overwrite the
-    #    preloaded initial value anyway (wasting it). It's usually better to
-    #    provide `null`, empty, or otherwise invalid default values for exports.
+    # 3. Vì người dùng export giá trị này, nếu script này được lưu trên
+    # một node trong file scene, code khởi tạo scene sẽ ghi đè lên
+    # giá trị ban đầu đã preload dù sao đi nữa (khiến giá trị đó bị lãng phí). Thông thường tốt hơn là
+    # cung cấp giá trị mặc định là `null`, rỗng hoặc không hợp lệ theo cách khác cho các export.
     #
-    # 4. Instantiating the script on its own with .new() triggers
-    #    `load("office.tscn")`, ignoring any value set through the export.
+    # 4. Việc khởi tạo riêng script bằng .new() sẽ kích hoạt
+    # `load("office.tscn")`, bỏ qua mọi giá trị được đặt thông qua export.
     @export var a_building : PackedScene = preload("office.tscn")
 
-    # Uh oh! This results in an error!
-    # One must assign constant values to constants. Because `load` performs a
-    # runtime lookup by its very nature, one cannot use it to initialize a
+    # Ôi không! Điều này gây ra lỗi!
+    # Phải gán các giá trị hằng số cho các constant. Vì `load` thực hiện một
+    # tra cứu trong runtime theo bản chất của nó, nên không thể dùng nó để khởi tạo một
     # constant.
     const OfficeScn = load("res://office.tscn")
 
-    # Successfully loads and only when one instantiates the script! Yay!
+    # Load thành công và chỉ load khi khởi tạo script! Tuyệt!
     var office_scn = load("res://office.tscn")
 
   .. code-tab:: csharp
 
     using Godot;
 
-    // C# and other languages have no concept of "preloading".
+    // C# và các ngôn ngữ khác không có khái niệm "preloading".
     public partial class MyBuildings : Node
     {
-        //This is a read-only field, it can only be assigned when it's declared or during a constructor.
+        //Đây là một trường chỉ đọc, chỉ có thể được gán khi khai báo hoặc trong constructor.
         public readonly PackedScene Building = ResourceLoader.Load<PackedScene>("res://building.tscn");
 
         public PackedScene ABuilding;
 
         public override void _Ready()
         {
-            // Can assign the value during initialization.
+            // Có thể gán giá trị trong quá trình khởi tạo.
             ABuilding = GD.Load<PackedScene>("res://Office.tscn");
         }
     }
@@ -114,83 +99,44 @@ either? Let's see an example:
         Ref<PackedScene> a_building;
 
         virtual void _ready() override {
-            // Can assign the value during initialization.
+            // Có thể gán giá trị trong quá trình khởi tạo.
             a_building = ResourceLoader::get_singleton()->load("res://office.tscn");
         }
     };
 
-Preloading allows the script to handle all the loading the moment one loads the
-script. Preloading is useful, but there are also times when one doesn't wish
-to use it. Here are a few considerations when determining which to use:
+Preloading cho phép script xử lý toàn bộ việc loading ngay khi script được load. Preloading rất hữu ích, nhưng cũng có những lúc bạn không muốn sử dụng nó. Dưới đây là một số điều cần cân nhắc khi quyết định sử dụng cách nào:
 
-1. If one cannot determine when the script might load, then preloading a
-   resource (especially a scene or script) could result in additional loads
-   one does not expect. This could lead to unintentional, variable-length
-   load times on top of the original script's load operations.
+1. Nếu không thể xác định khi nào script có thể được load, thì việc preload một resource (đặc biệt là scene hoặc script) có thể dẫn đến những lần load bổ sung mà bạn không dự tính. Điều này có thể tạo ra thời gian load thay đổi ngoài ý muốn, kéo dài thêm bên cạnh các thao tác load ban đầu của script.
 
-2. If something else could replace the value (like a scene's exported
-   initialization), then preloading the value has no meaning. This point isn't
-   a significant factor if one intends to always create the script on its own.
+2. Nếu một thứ khác có thể thay thế giá trị đó (chẳng hạn như việc khởi tạo exported của một scene), thì việc preload giá trị không có ý nghĩa. Điểm này không phải là yếu tố quan trọng nếu bạn dự định luôn tự khởi tạo script.
 
-3. If one wishes only to 'import' another class resource (script or scene),
-   then using a preloaded constant is often the best course of action. However,
-   in exceptional cases, one may wish not to do this:
+3. Nếu chỉ muốn 'import' một class resource khác (script hoặc scene), thì sử dụng một constant đã preload thường là lựa chọn tốt nhất. Tuy nhiên, trong những trường hợp đặc biệt, bạn có thể không muốn làm vậy:
 
-   1. If the 'imported' class is liable to change, then it should be a property
-      instead, initialized either using an ``@export`` or a ``load()`` (and
-      perhaps not even initialized until later).
+   1. Nếu class được 'import' có khả năng thay đổi, thì thay vào đó nó nên là một property, được khởi tạo bằng ``@export`` hoặc ``load()`` (và thậm chí có thể chưa được khởi tạo cho đến sau này).
 
-   2. If the script requires a great many dependencies, and one does not wish
-      to consume so much memory, then one may wish to load and unload various
-      dependencies at runtime as circumstances change. If one preloads
-      resources into constants, then the only way to unload these resources
-      would be to unload the entire script. If they are instead loaded
-      as properties, then one can set these properties to ``null`` and remove
-      all references to the resource (which, as a
+   2. Nếu script yêu cầu rất nhiều dependency và bạn không muốn tiêu tốn quá nhiều memory, thì bạn có thể muốn load và unload nhiều dependency khác nhau trong runtime khi hoàn cảnh thay đổi. Nếu preload resource vào các constant, thì cách duy nhất để unload các resource này là unload toàn bộ script. Ngược lại, nếu chúng được load dưới dạng property, bạn có thể đặt các property này thành ``null`` và xóa mọi reference đến resource (điều này, như một
       :ref:`RefCounted <class_RefCounted>`-extending type, will cause the
-      resources to delete themselves from memory).
+      cách để xóa chúng khỏi memory).
 
-Large levels: static vs. dynamic
---------------------------------
+Level lớn: tĩnh và động
+-----------------------
 
-If one is creating a large level, which circumstances are most appropriate?
-Is it better to create the level as one static space? Or is it better to load
-the level in pieces and shift the world's content as needed?
+Nếu đang tạo một level lớn, trường hợp nào là phù hợp nhất? Tạo level dưới dạng một không gian tĩnh có tốt hơn không? Hay nên load level thành từng phần và dịch chuyển nội dung của world khi cần?
 
-Well, the simple answer is, "when the performance requires it." The
-dilemma associated with the two options is one of the age-old programming
-choices: does one optimize memory over speed, or vice versa?
+Câu trả lời đơn giản là: "khi hiệu năng yêu cầu điều đó." Tình huống khó xử liên quan đến hai lựa chọn này là một trong những lựa chọn lập trình lâu đời: tối ưu memory hay tốc độ, hoặc ngược lại?
 
-The naive answer is to use a static level that loads everything at once.
-But, depending on the project, this could consume a large amount of
-memory. Wasting users' RAM leads to programs running slow or outright
-crashing from everything else the computer tries to do at the same time.
+Câu trả lời ngây thơ là sử dụng một level tĩnh load mọi thứ cùng lúc. Tuy nhiên, tùy thuộc vào project, cách này có thể tiêu tốn một lượng memory lớn. Lãng phí RAM của người dùng khiến chương trình chạy chậm hoặc thậm chí bị crash vì mọi việc khác mà máy tính cố thực hiện cùng lúc.
 
-No matter what, one should break larger scenes into smaller ones (to aid
-in reusability of assets). Developers can then design a node that manages the
-creation/loading and deletion/unloading of resources and nodes in real-time.
-Games with large and varied environments or procedurally generated
-elements often implement these strategies to avoid wasting memory.
+Dù thế nào đi nữa, bạn nên chia các scene lớn thành những scene nhỏ hơn (để hỗ trợ khả năng tái sử dụng asset). Sau đó, developer có thể thiết kế một node quản lý việc tạo/load và xóa/unload resource cũng như node theo thời gian thực. Các game có môi trường lớn và đa dạng hoặc các thành phần được tạo bằng procedural generation thường triển khai những chiến lược này để tránh lãng phí memory.
 
-On the flip side, coding a dynamic system is more complex; it uses more
-programmed logic which results in opportunities for errors and bugs. If one
-isn't careful, they can develop a system that bloats the technical debt of
-the application.
+Mặt khác, việc viết code cho một hệ thống dynamic phức tạp hơn; nó sử dụng nhiều logic được lập trình hơn, từ đó tạo thêm cơ hội phát sinh lỗi và bug. Nếu không cẩn thận, bạn có thể phát triển một hệ thống làm phình to technical debt của ứng dụng.
 
-As such, the best options would be...
+Vì vậy, các lựa chọn tốt nhất sẽ là...
 
-1. Use static levels for smaller games.
+1. Sử dụng level tĩnh cho các game nhỏ.
 
-2. If one has the time/resources on a medium/large game, create a library or
-   plugin that can manage nodes and resources with code. If refined
-   over time so as to improve usability and stability, then it could evolve
-   into a reliable tool across projects.
+2. Nếu có thời gian/tài nguyên trong một game cỡ vừa/lớn, hãy tạo một library hoặc plugin có thể quản lý node và resource bằng code. Nếu được tinh chỉnh theo thời gian để cải thiện tính dễ sử dụng và độ ổn định, nó có thể phát triển thành một tool đáng tin cậy cho nhiều project.
 
-3. Use dynamic logic for a medium/large game because one has the coding
-   skills, but not the time or resources to refine the code (game's
-   gotta get done). Could potentially refactor later to outsource the code
-   into a plugin.
+3. Sử dụng logic dynamic cho một game cỡ vừa/lớn vì bạn có kỹ năng coding nhưng không có thời gian hoặc tài nguyên để tinh chỉnh code (phải hoàn thành game). Sau này có thể refactor để chuyển code ra một plugin.
 
-For an example of the various ways one can swap scenes around at runtime,
-please see the :ref:`"Change scenes manually" <doc_change_scenes_manually>`
-documentation.
+Để xem ví dụ về nhiều cách khác nhau có thể swap scene trong runtime, vui lòng xem tài liệu :ref:`"Change scenes manually" <doc_change_scenes_manually>`.
