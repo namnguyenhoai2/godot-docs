@@ -1,23 +1,16 @@
 .. _doc_feature_tags:
 
-Feature tags
-============
+Thẻ tính năng
+=============
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Godot has a special system to tag availability of features.
-Each *feature* is represented as a string, which can refer to many of the following:
+Godot có một hệ thống đặc biệt để gắn thẻ cho tính khả dụng của các tính năng. Mỗi *tính năng* được biểu diễn dưới dạng một chuỗi, có thể đề cập đến nhiều mục sau:
 
-* Platform name.
-* Platform architecture (64-bit or 32-bit, x86 or ARM).
-* Platform type (desktop, mobile, Web).
-* Supported texture compression algorithms on the platform.
-* Whether a build is ``debug`` or ``release`` (``debug`` includes the editor).
-* Whether the project is running from the editor or a "standalone" binary.
-* Many more things.
+* Tên nền tảng. * Kiến trúc nền tảng (64-bit hoặc 32-bit, x86 hoặc ARM). * Loại nền tảng (desktop, mobile, Web). * Các thuật toán nén texture được nền tảng hỗ trợ. * Việc một bản build là ``debug`` hay ``release`` (``debug`` bao gồm editor). * Việc project đang chạy từ editor hay một binary "standalone". * Còn nhiều mục khác.
 
-Features can be queried at runtime from the singleton API by calling:
+Có thể truy vấn các thẻ tính năng trong runtime từ API singleton bằng cách gọi:
 
 .. tabs::
  .. code-tab:: gdscript
@@ -28,14 +21,12 @@ Features can be queried at runtime from the singleton API by calling:
 
     OS.HasFeature(name);
 
-OS feature tags are used by GDExtension to determine which libraries to load.
-For example, a library for ``linux.debug.editor.x86_64`` will be
-loaded only on a debug editor build for Linux x86_64.
+Các thẻ tính năng của OS được GDExtension sử dụng để xác định những library nào cần load. Ví dụ, một library dành cho ``linux.debug.editor.x86_64`` sẽ chỉ được load trên bản debug editor cho Linux x86_64.
 
-Default features
-----------------
+Các tính năng mặc định
+----------------------
 
-Here is a list of most feature tags in Godot. Keep in mind they are **case-sensitive**:
+Sau đây là danh sách hầu hết các thẻ tính năng trong Godot. Hãy lưu ý rằng chúng **phân biệt chữ hoa chữ thường**:
 
 +----------------------+-----------------------------------------------------------------------------------------+
 | **Feature tag**      | **Description**                                                                         |
@@ -141,78 +132,58 @@ Here is a list of most feature tags in Godot. Keep in mind they are **case-sensi
 
 .. warning::
 
-    With the exception of texture compression, ``web_<platform>`` and
-    ``movie`` feature tags, default feature tags are **immutable**.
-    This means that they will *not* change depending on runtime conditions.
-    For example, ``OS.has_feature("mobile")`` will return ``false``
-    when running a project exported to Web on a mobile device.
+    Ngoại trừ các thẻ tính năng về texture compression, ``web_<platform>`` và ``movie``, các thẻ tính năng mặc định là **bất biến**. Điều này có nghĩa là chúng *sẽ không* thay đổi tùy theo các điều kiện runtime. Ví dụ, ``OS.has_feature("mobile")`` sẽ trả về ``false`` khi chạy một project được export sang Web trên thiết bị di động.
 
-    To check whether a project exported to Web is running on a mobile device,
-    use ``OS.has_feature("web_android") or OS.has_feature("web_ios")``.
+    Để kiểm tra xem một project được export sang Web có đang chạy trên thiết bị di động hay không, hãy sử dụng ``OS.has_feature("web_android") or OS.has_feature("web_ios")``.
 
-Custom features
----------------
+Tính năng tùy chỉnh
+-------------------
 
-It is possible to add custom features to a build; use the relevant
-field in the *export preset* used to generate it:
+Bạn có thể thêm các tính năng tùy chỉnh vào một bản build; hãy sử dụng trường tương ứng trong *export preset* được dùng để tạo bản build đó:
 
 .. image:: img/feature_tags1.webp
 
 .. note::
 
-    Custom feature tags are only used when running the exported project
-    (including with :ref:`doc_one-click_deploy`). They are **not used** when
-    running the project from the editor, even if the export preset marked as
-    **Runnable** for your current platform has custom feature tags defined.
+    Các thẻ tính năng tùy chỉnh chỉ được sử dụng khi chạy project đã export (bao gồm cả khi sử dụng :ref:`doc_one-click_deploy`). Chúng **không được sử dụng** khi chạy project từ editor, ngay cả khi export preset được đánh dấu là **Runnable** cho nền tảng hiện tại của bạn có khai báo các thẻ tính năng tùy chỉnh.
 
-    Custom feature tags are also not used in :ref:`class_EditorExportPlugin`
-    scripts. Instead, feature tags in :ref:`class_EditorExportPlugin`
-    will reflect the device the editor is currently running on.
+    Các thẻ tính năng tùy chỉnh cũng không được sử dụng trong các script :ref:`class_EditorExportPlugin`. Thay vào đó, các thẻ tính năng trong :ref:`class_EditorExportPlugin` sẽ phản ánh thiết bị mà editor hiện đang chạy trên đó.
 
-Overriding project settings
----------------------------
+Ghi đè các thiết lập của project
+--------------------------------
 
-Features can be used to override specific configuration values in the *Project Settings*.
-This allows you to better customize any configuration when doing a build.
+Có thể sử dụng các tính năng để ghi đè những giá trị cấu hình cụ thể trong *Project Settings*. Điều này cho phép bạn tùy chỉnh tốt hơn bất kỳ cấu hình nào khi thực hiện một bản build.
 
-In the following example, a different icon is added for the demo build of the game (which was
-customized in a special export preset, which, in turn, includes only demo levels).
+Trong ví dụ sau, một icon khác được thêm vào cho bản build demo của game (được tùy chỉnh trong một export preset đặc biệt; đến lượt mình, preset này chỉ bao gồm các level demo).
 
 .. figure:: img/feature_tags2.webp
     :alt: The Project Settings panel
 
     The desired configuration is selected, which effectively copies its properties to the panel above (1). The "demo_build" feature tag is selected (2). The configuration is added to the project settings (3).
 
-After overriding, a new field is added for this specific configuration.
+Sau khi ghi đè, một trường mới được thêm vào cho cấu hình cụ thể này.
 
 .. image:: img/feature_tags3.webp
 
 .. note::
 
-    When using the
+    Khi sử dụng
     :ref:`project settings "override.cfg" functionality <class_ProjectSettings>`
-    (which is unrelated to feature tags), remember that feature tags still apply.
-    Therefore, make sure to *also* override the setting with the desired feature
-    tag(s) if you want them to override base project settings on all platforms
-    and configurations.
+    (không liên quan đến các thẻ tính năng), hãy nhớ rằng các thẻ tính năng vẫn được áp dụng. Do đó, hãy nhớ *đồng thời* ghi đè thiết lập bằng các thẻ tính năng mong muốn nếu bạn muốn chúng ghi đè các thiết lập cơ sở của project trên mọi nền tảng và cấu hình.
 
-Default overrides
------------------
+Các ghi đè mặc định
+-------------------
 
-There are already a lot of settings that come with overrides by default; they can be found
-in many sections of the project settings.
+Đã có rất nhiều thiết lập đi kèm với các ghi đè theo mặc định; bạn có thể tìm thấy chúng trong nhiều phần của project settings.
 
 .. image:: img/feature_tags4.webp
 
-Taking feature tags into account when reading project settings
---------------------------------------------------------------
+Tính đến các thẻ tính năng khi đọc các thiết lập của project
+------------------------------------------------------------
 
-By default, feature tags are **not** taken into account when reading project settings
-using the typical approaches (:ref:`ProjectSettings.get_setting<class_ProjectSettings_method_get_setting>`
-or :ref:`ProjectSettings.get <class_Object_private_method__get>`).
-Instead, you must use :ref:`ProjectSettings.get_setting_with_override <class_ProjectSettings_method_get_setting>`.
+Theo mặc định, các thẻ tính năng **không** được tính đến khi đọc các thiết lập của project bằng những cách tiếp cận thông thường (:ref:`ProjectSettings.get_setting<class_ProjectSettings_method_get_setting>` hoặc :ref:`ProjectSettings.get <class_Object_private_method__get>`). Thay vào đó, bạn phải sử dụng :ref:`ProjectSettings.get_setting_with_override <class_ProjectSettings_method_get_setting>`.
 
-For example, with the following project settings:
+Ví dụ, với các thiết lập project sau:
 
 ::
 
@@ -221,13 +192,9 @@ For example, with the following project settings:
     subsection/example = "Release"
     subsection/example.debug = "Debug"
 
-Using ``ProjectSettings.get_setting("section/subsection/example")`` will return
-``"Release"`` regardless of whether a debug build is currently running. On the
-other hand, ``ProjectSettings.get_setting_with_override("section/subsection/example")``
-will obey feature tags and will return ``"Debug"`` if using a debug build.
+Việc sử dụng ``ProjectSettings.get_setting("section/subsection/example")`` sẽ trả về ``"Release"`` bất kể hiện đang chạy bản debug hay không. Mặt khác, ``ProjectSettings.get_setting_with_override("section/subsection/example")`` sẽ tuân theo các thẻ tính năng và trả về ``"Debug"`` nếu đang sử dụng bản debug.
 
-Customizing the build
----------------------
+Tùy chỉnh bản build
+-------------------
 
-Feature tags can be used to customize a build process too, by writing a custom **ExportPlugin**.
-They are also used to specify which shared library is loaded and exported in **GDExtension**.
+Các thẻ tính năng cũng có thể được sử dụng để tùy chỉnh quy trình build bằng cách viết một **ExportPlugin** tùy chỉnh. Chúng cũng được sử dụng để chỉ định shared library nào được load và export trong **GDExtension**.

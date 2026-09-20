@@ -1,36 +1,28 @@
 .. _doc_changing_application_icon_for_windows:
 
-Manually changing application icon for Windows
-==============================================
+Thay đổi thủ công biểu tượng ứng dụng cho Windows
+=================================================
 
-Windows applications use a Windows only format called ICO for their file icon and
-taskbar icon. Since Godot 4.1, Godot can create an ICO file for you based on the
-icon file defined in the Windows export preset. Supported formats are PNG, WebP,
-and SVG. If no icon is defined in the Windows export preset, the
+Các ứng dụng Windows sử dụng một định dạng chỉ dành cho Windows có tên là ICO cho biểu tượng tệp và biểu tượng trên thanh tác vụ. Kể từ Godot 4.1, Godot có thể tạo tệp ICO cho bạn dựa trên tệp biểu tượng được xác định trong export preset của Windows. Các định dạng được hỗ trợ là PNG, WebP và SVG. Nếu không có biểu tượng nào được xác định trong export preset của Windows thì
 :ref:`application/config/icon <class_ProjectSettings_property_application/config/icon>`
-project setting is used automatically instead.
+project setting sẽ được tự động sử dụng thay thế.
 
-This means you no longer need to follow the steps in this section to
-manually create an ICO file, unless you wish to have control over the icon
-design depending on its displayed size.
+Điều này có nghĩa là bạn không còn cần thực hiện các bước trong phần này để tự tạo tệp ICO, trừ khi bạn muốn kiểm soát thiết kế biểu tượng tùy theo kích thước hiển thị của biểu tượng.
 
-Creating a custom ICO file
---------------------------
+Tạo tệp ICO tùy chỉnh
+---------------------
 
-You can create your application icon in any program but you will have to convert it
-to an ICO file using a program such as GIMP.
+Bạn có thể tạo biểu tượng ứng dụng bằng bất kỳ chương trình nào, nhưng bạn sẽ phải chuyển đổi nó sang tệp ICO bằng một chương trình như GIMP.
 
-`This video tutorial <https://www.youtube.com/watch?v=uqV3UfM-n5Y>`_ goes over how to
-export an ICO file with GIMP.
+`This video tutorial <https://www.youtube.com/watch?v=uqV3UfM-n5Y>`_ hướng dẫn cách export tệp ICO bằng GIMP.
 
-It is also possible to convert a PNG image to an hiDPI-friendly ICO file
-using this `ImageMagick <https://www.imagemagick.org/>`_ command:
+Bạn cũng có thể chuyển đổi hình ảnh PNG thành tệp ICO thân thiện với hiDPI bằng lệnh `ImageMagick <https://www.imagemagick.org/>`_ này:
 
 .. code-block:: none
 
     magick icon.png -define icon:auto-resize=256,128,64,48,32,16 icon.ico
 
-Depending on which version of ImageMagick you installed, you might need to use this command instead:
+Tùy thuộc vào phiên bản ImageMagick đã cài đặt, bạn có thể cần sử dụng lệnh này thay thế:
 
 .. code-block:: none
 
@@ -38,58 +30,43 @@ Depending on which version of ImageMagick you installed, you might need to use t
 
 .. warning::
 
-    For the ICO file to effectively replace the default Godot icon, it must
-    contain *all* the sizes included in the default Godot icon: 16×16, 32×32,
-    48×48, 64×64, 128×128, 256×256. If the ICO file does not contain all the sizes,
-    the default Godot icon will be kept for the sizes that weren't overridden.
+    Để tệp ICO thay thế hiệu quả biểu tượng Godot mặc định, tệp đó phải chứa *tất cả* các kích thước có trong biểu tượng Godot mặc định: 16×16, 32×32, 48×48, 64×64, 128×128, 256×256. Nếu tệp ICO không chứa tất cả các kích thước, biểu tượng Godot mặc định sẽ được giữ lại cho những kích thước chưa bị ghi đè.
 
-    The above ImageMagick command takes this into account.
+    Lệnh ImageMagick ở trên đã tính đến điều này.
 
-Changing the taskbar icon
--------------------------
+Thay đổi biểu tượng trên thanh tác vụ
+-------------------------------------
 
-The taskbar icon is the icon that shows up on the taskbar when your project
-is running.
+Biểu tượng trên thanh tác vụ là biểu tượng xuất hiện trên thanh tác vụ khi project của bạn đang chạy.
 
 .. image:: img/icon_taskbar_icon.png
 
-To change the taskbar icon, go to
-**Project > Project Settings > Application > Config**, make sure
-**Advanced Settings** are enabled to see the setting, then go to
-``Windows Native Icon``. Click on the folder icon and select your ICO file.
+Để thay đổi biểu tượng trên thanh tác vụ, hãy vào **Project > Project Settings > Application > Config**, đảm bảo **Advanced Settings** được bật để nhìn thấy cài đặt này, sau đó vào ``Windows Native Icon``. Nhấp vào biểu tượng thư mục và chọn tệp ICO của bạn.
 
 .. image:: img/icon_project_settings.webp
 
-This setting only changes the icon for your exported game on Windows.
-To set the icon for macOS, use ``Macos Native Icon``. And for any other platform,
-use the ``Icon`` setting.
+Cài đặt này chỉ thay đổi biểu tượng cho game đã export trên Windows. Để đặt biểu tượng cho macOS, hãy sử dụng ``Macos Native Icon``. Với mọi nền tảng khác, hãy sử dụng cài đặt ``Icon``.
 
 .. _doc_changing_application_icon_for_windows_changing_the_file_icon:
 
-Changing the file icon
-----------------------
+Thay đổi biểu tượng tệp
+-----------------------
 
-The file icon is the icon of the executable that you click on to start
-the project.
+Biểu tượng tệp là biểu tượng của tệp thực thi mà bạn nhấp vào để khởi động project.
 
 .. image:: img/icon_file_icon.png
 
-To do that, you will need to specify the icon when exporting.
-Go to **Project > Export**. Assuming you have already created
-a Windows Desktop preset, select your icon in ICO format in
-the **Application > Icon** field.
+Để thực hiện việc này, bạn cần chỉ định biểu tượng khi export. Vào **Project > Export**. Giả sử bạn đã tạo một preset Windows Desktop, hãy chọn biểu tượng ở định dạng ICO trong trường **Application > Icon**.
 
 .. image:: img/icon_export_settings.webp
 
-Testing the result
-------------------
+Kiểm tra kết quả
+----------------
 
-You can now export the project. If it worked correctly, you should see this:
+Bây giờ bạn có thể export project. Nếu mọi thứ hoạt động chính xác, bạn sẽ thấy như sau:
 
 .. image:: img/icon_result.png
 
 .. note::
 
-    If your icon isn't showing up properly try clearing the icon
-    cache. To do so, open the **Run** dialog and enter ``ie4uinit.exe
-    -ClearIconCache`` or ``ie4uinit.exe -show``.
+    Nếu biểu tượng của bạn không hiển thị đúng cách, hãy thử xóa bộ nhớ đệm biểu tượng. Để thực hiện việc này, hãy mở hộp thoại **Run** và nhập ``ie4uinit.exe -ClearIconCache`` hoặc ``ie4uinit.exe -show``.

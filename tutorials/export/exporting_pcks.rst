@@ -1,267 +1,164 @@
 .. _doc_exporting_pcks:
 
-Exporting packs, patches, and mods
-==================================
+Xuất các pack, patch và mod
+===========================
 
-Use cases
----------
+Các trường hợp sử dụng
+----------------------
 
-Oftentimes, one would like to add functionality to one's game after it has been
-deployed.
+Thông thường, người dùng muốn thêm chức năng cho game của mình sau khi game đã được deploy.
 
-Examples of this include...
+Các ví dụ bao gồm...
 
-- Downloadable Content: the ability to add features and content to one's game.
-- Patches: the ability to fix a bug that is present in a shipped product.
-- Mods: grant other people the ability to create content for one's game.
+- Downloadable Content: khả năng thêm tính năng và nội dung vào game. - Patch: khả năng sửa một bug tồn tại trong sản phẩm đã phát hành. - Mod: cho phép người khác tạo nội dung cho game của mình.
 
-These tools help developers to extend their development beyond the initial
-release.
+Các công cụ này giúp developer mở rộng quá trình phát triển sau bản phát hành ban đầu.
 
-Overview of PCK/ZIP files
+Tổng quan về file PCK/ZIP
 -------------------------
 
-Godot enables this via a feature called **resource packs** (PCK files,
-with the ``.pck`` extension, or ZIP files).
+Godot hỗ trợ việc này thông qua một tính năng gọi là **resource pack** (file PCK, có phần mở rộng ``.pck``, hoặc file ZIP).
 
-**Advantages:**
+**Ưu điểm:**
 
-- incremental updates/patches
-- offer DLCs
-- offer mod support
-- no source code disclosure needed for mods
-- more modular project structure
-- users don't have to replace the entire game
+- cập nhật/patch tăng dần - cung cấp DLC - hỗ trợ mod - không cần tiết lộ source code cho mod - cấu trúc project có tính module hơn - người dùng không phải thay thế toàn bộ game
 
-The first part of using them involves exporting and delivering the project to
-players. Then, when one wants to add functionality or content later on, they
-just deliver the updates via PCK/ZIP files to the users.
+Phần đầu tiên khi sử dụng chúng là export và phân phối project cho người chơi. Sau đó, khi muốn thêm chức năng hoặc nội dung, bạn chỉ cần phân phối các bản cập nhật thông qua file PCK/ZIP cho người dùng.
 
-PCK/ZIP files usually contain, but are not limited to:
+Các file PCK/ZIP thường chứa, nhưng không chỉ giới hạn ở:
 
-- scripts
-- scenes
-- shaders
-- models
-- textures
-- sound effects
-- music
-- any other asset suitable for import into the game
+- script - scene - shader - model - texture - hiệu ứng âm thanh - nhạc - mọi asset khác phù hợp để import vào game
 
-The PCK/ZIP files can even be an entirely different Godot project, which the
-original game loads in at runtime.
+Các file PCK/ZIP thậm chí có thể là một project Godot hoàn toàn khác, được game gốc load tại runtime.
 
-It is possible to load both PCK and ZIP files as additional packs at the same time.
-See :ref:`doc_exporting_projects_pck_versus_zip` for a comparison of the two formats.
+Có thể load đồng thời cả file PCK và ZIP dưới dạng các pack bổ sung. Xem :ref:`doc_exporting_projects_pck_versus_zip` để so sánh hai định dạng này.
 
 .. seealso::
 
-    If you want to load loose files at runtime (not packed in a PCK or ZIP by Godot),
-    consider using :ref:`doc_runtime_loading_and_saving` instead.
-    This is useful for loading user-generated content that is not made with Godot,
-    without requiring users to pack their mods into a specific file format.
+    Nếu muốn load các file rời tại runtime (không được đóng gói trong PCK hoặc ZIP bởi Godot), hãy cân nhắc sử dụng :ref:`doc_runtime_loading_and_saving` thay thế. Cách này hữu ích khi load nội dung do người dùng tạo không được thực hiện bằng Godot, mà không yêu cầu người dùng đóng gói mod của họ vào một định dạng file cụ thể.
 
-    The downside of this approach is that it's less transparent to the game logic,
-    as it will not benefit from the same resource management as PCK/ZIP files.
+    Nhược điểm của cách tiếp cận này là nó kém minh bạch hơn đối với logic game, vì không được hưởng cùng cơ chế quản lý resource như file PCK/ZIP.
 
-Security concerns
------------------
+Các vấn đề về bảo mật
+---------------------
 
-It is important to note that loading PCK files for patches, mods, or extra content
-like expansions, will require you to code a system to automatically load files based
-on their location, and possibly name. This is a security vulnerability in three
-scenarios. One, a user downloads a mod with malicious code. Two, a malicious program
-already exists on an end user's PC and has replaced the PCK file with a malicious
-copy. Three, you are distributing patch PCK files through a game launcher and the
-system has become compromised.
+Điều quan trọng cần lưu ý là việc load file PCK cho patch, mod hoặc nội dung bổ sung như bản mở rộng sẽ yêu cầu bạn viết code cho một hệ thống tự động load file dựa trên vị trí và có thể cả tên file. Đây là một lỗ hổng bảo mật trong ba trường hợp. Một là người dùng tải xuống một mod chứa code độc hại. Hai là một chương trình độc hại đã tồn tại trên PC của người dùng cuối và thay thế file PCK bằng một bản sao độc hại. Ba là bạn phân phối các file patch PCK thông qua game launcher và hệ thống đã bị xâm nhập.
 
-Take this into consideration when determining how to use PCK files in a project.
-For situations where you have a patching system via a launcher, consider using
-asymmetric cryptography. You could store the public key in the main PCK, and sign
-patch or expansion PCK files with the private key. See the :ref:`class_Crypto` class
-for more information.
+Hãy cân nhắc điều này khi xác định cách sử dụng file PCK trong một project. Trong trường hợp bạn có hệ thống patch thông qua launcher, hãy cân nhắc sử dụng mật mã bất đối xứng. Bạn có thể lưu public key trong PCK chính và ký các file patch hoặc PCK bản mở rộng bằng private key. Xem class :ref:`class_Crypto` để biết thêm thông tin.
 
-Copyright concerns
-------------------
+Các vấn đề về bản quyền
+-----------------------
 
-If you want to use PCK files to distribute extra paid content, such as expansions,
-keep in mind that Godot provides no out-of-the-box way to prevent someone from
-copying the PCK file, and putting it on another person's computer. Any kind of DRM
-system is your responsibility to implement if that's what you want.
+Nếu muốn sử dụng file PCK để phân phối nội dung trả phí bổ sung, chẳng hạn như các bản mở rộng, hãy nhớ rằng Godot không cung cấp sẵn cách ngăn người khác sao chép file PCK và đưa nó lên máy tính của người khác. Nếu muốn sử dụng bất kỳ hệ thống DRM nào, bạn phải tự triển khai hệ thống đó.
 
-Generating PCK files
---------------------
+Tạo file PCK
+------------
 
-In order to pack all resources of a project into a PCK file, open the project
-and go to :menu:`Project > Export`, select an export preset, and click on
+Để đóng gói toàn bộ resource của một project vào file PCK, hãy mở project và đi tới :menu:`Project > Export`, chọn một export preset và nhấp vào
 :button:`Export PCK/ZIP`.
 
 .. image:: img/export_pck.webp
 
-Another method would be to :ref:`export from the command line <doc_command_line_tutorial_exporting>`
-with ``--export-pack``. The output file must with a ``.pck`` or ``.zip``
-file extension. The export process will build that type of file for the
-chosen platform.
+Một phương pháp khác là :ref:`export from the command line <doc_command_line_tutorial_exporting>` với ``--export-pack``. File đầu ra phải có phần mở rộng file ``.pck`` hoặc ``.zip``. Quá trình export sẽ tạo loại file đó cho platform đã chọn.
 
-Patch PCK files
----------------
+File PCK patch
+--------------
 
-Generating Patch PCK files
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tạo file PCK patch
+~~~~~~~~~~~~~~~~~~
 
-To create a PCK file that only contains resources not present in the original
-release of a project, you would create a patch PCK file. This could be used for
-patches, mods, or expansions. For this to work you'll first need to have a PCK file
-for your project at the point of its initial release.
+Để tạo một file PCK chỉ chứa các resource không có trong bản phát hành ban đầu của project, bạn sẽ tạo một file PCK patch. File này có thể được sử dụng cho patch, mod hoặc bản mở rộng. Để cách này hoạt động, trước tiên bạn cần có một file PCK cho project tại thời điểm phát hành ban đầu.
 
-To generate a patch PCK file, within the export menu, and with your desired preset
-selected, click on the :Button:`Patching` tab. At the bottom is the :ui:`Base Packs`
-section. Click on the :Button:`Add Pack` button, then navigate to the PCK file you
-exported that contains everything in your project for its initial release.
+Để tạo file PCK patch, trong export menu và với preset mong muốn đã được chọn, hãy nhấp vào tab :Button:`Patching`. Ở phía dưới là phần :ui:`Base Packs`. Nhấp vào nút :Button:`Add Pack`, sau đó điều hướng đến file PCK bạn đã export, file này chứa mọi thứ trong project ở bản phát hành ban đầu.
 
-Now, when you go to export a PCK file of your project again, if you have the
+Bây giờ, khi export lại một file PCK của project, nếu bạn có
 :Button:`Export as Patch` button selected, only resources that have changed
-will be exported in the PCK file.
+sẽ được export trong file PCK.
 
-You can also add any patches you export to your base packs for future use. For
-example, adding ``patch.pck`` will ensure that ``patch2.pck`` will not include any
-resources from that first patch.
+Bạn cũng có thể thêm mọi patch đã export vào các pack cơ sở để sử dụng sau này. Ví dụ, thêm ``patch.pck`` sẽ đảm bảo rằng ``patch2.pck`` sẽ không bao gồm bất kỳ resource nào từ patch đầu tiên đó.
 
 Delta encoding
 ~~~~~~~~~~~~~~
 
-Patch PCK files can be made smaller through the use of delta encoding. This makes it
-so that only the parts of a file that have been changed are updated. This does have a
-drawback of longer load times for the resources that are updated, and each patch for
-a resource cumulatively increases its load time.
+File PCK patch có thể được làm nhỏ hơn bằng cách sử dụng delta encoding. Cách này chỉ cập nhật những phần của file đã thay đổi. Tuy nhiên, nó có nhược điểm là làm tăng thời gian load đối với các resource được cập nhật, và mỗi patch của một resource sẽ cộng dồn làm tăng thời gian load của resource đó.
 
-There are two settings for delta encoding in addition to the filters:
+Có hai thiết lập cho delta encoding ngoài các bộ lọc:
 
-- **Delta Encoding Compression Level:** Controls how much compression is applied to
-  the files. We do not recommend any more than the default of 19. Beyond that more
-  memory is needed for export and import for significantly fewer gains. Any positive
-  values will have the same decompression speed, however export will take
-  longer the higher the number is. Negative values enable fast mode, which
-  means larger files, but the decompression speed is higher.
+- **Delta Encoding Compression Level:** Kiểm soát mức độ nén được áp dụng cho các file. Chúng tôi không khuyến nghị dùng giá trị cao hơn mức mặc định là 19. Vượt quá mức này sẽ cần thêm memory cho việc export và import nhưng chỉ mang lại mức cải thiện rất nhỏ. Mọi giá trị dương đều có cùng tốc độ giải nén, tuy nhiên export sẽ mất nhiều thời gian hơn khi giá trị lớn hơn. Các giá trị âm bật fast mode, nghĩa là file lớn hơn nhưng tốc độ giải nén cao hơn.
 
-- **Delta Encoding Minimum Size Reduction:** Controls how much size has to be saved
-  at minimum for compression to be used on an individual file. For example, at a
-  level of 10%, if the file size can only be reduced by 5%, then the file won't use
-  delta encoding.
+- **Delta Encoding Minimum Size Reduction:** Kiểm soát mức giảm kích thước tối thiểu cần đạt được để sử dụng compression cho từng file. Ví dụ, ở mức 10%, nếu kích thước file chỉ có thể giảm 5% thì file sẽ không sử dụng delta encoding.
 
-The default compression level, 19, is the highest recommended level.
+Mức compression mặc định, 19, là mức cao nhất được khuyến nghị.
 
-For the smallest patch size possible we recommend turning off compression for any
-resources you want to patch. Even if your base PCK files were compressed that
-shouldn't cause an issue.
+Để có kích thước patch nhỏ nhất có thể, chúng tôi khuyến nghị tắt compression cho mọi resource mà bạn muốn patch. Ngay cả khi các file PCK cơ sở đã được nén, điều đó cũng không gây ra vấn đề.
 
-There are several places compression can be disabled for different resources:
+Có một số nơi có thể tắt compression cho các resource khác nhau:
 
-- Import settings related to compression on individually imported resources, such as
-  translation or 3D model files
-- :ui:`Compress Binary Resources` in the editor settings
-- :ui:`GDScript Export Mode` in the :button:`Scripts` tab of an export preset
+- Các thiết lập import liên quan đến compression trên những resource được import riêng lẻ, chẳng hạn như file translation hoặc model 3D - :ui:`Compress Binary Resources` trong editor settings - :ui:`GDScript Export Mode` trong tab :button:`Scripts` của export preset
 
 .. Note::
 
-    After disabling :ui:`Compress Binary Resources` you must delete the contents of
-    your projects ``.godot/imported/`` folder, then closing and open the project
-    again to re-generate it.
+    Sau khi tắt :ui:`Compress Binary Resources`, bạn phải xóa nội dung trong thư mục ``.godot/imported/`` của project, sau đó đóng và mở lại project để tạo lại thư mục.
 
-It's important to note that when you export a delta encoded patch on top of previous
-patches, the packs you list under :ui:`Base Packs` in the :Button:`Patching` tab
-must be the exact same files that are loaded by the game at runtime, in the exact
-order they are loaded in. Re-exporting previous versions may end up being slightly
-different, due to non-determinism in Godot's export process, which can cause the
-patching to fail. This only applies to delta encoded patches, regular ones don't
-have this issue.
+Điều quan trọng cần lưu ý là khi export một patch được mã hóa delta dựa trên các patch trước đó, các pack bạn liệt kê dưới :ui:`Base Packs` trong tab :Button:`Patching` phải chính xác là những file được game load tại runtime, theo đúng thứ tự chúng được load. Việc export lại các phiên bản trước có thể tạo ra kết quả hơi khác do tính không xác định trong quá trình export của Godot, điều này có thể khiến việc patch thất bại. Điều này chỉ áp dụng cho các patch được mã hóa delta; các patch thông thường không gặp vấn đề này.
 
-Opening PCK or ZIP files at runtime
------------------------------------
+Mở file PCK hoặc ZIP tại runtime
+--------------------------------
 
-To load a PCK or ZIP file, one uses the ProjectSettings singleton. The following
-example expects a ``mod.pck`` file in the directory of the game's executable.
-The PCK or ZIP file contains a ``mod_scene.tscn`` test scene in its root.
+Để load file PCK hoặc ZIP, ta sử dụng singleton ProjectSettings. Ví dụ sau giả định có file ``mod.pck`` trong thư mục chứa executable của game. File PCK hoặc ZIP chứa một scene test ``mod_scene.tscn`` ở thư mục gốc.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     func _your_function():
-        # This could fail if, for example, mod.pck cannot be found.
+        # Thao tác này có thể thất bại nếu, chẳng hạn, không tìm thấy mod.pck.
         var success = ProjectSettings.load_resource_pack(OS.get_executable_path().get_base_dir().path_join("mod.pck"))
 
         if success:
-            # Now one can use the assets as if they had them in the project from the start.
+            # Bây giờ bạn có thể sử dụng các asset như thể chúng đã có sẵn trong project ngay từ đầu.
             var imported_scene = load("res://mod_scene.tscn")
 
  .. code-tab:: csharp
 
     private void YourFunction()
     {
-        // This could fail if, for example, mod.pck cannot be found.
+        // Thao tác này có thể thất bại nếu, chẳng hạn, không tìm thấy mod.pck.
         var success = ProjectSettings.LoadResourcePack(OS.GetExecutablePath().GetBaseDir().PathJoin("mod.pck"));
 
         if (success)
         {
-            // Now one can use the assets as if they had them in the project from the start.
+            // Bây giờ bạn có thể sử dụng các asset như thể chúng đã có sẵn trong project ngay từ đầu.
             var importedScene = (PackedScene)ResourceLoader.Load("res://mod_scene.tscn");
         }
     }
 
 .. warning::
 
-    By default, if you import a file with the same file path/name as one you
-    already have in your project, the imported one will replace it. This is
-    something to watch out for when creating DLC or mods. You can solve this
-    problem by using a tool that isolates mods to a specific mods subfolder.
+    Theo mặc định, nếu bạn import một file có cùng đường dẫn/tên file với file đã có trong project, file được import sẽ thay thế file đó. Đây là điều cần lưu ý khi tạo DLC hoặc mod. Bạn có thể giải quyết vấn đề này bằng cách sử dụng một công cụ cô lập mod vào một thư mục mod cụ thể.
 
-    However, it is also a way of creating patches for one's own game. A PCK/ZIP
-    file of this kind can fix the content of a previously loaded PCK/ZIP
-    (therefore, the order in which packs are loaded matters).
+    Tuy nhiên, đây cũng là một cách để tạo patch cho game của chính bạn. Một file PCK/ZIP dạng này có thể sửa nội dung của một PCK/ZIP đã được load trước đó (do đó, thứ tự load các pack rất quan trọng).
 
-    To opt out of this behavior, pass ``false`` as the second argument to
+    Để không sử dụng hành vi này, hãy truyền ``false`` làm đối số thứ hai cho
     :ref:`ProjectSettings.load_resource_pack() <class_ProjectSettings_method_load_resource_pack>`.
 
 .. note::
 
-    For a C# project, you need to build the DLL and place it in the project directory first.
-    Then, before loading the resource pack, you need to load its DLL as follows:
-    ``Assembly.LoadFile("mod.dll")``
+    Đối với project C#, trước tiên bạn cần build DLL và đặt nó vào thư mục project. Sau đó, trước khi load resource pack, bạn cần load DLL của nó như sau: ``Assembly.LoadFile("mod.dll")``
 
-Troubleshooting
+Khắc phục sự cố
 ~~~~~~~~~~~~~~~
 
-If you are loading a resource pack and are not noticing any changes, it may be
-due to the pack being loaded too late. This is particularly the case with menu
-scenes that may preload other scenes using
+Nếu bạn đang load một resource pack nhưng không nhận thấy thay đổi nào, nguyên nhân có thể là pack được load quá muộn. Điều này đặc biệt xảy ra với các scene menu có thể preload các scene khác bằng cách sử dụng
 :ref:`preload() <class_@GDScript_method_preload>`. This means that loading
-a pack in the menu will not affect the other scene that was already preloaded.
+một pack trong menu sẽ không ảnh hưởng đến scene khác đã được preload.
 
-To avoid this, you need to load the pack as early as possible.
-To do so, create a new :ref:`autoload <doc_singletons_autoload>` script and
-call :ref:`ProjectSettings.load_resource_pack() <class_ProjectSettings_method_load_resource_pack>`
-in the autoload script's ``_init()`` function, rather than ``_enter_tree()``
-or ``_ready()``.
+Để tránh điều này, bạn cần load pack sớm nhất có thể. Để thực hiện, hãy tạo một script :ref:`autoload <doc_singletons_autoload>` mới và gọi :ref:`ProjectSettings.load_resource_pack() <class_ProjectSettings_method_load_resource_pack>` trong hàm ``_init()`` của script autoload, thay vì ``_enter_tree()`` hoặc ``_ready()``.
 
-Modding considerations
-----------------------
+Các lưu ý khi mod
+-----------------
 
-If one wishes to support mods for their game, they will need their users to
-create similarly exported files. Assuming the original game expects a
-certain structure for the PCK's resources, and/or a certain interface for
-its scripts, then one of two things has to be done.
+Nếu muốn hỗ trợ mod cho trò chơi của mình, nhà phát triển sẽ cần người dùng tạo các tệp được export tương tự. Giả sử trò chơi gốc yêu cầu một cấu trúc nhất định cho các resource của PCK và/hoặc một interface nhất định cho các script, thì cần thực hiện một trong hai việc sau.
 
-1. The developer must document these expected structures/
-    interfaces, expect modders to install Godot Engine, and then also expect
-    those modders to conform to the documentation's defined API when building
-    mod content for the game (so that it will work). Users would then use
-    Godot's built in exporting tools to create a PCK file, as detailed
-    above.
-2. The developer uses Godot to build a GUI tool for adding their exact API
-    content to a project. This Godot tool must either run on a tools-enabled
-    build of the engine or have access to one (distributed alongside or
-    perhaps in the original game's files). The tool can then use the Godot
-    executable to export a PCK file from the command line with
+1. Nhà phát triển phải ghi lại tài liệu về các cấu trúc/interface được mong đợi này, yêu cầu modder cài đặt Godot Engine, đồng thời yêu cầu các modder đó tuân thủ API được định nghĩa trong tài liệu khi xây dựng nội dung mod cho trò chơi (để nội dung đó hoạt động). Sau đó, người dùng sẽ sử dụng các công cụ export tích hợp sẵn của Godot để tạo tệp PCK, như đã trình bày ở trên. 2. Nhà phát triển sử dụng Godot để xây dựng một công cụ GUI nhằm thêm nội dung API chính xác của họ vào một project. Công cụ Godot này phải chạy trên một build của engine đã bật tools hoặc có quyền truy cập vào một build như vậy (được phân phối cùng với hoặc có thể nằm trong các tệp của trò chơi gốc). Sau đó, công cụ có thể sử dụng tệp thực thi Godot để export tệp PCK từ command line với
     :ref:`OS.execute() <class_OS_method_execute>`. The game itself shouldn't
-    use a tool-build of the engine (for security), so it's best to keep
-    the modding tool and game separate.
+    sử dụng một build tools của engine (vì lý do bảo mật), do đó tốt nhất là nên tách riêng công cụ modding và trò chơi.

@@ -1,151 +1,123 @@
 .. _doc_exporting_for_ios:
 
-Exporting for iOS
-=================
+Export cho iOS
+==============
 
 .. seealso::
 
-    This page describes how to export a Godot project to iOS.
-    If you're looking to compile export template binaries from source instead,
-    read :ref:`doc_compiling_for_ios`.
+    Trang này mô tả cách export một project Godot sang iOS. Nếu bạn muốn compile các binary của export template từ source thay vào đó, hãy đọc :ref:`doc_compiling_for_ios`.
 
-These are the steps to load a Godot project in Xcode. This allows you to
-build and deploy to an iOS device, build a release for the App Store, and
-do everything else you can normally do with Xcode.
+Sau đây là các bước để load một project Godot trong Xcode. Việc này cho phép bạn build và deploy lên thiết bị iOS, build bản release cho App Store và thực hiện mọi thao tác khác mà bạn thường có thể làm với Xcode.
 
 .. attention::
 
-    Projects written in C# can be exported to iOS as of Godot 4.2, but support
-    is experimental and :ref:`some limitations apply <doc_c_sharp_platforms>`.
+    Các project được viết bằng C# có thể được export sang iOS kể từ Godot 4.2, nhưng tính năng này vẫn đang ở trạng thái experimental và :ref:`some limitations apply <doc_c_sharp_platforms>`.
 
-Requirements
-------------
+Yêu cầu
+-------
 
--  You must export for iOS from a computer running macOS with Xcode installed.
--  Download the Godot export templates. Use the Godot menu: Editor > Manage Export Templates
+-  Bạn phải export cho iOS từ một máy tính chạy macOS có cài Xcode. - Tải các export template của Godot. Sử dụng menu Godot: Editor > Manage Export Templates
 
-Export a Godot project to Xcode
--------------------------------
+Export một project Godot sang Xcode
+-----------------------------------
 
-In the Godot editor, open the **Export** window from the **Project** menu. When the
-Export window opens, click **Add..** and select **iOS**.
+Trong Godot editor, mở cửa sổ **Export** từ menu **Project**. Khi cửa sổ Export mở ra, nhấp vào **Add..** và chọn **iOS**.
 
-The **App Store Team ID** and (Bundle) **Identifier** options in the **Application** category
-are required. Leaving them blank will cause the exporter to throw an error. The bundle ID must be unique.
+Các tùy chọn **App Store Team ID** và (Bundle) **Identifier** trong danh mục **Application** là bắt buộc. Để trống chúng sẽ khiến exporter báo lỗi. Bundle ID phải là duy nhất.
 
 .. note::
 
-    A valid bundle ID can only contain alphanumeric characters, hyphens, and periods (``A-Z``, ``a-z``, ``0-9``, ``-``, and ``.``).
-    Apple recommends using reverse-DNS format (e.g. ``com.example.your-game``) of a domain you own, so that your bundle ID is guaranteed to be unique.
-    Bundle IDs are case-insensitive. See `CFBundleIdentifier <https://developer.apple.com/documentation/bundleresources/information-property-list/cfbundleidentifier>`__.
+    Một bundle ID hợp lệ chỉ có thể chứa các ký tự chữ và số, dấu gạch ngang và dấu chấm (``A-Z``, ``a-z``, ``0-9``, ``-`` và ``.``). Apple khuyến nghị sử dụng định dạng reverse-DNS (ví dụ: ``com.example.your-game``) của một domain mà bạn sở hữu, để đảm bảo bundle ID của bạn là duy nhất. Bundle ID không phân biệt chữ hoa chữ thường. Xem `CFBundleIdentifier <https://developer.apple.com/documentation/bundleresources/information-property-list/cfbundleidentifier>`__.
 
 .. note:: | If you encounter an error during export similar to
-          | ``JSON text did not start with array or object and option to allow fragments not set``
-          | then it might be due to a malformated **App Store Team ID**!
-          | The exporter expects a (10 characters long) code like ``ABCDE12XYZ`` and not, e.g., your name as Xcode likes to display in the *Signing & Capabilities* tab.
-          | You can find the code over at `developer.apple.com <https://developer.apple.com/account/resources/certificates/list>`_ next to your name in the top right corner.
+          | ``JSON text did not start with array or object and option to allow fragments not set`` | thì có thể nguyên nhân là do **App Store Team ID** bị sai định dạng! | The exporter expects a (10 characters long) code like ``ABCDE12XYZ`` and not, e.g., your name as Xcode likes to display in the *Signing & Capabilities* tab. | Bạn có thể tìm thấy mã này tại `developer.apple.com <https://developer.apple.com/account/resources/certificates/list>`_, bên cạnh tên của bạn ở góc trên bên phải.
 
-After you click **Export Project**, there are still two important options left:
+Sau khi bạn nhấp vào **Export Project**, vẫn còn hai tùy chọn quan trọng:
 
-  * **Path** is an empty folder that will contain the exported Xcode project files.
-  * **File** will be the name of the Xcode project and several project specific files and directories.
+  * **Path** là một thư mục trống sẽ chứa các file project Xcode đã export. * **File** sẽ là tên của project Xcode cùng một số file và thư mục riêng của project.
 
 .. image:: img/ios_export_file.webp
 
 .. note:: This tutorial uses **exported_xcode_project_name**, but you will use your
-          project's name. When you see **exported_xcode_project_name**
-          in the following steps, replace it with the name you used instead.
+          tên của project. Khi thấy **exported_xcode_project_name** trong các bước sau, hãy thay thế bằng tên bạn đã sử dụng.
 
 .. note:: Avoid using spaces when you choose your **exported_xcode_project_name** as
-          this can lead to corruption in your XCode project file.
+          điều này có thể khiến file project XCode bị hỏng.
 
-When the export completes, the output folder should look like this:
+Khi quá trình export hoàn tất, thư mục output sẽ có dạng như sau:
 
 .. image:: img/ios_export_output.webp
 
 
 .. warning::
 
-    The iOS simulator only supports the ``Compatibility`` renderer.
+    iOS simulator chỉ hỗ trợ renderer ``Compatibility``.
 
-    Apple Silicon Macs can run iOS apps natively, so you can run exported iOS projects
-    directly on an Apple Silicon Mac without iOS simulator limitations.
+    Các máy Mac Apple Silicon có thể chạy ứng dụng iOS native, vì vậy bạn có thể chạy trực tiếp các project iOS đã export trên máy Mac Apple Silicon mà không bị giới hạn của iOS simulator.
 
-Opening **exported_xcode_project_name.xcodeproj** lets you build and deploy
-like any other iOS app.
+Mở **exported_xcode_project_name.xcodeproj** cho phép bạn build và deploy như bất kỳ ứng dụng iOS nào khác.
 
-Active development considerations
+Các lưu ý khi phát triển chủ động
 ---------------------------------
 
-The above method creates an exported project that you can build for
-release, but you have to re-export every time you make a change in Godot.
+Phương pháp trên tạo một project đã export mà bạn có thể build cho bản release, nhưng bạn phải export lại mỗi khi thực hiện thay đổi trong Godot.
 
-While developing, you can speed this process up by linking your
-Godot project files directly into your app.
+Trong quá trình phát triển, bạn có thể tăng tốc quy trình này bằng cách liên kết trực tiếp các file project Godot vào ứng dụng của mình.
 
-In the following example:
+Trong ví dụ sau:
 
-  * **exported_xcode_project_name** is the name of the exported iOS application (as above).
-  * **godot_project_to_export** is the name of the Godot project.
+  * **exported_xcode_project_name** là tên của ứng dụng iOS đã export (như trên). * **godot_project_to_export** là tên của project Godot.
 
 .. note:: **godot_project_to_export** must not be the same as **exported_xcode_project_name**
-          to prevent signing issues in Xcode.
+          để tránh các vấn đề signing trong Xcode.
 
-Steps to link a Godot project folder to Xcode
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Các bước liên kết một thư mục project Godot với Xcode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Start from an exported iOS project (follow the steps above).
-2. In Finder, drag the Godot project folder into the Xcode file browser.
+1. Bắt đầu từ một project iOS đã export (làm theo các bước ở trên). 2. Trong Finder, kéo thư mục project Godot vào file browser của Xcode.
 
 .. image:: img/ios_export_add_dir.webp
 
-3. In the dialog, make sure to select Action: **Reference files in place** and Groups: **Create folders**. Uncheck Targets: **exported_xcode_project_name**.
+3. Trong hộp thoại, hãy đảm bảo chọn Action: **Reference files in place** và Groups: **Create folders**. Bỏ chọn Targets: **exported_xcode_project_name**.
 
 .. image:: img/ios_export_file_ref.webp
 
-4. See the **godot_project_to_export** folder in the Xcode file browser.
+4. Bạn sẽ thấy thư mục **godot_project_to_export** trong file browser của Xcode.
 
-5. Select the godot project in the Project navigator. Then on the other side of the XCode window, in the File Inspector, make these selections:
+5. Chọn project Godot trong Project navigator. Sau đó, ở phía bên kia của cửa sổ XCode, trong File Inspector, hãy chọn các mục sau:
 
-  * **Location**: Relative to Project
-  * **Build Rules**: Apply Once to Folder
-  * add your project to **Target Membership**
+  * **Location**: Relative to Project * **Build Rules**: Apply Once to Folder * thêm project của bạn vào **Target Membership**
 
 .. image:: img/ios_export_file_inspector.webp
 
 .. image:: img/ios_export_target_membership.webp
 
-7. Delete **exported_xcode_project_name.pck** from the Xcode project in the project navigator.
+7. Xóa **exported_xcode_project_name.pck** khỏi project Xcode trong project navigator.
 
 .. image:: img/ios_export_delete_pck.webp
 
-8. Open **exported_xcode_project_name-Info.plist** and add a string property named
-**godot_path** (this is the real key name) with a value **godot_project_to_export**
-(this is the name of your project)
+8. Mở **exported_xcode_project_name-Info.plist** và thêm một string property có tên **godot_path** (đây là tên key thực tế) với giá trị **godot_project_to_export** (đây là tên project của bạn)
 
 .. image:: img/ios_export_set_path.webp
 
-That's it! You can now edit your project in the Godot editor and build it
-in Xcode when you want to run it on a device.
+Vậy là xong! Giờ bạn có thể chỉnh sửa project trong Godot editor và build trong Xcode bất cứ khi nào muốn chạy project trên một thiết bị.
 
-Plugins for iOS
----------------
+Các plugin cho iOS
+------------------
 
-Special iOS plugins can be used in Godot. Check out the
+Bạn có thể sử dụng các plugin iOS đặc biệt trong Godot. Hãy xem
 :ref:`doc_ios_plugin` page.
 
-Environment variables
----------------------
+Các biến môi trường
+-------------------
 
-You can use the following environment variables to set export options outside of
-the editor. During the export process, these override the values that you set in
-the export menu.
+Bạn có thể sử dụng các biến môi trường sau để thiết lập các tùy chọn export bên ngoài editor. Trong quá trình export, chúng sẽ ghi đè các giá trị bạn đã đặt trong export menu.
 
 .. list-table:: iOS export environment variables
    :header-rows: 1
 
-   * - Export option
-     - Environment variable
+   * - Tùy chọn export
+     - Biến môi trường
    * - Encryption / Encryption Key
      - ``GODOT_SCRIPT_ENCRYPTION_KEY``
    * - Options / Application / Provisioning Profile UUID Debug
@@ -153,41 +125,35 @@ the export menu.
    * - Options / Application / Provisioning Profile UUID Release
      - ``GODOT_IOS_PROVISIONING_PROFILE_UUID_RELEASE``
 
-Troubleshooting
+Khắc phục sự cố
 ---------------
 
-xcode-select points at wrong SDK location
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xcode-select trỏ đến vị trí SDK không chính xác
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-xcode-select is a tool that comes with Xcode and among other things points at iOS SDKs on your Mac.
-If you have Xcode installed, opened it, agreed to the license agreement, and installed the command line tools,
-xcode-select should point at the right location for the iPhone SDK.
-If it somehow doesn't, Godot will fail exporting to iOS with an error that may look like this:
+xcode-select là một công cụ đi kèm với Xcode và, cùng nhiều chức năng khác, dùng để trỏ đến các iOS SDK trên máy Mac của bạn. Nếu bạn đã cài Xcode, mở ứng dụng, đồng ý với thỏa thuận cấp phép và cài đặt các command line tools, xcode-select sẽ trỏ đến đúng vị trí của iPhone SDK. Nếu vì lý do nào đó công cụ không trỏ đúng, Godot sẽ không thể export sang iOS và hiển thị một lỗi có thể trông như sau:
 
 ::
 
     MSB3073: The command ""clang" <LOTS OF PATHS AND COMMAND LINE ARGUMENTS HERE>
     "/Library/Developer/CommandLineTools/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"" exited with code 1.
 
-In this case, Godot is trying to find the ``Platforms`` folder containing the iPhone SDK inside the
-``/Library/Developer/CommandLineTools/`` folder, but the ``Platforms`` folder with the iPhone SDK is
-actually located under ``/Applications/Xcode.app/Contents/Developer``. To verify this, you can open
-up Terminal and run the following command to see what xcode-select points at:
+Trong trường hợp này, Godot đang cố tìm thư mục ``Platforms`` chứa iPhone SDK bên trong thư mục ``/Library/Developer/CommandLineTools/``, nhưng thư mục ``Platforms`` chứa iPhone SDK thực tế lại nằm dưới ``/Applications/Xcode.app/Contents/Developer``. Để xác minh điều này, bạn có thể mở Terminal và chạy lệnh sau để xem xcode-select đang trỏ đến đâu:
 
 ::
 
     xcode-select -p
 
-To fix xcode-select pointing at a wrong location, enter this command in Terminal:
+Để sửa lỗi xcode-select trỏ đến sai vị trí, hãy nhập lệnh này trong Terminal:
 
 ::
 
     sudo xcode-select -switch /Applications/Xcode.app
 
-After running this command, Godot should be able to successfully export to iOS.
+Sau khi chạy lệnh này, Godot sẽ có thể export thành công sang iOS.
 
-Export options
---------------
+Các tùy chọn export
+-------------------
 
-You can find a full list of export options available in the
+Bạn có thể tìm thấy danh sách đầy đủ các tùy chọn export hiện có trong
 :ref:`class_EditorExportPlatformIOS` class reference.

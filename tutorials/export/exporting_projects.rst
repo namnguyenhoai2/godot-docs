@@ -1,240 +1,143 @@
 .. _doc_exporting_projects:
 
-Exporting projects
-==================
+Xuất project
+============
 
 .. highlight:: none
 
-Why export?
------------
+Tại sao cần xuất?
+-----------------
 
-Originally, Godot did not have any means to export projects. The
-developers would compile the proper binaries and build the packages for
-each platform manually.
+Ban đầu, Godot không có cách nào để xuất project. Các developer phải tự biên dịch binary phù hợp và build package cho từng platform.
 
-When more developers (and even non-programmers) started using it, and
-when our company started taking more projects at the same time, it
-became evident that this was a bottleneck.
+Khi ngày càng có nhiều developer (và thậm chí cả những người không lập trình) bắt đầu sử dụng nó, đồng thời công ty của chúng tôi bắt đầu thực hiện nhiều project cùng lúc hơn, rõ ràng đây là một nút thắt cổ chai.
 
-On PC
-~~~~~
+Trên PC
+~~~~~~~
 
-Distributing a game project on PC with Godot is rather easy. Drop
-the Godot binary in the same directory as the ``project.godot`` file,
-then compress the project directory and you are done.
+Phân phối một game project trên PC bằng Godot khá dễ. Đặt Godot binary vào cùng thư mục với file ``project.godot``, sau đó nén thư mục project là xong.
 
-It sounds simple, but there are probably a few reasons why the developer
-may not want to do this. The first one is that it may not be desirable
-to distribute loads of files. Some developers may not like curious users
-peeking at how the game was made, others may find it inelegant, and so on.
-Another reason is that the developer might prefer a specially-compiled
-binary, which is smaller in size, more optimized and does not include
-tools like the editor and debugger.
+Nghe có vẻ đơn giản, nhưng có lẽ có một vài lý do khiến developer không muốn làm vậy. Lý do đầu tiên là việc phân phối quá nhiều file có thể không phù hợp. Một số developer có thể không thích việc những người dùng tò mò xem cách game được tạo ra, những người khác có thể thấy cách này thiếu gọn gàng, v.v. Một lý do khác là developer có thể muốn sử dụng một binary được biên dịch đặc biệt, có kích thước nhỏ hơn, được tối ưu hơn và không bao gồm các tool như editor và debugger.
 
-Finally, Godot has a simple but efficient system for
+Cuối cùng, Godot có một hệ thống đơn giản nhưng hiệu quả cho
 :ref:`creating DLCs as extra package files <doc_exporting_pcks>`.
 
-On mobile
-~~~~~~~~~
+Trên mobile
+~~~~~~~~~~~
 
-The same scenario on mobile platforms is a little worse.
-To distribute a project on those devices, a binary for each of
-those platforms is built, then added to a native project together
-with the game data.
+Tình huống tương tự trên các mobile platform tệ hơn một chút. Để phân phối một project trên các thiết bị đó, binary cho từng platform được build, sau đó được thêm vào một native project cùng với game data.
 
-This can be troublesome because it means that the developer must be
-familiarized with the SDK of each platform before even being able to
-export. While learning each SDK is always encouraged, it can be
-frustrating to be forced to do it at an undesired time.
+Điều này có thể gây phiền phức vì developer phải làm quen với SDK của từng platform trước khi có thể export. Mặc dù việc học từng SDK luôn được khuyến khích, việc bị buộc phải làm điều đó vào một thời điểm không mong muốn có thể gây khó chịu.
 
-There is also another problem with this approach: different devices
-prefer some data in different formats to run. The main example of this
-is texture compression. All PC hardware uses S3TC (BC) compression and
-that has been standardized for more than a decade, but mobile devices
-use different formats for texture compression, such as ETC1 and ETC2.
+Cách tiếp cận này còn có một vấn đề khác: các thiết bị khác nhau ưu tiên một số data ở các format khác nhau để chạy. Ví dụ điển hình là texture compression. Tất cả phần cứng PC đều sử dụng compression S3TC (BC), và chuẩn này đã được chuẩn hóa hơn một thập kỷ, nhưng các thiết bị mobile sử dụng những format khác nhau cho texture compression, chẳng hạn như ETC1 và ETC2.
 
-Export menu
+Menu export
 -----------
 
-After many attempts at different export workflows, the current one has
-proven to work the best. At the time of this writing, not all platforms are
-supported yet, but the supported platforms continue to grow.
+Sau nhiều lần thử các workflow export khác nhau, workflow hiện tại đã chứng minh là hoạt động tốt nhất. Tại thời điểm viết tài liệu này, chưa phải tất cả platform đều được hỗ trợ, nhưng các platform được hỗ trợ vẫn tiếp tục tăng lên.
 
-To open the export menu, click the :button:`Export` button:
+Để mở menu export, hãy nhấp vào nút :button:`Export`:
 
 .. image:: img/export.webp
 
-The export menu will open. However, it will be completely empty.
-This is because we need to add an export preset.
+Menu export sẽ mở ra. Tuy nhiên, menu sẽ hoàn toàn trống. Đó là vì chúng ta cần thêm một export preset.
 
 .. image:: img/export_dialog.webp
 
-To create an export preset, click the **Add…** button at the top
-of the export menu. This will open a drop-down list of platforms
-to choose from for an export preset.
+Để tạo một export preset, hãy nhấp vào nút **Add…** ở phía trên menu export. Thao tác này sẽ mở một danh sách thả xuống gồm các platform để chọn cho export preset.
 
 .. image:: img/export_preset.webp
 
-The default options are often enough to export, so tweaking them is
-usually not necessary. However, many platforms require additional
-tools (SDKs) to be installed to be able to export. Additionally, Godot
-needs export templates installed to create packages. The export menu
-will complain when something is missing and will not allow the user to
-export for that platform until they resolve it:
+Các tùy chọn mặc định thường đã đủ để export, vì vậy thông thường không cần tinh chỉnh chúng. Tuy nhiên, nhiều platform yêu cầu cài đặt các tool bổ sung (SDK) để có thể export. Ngoài ra, Godot cần cài đặt export template để tạo package. Menu export sẽ thông báo khi thiếu thành phần nào đó và sẽ không cho phép người dùng export cho platform đó cho đến khi vấn đề được giải quyết:
 
 .. image:: img/export_error.webp
 
-At that time, the user is expected to come back to the documentation and follow
-instructions on how to properly set up that platform.
+Khi đó, người dùng được kỳ vọng sẽ quay lại tài liệu và làm theo hướng dẫn để thiết lập platform đó đúng cách.
 
-The buttons at the bottom of the menu allow you to export the project in a few
-different ways:
+Các nút ở cuối menu cho phép bạn export project theo một vài cách khác nhau:
 
-- Export All: Export the project as a playable build (Godot executable and project data)
-  for all the presets defined. All presets must have an **Export Path** defined for this
-  to work.
-- Export Project: Export the project as a playable build
-  (Godot executable and project data) for the selected preset.
-- Export PCK/ZIP: Export the project resources as a PCK or ZIP package.
-  This is not a playable build, it only exports the project data without a Godot executable.
+- Export All: Export project dưới dạng một playable build (Godot executable và project data) cho tất cả preset đã định nghĩa. Tất cả preset phải có **Export Path** thì mới hoạt động. - Export Project: Export project dưới dạng một playable build (Godot executable và project data) cho preset được chọn. - Export PCK/ZIP: Export resource của project dưới dạng package PCK hoặc ZIP. Đây không phải là một playable build; thao tác này chỉ export project data mà không có Godot executable.
 
-Export templates
-~~~~~~~~~~~~~~~~
+Export template
+~~~~~~~~~~~~~~~
 
-Export templates must be installed to export projects. To manage your export
-templates go to :menu:`Editor > Manage Export Templates...`.
+Phải cài đặt export template để export project. Để quản lý export template, hãy vào :menu:`Editor > Manage Export Templates...`.
 
 .. image:: img/export_templates.webp
 
-This will open the export template manager.
+Thao tác này sẽ mở trình quản lý export template.
 
 .. image:: img/export_template_manager.webp
 
-Here you can see all export templates that are and aren't installed. There are two
-ways to install export templates. First, you can check the box for the platform and
-architecture you want to use, then click the :button:`Install Selected Templates`
-button.
+Tại đây, bạn có thể xem tất cả export template đã và chưa được cài đặt. Có hai cách để cài đặt export template. Trước tiên, bạn có thể đánh dấu vào ô của platform và architecture muốn sử dụng, sau đó nhấp vào nút :button:`Install Selected Templates`.
 
 .. note:: If you're unsure which architecture you need, check your platform's export
-          page for a detailed description.
+          để xem mô tả chi tiết.
 
-Below the platform options there's another option called :ui:`ICU Data`. This is required for
-emojis and the following languages:
+Bên dưới các tùy chọn platform có một tùy chọn khác tên là :ui:`ICU Data`. Tùy chọn này cần thiết cho emoji và các ngôn ngữ sau:
 
-- Burmese
-- Chinese
-- Japanese
-- Korean
-- Central Khmer
-- Lao
-- Thai
+- Tiếng Myanmar - Tiếng Trung - Tiếng Nhật - Tiếng Hàn - Tiếng Khmer Trung tâm - Tiếng Lào - Tiếng Thái
 
-If you click the button in the upper right of the window, you can install templates
-from a TPZ file (essentially a ZIP archive). You can download a TPZ file of all
-export templates from the `download page of the website <https://www.godotengine.org/download>`_.
+Nếu nhấp vào nút ở góc trên bên phải của cửa sổ, bạn có thể cài đặt template từ file TPZ (về cơ bản là một ZIP archive). Bạn có thể tải file TPZ chứa tất cả export template từ `download page of the website <https://www.godotengine.org/download>`_.
 
-There is no inherent advantage to using the TPZ file for all platforms. It is functionally
-identical, and it will take up more space compared to only selecting what you need.
+Việc sử dụng file TPZ cho tất cả platform không có lợi thế vốn có nào. Về chức năng, nó giống hệt nhau và sẽ chiếm nhiều dung lượng hơn so với việc chỉ chọn những gì bạn cần.
 
 .. _doc_exporting_projects_export_mode:
 
-Resource options
-~~~~~~~~~~~~~~~~
+Tùy chọn resource
+~~~~~~~~~~~~~~~~~
 
-When exporting, Godot makes a list of all the files to export and then
-creates the package. There are 5 different modes for exporting:
+Khi export, Godot lập danh sách tất cả file cần export rồi tạo package. Có 5 mode export khác nhau:
 
--  Export all resources in the project
--  Export selected scenes (and dependencies)
--  Export selected resources (and dependencies)
--  Export all resources in the project except resources checked below
--  Export as dedicated server
+-  Export tất cả resource trong project - Export các scene được chọn (và dependency) - Export các resource được chọn (và dependency) - Export tất cả resource trong project ngoại trừ các resource được đánh dấu bên dưới - Export dưới dạng dedicated server
 
 .. image:: img/export_resources.webp
 
-**Export all resources in the project** will export every resource in the
-project. **Export selected scenes** and **Export selected resources** gives
-you a list of the scenes or resources in the project, and you have to
-select every scene or resource you want to export.
+**Export tất cả resource trong project** sẽ export mọi resource trong project. **Export các scene được chọn** và **Export các resource được chọn** cung cấp cho bạn danh sách các scene hoặc resource trong project, và bạn phải chọn từng scene hoặc resource muốn export.
 
 .. image:: img/export_selected.webp
 
-**Export all resources in the project except resources checked below** does
-exactly what it says, everything will be exported except for what you select
-in the list.
+**Export tất cả resource trong project ngoại trừ các resource được đánh dấu bên dưới** thực hiện đúng như tên gọi: mọi thứ sẽ được export ngoại trừ những gì bạn chọn trong danh sách.
 
-**Export as dedicated server** will remove all visuals from a project and replace
-them with a placeholder. This includes Cubemap, CubemapArray, Material, Mesh,
-Texture2D, Texture2DArray, Texture3D. You can also go into the list of files and
-specify specific visual resources that you do wish to keep.
+**Export dưới dạng dedicated server** sẽ xóa toàn bộ phần hiển thị khỏi project và thay thế chúng bằng placeholder. Điều này bao gồm Cubemap, CubemapArray, Material, Mesh, Texture2D, Texture2DArray, Texture3D. Bạn cũng có thể vào danh sách file và chỉ định các visual resource cụ thể mà bạn muốn giữ lại.
 
 .. note::
 
-    Files and folders whose name begin with a period will never be included in
-    the exported project. This is done to prevent version control folders like
-    ``.git`` from being included in the exported PCK file.
+    Các file và thư mục có tên bắt đầu bằng dấu chấm sẽ không bao giờ được đưa vào project đã export. Điều này nhằm ngăn các thư mục version control như ``.git`` được đưa vào file PCK đã export.
 
-Below the list of resources are two filters that can be setup. The first allows
-non-resource files such as ``.txt``, ``.json`` and ``.csv`` to be exported with
-the project. The second filter can be used to exclude every file of a certain
-type without manually deselecting every one. For example, ``.png`` files.
+Bên dưới danh sách resource có hai bộ lọc có thể được thiết lập. Bộ lọc đầu tiên cho phép export các file không phải resource như ``.txt``, ``.json`` và ``.csv`` cùng với project. Bộ lọc thứ hai có thể được dùng để loại trừ mọi file thuộc một loại nhất định mà không cần bỏ chọn từng file. Ví dụ: các file ``.png``.
 
-Configuration files
--------------------
+File cấu hình
+-------------
 
-The export configuration is stored in two files that can both be found in the project
-directory:
+Cấu hình export được lưu trong hai file, cả hai đều có thể tìm thấy trong thư mục project:
 
-- ``export_presets.cfg``: This file contains the vast majority of the export
-  configuration and can be safely committed to version control. There is nothing
-  in here that you would normally have to keep secret.
-- ``.godot/export_credentials.cfg``: This file contains export options that are
-  considered confidential, like passwords and encryption keys. It should generally
-  **not** be committed to version control or shared with others unless you know
-  exactly what you are doing.
+- ``export_presets.cfg``: File này chứa phần lớn cấu hình export và có thể commit an toàn vào version control. Thông thường, trong file này không có thông tin nào cần giữ bí mật. - ``.godot/export_credentials.cfg``: File này chứa các tùy chọn export được xem là confidential, chẳng hạn như password và encryption key. Nhìn chung, file này **không nên** được commit vào version control hoặc chia sẻ với người khác, trừ khi bạn biết chính xác mình đang làm gì.
 
-Since the credentials file is usually kept out of version control systems, some
-export options will be missing if you clone the project to a new machine. The easiest
-way to deal with this is to copy the file manually from the old location to the new one.
+Vì file credentials thường được giữ ngoài các hệ thống version control, một số tùy chọn export sẽ bị thiếu nếu bạn clone project sang một máy mới. Cách dễ nhất để xử lý việc này là tự sao chép file từ vị trí cũ sang vị trí mới.
 
-Exporting from the command line
--------------------------------
+Export từ command line
+----------------------
 
-In production, it is useful to automate builds, and Godot supports this
-with the ``--export-release`` and ``--export-debug`` command line parameters.
-Exporting from the command line still requires an export preset to define
-the export parameters. A basic invocation of the command would be:
+Trong production, việc tự động hóa build rất hữu ích, và Godot hỗ trợ điều này bằng các command line parameter ``--export-release`` và ``--export-debug``. Export từ command line vẫn yêu cầu một export preset để định nghĩa các tham số export. Cách gọi lệnh cơ bản là:
 
 .. code-block:: shell
 
     godot --export-release "Windows Desktop" some_name.exe
 
-This will export to ``some_name.exe``, assuming there is a preset
-called "Windows Desktop" and the template can be found. (The export preset name
-must be written within quotes if it contains spaces or special characters.)
-The output path is *relative to the project path* or *absolute*;
-**it does not respect the directory the command was invoked from**.
+Lệnh này sẽ export vào ``some_name.exe``, với điều kiện có một preset tên là "Windows Desktop" và template có thể được tìm thấy. (Tên export preset phải được viết trong dấu ngoặc kép nếu chứa khoảng trắng hoặc ký tự đặc biệt.) Output path có thể là *relative to the project path* hoặc *absolute*; **nó không tuân theo thư mục nơi command được gọi**.
 
-The output file extension should match the one used by the Godot export process:
+Phần mở rộng của output file phải khớp với phần mở rộng được sử dụng bởi quy trình Godot export:
 
-- Windows: ``.exe``
-- macOS: ``.app`` or ``.zip`` (or ``.dmg`` when exporting *from* macOS)
-- Linux: Any extension (including none). ``.x86_64`` is typically used for 64-bit x86 binaries.
-- HTML5: ``.zip``
-- Android: ``.apk``
-- iOS: ``.zip``
+- Windows: ``.exe`` - macOS: ``.app`` hoặc ``.zip`` (hoặc ``.dmg`` khi export *từ* macOS) - Linux: Bất kỳ phần mở rộng nào (kể cả không có). ``.x86_64`` thường được dùng cho binary x86 64-bit. - HTML5: ``.zip`` - Android: ``.apk`` - iOS: ``.zip``
 
-You can also configure it to export *only* the PCK or ZIP file, allowing
-a single exported main pack file to be used with multiple Godot executables.
-When doing so, the export preset name must still be specified on the command line:
+Bạn cũng có thể cấu hình để chỉ export file PCK hoặc ZIP, cho phép sử dụng một main pack file đã export với nhiều Godot executable. Khi làm vậy, tên export preset vẫn phải được chỉ định trên command line:
 
 .. code-block:: shell
 
     godot --export-pack "Windows Desktop" some_name.pck
 
-It is often useful to combine the ``--export-release`` flag with the ``--path``
-flag, so that you do not need to ``cd`` to the project folder before running
-the command:
+Việc kết hợp flag ``--export-release`` với flag ``--path`` thường rất hữu ích, để bạn không cần ``cd`` vào thư mục project trước khi chạy command:
 
 .. code-block:: shell
 
@@ -242,38 +145,26 @@ the command:
 
 .. seealso::
 
-    See :ref:`doc_command_line_tutorial` for more information about using Godot
-    from the command line.
+    Xem :ref:`doc_command_line_tutorial` để biết thêm thông tin về cách sử dụng Godot từ command line.
 
 .. _doc_exporting_projects_pck_versus_zip:
 
-PCK versus ZIP pack file formats
---------------------------------
+Các format pack file PCK và ZIP
+-------------------------------
 
-Each format has its upsides and downsides. PCK is the default and recommended
-format for most use cases, but you may want to use a ZIP archive instead
-depending on your needs.
+Mỗi format đều có ưu điểm và nhược điểm. PCK là format mặc định và được khuyến nghị cho hầu hết trường hợp sử dụng, nhưng tùy theo nhu cầu, bạn có thể muốn sử dụng ZIP archive thay thế.
 
-**PCK format:**
+**Format PCK:**
 
-- Uncompressed format. Larger file size, but faster to read/write.
-- Not readable and writable using tools normally present on the user's
-  operating system, even though there are
-  `third-party tools <https://github.com/hhyyrylainen/GodotPckTool>`__
-  to extract and create PCK files.
+- Định dạng không nén. Kích thước tệp lớn hơn nhưng đọc/ghi nhanh hơn. - Không thể đọc và ghi bằng các công cụ thường có trên hệ điều hành của người dùng, mặc dù có `third-party tools <https://github.com/hhyyrylainen/GodotPckTool>`__ để trích xuất và tạo các tệp PCK.
 
-**ZIP format:**
+**Định dạng ZIP:**
 
-- Compressed format. Smaller file size, but slower to read/write.
-- Readable and writable using tools normally present on the user's operating system.
-  This can be useful to make modding easier (see also :ref:`doc_exporting_pcks`).
+- Định dạng nén. Kích thước tệp nhỏ hơn nhưng đọc/ghi chậm hơn. - Có thể đọc và ghi bằng các công cụ thường có trên hệ điều hành của người dùng. Điều này có thể giúp việc mod dễ dàng hơn (xem thêm :ref:`doc_exporting_pcks`).
 
 .. warning::
 
-    Due to a `known bug <https://github.com/godotengine/godot/pull/42123>`__,
-    when using a ZIP file as a pack file, the exported binary will not try to use
-    it automatically. Therefore, you have to create a *launcher script* that
-    the player can double-click or run from a terminal to launch the project:
+    Do một `known bug <https://github.com/godotengine/godot/pull/42123>`__, khi sử dụng tệp ZIP làm tệp pack, binary đã xuất sẽ không tự động thử sử dụng tệp đó. Vì vậy, bạn phải tạo một *launcher script* mà người chơi có thể nhấp đúp hoặc chạy từ terminal để khởi chạy project:
 
     ::
 
@@ -284,6 +175,4 @@ depending on your needs.
         # launch.sh (Linux)
         ./my_project.x86_64 --main-pack my_project.zip
 
-    Save the launcher script and place it in the same folder as the exported binary.
-    On Linux, make sure to give executable permissions to the launcher script using
-    the command ``chmod +x launch.sh``.
+    Lưu launcher script và đặt nó trong cùng thư mục với binary đã xuất. Trên Linux, hãy đảm bảo cấp quyền thực thi cho launcher script bằng lệnh ``chmod +x launch.sh``.

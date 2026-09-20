@@ -1,137 +1,129 @@
 .. _doc_running_on_macos:
 
-Running Godot apps on macOS
-===========================
+Chạy ứng dụng Godot trên macOS
+==============================
 
 .. seealso::
 
-    This page covers running Godot projects on macOS.
-    If you haven't exported your project yet, read :ref:`doc_exporting_for_macos` first.
+    Trang này hướng dẫn cách chạy các project Godot trên macOS. Nếu bạn chưa export project, trước tiên hãy đọc :ref:`doc_exporting_for_macos`.
 
-By default, macOS will run only applications that are signed and notarized.
-
-.. note::
-
-    When running an app from the Downloads folder or when still in quarantine,
-    Gatekeeper will perform *path randomization* as a security measure.
-    This breaks access to relative paths from the app, which the app relies upon to work.
-    To resolve this issue, move the app to the ``/Applications`` folder.
-
-    In general, macOS apps should avoid relying on relative paths from the
-    application folder.
-
-Depending on the way a macOS app is signed and distributed, the following scenarios are possible:
-
-App is signed, notarized and distributed via App Store
-------------------------------------------------------
+Theo mặc định, macOS chỉ chạy các ứng dụng đã được ký và notarize.
 
 .. note::
 
-    App developers need to join the Apple Developer Program, and configure signing and notarization options during export, then upload the app to the App Store.
+    Khi chạy một ứng dụng từ thư mục Downloads hoặc khi ứng dụng vẫn đang trong trạng thái quarantine, Gatekeeper sẽ thực hiện *path randomization* như một biện pháp bảo mật. Điều này khiến ứng dụng không thể truy cập các đường dẫn tương đối, vốn cần thiết để ứng dụng hoạt động. Để giải quyết vấn đề này, hãy chuyển ứng dụng vào thư mục ``/Applications``.
 
-The app should run out of the box, without extra user interaction required.
+    Nhìn chung, các ứng dụng macOS nên tránh phụ thuộc vào các đường dẫn tương đối từ thư mục ứng dụng.
 
-App is signed, notarized and distributed outside App Store
-----------------------------------------------------------
+Tùy thuộc vào cách ứng dụng macOS được ký và phân phối, có thể xảy ra các trường hợp sau:
+
+Ứng dụng được ký, notarize và phân phối qua App Store
+-----------------------------------------------------
 
 .. note::
 
-    App developers need to join the Apple Developer Program, and configure signing and notarization options during export, then distribute the app as ".DMG" or ".ZIP" archive.
+    Nhà phát triển ứng dụng cần tham gia Apple Developer Program và cấu hình các tùy chọn ký và notarize trong quá trình export, sau đó upload ứng dụng lên App Store.
 
-When you run the app for the first time, the following dialog is displayed:
+Ứng dụng sẽ chạy ngay mà không cần người dùng tương tác thêm.
+
+Ứng dụng được ký, notarize và phân phối bên ngoài App Store
+-----------------------------------------------------------
+
+.. note::
+
+    Nhà phát triển ứng dụng cần tham gia Apple Developer Program và cấu hình các tùy chọn ký và notarize trong quá trình export, sau đó phân phối ứng dụng dưới dạng tệp lưu trữ ".DMG" hoặc ".ZIP".
+
+Khi bạn chạy ứng dụng lần đầu, hộp thoại sau sẽ được hiển thị:
 
 .. image:: img/signed_and_notarized_0.png
 
-Click ``Open`` to start the app.
+Nhấp vào ``Open`` để khởi động ứng dụng.
 
-If you see the following warning dialog, your Mac is set up to allow apps only from the App Store.
+Nếu bạn thấy hộp thoại cảnh báo sau, máy Mac của bạn được thiết lập để chỉ cho phép các ứng dụng từ App Store.
 
 .. image:: img/signed_and_notarized_1.png
 
-To allow third-party apps, open ``System Preferences``, click ``Security & Privacy``, then click ``General``, unlock settings, and select ``App Store and identified developers``.
+Để cho phép các ứng dụng của bên thứ ba, hãy mở ``System Preferences``, nhấp vào ``Security & Privacy``, sau đó nhấp vào ``General``, mở khóa các cài đặt và chọn ``App Store and identified developers``.
 
 .. image:: img/sys_pref_0.png
 
-App is signed (including ad-hoc signatures) but not notarized
--------------------------------------------------------------
+Ứng dụng được ký (bao gồm chữ ký ad-hoc) nhưng chưa được notarize
+-----------------------------------------------------------------
 
 .. note::
 
-    App developer used self-signed certificate or ad-hoc signing (default Godot behavior for exported project).
+    Nhà phát triển ứng dụng đã sử dụng chứng chỉ tự ký hoặc ký ad-hoc (hành vi mặc định của Godot đối với project đã export).
 
-When you run the app for the first time, the following dialog is displayed:
+Khi bạn chạy ứng dụng lần đầu, hộp thoại sau sẽ được hiển thị:
 
 .. image:: img/signed_0.png
 
-To run this app, you can temporarily override Gatekeeper:
+Để chạy ứng dụng này, bạn có thể tạm thời ghi đè Gatekeeper:
 
-* Either open ``System Preferences``, click ``Security & Privacy``, then click ``General``, and click ``Open Anyway``.
+* Hoặc mở ``System Preferences``, nhấp vào ``Security & Privacy``, sau đó nhấp vào ``General`` và nhấp vào ``Open Anyway``.
 
   .. image:: img/sys_pref_1.png
 
-* Or, right-click (Control-click) on the app icon in the Finder window and select ``Open`` from the menu.
+* Hoặc nhấp chuột phải (Control-click) vào biểu tượng ứng dụng trong cửa sổ Finder và chọn ``Open`` từ menu.
 
   .. image:: img/signed_1.png
 
-* Then click ``Open`` in the confirmation dialog.
+* Sau đó nhấp vào ``Open`` trong hộp thoại xác nhận.
 
   .. image:: img/signed_2.png
 
-* Enter your password if you're prompted.
+* Nhập mật khẩu nếu được yêu cầu.
 
-Another option is to disable Gatekeeper entirely. Note that this does decrease
-the security of your computer by allowing you to run any software you want.
-To do this, run ``sudo spctl --master-disable`` in the Terminal, enter your
-password, and then the **Anywhere** option will be available:
+Một tùy chọn khác là tắt hoàn toàn Gatekeeper. Lưu ý rằng việc này làm giảm độ bảo mật của máy tính, vì cho phép bạn chạy bất kỳ phần mềm nào mình muốn. Để thực hiện việc này, hãy chạy ``sudo spctl --master-disable`` trong Terminal, nhập mật khẩu, sau đó tùy chọn **Anywhere** sẽ khả dụng:
 
   .. image:: img/macos_allow_from_anywhere.png
 
-Note that Gatekeeper will re-enable itself when macOS updates.
+Lưu ý rằng Gatekeeper sẽ tự bật lại khi macOS được cập nhật.
 
-App is not signed, executable is linker-signed
-----------------------------------------------
+Ứng dụng chưa được ký, tệp thực thi được linker ký
+--------------------------------------------------
 
 .. note::
 
-    App is built using official export templates, but it is not signed.
+    Ứng dụng được build bằng các export template chính thức nhưng chưa được ký.
 
-When you run the app for the first time, the following dialog is displayed:
+Khi bạn chạy ứng dụng lần đầu, hộp thoại sau sẽ được hiển thị:
 
 .. image:: img/linker_signed_1.png
 
-To run this app, you should remove the quarantine extended file attribute manually:
+Để chạy ứng dụng này, bạn nên tự xóa thuộc tính tệp mở rộng quarantine:
 
-* Open ``Terminal.app`` (press :kbd:`Cmd + Space` and enter ``Terminal``).
+* Mở ``Terminal.app`` (nhấn :kbd:`Cmd + Space` và nhập ``Terminal``).
 
-* Navigate to the folder containing the target application.
+* Điều hướng đến thư mục chứa ứng dụng đích.
 
-  Use the ``cd path_to_the_app_folder`` command, e.g. ``cd ~/Downloads/`` if it's in the ``Downloads`` folder.
+  Sử dụng lệnh ``cd path_to_the_app_folder``, chẳng hạn ``cd ~/Downloads/`` nếu ứng dụng nằm trong thư mục ``Downloads``.
 
-* Run the command ``xattr -dr com.apple.quarantine "Unsigned Game.app"`` (including quotation marks and ``.app`` extension).
+* Chạy lệnh ``xattr -dr com.apple.quarantine "Unsigned Game.app"`` (bao gồm dấu ngoặc kép và phần mở rộng ``.app``).
 
-Neither app nor executable is signed (relevant for Apple Silicon Macs only)
----------------------------------------------------------------------------
+Cả ứng dụng lẫn tệp thực thi đều chưa được ký (chỉ liên quan đến máy Mac Apple Silicon)
+---------------------------------------------------------------------------------------
 
 .. note::
 
-    App is built using custom export templates, compiled using OSXCross, and it is not signed at all.
+    Ứng dụng được build bằng các export template tùy chỉnh, được biên dịch bằng OSXCross và hoàn toàn chưa được ký.
 
-When you run the app for the first time, the following dialog is displayed:
+Khi bạn chạy ứng dụng lần đầu, hộp thoại sau sẽ được hiển thị:
 
 .. image:: img/unsigned_1.png
 
-To run this app, you can ad-hoc sign it yourself:
+Để chạy ứng dụng này, bạn có thể tự ký ad-hoc cho ứng dụng:
 
-* Install ``Xcode`` for the App Store, start it and confirm command line tools installation.
+* Cài đặt ``Xcode`` cho App Store, khởi động ứng dụng và xác nhận cài đặt command line tools.
 
-* Open ``Terminal.app`` (press :kbd:`Cmd + Space` and enter ``Terminal``).
+* Mở ``Terminal.app`` (nhấn :kbd:`Cmd + Space` và nhập ``Terminal``).
 
-* Navigate to the folder containing the target application.
+* Điều hướng đến thư mục chứa ứng dụng đích.
 
-  Use the ``cd path_to_the_app_folder`` command, e.g. ``cd ~/Downloads/`` if it's in the ``Downloads`` folder.
+  Sử dụng lệnh ``cd path_to_the_app_folder``, chẳng hạn ``cd ~/Downloads/`` nếu ứng dụng nằm trong thư mục ``Downloads``.
 
-* Run the following commands:
+* Chạy các lệnh sau:
 
-  ``xattr -dr com.apple.quarantine "Unsigned Game.app"`` (including quotation marks and ".app" extension).
+  ``xattr -dr com.apple.quarantine "Unsigned Game.app"`` (bao gồm dấu ngoặc kép và phần mở rộng ".app").
 
-  ``codesign -s - --force --deep "Unsigned Game.app"`` (including quotation marks and ".app" extension).
+  ``codesign -s - --force --deep "Unsigned Game.app"`` (bao gồm dấu ngoặc kép và phần mở rộng ".app").

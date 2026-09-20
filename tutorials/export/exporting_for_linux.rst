@@ -1,87 +1,49 @@
 .. _doc_exporting_for_linux:
 
-Exporting for Linux
-===================
+Xuất bản cho Linux
+==================
 
 .. seealso::
 
-    This page describes how to export a Godot project to Linux.
-    If you're looking to compile editor or export template binaries from source instead,
-    read :ref:`doc_compiling_for_linuxbsd`.
+    Trang này mô tả cách xuất một dự án Godot cho Linux. Nếu bạn muốn biên dịch các binary của editor hoặc export template từ source thay vào đó, hãy đọc :ref:`doc_compiling_for_linuxbsd`.
 
-The simplest way to distribute a game for PC is to copy the executable
-(``godot``), compress the folder and send it to someone else. However, this is
-often not desired.
+Cách đơn giản nhất để phân phối một game cho PC là sao chép executable (``godot``), nén thư mục rồi gửi cho người khác. Tuy nhiên, cách này thường không được mong muốn.
 
-Godot offers a more elegant approach for PC distribution when using the export
-system. When exporting for Linux, the exporter takes all the project files and
-creates a ``data.pck`` file. This file is bundled with a specially optimized
-binary that is smaller, faster and does not contain the editor and debugger.
+Godot cung cấp một cách tiếp cận tinh tế hơn để phân phối game cho PC khi sử dụng hệ thống export. Khi xuất bản cho Linux, exporter lấy tất cả các tệp của dự án và tạo một tệp ``data.pck``. Tệp này được đóng gói cùng với một binary được tối ưu hóa đặc biệt, có kích thước nhỏ hơn, tốc độ nhanh hơn và không chứa editor cũng như debugger.
 
-Architecture
-------------
+Kiến trúc
+---------
 
-There are 7 different processor architectures that exported Godot projects can run
-on in Linux:
+Có 7 kiến trúc bộ xử lý khác nhau mà các dự án Godot đã export có thể chạy trên Linux:
 
-- x86_64
-- x86_32
-- arm64
-- arm32
-- rv64
-- ppc64
-- loongarch64
+- x86_64 - x86_32 - arm64 - arm32 - rv64 - ppc64 - loongarch64
 
-The default is x86_64, this is the most common architecture of PC processors
-today. All modern Intel and AMD processors as of writing this are x86_64.
+Mặc định là x86_64; đây là kiến trúc phổ biến nhất của các bộ xử lý PC hiện nay. Tại thời điểm viết tài liệu này, tất cả bộ xử lý Intel và AMD hiện đại đều là x86_64.
 
-x86_32 will give you a 32bit executable that can run on 32bit only distributions
-of Linux as well as some modern distributions that are 64bit. It is NOT recommended
-to use this option unless you are trying to get your project to run on an old 32bit
-distribution and processor. It should also be noted that several prominent
-distributions, such as Fedora, have been discussing removing their 32bit libraries
-which would prevent executables made this way from running on future versions of
-that distribution.
+x86_32 sẽ cung cấp cho bạn một executable 32bit có thể chạy trên các bản phân phối Linux chỉ hỗ trợ 32bit, cũng như một số bản phân phối hiện đại là 64bit. KHÔNG khuyến nghị sử dụng tùy chọn này trừ khi bạn đang cố gắng để dự án chạy trên một bản phân phối và bộ xử lý 32bit cũ. Cũng cần lưu ý rằng một số bản phân phối nổi bật, chẳng hạn như Fedora, đã thảo luận về việc loại bỏ các thư viện 32bit của họ, điều này sẽ khiến các executable được tạo theo cách này không thể chạy trên các phiên bản tương lai của bản phân phối đó.
 
-arm64 executables can run on 64bit ARM processors. If you're familiar with the
-Raspberry Pi, those have utilized 64bit ARM processors since the Pi 3 (older
-versions used 32bit ARM processors). If you're uploading to a platform that
-supports multiple executables, such as itch.io, and you're confident your game
-could run on a common ARM computer, such as the Pi 5, then we'd recommend exporting
-this version and providing it as an option.
+Các executable arm64 có thể chạy trên bộ xử lý ARM 64bit. Nếu bạn quen thuộc với Raspberry Pi, các thiết bị này đã sử dụng bộ xử lý ARM 64bit kể từ Pi 3 (các phiên bản cũ hơn sử dụng bộ xử lý ARM 32bit). Nếu bạn tải lên một nền tảng hỗ trợ nhiều executable, chẳng hạn như itch.io, và tin rằng game của mình có thể chạy trên một máy tính ARM phổ biến, chẳng hạn như Pi 5, thì chúng tôi khuyến nghị xuất bản phiên bản này và cung cấp nó như một tùy chọn.
 
-arm32 executables are for older 32bit arm processors, such as what the Raspberry Pi 1
-and 2 used. Given that they're not common at all these days we do not recommend
-exporting for this unless you have a computer with one of these processors you know
-you can, and want to have your game running on.
+Các executable arm32 dành cho những bộ xử lý arm 32bit cũ hơn, chẳng hạn như loại được Raspberry Pi 1 và 2 sử dụng. Vì hiện nay chúng hoàn toàn không phổ biến, chúng tôi không khuyến nghị xuất bản cho kiến trúc này trừ khi bạn có một máy tính sử dụng một trong các bộ xử lý đó, biết chắc rằng game có thể chạy trên máy tính ấy và muốn game của mình chạy trên đó.
 
-rv64 is for RISC-V processors, ppc64 is for 64bit PowerPC processors, and
-loongarch64 is for 64bit LoongArch processors. All of these architectures are
-substantially more niche when it comes to running videogames on them. And we only
-recommend exporting for them if you have a reason to, such as if you're an
-enthusiast who owns hardware. Official export templates are not provided by Godot,
-you will have to create them on your own. Instructions for compiling the engine for
-RISC-V and creating export templates can be found on the :ref:`doc_compiling_for_linuxbsd`
-page.
+rv64 dành cho các bộ xử lý RISC-V, ppc64 dành cho các bộ xử lý PowerPC 64bit, còn loongarch64 dành cho các bộ xử lý LoongArch 64bit. Tất cả các kiến trúc này đều ít phổ biến hơn đáng kể khi chạy videogame. Chúng tôi chỉ khuyến nghị xuất bản cho các kiến trúc này nếu bạn có lý do phù hợp, chẳng hạn như là một người đam mê sở hữu phần cứng tương ứng. Godot không cung cấp các export template chính thức; bạn sẽ phải tự tạo chúng. Hướng dẫn biên dịch engine cho RISC-V và tạo export template có trên trang :ref:`doc_compiling_for_linuxbsd`.
 
 
-Environment variables
----------------------
+Biến môi trường
+---------------
 
-You can use the following environment variables to set export options outside of
-the editor. During the export process, these override the values that you set in
-the export menu.
+Bạn có thể sử dụng các biến môi trường sau để thiết lập các tùy chọn export bên ngoài editor. Trong quá trình export, các biến này sẽ ghi đè các giá trị bạn đã thiết lập trong menu export.
 
 .. list-table:: Linux export environment variables
    :header-rows: 1
 
-   * - Export option
-     - Environment variable
-   * - Encryption / Encryption Key
+   * - Tùy chọn export
+     - Biến môi trường
+   * - Mã hóa / Khóa mã hóa
      - ``GODOT_SCRIPT_ENCRYPTION_KEY``
 
-Export options
---------------
+Các tùy chọn export
+-------------------
 
-You can find a full list of export options available in the
+Bạn có thể tìm thấy danh sách đầy đủ các tùy chọn export có sẵn trong
 :ref:`class_EditorExportPlatformLinuxBSD` class reference.

@@ -1,71 +1,58 @@
 .. _doc_exporting_for_android:
 
-Exporting for Android
-=====================
+Xuất cho Android
+================
 
 
 .. seealso::
 
-    This page describes how to export a Godot project to Android.
-    If you're looking to compile export template binaries from source instead,
-    read :ref:`doc_compiling_for_android`.
+    Trang này mô tả cách xuất một dự án Godot sang Android. Nếu bạn muốn biên dịch các binary của export template từ mã nguồn thay vào đó, hãy đọc :ref:`doc_compiling_for_android`.
 
-Exporting for Android has fewer requirements than compiling Godot for Android.
-The following steps detail what is needed to set up the Android SDK and the engine.
+Xuất cho Android có ít yêu cầu hơn so với việc biên dịch Godot cho Android. Các bước sau đây trình bày chi tiết những gì cần thiết để thiết lập Android SDK và engine.
 
 .. attention::
 
-    Projects written in C# can be exported to Android as of Godot 4.2, but support
-    is experimental and :ref:`some limitations apply <doc_c_sharp_platforms>`.
+    Các dự án viết bằng C# có thể được xuất sang Android kể từ Godot 4.2, nhưng tính năng hỗ trợ đang ở trạng thái thử nghiệm và :ref:`some limitations apply <doc_c_sharp_platforms>`.
 
-Setup on Android
-----------------
+Thiết lập trên Android
+----------------------
 
-When exporting to Android from the Android editor, you do **not** need to
-install OpenJDK or the Android SDK when exporting to Android, regardless of the
-export method used (pre-built APK or Gradle build).
+Khi xuất sang Android từ trình chỉnh sửa Android, bạn **không** cần cài đặt OpenJDK hoặc Android SDK khi xuất sang Android, bất kể sử dụng phương thức xuất nào (APK dựng sẵn hoặc Gradle build).
 
-However, if you are performing a Gradle build, you will need to follow some
-steps described in :ref:`doc_android_gradle_build`.
+Tuy nhiên, nếu bạn đang thực hiện Gradle build, bạn sẽ cần làm theo một số bước được mô tả trong :ref:`doc_android_gradle_build`.
 
-You can then skip to :ref:`doc_exporting_for_android_providing_launcher_icons`.
+Sau đó, bạn có thể chuyển đến :ref:`doc_exporting_for_android_providing_launcher_icons`.
 
-Setup on Windows, macOS, and Linux
-----------------------------------
+Thiết lập trên Windows, macOS và Linux
+--------------------------------------
 
-Install OpenJDK 17
+Cài đặt OpenJDK 17
 ^^^^^^^^^^^^^^^^^^
 
-Download and install `OpenJDK 17 <https://adoptium.net/temurin/releases/?variant=openjdk17&version=17&os=any&arch=any>`__.
+Tải xuống và cài đặt `OpenJDK 17 <https://adoptium.net/temurin/releases/?variant=openjdk17&version=17&os=any&arch=any>`__.
 
 .. note::
 
-    Higher versions of the JDK are also supported, but we recommend using JDK 17 for optimal compatibility and stability.
+    Các phiên bản JDK cao hơn cũng được hỗ trợ, nhưng chúng tôi khuyến nghị sử dụng JDK 17 để có khả năng tương thích và độ ổn định tối ưu.
 
-Download the Android SDK
-^^^^^^^^^^^^^^^^^^^^^^^^
+Tải xuống Android SDK
+^^^^^^^^^^^^^^^^^^^^^
 
-Download and install the Android SDK.
+Tải xuống và cài đặt Android SDK.
 
-- You can install the Android SDK using `Android Studio Iguana (version 2023.2.1) or later <https://developer.android.com/studio/>`__.
+- Bạn có thể cài đặt Android SDK bằng `Android Studio Iguana (version 2023.2.1) or later <https://developer.android.com/studio/>`__.
 
-  - Run it once to complete the SDK setup using these `instructions <https://developer.android.com/studio/intro/update#sdk-manager>`__.
-  - Ensure that the `required packages <https://developer.android.com/studio/intro/update#required>`__ are installed as well.
+  - Chạy công cụ này một lần để hoàn tất việc thiết lập SDK bằng các `instructions <https://developer.android.com/studio/intro/update#sdk-manager>`__. - Đảm bảo rằng `required packages <https://developer.android.com/studio/intro/update#required>`__ cũng được cài đặt.
 
-    - Android SDK Platform-Tools version 35.0.0 or later
-    - Android SDK Build-Tools version 35.0.1
-    - Android SDK Platform 35
-    - Android SDK Command-line Tools (latest)
+    - Android SDK Platform-Tools phiên bản 35.0.0 trở lên - Android SDK Build-Tools phiên bản 35.0.1 - Android SDK Platform 35 - Android SDK Command-line Tools (latest)
 
-  - Ensure that the `NDK and CMake are installed and configured <https://developer.android.com/studio/projects/install-ndk>`__.
+  - Đảm bảo rằng `NDK and CMake are installed and configured <https://developer.android.com/studio/projects/install-ndk>`__.
 
-    - CMake version 3.10.2.4988404
-    - NDK version r28b (28.1.13356709)
+    - CMake phiên bản 3.10.2.4988404. - NDK phiên bản r28b (28.1.13356709)
 
-- Alternatively, you can install the Android SDK with the `sdkmanager` command line tool.
+- Ngoài ra, bạn có thể cài đặt Android SDK bằng công cụ dòng lệnh `sdkmanager`.
 
-  - Install the command line tools package using these `instructions <https://developer.android.com/tools/sdkmanager>`__.
-  - Once the command line tools are installed, run the following `sdkmanager` command to complete the setup process:
+  - Cài đặt gói command line tools bằng các `instructions <https://developer.android.com/tools/sdkmanager>`__. - Sau khi cài đặt command line tools, chạy lệnh `sdkmanager` sau đây để hoàn tất quá trình thiết lập:
 
 ::
 
@@ -73,127 +60,99 @@ Download and install the Android SDK.
 
 .. note::
 
-    If you are using Linux,
-    **do not use an Android SDK provided by your distribution's repositories as it will often be outdated**.
+    Nếu bạn đang sử dụng Linux, **không sử dụng Android SDK do các repository của bản phân phối cung cấp vì SDK này thường đã lỗi thời**.
 
-Setting it up in Godot
-^^^^^^^^^^^^^^^^^^^^^^
+Thiết lập trong Godot
+^^^^^^^^^^^^^^^^^^^^^
 
-Enter the Editor Settings screen (under the Godot tab for macOS, or the Editor tab
-for other platforms). This screen contains the editor settings for the user
-account in the computer (it's independent of the project).
+Mở màn hình Editor Settings (trong tab Godot trên macOS hoặc tab Editor trên các nền tảng khác). Màn hình này chứa các cài đặt editor cho tài khoản người dùng trên máy tính (độc lập với dự án).
 
 .. image:: img/editorsettings.webp
 
-Scroll down to the section where the Android settings are located:
+Cuộn xuống phần chứa các cài đặt Android:
 
 .. image:: img/android_editor_settings.webp
 
-In that screen, 2 paths need to be set:
+Trong màn hình đó, cần thiết lập 2 đường dẫn:
 
-- ``Java SDK Path`` should be the location where OpenJDK 17 was installed.
+- ``Java SDK Path`` phải là vị trí đã cài đặt OpenJDK 17.
 
-- ``Android SDK Path`` should be the location where the Android SDK was installed. This directory should contain ``platform-tools/adb``.
-  - For example ``%LOCALAPPDATA%\Android\Sdk\`` on Windows or ``/Users/$USER/Library/Android/sdk/`` on macOS.
+- ``Android SDK Path`` phải là vị trí đã cài đặt Android SDK. Thư mục này phải chứa ``platform-tools/adb``. - Ví dụ: ``%LOCALAPPDATA%\Android\Sdk\`` trên Windows hoặc ``/Users/$USER/Library/Android/sdk/`` trên macOS.
 
-Once that is configured, everything is ready to export to Android!
+Sau khi cấu hình xong, mọi thứ đã sẵn sàng để xuất sang Android!
 
 .. note::
 
-    If you get an error saying *"Could not install to device."*, make sure
-    you do not have an application with the same Android package name already
-    installed on the device (but signed with a different key).
+    Nếu bạn gặp lỗi có nội dung *"Could not install to device."*, hãy đảm bảo rằng trên thiết bị chưa cài đặt một ứng dụng có cùng tên gói Android (nhưng được ký bằng một key khác).
 
-    If you have an application with the same Android package name but a
-    different signing key already installed on the device, you **must** remove
-    the application in question from the Android device before exporting to
-    Android again.
+    Nếu trên thiết bị đã cài đặt một ứng dụng có cùng tên gói Android nhưng dùng key ký khác, bạn **phải** gỡ ứng dụng đó khỏi thiết bị Android trước khi xuất sang Android lần nữa.
 
 .. _doc_exporting_for_android_providing_launcher_icons:
 
-Providing launcher icons
-------------------------
+Cung cấp launcher icon
+----------------------
 
-Launcher icons are used by Android launcher apps to represent your application to users. Godot only requires high-resolution icons (for ``xxxhdpi`` density screens) and will automatically generate lower-resolution variants.
+Launcher icon được các ứng dụng Android launcher sử dụng để đại diện cho ứng dụng của bạn với người dùng. Godot chỉ yêu cầu icon độ phân giải cao (cho màn hình mật độ ``xxxhdpi``) và sẽ tự động tạo các biến thể có độ phân giải thấp hơn.
 
-There are three types of icons:
+Có ba loại icon:
 
-- **Main Icon:** The "classic" icon. This will be used on all Android versions up to Android 8 (Oreo), exclusive. Must be at least 192×192 px.
-- **Adaptive Icons:** Starting from Android 8 (inclusive), `Adaptive Icons <https://developer.android.com/develop/ui/compose/system/icon_design_adaptive>`_ were introduced. Applications will need to include separate background and foreground icons to have a native look. The user's launcher application will control the icon's animation and masking. Must be at least 432×432 px.
-- **Themed Icons (optional):** Starting from Android 13 (inclusive), Themed Icons were introduced. Applications will need to include a monochrome icon to enable this feature. The user's launcher application will control the icon's theme. Must be at least 432×432 px.
+- **Main Icon:** Icon "cổ điển". Icon này sẽ được sử dụng trên tất cả phiên bản Android đến trước Android 8 (Oreo). Kích thước tối thiểu là 192×192 px. - **Adaptive Icons:** Kể từ Android 8 (bao gồm cả phiên bản này), `Adaptive Icons <https://developer.android.com/develop/ui/compose/system/icon_design_adaptive>`_ được giới thiệu. Ứng dụng cần bao gồm các icon background và foreground riêng biệt để có giao diện gốc. Ứng dụng launcher của người dùng sẽ kiểm soát hiệu ứng chuyển động và việc mask icon. Kích thước tối thiểu là 432×432 px. - **Themed Icons (optional):** Kể từ Android 13 (bao gồm cả phiên bản này), Themed Icons được giới thiệu. Ứng dụng cần bao gồm một icon monochrome để bật tính năng này. Ứng dụng launcher của người dùng sẽ kiểm soát theme của icon. Kích thước tối thiểu là 432×432 px.
 
 .. seealso:: It's important to adhere to some rules when designing adaptive icons. `Google Design has provided a nice article <https://medium.com/google-design/designing-adaptive-icons-515af294c783>`_ that helps to understand those rules and some of the capabilities of adaptive icons.
 
 .. caution:: The most important adaptive icon design rule is to have your icon critical elements inside the safe zone: a centered circle with a diameter of 66dp (264 pixels on ``xxxhdpi``) to avoid being clipped by the launcher.
 
-If you don't provide the requested icons (except for Monochrome), Godot will replace them using a fallback chain, trying the next in line when the current one fails:
+Nếu bạn không cung cấp các icon được yêu cầu (ngoại trừ Monochrome), Godot sẽ thay thế chúng bằng fallback chain, thử icon tiếp theo khi icon hiện tại không thành công:
 
-- **Main Icon:** Provided main icon -> Project icon -> Default Godot main icon.
-- **Adaptive Icon Foreground:** Provided foreground icon -> Provided main icon -> Project icon -> Default Godot foreground icon.
-- **Adaptive Icon Background:** Provided background icon -> Default Godot background icon.
+- **Main Icon:** Main icon được cung cấp -> Project icon -> Main icon mặc định của Godot. - **Adaptive Icon Foreground:** Foreground icon được cung cấp -> Main icon được cung cấp -> Project icon -> Foreground icon mặc định của Godot. - **Adaptive Icon Background:** Background icon được cung cấp -> Background icon mặc định của Godot.
 
-It's highly recommended to provide all the requested icons with their specified resolutions.
-This way, your application will look great on all Android devices and versions.
+Bạn nên cung cấp tất cả icon được yêu cầu với độ phân giải đã chỉ định. Nhờ vậy, ứng dụng của bạn sẽ hiển thị đẹp trên mọi thiết bị và phiên bản Android.
 
-Exporting for Google Play Store
--------------------------------
+Xuất cho Google Play Store
+--------------------------
 
-All new apps uploaded to Google Play after August 2021 must be an AAB (Android App Bundle)
-file. To export an AAB file you need to set up :ref:`doc_android_gradle_build`.
+Tất cả ứng dụng mới được tải lên Google Play sau tháng 8 năm 2021 phải là tệp AAB (Android App Bundle). Để xuất tệp AAB, bạn cần thiết lập :ref:`doc_android_gradle_build`.
 
-Uploading an AAB or APK to Google's Play Store requires you to sign using a non-debug
-keystore file; such a file can be generated like this:
+Việc tải AAB hoặc APK lên Play Store của Google yêu cầu bạn ký bằng một tệp keystore không ở chế độ debug; bạn có thể tạo tệp như sau:
 
 .. code-block:: shell
 
     keytool -v -genkey -keystore mygame.keystore -alias mygame -keyalg RSA -validity 10000
 
-This keystore and key are used to verify your developer identity, remember the password and keep it in a safe place!
-It is suggested to use only upper and lowercase letters and numbers. Special characters may cause errors.
-Use Google's Android Developer guides to learn more about `app signing <https://developer.android.com/studio/publish/app-signing>`__.
+Keystore và key này được dùng để xác minh danh tính developer của bạn; hãy nhớ mật khẩu và cất giữ ở nơi an toàn! Bạn nên chỉ sử dụng chữ hoa, chữ thường và chữ số. Ký tự đặc biệt có thể gây lỗi. Hãy sử dụng hướng dẫn Android Developer của Google để tìm hiểu thêm về `app signing <https://developer.android.com/studio/publish/app-signing>`__.
 
-Now fill in the following forms in your Android Export Presets:
+Bây giờ hãy điền các biểu mẫu sau trong Android Export Presets:
 
 .. image:: img/editor-export-presets-android.webp
 
-- **Release:** Enter the path to the keystore file you just generated.
-- **Release User:** Replace with the key alias.
-- **Release Password:** Key password. Note that the keystore password and the key password currently have to be the same.
+- **Release:** Nhập đường dẫn đến tệp keystore bạn vừa tạo. - **Release User:** Thay thế bằng key alias. - **Release Password:** Mật khẩu key. Lưu ý rằng hiện tại mật khẩu keystore và mật khẩu key phải giống nhau.
 
-Don't forget to uncheck the **Export With Debug** checkbox while exporting.
+Đừng quên bỏ chọn checkbox **Export With Debug** trong khi xuất.
 
 .. image:: img/export-with-debug-button.webp
 
-Optimizing the file size
-------------------------
+Tối ưu hóa kích thước tệp
+-------------------------
 
-You can optimize the size of your application by compiling an Android export
-template with only the features you need. See :ref:`doc_optimizing_for_size` for
-more information.
+Bạn có thể tối ưu kích thước ứng dụng bằng cách biên dịch một export template Android chỉ với các tính năng bạn cần. Xem :ref:`doc_optimizing_for_size` để biết thêm thông tin.
 
-Performing a custom Gradle build
---------------------------------
+Thực hiện custom Gradle build
+-----------------------------
 
-If you need to modify the template's Java code or integrate with third-party
-Android SDKs, you may want to use a custom Gradle build instead of the default
-pre-built APK template. This allows you to have more control over the build
-process and the generated project, and you can use it as a base for further
-customization.
+Nếu cần sửa đổi mã Java của template hoặc tích hợp với các Android SDK của bên thứ ba, bạn có thể muốn sử dụng custom Gradle build thay vì template APK dựng sẵn mặc định. Điều này cho phép bạn kiểm soát nhiều hơn đối với quá trình build và project được tạo, đồng thời bạn có thể sử dụng nó làm nền tảng để tùy chỉnh thêm.
 
-See :ref:`doc_android_gradle_build` for guidance on setting up a custom Gradle build.
+Xem :ref:`doc_android_gradle_build` để biết hướng dẫn thiết lập custom Gradle build.
 
-Environment variables
----------------------
+Biến môi trường
+---------------
 
-You can use the following environment variables to set export options outside of
-the editor. During the export process, these override the values that you set in
-the export menu.
+Bạn có thể sử dụng các biến môi trường sau để thiết lập tùy chọn xuất bên ngoài editor. Trong quá trình xuất, các biến này sẽ ghi đè các giá trị bạn đã thiết lập trong menu xuất.
 
 .. list-table:: Android export environment variables
    :header-rows: 1
 
-   * - Export option
-     - Environment variable
+   * - Tùy chọn xuất
+     - Biến môi trường
    * - Encryption / Encryption Key
      - ``GODOT_SCRIPT_ENCRYPTION_KEY``
    * - Options / Keystore / Debug
@@ -209,8 +168,8 @@ the export menu.
    * - Options / Keystore / Release Password
      - ``GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD``
 
-Export options
---------------
+Tùy chọn xuất
+-------------
 
-You can find a full list of export options available in the
+Bạn có thể tìm thấy danh sách đầy đủ các tùy chọn xuất có sẵn trong
 :ref:`class_EditorExportPlatformAndroid` class reference.

@@ -1,173 +1,84 @@
 .. _doc_one-click_deploy:
 
-One-click deploy
-================
+Triển khai một cú nhấp
+======================
 
-What is one-click deploy?
--------------------------
+Triển khai một cú nhấp là gì?
+-----------------------------
 
-One-click deploy is a feature that is available once a platform is properly
-configured and a supported device is connected to the computer. Since things can
-go wrong at many levels (platform may not be configured correctly, SDK may be
-incorrectly installed, device may be improperly configured, etc.), it's good to
-let the user know that it exists.
+Triển khai một cú nhấp là một tính năng khả dụng khi một platform đã được cấu hình đúng cách và một thiết bị được hỗ trợ đã kết nối với máy tính. Vì sự cố có thể xảy ra ở nhiều cấp độ (platform có thể chưa được cấu hình đúng, SDK có thể được cài đặt không chính xác, thiết bị có thể được cấu hình không đúng, v.v.), nên việc cho người dùng biết tính năng này tồn tại là điều hữu ích.
 
-After adding an Android export preset marked as Runnable, Godot can detect when
-a USB device is connected to the computer and offer the user to automatically
-export, install and run the project (in debug mode) on the device. This feature
-is called *one-click deploy*.
+Sau khi thêm một Android export preset được đánh dấu là Runnable, Godot có thể phát hiện khi một thiết bị USB được kết nối với máy tính và cung cấp cho người dùng tùy chọn tự động export, cài đặt và chạy project (ở debug mode) trên thiết bị. Tính năng này được gọi là *one-click deploy*.
 
 .. note::
 
-   One-click deploy is only available once you've added an export template
-   marked as **Runnable** in the Export dialog. You can mark several export
-   presets as runnable, but only one preset per platform may be marked as
-   runnable. If you mark a second preset in a given platform as runnable, the
-   other preset will no longer be marked as runnable.
+   One-click deploy chỉ khả dụng sau khi bạn thêm một export template được đánh dấu là **Runnable** trong hộp thoại Export. Bạn có thể đánh dấu nhiều export preset là runnable, nhưng mỗi platform chỉ có thể có một preset được đánh dấu là runnable. Nếu bạn đánh dấu preset thứ hai trong một platform là runnable, preset còn lại sẽ không còn được đánh dấu là runnable.
 
-Supported platforms
--------------------
+Các platform được hỗ trợ
+------------------------
 
-- **Android:** Exports the project with debugging enabled and runs it on the
-  connected device.
+- **Android:** Export project với debugging được bật và chạy project trên thiết bị đã kết nối.
 
-   - Make sure to follow the steps described in :ref:`doc_exporting_for_android`.
-     Otherwise, the one-click deploy button won't appear.
+   - Hãy đảm bảo làm theo các bước được mô tả trong :ref:`doc_exporting_for_android`. Nếu không, nút one-click deploy sẽ không xuất hiện.
 
-   - If you have more than one device connected, Godot will ask you which device
-     the project should be exported to.
+   - Nếu có nhiều hơn một thiết bị được kết nối, Godot sẽ hỏi bạn muốn export project sang thiết bị nào.
 
-- **iOS:** Exports the project with debugging enabled and runs it on the
-  connected device.
+- **iOS:** Export project với debugging được bật và chạy project trên thiết bị đã kết nối.
 
-   - Make sure to follow the steps described in :ref:`doc_exporting_for_ios`.
-     Otherwise, the one-click deploy button won't appear.
+   - Hãy đảm bảo làm theo các bước được mô tả trong :ref:`doc_exporting_for_ios`. Nếu không, nút one-click deploy sẽ không xuất hiện.
 
-   - For each new bundle identifier, export the project, open it in the
-     Xcode, and build at least once to create new provisioning profile or
-     create a provisioning profile in the Apple Developer account dashboard.
+   - Với mỗi bundle identifier mới, hãy export project, mở project trong Xcode và build ít nhất một lần để tạo provisioning profile mới, hoặc tạo provisioning profile trong dashboard tài khoản Apple Developer.
 
-   - If you have more than one device connected, Godot will ask you which device
-     the project should be exported to.
+   - Nếu có nhiều hơn một thiết bị được kết nối, Godot sẽ hỏi bạn muốn export project sang thiết bị nào.
 
-- **Desktop platforms:** Exports the project with debugging enabled and runs it
-  on the remote computer via SSH.
+- **Desktop platforms:** Export project với debugging được bật và chạy project trên máy tính từ xa thông qua SSH.
 
-- **Web:** Starts a local web server and runs the exported project by opening
-  the default web browser. This is only accessible on ``localhost`` by default.
-  See :ref:`Troubleshooting <doc_one-click_deploy_troubleshooting_web>`
-  for making the exported project accessible on remote devices.
+- **Web:** Khởi động một web server cục bộ và chạy project đã export bằng cách mở trình duyệt web mặc định. Theo mặc định, project này chỉ có thể được truy cập tại ``localhost``. Xem :ref:`Troubleshooting <doc_one-click_deploy_troubleshooting_web>` để biết cách cho phép các thiết bị từ xa truy cập project đã export.
 
-Using one-click deploy
-----------------------
+Sử dụng one-click deploy
+------------------------
 
-- **Android:**
-   - Enable developer mode on your mobile device
-     then enable USB debugging in the device's settings.
-   - After enabling USB debugging, connect the device to your PC using a USB
-     cable.
-   - It's also possible to one-click deploy via wireless ADB instead of with a USB cable. In order to do this, it is necessary to:
-        - Enable wireless debugging on the device: :menu:`Settings > Developer options > Debugging`
-        - Connect to the same Wi-Fi network on your mobile device and PC.
-        - Click :button:`Pair device with pairing code` (can be accessed via long press on wireless debugging) to display IP, port, and pairing code.
-        - On your PC, enter the command ``adb pair <ip address>:<port>`` and provide the pairing code when prompted.
-          If ``adb`` is not recognized, you may need to add the android-sdk's platform-tools folder to your ``PATH`` or execute this command from there.
-        - You can verify the ADB device is successfully connected by entering ``adb devices`` in the terminal.
+- **Android:** - Bật developer mode trên thiết bị di động, sau đó bật USB debugging trong phần cài đặt của thiết bị. - Sau khi bật USB debugging, kết nối thiết bị với PC bằng cáp USB. - Bạn cũng có thể one-click deploy thông qua wireless ADB thay vì dùng cáp USB. Để làm việc này, cần: - Bật wireless debugging trên thiết bị: :menu:`Settings > Developer options > Debugging` - Kết nối thiết bị di động và PC với cùng một mạng Wi-Fi. - Nhấp vào :button:`Pair device with pairing code` (có thể truy cập bằng cách nhấn giữ wireless debugging) để hiển thị IP, port và pairing code. - Trên PC, nhập lệnh ``adb pair <ip address>:<port>`` và cung cấp pairing code khi được yêu cầu. Nếu không nhận diện được ``adb``, bạn có thể cần thêm thư mục platform-tools của android-sdk vào ``PATH`` hoặc thực thi lệnh này từ thư mục đó. - Bạn có thể xác minh thiết bị ADB đã kết nối thành công bằng cách nhập ``adb devices`` trong terminal.
 
-- **iOS:**
-   - Install Xcode, accept Xcode license and login with your Apple Developer
-     account.
-   - If you are using Xcode 14 or earlier, install `ios-deploy <https://github.com/ios-control/ios-deploy>`__
-     and set path to `ios-deploy` in the Editor Settings (see `Export ⇾ iOS ⇾ iOS Deploy`).
-   - For running on device:
-      - Pair your mobile device with a Mac.
-      - Enable developer mode on your device.
-      - Device can be connected via USB or local network.
-      - Make sure the device is on the same local network and a correct network
-        interface is selected in the editor settings (see `Network ⇾ Debug ⇾ Remote Host`).
-        By default, the editor is listening for `localhost` connections only.
-   - Device screen should be unlocked.
+- **iOS:** - Cài đặt Xcode, chấp nhận license của Xcode và đăng nhập bằng tài khoản Apple Developer của bạn. - Nếu bạn đang sử dụng Xcode 14 hoặc cũ hơn, hãy cài đặt `ios-deploy <https://github.com/ios-control/ios-deploy>`__ và đặt đường dẫn đến `ios-deploy` trong Editor Settings (xem `Export ⇾ iOS ⇾ iOS Deploy`). - Để chạy trên thiết bị: - Pair thiết bị di động với máy Mac. - Bật developer mode trên thiết bị. - Thiết bị có thể được kết nối qua USB hoặc mạng cục bộ. - Đảm bảo thiết bị sử dụng cùng mạng cục bộ và một network interface chính xác được chọn trong editor settings (xem `Network ⇾ Debug ⇾ Remote Host`). Theo mặc định, editor chỉ lắng nghe các kết nối `localhost`. - Màn hình thiết bị phải được mở khóa.
 
-- **Desktop platforms:**
-   - Enable `SSH Remote Deploy` and configure connection settings in the project
-     export setting.
+- **Desktop platforms:** - Bật `SSH Remote Deploy` và cấu hình các thiết lập kết nối trong project export setting.
 
-- Make sure there is an export preset marked as **Runnable** for the target
-  platform (Android, iOS or Web).
-- If everything is configured correctly and with no errors, platform-specific
-  icons will appear in the top-right corner of the editor.
-- Click the button to export to the desired platform in one click.
+- Đảm bảo có một export preset được đánh dấu là **Runnable** cho platform đích (Android, iOS hoặc Web). - Nếu mọi thứ được cấu hình chính xác và không có lỗi, các biểu tượng dành riêng cho từng platform sẽ xuất hiện ở góc trên bên phải của editor. - Nhấp vào nút để export sang platform mong muốn chỉ bằng một cú nhấp.
 
 .. image:: img/remote_debug.webp
 
 .. _doc_one-click_deploy_troubleshooting:
 
-Troubleshooting
+Khắc phục sự cố
 ---------------
 
 Android
 ~~~~~~~
 
-If you can't see the device in the list of devices when running the
-``adb devices`` command in a terminal, it will not be visible by Godot either.
-To resolve this:
+Nếu bạn không thấy thiết bị trong danh sách thiết bị khi chạy lệnh ``adb devices`` trong terminal, Godot cũng sẽ không hiển thị thiết bị đó. Để khắc phục:
 
-- Check if USB debugging is enabled *and authorized on the device*.
-  Try unlocking your device and accepting the authorization prompt if you see any.
-  If you can't see this prompt, running ``adb devices`` on your PC should make
-  the authorization prompt appear on the device.
-- Try `revoking the debugging authorization <https://stackoverflow.com/questions/23081263/adb-android-device-unauthorized>`__
-  in the device's developer settings, then follow the steps again.
-- Try using USB debugging instead of wireless debugging or vice versa.
-  Sometimes, one of those can work better than the other.
-- On Linux, you may be missing the required
-  `udev rules <https://github.com/M0Rf30/android-udev-rules>`__
-  for your device to be recognized.
+- Kiểm tra xem USB debugging đã được bật *và được cấp quyền trên thiết bị* hay chưa. Hãy thử mở khóa thiết bị và chấp nhận lời nhắc cấp quyền nếu bạn thấy lời nhắc này. Nếu không thấy lời nhắc, việc chạy ``adb devices`` trên PC sẽ khiến lời nhắc cấp quyền xuất hiện trên thiết bị. - Thử `revoking the debugging authorization <https://stackoverflow.com/questions/23081263/adb-android-device-unauthorized>`__ trong phần cài đặt dành cho developer của thiết bị, sau đó thực hiện lại các bước. - Thử sử dụng USB debugging thay vì wireless debugging hoặc ngược lại. Đôi khi một trong hai cách có thể hoạt động tốt hơn cách còn lại. - Trên Linux, có thể bạn đang thiếu `udev rules <https://github.com/M0Rf30/android-udev-rules>`__ cần thiết để thiết bị được nhận diện.
 
 .. _doc_one-click_deploy_troubleshooting_web:
 
 Web
 ~~~
 
-By default, the web server started by the editor is only accessible from
-``localhost``. This means the web server can't be reached by other devices on
-the local network or the Internet (if port forwarding is set up on the router).
-This is done for security reasons, as you may not want other devices to be able
-to access the exported project while you're testing it. Binding to ``localhost``
-also prevents a firewall popup from appearing when you use one-click deploy for
-the web platform.
+Theo mặc định, web server được editor khởi động chỉ có thể được truy cập từ ``localhost``. Điều này có nghĩa là các thiết bị khác trong mạng cục bộ hoặc Internet (nếu router đã được thiết lập port forwarding) không thể truy cập web server. Cách này được thực hiện vì lý do bảo mật, vì bạn có thể không muốn các thiết bị khác truy cập project đã export trong khi đang kiểm thử. Việc bind vào ``localhost`` cũng ngăn không cho cửa sổ bật lên của firewall xuất hiện khi bạn sử dụng one-click deploy cho web platform.
 
-To make the local web server accessible over the local network, you'll need to
-change the **Export > Web > HTTP Host** editor setting to ``0.0.0.0``. You will
-also need to enable **Export > Web > Use TLS** as SharedArrayBuffer requires the
-use of a secure connection to work, *unless* connecting to ``localhost``.
-However, since other clients will be connecting to a remote device, the use of
-TLS is absolutely required here.
+Để cho phép truy cập web server cục bộ qua mạng cục bộ, bạn cần thay đổi thiết lập editor **Export > Web > HTTP Host** thành ``0.0.0.0``. Bạn cũng cần bật **Export > Web > Use TLS** vì SharedArrayBuffer yêu cầu kết nối bảo mật để hoạt động, *trừ khi* kết nối đến ``localhost``. Tuy nhiên, vì các client khác sẽ kết nối đến một thiết bị từ xa, việc sử dụng TLS là bắt buộc trong trường hợp này.
 
-To make the local web server accessible over the Internet, you'll also need to
-forward the **Export > Web > HTTP Port** port specified in the Editor Settings
-(``8060`` by default) in TCP on your router. This is usually done by accessing
-your router's web interface then adding a NAT rule for the port in question. For
-IPv6 connections, you should allow the port in the router's IPv6 firewall
-instead. Like for local network devices, you will also need to enable **Export >
-Web > Use TLS**.
+Để cho phép truy cập web server cục bộ qua Internet, bạn cũng cần forward port **Export > Web > HTTP Port** được chỉ định trong Editor Settings (``8060`` theo mặc định) qua TCP trên router. Việc này thường được thực hiện bằng cách truy cập web interface của router, sau đó thêm một NAT rule cho port tương ứng. Đối với các kết nối IPv6, thay vào đó bạn nên cho phép port này trong firewall IPv6 của router. Giống như đối với các thiết bị trong mạng cục bộ, bạn cũng cần bật **Export > Web > Use TLS**.
 
 .. note::
 
-    When **Use TLS** is enabled, you will get a warning from your web browser as
-    Godot will use a temporary self-signed certificate. You can safely ignore it
-    and bypass the warning by clicking **Advanced** and then **Proceed to
-    (address)**.
+    Khi **Use TLS** được bật, trình duyệt web sẽ hiển thị cảnh báo vì Godot sẽ sử dụng một self-signed certificate tạm thời. Bạn có thể an toàn bỏ qua cảnh báo này bằng cách nhấp vào **Advanced**, sau đó nhấp vào **Proceed to (address)**.
 
-    If you have an SSL/TLS certificate that is trusted by browsers, you can specify
-    the paths to the key and certificate files in the **Export > Web > TLS Key**
-    and **Export > Web > TLS Certificate**. This will only work if the project
-    is accessed through a domain name that is part of the TLS certificate.
+    Nếu bạn có một SSL/TLS certificate được các trình duyệt tin cậy, bạn có thể chỉ định đường dẫn đến các file key và certificate trong **Export > Web > TLS Key** và **Export > Web > TLS Certificate**. Cách này chỉ hoạt động nếu project được truy cập thông qua một domain name thuộc TLS certificate.
 
 .. warning::
 
-    When using one-click deploy on different projects, it's possible that
-    a previously edited project is being shown instead. This is due to service
-    worker caching not being cleared automatically. See
+    Khi sử dụng one-click deploy trên các project khác nhau, có thể project được chỉnh sửa trước đó lại đang được hiển thị. Nguyên nhân là service worker caching không được tự động xóa. Xem
     :ref:`doc_exporting_for_web_troubleshooting` for instructions on unregistering
-    the service worker, which will effectively clear the cache and resolve the issue.
+    service worker, thao tác này sẽ xóa cache một cách hiệu quả và giải quyết sự cố.

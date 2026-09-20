@@ -1,110 +1,69 @@
 .. _doc_exporting_for_windows:
 
-Exporting for Windows
-=====================
+Xuất bản cho Windows
+====================
 
 .. seealso::
 
-    This page describes how to export a Godot project to Windows.
-    If you're looking to compile editor or export template binaries from source instead,
-    read :ref:`doc_compiling_for_windows`.
+    Trang này mô tả cách xuất một dự án Godot sang Windows. Nếu bạn muốn biên dịch editor hoặc các binary export template từ source thay vào đó, hãy đọc :ref:`doc_compiling_for_windows`.
 
-The simplest way to distribute a game for PC is to copy the executable
-(``godot.exe``), compress the folder and send it to someone else. However, this
-is often not desired.
+Cách đơn giản nhất để phân phối một game cho PC là sao chép tệp thực thi (``godot.exe``), nén thư mục rồi gửi cho người khác. Tuy nhiên, cách này thường không được mong muốn.
 
-Godot offers a more elegant approach for PC distribution when using the export
-system. When exporting for Windows, the exporter takes all the project files and
-creates a ``data.pck`` file. This file is bundled with a specially optimized
-binary that is smaller, faster and does not contain the editor and debugger.
+Godot cung cấp một phương pháp thanh lịch hơn để phân phối cho PC khi sử dụng hệ thống export. Khi export cho Windows, exporter lấy tất cả các tệp dự án và tạo một tệp ``data.pck``. Tệp này được đóng gói cùng với một binary được tối ưu hóa đặc biệt, có kích thước nhỏ hơn, nhanh hơn và không chứa editor cũng như debugger.
 
-Architecture
-------------
+Kiến trúc
+---------
 
-There are 3 different processor architectures that exported Godot projects can run
-on in Windows:
+Có 3 kiến trúc bộ xử lý khác nhau mà các dự án Godot đã export có thể chạy trên Windows:
 
-- x86_64
-- x86_32
-- arm64
+- x86_64 - x86_32 - arm64
 
-The default is x86_64, this is the most common architecture of PC processors
-today. All modern Intel and AMD processors as of writing this are x86_64.
+Mặc định là x86_64, đây là kiến trúc phổ biến nhất của các bộ xử lý PC hiện nay. Tất cả bộ xử lý Intel và AMD hiện đại tại thời điểm viết nội dung này đều là x86_64.
 
-x86_32 will give you a 32bit executable that can run on 32bit-only versions of
-Windows as well as modern versions which are 64bit. It is **not** recommended to use
-this option unless you are trying to get your project to run on an old 32bit version
-of Windows. And it should be noted that no 32bit versions of Windows receive
-Microsoft support anymore.
+x86_32 sẽ cung cấp cho bạn một tệp thực thi 32bit có thể chạy trên các phiên bản Windows chỉ hỗ trợ 32bit cũng như các phiên bản hiện đại 64bit. **Không** nên sử dụng tùy chọn này trừ khi bạn muốn dự án của mình chạy trên một phiên bản Windows 32bit cũ. Cũng cần lưu ý rằng hiện không còn phiên bản Windows 32bit nào nhận được hỗ trợ từ Microsoft.
 
-arm64 processors are modern but less common than x86_64, and run Windows on ARM.
-Snapdragon X Elite is an example of a modern Windows ARM processor. Using this
-export option will allow your project to run natively on arm processors without
-Microsoft's Prism emulator. Executables made using this option will **not** run on
-regular Windows with an x86_64 processor. If you're uploading your project to a
-platform that allows multiple executables, such as itch.io, and are confident a
-Snapdragon X Elite processor is powerful enough to run it, we would recommend
-providing an ARM version. Prism emulation is far from perfect, and Godot does not
-require you to build or design your game in any special way to run on ARM.
+Bộ xử lý arm64 hiện đại nhưng ít phổ biến hơn x86_64 và chạy Windows trên ARM. Snapdragon X Elite là một ví dụ về bộ xử lý Windows ARM hiện đại. Sử dụng tùy chọn export này sẽ cho phép dự án của bạn chạy nguyên bản trên các bộ xử lý arm mà không cần trình giả lập Prism của Microsoft. Các tệp thực thi được tạo bằng tùy chọn này sẽ **không** chạy trên Windows thông thường với bộ xử lý x86_64. Nếu bạn tải dự án lên một nền tảng cho phép nhiều tệp thực thi, chẳng hạn như itch.io, và tin chắc rằng bộ xử lý Snapdragon X Elite đủ mạnh để chạy dự án, chúng tôi khuyến nghị cung cấp một phiên bản ARM. Việc giả lập bằng Prism còn lâu mới hoàn hảo, và Godot không yêu cầu bạn xây dựng hoặc thiết kế game theo bất kỳ cách đặc biệt nào để chạy trên ARM.
 
-Changing the executable icon
-----------------------------
+Thay đổi biểu tượng tệp thực thi
+--------------------------------
 
-Godot will automatically use whatever image is set as your project's icon in the project
-settings, and convert it to an ICO file for the exported project. If you want to
-manually create an ICO file for greater control over how the icon looks at different
-resolutions then see the :ref:`doc_changing_application_icon_for_windows` page.
+Godot sẽ tự động sử dụng hình ảnh được đặt làm biểu tượng của dự án trong phần cài đặt dự án và chuyển đổi hình ảnh đó thành tệp ICO cho dự án đã export. Nếu bạn muốn tự tạo tệp ICO để kiểm soát tốt hơn cách biểu tượng hiển thị ở các độ phân giải khác nhau, hãy xem trang :ref:`doc_changing_application_icon_for_windows`.
 
-PCK embedding
--------------
+Nhúng PCK
+---------
 
-PCK embedding is only supported on executables up to ~3.89 GB in size. This
-metric includes both the executable and embedded PCK size, so in practice,
-the PCK file may only weigh up to ~3.75 GB. This can also vary depending on
-build options when using a custom export template.
+Tính năng nhúng PCK chỉ được hỗ trợ trên các tệp thực thi có kích thước tối đa khoảng 3.89 GB. Chỉ số này bao gồm cả kích thước của tệp thực thi và PCK được nhúng, vì vậy trên thực tế, tệp PCK có thể chỉ có kích thước tối đa khoảng 3.75 GB. Kích thước này cũng có thể thay đổi tùy theo các tùy chọn build khi sử dụng export template tùy chỉnh.
 
 .. _doc_exporting_for_windows_code_signing:
 
-Code signing
-------------
+Ký code
+-------
 
-Godot is capable of automatic code signing on export. To do this you must have the
-``Windows SDK`` (on Windows) or `osslsigncode <https://github.com/mtrojnar/osslsigncode>`__
-(on any other OS) installed. You will also need a package signing certificate,
-information on creating one can be found `here <https://learn.microsoft.com/en-us/windows/msix/package/create-certificate-package-signing>`__.
+Godot có khả năng tự động ký code khi export. Để thực hiện việc này, bạn phải cài đặt ``Windows SDK`` (trên Windows) hoặc `osslsigncode <https://github.com/mtrojnar/osslsigncode>`__ (trên bất kỳ hệ điều hành nào khác). Bạn cũng sẽ cần một chứng chỉ ký package; thông tin về cách tạo chứng chỉ có thể tìm thấy `here <https://learn.microsoft.com/en-us/windows/msix/package/create-certificate-package-signing>`__.
 
-Setup
-~~~~~
+Thiết lập
+~~~~~~~~~
 
-Settings need to be changed in two places. First, in the editor settings, under
-**Export > Windows**. Click on the folder next to the ``Sign Tool`` setting, if
-you're using Windows navigate to and select ``SignTool.exe``, if you're on a different
-OS select ``osslsigncode``.
+Cần thay đổi cài đặt ở hai nơi. Trước tiên, trong phần cài đặt editor, tại **Export > Windows**. Nhấp vào thư mục bên cạnh cài đặt ``Sign Tool``; nếu bạn đang sử dụng Windows, hãy điều hướng đến và chọn ``SignTool.exe``; nếu bạn đang sử dụng hệ điều hành khác, hãy chọn ``osslsigncode``.
 
 .. image:: img/windows_editor_settings.webp
 
-The second location is the Windows export preset, which can be found in
-**Project > Export...**. Add a windows desktop preset if you haven't already.
-Under options there is a code signing category.
+Vị trí thứ hai là export preset cho Windows, có thể tìm thấy tại **Project > Export...**. Hãy thêm một preset desktop cho Windows nếu bạn chưa thêm. Trong phần tùy chọn có một danh mục ký code.
 
 .. image:: img/windows_export_codesign.webp
 
-``Enabled`` must be set to ``true``, and ``Identity`` must be set to the signing
-certificate. The other settings can be adjusted as needed. Once this is done
-Godot will sign your project on export.
+``Enabled`` phải được đặt thành ``true``, và ``Identity`` phải được đặt thành chứng chỉ ký. Có thể điều chỉnh các cài đặt khác tùy nhu cầu. Sau khi hoàn tất, Godot sẽ ký dự án của bạn khi export.
 
-Environment variables
----------------------
+Biến môi trường
+---------------
 
-You can use the following environment variables to set export options outside of
-the editor. During the export process, these override the values that you set in
-the export menu.
+Bạn có thể sử dụng các biến môi trường sau để thiết lập các tùy chọn export bên ngoài editor. Trong quá trình export, các biến này sẽ ghi đè các giá trị bạn đã đặt trong menu export.
 
 .. list-table:: Windows export environment variables
    :header-rows: 1
 
-   * - Export option
-     - Environment variable
+   * - Tùy chọn export
+     - Biến môi trường
    * - Encryption / Encryption Key
      - ``GODOT_SCRIPT_ENCRYPTION_KEY``
    * - Options / Codesign / Identity Type
@@ -114,8 +73,8 @@ the export menu.
    * - Options / Codesign / Password
      - ``GODOT_WINDOWS_CODESIGN_PASSWORD``
 
-Export options
---------------
+Các tùy chọn export
+-------------------
 
-You can find a full list of export options available in the
+Bạn có thể tìm thấy danh sách đầy đủ các tùy chọn export khả dụng trong
 :ref:`class_EditorExportPlatformWindows` class reference.

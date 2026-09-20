@@ -1,65 +1,42 @@
 .. _doc_exporting_for_dedicated_servers:
 
-Exporting for dedicated servers
-===============================
+Export cho dedicated server
+===========================
 
 .. highlight:: none
 
-If you want to run a dedicated server for your project on a machine that doesn't
-have a GPU or display server available, you'll need to run Godot with the ``headless``
-display server and ``Dummy`` :ref:`audio driver <class_ProjectSettings_property_audio/driver/driver>`.
+Nếu bạn muốn chạy một dedicated server cho project của mình trên một máy không có GPU hoặc display server, bạn sẽ cần chạy Godot với display server ``headless`` và ``Dummy`` :ref:`audio driver <class_ProjectSettings_property_audio/driver/driver>`.
 
-Since Godot 4.0, this can be done by running a Godot binary on any platform with
-the ``--headless`` command line argument, or running a project exported as
-dedicated server. You do not need to use a specialized server binary anymore,
-unlike Godot 3.x.
+Kể từ Godot 4.0, bạn có thể thực hiện việc này bằng cách chạy một Godot binary trên bất kỳ platform nào với command-line argument ``--headless``, hoặc chạy một project được export dưới dạng dedicated server. Bạn không còn cần sử dụng server binary chuyên dụng như trong Godot 3.x.
 
-Editor versus export template
------------------------------
+Editor và export template
+-------------------------
 
-It is possible to use either an editor or export template (debug or release)
-binary in headless mode. Which one you should use depends on your use case:
+Bạn có thể sử dụng editor binary hoặc export template binary (debug hoặc release) ở headless mode. Việc nên dùng loại nào phụ thuộc vào trường hợp sử dụng của bạn:
 
-- **Export template:** Use this one for running dedicated servers. It does not
-  contain editor functionality, and is therefore smaller and more optimized.
-- **Editor:** This binary contains editor functionality and is intended to be
-  used for exporting projects. This binary *can* be used to run dedicated
-  servers, but it's not recommended as it's larger and less optimized.
+- **Export template:** Sử dụng loại này để chạy dedicated server. Nó không chứa chức năng editor, do đó có kích thước nhỏ hơn và được tối ưu hóa tốt hơn. - **Editor:** Binary này chứa chức năng editor và được dùng để export project. Binary này *có thể* được dùng để chạy dedicated server, nhưng không được khuyến nghị vì có kích thước lớn hơn và kém tối ưu hơn.
 
-Export approaches
------------------
+Các phương pháp export
+----------------------
 
-There are two ways to export a project for a server:
+Có hai cách để export một project cho server:
 
-- Create a separate export preset for the platform that will host the server, then
-  export your project as usual.
-- Export a PCK file only, preferably for the platform that matches the platform
-  that will host the server. Place this PCK file in the same folder as an export
-  template binary, rename the binary to have the same name as the PCK (minus the
-  file extension), then run the binary.
+- Tạo một export preset riêng cho platform sẽ host server, sau đó export project như bình thường. - Chỉ export một file PCK, tốt nhất là cho platform khớp với platform sẽ host server. Đặt file PCK này vào cùng thư mục với một export template binary, đổi tên binary để có cùng tên với PCK (bỏ phần mở rộng file), sau đó chạy binary.
 
-Both methods should result in identical output. The rest of the page will focus
-on the first approach.
+Cả hai phương pháp đều cho ra output giống hệt nhau. Phần còn lại của trang này sẽ tập trung vào phương pháp đầu tiên.
 
-See :ref:`doc_exporting_projects` for more information.
+Xem :ref:`doc_exporting_projects` để biết thêm thông tin.
 
 .. _doc_exporting_for_dedicated_servers_exporting_project:
 
-Exporting a project for a dedicated server
-------------------------------------------
+Export project cho dedicated server
+-----------------------------------
 
-If you export a project as usual when targeting a server, you will notice that
-the PCK file is just as large as for the client. This is because it includes all
-resources, including those the server doesn't need (such as texture data).
-Additionally, headless mode won't be automatically used; the user will have to
-specify ``--headless`` to make sure no window spawns.
+Nếu bạn export project như bình thường khi nhắm đến server, bạn sẽ nhận thấy file PCK có kích thước lớn tương đương client. Điều này là vì nó bao gồm tất cả resource, kể cả những resource server không cần (chẳng hạn như dữ liệu texture). Ngoài ra, headless mode sẽ không được tự động sử dụng; người dùng phải chỉ định ``--headless`` để đảm bảo không có window nào được tạo.
 
-Many resources such as textures can be stripped from the PCK file to greatly
-reduce its size. Godot offers a way to do this for textures and materials in a way
-that preserves references in scene or resource files (built-in or external).
+Nhiều resource như texture có thể được loại bỏ khỏi file PCK để giảm đáng kể kích thước. Godot cung cấp cách thực hiện việc này cho texture và material mà vẫn giữ các reference trong scene hoặc resource file (built-in hoặc external).
 
-To begin doing so, make sure you have a dedicated export preset for your server,
-then select it, go to its **Resources** tab and change its export mode:
+Để bắt đầu, hãy đảm bảo bạn có một export preset riêng cho server, sau đó chọn preset đó, đi đến tab **Resources** và thay đổi export mode của nó:
 
 .. figure:: img/exporting_for_dedicated_servers_export_mode.webp
    :align: center
@@ -67,18 +44,13 @@ then select it, go to its **Resources** tab and change its export mode:
 
    Choosing the **Export as dedicated server** export mode in the export preset
 
-When this export mode is chosen, the ``dedicated_server`` feature tag is
-automatically added to the exported project.
+Khi chọn export mode này, feature tag ``dedicated_server`` sẽ được tự động thêm vào project đã export.
 
 .. note::
 
-    If you do not wish to use this
-    export mode but still want the feature tag, you can write the name
-    ``dedicated_server`` in the **Features** tab of the export preset.
-    This will also force ``--headless`` when running the exported project.
+    Nếu bạn không muốn sử dụng export mode này nhưng vẫn muốn có feature tag, bạn có thể viết tên ``dedicated_server`` trong tab **Features** của export preset. Việc này cũng sẽ buộc sử dụng ``--headless`` khi chạy project đã export.
 
-After selecting this export mode, you will be presented with a list of resources
-in the project:
+Sau khi chọn export mode này, bạn sẽ thấy danh sách các resource trong project:
 
 .. figure:: img/exporting_for_dedicated_servers_export_resources.webp
    :align: center
@@ -86,50 +58,27 @@ in the project:
 
    Choosing resources to keep, keep with stripped visuals or remove
 
-Ticking a box allows you to override options for the specified file or folder.
-Checking boxes does **not** affect which files are exported; this is done by the
-options selected for each checkbox instead.
+Đánh dấu một ô cho phép bạn override các tùy chọn cho file hoặc folder được chỉ định. Việc đánh dấu các ô **không** ảnh hưởng đến những file được export; điều này được quyết định bởi các tùy chọn được chọn cho từng ô.
 
-Files within a checked folder will automatically use the parent's option by
-default, which is indicated by the **(Inherited)** suffix for the option name
-(and the option name being grayed out). To change the option for a file whose
-option is currently inherited, you must tick the box next to it first.
+Các file bên trong một folder đã được đánh dấu sẽ tự động sử dụng tùy chọn của folder cha theo mặc định, được thể hiện bằng hậu tố **(Inherited)** trong tên tùy chọn (và tên tùy chọn sẽ bị làm mờ). Để thay đổi tùy chọn cho một file hiện đang kế thừa, trước tiên bạn phải đánh dấu ô bên cạnh file đó.
 
-- **Strip Visuals:** Export this resource, with visual files (textures and materials)
-  replaced by placeholder classes. Placeholder classes store the image size
-  (as it's sometimes used to position elements in a 2D scene), but nothing else.
-- **Keep:** Export this resource as usual, with visual files intact.
-- **Remove:** The file is not included in the PCK. This is useful to ignore
-  scenes and resources that only the client needs. If you do so, make sure the
-  server doesn't reference these client-only scenes and resources in any way.
+- **Strip Visuals:** Export resource này, trong đó các file visual (texture và material) được thay thế bằng placeholder class. Placeholder class lưu kích thước ảnh (vì đôi khi thông tin này được dùng để định vị các element trong scene 2D), nhưng không lưu gì khác. - **Keep:** Export resource này như bình thường, giữ nguyên các file visual. - **Remove:** File không được đưa vào PCK. Tùy chọn này hữu ích để bỏ qua các scene và resource mà chỉ client cần. Nếu sử dụng tùy chọn này, hãy đảm bảo server không tham chiếu đến các scene và resource chỉ dành cho client này theo bất kỳ cách nào.
 
-The general recommendation is to use **Strip Visuals** whenever possible, unless
-the server needs to access image data such as pixels' colors. For example, if
-your server generates collision data based on an image's contents, you need to
-use **Keep** for that particular image.
+Khuyến nghị chung là sử dụng **Strip Visuals** bất cứ khi nào có thể, trừ khi server cần truy cập dữ liệu ảnh như màu của các pixel. Ví dụ, nếu server tạo dữ liệu collision dựa trên nội dung của một ảnh, bạn cần sử dụng **Keep** cho ảnh cụ thể đó.
 
 .. tip::
 
-    To check the file structure of your exported PCK, use the **Export
-    PCK/ZIP...** button with a ``.zip`` file extension, then open the resulting
-    ZIP file in a file manager.
+    Để kiểm tra cấu trúc file của PCK đã export, hãy sử dụng nút **Export PCK/ZIP...** với phần mở rộng file ``.zip``, sau đó mở file ZIP thu được bằng file manager.
 
 .. warning::
 
-    Be careful when using the **Remove** mode, as scenes/resources that reference
-    a removed file will no longer be able to load successfully.
+    Hãy cẩn thận khi sử dụng mode **Remove**, vì các scene/resource tham chiếu đến file đã bị xóa sẽ không thể load thành công nữa.
 
-    If you wish to remove specific resources but make the scenes still be able
-    to load without them, you'll have to remove the reference in the scene file
-    and load the files to the nodes' properties using ``load()`` in a script.
-    This approach can be used to strip resources that Godot doesn't support
-    replacing with placeholders yet, such as audio.
+    Nếu muốn xóa các resource cụ thể nhưng vẫn cho phép scene load mà không cần chúng, bạn sẽ phải xóa reference trong scene file và load các file vào properties của node bằng ``load()`` trong script. Cách tiếp cận này có thể được dùng để loại bỏ các resource mà Godot chưa hỗ trợ thay thế bằng placeholder, chẳng hạn như audio.
 
-    Removing textures is often what makes the greatest impact on the PCK size,
-    so it is recommended to stick with **Strip Visuals** at first.
+    Việc xóa texture thường tạo ra tác động lớn nhất đến kích thước PCK, vì vậy ban đầu bạn nên dùng **Strip Visuals**.
 
-With the above options used, a PCK for the client (which exports all resources
-normally) will look as follows:
+Với các tùy chọn trên, PCK cho client (export tất cả resource theo cách bình thường) sẽ có dạng như sau:
 
 ::
 
@@ -157,7 +106,7 @@ normally) will look as follows:
     ├── scene.gd
     ├── scene.tscn.remap
 
-The PCK's file structure for the server will look as follows:
+Cấu trúc file của PCK cho server sẽ có dạng như sau:
 
 ::
 
@@ -174,30 +123,26 @@ The PCK's file structure for the server will look as follows:
     │   └── uid_cache.bin
     ├── client
     │   ├── music.ogg.import
-    │   └── sprite.png.import  # Points to placeholder texture
+    │   └── sprite.png.import  # Trỏ đến placeholder texture
     └── server
     │   └── map_data.png.import
     ├── project.binary
     ├── scene.gd
     ├── scene.tscn.remap
 
-Starting the dedicated server
------------------------------
+Khởi động dedicated server
+--------------------------
 
-If both your client and server are part of the same Godot project, you will have
-to add a way to start the server directly using a command-line argument.
+Nếu client và server của bạn cùng thuộc một Godot project, bạn sẽ phải thêm cách để khởi động server trực tiếp bằng command-line argument.
 
-If you :ref:`exported the project <doc_exporting_for_dedicated_servers_exporting_project>`
-using the **Export as dedicated server** export mode (or have added
-``dedicated_server`` as a custom feature tag), you can use the ``dedicated_server``
-feature tag to detect whether a dedicated server PCK is being used:
+Nếu bạn :ref:`exported the project <doc_exporting_for_dedicated_servers_exporting_project>` bằng export mode **Export as dedicated server** (hoặc đã thêm ``dedicated_server`` dưới dạng custom feature tag), bạn có thể sử dụng feature tag ``dedicated_server`` để phát hiện xem một dedicated server PCK có đang được sử dụng hay không:
 
 .. tabs::
  .. code-tab:: gdscript
 
     # Note: Feature tags are case-sensitive.
     if OS.has_feature("dedicated_server"):
-        # Run your server startup code here...
+        # Chạy code khởi động server tại đây...
         pass
 
  .. code-tab:: csharp
@@ -205,21 +150,19 @@ feature tag to detect whether a dedicated server PCK is being used:
     // Note: Feature tags are case-sensitive.
     if (OS.HasFeature("dedicated_server"))
     {
-        // Run your server startup code here...
+        // Chạy code khởi động server tại đây...
     }
 
-If you also wish to host a server when using the built-in ``--headless`` command
-line argument, this can be done by adding the following code snippet in your
-main scene (or an autoload)'s ``_ready()`` method:
+Nếu bạn cũng muốn host server khi sử dụng command-line argument tích hợp sẵn ``--headless``, bạn có thể thực hiện bằng cách thêm đoạn code sau vào method ``_ready()`` của main scene (hoặc autoload):
 
 .. tabs::
  .. code-tab:: gdscript
 
     if DisplayServer.get_name() == "headless":
-        # Run your server startup code here...
+        # Chạy code khởi động server tại đây...
         #
-        # Using this check, you can start a dedicated server by running
-        # a Godot binary (editor or export template) with the `--headless`
+        # Với kiểm tra này, bạn có thể khởi động dedicated server bằng cách chạy
+        # một Godot binary (editor hoặc export template) với `--headless`
         # command-line argument.
         pass
 
@@ -229,25 +172,23 @@ main scene (or an autoload)'s ``_ready()`` method:
 
     if (DisplayServer.GetName() == "headless")
     {
-        // Run your server startup code here...
+        // Chạy code khởi động server tại đây...
         //
-        // Using this check, you can start a dedicated server by running
-        // a Godot binary (editor or export template) with the `--headless`
+        // Với kiểm tra này, bạn có thể khởi động dedicated server bằng cách chạy
+        // một Godot binary (editor hoặc export template) với `--headless`
         // command-line argument.
     }
 
-If you wish to use a custom command line argument, this can be done by adding
-the following code snippet in your main scene (or an autoload)'s ``_ready()``
-method:
+Nếu muốn sử dụng custom command-line argument, bạn có thể thực hiện bằng cách thêm đoạn code sau vào method ``_ready()`` của main scene (hoặc autoload):
 
 .. tabs::
  .. code-tab:: gdscript
 
     if "--server" in OS.get_cmdline_user_args():
-        # Run your server startup code here...
+        # Chạy code khởi động server tại đây...
         #
-        # Using this check, you can start a dedicated server by running
-        # a Godot binary (editor or export template) with the `--server`
+        # Với kiểm tra này, bạn có thể khởi động dedicated server bằng cách chạy
+        # một Godot binary (editor hoặc export template) với `--server`
         # command-line argument.
         pass
 
@@ -257,34 +198,20 @@ method:
 
     if (OS.GetCmdlineUserArgs().Contains("--server"))
     {
-        // Run your server startup code here...
+        // Chạy code khởi động server tại đây...
         //
-        // Using this check, you can start a dedicated server by running
-        // a Godot binary (editor or export template) with the `--server`
+        // Với kiểm tra này, bạn có thể khởi động dedicated server bằng cách chạy
+        // một Godot binary (editor hoặc export template) với `--server`
         // command-line argument.
     }
 
-It's a good idea to add at least one of the above command-line arguments to
-start a server, as it can be used to test server functionality from the command
-line without having to export the project.
+Bạn nên thêm ít nhất một trong các command-line argument ở trên để khởi động server, vì nó có thể được dùng để kiểm thử chức năng server từ command line mà không cần export project.
 
-If your client and server are separate Godot projects, your server should most
-likely be configured in a way where running the main scene starts a server
-automatically.
+Nếu client và server của bạn là các Godot project riêng biệt, server rất có thể nên được cấu hình để khi chạy main scene thì server sẽ tự động khởi động.
 
-Next steps
-----------
+Các bước tiếp theo
+------------------
 
-On Linux, to make your dedicated server restart after a crash or system reboot,
-you can
-`create a systemd service <https://medium.com/@benmorel/creating-a-linux-service-with-systemd-611b5c8b91d6>`__.
-This also lets you view server logs in a more convenient fashion, with automatic
-log rotation provided by systemd. When making your project hostable as a systemd service,
-you should also enable the ``application/run/flush_stdout_on_print``
-project setting. This way, journald (the systemd logging service) can collect
-logs while the process is running.
+Trên Linux, để dedicated server khởi động lại sau khi crash hoặc hệ thống reboot, bạn có thể `create a systemd service <https://medium.com/@benmorel/creating-a-linux-service-with-systemd-611b5c8b91d6>`__. Cách này cũng cho phép bạn xem server log thuận tiện hơn, với việc tự động xoay vòng log do systemd cung cấp. Khi biến project của mình thành một systemd service có thể host, bạn cũng nên bật project setting ``application/run/flush_stdout_on_print``. Nhờ vậy, journald (systemd logging service) có thể thu thập log trong khi process đang chạy.
 
-If you have experience with containers, you could also look into wrapping your
-dedicated server in a `Docker <https://www.docker.com/>`__ container. This way,
-it can be used more easily in an automatic scaling setup (which is outside the
-scope of this tutorial).
+Nếu có kinh nghiệm với container, bạn cũng có thể tìm hiểu việc bọc dedicated server trong một container `Docker <https://www.docker.com/>`__. Nhờ vậy, server có thể được sử dụng dễ dàng hơn trong một thiết lập automatic scaling (nằm ngoài phạm vi của tutorial này).

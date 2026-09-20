@@ -1,108 +1,86 @@
 .. _doc_exporting_for_macos:
 
-Exporting for macOS
-===================
+Xuất cho macOS
+==============
 
 .. seealso::
 
-    This page describes how to export a Godot project to macOS.
-    If you're looking to compile editor or export template binaries from source instead,
-    read :ref:`doc_compiling_for_macos`.
+    Trang này mô tả cách xuất một project Godot sang macOS. Nếu bạn muốn biên dịch binary của editor hoặc export template từ source thay vào đó, hãy đọc :ref:`doc_compiling_for_macos`.
 
-macOS apps exported with the official export templates are exported as a single "Universal 2" binary ``.app`` bundle, a folder with a specific structure which stores the executable, libraries and all the project files.
-This bundle can be exported as is, packed in a ZIP archive, or packed in a DMG disk image (only supported when exporting from macOS).
-`Universal binaries for macOS support both Intel x86_64 and ARM64 (Apple Silicon) architectures <https://developer.apple.com/documentation/apple-silicon/building-a-universal-macos-binary>`__.
+Các ứng dụng macOS được xuất bằng export template chính thức sẽ được xuất dưới dạng một binary "Universal 2" duy nhất ``.app`` bundle, một thư mục có cấu trúc cụ thể dùng để lưu executable, library và tất cả tệp của project. Bundle này có thể được xuất nguyên trạng, đóng gói trong kho lưu trữ ZIP hoặc đóng gói trong disk image DMG (chỉ được hỗ trợ khi xuất từ macOS). `Universal binaries for macOS support both Intel x86_64 and ARM64 (Apple Silicon) architectures <https://developer.apple.com/documentation/apple-silicon/building-a-universal-macos-binary>`__.
 
 .. warning::
-    Due to file system limitations, ``.app`` bundles exported from Windows lack the
-    ``executable`` flag and won't run on macOS. Projects exported as ``.zip`` are not
-    affected by this issue. To run ``.app`` bundles exported from Windows on macOS,
-    transfer the ``.app`` to a device running macOS or Linux and use the
-    ``chmod +x {executable_name}`` terminal command to add the ``executable`` permission.
-    The main executable located in the ``Contents/MacOS/`` subfolder, as well
-    as optional helper executables in the ``Contents/Helpers/`` subfolder, should have
-    the ``executable`` permission for the ``.app`` bundle to be valid.
+    Do các giới hạn của hệ thống tệp, các bundle ``.app`` được xuất từ Windows không có flag ``executable`` và sẽ không chạy trên macOS. Các project được xuất dưới dạng ``.zip`` không bị ảnh hưởng bởi vấn đề này. Để chạy các bundle ``.app`` được xuất từ Windows trên macOS, hãy chuyển ``.app`` sang một thiết bị chạy macOS hoặc Linux và dùng lệnh terminal ``chmod +x {executable_name}`` để thêm quyền ``executable``. Executable chính nằm trong thư mục con ``Contents/MacOS/``, cũng như các executable trợ giúp tùy chọn trong thư mục con ``Contents/Helpers/``, phải có quyền ``executable`` để bundle ``.app`` hợp lệ.
 
-Requirements
-------------
+Yêu cầu
+-------
 
--  Download the Godot export templates. Use the Godot menu: ``Editor > Manage Export Templates``.
--  A valid and unique ``Bundle identifier`` should be set in the ``Application`` section of the export options.
+-  Tải xuống export template của Godot. Sử dụng menu Godot: ``Editor > Manage Export Templates``. - Một ``Bundle identifier`` hợp lệ và duy nhất phải được đặt trong phần ``Application`` của tùy chọn export.
 
 .. note::
 
-    A valid bundle ID can only contain alphanumeric characters, hyphens, and periods (``A-Z``, ``a-z``, ``0-9``, ``-``, and ``.``).
-    Apple recommends using reverse-DNS format (e.g. ``com.example.your-game``) of a domain you own, so that your bundle ID is guaranteed to be unique.
-    Bundle IDs are case-insensitive. See `CFBundleIdentifier <https://developer.apple.com/documentation/bundleresources/information-property-list/cfbundleidentifier>`__.
+    Bundle ID hợp lệ chỉ có thể chứa các ký tự chữ và số, dấu gạch ngang và dấu chấm (``A-Z``, ``a-z``, ``0-9``, ``-`` và ``.``). Apple khuyến nghị sử dụng định dạng reverse-DNS (ví dụ: ``com.example.your-game``) của một domain mà bạn sở hữu, để đảm bảo bundle ID của bạn là duy nhất. Bundle ID không phân biệt chữ hoa chữ thường. Xem `CFBundleIdentifier <https://developer.apple.com/documentation/bundleresources/information-property-list/cfbundleidentifier>`__.
 
 .. warning::
 
-    Projects exported without code signing and notarization will be blocked by Gatekeeper if they are downloaded from unknown sources, see the :ref:`Running Godot apps on macOS <doc_running_on_macos>` page for more information.
+    Các project được xuất mà không có code signing và notarization sẽ bị Gatekeeper chặn nếu được tải xuống từ các nguồn không xác định; xem trang :ref:`Running Godot apps on macOS <doc_running_on_macos>` để biết thêm thông tin.
 
-Code signing and notarization
------------------------------
+Code signing và notarization
+----------------------------
 
-By default, macOS will run only applications that are signed and notarized. If you use any other signing configuration, see :ref:`Running Godot apps on macOS <doc_running_on_macos>` for workarounds.
+Theo mặc định, macOS chỉ chạy các ứng dụng đã được ký và notarize. Nếu bạn sử dụng cấu hình signing khác, hãy xem :ref:`Running Godot apps on macOS <doc_running_on_macos>` để biết các cách xử lý.
 
-To notarize an app, you **must** have a valid `Apple Developer ID Certificate <https://developer.apple.com/>`__.
+Để notarize một app, bạn **phải** có một `Apple Developer ID Certificate <https://developer.apple.com/>`__ hợp lệ.
 
-If you have an Apple Developer ID Certificate and exporting from macOS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Nếu bạn có Apple Developer ID Certificate và xuất từ macOS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Install `Xcode <https://developer.apple.com/xcode/>`__ command line tools and open Xcode at least once or run the ``sudo xcodebuild -license accept`` command to accept license agreement.
+Cài đặt các công cụ dòng lệnh `Xcode <https://developer.apple.com/xcode/>`__ và mở Xcode ít nhất một lần hoặc chạy lệnh ``sudo xcodebuild -license accept`` để chấp nhận thỏa thuận cấp phép.
 
-To sign exported app
-^^^^^^^^^^^^^^^^^^^^
+Để sign app đã xuất
+^^^^^^^^^^^^^^^^^^^
 
-- Select ``Xcode codesign`` in the ``Code Signing > Codesign`` option.
-- Set valid Apple ID certificate identity (certificate "Common Name") in the ``Code Signing > Identity`` section.
+- Chọn ``Xcode codesign`` trong tùy chọn ``Code Signing > Codesign``. - Đặt identity của Apple ID certificate hợp lệ (certificate "Common Name") trong phần ``Code Signing > Identity``.
 
-To notarize exported app
-^^^^^^^^^^^^^^^^^^^^^^^^
+Để notarize app đã xuất
+^^^^^^^^^^^^^^^^^^^^^^^
 
-- Select ``Xcode notarytool`` in the ``Notarization > Notarization`` option.
-- Disable the ``Debugging`` entitlement.
-- Set valid Apple ID login / app. specific password or `App Store Connect <https://developer.apple.com/documentation/appstoreconnectapi>`__ API UUID / Key in the ``Notarization`` section.
+- Chọn ``Xcode notarytool`` trong tùy chọn ``Notarization > Notarization``. - Vô hiệu hóa entitlement ``Debugging``. - Đặt thông tin đăng nhập Apple ID / app-specific password hoặc `App Store Connect <https://developer.apple.com/documentation/appstoreconnectapi>`__ API UUID / Key hợp lệ trong phần ``Notarization``.
 
-You can use the ``xcrun notarytool history`` command to check notarization status and use the ``xcrun notarytool log {ID}`` command to download the notarization log.
+Bạn có thể dùng lệnh ``xcrun notarytool history`` để kiểm tra trạng thái notarization và dùng lệnh ``xcrun notarytool log {ID}`` để tải nhật ký notarization xuống.
 
-If you encounter notarization issues, see `Resolving common notarization issues <https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution/resolving_common_notarization_issues>`__ for more info.
+Nếu gặp vấn đề với notarization, hãy xem `Resolving common notarization issues <https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution/resolving_common_notarization_issues>`__ để biết thêm thông tin.
 
-After notarization is completed, `staple the ticket <https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution/customizing_the_notarization_workflow>`__ to the exported project.
+Sau khi hoàn tất notarization, `staple the ticket <https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution/customizing_the_notarization_workflow>`__ vào project đã xuất.
 
-If you have an Apple Developer ID Certificate and exporting from Linux or Windows
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Nếu bạn có Apple Developer ID Certificate và xuất từ Linux hoặc Windows
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Install `rcodesign <https://github.com/indygreg/apple-platform-rs/tree/main/apple-codesign>`__, and configure the path to ``rcodesign`` in the ``Editor Settings > Export > macOS > rcodesign`` option.
+Cài đặt `rcodesign <https://github.com/indygreg/apple-platform-rs/tree/main/apple-codesign>`__ và cấu hình đường dẫn đến ``rcodesign`` trong tùy chọn ``Editor Settings > Export > macOS > rcodesign``.
 
-To sign exported app
-^^^^^^^^^^^^^^^^^^^^
+Để sign app đã xuất
+^^^^^^^^^^^^^^^^^^^
 
-- Select ``rcodesign`` in the ``Code Signing > Codesign`` option.
-- Set valid Apple ID PKCS #12 certificate file and password in the ``Code Signing`` section.
+- Chọn ``rcodesign`` trong tùy chọn ``Code Signing > Codesign``. - Đặt tệp certificate Apple ID PKCS #12 và password hợp lệ trong phần ``Code Signing``.
 
-To notarize exported app
-^^^^^^^^^^^^^^^^^^^^^^^^
+Để notarize app đã xuất
+^^^^^^^^^^^^^^^^^^^^^^^
 
-- Select ``rcodesign`` in the ``Notarization > Notarization`` option.
-- Disable the ``Debugging`` entitlement.
-- Set valid `App Store Connect <https://developer.apple.com/documentation/appstoreconnectapi>`__ API UUID / Key in the ``Notarization`` section.
+- Chọn ``rcodesign`` trong tùy chọn ``Notarization > Notarization``. - Vô hiệu hóa entitlement ``Debugging``. - Đặt `App Store Connect <https://developer.apple.com/documentation/appstoreconnectapi>`__ API UUID / Key hợp lệ trong phần ``Notarization``.
 
-You can use the ``rcodesign notary-log`` command to check notarization status.
+Bạn có thể dùng lệnh ``rcodesign notary-log`` để kiểm tra trạng thái notarization.
 
-After notarization is completed, use the ``rcodesign staple`` command to staple the ticket to the exported project.
+Sau khi hoàn tất notarization, dùng lệnh ``rcodesign staple`` để staple ticket vào project đã xuất.
 
-If you do not have an Apple Developer ID Certificate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Nếu bạn không có Apple Developer ID Certificate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Select ``Built-in (ad-hoc only)`` in the ``Code Signing > Codesign`` option.
-- Select ``Disabled`` in the ``Notarization > Notarization`` option.
+- Chọn ``Built-in (ad-hoc only)`` trong tùy chọn ``Code Signing > Codesign``. - Chọn ``Disabled`` trong tùy chọn ``Notarization > Notarization``.
 
-In this case Godot will use an ad-hoc signature, which will make running an exported app easier for the end users,
-see the :ref:`Running Godot apps on macOS <doc_running_on_macos>` page for more information.
+Trong trường hợp này, Godot sẽ sử dụng chữ ký ad-hoc, giúp người dùng cuối dễ chạy app đã xuất hơn; xem trang :ref:`Running Godot apps on macOS <doc_running_on_macos>` để biết thêm thông tin.
 
-Signing Options
-~~~~~~~~~~~~~~~
+Tùy chọn Signing
+~~~~~~~~~~~~~~~~
 
 +------------------------------+---------------------------------------------------------------------------------------------------+
 | Option                       | Description                                                                                       |
@@ -118,11 +96,11 @@ Signing Options
 | Custom Options               | Array of command line arguments passed to the code signing tool.                                  |
 +------------------------------+---------------------------------------------------------------------------------------------------+
 
-.. [1] This option is visible only when signing with Xcode codesign.
-.. [2] These options are visible only when signing with rcodesign.
+.. [1] Tùy chọn này chỉ hiển thị khi signing bằng Xcode codesign.
+.. [2] Các tùy chọn này chỉ hiển thị khi signing bằng rcodesign.
 
-Notarization Options
-~~~~~~~~~~~~~~~~~~~~
+Tùy chọn Notarization
+~~~~~~~~~~~~~~~~~~~~~
 
 +--------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Option             | Description                                                                                                                                                                       |
@@ -142,20 +120,19 @@ Notarization Options
 
 .. note::
 
-    You should set either Apple ID Name/Password or App Store Connect API UUID/Key.
+    Bạn nên đặt Apple ID Name/Password hoặc App Store Connect API UUID/Key.
 
-.. [3] These options are visible only when notarizing with Xcode notarytool.
+.. [3] Các tùy chọn này chỉ hiển thị khi notarizing bằng Xcode notarytool.
 
-See `Notarizing macOS Software Before Distribution <https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution?language=objc>`__ for more info.
+Xem `Notarizing macOS Software Before Distribution <https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution?language=objc>`__ để biết thêm thông tin.
 
-Entitlements
-------------
+Entitlement
+-----------
 
-Hardened Runtime Entitlements
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Entitlement Hardened Runtime
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Hardened Runtime entitlements manage security options and resource access policy.
-See `Hardened Runtime <https://developer.apple.com/documentation/security/hardened_runtime?language=objc>`__ for more info.
+Entitlement Hardened Runtime quản lý các tùy chọn bảo mật và chính sách truy cập tài nguyên. Xem `Hardened Runtime <https://developer.apple.com/documentation/security/hardened_runtime?language=objc>`__ để biết thêm thông tin.
 
 +---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Entitlement                           | Description                                                                                                                                                                                      |
@@ -185,20 +162,18 @@ See `Hardened Runtime <https://developer.apple.com/documentation/security/harden
 | Debugging                             | [6]_ You can temporarily enable this entitlement to use native debugger (GDB, LLDB) with the exported app. This entitlement should be disabled for production export.                            |
 +---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-.. [4] The ``Allow JIT Code Execution``, ``Allow Unsigned Executable Memory`` and ``Allow DYLD Environment Variables`` entitlements are always enabled for the Godot Mono exports, and are not visible in the export options.
-.. [5] These features aren't supported by Godot out of the box, enable them only if you are using add-ons which require them.
-.. [6] To notarize an app, you must disable the ``Debugging`` entitlement.
+.. [4] Các entitlement ``Allow JIT Code Execution``, ``Allow Unsigned Executable Memory`` và ``Allow DYLD Environment Variables`` luôn được bật cho các bản export Godot Mono và không hiển thị trong tùy chọn export.
+.. [5] Các tính năng này không được Godot hỗ trợ sẵn; chỉ bật chúng nếu bạn sử dụng add-on yêu cầu chúng.
+.. [6] Để notarize một app, bạn phải vô hiệu hóa entitlement ``Debugging``.
 
-App Sandbox Entitlement
+Entitlement App Sandbox
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-The App Sandbox restricts access to user data, networking and devices.
-Sandboxed apps can't access most of the file system, can't use custom file dialogs and execute binaries (using ``OS.execute`` and ``OS.create_process``) outside the ``.app`` bundle.
-See `App Sandbox <https://developer.apple.com/documentation/security/app_sandbox?language=objc>`__ for more info.
+App Sandbox hạn chế quyền truy cập vào dữ liệu người dùng, mạng và thiết bị. Các app được sandbox không thể truy cập phần lớn hệ thống tệp, không thể sử dụng hộp thoại tệp tùy chỉnh và thực thi binary (bằng ``OS.execute`` và ``OS.create_process``) bên ngoài bundle ``.app``. Xem `App Sandbox <https://developer.apple.com/documentation/security/app_sandbox?language=objc>`__ để biết thêm thông tin.
 
 .. note::
 
-    To distribute an app through the App Store, you must enable the App Sandbox.
+    Để phân phối một app thông qua App Store, bạn phải bật App Sandbox.
 
 +-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
 | Entitlement                       | Description                                                                                                                          |
@@ -226,24 +201,22 @@ See `App Sandbox <https://developer.apple.com/documentation/security/app_sandbox
 | Helper Executable                 | List of helper executables to embedded to the app bundle. Sandboxed app are limited to execute only these executable.                |
 +-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
 
-.. [7] You can optionally provide usage messages for various folders in the `privacy/*_folder_usage_description` options.
+.. [7] Bạn có thể tùy chọn cung cấp thông báo sử dụng cho nhiều thư mục khác nhau trong các tùy chọn `privacy/*_folder_usage_description`.
 
 .. note::
 
-    You can override default entitlements by selecting custom entitlements file, in this case all other entitlement are ignored.
+    Bạn có thể ghi đè entitlement mặc định bằng cách chọn tệp entitlement tùy chỉnh; trong trường hợp này, tất cả entitlement khác sẽ bị bỏ qua.
 
-Environment variables
----------------------
+Biến môi trường
+---------------
 
-You can use the following environment variables to set export options outside of
-the editor. During the export process, these override the values that you set in
-the export menu.
+Bạn có thể sử dụng các biến môi trường sau để đặt tùy chọn export bên ngoài editor. Trong quá trình export, các biến này sẽ ghi đè những giá trị bạn đặt trong menu export.
 
 .. list-table:: macOS export environment variables
    :header-rows: 1
 
-   * - Export option
-     - Environment variable
+   * - Tùy chọn export
+     - Biến môi trường
    * - Encryption / Encryption Key
      - ``GODOT_SCRIPT_ENCRYPTION_KEY``
    * - Options / Codesign / Certificate File
@@ -263,8 +236,8 @@ the export menu.
    * - Options / Notarization / Apple ID Password
      - ``GODOT_MACOS_NOTARIZATION_APPLE_ID_PASSWORD``
 
-Export options
---------------
+Tùy chọn export
+---------------
 
-You can find a full list of export options available in the
+Bạn có thể tìm thấy danh sách đầy đủ các tùy chọn export có sẵn trong
 :ref:`class_EditorExportPlatformMacOS` class reference.
