@@ -1,69 +1,51 @@
 .. _doc_navigation_using_navigationservers:
 
-Using NavigationServer
-======================
+Sử dụng NavigationServer
+========================
 
-2D and 3D version of the NavigationServer are available as
+Phiên bản 2D và 3D của NavigationServer có sẵn dưới dạng
 :ref:`NavigationServer2D<class_NavigationServer2D>` and
 :ref:`NavigationServer3D<class_NavigationServer3D>` respectively.
 
-Communicating with the NavigationServer
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Giao tiếp với NavigationServer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To work with the NavigationServer means to prepare parameters for a **query** that can be sent to the NavigationServer for updates or requesting data.
+Để làm việc với NavigationServer, bạn cần chuẩn bị các tham số cho một **truy vấn** có thể được gửi đến NavigationServer để cập nhật hoặc yêu cầu dữ liệu.
 
-To reference the internal NavigationServer objects like maps, regions and agents RIDs are used as identification numbers.
-Every navigation related node in the scene tree has a function that returns the RID for this node.
+Để tham chiếu đến các đối tượng nội bộ của NavigationServer như map, region và agent, RID được sử dụng làm số nhận dạng. Mỗi node liên quan đến navigation trong scene tree đều có một hàm trả về RID của node đó.
 
-Threading and Synchronization
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Threading và đồng bộ hóa
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-The NavigationServer does not update every change immediately but waits until
-the end of the **physics frame** to synchronize all the changes together.
+NavigationServer không cập nhật mọi thay đổi ngay lập tức mà chờ đến cuối **physics frame** để đồng bộ tất cả thay đổi cùng lúc.
 
-Waiting for synchronization is required to apply changes to all maps, regions and agents.
-Synchronization is done because some updates like a recalculation of the entire navigation map are very expensive and require updated data from all other objects.
-Also the NavigationServer uses a **threadpool** by default for some functionality like avoidance calculation between agents.
+Việc chờ đồng bộ hóa là cần thiết để áp dụng các thay đổi cho tất cả map, region và agent. Việc đồng bộ hóa được thực hiện vì một số cập nhật, chẳng hạn như tính toán lại toàn bộ navigation map, rất tốn tài nguyên và yêu cầu dữ liệu đã được cập nhật từ tất cả đối tượng khác. Ngoài ra, NavigationServer mặc định sử dụng **threadpool** cho một số chức năng như tính toán tránh va chạm giữa các agent.
 
-Waiting is not required for most ``get()`` functions that only request data from the NavigationServer without making changes.
-Note that not all data will account for changes made in the same frame.
-E.g. if an avoidance agent changed the navigation map this frame the ``agent_get_map()`` function will still return the old map before the synchronization.
-The exception to this are nodes that store their values internally before sending the update to the NavigationServer.
-When a getter on a node is used for a value that was updated in the same frame it will return the already updated value stored on the node.
+Không cần chờ đối với hầu hết các hàm ``get()`` chỉ yêu cầu dữ liệu từ NavigationServer mà không tạo ra thay đổi. Lưu ý rằng không phải tất cả dữ liệu đều phản ánh các thay đổi được thực hiện trong cùng frame. Ví dụ: nếu một avoidance agent thay đổi navigation map trong frame này, hàm ``agent_get_map()`` vẫn sẽ trả về map cũ trước khi đồng bộ hóa. Ngoại lệ là các node lưu trữ giá trị của chúng nội bộ trước khi gửi bản cập nhật đến NavigationServer. Khi sử dụng getter trên một node để lấy giá trị đã được cập nhật trong cùng frame, getter sẽ trả về giá trị đã cập nhật được lưu trữ trên node.
 
-The NavigationServer is **thread-safe** as it places all API calls that want to make changes in a queue to be executed in the synchronization phase.
-Synchronization for the NavigationServer happens in the middle of the physics frame after scene input from scripts and nodes are all done.
+NavigationServer **an toàn cho thread** vì nó đưa tất cả lời gọi API muốn tạo thay đổi vào một hàng đợi để thực thi trong giai đoạn đồng bộ hóa. Việc đồng bộ hóa cho NavigationServer diễn ra ở giữa physics frame, sau khi toàn bộ scene input từ script và node đã hoàn tất.
 
 .. note::
-    The important takeaway is that most NavigationServer changes take effect after the next physics frame and not immediately.
-    This includes all changes made by navigation related nodes in the scene tree or through scripts.
+    Điểm quan trọng cần nhớ là hầu hết thay đổi của NavigationServer có hiệu lực sau physics frame tiếp theo chứ không phải ngay lập tức. Điều này bao gồm tất cả thay đổi được thực hiện bởi các node liên quan đến navigation trong scene tree hoặc thông qua script.
 
 .. note::
-    All setters and delete functions require synchronization.
+    Tất cả setter và hàm delete đều yêu cầu đồng bộ hóa.
 
-2D and 3D NavigationServer differences
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sự khác biệt giữa NavigationServer 2D và 3D
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-NavigationServer2D and NavigationServer3D are equivalent in functionality for their dimension.
+NavigationServer2D và NavigationServer3D có chức năng tương đương trong không gian tương ứng.
 
-Technically it is possible to use the tools for creating navigation meshes in one dimension for the other
-dimension, e.g. baking a 2D navigation mesh with the 3D NavigationMesh when using
-flat 3D source geometry or creating 3D flat navigation meshes with the
-polygon outline draw tools of NavigationRegion2D and NavigationPolygons.
+Về mặt kỹ thuật, có thể sử dụng các công cụ tạo navigation mesh trong một không gian cho không gian còn lại, ví dụ như bake navigation mesh 2D bằng NavigationMesh 3D khi sử dụng hình học nguồn 3D phẳng, hoặc tạo navigation mesh 3D phẳng bằng các công cụ vẽ polygon outline của NavigationRegion2D và NavigationPolygons.
 
-Waiting for synchronization
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Chờ đồng bộ hóa
+~~~~~~~~~~~~~~~
 
-At the start of the game, a new scene or procedural navigation changes any path query to a NavigationServer will return empty or wrong.
+Khi bắt đầu game, một scene mới hoặc các thay đổi navigation theo thủ tục sẽ khiến mọi truy vấn đường đi đến NavigationServer trả về kết quả rỗng hoặc sai.
 
-The navigation map is still empty or not updated at this point.
-All nodes from the scene tree need to first upload their navigation related data to the NavigationServer.
-Each added or changed map, region or agent need to be registered with the NavigationServer.
-Afterward the NavigationServer requires a **physics frame** for synchronization to update the maps, regions and agents.
+Navigation map vẫn đang rỗng hoặc chưa được cập nhật tại thời điểm này. Trước tiên, tất cả node trong scene tree cần tải dữ liệu liên quan đến navigation của chúng lên NavigationServer. Mỗi map, region hoặc agent được thêm hoặc thay đổi đều cần được đăng ký với NavigationServer. Sau đó, NavigationServer cần một **physics frame** để đồng bộ hóa và cập nhật các map, region và agent.
 
-One workaround is to make a deferred call to a custom setup function (so all nodes are ready).
-The setup function makes all the navigation changes, e.g. adding procedural stuff.
-Afterwards the function waits for the next physics frame before continuing with path queries.
+Một cách khắc phục là thực hiện một lời gọi trì hoãn đến hàm setup tùy chỉnh (để tất cả node đều sẵn sàng). Hàm setup thực hiện mọi thay đổi navigation, chẳng hạn như thêm các thành phần được tạo theo thủ tục. Sau đó, hàm chờ đến physics frame tiếp theo trước khi tiếp tục với các truy vấn đường đi.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -71,23 +53,23 @@ Afterwards the function waits for the next physics frame before continuing with 
     extends Node3D
 
     func _ready():
-        # Use call deferred to make sure the entire scene tree nodes are setup
-        # else await on 'physics_frame' in a _ready() might get stuck.
+        # Sử dụng call deferred để đảm bảo tất cả node trong scene tree đã được thiết lập
+        # nếu không, await trên 'physics_frame' trong _ready() có thể bị kẹt.
         custom_setup.call_deferred()
 
     func custom_setup():
 
-        # Create a new navigation map.
+        # Tạo một navigation map mới.
         var map: RID = NavigationServer3D.map_create()
         NavigationServer3D.map_set_up(map, Vector3.UP)
         NavigationServer3D.map_set_active(map, true)
 
-        # Create a new navigation region and add it to the map.
+        # Tạo một navigation region mới và thêm nó vào map.
         var region: RID = NavigationServer3D.region_create()
         NavigationServer3D.region_set_transform(region, Transform3D())
         NavigationServer3D.region_set_map(region, map)
 
-        # Create a procedural navigation mesh for the region.
+        # Tạo một navigation mesh theo thủ tục cho region.
         var new_navigation_mesh: NavigationMesh = NavigationMesh.new()
         var vertices: PackedVector3Array = PackedVector3Array([
             Vector3(0, 0, 0),
@@ -99,10 +81,10 @@ Afterwards the function waits for the next physics frame before continuing with 
         new_navigation_mesh.add_polygon(polygon)
         NavigationServer3D.region_set_navigation_mesh(region, new_navigation_mesh)
 
-        # Wait for NavigationServer sync to adapt to made changes.
+        # Chờ NavigationServer đồng bộ để áp dụng các thay đổi đã thực hiện.
         await get_tree().physics_frame
 
-        # Query the path from the navigation server.
+        # Truy vấn đường đi từ navigation server.
         var start_position: Vector3 = Vector3(0.1, 0.0, 0.1)
         var target_position: Vector3 = Vector3(1.0, 0.0, 1.0)
         var optimize_path: bool = true
@@ -125,24 +107,24 @@ Afterwards the function waits for the next physics frame before continuing with 
     {
         public override void _Ready()
         {
-            // Use call deferred to make sure the entire scene tree nodes are setup
-            // else await on 'physics_frame' in a _Ready() might get stuck.
+            // Sử dụng call deferred để đảm bảo tất cả node trong scene tree đã được thiết lập
+            // nếu không, await trên 'physics_frame' trong _Ready() có thể bị kẹt.
             CallDeferred(MethodName.CustomSetup);
         }
 
         private async void CustomSetup()
         {
-            // Create a new navigation map.
+            // Tạo một navigation map mới.
             Rid map = NavigationServer3D.MapCreate();
             NavigationServer3D.MapSetUp(map, Vector3.Up);
             NavigationServer3D.MapSetActive(map, true);
 
-            // Create a new navigation region and add it to the map.
+            // Tạo một navigation region mới và thêm nó vào map.
             Rid region = NavigationServer3D.RegionCreate();
             NavigationServer3D.RegionSetTransform(region, Transform3D.Identity);
             NavigationServer3D.RegionSetMap(region, map);
 
-            // Create a procedural navigation mesh for the region.
+            // Tạo một navigation mesh theo thủ tục cho region.
             var newNavigationMesh = new NavigationMesh()
             {
                 Vertices =
@@ -156,10 +138,10 @@ Afterwards the function waits for the next physics frame before continuing with 
             newNavigationMesh.AddPolygon(polygon);
             NavigationServer3D.RegionSetNavigationMesh(region, newNavigationMesh);
 
-            // Wait for NavigationServer sync to adapt to made changes.
+            // Chờ NavigationServer đồng bộ để áp dụng các thay đổi đã thực hiện.
             await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
 
-            // Query the path from the navigation server.
+            // Truy vấn đường đi từ navigation server.
             var startPosition = new Vector3(0.1f, 0.0f, 0.1f);
             var targetPosition = new Vector3(1.0f, 0.0f, 1.0f);
 
@@ -170,26 +152,15 @@ Afterwards the function waits for the next physics frame before continuing with 
         }
     }
 
-Server Avoidance Callbacks
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Callback tránh va chạm của Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If RVO avoidance agents are registered for avoidance callbacks the NavigationServer dispatches
-their ``velocity_computed`` signals just before the PhysicsServer synchronization.
+Nếu các avoidance agent RVO được đăng ký để nhận callback tránh va chạm, NavigationServer sẽ phân phối các signal ``velocity_computed`` của chúng ngay trước khi PhysicsServer đồng bộ hóa.
 
-To learn more about NavigationAgents see :ref:`doc_navigation_using_navigationagents`.
+Để tìm hiểu thêm về NavigationAgents, hãy xem :ref:`doc_navigation_using_navigationagents`.
 
-The simplified order of execution for NavigationAgents that use avoidance:
+Thứ tự thực thi được đơn giản hóa đối với NavigationAgents sử dụng tính năng tránh va chạm:
 
-- physics frame starts.
-- ``_physics_process(delta)``.
-- ``velocity`` property is set on NavigationAgent Node.
-- Agent sends velocity and position to NavigationServer.
-- NavigationServer waits for synchronization.
-- NavigationServer synchronizes and computes avoidance velocities for all registered avoidance agents.
-- NavigationServer sends safe velocity vector with signals for each registered avoidance agents.
-- Agents receive the signal and move their parent e.g. with ``move_and_slide`` or ``linear_velocity``.
-- PhysicsServer synchronizes.
-- physics frame ends.
+- physics frame bắt đầu. - ``_physics_process(delta)``. - Thuộc tính ``velocity`` được thiết lập trên node NavigationAgent. - Agent gửi vận tốc và vị trí đến NavigationServer. - NavigationServer chờ đồng bộ hóa. - NavigationServer đồng bộ hóa và tính toán vận tốc tránh va chạm cho tất cả avoidance agent đã đăng ký. - NavigationServer gửi vector vận tốc an toàn cùng với signal cho từng avoidance agent đã đăng ký. - Các agent nhận signal và di chuyển parent của chúng, chẳng hạn bằng ``move_and_slide`` hoặc ``linear_velocity``. - PhysicsServer đồng bộ hóa. - physics frame kết thúc.
 
-Therefore moving a physicsbody actor in the callback function with the safe velocity is perfectly thread- and physics-safe
-as all happens inside the same physics frame before the PhysicsServer commits to changes and does its own calculations.
+Do đó, việc di chuyển một physicsbody actor trong hàm callback bằng vận tốc an toàn là hoàn toàn an toàn đối với thread và physics, vì mọi việc diễn ra trong cùng một physics frame trước khi PhysicsServer ghi nhận các thay đổi và thực hiện các phép tính của riêng nó.

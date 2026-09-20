@@ -1,6 +1,6 @@
 :allow_comments: False
 
-Navigation
+Điều hướng
 ==========
 
 .. toctree::

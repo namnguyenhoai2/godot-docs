@@ -1,155 +1,114 @@
 .. _doc_navigation_using_navigationagents:
 
-Using NavigationAgents
-======================
+Sử dụng NavigationAgents
+========================
 
-NavigationsAgents are helper nodes that combine functionality
-for pathfinding, path following and agent avoidance for a Node2D/3D inheriting parent node.
-They facilitate common calls to the NavigationServer API on
-behalf of the parent actor node in a more convenient manner for beginners.
+NavigationAgents là các node trợ giúp kết hợp chức năng tìm đường, bám đường đi và tránh agent cho một node cha kế thừa Node2D/3D. Chúng hỗ trợ thực hiện các lệnh gọi phổ biến đến API NavigationServer thay cho node actor cha theo cách thuận tiện hơn cho người mới bắt đầu.
 
-2D and 3D version of NavigationAgents are available as
+Phiên bản 2D và 3D của NavigationAgents có sẵn dưới dạng
 :ref:`NavigationAgent2D<class_NavigationAgent2D>` and
 :ref:`NavigationAgent3D<class_NavigationAgent3D>` respectively.
 
 New NavigationAgent nodes will automatically join the default navigation map on the :ref:`World2D<class_World2D>`/:ref:`World3D<class_World3D>`.
 
-NavigationsAgent nodes are optional and not a hard requirement to use the navigation system.
-Their entire functionality can be replaced with scripts and direct calls to the NavigationServer API.
+Các node NavigationAgent là tùy chọn và không bắt buộc để sử dụng hệ thống navigation. Toàn bộ chức năng của chúng có thể được thay thế bằng các script và lệnh gọi trực tiếp đến API NavigationServer.
 
 .. tip::
 
-    For more advanced uses consider :ref:`doc_navigation_using_navigationpathqueryobjects` over NavigationAgent nodes.
+    Đối với các trường hợp sử dụng nâng cao hơn, hãy cân nhắc :ref:`doc_navigation_using_navigationpathqueryobjects` thay cho các node NavigationAgent.
 
-NavigationAgent Pathfinding
----------------------------
+Tìm đường với NavigationAgent
+-----------------------------
 
-NavigationAgents query a new navigation path on their current navigation map when their ``target_position`` is set with a global position.
+NavigationAgents sẽ truy vấn một navigation path mới trên navigation map hiện tại khi ``target_position`` của chúng được đặt bằng một global position.
 
-The result of the pathfinding can be influenced with the following properties.
+Kết quả tìm đường có thể bị ảnh hưởng bởi các thuộc tính sau.
 
-- The ``navigation_layers`` bitmask can be used to limit the navigation meshes that the agent can use.
-- The ``pathfinding_algorithm`` controls how the pathfinding travels through the navigation mesh polygons in the path search.
-- The ``path_postprocessing`` sets if or how the raw path corridor found by the pathfinding is altered before it is returned.
-- The ``path_metadata_flags`` enable the collection of additional path point meta data returned by the path.
-- The ``simplify_path`` and ``simplify_epsilon`` properties can be used to remove less critical points from the path.
+- Bitmask ``navigation_layers`` có thể được dùng để giới hạn các navigation mesh mà agent được phép sử dụng. - ``pathfinding_algorithm`` kiểm soát cách quá trình tìm đường đi qua các polygon của navigation mesh trong quá trình tìm kiếm đường đi. - ``path_postprocessing`` thiết lập xem và bằng cách nào raw path corridor do quá trình tìm đường tìm thấy sẽ được thay đổi trước khi trả về. - ``path_metadata_flags`` cho phép thu thập thêm metadata của các path point được path trả về. - Các thuộc tính ``simplify_path`` và ``simplify_epsilon`` có thể được dùng để loại bỏ các point ít quan trọng hơn khỏi path.
 
 .. warning::
 
-    Disabling path meta flags will disable related signal emissions on the agent.
+    Việc tắt các path meta flag sẽ tắt các signal emission liên quan trên agent.
 
-NavigationAgent Pathfollowing
------------------------------
+Bám đường đi với NavigationAgent
+--------------------------------
 
-After a ``target_position`` has been set for the agent, the next position to follow in the path
-can be retrieved with the ``get_next_path_position()`` function.
+Sau khi ``target_position`` được đặt cho agent, có thể lấy vị trí tiếp theo cần đi theo trên path bằng hàm ``get_next_path_position()``.
 
-Once the next path position is received, move the parent actor node of the agent
-towards this path position with your own movement code.
+Sau khi nhận được vị trí tiếp theo trên path, hãy dùng mã movement của riêng bạn để di chuyển node actor cha của agent về phía vị trí này.
 
 .. note::
 
-    The navigation system never moves the parent node of a NavigationAgent.
-    The movement is entirely in the hands of users and their custom scripts.
+    Hệ thống navigation không bao giờ di chuyển node cha của NavigationAgent. Việc di chuyển hoàn toàn do người dùng và các script tùy chỉnh của họ thực hiện.
 
-NavigationAgents have their own internal logic to proceed with the current path and call for updates.
+NavigationAgents có logic nội bộ riêng để tiếp tục đi theo path hiện tại và yêu cầu cập nhật.
 
-The ``get_next_path_position()`` function is responsible for updating many of the agent's internal states and properties.
-The function should be repeatedly called *once* every ``physics_process`` until ``is_navigation_finished()`` tells that the path is finished.
-The function should not be called after the target position or path end has been reached
-as it can make the agent jitter in place due to the repeated path updates.
-Always check very early in script with ``is_navigation_finished()`` if the path is already finished.
+Hàm ``get_next_path_position()`` chịu trách nhiệm cập nhật nhiều trạng thái và thuộc tính nội bộ của agent. Hàm này nên được gọi lặp lại *một lần* mỗi ``physics_process`` cho đến khi ``is_navigation_finished()`` cho biết path đã hoàn tất. Không nên gọi hàm này sau khi đã đến vị trí đích hoặc điểm cuối của path, vì việc cập nhật path lặp lại có thể khiến agent rung tại chỗ. Luôn kiểm tra từ rất sớm trong script bằng ``is_navigation_finished()`` xem path đã hoàn tất hay chưa.
 
-The following distance properties influence the path following behavior.
+Các thuộc tính khoảng cách sau đây ảnh hưởng đến hành vi bám đường đi.
 
-- At ``path_desired_distance`` from the next path position, the agent advances its internal path index to the subsequent next path position.
-- At ``target_desired_distance`` from the target path position, the agent considers the target position to be reached and the path at its end.
-- At ``path_max_distance`` from the ideal path to the next path position, the agent requests a new path because it was pushed too far off.
+- Khi còn cách vị trí tiếp theo trên path ``path_desired_distance``, agent sẽ chuyển path index nội bộ sang vị trí tiếp theo sau đó. - Khi còn cách vị trí đích trên path ``target_desired_distance``, agent xem vị trí đích là đã đạt được và path đã kết thúc. - Khi cách path lý tưởng đến vị trí tiếp theo trên path ``path_max_distance``, agent sẽ yêu cầu một path mới vì đã bị đẩy lệch quá xa.
 
-The important updates are all triggered with the ``get_next_path_position()`` function
-when called in ``_physics_process()``.
+Tất cả các cập nhật quan trọng đều được kích hoạt bằng hàm ``get_next_path_position()`` khi được gọi trong ``_physics_process()``.
 
-NavigationAgents can be used with ``process`` but are still limited to a single update that happens in ``physics_process``.
+NavigationAgents có thể được sử dụng với ``process``, nhưng vẫn bị giới hạn ở một lần cập nhật diễn ra trong ``physics_process``.
 
-Script examples for various nodes commonly used with NavigationAgents can be found further below.
+Bạn có thể tìm thấy các ví dụ script cho nhiều node thường được sử dụng với NavigationAgents ở phần bên dưới.
 
-Pathfollowing common problems
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Các vấn đề thường gặp khi bám đường đi
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-There are some common user problems and important caveats to consider when writing agent movement scripts.
+Có một số vấn đề phổ biến của người dùng và các điểm cần lưu ý quan trọng khi viết script di chuyển cho agent.
 
-- The path is returned empty
-    If an agent queries a path before the navigation map synchronisation, e.g. in a ``_ready()`` function, the path might return empty. In this case the ``get_next_path_position()`` function will return the same position as the agent parent node and the agent will consider the path end reached. This is fixed by making a deferred call or using a callback e.g. waiting for the navigation map changed signal.
+- Path được trả về rỗng Nếu agent truy vấn path trước khi navigation map được đồng bộ, chẳng hạn trong một hàm ``_ready()``, path có thể được trả về rỗng. Trong trường hợp này, hàm ``get_next_path_position()`` sẽ trả về cùng vị trí với node cha của agent và agent sẽ xem như đã đến cuối path. Có thể khắc phục bằng cách thực hiện một deferred call hoặc sử dụng callback, chẳng hạn như chờ signal navigation map changed.
 
-- The agent is stuck dancing between two positions
-    This is usually caused by very frequent path updates every single frame, either deliberate or by accident (e.g. max path distance set too short). The pathfinding needs to find the closest position that are valid on navigation mesh. If a new path is requested every single frame the first path positions might end up switching constantly in front and behind the agent's current position, causing it to dance between the two positions.
+- Agent bị kẹt và nhảy qua lại giữa hai vị trí Điều này thường do path được cập nhật quá thường xuyên ở mỗi frame, dù cố ý hay vô tình (ví dụ: max path distance được đặt quá ngắn). Quá trình tìm đường cần tìm vị trí gần nhất hợp lệ trên navigation mesh. Nếu yêu cầu path mới ở mỗi frame, các vị trí đầu tiên trên path có thể liên tục chuyển đổi giữa phía trước và phía sau vị trí hiện tại của agent, khiến agent nhảy qua lại giữa hai vị trí.
 
-- The agent is backtracking sometimes
-    If an agent moves very fast it might overshoot the path_desired_distance check without ever advancing the path index. This can lead to the agent backtracking to the path point now behind it until it passes the distance check to increase the path index. Increase the desired distances accordingly for your agent speed and update rate usually fixes this as well as a more balanced navigation mesh polygon layout with not too many polygon edges cramped together in small spaces.
+- Agent đôi khi đi ngược lại Nếu agent di chuyển quá nhanh, nó có thể vượt qua bước kiểm tra path_desired_distance mà không bao giờ tăng path index. Điều này có thể khiến agent quay lại điểm trên path hiện đang ở phía sau nó cho đến khi vượt qua bước kiểm tra khoảng cách để tăng path index. Việc tăng các khoảng cách mong muốn tương ứng với tốc độ và tần suất cập nhật của agent thường cũng khắc phục được vấn đề này, cùng với cách bố trí polygon của navigation mesh cân bằng hơn, không có quá nhiều cạnh polygon bị dồn vào những không gian nhỏ.
 
-- The agent is sometimes looking backwards for a frame
-    Same as with stuck dancing agents between two positions, this is usually caused by very frequent path updates every single frame. Depending on your navigation mesh layout, and especially when an agent is directly placed over a navigation mesh edge or edge connection, expect path positions to be sometimes slightly "behind" your actors current orientation. This happens due to precision issues and can not always be avoided. This is usually only a visible problem if actors are instantly rotated to face the current path position.
+- Agent đôi khi nhìn về phía sau trong một frame Tương tự như trường hợp agent bị kẹt và nhảy qua lại giữa hai vị trí, nguyên nhân thường là path được cập nhật quá thường xuyên ở mỗi frame. Tùy thuộc vào cách bố trí navigation mesh, đặc biệt khi agent được đặt trực tiếp trên một cạnh navigation mesh hoặc edge connection, hãy dự kiến rằng các vị trí trên path đôi khi sẽ hơi "ở phía sau" hướng hiện tại của actor. Điều này xảy ra do các vấn đề về độ chính xác và không phải lúc nào cũng có thể tránh được. Đây thường chỉ là vấn đề về hiển thị nếu actor ngay lập tức xoay mặt về phía vị trí hiện tại trên path.
 
-NavigationAgent Avoidance
+Tránh với NavigationAgent
 -------------------------
 
-This section explains how to use the navigation avoidance specific to NavigationAgents.
+Phần này giải thích cách sử dụng tính năng tránh dành riêng cho NavigationAgents.
 
-In order for NavigationAgents to use the avoidance feature the ``avoidance_enabled`` property must be set to ``true``.
+Để NavigationAgents sử dụng tính năng tránh, thuộc tính ``avoidance_enabled`` phải được đặt thành ``true``.
 
 .. image:: img/agent_avoidance_enabled.png
 
-The ``velocity_computed`` signal of the NavigationAgent node must be connected to receive the safe velocity calculation result.
+Signal ``velocity_computed`` của node NavigationAgent phải được kết nối để nhận kết quả tính toán safe velocity.
 
 .. image:: img/agent_safevelocity_signal.png
 
-Set the ``velocity`` of the NavigationAgent node in ``_physics_process()`` to update the agent with the current velocity of the agent's parent node.
+Đặt ``velocity`` của node NavigationAgent trong ``_physics_process()`` để cập nhật agent bằng velocity hiện tại của node cha của agent.
 
-While avoidance is enabled on the agent the ``safe_velocity`` vector will be received with the velocity_computed signal every physics frame.
-This velocity vector should be used to move the NavigationAgent's parent node in order to avoidance collision with other avoidance using agents or avoidance obstacles.
-
-.. note::
-
-    Only other agents on the same map that are registered for avoidance themself will be considered in the avoidance calculation.
+Trong khi tính năng tránh được bật trên agent, vector ``safe_velocity`` sẽ được nhận cùng signal velocity_computed ở mỗi physics frame. Vector velocity này nên được dùng để di chuyển node cha của NavigationAgent nhằm tránh va chạm với các agent khác đang sử dụng tính năng tránh hoặc với các chướng ngại vật tránh.
 
 .. note::
 
-    The NavigationAgent **must** be supplied with a ``target_position`` attribute,
-    even if you are only using the agent for avoidance. Otherwise, the ``safe_velocity``
-    received from the ``velocity_computed`` signal will always be the zero vector.
-
-The following NavigationAgent properties are relevant for avoidance:
-
-  - The property ``height`` is available in 3D only. The height together with the current global y-axis position of the agent determines the vertical placement of the agent in the avoidance simulation. Agents using the 2D avoidance will automatically ignore other agents or obstacles that are below or above them.
-  - The property ``radius`` controls the radius of the avoidance circle, or sphere in 3D, around the agent. This area describes the agents body and not the avoidance maneuver distance.
-  - The property ``neighbor_distance`` controls the search radius of the agent when searching for other agents that should be avoided. A lower value reduces processing cost.
-  - The property ``max_neighbors`` controls how many other agents are considered in the avoidance calculation if they all have overlapping radius.
-    A lower value reduces processing cost but a too low value may result in agents ignoring the avoidance.
-  - The properties ``time_horizon_agents`` and ``time_horizon_obstacles`` control the avoidance prediction time for other agents or obstacles in seconds. When agents calculate their safe velocities they choose velocities that can be kept for this amount of seconds without colliding with another avoidance object. The prediction time should be kept as low as possible as agents will slow down their velocities to avoid collision in that timeframe.
-  - The property ``max_speed`` controls the maximum velocity allowed for the agents avoidance calculation.
-    If the agents parents moves faster than this value the avoidance ``safe_velocity`` might not be accurate enough to avoid collision.
-  - The property ``use_3d_avoidance`` switches the agent between the 2D avoidance (xz axis) and the 3D avoidance (xyz axis) on the next update.
-    Note that 2D avoidance and 3D avoidance run in separate avoidance simulations so agents split between them do not affect each other.
-  - The properties ``avoidance_layers`` and ``avoidance_mask`` are bitmasks similar to e.g. physics layers. Agents will only avoid other avoidance objects that are on an avoidance layer that matches at least one of their own avoidance mask bits.
-  - The ``avoidance_priority`` makes agents with a higher priority ignore agents with a lower priority. This can be used to give certain agents more importance in the avoidance simulation, e.g. important non-playable characters, without constantly changing their entire avoidance layers or mask.
-
-
-Avoidance exists in its own space and has no information from navigation meshes or physics collision.
-Behind the scene avoidance agents are just circles with different radius on a flat 2D plane or spheres in an otherwise empty 3D space.
-NavigationObstacles can be used to add some environment constrains to the avoidance simulation, see :ref:`doc_navigation_using_navigationobstacles`.
+    Chỉ những agent khác trên cùng map và đã tự đăng ký sử dụng tính năng tránh mới được xem xét trong phép tính tránh.
 
 .. note::
 
-    Avoidance does not affect the pathfinding. It should be seen as an additional option for constantly moving objects that cannot be (re)baked to a navigation mesh efficiently in order to move around them.
+    NavigationAgent **phải** được cung cấp thuộc tính ``target_position``, ngay cả khi bạn chỉ sử dụng agent cho tính năng tránh. Nếu không, ``safe_velocity`` nhận được từ signal ``velocity_computed`` sẽ luôn là vector không.
+
+Các thuộc tính NavigationAgent sau đây có liên quan đến tính năng tránh:
+
+  - Thuộc tính ``height`` chỉ có trong 3D. Chiều cao cùng với vị trí global hiện tại trên trục y của agent xác định vị trí theo chiều dọc của agent trong mô phỏng tránh. Các agent sử dụng tính năng tránh 2D sẽ tự động bỏ qua những agent hoặc chướng ngại vật ở bên dưới hoặc bên trên chúng. - Thuộc tính ``radius`` kiểm soát bán kính của hình tròn tránh, hoặc hình cầu trong 3D, xung quanh agent. Khu vực này mô tả phần thân của agent, không phải khoảng cách thực hiện thao tác tránh. - Thuộc tính ``neighbor_distance`` kiểm soát bán kính tìm kiếm của agent khi tìm các agent khác cần tránh. Giá trị thấp hơn sẽ giảm chi phí xử lý. - Thuộc tính ``max_neighbors`` kiểm soát số lượng agent khác được xem xét trong phép tính tránh nếu tất cả chúng có bán kính chồng lấn. Giá trị thấp hơn sẽ giảm chi phí xử lý, nhưng giá trị quá thấp có thể khiến các agent bỏ qua việc tránh. - Các thuộc tính ``time_horizon_agents`` và ``time_horizon_obstacles`` kiểm soát thời gian dự đoán tránh đối với các agent hoặc chướng ngại vật khác, tính bằng giây. Khi tính toán safe velocity, các agent sẽ chọn những velocity có thể được duy trì trong khoảng thời gian này mà không va chạm với một đối tượng tránh khác. Nên giữ thời gian dự đoán ở mức thấp nhất có thể vì agent sẽ giảm velocity để tránh va chạm trong khoảng thời gian đó. - Thuộc tính ``max_speed`` kiểm soát velocity tối đa được phép dùng trong phép tính tránh của agent. Nếu node cha của agent di chuyển nhanh hơn giá trị này, ``safe_velocity`` tránh có thể không đủ chính xác để tránh va chạm. - Thuộc tính ``use_3d_avoidance`` chuyển agent giữa tính năng tránh 2D (trục xz) và tránh 3D (trục xyz) trong lần cập nhật tiếp theo. Lưu ý rằng tính năng tránh 2D và tránh 3D chạy trong các mô phỏng tránh riêng biệt, vì vậy các agent được phân chia giữa chúng sẽ không ảnh hưởng lẫn nhau. - Các thuộc tính ``avoidance_layers`` và ``avoidance_mask`` là các bitmask tương tự như physics layer. Agent sẽ chỉ tránh những đối tượng tránh khác nằm trên một avoidance layer khớp với ít nhất một bit trong avoidance mask của chúng. - ``avoidance_priority`` khiến các agent có priority cao hơn bỏ qua các agent có priority thấp hơn. Có thể dùng thuộc tính này để tăng mức độ ưu tiên cho một số agent nhất định trong mô phỏng tránh, chẳng hạn như các nhân vật không thể chơi quan trọng, mà không cần liên tục thay đổi toàn bộ avoidance layer hoặc mask của chúng.
+
+
+Cơ chế tránh tồn tại trong không gian riêng và không có thông tin từ navigation mesh hoặc va chạm vật lý. Phía sau hậu trường, các tác nhân tránh chỉ là những hình tròn có bán kính khác nhau trên một mặt phẳng 2D hoặc những hình cầu trong một không gian 3D trống rỗng. Có thể dùng NavigationObstacles để thêm một số ràng buộc môi trường vào mô phỏng tránh, xem :ref:`doc_navigation_using_navigationobstacles`.
 
 .. note::
 
-    RVO avoidance makes implicit assumptions about natural agent behavior. E.g. that agents move on reasonable passing sides that can be assigned when they encounter each other.
-    This means that very clinical avoidance test scenarios will commonly fail. E.g. agents moved directly against each other with perfect opposite velocities will fail because the agents can not get their passing sides assigned.
+    Cơ chế tránh không ảnh hưởng đến pathfinding. Bạn nên xem đây là một tùy chọn bổ sung dành cho các đối tượng di chuyển liên tục không thể (re)bake vào navigation mesh một cách hiệu quả để di chuyển vòng quanh chúng.
 
-Using the NavigationAgent ``avoidance_enabled`` property is the preferred option
-to toggle avoidance. The following code snippets can be used to
-toggle avoidance on agents, create or delete avoidance callbacks or switch avoidance modes.
+.. note::
+
+    Cơ chế tránh RVO đưa ra các giả định ngầm về hành vi tự nhiên của tác nhân. Ví dụ: các tác nhân di chuyển về những phía vượt qua hợp lý có thể được chỉ định khi chúng gặp nhau. Điều này có nghĩa là các kịch bản kiểm thử tránh mang tính quá lý tưởng thường sẽ thất bại. Ví dụ: các tác nhân di chuyển trực tiếp về phía nhau với vận tốc hoàn toàn ngược chiều sẽ thất bại vì không thể chỉ định phía vượt qua cho các tác nhân.
+
+Sử dụng thuộc tính ``avoidance_enabled`` của NavigationAgent là tùy chọn được ưu tiên để bật/tắt cơ chế tránh. Có thể sử dụng các đoạn mã sau để bật cơ chế tránh trên các tác nhân, tạo hoặc xóa callback tránh, hoặc chuyển đổi chế độ tránh.
 
 .. tabs::
  .. code-tab:: gdscript 2D GDScript
@@ -158,14 +117,14 @@ toggle avoidance on agents, create or delete avoidance callbacks or switch avoid
 
     func _ready() -> void:
         var agent: RID = get_rid()
-        # Enable avoidance
+        # Bật cơ chế tránh
         NavigationServer2D.agent_set_avoidance_enabled(agent, true)
-        # Create avoidance callback
+        # Tạo callback tránh
         NavigationServer2D.agent_set_avoidance_callback(agent, Callable(self, "_avoidance_done"))
 
-        # Disable avoidance
+        # Tắt cơ chế tránh
         NavigationServer2D.agent_set_avoidance_enabled(agent, false)
-        # Delete avoidance callback
+        # Xóa callback tránh
         NavigationServer2D.agent_set_avoidance_callback(agent, Callable())
 
  .. code-tab:: csharp 2D C#
@@ -177,14 +136,14 @@ toggle avoidance on agents, create or delete avoidance callbacks or switch avoid
         public override void _Ready()
         {
             Rid agent = GetRid();
-            // Enable avoidance
+            // Bật cơ chế tránh
             NavigationServer2D.AgentSetAvoidanceEnabled(agent, true);
-            // Create avoidance callback
+            // Tạo callback tránh
             NavigationServer2D.AgentSetAvoidanceCallback(agent, Callable.From(AvoidanceDone));
 
-            // Disable avoidance
+            // Tắt cơ chế tránh
             NavigationServer2D.AgentSetAvoidanceEnabled(agent, false);
-            //Delete avoidance callback
+            //Xóa callback tránh
             NavigationServer2D.AgentSetAvoidanceCallback(agent, default);
         }
 
@@ -197,18 +156,18 @@ toggle avoidance on agents, create or delete avoidance callbacks or switch avoid
 
     func _ready() -> void:
         var agent: RID = get_rid()
-        # Enable avoidance
+        # Bật cơ chế tránh
         NavigationServer3D.agent_set_avoidance_enabled(agent, true)
-        # Create avoidance callback
+        # Tạo callback tránh
         NavigationServer3D.agent_set_avoidance_callback(agent, Callable(self, "_avoidance_done"))
-        # Switch to 3D avoidance
+        # Chuyển sang cơ chế tránh 3D
         NavigationServer3D.agent_set_use_3d_avoidance(agent, true)
 
-        # Disable avoidance
+        # Tắt cơ chế tránh
         NavigationServer3D.agent_set_avoidance_enabled(agent, false)
-        # Delete avoidance callback
+        # Xóa callback tránh
         NavigationServer3D.agent_set_avoidance_callback(agent, Callable())
-        # Switch to 2D avoidance
+        # Chuyển sang cơ chế tránh 2D
         NavigationServer3D.agent_set_use_3d_avoidance(agent, false)
 
  .. code-tab:: csharp 3D C#
@@ -220,28 +179,28 @@ toggle avoidance on agents, create or delete avoidance callbacks or switch avoid
         public override void _Ready()
         {
             Rid agent = GetRid();
-            // Enable avoidance
+            // Bật cơ chế tránh
             NavigationServer3D.AgentSetAvoidanceEnabled(agent, true);
-            // Create avoidance callback
+            // Tạo callback tránh
             NavigationServer3D.AgentSetAvoidanceCallback(agent, Callable.From(AvoidanceDone));
-            // Switch to 3D avoidance
+            // Chuyển sang cơ chế tránh 3D
             NavigationServer3D.AgentSetUse3DAvoidance(agent, true);
 
-            // Disable avoidance
+            // Tắt cơ chế tránh
             NavigationServer3D.AgentSetAvoidanceEnabled(agent, false);
-            //Delete avoidance callback
+            //Xóa callback tránh
             NavigationServer3D.AgentSetAvoidanceCallback(agent, default);
-            // Switch to 2D avoidance
+            // Chuyển sang cơ chế tránh 2D
             NavigationServer3D.AgentSetUse3DAvoidance(agent, false);
         }
 
         private void AvoidanceDone() { }
     }
 
-NavigationAgent Script Templates
---------------------------------
+Mẫu script NavigationAgent
+--------------------------
 
-The following sections provides script templates for nodes commonly used with NavigationAgents.
+Các phần sau cung cấp mẫu script cho những node thường được sử dụng với NavigationAgent.
 
 .. tabs::
 
@@ -264,7 +223,7 @@ The following sections provides script templates for nodes commonly used with Na
                 navigation_agent.set_target_position(movement_target)
 
             func _physics_process(delta):
-                # Do not query when the map has never synchronized and is empty.
+                # Không thực hiện truy vấn khi map chưa từng được đồng bộ và đang trống.
                 if NavigationServer2D.map_get_iteration_id(navigation_agent.get_navigation_map()) == 0:
                     return
                 if navigation_agent.is_navigation_finished():
@@ -295,7 +254,7 @@ The following sections provides script templates for nodes commonly used with Na
                 navigation_agent.set_target_position(movement_target)
 
             func _physics_process(delta):
-                # Do not query when the map has never synchronized and is empty.
+                # Không thực hiện truy vấn khi map chưa từng được đồng bộ và đang trống.
                 if NavigationServer2D.map_get_iteration_id(navigation_agent.get_navigation_map()) == 0:
                     return
                 if navigation_agent.is_navigation_finished():
@@ -326,7 +285,7 @@ The following sections provides script templates for nodes commonly used with Na
                 navigation_agent.set_target_position(movement_target)
 
             func _physics_process(delta):
-                # Do not query when the map has never synchronized and is empty.
+                # Không thực hiện truy vấn khi map chưa từng được đồng bộ và đang trống.
                 if NavigationServer2D.map_get_iteration_id(navigation_agent.get_navigation_map()) == 0:
                     return
                 if navigation_agent.is_navigation_finished():
@@ -370,7 +329,7 @@ The following sections provides script templates for nodes commonly used with Na
 
                 public override void _PhysicsProcess(double delta)
                 {
-                    // Do not query when the map has never synchronized and is empty.
+                    // Không thực hiện truy vấn khi map chưa từng được đồng bộ và đang trống.
                     if (NavigationServer2D.MapGetIterationId(_navigationAgent.GetNavigationMap()) == 0)
                     {
                         return;
@@ -423,7 +382,7 @@ The following sections provides script templates for nodes commonly used with Na
 
                 public override void _PhysicsProcess(double delta)
                 {
-                    // Do not query when the map has never synchronized and is empty.
+                    // Không thực hiện truy vấn khi map chưa từng được đồng bộ và đang trống.
                     if (NavigationServer2D.MapGetIterationId(_navigationAgent.GetNavigationMap()) == 0)
                     {
                         return;
@@ -476,7 +435,7 @@ The following sections provides script templates for nodes commonly used with Na
 
                 public override void _PhysicsProcess(double delta)
                 {
-                    // Do not query when the map has never synchronized and is empty.
+                    // Không thực hiện truy vấn khi map chưa từng được đồng bộ và đang trống.
                     if (NavigationServer2D.MapGetIterationId(_navigationAgent.GetNavigationMap()) == 0)
                     {
                         return;
@@ -524,9 +483,9 @@ The following sections provides script templates for nodes commonly used with Na
                 navigation_agent.set_target_position(movement_target)
 
             func _physics_process(delta):
-                # Save the delta for use in _on_velocity_computed.
+                # Lưu delta để sử dụng trong _on_velocity_computed.
                 physics_delta = delta
-                # Do not query when the map has never synchronized and is empty.
+                # Không thực hiện truy vấn khi map chưa từng được đồng bộ và đang trống.
                 if NavigationServer3D.map_get_iteration_id(navigation_agent.get_navigation_map()) == 0:
                     return
                 if navigation_agent.is_navigation_finished():
@@ -556,7 +515,7 @@ The following sections provides script templates for nodes commonly used with Na
                 navigation_agent.set_target_position(movement_target)
 
             func _physics_process(delta):
-                # Do not query when the map has never synchronized and is empty.
+                # Không thực hiện truy vấn khi map chưa từng được đồng bộ và đang trống.
                 if NavigationServer3D.map_get_iteration_id(navigation_agent.get_navigation_map()) == 0:
                     return
                 if navigation_agent.is_navigation_finished():
@@ -587,7 +546,7 @@ The following sections provides script templates for nodes commonly used with Na
                 navigation_agent.set_target_position(movement_target)
 
             func _physics_process(delta):
-                # Do not query when the map has never synchronized and is empty.
+                # Không thực hiện truy vấn khi map chưa từng được đồng bộ và đang trống.
                 if NavigationServer3D.map_get_iteration_id(navigation_agent.get_navigation_map()) == 0:
                     return
                 if navigation_agent.is_navigation_finished():
@@ -631,7 +590,7 @@ The following sections provides script templates for nodes commonly used with Na
 
                 public override void _PhysicsProcess(double delta)
                 {
-                    // Do not query when the map has never synchronized and is empty.
+                    // Không thực hiện truy vấn khi map chưa từng được đồng bộ và đang trống.
                     if (NavigationServer3D.MapGetIterationId(_navigationAgent.GetNavigationMap()) == 0)
                     {
                         return;
@@ -684,7 +643,7 @@ The following sections provides script templates for nodes commonly used with Na
 
                 public override void _PhysicsProcess(double delta)
                 {
-                    // Do not query when the map has never synchronized and is empty.
+                    // Không thực hiện truy vấn khi map chưa từng được đồng bộ và đang trống.
                     if (NavigationServer3D.MapGetIterationId(_navigationAgent.GetNavigationMap()) == 0)
                     {
                         return;
@@ -737,7 +696,7 @@ The following sections provides script templates for nodes commonly used with Na
 
                 public override void _PhysicsProcess(double delta)
                 {
-                    // Do not query when the map has never synchronized and is empty.
+                    // Không thực hiện truy vấn khi map chưa từng được đồng bộ và đang trống.
                     if (NavigationServer3D.MapGetIterationId(_navigationAgent.GetNavigationMap()) == 0)
                     {
                         return;

@@ -1,7 +1,7 @@
 :allow_comments: False
 
-Networking
-==========
+Mạng máy tính
+=============
 
 .. toctree::
    :maxdepth: 1

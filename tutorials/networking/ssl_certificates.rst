@@ -1,25 +1,20 @@
 .. _doc_ssl_certificates:
 
-TLS/SSL certificates
-====================
+Chứng chỉ TLS/SSL
+=================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-It is often desired to use :abbr:`TLS (Transport Layer Security)` connections (also
-known as :abbr:`SSL (Secure Sockets Layer)` connections) for communications
-to avoid "man in the middle" attacks. Godot has a connection wrapper,
+Thông thường, người dùng muốn sử dụng các kết nối :abbr:`TLS (Transport Layer Security)` (còn được gọi là các kết nối :abbr:`SSL (Secure Sockets Layer)`) để liên lạc nhằm tránh các cuộc tấn công "man in the middle". Godot có một wrapper kết nối
 :ref:`StreamPeerTLS <class_StreamPeerTLS>`, which can take a regular connection
-and add security around it. The :ref:`HTTPClient <class_HTTPClient>` and
+và bổ sung tính bảo mật cho nó. :ref:`HTTPClient <class_HTTPClient>` và
 :ref:`HTTPRequest <class_HTTPRequest>` classes also support HTTPS using
-this same wrapper.
+chính wrapper này.
 
-Godot will try to use the TLS certificate bundle provided by the operating system,
-but also includes the
-`TLS certificate bundle from Mozilla <https://github.com/godotengine/godot/blob/master/thirdparty/certs/ca-certificates.crt>`__
-as a fallback.
+Godot sẽ cố gắng sử dụng bundle chứng chỉ TLS do hệ điều hành cung cấp, nhưng cũng bao gồm `TLS certificate bundle from Mozilla <https://github.com/godotengine/godot/blob/master/thirdparty/certs/ca-certificates.crt>`__ để dự phòng.
 
-You can alternatively force your own certificate bundle in the Project Settings:
+Ngoài ra, bạn có thể buộc sử dụng bundle chứng chỉ của riêng mình trong Project Settings:
 
 .. figure:: img/tls_certificates_project_setting.webp
    :align: center
@@ -27,57 +22,36 @@ You can alternatively force your own certificate bundle in the Project Settings:
 
    Setting the TLS certificate bundle override project setting
 
-When set, this file *overrides* the operating system provided bundle by default.
-This file should contain any number of public certificates in
-`PEM format <https://en.wikipedia.org/wiki/Privacy-enhanced_Electronic_Mail>`__.
+Khi được thiết lập, theo mặc định, tệp này sẽ *ghi đè* bundle do hệ điều hành cung cấp. Tệp này có thể chứa bất kỳ số lượng chứng chỉ công khai nào ở định dạng `PEM format <https://en.wikipedia.org/wiki/Privacy-enhanced_Electronic_Mail>`__.
 
-There are two ways to obtain certificates:
+Có hai cách để lấy chứng chỉ:
 
-Obtain a certificate from a certificate authority
--------------------------------------------------
+Lấy chứng chỉ từ một certificate authority
+------------------------------------------
 
-The main approach to getting a certificate is to use a certificate authority
-(CA) such as `Let's Encrypt <https://letsencrypt.org/>`__. This is a more
-cumbersome process than a self-signed certificate, but it's more "official" and
-ensures your identity is clearly represented. The resulting certificate is also
-trusted by applications such as web browsers, unlike a self-signed certificate
-which requires additional configuration on the client side before it's
-considered trusted.
+Cách chính để lấy chứng chỉ là sử dụng một certificate authority (CA), chẳng hạn như `Let's Encrypt <https://letsencrypt.org/>`__. Quy trình này rườm rà hơn so với chứng chỉ tự ký, nhưng "chính thức" hơn và đảm bảo danh tính của bạn được thể hiện rõ ràng. Chứng chỉ tạo ra cũng được các ứng dụng như trình duyệt web tin cậy, không giống như chứng chỉ tự ký, vốn yêu cầu cấu hình bổ sung ở phía client trước khi được xem là đáng tin cậy.
 
-These certificates do not require any configuration on the client to work, since
-Godot already bundles the Mozilla certificate bundle in the editor and exported
-projects.
+Các chứng chỉ này không yêu cầu client phải cấu hình để hoạt động, vì Godot đã tích hợp bundle chứng chỉ Mozilla trong editor và các project đã export.
 
-Generate a self-signed certificate
-----------------------------------
+Tạo chứng chỉ tự ký
+-------------------
 
-For most use cases, it's recommended to go through certificate authority as the
-process is free with certificate authorities such as Let's Encrypt. However, if
-using a certificate authority is not an option, then you can generate a
-self-signed certificate and tell the client to consider your self-signed
-certificate as trusted.
+Trong hầu hết trường hợp sử dụng, bạn nên sử dụng certificate authority, vì quy trình này miễn phí với các certificate authority như Let's Encrypt. Tuy nhiên, nếu không thể sử dụng certificate authority, bạn có thể tạo chứng chỉ tự ký và cho client biết rằng chứng chỉ tự ký của bạn là đáng tin cậy.
 
-To create a self-signed certificate, generate a private and public key pair and
-add the public key (in PEM format) to the CRT file specified in the Project
-Settings.
+Để tạo chứng chỉ tự ký, hãy tạo một cặp private key và public key, sau đó thêm public key (ở định dạng PEM) vào tệp CRT được chỉ định trong Project Settings.
 
 .. warning::
 
-    The private key should **only** go to your server. The client must not have
-    access to it: otherwise, the security of the certificate will be
-    compromised.
+    Private key **chỉ** được đưa lên server của bạn. Client không được phép truy cập vào key này; nếu không, tính bảo mật của chứng chỉ sẽ bị xâm phạm.
 
 .. warning::
 
-    When specifying a self-signed certificate as TLS bundle in the project
-    settings, normal domain name validation is enforced via the certificate
+    Khi chỉ định chứng chỉ tự ký làm TLS bundle trong project settings, việc xác thực tên miền thông thường sẽ được thực thi thông qua chứng chỉ
     :abbr:`CN (common name)` and alternative names. See
     :ref:`TLSOptions <class_TLSOptions>` to customize domain name validation.
 
-For development purposes Godot can generate self-signed certificates via
+Để phục vụ mục đích phát triển, Godot có thể tạo chứng chỉ tự ký thông qua
 :ref:`Crypto.generate_self_signed_certificate
 <class_Crypto_method_generate_self_signed_certificate>`.
 
-Alternatively, OpenSSL has some documentation about `generating keys
-<https://raw.githubusercontent.com/openssl/openssl/master/doc/HOWTO/keys.txt>`__
-and `certificates <https://raw.githubusercontent.com/openssl/openssl/master/doc/HOWTO/certificates.txt>`__.
+Ngoài ra, OpenSSL có tài liệu về `generating keys <https://raw.githubusercontent.com/openssl/openssl/master/doc/HOWTO/keys.txt>`__ và `certificates <https://raw.githubusercontent.com/openssl/openssl/master/doc/HOWTO/certificates.txt>`__.

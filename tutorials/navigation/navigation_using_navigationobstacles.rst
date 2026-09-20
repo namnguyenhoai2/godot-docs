@@ -1,23 +1,22 @@
 .. _doc_navigation_using_navigationobstacles:
 
-Using NavigationObstacles
-=========================
+Sử dụng NavigationObstacles
+===========================
 
-2D and 3D versions of NavigationObstacles nodes are available as
+Có các phiên bản 2D và 3D của node NavigationObstacles dưới dạng
 :ref:`NavigationObstacle2D<class_NavigationObstacle2D>` and
 :ref:`NavigationObstacle3D<class_NavigationObstacle3D>`  respectively.
 
-Navigation obstacles are dual purpose in that they can affect both the navigation mesh baking, and the agent avoidance.
+Các chướng ngại vật điều hướng có hai mục đích: chúng có thể ảnh hưởng đến cả việc dựng navigation mesh và việc tránh né của agent.
 
-- With ``affect_navigation_mesh`` enabled the obstacle will affect navigation mesh when baked.
-- With ``avoidance_enabled`` the obstacle will affect avoidance agents.
+- Khi bật ``affect_navigation_mesh``, chướng ngại vật sẽ ảnh hưởng đến navigation mesh khi được dựng. - Khi bật ``avoidance_enabled``, chướng ngại vật sẽ ảnh hưởng đến các agent tránh né.
 
 .. tip::
 
-    Avoidance is enabled by default. If the obstacle is not used for avoidance disable ``enabled_avoidance`` to save performance.
+    Tính năng tránh né được bật theo mặc định. Nếu chướng ngại vật không được dùng cho việc tránh né, hãy tắt ``enabled_avoidance`` để tiết kiệm hiệu năng.
 
-Obstacles and navigation mesh
------------------------------
+Chướng ngại vật và navigation mesh
+----------------------------------
 
 .. figure:: img/nav_mesh_obstacles.webp
    :align: center
@@ -25,10 +24,9 @@ Obstacles and navigation mesh
 
    Navigation obstacles affecting navigation mesh baking.
 
-For navigation mesh baking, obstacles can be used to discard parts of all other source geometry inside the obstacle shape.
+Để dựng navigation mesh, có thể dùng chướng ngại vật nhằm loại bỏ các phần của toàn bộ geometry nguồn khác nằm bên trong hình dạng của chướng ngại vật.
 
-This can be used to stop navigation meshes being baked in unwanted places,
-e.g. inside "solid" geometry like thick walls or on top of other geometry that should not be included for gameplay like roofs.
+Điều này có thể được dùng để ngăn navigation mesh được dựng ở những vị trí không mong muốn, ví dụ như bên trong geometry "đặc" như các bức tường dày hoặc trên các geometry khác không nên được đưa vào gameplay như mái nhà.
 
 .. figure:: img/nav_mesh_obstacles_discard.webp
    :align: center
@@ -36,27 +34,19 @@ e.g. inside "solid" geometry like thick walls or on top of other geometry that s
 
    Navigation obstacles discard of unwanted navigation mesh.
 
-An obstacle does not add geometry in the baking process, it only removes geometry.
-It does so by nullifying all the (voxel) cells with rasterized source geometry that are within the obstacle shape.
-As such its effect and shape detail is limited to the cell resolution used by the baking process.
+Chướng ngại vật không thêm geometry trong quá trình dựng mà chỉ loại bỏ geometry. Nó thực hiện điều này bằng cách vô hiệu hóa tất cả các ô (voxel) chứa geometry nguồn đã được rasterize nằm bên trong hình dạng chướng ngại vật. Vì vậy, hiệu ứng và độ chi tiết hình dạng của nó bị giới hạn bởi độ phân giải ô được dùng trong quá trình dựng.
 
-For more details on the navigation mesh baking see :ref:`doc_navigation_using_navigationmeshes`.
+Để biết thêm chi tiết về việc dựng navigation mesh, hãy xem :ref:`doc_navigation_using_navigationmeshes`.
 
 .. image:: img/nav_mesh_obstacles_properties.webp
 
-The property ``affect_navigation_mesh`` makes the obstacle contribute to the navigation mesh baking.
-It will be parsed or unparsed like all other node objects in a navigation mesh baking process.
+Thuộc tính ``affect_navigation_mesh`` khiến chướng ngại vật tham gia vào quá trình dựng navigation mesh. Nó sẽ được phân tích hoặc không phân tích giống như mọi node object khác trong quá trình dựng navigation mesh.
 
-The ``carve_navigation_mesh`` property makes the shape unaffected by offsets of the baking,
-e.g. the offset added by the navigation mesh ``agent_radius``.
-It will basically act as a stencil and cut into the already offset navigation mesh surface.
-It will still be affected by further postprocessing of the baking process like edge simplification.
+Thuộc tính ``carve_navigation_mesh`` khiến hình dạng không bị ảnh hưởng bởi các offset của quá trình dựng, ví dụ offset được thêm bởi navigation mesh ``agent_radius``. Về cơ bản, nó sẽ hoạt động như một stencil và cắt vào bề mặt navigation mesh đã được offset. Nó vẫn chịu ảnh hưởng của các bước hậu xử lý tiếp theo trong quá trình dựng, chẳng hạn như đơn giản hóa cạnh.
 
-The obstacle shape and placement is defined with the ``height`` and ``vertices`` properties, and the ``global_position`` of the obstacle.
-The y-axis value of any Vector3 used for the vertices is ignored as the obstacle is projected on a flat horizontal plane.
+Hình dạng và vị trí của chướng ngại vật được xác định bằng các thuộc tính ``height`` và ``vertices``, cùng với ``global_position`` của chướng ngại vật. Giá trị trục y của mọi Vector3 được dùng cho các đỉnh sẽ bị bỏ qua vì chướng ngại vật được chiếu lên một mặt phẳng ngang phẳng.
 
-When baking navigation meshes in scripts obstacles can be added procedurally as a projected obstruction.
-Obstacles are not involved in the source geometry parsing so adding them just before baking is enough.
+Khi dựng navigation mesh trong các script, có thể thêm chướng ngại vật theo cách procedural dưới dạng vật cản được chiếu. Chướng ngại vật không tham gia vào việc phân tích geometry nguồn, vì vậy chỉ cần thêm chúng ngay trước khi dựng là đủ.
 
 .. tabs::
  .. code-tab:: gdscript 2D GDScript
@@ -143,18 +133,17 @@ Obstacles are not involved in the source geometry parsing so adding them just be
     sourceGeometry.AddProjectedObstruction(obstacleOutline, obstacleElevation, obstacleHeight, obstacleCarve);
     NavigationServer3D.BakeFromSourceGeometryData(navigationMesh, sourceGeometry);
 
-Obstacles and agent avoidance
------------------------------
+Chướng ngại vật và việc tránh né của agent
+------------------------------------------
 
-For avoidance navigation obstacles can be used either as static or dynamic obstacles to affect avoidance controlled agents.
+Đối với việc tránh né, có thể dùng chướng ngại vật điều hướng dưới dạng chướng ngại vật tĩnh hoặc động để ảnh hưởng đến các agent được điều khiển bằng tính năng tránh né.
 
-- When used statically NavigationObstacles constrain avoidance controlled agents outside or inside a polygon defined area.
-- When used dynamically NavigationObstacles push away avoidance controlled agents in a radius around them.
+- Khi được dùng ở dạng tĩnh, NavigationObstacles giới hạn các agent được điều khiển bằng tính năng tránh né ở bên ngoài hoặc bên trong một khu vực được xác định bởi polygon. - Khi được dùng ở dạng động, NavigationObstacles đẩy các agent được điều khiển bằng tính năng tránh né ra xa trong một bán kính xung quanh chúng.
 
-Static avoidance obstacles
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Chướng ngại vật tránh né tĩnh
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-An avoidance obstacle is considered static when its ``vertices`` property is populated with an outline array of positions to form a polygon.
+Một chướng ngại vật tránh né được xem là tĩnh khi thuộc tính ``vertices`` của nó chứa một mảng outline gồm các vị trí để tạo thành một polygon.
 
 .. figure:: img/nav_static_obstacle_build.gif
    :align: center
@@ -162,78 +151,61 @@ An avoidance obstacle is considered static when its ``vertices`` property is pop
 
    Static obstacle drawn in the editor to block or contain navigation agents.
 
-- Static obstacles act as hard do-not-cross boundaries for avoidance using agents, e.g. similar to physics collision but for avoidance.
-- Static obstacles define their boundaries with an array of outline ``vertices`` (positions), and in case of 3D with an additional ``height`` property.
-- Static obstacles only work for agents that use the 2D avoidance mode.
-- Static obstacles define through winding order of the vertices if agents are pushed out or sucked in.
-- Static obstacles can not change their position. They can only be warped to a new position and rebuilt from scratch.
-  Static obstacles as a result are ill-suited for usages where the position is changed every frame, as the constant rebuild has a high performance cost.
-- Static obstacles that are warped to another position can not be predicted by agents. This creates the risk of getting agents stuck should a static obstacle be warped on top of agents.
+- Chướng ngại vật tĩnh hoạt động như các ranh giới cứng không được vượt qua đối với các agent dùng tính năng tránh né, tương tự va chạm vật lý nhưng dành cho tránh né. - Chướng ngại vật tĩnh xác định ranh giới bằng một mảng outline ``vertices`` (các vị trí), và trong trường hợp 3D có thêm thuộc tính ``height``. - Chướng ngại vật tĩnh chỉ hoạt động với các agent dùng chế độ tránh né 2D. - Chướng ngại vật tĩnh xác định thông qua thứ tự winding của các đỉnh liệu agent sẽ bị đẩy ra ngoài hay bị hút vào trong. - Chướng ngại vật tĩnh không thể thay đổi vị trí. Chúng chỉ có thể được warp đến một vị trí mới và dựng lại từ đầu. Vì vậy, chướng ngại vật tĩnh không phù hợp với các trường hợp sử dụng mà vị trí thay đổi mỗi frame, do việc dựng lại liên tục có chi phí hiệu năng cao. - Các chướng ngại vật tĩnh được warp đến vị trí khác không thể được agent dự đoán. Điều này tạo ra nguy cơ agent bị mắc kẹt nếu chướng ngại vật tĩnh được warp chồng lên agent.
 
-When the 2D avoidance is used in 3D the y-axis of Vector3 vertices is ignored. Instead, the global y-axis position of the obstacle is used as the elevation level. Agents will ignore static obstacles in 3D that are below or above them. This is automatically determined by global y-axis position of both obstacle and agent as the elevation level as well as their respective height properties.
+Khi sử dụng tránh né 2D trong 3D, trục y của các đỉnh Vector3 sẽ bị bỏ qua. Thay vào đó, vị trí trục y toàn cục của chướng ngại vật được dùng làm độ cao. Agent sẽ bỏ qua các chướng ngại vật tĩnh trong 3D nằm bên dưới hoặc bên trên chúng. Điều này được tự động xác định bằng vị trí trục y toàn cục của cả chướng ngại vật và agent, được dùng làm độ cao, cùng với các thuộc tính chiều cao tương ứng của chúng.
 
-Dynamic avoidance obstacles
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Chướng ngại vật tránh né động
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-An avoidance obstacle is considered dynamic when its ``radius`` property is greater than zero.
+Một chướng ngại vật tránh né được xem là động khi thuộc tính ``radius`` của nó lớn hơn không.
 
-- Dynamic obstacles act as a soft please-move-away-from-me object for avoidance using agents, e.g. similar to how they avoid other agents.
-- Dynamic obstacles define their boundaries with a single ``radius`` for a 2D circle, or in case of 3D avoidance a sphere shape.
-- Dynamic obstacles can change their position every frame without additional performance cost.
-- Dynamic obstacles with a set velocity can be predicted in their movement by agents.
-- Dynamic obstacles are not a reliable way to constrain agents in crowded or narrow spaces.
+- Chướng ngại vật động hoạt động như một đối tượng mềm có ý nghĩa "hãy tránh xa tôi" đối với các agent dùng tính năng tránh né, tương tự cách chúng tránh các agent khác. - Chướng ngại vật động xác định ranh giới bằng một ``radius`` duy nhất cho hình tròn 2D, hoặc hình cầu trong trường hợp tránh né 3D. - Chướng ngại vật động có thể thay đổi vị trí mỗi frame mà không phát sinh thêm chi phí hiệu năng. - Các chướng ngại vật động có velocity được thiết lập có thể được agent dự đoán chuyển động. - Chướng ngại vật động không phải là cách đáng tin cậy để giới hạn agent trong không gian đông đúc hoặc chật hẹp.
 
-While both static and dynamic properties can be active at the same time on the same obstacle this is not recommended for performance.
-Ideally when an obstacle is moving the static vertices are removed and instead the radius activated.
-When the obstacle reaches the new final position it should gradually enlarge its radius to push all other agents away.
-With enough created safe space around the obstacle it should add the static vertices again and remove the radius.
-This helps avoid getting agents stuck in the suddenly appearing static obstacle when the rebuilt static boundary is finished.
+Mặc dù cả thuộc tính tĩnh và động có thể đồng thời hoạt động trên cùng một chướng ngại vật, điều này không được khuyến nghị vì lý do hiệu năng. Tốt nhất, khi một chướng ngại vật đang di chuyển, hãy xóa các đỉnh tĩnh và thay vào đó kích hoạt bán kính. Khi chướng ngại vật đến vị trí cuối mới, nó nên từ từ tăng bán kính để đẩy tất cả agent khác ra xa. Sau khi tạo đủ không gian an toàn xung quanh chướng ngại vật, hãy thêm lại các đỉnh tĩnh và xóa bán kính. Điều này giúp tránh việc agent bị mắc kẹt trong chướng ngại vật tĩnh đột ngột xuất hiện khi ranh giới tĩnh được dựng lại hoàn tất.
 
-Similar to agents the obstacles can make use of the ``avoidance_layers`` bitmask.
-All agents with a matching bit on their own avoidance mask will avoid the obstacle.
+Tương tự agent, chướng ngại vật có thể sử dụng bitmask ``avoidance_layers``. Tất cả agent có bit tương ứng trên avoidance mask của riêng chúng sẽ tránh chướng ngại vật.
 
-Procedural obstacles
---------------------
+Chướng ngại vật procedural
+--------------------------
 
-New obstacles can be created in a script without a Node by using the NavigationServer directly.
+Có thể tạo chướng ngại vật mới trong script mà không cần Node bằng cách sử dụng trực tiếp NavigationServer.
 
-Obstacles created with scripts require at least a ``map`` and a ``position``.
-For dynamic use a ``radius`` is required.
-For static use an array of ``vertices`` is required.
+Các chướng ngại vật được tạo bằng script yêu cầu ít nhất một ``map`` và một ``position``. Để sử dụng động, cần có ``radius``. Để sử dụng tĩnh, cần có một mảng ``vertices``.
 
 .. tabs::
  .. code-tab:: gdscript 2D GDScript
 
-    # create a new "obstacle" and place it on the default navigation map.
+    # tạo một "obstacle" mới và đặt nó trên navigation map mặc định.
     var new_obstacle_rid: RID = NavigationServer2D.obstacle_create()
     var default_map_rid: RID = get_world_2d().get_navigation_map()
 
     NavigationServer2D.obstacle_set_map(new_obstacle_rid, default_map_rid)
     NavigationServer2D.obstacle_set_position(new_obstacle_rid, global_position)
 
-    # Use obstacle dynamic by increasing radius above zero.
+    # Sử dụng obstacle ở dạng động bằng cách tăng radius lên trên không.
     NavigationServer2D.obstacle_set_radius(new_obstacle_rid, 5.0)
 
-    # Use obstacle static by adding a square that pushes agents out.
+    # Sử dụng obstacle ở dạng tĩnh bằng cách thêm một hình vuông đẩy agent ra ngoài.
     var outline = PackedVector2Array([Vector2(-100, -100), Vector2(100, -100), Vector2(100, 100), Vector2(-100, 100)])
     NavigationServer2D.obstacle_set_vertices(new_obstacle_rid, outline)
 
-    # Enable the obstacle.
+    # Bật obstacle.
     NavigationServer2D.obstacle_set_avoidance_enabled(new_obstacle_rid, true)
 
  .. code-tab:: csharp 2D C#
 
-    // Create a new "obstacle" and place it on the default navigation map.
+    // Tạo một "obstacle" mới và đặt nó trên navigation map mặc định.
     Rid newObstacleRid = NavigationServer2D.ObstacleCreate();
     Rid defaultMapRid = GetWorld2D().NavigationMap;
 
     NavigationServer2D.ObstacleSetMap(newObstacleRid, defaultMapRid);
     NavigationServer2D.ObstacleSetPosition(newObstacleRid, GlobalPosition);
 
-    // Use obstacle dynamic by increasing radius above zero.
+    // Sử dụng obstacle ở dạng động bằng cách tăng radius lên trên không.
     NavigationServer2D.ObstacleSetRadius(newObstacleRid, 5.0f);
 
-    // Use obstacle static by adding a square that pushes agents out.
+    // Sử dụng obstacle ở dạng tĩnh bằng cách thêm một hình vuông đẩy agent ra ngoài.
     Vector2[] outline =
     [
         new Vector2(-100, -100),
@@ -243,43 +215,43 @@ For static use an array of ``vertices`` is required.
     ];
     NavigationServer2D.ObstacleSetVertices(newObstacleRid, outline);
 
-    // Enable the obstacle.
+    // Bật obstacle.
     NavigationServer2D.ObstacleSetAvoidanceEnabled(newObstacleRid, true);
 
  .. code-tab:: gdscript 3D GDScript
 
-    # Create a new "obstacle" and place it on the default navigation map.
+    # Tạo một "obstacle" mới và đặt nó trên navigation map mặc định.
     var new_obstacle_rid: RID = NavigationServer3D.obstacle_create()
     var default_map_rid: RID = get_world_3d().get_navigation_map()
 
     NavigationServer3D.obstacle_set_map(new_obstacle_rid, default_map_rid)
     NavigationServer3D.obstacle_set_position(new_obstacle_rid, global_position)
 
-    # Use obstacle dynamic by increasing radius above zero.
+    # Sử dụng obstacle ở dạng động bằng cách tăng radius lên trên không.
     NavigationServer3D.obstacle_set_radius(new_obstacle_rid, 0.5)
 
-    # Use obstacle static by adding a square that pushes agents out.
+    # Sử dụng obstacle ở dạng tĩnh bằng cách thêm một hình vuông đẩy agent ra ngoài.
     var outline = PackedVector3Array([Vector3(-5, 0, -5), Vector3(5, 0, -5), Vector3(5, 0, 5), Vector3(-5, 0, 5)])
     NavigationServer3D.obstacle_set_vertices(new_obstacle_rid, outline)
-    # Set the obstacle height on the y-axis.
+    # Đặt chiều cao của obstacle trên trục y.
     NavigationServer3D.obstacle_set_height(new_obstacle_rid, 1.0)
 
-    # Enable the obstacle.
+    # Bật obstacle.
     NavigationServer3D.obstacle_set_avoidance_enabled(new_obstacle_rid, true)
 
  .. code-tab:: csharp 3D C#
 
-    // Create a new "obstacle" and place it on the default navigation map.
+    // Tạo một "obstacle" mới và đặt nó trên navigation map mặc định.
     Rid newObstacleRid = NavigationServer3D.ObstacleCreate();
     Rid defaultMapRid = GetWorld3D().NavigationMap;
 
     NavigationServer3D.ObstacleSetMap(newObstacleRid, defaultMapRid);
     NavigationServer3D.ObstacleSetPosition(newObstacleRid, GlobalPosition);
 
-    // Use obstacle dynamic by increasing radius above zero.
+    // Sử dụng obstacle ở dạng động bằng cách tăng radius lên trên không.
     NavigationServer3D.ObstacleSetRadius(newObstacleRid, 5.0f);
 
-    // Use obstacle static by adding a square that pushes agents out.
+    // Sử dụng obstacle ở dạng tĩnh bằng cách thêm một hình vuông đẩy agent ra ngoài.
     Vector3[] outline =
     [
         new Vector3(-5, 0, -5),
@@ -288,8 +260,8 @@ For static use an array of ``vertices`` is required.
         new Vector3(-5, 0, 5),
     ];
     NavigationServer3D.ObstacleSetVertices(newObstacleRid, outline);
-    // Set the obstacle height on the y-axis.
+    // Đặt chiều cao của obstacle trên trục y.
     NavigationServer3D.ObstacleSetHeight(newObstacleRid, 1.0f);
 
-    // Enable the obstacle.
+    // Bật obstacle.
     NavigationServer3D.ObstacleSetAvoidanceEnabled(newObstacleRid, true);

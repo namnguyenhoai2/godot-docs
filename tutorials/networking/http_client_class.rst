@@ -2,22 +2,17 @@
 
 .. _doc_http_client_class:
 
-HTTP client class
-=================
+lớp HTTP client
+===============
 
 :ref:`HTTPClient <class_HTTPClient>` provides low-level access to HTTP communication.
-For a higher-level interface, you may want to take a look at :ref:`HTTPRequest <class_HTTPRequest>` first,
-which has a tutorial available :ref:`here <doc_http_request_class>`.
+Đối với một interface cấp cao hơn, trước tiên bạn có thể xem :ref:`HTTPRequest <class_HTTPRequest>`, trong đó có sẵn một tutorial :ref:`here <doc_http_request_class>`.
 
 .. warning::
 
-    When exporting to Android, make sure to enable the ``INTERNET``
-    permission in the Android export preset before exporting the project or
-    using one-click deploy. Otherwise, network communication of any kind will be
-    blocked by Android.
+    Khi export sang Android, hãy đảm bảo bật permission ``INTERNET`` trong Android export preset trước khi export project hoặc sử dụng one-click deploy. Nếu không, Android sẽ chặn mọi loại giao tiếp mạng.
 
-Here's an example of using the :ref:`HTTPClient <class_HTTPClient>`
-class. It's just a script, so it can be run by executing:
+Sau đây là ví dụ về cách sử dụng lớp :ref:`HTTPClient <class_HTTPClient>`. Đây chỉ là một script, vì vậy bạn có thể chạy bằng cách thực thi:
 
 .. tabs::
 
@@ -29,7 +24,7 @@ class. It's just a script, so it can be run by executing:
 
     c:\godot> godot -s HTTPTest.cs
 
-It will connect and fetch a website.
+Nó sẽ kết nối và tải một website.
 
 .. tabs::
 
@@ -37,74 +32,74 @@ It will connect and fetch a website.
 
     extends SceneTree
 
-    # HTTPClient demo
-    # This simple class can do HTTP requests; it will not block, but it needs to be polled.
+    # Bản demo HTTPClient
+    # Lớp đơn giản này có thể thực hiện các HTTP request; nó không block, nhưng cần được poll.
 
     func _init():
         var err = 0
-        var http = HTTPClient.new() # Create the Client.
+        var http = HTTPClient.new() # Tạo Client.
 
-        err = http.connect_to_host("www.php.net", 80) # Connect to host/port.
-        assert(err == OK) # Make sure connection is OK.
+        err = http.connect_to_host("www.php.net", 80) # Kết nối đến host/port.
+        assert(err == OK) # Đảm bảo kết nối OK.
 
-        # Wait until resolved and connected.
+        # Chờ cho đến khi được phân giải và kết nối.
         while http.get_status() == HTTPClient.STATUS_CONNECTING or http.get_status() == HTTPClient.STATUS_RESOLVING:
             http.poll()
             print("Connecting...")
             await get_tree().process_frame
 
-        assert(http.get_status() == HTTPClient.STATUS_CONNECTED) # Check if the connection was made successfully.
+        assert(http.get_status() == HTTPClient.STATUS_CONNECTED) # Kiểm tra xem kết nối có được thiết lập thành công hay không.
 
-        # Some headers
+        # Một số header
         var headers = [
             "User-Agent: Pirulo/1.0 (Godot)",
             "Accept: */*"
         ]
 
-        err = http.request(HTTPClient.METHOD_GET, "/ChangeLog-5.php", headers) # Request a page from the site (this one was chunked..)
-        assert(err == OK) # Make sure all is OK.
+        err = http.request(HTTPClient.METHOD_GET, "/ChangeLog-5.php", headers) # Yêu cầu một trang từ site (trang này được chia thành các chunk..)
+        assert(err == OK) # Đảm bảo mọi thứ đều OK.
 
         while http.get_status() == HTTPClient.STATUS_REQUESTING:
-            # Keep polling for as long as the request is being processed.
+            # Tiếp tục poll trong suốt thời gian request đang được xử lý.
             http.poll()
             print("Requesting...")
             await get_tree().process_frame
 
-        assert(http.get_status() == HTTPClient.STATUS_BODY or http.get_status() == HTTPClient.STATUS_CONNECTED) # Make sure request finished well.
+        assert(http.get_status() == HTTPClient.STATUS_BODY or http.get_status() == HTTPClient.STATUS_CONNECTED) # Đảm bảo request đã hoàn tất thành công.
 
-        print("response? ", http.has_response()) # Site might not have a response.
+        print("response? ", http.has_response()) # Site có thể không có response.
 
         if http.has_response():
-            # If there is a response...
+            # Nếu có response...
 
-            headers = http.get_response_headers_as_dictionary() # Get response headers.
-            print("code: ", http.get_response_code()) # Show response code.
-            print("**headers:\\n", headers) # Show headers.
+            headers = http.get_response_headers_as_dictionary() # Lấy các response header.
+            print("code: ", http.get_response_code()) # Hiển thị response code.
+            print("**headers:\\n", headers) # Hiển thị các header.
 
-            # Getting the HTTP Body
+            # Lấy HTTP Body
 
             if http.is_response_chunked():
-                # Does it use chunks?
+                # Nó có sử dụng chunk không?
                 print("Response is Chunked!")
             else:
-                # Or just plain Content-Length
+                # Hay chỉ sử dụng Content-Length
                 var bl = http.get_response_body_length()
                 print("Response Length: ", bl)
 
-            # This method works for both anyway
+            # Dù thế nào thì method này cũng hoạt động cho cả hai trường hợp
 
-            var rb = PackedByteArray() # Array that will hold the data.
+            var rb = PackedByteArray() # Mảng sẽ chứa dữ liệu.
 
             while http.get_status() == HTTPClient.STATUS_BODY:
-                # While there is body left to be read
+                # Trong khi vẫn còn body chưa được đọc
                 http.poll()
-                # Get a chunk.
+                # Lấy một chunk.
                 var chunk = http.read_response_body_chunk()
                 if chunk.size() == 0:
                     await get_tree().process_frame
                 else:
-                    rb = rb + chunk # Append to read buffer.
-            # Done!
+                    rb = rb + chunk # Thêm vào read buffer.
+            # Hoàn tất!
 
             print("bytes got: ", rb.size())
             var text = rb.get_string_from_ascii()
@@ -118,17 +113,17 @@ It will connect and fetch a website.
 
     public partial class HTTPTest : SceneTree
     {
-        // HTTPClient demo.
-        // This simple class can make HTTP requests; it will not block, but it needs to be polled.
+        // Bản demo HTTPClient.
+        // Lớp đơn giản này có thể thực hiện các HTTP request; nó không block, nhưng cần được poll.
         public override async void _Initialize()
         {
             Error err;
-            HTTPClient http = new HTTPClient(); // Create the client.
+            HTTPClient http = new HTTPClient(); // Tạo client.
 
-            err = http.ConnectToHost("www.php.net", 80); // Connect to host/port.
-            Debug.Assert(err == Error.Ok); // Make sure the connection is OK.
+            err = http.ConnectToHost("www.php.net", 80); // Kết nối đến host/port.
+            Debug.Assert(err == Error.Ok); // Đảm bảo kết nối OK.
 
-            // Wait until resolved and connected.
+            // Chờ cho đến khi được phân giải và kết nối.
             while (http.GetStatus() == HTTPClient.Status.Connecting || http.GetStatus() == HTTPClient.Status.Resolving)
             {
                 http.Poll();
@@ -136,27 +131,27 @@ It will connect and fetch a website.
                 OS.DelayMsec(500);
             }
 
-            Debug.Assert(http.GetStatus() == HTTPClient.Status.Connected); // Check if the connection was made successfully.
+            Debug.Assert(http.GetStatus() == HTTPClient.Status.Connected); // Kiểm tra xem kết nối có được thiết lập thành công hay không.
 
-            // Some headers.
+            // Một số header.
             string[] headers =
             [
                 "User-Agent: Pirulo/1.0 (Godot)",
                 "Accept: */*",
             ];
 
-            err = http.Request(HTTPClient.Method.Get, "/ChangeLog-5.php", headers); // Request a page from the site.
-            Debug.Assert(err == Error.Ok); // Make sure all is OK.
+            err = http.Request(HTTPClient.Method.Get, "/ChangeLog-5.php", headers); // Yêu cầu một trang từ site.
+            Debug.Assert(err == Error.Ok); // Đảm bảo mọi thứ đều OK.
 
-            // Keep polling for as long as the request is being processed.
+            // Tiếp tục poll trong suốt thời gian request đang được xử lý.
             while (http.GetStatus() == HTTPClient.Status.Requesting)
             {
                 http.Poll();
                 GD.Print("Requesting...");
                 if (OS.HasFeature("web"))
                 {
-                    // Synchronous HTTP requests are not supported on the web,
-                    // so wait for the next main loop iteration.
+                    // HTTP request đồng bộ không được hỗ trợ trên web,
+                    // vì vậy hãy chờ đến lần lặp main loop tiếp theo.
                     await ToSignal(Engine.GetMainLoop(), "idle_frame");
                 }
                 else
@@ -165,54 +160,54 @@ It will connect and fetch a website.
                 }
             }
 
-            Debug.Assert(http.GetStatus() == HTTPClient.Status.Body || http.GetStatus() == HTTPClient.Status.Connected); // Make sure the request finished well.
+            Debug.Assert(http.GetStatus() == HTTPClient.Status.Body || http.GetStatus() == HTTPClient.Status.Connected); // Đảm bảo request đã hoàn tất thành công.
 
-            GD.Print("Response? ", http.HasResponse()); // The site might not have a response.
+            GD.Print("Response? ", http.HasResponse()); // Site có thể không có response.
 
-            // If there is a response...
+            // Nếu có response...
             if (http.HasResponse())
             {
-                headers = http.GetResponseHeaders(); // Get response headers.
-                GD.Print("Code: ", http.GetResponseCode()); // Show response code.
+                headers = http.GetResponseHeaders(); // Lấy các response header.
+                GD.Print("Code: ", http.GetResponseCode()); // Hiển thị response code.
                 GD.Print("Headers:");
                 foreach (string header in headers)
                 {
-                    // Show headers.
+                    // Hiển thị các header.
                     GD.Print(header);
                 }
 
                 if (http.IsResponseChunked())
                 {
-                    // Does it use chunks?
+                    // Nó có sử dụng chunk không?
                     GD.Print("Response is Chunked!");
                 }
                 else
                 {
-                    // Or just Content-Length.
+                    // Hay chỉ sử dụng Content-Length.
                     GD.Print("Response Length: ", http.GetResponseBodyLength());
                 }
 
-                // This method works for both anyways.
-                List<byte> rb = new List<byte>(); // List that will hold the data.
+                // Dù thế nào thì method này cũng hoạt động cho cả hai trường hợp.
+                List<byte> rb = new List<byte>(); // List sẽ chứa dữ liệu.
 
-                // While there is data left to be read...
+                // Trong khi vẫn còn dữ liệu chưa được đọc...
                 while (http.GetStatus() == HTTPClient.Status.Body)
                 {
                     http.Poll();
-                    byte[] chunk = http.ReadResponseBodyChunk(); // Read a chunk.
+                    byte[] chunk = http.ReadResponseBodyChunk(); // Đọc một chunk.
                     if (chunk.Length == 0)
                     {
-                        // If nothing was read, wait for the buffer to fill.
+                        // Nếu không đọc được gì, hãy chờ buffer đầy.
                         OS.DelayMsec(500);
                     }
                     else
                     {
-                        // Append the chunk to the read buffer.
+                        // Thêm chunk vào read buffer.
                         rb.AddRange(chunk);
                     }
                 }
 
-                // Done!
+                // Hoàn tất!
                 GD.Print("Bytes Downloaded: ", rb.Count);
                 string text = Encoding.ASCII.GetString(rb.ToArray());
                 GD.Print(text);

@@ -1,123 +1,80 @@
 .. _doc_navigation_overview_2d:
 
-2D navigation overview
-======================
+Tổng quan về điều hướng 2D
+==========================
 
-Godot provides multiple objects, classes and servers to facilitate grid-based or mesh-based navigation and pathfinding for 2D and 3D games.
-The following section provides a quick overview over all available navigation related objects in Godot for 2D scenes and their primary use.
+Godot cung cấp nhiều object, class và server để hỗ trợ điều hướng và tìm đường dựa trên lưới hoặc mesh cho game 2D và 3D. Phần sau đây cung cấp tổng quan nhanh về tất cả các object liên quan đến điều hướng hiện có trong Godot dành cho scene 2D và mục đích sử dụng chính của chúng.
 
-Godot provides the following objects and classes for 2D navigation:
+Godot cung cấp các object và class sau cho điều hướng 2D:
 
-- :ref:`Astar2D<class_Astar2D>`
-    ``Astar2D`` objects provide an option to find the shortest path in a graph of weighted **points**.
+- :ref:`Astar2D<class_Astar2D>` ``Astar2D`` object cung cấp tùy chọn tìm đường đi ngắn nhất trong một graph gồm các **điểm** có trọng số.
 
-    The AStar2D class is best suited for cell-based 2D gameplay that does not require actors to reach any possible position within an area but only predefined, distinct positions.
+    Class AStar2D phù hợp nhất với gameplay 2D dựa trên cell, trong đó không yêu cầu actor phải đến được mọi vị trí có thể trong một khu vực mà chỉ đến các vị trí riêng biệt, được định nghĩa trước.
 
-- :ref:`AstarGrid2D<class_AstarGrid2D>`
-    ``AstarGrid2D``  is a variant of AStar2D that is specialized for partial 2D grids.
+- :ref:`AstarGrid2D<class_AstarGrid2D>` ``AstarGrid2D`` là một biến thể của AStar2D, được chuyên biệt hóa cho các lưới 2D không đầy đủ.
 
-    AstarGrid2D is simpler to use when applicable because it doesn't require you to manually create points and connect them together.
+    AstarGrid2D dễ sử dụng hơn trong những trường hợp phù hợp vì bạn không cần tự tạo các điểm và kết nối chúng với nhau.
 
-- :ref:`NavigationServer2D<class_NavigationServer2D>`
-    ``NavigationServer2D`` provides a powerful server API to find the shortest path between two positions on an area defined by a navigation mesh.
+- :ref:`NavigationServer2D<class_NavigationServer2D>` ``NavigationServer2D`` cung cấp một server API mạnh mẽ để tìm đường đi ngắn nhất giữa hai vị trí trong một khu vực được xác định bởi navigation mesh.
 
-    The NavigationServer is best suited for 2D realtime gameplay that does require actors to reach any possible position within a navigation mesh defined area.
-    Mesh-based navigation scales well with large game worlds as a large area can often be defined with a single polygon when it would require many, many grid cells.
+    NavigationServer phù hợp nhất với gameplay 2D realtime yêu cầu actor phải đến được mọi vị trí có thể trong khu vực được xác định bởi navigation mesh. Điều hướng dựa trên mesh mở rộng tốt với các thế giới game lớn, vì một khu vực rộng thường có thể được xác định bằng một polygon duy nhất, trong khi cách này sẽ yêu cầu rất nhiều cell của lưới.
 
-    The NavigationServer holds different navigation maps that each consist of regions that hold navigation mesh data.
-    Agents can be placed on a map for avoidance calculation.
-    RIDs are used to reference internal maps, regions, and agents when communicating with the server.
+    NavigationServer quản lý các navigation map khác nhau, mỗi map bao gồm các region chứa dữ liệu navigation mesh. Các agent có thể được đặt trên một map để tính toán avoidance. RID được sử dụng để tham chiếu các map, region và agent nội bộ khi giao tiếp với server.
 
-    The following NavigationServer RID types are available.
-        - NavMap RID
-            Reference to a specific navigation map that holds regions and agents.
-            The map will attempt to join the navigation meshes of the regions by proximity.
-            The map will synchronize regions and agents each physics frame.
-        - NavRegion RID
-            Reference to a specific navigation region that can hold navigation mesh data.
-            The region can be enabled / disabled or the use restricted with a navigation layer bitmask.
-        - NavLink RID
-            Reference to a specific navigation link that connects two navigation mesh positions over arbitrary distances.
-        - NavAgent RID
-            Reference to a specific avoidance agent.
-            The avoidance is specified by a radius value.
-        - NavObstacle RID
-            Reference to a specific avoidance obstacle used to affect and constrain the avoidance velocity of agents.
+    Các loại NavigationServer RID sau đây hiện có. - NavMap RID Tham chiếu đến một navigation map cụ thể chứa các region và agent. Map sẽ cố gắng kết hợp các navigation mesh của các region dựa trên khoảng cách gần nhau. Map sẽ đồng bộ các region và agent trong mỗi physics frame. - NavRegion RID Tham chiếu đến một navigation region cụ thể có thể chứa dữ liệu navigation mesh. Region có thể được bật / tắt hoặc bị hạn chế sử dụng bằng navigation layer bitmask. - NavLink RID Tham chiếu đến một navigation link cụ thể kết nối hai vị trí trên navigation mesh với khoảng cách tùy ý. - NavAgent RID Tham chiếu đến một avoidance agent cụ thể. Avoidance được xác định bằng một giá trị bán kính. - NavObstacle RID Tham chiếu đến một avoidance obstacle cụ thể, được sử dụng để tác động và giới hạn vận tốc avoidance của các agent.
 
-The following scene tree nodes are available as helpers to work with the NavigationServer2D API.
+Các node trong scene tree sau đây hiện có để hỗ trợ làm việc với NavigationServer2D API.
 
-- :ref:`NavigationRegion2D<class_NavigationRegion2D>` Node
-    A Node that holds a NavigationPolygon resource that defines a navigation mesh for the NavigationServer2D.
+- :ref:`NavigationRegion2D<class_NavigationRegion2D>` Node Một Node chứa resource NavigationPolygon xác định navigation mesh cho NavigationServer2D.
 
-    - The region can be enabled / disabled.
-    - The use in pathfinding can be further restricted through the ``navigation_layers`` bitmask.
-    - The NavigationServer2D will join the navigation meshes of regions by proximity for a combined navigation mesh.
+    - Region có thể được bật / tắt. - Việc sử dụng trong pathfinding có thể được hạn chế thêm thông qua bitmask ``navigation_layers``. - NavigationServer2D sẽ kết hợp các navigation mesh của các region dựa trên khoảng cách gần nhau để tạo thành một navigation mesh hợp nhất.
 
-- :ref:`NavigationLink2D<class_NavigationLink2D>` Node
-    A Node that connects two positions on navigation meshes over arbitrary distances for pathfinding.
+- :ref:`NavigationLink2D<class_NavigationLink2D>` Node Một Node kết nối hai vị trí trên navigation mesh với khoảng cách tùy ý để pathfinding.
 
-    - The link can be enabled / disabled.
-    - The link can be made one-way or bidirectional.
-    - The use in pathfinding can be further restricted through the ``navigation_layers`` bitmask.
+    - Link có thể được bật / tắt. - Link có thể là một chiều hoặc hai chiều. - Việc sử dụng trong pathfinding có thể được hạn chế thêm thông qua bitmask ``navigation_layers``.
 
-    Links tell the pathfinding that a connection exists and at what cost. The actual agent handling and movement needs to happen in custom scripts.
+    Link cho pathfinding biết rằng một kết nối tồn tại và chi phí của kết nối đó là bao nhiêu. Việc thực sự xử lý và di chuyển actor cần được thực hiện trong các script tùy chỉnh.
 
--  :ref:`NavigationAgent2D<class_NavigationAgent2D>` Node
-    A helper Node used to facilitate common NavigationServer2D API calls for pathfinding and avoidance.
-    Use this Node with a Node2D inheriting parent Node.
+-  :ref:`NavigationAgent2D<class_NavigationAgent2D>` Node Một Node hỗ trợ thực hiện các lệnh gọi NavigationServer2D API phổ biến cho pathfinding và avoidance. Sử dụng Node này với một Node cha kế thừa từ Node2D.
 
--  :ref:`NavigationObstacle2D<class_NavigationObstacle2D>` Node
-    A Node that can be used to affect and constrain the avoidance velocity of avoidance enabled agents.
-    This Node does NOT affect the pathfinding of agents. You need to change the navigation meshes for that instead.
+-  :ref:`NavigationObstacle2D<class_NavigationObstacle2D>` Node Một Node có thể được sử dụng để tác động và giới hạn vận tốc avoidance của các agent đã bật avoidance. Node này KHÔNG tác động đến pathfinding của các agent. Thay vào đó, bạn cần thay đổi navigation mesh.
 
-The 2D navigation meshes are defined with the following resources:
+Navigation mesh 2D được xác định bằng các resource sau:
 
-- :ref:`NavigationPolygon<class_NavigationPolygon>` Resource
-    A resource that holds 2D navigation mesh data.
-    It provides polygon drawing tools to allow defining navigation areas inside the Editor as well as at runtime.
+- :ref:`NavigationPolygon<class_NavigationPolygon>` Resource Một resource chứa dữ liệu navigation mesh 2D. Resource này cung cấp các công cụ vẽ polygon, cho phép xác định các khu vực điều hướng trong Editor cũng như tại runtime.
 
-    - The NavigationRegion2D Node uses this resource to define its navigation area.
-    - The NavigationServer2D uses this resource to update the navigation mesh of individual regions.
-    - The TileSet Editor creates and uses this resource internally when defining tile navigation areas.
+    - Node NavigationRegion2D sử dụng resource này để xác định khu vực điều hướng của nó. - NavigationServer2D sử dụng resource này để cập nhật navigation mesh của từng region. - TileSet Editor tạo và sử dụng resource này nội bộ khi xác định các khu vực điều hướng của tile.
 
 .. seealso::
 
-    You can see how 2D navigation works in action using the
-    `2D Navigation Polygon <https://github.com/godotengine/godot-demo-projects/tree/master/2d/navigation>`__
-    and `Grid-based Navigation with AStarGrid2D <https://github.com/godotengine/godot-demo-projects/tree/master/2d/navigation_astar>`__
-    demo projects.
+    Bạn có thể xem cách điều hướng 2D hoạt động trong thực tế thông qua các project demo `2D Navigation Polygon <https://github.com/godotengine/godot-demo-projects/tree/master/2d/navigation>`__ và `Grid-based Navigation with AStarGrid2D <https://github.com/godotengine/godot-demo-projects/tree/master/2d/navigation_astar>`__.
 
-Setup for 2D scene
-------------------
+Thiết lập cho scene 2D
+----------------------
 
-The following steps show the basic setup for minimal viable navigation in 2D.
-It uses the NavigationServer2D and a NavigationAgent2D for path movement.
+Các bước sau đây trình bày cách thiết lập cơ bản để có navigation khả dụng tối thiểu trong 2D. Cách này sử dụng NavigationServer2D và NavigationAgent2D để di chuyển theo đường đi.
 
-#. Add a NavigationRegion2D Node to the scene.
+#. Thêm một Node NavigationRegion2D vào scene.
 
-#. Click on the region node and add a new NavigationPolygon Resource to the region node.
+#. Nhấp vào node region và thêm một Resource NavigationPolygon mới vào node region.
 
    .. image:: img/nav_2d_min_setup_step1.png
 
-#. Define the movable navigation area with the NavigationPolygon draw tool. Then click
-   the :button:`Bake NavigationPolygon` button on the toolbar.
+#. Xác định khu vực điều hướng có thể di chuyển bằng công cụ vẽ NavigationPolygon. Sau đó nhấp vào nút :button:`Bake NavigationPolygon` trên thanh công cụ.
 
    .. image:: img/nav_2d_min_setup_step2.png
 
    .. note::
 
-        The navigation mesh defines the area where an actor can stand and move with its center.
-        Leave enough margin between the navigation polygon edges and collision objects to not get path following actors repeatedly stuck on collision.
+        Navigation mesh xác định khu vực mà actor có thể đứng và di chuyển bằng tâm của nó. Hãy chừa đủ khoảng cách giữa các cạnh của navigation polygon và các object collision để actor đi theo đường đi không bị mắc kẹt liên tục trên collision.
 
-#. Add a CharacterBody2D node in the scene with a basic collision shape and a sprite or mesh
-   for visuals.
+#. Thêm một node CharacterBody2D vào scene với collision shape cơ bản và một sprite hoặc mesh để hiển thị.
 
-#. Add a NavigationAgent2D node below the character node.
+#. Thêm một node NavigationAgent2D bên dưới node character.
 
    .. image:: img/nav_2d_min_setup_step3.webp
 
-#. Add the following script to the CharacterBody2D node. We make sure to set a movement target
-   after the scene has fully loaded and the NavigationServer had time to sync.
+#. Thêm script sau vào node CharacterBody2D. Chúng ta đảm bảo đặt movement target sau khi scene đã tải hoàn tất và NavigationServer có thời gian đồng bộ.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -130,19 +87,19 @@ It uses the NavigationServer2D and a NavigationAgent2D for path movement.
     @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
     func _ready():
-        # These values need to be adjusted for the actor's speed
-        # and the navigation layout.
+        # Các giá trị này cần được điều chỉnh theo tốc độ của actor
+        # và bố cục navigation.
         navigation_agent.path_desired_distance = 4.0
         navigation_agent.target_desired_distance = 4.0
 
-        # Make sure to not await during _ready.
+        # Đảm bảo không await trong _ready.
         actor_setup.call_deferred()
 
     func actor_setup():
-        # Wait for the first physics frame so the NavigationServer can sync.
+        # Chờ physics frame đầu tiên để NavigationServer có thể đồng bộ.
         await get_tree().physics_frame
 
-        # Now that the navigation map is no longer empty, set the movement target.
+        # Giờ navigation map không còn trống, hãy đặt movement target.
         set_movement_target(movement_target_position)
 
     func set_movement_target(movement_target: Vector2):
@@ -181,12 +138,12 @@ It uses the NavigationServer2D and a NavigationAgent2D for path movement.
 
             _navigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
 
-            // These values need to be adjusted for the actor's speed
-            // and the navigation layout.
+            // Các giá trị này cần được điều chỉnh theo tốc độ của actor
+            // và bố cục navigation.
             _navigationAgent.PathDesiredDistance = 4.0f;
             _navigationAgent.TargetDesiredDistance = 4.0f;
 
-            // Make sure to not await during _Ready.
+            // Đảm bảo không await trong _Ready.
             Callable.From(ActorSetup).CallDeferred();
         }
 
@@ -208,14 +165,14 @@ It uses the NavigationServer2D and a NavigationAgent2D for path movement.
 
         private async void ActorSetup()
         {
-            // Wait for the first physics frame so the NavigationServer can sync.
+            // Chờ physics frame đầu tiên để NavigationServer có thể đồng bộ.
             await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
 
-            // Now that the navigation map is no longer empty, set the movement target.
+            // Giờ navigation map không còn trống, hãy đặt movement target.
             MovementTarget = _movementTargetPosition;
         }
     }
 
 .. note::
 
-    On the first frame the NavigationServer map has not synchronized region data and any path query will return empty. Wait for the NavigationServer synchronization by awaiting one frame in the script.
+    Ở frame đầu tiên, map của NavigationServer chưa đồng bộ dữ liệu region và mọi truy vấn đường đi sẽ trả về kết quả trống. Hãy chờ NavigationServer đồng bộ bằng cách await một frame trong script.

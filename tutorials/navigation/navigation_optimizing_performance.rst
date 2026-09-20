@@ -1,117 +1,86 @@
 .. _doc_navigation_optimizing_performance:
 
-Optimizing Navigation Performance
-=================================
+Tối ưu hóa hiệu năng điều hướng
+===============================
 
 .. image:: img/nav_optimization.webp
 
-Common Navigation related performance problems can be categorized into the following topics:
+Các vấn đề hiệu năng phổ biến liên quan đến điều hướng có thể được phân loại thành các chủ đề sau:
 
-- Performance problems with parsing scene tree nodes for navigation mesh baking.
-- Performance problems with baking the actual navigation mesh.
-- Performance problems with NavigationAgent path queries.
-- Performance problems with the actual path search.
-- Performance problems with synchronizing the navigation map.
+- Các vấn đề hiệu năng khi phân tích cú pháp các node trong scene tree để bake navigation mesh. - Các vấn đề hiệu năng khi bake navigation mesh thực tế. - Các vấn đề hiệu năng với các truy vấn path của NavigationAgent. - Các vấn đề hiệu năng với quá trình tìm path thực tế. - Các vấn đề hiệu năng khi đồng bộ hóa navigation map.
 
-In the following sections information can be found on how to identify and fix or at least mitigate their impact on framerates.
+Trong các phần sau, bạn có thể tìm thấy thông tin về cách xác định và khắc phục, hoặc ít nhất là giảm thiểu, ảnh hưởng của chúng đến framerate.
 
-Performance problems with parsing scene tree nodes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Các vấn đề hiệu năng khi phân tích cú pháp các node trong scene tree
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. tip::
 
-    Prefer using simple shapes with as few edges as possible e.g. nothing rounded like a circle, sphere or torus.
+    Ưu tiên sử dụng các shape đơn giản với ít cạnh nhất có thể, chẳng hạn như không sử dụng các shape bo tròn như hình tròn, hình cầu hoặc hình xuyến.
 
-    Prefer using physics collision shapes over complex visual meshes as source geometry as meshes need to be copied from the GPU and are commonly much more detailed than necessary.
+    Ưu tiên sử dụng các physics collision shape thay vì visual mesh phức tạp làm geometry nguồn, vì mesh cần được sao chép từ GPU và thường có nhiều chi tiết hơn mức cần thiết.
 
-In general avoid using very complex geometry as source geometry for baking navigation meshes.
-E.g. never use a very detailed visual mesh, as parsing its shape to data arrays and voxelizing it for the navigation mesh baking will take a long time for no real quality gain on the final navigation mesh.
-Instead, use a very simplified level of detail version of a shape. Even better, use very primitive shapes like boxes and rectangles that only roughly cover the same geometry but still yield a baked result good enough for pathfinding.
+Nhìn chung, hãy tránh sử dụng geometry quá phức tạp làm geometry nguồn để bake navigation mesh. Ví dụ, không bao giờ sử dụng visual mesh có quá nhiều chi tiết, vì việc phân tích shape của nó thành các mảng dữ liệu và voxelize nó để bake navigation mesh sẽ mất nhiều thời gian mà không mang lại cải thiện chất lượng thực tế nào cho navigation mesh cuối cùng. Thay vào đó, hãy sử dụng phiên bản shape có level of detail được đơn giản hóa rất nhiều. Tốt hơn nữa, hãy sử dụng các shape nguyên thủy như box và rectangle, chỉ bao phủ tương đối cùng geometry nhưng vẫn tạo ra kết quả bake đủ tốt cho pathfinding.
 
-Prefer using simple physics collision shapes over visual meshes, as the source geometry for baking navigation meshes.
-Physics shapes are by default very limited and optimized shapes that are easy and quick to parse. A visual mesh on the other hand can range from simple to complex.
-On top, to gain access to visual mesh data the parser needs to request the mesh data arrays from the RenderingServer as visual mesh data is stored directly on the GPU and is not cached on the CPU.
-This requires locking the RenderingServer thread and can severely impact framerate at runtime while the rendering runs multi-threaded.
-If the rendering runs single-threaded, the framerate impact might be even worse and the mesh parsing might freeze the entire game for a few seconds on complex meshes.
+Ưu tiên sử dụng các physics collision shape đơn giản thay vì visual mesh làm geometry nguồn để bake navigation mesh. Physics shape mặc định là các shape được giới hạn và tối ưu hóa rất nhiều, nên dễ và nhanh phân tích cú pháp. Ngược lại, visual mesh có thể từ đơn giản đến phức tạp. Ngoài ra, để truy cập dữ liệu visual mesh, parser cần yêu cầu các mảng dữ liệu mesh từ RenderingServer, vì dữ liệu visual mesh được lưu trực tiếp trên GPU và không được cache trên CPU. Việc này yêu cầu khóa thread của RenderingServer và có thể ảnh hưởng nghiêm trọng đến framerate trong runtime khi rendering chạy đa thread. Nếu rendering chạy đơn thread, ảnh hưởng đến framerate thậm chí có thể tệ hơn và việc phân tích mesh có thể làm toàn bộ game bị treo trong vài giây với các mesh phức tạp.
 
-Performance problems with navigation mesh baking
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Các vấn đề hiệu năng khi bake navigation mesh
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. tip::
 
-    At runtime, always prefer to use a background thread for baking navigation meshes.
+    Trong runtime, luôn ưu tiên sử dụng background thread để bake navigation mesh.
 
-    Increase NavigationMesh ``cell_size`` and ``cell_height`` to create less voxels.
+    Tăng NavigationMesh ``cell_size`` và ``cell_height`` để tạo ít voxel hơn.
 
-    Change the ``SamplePartitionType`` from watershed to monotone or layers to gain baking performance.
+    Thay đổi ``SamplePartitionType`` từ watershed thành monotone hoặc layers để cải thiện hiệu năng baking.
 
 .. warning::
-    NEVER scale source geometry with nodes to avoid precision errors. Most scale applies only visually and shapes that are very large at their base scale require still a lot of extra processing even while downscaled.
+    KHÔNG BAO GIỜ scale geometry nguồn bằng node để tránh lỗi precision. Phần lớn việc scale chỉ áp dụng về mặt hiển thị, và các shape có kích thước rất lớn ở scale gốc vẫn cần nhiều bước xử lý bổ sung ngay cả khi đã được thu nhỏ.
 
-Baking navigation meshes at runtime should always be done in a background thread if possible. Even small sized navigation meshes can take far longer to bake than what is possible to squeeze into a single frame, at least if the framerate should stay at a bearable level.
+Việc bake navigation mesh trong runtime luôn nên được thực hiện trên background thread nếu có thể. Ngay cả navigation mesh có kích thước nhỏ cũng có thể mất nhiều thời gian bake hơn mức có thể hoàn tất trong một frame, ít nhất là nếu muốn giữ framerate ở mức có thể chấp nhận được.
 
-Complexity of source geometry data parsed from scene tree nodes has big impact on baking performance as everything needs to be mapped to a grid / voxels.
-For runtime baking performance the NavigationMesh cell size and cell height should be set as high as possible without causing navigation mesh quality problems for a game.
-If cell size or cell height is set too low the baking is forced to create an excessive amount of voxels to process the source geometry.
-If the source geometry spans over a very large game world it is even possible that the baking process runs out of memory in the middle and crashes the game.
-The partition type can also be lowered depending on how complex the games source geometry is to gain some performance.
-E.g. games with mostly flat surfaces with blocky geometry can get away with the monotone or layers mode that are a lot faster to bake (e.g. because they require no distance field pass).
+Độ phức tạp của dữ liệu geometry nguồn được phân tích từ các node trong scene tree ảnh hưởng lớn đến hiệu năng baking, vì mọi thứ cần được ánh xạ vào một grid / voxel. Để cải thiện hiệu năng baking trong runtime, NavigationMesh cell size và cell height nên được đặt ở mức cao nhất có thể mà không gây ra vấn đề về chất lượng navigation mesh trong game. Nếu cell size hoặc cell height được đặt quá thấp, quá trình baking sẽ buộc phải tạo ra số lượng voxel quá lớn để xử lý geometry nguồn. Nếu geometry nguồn trải rộng trên một game world rất lớn, quá trình baking thậm chí có thể hết memory giữa chừng và làm game bị crash. Partition type cũng có thể được hạ xuống tùy theo độ phức tạp của geometry nguồn trong game để cải thiện hiệu năng. Ví dụ, các game chủ yếu có bề mặt phẳng với geometry dạng khối có thể sử dụng chế độ monotone hoặc layers, vốn bake nhanh hơn rất nhiều (chẳng hạn vì không yêu cầu distance field pass).
 
-Never scale source geometry with nodes. Not only can it result in a lot of precision errors with wrongly matched vertices and edges but also some scaling only exists as visuals and not in the actual parsed data.
-E.g. if a mesh is downscaled visually in the Editor, e.g. the scale set to 0.001 on a MeshInstance, the mesh still requires a gigantic and very complex voxel grid to be processed for the baking.
+Không bao giờ scale geometry nguồn bằng node. Điều này không chỉ có thể gây ra nhiều lỗi precision với các vertex và edge không khớp, mà một số việc scale còn chỉ tồn tại dưới dạng hình ảnh chứ không có trong dữ liệu thực tế đã được phân tích. Ví dụ, nếu một mesh được thu nhỏ về mặt hiển thị trong Editor, chẳng hạn scale được đặt thành 0.001 trên một MeshInstance, mesh đó vẫn yêu cầu một voxel grid khổng lồ và rất phức tạp để xử lý khi baking.
 
-Performance problems with NavigationAgent path queries
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Các vấn đề hiệu năng với các truy vấn path của NavigationAgent
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. tip::
 
-    Avoid unnecessary path resets and queries every frame in NavigationAgent scripts.
+    Tránh reset path và thực hiện truy vấn không cần thiết trong mỗi frame ở các script NavigationAgent.
 
-    Avoid updating all NavigationAgent paths in the same frame.
+    Tránh cập nhật path của tất cả NavigationAgent trong cùng một frame.
 
-Logical errors and wasteful operations in the custom NavigationAgent scripts are very common causes of performance issues, e.g. watch out for resetting the path every single frame.
-By default NavigationAgents are optimized to only query new paths when the target position changes, the navigation map changes or they are forced too far away from the desired path distance.
+Các lỗi logic và thao tác gây lãng phí trong những script NavigationAgent tùy chỉnh là các nguyên nhân rất phổ biến gây ra vấn đề hiệu năng. Ví dụ, hãy chú ý không reset path trong từng frame. Theo mặc định, NavigationAgent được tối ưu để chỉ truy vấn path mới khi vị trí mục tiêu thay đổi, navigation map thay đổi hoặc chúng bị buộc phải cách quá xa khoảng cách path mong muốn.
 
-E.g. when AI should move to the player, the target position should not be set to the player position every single frame as this queries a new path every frame.
-Instead, the distance from the current target position to the player position should be compared and only when the player has moved too far away a new target position should be set.
+Ví dụ, khi AI cần di chuyển đến player, không nên đặt vị trí mục tiêu thành vị trí của player trong từng frame, vì điều này sẽ truy vấn path mới trong từng frame. Thay vào đó, hãy so sánh khoảng cách từ vị trí mục tiêu hiện tại đến vị trí của player, và chỉ đặt vị trí mục tiêu mới khi player đã di chuyển quá xa.
 
-Do not check beforehand if a target position is reachable every frame. What looks like an innocent check is the equivalent of an expensive path query behind the scene.
-If the plan is to request a new path anyway should the position be reachable, a path should be queried directly.
-By looking at the last position of the returned path and if that position is in a "reachable" distance to the checked position it answers the "is this position reachable?" question.
-This avoids doing the equivalent of two full path queries every frame for the same NavigationAgent.
+Không kiểm tra trước trong từng frame xem vị trí mục tiêu có thể đi tới được hay không. Một kiểm tra tưởng như vô hại thực chất tương đương với một truy vấn path tốn kém ở phía sau. Nếu dự định vẫn yêu cầu path mới khi vị trí có thể đi tới được, hãy truy vấn path trực tiếp. Bằng cách xem xét vị trí cuối cùng của path được trả về và kiểm tra xem vị trí đó có nằm trong khoảng cách "reachable" với vị trí đã kiểm tra hay không, bạn có thể trả lời câu hỏi "vị trí này có thể đi tới được không?". Cách này tránh thực hiện tương đương hai truy vấn path đầy đủ trong mỗi frame cho cùng một NavigationAgent.
 
-Divide the total number of NavigationAgents into update groups or use random timers so that they do not all request new paths in the same frame.
+Chia tổng số NavigationAgent thành các nhóm cập nhật hoặc sử dụng timer ngẫu nhiên để chúng không cùng yêu cầu path mới trong một frame.
 
-Performance problems with the actual path search
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Các vấn đề hiệu năng với quá trình tìm path thực tế
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. tip::
 
-    Optimize overdetailed navigation meshes by reducing the amount of polygons and edges.
+    Tối ưu navigation mesh có quá nhiều chi tiết bằng cách giảm số lượng polygon và edge.
 
-The cost of the actual path search correlates directly with the amount of navigation mesh polygons and edges and not the real size of a game world.
-If a giant game world uses very optimized navigation meshes with only few polygons that cover large areas, performance should be acceptable.
-If the game world is splintered into very small navigation meshes that each have tiny polygons (like for TileMaps) pathfinding performance will be reduced.
+Chi phí của quá trình tìm path thực tế tương quan trực tiếp với số lượng polygon và edge của navigation mesh, chứ không phải kích thước thực tế của game world. Nếu một game world khổng lồ sử dụng navigation mesh được tối ưu tốt với chỉ vài polygon bao phủ các khu vực rộng lớn, hiệu năng sẽ ở mức chấp nhận được. Nếu game world bị chia nhỏ thành các navigation mesh rất nhỏ, mỗi mesh lại có các polygon nhỏ (như trong TileMap), hiệu năng pathfinding sẽ giảm.
 
-A common problem is a sudden performance drop when a target position is not reachable in a path query.
-This performance drop is "normal" and the result of a too large, too unoptimized navigation mesh with way to much polygons and edges to search through.
-In normal path searches where the target position can be reached quickly the pathfinding will do an early exit as soon as the position is reached which can hide this lack of optimization for a while.
-If the target position can not be reached the pathfinding has to do a far longer search through the available polygons to confirm that the position is absolutely not reachable.
+Một vấn đề phổ biến là hiệu năng đột ngột giảm khi không thể đi tới vị trí mục tiêu trong một truy vấn path. Sự sụt giảm hiệu năng này là "bình thường" và là kết quả của một navigation mesh quá lớn, chưa được tối ưu, với quá nhiều polygon và edge cần tìm kiếm. Trong các lần tìm path thông thường khi có thể nhanh chóng đi tới vị trí mục tiêu, pathfinding sẽ thoát sớm ngay khi đạt đến vị trí đó, tạm thời che giấu sự thiếu tối ưu này. Nếu không thể đi tới vị trí mục tiêu, pathfinding phải tìm kiếm lâu hơn nhiều qua các polygon hiện có để xác nhận rằng hoàn toàn không thể đi tới vị trí đó.
 
-Performance problems with navigation map synchronization
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Các vấn đề hiệu năng khi đồng bộ hóa navigation map
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. tip::
 
-    Merge navigation meshes polygons by vertex instead of by edge connection wherever possible.
+    Gộp polygon của navigation mesh theo vertex thay vì theo kết nối edge ở bất cứ nơi nào có thể.
 
-When changes are made to e.g. navigation meshes or navigation regions, the NavigationServer needs to synchronize the navigation map.
-Depending on the complexity of navigation meshes, this can take a significant amount of time which may impact the framerate.
+Khi có thay đổi, chẳng hạn với navigation mesh hoặc navigation region, NavigationServer cần đồng bộ hóa navigation map. Tùy thuộc vào độ phức tạp của navigation mesh, việc này có thể mất một khoảng thời gian đáng kể và ảnh hưởng đến framerate.
 
-The NavigationServer merges navigation meshes either by vertex or by edge connection.
-The merge by vertex happens when the two vertex of two different edges land in the same map grid cells. This is a rather quick and low-cost operation.
-The merge by edge connection happens in a second pass for all still unmerged edges. All the free edges are checked for possible edge connections by both distance and angle which is rather costly.
+NavigationServer gộp navigation mesh theo vertex hoặc theo kết nối edge. Việc gộp theo vertex xảy ra khi hai vertex của hai edge khác nhau nằm trong cùng các map grid cell. Đây là một thao tác khá nhanh và ít tốn chi phí. Việc gộp theo kết nối edge xảy ra trong pass thứ hai đối với tất cả edge vẫn chưa được gộp. Tất cả free edge được kiểm tra các kết nối edge có thể có dựa trên cả khoảng cách và góc, nên khá tốn chi phí.
 
-So apart from the general rule to have as few polygon edges as possible, as many edges as possible should be merged by vertex upfront so only a few edges are left for the more costly edge connection calculation.
-The debug Navigation PerformanceMonitor can be used to get statistics on how many polygons and edges are available and how many of them are unmerged or not merged by vertex.
-If the ratio between vertex merged and edge connections is way off (vertex should be significantly higher) the navigation meshes are properly created or placed very inefficient.
+Vì vậy, ngoài quy tắc chung là giữ số lượng polygon edge ở mức thấp nhất có thể, nên gộp trước càng nhiều edge càng tốt theo vertex để chỉ còn lại một vài edge cho phép tính kết nối edge tốn kém hơn. Debug Navigation PerformanceMonitor có thể được sử dụng để lấy thống kê về số lượng polygon và edge hiện có, cũng như số lượng chưa được gộp hoặc chưa được gộp theo vertex. Nếu tỷ lệ giữa vertex được gộp và kết nối edge chênh lệch quá lớn (vertex nên cao hơn đáng kể), navigation mesh có thể đã được tạo hoặc đặt không hiệu quả.

@@ -1,154 +1,112 @@
 .. _doc_high_level_multiplayer:
 
-High-level multiplayer
-======================
+Multiplayer cấp cao
+===================
 
-High-level vs low-level API
----------------------------
+API cấp cao so với API cấp thấp
+-------------------------------
 
-The following explains the differences of high- and low-level networking in Godot as well as some fundamentals. If you want to jump in head-first and add networking to your first nodes, skip to `Initializing the network`_ below. But make sure to read the rest later on!
+Phần sau giải thích sự khác biệt giữa networking cấp cao và cấp thấp trong Godot, cũng như một số kiến thức nền tảng. Nếu muốn bắt tay ngay vào việc thêm networking cho các node đầu tiên, hãy chuyển đến `Khởi tạo network`_ bên dưới. Nhưng hãy nhớ đọc phần còn lại sau đó!
 
-Godot always supported standard low-level networking via :abbr:`UDP (User Datagram Protocol)`, :abbr:`TCP (Transmission Control Protocol)` and some higher-level protocols such as :abbr:`HTTP (Hypertext Transfer Protocol)` and :abbr:`SSL (Secure Sockets Layer)`.
-These protocols are flexible and can be used for almost anything. However, using them to synchronize game state manually can be a large amount of work. Sometimes that work can't be avoided or is worth it, for example when working with a custom server implementation on the backend. But in most cases, it's worthwhile to consider Godot's high-level networking API, which sacrifices some of the fine-grained control of low-level networking for greater ease of use.
+Godot luôn hỗ trợ networking cấp thấp tiêu chuẩn thông qua :abbr:`UDP (User Datagram Protocol)`, :abbr:`TCP (Transmission Control Protocol)` và một số protocol cấp cao hơn như :abbr:`HTTP (Hypertext Transfer Protocol)` và :abbr:`SSL (Secure Sockets Layer)`. Các protocol này rất linh hoạt và có thể được dùng cho hầu hết mọi mục đích. Tuy nhiên, việc dùng chúng để đồng bộ state của game theo cách thủ công có thể đòi hỏi rất nhiều công sức. Đôi khi không thể tránh công việc đó hoặc việc này là đáng làm, chẳng hạn khi làm việc với một triển khai server tùy chỉnh ở backend. Nhưng trong hầu hết trường hợp, bạn nên cân nhắc API networking cấp cao của Godot, API này hy sinh một phần khả năng kiểm soát chi tiết của networking cấp thấp để đổi lấy sự dễ sử dụng cao hơn.
 
-This is due to the inherent limitations of the low-level protocols:
+Điều này là do những hạn chế vốn có của các protocol cấp thấp:
 
-- TCP ensures packets will always arrive reliably and in order, but latency is generally higher due to error correction.
-  It's also quite a complex protocol because it understands what a "connection" is, and optimizes for goals that often don't suit applications like multiplayer games. Packets are buffered to be sent in larger batches, trading less per-packet overhead for higher latency. This can be useful for things like HTTP, but generally not for games. Some of this can be configured and disabled (e.g. by disabling "Nagle's algorithm" for the TCP connection).
-- UDP is a simpler protocol, which only sends packets (and has no concept of a "connection"). No error correction
-  makes it pretty quick (low latency), but packets may be lost along the way or received in the wrong order.
-  Added to that, the MTU (maximum packet size) for UDP is generally low (only a few hundred bytes), so transmitting
-  larger packets means splitting them, reorganizing them and retrying if a part fails.
+- TCP đảm bảo các packet luôn đến nơi một cách đáng tin cậy và đúng thứ tự, nhưng độ trễ thường cao hơn do việc sửa lỗi. Đây cũng là một protocol khá phức tạp vì nó hiểu "connection" là gì và tối ưu cho những mục tiêu thường không phù hợp với các ứng dụng như game multiplayer. Các packet được đệm để gửi theo những batch lớn hơn, đánh đổi overhead trên mỗi packet thấp hơn để có độ trễ cao hơn. Điều này có thể hữu ích cho những thứ như HTTP, nhưng nhìn chung không phù hợp với game. Một phần trong số này có thể được cấu hình và tắt đi (ví dụ: tắt "Nagle's algorithm" cho TCP connection). - UDP là một protocol đơn giản hơn, chỉ gửi các packet (và không có khái niệm về một "connection"). Việc không sửa lỗi khiến nó khá nhanh (độ trễ thấp), nhưng packet có thể bị thất lạc trên đường truyền hoặc được nhận không đúng thứ tự. Ngoài ra, MTU (maximum packet size) của UDP thường thấp (chỉ vài trăm byte), vì vậy việc truyền các packet lớn hơn đồng nghĩa với việc phải chia nhỏ, sắp xếp lại và thử lại nếu một phần bị lỗi.
 
-In general, TCP can be thought of as reliable, ordered, and slow; UDP as unreliable, unordered and fast.
-Because of the large difference in performance, it often makes sense to re-build the parts of TCP wanted for games (optional reliability and packet order), while avoiding the unwanted parts (congestion/traffic control features, Nagle's algorithm, etc). Due to this, most game engines come with such an implementation, and Godot is no exception.
+Nhìn chung, có thể xem TCP là đáng tin cậy, có thứ tự và chậm; còn UDP là không đáng tin cậy, không theo thứ tự và nhanh. Do sự khác biệt lớn về hiệu năng, việc xây dựng lại những phần của TCP cần thiết cho game (độ tin cậy và thứ tự packet tùy chọn), đồng thời tránh những phần không cần thiết (các tính năng kiểm soát tắc nghẽn/lưu lượng, Nagle's algorithm, v.v.) thường là hợp lý. Vì lý do này, hầu hết game engine đều đi kèm một triển khai như vậy, và Godot cũng không ngoại lệ.
 
-In summary, you can use the low-level networking API for maximum control and implement everything on top of bare network protocols or use the high-level API based on :ref:`SceneTree <class_SceneTree>` that does most of the heavy lifting behind the scenes in a generally optimized way.
+Tóm lại, bạn có thể dùng API networking cấp thấp để kiểm soát tối đa và triển khai mọi thứ trên các network protocol thuần túy, hoặc dùng API cấp cao dựa trên :ref:`SceneTree <class_SceneTree>`, API này xử lý phần lớn công việc phức tạp ở phía sau theo một cách nhìn chung đã được tối ưu hóa.
 
 .. note:: Most of Godot's supported platforms offer all or most of the mentioned high- and low-level networking
-          features. As networking is always largely hardware and operating system dependent, however,
-          some features may change or not be available on some target platforms. Most notably,
-          the HTML5 platform currently offers WebSockets and WebRTC support but lacks some of the higher-level features, as
-          well as raw access to low-level protocols like TCP and UDP.
+          các tính năng. Tuy nhiên, vì networking phần lớn luôn phụ thuộc vào phần cứng và hệ điều hành, một số tính năng có thể thay đổi hoặc không khả dụng trên một số platform đích. Đáng chú ý nhất, platform HTML5 hiện hỗ trợ WebSockets và WebRTC nhưng thiếu một số tính năng cấp cao, cũng như quyền truy cập thô vào các protocol cấp thấp như TCP và UDP.
 
 .. note:: More about TCP/IP, UDP, and networking:
           https://gafferongames.com/post/udp_vs_tcp/
 
-          Gaffer On Games has a lot of useful articles about networking in Games
-          (`here <https://gafferongames.com/categories/game-networking/>`__), including the comprehensive
-          `introduction to networking models in games <https://gafferongames.com/post/what_every_programmer_needs_to_know_about_game_networking/>`__.
+          Gaffer On Games có nhiều bài viết hữu ích về networking trong Games (`here <https://gafferongames.com/categories/game-networking/>`__), bao gồm `introduction to networking models in games <https://gafferongames.com/post/what_every_programmer_needs_to_know_about_game_networking/>`__ toàn diện.
 
 .. warning:: Adding networking to your game comes with some responsibility.
-             It can make your application vulnerable if done wrong and may lead to cheats or exploits.
-             It may even allow an attacker to compromise the machines your application runs on
-             and use your servers to send spam, attack others or steal your users' data if they play your game.
+             Nếu thực hiện không đúng, việc này có thể khiến ứng dụng của bạn dễ bị tấn công và có thể dẫn đến cheat hoặc exploit. Thậm chí, kẻ tấn công có thể xâm phạm các máy tính nơi ứng dụng của bạn đang chạy và sử dụng server của bạn để gửi spam, tấn công người khác hoặc đánh cắp dữ liệu của người dùng nếu họ chơi game của bạn.
 
-             This is always the case when networking is involved and has nothing to do with Godot.
-             You can of course experiment, but when you release a networked application,
-             always take care of any possible security concerns.
+             Điều này luôn đúng khi networking có liên quan và không liên quan gì đến Godot. Tất nhiên, bạn có thể thử nghiệm, nhưng khi phát hành một ứng dụng có networking, hãy luôn xử lý mọi vấn đề bảo mật có thể xảy ra.
 
-Mid-level abstraction
+Abstraction cấp trung
 ---------------------
 
-Before going into how we would like to synchronize a game across the network, it can be helpful to understand how the base network API for synchronization works.
+Trước khi tìm hiểu cách chúng ta muốn đồng bộ một game qua network, việc hiểu cách API network cơ sở hoạt động cho mục đích đồng bộ có thể rất hữu ích.
 
-Godot uses a mid-level object :ref:`MultiplayerPeer <class_MultiplayerPeer>`.
-This object is not meant to be created directly, but is designed so that several C++ implementations can provide it.
+Godot sử dụng một object cấp trung :ref:`MultiplayerPeer <class_MultiplayerPeer>`. Object này không được tạo trực tiếp, mà được thiết kế để một số triển khai C++ có thể cung cấp nó.
 
-This object extends from :ref:`PacketPeer <class_PacketPeer>`, so it inherits all the useful methods for serializing, sending and receiving data. On top of that, it adds methods to set a peer, transfer mode, etc. It also includes signals that will let you know when peers connect or disconnect.
+Object này kế thừa từ :ref:`PacketPeer <class_PacketPeer>`, vì vậy nó kế thừa tất cả các method hữu ích để serialize, gửi và nhận dữ liệu. Ngoài ra, nó bổ sung các method để thiết lập peer, transfer mode, v.v. Nó cũng bao gồm các signal cho phép bạn biết khi peer kết nối hoặc ngắt kết nối.
 
-This class interface can abstract most types of network layers, topologies and libraries. By default, Godot
-provides an implementation based on ENet (:ref:`ENetMultiplayerPeer <class_ENetMultiplayerPeer>`),
-one based on WebRTC (:ref:`WebRTCMultiplayerPeer <class_WebRTCMultiplayerPeer>`), and one based on WebSocket
-(:ref:`WebSocketMultiplayerPeer <class_WebSocketMultiplayerPeer>`), but this could be used to implement
-mobile APIs (for ad hoc WiFi, Bluetooth) or custom device/console-specific networking APIs.
+Interface của class này có thể abstraction hầu hết các loại network layer, topology và library. Theo mặc định, Godot cung cấp một triển khai dựa trên ENet (:ref:`ENetMultiplayerPeer <class_ENetMultiplayerPeer>`), một triển khai dựa trên WebRTC (:ref:`WebRTCMultiplayerPeer <class_WebRTCMultiplayerPeer>`) và một triển khai dựa trên WebSocket (:ref:`WebSocketMultiplayerPeer <class_WebSocketMultiplayerPeer>`), nhưng cũng có thể dùng nó để triển khai các mobile API (cho WiFi ad hoc, Bluetooth) hoặc các network API tùy chỉnh dành riêng cho thiết bị/console.
 
-For most common cases, using this object directly is discouraged, as Godot provides even higher level networking facilities.
-This object is still made available in case a game has specific needs for a lower-level API.
+Trong hầu hết trường hợp phổ biến, không khuyến khích sử dụng trực tiếp object này, vì Godot cung cấp các tiện ích networking ở cấp cao hơn nữa. Tuy vậy, object này vẫn được cung cấp trong trường hợp game có nhu cầu cụ thể đối với API cấp thấp hơn.
 
-Hosting considerations
-----------------------
+Các lưu ý khi hosting
+---------------------
 
-When hosting a server, clients on your :abbr:`LAN (Local Area Network)` can
-connect using the internal IP address which is usually of the form
-``192.168.*.*``. This internal IP address is **not** reachable by
-non-LAN/Internet clients.
+Khi hosting một server, các client trong :abbr:`LAN (Local Area Network)` có thể kết nối bằng địa chỉ IP nội bộ, thường có dạng ``192.168.*.*``. Địa chỉ IP nội bộ này **không** thể được các client ngoài LAN/Internet truy cập.
 
-On Windows, you can find your internal IP address by opening a command prompt
-and entering ``ipconfig``. On macOS, open a Terminal and enter ``ifconfig``. On
-Linux, open a terminal and enter ``ip addr``.
+Trên Windows, bạn có thể tìm địa chỉ IP nội bộ bằng cách mở command prompt và nhập ``ipconfig``. Trên macOS, mở Terminal và nhập ``ifconfig``. Trên Linux, mở terminal và nhập ``ip addr``.
 
-If you're hosting a server on your own machine and want non-LAN clients to
-connect to it, you'll probably have to *forward* the server port on your router.
-This is required to make your server reachable from the Internet since most
-residential connections use a `NAT
-<https://en.wikipedia.org/wiki/Network_address_translation>`__. Godot's
-high-level multiplayer API only uses UDP, so you must forward the port in UDP,
-not just TCP.
+Nếu bạn hosting server trên máy của mình và muốn các client ngoài LAN kết nối đến đó, có lẽ bạn sẽ phải *forward* port của server trên router. Đây là yêu cầu cần thiết để server có thể truy cập từ Internet, vì hầu hết kết nối gia đình đều sử dụng `NAT <https://en.wikipedia.org/wiki/Network_address_translation>`__. API multiplayer cấp cao của Godot chỉ sử dụng UDP, vì vậy bạn phải forward port bằng UDP, không chỉ TCP.
 
-After forwarding a UDP port and making sure your server uses that port, you can
-use `this website <https://icanhazip.com/>`__ to find your public IP address.
-Then give this public IP address to any Internet clients that wish to connect to
-your server.
+Sau khi forward một UDP port và đảm bảo server sử dụng port đó, bạn có thể dùng `this website <https://icanhazip.com/>`__ để tìm địa chỉ IP public của mình. Sau đó cung cấp địa chỉ IP public này cho mọi client Internet muốn kết nối đến server của bạn.
 
-Godot's high-level multiplayer API uses a modified version of ENet which allows
-for full IPv6 support.
+API multiplayer cấp cao của Godot sử dụng một phiên bản ENet đã được sửa đổi, cho phép hỗ trợ IPv6 đầy đủ.
 
-Initializing the network
-------------------------
+Khởi tạo network
+----------------
 
-High-level networking in Godot is managed by the :ref:`SceneTree <class_SceneTree>`.
+Networking cấp cao trong Godot được quản lý bởi :ref:`SceneTree <class_SceneTree>`.
 
-Each node has a ``multiplayer`` property, which is a reference to the ``MultiplayerAPI`` instance configured for it
-by the scene tree. Initially, every node is configured with the same default ``MultiplayerAPI`` object.
+Mỗi node có một property ``multiplayer``, là tham chiếu đến instance ``MultiplayerAPI`` được scene tree cấu hình cho node đó. Ban đầu, mọi node đều được cấu hình với cùng một object ``MultiplayerAPI`` mặc định.
 
-It is possible to create a new ``MultiplayerAPI`` object and assign it to a ``NodePath`` in the scene tree,
-which will override ``multiplayer`` for the node at that path and all of its descendants.
-This allows sibling nodes to be configured with different peers, which makes it possible to run a server
-and a client simultaneously in one instance of Godot.
+Bạn có thể tạo một object ``MultiplayerAPI`` mới và gán nó cho một ``NodePath`` trong scene tree; thao tác này sẽ ghi đè ``multiplayer`` cho node tại path đó và tất cả node con của nó. Nhờ vậy, các node cùng cấp có thể được cấu hình với những peer khác nhau, cho phép chạy đồng thời một server và một client trong cùng một instance của Godot.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # By default, these expressions are interchangeable.
-    multiplayer # Get the MultiplayerAPI object configured for this node.
-    get_tree().get_multiplayer() # Get the default MultiplayerAPI object.
+    # Theo mặc định, các expression này có thể dùng thay thế cho nhau.
+    multiplayer # Lấy object MultiplayerAPI được cấu hình cho node này.
+    get_tree().get_multiplayer() # Lấy object MultiplayerAPI mặc định.
 
  .. code-tab:: csharp
 
-    // By default, these expressions are interchangeable.
-    Multiplayer; // Get the MultiplayerAPI object configured for this node.
-    GetTree().GetMultiplayer(); // Get the default MultiplayerAPI object.
+    // Theo mặc định, các expression này có thể dùng thay thế cho nhau.
+    Multiplayer; // Lấy object MultiplayerAPI được cấu hình cho node này.
+    GetTree().GetMultiplayer(); // Lấy object MultiplayerAPI mặc định.
 
-To initialize networking, a ``MultiplayerPeer`` object must be created, initialized as a server or client,
-and passed to the ``MultiplayerAPI``.
+Để khởi tạo networking, phải tạo một object ``MultiplayerPeer``, khởi tạo nó với vai trò server hoặc client, rồi truyền nó vào ``MultiplayerAPI``.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Create client.
+    # Tạo client.
     var peer = ENetMultiplayerPeer.new()
     peer.create_client(IP_ADDRESS, PORT)
     multiplayer.multiplayer_peer = peer
 
-    # Create server.
+    # Tạo server.
     var peer = ENetMultiplayerPeer.new()
     peer.create_server(PORT, MAX_CLIENTS)
     multiplayer.multiplayer_peer = peer
 
  .. code-tab:: csharp
 
-    // Create client.
+    // Tạo client.
     var peer = new ENetMultiplayerPeer();
     peer.CreateClient(IPAddress, Port);
     Multiplayer.MultiplayerPeer = peer;
 
-    // Create server.
+    // Tạo server.
     var peer = new ENetMultiplayerPeer();
     peer.CreateServer(Port, MaxClients);
     Multiplayer.MultiplayerPeer = peer;
 
-To terminate networking:
+Để kết thúc networking:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -161,28 +119,22 @@ To terminate networking:
 
 .. warning::
 
-    When exporting to Android, make sure to enable the ``INTERNET``
-    permission in the Android export preset before exporting the project or
-    using one-click deploy. Otherwise, network communication of any kind will be
-    blocked by Android.
+    Khi export sang Android, hãy đảm bảo bật permission ``INTERNET`` trong Android export preset trước khi export project hoặc sử dụng one-click deploy. Nếu không, Android sẽ chặn mọi hình thức giao tiếp network.
 
-Managing connections
---------------------
+Quản lý connection
+------------------
 
-Every peer is assigned a unique ID. The server's ID is always 1, and clients are assigned a random positive integer.
+Mỗi peer được gán một ID duy nhất. ID của server luôn là 1, còn client được gán một số nguyên dương ngẫu nhiên.
 
-Responding to connections or disconnections is possible by connecting to ``MultiplayerAPI``'s signals:
+Bạn có thể phản hồi việc kết nối hoặc ngắt kết nối bằng cách kết nối đến các signal của ``MultiplayerAPI``:
 
-- ``peer_connected(id: int)`` This signal is emitted with the newly connected peer's ID on each other peer, and on the new peer multiple times, once with each other peer's ID.
-- ``peer_disconnected(id: int)`` This signal is emitted on every remaining peer when one disconnects.
+- ``peer_connected(id: int)`` Signal này được phát ra với ID của peer vừa kết nối trên mỗi peer khác, và trên peer mới nhiều lần, mỗi lần với ID của một peer khác. - ``peer_disconnected(id: int)`` Signal này được phát ra trên mọi peer còn lại khi một peer ngắt kết nối.
 
-The rest are only emitted on clients:
+Các signal còn lại chỉ được phát ra trên client:
 
-- ``connected_to_server()``
-- ``connection_failed()``
-- ``server_disconnected()``
+- ``connected_to_server()`` - ``connection_failed()`` - ``server_disconnected()``
 
-To get the unique ID of the associated peer:
+Để lấy ID duy nhất của peer liên kết:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -194,7 +146,7 @@ To get the unique ID of the associated peer:
     Multiplayer.GetUniqueId();
 
 
-To check whether the peer is server or client:
+Để kiểm tra peer là server hay client:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -207,12 +159,10 @@ To check whether the peer is server or client:
 
 .. _doc_high_level_multiplayer_rpcs:
 
-Remote procedure calls
-----------------------
+Remote procedure call
+---------------------
 
-Remote procedure calls, or RPCs, are functions that can be called on other peers. To create one, use the ``@rpc`` annotation
-before a function definition. To call an RPC, use ``Callable``'s method ``rpc()`` to call in every peer, or ``rpc_id()`` to
-call in a specific peer.
+Remote procedure calls, or RPCs, are functions that can be called on other peers. To create one, use the ``@rpc`` annotation before a function definition. To call an RPC, use ``Callable``'s method ``rpc()`` to call in every peer, or ``rpc_id()`` to call in a specific peer.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -242,34 +192,21 @@ call in a specific peer.
     }
 
 
-RPCs will not serialize Objects or Callables.
+RPC sẽ không serialize Object hoặc Callable.
 
-For a remote call to be successful, the sending and receiving node need to have the same ``NodePath``, which means they
-must have the same name. When using ``add_child()`` for nodes which are expected to use RPCs, set the argument
-``force_readable_name`` to ``true``.
+Để một remote call thành công, node gửi và node nhận cần có cùng ``NodePath``, nghĩa là chúng phải có cùng name. Khi sử dụng ``add_child()`` cho các node dự kiến sẽ dùng RPC, hãy đặt argument ``force_readable_name`` thành ``true``.
 
 .. warning::
 
-    If a function is annotated with ``@rpc`` on the client script (resp. server script),
-    then this function must also be declared on the server script (resp. client script).
-    Both RPCs must have the same signature which is evaluated with a checksum of **all RPCs**.
-    All RPCs in a script are checked at once, and all RPCs must be declared on both the client
-    scripts and the server scripts, **even functions that are currently not in use**.
+    Nếu một hàm được chú thích bằng ``@rpc`` trong client script (tương ứng server script), thì hàm này cũng phải được khai báo trong server script (tương ứng client script). Cả hai RPC phải có cùng signature, được đánh giá bằng checksum của **tất cả RPC**. Tất cả RPC trong một script được kiểm tra cùng lúc, và mọi RPC phải được khai báo trong cả client script lẫn server script, **kể cả những hàm hiện không được sử dụng**.
 
-    The signature of the RPC includes the ``@rpc()`` declaration, the function, return type,
-    **and** the NodePath. If an RPC resides in a script attached to ``/root/Main/Node1``, then it
-    must reside in precisely the same path and node on both the client script and the server
-    script. Function arguments are not checked for matching between the server and client code
-    (example: ``func sendstuff():`` and ``func sendstuff(arg1, arg2):`` **will pass** signature
-    matching).
+    Signature của RPC bao gồm khai báo ``@rpc()``, hàm, kiểu trả về, **và** NodePath. Nếu một RPC nằm trong script được gắn vào ``/root/Main/Node1``, thì nó phải nằm chính xác trên cùng path và node trong cả client script lẫn server script. Các đối số của hàm không được kiểm tra sự tương ứng giữa mã server và client (ví dụ: ``func sendstuff():`` và ``func sendstuff(arg1, arg2):`` **sẽ vượt qua** việc đối chiếu signature).
 
-    If these conditions are not met (if all RPCs do not pass signature matching), the script may print an
-    error or cause unwanted behavior. The error message may be unrelated to the RPC function you are
-    currently building and testing.
+    Nếu không đáp ứng các điều kiện này (nếu tất cả RPC không vượt qua việc đối chiếu signature), script có thể in ra lỗi hoặc gây ra hành vi không mong muốn. Thông báo lỗi có thể không liên quan đến hàm RPC mà bạn đang xây dựng và kiểm thử.
 
-    See further explanation and troubleshooting on `this post <https://github.com/godotengine/godot/issues/57869#issuecomment-1034215138>`__.
+    Xem thêm phần giải thích và khắc phục sự cố tại `this post <https://github.com/godotengine/godot/issues/57869#issuecomment-1034215138>`__.
 
-The annotation can take a number of arguments, which have default values. ``@rpc`` is equivalent to:
+Chú thích này có thể nhận một số đối số, với các giá trị mặc định. ``@rpc`` tương đương với:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -280,96 +217,85 @@ The annotation can take a number of arguments, which have default values. ``@rpc
 
     [Rpc(MultiplayerApi.RpcMode.Authority, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable, TransferChannel = 0)]
 
-The parameters and their functions are as follows:
+Các tham số và chức năng của chúng như sau:
 
 ``mode``:
 
-- ``"authority"``: Only the multiplayer authority can call remotely.
-  The authority is the server by default, but can be changed per-node using
+- ``"authority"``: Chỉ authority của multiplayer mới có thể gọi từ xa. Theo mặc định, authority là server, nhưng có thể thay đổi theo từng node bằng cách sử dụng
   :ref:`Node.set_multiplayer_authority <class_Node_method_set_multiplayer_authority>`.
-- ``"any_peer"``: Clients are allowed to call remotely. Useful for transferring user input.
+- ``"any_peer"``: Client được phép gọi từ xa. Hữu ích để truyền input của người dùng.
 
 ``sync``:
 
-- ``"call_remote"``: The function will not be called on the local peer.
-- ``"call_local"``: The function can be called on the local peer. Useful when the server is also a player.
+- ``"call_remote"``: Hàm sẽ không được gọi trên peer cục bộ. - ``"call_local"``: Hàm có thể được gọi trên peer cục bộ. Hữu ích khi server cũng là một player.
 
 ``transfer_mode``:
 
-- ``"unreliable"`` Packets are not acknowledged, can be lost, and can arrive at any order.
-- ``"unreliable_ordered"`` Packets are received in the order they were sent in. This is achieved by ignoring packets that arrive later if another that was sent after them has already been received. Can cause packet loss if used incorrectly.
-- ``"reliable"`` Resend attempts are sent until packets are acknowledged, and their order is preserved. Has a significant performance penalty.
+- ``"unreliable"`` Các packet không được xác nhận, có thể bị mất và có thể đến theo bất kỳ thứ tự nào. - ``"unreliable_ordered"`` Các packet được nhận theo thứ tự chúng được gửi đi. Điều này đạt được bằng cách bỏ qua các packet đến sau nếu một packet khác được gửi sau chúng đã được nhận. Có thể gây mất packet nếu sử dụng không đúng cách. - ``"reliable"`` Các lần thử gửi lại được thực hiện cho đến khi packet được xác nhận và thứ tự của chúng được giữ nguyên. Gây ảnh hưởng đáng kể đến hiệu năng.
 
-``transfer_channel`` is the channel index.
+``transfer_channel`` là chỉ mục channel.
 
-The first 3 can be passed in any order, but ``transfer_channel`` must always be last.
+3 mục đầu tiên có thể được truyền theo bất kỳ thứ tự nào, nhưng ``transfer_channel`` luôn phải ở cuối.
 
-The function ``multiplayer.get_remote_sender_id()`` can be used to get the unique id of an rpc sender, when used within the function called by rpc.
+Có thể sử dụng hàm ``multiplayer.get_remote_sender_id()`` để lấy id duy nhất của người gửi rpc khi được sử dụng bên trong hàm được gọi bởi rpc.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _on_some_input(): # Connected to some input.
-        transfer_some_input.rpc_id(1) # Send the input only to the server.
+    func _on_some_input(): # Được kết nối với một input nào đó.
+        transfer_some_input.rpc_id(1) # Chỉ gửi input đến server.
 
 
-    # Call local is required if the server is also a player.
+    # Cần gọi local nếu server cũng là một player.
     @rpc("any_peer", "call_local", "reliable")
     func transfer_some_input():
-        # The server knows who sent the input.
+        # Server biết ai đã gửi input.
         var sender_id = multiplayer.get_remote_sender_id()
-        # Process the input and affect game logic.
+        # Xử lý input và tác động đến game logic.
 
  .. code-tab:: csharp
 
-    private void OnSomeInput() // Connected to some input.
+    private void OnSomeInput() // Được kết nối với một input nào đó.
     {
-        RpcId(1, MethodName.TransferSomeInput); // Send the input only to the server.
+        RpcId(1, MethodName.TransferSomeInput); // Chỉ gửi input đến server.
     }
 
-    // Call local is required if the server is also a player.
+    // Cần gọi local nếu server cũng là một player.
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
     private void TransferSomeInput()
     {
-        // The server knows who sent the input.
+        // Server biết ai đã gửi input.
         int senderId = Multiplayer.GetRemoteSenderId();
-        // Process the input and affect game logic.
+        // Xử lý input và tác động đến game logic.
     }
 
 .. note::
 
-    RPC methods must be defined on :ref:`class_Node`-derived classes. Attempting
-    to use high-level RPC calls on methods defined only in non-Node classes
-    (such as Resource) will result in runtime errors.
+    Các phương thức RPC phải được định nghĩa trên các class dẫn xuất từ :ref:`class_Node`. Việc cố gắng sử dụng các lệnh gọi RPC cấp cao trên các phương thức chỉ được định nghĩa trong những class không phải Node (chẳng hạn như Resource) sẽ dẫn đến lỗi runtime.
 
 Channels
 --------
-Modern networking protocols support channels, which are separate connections within the connection. This allows for multiple
-streams of packets that do not interfere with each other.
+Các giao thức networking hiện đại hỗ trợ channel, tức các kết nối riêng biệt bên trong một kết nối. Điều này cho phép có nhiều luồng packet mà không gây ảnh hưởng lẫn nhau.
 
-For example, game chat related messages and some of the core gameplay messages should all be sent reliably, but a gameplay
-message should not wait for a chat message to be acknowledged. This can be achieved by using different channels.
+Ví dụ: các message liên quan đến chat trong game và một số message gameplay cốt lõi đều nên được gửi một cách đáng tin cậy, nhưng một message gameplay không nên phải chờ message chat được xác nhận. Có thể đạt được điều này bằng cách sử dụng các channel khác nhau.
 
-Channels are also useful when used with the unreliable ordered transfer mode. Sending packets of variable size with this transfer mode can
-cause packet loss, since packets which are slower to arrive are ignored. Separating them into multiple streams of homogeneous packets
-by using channels allows ordered transfer with little packet loss, and without the latency penalty caused by reliable mode.
+Channel cũng hữu ích khi được sử dụng với chế độ truyền unreliable ordered. Việc gửi các packet có kích thước thay đổi bằng chế độ truyền này có thể gây mất packet, vì các packet đến chậm hơn sẽ bị bỏ qua. Việc tách chúng thành nhiều luồng gồm các packet đồng nhất bằng cách sử dụng channel cho phép truyền theo thứ tự với ít mất packet, mà không chịu mức độ trễ do chế độ reliable gây ra.
 
-The default channel with index 0 is actually three different channels - one for each transfer mode.
+Channel mặc định có chỉ mục 0 thực ra là ba channel khác nhau - mỗi channel tương ứng với một chế độ truyền.
 
-Example lobby implementation
-----------------------------
+Ví dụ triển khai lobby
+----------------------
 
-This is an example lobby that can handle peers joining and leaving, notify UI scenes through signals, and start the game after all clients
-have loaded the game scene.
+Đây là một lobby mẫu có thể xử lý việc peer tham gia và rời đi, thông báo cho các UI scene thông qua signal, đồng thời bắt đầu game sau khi tất cả client đã tải game scene.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     extends Node
 
-    # Autoload named Lobby
+    # Autoload có tên Lobby
 
-    # These signals can be connected to by a UI lobby scene or the game scene.
+    # Các signal này có thể được kết nối với một UI lobby scene hoặc game scene.
     signal player_connected(peer_id, player_info)
     signal player_disconnected(peer_id)
     signal server_disconnected
@@ -378,14 +304,14 @@ have loaded the game scene.
     const DEFAULT_SERVER_IP = "127.0.0.1" # IPv4 localhost
     const MAX_CONNECTIONS = 20
 
-    # This will contain player info for every player,
-    # with the keys being each player's unique IDs.
+    # Nơi này sẽ chứa thông tin người chơi của mọi player,
+    # với các key là ID duy nhất của từng player.
     var players = {}
 
-    # This is the local player info. This should be modified locally
-    # before the connection is made. It will be passed to every other peer.
-    # For example, the value of "name" can be set to something the player
-    # entered in a UI scene.
+    # Đây là thông tin của player cục bộ. Thông tin này nên được sửa đổi cục bộ
+    # trước khi kết nối được thiết lập. Nó sẽ được truyền đến mọi peer khác.
+    # Ví dụ, giá trị của "name" có thể được đặt thành nội dung mà player
+    # đã nhập trong một UI scene.
     var player_info = {"name": "Name"}
 
     var players_loaded = 0
@@ -426,14 +352,14 @@ have loaded the game scene.
         players.clear()
 
 
-    # When the server decides to start the game from a UI scene,
+    # Khi server quyết định bắt đầu game từ một UI scene,
     # do Lobby.load_game.rpc(filepath)
     @rpc("call_local", "reliable")
     func load_game(game_scene_path):
         get_tree().change_scene_to_file(game_scene_path)
 
 
-    # Every peer will call this when they have loaded the game scene.
+    # Mỗi peer sẽ gọi hàm này khi đã tải game scene.
     @rpc("any_peer", "call_local", "reliable")
     func player_loaded():
         if multiplayer.is_server():
@@ -443,8 +369,8 @@ have loaded the game scene.
                 players_loaded = 0
 
 
-    # When a peer connects, send them my player info.
-    # This allows transfer of all desired data for each player, not only the unique ID.
+    # Khi một peer kết nối, hãy gửi thông tin player của tôi cho nó.
+    # Điều này cho phép truyền toàn bộ dữ liệu mong muốn của từng player, không chỉ ID duy nhất.
     func _on_player_connected(id):
         _register_player.rpc_id(id, player_info)
 
@@ -484,7 +410,7 @@ have loaded the game scene.
     {
         public static Lobby Instance { get; private set; }
 
-        // These signals can be connected to by a UI lobby scene or the game scene.
+        // Các signal này có thể được kết nối với một UI lobby scene hoặc game scene.
         [Signal]
         public delegate void PlayerConnectedEventHandler(int peerId, Godot.Collections.Dictionary<string, string> playerInfo);
         [Signal]
@@ -496,14 +422,14 @@ have loaded the game scene.
         private const string DefaultServerIP = "127.0.0.1"; // IPv4 localhost
         private const int MaxConnections = 20;
 
-        // This will contain player info for every player,
-        // with the keys being each player's unique IDs.
+        // Nơi này sẽ chứa thông tin người chơi của mọi player,
+        // với các key là ID duy nhất của từng player.
         private Godot.Collections.Dictionary<long, Godot.Collections.Dictionary<string, string>> _players = new Godot.Collections.Dictionary<long, Godot.Collections.Dictionary<string, string>>();
 
-        // This is the local player info. This should be modified locally
-        // before the connection is made. It will be passed to every other peer.
-        // For example, the value of "name" can be set to something the player
-        // entered in a UI scene.
+        // Đây là thông tin của player cục bộ. Thông tin này nên được sửa đổi cục bộ
+        // trước khi kết nối được thiết lập. Nó sẽ được truyền đến mọi peer khác.
+        // Ví dụ, giá trị của "name" có thể được đặt thành nội dung mà player
+        // đã nhập trong một UI scene.
         private Godot.Collections.Dictionary<string, string> _playerInfo = new Godot.Collections.Dictionary<string, string>()
         {
             { "Name", "PlayerName" },
@@ -562,7 +488,7 @@ have loaded the game scene.
             _players.Clear();
         }
 
-        // When the server decides to start the game from a UI scene,
+        // Khi server quyết định bắt đầu game từ một UI scene,
         // do Rpc(Lobby.MethodName.LoadGame, filePath);
         [Rpc(CallLocal = true,TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
         private void LoadGame(string gameScenePath)
@@ -570,7 +496,7 @@ have loaded the game scene.
             GetTree().ChangeSceneToFile(gameScenePath);
         }
 
-        // Every peer will call this when they have loaded the game scene.
+        // Mỗi peer sẽ gọi hàm này khi đã tải game scene.
         [Rpc(MultiplayerApi.RpcMode.AnyPeer,CallLocal = true,TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
         private void PlayerLoaded()
         {
@@ -585,8 +511,8 @@ have loaded the game scene.
             }
         }
 
-        // When a peer connects, send them my player info.
-        // This allows transfer of all desired data for each player, not only the unique ID.
+        // Khi một peer kết nối, hãy gửi thông tin player của tôi cho nó.
+        // Điều này cho phép truyền toàn bộ dữ liệu mong muốn của từng player, không chỉ ID duy nhất.
         private void OnPlayerConnected(long id)
         {
             RpcId(id, MethodName.RegisterPlayer, _playerInfo);
@@ -626,89 +552,84 @@ have loaded the game scene.
         }
     }
 
-The game scene's root node should be named Game. In the script attached to it:
+Root node của game scene nên được đặt tên là Game. Trong script được gắn vào node đó:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    extends Node3D # Or Node2D.
+    extends Node3D # Hoặc Node2D.
 
 
 
     func _ready():
-        # Preconfigure game.
+        # Cấu hình trước game.
 
-        Lobby.player_loaded.rpc_id(1) # Tell the server that this peer has loaded.
+        Lobby.player_loaded.rpc_id(1) # Thông báo cho server rằng peer này đã tải xong.
 
 
-    # Called only on the server.
+    # Chỉ được gọi trên server.
     func start_game():
-        # All peers are ready to receive RPCs in this scene.
+        # Tất cả peer đã sẵn sàng nhận RPC trong scene này.
 
  .. code-tab:: csharp
 
     using Godot;
 
-    public partial class Game : Node3D // Or Node2D.
+    public partial class Game : Node3D // Hoặc Node2D.
     {
         public override void _Ready()
         {
-            // Preconfigure game.
+            // Cấu hình trước game.
 
-            Lobby.Instance.RpcId(1, Lobby.MethodName.PlayerLoaded); // Tell the server that this peer has loaded.
+            Lobby.Instance.RpcId(1, Lobby.MethodName.PlayerLoaded); // Thông báo cho server rằng peer này đã tải xong.
         }
 
-        // Called only on the server.
+        // Chỉ được gọi trên server.
         public void StartGame()
         {
-            // All peers are ready to receive RPCs in this scene.
+            // Tất cả peer đã sẵn sàng nhận RPC trong scene này.
         }
     }
 
-Exporting for dedicated servers
--------------------------------
+Export cho dedicated server
+---------------------------
 
-Once you've made a multiplayer game, you may want to export it to run it on
-a dedicated server with no GPU available. See
+Sau khi tạo xong một game multiplayer, bạn có thể muốn export game để chạy trên dedicated server không có GPU. Xem
 :ref:`doc_exporting_for_dedicated_servers` for more information.
 
 .. note::
 
-    The code samples on this page aren't designed to run on a dedicated
-    server. You'll have to modify them so the server isn't considered to be a
-    player. You'll also have to modify the game starting mechanism so that the
-    first player who joins can start the game.
+    Các mẫu code trên trang này không được thiết kế để chạy trên dedicated server. Bạn sẽ phải sửa chúng để server không được xem là một player. Bạn cũng sẽ phải sửa cơ chế bắt đầu game để player đầu tiên tham gia có thể bắt đầu game.
 
 Authentication
 --------------
 
-Before hosting your game online to a public audience, you may want to consider adding authentication and protecting your RPCs against unauthenticated access.
-You can use the :ref:`SceneMultiplayer <class_SceneMultiplayer>`'s built-in authentication mechanism for this.
+Trước khi host game online cho công chúng, bạn có thể cân nhắc thêm authentication và bảo vệ các RPC khỏi việc truy cập chưa được xác thực. Bạn có thể sử dụng cơ chế authentication tích hợp sẵn của :ref:`SceneMultiplayer <class_SceneMultiplayer>` cho việc này.
 
-On the server:
+Trên server:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # This goes after `multiplayer.multiplayer_peer = peer`.
+    # Đặt đoạn này sau `multiplayer.multiplayer_peer = peer`.
     multiplayer.auth_timout = 3
     multiplayer.auth_callback = func(peer_id: int, payload: PackedByteArray):
         var auth_data: Dictionary = JSON.parse_string(payload.get_string_from_utf8())
-        # Your authentication logic (such as checking the supplied username/password against a database)
+        # Logic authentication của bạn (chẳng hạn như kiểm tra username/password được cung cấp với cơ sở dữ liệu)
 
-        # Tell the MultiplayerAPI that the authentication was successful
+        # Thông báo cho MultiplayerAPI rằng authentication đã thành công
         if authentication_successful:
             multiplayer.complete_auth(peer_id)
 
-On the client:
+Trên client:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # This goes after `multiplayer.multiplayer_peer = peer`.
+    # Đặt đoạn này sau `multiplayer.multiplayer_peer = peer`.
     multiplayer.auth_callback = func:
-        # We have to set this on the client for the `peer_authenticating`
-        # signal to emit.
+        # Ta phải thiết lập điều này trên client để signal `peer_authenticating`
+        # được phát.
         pass
     multiplayer.peer_authenticating.connect(func(peer_id: int):
             var auth_data = {
@@ -717,42 +638,24 @@ On the client:
             }
             multiplayer.send_auth(1, JSON.stringify(auth_data).to_utf8_buffer())
 
-            # Tell the MultiplayerAPI that the authentication was successful.
+            # Thông báo cho MultiplayerAPI rằng authentication đã thành công.
             multiplayer.complete_auth(peer_id)
 
-As soon as both the client's and the server's :ref:`complete_auth() <class_SceneMultiplayer_method_complete_auth>`
-methods have been called, the connection is considered to be established and the
-``connected_to_server`` and ``peer_connected`` signals fire.
+Ngay khi các phương thức :ref:`complete_auth() <class_SceneMultiplayer_method_complete_auth>` của client và server đều đã được gọi, kết nối được xem là đã thiết lập và các signal ``connected_to_server`` và ``peer_connected`` sẽ được phát.
 
-Secure multiplayer design
--------------------------
+Thiết kế multiplayer an toàn
+----------------------------
 
-Godot's high-level multiplayer API makes it easier to build networked games, but
-it does not automatically make gameplay logic secure. For competitive or
-persistent multiplayer games, treat all client input as untrusted.
+High-level multiplayer API của Godot giúp xây dựng game network dễ dàng hơn, nhưng không tự động làm cho game logic trở nên an toàn. Đối với game multiplayer cạnh tranh hoặc lâu dài, hãy xem mọi input từ client là không đáng tin cậy.
 
-A common mistake is to let clients authoritatively decide important game states,
-such as player position, combat results, inventory changes, or match outcomes.
-This can make cheating much easier, and result in more frequent desynchronization
-("desync").
+Một sai lầm phổ biến là để client toàn quyền quyết định các trạng thái game quan trọng, chẳng hạn như vị trí player, kết quả chiến đấu, thay đổi inventory hoặc kết quả trận đấu. Điều này có thể khiến việc gian lận dễ dàng hơn nhiều và dẫn đến tình trạng mất đồng bộ ("desync") thường xuyên hơn.
 
-In general, prefer the following patterns:
+Nhìn chung, hãy ưu tiên các pattern sau:
 
-- Use server-authoritative logic for gameplay-critical decisions.
-- Validate RPC arguments before applying them to the game state.
-- Avoid trusting client-reported positions, timers, cooldowns, or resource
-  values without checks.
-- Add safety checks and rate limits to actions that can be triggered frequently.
+- Sử dụng logic do server kiểm soát (server-authoritative) cho các quyết định quan trọng đối với gameplay. - Xác thực các đối số RPC trước khi áp dụng chúng vào trạng thái game. - Tránh tin tưởng các vị trí, bộ hẹn giờ, thời gian cooldown hoặc giá trị tài nguyên do client báo cáo mà không kiểm tra. - Thêm các bước kiểm tra an toàn và giới hạn tần suất cho những hành động có thể được kích hoạt thường xuyên.
 
-In short, you should design your networking so that the server remains the
-source of truth for important states.
+Tóm lại, bạn nên thiết kế networking sao cho server vẫn là nguồn sự thật duy nhất đối với các trạng thái quan trọng.
 
-For example, instead of accepting a client's final position directly, consider
-sending player input or movement intent to the authority/server, then validating
-and applying the result there. This comes with some tradeoffs (such as
-server-side performance and complexity due to the need for client-side
-prediction), but will make it much harder for attackers to cheat by sending
-falsified data.
+Ví dụ, thay vì chấp nhận trực tiếp vị trí cuối cùng của client, hãy cân nhắc gửi input hoặc ý định di chuyển của người chơi đến authority/server, sau đó xác thực và áp dụng kết quả tại đó. Cách này đi kèm một số đánh đổi (chẳng hạn như hiệu năng phía server và độ phức tạp do cần prediction phía client), nhưng sẽ khiến kẻ tấn công khó gian lận hơn nhiều bằng cách gửi dữ liệu giả mạo.
 
-See `Choosing the right network model for your multiplayer game <https://mas-bandwidth.com/choosing-the-right-network-model-for-your-multiplayer-game/>`__
-for more information on different multiplayer models and their security implications.
+Xem `Choosing the right network model for your multiplayer game <https://mas-bandwidth.com/choosing-the-right-network-model-for-your-multiplayer-game/>`__ để biết thêm thông tin về các mô hình multiplayer khác nhau và những ảnh hưởng của chúng đối với bảo mật.

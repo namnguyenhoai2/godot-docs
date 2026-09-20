@@ -8,140 +8,136 @@ WebRTC
 HTML5, WebSocket, WebRTC
 ------------------------
 
-One of Godot's great features is its ability to export to the HTML5/WebAssembly platform, allowing your game to run directly in the browser when a user visit your webpage.
+Một trong những tính năng tuyệt vời của Godot là khả năng export sang nền tảng HTML5/WebAssembly, cho phép game của bạn chạy trực tiếp trong trình duyệt khi người dùng truy cập webpage của bạn.
 
-This is a great opportunity for both demos and full games, but used to come with some limitations. In the area of networking, browsers used to support only HTTPRequests until recently, when first WebSocket and then WebRTC were proposed as standards.
+Đây là một cơ hội tuyệt vời cho cả bản demo lẫn game hoàn chỉnh, nhưng trước đây có một số hạn chế. Về networking, cho đến gần đây các trình duyệt chỉ hỗ trợ HTTPRequests, sau đó WebSocket và rồi WebRTC lần lượt được đề xuất làm các tiêu chuẩn.
 
 WebSocket
 ~~~~~~~~~
 
-When the WebSocket protocol was standardized in December 2011, it allowed browsers to create stable and bidirectional connections to a WebSocket server. The protocol is a very powerful tool to send push notifications to browsers, and has been used to implement chats, turn-based games, etc.
+Khi giao thức WebSocket được chuẩn hóa vào tháng 12 năm 2011, nó cho phép các trình duyệt tạo kết nối ổn định và hai chiều đến một WebSocket server. Giao thức này là một công cụ rất mạnh để gửi push notification đến các trình duyệt, và đã được dùng để triển khai chat, game theo lượt, v.v.
 
-WebSockets, though, still use a TCP connection, which is good for reliability but not for latency, so not good for real-time applications like VoIP and fast-paced games.
+Tuy nhiên, WebSocket vẫn sử dụng kết nối TCP, vốn tốt cho độ tin cậy nhưng không tốt cho độ trễ, vì vậy không phù hợp với các ứng dụng real-time như VoIP và game có nhịp độ nhanh.
 
 WebRTC
 ~~~~~~
 
-For this reason, since 2010, Google started working on a new technology called WebRTC, which later on, in 2017, became a W3C candidate recommendation. WebRTC is a much more complex set of specifications, and relies on many other technologies behind the scenes (ICE, DTLS, SDP) to provide fast, real-time, and secure communication between two peers.
+Vì lý do này, từ năm 2010, Google bắt đầu phát triển một công nghệ mới có tên WebRTC, sau đó vào năm 2017 đã trở thành đề xuất khuyến nghị của W3C. WebRTC là một tập hợp đặc tả phức tạp hơn nhiều, và dựa vào nhiều công nghệ khác ở phía sau (ICE, DTLS, SDP) để cung cấp khả năng giao tiếp nhanh, real-time và an toàn giữa hai peer.
 
-The idea is to find the fastest route between the two peers and establish whenever possible a direct communication (i.e. try to avoid a relaying server).
+Ý tưởng là tìm tuyến đường nhanh nhất giữa hai peer và thiết lập giao tiếp trực tiếp khi có thể (tức là cố gắng tránh sử dụng relay server).
 
-However, this comes at a price, which is that some media information must be exchanged between the two peers before the communication can start (in the form of Session Description Protocol - SDP strings). This usually takes the form of a so-called WebRTC Signaling Server.
+Tuy nhiên, điều này đi kèm với một cái giá: một số thông tin media phải được trao đổi giữa hai peer trước khi giao tiếp có thể bắt đầu (dưới dạng các chuỗi Session Description Protocol - SDP). Việc này thường được thực hiện thông qua một WebRTC Signaling Server.
 
 .. image:: img/webrtc_signaling.png
 
-Peers connect to a signaling server (for example a WebSocket server) and send their media information. The server then relays this information to other peers, allowing them to establish the desired direct communication. Once this step is done, peers can disconnect from the signaling server and keep the direct Peer-to-Peer (P2P) connection open.
+Các peer kết nối đến một signaling server (ví dụ: một WebSocket server) và gửi thông tin media của mình. Sau đó, server chuyển tiếp thông tin này đến các peer khác, cho phép chúng thiết lập giao tiếp trực tiếp mong muốn. Khi hoàn tất bước này, các peer có thể ngắt kết nối khỏi signaling server và duy trì kết nối Peer-to-Peer (P2P) trực tiếp.
 
-Using WebRTC in Godot
----------------------
+Sử dụng WebRTC trong Godot
+--------------------------
 
-WebRTC is implemented in Godot via two main classes :ref:`WebRTCPeerConnection <class_WebRTCPeerConnection>` and :ref:`WebRTCDataChannel <class_WebRTCDataChannel>`, plus the multiplayer API implementation :ref:`WebRTCMultiplayerPeer <class_WebRTCMultiplayerPeer>`. See section on :ref:`high-level multiplayer <doc_high_level_multiplayer>` for more details.
+WebRTC được triển khai trong Godot thông qua hai class chính :ref:`WebRTCPeerConnection <class_WebRTCPeerConnection>` và :ref:`WebRTCDataChannel <class_WebRTCDataChannel>`, cùng với triển khai multiplayer API :ref:`WebRTCMultiplayerPeer <class_WebRTCMultiplayerPeer>`. Xem phần về :ref:`high-level multiplayer <doc_high_level_multiplayer>` để biết thêm chi tiết.
 
 .. note:: These classes are available automatically in HTML5, but **require an external GDExtension plugin on native (non-HTML5) platforms**. Check out the `webrtc-native plugin repository <https://github.com/godotengine/webrtc-native>`__ for instructions and to get the latest `release <https://github.com/godotengine/webrtc-native/releases>`__.
 
 .. warning::
 
-    When exporting to Android, make sure to enable the ``INTERNET``
-    permission in the Android export preset before exporting the project or
-    using one-click deploy. Otherwise, network communication of any kind will be
-    blocked by Android.
+    Khi export sang Android, hãy đảm bảo bật permission ``INTERNET`` trong Android export preset trước khi export project hoặc sử dụng one-click deploy. Nếu không, Android sẽ chặn mọi hình thức giao tiếp mạng.
 
-Minimal connection example
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Ví dụ kết nối tối thiểu
+~~~~~~~~~~~~~~~~~~~~~~~
 
-This example will show you how to create a WebRTC connection between two peers in the same application.
-This is not very useful in real life, but will give you a good overview of how a WebRTC connection is set up.
+Ví dụ này sẽ hướng dẫn bạn cách tạo một kết nối WebRTC giữa hai peer trong cùng một application. Điều này không hữu ích lắm trong thực tế, nhưng sẽ giúp bạn có cái nhìn tổng quan về cách thiết lập một kết nối WebRTC.
 
 ::
 
     extends Node
 
-    # Create the two peers
+    # Tạo hai peer
     var p1 = WebRTCPeerConnection.new()
     var p2 = WebRTCPeerConnection.new()
-    # And a negotiated channel for each each peer
+    # Và một negotiated channel cho mỗi peer
     var ch1 = p1.create_data_channel("chat", {"id": 1, "negotiated": true})
     var ch2 = p2.create_data_channel("chat", {"id": 1, "negotiated": true})
 
     func _ready():
-        # Connect P1 session created to itself to set local description.
+        # Kết nối session P1 đã được tạo với chính nó để thiết lập local description.
         p1.session_description_created.connect(p1.set_local_description)
-        # Connect P1 session and ICE created to p2 set remote description and candidates.
+        # Kết nối session và ICE đã được tạo của P1 với p2 để thiết lập remote description và các candidate.
         p1.session_description_created.connect(p2.set_remote_description)
         p1.ice_candidate_created.connect(p2.add_ice_candidate)
 
-        # Same for P2
+        # Tương tự với P2
         p2.session_description_created.connect(p2.set_local_description)
         p2.session_description_created.connect(p1.set_remote_description)
         p2.ice_candidate_created.connect(p1.add_ice_candidate)
 
-        # Let P1 create the offer
+        # Để P1 tạo offer
         p1.create_offer()
 
-        # Wait a second and send message from P1.
+        # Chờ một giây rồi gửi message từ P1.
         await get_tree().create_timer(1).timeout
         ch1.put_packet("Hi from P1".to_utf8_buffer())
 
-        # Wait a second and send message from P2.
+        # Chờ một giây rồi gửi message từ P2.
         await get_tree().create_timer(1).timeout
         ch2.put_packet("Hi from P2".to_utf8_buffer())
 
     func _process(_delta):
-        # Poll connections
+        # Poll các connection
         p1.poll()
         p2.poll()
 
-        # Check for messages
+        # Kiểm tra message
         if ch1.get_ready_state() == ch1.STATE_OPEN and ch1.get_available_packet_count() > 0:
             print("P1 received: ", ch1.get_packet().get_string_from_utf8())
         if ch2.get_ready_state() == ch2.STATE_OPEN and ch2.get_available_packet_count() > 0:
             print("P2 received: ", ch2.get_packet().get_string_from_utf8())
 
-This will print:
+Kết quả in ra sẽ là:
 
 ::
 
     P1 received: Hi from P1
     P2 received: Hi from P2
 
-Local signaling example
-~~~~~~~~~~~~~~~~~~~~~~~
+Ví dụ signaling cục bộ
+~~~~~~~~~~~~~~~~~~~~~~
 
-This example expands on the previous one, separating the peers in two different scenes, and using a :ref:`singleton <doc_singletons_autoload>` as a signaling server.
+Ví dụ này mở rộng ví dụ trước bằng cách tách các peer vào hai scene khác nhau và sử dụng một :ref:`singleton <doc_singletons_autoload>` làm signaling server.
 
 ::
 
     extends Node
-    # An example p2p chat client.
+    # Một client chat p2p mẫu.
 
     var peer = WebRTCPeerConnection.new()
 
-    # Create negotiated data channel.
+    # Tạo negotiated data channel.
     var channel = peer.create_data_channel("chat", {"negotiated": true, "id": 1})
 
     func _ready():
-        # Connect all functions.
+        # Kết nối tất cả các function.
         peer.ice_candidate_created.connect(self._on_ice_candidate)
         peer.session_description_created.connect(self._on_session)
 
-        # Register to the local signaling server (see below for the implementation).
+        # Đăng ký với signaling server cục bộ (xem phần triển khai bên dưới).
         Signaling.register(String(get_path()))
 
 
     func _on_ice_candidate(mid, index, sdp):
-        # Send the ICE candidate to the other peer via signaling server.
+        # Gửi ICE candidate đến peer còn lại thông qua signaling server.
         Signaling.send_candidate(String(get_path()), mid, index, sdp)
 
 
     func _on_session(type, sdp):
-        # Send the session to other peer via signaling server.
+        # Gửi session đến peer còn lại thông qua signaling server.
         Signaling.send_session(String(get_path()), type, sdp)
-        # Set generated description as local.
+        # Đặt description đã tạo làm local description.
         peer.set_local_description(type, sdp)
 
 
     func _process(delta):
-        # Always poll the connection frequently.
+        # Luôn poll connection thường xuyên.
         peer.poll()
         if channel.get_ready_state() == WebRTCDataChannel.STATE_OPEN:
             while channel.get_available_packet_count() > 0:
@@ -151,16 +147,16 @@ This example expands on the previous one, separating the peers in two different 
     func send_message(message):
         channel.put_packet(message.to_utf8_buffer())
 
-And now for the local signaling server:
+Và bây giờ là signaling server cục bộ:
 
 .. note:: This local signaling server is supposed to be used as a :ref:`singleton <doc_singletons_autoload>` to connect two peers in the same scene.
 
 ::
 
-    # A local signaling server. Add this to autoloads with name "Signaling" (/root/Signaling)
+    # Một signaling server cục bộ. Thêm nó vào autoloads với tên "Signaling" (/root/Signaling)
     extends Node
 
-    # We will store the two peers here
+    # Chúng ta sẽ lưu trữ hai peer ở đây
     var peers = []
 
     func register(path):
@@ -171,7 +167,7 @@ And now for the local signaling server:
 
 
     func _find_other(path):
-        # Find the other registered peer.
+        # Tìm peer còn lại đã đăng ký.
         for p in peers:
             if p != path:
                 return p
@@ -189,11 +185,11 @@ And now for the local signaling server:
         assert(other != "")
         get_node(other).peer.add_ice_candidate(mid, index, sdp)
 
-Then you can use it like this:
+Sau đó, bạn có thể sử dụng nó như sau:
 
 ::
 
-    # Main scene (main.gd)
+    # Scene chính (main.gd)
     extends Node
 
     const Chat = preload("res://chat.gd")
@@ -204,22 +200,22 @@ Then you can use it like this:
         add_child(p1)
         add_child(p2)
 
-        # Wait a second and send message from P1
+        # Chờ một giây rồi gửi message từ P1
         await get_tree().create_timer(1).timeout
         p1.send_message("Hi from %s" % String(p1.get_path()))
 
-        # Wait a second and send message from P2
+        # Chờ một giây rồi gửi message từ P2
         await get_tree().create_timer(1).timeout
         p2.send_message("Hi from %s" % String(p2.get_path()))
 
-This will print something similar to this:
+Kết quả in ra sẽ tương tự như sau:
 
 ::
 
     /root/main/@@3 received: Hi from /root/main/@@2
     /root/main/@@2 received: Hi from /root/main/@@3
 
-Remote signaling with WebSocket
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Signaling từ xa với WebSocket
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A more advanced demo using WebSocket for signaling peers and :ref:`WebRTCMultiplayerPeer <class_WebRTCMultiplayerPeer>` is available in the `godot demo projects <https://github.com/godotengine/godot-demo-projects>`_ under `networking/webrtc_signaling`.
+Một bản demo nâng cao sử dụng WebSocket để signaling giữa các peer và :ref:`WebRTCMultiplayerPeer <class_WebRTCMultiplayerPeer>` có sẵn trong `godot demo projects <https://github.com/godotengine/godot-demo-projects>`_ tại `networking/webrtc_signaling`.
