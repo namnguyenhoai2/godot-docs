@@ -1,210 +1,102 @@
 .. _doc_troubleshooting_physics_issues:
 
-Troubleshooting physics issues
-==============================
+Khắc phục sự cố vật lý
+======================
 
-When working with a physics engine, you may encounter unexpected results.
+Khi làm việc với physics engine, bạn có thể gặp phải những kết quả ngoài dự kiến.
 
-While many of these issues can be resolved through configuration, some of them
-are the result of engine bugs. For known issues related to the physics engine,
-see
-`open physics-related issues on GitHub <https://github.com/godotengine/godot/issues?q=is%3Aopen+is%3Aissue+label%3Atopic%3Aphysics>`__.
-Looking through `closed issues
-<https://github.com/godotengine/godot/issues?q=+is%3Aclosed+is%3Aissue+label%3Atopic%3Aphysics>`__
-can also help answer questions related to physics engine behavior.
+Mặc dù nhiều vấn đề trong số này có thể được giải quyết thông qua cấu hình, một số lại là kết quả của các lỗi trong engine. Để xem các vấn đề đã biết liên quan đến physics engine, hãy xem `open physics-related issues on GitHub <https://github.com/godotengine/godot/issues?q=is%3Aopen+is%3Aissue+label%3Atopic%3Aphysics>`__. Xem qua `closed issues <https://github.com/godotengine/godot/issues?q=+is%3Aclosed+is%3Aissue+label%3Atopic%3Aphysics>`__ cũng có thể giúp giải đáp các câu hỏi liên quan đến cách physics engine hoạt động.
 
-Objects are passing through each other at high speeds
------------------------------------------------------
+Các object đi xuyên qua nhau khi di chuyển ở tốc độ cao
+-------------------------------------------------------
 
-This is known as *tunneling*. Enabling **Continuous CD** (Continuous Collision Detection) in the RigidBody
-properties can sometimes resolve this issue. If this does not help, there are
-other solutions you can try:
+Hiện tượng này được gọi là *tunneling*. Việc bật **Continuous CD** (Continuous Collision Detection) trong các thuộc tính của RigidBody đôi khi có thể giải quyết vấn đề này. Nếu cách này không hiệu quả, bạn có thể thử các giải pháp khác sau:
 
-- Make your static collision shapes thicker. For example, if you have a thin
-  floor that the player can't get below in some way, you can make the collider
-  thicker than the floor's visual representation.
-- Modify your fast-moving object's collision shape depending on its movement
-  speed. The faster the object moves, the larger the collision shape should
-  extend outside of the object to ensure it can collide with thin walls more
-  reliably.
-- Increase :ref:`Physics Ticks per Second<class_ProjectSettings_property_physics/common/physics_ticks_per_second>`
-  in the advanced Project Settings. While
-  this has other benefits (such as more stable simulation and reduced input
-  lag), this increases CPU utilization and may not be viable for mobile/web
-  platforms. Multipliers of the default value of ``60`` (such as ``120``, ``180``
-  or ``240``) should be preferred for a smooth appearance on most displays.
+- Làm cho các collision shape tĩnh dày hơn. Ví dụ: nếu bạn có một sàn mỏng mà player không thể rơi xuống dưới vì một lý do nào đó, bạn có thể làm collider dày hơn phần hiển thị trực quan của sàn. - Điều chỉnh collision shape của object di chuyển nhanh tùy theo tốc độ di chuyển của nó. Object di chuyển càng nhanh thì collision shape càng phải nhô ra ngoài object nhiều hơn để đảm bảo nó có thể va chạm với các bức tường mỏng đáng tin cậy hơn. - Tăng :ref:`Physics Ticks per Second<class_ProjectSettings_property_physics/common/physics_ticks_per_second>` trong Project Settings nâng cao. Mặc dù điều này mang lại các lợi ích khác (chẳng hạn như mô phỏng ổn định hơn và giảm độ trễ input), nó làm tăng mức sử dụng CPU và có thể không phù hợp với các nền tảng mobile/web. Nên ưu tiên các hệ số nhân của giá trị mặc định ``60`` (chẳng hạn như ``120``, ``180`` hoặc ``240``) để có hình ảnh mượt mà trên hầu hết màn hình.
 
-Stacked objects are unstable and wobbly
----------------------------------------
-
-Despite seeming like a simple problem, stable RigidBody simulation with stacked
-objects is difficult to implement in a physics engine. This is caused by
-integrating forces going against each other. The more stacked objects are
-present, the stronger the forces will be against each other. This eventually
-causes the simulation to become wobbly, making the objects unable to rest on top
-of each other without moving.
-
-Increasing the physics simulation rate can help alleviate this issue. To do so,
-increase :ref:`Physics Ticks per Second<class_ProjectSettings_property_physics/common/physics_ticks_per_second>`
-in the advanced Project Settings. Note that doing this
-increases CPU utilization and may not be viable for mobile/web platforms.
-Multipliers of the default value of ``60`` (such as ``120``, ``180`` or ``240``)
-should be preferred for a smooth appearance on most displays.
-
-In 3D, switching the physics engine from the default GodotPhysics to Jolt
-can also improve stability. See :ref:`doc_using_jolt_physics` for more information.
-
-Scaled physics bodies or collision shapes do not collide correctly
-------------------------------------------------------------------
-
-Godot does not currently support scaling of physics bodies or collision shapes.
-As a workaround, change the collision shape's extents instead of changing its
-scale. If you want the visual representation's scale to change as well, change
-the scale of the underlying visual representation (Sprite2D, MeshInstance3D, …)
-and change the collision shape's extents separately. Make sure the collision
-shape is not a child of the visual representation in this case.
-
-Since resources are shared by default, you'll have to make the collision shape
-resource unique if you don't want the change to be applied to all nodes using
-the same collision shape resource in the scene. This can be done in two ways:
-
-- In the editor, by clicking :menu:`Make Unique` in the CollisionShape
-  resource dropdown in the inspector, then changing its size.
-- In a script, by calling ``duplicate()`` in a script on the collision shape
-  resource *before* changing its size.
-
-Thin objects are wobbly when resting on the floor
+Các object xếp chồng không ổn định và bị rung lắc
 -------------------------------------------------
 
-This can be due to one of two causes:
+Mặc dù có vẻ là một vấn đề đơn giản, việc triển khai mô phỏng RigidBody ổn định với các object xếp chồng là rất khó trong physics engine. Nguyên nhân là do việc tích hợp các lực tác động ngược chiều nhau. Càng có nhiều object xếp chồng, các lực tác động ngược chiều nhau càng mạnh. Cuối cùng, điều này khiến mô phỏng trở nên rung lắc, làm cho các object không thể nằm yên trên nhau mà không di chuyển.
 
-- The floor's collision shape is too thin.
-- The RigidBody's collision shape is too thin.
+Tăng tần suất mô phỏng vật lý có thể giúp giảm bớt vấn đề này. Để thực hiện, hãy tăng :ref:`Physics Ticks per Second<class_ProjectSettings_property_physics/common/physics_ticks_per_second>` trong Project Settings nâng cao. Lưu ý rằng việc này làm tăng mức sử dụng CPU và có thể không phù hợp với các nền tảng mobile/web. Nên ưu tiên các hệ số nhân của giá trị mặc định ``60`` (chẳng hạn như ``120``, ``180`` hoặc ``240``) để có hình ảnh mượt mà trên hầu hết màn hình.
 
-In the first case, this can be alleviated by making the floor's collision shape
-thicker. For example, if you have a thin floor that the player can't get below
-in some way, you can make the collider thicker than the floor's visual
-representation.
+Trong 3D, chuyển physics engine từ GodotPhysics mặc định sang Jolt cũng có thể cải thiện độ ổn định. Xem :ref:`doc_using_jolt_physics` để biết thêm thông tin.
 
-In the second case, this can usually only be resolved by increasing the physics
-simulation rate (as making the shape thicker would cause a disconnect between
-the RigidBody's visual representation and its collision).
+Các physics body hoặc collision shape được scale không va chạm chính xác
+------------------------------------------------------------------------
 
-In both cases, increasing the physics simulation rate can also help alleviate
-this issue. To do so, increase
+Godot hiện chưa hỗ trợ scale physics body hoặc collision shape. Để khắc phục tạm thời, hãy thay đổi extents của collision shape thay vì thay đổi scale của nó. Nếu bạn cũng muốn thay đổi scale của phần hiển thị trực quan, hãy thay đổi scale của phần hiển thị trực quan bên dưới (Sprite2D, MeshInstance3D, …) và thay đổi riêng extents của collision shape. Trong trường hợp này, hãy đảm bảo collision shape không phải là node con của phần hiển thị trực quan.
+
+Vì các resource được chia sẻ theo mặc định, bạn sẽ phải làm cho resource của collision shape trở nên duy nhất nếu không muốn thay đổi này được áp dụng cho tất cả các node sử dụng cùng resource collision shape trong scene. Có thể thực hiện việc này theo hai cách:
+
+- Trong editor, bằng cách nhấp vào :menu:`Make Unique` trong menu thả xuống resource CollisionShape ở inspector, sau đó thay đổi kích thước của nó. - Trong một script, bằng cách gọi ``duplicate()`` trong một script trên resource collision shape *trước khi* thay đổi kích thước của nó.
+
+Các object mỏng bị rung lắc khi nằm trên sàn
+--------------------------------------------
+
+Điều này có thể do một trong hai nguyên nhân:
+
+- Collision shape của sàn quá mỏng. - Collision shape của RigidBody quá mỏng.
+
+Trong trường hợp đầu tiên, có thể giảm bớt vấn đề bằng cách làm collision shape của sàn dày hơn. Ví dụ: nếu bạn có một sàn mỏng mà player không thể rơi xuống dưới vì một lý do nào đó, bạn có thể làm collider dày hơn phần hiển thị trực quan của sàn.
+
+Trong trường hợp thứ hai, vấn đề này thường chỉ có thể được giải quyết bằng cách tăng tần suất mô phỏng vật lý (vì việc làm collision shape dày hơn sẽ gây ra sự không khớp giữa phần hiển thị trực quan của RigidBody và va chạm của nó).
+
+Trong cả hai trường hợp, việc tăng tần suất mô phỏng vật lý cũng có thể giúp giảm bớt vấn đề này. Để thực hiện, hãy tăng
 :ref:`Physics Ticks per Second<class_ProjectSettings_property_physics/common/physics_ticks_per_second>`
-in the advanced
-Project Settings. Note that this increases CPU utilization and may not be viable
-for mobile/web platforms. Multipliers of the default value of ``60`` (such as
-``120``, ``180`` or ``240``) should be preferred for a smooth appearance on most
-displays.
+trong Project Settings nâng cao. Lưu ý rằng việc này làm tăng mức sử dụng CPU và có thể không phù hợp với các nền tảng mobile/web. Nên ưu tiên các hệ số nhân của giá trị mặc định ``60`` (chẳng hạn như ``120``, ``180`` hoặc ``240``) để có hình ảnh mượt mà trên hầu hết màn hình.
 
-Cylinder collision shapes are unstable
---------------------------------------
+Các collision shape dạng cylinder không ổn định
+-----------------------------------------------
 
-Switching the physics engine from the default GodotPhysics to Jolt
-should make cylinder collision shapes more reliable.
-See :ref:`doc_using_jolt_physics` for more information.
+Chuyển physics engine từ GodotPhysics mặc định sang Jolt sẽ giúp collision shape dạng cylinder đáng tin cậy hơn. Xem :ref:`doc_using_jolt_physics` để biết thêm thông tin.
 
-During the transition from Bullet to GodotPhysics in Godot 4, cylinder collision
-shapes had to be reimplemented from scratch. However, cylinder collision shapes
-are one of the most difficult shapes to support, which is why many other physics
-engines don't provide any support for them. There are several known bugs with
-cylinder collision shapes currently.
+Trong quá trình chuyển từ Bullet sang GodotPhysics ở Godot 4, collision shape dạng cylinder phải được triển khai lại từ đầu. Tuy nhiên, collision shape dạng cylinder là một trong những shape khó hỗ trợ nhất, đó là lý do nhiều physics engine khác không cung cấp bất kỳ hỗ trợ nào cho chúng. Hiện vẫn còn một số lỗi đã biết với collision shape dạng cylinder.
 
-If you are sticking to GodotPhysics, we recommend using box or capsule collision
-shapes for characters for now. Boxes generally provide the best reliability,
-but have the downside of making the character take more space diagonally.
-Capsule collision shapes do not have this downside, but their shape can make
-precision platforming more difficult.
+Nếu vẫn sử dụng GodotPhysics, hiện tại chúng tôi khuyến nghị dùng collision shape dạng box hoặc capsule cho character. Box thường mang lại độ tin cậy tốt nhất, nhưng có nhược điểm là khiến character chiếm nhiều không gian hơn theo đường chéo. Collision shape dạng capsule không có nhược điểm này, nhưng hình dạng của chúng có thể khiến việc platforming chính xác trở nên khó khăn hơn.
 
-VehicleBody simulation is unstable, especially at high speeds
--------------------------------------------------------------
+Mô phỏng VehicleBody không ổn định, đặc biệt ở tốc độ cao
+---------------------------------------------------------
 
-When a physics body moves at a high speed, it travels a large distance between
-each physics step. For instance, when using the 1 unit = 1 meter convention in
-3D, a vehicle moving at 360 km/h will travel 100 units per second. With the
-default physics simulation rate of 60 Hz, the vehicle moves by ~1.67 units each
-physics tick. This means that small objects may be ignored entirely by the
-vehicle (due to tunneling), but also that the simulation has little data to work
-with in general at such a high speed.
+Khi một physics body di chuyển ở tốc độ cao, nó đi được một quãng đường lớn giữa mỗi physics step. Ví dụ, khi sử dụng quy ước 1 unit = 1 meter trong 3D, một phương tiện di chuyển với tốc độ 360 km/h sẽ đi được 100 unit mỗi giây. Với tần suất mô phỏng vật lý mặc định là 60 Hz, phương tiện di chuyển khoảng ~1.67 unit trong mỗi physics tick. Điều này có nghĩa là các object nhỏ có thể bị phương tiện bỏ qua hoàn toàn (do tunneling), đồng thời mô phỏng nói chung cũng có rất ít dữ liệu để xử lý ở tốc độ cao như vậy.
 
-Fast-moving vehicles can benefit a lot from an increased physics simulation
-rate. To do so, increase
+Các phương tiện di chuyển nhanh có thể hưởng lợi đáng kể từ việc tăng tần suất mô phỏng vật lý. Để thực hiện, hãy tăng
 :ref:`Physics Ticks per Second<class_ProjectSettings_property_physics/common/physics_ticks_per_second>`
-in the advanced Project
-Settings. Note that this increases CPU utilization and may not be viable for
-mobile/web platforms. Multipliers of the default value of ``60`` (such as
-``120``, ``180`` or ``240``) should be preferred for a smooth appearance on most
-displays.
+trong Project Settings nâng cao. Lưu ý rằng việc này làm tăng mức sử dụng CPU và có thể không phù hợp với các nền tảng mobile/web. Nên ưu tiên các hệ số nhân của giá trị mặc định ``60`` (chẳng hạn như ``120``, ``180`` hoặc ``240``) để có hình ảnh mượt mà trên hầu hết màn hình.
 
-Collision results in bumps when an object moves across tiles
-------------------------------------------------------------
+Va chạm gây ra hiện tượng nảy khi object di chuyển qua các tile
+---------------------------------------------------------------
 
-This is a known issue in the physics engine caused by the object bumping on a
-shape's edges, even though that edge is covered by another shape. This can occur
-in both 2D and 3D.
+Đây là một vấn đề đã biết trong physics engine, xảy ra do object va vào các cạnh của một shape, mặc dù cạnh đó được một shape khác che phủ. Điều này có thể xảy ra cả trong 2D lẫn 3D.
 
-The best way to work around this issue is to create a "composite" collider. This
-means that instead of individual tiles having their collision, you create a
-single collision shape representing the collision for a group of tiles.
-Typically, you should split composite colliders on a per-island basis (which
-means each group of touching tiles gets its own collider).
+Cách tốt nhất để khắc phục tạm thời vấn đề này là tạo một collider "composite". Điều này có nghĩa là thay vì mỗi tile có collision riêng, bạn tạo một collision shape duy nhất đại diện cho collision của một nhóm tile. Thông thường, bạn nên chia các collider composite theo từng island (nghĩa là mỗi nhóm tile tiếp xúc với nhau sẽ có collider riêng).
 
-Using a composite collider can also improve physics simulation performance in
-certain cases. However, since the composite collision shape is much more
-complex, this may not be a net performance win in all cases.
+Việc sử dụng collider composite cũng có thể cải thiện hiệu năng mô phỏng vật lý trong một số trường hợp. Tuy nhiên, vì collision shape composite phức tạp hơn nhiều, điều này không phải lúc nào cũng mang lại hiệu năng tổng thể tốt hơn.
 
 .. tip::
 
-    In Godot 4.5 and later, creating a composite collider is automatically done
-    when using a TileMapLayer node. The chunk size (``16`` tiles on each axis
-    by default) can be set using the **Physics Quadrant Size** property in the
-    TileMapLayer inspector. Larger values provide more reliable collision,
-    at the cost of slower updates when the TileMap is changed.
+    Trong Godot 4.5 trở lên, collider composite sẽ tự động được tạo khi sử dụng node TileMapLayer. Kích thước chunk (``16`` tile trên mỗi trục theo mặc định) có thể được thiết lập bằng thuộc tính **Physics Quadrant Size** trong inspector của TileMapLayer. Giá trị lớn hơn mang lại collision đáng tin cậy hơn, nhưng phải đánh đổi bằng tốc độ cập nhật chậm hơn khi TileMap được thay đổi.
 
-Framerate drops when an object touches another object
------------------------------------------------------
+Framerate giảm khi một object chạm vào object khác
+--------------------------------------------------
 
-This is likely due to one of the objects using a collision shape that is too
-complex. Convex collision shapes should use a number of shapes as low as
-possible for performance reasons. When relying on Godot's automatic generation,
-it's possible that you ended up with dozens if not hundreds of shapes created
-for a single convex shape collision resource.
+Điều này có thể là do một trong các object đang sử dụng collision shape quá phức tạp. Collision shape lồi nên sử dụng số lượng shape ít nhất có thể vì lý do hiệu năng. Khi dựa vào việc tự động tạo của Godot, có thể bạn đã tạo ra hàng chục, thậm chí hàng trăm shape cho một collision resource dạng lồi duy nhất.
 
-In some cases, replacing a convex collider with a couple of primitive collision
-shapes (box, sphere, or capsule) can deliver better performance.
+Trong một số trường hợp, thay collider lồi bằng một vài collision shape nguyên thủy (box, sphere hoặc capsule) có thể mang lại hiệu năng tốt hơn.
 
-This issue can also occur with StaticBodies that use very detailed trimesh
-(concave) collisions. In this case, use a simplified representation of the level
-geometry as a collider. Not only this will improve physics simulation
-performance significantly, but this can also improve stability by letting you
-remove small fixtures and crevices from being considered by collision.
+Vấn đề này cũng có thể xảy ra với StaticBody sử dụng collision trimesh (concave) rất chi tiết. Trong trường hợp này, hãy sử dụng một phần hình học của level được đơn giản hóa làm collider. Điều này không chỉ cải thiện đáng kể hiệu năng mô phỏng vật lý, mà còn có thể cải thiện độ ổn định bằng cách loại bỏ các chi tiết nhỏ và khe hẹp khỏi quá trình xét va chạm.
 
-In 3D, switching the physics engine from the default GodotPhysics to Jolt
-can also improve performance. See :ref:`doc_using_jolt_physics` for more information.
+Trong 3D, chuyển physics engine từ GodotPhysics mặc định sang Jolt cũng có thể cải thiện hiệu năng. Xem :ref:`doc_using_jolt_physics` để biết thêm thông tin.
 
-Framerate suddenly drops to a very low value beyond a certain amount of physics simulation
-------------------------------------------------------------------------------------------
+Framerate đột ngột giảm xuống mức rất thấp khi vượt quá một lượng mô phỏng vật lý nhất định
+-------------------------------------------------------------------------------------------
 
-This occurs because the physics engine can't keep up with the expected
-simulation rate. In this case, the framerate will start dropping, but the engine
-is only allowed to simulate a certain number of physics steps per rendered
-frame. This snowballs into a situation where framerate keeps dropping until it
-reaches a very low framerate (typically 1-2 FPS) and is called the *physics
-spiral of death*.
+Điều này xảy ra vì physics engine không thể theo kịp tần suất mô phỏng dự kiến. Trong trường hợp này, framerate sẽ bắt đầu giảm, nhưng engine chỉ được phép mô phỏng một số lượng physics step nhất định trong mỗi frame được render. Tình trạng này tiếp diễn khiến framerate không ngừng giảm cho đến khi đạt mức rất thấp (thường là 1-2 FPS) và được gọi là *physics spiral of death*.
 
-To avoid this, you should check for situations in your project that can cause
-excessive number of physics simulations to occur at the same time (or with
-excessively complex collision shapes). If these situations cannot be avoided,
-you can increase the **Max Physics Steps per Frame** project setting and/or
-reduce **Physics Ticks per Second** to alleviate this.
+Để tránh điều này, bạn nên kiểm tra các tình huống trong dự án có thể khiến quá nhiều mô phỏng vật lý diễn ra đồng thời (hoặc sử dụng các hình dạng va chạm quá phức tạp). Nếu không thể tránh những tình huống này, bạn có thể tăng thiết lập dự án **Max Physics Steps per Frame** và/hoặc giảm **Physics Ticks per Second** để giảm nhẹ vấn đề.
 
-Physics simulation is unreliable when far away from the world origin
---------------------------------------------------------------------
+Mô phỏng vật lý trở nên không đáng tin cậy khi ở xa gốc tọa độ thế giới
+-----------------------------------------------------------------------
 
-This is caused by floating-point precision errors, which become more pronounced
-as the physics simulation occurs further away from the world origin. This issue
-also affects rendering, which results in wobbly camera movement when far away
-from the world origin. See :ref:`doc_large_world_coordinates` for more
-information.
+Nguyên nhân là do lỗi độ chính xác dấu phẩy động, trở nên rõ rệt hơn khi mô phỏng vật lý diễn ra càng xa gốc tọa độ thế giới. Vấn đề này cũng ảnh hưởng đến quá trình rendering, dẫn đến chuyển động camera bị rung lắc khi ở xa gốc tọa độ thế giới. Xem :ref:`doc_large_world_coordinates` để biết thêm thông tin.

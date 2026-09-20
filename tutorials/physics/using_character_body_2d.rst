@@ -1,140 +1,98 @@
 .. _doc_using_character_body_2d:
 
-Using CharacterBody2D/3D
-========================
+Sử dụng CharacterBody2D/3D
+==========================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Godot offers several collision objects to provide both collision detection
-and response. Trying to decide which one to use for your project can be confusing.
-You can avoid problems and simplify development if you understand how each of them
-works and what their pros and cons are. In this tutorial, we'll look at the
+Godot cung cấp một số đối tượng va chạm để hỗ trợ cả việc phát hiện và phản hồi va chạm. Việc quyết định nên sử dụng đối tượng nào cho dự án của bạn có thể gây bối rối. Bạn có thể tránh được các vấn đề và đơn giản hóa quá trình phát triển nếu hiểu cách hoạt động cũng như ưu, nhược điểm của từng loại. Trong hướng dẫn này, chúng ta sẽ xem xét
 :ref:`CharacterBody2D <class_CharacterBody2D>` node and show some examples
-of how to use it.
+về cách sử dụng nó.
 
 .. note:: While this document uses ``CharacterBody2D`` in its examples, the same
-          concepts apply in 3D as well.
+          các khái niệm cũng áp dụng cho 3D.
 
-What is a character body?
--------------------------
+Character body là gì?
+---------------------
 
-``CharacterBody2D`` is for implementing bodies that are controlled via code.
-Character bodies detect collisions with other bodies when moving, but are not affected by
-engine physics properties, like gravity or friction. While this means that you
-have to write some code to create their behavior, it also means you have more
-precise control over how they move and react.
+``CharacterBody2D`` được dùng để triển khai các body được điều khiển thông qua code. Character body phát hiện va chạm với các body khác khi di chuyển, nhưng không bị ảnh hưởng bởi các thuộc tính physics của engine, chẳng hạn như gravity hoặc friction. Mặc dù điều này có nghĩa là bạn phải viết code để tạo hành vi cho chúng, nhưng nó cũng cho phép bạn kiểm soát chính xác hơn cách chúng di chuyển và phản ứng.
 
-Despite its name ``CharacterBody2D``, it can also be used for other physics objects that require
-precise manual movement logic and detailed collision information, such as moving
-platforms or complex projectiles.
+Mặc dù tên của nó là ``CharacterBody2D``, nó cũng có thể được dùng cho các đối tượng physics khác yêu cầu logic di chuyển thủ công chính xác và thông tin va chạm chi tiết, chẳng hạn như moving platform hoặc projectile phức tạp.
 
 .. note:: This document assumes you're familiar with Godot's various physics
-          bodies. Please read :ref:`doc_physics_introduction` first, for an overview
-          of the physics options.
+          các body. Trước tiên, hãy đọc :ref:`doc_physics_introduction` để có cái nhìn tổng quan về các tùy chọn physics.
 
 .. tip:: A `CharacterBody2D` can be affected by gravity and other forces,
-        but you must calculate the movement in code. The physics engine will
-        not move a `CharacterBody2D`.
+        nhưng bạn phải tính toán chuyển động trong code. Physics engine sẽ không di chuyển một `CharacterBody2D`.
 
-Movement and collision
-----------------------
+Di chuyển và va chạm
+--------------------
 
-When moving a ``CharacterBody2D``, you should not set its ``position`` property
-directly. Instead, you use the ``move_and_collide()`` or ``move_and_slide()`` methods.
-These methods move the body along a given vector and detect collisions.
+Khi di chuyển một ``CharacterBody2D``, bạn không nên đặt trực tiếp thuộc tính ``position``. Thay vào đó, hãy sử dụng các method ``move_and_collide()`` hoặc ``move_and_slide()``. Các method này di chuyển body theo một vector nhất định và phát hiện va chạm.
 
 .. warning:: You should handle physics body movement in the ``_physics_process()`` callback.
 
-The two movement methods serve different purposes, and later in this tutorial, you'll
-see examples of how they work.
+Hai method di chuyển này phục vụ các mục đích khác nhau, và ở phần sau của hướng dẫn, bạn sẽ thấy các ví dụ về cách chúng hoạt động.
 
 move_and_collide
 ~~~~~~~~~~~~~~~~
 
-This method takes one required parameter: a :ref:`Vector2 <class_Vector2>` indicating
-the body's relative movement. Typically, this is your velocity vector multiplied by the
-frame timestep (``delta``). If the engine detects a collision anywhere along
-this vector, the body will immediately stop moving. If this happens, the
-method will return a :ref:`KinematicCollision2D <class_KinematicCollision2D>` object.
+Method này nhận một tham số bắt buộc: một :ref:`Vector2 <class_Vector2>` biểu thị chuyển động tương đối của body. Thông thường, đây là vector velocity của bạn nhân với timestep của frame (``delta``). Nếu engine phát hiện va chạm ở bất kỳ vị trí nào dọc theo vector này, body sẽ lập tức dừng di chuyển. Nếu điều này xảy ra, method sẽ trả về một đối tượng :ref:`KinematicCollision2D <class_KinematicCollision2D>`.
 
-``KinematicCollision2D`` is an object containing data about the collision
-and the colliding object. Using this data, you can calculate your collision
-response.
+``KinematicCollision2D`` là một đối tượng chứa dữ liệu về va chạm và đối tượng va chạm. Sử dụng dữ liệu này, bạn có thể tính toán phản hồi va chạm.
 
-``move_and_collide`` is most useful when you just want to move the body and
-detect collision, but don't need any automatic collision response. For example,
-if you need a bullet that ricochets off a wall, you can directly change the angle
-of the velocity when you detect a collision. See below for an example.
+``move_and_collide`` hữu ích nhất khi bạn chỉ muốn di chuyển body và phát hiện va chạm, nhưng không cần phản hồi va chạm tự động. Ví dụ, nếu cần một viên đạn bật nảy khỏi tường, bạn có thể trực tiếp thay đổi góc của velocity khi phát hiện va chạm. Xem ví dụ bên dưới.
 
 move_and_slide
 ~~~~~~~~~~~~~~
 
-The ``move_and_slide()`` method is intended to simplify the collision
-response in the common case where you want one body to slide along the other.
-It is especially useful in platformers or top-down games, for example.
+Method ``move_and_slide()`` được thiết kế để đơn giản hóa phản hồi va chạm trong trường hợp phổ biến khi bạn muốn một body trượt dọc theo body kia. Chẳng hạn, method này đặc biệt hữu ích trong các game platformer hoặc game nhìn từ trên xuống.
 
-When calling ``move_and_slide()``, the function uses a number of node properties
-to calculate its slide behavior. These properties can be found in the Inspector,
-or set in code.
+Khi gọi ``move_and_slide()``, function sử dụng một số thuộc tính của node để tính toán hành vi trượt. Bạn có thể tìm thấy các thuộc tính này trong Inspector hoặc thiết lập chúng trong code.
 
-- ``velocity`` - *default value:* ``Vector2( 0, 0 )``
+- ``velocity`` - *giá trị mặc định:* ``Vector2( 0, 0 )``
 
-    This property represents the body's velocity vector in pixels per second.
-    ``move_and_slide()`` will modify this value automatically when colliding.
+    Thuộc tính này biểu thị vector velocity của body tính bằng pixel trên giây. ``move_and_slide()`` sẽ tự động thay đổi giá trị này khi xảy ra va chạm.
 
-- ``motion_mode`` - *default value:* ``MOTION_MODE_GROUNDED``
+- ``motion_mode`` - *giá trị mặc định:* ``MOTION_MODE_GROUNDED``
 
-    This property is typically used to distinguish between side-scrolling and
-    top-down movement. When using the default value, you can use the ``is_on_floor()``,
-    ``is_on_wall()``, and ``is_on_ceiling()`` methods to detect what type of
-    surface the body is in contact with, and the body will interact with slopes.
-    When using ``MOTION_MODE_FLOATING``, all collisions will be considered "walls".
+    Thuộc tính này thường được dùng để phân biệt chuyển động side-scrolling và top-down. Khi sử dụng giá trị mặc định, bạn có thể dùng các method ``is_on_floor()``, ``is_on_wall()`` và ``is_on_ceiling()`` để phát hiện loại bề mặt mà body đang tiếp xúc, đồng thời body sẽ tương tác với các slope. Khi sử dụng ``MOTION_MODE_FLOATING``, mọi va chạm sẽ được xem là "tường".
 
-- ``up_direction`` - *default value:* ``Vector2( 0, -1 )``
+- ``up_direction`` - *giá trị mặc định:* ``Vector2( 0, -1 )``
 
-    This property allows you to define what surfaces the engine should consider
-    being the floor. Its value lets you use the ``is_on_floor()``, ``is_on_wall()``,
-    and ``is_on_ceiling()`` methods to detect what type of surface the body is
-    in contact with. The default value means that the top side of horizontal surfaces
-    will be considered "ground".
+    Thuộc tính này cho phép bạn xác định những bề mặt nào engine nên xem là floor. Giá trị của nó cho phép bạn dùng các method ``is_on_floor()``, ``is_on_wall()`` và ``is_on_ceiling()`` để phát hiện loại bề mặt mà body đang tiếp xúc. Giá trị mặc định nghĩa là mặt trên của các bề mặt nằm ngang sẽ được xem là "mặt đất".
 
-- ``floor_stop_on_slope`` - *default value:* ``true``
+- ``floor_stop_on_slope`` - *giá trị mặc định:* ``true``
 
-    This property prevents a body from sliding down slopes when standing still.
+    Thuộc tính này ngăn body trượt xuống slope khi đang đứng yên.
 
-- ``wall_min_slide_angle`` - *default value:* ``0.261799`` (in radians, equivalent to ``15`` degrees)
+- ``wall_min_slide_angle`` - *giá trị mặc định:* ``0.261799`` (tính bằng radian, tương đương ``15`` độ)
 
-    This property is the minimum angle where the body is allowed to slide when it hits a
-    slope.
+    Thuộc tính này là góc nhỏ nhất mà tại đó body được phép trượt khi chạm vào slope.
 
-- ``floor_max_angle`` - *default value:* ``0.785398`` (in radians, equivalent to ``45`` degrees)
+- ``floor_max_angle`` - *giá trị mặc định:* ``0.785398`` (tính bằng radian, tương đương ``45`` độ)
 
-    This property is the maximum angle before a surface is no longer considered a "floor."
+    Thuộc tính này là góc tối đa trước khi một bề mặt không còn được xem là "floor".
 
-There are many other properties that can be used to modify the body's behavior under
-specific circumstances. See the :ref:`CharacterBody2D <class_CharacterBody2D>` docs
-for full details.
+Có nhiều thuộc tính khác có thể được dùng để thay đổi hành vi của body trong những trường hợp cụ thể. Xem tài liệu :ref:`CharacterBody2D <class_CharacterBody2D>` để biết đầy đủ chi tiết.
 
-Detecting collisions
---------------------
+Phát hiện va chạm
+-----------------
 
-When using ``move_and_collide()`` the function returns a ``KinematicCollision2D``
-directly, and you can use this in your code.
+Khi sử dụng ``move_and_collide()``, function trả về trực tiếp một ``KinematicCollision2D``, và bạn có thể dùng nó trong code.
 
-When using ``move_and_slide()`` it's possible to have multiple collisions occur,
-as the slide response is calculated. To process these collisions, use ``get_slide_collision_count()``
-and ``get_slide_collision()``:
+Khi sử dụng ``move_and_slide()``, có thể xảy ra nhiều va chạm vì phản hồi trượt được tính toán. Để xử lý các va chạm này, hãy sử dụng ``get_slide_collision_count()`` và ``get_slide_collision()``:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Using move_and_collide.
+    # Sử dụng move_and_collide.
     var collision = move_and_collide(velocity * delta)
     if collision:
         print("I collided with ", collision.get_collider().name)
 
-    # Using move_and_slide.
+    # Sử dụng move_and_slide.
     move_and_slide()
     for i in get_slide_collision_count():
         var collision = get_slide_collision(i)
@@ -142,14 +100,14 @@ and ``get_slide_collision()``:
 
  .. code-tab:: csharp
 
-    // Using MoveAndCollide.
+    // Sử dụng MoveAndCollide.
     var collision = MoveAndCollide(Velocity * (float)delta);
     if (collision != null)
     {
         GD.Print("I collided with ", ((Node)collision.GetCollider()).Name);
     }
 
-    // Using MoveAndSlide.
+    // Sử dụng MoveAndSlide.
     MoveAndSlide();
     for (int i = 0; i < GetSlideCollisionCount(); i++)
     {
@@ -159,82 +117,61 @@ and ``get_slide_collision()``:
 
 .. note:: `get_slide_collision_count()` only counts times the body has collided and changed direction.
 
-See :ref:`KinematicCollision2D <class_KinematicCollision2D>` for details on what
-collision data is returned.
+Xem :ref:`KinematicCollision2D <class_KinematicCollision2D>` để biết chi tiết về dữ liệu va chạm được trả về.
 
-Which movement method to use?
------------------------------
+Nên sử dụng method di chuyển nào?
+---------------------------------
 
-A common question from new Godot users is: "How do you decide which movement
-function to use?" Often, the response is to use ``move_and_slide()`` because
-it seems simpler, but this is not necessarily the case. One way to think of it
-is that ``move_and_slide()`` is a special case, and ``move_and_collide()``
-is more general. For example, the following two code snippets result in
-the same collision response:
+Một câu hỏi phổ biến của người mới dùng Godot là: "Làm thế nào để quyết định nên dùng function di chuyển nào?" Thông thường, câu trả lời là dùng ``move_and_slide()`` vì nó có vẻ đơn giản hơn, nhưng điều này không nhất thiết đúng. Một cách để hình dung là ``move_and_slide()`` là trường hợp đặc biệt, còn ``move_and_collide()`` mang tính tổng quát hơn. Ví dụ, hai đoạn code sau cho cùng một phản hồi va chạm:
 
 .. image:: img/k2d_compare.gif
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # using move_and_collide
+    # sử dụng move_and_collide
     var collision = move_and_collide(velocity * delta)
     if collision:
         velocity = velocity.slide(collision.get_normal())
 
-    # using move_and_slide
+    # sử dụng move_and_slide
     move_and_slide()
 
  .. code-tab:: csharp
 
-    // using MoveAndCollide
+    // sử dụng MoveAndCollide
     var collision = MoveAndCollide(Velocity * (float)delta);
     if (collision != null)
     {
         Velocity = Velocity.Slide(collision.GetNormal());
     }
 
-    // using MoveAndSlide
+    // sử dụng MoveAndSlide
     MoveAndSlide();
 
-Anything you do with ``move_and_slide()`` can also be done with ``move_and_collide()``,
-but it might take a little more code. However, as we'll see in the examples below,
-there are cases where ``move_and_slide()`` doesn't provide the response you want.
+Mọi việc bạn làm với ``move_and_slide()`` cũng có thể thực hiện bằng ``move_and_collide()``, nhưng có thể cần thêm một chút code. Tuy nhiên, như chúng ta sẽ thấy trong các ví dụ bên dưới, có những trường hợp ``move_and_slide()`` không cung cấp phản hồi mà bạn muốn.
 
-In the example above, ``move_and_slide()`` automatically alters the ``velocity``
-variable. This is because when the character collides with the environment,
-the function recalculates the speed internally to reflect
-the slowdown.
+Trong ví dụ trên, ``move_and_slide()`` tự động thay đổi biến ``velocity``. Điều này xảy ra vì khi character va chạm với môi trường, function tính toán lại speed bên trong để phản ánh sự giảm tốc.
 
-For example, if your character fell on the floor, you don't want it to
-accumulate vertical speed due to the effect of gravity. Instead, you want its
-vertical speed to reset to zero.
+Ví dụ, nếu character của bạn rơi xuống floor, bạn không muốn nó tích lũy vertical speed do tác động của gravity. Thay vào đó, bạn muốn vertical speed được đặt lại về 0.
 
-``move_and_slide()`` may also recalculate the kinematic body's velocity several
-times in a loop as, to produce a smooth motion, it moves the character and
-collides up to five times by default. At the end of the process, the character's
-new velocity is available for use on the next frame.
+``move_and_slide()`` cũng có thể tính toán lại velocity của kinematic body nhiều lần trong một loop vì để tạo chuyển động mượt mà, nó di chuyển character và xử lý va chạm tối đa năm lần theo mặc định. Khi quá trình kết thúc, velocity mới của character sẽ sẵn sàng để sử dụng ở frame tiếp theo.
 
-Examples
---------
+Ví dụ
+-----
 
-To see these examples in action, download the sample project:
-`character_body_2d_starter.zip <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/character_body_2d_starter.zip>`_
+Để xem các ví dụ này hoạt động, hãy tải sample project: `character_body_2d_starter.zip <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/character_body_2d_starter.zip>`_
 
-Movement and walls
+Di chuyển và tường
 ~~~~~~~~~~~~~~~~~~
 
-If you've downloaded the sample project, this example is in "basic_movement.tscn".
+Nếu bạn đã tải sample project, ví dụ này nằm trong "basic_movement.tscn".
 
-For this example, add a ``CharacterBody2D`` with two children: a ``Sprite2D`` and a
-``CollisionShape2D``. Use the Godot "icon.svg" as the Sprite2D's texture (drag it
-from the Filesystem dock to the *Texture* property of the ``Sprite2D``). In the
-``CollisionShape2D``'s *Shape* property, select "New RectangleShape2D" and
-size the rectangle to fit over the sprite image.
+Trong ví dụ này, hãy thêm một ``CharacterBody2D`` với hai node con: một ``Sprite2D`` và một ``CollisionShape2D``. Sử dụng "icon.svg" của Godot làm texture cho Sprite2D (kéo nó từ dock Filesystem đến thuộc tính *Texture* của ``Sprite2D``). Trong thuộc tính *Shape* của ``CollisionShape2D``, chọn "New RectangleShape2D" và điều chỉnh kích thước hình chữ nhật để phủ vừa hình ảnh sprite.
 
 .. note:: See :ref:`doc_2d_movement` for examples of implementing 2D movement schemes.
 
-Attach a script to the CharacterBody2D and add the following code:
+Gắn một script vào CharacterBody2D và thêm đoạn code sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -273,38 +210,24 @@ Attach a script to the CharacterBody2D and add the following code:
     }
 
 
-Run this scene and you'll see that ``move_and_collide()`` works as expected, moving
-the body along the velocity vector. Now let's see what happens when you add
-some obstacles. Add a :ref:`StaticBody2D <class_StaticBody2D>` with a
-rectangular collision shape. For visibility, you can use a Sprite2D, a
-Polygon2D, or turn on "Visible Collision Shapes" from the "Debug" menu.
+Chạy scene này và bạn sẽ thấy ``move_and_collide()`` hoạt động như mong đợi, di chuyển body theo vector velocity. Bây giờ hãy xem điều gì xảy ra khi bạn thêm một số vật cản. Thêm một :ref:`StaticBody2D <class_StaticBody2D>` với collision shape hình chữ nhật. Để hiển thị, bạn có thể dùng Sprite2D, Polygon2D hoặc bật "Visible Collision Shapes" từ menu "Debug".
 
-Run the scene again and try moving into the obstacle. You'll see that the ``CharacterBody2D``
-can't penetrate the obstacle. However, try moving into the obstacle at an angle and
-you'll find that the obstacle acts like glue - it feels like the body gets stuck.
+Chạy lại scene và thử di chuyển vào vật cản. Bạn sẽ thấy ``CharacterBody2D`` không thể xuyên qua vật cản. Tuy nhiên, hãy thử di chuyển vào vật cản theo một góc và bạn sẽ thấy vật cản hoạt động như keo - có cảm giác body bị mắc kẹt.
 
-This happens because there is no *collision response*. ``move_and_collide()`` stops
-the body's movement when a collision occurs. We need to code whatever response we
-want from the collision.
+Điều này xảy ra vì không có *phản hồi va chạm*. ``move_and_collide()`` dừng chuyển động của body khi xảy ra va chạm. Chúng ta cần viết code cho bất kỳ phản hồi nào mình muốn từ va chạm.
 
-Try changing the function to ``move_and_slide()`` and running again.
+Hãy thử đổi function thành ``move_and_slide()`` rồi chạy lại.
 
-``move_and_slide()`` provides a default collision response of sliding the body along the
-collision object. This is useful for a great many game types, and may be all you need
-to get the behavior you want.
+``move_and_slide()`` cung cấp phản hồi va chạm mặc định là trượt body dọc theo đối tượng va chạm. Điều này hữu ích cho rất nhiều thể loại game và có thể là tất cả những gì bạn cần để có được hành vi mong muốn.
 
-Bouncing/reflecting
-~~~~~~~~~~~~~~~~~~~
+Bật nảy/phản xạ
+~~~~~~~~~~~~~~~
 
-What if you don't want a sliding collision response? For this example ("bounce_and_collide.tscn"
-in the sample project), we have a character shooting bullets and we want the bullets to
-bounce off the walls.
+Nếu bạn không muốn phản hồi va chạm dạng trượt thì sao? Trong ví dụ này ("bounce_and_collide.tscn" trong sample project), chúng ta có một character bắn đạn và muốn các viên đạn bật nảy khỏi tường.
 
-This example uses three scenes. The main scene contains the Player and Walls.
-The Bullet and Wall are separate scenes so that they can be instanced.
+Ví dụ này sử dụng ba scene. Scene chính chứa Player và Walls. Bullet và Wall là các scene riêng biệt để có thể được instance.
 
-The Player is controlled by the ``w`` and ``s`` keys for forward and back. Aiming
-uses the mouse pointer. Here is the code for the Player, using ``move_and_slide()``:
+Player được điều khiển bằng các phím ``w`` và ``s`` để tiến và lùi. Việc ngắm sử dụng con trỏ chuột. Đây là code cho Player, sử dụng ``move_and_slide()``:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -315,14 +238,14 @@ uses the mouse pointer. Here is the code for the Player, using ``move_and_slide(
     var speed = 200
 
     func get_input():
-        # Add these actions in Project Settings -> Input Map.
+        # Thêm các action này trong Project Settings -> Input Map.
         var input_dir = Input.get_axis("backward", "forward")
         velocity = transform.x * input_dir * speed
         if Input.is_action_just_pressed("shoot"):
             shoot()
 
     func shoot():
-        # "Muzzle" is a Marker2D placed at the barrel of the gun.
+        # "Muzzle" là một Marker2D được đặt ở nòng súng.
         var b = Bullet.instantiate()
         b.start($Muzzle.global_position, rotation)
         get_tree().root.add_child(b)
@@ -330,7 +253,7 @@ uses the mouse pointer. Here is the code for the Player, using ``move_and_slide(
     func _physics_process(delta):
         get_input()
         var dir = get_global_mouse_position() - global_position
-        # Don't move if too close to the mouse pointer.
+        # Không di chuyển nếu quá gần con trỏ chuột.
         if dir.length() > 5:
             rotation = dir.angle()
             move_and_slide()
@@ -346,7 +269,7 @@ uses the mouse pointer. Here is the code for the Player, using ``move_and_slide(
 
         public void GetInput()
         {
-            // Add these actions in Project Settings -> Input Map.
+            // Thêm các action này trong Project Settings -> Input Map.
             float inputDir = Input.GetAxis("backward", "forward");
             Velocity = Transform.X * inputDir * _speed;
             if (Input.IsActionPressed("shoot"))
@@ -357,7 +280,7 @@ uses the mouse pointer. Here is the code for the Player, using ``move_and_slide(
 
         public void Shoot()
         {
-            // "Muzzle" is a Marker2D placed at the barrel of the gun.
+            // "Muzzle" là một Marker2D được đặt ở nòng súng.
             var b = (Bullet)_bullet.Instantiate();
             b.Start(GetNode<Node2D>("Muzzle").GlobalPosition, Rotation);
             GetTree().Root.AddChild(b);
@@ -367,7 +290,7 @@ uses the mouse pointer. Here is the code for the Player, using ``move_and_slide(
         {
             GetInput();
             var dir = GetGlobalMousePosition() - GlobalPosition;
-            // Don't move if too close to the mouse pointer.
+            // Không di chuyển nếu quá gần con trỏ chuột.
             if (dir.Length() > 5)
             {
                 Rotation = dir.Angle();
@@ -377,7 +300,7 @@ uses the mouse pointer. Here is the code for the Player, using ``move_and_slide(
     }
 
 
-And the code for the Bullet:
+Và đây là code cho Bullet:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -399,7 +322,7 @@ And the code for the Bullet:
                 collision.get_collider().hit()
 
     func _on_VisibilityNotifier2D_screen_exited():
-        # Deletes the bullet when it exits the screen.
+        # Xóa viên đạn khi nó ra khỏi màn hình.
         queue_free()
 
  .. code-tab:: csharp
@@ -432,37 +355,29 @@ And the code for the Bullet:
 
         private void OnVisibilityNotifier2DScreenExited()
         {
-            // Deletes the bullet when it exits the screen.
+            // Xóa viên đạn khi nó ra khỏi màn hình.
             QueueFree();
         }
     }
 
 
-The action happens in ``_physics_process()``. After using ``move_and_collide()``, if a
-collision occurs, a ``KinematicCollision2D`` object is returned (otherwise, the return
-is ``null``).
+Hành động này diễn ra trong ``_physics_process()``. Sau khi sử dụng ``move_and_collide()``, nếu xảy ra va chạm, một đối tượng ``KinematicCollision2D`` sẽ được trả về (nếu không, giá trị trả về là ``null``).
 
-If there is a returned collision, we use the ``normal`` of the collision to reflect
-the bullet's ``velocity`` with the ``Vector2.bounce()`` method.
+Nếu có va chạm được trả về, chúng ta sử dụng ``normal`` của va chạm để phản xạ ``velocity`` của viên đạn bằng phương thức ``Vector2.bounce()``.
 
-If the colliding object (``collider``) has a ``hit`` method,
-we also call it. In the example project, we've added a flashing color effect to
-the Wall to demonstrate this.
+Nếu đối tượng va chạm (``collider``) có phương thức ``hit``, chúng ta cũng gọi phương thức đó. Trong project mẫu, chúng tôi đã thêm hiệu ứng màu nhấp nháy cho Wall để minh họa điều này.
 
 .. image:: img/k2d_bullet_bounce.gif
 
-Platformer movement
-~~~~~~~~~~~~~~~~~~~
+Di chuyển kiểu platformer
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Let's try one more popular example: the 2D platformer. ``move_and_slide()``
-is ideal for quickly getting a functional character controller up and running.
-If you've downloaded the sample project, you can find this in "platformer.tscn".
+Hãy thử thêm một ví dụ phổ biến nữa: platformer 2D. ``move_and_slide()`` rất phù hợp để nhanh chóng xây dựng một character controller hoạt động được. Nếu bạn đã tải project mẫu, bạn có thể tìm thấy phần này trong "platformer.tscn".
 
-For this example, we'll assume you have a level made of one or more ``StaticBody2D``
-objects. They can be any shape and size. In the sample project, we're using
+Trong ví dụ này, chúng ta giả định bạn có một level gồm một hoặc nhiều đối tượng ``StaticBody2D``. Chúng có thể có bất kỳ hình dạng và kích thước nào. Trong project mẫu, chúng tôi sử dụng
 :ref:`Polygon2D <class_Polygon2D>` to create the platform shapes.
 
-Here's the code for the player body:
+Đây là code cho player body:
 
 
 .. tabs::
@@ -474,14 +389,14 @@ Here's the code for the player body:
     var jump_speed = -400.0
 
     func _physics_process(delta):
-        # Add the gravity.
+        # Thêm gravity.
         velocity += get_gravity() * delta
 
-        # Handle Jump.
+        # Xử lý jump.
         if Input.is_action_just_pressed("jump") and is_on_floor():
             velocity.y = jump_speed
 
-        # Get the input direction.
+        # Lấy hướng input.
         var direction = Input.get_axis("ui_left", "ui_right")
         velocity.x = direction * speed
 
@@ -496,22 +411,22 @@ Here's the code for the player body:
         private float _speed = 100.0f;
         private float _jumpSpeed = -400.0f;
 
-        // Get the gravity from the project settings so you can sync with rigid body nodes.
+        // Lấy gravity từ project settings để bạn có thể đồng bộ với các rigid body node.
 
         public override void _PhysicsProcess(double delta)
         {
             Vector2 velocity = Velocity;
 
-            // Add the gravity.
+            // Thêm gravity.
             velocity += GetGravity() * (float)delta;
 
-            // Handle jump.
+            // Xử lý jump.
             if (Input.IsActionJustPressed("jump") && IsOnFloor())
             {
                 velocity.Y = _jumpSpeed;
             }
 
-            // Get the input direction.
+            // Lấy hướng input.
             float direction = Input.GetAxis("ui_left", "ui_right");
             velocity.X = direction * _speed;
 
@@ -522,13 +437,6 @@ Here's the code for the player body:
 
 .. image:: img/k2d_platform.gif
 
-In this code we're using ``move_and_slide()`` as described above - to move the body
-along its velocity vector, sliding along any collision surfaces such as the ground
-or a platform. We're also using ``is_on_floor()`` to check if a jump should be
-allowed. Without this, you'd be able to "jump" in midair; great if you're making
-Flappy Bird, but not for a platformer game.
+Trong code này, chúng ta sử dụng ``move_and_slide()`` như đã mô tả ở trên — để di chuyển body theo vector vận tốc của nó, trượt dọc theo mọi bề mặt va chạm như mặt đất hoặc một platform. Chúng ta cũng sử dụng ``is_on_floor()`` để kiểm tra xem có được phép jump hay không. Nếu không có điều này, bạn sẽ có thể "jump" giữa không trung; rất phù hợp nếu bạn đang làm Flappy Bird, nhưng không phù hợp với một game platformer.
 
-There is a lot more that goes into a complete platformer character: acceleration,
-double-jumps, coyote-time, and many more. The code above is just a starting point.
-You can use it as a base to expand into whatever movement behavior you need for
-your own projects.
+Có rất nhiều yếu tố khác để xây dựng một nhân vật platformer hoàn chỉnh: acceleration, double-jump, coyote-time và nhiều yếu tố khác. Code ở trên chỉ là điểm bắt đầu. Bạn có thể dùng nó làm nền tảng để mở rộng thành bất kỳ hành vi di chuyển nào bạn cần cho các project của mình.

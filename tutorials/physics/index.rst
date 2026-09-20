@@ -2,8 +2,8 @@
 
 .. _doc_physics_index:
 
-Physics
-=======
+Vật lý
+======
 
 .. toctree::
    :maxdepth: 1

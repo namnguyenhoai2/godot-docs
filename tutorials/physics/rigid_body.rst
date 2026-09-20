@@ -1,35 +1,28 @@
 .. _doc_rigid_body:
 
-Using RigidBody
-===============
+Sử dụng RigidBody
+=================
 
-What is a rigid body?
+Vật thể cứng là gì?
+-------------------
+
+Vật thể cứng là vật thể được physics engine điều khiển trực tiếp để mô phỏng hành vi của các đối tượng vật lý. Để xác định hình dạng của vật thể, bạn phải gán một hoặc nhiều đối tượng :ref:`Shape3D <class_Shape3D>` cho nó. Lưu ý rằng việc thiết lập vị trí của các hình dạng này sẽ ảnh hưởng đến tâm khối lượng của vật thể.
+
+Cách điều khiển vật thể cứng
+----------------------------
+
+Bạn có thể thay đổi hành vi của vật thể cứng bằng cách thiết lập các thuộc tính của nó, chẳng hạn như khối lượng và trọng lượng. Cần thêm một physics material vào vật thể cứng để điều chỉnh độ ma sát và độ nảy, cũng như thiết lập xem nó có khả năng hấp thụ và/hoặc thô ráp hay không. Bạn có thể thiết lập các thuộc tính này trong Inspector hoặc thông qua code. Xem :ref:`RigidBody3D <class_RigidBody3D>` và :ref:`PhysicsMaterial <class_PhysicsMaterial>` để biết danh sách đầy đủ các thuộc tính và tác động của chúng.
+
+Có một số cách để điều khiển chuyển động của vật thể cứng, tùy thuộc vào mục đích sử dụng của bạn.
+
+Nếu bạn chỉ cần đặt một vật thể cứng một lần, chẳng hạn như để thiết lập vị trí ban đầu, bạn có thể sử dụng các phương thức do node :ref:`Node3D <class_Node3D>` cung cấp, chẳng hạn như ``set_global_transform()`` hoặc ``look_at()``. Tuy nhiên, bạn không thể gọi các phương thức này ở mỗi frame, nếu không physics engine sẽ không thể mô phỏng chính xác trạng thái của vật thể. Ví dụ, hãy xem xét một vật thể cứng mà bạn muốn xoay để hướng về phía một đối tượng khác. Một lỗi phổ biến khi triển khai kiểu hành vi này là sử dụng ``look_at()`` ở mỗi frame, khiến mô phỏng vật lý bị lỗi. Dưới đây, chúng ta sẽ trình bày cách triển khai đúng.
+
+Việc bạn không thể sử dụng các phương thức ``set_global_transform()`` hoặc ``look_at()`` không có nghĩa là bạn không thể toàn quyền điều khiển một vật thể cứng. Thay vào đó, bạn có thể điều khiển nó bằng callback ``_integrate_forces()``. Trong phương thức này, bạn có thể thêm *lực*, áp dụng *xung lực* hoặc thiết lập *vận tốc* để đạt được bất kỳ chuyển động nào bạn mong muốn.
+
+Phương thức "look at"
 ---------------------
 
-A rigid body is one that is directly controlled by the physics engine in order to simulate the behavior of physical objects.
-In order to define the shape of the body, it must have one or more :ref:`Shape3D <class_Shape3D>` objects assigned. Note that setting the position of these shapes will affect the body's center of mass.
-
-How to control a rigid body
----------------------------
-
-A rigid body's behavior can be altered by setting its properties, such as mass and weight.
-A physics material needs to be added to the rigid body to adjust its friction and bounce,
-and set if it's absorbent and/or rough. These properties can be set in the Inspector or via code.
-See :ref:`RigidBody3D <class_RigidBody3D>` and :ref:`PhysicsMaterial <class_PhysicsMaterial>` for
-the full list of properties and their effects.
-
-There are several ways to control a rigid body's movement, depending on your desired application.
-
-If you only need to place a rigid body once, for example to set its initial location, you can use the methods provided by the :ref:`Node3D <class_Node3D>` node, such as ``set_global_transform()`` or ``look_at()``. However, these methods cannot be called every frame or the physics engine will not be able to correctly simulate the body's state.
-As an example, consider a rigid body that you want to rotate so that it points towards another object. A common mistake when implementing this kind of behavior is to use ``look_at()`` every frame, which breaks the physics simulation. Below, we'll demonstrate how to implement this correctly.
-
-The fact that you can't use ``set_global_transform()`` or ``look_at()`` methods doesn't mean that you can't have full control of a rigid body. Instead, you can control it by using the ``_integrate_forces()`` callback. In this method, you can add *forces*, apply *impulses*, or set the *velocity* in order to achieve any movement you desire.
-
-The "look at" method
---------------------
-
-As described above, using the Node3D's ``look_at()`` method can't be used each frame to follow a target.
-Here is a custom ``look_at()`` method called ``look_follow()`` that will work with rigid bodies:
+Như đã mô tả ở trên, không thể sử dụng phương thức ``look_at()`` của Node3D ở mỗi frame để bám theo một mục tiêu. Dưới đây là một phương thức ``look_at()`` tùy chỉnh có tên ``look_follow()``, hoạt động với các vật thể cứng:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -77,9 +70,4 @@ Here is a custom ``look_at()`` method called ``look_follow()`` that will work wi
     }
 
 
-This method uses the rigid body's ``angular_velocity`` property to rotate the body.
-The axis to rotate around is given by the cross product between the current forward direction and the direction one wants to look in.
-The ``clamp`` is a simple method used to prevent the amount of rotation from going past the direction which is wanted to be looked in,
-as the total amount of rotation needed is given by the arccosine of the dot product.
-This method can be used with ``axis_lock_angular_*`` as well. If more precise control is needed, solutions such as ones relying on :ref:`class_Quaternion` may be required,
-as discussed in :ref:`doc_using_transforms`.
+Phương thức này sử dụng thuộc tính ``angular_velocity`` của vật thể cứng để xoay vật thể. Trục xoay được xác định bởi tích có hướng giữa hướng tiến hiện tại và hướng mà vật thể cần nhìn tới. ``clamp`` là một phương thức đơn giản được dùng để ngăn lượng xoay vượt quá hướng cần nhìn tới, vì tổng lượng xoay cần thiết được xác định bởi arccosine của tích vô hướng. Phương thức này cũng có thể được sử dụng với ``axis_lock_angular_*``. Nếu cần kiểm soát chính xác hơn, có thể cần đến các giải pháp như những giải pháp dựa trên :ref:`class_Quaternion`, như đã thảo luận trong :ref:`doc_using_transforms`.

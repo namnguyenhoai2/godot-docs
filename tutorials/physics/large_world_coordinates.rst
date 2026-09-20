@@ -1,57 +1,30 @@
 .. _doc_large_world_coordinates:
 
-Large world coordinates
-=======================
+Tọa độ thế giới lớn
+===================
 
 .. note::
 
-    Large world coordinates are mainly useful in 3D projects; they are rarely
-    required in 2D projects. Also, unlike 3D rendering, 2D rendering currently
-    doesn't benefit from increased precision when large world coordinates are
-    enabled.
+    Tọa độ thế giới lớn chủ yếu hữu ích trong các project 3D; chúng hiếm khi cần thiết trong các project 2D. Ngoài ra, không giống như rendering 3D, rendering 2D hiện tại không được hưởng lợi từ độ chính xác cao hơn khi bật tọa độ thế giới lớn.
 
-Why use large world coordinates?
---------------------------------
+Tại sao nên sử dụng tọa độ thế giới lớn?
+----------------------------------------
 
-In Godot, physics simulation and rendering both rely on *floating-point* numbers.
-However, in computing, floating-point numbers have **limited precision and range**.
-This can be a problem for games with huge worlds, such as space or planetary-scale
-simulation games.
+Trong Godot, cả mô phỏng vật lý và rendering đều dựa vào các số *floating-point*. Tuy nhiên, trong điện toán, số floating-point có **độ chính xác và phạm vi giới hạn**. Đây có thể là vấn đề đối với các game có thế giới khổng lồ, chẳng hạn như game mô phỏng không gian hoặc quy mô hành tinh.
 
-Precision is the greatest when the value is close to ``0.0``. Precision becomes
-gradually lower as the value increases or decreases away from ``0.0``. This
-occurs every time the floating-point number's *exponent* increases, which
-happens when the floating-point number surpasses a power of 2 value (2, 4, 8,
-16, …). Every time this occurs, the number's minimum step will *increase*,
-resulting in a loss of precision.
+Độ chính xác lớn nhất khi giá trị gần với ``0.0``. Độ chính xác giảm dần khi giá trị tăng hoặc giảm ra xa ``0.0``. Điều này xảy ra mỗi khi *exponent* của số floating-point tăng, tức là khi số floating-point vượt qua một giá trị lũy thừa của 2 (2, 4, 8, 16, …). Mỗi khi điều này xảy ra, bước tối thiểu của số sẽ *tăng*, dẫn đến mất độ chính xác.
 
-In practice, this means that as the player moves away from the world origin
-(``Vector2(0, 0)`` in 2D games or ``Vector3(0, 0, 0)`` in 3D games), precision
-will decrease.
+Trong thực tế, điều này có nghĩa là khi người chơi di chuyển ra xa gốc thế giới (``Vector2(0, 0)`` trong game 2D hoặc ``Vector3(0, 0, 0)`` trong game 3D), độ chính xác sẽ giảm.
 
-This loss of precision can result in objects appearing to "vibrate" when far
-away from the world origin, as the model's position will snap to the
-nearest value that can be represented in a floating-point number. This can also
-result in physics glitches that only occur when the player is far from the world
-origin.
+Mất độ chính xác này có thể khiến các object trông như đang "rung" khi ở xa gốc thế giới, vì vị trí của model sẽ được snap về giá trị gần nhất có thể được biểu diễn bằng số floating-point. Điều này cũng có thể gây ra các lỗi vật lý chỉ xảy ra khi người chơi ở xa gốc thế giới.
 
-The range determines the minimum and maximum values that can be stored in the
-number. If the player tries to move past this range, they will simply not be
-able to. However, in practice, floating-point precision almost always becomes
-a problem before the range does.
+Phạm vi xác định các giá trị tối thiểu và tối đa có thể được lưu trong số đó. Nếu người chơi cố di chuyển vượt quá phạm vi này, họ sẽ đơn giản là không thể di chuyển tiếp. Tuy nhiên, trong thực tế, độ chính xác của floating-point gần như luôn trở thành vấn đề trước khi phạm vi trở thành vấn đề.
 
-The range and precision (minimum step between two exponent intervals) are
-determined by the floating-point number type. The *theoretical* range allows
-extremely high values to be stored in single-precision floats, but with very low
-precision. In practice, a floating-point type that cannot represent all integer
-values is not very useful. At extreme values, precision becomes so low that the
-number cannot even distinguish two separate *integer* values from each other.
+Phạm vi và độ chính xác (bước tối thiểu giữa hai khoảng exponent) được xác định bởi kiểu số floating-point. Phạm vi *lý thuyết* cho phép lưu các giá trị cực kỳ lớn trong float độ chính xác đơn, nhưng với độ chính xác rất thấp. Trong thực tế, kiểu floating-point không thể biểu diễn tất cả các giá trị integer không hữu ích lắm. Ở các giá trị cực lớn, độ chính xác trở nên thấp đến mức số đó thậm chí không thể phân biệt hai giá trị *integer* riêng biệt với nhau.
 
-This is the range where individual integer values can be represented in a
-floating-point number:
+Đây là phạm vi mà các giá trị integer riêng lẻ có thể được biểu diễn trong một số floating-point:
 
-- **Single-precision float range (represent all integers):** Between -16,777,216 and 16,777,216
-- **Double-precision float range (represent all integers):** Between -9 quadrillion and 9 quadrillion
+- **Phạm vi float độ chính xác đơn (biểu diễn tất cả số nguyên):** Từ -16,777,216 đến 16,777,216 - **Phạm vi float độ chính xác kép (biểu diễn tất cả số nguyên):** Từ -9 quadrillion đến 9 quadrillion
 
 +----------------------+-----------------------+-----------------------+-----------------------------------------------------------------------------+
 | Range                | Single step           | Double step           | Comment                                                                     |
@@ -100,148 +73,77 @@ floating-point number:
 |                      |                       |                       | past this value.                                                            |
 +----------------------+-----------------------+-----------------------+-----------------------------------------------------------------------------+
 
-When using single-precision floats, it is possible to go past the suggested
-ranges, but more visible artifacting will occur and physics glitches will be
-more common (such as the player not walking straight in certain directions).
+Khi sử dụng float độ chính xác đơn, có thể vượt quá các phạm vi được đề xuất, nhưng artifact sẽ dễ nhận thấy hơn và các lỗi vật lý sẽ thường xuyên xảy ra hơn (chẳng hạn như người chơi không đi thẳng theo một số hướng nhất định).
 
 .. seealso::
 
-    See the `Demystifying Floating Point Precision <https://blog.demofox.org/2017/11/21/>`__
-    article for more information.
+    Xem bài viết `Demystifying Floating Point Precision <https://blog.demofox.org/2017/11/21/>`__ để biết thêm thông tin.
 
-How large world coordinates work
---------------------------------
+Cách hoạt động của tọa độ thế giới lớn
+--------------------------------------
 
-Large world coordinates (also known as **double-precision physics**) increase
-the precision level of all floating-point computations within the engine.
+Tọa độ thế giới lớn (còn được gọi là **vật lý độ chính xác kép**) làm tăng mức độ chính xác của tất cả các phép tính floating-point bên trong engine.
 
-By default, :ref:`class_float` is 64-bit in GDScript, but :ref:`class_Vector2`,
+Theo mặc định, :ref:`class_float` là 64-bit trong GDScript, nhưng :ref:`class_Vector2`,
 :ref:`class_Vector3` and :ref:`class_Vector4` are 32-bit. This means that the
-precision of vector types is much more limited. To resolve this, we can increase
-the number of bits used to represent a floating-point number in a Vector type.
-This results in an *exponential* increase in precision, which means the final
-value is not just twice as precise, but potentially thousands of times more
-precise at high values. The maximum value that can be represented is also
-greatly increased by going from a single-precision float to a double-precision
-float.
+độ chính xác của các kiểu vector bị giới hạn hơn nhiều. Để khắc phục điều này, chúng ta có thể tăng số bit được sử dụng để biểu diễn một số floating-point trong kiểu Vector. Điều này tạo ra mức tăng độ chính xác *theo cấp số nhân*, nghĩa là giá trị cuối cùng không chỉ chính xác gấp đôi, mà ở các giá trị lớn còn có thể chính xác hơn hàng nghìn lần. Giá trị tối đa có thể được biểu diễn cũng tăng đáng kể khi chuyển từ float độ chính xác đơn sang float độ chính xác kép.
 
-To avoid model snapping issues when far away from the world origin, Godot's 3D
-rendering engine will increase its precision for rendering operations when large
-world coordinates are enabled. The shaders do not use double-precision floats
-for performance reasons, but an `alternative solution <https://github.com/godotengine/godot/pull/66178>`__
-is used to emulate double precision for rendering using single-precision floats.
+Để tránh các vấn đề model bị snap khi ở xa gốc thế giới, engine rendering 3D của Godot sẽ tăng độ chính xác cho các thao tác rendering khi bật tọa độ thế giới lớn. Các shader không sử dụng float độ chính xác kép vì lý do hiệu năng, nhưng một `alternative solution <https://github.com/godotengine/godot/pull/66178>`__ được sử dụng để mô phỏng độ chính xác kép cho rendering bằng float độ chính xác đơn.
 
 .. note::
 
-    Enabling large world coordinates comes with a performance and memory usage
-    penalty, especially on 32-bit CPUs. Only enable large world coordinates if
-    you actually need them.
+    Việc bật tọa độ thế giới lớn đi kèm với cái giá về hiệu năng và mức sử dụng bộ nhớ, đặc biệt trên CPU 32-bit. Chỉ bật tọa độ thế giới lớn nếu bạn thực sự cần chúng.
 
-    This feature is tailored towards mid-range/high-end desktop platforms. Large
-    world coordinates may not perform well on low-end mobile devices, unless you
-    take steps to reduce CPU usage with other means (such as decreasing the
-    number of physics ticks per second).
+    Tính năng này hướng đến các platform desktop tầm trung/cao cấp. Tọa độ thế giới lớn có thể hoạt động không tốt trên các thiết bị mobile cấp thấp, trừ khi bạn thực hiện các biện pháp khác để giảm mức sử dụng CPU (chẳng hạn như giảm số physics tick mỗi giây).
 
-    On low-end platforms, an *origin shifting* approach can be used instead to
-    allow for large worlds without using double-precision physics and rendering.
-    Origin shifting works with single-precision floats, but it introduces more
-    complexity to game logic, especially in multiplayer games. Therefore, origin
-    shifting is not detailed on this page.
+    Trên các platform cấp thấp, thay vào đó có thể sử dụng phương pháp *dịch chuyển gốc* để hỗ trợ các thế giới lớn mà không cần dùng vật lý và rendering độ chính xác kép. Dịch chuyển gốc hoạt động với float độ chính xác đơn, nhưng làm tăng độ phức tạp của logic game, đặc biệt trong các game multiplayer. Vì vậy, dịch chuyển gốc không được trình bày chi tiết trên trang này.
 
-Who are large world coordinates for?
-------------------------------------
-
-Large world coordinates are typically required for 3D space or planetary-scale
-simulation games. This extends to games that require supporting *very* fast
-movement speeds, but also very slow *and* precise movements at times.
-
-On the other hand, it's important to only use large world coordinates when
-actually required (for performance reasons). Large world coordinates are usually
-**not** required for:
-
-- 2D games, as precision issues are usually less noticeable.
-- Games with small-scale or medium-scale worlds.
-- Games with large worlds, but split into different levels with loading
-  sequences in between. You can center each level portion around the world
-  origin to avoid precision issues without a performance penalty.
-- Open world games with a *playable on-foot area* not exceeding 8192×8192 meters
-  (centered around the world origin). As shown in the above table, the level of
-  precision remains acceptable within that range, even for a first-person game.
-
-**If in doubt**, you probably don't need to use large world coordinates in your
-project. For reference, most modern AAA open world titles don't use a large
-world coordinates system and still rely on single-precision floats for both
-rendering and physics.
-
-Enabling large world coordinates
+Tọa độ thế giới lớn dành cho ai?
 --------------------------------
 
-This process requires recompiling the editor and all export template binaries
-you intend to use. If you only intend to export your project in release mode,
-you can skip the compilation of debug export templates. In any case, you'll need
-to compile an editor build so you can test your large precision world without
-having to export the project every time.
+Tọa độ thế giới lớn thường cần thiết cho các game mô phỏng không gian hoặc quy mô hành tinh 3D. Điều này cũng áp dụng cho các game yêu cầu hỗ trợ tốc độ di chuyển *rất* nhanh, nhưng đôi khi cũng yêu cầu chuyển động rất chậm *và* chính xác.
 
-See the :ref:`Compiling <toc-devel-compiling>` section for compiling
-instructions for each target platform. You will need to add the ``precision=double``
-SCons option when compiling the editor and export templates.
+Mặt khác, điều quan trọng là chỉ sử dụng tọa độ thế giới lớn khi thực sự cần thiết (vì lý do hiệu năng). Tọa độ thế giới lớn thường **không** cần thiết cho:
 
-The resulting binaries will be named with a ``.double`` suffix to distinguish
-them from single-precision binaries (which lack any precision suffix). You can
-then specify the binaries as custom export templates in your project's export
-presets in the Export dialog.
+- Game 2D, vì các vấn đề về độ chính xác thường ít dễ nhận thấy hơn. - Game có thế giới quy mô nhỏ hoặc trung bình. - Game có thế giới lớn nhưng được chia thành các level khác nhau với các sequence loading ở giữa. Bạn có thể đặt phần của mỗi level quanh gốc thế giới để tránh các vấn đề về độ chính xác mà không phải chịu tổn thất hiệu năng. - Game open world có *khu vực có thể đi bộ* không vượt quá 8192×8192 mét (tập trung quanh gốc thế giới). Như được trình bày trong bảng trên, mức độ chính xác vẫn ở mức chấp nhận được trong phạm vi đó, ngay cả đối với game góc nhìn thứ nhất.
 
-Compatibility between single-precision and double-precision builds
-------------------------------------------------------------------
+**Nếu không chắc**, có lẽ bạn không cần sử dụng tọa độ thế giới lớn trong project của mình. Để tham khảo, hầu hết các tựa game open world AAA hiện đại không sử dụng hệ thống tọa độ thế giới lớn mà vẫn dựa vào float độ chính xác đơn cho cả rendering và vật lý.
 
-When saving a *binary* resource using the :ref:`class_ResourceSaver` singleton,
-a special flag is stored in the file if the resource was saved using a build
-that uses double-precision numbers. As a result, all binary resources will
-change on disk when you switch to a double-precision build and save over them.
+Bật tọa độ thế giới lớn
+-----------------------
 
-Both single-precision and double-precision builds support using the
+Quy trình này yêu cầu biên dịch lại editor và tất cả binary export template mà bạn dự định sử dụng. Nếu bạn chỉ dự định export project ở chế độ release, bạn có thể bỏ qua việc biên dịch debug export template. Trong mọi trường hợp, bạn sẽ cần biên dịch một editor build để có thể kiểm thử thế giới có độ chính xác lớn mà không phải export project mỗi lần.
+
+Xem phần :ref:`Compiling <toc-devel-compiling>` để biết hướng dẫn biên dịch cho từng platform đích. Bạn sẽ cần thêm tùy chọn SCons ``precision=double`` khi biên dịch editor và export template.
+
+Các binary tạo ra sẽ được đặt tên với hậu tố ``.double`` để phân biệt với các binary độ chính xác đơn (không có hậu tố độ chính xác). Sau đó, bạn có thể chỉ định các binary này làm export template tùy chỉnh trong export preset của project, trong hộp thoại Export.
+
+Tính tương thích giữa các build độ chính xác đơn và độ chính xác kép
+--------------------------------------------------------------------
+
+Khi lưu một resource *binary* bằng singleton :ref:`class_ResourceSaver`, một cờ đặc biệt sẽ được lưu trong file nếu resource được lưu bằng một build sử dụng các số độ chính xác kép. Do đó, tất cả resource binary sẽ thay đổi trên disk khi bạn chuyển sang build độ chính xác kép và ghi đè lên chúng.
+
+Cả build độ chính xác đơn và độ chính xác kép đều hỗ trợ sử dụng
 :ref:`class_ResourceLoader` singleton on resources that use this special flag.
-This means single-precision builds can load resources saved using
-double-precision builds and vice versa. Text-based resources don't store a
-double-precision flag, as they don't require such a flag for correct reading.
+Điều này có nghĩa là build độ chính xác đơn có thể load các resource được lưu bằng build độ chính xác kép và ngược lại. Resource dạng text không lưu cờ độ chính xác kép, vì chúng không cần cờ này để được đọc chính xác.
 
-Known incompatibilities
-~~~~~~~~~~~~~~~~~~~~~~~
+Các điểm không tương thích đã biết
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- In a networked multiplayer game, the server and all clients should be using
-  the same build type to ensure precision remains consistent across clients.
-  Using different build types *may* work, but various issues can occur.
-- The GDExtension API changes in an incompatible way in double-precision builds.
-  This means extensions **must** be rebuilt to work with double-precision
-  builds. On the extension developer's end, the ``REAL_T_IS_DOUBLE`` define is
-  enabled when building a GDExtension with ``precision=double``.
-  ``real_t`` can be used as an alias for ``float`` in single-precision builds,
-  and ``double`` in double-precision builds.
+- Trong game multiplayer network, server và tất cả client nên sử dụng cùng một loại build để đảm bảo độ chính xác nhất quán giữa các client. Việc sử dụng các loại build khác nhau *có thể* hoạt động, nhưng nhiều vấn đề khác nhau có thể xảy ra. - GDExtension API thay đổi theo cách không tương thích trong các build độ chính xác kép. Điều này có nghĩa là các extension **phải** được build lại để hoạt động với các build độ chính xác kép. Ở phía developer của extension, define ``REAL_T_IS_DOUBLE`` được bật khi build một GDExtension với ``precision=double``. ``real_t`` có thể được sử dụng làm alias cho ``float`` trong các build độ chính xác đơn và ``double`` trong các build độ chính xác kép.
 
-Limitations
+Các hạn chế
 -----------
 
-Since 3D rendering shaders don't actually use double-precision floats, there are
-some limitations when it comes to 3D rendering precision:
+Vì shader rendering 3D thực tế không sử dụng float độ chính xác kép, nên có một số hạn chế liên quan đến độ chính xác của rendering 3D:
 
-- :ref:`Triplanar mapping <doc_standard_material_3d_triplanar_mapping>` doesn't
-  benefit from increased precision. Materials using triplanar mapping will exhibit
-  visible jittering when far away from the world origin.
-- :ref:`class_GPUParticles3D` nodes with **Local Coords** disabled will not benefit
-  from increased precision. This can cause visible particle snapping to occur
-  when far away from the world origin. Nodes with **Local Coords** enabled,
-  as well as :ref:`class_CPUParticles3D` nodes, will still benefit from increased precision.
-- Shaders using the ``skip_vertex_transform`` or ``world_vertex_coords`` render modes
-  don't benefit from increased precision.
-- In double-precision builds, world space coordinates in a shader ``fragment()``
-  function can't be reconstructed from view space, for example:
+- :ref:`Triplanar mapping <doc_standard_material_3d_triplanar_mapping>` không được hưởng lợi từ độ chính xác tăng thêm. Các material sử dụng triplanar mapping sẽ xuất hiện hiện tượng jitter rõ rệt khi ở xa gốc thế giới. - Các node :ref:`class_GPUParticles3D` khi tắt **Local Coords** sẽ không được hưởng lợi từ độ chính xác tăng thêm. Điều này có thể khiến particle bị snap rõ rệt khi ở xa gốc thế giới. Các node bật **Local Coords**, cũng như các node :ref:`class_CPUParticles3D`, vẫn sẽ được hưởng lợi từ độ chính xác tăng thêm. - Các shader sử dụng render mode ``skip_vertex_transform`` hoặc ``world_vertex_coords`` không được hưởng lợi từ độ chính xác tăng thêm. - Trong các build độ chính xác kép, không thể tái dựng tọa độ world space trong shader ``fragment()`` từ view space, ví dụ:
 
   .. code-block:: glsl
 
     vec3 world = (INV_VIEW_MATRIX * vec4(VERTEX, 1.0)).xyz;
 
-  Instead, calculate the world space coordinates in the ``vertex()`` function and
-  pass them using a :ref:`varying<doc_shading_language_varyings>`, for example:
+  Thay vào đó, hãy tính tọa độ world space trong hàm ``vertex()`` và truyền chúng bằng một :ref:`varying<doc_shading_language_varyings>`, ví dụ:
 
   .. code-block:: glsl
 
@@ -250,8 +152,4 @@ some limitations when it comes to 3D rendering precision:
         world = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
     }
 
-2D rendering currently doesn't benefit from increased precision when large world
-coordinates are enabled. This can cause visible model snapping to occur when
-far away from the world origin (starting from a few million pixels at typical
-zoom levels). 2D physics calculations will still benefit from increased
-precision though.
+Hiện tại, việc render 2D không được hưởng lợi từ độ chính xác tăng lên khi bật tọa độ thế giới lớn. Điều này có thể khiến hiện tượng mô hình bị giật thấy rõ xảy ra khi ở xa gốc tọa độ thế giới (bắt đầu từ vài triệu pixel ở các mức zoom thông thường). Tuy nhiên, các phép tính physics 2D vẫn sẽ được hưởng lợi từ độ chính xác tăng lên.

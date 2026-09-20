@@ -3,53 +3,40 @@
 Ray-casting
 ===========
 
-Introduction
-------------
+Giới thiệu
+----------
 
-One of the most common tasks in game development is casting a ray (or
-custom shaped object) and checking what it hits. This enables complex
-behaviors, AI, etc. to take place. This tutorial will explain how to
-do this in 2D and 3D.
+Một trong những tác vụ phổ biến nhất trong quá trình phát triển game là cast một ray (hoặc đối tượng có hình dạng tùy chỉnh) và kiểm tra xem nó chạm vào gì. Điều này cho phép thực hiện các hành vi phức tạp, AI, v.v. Tutorial này sẽ giải thích cách thực hiện trong 2D và 3D.
 
-Godot stores all the low-level game information in servers, while the
-scene is only a frontend. As such, ray casting is generally a
-lower-level task. For simple raycasts, nodes like
+Godot lưu trữ toàn bộ thông tin game cấp thấp trong các server, còn scene chỉ là frontend. Vì vậy, ray casting nhìn chung là một tác vụ cấp thấp hơn. Đối với các raycast đơn giản, những node như
 :ref:`RayCast3D <class_RayCast3D>` and :ref:`RayCast2D <class_RayCast2D>`
-will work, as they return every frame what the result of a raycast
-is.
+sẽ hoạt động, vì chúng trả về kết quả của một raycast trong mỗi frame.
 
-Many times, though, ray-casting needs to be a more interactive process
-so a way to do this by code must exist.
+Tuy nhiên, nhiều khi ray-casting cần là một quy trình mang tính tương tác hơn, vì vậy phải có cách thực hiện việc này bằng code.
 
-Space
------
+Không gian
+----------
 
-In the physics world, Godot stores all the low-level collision and
-physics information in a *space*. The current 2d space (for 2D Physics)
-can be obtained by accessing
+Trong thế giới vật lý, Godot lưu trữ toàn bộ thông tin va chạm và vật lý cấp thấp trong một *space*. Có thể lấy space 2d hiện tại (dành cho Vật lý 2D) bằng cách truy cập
 :ref:`CanvasItem.get_world_2d().space <class_CanvasItem_method_get_world_2d>`.
-For 3D, it's :ref:`Node3D.get_world_3d().space <class_Node3D_method_get_world_3d>`.
+Đối với 3D, đó là :ref:`Node3D.get_world_3d().space <class_Node3D_method_get_world_3d>`.
 
-The resulting space :ref:`RID <class_RID>` can be used in
+Space kết quả :ref:`RID <class_RID>` có thể được sử dụng trong
 :ref:`PhysicsServer3D <class_PhysicsServer3D>` and
 :ref:`PhysicsServer2D <class_PhysicsServer2D>` respectively for 3D and 2D.
 
-Accessing space
----------------
+Truy cập space
+--------------
 
-Godot physics runs by default in the same thread as game logic, but may
-be set to run on a separate thread to work more efficiently. Due to
-this, the only time accessing space is safe is during the
+Theo mặc định, physics của Godot chạy trên cùng thread với game logic, nhưng có thể được thiết lập để chạy trên một thread riêng nhằm hoạt động hiệu quả hơn. Do đó, thời điểm duy nhất có thể truy cập space một cách an toàn là trong callback
 :ref:`Node._physics_process() <class_Node_private_method__physics_process>`
-callback. Accessing it from outside this function may result in an error
-due to space being *locked*.
+. Việc truy cập nó từ bên ngoài hàm này có thể gây ra lỗi vì space đang bị *khóa*.
 
-To perform queries into physics space, the
+Để thực hiện các truy vấn vào physics space, phải sử dụng
 :ref:`PhysicsDirectSpaceState2D <class_PhysicsDirectSpaceState2D>`
-and :ref:`PhysicsDirectSpaceState3D <class_PhysicsDirectSpaceState3D>`
-must be used.
+và :ref:`PhysicsDirectSpaceState3D <class_PhysicsDirectSpaceState3D>`.
 
-Use the following code in 2D:
+Sử dụng đoạn code sau trong 2D:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -66,7 +53,7 @@ Use the following code in 2D:
         var spaceState = PhysicsServer2D.SpaceGetDirectState(spaceRid);
     }
 
-Or more directly:
+Hoặc trực tiếp hơn:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -81,7 +68,7 @@ Or more directly:
         var spaceState = GetWorld2D().DirectSpaceState;
     }
 
-And in 3D:
+Và trong 3D:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -96,19 +83,19 @@ And in 3D:
         var spaceState = GetWorld3D().DirectSpaceState;
     }
 
-Raycast query
--------------
+Truy vấn raycast
+----------------
 
-For performing a 2D raycast query, the method
+Để thực hiện truy vấn raycast 2D, có thể sử dụng phương thức
 :ref:`PhysicsDirectSpaceState2D.intersect_ray() <class_PhysicsDirectSpaceState2D_method_intersect_ray>`
-may be used. For example:
+Ví dụ:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     func _physics_process(delta):
         var space_state = get_world_2d().direct_space_state
-        # use global coordinates, not local to node
+        # sử dụng tọa độ global, không phải tọa độ local của node
         var query = PhysicsRayQueryParameters2D.create(Vector2(0, 0), Vector2(50, 100))
         var result = space_state.intersect_ray(query)
 
@@ -117,13 +104,12 @@ may be used. For example:
     public override void _PhysicsProcess(double delta)
     {
         var spaceState = GetWorld2D().DirectSpaceState;
-        // use global coordinates, not local to node
+        // sử dụng tọa độ global, không phải tọa độ local của node
         var query = PhysicsRayQueryParameters2D.Create(Vector2.Zero, new Vector2(50, 100));
         var result = spaceState.IntersectRay(query);
     }
 
-The result is a dictionary. If the ray didn't hit anything, the dictionary will
-be empty. If it did hit something, it will contain collision information:
+Kết quả là một dictionary. Nếu ray không chạm vào gì, dictionary sẽ rỗng. Nếu có chạm vào một đối tượng, nó sẽ chứa thông tin va chạm:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -138,23 +124,21 @@ be empty. If it did hit something, it will contain collision information:
             GD.Print("Hit at point: ", result["position"]);
         }
 
-The ``result`` dictionary when a collision occurs contains the following
-data:
+Dictionary ``result`` khi xảy ra va chạm chứa các dữ liệu sau:
 
 ::
 
     {
-       position: Vector2 # point in world space for collision
-       normal: Vector2 # normal in world space for collision
-       collider: Object # Object collided or null (if unassociated)
-       collider_id: ObjectID # Object it collided against
-       rid: RID # RID it collided against
-       shape: int # shape index of collider
-       metadata: Variant() # metadata of collider
+       position: Vector2 # điểm trong world space nơi xảy ra va chạm
+       normal: Vector2 # normal trong world space tại vị trí va chạm
+       collider: Object # Đối tượng đã va chạm hoặc null (nếu không liên kết)
+       collider_id: ObjectID # Đối tượng mà nó va chạm vào
+       rid: RID # RID của đối tượng mà nó va chạm vào
+       shape: int # chỉ số shape của collider
+       metadata: Variant() # metadata của collider
     }
 
-The data is similar in 3D space, using Vector3 coordinates. Note that to enable collisions
-with Area3D, the boolean parameter ``collide_with_areas`` must be set to ``true``.
+Dữ liệu trong 3D space cũng tương tự, sử dụng tọa độ Vector3. Lưu ý rằng để bật va chạm với Area3D, tham số boolean ``collide_with_areas`` phải được đặt thành ``true``.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -191,19 +175,14 @@ with Area3D, the boolean parameter ``collide_with_areas`` must be set to ``true`
         var result = spaceState.IntersectRay(query);
     }
 
-Collision exceptions
---------------------
+Ngoại lệ va chạm
+----------------
 
-A common use case for ray casting is to enable a character to gather data
-about the world around it. One problem with this is that the same character
-has a collider, so the ray will only detect its parent's collider,
-as shown in the following image:
+Một trường hợp sử dụng phổ biến của ray casting là cho phép một nhân vật thu thập dữ liệu về thế giới xung quanh nó. Một vấn đề ở đây là bản thân nhân vật cũng có collider, vì vậy ray sẽ chỉ phát hiện collider của node cha của nó, như minh họa trong hình sau:
 
 .. image:: img/raycast_falsepositive.webp
 
-To avoid self-intersection, the ``intersect_ray()`` parameters object can take an
-array of exceptions via its ``exclude`` property. This is an example of how to use it
-from a CharacterBody2D or any other collision object node:
+Để tránh tự giao nhau, đối tượng tham số ``intersect_ray()`` có thể nhận một mảng các ngoại lệ thông qua thuộc tính ``exclude``. Đây là ví dụ về cách sử dụng nó từ một CharacterBody2D hoặc bất kỳ node đối tượng va chạm nào khác:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -231,18 +210,14 @@ from a CharacterBody2D or any other collision object node:
         }
     }
 
-The exceptions array can contain objects or RIDs.
+Mảng ngoại lệ có thể chứa các đối tượng hoặc RID.
 
 Collision Mask
 --------------
 
-While the exceptions method works fine for excluding the parent body, it becomes
-very inconvenient if you need a large and/or dynamic list of exceptions. In
-this case, it is much more efficient to use the collision layer/mask system.
+Mặc dù phương pháp ngoại lệ hoạt động tốt để loại trừ body cha, nó sẽ trở nên rất bất tiện nếu bạn cần một danh sách ngoại lệ lớn và/hoặc động. Trong trường hợp này, sử dụng hệ thống collision layer/mask sẽ hiệu quả hơn nhiều.
 
-The ``intersect_ray()`` parameters object can also be supplied a collision mask.
-For example, to use the same mask as the parent body, use the ``collision_mask``
-member variable. The array of exceptions can be supplied as the last argument as well:
+Đối tượng tham số ``intersect_ray()`` cũng có thể được cung cấp một collision mask. Ví dụ, để sử dụng cùng mask với body cha, hãy sử dụng biến thành viên ``collision_mask``. Mảng ngoại lệ cũng có thể được cung cấp dưới dạng đối số cuối cùng:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -270,26 +245,20 @@ member variable. The array of exceptions can be supplied as the last argument as
         }
     }
 
-See :ref:`doc_physics_introduction_collision_layer_code_example` for details on how to set the collision mask.
+Xem :ref:`doc_physics_introduction_collision_layer_code_example` để biết chi tiết về cách thiết lập collision mask.
 
-3D ray casting from screen
+Ray casting 3D từ màn hình
 --------------------------
 
-Casting a ray from screen to 3D physics space is useful for object
-picking. There is not much need to do this because
+Cast một ray từ màn hình vào 3D physics space rất hữu ích cho việc chọn đối tượng. Không có nhiều nhu cầu thực hiện việc này vì
 :ref:`CollisionObject3D <class_CollisionObject3D>`
-has an "input_event" signal that will let you know when it was clicked,
-but in case there is any desire to do it manually, here's how.
+có signal "input_event" cho phép bạn biết khi nó được nhấp, nhưng nếu muốn thực hiện thủ công thì cách làm như sau.
 
-To cast a ray from the screen, you need a :ref:`Camera3D <class_Camera3D>`
-node. A ``Camera3D`` can be in two projection modes: perspective and
-orthogonal. Because of this, both the ray origin and direction must be
-obtained. This is because ``origin`` changes in orthogonal mode, while
-``normal`` changes in perspective mode:
+Để cast một ray từ màn hình, bạn cần một node :ref:`Camera3D <class_Camera3D>`. Một ``Camera3D`` có thể sử dụng một trong hai projection mode: perspective và orthogonal. Vì vậy, phải lấy cả origin và hướng của ray. Lý do là ``origin`` thay đổi trong orthogonal mode, còn ``normal`` thay đổi trong perspective mode:
 
 .. image:: img/raycast_projection.png
 
-To obtain it using a camera, the following code can be used:
+Để lấy nó bằng camera, có thể sử dụng đoạn code sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -316,5 +285,4 @@ To obtain it using a camera, the following code can be used:
         }
     }
 
-Remember that during ``_input()``, the space may be locked, so in practice
-this query should be run in ``_physics_process()``.
+Hãy nhớ rằng trong ``_input()``, space có thể bị khóa, vì vậy trên thực tế truy vấn này nên được chạy trong ``_physics_process()``.

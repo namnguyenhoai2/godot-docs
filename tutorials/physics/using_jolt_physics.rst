@@ -1,266 +1,143 @@
 .. _doc_using_jolt_physics:
 
-Using Jolt Physics
-==================
+Sử dụng Jolt Physics
+====================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-The Jolt physics engine was added as an alternative to the existing Godot Physics
-physics engine in 4.4. Jolt is developed by Jorrit Rouwe with a focus on games and
-VR applications. Previously it was available as an extension but is now built into
-Godot. By default, new projects will use it as the physics engine.
+Jolt physics engine được thêm vào như một lựa chọn thay thế cho Godot Physics physics engine hiện có trong 4.4. Jolt được Jorrit Rouwe phát triển, tập trung vào game và các ứng dụng VR. Trước đây, nó có sẵn dưới dạng extension nhưng hiện đã được tích hợp vào Godot. Theo mặc định, các project mới sẽ sử dụng nó làm physics engine.
 
-The existing extension is now considered in maintenance mode. That means bug fixes
-will be merged, and it will be kept compatible with new versions of Godot until
-the built-in module has feature parity with the extension. The only thing missing at
-this point is related joints, which you can read about on this page. The extension
-can be found `here on GitHub <https://github.com/godot-jolt/godot-jolt>`_ and in
-Godot's asset library.
+Extension hiện có nay được xem là đang ở chế độ bảo trì. Điều đó có nghĩa là các bản sửa lỗi sẽ được hợp nhất và extension sẽ được duy trì khả năng tương thích với các phiên bản Godot mới cho đến khi module tích hợp có đầy đủ tính năng như extension. Hiện tại, thứ duy nhất còn thiếu là các joint liên quan, bạn có thể đọc thêm về chúng trên trang này. Extension có thể được tìm thấy `here on GitHub <https://github.com/godot-jolt/godot-jolt>`_ và trong asset library của Godot.
 
-To change the 3D physics engine to be Jolt Physics, set
+Để thay đổi 3D physics engine thành Jolt Physics, hãy đặt
 :ref:`Project Settings > Physics > 3D > Physics Engine<class_ProjectSettings_property_physics/3D/Physics_Engine>`
-to ``Jolt Physics``. Once you've done that, click the **Save & Restart** button.
-When the editor opens again, 3D scenes should now be using Jolt for physics.
+thành ``Jolt Physics``. Sau khi hoàn tất, hãy nhấp vào nút **Save & Restart**. Khi editor mở lại, các cảnh 3D sẽ sử dụng Jolt cho physics.
 
-Notable differences to Godot Physics
-------------------------------------
+Những khác biệt đáng chú ý so với Godot Physics
+-----------------------------------------------
 
-There are many differences between the existing Godot Physics engine and Jolt.
+Có nhiều điểm khác biệt giữa Godot Physics engine hiện có và Jolt.
 
-Joint properties
+Các thuộc tính joint
+~~~~~~~~~~~~~~~~~~~~
+
+Các interface hiện tại cho những node joint 3D chưa hoàn toàn tương ứng với interface của các joint riêng của Jolt. Vì vậy, có một số thuộc tính joint không được hỗ trợ, chủ yếu là những thuộc tính liên quan đến việc cấu hình các giới hạn mềm của joint.
+
+Các thuộc tính không được hỗ trợ là:
+
+- PinJoint3D: ``bias``, ``damping``, ``impulse_clamp`` - HingeJoint3D: ``bias``, ``softness``, ``relaxation`` - SliderJoint3D: ``angular_\*``, ``\*_limit/softness``, ``\*_limit/restitution``, ``\*_limit/damping`` - ConeTwistJoint3D: ``bias``, ``relaxation``, ``softness`` - Generic6DOFJoint3D: ``*_limit_*/softness``, ``*_limit_*/restitution``, ``*_limit_*/damping``, ``*_limit_*/erp``
+
+Hiện tại, một cảnh báo sẽ được đưa ra nếu bạn đặt các thuộc tính này thành bất kỳ giá trị nào khác giá trị mặc định.
+
+Joint một body
+~~~~~~~~~~~~~~
+
+Trong Godot, bạn có thể bỏ qua một trong hai body của một joint hai body và về cơ bản để "world" làm body còn lại. Tuy nhiên, node path mà bạn gán body vào (:ref:`node_a<class_Joint3D_property_node_a>` so với :ref:`node_b<class_Joint3D_property_node_b>`) sẽ bị bỏ qua. Godot Physics sẽ luôn hoạt động như thể bạn đã gán nó vào ``node_a``, và vì ``node_a`` cũng là thứ xác định hệ quy chiếu cho các giới hạn của joint, cuối cùng bạn sẽ có các giới hạn bị đảo ngược và hình dạng giới hạn có thể kỳ lạ, đặc biệt khi các giới hạn của bạn cho phép cả bậc tự do tuyến tính và góc.
+
+Thay vào đó, Jolt sẽ hoạt động như thể bạn đã gán body vào ``node_b``, với ``node_a`` đại diện cho "world". Có một project setting tên là :ref:`Physics > Jolt Physics 3D > Joints > World Node<class_ProjectSettings_property_physics/jolt_physics_3d/joints/world_node>` cho phép bạn bật tắt hành vi này nếu cần khả năng tương thích cho một project hiện có.
+
+Collision margin
 ~~~~~~~~~~~~~~~~
 
-The current interfaces for the 3D joint nodes don't quite line up with the interface
-of Jolt's own joints. As such, there are a number of joint properties that are not
-supported, mainly ones related to configuring the joint's soft limits.
+Jolt (và các physics engine tương tự khác) sử dụng một thứ mà Jolt gọi là "convex radius" để giúp cải thiện hiệu năng và hành vi của các loại collision detection mà Jolt dựa vào cho các convex shape. Những physics engine khác (bao gồm Godot) có thể gọi chúng là "collision margins". Godot cung cấp chúng dưới dạng thuộc tính ``margin`` trên mọi class dẫn xuất từ Shape3D, nhưng bản thân Godot Physics không sử dụng chúng cho bất kỳ mục đích nào.
 
-The unsupported properties are:
+Những collision margin này đôi khi hoạt động trong các engine khác (như được mô tả trong tài liệu của Godot) bằng cách thêm một "shell" xung quanh shape, làm tăng nhẹ kích thước đồng thời bo tròn mọi cạnh/góc. Tuy nhiên, trong Jolt, các margin này trước tiên được dùng để thu nhỏ shape, sau đó "shell" được áp dụng, khiến các cạnh/góc cũng được bo tròn tương tự nhưng không làm tăng kích thước shape.
 
-- PinJoint3D: ``bias``, ``damping``, ``impulse_clamp``
-- HingeJoint3D: ``bias``, ``softness``, ``relaxation``
-- SliderJoint3D: ``angular_\*``, ``\*_limit/softness``, ``\*_limit/restitution``, ``\*_limit/damping``
-- ConeTwistJoint3D: ``bias``, ``relaxation``, ``softness``
-- Generic6DOFJoint3D: ``*_limit_*/softness``, ``*_limit_*/restitution``, ``*_limit_*/damping``, ``*_limit_*/erp``
+Để tránh phải điều chỉnh thủ công thuộc tính margin này, vì giá trị mặc định của nó có thể gây vấn đề với các shape nhỏ, module Jolt cung cấp một project setting tên là :ref:`Physics > Jolt Physics 3D > Collisions > Collision Margin Fraction<class_ProjectSettings_property_physics/jolt_physics_3d/collisions/collision_margin_fraction>`, giá trị này được nhân với trục nhỏ nhất của AABB của shape để tính margin thực tế. Sau đó, thuộc tính margin của shape được dùng làm giới hạn trên.
 
-Currently a warning is emitted if you set these properties to anything but their
-default values.
-
-Single-body joints
-~~~~~~~~~~~~~~~~~~
-
-You can, in Godot, omit one of the joint bodies for a two-body joint and effectively
-have "the world" be the other body. However, the node path that you assign your body
-to (:ref:`node_a<class_Joint3D_property_node_a>` vs :ref:`node_b<class_Joint3D_property_node_b>`)
-is ignored. Godot Physics will always behave as if you
-assigned it to ``node_a``, and since ``node_a`` is also what defines the frame of reference
-for the joint limits, you end up with inverted limits and a potentially strange
-limit shape, especially if your limits allow both linear and angular degrees of
-freedom.
-
-Jolt will behave as if you assigned the body to ``node_b`` instead, with ``node_a``
-representing "the world". There is a project setting called :ref:`Physics > Jolt Physics 3D > Joints > World Node<class_ProjectSettings_property_physics/jolt_physics_3d/joints/world_node>`
-that lets you toggle this behavior, if you need compatibility for an existing project.
-
-Collision margins
-~~~~~~~~~~~~~~~~~
-
-Jolt (and other similar physics engines) uses something that Jolt refers to as
-"convex radius" to help improve the performance and behavior of the types of
-collision detection that Jolt relies on for convex shapes. Other physics engines
-(Godot included) might refer to these as "collision margins" instead. Godot exposes
-these as the ``margin`` property on every Shape3D-derived class, but Godot Physics
-itself does not use them for anything.
-
-What these collision margins sometimes do in other engines (as described in Godot's
-documentation) is effectively add a "shell" around the shape, slightly increasing
-its size while also rounding off any edges/corners. In Jolt however, these margins
-are first used to shrink the shape, and then the "shell" is applied, resulting in
-edges/corners being similarly rounded off, but without increasing the size of the
-shape.
-
-To prevent having to tweak this margin property manually, since its default value
-can be problematic for smaller shapes, the Jolt module exposes a project setting
-called :ref:`Physics > Jolt Physics 3D > Collisions > Collision Margin Fraction<class_ProjectSettings_property_physics/jolt_physics_3d/collisions/collision_margin_fraction>`
-which is multiplied with the smallest axis of the shape's AABB to calculate the
-actual margin. The margin property of the shape is then instead used as an upper
-bound.
-
-These margins should, for most use-cases, be more or less transparent, but can
-sometimes result in odd collision normals when performing shape queries. You can
-lower the above mentioned project setting to mitigate some of this, including
-setting it to ``0.0``, but too small of a margin can also cause odd collision results,
-so is generally not recommended.
+Trong hầu hết trường hợp sử dụng, các margin này ít nhiều sẽ hoạt động trong suốt, nhưng đôi khi có thể dẫn đến collision normal bất thường khi thực hiện các shape query. Bạn có thể giảm project setting được đề cập ở trên để giảm thiểu một phần hiện tượng này, kể cả đặt nó thành ``0.0``, nhưng margin quá nhỏ cũng có thể gây ra kết quả collision bất thường, vì vậy thường không được khuyến nghị.
 
 Baumgarte stabilization
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Baumgarte stabilization is a method to resolve penetrating bodies and push them to a
-state where they are just touching. In Godot Physics this works like a spring. This
-means that bodies can accelerate and may cause the bodies to overshoot and separate
-completely. With Jolt, the stabilization is only applied to the position and not to
-the velocity of the body. This means it cannot overshoot but it may take longer to
-resolve the penetration.
+Baumgarte stabilization là một phương pháp xử lý các body xuyên vào nhau và đẩy chúng về trạng thái vừa chạm nhau. Trong Godot Physics, phương pháp này hoạt động giống như một lò xo. Điều đó có nghĩa là các body có thể tăng tốc và khiến chúng vượt quá vị trí rồi tách ra hoàn toàn. Với Jolt, stabilization chỉ được áp dụng cho vị trí chứ không áp dụng cho vận tốc của body. Điều đó có nghĩa là nó không thể vượt quá vị trí, nhưng có thể mất nhiều thời gian hơn để xử lý phần xuyên vào nhau.
 
-The strength of this stabilization can be tweaked using the project setting
+Độ mạnh của stabilization này có thể được điều chỉnh bằng project setting
 :ref:`Physics > Jolt Physics 3D > Simulation > Baumgarte Stabilization Factor<class_ProjectSettings_property_physics/jolt_physics_3d/simulation/baumgarte_stabilization_factor>`.
-Setting this project setting to ``0.0`` will turn Baumgarte stabilization off.
-Setting it to ``1.0`` will resolve penetration in 1 simulation step. This is fast
-but often also unstable.
+Đặt project setting này thành ``0.0`` sẽ tắt Baumgarte stabilization. Đặt thành ``1.0`` sẽ xử lý phần xuyên vào nhau trong 1 bước mô phỏng. Cách này nhanh nhưng thường cũng không ổn định.
 
-Ghost collisions
-~~~~~~~~~~~~~~~~
+Ghost collision
+~~~~~~~~~~~~~~~
 
-Jolt employs two techniques to mitigate ghost collisions, meaning collisions with
-internal edges of shapes/bodies that result in collision normals that oppose the
-direction of movement.
+Jolt sử dụng hai kỹ thuật để giảm thiểu ghost collision, tức là các collision với những cạnh bên trong của shape/body tạo ra collision normal ngược với hướng chuyển động.
 
-The first technique, called "active edge detection", marks edges of triangles in
+Kỹ thuật đầu tiên, được gọi là "active edge detection", đánh dấu các cạnh của tam giác dựa trên
 :ref:`class_ConcavePolygonShape3D` or :ref:`class_HeightMapShape3D` as either "active" or "inactive", based on
-the angle to the neighboring triangle. When a collision happens with an inactive
-edge the collision normal will be replaced with the triangle's normal instead, to
-lessen the effect of ghost collisions.
+góc với tam giác lân cận. Khi xảy ra collision với một cạnh không hoạt động, collision normal sẽ được thay thế bằng normal của tam giác để giảm ảnh hưởng của ghost collision.
 
-The angle threshold for this active edge detection is configurable through the
-project setting :ref:`Physics >Jolt Physics 3D > Collisions > Active Edge Threshold<class_ProjectSettings_property_physics/jolt_physics_3d/collisions/active_edge_threshold>`.
+Ngưỡng góc cho active edge detection này có thể được cấu hình thông qua project setting :ref:`Physics >Jolt Physics 3D > Collisions > Active Edge Threshold<class_ProjectSettings_property_physics/jolt_physics_3d/collisions/active_edge_threshold>`.
 
-The second technique, called "enhanced internal edge removal", instead adds runtime
-checks to detect whether an edge is active or inactive, based on the contact points
-of the two bodies. This has the benefit of applying not only to collisions with
+Kỹ thuật thứ hai, được gọi là "enhanced internal edge removal", thay vào đó thêm các bước kiểm tra runtime để phát hiện một cạnh đang hoạt động hay không hoạt động, dựa trên các contact point của hai body. Kỹ thuật này có ưu điểm là không chỉ áp dụng cho các collision với
 :ref:`class_ConcavePolygonShape3D` and :ref:`class_HeightMapShape3D`, but also edges between any shapes within
-the same body.
+cùng một body.
 
-Enhanced internal edge removal can be toggled on and off for the various contexts to
-which it's applied, using the :ref:`Physics >Jolt Physics 3D > Simulation > Use Enhanced Internal Edge Removal<class_ProjectSettings_property_physics/jolt_physics_3d/simulation/use_enhanced_internal_edge_removal>`,
-project setting, and the similar settings for :ref:`queries<class_ProjectSettings_property_physics/jolt_physics_3d/queries/use_enhanced_internal_edge_removal>`
-and :ref:`motion queries<class_ProjectSettings_property_physics/jolt_physics_3d/motion_queries/use_enhanced_internal_edge_removal>`.
+Enhanced internal edge removal có thể được bật và tắt cho nhiều context mà nó được áp dụng, bằng project setting :ref:`Physics >Jolt Physics 3D > Simulation > Use Enhanced Internal Edge Removal<class_ProjectSettings_property_physics/jolt_physics_3d/simulation/use_enhanced_internal_edge_removal>` và các setting tương tự cho :ref:`queries<class_ProjectSettings_property_physics/jolt_physics_3d/queries/use_enhanced_internal_edge_removal>` và :ref:`motion queries<class_ProjectSettings_property_physics/jolt_physics_3d/motion_queries/use_enhanced_internal_edge_removal>`.
 
-Note that neither the active edge detection nor enhanced internal edge removal apply
-when dealing with ghost collisions between two different bodies.
+Lưu ý rằng cả active edge detection lẫn enhanced internal edge removal đều không áp dụng khi xử lý ghost collision giữa hai body khác nhau.
 
-Memory usage
-~~~~~~~~~~~~
+Mức sử dụng bộ nhớ
+~~~~~~~~~~~~~~~~~~
 
-Jolt uses a stack allocator for temporary allocations within its simulation step.
-This stack allocator requires allocating a set amount of memory up front, which can
-be configured using the :ref:`Physics > Jolt Physics 3D > Limits > Temporary Memory Buffer Size<class_ProjectSettings_property_physics/jolt_physics_3d/limits/temporary_memory_buffer_size>`
-project setting.
+Jolt sử dụng stack allocator cho các allocation tạm thời trong bước mô phỏng. Stack allocator này yêu cầu cấp phát trước một lượng bộ nhớ cố định, có thể được cấu hình bằng project setting :ref:`Physics > Jolt Physics 3D > Limits > Temporary Memory Buffer Size<class_ProjectSettings_property_physics/jolt_physics_3d/limits/temporary_memory_buffer_size>`.
 
-Ray-cast face index
-~~~~~~~~~~~~~~~~~~~
+Face index của ray-cast
+~~~~~~~~~~~~~~~~~~~~~~~
 
-The ``face_index`` property returned in the results of :ref:`intersect_ray()<class_PhysicsDirectSpaceState3D_method_intersect_ray>`
-and RayCast3D will by default always be ``-1`` with Jolt. The project setting :ref:`Physics > Jolt Physics 3D > Queries > Enable Ray Cast Face Index<class_ProjectSettings_property_physics/jolt_physics_3d/queries/enable_ray_cast_face_index>`
-will enable them.
+Thuộc tính ``face_index`` được trả về trong kết quả của :ref:`intersect_ray()<class_PhysicsDirectSpaceState3D_method_intersect_ray>` và RayCast3D theo mặc định sẽ luôn là ``-1`` với Jolt. Project setting :ref:`Physics > Jolt Physics 3D > Queries > Enable Ray Cast Face Index<class_ProjectSettings_property_physics/jolt_physics_3d/queries/enable_ray_cast_face_index>` sẽ bật chúng.
 
-Note that enabling this setting will increase the memory requirement of :ref:`class_ConcavePolygonShape3D`
-with about 25%.
+Lưu ý rằng việc bật setting này sẽ làm tăng yêu cầu bộ nhớ của :ref:`class_ConcavePolygonShape3D` khoảng 25%.
 
-Kinematic RigidBody3D contacts
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Contact của Kinematic RigidBody3D
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When using Jolt, a :ref:`class_RigidBody3D` frozen with :ref:`FREEZE_MODE_KINEMATIC<class_RigidBody3D_constant_FREEZE_MODE_KINEMATIC>`
-will by default not report contacts from collisions with other static/kinematic
-bodies, for performance reasons, even when setting a non-zero :ref:`max_contacts_reported<class_RigidBody3D_property_max_contacts_reported>`.
-If you have many/large kinematic bodies overlapping with complex static geometry,
-such as :ref:`class_ConcavePolygonShape3D` or :ref:`class_HeightMapShape3D`, you can
-end up wasting a significant amount of CPU performance and memory without realizing
-it.
+Khi sử dụng Jolt, một :ref:`class_RigidBody3D` bị đóng băng bằng :ref:`FREEZE_MODE_KINEMATIC<class_RigidBody3D_constant_FREEZE_MODE_KINEMATIC>` theo mặc định sẽ không báo cáo contact từ các collision với những body static/kinematic khác, vì lý do hiệu năng, ngay cả khi đặt :ref:`max_contacts_reported<class_RigidBody3D_property_max_contacts_reported>` khác không. Nếu bạn có nhiều body kinematic hoặc các body kinematic lớn chồng lấn với hình học static phức tạp, chẳng hạn như :ref:`class_ConcavePolygonShape3D` hoặc :ref:`class_HeightMapShape3D`, bạn có thể vô tình lãng phí đáng kể hiệu năng CPU và bộ nhớ.
 
-For this reason this behavior is opt-in through the project setting
+Vì lý do này, hành vi này được bật tùy chọn thông qua project setting
 :ref:`Physics > Jolt Physics 3D > Simulation > Generate All Kinematic Contacts<class_ProjectSettings_property_physics/jolt_physics_3d/simulation/generate_all_kinematic_contacts>`.
 
-Contact impulses
-~~~~~~~~~~~~~~~~
+Contact impulse
+~~~~~~~~~~~~~~~
 
-Due to limitations internal to Jolt, the contact impulses provided by :ref:`PhysicsDirectBodyState3D.get_contact_impulse()<class_physicsdirectbodystate3d_method_get_contact_impulse>`
-are estimated ahead of time based on things like the contact manifold and velocities
-of the colliding bodies. This means that the reported impulses will only be accurate
-in cases where the two bodies in question are not colliding with any other bodies.
+Do những hạn chế nội tại của Jolt, các contact impulse do :ref:`PhysicsDirectBodyState3D.get_contact_impulse()<class_physicsdirectbodystate3d_method_get_contact_impulse>` cung cấp được ước tính trước dựa trên những yếu tố như contact manifold và vận tốc của các body va chạm. Điều này có nghĩa là các impulse được báo cáo chỉ chính xác trong những trường hợp hai body đang xét không va chạm với bất kỳ body nào khác.
 
-Area3D and SoftBody3D
-~~~~~~~~~~~~~~~~~~~~~
+Area3D và SoftBody3D
+~~~~~~~~~~~~~~~~~~~~
 
-Jolt supports the same type of interactions between :ref:`class_SoftBody3D` and
+Jolt hỗ trợ cùng một kiểu tương tác giữa :ref:`class_SoftBody3D` và
 :ref:`class_Area3D` as Godot Physics, such as the wind and gravity properties found
-on :ref:`class_Area3D`. Unlike Godot Physics however, Jolt also supports the various
-overlap signals and methods found on :ref:`class_Area3D`, for when a :ref:`class_SoftBody3D`
-enters or exits an overlap with it, such as :ref:`body_entered<class_Area3D_signal_body_entered>`.
+trên :ref:`class_Area3D`. Tuy nhiên, không giống Godot Physics, Jolt cũng hỗ trợ các overlap signal và method khác nhau có trên :ref:`class_Area3D`, khi một :ref:`class_SoftBody3D` đi vào hoặc ra khỏi vùng overlap với nó, chẳng hạn như :ref:`body_entered<class_Area3D_signal_body_entered>`.
 
-To revert back to the behavior of Godot Physics, where no overlap signals are
-emitted, you need to configure the area's :ref:`collision_mask<class_CollisionObject3D_property_collision_mask>`
-such that there's no overlap with the soft body's :ref:`collision_layer<class_CollisionObject3D_property_collision_layer>`.
-You can also filter out any :ref:`class_SoftBody3D` in the signal connection yourself.
+Để quay lại hành vi của Godot Physics, trong đó không có overlap signal nào được phát ra, bạn cần cấu hình :ref:`collision_mask<class_CollisionObject3D_property_collision_mask>` của area sao cho không có overlap với :ref:`collision_layer<class_CollisionObject3D_property_collision_layer>` của soft body. Bạn cũng có thể tự lọc bất kỳ :ref:`class_SoftBody3D` nào trong kết nối signal.
 
 WorldBoundaryShape3D
 ~~~~~~~~~~~~~~~~~~~~
 
 :ref:`class_WorldBoundaryShape3D`, which is meant to represent an infinite plane, is
-implemented a bit differently in Jolt compared to Godot Physics. Both engines have
-an upper limit for how big the effective size of this plane can be, but this size is
-much smaller when using Jolt, in order to avoid precision issues.
+được triển khai hơi khác trong Jolt so với Godot Physics. Cả hai engine đều có giới hạn trên về kích thước hiệu dụng của plane này, nhưng kích thước này nhỏ hơn nhiều khi sử dụng Jolt để tránh các vấn đề về độ chính xác.
 
-You can configure this size using the :ref:`Physics > Jolt Physics 3D > Limits > World Boundary Shape Size<class_ProjectSettings_Property_physics/jolt_physics_3d/limits/world_boundary_shape_size>`
-project setting.
+Bạn có thể cấu hình kích thước này bằng project setting :ref:`Physics > Jolt Physics 3D > Limits > World Boundary Shape Size<class_ProjectSettings_Property_physics/jolt_physics_3d/limits/world_boundary_shape_size>`.
 
-Notable differences to the Godot Jolt extension
------------------------------------------------
+Những khác biệt đáng chú ý so với Godot Jolt extension
+------------------------------------------------------
 
-While the built-in Jolt module is largely a straight port of the Godot Jolt
-extension, there are a few things that are different.
+Mặc dù Jolt module tích hợp phần lớn là bản port trực tiếp của Godot Jolt extension, vẫn có một vài điểm khác biệt.
 
-Project settings
-~~~~~~~~~~~~~~~~
+Project setting
+~~~~~~~~~~~~~~~
 
-All project settings have been moved from the ``physics/jolt_3d`` category to
-``physics/jolt_physics_3d``.
+Tất cả project setting đã được chuyển từ category ``physics/jolt_3d`` sang ``physics/jolt_physics_3d``.
 
-On top of that, there's been some renaming and refactoring of the individual project
-settings as well. These include:
+Ngoài ra, các tùy chọn cài đặt riêng lẻ của project cũng đã được đổi tên và refactor. Các tùy chọn này bao gồm:
 
-- ``sleep/enabled`` is now ``simulation/allow_sleep.``
-- ``sleep/velocity_threshold`` is now ``simulation/sleep_velocity_threshold.``
-- ``sleep/time_threshold`` is now ``simulation/sleep_time_threshold.``
-- ``collisions/use_shape_margins`` is now ``collisions/collision_margin_fraction``,
-  where a value of 0 is equivalent to disabling it.
-- ``collisions/use_enhanced_internal_edge_removal`` is now ``simulation/use_enhanced_internal_edge_removal``.
-- ``collisions/areas_detect_static_bodies`` is now ``simulation/areas_detect_static_bodies``.
-- ``collisions/report_all_kinematic_contacts`` is now ``simulation/generate_all_kinematic_contacts``.
-- ``collisions/soft_body_point_margin`` is now ``simulation/soft_body_point_radius``.
-- ``collisions/body_pair_cache_enabled`` is now ``simulation/body_pair_contact_cache_enabled``.
-- ``collisions/body_pair_cache_distance_threshold`` is now ``simulation/body_pair_contact_cache_distance_threshold``.
-- ``collisions/body_pair_cache_angle_threshold`` is now ``simulation/body_pair_contact_cache_angle_threshold``.
-- ``continuous_cd/movement_threshold`` is now ``simulation/continuous_cd_movement_threshold``,
-  but expressed as a fraction instead of a percentage.
-- ``continuous_cd/max_penetration`` is now ``simulation/continuous_cd_max_penetration``,
-  but expressed as a fraction instead of a percentage.
-- ``kinematics/use_enhanced_internal_edge_removal`` is now ``motion_queries/use_enhanced_internal_edge_removal.``
-- ``kinematics/recovery_iterations`` is now ``motion_queries/recovery_iterations``,
-  but expressed as a fraction instead of a percentage.
-- ``kinematics/recovery_amount`` is now ``motion_queries/recovery_amount.``
-- ``queries/use_legacy_ray_casting`` has been removed.
-- ``solver/position_iterations`` is now ``simulation/position_steps.``
-- ``solver/velocity_iterations`` is now ``simulation/velocity_steps.``
-- ``solver/position_correction`` is now ``simulation/baumgarte_stabilization_factor``,
-  but expressed as a fraction instead of a percentage.
-- ``solver/active_edge_threshold`` is now ``collisions/active_edge_threshold.``
-- ``solver/bounce_velocity_threshold`` is now ``simulation/bounce_velocity_threshold.``
-- ``solver/contact_speculative_distance`` is now ``simulation/speculative_contact_distance.``
-- ``solver/contact_allowed_penetration`` is now ``simulation/penetration_slop.``
-- ``limits/max_angular_velocity`` is now stored as radians instead.
-- ``limits/max_temporary_memory`` is now ``limits/temporary_memory_buffer_size.``
+- ``sleep/enabled`` hiện là ``simulation/allow_sleep.`` - ``sleep/velocity_threshold`` hiện là ``simulation/sleep_velocity_threshold.`` - ``sleep/time_threshold`` hiện là ``simulation/sleep_time_threshold.`` - ``collisions/use_shape_margins`` hiện là ``collisions/collision_margin_fraction``, trong đó giá trị 0 tương đương với việc tắt tùy chọn này. - ``collisions/use_enhanced_internal_edge_removal`` hiện là ``simulation/use_enhanced_internal_edge_removal``. - ``collisions/areas_detect_static_bodies`` hiện là ``simulation/areas_detect_static_bodies``. - ``collisions/report_all_kinematic_contacts`` hiện là ``simulation/generate_all_kinematic_contacts``. - ``collisions/soft_body_point_margin`` hiện là ``simulation/soft_body_point_radius``. - ``collisions/body_pair_cache_enabled`` hiện là ``simulation/body_pair_contact_cache_enabled``. - ``collisions/body_pair_cache_distance_threshold`` hiện là ``simulation/body_pair_contact_cache_distance_threshold``. - ``collisions/body_pair_cache_angle_threshold`` hiện là ``simulation/body_pair_contact_cache_angle_threshold``. - ``continuous_cd/movement_threshold`` hiện là ``simulation/continuous_cd_movement_threshold``, nhưng được biểu diễn dưới dạng phân số thay vì phần trăm. - ``continuous_cd/max_penetration`` hiện là ``simulation/continuous_cd_max_penetration``, nhưng được biểu diễn dưới dạng phân số thay vì phần trăm. - ``kinematics/use_enhanced_internal_edge_removal`` hiện là ``motion_queries/use_enhanced_internal_edge_removal.`` - ``kinematics/recovery_iterations`` hiện là ``motion_queries/recovery_iterations``, nhưng được biểu diễn dưới dạng phân số thay vì phần trăm. - ``kinematics/recovery_amount`` hiện là ``motion_queries/recovery_amount.`` - ``queries/use_legacy_ray_casting`` đã bị xóa. - ``solver/position_iterations`` hiện là ``simulation/position_steps.`` - ``solver/velocity_iterations`` hiện là ``simulation/velocity_steps.`` - ``solver/position_correction`` hiện là ``simulation/baumgarte_stabilization_factor``, nhưng được biểu diễn dưới dạng phân số thay vì phần trăm. - ``solver/active_edge_threshold`` hiện là ``collisions/active_edge_threshold.`` - ``solver/bounce_velocity_threshold`` hiện là ``simulation/bounce_velocity_threshold.`` - ``solver/contact_speculative_distance`` hiện là ``simulation/speculative_contact_distance.`` - ``solver/contact_allowed_penetration`` hiện là ``simulation/penetration_slop.`` - ``limits/max_angular_velocity`` hiện được lưu dưới dạng radian. - ``limits/max_temporary_memory`` hiện là ``limits/temporary_memory_buffer_size.``
 
-Joint nodes
-~~~~~~~~~~~
-
-The joint nodes that are exposed in the Godot Jolt extension (JoltPinJoint3D,
-JoltHingeJoint3D, JoltSliderJoint3D, JoltConeTwistJoint3D, and JoltGeneric6DOFJoint)
-have not been included in the Jolt module.
-
-Thread safety
+Các node khớp
 ~~~~~~~~~~~~~
 
-Unlike the Godot Jolt extension, the Jolt module does have thread-safety,
-including support for the :ref:`Physics > 3D > Run On Separate Thread<class_ProjectSettings_Property_physics/3d/run_on_separate_thread>`
-project setting. However this has not been tested very thoroughly, so it should be
-considered experimental.
+Các node khớp được cung cấp trong extension Godot Jolt (JoltPinJoint3D, JoltHingeJoint3D, JoltSliderJoint3D, JoltConeTwistJoint3D và JoltGeneric6DOFJoint) không được đưa vào module Jolt.
+
+Tính an toàn luồng
+~~~~~~~~~~~~~~~~~~
+
+Không giống extension Godot Jolt, module Jolt có hỗ trợ thread-safety, bao gồm hỗ trợ cho tùy chọn cài đặt project :ref:`Physics > 3D > Run On Separate Thread<class_ProjectSettings_Property_physics/3d/run_on_separate_thread>`. Tuy nhiên, tính năng này chưa được kiểm thử thật kỹ lưỡng, vì vậy nên được xem là experimental.
