@@ -1,29 +1,29 @@
 .. _doc_first_3d_game_player_movement:
 
-Di chuyển nhân vật bằng code
-============================
+Di chuyển người chơi bằng code
+==============================
 
 Đã đến lúc viết code! Chúng ta sẽ sử dụng các input action đã tạo ở phần trước để di chuyển nhân vật.
 
 .. note:: For this project, we will be following the Godot naming conventions.
 
-          - **GDScript**: Các class (node) sử dụng PascalCase, biến và function sử dụng snake_case, còn constant sử dụng ALL_CAPS (Xem
+          - **GDScript**: Các class (node) sử dụng PascalCase, biến và function sử dụng snake_case, còn hằng số sử dụng ALL_CAPS (Xem
             :ref:`doc_gdscript_styleguide`).
 
-          - **C#**: Class, biến export và method sử dụng PascalCase, field private sử dụng _camelCase, còn biến local và parameter sử dụng camelCase (Xem :ref:`doc_c_sharp_styleguide`). Hãy cẩn thận nhập chính xác tên method khi kết nối signal.
+          - **C#**: Class, biến export và method sử dụng PascalCase, field private sử dụng _camelCase, biến local và parameter sử dụng camelCase (Xem :ref:`doc_c_sharp_styleguide`). Hãy nhập chính xác tên method khi kết nối signal.
 
-Nhấp chuột phải vào node ``Player`` và chọn *Attach Script* để thêm script mới vào đó. Trong cửa sổ bật lên, đặt *Template* thành *Empty* trước khi nhấn nút *Create*. Chúng ta đặt thành *Empty* vì muốn tự viết code để di chuyển player.
+Nhấp chuột phải vào node ``Player`` và chọn *Attach Script* để thêm script mới vào đó. Trong cửa sổ bật lên, đặt *Template* thành *Empty* trước khi nhấn nút *Create*. Chúng ta đặt thành *Empty* vì muốn tự viết code để di chuyển người chơi.
 
 |image0|
 
-Hãy bắt đầu với các property của class. Chúng ta sẽ định nghĩa tốc độ di chuyển, gia tốc rơi biểu thị trọng lực và velocity dùng để di chuyển nhân vật.
+Hãy bắt đầu với các property của class. Chúng ta sẽ định nghĩa tốc độ di chuyển, gia tốc rơi biểu thị trọng lực và một velocity dùng để di chuyển nhân vật.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
    extends CharacterBody3D
 
-   # Tốc độ di chuyển của player, tính bằng mét trên giây.
+   # Tốc độ di chuyển của người chơi, tính bằng mét trên giây.
    @export var speed = 14
    # Gia tốc hướng xuống khi ở trên không, tính bằng mét trên giây bình phương.
    @export var fall_acceleration = 75
@@ -38,7 +38,7 @@ Hãy bắt đầu với các property của class. Chúng ta sẽ định nghĩa
     {
         // Đừng quên rebuild project để editor nhận biết export variable mới.
 
-        // Tốc độ di chuyển của player, tính bằng mét trên giây.
+        // Tốc độ di chuyển của người chơi, tính bằng mét trên giây.
         [Export]
         public int Speed { get; set; } = 14;
         // Gia tốc hướng xuống khi ở trên không, tính bằng mét trên giây bình phương.
@@ -49,11 +49,11 @@ Hãy bắt đầu với các property của class. Chúng ta sẽ định nghĩa
     }
 
 
-Đây là các property phổ biến của một moving body. ``target_velocity`` là một :ref:`3D vector <class_Vector3>` kết hợp tốc độ với hướng. Ở đây, chúng ta định nghĩa nó là một property vì muốn cập nhật và sử dụng lại giá trị của nó qua các frame.
+Đây là những property phổ biến của một moving body. ``target_velocity`` là một :ref:`3D vector <class_Vector3>` kết hợp tốc độ với hướng. Ở đây, chúng ta định nghĩa nó là một property vì muốn cập nhật và sử dụng lại giá trị của nó qua các frame.
 
 .. note::
 
-    Các giá trị khá khác so với code 2D vì khoảng cách được tính bằng mét. Trong 2D, một nghìn unit (pixel) có thể chỉ tương ứng với một nửa chiều rộng màn hình, còn trong 3D, đó là một kilomet.
+    Các giá trị này khá khác so với code 2D vì khoảng cách được tính bằng mét. Trong 2D, một nghìn unit (pixel) có thể chỉ tương ứng với một nửa chiều rộng màn hình, còn trong 3D, đó là một kilometer.
 
 Hãy viết code cho việc di chuyển. Trước tiên, chúng ta tính vector hướng input bằng object ``Input`` toàn cục, trong ``_physics_process()``.
 
@@ -70,7 +70,7 @@ Hãy viết code cho việc di chuyển. Trước tiên, chúng ta tính vector 
        if Input.is_action_pressed("move_left"):
            direction.x -= 1
        if Input.is_action_pressed("move_back"):
-           # Hãy chú ý rằng chúng ta đang làm việc với các trục x và z của vector.
+           # Hãy chú ý cách chúng ta làm việc với các trục x và z của vector.
            # Trong 3D, mặt phẳng XZ là mặt phẳng mặt đất.
            direction.z += 1
        if Input.is_action_pressed("move_forward"):
@@ -94,7 +94,7 @@ Hãy viết code cho việc di chuyển. Trước tiên, chúng ta tính vector 
         }
         if (Input.IsActionPressed("move_back"))
         {
-            // Hãy chú ý rằng chúng ta đang làm việc với các trục X và Z của vector.
+            // Hãy chú ý cách chúng ta làm việc với các trục X và Z của vector.
             // Trong 3D, mặt phẳng XZ là mặt phẳng mặt đất.
             direction.Z += 1.0f;
         }
@@ -110,11 +110,11 @@ Hãy viết code cho việc di chuyển. Trước tiên, chúng ta tính vector 
 
     Để tìm hiểu thêm về sự khác biệt giữa ``_process()`` và ``_physics_process()``, hãy xem :ref:`doc_idle_and_physics_processing`.
 
-Chúng ta bắt đầu bằng cách khởi tạo một biến ``direction`` thành ``Vector3.ZERO``. Sau đó, chúng ta kiểm tra xem player có đang nhấn một hoặc nhiều input ``move_*`` hay không, rồi cập nhật các component ``x`` và ``z`` của vector tương ứng. Các component này tương ứng với các trục của mặt phẳng mặt đất.
+Chúng ta bắt đầu bằng cách khởi tạo một biến ``direction`` thành ``Vector3.ZERO``. Sau đó, chúng ta kiểm tra xem người chơi có nhấn một hoặc nhiều input ``move_*`` hay không và cập nhật các component ``x`` và ``z`` của vector tương ứng. Các component này tương ứng với các trục của mặt phẳng mặt đất.
 
-Bốn điều kiện này cho chúng ta tám khả năng và tám hướng có thể.
+Bốn điều kiện này tạo ra tám khả năng và tám hướng có thể có.
 
-Nếu player nhấn, chẳng hạn, cả W và D cùng lúc, vector sẽ có độ dài khoảng ``1.4``. Nhưng nếu họ chỉ nhấn một phím, nó sẽ có độ dài ``1``. Chúng ta muốn độ dài của vector nhất quán và không di chuyển nhanh hơn theo đường chéo. Để làm vậy, chúng ta có thể gọi method ``normalized()`` của nó.
+Trong trường hợp người chơi nhấn, chẳng hạn, cả W và D cùng lúc, vector sẽ có độ dài khoảng ``1.4``. Nhưng nếu họ chỉ nhấn một phím, nó sẽ có độ dài ``1``. Chúng ta muốn độ dài của vector nhất quán và không di chuyển nhanh hơn theo đường chéo. Để làm vậy, chúng ta có thể gọi method ``normalized()`` của nó.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -124,7 +124,7 @@ Nếu player nhấn, chẳng hạn, cả W và D cùng lúc, vector sẽ có đ�
 
        if direction != Vector3.ZERO:
            direction = direction.normalized()
-           # Đặt property basis sẽ ảnh hưởng đến rotation của node.
+           # Thiết lập property basis sẽ ảnh hưởng đến rotation của node.
            $Pivot.basis = Basis.looking_at(direction)
 
  .. code-tab:: csharp
@@ -136,16 +136,16 @@ Nếu player nhấn, chẳng hạn, cả W và D cùng lúc, vector sẽ có đ�
         if (direction != Vector3.Zero)
         {
             direction = direction.Normalized();
-            // Đặt property basis sẽ ảnh hưởng đến rotation của node.
+            // Thiết lập property basis sẽ ảnh hưởng đến rotation của node.
             GetNode<Node3D>("Pivot").Basis = Basis.LookingAt(direction);
         }
     }
 
-Ở đây, chúng ta chỉ normalize vector nếu hướng có độ dài lớn hơn 0, nghĩa là player đang nhấn một phím hướng.
+Ở đây, chúng ta chỉ normalize vector nếu hướng có độ dài lớn hơn 0, nghĩa là người chơi đang nhấn một phím hướng.
 
-Chúng ta tính hướng mà ``$Pivot`` đang nhìn bằng cách tạo một :ref:`Basis <class_Basis>` nhìn theo hướng ``direction``.
+Chúng ta tính hướng mà ``$Pivot`` đang nhìn bằng cách tạo một :ref:`Basis <class_Basis>` hướng theo hướng ``direction``.
 
-Tiếp theo, chúng ta cập nhật velocity. Chúng ta phải tính ground velocity và fall speed riêng biệt. Hãy nhớ lùi lại một tab để các dòng nằm bên trong function ``_physics_process()`` nhưng nằm ngoài điều kiện vừa viết ở trên.
+Tiếp theo, chúng ta cập nhật velocity. Chúng ta phải tính ground velocity và tốc độ rơi riêng biệt. Hãy nhớ lùi lại một tab để các dòng này nằm bên trong function ``_physics_process()`` nhưng bên ngoài điều kiện vừa viết ở trên.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -160,7 +160,7 @@ Tiếp theo, chúng ta cập nhật velocity. Chúng ta phải tính ground velo
         target_velocity.z = direction.z * speed
 
         # Vertical Velocity
-        if not is_on_floor(): # If in the air, fall towards the floor. Literally gravity
+        if not is_on_floor(): # Nếu đang ở trên không, rơi về phía sàn. Chính là trọng lực
             target_velocity.y = target_velocity.y - (fall_acceleration * delta)
 
         # Di chuyển nhân vật
@@ -182,7 +182,7 @@ Tiếp theo, chúng ta cập nhật velocity. Chúng ta phải tính ground velo
         _targetVelocity.Z = direction.Z * Speed;
 
         // Vertical velocity
-        if (!IsOnFloor()) // If in the air, fall towards the floor. Literally gravity
+        if (!IsOnFloor()) // Nếu đang ở trên không, rơi về phía sàn. Chính là trọng lực
         {
             _targetVelocity.Y -= FallAcceleration * (float)delta;
         }
@@ -192,15 +192,15 @@ Tiếp theo, chúng ta cập nhật velocity. Chúng ta phải tính ground velo
         MoveAndSlide();
     }
 
-Function ``CharacterBody3D.is_on_floor()`` trả về ``true`` nếu body va chạm với sàn trong frame này. Vì vậy, chúng ta chỉ áp dụng gravity cho ``Player`` khi nó đang ở trên không.
+Function ``CharacterBody3D.is_on_floor()`` trả về ``true`` nếu body va chạm với sàn trong frame này. Vì vậy, chúng ta chỉ áp dụng trọng lực cho ``Player`` khi nó đang ở trên không.
 
-Đối với vertical velocity, mỗi frame chúng ta trừ đi fall acceleration nhân với delta time. Dòng code này sẽ khiến nhân vật rơi ở mọi frame, miễn là nó không ở trên hoặc va chạm với sàn.
+Đối với vertical velocity, mỗi frame chúng ta trừ đi gia tốc rơi nhân với delta time. Dòng code này sẽ khiến nhân vật rơi ở mỗi frame, miễn là nó không ở trên sàn hoặc không va chạm với sàn.
 
-Physics engine chỉ có thể phát hiện tương tác với tường, sàn hoặc các body khác trong một frame nhất định nếu có chuyển động và va chạm xảy ra. Sau này chúng ta sẽ sử dụng property này để viết code cho thao tác nhảy.
+Physics engine chỉ có thể phát hiện tương tác với tường, sàn hoặc các body khác trong một frame nhất định nếu có chuyển động và va chạm xảy ra. Sau này chúng ta sẽ dùng property này để viết code cho việc nhảy.
 
-Ở dòng cuối, chúng ta gọi ``CharacterBody3D.move_and_slide()``, một method mạnh mẽ của class ``CharacterBody3D``, cho phép bạn di chuyển nhân vật mượt mà. Nếu va vào tường giữa chừng, engine sẽ cố gắng làm chuyển động mượt hơn cho bạn. Nó sử dụng giá trị *velocity* vốn có của :ref:`CharacterBody3D <class_CharacterBody3D>`
+Ở dòng cuối, chúng ta gọi ``CharacterBody3D.move_and_slide()``, một method mạnh mẽ của class ``CharacterBody3D``, cho phép bạn di chuyển nhân vật một cách mượt mà. Nếu va vào tường giữa chừng khi đang di chuyển, engine sẽ cố gắng làm chuyển động mượt hơn cho bạn. Nó sử dụng giá trị *velocity* vốn có của :ref:`CharacterBody3D <class_CharacterBody3D>`
 
-.. VĂN BẢN CŨ: Function nhận hai parameter: velocity và hướng lên của chúng ta. Nó di chuyển .. nhân vật và trả về velocity còn lại sau khi áp dụng va chạm. Khi .. chạm sàn hoặc tường, function sẽ giảm hoặc đặt lại tốc độ theo .. hướng đó. Trong trường hợp của chúng ta, việc lưu giá trị trả về của function sẽ ngăn .. nhân vật tích lũy động lượng theo phương dọc, nếu không thì động lượng có thể trở nên .. lớn đến mức sau một thời gian nhân vật sẽ đi xuyên qua tấm sàn.
+.. OLD TEXT: Function nhận hai parameter: velocity và hướng lên của chúng ta. Nó di chuyển .. nhân vật và trả về velocity còn lại sau khi áp dụng các va chạm. Khi .. va vào sàn hoặc tường, function sẽ giảm hoặc đặt lại tốc độ theo .. hướng đó từ bạn. Trong trường hợp của chúng ta, việc lưu giá trị trả về của function .. ngăn nhân vật tích lũy động lượng theo phương dọc, nếu không thì động lượng có thể trở nên .. lớn đến mức sau một thời gian nhân vật sẽ đi xuyên qua tấm sàn.
 
 Và đó là toàn bộ code cần thiết để di chuyển nhân vật trên mặt đất.
 
@@ -211,7 +211,7 @@ Và đó là toàn bộ code cần thiết để di chuyển nhân vật trên m
 
     extends CharacterBody3D
 
-    # Tốc độ di chuyển của player, tính bằng mét trên giây.
+    # Tốc độ di chuyển của người chơi, tính bằng mét trên giây.
     @export var speed = 14
     # Gia tốc hướng xuống khi ở trên không, tính bằng mét trên giây bình phương.
     @export var fall_acceleration = 75
@@ -233,7 +233,7 @@ Và đó là toàn bộ code cần thiết để di chuyển nhân vật trên m
 
         if direction != Vector3.ZERO:
             direction = direction.normalized()
-            # Đặt property basis sẽ ảnh hưởng đến rotation của node.
+            # Thiết lập property basis sẽ ảnh hưởng đến rotation của node.
             $Pivot.basis = Basis.looking_at(direction)
 
         # Ground Velocity
@@ -241,7 +241,7 @@ Và đó là toàn bộ code cần thiết để di chuyển nhân vật trên m
         target_velocity.z = direction.z * speed
 
         # Vertical Velocity
-        if not is_on_floor(): # If in the air, fall towards the floor. Literally gravity
+        if not is_on_floor(): # Nếu đang ở trên không, rơi về phía sàn. Chính là trọng lực
             target_velocity.y = target_velocity.y - (fall_acceleration * delta)
 
         # Di chuyển nhân vật
@@ -254,7 +254,7 @@ Và đó là toàn bộ code cần thiết để di chuyển nhân vật trên m
 
     public partial class Player : CharacterBody3D
     {
-        // Tốc độ di chuyển của player, tính bằng mét trên giây.
+        // Tốc độ di chuyển của người chơi, tính bằng mét trên giây.
         [Export]
         public int Speed { get; set; } = 14;
         // Gia tốc hướng xuống khi ở trên không, tính bằng mét trên giây bình phương.
@@ -287,7 +287,7 @@ Và đó là toàn bộ code cần thiết để di chuyển nhân vật trên m
             if (direction != Vector3.Zero)
             {
                 direction = direction.Normalized();
-                // Đặt property basis sẽ ảnh hưởng đến rotation của node.
+                // Thiết lập property basis sẽ ảnh hưởng đến rotation của node.
                 GetNode<Node3D>("Pivot").Basis = Basis.LookingAt(direction);
             }
 
@@ -296,7 +296,7 @@ Và đó là toàn bộ code cần thiết để di chuyển nhân vật trên m
             _targetVelocity.Z = direction.Z * Speed;
 
             // Vertical velocity
-            if (!IsOnFloor()) // If in the air, fall towards the floor. Literally gravity
+            if (!IsOnFloor()) // Nếu đang ở trên không, rơi về phía sàn. Chính là trọng lực
             {
                 _targetVelocity.Y -= FallAcceleration * (float)delta;
             }
@@ -307,16 +307,16 @@ Và đó là toàn bộ code cần thiết để di chuyển nhân vật trên m
         }
     }
 
-Kiểm thử chuyển động của player
--------------------------------
+Kiểm tra chuyển động của người chơi
+-----------------------------------
 
-Chúng ta sẽ đưa player vào scene ``Main`` để kiểm thử. Để làm vậy, chúng ta cần instantiate player rồi thêm camera. Khác với 2D, trong 3D, bạn sẽ không nhìn thấy gì nếu viewport không có camera hướng vào một đối tượng.
+Chúng ta sẽ đặt người chơi vào scene ``Main`` để kiểm tra. Để làm vậy, chúng ta cần instantiate player rồi thêm camera. Không giống 2D, trong 3D, bạn sẽ không nhìn thấy gì nếu viewport không có camera hướng vào một vật thể.
 
-Lưu scene ``Player`` rồi mở scene ``Main``. Bạn có thể nhấp vào tab *Main* ở phía trên editor để thực hiện việc này.
+Lưu scene ``Player`` và mở scene ``Main``. Bạn có thể nhấp vào tab *Main* ở phía trên editor để thực hiện việc này.
 
 |image1|
 
-Nếu trước đó bạn đã đóng scene, hãy đi đến dock *FileSystem* và nhấp đúp vào ``main.tscn`` để mở lại.
+Nếu trước đó bạn đã đóng scene, hãy chuyển đến dock *FileSystem* và nhấp đúp vào ``main.tscn`` để mở lại.
 
 Để instantiate ``Player``, nhấp chuột phải vào node ``Main`` và chọn *Instantiate Child Scene*.
 
@@ -327,53 +327,53 @@ Trong cửa sổ bật lên, nhấp đúp vào ``player.tscn``. Nhân vật sẽ
 Thêm camera
 ~~~~~~~~~~~
 
-Tiếp theo, hãy thêm camera. Giống như khi tạo *Pivot* cho *Player*\, chúng ta sẽ tạo một rig cơ bản. Nhấp chuột phải vào node ``Main`` một lần nữa và chọn *Add Child Node*. Tạo một :ref:`Marker3D <class_Marker3D>` mới và đặt tên là ``CameraPivot``. Chọn ``CameraPivot`` rồi thêm một child node :ref:`Camera3D <class_Camera3D>` vào đó. Scene tree của bạn sẽ trông tương tự như sau.
+Tiếp theo, hãy thêm camera. Giống như khi tạo *Pivot* cho *Player*\ 's, chúng ta sẽ tạo một rig cơ bản. Nhấp chuột phải vào node ``Main`` một lần nữa và chọn *Add Child Node*. Tạo một :ref:`Marker3D <class_Marker3D>` mới và đặt tên là ``CameraPivot``. Chọn ``CameraPivot`` và thêm node con :ref:`Camera3D <class_Camera3D>` vào đó. Scene tree của bạn sẽ trông tương tự như sau.
 
 |image3|
 
-Hãy chú ý đến checkbox *Preview* xuất hiện ở góc trên bên trái của 3D view khi bạn chọn *Camera*. Bạn có thể nhấp vào đó để xem trước phép chiếu camera trong game.
+Hãy chú ý checkbox *Preview* xuất hiện ở góc trên bên trái của chế độ xem 3D khi bạn chọn *Camera*. Bạn có thể nhấp vào đó để xem trước phép chiếu camera trong game.
 
 |image4|
 
-Chúng ta sẽ sử dụng *Pivot* để xoay camera như thể nó được gắn trên một cần cẩu. Trước tiên, hãy chia 3D view để có thể tự do điều hướng scene và xem những gì camera nhìn thấy.
+Chúng ta sẽ dùng *Pivot* để xoay camera như thể nó được gắn trên một cần cẩu. Trước tiên, hãy chia chế độ xem 3D để có thể tự do điều hướng scene và xem những gì camera nhìn thấy.
 
-Trên toolbar ngay phía trên viewport, nhấp vào *View*, sau đó chọn *2 Viewports*. Bạn cũng có thể nhấn :kbd:`Ctrl + 2` (:kbd:`Cmd + 2` trên macOS).
+Trên toolbar ngay phía trên viewport, nhấp vào *View*, sau đó nhấp vào *2 Viewports*. Bạn cũng có thể nhấn :kbd:`Ctrl + 2` (:kbd:`Cmd + 2` trên macOS).
 
 |image11|
 
 |image5|
 
-Trong view bên dưới, chọn :ref:`Camera3D <class_Camera3D>` và bật camera Preview bằng cách nhấp vào checkbox.
+Trong chế độ xem phía dưới, chọn :ref:`Camera3D <class_Camera3D>` và bật Preview của camera bằng cách nhấp vào checkbox.
 
 |image6|
 
-Trong view phía trên, hãy đảm bảo *Camera3D* được chọn rồi di chuyển camera khoảng ``19`` unit trên trục Z (kéo mũi tên màu xanh dương).
+Trong chế độ xem phía trên, hãy đảm bảo *Camera3D* được chọn và di chuyển camera khoảng ``19`` unit trên trục Z (kéo mũi tên màu xanh dương).
 
 |image7|
 
-Đây là lúc điều kỳ diệu xảy ra. Chọn *CameraPivot* và xoay nó ``-45`` độ quanh trục X (bằng vòng tròn màu đỏ). Bạn sẽ thấy camera di chuyển như thể được gắn vào một cần cẩu.
+Đây là lúc điều kỳ diệu xảy ra. Chọn *CameraPivot* và xoay nó ``-45`` độ quanh trục X (sử dụng vòng tròn màu đỏ). Bạn sẽ thấy camera di chuyển như thể được gắn trên một cần cẩu.
 
 |image8|
 
-Bạn có thể chạy scene bằng cách nhấn :kbd:`F6` (:kbd:`Cmd + R` trên macOS), rồi nhấn các phím mũi tên để di chuyển nhân vật.
+Bạn có thể chạy scene bằng cách nhấn :kbd:`F6` (:kbd:`Cmd + R` trên macOS) và nhấn các phím mũi tên để di chuyển nhân vật.
 
 |image9|
 
-Chúng ta có thể thấy một khoảng trống xung quanh nhân vật do phép chiếu phối cảnh. Trong game này, thay vào đó chúng ta sẽ sử dụng phép chiếu trực giao để đóng khung khu vực gameplay tốt hơn và giúp người chơi dễ nhận biết khoảng cách hơn.
+Bạn có thể thấy một khoảng trống xung quanh nhân vật do phép chiếu phối cảnh. Trong game này, thay vào đó, chúng ta sẽ sử dụng phép chiếu trực giao để khung hình khu vực gameplay tốt hơn và giúp người chơi dễ ước lượng khoảng cách hơn.
 
-Chọn lại *Camera* và trong *Inspector*, đặt *Projection* thành *Orthogonal* và *Size* thành ``19``. Giờ đây, nhân vật sẽ trông phẳng hơn và mặt đất sẽ lấp đầy phần nền.
+Chọn lại *Camera* và trong *Inspector*, đặt *Projection* thành *Orthogonal* và *Size* thành ``19``. Lúc này, nhân vật sẽ trông phẳng hơn và mặt đất sẽ lấp đầy phần nền.
 
 .. note::
 
-    Khi sử dụng camera orthogonal trong Godot 4, chất lượng bóng định hướng phụ thuộc vào giá trị *Far* của camera. Giá trị *Far* càng cao thì camera càng có thể nhìn xa. Tuy nhiên, giá trị *Far* cao hơn cũng làm giảm chất lượng bóng vì quá trình render bóng phải bao phủ một khoảng cách lớn hơn.
+    Khi sử dụng camera trực giao trong Godot 4, chất lượng directional shadow phụ thuộc vào giá trị *Far* của camera. Giá trị *Far* càng cao thì camera càng có thể nhìn xa. Tuy nhiên, giá trị *Far* cao hơn cũng làm giảm chất lượng shadow vì việc render shadow phải bao phủ một khoảng cách lớn hơn.
 
-    Nếu bóng định hướng trông quá mờ sau khi chuyển sang camera orthogonal, hãy giảm thuộc tính *Far* của camera xuống một giá trị thấp hơn, chẳng hạn như ``100``. Đừng giảm thuộc tính *Far* này quá nhiều, nếu không các đối tượng ở xa sẽ bắt đầu biến mất.
+    Nếu directional shadow trông quá mờ sau khi chuyển sang camera trực giao, hãy giảm thuộc tính *Far* của camera xuống một giá trị thấp hơn, chẳng hạn như ``100``. Đừng giảm thuộc tính *Far* này quá nhiều, nếu không các object ở xa sẽ bắt đầu biến mất.
 
 |image10|
 
-Chạy thử scene và bạn sẽ có thể di chuyển theo cả 8 hướng mà không bị xuyên qua sàn!
+Hãy kiểm tra scene và bạn sẽ có thể di chuyển theo cả 8 hướng mà không bị glitch xuyên qua sàn!
 
-Cuối cùng, chúng ta đã hoàn thiện cả chuyển động của người chơi và góc nhìn. Tiếp theo, chúng ta sẽ làm việc với những con quái vật.
+Sau cùng, chúng ta đã thiết lập xong cả chuyển động của người chơi và góc nhìn. Tiếp theo, chúng ta sẽ làm việc với các monster.
 
 .. |image0| image:: img/03.player_movement_code/01.attach_script_to_player.webp
 .. |image1| image:: img/03.player_movement_code/02.clicking_main_tab.webp

@@ -1,11 +1,11 @@
 .. _doc_your_first_2d_game_creating_the_enemy:
 
-Tạo enemy
-=========
+Tạo kẻ địch
+===========
 
-Bây giờ là lúc tạo các enemy mà người chơi sẽ phải né tránh. Hành vi của chúng sẽ không quá phức tạp: các mob sẽ xuất hiện ngẫu nhiên ở các cạnh màn hình, chọn một hướng ngẫu nhiên và di chuyển theo đường thẳng.
+Bây giờ là lúc tạo ra những kẻ địch mà người chơi sẽ phải né tránh. Hành vi của chúng sẽ không quá phức tạp: các mob sẽ xuất hiện ngẫu nhiên ở các cạnh màn hình, chọn một hướng ngẫu nhiên và di chuyển theo đường thẳng.
 
-Chúng ta sẽ tạo một scene ``Mob``, sau đó có thể *instance* scene này để tạo ra bất kỳ số lượng mob độc lập nào trong game.
+Chúng ta sẽ tạo một scene ``Mob``, sau đó có thể *instantiate* scene này để tạo ra bất kỳ số lượng mob độc lập nào trong game.
 
 Thiết lập node
 --------------
@@ -16,15 +16,15 @@ Nhấp vào Scene -> New Scene từ menu trên cùng và thêm các node sau:
 
    - :ref:`AnimatedSprite2D <class_AnimatedSprite2D>` - :ref:`CollisionShape2D <class_CollisionShape2D>` - :ref:`VisibleOnScreenNotifier2D <class_VisibleOnScreenNotifier2D>`
 
-Đừng quên thiết lập các node con để chúng không thể được chọn, giống như bạn đã làm với scene Player. Để thực hiện việc này, hãy chọn node cha (``RigidBody2D``) trong dock Scene, sau đó sử dụng nút :button:`Group` ở đầu trình chỉnh sửa 2D (:kbd:`Ctrl + G` hoặc :kbd:`Cmd + G` trên macOS).
+Đừng quên thiết lập các node con để chúng không thể được chọn, giống như bạn đã làm với scene Player. Thực hiện việc này bằng cách chọn node cha (``RigidBody2D``) trong dock Scene, sau đó sử dụng nút :button:`Group` ở phía trên trình chỉnh sửa 2D (:kbd:`Ctrl + G` hoặc :kbd:`Cmd + G` trên macOS).
 
-Chọn node ``Mob`` và đặt thuộc tính ``Gravity Scale`` trong phần :ref:`RigidBody2D <class_RigidBody2D>` của inspector thành ``0``. Điều này sẽ ngăn mob rơi xuống.
+Chọn node ``Mob`` và đặt thuộc tính ``Gravity Scale`` của nó trong phần :ref:`RigidBody2D <class_RigidBody2D>` của inspector thành ``0``. Điều này sẽ ngăn mob rơi xuống dưới.
 
 Ngoài ra, trong inspector của node ``Mob``, bên dưới phần :ref:`CollisionObject2D <class_CollisionObject2D>`, hãy mở rộng nhóm **Collision** và bỏ chọn ``1`` bên trong thuộc tính ``Mask``. Điều này sẽ đảm bảo các mob không va chạm với nhau.
 
 .. image:: img/set_collision_mask.webp
 
-Thiết lập :ref:`AnimatedSprite2D <class_AnimatedSprite2D>` giống như bạn đã làm với player. Lần này, chúng ta có 3 animation: ``fly``, ``swim`` và ``walk``. Trong thư mục art có hai hình ảnh cho mỗi animation.
+Thiết lập :ref:`AnimatedSprite2D <class_AnimatedSprite2D>` giống như bạn đã làm với player. Lần này, chúng ta có 3 animation: ``fly``, ``swim`` và ``walk``. Có hai hình ảnh cho mỗi animation trong thư mục art.
 
 Thuộc tính ``Animation Speed`` phải được thiết lập cho từng animation riêng lẻ. Điều chỉnh thuộc tính này thành ``3`` cho cả 3 animation.
 
@@ -32,18 +32,18 @@ Thuộc tính ``Animation Speed`` phải được thiết lập cho từng anima
 
 Bạn có thể sử dụng các nút "Play Animation" ở bên phải trường nhập ``Animation Speed`` để xem trước các animation.
 
-Chúng ta sẽ chọn ngẫu nhiên một trong các animation này để các mob trở nên đa dạng hơn.
+Chúng ta sẽ chọn ngẫu nhiên một trong các animation này để các mob có thêm sự đa dạng.
 
-Giống như hình ảnh của player, các hình ảnh mob này cần được thu nhỏ. Đặt thuộc tính ``Scale`` của ``AnimatedSprite2D`` thành ``(0.75, 0.75)``.
+Like the player images, these mob images need to be scaled down. Set the ``AnimatedSprite2D``'s ``Scale`` property to ``(0.75, 0.75)``.
 
-Giống như trong scene ``Player``, hãy thêm một ``CapsuleShape2D`` để xử lý va chạm. Để căn chỉnh hình dạng với hình ảnh, bạn cần đặt thuộc tính ``Rotation`` thành ``90`` (bên dưới "Transform" trong Inspector).
+Tương tự scene ``Player``, hãy thêm một ``CapsuleShape2D`` để xử lý va chạm. Để căn chỉnh hình dạng với hình ảnh, bạn cần đặt thuộc tính ``Rotation`` thành ``90`` (bên dưới "Transform" trong Inspector).
 
 Lưu scene.
 
-Script của enemy
-----------------
+Script của kẻ địch
+------------------
 
-Thêm một script vào ``Mob`` như sau:
+Gắn một script vào node ``Mob`` như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -54,22 +54,33 @@ Thêm một script vào ``Mob`` như sau:
 
     using Godot;
 
-    public partial class Mob : RigidBody2D { // Don't forget to rebuild the project. }
+    public partial class Mob : RigidBody2D
+    {
+        // Đừng quên rebuild project.
+    }
 
 Bây giờ hãy xem phần còn lại của script. Trong ``_ready()``, chúng ta phát animation và chọn ngẫu nhiên một trong ba loại animation:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _ready(): var mob_types = Array($AnimatedSprite2D.sprite_frames.get_animation_names()) $AnimatedSprite2D.animation = mob_types.pick_random() $AnimatedSprite2D.play()
+    func _ready():
+        var mob_types = Array($AnimatedSprite2D.sprite_frames.get_animation_names())
+        $AnimatedSprite2D.animation = mob_types.pick_random()
+        $AnimatedSprite2D.play()
 
  .. code-tab:: csharp
 
-    public override void _Ready() { var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D"); string[] mobTypes = animatedSprite2D.SpriteFrames.GetAnimationNames(); animatedSprite2D.Play(mobTypes[GD.Randi() % mobTypes.Length]); }
+    public override void _Ready()
+    {
+        var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        string[] mobTypes = animatedSprite2D.SpriteFrames.GetAnimationNames();
+        animatedSprite2D.Play(mobTypes[GD.Randi() % mobTypes.Length]);
+    }
 
 Trước tiên, chúng ta lấy danh sách tên animation từ thuộc tính ``sprite_frames`` của AnimatedSprite2D. Thuộc tính này trả về một Array chứa cả ba tên animation: ``["walk", "swim", "fly"]``.
 
-Trong mã GDScript, chúng ta sử dụng phương thức :ref:`Array.pick_random <class_Array_method_pick_random>` để chọn ngẫu nhiên một trong các tên animation này. Trong khi đó, trong mã C#, chúng ta chọn một số ngẫu nhiên nằm giữa ``0`` và ``2`` để chọn một trong các tên này từ danh sách (chỉ số của array bắt đầu từ ``0``). Biểu thức ``GD.Randi() % n`` chọn một số nguyên ngẫu nhiên nằm giữa ``0`` và ``n-1``.
+Trong mã GDScript, chúng ta sử dụng phương thức :ref:`Array.pick_random <class_Array_method_pick_random>` để chọn ngẫu nhiên một trong các tên animation này. Trong khi đó, trong mã C#, chúng ta chọn một số ngẫu nhiên trong khoảng từ ``0`` đến ``2`` để chọn một trong các tên này từ danh sách (chỉ số của array bắt đầu từ ``0``). Biểu thức ``GD.Randi() % n`` chọn một số nguyên ngẫu nhiên trong khoảng từ ``0`` đến ``n-1``.
 
 Cuối cùng, chúng ta gọi ``play()`` để bắt đầu phát animation đã chọn.
 
@@ -78,14 +89,19 @@ Phần cuối cùng là khiến các mob tự xóa khi rời khỏi màn hình. 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _on_visible_on_screen_notifier_2d_screen_exited(): queue_free()
+    func _on_visible_on_screen_notifier_2d_screen_exited():
+        queue_free()
 
  .. code-tab:: csharp
 
-    // We also specified this function name in PascalCase in the editor's connection window. private void OnVisibleOnScreenNotifier2DScreenExited() { QueueFree(); }
+    // Chúng ta cũng đã chỉ định tên hàm này ở dạng PascalCase trong cửa sổ kết nối của trình chỉnh sửa.
+    private void OnVisibleOnScreenNotifier2DScreenExited()
+    {
+        QueueFree();
+    }
 
 ``queue_free()`` là một hàm về cơ bản sẽ 'giải phóng', hay xóa, node ở cuối frame.
 
-Như vậy là hoàn tất scene `Mob`.
+Như vậy là hoàn tất scene ``Mob``.
 
-Khi player và enemy đã sẵn sàng, trong phần tiếp theo, chúng ta sẽ đưa chúng lại với nhau trong một scene mới. Chúng ta sẽ khiến enemy xuất hiện ngẫu nhiên xung quanh bàn chơi và di chuyển về phía trước, biến project của chúng ta thành một game có thể chơi được.
+Khi player và các kẻ địch đã sẵn sàng, trong phần tiếp theo, chúng ta sẽ đưa chúng vào cùng một scene mới. Chúng ta sẽ cho các kẻ địch xuất hiện ngẫu nhiên xung quanh bàn chơi và di chuyển về phía trước, biến project của chúng ta thành một game có thể chơi được.

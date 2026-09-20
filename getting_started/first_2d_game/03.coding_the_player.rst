@@ -1,83 +1,93 @@
 .. _doc_your_first_2d_game_coding_the_player:
 
-Lập trình người chơi
-====================
+Lập trình player
+================
 
-Trong bài học này, chúng ta sẽ thêm tính năng di chuyển và hoạt ảnh cho người chơi, đồng thời thiết lập để phát hiện va chạm.
+Trong bài học này, chúng ta sẽ thêm chuyển động, animation cho player và thiết lập để phát hiện va chạm.
 
-Để làm vậy, chúng ta cần thêm một số chức năng không thể lấy từ node tích hợp sẵn, vì thế chúng ta sẽ thêm một script. Nhấp vào node ``Player`` rồi nhấp vào nút "Attach Script":
+Để làm vậy, chúng ta cần thêm một số chức năng không có sẵn trong node tích hợp, vì vậy chúng ta sẽ thêm một script. Nhấp vào node ``Player`` rồi nhấp vào nút "Attach Script":
 
 .. image:: img/add_script_button.webp
 
 Trong cửa sổ cài đặt script, bạn có thể giữ nguyên các cài đặt mặc định. Chỉ cần nhấp vào "Create":
 
-.. note:: If you're creating a C# script or other languages, select the language
-          từ menu thả xuống `language` trước khi nhấp vào create.
+.. note::
+
+    Nếu bạn đang tạo script C# hoặc ngôn ngữ khác, hãy chọn ngôn ngữ từ menu thả xuống :menu:`Language` trước khi nhấp vào Create.
 
 .. image:: img/attach_node_window.webp
 
 .. note:: If this is your first time encountering GDScript, please read
           :ref:`doc_scripting` before continuing.
 
-Bắt đầu bằng cách khai báo các biến thành viên mà đối tượng này sẽ cần:
+Bắt đầu bằng cách khai báo các biến thành viên mà object này cần:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     extends Area2D
 
-    @export var speed = 400 # How fast the player will move (pixels/sec). var screen_size # Size of the game window.
+    @export var speed = 400 # Tốc độ di chuyển của player (pixel/giây).
+    var screen_size # Kích thước cửa sổ game.
 
  .. code-tab:: csharp
 
     using Godot;
 
-    public partial class Player : Area2D { [Export] public int Speed { get; set; } = 400; // How fast the player will move (pixels/sec).
+    public partial class Player : Area2D
+    {
+        [Export]
+        public int Speed { get; set; } = 400; // Tốc độ di chuyển của player (pixel/giây).
 
-        public Vector2 ScreenSize; // Size of the game window. }
+        public Vector2 ScreenSize; // Kích thước cửa sổ game.
+    }
 
-Việc sử dụng từ khóa ``export`` trên biến đầu tiên ``speed`` cho phép chúng ta đặt giá trị của nó trong Inspector. Điều này hữu ích với các giá trị mà bạn muốn có thể điều chỉnh giống như những thuộc tính tích hợp sẵn của node. Nhấp vào node ``Player`` và bạn sẽ thấy thuộc tính này hiện xuất hiện trong Inspector ở một phần mới có tên của script. Hãy nhớ rằng nếu bạn thay đổi giá trị tại đây, nó sẽ ghi đè giá trị mặc định được chỉ định trong script (script sẽ không bị sửa đổi).
+Sử dụng từ khóa ``export`` trên biến đầu tiên ``speed`` cho phép chúng ta đặt giá trị của biến đó trong Inspector. Điều này hữu ích với những giá trị mà bạn muốn có thể điều chỉnh giống như các thuộc tính tích hợp của node. Nhấp vào node ``Player`` và bạn sẽ thấy thuộc tính này xuất hiện trong Inspector ở một section mới có tên của script. Hãy nhớ rằng nếu bạn thay đổi giá trị tại đây, nó sẽ ghi đè giá trị mặc định được chỉ định trong script (script sẽ không bị sửa đổi).
 
 .. warning::
 
-    Nếu đang sử dụng C#, bạn cần (xây dựng lại) các assembly của project mỗi khi muốn thấy các biến export hoặc signal mới. Bạn có thể kích hoạt thao tác build này theo cách thủ công bằng cách nhấp vào nút **Build** ở góc trên bên phải của trình chỉnh sửa.
+    Nếu bạn sử dụng C#, cần (re)build các project assembly mỗi khi muốn xem các export variable hoặc signal mới. Bạn có thể kích hoạt thao tác build này thủ công bằng cách nhấp vào nút **Build** ở góc trên bên phải của editor.
 
     .. image:: img/build_dotnet.webp
 
 .. image:: img/export_variable.webp
 
-Script ``player.gd`` của bạn sẽ vốn đã chứa một hàm ``_ready()`` và một hàm ``_process()``. Nếu bạn không chọn template mặc định được hiển thị ở trên, hãy tạo các hàm này trong khi làm theo bài học.
+Script ``player.gd`` của bạn đã có sẵn một hàm ``_ready()`` và một hàm ``_process()``. Nếu bạn không chọn template mặc định được hiển thị ở trên, hãy tạo các hàm này trong khi thực hiện theo bài học.
 
 Hàm ``_ready()`` được gọi khi một node đi vào scene tree, đây là thời điểm thích hợp để lấy kích thước cửa sổ game:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _ready(): screen_size = get_viewport_rect().size
+    func _ready():
+        screen_size = get_viewport_rect().size
 
  .. code-tab:: csharp
 
-    public override void _Ready() { ScreenSize = GetViewportRect().Size; }
+    public override void _Ready()
+    {
+        ScreenSize = GetViewportRect().Size;
+    }
 
-Bây giờ chúng ta có thể sử dụng hàm ``_process()`` để định nghĩa những gì người chơi sẽ thực hiện. ``_process()`` được gọi ở mỗi frame, vì vậy chúng ta sẽ dùng nó để cập nhật các thành phần của game mà chúng ta dự kiến sẽ thường xuyên thay đổi. Đối với người chơi, chúng ta cần thực hiện những việc sau:
+Bây giờ chúng ta có thể sử dụng hàm ``_process()`` để định nghĩa hành động của player. ``_process()`` được gọi ở mỗi frame, vì vậy chúng ta sẽ dùng nó để cập nhật các phần tử của game mà dự kiến sẽ thường xuyên thay đổi. Đối với player, chúng ta cần thực hiện những việc sau:
 
-- Kiểm tra đầu vào. - Di chuyển theo hướng được chỉ định. - Phát hoạt ảnh phù hợp.
+- Kiểm tra input. - Di chuyển theo hướng đã cho. - Phát animation phù hợp.
 
-Trước tiên, chúng ta cần kiểm tra đầu vào - người chơi có đang nhấn phím không? Trong game này, chúng ta có 4 đầu vào hướng cần kiểm tra. Các hành động đầu vào được định nghĩa trong Project Settings, bên dưới "Input Map". Tại đây, bạn có thể định nghĩa các sự kiện tùy chỉnh và gán những phím khác nhau, sự kiện chuột hoặc đầu vào khác cho chúng. Trong game này, chúng ta sẽ ánh xạ các phím mũi tên vào bốn hướng.
+Trước tiên, chúng ta cần kiểm tra input - player có đang nhấn phím không? Với game này, chúng ta cần kiểm tra input theo 4 hướng. Các input action được định nghĩa trong Project Settings, tại "Input Map". Tại đây, bạn có thể định nghĩa các event tùy chỉnh và gán những phím khác nhau, event chuột hoặc input khác cho chúng. Với game này, chúng ta sẽ ánh xạ các phím mũi tên vào bốn hướng.
 
-Nhấp vào *Project -> Project Settings* để mở cửa sổ cài đặt project, rồi nhấp vào tab *Input Map* ở trên cùng. Nhập "move_right" vào thanh trên cùng và nhấp vào nút "Add" để thêm hành động ``move_right``.
+Nhấp vào *Project -> Project Settings* để mở cửa sổ cài đặt project, rồi nhấp vào tab *Input Map* ở phía trên. Nhập "move_right" vào thanh trên cùng và nhấp vào nút "Add" để thêm action ``move_right``.
 
 .. image:: img/input-mapping-add-action.webp
 
-Chúng ta cần gán một phím cho hành động này. Nhấp vào biểu tượng "+" ở bên phải để mở cửa sổ quản lý sự kiện.
+Chúng ta cần gán một phím cho action này. Nhấp vào biểu tượng "+" ở bên phải để mở cửa sổ event manager.
 
 .. image:: img/input-mapping-add-key.webp
 
-Trường "Listening for Input..." sẽ tự động được chọn. Nhấn phím "right" trên bàn phím, và lúc này menu sẽ trông như sau.
+Trường "Listening for Input..." sẽ tự động được chọn. Nhấn phím "right" trên bàn phím, lúc này menu sẽ trông như sau.
 
 .. image:: img/input-mapping-event-configuration.webp
 
-Chọn nút "ok". Phím "right" giờ đã được liên kết với hành động ``move_right``.
+Chọn nút "ok". Phím "right" giờ đã được liên kết với action ``move_right``.
 
 Lặp lại các bước này để thêm ba ánh xạ nữa:
 
@@ -91,62 +101,104 @@ Nhấp vào nút "Close" để đóng phần cài đặt project.
 
 .. note::
 
-   Chúng ta chỉ ánh xạ một phím cho mỗi hành động đầu vào, nhưng bạn có thể ánh xạ nhiều phím, nút joystick hoặc nút chuột vào cùng một hành động đầu vào.
+   Chúng ta chỉ ánh xạ một phím cho mỗi input action, nhưng bạn có thể ánh xạ nhiều phím, nút joystick hoặc nút chuột vào cùng một input action.
 
-Bạn có thể phát hiện xem một phím có đang được nhấn hay không bằng ``Input.is_action_pressed()``, hàm này trả về ``true`` nếu phím đang được nhấn hoặc ``false`` nếu không.
+Bạn có thể phát hiện một phím có đang được nhấn hay không bằng ``Input.is_action_pressed()``, hàm này trả về ``true`` nếu phím đang được nhấn hoặc ``false`` nếu không.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _process(delta): var velocity = Vector2.ZERO # The player's movement vector. if Input.is_action_pressed("move_right"): velocity.x += 1 if Input.is_action_pressed("move_left"): velocity.x -= 1 if Input.is_action_pressed("move_down"): velocity.y += 1 if Input.is_action_pressed("move_up"): velocity.y -= 1
+    func _process(delta):
+        var velocity = Vector2.ZERO # Vector chuyển động của player.
+        if Input.is_action_pressed("move_right"):
+            velocity.x += 1
+        if Input.is_action_pressed("move_left"):
+            velocity.x -= 1
+        if Input.is_action_pressed("move_down"):
+            velocity.y += 1
+        if Input.is_action_pressed("move_up"):
+            velocity.y -= 1
 
-        if velocity.length() > 0: velocity = velocity.normalized() * speed $AnimatedSprite2D.play() else: $AnimatedSprite2D.stop()
+        if velocity.length() > 0:
+            velocity = velocity.normalized() * speed
+            $AnimatedSprite2D.play()
+        else:
+            $AnimatedSprite2D.stop()
 
  .. code-tab:: csharp
 
-    public override void _Process(double delta) { var velocity = Vector2.Zero; // The player's movement vector.
+    public override void _Process(double delta)
+    {
+        var velocity = Vector2.Zero; // Vector chuyển động của player.
 
-        if (Input.IsActionPressed("move_right")) { velocity.X += 1; }
+        if (Input.IsActionPressed("move_right"))
+        {
+            velocity.X += 1;
+        }
 
-        if (Input.IsActionPressed("move_left")) { velocity.X -= 1; }
+        if (Input.IsActionPressed("move_left"))
+        {
+            velocity.X -= 1;
+        }
 
-        if (Input.IsActionPressed("move_down")) { velocity.Y += 1; }
+        if (Input.IsActionPressed("move_down"))
+        {
+            velocity.Y += 1;
+        }
 
-        if (Input.IsActionPressed("move_up")) { velocity.Y -= 1; }
+        if (Input.IsActionPressed("move_up"))
+        {
+            velocity.Y -= 1;
+        }
 
         var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 
-        if (velocity.Length() > 0) { velocity = velocity.Normalized() * Speed; animatedSprite2D.Play(); } else { animatedSprite2D.Stop(); } }
+        if (velocity.Length() > 0)
+        {
+            velocity = velocity.Normalized() * Speed;
+            animatedSprite2D.Play();
+        }
+        else
+        {
+            animatedSprite2D.Stop();
+        }
+    }
 
-Chúng ta bắt đầu bằng cách đặt ``velocity`` thành ``(0, 0)`` - theo mặc định, người chơi không nên di chuyển. Sau đó, chúng ta kiểm tra từng đầu vào và cộng/trừ vào ``velocity`` để thu được hướng tổng thể. Ví dụ, nếu bạn giữ ``right`` và ``down`` cùng lúc, vector ``velocity`` thu được sẽ là ``(1, 1)``. Trong trường hợp này, vì chúng ta đang cộng một chuyển động theo chiều ngang và một chuyển động theo chiều dọc, người chơi sẽ di chuyển *nhanh hơn* theo đường chéo so với khi chỉ di chuyển theo chiều ngang.
+Chúng ta bắt đầu bằng cách đặt ``velocity`` thành ``(0, 0)`` - theo mặc định, player không nên di chuyển. Sau đó, chúng ta kiểm tra từng input và cộng/trừ vào ``velocity`` để nhận được hướng tổng. Ví dụ, nếu bạn đồng thời giữ ``right`` và ``down``, vector ``velocity`` thu được sẽ là ``(1, 1)``. Trong trường hợp này, vì chúng ta cộng một chuyển động ngang với một chuyển động dọc, player sẽ di chuyển *nhanh hơn* theo đường chéo so với khi chỉ di chuyển theo chiều ngang.
 
-Chúng ta có thể ngăn điều đó nếu *chuẩn hóa* vận tốc, nghĩa là đặt *độ dài* của nó thành ``1``, rồi nhân với tốc độ mong muốn. Như vậy sẽ không còn hiện tượng di chuyển nhanh theo đường chéo.
+Chúng ta có thể ngăn điều đó nếu *normalize* velocity, nghĩa là đặt *độ dài* của nó thành ``1``, rồi nhân với tốc độ mong muốn. Như vậy sẽ không còn hiện tượng di chuyển nhanh theo đường chéo.
 
 .. tip:: If you've never used vector math before, or need a refresher, you can
-         xem phần giải thích về cách sử dụng vector trong Godot tại :ref:`doc_vector_math`. Bạn nên biết điều này, nhưng nó sẽ không cần thiết trong phần còn lại của hướng dẫn.
+         xem phần giải thích về cách sử dụng vector trong Godot tại :ref:`doc_vector_math`. Biết điều này là hữu ích, nhưng sẽ không cần thiết cho phần còn lại của tutorial này.
 
-Chúng ta cũng kiểm tra xem người chơi có đang di chuyển hay không để có thể gọi ``play()`` hoặc ``stop()`` trên AnimatedSprite2D.
+Chúng ta cũng kiểm tra xem player có đang di chuyển hay không để có thể gọi ``play()`` hoặc ``stop()`` trên AnimatedSprite2D.
 
 .. tip:: ``$`` is shorthand for ``get_node()``. So in the code above,
-         ``$AnimatedSprite2D.play()`` tương đương với ``get_node("AnimatedSprite2D").play()``.
+         ``$AnimatedSprite2D.play()`` giống với ``get_node("AnimatedSprite2D").play()``.
 
-         Trong GDScript, ``Trong GDScript, ` trả về node tại đường dẫn tương đối tính từ node hiện tại, hoặc trả về ``null`` nếu không tìm thấy node. Vì AnimatedSprite2D là node con của node hiện tại, chúng ta có thể sử dụng ``$AnimatedSprite2D``.
+         Trong GDScript, ``Trong GDScript, ` trả về node tại đường dẫn tương đối tính từ node hiện tại, hoặc trả về ``null`` nếu không tìm thấy node. Vì AnimatedSprite2D là child của node hiện tại, chúng ta có thể sử dụng ``$AnimatedSprite2D``.
 
-Bây giờ chúng ta đã có hướng di chuyển, có thể cập nhật vị trí của người chơi. Chúng ta cũng có thể sử dụng ``clamp()`` để ngăn người chơi rời khỏi màn hình. *Giới hạn* một giá trị nghĩa là giới hạn nó trong một khoảng cho trước. Thêm đoạn sau vào cuối hàm ``_process`` (đảm bảo đoạn này không được thụt vào bên dưới `else`):
+Bây giờ chúng ta đã có hướng di chuyển, có thể cập nhật vị trí của player. Chúng ta cũng có thể sử dụng ``clamp()`` để ngăn player rời khỏi màn hình. *Clamping* một giá trị nghĩa là giới hạn nó trong một khoảng cho trước. Thêm đoạn sau vào cuối hàm ``_process`` (đảm bảo đoạn này không được thụt lề bên trong `else`):
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-        position += velocity * delta position = position.clamp(Vector2.ZERO, screen_size)
+        position += velocity * delta
+        position = position.clamp(Vector2.ZERO, screen_size)
 
  .. code-tab:: csharp
 
-        Position += velocity * (float)delta; Position = new Vector2( x: Mathf.Clamp(Position.X, 0, ScreenSize.X), y: Mathf.Clamp(Position.Y, 0, ScreenSize.Y) );
+        Position += velocity * (float)delta;
+        Position = new Vector2(
+            x: Mathf.Clamp(Position.X, 0, ScreenSize.X),
+            y: Mathf.Clamp(Position.Y, 0, ScreenSize.Y)
+        );
 
-.. tip:: The `delta` parameter in the `_process()` function refers to the *frame
-        length* - khoảng thời gian cần thiết để frame trước đó hoàn tất. Việc sử dụng giá trị này đảm bảo chuyển động của bạn vẫn nhất quán ngay cả khi tốc độ frame thay đổi.
+.. tip::
 
-Nhấp vào "Run Current Scene" (:kbd:`F6`, :kbd:`Cmd + R` trên macOS) và xác nhận rằng bạn có thể di chuyển người chơi quanh màn hình theo mọi hướng.
+    Tham số ``delta`` trong hàm ``_process()`` là *độ dài frame*, tức khoảng thời gian cần để frame trước đó hoàn tất. Sử dụng giá trị này đảm bảo chuyển động của bạn vẫn nhất quán ngay cả khi frame rate thay đổi.
+
+Nhấp vào "Run Current Scene" (:kbd:`F6`, :kbd:`Cmd + R` trên macOS) và xác nhận rằng bạn có thể di chuyển player quanh màn hình theo mọi hướng.
 
 .. warning:: If you get an error in the "Debugger" panel that says
 
@@ -154,22 +206,40 @@ Nhấp vào "Run Current Scene" (:kbd:`F6`, :kbd:`Cmd + R` trên macOS) và xác
 
             điều này có thể có nghĩa là bạn đã viết sai tên của node AnimatedSprite2D. Tên node phân biệt chữ hoa chữ thường và ``$NodeName`` phải khớp với tên bạn thấy trong scene tree.
 
-Chọn hoạt ảnh
--------------
+Chọn animation
+--------------
 
-Bây giờ người chơi đã có thể di chuyển, chúng ta cần thay đổi hoạt ảnh mà AnimatedSprite2D đang phát dựa trên hướng di chuyển. Chúng ta có hoạt ảnh "walk", hiển thị người chơi đang đi bộ sang phải. Hoạt ảnh này cần được lật theo chiều ngang bằng thuộc tính ``flip_h`` khi di chuyển sang trái. Chúng ta cũng có hoạt ảnh "up", cần được lật theo chiều dọc bằng ``flip_v`` khi di chuyển xuống. Hãy đặt đoạn code này ở cuối hàm ``_process()``:
+Bây giờ player đã có thể di chuyển, chúng ta cần thay đổi animation mà AnimatedSprite2D đang phát dựa trên hướng của player. Chúng ta có animation "walk", hiển thị player đang đi sang phải. Animation này cần được lật theo chiều ngang bằng thuộc tính ``flip_h`` khi di chuyển sang trái. Chúng ta cũng có animation "up", cần được lật theo chiều dọc bằng ``flip_v`` khi di chuyển xuống dưới. Hãy đặt đoạn code này ở cuối hàm ``_process()``:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-        if velocity.x != 0: $AnimatedSprite2D.animation = "walk" $AnimatedSprite2D.flip_v = false # See the note below about the following boolean assignment. $AnimatedSprite2D.flip_h = velocity.x < 0 elif velocity.y != 0: $AnimatedSprite2D.animation = "up" $AnimatedSprite2D.flip_v = velocity.y > 0
+        if velocity.x != 0:
+            $AnimatedSprite2D.animation = "walk"
+            $AnimatedSprite2D.flip_v = false
+            # Xem ghi chú bên dưới về phép gán boolean sau đây.
+            $AnimatedSprite2D.flip_h = velocity.x < 0
+        elif velocity.y != 0:
+            $AnimatedSprite2D.animation = "up"
+            $AnimatedSprite2D.flip_v = velocity.y > 0
 
  .. code-tab:: csharp
 
-        if (velocity.X != 0) { animatedSprite2D.Animation = "walk"; animatedSprite2D.FlipV = false; // See the note below about the following boolean assignment. animatedSprite2D.FlipH = velocity.X < 0; } else if (velocity.Y != 0) { animatedSprite2D.Animation = "up"; animatedSprite2D.FlipV = velocity.Y > 0; }
+        if (velocity.X != 0)
+        {
+            animatedSprite2D.Animation = "walk";
+            animatedSprite2D.FlipV = false;
+            // Xem ghi chú bên dưới về phép gán boolean sau đây.
+            animatedSprite2D.FlipH = velocity.X < 0;
+        }
+        else if (velocity.Y != 0)
+        {
+            animatedSprite2D.Animation = "up";
+            animatedSprite2D.FlipV = velocity.Y > 0;
+        }
 
 .. Note:: The boolean assignments in the code above are a common shorthand for
-          các lập trình viên. Vì chúng ta đang thực hiện một phép kiểm tra so sánh (boolean) đồng thời *gán* một giá trị boolean, chúng ta có thể thực hiện cả hai việc cùng lúc. Hãy xem xét đoạn code này so với phép gán boolean một dòng ở trên:
+          các lập trình viên. Vì chúng ta đang thực hiện một phép kiểm tra so sánh (boolean) đồng thời *gán* một giá trị boolean, nên có thể làm cả hai việc cùng lúc. Hãy so sánh đoạn code này với phép gán boolean một dòng ở trên:
 
           .. tabs::
            .. code-tab :: gdscript GDScript
@@ -178,14 +248,21 @@ Bây giờ người chơi đã có thể di chuyển, chúng ta cần thay đổ
 
            .. code-tab:: csharp
 
-             if (velocity.X < 0) { animatedSprite2D.FlipH = true; } else { animatedSprite2D.FlipH = false; }
+             if (velocity.X < 0)
+             {
+                 animatedSprite2D.FlipH = true;
+             }
+             else
+             {
+                 animatedSprite2D.FlipH = false;
+             }
 
-Chạy lại scene và kiểm tra xem các hoạt ảnh có chính xác theo từng hướng hay không.
+Chạy lại scene và kiểm tra xem các animation có chính xác theo từng hướng hay không.
 
 .. tip:: A common mistake here is to type the names of the animations wrong. The
-        tên animation trong bảng SpriteFrames phải khớp với nội dung bạn nhập trong code. Nếu bạn đặt tên animation là ``"Walk"``, bạn cũng phải sử dụng chữ "W" viết hoa trong code.
+        tên animation trong panel SpriteFrames phải khớp với nội dung bạn nhập trong code. Nếu bạn đặt tên animation là ``"Walk"``, bạn cũng phải sử dụng chữ "W" viết hoa trong code.
 
-Khi chắc chắn rằng chuyển động đang hoạt động chính xác, hãy thêm dòng này vào ``_ready()``, để nhân vật sẽ bị ẩn khi trò chơi bắt đầu:
+Khi chắc chắn chuyển động hoạt động chính xác, hãy thêm dòng này vào ``_ready()`` để player bị ẩn khi game bắt đầu:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -199,7 +276,7 @@ Khi chắc chắn rằng chuyển động đang hoạt động chính xác, hãy
 Chuẩn bị cho va chạm
 --------------------
 
-Chúng ta muốn ``Player`` phát hiện khi bị kẻ địch đánh trúng, nhưng chúng ta vẫn chưa tạo kẻ địch nào! Không sao, vì chúng ta sẽ sử dụng chức năng *signal* của Godot để thực hiện việc này.
+Chúng ta muốn ``Player`` phát hiện khi bị enemy đánh trúng, nhưng vẫn chưa tạo enemy nào! Không sao, vì chúng ta sẽ sử dụng chức năng *signal* của Godot để làm việc này.
 
 Thêm đoạn sau vào đầu script. Nếu bạn sử dụng GDScript, hãy thêm nó sau ``extends Area2D``. Nếu bạn sử dụng C#, hãy thêm nó sau ``public partial class Player : Area2D``:
 
@@ -210,55 +287,75 @@ Thêm đoạn sau vào đầu script. Nếu bạn sử dụng GDScript, hãy th�
 
  .. code-tab:: csharp
 
-    // Don't forget to rebuild the project so the editor knows about the new signal.
+    // Đừng quên rebuild project để editor nhận biết signal mới.
 
-    [Signal] public delegate void HitEventHandler();
+    [Signal]
+    public delegate void HitEventHandler();
 
-Đoạn này định nghĩa một signal tùy chỉnh có tên là "hit" mà chúng ta sẽ cho nhân vật phát ra (gửi đi) khi va chạm với kẻ địch. Chúng ta sẽ sử dụng ``Area2D`` để phát hiện va chạm. Chọn node ``Player`` và nhấp vào tab :ui:`Signals` bên cạnh tab Inspector để xem danh sách các signal mà nhân vật có thể phát ra:
+Đoạn này định nghĩa một signal tùy chỉnh có tên "hit" mà player sẽ emit (gửi đi) khi va chạm với enemy. Chúng ta sẽ sử dụng ``Area2D`` để phát hiện va chạm. Chọn node ``Player`` rồi nhấp vào tab :ui:`Signals` bên cạnh tab Inspector để xem danh sách các signal mà player có thể emit:
 
 .. image:: img/player_signals.webp
 
-Hãy lưu ý rằng signal tùy chỉnh "hit" của chúng ta cũng nằm ở đây! Vì kẻ địch của chúng ta sẽ là các node ``RigidBody2D``, chúng ta muốn signal ``body_entered(body: Node2D)``. Signal này sẽ được phát ra khi một body tiếp xúc với nhân vật. Nhấp vào "Connect.." và cửa sổ "Connect a Signal" sẽ xuất hiện.
+Lưu ý rằng signal tùy chỉnh "hit" của chúng ta cũng có ở đây! Vì enemy của chúng ta sẽ là các node ``RigidBody2D``, nên chúng ta muốn signal ``body_entered(body: Node2D)``. Signal này sẽ được emit khi một body chạm vào player. Nhấp vào :button:`Connect...` và cửa sổ :ui:`Connect a Signal` sẽ xuất hiện.
 
-Godot sẽ tạo một function có chính xác tên đó trực tiếp trong script cho bạn. Hiện tại, bạn không cần thay đổi các cài đặt mặc định.
+Godot sẽ tạo một hàm có đúng tên đó trực tiếp trong script cho bạn. Hiện tại, bạn không cần thay đổi các cài đặt mặc định.
 
 .. warning::
 
-    .. Vấn đề của lỗi này là #41283
+    .. Vấn đề của bug này là #41283
 
-    Nếu bạn sử dụng trình soạn thảo văn bản bên ngoài (ví dụ: Visual Studio Code), hiện đang có một lỗi khiến Godot không thể thực hiện việc đó. Bạn sẽ được chuyển đến trình soạn thảo bên ngoài, nhưng function mới sẽ không có ở đó.
+    Nếu bạn sử dụng text editor bên ngoài (ví dụ: Visual Studio Code), hiện tại một bug ngăn Godot thực hiện việc này. Bạn sẽ được chuyển đến editor bên ngoài, nhưng hàm mới sẽ không xuất hiện ở đó.
 
-    Trong trường hợp này, bạn sẽ cần tự viết function vào tệp script của Player.
+    Trong trường hợp này, bạn sẽ cần tự viết hàm vào file script của Player.
 
 .. image:: img/player_signal_connection.webp
 
-Hãy chú ý biểu tượng màu xanh lá cho biết một signal đã được kết nối với function này; điều đó không có nghĩa là function tồn tại, mà chỉ có nghĩa là signal sẽ cố gắng kết nối với một function có tên đó, vì vậy hãy kiểm tra kỹ để bảo đảm cách viết tên function khớp hoàn toàn!
+Hãy chú ý biểu tượng màu xanh cho biết một signal được kết nối với hàm này; điều đó không có nghĩa là hàm đã tồn tại, mà chỉ có nghĩa là signal sẽ cố gắng kết nối với một hàm có tên đó, vì vậy hãy kiểm tra kỹ để bảo đảm cách viết tên hàm hoàn toàn khớp!
 
-Tiếp theo, thêm đoạn code này vào function:
+Tiếp theo, thêm đoạn code này vào hàm:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _on_body_entered(_body): hide() # Player disappears after being hit. hit.emit() # Must be deferred as we can't change physics properties on a physics callback. $CollisionShape2D.set_deferred("disabled", true)
+    func _on_body_entered(_body):
+        hide() # Player biến mất sau khi bị đánh trúng.
+        hit.emit()
+        # Phải được trì hoãn vì chúng ta không thể thay đổi các thuộc tính vật lý trong một physics callback.
+        $CollisionShape2D.set_deferred("disabled", true)
 
  .. code-tab:: csharp
 
-    // We also specified this function name in PascalCase in the editor's connection window. private void OnBodyEntered(Node2D body) { Hide(); // Player disappears after being hit. EmitSignal(SignalName.Hit); // Must be deferred as we can't change physics properties on a physics callback. GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred(CollisionShape2D.PropertyName.Disabled, true); }
+    // Chúng ta cũng đã chỉ định tên hàm này ở dạng PascalCase trong cửa sổ kết nối của editor.
+    private void OnBodyEntered(Node2D body)
+    {
+        Hide(); // Player biến mất sau khi bị đánh trúng.
+        EmitSignal(SignalName.Hit);
+        // Phải được trì hoãn vì chúng ta không thể thay đổi các thuộc tính vật lý trong một physics callback.
+        GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
+    }
 
-Mỗi khi kẻ địch đánh trúng nhân vật, signal sẽ được phát ra. Chúng ta cần vô hiệu hóa va chạm của nhân vật để không kích hoạt signal ``hit`` nhiều hơn một lần.
+Mỗi khi kẻ địch đánh trúng player, signal sẽ được phát. Chúng ta cần vô hiệu hóa collision của player để không kích hoạt signal ``hit`` nhiều hơn một lần.
 
 .. Note:: Disabling the area's collision shape can cause an error if it happens
-          ở giữa quá trình xử lý va chạm của engine. Việc sử dụng ``set_deferred()`` cho Godot biết rằng hãy chờ đến khi an toàn mới vô hiệu hóa shape.
+          ở giữa quá trình xử lý collision của engine. Việc sử dụng ``set_deferred()`` yêu cầu Godot chờ để vô hiệu hóa shape cho đến khi an toàn để thực hiện việc đó.
 
-Phần cuối cùng là thêm một function mà chúng ta có thể gọi để đặt lại nhân vật khi bắt đầu một trò chơi mới.
+Phần cuối cùng là thêm một hàm mà chúng ta có thể gọi để reset player khi bắt đầu game mới.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func start(pos): position = pos show() $CollisionShape2D.disabled = false
+    func start(pos):
+        position = pos
+        show()
+        $CollisionShape2D.disabled = false
 
  .. code-tab:: csharp
 
-    public void Start(Vector2 position) { Position = position; Show(); GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false; }
+    public void Start(Vector2 position)
+    {
+        Position = position;
+        Show();
+        GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
+    }
 
-Khi nhân vật đã hoạt động, chúng ta sẽ làm việc với kẻ địch trong bài học tiếp theo.
+Sau khi player đã hoạt động, chúng ta sẽ làm việc với enemy trong bài học tiếp theo.
