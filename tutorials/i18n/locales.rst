@@ -1,19 +1,16 @@
 .. _doc_locales:
 
-Locale codes
-============
+Mã locale
+=========
 
-.. Note: This list is synced with core/string/locales.h in the engine.
+.. Lưu ý: Danh sách này được đồng bộ với core/string/locales.h trong engine.
 
-Locale code has the following format: ``language_Script_COUNTRY_VARIANT``, where:
+Mã locale có định dạng sau: ``language_Script_COUNTRY_VARIANT``, trong đó:
 
-- ``language`` - 2 or 3-letter language code, in lower case.
-- ``Script`` - optional, 4-letter script code, in title case.
-- ``COUNTRY`` - optional, 2-letter country code, in upper case.
-- ``VARIANT`` - optional, language variant, region and, sort order. A variant can have any number of underscored keywords.
+- ``language`` - mã ngôn ngữ gồm 2 hoặc 3 chữ cái, viết thường. - ``Script`` - tùy chọn, mã script gồm 4 chữ cái, viết hoa chữ cái đầu. - ``COUNTRY`` - tùy chọn, mã quốc gia gồm 2 chữ cái, viết hoa. - ``VARIANT`` - tùy chọn, biến thể ngôn ngữ, khu vực và thứ tự sắp xếp. Một biến thể có thể chứa bất kỳ số lượng từ khóa được phân tách bằng dấu gạch dưới nào.
 
-List of supported language codes
---------------------------------
+Danh sách mã ngôn ngữ được hỗ trợ
+---------------------------------
 
 +---------------+-------------------------------+
 | Language code | Name                          |
@@ -1249,8 +1246,8 @@ List of supported language codes
 | zza           | Zaza                          |
 +---------------+-------------------------------+
 
-List of supported script codes
-------------------------------
+Danh sách mã script được hỗ trợ
+-------------------------------
 
 +-------------+-----------------------------+
 | Script code | Name                        |
@@ -1634,8 +1631,8 @@ List of supported script codes
 | Zanb        | Zanabazar Square            |
 +-------------+-----------------------------+
 
-List of supported country codes
--------------------------------
+Danh sách mã quốc gia được hỗ trợ
+---------------------------------
 
 +--------------+--------------------------------------------+
 | Country code | Name                                       |

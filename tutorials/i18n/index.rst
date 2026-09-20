@@ -1,7 +1,7 @@
 :allow_comments: False
 
-Internationalization
-====================
+Quốc tế hóa
+===========
 
 .. toctree::
    :maxdepth: 1

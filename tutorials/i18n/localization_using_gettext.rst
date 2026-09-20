@@ -1,82 +1,47 @@
 .. _doc_localization_using_gettext:
 
-Localization using gettext (PO files)
-=====================================
+Bản địa hóa bằng gettext (tệp PO)
+=================================
 
-In addition to importing translations in
+Ngoài việc nhập các bản dịch trong
 :ref:`CSV format <doc_localization_using_spreadsheets>`, Godot also
-supports loading translation files written in the GNU gettext format
-(text-based ``.po`` and compiled ``.mo``).
+hỗ trợ tải các tệp bản dịch được viết theo định dạng GNU gettext (``.po`` dựa trên văn bản và ``.mo`` đã biên dịch).
 
 .. note:: For an introduction to gettext, check out
-          `A Quick Gettext Tutorial <https://www.labri.fr/perso/fleury/posts/programming/a-quick-gettext-tutorial.html>`_.
-          It's written with C projects in mind, but much of the advice
-          also applies to Godot (with the exception of ``xgettext``).
+          `A Quick Gettext Tutorial <https://www.labri.fr/perso/fleury/posts/programming/a-quick-gettext-tutorial.html>`_. Tài liệu này được viết với các dự án C làm trọng tâm, nhưng phần lớn hướng dẫn cũng áp dụng cho Godot (ngoại trừ ``xgettext``).
 
-          For the complete documentation, see `GNU Gettext <https://www.gnu.org/software/gettext/manual/gettext.html>`_.
+          Để xem tài liệu đầy đủ, hãy xem `GNU Gettext <https://www.gnu.org/software/gettext/manual/gettext.html>`_.
 
-Advantages
+Ưu điểm
+-------
+
+- gettext là một định dạng tiêu chuẩn, có thể được chỉnh sửa bằng bất kỳ trình soạn thảo văn bản nào hoặc các trình soạn thảo GUI như `Poedit <https://poedit.net/>`_. Điều này có thể rất hữu ích vì nó cung cấp nhiều công cụ cho translator, chẳng hạn như đánh dấu các chuỗi đã lỗi thời, tìm các chuỗi chưa được dịch, v.v. - gettext được các nền tảng dịch thuật như `Transifex <https://www.transifex.com/>`_ và `Weblate <https://weblate.org/>`_ hỗ trợ, giúp mọi người dễ dàng cộng tác trong việc bản địa hóa hơn. - So với CSV, các tệp gettext hoạt động tốt hơn với các hệ thống version control như Git, vì mỗi locale có tệp messages riêng. - Các chuỗi nhiều dòng thuận tiện chỉnh sửa hơn trong tệp PO của gettext so với tệp CSV.
+
+Nhược điểm
 ----------
 
-- gettext is a standard format, which can be edited using any text editor
-  or GUI editors such as `Poedit <https://poedit.net/>`_. This can be significant
-  as it provides a lot of tools for translators, such as marking outdated
-  strings, finding strings that haven't been translated, etc.
-- gettext is supported by translation platforms such as
-  `Transifex <https://www.transifex.com/>`_ and `Weblate <https://weblate.org/>`_,
-  which makes it easier for people to collaborate to localization.
-- Compared to CSV, gettext files work better with version control systems like Git,
-  as each locale has its own messages file.
-- Multiline strings are more convenient to edit in gettext PO files compared
-  to CSV files.
+- Tệp PO của gettext có định dạng phức tạp hơn CSV và có thể khó nắm bắt đối với những người mới làm quen với việc bản địa hóa phần mềm. - Những người duy trì các tệp bản địa hóa sẽ phải cài đặt các công cụ gettext trên hệ thống của mình. Tuy nhiên, vì Godot hỗ trợ sử dụng các tệp messages dựa trên văn bản (``.po``), translator có thể kiểm tra công việc của mình mà không cần cài đặt các công cụ gettext. - Tệp PO của gettext thường sử dụng tiếng Anh làm ngôn ngữ cơ sở. Translator sẽ sử dụng ngôn ngữ cơ sở này để dịch sang các ngôn ngữ khác. Bạn vẫn có thể sử dụng ngôn ngữ khác làm ngôn ngữ cơ sở, nhưng cách này không phổ biến.
 
-Disadvantages
--------------
+Cài đặt các công cụ gettext
+---------------------------
 
-- gettext PO files have a more complex format than CSV and can be harder to grasp for
-  people new to software localization.
-- People who maintain localization files will have to install gettext tools
-  on their system. However, as Godot supports using text-based message files
-  (``.po``), translators can test their work without having to install gettext tools.
-- gettext PO files usually use English as the base language. Translators will use
-  this base language to translate to other languages. You could still use other
-  languages as the base language, but this is not common.
+Các công cụ gettext dòng lệnh cần thiết để thực hiện các thao tác bảo trì, chẳng hạn như cập nhật các tệp messages. Vì vậy, bạn nên cài đặt chúng.
 
-Installing gettext tools
-------------------------
+- **Windows:** Tải trình cài đặt từ `this page <https://mlocati.github.io/articles/gettext-iconv-windows.html>`_. Mọi architecture và binary type (shared hoặc static) đều hoạt động; nếu không chắc chắn, hãy chọn trình cài đặt static 64-bit. - **macOS:** Cài đặt gettext bằng `Homebrew <https://brew.sh/>`_ với lệnh ``brew install gettext``, hoặc bằng `MacPorts <https://www.macports.org/>`_ với lệnh ``sudo port install gettext``. - **Linux:** Trên hầu hết các distribution, hãy cài đặt package ``gettext`` từ package manager của distribution.
 
-The command line gettext tools are required to perform maintenance operations,
-such as updating message files. Therefore, it's strongly recommended to
-install them.
+Đối với công cụ GUI, bạn có thể lấy Poedit từ `Official website <https://poedit.net/>`_. Phiên bản cơ bản là mã nguồn mở và được cung cấp theo giấy phép MIT.
 
-- **Windows:** Download an installer from
-  `this page <https://mlocati.github.io/articles/gettext-iconv-windows.html>`_.
-  Any architecture and binary type (shared or static) works;
-  if in doubt, choose the 64-bit static installer.
-- **macOS:** Install gettext either using `Homebrew <https://brew.sh/>`_
-  with the ``brew install gettext`` command, or using
-  `MacPorts <https://www.macports.org/>`_ with the
-  ``sudo port install gettext`` command.
-- **Linux:** On most distributions, install the ``gettext`` package from
-  your distribution's package manager.
+Tạo template PO
+---------------
 
-For a GUI tool you can get Poedit from its `Official website <https://poedit.net/>`_.
-The basic version is open source and available under the MIT license.
+Tự động tạo bằng editor
+~~~~~~~~~~~~~~~~~~~~~~~
 
-Creating the PO template
-------------------------
+Editor có thể tự động tạo template PO từ các tệp scene và GDScript được chỉ định. Việc tạo POT này cũng hỗ trợ translation context và pluralization nếu được sử dụng trong script, với đối số thứ hai tùy chọn của ``tr()`` và method ``tr_n()``.
 
-Automatic generation using the editor
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The editor can generate a PO template automatically from
-specified scene and GDScript files. This POT generation also supports translation
-contexts and pluralization if used in a script, with the optional second
-argument of ``tr()`` and the ``tr_n()`` method.
-
-Open :menu:`Project > Project Settings > Localization > Template Generation`, then use the
+Mở :menu:`Project > Project Settings > Localization > Template Generation`, sau đó sử dụng
 :button:`Add…` button to specify the path to your project's scenes and scripts that
-contain localizable strings:
+chứa các chuỗi có thể bản địa hóa:
 
 .. figure:: img/localization_using_gettext_pot_generation.webp
    :align: center
@@ -84,208 +49,162 @@ contain localizable strings:
 
    Creating a PO template in the :menu:`Localization > Template Generation` tab of the :ui:`Project Settings`
 
-After adding at least one scene or script, click :button:`Generate` in the
-top-right corner, then specify the path to the output file with a ``pot`` file extension. This file can be
-placed anywhere in the project directory, but it's recommended to keep it in a
-subdirectory such as ``locale``, as each locale will be defined in its own file.
+Sau khi thêm ít nhất một scene hoặc script, hãy nhấp vào :button:`Generate` ở góc trên bên phải, sau đó chỉ định đường dẫn đến tệp đầu ra với phần mở rộng tệp ``pot``. Tệp này có thể được đặt ở bất kỳ đâu trong thư mục dự án, nhưng bạn nên giữ tệp trong một thư mục con như ``locale``, vì mỗi locale sẽ được định nghĩa trong tệp riêng.
 
-See :ref:`below <doc_localization_using_gettext_gdscript>` for how to add comments for translators
-or exclude some strings from being added to the PO template for GDScript files.
+Xem :ref:`below <doc_localization_using_gettext_gdscript>` để biết cách thêm comment cho translator hoặc loại trừ một số chuỗi khỏi việc được thêm vào template PO đối với các tệp GDScript.
 
-You can then move over to
+Sau đó, bạn có thể chuyển sang
 :ref:`creating a messages file from a PO template <doc_localization_using_gettext_messages_file>`.
 
 .. note::
 
-    Remember to regenerate the PO template after making any changes to
-    localizable strings, or after adding new scenes or scripts. Otherwise, newly
-    added strings will not be localizable and translators won't be able to
-    update translations for outdated strings.
+    Hãy nhớ tạo lại template PO sau khi thực hiện bất kỳ thay đổi nào đối với các chuỗi có thể bản địa hóa, hoặc sau khi thêm scene hay script mới. Nếu không, các chuỗi mới được thêm sẽ không thể bản địa hóa và translator sẽ không thể cập nhật các bản dịch của những chuỗi đã lỗi thời.
 
-Manual creation
-~~~~~~~~~~~~~~~
+Tạo thủ công
+~~~~~~~~~~~~
 
-If the automatic generation approach doesn't work out for your needs, you can
-create a PO template by hand in a text editor. This file can be placed anywhere
-in the project directory, but it's recommended to keep it in a subdirectory, as
-each locale will be defined in its own file.
+Nếu cách tạo tự động không đáp ứng nhu cầu của bạn, bạn có thể tự tạo template PO trong trình soạn thảo văn bản. Tệp này có thể được đặt ở bất kỳ đâu trong thư mục dự án, nhưng bạn nên giữ tệp trong một thư mục con, vì mỗi locale sẽ được định nghĩa trong tệp riêng.
 
-Create a directory named ``locale`` in the project directory. In this directory,
-save a file named ``messages.pot`` with the following content:
+Tạo một thư mục có tên ``locale`` trong thư mục dự án. Trong thư mục này, lưu một tệp có tên ``messages.pot`` với nội dung sau:
 
 ::
 
-    # Don't remove the two lines below, they're required for gettext to work correctly.
+    # Đừng xóa hai dòng bên dưới, chúng cần thiết để gettext hoạt động chính xác.
     msgid ""
     msgstr ""
 
-    # Example of a regular string.
+    # Ví dụ về một chuỗi thông thường.
     msgid "Hello world!"
     msgstr ""
 
-    # Example of a string with pluralization.
+    # Ví dụ về một chuỗi có pluralization.
     msgid "There is %d apple."
     msgid_plural "There are %d apples."
     msgstr[0] ""
     msgstr[1] ""
 
-    # Example of a string with a translation context.
+    # Ví dụ về một chuỗi có translation context.
     msgctxt "Actions"
     msgid "Close"
     msgstr ""
 
-Messages in gettext are made of ``msgid`` and ``msgstr`` pairs.
-``msgid`` is the source string (usually in English), ``msgstr`` will be
-the translated string.
+Các message trong gettext được tạo thành từ các cặp ``msgid`` và ``msgstr``. ``msgid`` là chuỗi nguồn (thường bằng tiếng Anh), còn ``msgstr`` sẽ là chuỗi đã dịch.
 
 .. warning::
 
-    The ``msgstr`` value in PO template files (``.pot``) should **always** be
-    empty. Localization will be done in the generated ``.po`` files instead.
+    Giá trị ``msgstr`` trong các tệp template PO (``.pot``) phải **luôn** để trống. Việc bản địa hóa sẽ được thực hiện trong các tệp ``.po`` được tạo ra.
 
 .. _doc_localization_using_gettext_messages_file:
 
-Creating a messages file from a PO template
--------------------------------------------
+Tạo tệp messages từ template PO
+-------------------------------
 
-The ``msginit`` command is used to turn a PO template into a messages file.
-For instance, to create a French localization file, use the following command
-while in the ``locale`` directory:
+Lệnh ``msginit`` được dùng để chuyển một template PO thành tệp messages. Ví dụ, để tạo tệp bản địa hóa tiếng Pháp, hãy sử dụng lệnh sau khi đang ở trong thư mục ``locale``:
 
 .. code-block:: shell
 
     msginit --no-translator --input=messages.pot --locale=fr
 
-The command above will create a file named ``fr.po`` in the same directory
-as the PO template.
+Lệnh trên sẽ tạo một tệp có tên ``fr.po`` trong cùng thư mục với template PO.
 
-Alternatively, you can do that graphically using Poedit, or by uploading the
-POT file to your web platform of choice.
+Ngoài ra, bạn có thể thực hiện việc này bằng giao diện đồ họa với Poedit hoặc tải tệp POT lên web platform mà bạn chọn.
 
-Loading a messages file in Godot
---------------------------------
+Tải tệp messages trong Godot
+----------------------------
 
-To register a messages file as a translation in a project, open the
+Để đăng ký một tệp messages làm bản dịch trong dự án, hãy mở
 :ui:`Project Settings`, then go to :menu:`Localization > Translations`,
-click :button:`Add…` then choose the ``.po`` or ``.mo`` file
-in the file dialog. The locale will be inferred from the
-``"Language: <code>\n"`` property in the messages file.
+nhấp vào :button:`Add…`, sau đó chọn tệp ``.po`` hoặc ``.mo`` trong hộp thoại tệp. Locale sẽ được suy ra từ thuộc tính ``"Language: <code>\n"`` trong tệp messages.
 
 .. note:: See :ref:`doc_internationalizing_games` for more information on
-          importing and testing translations in Godot.
+          nhập và kiểm thử các bản dịch trong Godot.
 
-Updating message files to follow the PO template
-------------------------------------------------
+Cập nhật các tệp messages để tuân theo template PO
+--------------------------------------------------
 
-After updating the PO template, you will have to update message files so
-that they contain new strings, while removing strings that are no longer
-present in the PO template. This can be done automatically using the
-``msgmerge`` tool:
+Sau khi cập nhật template PO, bạn sẽ phải cập nhật các tệp messages để chúng chứa các chuỗi mới, đồng thời xóa các chuỗi không còn xuất hiện trong template PO. Việc này có thể được thực hiện tự động bằng công cụ ``msgmerge``:
 
 .. code-block:: shell
 
-    # The order matters: specify the message file *then* the PO template!
+    # Thứ tự rất quan trọng: hãy chỉ định tệp messages *trước*, sau đó đến template PO!
     msgmerge --update --backup=none fr.po messages.pot
 
-If you want to keep a backup of the original message file (which would be
-saved as ``fr.po~`` in this example), remove the ``--backup=none`` argument.
+Nếu muốn giữ bản sao lưu của tệp messages gốc (trong ví dụ này sẽ được lưu dưới dạng ``fr.po~``), hãy xóa đối số ``--backup=none``.
 
 .. note::
 
-    After running ``msgmerge``, strings which were modified in the source language
-    will have a "fuzzy" comment added before them in the ``.po`` file. This comment
-    denotes that the translation should be updated to match the new source string,
-    as the translation will most likely be inaccurate until it's updated.
+    Sau khi chạy ``msgmerge``, các chuỗi đã được sửa đổi trong ngôn ngữ nguồn sẽ được thêm comment "fuzzy" ở phía trước trong tệp ``.po``. Comment này cho biết bản dịch cần được cập nhật để khớp với chuỗi nguồn mới, vì bản dịch nhiều khả năng sẽ không chính xác cho đến khi được cập nhật.
 
-    Strings with "fuzzy" comments will **not** be read by Godot until the
-    translation is updated and the "fuzzy" comment is removed.
+    Các chuỗi có comment "fuzzy" sẽ **không** được Godot đọc cho đến khi bản dịch được cập nhật và comment "fuzzy" được xóa.
 
-Checking the validity of a PO file or template
-----------------------------------------------
+Kiểm tra tính hợp lệ của tệp hoặc template PO
+---------------------------------------------
 
-It is possible to check whether a gettext file's syntax is valid.
+Bạn có thể kiểm tra xem cú pháp của tệp gettext có hợp lệ hay không.
 
-If you open with Poeditor, it will display the appropriate warnings if there's some
-syntax errors. You can also verify by running the gettext command below:
+Nếu mở bằng Poeditor, công cụ sẽ hiển thị các cảnh báo phù hợp nếu có lỗi cú pháp. Bạn cũng có thể xác minh bằng cách chạy lệnh gettext dưới đây:
 
 .. code-block:: shell
 
     msgfmt fr.po --check
 
-If there are syntax errors or warnings, they will be displayed in the console.
-Otherwise, ``msgfmt`` won't output anything.
+Nếu có lỗi cú pháp hoặc cảnh báo, chúng sẽ được hiển thị trong console. Nếu không, ``msgfmt`` sẽ không xuất ra bất kỳ thông tin nào.
 
-Using binary MO files (useful for large projects only)
-------------------------------------------------------
+Sử dụng tệp MO nhị phân (chỉ hữu ích cho các dự án lớn)
+-------------------------------------------------------
 
-For large projects with several thousands of strings to translate or more,
-it can be worth it to use binary (compiled) MO message files instead of text-based
-PO files. Binary MO files are smaller and faster to read than the equivalent
-PO files.
+Đối với các dự án lớn có vài nghìn chuỗi cần dịch trở lên, việc sử dụng các tệp messages MO nhị phân (đã biên dịch) thay cho các tệp PO dựa trên văn bản có thể đáng cân nhắc. Tệp MO nhị phân nhỏ hơn và được đọc nhanh hơn các tệp PO tương đương.
 
-You can generate an MO file with the command below:
+Bạn có thể tạo tệp MO bằng lệnh dưới đây:
 
 .. code-block:: shell
 
     msgfmt fr.po --no-hash -o fr.mo
 
-If the PO file is valid, this command will create an ``fr.mo`` file besides
-the PO file. This MO file can then be loaded in Godot as described above.
+Nếu tệp PO hợp lệ, lệnh này sẽ tạo một tệp ``fr.mo`` bên cạnh tệp PO. Sau đó, tệp MO này có thể được tải trong Godot như mô tả ở trên.
 
-The original PO file should be kept in version control so you can update
-your translation in the future. In case you lose the original PO file and
-wish to decompile an MO file into a text-based PO file, you can do so with:
+Nên giữ tệp PO gốc trong version control để bạn có thể cập nhật bản dịch trong tương lai. Nếu làm mất tệp PO gốc và muốn decompile tệp MO thành tệp PO dựa trên văn bản, bạn có thể thực hiện bằng:
 
 .. code-block:: shell
 
     msgunfmt fr.mo > fr.po
 
-The decompiled file will not include comments or fuzzy strings, as these are
-never compiled in the MO file in the first place.
+Tệp được decompile sẽ không bao gồm comment hoặc các chuỗi fuzzy, vì ngay từ đầu chúng không bao giờ được biên dịch vào tệp MO.
 
 .. _doc_localization_using_gettext_gdscript:
 
-Extracting localizable strings from GDScript files
---------------------------------------------------
+Trích xuất các chuỗi có thể bản địa hóa từ tệp GDScript
+-------------------------------------------------------
 
-The built-in `editor plugin <https://github.com/godotengine/godot/blob/master/modules/gdscript/editor/gdscript_translation_parser_plugin.h>`_
-recognizes a variety of patterns in source code to extract localizable strings
-from GDScript files, including but not limited to the following:
+`editor plugin <https://github.com/godotengine/godot/blob/master/modules/gdscript/editor/gdscript_translation_parser_plugin.h>`_ tích hợp sẵn nhận diện nhiều pattern trong source code để trích xuất các chuỗi có thể bản địa hóa từ tệp GDScript, bao gồm nhưng không giới hạn ở những pattern sau:
 
-- ``tr()``, ``tr_n()``, ``atr()``, and ``atr_n()`` calls;
-- assigning properties ``text``, ``placeholder_text``, and ``tooltip_text``;
-- ``add_tab()``, ``add_item()``, ``set_tab_title()``, and other calls;
-- ``FileDialog`` filters like ``"*.png ; PNG Images"``.
+- các lời gọi ``tr()``, ``tr_n()``, ``atr()`` và ``atr_n()``; - gán các property ``text``, ``placeholder_text`` và ``tooltip_text``; - ``add_tab()``, ``add_item()``, ``set_tab_title()`` và các lời gọi khác; - các filter ``FileDialog`` như ``"*.png ; PNG Images"``.
 
 .. note::
 
-    The argument or right operand must be a constant string, otherwise the plugin
-    will not be able to evaluate the expression and will ignore it.
+    Đối số hoặc toán hạng bên phải phải là một chuỗi hằng, nếu không plugin sẽ không thể đánh giá biểu thức và sẽ bỏ qua chuỗi đó.
 
-If the plugin extracts unnecessary strings, you can ignore them with the ``NO_TRANSLATE`` comment.
-You can also provide additional information for translators using the ``TRANSLATORS:`` comment.
-These comments must be placed either on the same line as the recognized pattern or precede it.
+Nếu plugin trích xuất các chuỗi không cần thiết, bạn có thể bỏ qua chúng bằng comment ``NO_TRANSLATE``. Bạn cũng có thể cung cấp thêm thông tin cho translator bằng comment ``TRANSLATORS:``. Các comment này phải được đặt trên cùng dòng với pattern được nhận diện hoặc ở phía trước pattern đó.
 
 ::
 
     $CharacterName.text = "???" # NO_TRANSLATE
 
-    # NO_TRANSLATE: Language name.
+    # NO_TRANSLATE: Tên ngôn ngữ.
     $TabContainer.set_tab_title(0, "Python")
 
-    item.text = "Tool" # TRANSLATORS: Up to 10 characters.
+    item.text = "Tool" # TRANSLATORS: Tối đa 10 ký tự.
 
-    # TRANSLATORS: This is a reference to Lewis Carroll's poem "Jabberwocky",
-    # make sure to keep this as it is important to the plot.
+    # TRANSLATORS: Đây là một tham chiếu đến bài thơ "Jabberwocky" của Lewis Carroll,
+    # hãy đảm bảo giữ nguyên điều này vì nó quan trọng đối với cốt truyện.
     say(tr("He took his vorpal sword in hand. The end?"))
 
-Using context
--------------
+Sử dụng context
+---------------
 
-The ``context`` parameter can be used to differentiate the situation where a translation
-is used, or to differentiate polysemic words (words with multiple meanings).
+Tham số ``context`` có thể được dùng để phân biệt trường hợp sử dụng bản dịch, hoặc để phân biệt các từ đa nghĩa (những từ có nhiều nghĩa).
 
-For example:
+Ví dụ:
 
 ::
 
@@ -294,49 +213,40 @@ For example:
     tr("Shop", "Main Menu")
     tr("Shop", "In Game")
 
-In a gettext PO file, a string with a context can be defined as follows:
+Trong tệp gettext PO, một chuỗi có context có thể được định nghĩa như sau:
 
 ::
 
-    # Example of a string with a translation context.
+    # Ví dụ về một chuỗi có translation context.
     msgctxt "Main Menu"
     msgid "Shop"
     msgstr ""
 
-    # A different source string that is identical, but with a different context.
+    # Một chuỗi nguồn khác giống hệt, nhưng có context khác.
     msgctxt "In Game"
     msgid "Shop"
     msgstr ""
 
-Updating PO files
------------------
+Cập nhật các tệp PO
+-------------------
 
-Some time or later, you'll add new content to your game, and there will
-be new strings that need to be translated. When this happens, you'll
-need to update the existing PO files to include the new strings.
+Sớm hay muộn, bạn sẽ thêm nội dung mới vào game của mình và sẽ có các chuỗi mới cần được dịch. Khi điều này xảy ra, bạn sẽ cần cập nhật các tệp PO hiện có để bổ sung các chuỗi mới.
 
-First, generate a new POT file containing all the existing strings plus
-the newly added strings. After that, merge the existing PO files
-with the new POT file. There are two ways to do this:
+Trước tiên, hãy tạo một tệp POT mới chứa tất cả các chuỗi hiện có cùng với các chuỗi mới được thêm. Sau đó, hợp nhất các tệp PO hiện có với tệp POT mới. Có hai cách để thực hiện việc này:
 
-- Use a gettext editor, and it should have an option to update a PO file
-  from a POT file.
+- Sử dụng trình chỉnh sửa gettext; trình này phải có tùy chọn cập nhật tệp PO từ tệp POT.
 
-- Use the gettext ``msgmerge`` tool:
+- Sử dụng công cụ gettext ``msgmerge``:
 
 .. code-block:: shell
 
-    # The order matters: specify the message file *then* the PO template!
+    # Thứ tự rất quan trọng: hãy chỉ định message file *trước*, sau đó mới đến PO template!
     msgmerge --update --backup=none fr.po messages.pot
 
-If you want to keep a backup of the original message file (which would be saved
-as ``fr.po~`` in this example), remove the ``--backup=none`` argument.
+Nếu bạn muốn giữ bản sao lưu của message file ban đầu (trong ví dụ này, tệp đó sẽ được lưu dưới dạng ``fr.po~``), hãy xóa đối số ``--backup=none``.
 
-POT generation custom plugin
-----------------------------
+Plugin tùy chỉnh để tạo POT
+---------------------------
 
-If you have any extra file format to deal with, you could write a custom plugin
-to parse and extract the strings from the custom file. This custom plugin
-will extract the strings and write into the POT file when you hit **Generate POT**.
-To learn more about how to create the translation parser plugin, see
+Nếu bạn cần xử lý thêm định dạng tệp nào khác, bạn có thể viết một plugin tùy chỉnh để phân tích cú pháp và trích xuất các chuỗi từ tệp tùy chỉnh đó. Plugin tùy chỉnh này sẽ trích xuất các chuỗi và ghi chúng vào tệp POT khi bạn nhấn **Generate POT**. Để tìm hiểu thêm về cách tạo plugin phân tích cú pháp bản dịch, hãy xem
 :ref:`EditorTranslationParserPlugin <class_EditorTranslationParserPlugin>`.
