@@ -1,24 +1,15 @@
 .. _doc_pipeline_compilations:
 
-Reducing stutter from shader (pipeline) compilations
-====================================================
+Giảm hiện tượng giật hình do biên dịch shader (pipeline)
+========================================================
 
 .. warning::
 
-    This page only applies to the Forward+ and Mobile renderers, not Compatibility.
-    Ubershaders and pipeline precompilation rely on functionality only available
-    in modern low-level graphics APIs (Vulkan, Direct3D 12, Metal). The Compatibility
-    renderer uses OpenGL 3.3, OpenGL ES 3.0, or WebGL 2.0 depending on the platform.
-    These versions lack the functionality to effectively implement ubershaders
-    and pipeline precompilation.
+    Trang này chỉ áp dụng cho renderer Forward+ và Mobile, không áp dụng cho Compatibility. Ubershader và pipeline precompilation dựa vào các chức năng chỉ có trong những graphics API cấp thấp hiện đại (Vulkan, Direct3D 12, Metal). Renderer Compatibility sử dụng OpenGL 3.3, OpenGL ES 3.0 hoặc WebGL 2.0 tùy theo nền tảng. Những phiên bản này thiếu chức năng để triển khai ubershader và pipeline precompilation một cách hiệu quả.
 
-    To avoid shader stutters in Compatibility, you need to use the legacy
-    approach of preloading materials, shaders, and particles by displaying them
-    for at least one frame in the view frustum when the level is loading.
+    Để tránh hiện tượng giật shader trong Compatibility, bạn cần sử dụng phương pháp cũ là preload material, shader và particle bằng cách hiển thị chúng trong view frustum ít nhất một frame khi level đang được load.
 
-Pipeline compilation, also commonly known as shader compilation, is an expensive
-operation required by the engine to be able to draw any kind of content with the
-GPU.
+Biên dịch pipeline, còn thường được gọi là biên dịch shader, là một thao tác tốn tài nguyên mà engine cần thực hiện để có thể vẽ bất kỳ loại nội dung nào bằng GPU.
 
 .. figure:: img/pipeline_compilations_shader_compilation_diagram.webp
    :align: center
@@ -27,76 +18,26 @@ GPU.
    Shaders and materials in Godot go through several steps before they can be run
    by the GPU.
 
-In more precise terms, *shader compilation* involves the translation of the GLSL
-code that Godot generates into an intermediate format that can be shared across
-systems (such as SPIR-V when using Vulkan). However, this format can't be used
-by the GPU directly.
+Nói chính xác hơn, *biên dịch shader* bao gồm việc chuyển đổi mã GLSL do Godot tạo ra thành một định dạng trung gian có thể được chia sẻ giữa các hệ thống (chẳng hạn như SPIR-V khi sử dụng Vulkan). Tuy nhiên, GPU không thể sử dụng trực tiếp định dạng này.
 
-*Pipeline compilation* is the step where the GPU driver converts
-the intermediate shader format (the result from shader compilation) to something
-the GPU can actually use for rendering. Drivers usually keep a cache of
-pipelines stored somewhere in the system to avoid repeating the process every
-time a game is run. This cache is usually deleted when the driver is updated.
+*Biên dịch pipeline* là bước mà driver GPU chuyển đổi định dạng shader trung gian (kết quả của quá trình biên dịch shader) thành thứ mà GPU thực sự có thể sử dụng để render. Driver thường lưu một cache các pipeline ở đâu đó trong hệ thống để tránh lặp lại quá trình này mỗi khi game được chạy. Cache này thường bị xóa khi driver được cập nhật.
 
-Pipelines contain more information than just the shader code, which means that
-for each shader, there can be dozens of pipelines or more! This makes it
-difficult for an engine to compile them ahead of time, both because it would be
-very slow, and because it would take up a lot of memory. On top of that, this
-step can only be performed on the user's system and it is very tough to share
-the result between users unless they have the exact same hardware and driver
-version.
+Pipeline chứa nhiều thông tin hơn chỉ riêng mã shader, nghĩa là với mỗi shader, có thể có hàng chục pipeline hoặc nhiều hơn! Điều này khiến engine khó biên dịch chúng trước, vì quá trình này vừa rất chậm vừa chiếm nhiều bộ nhớ. Ngoài ra, bước này chỉ có thể được thực hiện trên hệ thống của người dùng và rất khó chia sẻ kết quả giữa những người dùng, trừ khi họ có chính xác cùng phần cứng và phiên bản driver.
 
-Before Godot 4.4, there was no solution to pipeline compilation other than
-generating them when an object shows up inside the camera's view, leading to the
-infamous *shader stutter* or hitches that only occur during the first
-playthrough. **With Godot 4.4, new mechanisms have been introduced to mitigate
-stutters from pipeline compilation.**
+Trước Godot 4.4, không có giải pháp nào cho việc biên dịch pipeline ngoài việc tạo chúng khi một object xuất hiện bên trong vùng nhìn của camera, dẫn đến hiện tượng *shader stutter* hoặc hitch nổi tiếng, chỉ xảy ra trong lần chơi đầu tiên. **Với Godot 4.4, các cơ chế mới đã được giới thiệu để giảm hiện tượng giật do biên dịch pipeline.**
 
-- **Ubershaders**: Godot makes use of specialization constants, a feature that
-  allows the driver to optimize a pipeline's code around a set of parameters
-  such as lighting, shadow quality, etc. Specialization constants are used to
-  optimize a shader by limiting unnecessary features. Changing a specialization
-  constant requires recompiling the pipeline. Ubershaders are a special version
-  of the shader that are able to change these constants while rendering, which
-  means Godot can precompile just one pipeline ahead of time and compile the
-  more optimized versions on the background during gameplay. This reduces the
-  amount of pipelines that need to be created significantly.
-- **Pipeline precompilation**: By using ubershaders, the engine can precompile
-  pipelines ahead of time in multiple places such as when meshes are loaded or
-  when nodes are added to the scene. By being part of the resource loading
-  process, pipelines can even be precompiled in multiple background threads if
-  possible during loading screens or even gameplay.
+- **Ubershader**: Godot sử dụng specialization constant, một tính năng cho phép driver tối ưu mã của pipeline dựa trên một tập hợp tham số như ánh sáng, chất lượng bóng đổ, v.v. Specialization constant được sử dụng để tối ưu shader bằng cách giới hạn các tính năng không cần thiết. Việc thay đổi một specialization constant yêu cầu biên dịch lại pipeline. Ubershader là một phiên bản đặc biệt của shader, có khả năng thay đổi các constant này trong khi render, nghĩa là Godot có thể biên dịch trước chỉ một pipeline và biên dịch các phiên bản được tối ưu hơn ở background trong khi chơi game. Điều này làm giảm đáng kể số lượng pipeline cần được tạo. - **Pipeline precompilation**: Bằng cách sử dụng ubershader, engine có thể biên dịch trước pipeline tại nhiều thời điểm, chẳng hạn như khi mesh được load hoặc khi node được thêm vào scene. Vì là một phần của quá trình load resource, pipeline thậm chí có thể được biên dịch trước trong nhiều background thread nếu có thể, trong màn hình loading hoặc ngay cả khi đang chơi game.
 
-Starting in Godot 4.4, Godot will detect which pipelines are needed and
-precompile them at load-time. This detection system is mostly automatic, but it
-relies on the RenderingServer seeing evidence of all shaders, meshes, or
-rendering features at load-time. For example, if you load a mesh and shader
-while the game is running, the pipeline for that mesh/shader combination won't
-be compiled until the mesh/shader is loaded. Similarly, things like enabling
-MSAA, or instancing a VoxelGI node while the game is running will trigger
-pipeline recompilations.
+Bắt đầu từ Godot 4.4, Godot sẽ phát hiện những pipeline cần thiết và biên dịch trước chúng trong thời gian load. Hệ thống phát hiện này phần lớn là tự động, nhưng dựa vào việc RenderingServer nhìn thấy bằng chứng về tất cả shader, mesh hoặc tính năng rendering trong thời gian load. Ví dụ, nếu bạn load một mesh và shader trong khi game đang chạy, pipeline cho tổ hợp mesh/shader đó sẽ chỉ được biên dịch sau khi mesh/shader được load. Tương tự, những thao tác như bật MSAA hoặc instance một node VoxelGI trong khi game đang chạy sẽ kích hoạt việc biên dịch lại pipeline.
 
-Pipeline precompilation monitors
---------------------------------
+Các monitor pipeline precompilation
+-----------------------------------
 
-.. UPDATE: Future versions mentioned.
+.. CẬP NHẬT: Các phiên bản tương lai được đề cập.
 
-Compiling pipelines ahead of time is the main mechanism Godot uses to mitigate
-shader stutters, but it's not a perfect solution. Being aware of the situations
-that can lead to pipeline stutters can be very helpful, and the workarounds are
-pretty straightforward compared to previous versions. These workarounds may be
-less necessary over time with future versions of Godot as more detection
-techniques are implemented.
+Biên dịch pipeline trước là cơ chế chính mà Godot sử dụng để giảm hiện tượng giật shader, nhưng đây không phải là giải pháp hoàn hảo. Nhận biết những tình huống có thể dẫn đến hiện tượng giật pipeline sẽ rất hữu ích, và các giải pháp khắc phục khá đơn giản so với những phiên bản trước. Những giải pháp này có thể sẽ ít cần thiết hơn theo thời gian khi các phiên bản Godot tương lai triển khai thêm nhiều kỹ thuật phát hiện.
 
-The Godot debugger offers monitors for tracking the amount of pipelines created
-by the game and the step that triggered their compilation. You can keep an eye
-on these monitors as the game runs to identify potential sources of shader
-stutters without having to wipe your driver cache every time you wish to test.
-Sudden increases of these values outside of loading screens can show up as
-hitches during gameplay the first time someone plays the game on their system.
-**It is recommended you take a look at these monitors to identify possible
-sources of stutter for your players**, as you might be unable to experience them
-yourself without deleting your driver cache or testing on a weaker system.
+Godot debugger cung cấp các monitor để theo dõi số lượng pipeline được game tạo ra và bước đã kích hoạt quá trình biên dịch chúng. Bạn có thể theo dõi các monitor này khi game chạy để xác định các nguồn có thể gây giật shader mà không cần xóa driver cache mỗi lần muốn kiểm thử. Việc các giá trị này tăng đột ngột bên ngoài màn hình loading có thể xuất hiện dưới dạng hitch trong quá trình chơi, vào lần đầu tiên ai đó chơi game trên hệ thống của họ. **Bạn nên xem các monitor này để xác định những nguồn có thể gây giật cho người chơi**, vì bạn có thể không tự trải nghiệm được chúng nếu không xóa driver cache hoặc kiểm thử trên một hệ thống yếu hơn.
 
 .. figure:: img/pipeline_compilations_monitors.webp
    :align: center
@@ -105,104 +46,29 @@ yourself without deleting your driver cache or testing on a weaker system.
    Pipeline compilations of one of the demo projects.
 
 .. note:: We can see the pipelines compiled during gameplay and
-          verify which steps could possibly cause stuttters. Note
-          that these values will only increase and never go down,
-          as deleted pipelines are not tracked by these monitors
-          and pipelines may be erased and recreated during gameplay.
+          xác minh những bước nào có thể gây giật. Lưu ý rằng các giá trị này chỉ tăng và không bao giờ giảm, vì các pipeline đã bị xóa không được những monitor này theo dõi, đồng thời pipeline có thể bị xóa và tạo lại trong quá trình chơi.
 
-- **Canvas**: Compiled when drawing a 2D node. The engine does not currently
-  feature precompilation for 2D elements and stutters will show up when the
-  2D node is drawn for the first time.
-- **Mesh**: Compiled as part of loading a 3D mesh and identifying what pipelines
-  can be precompiled from its properties. These can lead to stutters if a mesh
-  is loaded during gameplay, but they can be mitigated if the mesh is loaded by
-  using a background thread. **Modifiers that are part of nodes such as material
-  overrides can't be compiled on this step**.
-- **Surface**: Compiled when a frame is about to be drawn and 3D objects were
-  instanced on the scene tree for the first time. This can also include
-  compilation for nodes that aren't even visible on the scene tree. The stutter
-  will occur only on the first frame the node is added to the scene, which won't
-  result in an obvious stutter if it happens right after a loading screen.
-- **Draw**: Compiled on demand when a 3D object needs to be drawn and an
-  ubershader was not precompiled ahead of time. The engine is unable to
-  precompile this pipeline due to triggering a case that hasn't been covered
-  yet or a modification that was done to the engine's code. Leads to stutters
-  during gameplay. This is identical to Godot versions before 4.4. If you
-  see compilations here, please
-  `let the developers know <https://github.com/godotengine/godot/issues>`__
-  as this should never happen with the Ubershader system.
-  Make sure to attach a minimal reproduction project when doing so.
-- **Specialization**: Compiled in the background during gameplay to optimize the
-  framerate. Unable to cause stutters, but may result in reduced framerates if
-  there are many happening per frame.
+- **Canvas**: Được biên dịch khi vẽ một node 2D. Hiện tại engine chưa có tính năng precompilation cho các phần tử 2D, nên hiện tượng giật sẽ xuất hiện khi node 2D được vẽ lần đầu. - **Mesh**: Được biên dịch trong quá trình load một mesh 3D và xác định những pipeline nào có thể được biên dịch trước dựa trên các thuộc tính của mesh. Việc này có thể gây giật nếu mesh được load trong khi chơi, nhưng có thể giảm thiểu bằng cách load mesh bằng background thread. **Các modifier thuộc về node như material override không thể được biên dịch ở bước này**. - **Surface**: Được biên dịch khi một frame sắp được vẽ và các object 3D lần đầu được instance trong scene tree. Việc này cũng có thể bao gồm quá trình biên dịch cho các node thậm chí không hiển thị trong scene tree. Hiện tượng giật sẽ chỉ xảy ra ở frame đầu tiên node được thêm vào scene, nên sẽ không gây giật rõ rệt nếu diễn ra ngay sau màn hình loading. - **Draw**: Được biên dịch theo yêu cầu khi cần vẽ một object 3D và ubershader chưa được biên dịch trước. Engine không thể biên dịch trước pipeline này vì gặp một trường hợp chưa được xử lý hoặc một thay đổi đã được thực hiện trong mã của engine. Gây giật trong quá trình chơi. Điều này giống hệt các phiên bản Godot trước 4.4. Nếu bạn thấy có quá trình biên dịch ở đây, vui lòng `let the developers know <https://github.com/godotengine/godot/issues>`__ vì điều này không bao giờ được xảy ra với hệ thống Ubershader. Hãy nhớ đính kèm một project tái hiện tối thiểu khi thực hiện việc đó. - **Specialization**: Được biên dịch ở background trong quá trình chơi để tối ưu framerate. Không thể gây giật, nhưng có thể làm giảm framerate nếu có nhiều quá trình diễn ra trong mỗi frame.
 
-Pipeline precompilation features
---------------------------------
+Các tính năng pipeline precompilation
+-------------------------------------
 
-Godot offers a lot of rendering features that are not necessarily used by every
-game. Unfortunately, pipeline precompilation can't know ahead of time if a
-particular feature is used by a project. Some of these features can only be
-detected when a user adds a node to the scene or toggles a particular setting in
-the project or the environment. The pipeline precompilation system will keep
-track of these features as they're encountered for the first time and enable
-precompilation of them for any meshes or surfaces that are created afterwards.
+Godot cung cấp nhiều tính năng rendering không nhất thiết được mọi game sử dụng. Đáng tiếc là pipeline precompilation không thể biết trước một tính năng cụ thể có được project sử dụng hay không. Một số tính năng chỉ có thể được phát hiện khi người dùng thêm một node vào scene hoặc bật một thiết lập cụ thể trong project hay environment. Hệ thống pipeline precompilation sẽ theo dõi những tính năng này khi chúng được gặp lần đầu và bật precompilation cho chúng đối với mọi mesh hoặc surface được tạo sau đó.
 
-If your game makes use of these features, **make sure to have a scene that uses
-them as early as possible** before loading the majority of the assets. This
-scene can be very simple and will do the job as long as it uses the features the
-game plans to use. It can even be rendered off-screen for at least one frame if
-necessary, e.g. by covering it with a :ref:`class_ColorRect` node or
-using a :ref:`class_SubViewport` located outside the window bounds.
+Nếu game của bạn sử dụng những tính năng này, **hãy đảm bảo có một scene sử dụng chúng càng sớm càng tốt** trước khi load phần lớn asset. Scene này có thể rất đơn giản và vẫn hoàn thành nhiệm vụ, miễn là nó sử dụng các tính năng mà game dự định dùng. Nếu cần, scene thậm chí có thể được render ngoài màn hình trong ít nhất một frame, chẳng hạn bằng cách che nó bằng một node :ref:`class_ColorRect` hoặc sử dụng một :ref:`class_SubViewport` nằm bên ngoài phạm vi của cửa sổ.
 
-You should also keep in mind that changing any of these features during gameplay
-will result in immediate stutters. Make sure to only change these features from
-configuration screens if necessary and insert loading screens and messages when
-the changes are applied.
+Bạn cũng nên lưu ý rằng việc thay đổi bất kỳ tính năng nào trong số này trong quá trình chơi sẽ gây ra hiện tượng giật ngay lập tức. Nếu cần, hãy chỉ thay đổi các tính năng này từ các màn hình cấu hình và chèn màn hình loading cùng thông báo khi áp dụng các thay đổi.
 
-- **MSAA Level**: Enabled when the level of 3D MSAA is changed on the project
-  settings. Unfortunately, different MSAA levels being used on different
-  viewports will lead to stutters as the engine only keeps track of one level at
-  a time to perform precompilation.
-- **Reflection Probes**: Enabled when a ReflectionProbe node is placed on the
-  scene.
-- **Separate Specular**: Enabled when using effects like sub-surface scattering
-  or a compositor effect that relies on sampling the specularity directly off
-  the screen.
-- **Motion Vectors**: Enabled when using effects such as TAA, FSR2 or a
-  compositor effect that requires motion vectors (such as motion blur).
-- **Normal and Roughness**: Enabled when using SDFGI, VoxelGI, screen-space
-  reflections, SSAO, SSIL, or using the ``normal_roughness_buffer`` in a custom
-  shader or :ref:`class_CompositorEffect`.
-- **Lightmaps**: Enabled when a LightmapGI node is placed on the scene and a
-  node uses a baked lightmap.
-- **VoxelGI**: Enabled when a VoxelGI node is placed on the scene.
-- **SDFGI**: Enabled when the WorldEnvironment enables SDFGI.
-- **Multiview**: Enabled for XR projects.
-- **16/32-bit Shadows**: Enabled when the configuration of the depth precision
-  of shadowmaps is changed on the project settings.
-- **Omni Shadow Dual Paraboloid**: Enabled when an omni light casts shadows and
-  uses the dual paraboloid mode.
-- **Omni Shadow Cubemap**: Enabled when an omni light casts shadows and uses the
-  cubemap mode (which is the default).
+- **MSAA Level**: Được bật khi cấp độ 3D MSAA được thay đổi trong cài đặt dự án. Đáng tiếc là việc sử dụng các cấp độ MSAA khác nhau trên các viewport khác nhau sẽ dẫn đến hiện tượng giật, vì engine chỉ theo dõi một cấp độ tại một thời điểm để thực hiện biên dịch trước. - **Reflection Probes**: Được bật khi một node ReflectionProbe được đặt trong scene. - **Separate Specular**: Được bật khi sử dụng các hiệu ứng như tán xạ dưới bề mặt hoặc hiệu ứng compositor dựa vào việc lấy mẫu độ specular trực tiếp từ màn hình. - **Motion Vectors**: Được bật khi sử dụng các hiệu ứng như TAA, FSR2 hoặc hiệu ứng compositor yêu cầu motion vector (chẳng hạn như motion blur). - **Normal and Roughness**: Được bật khi sử dụng SDFGI, VoxelGI, phản xạ không gian màn hình, SSAO, SSIL hoặc sử dụng ``normal_roughness_buffer`` trong shader tùy chỉnh hoặc :ref:`class_CompositorEffect`. - **Lightmaps**: Được bật khi một node LightmapGI được đặt trong scene và một node sử dụng lightmap đã bake. - **VoxelGI**: Được bật khi một node VoxelGI được đặt trong scene. - **SDFGI**: Được bật khi WorldEnvironment bật SDFGI. - **Multiview**: Được bật cho các dự án XR. - **16/32-bit Shadows**: Được bật khi cấu hình độ chính xác độ sâu của shadowmap được thay đổi trong cài đặt dự án. - **Omni Shadow Dual Paraboloid**: Được bật khi một đèn omni tạo bóng và sử dụng chế độ dual paraboloid. - **Omni Shadow Cubemap**: Được bật khi một đèn omni tạo bóng và sử dụng chế độ cubemap (đây là chế độ mặc định).
 
-If you witness stutters during gameplay and the monitors report a sudden
-increase in compilations during the **Surface** step, it is very likely a
-feature was not enabled ahead of time. Ensuring that this effect is enabled
-while loading your game will likely mitigate the issue.
+Nếu bạn nhận thấy hiện tượng giật trong khi chơi game và các màn hình giám sát báo số lượt biên dịch tăng đột ngột trong bước **Surface**, rất có thể một tính năng đã chưa được bật từ trước. Đảm bảo hiệu ứng này được bật trong khi tải game có thể sẽ giảm thiểu vấn đề.
 
-Pipeline precompilation instancing
-----------------------------------
+Khởi tạo pipeline trước
+-----------------------
 
-One common source of stutters in games is the fact that some effects are only
-instanced on the scene because of interactions that only happen during gameplay.
-For example, if you have a particle effect that is only added to the scene
-through a script when a player does an action. Even if the scene is preloaded,
-the engine might be unable to precompile the pipelines until the effect is added
-to the scene at least once.
+Một nguồn gây giật phổ biến trong game là việc một số hiệu ứng chỉ được khởi tạo trong scene do các tương tác chỉ xảy ra trong khi chơi game. Ví dụ, bạn có một hiệu ứng particle chỉ được thêm vào scene thông qua một script khi người chơi thực hiện một hành động. Ngay cả khi scene đã được preload, engine có thể không thể biên dịch trước các pipeline cho đến khi hiệu ứng được thêm vào scene ít nhất một lần.
 
-Luckily, it's possible for Godot 4.4 and later to
-precompile these pipelines as long as the scene is instantiated at least once on
-the scene, even if it's completely invisible or outside of the camera's view.
+May mắn là từ Godot 4.4 trở lên, bạn có thể biên dịch trước các pipeline này miễn là scene được khởi tạo ít nhất một lần trong scene, ngay cả khi nó hoàn toàn không hiển thị hoặc nằm ngoài góc nhìn của camera.
 
 .. figure:: img/pipeline_compilations_hidden_node.webp
    :align: center
@@ -211,70 +77,37 @@ the scene, even if it's completely invisible or outside of the camera's view.
    Hidden bullet node attached to the player in one of the demo projects. This
    helps the engine precompile the effect's pipelines ahead of time.
 
-If you're aware of any effects that are added to the scene dynamically during
-gameplay and are seeing sudden increases on the compilations monitor when these
-effects show up, a workaround is to attach a hidden version of the effect
-somewhere that is guaranteed to show up.
+Nếu bạn biết có hiệu ứng nào được thêm động vào scene trong khi chơi game và nhận thấy số lượt biên dịch tăng đột ngột trên màn hình giám sát khi các hiệu ứng này xuất hiện, một cách khắc phục tạm thời là gắn một phiên bản ẩn của hiệu ứng ở một vị trí chắc chắn sẽ xuất hiện.
 
-For example, if the player character is able to cause some sort of explosion,
-you can attach the effect as a child of the player as an invisible node. Make
-sure to disable the script attached to the hidden node or to hide any other
-nodes that could cause issues, which can be done by enabling **Editable
-Children** on the node.
+Ví dụ, nếu nhân vật người chơi có thể gây ra một vụ nổ, bạn có thể gắn hiệu ứng đó làm node con của người chơi dưới dạng một node không hiển thị. Hãy đảm bảo tắt script được gắn vào node ẩn hoặc ẩn mọi node khác có thể gây ra vấn đề. Bạn có thể thực hiện việc này bằng cách bật **Editable Children** trên node.
 
 .. _doc_pipeline_compilations_shader_baker:
 
 Shader baker
 ------------
 
-Since Godot 4.5, you can choose to bake shaders on export to improve initial
-startup time. This will generally not resolve existing stutters, but it will
-reduce the time it takes to load the game for the first time. This is especially
-the case when using Direct3D 12 or Metal, which have significantly slower initial
-shader compilation times than Vulkan due to the conversion step required.
-Godot's own shaders use GLSL and SPIR-V, but Direct3D 12 and Metal use
-different formats.
+Kể từ Godot 4.5, bạn có thể chọn bake shader khi export để cải thiện thời gian khởi động ban đầu. Điều này thường không giải quyết các hiện tượng giật hiện có, nhưng sẽ giảm thời gian tải game trong lần đầu tiên. Điều này đặc biệt đúng khi sử dụng Direct3D 12 hoặc Metal, vốn có thời gian biên dịch shader ban đầu chậm hơn đáng kể so với Vulkan do cần thực hiện bước chuyển đổi. Các shader của Godot sử dụng GLSL và SPIR-V, nhưng Direct3D 12 và Metal sử dụng các định dạng khác.
 
 .. note::
 
-    The shader baker can only bake the source into the intermediate format
-    (SPIR-V for Vulkan, DXIL for Direct3D 12, MIL for Metal). It cannot bake
-    the intermediate format into the final pipeline, as this is
-    dependent on the GPU driver and the hardware.
+    Shader baker chỉ có thể bake mã nguồn thành định dạng trung gian (SPIR-V cho Vulkan, DXIL cho Direct3D 12, MIL cho Metal). Nó không thể bake định dạng trung gian thành pipeline cuối cùng, vì việc này phụ thuộc vào driver GPU và phần cứng.
 
-    The shader baker is not a replacement for pipeline precompilation,
-    but it aims to complement it.
+    Shader baker không thay thế cho việc biên dịch trước pipeline, mà được thiết kế để bổ trợ cho việc này.
 
-When enabled, the shader baker will bundle compiled shader code into the PCK,
-which results in the shader compilation step being skipped entirely.
-The downside is that exporting will take slightly longer. The PCK file
-will be larger by a few megabytes.
+Khi được bật, shader baker sẽ đóng gói mã shader đã biên dịch vào PCK, nhờ đó hoàn toàn bỏ qua bước biên dịch shader. Nhược điểm là quá trình export sẽ mất thêm một chút thời gian. Tệp PCK sẽ lớn hơn vài megabyte.
 
-The shader baker is disabled by default, but you can enable it in each
-export preset in the Export dialog by ticking the :ui:`Shader Baker > Enabled`
-export option.
+Shader baker mặc định bị tắt, nhưng bạn có thể bật nó trong từng export preset của hộp thoại Export bằng cách đánh dấu tùy chọn export :ui:`Shader Baker > Enabled`.
 
-Note that shader baking will only be able to export shaders for drivers supported
-by the platform the editor is currently running on:
+Lưu ý rằng shader baking chỉ có thể export shader cho các driver được nền tảng mà editor hiện đang chạy hỗ trợ:
 
-- The editor running on Windows can export shaders for Vulkan and Direct3D 12.
-- The editor running on macOS can export shaders for Vulkan and Metal.
-- The editor running on Linux can export shaders for Vulkan only.
-- The editor running on Android can export shaders for Vulkan only.
+- Editor chạy trên Windows có thể export shader cho Vulkan và Direct3D 12. - Editor chạy trên macOS có thể export shader cho Vulkan và Metal. - Editor chạy trên Linux chỉ có thể export shader cho Vulkan. - Editor chạy trên Android chỉ có thể export shader cho Vulkan.
 
-The shader baker will only export shaders that match the
-``rendering/rendering_device/driver`` project setting for the target platform.
+Shader baker chỉ export các shader khớp với cài đặt dự án ``rendering/rendering_device/driver`` cho nền tảng đích.
 
 .. note::
 
-    The shader baker is only supported for the Forward+ and Mobile renderers.
-    It will have no effect if the project uses the Compatibility renderer,
-    or for users who make use of the Compatibility fallback due to their
-    hardware not supporting the Forward+ or Mobile renderer.
+    Shader baker chỉ được hỗ trợ cho các renderer Forward+ và Mobile. Nó sẽ không có tác dụng nếu dự án sử dụng renderer Compatibility hoặc đối với những người dùng sử dụng Compatibility fallback vì phần cứng của họ không hỗ trợ renderer Forward+ hoặc Mobile.
 
-    This also means the shader baker is not supported on the web platform,
-    as the web platform only supports the Compatibility renderer.
+    Điều này cũng có nghĩa là shader baker không được hỗ trợ trên nền tảng web, vì nền tảng web chỉ hỗ trợ renderer Compatibility.
 
-    Additionally, the shader baker is not supported when exporting a project
-    using the ``--headless`` :ref:`command line argument <doc_command_line_tutorial>`,
-    as Godot cannot access the GPU when running in headless mode.
+    Ngoài ra, shader baker không được hỗ trợ khi export dự án bằng ``--headless`` :ref:`command line argument <doc_command_line_tutorial>`, vì Godot không thể truy cập GPU khi chạy ở chế độ headless.

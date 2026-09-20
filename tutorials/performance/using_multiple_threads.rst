@@ -1,53 +1,51 @@
 .. _doc_using_multiple_threads:
 
-Using multiple threads
-======================
+Sử dụng nhiều luồng
+===================
 
 .. seealso::
 
-    For a list of multithreading primitives in C++, see :ref:`doc_core_concurrency_types`.
+    Để xem danh sách các primitive multithreading trong C++, hãy xem :ref:`doc_core_concurrency_types`.
 
-Threads
--------
+Luồng
+-----
 
-Threads allow simultaneous execution of code. It allows off-loading work
-from the main thread.
+Luồng cho phép thực thi mã đồng thời. Điều này cho phép chuyển bớt công việc khỏi luồng chính.
 
-Godot supports threads and provides many handy functions to use them.
+Godot hỗ trợ các luồng và cung cấp nhiều hàm tiện dụng để sử dụng chúng.
 
 .. note:: If using other languages (C#, C++), it may be easier to use the
-          threading classes they support.
+          các lớp threading mà chúng hỗ trợ.
 
 .. warning::
 
-    Before using a built-in class in a thread, read :ref:`doc_thread_safe_apis`
-    first to check whether it can be safely used in a thread.
+    Trước khi sử dụng một lớp tích hợp trong một luồng, trước tiên hãy đọc :ref:`doc_thread_safe_apis` để kiểm tra xem lớp đó có thể được sử dụng an toàn trong luồng hay không.
 
-Creating a Thread
------------------
+Tạo một Thread
+--------------
 
-To create a thread, use the following code:
+Để tạo một thread, hãy sử dụng đoạn mã sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     var thread: Thread
 
-    # The thread will start here.
+    # Thread sẽ bắt đầu tại đây.
     func _ready():
         thread = Thread.new()
-        # You can bind multiple arguments to a function Callable.
+        # Bạn có thể bind nhiều đối số vào một Callable.
         thread.start(_thread_function.bind("Wafflecopter"))
 
 
-    # Run here and exit.
-    # The argument is the bound data passed from start().
+    # Chạy tại đây rồi thoát.
+    # Đối số là dữ liệu đã bind được truyền từ start().
     func _thread_function(userdata):
-        # Print the userdata ("Wafflecopter")
+        # In userdata ("Wafflecopter")
         print("I'm a thread! Userdata is: ", userdata)
 
 
-    # Thread must be disposed (or "joined"), for portability.
+    # Thread phải được giải phóng (hoặc "joined") để đảm bảo tính portable.
     func _exit_tree():
         thread.wait_to_finish()
 
@@ -94,7 +92,7 @@ To create a thread, use the following code:
     }
 
     void MultithreadingDemo::_notification(int p_what) {
-        // Prevents this from running in the editor, only during game mode. In Godot 4.3+ use Runtime classes.
+        // Ngăn đoạn này chạy trong editor, chỉ chạy trong game mode. Trong Godot 4.3+ hãy sử dụng Runtime classes.
         if (Engine::get_singleton()->is_editor_hint()) {
             return;
         }
@@ -104,8 +102,8 @@ To create a thread, use the following code:
                 worker.instantiate();
                 worker->start(callable_mp(this, &MultithreadingDemo::demo_threaded_function), Thread::PRIORITY_NORMAL);
             } break;
-            case NOTIFICATION_EXIT_TREE: { // Thread must be disposed (or "joined"), for portability.
-                // Wait until it exits.
+            case NOTIFICATION_EXIT_TREE: { // Thread phải được giải phóng (hoặc "joined") để đảm bảo tính portable.
+                // Chờ cho đến khi nó thoát.
                 if (worker.is_valid()) {
                     worker->wait_to_finish();
                 }
@@ -116,11 +114,11 @@ To create a thread, use the following code:
     }
 
     MultithreadingDemo::MultithreadingDemo() {
-        // Initialize any variables here.
+        // Khởi tạo mọi biến tại đây.
     }
 
     MultithreadingDemo::~MultithreadingDemo() {
-        // Add your cleanup here.
+        // Thêm phần cleanup của bạn tại đây.
     }
 
     void MultithreadingDemo::demo_threaded_function() {
@@ -135,48 +133,34 @@ To create a thread, use the following code:
         UtilityFunctions::print("demo_threaded_function counted to: ", i, ".");
     }
 
-Your function will, then, run in a separate thread until it returns.
-Even if the function has returned already, the thread must collect it, so call
+Sau đó, hàm của bạn sẽ chạy trong một thread riêng cho đến khi hàm trả về. Ngay cả khi hàm đã trả về, thread vẫn phải thu thập nó, vì vậy hãy gọi
 :ref:`Thread.wait_to_finish()<class_Thread_method_wait_to_finish>`, which will
-wait until the thread is done (if not done yet), then properly dispose of it.
+chờ cho đến khi thread hoàn tất (nếu chưa hoàn tất), sau đó giải phóng nó đúng cách.
 
 .. warning::
 
-    Creating threads is a slow operation, especially on Windows. To avoid
-    unnecessary performance overhead, make sure to create threads before heavy
-    processing is needed instead of creating threads just-in-time.
+    Việc tạo thread là một thao tác chậm, đặc biệt là trên Windows. Để tránh overhead hiệu năng không cần thiết, hãy đảm bảo tạo các thread trước khi cần xử lý nặng thay vì chỉ tạo thread đúng lúc cần dùng.
 
-    For example, if you need multiple threads during gameplay, you can create
-    threads while the level is loading and only actually start processing with
-    them later on.
+    Ví dụ: nếu bạn cần nhiều thread trong khi chơi game, bạn có thể tạo các thread trong lúc level đang tải và chỉ thực sự bắt đầu xử lý bằng chúng sau đó.
 
-    Additionally, locking and unlocking of mutexes can also be an expensive
-    operation. Locking should be done carefully; avoid locking too often (or for
-    too long).
+    Ngoài ra, việc lock và unlock mutex cũng có thể là một thao tác tốn kém. Cần lock cẩn thận; tránh lock quá thường xuyên (hoặc trong thời gian quá lâu).
 
 .. _doc_using_multiple_threads_mutexes:
 
-Mutexes
--------
+Mutex
+-----
 
-Accessing objects or data from multiple threads is not always supported (if you
-do it, it will cause unexpected behaviors or crashes). Read the
+Việc truy cập các object hoặc dữ liệu từ nhiều thread không phải lúc nào cũng được hỗ trợ (nếu thực hiện, bạn sẽ gây ra các hành vi không mong muốn hoặc crash). Hãy đọc
 :ref:`doc_thread_safe_apis` documentation to understand which engine APIs
-support multiple thread access.
+hỗ trợ truy cập từ nhiều thread.
 
-When processing your own data or calling your own functions, as a rule, try to
-avoid accessing the same data directly from different threads. You may run into
-synchronization problems, as the data is not always updated between CPU cores
-when modified. Always use a :ref:`Mutex<class_Mutex>` when accessing
-a piece of data from different threads.
+Khi xử lý dữ liệu của riêng bạn hoặc gọi các hàm của riêng bạn, theo nguyên tắc chung, hãy cố gắng tránh truy cập trực tiếp cùng một dữ liệu từ các thread khác nhau. Bạn có thể gặp vấn đề đồng bộ hóa, vì dữ liệu không phải lúc nào cũng được cập nhật giữa các CPU core khi bị thay đổi. Luôn sử dụng một :ref:`Mutex<class_Mutex>` khi truy cập một phần dữ liệu từ các thread khác nhau.
 
-When calling :ref:`Mutex.lock()<class_Mutex_method_lock>`, a thread ensures that
-all other threads will be blocked (put on suspended state) if they try to *lock*
-the same mutex. When the mutex is unlocked by calling
+Khi gọi :ref:`Mutex.lock()<class_Mutex_method_lock>`, một thread sẽ đảm bảo rằng tất cả các thread khác bị block (được đặt ở trạng thái suspended) nếu chúng cố *lock* cùng một mutex. Khi mutex được unlock bằng cách gọi
 :ref:`Mutex.unlock()<class_Mutex_method_unlock>`, the other threads will be
-allowed to proceed with the lock (but only one at a time).
+được phép tiếp tục với lock (nhưng mỗi lần chỉ một thread).
 
-Here is an example of using a Mutex:
+Sau đây là ví dụ về cách sử dụng một Mutex:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -186,29 +170,29 @@ Here is an example of using a Mutex:
     var thread: Thread
 
 
-    # The thread will start here.
+    # Thread sẽ bắt đầu tại đây.
     func _ready():
         mutex = Mutex.new()
         thread = Thread.new()
         thread.start(_thread_function)
 
-        # Increase value, protect it with Mutex.
+        # Tăng giá trị và bảo vệ nó bằng Mutex.
         mutex.lock()
         counter += 1
         mutex.unlock()
 
 
-    # Increment the value from the thread, too.
+    # Cũng tăng giá trị từ thread.
     func _thread_function():
         mutex.lock()
         counter += 1
         mutex.unlock()
 
 
-    # Thread must be disposed (or "joined"), for portability.
+    # Thread phải được giải phóng (hoặc "joined") để đảm bảo tính portable.
     func _exit_tree():
         thread.wait_to_finish()
-        print("Counter is: ", counter) # Should be 2.
+        print("Counter is: ", counter) # Phải là 2.
 
  .. code-tab:: cpp C++ .H File
 
@@ -255,7 +239,7 @@ Here is an example of using a Mutex:
     }
 
     void MutexDemo::_notification(int p_what) {
-        // Prevents this from running in the editor, only during game mode.
+        // Ngăn đoạn này chạy trong editor, chỉ chạy trong game mode.
         if (Engine::get_singleton()->is_editor_hint()) {
             return;
         }
@@ -267,51 +251,49 @@ Here is an example of using a Mutex:
                 thread.instantiate();
                 thread->start(callable_mp(this, &MutexDemo::thread_function), Thread::PRIORITY_NORMAL);
 
-                // Increase value, protect it with Mutex.
+                // Tăng giá trị và bảo vệ nó bằng Mutex.
                 mutex->lock();
                 counter += 1;
                 UtilityFunctions::print("Mutex Demo Counter is ", counter, " after adding with Mutex protection.");
                 mutex->unlock();
             } break;
-            case NOTIFICATION_EXIT_TREE: { // Thread must be disposed (or "joined"), for portability.
-                // Wait until it exits.
+            case NOTIFICATION_EXIT_TREE: { // Thread phải được giải phóng (hoặc "joined") để đảm bảo tính portable.
+                // Chờ cho đến khi nó thoát.
                 if (thread.is_valid()) {
                     thread->wait_to_finish();
                 }
                 thread.unref();
 
-                UtilityFunctions::print("Mutex Demo Counter is ", counter, " at EXIT_TREE."); // Should be 2.
+                UtilityFunctions::print("Mutex Demo Counter is ", counter, " at EXIT_TREE."); // Phải là 2.
             } break;
         }
     }
 
     MutexDemo::MutexDemo() {
-        // Initialize any variables here.
+        // Khởi tạo mọi biến tại đây.
     }
 
     MutexDemo::~MutexDemo() {
-        // Add your cleanup here.
+        // Thêm phần cleanup của bạn tại đây.
     }
 
-    // Increment the value from the thread, too.
+    // Cũng tăng giá trị từ thread.
     void MutexDemo::thread_function() {
         mutex->lock();
         counter += 1;
         mutex->unlock();
     }
 
-Semaphores
-----------
+Semaphore
+---------
 
-Sometimes you want your thread to work *"on demand"*. In other words, tell it
-when to work and let it suspend when it isn't doing anything.
-For this, :ref:`Semaphores<class_Semaphore>` are used. The function
+Đôi khi bạn muốn thread của mình làm việc *"theo yêu cầu"*. Nói cách khác, hãy cho thread biết khi nào cần làm việc và để nó suspend khi không làm gì. Để thực hiện việc này, :ref:`Semaphores<class_Semaphore>` được sử dụng. Hàm
 :ref:`Semaphore.wait()<class_Semaphore_method_wait>` is used in the thread to
-suspend it until some data arrives.
+suspend thread cho đến khi có dữ liệu đến.
 
-The main thread, instead, uses
+Ngược lại, thread chính sử dụng
 :ref:`Semaphore.post()<class_Semaphore_method_post>` to signal that data is
-ready to be processed:
+sẵn sàng để được xử lý:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -323,7 +305,7 @@ ready to be processed:
     var exit_thread := false
 
 
-    # The thread will start here.
+    # Thread sẽ bắt đầu tại đây.
     func _ready():
         mutex = Mutex.new()
         semaphore = Semaphore.new()
@@ -335,46 +317,46 @@ ready to be processed:
 
     func _thread_function():
         while true:
-            semaphore.wait() # Wait until posted.
+            semaphore.wait() # Chờ cho đến khi được post.
 
             mutex.lock()
-            var should_exit = exit_thread # Protect with Mutex.
+            var should_exit = exit_thread # Bảo vệ bằng Mutex.
             mutex.unlock()
 
             if should_exit:
                 break
 
             mutex.lock()
-            counter += 1 # Increment counter, protect with Mutex.
+            counter += 1 # Tăng counter và bảo vệ bằng Mutex.
             mutex.unlock()
 
 
     func increment_counter():
-        semaphore.post() # Make the thread process.
+        semaphore.post() # Cho thread thực hiện xử lý.
 
 
     func get_counter():
         mutex.lock()
-        # Copy counter, protect with Mutex.
+        # Sao chép counter và bảo vệ bằng Mutex.
         var counter_value = counter
         mutex.unlock()
         return counter_value
 
 
-    # Thread must be disposed (or "joined"), for portability.
+    # Thread phải được giải phóng (hoặc "joined") để đảm bảo tính portable.
     func _exit_tree():
-        # Set exit condition to true.
+        # Đặt điều kiện thoát thành true.
         mutex.lock()
-        exit_thread = true # Protect with Mutex.
+        exit_thread = true # Bảo vệ bằng Mutex.
         mutex.unlock()
 
-        # Unblock by posting.
+        # Bỏ block bằng cách post.
         semaphore.post()
 
-        # Wait until it exits.
+        # Chờ cho đến khi nó thoát.
         thread.wait_to_finish()
 
-        # Print the counter.
+        # In counter.
         print("Counter is: ", counter)
 
  .. code-tab:: cpp C++ .H File
@@ -427,7 +409,7 @@ ready to be processed:
     }
 
     void SemaphoreDemo::_notification(int p_what) {
-        // Prevents this from running in the editor, only during game mode.
+        // Ngăn đoạn này chạy trong editor, chỉ chạy trong game mode.
         if (Engine::get_singleton()->is_editor_hint()) {
             return;
         }
@@ -442,44 +424,44 @@ ready to be processed:
                 thread.instantiate();
                 thread->start(callable_mp(this, &SemaphoreDemo::thread_function), Thread::PRIORITY_NORMAL);
 
-                increment_counter(); // Call increment counter to test.
+                increment_counter(); // Gọi increment counter để kiểm tra.
             } break;
-            case NOTIFICATION_EXIT_TREE: { // Thread must be disposed (or "joined"), for portability.
-                // Set exit condition to true.
+            case NOTIFICATION_EXIT_TREE: { // Thread phải được giải phóng (hoặc "joined") để đảm bảo tính portable.
+                // Đặt điều kiện thoát thành true.
                 mutex->lock();
-                exit_thread = true; // Protect with Mutex.
+                exit_thread = true; // Bảo vệ bằng Mutex.
                 mutex->unlock();
 
-                // Unblock by posting.
+                // Bỏ block bằng cách post.
                 semaphore->post();
 
-                // Wait until it exits.
+                // Chờ cho đến khi nó thoát.
                 if (thread.is_valid()) {
                     thread->wait_to_finish();
                 }
                 thread.unref();
 
-                // Print the counter.
+                // In counter.
                 UtilityFunctions::print("Semaphore Demo Counter is ", get_counter(),  " at EXIT_TREE.");
             } break;
         }
     }
 
     SemaphoreDemo::SemaphoreDemo() {
-        // Initialize any variables here.
+        // Khởi tạo mọi biến tại đây.
     }
 
     SemaphoreDemo::~SemaphoreDemo() {
-        // Add your cleanup here.
+        // Thêm phần cleanup của bạn tại đây.
     }
 
-    // Increment the value from the thread, too.
+    // Cũng tăng giá trị từ thread.
     void SemaphoreDemo::thread_function() {
         while (true) {
-            semaphore->wait(); // Wait until posted.
+            semaphore->wait(); // Chờ cho đến khi được post.
 
             mutex->lock();
-            bool should_exit = exit_thread; // Protect with Mutex.
+            bool should_exit = exit_thread; // Bảo vệ bằng Mutex.
             mutex->unlock();
 
             if (should_exit) {
@@ -487,18 +469,18 @@ ready to be processed:
             }
 
             mutex->lock();
-            counter += 1; // Increment counter, protect with Mutex.
+            counter += 1; // Tăng counter và bảo vệ bằng Mutex.
             mutex->unlock();
         }
     }
 
     void SemaphoreDemo::increment_counter() {
-        semaphore->post(); // Make the thread process.
+        semaphore->post(); // Cho thread thực hiện xử lý.
     }
 
     int SemaphoreDemo::get_counter() {
         mutex->lock();
-        // Copy counter, protect with Mutex.
+        // Sao chép counter và bảo vệ bằng Mutex.
         int counter_value = counter;
         mutex->unlock();
         return counter_value;

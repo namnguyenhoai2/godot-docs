@@ -2,222 +2,172 @@
 
 .. _doc_animating_thousands_of_fish:
 
-Animating thousands of fish with MultiMeshInstance3D
-====================================================
+Tạo hiệu ứng chuyển động cho hàng nghìn con cá bằng MultiMeshInstance3D
+=======================================================================
 
-This tutorial explores a technique used in the game `ABZU <https://www.gdcvault.com/play/1024409/Creating-the-Art-of-ABZ>`_
-for rendering and animating thousands of fish using vertex animation and
-static mesh instancing.
+Tutorial này tìm hiểu một kỹ thuật được sử dụng trong game `ABZU <https://www.gdcvault.com/play/1024409/Creating-the-Art-of-ABZ>`_ để render và tạo hiệu ứng chuyển động cho hàng nghìn con cá bằng vertex animation và static mesh instancing.
 
-In Godot, this can be accomplished with a custom :ref:`Shader <class_Shader>` and
-a :ref:`MultiMeshInstance3D <class_MultiMeshInstance3D>`. Using the following technique you
-can render thousands of animated objects, even on low-end hardware.
+Trong Godot, bạn có thể thực hiện việc này bằng một :ref:`Shader <class_Shader>` tùy chỉnh và một :ref:`MultiMeshInstance3D <class_MultiMeshInstance3D>`. Với kỹ thuật sau đây, bạn có thể render hàng nghìn object có chuyển động, ngay cả trên phần cứng cấu hình thấp.
 
-We will start by animating one fish. Then, we will see how to extend that animation to
-thousands of fish.
+Chúng ta sẽ bắt đầu bằng việc tạo chuyển động cho một con cá. Sau đó, chúng ta sẽ xem cách mở rộng chuyển động đó cho hàng nghìn con cá.
 
-Animating one Fish
-------------------
+Tạo chuyển động cho một con cá
+------------------------------
 
-We will start with a single fish. Load your fish model into a :ref:`MeshInstance3D <class_MeshInstance3D>`
-and add a new :ref:`ShaderMaterial <class_ShaderMaterial>`.
+Chúng ta sẽ bắt đầu với một con cá duy nhất. Load model cá của bạn vào một :ref:`MeshInstance3D <class_MeshInstance3D>` và thêm một :ref:`ShaderMaterial <class_ShaderMaterial>` mới.
 
-Here is the fish we will be using for the example images, you can use any fish model you like.
+Đây là con cá chúng ta sẽ sử dụng trong các hình ảnh ví dụ; bạn có thể sử dụng bất kỳ model cá nào mình muốn.
 
 .. image:: img/fish.png
 
 .. note:: The fish model in this tutorial is made by `QuaterniusDev <https://quaternius.com>`_ and is
-          shared with a creative commons license. CC0 1.0 Universal (CC0 1.0) Public Domain
-          Dedication https://creativecommons.org/publicdomain/zero/1.0/
+          được chia sẻ theo giấy phép creative commons. CC0 1.0 Universal (CC0 1.0) Public Domain Dedication https://creativecommons.org/publicdomain/zero/1.0/
 
-Typically, you would use bones and a :ref:`Skeleton3D <class_Skeleton3D>` to animate objects. However,
-bones are animated on the CPU and so you end having to calculate thousands of operations every
-frame and it becomes impossible to have thousands of objects. Using vertex animation in a vertex
-shader, you avoid using bones and can instead calculate the full animation in a few lines of code
-and completely on the GPU.
+Thông thường, bạn sẽ sử dụng bones và một :ref:`Skeleton3D <class_Skeleton3D>` để tạo chuyển động cho object. Tuy nhiên, bones được animate trên CPU, nên cuối cùng bạn phải tính toán hàng nghìn phép toán trong mỗi frame và việc có hàng nghìn object trở nên bất khả thi. Bằng cách sử dụng vertex animation trong vertex shader, bạn tránh phải dùng bones và thay vào đó có thể tính toán toàn bộ chuyển động chỉ bằng vài dòng code và hoàn toàn trên GPU.
 
-The animation will be made of four key motions:
+Chuyển động sẽ gồm bốn chuyển động chính:
 
-  1. A side to side motion
-  2. A pivot motion around the center of the fish
-  3. A panning wave motion
-  4. A panning twist motion
+  1. 1. Chuyển động từ bên này sang bên kia 2. Chuyển động pivot quanh tâm của con cá 3. Chuyển động dạng sóng panning 4. Chuyển động xoắn panning
 
-All the code for the animation will be in the vertex shader with uniforms controlling the amount of motion.
-We use uniforms to control the strength of the motion so that you can tweak the animation in editor and see the
-results in real time, without the shader having to recompile.
+Toàn bộ code cho chuyển động sẽ nằm trong vertex shader, với các uniform điều khiển mức độ chuyển động. Chúng ta sử dụng uniform để điều khiển cường độ chuyển động, nhờ đó bạn có thể tinh chỉnh animation trong editor và xem kết quả theo thời gian thực mà không cần shader recompile.
 
-All the motions will be made using cosine waves applied to ``VERTEX`` in model space. We want the vertices to
-be in model space so that the motion is always relative to the orientation of the fish. For example, side-to-side
-will always move the fish back and forth in its left to right direction, instead of on the ``x`` axis in the
-world orientation.
+Tất cả chuyển động sẽ được tạo bằng các cosine wave áp dụng cho ``VERTEX`` trong model space. Chúng ta muốn các vertex nằm trong model space để chuyển động luôn tương đối với hướng của con cá. Ví dụ, chuyển động từ bên này sang bên kia sẽ luôn di chuyển con cá tới lui theo hướng từ trái sang phải của nó, thay vì theo trục ``x`` trong hướng của world.
 
-In order to control the speed of the animation, we will start by defining our own time variable using ``TIME``.
+Để điều khiển tốc độ của animation, trước tiên chúng ta sẽ định nghĩa biến thời gian riêng bằng ``TIME``.
 
 .. code-block:: glsl
 
-  //time_scale is a uniform float
+  //time_scale là một uniform float
   float time = TIME * time_scale;
 
-The first motion we will implement is the side to side motion. It can be made by offsetting ``VERTEX.x`` by
-``cos`` of ``TIME``. Each time the mesh is rendered, all the vertices will move to the side by the amount
-of ``cos(time)``.
+Chuyển động đầu tiên chúng ta sẽ triển khai là chuyển động từ bên này sang bên kia. Có thể tạo chuyển động này bằng cách offset ``VERTEX.x`` theo ``cos`` của ``TIME``. Mỗi khi mesh được render, tất cả vertex sẽ di chuyển sang bên một khoảng bằng ``cos(time)``.
 
 .. code-block:: glsl
 
-  //side_to_side is a uniform float
+  //side_to_side là một uniform float
   VERTEX.x += cos(time) * side_to_side;
 
-The resulting animation should look something like this:
+Animation tạo ra sẽ trông gần giống như sau:
 
 .. image:: img/sidetoside.gif
 
-Next, we add the pivot. Because the fish is centered at (0, 0), all we have to do is multiply ``VERTEX`` by a
-rotation matrix for it to rotate around the center of the fish.
+Tiếp theo, chúng ta thêm pivot. Vì con cá nằm ở tâm (0, 0), tất cả những gì cần làm là nhân ``VERTEX`` với một rotation matrix để nó xoay quanh tâm của con cá.
 
-We construct a rotation matrix like so:
+Chúng ta tạo một rotation matrix như sau:
 
 .. code-block:: glsl
 
-  //angle is scaled by 0.1 so that the fish only pivots and doesn't rotate all the way around
-  //pivot is a uniform float
+  //angle được nhân với 0.1 để con cá chỉ pivot thay vì xoay hết một vòng
+  //pivot là một uniform float
   float pivot_angle = cos(time) * 0.1 * pivot;
   mat2 rotation_matrix = mat2(vec2(cos(pivot_angle), -sin(pivot_angle)), vec2(sin(pivot_angle), cos(pivot_angle)));
 
-And then we apply it in the ``x`` and ``z`` axes by multiplying it by ``VERTEX.xz``.
+Sau đó, chúng ta áp dụng nó trên các trục ``x`` và ``z`` bằng cách nhân nó với ``VERTEX.xz``.
 
 .. code-block:: glsl
 
   VERTEX.xz = rotation_matrix * VERTEX.xz;
 
-With only the pivot applied you should see something like this:
+Chỉ với pivot được áp dụng, bạn sẽ thấy kết quả gần giống như sau:
 
 .. image:: img/pivot.gif
 
-The next two motions need to pan down the spine of the fish. For that, we need a new variable, ``body``.
-``body`` is a float that is ``0`` at the tail of the fish and ``1`` at its head.
+Hai chuyển động tiếp theo cần chạy dọc theo xương sống của con cá. Để làm vậy, chúng ta cần một biến mới, ``body``. ``body`` là một float có giá trị ``0`` ở đuôi cá và ``1`` ở đầu cá.
 
 .. code-block:: glsl
 
-  float body = (VERTEX.z + 1.0) / 2.0; //for a fish centered at (0, 0) with a length of 2
+  float body = (VERTEX.z + 1.0) / 2.0; //đối với một con cá nằm ở tâm (0, 0) và có chiều dài bằng 2
 
-The next motion is a cosine wave that moves down the length of the fish. To make
-it move along the spine of the fish, we offset the input to ``cos`` by the position
-along the spine, which is the variable we defined above, ``body``.
+Chuyển động tiếp theo là một cosine wave di chuyển dọc theo chiều dài của con cá. Để nó di chuyển theo xương sống của con cá, chúng ta offset input của ``cos`` theo vị trí dọc xương sống, tức biến ``body`` đã định nghĩa ở trên.
 
 .. code-block:: glsl
 
-  //wave is a uniform float
+  //wave là một uniform float
   VERTEX.x += cos(time + body) * wave;
 
-This looks very similar to the side to side motion we defined above, but in this one, by
-using ``body`` to offset ``cos`` each vertex along the spine has a different position in
-the wave making it look like a wave is moving along the fish.
+Điều này rất giống với chuyển động từ bên này sang bên kia mà chúng ta đã định nghĩa ở trên, nhưng trong trường hợp này, bằng cách sử dụng ``body`` để offset ``cos``, mỗi vertex dọc theo xương sống sẽ có một vị trí khác nhau trong wave, khiến nó trông như một làn sóng đang di chuyển dọc theo con cá.
 
 .. image:: img/wave.gif
 
-The last motion is the twist, which is a panning roll along the spine. Similarly to the pivot,
-we first construct a rotation matrix.
+Chuyển động cuối cùng là twist, tức một chuyển động roll panning dọc theo xương sống. Tương tự như pivot, trước tiên chúng ta tạo một rotation matrix.
 
 .. code-block:: glsl
 
-  //twist is a uniform float
+  //twist là một uniform float
   float twist_angle = cos(time + body) * 0.3 * twist;
   mat2 twist_matrix = mat2(vec2(cos(twist_angle), -sin(twist_angle)), vec2(sin(twist_angle), cos(twist_angle)));
 
-We apply the rotation in the ``xy`` axes so that the fish appears to roll around its spine. For
-this to work, the fish's spine needs to be centered on the ``z`` axis.
+Chúng ta áp dụng rotation trên các trục ``xy`` để con cá trông như đang roll quanh xương sống của nó. Để hoạt động đúng, xương sống của con cá cần nằm ở tâm của trục ``z``.
 
 .. code-block:: glsl
 
   VERTEX.xy = twist_matrix * VERTEX.xy;
 
-Here is the fish with twist applied:
+Đây là con cá sau khi áp dụng twist:
 
 .. image:: img/twist.gif
 
-If we apply all these motions one after another, we get a fluid jelly-like motion.
+Nếu áp dụng lần lượt tất cả các chuyển động này, chúng ta sẽ có một chuyển động mượt mà giống như thạch.
 
 .. image:: img/all_motions.gif
 
-Normal fish swim mostly with the back half of their body. Accordingly, we need to limit the
-panning motions to the back half of the fish. To do this, we create a new variable, ``mask``.
+Cá bình thường chủ yếu bơi bằng nửa thân phía sau. Vì vậy, chúng ta cần giới hạn các chuyển động panning ở nửa sau của con cá. Để làm vậy, chúng ta tạo một biến mới, ``mask``.
 
-``mask`` is a float that goes from ``0`` at the front of the fish to ``1`` at the end using
-``smoothstep`` to control the point at which the transition from ``0`` to ``1`` happens.
+``mask`` là một float đi từ ``0`` ở phía trước con cá đến ``1`` ở phía cuối, sử dụng ``smoothstep`` để điều khiển điểm chuyển tiếp từ ``0`` sang ``1``.
 
 .. code-block:: glsl
 
-  //mask_black and mask_white are uniforms
+  //mask_black và mask_white là các uniform
   float mask = smoothstep(mask_black, mask_white, 1.0 - body);
 
-Below is an image of the fish with ``mask`` used as ``COLOR``:
+Dưới đây là hình ảnh con cá với ``mask`` được sử dụng làm ``COLOR``:
 
 .. image:: img/mask.png
 
-For the wave, we multiply the motion by ``mask`` which will limit it to the back half.
+Đối với wave, chúng ta nhân chuyển động với ``mask``, qua đó giới hạn nó ở nửa sau.
 
 .. code-block:: glsl
 
-  //wave motion with mask
+  //chuyển động wave với mask
   VERTEX.x += cos(time + body) * mask * wave;
 
-In order to apply the mask to the twist, we use ``mix``. ``mix`` allows us to mix the
-vertex position between a fully rotated vertex and one that is not rotated. We need to
-use ``mix`` instead of multiplying ``mask`` by the rotated ``VERTEX`` because we are not
-adding the motion to the ``VERTEX`` we are replacing the ``VERTEX`` with the rotated
-version. If we multiplied that by ``mask``, we would shrink the fish.
+Để áp dụng mask cho twist, chúng ta sử dụng ``mix``. ``mix`` cho phép chúng ta trộn vị trí vertex giữa một vertex được xoay hoàn toàn và một vertex không được xoay. Chúng ta cần sử dụng ``mix`` thay vì nhân ``mask`` với ``VERTEX`` đã được xoay, vì chúng ta không cộng chuyển động vào ``VERTEX`` mà thay thế ``VERTEX`` bằng phiên bản đã xoay. Nếu nhân nó với ``mask``, chúng ta sẽ làm con cá bị thu nhỏ.
 
 .. code-block:: glsl
 
-  //twist motion with mask
+  //chuyển động twist với mask
   VERTEX.xy = mix(VERTEX.xy, twist_matrix * VERTEX.xy, mask);
 
-Putting the four motions together gives us the final animation.
+Kết hợp bốn chuyển động lại sẽ cho chúng ta animation cuối cùng.
 
 .. image:: img/all_motions_mask.gif
 
-Go ahead and play with the uniforms in order to alter the swim cycle of the fish. You will
-find that you can create a wide variety of swim styles using these four motions.
+Hãy thử điều chỉnh các uniform để thay đổi chu kỳ bơi của con cá. Bạn sẽ thấy mình có thể tạo ra rất nhiều kiểu bơi khác nhau bằng bốn chuyển động này.
 
-Making a school of fish
------------------------
+Tạo một đàn cá
+--------------
 
-Godot makes it easy to render thousands of the same object using a MultiMeshInstance3D node.
+Godot giúp việc render hàng nghìn object giống nhau bằng node MultiMeshInstance3D trở nên dễ dàng.
 
-A MultiMeshInstance3D node is created and used the same way you would make a MeshInstance3D node.
-For this tutorial, we will name the MultiMeshInstance3D node ``School``, because it will contain
-a school of fish.
+Một node MultiMeshInstance3D được tạo và sử dụng giống như khi bạn tạo node MeshInstance3D. Trong tutorial này, chúng ta sẽ đặt tên node MultiMeshInstance3D là ``School``, vì nó sẽ chứa một đàn cá.
 
-Once you have a MultiMeshInstance3D add a :ref:`MultiMesh <class_MultiMesh>`, and to that
-MultiMesh add your :ref:`Mesh <class_Mesh>` with the shader from above.
+Sau khi có một MultiMeshInstance3D, hãy thêm một :ref:`MultiMesh <class_MultiMesh>`, rồi thêm :ref:`Mesh <class_Mesh>` của bạn với shader ở trên vào MultiMesh đó.
 
-MultiMeshes draw your Mesh with three additional per-instance properties: Transform (rotation,
-translation, scale), Color, and Custom. Custom is used to pass in 4 multi-use variables using
-a :ref:`Color <class_Color>`.
+MultiMesh vẽ Mesh của bạn với ba thuộc tính bổ sung cho mỗi instance: Transform (rotation, translation, scale), Color và Custom. Custom được sử dụng để truyền vào 4 biến có thể tái sử dụng bằng một :ref:`Color <class_Color>`.
 
-``instance_count`` specifies how many instances of the mesh you want to draw. For now, leave
-``instance_count`` at ``0`` because you cannot change any of the other parameters while
-``instance_count`` is larger than ``0``. We will set ``instance count`` in GDScript later.
+``instance_count`` chỉ định số instance của mesh mà bạn muốn vẽ. Hiện tại, hãy để ``instance_count`` ở ``0``, vì bạn không thể thay đổi bất kỳ tham số nào khác trong khi ``instance_count`` lớn hơn ``0``. Sau này chúng ta sẽ đặt ``instance count`` trong GDScript.
 
-``transform_format`` specifies whether the transforms used are 3D or 2D. For this tutorial, select 3D.
+``transform_format`` chỉ định các transform được sử dụng là 3D hay 2D. Trong tutorial này, hãy chọn 3D.
 
-For both ``color_format`` and ``custom_data_format`` you can choose between ``None``, ``Byte``, and
-``Float``. ``None`` means you won't be passing in that data (either a per-instance ``COLOR`` variable,
-or ``INSTANCE_CUSTOM``) to the shader. ``Byte`` means each number making up the color you pass in will
-be stored with 8 bits while ``Float`` means each number will be stored in a floating-point number
-(32 bits). ``Float`` is slower but more precise, ``Byte`` will take less memory and be faster, but you
-may see some visual artifacts.
+Đối với cả ``color_format`` và ``custom_data_format``, bạn có thể chọn giữa ``None``, ``Byte`` và ``Float``. ``None`` có nghĩa là bạn sẽ không truyền dữ liệu đó (một biến ``COLOR`` cho mỗi instance hoặc ``INSTANCE_CUSTOM``) vào shader. ``Byte`` có nghĩa là mỗi số tạo nên màu bạn truyền vào sẽ được lưu bằng 8 bit, còn ``Float`` có nghĩa là mỗi số sẽ được lưu trong một số dấu phẩy động (32 bit). ``Float`` chậm hơn nhưng chính xác hơn, còn ``Byte`` sẽ tốn ít bộ nhớ hơn và nhanh hơn, nhưng có thể xuất hiện một số artifact hình ảnh.
 
-Now, set ``instance_count`` to the number of fish you want to have.
+Bây giờ, đặt ``instance_count`` thành số lượng cá mà bạn muốn có.
 
-Next we need to set the per-instance transforms.
+Tiếp theo, chúng ta cần thiết lập các transform cho mỗi instance.
 
-There are two ways to set per-instance transforms for MultiMeshes. The first is entirely in editor
-and is described in the :ref:`MultiMeshInstance3D tutorial <doc_using_multi_mesh_instance>`.
+Có hai cách để thiết lập transform cho mỗi instance của MultiMesh. Cách đầu tiên hoàn toàn thực hiện trong editor và được mô tả trong :ref:`MultiMeshInstance3D tutorial <doc_using_multi_mesh_instance>`.
 
-The second is to loop over all the instances and set their transforms in code. Below, we use GDScript
-to loop over all the instances and set their transform to a random position.
+Cách thứ hai là lặp qua tất cả instance và thiết lập transform của chúng trong code. Bên dưới, chúng ta sử dụng GDScript để lặp qua tất cả instance và đặt transform của chúng vào các vị trí ngẫu nhiên.
 
 ::
 
@@ -226,52 +176,38 @@ to loop over all the instances and set their transform to a random position.
     position = position.translated(Vector3(randf() * 100 - 50, randf() * 50 - 25, randf() * 50 - 25))
     $School.multimesh.set_instance_transform(i, position)
 
-Running this script will place the fish in random positions in a box around the position of the
-MultiMeshInstance3D.
+Chạy script này sẽ đặt các con cá vào những vị trí ngẫu nhiên trong một hình hộp xung quanh vị trí của MultiMeshInstance3D.
 
 .. note:: If performance is an issue for you, try running the scene with fewer fish.
 
-Notice how all the fish are all in the same position in their swim cycle? It makes them look very
-robotic. The next step is to give each fish a different position in the swim cycle so the entire
-school looks more organic.
+Hãy chú ý rằng tất cả cá đều ở cùng một vị trí trong chu kỳ bơi. Điều này khiến chúng trông rất máy móc. Bước tiếp theo là tạo cho mỗi con cá một vị trí khác nhau trong chu kỳ bơi để toàn bộ đàn trông tự nhiên hơn.
 
-Animating a school of fish
---------------------------
+Tạo chuyển động cho một đàn cá
+------------------------------
 
-One of the benefits of animating the fish using ``cos`` functions is that they are animated with
-one parameter, ``time``. In order to give each fish a unique position in the
-swim cycle, we only need to offset ``time``.
+Một trong những lợi ích của việc tạo chuyển động cho cá bằng các hàm ``cos`` là chúng được animate bằng một tham số, ``time``. Để tạo cho mỗi con cá một vị trí riêng trong chu kỳ bơi, chúng ta chỉ cần offset ``time``.
 
-We do that by adding the per-instance custom value ``INSTANCE_CUSTOM`` to ``time``.
+Chúng ta thực hiện việc đó bằng cách thêm giá trị custom cho mỗi instance ``INSTANCE_CUSTOM`` vào ``time``.
 
 .. code-block:: glsl
 
   float time = (TIME * time_scale) + (6.28318 * INSTANCE_CUSTOM.x);
 
-Next, we need to pass a value into ``INSTANCE_CUSTOM``. We do that by adding one line into
-the ``for`` loop from above. In the ``for`` loop we assign each instance a set of four
-random floats to use.
+Tiếp theo, chúng ta cần truyền một giá trị vào ``INSTANCE_CUSTOM``. Chúng ta thực hiện việc đó bằng cách thêm một dòng vào vòng lặp ``for`` ở trên. Trong vòng lặp ``for``, chúng ta gán cho mỗi instance một tập gồm bốn float ngẫu nhiên để sử dụng.
 
 ::
 
   $School.multimesh.set_instance_custom_data(i, Color(randf(), randf(), randf(), randf()))
 
-Now the fish all have unique positions in the swim cycle. You can give them a little more
-individuality by using ``INSTANCE_CUSTOM`` to make them swim faster or slower by multiplying
-by ``TIME``.
+Giờ đây, tất cả cá đều có vị trí riêng trong chu kỳ bơi. Bạn có thể tạo thêm một chút khác biệt cho chúng bằng cách sử dụng ``INSTANCE_CUSTOM`` để khiến chúng bơi nhanh hơn hoặc chậm hơn bằng cách nhân với ``TIME``.
 
 .. code-block:: glsl
 
-  //set speed from 50% - 150% of regular speed
+  //đặt tốc độ từ 50% - 150% tốc độ thông thường
   float time = (TIME * (0.5 + INSTANCE_CUSTOM.y) * time_scale) + (6.28318 * INSTANCE_CUSTOM.x);
 
-You can even experiment with changing the per-instance color the same way you changed the per-instance
-custom value.
+Bạn thậm chí có thể thử nghiệm việc thay đổi màu theo từng instance giống như cách bạn đã thay đổi giá trị tùy chỉnh theo từng instance.
 
-One problem that you will run into at this point is that the fish are animated, but they are not
-moving. You can move them by updating the per-instance transform for each fish every frame. Although
-doing so will be faster than moving thousands of MeshInstance3Ds per frame, it'll still likely be
-slow.
+Một vấn đề bạn sẽ gặp phải ở bước này là cá đã được animate nhưng chưa di chuyển. Bạn có thể khiến chúng di chuyển bằng cách cập nhật transform theo từng instance cho mỗi con cá trong từng frame. Mặc dù cách này sẽ nhanh hơn việc di chuyển hàng nghìn MeshInstance3Ds trong mỗi frame, nhưng nhiều khả năng nó vẫn sẽ chậm.
 
-In the next tutorial we will cover how to use :ref:`GPUParticles3D <class_GPUParticles3D>` to take advantage
-of the GPU and move each fish around individually while still receiving the benefits of instancing.
+Trong tutorial tiếp theo, chúng ta sẽ tìm hiểu cách sử dụng :ref:`GPUParticles3D <class_GPUParticles3D>` để tận dụng GPU và di chuyển từng con cá một cách riêng lẻ, đồng thời vẫn nhận được lợi ích của instancing.

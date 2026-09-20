@@ -2,47 +2,28 @@
 
 .. _doc_performance:
 
-Performance
-===========
+Hiệu năng
+=========
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Godot follows a balanced performance philosophy. In the performance world,
-there are always tradeoffs, which consist of trading speed for usability
-and flexibility. Some practical examples of this are:
+Godot tuân theo triết lý hiệu năng cân bằng. Trong lĩnh vực hiệu năng, luôn có những sự đánh đổi, bao gồm việc đánh đổi tốc độ để lấy khả năng sử dụng và tính linh hoạt. Một số ví dụ thực tế là:
 
--  Rendering large amounts of objects efficiently is easy, but when a
-   large scene must be rendered, it can become inefficient. To solve this,
-   visibility computation must be added to the rendering. This makes rendering
-   less efficient, but at the same time, fewer objects are rendered. Therefore,
-   the overall rendering efficiency is improved.
+-  Việc render hiệu quả một lượng lớn đối tượng là điều dễ dàng, nhưng khi cần render một scene lớn, quá trình này có thể trở nên kém hiệu quả. Để giải quyết vấn đề này, cần bổ sung việc tính toán khả năng hiển thị vào quá trình render. Điều này khiến việc render kém hiệu quả hơn, nhưng đồng thời cũng làm giảm số lượng đối tượng được render. Vì vậy, hiệu quả render tổng thể được cải thiện.
 
--  Configuring the properties of every material for every object that
-   needs to be rendered is also slow. To solve this, objects are sorted by
-   material to reduce the costs. At the same time, sorting has a cost.
+-  Việc cấu hình các thuộc tính của từng material cho mọi đối tượng cần được render cũng chậm. Để giải quyết vấn đề này, các đối tượng được sắp xếp theo material nhằm giảm chi phí xử lý. Đồng thời, việc sắp xếp cũng có chi phí riêng.
 
--  In 3D physics, a similar situation happens. The best algorithms to
-   handle large amounts of physics objects (such as SAP) are slow at
-   insertion/removal of objects and raycasting. Algorithms that allow faster
-   insertion and removal, as well as raycasting, will not be able to handle as
-   many active objects.
+-  Trong physics 3D, tình huống tương tự cũng xảy ra. Các thuật toán tốt nhất để xử lý một lượng lớn đối tượng physics (chẳng hạn như SAP) lại chậm khi thêm/xóa đối tượng và thực hiện raycasting. Các thuật toán cho phép thêm và xóa nhanh hơn, cũng như raycasting nhanh hơn, sẽ không thể xử lý nhiều đối tượng đang hoạt động bằng.
 
-And there are many more examples of this! Game engines strive to be
-general-purpose in nature. Balanced algorithms are always favored over
-algorithms that might be fast in some situations and slow in others, or
-algorithms that are fast but are more difficult to use.
+Và còn rất nhiều ví dụ khác nữa! Game engine luôn hướng đến tính chất đa dụng. Các thuật toán cân bằng luôn được ưu tiên hơn những thuật toán có thể nhanh trong một số tình huống nhưng chậm trong các tình huống khác, hoặc những thuật toán nhanh nhưng khó sử dụng hơn.
 
-Godot is not an exception to this. While it is designed to have backends
-swappable for different algorithms, the default backends prioritize balance and
-flexibility over performance.
+Godot cũng không ngoại lệ. Mặc dù được thiết kế để có thể thay thế các backend bằng những thuật toán khác nhau, các backend mặc định ưu tiên sự cân bằng và tính linh hoạt hơn hiệu năng.
 
-With this clear, the aim of this tutorial section is to explain how to get the
-maximum performance out of Godot. While the tutorials can be read in any order,
-it is a good idea to start from :ref:`doc_general_optimization`.
+Sau khi đã hiểu rõ điều này, mục tiêu của phần hướng dẫn này là giải thích cách đạt được hiệu năng tối đa từ Godot. Mặc dù có thể đọc các bài hướng dẫn theo bất kỳ thứ tự nào, bạn nên bắt đầu từ :ref:`doc_general_optimization`.
 
-Common
-------
+Thông dụng
+----------
 
 .. toctree::
    :maxdepth: 1
@@ -71,8 +52,7 @@ GPU
    using_multimesh
    pipeline_compilations
 
-3D
---
+3D --
 
 .. toctree::
    :maxdepth: 1
@@ -82,8 +62,8 @@ GPU
    vertex_animation/index
 
 
-Threads
--------
+Luồng
+-----
 
 .. toctree::
    :maxdepth: 1

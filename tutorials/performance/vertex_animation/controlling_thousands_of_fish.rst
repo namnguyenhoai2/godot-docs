@@ -2,28 +2,26 @@
 
 .. _doc_controlling_thousands_of_fish:
 
-Controlling thousands of fish with Particles
-============================================
+Điều khiển hàng nghìn con cá bằng Particles
+===========================================
 
-The problem with :ref:`MeshInstance3D <class_MeshInstance3D>` is that it is expensive to
-update their transform array. It is great for placing many static objects around the
-scene. But it is still difficult to move the objects around the scene.
+Vấn đề với :ref:`MeshInstance3D <class_MeshInstance3D>` là việc cập nhật mảng transform của chúng rất tốn kém. Nó rất phù hợp để đặt nhiều đối tượng tĩnh xung quanh scene. Nhưng việc di chuyển các đối tượng quanh scene vẫn rất khó.
 
-To make each instance move in an interesting way, we will use a
+Để khiến mỗi instance di chuyển theo một cách thú vị, chúng ta sẽ sử dụng một
 :ref:`GPUParticles3D <class_GPUParticles3D>` node. Particles take advantage of GPU acceleration
-by computing and setting the per-instance information in a :ref:`Shader <class_Shader>`.
+bằng cách tính toán và thiết lập thông tin trên từng instance trong một :ref:`Shader <class_Shader>`.
 
-First create a Particles node. Then, under "Draw Passes" set the Particle's "Draw Pass 1" to your
+Trước tiên, hãy tạo một node Particles. Sau đó, trong "Draw Passes", đặt "Draw Pass 1" của Particle thành
 :ref:`Mesh <class_Mesh>`. Then under "Process Material" create a new
 :ref:`ShaderMaterial <class_ShaderMaterial>`.
 
-Set the ``shader_type`` to ``particles``.
+Đặt ``shader_type`` thành ``particles``.
 
 .. code-block:: glsl
 
   shader_type particles
 
-Then add the following two functions:
+Sau đó, thêm hai hàm sau:
 
 .. code-block:: glsl
 
@@ -47,23 +45,17 @@ Then add the following two functions:
     return x;
   }
 
-These functions come from the default :ref:`ParticleProcessMaterial <class_ParticleProcessMaterial>`.
-They are used to generate a random number from each particle's ``RANDOM_SEED``.
+Các hàm này đến từ :ref:`ParticleProcessMaterial <class_ParticleProcessMaterial>` mặc định. Chúng được dùng để tạo một số ngẫu nhiên từ ``RANDOM_SEED`` của mỗi particle.
 
-A unique thing about particle shaders is that some built-in variables are saved across frames.
-``TRANSFORM``, ``COLOR``, and ``CUSTOM`` can all be accessed in the shader of the mesh, and
-also in the particle shader the next time it is run.
+Một điểm đặc biệt của particle shader là một số biến tích hợp được lưu lại giữa các frame. ``TRANSFORM``, ``COLOR`` và ``CUSTOM`` đều có thể được truy cập trong shader của mesh, cũng như trong particle shader vào lần chạy tiếp theo.
 
-Next, setup your ``start()`` function. Particles shaders contain a ``start()`` function and a
-``process()`` function.
+Tiếp theo, hãy thiết lập hàm ``start()``. Particle shader chứa một hàm ``start()`` và một hàm ``process()``.
 
-The code in the ``start()`` function only runs when the particle system starts.
-The code in the ``process()`` function will always run.
+Code trong hàm ``start()`` chỉ chạy khi particle system khởi động. Code trong hàm ``process()`` sẽ luôn chạy.
 
-We need to generate 4 random numbers: 3 to create a random position and one for the random
-offset of the swim cycle.
+Chúng ta cần tạo 4 số ngẫu nhiên: 3 số để tạo một vị trí ngẫu nhiên và 1 số cho độ lệch ngẫu nhiên của chu kỳ bơi.
 
-First, generate 4 seeds inside the ``start()`` function using the ``hash()`` function provided above:
+Trước tiên, hãy tạo 4 seed bên trong hàm ``start()`` bằng hàm ``hash()`` được cung cấp ở trên:
 
 .. code-block:: glsl
 
@@ -72,7 +64,7 @@ First, generate 4 seeds inside the ``start()`` function using the ``hash()`` fun
   uint alt_seed3 = hash(NUMBER + uint(43) + RANDOM_SEED);
   uint alt_seed4 = hash(NUMBER + uint(111) + RANDOM_SEED);
 
-Then, use those seeds to generate random numbers using ``rand_from_seed``:
+Sau đó, dùng các seed đó để tạo số ngẫu nhiên bằng ``rand_from_seed``:
 
 .. code-block:: glsl
 
@@ -81,52 +73,44 @@ Then, use those seeds to generate random numbers using ``rand_from_seed``:
                        rand_from_seed(alt_seed3) * 2.0 - 1.0,
                        rand_from_seed(alt_seed4) * 2.0 - 1.0);
 
-Finally, assign ``position`` to ``TRANSFORM[3].xyz``, which is the part of the transform that holds
-the position information.
+Cuối cùng, gán ``position`` cho ``TRANSFORM[3].xyz``, là phần của transform chứa thông tin vị trí.
 
 .. code-block:: glsl
 
   TRANSFORM[3].xyz = position * 20.0;
 
-Remember, all this code so far goes inside the ``start()`` function.
+Hãy nhớ rằng toàn bộ code cho đến thời điểm này đều nằm bên trong hàm ``start()``.
 
-The vertex shader for your mesh can stay the exact same as it was in the previous tutorial.
+Vertex shader cho mesh của bạn có thể giữ nguyên hoàn toàn như trong tutorial trước.
 
-Now you can move each fish individually each frame, either by adding to the ``TRANSFORM`` directly
-or by writing to ``VELOCITY``.
+Bây giờ bạn có thể di chuyển từng con cá riêng lẻ trong mỗi frame, bằng cách cộng trực tiếp vào ``TRANSFORM`` hoặc ghi vào ``VELOCITY``.
 
-Let's transform the fish by setting their ``VELOCITY`` in the ``start()`` function.
+Hãy biến đổi những con cá bằng cách thiết lập ``VELOCITY`` của chúng trong hàm ``start()``.
 
 .. code-block:: glsl
 
   VELOCITY.z = 10.0;
 
-This is the most basic way to set ``VELOCITY`` every particle (or fish) will have the same velocity.
+Đây là cách cơ bản nhất để thiết lập ``VELOCITY``: mọi particle (hoặc cá) sẽ có cùng vận tốc.
 
-Just by setting ``VELOCITY`` you can make the fish swim however you want. For example, try the code
-below.
+Chỉ cần thiết lập ``VELOCITY``, bạn có thể khiến cá bơi theo bất kỳ cách nào mình muốn. Ví dụ, hãy thử đoạn code dưới đây.
 
 .. code-block:: glsl
 
   VELOCITY.z = cos(TIME + CUSTOM.x * 6.28) * 4.0 + 6.0;
 
-This will give each fish a unique speed between ``2`` and ``10``.
+Điều này sẽ tạo cho mỗi con cá một tốc độ riêng trong khoảng từ ``2`` đến ``10``.
 
-You can also let each fish change its velocity over time if you set the velocity in the ``process()``
-function.
+Bạn cũng có thể cho phép mỗi con cá thay đổi vận tốc theo thời gian nếu thiết lập vận tốc trong hàm ``process()``.
 
-If you used ``CUSTOM.y`` in the last tutorial, you can also set the speed of the swim animation based
-on the ``VELOCITY``. Just use ``CUSTOM.y``.
+Nếu bạn đã sử dụng ``CUSTOM.y`` trong tutorial trước, bạn cũng có thể thiết lập tốc độ của animation bơi dựa trên ``VELOCITY``. Chỉ cần sử dụng ``CUSTOM.y``.
 
 .. code-block:: glsl
 
   CUSTOM.y = VELOCITY.z * 0.1;
 
-This code gives you the following behavior:
+Đoạn code này sẽ tạo ra hành vi sau:
 
 .. image:: img/scene.gif
 
-Using a ParticleProcessMaterial you can make the fish behavior as simple or complex as you like. In this
-tutorial we only set Velocity, but in your own Shaders you can also set ``COLOR``, rotation, scale
-(through ``TRANSFORM``). Please refer to the :ref:`Particles Shader Reference <doc_particle_shader>`
-for more information on particle shaders.
+Bằng cách sử dụng ParticleProcessMaterial, bạn có thể khiến hành vi của cá đơn giản hoặc phức tạp tùy ý. Trong tutorial này, chúng ta chỉ thiết lập Velocity, nhưng trong các Shader của riêng mình, bạn cũng có thể thiết lập ``COLOR``, rotation, scale (thông qua ``TRANSFORM``). Vui lòng tham khảo :ref:`Particles Shader Reference <doc_particle_shader>` để biết thêm thông tin về particle shader.
