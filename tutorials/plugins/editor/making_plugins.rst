@@ -1,49 +1,33 @@
 .. _doc_making_plugins:
 
-Making plugins
-==============
+Tạo plugin
+==========
 
-About plugins
--------------
+Giới thiệu về plugin
+--------------------
 
-A plugin is a great way to extend the editor with useful tools. It can be made
-entirely with GDScript and standard scenes, without even reloading the editor.
-Unlike modules, you don't need to create C++ code nor recompile the engine.
-While this makes plugins less powerful, there are still many things you can
-do with them. Note that a plugin is similar to any scene you can already
-make, except it is created using a script to add editor functionality.
+Plugin là một cách tuyệt vời để mở rộng editor bằng các công cụ hữu ích. Plugin có thể được tạo hoàn toàn bằng GDScript và các scene tiêu chuẩn, thậm chí không cần tải lại editor. Không giống như module, bạn không cần tạo mã C++ hay biên dịch lại engine. Mặc dù điều này khiến plugin kém mạnh mẽ hơn, bạn vẫn có thể làm được rất nhiều việc với chúng. Lưu ý rằng plugin tương tự như bất kỳ scene nào bạn có thể tạo, ngoại trừ việc nó được tạo bằng script để bổ sung chức năng cho editor.
 
-This tutorial will guide you through the creation of two plugins so
-you can understand how they work and be able to develop your own. The first
-is a custom node that you can add to any scene in the project, and the
-other is a custom dock added to the editor.
+Tutorial này sẽ hướng dẫn bạn tạo hai plugin để hiểu cách chúng hoạt động và có thể tự phát triển plugin của riêng mình. Plugin đầu tiên là một node tùy chỉnh mà bạn có thể thêm vào bất kỳ scene nào trong project, còn plugin kia là một dock tùy chỉnh được thêm vào editor.
 
 .. _doc_making_plugins_template:
 
-Creating a plugin
------------------
+Tạo plugin
+----------
 
-Before starting, create a new empty project wherever you want. This will serve
-as a base to develop and test the plugins.
+Trước khi bắt đầu, hãy tạo một project mới, trống, ở bất kỳ vị trí nào bạn muốn. Project này sẽ làm nền tảng để phát triển và kiểm thử các plugin.
 
-The first thing you need for the editor to identify a new plugin is to
-create two files: a ``plugin.cfg`` for configuration and a tool script with the
-functionality. Plugins have a standard path like ``addons/plugin_name`` inside
-the project folder. Godot provides a dialog for generating those files and
-placing them where they need to be.
+Điều đầu tiên bạn cần để editor nhận diện một plugin mới là tạo hai file: một ``plugin.cfg`` để cấu hình và một tool script chứa chức năng. Plugin có đường dẫn tiêu chuẩn như ``addons/plugin_name`` bên trong thư mục project. Godot cung cấp một hộp thoại để tạo các file đó và đặt chúng vào đúng vị trí.
 
-In the main toolbar, click the ``Project`` dropdown. Then click
-``Project Settings...``. Go to the ``Plugins`` tab and then click
-on the :button:`Create New Plugin` button in the top-right.
+Trên thanh công cụ chính, hãy nhấp vào danh sách thả xuống ``Project``. Sau đó nhấp vào ``Project Settings...``. Chuyển đến tab ``Plugins``, rồi nhấp vào nút :button:`Create New Plugin` ở góc trên bên phải.
 
-You will see the dialog appear, like so:
+Bạn sẽ thấy hộp thoại xuất hiện như sau:
 
 .. image:: img/making_plugins-create_plugin_dialog.webp
 
-The placeholder text in each field describes how it affects the plugin's
-creation of the files and the config file's values.
+Văn bản placeholder trong mỗi trường mô tả cách trường đó ảnh hưởng đến việc tạo file của plugin và các giá trị trong file cấu hình.
 
-To continue with the example, use the following values:
+Để tiếp tục với ví dụ, hãy sử dụng các giá trị sau:
 
 .. tabs::
  .. code-tab:: ini GDScript
@@ -68,42 +52,27 @@ To continue with the example, use the following values:
 
 .. warning::
 
-    In C#, the EditorPlugin script needs to be compiled, which
-    requires building the project. After building the project the plugin can be
-    enabled in the ``Plugins`` tab of ``Project Settings``.
+    Trong C#, script EditorPlugin cần được biên dịch, việc này yêu cầu build project. Sau khi build project, bạn có thể bật plugin trong tab ``Plugins`` của ``Project Settings``.
 
-You should end up with a directory structure like this:
+Bạn sẽ có một cấu trúc thư mục như sau:
 
 .. image:: img/making_plugins-my_custom_mode_folder.webp
 
-``plugin.cfg`` is an INI file with metadata about your plugin.
-The name and description help people understand what it does.
-Your name helps you get properly credited for your work.
-The version number helps others know if they have an outdated version;
-if you are unsure on how to come up with the version number, check out `Semantic Versioning <https://semver.org/>`_.
-The main script file will instruct Godot what your plugin does in the editor
-once it is active.
+``plugin.cfg`` là một file INI chứa metadata về plugin của bạn. Tên và mô tả giúp mọi người hiểu plugin làm gì. Tên của bạn giúp ghi nhận chính xác công sức của bạn. Số phiên bản giúp người khác biết họ có đang sử dụng phiên bản đã lỗi thời hay không; nếu bạn không chắc nên đặt số phiên bản như thế nào, hãy xem `Semantic Versioning <https://semver.org/>`_. File script chính sẽ hướng dẫn Godot về chức năng của plugin trong editor khi plugin được kích hoạt.
 
-The script file
-~~~~~~~~~~~~~~~
+File script
+~~~~~~~~~~~
 
-Upon creation of the plugin, the dialog will automatically open the
-EditorPlugin script for you. The script has two requirements that you cannot
-change: it must be a ``@tool`` script, or else it will not load properly in the
-editor, and it must inherit from :ref:`class_EditorPlugin`.
+Khi tạo plugin, hộp thoại sẽ tự động mở script EditorPlugin cho bạn. Script này có hai yêu cầu mà bạn không thể thay đổi: nó phải là một ``@tool`` script, nếu không sẽ không được load đúng cách trong editor, và nó phải kế thừa từ :ref:`class_EditorPlugin`.
 
 .. warning::
 
-    In addition to the EditorPlugin script, any other GDScript that your plugin uses
-    must *also* be a tool. Any GDScript without ``@tool`` used by the editor
-    will act like an empty file!
+    Ngoài script EditorPlugin, mọi GDScript khác mà plugin sử dụng cũng *phải* là tool. Bất kỳ GDScript nào được editor sử dụng mà không có ``@tool`` sẽ hoạt động như một file rỗng!
 
-It's important to deal with initialization and clean-up of resources.
-A good practice is to use the virtual function
+Việc xử lý khởi tạo và dọn dẹp tài nguyên rất quan trọng. Một cách thực hành tốt là sử dụng hàm ảo
 :ref:`_enter_tree() <class_Node_private_method__enter_tree>` to initialize your plugin and
 :ref:`_exit_tree() <class_Node_private_method__exit_tree>` to clean it up. Thankfully,
-the dialog generates these callbacks for you. Your script should look something
-like this:
+hộp thoại sẽ tạo các callback này cho bạn. Script của bạn sẽ trông tương tự như sau:
 
 .. _doc_making_plugins_template_code:
 .. tabs::
@@ -114,12 +83,12 @@ like this:
 
 
     func _enter_tree():
-        # Initialization of the plugin goes here.
+        # Đặt phần khởi tạo plugin ở đây.
         pass
 
 
     func _exit_tree():
-        # Clean-up of the plugin goes here.
+        # Đặt phần dọn dẹp plugin ở đây.
         pass
 
  .. code-tab:: csharp
@@ -132,44 +101,39 @@ like this:
     {
         public override void _EnterTree()
         {
-            // Initialization of the plugin goes here.
+            // Đặt phần khởi tạo plugin ở đây.
         }
 
         public override void _ExitTree()
         {
-            // Clean-up of the plugin goes here.
+            // Đặt phần dọn dẹp plugin ở đây.
         }
     }
     #endif
 
-This is a good template to use when creating new plugins.
+Đây là một template phù hợp để sử dụng khi tạo plugin mới.
 
-A custom node
--------------
+Node tùy chỉnh
+--------------
 
-Sometimes you want a certain behavior in many nodes, such as a custom scene
-or control that can be reused. Instancing is helpful in a lot of cases, but
-sometimes it can be cumbersome, especially if you're using it in many
-projects. A good solution to this is to make a plugin that adds a node with a
-custom behavior.
+Đôi khi bạn muốn một hành vi nhất định xuất hiện trong nhiều node, chẳng hạn như một scene hoặc control tùy chỉnh có thể tái sử dụng. Instancing hữu ích trong nhiều trường hợp, nhưng đôi khi có thể trở nên cồng kềnh, đặc biệt khi bạn sử dụng nó trong nhiều project. Một giải pháp tốt là tạo plugin thêm một node có hành vi tùy chỉnh.
 
-For this tutorial, we'll create a button that prints a message when
-clicked. For that, we'll need a script that extends from
+Trong tutorial này, chúng ta sẽ tạo một button in ra thông báo khi được nhấp. Để làm vậy, chúng ta sẽ cần một script kế thừa từ
 :ref:`class_Button`. It could also extend
 :ref:`class_BaseButton` if you prefer:
 
 .. tabs::
     .. code-tab:: gdscript GDScript
 
-        # Optional, add to execute in the editor.
+        # Tùy chọn, thêm để thực thi trong editor.
         @tool
 
-        # Icons are optional.
-        # Alternatively, you may use the UID of the icon or the absolute path.
+        # Icon là tùy chọn.
+        # Ngoài ra, bạn có thể sử dụng UID của icon hoặc đường dẫn tuyệt đối.
         @icon("icon.svg")
 
-        # Automatically register the node in the Create New Node dialog
-        # and make it available for use with other scripts.
+        # Tự động đăng ký node trong hộp thoại Create New Node
+        # và cung cấp node để các script khác sử dụng.
         class_name MyButton
         extends Button
 
@@ -185,15 +149,15 @@ clicked. For that, we'll need a script that extends from
 
         using Godot;
 
-        // Optional, add to execute in the editor.
+        // Tùy chọn, thêm để thực thi trong editor.
         [Tool]
 
-        // Icons are optional.
-        // Alternatively, you may use the UID of the icon or the absolute path.
+        // Icon là tùy chọn.
+        // Ngoài ra, bạn có thể sử dụng UID của icon hoặc đường dẫn tuyệt đối.
         [Icon("icon.svg")]
 
-        // Automatically register the node in the Create New Node dialog
-        // and make it available for use with other scripts.
+        // Tự động đăng ký node trong hộp thoại Create New Node
+        // và cung cấp node để các script khác sử dụng.
         [GlobalClass]
         public partial class MyButton : Button
         {
@@ -208,48 +172,35 @@ clicked. For that, we'll need a script that extends from
             }
         }
 
-That's it for our basic button. You can save this as ``my_button.gd`` inside the
-plugin folder. You may have a 16×16 icon to show in the scene tree. If you
-don't have one, you can grab the default one from the engine and save it in your
-`addons/my_custom_node` folder as `icon.svg`, or use the default Godot logo
-(`@icon("res://icon.svg")`).
+Vậy là xong button cơ bản. Bạn có thể lưu nó dưới dạng ``my_button.gd`` bên trong thư mục plugin. Bạn có thể có một icon 16×16 để hiển thị trong scene tree. Nếu không có, bạn có thể lấy icon mặc định từ engine và lưu vào thư mục `addons/my_custom_node` dưới tên `icon.svg`, hoặc sử dụng logo Godot mặc định (`@icon("res://icon.svg")`).
 
 .. tip::
 
-    SVG images that are used as custom node icons should have the
-    **Editor > Scale With Editor Scale** and **Editor > Convert Colors With Editor Theme**
+    Các hình ảnh SVG được sử dụng làm icon node tùy chỉnh nên có các tùy chọn **Editor > Scale With Editor Scale** và **Editor > Convert Colors With Editor Theme**
     :ref:`import options <doc_importing_images_editor_import_options>` enabled. This allows
-    icons to follow the editor's scale and theming settings if the icons are designed with
-    the same color palette as Godot's own icons.
+    để tuân theo thiết lập tỷ lệ và theme của editor nếu các icon được thiết kế với cùng bảng màu như icon của chính Godot.
 
 .. image:: img/making_plugins-custom_node_icon.png
 
 
-With that done, the plugin should already be available in the plugin list in the
-**Project Settings**, so activate it as explained in `Checking the results`_.
+Sau khi hoàn tất, plugin sẽ có sẵn trong danh sách plugin trong **Project Settings**, vì vậy hãy kích hoạt plugin như được giải thích trong `Kiểm tra kết quả`_.
 
-Then try it out by adding your new node:
+Sau đó, hãy thử bằng cách thêm node mới của bạn:
 
 .. image:: img/making_plugins-custom_node_create.webp
 
-When you add the node, you can see that it already has the script you created
-attached to it. Set a text to the button, save and run the scene. When you
-click the button, you can see some text in the console:
+Khi thêm node, bạn có thể thấy node đã được gắn script mà bạn tạo. Đặt text cho button, lưu và chạy scene. Khi nhấp vào button, bạn sẽ thấy một đoạn text trong console:
 
 .. image:: img/making_plugins-custom_node_console.webp
 
 .. _doc_making_plugins_custom_dock:
 
-A custom dock
--------------
+Dock tùy chỉnh
+--------------
 
-Sometimes, you need to extend the editor and add tools that are always available.
-An easy way to do it is to add a new dock with a plugin. Docks are just scenes
-based on Control, so they are created in a way similar to usual GUI scenes.
+Đôi khi bạn cần mở rộng editor và thêm các công cụ luôn sẵn dùng. Một cách dễ thực hiện là thêm dock mới bằng plugin. Dock chỉ là các scene dựa trên Control, vì vậy chúng được tạo theo cách tương tự như các scene GUI thông thường.
 
-Creating a custom dock is done just like a custom node. Create a new
-``plugin.cfg`` file in the ``addons/my_custom_dock`` folder, then
-add the following content to it:
+Việc tạo dock tùy chỉnh được thực hiện giống như tạo node tùy chỉnh. Tạo một file ``plugin.cfg`` mới trong thư mục ``addons/my_custom_dock``, sau đó thêm nội dung sau vào file:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -272,8 +223,7 @@ add the following content to it:
     version="1.0"
     script="CustomDock.cs"
 
-Then create the script ``custom_dock.gd`` in the same folder. The following code
-will get you started.
+Sau đó, tạo script ``custom_dock.gd`` trong cùng thư mục. Đoạn code sau sẽ giúp bạn bắt đầu.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -283,12 +233,12 @@ will get you started.
 
 
     func _enter_tree():
-        # Initialization of the dock goes here.
+        # Đặt phần khởi tạo dock ở đây.
         pass
 
 
     func _exit_tree():
-        # Clean-up of the dock goes here.
+        # Đặt phần dọn dẹp dock ở đây.
         pass
 
  .. code-tab:: csharp
@@ -301,35 +251,27 @@ will get you started.
     {
         public override void _EnterTree()
         {
-            // Initialization of the dock goes here.
+            // Đặt phần khởi tạo dock ở đây.
         }
 
         public override void _ExitTree()
         {
-            // Clean-up of the dock goes here.
+            // Đặt phần dọn dẹp dock ở đây.
         }
     }
     #endif
 
-Since we're trying to add a new custom dock, we need to create the contents of
-the dock. This is nothing more than a standard Godot scene: just create
-a new scene in the editor then edit it.
+Vì chúng ta đang cố gắng thêm một dock tùy chỉnh mới, chúng ta cần tạo nội dung cho dock. Nội dung này không khác gì một scene Godot tiêu chuẩn: chỉ cần tạo scene mới trong editor rồi chỉnh sửa nó.
 
-For an editor dock, the root node **must** be a :ref:`Control <class_Control>`
-or one of its child classes. For this tutorial, you can create a single button.
-Don't forget to add some text to your button.
+Đối với dock của editor, node gốc **phải** là một :ref:`Control <class_Control>` hoặc một trong các class con của nó. Trong tutorial này, bạn có thể tạo một button duy nhất. Đừng quên thêm text cho button.
 
 .. image:: img/making_plugins-my_custom_dock_scene.webp
 
-Save this scene as ``my_dock.tscn``. Now, we need to grab the scene we created
-then add it as a dock in the editor. For this, you can rely on the function
+Lưu scene này dưới dạng ``my_dock.tscn``. Bây giờ, chúng ta cần lấy scene đã tạo rồi thêm scene đó làm dock trong editor. Để làm việc này, bạn có thể sử dụng hàm
 :ref:`add_dock() <class_EditorPlugin_method_add_dock>` from the
 :ref:`EditorPlugin <class_EditorPlugin>` class.
 
-You need to select a dock position and define the control to add
-(which is the scene you just created). Don't forget to
-**remove the dock** when the plugin is deactivated.
-The script could look like this:
+Bạn cần chọn vị trí dock và xác định control cần thêm (chính là scene bạn vừa tạo). Đừng quên **xóa dock** khi plugin bị vô hiệu hóa. Script có thể trông như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -338,16 +280,16 @@ The script could look like this:
     extends EditorPlugin
 
 
-    # A class member to hold the dock during the plugin life cycle.
+    # Một class member dùng để lưu dock trong suốt vòng đời của plugin.
     var dock
 
 
     func _enter_tree():
-        # Initialization of the plugin goes here.
-        # Load the dock scene and instantiate it.
+        # Đặt phần khởi tạo plugin ở đây.
+        # Load scene dock và tạo instance của nó.
         var dock_scene = preload("res://addons/my_custom_dock/my_dock.tscn").instantiate()
 
-        # Create the dock and add the loaded scene to it.
+        # Tạo dock và thêm scene đã load vào đó.
         dock = EditorDock.new()
         dock.add_child(dock_scene)
 
@@ -356,17 +298,17 @@ The script could look like this:
         # Note that LEFT_UL means the left of the editor, upper-left dock.
         dock.default_slot = EditorDock.DOCK_SLOT_LEFT_UL
 
-        # Allow the dock to be on the left or right of the editor, and to be made floating.
+        # Cho phép dock nằm ở bên trái hoặc bên phải editor, cũng như cho phép dock nổi.
         dock.available_layouts = EditorDock.DOCK_LAYOUT_VERTICAL | EditorDock.DOCK_LAYOUT_FLOATING
 
         add_dock(dock)
 
 
     func _exit_tree():
-        # Clean-up of the plugin goes here.
-        # Remove the dock.
+        # Đặt phần dọn dẹp plugin ở đây.
+        # Xóa dock.
         remove_dock(dock)
-        # Erase the control from the memory.
+        # Xóa control khỏi bộ nhớ.
         dock.queue_free()
 
  .. code-tab:: csharp
@@ -383,7 +325,7 @@ The script could look like this:
         {
             var dockScene = GD.Load<PackedScene>("res://addons/MyCustomDock/MyDock.tscn").Instantiate<Control>();
 
-            // Create the dock and add the loaded scene to it.
+            // Tạo dock và thêm scene đã load vào đó.
             _dock = new EditorDock();
             _dock.AddChild(dockScene);
 
@@ -392,7 +334,7 @@ The script could look like this:
             // Note that LeftUl means the left of the editor, upper-left dock.
             _dock.DefaultSlot = DockSlot.LeftUl;
 
-            // Allow the dock to be on the left or right of the editor, and to be made floating.
+            // Cho phép dock nằm ở bên trái hoặc bên phải editor, cũng như cho phép dock nổi.
             _dock.AvailableLayouts = DockLayout.Horizontal | DockLayout.Floating;
 
             AddDock(_dock);
@@ -400,48 +342,40 @@ The script could look like this:
 
         public override void _ExitTree()
         {
-            // Clean-up of the plugin goes here.
-            // Remove the dock.
+            // Đặt phần dọn dẹp plugin ở đây.
+            // Xóa dock.
             RemoveDock(_dock);
-            // Erase the control from the memory.
+            // Xóa control khỏi bộ nhớ.
             _dock.QueueFree();
         }
     }
     #endif
 
-Note that, while the dock will initially appear at its specified position,
-the user can freely change its position and save the resulting layout.
+Lưu ý rằng mặc dù dock ban đầu sẽ xuất hiện ở vị trí đã chỉ định, người dùng có thể tự do thay đổi vị trí của dock và lưu bố cục kết quả.
 
-Checking the results
-~~~~~~~~~~~~~~~~~~~~
+Kiểm tra kết quả
+~~~~~~~~~~~~~~~~
 
-It's now time to check the results of your work. Open the **Project
-Settings** and click on the **Plugins** tab. Your plugin should be the only one
-on the list.
+Bây giờ là lúc kiểm tra kết quả công việc của bạn. Mở **Project Settings** rồi nhấp vào tab **Plugins**. Plugin của bạn sẽ là plugin duy nhất trong danh sách.
 
 .. image:: img/making_plugins-project_settings.webp
 
-You can see the plugin is not enabled.
-Click the **Enable** checkbox to activate the plugin.
-The dock should become visible before you even close
-the settings window. You should now have a custom dock:
+Bạn có thể thấy plugin chưa được bật. Nhấp vào checkbox **Enable** để kích hoạt plugin. Dock sẽ hiển thị ngay cả trước khi bạn đóng cửa sổ cài đặt. Bây giờ bạn sẽ có một dock tùy chỉnh:
 
 .. image:: img/making_plugins-custom_dock.webp
 
 .. _doc_making_plugins_autoload:
 
-Registering autoloads/singletons in plugins
--------------------------------------------
+Đăng ký autoload/singleton trong plugin
+---------------------------------------
 
-It is possible for editor plugins to automatically register
+Các plugin của editor có thể tự động đăng ký
 :ref:`autoloads <doc_singletons_autoload>` when the plugin is enabled.
-This also includes unregistering the autoload when the plugin is disabled.
+Điều này cũng bao gồm việc hủy đăng ký autoload khi plugin bị vô hiệu hóa.
 
-This makes setting up plugins faster for users, as they no longer have to manually
-add autoloads to their project settings if your editor plugin requires the use of
-an autoload.
+Điều này giúp thiết lập plugin nhanh hơn cho người dùng, vì họ không còn phải tự thêm autoload vào project settings nếu plugin của editor yêu cầu sử dụng autoload.
 
-Use the following code to register a singleton from an editor plugin:
+Sử dụng code sau để đăng ký một singleton từ plugin của editor:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -449,12 +383,12 @@ Use the following code to register a singleton from an editor plugin:
     @tool
     extends EditorPlugin
 
-    # Replace this value with a PascalCase autoload name, as per the GDScript style guide.
+    # Thay giá trị này bằng tên autoload theo kiểu PascalCase, như quy định trong style guide của GDScript.
     const AUTOLOAD_NAME = "SomeAutoload"
 
 
     func _enable_plugin():
-        # The autoload can be a scene or script file.
+        # Autoload có thể là một scene hoặc file script.
         add_autoload_singleton(AUTOLOAD_NAME, "res://addons/my_addon/some_autoload.tscn")
 
 
@@ -469,12 +403,12 @@ Use the following code to register a singleton from an editor plugin:
     [Tool]
     public partial class MyEditorPlugin : EditorPlugin
     {
-        // Replace this value with a PascalCase autoload name.
+        // Thay thế giá trị này bằng tên autoload dạng PascalCase.
         private const string AutoloadName = "SomeAutoload";
 
         public override void _EnablePlugin()
         {
-            // The autoload can be a scene or script file.
+            // Autoload có thể là một tệp scene hoặc script.
             AddAutoloadSingleton(AutoloadName, "res://addons/MyAddon/SomeAutoload.tscn");
         }
 
@@ -485,23 +419,20 @@ Use the following code to register a singleton from an editor plugin:
     }
     #endif
 
-Using sub-plugins
------------------
+Sử dụng sub-plugin
+------------------
 
-Often a plugin adds multiple things, for example a custom node and a panel.
-In those cases it might be easier to have a separate plugin script for each of those features.
-Sub-plugins can be used for this.
+Thông thường, một plugin bổ sung nhiều thành phần, chẳng hạn như một node tùy chỉnh và một panel. Trong những trường hợp đó, việc có một plugin script riêng cho từng tính năng có thể sẽ dễ dàng hơn. Bạn có thể sử dụng sub-plugin cho mục đích này.
 
-First create all plugins and sub plugins as normal plugins:
+Trước tiên, hãy tạo tất cả plugin và sub-plugin như các plugin thông thường:
 
 .. image:: img/sub_plugin_creation.webp
 
-Then move the sub plugins into the main plugin folder:
+Sau đó, di chuyển các sub-plugin vào thư mục plugin chính:
 
 .. image:: img/sub_plugin_moved.webp
 
-Godot will hide sub-plugins from the plugin list, so that a user can't enable or disable them.
-Instead the main plugin script should enable and disable sub-plugins like this:
+Godot sẽ ẩn các sub-plugin khỏi danh sách plugin để người dùng không thể bật hoặc tắt chúng. Thay vào đó, main plugin script nên bật và tắt các sub-plugin như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -509,7 +440,7 @@ Instead the main plugin script should enable and disable sub-plugins like this:
     @tool
     extends EditorPlugin
 
-    # The main plugin is located at res://addons/my_plugin/
+    # Plugin chính nằm tại res://addons/my_plugin/
     const PLUGIN_NAME = "my_plugin"
 
     func _enable_plugin():
@@ -520,14 +451,9 @@ Instead the main plugin script should enable and disable sub-plugins like this:
         EditorInterface.set_plugin_enabled(PLUGIN_NAME + "/node", false)
         EditorInterface.set_plugin_enabled(PLUGIN_NAME + "/panel", false)
 
-Going beyond
-------------
+Mở rộng hơn nữa
+---------------
 
-Now that you've learned how to make basic plugins, you can extend the editor in
-several ways. Lots of functionality can be added to the editor with GDScript;
-it is a powerful way to create specialized editors without having to delve into
-C++ modules.
+Giờ đây, khi đã học cách tạo các plugin cơ bản, bạn có thể mở rộng editor theo nhiều cách. Có thể bổ sung rất nhiều chức năng cho editor bằng GDScript; đây là một cách mạnh mẽ để tạo các editor chuyên biệt mà không cần đi sâu vào các module C++.
 
-You can make your own plugins to help yourself and share them in the
-`Asset Library <https://godotengine.org/asset-library/>`_ so that people
-can benefit from your work.
+Bạn có thể tự tạo các plugin để hỗ trợ công việc của mình và chia sẻ chúng trên `Asset Library <https://godotengine.org/asset-library/>`_ để mọi người có thể hưởng lợi từ công sức của bạn.

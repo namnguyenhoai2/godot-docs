@@ -1,18 +1,13 @@
 .. _doc_inspector_plugins:
 
-Inspector plugins
-=================
+Plugin Inspector
+================
 
-The inspector dock allows you to create custom widgets to edit properties
-through plugins. This can be beneficial when working with custom datatypes and
-resources, although you can use the feature to change the inspector widgets for
-built-in types. You can design custom controls for specific properties, entire
-objects, and even separate controls associated with particular datatypes.
+Dock Inspector cho phép bạn tạo các widget tùy chỉnh để chỉnh sửa thuộc tính thông qua plugin. Điều này có thể hữu ích khi làm việc với các datatype và resource tùy chỉnh, mặc dù bạn cũng có thể dùng tính năng này để thay đổi các widget Inspector cho những kiểu dựng sẵn. Bạn có thể thiết kế các control tùy chỉnh cho từng thuộc tính cụ thể, toàn bộ object, và thậm chí các control riêng biệt gắn với những datatype cụ thể.
 
-This guide explains how to use the :ref:`class_EditorInspectorPlugin` and
+Hướng dẫn này giải thích cách sử dụng :ref:`class_EditorInspectorPlugin` và
 :ref:`class_EditorProperty` classes to create a custom interface for integers,
-replacing the default behavior with a button that generates random values
-between 0 and 99.
+thay thế hành vi mặc định bằng một button tạo các giá trị ngẫu nhiên từ 0 đến 99.
 
 .. figure:: img/inspector_plugin_example.png
    :align: center
@@ -20,26 +15,19 @@ between 0 and 99.
    The default behavior on the left and the end result on the right.
 
 
-Setting up your plugin
-----------------------
+Thiết lập plugin của bạn
+------------------------
 
-Create a new empty plugin to get started.
+Tạo một plugin trống mới để bắt đầu.
 
 .. seealso:: See :ref:`doc_making_plugins` guide to set up your new plugin.
 
-Let's assume you've called your plugin folder ``my_inspector_plugin``. If so,
-you should end up with a new ``addons/my_inspector_plugin`` folder that contains
-two files: ``plugin.cfg`` and ``plugin.gd``.
+Giả sử bạn đã đặt tên cho thư mục plugin là ``my_inspector_plugin``. Khi đó, bạn sẽ có một thư mục ``addons/my_inspector_plugin`` mới chứa hai file: ``plugin.cfg`` và ``plugin.gd``.
 
-As before, ``plugin.gd`` is a script extending :ref:`class_EditorPlugin` and you
-need to introduce new code for its ``_enter_tree`` and ``_exit_tree`` methods.
-To set up your inspector plugin, you must load its script, then create and add
-the instance by calling ``add_inspector_plugin()``. If the plugin is disabled,
-you should remove the instance you have added by calling
-``remove_inspector_plugin()``.
+Như trước đây, ``plugin.gd`` là một script kế thừa :ref:`class_EditorPlugin` và bạn cần thêm code mới cho các method ``_enter_tree`` và ``_exit_tree`` của nó. Để thiết lập inspector plugin, bạn phải load script, sau đó tạo và thêm instance bằng cách gọi ``add_inspector_plugin()``. Nếu plugin bị vô hiệu hóa, bạn nên xóa instance đã thêm bằng cách gọi ``remove_inspector_plugin()``.
 
 .. note:: Here, you are loading a script and not a packed scene. Therefore you
-          should use ``new()`` instead of ``instantiate()``.
+          nên sử dụng ``new()`` thay vì ``instantiate()``.
 
 .. tabs::
   .. code-tab:: gdscript GDScript
@@ -84,30 +72,18 @@ you should remove the instance you have added by calling
     #endif
 
 
-Interacting with the inspector
-------------------------------
+Tương tác với Inspector
+-----------------------
 
-To interact with the inspector dock, your ``my_inspector_plugin.gd`` script must
-extend the :ref:`class_EditorInspectorPlugin` class. This class provides several
-virtual methods that affect how the inspector handles properties.
+Để tương tác với dock Inspector, script ``my_inspector_plugin.gd`` của bạn phải kế thừa class :ref:`class_EditorInspectorPlugin`. Class này cung cấp một số virtual method ảnh hưởng đến cách Inspector xử lý các thuộc tính.
 
-To have any effect at all, the script must implement the ``_can_handle()``
-method. This function is called for each edited :ref:`class_Object` and must
-return ``true`` if this plugin should handle the object or its properties.
+Để có bất kỳ tác dụng nào, script phải triển khai method ``_can_handle()``. Hàm này được gọi cho từng :ref:`class_Object` được chỉnh sửa và phải trả về ``true`` nếu plugin này nên xử lý object hoặc các thuộc tính của nó.
 
 .. note:: This includes any :ref:`class_Resource` attached to the object.
 
-You can implement four other methods to add controls to the inspector at
-specific positions. The ``_parse_begin()`` and ``_parse_end()`` methods are called
-only once at the beginning and the end of parsing for each object, respectively.
-They can add controls at the top or bottom of the inspector layout by calling
-``add_custom_control()``.
+Bạn có thể triển khai thêm bốn method khác để thêm các control vào Inspector tại những vị trí cụ thể. Các method ``_parse_begin()`` và ``_parse_end()`` lần lượt chỉ được gọi một lần ở đầu và cuối quá trình phân tích cú pháp cho mỗi object. Chúng có thể thêm control ở đầu hoặc cuối bố cục Inspector bằng cách gọi ``add_custom_control()``.
 
-As the editor parses the object, it calls the ``_parse_category()`` and
-``_parse_property()`` methods. There, in addition to ``add_custom_control()``,
-you can call both ``add_property_editor()`` and
-``add_property_editor_for_multiple_properties()``. Use these last two methods to
-specifically add :ref:`class_EditorProperty`-based controls.
+Khi editor phân tích object, nó gọi các method ``_parse_category()`` và ``_parse_property()``. Tại đó, ngoài ``add_custom_control()``, bạn có thể gọi cả ``add_property_editor()`` và ``add_property_editor_for_multiple_properties()``. Sử dụng hai method sau để thêm riêng các control dựa trên :ref:`class_EditorProperty`.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -120,18 +96,18 @@ specifically add :ref:`class_EditorProperty`-based controls.
 
 
     func _can_handle(object):
-        # We support all objects in this example.
+        # Trong ví dụ này, chúng ta hỗ trợ mọi object.
         return true
 
 
     func _parse_property(object, type, name, hint_type, hint_string, usage_flags, wide):
-        # We handle properties of type integer.
+        # Chúng ta xử lý các thuộc tính có kiểu integer.
         if type == TYPE_INT:
-            # Create an instance of the custom property editor and register
-            # it to a specific property path.
+            # Tạo một instance của property editor tùy chỉnh và đăng ký
+            # nó cho một property path cụ thể.
             add_property_editor(name, RandomIntEditor.new())
-            # Inform the editor to remove the default property editor for
-            # this property type.
+            # Thông báo cho editor xóa property editor mặc định đối với
+            # kiểu thuộc tính này.
             return true
         else:
             return false
@@ -147,7 +123,7 @@ specifically add :ref:`class_EditorProperty`-based controls.
     {
         public override bool _CanHandle(GodotObject @object)
         {
-            // We support all objects in this example.
+            // Trong ví dụ này, chúng ta hỗ trợ mọi object.
             return true;
         }
 
@@ -155,14 +131,14 @@ specifically add :ref:`class_EditorProperty`-based controls.
             string name, PropertyHint hintType, string hintString,
             PropertyUsageFlags usageFlags, bool wide)
         {
-            // We handle properties of type integer.
+            // Chúng ta xử lý các thuộc tính có kiểu integer.
             if (type == Variant.Type.Int)
             {
-                // Create an instance of the custom property editor and register
-                // it to a specific property path.
+                // Tạo một instance của property editor tùy chỉnh và đăng ký
+                // nó cho một property path cụ thể.
                 AddPropertyEditor(name, new RandomIntEditor());
-                // Inform the editor to remove the default property editor for
-                // this property type.
+                // Thông báo cho editor xóa property editor mặc định đối với
+                // kiểu thuộc tính này.
                 return true;
             }
 
@@ -171,30 +147,23 @@ specifically add :ref:`class_EditorProperty`-based controls.
     }
     #endif
 
-Adding an interface to edit properties
---------------------------------------
+Thêm một interface để chỉnh sửa thuộc tính
+------------------------------------------
 
-The :ref:`class_EditorProperty` class is a special type of :ref:`class_Control`
-that can interact with the inspector dock's edited objects. It doesn't display
-anything but can house any other control nodes, including complex scenes.
+Class :ref:`class_EditorProperty` là một kiểu :ref:`class_Control` đặc biệt có thể tương tác với các object đang được chỉnh sửa trong dock Inspector. Nó không hiển thị bất cứ thứ gì nhưng có thể chứa bất kỳ control node nào khác, bao gồm cả các scene phức tạp.
 
-There are three essential parts to the script extending
+Script kế thừa này có ba phần thiết yếu
 :ref:`class_EditorProperty`:
 
-1. You must define the ``_init()`` method to set up the control nodes'
-   structure.
+1. Bạn phải định nghĩa method ``_init()`` để thiết lập cấu trúc của các control node.
 
-2. You should implement the ``_update_property()`` to handle changes to the data
-   from the outside.
+2. Bạn nên triển khai ``_update_property()`` để xử lý các thay đổi đối với dữ liệu từ bên ngoài.
 
-3. A signal must be emitted at some point to inform the inspector that the
-   control has changed the property using ``emit_changed``.
+3. Tại một thời điểm nào đó, phải phát một signal để thông báo cho Inspector rằng control đã thay đổi thuộc tính bằng cách sử dụng ``emit_changed``.
 
-You can display your custom widget in two ways. Use just the default ``add_child()``
-method to display it to the right of the property name, and use ``add_child()``
-followed by ``set_bottom_editor()`` to position it below the name.
+Bạn có thể hiển thị widget tùy chỉnh theo hai cách. Chỉ cần sử dụng method ``add_child()`` mặc định để hiển thị nó ở bên phải tên thuộc tính, hoặc sử dụng ``add_child()`` rồi đến ``set_bottom_editor()`` để đặt nó bên dưới tên.
 
-.. FIXME: The second tab has the C# lexer for highlighting disabled for now, as the provided code causes errors.
+.. FIXME: Hiện tại tab thứ hai đã tắt lexer C# để tô sáng, vì code được cung cấp gây ra lỗi.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -204,42 +173,42 @@ followed by ``set_bottom_editor()`` to position it below the name.
     extends EditorProperty
 
 
-    # The main control for editing the property.
+    # Control chính để chỉnh sửa thuộc tính.
     var property_control = Button.new()
-    # An internal value of the property.
+    # Giá trị nội bộ của thuộc tính.
     var current_value = 0
-    # A guard against internal changes when the property is updated.
+    # Một cơ chế bảo vệ chống lại các thay đổi nội bộ khi thuộc tính được cập nhật.
     var updating = false
 
 
     func _init():
-        # Add the control as a direct child of EditorProperty node.
+        # Thêm control dưới dạng direct child của node EditorProperty.
         add_child(property_control)
-        # Make sure the control is able to retain the focus.
+        # Đảm bảo control có thể giữ focus.
         add_focusable(property_control)
-        # Setup the initial state and connect to the signal to track changes.
+        # Thiết lập trạng thái ban đầu và kết nối với signal để theo dõi các thay đổi.
         refresh_control_text()
         property_control.pressed.connect(_on_button_pressed)
 
 
     func _on_button_pressed():
-        # Ignore the signal if the property is currently being updated.
+        # Bỏ qua signal nếu thuộc tính hiện đang được cập nhật.
         if (updating):
             return
 
-        # Generate a new random integer between 0 and 99.
+        # Tạo một số nguyên ngẫu nhiên mới từ 0 đến 99.
         current_value = randi() % 100
         refresh_control_text()
         emit_changed(get_edited_property(), current_value)
 
 
     func _update_property():
-        # Read the current value from the property.
+        # Đọc giá trị hiện tại từ thuộc tính.
         var new_value = get_edited_object()[get_edited_property()]
         if (new_value == current_value):
             return
 
-        # Update the control with the new value.
+        # Cập nhật control bằng giá trị mới.
         updating = true
         current_value = new_value
         refresh_control_text()
@@ -257,33 +226,33 @@ followed by ``set_bottom_editor()`` to position it below the name.
     [Tool]
     public partial class RandomIntEditor : EditorProperty
     {
-        // The main control for editing the property.
+        // Control chính để chỉnh sửa thuộc tính.
         private Button _propertyControl = new Button();
-        // An internal value of the property.
+        // Giá trị nội bộ của thuộc tính.
         private int _currentValue = 0;
-        // A guard against internal changes when the property is updated.
+        // Một cơ chế bảo vệ chống lại các thay đổi nội bộ khi thuộc tính được cập nhật.
         private bool _updating = false;
 
         public RandomIntEditor()
         {
-            // Add the control as a direct child of EditorProperty node.
+            // Thêm control dưới dạng direct child của node EditorProperty.
             AddChild(_propertyControl);
-            // Make sure the control is able to retain the focus.
+            // Đảm bảo control có thể giữ focus.
             AddFocusable(_propertyControl);
-            // Setup the initial state and connect to the signal to track changes.
+            // Thiết lập trạng thái ban đầu và kết nối với signal để theo dõi các thay đổi.
             RefreshControlText();
             _propertyControl.Pressed += OnButtonPressed;
         }
 
         private void OnButtonPressed()
         {
-            // Ignore the signal if the property is currently being updated.
+            // Bỏ qua signal nếu thuộc tính hiện đang được cập nhật.
             if (_updating)
             {
                 return;
             }
 
-            // Generate a new random integer between 0 and 99.
+            // Tạo một số nguyên ngẫu nhiên mới từ 0 đến 99.
             _currentValue = (int)GD.Randi() % 100;
             RefreshControlText();
             EmitChanged(GetEditedProperty(), _currentValue);
@@ -291,14 +260,14 @@ followed by ``set_bottom_editor()`` to position it below the name.
 
         public override void _UpdateProperty()
         {
-            // Read the current value from the property.
+            // Đọc giá trị hiện tại từ thuộc tính.
             var newValue = (int)GetEditedObject().Get(GetEditedProperty());
             if (newValue == _currentValue)
             {
                 return;
             }
 
-            // Update the control with the new value.
+            // Cập nhật control bằng giá trị mới.
             _updating = true;
             _currentValue = newValue;
             RefreshControlText();
@@ -312,6 +281,5 @@ followed by ``set_bottom_editor()`` to position it below the name.
     }
     #endif
 
-Using the example code above you should be able to make a custom widget that
-replaces the default :ref:`class_SpinBox` control for integers with a
+Sử dụng code ví dụ ở trên, bạn sẽ có thể tạo một widget tùy chỉnh thay thế control :ref:`class_SpinBox` mặc định cho các số nguyên bằng một
 :ref:`class_Button` that generates random values.

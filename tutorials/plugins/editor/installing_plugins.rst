@@ -1,71 +1,46 @@
 .. _doc_installing_plugins:
 
-Installing plugins
-==================
+Cài đặt plugin
+==============
 
-Godot features an editor plugin system with numerous plugins developed by the
-community. Plugins can extend the editor's functionality with new nodes,
-additional docks, convenience features, and more.
+Godot cung cấp một hệ thống plugin cho editor với rất nhiều plugin do cộng đồng phát triển. Plugin có thể mở rộng chức năng của editor bằng các node mới, dock bổ sung, các tính năng tiện lợi và nhiều hơn nữa.
 
-Finding plugins
-~~~~~~~~~~~~~~~
+Tìm plugin
+~~~~~~~~~~
 
-The preferred way to find Godot plugins is to use the
-`Asset Library <https://godotengine.org/asset-library/>`_. While it can be
-browsed online, it's more convenient to use it directly from the editor.
-To do so, click the **AssetLib** tab at the top of the editor:
+Cách ưu tiên để tìm plugin Godot là sử dụng `Asset Library <https://godotengine.org/asset-library/>`_. Bạn có thể duyệt trực tuyến, nhưng sẽ thuận tiện hơn nếu sử dụng trực tiếp từ editor. Để làm vậy, hãy nhấp vào tab **AssetLib** ở phía trên editor:
 
 .. image:: img/installing_plugins_assetlib_tab.webp
 
-You can also find assets on code hosting websites such as GitHub.
+Bạn cũng có thể tìm asset trên các website lưu trữ code như GitHub.
 
 .. note::
 
-    Some repositories describe themselves as "plugins" but may not actually be
-    *editor* plugins. This is especially the case for scripts that are intended
-    to be used in a running project. You don't need to enable such plugins to
-    use them. Download them and extract the files in your project folder.
+    Một số repository tự mô tả là "plugin" nhưng có thể thực tế không phải là plugin *editor*. Điều này đặc biệt đúng với các script được dùng trong một project đang chạy. Bạn không cần bật những plugin như vậy để sử dụng chúng. Hãy tải chúng xuống và giải nén các file vào thư mục project của bạn.
 
-    One way to distinguish editor plugins from non-editor plugins is to look for
-    a ``plugin.cfg`` file in the repository that hosts the plugin. If the
-    repository contains a ``plugin.cfg`` file in a folder placed in the
-    ``addons/`` folder, then it is an editor plugin.
+    Một cách để phân biệt plugin editor với plugin không dành cho editor là tìm file ``plugin.cfg`` trong repository lưu trữ plugin. Nếu repository chứa file ``plugin.cfg`` trong một thư mục nằm trong thư mục ``addons/``, thì đó là một plugin editor.
 
-Installing a plugin
-~~~~~~~~~~~~~~~~~~~
+Cài đặt plugin
+~~~~~~~~~~~~~~
 
-To install a plugin, download it as a ZIP archive. On the Asset Library, this
-can be done using the **Download** button, either from the editor or using the
-Web interface.
+Để cài đặt plugin, hãy tải plugin xuống dưới dạng một tệp lưu trữ ZIP. Trong Asset Library, bạn có thể thực hiện việc này bằng nút **Download**, từ editor hoặc bằng giao diện Web.
 
-On GitHub, if a plugin has *tags* (versions) declared, go to the **Releases**
-tab to download a stable release. This ensures you download a version that was
-declared to be stable by its author.
+Trên GitHub, nếu plugin có khai báo *tags* (phiên bản), hãy chuyển đến tab **Releases** để tải xuống một bản phát hành ổn định. Điều này đảm bảo bạn tải xuống phiên bản được tác giả xác định là ổn định.
 
-On GitHub, if the plugin doesn't have any *tags* declared, use the **Download ZIP**
-button to download a ZIP of the latest revision:
+Trên GitHub, nếu plugin không có *tags* nào được khai báo, hãy sử dụng nút **Download ZIP** để tải xuống ZIP của revision mới nhất:
 
 .. image:: img/installing_plugins_github_download_zip.png
 
-Extract the ZIP archive and move the ``addons/`` folder it contains into your
-project folder. If your project already contains an ``addons/`` folder, move the
-plugin's ``addons/`` folder into your project folder to merge the new folder
-contents with the existing one. Your file manager may ask you whether to write
-into the folder; answer **Yes**. No files will be overwritten in the process.
+Giải nén tệp lưu trữ ZIP và di chuyển thư mục ``addons/`` có trong đó vào thư mục project của bạn. Nếu project của bạn đã có thư mục ``addons/``, hãy di chuyển thư mục ``addons/`` của plugin vào thư mục project để hợp nhất nội dung của thư mục mới với thư mục hiện có. Trình quản lý file có thể hỏi bạn có muốn ghi vào thư mục hay không; hãy trả lời **Yes**. Không có file nào bị ghi đè trong quá trình này.
 
 .. _doc_installing_plugins_enabling_a_plugin:
 
-Enabling a plugin
-~~~~~~~~~~~~~~~~~
+Bật plugin
+~~~~~~~~~~
 
-To enable the freshly installed plugin, open **Project > Project Settings** at
-the top of the editor then go the **Plugins** tab. If the plugin was packaged
-correctly, you should see it in the list of plugins. Click on the
-**Enable** checkbox to enable the plugin.
+Để bật plugin vừa cài đặt, hãy mở **Project > Project Settings** ở phía trên editor, sau đó chuyển đến tab **Plugins**. Nếu plugin được đóng gói đúng cách, bạn sẽ thấy plugin đó trong danh sách plugin. Nhấp vào ô chọn **Enable** để bật plugin.
 
 .. image:: img/installing_plugins_project_settings.webp
 
 
-You can use the plugin immediately after enabling it; there's no need to restart
-the editor. Likewise, disabling a plugin can be done without having to restart
-the editor.
+Bạn có thể sử dụng plugin ngay sau khi bật; không cần khởi động lại editor. Tương tự, bạn có thể tắt plugin mà không cần khởi động lại editor.
