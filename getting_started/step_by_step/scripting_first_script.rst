@@ -1,100 +1,74 @@
-..
-    Intention:
+.. Mục đích:
 
-    - Giving a *short* and sweet hands-on intro to GDScript. The page should
-      focus on working in the code editor.
-    - We assume the reader has programming foundations. If you don't, consider
-      taking the course we recommend in the :ref:`introduction to Godot page <doc_introduction_learning_programming>`.
+    - Giới thiệu thực hành *ngắn gọn* và dễ hiểu về GDScript. Trang này tập trung vào việc làm việc trong trình soạn thảo mã. - Chúng tôi giả định người đọc đã có nền tảng lập trình. Nếu chưa, hãy cân nhắc tham gia khóa học mà chúng tôi đề xuất trong :ref:`introduction to Godot page <doc_introduction_learning_programming>`.
 
-    Techniques:
+    Kỹ thuật:
 
-    - Creating a sprite.
-    - Creating a script.
-    - _init() and _process().
-    - Moving an object on screen.
+    - Tạo một sprite. - Tạo một script. - _init() và _process(). - Di chuyển một đối tượng trên màn hình.
 
 .. _doc_scripting_first_script:
 
-Creating your first script
-==========================
+Tạo script đầu tiên
+===================
 
-In this lesson, you will code your first script to make the Godot icon turn in
-circles. As we mentioned :ref:`in the introduction
-<doc_introduction_learning_programming>`, we assume you have programming
-foundations.
+Trong bài học này, bạn sẽ viết mã cho script đầu tiên để làm cho biểu tượng Godot xoay theo vòng tròn. Như chúng tôi đã đề cập trong :ref:`in the introduction <doc_introduction_learning_programming>`, chúng tôi giả định bạn đã có nền tảng lập trình.
 
-This tutorial is written for GDScript, and the equivalent C# code is included in
-another tab of each codeblock for convenience.
+Hướng dẫn này được viết cho GDScript và mã C# tương đương được đưa vào một tab khác của mỗi khối mã để tiện theo dõi.
 
 .. image:: img/scripting_first_script_rotating_godot.gif
 
 .. seealso:: To learn more about GDScript, its keywords, and its syntax, head to
-             the :ref:`doc_gdscript` section. To learn more about C#,
-             head to the :ref:`doc_c_sharp` section.
+             phần :ref:`doc_gdscript`. Để tìm hiểu thêm về C#, hãy chuyển đến phần :ref:`doc_c_sharp`.
 
-Project setup
--------------
+Thiết lập dự án
+---------------
 
-Please :ref:`create a new project <doc_creating_and_importing_projects>` to
-start with a clean slate. Your project should contain one picture: the Godot
-icon, which we often use for prototyping in the community.
+Vui lòng :ref:`create a new project <doc_creating_and_importing_projects>` để bắt đầu với một dự án sạch. Dự án của bạn sẽ chứa một hình ảnh: biểu tượng Godot, hình ảnh mà chúng tôi thường dùng để tạo nguyên mẫu trong cộng đồng.
 
 .. image:: img/scripting_first_script_icon.svg
 
-We need to create a Sprite2D node to display it in the game. In the :ui:`Scene` dock,
-click the :button:`Other Node` button.
+Chúng ta cần tạo một nút Sprite2D để hiển thị hình ảnh này trong trò chơi. Trong dock :ui:`Scene`, hãy nhấp vào nút :button:`Other Node`.
 
 .. image:: img/scripting_first_script_click_other_node.webp
 
-Type "Sprite2D" in the search bar to filter nodes and double-click on Sprite2D
-to create the node.
+Nhập "Sprite2D" vào thanh tìm kiếm để lọc các nút, sau đó nhấp đúp vào Sprite2D để tạo nút.
 
 .. image:: img/scripting_first_script_add_sprite_node.webp
 
-Your :ui:`Scene` tab should now only have a Sprite2D node.
+Tab :ui:`Scene` của bạn lúc này chỉ nên có một nút Sprite2D.
 
 .. image:: img/scripting_first_script_scene_tree.webp
 
-A Sprite2D node needs a texture to display. In the :ui:`Inspector` on the right, you
-can see that the :inspector:`Texture` property says ``<empty>``. To display the
-Godot icon, click and drag the file ``icon.svg`` from the FileSystem dock onto the
-Texture slot.
+Một nút Sprite2D cần có texture để hiển thị. Trong :ui:`Inspector` ở bên phải, bạn có thể thấy thuộc tính :inspector:`Texture` có giá trị là ``<empty>``. Để hiển thị biểu tượng Godot, hãy nhấp và kéo tệp ``icon.svg`` từ dock FileSystem vào ô Texture.
 
 .. image:: img/scripting_first_script_setting_texture.webp
 
 .. note::
 
-    You can create Sprite2D nodes automatically by dragging and dropping images
-    on the viewport.
+    Bạn có thể tự động tạo các nút Sprite2D bằng cách kéo và thả hình ảnh vào khung nhìn.
 
-Then, click and drag the icon in the viewport to center it in the game view.
+Sau đó, hãy nhấp và kéo biểu tượng trong khung nhìn để căn giữa biểu tượng trong khung nhìn trò chơi.
 
 .. image:: img/scripting_first_script_centering_sprite.webp
 
-Creating a new script
----------------------
+Tạo script mới
+--------------
 
-To create and attach a new script to our node, right-click on Sprite2D in the
-Scene dock and select :button:`Attach Script`.
+Để tạo và gắn một script mới vào nút của chúng ta, hãy nhấp chuột phải vào Sprite2D trong dock Scene và chọn :button:`Attach Script`.
 
 .. image:: img/scripting_first_script_attach_script.webp
 
-The :ui:`Attach Node Script` window appears. It allows you to select the script's
-language and file path, among other options.
+Cửa sổ :ui:`Attach Node Script` xuất hiện. Cửa sổ này cho phép bạn chọn ngôn ngữ và đường dẫn tệp của script, cùng nhiều tùy chọn khác.
 
-Change the :ui:`Template` field from ``Node: Default`` to ``Object: Empty`` to
-start with a clean file. Leave the other options set to their default values and
-click the :button:`Create` button to create the script.
+Đổi trường :ui:`Template` từ ``Node: Default`` thành ``Object: Empty`` để bắt đầu với một tệp trống. Giữ nguyên các tùy chọn khác ở giá trị mặc định, rồi nhấp vào nút :button:`Create` để tạo script.
 
 .. image:: img/scripting_first_script_attach_node_script.webp
 
 .. note::
 
-    C# script names need to match their class name. In this case, you should name the
-    file ``MySprite2D.cs``.
+    Tên script C# cần khớp với tên lớp của chúng. Trong trường hợp này, bạn nên đặt tên tệp là ``MySprite2D.cs``.
 
-The :ui:`Script` workspace should appear with your new ``sprite_2d.gd`` file open and
-the following line of code:
+Không gian làm việc :ui:`Script` sẽ xuất hiện cùng với tệp ``sprite_2d.gd`` mới đang mở và dòng mã sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -103,171 +77,110 @@ the following line of code:
 
  .. code-tab:: csharp C#
 
-    using Godot;
-    using System;
+    using Godot; using System;
 
-    public partial class MySprite2D : Sprite2D
-    {
-    }
+    public partial class MySprite2D : Sprite2D { }
 
-Every GDScript file is implicitly a class. The ``extends`` keyword defines the
-class this script inherits or extends. In this case, it's ``Sprite2D``, meaning
-our script will get access to all the properties and functions of the Sprite2D
-node, including classes it extends, like ``Node2D``, ``CanvasItem``, and
-``Node``.
+Mỗi tệp GDScript ngầm định là một lớp. Từ khóa ``extends`` xác định lớp mà script này kế thừa hoặc mở rộng. Trong trường hợp này, đó là ``Sprite2D``, nghĩa là script của chúng ta sẽ có quyền truy cập vào tất cả thuộc tính và hàm của nút Sprite2D, bao gồm cả các lớp mà nó mở rộng, như ``Node2D``, ``CanvasItem`` và ``Node``.
 
 .. note:: In GDScript, if you omit the line with the ``extends`` keyword, your
-          class will implicitly extend :ref:`RefCounted <class_RefCounted>`, which
-          Godot uses to manage your application's memory.
+          lớp sẽ ngầm định mở rộng :ref:`RefCounted <class_RefCounted>`, lớp mà Godot sử dụng để quản lý bộ nhớ của ứng dụng.
 
-Inherited properties include the ones you can see in the :ui:`Inspector` dock, like
-our node's ``texture``.
+Các thuộc tính kế thừa bao gồm những thuộc tính bạn có thể thấy trong dock :ui:`Inspector`, chẳng hạn như ``texture`` của nút.
 
 .. note::
 
-    By default, the :ui:`Inspector` displays a node's properties in "Title Case", with
-    capitalized words separated by a space. In GDScript code, these properties
-    are in "snake_case", which is lowercase with each word separated by an underscore.
+    Theo mặc định, :ui:`Inspector` hiển thị các thuộc tính của một nút ở dạng "Title Case", với các từ viết hoa được phân cách bằng dấu cách. Trong mã GDScript, các thuộc tính này ở dạng "snake_case", trong đó tất cả chữ cái đều viết thường và mỗi từ được phân cách bằng dấu gạch dưới.
 
-    You can hover over any property's name in the :ui:`Inspector` to see a description and
-    its identifier in code.
+    Bạn có thể di chuột lên tên của bất kỳ thuộc tính nào trong :ui:`Inspector` để xem mô tả và mã định danh của thuộc tính đó.
 
 Hello, world!
 -------------
 
-Our script currently doesn't do anything. Let's make it print the text "Hello,
-world!" to the Output bottom panel to get started.
+Hiện tại script của chúng ta chưa làm gì cả. Hãy để nó in văn bản "Hello, world!" vào bảng điều khiển dưới cùng Output để bắt đầu.
 
-Add the following code to your script:
+Thêm đoạn mã sau vào script của bạn:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _init():
-        print("Hello, world!")
+    func _init(): print("Hello, world!")
 
  .. code-tab:: csharp C#
 
-    public MySprite2D()
-    {
-        GD.Print("Hello, world!");
-    }
+    public MySprite2D() { GD.Print("Hello, world!"); }
 
 
-Let's break it down. The ``func`` keyword defines a new function named
-``_init``. This is a special name for our class's constructor. The engine calls
-``_init()`` on every object or node upon creating it in memory, if you define
-this function.
+Hãy phân tích đoạn mã này. Từ khóa ``func`` định nghĩa một hàm mới có tên ``_init``. Đây là tên đặc biệt dành cho hàm khởi tạo của lớp. Engine sẽ gọi ``_init()`` trên mọi đối tượng hoặc nút ngay sau khi tạo nó trong bộ nhớ, nếu bạn định nghĩa hàm này.
 
 .. note:: GDScript is an indent-based language. The tab at the start of the line
-          that says ``print()`` is necessary for the code to work. If you omit
-          it or don't indent a line correctly, the editor will highlight it in
-          red and display the following error message: "Indented block expected".
+          cho biết rằng ``print()`` là cần thiết để mã hoạt động. Nếu bạn bỏ qua nó hoặc không thụt lề một dòng đúng cách, trình soạn thảo sẽ đánh dấu dòng đó màu đỏ và hiển thị thông báo lỗi sau: "Indented block expected".
 
-Save the scene as ``sprite_2d.tscn`` if you haven't already, then press :kbd:`F6` (:kbd:`Cmd + R` on macOS)
-to run it. Look at the :ui:`Output` bottom panel that expands.
-It should display "Hello, world!".
+Lưu cảnh dưới tên ``sprite_2d.tscn`` nếu bạn chưa làm vậy, sau đó nhấn :kbd:`F6` (:kbd:`Cmd + R` trên macOS) để chạy cảnh. Hãy nhìn vào bảng điều khiển dưới cùng :ui:`Output` được mở rộng. Bảng này sẽ hiển thị "Hello, world!".
 
 .. image:: img/scripting_first_script_print_hello_world.webp
 
-Delete the ``_init()`` function, so you're only left with the line ``extends
-Sprite2D``.
+Xóa hàm ``_init()``, để bạn chỉ còn lại dòng ``extends Sprite2D``.
 
-Turning around
---------------
+Xoay vòng
+---------
 
-It's time to make our node move and rotate. To do so, we're going to add two
-member variables to our script: the movement speed in pixels per second and the
-angular speed in radians per second. Add the following after the ``extends Sprite2D`` line.
+Đã đến lúc làm cho nút di chuyển và xoay. Để thực hiện việc này, chúng ta sẽ thêm hai biến thành viên vào script: tốc độ di chuyển tính bằng pixel mỗi giây và tốc độ góc tính bằng radian mỗi giây. Thêm đoạn mã sau bên dưới dòng ``extends Sprite2D``.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    var speed = 400
-    var angular_speed = PI
+    var speed = 400 var angular_speed = PI
 
  .. code-tab:: csharp C#
 
-    private int _speed = 400;
-    private float _angularSpeed = Mathf.Pi;
+    private int _speed = 400; private float _angularSpeed = Mathf.Pi;
 
-Member variables sit near the top of the script, after any "extends" lines,
-but before functions. Every node
-instance with this script attached to it will have its own copy of the ``speed``
-and ``angular_speed`` properties.
+Các biến thành viên nằm gần đầu script, sau mọi dòng "extends" nhưng trước các hàm. Mỗi thực thể nút được gắn script này sẽ có bản sao riêng của các thuộc tính ``speed`` và ``angular_speed``.
 
 .. note:: Angles in Godot work in radians by default,
-          but you have built-in functions and properties available if you prefer
-          to calculate angles in degrees instead.
+          nhưng bạn có sẵn các hàm và thuộc tính tích hợp nếu muốn tính góc theo độ.
 
-To move our icon, we need to update its position and rotation every frame in the
-game loop. We can use the ``_process()`` virtual function of the ``Node`` class.
-If you define it in any class that extends the Node class, like Sprite2D, Godot
-will call the function every frame and pass it an argument named ``delta``, the
-time elapsed since the last frame.
+Để di chuyển biểu tượng, chúng ta cần cập nhật vị trí và góc xoay của nó trong mỗi khung hình của vòng lặp trò chơi. Chúng ta có thể sử dụng hàm ảo ``_process()`` của lớp ``Node``. Nếu bạn định nghĩa hàm này trong bất kỳ lớp nào mở rộng lớp Node, chẳng hạn như Sprite2D, Godot sẽ gọi hàm này trong mỗi khung hình và truyền cho nó một đối số có tên ``delta``, là khoảng thời gian đã trôi qua kể từ khung hình trước.
 
 .. note::
 
-    Games work by rendering many images per second, each called a frame, and
-    they do so in a loop. We measure the rate at which a game produces images in
-    Frames Per Second (FPS). Most games aim for 60 FPS, although you might find
-    figures like 30 FPS on slower mobile devices or 90 to 240 for virtual
-    reality games.
+    Trò chơi hoạt động bằng cách kết xuất nhiều hình ảnh mỗi giây, mỗi hình ảnh được gọi là một khung hình, và thực hiện việc này trong một vòng lặp. Chúng ta đo tốc độ trò chơi tạo ra hình ảnh bằng Frames Per Second (FPS). Hầu hết trò chơi nhắm đến 60 FPS, mặc dù trên các thiết bị di động chậm hơn, bạn có thể gặp các mức như 30 FPS, hoặc từ 90 đến 240 FPS đối với trò chơi thực tế ảo.
 
-    The engine and game developers do their best to update the game world and
-    render images at a constant time interval, but there are always small
-    variations in frame render times. That's why the engine provides us with
-    this delta time value, making our motion independent of our framerate.
+    Engine và các nhà phát triển trò chơi cố gắng hết sức để cập nhật thế giới trò chơi và kết xuất hình ảnh theo một khoảng thời gian cố định, nhưng thời gian kết xuất mỗi khung hình luôn có những biến động nhỏ. Đó là lý do engine cung cấp cho chúng ta giá trị thời gian delta này, giúp chuyển động không phụ thuộc vào tốc độ khung hình.
 
-At the bottom of the script, define the function:
+Ở cuối script, hãy định nghĩa hàm:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _process(delta):
-        rotation += angular_speed * delta
+    func _process(delta): rotation += angular_speed * delta
 
  .. code-tab:: csharp C#
 
-    public override void _Process(double delta)
-    {
-        Rotation += _angularSpeed * (float)delta;
-    }
+    public override void _Process(double delta) { Rotation += _angularSpeed * (float)delta; }
 
-The ``func`` keyword defines a new function. After it, we have to write the
-function's name and arguments it takes in parentheses. A colon ends the
-definition, and the indented blocks that follow are the function's content or
-instructions.
+Từ khóa ``func`` định nghĩa một hàm mới. Sau từ khóa đó, chúng ta phải viết tên hàm và các đối số mà hàm nhận trong dấu ngoặc đơn. Dấu hai chấm kết thúc phần định nghĩa, còn các khối được thụt lề theo sau là nội dung hoặc các chỉ dẫn của hàm.
 
 .. note:: Notice how ``_process()``, like ``_init()``, starts with a leading
-          underscore. By convention, Godot's virtual functions, that is to say,
-          built-in functions you can override to communicate with the engine,
-          start with an underscore.
+          dấu gạch dưới. Theo quy ước, các hàm ảo của Godot, tức là những hàm tích hợp mà bạn có thể ghi đè để giao tiếp với engine, bắt đầu bằng dấu gạch dưới.
 
-The line inside the function, ``rotation += angular_speed * delta``, increments
-our sprite's rotation every frame. Here, ``rotation`` is a property inherited
-from the class ``Node2D``, which ``Sprite2D`` extends. It controls the rotation
-of our node and works with radians.
+Dòng bên trong hàm, ``rotation += angular_speed * delta``, tăng góc xoay của sprite trong mỗi khung hình. Ở đây, ``rotation`` là một thuộc tính được kế thừa từ lớp ``Node2D``, lớp mà ``Sprite2D`` mở rộng. Thuộc tính này điều khiển góc xoay của nút và sử dụng radian.
 
 .. tip:: In the code editor, you can :kbd:`Ctrl + Click` (:kbd:`Cmd + Click` on
-         macOS) on any built-in property or function like ``position``,
-         ``rotation``, or ``_process`` to open the corresponding documentation
-         in a new tab.
+         macOS) trên bất kỳ thuộc tính hoặc hàm tích hợp nào như ``position``, ``rotation`` hoặc ``_process`` để mở tài liệu tương ứng trong một tab mới.
 
-Run the scene to see the Godot icon turn in-place.
+Chạy cảnh để xem biểu tượng Godot xoay tại chỗ.
 
 .. image:: img/scripting_first_script_godot_turning_in_place.gif
 
 .. note:: In C#, notice how the ``delta`` argument taken by ``_Process()`` is a
-          ``double``. We therefore need to convert it to ``float`` when we apply
-          it to the rotation.
+          ``double``. Vì vậy, chúng ta cần chuyển đổi nó thành ``float`` khi áp dụng vào góc xoay.
 
-Moving forward
-~~~~~~~~~~~~~~
+Di chuyển về phía trước
+~~~~~~~~~~~~~~~~~~~~~~~
 
-Let's now make the node move. Add the following two lines inside of the ``_process()``
-function, ensuring the new lines are indented the same way as the ``rotation += angular_speed * delta`` line before
-them.
+Bây giờ hãy làm cho nút di chuyển. Thêm hai dòng sau vào bên trong hàm ``_process()``, đảm bảo các dòng mới được thụt lề giống với dòng ``rotation += angular_speed * delta`` đứng trước chúng.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -282,48 +195,36 @@ them.
 
     Position += velocity * (float)delta;
 
-As we already saw, the ``var`` keyword defines a new variable. If you put it at
-the top of the script, it defines a property of the class. Inside a function, it
-defines a local variable: it only exists within the function's scope.
+Như chúng ta đã thấy, từ khóa ``var`` định nghĩa một biến mới. Nếu đặt từ khóa này ở đầu script, nó định nghĩa một thuộc tính của lớp. Bên trong một hàm, nó định nghĩa một biến cục bộ: biến này chỉ tồn tại trong phạm vi của hàm.
 
-We define a local variable named ``velocity``, a 2D vector representing both a
-direction and a speed. To make the node move forward, we start from the Vector2
-class's constant ``Vector2.UP``, a vector pointing up, and rotate it by calling the
-Vector2 method ``rotated()``. This expression, ``Vector2.UP.rotated(rotation)``,
-is a vector pointing forward relative to our icon. Multiplied by our ``speed``
-property, it gives us a velocity we can use to move the node forward.
+Chúng ta định nghĩa một biến cục bộ có tên ``velocity``, một vector 2D biểu diễn cả hướng và tốc độ. Để làm cho nút di chuyển về phía trước, chúng ta bắt đầu từ hằng số ``Vector2.UP`` của lớp Vector2, một vector hướng lên trên, rồi xoay nó bằng cách gọi phương thức ``rotated()`` của Vector2. Biểu thức ``Vector2.UP.rotated(rotation)`` này là một vector hướng về phía trước tương đối so với biểu tượng của chúng ta. Nhân với thuộc tính ``speed``, nó cho chúng ta một vận tốc có thể dùng để di chuyển nút về phía trước.
 
-We add ``velocity * delta`` to the node's ``position`` to move it. The position
-itself is of type :ref:`Vector2 <class_Vector2>`, a built-in type in Godot
-representing a 2D vector.
+Chúng ta cộng ``velocity * delta`` vào ``position`` của nút để di chuyển nó. Bản thân vị trí có kiểu :ref:`Vector2 <class_Vector2>`, một kiểu tích hợp trong Godot biểu diễn một vector 2D.
 
-Run the scene to see the Godot head run in circles.
+Chạy cảnh để xem đầu biểu tượng Godot chạy theo vòng tròn.
 
 .. image:: img/scripting_first_script_rotating_godot.gif
 
 .. note:: Moving a node like that does not take into account colliding with
-          walls or the floor. In :ref:`doc_your_first_2d_game`, you will learn
-          another approach to moving objects while detecting collisions.
+          tường hoặc sàn nhà. Trong :ref:`doc_your_first_2d_game`, bạn sẽ tìm hiểu một cách tiếp cận khác để di chuyển các đối tượng đồng thời phát hiện va chạm.
 
-Our node currently moves by itself. In the next part,
+Hiện tại, node của chúng ta tự di chuyển. Trong phần tiếp theo,
 :ref:`doc_scripting_player_input`, we'll use player input to control it.
 
-Complete script
----------------
+Toàn bộ tập lệnh
+----------------
 
-Here is the complete ``sprite_2d.gd`` file for reference.
+Dưới đây là tệp ``sprite_2d.gd`` hoàn chỉnh để bạn tham khảo.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     extends Sprite2D
 
-    var speed = 400
-    var angular_speed = PI
+    var speed = 400 var angular_speed = PI
 
 
-    func _process(delta):
-        rotation += angular_speed * delta
+    func _process(delta): rotation += angular_speed * delta
 
         var velocity = Vector2.UP.rotated(rotation) * speed
 
@@ -331,19 +232,10 @@ Here is the complete ``sprite_2d.gd`` file for reference.
 
  .. code-tab:: csharp C#
 
-    using Godot;
-    using System;
+    using Godot; using System;
 
-    public partial class MySprite2D : Sprite2D
-    {
-        private int _speed = 400;
-        private float _angularSpeed = Mathf.Pi;
+    public partial class MySprite2D : Sprite2D { private int _speed = 400; private float _angularSpeed = Mathf.Pi;
 
-        public override void _Process(double delta)
-        {
-            Rotation += _angularSpeed * (float)delta;
-            var velocity = Vector2.Up.Rotated(Rotation) * _speed;
+        public override void _Process(double delta) { Rotation += _angularSpeed * (float)delta; var velocity = Vector2.Up.Rotated(Rotation) * _speed;
 
-            Position += velocity * (float)delta;
-        }
-    }
+            Position += velocity * (float)delta; } }

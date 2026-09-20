@@ -1,21 +1,15 @@
 :allow_comments: False
 
-.. Intention: provide the necessary information to make the most of the getting
-   started series, answering questions like "do I want to learn Godot?", "how
-   does it look and feel?", "how does it work?", and "how do I best learn it?".
+.. Mục đích: cung cấp thông tin cần thiết để tận dụng tối đa loạt bài bắt đầu, giải đáp những câu hỏi như "tôi có muốn học Godot không?", "nó trông như thế nào và cho cảm giác ra sao?", "nó hoạt động như thế nào?" và "tôi nên học nó tốt nhất bằng cách nào?".
 
 .. _doc_getting_started_intro:
 
-Introduction
-============
+Giới thiệu
+==========
 
-This series will introduce you to Godot and give you an overview of its
-features.
+Loạt bài này sẽ giới thiệu Godot cho bạn và cung cấp cái nhìn tổng quan về các tính năng của nó.
 
-In the following pages, you will get answers to questions such as "Is Godot for
-me?" or "What can I do with Godot?". We will then introduce the engine's most
-essential concepts, run you through the editor's interface, and give you tips to
-make the most of your time learning it.
+Trong các trang tiếp theo, bạn sẽ nhận được câu trả lời cho những câu hỏi như "Godot có phù hợp với tôi không?" hoặc "Tôi có thể làm gì với Godot?". Sau đó, chúng tôi sẽ giới thiệu những khái niệm thiết yếu nhất của engine, hướng dẫn bạn làm quen với giao diện của trình chỉnh sửa và đưa ra các mẹo để bạn tận dụng tối đa thời gian học.
 
 .. toctree::
    :maxdepth: 1

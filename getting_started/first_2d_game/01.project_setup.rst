@@ -1,67 +1,50 @@
 .. _doc_your_first_2d_game_project_setup:
 
-Setting up the project
-======================
+Thiết lập dự án
+===============
 
-In this short first part, we'll set up and organize the project.
+Trong phần đầu ngắn này, chúng ta sẽ thiết lập và sắp xếp dự án.
 
-Launch Godot and create a new project.
+Khởi chạy Godot và tạo một dự án mới.
 
 .. image:: img/new-project-button.webp
 
-When creating the new project, you only need to choose a valid *Project Path*. You can leave the other default settings alone.
+Khi tạo dự án mới, bạn chỉ cần chọn một *Project Path* hợp lệ. Bạn có thể giữ nguyên các thiết lập mặc định khác.
 
 .. tabs::
  .. tab:: GDScript
 
-    Download `dodge_the_creeps_2d_assets.zip <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/dodge_the_creeps_2d_assets.zip>`_.
-    The archive contains the images and sounds you'll be using
-    to make the game. Extract the archive and move the ``art/``
-    and ``fonts/`` directories to your project's directory.
+    Tải xuống `dodge_the_creeps_2d_assets.zip <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/dodge_the_creeps_2d_assets.zip>`_. Tệp lưu trữ này chứa các hình ảnh và âm thanh mà bạn sẽ sử dụng để tạo trò chơi. Giải nén tệp lưu trữ, sau đó di chuyển các thư mục ``art/`` và ``fonts/`` vào thư mục của dự án.
 
  .. tab:: C#
 
-    Download `dodge_the_creeps_2d_assets.zip <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/dodge_the_creeps_2d_assets.zip>`_.
-    The archive contains the images and sounds you'll be using
-    to make the game. Extract the archive and move the ``art/``
-    and ``fonts/`` directories to your project's directory.
+    Tải xuống `dodge_the_creeps_2d_assets.zip <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/dodge_the_creeps_2d_assets.zip>`_. Tệp lưu trữ này chứa các hình ảnh và âm thanh mà bạn sẽ sử dụng để tạo trò chơi. Giải nén tệp lưu trữ, sau đó di chuyển các thư mục ``art/`` và ``fonts/`` vào thư mục của dự án.
 
-    Ensure that you have the required dependencies to use C# in Godot.
-    You need the latest stable .NET SDK, and an editor such as VS Code.
-    See :ref:`doc_c_sharp_setup`.
+    Hãy đảm bảo bạn đã cài đặt các phần phụ thuộc cần thiết để sử dụng C# trong Godot. Bạn cần .NET SDK ổn định mới nhất và một trình soạn thảo như VS Code. Xem :ref:`doc_c_sharp_setup`.
 
  .. tab:: C++
 
-    The C++ part of this tutorial wasn't rewritten for the new GDExtension system yet.
+    Phần C++ của hướng dẫn này vẫn chưa được viết lại cho hệ thống GDExtension mới.
 
-Your project folder should look like this.
+Thư mục dự án của bạn sẽ có dạng như sau.
 
 .. image:: img/folder-content.webp
 
-This game is designed for portrait mode, so we need to adjust the size of the
-game window. Click on *Project -> Project Settings* to open the project settings
-window, in the left column open the *Display -> Window* tab. There, set
-"Viewport Width" to ``480`` and "Viewport Height" to ``720``. You can see the
-"Project" menu on the upper left corner.
+Trò chơi này được thiết kế cho chế độ dọc, vì vậy chúng ta cần điều chỉnh kích thước cửa sổ trò chơi. Nhấp vào *Project -> Project Settings* để mở cửa sổ cài đặt dự án, rồi mở thẻ *Display -> Window* ở cột bên trái. Tại đó, đặt "Viewport Width" thành ``480`` và "Viewport Height" thành ``720``. Bạn có thể thấy menu "Project" ở góc trên bên trái.
 
 .. image:: img/setting-project-width-and-height.webp
 
-Also, under the **Stretch** options, set **Mode** to ``canvas_items`` and **Aspect** to ``keep``.
-This ensures that the game scales consistently on different sized screens.
+Ngoài ra, trong các tùy chọn **Stretch**, đặt **Mode** thành ``canvas_items`` và **Aspect** thành ``keep``. Điều này đảm bảo trò chơi được điều chỉnh tỉ lệ nhất quán trên các màn hình có kích thước khác nhau.
 
 .. image:: img/setting-stretch-mode.webp
 
-Organizing the project
-----------------------
+Sắp xếp dự án
+-------------
 
-In this project, we will make 3 independent scenes: ``Player``, ``Mob``, and
-``HUD``, which we will combine into the game's ``Main`` scene.
+Trong dự án này, chúng ta sẽ tạo 3 cảnh độc lập: ``Player``, ``Mob`` và ``HUD``, sau đó kết hợp chúng vào cảnh ``Main`` của trò chơi.
 
-In a larger project, it might be useful to create folders to hold the various
-scenes and their scripts, but for this relatively small game, you can save your
-scenes and scripts in the project's root folder, identified by ``res://``. You
-can see your project folders in the FileSystem dock in the lower left corner:
+Sau khi đã có dự án, bạn có thể tạo các thư mục để chứa nhiều cảnh và tập lệnh khác nhau trong một dự án lớn hơn. Tuy nhiên, đối với trò chơi tương đối nhỏ này, bạn có thể lưu các cảnh và tập lệnh trong thư mục gốc của dự án, được xác định bởi ``res://``. Bạn có thể thấy các thư mục dự án của mình trong dock FileSystem ở góc dưới bên trái:
 
 .. image:: img/filesystem_dock.webp
 
-With the project in place, we're ready to design the player scene in the next lesson.
+Sau khi đã thiết lập dự án, chúng ta sẵn sàng thiết kế cảnh người chơi trong bài học tiếp theo.

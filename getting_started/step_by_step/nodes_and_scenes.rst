@@ -1,200 +1,146 @@
-.. The goal of this page is to explain more than doc_key_concepts_overview about nodes and scenes,
-   get the user to create their first concrete scene.
+.. Mục tiêu của trang này là giải thích nhiều hơn về doc_key_concepts_overview về các node và scene, đồng thời hướng dẫn người dùng tạo scene cụ thể đầu tiên của mình.
 
 .. _doc_nodes_and_scenes:
 
-Nodes and Scenes
-================
+Các node và scene
+=================
 
-In :ref:`doc_key_concepts_overview`, we saw that a Godot game is a tree of
-scenes and that each scene is a tree of nodes. In this lesson, we explain a bit
-more about them. You will also create your first scene.
+Trong :ref:`doc_key_concepts_overview`, chúng ta đã thấy rằng một trò chơi Godot là một cây các scene và mỗi scene là một cây các node. Trong bài học này, chúng ta sẽ giải thích thêm một chút về chúng. Bạn cũng sẽ tạo scene đầu tiên của mình.
 
-Nodes
------
+Các node
+--------
 
-**Nodes are the fundamental building blocks of your game**. They are like the
-ingredients in a recipe. There are dozens of kinds that can display an image,
-play a sound, represent a camera, and much more.
+**Node là những khối xây dựng cơ bản của trò chơi**. Chúng giống như các nguyên liệu trong một công thức. Có hàng chục loại node có thể hiển thị hình ảnh, phát âm thanh, đại diện cho camera và nhiều chức năng khác.
 
 .. image:: img/nodes_and_scenes_nodes.webp
 
-All nodes have the following characteristics:
+Tất cả các node đều có những đặc điểm sau:
 
-- A name.
-- Editable properties.
-- They receive callbacks to update every frame.
-- You can extend them with new properties and functions.
-- You can add them to another node as a child.
+- Tên. - Các thuộc tính có thể chỉnh sửa. - Chúng nhận các callback để cập nhật trong mỗi khung hình. - Bạn có thể mở rộng chúng bằng các thuộc tính và hàm mới. - Bạn có thể thêm chúng vào một node khác dưới dạng node con.
 
-The last characteristic is important. **Together, nodes form a tree**, which is a powerful
-feature to organize projects. Since different nodes have different functions,
-combining them produces more complex behavior. As we saw before, you can build a
-playable character that the camera follows using a :ref:`CharacterBody2D <class_CharacterBody2D>`
-node, a :ref:`Sprite2D <class_Sprite2D>` node,
-a :ref:`Camera2D <class_Camera2D>` node, and a :ref:`CollisionShape2D <class_CollisionShape2D>` node.
+Đặc điểm cuối cùng rất quan trọng. **Các node kết hợp với nhau tạo thành một cây**, đây là một tính năng mạnh mẽ để tổ chức dự án. Vì các node khác nhau có những chức năng khác nhau, việc kết hợp chúng sẽ tạo ra hành vi phức tạp hơn. Như chúng ta đã thấy trước đây, bạn có thể xây dựng một nhân vật có thể điều khiển và được camera bám theo bằng cách sử dụng một node :ref:`CharacterBody2D <class_CharacterBody2D>`, một node :ref:`Sprite2D <class_Sprite2D>`, một node :ref:`Camera2D <class_Camera2D>` và một node :ref:`CollisionShape2D <class_CollisionShape2D>`.
 
 .. image:: img/nodes_and_scenes_character_nodes.webp
 
-Scenes
-------
+Các scene
+---------
 
-When you organize nodes in a tree, like our character, we call this construct a
-scene. Once saved, scenes work like new node types in the editor, where you can
-add them as a child of an existing node. In that case, the instance of the scene
-appears as a single node with its internals hidden.
+Khi bạn tổ chức các node trong một cây, giống như nhân vật của chúng ta, chúng ta gọi cấu trúc này là một scene. Sau khi được lưu, các scene hoạt động như những loại node mới trong trình chỉnh sửa, nơi bạn có thể thêm chúng làm node con của một node hiện có. Trong trường hợp đó, instance của scene xuất hiện dưới dạng một node duy nhất với phần bên trong bị ẩn.
 
-Scenes allow you to structure your game's code however you want. You can
-**compose nodes** to create custom and complex node types, like a game character
-that runs and jumps, a life bar, a chest with which you can interact, and more.
+Scene cho phép bạn cấu trúc mã của trò chơi theo bất kỳ cách nào bạn muốn. Bạn có thể **kết hợp các node** để tạo ra những loại node tùy chỉnh và phức tạp, chẳng hạn như một nhân vật trò chơi có thể chạy và nhảy, một thanh máu, một chiếc rương mà bạn có thể tương tác và nhiều thứ khác.
 
 .. image:: img/nodes_and_scenes_3d_scene_example.webp
 
-The Godot editor essentially is a **scene editor**. It has plenty of tools for
-editing 2D and 3D scenes, as well as user interfaces. A Godot project can
-contain as many of these scenes as you need. The engine only requires one as
-your application's **main scene**. This is the scene Godot will first load when
-you or a player runs the game.
+Về bản chất, trình chỉnh sửa Godot là một **trình chỉnh sửa scene**. Nó có rất nhiều công cụ để chỉnh sửa scene 2D và 3D, cũng như giao diện người dùng. Một dự án Godot có thể chứa bao nhiêu scene tùy theo nhu cầu của bạn. Engine chỉ yêu cầu một scene làm **scene chính** của ứng dụng. Đây là scene mà Godot sẽ tải đầu tiên khi bạn hoặc người chơi chạy trò chơi.
 
-On top of acting like nodes, scenes have the following characteristics:
+Ngoài việc hoạt động như các node, scene còn có những đặc điểm sau:
 
-1. They always have one root node, like the "Player" in our example.
-2. You can save them to your local drive and load them later.
-3. You can create as many instances of a scene as you'd like. You could have
-   five or ten characters in your game, created from your Character scene.
+1. Chúng luôn có một node gốc, giống như "Player" trong ví dụ của chúng ta. 2. Bạn có thể lưu chúng vào ổ đĩa cục bộ và tải chúng sau. 3. Bạn có thể tạo bao nhiêu instance của một scene tùy thích. Bạn có thể có năm hoặc mười nhân vật trong trò chơi, được tạo từ scene Character của mình.
 
-Creating your first scene
--------------------------
+Tạo scene đầu tiên của bạn
+--------------------------
 
-Let's create our first scene with a single node. To do so, you will need to
+Hãy tạo scene đầu tiên với một node duy nhất. Để làm vậy, bạn sẽ cần
 :ref:`create a new project <doc_creating_and_importing_projects>` first. After
-opening the project, you should see an empty editor.
+sau khi mở dự án, bạn sẽ thấy một trình chỉnh sửa trống.
 
 .. image:: img/nodes_and_scenes_01_empty_editor.webp
 
-In an empty scene, the :ui:`Scene` dock on the left shows several options to add a
-root node quickly. :button:`2D Scene` adds a :ref:`Node2D <class_Node2D>` node,
+Trong một scene trống, dock :ui:`Scene` ở bên trái hiển thị một số tùy chọn để nhanh chóng thêm node gốc. :button:`2D Scene` thêm một node :ref:`Node2D <class_Node2D>`,
 :button:`3D Scene` adds a :ref:`Node3D <class_Node3D>` node,
-and :button:`User Interface` adds a :ref:`Control <class_Control>` node.
-These presets are here for convenience; they are not mandatory.
+và :button:`User Interface` thêm một node :ref:`Control <class_Control>`. Các thiết lập sẵn này chỉ nhằm mang lại sự tiện lợi; chúng không bắt buộc.
 :button:`Other Node` lets you select any node to be the root node.
-In an empty scene, :button:`Other Node` is equivalent to pressing the :button:`Add Child Node`
-button at the top-left of the Scene dock, which usually adds
-a new node as a child of the currently selected node.
+Trong một scene trống, :button:`Other Node` tương đương với việc nhấn nút :button:`Add Child Node` ở phía trên bên trái của dock Scene, nút này thường thêm một node mới làm node con của node hiện đang được chọn.
 
-We're going to add a single :ref:`Label <class_Label>` node to our scene. Its function is to draw
-text on the screen.
+Chúng ta sẽ thêm một node :ref:`Label <class_Label>` duy nhất vào scene. Chức năng của node này là vẽ văn bản trên màn hình.
 
-Press the :button:`Add Child Node` button or :button:`Other Node` to create a
-root node.
+Nhấn nút :button:`Add Child Node` hoặc :button:`Other Node` để tạo node gốc.
 
 .. image:: img/nodes_and_scenes_02_scene_dock.webp
 
-The :ui:`Create New Node` dialog opens, showing the long list of available nodes.
+Hộp thoại :ui:`Create New Node` mở ra, hiển thị danh sách dài các node có sẵn.
 
 .. image:: img/nodes_and_scenes_03_create_node_window.webp
 
-Select the Label node. You can type its name to filter down the list.
+Chọn node Label. Bạn có thể nhập tên của node để lọc danh sách.
 
 .. image:: img/nodes_and_scenes_04_create_label_window.webp
 
-Click on the Label node to select it and click the :button:`Create` button at
-the bottom of the window.
+Nhấp vào node Label để chọn, rồi nhấp vào nút :button:`Create` ở cuối cửa sổ.
 
 .. image:: img/nodes_and_scenes_05_editor_with_label.webp
 
-A lot happens when you add a scene's first node. The scene changes to the 2D
-workspace because Label is a 2D node type. The Label appears, selected, in the
-top-left corner of the viewport. The node appears in the Scene dock on the left,
-and the node's properties appear in the Inspector dock on the right.
+Có rất nhiều thay đổi xảy ra khi bạn thêm node đầu tiên của một scene. Scene chuyển sang không gian làm việc 2D vì Label là một loại node 2D. Label xuất hiện ở góc trên bên trái của viewport và được chọn. Node xuất hiện trong dock Scene ở bên trái, còn các thuộc tính của node xuất hiện trong dock Inspector ở bên phải.
 
-Changing a node's properties
-----------------------------
+Thay đổi thuộc tính của một node
+--------------------------------
 
-The next step is to change the Label's :inspector:`Text` property. Let's change
-it to "Hello World".
+Bước tiếp theo là thay đổi thuộc tính :inspector:`Text` của Label. Hãy đổi nó thành "Hello World".
 
-Head to the Inspector dock on the right of the viewport. Click inside the field
-below the :inspector:`Text` property and type "Hello World".
+Đi đến dock Inspector ở bên phải viewport. Nhấp vào trường bên dưới thuộc tính :inspector:`Text` và nhập "Hello World".
 
 .. image:: img/nodes_and_scenes_06_label_text.webp
 
-You will see the text draw in the viewport as you type.
+Bạn sẽ thấy văn bản được vẽ trong viewport khi nhập.
 
 .. seealso:: You can edit any property listed in the Inspector as we did with
-             the Text. For a complete reference of the Inspector dock, see
+             Text. Để xem tài liệu tham khảo đầy đủ về dock Inspector, hãy xem
              :ref:`doc_editor_inspector_dock`.
 
-You can move your Label node in the viewport by selecting the move tool in the
-toolbar.
+Bạn có thể di chuyển node Label trong viewport bằng cách chọn công cụ di chuyển trên thanh công cụ.
 
 .. image:: img/nodes_and_scenes_07_move_tool.webp
 
-With the Label selected, click and drag anywhere in the viewport to
-move it to the center of the view delimited by the rectangle.
+Khi Label được chọn, hãy nhấp và kéo ở bất kỳ vị trí nào trong viewport để di chuyển nó đến giữa vùng xem được giới hạn bởi hình chữ nhật.
 
 .. image:: img/nodes_and_scenes_08_hello_world_text.webp
 
-Running the scene
------------------
+Chạy scene
+----------
 
-Everything's ready to run the scene! Press the :button:`Run Current Scene`
-button in the top-right of the screen or press :kbd:`F6` (:kbd:`Cmd + R` on
-macOS).
+Mọi thứ đã sẵn sàng để chạy scene! Nhấn nút :button:`Run Current Scene` ở phía trên bên phải màn hình hoặc nhấn :kbd:`F6` (:kbd:`Cmd + R` trên macOS).
 
 .. image:: img/nodes_and_scenes_09_play_scene_button.webp
 
-A popup invites you to save the scene, which is required to run it. Click the
+Một cửa sổ bật lên yêu cầu bạn lưu scene, vì đây là điều kiện bắt buộc để chạy scene. Nhấp vào
 :button:`Save` button in the file browser to save it as ``label.tscn``.
 
 .. image:: img/nodes_and_scenes_10_save_scene_as.webp
 
 .. note:: The :ui:`Save Scene As` dialog, like other file dialogs in the editor, only
-          allows you to save files inside the project. The ``res://`` path at
-          the top of the window represents the project's root directory and
-          stands for "resource path". For more information about file paths in
-          Godot, see :ref:`doc_filesystem`.
+          cho phép bạn lưu các tệp bên trong dự án. Đường dẫn ``res://`` ở đầu cửa sổ đại diện cho thư mục gốc của dự án và là viết tắt của "resource path". Để biết thêm thông tin về đường dẫn tệp trong Godot, hãy xem :ref:`doc_filesystem`.
 
-The application should open in a new window and display the text "Hello World".
+Ứng dụng sẽ mở trong một cửa sổ mới và hiển thị văn bản "Hello World".
 
 .. image:: img/nodes_and_scenes_11_final_result.webp
 
-Close the window or press :kbd:`F8` (:kbd:`Cmd + .` on macOS) to quit the running scene.
+Đóng cửa sổ hoặc nhấn :kbd:`F8` (:kbd:`Cmd + .` trên macOS) để thoát scene đang chạy.
 
 .. seealso::
 
-   See :ref:`doc_game_embedding` for more information about the Game window that appears
-   when running the project.
+   Xem :ref:`doc_game_embedding` để biết thêm thông tin về cửa sổ Game xuất hiện khi chạy dự án.
 
-Setting the main scene
-----------------------
+Thiết lập scene chính
+---------------------
 
-To run our test scene, we used the :button:`Run Current Scene` button. Another button
-next to it, :button:`Run Project`, allows you to set and run the project's
-**main scene**. You can also press :kbd:`F5` (:kbd:`Cmd + B` on macOS) to do so.
+Để chạy scene thử nghiệm, chúng ta đã sử dụng nút :button:`Run Current Scene`. Một nút khác bên cạnh, :button:`Run Project`, cho phép bạn thiết lập và chạy **scene chính** của dự án. Bạn cũng có thể nhấn :kbd:`F5` (:kbd:`Cmd + B` trên macOS) để thực hiện việc này.
 
 .. image:: img/nodes_and_scenes_12_play_button.webp
 
 .. note:: Running the project's *main scene* is distinct from running the
-          *current scene*. If you encounter unexpected behavior, check
-          to ensure you are running the correct scene.
+          *scene hiện tại*. Nếu gặp hành vi bất ngờ, hãy kiểm tra để đảm bảo bạn đang chạy đúng scene.
 
-A popup window appears and invites you to select the main scene.
+Một cửa sổ bật lên xuất hiện và yêu cầu bạn chọn scene chính.
 
 .. image:: img/nodes_and_scenes_13_main_scene_popup.webp
 
-Click the :button:`Select` button, and in the file dialog that appears, double
-click on ``label.tscn``.
+Nhấp vào nút :button:`Select`, rồi trong hộp thoại tệp xuất hiện, nhấp đúp vào ``label.tscn``.
 
 .. image:: img/nodes_and_scenes_14_select_main_scene.webp
 
-The demo should run again. Moving forward, every time you run the project, Godot
-will use this scene as a starting point.
+Bản demo sẽ chạy lại. Từ giờ trở đi, mỗi khi bạn chạy dự án, Godot sẽ sử dụng scene này làm điểm bắt đầu.
 
 .. note:: The editor saves the main scene's path in a project.godot file in your
-          project's directory. While you can edit this text file directly to
-          change project settings, you can also use the :menu:`Project > Project Settings`
-          window to do so. For more information, see :ref:`doc_project_settings`.
+          thư mục của dự án. Mặc dù bạn có thể chỉnh sửa trực tiếp tệp văn bản này để thay đổi các thiết lập của dự án, bạn cũng có thể sử dụng cửa sổ :menu:`Project > Project Settings` để thực hiện việc đó. Để biết thêm thông tin, hãy xem :ref:`doc_project_settings`.
 
-In the next part, we will discuss another key concept in games and in Godot:
-creating instances of a scene.
+Trong phần tiếp theo, chúng ta sẽ thảo luận về một khái niệm quan trọng khác trong trò chơi và Godot: tạo các instance của một scene.

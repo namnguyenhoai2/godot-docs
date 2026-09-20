@@ -1,134 +1,85 @@
 .. _doc_your_first_2d_game_finishing_up:
 
-Finishing up
-============
+Hoàn tất
+========
 
-We have now completed all the functionality for our game. Below are some
-remaining steps to add a bit more "juice" to improve the game experience.
+Bây giờ chúng ta đã hoàn thành toàn bộ chức năng cho trò chơi. Dưới đây là một số bước còn lại để thêm một chút "sức sống" và cải thiện trải nghiệm chơi game.
 
-Feel free to expand the gameplay with your own ideas.
+Bạn có thể tự do mở rộng lối chơi bằng những ý tưởng của riêng mình.
 
-Background
-----------
+Nền
+---
 
-The default gray background is not very appealing, so let's change its color.
-One way to do this is to use a :ref:`ColorRect <class_ColorRect>` node. Make it
-the first node under ``Main`` so that it will be drawn behind the other nodes.
-``ColorRect`` only has one property: ``Color``. Choose a color you like and
-select "Layout" -> "Anchors Preset" -> "Full Rect" either in the toolbar at the top of the viewport or in the inspector so that it covers the screen.
+Nền màu xám mặc định không được bắt mắt cho lắm, vì vậy hãy thay đổi màu của nó. Một cách để thực hiện việc này là sử dụng một node :ref:`ColorRect <class_ColorRect>`. Hãy đặt nó làm node đầu tiên bên dưới ``Main`` để nó được vẽ phía sau các node khác. ``ColorRect`` chỉ có một thuộc tính: ``Color``. Chọn một màu bạn thích rồi chọn "Layout" -> "Anchors Preset" -> "Full Rect" trên thanh công cụ ở đầu viewport hoặc trong inspector để nó phủ kín màn hình.
 
-You could also add a background image, if you have one, by using a
+Nếu có sẵn, bạn cũng có thể thêm một hình nền bằng cách sử dụng một
 :ref:`TextureRect <class_TextureRect>` node instead.
 
-Sound effects
--------------
+Hiệu ứng âm thanh
+-----------------
 
-Sound and music can be the single most effective way to add appeal to the game
-experience. In your game's **art** folder, you have two sound files: "House In a
-Forest Loop.ogg" for background music, and "gameover.wav" for when the player
-loses.
+Âm thanh và nhạc có thể là cách hiệu quả nhất để tăng sức hấp dẫn cho trải nghiệm chơi game. Trong thư mục **art** của trò chơi, bạn có hai tệp âm thanh: "House In a Forest Loop.ogg" cho nhạc nền và "gameover.wav" khi người chơi thua.
 
-Add two :ref:`AudioStreamPlayer <class_AudioStreamPlayer>` nodes as children of
-``Main``. Name one of them ``Music`` and the other ``DeathSound``. On each one,
-click on the ``Stream`` property, select "Load", and choose the corresponding
-audio file.
+Thêm hai node :ref:`AudioStreamPlayer <class_AudioStreamPlayer>` làm node con của ``Main``. Đặt tên một node là ``Music`` và node còn lại là ``DeathSound``. Trên mỗi node, nhấp vào thuộc tính ``Stream``, chọn "Load" rồi chọn tệp âm thanh tương ứng.
 
-All audio is automatically imported with the ``Loop`` setting disabled.
-If you want the music to loop seamlessly, click on the Stream file arrow,
-select ``Make Unique``, then click on the Stream file and check the ``Loop`` box.
+Tất cả âm thanh được tự động nhập với thiết lập ``Loop`` bị tắt. Nếu muốn nhạc lặp liền mạch, hãy nhấp vào mũi tên của tệp Stream, chọn ``Make Unique``, sau đó nhấp vào tệp Stream và đánh dấu vào ô ``Loop``.
 
 .. image:: img/unique_resource_music.webp
 
-To play the music, add ``$Music.play()`` in the ``new_game()``
-function and ``$Music.stop()`` in the ``game_over()`` function.
+Để phát nhạc, hãy thêm ``$Music.play()`` vào hàm ``new_game()`` và ``$Music.stop()`` vào hàm ``game_over()``.
 
-Finally, add ``$DeathSound.play()`` in the ``game_over()`` function.
+Cuối cùng, hãy thêm ``$DeathSound.play()`` vào hàm ``game_over()``.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func game_over():
-        ...
-        $Music.stop()
-        $DeathSound.play()
+    func game_over(): ... $Music.stop() $DeathSound.play()
 
-    func new_game():
-        ...
-        $Music.play()
+    func new_game(): ... $Music.play()
 
  .. code-tab:: csharp
 
-    public void GameOver()
-    {
-        ...
-        GetNode<AudioStreamPlayer>("Music").Stop();
-        GetNode<AudioStreamPlayer>("DeathSound").Play();
-    }
+    public void GameOver() { ... GetNode<AudioStreamPlayer>("Music").Stop(); GetNode<AudioStreamPlayer>("DeathSound").Play(); }
 
-    public void NewGame()
-    {
-        ...
-        GetNode<AudioStreamPlayer>("Music").Play();
-    }
+    public void NewGame() { ... GetNode<AudioStreamPlayer>("Music").Play(); }
 
 
-Keyboard shortcut
------------------
+Phím tắt
+--------
 
-Since the game is played with keyboard controls, it would be convenient if we
-could also start the game by pressing a key on the keyboard. We can do this with
-the "Shortcut" property of the ``Button`` node.
+Vì trò chơi được điều khiển bằng bàn phím, sẽ thật tiện lợi nếu chúng ta cũng có thể bắt đầu trò chơi bằng cách nhấn một phím trên bàn phím. Chúng ta có thể thực hiện việc này bằng thuộc tính "Shortcut" của node ``Button``.
 
-In a previous lesson, we created four input actions to move the character. We
-will create a similar input action to map to the start button.
+Trong bài học trước, chúng ta đã tạo bốn hành động đầu vào để di chuyển nhân vật. Chúng ta sẽ tạo một hành động đầu vào tương tự để gán cho nút bắt đầu.
 
-Select "Project" -> "Project Settings" and then click on the "Input Map"
-tab. In the same way you created the movement input actions, create a new
-input action called ``start_game`` and add a key mapping for the :kbd:`Enter`
-key.
+Chọn "Project" -> "Project Settings", sau đó nhấp vào tab "Input Map". Tương tự như khi tạo các hành động đầu vào cho việc di chuyển, hãy tạo một hành động đầu vào mới có tên ``start_game`` và thêm ánh xạ phím cho phím :kbd:`Enter`.
 
 .. image:: img/input-mapping-start_game.webp
 
-Now would be a good time to add controller support if you have one available.
-Attach or pair your controller and then under each input action that you wish
-to add controller support for, click on the "+" button and press the corresponding
-button, d-pad, or stick direction that you want to map to the respective input action.
+Bây giờ là lúc thích hợp để thêm hỗ trợ bộ điều khiển nếu bạn có sẵn một thiết bị. Kết nối hoặc ghép nối bộ điều khiển, sau đó trong mỗi hành động đầu vào mà bạn muốn thêm hỗ trợ bộ điều khiển, hãy nhấp vào nút "+" và nhấn nút, d-pad hoặc hướng cần điều khiển tương ứng mà bạn muốn ánh xạ cho hành động đầu vào đó.
 
-In the ``HUD`` scene, select the ``StartButton`` and find its **Shortcut**
-property in the Inspector. Create a new :ref:`Shortcut <class_Shortcut>` resource
-by clicking within the box, open the **Events** array and add a new array element
-to it by clicking on **Array[InputEvent] (size 0)**.
+Trong scene ``HUD``, chọn ``StartButton`` và tìm thuộc tính **Shortcut** của nó trong Inspector. Tạo một resource :ref:`Shortcut <class_Shortcut>` mới bằng cách nhấp vào bên trong ô, mở mảng **Events** và thêm một phần tử mảng mới bằng cách nhấp vào **Array[InputEvent] (size 0)**.
 
 .. image:: img/start_button_shortcut.webp
 
-Create a new :ref:`InputEventAction <class_InputEventAction>` and select the ``start_game`` action.
+Tạo một :ref:`InputEventAction <class_InputEventAction>` mới và chọn hành động ``start_game``.
 
 .. image:: img/start_button_shortcut2.webp
 
-Now when the start button appears, you can either click it or press :kbd:`Enter`
-to start the game.
+Bây giờ, khi nút bắt đầu xuất hiện, bạn có thể nhấp vào nút đó hoặc nhấn :kbd:`Enter` để bắt đầu trò chơi.
 
-And with that, you completed your first 2D game in Godot.
+Vậy là bạn đã hoàn thành trò chơi 2D đầu tiên của mình trong Godot.
 
 .. image:: img/dodge_preview.gif
 
-You got to make a player-controlled character, enemies that spawn randomly
-around the game board, count the score, implement a game over and replay, user
-interface, sounds, and more. Congratulations!
+Bạn đã tạo một nhân vật do người chơi điều khiển, những kẻ địch xuất hiện ngẫu nhiên quanh bàn chơi, tính điểm, triển khai trạng thái game over và chơi lại, giao diện người dùng, âm thanh cùng nhiều tính năng khác. Xin chúc mừng!
 
-There's still much to learn, but you can take a moment to appreciate what you
-achieved.
+Vẫn còn rất nhiều điều cần học, nhưng bạn có thể dành một chút thời gian để trân trọng những gì mình đã đạt được.
 
-And when you're ready, you can move on to :ref:`doc_your_first_3d_game` to learn
-to create a complete 3D game from scratch, in Godot.
+Và khi đã sẵn sàng, bạn có thể chuyển sang :ref:`doc_your_first_3d_game` để học cách tạo một trò chơi 3D hoàn chỉnh từ đầu trong Godot.
 
-Sharing the finished game with others
--------------------------------------
+Chia sẻ trò chơi đã hoàn thiện với người khác
+---------------------------------------------
 
-If you want people to try out your game without having to install Godot, you'll
-need to export the project for each operating system you want the game to be
-playable on. See :ref:`doc_exporting_projects` for instructions.
+Nếu muốn mọi người dùng thử trò chơi mà không cần cài đặt Godot, bạn sẽ cần xuất dự án cho từng hệ điều hành mà bạn muốn trò chơi có thể chạy trên đó. Hãy xem :ref:`doc_exporting_projects` để biết hướng dẫn.
 
-After exporting the project, compress the exported executable and PCK file (not
-the raw project files) to a ZIP file, then upload this ZIP file to a file
-sharing website.
+Sau khi xuất dự án, hãy nén tệp thực thi và tệp PCK đã xuất (không phải các tệp dự án thô) thành một tệp ZIP, sau đó tải tệp ZIP này lên một website chia sẻ tệp.

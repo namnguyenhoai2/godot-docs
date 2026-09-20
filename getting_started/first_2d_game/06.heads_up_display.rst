@@ -1,246 +1,159 @@
 .. _doc_your_first_2d_game_heads_up_display:
 
-Heads up display
-================
+Màn hình hiển thị thông tin
+===========================
 
-The final piece our game needs is a User Interface (UI) to display things like
-score, a "game over" message, and a restart button.
+Mảnh ghép cuối cùng mà trò chơi cần là Giao diện người dùng (UI) để hiển thị những thứ như điểm số, thông báo "game over" và nút khởi động lại.
 
-Create a new scene, click the "Other Node" button and add a :ref:`CanvasLayer <class_CanvasLayer>` node named
-``HUD``. "HUD" stands for "heads-up display", an informational display that
-appears as an overlay on top of the game view.
+Tạo một scene mới, nhấp vào nút "Other Node" và thêm một node :ref:`CanvasLayer <class_CanvasLayer>` có tên ``HUD``. "HUD" là viết tắt của "heads-up display", một màn hình thông tin xuất hiện dưới dạng lớp phủ bên trên khung nhìn trò chơi.
 
-The :ref:`CanvasLayer <class_CanvasLayer>` node lets us draw our UI elements on
-a layer above the rest of the game, so that the information it displays isn't
-covered up by any game elements like the player or mobs.
+Node :ref:`CanvasLayer <class_CanvasLayer>` cho phép chúng ta vẽ các phần tử UI trên một lớp nằm bên trên phần còn lại của trò chơi, để thông tin mà nó hiển thị không bị bất kỳ phần tử trò chơi nào như người chơi hoặc mob che khuất.
 
-The HUD needs to display the following information:
+HUD cần hiển thị các thông tin sau:
 
-- Score, changed by ``ScoreTimer``.
-- A message, such as "Game Over" or "Get Ready!"
-- A "Start" button to begin the game.
+- Điểm số, được thay đổi bởi ``ScoreTimer``. - Một thông báo, chẳng hạn như "Game Over" hoặc "Get Ready!" - Một nút "Start" để bắt đầu trò chơi.
 
-The basic node for UI elements is :ref:`Control <class_Control>`. To create our
-UI, we'll use two types of :ref:`Control <class_Control>` nodes: :ref:`Label
-<class_Label>` and :ref:`Button <class_Button>`.
+Node cơ bản cho các phần tử UI là :ref:`Control <class_Control>`. Để tạo UI, chúng ta sẽ sử dụng hai loại node :ref:`Control <class_Control>`: :ref:`Label <class_Label>` và :ref:`Button <class_Button>`.
 
-Create the following as children of the ``HUD`` node:
+Tạo các node sau làm node con của node ``HUD``:
 
-- :ref:`Label <class_Label>` named ``ScoreLabel``.
-- :ref:`Label <class_Label>` named ``Message``.
-- :ref:`Button <class_Button>` named ``StartButton``.
-- :ref:`Timer <class_Timer>` named ``MessageTimer``.
+- :ref:`Label <class_Label>` có tên ``ScoreLabel``. - :ref:`Label <class_Label>` có tên ``Message``. - :ref:`Button <class_Button>` có tên ``StartButton``. - :ref:`Timer <class_Timer>` có tên ``MessageTimer``.
 
-Click on the ``ScoreLabel`` and type a number into the ``Text`` field in the
-Inspector. The default font for ``Control`` nodes is small and doesn't scale
-well. There is a font file included in the game assets called
-"Xolonium-Regular.ttf". To use this font, do the following:
+Nhấp vào ``ScoreLabel`` và nhập một số vào trường ``Text`` trong Inspector. Phông chữ mặc định cho các node ``Control`` nhỏ và không có khả năng co giãn tốt. Trong các tài nguyên của trò chơi có một tệp phông chữ tên là "Xolonium-Regular.ttf". Để sử dụng phông chữ này, hãy làm như sau:
 
-Under "Theme Overrides > Fonts", choose "Load" and select the "Xolonium-Regular.ttf" file.
+Trong "Theme Overrides > Fonts", chọn "Load" rồi chọn tệp "Xolonium-Regular.ttf".
 
 .. image:: img/custom_font_load_font.webp
 
-The font size is still too small, increase it to ``64`` under "Theme Overrides > Font Sizes".
-Once you've done this with the ``ScoreLabel``, repeat the changes for the ``Message`` and ``StartButton`` nodes.
+Cỡ phông chữ vẫn còn quá nhỏ, hãy tăng lên ``64`` trong "Theme Overrides > Font Sizes". Sau khi thực hiện việc này với ``ScoreLabel``, hãy lặp lại các thay đổi cho các node ``Message`` và ``StartButton``.
 
 .. image:: img/custom_font_size.webp
 
 .. note:: **Anchors:** ``Control`` nodes have a position and size,
-          but they also have anchors. Anchors define the origin -
-          the reference point for the edges of the node.
+          nhưng chúng cũng có các anchor. Anchor xác định gốc tọa độ - điểm tham chiếu cho các cạnh của node.
 
-Arrange the nodes as shown below.
-You can drag the nodes to place them manually, or for more precise placement,
-use "Anchor Presets".
+Sắp xếp các node như hình bên dưới. Bạn có thể kéo các node để đặt chúng thủ công hoặc để định vị chính xác hơn, hãy sử dụng "Anchor Presets".
 
 .. image:: img/ui_anchor.webp
 
 ScoreLabel
 ----------
 
-1. Add the text ``0``.
-2. Set the "Horizontal Alignment" and "Vertical Alignment" to ``Center``.
-3. Choose the "Anchor Preset" ``Center Top``.
+1. Thêm văn bản ``0``. 2. Đặt "Horizontal Alignment" và "Vertical Alignment" thành ``Center``. 3. Chọn "Anchor Preset" ``Center Top``.
 
 Message
 -------
 
-1. Add the text ``Dodge the Creeps!``.
-2. Set the "Horizontal Alignment" and "Vertical Alignment" to ``Center``.
-3. Set the "Autowrap Mode" to ``Word``, otherwise the label will stay on one line.
-4. Under "Control - Layout/Transform" set "Size X"  to ``480`` to use the entire width of the screen.
-5. Choose the "Anchor Preset" ``Center``.
+1. Thêm văn bản ``Dodge the Creeps!``. 2. Đặt "Horizontal Alignment" và "Vertical Alignment" thành ``Center``. 3. Đặt "Autowrap Mode" thành ``Word``, nếu không nhãn sẽ nằm trên một dòng. 4. Trong "Control - Layout/Transform", đặt "Size X" thành ``480`` để sử dụng toàn bộ chiều rộng màn hình. 5. Chọn "Anchor Preset" ``Center``.
 
 StartButton
 -----------
 
-1. Add the text ``Start``.
-2. Under "Control - Layout/Transform", set "Size X" to ``200`` and "Size Y" to ``100``
-   to add a little bit more padding between the border and text.
-3. Choose the "Anchor Preset" ``Center Bottom``.
-4. Under "Control - Layout/Transform", set "Position Y" to ``580``.
+1. Thêm văn bản ``Start``. 2. Trong "Control - Layout/Transform", đặt "Size X" thành ``200`` và "Size Y" thành ``100`` để tạo thêm một chút khoảng đệm giữa đường viền và văn bản. 3. Chọn "Anchor Preset" ``Center Bottom``. 4. Trong "Control - Layout/Transform", đặt "Position Y" thành ``580``.
 
-On the ``MessageTimer``, set the ``Wait Time`` to ``2`` and set the ``One Shot``
-property to "On".
+Trên ``MessageTimer``, đặt ``Wait Time`` thành ``2`` và đặt thuộc tính ``One Shot`` thành "On".
 
-Now add this script to ``HUD``:
+Bây giờ hãy thêm script này vào ``HUD``:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     extends CanvasLayer
 
-    # Notifies `Main` node that the button has been pressed
-    signal start_game
+    # Thông báo cho node `Main` rằng nút đã được nhấn signal start_game
 
  .. code-tab:: csharp
 
     using Godot;
 
-    public partial class HUD : CanvasLayer
-    {
-        // Don't forget to rebuild the project so the editor knows about the new signal.
+    public partial class HUD : CanvasLayer { // Đừng quên build lại project để editor nhận biết signal mới.
 
-        [Signal]
-        public delegate void StartGameEventHandler();
-    }
+        [Signal] public delegate void StartGameEventHandler(); }
 
-We now want to display a message temporarily,
-such as "Get Ready", so we add the following code
+Bây giờ chúng ta muốn hiển thị tạm thời một thông báo, chẳng hạn như "Get Ready", vì vậy hãy thêm đoạn mã sau
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func show_message(text):
-        $Message.text = text
-        $Message.show()
-        $MessageTimer.start()
+    func show_message(text): $Message.text = text $Message.show() $MessageTimer.start()
 
  .. code-tab:: csharp
 
-    public void ShowMessage(string text)
-    {
-        var message = GetNode<Label>("Message");
-        message.Text = text;
-        message.Show();
+    public void ShowMessage(string text) { var message = GetNode<Label>("Message"); message.Text = text; message.Show();
 
-        GetNode<Timer>("MessageTimer").Start();
-    }
+        GetNode<Timer>("MessageTimer").Start(); }
 
-We also need to process what happens when the player loses. The code below will show "Game Over" for 2 seconds, then return to the title screen and, after a brief pause, show the "Start" button.
+Chúng ta cũng cần xử lý điều xảy ra khi người chơi thua. Đoạn mã dưới đây sẽ hiển thị "Game Over" trong 2 giây, sau đó quay lại màn hình tiêu đề và, sau một khoảng dừng ngắn, hiển thị nút "Start".
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func show_game_over():
-        show_message("Game Over")
-        # Wait until the MessageTimer has counted down.
-        await $MessageTimer.timeout
+    func show_game_over(): show_message("Game Over") # Chờ cho đến khi MessageTimer đếm ngược xong. await $MessageTimer.timeout
 
-        $Message.text = "Dodge the Creeps!"
-        $Message.show()
-        # Make a one-shot timer and wait for it to finish.
-        await get_tree().create_timer(1.0).timeout
-        $StartButton.show()
+        $Message.text = "Dodge the Creeps!" $Message.show() # Tạo một timer chạy một lần và chờ timer hoàn tất. await get_tree().create_timer(1.0).timeout $StartButton.show()
 
  .. code-tab:: csharp
 
-    async public void ShowGameOver()
-    {
-        ShowMessage("Game Over");
+    async public void ShowGameOver() { ShowMessage("Game Over");
 
-        var messageTimer = GetNode<Timer>("MessageTimer");
-        await ToSignal(messageTimer, Timer.SignalName.Timeout);
+        var messageTimer = GetNode<Timer>("MessageTimer"); await ToSignal(messageTimer, Timer.SignalName.Timeout);
 
-        var message = GetNode<Label>("Message");
-        message.Text = "Dodge the Creeps!";
-        message.Show();
+        var message = GetNode<Label>("Message"); message.Text = "Dodge the Creeps!"; message.Show();
 
-        await ToSignal(GetTree().CreateTimer(1.0), SceneTreeTimer.SignalName.Timeout);
-        GetNode<Button>("StartButton").Show();
-    }
+        await ToSignal(GetTree().CreateTimer(1.0), SceneTreeTimer.SignalName.Timeout); GetNode<Button>("StartButton").Show(); }
 
 .. note:: When you need to pause for a brief time, an alternative to using a
-          Timer node is to use the SceneTree's ``create_timer()`` function. This
-          can be very useful to add delays such as in the above code, where we
-          want to wait some time before showing the "Start" button.
+          Node Timer dùng hàm ``create_timer()`` của SceneTree. Điều này có thể rất hữu ích để thêm độ trễ, chẳng hạn như trong đoạn mã trên, khi chúng ta muốn chờ một khoảng thời gian trước khi hiển thị nút "Start".
 
-Add the code below to ``HUD`` to update the score
+Thêm đoạn mã dưới đây vào ``HUD`` để cập nhật điểm số
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func update_score(score):
-        $ScoreLabel.text = str(score)
+    func update_score(score): $ScoreLabel.text = str(score)
 
  .. code-tab:: csharp
 
-    public void UpdateScore(int score)
-    {
-        GetNode<Label>("ScoreLabel").Text = score.ToString();
-    }
+    public void UpdateScore(int score) { GetNode<Label>("ScoreLabel").Text = score.ToString(); }
 
-Connect the ``pressed()`` signal of ``StartButton`` and the ``timeout()``
-signal of ``MessageTimer`` to the ``HUD`` node, and add the following code to the new functions:
+Kết nối signal ``pressed()`` của ``StartButton`` và signal ``timeout()`` của ``MessageTimer`` với node ``HUD``, rồi thêm đoạn mã sau vào các hàm mới:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _on_start_button_pressed():
-        $StartButton.hide()
-        start_game.emit()
+    func _on_start_button_pressed(): $StartButton.hide() start_game.emit()
 
-    func _on_message_timer_timeout():
-        $Message.hide()
+    func _on_message_timer_timeout(): $Message.hide()
 
  .. code-tab:: csharp
 
-    // We also specified this function name in PascalCase in the editor's connection window.
-    private void OnStartButtonPressed()
-    {
-        GetNode<Button>("StartButton").Hide();
-        EmitSignal(SignalName.StartGame);
-    }
+    // Chúng ta cũng đã chỉ định tên hàm này ở dạng PascalCase trong cửa sổ kết nối của editor. private void OnStartButtonPressed() { GetNode<Button>("StartButton").Hide(); EmitSignal(SignalName.StartGame); }
 
-    // We also specified this function name in PascalCase in the editor's connection window.
-    private void OnMessageTimerTimeout()
-    {
-        GetNode<Label>("Message").Hide();
-    }
+    // Chúng ta cũng đã chỉ định tên hàm này ở dạng PascalCase trong cửa sổ kết nối của editor. private void OnMessageTimerTimeout() { GetNode<Label>("Message").Hide(); }
 
-Connecting HUD to Main
-----------------------
+Kết nối HUD với Main
+--------------------
 
-Now that we're done creating the ``HUD`` scene, go back to ``Main``. Instance
-the ``HUD`` scene in ``Main`` like you did the ``Player`` scene. The scene tree
-should look like this, so make sure you didn't miss anything:
+Bây giờ chúng ta đã tạo xong scene ``HUD``, hãy quay lại ``Main``. Instance scene ``HUD`` trong ``Main`` giống như cách bạn đã làm với scene ``Player``. Cây scene sẽ trông như sau, vì vậy hãy đảm bảo bạn không bỏ sót điều gì:
 
 .. image:: img/completed_main_scene.webp
 
-Now we need to connect the ``HUD`` functionality to our ``Main`` script. This
-requires a few additions to the ``Main`` scene:
+Bây giờ chúng ta cần kết nối chức năng ``HUD`` với script ``Main``. Việc này yêu cầu thêm một vài thành phần vào scene ``Main``:
 
-In the Signals tab, connect the HUD's ``start_game`` signal to the ``new_game()``
-function of the Main node by clicking the "Pick" button in the "Connect a Signal"
-window and selecting the ``new_game()`` method or type "new_game" below "Receiver Method"
-in the window. Verify that the green connection icon now appears next to
-``func new_game()`` in the script.
+Trong tab Signals, kết nối signal ``start_game`` của HUD với hàm ``new_game()`` của node Main bằng cách nhấp vào nút "Pick" trong cửa sổ "Connect a Signal" rồi chọn phương thức ``new_game()``, hoặc nhập "new_game" bên dưới "Receiver Method" trong cửa sổ. Xác nhận rằng biểu tượng kết nối màu xanh lục hiện xuất hiện bên cạnh ``func new_game()`` trong script.
 
-In ``new_game()``, update the score display and show the "Get Ready" message:
+Trong ``new_game()``, hãy cập nhật phần hiển thị điểm số và hiển thị thông báo "Get Ready":
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-        $HUD.update_score(score)
-        $HUD.show_message("Get Ready")
+        $HUD.update_score(score) $HUD.show_message("Get Ready")
 
  .. code-tab:: csharp
 
-        var hud = GetNode<HUD>("HUD");
-        hud.UpdateScore(_score);
-        hud.ShowMessage("Get Ready!");
+        var hud = GetNode<HUD>("HUD"); hud.UpdateScore(_score); hud.ShowMessage("Get Ready!");
 
-In ``game_over()`` we need to call the corresponding ``HUD`` function:
+Trong ``game_over()``, chúng ta cần gọi hàm ``HUD`` tương ứng:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -251,8 +164,7 @@ In ``game_over()`` we need to call the corresponding ``HUD`` function:
 
         GetNode<HUD>("HUD").ShowGameOver();
 
-Finally, add this to ``_on_score_timer_timeout()`` to keep the display in sync
-with the changing score:
+Cuối cùng, thêm đoạn này vào ``_on_score_timer_timeout()`` để giữ cho phần hiển thị đồng bộ với điểm số đang thay đổi:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -265,34 +177,29 @@ with the changing score:
 
 .. warning::
 
-    Remember to remove the call to ``new_game()`` from
-    ``_ready()`` if you haven't already, otherwise
-    your game will start automatically.
+    Hãy nhớ xóa lệnh gọi ``new_game()`` khỏi ``_ready()`` nếu bạn chưa làm, nếu không trò chơi của bạn sẽ tự động bắt đầu.
 
-Now you're ready to play! Click the "Play the Project" button.
+Bây giờ bạn đã sẵn sàng chơi! Nhấp vào nút "Play the Project".
 
-Removing old creeps
--------------------
+Xóa các creep cũ
+----------------
 
-If you play until "Game Over" and then start a new game right away, the creeps
-from the previous game may still be on the screen. It would be better if they
-all disappeared at the start of a new game. We just need a way to tell *all* the
-mobs to remove themselves. We can do this with the "group" feature.
+Nếu bạn chơi đến khi "Game Over" rồi ngay lập tức bắt đầu một trò chơi mới, các creep từ trò chơi trước có thể vẫn còn trên màn hình. Sẽ tốt hơn nếu tất cả chúng biến mất khi bắt đầu trò chơi mới. Chúng ta chỉ cần một cách để yêu cầu *tất cả* mob tự xóa. Có thể thực hiện việc này bằng tính năng "group".
 
-In the ``Mob`` scene, select the root node and click the :ui:`Groups` tab next to the
+Trong scene ``Mob``, chọn node gốc rồi nhấp vào tab :ui:`Groups` bên cạnh
 :ui:`Signals` tab and the "+" button to open the "Create New Group" dialog.
 
 .. image:: img/group_tab.webp
 
-Name the group ``mobs`` and click "ok" to add a new scene group.
+Đặt tên group là ``mobs`` rồi nhấp vào "ok" để thêm một scene group mới.
 
 .. image:: img/add_group_dialog.webp
 
-Now all mobs will be in the "mobs" group.
+Bây giờ tất cả mob sẽ nằm trong group "mobs".
 
 .. image:: img/scene_group_mobs.webp
 
-We can then add the following line to the ``new_game()`` function in ``Main``:
+Sau đó chúng ta có thể thêm dòng sau vào hàm ``new_game()`` trong ``Main``:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -301,12 +208,8 @@ We can then add the following line to the ``new_game()`` function in ``Main``:
 
  .. code-tab:: csharp
 
-        // Note that for calling Godot-provided methods with strings,
-        // we have to use the original Godot snake_case name.
-        GetTree().CallGroup("mobs", Node.MethodName.QueueFree);
+        // Lưu ý rằng khi gọi các phương thức do Godot cung cấp bằng chuỗi, // chúng ta phải sử dụng tên snake_case gốc của Godot. GetTree().CallGroup("mobs", Node.MethodName.QueueFree);
 
-The ``call_group()`` function calls the named function on every node in a
-group - in this case we are telling every mob to delete itself.
+Hàm ``call_group()`` gọi hàm có tên trên mọi node trong một group - trong trường hợp này, chúng ta đang yêu cầu mọi mob tự xóa.
 
-The game's mostly done at this point. In the next and last part, we'll polish it
-a bit by adding a background, looping music, and some keyboard shortcuts.
+Đến đây, trò chơi gần như đã hoàn tất. Trong phần tiếp theo và cũng là phần cuối, chúng ta sẽ hoàn thiện trò chơi bằng cách thêm hình nền, nhạc lặp và một số phím tắt.

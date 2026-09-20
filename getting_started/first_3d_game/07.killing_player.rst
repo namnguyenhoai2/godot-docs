@@ -1,157 +1,104 @@
 .. _doc_first_3d_game_killing_the_player:
 
-Killing the player
-==================
+Tiêu diệt người chơi
+====================
 
-We can kill enemies by jumping on them, but the player still can't die.
-Let's fix this.
+Chúng ta có thể tiêu diệt kẻ địch bằng cách nhảy lên chúng, nhưng người chơi vẫn chưa thể chết. Hãy sửa điều này.
 
-We want to detect being hit by an enemy differently from squashing them.
-We want the player to die when they're moving on the floor, but not if
-they're in the air. We could use vector math to distinguish the two
-kinds of collisions. Instead, though, we will use an :ref:`Area3D <class_Area3D>` node, which
-works well for hitboxes.
+Chúng ta muốn phát hiện việc bị kẻ địch đánh trúng khác với việc giẫm bẹp chúng. Chúng ta muốn người chơi chết khi đang di chuyển trên mặt đất, nhưng không chết nếu đang ở trên không. Ta có thể dùng phép toán vector để phân biệt hai loại va chạm này. Tuy nhiên, thay vào đó, chúng ta sẽ dùng một node :ref:`Area3D <class_Area3D>`, hoạt động rất hiệu quả với các hitbox.
 
-Hitbox with the Area node
--------------------------
+Hitbox với node Area
+--------------------
 
-Head back to the ``player.tscn`` scene and add a new child node :ref:`Area3D <class_Area3D>`. Name it
-``MobDetector``
-Add a :ref:`CollisionShape3D <class_CollisionShape3D>` node as a child of it.
+Quay lại scene ``player.tscn`` và thêm một node con mới :ref:`Area3D <class_Area3D>`. Đặt tên cho nó là ``MobDetector`` Thêm một node :ref:`CollisionShape3D <class_CollisionShape3D>` làm node con của nó.
 
 |image0|
 
-In the *Inspector*, assign a cylinder shape to it.
+Trong *Inspector*, gán một hình trụ cho nó.
 
 |image1|
 
-Here is a trick you can use to make the collisions only happen when the
-player is on the ground or close to it. You can reduce the cylinder's
-height and move it up to the top of the character. This way, when the
-player jumps, the shape will be too high up for the enemies to collide
-with it.
+Dưới đây là một mẹo bạn có thể dùng để chỉ cho phép va chạm xảy ra khi người chơi ở trên mặt đất hoặc gần mặt đất. Bạn có thể giảm chiều cao của hình trụ và di chuyển nó lên phía trên cùng của nhân vật. Nhờ vậy, khi người chơi nhảy, hình dạng này sẽ ở quá cao để kẻ địch có thể va chạm với nó.
 
 |image2|
 
-You also want the cylinder to be wider than the sphere. This way, the
-player gets hit before colliding and being pushed on top of the
-monster's collision box.
+Bạn cũng muốn hình trụ rộng hơn hình cầu. Nhờ vậy, người chơi sẽ bị đánh trúng trước khi va chạm và bị đẩy lên trên hộp va chạm của quái vật.
 
-The wider the cylinder, the more easily the player will get killed.
+Hình trụ càng rộng thì người chơi càng dễ bị tiêu diệt.
 
-Next, select the ``MobDetector`` node again, and in the *Inspector*, turn
-**off** its *Monitorable* property. This makes it so other physics nodes
-cannot detect the area. The complementary *Monitoring* property allows
-it to detect collisions. Then, remove the *Collision -> Layer* and set
-the mask to the "enemies" layer.
+Tiếp theo, chọn lại node ``MobDetector``, rồi trong *Inspector*, tắt thuộc tính *Monitorable* của nó. Điều này khiến các node vật lý khác không thể phát hiện area này. Thuộc tính *Monitoring* bổ sung cho phép nó phát hiện các va chạm. Sau đó, xóa *Collision -> Layer* và đặt mask thành layer "enemies".
 
 |image3|
 
-When areas detect a collision, they emit signals. We're going to connect
-one to the ``Player`` node. Select ``MobDetector`` and go to the Signals dock, double-click the
-``body_entered`` signal and connect it to the ``Player``
+Khi các area phát hiện một va chạm, chúng sẽ phát signal. Chúng ta sẽ kết nối một signal với node ``Player``. Chọn ``MobDetector``, đi đến dock Signals, nhấp đúp vào signal ``body_entered`` và kết nối nó với ``Player``
 
 |image4|
 
-The *MobDetector* will emit ``body_entered`` when a :ref:`CharacterBody3D <class_CharacterBody3D>` or a
+*MobDetector* sẽ phát ``body_entered`` khi một :ref:`CharacterBody3D <class_CharacterBody3D>` hoặc một
 :ref:`RigidBody3D <class_RigidBody3D>` node enters it. As it only masks the "enemies" physics
-layers, it will only detect the ``Mob`` nodes.
+layer, nó sẽ chỉ phát hiện các node ``Mob``.
 
-Code-wise, we're going to do two things: emit a signal we'll later use
-to end the game and destroy the player. We can wrap these operations in
-a ``die()`` function that helps us put a descriptive label on the code.
+Về mặt mã nguồn, chúng ta sẽ làm hai việc: phát một signal mà sau này ta sẽ dùng để kết thúc trò chơi và hủy người chơi. Ta có thể gói các thao tác này trong một hàm ``die()``, giúp đặt nhãn mô tả cho đoạn mã.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-   # Emitted when the player was hit by a mob.
-   # Put this at the top of the script.
-   signal hit
+   # Phát ra khi người chơi bị một mob đánh trúng. # Đặt đoạn này ở đầu script. signal hit
 
 
-   # And this function at the bottom.
-   func die():
-       hit.emit()
-       queue_free()
+   # Và đặt hàm này ở cuối. func die(): hit.emit() queue_free()
 
 
-   func _on_mob_detector_body_entered(body):
-       die()
+   func _on_mob_detector_body_entered(body): die()
 
  .. code-tab:: csharp
 
-    // Don't forget to rebuild the project so the editor knows about the new signal.
+    // Đừng quên build lại project để editor nhận biết signal mới.
 
-    // Emitted when the player was hit by a mob.
-    [Signal]
-    public delegate void HitEventHandler();
+    // Phát ra khi người chơi bị một mob đánh trúng. [Signal] public delegate void HitEventHandler();
 
     // ...
 
-    private void Die()
-    {
-        EmitSignal(SignalName.Hit);
-        QueueFree();
-    }
+    private void Die() { EmitSignal(SignalName.Hit); QueueFree(); }
 
-    // We also specified this function name in PascalCase in the editor's connection window.
-    private void OnMobDetectorBodyEntered(Node3D body)
-    {
-        Die();
-    }
+    // Chúng ta cũng đã chỉ định tên hàm này ở dạng PascalCase trong cửa sổ kết nối của editor. private void OnMobDetectorBodyEntered(Node3D body) { Die(); }
 
-Ending the game
----------------
+Kết thúc trò chơi
+-----------------
 
-We can use the ``Player``\ 's ``hit`` signal to end the game. All we need
-to do is connect it to the ``Main`` node and stop the ``MobTimer`` in
-reaction.
+Chúng ta có thể dùng signal ``hit`` của ``Player``\ để kết thúc trò chơi. Tất cả những gì cần làm là kết nối nó với node ``Main`` và dừng ``MobTimer`` để phản hồi.
 
-Open ``main.tscn``, select the ``Player`` node, and in the *Signals* dock,
-connect its ``hit`` signal to the ``Main`` node.
+Mở ``main.tscn``, chọn node ``Player``, rồi trong dock *Signals*, kết nối signal ``hit`` của nó với node ``Main``.
 
 |image5|
 
-Get the timer, and stop it, in the ``_on_player_hit()`` function.
+Lấy timer và dừng nó trong hàm ``_on_player_hit()``.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-   func _on_player_hit():
-       $MobTimer.stop()
+   func _on_player_hit(): $MobTimer.stop()
 
  .. code-tab:: csharp
 
-    // We also specified this function name in PascalCase in the editor's connection window.
-    private void OnPlayerHit()
-    {
-        GetNode<Timer>("MobTimer").Stop();
-    }
+    // Chúng ta cũng đã chỉ định tên hàm này ở dạng PascalCase trong cửa sổ kết nối của editor. private void OnPlayerHit() { GetNode<Timer>("MobTimer").Stop(); }
 
-If you try the game now, the monsters will stop spawning when you die,
-and the remaining ones will leave the screen.
+Nếu bây giờ bạn chạy trò chơi, quái vật sẽ ngừng sinh ra khi bạn chết, còn những con còn lại sẽ rời khỏi màn hình.
 
-Notice also that the game no longer crashes or displays an error when the player dies. Because
-we are stopping the MobTimer, it no longer triggers the ``_on_mob_timer_timeout()`` function.
+Cũng lưu ý rằng trò chơi không còn bị crash hoặc hiển thị lỗi khi người chơi chết. Vì chúng ta đã dừng MobTimer nên nó không còn gọi hàm ``_on_mob_timer_timeout()`` nữa.
 
-Also note that the enemy colliding with the player and dying depends on the size and position of the
-``Player`` and the ``Mob``\ 's collision shapes. You may need to move them
-and resize them to achieve a tight game feel.
+Cũng lưu ý rằng việc kẻ địch va chạm với người chơi rồi chết phụ thuộc vào kích thước và vị trí của các hình dạng va chạm của ``Player`` và ``Mob``\ 's. Bạn có thể cần di chuyển và thay đổi kích thước của chúng để đạt được cảm giác điều khiển chặt chẽ.
 
-You can pat yourself on the back: you prototyped a complete 3D game,
-even if it's still a bit rough.
+Bạn có thể tự vỗ tay khen mình: bạn đã tạo nguyên mẫu một trò chơi 3D hoàn chỉnh, dù nó vẫn còn hơi thô.
 
-From there, we'll add a score, the option to retry the game, and you'll
-see how you can make the game feel much more alive with minimalistic
-animations.
+Từ đó, chúng ta sẽ thêm điểm số, tùy chọn chơi lại, và bạn sẽ thấy cách khiến trò chơi trở nên sống động hơn nhiều chỉ với các hoạt ảnh tối giản.
 
-Code checkpoint
----------------
+Điểm kiểm tra mã nguồn
+----------------------
 
-Here are the complete scripts for the ``Main``, ``Mob``, and ``Player`` nodes,
-for reference. You can use them to compare and check your code.
+Dưới đây là các script hoàn chỉnh cho các node ``Main``, ``Mob`` và ``Player``, để tham khảo. Bạn có thể dùng chúng để so sánh và kiểm tra mã của mình.
 
-Starting with ``main.gd``.
+Bắt đầu với ``main.gd``.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -161,154 +108,72 @@ Starting with ``main.gd``.
     @export var mob_scene: PackedScene
 
 
-    func _on_mob_timer_timeout():
-        # Create a new instance of the Mob scene.
-        var mob = mob_scene.instantiate()
+    func _on_mob_timer_timeout(): # Tạo một instance mới của scene Mob. var mob = mob_scene.instantiate()
 
-        # Choose a random location on the SpawnPath.
-        # We store the reference to the SpawnLocation node.
-        var mob_spawn_location = get_node("SpawnPath/SpawnLocation")
-        # And give it a random offset.
-        mob_spawn_location.progress_ratio = randf()
+        # Chọn một vị trí ngẫu nhiên trên SpawnPath. # Lưu tham chiếu đến node SpawnLocation. var mob_spawn_location = get_node("SpawnPath/SpawnLocation") # Và cung cấp cho nó một offset ngẫu nhiên. mob_spawn_location.progress_ratio = randf()
 
-        var player_position = $Player.position
-        mob.initialize(mob_spawn_location.position, player_position)
+        var player_position = $Player.position mob.initialize(mob_spawn_location.position, player_position)
 
-        # Spawn the mob by adding it to the Main scene.
-        add_child(mob)
+        # Sinh mob bằng cách thêm nó vào scene Main. add_child(mob)
 
-    func _on_player_hit():
-        $MobTimer.stop()
+    func _on_player_hit(): $MobTimer.stop()
 
  .. code-tab:: csharp
 
     using Godot;
 
-    public partial class Main : Node
-    {
-        [Export]
-        public PackedScene MobScene { get; set; }
+    public partial class Main : Node { [Export] public PackedScene MobScene { get; set; }
 
-        private void OnMobTimerTimeout()
-        {
-            // Create a new instance of the Mob scene.
-            Mob mob = MobScene.Instantiate<Mob>();
+        private void OnMobTimerTimeout() { // Tạo một instance mới của scene Mob. Mob mob = MobScene.Instantiate<Mob>();
 
-            // Choose a random location on the SpawnPath.
-            // We store the reference to the SpawnLocation node.
-            var mobSpawnLocation = GetNode<PathFollow3D>("SpawnPath/SpawnLocation");
-            // And give it a random offset.
-            mobSpawnLocation.ProgressRatio = GD.Randf();
+            // Chọn một vị trí ngẫu nhiên trên SpawnPath. // Lưu tham chiếu đến node SpawnLocation. var mobSpawnLocation = GetNode<PathFollow3D>("SpawnPath/SpawnLocation"); // Và cung cấp cho nó một offset ngẫu nhiên. mobSpawnLocation.ProgressRatio = GD.Randf();
 
-            Vector3 playerPosition = GetNode<Player>("Player").Position;
-            mob.Initialize(mobSpawnLocation.Position, playerPosition);
+            Vector3 playerPosition = GetNode<Player>("Player").Position; mob.Initialize(mobSpawnLocation.Position, playerPosition);
 
-            // Spawn the mob by adding it to the Main scene.
-            AddChild(mob);
-        }
+            // Sinh mob bằng cách thêm nó vào scene Main. AddChild(mob); }
 
-        private void OnPlayerHit()
-        {
-            GetNode<Timer>("MobTimer").Stop();
-        }
-    }
+        private void OnPlayerHit() { GetNode<Timer>("MobTimer").Stop(); } }
 
-Next is ``mob.gd``.
+Tiếp theo là ``mob.gd``.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     extends CharacterBody3D
 
-    # Minimum speed of the mob in meters per second.
-    @export var min_speed = 10.0
-    # Maximum speed of the mob in meters per second.
-    @export var max_speed = 18.0
+    # Tốc độ tối thiểu của mob tính bằng mét trên giây. @export var min_speed = 10.0 # Tốc độ tối đa của mob tính bằng mét trên giây. @export var max_speed = 18.0
 
-    # Emitted when the player jumped on the mob
-    signal squashed
+    # Phát ra khi người chơi nhảy lên mob signal squashed
 
-    func _physics_process(_delta):
-        move_and_slide()
+    func _physics_process(_delta): move_and_slide()
 
-    # This function will be called from the Main scene.
-    func initialize(start_position, player_position):
-        # We position the mob by placing it at start_position
-        # and rotate it towards player_position, so it looks at the player.
-        look_at_from_position(start_position, player_position, Vector3.UP)
-        # Rotate this mob randomly within range of -45 and +45 degrees,
-        # so that it doesn't move directly towards the player.
-        rotate_y(randf_range(-PI / 4, PI / 4))
+    # Hàm này sẽ được gọi từ scene Main. func initialize(start_position, player_position): # Đặt mob bằng cách đặt nó tại start_position # và xoay nó về phía player_position để nó nhìn người chơi. look_at_from_position(start_position, player_position, Vector3.UP) # Xoay mob này ngẫu nhiên trong phạm vi từ -45 đến +45 độ, # để nó không di chuyển thẳng về phía người chơi. rotate_y(randf_range(-PI / 4, PI / 4))
 
-        # We calculate a random speed (float)
-        var random_speed = randf_range(min_speed, max_speed)
-        # We calculate a forward velocity that represents the speed.
-        velocity = Vector3.FORWARD * random_speed
-        # We then rotate the velocity vector based on the mob's Y rotation
-        # in order to move in the direction the mob is looking.
-        velocity = velocity.rotated(Vector3.UP, rotation.y)
+        # Tính một tốc độ ngẫu nhiên (float) var random_speed = randf_range(min_speed, max_speed) # Tính một vận tốc hướng về phía trước đại diện cho tốc độ. velocity = Vector3.FORWARD * random_speed # Sau đó xoay vector vận tốc dựa trên phép xoay Y của mob # để di chuyển theo hướng mob đang nhìn. velocity = velocity.rotated(Vector3.UP, rotation.y)
 
-    func _on_visible_on_screen_notifier_3d_screen_exited():
-        queue_free()
+    func _on_visible_on_screen_notifier_3d_screen_exited(): queue_free()
 
-    func squash():
-        squashed.emit()
-        queue_free() # Destroy this node
+    func squash(): squashed.emit() queue_free() # Hủy node này
 
  .. code-tab:: csharp
 
     using Godot;
 
-    public partial class Mob : CharacterBody3D
-    {
-        // Emitted when the played jumped on the mob.
-        [Signal]
-        public delegate void SquashedEventHandler();
+    public partial class Mob : CharacterBody3D { // Phát ra khi người chơi nhảy lên mob. [Signal] public delegate void SquashedEventHandler();
 
-        // Minimum speed of the mob in meters per second
-        [Export]
-        public float MinSpeed { get; set; } = 10.0f;
-        // Maximum speed of the mob in meters per second
-        [Export]
-        public float MaxSpeed { get; set; } = 18.0f;
+        // Tốc độ tối thiểu của mob tính bằng mét trên giây [Export] public float MinSpeed { get; set; } = 10.0f; // Tốc độ tối đa của mob tính bằng mét trên giây [Export] public float MaxSpeed { get; set; } = 18.0f;
 
-        public override void _PhysicsProcess(double delta)
-        {
-            MoveAndSlide();
-        }
+        public override void _PhysicsProcess(double delta) { MoveAndSlide(); }
 
-        // This function will be called from the Main scene.
-        public void Initialize(Vector3 startPosition, Vector3 playerPosition)
-        {
-            // We position the mob by placing it at startPosition
-            // and rotate it towards playerPosition, so it looks at the player.
-            LookAtFromPosition(startPosition, playerPosition, Vector3.Up);
-            // Rotate this mob randomly within range of -45 and +45 degrees,
-            // so that it doesn't move directly towards the player.
-            RotateY((float)GD.RandRange(-Mathf.Pi / 4.0, Mathf.Pi / 4.0));
+        // Hàm này sẽ được gọi từ scene Main. public void Initialize(Vector3 startPosition, Vector3 playerPosition) { // Đặt mob bằng cách đặt nó tại startPosition // và xoay nó về phía playerPosition để nó nhìn người chơi. LookAtFromPosition(startPosition, playerPosition, Vector3.Up); // Xoay mob này ngẫu nhiên trong phạm vi từ -45 đến +45 độ, // để nó không di chuyển thẳng về phía người chơi. RotateY((float)GD.RandRange(-Mathf.Pi / 4.0, Mathf.Pi / 4.0));
 
-            // We calculate a random speed (float)
-            float randomSpeed = GD.RandRange(MinSpeed, MaxSpeed);
-            // We calculate a forward velocity that represents the speed.
-            Velocity = Vector3.Forward * randomSpeed;
-            // We then rotate the velocity vector based on the mob's Y rotation
-            // in order to move in the direction the mob is looking.
-            Velocity = Velocity.Rotated(Vector3.Up, Rotation.Y);
-        }
+            // Tính một tốc độ ngẫu nhiên (float) float randomSpeed = GD.RandRange(MinSpeed, MaxSpeed); // Tính một vận tốc hướng về phía trước đại diện cho tốc độ. Velocity = Vector3.Forward * randomSpeed; // Sau đó xoay vector vận tốc dựa trên phép xoay Y của mob // để di chuyển theo hướng mob đang nhìn. Velocity = Velocity.Rotated(Vector3.Up, Rotation.Y); }
 
-        public void Squash()
-        {
-            EmitSignal(SignalName.Squashed);
-            QueueFree(); // Destroy this node
-        }
+        public void Squash() { EmitSignal(SignalName.Squashed); QueueFree(); // Hủy node này }
 
-        private void OnVisibilityNotifierScreenExited()
-        {
-            QueueFree();
-        }
-    }
+        private void OnVisibilityNotifierScreenExited() { QueueFree(); } }
 
-Finally, the longest script, ``player.gd``:
+Cuối cùng là script dài nhất, ``player.gd``:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -317,199 +182,68 @@ Finally, the longest script, ``player.gd``:
 
     signal hit
 
-    # How fast the player moves in meters per second
-    @export var speed = 14
-    # The downward acceleration while in the air, in meters per second squared.
-    @export var fall_acceleration = 75
-    # Vertical impulse applied to the character upon jumping in meters per second.
-    @export var jump_impulse = 20
-    # Vertical impulse applied to the character upon bouncing over a mob
-    # in meters per second.
-    @export var bounce_impulse = 16
+    # Tốc độ di chuyển của người chơi, tính bằng mét trên giây @export var speed = 14 # Gia tốc hướng xuống khi đang ở trên không, tính bằng mét trên giây bình phương. @export var fall_acceleration = 75 # Xung lực theo phương thẳng đứng tác dụng lên nhân vật khi nhảy, tính bằng mét trên giây. @export var jump_impulse = 20 # Xung lực theo phương thẳng đứng tác dụng lên nhân vật khi nảy lên trên một mob # tính bằng mét trên giây. @export var bounce_impulse = 16
 
     var target_velocity = Vector3.ZERO
 
 
-    func _physics_process(delta):
-        # We create a local variable to store the input direction
-        var direction = Vector3.ZERO
+    func _physics_process(delta): # Tạo một biến cục bộ để lưu hướng đầu vào var direction = Vector3.ZERO
 
-        # We check for each move input and update the direction accordingly
-        if Input.is_action_pressed("move_right"):
-            direction.x = direction.x + 1
-        if Input.is_action_pressed("move_left"):
-            direction.x = direction.x - 1
-        if Input.is_action_pressed("move_back"):
-            # Notice how we are working with the vector's x and z axes.
-            # In 3D, the XZ plane is the ground plane.
-            direction.z = direction.z + 1
-        if Input.is_action_pressed("move_forward"):
-            direction.z = direction.z - 1
+        # Kiểm tra từng lệnh di chuyển và cập nhật hướng tương ứng if Input.is_action_pressed("move_right"): direction.x = direction.x + 1 if Input.is_action_pressed("move_left"): direction.x = direction.x - 1 if Input.is_action_pressed("move_back"): # Lưu ý rằng chúng ta đang làm việc với các trục x và z của vector. # Trong không gian 3D, mặt phẳng XZ là mặt phẳng mặt đất. direction.z = direction.z + 1 if Input.is_action_pressed("move_forward"): direction.z = direction.z - 1
 
-        # Prevent diagonal moving fast af
-        if direction != Vector3.ZERO:
-            direction = direction.normalized()
-            # Setting the basis property will affect the rotation of the node.
-            $Pivot.basis = Basis.looking_at(direction)
+        # Ngăn việc di chuyển chéo quá nhanh if direction != Vector3.ZERO: direction = direction.normalized() # Việc thiết lập thuộc tính basis sẽ ảnh hưởng đến phép xoay của node. $Pivot.basis = Basis.looking_at(direction)
 
-        # Ground Velocity
-        target_velocity.x = direction.x * speed
-        target_velocity.z = direction.z * speed
+        # Vận tốc trên mặt đất target_velocity.x = direction.x * speed target_velocity.z = direction.z * speed
 
-        # Vertical Velocity
-        if not is_on_floor(): # If in the air, fall towards the floor. Literally gravity
-            target_velocity.y = target_velocity.y - (fall_acceleration * delta)
+        # Vận tốc theo phương thẳng đứng if not is_on_floor(): # Nếu đang ở trên không, rơi về phía mặt đất. Chính là trọng lực target_velocity.y = target_velocity.y - (fall_acceleration * delta)
 
-        # Jumping.
-        if is_on_floor() and Input.is_action_just_pressed("jump"):
-            target_velocity.y = jump_impulse
+        # Nhảy. if is_on_floor() and Input.is_action_just_pressed("jump"): target_velocity.y = jump_impulse
 
-        # Iterate through all collisions that occurred this frame
-        # in C this would be for(int i = 0; i < collisions.Count; i++)
-        for index in range(get_slide_collision_count()):
-            # We get one of the collisions with the player
-            var collision = get_slide_collision(index)
+        # Duyệt qua tất cả các va chạm xảy ra trong khung hình này # trong C, đoạn này sẽ là for(int i = 0; i < collisions.Count; i++) for index in range(get_slide_collision_count()): # Lấy một trong các va chạm với người chơi var collision = get_slide_collision(index)
 
-            # If the collision is with ground
-            if collision.get_collider() == null:
-                continue
+            # Nếu va chạm là với mặt đất if collision.get_collider() == null: continue
 
-            # If the collider is with a mob
-            if collision.get_collider().is_in_group("mob"):
-                var mob = collision.get_collider()
-                # we check that we are hitting it from above.
-                if Vector3.UP.dot(collision.get_normal()) > 0.1:
-                    # If so, we squash it and bounce.
-                    mob.squash()
-                    target_velocity.y = bounce_impulse
-                    # Prevent further duplicate calls.
-                    break
+            # Nếu collider là một mob if collision.get_collider().is_in_group("mob"): var mob = collision.get_collider() # Kiểm tra xem chúng ta có đang va vào nó từ phía trên hay không. if Vector3.UP.dot(collision.get_normal()) > 0.1: # Nếu có, nghiền bẹp nó và nảy lên. mob.squash() target_velocity.y = bounce_impulse # Ngăn các lệnh gọi trùng lặp tiếp theo. break
 
-        # Moving the Character
-        velocity = target_velocity
-        move_and_slide()
+        # Di chuyển Nhân vật velocity = target_velocity move_and_slide()
 
-    # And this function at the bottom.
-    func die():
-        hit.emit()
-        queue_free()
+    # Và hàm này ở cuối. func die(): hit.emit() queue_free()
 
-    func _on_mob_detector_body_entered(body):
-        die()
+    func _on_mob_detector_body_entered(body): die()
 
  .. code-tab:: csharp
 
     using Godot;
 
-    public partial class Player : CharacterBody3D
-    {
-        // Emitted when the player was hit by a mob.
-        [Signal]
-        public delegate void HitEventHandler();
+    public partial class Player : CharacterBody3D { // Được phát ra khi người chơi bị mob đánh trúng. [Signal] public delegate void HitEventHandler();
 
-        // How fast the player moves in meters per second.
-        [Export]
-        public int Speed { get; set; } = 14;
-        // The downward acceleration when in the air, in meters per second squared.
-        [Export]
-        public int FallAcceleration { get; set; } = 75;
-        // Vertical impulse applied to the character upon jumping in meters per second.
-        [Export]
-        public int JumpImpulse { get; set; } = 20;
-        // Vertical impulse applied to the character upon bouncing over a mob in meters per second.
-        [Export]
-        public int BounceImpulse { get; set; } = 16;
+        // Tốc độ di chuyển của người chơi, tính bằng mét trên giây. [Export] public int Speed { get; set; } = 14; // Gia tốc hướng xuống khi đang ở trên không, tính bằng mét trên giây bình phương. [Export] public int FallAcceleration { get; set; } = 75; // Xung lực theo phương thẳng đứng tác dụng lên nhân vật khi nhảy, tính bằng mét trên giây. [Export] public int JumpImpulse { get; set; } = 20; // Xung lực theo phương thẳng đứng tác dụng lên nhân vật khi nảy lên trên một mob, tính bằng mét trên giây. [Export] public int BounceImpulse { get; set; } = 16;
 
         private Vector3 _targetVelocity = Vector3.Zero;
 
-        public override void _PhysicsProcess(double delta)
-        {
-            // We create a local variable to store the input direction.
-            var direction = Vector3.Zero;
+        public override void _PhysicsProcess(double delta) { // Tạo một biến cục bộ để lưu hướng đầu vào. var direction = Vector3.Zero;
 
-            // We check for each move input and update the direction accordingly.
-            if (Input.IsActionPressed("move_right"))
-            {
-                direction.X += 1.0f;
-            }
-            if (Input.IsActionPressed("move_left"))
-            {
-                direction.X -= 1.0f;
-            }
-            if (Input.IsActionPressed("move_back"))
-            {
-                // Notice how we are working with the vector's X and Z axes.
-                // In 3D, the XZ plane is the ground plane.
-                direction.Z += 1.0f;
-            }
-            if (Input.IsActionPressed("move_forward"))
-            {
-                direction.Z -= 1.0f;
-            }
+            // Kiểm tra từng lệnh di chuyển và cập nhật hướng tương ứng. if (Input.IsActionPressed("move_right")) { direction.X += 1.0f; } if (Input.IsActionPressed("move_left")) { direction.X -= 1.0f; } if (Input.IsActionPressed("move_back")) { // Lưu ý rằng chúng ta đang làm việc với các trục X và Z của vector. // Trong không gian 3D, mặt phẳng XZ là mặt phẳng mặt đất. direction.Z += 1.0f; } if (Input.IsActionPressed("move_forward")) { direction.Z -= 1.0f; }
 
-            // Prevent diagonal moving fast af
-            if (direction != Vector3.Zero)
-            {
-                direction = direction.Normalized();
-                // Setting the basis property will affect the rotation of the node.
-                GetNode<Node3D>("Pivot").Basis = Basis.LookingAt(direction);
-            }
+            // Ngăn việc di chuyển chéo quá nhanh if (direction != Vector3.Zero) { direction = direction.Normalized(); // Việc thiết lập thuộc tính basis sẽ ảnh hưởng đến phép xoay của node. GetNode<Node3D>("Pivot").Basis = Basis.LookingAt(direction); }
 
-            // Ground Velocity
-            _targetVelocity.X = direction.X * Speed;
-            _targetVelocity.Z = direction.Z * Speed;
+            // Vận tốc trên mặt đất _targetVelocity.X = direction.X * Speed; _targetVelocity.Z = direction.Z * Speed;
 
-            // Vertical Velocity
-            if (!IsOnFloor()) // If in the air, fall towards the floor. Literally gravity
-            {
-                _targetVelocity.Y -= FallAcceleration * (float)delta;
-            }
+            // Vận tốc theo phương thẳng đứng if (!IsOnFloor()) // Nếu đang ở trên không, rơi về phía mặt đất. Chính là trọng lực { _targetVelocity.Y -= FallAcceleration * (float)delta; }
 
-            // Jumping.
-            if (IsOnFloor() && Input.IsActionJustPressed("jump"))
-            {
-                _targetVelocity.Y = JumpImpulse;
-            }
+            // Nhảy. if (IsOnFloor() && Input.IsActionJustPressed("jump")) { _targetVelocity.Y = JumpImpulse; }
 
-            // Iterate through all collisions that occurred this frame.
-            for (int index = 0; index < GetSlideCollisionCount(); index++)
-            {
-                // We get one of the collisions with the player.
-                KinematicCollision3D collision = GetSlideCollision(index);
+            // Duyệt qua tất cả các va chạm xảy ra trong khung hình này. for (int index = 0; index < GetSlideCollisionCount(); index++) { // Lấy một trong các va chạm với người chơi. KinematicCollision3D collision = GetSlideCollision(index);
 
-                // If the collision is with a mob.
-                if (collision.GetCollider() is Mob mob)
-                {
-                    // We check that we are hitting it from above.
-                    if (Vector3.Up.Dot(collision.GetNormal()) > 0.1f)
-                    {
-                        // If so, we squash it and bounce.
-                        mob.Squash();
-                        _targetVelocity.Y = BounceImpulse;
-                        // Prevent further duplicate calls.
-                        break;
-                    }
-                }
-            }
+                // Nếu va chạm là với một mob. if (collision.GetCollider() is Mob mob) { // Kiểm tra xem chúng ta có đang va vào nó từ phía trên hay không. if (Vector3.Up.Dot(collision.GetNormal()) > 0.1f) { // Nếu có, nghiền bẹp nó và nảy lên. mob.Squash(); _targetVelocity.Y = BounceImpulse; // Ngăn các lệnh gọi trùng lặp tiếp theo. break; } } }
 
-            // Moving the Character
-            Velocity = _targetVelocity;
-            MoveAndSlide();
-        }
+            // Di chuyển Nhân vật Velocity = _targetVelocity; MoveAndSlide(); }
 
-        private void Die()
-        {
-            EmitSignal(SignalName.Hit);
-            QueueFree();
-        }
+        private void Die() { EmitSignal(SignalName.Hit); QueueFree(); }
 
-        private void OnMobDetectorBodyEntered(Node3D body)
-        {
-            Die();
-        }
-    }
+        private void OnMobDetectorBodyEntered(Node3D body) { Die(); } }
 
-See you in the next lesson to add the score and the retry option.
+Hẹn gặp lại bạn trong bài học tiếp theo để thêm điểm số và tùy chọn chơi lại.
 
 .. |image0| image:: img/07.killing_player/01.adding_area_node.webp
 .. |image1| image:: img/07.killing_player/02.cylinder_shape.webp

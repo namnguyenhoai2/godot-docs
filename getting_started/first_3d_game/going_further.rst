@@ -1,42 +1,27 @@
 .. _doc_first_3d_game_going_further:
 
-Going further
+Tìm hiểu thêm
 =============
 
-You can pat yourself on the back for having completed your first 3D game with
-Godot.
+Bạn có thể tự vỗ về mình vì đã hoàn thành trò chơi 3D đầu tiên với Godot.
 
-In this series, we went over a wide range of techniques and editor features.
-Hopefully, you've witnessed how intuitive Godot's scene system can be and
-learned a few tricks you can apply in your projects.
+Trong loạt bài này, chúng ta đã tìm hiểu nhiều kỹ thuật và tính năng của trình chỉnh sửa. Hy vọng bạn đã thấy hệ thống scene của Godot trực quan đến mức nào và học được một vài mẹo có thể áp dụng vào các dự án của mình.
 
-But we just scratched the surface: Godot has a lot more in store for you to save
-time creating games. And you can learn all that by browsing the documentation.
+Nhưng đó mới chỉ là phần nổi của tảng băng: Godot còn rất nhiều tính năng khác giúp bạn tiết kiệm thời gian khi tạo trò chơi. Và bạn có thể tìm hiểu tất cả những điều đó bằng cách đọc tài liệu.
 
-Where should you begin? Below, you'll find a few pages to start exploring and
-build upon what you've learned so far.
+Bạn nên bắt đầu từ đâu? Dưới đây là một vài trang để bạn bắt đầu khám phá và xây dựng dựa trên những gì đã học được.
 
-But before that, here's a link to download a completed version of the project:
-`<https://github.com/godotengine/godot-demo-projects/releases>`_.
+Nhưng trước hết, đây là liên kết để tải xuống phiên bản hoàn chỉnh của dự án: `<https://github.com/godotengine/godot-demo-projects/releases>`_.
 
-Exploring the manual
---------------------
+Khám phá tài liệu hướng dẫn
+---------------------------
 
-The manual is your ally whenever you have a doubt or you're curious about a
-feature. It does not contain tutorials about specific game genres or mechanics.
-Instead, it explains how Godot works in general. In it, you will find
-information about 2D, 3D, physics, rendering and performance, and much more.
+Tài liệu hướng dẫn là đồng minh của bạn bất cứ khi nào bạn có thắc mắc hoặc tò mò về một tính năng. Tài liệu không chứa các bài hướng dẫn về những thể loại hoặc cơ chế trò chơi cụ thể. Thay vào đó, tài liệu giải thích cách Godot hoạt động nói chung. Trong đó, bạn sẽ tìm thấy thông tin về 2D, 3D, vật lý, kết xuất và hiệu năng, cùng nhiều nội dung khác.
 
-Here are the sections we recommend you to explore next:
+Dưới đây là các phần chúng tôi khuyên bạn nên khám phá tiếp theo:
 
-1. Read the :ref:`Scripting section <toc-scripting-core-features>` to learn essential programming features you'll use
-   in every project.
-2. The :ref:`3D <toc-learn-features-3d>` and :ref:`Physics <toc-learn-features-physics>` sections will teach you more about 3D game creation in the
-   engine.
-3. :ref:`Inputs <toc-learn-features-inputs>` is another important one for any game project.
+1. Hãy đọc :ref:`Scripting section <toc-scripting-core-features>` để tìm hiểu các tính năng lập trình thiết yếu mà bạn sẽ sử dụng trong mọi dự án. 2. Các phần :ref:`3D <toc-learn-features-3d>` và :ref:`Physics <toc-learn-features-physics>` sẽ hướng dẫn bạn thêm về việc tạo trò chơi 3D trong engine. 3. :ref:`Inputs <toc-learn-features-inputs>` cũng là một phần quan trọng đối với mọi dự án trò chơi.
 
-You can start with these or, if you prefer, look at the sidebar menu on the left
-and pick your options.
+Bạn có thể bắt đầu với những phần này hoặc, nếu thích, xem trình đơn thanh bên ở bên trái và chọn các mục phù hợp.
 
-We hope you enjoyed this tutorial series, and we're looking forward to seeing
-what you achieve using Godot.
+Chúng tôi hy vọng bạn đã yêu thích loạt bài hướng dẫn này và rất mong được thấy những gì bạn đạt được khi sử dụng Godot.

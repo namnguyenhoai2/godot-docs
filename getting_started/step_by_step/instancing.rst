@@ -1,239 +1,165 @@
 .. _doc_instancing:
 
-Creating instances
-==================
+Tạo các instance
+================
 
 .. note::
 
-   This tutorial refers to instancing scenes in the editor. To learn how
-   to instance scenes from code, see :ref:`doc_nodes_and_scene_instances`.
+   Hướng dẫn này đề cập đến việc tạo instance của các scene trong trình chỉnh sửa. Để tìm hiểu cách tạo instance của các scene từ mã, hãy xem :ref:`doc_nodes_and_scene_instances`.
 
-   Godot's approach to *instancing* described below should not be confused with
-   hardware instancing that can be used to render large amounts of similar
-   objects quickly. See :ref:`doc_using_multimesh` instead.
+   Cách tiếp cận của Godot đối với việc *tạo instance* được mô tả bên dưới không nên bị nhầm lẫn với hardware instancing, vốn có thể được dùng để kết xuất nhanh một lượng lớn các đối tượng tương tự nhau. Thay vào đó, hãy xem :ref:`doc_using_multimesh`.
 
-In the previous part, we saw that a scene is a collection of nodes organized in
-a tree structure, with a single node as its root. You can split your project
-into any number of scenes. This feature helps you break down and organize your
-game's different components.
+Trong phần trước, chúng ta đã thấy rằng một scene là tập hợp các node được sắp xếp theo cấu trúc cây, với một node duy nhất làm gốc. Bạn có thể chia dự án của mình thành bao nhiêu scene tùy ý. Tính năng này giúp bạn phân tách và sắp xếp các thành phần khác nhau trong game.
 
-You can create as many scenes as you'd like and save them as files with the
-``.tscn`` extension, which stands for "text scene". The ``label.tscn`` file from
-the previous lesson was an example. We call those files "Packed Scenes" as they
-pack information about your scene's content.
+Bạn có thể tạo bao nhiêu scene tùy thích và lưu chúng thành các tệp có phần mở rộng ``.tscn``, viết tắt của "text scene". Tệp ``label.tscn`` trong bài học trước là một ví dụ. Chúng ta gọi những tệp này là "Packed Scene" vì chúng đóng gói thông tin về nội dung scene của bạn.
 
-Here's an example of a ball. It's composed of a :ref:`RigidBody2D
-<class_RigidBody2D>` node as its root named Ball, which allows the ball to fall
-and bounce on walls, a :ref:`Sprite2D <class_Sprite2D>` node, and a
+Đây là một ví dụ về một quả bóng. Nó gồm một node :ref:`RigidBody2D <class_RigidBody2D>` làm gốc, có tên là Ball, cho phép quả bóng rơi và nảy trên tường, một node :ref:`Sprite2D <class_Sprite2D>`, và một
 :ref:`CollisionShape2D <class_CollisionShape2D>`.
 
 .. image:: img/instancing_ball_scene.webp
 
-Once you have saved a scene, it works as a blueprint: you can reproduce it in other
-scenes as many times as you'd like. Replicating an object from a template like
-this is called **instancing**.
+Sau khi lưu một scene, nó hoạt động như một bản thiết kế: bạn có thể tái tạo scene đó trong các scene khác bao nhiêu lần tùy thích. Việc tạo bản sao của một đối tượng từ một mẫu như vậy được gọi là **tạo instance**.
 
 .. image:: img/instancing_ball_instances_example.webp
 
-As we mentioned in the previous part, instanced scenes behave like a node: the
-editor hides their content by default. When you instance the Ball, you only see
-the Ball node. Notice also how each duplicate has a unique name.
+Như đã đề cập trong phần trước, các scene được tạo instance hoạt động như một node: trình chỉnh sửa mặc định ẩn nội dung của chúng. Khi tạo instance của Ball, bạn chỉ thấy node Ball. Cũng hãy chú ý rằng mỗi bản sao đều có một tên duy nhất.
 
-Every instance of the Ball scene starts with the same structure and properties
-as ``ball.tscn``. However, you can modify each independently, such as changing
-how they bounce, how heavy they are, or any property exposed by the source
-scene.
+Mỗi instance của scene Ball bắt đầu với cùng cấu trúc và thuộc tính như ``ball.tscn``. Tuy nhiên, bạn có thể sửa đổi từng instance một cách độc lập, chẳng hạn như thay đổi cách chúng nảy, trọng lượng của chúng hoặc bất kỳ thuộc tính nào được scene nguồn cung cấp.
 
-In practice
------------
+Thực hành
+---------
 
-Let's use instancing in practice to see how it works in Godot. We invite
-you to download the ball's sample project we prepared for you:
-`instancing_starter.zip <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/instancing_starter.zip>`_.
+Hãy thực hành tạo instance để xem tính năng này hoạt động như thế nào trong Godot. Bạn có thể tải xuống dự án mẫu về quả bóng mà chúng tôi đã chuẩn bị: `instancing_starter.zip <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/instancing_starter.zip>`_.
 
-Extract the archive on your computer. To import it, you need the Project Manager.
-The Project Manager is accessed by opening Godot, or if you already have Godot
-opened, click on :menu:`Project > Quit to Project List` (:kbd:`Ctrl + Shift + Q`, :kbd:`Ctrl + Option + Cmd + Q` on macOS)
+Giải nén tệp lưu trữ trên máy tính của bạn. Để nhập dự án, bạn cần Project Manager. Có thể truy cập Project Manager bằng cách mở Godot hoặc, nếu Godot đã được mở, hãy nhấp vào :menu:`Project > Quit to Project List` (:kbd:`Ctrl + Shift + Q`, :kbd:`Ctrl + Option + Cmd + Q` trên macOS)
 
-In the Project Manager, click the :button:`Import` button to import the project.
+Trong Project Manager, nhấp vào nút :button:`Import` để nhập dự án.
 
 .. image:: img/instancing_import_button.webp
 
-In the pop-up that appears navigate to the folder you extracted.
-Double-click the ``project.godot`` file to open it.
+Trong cửa sổ bật lên xuất hiện, hãy điều hướng đến thư mục bạn đã giải nén. Nhấp đúp vào tệp ``project.godot`` để mở tệp.
 
 .. image:: img/instancing_import_project_file.webp
 
-Finally, click the :button:`Import` button.
+Cuối cùng, nhấp vào nút :button:`Import`.
 
 .. image:: img/instancing_import_and_edit_button.webp
 
-A window notifying you that the project was last opened in an older Godot version
-may appear. That's not an issue. Click :button:`OK` to open the project.
+Có thể xuất hiện một cửa sổ thông báo rằng dự án lần cuối được mở bằng phiên bản Godot cũ hơn. Đây không phải vấn đề. Nhấp vào :button:`OK` để mở dự án.
 
-The project contains two packed scenes: ``main.tscn``, containing walls against
-which the ball collides, and ``ball.tscn``. The Main scene should open
-automatically. If you're seeing an empty 3D scene instead of the main scene, click the 2D button at the top of the screen.
+Dự án chứa hai packed scene: ``main.tscn``, chứa các bức tường để quả bóng va chạm, và ``ball.tscn``. Scene Main sẽ tự động mở. Nếu bạn thấy một scene 3D trống thay vì scene chính, hãy nhấp vào nút 2D ở phía trên màn hình.
 
 .. image:: img/instancing_2d_scene_select.webp
 
 .. image:: img/instancing_main_scene.webp
 
-Let's add a ball as a child of the Main node. In the Scene dock, select the Main
-node. Then, click the link icon at the top of the scene dock. This button allows
-you to add an instance of a scene as a child of the currently selected node.
+Hãy thêm một quả bóng làm con của node Main. Trong dock Scene, chọn node Main. Sau đó, nhấp vào biểu tượng liên kết ở phía trên dock Scene. Nút này cho phép bạn thêm một instance của một scene làm con của node hiện đang được chọn.
 
 .. image:: img/instancing_scene_link_button.webp
 
-Double-click the ball scene to instance it.
+Nhấp đúp vào scene quả bóng để tạo instance.
 
 .. image:: img/instancing_instance_child_window.webp
 
-The ball appears in the top-left corner of the viewport.
+Quả bóng xuất hiện ở góc trên bên trái của khung nhìn.
 
 .. image:: img/instancing_ball_instanced.webp
 
-Click on it and drag it towards the center of the view.
+Nhấp vào nó và kéo về phía giữa khung nhìn.
 
 .. image:: img/instancing_ball_moved.webp
 
-Play the game by pressing :kbd:`F5` (:kbd:`Cmd + B` on macOS). You should see it fall.
+Chạy game bằng cách nhấn :kbd:`F5` (:kbd:`Cmd + B` trên macOS). Bạn sẽ thấy quả bóng rơi xuống.
 
-Now, we want to create more instances of the Ball node. With the ball still
-selected, press :kbd:`Ctrl + D` (:kbd:`Cmd + D` on macOS) to call the duplicate
-command. Click and drag to move the new ball to a different location.
+Bây giờ, chúng ta muốn tạo thêm các instance của node Ball. Khi quả bóng vẫn đang được chọn, nhấn :kbd:`Ctrl + D` (:kbd:`Cmd + D` trên macOS) để gọi lệnh nhân bản. Nhấp và kéo để di chuyển quả bóng mới đến một vị trí khác.
 
 .. image:: img/instancing_ball_duplicated.webp
 
-You can repeat this process until you have several in the scene.
+Bạn có thể lặp lại quy trình này cho đến khi có vài quả bóng trong scene.
 
 .. image:: img/instancing_main_scene_with_balls.webp
 
-Play the game again. You should now see every ball fall independently from one
-another. This is what instances do. Each is an independent reproduction of a
-template scene.
+Chạy lại game. Bây giờ bạn sẽ thấy mọi quả bóng rơi độc lập với nhau. Đây là tác dụng của các instance. Mỗi instance là một bản tái tạo độc lập của một scene mẫu.
 
-Editing scenes and instances
-----------------------------
+Chỉnh sửa các scene và instance
+-------------------------------
 
-There is more to instances. With this feature, you can:
+Các instance còn có nhiều khả năng khác. Với tính năng này, bạn có thể:
 
-1. Change the properties of one ball without affecting the others using the
+1. Thay đổi các thuộc tính của một quả bóng mà không ảnh hưởng đến những quả khác bằng cách sử dụng
    :ui:`Inspector`.
-2. Change the default properties of every Ball by opening the ``ball.tscn`` scene
-   and making a change to the Ball node there. Upon saving, all instances of the
-   Ball in the project will see their values update.
+2. Thay đổi các thuộc tính mặc định của mọi Ball bằng cách mở scene ``ball.tscn`` và thực hiện thay đổi đối với node Ball tại đó. Sau khi lưu, tất cả instance của Ball trong dự án sẽ được cập nhật giá trị.
 
 .. note:: Changing a property on an instance always overrides values from the
-          corresponding packed scene.
+          packed scene tương ứng.
 
-Let's try this. Double-click ``ball.tscn`` in the FileSystem to open it.
+Hãy thử thực hiện. Nhấp đúp vào ``ball.tscn`` trong FileSystem để mở.
 
 .. image:: img/instancing_ball_scene_open.webp
 
-In the Scene dock on the left, select the Ball node. Then, in the :ui:`Inspector` on the
-right, click on the :inspector:`PhysicsMaterial` property to expand it.
+Trong dock Scene ở bên trái, chọn node Ball. Sau đó, trong :ui:`Inspector` ở bên phải, nhấp vào thuộc tính :inspector:`PhysicsMaterial` để mở rộng thuộc tính.
 
 .. image:: img/instancing_physics_material_expand.webp
 
-Set its Bounce property to ``0.5`` by clicking on the number field, typing ``0.5``,
-and pressing :kbd:`Enter`.
+Đặt thuộc tính Bounce thành ``0.5`` bằng cách nhấp vào trường số, nhập ``0.5`` rồi nhấn :kbd:`Enter`.
 
 .. image:: img/instancing_property_bounce_updated.webp
 
-Play the game by pressing :kbd:`F5` (:kbd:`Cmd + B` on macOS) and notice how all balls now bounce a lot
-more. As the Ball scene is a template for all instances, modifying it and saving
-causes all instances to update accordingly.
+Chạy game bằng cách nhấn :kbd:`F5` (:kbd:`Cmd + B` trên macOS) và chú ý rằng tất cả các quả bóng giờ đây nảy nhiều hơn hẳn. Vì scene Ball là mẫu cho tất cả các instance, việc sửa đổi và lưu scene này sẽ khiến tất cả instance được cập nhật tương ứng.
 
-Let's now adjust an individual instance. Head back to the Main scene by clicking
-on the corresponding tab above the viewport.
+Bây giờ hãy điều chỉnh một instance riêng lẻ. Quay lại scene Main bằng cách nhấp vào tab tương ứng phía trên khung nhìn.
 
 .. image:: img/instancing_scene_tabs.webp
 
-Select one of the instanced Ball nodes and, in the :ui:`Inspector`, set its
+Chọn một trong các node Ball được tạo instance và trong :ui:`Inspector`, đặt
 :inspector:`Gravity Scale` value to ``10``.
 
 .. image:: img/instancing_property_gravity_scale.webp
 
-A grey "revert" button appears next to the adjusted property.
+Một nút "revert" màu xám xuất hiện bên cạnh thuộc tính đã điều chỉnh.
 
 .. image:: img/instancing_property_revert_icon.webp
 
-This icon indicates you are overriding a value from the source packed scene.
-Even if you modify the property in the original scene, the value override will
-be preserved in the instance. Clicking the revert icon will restore the
-property to the value in the saved scene.
+Biểu tượng này cho biết bạn đang ghi đè một giá trị từ packed scene nguồn. Ngay cả khi bạn sửa đổi thuộc tính trong scene gốc, giá trị ghi đè vẫn được giữ lại trong instance. Nhấp vào biểu tượng revert sẽ khôi phục thuộc tính về giá trị trong scene đã lưu.
 
-Rerun the game and notice how this ball now falls much faster than the others.
+Chạy lại game và chú ý rằng quả bóng này giờ rơi nhanh hơn nhiều so với những quả khác.
 
 .. note::
 
-    You may notice you are unable to change the values of the :inspector:`PhysicsMaterial`
-    of the ball. This is because :inspector:`PhysicsMaterial` is a *resource*, and needs
-    to be made unique before you can edit it in a scene that is linking to its
-    original scene. To make a resource unique for one instance, right-click on
-    the :inspector:`Physics Material` property in the :ui:`Inspector` and click :button:`Make Unique`
-    in the context menu.
+    Bạn có thể nhận thấy mình không thể thay đổi các giá trị của :inspector:`PhysicsMaterial` của quả bóng. Đó là vì :inspector:`PhysicsMaterial` là một *resource* và cần được đặt thành duy nhất trước khi bạn có thể chỉnh sửa nó trong một scene đang liên kết đến scene gốc. Để tạo một resource duy nhất cho một instance, hãy nhấp chuột phải vào thuộc tính :inspector:`Physics Material` trong :ui:`Inspector` rồi nhấp vào :button:`Make Unique` trong menu ngữ cảnh.
 
-    Resources are another essential building block of Godot games we will cover
-    in a later lesson.
+    Resource là một khối xây dựng thiết yếu khác của game Godot mà chúng ta sẽ đề cập trong một bài học sau.
 
-Scene instances as a design language
-------------------------------------
+Các instance của scene như một ngôn ngữ thiết kế
+------------------------------------------------
 
-Instances and scenes in Godot offer an excellent design language, setting the
-engine apart from others out there. We designed Godot around this concept from
-the ground up.
+Các instance và scene trong Godot tạo nên một ngôn ngữ thiết kế tuyệt vời, khiến engine này khác biệt với những engine khác. Chúng tôi đã thiết kế Godot dựa trên khái niệm này ngay từ đầu.
 
-We recommend dismissing architectural code patterns when making games with
-Godot, such as Model-View-Controller (MVC) or Entity-Relationship diagrams.
-Instead, you can start by imagining the elements players will see in your game
-and structure your code around them.
+Chúng tôi khuyên bạn nên gạt sang một bên các mẫu kiến trúc mã khi làm game với Godot, chẳng hạn như Model-View-Controller (MVC) hoặc sơ đồ Entity-Relationship. Thay vào đó, bạn có thể bắt đầu bằng cách hình dung những yếu tố mà người chơi sẽ thấy trong game và cấu trúc mã xoay quanh chúng.
 
-For example, you could break down a shooter game like so:
+Ví dụ, bạn có thể phân tách một game bắn súng như sau:
 
 .. image:: img/instancing_diagram_shooter.png
 
-You can come up with a diagram like this for almost any type of game. Each
-rectangle represents an entity that's visible in the game from the player's
-perspective. The arrows point towards the instantiator of each scene.
+Bạn có thể lập một sơ đồ như thế này cho gần như mọi loại game. Mỗi hình chữ nhật đại diện cho một thực thể hiển thị trong game từ góc nhìn của người chơi. Các mũi tên hướng về phía đối tượng tạo instance của mỗi scene.
 
-Once you have a diagram, we recommend creating a scene for each element listed
-in it to develop your game. You'll use instancing, either by code or directly in
-the editor, to build your tree of scenes.
+Sau khi có sơ đồ, chúng tôi khuyên bạn tạo một scene cho mỗi thành phần được liệt kê trong đó để phát triển game. Bạn sẽ sử dụng việc tạo instance, bằng mã hoặc trực tiếp trong trình chỉnh sửa, để xây dựng cây scene của mình.
 
-Programmers tend to spend a lot of time designing abstract architectures and
-trying to fit components into it. Designing based on scenes makes development
-faster and more straightforward, allowing you to focus on the game logic itself.
-Because most game components map directly to a scene, using a design based on
-scene instantiation means you need little other architectural code.
+Các lập trình viên thường dành rất nhiều thời gian để thiết kế các kiến trúc trừu tượng và cố gắng đưa các thành phần vào đó. Thiết kế dựa trên scene giúp quá trình phát triển nhanh hơn và đơn giản hơn, cho phép bạn tập trung vào chính logic game. Vì hầu hết các thành phần của game đều ánh xạ trực tiếp đến một scene, việc sử dụng thiết kế dựa trên khởi tạo scene đồng nghĩa với việc bạn cần rất ít mã kiến trúc bổ sung.
 
-Here's the example of a scene diagram for an open-world game with tons of assets
-and nested elements:
+Đây là ví dụ về sơ đồ scene cho một game thế giới mở với rất nhiều tài sản và các thành phần lồng nhau:
 
 .. image:: img/instancing_diagram_open_world.png
 
-Imagine we started by creating the room. We could make a couple of different
-room scenes, with unique arrangements of furniture in them. Later, we could make
-a house scene that uses multiple room instances for the interior. We would
-create a citadel out of many instanced houses and a large terrain on which we
-would place the citadel. Each of these would be a scene instancing one or more sub-scenes.
+Hãy tưởng tượng chúng ta bắt đầu bằng việc tạo căn phòng. Chúng ta có thể tạo một vài scene phòng khác nhau, với cách sắp xếp nội thất độc đáo trong mỗi phòng. Sau đó, chúng ta có thể tạo một scene ngôi nhà sử dụng nhiều instance phòng cho phần nội thất. Chúng ta sẽ tạo một thành trì từ nhiều ngôi nhà được tạo instance và một địa hình rộng lớn để đặt thành trì lên đó. Mỗi thành phần này sẽ là một scene tạo instance của một hoặc nhiều scene con.
 
-Later, we could create scenes representing guards and add them to the citadel.
-They would be indirectly added to the overall game world.
+Sau đó, chúng ta có thể tạo các scene đại diện cho lính canh và thêm chúng vào thành trì. Chúng sẽ được thêm gián tiếp vào toàn bộ thế giới game.
 
-With Godot, it's easy to iterate on your game like this, as all you need to do
-is create and instantiate more scenes. We designed the editor to be accessible
-to programmers, designers, and artists alike. A typical team development process
-can involve 2D or 3D artists, level designers, game designers, and animators,
-all working with the Godot editor.
+Với Godot, việc lặp lại quá trình phát triển game như thế này rất dễ dàng, vì tất cả những gì bạn cần làm là tạo và tạo instance của thêm các scene. Chúng tôi thiết kế trình chỉnh sửa để các lập trình viên, nhà thiết kế và họa sĩ đều có thể sử dụng. Một quy trình phát triển điển hình của đội ngũ có thể bao gồm họa sĩ 2D hoặc 3D, nhà thiết kế màn chơi, nhà thiết kế game và họa sĩ hoạt ảnh, tất cả cùng làm việc với trình chỉnh sửa Godot.
 
-Summary
+Tóm tắt
 -------
 
-Instancing, the process of producing an object from a blueprint, has many handy
-uses. With scenes, it gives you:
+Tạo instance, tức quá trình tạo ra một đối tượng từ bản thiết kế, có nhiều cách sử dụng hữu ích. Với các scene, tính năng này cung cấp cho bạn:
 
-- The ability to divide your game into reusable components.
-- A tool to structure and encapsulate complex systems.
-- A language to think about your game project's structure in a natural way.
+- Khả năng chia game thành các thành phần có thể tái sử dụng. - Một công cụ để cấu trúc và đóng gói các hệ thống phức tạp. - Một ngôn ngữ để suy nghĩ về cấu trúc dự án game của bạn theo cách tự nhiên.

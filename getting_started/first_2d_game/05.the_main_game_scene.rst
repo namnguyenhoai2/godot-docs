@@ -1,306 +1,181 @@
 .. _doc_your_first_2d_game_the_main_game_scene:
 
-The main game scene
-===================
+Cảnh game chính
+===============
 
-Now it's time to bring everything we did together into a playable game scene.
+Bây giờ là lúc kết hợp mọi thứ chúng ta đã thực hiện thành một cảnh game có thể chơi được.
 
-Create a new scene and add a :ref:`Node <class_Node>` named ``Main``.
-(The reason we are using Node instead of Node2D is because this node will
-be a container for handling game logic. It does not require 2D functionality itself.)
+Tạo một cảnh mới và thêm một :ref:`Node <class_Node>` có tên ``Main``. (Lý do chúng ta sử dụng Node thay vì Node2D là vì node này sẽ đóng vai trò là một vùng chứa để xử lý logic game. Bản thân nó không yêu cầu chức năng 2D.)
 
-Click the **Instance** button (represented by a chain link icon) and select your saved
-``player.tscn``.
+Nhấp vào nút **Instance** (được biểu thị bằng biểu tượng liên kết) và chọn ``player.tscn`` đã lưu.
 
 .. image:: img/instance_scene.webp
 
-Now, add the following nodes as children of ``Main``, and name them as shown:
+Bây giờ, thêm các node sau làm node con của ``Main``, và đặt tên cho chúng như minh họa:
 
-- :ref:`Timer <class_Timer>` (named ``MobTimer``) - to control how often mobs
-  spawn
-- :ref:`Timer <class_Timer>` (named ``ScoreTimer``) - to increment the score
-  every second
-- :ref:`Timer <class_Timer>` (named ``StartTimer``) - to give a delay before
-  starting
-- :ref:`Marker2D <class_Marker2D>` (named ``StartPosition``) - to indicate
-  the player's start position
+- :ref:`Timer <class_Timer>` (có tên ``MobTimer``) - để kiểm soát tần suất mob xuất hiện - :ref:`Timer <class_Timer>` (có tên ``ScoreTimer``) - để tăng điểm sau mỗi giây - :ref:`Timer <class_Timer>` (có tên ``StartTimer``) - để tạo khoảng trễ trước khi bắt đầu - :ref:`Marker2D <class_Marker2D>` (có tên ``StartPosition``) - để chỉ vị trí bắt đầu của người chơi
 
-Set the ``Wait Time`` property of each of the ``Timer`` nodes as follows (values are in seconds):
+Đặt thuộc tính ``Wait Time`` của từng node ``Timer`` như sau (các giá trị tính bằng giây):
 
-- ``MobTimer``: ``0.5``
-- ``ScoreTimer``: ``1``
-- ``StartTimer``: ``2``
+- ``MobTimer``: ``0.5`` - ``ScoreTimer``: ``1`` - ``StartTimer``: ``2``
 
-In addition, set the ``One Shot`` property of ``StartTimer`` to "On" and set
-``Position`` of the ``StartPosition`` node to ``(240, 450)``.
+Ngoài ra, đặt thuộc tính ``One Shot`` của ``StartTimer`` thành "On" và đặt ``Position`` của node ``StartPosition`` thành ``(240, 450)``.
 
-Spawning mobs
--------------
+Sinh mob
+--------
 
-The Main node will be spawning new mobs, and we want them to appear at a random
-location on the edge of the screen. Click the ``Main`` node in the Scene dock, then
-add a child :ref:`Path2D <class_Path2D>` node named ``MobPath``. When you select
-``Path2D``, you will see some new buttons at the top of the editor:
+Node Main sẽ sinh các mob mới và chúng ta muốn chúng xuất hiện tại một vị trí ngẫu nhiên trên cạnh màn hình. Nhấp vào node ``Main`` trong dock Scene, sau đó thêm một node :ref:`Path2D <class_Path2D>` con có tên ``MobPath``. Khi chọn ``Path2D``, bạn sẽ thấy một số nút mới ở phía trên trình chỉnh sửa:
 
 .. image:: img/path2d_buttons.webp
 
-Select the middle one ("Add Point") and draw the path by clicking to add the
-points at the corners shown. To have the points snap to the grid, make sure "Use
-Grid Snap" and "Use Smart Snap" are both selected. These options can be found to the
-left of the "Lock" button, appearing as a magnet next to some dots and
-intersecting lines, respectively.
+Chọn nút ở giữa ("Add Point") và vẽ đường dẫn bằng cách nhấp để thêm các điểm tại những góc được minh họa. Để các điểm tự động bắt vào lưới, hãy đảm bảo cả "Use Grid Snap" và "Use Smart Snap" đều được chọn. Bạn có thể tìm thấy các tùy chọn này ở bên trái nút "Lock", lần lượt được hiển thị dưới dạng một nam châm bên cạnh một số chấm và các đường giao nhau.
 
 .. image:: img/grid_snap_button.webp
 
 .. important:: Draw the path in *clockwise* order, or your mobs will spawn
-               pointing *outwards* instead of *inwards*!
+               hướng *ra ngoài* thay vì *vào trong*!
 
 .. image:: img/draw_path2d.gif
 
-After placing point ``4`` in the image, click the "Close Curve" button and your
-curve will be complete.
+Sau khi đặt điểm ``4`` trong hình, hãy nhấp vào nút "Close Curve" và đường cong của bạn sẽ hoàn tất.
 
-Now that the path is defined, add a :ref:`PathFollow2D <class_PathFollow2D>`
-node as a child of ``MobPath`` and name it ``MobSpawnLocation``. This node will
-automatically rotate and follow the path as it moves, so we can use it to select
-a random position and direction along the path.
+Bây giờ đường dẫn đã được xác định, hãy thêm một node :ref:`PathFollow2D <class_PathFollow2D>` làm node con của ``MobPath`` và đặt tên là ``MobSpawnLocation``. Node này sẽ tự động xoay và đi theo đường dẫn khi di chuyển, vì vậy chúng ta có thể sử dụng nó để chọn một vị trí và hướng ngẫu nhiên dọc theo đường dẫn.
 
-Your scene should look like this:
+Cảnh của bạn sẽ trông như sau:
 
 .. image:: img/main_scene_nodes.webp
 
-Main script
------------
+Tập lệnh Main
+-------------
 
-Add a script to ``Main``. At the top of the script, we use
-``@export var mob_scene: PackedScene`` to allow us to choose the Mob scene we want
-to instance.
+Thêm một tập lệnh vào ``Main``. Ở đầu tập lệnh, chúng ta sử dụng ``@export var mob_scene: PackedScene`` để cho phép chọn cảnh Mob mà chúng ta muốn tạo instance.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     extends Node
 
-    @export var mob_scene: PackedScene
-    var score
+    @export var mob_scene: PackedScene var score
 
  .. code-tab:: csharp
 
     using Godot;
 
-    public partial class Main : Node
-    {
-        // Don't forget to rebuild the project so the editor knows about the new export variable.
+    public partial class Main : Node { // Đừng quên build lại project để trình chỉnh sửa nhận biết biến export mới.
 
-        [Export]
-        public PackedScene MobScene { get; set; }
+        [Export] public PackedScene MobScene { get; set; }
 
-        private int _score;
-    }
+        private int _score; }
 
-Click the ``Main`` node and you will see the ``Mob Scene`` property in the Inspector
-under "Main.gd".
+Nhấp vào node ``Main`` và bạn sẽ thấy thuộc tính ``Mob Scene`` trong Inspector bên dưới "Main.gd".
 
-You can assign this property's value in two ways:
+Bạn có thể gán giá trị cho thuộc tính này theo hai cách:
 
-- Drag ``mob.tscn`` from the "FileSystem" dock and drop it in the **Mob Scene**
-  property.
-- Click the down arrow next to "[empty]" and choose "Load". Select ``mob.tscn``.
+- Kéo ``mob.tscn`` từ dock "FileSystem" và thả vào thuộc tính **Mob Scene**. - Nhấp vào mũi tên hướng xuống bên cạnh "[empty]" và chọn "Load". Chọn ``mob.tscn``.
 
-Next, select the instance of the ``Player`` scene under ``Main`` node in the Scene dock,
-and access the Signals dock on the sidebar.
+Tiếp theo, chọn instance của cảnh ``Player`` bên dưới node ``Main`` trong dock Scene, rồi mở dock Signals ở thanh bên.
 
-You should see a list of the signals for the ``Player`` node. Find and
-double-click the ``hit`` signal in the list (or right-click it and select
-"Connect..."). This will open the signal connection dialog. We want to make a
-new function named ``game_over``, which will handle what needs to happen when a
-game ends. Type "game_over" in the "Receiver Method" box at the bottom of the
-signal connection dialog and click "Connect". You are aiming to have the ``hit`` signal
-emitted from ``Player`` and handled in the ``Main`` script. Add the following code
-to the new function, as well as a ``new_game`` function that will set
-everything up for a new game:
+Bạn sẽ thấy danh sách các signal của node ``Player``. Tìm và nhấp đúp vào signal ``hit`` trong danh sách (hoặc nhấp chuột phải vào nó và chọn "Connect..."). Thao tác này sẽ mở hộp thoại kết nối signal. Chúng ta muốn tạo một hàm mới có tên ``game_over``, hàm này sẽ xử lý những việc cần diễn ra khi game kết thúc. Nhập "game_over" vào ô "Receiver Method" ở cuối hộp thoại kết nối signal và nhấp vào "Connect". Mục tiêu là signal ``hit`` được phát ra từ ``Player`` và được xử lý trong tập lệnh ``Main``. Thêm đoạn mã sau vào hàm mới, cùng với một hàm ``new_game`` để thiết lập mọi thứ cho một game mới:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func game_over():
-        $ScoreTimer.stop()
-        $MobTimer.stop()
+    func game_over(): $ScoreTimer.stop() $MobTimer.stop()
 
-    func new_game():
-        score = 0
-        $Player.start($StartPosition.position)
-        $StartTimer.start()
+    func new_game(): score = 0 $Player.start($StartPosition.position) $StartTimer.start()
 
  .. code-tab:: csharp
 
-    public void GameOver()
-    {
-        GetNode<Timer>("MobTimer").Stop();
-        GetNode<Timer>("ScoreTimer").Stop();
-    }
+    public void GameOver() { GetNode<Timer>("MobTimer").Stop(); GetNode<Timer>("ScoreTimer").Stop(); }
 
-    public void NewGame()
-    {
-        _score = 0;
+    public void NewGame() { _score = 0;
 
-        var player = GetNode<Player>("Player");
-        var startPosition = GetNode<Marker2D>("StartPosition");
-        player.Start(startPosition.Position);
+        var player = GetNode<Player>("Player"); var startPosition = GetNode<Marker2D>("StartPosition"); player.Start(startPosition.Position);
 
-        GetNode<Timer>("StartTimer").Start();
-    }
+        GetNode<Timer>("StartTimer").Start(); }
 
-Now we'll connect the ``timeout()`` signal of each Timer node (``StartTimer``,
-``ScoreTimer``, and ``MobTimer``) to the main script. For each of the three
-timers, select the timer in the Scene dock, open the Signals tab of the Node
-dock, then double-click the ``timeout()`` signal in the list. This will open a new
-signal connection dialog. The default settings in this dialog should be fine, so
-select **Connect** to create a new signal connection.
+Bây giờ chúng ta sẽ kết nối signal ``timeout()`` của từng node Timer (``StartTimer``, ``ScoreTimer`` và ``MobTimer``) với tập lệnh chính. Với mỗi timer trong số ba timer, hãy chọn timer trong dock Scene, mở tab Signals của dock Node, sau đó nhấp đúp vào signal ``timeout()`` trong danh sách. Thao tác này sẽ mở một hộp thoại kết nối signal mới. Các cài đặt mặc định trong hộp thoại này sẽ phù hợp, vì vậy hãy chọn **Connect** để tạo kết nối signal mới.
 
-Once all three timers have this set up, you should be able to see each timer
-have a Signal connection for their respective ``timeout()`` signal, showing in
-green, within their respective Signals tabs:
+Sau khi thiết lập xong cả ba timer, bạn sẽ thấy mỗi timer có một kết nối Signal cho signal ``timeout()`` tương ứng, được hiển thị bằng màu xanh lá trong các tab Signals tương ứng:
 
-- (For MobTimer): ``_on_mob_timer_timeout()``
-- (For ScoreTimer): ``_on_score_timer_timeout()``
-- (For StartTimer): ``_on_start_timer_timeout()``
+- (Đối với MobTimer): ``_on_mob_timer_timeout()`` - (Đối với ScoreTimer): ``_on_score_timer_timeout()`` - (Đối với StartTimer): ``_on_start_timer_timeout()``
 
-Now we define how each of these timers operate by adding the code below. Notice
-that ``StartTimer`` will start the other two timers, and that ``ScoreTimer``
-will increment the score by 1.
+Bây giờ chúng ta xác định cách mỗi timer này hoạt động bằng cách thêm đoạn mã bên dưới. Lưu ý rằng ``StartTimer`` sẽ khởi động hai timer còn lại, còn ``ScoreTimer`` sẽ tăng điểm thêm 1.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _on_score_timer_timeout():
-        score += 1
+    func _on_score_timer_timeout(): score += 1
 
-    func _on_start_timer_timeout():
-        $MobTimer.start()
-        $ScoreTimer.start()
+    func _on_start_timer_timeout(): $MobTimer.start() $ScoreTimer.start()
 
  .. code-tab:: csharp
 
-    // We also specified this function name in PascalCase in the editor's connection window.
-    private void OnScoreTimerTimeout()
-    {
-        _score++;
-    }
+    // Chúng ta cũng đã chỉ định tên hàm này ở dạng PascalCase trong cửa sổ kết nối của trình chỉnh sửa. private void OnScoreTimerTimeout() { _score++; }
 
-    // We also specified this function name in PascalCase in the editor's connection window.
-    private void OnStartTimerTimeout()
-    {
-        GetNode<Timer>("MobTimer").Start();
-        GetNode<Timer>("ScoreTimer").Start();
-    }
+    // Chúng ta cũng đã chỉ định tên hàm này ở dạng PascalCase trong cửa sổ kết nối của trình chỉnh sửa. private void OnStartTimerTimeout() { GetNode<Timer>("MobTimer").Start(); GetNode<Timer>("ScoreTimer").Start(); }
 
-In ``_on_mob_timer_timeout()``, we will create a mob instance, pick a random
-starting location along the ``Path2D``, and set the mob in motion. The
-``PathFollow2D`` node will automatically rotate as it follows the path, so we
-will use that to select the mob's direction as well as its position.
-When we spawn a mob, we'll pick a random value between ``150.0`` and
-``250.0`` for how fast each mob will move (it would be boring if they were
-all moving at the same speed).
+Trong ``_on_mob_timer_timeout()``, chúng ta sẽ tạo một instance mob, chọn một vị trí bắt đầu ngẫu nhiên dọc theo ``Path2D``, rồi làm cho mob chuyển động. Node ``PathFollow2D`` sẽ tự động xoay khi đi theo đường dẫn, vì vậy chúng ta sẽ sử dụng nó để chọn cả hướng lẫn vị trí của mob. Khi sinh một mob, chúng ta sẽ chọn một giá trị ngẫu nhiên từ ``150.0`` đến ``250.0`` cho tốc độ di chuyển của mỗi mob (sẽ rất nhàm chán nếu tất cả chúng đều di chuyển với cùng tốc độ).
 
-Note that a new instance must be added to the scene using ``add_child()``.
+Lưu ý rằng một instance mới phải được thêm vào cảnh bằng ``add_child()``.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _on_mob_timer_timeout():
-        # Create a new instance of the Mob scene.
-        var mob = mob_scene.instantiate()
+    func _on_mob_timer_timeout(): # Tạo một instance mới của cảnh Mob. var mob = mob_scene.instantiate()
 
-        # Choose a random location on Path2D.
-        var mob_spawn_location = $MobPath/MobSpawnLocation
-        mob_spawn_location.progress_ratio = randf()
+        # Chọn một vị trí ngẫu nhiên trên Path2D. var mob_spawn_location = $MobPath/MobSpawnLocation mob_spawn_location.progress_ratio = randf()
 
-        # Set the mob's position to the random location.
-        mob.position = mob_spawn_location.position
+        # Đặt vị trí của mob thành vị trí ngẫu nhiên. mob.position = mob_spawn_location.position
 
-        # Set the mob's direction perpendicular to the path direction.
-        var direction = mob_spawn_location.rotation + PI / 2
+        # Đặt hướng của mob vuông góc với hướng của đường dẫn. var direction = mob_spawn_location.rotation + PI / 2
 
-        # Add some randomness to the direction.
-        direction += randf_range(-PI / 4, PI / 4)
-        mob.rotation = direction
+        # Thêm một chút ngẫu nhiên vào hướng. direction += randf_range(-PI / 4, PI / 4) mob.rotation = direction
 
-        # Choose the velocity for the mob.
-        var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
-        mob.linear_velocity = velocity.rotated(direction)
+        # Chọn vận tốc cho mob. var velocity = Vector2(randf_range(150.0, 250.0), 0.0) mob.linear_velocity = velocity.rotated(direction)
 
-        # Spawn the mob by adding it to the Main scene.
-        add_child(mob)
+        # Sinh mob bằng cách thêm nó vào cảnh Main. add_child(mob)
 
  .. code-tab:: csharp
 
-    // We also specified this function name in PascalCase in the editor's connection window.
-    private void OnMobTimerTimeout()
-    {
-        // Create a new instance of the Mob scene.
-        Mob mob = MobScene.Instantiate<Mob>();
+    // Chúng ta cũng đã chỉ định tên hàm này ở dạng PascalCase trong cửa sổ kết nối của trình chỉnh sửa. private void OnMobTimerTimeout() { // Tạo một instance mới của cảnh Mob. Mob mob = MobScene.Instantiate<Mob>();
 
-        // Choose a random location on Path2D.
-        var mobSpawnLocation = GetNode<PathFollow2D>("MobPath/MobSpawnLocation");
-        mobSpawnLocation.ProgressRatio = GD.Randf();
+        // Chọn một vị trí ngẫu nhiên trên Path2D. var mobSpawnLocation = GetNode<PathFollow2D>("MobPath/MobSpawnLocation"); mobSpawnLocation.ProgressRatio = GD.Randf();
 
-        // Set the mob's direction perpendicular to the path direction.
-        float direction = mobSpawnLocation.Rotation + Mathf.Pi / 2;
+        // Đặt hướng của mob vuông góc với hướng của đường dẫn. float direction = mobSpawnLocation.Rotation + Mathf.Pi / 2;
 
-        // Set the mob's position to a random location.
-        mob.Position = mobSpawnLocation.Position;
+        // Đặt vị trí của mob thành một vị trí ngẫu nhiên. mob.Position = mobSpawnLocation.Position;
 
-        // Add some randomness to the direction.
-        direction += (float)GD.RandRange(-Mathf.Pi / 4, Mathf.Pi / 4);
-        mob.Rotation = direction;
+        // Thêm một chút ngẫu nhiên vào hướng. direction += (float)GD.RandRange(-Mathf.Pi / 4, Mathf.Pi / 4); mob.Rotation = direction;
 
-        // Choose the velocity.
-        var velocity = new Vector2((float)GD.RandRange(150.0, 250.0), 0);
-        mob.LinearVelocity = velocity.Rotated(direction);
+        // Chọn vận tốc. var velocity = new Vector2((float)GD.RandRange(150.0, 250.0), 0); mob.LinearVelocity = velocity.Rotated(direction);
 
-        // Spawn the mob by adding it to the Main scene.
-        AddChild(mob);
-    }
+        // Sinh mob bằng cách thêm nó vào cảnh Main. AddChild(mob); }
 
 .. important:: Why ``PI``? In functions requiring angles, Godot uses *radians*,
-               not degrees. Pi represents a half turn in radians, about
-               ``3.1415`` (there is also ``TAU`` which is equal to ``2 * PI``).
-               If you're more comfortable working with degrees, you'll need to
-               use the ``deg_to_rad()`` and ``rad_to_deg()`` functions to
-               convert between the two.
+               không phải độ. Pi biểu thị nửa vòng tính bằng radian, khoảng ``3.1415`` (ngoài ra còn có ``TAU``, bằng ``2 * PI``). Nếu bạn thấy thoải mái hơn khi làm việc với độ, bạn sẽ cần sử dụng các hàm ``deg_to_rad()`` và ``rad_to_deg()`` để chuyển đổi giữa hai đơn vị.
 
-Testing the scene
------------------
+Kiểm thử cảnh
+-------------
 
-Let's test the scene to make sure everything is working. Add this ``new_game``
-call to ``_ready()``:
+Hãy kiểm thử cảnh để đảm bảo mọi thứ hoạt động. Thêm lệnh gọi ``new_game`` này vào ``_ready()``:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _ready():
-        new_game()
+    func _ready(): new_game()
 
  .. code-tab:: csharp
 
-    public override void _Ready()
-    {
-        NewGame();
-    }
+    public override void _Ready() { NewGame(); }
 
-Let's also assign ``Main`` as our "Main Scene" - the one that runs automatically
-when the game launches. Press the "Play" button and select ``main.tscn`` when
-prompted.
+Hãy gán ``Main`` làm "Main Scene" - cảnh tự động chạy khi game khởi động. Nhấn nút "Play" và chọn ``main.tscn`` khi được yêu cầu.
 
 .. tip:: If you had already set another scene as the "Main Scene", you can right
-         click ``main.tscn`` in the FileSystem dock and select "Set As Main Scene".
+         nhấp vào ``main.tscn`` trong dock FileSystem và chọn "Set As Main Scene".
 
-You should be able to move the player around, see mobs spawning, and see the
-player disappear when hit by a mob.
+Bạn sẽ có thể di chuyển nhân vật, thấy các mob xuất hiện và thấy nhân vật biến mất khi bị mob đánh trúng.
 
-When you're sure everything is working, remove the call to ``new_game()`` from
-``_ready()`` and replace it with ``pass``.
+Khi chắc chắn mọi thứ đều hoạt động, hãy xóa lệnh gọi đến ``new_game()`` khỏi ``_ready()`` và thay thế bằng ``pass``.
 
-What's our game lacking? Some user interface. In the next lesson, we'll add a
-title screen and display the player's score.
+Trò chơi của chúng ta còn thiếu gì? Một số thành phần giao diện người dùng. Trong bài học tiếp theo, chúng ta sẽ thêm màn hình tiêu đề và hiển thị điểm số của người chơi.
