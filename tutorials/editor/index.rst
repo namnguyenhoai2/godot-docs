@@ -2,19 +2,15 @@
 
 .. _doc_editor_introduction:
 
-Editor introduction
-===================
+Giới thiệu về trình chỉnh sửa
+=============================
 
-In this section, we cover the Godot editor in general, from its interface to
-using it with the command line.
+Trong phần này, chúng ta sẽ tìm hiểu tổng quan về trình chỉnh sửa Godot, từ giao diện đến cách sử dụng trình chỉnh sửa này với command line.
 
-Editor's interface
-------------------
+Giao diện của trình chỉnh sửa
+-----------------------------
 
-The following pages explain how to use the various windows, workspaces, and
-docks that make up the Godot editor. We cover some specific editors' interfaces
-in other sections where appropriate. For example, the :ref:`animation editor
-<doc_introduction_animation>`.
+Các trang sau đây giải thích cách sử dụng các cửa sổ, workspace và dock khác nhau cấu thành trình chỉnh sửa Godot. Chúng ta sẽ tìm hiểu giao diện của một số trình chỉnh sửa cụ thể trong các phần khác khi thích hợp. Ví dụ: :ref:`animation editor <doc_introduction_animation>`.
 
 .. toctree::
    :maxdepth: 1
@@ -27,12 +23,10 @@ in other sections where appropriate. For example, the :ref:`animation editor
    customizing_editor
    game_embedding
 
-XR editor
----------
+Trình chỉnh sửa XR
+------------------
 
-Godot offers a port of the editor designed to run natively on Meta Quest devices.
-The port can be downloaded from the `Meta Horizon Store <https://www.meta.com/experiences/godot-game-engine/7713660705416473/>`__,
-or from the `Godot download page <https://godotengine.org/download/preview/>`__.
+Godot cung cấp một bản port của trình chỉnh sửa được thiết kế để chạy native trên các thiết bị Meta Quest. Có thể tải bản port này từ `Meta Horizon Store <https://www.meta.com/experiences/godot-game-engine/7713660705416473/>`__ hoặc từ `Godot download page <https://godotengine.org/download/preview/>`__.
 
 .. toctree::
    :maxdepth: 1
@@ -40,13 +34,10 @@ or from the `Godot download page <https://godotengine.org/download/preview/>`__.
 
    using_the_xr_editor
 
-Android editor
---------------
+Trình chỉnh sửa Android
+-----------------------
 
-Godot offers a native port of the editor running entirely on Android devices.
-The Android port can be downloaded from the `Android Downloads page <https://godotengine.org/download/android/>`__.
-While we strive for feature parity with the Desktop version of the editor,
-the Android port has a certain amount of caveats you should be aware of.
+Godot cung cấp một bản port native của trình chỉnh sửa, chạy hoàn toàn trên các thiết bị Android. Có thể tải bản port Android từ `Android Downloads page <https://godotengine.org/download/android/>`__. Mặc dù chúng tôi cố gắng đảm bảo tính tương đương về tính năng với phiên bản Desktop của trình chỉnh sửa, bản port Android vẫn có một số hạn chế mà bạn nên biết.
 
 .. toctree::
    :maxdepth: 1
@@ -54,12 +45,10 @@ the Android port has a certain amount of caveats you should be aware of.
 
    using_the_android_editor
 
-Web editor
-----------
+Trình chỉnh sửa trên web
+------------------------
 
-Godot offers an HTML5 version of the editor running entirely in your browser. No
-download is required to use it, but it has a certain amount of caveats you
-should be aware of.
+Godot cung cấp một phiên bản HTML5 của trình chỉnh sửa, chạy hoàn toàn trong trình duyệt của bạn. Bạn không cần tải xuống để sử dụng, nhưng phiên bản này có một số hạn chế mà bạn nên biết.
 
 .. toctree::
    :maxdepth: 1
@@ -67,12 +56,10 @@ should be aware of.
 
    using_the_web_editor
 
-Advanced features
------------------
+Tính năng nâng cao
+------------------
 
-The articles below focus on advanced features useful for experienced developers,
-such as calling Godot from the command line and using an external text editor
-like Visual Studio Code or Emacs.
+Các bài viết dưới đây tập trung vào những tính năng nâng cao hữu ích cho các developer có kinh nghiệm, chẳng hạn như gọi Godot từ command line và sử dụng một trình chỉnh sửa văn bản bên ngoài như Visual Studio Code hoặc Emacs.
 
 .. toctree::
    :maxdepth: 1
@@ -82,12 +69,10 @@ like Visual Studio Code or Emacs.
    external_editor
    using_engine_compilation_configuration_editor
 
-Managing editor features
-------------------------
+Quản lý các tính năng của trình chỉnh sửa
+-----------------------------------------
 
-Godot allows you to remove features from the editor. This may be useful if you're
-an educator trying to ease students into the editor slowly, or if you're working on
-a project that's only 2D or only 3D and don't want to see what you don't need.
+Godot cho phép bạn loại bỏ các tính năng khỏi trình chỉnh sửa. Điều này có thể hữu ích nếu bạn là một nhà giáo dục đang cố gắng giúp học sinh làm quen với trình chỉnh sửa từng bước, hoặc nếu bạn đang làm việc trên một project chỉ có 2D hoặc chỉ có 3D và không muốn nhìn thấy những thứ mình không cần.
 
 .. toctree::
    :maxdepth: 1

@@ -1,30 +1,17 @@
 .. _doc_engine_compilation_configuration_editor:
 
-Using the engine compilation configuration editor
+Sử dụng trình chỉnh sửa cấu hình biên dịch engine
 =================================================
 
-Godot comes with a large set of built-in features. While this is convenient,
-this also means its binary size is larger than it could be, especially
-for projects that only use a small portion of its feature set.
+Godot đi kèm một tập hợp lớn các tính năng tích hợp sẵn. Mặc dù điều này rất tiện lợi, nhưng cũng có nghĩa là kích thước binary của Godot lớn hơn mức có thể, đặc biệt đối với các dự án chỉ sử dụng một phần nhỏ trong tập hợp tính năng này.
 
-To help reduce binary size, it is possible to compile custom export templates
-with certain features disabled. This is described in detail in :ref:`doc_optimizing_for_size`.
-However, determining which features need to be disabled can be a tedious task.
-The engine compilation configuration editor aims to address this
-by providing an interface to view and manage these features easily,
-while also being able to detect the features currently being used in the project.
+Để giúp giảm kích thước binary, bạn có thể biên dịch các export template tùy chỉnh với một số tính năng bị tắt. Nội dung này được mô tả chi tiết trong :ref:`doc_optimizing_for_size`. Tuy nhiên, việc xác định những tính năng nào cần tắt có thể khá tẻ nhạt. Trình chỉnh sửa cấu hình biên dịch engine giúp giải quyết vấn đề này bằng cách cung cấp một giao diện để dễ dàng xem và quản lý các tính năng, đồng thời có thể phát hiện những tính năng hiện đang được sử dụng trong dự án.
 
-The :menu:`Project > Tools > Engine Compilation Configuration Editor`
-allows you to create and manage build profiles for your Godot project.
+:menu:`Project > Tools > Engine Compilation Configuration Editor` cho phép bạn tạo và quản lý các build profile cho dự án Godot của mình.
 
-From now on, you have two possibilities:
+Từ bây giờ, bạn có hai khả năng:
 
-- View the list and manually uncheck features that you don't need.
-- Use the :button:`Detect from Project` button to automatically detect features
-  currently used in the project and disable unused features. Note that this will
-  override the existing list of features, so if you have manually unchecked some
-  items, their state will be reset based on whether the project actually
-  uses the feature.
+- Xem danh sách và bỏ chọn thủ công những tính năng bạn không cần. - Sử dụng nút :button:`Detect from Project` để tự động phát hiện các tính năng hiện đang được sử dụng trong dự án và tắt những tính năng không được sử dụng. Lưu ý rằng thao tác này sẽ ghi đè danh sách tính năng hiện tại, vì vậy nếu bạn đã bỏ chọn thủ công một số mục, trạng thái của chúng sẽ được đặt lại dựa trên việc dự án có thực sự sử dụng tính năng đó hay không.
 
 .. figure:: img/engine_compilation_configuration_editor_detect.webp
    :align: center
@@ -32,9 +19,7 @@ From now on, you have two possibilities:
 
    Opening the Engine Compilation Configuration Editor
 
-Once you click :button:`Detect from Project`, the project detection step will run.
-This can take from a few seconds up to several minutes depending on the project size.
-Once detection is complete, you'll see an updated list of features with some features disabled:
+Sau khi bạn nhấp vào :button:`Detect from Project`, bước phát hiện dự án sẽ bắt đầu. Quá trình này có thể mất từ vài giây đến vài phút, tùy thuộc vào kích thước dự án. Khi quá trình phát hiện hoàn tất, bạn sẽ thấy danh sách tính năng được cập nhật, trong đó một số tính năng đã bị tắt:
 
 .. figure:: img/engine_compilation_configuration_editor_detected.webp
    :align: center
@@ -44,19 +29,11 @@ Once detection is complete, you'll see an updated list of features with some fea
 
 .. warning::
 
-    Unchecking features in this dialog will not reduce binary size directly on export.
-    Since it is only possible to actually remove features from the binary at compile-time,
-    you still need to compile custom export templates with the build profile specified
-    to actually benefit from the engine compilation configuration editor.
+    Việc bỏ chọn các tính năng trong hộp thoại này sẽ không trực tiếp làm giảm kích thước binary khi export. Vì chỉ có thể thực sự loại bỏ các tính năng khỏi binary tại thời điểm biên dịch, bạn vẫn cần biên dịch các export template tùy chỉnh với build profile được chỉ định để thực sự hưởng lợi từ trình chỉnh sửa cấu hình biên dịch engine.
 
-You can now save the build profile by clicking **Save As** at the top.
-The build profile can be saved in any location, but it's a good idea to
-save it somewhere in your project folder and add it to version control to be able
-to go back to it later when needed. This also allows using version control
-to track changes to the build profile.
+Bây giờ bạn có thể lưu build profile bằng cách nhấp vào **Save As** ở phía trên. Build profile có thể được lưu ở bất kỳ vị trí nào, nhưng bạn nên lưu ở đâu đó trong thư mục dự án và thêm vào version control để có thể quay lại sử dụng sau này khi cần. Điều này cũng cho phép dùng version control để theo dõi các thay đổi đối với build profile.
 
-The build profile is a JSON file (and ``.gdbuild`` extension) that looks like this
-after detection in the above example:
+Build profile là một tệp JSON (với phần mở rộng ``.gdbuild``) có dạng như sau sau khi phát hiện trong ví dụ trên:
 
 ::
 
@@ -76,32 +53,21 @@ after detection in the above example:
         "type": "build_profile"
     }
 
-This file can be passed as a SCons option when :ref:`compiling <doc_compiling_index>`
-export templates:
+Có thể truyền tệp này dưới dạng tùy chọn SCons khi :ref:`compiling <doc_compiling_index>` export template:
 
 ::
 
     scons target=template_release build_profile=/path/to/profile.gdbuild
 
-The buildsystem will use this to disable unused classes and reduce binary size as a result.
+Buildsystem sẽ sử dụng thông tin này để tắt các class không được sử dụng và nhờ đó giảm kích thước binary.
 
-Limitations
------------
+Giới hạn
+--------
 
-The :button:`Detect from Project` functionality relies on reading the project's scenes and scripts.
-It will not be able to detect used features in the following scenarios:
+Tính năng :button:`Detect from Project` dựa vào việc đọc các scene và script của dự án. Tính năng này sẽ không thể phát hiện các tính năng được sử dụng trong những trường hợp sau:
 
-- Features that are used in GDScripts that are procedurally created then run at runtime.
-- Features that are used in :ref:`expressions <doc_evaluating_expressions>`.
-- Features that are used in :ref:`GDExtensions <doc_gdextension>`, unless the language binding
-  allows for defining used classes and the extension makes use of the functionality.
-  See `GH-104129 <https://github.com/godotengine/godot/pull/104129>`__ for details.
-- Features that are used in :ref:`external PCKs loaded at runtime <doc_exporting_pcks>`.
-- Certain edge cases may exist. If unsure, please
-  `open an issue on GitHub <https://github.com/godotengine/godot/issues>`__
-  with a minimal reproduction project attached.
+- Các tính năng được sử dụng trong GDScript được tạo theo cách thủ tục rồi chạy trong runtime. - Các tính năng được sử dụng trong :ref:`expressions <doc_evaluating_expressions>`. - Các tính năng được sử dụng trong :ref:`GDExtensions <doc_gdextension>`, trừ khi language binding cho phép xác định các class được sử dụng và extension sử dụng chức năng này. Xem `GH-104129 <https://github.com/godotengine/godot/pull/104129>`__ để biết chi tiết. - Các tính năng được sử dụng trong :ref:`external PCKs loaded at runtime <doc_exporting_pcks>`. - Có thể tồn tại một số trường hợp đặc biệt. Nếu không chắc chắn, vui lòng `open an issue on GitHub <https://github.com/godotengine/godot/issues>`__ và đính kèm một dự án tái hiện tối giản.
 
 .. seealso::
 
-    You can achieve further size reductions by passing other options that reduce binary size.
-    See :ref:`doc_optimizing_for_size` for more information.
+    Bạn có thể tiếp tục giảm kích thước bằng cách truyền các tùy chọn khác giúp giảm kích thước binary. Xem :ref:`doc_optimizing_for_size` để biết thêm thông tin.

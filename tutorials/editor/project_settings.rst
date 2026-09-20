@@ -1,50 +1,36 @@
 .. _doc_project_settings:
 
-Project Settings
-================
+Cài đặt dự án
+=============
 
-There are dozens of settings you can change to control a project's execution,
-including physics, rendering, and windowing settings. These settings can be
-changed from the **Project Settings** window, from code, or by manually editing
-the ``project.godot`` file. You can see a full list of settings in the
+Có hàng chục cài đặt mà bạn có thể thay đổi để kiểm soát quá trình thực thi của một dự án, bao gồm các cài đặt về vật lý, kết xuất và cửa sổ. Bạn có thể thay đổi các cài đặt này trong cửa sổ **Project Settings**, từ code hoặc bằng cách chỉnh sửa thủ công tệp ``project.godot``. Bạn có thể xem danh sách đầy đủ các cài đặt trong
 :ref:`ProjectSettings <class_ProjectSettings>` class.
 
-Internally, Godot stores the settings for a project in a ``project.godot`` file,
-a plain text file in INI format. While this is human-readable and version control
-friendly, it's not the most convenient to edit. For that reason, the
-**Project Settings** window is available to edit these settings. To open the
-Project Settings, select **Project > Project Settings** from the main menu.
+Về mặt nội bộ, Godot lưu trữ các cài đặt của một dự án trong tệp ``project.godot``, một tệp văn bản thuần túy ở định dạng INI. Mặc dù tệp này dễ đọc đối với con người và thân thiện với hệ thống quản lý phiên bản, nhưng việc chỉnh sửa không thuận tiện lắm. Vì lý do đó, cửa sổ **Project Settings** được cung cấp để chỉnh sửa các cài đặt này. Để mở Project Settings, hãy chọn **Project > Project Settings** từ menu chính.
 
 .. figure:: img/project_settings_basic.webp
     :align: center
 
     The Project Settings window
 
-The **Project Settings** window is mainly used to change settings in the
-**General** tab. Additionally, there are tabs for the
+Cửa sổ **Project Settings** chủ yếu được dùng để thay đổi các cài đặt trong tab **General**. Ngoài ra, còn có các tab dành cho
 :ref:`Input Map <doc_input_examples_input_map>`,
 :ref:`Localization <doc_internationalizing_games>`,
 :ref:`Globals <doc_singletons_autoload>`,
 :ref:`Plugins <doc_installing_plugins_enabling_a_plugin>`, and
-**Import Defaults**. Usage of these other tabs is documented elsewhere.
+**Import Defaults**. Việc sử dụng các tab khác này được trình bày ở nơi khác.
 
-Changing project settings
--------------------------
+Thay đổi cài đặt dự án
+----------------------
 
-The **General** tab of the project settings window works much like the inspector.
-It displays a list of project settings which you can change, just like inspector
-properties. There is a list of categories on the left, which you can use to select
-related groups of settings. You can also search for a specific setting with the
-**Filter Settings** field.
+Tab **General** của cửa sổ cài đặt dự án hoạt động tương tự inspector. Tab này hiển thị danh sách các cài đặt dự án mà bạn có thể thay đổi, giống như các thuộc tính trong inspector. Ở bên trái là danh sách các danh mục, cho phép bạn chọn các nhóm cài đặt liên quan. Bạn cũng có thể tìm kiếm một cài đặt cụ thể bằng trường **Filter Settings**.
 
-Each setting has a default value. Settings can be reset to their default values
-by clicking the circular arrow **Reset** button next to each property.
+Mỗi cài đặt đều có một giá trị mặc định. Bạn có thể đặt lại cài đặt về giá trị mặc định bằng cách nhấp vào nút **Reset** có biểu tượng mũi tên tròn bên cạnh mỗi thuộc tính.
 
-Changing project settings from code
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Thay đổi cài đặt dự án từ code
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can use :ref:`set_setting() <class_ProjectSettings_method_set_setting>` to
-change a setting's value from code:
+Bạn có thể sử dụng :ref:`set_setting() <class_ProjectSettings_method_set_setting>` để thay đổi giá trị của một cài đặt từ code:
 
 .. tabs::
     .. code-tab:: gdscript GDScript
@@ -57,9 +43,7 @@ change a setting's value from code:
         ProjectSettings.SetSetting("application/run/max_fps", 60);
         ProjectSettings.SetSetting("display/window/size/mode", (int)DisplayServer.WindowMode.Windowed);
 
-However, many project settings are only read once when the game starts. After
-that, changing the setting with ``set_setting()`` will have no effect. Instead,
-most settings have a corresponding property or method on a runtime class like
+Tuy nhiên, nhiều cài đặt dự án chỉ được đọc một lần khi game khởi động. Sau đó, việc thay đổi cài đặt bằng ``set_setting()`` sẽ không có tác dụng. Thay vào đó, hầu hết các cài đặt đều có thuộc tính hoặc method tương ứng trên một runtime class như
 :ref:`Engine <class_Engine>` or :ref:`DisplayServer <class_DisplayServer>`:
 
 .. tabs::
@@ -73,18 +57,18 @@ most settings have a corresponding property or method on a runtime class like
         Engine.MaxFps = 60;
         DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
 
-In general, project settings are duplicated at runtime in the
+Nhìn chung, các cài đặt dự án được sao chép trong runtime vào
 :ref:`Engine <class_Engine>`, :ref:`PhysicsServer2D <class_PhysicsServer2D>`,
 :ref:`PhysicsServer3D <class_PhysicsServer3D>`,
 :ref:`RenderingServer <class_RenderingServer>`,
 :ref:`Viewport <class_Viewport>`, or :ref:`Window <class_Window>` classes. In the
 :ref:`ProjectSettings <class_ProjectSettings>` class reference, settings
-links to their equivalent runtime property or method.
+liên kết đến thuộc tính hoặc method runtime tương đương của chúng.
 
-Reading project settings
-------------------------
+Đọc cài đặt dự án
+-----------------
 
-You can read project settings with
+Bạn có thể đọc các cài đặt dự án bằng
 :ref:`get_setting() <class_ProjectSettings_method_get_setting>` or
 :ref:`get_setting_with_override() <class_ProjectSettings_method_get_setting_with_override>`:
 
@@ -99,9 +83,7 @@ You can read project settings with
         int maxFps = (int)ProjectSettings.GetSetting("application/run/max_fps");
         var windowMode = (DisplayServer.WindowMode)(int)ProjectSettings.GetSetting("display/window/size/mode");
 
-Since many project settings are only read once at startup, the value in the
-project settings may no longer be accurate. In these cases, it's better to read
-the value from the runtime equivalent property or method:
+Vì nhiều cài đặt dự án chỉ được đọc một lần khi khởi động, giá trị trong cài đặt dự án có thể không còn chính xác. Trong những trường hợp này, tốt hơn là đọc giá trị từ thuộc tính hoặc method runtime tương đương:
 
 .. tabs::
     .. code-tab:: gdscript GDScript
@@ -114,25 +96,19 @@ the value from the runtime equivalent property or method:
         int maxFps = Engine.MaxFps;
         DisplayServer.WindowMode windowMode = DisplayServer.WindowGetMode();
 
-Manually editing project.godot
-------------------------------
+Chỉnh sửa thủ công project.godot
+--------------------------------
 
-You can open the ``project.godot`` file using a text editor and manually
-change project settings. Note that if the ``project.godot`` file does not have a
-stored value for a particular setting, it is implicitly the default value of
-that setting. This means that if you are manually editing the file, you may
-have to write in both the setting name *and* the value.
+Bạn có thể mở tệp ``project.godot`` bằng trình soạn thảo văn bản và thay đổi thủ công các cài đặt dự án. Lưu ý rằng nếu tệp ``project.godot`` không có giá trị được lưu cho một cài đặt cụ thể, thì cài đặt đó được ngầm định sử dụng giá trị mặc định. Điều này có nghĩa là nếu bạn đang chỉnh sửa tệp thủ công, bạn có thể phải ghi cả tên cài đặt *và* giá trị.
 
-In general, it is recommended to use the Project Settings window rather than
-manually edit ``project.godot``.
+Nhìn chung, bạn nên sử dụng cửa sổ Project Settings thay vì chỉnh sửa thủ công ``project.godot``.
 
-Advanced project settings
--------------------------
+Cài đặt dự án nâng cao
+----------------------
 
 .. figure:: img/project_settings_advanced.webp
     :align: center
 
     The advanced project settings
 
-By default, only some project settings are shown. To see all the project
-settings, enable the **Advanced Settings** toggle.
+Theo mặc định, chỉ một số cài đặt dự án được hiển thị. Để xem tất cả cài đặt dự án, hãy bật công tắc **Advanced Settings**.

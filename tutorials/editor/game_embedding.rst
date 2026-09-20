@@ -1,32 +1,22 @@
 .. _doc_game_embedding:
 
-Game embedding
-==============
+Nhúng game
+==========
 
-Godot supports optionally running the game in the editor itself. This is enabled by default.
+Godot tùy chọn hỗ trợ chạy game ngay trong editor. Tính năng này được bật theo mặc định.
 
 .. note::
 
-    The game always runs in a separate process, no matter the embedding mode used.
-    This means that if the game crashes, it will not crash the editor.
+    Game luôn chạy trong một process riêng, bất kể sử dụng chế độ nhúng nào. Điều này có nghĩa là nếu game bị crash, editor sẽ không bị crash theo.
 
-Configuring game embedding
---------------------------
+Cấu hình tính năng nhúng game
+-----------------------------
 
-Game embedding can be in one of 3 states:
+Tính năng nhúng game có thể ở một trong 3 trạng thái:
 
-- **Floating window** *(default)*: The game runs in a separate window, with a
-  Game bar at the top that allows you to adjust settings and select nodes in the
-  embedded game. Clicking the :button:`Game` main screen button focuses the
-  floating window.
-- **Main window:** The game runs in the editor, with a Game bar at the top that
-  allows you to adjust settings and select nodes in the embedded game. Clicking
-  the :button:`Game` main screen button switches to the tab with the running
-  project.
-- **Disabled:** The game runs in a separate window, as if it was an exported project.
-  The Game bar at the top is not present; selecting nodes in the embedded game is not possible.
+- **Cửa sổ nổi** *(mặc định)*: Game chạy trong một cửa sổ riêng, với Game bar ở phía trên cho phép bạn điều chỉnh các thiết lập và chọn node trong game được nhúng. Nhấp vào nút màn hình chính :button:`Game` sẽ đưa cửa sổ nổi lên trước. - **Cửa sổ chính:** Game chạy trong editor, với Game bar ở phía trên cho phép bạn điều chỉnh các thiết lập và chọn node trong game được nhúng. Nhấp vào nút màn hình chính :button:`Game` sẽ chuyển sang tab chứa project đang chạy. - **Đã tắt:** Game chạy trong một cửa sổ riêng, như thể đó là một project đã export. Game bar ở phía trên không xuất hiện; không thể chọn node trong game được nhúng.
 
-To configure this functionality, click the Game main screen at the top of the editor:
+Để cấu hình chức năng này, hãy nhấp vào Game main screen ở phía trên editor:
 
 .. figure:: img/game_embedding_main_screen.webp
    :align: center
@@ -34,7 +24,7 @@ To configure this functionality, click the Game main screen at the top of the ed
 
    Accessing the Game embedding main screen
 
-Once on the Game main screen, click the dropdown menu in the top-right corner of the Game bar:
+Trong Game main screen, hãy nhấp vào menu dropdown ở góc trên bên phải của Game bar:
 
 .. figure:: img/game_embedding_mode_dropdown.webp
    :align: center
@@ -42,39 +32,23 @@ Once on the Game main screen, click the dropdown menu in the top-right corner of
 
    Game embedding mode dropdown
 
-Two options are available to configure the game embedding mode:
+Có hai tùy chọn để cấu hình chế độ nhúng game:
 
-- **Embed Game on Next Play:** If enabled, game embedding is enabled and the
-  Game bar is available for use on the running game.
-- **Make Window Floating on Next Play:** If enabled, the game runs in a floating window.
-  If disabled, the game runs in the main editor window.
+- **Embed Game on Next Play:** Nếu được bật, tính năng nhúng game sẽ được bật và Game bar sẽ khả dụng để sử dụng trên game đang chạy. - **Make Window Floating on Next Play:** Nếu được bật, game sẽ chạy trong một cửa sổ nổi. Nếu bị tắt, game sẽ chạy trong cửa sổ editor chính.
 
-Embedded window sizing
-^^^^^^^^^^^^^^^^^^^^^^
+Định cỡ cửa sổ được nhúng
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-As seen in the dropdown menu on the right of the Game bar, there are several
-choices available to configure the embedded window size behavior. This affects
-both the floating and main window embedding modes:
+Như bạn thấy trong menu dropdown ở bên phải Game bar, có một số lựa chọn để cấu hình cách hoạt động của kích thước cửa sổ được nhúng. Các lựa chọn này ảnh hưởng đến cả chế độ nhúng cửa sổ nổi và cửa sổ chính:
 
-- **Fixed Size** *(default)*: Set the viewport size to a fixed resolution, as configured in the Project Settings.
-  If both :ref:`display/window/size/window_width_override<class_ProjectSettings_property_display/window/size/window_width_override>`
-  and :ref:`display/window/size/window_height_override<class_ProjectSettings_property_display/window/size/window_height_override>`
-  are set above ``0``, this override is used instead.
-- **Keep Aspect Ratio:** The viewport size stretches to match the game window size,
-  but always follows the aspect ratio defined by the ``width / height`` as configured
-  in the Project Settings.
-- **Stretch to Fit**: The viewport size stretches to match the game window size,
-  and may use an aspect ratio different than the one defined by the ``width / height``
-  as configured in the Project Settings. This matches the behavior when game
-  embedding is disabled.
+- **Kích thước cố định** *(mặc định)*: Đặt kích thước viewport thành một độ phân giải cố định, như được cấu hình trong Project Settings. Nếu cả :ref:`display/window/size/window_width_override<class_ProjectSettings_property_display/window/size/window_width_override>` và :ref:`display/window/size/window_height_override<class_ProjectSettings_property_display/window/size/window_height_override>` đều được đặt lớn hơn ``0``, chế độ ghi đè này sẽ được sử dụng thay thế. - **Giữ tỷ lệ khung hình:** Kích thước viewport được kéo giãn để khớp với kích thước cửa sổ game, nhưng luôn tuân theo tỷ lệ khung hình do ``width / height`` xác định, như được cấu hình trong Project Settings. - **Kéo giãn để vừa:** Kích thước viewport được kéo giãn để khớp với kích thước cửa sổ game và có thể sử dụng tỷ lệ khung hình khác với tỷ lệ do ``width / height`` xác định, như được cấu hình trong Project Settings. Cách này giống với hành vi khi tính năng nhúng game bị tắt.
 
-These options have no effect when game embedding is disabled.
+Các tùy chọn này không có tác dụng khi tính năng nhúng game bị tắt.
 
-Features
---------
+Các tính năng
+-------------
 
-When game embedding is enabled, several features can be adjusted while the
-project is running using the Game bar at the top.
+Khi tính năng nhúng game được bật, bạn có thể điều chỉnh một số tính năng trong lúc project đang chạy bằng Game bar ở phía trên.
 
 .. figure:: img/game_embedding_game_bar.webp
    :align: center
@@ -82,30 +56,26 @@ project is running using the Game bar at the top.
 
    Game bar at the top of the embedded game window
 
-In order from left to right:
+Theo thứ tự từ trái sang phải:
 
-Pause (F9)
-^^^^^^^^^^
+Tạm dừng (F9)
+^^^^^^^^^^^^^
 
-Pauses/resumes the game. When paused, the game will stop processing physics and
-idle frames, but it will still render and process input. This allows you to
+Tạm dừng/tiếp tục game. Khi bị tạm dừng, game sẽ ngừng xử lý physics và các idle frame, nhưng vẫn render và xử lý input. Điều này cho phép bạn
 :ref:`select nodes in the scene <doc_game_embedding_interaction_mode>` and
-inspect their properties in the editor inspector while the game is running.
+kiểm tra các thuộc tính của chúng trong inspector của editor khi game đang chạy.
 
-Frame advance (F10)
-^^^^^^^^^^^^^^^^^^^
+Tiến một frame (F10)
+^^^^^^^^^^^^^^^^^^^^
 
-Only available when the game is paused. Advances the game by one frame,
-allowing you to inspect the state of the game at a specific moment in time.
-This can be used to diagnose short-lived interactions (such as collisions)
-that are hard to inspect when the game is running at full speed.
+Chỉ khả dụng khi game đang tạm dừng. Tiến game thêm một frame, cho phép bạn kiểm tra trạng thái của game tại một thời điểm cụ thể. Tính năng này có thể được dùng để chẩn đoán các tương tác diễn ra trong thời gian ngắn (chẳng hạn như va chạm), vốn khó kiểm tra khi game chạy ở tốc độ tối đa.
 
-Game speed
-^^^^^^^^^^
+Tốc độ game
+^^^^^^^^^^^
 
-This option is a menu that can adjust the game speed. If the game sets
+Tùy chọn này là một menu cho phép điều chỉnh tốc độ game. Nếu game đặt
 :ref:`Engine.time_scale <class_Engine_property_time_scale>` at runtime, it will
-be multiplied by the value set here.
+sẽ được nhân với giá trị được đặt tại đây.
 
 .. figure:: img/game_embedding_game_speed_dropdown.webp
    :align: center
@@ -113,170 +83,105 @@ be multiplied by the value set here.
 
    Game speed dropdown on the left of the Game bar
 
-This can be used to view interactions in slow motion, or speed up the game
-significantly to test mechanics that normally take a long time to occur.
+Tính năng này có thể được dùng để xem các tương tác ở chế độ slow motion hoặc tăng đáng kể tốc độ game để kiểm thử các cơ chế thường mất nhiều thời gian mới xảy ra.
 
-The reset button to the right of the dropdown resets the game speed to normal (1.0×).
+Nút reset ở bên phải dropdown sẽ đặt lại tốc độ game về mức bình thường (1.0×).
 
 .. tip::
 
-    When adjusting the game speed using this mechanism, the physics tick rate
-    (determined by the
+    Khi điều chỉnh tốc độ game bằng cơ chế này, tốc độ tick của physics (được xác định bởi
     :ref:`physics/common/physics_ticks_per_second <class_ProjectSettings_property_physics/common/physics_ticks_per_second>`
-    project setting) is automatically multiplied by the game speed.
-    This allows the game logic to run at a different speed without affecting the
-    physics simulation. For example:
+    project setting) sẽ tự động được nhân với tốc độ game. Điều này cho phép logic game chạy ở tốc độ khác mà không ảnh hưởng đến mô phỏng physics. Ví dụ:
 
-    - If you set the game speed to 0.5, the physics tick rate is halved.
-    - If you set the game speed to 4.0, the physics tick rate is quadrupled.
+    - Nếu đặt tốc độ game là 0.5, tốc độ tick của physics sẽ giảm một nửa. - Nếu đặt tốc độ game là 4.0, tốc độ tick của physics sẽ tăng gấp bốn.
 
-    The :ref:`maximum number of physics steps per frame <class_ProjectSettings_property_physics/common/max_physics_steps_per_frame>`
-    is also increased to match the new physics tick rate, but it will not
-    decrease below the default value when running in slow motion.
+    :ref:`maximum number of physics steps per frame <class_ProjectSettings_property_physics/common/max_physics_steps_per_frame>` cũng được tăng để khớp với tốc độ tick mới của physics, nhưng sẽ không giảm xuống dưới giá trị mặc định khi chạy ở chế độ slow motion.
 
 .. _doc_game_embedding_interaction_mode:
 
-Interaction mode
+Chế độ tương tác
 ^^^^^^^^^^^^^^^^
 
-This controls the behavior when clicking or pressing keys while the embedded game window
-has focus.
+Tùy chọn này kiểm soát hành vi khi nhấp chuột hoặc nhấn phím trong lúc cửa sổ game được nhúng đang được focus.
 
-- **Input** *(default)*: Allow game input as usual.
-- **2D:** Disable game input and allow selecting Node2Ds, Controls, and
-  manipulating the 2D camera.
-- **3D:** Disable game input and allow selecting Node3Ds and manipulating the 3D camera.
+- **Input** *(mặc định)*: Cho phép input của game như bình thường. - **2D:** Tắt input của game và cho phép chọn Node2D, Control cũng như thao tác với camera 2D. - **3D:** Tắt input của game và cho phép chọn Node3D cũng như thao tác với camera 3D.
 
-Nodes that are selected in the 2D and 3D modes can be inspected in the editor's
-inspector, just like if they were selected in the editor. This allows you to
-inspect and modify properties of nodes in the running game.
+Các node được chọn trong chế độ 2D và 3D có thể được kiểm tra trong inspector của editor, giống như khi chúng được chọn trong editor. Điều này cho phép bạn kiểm tra và sửa đổi các thuộc tính của node trong game đang chạy.
 
 .. warning::
 
-    Like in the Remote scene tree, changes made to the running game this way are
-    not preserved when the game is stopped.
+    Giống như trong Remote scene tree, các thay đổi được thực hiện với game đang chạy theo cách này sẽ không được giữ lại khi game dừng.
 
-    To make changes that are preserved after stopping the game, you need to select
-    the nodes in the editor's Local scene tree and modify them from there while the game
-    is running instead. Make sure :menu:`Debug > Synchronize Scene Changes` is enabled
-    when doing this.
+    Để thực hiện các thay đổi được giữ lại sau khi dừng game, thay vào đó bạn cần chọn các node trong Local scene tree của editor và sửa đổi chúng từ đó trong khi game đang chạy. Hãy đảm bảo :menu:`Debug > Synchronize Scene Changes` được bật khi thực hiện việc này.
 
-Select mode
+Chế độ chọn
 ^^^^^^^^^^^
 
-*Only effective if the interaction mode is 2D or 3D, not Input.*
+*Chỉ có hiệu lực nếu chế độ tương tác là 2D hoặc 3D, không phải Input.*
 
-When enabling this option, the "show list of selectable nodes at position
-clicked" mode is disabled. However, you can still perform this action in select
-mode by using :kbd:`Ctrl + Alt + Right mouse button` at the desired location.
+Khi bật tùy chọn này, chế độ "show list of selectable nodes at position clicked" sẽ bị tắt. Tuy nhiên, bạn vẫn có thể thực hiện thao tác này trong chế độ chọn bằng cách sử dụng :kbd:`Ctrl + Alt + Right mouse button` tại vị trí mong muốn.
 
-Show list of selectable nodes at position clicked
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Hiển thị danh sách node có thể chọn tại vị trí được nhấp
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-*Only effective if the interaction mode is 2D or 3D, not Input.*
+*Chỉ có hiệu lực nếu chế độ tương tác là 2D hoặc 3D, không phải Input.*
 
-Like in the editor, this shows a list of selectable nodes at the position
-clicked. This is useful when multiple nodes are overlapping and you want to
-select a specific one. When enabling this option, select mode is disabled.
+Giống như trong editor, tùy chọn này hiển thị danh sách các node có thể chọn tại vị trí được nhấp. Tính năng này hữu ích khi có nhiều node chồng lên nhau và bạn muốn chọn một node cụ thể. Khi bật tùy chọn này, chế độ chọn sẽ bị tắt.
 
-Toggle selection visibility
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Bật/tắt khả năng hiển thị lựa chọn
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-*Only effective if the interaction mode is 2D or 3D, not Input.*
+*Chỉ có hiệu lực nếu chế độ tương tác là 2D hoặc 3D, không phải Input.*
 
-By default, the selected node in 2D or 3D interaction mode is highlighted with
-an orange rectangle or box (like in the editor).
+Theo mặc định, node được chọn trong chế độ tương tác 2D hoặc 3D sẽ được đánh dấu bằng một hình chữ nhật hoặc hình hộp màu cam (giống như trong editor).
 
-When this option is enabled, it appears as a closed eye icon. Future selections
-will not be highlighted in the game view, but are still selected for inspection
-in the inspector. This is useful to avoid visual clutter.
+Khi bật tùy chọn này, nó sẽ hiển thị dưới dạng biểu tượng con mắt đóng. Các lựa chọn trong tương lai sẽ không được đánh dấu trong game view, nhưng vẫn được chọn để kiểm tra trong inspector. Tính năng này hữu ích để tránh làm rối giao diện hình ảnh.
 
-Selection advanced options
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Tùy chọn nâng cao cho việc chọn
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Two advanced options are available in the dropdown menu next to the select mode icons:
+Có hai tùy chọn nâng cao trong menu dropdown bên cạnh các biểu tượng của chế độ chọn:
 
-- **Don't Select Locked Nodes:** When enabled, nodes that are locked in the
-  editor cannot be selected. This mimics editor behavior.
-- **Select Group over Children:** When enabled, grouped nodes are selected
-  instead of their individual children. This mimics editor behavior.
+- **Don't Select Locked Nodes:** Khi được bật, các node bị khóa trong editor sẽ không thể được chọn. Tùy chọn này mô phỏng hành vi của editor. - **Select Group over Children:** Khi được bật, các node được nhóm sẽ được chọn thay vì các node con riêng lẻ. Tùy chọn này mô phỏng hành vi của editor.
 
-Mute game audio
-^^^^^^^^^^^^^^^
+Tắt tiếng audio của game
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-This mutes game audio when enabled, without affecting the editor or other
-applications. This is particularly useful on macOS and Android, which do not
-come with a per-application volume slider out of the box.
+Khi được bật, tùy chọn này sẽ tắt audio của game mà không ảnh hưởng đến editor hoặc các ứng dụng khác. Tính năng này đặc biệt hữu ích trên macOS và Android, vốn không được tích hợp sẵn thanh trượt âm lượng riêng cho từng ứng dụng.
 
-Camera override
-^^^^^^^^^^^^^^^
+Ghi đè camera
+^^^^^^^^^^^^^
 
-When enabled, the camera stops following the game camera. You can then move the
-2D/3D camera freely by switching to the 2D/3D interaction mode and using the
-typical navigation controls:
+Khi được bật, camera sẽ ngừng bám theo camera của game. Sau đó, bạn có thể tự do di chuyển camera 2D/3D bằng cách chuyển sang chế độ tương tác 2D/3D và sử dụng các điều khiển điều hướng thông thường:
 
-- In the 2D interaction mode, use the middle mouse button (or
+- Trong chế độ tương tác 2D, sử dụng nút chuột giữa (hoặc
   :kbd:`Space + Left mouse button`) to pan around and the mouse wheel to zoom.
-- In the 3D interaction mode, hold the right mouse button and press :kbd:`W`,
+- Trong chế độ tương tác 3D, giữ nút chuột phải và nhấn :kbd:`W`,
   :kbd:`A`, :kbd:`S`, and :kbd:`D` to use freelook. Use the middle mouse button to
-  orbit, :kbd:`Shift + Middle mouse button` to pan, and the mouse wheel to zoom.
-  Additionally, you can use :kbd:`Ctrl + Minus`, :kbd:`Ctrl + Plus`, and :kbd:`Ctrl + 0`
-  to control the field of view (relative to the game's own camera FOV).
+  orbit, :kbd:`Shift + Middle mouse button` để pan và con lăn chuột để zoom. Ngoài ra, bạn có thể sử dụng :kbd:`Ctrl + Minus`, :kbd:`Ctrl + Plus` và :kbd:`Ctrl + 0` để điều khiển field of view (so với FOV của camera riêng của game).
 
-This is useful to inspect parts of the scene that are not visible from the game
-camera's point of view, or to inspect the game camera itself. When the camera
-override is disabled, the camera will snap back to the game camera's point of
-view.
+Tính năng này hữu ích để kiểm tra các phần của scene không hiển thị từ góc nhìn của camera game hoặc để kiểm tra chính camera game. Khi tắt ghi đè camera, camera sẽ quay về góc nhìn của camera game.
 
-When disabling camera override, the overridden camera's position and rotation
-are not reset. This allows you to quickly toggle back and forth between the game
-camera and the overridden camera.
+Khi tắt ghi đè camera, vị trí và góc xoay của camera bị ghi đè sẽ không được reset. Điều này cho phép bạn nhanh chóng chuyển đổi qua lại giữa camera game và camera bị ghi đè.
 
 .. note::
 
-    If the camera override appears to be non-interactive, make sure to be in the
-    2D or 3D interaction mode. The camera override will keep working while in
-    the Input interaction mode, but you won't be able to move the overridden
-    camera while in that mode (unless using the **Manipulate From Editors**
-    camera override mode as described below).
+    Nếu ghi đè camera có vẻ không hoạt động, hãy đảm bảo bạn đang ở chế độ tương tác 2D hoặc 3D. Ghi đè camera vẫn tiếp tục hoạt động trong chế độ tương tác Input, nhưng bạn sẽ không thể di chuyển camera bị ghi đè trong chế độ đó (trừ khi sử dụng chế độ ghi đè camera **Manipulate From Editors** như mô tả bên dưới).
 
-    When overriding the 2D/3D camera, the project's scripts are not aware of
-    this camera override. Keep this in mind when inspecting properties that
-    depend on the camera position, as they will account for the original camera
-    position instead.
+    Khi ghi đè camera 2D/3D, các script của project không nhận biết được việc ghi đè camera này. Hãy lưu ý điều này khi kiểm tra các thuộc tính phụ thuộc vào vị trí camera, vì chúng sẽ tính theo vị trí camera ban đầu thay vì vị trí bị ghi đè.
 
-Camera override options
-^^^^^^^^^^^^^^^^^^^^^^^
+Tùy chọn ghi đè camera
+^^^^^^^^^^^^^^^^^^^^^^
 
-- **Reset 2D/3D Camera:** Resets the 2D/3D camera to the position and rotation
-  defined by the game. Note that the camera will still be frozen in place until
-  you disable camera override.
-- **Manipulate In-Game** *(default)*: The camera override is controlled from the game window.
-  This allows controlling the camera without needing to switch back to the editor.
-- **Manipulate From Editors:** The camera override is controlled from the editor
-  window. This can be useful on multi-monitor setups where the editor can be
-  displayed side-by-side with the running project. Also, when using this option,
-  the camera override position can be remembered across project runs, since it
-  will reuse the editor camera position directly when enabled.
+- **Reset 2D/3D Camera:** Đặt lại camera 2D/3D về vị trí và góc xoay được game xác định. Lưu ý rằng camera vẫn sẽ bị cố định tại chỗ cho đến khi bạn tắt tính năng ghi đè camera. - **Manipulate In-Game** *(mặc định)*: Tính năng ghi đè camera được điều khiển từ cửa sổ game. Điều này cho phép điều khiển camera mà không cần chuyển lại về editor. - **Manipulate From Editors:** Tính năng ghi đè camera được điều khiển từ cửa sổ editor. Tùy chọn này có thể hữu ích khi sử dụng nhiều màn hình, trong đó editor có thể được hiển thị cạnh bên project đang chạy. Ngoài ra, khi sử dụng tùy chọn này, vị trí ghi đè camera có thể được ghi nhớ giữa các lần chạy project, vì vị trí camera của editor sẽ được sử dụng trực tiếp khi bật tùy chọn.
 
 .. note::
 
-    The camera override may appear less smooth while using the
-    **Manipulate From Editors** camera override mode, as a result of using
-    local network communication between the editor and the game to
-    update the camera position.
+    Tính năng ghi đè camera có thể kém mượt hơn khi sử dụng chế độ ghi đè camera **Manipulate From Editors**, do sử dụng giao tiếp mạng cục bộ giữa editor và game để cập nhật vị trí camera.
 
-Limitations
------------
+Các giới hạn
+------------
 
-Game embedding has a number of limitations to be aware of:
+Tính năng nhúng game có một số giới hạn mà bạn cần lưu ý:
 
-- In the Android editor, game embedding always uses a floating window.
-  By default, the floating window is kept on top of the editor using Android's
-  picture-in-picture functionality. This behavior can be disabled in the Game
-  bar by unchecking :menu:`Keep on Top using PiP` in the menu on the right of
-  the Game bar.
-- Window mode changes (e.g. fullscreen) are not supported when using game embedding.
-- When :menu:`Debug > Customize Run Instances...` is used to enable running with
-  multiple instances, only the first instance will use game embedding. Other
-  instances will spawn in their own windows, without the Game bar at the top.
+- Trong editor Android, tính năng nhúng game luôn sử dụng cửa sổ nổi. Theo mặc định, cửa sổ nổi được giữ ở phía trên editor bằng chức năng picture-in-picture của Android. Bạn có thể tắt hành vi này trong Game bar bằng cách bỏ chọn :menu:`Keep on Top using PiP` trong menu ở bên phải Game bar. - Không hỗ trợ thay đổi chế độ cửa sổ (ví dụ: toàn màn hình) khi sử dụng tính năng nhúng game. - Khi sử dụng :menu:`Debug > Customize Run Instances...` để bật tính năng chạy nhiều instance, chỉ instance đầu tiên sử dụng tính năng nhúng game. Các instance khác sẽ mở trong cửa sổ riêng, không có Game bar ở phía trên.

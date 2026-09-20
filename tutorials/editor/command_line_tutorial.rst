@@ -1,49 +1,33 @@
 .. _doc_command_line_tutorial:
 
-Command line tutorial
-=====================
+Hướng dẫn về dòng lệnh
+======================
 
 .. highlight:: shell
 
-Some developers like using the command line extensively. Godot is
-designed to be friendly to them, so here are the steps for working
-entirely from the command line. Given the engine relies on almost no
-external libraries, initialization times are pretty fast, making it
-suitable for this workflow.
+Một số developer thích sử dụng dòng lệnh thường xuyên. Godot được thiết kế để thân thiện với họ, vì vậy dưới đây là các bước để làm việc hoàn toàn từ dòng lệnh. Vì engine hầu như không phụ thuộc vào thư viện bên ngoài, thời gian khởi tạo khá nhanh, nên phù hợp với workflow này.
 
 .. note::
 
-    On Windows and Linux, you can run a Godot binary in a terminal by specifying
-    its relative or absolute path.
+    Trên Windows và Linux, bạn có thể chạy một binary Godot trong terminal bằng cách chỉ định path tương đối hoặc tuyệt đối của nó.
 
-    On macOS, the process is different due to Godot being contained within a
-    ``.app`` bundle (which is a *folder*, not a file). To run a Godot binary
-    from a terminal on macOS, you have to ``cd`` to the folder where the Godot
-    application bundle is located, then run ``Godot.app/Contents/MacOS/Godot``
-    followed by any command line arguments. If you've renamed the application
-    bundle from ``Godot`` to another name, make sure to edit this command line
-    accordingly.
+    Trên macOS, quy trình này khác do Godot nằm trong một bundle ``.app`` (là một *folder*, không phải file). Để chạy một binary Godot từ terminal trên macOS, bạn phải ``cd`` đến folder chứa application bundle của Godot, sau đó chạy ``Godot.app/Contents/MacOS/Godot`` kèm theo bất kỳ command line argument nào. Nếu bạn đã đổi tên application bundle từ ``Godot`` thành tên khác, hãy nhớ chỉnh sửa command này cho phù hợp.
 
-Command line reference
-----------------------
+Tham chiếu dòng lệnh
+--------------------
 
 .. |release| image:: img/template_release.svg
 .. |debug| image:: img/template_debug.svg
 .. |extended| image:: img/template_extended.svg
 .. |editor| image:: img/editor.svg
 
-**Legend**
+**Chú giải**
 
-- |release| Available in editor builds, debug export templates and release export templates.
-- |debug| Available in editor builds and debug export templates only.
-- |extended| Only available in editor builds, and export templates compiled with ``disable_path_overrides=false``.
-- |editor| Only available in editor builds.
+- |release| Có trong editor build, debug export template và release export template. - |debug| Chỉ có trong editor build và debug export template. - |extended| Chỉ có trong editor build và export template được biên dịch với ``disable_path_overrides=false``. - |editor| Chỉ có trong editor build.
 
-Note that unknown command line arguments have no effect whatsoever. The engine
-will **not** warn you when using a command line argument that doesn't exist with a
-given build type.
+Lưu ý rằng các command line argument không xác định hoàn toàn không có tác dụng. Engine sẽ **không** cảnh báo bạn khi sử dụng một command line argument không tồn tại trong một build type nhất định.
 
-**General options**
+**Tùy chọn chung**
 
 +----------------------------+-------------------------------------------------------------------------------+
 | Command                    | Description                                                                   |
@@ -59,7 +43,7 @@ given build type.
 | ``--no-header``            | |release| Do not print engine version and rendering method header on startup. |
 +----------------------------+-------------------------------------------------------------------------------+
 
-**Run options**
+**Tùy chọn chạy**
 
 +------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Command                                  | Description                                                                                                                                                  |
@@ -127,7 +111,7 @@ given build type.
 |                                          | ``--quit-after`` can be used to specify the number of frames to write.                                                                                       |
 +------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-**Display options**
+**Tùy chọn hiển thị**
 
 +------------------------------------+----------------------------------------------------------------------------+
 | Command                            | Description                                                                |
@@ -156,7 +140,7 @@ given build type.
 |                                    | default), "always", "disabled"].                                           |
 +------------------------------------+----------------------------------------------------------------------------+
 
-**Debug options**
+**Tùy chọn debug**
 
 +--------------------------------+-----------------------------------------------------------------------------------------------------------------+
 | Command                        | Description                                                                                                     |
@@ -226,7 +210,7 @@ given build type.
 | ``--editor-pseudolocalization``| |editor| Enable pseudolocalization for the editor and the project manager.                                      |
 +--------------------------------+-----------------------------------------------------------------------------------------------------------------+
 
-**Standalone tools**
+**Công cụ độc lập**
 
 +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Command                                                          | Description                                                                                                                                             |
@@ -294,68 +278,57 @@ given build type.
 Path
 ----
 
-It is recommended to place your Godot editor binary in your ``PATH`` environment
-variable, so it can be executed easily from any place by typing ``godot``.
-You can do so on Linux by placing the Godot binary in ``/usr/local/bin`` and
-making sure it is called ``godot`` (case-sensitive).
+Bạn nên đặt binary editor Godot vào biến môi trường ``PATH``, để có thể dễ dàng thực thi từ bất kỳ vị trí nào bằng cách nhập ``godot``. Trên Linux, bạn có thể thực hiện việc này bằng cách đặt binary Godot vào ``/usr/local/bin`` và đảm bảo tên của nó là ``godot`` (phân biệt chữ hoa chữ thường).
 
-To achieve this on Windows or macOS easily, you can install Godot using
-`Scoop <https://scoop.sh>`__ (on Windows) or `Homebrew <https://brew.sh>`__
-(on macOS). This will automatically make the copy of Godot installed
-available in the ``PATH``:
+Để dễ dàng thực hiện việc này trên Windows hoặc macOS, bạn có thể cài đặt Godot bằng `Scoop <https://scoop.sh>`__ (trên Windows) hoặc `Homebrew <https://brew.sh>`__ (trên macOS). Thao tác này sẽ tự động cung cấp bản sao Godot đã cài đặt trong ``PATH``:
 
 .. tabs::
 
  .. code-tab:: sh Windows
 
-    # Add "Extras" bucket
+    # Thêm bucket "Extras"
     scoop bucket add extras
 
-    # Standard editor:
+    # Editor tiêu chuẩn:
     scoop install godot
 
-    # Editor with C# support (will be available as `godot-mono` in `PATH`):
+    # Editor có hỗ trợ C# (sẽ có sẵn dưới dạng `godot-mono` trong `PATH`):
     scoop install godot-mono
 
  .. code-tab:: sh macOS
 
-    # Standard editor:
+    # Editor tiêu chuẩn:
     brew install godot
 
-    # Editor with C# support (will be available as `godot-mono` in `PATH`):
+    # Editor có hỗ trợ C# (sẽ có sẵn dưới dạng `godot-mono` trong `PATH`):
     brew install godot-mono
 
-Setting the project path
-------------------------
+Thiết lập path của project
+--------------------------
 
-Depending on where your Godot binary is located and what your current
-working directory is, you may need to set the path to your project
-for any of the following commands to work correctly.
+Tùy thuộc vào vị trí của binary Godot và current working directory, bạn có thể cần thiết lập path đến project để bất kỳ command nào sau đây hoạt động chính xác.
 
-When running the editor, this can be done by giving the path to the ``project.godot`` file
-of your project as either the first argument, like this:
+Khi chạy editor, bạn có thể thực hiện việc này bằng cách cung cấp path đến file ``project.godot`` của project dưới dạng argument đầu tiên, như sau:
 
 ::
 
     godot path_to_your_project/project.godot [other] [commands] [and] [args]
 
-For all commands, this can be done by using the ``--path`` argument:
+Đối với tất cả command, bạn có thể thực hiện việc này bằng cách sử dụng argument ``--path``:
 
 ::
 
     godot --path path_to_your_project [other] [commands] [and] [args]
 
-For example, the full command for exporting your game (as explained below) might look like this:
+Ví dụ, command đầy đủ để export game (như giải thích bên dưới) có thể trông như sau:
 
 ::
 
     godot --headless --path path_to_your_project --export-release my_export_preset_name game.exe
 
-When starting from a subdirectory of your project, use the ``--upwards`` argument for Godot to
-automatically find the ``project.godot`` file by recursively searching the parent directories.
+Khi bắt đầu từ một subdirectory của project, hãy sử dụng argument ``--upwards`` để Godot tự động tìm file ``project.godot`` bằng cách tìm kiếm đệ quy trong các directory cha.
 
-For example, running a scene (as explained below) nested in a subdirectory might look like this
-when your working directory is in the same path:
+Ví dụ, việc chạy một scene (như giải thích bên dưới) nằm trong một subdirectory có thể trông như sau khi current working directory của bạn ở cùng path:
 
 ::
 
@@ -364,12 +337,11 @@ when your working directory is in the same path:
 
 ..
 
-Creating a project
-------------------
+Tạo project
+-----------
 
 
-Creating a project from the command line can be done by navigating the
-shell to the desired place and making a ``project.godot`` file.
+Bạn có thể tạo project từ dòng lệnh bằng cách điều hướng shell đến vị trí mong muốn và tạo file ``project.godot``.
 
 
 ::
@@ -379,63 +351,56 @@ shell to the desired place and making a ``project.godot`` file.
     touch project.godot
 
 
-The project can now be opened with Godot.
+Bây giờ có thể mở project bằng Godot.
 
 
-Running the editor
-------------------
+Chạy editor
+-----------
 
-Running the editor is done by executing Godot with the ``-e`` flag. This
-must be done from within the project directory or by setting the project path as explained above,
-otherwise the command is ignored and the Project Manager appears.
+Chạy editor được thực hiện bằng cách thực thi Godot với flag ``-e``. Việc này phải được thực hiện từ trong directory của project hoặc bằng cách thiết lập path của project như đã giải thích ở trên; nếu không, command sẽ bị bỏ qua và Project Manager sẽ xuất hiện.
 
 ::
 
     godot -e
 
-When passing in the full path to the ``project.godot`` file, the ``-e`` flag may be omitted.
+Khi truyền vào path đầy đủ đến file ``project.godot``, có thể bỏ qua flag ``-e``.
 
-If a scene has been created and saved, it can be edited later by running
-the same code with that scene as argument.
+Nếu một scene đã được tạo và lưu, bạn có thể chỉnh sửa scene đó sau này bằng cách chạy cùng đoạn code với scene đó làm argument.
 
 ::
 
     godot -e scene.tscn
 
-Erasing a scene
----------------
+Xóa scene
+---------
 
-Godot is friends with your filesystem and will not create extra metadata files.
-Use ``rm`` to erase a scene file. Make sure nothing references that scene.
-Otherwise, an error will be thrown upon opening the project.
+Godot thân thiện với filesystem của bạn và sẽ không tạo thêm các file metadata. Sử dụng ``rm`` để xóa một file scene. Hãy đảm bảo không có gì tham chiếu đến scene đó. Nếu không, một lỗi sẽ được đưa ra khi mở project.
 
 ::
 
     rm scene.tscn
 
-Running the game
-----------------
+Chạy game
+---------
 
-To run the game, execute Godot within the project directory or with the project path as explained above.
+Để chạy game, hãy thực thi Godot trong directory của project hoặc với path của project như đã giải thích ở trên.
 
 ::
 
     godot
 
-Note that passing in the ``project.godot`` file will always run the editor instead of running the game.
+Lưu ý rằng việc truyền file ``project.godot`` sẽ luôn chạy editor thay vì chạy game.
 
-When a specific scene needs to be tested, pass that scene to the command line.
+Khi cần kiểm thử một scene cụ thể, hãy truyền scene đó vào dòng lệnh.
 
 ::
 
     godot scene.tscn
 
-Debugging
----------
+Debug
+-----
 
-Catching errors in the command line can be a difficult task because they
-scroll quickly. For this, a command line debugger is provided by adding
-``-d``. It works for running either the game or a single scene.
+Việc bắt lỗi trong dòng lệnh có thể khó khăn vì chúng cuộn qua rất nhanh. Để giải quyết việc này, một command line debugger được cung cấp bằng cách thêm ``-d``. Nó hoạt động khi chạy cả game lẫn một scene đơn.
 
 ::
 
@@ -447,55 +412,41 @@ scroll quickly. For this, a command line debugger is provided by adding
 
 .. _doc_command_line_tutorial_exporting:
 
-Exporting
----------
+Export
+------
 
-Exporting the project from the command line is also supported. This is
-especially useful for continuous integration setups.
+Việc export project từ dòng lệnh cũng được hỗ trợ. Điều này đặc biệt hữu ích cho các thiết lập continuous integration.
 
 .. note::
 
-    Using the ``--headless`` command line argument is **required** on platforms
-    that do not have GPU access (such as continuous integration). On platforms
-    with GPU access, ``--headless`` prevents a window from spawning while the
-    project is exporting.
+    Việc sử dụng command line argument ``--headless`` là **bắt buộc** trên các platform không có quyền truy cập GPU (chẳng hạn như continuous integration). Trên các platform có quyền truy cập GPU, ``--headless`` ngăn không cho một cửa sổ xuất hiện trong khi project đang được export.
 
 ::
 
-    # `godot` must be a Godot editor binary, not an export template.
-    # Also, export templates must be installed for the editor
-    # (or a valid custom export template must be defined in the export preset).
+    # `godot` phải là binary editor Godot, không phải export template.
+    # Ngoài ra, export template phải được cài đặt cho editor
+    # (hoặc phải định nghĩa một custom export template hợp lệ trong export preset).
     godot --headless --export-release "Linux/X11" /var/builds/project
     godot --headless --export-release Android /var/builds/project.apk
 
-The preset name must match the name of an export preset defined in the
-project's ``export_presets.cfg`` file. If the preset name contains spaces or
-special characters (such as "Windows Desktop"), it must be surrounded with quotes.
+Tên preset phải khớp với tên của một export preset được định nghĩa trong file ``export_presets.cfg`` của project. Nếu tên preset chứa khoảng trắng hoặc ký tự đặc biệt (chẳng hạn như "Windows Desktop"), tên đó phải được đặt trong dấu ngoặc kép.
 
-To export a debug version of the game, use the ``--export-debug`` switch instead
-of ``--export-release``. Their parameters and usage are the same.
+Để export phiên bản debug của game, hãy sử dụng switch ``--export-debug`` thay cho ``--export-release``. Các tham số và cách sử dụng của chúng giống nhau.
 
-To export only a PCK file, use the ``--export-pack`` option followed by the
-preset name and output path, with the file extension, instead of
-``--export-release`` or ``--export-debug``. The output path extension determines
-the package's format, either PCK or ZIP.
+Để chỉ export một file PCK, hãy sử dụng tùy chọn ``--export-pack`` theo sau là tên preset và output path có phần mở rộng file, thay cho ``--export-release`` hoặc ``--export-debug``. Phần mở rộng của output path xác định format của package, entweder PCK hoặc ZIP.
 
 .. warning::
 
-    When specifying a relative path as the path for ``--export-release``, ``--export-debug``
-    or ``--export-pack``, the path will be relative to the directory containing
-    the ``project.godot`` file, **not** relative to the current working directory.
+    Khi chỉ định một path tương đối làm path cho ``--export-release``, ``--export-debug`` hoặc ``--export-pack``, path sẽ tương đối với directory chứa file ``project.godot``, **không phải** tương đối với current working directory.
 
-Running a script
-----------------
+Chạy script
+-----------
 
-It is possible to run a ``.gd`` script from the command line.
-This feature is especially useful in large projects, e.g. for batch
-conversion of assets or custom import/export.
+Có thể chạy một script ``.gd`` từ dòng lệnh. Tính năng này đặc biệt hữu ích trong các project lớn, ví dụ như để batch conversion asset hoặc import/export tùy chỉnh.
 
-The script must inherit from ``SceneTree`` or ``MainLoop``.
+Script phải kế thừa từ ``SceneTree`` hoặc ``MainLoop``.
 
-Here is an example ``sayhello.gd``, showing how it works:
+Dưới đây là một ví dụ ``sayhello.gd``, cho thấy cách hoạt động của nó:
 
 .. code-block:: python
 
@@ -506,35 +457,27 @@ Here is an example ``sayhello.gd``, showing how it works:
         print("Hello!")
         quit()
 
-And how to run it:
+Và cách chạy nó:
 
 ::
 
-    # Prints "Hello!" to standard output.
+    # In "Hello!" ra standard output.
     godot -s sayhello.gd
 
-If no ``project.godot`` exists at the path, current path is assumed to be the
-current working directory (unless ``--path`` is specified).
+Nếu không tồn tại ``project.godot`` tại path, path hiện tại được giả định là current working directory (trừ khi ``--path`` được chỉ định).
 
-The script path will be interpreted as a resource path relative to
-the project, here ``res://sayhello.gd``. You can also use an absolute
-filesystem path instead, which is useful if the script is located
-outside of the project directory.
+Script path sẽ được diễn giải là một resource path tương đối với project, ở đây là ``res://sayhello.gd``. Bạn cũng có thể sử dụng một filesystem path tuyệt đối, điều này hữu ích nếu script nằm bên ngoài directory của project.
 
-The first line of ``sayhello.gd`` above is commonly referred to as
-a *shebang*. If the Godot binary is in your ``PATH`` as ``godot``,
-it allows you to run the script as follows in modern Linux
-distributions, as well as macOS:
+Dòng đầu tiên của ``sayhello.gd`` ở trên thường được gọi là *shebang*. Nếu binary Godot nằm trong ``PATH`` của bạn dưới dạng ``godot``, nó cho phép bạn chạy script như sau trên các bản phân phối Linux hiện đại cũng như macOS:
 
 ::
 
-    # Mark script as executable.
+    # Đánh dấu script là executable.
     chmod +x sayhello.gd
-    # Prints "Hello!" to standard output.
+    # In "Hello!" ra standard output.
     ./sayhello.gd
 
-If the above doesn't work in your current version of Linux or macOS, you can
-always have the shebang run Godot straight from where it is located as follows:
+Nếu cách trên không hoạt động trong phiên bản Linux hoặc macOS hiện tại của bạn, bạn luôn có thể để shebang chạy Godot trực tiếp từ vị trí của nó như sau:
 
 ::
 

@@ -1,173 +1,115 @@
 .. _doc_project_manager:
 
-Using the Project Manager
-=========================
+Sử dụng Project Manager
+=======================
 
-When you launch Godot, the first window you see is the Project Manager. It lets
-you create, remove, import, or play game projects:
+Khi khởi chạy Godot, cửa sổ đầu tiên bạn thấy là Project Manager. Cửa sổ này cho phép bạn tạo, xóa, import hoặc chạy các project game:
 
 .. image:: img/editor_ui_intro_project_manager_01.webp
 
-To change the editors language click on the **Settings** Button in the top right
-corner:
+Để thay đổi ngôn ngữ của editor, hãy nhấp vào nút **Settings** ở góc trên bên phải:
 
 .. image:: img/editor_ui_intro_project_manager_02.webp
 
-In Project Manager Settings, you can change the interface **language** from the language
-dropdown menu, which is the system default language by default.
+Trong Project Manager Settings, bạn có thể thay đổi **language** của giao diện từ menu thả xuống ngôn ngữ, theo mặc định đây là ngôn ngữ hệ thống.
 
-You can also change the **theme** and **color preset** of the editor,
-the **display scale** for different interface
-element sizes, and the availability of online functionality using **network mode**.
-If network mode is online, Godot will also check and inform you about new versions of Godot.
+Bạn cũng có thể thay đổi **theme** và **color preset** của editor, **display scale** cho các kích thước phần tử giao diện khác nhau, cũng như khả năng sử dụng các chức năng trực tuyến bằng **network mode**. Nếu network mode là online, Godot cũng sẽ kiểm tra và thông báo cho bạn về các phiên bản Godot mới.
 
-The **directory naming convention** can also be changed to replace spaces according to the chosen format
-when creating folders automatically.
+Bạn cũng có thể thay đổi **directory naming convention** để thay thế khoảng trắng theo định dạng đã chọn khi tự động tạo thư mục.
 
 .. image:: img/editor_ui_intro_project_manager_10.webp
 
 .. _doc_creating_and_importing_projects:
 
-Creating and importing projects
--------------------------------
+Tạo và import project
+---------------------
 
-To create a new project:
+Để tạo một project mới:
 
-1. Click the **Create** button on the top-left of the window.
-2. Give the project a name, then open the file browser using the **Browse** button,
-   and choose an empty folder on your computer to save the files. Alternatively,
-   you can enable **Create Folder** option to automatically create a new sub-folder
-   with the project name, following the directory naming convention set in the
-   settings. An empty folder will show a green tick on the right.
-3. Select one of the renderers (this can also be changed later).
-4. Click the :ui:`Create` button to create the project folder and open it in the editor.
+1. Nhấp vào nút **Create** ở góc trên bên trái cửa sổ. 2. Đặt tên cho project, sau đó mở trình duyệt tệp bằng nút **Browse** và chọn một thư mục trống trên máy tính để lưu các tệp. Ngoài ra, bạn có thể bật tùy chọn **Create Folder** để tự động tạo một thư mục con mới với tên project, tuân theo directory naming convention được thiết lập trong phần cài đặt. Một thư mục trống sẽ hiển thị dấu kiểm màu xanh ở bên phải. 3. Chọn một trong các renderer (bạn cũng có thể thay đổi lựa chọn này sau). 4. Nhấp vào nút :ui:`Create` để tạo thư mục project và mở thư mục đó trong editor.
 
 .. image:: img/editor_ui_intro_project_manager_04.webp
 
 .. note:: You can optionally choose a version control system. Currently, only
-	`git <https://git-scm.com>`__ is supported and it needs the Godot Git Plugin to be installed,
-	either manually or using the :ref:`Asset Library <doc_using_assetlib>`. To learn more about the Godot Git Plugin, see its `wiki <https://github.com/godotengine/godot-git-plugin/wiki>`__.
+	`git <https://git-scm.com>`__ được hỗ trợ và cần cài đặt Godot Git Plugin, theo cách thủ công hoặc sử dụng :ref:`Asset Library <doc_using_assetlib>`. Để tìm hiểu thêm về Godot Git Plugin, hãy xem `wiki <https://github.com/godotengine/godot-git-plugin/wiki>`__.
 
-Using the file browser
-~~~~~~~~~~~~~~~~~~~~~~
+Sử dụng trình duyệt tệp
+~~~~~~~~~~~~~~~~~~~~~~~
 
-From the **Create New Project** window, click the **Browse** button to open
-Godot's file browser. You can pick a location or type the folder's path in the
-**Path** field, after choosing a drive.
+Trong cửa sổ **Create New Project**, hãy nhấp vào nút **Browse** để mở trình duyệt tệp của Godot. Bạn có thể chọn một vị trí hoặc nhập đường dẫn của thư mục vào trường **Path** sau khi chọn một ổ đĩa.
 
-Left of the path field on the top row contains arrows to navigate backward and forward through the last
-visited locations.
-The up arrow navigates to parent folder.
-On the right side of the path field, there are buttons to refresh the current folder's contents,
-favorite/unfavorite the current folder, and show/hide hidden folders.
+Ở bên trái trường đường dẫn trong hàng trên cùng có các mũi tên để điều hướng lùi và tiến qua những vị trí đã truy cập gần đây. Mũi tên lên sẽ điều hướng đến thư mục cha. Ở bên phải trường đường dẫn có các nút để làm mới nội dung của thư mục hiện tại, thêm/bỏ thư mục hiện tại khỏi mục yêu thích và hiển thị/ẩn các thư mục ẩn.
 
-Next, the buttons to switch the display type of the folders and files between grid view and list view
-are seen.
+Tiếp theo là các nút để chuyển kiểu hiển thị của thư mục và tệp giữa chế độ xem lưới và chế độ xem danh sách.
 
-The last button on the right will create a new folder.
+Nút cuối cùng ở bên phải sẽ tạo một thư mục mới.
 
-Favorited folders will be displayed on the left side under the **Favorites** section. You can sort the
-favorites using the up and down buttons in this section.
-Last chosen folders will be listed under the **Recent** list.
+Các thư mục được yêu thích sẽ hiển thị ở bên trái, trong phần **Favorites**. Bạn có thể sắp xếp các mục yêu thích bằng các nút lên và xuống trong phần này. Các thư mục được chọn gần đây nhất sẽ được liệt kê trong danh sách **Recent**.
 
 .. image:: img/editor_ui_intro_project_manager_05.webp
 
-Opening and importing projects
-------------------------------
+Mở và import project
+--------------------
 
-The next time you open the Project Manager, you'll see your new project in the
-list. Double click on it to open it in the editor.
+Lần tiếp theo mở Project Manager, bạn sẽ thấy project mới của mình trong danh sách. Nhấp đúp vào project để mở project trong editor.
 
 .. image:: img/editor_ui_intro_project_manager_06.webp
 
-You can similarly import existing projects using the **Import** button. Locate the
-folder that contains the project or the **project.godot** file to import and
-edit it.
+Tương tự, bạn có thể import các project hiện có bằng nút **Import**. Tìm thư mục chứa project hoặc tệp **project.godot** để import và chỉnh sửa project đó.
 
 .. image:: img/editor_ui_intro_project_manager_08.webp
 
-Alternatively, it is possible to choose a zip file to be automatically extracted by Godot.
+Ngoài ra, bạn có thể chọn một tệp zip để Godot tự động giải nén.
 
-When the folder path is correct, you'll see a green checkmark.
+Khi đường dẫn thư mục chính xác, bạn sẽ thấy dấu kiểm màu xanh.
 
 .. image:: img/editor_ui_intro_project_manager_09.webp
 
 .. _doc_project_manager_downloading_demos:
 
-Downloading demos and templates
--------------------------------
+Tải xuống demo và template
+--------------------------
 
-From the **Asset Library** tab you can download open source project
-templates and demos from the :ref:`Asset Library <toc-learn-features-assetlib>` to help
-you get started faster.
+Từ tab **Asset Library**, bạn có thể tải xuống các template project và demo mã nguồn mở từ :ref:`Asset Library <toc-learn-features-assetlib>` để bắt đầu nhanh hơn.
 
-The first time you open this tab you'll notice that it's asking you to go online.
-For privacy reasons the project manager, and Godot editor, can't access the internet
-by default. To enable accessing the internet click the **Go Online** button. This will
-also allow project manager to notify you about updates. If you wish to turn this off
-in the future go into project manager settings and change **Network Mode** to "Offline"
+Lần đầu mở tab này, bạn sẽ nhận thấy tab yêu cầu bạn chuyển sang trực tuyến. Vì lý do riêng tư, project manager và Godot editor không thể truy cập internet theo mặc định. Để bật quyền truy cập internet, hãy nhấp vào nút **Go Online**. Thao tác này cũng cho phép project manager thông báo cho bạn về các bản cập nhật. Nếu sau này muốn tắt tính năng này, hãy vào phần cài đặt của project manager và đổi **Network Mode** thành "Offline"
 
-Now that Godot is connected to the internet you can download a demo or template, to
-do this:
+Giờ đây Godot đã kết nối với internet, bạn có thể tải xuống một demo hoặc template. Để thực hiện việc này:
 
-1. Click on its title.
-2. On the page that opens, click the download button.
-3. Once it finished downloading, click install and choose where you want to save
-   the project.
+1. Nhấp vào tiêu đề của nó. 2. Trên trang mở ra, nhấp vào nút tải xuống. 3. Sau khi tải xuống xong, nhấp vào install và chọn nơi bạn muốn lưu project.
 
 .. image:: img/editor_ui_intro_project_manager_03.webp
 
-Managing projects with tags
----------------------------
+Quản lý project bằng tag
+------------------------
 
-For users with a lot of projects on one PC it can be a lot to keep track of. To aid
-in this Godot allows you to create project tags. To add a tag to a project click on the
-project in the project manager, then click on the **Manage Tags** button
+Đối với người dùng có nhiều project trên một PC, việc theo dõi chúng có thể khá khó khăn. Để hỗ trợ việc này, Godot cho phép bạn tạo tag cho project. Để thêm tag vào một project, hãy nhấp vào project trong project manager, sau đó nhấp vào nút **Manage Tags**
 
 .. image:: img/editor_ui_intro_project_manager_11.webp
 
-This will open up the manage project tags window. To add a tag click the plus button.
+Thao tác này sẽ mở cửa sổ quản lý tag project. Để thêm tag, hãy nhấp vào nút dấu cộng.
 
 .. image:: img/editor_ui_intro_project_manager_12.webp
 
-Type out the tag name, and click **OK**. Your project will now have a tag added to it.
-These tags can be used for any other project in your project manager.
+Nhập tên tag rồi nhấp vào **OK**. Project của bạn giờ đã được thêm tag. Các tag này có thể được sử dụng cho bất kỳ project nào khác trong project manager.
 
-To show projects with a specific tag only, you can click on the tags or write ``tag:``
-and type the tag you would like to search for in the filter bar. To limit the results
-using multiple tags, you can click on another tag or add ``tag:`` after
-a space and type another tag in the filter bar.
+Để chỉ hiển thị các project có một tag cụ thể, bạn có thể nhấp vào các tag hoặc nhập ``tag:`` rồi nhập tag muốn tìm vào thanh bộ lọc. Để giới hạn kết quả bằng nhiều tag, bạn có thể nhấp vào một tag khác hoặc thêm ``tag:`` sau một khoảng trắng rồi nhập tag khác vào thanh bộ lọc.
 
-In addition, tags will stay with projects. So if you tag your project, send it to
-another machine, and import it into the project manager you will see the tags
-you created.
+Ngoài ra, tag sẽ đi kèm với project. Vì vậy, nếu bạn gắn tag cho project, gửi project đó sang một máy khác và import vào project manager, bạn sẽ thấy các tag đã tạo.
 
-To remove a tag from your project manager it must be removed from all the projects it's
-used by. Once that's done close the project manager, open it up again, and the tag should
-be gone.
+Để xóa một tag khỏi project manager, tag đó phải được xóa khỏi tất cả các project đang sử dụng nó. Sau khi hoàn tất, hãy đóng project manager rồi mở lại; tag sẽ biến mất.
 
 Recovery Mode
 -------------
 
-If a project is immediately crashing on startup, or crashing frequently during
-editing it can be opened in recovery mode, to attempt to make it more stable
-while looking for the source of the crashing to fix it.
+Nếu một project bị crash ngay khi khởi động hoặc thường xuyên bị crash trong quá trình chỉnh sửa, bạn có thể mở project ở recovery mode để thử làm cho project ổn định hơn trong khi tìm nguyên nhân gây crash và khắc phục.
 
-Usually a project should open in recovery mode automatically when you re-open it
-after a crash. If it doesn't you can manually open recovery mode by selecting the
-project in the project manager, to do that select the project from your list of
-projects, click the dropdown button next to the edit node, and select ``Edit in
-recovery mode``.
+Thông thường, project sẽ tự động mở ở recovery mode khi bạn mở lại project sau một lần crash. Nếu không, bạn có thể mở recovery mode theo cách thủ công bằng cách chọn project trong project manager. Để thực hiện việc này, hãy chọn project từ danh sách project, nhấp vào nút thả xuống bên cạnh node edit và chọn ``Edit in recovery mode``.
 
 .. image:: img/editor_ui_intro_project_manager_13.webp
 
-While in recovery mode the following are disabled:
+Khi ở recovery mode, các mục sau sẽ bị vô hiệu hóa:
 
-- Tool scripts
-- Editor plugins
-- GDExtension addons
-- Automatic scene restoring
-- Running the project
+- Tool scripts - Editor plugins - GDExtension addons - Automatic scene restoring - Running the project
 
-It is recommended that you backup your project before editing it in recovery
-mode.
+Bạn nên sao lưu project trước khi chỉnh sửa project ở recovery mode.

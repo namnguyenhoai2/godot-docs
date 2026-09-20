@@ -1,18 +1,16 @@
 .. _doc_external_editor:
 
-Using an external text editor
-=============================
+Sử dụng trình soạn thảo văn bản bên ngoài
+=========================================
 
-This page explains how to code using an external text editor.
+Trang này giải thích cách lập trình bằng trình soạn thảo văn bản bên ngoài.
 
 .. note::
 
-    To code C# in an external editor, see
+    Để lập trình C# trong trình soạn thảo bên ngoài, hãy xem
     :ref:`the C# guide to configure an external editor <doc_c_sharp_setup_external_editor>`.
 
-Godot can be used with an external text editor, such as Sublime Text or Visual
-Studio Code. Browse to the relevant editor settings:
-**Editor > Editor Settings > Text Editor > External**
+Godot có thể được sử dụng với trình soạn thảo văn bản bên ngoài, chẳng hạn như Sublime Text hoặc Visual Studio Code. Điều hướng đến phần cài đặt trình soạn thảo tương ứng: **Editor > Editor Settings > Text Editor > External**
 
 .. figure:: img/editor_external_editor_settings.webp
    :align: center
@@ -20,10 +18,7 @@ Studio Code. Browse to the relevant editor settings:
 
    **Text Editor > External** section of the Editor Settings
 
-There are two text fields: the executable path and command-line flags. The flags
-allow you to integrate the editor with Godot, passing it the file path to open
-and other relevant arguments. Godot will replace the following placeholders in
-the flags string:
+Có hai trường văn bản: đường dẫn đến tệp thực thi và các cờ dòng lệnh. Các cờ này cho phép bạn tích hợp trình soạn thảo với Godot, truyền cho trình soạn thảo đường dẫn tệp cần mở và các đối số liên quan khác. Godot sẽ thay thế các placeholder sau trong chuỗi cờ:
 
 +---------------------+-----------------------------------------------------+
 | Field in Exec Flags | Is replaced with                                    |
@@ -37,7 +32,7 @@ the flags string:
 | ``{line}``          | The line number of the error                        |
 +---------------------+-----------------------------------------------------+
 
-Some example **Exec Flags** for various editors include:
+Một số **Exec Flags** mẫu cho các trình soạn thảo khác nhau bao gồm:
 
 +---------------------+-----------------------------------------------------+
 | Editor              | Exec Flags                                          |
@@ -59,62 +54,53 @@ Some example **Exec Flags** for various editors include:
 | Visual Studio*      | ``/edit "{file}"``                                  |
 +---------------------+-----------------------------------------------------+
 
-\*: Arguments are not automatically detected, so you must fill them in manually.
+\*: Các đối số không được tự động phát hiện, vì vậy bạn phải điền chúng theo cách thủ công.
 
-Since Godot 4.5, **Exec Flags** are automatically detected for all editors
-listed above (unless denoted with an asterisk). You don't need to paste them
-from this page for it to work, unless your editor has an executable name not
-recognized automatically (e.g. a fork of an editor listed here).
+Kể từ Godot 4.5, **Exec Flags** được tự động phát hiện cho tất cả trình soạn thảo được liệt kê ở trên (trừ những trình được đánh dấu bằng dấu hoa thị). Bạn không cần dán chúng từ trang này để sử dụng, trừ khi trình soạn thảo của bạn có tên tệp thực thi không được tự động nhận dạng (ví dụ: một fork của trình soạn thảo được liệt kê tại đây).
 
 .. note::
 
-    For Visual Studio Code on Windows, you will have to point to the ``code.cmd``
-    file.
+    Đối với Visual Studio Code trên Windows, bạn sẽ phải trỏ đến tệp ``code.cmd``.
 
-    For Emacs, you can call ``emacsclient`` instead of ``emacs`` if
-    you use the server mode.
+    Đối với Emacs, bạn có thể gọi ``emacsclient`` thay vì ``emacs`` nếu sử dụng server mode.
 
-    For Visual Studio, you will have to open the solution file ``.sln``
-    manually to get access to the IDE features. Additionally, it will not go to a specific line.
+    Đối với Visual Studio, bạn sẽ phải mở tệp solution ``.sln`` theo cách thủ công để truy cập các tính năng của IDE. Ngoài ra, trình soạn thảo sẽ không chuyển đến một dòng cụ thể.
 
-Automatically reloading your changes
-------------------------------------
-To have the Godot Editor automatically reload any script that has been changed by an external text editor,
-enable **Editor > Editor Settings > Text Editor > Behavior > Auto Reload Scripts on External Change**.
+Tự động tải lại các thay đổi
+----------------------------
+Để Godot Editor tự động tải lại mọi script đã được thay đổi bằng trình soạn thảo văn bản bên ngoài, hãy bật **Editor > Editor Settings > Text Editor > Behavior > Auto Reload Scripts on External Change**.
 
-Using External Editor in Debugger
----------------------------------
+Sử dụng External Editor trong Debugger
+--------------------------------------
 
-Using external editor in debugger is determined by a separate option in settings.
-For details, see :ref:`Script editor debug tools and options <doc_debugger_tools_and_options>`.
+Việc sử dụng trình soạn thảo bên ngoài trong debugger được xác định bởi một tùy chọn riêng trong phần cài đặt. Để biết chi tiết, hãy xem :ref:`Script editor debug tools and options <doc_debugger_tools_and_options>`.
 
-Official editor plugins
------------------------
+Các plugin trình soạn thảo chính thức
+-------------------------------------
 
-We have official plugins for the following code editors:
+Chúng tôi có các plugin chính thức cho những trình soạn thảo mã sau:
 
-- `Visual Studio Code <https://github.com/godotengine/godot-vscode-plugin>`_
-- `Emacs <https://github.com/godotengine/emacs-gdscript-mode>`_
+- `Visual Studio Code <https://github.com/godotengine/godot-vscode-plugin>`_ - `Emacs <https://github.com/godotengine/emacs-gdscript-mode>`_
 
-LSP/DAP support
----------------
+Hỗ trợ LSP/DAP
+--------------
 
-Godot supports the `Language Server Protocol <https://microsoft.github.io/language-server-protocol/>`_ (**LSP**) for code completion and the `Debug Adapter Protocol <https://microsoft.github.io/debug-adapter-protocol/>`_ (**DAP**) for debugging. You can check the `LSP client list <https://microsoft.github.io/language-server-protocol/implementors/tools/>`_ and `DAP client list <https://microsoft.github.io/debug-adapter-protocol/implementors/tools/>`_ to find if your editor supports them. If this is the case, you should be able to take advantage of these features without the need of a custom plugin.
+Godot hỗ trợ `Language Server Protocol <https://microsoft.github.io/language-server-protocol/>`_ (**LSP**) để hoàn tất mã và `Debug Adapter Protocol <https://microsoft.github.io/debug-adapter-protocol/>`_ (**DAP**) để debugging. Bạn có thể kiểm tra `LSP client list <https://microsoft.github.io/language-server-protocol/implementors/tools/>`_ và `DAP client list <https://microsoft.github.io/debug-adapter-protocol/implementors/tools/>`_ để xem trình soạn thảo của mình có hỗ trợ chúng hay không. Nếu có, bạn sẽ có thể tận dụng các tính năng này mà không cần plugin tùy chỉnh.
 
-To use these protocols, a Godot instance must be running on your current project. You should then configure your editor to communicate to the running adapter ports in Godot, which by default are ``6005`` for **LSP**, and ``6006`` for **DAP**. You can change these ports and other settings in the **Editor Settings**, under the **Network > Language Server** and **Network > Debug Adapter** sections respectively.
+Để sử dụng các protocol này, một instance Godot phải đang chạy trong project hiện tại của bạn. Sau đó, bạn nên cấu hình trình soạn thảo để giao tiếp với các cổng adapter đang chạy trong Godot; theo mặc định, đó là ``6005`` cho **LSP** và ``6006`` cho **DAP**. Bạn có thể thay đổi các cổng này và những cài đặt khác trong **Editor Settings**, lần lượt tại các phần **Network > Language Server** và **Network > Debug Adapter**.
 
-Below are some configuration steps for specific editors:
+Dưới đây là một số bước cấu hình cho các trình soạn thảo cụ thể:
 
 Visual Studio Code
 ~~~~~~~~~~~~~~~~~~
 
-You need to install the official `Visual Studio Code plugin <https://github.com/godotengine/godot-vscode-plugin>`_.
+Bạn cần cài đặt `Visual Studio Code plugin <https://github.com/godotengine/godot-vscode-plugin>`_ chính thức.
 
-For **LSP**, follow `these instructions <https://github.com/godotengine/godot-vscode-plugin#gdscript_lsp_server_port>`_ to change the default LSP port. The connection status can be checked on the status bar:
+Đối với **LSP**, hãy làm theo `these instructions <https://github.com/godotengine/godot-vscode-plugin#gdscript_lsp_server_port>`_ để thay đổi cổng LSP mặc định. Bạn có thể kiểm tra trạng thái kết nối trên thanh trạng thái:
 
 .. image:: img/lsp_vscode_status.png
 
-For **DAP**, specify the ``debugServer`` property in your ``launch.json`` file:
+Đối với **DAP**, hãy chỉ định thuộc tính ``debugServer`` trong tệp ``launch.json``:
 
 .. code-block:: json
 
@@ -135,4 +121,4 @@ For **DAP**, specify the ``debugServer`` property in your ``launch.json`` file:
 Emacs
 ~~~~~
 
-Check the official instructions to configure `LSP <https://github.com/godotengine/emacs-gdscript-mode#auto-completion-with-the-language-server-protocol-lsp>`_, and `DAP <https://github.com/godotengine/emacs-gdscript-mode#using-the-debugger>`_.
+Hãy xem hướng dẫn chính thức để cấu hình `LSP <https://github.com/godotengine/emacs-gdscript-mode#auto-completion-with-the-language-server-protocol-lsp>`_ và `DAP <https://github.com/godotengine/emacs-gdscript-mode#using-the-debugger>`_.
