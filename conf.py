@@ -83,7 +83,7 @@ if env_tags is not None:
 # Language / i18n
 
 supported_languages = {
-    "en": "Godot Engine %s documentation in English",
+    "en": "Godot Engine %s bằng tiếng Việt",
     "de": "Godot Engine %s Dokumentation auf Deutsch",
     "es": "Documentación de Godot Engine %s en español",
     "fr": "Documentation de Godot Engine %s en français",
