@@ -2,39 +2,29 @@
 
 .. _doc_binary_serialization_api:
 
-Binary serialization API
-========================
+API serialization nhị phân
+==========================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Godot has a serialization API based on Variant. It's used for
-converting data types to an array of bytes efficiently. This API is exposed
-via the global :ref:`bytes_to_var() <class_@GlobalScope_method_bytes_to_var>`
-and :ref:`var_to_bytes() <class_@GlobalScope_method_var_to_bytes>` functions,
-but it is also used in the ``get_var`` and ``store_var`` methods of
+Godot có một API serialization dựa trên Variant. API này được dùng để chuyển đổi các kiểu dữ liệu thành một mảng byte một cách hiệu quả. API này được cung cấp thông qua các hàm toàn cục :ref:`bytes_to_var() <class_@GlobalScope_method_bytes_to_var>` và :ref:`var_to_bytes() <class_@GlobalScope_method_var_to_bytes>`, nhưng cũng được sử dụng trong các phương thức ``get_var`` và ``store_var`` của
 :ref:`class_FileAccess` as well as the packet APIs for :ref:`class_PacketPeer`.
-This format is *not* used for binary scenes and resources.
+Định dạng này *không* được dùng cho các scene và resource nhị phân.
 
-Full Objects vs Object instance IDs
------------------------------------
+Object đầy đủ so với ID của instance Object
+-------------------------------------------
 
-If a variable is serialized with ``full_objects = true``, then any Objects
-contained in the variable will be serialized and included in the result. This
-is recursive.
+Nếu một biến được serialize bằng ``full_objects = true``, thì mọi Object chứa trong biến đó sẽ được serialize và đưa vào kết quả. Quá trình này được thực hiện đệ quy.
 
-If ``full_objects = false``, then only the instance IDs will be serialized for
-any Objects contained in the variable.
+Nếu ``full_objects = false``, thì chỉ các ID instance của mọi Object chứa trong biến mới được serialize.
 
-Packet specification
---------------------
+Đặc tả packet
+-------------
 
-The packet is designed to be always padded to 4 bytes. All values are
-little-endian-encoded. All packets have a 4-byte header representing an
-integer, specifying the type of data.
+Packet được thiết kế để luôn được đệm đến 4 byte. Tất cả giá trị đều được mã hóa theo thứ tự little-endian. Tất cả packet đều có header 4 byte biểu diễn một số nguyên, chỉ định kiểu dữ liệu.
 
-The lowest value two bytes are used to determine the type, while the highest value
-two bytes contain flags:
+Hai byte có giá trị thấp nhất được dùng để xác định kiểu, trong khi hai byte có giá trị cao nhất chứa các flag:
 
 ::
 
@@ -105,12 +95,7 @@ two bytes contain flags:
 | 29     | max                      |
 +--------+--------------------------+
 
-Following this is the actual packet contents, which varies for each type of
-packet. Note that this assumes Godot is compiled with single-precision floats,
-which is the default. If Godot was compiled with double-precision floats, the
-length of "Float" fields within data structures should be 8, and the offset
-should be ``(offset - 4) * 2 + 4``. The "float" type itself always uses double
-precision.
+Tiếp theo là nội dung thực tế của packet, nội dung này thay đổi tùy theo từng kiểu packet. Lưu ý rằng điều này giả định Godot được biên dịch với số thực single-precision, đây là mặc định. Nếu Godot được biên dịch với số thực double-precision, độ dài của các trường "Float" trong cấu trúc dữ liệu phải là 8, và offset phải là ``(offset - 4) * 2 + 4``. Bản thân kiểu "float" luôn sử dụng double precision.
 
 0: null
 ~~~~~~~
@@ -127,7 +112,7 @@ precision.
 2: :ref:`int<class_int>`
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-If no flags are set (flags == 0), the integer is sent as a 32 bit integer:
+Nếu không có flag nào được đặt (flags == 0), số nguyên được gửi dưới dạng số nguyên 32 bit:
 
 +----------+-------+-----------+--------------------------+
 | Offset   | Len   | Type      | Description              |
@@ -135,8 +120,7 @@ If no flags are set (flags == 0), the integer is sent as a 32 bit integer:
 | 4        | 4     | Integer   | 32-bit signed integer    |
 +----------+-------+-----------+--------------------------+
 
-If flag ``ENCODE_FLAG_64`` is set (``flags & 1 == 1``), the integer is sent as
-a 64-bit integer:
+Nếu flag ``ENCODE_FLAG_64`` được đặt (``flags & 1 == 1``), số nguyên được gửi dưới dạng số nguyên 64 bit:
 
 +----------+-------+-----------+--------------------------+
 | Offset   | Len   | Type      | Description              |
@@ -147,7 +131,7 @@ a 64-bit integer:
 3: :ref:`float<class_float>`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If no flags are set (flags == 0), the float is sent as a 32 bit single precision:
+Nếu không có flag nào được đặt (flags == 0), số thực được gửi dưới dạng single precision 32 bit:
 
 +----------+-------+---------+-----------------------------------+
 | Offset   | Len   | Type    | Description                       |
@@ -155,8 +139,7 @@ If no flags are set (flags == 0), the float is sent as a 32 bit single precision
 | 4        | 4     | Float   | IEEE 754 single-precision float   |
 +----------+-------+---------+-----------------------------------+
 
-If flag ``ENCODE_FLAG_64`` is set (``flags & 1 == 1``), the float is sent as
-a 64-bit double precision number:
+Nếu flag ``ENCODE_FLAG_64`` được đặt (``flags & 1 == 1``), số thực được gửi dưới dạng số double precision 64 bit:
 
 +----------+-------+---------+-----------------------------------+
 | Offset   | Len   | Type    | Description                       |
@@ -175,7 +158,7 @@ a 64-bit double precision number:
 | 8        | X     | Bytes     | UTF-8 encoded string       |
 +----------+-------+-----------+----------------------------+
 
-This field is padded to 4 bytes.
+Trường này được đệm đến 4 byte.
 
 5: :ref:`Vector2<class_vector2>`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -364,8 +347,8 @@ This field is padded to 4 bytes.
 | 4        | 4     | Integer   | String length, or new format (val&0x80000000!=0 and NameCount=val&0x7FFFFFFF)           |
 +----------+-------+-----------+-----------------------------------------------------------------------------------------+
 
-For old format:
-~~~~~~~~~~~~~~~
+Đối với định dạng cũ:
+~~~~~~~~~~~~~~~~~~~~~
 
 +----------+-------+---------+------------------------+
 | Offset   | Len   | Type    | Description            |
@@ -373,10 +356,10 @@ For old format:
 | 8        | X     | Bytes   | UTF-8 encoded string   |
 +----------+-------+---------+------------------------+
 
-Padded to 4 bytes.
+Được đệm đến 4 byte.
 
-For new format:
-~~~~~~~~~~~~~~~
+Đối với định dạng mới:
+~~~~~~~~~~~~~~~~~~~~~~
 
 +----------+-------+-----------+-------------------------------------+
 | Offset   | Len   | Type      | Description                         |
@@ -386,7 +369,7 @@ For new format:
 | 8        | 4     | Integer   | Flags (absolute: val&1 != 0 )       |
 +----------+-------+-----------+-------------------------------------+
 
-For each Name and Sub-Name
+Đối với mỗi Name và Sub-Name
 
 +----------+-------+-----------+------------------------+
 | Offset   | Len   | Type      | Description            |
@@ -396,19 +379,18 @@ For each Name and Sub-Name
 | X+4      | X     | Bytes     | UTF-8 encoded string   |
 +----------+-------+-----------+------------------------+
 
-Every name string is padded to 4 bytes.
+Mỗi chuỗi name được đệm đến 4 byte.
 
-16: :ref:`RID<class_rid>` (unsupported)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+16: :ref:`RID<class_rid>` (không được hỗ trợ)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 17: :ref:`Object<class_object>`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-An Object could be serialized in three different ways: as a null value, with
-``full_objects = false``, or with ``full_objects = true``.
+Một Object có thể được serialize theo ba cách khác nhau: dưới dạng giá trị null, với ``full_objects = false``, hoặc với ``full_objects = true``.
 
-A null value
-^^^^^^^^^^^^
+Một giá trị null
+^^^^^^^^^^^^^^^^
 
 +----------+-------+------------+-------------------------------------------------+
 | Offset   | Len   | Type       | Description                                     |
@@ -416,8 +398,8 @@ A null value
 | 4        | 4     | Integer    | Zero (32-bit signed integer)                    |
 +----------+-------+------------+-------------------------------------------------+
 
-``full_objects`` disabled
-^^^^^^^^^^^^^^^^^^^^^^^^^
+``full_objects`` bị tắt
+^^^^^^^^^^^^^^^^^^^^^^^
 
 +----------+-------+------------+-------------------------------------------------+
 | Offset   | Len   | Type       | Description                                     |
@@ -425,8 +407,8 @@ A null value
 | 4        | 8     | Integer    | The Object instance ID (64-bit signed integer)  |
 +----------+-------+------------+-------------------------------------------------+
 
-``full_objects`` enabled
-^^^^^^^^^^^^^^^^^^^^^^^^
+``full_objects`` được bật
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 +----------+-------+----------------+----------------------------------------------------------+
 | Offset   | Len   | Type           | Description                                              |
@@ -438,7 +420,7 @@ A null value
 | X+8      | 4     | Integer        | The number of properties that are serialized             |
 +----------+-------+----------------+----------------------------------------------------------+
 
-For each property:
+Đối với mỗi property:
 
 +----------+-------+----------------+----------------------------------------------------------+
 | Offset   | Len   | Type           | Description                                              |
@@ -452,14 +434,13 @@ For each property:
 
 .. Note::
 
-   Not all properties are included. Only properties that are configured with the
+   Không phải tất cả property đều được đưa vào. Chỉ những property được cấu hình với
    :ref:`PROPERTY_USAGE_STORAGE<class_@GlobalScope_constant_PROPERTY_USAGE_STORAGE>`
-   flag set will be serialized. You can add a new usage flag to a property by overriding the
+   flag được đặt mới được serialize. Bạn có thể thêm một usage flag mới vào property bằng cách override
    :ref:`_get_property_list<class_Object_private_method__get_property_list>`
-   method in your class. You can also check how property usage is configured by
-   calling ``Object._get_property_list`` See
+   phương thức trong class của mình. Bạn cũng có thể kiểm tra cách cấu hình property usage bằng cách gọi ``Object._get_property_list`` Xem
    :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` for the
-   possible usage flags.
+   các usage flag khả dụng.
 
 18: :ref:`Dictionary<class_dictionary>`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -470,8 +451,7 @@ For each property:
 | 4        | 4     | Integer   | val&0x7FFFFFFF = elements, val&0x80000000 = shared (bool)           |
 +----------+-------+-----------+---------------------------------------------------------------------+
 
-Then what follows is, for amount of "elements", pairs of key and value,
-one after the other, using this same format.
+Sau đó là các cặp key và value, với số lượng bằng "elements", lần lượt từng cặp một, sử dụng cùng định dạng này.
 
 19: :ref:`Array<class_array>`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -482,8 +462,7 @@ one after the other, using this same format.
 | 4        | 4     | Integer   | val&0x7FFFFFFF = elements, val&0x80000000 = shared (bool)           |
 +----------+-------+-----------+---------------------------------------------------------------------+
 
-Then what follows is, for amount of "elements", values one after the
-other, using this same format.
+Sau đó là các value, với số lượng bằng "elements", lần lượt từng value một, sử dụng cùng định dạng này.
 
 20: :ref:`PackedByteArray<class_PackedByteArray>`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -496,7 +475,7 @@ other, using this same format.
 | 8..8+length   | 1     | Byte      | Byte (0..255)          |
 +---------------+-------+-----------+------------------------+
 
-The array data is padded to 4 bytes.
+Dữ liệu array được đệm đến 4 byte.
 
 21: :ref:`PackedInt32Array<class_PackedInt32Array>`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -551,7 +530,7 @@ The array data is padded to 4 bytes.
 | 4        | 4     | Integer   | Array length (Strings)   |
 +----------+-------+-----------+--------------------------+
 
-For each String:
+Đối với mỗi String:
 
 +----------+-------+-----------+------------------------+
 | Offset   | Len   | Type      | Description            |
@@ -561,7 +540,7 @@ For each String:
 | X+4      | X     | Bytes     | UTF-8 encoded string   |
 +----------+-------+-----------+------------------------+
 
-Every string is padded to 4 bytes.
+Mỗi string được đệm đến 4 byte.
 
 26: :ref:`PackedVector2Array<class_PackedVector2Array>`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

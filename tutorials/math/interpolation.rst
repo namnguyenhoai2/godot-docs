@@ -1,42 +1,39 @@
 .. _doc_interpolation:
 
-Interpolation
-=============
+Nội suy
+=======
 
-Interpolation is a common operation in graphics programming, which is used to
-blend or transition between two values. Interpolation can also be used to smooth
-movement, rotation, etc. It's good to become familiar with it in order to expand
-your horizons as a game developer.
+Nội suy là một thao tác phổ biến trong lập trình đồ họa, được dùng để pha trộn hoặc chuyển tiếp giữa hai giá trị. Nội suy cũng có thể được dùng để làm mượt chuyển động, phép xoay, v.v. Việc làm quen với nội suy sẽ giúp bạn mở rộng hiểu biết với tư cách là một game developer.
 
-The basic idea is that you want to transition from A to B. A value ``t``, represents the states in-between.
+Ý tưởng cơ bản là bạn muốn chuyển tiếp từ A sang B. Một giá trị ``t`` biểu diễn các trạng thái ở giữa.
 
-For example, if ``t`` is 0, then the state is A. If ``t`` is 1, then the state is B. Anything in-between is an *interpolation*.
+Ví dụ, nếu ``t`` là 0 thì trạng thái là A. Nếu ``t`` là 1 thì trạng thái là B. Mọi giá trị ở giữa đều là một *phép nội suy*.
 
-Between two real (floating-point) numbers, an interpolation can be described as:
+Giữa hai số thực (floating-point), phép nội suy có thể được mô tả như sau:
 
 ::
 
     interpolation = A * (1 - t) + B * t
 
-And often simplified to:
+Và thường được rút gọn thành:
 
 ::
 
     interpolation = A + (B - A) * t
 
-The name of this type of interpolation, which transforms a value into another at *constant speed* is *"linear"*. So, when you hear about *Linear Interpolation*, you know they are referring to this formula.
+Tên của kiểu nội suy này, biến đổi một giá trị thành một giá trị khác với *tốc độ không đổi*, là *"tuyến tính"*. Vì vậy, khi nghe nói đến *Nội suy tuyến tính*, bạn sẽ biết họ đang đề cập đến công thức này.
 
-There are other types of interpolations, which will not be covered here. A recommended read afterwards is the :ref:`Bezier <doc_beziers_and_curves>` page.
+Có những kiểu nội suy khác nhưng sẽ không được đề cập ở đây. Bạn nên đọc trang :ref:`Bezier <doc_beziers_and_curves>` sau đó.
 
-Vector interpolation
---------------------
+Nội suy vector
+--------------
 
-Vector types (:ref:`Vector2 <class_Vector2>` and :ref:`Vector3 <class_Vector3>`) can also be interpolated, they come with handy functions to do it
+Các kiểu vector (:ref:`Vector2 <class_Vector2>` và :ref:`Vector3 <class_Vector3>`) cũng có thể được nội suy; chúng cung cấp các hàm tiện dụng để thực hiện việc này
 :ref:`Vector2.lerp() <class_Vector2_method_lerp>` and :ref:`Vector3.lerp() <class_Vector3_method_lerp>`.
 
-For cubic interpolation, there are also :ref:`Vector2.cubic_interpolate() <class_Vector2_method_cubic_interpolate>` and :ref:`Vector3.cubic_interpolate() <class_Vector3_method_cubic_interpolate>`, which do a :ref:`Bezier <doc_beziers_and_curves>` style interpolation.
+Đối với nội suy cubic, cũng có :ref:`Vector2.cubic_interpolate() <class_Vector2_method_cubic_interpolate>` và :ref:`Vector3.cubic_interpolate() <class_Vector3_method_cubic_interpolate>`, thực hiện phép nội suy theo kiểu :ref:`Bezier <doc_beziers_and_curves>`.
 
-Here is example pseudo-code for going from point A to B using interpolation:
+Sau đây là pseudo-code ví dụ để đi từ điểm A đến B bằng nội suy:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -63,21 +60,20 @@ Here is example pseudo-code for going from point A to B using interpolation:
         sprite.Position = a.Position.Lerp(b.Position, _t);
     }
 
-It will produce the following motion:
+Nó sẽ tạo ra chuyển động sau:
 
 .. image:: img/interpolation_vector.gif
 
-Transform interpolation
------------------------
+Nội suy transform
+-----------------
 
-It is also possible to interpolate whole transforms (make sure they have either uniform scale or, at least, the same non-uniform scale).
-For this, the function :ref:`Transform3D.interpolate_with() <class_Transform3D_method_interpolate_with>` can be used.
+Bạn cũng có thể nội suy toàn bộ transform (hãy đảm bảo chúng có scale đồng nhất hoặc ít nhất có cùng scale không đồng nhất). Để làm việc này, có thể sử dụng hàm :ref:`Transform3D.interpolate_with() <class_Transform3D_method_interpolate_with>`.
 
-Here is an example of transforming a monkey from Position1 to Position2:
+Sau đây là ví dụ về việc biến đổi một con khỉ từ Position1 đến Position2:
 
 .. image:: img/interpolation_positions.png
 
-Using the following pseudocode:
+Sử dụng pseudocode sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -104,19 +100,15 @@ Using the following pseudocode:
         monkey.Transform = p1.Transform.InterpolateWith(p2.Transform, _t);
     }
 
-And again, it will produce the following motion:
+Và một lần nữa, nó sẽ tạo ra chuyển động sau:
 
 .. image:: img/interpolation_monkey.gif
 
 
-Smoothing motion
-----------------
+Làm mượt chuyển động
+--------------------
 
-Interpolation can be used to smoothly follow a moving target value, such as a
-position or a rotation. Each frame, ``lerp()`` moves the current value towards
-the target value by a fixed percentage of the remaining difference between the values.
-The current value will smoothly move towards the target, slowing down as it gets
-closer. Here is an example of a circle following the mouse using interpolation smoothing:
+Nội suy có thể được dùng để bám theo mượt mà một giá trị mục tiêu đang chuyển động, chẳng hạn như vị trí hoặc phép xoay. Ở mỗi frame, ``lerp()`` di chuyển giá trị hiện tại về phía giá trị mục tiêu theo một phần trăm cố định của phần chênh lệch còn lại giữa hai giá trị. Giá trị hiện tại sẽ di chuyển mượt mà về phía mục tiêu và chậm dần khi tiến gần hơn. Sau đây là ví dụ về một hình tròn bám theo chuột bằng cách làm mượt nội suy:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -141,22 +133,16 @@ closer. Here is an example of a circle following the mouse using interpolation s
         sprite.Position = sprite.Position.Lerp(mousePos, (float)delta * FollowSpeed);
     }
 
-Here is how it looks:
+Sau đây là kết quả:
 
 .. image:: img/interpolation_follow.gif
 
-This is useful for smoothing camera movement, for allies following the player
-(ensuring they stay within a certain range), and for many other common game patterns.
+Điều này hữu ích để làm mượt chuyển động của camera, cho các đồng minh bám theo người chơi (đảm bảo họ luôn ở trong một khoảng nhất định), và cho nhiều game pattern phổ biến khác.
 
 .. note::
-    Despite using ``delta``, the formula used above is framerate-dependent, because
-    the ``weight`` parameter of ``lerp()`` represents a *percentage* of the remaining
-    difference in values, not an *absolute amount to change*. In ``_physics_process()``,
-    this is usually fine because physics is expected to maintain a constant framerate,
-    and therefore ``delta`` is expected to remain constant.
+    Mặc dù sử dụng ``delta``, công thức ở trên phụ thuộc vào framerate, vì tham số ``weight`` của ``lerp()`` biểu diễn một *phần trăm* của phần chênh lệch giá trị còn lại, chứ không phải một *lượng tuyệt đối cần thay đổi*. Trong ``_physics_process()``, điều này thường không ảnh hưởng vì physics được kỳ vọng sẽ duy trì framerate không đổi, và do đó ``delta`` cũng được kỳ vọng sẽ giữ nguyên.
 
-    For a framerate-independent version of interpolation smoothing that can also
-    be used in ``process()``, use the following formula instead:
+    Để có phiên bản làm mượt nội suy không phụ thuộc vào framerate và cũng có thể được dùng trong ``process()``, hãy sử dụng công thức sau:
 
     .. tabs::
         .. code-tab:: gdscript GDScript
@@ -181,6 +167,4 @@ This is useful for smoothing camera movement, for allies following the player
                 sprite.Position = sprite.Position.Lerp(mousePos, weight);
             }
 
-    Deriving this formula is beyond the scope of this page. For an explanation,
-    see `Improved Lerp Smoothing <https://www.gamedeveloper.com/programming/improved-lerp-smoothing->`__
-    or watch `Lerp smoothing is broken <https://www.youtube.com/watch?v=LSNQuFEDOyQ>`__.
+    Việc suy ra công thức này nằm ngoài phạm vi của trang này. Để xem lời giải thích, hãy xem `Improved Lerp Smoothing <https://www.gamedeveloper.com/programming/improved-lerp-smoothing->`__ hoặc xem `Lerp smoothing is broken <https://www.youtube.com/watch?v=LSNQuFEDOyQ>`__.

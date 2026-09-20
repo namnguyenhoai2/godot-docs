@@ -1,91 +1,54 @@
 .. _doc_data_paths:
 
-File paths in Godot projects
-============================
+Đường dẫn tệp trong các project Godot
+=====================================
 
-This page explains how file paths work inside Godot projects. You will learn how
-to access paths in your projects using the ``res://`` and ``user://`` notations,
-and where Godot stores project and editor files on your and your users' systems.
+Trang này giải thích cách đường dẫn tệp hoạt động bên trong các project Godot. Bạn sẽ tìm hiểu cách truy cập các đường dẫn trong project bằng ký hiệu ``res://`` và ``user://``, cũng như nơi Godot lưu trữ các tệp của project và editor trên hệ thống của bạn và người dùng.
 
-Path separators
----------------
+Dấu phân cách đường dẫn
+-----------------------
 
-To make supporting multiple platforms easier, Godot uses **UNIX-style path
-separators** (forward slash ``/``). These work on all platforms, **including
-Windows**.
+Để hỗ trợ nhiều nền tảng dễ dàng hơn, Godot sử dụng **dấu phân cách đường dẫn kiểu UNIX** (dấu gạch chéo xuôi ``/``). Các dấu này hoạt động trên mọi nền tảng, **bao gồm cả Windows**.
 
-Instead of writing paths like ``C:\Projects\Game``, in Godot, you should write
-``C:/Projects/Game``.
+Thay vì viết các đường dẫn như ``C:\Projects\Game``, trong Godot, bạn nên viết ``C:/Projects/Game``.
 
-Windows-style path separators (backward slash ``\``) are also supported in some
-path-related methods, but they need to be doubled (``\\``), as ``\`` is normally
-used as an escape for characters with a special meaning.
+Dấu phân cách đường dẫn kiểu Windows (dấu gạch chéo ngược ``\``) cũng được hỗ trợ trong một số phương thức liên quan đến đường dẫn, nhưng chúng cần được nhân đôi (``\\``), vì ``\`` thường được dùng làm ký tự escape cho các ký tự có ý nghĩa đặc biệt.
 
-This makes it possible to work with paths returned by other Windows
-applications. We still recommend using only forward slashes in your own code to
-guarantee that everything will work as intended.
+Điều này giúp bạn có thể làm việc với các đường dẫn được trả về bởi những ứng dụng Windows khác. Tuy nhiên, chúng tôi vẫn khuyến nghị chỉ sử dụng dấu gạch chéo xuôi trong code của bạn để đảm bảo mọi thứ hoạt động như mong đợi.
 
 .. tip::
 
-    The String class offers over a dozen methods to work with strings that represent file paths:
+    Lớp String cung cấp hơn một chục phương thức để làm việc với các chuỗi biểu diễn đường dẫn tệp:
 
-    - :ref:`String.filecasecmp_to() <class_String_method_filecasecmp_to>`
-    - :ref:`String.filenocasecmp_to() <class_String_method_filenocasecmp_to>`
-    - :ref:`String.get_base_dir() <class_String_method_get_base_dir>`
-    - :ref:`String.get_basename() <class_String_method_get_basename>`
-    - :ref:`String.get_extension() <class_String_method_get_extension>`
-    - :ref:`String.get_file() <class_String_method_get_file>`
-    - :ref:`String.is_absolute_path() <class_String_method_is_absolute_path>`
-    - :ref:`String.is_relative_path() <class_String_method_is_relative_path>`
-    - :ref:`String.is_valid_filename() <class_String_method_is_valid_filename>`
-    - :ref:`String.path_join() <class_String_method_path_join>`
-    - :ref:`String.simplify_path() <class_String_method_simplify_path>`
-    - :ref:`String.validate_filename() <class_String_method_validate_filename>`
+    - :ref:`String.filecasecmp_to() <class_String_method_filecasecmp_to>` - :ref:`String.filenocasecmp_to() <class_String_method_filenocasecmp_to>` - :ref:`String.get_base_dir() <class_String_method_get_base_dir>` - :ref:`String.get_basename() <class_String_method_get_basename>` - :ref:`String.get_extension() <class_String_method_get_extension>` - :ref:`String.get_file() <class_String_method_get_file>` - :ref:`String.is_absolute_path() <class_String_method_is_absolute_path>` - :ref:`String.is_relative_path() <class_String_method_is_relative_path>` - :ref:`String.is_valid_filename() <class_String_method_is_valid_filename>` - :ref:`String.path_join() <class_String_method_path_join>` - :ref:`String.simplify_path() <class_String_method_simplify_path>` - :ref:`String.validate_filename() <class_String_method_validate_filename>`
 
-Accessing files in the project folder (``res://``)
---------------------------------------------------
+Truy cập các tệp trong thư mục project (``res://``)
+---------------------------------------------------
 
-Godot considers that a project exists in any folder that contains a
-``project.godot`` text file, even if the file is empty. The folder that contains
-this file is your project's root folder.
+Godot coi một project tồn tại trong bất kỳ thư mục nào chứa tệp văn bản ``project.godot``, ngay cả khi tệp đó trống. Thư mục chứa tệp này là thư mục gốc của project.
 
-You can access any file relative to it by writing paths starting with
-``res://``, which stands for resources. For example, you can access an image
-file ``character.png`` located in the project's root folder in code with the
-following path: ``res://character.png``.
+Bạn có thể truy cập bất kỳ tệp nào bằng đường dẫn tương đối so với thư mục này bằng cách viết các đường dẫn bắt đầu bằng ``res://``, đại diện cho resources. Ví dụ, bạn có thể truy cập tệp ảnh ``character.png`` nằm trong thư mục gốc của project trong code bằng đường dẫn sau: ``res://character.png``.
 
 .. _doc_data_paths_accessing_persistent_user_data:
 
-Accessing persistent user data (``user://``)
---------------------------------------------
+Truy cập dữ liệu người dùng liên tục (``user://``)
+--------------------------------------------------
 
-To store persistent data files, like the player's save or settings, you want to
-use ``user://`` instead of ``res://`` as your path's prefix. This is because
-when the game is running, the project's file system will likely be read-only.
+Để lưu trữ các tệp dữ liệu liên tục, chẳng hạn như file save hoặc các cài đặt của người chơi, bạn nên sử dụng ``user://`` thay vì ``res://`` làm tiền tố cho đường dẫn. Lý do là khi game đang chạy, hệ thống tệp của project có thể ở chế độ chỉ đọc.
 
-The ``user://`` prefix points to a different directory on the user's device.
-Unlike ``res://``, the directory pointed at by ``user://`` is created
-automatically and *guaranteed* to be writable to, even in an exported project.
+Tiền tố ``user://`` trỏ đến một thư mục khác trên thiết bị của người dùng. Không giống ``res://``, thư mục được ``user://`` trỏ đến sẽ được tự động tạo và *được đảm bảo* có thể ghi, ngay cả trong project đã export.
 
-The location of the ``user://`` folder depends on what is configured in the
-Project Settings:
+Vị trí của thư mục ``user://`` phụ thuộc vào cấu hình trong Project Settings:
 
-- By default, the ``user://`` folder is created within Godot's
+- Theo mặc định, thư mục ``user://`` được tạo bên trong thư mục
   :ref:`editor data path <doc_data_paths_editor_data_paths>` in the
-  ``app_userdata/[project_name]`` folder. This is the default so that prototypes
-  and test projects stay self-contained within Godot's data folder.
-- If :ref:`application/config/use_custom_user_dir <class_ProjectSettings_property_application/config/use_custom_user_dir>`
-  is enabled in the Project Settings, the ``user://`` folder is created **next
-  to** Godot's editor data path, i.e. in the standard location for applications
-  data.
+  ``app_userdata/[project_name]``. Đây là mặc định để các prototype và project thử nghiệm được giữ độc lập trong thư mục dữ liệu của Godot. - Nếu :ref:`application/config/use_custom_user_dir <class_ProjectSettings_property_application/config/use_custom_user_dir>` được bật trong Project Settings, thư mục ``user://`` sẽ được tạo **bên cạnh** đường dẫn dữ liệu của editor Godot, tức là tại vị trí tiêu chuẩn dành cho dữ liệu ứng dụng.
 
-  * By default, the folder name will be inferred from the project name, but it
-    can be further customized with
+  * Theo mặc định, tên thư mục sẽ được suy ra từ tên project, nhưng bạn có thể tùy chỉnh thêm bằng
     :ref:`application/config/custom_user_dir_name <class_ProjectSettings_property_application/config/custom_user_dir_name>`.
-    This path can contain path separators, so you can use it e.g. to group
-    projects of a given studio with a ``Studio Name/Game Name`` structure.
+    Đường dẫn này có thể chứa các dấu phân cách đường dẫn, vì vậy bạn có thể sử dụng nó, chẳng hạn, để nhóm các project của một studio theo cấu trúc ``Studio Name/Game Name``.
 
-On desktop platforms, the actual directory paths for ``user://`` are:
+Trên các nền tảng desktop, đường dẫn thư mục thực tế cho ``user://`` là:
 
 +---------------------+------------------------------------------------------------------------------+
 | Type                | Location                                                                     |
@@ -103,45 +66,32 @@ On desktop platforms, the actual directory paths for ``user://`` are:
 |                     | | Linux: ``~/.local/share/[custom_user_dir_name]``                           |
 +---------------------+------------------------------------------------------------------------------+
 
-``[project_name]`` is based on the application name defined in the Project Settings, but
-you can override it on a per-platform basis using :ref:`feature tags <doc_feature_tags>`.
+``[project_name]`` dựa trên tên ứng dụng được xác định trong Project Settings, nhưng bạn có thể ghi đè tên này riêng cho từng nền tảng bằng :ref:`feature tags <doc_feature_tags>`.
 
-On mobile platforms, this path is unique to the project and is not accessible
-by other applications for security reasons.
+Trên các nền tảng mobile, đường dẫn này là duy nhất cho project và các ứng dụng khác không thể truy cập vì lý do bảo mật.
 
-On HTML5 exports, ``user://`` will refer to a virtual filesystem stored on the
-device via IndexedDB. (Interaction with the main filesystem can still be performed
-through the :ref:`JavaScriptBridge <class_JavaScriptBridge>` singleton.)
+Trong các bản export HTML5, ``user://`` sẽ trỏ đến một hệ thống tệp ảo được lưu trữ trên thiết bị thông qua IndexedDB. (Bạn vẫn có thể tương tác với hệ thống tệp chính thông qua singleton :ref:`JavaScriptBridge <class_JavaScriptBridge>`.)
 
-File logging
-------------
+Ghi nhật ký vào tệp
+-------------------
 
 .. seealso::
 
-    Documentation on file logging has been moved to :ref:`doc_logging`.
+    Tài liệu về việc ghi nhật ký vào tệp đã được chuyển sang :ref:`doc_logging`.
 
-Converting paths to absolute paths or "local" paths
----------------------------------------------------
+Chuyển đổi đường dẫn thành đường dẫn tuyệt đối hoặc đường dẫn "local"
+---------------------------------------------------------------------
 
-You can use :ref:`ProjectSettings.globalize_path() <class_ProjectSettings_method_globalize_path>`
-to convert a "local" path like ``res://path/to/file.txt`` to an absolute OS path.
-For example, :ref:`ProjectSettings.globalize_path() <class_ProjectSettings_method_globalize_path>`
-can be used to open "local" paths in the OS file manager
-using :ref:`OS.shell_open() <class_OS_method_shell_open>` since it only accepts
-native OS paths.
+Bạn có thể sử dụng :ref:`ProjectSettings.globalize_path() <class_ProjectSettings_method_globalize_path>` để chuyển đổi một đường dẫn "local" như ``res://path/to/file.txt`` thành đường dẫn OS tuyệt đối. Ví dụ, có thể sử dụng :ref:`ProjectSettings.globalize_path() <class_ProjectSettings_method_globalize_path>` để mở các đường dẫn "local" trong trình quản lý tệp của OS bằng :ref:`OS.shell_open() <class_OS_method_shell_open>`, vì trình này chỉ chấp nhận các đường dẫn OS gốc.
 
-To convert an absolute OS path to a "local" path starting with ``res://``
-or ``user://``, use :ref:`ProjectSettings.localize_path() <class_ProjectSettings_method_localize_path>`.
-This only works for absolute paths that point to files or folders in your
-project's root or ``user://`` folders.
+Để chuyển đổi một đường dẫn OS tuyệt đối thành đường dẫn "local" bắt đầu bằng ``res://`` hoặc ``user://``, hãy sử dụng :ref:`ProjectSettings.localize_path() <class_ProjectSettings_method_localize_path>`. Cách này chỉ hoạt động với các đường dẫn tuyệt đối trỏ đến tệp hoặc thư mục trong thư mục gốc của project hoặc các thư mục ``user://`` của project.
 
 .. _doc_data_paths_editor_data_paths:
 
-Editor data paths
------------------
+Đường dẫn dữ liệu của editor
+----------------------------
 
-The editor uses different paths for editor data, editor settings, and cache,
-depending on the platform. By default, these paths are:
+Editor sử dụng các đường dẫn khác nhau cho dữ liệu editor, cài đặt editor và cache, tùy thuộc vào nền tảng. Theo mặc định, các đường dẫn này là:
 
 +-----------------+---------------------------------------------------+
 | Type            | Location                                          |
@@ -159,47 +109,26 @@ depending on the platform. By default, these paths are:
 |                 | | Linux: ``~/.cache/godot/``                      |
 +-----------------+---------------------------------------------------+
 
-- **Editor data** contains export templates and project-specific data.
-- **Editor settings** contains the main editor settings configuration file as
-  well as various other user-specific customizations (editor layouts, feature
-  profiles, script templates, etc.).
-- **Cache** contains data generated by the editor, or stored temporarily.
-  It can safely be removed when Godot is closed.
+- **Dữ liệu editor** chứa các export template và dữ liệu riêng của project. - **Cài đặt editor** chứa tệp cấu hình cài đặt chính của editor cùng nhiều tùy chỉnh khác dành riêng cho người dùng (bố cục editor, feature profile, script template, v.v.). - **Cache** chứa dữ liệu do editor tạo ra hoặc được lưu trữ tạm thời. Bạn có thể xóa dữ liệu này an toàn khi Godot đã đóng.
 
-Godot complies with the `XDG Base Directory Specification
-<https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html>`__
-on Linux/\*BSD. You can override the ``XDG_DATA_HOME``, ``XDG_CONFIG_HOME`` and
-``XDG_CACHE_HOME`` environment variables to change the editor and project data
-paths.
+Godot tuân thủ `XDG Base Directory Specification <https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html>`__ trên Linux/\*BSD. Bạn có thể ghi đè các biến môi trường ``XDG_DATA_HOME``, ``XDG_CONFIG_HOME`` và ``XDG_CACHE_HOME`` để thay đổi đường dẫn dữ liệu của editor và project.
 
 .. note:: If you use `Godot packaged as a Flatpak
-          <https://flathub.org/apps/details/org.godotengine.Godot>`__, the
-          editor data paths will be located in subfolders in
-          ``~/.var/app/org.godotengine.Godot/``.
+          <https://flathub.org/apps/details/org.godotengine.Godot>`__, các đường dẫn dữ liệu của editor sẽ nằm trong các thư mục con của ``~/.var/app/org.godotengine.Godot/``.
 
 .. _doc_data_paths_self_contained_mode:
 
-Self-contained mode
-~~~~~~~~~~~~~~~~~~~
+Chế độ độc lập
+~~~~~~~~~~~~~~
 
-If you create a file called ``._sc_`` or ``_sc_`` in the same directory as the
-editor binary (or in `MacOS/Contents/` for a macOS editor .app bundle), Godot
-will enable *self-contained mode*.
-This mode makes Godot write all editor data, settings, and cache to a directory
-named ``editor_data/`` in the same directory as the editor binary.
-You can use it to create a portable installation of the editor.
+Nếu bạn tạo một tệp có tên ``._sc_`` hoặc ``_sc_`` trong cùng thư mục với binary của editor (hoặc trong `MacOS/Contents/` đối với editor .app của macOS), Godot sẽ bật *chế độ độc lập*. Chế độ này khiến Godot ghi toàn bộ dữ liệu editor, cài đặt và cache vào một thư mục có tên ``editor_data/`` trong cùng thư mục với binary của editor. Bạn có thể dùng chế độ này để tạo bản cài đặt editor portable.
 
-The `Steam release of Godot <https://store.steampowered.com/app/404790/>`__ uses
-self-contained mode by default.
+`Steam release of Godot <https://store.steampowered.com/app/404790/>`__ mặc định sử dụng chế độ độc lập.
 
-.. UPDATE: Not supported yet. When self-contained mode is supported in exported
-.. projects, remove or update this note.
+.. CẬP NHẬT: Chưa được hỗ trợ. Khi chế độ độc lập được hỗ trợ trong các project .. đã export, hãy xóa hoặc cập nhật ghi chú này.
 
 .. note::
 
-    Self-contained mode is not supported in exported projects yet.
-    To read and write files relative to the executable path, use
+    Chế độ độc lập hiện chưa được hỗ trợ trong các project đã export. Để đọc và ghi các tệp tương đối với đường dẫn của executable, hãy sử dụng
     :ref:`OS.get_executable_path() <class_OS_method_get_executable_path>`.
-    Note that writing files in the executable path only works if the executable
-    is placed in a writable location (i.e. **not** Program Files or another
-    directory that is read-only for regular users).
+    Lưu ý rằng việc ghi tệp vào đường dẫn của executable chỉ hoạt động nếu executable được đặt tại một vị trí có thể ghi (tức là **không phải** Program Files hoặc một thư mục khác ở chế độ chỉ đọc đối với người dùng thông thường).

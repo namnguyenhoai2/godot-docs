@@ -1,67 +1,42 @@
 .. _doc_vector_math:
 
-Vector math
-===========
+Phép toán vector
+================
 
-Introduction
-~~~~~~~~~~~~
+Giới thiệu
+~~~~~~~~~~
 
-This tutorial is a short and practical introduction to linear algebra as it
-applies to game development. Linear algebra is the study of vectors and their
-uses. Vectors have many applications in both 2D and 3D development and Godot
-uses them extensively. Developing a good understanding of vector math is
-essential to becoming a strong game developer.
+Tutorial này là phần giới thiệu ngắn gọn và thực tế về đại số tuyến tính trong phát triển game. Đại số tuyến tính là ngành nghiên cứu về các vector và cách sử dụng chúng. Vector có nhiều ứng dụng trong phát triển 2D và 3D, và Godot sử dụng chúng rất rộng rãi. Hiểu rõ về phép toán vector là điều thiết yếu để trở thành một nhà phát triển game giỏi.
 
 .. note:: This tutorial is **not** a formal textbook on linear algebra. We will
-          only be looking at how it is applied to game development. For a
-          broader look at the mathematics, see
-          https://www.khanacademy.org/math/linear-algebra
+          chỉ xem xét cách nó được áp dụng trong phát triển game. Để tìm hiểu rộng hơn về toán học, hãy xem https://www.khanacademy.org/math/linear-algebra
 
-Coordinate systems (2D)
-~~~~~~~~~~~~~~~~~~~~~~~
+Hệ tọa độ (2D)
+~~~~~~~~~~~~~~
 
-In 2D space, coordinates are defined using a horizontal axis (``x``) and a
-vertical axis (``y``). A particular position in 2D space is written as a pair of
-values such as ``(4, 3)``.
+Trong không gian 2D, tọa độ được xác định bằng một trục ngang (``x``) và một trục dọc (``y``). Một vị trí cụ thể trong không gian 2D được viết dưới dạng một cặp giá trị, chẳng hạn như ``(4, 3)``.
 
 .. image:: img/vector_axis1.png
 
 .. note:: If you're new to computer graphics, it might seem odd that the
-          positive ``y`` axis points **downwards** instead of upwards, as you
-          probably learned in math class. However, this is common in most
-          computer graphics applications.
+          trục ``y`` dương hướng **xuống dưới** thay vì hướng lên trên, như có lẽ bạn đã học trong giờ toán. Tuy nhiên, điều này phổ biến trong hầu hết các ứng dụng đồ họa máy tính.
 
-Any position in the 2D plane can be identified by a pair of numbers in this way.
-However, we can also think of the position ``(4, 3)`` as an **offset** from the
-``(0, 0)`` point, or **origin**. Draw an arrow pointing from the origin to the
-point:
+Mọi vị trí trên mặt phẳng 2D đều có thể được xác định bằng một cặp số theo cách này. Tuy nhiên, ta cũng có thể xem vị trí ``(4, 3)`` là một **độ lệch** từ điểm ``(0, 0)``, hay còn gọi là **gốc tọa độ**. Hãy vẽ một mũi tên từ gốc tọa độ đến điểm đó:
 
 .. image:: img/vector_xy1.png
 
-This is a **vector**. A vector represents a lot of useful information. As well
-as telling us that the point is at ``(4, 3)``, we can also think of it as an
-angle ``θ`` (theta) and a length (or magnitude) ``m``. In this case, the arrow
-is a **position vector** - it denotes a position in space, relative to the
-origin.
+Đây là một **vector**. Một vector biểu diễn rất nhiều thông tin hữu ích. Ngoài việc cho biết điểm nằm tại ``(4, 3)``, ta cũng có thể xem nó là một góc ``θ`` (theta) và một độ dài (hay độ lớn) ``m``. Trong trường hợp này, mũi tên là một **vector vị trí** - nó biểu thị một vị trí trong không gian so với gốc tọa độ.
 
-A very important point to consider about vectors is that they only represent
-**relative** direction and magnitude. There is no concept of a vector's
-position. The following two vectors are identical:
+Một điểm rất quan trọng cần lưu ý về vector là chúng chỉ biểu diễn hướng và độ lớn **tương đối**. Không có khái niệm vị trí của một vector. Hai vector sau đây là giống hệt nhau:
 
 .. image:: img/vector_xy2.png
 
-Both vectors represent a point 4 units to the right and 3 units below some
-starting point. It does not matter where on the plane you draw the vector, it
-always represents a relative direction and magnitude.
+Cả hai vector đều biểu diễn một điểm nằm cách một điểm bắt đầu nào đó 4 đơn vị về bên phải và 3 đơn vị về phía dưới. Vị trí bạn vẽ vector trên mặt phẳng ở đâu không quan trọng; nó luôn biểu diễn một hướng và độ lớn tương đối.
 
-Vector operations
-~~~~~~~~~~~~~~~~~
+Các phép toán vector
+~~~~~~~~~~~~~~~~~~~~
 
-You can use either method (x and y coordinates or angle and magnitude) to refer
-to a vector, but for convenience, programmers typically use the coordinate
-notation. For example, in Godot, the origin is the top-left corner of the
-screen, so to place a 2D node named ``Node2D`` 400 pixels to the right and 300
-pixels down, use the following code:
+Bạn có thể dùng một trong hai cách (tọa độ x và y hoặc góc và độ lớn) để chỉ một vector, nhưng để thuận tiện, lập trình viên thường dùng ký hiệu tọa độ. Ví dụ, trong Godot, gốc tọa độ là góc trên bên trái của màn hình, vì vậy để đặt một node 2D có tên ``Node2D`` cách 400 pixel về bên phải và 300 pixel về phía dưới, hãy dùng đoạn code sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -73,40 +48,36 @@ pixels down, use the following code:
     var node2D = GetNode<Node2D>("Node2D");
     node2D.Position = new Vector2(400, 300);
 
-Godot supports both :ref:`Vector2 <class_Vector2>` and :ref:`Vector3
-<class_Vector3>` for 2D and 3D usage, respectively. The same mathematical rules
-discussed in this article apply to both types, and wherever we link to
-``Vector2`` methods in the class reference, you can also check out their
-``Vector3`` counterparts.
+Godot hỗ trợ cả :ref:`Vector2 <class_Vector2>` và :ref:`Vector3 <class_Vector3>` lần lượt cho việc sử dụng trong 2D và 3D. Các quy tắc toán học tương tự được thảo luận trong bài viết này áp dụng cho cả hai loại, và ở bất cứ đâu chúng tôi liên kết đến các phương thức ``Vector2`` trong tài liệu tham khảo lớp, bạn cũng có thể xem các phương thức ``Vector3`` tương ứng của chúng.
 
-Member access
--------------
+Truy cập thành phần
+-------------------
 
-The individual components of the vector can be accessed directly by name.
+Có thể truy cập trực tiếp từng thành phần của vector bằng tên.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Create a vector with coordinates (2, 5).
+    # Tạo một vector với tọa độ (2, 5).
     var a = Vector2(2, 5)
-    # Create a vector and assign x and y manually.
+    # Tạo một vector rồi gán x và y theo cách thủ công.
     var b = Vector2()
     b.x = 3
     b.y = 1
 
  .. code-tab:: csharp
 
-    // Create a vector with coordinates (2, 5).
+    // Tạo một vector với tọa độ (2, 5).
     var a = new Vector2(2, 5);
-    // Create a vector and assign x and y manually.
+    // Tạo một vector rồi gán x và y theo cách thủ công.
     var b = new Vector2();
     b.X = 3;
     b.Y = 1;
 
-Adding vectors
---------------
+Cộng các vector
+---------------
 
-When adding or subtracting two vectors, the corresponding components are added:
+Khi cộng hoặc trừ hai vector, các thành phần tương ứng sẽ được cộng:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -117,21 +88,20 @@ When adding or subtracting two vectors, the corresponding components are added:
 
     var c = a + b;  // (2, 5) + (3, 1) = (5, 6)
 
-We can also see this visually by adding the second vector at the end of
-the first:
+Ta cũng có thể thấy điều này trực quan bằng cách đặt vector thứ hai ở cuối vector thứ nhất:
 
 .. image:: img/vector_add1.png
 
-Note that adding ``a + b`` gives the same result as ``b + a``.
+Lưu ý rằng cộng ``a + b`` cho cùng kết quả như ``b + a``.
 
-Scalar multiplication
----------------------
+Nhân với vô hướng
+-----------------
 
 .. note:: Vectors represent both direction and magnitude. A value representing
-          only magnitude is called a **scalar**. Scalars use the
+          chỉ độ lớn được gọi là một **vô hướng**. Các đại lượng vô hướng sử dụng
           :ref:`class_float` type in Godot.
 
-A vector can be multiplied by a **scalar**:
+Một vector có thể được nhân với một **vô hướng**:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -149,59 +119,43 @@ A vector can be multiplied by a **scalar**:
 .. image:: img/vector_mult1.png
 
 .. note:: Multiplying a vector by a positive scalar does not change its direction, only
-          its magnitude. Multiplying with a negative scalar results in a vector in the
-          opposite direction. This is how you **scale** a vector.
+          độ lớn của nó. Nhân với một vô hướng âm sẽ cho kết quả là một vector theo hướng ngược lại. Đây là cách bạn **co giãn** một vector.
 
-Practical applications
-~~~~~~~~~~~~~~~~~~~~~~
+Các ứng dụng thực tế
+~~~~~~~~~~~~~~~~~~~~
 
-Let's look at two common uses for vector addition and subtraction.
+Hãy xem hai cách sử dụng phổ biến của phép cộng và phép trừ vector.
 
-Movement
---------
+Di chuyển
+---------
 
-A vector can represent **any** quantity with a magnitude and direction. Typical
-examples are: position, velocity, acceleration, and force. In this image, the
-spaceship at step 1 has a position vector of ``(1, 3)`` and a velocity vector of
-``(2, 1)``. The velocity vector represents how far the ship moves each step. We
-can find the position for step 2 by adding the velocity to the current position.
+Một vector có thể biểu diễn **bất kỳ** đại lượng nào có độ lớn và hướng. Các ví dụ điển hình gồm: vị trí, vận tốc, gia tốc và lực. Trong hình này, ở bước 1, tàu vũ trụ có vector vị trí là ``(1, 3)`` và vector vận tốc là ``(2, 1)``. Vector vận tốc biểu diễn quãng đường con tàu di chuyển trong mỗi bước. Ta có thể tìm vị trí ở bước 2 bằng cách cộng vận tốc vào vị trí hiện tại.
 
 .. image:: img/vector_movement1.png
 
 .. tip:: Velocity measures the **change** in position per unit of time. The new
-         position is found by adding the velocity multiplied by the elapsed time
-         (here assumed to be one unit, e.g. 1 s) to the previous position.
+         vị trí được xác định bằng cách cộng vận tốc nhân với thời gian đã trôi qua (ở đây giả định là một đơn vị, ví dụ 1 s) vào vị trí trước đó.
 
-         In a typical 2D game scenario, you would have a velocity in pixels per
-         second, and multiply it by the ``delta`` parameter (time elapsed since
-         the previous frame) from the :ref:`_process() <class_Node_private_method__process>`
-         or :ref:`_physics_process() <class_Node_private_method__physics_process>`
-         callbacks.
+         Trong một tình huống game 2D điển hình, bạn sẽ có vận tốc tính bằng pixel trên giây, rồi nhân nó với tham số ``delta`` (thời gian đã trôi qua kể từ frame trước) từ các callback :ref:`_process() <class_Node_private_method__process>` hoặc :ref:`_physics_process() <class_Node_private_method__physics_process>`.
 
-Pointing toward a target
-------------------------
+Hướng về phía mục tiêu
+----------------------
 
-In this scenario, you have a tank that wishes to point its turret at a robot.
-Subtracting the tank's position from the robot's position gives the vector
-pointing from the tank to the robot.
+Trong tình huống này, bạn có một chiếc xe tăng muốn chĩa tháp pháo về phía một robot. Lấy vị trí của xe tăng trừ vị trí của robot sẽ cho vector hướng từ xe tăng đến robot.
 
 .. image:: img/vector_subtract2.webp
 
 .. tip:: To find a vector pointing from ``A`` to ``B``, use ``B - A``.
 
-Unit vectors
-~~~~~~~~~~~~
+Vector đơn vị
+~~~~~~~~~~~~~
 
-A vector with **magnitude** of ``1`` is called a **unit vector**. They are also
-sometimes referred to as **direction vectors** or **normals**. Unit vectors are
-helpful when you need to keep track of a direction.
+Một vector có **độ lớn** bằng ``1`` được gọi là một **vector đơn vị**. Đôi khi chúng cũng được gọi là **vector hướng** hoặc **pháp tuyến**. Vector đơn vị rất hữu ích khi bạn cần theo dõi một hướng.
 
-Normalization
--------------
+Chuẩn hóa
+---------
 
-**Normalizing** a vector means reducing its length to ``1`` while preserving its
-direction. This is done by dividing each of its components by its magnitude.
-Because this is such a common operation, Godot provides a dedicated
+**Chuẩn hóa** một vector nghĩa là giảm độ dài của nó xuống ``1`` trong khi vẫn giữ nguyên hướng. Việc này được thực hiện bằng cách chia từng thành phần của nó cho độ lớn. Vì đây là một phép toán rất phổ biến, Godot cung cấp một
 :ref:`normalized() <class_Vector2_method_normalized>` method for this:
 
 .. tabs::
@@ -214,29 +168,18 @@ Because this is such a common operation, Godot provides a dedicated
     a = a.Normalized();
 
 .. warning:: Because normalization involves dividing by the vector's length, you
-             cannot normalize a vector of length ``0``. Attempting to do so
-             would normally result in an error. In GDScript though, trying to
-             call the ``normalized()`` method on a vector of length 0 leaves the
-             value untouched and avoids the error for you.
+             không thể chuẩn hóa một vector có độ dài ``0``. Việc cố thực hiện sẽ thường dẫn đến lỗi. Tuy nhiên, trong GDScript, việc gọi phương thức ``normalized()`` trên một vector có độ dài 0 sẽ giữ nguyên giá trị và tự tránh lỗi cho bạn.
 
-Reflection
-----------
+Phản xạ
+-------
 
-A common use of unit vectors is to indicate **normals**. Normal vectors are unit
-vectors aligned perpendicularly to a surface, defining its direction. They are
-commonly used for lighting, collisions, and other operations involving surfaces.
+Một cách sử dụng phổ biến của vector đơn vị là biểu thị **pháp tuyến**. Vector pháp tuyến là các vector đơn vị vuông góc với một bề mặt, xác định hướng của bề mặt đó. Chúng thường được dùng cho chiếu sáng, va chạm và các phép toán khác liên quan đến bề mặt.
 
-For example, imagine we have a moving ball that we want to bounce off a wall or
-other object:
+Ví dụ, hãy tưởng tượng ta có một quả bóng đang chuyển động và muốn nó bật khỏi một bức tường hoặc vật thể khác:
 
 .. image:: img/vector_reflect1.png
 
-The surface normal has a value of ``(0, -1)`` because this is a horizontal
-surface. When the ball collides, we take its remaining motion (the amount left
-over when it hits the surface) and reflect it using the normal. In Godot, there
-is a :ref:`bounce() <class_Vector2_method_bounce>` method to handle this.
-Here is a code example of the above diagram using a :ref:`CharacterBody2D
-<class_CharacterBody2D>`:
+Pháp tuyến bề mặt có giá trị ``(0, -1)`` vì đây là một bề mặt nằm ngang. Khi quả bóng va chạm, ta lấy chuyển động còn lại của nó (phần còn lại khi nó chạm vào bề mặt) và phản xạ nó bằng pháp tuyến. Trong Godot, có một phương thức :ref:`bounce() <class_Vector2_method_bounce>` để xử lý việc này. Dưới đây là ví dụ code của sơ đồ trên bằng cách sử dụng một :ref:`CharacterBody2D <class_CharacterBody2D>`:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -257,67 +200,50 @@ Here is a code example of the above diagram using a :ref:`CharacterBody2D
         MoveAndCollide(reflect);
     }
 
-Dot product
-~~~~~~~~~~~
+Tích vô hướng
+~~~~~~~~~~~~~
 
-The **dot product** is one of the most important concepts in vector math, but is
-often misunderstood. Dot product is an operation on two vectors that returns a
-**scalar**. Unlike a vector, which contains both magnitude and direction, a
-scalar value has only magnitude.
+**Tích vô hướng** là một trong những khái niệm quan trọng nhất trong phép toán vector, nhưng thường bị hiểu sai. Tích vô hướng là một phép toán trên hai vector và trả về một **vô hướng**. Không giống vector, vốn chứa cả độ lớn và hướng, một giá trị vô hướng chỉ có độ lớn.
 
-The formula for dot product takes two common forms:
+Công thức của tích vô hướng thường có hai dạng:
 
 .. image:: img/vector_dot1.png
 
-and
+và
 
 .. image:: img/vector_dot2.png
 
-The mathematical notation *||A||* represents the magnitude of vector ``A``, and
-*A*\ :sub:`x` means the ``x`` component of vector ``A``.
+Ký hiệu toán học *||A||* biểu diễn độ lớn của vector ``A``, còn *A*\ :sub:`x` có nghĩa là thành phần ``x`` của vector ``A``.
 
-However, in most cases it is easiest to use the built-in :ref:`dot()
-<class_Vector2_method_dot>` method. Note that the order of the two vectors does not matter:
+Tuy nhiên, trong hầu hết trường hợp, cách dễ nhất là sử dụng phương thức tích hợp sẵn :ref:`dot() <class_Vector2_method_dot>`. Lưu ý rằng thứ tự của hai vector không quan trọng:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     var c = a.dot(b)
-    var d = b.dot(a)  # These are equivalent.
+    var d = b.dot(a)  # Các biểu thức này tương đương.
 
  .. code-tab:: csharp
 
     float c = a.Dot(b);
-    float d = b.Dot(a);  // These are equivalent.
+    float d = b.Dot(a);  // Các biểu thức này tương đương.
 
-The dot product is most useful when used with unit vectors, making the first
-formula reduce to just ``cos(θ)``. This means we can use the dot product to tell
-us something about the angle between two vectors:
+Tích vô hướng hữu ích nhất khi được dùng với các vector đơn vị, khiến công thức đầu tiên rút gọn chỉ còn ``cos(θ)``. Điều này có nghĩa là ta có thể dùng tích vô hướng để biết điều gì đó về góc giữa hai vector:
 
 .. image:: img/vector_dot3.png
 
-When using unit vectors, the result will always be between ``-1`` (180°) and
-``1`` (0°).
+Khi sử dụng các vector đơn vị, kết quả luôn nằm trong khoảng từ ``-1`` (180°) đến ``1`` (0°).
 
-Facing
-------
+Hướng mặt
+---------
 
-We can use this fact to detect whether an object is facing toward another
-object. In the diagram below, the player ``P`` is trying to avoid the zombies
-``A`` and ``B``. Assuming a zombie's field of view is **180°**, can they see the
-player?
+Ta có thể dùng sự thật này để phát hiện xem một đối tượng có đang hướng về phía đối tượng khác hay không. Trong sơ đồ bên dưới, người chơi ``P`` đang cố tránh những zombie ``A`` và ``B``. Giả sử góc nhìn của zombie là **180°**, chúng có nhìn thấy người chơi không?
 
 .. image:: img/vector_facing2.png
 
-The green arrows ``fA`` and ``fB`` are **unit vectors** representing the
-zombie's facing direction and the blue semicircle represents its field of view.
-For zombie ``A``, we find the direction vector ``AP`` pointing to the player
-using ``P - A`` and normalize it, however, Godot has a helper method to do this
-called :ref:`direction_to() <class_Vector2_method_direction_to>`. If the angle
-between this vector and the facing vector is less than 90°, then the zombie can
-see the player.
+Các mũi tên màu xanh lá ``fA`` và ``fB`` là các **vector đơn vị** biểu diễn hướng mặt của zombie, còn hình bán nguyệt màu xanh dương biểu diễn góc nhìn của nó. Đối với zombie ``A``, ta tìm vector hướng ``AP`` trỏ đến người chơi bằng cách sử dụng ``P - A`` rồi chuẩn hóa nó; tuy nhiên, Godot có một phương thức hỗ trợ để thực hiện việc này, gọi là :ref:`direction_to() <class_Vector2_method_direction_to>`. Nếu góc giữa vector này và vector hướng mặt nhỏ hơn 90°, zombie có thể nhìn thấy người chơi.
 
-In code it would look like this:
+Trong code, nó sẽ trông như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -334,19 +260,16 @@ In code it would look like this:
         GD.Print("A sees P!");
     }
 
-Cross product
+Tích có hướng
 ~~~~~~~~~~~~~
 
-Like the dot product, the **cross product** is an operation on two vectors.
-However, the result of the cross product is a vector with a direction that is
-perpendicular to both. Its magnitude depends on their relative angle. If two
-vectors are parallel, the result of their cross product will be a null vector.
+Tương tự tích vô hướng, **tích có hướng** là một phép toán trên hai vector. Tuy nhiên, kết quả của tích có hướng là một vector có hướng vuông góc với cả hai vector đó. Độ lớn của nó phụ thuộc vào góc tương đối giữa chúng. Nếu hai vector song song, kết quả của tích có hướng sẽ là một vector không.
 
 .. image:: img/vector_cross1.png
 
 .. image:: img/vector_cross2.png
 
-The cross product is calculated like this:
+Tích có hướng được tính như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -363,8 +286,7 @@ The cross product is calculated like this:
     c.Y = (a.Z * b.X) - (a.X * b.Z);
     c.Z = (a.X * b.Y) - (a.Y * b.X);
 
-With Godot, you can use the built-in :ref:`Vector3.cross() <class_Vector3_method_cross>`
-method:
+Trong Godot, bạn có thể sử dụng phương thức tích hợp sẵn :ref:`Vector3.cross() <class_Vector3_method_cross>`:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -375,29 +297,23 @@ method:
 
     var c = a.Cross(b);
 
-The cross product is not mathematically defined in 2D. The :ref:`Vector2.cross()
-<class_Vector2_method_cross>` method is a commonly used analog of the 3D cross
-product for 2D vectors.
+Tích có hướng không được định nghĩa về mặt toán học trong 2D. Phương thức :ref:`Vector2.cross() <class_Vector2_method_cross>` là một phép tương tự thường được dùng của tích có hướng 3D cho các vector 2D.
 
 .. note:: In the cross product, order matters. ``a.cross(b)`` does not give the
-          same result as ``b.cross(a)``. The resulting vectors point in
-          **opposite** directions.
+          cùng kết quả như ``b.cross(a)``. Các vector thu được hướng theo hai hướng **ngược nhau**.
 
-Calculating normals
--------------------
+Tính pháp tuyến
+---------------
 
-One common use of cross products is to find the surface normal of a plane or
-surface in 3D space. If we have the triangle ``ABC`` we can use vector
-subtraction to find two edges ``AB`` and ``AC``. Using the cross product,
-``AB × AC`` produces a vector perpendicular to both: the surface normal.
+Một cách sử dụng phổ biến của tích có hướng là tìm pháp tuyến bề mặt của một mặt phẳng hoặc bề mặt trong không gian 3D. Nếu có tam giác ``ABC``, chúng ta có thể sử dụng phép trừ vector để tìm hai cạnh ``AB`` và ``AC``. Sử dụng tích có hướng, ``AB × AC`` tạo ra một vector vuông góc với cả hai: pháp tuyến bề mặt.
 
-Here is a function to calculate a triangle's normal:
+Sau đây là một hàm để tính pháp tuyến của tam giác:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     func get_triangle_normal(a, b, c):
-        # Find the surface normal given 3 vertices.
+        # Tìm pháp tuyến bề mặt khi biết 3 đỉnh.
         var side1 = b - a
         var side2 = c - a
         var normal = side1.cross(side2)
@@ -407,26 +323,21 @@ Here is a function to calculate a triangle's normal:
 
     Vector3 GetTriangleNormal(Vector3 a, Vector3 b, Vector3 c)
     {
-        // Find the surface normal given 3 vertices.
+        // Tìm pháp tuyến bề mặt khi biết 3 đỉnh.
         var side1 = b - a;
         var side2 = c - a;
         var normal = side1.Cross(side2);
         return normal;
     }
 
-Pointing to a target
---------------------
+Hướng về một mục tiêu
+---------------------
 
-In the dot product section above, we saw how it could be used to find the angle
-between two vectors. However, in 3D, this is not enough information. We also
-need to know what axis to rotate around. We can find that by calculating the
-cross product of the current facing direction and the target direction. The
-resulting perpendicular vector is the axis of rotation.
+Trong phần tích vô hướng ở trên, chúng ta đã thấy cách sử dụng nó để tìm góc giữa hai vector. Tuy nhiên, trong không gian 3D, như vậy vẫn chưa đủ thông tin. Chúng ta cũng cần biết phải xoay quanh trục nào. Có thể tìm trục đó bằng cách tính tích có hướng của hướng hiện tại và hướng đến mục tiêu. Vector vuông góc thu được là trục xoay.
 
-More information
-~~~~~~~~~~~~~~~~
+Thông tin thêm
+~~~~~~~~~~~~~~
 
-For more information on using vector math in Godot, see the following articles:
+Để biết thêm thông tin về cách sử dụng phép toán vector trong Godot, hãy xem các bài viết sau:
 
-- :ref:`doc_vectors_advanced`
-- :ref:`doc_matrices_and_transforms`
+- :ref:`doc_vectors_advanced` - :ref:`doc_matrices_and_transforms`

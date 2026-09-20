@@ -1,52 +1,38 @@
 .. _doc_background_loading:
 
-Background loading
-==================
+Tải nền
+=======
 
-Commonly, games need to load resources asynchronously.
-When switching the main scene of your game (e.g. going to a new
-level), you might want to show a loading screen with some indication
-that progress is being made, or you may want to load additional resources
-during gameplay.
+Thông thường, game cần tải tài nguyên một cách bất đồng bộ (asynchronously). Khi chuyển scene chính của game (ví dụ: đi đến một level mới), bạn có thể muốn hiển thị màn hình tải cùng một chỉ báo cho biết tiến trình đang diễn ra, hoặc có thể muốn tải thêm tài nguyên trong khi chơi.
 
-The standard load method
-(:ref:`ResourceLoader.load <class_ResourceLoader_method_load>` or GDScript's simpler
+Phương thức tải tiêu chuẩn (:ref:`ResourceLoader.load <class_ResourceLoader_method_load>` hoặc cách đơn giản hơn của GDScript
 :ref:`load <class_@GDScript_method_load>`) blocks your
-thread, making your game appear unresponsive while the resource is being loaded.
+thread, khiến game của bạn có vẻ không phản hồi trong khi tài nguyên đang được tải.
 
-One way around this is using ``ResourceLoader`` to load resources asynchronously
-in background threads.
+Một cách để tránh điều này là sử dụng ``ResourceLoader`` để tải tài nguyên bất đồng bộ trong các background thread.
 
-Using ResourceLoader
---------------------
+Sử dụng ResourceLoader
+----------------------
 
-Generally, you queue requests to load resources for a path using
+Thông thường, bạn xếp hàng các yêu cầu tải tài nguyên theo một đường dẫn bằng
 :ref:`ResourceLoader.load_threaded_request <class_ResourceLoader_method_load_threaded_request>`,
-which will then be loaded in threads in the background.
+sau đó tài nguyên sẽ được tải trong các thread chạy nền.
 
-You can check the status with
+Bạn có thể kiểm tra trạng thái bằng
 :ref:`ResourceLoader.load_threaded_get_status <class_ResourceLoader_method_load_threaded_get_status>`.
-Progress can be obtained by passing an array variable via progress which will return
-a one element array containing the percentage.
+Có thể lấy tiến trình bằng cách truyền một biến mảng qua progress; biến này sẽ trả về một mảng gồm một phần tử chứa phần trăm.
 
-Finally, you retrieve loaded resources by calling
+Cuối cùng, bạn lấy các tài nguyên đã tải bằng cách gọi
 :ref:`ResourceLoader.load_threaded_get <class_ResourceLoader_method_load_threaded_get>`.
 
-Once you call ``load_threaded_get()``, either the resource finished loading in
-the background and will be returned instantly or the load will block at this point like
-``load()`` would. If you want to guarantee this does not block,
-you either need to ensure there is enough time between requesting the load and
-retrieving the resource or you need to check the status manually.
+Khi gọi ``load_threaded_get()``, tài nguyên либо đã tải xong trong nền và sẽ được trả về ngay lập tức, hoặc việc tải sẽ chặn tại thời điểm này giống như ``load()``. Nếu muốn đảm bảo thao tác này không bị chặn, bạn cần đảm bảo có đủ thời gian giữa lúc yêu cầu tải và lúc lấy tài nguyên, hoặc cần tự kiểm tra trạng thái.
 
-Example
--------
+Ví dụ
+-----
 
-This example demonstrates how to load a scene in the background.
-We will have a button spawn an enemy when pressed.
-The enemy will be ``Enemy.tscn`` which we will load on ``_ready`` and instantiate when pressed.
-The path will be ``"Enemy.tscn"`` which is located at ``res://Enemy.tscn``.
+Ví dụ này minh họa cách tải một scene trong nền. Chúng ta sẽ để một button tạo ra một enemy khi được nhấn. Enemy sẽ là ``Enemy.tscn``, được tải bằng ``_ready`` và được instantiate khi button được nhấn. Đường dẫn sẽ là ``"Enemy.tscn"``, nằm tại ``res://Enemy.tscn``.
 
-First, we will start a request to load the resource and connect the button:
+Trước tiên, chúng ta sẽ bắt đầu một yêu cầu tải tài nguyên và kết nối button:
 
 .. tabs::
  .. code-tab:: gdscript
@@ -72,26 +58,25 @@ First, we will start a request to load the resource and connect the button:
         }
     }
 
-Now ``_on_button_pressed`` will be called when the button is pressed.
-This method will be used to spawn an enemy.
+Bây giờ ``_on_button_pressed`` sẽ được gọi khi button được nhấn. Phương thức này sẽ được dùng để tạo ra một enemy.
 
 .. tabs::
  .. code-tab:: gdscript
 
-    func _on_button_pressed(): # Button was pressed.
-        # Obtain the resource now that we need it.
+    func _on_button_pressed(): # Đã nhấn button.
+        # Lấy tài nguyên vì bây giờ chúng ta cần dùng đến nó.
         var enemy_scene = ResourceLoader.load_threaded_get(ENEMY_SCENE_PATH)
-        # Instantiate the enemy scene and add it to the current scene.
+        # Instantiate scene enemy và thêm nó vào scene hiện tại.
         var enemy = enemy_scene.instantiate()
         add_child(enemy)
 
  .. code-tab:: csharp
 
-    private void OnButtonPressed() // Button was pressed.
+    private void OnButtonPressed() // Đã nhấn button.
     {
-        // Obtain the resource now that we need it.
+        // Lấy tài nguyên vì bây giờ chúng ta cần dùng đến nó.
         var enemyScene = (PackedScene)ResourceLoader.LoadThreadedGet(EnemyScenePath);
-        // Instantiate the enemy scene and add it to the current scene.
+        // Instantiate scene enemy và thêm nó vào scene hiện tại.
         var enemy = enemyScene.Instantiate();
         AddChild(enemy);
     }

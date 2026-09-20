@@ -1,6 +1,6 @@
 :allow_comments: False
 
-Math
+Toán
 ====
 
 .. toctree::

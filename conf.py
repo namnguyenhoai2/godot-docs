@@ -150,8 +150,11 @@ if on_rtd:
 
 html_theme_options = {
     "logo_only": True,
+
     "collapse_navigation": True,
     "navigation_depth": 2,
+    "titles_only": True,
+
     "version_selector": False,
     "language_selector": False,
     "flyout_display": "attached",

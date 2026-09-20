@@ -1,49 +1,33 @@
 .. _doc_runtime_loading_and_saving:
 
-Runtime file loading and saving
-===============================
+Tải và lưu tệp trong runtime
+============================
 
 .. seealso::
 
-    See :ref:`doc_saving_games` for information on saving and loading game progression.
+    Xem :ref:`doc_saving_games` để biết thông tin về cách lưu và tải tiến trình trò chơi.
 
-Sometimes, :ref:`exporting packs, patches, and mods <doc_exporting_pcks>` is not
-ideal when you want players to be able to load user-generated content in your
-project. It requires users to generate a PCK or ZIP file through the Godot
-editor, which contains resources imported by Godot.
+Đôi khi, :ref:`exporting packs, patches, and mods <doc_exporting_pcks>` không phải là lựa chọn lý tưởng khi bạn muốn người chơi có thể tải nội dung do người dùng tạo trong dự án của mình. Cách này yêu cầu người dùng tạo tệp PCK hoặc ZIP thông qua Godot editor, trong đó chứa các tài nguyên được Godot import.
 
-Example use cases for runtime file loading and saving include:
+Các trường hợp sử dụng điển hình cho việc tải và lưu tệp trong runtime bao gồm:
 
-- Loading texture packs designed for the game.
-- Loading user-provided audio tracks and playing them back in an in-game radio station.
-- Loading custom levels or 3D models that can be designed with any 3D DCC that
-  can export to glTF or FBX (including glTF scenes saved by Godot at runtime).
-- Using user-provided fonts for menus and HUD.
-- Saving/loading a file format that can contain multiple files but can still
-  easily be read by other applications (ZIP).
-- Loading files created by another game or program, or even game data files from
-  another game not made with Godot.
+- Tải các texture pack được thiết kế cho trò chơi. - Tải các bản nhạc do người dùng cung cấp và phát chúng trong một đài radio trong trò chơi. - Tải các màn chơi tùy chỉnh hoặc model 3D có thể được thiết kế bằng bất kỳ 3D DCC nào có thể export sang glTF hoặc FBX (bao gồm các scene glTF được Godot lưu trong runtime). - Sử dụng font do người dùng cung cấp cho menu và HUD. - Lưu/tải một định dạng tệp có thể chứa nhiều tệp nhưng vẫn dễ dàng được các ứng dụng khác đọc (ZIP). - Tải các tệp được tạo bởi một trò chơi hoặc chương trình khác, hoặc thậm chí các tệp dữ liệu trò chơi từ một trò chơi khác không được tạo bằng Godot.
 
-Runtime file loading can be combined with :ref:`HTTP requests <doc_http_request_class>`
-to load resources from the Internet directly.
+Có thể kết hợp việc tải tệp trong runtime với :ref:`HTTP requests <doc_http_request_class>` để tải tài nguyên trực tiếp từ Internet.
 
 .. warning::
 
-    Do **not** use this runtime loading approach to load resources that are part
-    of the project, as it's less efficient and doesn't allow benefiting from
-    Godot's resource handling functionality (such as translation remaps). See
+    **Không** sử dụng cách tải trong runtime này để tải các tài nguyên thuộc về dự án, vì cách này kém hiệu quả hơn và không cho phép tận dụng chức năng xử lý tài nguyên của Godot (chẳng hạn như translation remap). Xem
     :ref:`doc_import_process` for details.
 
 .. seealso::
 
-    You can see how saving and loading works in action using the
-    `Run-time File Saving and Loading (Serialization) demo project <https://github.com/godotengine/godot-demo-projects/blob/master/loading/runtime_save_load>`__.
+    Bạn có thể xem cách lưu và tải hoạt động thực tế bằng `Run-time File Saving and Loading (Serialization) demo project <https://github.com/godotengine/godot-demo-projects/blob/master/loading/runtime_save_load>`__.
 
-Plain text and binary files
----------------------------
+Tệp văn bản thuần túy và tệp nhị phân
+-------------------------------------
 
-Godot's :ref:`class_FileAccess` class provides methods to access files on the
-filesystem for reading and writing:
+Class :ref:`class_FileAccess` của Godot cung cấp các phương thức để truy cập các tệp trên filesystem nhằm đọc và ghi:
 
 .. tabs::
  .. code-tab:: gdscript
@@ -72,108 +56,75 @@ filesystem for reading and writing:
         return content;
     }
 
-To handle custom binary formats (such as loading file formats not supported by
-Godot), :ref:`class_FileAccess` provides several methods to read/write integers,
-floats, strings and more. These FileAccess methods have names that start with
-``get_`` and ``store_``.
+Để xử lý các định dạng nhị phân tùy chỉnh (chẳng hạn như tải các định dạng tệp không được Godot hỗ trợ), :ref:`class_FileAccess` cung cấp một số phương thức để đọc/ghi số nguyên, số thực, chuỗi và nhiều kiểu dữ liệu khác. Tên của các phương thức FileAccess này bắt đầu bằng ``get_`` và ``store_``.
 
-If you need more control over reading binary files or need to read binary
-streams that are not part of a file, :ref:`class_PackedByteArray` provides
-several helper methods to decode/encode series of bytes to integers, floats,
-strings and more. These PackedByteArray methods have names that start with
-``decode_`` and ``encode_``. See also :ref:`doc_binary_serialization_api`.
+Nếu bạn cần kiểm soát nhiều hơn khi đọc tệp nhị phân hoặc cần đọc các binary stream không thuộc về một tệp, :ref:`class_PackedByteArray` cung cấp một số phương thức hỗ trợ để decode/encode các chuỗi byte thành số nguyên, số thực, chuỗi và nhiều kiểu dữ liệu khác. Tên của các phương thức PackedByteArray này bắt đầu bằng ``decode_`` và ``encode_``. Xem thêm :ref:`doc_binary_serialization_api`.
 
 .. _doc_runtime_file_loading_and_saving_images:
 
-Images
-------
+Hình ảnh
+--------
 
-Image's :ref:`Image.load_from_file <class_Image_method_load_from_file>` static method
-handles everything, from format detection based on file extension to reading the
-file from disk.
+Phương thức static :ref:`Image.load_from_file <class_Image_method_load_from_file>` của Image xử lý mọi việc, từ phát hiện định dạng dựa trên phần mở rộng tệp đến đọc tệp từ ổ đĩa.
 
-If you need error handling or more control (such as changing the scale an SVG is
-loaded at), use one of the following methods depending on the file format:
+Nếu bạn cần xử lý lỗi hoặc muốn kiểm soát nhiều hơn (chẳng hạn như thay đổi scale mà SVG được tải vào), hãy sử dụng một trong các phương thức sau tùy theo định dạng tệp:
 
-- :ref:`Image.load_jpg_from_buffer <class_Image_method_load_jpg_from_buffer>`
-- :ref:`Image.load_ktx_from_buffer <class_Image_method_load_ktx_from_buffer>`
-- :ref:`Image.load_png_from_buffer <class_Image_method_load_png_from_buffer>`
-- :ref:`Image.load_svg_from_buffer <class_Image_method_load_svg_from_buffer>`
-  or :ref:`Image.load_svg_from_string <class_Image_method_load_svg_from_string>`
-- :ref:`Image.load_tga_from_buffer <class_Image_method_load_tga_from_buffer>`
-- :ref:`Image.load_webp_from_buffer <class_Image_method_load_webp_from_buffer>`
-- :ref:`Image.load_exr_from_buffer <class_Image_method_load_exr_from_buffer>`
+- :ref:`Image.load_jpg_from_buffer <class_Image_method_load_jpg_from_buffer>` - :ref:`Image.load_ktx_from_buffer <class_Image_method_load_ktx_from_buffer>` - :ref:`Image.load_png_from_buffer <class_Image_method_load_png_from_buffer>` - :ref:`Image.load_svg_from_buffer <class_Image_method_load_svg_from_buffer>` hoặc :ref:`Image.load_svg_from_string <class_Image_method_load_svg_from_string>` - :ref:`Image.load_tga_from_buffer <class_Image_method_load_tga_from_buffer>` - :ref:`Image.load_webp_from_buffer <class_Image_method_load_webp_from_buffer>` - :ref:`Image.load_exr_from_buffer <class_Image_method_load_exr_from_buffer>`
 
-Several image formats can also be saved by Godot at runtime using the following
-methods:
+Một số định dạng hình ảnh cũng có thể được Godot lưu trong runtime bằng các phương thức sau:
 
-- :ref:`Image.save_png <class_Image_method_save_png>`
-  or :ref:`Image.save_png_to_buffer <class_Image_method_save_png_to_buffer>`
-- :ref:`Image.save_webp <class_Image_method_save_webp>`
-  or :ref:`Image.save_webp_to_buffer <class_Image_method_save_webp_to_buffer>`
-- :ref:`Image.save_jpg <class_Image_method_save_jpg>`
-  or :ref:`Image.save_jpg_to_buffer <class_Image_method_save_jpg_to_buffer>`
-- :ref:`Image.save_exr <class_Image_method_save_exr>`
-  or :ref:`Image.save_exr_to_buffer <class_Image_method_save_exr_to_buffer>`
+- :ref:`Image.save_png <class_Image_method_save_png>` hoặc :ref:`Image.save_png_to_buffer <class_Image_method_save_png_to_buffer>` - :ref:`Image.save_webp <class_Image_method_save_webp>` hoặc :ref:`Image.save_webp_to_buffer <class_Image_method_save_webp_to_buffer>` - :ref:`Image.save_jpg <class_Image_method_save_jpg>` hoặc :ref:`Image.save_jpg_to_buffer <class_Image_method_save_jpg_to_buffer>` - :ref:`Image.save_exr <class_Image_method_save_exr>` hoặc :ref:`Image.save_exr_to_buffer <class_Image_method_save_exr_to_buffer>`
 
-The methods with the ``to_buffer`` suffix save the image to a PackedByteArray
-instead of the filesystem. This is useful to send the image over the network or
-into a ZIP archive without having to write it on the filesystem. This can
-increase performance by reducing I/O utilization.
+Các phương thức có hậu tố ``to_buffer`` sẽ lưu hình ảnh vào một PackedByteArray thay vì filesystem. Điều này hữu ích khi gửi hình ảnh qua network hoặc đưa vào một ZIP archive mà không cần ghi hình ảnh vào filesystem. Cách này có thể tăng performance bằng cách giảm mức sử dụng I/O.
 
 .. note::
 
-    If displaying the loaded image on a 3D surface, make sure to call
+    Nếu hiển thị hình ảnh đã tải trên một bề mặt 3D, hãy đảm bảo gọi
     :ref:`Image.generate_mipmaps <class_Image_method_generate_mipmaps>`
-    so that the texture doesn't look grainy when viewed at a distance.
-    This is also useful in 2D when following instructions on
+    để texture không bị nhiễu hạt khi nhìn từ xa. Điều này cũng hữu ích trong 2D khi làm theo hướng dẫn trên
     :ref:`reducing aliasing when downsampling <doc_multiple_resolutions_reducing_aliasing_on_downsampling>`.
 
-Example of loading an image and displaying it in a :ref:`class_TextureRect` node
-(which requires conversion to :ref:`class_ImageTexture`):
+Ví dụ về cách tải một hình ảnh và hiển thị nó trong một node :ref:`class_TextureRect` (yêu cầu chuyển đổi sang :ref:`class_ImageTexture`):
 
 .. tabs::
  .. code-tab:: gdscript
 
-    # Load an image of any format supported by Godot from the filesystem.
+    # Tải một hình ảnh thuộc bất kỳ định dạng nào được Godot hỗ trợ từ filesystem.
     var image = Image.load_from_file(path)
-    # Optionally, generate mipmaps if displaying the texture on a 3D surface
-    # so that the texture doesn't look grainy when viewed at a distance.
+    # Tùy chọn, tạo mipmap nếu hiển thị texture trên một bề mặt 3D
+    # để texture không bị nhiễu hạt khi nhìn từ xa.
     #image.generate_mipmaps()
     $TextureRect.texture = ImageTexture.create_from_image(image)
 
-    # Save the loaded Image to a PNG image.
+    # Lưu Image đã tải thành một hình ảnh PNG.
     image.save_png("/path/to/file.png")
 
-    # Save the converted ImageTexture to a PNG image.
+    # Lưu ImageTexture đã chuyển đổi thành một hình ảnh PNG.
     $TextureRect.texture.get_image().save_png("/path/to/file.png")
 
  .. code-tab:: csharp
 
-    // Load an image of any format supported by Godot from the filesystem.
+    // Tải một hình ảnh thuộc bất kỳ định dạng nào được Godot hỗ trợ từ filesystem.
     var image = Image.LoadFromFile(path);
-    // Optionally, generate mipmaps if displaying the texture on a 3D surface
-    // so that the texture doesn't look grainy when viewed at a distance.
+    // Tùy chọn, tạo mipmap nếu hiển thị texture trên một bề mặt 3D
+    // để texture không bị nhiễu hạt khi nhìn từ xa.
     // image.GenerateMipmaps();
     GetNode<TextureRect>("TextureRect").Texture = ImageTexture.CreateFromImage(image);
 
-    // Save the loaded Image to a PNG image.
+    // Lưu Image đã tải thành một hình ảnh PNG.
     image.SavePng("/Path/To/File.png");
 
-    // Save the converted ImageTexture to a PNG image.
+    // Lưu ImageTexture đã chuyển đổi thành một hình ảnh PNG.
     GetNode<TextureRect>("TextureRect").Texture.GetImage().SavePng("/Path/To/File.png");
 
 .. _doc_runtime_file_loading_and_saving_audio_video_files:
 
-Audio/video files
------------------
+Tệp âm thanh/video
+------------------
 
-Godot supports loading Ogg Vorbis, MP3, and WAV audio at runtime. Note that not *all*
-files with a ``.ogg`` extension are Ogg Vorbis files. Some may be Ogg Theora
-videos, or contain Opus audio within an Ogg container. These files will **not**
-load correctly as audio files in Godot.
+Godot hỗ trợ tải âm thanh Ogg Vorbis, MP3 và WAV trong runtime. Lưu ý rằng không phải *tất cả* các tệp có phần mở rộng ``.ogg`` đều là tệp Ogg Vorbis. Một số có thể là video Ogg Theora hoặc chứa âm thanh Opus trong một Ogg container. Godot sẽ **không** tải chính xác các tệp này dưới dạng tệp âm thanh.
 
-Example of loading an Ogg Vorbis audio file in an :ref:`class_AudioStreamPlayer` node:
+Ví dụ về cách tải một tệp âm thanh Ogg Vorbis trong một node :ref:`class_AudioStreamPlayer`:
 
 .. tabs::
  .. code-tab:: gdscript
@@ -184,59 +135,53 @@ Example of loading an Ogg Vorbis audio file in an :ref:`class_AudioStreamPlayer`
 
     GetNode<AudioStreamPlayer>("AudioStreamPlayer").Stream = AudioStreamOggVorbis.LoadFromFile(path);
 
-Example of loading an Ogg Theora video file in a :ref:`class_VideoStreamPlayer` node:
+Ví dụ về cách tải một tệp video Ogg Theora trong một node :ref:`class_VideoStreamPlayer`:
 
 .. tabs::
  .. code-tab:: gdscript
 
     var video_stream_theora = VideoStreamTheora.new()
-    # File extension is ignored, so it is possible to load Ogg Theora videos
-    # that have a `.ogg` extension this way.
+    # Phần mở rộng tệp bị bỏ qua, vì vậy có thể tải các video Ogg Theora
+    # có phần mở rộng `.ogg` theo cách này.
     video_stream_theora.file = "/path/to/file.ogv"
     $VideoStreamPlayer.stream = video_stream_theora
 
-    # VideoStreamPlayer's Autoplay property won't work if the stream is empty
-    # before this property is set, so call `play()` after setting `stream`.
+    # Thuộc tính Autoplay của VideoStreamPlayer sẽ không hoạt động nếu stream đang trống
+    # trước khi thuộc tính này được thiết lập, vì vậy hãy gọi `play()` sau khi thiết lập `stream`.
     $VideoStreamPlayer.play()
 
  .. code-tab:: csharp
 
     var videoStreamTheora = new VideoStreamTheora();
-    // File extension is ignored, so it is possible to load Ogg Theora videos
-    // that have a `.ogg` extension this way.
+    // Phần mở rộng tệp bị bỏ qua, vì vậy có thể tải các video Ogg Theora
+    // có phần mở rộng `.ogg` theo cách này.
     videoStreamTheora.File = "/Path/To/File.ogv";
     GetNode<VideoStreamPlayer>("VideoStreamPlayer").Stream = videoStreamTheora;
 
-    // VideoStreamPlayer's Autoplay property won't work if the stream is empty
-    // before this property is set, so call `Play()` after setting `Stream`.
+    // Thuộc tính Autoplay của VideoStreamPlayer sẽ không hoạt động nếu stream đang trống
+    // trước khi thuộc tính này được thiết lập, vì vậy hãy gọi `Play()` sau khi thiết lập `Stream`.
     GetNode<VideoStreamPlayer>("VideoStreamPlayer").Play();
 
 .. _doc_runtime_file_loading_and_saving_3d_scenes:
 
-3D scenes
----------
+Scene 3D
+--------
 
-Godot has first-class support for glTF 2.0, both in the editor and exported
-projects. Using :ref:`class_gltfdocument` and :ref:`class_gltfstate` together,
-Godot can load and save glTF files in exported projects, in both text
-(``.gltf``) and binary (``.glb``) formats. The binary format should be preferred
-as it's faster to write and smaller, but the text format is easier to debug.
+Godot hỗ trợ đầy đủ glTF 2.0, cả trong editor lẫn các project đã export. Khi sử dụng :ref:`class_gltfdocument` và :ref:`class_gltfstate` cùng nhau, Godot có thể tải và lưu các tệp glTF trong các project đã export, ở cả định dạng văn bản (``.gltf``) và nhị phân (``.glb``). Nên ưu tiên định dạng nhị phân vì định dạng này ghi nhanh hơn và có kích thước nhỏ hơn, nhưng định dạng văn bản dễ debug hơn.
 
-Since Godot 4.3, FBX scenes can also be loaded (but not saved) at runtime using the
+Kể từ Godot 4.3, các scene FBX cũng có thể được tải (nhưng không thể lưu) trong runtime bằng
 :ref:`class_fbxdocument` and :ref:`class_fbxstate` classes. The code to do so
-is the same as glTF, but you will need to replace all instances of
-``GLTFDocument`` and ``GLTFState`` with ``FBXDocument`` and ``FBXState`` in the
-code samples below.
+giống với glTF, nhưng bạn cần thay thế mọi instance của ``GLTFDocument`` và ``GLTFState`` bằng ``FBXDocument`` và ``FBXState`` trong các mẫu code bên dưới.
 
-Example of loading a glTF scene and appending its root node to the scene:
+Ví dụ về cách tải một scene glTF và thêm node gốc của nó vào scene:
 
 .. tabs::
  .. code-tab:: gdscript
 
-    # Load an existing glTF scene.
-    # GLTFState is used by GLTFDocument to store the loaded scene's state.
-    # GLTFDocument is the class that handles actually loading glTF data into a Godot node tree,
-    # which means it supports glTF features such as lights and cameras.
+    # Tải một scene glTF hiện có.
+    # GLTFState được GLTFDocument sử dụng để lưu state của scene đã tải.
+    # GLTFDocument là class thực sự xử lý việc tải dữ liệu glTF vào một cây node Godot,
+    # điều này có nghĩa là nó hỗ trợ các tính năng glTF như đèn và camera.
     var gltf_document_load = GLTFDocument.new()
     var gltf_state_load = GLTFState.new()
     var error = gltf_document_load.append_from_file("/path/to/file.gltf", gltf_state_load)
@@ -246,21 +191,21 @@ Example of loading a glTF scene and appending its root node to the scene:
     else:
         show_error("Couldn't load glTF scene (error code: %s)." % error_string(error))
 
-    # Save a new glTF scene.
+    # Lưu một scene glTF mới.
     var gltf_document_save := GLTFDocument.new()
     var gltf_state_save := GLTFState.new()
     gltf_document_save.append_from_scene(gltf_scene_root_node, gltf_state_save)
-    # The file extension in the output `path` (`.gltf` or `.glb`) determines
-    # whether the output uses text or binary format.
-    # `GLTFDocument.generate_buffer()` is also available for saving to memory.
+    # Phần mở rộng tệp trong `path` đầu ra (`.gltf` hoặc `.glb`) xác định
+    # đầu ra sử dụng định dạng văn bản hay nhị phân.
+    # `GLTFDocument.generate_buffer()` cũng có sẵn để lưu vào memory.
     gltf_document_save.write_to_filesystem(gltf_state_save, path)
 
  .. code-tab:: csharp
 
-    // Load an existing glTF scene.
-    // GLTFState is used by GLTFDocument to store the loaded scene's state.
-    // GLTFDocument is the class that handles actually loading glTF data into a Godot node tree,
-    // which means it supports glTF features such as lights and cameras.
+    // Tải một scene glTF hiện có.
+    // GLTFState được GLTFDocument sử dụng để lưu state của scene đã tải.
+    // GLTFDocument là class thực sự xử lý việc tải dữ liệu glTF vào một cây node Godot,
+    // điều này có nghĩa là nó hỗ trợ các tính năng glTF như đèn và camera.
     var gltfDocumentLoad = new GltfDocument();
     var gltfStateLoad = new GltfState();
     var error = gltfDocumentLoad.AppendFromFile("/Path/To/File.gltf", gltfStateLoad);
@@ -274,45 +219,38 @@ Example of loading a glTF scene and appending its root node to the scene:
         GD.PrintErr($"Couldn't load glTF scene (error code: {error}).");
     }
 
-    // Save a new glTF scene.
+    // Lưu một scene glTF mới.
     var gltfDocumentSave = new GltfDocument();
     var gltfStateSave = new GltfState();
     gltfDocumentSave.AppendFromScene(gltfSceneRootNode, gltfStateSave);
-    // The file extension in the output `path` (`.gltf` or `.glb`) determines
-    // whether the output uses text or binary format.
-    // `GltfDocument.GenerateBuffer()` is also available for saving to memory.
+    // Phần mở rộng tệp trong `path` đầu ra (`.gltf` hoặc `.glb`) xác định
+    // đầu ra sử dụng định dạng văn bản hay nhị phân.
+    // `GltfDocument.GenerateBuffer()` cũng có sẵn để lưu vào memory.
     gltfDocumentSave.WriteToFilesystem(gltfStateSave, path);
 
 .. note::
 
-    When loading a glTF scene, a *base path* must be set so that external
-    resources like textures can be loaded correctly. When loading from a file,
-    the base path is automatically set to the folder containing the file. When
-    loading from a buffer, this base path must be manually set as there is no
-    way for Godot to infer this path.
+    Khi tải một scene glTF, phải thiết lập *base path* để các tài nguyên bên ngoài như texture có thể được tải chính xác. Khi tải từ một tệp, base path được tự động thiết lập thành thư mục chứa tệp. Khi tải từ một buffer, phải thiết lập base path theo cách thủ công vì Godot không có cách nào suy ra path này.
 
-    To set the base path, set
+    Để thiết lập base path, hãy thiết lập
     :ref:`GLTFState.base_path <class_GLTFState_property_base_path>` on your
-    GLTFState instance *before* calling
+    instance GLTFState *trước khi* gọi
     :ref:`GLTFDocument.append_from_buffer <class_GLTFDocument_method_append_from_buffer>`
-    or :ref:`GLTFDocument.append_from_file <class_GLTFDocument_method_append_from_file>`.
+    hoặc :ref:`GLTFDocument.append_from_file <class_GLTFDocument_method_append_from_file>`.
 
 .. _doc_runtime_file_loading_and_saving_fonts:
 
-Fonts
------
+Font
+----
 
 :ref:`FontFile.load_dynamic_font <class_FontFile_method_load_bitmap_font>` supports the following
-font file formats: TTF, OTF, WOFF, WOFF2, PFB, PFM
+các định dạng tệp font: TTF, OTF, WOFF, WOFF2, PFB, PFM
 
-On the other hand, :ref:`FontFile.load_bitmap_font <class_FontFile_method_load_bitmap_font>` supports
-the `BMFont <https://www.angelcode.com/products/bmfont/>`__ format (``.fnt`` or ``.font``).
+Mặt khác, :ref:`FontFile.load_bitmap_font <class_FontFile_method_load_bitmap_font>` hỗ trợ định dạng `BMFont <https://www.angelcode.com/products/bmfont/>`__ (``.fnt`` hoặc ``.font``).
 
-Additionally, it is possible to load any font that is installed on the system using
-Godot's support for :ref:`doc_using_fonts_system_fonts`.
+Ngoài ra, có thể tải bất kỳ font nào được cài đặt trên hệ thống bằng cách sử dụng hỗ trợ :ref:`doc_using_fonts_system_fonts` của Godot.
 
-Example of loading a font file automatically according to its file extension,
-then adding it as a theme override to a :ref:`class_Label` node:
+Ví dụ về cách tải một tệp font tự động theo phần mở rộng tệp, sau đó thêm nó làm theme override cho một node :ref:`class_Label`:
 
 .. tabs::
  .. code-tab:: gdscript
@@ -335,7 +273,7 @@ then adding it as a theme override to a :ref:`class_Label` node:
         push_error("Invalid font file format.")
 
     if not font_file.data.is_empty():
-        # If font was loaded successfully, add it as a theme override.
+        # Nếu font được tải thành công, hãy thêm nó làm theme override.
         $Label.add_theme_font_override("font", font_file)
 
  .. code-tab:: csharp
@@ -365,54 +303,47 @@ then adding it as a theme override to a :ref:`class_Label` node:
 
     if (!fontFile.Data.IsEmpty())
     {
-        // If font was loaded successfully, add it as a theme override.
+        // Nếu font được tải thành công, hãy thêm nó làm theme override.
         GetNode<Label>("Label").AddThemeFontOverride("font", fontFile);
     }
 
-ZIP archives
-------------
+ZIP archive
+-----------
 
-Godot supports reading and writing ZIP archives using the :ref:`class_zipreader`
-and :ref:`class_zippacker` classes. This supports any ZIP file, including files
-generated by Godot's "Export PCK/ZIP" functionality (although these will contain
-imported Godot resources rather than the original project files).
+Godot hỗ trợ đọc và ghi ZIP archive bằng các class :ref:`class_zipreader` và :ref:`class_zippacker`. Tính năng này hỗ trợ mọi tệp ZIP, bao gồm các tệp được tạo bằng chức năng "Export PCK/ZIP" của Godot (mặc dù các tệp này sẽ chứa các tài nguyên Godot đã import thay vì các tệp project gốc).
 
 .. note::
 
-    Use :ref:`ProjectSettings.load_resource_pack <class_ProjectSettings_method_load_resource_pack>`
-    to load PCK or ZIP files exported by Godot as
+    Sử dụng :ref:`ProjectSettings.load_resource_pack <class_ProjectSettings_method_load_resource_pack>` để tải các tệp PCK hoặc ZIP được Godot export dưới dạng
     :ref:`additional data packs <doc_exporting_pcks>`. That approach is preferred
-    for DLCs, as it makes interacting with additional data packs seamless (virtual filesystem).
+    giúp các DLC tương tác liền mạch với các data pack bổ sung (virtual filesystem).
 
-This ZIP archive support can be combined with runtime image, 3D scene and audio
-loading to provide a seamless modding experience without requiring users to go
-through the Godot editor to generate PCK/ZIP files.
+Tính năng hỗ trợ ZIP archive này có thể được kết hợp với việc tải hình ảnh, scene 3D và âm thanh trong runtime để mang lại trải nghiệm modding liền mạch mà không yêu cầu người dùng phải sử dụng Godot editor để tạo các tệp PCK/ZIP.
 
-Example that lists files in a ZIP archive in an :ref:`class_ItemList` node,
-then writes contents read from it to a new ZIP archive (essentially duplicating the archive):
+Ví dụ liệt kê các tệp trong một kho lưu trữ ZIP trong một node :ref:`class_ItemList`, sau đó ghi nội dung đọc được từ đó vào một kho lưu trữ ZIP mới (về cơ bản là sao chép kho lưu trữ):
 
 .. tabs::
  .. code-tab:: gdscript
 
-    # Load an existing ZIP archive.
+    # Tải một kho lưu trữ ZIP hiện có.
     var zip_reader = ZIPReader.new()
     zip_reader.open(path)
     var files = zip_reader.get_files()
-    # The list of files isn't sorted by default. Sort it for more consistent processing.
+    # Danh sách tệp không được sắp xếp theo mặc định. Hãy sắp xếp danh sách để quá trình xử lý nhất quán hơn.
     files.sort()
     for file in files:
         $ItemList.add_item(file, null)
-        # Make folders disabled in the list.
+        # Tắt các thư mục trong danh sách.
         $ItemList.set_item_disabled(-1, file.ends_with("/"))
 
-    # Save a new ZIP archive.
+    # Lưu một kho lưu trữ ZIP mới.
     var zip_packer = ZIPPacker.new()
     var error = zip_packer.open(path)
     if error != OK:
         push_error("Couldn't open path for saving ZIP archive (error code: %s)." % error_string(error))
         return
 
-    # Reuse the above ZIPReader instance to read files from an existing ZIP archive.
+    # Sử dụng lại instance ZIPReader ở trên để đọc các tệp từ một kho lưu trữ ZIP hiện có.
     for file in zip_reader.get_files():
         zip_packer.start_file(file)
         zip_packer.write_file(zip_reader.read_file(file))
@@ -422,20 +353,20 @@ then writes contents read from it to a new ZIP archive (essentially duplicating 
 
  .. code-tab:: csharp
 
-    // Load an existing ZIP archive.
+    // Tải một kho lưu trữ ZIP hiện có.
     var zipReader = new ZipReader();
     zipReader.Open(path);
     string[] files = zipReader.GetFiles();
-    // The list of files isn't sorted by default. Sort it for more consistent processing.
+    // Danh sách tệp không được sắp xếp theo mặc định. Hãy sắp xếp danh sách để quá trình xử lý nhất quán hơn.
     Array.Sort(files);
     foreach (string file in files)
     {
         GetNode<ItemList>("ItemList").AddItem(file);
-        // Make folders disabled in the list.
+        // Tắt các thư mục trong danh sách.
         GetNode<ItemList>("ItemList").SetItemDisabled(-1, file.EndsWith('/'));
     }
 
-    // Save a new ZIP archive.
+    // Lưu một kho lưu trữ ZIP mới.
     var zipPacker = new ZipPacker();
     var error = zipPacker.Open(path);
     if (error != Error.Ok)
@@ -444,7 +375,7 @@ then writes contents read from it to a new ZIP archive (essentially duplicating 
         return;
     }
 
-    // Reuse the above ZIPReader instance to read files from an existing ZIP archive.
+    // Sử dụng lại instance ZIPReader ở trên để đọc các tệp từ một kho lưu trữ ZIP hiện có.
     foreach (string file in zipReader.GetFiles())
     {
         zipPacker.StartFile(file);
