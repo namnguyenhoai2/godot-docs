@@ -1,187 +1,123 @@
 .. _doc_using_assetlib:
 
-Using the Asset Library
-=======================
+Sử dụng Asset Library
+=====================
 
-On the website
+Trên trang web
 --------------
 
-Overview
-~~~~~~~~
+Tổng quan
+~~~~~~~~~
 
-As mentioned before, you can access the web frontend of the Asset Library on
-`Godot's official website <https://godotengine.org/asset-library/asset>`_.
-This is what it looks like when you first visit it:
+Như đã đề cập trước đó, bạn có thể truy cập frontend web của Asset Library trên `trang web chính thức của Godot <https://godotengine.org/asset-library/asset>`_. Đây là giao diện khi bạn truy cập lần đầu:
 
 |image0|
 
-At the top, you see the **header**, which takes you to various other parts of the
-AssetLib - at the moment, it's empty, as we are not logged in.
+Ở trên cùng, bạn sẽ thấy **header**, phần này đưa bạn đến nhiều khu vực khác của AssetLib - hiện tại, nó đang trống vì chúng ta chưa đăng nhập.
 
-Searching
-~~~~~~~~~
+Tìm kiếm
+~~~~~~~~
 
-In the left sidebar is the **search bar + settings** section, and the
-**assets** section takes up the main content area on the right. Below
-the search bar, you can filter assets by **category** (such as 2D tools,
-scripts and demos), **support level**, **engine version**, and **license**.
-You can also change the **sorting order** to sort by license, name, or
-update date.
+Trong thanh bên trái là phần **thanh tìm kiếm + cài đặt**, còn phần **assets** chiếm khu vực nội dung chính ở bên phải. Bên dưới thanh tìm kiếm, bạn có thể lọc asset theo **danh mục** (chẳng hạn như công cụ 2D, script và bản demo), **mức độ hỗ trợ**, **phiên bản engine** và **giấy phép**. Bạn cũng có thể thay đổi **thứ tự sắp xếp** để sắp xếp theo giấy phép, tên hoặc ngày cập nhật.
 
-While most other filter settings should be fairly self-explanatory, it's worth
-going over what "support level" means in the Asset Library.
-Currently there are three support levels, and each asset can belong to only one.
+Mặc dù hầu hết các cài đặt bộ lọc khác đều khá dễ hiểu, bạn vẫn nên tìm hiểu ý nghĩa của "mức độ hỗ trợ" trong Asset Library. Hiện có ba mức độ hỗ trợ và mỗi asset chỉ có thể thuộc một mức.
 
-**Featured** assets are hand-picked resources recognized for their value to the community.
+Các asset **Nổi bật** là những tài nguyên được tuyển chọn thủ công vì có giá trị đối với cộng đồng.
 
-**Community** assets are submitted and maintained by the members of the
-Godot community.
+Các asset **Cộng đồng** do các thành viên của cộng đồng Godot gửi lên và duy trì.
 
-**Testing** assets are works-in-progress, and may contain bugs and usability
-issues. They are not recommended for use in serious projects, but you are
-encouraged to download, test them, and submit issues to the original authors.
+Các asset **Đang thử nghiệm** là những sản phẩm đang trong quá trình phát triển và có thể chứa lỗi cũng như vấn đề về khả năng sử dụng. Chúng không được khuyến nghị dùng trong các dự án nghiêm túc, nhưng bạn được khuyến khích tải xuống, kiểm thử và gửi vấn đề cho tác giả ban đầu.
 
-You can mix and match any of the search filters and criteria, and upon clicking
-the Search button, receive the list of all assets in the Library that match them.
+Bạn có thể kết hợp tùy ý các bộ lọc và tiêu chí tìm kiếm, rồi sau khi nhấp vào nút Search, nhận được danh sách tất cả asset trong Library phù hợp với chúng.
 
 |image1|
 
-Note that the search results are not updated in real-time, so you will have to
-re-submit the search query each time you change the query settings.
+Lưu ý rằng kết quả tìm kiếm không được cập nhật theo thời gian thực, vì vậy bạn sẽ phải gửi lại truy vấn tìm kiếm mỗi khi thay đổi cài đặt truy vấn.
 
-Breakdown of an asset
-~~~~~~~~~~~~~~~~~~~~~
+Phân tích một asset
+~~~~~~~~~~~~~~~~~~~
 
-Now let's take a look at what an asset's page looks like and what it contains.
+Bây giờ hãy cùng xem trang của một asset trông như thế nào và có những nội dung gì.
 
 |image2|
 
-1. Asset's thumbnail/icon.
-2. Asset's name.
-3. Current version number of the asset.
-4. Asset's category, Godot version, and support status.
-5. Asset's original author/submitter.
-6. The license the asset is distributed under.
-7. The date of the asset's latest edit/update.
-8. A textual description of the asset.
-9. Links related to the asset (download link, file list, issue tracker).
-10. Images and videos showcasing the asset.
+1. Hình thu nhỏ/biểu tượng của asset. 2. Tên asset. 3. Số phiên bản hiện tại của asset. 4. Danh mục, phiên bản Godot và trạng thái hỗ trợ của asset. 5. Tác giả/người gửi ban đầu của asset. 6. Giấy phép mà asset được phân phối theo đó. 7. Ngày chỉnh sửa/cập nhật gần nhất của asset. 8. Mô tả bằng văn bản về asset. 9. Các liên kết liên quan đến asset (liên kết tải xuống, danh sách tệp, trình theo dõi vấn đề). 10. Hình ảnh và video giới thiệu asset.
 
-Registering and logging in
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Đăng ký và đăng nhập
+~~~~~~~~~~~~~~~~~~~~
 
-In order to upload assets to the AssetLib, you need to be logged in, and to do
-that, you need a registered user account. In the future, this may also give you
-access to other features, such as commenting on or rating the existing assets.
-You do *not* need to be logged in to browse and download the assets.
+Để tải asset lên AssetLib, bạn cần đăng nhập, và để làm vậy, bạn cần có tài khoản người dùng đã đăng ký. Trong tương lai, điều này cũng có thể cho phép bạn sử dụng các tính năng khác, chẳng hạn như bình luận hoặc đánh giá các asset hiện có. Bạn *không* cần đăng nhập để duyệt và tải xuống các asset.
 
-The login/registration page can be accessed from the AssetLib header.
+Bạn có thể truy cập trang đăng nhập/đăng ký từ header của AssetLib.
 
 |image3|
 
-From here, you can register your account, which requires a valid email address,
-a username, and a (preferably strong) password.
+Từ đây, bạn có thể đăng ký tài khoản, với yêu cầu phải có địa chỉ email hợp lệ, tên người dùng và mật khẩu (tốt nhất là mật khẩu mạnh).
 
 |image4|
 
-Then, you can use your username and password to log in.
+Sau đó, bạn có thể sử dụng tên người dùng và mật khẩu để đăng nhập.
 
 |image5|
 
-This will change the look of the AssetLib header. Now you get access to a handful of
-new functions:
+Điều này sẽ thay đổi giao diện header của AssetLib. Bây giờ bạn có quyền truy cập vào một số chức năng mới:
 
-- The feed, which shows a list of status updates on your submitted assets (and possibly more in the future).
-- A list of your uploaded assets.
-- The ability to submit new assets.
+- Feed, hiển thị danh sách các cập nhật trạng thái về những asset bạn đã gửi lên (và có thể nhiều hơn trong tương lai). - Danh sách các asset bạn đã tải lên. - Khả năng gửi asset mới.
 
 |image6|
 
-You can learn how to submit assets to the Library, and what the asset submission
-guidelines are, in the next part of this tutorial, :ref:`doc_submitting_to_assetlib`.
+Bạn có thể tìm hiểu cách gửi asset lên Library và các nguyên tắc gửi asset trong phần tiếp theo của hướng dẫn này, :ref:`doc_submitting_to_assetlib`.
 
 .. _doc_using_assetlib_editor:
 
-In the editor
--------------
+Trong trình chỉnh sửa
+---------------------
 
 .. note::
 
-    The editor will display different categories of assets depending on whether
-    you're browsing the Project Manager's **Asset Library Projects** tab or the editor's
-    **AssetLib** tab.
+    Trình chỉnh sửa sẽ hiển thị các danh mục asset khác nhau tùy thuộc vào việc bạn đang duyệt thẻ **Asset Library Projects** của Project Manager hay thẻ **AssetLib** của trình chỉnh sửa.
 
-    The Project Manager's **Asset Library Projects** tab will only display assets that are
-    standalone projects by themselves. This is denoted on the asset library with
-    the *Templates*, *Demos* and *Projects* categories.
+    Thẻ **Asset Library Projects** của Project Manager sẽ chỉ hiển thị những asset tự chúng là các dự án độc lập. Điều này được biểu thị trong asset library bằng các danh mục *Templates*, *Demos* và *Projects*.
 
-    The editor's **AssetLib** tab will only display assets that are *not* standalone
-    projects by themselves. In other words, it will display assets from all
-    categories except *Templates*, *Demos* and *Projects*.
+    Thẻ **AssetLib** của trình chỉnh sửa sẽ chỉ hiển thị những asset không phải là các dự án độc lập. Nói cách khác, thẻ này sẽ hiển thị asset từ tất cả danh mục ngoại trừ *Templates*, *Demos* và *Projects*.
 
-You can also access the AssetLib directly from Godot:
+Bạn cũng có thể truy cập AssetLib trực tiếp từ Godot:
 
 |image7|
 
 |image14|
 
-Click on it, and Godot will fetch info about the assets from the AssetLib. Once
-it's finished, you will see a window similar to what the AssetLib website looks
-like, with some differences:
+Nhấp vào đó, Godot sẽ lấy thông tin về các asset từ AssetLib. Khi hoàn tất, bạn sẽ thấy một cửa sổ tương tự giao diện trang web AssetLib, với một số điểm khác biệt:
 
 |image8|
 
-Similarly to the web version of the AssetLib, here you can search
-for assets by category, name, and sort them by factors such as name or edit date.
+Tương tự phiên bản web của AssetLib, tại đây bạn có thể tìm kiếm asset theo danh mục, tên và sắp xếp chúng theo các yếu tố như tên hoặc ngày chỉnh sửa.
 
-Notably, you can only fetch assets for the current version of Godot you are running.
-Projects, Demos and Templates can be downloaded from the Project Manager
-view of the AssetLib. Addons (tools, scripts, materials etc.) can be downloaded from
-the in-project AssetLib and added to the current project.
-In addition, unlike when using the web frontend, the search results are updated
-in real-time (you do not have to press Search after every change to your search
-query for the changes to take place).
+Đáng chú ý, bạn chỉ có thể lấy asset cho phiên bản Godot hiện tại đang chạy. Projects, Demos và Templates có thể được tải xuống từ giao diện Project Manager của AssetLib. Addons (công cụ, script, vật liệu, v.v.) có thể được tải xuống từ AssetLib trong dự án và thêm vào dự án hiện tại. Ngoài ra, không giống khi sử dụng frontend web, kết quả tìm kiếm được cập nhật theo thời gian thực (bạn không phải nhấn Search sau mỗi lần thay đổi truy vấn tìm kiếm để các thay đổi có hiệu lực).
 
-In the future, you will be able to choose a different AssetLib provider to fetch
-assets from (using the Site dropdown menu), however currently only the official
-`Godot website <https://godotengine.org>`_ version of the AssetLib is supported,
-as well as the version that may be running on your local machine's web server
-(the localhost option).
+Trong tương lai, bạn sẽ có thể chọn một nhà cung cấp AssetLib khác để lấy asset (bằng menu thả xuống Site), tuy nhiên hiện tại chỉ phiên bản AssetLib trên `trang web chính thức của Godot <https://godotengine.org>`_ được hỗ trợ, cùng với phiên bản có thể đang chạy trên máy chủ web của máy cục bộ (tùy chọn localhost).
 
-When you click on an asset, you will see more information about it.
+Khi nhấp vào một asset, bạn sẽ thấy thêm thông tin về asset đó.
 
 |image9|
 
-If you click on the Install button, Godot will fetch an archive of the asset,
-and will track download progress of it at the bottom of the editor window. If
-the download fails, you can retry it using the Retry button.
+Nếu nhấp vào nút Install, Godot sẽ lấy một bản lưu trữ của asset và theo dõi tiến trình tải xuống ở cuối cửa sổ trình chỉnh sửa. Nếu quá trình tải xuống thất bại, bạn có thể thử lại bằng nút Retry.
 
 |image10|
 
-When it finishes, you can proceed to install it using the Install button.
-This will bring up the Package Installer window.
+Khi quá trình hoàn tất, bạn có thể tiếp tục cài đặt bằng nút Install. Thao tác này sẽ mở cửa sổ Package Installer.
 
 |image11|
 
-Here you can see a list of all the files that will be installed. You can tick off
-any of the files that you do not wish to install, and Godot will also inform you
-about any problems with files that it cannot install. These files will be shown
-in red, and hovering over them will show you a message stating why it cannot be
-installed.
+Tại đây, bạn có thể xem danh sách tất cả các tệp sẽ được cài đặt. Bạn có thể bỏ chọn bất kỳ tệp nào không muốn cài đặt, và Godot cũng sẽ thông báo cho bạn về mọi vấn đề với các tệp mà nó không thể cài đặt. Các tệp này sẽ được hiển thị bằng màu đỏ, và khi di chuột lên chúng, bạn sẽ thấy thông báo nêu rõ lý do không thể cài đặt.
 
 |image12|
 
-Once you are done, you can press the Install button, which will unzip all the
-files in the archive, and import any assets contained therein, such as images or
-3D models. Once this is done, you should see a message stating that the Package
-installation is complete.
+Sau khi hoàn tất, bạn có thể nhấn nút Install, thao tác này sẽ giải nén tất cả tệp trong bản lưu trữ và import mọi asset chứa trong đó, chẳng hạn như hình ảnh hoặc mô hình 3D. Khi hoàn tất, bạn sẽ thấy thông báo cho biết quá trình cài đặt Package đã hoàn tất.
 
 |image13|
 
-You may also use the Import button to import asset archives obtained
-elsewhere (such as downloading them directly from the AssetLib web frontend),
-which will take you through the same package installation procedure as with the
-assets downloaded directly via Godot that we just covered.
+Bạn cũng có thể sử dụng nút Import để import các bản lưu trữ asset lấy từ nơi khác (chẳng hạn như tải chúng trực tiếp từ frontend web của AssetLib), thao tác này sẽ đưa bạn qua cùng quy trình cài đặt package như với các asset được tải trực tiếp qua Godot mà chúng ta vừa đề cập.
 
 .. |image0| image:: img/assetlib_website.webp
 .. |image1| image:: img/assetlib_search.webp

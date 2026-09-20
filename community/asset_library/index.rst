@@ -1,7 +1,7 @@
 :allow_comments: False
 
-Asset Library
-=============
+Thư viện tài nguyên
+===================
 
 .. toctree::
    :maxdepth: 1
