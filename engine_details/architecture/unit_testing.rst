@@ -3,58 +3,58 @@
 Kiểm thử đơn vị
 ===============
 
-Godot Engine cho phép viết các bài kiểm thử đơn vị trực tiếp bằng C++. Engine tích hợp framework kiểm thử đơn vị `doctest <https://github.com/doctest/doctest>`_ cho phép viết các bộ kiểm thử và trường hợp kiểm thử bên cạnh mã sản phẩm, nhưng vì các bài kiểm thử trong Godot đi qua một điểm vào ``main`` khác, các bài kiểm thử nằm trong một thư mục ``tests/`` riêng biệt, thay vào đó được đặt tại thư mục gốc của mã nguồn engine.
+Godot Engine cho phép viết các bài kiểm thử đơn vị trực tiếp bằng C++. Engine tích hợp framework kiểm thử đơn vị `doctest <https://github.com/doctest/doctest>`_ cho phép viết các test suite và test case bên cạnh mã production, nhưng vì các bài kiểm thử trong Godot đi qua một ``main`` entry point khác, nên các bài kiểm thử nằm trong một thư mục ``tests/`` riêng, ở thư mục gốc của mã nguồn engine.
 
-Hỗ trợ nền tảng và mục tiêu
----------------------------
+Nền tảng và mục tiêu được hỗ trợ
+--------------------------------
 
 Các bài kiểm thử đơn vị C++ có thể chạy trên hệ điều hành Linux, macOS và Windows.
 
-Chỉ có thể chạy các bài kiểm thử khi bật ``tools`` của editor, nghĩa là hiện tại không thể kiểm thử các export template.
+Chỉ có thể chạy các bài kiểm thử khi bật editor ``tools``, điều đó có nghĩa là hiện tại chưa thể kiểm thử các export template.
 
 Chạy các bài kiểm thử
 ---------------------
 
-Trước khi có thể thực sự chạy các bài kiểm thử, engine phải được biên dịch với tùy chọn build ``tests`` được bật (cùng với mọi tùy chọn build khác mà bạn thường sử dụng), vì các bài kiểm thử không được biên dịch cùng engine theo mặc định:
+Trước khi thực sự chạy các bài kiểm thử, engine phải được biên dịch với build option ``tests`` được bật (cùng với bất kỳ build option nào khác mà bạn thường sử dụng), vì theo mặc định, các bài kiểm thử không được biên dịch cùng engine:
 
 .. code-block:: shell
 
     scons tests=yes
 
-Sau khi build hoàn tất, hãy chạy các bài kiểm thử bằng tùy chọn dòng lệnh ``--test``:
+Sau khi build xong, chạy các bài kiểm thử với command-line option ``--test``:
 
 .. code-block:: shell
 
     ./bin/<godot_binary> --test
 
-Có thể cấu hình lần chạy bài kiểm thử bằng nhiều tùy chọn dòng lệnh dành riêng cho doctest. Để lấy danh sách đầy đủ các tùy chọn được hỗ trợ, hãy chạy lệnh ``--test`` với tùy chọn ``--help``:
+Có thể cấu hình quá trình chạy bài kiểm thử bằng nhiều command-line option dành riêng cho doctest. Để lấy danh sách đầy đủ các option được hỗ trợ, hãy chạy command ``--test`` với option ``--help``:
 
 .. code-block:: shell
 
     ./bin/<godot_binary> --test --help
 
-Mọi tùy chọn và đối số khác sau lệnh ``--test`` đều được coi là đối số dành cho doctest.
+Mọi option và đối số khác sau command ``--test`` đều được xem là đối số dành cho doctest.
 
 .. note::
 
-    Các bài kiểm thử được tự động biên dịch nếu bạn sử dụng tùy chọn SCons ``dev_mode=yes``. Khuyến nghị sử dụng ``dev_mode=yes`` nếu bạn dự định đóng góp cho quá trình phát triển engine, vì tùy chọn này sẽ tự động coi các cảnh báo biên dịch là lỗi. Hệ thống tích hợp liên tục sẽ thất bại nếu phát hiện bất kỳ cảnh báo biên dịch nào, vì vậy bạn nên cố gắng khắc phục tất cả cảnh báo trước khi mở một pull request.
+    Các bài kiểm thử được tự động biên dịch nếu bạn sử dụng SCons option ``dev_mode=yes``. ``dev_mode=yes`` được khuyến nghị nếu bạn dự định đóng góp cho quá trình phát triển engine, vì nó sẽ tự động xem các cảnh báo biên dịch là lỗi. Hệ thống continuous integration sẽ thất bại nếu phát hiện bất kỳ cảnh báo biên dịch nào, vì vậy bạn nên cố gắng sửa tất cả cảnh báo trước khi mở pull request.
 
 Lọc các bài kiểm thử
 ~~~~~~~~~~~~~~~~~~~~
 
-Theo mặc định, tất cả bài kiểm thử sẽ được chạy nếu bạn không cung cấp thêm đối số nào sau lệnh ``--test``. Tuy nhiên, nếu đang viết các bài kiểm thử mới hoặc muốn xem đầu ra của các assertion thành công từ những bài kiểm thử đó để gỡ lỗi, bạn có thể chạy các bài kiểm thử mong muốn bằng nhiều tùy chọn lọc do doctest cung cấp.
+Theo mặc định, tất cả bài kiểm thử sẽ được chạy nếu bạn không cung cấp đối số bổ sung nào sau command ``--test``. Tuy nhiên, nếu đang viết bài kiểm thử mới hoặc muốn xem output của các assertion thành công từ những bài kiểm thử đó để debug, bạn có thể chạy các bài kiểm thử cần thiết bằng nhiều tùy chọn lọc do doctest cung cấp.
 
-Cú pháp ký tự đại diện ``*`` được hỗ trợ để khớp với mọi số lượng ký tự trong các bộ kiểm thử, trường hợp kiểm thử và tên tệp mã nguồn:
+Cú pháp wildcard ``*`` được hỗ trợ để khớp với bất kỳ số lượng ký tự nào trong test suite, test case và tên file mã nguồn:
 
 +--------------------+---------------+------------------------+
-| **Tùy chọn lọc** | **Viết tắt** | **Ví dụ** |
-+++++++++++++++++++++++++++++++++++++++++++++++
-| ``--test-suite`` | ``-ts`` | ``-ts="*[GDScript]*"`` |
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++
-| ``--test-case`` | ``-tc`` | ``-tc="*[String]*"`` |
-++++++++++++++++++++++++++++++++++++++++++++++++++++
-| ``--source-file`` | ``-sf`` | ``-sf="*test_color*"`` |
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **Filter options** | **Shorthand** | **Examples**           |
++--------------------+---------------+------------------------+
+| ``--test-suite``   | ``-ts``       | ``-ts="*[GDScript]*"`` |
++--------------------+---------------+------------------------+
+| ``--test-case``    | ``-tc``       | ``-tc="*[String]*"``   |
++--------------------+---------------+------------------------+
+| ``--source-file``  | ``-sf``       | ``-sf="*test_color*"`` |
++--------------------+---------------+------------------------+
 
 Ví dụ, để chỉ chạy các bài kiểm thử đơn vị ``String``, hãy chạy:
 
@@ -62,13 +62,13 @@ Ví dụ, để chỉ chạy các bài kiểm thử đơn vị ``String``, hãy 
 
     ./bin/<godot_binary> --test --test-case="*[String]*"
 
-Có thể bật đầu ra của các assertion thành công bằng tùy chọn ``--success`` (``-s``), và có thể kết hợp tùy chọn này với bất kỳ tổ hợp tùy chọn lọc nào ở trên, chẳng hạn như:
+Có thể bật output của các assertion thành công bằng option ``--success`` (``-s``), và kết hợp option này với bất kỳ tổ hợp tùy chọn lọc nào ở trên, chẳng hạn:
 
 .. code-block:: shell
 
     ./bin/<godot_binary> --test --source-file="*test_color*" --success
 
-Có thể bỏ qua các bài kiểm thử cụ thể bằng các tùy chọn ``-exclude`` tương ứng. Hiện tại, một số bài kiểm thử bao gồm các bài kiểm thử stress ngẫu nhiên mất khá nhiều thời gian để thực thi. Để bỏ qua những loại bài kiểm thử này, hãy chạy lệnh sau:
+Có thể bỏ qua các bài kiểm thử cụ thể bằng các option ``-exclude`` tương ứng. Hiện tại, một số bài kiểm thử bao gồm các bài kiểm thử stress ngẫu nhiên, vốn mất khá nhiều thời gian để thực thi. Để bỏ qua những bài kiểm thử như vậy, hãy chạy command sau:
 
 .. code-block:: shell
 
@@ -77,11 +77,11 @@ Có thể bỏ qua các bài kiểm thử cụ thể bằng các tùy chọn ``-
 Viết các bài kiểm thử
 ---------------------
 
-Các bộ kiểm thử đại diện cho các tệp triển khai C++ phải bao gồm macro ``TEST_FORCE_LINK()``. Hầu hết các bộ kiểm thử nằm ngay bên dưới thư mục ``tests/``.
+Test suite đại diện cho các file triển khai C++ phải include macro ``TEST_FORCE_LINK()``. Hầu hết test suite nằm trực tiếp bên dưới thư mục ``tests/``.
 
-Tất cả tệp kiểm thử đều có tiền tố ``test_``, và đây là quy ước đặt tên mà hệ thống build Godot dựa vào để phát hiện các bài kiểm thử trên toàn engine.
+Tất cả file kiểm thử đều có tiền tố ``test_``, đây là quy ước đặt tên mà hệ thống build của Godot dựa vào để phát hiện các bài kiểm thử trong toàn bộ engine.
 
-Dưới đây là một bộ kiểm thử hoạt động tối thiểu được viết với một trường hợp kiểm thử duy nhất:
+Dưới đây là một test suite tối thiểu có thể hoạt động, với một test case được viết sẵn:
 
 .. code-block:: cpp
 
@@ -99,24 +99,24 @@ Dưới đây là một bộ kiểm thử hoạt động tối thiểu được 
     } // namespace TestString
 
 .. note::
-    Bạn có thể nhanh chóng tạo các bài kiểm thử mới bằng script ``create_test.py`` nằm trong thư mục ``tests/``. Script này tự động tạo một tệp kiểm thử mới với mã boilerplate bắt buộc tại vị trí thích hợp. Để xem hướng dẫn sử dụng, hãy chạy script với cờ ``-h``.
+    Bạn có thể nhanh chóng tạo các bài kiểm thử mới bằng script ``create_test.py`` nằm trong thư mục ``tests/``. Script này tự động tạo một file kiểm thử mới với mã boilerplate cần thiết tại vị trí phù hợp. Để xem hướng dẫn sử dụng, hãy chạy script với flag ``-h``.
 
-Header ``tests/test_macros.h`` đóng gói mọi thứ cần thiết để viết các bài kiểm thử đơn vị C++ trong Godot. Nó bao gồm các macro assertion và logging của doctest như ``CHECK`` đã thấy ở trên, và tất nhiên cả các định nghĩa để viết chính các trường hợp kiểm thử.
+Header ``tests/test_macros.h`` đóng gói mọi thứ cần thiết để viết các bài kiểm thử đơn vị C++ trong Godot. Nó bao gồm các macro assertion và logging của doctest như ``CHECK`` được minh họa ở trên, cũng như tất nhiên là các định nghĩa để viết chính các test case.
 
 .. seealso::
 
-    Mã nguồn `tests/test_macros.h <https://github.com/godotengine/godot/blob/master/tests/test_macros.h>`_ của các macro hiện được triển khai và các alias của chúng.
+    Mã nguồn `tests/test_macros.h <https://github.com/godotengine/godot/blob/master/tests/test_macros.h>`_ chứa các macro hiện được triển khai và các alias của chúng.
 
-Các trường hợp kiểm thử được tạo bằng macro dạng hàm ``TEST_CASE``. Mỗi trường hợp kiểm thử phải có một mô tả ngắn được viết trong dấu ngoặc đơn, tùy chọn bao gồm các tag tùy chỉnh cho phép lọc bài kiểm thử trong thời gian chạy, chẳng hạn như ``[String]``, ``[Stress]`` v.v.
+Test case được tạo bằng macro dạng function ``TEST_CASE``. Mỗi test case phải có một mô tả ngắn được viết trong dấu ngoặc đơn, tùy chọn bao gồm các tag tùy chỉnh cho phép lọc bài kiểm thử tại runtime, chẳng hạn như ``[String]``, ``[Stress]`` v.v.
 
-Các trường hợp kiểm thử được viết trong một namespace riêng. Điều này không bắt buộc, nhưng giúp ngăn xung đột tên khi các hàm helper tĩnh khác được viết để hỗ trợ những quy trình kiểm thử lặp lại, chẳng hạn như điền dữ liệu kiểm thử chung cho mỗi bài kiểm thử hoặc viết các bài kiểm thử có tham số.
+Test case được viết trong một namespace riêng. Điều này không bắt buộc, nhưng giúp tránh xung đột tên khi viết các static helper function khác để hỗ trợ các quy trình kiểm thử lặp lại, chẳng hạn như nạp dữ liệu kiểm thử chung cho mỗi bài kiểm thử hoặc viết các bài kiểm thử có tham số.
 
-Godot hỗ trợ viết các bài kiểm thử theo từng module C++. Để xem hướng dẫn viết các bài kiểm thử module, hãy tham khảo :ref:`doc_custom_module_unit_tests`.
+Godot hỗ trợ viết bài kiểm thử theo từng C++ module. Để biết hướng dẫn viết bài kiểm thử cho module, hãy tham khảo :ref:`doc_custom_module_unit_tests`.
 
-Các nhánh con
-~~~~~~~~~~~~~
+Subcase
+~~~~~~~
 
-Trong những tình huống bạn có phần thiết lập chung cho nhiều trường hợp kiểm thử với chỉ một vài khác biệt nhỏ, các nhánh con có thể rất hữu ích. Dưới đây là một ví dụ:
+Trong những tình huống bạn có phần thiết lập chung cho nhiều test case nhưng chỉ khác nhau đôi chút, subcase có thể rất hữu ích. Dưới đây là một ví dụ:
 
 .. code-block:: cpp
 
@@ -130,53 +130,53 @@ Trong những tình huống bạn có phần thiết lập chung cho nhiều tr�
         }
     }
 
-Mỗi ``SUBCASE`` khiến ``TEST_CASE`` được thực thi lại từ đầu. Các nhánh con có thể được lồng ở độ sâu tùy ý, nhưng nên giới hạn việc lồng không quá một cấp.
+Mỗi ``SUBCASE`` khiến ``TEST_CASE`` được thực thi lại từ đầu. Có thể lồng các subcase đến độ sâu tùy ý, nhưng nên giới hạn việc lồng nhau ở không quá một cấp.
 
-Các assertion
-~~~~~~~~~~~~~
+Assertion
+~~~~~~~~~
 
-Danh sách tất cả assertion thường được sử dụng trong các bài kiểm thử Godot, được sắp xếp theo mức độ nghiêm trọng.
+Danh sách tất cả assertion thường được sử dụng trong các bài kiểm thử của Godot, được sắp xếp theo mức độ nghiêm trọng.
 
 +-------------------+----------------------------------------------------------------------------------------------------------------------------------+
-| **Assertion** | **Mô tả** |
-+++++++++++++++++++++++++++++
-| ``REQUIRE`` | Kiểm tra điều kiện là đúng. Ngay lập tức làm thất bại toàn bộ bài kiểm thử nếu điều kiện không đúng. |
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-| ``REQUIRE_FALSE`` | Kiểm tra điều kiện không đúng. Ngay lập tức làm thất bại toàn bộ bài kiểm thử nếu điều kiện đúng. |
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-| ``CHECK`` | Kiểm tra điều kiện là đúng. Đánh dấu lần chạy bài kiểm thử là thất bại, nhưng cho phép chạy các assertion khác. |
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-| ``CHECK_FALSE`` | Kiểm tra điều kiện không đúng. Đánh dấu lần chạy bài kiểm thử là thất bại, nhưng cho phép chạy các assertion khác. |
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-| ``WARN`` | Kiểm tra điều kiện là đúng. Không làm thất bại bài kiểm thử trong bất kỳ trường hợp nào, nhưng ghi nhật ký cảnh báo nếu điều kiện không đúng. |
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-| ``WARN_FALSE`` | Kiểm tra điều kiện không đúng. Không làm thất bại bài kiểm thử trong bất kỳ trường hợp nào, nhưng ghi nhật ký cảnh báo nếu điều kiện đúng. |
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **Assertion**     | **Description**                                                                                                                  |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------+
+| ``REQUIRE``       | Test if condition holds true. Fails the entire test immediately if the condition does not hold true.                             |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------+
+| ``REQUIRE_FALSE`` | Test if condition does not hold true. Fails the entire test immediately if the condition holds true.                             |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------+
+| ``CHECK``         | Test if condition holds true. Marks the test run as failing, but allow to run other assertions.                                  |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------+
+| ``CHECK_FALSE``   | Test if condition does not hold true. Marks the test run as failing, but allow to run other assertions.                          |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------+
+| ``WARN``          | Test if condition holds true. Does not fail the test under any circumstance, but logs a warning if something does not hold true. |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------+
+| ``WARN_FALSE``    | Test if condition does not hold true. Does not fail the test under any circumstance, but logs a warning if something holds true. |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------+
 
-Tất cả assertion trên đều có các macro ``*_MESSAGE`` tương ứng, cho phép in thông báo tùy chọn giải thích lý do điều gì đó nên xảy ra.
+Tất cả assertion ở trên đều có các macro ``*_MESSAGE`` tương ứng, cho phép in thông báo tùy chọn giải thích lý do điều gì đó được mong đợi sẽ xảy ra.
 
-Ưu tiên sử dụng ``CHECK`` cho các assertion tự giải thích và ``CHECK_MESSAGE`` cho những assertion phức tạp hơn nếu bạn cho rằng chúng cần được giải thích rõ hơn.
+Ưu tiên sử dụng ``CHECK`` cho các assertion có ý nghĩa rõ ràng và ``CHECK_MESSAGE`` cho những assertion phức tạp hơn nếu bạn cho rằng chúng cần được giải thích đầy đủ hơn.
 
 .. seealso::
 
     `doctest: Assertion macros <https://github.com/doctest/doctest/blob/master/doc/markdown/assertions.md>`_.
 
-Ghi nhật ký
-~~~~~~~~~~~
+Logging
+~~~~~~~
 
-Đầu ra của bài kiểm thử được chính doctest xử lý và hoàn toàn không dựa vào chức năng in hoặc ghi nhật ký của Godot, vì vậy nên sử dụng các macro chuyên dụng cho phép ghi đầu ra kiểm thử theo định dạng do doctest viết.
+Output của bài kiểm thử do chính doctest xử lý và hoàn toàn không phụ thuộc vào chức năng in hoặc logging của Godot, vì vậy nên sử dụng các macro chuyên dụng cho phép ghi output kiểm thử theo định dạng do doctest tạo ra.
 
 +----------------+-----------------------------------------------------------------------------------------------------------+
-| **Macro** | **Mô tả** |
-+++++++++++++++++++++++++
-| ``MESSAGE`` | In một thông báo. |
-+++++++++++++++++++++++++++++++++++
-| ``FAIL_CHECK`` | Đánh dấu bài kiểm thử là thất bại nhưng tiếp tục thực thi. Có thể bọc trong các điều kiện cho những phép kiểm tra phức tạp. |
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-| ``FAIL`` | Ngay lập tức làm thất bại bài kiểm thử. Có thể bọc trong các điều kiện cho những phép kiểm tra phức tạp. |
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **Macro**      | **Description**                                                                                           |
++----------------+-----------------------------------------------------------------------------------------------------------+
+| ``MESSAGE``    | Prints a message.                                                                                         |
++----------------+-----------------------------------------------------------------------------------------------------------+
+| ``FAIL_CHECK`` | Marks the test as failing, but continue the execution. Can be wrapped in conditionals for complex checks. |
++----------------+-----------------------------------------------------------------------------------------------------------+
+| ``FAIL``       | Fails the test immediately. Can be wrapped in conditionals for complex checks.                            |
++----------------+-----------------------------------------------------------------------------------------------------------+
 
-Có thể chọn các reporter khác nhau trong thời gian chạy. Ví dụ, dưới đây là cách chuyển hướng đầu ra sang một tệp XML:
+Có thể chọn các reporter khác nhau tại runtime. Ví dụ, dưới đây là cách chuyển hướng output vào một file XML:
 
 .. code-block:: shell
 
@@ -186,14 +186,14 @@ Có thể chọn các reporter khác nhau trong thời gian chạy. Ví dụ, d�
 
     `doctest: Logging macros <https://github.com/doctest/doctest/blob/master/doc/markdown/logging.md>`_.
 
-Kiểm thử các đường dẫn thất bại
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Kiểm thử các nhánh lỗi
+~~~~~~~~~~~~~~~~~~~~~~
 
-Đôi khi không phải lúc nào cũng khả thi để kiểm tra một kết quả *được mong đợi*. Theo triết lý phát triển Godot rằng engine không được crash và phải phục hồi một cách an toàn bất cứ khi nào xảy ra lỗi không nghiêm trọng, điều quan trọng là phải kiểm tra rằng các đường dẫn thất bại đó thực sự an toàn để thực thi mà không làm engine crash.
+Đôi khi không phải lúc nào cũng khả thi để kiểm thử một kết quả *dự kiến*. Theo triết lý phát triển của Godot, engine không nên crash và nên phục hồi một cách linh hoạt bất cứ khi nào xảy ra lỗi không nghiêm trọng, nên việc kiểm tra rằng các nhánh lỗi đó thực sự an toàn để thực thi mà không làm engine crash là rất quan trọng.
 
-Hành vi *không mong đợi* có thể được kiểm thử giống như mọi thứ khác. Vấn đề duy nhất là việc này khiến đầu ra kiểm thử bị làm nhiễu không cần thiết bởi các lỗi do chính engine in ra (ngay cả khi kết quả cuối cùng là thành công).
+Hành vi *không mong đợi* có thể được kiểm thử theo cách tương tự như mọi thứ khác. Vấn đề duy nhất là việc này khiến output kiểm thử bị làm nhiễu không cần thiết bởi các lỗi do chính engine in ra (ngay cả khi kết quả cuối cùng là thành công).
 
-Để khắc phục vấn đề này, hãy sử dụng trực tiếp các macro ``ERR_PRINT_OFF`` và ``ERR_PRINT_ON`` bên trong các trường hợp kiểm thử để tạm thời tắt đầu ra lỗi từ engine, chẳng hạn như:
+Để khắc phục vấn đề này, hãy sử dụng trực tiếp các macro ``ERR_PRINT_OFF`` và ``ERR_PRINT_ON`` bên trong test case để tạm thời vô hiệu hóa output lỗi từ engine, chẳng hạn:
 
 .. code-block:: cpp
 
@@ -206,37 +206,48 @@ Hành vi *không mong đợi* có thể được kiểm thử giống như mọi
             "Invalid HTML notation should result in a Color with the default values.");
     }
 
-Các tag đặc biệt trong tên trường hợp kiểm thử
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tag đặc biệt trong tên test case
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Có thể thêm các tag này vào tên trường hợp kiểm thử để sửa đổi hoặc mở rộng môi trường kiểm thử:
+Có thể thêm các tag này vào tên test case để thay đổi hoặc mở rộng môi trường kiểm thử:
 
 +--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Tag** | **Mô tả** |
-+++++++++++++++++++++++
-| ``[SceneTree]`` | Bắt buộc đối với các trường hợp kiểm thử phụ thuộc vào một scene tree có MessageQueue khả dụng. Tag này cũng bật một rendering server giả lập và :ref:`ThemeDB<class_ThemeDB>`. |
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-| ``[Editor]`` | Tương tự ``[SceneTree]``, nhưng có thêm cơ sở hạ tầng liên quan đến editor, chẳng hạn như :ref:`EditorSettings<class_EditorSettings>`. |
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-| ``[Audio]`` | Khởi tạo :ref:`AudioServer<class_AudioServer>` bằng trình điều khiển âm thanh giả lập. |
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-| ``[Navigation2D]`` | Tạo máy chủ điều hướng 2D mặc định và cung cấp máy chủ này để kiểm thử. |
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-| ``[Navigation3D]`` | Tạo máy chủ điều hướng 3D mặc định và cung cấp máy chủ này để kiểm thử. |
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| **Tag**            | **Description**                                                                                                                                                      |
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``[SceneTree]``    | Required for test cases that rely on a scene tree with MessageQueue to be available. It also enables a mock rendering server and :ref:`ThemeDB<class_ThemeDB>`.      |
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``[Editor]``       | Like ``[SceneTree]``, but with additional editor-related infrastructure available, such as :ref:`EditorSettings<class_EditorSettings>`.                              |
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``[Audio]``        | Initializes the :ref:`AudioServer<class_AudioServer>` using a mock audio driver.                                                                                     |
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``[Navigation2D]`` | Creates the default 2D navigation server and makes it available for testing.                                                                                         |
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``[Navigation3D]`` | Creates the default 3D navigation server and makes it available for testing.                                                                                         |
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Bạn có thể sử dụng chúng cùng nhau để kết hợp nhiều phần mở rộng môi trường kiểm thử.
 
-Kiểm thử tín hiệu
-~~~~~~~~~~~~~~~~~
+Kiểm thử signal
+~~~~~~~~~~~~~~~
 
-Các macro sau đây có thể được sử dụng để kiểm thử tín hiệu:
+Có thể sử dụng các macro sau để kiểm thử signal:
 
 .. list-table::
    :header-rows: 1
    :widths: auto
 
-   * - Macro - Mô tả * - ``SIGNAL_WATCH(object, "signal_name")`` - Bắt đầu theo dõi tín hiệu được chỉ định trên đối tượng đã cho. * - ``SIGNAL_UNWATCH(object, "signal_name")`` - Dừng theo dõi tín hiệu được chỉ định trên đối tượng đã cho. * - ``SIGNAL_CHECK("signal_name", Vector<Vector<Variant>>)`` - Kiểm tra các đối số của tất cả tín hiệu đã phát. Vector bên ngoài chứa từng tín hiệu đã phát, trong khi vector bên trong chứa danh sách các đối số của tín hiệu đó. Thứ tự của các tín hiệu là quan trọng. * - ``SIGNAL_CHECK_FALSE("signal_name")`` - Kiểm tra xem tín hiệu được chỉ định có chưa được phát hay không. * - ``SIGNAL_DISCARD("signal_name")`` - Xóa tất cả bản ghi của tín hiệu được chỉ định.
+   * - Macro
+     - Mô tả
+   * - ``SIGNAL_WATCH(object, "signal_name")``
+     - Bắt đầu theo dõi signal được chỉ định trên object đã cho.
+   * - ``SIGNAL_UNWATCH(object, "signal_name")``
+     - Dừng theo dõi signal được chỉ định trên object đã cho.
+   * - ``SIGNAL_CHECK("signal_name", Vector<Vector<Variant>>)``
+     - Kiểm tra các đối số của tất cả signal đã phát. Vector bên ngoài chứa từng signal đã phát, còn vector bên trong chứa danh sách đối số của signal đó. Thứ tự của các signal rất quan trọng.
+   * - ``SIGNAL_CHECK_FALSE("signal_name")``
+     - Kiểm tra xem signal được chỉ định có chưa được phát hay không.
+   * - ``SIGNAL_DISCARD("signal_name")``
+     - Loại bỏ mọi bản ghi của signal được chỉ định.
 
 Dưới đây là một ví dụ minh họa cách sử dụng các macro này:
 
@@ -261,9 +272,9 @@ Dưới đây là một ví dụ minh họa cách sử dụng các macro này:
 Công cụ kiểm thử
 ----------------
 
-Công cụ kiểm thử là các phương thức nâng cao cho phép bạn chạy các quy trình tùy ý nhằm hỗ trợ quá trình kiểm thử thủ công và gỡ lỗi các phần bên trong của engine.
+Công cụ kiểm thử là các phương thức nâng cao cho phép bạn chạy những quy trình tùy ý nhằm hỗ trợ quá trình kiểm thử thủ công và debug các phần bên trong engine.
 
-Bạn có thể chạy các công cụ này bằng cách cung cấp tên của một công cụ sau tùy chọn dòng lệnh ``--test``. Ví dụ, module GDScript triển khai và đăng ký một số công cụ để hỗ trợ gỡ lỗi tokenizer, parser và compiler:
+Có thể chạy các công cụ này bằng cách cung cấp tên của một công cụ sau command-line option ``--test``. Ví dụ, GDScript module triển khai và đăng ký một số công cụ để hỗ trợ debug tokenizer, parser và compiler:
 
 .. code-block:: shell
 
@@ -271,11 +282,11 @@ Bạn có thể chạy các công cụ này bằng cách cung cấp tên của m
     ./bin/<godot_binary> --test gdscript-parser test.gd
     ./bin/<godot_binary> --test gdscript-compiler test.gd
 
-Nếu phát hiện bất kỳ công cụ nào như vậy, phần còn lại của các bài kiểm thử đơn vị sẽ được bỏ qua.
+Nếu phát hiện bất kỳ công cụ nào như vậy, các bài kiểm thử đơn vị còn lại sẽ được bỏ qua.
 
-Công cụ kiểm thử có thể được đăng ký ở bất kỳ đâu trong engine, vì cơ chế đăng ký gần giống với cơ chế mà doctest cung cấp khi đăng ký các trường hợp kiểm thử bằng kỹ thuật khởi tạo động. Tuy nhiên, thông thường chúng có thể được đăng ký trong các tệp nguồn ``register_types.cpp`` tương ứng (theo module hoặc core).
+Có thể đăng ký công cụ kiểm thử ở bất kỳ đâu trong engine, vì cơ chế đăng ký gần giống với cách doctest cung cấp khi đăng ký test case bằng kỹ thuật dynamic initialization, nhưng thông thường chúng được đăng ký tại các source ``register_types.cpp`` tương ứng (theo module hoặc core).
 
-Dưới đây là ví dụ về cách GDScript đăng ký các công cụ kiểm thử trong ``modules/gdscript/register_types.cpp``:
+Dưới đây là một ví dụ về cách GDScript đăng ký các công cụ kiểm thử trong ``modules/gdscript/register_types.cpp``:
 
 .. code-block:: cpp
 
@@ -297,22 +308,22 @@ Dưới đây là ví dụ về cách GDScript đăng ký các công cụ kiểm
     REGISTER_TEST_COMMAND("gdscript-compiler", &test_compiler);
     #endif
 
-Bản thân công cụ kiểm thử có thể thực hiện việc phân tích cú pháp dòng lệnh tùy chỉnh với sự trợ giúp của phương thức OS :ref:`get_cmdline_args<class_OS_method_get_cmdline_args>`.
+Có thể thực hiện việc phân tích command-line tùy chỉnh bởi chính công cụ kiểm thử với sự trợ giúp của phương thức OS :ref:`get_cmdline_args<class_OS_method_get_cmdline_args>`.
 
 Kiểm thử tích hợp cho GDScript
 ------------------------------
 
-Godot sử dụng doctest để ngăn ngừa hồi quy trong GDScript trong quá trình phát triển. Có thể viết một số loại tập lệnh kiểm thử sau:
+Godot sử dụng doctest để ngăn hồi quy trong GDScript trong quá trình phát triển. Có thể viết một số loại test script:
 
-- các bài kiểm thử lỗi dự kiến; - các bài kiểm thử cảnh báo; - các bài kiểm thử tính năng.
+- các bài kiểm thử cho lỗi dự kiến; - các bài kiểm thử cho warning; - các bài kiểm thử cho feature.
 
 Do đó, quy trình viết các bài kiểm thử tích hợp cho GDScript như sau:
 
-1. Chọn loại tập lệnh kiểm thử mà bạn muốn viết, rồi tạo một tệp GDScript mới trong thư mục ``modules/gdscript/tests/scripts`` thuộc thư mục con tương ứng.
+1. Chọn loại test script mà bạn muốn viết, rồi tạo một tệp GDScript mới trong thư mục ``modules/gdscript/tests/scripts`` thuộc thư mục con tương ứng.
 
-2. Viết mã GDScript. Tập lệnh kiểm thử phải có một hàm tên là ``test()`` và không nhận đối số nào. Hàm này sẽ được trình chạy kiểm thử gọi. Bài kiểm thử không nên có bất kỳ phần phụ thuộc nào, trừ khi phần phụ thuộc đó cũng là một phần của bài kiểm thử. Các lớp toàn cục (sử dụng ``class_name``) được đăng ký trước khi trình chạy khởi động, vì vậy chúng sẽ hoạt động nếu cần.
+2. Viết mã GDScript. Test script phải có một hàm tên là ``test()`` và không nhận tham số nào. Hàm này sẽ được test runner gọi. Test không được có dependency nào, trừ khi dependency đó cũng là một phần của test. Các global class (sử dụng ``class_name``) được đăng ký trước khi runner khởi động, vì vậy bạn có thể sử dụng chúng nếu cần.
 
-   Dưới đây là một ví dụ về tập lệnh kiểm thử:
+   Sau đây là một test script mẫu:
 
    ::
 
@@ -320,21 +331,21 @@ Do đó, quy trình viết các bài kiểm thử tích hợp cho GDScript như 
             if true # Missing colon here.
                 print("true")
 
-3. Chuyển thư mục hiện tại đến thư mục gốc của kho mã nguồn Godot.
+3. Chuyển thư mục đến thư mục gốc của repository mã nguồn Godot.
 
    .. code-block:: shell
 
        cd godot
 
-4. Tạo các tệp ``*.out`` để cập nhật kết quả dự kiến từ đầu ra:
+4. Tạo các tệp ``*.out`` để cập nhật kết quả mong đợi từ output:
 
    .. code-block:: shell
 
        bin/<godot_binary> --gdscript-generate-tests modules/gdscript/tests/scripts
 
-Bạn có thể thêm tùy chọn ``--print-filenames`` để xem tên tệp khi đầu ra kiểm thử của chúng được tạo. Nếu bạn đang làm việc trên một tính năng mới gây ra lỗi nghiêm trọng, bạn có thể sử dụng tùy chọn này để nhanh chóng tìm tệp kiểm thử gây ra lỗi rồi bắt đầu gỡ lỗi từ đó.
+Bạn có thể thêm tùy chọn ``--print-filenames`` để xem tên tệp khi output của test được tạo. Nếu bạn đang làm việc trên một tính năng mới gây ra lỗi crash nghiêm trọng, bạn có thể dùng tùy chọn này để nhanh chóng tìm tệp test gây ra lỗi crash và debug từ đó.
 
-5. Chạy các bài kiểm thử GDScript bằng:
+5. Chạy các test GDScript bằng lệnh:
 
    .. code-block:: shell
 
@@ -342,16 +353,16 @@ Bạn có thể thêm tùy chọn ``--print-filenames`` để xem tên tệp khi
 
 Lệnh này cũng chấp nhận tùy chọn ``--print-filenames`` (xem ở trên).
 
-Nếu không có lỗi nào được in ra và mọi thứ diễn ra suôn sẻ, bạn đã hoàn tất!
+Nếu không có lỗi nào được in ra và mọi thứ diễn ra suôn sẻ thì bạn đã hoàn tất!
 
 .. warning::
 
-    Hãy đảm bảo đầu ra có các giá trị như mong đợi trước khi gửi pull request. Nếu ``--gdscript-generate-tests`` tạo ra các tệp ``*.out`` không liên quan đến các bài kiểm thử mới được thêm, bạn nên khôi phục các tệp đó và chỉ commit các tệp ``*.out`` cho những bài kiểm thử mới.
+    Hãy đảm bảo output có đúng các giá trị mong đợi trước khi gửi pull request. Nếu ``--gdscript-generate-tests`` tạo ra các tệp ``*.out`` không liên quan đến những test mới được thêm, bạn nên hoàn nguyên các tệp đó và chỉ commit các tệp ``*.out`` dành cho test mới.
 
 .. note::
 
-    Trình chạy kiểm thử GDScript được dùng để kiểm thử phần triển khai GDScript, không phải để kiểm thử các tập lệnh của người dùng hay kiểm thử engine bằng các tập lệnh. Chúng tôi khuyến nghị viết các bài kiểm thử mới cho các `issue liên quan đến GDScript đã được giải quyết tại GitHub <https://github.com/godotengine/godot/issues?q=is%3Aissue+label%3Atopic%3Agdscript+is%3Aclosed>`_, hoặc viết các bài kiểm thử cho những tính năng hiện đang hoạt động.
+    GDScript test runner được dùng để kiểm thử phần triển khai GDScript, không phải để kiểm thử user script hoặc kiểm thử engine bằng script. Chúng tôi khuyến nghị viết test mới cho các `issue liên quan đến GDScript đã được giải quyết tại GitHub <https://github.com/godotengine/godot/issues?q=is%3Aissue+label%3Atopic%3Agdscript+is%3Aclosed>`_, hoặc viết test cho các tính năng hiện đang hoạt động.
 
 .. note::
 
-    Nếu trường hợp kiểm thử của bạn yêu cầu tệp tập lệnh không có hàm ``test()`` bên trong, bạn có thể vô hiệu hóa phần runtime của bài kiểm thử bằng cách đặt tên tệp tập lệnh sao cho khớp với mẫu ``*.notest.gd``. Ví dụ: "test_empty_file.notest.gd".
+    Nếu test case của bạn yêu cầu không có hàm ``test()`` bên trong tệp script, bạn có thể vô hiệu hóa phần runtime của test bằng cách đặt tên tệp script sao cho khớp với mẫu ``*.notest.gd``. Ví dụ: "test_empty_file.notest.gd".

@@ -3,32 +3,32 @@
 Cảnh game chính
 ===============
 
-Bây giờ là lúc kết hợp mọi thứ chúng ta đã thực hiện thành một cảnh game có thể chơi được.
+Bây giờ là lúc kết hợp mọi thứ chúng ta đã làm thành một cảnh game có thể chơi được.
 
-Tạo một cảnh mới và thêm một :ref:`Node <class_Node>` có tên ``Main``. (Lý do chúng ta sử dụng Node thay vì Node2D là vì node này sẽ đóng vai trò là một vùng chứa để xử lý logic game. Bản thân nó không yêu cầu chức năng 2D.)
+Tạo một scene mới và thêm một :ref:`Node <class_Node>` có tên ``Main``. (Lý do chúng ta sử dụng Node thay vì Node2D là vì node này sẽ làm container để xử lý logic game. Bản thân nó không cần chức năng 2D.)
 
-Nhấp vào nút **Instance** (được biểu thị bằng biểu tượng liên kết) và chọn ``player.tscn`` đã lưu.
+Nhấp vào nút **Instantiate** (có biểu tượng mắt xích) và chọn ``player.tscn`` đã lưu.
 
 .. image:: img/instance_scene.webp
 
-Bây giờ, thêm các node sau làm node con của ``Main``, và đặt tên cho chúng như minh họa:
+Bây giờ, thêm các node sau làm node con của ``Main`` và đặt tên như minh họa:
 
-- :ref:`Timer <class_Timer>` (có tên ``MobTimer``) - để kiểm soát tần suất mob xuất hiện - :ref:`Timer <class_Timer>` (có tên ``ScoreTimer``) - để tăng điểm sau mỗi giây - :ref:`Timer <class_Timer>` (có tên ``StartTimer``) - để tạo khoảng trễ trước khi bắt đầu - :ref:`Marker2D <class_Marker2D>` (có tên ``StartPosition``) - để chỉ vị trí bắt đầu của người chơi
+- :ref:`Timer <class_Timer>` (tên ``MobTimer``) - để điều khiển tần suất spawn mob - :ref:`Timer <class_Timer>` (tên ``ScoreTimer``) - để tăng điểm mỗi giây - :ref:`Timer <class_Timer>` (tên ``StartTimer``) - để tạo khoảng trễ trước khi bắt đầu - :ref:`Marker2D <class_Marker2D>` (tên ``StartPosition``) - để chỉ vị trí bắt đầu của người chơi
 
-Đặt thuộc tính ``Wait Time`` của từng node ``Timer`` như sau (các giá trị tính bằng giây):
+Đặt thuộc tính ``Wait Time`` của mỗi node ``Timer`` như sau (các giá trị tính bằng giây):
 
 - ``MobTimer``: ``0.5`` - ``ScoreTimer``: ``1`` - ``StartTimer``: ``2``
 
 Ngoài ra, đặt thuộc tính ``One Shot`` của ``StartTimer`` thành "On" và đặt ``Position`` của node ``StartPosition`` thành ``(240, 450)``.
 
-Sinh mob
---------
+Spawn mob
+---------
 
-Node Main sẽ sinh các mob mới và chúng ta muốn chúng xuất hiện tại một vị trí ngẫu nhiên trên cạnh màn hình. Nhấp vào node ``Main`` trong dock Scene, sau đó thêm một node :ref:`Path2D <class_Path2D>` con có tên ``MobPath``. Khi chọn ``Path2D``, bạn sẽ thấy một số nút mới ở phía trên trình chỉnh sửa:
+Node Main sẽ spawn các mob mới, và chúng ta muốn chúng xuất hiện tại một vị trí ngẫu nhiên ở mép màn hình. Nhấp vào node ``Main`` trong dock Scene, sau đó thêm một node :ref:`Path2D <class_Path2D>` con có tên ``MobPath``. Khi chọn ``Path2D``, bạn sẽ thấy một số nút mới ở phía trên editor:
 
 .. image:: img/path2d_buttons.webp
 
-Chọn nút ở giữa ("Add Point") và vẽ đường dẫn bằng cách nhấp để thêm các điểm tại những góc được minh họa. Để các điểm tự động bắt vào lưới, hãy đảm bảo cả "Use Grid Snap" và "Use Smart Snap" đều được chọn. Bạn có thể tìm thấy các tùy chọn này ở bên trái nút "Lock", lần lượt được hiển thị dưới dạng một nam châm bên cạnh một số chấm và các đường giao nhau.
+Chọn nút ở giữa ("Add Point") và vẽ đường dẫn bằng cách nhấp để thêm các điểm tại những góc được minh họa. Để các điểm tự động bám vào lưới, hãy đảm bảo cả "Use Grid Snap" và "Use Smart Snap" đều được chọn. Bạn có thể tìm thấy các tùy chọn này ở bên trái nút "Lock", lần lượt hiển thị dưới dạng một nam châm cạnh các chấm và các đường giao nhau.
 
 .. image:: img/grid_snap_button.webp
 
@@ -37,145 +37,205 @@ Chọn nút ở giữa ("Add Point") và vẽ đường dẫn bằng cách nhấ
 
 .. image:: img/draw_path2d.gif
 
-Sau khi đặt điểm ``4`` trong hình, hãy nhấp vào nút "Close Curve" và đường cong của bạn sẽ hoàn tất.
+Sau khi đặt điểm ``4`` trong hình, nhấp vào nút "Close Curve" và đường cong của bạn sẽ hoàn tất.
 
-Bây giờ đường dẫn đã được xác định, hãy thêm một node :ref:`PathFollow2D <class_PathFollow2D>` làm node con của ``MobPath`` và đặt tên là ``MobSpawnLocation``. Node này sẽ tự động xoay và đi theo đường dẫn khi di chuyển, vì vậy chúng ta có thể sử dụng nó để chọn một vị trí và hướng ngẫu nhiên dọc theo đường dẫn.
+Bây giờ khi đường dẫn đã được xác định, hãy thêm một node :ref:`PathFollow2D <class_PathFollow2D>` làm node con của ``MobPath`` và đặt tên là ``MobSpawnLocation``. Node này sẽ tự động xoay và đi theo đường dẫn khi di chuyển, vì vậy chúng ta có thể dùng nó để chọn một vị trí và hướng ngẫu nhiên dọc theo đường dẫn.
 
-Cảnh của bạn sẽ trông như sau:
+Scene của bạn sẽ trông như sau:
 
 .. image:: img/main_scene_nodes.webp
 
-Tập lệnh Main
--------------
+Script chính
+------------
 
-Thêm một tập lệnh vào ``Main``. Ở đầu tập lệnh, chúng ta sử dụng ``@export var mob_scene: PackedScene`` để cho phép chọn cảnh Mob mà chúng ta muốn tạo instance.
+Thêm một script vào ``Main``. Ở đầu script, chúng ta sử dụng ``@export var mob_scene: PackedScene`` để có thể chọn scene Mob muốn instantiate.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     extends Node
 
-    @export var mob_scene: PackedScene var score
+    @export var mob_scene: PackedScene
+    var score
 
  .. code-tab:: csharp
 
     using Godot;
 
-    public partial class Main : Node { // Đừng quên build lại project để trình chỉnh sửa nhận biết biến export mới.
+    public partial class Main : Node
+    {
+        // Đừng quên rebuild project để editor nhận biết biến export mới.
 
-        [Export] public PackedScene MobScene { get; set; }
+        [Export]
+        public PackedScene MobScene { get; set; }
 
-        private int _score; }
+        private int _score;
+    }
 
-Nhấp vào node ``Main`` và bạn sẽ thấy thuộc tính ``Mob Scene`` trong Inspector bên dưới "Main.gd".
+Nhấp vào node ``Main`` và bạn sẽ thấy thuộc tính ``Mob Scene`` trong Inspector, bên dưới "Main.gd".
 
-Bạn có thể gán giá trị cho thuộc tính này theo hai cách:
+Bạn có thể gán giá trị cho thuộc tính này bằng hai cách:
 
-- Kéo ``mob.tscn`` từ dock "FileSystem" và thả vào thuộc tính **Mob Scene**. - Nhấp vào mũi tên hướng xuống bên cạnh "[empty]" và chọn "Load". Chọn ``mob.tscn``.
+- Kéo ``mob.tscn`` từ dock "FileSystem" và thả vào thuộc tính **Mob Scene**. - Nhấp vào mũi tên hướng xuống cạnh "[empty]" và chọn "Load". Chọn ``mob.tscn``.
 
-Tiếp theo, chọn instance của cảnh ``Player`` bên dưới node ``Main`` trong dock Scene, rồi mở dock Signals ở thanh bên.
+Tiếp theo, chọn instance của scene ``Player`` bên dưới node ``Main`` trong dock Scene, rồi mở dock Signals ở thanh bên.
 
-Bạn sẽ thấy danh sách các signal của node ``Player``. Tìm và nhấp đúp vào signal ``hit`` trong danh sách (hoặc nhấp chuột phải vào nó và chọn "Connect..."). Thao tác này sẽ mở hộp thoại kết nối signal. Chúng ta muốn tạo một hàm mới có tên ``game_over``, hàm này sẽ xử lý những việc cần diễn ra khi game kết thúc. Nhập "game_over" vào ô "Receiver Method" ở cuối hộp thoại kết nối signal và nhấp vào "Connect". Mục tiêu là signal ``hit`` được phát ra từ ``Player`` và được xử lý trong tập lệnh ``Main``. Thêm đoạn mã sau vào hàm mới, cùng với một hàm ``new_game`` để thiết lập mọi thứ cho một game mới:
+Bạn sẽ thấy danh sách các signal của node ``Player``. Tìm và nhấp đúp vào signal ``hit`` trong danh sách (hoặc nhấp chuột phải vào nó rồi chọn "Connect..."). Thao tác này sẽ mở hộp thoại kết nối signal. Chúng ta muốn tạo một function mới có tên ``game_over``, function này sẽ xử lý những việc cần thực hiện khi game kết thúc. Nhập "game_over" vào ô "Receiver Method" ở cuối hộp thoại kết nối signal và nhấp vào "Connect". Mục tiêu là để signal ``hit`` được phát ra từ ``Player`` và được xử lý trong script ``Main``. Thêm đoạn code sau vào function mới, cùng với một function ``new_game`` để thiết lập mọi thứ cho game mới:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func game_over(): $ScoreTimer.stop() $MobTimer.stop()
+    func game_over():
+        $ScoreTimer.stop()
+        $MobTimer.stop()
 
-    func new_game(): score = 0 $Player.start($StartPosition.position) $StartTimer.start()
+    func new_game():
+        score = 0
+        $Player.start($StartPosition.position)
+        $StartTimer.start()
 
  .. code-tab:: csharp
 
-    public void GameOver() { GetNode<Timer>("MobTimer").Stop(); GetNode<Timer>("ScoreTimer").Stop(); }
+    public void GameOver()
+    {
+        GetNode<Timer>("MobTimer").Stop();
+        GetNode<Timer>("ScoreTimer").Stop();
+    }
 
-    public void NewGame() { _score = 0;
+    public void NewGame()
+    {
+        _score = 0;
 
-        var player = GetNode<Player>("Player"); var startPosition = GetNode<Marker2D>("StartPosition"); player.Start(startPosition.Position);
+        var player = GetNode<Player>("Player");
+        var startPosition = GetNode<Marker2D>("StartPosition");
+        player.Start(startPosition.Position);
 
-        GetNode<Timer>("StartTimer").Start(); }
+        GetNode<Timer>("StartTimer").Start();
+    }
 
-Bây giờ chúng ta sẽ kết nối signal ``timeout()`` của từng node Timer (``StartTimer``, ``ScoreTimer`` và ``MobTimer``) với tập lệnh chính. Với mỗi timer trong số ba timer, hãy chọn timer trong dock Scene, mở tab Signals của dock Node, sau đó nhấp đúp vào signal ``timeout()`` trong danh sách. Thao tác này sẽ mở một hộp thoại kết nối signal mới. Các cài đặt mặc định trong hộp thoại này sẽ phù hợp, vì vậy hãy chọn **Connect** để tạo kết nối signal mới.
+Bây giờ chúng ta sẽ kết nối signal ``timeout()`` của từng node Timer (``StartTimer``, ``ScoreTimer`` và ``MobTimer``) với script chính. Với mỗi trong ba timer, hãy chọn timer trong dock Scene, mở tab Signals của dock Node, rồi nhấp đúp vào signal ``timeout()`` trong danh sách. Thao tác này sẽ mở một hộp thoại kết nối signal mới. Các thiết lập mặc định trong hộp thoại này sẽ phù hợp, vì vậy hãy chọn **Connect** để tạo kết nối signal mới.
 
-Sau khi thiết lập xong cả ba timer, bạn sẽ thấy mỗi timer có một kết nối Signal cho signal ``timeout()`` tương ứng, được hiển thị bằng màu xanh lá trong các tab Signals tương ứng:
+Sau khi thiết lập xong cả ba timer, bạn sẽ thấy mỗi timer có một kết nối Signal cho signal ``timeout()`` tương ứng, hiển thị màu xanh lá trong tab Signals tương ứng:
 
 - (Đối với MobTimer): ``_on_mob_timer_timeout()`` - (Đối với ScoreTimer): ``_on_score_timer_timeout()`` - (Đối với StartTimer): ``_on_start_timer_timeout()``
 
-Bây giờ chúng ta xác định cách mỗi timer này hoạt động bằng cách thêm đoạn mã bên dưới. Lưu ý rằng ``StartTimer`` sẽ khởi động hai timer còn lại, còn ``ScoreTimer`` sẽ tăng điểm thêm 1.
+Bây giờ chúng ta định nghĩa cách hoạt động của từng timer bằng cách thêm đoạn code bên dưới. Lưu ý rằng ``StartTimer`` sẽ khởi động hai timer còn lại, còn ``ScoreTimer`` sẽ tăng điểm lên 1.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _on_score_timer_timeout(): score += 1
+    func _on_score_timer_timeout():
+        score += 1
 
-    func _on_start_timer_timeout(): $MobTimer.start() $ScoreTimer.start()
+    func _on_start_timer_timeout():
+        $MobTimer.start()
+        $ScoreTimer.start()
 
  .. code-tab:: csharp
 
-    // Chúng ta cũng đã chỉ định tên hàm này ở dạng PascalCase trong cửa sổ kết nối của trình chỉnh sửa. private void OnScoreTimerTimeout() { _score++; }
+    // Chúng ta cũng đã chỉ định tên function này ở dạng PascalCase trong cửa sổ kết nối của editor.
+    private void OnScoreTimerTimeout()
+    {
+        _score++;
+    }
 
-    // Chúng ta cũng đã chỉ định tên hàm này ở dạng PascalCase trong cửa sổ kết nối của trình chỉnh sửa. private void OnStartTimerTimeout() { GetNode<Timer>("MobTimer").Start(); GetNode<Timer>("ScoreTimer").Start(); }
+    // Chúng ta cũng đã chỉ định tên function này ở dạng PascalCase trong cửa sổ kết nối của editor.
+    private void OnStartTimerTimeout()
+    {
+        GetNode<Timer>("MobTimer").Start();
+        GetNode<Timer>("ScoreTimer").Start();
+    }
 
-Trong ``_on_mob_timer_timeout()``, chúng ta sẽ tạo một instance mob, chọn một vị trí bắt đầu ngẫu nhiên dọc theo ``Path2D``, rồi làm cho mob chuyển động. Node ``PathFollow2D`` sẽ tự động xoay khi đi theo đường dẫn, vì vậy chúng ta sẽ sử dụng nó để chọn cả hướng lẫn vị trí của mob. Khi sinh một mob, chúng ta sẽ chọn một giá trị ngẫu nhiên từ ``150.0`` đến ``250.0`` cho tốc độ di chuyển của mỗi mob (sẽ rất nhàm chán nếu tất cả chúng đều di chuyển với cùng tốc độ).
+Trong ``_on_mob_timer_timeout()``, chúng ta sẽ tạo một instance mob, chọn một vị trí bắt đầu ngẫu nhiên dọc theo ``Path2D``, rồi khiến mob chuyển động. Node ``PathFollow2D`` sẽ tự động xoay khi đi theo đường dẫn, vì vậy chúng ta sẽ dùng nó để chọn cả hướng lẫn vị trí của mob. Khi spawn một mob, chúng ta sẽ chọn một giá trị ngẫu nhiên từ ``150.0`` đến ``250.0`` cho tốc độ di chuyển của mỗi mob (sẽ rất nhàm chán nếu tất cả chúng đều di chuyển với cùng một tốc độ).
 
-Lưu ý rằng một instance mới phải được thêm vào cảnh bằng ``add_child()``.
+Lưu ý rằng phải thêm một instance mới vào scene bằng ``add_child()``.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _on_mob_timer_timeout(): # Tạo một instance mới của cảnh Mob. var mob = mob_scene.instantiate()
+    func _on_mob_timer_timeout():
+        # Tạo một instance mới của scene Mob.
+        var mob = mob_scene.instantiate()
 
-        # Chọn một vị trí ngẫu nhiên trên Path2D. var mob_spawn_location = $MobPath/MobSpawnLocation mob_spawn_location.progress_ratio = randf()
+        # Chọn một vị trí ngẫu nhiên trên Path2D.
+        var mob_spawn_location = $MobPath/MobSpawnLocation
+        mob_spawn_location.progress_ratio = randf()
 
-        # Đặt vị trí của mob thành vị trí ngẫu nhiên. mob.position = mob_spawn_location.position
+        # Đặt vị trí của mob thành vị trí ngẫu nhiên.
+        mob.position = mob_spawn_location.position
 
-        # Đặt hướng của mob vuông góc với hướng của đường dẫn. var direction = mob_spawn_location.rotation + PI / 2
+        # Đặt hướng của mob vuông góc với hướng của đường dẫn.
+        var direction = mob_spawn_location.rotation + PI / 2
 
-        # Thêm một chút ngẫu nhiên vào hướng. direction += randf_range(-PI / 4, PI / 4) mob.rotation = direction
+        # Thêm một chút ngẫu nhiên vào hướng.
+        direction += randf_range(-PI / 4, PI / 4)
+        mob.rotation = direction
 
-        # Chọn vận tốc cho mob. var velocity = Vector2(randf_range(150.0, 250.0), 0.0) mob.linear_velocity = velocity.rotated(direction)
+        # Chọn velocity cho mob.
+        var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
+        mob.linear_velocity = velocity.rotated(direction)
 
-        # Sinh mob bằng cách thêm nó vào cảnh Main. add_child(mob)
+        # Spawn mob bằng cách thêm nó vào scene Main.
+        add_child(mob)
 
  .. code-tab:: csharp
 
-    // Chúng ta cũng đã chỉ định tên hàm này ở dạng PascalCase trong cửa sổ kết nối của trình chỉnh sửa. private void OnMobTimerTimeout() { // Tạo một instance mới của cảnh Mob. Mob mob = MobScene.Instantiate<Mob>();
+    // Chúng ta cũng đã chỉ định tên function này ở dạng PascalCase trong cửa sổ kết nối của editor.
+    private void OnMobTimerTimeout()
+    {
+        // Tạo một instance mới của scene Mob.
+        Mob mob = MobScene.Instantiate<Mob>();
 
-        // Chọn một vị trí ngẫu nhiên trên Path2D. var mobSpawnLocation = GetNode<PathFollow2D>("MobPath/MobSpawnLocation"); mobSpawnLocation.ProgressRatio = GD.Randf();
+        // Chọn một vị trí ngẫu nhiên trên Path2D.
+        var mobSpawnLocation = GetNode<PathFollow2D>("MobPath/MobSpawnLocation");
+        mobSpawnLocation.ProgressRatio = GD.Randf();
 
-        // Đặt hướng của mob vuông góc với hướng của đường dẫn. float direction = mobSpawnLocation.Rotation + Mathf.Pi / 2;
+        // Đặt hướng của mob vuông góc với hướng của đường dẫn.
+        float direction = mobSpawnLocation.Rotation + Mathf.Pi / 2;
 
-        // Đặt vị trí của mob thành một vị trí ngẫu nhiên. mob.Position = mobSpawnLocation.Position;
+        // Đặt vị trí của mob thành một vị trí ngẫu nhiên.
+        mob.Position = mobSpawnLocation.Position;
 
-        // Thêm một chút ngẫu nhiên vào hướng. direction += (float)GD.RandRange(-Mathf.Pi / 4, Mathf.Pi / 4); mob.Rotation = direction;
+        // Thêm một chút ngẫu nhiên vào hướng.
+        direction += (float)GD.RandRange(-Mathf.Pi / 4, Mathf.Pi / 4);
+        mob.Rotation = direction;
 
-        // Chọn vận tốc. var velocity = new Vector2((float)GD.RandRange(150.0, 250.0), 0); mob.LinearVelocity = velocity.Rotated(direction);
+        // Chọn velocity.
+        var velocity = new Vector2((float)GD.RandRange(150.0, 250.0), 0);
+        mob.LinearVelocity = velocity.Rotated(direction);
 
-        // Sinh mob bằng cách thêm nó vào cảnh Main. AddChild(mob); }
+        // Spawn mob bằng cách thêm nó vào scene Main.
+        AddChild(mob);
+    }
 
 .. important:: Why ``PI``? In functions requiring angles, Godot uses *radians*,
-               không phải độ. Pi biểu thị nửa vòng tính bằng radian, khoảng ``3.1415`` (ngoài ra còn có ``TAU``, bằng ``2 * PI``). Nếu bạn thấy thoải mái hơn khi làm việc với độ, bạn sẽ cần sử dụng các hàm ``deg_to_rad()`` và ``rad_to_deg()`` để chuyển đổi giữa hai đơn vị.
+               chứ không phải độ. Pi biểu thị nửa vòng trong radian, xấp xỉ ``3.1415`` (ngoài ra còn có ``TAU``, bằng ``2 * PI``). Nếu bạn thấy thoải mái hơn khi làm việc với độ, bạn sẽ cần dùng các function ``deg_to_rad()`` và ``rad_to_deg()`` để chuyển đổi giữa hai đơn vị.
 
-Kiểm thử cảnh
--------------
+Kiểm thử scene
+--------------
 
-Hãy kiểm thử cảnh để đảm bảo mọi thứ hoạt động. Thêm lệnh gọi ``new_game`` này vào ``_ready()``:
+Hãy kiểm thử scene để đảm bảo mọi thứ hoạt động. Thêm lệnh gọi ``new_game`` này vào ``_ready()``:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _ready(): new_game()
+    func _ready():
+        new_game()
 
  .. code-tab:: csharp
 
-    public override void _Ready() { NewGame(); }
+    public override void _Ready()
+    {
+        NewGame();
+    }
 
-Hãy gán ``Main`` làm "Main Scene" - cảnh tự động chạy khi game khởi động. Nhấn nút "Play" và chọn ``main.tscn`` khi được yêu cầu.
+Chúng ta cũng sẽ đặt ``Main`` làm "Main Scene" - scene tự động chạy khi game khởi động. Nhấn nút "Play" và chọn ``main.tscn`` khi được nhắc.
 
 .. tip:: If you had already set another scene as the "Main Scene", you can right
          nhấp vào ``main.tscn`` trong dock FileSystem và chọn "Set As Main Scene".
 
-Bạn sẽ có thể di chuyển nhân vật, thấy các mob xuất hiện và thấy nhân vật biến mất khi bị mob đánh trúng.
+Bạn sẽ có thể di chuyển người chơi, thấy các mob spawn và thấy người chơi biến mất khi bị mob đánh trúng.
 
-Khi chắc chắn mọi thứ đều hoạt động, hãy xóa lệnh gọi đến ``new_game()`` khỏi ``_ready()`` và thay thế bằng ``pass``.
+Khi chắc chắn mọi thứ đều hoạt động, hãy xóa lệnh gọi ``new_game()`` khỏi ``_ready()`` và thay bằng ``pass``.
 
-Trò chơi của chúng ta còn thiếu gì? Một số thành phần giao diện người dùng. Trong bài học tiếp theo, chúng ta sẽ thêm màn hình tiêu đề và hiển thị điểm số của người chơi.
+Game của chúng ta còn thiếu gì? Một user interface. Trong bài học tiếp theo, chúng ta sẽ thêm màn hình tiêu đề và hiển thị điểm của người chơi.

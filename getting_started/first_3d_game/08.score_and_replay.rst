@@ -5,38 +5,38 @@
 
 Trong phần này, chúng ta sẽ thêm điểm số, phát nhạc và khả năng khởi động lại trò chơi.
 
-Chúng ta cần theo dõi điểm số hiện tại trong một biến và hiển thị điểm trên màn hình bằng một giao diện tối giản. Chúng ta sẽ dùng một nhãn văn bản để làm việc đó.
+Chúng ta phải theo dõi điểm số hiện tại trong một biến và hiển thị điểm số trên màn hình bằng một giao diện tối giản. Chúng ta sẽ dùng một nhãn văn bản để làm việc đó.
 
-Trong cảnh chính, hãy thêm một nút con mới :ref:`Control <class_Control>` vào ``Main`` và đặt tên là ``UserInterface``. Hãy đảm bảo bạn đang ở màn hình 2D, nơi bạn có thể chỉnh sửa User Interface (UI) của mình.
+Trong scene chính, thêm một node con :ref:`Control <class_Control>` vào ``Main`` và đặt tên là ``UserInterface``. Đảm bảo bạn đang ở màn hình 2D, nơi bạn có thể chỉnh sửa User Interface (UI) của mình.
 
-Thêm một nút :ref:`Label <class_Label>` và đặt tên là ``ScoreLabel``
+Thêm một node :ref:`Label <class_Label>` và đặt tên là ``ScoreLabel``
 
 |image1|
 
-Trong *Inspector*, đặt *Text* của *Label* thành một giá trị giữ chỗ như "Score: 0".
+Trong *Inspector*, đặt *Text* của *Label* thành một nội dung tạm như "Score: 0".
 
 |image2|
 
-Ngoài ra, văn bản mặc định có màu trắng, giống với nền của trò chơi. Chúng ta cần thay đổi màu của nó để có thể nhìn thấy khi chạy.
+Ngoài ra, văn bản mặc định có màu trắng, giống như nền của trò chơi. Chúng ta cần thay đổi màu của nó để có thể nhìn thấy khi chạy.
 
-Cuộn xuống *Theme Overrides*, mở rộng *Colors* và bật *Font Color* để đổi màu văn bản thành đen (tạo độ tương phản tốt với cảnh 3D màu trắng)
+Cuộn xuống *Theme Overrides*, mở rộng *Colors* và bật *Font Color* để tô văn bản thành màu đen (tương phản tốt với scene 3D màu trắng)
 
 |image3|
 
-Cuối cùng, hãy nhấp và kéo văn bản trong khung nhìn để di chuyển nó ra khỏi góc trên bên trái.
+Cuối cùng, nhấp và kéo văn bản trong viewport để di chuyển nó ra khỏi góc trên bên trái.
 
 |image4|
 
-Nút ``UserInterface`` cho phép chúng ta nhóm UI vào một nhánh trong cây cảnh và sử dụng một tài nguyên theme được truyền đến tất cả các nút con của nó. Chúng ta sẽ dùng nó để đặt phông chữ cho trò chơi.
+Node ``UserInterface`` cho phép chúng ta nhóm UI vào một nhánh của scene tree và sử dụng một theme resource sẽ được áp dụng cho tất cả node con của nó. Chúng ta sẽ dùng nó để thiết lập font cho trò chơi.
 
-Tạo theme cho UI
-----------------
+Tạo UI theme
+------------
 
-Một lần nữa, hãy chọn nút ``UserInterface``. Trong *Inspector*, tạo một tài nguyên theme mới tại *Theme -> Theme*.
+Một lần nữa, chọn node ``UserInterface``. Trong *Inspector*, tạo một theme resource mới tại *Theme -> Theme*.
 
 |image5|
 
-Nhấp vào nó để mở trình chỉnh sửa theme trong bảng điều khiển phía dưới. Trình chỉnh sửa này cho bạn xem trước giao diện của tất cả các tiện ích UI tích hợp khi sử dụng tài nguyên theme của bạn.
+Nhấp vào đó để mở trình chỉnh sửa theme ở panel phía dưới. Trình chỉnh sửa cho bạn xem trước giao diện của tất cả UI widget tích hợp sẵn khi sử dụng theme resource của bạn.
 
 |image6|
 
@@ -44,11 +44,11 @@ Theo mặc định, một theme chỉ có một vài thuộc tính: *Default Bas
 
 .. seealso::
 
-    Bạn có thể thêm nhiều thuộc tính hơn vào tài nguyên theme để thiết kế các giao diện người dùng phức tạp, nhưng việc đó nằm ngoài phạm vi của loạt bài này. Để tìm hiểu thêm về cách tạo và chỉnh sửa theme, hãy xem :ref:`doc_gui_skinning`.
+    Bạn có thể thêm nhiều thuộc tính hơn vào theme resource để thiết kế các giao diện người dùng phức tạp, nhưng việc đó nằm ngoài phạm vi của series này. Để tìm hiểu thêm về cách tạo và chỉnh sửa theme, hãy xem :ref:`doc_gui_skinning`.
 
-*Default Font* yêu cầu một tệp phông chữ giống như các tệp có trên máy tính của bạn. Hai định dạng tệp phông chữ phổ biến là TrueType Font (TTF) và OpenType Font (OTF).
+*Default Font* yêu cầu một tệp font giống như các tệp có trên máy tính của bạn. Hai định dạng tệp font phổ biến là TrueType Font (TTF) và OpenType Font (OTF).
 
-Trong bảng điều khiển *FileSystem*, mở rộng thư mục ``fonts``, sau đó nhấp và kéo tệp ``Montserrat-Medium.ttf`` đi kèm với dự án vào *Default Font*. Văn bản sẽ xuất hiện lại trong phần xem trước theme.
+Trong dock *FileSystem*, mở rộng thư mục ``fonts`` rồi nhấp và kéo tệp ``Montserrat-Medium.ttf`` mà chúng tôi đã đưa vào project lên *Default Font*. Văn bản sẽ xuất hiện lại trong phần xem trước của theme.
 
 Văn bản hơi nhỏ. Đặt *Default Font Size* thành ``22`` pixel để tăng kích thước văn bản.
 
@@ -57,7 +57,7 @@ Văn bản hơi nhỏ. Đặt *Default Font Size* thành ``22`` pixel để tăn
 Theo dõi điểm số
 ----------------
 
-Tiếp theo, hãy xử lý điểm số. Gắn một tập lệnh mới vào ``ScoreLabel`` và định nghĩa biến ``score``.
+Tiếp theo, hãy làm việc với điểm số. Gắn một script mới vào ``ScoreLabel`` và định nghĩa biến ``score``.
 
 .. tabs::
   .. code-tab:: gdscript GDScript
@@ -70,66 +70,83 @@ Tiếp theo, hãy xử lý điểm số. Gắn một tập lệnh mới vào ``S
 
     using Godot;
 
-    public partial class ScoreLabel : Label { private int _score = 0; }
+    public partial class ScoreLabel : Label
+    {
+        private int _score = 0;
+    }
 
-Điểm số sẽ tăng thêm ``1`` mỗi khi chúng ta đè bẹp một quái vật. Chúng ta có thể sử dụng tín hiệu ``squashed`` của chúng để biết khi nào điều đó xảy ra. Tuy nhiên, vì chúng ta khởi tạo quái vật từ mã, nên không thể kết nối tín hiệu của mob với ``ScoreLabel`` thông qua trình chỉnh sửa.
+Điểm số sẽ tăng thêm ``1`` mỗi khi chúng ta đè bẹp một quái vật. Chúng ta có thể dùng signal ``squashed`` của chúng để biết khi nào việc đó xảy ra. Tuy nhiên, vì chúng ta khởi tạo quái vật từ code nên không thể kết nối signal của mob với ``ScoreLabel`` thông qua editor.
 
-Thay vào đó, chúng ta phải thực hiện kết nối từ mã mỗi lần tạo ra một quái vật.
+Thay vào đó, chúng ta phải thực hiện kết nối từ code mỗi khi spawn một quái vật.
 
-Mở tập lệnh ``main.gd``. Nếu tập lệnh vẫn đang mở, bạn có thể nhấp vào tên của nó ở cột bên trái trong trình chỉnh sửa tập lệnh.
+Mở script ``main.gd``. Nếu script vẫn đang mở, bạn có thể nhấp vào tên của nó trong cột bên trái của script editor.
 
 |image8|
 
-Ngoài ra, bạn có thể nhấp đúp vào tệp ``main.gd`` trong bảng điều khiển *FileSystem*.
+Ngoài ra, bạn có thể nhấp đúp vào tệp ``main.gd`` trong dock *FileSystem*.
 
-Ở cuối hàm ``_on_mob_timer_timeout()``, hãy thêm dòng sau:
+Ở cuối hàm ``_on_mob_timer_timeout()``, thêm dòng sau:
 
 .. tabs::
   .. code-tab:: gdscript GDScript
 
-    func _on_mob_timer_timeout(): #... # We connect the mob to the score label to update the score upon squashing one. mob.squashed.connect($UserInterface/ScoreLabel._on_mob_squashed.bind())
+    func _on_mob_timer_timeout():
+        #...
+        # Chúng ta kết nối mob với score label để cập nhật điểm số sau khi đè bẹp một quái vật.
+        mob.squashed.connect($UserInterface/ScoreLabel._on_mob_squashed.bind())
 
   .. code-tab:: csharp
 
-    private void OnMobTimerTimeout() { // ... // We connect the mob to the score label to update the score upon squashing one. mob.Squashed += GetNode<ScoreLabel>("UserInterface/ScoreLabel").OnMobSquashed; }
+    private void OnMobTimerTimeout()
+    {
+        // ...
+        // Chúng ta kết nối mob với score label để cập nhật điểm số sau khi đè bẹp một quái vật.
+        mob.Squashed += GetNode<ScoreLabel>("UserInterface/ScoreLabel").OnMobSquashed;
+    }
 
-Dòng này có nghĩa là khi mob phát tín hiệu ``squashed``, nút ``ScoreLabel`` sẽ nhận tín hiệu đó và gọi hàm ``_on_mob_squashed()``.
+Dòng này có nghĩa là khi mob phát signal ``squashed``, node ``ScoreLabel`` sẽ nhận signal đó và gọi hàm ``_on_mob_squashed()``.
 
-Quay lại tập lệnh ``score_label.gd`` để định nghĩa hàm callback ``_on_mob_squashed()``.
+Quay lại script ``score_label.gd`` để định nghĩa hàm callback ``_on_mob_squashed()``.
 
 Tại đó, chúng ta tăng điểm số và cập nhật văn bản được hiển thị.
 
 .. tabs::
   .. code-tab:: gdscript GDScript
 
-    func _on_mob_squashed(): score += 1 text = "Score: %s" % score
+    func _on_mob_squashed():
+        score += 1
+        text = "Score: %s" % score
 
   .. code-tab:: csharp
 
-    public void OnMobSquashed() { _score += 1; Text = $"Score: {_score}"; }
+    public void OnMobSquashed()
+    {
+        _score += 1;
+        Text = $"Score: {_score}";
+    }
 
-Dòng thứ hai sử dụng giá trị của biến ``score`` để thay thế cho phần giữ chỗ ``%s``. Khi sử dụng tính năng này, Godot sẽ tự động chuyển đổi các giá trị thành văn bản chuỗi, rất tiện lợi khi xuất văn bản trong các nhãn hoặc khi sử dụng hàm ``print()``.
+Dòng thứ hai sử dụng giá trị của biến ``score`` để thay thế placeholder ``%s``. Khi sử dụng tính năng này, Godot tự động chuyển các giá trị thành văn bản chuỗi, rất thuận tiện khi xuất văn bản trong label hoặc khi sử dụng hàm ``print()``.
 
 .. seealso::
 
-    Bạn có thể tìm hiểu thêm về định dạng chuỗi tại đây: :ref:`doc_gdscript_printf`. Trong C#, hãy cân nhắc sử dụng `string interpolation with "$" <https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated>`_.
+    Bạn có thể tìm hiểu thêm về string formatting tại đây: :ref:`doc_gdscript_printf`. Trong C#, hãy cân nhắc sử dụng `string interpolation with "$" <https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated>`_.
 
-Bây giờ bạn có thể chơi trò chơi và đè bẹp một vài kẻ địch để xem điểm số tăng lên.
+Bây giờ bạn có thể chơi game và đè bẹp một vài kẻ địch để xem điểm số tăng lên.
 
 |image9|
 
 .. note::
 
-    Trong một trò chơi phức tạp, bạn có thể muốn tách hoàn toàn giao diện người dùng khỏi thế giới trò chơi. Khi đó, bạn sẽ không theo dõi điểm số trên nhãn. Thay vào đó, bạn có thể lưu điểm số trong một đối tượng riêng biệt, chuyên dụng. Nhưng khi tạo nguyên mẫu hoặc khi dự án của bạn đơn giản, việc giữ cho mã đơn giản là hoàn toàn ổn. Lập trình luôn đòi hỏi sự cân bằng.
+    Trong một game phức tạp, bạn có thể muốn tách hoàn toàn giao diện người dùng khỏi thế giới game. Khi đó, bạn sẽ không theo dõi điểm số trên label. Thay vào đó, bạn có thể lưu điểm số trong một object riêng biệt, chuyên dụng. Nhưng khi tạo prototype hoặc khi project của bạn đơn giản, việc giữ cho code đơn giản là hoàn toàn phù hợp. Lập trình luôn là một bài toán cân bằng.
 
-Chơi lại trò chơi
------------------
+Chơi lại game
+-------------
 
-Bây giờ chúng ta sẽ thêm khả năng chơi lại sau khi nhân vật chết. Khi người chơi chết, chúng ta sẽ hiển thị một thông báo trên màn hình và chờ thao tác nhập.
+Bây giờ chúng ta sẽ thêm khả năng chơi lại sau khi chết. Khi người chơi chết, chúng ta sẽ hiển thị một thông báo trên màn hình và chờ input.
 
-Quay lại cảnh ``main.tscn``, chọn nút ``UserInterface``, thêm một nút con :ref:`ColorRect <class_ColorRect>` và đặt tên là ``Retry``. Nút này tô một hình chữ nhật bằng một màu đồng nhất và sẽ đóng vai trò là lớp phủ để làm tối màn hình.
+Quay lại scene ``main.tscn``, chọn node ``UserInterface``, thêm node con :ref:`ColorRect <class_ColorRect>` và đặt tên là ``Retry``. Node này tô một hình chữ nhật bằng một màu đồng nhất và sẽ đóng vai trò là overlay để làm tối màn hình.
 
-Để nó phủ toàn bộ khung nhìn, bạn có thể sử dụng menu *Anchor Preset* trên thanh công cụ.
+Để node bao phủ toàn bộ viewport, bạn có thể sử dụng menu *Anchor Preset* trên toolbar.
 
 |image10|
 
@@ -137,74 +154,94 @@ Mở menu đó và áp dụng lệnh *Full Rect*.
 
 |image11|
 
-Không có gì xảy ra. Gần như vậy; chỉ có bốn chốt màu xanh lá di chuyển đến các góc của hộp chọn.
+Không có gì xảy ra. Gần như vậy; chỉ có bốn ghim màu xanh lục di chuyển đến các góc của hộp chọn.
 
 |image12|
 
-Đó là vì các nút UI (tất cả những nút có biểu tượng màu xanh lá) hoạt động với các anchor và margin tương đối so với hộp giới hạn của nút cha. Ở đây, nút ``UserInterface`` có kích thước nhỏ và nút ``Retry`` bị giới hạn theo nó.
+Đó là vì các UI node (tất cả node có biểu tượng màu xanh lục) hoạt động với anchor và margin tương đối so với bounding box của node cha. Ở đây, node ``UserInterface`` có kích thước nhỏ và node ``Retry`` bị giới hạn theo nó.
 
-Chọn ``UserInterface`` và cũng áp dụng *Anchor Preset -> Full Rect* cho nó. Bây giờ nút ``Retry`` sẽ phủ toàn bộ khung nhìn.
+Chọn ``UserInterface`` và cũng áp dụng *Anchor Preset -> Full Rect* cho nó. Node ``Retry`` lúc này sẽ bao phủ toàn bộ viewport.
 
-Hãy thay đổi màu của nó để làm tối khu vực trò chơi. Chọn ``Retry`` và trong *Inspector*, đặt *Color* thành một màu vừa tối vừa trong suốt. Để làm vậy, trong bộ chọn màu, kéo thanh trượt *A* sang trái. Nó điều khiển kênh Alpha của màu, tức là độ đục/độ trong suốt của màu.
+Hãy thay đổi màu của nó để làm tối khu vực game. Chọn ``Retry`` và trong *Inspector*, đặt *Color* thành một màu vừa tối vừa trong suốt. Để làm vậy, trong color picker, kéo thanh trượt *A* sang trái. Nó điều khiển kênh Alpha của màu, tức là độ mờ/độ trong suốt của màu.
 
 |image13|
 
-Tiếp theo, thêm một :ref:`Label <class_Label>` làm nút con của ``Retry`` và đặt *Text* là "Press Enter to retry." Để di chuyển nó và neo nó vào giữa màn hình, hãy áp dụng *Anchor Preset -> Center* cho nó.
+Tiếp theo, thêm một :ref:`Label <class_Label>` làm con của ``Retry`` và đặt *Text* của nó là "Press Enter to retry." Để di chuyển nó và neo nó vào giữa màn hình, hãy áp dụng *Anchor Preset -> Center* cho node này.
 
 |image14|
 
 Lập trình tùy chọn chơi lại
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Bây giờ chúng ta có thể chuyển sang mã để hiện và ẩn nút ``Retry`` khi người chơi chết và chơi lại.
+Bây giờ chúng ta có thể chuyển sang code để hiển thị và ẩn node ``Retry`` khi người chơi chết và chơi lại.
 
-Mở tập lệnh ``main.gd``. Trước tiên, chúng ta muốn ẩn lớp phủ khi trò chơi bắt đầu. Thêm dòng này vào hàm ``_ready()``.
-
-.. tabs::
-  .. code-tab:: gdscript GDScript
-
-   func _ready(): $UserInterface/Retry.hide()
-
-  .. code-tab:: csharp
-
-    public override void _Ready() { GetNode<Control>("UserInterface/Retry").Hide(); }
-
-Sau đó, khi người chơi bị va chạm, chúng ta hiển thị lớp phủ.
+Mở script ``main.gd``. Trước tiên, chúng ta muốn ẩn overlay khi game bắt đầu. Thêm dòng này vào hàm ``_ready()``.
 
 .. tabs::
   .. code-tab:: gdscript GDScript
 
-    func _on_player_hit(): #... $UserInterface/Retry.show()
+   func _ready():
+       $UserInterface/Retry.hide()
 
   .. code-tab:: csharp
 
-    private void OnPlayerHit() { //... GetNode<Control>("UserInterface/Retry").Show(); }
+    public override void _Ready()
+    {
+        GetNode<Control>("UserInterface/Retry").Hide();
+    }
 
-Cuối cùng, khi nút ``Retry`` hiển thị, chúng ta cần lắng nghe thao tác nhập của người chơi và khởi động lại trò chơi nếu họ nhấn Enter. Để làm việc này, chúng ta sử dụng callback tích hợp ``_unhandled_input()``, callback này được kích hoạt khi có bất kỳ thao tác nhập nào.
-
-Nếu người chơi nhấn hành động nhập ``ui_accept`` được định nghĩa sẵn và ``Retry`` đang hiển thị, chúng ta tải lại cảnh hiện tại.
+Sau đó, khi người chơi bị đánh, chúng ta hiển thị overlay.
 
 .. tabs::
   .. code-tab:: gdscript GDScript
 
-    func _unhandled_input(event): if event.is_action_pressed("ui_accept") and $UserInterface/Retry.visible: # This restarts the current scene. get_tree().reload_current_scene()
+    func _on_player_hit():
+        #...
+        $UserInterface/Retry.show()
 
   .. code-tab:: csharp
 
-    public override void _UnhandledInput(InputEvent @event) { if (@event.IsActionPressed("ui_accept") && GetNode<Control>("UserInterface/Retry").Visible) { // This restarts the current scene. GetTree().ReloadCurrentScene(); } }
+    private void OnPlayerHit()
+    {
+        //...
+        GetNode<Control>("UserInterface/Retry").Show();
+    }
 
-Hàm ``get_tree()`` cho phép chúng ta truy cập đối tượng :ref:`SceneTree <class_SceneTree>` toàn cục, đối tượng này cho phép chúng ta tải lại và khởi động lại cảnh hiện tại.
+Cuối cùng, khi node ``Retry`` đang hiển thị, chúng ta cần lắng nghe input của người chơi và khởi động lại game nếu họ nhấn enter. Để làm việc này, chúng ta sử dụng callback tích hợp sẵn ``_unhandled_input()``, được kích hoạt với mọi input.
+
+Nếu người chơi nhấn action input được định nghĩa sẵn ``ui_accept`` và ``Retry`` đang hiển thị, chúng ta reload scene hiện tại.
+
+.. tabs::
+  .. code-tab:: gdscript GDScript
+
+    func _unhandled_input(event):
+        if event.is_action_pressed("ui_accept") and $UserInterface/Retry.visible:
+            # Thao tác này khởi động lại scene hiện tại.
+            get_tree().reload_current_scene()
+
+  .. code-tab:: csharp
+
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        if (@event.IsActionPressed("ui_accept") && GetNode<Control>("UserInterface/Retry").Visible)
+        {
+            // Thao tác này khởi động lại scene hiện tại.
+            GetTree().ReloadCurrentScene();
+        }
+    }
+
+Hàm ``get_tree()`` cho phép chúng ta truy cập object toàn cục :ref:`SceneTree <class_SceneTree>`, qua đó chúng ta có thể reload và khởi động lại scene hiện tại.
 
 Thêm nhạc
 ---------
 
 Để thêm nhạc phát liên tục ở nền, chúng ta sẽ sử dụng một tính năng khác trong Godot: :ref:`autoloads <doc_singletons_autoload>`.
 
-Để phát âm thanh, bạn chỉ cần thêm một nút :ref:`AudioStreamPlayer <class_AudioStreamPlayer>` vào cảnh và gắn một tệp âm thanh vào đó. Khi bắt đầu cảnh, nó có thể tự động phát. Tuy nhiên, khi tải lại cảnh, như cách chúng ta làm để chơi lại, các nút âm thanh cũng được đặt lại và nhạc sẽ phát lại từ đầu.
+Để phát audio, tất cả những gì bạn cần làm là thêm một node :ref:`AudioStreamPlayer <class_AudioStreamPlayer>` vào scene và gắn một tệp audio vào đó. Khi bạn bắt đầu scene, node có thể tự động phát. Tuy nhiên, khi bạn reload scene, như cách chúng ta làm để chơi lại, các audio node cũng được reset và nhạc sẽ phát lại từ đầu.
 
-Bạn có thể sử dụng tính năng autoload để Godot tự động tải một nút hoặc một cảnh khi trò chơi bắt đầu, bên ngoài cảnh hiện tại. Bạn cũng có thể dùng tính năng này để tạo các đối tượng có thể truy cập trên toàn cục.
+Bạn có thể sử dụng tính năng autoload để Godot tự động load một node hoặc một scene khi game bắt đầu, bên ngoài scene hiện tại. Bạn cũng có thể dùng nó để tạo các object có thể truy cập toàn cục.
 
-Tạo một cảnh mới bằng cách vào menu *Scene* và nhấp vào *New Scene*, hoặc sử dụng biểu tượng *+* bên cạnh cảnh hiện đang mở.
+Tạo một scene mới bằng cách vào menu *Scene* và nhấp vào *New Scene*, hoặc sử dụng biểu tượng *+* bên cạnh scene hiện đang mở.
 
 |image15|
 
@@ -212,33 +249,33 @@ Nhấp vào nút *Other Node* để tạo một :ref:`AudioStreamPlayer <class_A
 
 |image16|
 
-Chúng ta đã thêm một bản nhạc nền vào thư mục ``art/``, ``House In a Forest Loop.ogg``. Hãy nhấp và kéo nó vào thuộc tính *Stream* trong *Inspector*. Đồng thời, bật *Autoplay* để nhạc tự động phát khi trò chơi bắt đầu.
+Chúng tôi đã đưa một soundtrack nhạc vào thư mục ``art/``, ``House In a Forest Loop.ogg``. Nhấp và kéo nó vào thuộc tính *Stream* trong *Inspector*. Đồng thời bật *Autoplay* để nhạc tự động phát khi game bắt đầu.
 
 |image17|
 
-Lưu cảnh với tên ``music_player.tscn``.
+Lưu scene thành ``music_player.tscn``.
 
-Chúng ta cần đăng ký nó dưới dạng autoload. Mở menu *Project -> Project Settings…* và nhấp vào tab *Globals -> Autoload*.
+Chúng ta phải đăng ký nó dưới dạng autoload. Vào menu *Project -> Project Settings…* rồi nhấp vào tab *Globals -> Autoload*.
 
-Trong trường *Path*, bạn cần nhập đường dẫn đến cảnh của mình. Nhấp vào biểu tượng thư mục để mở trình duyệt tệp và nhấp đúp vào ``music_player.tscn``. Sau đó, nhấp vào nút *Add* ở bên phải để đăng ký node.
+Trong trường *Path*, bạn cần nhập đường dẫn đến scene của mình. Nhấp vào biểu tượng thư mục để mở trình duyệt tệp và nhấp đúp vào ``music_player.tscn``. Sau đó, nhấp vào nút *Add* ở bên phải để đăng ký node.
 
 |image18|
 
-``music_player.tscn`` giờ đây sẽ được tải vào mọi cảnh bạn mở hoặc chạy. Vì vậy, nếu bây giờ bạn chạy trò chơi, nhạc sẽ tự động phát trong mọi cảnh.
+Bây giờ ``music_player.tscn`` sẽ được load vào mọi scene bạn mở hoặc chạy. Vì vậy, nếu bạn chạy game lúc này, nhạc sẽ tự động phát trong mọi scene.
 
-Trước khi kết thúc bài học này, hãy cùng xem nhanh cách nó hoạt động bên trong. Khi bạn chạy trò chơi, dock *Scene* sẽ thay đổi và hiển thị cho bạn hai tab: *Remote* và *Local*.
+Trước khi kết thúc bài học này, hãy xem nhanh cách tính năng này hoạt động bên dưới. Khi bạn chạy game, dock *Scene* sẽ thay đổi để hiển thị cho bạn hai tab: *Remote* và *Local*.
 
 |image19|
 
-Tab *Remote* cho phép bạn hình dung cây node của trò chơi đang chạy. Tại đó, bạn sẽ thấy node *Main*, mọi thứ mà cảnh chứa, cùng các mob được khởi tạo ở phía dưới.
+Tab *Remote* cho phép bạn trực quan hóa cây node của game đang chạy. Tại đó, bạn sẽ thấy node *Main*, mọi thứ mà scene chứa và các mob được khởi tạo ở phía dưới.
 
 |image20|
 
-Ở trên cùng là ``MusicPlayer`` được autoload và một node *root*, chính là viewport của trò chơi.
+Ở trên cùng là ``MusicPlayer`` được autoload và một node *root*, chính là viewport của game.
 
-Vậy là hoàn thành bài học này. Trong phần tiếp theo, chúng ta sẽ thêm một ảnh động để trò chơi trông đẹp mắt hơn và mang lại cảm giác dễ chịu hơn.
+Vậy là hoàn tất bài học này. Trong phần tiếp theo, chúng ta sẽ thêm animation để game trông đẹp mắt hơn và mang lại cảm giác chơi mượt mà hơn.
 
-Dưới đây là toàn bộ script ``main.gd`` để bạn tham khảo.
+Dưới đây là script ``main.gd`` hoàn chỉnh để bạn tham khảo.
 
 .. tabs::
   .. code-tab:: gdscript GDScript
@@ -247,44 +284,88 @@ Dưới đây là toàn bộ script ``main.gd`` để bạn tham khảo.
 
     @export var mob_scene: PackedScene
 
-    func _ready(): $UserInterface/Retry.hide()
+    func _ready():
+        $UserInterface/Retry.hide()
 
 
-    func _on_mob_timer_timeout(): # Create a new instance of the Mob scene. var mob = mob_scene.instantiate()
+    func _on_mob_timer_timeout():
+        # Tạo một instance mới của scene Mob.
+        var mob = mob_scene.instantiate()
 
-        # Choose a random location on the SpawnPath. # We store the reference to the SpawnLocation node. var mob_spawn_location = get_node("SpawnPath/SpawnLocation") # And give it a random offset. mob_spawn_location.progress_ratio = randf()
+        # Chọn một vị trí ngẫu nhiên trên SpawnPath.
+        # Chúng ta lưu tham chiếu đến node SpawnLocation.
+        var mob_spawn_location = get_node("SpawnPath/SpawnLocation")
+        # Và gán cho nó một offset ngẫu nhiên.
+        mob_spawn_location.progress_ratio = randf()
 
-        var player_position = $Player.position mob.initialize(mob_spawn_location.position, player_position)
+        var player_position = $Player.position
+        mob.initialize(mob_spawn_location.position, player_position)
 
-        # Spawn the mob by adding it to the Main scene. add_child(mob)
+        # Spawn mob bằng cách thêm nó vào scene Main.
+        add_child(mob)
 
-        # We connect the mob to the score label to update the score upon squashing one. mob.squashed.connect($UserInterface/ScoreLabel._on_mob_squashed.bind())
+        # Chúng ta kết nối mob với label điểm số để cập nhật điểm số sau khi dẫm bẹp một con.
+        mob.squashed.connect($UserInterface/ScoreLabel._on_mob_squashed.bind())
 
-    func _on_player_hit(): $MobTimer.stop() $UserInterface/Retry.show()
+    func _on_player_hit():
+        $MobTimer.stop()
+        $UserInterface/Retry.show()
 
-    func _unhandled_input(event): if event.is_action_pressed("ui_accept") and $UserInterface/Retry.visible: # This restarts the current scene. get_tree().reload_current_scene()
+    func _unhandled_input(event):
+        if event.is_action_pressed("ui_accept") and $UserInterface/Retry.visible:
+            # Thao tác này khởi động lại scene hiện tại.
+            get_tree().reload_current_scene()
 
   .. code-tab:: csharp
 
     using Godot;
 
-    public partial class Main : Node { [Export] public PackedScene MobScene { get; set; }
+    public partial class Main : Node
+    {
+        [Export]
+        public PackedScene MobScene { get; set; }
 
-        public override void _Ready() { GetNode<Control>("UserInterface/Retry").Hide(); }
+        public override void _Ready()
+        {
+            GetNode<Control>("UserInterface/Retry").Hide();
+        }
 
-        public override void _UnhandledInput(InputEvent @event) { if (@event.IsActionPressed("ui_accept") && GetNode<Control>("UserInterface/Retry").Visible) { // This restarts the current scene. GetTree().ReloadCurrentScene(); } }
+        public override void _UnhandledInput(InputEvent @event)
+        {
+            if (@event.IsActionPressed("ui_accept") && GetNode<Control>("UserInterface/Retry").Visible)
+            {
+                // Thao tác này khởi động lại scene hiện tại.
+                GetTree().ReloadCurrentScene();
+            }
+        }
 
-        private void OnMobTimerTimeout() { // Create a new instance of the Mob scene. Mob mob = MobScene.Instantiate<Mob>();
+        private void OnMobTimerTimeout()
+        {
+            // Tạo một instance mới của scene Mob.
+            Mob mob = MobScene.Instantiate<Mob>();
 
-            // Choose a random location on the SpawnPath. // We store the reference to the SpawnLocation node. var mobSpawnLocation = GetNode<PathFollow3D>("SpawnPath/SpawnLocation"); // And give it a random offset. mobSpawnLocation.ProgressRatio = GD.Randf();
+            // Chọn một vị trí ngẫu nhiên trên SpawnPath.
+            // Chúng ta lưu tham chiếu đến node SpawnLocation.
+            var mobSpawnLocation = GetNode<PathFollow3D>("SpawnPath/SpawnLocation");
+            // Và gán cho nó một offset ngẫu nhiên.
+            mobSpawnLocation.ProgressRatio = GD.Randf();
 
-            Vector3 playerPosition = GetNode<Player>("Player").position; mob.Initialize(mobSpawnLocation.Position, playerPosition);
+            Vector3 playerPosition = GetNode<Player>("Player").position;
+            mob.Initialize(mobSpawnLocation.Position, playerPosition);
 
-            // Spawn the mob by adding it to the Main scene. AddChild(mob);
+            // Spawn mob bằng cách thêm nó vào scene Main.
+            AddChild(mob);
 
-            // We connect the mob to the score label to update the score upon squashing one. mob.Squashed += GetNode<ScoreLabel>("UserInterface/ScoreLabel").OnMobSquashed; }
+            // Chúng ta kết nối mob với label điểm số để cập nhật điểm số sau khi dẫm bẹp một con.
+            mob.Squashed += GetNode<ScoreLabel>("UserInterface/ScoreLabel").OnMobSquashed;
+        }
 
-        private void OnPlayerHit() { GetNode<Timer>("MobTimer").Stop(); GetNode<Control>("UserInterface/Retry").Show(); } }
+        private void OnPlayerHit()
+        {
+            GetNode<Timer>("MobTimer").Stop();
+            GetNode<Control>("UserInterface/Retry").Show();
+        }
+    }
 
 
 .. |image1| image:: img/08.score_and_replay/01_label_node.webp

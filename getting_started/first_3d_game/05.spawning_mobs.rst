@@ -3,40 +3,40 @@
 Sinh quái vật
 =============
 
-Trong phần này, chúng ta sẽ sinh quái vật dọc theo một đường đi một cách ngẫu nhiên. Khi hoàn thành, bạn sẽ có những quái vật lang thang trên bàn chơi.
+Trong phần này, chúng ta sẽ sinh quái vật ngẫu nhiên dọc theo một đường đi. Đến cuối phần, bạn sẽ có những quái vật di chuyển trên bảng trò chơi.
 
 |image0|
 
 Nhấp đúp vào ``main.tscn`` trong dock *FileSystem* để mở scene ``Main``.
 
-Trước khi vẽ đường đi, chúng ta sẽ thay đổi độ phân giải của trò chơi. Trò chơi của chúng ta có kích thước cửa sổ mặc định là ``1152x648``. Chúng ta sẽ đặt thành ``720x540``, một khung nhỏ vừa phải.
+Trước khi vẽ đường đi, chúng ta sẽ thay đổi độ phân giải trò chơi. Trò chơi của chúng ta có kích thước cửa sổ mặc định là ``1152x648``. Chúng ta sẽ đặt thành ``720x540``, một khung hình nhỏ gọn.
 
-Đi đến *Project -> Project Settings*.
+Đi tới *Project -> Project Settings*.
 
 |image1|
 
-Nếu bạn vẫn đang mở *Input Map*, hãy chuyển sang tab *General*.
+Nếu *Input Map* vẫn đang mở, hãy chuyển sang tab *General*.
 
-Trong menu bên trái, điều hướng xuống *Display -> Window*. Ở bên phải, đặt *Viewport Width* thành ``720`` và *Viewport Height* thành ``540``.
+Trong menu bên trái, đi tới *Display -> Window*. Ở bên phải, đặt *Viewport Width* thành ``720`` và *Viewport Height* thành ``540``.
 
 |image2|
 
 Tạo đường đi sinh quái vật
 --------------------------
 
-Giống như trong hướng dẫn game 2D, bạn sẽ thiết kế một đường đi và sử dụng một
+Giống như trong tutorial game 2D, bạn sẽ thiết kế một đường đi và sử dụng một
 :ref:`PathFollow3D <class_PathFollow3D>` node to sample random locations on it.
 
-Tuy nhiên, trong 3D, việc vẽ đường đi phức tạp hơn một chút. Chúng ta muốn đường đi nằm quanh khung nhìn game để quái vật xuất hiện ngay bên ngoài màn hình. Nhưng nếu vẽ đường đi, chúng ta sẽ không nhìn thấy nó từ phần xem trước của camera.
+Tuy nhiên, trong 3D, việc vẽ đường đi phức tạp hơn một chút. Chúng ta muốn đường đi nằm quanh khung hình trò chơi để quái vật xuất hiện ngay bên ngoài màn hình. Nhưng nếu vẽ đường đi, chúng ta sẽ không nhìn thấy nó trong phần xem trước của camera.
 
-Để tìm giới hạn của khung nhìn, chúng ta có thể sử dụng một số mesh giữ chỗ. Viewport của bạn vẫn phải được chia thành hai phần, với phần xem trước camera ở dưới. Nếu không phải như vậy, hãy nhấn :kbd:`Ctrl + 2` (:kbd:`Cmd + 2` trên macOS) để chia khung nhìn thành hai phần. Chọn node :ref:`Camera3D <class_Camera3D>` và đánh dấu hộp kiểm *Preview* trong viewport phía dưới.
+Để tìm giới hạn của khung nhìn, chúng ta có thể sử dụng một số mesh tạm thời. Viewport của bạn vẫn nên được chia thành hai phần, với phần xem trước camera ở phía dưới. Nếu không phải như vậy, hãy nhấn :kbd:`Ctrl + 2` (:kbd:`Cmd + 2` trên macOS) để chia khung nhìn thành hai phần. Chọn node :ref:`Camera3D <class_Camera3D>` và đánh dấu checkbox *Preview* trong viewport phía dưới.
 
 |image3|
 
-Thêm các hình trụ giữ chỗ
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Thêm các hình trụ tạm thời
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Hãy thêm các mesh giữ chỗ. Thêm một :ref:`Node3D <class_Node3D>` mới làm node con của node ``Main`` và đặt tên là ``Cylinders``. Chúng ta sẽ dùng nó để nhóm các hình trụ. Chọn ``Cylinders`` và thêm một node con :ref:`MeshInstance3D <class_MeshInstance3D>`
+Hãy thêm các mesh tạm thời. Thêm một :ref:`Node3D <class_Node3D>` mới làm con của node ``Main`` và đặt tên là ``Cylinders``. Chúng ta sẽ dùng nó để nhóm các hình trụ. Chọn ``Cylinders`` và thêm một node con :ref:`MeshInstance3D <class_MeshInstance3D>`
 
 |image4|
 
@@ -48,11 +48,11 @@ Trong *Inspector*, gán một *CylinderMesh* cho thuộc tính *Mesh*.
 
 |image6|
 
-Lưới có thể gây mất tập trung. Bạn có thể bật hoặc tắt lưới bằng cách đi đến menu *View* trên thanh công cụ và nhấp vào *View Grid*.
+Lưới có thể gây mất tập trung. Bạn có thể bật/tắt lưới bằng cách đi tới menu *View* trên thanh công cụ và nhấp vào *View Grid*.
 
 |image7|
 
-Bây giờ, bạn muốn di chuyển hình trụ dọc theo mặt phẳng mặt đất, đồng thời quan sát phần xem trước camera trong viewport phía dưới. Tôi khuyên bạn nên sử dụng tính năng bắt dính theo lưới để thực hiện việc này. Bạn có thể bật hoặc tắt tính năng này bằng cách nhấp vào biểu tượng nam châm trên thanh công cụ hoặc nhấn Y.
+Bây giờ bạn muốn di chuyển hình trụ dọc theo mặt phẳng nền, đồng thời quan sát phần xem trước camera trong viewport phía dưới. Tôi khuyên bạn nên sử dụng grid snap để thực hiện việc này. Bạn có thể bật/tắt nó bằng cách nhấp vào biểu tượng nam châm trên thanh công cụ hoặc nhấn Y.
 
 |image8|
 
@@ -60,7 +60,7 @@ Di chuyển hình trụ sao cho nó nằm ngay bên ngoài khung nhìn camera �
 
 |image9|
 
-Chúng ta sẽ tạo các bản sao của mesh và đặt chúng quanh khu vực game. Nhấn :kbd:`Ctrl + D` (:kbd:`Cmd + D` trên macOS) để nhân bản node. Bạn cũng có thể nhấp chuột phải vào node trong dock *Scene* và chọn *Duplicate*. Di chuyển bản sao xuống dọc theo trục Z màu xanh lam cho đến khi nó nằm ngay bên ngoài phần xem trước của camera.
+Chúng ta sẽ tạo các bản sao của mesh và đặt chúng xung quanh khu vực trò chơi. Nhấn :kbd:`Ctrl + D` (:kbd:`Cmd + D` trên macOS) để nhân bản node. Bạn cũng có thể nhấp chuột phải vào node trong dock *Scene* và chọn *Duplicate*. Di chuyển bản sao xuống dọc theo trục Z màu xanh dương cho đến khi nó nằm ngay bên ngoài phần xem trước của camera.
 
 Chọn cả hai hình trụ bằng cách nhấn phím :kbd:`Shift` và nhấp vào hình trụ chưa được chọn, sau đó nhân bản chúng.
 
@@ -70,11 +70,11 @@ Di chuyển chúng sang phải bằng cách kéo trục X màu đỏ.
 
 |image11|
 
-Màu trắng khiến chúng hơi khó nhìn, đúng không? Hãy làm chúng nổi bật bằng cách gán cho chúng một vật liệu mới.
+Chúng hơi khó nhìn khi có màu trắng, phải không? Hãy làm chúng nổi bật bằng cách gán cho chúng một material mới.
 
-Trong 3D, vật liệu xác định các thuộc tính hình ảnh của một bề mặt, chẳng hạn như màu sắc, cách nó phản chiếu ánh sáng và nhiều thuộc tính khác. Chúng ta có thể dùng vật liệu để thay đổi màu của mesh.
+Trong 3D, material xác định các thuộc tính hiển thị của bề mặt, chẳng hạn như màu sắc, cách nó phản chiếu ánh sáng và nhiều thuộc tính khác. Chúng ta có thể dùng material để thay đổi màu của mesh.
 
-Chúng ta có thể cập nhật cả bốn hình trụ cùng lúc. Chọn tất cả các instance mesh trong dock *Scene*. Để làm vậy, bạn có thể nhấp vào hình trụ đầu tiên rồi giữ Shift và nhấp vào hình trụ cuối cùng.
+Chúng ta có thể cập nhật cả bốn hình trụ cùng lúc. Chọn tất cả các instance của mesh trong dock *Scene*. Để làm vậy, bạn có thể nhấp vào hình trụ đầu tiên rồi nhấn Shift và nhấp vào hình trụ cuối cùng.
 
 |image12|
 
@@ -82,17 +82,17 @@ Trong *Inspector*, mở rộng phần *Material* và gán một :ref:`StandardMa
 
 |image13|
 
-Nhấp vào biểu tượng hình cầu để mở resource vật liệu. Bạn sẽ thấy phần xem trước của vật liệu và một danh sách dài các phần chứa đầy thuộc tính. Bạn có thể dùng chúng để tạo đủ loại bề mặt, từ kim loại đến đá hoặc nước.
+Nhấp vào biểu tượng hình cầu để mở resource của material. Bạn sẽ thấy phần xem trước của material và một danh sách dài các phần chứa đầy thuộc tính. Bạn có thể dùng chúng để tạo đủ loại bề mặt, từ kim loại đến đá hoặc nước.
 
 Mở rộng phần *Albedo*.
 
 .. image:: img/05.spawning_mobs/albedo_section.webp
 
-Đặt màu thành một màu tương phản với nền, chẳng hạn như màu cam sáng.
+Đặt màu thành một màu tương phản với nền, chẳng hạn như cam sáng.
 
 |image14|
 
-Bây giờ, chúng ta có thể dùng các hình trụ làm đường hướng dẫn. Thu gọn chúng trong dock *Scene* bằng cách nhấp vào mũi tên màu xám bên cạnh chúng. Từ đây, bạn cũng có thể bật hoặc tắt khả năng hiển thị của chúng bằng cách nhấp vào biểu tượng con mắt bên cạnh *Cylinders*.
+Bây giờ chúng ta có thể dùng các hình trụ làm hướng dẫn. Thu gọn chúng trong dock *Scene* bằng cách nhấp vào mũi tên màu xám bên cạnh chúng. Từ đây, bạn cũng có thể bật/tắt khả năng hiển thị của chúng bằng cách nhấp vào biểu tượng con mắt bên cạnh *Cylinders*.
 
 |image15|
 
@@ -102,7 +102,7 @@ Thêm node con :ref:`Path3D <class_Path3D>` vào node ``Main``. Trên thanh côn
 
 .. note:: You can hover any icon to see a tooltip describing the tool.
 
-Nhấp vào tâm của mỗi hình trụ để tạo một điểm. Sau đó, nhấp vào biểu tượng *Close Curve* trên thanh công cụ để đóng đường đi. Nếu điểm nào hơi lệch, bạn có thể nhấp và kéo điểm đó để định vị lại.
+Nhấp vào tâm của mỗi hình trụ để tạo một điểm. Sau đó, nhấp vào biểu tượng *Close Curve* trên thanh công cụ để đóng đường đi. Nếu điểm nào đó hơi lệch, bạn có thể nhấp và kéo điểm đó để đặt lại vị trí.
 
 |image17|
 
@@ -116,14 +116,14 @@ Nhấp vào tâm của mỗi hình trụ để tạo một điểm. Sau đó, nh
 
 |image19|
 
-Vậy là chúng ta đã sẵn sàng viết mã cho cơ chế sinh quái vật.
+Vậy là chúng ta đã sẵn sàng viết code cho cơ chế sinh quái vật.
 
 Sinh quái vật ngẫu nhiên
 ------------------------
 
-Nhấp chuột phải vào node ``Main`` và gắn một script mới cho nó.
+Nhấp chuột phải vào node ``Main`` và gắn một script mới vào đó.
 
-Trước tiên, chúng ta export một biến vào *Inspector* để có thể gán ``mob.tscn`` hoặc bất kỳ quái vật nào khác cho biến đó.
+Trước tiên, chúng ta export một biến ra *Inspector* để có thể gán ``mob.tscn`` hoặc bất kỳ quái vật nào khác cho biến đó.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -136,27 +136,31 @@ Trước tiên, chúng ta export một biến vào *Inspector* để có thể g
 
     using Godot;
 
-    public partial class Main : Node { // Don't forget to rebuild the project so the editor knows about the new export variable.
+    public partial class Main : Node
+    {
+        // Đừng quên rebuild project để editor nhận biết biến export mới.
 
-        [Export] public PackedScene MobScene { get; set; } }
+        [Export]
+        public PackedScene MobScene { get; set; }
+    }
 
-Chúng ta muốn sinh mob theo các khoảng thời gian đều đặn. Để thực hiện việc này, chúng ta cần quay lại scene và thêm một timer. Tuy nhiên, trước đó, chúng ta cần gán file ``mob.tscn`` cho thuộc tính ``mob_scene`` ở trên (nếu không, nó sẽ là null!)
+Chúng ta muốn sinh mob theo các khoảng thời gian đều đặn. Để làm vậy, chúng ta cần quay lại scene và thêm một timer. Tuy nhiên, trước đó, chúng ta cần gán file ``mob.tscn`` cho thuộc tính ``mob_scene`` ở trên (nếu không, nó sẽ là null!)
 
 Quay lại màn hình 3D và chọn node ``Main``. Kéo ``mob.tscn`` từ dock *FileSystem* vào slot *Mob Scene* trong *Inspector*.
 
 |image20|
 
-Thêm một node :ref:`Timer <class_Timer>` mới làm node con của ``Main``. Đặt tên là ``MobTimer``.
+Thêm một node :ref:`Timer <class_Timer>` mới làm con của ``Main``. Đặt tên cho nó là ``MobTimer``.
 
 |image21|
 
-Trong *Inspector*, đặt *Wait Time* của nó thành ``0.5`` giây và bật *Autostart* để nó tự động bắt đầu khi chúng ta chạy game.
+Trong *Inspector*, đặt *Wait Time* của nó thành ``0.5`` giây và bật *Autostart* để nó tự động khởi động khi chúng ta chạy trò chơi.
 
 |image22|
 
-Timer phát tín hiệu ``timeout`` mỗi khi đạt đến cuối *Wait Time*. Theo mặc định, chúng sẽ tự động khởi động lại, phát tín hiệu theo chu kỳ. Chúng ta có thể kết nối với tín hiệu này từ node *Main* để sinh quái vật sau mỗi ``0.5`` giây.
+Timer phát ra signal ``timeout`` mỗi khi đạt đến cuối *Wait Time*. Theo mặc định, chúng tự động khởi động lại và phát signal theo chu kỳ. Chúng ta có thể kết nối với signal này từ node *Main* để sinh quái vật mỗi ``0.5`` giây.
 
-Trong khi *MobTimer* vẫn đang được chọn, đi đến dock *Signals* ở bên phải và nhấp đúp vào tín hiệu ``timeout``.
+Khi *MobTimer* vẫn đang được chọn, đi tới dock *Signals* ở bên phải và nhấp đúp vào signal ``timeout``.
 
 |image23|
 
@@ -168,32 +172,51 @@ Thao tác này sẽ đưa bạn trở lại script, với một hàm ``_on_mob_t
 
 Hãy viết logic sinh mob. Chúng ta sẽ:
 
-1. Khởi tạo scene mob. 2. Lấy một vị trí ngẫu nhiên trên đường đi sinh quái vật. 3. Lấy vị trí của người chơi. 4. Gọi phương thức ``initialize()`` của mob, truyền vào vị trí ngẫu nhiên và vị trí của người chơi. 5. Thêm mob làm node con của node *Main*.
+1. Khởi tạo scene mob. 2. Lấy một vị trí ngẫu nhiên trên đường đi sinh quái vật. 3. Lấy vị trí của người chơi. 4. Gọi method ``initialize()`` của mob, truyền vào vị trí ngẫu nhiên và vị trí của người chơi. 5. Thêm mob làm con của node *Main*.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _on_mob_timer_timeout(): # Create a new instance of the Mob scene. var mob = mob_scene.instantiate()
+    func _on_mob_timer_timeout():
+        # Tạo một instance mới của scene Mob.
+        var mob = mob_scene.instantiate()
 
-        # Choose a random location on the SpawnPath. # We store the reference to the SpawnLocation node. var mob_spawn_location = get_node("SpawnPath/SpawnLocation") # And give it a random offset. mob_spawn_location.progress_ratio = randf()
+        # Chọn một vị trí ngẫu nhiên trên SpawnPath.
+        # Chúng ta lưu tham chiếu đến node SpawnLocation.
+        var mob_spawn_location = get_node("SpawnPath/SpawnLocation")
+        # Và gán cho nó một offset ngẫu nhiên.
+        mob_spawn_location.progress_ratio = randf()
 
-        var player_position = $Player.position mob.initialize(mob_spawn_location.position, player_position)
+        var player_position = $Player.position
+        mob.initialize(mob_spawn_location.position, player_position)
 
-        # Spawn the mob by adding it to the Main scene. add_child(mob)
+        # Sinh mob bằng cách thêm nó vào scene Main.
+        add_child(mob)
 
  .. code-tab:: csharp
 
-    // We also specified this function name in PascalCase in the editor's connection window. private void OnMobTimerTimeout() { // Create a new instance of the Mob scene. Mob mob = MobScene.Instantiate<Mob>();
+    // Chúng ta cũng đã chỉ định tên hàm này ở dạng PascalCase trong cửa sổ kết nối của editor.
+    private void OnMobTimerTimeout()
+    {
+        // Tạo một instance mới của scene Mob.
+        Mob mob = MobScene.Instantiate<Mob>();
 
-        // Choose a random location on the SpawnPath. // We store the reference to the SpawnLocation node. var mobSpawnLocation = GetNode<PathFollow3D>("SpawnPath/SpawnLocation"); // And give it a random offset. mobSpawnLocation.ProgressRatio = GD.Randf();
+        // Chọn một vị trí ngẫu nhiên trên SpawnPath.
+        // Chúng ta lưu tham chiếu đến node SpawnLocation.
+        var mobSpawnLocation = GetNode<PathFollow3D>("SpawnPath/SpawnLocation");
+        // Và gán cho nó một offset ngẫu nhiên.
+        mobSpawnLocation.ProgressRatio = GD.Randf();
 
-        Vector3 playerPosition = GetNode<Player>("Player").Position; mob.Initialize(mobSpawnLocation.Position, playerPosition);
+        Vector3 playerPosition = GetNode<Player>("Player").Position;
+        mob.Initialize(mobSpawnLocation.Position, playerPosition);
 
-        // Spawn the mob by adding it to the Main scene. AddChild(mob); }
+        // Sinh mob bằng cách thêm nó vào scene Main.
+        AddChild(mob);
+    }
 
-Ở trên, ``randf()`` tạo ra một giá trị ngẫu nhiên từ ``0`` đến ``1``, đúng với giá trị mà ``progress_ratio`` của node *PathFollow* mong đợi: 0 là điểm đầu của đường đi, 1 là điểm cuối của đường đi. Đường đi mà chúng ta đã thiết lập nằm quanh viewport của camera, vì vậy bất kỳ giá trị ngẫu nhiên nào từ 0 đến 1 đều là một vị trí ngẫu nhiên dọc theo các cạnh của viewport!
+Ở trên, ``randf()`` tạo ra một giá trị ngẫu nhiên trong khoảng từ ``0`` đến ``1``, đúng với giá trị mà ``progress_ratio`` của node *PathFollow* yêu cầu: 0 là đầu đường đi, 1 là cuối đường đi. Đường đi chúng ta đã thiết lập nằm quanh viewport của camera, vì vậy mọi giá trị ngẫu nhiên từ 0 đến 1 đều là một vị trí ngẫu nhiên dọc theo các cạnh của viewport!
 
-Lưu ý rằng nếu bạn xóa ``Player`` khỏi scene chính, dòng sau
+Lưu ý rằng nếu bạn xóa ``Player`` khỏi scene chính, dòng sau đây
 
 .. tabs::
    .. code-tab:: gdscript GDScript
@@ -205,9 +228,9 @@ Lưu ý rằng nếu bạn xóa ``Player`` khỏi scene chính, dòng sau
     Vector3 playerPosition = GetNode<Player>("Player").Position;
 
 
-sẽ báo lỗi vì không có $Player!
+sẽ gây ra lỗi vì không có $Player!
 
-Dưới đây là script ``main.gd`` hoàn chỉnh tính đến hiện tại để bạn tham khảo.
+Đây là script ``main.gd`` hoàn chỉnh cho đến thời điểm hiện tại, để bạn tham khảo.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -217,33 +240,55 @@ Dưới đây là script ``main.gd`` hoàn chỉnh tính đến hiện tại đ�
     @export var mob_scene: PackedScene
 
 
-    func _on_mob_timer_timeout(): # Create a new instance of the Mob scene. var mob = mob_scene.instantiate()
+    func _on_mob_timer_timeout():
+        # Tạo một instance mới của scene Mob.
+        var mob = mob_scene.instantiate()
 
-        # Choose a random location on the SpawnPath. # We store the reference to the SpawnLocation node. var mob_spawn_location = get_node("SpawnPath/SpawnLocation") # And give it a random offset. mob_spawn_location.progress_ratio = randf()
+        # Chọn một vị trí ngẫu nhiên trên SpawnPath.
+        # Chúng ta lưu tham chiếu đến node SpawnLocation.
+        var mob_spawn_location = get_node("SpawnPath/SpawnLocation")
+        # Và gán cho nó một offset ngẫu nhiên.
+        mob_spawn_location.progress_ratio = randf()
 
-        var player_position = $Player.position mob.initialize(mob_spawn_location.position, player_position)
+        var player_position = $Player.position
+        mob.initialize(mob_spawn_location.position, player_position)
 
-        # Tạo mob bằng cách thêm nó vào scene Main. add_child(mob)
+        # Sinh mob bằng cách thêm nó vào scene Main.
+        add_child(mob)
 
  .. code-tab:: csharp
 
     using Godot;
 
-    public partial class Main : Node { [Export] public PackedScene MobScene { get; set; }
+    public partial class Main : Node
+    {
+        [Export]
+        public PackedScene MobScene { get; set; }
 
-        private void OnMobTimerTimeout() { // Tạo một thực thể mới từ scene Mob. Mob mob = MobScene.Instantiate<Mob>();
+        private void OnMobTimerTimeout()
+        {
+            // Tạo một instance mới của scene Mob.
+            Mob mob = MobScene.Instantiate<Mob>();
 
-            // Chọn một vị trí ngẫu nhiên trên SpawnPath. // Chúng ta lưu tham chiếu đến node SpawnLocation. var mobSpawnLocation = GetNode<PathFollow3D>("SpawnPath/SpawnLocation"); // Và cho nó một độ lệch ngẫu nhiên. mobSpawnLocation.ProgressRatio = GD.Randf();
+            // Chọn một vị trí ngẫu nhiên trên SpawnPath.
+            // Chúng ta lưu tham chiếu đến node SpawnLocation.
+            var mobSpawnLocation = GetNode<PathFollow3D>("SpawnPath/SpawnLocation");
+            // Và gán cho nó một offset ngẫu nhiên.
+            mobSpawnLocation.ProgressRatio = GD.Randf();
 
-            Vector3 playerPosition = GetNode<Player>("Player").Position; mob.Initialize(mobSpawnLocation.Position, playerPosition);
+            Vector3 playerPosition = GetNode<Player>("Player").Position;
+            mob.Initialize(mobSpawnLocation.Position, playerPosition);
 
-            // Tạo mob bằng cách thêm nó vào scene Main. AddChild(mob); } }
+            // Sinh mob bằng cách thêm nó vào scene Main.
+            AddChild(mob);
+        }
+    }
 
-Bạn có thể kiểm thử scene bằng cách nhấn :kbd:`F6` (:kbd:`Cmd + R` trên macOS). Bạn sẽ thấy các quái vật xuất hiện và di chuyển theo đường thẳng.
+Bạn có thể kiểm tra scene bằng cách nhấn :kbd:`F6` (:kbd:`Cmd + R` trên macOS). Bạn sẽ thấy các quái vật xuất hiện và di chuyển theo đường thẳng.
 
 |image25|
 
-Hiện tại, chúng va vào và trượt qua nhau khi đường đi của chúng giao nhau. Chúng ta sẽ xử lý vấn đề này trong phần tiếp theo.
+Hiện tại, chúng va vào và trượt dọc theo nhau khi đường đi của chúng giao nhau. Chúng ta sẽ xử lý việc này trong phần tiếp theo.
 
 .. |image0| image:: img/05.spawning_mobs/01.monsters_path_preview.png
 .. |image1| image:: img/05.spawning_mobs/02.project_settings.webp

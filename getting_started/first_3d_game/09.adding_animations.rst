@@ -3,50 +3,50 @@
 Hoạt ảnh nhân vật
 =================
 
-Trong bài học cuối cùng này, chúng ta sẽ sử dụng các công cụ hoạt ảnh tích hợp sẵn của Godot để khiến nhân vật lơ lửng và vỗ cánh. Bạn sẽ học cách thiết kế hoạt ảnh trong trình chỉnh sửa và sử dụng mã để khiến trò chơi trở nên sống động.
+Trong bài học cuối cùng này, chúng ta sẽ sử dụng các công cụ hoạt ảnh tích hợp sẵn của Godot để khiến nhân vật bay lơ lửng và vỗ cánh. Bạn sẽ học cách thiết kế hoạt ảnh trong editor và sử dụng code để khiến game của mình trở nên sống động.
 
 |image0|
 
-Chúng ta sẽ bắt đầu bằng phần giới thiệu về cách sử dụng trình chỉnh sửa hoạt ảnh.
+Chúng ta sẽ bắt đầu bằng phần giới thiệu về cách sử dụng animation editor.
 
-Sử dụng trình chỉnh sửa hoạt ảnh
---------------------------------
+Sử dụng animation editor
+------------------------
 
-Engine có sẵn các công cụ để tạo hoạt ảnh trong trình chỉnh sửa. Sau đó, bạn có thể sử dụng mã để phát và điều khiển chúng trong thời gian chạy.
+Engine đi kèm các công cụ để tạo hoạt ảnh trong editor. Sau đó, bạn có thể sử dụng code để phát và điều khiển chúng trong runtime.
 
-Mở scene của người chơi, chọn node ``Player`` và thêm một node :ref:`AnimationPlayer <class_AnimationPlayer>`.
+Mở player scene, chọn node ``Player`` và thêm một node :ref:`AnimationPlayer <class_AnimationPlayer>`.
 
-Dock *Animation* xuất hiện trong bảng điều khiển phía dưới.
+Dock *Animation* xuất hiện trong panel phía dưới.
 
 |image1|
 
-Dock này có một thanh công cụ và menu thả xuống hoạt ảnh ở phía trên, trình chỉnh sửa track ở giữa hiện đang trống, cùng các tùy chọn bộ lọc, snap và thu phóng ở phía dưới.
+Nó có một toolbar và menu thả xuống animation ở phía trên, một track editor hiện đang trống ở giữa, cùng các tùy chọn filter, snap và zoom ở phía dưới.
 
-Hãy tạo một hoạt ảnh. Nhấp vào *Animation -> New*.
+Hãy tạo một animation. Nhấp vào *Animation -> New*.
 
 |image2|
 
-Đặt tên cho hoạt ảnh là "float".
+Đặt tên cho animation là "float".
 
 |image3|
 
-Sau khi tạo hoạt ảnh, timeline xuất hiện với các con số biểu thị thời gian tính bằng giây.
+Sau khi tạo animation, timeline xuất hiện với các con số biểu thị thời gian tính bằng giây.
 
 |image4|
 
-Chúng ta muốn hoạt ảnh tự động bắt đầu phát khi trò chơi bắt đầu. Ngoài ra, nó cũng nên lặp lại.
+Chúng ta muốn animation tự động bắt đầu phát khi game bắt đầu. Ngoài ra, nó cũng cần lặp lại.
 
-Để làm vậy, bạn có thể lần lượt nhấp vào nút tự động phát (|Autoplay|) trên thanh công cụ hoạt ảnh và nút mũi tên lặp.
+Để làm vậy, bạn có thể lần lượt nhấp vào nút autoplay (|Autoplay|) trong animation toolbar và các mũi tên lặp.
 
 |image5|
 
-Bạn cũng có thể ghim trình chỉnh sửa hoạt ảnh bằng cách nhấp vào biểu tượng ghim ở góc trên bên phải. Điều này ngăn nó thu gọn khi bạn nhấp vào viewport và bỏ chọn các node.
+Bạn cũng có thể ghim animation editor bằng cách nhấp vào biểu tượng ghim ở góc trên bên phải. Điều này ngăn nó thu gọn khi bạn nhấp vào viewport và bỏ chọn các node.
 
 |image6|
 
-Đặt thời lượng hoạt ảnh thành ``1.2`` giây ở góc trên bên phải của dock.
+Đặt thời lượng animation thành ``1.2`` giây ở góc trên bên phải của dock.
 
-Bạn sẽ thấy dải màu xám rộng ra một chút. Nó cho biết điểm bắt đầu và kết thúc của hoạt ảnh, còn đường màu xanh dương dọc là con trỏ thời gian.
+Bạn sẽ thấy dải ruy-băng màu xám rộng ra một chút. Nó cho biết điểm bắt đầu và kết thúc của animation, còn đường thẳng đứng màu xanh là con trỏ thời gian của bạn.
 
 |image7|
 
@@ -54,36 +54,36 @@ Bạn có thể nhấp và kéo thanh trượt ở góc dưới bên phải đ�
 
 |image8|
 
-Hoạt ảnh float
---------------
+Animation float
+---------------
 
-Với node animation player, bạn có thể tạo hoạt ảnh cho hầu hết các thuộc tính trên bao nhiêu node tùy ý. Hãy chú ý biểu tượng chìa khóa bên cạnh các thuộc tính trong *Inspector*. Bạn có thể nhấp vào bất kỳ biểu tượng nào để tạo một keyframe, tức một cặp thời gian và giá trị tương ứng với thuộc tính đó. Keyframe sẽ được chèn tại vị trí con trỏ thời gian trên timeline.
+Với node animation player, bạn có thể tạo hoạt ảnh cho hầu hết các thuộc tính trên bao nhiêu node tùy ý. Hãy chú ý biểu tượng key bên cạnh các thuộc tính trong *Inspector*. Bạn có thể nhấp vào bất kỳ biểu tượng nào để tạo một keyframe, tức một cặp thời gian và giá trị tương ứng với thuộc tính đó. Keyframe sẽ được chèn tại vị trí con trỏ thời gian trên timeline.
 
-Hãy chèn các key đầu tiên. Ở đây, chúng ta sẽ tạo hoạt ảnh cho cả vị trí và góc xoay của node ``Character``.
+Hãy chèn các key đầu tiên. Ở đây, chúng ta sẽ tạo hoạt ảnh cho cả position và rotation của node ``Character``.
 
-Chọn ``Character``, sau đó trong *Inspector* mở rộng phần *Transform*. Nhấp vào biểu tượng chìa khóa bên cạnh *Position* và *Rotation*.
+Chọn ``Character`` và trong *Inspector*, mở rộng phần *Transform*. Nhấp vào biểu tượng key bên cạnh *Position* và *Rotation*.
 
 |image9|
 
 .. image:: img/09.adding_animations/curves.webp
 
-Trong hướng dẫn này, chỉ cần tạo các track RESET, đây là lựa chọn mặc định
+Trong tutorial này, chỉ cần tạo RESET Track(s), đây là lựa chọn mặc định
 
-Hai track xuất hiện trong trình chỉnh sửa, với một biểu tượng hình thoi đại diện cho mỗi keyframe.
+Hai track xuất hiện trong editor, với một biểu tượng hình thoi đại diện cho mỗi keyframe.
 
 |image10|
 
-Bạn có thể nhấp và kéo các hình thoi để di chuyển chúng theo thời gian. Di chuyển key vị trí đến ``0.3`` giây và key góc xoay đến ``0.1`` giây.
+Bạn có thể nhấp và kéo các hình thoi để di chuyển chúng theo thời gian. Di chuyển key position đến ``0.3`` giây và key rotation đến ``0.1`` giây.
 
 |image11|
 
-Di chuyển con trỏ thời gian đến ``0.5`` giây bằng cách nhấp và kéo trên timeline màu xám, hoặc nhập giá trị vào trường nhập.
+Di chuyển con trỏ thời gian đến ``0.5`` giây bằng cách nhấp và kéo trên timeline màu xám, hoặc nhập giá trị vào trường input.
 
 |timeline_05_click|
 
 Trong *Inspector*, đặt trục *Y* của *Position* thành ``0.65`` mét và trục *X* của *Rotation* thành ``8``.
 
-Nếu bạn không thấy các thuộc tính trong bảng *Inspector*, trước tiên hãy nhấp lại vào node ``Character`` trong dock *Scene*.
+Nếu bạn không thấy các thuộc tính trong panel *Inspector*, trước tiên hãy nhấp lại vào node ``Character`` trong dock *Scene*.
 
 |image12|
 
@@ -91,15 +91,15 @@ Tạo keyframe cho cả hai thuộc tính
 
 |second_keys_both|
 
-Bây giờ, di chuyển keyframe vị trí đến ``0.7`` giây bằng cách kéo nó trên timeline.
+Bây giờ, di chuyển keyframe position đến ``0.7`` giây bằng cách kéo nó trên timeline.
 
 |image13|
 
 .. note::
 
-    Một bài giảng về các nguyên tắc hoạt ảnh nằm ngoài phạm vi của hướng dẫn này. Chỉ cần lưu ý rằng bạn không nên phân bổ thời gian và khoảng cách một cách đồng đều cho mọi thứ. Thay vào đó, các nhà làm hoạt ảnh điều chỉnh thời gian và khoảng cách, hai nguyên tắc cốt lõi của hoạt ảnh. Bạn cần tạo độ lệch và sự tương phản trong chuyển động của nhân vật để khiến chúng có cảm giác sống động.
+    Một bài giảng về các nguyên tắc hoạt ảnh nằm ngoài phạm vi của tutorial này. Chỉ cần lưu ý rằng bạn không nên phân chia thời gian và khoảng cách một cách đồng đều cho mọi thứ. Thay vào đó, các animator điều chỉnh thời gian và khoảng cách, hai nguyên tắc cốt lõi của hoạt ảnh. Bạn nên tạo độ lệch và độ tương phản trong chuyển động của nhân vật để khiến chúng trở nên sống động.
 
-Di chuyển con trỏ thời gian đến cuối hoạt ảnh, tại ``1.2`` giây. Đặt vị trí Y thành khoảng ``0.35`` và góc xoay X thành ``-9`` độ. Một lần nữa, hãy tạo key cho cả hai thuộc tính.
+Di chuyển con trỏ thời gian đến cuối animation, tại ``1.2`` giây. Đặt vị trí Y thành khoảng ``0.35`` và rotation X thành ``-9`` độ. Một lần nữa, hãy tạo key cho cả hai thuộc tính.
 
 |animation_final_keyframes|
 
@@ -107,7 +107,7 @@ Bạn có thể xem trước kết quả bằng cách nhấp vào nút phát ho�
 
 |image14|
 
-Bạn có thể thấy engine nội suy giữa các keyframe để tạo ra một hoạt ảnh liên tục. Tuy nhiên, hiện tại chuyển động vẫn có vẻ rất máy móc. Nguyên nhân là nội suy mặc định có dạng tuyến tính, tạo ra các chuyển tiếp đều đặn, không giống cách sinh vật sống chuyển động trong thế giới thực.
+Bạn có thể thấy engine nội suy giữa các keyframe để tạo ra một animation liên tục. Tuy nhiên, hiện tại chuyển động trông khá máy móc. Đó là vì phép nội suy mặc định là tuyến tính, tạo ra các chuyển tiếp không đổi, khác với cách các vật thể sống chuyển động trong thế giới thực.
 
 Chúng ta có thể điều khiển chuyển tiếp giữa các keyframe bằng các đường cong easing.
 
@@ -119,94 +119,125 @@ Bạn có thể chỉnh sửa đồng thời các thuộc tính của cả hai k
 
 |image16|
 
-Nhấp và kéo đường cong về phía bên trái. Thao tác này sẽ tạo ease-out, nghĩa là chuyển tiếp nhanh lúc đầu rồi chậm dần khi con trỏ thời gian tiến đến keyframe tiếp theo.
+Nhấp và kéo đường cong về phía bên trái. Thao tác này sẽ tạo ease-out, nghĩa là chuyển tiếp nhanh lúc đầu rồi chậm lại khi con trỏ thời gian tiến đến keyframe tiếp theo.
 
 |image17|
 
-Phát lại hoạt ảnh để thấy sự khác biệt. Nửa đầu hẳn đã có cảm giác nảy hơn một chút.
+Phát lại animation để xem sự khác biệt. Nửa đầu giờ đây sẽ có cảm giác nảy hơn một chút.
 
-Áp dụng ease-out cho keyframe thứ hai trong track góc xoay.
+Áp dụng ease-out cho keyframe rotation thứ hai trong track.
 
 |image18|
 
-Làm ngược lại với keyframe vị trí thứ hai, kéo nó sang bên phải.
+Làm ngược lại với keyframe position thứ hai, kéo nó sang bên phải.
 
 |image19|
 
-Hoạt ảnh của bạn sẽ trông tương tự như thế này.
+Animation của bạn sẽ có dạng tương tự như thế này.
 
 |image20|
 
 .. note::
 
-    Hoạt ảnh cập nhật các thuộc tính của node được tạo hoạt ảnh ở mỗi frame, ghi đè lên các giá trị ban đầu. Nếu chúng ta tạo hoạt ảnh trực tiếp cho node *Player*, nó sẽ ngăn chúng ta di chuyển node đó bằng mã. Đây là lúc node *Pivot* trở nên hữu ích: dù đã tạo hoạt ảnh cho *Character*, chúng ta vẫn có thể di chuyển và xoay *Pivot*, rồi xếp chồng các thay đổi lên trên hoạt ảnh trong một script.
+    Animation cập nhật các thuộc tính của những node được tạo hoạt ảnh ở mỗi frame, ghi đè các giá trị ban đầu. Nếu chúng ta trực tiếp tạo hoạt ảnh cho node *Player*, nó sẽ ngăn chúng ta di chuyển node này bằng code. Đây là lúc node *Pivot* trở nên hữu ích: mặc dù chúng ta đã tạo hoạt ảnh cho *Character*, chúng ta vẫn có thể di chuyển và xoay *Pivot*, đồng thời xếp các thay đổi lên trên animation trong một script.
 
-Nếu chạy trò chơi, sinh vật của người chơi giờ đây sẽ lơ lửng!
+Nếu chạy game, sinh vật của player giờ đây sẽ bay lơ lửng!
 
 Nếu sinh vật hơi quá gần sàn, bạn có thể di chuyển ``Pivot`` lên trên để tạo độ lệch.
 
-Điều khiển hoạt ảnh bằng mã
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Điều khiển animation bằng code
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Chúng ta có thể sử dụng mã để điều khiển việc phát hoạt ảnh dựa trên thao tác nhập của người chơi. Hãy thay đổi tốc độ hoạt ảnh khi nhân vật đang di chuyển.
+Chúng ta có thể sử dụng code để điều khiển việc phát animation dựa trên input của player. Hãy thay đổi tốc độ animation khi nhân vật đang di chuyển.
 
 Mở script của ``Player`` bằng cách nhấp vào biểu tượng script bên cạnh nó.
 
 |image21|
 
-Trong ``_physics_process()``, sau dòng kiểm tra vector ``direction``, hãy thêm đoạn mã sau.
+Trong ``_physics_process()``, sau dòng kiểm tra vector ``direction``, hãy thêm đoạn code sau.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-   func _physics_process(delta): #... if direction != Vector3.ZERO: #... $AnimationPlayer.speed_scale = 4 else: $AnimationPlayer.speed_scale = 1
+   func _physics_process(delta):
+       #...
+       if direction != Vector3.ZERO:
+           #...
+           $AnimationPlayer.speed_scale = 4
+       else:
+           $AnimationPlayer.speed_scale = 1
 
  .. code-tab:: csharp
 
-    public override void _PhysicsProcess(double delta) { // ... if (direction != Vector3.Zero) { // ... GetNode<AnimationPlayer>("AnimationPlayer").SpeedScale = 4; } else { GetNode<AnimationPlayer>("AnimationPlayer").SpeedScale = 1; } }
+    public override void _PhysicsProcess(double delta)
+    {
+        // ...
+        if (direction != Vector3.Zero)
+        {
+            // ...
+            GetNode<AnimationPlayer>("AnimationPlayer").SpeedScale = 4;
+        }
+        else
+        {
+            GetNode<AnimationPlayer>("AnimationPlayer").SpeedScale = 1;
+        }
+    }
 
-Đoạn mã này khiến khi người chơi di chuyển, chúng ta nhân tốc độ phát với ``4``. Khi họ dừng lại, chúng ta đặt tốc độ về mức bình thường.
+Code này khiến khi player di chuyển, chúng ta nhân tốc độ phát với ``4``. Khi player dừng lại, chúng ta đặt tốc độ về mức bình thường.
 
-Chúng ta đã đề cập rằng ``Pivot`` có thể xếp chồng các phép biến đổi lên trên hoạt ảnh. Chúng ta có thể khiến nhân vật tạo thành một cung khi nhảy bằng dòng mã sau. Thêm dòng này vào cuối ``_physics_process()``.
+Chúng ta đã đề cập rằng ``Pivot`` có thể xếp các transform lên trên animation. Chúng ta có thể khiến nhân vật tạo thành một cung khi nhảy bằng dòng code sau. Thêm dòng này vào cuối ``_physics_process()``.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-   func _physics_process(delta): #... $Pivot.rotation.x = PI / 6 * velocity.y / jump_impulse
+   func _physics_process(delta):
+       #...
+       $Pivot.rotation.x = PI / 6 * velocity.y / jump_impulse
 
  .. code-tab:: csharp
 
-    public override void _PhysicsProcess(double delta) { // ... var pivot = GetNode<Node3D>("Pivot"); pivot.Rotation = new Vector3(Mathf.Pi / 6.0f * Velocity.Y / JumpImpulse, pivot.Rotation.Y, pivot.Rotation.Z); }
+    public override void _PhysicsProcess(double delta)
+    {
+        // ...
+        var pivot = GetNode<Node3D>("Pivot");
+        pivot.Rotation = new Vector3(Mathf.Pi / 6.0f * Velocity.Y / JumpImpulse, pivot.Rotation.Y, pivot.Rotation.Z);
+    }
 
 Tạo hoạt ảnh cho mob
 --------------------
 
-Đây là một thủ thuật hữu ích khác với hoạt ảnh trong Godot: miễn là bạn sử dụng cấu trúc node tương tự, bạn có thể sao chép chúng sang các scene khác.
+Đây là một thủ thuật thú vị khác với animation trong Godot: miễn là bạn sử dụng cấu trúc node tương tự, bạn có thể sao chép chúng sang các scene khác.
 
-Ví dụ, cả scene ``Mob`` và ``Player`` đều có node ``Pivot`` và node ``Character``, vì vậy chúng ta có thể sử dụng lại các hoạt ảnh giữa chúng.
+Ví dụ, cả scene ``Mob`` và ``Player`` đều có node ``Pivot`` và ``Character``, nên chúng ta có thể tái sử dụng animation giữa hai scene này.
 
-Mở scene *Player*, chọn node AnimationPlayer, sau đó nhấp vào **Animation > Manage Animations...**. Nhấp vào nút *Copy animation to clipboard* (hai hình vuông nhỏ) bên cạnh hoạt ảnh *float*. Nhấp OK để đóng cửa sổ.
+Mở scene *Player*, chọn node AnimationPlayer, sau đó nhấp vào **Animation > Manage Animations...**. Nhấp vào nút *Copy animation to clipboard* (hai hình vuông nhỏ) bên cạnh animation *float*. Nhấp OK để đóng cửa sổ.
 
-Sau đó mở ``mob.tscn``, tạo một node con :ref:`AnimationPlayer <class_AnimationPlayer>` và chọn nó. Nhấp vào **Animation > Manage Animations**, sau đó nhấp vào **New Library**. Bạn sẽ thấy thông báo "Global library will be created." Để trống trường văn bản rồi nhấp OK. Nhấp vào biểu tượng *Paste* (bảng tạm), hoạt ảnh sẽ xuất hiện trong cửa sổ. Nhấp OK để đóng cửa sổ.
+Sau đó mở ``mob.tscn``, tạo một node con :ref:`AnimationPlayer <class_AnimationPlayer>` và chọn nó. Nhấp vào **Animation > Manage Animations**, rồi chọn **New Library**. Bạn sẽ thấy thông báo "Global library will be created." Để trống trường văn bản và nhấp OK. Nhấp vào biểu tượng *Paste* (clipboard), animation sẽ xuất hiện trong cửa sổ. Nhấp OK để đóng cửa sổ.
 
-Tiếp theo, hãy đảm bảo rằng nút tự động phát (|Autoplay|) và các mũi tên lặp (Animation looping) cũng được bật trong trình chỉnh sửa hoạt ảnh ở bảng điều khiển phía dưới. Vậy là xong; tất cả quái vật giờ đây sẽ phát hoạt ảnh float.
+Tiếp theo, hãy đảm bảo rằng nút autoplay (|Autoplay|) và các mũi tên lặp (Animation looping) cũng được bật trong animation editor ở panel phía dưới. Vậy là xong; giờ đây tất cả quái vật sẽ phát animation float.
 
 Chúng ta có thể thay đổi tốc độ phát dựa trên ``random_speed`` của sinh vật. Mở script của *Mob* và ở cuối hàm ``initialize()``, thêm dòng sau.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-   func initialize(start_position, player_position): #... $AnimationPlayer.speed_scale = random_speed / min_speed
+   func initialize(start_position, player_position):
+       #...
+       $AnimationPlayer.speed_scale = random_speed / min_speed
 
  .. code-tab:: csharp
 
-    public void Initialize(Vector3 startPosition, Vector3 playerPosition) { // ... GetNode<AnimationPlayer>("AnimationPlayer").SpeedScale = randomSpeed / MinSpeed; }
+    public void Initialize(Vector3 startPosition, Vector3 playerPosition)
+    {
+        // ...
+        GetNode<AnimationPlayer>("AnimationPlayer").SpeedScale = randomSpeed / MinSpeed;
+    }
 
-Vậy là bạn đã hoàn thành phần lập trình cho trò chơi 3D hoàn chỉnh đầu tiên của mình.
+Vậy là bạn đã hoàn tất việc lập trình game 3D hoàn chỉnh đầu tiên của mình.
 
-**Xin chúc mừng**!
+**Chúc mừng**!
 
-Trong phần tiếp theo, chúng ta sẽ nhanh chóng ôn lại những gì bạn đã học và cung cấp cho bạn một số liên kết để tiếp tục tìm hiểu. Nhưng trước hết, đây là ``player.gd`` và ``mob.gd`` hoàn chỉnh để bạn có thể đối chiếu mã của mình với chúng.
+Trong phần tiếp theo, chúng ta sẽ nhanh chóng ôn lại những gì bạn đã học và cung cấp một số liên kết để bạn tiếp tục tìm hiểu. Nhưng trước hết, đây là ``player.gd`` và ``mob.gd`` hoàn chỉnh để bạn có thể đối chiếu code của mình với chúng.
 
 Đây là script *Player*.
 
@@ -217,70 +248,210 @@ Trong phần tiếp theo, chúng ta sẽ nhanh chóng ôn lại những gì bạ
 
     signal hit
 
-    # Tốc độ di chuyển của người chơi tính bằng mét trên giây. @export var speed = 14 # Gia tốc hướng xuống khi đang ở trên không, tính bằng mét trên giây bình phương. @export var fall_acceleration = 75 # Xung lực theo phương dọc tác dụng lên nhân vật khi nhảy, tính bằng mét trên giây. @export var jump_impulse = 20 # Xung lực theo phương dọc tác dụng lên nhân vật khi bật nảy trên một mob # tính bằng mét trên giây. @export var bounce_impulse = 16
+    # Tốc độ di chuyển của player tính bằng mét trên giây.
+    @export var speed = 14
+    # Gia tốc hướng xuống khi đang ở trên không, tính bằng mét trên giây bình phương.
+    @export var fall_acceleration = 75
+    # Xung lực theo phương dọc tác dụng lên nhân vật khi nhảy, tính bằng mét trên giây.
+    @export var jump_impulse = 20
+    # Xung lực theo phương dọc tác dụng lên nhân vật khi nảy qua một mob
+    # tính bằng mét trên giây.
+    @export var bounce_impulse = 16
 
     var target_velocity = Vector3.ZERO
 
 
-    func _physics_process(delta): # Tạo một biến cục bộ để lưu hướng đầu vào var direction = Vector3.ZERO
+    func _physics_process(delta):
+        # Chúng ta tạo một biến cục bộ để lưu hướng input
+        var direction = Vector3.ZERO
 
-        # Kiểm tra từng lệnh di chuyển và cập nhật hướng tương ứng if Input.is_action_pressed("move_right"): direction.x = direction.x + 1 if Input.is_action_pressed("move_left"): direction.x = direction.x - 1 if Input.is_action_pressed("move_back"): # Lưu ý rằng chúng ta đang làm việc với các trục x và z của vector. # Trong không gian 3D, mặt phẳng XZ là mặt phẳng mặt đất. direction.z = direction.z + 1 if Input.is_action_pressed("move_forward"): direction.z = direction.z - 1
+        # Chúng ta kiểm tra từng input di chuyển và cập nhật hướng tương ứng
+        if Input.is_action_pressed("move_right"):
+            direction.x = direction.x + 1
+        if Input.is_action_pressed("move_left"):
+            direction.x = direction.x - 1
+        if Input.is_action_pressed("move_back"):
+            # Hãy chú ý cách chúng ta làm việc với các trục x và z của vector.
+            # Trong 3D, mặt phẳng XZ là mặt phẳng mặt đất.
+            direction.z = direction.z + 1
+        if Input.is_action_pressed("move_forward"):
+            direction.z = direction.z - 1
 
-        # Ngăn chuyển động chéo quá nhanh if direction != Vector3.ZERO: direction = direction.normalized() # Việc thiết lập thuộc tính basis sẽ ảnh hưởng đến phép xoay của node. $Pivot.basis = Basis.looking_at(direction) $AnimationPlayer.speed_scale = 4 else: $AnimationPlayer.speed_scale = 1
+        # Ngăn chuyển động theo đường chéo quá nhanh
+        if direction != Vector3.ZERO:
+            direction = direction.normalized()
+            # Việc thiết lập thuộc tính basis sẽ ảnh hưởng đến rotation của node.
+            $Pivot.basis = Basis.looking_at(direction)
+            $AnimationPlayer.speed_scale = 4
+        else:
+            $AnimationPlayer.speed_scale = 1
 
-        # Vận tốc trên mặt đất target_velocity.x = direction.x * speed target_velocity.z = direction.z * speed
+        # Vận tốc trên mặt đất
+        target_velocity.x = direction.x * speed
+        target_velocity.z = direction.z * speed
 
-        # Vận tốc theo phương dọc if not is_on_floor(): # Nếu đang ở trên không, rơi xuống mặt đất target_velocity.y = target_velocity.y - (fall_acceleration * delta)
+        # Vận tốc theo phương dọc
+        if not is_on_floor(): # If in the air, fall towards the floor
+            target_velocity.y = target_velocity.y - (fall_acceleration * delta)
 
-        # Nhảy. if is_on_floor() and Input.is_action_just_pressed("jump"): target_velocity.y = jump_impulse
+        # Nhảy.
+        if is_on_floor() and Input.is_action_just_pressed("jump"):
+            target_velocity.y = jump_impulse
 
-        # Duyệt qua tất cả va chạm xảy ra trong khung hình này # trong C, tương đương với for(int i = 0; i < collisions.Count; i++) for index in range(get_slide_collision_count()): # Lấy một trong các va chạm với người chơi var collision = get_slide_collision(index)
+        # Lặp qua tất cả các va chạm xảy ra trong frame này
+        # trong C, đoạn này sẽ là for(int i = 0; i < collisions.Count; i++)
+        for index in range(get_slide_collision_count()):
+            # Chúng ta lấy một trong các va chạm với người chơi
+            var collision = get_slide_collision(index)
 
-            # Nếu va chạm với mặt đất if collision.get_collider() == null: continue
+            # Nếu va chạm là với mặt đất
+            if collision.get_collider() == null:
+                continue
 
-            # Nếu đối tượng va chạm là một mob if collision.get_collider().is_in_group("mob"): var mob = collision.get_collider() # kiểm tra xem chúng ta có va vào nó từ phía trên hay không. if Vector3.UP.dot(collision.get_normal()) > 0.1: # Nếu có, ép bẹp nó và bật nảy. mob.squash() target_velocity.y = bounce_impulse # Ngăn các lệnh gọi trùng lặp tiếp theo. break
+            # Nếu collider va chạm với một mob
+            if collision.get_collider().is_in_group("mob"):
+                var mob = collision.get_collider()
+                # chúng ta kiểm tra xem mình có đang va vào nó từ phía trên hay không.
+                if Vector3.UP.dot(collision.get_normal()) > 0.1:
+                    # Nếu đúng vậy, chúng ta đè bẹp nó và bật nảy lên.
+                    mob.squash()
+                    target_velocity.y = bounce_impulse
+                    # Ngăn các lần gọi trùng lặp tiếp theo.
+                    break
 
-        # Di chuyển Character velocity = target_velocity move_and_slide()
+        # Di chuyển Character
+        velocity = target_velocity
+        move_and_slide()
 
         $Pivot.rotation.x = PI / 6 * velocity.y / jump_impulse
 
-    # Và hàm này ở cuối. func die(): hit.emit() queue_free()
+    # Và hàm này ở phía dưới.
+    func die():
+        hit.emit()
+        queue_free()
 
-    func _on_mob_detector_body_entered(body): die()
+    func _on_mob_detector_body_entered(body):
+        die()
 
  .. code-tab:: csharp
 
     using Godot;
 
-    public partial class Player : CharacterBody3D { // Được phát ra khi người chơi bị mob đánh trúng. [Signal] public delegate void HitEventHandler();
+    public partial class Player : CharacterBody3D
+    {
+        // Được phát ra khi người chơi bị mob đánh trúng.
+        [Signal]
+        public delegate void HitEventHandler();
 
-        // Tốc độ di chuyển của người chơi tính bằng mét trên giây. [Export] public int Speed { get; set; } = 14; // Gia tốc hướng xuống khi đang ở trên không, tính bằng mét trên giây bình phương. [Export] public int FallAcceleration { get; set; } = 75; // Xung lực theo phương dọc tác dụng lên nhân vật khi nhảy, tính bằng mét trên giây. [Export] public int JumpImpulse { get; set; } = 20; // Xung lực theo phương dọc tác dụng lên nhân vật khi bật nảy trên một mob, tính bằng mét trên giây. [Export] public int BounceImpulse { get; set; } = 16;
+        // Tốc độ di chuyển của người chơi, tính bằng mét trên giây.
+        [Export]
+        public int Speed { get; set; } = 14;
+        // Gia tốc hướng xuống khi ở trên không, tính bằng mét trên giây bình phương.
+        [Export]
+        public int FallAcceleration { get; set; } = 75;
+        // Xung lực theo phương dọc tác dụng lên nhân vật khi nhảy, tính bằng mét trên giây.
+        [Export]
+        public int JumpImpulse { get; set; } = 20;
+        // Xung lực theo phương dọc tác dụng lên nhân vật khi bật nảy lên một mob, tính bằng mét trên giây.
+        [Export]
+        public int BounceImpulse { get; set; } = 16;
 
         private Vector3 _targetVelocity = Vector3.Zero;
 
-        public override void _PhysicsProcess(double delta) { // Tạo một biến cục bộ để lưu hướng đầu vào. var direction = Vector3.Zero;
+        public override void _PhysicsProcess(double delta)
+        {
+            // Chúng ta tạo một biến cục bộ để lưu hướng di chuyển.
+            var direction = Vector3.Zero;
 
-            // Kiểm tra từng lệnh di chuyển và cập nhật hướng tương ứng. if (Input.IsActionPressed("move_right")) { direction.X += 1.0f; } if (Input.IsActionPressed("move_left")) { direction.X -= 1.0f; } if (Input.IsActionPressed("move_back")) { // Lưu ý rằng chúng ta đang làm việc với các trục X và Z của vector. // Trong không gian 3D, mặt phẳng XZ là mặt phẳng mặt đất. direction.Z += 1.0f; } if (Input.IsActionPressed("move_forward")) { direction.Z -= 1.0f; }
+            // Chúng ta kiểm tra từng input di chuyển và cập nhật hướng tương ứng.
+            if (Input.IsActionPressed("move_right"))
+            {
+                direction.X += 1.0f;
+            }
+            if (Input.IsActionPressed("move_left"))
+            {
+                direction.X -= 1.0f;
+            }
+            if (Input.IsActionPressed("move_back"))
+            {
+                // Hãy chú ý rằng chúng ta đang làm việc với các trục X và Z của vector.
+                // Trong không gian 3D, mặt phẳng XZ là mặt phẳng mặt đất.
+                direction.Z += 1.0f;
+            }
+            if (Input.IsActionPressed("move_forward"))
+            {
+                direction.Z -= 1.0f;
+            }
 
-            // Ngăn chuyển động chéo quá nhanh. if (direction != Vector3.Zero) { direction = direction.Normalized(); // Việc thiết lập thuộc tính basis sẽ ảnh hưởng đến phép xoay của node. GetNode<Node3D>("Pivot").Basis = Basis.LookingAt(direction); GetNode<AnimationPlayer>("AnimationPlayer").SpeedScale = 4; } else { GetNode<AnimationPlayer>("AnimationPlayer").SpeedScale = 1; }
+            // Ngăn việc di chuyển theo đường chéo nhanh hơn.
+            if (direction != Vector3.Zero)
+            {
+                direction = direction.Normalized();
+                // Việc thiết lập thuộc tính basis sẽ ảnh hưởng đến rotation của node.
+                GetNode<Node3D>("Pivot").Basis = Basis.LookingAt(direction);
+                GetNode<AnimationPlayer>("AnimationPlayer").SpeedScale = 4;
+            }
+            else
+            {
+                GetNode<AnimationPlayer>("AnimationPlayer").SpeedScale = 1;
+            }
 
-            // Vận tốc trên mặt đất _targetVelocity.X = direction.X * Speed; _targetVelocity.Z = direction.Z * Speed;
+            // Vận tốc trên mặt đất
+            _targetVelocity.X = direction.X * Speed;
+            _targetVelocity.Z = direction.Z * Speed;
 
-            // Vận tốc theo phương dọc if (!IsOnFloor()) { _targetVelocity.Y -= FallAcceleration * (float)delta; }
+            // Vận tốc theo phương dọc
+            if (!IsOnFloor())
+            {
+                _targetVelocity.Y -= FallAcceleration * (float)delta;
+            }
 
-            // Nhảy. if (IsOnFloor() && Input.IsActionJustPressed("jump")) { _targetVelocity.Y += JumpImpulse; }
+            // Đang nhảy.
+            if (IsOnFloor() && Input.IsActionJustPressed("jump"))
+            {
+                _targetVelocity.Y += JumpImpulse;
+            }
 
-            // Duyệt qua tất cả va chạm xảy ra trong khung hình này. for (int index = 0; index < GetSlideCollisionCount(); index++) { // Lấy một trong các va chạm với người chơi. KinematicCollision3D collision = GetSlideCollision(index);
+            // Duyệt qua tất cả các va chạm xảy ra trong frame này.
+            for (int index = 0; index < GetSlideCollisionCount(); index++)
+            {
+                // Chúng ta lấy một trong các va chạm với người chơi.
+                KinematicCollision3D collision = GetSlideCollision(index);
 
-                // Nếu va chạm với một mob. if (collision.GetCollider() is Mob mob) { // Kiểm tra xem chúng ta có va vào nó từ phía trên hay không. if (Vector3.Up.Dot(collision.GetNormal()) > 0.1f) { // Nếu có, ép bẹp nó và bật nảy. mob.Squash(); _targetVelocity.Y = BounceImpulse; // Ngăn các lệnh gọi trùng lặp tiếp theo. break; } } }
+                // Nếu va chạm là với một mob.
+                if (collision.GetCollider() is Mob mob)
+                {
+                    // Chúng ta kiểm tra xem mình có đang va vào nó từ phía trên hay không.
+                    if (Vector3.Up.Dot(collision.GetNormal()) > 0.1f)
+                    {
+                        // Nếu đúng vậy, chúng ta đè bẹp nó và bật nảy lên.
+                        mob.Squash();
+                        _targetVelocity.Y = BounceImpulse;
+                        // Ngăn các lần gọi trùng lặp tiếp theo.
+                        break;
+                    }
+                }
+            }
 
-            // Di chuyển nhân vật Velocity = _targetVelocity; MoveAndSlide();
+            // Di chuyển character
+            Velocity = _targetVelocity;
+            MoveAndSlide();
 
-            var pivot = GetNode<Node3D>("Pivot"); pivot.Rotation = new Vector3(Mathf.Pi / 6.0f * Velocity.Y / JumpImpulse, pivot.Rotation.Y, pivot.Rotation.Z); }
+            var pivot = GetNode<Node3D>("Pivot");
+            pivot.Rotation = new Vector3(Mathf.Pi / 6.0f * Velocity.Y / JumpImpulse, pivot.Rotation.Y, pivot.Rotation.Z);
+        }
 
-        private void Die() { EmitSignal(SignalName.Hit); QueueFree(); }
+        private void Die()
+        {
+            EmitSignal(SignalName.Hit);
+            QueueFree();
+        }
 
-        private void OnMobDetectorBodyEntered(Node body) { Die(); } }
+        private void OnMobDetectorBodyEntered(Node body)
+        {
+            Die();
+        }
+    }
 
 
 Và script của *Mob*.
@@ -290,41 +461,97 @@ Và script của *Mob*.
 
     extends CharacterBody3D
 
-    # Tốc độ tối thiểu của mob tính bằng mét trên giây. @export var min_speed = 10.0 # Tốc độ tối đa của mob tính bằng mét trên giây. @export var max_speed = 18.0
+    # Tốc độ tối thiểu của mob, tính bằng mét trên giây.
+    @export var min_speed = 10.0
+    # Tốc độ tối đa của mob, tính bằng mét trên giây.
+    @export var max_speed = 18.0
 
-    # Được phát ra khi người chơi nhảy lên mob signal squashed
+    # Được phát ra khi người chơi nhảy lên mob
+    signal squashed
 
-    func _physics_process(_delta): move_and_slide()
+    func _physics_process(_delta):
+        move_and_slide()
 
-    # Hàm này sẽ được gọi từ scene Main. func initialize(start_position, player_position): # Đặt mob bằng cách đặt nó tại start_position # và xoay nó về phía player_position để nó hướng về người chơi. look_at_from_position(start_position, player_position, Vector3.UP) # Xoay mob này ngẫu nhiên trong phạm vi từ -45 đến +45 độ, # để nó không di chuyển trực tiếp về phía người chơi. rotate_y(randf_range(-PI / 4, PI / 4))
+    # Hàm này sẽ được gọi từ scene Main.
+    func initialize(start_position, player_position):
+        # Chúng ta định vị mob bằng cách đặt nó tại start_position
+        # và xoay nó về phía player_position để nó nhìn vào người chơi.
+        look_at_from_position(start_position, player_position, Vector3.UP)
+        # Xoay mob này ngẫu nhiên trong phạm vi từ -45 đến +45 độ,
+        # để nó không di chuyển thẳng về phía người chơi.
+        rotate_y(randf_range(-PI / 4, PI / 4))
 
-        # Tính một tốc độ ngẫu nhiên (float) var random_speed = randf_range(min_speed, max_speed) # Tính vận tốc hướng về phía trước biểu thị tốc độ. velocity = Vector3.FORWARD * random_speed # Sau đó xoay vector vận tốc dựa trên phép xoay Y của mob # để di chuyển theo hướng mob đang nhìn. velocity = velocity.rotated(Vector3.UP, rotation.y)
+        # Chúng ta tính một tốc độ ngẫu nhiên (float)
+        var random_speed = randf_range(min_speed, max_speed)
+        # Chúng ta tính một vận tốc hướng về phía trước biểu thị cho tốc độ đó.
+        velocity = Vector3.FORWARD * random_speed
+        # Sau đó, chúng ta xoay vector vận tốc dựa trên rotation Y của mob
+        # để di chuyển theo hướng mà mob đang nhìn.
+        velocity = velocity.rotated(Vector3.UP, rotation.y)
 
         $AnimationPlayer.speed_scale = random_speed / min_speed
 
-    func _on_visible_on_screen_notifier_3d_screen_exited(): queue_free()
+    func _on_visible_on_screen_notifier_3d_screen_exited():
+        queue_free()
 
-    func squash(): squashed.emit() queue_free() # Hủy node này
+    func squash():
+        squashed.emit()
+        queue_free() # Destroy this node
 
  .. code-tab:: csharp
 
     using Godot;
 
-    public partial class Mob : CharacterBody3D { // Được phát ra khi người chơi nhảy lên mob. [Signal] public delegate void SquashedEventHandler();
+    public partial class Mob : CharacterBody3D
+    {
+        // Được phát ra khi người chơi nhảy lên mob.
+        [Signal]
+        public delegate void SquashedEventHandler();
 
-        // Tốc độ tối thiểu của mob tính bằng mét trên giây [Export] public float MinSpeed { get; set; } = 10.0f; // Tốc độ tối đa của mob tính bằng mét trên giây [Export] public float MaxSpeed { get; set; } = 18.0f;
+        // Tốc độ tối thiểu của mob, tính bằng mét trên giây
+        [Export]
+        public float MinSpeed { get; set; } = 10.0f;
+        // Tốc độ tối đa của mob, tính bằng mét trên giây
+        [Export]
+        public float MaxSpeed { get; set; } = 18.0f;
 
-        public override void _PhysicsProcess(double delta) { MoveAndSlide(); }
+        public override void _PhysicsProcess(double delta)
+        {
+            MoveAndSlide();
+        }
 
-        // Hàm này sẽ được gọi từ scene Main. public void Initialize(Vector3 startPosition, Vector3 playerPosition) { // Đặt mob bằng cách đặt nó tại startPosition // và xoay nó về phía playerPosition để nó hướng về người chơi. LookAtFromPosition(startPosition, playerPosition, Vector3.Up); // Xoay mob này ngẫu nhiên trong phạm vi từ -45 đến +45 độ, // để nó không di chuyển trực tiếp về phía người chơi. RotateY((float)GD.RandRange(-Mathf.Pi / 4.0, Mathf.Pi / 4.0));
+        // Hàm này sẽ được gọi từ scene Main.
+        public void Initialize(Vector3 startPosition, Vector3 playerPosition)
+        {
+            // Chúng ta định vị mob bằng cách đặt nó tại startPosition
+            // và xoay nó về phía playerPosition để nó nhìn vào người chơi.
+            LookAtFromPosition(startPosition, playerPosition, Vector3.Up);
+            // Xoay mob này ngẫu nhiên trong phạm vi từ -45 đến +45 độ,
+            // để nó không di chuyển thẳng về phía người chơi.
+            RotateY((float)GD.RandRange(-Mathf.Pi / 4.0, Mathf.Pi / 4.0));
 
-            // Tính một tốc độ ngẫu nhiên (float). float randomSpeed = GD.RandRange(MinSpeed, MaxSpeed); // Tính vận tốc hướng về phía trước biểu thị tốc độ. Velocity = Vector3.Forward * randomSpeed; // Sau đó xoay vector vận tốc dựa trên phép xoay Y của mob // để di chuyển theo hướng mob đang nhìn. Velocity = Velocity.Rotated(Vector3.Up, Rotation.Y);
+            // Chúng ta tính một tốc độ ngẫu nhiên (float).
+            float randomSpeed = GD.RandRange(MinSpeed, MaxSpeed);
+            // Chúng ta tính một vận tốc hướng về phía trước biểu thị cho tốc độ đó.
+            Velocity = Vector3.Forward * randomSpeed;
+            // Sau đó, chúng ta xoay vector vận tốc dựa trên rotation Y của mob
+            // để di chuyển theo hướng mà mob đang nhìn.
+            Velocity = Velocity.Rotated(Vector3.Up, Rotation.Y);
 
-            GetNode<AnimationPlayer>("AnimationPlayer").SpeedScale = randomSpeed / MinSpeed; }
+            GetNode<AnimationPlayer>("AnimationPlayer").SpeedScale = randomSpeed / MinSpeed;
+        }
 
-        public void Squash() { EmitSignal(SignalName.Squashed); QueueFree(); // Hủy node này }
+        public void Squash()
+        {
+            EmitSignal(SignalName.Squashed);
+            QueueFree(); // Destroy this node
+        }
 
-        private void OnVisibilityNotifierScreenExited() { QueueFree(); } }
+        private void OnVisibilityNotifierScreenExited()
+        {
+            QueueFree();
+        }
+    }
 
 .. |image0| image:: img/squash-the-creeps-final.gif
 .. |image1| image:: img/09.adding_animations/animation_player_dock.webp

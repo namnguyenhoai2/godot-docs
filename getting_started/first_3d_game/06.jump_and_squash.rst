@@ -1,128 +1,143 @@
 .. _doc_first_3d_game_jumping_and_squashing_monsters:
 
-Nhảy và nghiền quái vật
+Nhảy và đè bẹp quái vật
 =======================
 
-Trong phần này, chúng ta sẽ thêm khả năng nhảy và nghiền quái vật. Trong bài học tiếp theo, chúng ta sẽ khiến người chơi chết khi bị quái vật va vào trên mặt đất.
+Trong phần này, chúng ta sẽ thêm khả năng nhảy và đè bẹp quái vật. Trong bài học tiếp theo, chúng ta sẽ khiến nhân vật chết khi bị quái vật đánh trúng trên mặt đất.
 
-Trước tiên, chúng ta phải thay đổi một vài thiết lập liên quan đến tương tác vật lý. Hãy bước vào thế giới của :ref:`physics layers <doc_physics_introduction_collision_layers_and_masks>`.
+Trước tiên, chúng ta phải thay đổi một vài cài đặt liên quan đến tương tác vật lý. Hãy bước vào thế giới của :ref:`physics layers <doc_physics_introduction_collision_layers_and_masks>`.
 
 Điều khiển tương tác vật lý
 ---------------------------
 
-Các thân vật lý có quyền truy cập vào hai thuộc tính bổ trợ: lớp và mặt nạ. Lớp xác định một đối tượng nằm trên (các) lớp vật lý nào.
+Các physics body có quyền truy cập vào hai thuộc tính bổ trợ: layer và mask. Layer xác định một đối tượng nằm trên physics layer nào.
 
-Mặt nạ kiểm soát các lớp mà một thân sẽ lắng nghe và phát hiện. Điều này ảnh hưởng đến việc phát hiện va chạm. Khi muốn hai thân tương tác với nhau, ít nhất một thân phải có mặt nạ tương ứng với thân kia.
+Mask kiểm soát các layer mà một body sẽ lắng nghe và phát hiện. Điều này ảnh hưởng đến việc phát hiện va chạm. Khi muốn hai body tương tác với nhau, ít nhất một body phải có mask tương ứng với body còn lại.
 
 Nếu điều này khiến bạn bối rối thì đừng lo, chúng ta sẽ xem ba ví dụ ngay sau đây.
 
-Điểm quan trọng là bạn có thể dùng lớp và mặt nạ để lọc các tương tác vật lý, kiểm soát hiệu năng và loại bỏ nhu cầu về các điều kiện bổ sung trong mã của mình.
+Điểm quan trọng là bạn có thể sử dụng layer và mask để lọc các tương tác vật lý, kiểm soát hiệu năng và loại bỏ nhu cầu về các điều kiện bổ sung trong code.
 
-Theo mặc định, tất cả các thân và vùng vật lý đều được đặt cả lớp và mặt nạ là ``1``. Điều này có nghĩa là tất cả chúng đều va chạm với nhau.
+Theo mặc định, tất cả physics body và area đều được đặt layer và mask thành ``1``. Điều này có nghĩa là tất cả chúng đều va chạm với nhau.
 
-Các lớp vật lý được biểu diễn bằng các số, nhưng chúng ta có thể đặt tên cho chúng để dễ theo dõi.
+Physics layer được biểu diễn bằng các số, nhưng chúng ta có thể đặt tên cho chúng để dễ theo dõi.
 
-Đặt tên cho các lớp
-~~~~~~~~~~~~~~~~~~~
+Đặt tên layer
+~~~~~~~~~~~~~
 
-Hãy đặt tên cho các lớp vật lý. Đi tới *Project -> Project Settings*.
+Hãy đặt tên cho physics layer của chúng ta. Đi tới *Project -> Project Settings*.
 
 |image0|
 
-Trong menu bên trái, di chuyển xuống *Layer Names -> 3D Physics*. Bạn sẽ thấy danh sách các lớp, bên phải mỗi lớp là một trường. Bạn có thể đặt tên cho chúng tại đó. Lần lượt đặt tên cho ba lớp đầu tiên là *player*, *enemies* và *world*.
+Trong menu bên trái, cuộn xuống *Layer Names -> 3D Physics*. Bạn sẽ thấy danh sách các layer, bên cạnh mỗi layer ở bên phải là một trường. Bạn có thể đặt tên cho chúng tại đó. Lần lượt đặt tên cho ba layer đầu tiên là *player*, *enemies* và *world*.
 
 |image1|
 
-Bây giờ, chúng ta có thể gán chúng cho các nút vật lý.
+Bây giờ, chúng ta có thể gán chúng cho các physics node.
 
-Gán lớp và mặt nạ
+Gán layer và mask
 ~~~~~~~~~~~~~~~~~
 
-Trong cảnh *Main*, chọn nút ``Ground``. Trong *Inspector*, mở rộng phần *Collision*. Tại đó, bạn sẽ thấy các lớp và mặt nạ của nút dưới dạng một lưới các nút.
+Trong scene *Main*, chọn node ``Ground``. Trong *Inspector*, mở rộng phần *Collision*. Tại đó, bạn sẽ thấy layer và mask của node dưới dạng một lưới các nút.
 
 |image2|
 
-Mặt đất là một phần của thế giới, vì vậy chúng ta muốn nó thuộc lớp thứ ba. Nhấp vào nút đang sáng để chuyển **off** lớp *Layer* đầu tiên và chuyển **on** lớp thứ ba. Sau đó, chuyển **off** *Mask* bằng cách nhấp vào nó.
+Mặt đất là một phần của world, vì vậy chúng ta muốn nó thuộc layer thứ ba. Nhấp vào nút đang sáng để chuyển *Layer* đầu tiên sang **off** và layer thứ ba sang **on**. Sau đó, chuyển *Mask* sang **off** bằng cách nhấp vào nó.
 
 |image3|
 
-Như đã đề cập trước đó, thuộc tính *Mask* cho phép một nút lắng nghe tương tác với các đối tượng vật lý khác, nhưng chúng ta không cần nó có va chạm. ``Ground`` không cần lắng nghe bất kỳ điều gì; nó chỉ ở đó để ngăn các sinh vật rơi xuống.
+Như đã đề cập trước đó, thuộc tính *Mask* cho phép một node lắng nghe tương tác với các physics object khác, nhưng chúng ta không cần nó có va chạm. ``Ground`` không cần lắng nghe bất cứ thứ gì; nó chỉ ở đó để ngăn các sinh vật rơi xuống.
 
-Lưu ý rằng bạn có thể nhấp vào nút "..." ở bên phải các thuộc tính để xem danh sách các ô kiểm có tên.
+Lưu ý rằng bạn có thể nhấp vào nút "..." ở bên phải các thuộc tính để xem danh sách các checkbox có tên.
 
 |image4|
 
-Tiếp theo là ``Player`` và ``Mob``. Mở ``player.tscn`` bằng cách nhấp đúp vào tệp trong bảng *FileSystem*.
+Tiếp theo là ``Player`` và ``Mob``. Mở ``player.tscn`` bằng cách nhấp đúp vào file trong dock *FileSystem*.
 
-Chọn nút *Player* và đặt *Collision -> Mask* của nó thành cả "enemies" và "world". Bạn có thể giữ nguyên thuộc tính *Layer* mặc định, vì lớp đầu tiên là lớp "player".
+Chọn node *Player* và đặt *Collision -> Mask* của nó thành cả "enemies" và "world". Bạn có thể giữ nguyên thuộc tính *Layer* mặc định, vì layer đầu tiên là layer "player".
 
 |image5|
 
-Sau đó, mở cảnh *Mob* bằng cách nhấp đúp vào ``mob.tscn`` và chọn nút ``Mob``.
+Sau đó, mở scene *Mob* bằng cách nhấp đúp vào ``mob.tscn`` và chọn node ``Mob``.
 
-Đặt *Collision -> Layer* của nó thành "enemies" và bỏ chọn *Collision -> Mask*, để mặt nạ trống.
+Đặt *Collision -> Layer* của nó thành "enemies" và bỏ chọn *Collision -> Mask*, để mask trống.
 
 |image6|
 
-Các thiết lập này có nghĩa là những quái vật sẽ đi xuyên qua nhau. Nếu muốn các quái vật va chạm và trượt vào nhau, hãy bật mặt nạ "enemies".
+Các cài đặt này có nghĩa là quái vật sẽ di chuyển xuyên qua nhau. Nếu muốn quái vật va chạm và trượt vào nhau, hãy bật mask "enemies".
 
 .. note::
 
-    Các mob không cần mặt nạ cho lớp "world" vì chúng chỉ di chuyển trên mặt phẳng XZ. Theo thiết kế, chúng ta không áp dụng trọng lực cho chúng.
+    Các mob không cần mask layer "world" vì chúng chỉ di chuyển trên mặt phẳng XZ. Theo thiết kế, chúng ta không áp dụng gravity cho chúng.
 
 Nhảy
 ----
 
-Bản thân cơ chế nhảy chỉ cần hai dòng mã. Mở tập lệnh *Player*. Chúng ta cần một giá trị để điều khiển lực nhảy và cập nhật ``_physics_process()`` để lập trình thao tác nhảy.
+Bản thân cơ chế nhảy chỉ cần hai dòng code. Mở script *Player*. Chúng ta cần một giá trị để điều khiển lực nhảy và cập nhật ``_physics_process()`` để lập trình việc nhảy.
 
-Sau dòng định nghĩa ``fall_acceleration``, ở đầu tập lệnh, hãy thêm ``jump_impulse``.
+Sau dòng định nghĩa ``fall_acceleration``, ở đầu script, hãy thêm ``jump_impulse``.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-   #... # Vertical impulse applied to the character upon jumping in meters per second. @export var jump_impulse = 20
+   #...
+   # Xung lực theo phương dọc được áp dụng cho nhân vật khi nhảy, tính bằng mét trên giây.
+   @export var jump_impulse = 20
 
  .. code-tab:: csharp
 
-    // Don't forget to rebuild the project so the editor knows about the new export variable.
+    // Đừng quên rebuild project để editor nhận biết biến export mới.
 
-    // ... // Vertical impulse applied to the character upon jumping in meters per second. [Export] public int JumpImpulse { get; set; } = 20;
+    // ...
+    // Xung lực theo phương dọc được áp dụng cho nhân vật khi nhảy, tính bằng mét trên giây.
+    [Export]
+    public int JumpImpulse { get; set; } = 20;
 
-Bên trong ``_physics_process()``, hãy thêm đoạn mã sau trước khối mã ``move_and_slide()``.
+Bên trong ``_physics_process()``, hãy thêm đoạn code sau trước codeblock ``move_and_slide()``.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-   func _physics_process(delta): #...
+   func _physics_process(delta):
+       #...
 
-       # Jumping. if is_on_floor() and Input.is_action_just_pressed("jump"): target_velocity.y = jump_impulse
+       # Đang nhảy.
+       if is_on_floor() and Input.is_action_just_pressed("jump"):
+           target_velocity.y = jump_impulse
 
        #...
 
  .. code-tab:: csharp
 
-    public override void _PhysicsProcess(double delta) { // ...
+    public override void _PhysicsProcess(double delta)
+    {
+        // ...
 
-        // Jumping. if (IsOnFloor() && Input.IsActionJustPressed("jump")) { _targetVelocity.Y = JumpImpulse; }
+        // Đang nhảy.
+        if (IsOnFloor() && Input.IsActionJustPressed("jump"))
+        {
+            _targetVelocity.Y = JumpImpulse;
+        }
 
-        // ... }
+        // ...
+    }
 
 Đó là tất cả những gì bạn cần để nhảy!
 
-Phương thức ``is_on_floor()`` là một công cụ từ lớp ``CharacterBody3D``. Nó trả về ``true`` nếu thân đã va chạm với mặt sàn trong khung hình này. Đó là lý do chúng ta áp dụng trọng lực cho *Player*: để va chạm với mặt sàn thay vì lơ lửng bên trên như những quái vật.
+Phương thức ``is_on_floor()`` là một công cụ từ class ``CharacterBody3D``. Nó trả về ``true`` nếu body va chạm với sàn trong frame này. Đó là lý do chúng ta áp dụng gravity cho *Player*: để nó va chạm với sàn thay vì lơ lửng phía trên như những con quái vật.
 
-Nếu nhân vật đang ở trên mặt sàn và người chơi nhấn "jump", chúng ta ngay lập tức cho nhân vật một vận tốc thẳng đứng lớn. Trong trò chơi, bạn thực sự muốn các điều khiển phản hồi nhanh, và việc tăng vận tốc tức thời như thế này tuy không thực tế nhưng lại tạo cảm giác rất tuyệt.
+Nếu nhân vật đang ở trên sàn và người chơi nhấn "jump", chúng ta lập tức cung cấp cho nhân vật một vận tốc theo phương dọc rất lớn. Trong game, bạn thực sự muốn các điều khiển phản hồi nhanh; những cú tăng tốc tức thời như vậy tuy không thực tế nhưng tạo cảm giác rất tuyệt.
 
 Lưu ý rằng trục Y có chiều dương hướng lên trên. Điều này khác với 2D, nơi trục Y có chiều dương hướng xuống dưới.
 
-Nghiền quái vật
+Đè bẹp quái vật
 ---------------
 
-Tiếp theo, hãy thêm cơ chế nghiền. Chúng ta sẽ khiến nhân vật bật nảy trên quái vật và đồng thời tiêu diệt chúng.
+Tiếp theo, hãy thêm cơ chế đè bẹp. Chúng ta sẽ khiến nhân vật bật nảy qua quái vật và đồng thời tiêu diệt chúng.
 
-Chúng ta cần phát hiện các va chạm với quái vật và phân biệt chúng với các va chạm với mặt sàn. Để làm vậy, chúng ta có thể sử dụng tính năng gắn thẻ :ref:`group <doc_groups>` của Godot.
+Chúng ta cần phát hiện các va chạm với quái vật và phân biệt chúng với các va chạm với sàn. Để làm vậy, chúng ta có thể sử dụng tính năng gắn thẻ :ref:`group <doc_groups>` của Godot.
 
-Mở lại cảnh ``mob.tscn`` và chọn nút *Mob*. Đi tới bảng *Groups* ở bên phải để xem danh sách các nhóm, cho phép bạn gán thẻ cho các nút. Nhấp vào nút *+* để mở hộp thoại *Create new Group*.
+Mở lại scene ``mob.tscn`` và chọn node *Mob*. Đi tới dock *Groups* ở bên phải để xem danh sách các group, cho phép bạn gán tag cho các node. Nhấp vào nút *+* để mở hộp thoại *Create new Group*.
 
 |image7|
 
@@ -130,111 +145,165 @@ Nhập "mob" vào trường *Name* và nhấp vào nút *Ok*.
 
 |image8|
 
-Nhóm "mob" giờ sẽ hiển thị trong phần *Scene Groups*.
+Group "mob" hiện được hiển thị trong phần *Scene Groups*.
 
 |image9|
 
-Một biểu tượng xuất hiện trong bảng *Scene* để cho biết nút thuộc ít nhất một nhóm.
+Một icon xuất hiện trong dock *Scene* để cho biết node thuộc ít nhất một group.
 
 |image10|
 
-Giờ đây, chúng ta có thể sử dụng nhóm trong mã để phân biệt các va chạm với quái vật với các va chạm với mặt sàn.
+Bây giờ, chúng ta có thể sử dụng group trong code để phân biệt va chạm với quái vật và va chạm với sàn.
 
-Lập trình cơ chế nghiền
+Lập trình cơ chế đè bẹp
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Quay lại tập lệnh *Player* để lập trình thao tác nghiền và bật nảy.
+Quay lại script *Player* để lập trình việc đè bẹp và bật nảy.
 
-Ở đầu tập lệnh, chúng ta cần thêm một thuộc tính khác, ``bounce_impulse``. Khi nghiền kẻ địch, chúng ta không nhất thiết muốn nhân vật bay cao như khi nhảy.
-
-.. tabs::
- .. code-tab:: gdscript GDScript
-
-   # Vertical impulse applied to the character upon bouncing over a mob in # meters per second. @export var bounce_impulse = 16
-
- .. code-tab:: csharp
-
-    // Don't forget to rebuild the project so the editor knows about the new export variable.
-
-    // Vertical impulse applied to the character upon bouncing over a mob in meters per second. [Export] public int BounceImpulse { get; set; } = 16;
-
-Sau khối mã **Jumping** mà chúng ta đã thêm ở trên trong ``_physics_process()``, hãy thêm vòng lặp sau. Với ``move_and_slide()``, Godot đôi khi khiến thân di chuyển nhiều lần liên tiếp để làm chuyển động của nhân vật mượt hơn. Vì vậy, chúng ta phải lặp qua tất cả các va chạm có thể đã xảy ra.
-
-Trong mỗi lần lặp, chúng ta kiểm tra xem mình có đáp xuống một mob hay không. Nếu có, chúng ta tiêu diệt nó và bật nảy.
-
-Với đoạn mã này, nếu không có va chạm nào xảy ra trong một khung hình nhất định, vòng lặp sẽ không chạy.
+Ở đầu script, chúng ta cần thêm một property khác, ``bounce_impulse``. Khi đè bẹp kẻ địch, chúng ta không nhất thiết muốn nhân vật bay lên cao như khi nhảy.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _physics_process(delta): #...
-
-        # Iterate through all collisions that occurred this frame for index in range(get_slide_collision_count()): # We get one of the collisions with the player var collision = get_slide_collision(index)
-
-            # If there are duplicate collisions with a mob in a single frame # the mob will be deleted after the first collision, and a second call to # get_collider will return null, leading to a null pointer when calling # collision.get_collider().is_in_group("mob"). # This block of code prevents processing duplicate collisions. if collision.get_collider() == null: continue
-
-            # If the collider is with a mob if collision.get_collider().is_in_group("mob"): var mob = collision.get_collider() # we check that we are hitting it from above. if Vector3.UP.dot(collision.get_normal()) > 0.1: # If so, we squash it and bounce. mob.squash() target_velocity.y = bounce_impulse # Prevent further duplicate calls. break
+   # Xung lực theo phương dọc được áp dụng cho nhân vật khi bật nảy qua một mob, tính bằng
+   # mét trên giây.
+   @export var bounce_impulse = 16
 
  .. code-tab:: csharp
 
-    public override void _PhysicsProcess(double delta) { // ...
+    // Đừng quên rebuild project để editor nhận biết biến export mới.
 
-        // Iterate through all collisions that occurred this frame. for (int index = 0; index < GetSlideCollisionCount(); index++) { // We get one of the collisions with the player. KinematicCollision3D collision = GetSlideCollision(index);
+    // Xung lực theo phương dọc được áp dụng cho nhân vật khi bật nảy qua một mob, tính bằng mét trên giây.
+    [Export]
+    public int BounceImpulse { get; set; } = 16;
 
-            // If the collision is with a mob. // With C# we leverage typing and pattern-matching // instead of checking for the group we created. if (collision.GetCollider() is Mob mob) { // We check that we are hitting it from above. if (Vector3.Up.Dot(collision.GetNormal()) > 0.1f) { // If so, we squash it and bounce. mob.Squash(); _targetVelocity.Y = BounceImpulse; // Prevent further duplicate calls. break; } } } }
+Sau codeblock **Jumping** mà chúng ta đã thêm ở trên trong ``_physics_process()``, hãy thêm vòng lặp sau. Với ``move_and_slide()``, đôi khi Godot khiến body di chuyển nhiều lần liên tiếp để làm mượt chuyển động của nhân vật. Vì vậy, chúng ta phải lặp qua tất cả các va chạm có thể đã xảy ra.
 
-Đó là khá nhiều hàm mới. Dưới đây là thêm một số thông tin về chúng.
+Trong mỗi lần lặp, chúng ta kiểm tra xem mình có tiếp đất trên một mob hay không. Nếu có, chúng ta tiêu diệt nó và bật nảy.
 
-Các hàm ``get_slide_collision_count()`` và ``get_slide_collision()`` đều xuất phát từ lớp :ref:`CharacterBody3D <class_CharacterBody3D>` và liên quan đến ``move_and_slide()``.
+Với code này, nếu không có va chạm nào xảy ra trong một frame nhất định, vòng lặp sẽ không chạy.
+
+.. tabs::
+ .. code-tab:: gdscript GDScript
+
+    func _physics_process(delta):
+        #...
+
+        # Lặp qua tất cả các va chạm đã xảy ra trong frame này
+        for index in range(get_slide_collision_count()):
+            # Chúng ta lấy một trong các va chạm với player
+            var collision = get_slide_collision(index)
+
+            # Nếu có các va chạm trùng lặp với một mob trong cùng một frame
+            # mob sẽ bị xóa sau va chạm đầu tiên và lần gọi thứ hai tới
+            # get_collider sẽ trả về null, dẫn đến null pointer khi gọi
+            # collision.get_collider().is_in_group("mob").
+            # Khối code này ngăn việc xử lý các va chạm trùng lặp.
+            if collision.get_collider() == null:
+                continue
+
+            # Nếu collider là một mob
+            if collision.get_collider().is_in_group("mob"):
+                var mob = collision.get_collider()
+                # chúng ta kiểm tra xem mình có đang va vào nó từ phía trên hay không.
+                if Vector3.UP.dot(collision.get_normal()) > 0.1:
+                    # Nếu có, chúng ta đè bẹp nó và bật nảy.
+                    mob.squash()
+                    target_velocity.y = bounce_impulse
+                    # Ngăn các lần gọi trùng lặp tiếp theo.
+                    break
+
+ .. code-tab:: csharp
+
+    public override void _PhysicsProcess(double delta)
+    {
+        // ...
+
+        // Lặp qua tất cả các va chạm đã xảy ra trong frame này.
+        for (int index = 0; index < GetSlideCollisionCount(); index++)
+        {
+            // Chúng ta lấy một trong các va chạm với player.
+            KinematicCollision3D collision = GetSlideCollision(index);
+
+            // Nếu va chạm là với một mob.
+            // Với C#, chúng ta tận dụng typing và pattern-matching
+            // thay vì kiểm tra group mà chúng ta đã tạo.
+            if (collision.GetCollider() is Mob mob)
+            {
+                // Chúng ta kiểm tra xem mình có đang va vào nó từ phía trên hay không.
+                if (Vector3.Up.Dot(collision.GetNormal()) > 0.1f)
+                {
+                    // Nếu có, chúng ta đè bẹp nó và bật nảy.
+                    mob.Squash();
+                    _targetVelocity.Y = BounceImpulse;
+                    // Ngăn các lần gọi trùng lặp tiếp theo.
+                    break;
+                }
+            }
+        }
+    }
+
+Có khá nhiều function mới. Dưới đây là thêm một số thông tin về chúng.
+
+Các function ``get_slide_collision_count()`` và ``get_slide_collision()`` đều đến từ class :ref:`CharacterBody3D <class_CharacterBody3D>` và liên quan đến ``move_and_slide()``.
 
 ``get_slide_collision()`` trả về một
 :ref:`KinematicCollision3D<class_KinematicCollision3D>` object that holds
-thông tin về vị trí và cách thức xảy ra va chạm. Ví dụ: chúng ta sử dụng thuộc tính ``get_collider`` của nó để kiểm tra xem chúng ta có va chạm với một "mob" hay không bằng cách gọi ``is_in_group()`` trên nó: ``collision.get_collider().is_in_group("mob")``.
+thông tin về vị trí và cách thức va chạm xảy ra. Ví dụ, chúng ta sử dụng thuộc tính ``get_collider`` của nó để kiểm tra xem mình có va chạm với một "mob" hay không bằng cách gọi ``is_in_group()`` trên nó: ``collision.get_collider().is_in_group("mob")``.
 
 .. note::
 
-    Phương thức ``is_in_group()`` có sẵn trên mọi :ref:`Node<class_Node>`.
+    Method ``is_in_group()`` có sẵn trên mọi :ref:`Node<class_Node>`.
 
-Để kiểm tra xem chúng ta có đang tiếp đất trên quái vật hay không, chúng ta sử dụng tích vô hướng của hai vector: ``Vector3.UP.dot(collision.get_normal()) > 0.1``. Pháp tuyến va chạm là một vector 3D vuông góc với mặt phẳng nơi xảy ra va chạm. Tích vô hướng cho phép chúng ta so sánh nó với hướng lên trên.
+Để kiểm tra xem chúng ta có tiếp đất trên quái vật hay không, chúng ta sử dụng tích vô hướng của vector: ``Vector3.UP.dot(collision.get_normal()) > 0.1``. Pháp tuyến va chạm là một vector 3D vuông góc với mặt phẳng nơi va chạm xảy ra. Tích vô hướng cho phép chúng ta so sánh nó với hướng lên trên.
 
-Với tích vô hướng, khi kết quả lớn hơn ``0``, hai vector tạo với nhau một góc nhỏ hơn 90 độ. Giá trị lớn hơn ``0.1`` cho chúng ta biết rằng chúng ta đang ở gần phía trên quái vật.
+Với tích vô hướng, khi kết quả lớn hơn ``0``, hai vector tạo với nhau một góc nhỏ hơn 90 độ. Giá trị lớn hơn ``0.1`` cho chúng ta biết rằng mình gần như đang ở phía trên quái vật.
 
-Sau khi xử lý logic ép bẹp và bật nảy, chúng ta kết thúc vòng lặp sớm bằng câu lệnh ``break`` để ngăn các lần gọi trùng lặp tiếp theo đến ``mob.squash()``, vốn có thể gây ra các lỗi ngoài ý muốn, chẳng hạn như tính điểm nhiều lần cho một lần tiêu diệt.
+Sau khi xử lý logic squash và bounce, chúng ta kết thúc vòng lặp sớm bằng câu lệnh ``break`` để ngăn các lần gọi trùng lặp tiếp theo đến ``mob.squash()``, nếu không có thể dẫn đến các lỗi ngoài ý muốn như tính điểm nhiều lần cho một lần hạ gục.
 
-Chúng ta đang gọi một hàm chưa được định nghĩa, ``mob.squash()``, vì vậy chúng ta phải thêm hàm này vào lớp Mob.
+Chúng ta đang gọi một function chưa được định nghĩa, ``mob.squash()``, vì vậy chúng ta phải thêm nó vào class Mob.
 
-Mở tập lệnh ``mob.gd`` bằng cách nhấp đúp vào nó trong ngăn *FileSystem*. Ở đầu tập lệnh, chúng ta muốn định nghĩa một tín hiệu mới có tên ``squashed``. Ở cuối, bạn có thể thêm hàm squash, trong đó chúng ta phát tín hiệu và hủy mob.
+Mở script ``mob.gd`` bằng cách nhấp đúp vào nó trong dock *FileSystem*. Ở đầu script, chúng ta muốn định nghĩa một signal mới có tên ``squashed``. Ở cuối, bạn có thể thêm function squash, trong đó chúng ta emit signal và hủy mob.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-   # Emitted when the player jumped on the mob. signal squashed
+   # Được emit khi người chơi nhảy lên mob.
+   signal squashed
 
    # ...
 
 
-   func squash(): squashed.emit() queue_free()
+   func squash():
+       squashed.emit()
+       queue_free()
 
  .. code-tab:: csharp
 
-    // Don't forget to rebuild the project so the editor knows about the new signal.
+    // Đừng quên rebuild project để editor nhận biết signal mới.
 
-    // Emitted when the player jumped on the mob. [Signal] public delegate void SquashedEventHandler();
+    // Được emit khi người chơi nhảy lên mob.
+    [Signal]
+    public delegate void SquashedEventHandler();
 
     // ...
 
-    public void Squash() { EmitSignal(SignalName.Squashed); QueueFree(); }
+    public void Squash()
+    {
+        EmitSignal(SignalName.Squashed);
+        QueueFree();
+    }
 
 .. note::
 
-    Khi sử dụng C#, Godot sẽ tự động tạo các sự kiện phù hợp cho tất cả các Signal kết thúc bằng `EventHandler`, xem :ref:`C# Signals <doc_c_sharp_signals>`.
+    Khi sử dụng C#, Godot sẽ tự động tạo các event phù hợp cho tất cả các Signal kết thúc bằng ``EventHandler``, xem :ref:`C# Signals <doc_c_sharp_signals>`.
 
-Chúng ta sẽ sử dụng tín hiệu này để cộng điểm vào số điểm trong bài học tiếp theo.
+Chúng ta sẽ sử dụng signal này để cộng điểm vào score trong bài học tiếp theo.
 
-Với những điều đó, bạn sẽ có thể tiêu diệt quái vật bằng cách nhảy lên chúng. Bạn có thể nhấn
+Với những gì đã làm, bạn sẽ có thể hạ gục quái vật bằng cách nhảy lên chúng. Bạn có thể nhấn
 :kbd:`F5` to try the game and set ``main.tscn`` as your project's main scene.
 
-Tuy nhiên, người chơi vẫn chưa chết. Chúng ta sẽ xử lý việc đó trong phần tiếp theo.
+Tuy nhiên, người chơi vẫn chưa chết. Chúng ta sẽ xử lý điều đó trong phần tiếp theo.
 
 .. |image0| image:: img/06.jump_and_squash/02.project_settings.webp
 .. |image1| image:: img/06.jump_and_squash/03.physics_layers.webp

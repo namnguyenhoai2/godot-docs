@@ -1,15 +1,15 @@
 .. _doc_class_reference_primer:
 
-Nhập môn tham chiếu lớp
-=======================
+Tổng quan về tài liệu tham chiếu lớp
+====================================
 
-Trang này giải thích cách viết tham chiếu lớp. Bạn sẽ học nơi viết các mô tả mới cho lớp, phương thức và thuộc tính của các loại nút tích hợp sẵn của Godot.
+Trang này giải thích cách viết tài liệu tham chiếu lớp. Bạn sẽ học cách viết các mô tả mới cho lớp, phương thức và thuộc tính của các loại node tích hợp sẵn của Godot ở đâu.
 
 .. seealso::
 
-    Để tìm hiểu cách gửi các thay đổi của bạn đến dự án Godot bằng hệ thống kiểm soát phiên bản Git, hãy xem `Tài liệu đóng góp cho tham chiếu lớp <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__.
+    Để tìm hiểu cách gửi các thay đổi của bạn đến dự án Godot bằng hệ thống quản lý phiên bản Git, hãy xem `Tài liệu đóng góp cho tài liệu tham chiếu lớp <https://contributing.godotengine.org/en/latest/development/documentation/class_reference.html>`__.
 
-Tham chiếu cho mỗi lớp được chứa trong một tệp XML như dưới đây:
+Tài liệu tham chiếu cho mỗi lớp được chứa trong một tệp XML như bên dưới:
 
 .. code-block:: xml
 
@@ -59,84 +59,84 @@ Tham chiếu cho mỗi lớp được chứa trong một tệp XML như dưới 
     </class>
 
 
-Tệp bắt đầu bằng các mô tả ngắn và dài. Trong tài liệu được tạo, mô tả ngắn luôn nằm ở đầu trang, còn mô tả dài nằm bên dưới danh sách phương thức, biến và hằng số. Bạn có thể tìm thấy các phương thức, biến thành viên, hằng số và tín hiệu trong các nút XML riêng biệt.
+Tệp bắt đầu bằng các mô tả ngắn và dài. Trong tài liệu được tạo, mô tả ngắn luôn nằm ở đầu trang, còn mô tả dài nằm bên dưới danh sách phương thức, biến và hằng số. Bạn có thể tìm thấy các phương thức, biến thành viên, hằng số và signal trong các node XML riêng biệt.
 
 Với mỗi mục, bạn cần tìm hiểu cách chúng hoạt động trong mã nguồn của Godot. Sau đó, điền tài liệu cho chúng bằng cách hoàn thiện hoặc cải thiện văn bản trong các thẻ sau:
 
-- `<brief_description>` - `<description>` - `<constant>` - `<method>` (trong thẻ `<description>` của nó; kiểu trả về và các đối số không có chuỗi tài liệu riêng) - `<member>` - `<signal>` (trong thẻ `<description>` của nó; các đối số không có chuỗi tài liệu riêng) - `<constant>`
+- ``<brief_description>`` - ``<description>`` - ``<constant>`` - ``<method>`` (trong thẻ ``<description>`` của nó; kiểu trả về và các đối số không có chuỗi tài liệu riêng) - ``<member>`` - ``<signal>`` (trong thẻ ``<description>`` của nó; các đối số không có chuỗi tài liệu riêng) - ``<constant>``
 
-Hãy viết bằng ngôn ngữ rõ ràng và đơn giản. Luôn tuân theo `hướng dẫn viết <https://contributing.godotengine.org/en/latest/documentation/guidelines/docs_writing_guidelines.html>`__ để giữ cho mô tả ngắn gọn và dễ đọc. **Không để lại các dòng trống** trong phần mô tả: mỗi dòng trong tệp XML sẽ tạo thành một đoạn mới, ngay cả khi dòng đó trống.
+Hãy viết bằng ngôn ngữ rõ ràng và đơn giản. Luôn tuân theo `hướng dẫn viết <https://contributing.godotengine.org/en/latest/development/documentation/docs_writing_guidelines.html>`__ để giữ cho các mô tả ngắn gọn và dễ đọc. **Không để lại các dòng trống** trong phần mô tả: mỗi dòng trong tệp XML sẽ tạo thành một đoạn văn mới, kể cả khi dòng đó trống.
 
 .. _doc_class_reference_editing_xml:
 
 Cách chỉnh sửa XML của lớp
 --------------------------
 
-Chỉnh sửa tệp của lớp bạn chọn trong ``doc/classes/`` để cập nhật tham chiếu lớp. Thư mục này chứa một tệp XML cho mỗi lớp. XML liệt kê các hằng số và phương thức bạn sẽ tìm thấy trong tham chiếu lớp. Godot tự động tạo và cập nhật XML.
+Chỉnh sửa tệp của lớp bạn chọn trong ``doc/classes/`` để cập nhật tài liệu tham chiếu lớp. Thư mục này chứa một tệp XML cho mỗi lớp. XML liệt kê các hằng số và phương thức mà bạn sẽ thấy trong tài liệu tham chiếu lớp. Godot tự động tạo và cập nhật XML.
 
 .. note:: For some modules in the engine's source code, you'll find the XML
           các tệp trong thư mục ``modules/<module_name>/doc_classes/`` thay thế.
 
-Chỉnh sửa tệp bằng trình soạn thảo văn bản yêu thích của bạn. Nếu sử dụng trình soạn thảo mã, hãy đảm bảo dùng tab để thụt lề.
+Hãy chỉnh sửa tệp bằng trình soạn thảo văn bản yêu thích của bạn. Nếu sử dụng trình soạn thảo mã, hãy đảm bảo rằng phần thụt lề sử dụng tab.
 
-Để kiểm tra xem các sửa đổi bạn đã thực hiện có chính xác trong tài liệu được tạo hay không, hãy chuyển đến thư mục ``doc/`` và chạy lệnh ``make rst``. Lệnh này sẽ chuyển đổi các tệp XML sang định dạng của tài liệu trực tuyến và xuất lỗi nếu có vấn đề.
+Để kiểm tra các sửa đổi bạn đã thực hiện có chính xác trong tài liệu được tạo hay không, hãy chuyển đến thư mục ``doc/`` và chạy lệnh ``make rst``. Lệnh này sẽ chuyển đổi các tệp XML sang định dạng của tài liệu trực tuyến và xuất lỗi nếu có vấn đề.
 
-Ngoài ra, bạn có thể biên dịch Godot và mở trang đã sửa trong phần tham chiếu mã tích hợp sẵn. Để tìm hiểu cách biên dịch engine, hãy đọc :ref:`compilation guide <toc-devel-compiling>`.
+Ngoài ra, bạn có thể build Godot và mở trang đã sửa đổi trong tài liệu tham chiếu lớp tích hợp sẵn. Để tìm hiểu cách biên dịch engine, hãy đọc :ref:`compilation guide <toc-devel-compiling>`.
 
-Chúng tôi khuyến nghị sử dụng một trình soạn thảo mã hỗ trợ tệp XML như Vim, Atom, Visual Studio Code, Notepad++ hoặc một trình khác để chỉnh sửa tệp thuận tiện hơn. Bạn cũng có thể sử dụng tính năng tìm kiếm của chúng để nhanh chóng tìm các lớp và thuộc tính.
+Chúng tôi khuyến nghị sử dụng trình soạn thảo mã hỗ trợ tệp XML như Vim, Atom, Visual Studio Code, Notepad++ hoặc một trình soạn thảo khác để chỉnh sửa tệp thuận tiện hơn. Bạn cũng có thể sử dụng tính năng tìm kiếm của chúng để nhanh chóng tìm các lớp và thuộc tính.
 
 .. tip::
 
-    Nếu sử dụng Visual Studio Code, bạn có thể cài đặt `tiện ích vscode-xml <https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml>`__ để nhận lint cho các tệp XML tham chiếu lớp.
+    Nếu sử dụng Visual Studio Code, bạn có thể cài đặt `extension vscode-xml <https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml>`__ để bật linting cho các tệp XML của tài liệu tham chiếu lớp.
 
 .. _doc_class_reference_bbcode:
 
 Cải thiện định dạng bằng các thẻ kiểu BBCode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Tham chiếu lớp XML của Godot hỗ trợ các thẻ giống BBCode để liên kết cũng như định dạng văn bản và mã. Trong các bảng dưới đây, bạn có thể tìm thấy các thẻ khả dụng, ví dụ sử dụng và kết quả sau khi chuyển đổi sang reStructuredText.
+Tài liệu tham chiếu lớp XML của Godot hỗ trợ các thẻ giống BBCode để liên kết, cũng như định dạng văn bản và mã. Trong các bảng bên dưới, bạn có thể tìm thấy các thẻ khả dụng, ví dụ cách sử dụng và kết quả sau khi chuyển đổi sang reStructuredText.
 
 Liên kết
 """"""""
 
-Bất cứ khi nào liên kết đến một thành viên của lớp khác, bạn cần chỉ định tên lớp. Đối với liên kết đến cùng một lớp, tên lớp là tùy chọn và có thể được lược bỏ.
+Mỗi khi liên kết đến một thành viên của lớp khác, bạn cần chỉ định tên lớp. Đối với liên kết đến cùng một lớp, tên lớp là tùy chọn và có thể được bỏ qua.
 
 +--------------------------------+-----------------------------------------+--------------------------------------------------------------+
-| Thẻ và Mô tả | Ví dụ | Kết quả |
-++++++++++++++++++++++++++++++++++
-| | ``[Class]`` | ``Move the [Sprite2D].`` | Di chuyển :ref:`class_Sprite2D`. |
-| | Liên kết đến lớp | | |
-++++++++++++++++++++++++++
-| | ``[annotation Class.name]`` | ``See [annotation @GDScript.@rpc].`` | Xem :ref:`@GDScript.@rpc <class_@GDScript_annotation_@rpc>`. |
-| | Liên kết đến chú thích | | |
-++++++++++++++++++++++++++++++++
-| | ``[constant Class.name]`` | ``See [constant Color.RED].`` | Xem :ref:`Color.RED <class_Color_constant_RED>`. |
-| | Liên kết đến hằng số | | |
-++++++++++++++++++++++++++++++
-| | ``[enum Class.name]`` | ``See [enum Mesh.ArrayType].`` | Xem :ref:`Mesh.ArrayType <enum_Mesh_ArrayType>`. |
-| | Liên kết đến enum | | |
-+++++++++++++++++++++++++++
-| | ``[member Class.name]`` | ``Get [member Node2D.scale].`` | Lấy :ref:`Node2D.scale <class_Node2D_property_scale>`. |
-| | Liên kết đến thành viên | | |
-+++++++++++++++++++++++++++++++++
-| | ``[method Class.name]`` | ``Call [method Node3D.hide].`` | Gọi :ref:`Node3D.hide() <class_Node3D_method_hide>`. |
-| | Liên kết đến phương thức | | |
-++++++++++++++++++++++++++++++++++
-| | ``[constructor Class.name]`` | ``Use [constructor Color.Color].`` | Sử dụng :ref:`Color.Color <class_Color_constructor_Color>`. |
-| | Liên kết đến hàm dựng tích hợp sẵn | | |
-++++++++++++++++++++++++++++++++++++++++++++
-| | ``[operator Class.name]`` | ``Use [operator Color.operator *].`` | Sử dụng :ref:`Color.operator * <class_Color_operator_mul_int>`. |
-| | Liên kết đến toán tử tích hợp sẵn | | |
-+++++++++++++++++++++++++++++++++++++++++++
-| | ``[signal Class.name]`` | ``Emit [signal Node.renamed].`` | Phát :ref:`Node.renamed <class_Node_signal_renamed>`. |
-| | Liên kết đến tín hiệu | | |
-+++++++++++++++++++++++++++++++
-| | ``[theme_item Class.name]`` | ``See [theme_item Label.font].`` | Xem :ref:`Label.font <class_Label_theme_font_font>`. |
-| | Liên kết đến mục giao diện | | |
-++++++++++++++++++++++++++++++++++++
-| | ``[param name]`` | ``Takes [param size] for the size.`` | Nhận ``size`` cho kích thước. |
-| | Tên tham số (dưới dạng mã) | | |
-++++++++++++++++++++++++++++++++++++
+| Tag and Description            | Example                                 | Result                                                       |
++================================+=========================================+==============================================================+
+| | ``[Class]``                  | ``Move the [Sprite2D].``                | Move the :ref:`class_Sprite2D`.                              |
+| | Link to class                |                                         |                                                              |
++--------------------------------+-----------------------------------------+--------------------------------------------------------------+
+| | ``[annotation Class.name]``  | ``See [annotation @GDScript.@rpc].``    | See :ref:`@GDScript.@rpc <class_@GDScript_annotation_@rpc>`. |
+| | Link to annotation           |                                         |                                                              |
++--------------------------------+-----------------------------------------+--------------------------------------------------------------+
+| | ``[constant Class.name]``    | ``See [constant Color.RED].``           | See :ref:`Color.RED <class_Color_constant_RED>`.             |
+| | Link to constant             |                                         |                                                              |
++--------------------------------+-----------------------------------------+--------------------------------------------------------------+
+| | ``[enum Class.name]``        | ``See [enum Mesh.ArrayType].``          | See :ref:`Mesh.ArrayType <enum_Mesh_ArrayType>`.             |
+| | Link to enum                 |                                         |                                                              |
++--------------------------------+-----------------------------------------+--------------------------------------------------------------+
+| | ``[member Class.name]``      | ``Get [member Node2D.scale].``          | Get :ref:`Node2D.scale <class_Node2D_property_scale>`.       |
+| | Link to member               |                                         |                                                              |
++--------------------------------+-----------------------------------------+--------------------------------------------------------------+
+| | ``[method Class.name]``      | ``Call [method Node3D.hide].``          | Call :ref:`Node3D.hide() <class_Node3D_method_hide>`.        |
+| | Link to method               |                                         |                                                              |
++--------------------------------+-----------------------------------------+--------------------------------------------------------------+
+| | ``[constructor Class.name]`` | ``Use [constructor Color.Color].``      | Use :ref:`Color.Color <class_Color_constructor_Color>`.      |
+| | Link to built-in constructor |                                         |                                                              |
++--------------------------------+-----------------------------------------+--------------------------------------------------------------+
+| | ``[operator Class.name]``    | ``Use [operator Color.operator *].``    | Use :ref:`Color.operator * <class_Color_operator_mul_int>`.  |
+| | Link to built-in operator    |                                         |                                                              |
++--------------------------------+-----------------------------------------+--------------------------------------------------------------+
+| | ``[signal Class.name]``      | ``Emit [signal Node.renamed].``         | Emit :ref:`Node.renamed <class_Node_signal_renamed>`.        |
+| | Link to signal               |                                         |                                                              |
++--------------------------------+-----------------------------------------+--------------------------------------------------------------+
+| | ``[theme_item Class.name]``  | ``See [theme_item Label.font].``        | See :ref:`Label.font <class_Label_theme_font_font>`.         |
+| | Link to theme item           |                                         |                                                              |
++--------------------------------+-----------------------------------------+--------------------------------------------------------------+
+| | ``[param name]``             | ``Takes [param size] for the size.``    | Takes ``size`` for the size.                                 |
+| | Parameter name (as code)     |                                         |                                                              |
++--------------------------------+-----------------------------------------+--------------------------------------------------------------+
 
 .. note::
 
@@ -146,57 +146,60 @@ Bất cứ khi nào liên kết đến một thành viên của lớp khác, b�
 """""""""""""""""
 
 +--------------------------------+----------------------------------------------+------------------------------------+
-| Thẻ và Mô tả | Ví dụ | Kết quả |
-++++++++++++++++++++++++++++++++++
-| | ``[br]`` | | ``Line 1.[br]`` | | Dòng 1. |
-| | Ngắt dòng | | ``Line 2.`` | | Dòng 2. |
-+++++++++++++++++++++++++++++++++++++++++++
-| | ``[lb]`` ``[rb]`` | ``[lb]b[rb]text[lb]/b[rb]`` | [b]văn bản[/b] |
-| | lần lượt là ``[`` và ``]`` | | |
-++++++++++++++++++++++++++++++++++++
-| | ``[b]`` ``[/b]`` | ``Do [b]not[/b] call this method.`` | Không **được gọi** phương thức này. |
-| | In đậm | | |
-++++++++++++++++
-| | ``[i]`` ``[/i]`` | ``Returns the [i]global[/i] position.`` | Trả về vị trí *toàn cục*. |
-| | In nghiêng | | |
-++++++++++++++++++++
-| | ``[u]`` ``[/u]`` | ``[u]Always[/u] use this method.`` | .. raw:: html | | | Gạch chân | | |
-| | | <u>Luôn</u> sử dụng phương thức này. |
-++++++++++++++++++++++++++++++++++++++++++++
-| | ``[s]`` ``[/s]`` | ``[s]Outdated information.[/s]`` | .. raw:: html | | | Gạch ngang | | |
-| | | <s>Thông tin lỗi thời.</s> |
-++++++++++++++++++++++++++++++++++
-| | ``[url]`` ``[/url]`` | | ``[url]https://example.com[/url]`` | | https://example.com |
-| | Siêu liên kết | | ``[url=https://example.com]Website[/url]`` | | `Trang web <https://example.com>`_ |
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-| | ``[center]`` ``[/center]`` | ``[center]2 + 2 = 4[/center]`` | .. raw:: html | | | Căn giữa theo chiều ngang | | |
-| | | <center>2 + 2 = 4</center> |
-++++++++++++++++++++++++++++++++++
-| | ``[kbd]`` ``[/kbd]`` | ``Press [kbd]Ctrl + C[/kbd].`` | Nhấn :kbd:`Ctrl + C`. |
-| | Phím tắt bàn phím/chuột | | |
-+++++++++++++++++++++++++++++++++
-| | ``[code]`` ``[/code]`` | ``Returns [code]true[/code].`` | Trả về ``true``. |
-| | Đoạn mã nội tuyến | | |
-+++++++++++++++++++++++++++
+| Tag and Description            | Example                                      | Result                             |
++================================+==============================================+====================================+
+| | ``[br]``                     | | ``Line 1.[br]``                            | | Line 1.                          |
+| | Line break                   | | ``Line 2.``                                | | Line 2.                          |
++--------------------------------+----------------------------------------------+------------------------------------+
+| | ``[lb]`` ``[rb]``            | ``[lb]b[rb]text[lb]/b[rb]``                  | [b]text[/b]                        |
+| | ``[`` and ``]`` respectively |                                              |                                    |
++--------------------------------+----------------------------------------------+------------------------------------+
+| | ``[b]`` ``[/b]``             | ``Do [b]not[/b] call this method.``          | Do **not** call this method.       |
+| | Bold                         |                                              |                                    |
++--------------------------------+----------------------------------------------+------------------------------------+
+| | ``[i]`` ``[/i]``             | ``Returns the [i]global[/i] position.``      | Returns the *global* position.     |
+| | Italic                       |                                              |                                    |
++--------------------------------+----------------------------------------------+------------------------------------+
+| | ``[u]`` ``[/u]``             | ``[u]Always[/u] use this method.``           | .. raw:: html                      |
+| | Underline                    |                                              |                                    |
+|                                |                                              |     <u>Always</u> use this method. |
++--------------------------------+----------------------------------------------+------------------------------------+
+| | ``[s]`` ``[/s]``             | ``[s]Outdated information.[/s]``             | .. raw:: html                      |
+| | Strikethrough                |                                              |                                    |
+|                                |                                              |     <s>Outdated information.</s>   |
++--------------------------------+----------------------------------------------+------------------------------------+
+| | ``[url]`` ``[/url]``         | | ``[url]https://example.com[/url]``         | | https://example.com              |
+| | Hyperlink                    | | ``[url=https://example.com]Website[/url]`` | | `Website <https://example.com>`_ |
++--------------------------------+----------------------------------------------+------------------------------------+
+| | ``[center]`` ``[/center]``   | ``[center]2 + 2 = 4[/center]``               | .. raw:: html                      |
+| | Horizontal centering         |                                              |                                    |
+|                                |                                              |     <center>2 + 2 = 4</center>     |
++--------------------------------+----------------------------------------------+------------------------------------+
+| | ``[kbd]`` ``[/kbd]``         | ``Press [kbd]Ctrl + C[/kbd].``               | Press :kbd:`Ctrl + C`.             |
+| | Keyboard/mouse shortcut      |                                              |                                    |
++--------------------------------+----------------------------------------------+------------------------------------+
+| | ``[code]`` ``[/code]``       | ``Returns [code]true[/code].``               | Returns ``true``.                  |
+| | Inline code fragment         |                                              |                                    |
++--------------------------------+----------------------------------------------+------------------------------------+
 
 .. note::
 
-    1. Một số thẻ được hỗ trợ như ``[color]`` và ``[font]`` không được liệt kê ở đây vì không được khuyến nghị trong tài liệu của engine. 2. ``[kbd]`` vô hiệu hóa BBCode cho đến khi trình phân tích cú pháp gặp ``[/kbd]``. 3. ``[code]`` vô hiệu hóa BBCode cho đến khi trình phân tích cú pháp gặp ``[/code]``.
+    1. Một số thẻ được hỗ trợ như ``[color]`` và ``[font]`` không được liệt kê ở đây vì chúng không được khuyến nghị trong tài liệu engine. 2. ``[kbd]`` vô hiệu hóa BBCode cho đến khi parser gặp ``[/kbd]``. 3. ``[code]`` vô hiệu hóa BBCode cho đến khi parser gặp ``[/code]``.
 
-Định dạng khối mã
-"""""""""""""""""
+Định dạng các khối mã
+"""""""""""""""""""""
 
-Có hai tùy chọn để định dạng khối mã:
+Có hai tùy chọn để định dạng các khối mã:
 
-1. 1. Sử dụng ``[codeblock]`` nếu bạn muốn thêm một ví dụ cho một ngôn ngữ cụ thể. 2. Sử dụng ``[codeblocks]``, ``[gdscript]`` và ``[csharp]`` nếu bạn muốn thêm cùng một ví dụ cho cả hai ngôn ngữ GDScript và C#.
+1. Sử dụng ``[codeblock]`` nếu bạn muốn thêm một ví dụ cho một ngôn ngữ cụ thể. 2. Sử dụng ``[codeblocks]``, ``[gdscript]`` và ``[csharp]`` nếu bạn muốn thêm cùng một ví dụ cho cả hai ngôn ngữ GDScript và C#.
 
-Theo mặc định, ``[codeblock]`` làm nổi bật cú pháp GDScript. Bạn có thể thay đổi điều này bằng thuộc tính ``lang``. Các tùy chọn hiện được hỗ trợ là:
+Theo mặc định, ``[codeblock]`` tô sáng cú pháp GDScript. Bạn có thể thay đổi điều này bằng thuộc tính ``lang``. Các tùy chọn hiện được hỗ trợ là:
 
-- ``[codeblock lang=text]`` vô hiệu hóa việc làm nổi bật cú pháp; - ``[codeblock lang=gdscript]`` làm nổi bật cú pháp GDScript; - ``[codeblock lang=csharp]`` làm nổi bật cú pháp C# (chỉ trong phiên bản .NET).
+- ``[codeblock lang=text]`` tắt tô sáng cú pháp; - ``[codeblock lang=gdscript]`` tô sáng cú pháp GDScript; - ``[codeblock lang=csharp]`` tô sáng cú pháp C# (chỉ trong phiên bản .NET).
 
 .. note::
 
-    ``[codeblock]`` vô hiệu hóa BBCode cho đến khi trình phân tích cú pháp gặp ``[/codeblock]``.
+    ``[codeblock]`` vô hiệu hóa BBCode cho đến khi parser gặp ``[/codeblock]``.
 
 Ví dụ:
 
@@ -216,9 +219,9 @@ Sẽ hiển thị như sau:
         var sprite = get_node("Sprite2D")
         print(sprite.get_pos())
 
-Nếu cần có các phiên bản mã khác nhau trong GDScript và C#, hãy sử dụng ``[codeblocks]`` thay thế. Nếu sử dụng ``[codeblocks]``, bạn cũng cần có ít nhất một trong các thẻ dành riêng cho ngôn ngữ, ``[gdscript]`` và ``[csharp]``.
+Nếu bạn cần có các phiên bản mã khác nhau trong GDScript và C#, hãy sử dụng ``[codeblocks]`` thay thế. Nếu sử dụng ``[codeblocks]``, bạn cũng cần có ít nhất một trong các thẻ dành riêng cho ngôn ngữ, ``[gdscript]`` và ``[csharp]``.
 
-Luôn viết các ví dụ mã GDScript trước! Bạn có thể sử dụng `công cụ dịch mã thử nghiệm này <https://github.com/HaSa1002/codetranslator>`_ để đẩy nhanh quy trình làm việc.
+Luôn viết các ví dụ mã GDScript trước! Bạn có thể sử dụng `công cụ dịch mã thử nghiệm <https://github.com/HaSa1002/codetranslator>`_ này để đẩy nhanh quy trình làm việc.
 
 .. code-block:: none
 
@@ -248,27 +251,27 @@ Phần trên sẽ hiển thị như sau:
 
     public override void _Ready() { var sprite = GetNode("Sprite2D"); GD.Print(sprite.GetPos()); }
 
-Ghi chú về định dạng, lưu ý và cảnh báo
-"""""""""""""""""""""""""""""""""""""""
+Định dạng ghi chú và cảnh báo
+"""""""""""""""""""""""""""""
 
-Để biểu thị thông tin quan trọng, hãy thêm một đoạn bắt đầu bằng "[b]Lưu ý:[/b]" ở cuối phần mô tả:
+Để đánh dấu thông tin quan trọng, hãy thêm một đoạn văn bắt đầu bằng "[b]Note:[/b]" ở cuối phần mô tả:
 
 .. code-block:: none
 
     [b]Note:[/b] Only available when using the Forward+ renderer.
 
-Để biểu thị thông tin cốt yếu có thể gây ra vấn đề bảo mật hoặc mất dữ liệu nếu không được tuân thủ cẩn thận, hãy thêm một đoạn bắt đầu bằng "[b]Cảnh báo:[/b]" ở cuối phần mô tả:
+Để đánh dấu thông tin thiết yếu có thể gây ra vấn đề bảo mật hoặc mất dữ liệu nếu không được tuân thủ cẩn thận, hãy thêm một đoạn văn bắt đầu bằng "[b]Warning:[/b]" ở cuối phần mô tả:
 
 .. code-block:: none
 
     [b]Warning:[/b] If this property is set to [code]true[/code], it allows clients to execute arbitrary code on the server.
 
-Trong tất cả các đoạn được mô tả ở trên, hãy đảm bảo dấu câu nằm bên trong các thẻ BBCode để nhất quán.
+Trong tất cả các đoạn văn được mô tả ở trên, hãy đảm bảo dấu câu nằm trong các thẻ BBCode để nhất quán.
 
-Đánh dấu API là không còn được khuyến nghị/thử nghiệm
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Đánh dấu API là deprecated/experimental
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Để đánh dấu một API là không còn được khuyến nghị hoặc đang thử nghiệm, bạn cần thêm thuộc tính XML tương ứng. Giá trị thuộc tính phải là một thông báo giải thích lý do API không được khuyến nghị (có hỗ trợ đánh dấu BBCode) hoặc một chuỗi rỗng (thông báo mặc định sẽ được sử dụng). Nếu một phần tử API được đánh dấu là không còn được khuyến nghị/đang thử nghiệm, phần tử đó được xem là đã có tài liệu ngay cả khi phần mô tả trống.
+Để đánh dấu một API là deprecated hoặc experimental, bạn cần thêm thuộc tính XML tương ứng. Giá trị thuộc tính phải là một thông báo giải thích lý do API không được khuyến nghị (BBCode markup được hỗ trợ) hoặc một chuỗi rỗng (thông báo mặc định sẽ được sử dụng). Nếu một phần tử API được đánh dấu là deprecated/experimental, phần tử đó được xem là đã có tài liệu ngay cả khi phần mô tả trống.
 
 .. code-block:: xml
 
