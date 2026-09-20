@@ -1,155 +1,82 @@
 .. _doc_visibility_ranges:
 
-Visibility ranges (HLOD)
-========================
+Phạm vi hiển thị (HLOD)
+=======================
 
-Along with :ref:`doc_mesh_lod` and :ref:`doc_occlusion_culling`,
-visibility ranges are another tool to improve performance in large,
-complex 3D scenes.
+Cùng với :ref:`doc_mesh_lod` và :ref:`doc_occlusion_culling`, phạm vi hiển thị là một công cụ khác để cải thiện hiệu năng trong các scene 3D lớn và phức tạp.
 
-On this page, you'll learn:
+Trong trang này, bạn sẽ tìm hiểu:
 
-- What visibility ranges can do and which scenarios they are useful in.
-- How to set up visibility ranges (manual LOD) in Godot.
-- How to tune visibility ranges for best performance and quality.
+- Những gì phạm vi hiển thị có thể thực hiện và những tình huống nào chúng hữu ích. - Cách thiết lập phạm vi hiển thị (LOD thủ công) trong Godot. - Cách tinh chỉnh phạm vi hiển thị để đạt hiệu năng và chất lượng tốt nhất.
 
 .. seealso::
 
-    If you only need meshes to become less detailed over distance, but don't have
-    manually authored LOD meshes, consider relying on automatic
+    Nếu bạn chỉ cần mesh trở nên ít chi tiết hơn theo khoảng cách, nhưng không có các mesh LOD được tạo thủ công, hãy cân nhắc dựa vào automatic
     :ref:`doc_mesh_lod` instead.
 
-    Note that automatic mesh LOD and visibility ranges can be used at the same
-    time, even on the same mesh.
+    Lưu ý rằng automatic mesh LOD và phạm vi hiển thị có thể được sử dụng cùng lúc, kể cả trên cùng một mesh.
 
-How it works
-------------
+Cách hoạt động
+--------------
 
-Visibility ranges can be used with any node that inherits from GeometryInstance3D.
-This means they can be used not only with MeshInstance3D and MultiMeshInstance3D
-for artist-controlled :abbr:`HLOD (Hierarchical Level of Detail)`, but also
-GPUParticles3D, CPUParticles3D, Label3D, Sprite3D, AnimatedSprite3D and CSGShape3D.
+Phạm vi hiển thị có thể được sử dụng với bất kỳ node nào kế thừa từ GeometryInstance3D. Điều này có nghĩa là chúng không chỉ được dùng với MeshInstance3D và MultiMeshInstance3D cho :abbr:`HLOD (Hierarchical Level of Detail)` do artist kiểm soát, mà còn với GPUParticles3D, CPUParticles3D, Label3D, Sprite3D, AnimatedSprite3D và CSGShape3D.
 
-Since visibility ranges are configured on a per-node basis, this makes it possible
-to use different node types as part of a :abbr:`LOD (Level of Detail)` system.
-For example, you could display a MeshInstance3D representing a tree when up close,
-and replace it with a Sprite3D impostor in the distance to improve performance.
+Vì phạm vi hiển thị được cấu hình theo từng node, bạn có thể sử dụng các loại node khác nhau như một phần của hệ thống :abbr:`LOD (Level of Detail)`. Ví dụ: bạn có thể hiển thị một MeshInstance3D đại diện cho một cái cây khi ở gần, rồi thay thế nó bằng một impostor Sprite3D ở xa để cải thiện hiệu năng.
 
-The benefit of :abbr:`HLOD (Hierarchical Level of Detail)` over a traditional
+Lợi ích của :abbr:`HLOD (Hierarchical Level of Detail)` so với một
 :abbr:`LOD (Level of Detail)` system is its hierarchical nature. A single larger
-mesh can replace several smaller meshes, so that the number of draw calls can be
-reduced at a distance, but culling opportunities can be preserved when up close.
-For example, you can have a group of houses that uses individual MeshInstance3D
-nodes (one for each house) when up close, but turns into a single MeshInstance3D
-that represents a less detailed group of houses (or use a MultiMeshInstance3D).
+mesh có thể thay thế nhiều mesh nhỏ hơn, nhờ đó giảm số lượng draw call ở khoảng cách xa, nhưng vẫn giữ được các cơ hội culling khi ở gần. Ví dụ, bạn có thể có một nhóm ngôi nhà sử dụng các node MeshInstance3D riêng lẻ (mỗi node cho một ngôi nhà) khi ở gần, nhưng chuyển thành một MeshInstance3D duy nhất đại diện cho một nhóm ngôi nhà ít chi tiết hơn (hoặc sử dụng MultiMeshInstance3D).
 
-Lastly, visibility ranges can also be used to fade certain objects entirely when
-the camera gets too close or too far. This can be used for gameplay purposes,
-but also to reduce visual clutter. For example, Label3D nodes can be faded using
-visibility ranges when they're too far away to be readable or relevant to the
-player.
+Cuối cùng, phạm vi hiển thị cũng có thể được dùng để làm mờ hoàn toàn một số đối tượng khi camera ở quá gần hoặc quá xa. Điều này có thể được dùng cho mục đích gameplay, cũng như để giảm sự rối mắt về mặt hình ảnh. Ví dụ, các node Label3D có thể được làm mờ bằng phạm vi hiển thị khi chúng ở quá xa để người chơi có thể đọc hoặc không còn liên quan đến người chơi.
 
-Setting up visibility range
----------------------------
+Thiết lập phạm vi hiển thị
+--------------------------
 
-This is a quick-start guide for configuring a basic LOD system. After following
-this guide, this LOD system will display a SphereMesh when up close and a
-BoxMesh when the camera is far away enough. A small hysteresis margin is also
-configured via the **Begin Margin** and **End Margin** properties. This prevents
-LODs from popping back and forth too quickly when the camera is moving at the
-"edge" of the LOD transition.
+Đây là hướng dẫn bắt đầu nhanh để cấu hình một hệ thống LOD cơ bản. Sau khi làm theo hướng dẫn này, hệ thống LOD sẽ hiển thị một SphereMesh khi ở gần và một BoxMesh khi camera đủ xa. Một khoảng hysteresis nhỏ cũng được cấu hình thông qua các thuộc tính **Begin Margin** và **End Margin**. Điều này ngăn LOD chuyển đổi qua lại quá nhanh khi camera di chuyển tại "rìa" của quá trình chuyển đổi LOD.
 
-The visibility range properties can be found in the **Visibility Range** section
-of the GeometryInstance3D inspector after selecting the MeshInstance3D Node.
+Bạn có thể tìm thấy các thuộc tính phạm vi hiển thị trong phần **Visibility Range** của inspector GeometryInstance3D sau khi chọn Node MeshInstance3D.
 
-- Add a Node3D node that will be used to group the two MeshInstance3D nodes
-  together.
-- Add a first MeshInstance3D node as a child of the Node3D. Assign a new
-  SphereMesh to its Mesh property.
-- Set the first MeshInstance3D's visibility range **End** to ``10.0`` and **End
-  Margin** to ``1.0``.
-- Add a second MeshInstance3D node as a child of the Node3D. Assign a new
-  BoxMesh to its Mesh property.
-- Set the second MeshInstance3D's visibility range **Begin** to ``10.0`` and
-  **Begin Margin** to ``1.0``.
-- Move the camera away and back towards the object. Notice how the object will
-  transition from a sphere to a box as the camera moves away.
+- Thêm một node Node3D để nhóm hai node MeshInstance3D lại với nhau. - Thêm node MeshInstance3D đầu tiên làm node con của Node3D. Gán một SphereMesh mới cho thuộc tính Mesh của node. - Đặt **End** trong phạm vi hiển thị của MeshInstance3D đầu tiên thành ``10.0`` và **End Margin** thành ``1.0``. - Thêm node MeshInstance3D thứ hai làm node con của Node3D. Gán một BoxMesh mới cho thuộc tính Mesh của node. - Đặt **Begin** trong phạm vi hiển thị của MeshInstance3D thứ hai thành ``10.0`` và **Begin Margin** thành ``1.0``. - Di chuyển camera ra xa rồi trở lại về phía đối tượng. Hãy chú ý cách đối tượng chuyển từ hình cầu sang hình hộp khi camera di chuyển ra xa.
 
-Visibility range properties
----------------------------
+Các thuộc tính phạm vi hiển thị
+-------------------------------
 
-In the inspector of any node that inherits from GeometryInstance3D, you can adjust
-the following properties in the GeometryInstance3D's **Visibility Range** section:
+Trong inspector của bất kỳ node nào kế thừa từ GeometryInstance3D, bạn có thể điều chỉnh các thuộc tính sau trong phần **Visibility Range** của GeometryInstance3D:
 
-- **Begin:** The instance will be hidden when the camera is closer to the
-  *center of the instance's AABB* (axis-aligned bounding box) than this value (in 3D units).
-- **Begin Margin:** The hysteresis or alpha fade transition distance to use for
-  the close-up transition (in 3D units). The behavior of this property depends
-  on **Fade Mode**.
-- **End:** The instance will be hidden when the camera is further away from the
-  *center of the instance's AABB* than this value (in 3D units).
-- **End Margin:** The hysteresis or alpha fade transition distance to use for
-  the far-away transition (in 3D units). The behavior of this property depends
-  on **Fade Mode**.
-- **Fade Mode:** Controls how the transition between LOD levels should be performed.
-  See below for details.
+- **Begin:** Instance sẽ bị ẩn khi camera ở gần *tâm của AABB của instance* (axis-aligned bounding box) hơn giá trị này (tính theo đơn vị 3D). - **Begin Margin:** Khoảng cách chuyển tiếp hysteresis hoặc alpha fade được sử dụng cho quá trình chuyển đổi khi ở gần (tính theo đơn vị 3D). Cách hoạt động của thuộc tính này phụ thuộc vào **Fade Mode**. - **End:** Instance sẽ bị ẩn khi camera ở xa *tâm của AABB của instance* hơn giá trị này (tính theo đơn vị 3D). - **End Margin:** Khoảng cách chuyển tiếp hysteresis hoặc alpha fade được sử dụng cho quá trình chuyển đổi khi ở xa (tính theo đơn vị 3D). Cách hoạt động của thuộc tính này phụ thuộc vào **Fade Mode**. - **Fade Mode:** Kiểm soát cách thực hiện quá trình chuyển đổi giữa các cấp độ LOD. Xem chi tiết bên dưới.
 
 .. _doc_visibility_ranges_fade_mode:
 
-Fade mode
-~~~~~~~~~
+Chế độ fade
+~~~~~~~~~~~
 
 .. note::
 
-    The fade mode chosen only has a visible impact if either
-    **Visibility Range > Begin Margin** or **Visibility Range > End Margin** is
-    greater than ``0.0``.
+    Chế độ fade đã chọn chỉ tạo ra khác biệt có thể nhìn thấy nếu **Visibility Range > Begin Margin** hoặc **Visibility Range > End Margin** lớn hơn ``0.0``.
 
-In the inspector's **Visibility Range** section, there are 3 fade modes to
-choose from:
+Trong phần **Visibility Range** của inspector, có 3 chế độ fade để lựa chọn:
 
-- **Disabled:** Uses hysteresis to switch between LOD levels instantly. This
-  prevents situations where LOD levels are switched back and forth quickly when
-  the player moves forward and then backward at the LOD transition point. The
-  hysteresis distance is determined by **Visibility Range > Begin Margin** and
-  **Visibility Range > End Margin**. This mode provides the best performance as
-  it doesn't force rendering to become transparent during the fade transition.
-- **Self:** Uses alpha blending to smoothly fade between LOD levels. The node
-  will fade-out itself when reaching the limits of its own visibility range. The
-  fade transition distance is determined by **Visibility Range > Begin Margin**
-  and **Visibility Range > End Margin**. This mode forces transparent rendering
-  on the object during its fade transition, so it has a performance impact.
-- **Dependencies:** Uses alpha blending to smoothly fade between LOD levels. The
-  node will fade-in its dependencies when reaching the limits of its own
-  visibility range. The fade transition distance is determined by **Visibility
-  Range > Begin Margin** and **Visibility Range > End Margin**. This mode forces
-  transparent rendering on the object during its fade transition, so it has a
-  performance impact. This mode is intended for hierarchical LOD systems using
+- **Disabled:** Sử dụng hysteresis để chuyển đổi tức thì giữa các cấp độ LOD. Điều này ngăn các tình huống cấp độ LOD bị chuyển đổi qua lại nhanh chóng khi người chơi di chuyển về phía trước rồi lùi lại tại điểm chuyển đổi LOD. Khoảng cách hysteresis được xác định bởi **Visibility Range > Begin Margin** và **Visibility Range > End Margin**. Chế độ này mang lại hiệu năng tốt nhất vì không buộc quá trình render trở nên trong suốt trong quá trình chuyển tiếp fade. - **Self:** Sử dụng alpha blending để chuyển tiếp mượt mà giữa các cấp độ LOD. Node sẽ tự fade-out khi đạt đến các giới hạn trong phạm vi hiển thị của chính nó. Khoảng cách chuyển tiếp fade được xác định bởi **Visibility Range > Begin Margin** và **Visibility Range > End Margin**. Chế độ này buộc đối tượng được render trong suốt trong quá trình chuyển tiếp fade, nên sẽ ảnh hưởng đến hiệu năng. - **Dependencies:** Sử dụng alpha blending để chuyển tiếp mượt mà giữa các cấp độ LOD. Node sẽ fade-in các dependency của nó khi đạt đến các giới hạn trong phạm vi hiển thị của chính nó. Khoảng cách chuyển tiếp fade được xác định bởi **Visibility Range > Begin Margin** và **Visibility Range > End Margin**. Chế độ này buộc đối tượng được render trong suốt trong quá trình chuyển tiếp fade, nên sẽ ảnh hưởng đến hiệu năng. Chế độ này dành cho các hệ thống LOD phân cấp sử dụng
   :ref:`Visibility parent <doc_visibility_ranges_visibility_parent>`. It acts
-  the same as **Self** if visibility ranges are used to perform non-hierarchical
-  LOD.
+  giống như **Self** nếu phạm vi hiển thị được sử dụng để thực hiện LOD không phân cấp.
 
 .. _doc_visibility_ranges_visibility_parent:
 
 Visibility parent
 ~~~~~~~~~~~~~~~~~
 
-The **Visibility Parent** property makes it easier to set up
+Thuộc tính **Visibility Parent** giúp việc thiết lập trở nên dễ dàng hơn
 :abbr:`HLOD (Hierarchical Level of Detail)`. It allows automatically hiding
-child nodes if its parent is visible given its current visibility range properties.
+các node con nếu node cha của chúng đang hiển thị dựa trên các thuộc tính phạm vi hiển thị hiện tại của nó.
 
 .. note::
 
-    The target of **Visibility Parent** *must* inherit from
+    Đối tượng đích của **Visibility Parent** *phải* kế thừa từ
     :ref:`class_GeometryInstance3D`.
 
-    Despite its name, the **Visibility Parent** property *can* point to a node
-    that is not a parent of the node in the scene tree. However, it is
-    impossible to point **Visibility Parent** towards a child node, as this
-    creates a dependency cycle which is not supported. You will get an error
-    message in the Output panel if a dependency cycle occurs.
+    Mặc dù có tên như vậy, thuộc tính **Visibility Parent** *có thể* trỏ đến một node không phải là node cha của node đó trong scene tree. Tuy nhiên, không thể trỏ **Visibility Parent** đến một node con, vì điều này tạo ra một dependency cycle không được hỗ trợ. Bạn sẽ nhận được thông báo lỗi trong bảng Output nếu xảy ra dependency cycle.
 
-Given the following scene tree (where all nodes inherit from GeometryInstance3D):
+Xét scene tree sau (trong đó tất cả các node đều kế thừa từ GeometryInstance3D):
 
 ::
 
@@ -159,102 +86,47 @@ Given the following scene tree (where all nodes inherit from GeometryInstance3D)
         ┠╴House3
         ┖╴House4
 
-In this example, *BatchOfHouses* is a large mesh designed to represent all child
-nodes when viewed at a distance. *House1* to *House4* are smaller
-MeshInstance3Ds representing individual houses. To configure HLOD in this
-example, we only need to configure two things:
+Trong ví dụ này, *BatchOfHouses* là một mesh lớn được thiết kế để đại diện cho tất cả các node con khi nhìn từ xa. *House1* đến *House4* là các MeshInstance3D nhỏ hơn đại diện cho từng ngôi nhà. Để cấu hình HLOD trong ví dụ này, chúng ta chỉ cần cấu hình hai điều:
 
-- Set **Visibility Range Begin** to a number greater than `0.0` so that
-  *BatchOfHouses* only appears when far away enough from the camera. Below this
-  distance, we want *House1* to *House4* to be displayed instead.
-- On *House1* to *House4*, assign the **Visibility Parent** property to *BatchOfHouses*.
+- Đặt **Visibility Range Begin** thành một số lớn hơn `0.0` để *BatchOfHouses* chỉ xuất hiện khi đủ xa camera. Ở khoảng cách gần hơn, chúng ta muốn hiển thị *House1* đến *House4* thay thế. - Trên *House1* đến *House4*, gán thuộc tính **Visibility Parent** là *BatchOfHouses*.
 
-This makes it easier to perform further adjustments, as you don't need to adjust
-the **Visibility Range Begin** of *BatchOfHouses* and **Visibility Range End**
-of *House1* to *House4*.
+Điều này giúp thực hiện các điều chỉnh tiếp theo dễ dàng hơn, vì bạn không cần điều chỉnh **Visibility Range Begin** của *BatchOfHouses* và **Visibility Range End** của *House1* đến *House4*.
 
-Fade mode is automatically handled by the **Visibility Parent** property, so
-that the child nodes only become hidden once the parent node is fully faded out.
-This is done to minimize visible pop-in. Depending on your :abbr:`HLOD
-(Hierarchical Level of Detail)` setup, you may want to try both the **Self** and
-**Dependencies** :ref:`fade modes <doc_visibility_ranges_fade_mode>`.
+Chế độ fade được thuộc tính **Visibility Parent** tự động xử lý, để các node con chỉ bị ẩn sau khi node cha đã fade-out hoàn toàn. Điều này nhằm giảm thiểu hiện tượng pop-in có thể nhìn thấy. Tùy thuộc vào thiết lập :abbr:`HLOD (Hierarchical Level of Detail)` của bạn, bạn có thể thử cả hai :ref:`fade modes <doc_visibility_ranges_fade_mode>` **Self** và **Dependencies**.
 
 .. note::
 
-    Nodes hidden via the **Visible** property are essentially removed from the
-    visibility dependency tree, so dependent instances will not take the hidden
-    node or its ancestors into account.
+    Các node bị ẩn thông qua thuộc tính **Visible** về cơ bản sẽ bị loại khỏi cây dependency hiển thị, vì vậy các instance phụ thuộc sẽ không tính đến node bị ẩn hoặc các ancestor của node đó.
 
-    In practice, this means that if the target of the **Visibility Parent** node
-    is hidden by setting its **Visible** property to ``false``, the node will
-    not be hidden according to the **Visibility Range Begin** value specified in
-    the visibility parent.
+    Trên thực tế, điều này có nghĩa là nếu đối tượng đích của node **Visibility Parent** bị ẩn bằng cách đặt thuộc tính **Visible** thành ``false``, node đó sẽ không bị ẩn theo giá trị **Visibility Range Begin** được chỉ định trong visibility parent.
 
-Configuration tips
-------------------
+Mẹo cấu hình
+------------
 
-Use simpler materials at a distance to improve performance
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sử dụng material đơn giản hơn ở khoảng cách xa để cải thiện hiệu năng
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-One way to further improve performance is to use simpler materials for distant
-LOD meshes. While using LOD meshes will reduce the number of vertices that need
-to be rendered, the per-pixel shading load for materials remains identical.
-However, per-pixel shading load is regularly a bottleneck on the GPU in complex
-3D scenes. One way to reduce this shading load on the GPU is to use simpler
-materials when they don't make much of a visual difference.
+Một cách để cải thiện hiệu năng hơn nữa là sử dụng material đơn giản hơn cho các mesh LOD ở xa. Mặc dù sử dụng mesh LOD sẽ giảm số lượng vertex cần render, tải shading trên mỗi pixel của material vẫn giữ nguyên. Tuy nhiên, tải shading trên mỗi pixel thường là một điểm nghẽn trên GPU trong các scene 3D phức tạp. Một cách để giảm tải shading này trên GPU là sử dụng material đơn giản hơn khi việc đó không tạo ra nhiều khác biệt về mặt hình ảnh.
 
-Performance gains when doing so should be carefully measured, as
-increasing the number of *unique* materials in a scene has a performance cost on
-its own. Still, using simpler materials for distant LOD meshes can still result
-in a net performance gain as a result of the fewer per-pixel calculations
-required.
+Cần đo lường cẩn thận mức tăng hiệu năng khi làm như vậy, vì việc tăng số lượng material *unique* trong một scene cũng có chi phí hiệu năng riêng. Tuy vậy, sử dụng material đơn giản hơn cho các mesh LOD ở xa vẫn có thể mang lại mức tăng hiệu năng tổng thể nhờ cần ít phép tính trên mỗi pixel hơn.
 
-For example, on the materials used by distant LOD meshes, you can disable
-expensive material features such as:
+Ví dụ, trên các material được sử dụng bởi các mesh LOD ở xa, bạn có thể tắt các tính năng material tốn kém như:
 
-- Normal Map (especially on mobile platforms)
-- Rim
-- Clearcoat
-- Anisotropy
-- Height
-- Subsurface Scattering
-- Back Lighting
-- Refraction
-- Proximity Fade
+- Normal Map (đặc biệt trên các nền tảng di động) - Rim - Clearcoat - Anisotropy - Height - Subsurface Scattering - Back Lighting - Refraction - Proximity Fade
 
-Use dithering for LOD transitions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sử dụng dithering cho các chuyển tiếp LOD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Godot currently only supports alpha-based fading for visibility ranges. You can
-however use dithering instead by using several different materials for different
-LOD levels.
+Hiện tại, Godot chỉ hỗ trợ hiệu ứng mờ dần dựa trên alpha cho các phạm vi hiển thị. Tuy nhiên, bạn có thể sử dụng dithering thay thế bằng cách dùng một số material khác nhau cho các cấp LOD khác nhau.
 
-There are two advantages to using dithering over alpha blending for LOD transitions:
+Có hai ưu điểm khi sử dụng dithering thay cho alpha blending cho các chuyển tiếp LOD:
 
-- Higher performance, as dithering transparency is faster to render compared to
-  alpha blending.
-- No visual glitches due to
+- Hiệu năng cao hơn, vì độ trong suốt bằng dithering được render nhanh hơn so với alpha blending. - Không có lỗi hiển thị do
   :ref:`transparency sorting issues <doc_3d_rendering_limitations_transparency_sorting>`
-  during LOD transitions.
+  trong quá trình chuyển tiếp LOD.
 
-The downside of dithering is that a "noisy" pattern is visible during LOD fade
-transitions. This may not be as noticeable at higher viewport resolutions or
-when temporal antialiasing is enabled.
+Nhược điểm của dithering là một mẫu "nhiễu" sẽ hiển thị trong quá trình chuyển tiếp mờ dần của LOD. Điều này có thể ít замет hơn ở các độ phân giải viewport cao hơn hoặc khi bật temporal antialiasing.
 
-Also, as distance fade in BaseMaterial3D only supports fading up close *or*
-fading when far away, this setup is best used with only two LODs as part of the
-setup.
+Ngoài ra, vì distance fade trong BaseMaterial3D chỉ hỗ trợ mờ dần khi ở gần *hoặc* khi ở xa, thiết lập này phù hợp nhất khi chỉ sử dụng hai LOD trong cùng một thiết lập.
 
-- Ensure **Begin Margin** and **End Margin** is set to ``0.0`` on both
-  MeshInstance3D nodes, as hysteresis or alpha fade are not desired here.
-- On both MeshInstance3D nodes, *decrease* **Begin** by the desired fade transition
-  distance and *increase* **End** by the same distance. This is required for the
-  dithering transition to actually be visible.
-- On the MeshInstance3D that is displayed up close, edit its material in the inspector.
-  Set its **Distance Fade** mode to **Object Dither**. Set **Min Distance** to
-  the same value as the visibility range **End**. Set **Max Distance** to the
-  same value *minus* the fade transition distance.
-- On the MeshInstance3D that is displayed far away, edit its material in the inspector.
-  Set its **Distance Fade** mode to **Object Dither**. Set **Min Distance** to
-  the same value as the visibility range **Begin**. Set **Max Distance** to the
-  same value *plus* the fade transition distance.
+- Đảm bảo **Begin Margin** và **End Margin** được đặt thành ``0.0`` trên cả hai node MeshInstance3D, vì ở đây không cần hysteresis hoặc alpha fade. - Trên cả hai node MeshInstance3D, *giảm* **Begin** theo khoảng cách chuyển tiếp mờ dần mong muốn và *tăng* **End** thêm cùng khoảng cách đó. Điều này cần thiết để chuyển tiếp dithering thực sự hiển thị. - Trên MeshInstance3D được hiển thị ở khoảng cách gần, hãy chỉnh sửa material của nó trong inspector. Đặt chế độ **Distance Fade** thành **Object Dither**. Đặt **Min Distance** thành cùng giá trị với **End** của phạm vi hiển thị. Đặt **Max Distance** thành cùng giá trị đó *trừ đi* khoảng cách chuyển tiếp mờ dần. - Trên MeshInstance3D được hiển thị ở khoảng cách xa, hãy chỉnh sửa material của nó trong inspector. Đặt chế độ **Distance Fade** thành **Object Dither**. Đặt **Min Distance** thành cùng giá trị với **Begin** của phạm vi hiển thị. Đặt **Max Distance** thành cùng giá trị đó *cộng thêm* khoảng cách chuyển tiếp mờ dần.

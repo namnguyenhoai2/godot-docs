@@ -143,11 +143,11 @@ Có thể điều chỉnh các thuộc tính sau trên những ánh sáng 2D đ�
         uniform float pixel_size = 4.0;
 
         void fragment() {
-            // Snap lighting and shadows to pixel grid.
+            // Cố định ánh sáng và bóng đổ vào lưới pixel.
             LIGHT_VERTEX.xy = floor(LIGHT_VERTEX.xy / pixel_size) * pixel_size;
             SHADOW_VERTEX = floor(SHADOW_VERTEX / pixel_size) * pixel_size;
 
-            // Normal rendering.
+            // Kết xuất thông thường.
             COLOR = texture(TEXTURE, UV);
         }
 

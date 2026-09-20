@@ -1,7 +1,6 @@
 :allow_comments: False
 
-3D
-==
+3D ==
 
 .. toctree::
    :maxdepth: 1
@@ -14,8 +13,8 @@
 
 .. _doc_3d_rendering:
 
-Rendering
----------
+Kết xuất
+--------
 
 .. toctree::
    :maxdepth: 1
@@ -33,8 +32,8 @@ Rendering
    volumetric_fog
    3d_antialiasing
 
-Optimization
-------------
+Tối ưu hóa
+----------
 
 .. toctree::
    :maxdepth: 1
@@ -47,8 +46,8 @@ Optimization
    resolution_scaling
    variable_rate_shading
 
-Tools
------
+Công cụ
+-------
 
 .. toctree::
    :maxdepth: 1

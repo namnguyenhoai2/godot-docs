@@ -2,25 +2,17 @@
 
 .. _doc_csg_tools:
 
-Prototyping levels with CSG
-===========================
+Tạo nguyên mẫu level bằng CSG
+=============================
 
-CSG stands for **Constructive Solid Geometry**, and is a tool to combine basic
-shapes or custom meshes to create more complex shapes. In 3D modeling software,
-CSG is mostly known as "Boolean Operators".
+CSG là viết tắt của **Constructive Solid Geometry**, một công cụ để kết hợp các hình cơ bản hoặc mesh tùy chỉnh nhằm tạo ra các hình phức tạp hơn. Trong phần mềm modeling 3D, CSG thường được biết đến với tên gọi "Boolean Operators".
 
-Level prototyping is one of the main uses of CSG in Godot. This technique allows
-users to create the most common shapes by combining primitives.
-Interior environments can be created by using inverted primitives.
+Tạo nguyên mẫu level là một trong những cách sử dụng chính của CSG trong Godot. Kỹ thuật này cho phép người dùng tạo các hình dạng phổ biến nhất bằng cách kết hợp các primitive. Có thể tạo môi trường nội thất bằng cách sử dụng các primitive đảo ngược.
 
 .. note:: The CSG nodes in Godot are mainly intended for prototyping. There is
-          no built-in support for UV mapping or editing 3D polygons (though
-          extruded 2D polygons can be used with the CSGPolygon3D node).
+          không có hỗ trợ tích hợp cho UV mapping hoặc chỉnh sửa các polygon 3D (mặc dù có thể sử dụng polygon 2D được extrude với node CSGPolygon3D).
 
-          If you're looking for an easy to use level design tool for a project,
-          you may want to use `FuncGodot <https://github.com/func-godot/func_godot_plugin>`__
-          or `Cyclops Level Builder <https://github.com/blackears/cyclopsLevelBuilder>`__
-          instead.
+          Nếu bạn đang tìm một công cụ thiết kế level dễ sử dụng cho dự án, bạn có thể muốn sử dụng `FuncGodot <https://github.com/func-godot/func_godot_plugin>`__ hoặc `Cyclops Level Builder <https://github.com/blackears/cyclopsLevelBuilder>`__ thay thế.
 
 .. video:: video/csg_tools.webm
    :alt: CSG being used to subtract a torus shape from a box
@@ -31,37 +23,25 @@ Interior environments can be created by using inverted primitives.
 
 .. seealso::
 
-    You can check how to use CSG nodes to build various shapes (such as stairs or roads) using the
-    `Constructive Solid Geometry demo project <https://github.com/godotengine/godot-demo-projects/tree/master/3d/csg>`__.
+    Bạn có thể xem cách sử dụng các node CSG để xây dựng nhiều hình dạng khác nhau (chẳng hạn như cầu thang hoặc đường đi) bằng `Constructive Solid Geometry demo project <https://github.com/godotengine/godot-demo-projects/tree/master/3d/csg>`__.
 
-Introduction to CSG nodes
--------------------------
+Giới thiệu về các node CSG
+--------------------------
 
-Like other features of Godot, CSG is supported in the form of nodes. These are
-the CSG nodes:
+Giống như các tính năng khác của Godot, CSG được hỗ trợ dưới dạng các node. Đây là các node CSG:
 
-- :ref:`CSGBox3D <class_CSGBox3D>`
-- :ref:`CSGCylinder3D <class_CSGCylinder3D>` (also supports cone)
-- :ref:`CSGSphere3D <class_CSGSphere3D>`
-- :ref:`CSGTorus3D <class_CSGTorus3D>`
-- :ref:`CSGPolygon3D <class_CSGPolygon3D>`
-- :ref:`CSGMesh3D <class_CSGMesh3D>`
-- :ref:`CSGCombiner3D <class_CSGCombiner3D>`
+- :ref:`CSGBox3D <class_CSGBox3D>` - :ref:`CSGCylinder3D <class_CSGCylinder3D>` (cũng hỗ trợ cone) - :ref:`CSGSphere3D <class_CSGSphere3D>` - :ref:`CSGTorus3D <class_CSGTorus3D>` - :ref:`CSGPolygon3D <class_CSGPolygon3D>` - :ref:`CSGMesh3D <class_CSGMesh3D>` - :ref:`CSGCombiner3D <class_CSGCombiner3D>`
 
 .. image:: img/csg_nodes.png
 
 .. image:: img/csg_mesh.png
 
-CSG tools features
-~~~~~~~~~~~~~~~~~~
+Các tính năng của công cụ CSG
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Every CSG node supports 3 kinds of boolean operations:
+Mỗi node CSG hỗ trợ 3 loại phép toán boolean:
 
-- **Union:** Geometry of both primitives is merged, intersecting geometry
-  is removed.
-- **Intersection:** Only intersecting geometry remains, the rest is removed.
-- **Subtraction:** The second shape is subtracted from the first, leaving a dent
-  with its shape.
+- **Union:** Hình học của cả hai primitive được hợp nhất, phần hình học giao nhau bị loại bỏ. - **Intersection:** Chỉ phần hình học giao nhau được giữ lại, phần còn lại bị loại bỏ. - **Subtraction:** Hình thứ hai bị trừ khỏi hình thứ nhất, để lại một phần lõm có hình dạng của nó.
 
 .. image:: img/csg_operation_menu.png
 
@@ -70,194 +50,141 @@ Every CSG node supports 3 kinds of boolean operations:
 CSGPolygon
 ~~~~~~~~~~
 
-The :ref:`CSGPolygon3D <class_CSGPolygon3D>` node extrude along a Polygon drawn in
-2D (in X, Y coordinates) in the following ways:
+Node :ref:`CSGPolygon3D <class_CSGPolygon3D>` extrude một Polygon được vẽ trong không gian 2D (theo tọa độ X, Y) theo các cách sau:
 
-- **Depth:** Extruded back a given amount.
-- **Spin:** Extruded while spinning around its origin.
-- **Path:** Extruded along a Path node. This operation is commonly called
-  lofting.
+- **Depth:** Extrude về phía sau một khoảng xác định. - **Spin:** Extrude đồng thời xoay quanh gốc của nó. - **Path:** Extrude dọc theo một node Path. Phép toán này thường được gọi là lofting.
 
 .. image:: img/csg_poly_mode.png
 
 .. image:: img/csg_poly.png
 
 .. note:: The **Path** mode must be provided with a :ref:`Path3D <class_Path3D>`
-          node to work. In the Path node, draw the path and the polygon in
-          CSGPolygon3D will extrude along the given path.
+          node để hoạt động. Trong node Path, hãy vẽ path; polygon trong CSGPolygon3D sẽ được extrude dọc theo path đã cho.
 
 
-Custom meshes
-~~~~~~~~~~~~~
+Mesh tùy chỉnh
+~~~~~~~~~~~~~~
 
-Custom meshes can be used for :ref:`CSGMesh3D <class_CSGMesh3D>` as long as the
-mesh is *manifold*. The mesh can be modeled in other software and imported into
-Godot. Multiple materials are supported.
+Có thể sử dụng mesh tùy chỉnh cho :ref:`CSGMesh3D <class_CSGMesh3D>` miễn là mesh đó là *manifold*. Mesh có thể được modeling trong phần mềm khác rồi import vào Godot. Có hỗ trợ nhiều material.
 
-For a mesh to be used as a CSG mesh, it is required to:
+Để một mesh có thể được sử dụng làm mesh CSG, mesh đó phải:
 
-- be closed
-- have each edge connect to only two faces
-- have volume
+- khép kín - mỗi edge chỉ kết nối với đúng hai face - có volume
 
-And it is recommended to avoid:
+Ngoài ra, bạn nên tránh:
 
-- negative volume
-- self-intersection
-- interior faces
+- volume âm - self-intersection - các face bên trong
 
-Godot uses the `manifold <https://github.com/elalish/manifold>`__ library to
-implement CSG meshes. The technical definition of "manifold" used by Godot is
-the following, adapted from that library's `definition of "manifold"
-<https://github.com/elalish/manifold/wiki/Manifold-Library#manifoldness-definition>`__:
+Godot sử dụng thư viện `manifold <https://github.com/elalish/manifold>`__ để triển khai mesh CSG. Định nghĩa kỹ thuật của "manifold" được Godot sử dụng như sau, được điều chỉnh từ `definition of "manifold" <https://github.com/elalish/manifold/wiki/Manifold-Library#manifoldness-definition>`__ của thư viện đó:
 
-  Every edge of every triangle must contain the same two vertices (by index) as
-  exactly one other triangle edge, and the start and end vertices must switch
-  places between these two edges. The triangle vertices must appear in clockwise
-  order when viewed from the outside of the Godot Engine manifold mesh.
+  Mỗi edge của mọi triangle phải chứa cùng hai vertex (theo index) như chính xác một edge khác của triangle, đồng thời vertex bắt đầu và kết thúc phải đổi vị trí cho nhau giữa hai edge này. Các vertex của triangle phải xuất hiện theo thứ tự clockwise khi nhìn từ bên ngoài mesh manifold của Godot Engine.
 
 .. image:: img/csg_custom_mesh.png
 
-Making an existing mesh manifold with Blender
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Làm cho mesh hiện có trở thành manifold bằng Blender
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. UPDATE: This relies on a specific Blender addon. If it becomes unsupported,
-.. we can remove this section.
+.. CẬP NHẬT: Phần này phụ thuộc vào một Blender addon cụ thể. Nếu addon này không còn được hỗ trợ, .. chúng ta có thể xóa phần này.
 
-If you have an existing mesh that is not already manifold, you can make it
-manifold using Blender.
+Nếu bạn có một mesh hiện có chưa phải là manifold, bạn có thể làm cho nó trở thành manifold bằng Blender.
 
-In Blender, install and enable the
-`3D Print Toolbox <https://extensions.blender.org/add-ons/print3d-toolbox/>`_
-addon.
+Trong Blender, hãy cài đặt và bật addon `3D Print Toolbox <https://extensions.blender.org/add-ons/print3d-toolbox/>`_.
 
-Select the mesh you want to make manifold. Open the sidebar by clicking on the arrow:
+Chọn mesh bạn muốn làm cho trở thành manifold. Mở sidebar bằng cách nhấp vào mũi tên:
 
 .. image:: img/csg_manifold_step_1.webp
 
-In the **3D Print** tab, under **Clean Up**, click the **Make Manifold** button:
+Trong tab **3D Print**, bên dưới **Clean Up**, hãy nhấp vào nút **Make Manifold**:
 
 .. image:: img/csg_manifold_step_2.webp
 
-The mesh should now be manifold, and can be used as a custom mesh.
+Mesh giờ đây sẽ là manifold và có thể được sử dụng làm mesh tùy chỉnh.
 
 CSGCombiner3D
 ~~~~~~~~~~~~~
 
-The :ref:`CSGCombiner3D <class_CSGCombiner3D>` node is an empty shape used for
-organization. It will only combine children nodes.
+Node :ref:`CSGCombiner3D <class_CSGCombiner3D>` là một shape rỗng được dùng để tổ chức. Node này chỉ kết hợp các node con.
 
-Processing order
-~~~~~~~~~~~~~~~~
+Thứ tự xử lý
+~~~~~~~~~~~~
 
-Every CSG node will first process its children nodes and their operations:
-union, intersection, or subtraction, in tree order, and apply them to itself one
-after the other.
+Mỗi node CSG trước tiên sẽ xử lý các node con và phép toán của chúng: union, intersection hoặc subtraction, theo thứ tự trong cây, rồi lần lượt áp dụng chúng vào chính nó.
 
 .. note:: In the interest of performance, make sure CSG geometry remains
-          relatively simple, as complex meshes can take a while to process.
-          If adding objects together (such as table and room objects), create
-          them as separate CSG trees. Forcing too many objects in a single tree
-          will eventually start affecting performance.
-          Only use binary operations where you actually need them.
+          tương đối đơn giản, vì các mesh phức tạp có thể mất một lúc để xử lý. Nếu cộng các object với nhau (chẳng hạn như object bàn và phòng), hãy tạo chúng dưới dạng các cây CSG riêng biệt. Việc ép quá nhiều object vào một cây cuối cùng sẽ bắt đầu ảnh hưởng đến hiệu năng. Chỉ sử dụng các phép toán nhị phân khi thực sự cần.
 
-Prototyping a level
--------------------
+Tạo nguyên mẫu một level
+------------------------
 
-We will prototype a room to practice the use of CSG tools.
+Chúng ta sẽ tạo nguyên mẫu một căn phòng để thực hành sử dụng các công cụ CSG.
 
 .. tip:: Working in **Orthogonal** projection gives a better view when combining
-         the CSG shapes.
+         các shape CSG.
 
-Our level will contain these objects:
+Level của chúng ta sẽ chứa các object sau:
 
-- a room,
-- a bed,
-- a lamp,
-- a desk,
-- a bookshelf.
+- một căn phòng, - một chiếc giường, - một chiếc đèn, - một chiếc bàn, - một kệ sách.
 
-Create a scene with a Node3D node as root node.
+Tạo một scene với node Node3D làm node gốc.
 
 .. tip:: The default lighting of the environment doesn't provide clear shading
-         at some angles. Change the display mode using **Display Overdraw** in
-         the 3D viewport menu, or add a DirectionalLight node to help you see
-         clearly.
+         ở một số góc nhìn. Thay đổi chế độ hiển thị bằng **Display Overdraw** trong menu viewport 3D, hoặc thêm một node DirectionalLight để giúp bạn nhìn rõ hơn.
 
 .. image:: img/csg_overdraw.png
 
-Create a CSGBox3D and name it ``room``, enable **Invert Faces** and change the
-dimensions of your room.
+Tạo một CSGBox3D và đặt tên là ``room``, bật **Invert Faces** rồi thay đổi kích thước theo căn phòng của bạn.
 
 .. image:: img/csg_room.png
 
 .. image:: img/csg_room_invert.png
 
-Next, create a CSGCombiner3D and name it ``desk``.
+Tiếp theo, tạo một CSGCombiner3D và đặt tên là ``desk``.
 
-A desk has one surface and 4 legs:
+Một chiếc bàn có một mặt bàn và 4 chân:
 
-- Create 1 CSGBox3D children node in **Union** mode for the surface
-  and adjust the dimensions.
-- Create 4 CSGBox3D children nodes in **Union** mode for the legs
-  and adjust the dimensions.
+- Tạo 1 node con CSGBox3D ở chế độ **Union** cho mặt bàn và điều chỉnh kích thước. - Tạo 4 node con CSGBox3D ở chế độ **Union** cho các chân bàn và điều chỉnh kích thước.
 
-Adjust their placement to resemble a desk.
+Điều chỉnh vị trí của chúng để trông giống một chiếc bàn.
 
 .. image:: img/csg_desk.png
 
 .. note:: CSG nodes inside a CSGCombiner3D will only process their operation
-          within the combiner. Therefore, CSGCombiner3Ds are used to organize
-          CSG nodes.
+          bên trong combiner. Vì vậy, CSGCombiner3D được dùng để tổ chức các node CSG.
 
-Create a CSGCombiner3D and name it ``bed``.
+Tạo một CSGCombiner3D và đặt tên là ``bed``.
 
-Our bed consists of 3 parts: the bed, the mattress and a pillow. Create a CSGBox3D
-and adjust its dimension for the bed. Create another CSGBox3D and adjust its
-dimension for the mattress.
+Chiếc giường của chúng ta gồm 3 phần: khung giường, nệm và gối. Tạo một CSGBox3D và điều chỉnh kích thước cho khung giường. Tạo một CSGBox3D khác và điều chỉnh kích thước cho nệm.
 
 .. image:: img/csg_bed_mat.png
 
-We will create another CSGCombiner3D named ``pillow`` as the child of  ``bed``.
-The scene tree should look like this:
+Chúng ta sẽ tạo một CSGCombiner3D khác có tên ``pillow`` làm node con của ``bed``. Cây scene sẽ trông như sau:
 
 .. image:: img/csg_bed_tree.png
 
-We will combine 3 CSGSphere3D nodes in **Union** mode to form a pillow. Scale the
-Y axis of the spheres and enable **Smooth Faces**.
+Chúng ta sẽ kết hợp 3 node CSGSphere3D ở chế độ **Union** để tạo thành một chiếc gối. Scale trục Y của các sphere và bật **Smooth Faces**.
 
 .. image:: img/csg_pillow_smooth.png
 
-Select the ``pillow`` node and switch the mode to **Subtraction**; the combined
-spheres will cut a hole into the mattress.
+Chọn node ``pillow`` và chuyển chế độ sang **Subtraction**; các sphere đã kết hợp sẽ cắt một lỗ vào nệm.
 
 .. image:: img/csg_pillow_hole.png
 
-Try to re-parent the ``pillow`` node to the root ``Node3D`` node; the hole will
-disappear.
+Hãy thử re-parent node ``pillow`` vào node gốc ``Node3D``; cái lỗ sẽ biến mất.
 
 .. note:: This is to illustrate the effect of CSG processing order.
-          Since the root node is not a CSG node, the CSGCombiner3D nodes are
-          the end of the operations; this shows the use of CSGCombiner3D to
-          organize the CSG scene.
+          Vì node gốc không phải là node CSG, các node CSGCombiner3D là điểm kết thúc của các phép toán; điều này cho thấy cách sử dụng CSGCombiner3D để tổ chức scene CSG.
 
-Undo the re-parent after observing the effect. The bed you've built should look
-like this:
+Undo thao tác re-parent sau khi quan sát hiệu ứng. Chiếc giường bạn đã xây dựng sẽ trông như sau:
 
 .. image:: img/csg_bed.png
 
-Create a CSGCombiner3D and name it ``lamp``.
+Tạo một CSGCombiner3D và đặt tên là ``lamp``.
 
-A lamp consists of 3 parts: the stand, the pole and the lampshade.
-Create a CSGCylinder3D, enable the **Cone** option and make it the stand. Create
-another CSGCylinder3D and adjust the dimensions to use it as a pole.
+Một chiếc đèn gồm 3 phần: chân đế, thân và chụp đèn. Tạo một CSGCylinder3D, bật tùy chọn **Cone** và dùng nó làm chân đế. Tạo một CSGCylinder3D khác và điều chỉnh kích thước để dùng làm thân đèn.
 
 .. image:: img/csg_lamp_pole_stand.png
 
-We will use a CSGPolygon3D for the lampshade. Use the **Spin** mode for the
-CSGPolygon3D and draw a `trapezoid <https://en.wikipedia.org/wiki/Trapezoid>`_
-while in **Front View** (numeric keypad 1); this shape will extrude around the
-origin and form the lampshade.
+Chúng ta sẽ sử dụng một CSGPolygon3D cho chụp đèn. Sử dụng chế độ **Spin** cho CSGPolygon3D và vẽ một `trapezoid <https://en.wikipedia.org/wiki/Trapezoid>`_ trong khi ở **Front View** (bàn phím số 1); shape này sẽ extrude quanh gốc và tạo thành chụp đèn.
 
 .. image:: img/csg_lamp_spin.png
 
@@ -265,112 +192,71 @@ origin and form the lampshade.
 
 .. image:: img/csg_lamp_extrude.png
 
-Adjust the placement of the 3 parts to make it look like a lamp.
+Điều chỉnh vị trí của 3 phần để chúng trông giống một chiếc đèn.
 
 .. image:: img/csg_lamp.png
 
-Create a CSGCombiner3D and name it ``bookshelf``.
+Tạo một CSGCombiner3D và đặt tên là ``bookshelf``.
 
-We will use 3 CSGBox3D nodes for the bookshelf. Create a CSGBox3D and adjust its
-dimensions; this will be the size of the bookshelf.
+Chúng ta sẽ sử dụng 3 node CSGBox3D cho kệ sách. Tạo một CSGBox3D và điều chỉnh kích thước; đây sẽ là kích thước của kệ sách.
 
 .. image:: img/csg_shelf_big.png
 
-Duplicate the CSGBox3D and shorten the dimensions of each axis and change the mode
-to **Subtraction**.
+Nhân bản CSGBox3D, thu nhỏ kích thước trên mỗi trục và chuyển chế độ sang **Subtraction**.
 
 .. image:: img/csg_shelf_subtract.png
 
 .. image:: img/csg_shelf_subtract_menu.png
 
-You've almost built a shelf. Create one more CSGBox3D for dividing the shelf into
-two levels.
+Bạn gần như đã xây dựng xong một chiếc kệ. Tạo thêm một CSGBox3D để chia kệ thành hai tầng.
 
 .. image:: img/csg_shelf.png
 
-Position your furniture in your room as you like and your scene should look
-this:
+Đặt đồ nội thất vào căn phòng theo ý muốn; scene của bạn sẽ trông như sau:
 
 .. image:: img/csg_room_result.png
 
-You've successfully prototyped a room level with the CSG tools in Godot.
-CSG tools can be used for designing all kinds of levels, such as a maze
-or a city; explore its limitations when designing your game.
+Bạn đã tạo nguyên mẫu thành công một level phòng bằng các công cụ CSG trong Godot. Có thể sử dụng công cụ CSG để thiết kế mọi loại level, chẳng hạn như mê cung hoặc thành phố; hãy khám phá các giới hạn của nó khi thiết kế game.
 
-Using prototype textures
-------------------------
+Sử dụng texture nguyên mẫu
+--------------------------
 
-Godot's :ref:`doc_standard_material_3d` supports *triplanar mapping*, which can be
-used to automatically apply a texture to arbitrary objects without distortion.
-This is handy when using CSG as Godot doesn't support editing UV maps on CSG
-nodes yet. Triplanar mapping is relatively slow, which usually restricts its
-usage to organic surfaces like terrain. Still, when prototyping, it can be used
-to quickly apply textures to CSG-based levels.
+:ref:`doc_standard_material_3d` của Godot hỗ trợ *triplanar mapping*, có thể được sử dụng để tự động áp dụng texture lên các object tùy ý mà không gây biến dạng. Điều này rất hữu ích khi sử dụng CSG, vì Godot hiện chưa hỗ trợ chỉnh sửa UV map trên các node CSG. Triplanar mapping tương đối chậm, nên thông thường việc sử dụng nó bị giới hạn ở các bề mặt hữu cơ như địa hình. Tuy vậy, khi tạo nguyên mẫu, bạn có thể dùng nó để nhanh chóng áp dụng texture cho các level dựa trên CSG.
 
 .. note:: If you need some textures for prototyping, Kenney made a
           `set of CC0-licensed prototype textures <https://kenney.nl/assets/prototype-textures>`__.
 
-There are two ways to apply a material to a CSG node:
+Có hai cách để áp dụng material cho một node CSG:
 
-- Applying it to a CSGCombiner3D node as a material override
-  (**Geometry > Material Override** in the Inspector). This will affect its
-  children automatically, but will make it impossible to change the material in
-  individual children.
-- Applying a material to individual nodes (**Material** in the Inspector). This
-  way, each CSG node can have its own appearance. Subtractive CSG nodes will
-  apply their material to the nodes they're "digging" into.
+- Áp dụng material cho node CSGCombiner3D dưới dạng material override (**Geometry > Material Override** trong Inspector). Cách này sẽ tự động ảnh hưởng đến các node con, nhưng khiến bạn không thể thay đổi material trên từng node con. - Áp dụng material cho từng node riêng lẻ (**Material** trong Inspector). Theo cách này, mỗi node CSG có thể có diện mạo riêng. Các node CSG dạng subtractive sẽ áp dụng material của chúng lên các node mà chúng đang "đào" vào.
 
-To apply triplanar mapping to a CSG node, select it, go to the Inspector, click
-the **[empty]** text next to **Material Override** (or **Material** for
-individual CSG nodes). Choose **New StandardMaterial3D**. Click the newly created
-material's icon to edit it. Unfold the **Albedo** section and load a texture
-into the **Texture** property. Now, unfold the **Uv1** section and check
-**Triplanar**. You can change the texture offset and scale on each axis by
-playing with the **Scale** and **Offset** properties just above. Higher values
-in the **Scale** property will cause the texture to repeat more often.
+Để áp dụng triplanar mapping cho một node CSG, hãy chọn node đó, đi đến Inspector, nhấp vào văn bản **[empty]** bên cạnh **Material Override** (hoặc **Material** đối với các node CSG riêng lẻ). Chọn **New StandardMaterial3D**. Nhấp vào biểu tượng của material vừa tạo để chỉnh sửa. Mở rộng phần **Albedo** và tải một texture vào thuộc tính **Texture**. Tiếp theo, mở rộng phần **Uv1** và đánh dấu **Triplanar**. Bạn có thể thay đổi offset và scale của texture trên từng trục bằng cách điều chỉnh các thuộc tính **Scale** và **Offset** ngay phía trên. Giá trị trong thuộc tính **Scale** càng cao thì texture sẽ lặp lại càng thường xuyên.
 
 .. tip:: You can copy a StandardMaterial3D to reuse it across CSG nodes. To do so,
-         click the dropdown arrow next to a material property in the Inspector
-         and choose **Copy**. To paste it, select the node you'd like to apply
-         the material onto, click the dropdown arrow next to its material
-         property then choose **Paste**.
+         Nhấp vào mũi tên dropdown bên cạnh một thuộc tính material trong Inspector và chọn **Copy**. Để dán, hãy chọn node mà bạn muốn áp dụng material, nhấp vào mũi tên dropdown bên cạnh thuộc tính material của node đó rồi chọn **Paste**.
 
 .. _doc_csg_tools_converting_to_mesh_instance_3d:
 
-Converting to MeshInstance3D
-----------------------------
+Chuyển đổi thành MeshInstance3D
+-------------------------------
 
-Since Godot 4.4, you can convert a CSG node and its children to a :ref:`class_MeshInstance3D` node.
+Kể từ Godot 4.4, bạn có thể chuyển đổi một node CSG và các node con của nó thành một node :ref:`class_MeshInstance3D`.
 
-This has several benefits:
+Điều này mang lại một số lợi ích:
 
-- Bake lightmaps, since UV2 can be generated on a MeshInstance3D.
-- Bake occlusion culling, since the occlusion culling bake process only takes MeshInstance3D into account.
-- Faster loading times, since the CSG mesh no longer needs to be rebuilt when the scene loads.
-- Better performance when updating the node's transform if using the mesh within another CSG node.
+- Bake lightmap, vì UV2 có thể được tạo trên một MeshInstance3D. - Bake occlusion culling, vì quy trình bake occlusion culling chỉ tính đến MeshInstance3D. - Thời gian tải nhanh hơn, vì mesh CSG không còn cần được dựng lại khi scene tải. - Hiệu năng tốt hơn khi cập nhật transform của node nếu sử dụng mesh bên trong một node CSG khác.
 
-To convert a CSG node to a MeshInstance3D node, select it, then choose
-**CSG > Bake Mesh Instance** in the toolbar. The MeshInstance3D node
-will be created as a sibling. Note that the CSG node that was used for baking is **not** hidden
-automatically, so remember to hide it to prevent its geometry from overlapping with the newly created
-MeshInstance3D.
+Để chuyển đổi một node CSG thành node MeshInstance3D, hãy chọn node đó, sau đó chọn **CSG > Bake Mesh Instance** trên thanh công cụ. Node MeshInstance3D sẽ được tạo dưới dạng sibling. Lưu ý rằng node CSG được dùng để bake sẽ **không** tự động bị ẩn, vì vậy hãy nhớ ẩn node đó để ngăn hình học của nó chồng lên MeshInstance3D mới được tạo.
 
-You can also create a trimesh collision shape using **CSG > Bake Collision Shape**.
-The generated :ref:`class_CollisionShape3D` node must be a child of a :ref:`class_StaticBody3D`
-or :ref:`class_AnimatableBody3D` node to be effective.
+Bạn cũng có thể tạo một collision shape dạng trimesh bằng **CSG > Bake Collision Shape**. Node :ref:`class_CollisionShape3D` được tạo phải là node con của node :ref:`class_StaticBody3D` hoặc :ref:`class_AnimatableBody3D` thì mới có hiệu lực.
 
 .. tip::
 
-    Remember to keep the original CSG node in the scene tree, so that you can
-    perform changes to the geometry later if needed. To make changes to the
-    geometry, remove the MeshInstance3D node and make the root CSG node visible
-    again.
+    Hãy nhớ giữ node CSG ban đầu trong scene tree để sau này bạn có thể thực hiện các thay đổi đối với hình học nếu cần. Để thay đổi hình học, hãy xóa node MeshInstance3D và hiển thị lại node CSG gốc.
 
-Exporting as glTF
------------------
+Xuất dưới dạng glTF
+-------------------
 
-It can be useful to block out a level using CSG, then export it as a 3d model, to
-import into 3D modeling software. You can do this by selecting **Scene > Export As... >
-glTF 2.0 Scene**.
+Việc dựng khối một level bằng CSG rồi xuất nó dưới dạng mô hình 3D để nhập vào phần mềm modeling 3D có thể rất hữu ích. Bạn có thể thực hiện việc này bằng cách chọn **Scene > Export As... > glTF 2.0 Scene**.
 
 .. image:: img/export_as_gltf.webp

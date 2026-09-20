@@ -31,7 +31,7 @@ Phép biến đổi co giãn
 
 Cuối cùng, các viewport có một *Stretch Transform*, được sử dụng khi thay đổi kích thước hoặc co giãn màn hình. Phép biến đổi này được sử dụng nội bộ (như mô tả trong :ref:`doc_multiple_resolutions`), nhưng cũng có thể được thiết lập thủ công trên từng viewport.
 
-Các sự kiện đầu vào được nhân với phép biến đổi này, nhưng không có các phép biến đổi ở trên. Để chuyển đổi tọa độ InputEvent sang tọa độ CanvasItem cục bộ, 
+Các sự kiện đầu vào được nhân với phép biến đổi này, nhưng không có các phép biến đổi ở trên. Để chuyển đổi tọa độ InputEvent sang tọa độ CanvasItem cục bộ,
 :ref:`CanvasItem.make_input_local() <class_CanvasItem_method_make_input_local>`
 hàm đã được thêm vào để thuận tiện.
 
@@ -55,11 +55,11 @@ Hình minh họa ở trên cho thấy một số hàm biến đổi hiện có. 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Called from a CanvasItem. canvas_pos = get_global_transform() * local_pos local_pos = get_global_transform().affine_inverse() * canvas_pos
+    # Được gọi từ một CanvasItem. canvas_pos = get_global_transform() * local_pos local_pos = get_global_transform().affine_inverse() * canvas_pos
 
  .. code-tab:: csharp
 
-    // Called from a CanvasItem. canvasPos = GetGlobalTransform() * localPos; localPos = GetGlobalTransform().AffineInverse() * canvasPos;
+    // Được gọi từ một CanvasItem. canvasPos = GetGlobalTransform() * localPos; localPos = GetGlobalTransform().AffineInverse() * canvasPos;
 
 Cuối cùng, để chuyển đổi tọa độ cục bộ của CanvasItem sang tọa độ màn hình, chỉ cần nhân theo thứ tự sau:
 
@@ -82,8 +82,8 @@ Việc truyền các sự kiện đầu vào tùy chỉnh vào game thường l�
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    var local_pos = Vector2(10, 20) # Local to Control/Node2D. var ie = InputEventMouseButton.new() ie.button_index = MOUSE_BUTTON_LEFT ie.position = get_viewport().get_screen_transform() * get_global_transform_with_canvas() * local_pos Input.parse_input_event(ie)
+    var local_pos = Vector2(10, 20) # Từ cục bộ đến Control/Node2D. var ie = InputEventMouseButton.new() ie.button_index = MOUSE_BUTTON_LEFT ie.position = get_viewport().get_screen_transform() * get_global_transform_with_canvas() * local_pos Input.parse_input_event(ie)
 
  .. code-tab:: csharp
 
-    var localPos = new Vector2(10,20); // Local to Control/Node2D. var ie = new InputEventMouseButton() { ButtonIndex = MouseButton.Left, Position = GetViewport().GetScreenTransform() * GetGlobalTransformWithCanvas() * localPos, }; Input.ParseInputEvent(ie);
+    var localPos = new Vector2(10,20); // Từ cục bộ đến Control/Node2D. var ie = new InputEventMouseButton() { ButtonIndex = MouseButton.Left, Position = GetViewport().GetScreenTransform() * GetGlobalTransformWithCanvas() * localPos, }; Input.ParseInputEvent(ie);

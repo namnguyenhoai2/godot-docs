@@ -1,18 +1,18 @@
 .. _doc_core_types:
 
-Các kiểu dữ liệu cốt lõi
-========================
+Các kiểu cốt lõi
+================
 
-Godot có một tập hợp phong phú các lớp và template cấu thành phần cốt lõi của nó, và mọi thứ đều được xây dựng dựa trên chúng.
+Godot có một tập hợp phong phú các class và template cấu thành phần cốt lõi của nó, và mọi thứ đều được xây dựng dựa trên chúng.
 
 Tài liệu tham khảo này sẽ cố gắng liệt kê chúng theo thứ tự để dễ hiểu hơn.
 
 Cấp phát bộ nhớ
 ---------------
 
-Godot có nhiều cơ chế để đảm bảo an toàn bộ nhớ và theo dõi mức sử dụng bộ nhớ. Vì lý do này, không nên sử dụng các lệnh gọi thư viện C và C++ thông thường. Thay vào đó, một vài phương án thay thế được cung cấp.
+Godot có nhiều cơ chế để đảm bảo an toàn bộ nhớ và theo dõi mức sử dụng bộ nhớ. Vì lý do này, không nên sử dụng các lời gọi thư viện C và C++ thông thường. Thay vào đó, Godot cung cấp một số hàm thay thế.
 
-Để cấp phát theo kiểu C, Godot cung cấp một vài macro:
+Đối với việc cấp phát theo kiểu C, Godot cung cấp một số macro:
 
 .. code-block:: cpp
 
@@ -20,9 +20,9 @@ Godot có nhiều cơ chế để đảm bảo an toàn bộ nhớ và theo dõi
     memrealloc(pointer)
     memfree(pointer)
 
-Các macro này tương đương với ``malloc()``, ``realloc()`` và ``free()`` thường dùng của thư viện chuẩn C.
+Các macro này tương đương với ``malloc()``, ``realloc()`` và ``free()`` thông thường của thư viện chuẩn C.
 
-Để cấp phát theo kiểu C++, có các macro đặc biệt:
+Đối với việc cấp phát theo kiểu C++, có các macro đặc biệt:
 
 .. code-block:: cpp
 
@@ -35,14 +35,14 @@ Các macro này tương đương với ``malloc()``, ``realloc()`` và ``free()`
 
 Các macro này lần lượt tương đương với ``new``, ``delete``, ``new[]`` và ``delete[]``.
 
-``memnew``/``memdelete`` cũng sử dụng một chút phép màu C++ để tự động gọi các hàm post-init và pre-release. Ví dụ, cơ chế này được dùng để thông báo cho các Object ngay sau khi chúng được tạo và ngay trước khi chúng bị xóa.
+``memnew``/``memdelete`` also use a little C++ magic to automatically call post-init and pre-release functions. For example, this is used to notify Objects right after they are created, and right before they are deleted.
 
 -  `core/os/memory.h <https://github.com/godotengine/godot/blob/master/core/os/memory.h>`__
 
-Container
----------
+Các container
+-------------
 
-Godot cung cấp tập hợp container riêng, nghĩa là các container STL như ``std::string`` và ``std::vector`` nhìn chung không được sử dụng trong codebase. Xem :ref:`doc_faq_why_not_stl` để biết thêm thông tin.
+Godot cung cấp bộ container riêng, nghĩa là các container STL như ``std::string`` và ``std::vector`` nhìn chung không được sử dụng trong codebase. Xem :ref:`doc_faq_why_not_stl` để biết thêm thông tin.
 
 Biểu tượng 📜 cho biết kiểu này là một phần của :ref:`Variant <doc_variant_class>`. Điều này có nghĩa là nó có thể được sử dụng làm tham số hoặc giá trị trả về của một method được expose cho scripting API.
 
@@ -144,14 +144,14 @@ Biểu tượng 📜 cho biết kiểu này là một phần của :ref:`Variant
 .. |typed_dictionary| replace:: `TypedDictionary <https://github.com/godotengine/godot/blob/master/core/variant/typed_dictionary.h>`__
 .. |pair| replace:: `Pair <https://github.com/godotengine/godot/blob/master/core/templates/pair.h>`__
 
-An toàn khi tái định vị
-^^^^^^^^^^^^^^^^^^^^^^^
+An toàn khi relocation
+^^^^^^^^^^^^^^^^^^^^^^
 
-Các container của Godot giả định rằng các phần tử của chúng là `trivially relocatable <https://open-std.org/JTC1/SC22/WG21/docs/papers/2020/p1144r5.html>`__.
+Các container của Godot giả định rằng các phần tử của chúng có tính `trivially relocatable <https://open-std.org/JTC1/SC22/WG21/docs/papers/2020/p1144r5.html>`__.
 
-Điều này có nghĩa là nếu bạn lưu trữ trong đó các kiểu dữ liệu có con trỏ trỏ đến chính chúng, hoặc theo cách khác là `not trivially relocatable <https://open-std.org/JTC1/SC22/WG21/docs/papers/2020/p1144r5.html#non-trivial-samples>`__, Godot có thể bị crash. Lưu ý rằng việc lưu trữ **con trỏ đến** các object không trivially relocatable, chẳng hạn như một số lớp con của Object, không gây vấn đề và được hỗ trợ.
+Điều này có nghĩa là nếu bạn lưu trữ trong đó các kiểu dữ liệu có con trỏ trỏ đến chính chúng, hoặc nói cách khác là `not trivially relocatable <https://open-std.org/JTC1/SC22/WG21/docs/papers/2020/p1144r5.html#non-trivial-samples>`__, Godot có thể bị crash. Lưu ý rằng việc lưu trữ **con trỏ đến** các object không trivially relocatable, chẳng hạn như một số subclass của Object, không có vấn đề gì và được hỗ trợ.
 
-Lý do giả định khả năng tái định vị tầm thường là vì điều đó cho phép chúng ta sử dụng các kỹ thuật tối ưu hóa quan trọng, chẳng hạn như tái định vị bằng ``memcpy`` hoặc ``realloc``.
+Lý do giả định khả năng relocatability đơn giản là vì điều đó cho phép chúng ta sử dụng các kỹ thuật tối ưu hóa quan trọng, chẳng hạn như relocation bằng ``memcpy`` hoặc ``realloc``.
 
 `GH-100509 <https://github.com/godotengine/godot/issues/100509>`__ theo dõi quyết định này.
 
@@ -164,11 +164,11 @@ Lý do giả định khả năng tái định vị tầm thường là vì đi�
 
     Bạn có thể tìm thêm thông tin về các chiến lược đa luồng tại :ref:`doc_using_multiple_threads`.
 
-Không container nào của Godot là thread-safe. Khi dự kiến có nhiều thread truy cập chúng, bạn phải sử dụng các cơ chế bảo vệ đa luồng.
+Không có container nào của Godot là thread-safe. Khi dự kiến có nhiều thread truy cập vào chúng, bạn phải sử dụng các cơ chế bảo vệ đa luồng.
 
-Lưu ý rằng một số kiểu được liệt kê ở đây cũng có sẵn thông qua bindings, nhưng các kiểu binding được bọc bằng
+Lưu ý rằng một số kiểu được liệt kê ở đây cũng có sẵn thông qua các bindings, nhưng các kiểu binding được bọc vì
 :ref:`class_RefCounted` (found in the ``CoreBind::`` namespace). Prefer the primitives listed here when possible, for
-vì lý do hiệu suất.
+lý do hiệu suất.
 
 +-----------------------+------------------------------+---------------------------------------------------------------------------------------+
 | Godot datatype        | Closest C++ STL datatype     | Comment                                                                               |
@@ -208,20 +208,20 @@ vì lý do hiệu suất.
 Các kiểu toán học
 -----------------
 
-Có một số kiểu toán học tuyến tính có sẵn trong thư mục ``core/math``:
+Có một số kiểu toán học tuyến tính trong thư mục ``core/math``:
 
 -  `core/math <https://github.com/godotengine/godot/tree/master/core/math>`__
 
 NodePath
 --------
 
-Đây là một kiểu dữ liệu đặc biệt dùng để lưu trữ các path trong scene tree và tham chiếu đến chúng theo cách được tối ưu hóa:
+Đây là một kiểu dữ liệu đặc biệt được dùng để lưu trữ các đường dẫn trong cây scene và tham chiếu đến chúng theo cách được tối ưu hóa:
 
 -  `core/string/node_path.h <https://github.com/godotengine/godot/blob/master/core/string/node_path.h>`__
 
 RID
 ---
 
-RID là *Resource ID*. Các server sử dụng chúng để tham chiếu đến dữ liệu được lưu trữ trong đó. RID là opaque, nghĩa là không thể truy cập trực tiếp vào dữ liệu mà chúng tham chiếu. RID là duy nhất, kể cả đối với các kiểu dữ liệu được tham chiếu khác nhau:
+RID là *Resource ID*. Các server sử dụng chúng để tham chiếu đến dữ liệu được lưu trữ trong chúng. RID là các định danh opaque, nghĩa là không thể truy cập trực tiếp vào dữ liệu mà chúng tham chiếu. RID là duy nhất, ngay cả đối với các kiểu dữ liệu được tham chiếu khác nhau:
 
 -  `core/templates/rid.h <https://github.com/godotengine/godot/blob/master/core/templates/rid.h>`__

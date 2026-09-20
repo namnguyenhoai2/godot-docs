@@ -1,582 +1,288 @@
 .. _doc_environment_and_post_processing:
 
-Environment and post-processing
-===============================
+Môi trường và hậu kỳ
+====================
 
-Godot 4 provides a redesigned Environment resource, as well as a new
-post-processing system with many available effects right out of the box.
+Godot 4 cung cấp một resource Environment được thiết kế lại, cùng với một hệ thống hậu kỳ mới có sẵn nhiều hiệu ứng ngay từ đầu.
 
 .. note::
 
-    As of Godot 4, Environment *performance/quality* settings are defined in the
-    project settings instead of in the Environment resource. This makes global
-    adjustments easier, as you no longer have to tweak Environment resources
-    individually to suit various hardware configurations.
+    Kể từ Godot 4, các thiết lập *hiệu năng/chất lượng* của Environment được định nghĩa trong phần thiết lập project thay vì trong resource Environment. Điều này giúp việc điều chỉnh toàn cục dễ dàng hơn, vì bạn không còn phải tinh chỉnh từng resource Environment riêng lẻ để phù hợp với nhiều cấu hình phần cứng khác nhau.
 
-    Note that most Environment performance/quality settings are only visible
-    after enabling the **Advanced** toggle in the Project Settings.
+    Lưu ý rằng hầu hết các thiết lập hiệu năng/chất lượng của Environment chỉ hiển thị sau khi bật nút chuyển **Advanced** trong Project Settings.
 
 Environment
 -----------
 
-The :ref:`class_Environment` resource stores all the information required for
-controlling the 2D and 3D rendering environment. This includes the sky, ambient
-lighting, tone mapping, effects, and adjustments. By itself, it does nothing,
-but you can enable it by using it in one of the following locations, in order
-of priority:
+Resource :ref:`class_Environment` lưu trữ mọi thông tin cần thiết để điều khiển môi trường render 2D và 3D. Các thông tin này bao gồm bầu trời, ánh sáng môi trường, tone mapping, hiệu ứng và các điều chỉnh. Bản thân nó không làm gì cả, nhưng bạn có thể bật nó bằng cách sử dụng ở một trong các vị trí sau, theo thứ tự ưu tiên:
 
-Camera3D node (high priority)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Node Camera3D (ưu tiên cao)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-An Environment can be set to a Camera3D node. It will have priority over any
-other setting.
+Có thể thiết lập Environment cho một node Camera3D. Environment này sẽ được ưu tiên hơn mọi thiết lập khác.
 
 .. image:: img/environment_camera.webp
 
-This is mostly useful when you want to override an existing environment,
-but in general it's a better idea to use the option below.
+Điều này chủ yếu hữu ích khi bạn muốn ghi đè một môi trường hiện có, nhưng nhìn chung, sử dụng tùy chọn bên dưới sẽ tốt hơn.
 
-WorldEnvironment node (medium priority, recommended)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Node WorldEnvironment (ưu tiên trung bình, khuyến nghị)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The WorldEnvironment node can be added to any scene, but only one can exist per
-active scene tree. Adding more than one will result in a warning.
+Node WorldEnvironment có thể được thêm vào bất kỳ scene nào, nhưng mỗi scene tree đang hoạt động chỉ có thể tồn tại một node. Việc thêm nhiều hơn một node sẽ tạo ra cảnh báo.
 
 .. image:: img/environment_world.webp
 
-Any Environment added has higher priority than the default Environment
-(explained below). This means it can be overridden on a per-scene basis,
-which makes it quite useful.
+Bất kỳ Environment nào được thêm vào cũng có độ ưu tiên cao hơn Environment mặc định (được giải thích bên dưới). Điều này có nghĩa là nó có thể được ghi đè theo từng scene, khiến nó khá hữu ích.
 
-Preview environment and sun (low priority)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Môi trường và mặt trời xem trước (ưu tiên thấp)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
 
-    Since Godot 4, the preview environment and sun system replace the
-    ``default_env.tres`` file that was used in Godot 3 projects.
+    Kể từ Godot 4, hệ thống môi trường và mặt trời xem trước thay thế file ``default_env.tres`` từng được sử dụng trong các project Godot 3.
 
-If no WorldEnvironment node or DirectionalLight3D node is present in the current
-scene, the editor will display a preview environment and sun instead. This can
-be disabled using the buttons at the top of the 3D editor:
+Nếu không có node WorldEnvironment hoặc node DirectionalLight3D nào trong scene hiện tại, editor sẽ hiển thị môi trường và mặt trời xem trước. Bạn có thể tắt chúng bằng các nút ở phía trên editor 3D:
 
 .. image:: img/environment_preview_sun_sky_toggle.webp
 
-Clicking on the 3 vertical dots on the right will display a dialog which allows
-you to customize the appearance of the preview environment:
+Khi nhấp vào 3 dấu chấm dọc ở bên phải, một hộp thoại sẽ hiển thị, cho phép bạn tùy chỉnh diện mạo của môi trường xem trước:
 
 .. image:: img/environment_preview_sun_sky_dialog.webp
 
-**The preview sun and sky is only visible in the editor, not in the running
-project.** Using the buttons at the bottom of the dialog, you can add the
-preview sun and sky into the scene as nodes.
+**Mặt trời và bầu trời xem trước chỉ hiển thị trong editor, không hiển thị trong project đang chạy.** Bằng cách sử dụng các nút ở cuối hộp thoại, bạn có thể thêm mặt trời và bầu trời xem trước vào scene dưới dạng các node.
 
 .. tip::
 
-    If you hold :kbd:`Shift` while clicking **Add Sun to Scene** or **Add
-    Environment to Scene** in the preview environment editor, this will add both
-    a preview sun and environment to the current scene (as if you clicked both
-    buttons separately). Use this to speed up project setup and prototyping.
+    Nếu giữ :kbd:`Shift` trong khi nhấp vào **Add Sun to Scene** hoặc **Add Environment to Scene** trong trình chỉnh sửa môi trường xem trước, thao tác này sẽ thêm cả mặt trời và môi trường xem trước vào scene hiện tại (như thể bạn đã nhấp riêng từng nút). Sử dụng cách này để tăng tốc quá trình thiết lập và tạo prototype cho project.
 
-Camera attributes
+Thuộc tính camera
 -----------------
 
 .. note::
 
-    In Godot 4, exposure and depth of field information was split from the
-    Environment resource into a separate CameraAttributes resource. This allows
-    adjusting those properties independently of other Environment settings more
-    easily.
+    Trong Godot 4, thông tin về exposure và depth of field được tách khỏi resource Environment và chuyển sang một resource CameraAttributes riêng biệt. Điều này giúp điều chỉnh các thuộc tính đó độc lập với các thiết lập Environment khác dễ dàng hơn.
 
-The :ref:`class_CameraAttributes` resource stores exposure and depth of field
-information. It also allows enabling automatic exposure adjustments depending on
-scene brightness.
+Resource :ref:`class_CameraAttributes` lưu trữ thông tin về exposure và depth of field. Nó cũng cho phép bật các điều chỉnh exposure tự động tùy theo độ sáng của scene.
 
-There are two kinds of CameraAttribute resources available:
+Có hai loại resource CameraAttributes:
 
-- **CameraAttributesPractical:** Features are exposed using arbitrary units,
-  which are easier to reason about for most game use cases.
-- **CameraAttributesPhysical:** Features are exposed using real world units,
-  similar to a digital camera. For example, field of view is set using a focal
-  length in millimeters instead of a value in degrees. Recommended when physical
-  accuracy is important, such as for photorealistic rendering.
+- **CameraAttributesPractical:** Các tính năng được thể hiện bằng những đơn vị tùy ý, dễ hình dung hơn trong hầu hết trường hợp sử dụng game. - **CameraAttributesPhysical:** Các tính năng được thể hiện bằng các đơn vị trong thế giới thực, tương tự như máy ảnh kỹ thuật số. Ví dụ, field of view được thiết lập bằng tiêu cự tính theo millimeter thay vì một giá trị tính theo độ. Được khuyến nghị khi độ chính xác vật lý là quan trọng, chẳng hạn như khi render photorealistic.
 
-Both CameraAttribute resource types allow you to use the same features, but they
-are configured differently. If you don't know which one to choose, use
-**CameraAttributesPractical**.
+Cả hai loại resource CameraAttribute đều cho phép bạn sử dụng cùng các tính năng, nhưng chúng được cấu hình theo những cách khác nhau. Nếu không biết nên chọn loại nào, hãy sử dụng **CameraAttributesPractical**.
 
 .. note::
 
-    Using a :ref:`class_CameraAttributesPhysical` on a Camera3D node will lock
-    out FOV and aspect adjustments in that Camera3D, as field of view is
-    adjusted in the CameraAttributesPhysical resource instead. If used in a
-    WorldEnvironment, the CameraAttributesPhysical will not override any
-    Camera3D in the scene.
+    Việc sử dụng :ref:`class_CameraAttributesPhysical` trên node Camera3D sẽ khóa các điều chỉnh FOV và aspect trong Camera3D đó, vì field of view được điều chỉnh trong resource CameraAttributesPhysical. Nếu được sử dụng trong WorldEnvironment, CameraAttributesPhysical sẽ không ghi đè bất kỳ Camera3D nào trong scene.
 
-A CameraAttributes resource can be added to a Camera3D or a WorldEnvironment
-node. When the current camera has a CameraAttributes set, it will *override* the
-one set in WorldEnvironment (if any).
+Có thể thêm một resource CameraAttributes vào node Camera3D hoặc WorldEnvironment. Khi camera hiện tại có CameraAttributes được thiết lập, nó sẽ *ghi đè* CameraAttributes được thiết lập trong WorldEnvironment (nếu có).
 
-In most situations, setting the CameraAttributes resource on the Camera3D node
-instead of the WorldEnvironment is recommended. Unlike WorldEnvironment,
-assigning the CameraAttributes resource to the Camera3D node prevents depth of
-field from displaying in the 3D editor viewport, unless the camera is being
-previewed.
+Trong hầu hết trường hợp, nên thiết lập resource CameraAttributes trên node Camera3D thay vì WorldEnvironment. Không giống WorldEnvironment, việc gán resource CameraAttributes cho node Camera3D sẽ ngăn depth of field hiển thị trong viewport editor 3D, trừ khi camera đang được xem trước.
 
-Environment options
--------------------
+Các tùy chọn Environment
+------------------------
 
-The following is a detailed description of all environment options and how
-they are intended to be used.
+Phần sau đây mô tả chi tiết tất cả các tùy chọn của Environment và cách chúng được dự định sử dụng.
 
 Background
 ~~~~~~~~~~
 
-The Background section contains settings on how to fill the background (parts of
-the screen where objects were not drawn). The background not only serves the
-purpose of displaying an image or color. By default, it also affects how objects
-are affected by ambient and reflected light. This is called image-based lighting
-(IBL).
+Phần Background chứa các thiết lập về cách tô nền (những phần trên màn hình nơi các đối tượng không được vẽ). Background không chỉ có mục đích hiển thị hình ảnh hoặc màu sắc. Theo mặc định, nó còn ảnh hưởng đến cách các đối tượng chịu tác động của ánh sáng môi trường và ánh sáng phản xạ. Đây được gọi là image-based lighting (IBL).
 
-As a result, the background sky may greatly impact your scene's overall
-appearance, even if the sky is never directly visible on screen. This should be
-taken into account when tweaking lighting in your scene.
+Do đó, bầu trời nền có thể ảnh hưởng rất lớn đến diện mạo tổng thể của scene, ngay cả khi bầu trời không bao giờ hiển thị trực tiếp trên màn hình. Bạn nên lưu ý điều này khi tinh chỉnh ánh sáng trong scene.
 
 .. image:: img/environment_background1.webp
 
-There are several background modes available:
+Có một số chế độ background khả dụng:
 
-- **Clear Color** uses the default clear color defined in the project settings.
-  The background will be a constant color.
-- **Custom Color** is like Clear Color, but with a custom color value.
-- **Sky** lets you define a background sky material (see below). By default,
-  objects in the scene will reflect this sky material and absorb ambient light
-  from it.
-- **Canvas** displays the 2D scene as a background to the 3D scene. This can be used
-  to make environment effects visible on 2D rendering, such as
+- **Clear Color** sử dụng màu clear mặc định được định nghĩa trong phần thiết lập project. Background sẽ có một màu cố định. - **Custom Color** tương tự Clear Color, nhưng sử dụng giá trị màu tùy chỉnh. - **Sky** cho phép bạn định nghĩa material bầu trời nền (xem bên dưới). Theo mặc định, các đối tượng trong scene sẽ phản chiếu material bầu trời này và hấp thụ ánh sáng môi trường từ nó. - **Canvas** hiển thị scene 2D làm background cho scene 3D. Có thể sử dụng tùy chọn này để làm cho các hiệu ứng môi trường hiển thị trên render 2D, chẳng hạn như
   :ref:`glow in 2D <doc_environment_and_post_processing_using_glow_in_2d>`.
-- **Keep** does not draw any sky, keeping what was present on previous frames
-  instead. This improves performance in purely indoor scenes, but creates a
-  "hall of mirrors" visual glitch if the sky is visible at any time.
-- **Camera Feed** displays a :ref:`class_CameraFeed` from a physical camera as the
-  background, useful for AR games on mobile devices.
+- **Keep** không vẽ bất kỳ bầu trời nào, thay vào đó giữ lại nội dung đã có ở các frame trước. Điều này cải thiện hiệu năng trong các scene hoàn toàn trong nhà, nhưng tạo ra lỗi hình ảnh "hall of mirrors" nếu bầu trời hiển thị vào bất kỳ thời điểm nào. - **Camera Feed** hiển thị một :ref:`class_CameraFeed` từ camera vật lý làm background, hữu ích cho các game AR trên thiết bị di động.
 
-Sky materials
-~~~~~~~~~~~~~
+Material bầu trời
+~~~~~~~~~~~~~~~~~
 
-When using the **Sky** background mode (or the ambient/reflected light mode is
-set to **Sky**), a Sky subresource becomes available to edit in the Environment
-resource. Editing this subresource allows you to create a SkyMaterial resource
-within the Sky.
+Khi sử dụng chế độ background **Sky** (hoặc khi chế độ ánh sáng môi trường/phản xạ được đặt thành **Sky**), một subresource Sky sẽ khả dụng để chỉnh sửa trong resource Environment. Việc chỉnh sửa subresource này cho phép bạn tạo một resource SkyMaterial bên trong Sky.
 
-There are 3 built-in sky materials to choose from:
+Có 3 material bầu trời tích hợp sẵn để lựa chọn:
 
-- **PanoramaSkyMaterial:** Use a 360 degree panorama sky image (2:1 aspect ratio
-  recommended). To benefit from high dynamic range, the panorama image must be
-  in an HDR-compatible format such as ``.hdr`` or ``.exr`` rather than a
-  standard dynamic range format like ``.png`` or ``.jpg``.
-- **ProceduralSkyMaterial:** Use a procedurally generated sky with adjustable
-  ground, sun, sky and horizon colors. This is the type of sky used in the
-  editor preview. The sun's position is automatically derived from the first 4
-  DirectionalLight3D nodes present in the scene. There can be up to 4 suns at a
-  given time.
-- **PhysicalSkyMaterial:** Use a physically-based procedural sky with adjustable
-  scattering parameters. The sun's position is automatically derived from the
-  first DirectionalLight3D node present in the scene. PhysicalSkyMaterial is
-  slightly more expensive to render compared to ProceduralSkyMaterial. There can
-  be up to 1 sun at a given time.
+- **PanoramaSkyMaterial:** Sử dụng hình ảnh bầu trời panorama 360 độ (khuyến nghị tỷ lệ khung hình 2:1). Để tận dụng dải tương phản động cao, hình ảnh panorama phải ở định dạng tương thích với HDR như ``.hdr`` hoặc ``.exr``, thay vì định dạng dải tương phản động tiêu chuẩn như ``.png`` hoặc ``.jpg``. - **ProceduralSkyMaterial:** Sử dụng bầu trời được tạo theo quy trình với các màu ground, sun, sky và horizon có thể điều chỉnh. Đây là loại bầu trời được sử dụng trong phần xem trước của editor. Vị trí của mặt trời được tự động suy ra từ 4 node DirectionalLight3D đầu tiên có trong scene. Có thể có tối đa 4 mặt trời tại một thời điểm. - **PhysicalSkyMaterial:** Sử dụng bầu trời được tạo theo quy trình dựa trên vật lý với các tham số tán xạ có thể điều chỉnh. Vị trí của mặt trời được tự động suy ra từ node DirectionalLight3D đầu tiên có trong scene. PhysicalSkyMaterial tốn nhiều chi phí render hơn một chút so với ProceduralSkyMaterial. Có thể có tối đa 1 mặt trời tại một thời điểm.
 
-Panorama sky images are sometimes called HDRIs (High Dynamic Range Images).
-You can find freely licensed HDRIs on `Poly Haven <https://polyhaven.com/hdris>`__.
+Hình ảnh bầu trời panorama đôi khi được gọi là HDRI (High Dynamic Range Images). Bạn có thể tìm thấy các HDRI được cấp phép miễn phí trên `Poly Haven <https://polyhaven.com/hdris>`__.
 
 .. note::
 
-    HDR PanoramaSkyMaterial textures with very bright spots (such as real life
-    photos with the sun visible) may result in visible sparkles on ambient and
-    specular reflections. This is caused by the texture's peak exposure being
-    too high.
+    Texture HDR PanoramaSkyMaterial có các điểm quá sáng (chẳng hạn như ảnh chụp thực tế có mặt trời hiển thị) có thể tạo ra những đốm sáng lấp lánh rõ rệt trên các phản xạ môi trường và phản xạ specular. Nguyên nhân là do exposure cực đại của texture quá cao.
 
-    To resolve this, select the panorama texture in the FileSystem dock, go to
-    the Import dock, enable **HDR Clamp Exposure** then click **Reimport**.
+    Để khắc phục, hãy chọn texture panorama trong dock FileSystem, chuyển đến dock Import, bật **HDR Clamp Exposure**, sau đó nhấp vào **Reimport**.
 
-If you need a custom sky material (e.g. for procedural clouds), you can
-create a custom :ref:`sky shader <doc_sky_shader>`.
+Nếu cần một material bầu trời tùy chỉnh (ví dụ: cho mây được tạo theo quy trình), bạn có thể tạo một :ref:`sky shader <doc_sky_shader>` tùy chỉnh.
 
-Ambient light
-~~~~~~~~~~~~~
+Ánh sáng môi trường
+~~~~~~~~~~~~~~~~~~~
 
-Ambient light (as defined here) is a type of light that affects every piece of
-geometry with the same intensity. It is global and independent of lights that
-might be added to the scene. Ambient light is one of the two components of
-image-based lighting. Unlike reflected light, ambient light does not vary
-depending on the camera's position and viewing angle.
+Ánh sáng môi trường (như được định nghĩa ở đây) là một loại ánh sáng tác động lên mọi hình học với cùng cường độ. Đây là ánh sáng toàn cục và độc lập với các nguồn sáng có thể được thêm vào scene. Ánh sáng môi trường là một trong hai thành phần của image-based lighting. Không giống ánh sáng phản xạ, ánh sáng môi trường không thay đổi tùy theo vị trí và góc nhìn của camera.
 
-There are several types of ambient light to choose from:
+Có một số loại ánh sáng môi trường để lựa chọn:
 
-- **Background:** Source ambient light from the background, such as the sky,
-  custom color or clear color (default). Ambient light intensity will vary
-  depending on the sky image's contents, which can result in more visually
-  appealing ambient lighting. A sky must be set as background for this mode to
-  be visible.
-- **Disabled:** Do not use any ambient light. Useful for purely indoor scenes.
-- **Color:** Use a constant color for ambient light, ignoring the background
-  sky. Ambient light intensity will be the same on all sides, which may result
-  in the scene's lighting looking more flat. Useful for indoor scenes where
-  pitch black shadows may be too dark, or to maximize performance on low-end
-  devices.
-- **Sky:** Source ambient light from a specified sky, even if the background is
-  set to a mode other than **Sky**. If the background mode is already **Sky**,
-  this mode behaves identically to **Background**.
+- **Bối cảnh:** Lấy ánh sáng môi trường từ bối cảnh, chẳng hạn như bầu trời, màu tùy chỉnh hoặc màu trong suốt (mặc định). Cường độ ánh sáng môi trường sẽ thay đổi tùy theo nội dung của hình ảnh bầu trời, từ đó có thể tạo ra ánh sáng môi trường đẹp mắt hơn. Phải đặt bầu trời làm bối cảnh thì chế độ này mới hiển thị. - **Tắt:** Không sử dụng ánh sáng môi trường. Hữu ích cho các cảnh hoàn toàn trong nhà. - **Màu:** Sử dụng một màu cố định cho ánh sáng môi trường, bỏ qua bầu trời của bối cảnh. Cường độ ánh sáng môi trường sẽ giống nhau ở mọi phía, khiến ánh sáng của cảnh có thể trông phẳng hơn. Hữu ích cho các cảnh trong nhà, nơi bóng đen hoàn toàn có thể quá tối, hoặc để tối đa hóa hiệu năng trên các thiết bị cấp thấp. - **Bầu trời:** Lấy ánh sáng môi trường từ một bầu trời được chỉ định, ngay cả khi bối cảnh được đặt ở chế độ khác **Sky**. Nếu chế độ bối cảnh đã là **Sky**, chế độ này hoạt động giống hệt **Background**.
 
-When the ambient light mode is set to Sky or Background (and background is set
-to Sky), it's possible to blend between the ambient color and sky using the
-**Sky Contribution** property. This value is set to ``1.0`` by default, which
-means that only the ambient sky is used. The ambient color is ignored unless
-**Sky Contribution** is decreased below ``1.0``.
+Khi chế độ ánh sáng môi trường được đặt thành Sky hoặc Background (và bối cảnh được đặt thành Sky), bạn có thể pha trộn giữa màu môi trường và bầu trời bằng thuộc tính **Sky Contribution**. Giá trị này mặc định được đặt thành ``1.0``, nghĩa là chỉ sử dụng bầu trời môi trường. Màu môi trường sẽ bị bỏ qua trừ khi **Sky Contribution** được giảm xuống dưới ``1.0``.
 
-Here is a comparison of how different ambient light affects a scene:
+Dưới đây là so sánh về cách các loại ánh sáng môi trường khác nhau ảnh hưởng đến một cảnh:
 
 .. image:: img/environment_ambient2.webp
 
-Finally, there is an **Energy** setting which is a multiplier. It's useful when
-working with HDR.
+Cuối cùng, có một thiết lập **Energy** đóng vai trò là một hệ số nhân. Thiết lập này hữu ích khi làm việc với HDR.
 
-In general, you should only rely on ambient light alone for simple scenes or
-large exteriors. You may also do so to boost performance. Ambient light is fast
-to render, but it doesn't provide the best lighting quality. It's better to
-generate ambient light from :ref:`ReflectionProbe <doc_reflection_probes>`,
+Nhìn chung, bạn chỉ nên dựa vào riêng ánh sáng môi trường cho các cảnh đơn giản hoặc ngoại cảnh lớn. Bạn cũng có thể làm vậy để tăng hiệu năng. Ánh sáng môi trường được render nhanh, nhưng không cung cấp chất lượng chiếu sáng tốt nhất. Tốt hơn là tạo ánh sáng môi trường từ :ref:`ReflectionProbe <doc_reflection_probes>`,
 :ref:`VoxelGI <doc_using_voxel_gi>` or :ref:`SDFGI <doc_using_sdfgi>`, as these
-will simulate how indirect light propagates more accurately. Below is a comparison,
-in terms of quality, between using a flat ambient color and a VoxelGI:
+sẽ mô phỏng chính xác hơn cách ánh sáng gián tiếp lan truyền. Dưới đây là so sánh về chất lượng giữa việc sử dụng một màu môi trường phẳng và VoxelGI:
 
 .. image:: img/environment_ambient_comparison.webp
 
-Using one of the methods described above will replace constant ambient
-lighting with ambient lighting from the probes.
+Sử dụng một trong các phương pháp được mô tả ở trên sẽ thay thế ánh sáng môi trường cố định bằng ánh sáng môi trường từ các probe.
 
-Reflected light
-~~~~~~~~~~~~~~~
+Ánh sáng phản xạ
+~~~~~~~~~~~~~~~~
 
-Reflected light (also called specular light) is the other of the two components
-of image-based lighting.
+Ánh sáng phản xạ (còn gọi là ánh sáng specular) là một trong hai thành phần của image-based lighting.
 
-Reflected light can be set to one of 3 modes:
+Ánh sáng phản xạ có thể được đặt ở một trong 3 chế độ:
 
-- **Background:** Reflect from the background, such as the sky, custom color or
-  clear color (default).
-- **Disabled:** Do not reflect any light from the environment. Useful for purely
-  indoor scenes, or to maximize performance on low-end devices.
-- **Sky:** Reflect from the background sky, even if the background is set to a
-  mode other than **Sky**. If the background mode is already **Sky**, this mode
-  behaves identically to **Background**.
+- **Bối cảnh:** Phản xạ từ bối cảnh, chẳng hạn như bầu trời, màu tùy chỉnh hoặc màu trong suốt (mặc định). - **Tắt:** Không phản xạ bất kỳ ánh sáng nào từ môi trường. Hữu ích cho các cảnh hoàn toàn trong nhà hoặc để tối đa hóa hiệu năng trên các thiết bị cấp thấp. - **Bầu trời:** Phản xạ từ bầu trời của bối cảnh, ngay cả khi bối cảnh được đặt ở chế độ khác **Sky**. Nếu chế độ bối cảnh đã là **Sky**, chế độ này hoạt động giống hệt **Background**.
 
 Tonemap
 ~~~~~~~
 
-Tonemap selects the tonemapping algorithm that will be applied to the scene, from a
-list of standard algorithms used in the film and game industries. Tonemapping modes
-other than **Linear** are used to make light and dark areas more homogeneous,
-while also avoiding clipping of bright highlights. Each algorithm has a different
-performance characteristic that should be considered when choosing your tonemapper.
+Tonemap chọn thuật toán tonemapping sẽ được áp dụng cho cảnh từ danh sách các thuật toán tiêu chuẩn được sử dụng trong ngành điện ảnh và game. Các chế độ tonemapping khác **Linear** được dùng để làm cho các vùng sáng và tối đồng đều hơn, đồng thời tránh hiện tượng clipping ở các vùng sáng mạnh. Mỗi thuật toán có đặc điểm hiệu năng khác nhau cần được cân nhắc khi chọn tonemapper.
 
-The tone mapping options are:
+Các tùy chọn tone mapping là:
 
-- **Mode:** The tonemapping mode to use.
+- **Mode:** Chế độ tonemapping sẽ sử dụng.
 
-  - **Linear:** Does not modify color data, resulting in a linear tonemapping
-    curve which unnaturally clips bright values, causing bright lighting to
-    look blown out. The simplest and fastest tonemapper.
-  - **Reinhard:** A simple tonemapping curve that rolls off bright values to
-    prevent clipping. This results in an image that can appear dull and low
-    contrast. Slower than Linear. When **White** is left at the default
-    value of ``1.0``, Reinhard produces an identical image to Linear.
-  - **Filmic:** Uses a film-like tonemapping curve to prevent clipping of
-    bright values and provide better contrast than Reinhard. Slightly slower
-    than Reinhard.
-  - **ACES:** Uses a high-contrast film-like tonemapping curve and desaturates
-    bright values for a more realistic appearance. Slightly slower than Filmic.
-  - **AgX:** Uses a film-like tonemapping curve and desaturates bright values
-    for a more realistic appearance. Better than other tonemappers at
-    maintaining the hue of colors as they become brighter. The slowest
-    tonemapping option.
+  - **Linear:** Không sửa đổi dữ liệu màu, tạo ra một đường cong tonemapping tuyến tính làm clipping các giá trị sáng một cách không tự nhiên, khiến ánh sáng mạnh trông bị cháy sáng. Tonemapper đơn giản và nhanh nhất. - **Reinhard:** Một đường cong tonemapping đơn giản làm giảm dần các giá trị sáng để tránh clipping. Điều này tạo ra hình ảnh có thể trông xỉn màu và tương phản thấp. Chậm hơn Linear. Khi **White** giữ giá trị mặc định là ``1.0``, Reinhard tạo ra hình ảnh giống hệt Linear. - **Filmic:** Sử dụng đường cong tonemapping giống phim để tránh clipping các giá trị sáng và cung cấp độ tương phản tốt hơn Reinhard. Chậm hơn Reinhard một chút. - **ACES:** Sử dụng đường cong tonemapping giống phim có độ tương phản cao và giảm độ bão hòa của các giá trị sáng để tạo vẻ chân thực hơn. Chậm hơn Filmic một chút. - **AgX:** Sử dụng đường cong tonemapping giống phim và giảm độ bão hòa của các giá trị sáng để tạo vẻ chân thực hơn. Duy trì sắc độ của màu sắc khi chúng trở nên sáng hơn tốt hơn các tonemapper khác. Đây là tùy chọn tonemapping chậm nhất.
 
-- **Exposure:** Adjusts the brightness of values before they are provided to
-  the tonemapper. Higher **Exposure** values result in a brighter image.
-  Values provided to the tonemapper will also be multiplied by ``2.0``
-  and ``1.8`` for **Filmic** and **ACES** respectively to produce a similar
-  apparent brightness as Linear.
+- **Exposure:** Điều chỉnh độ sáng của các giá trị trước khi chúng được cung cấp cho tonemapper. Giá trị **Exposure** cao hơn sẽ tạo ra hình ảnh sáng hơn. Các giá trị cung cấp cho tonemapper cũng sẽ được nhân với ``2.0`` và ``1.8`` tương ứng cho **Filmic** và **ACES** để tạo ra độ sáng cảm nhận tương tự như Linear.
 
-- **White:** The white reference value for tonemapping, which indicates where
-  bright white is located in the scale of values provided to the tonemapper.
-  For photorealistic lighting, recommended values are between ``6.0`` and
-  ``8.0``. Higher values result in less blown out highlights, but may make the
-  scene appear lower contrast. **White** is not available when using
-  **Linear**. If you're using AgX, the mobile renderer, and HDR 2D is disabled,
-  then the value set here will be ignored, and a value of ``2.0`` will be used
-  instead.
+- **White:** Giá trị tham chiếu màu trắng cho tonemapping, cho biết vị trí của màu trắng sáng trên thang giá trị được cung cấp cho tonemapper. Đối với ánh sáng chân thực, các giá trị được khuyến nghị nằm trong khoảng từ ``6.0`` đến ``8.0``. Giá trị cao hơn tạo ra các vùng sáng ít bị cháy hơn, nhưng có thể khiến cảnh trông ít tương phản hơn. **White** không khả dụng khi sử dụng **Linear**. Nếu bạn đang sử dụng AgX, mobile renderer và HDR 2D bị tắt, giá trị được đặt ở đây sẽ bị bỏ qua và thay vào đó sẽ sử dụng giá trị ``2.0``.
 
-- **AGX Contrast:** Only available when using AgX. Increasing this makes dark values
-  darker, and bright values brighter. It creates better results than the contrast
-  option in the adjustment section at no additional performance cost.
+- **AGX Contrast:** Chỉ khả dụng khi sử dụng AgX. Tăng giá trị này sẽ làm các giá trị tối tối hơn và các giá trị sáng sáng hơn. Nó tạo ra kết quả tốt hơn tùy chọn contrast trong phần điều chỉnh mà không làm tăng chi phí hiệu năng.
 
-Mid- and post-processing effects
---------------------------------
+Các hiệu ứng mid-processing và post-processing
+----------------------------------------------
 
-The Environment resource supports many popular mid- and post-processing effects.
+Tài nguyên Environment hỗ trợ nhiều hiệu ứng mid-processing và post-processing phổ biến.
 
 .. note::
 
-    Screen-space effects such as :abbr:`SSR (Screen-Space Reflections)`,
+    Các hiệu ứng screen-space như :abbr:`SSR (Screen-Space Reflections)`,
     :abbr:`SSAO (Screen-Space Ambient Occlusion)`,
     :abbr:`SSIL (Screen-Space Indirect Lighting)` and glow do not operate on
-    geometry that is located outside the camera view or is occluded by other
-    opaque geometry. Consider this when tweaking their settings to avoid
-    distracting changes during gameplay.
+    hình học nằm bên ngoài tầm nhìn của camera hoặc bị che khuất bởi hình học mờ đục khác. Hãy cân nhắc điều này khi tinh chỉnh các thiết lập của chúng để tránh những thay đổi gây mất tập trung trong quá trình chơi.
 
 Screen-Space Reflections (SSR)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*This feature is only available when using the Forward+ renderer, not
-Mobile or Compatibility.*
+*Tính năng này chỉ khả dụng khi sử dụng Forward+, không khả dụng trên Mobile hoặc Compatibility.*
 
-While Godot supports several sources of reflection data such as
+Mặc dù Godot hỗ trợ một số nguồn dữ liệu phản xạ như
 :ref:`doc_reflection_probes`, they may not provide enough detail for all
-situations. Scenarios where screen-space reflections make the most sense are
-when objects are in contact with each other (object over floor, over a table,
-floating on water, etc).
+tình huống. Phản xạ screen-space phù hợp nhất trong các trường hợp các đối tượng tiếp xúc với nhau (đối tượng nằm trên sàn, trên bàn, nổi trên mặt nước, v.v.).
 
 .. image:: img/environment_ssr.webp
 
-On top of providing more detail, screen-space reflections also work in real-time
-(while other types of reflections are usually precomputed). This can be used to
-make characters, cars, etc. reflect on surrounding surfaces when moving around.
+Ngoài việc cung cấp nhiều chi tiết hơn, phản xạ screen-space còn hoạt động theo thời gian thực (trong khi các loại phản xạ khác thường được tính toán trước). Bạn có thể dùng tính năng này để khiến nhân vật, ô tô, v.v. phản chiếu trên các bề mặt xung quanh khi di chuyển.
 
-Screen-space reflections can be used at the same time as other reflection
-sources to benefit from detailed reflections when possible, while having a
-fallback when screen-space reflections cannot be used (for example, to reflect
-off-screen objects).
+Có thể sử dụng phản xạ screen-space đồng thời với các nguồn phản xạ khác để tận dụng phản xạ chi tiết khi có thể, đồng thời có phương án dự phòng khi không thể sử dụng phản xạ screen-space (ví dụ: để phản xạ các đối tượng nằm ngoài màn hình).
 
-A few user-controlled parameters are available to better tweak the technique:
+Có một số tham số do người dùng điều khiển để tinh chỉnh kỹ thuật này tốt hơn:
 
-- **Max Steps:** Determines the maximum length of the reflection. The bigger this
-  number, the more costly it is to compute.
-- **Fade In:** Allows adjusting the fade-in curve, which is useful to make the
-  contact area softer.
-- **Fade Out:** Allows adjusting the fade-out curve, so the step limit fades out
-  softly.
-- **Depth Tolerance:** Can be used to allow screen-space rays to pass behind
-  objects. The rays will treat each object as if it has this depth in
-  determining if it can pass behind the object. Higher values will make
-  screen-space reflections exhibit fewer "breakups", at the cost of some objects
-  creating physically incorrect reflections.
+- **Max Steps:** Xác định độ dài tối đa của phản xạ. Số này càng lớn thì chi phí tính toán càng cao. - **Fade In:** Cho phép điều chỉnh đường cong fade-in, hữu ích để làm vùng tiếp xúc mềm hơn. - **Fade Out:** Cho phép điều chỉnh đường cong fade-out để giới hạn bước mờ dần một cách mềm mại. - **Depth Tolerance:** Có thể dùng để cho phép các tia screen-space đi xuyên phía sau đối tượng. Khi xác định liệu có thể đi xuyên phía sau đối tượng hay không, các tia sẽ coi mỗi đối tượng như thể nó có độ sâu này. Giá trị cao hơn sẽ khiến phản xạ screen-space xuất hiện ít hiện tượng "breakup" hơn, nhưng phải đánh đổi bằng việc một số đối tượng tạo ra các phản xạ không đúng về mặt vật lý.
 
-Additionally, you can adjust the quality of SSR in the project settings
-by toggling **Rendering > Environment > Screen Space Reflection > Half Size**.
-By default, screen-space reflections are rendered at half resolution for
-performance reasons. Disabling this setting will make the effect render at
-full resolution, which improves quality at the cost of increased GPU utilization.
+Ngoài ra, bạn có thể điều chỉnh chất lượng SSR trong project settings bằng cách bật/tắt **Rendering > Environment > Screen Space Reflection > Half Size**. Theo mặc định, phản xạ screen-space được render ở một nửa độ phân giải vì lý do hiệu năng. Tắt thiết lập này sẽ khiến hiệu ứng được render ở độ phân giải đầy đủ, cải thiện chất lượng nhưng làm tăng mức sử dụng GPU.
 
 .. note::
 
-    Keep in mind that screen-space reflections only work for reflecting opaque
-    geometry. Transparent materials won't be reflected, as they don't write to the depth buffer.
-    This also applies to shaders that use ``hint_screen_texture`` or ``hint_depth_texture``
-    uniforms.
+    Hãy lưu ý rằng phản xạ screen-space chỉ hoạt động với hình học mờ đục. Vật liệu trong suốt sẽ không được phản xạ vì chúng không ghi vào depth buffer. Điều này cũng áp dụng cho các shader sử dụng uniform ``hint_screen_texture`` hoặc ``hint_depth_texture``.
 
 Screen-Space Ambient Occlusion (SSAO)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*This feature is only available when using the Forward+ and Compatibility renderers,
-not Mobile.*
+*Tính năng này chỉ khả dụng khi sử dụng các renderer Forward+ và Compatibility, không khả dụng trên Mobile.*
 
-As mentioned in the **Ambient** section, areas where light from light nodes
-does not reach (either because it's outside the radius or shadowed) are lit
-with ambient light. Godot can simulate this using VoxelGI, ReflectionProbe,
-the Sky, or a constant ambient color. The problem, however, is that all the
-methods proposed previously act more on a larger scale (large regions) than at the
-smaller geometry level.
+Như đã đề cập trong phần **Ambient**, các khu vực không nhận được ánh sáng từ các light node (do nằm ngoài bán kính hoặc bị che bởi bóng) sẽ được chiếu sáng bằng ánh sáng môi trường. Godot có thể mô phỏng điều này bằng VoxelGI, ReflectionProbe, Sky hoặc một màu môi trường cố định. Tuy nhiên, vấn đề là tất cả các phương pháp được đề cập trước đó đều hoạt động nhiều hơn ở quy mô lớn (các vùng lớn) thay vì ở cấp độ hình học nhỏ hơn.
 
-Constant ambient color and Sky are the same everywhere, while GI and
-Reflection probes have more local detail, but not enough to simulate situations
-where light is not able to fill inside hollow or concave features.
+Màu môi trường cố định và Sky giống nhau ở mọi nơi, trong khi GI và Reflection probe có nhiều chi tiết cục bộ hơn, nhưng chưa đủ để mô phỏng các tình huống ánh sáng không thể lấp đầy bên trong các đặc điểm rỗng hoặc lõm.
 
-This can be simulated with Screen Space Ambient Occlusion. As you can see in the
-image below, its purpose is to make sure concave areas are darker, simulating
-a narrower path for the light to enter:
+Điều này có thể được mô phỏng bằng Screen Space Ambient Occlusion. Như bạn có thể thấy trong hình bên dưới, mục đích của nó là đảm bảo các khu vực lõm tối hơn, mô phỏng một lối hẹp hơn để ánh sáng đi vào:
 
 .. image:: img/environment_ssao.webp
 
-It is a common mistake to enable this effect, turn on a light, and not be able to
-appreciate it. This is because :abbr:`SSAO (Screen-Space Ambient Occlusion)`
-only acts on *ambient* light. It does not affect direct light.
+Một sai lầm phổ biến là bật hiệu ứng này, bật một đèn rồi không thể nhận thấy tác dụng của nó. Đó là vì :abbr:`SSAO (Screen-Space Ambient Occlusion)` chỉ tác động lên ánh sáng *môi trường*. Nó không ảnh hưởng đến ánh sáng trực tiếp.
 
-This is why, in the image above, the effect is less noticeable under the direct
-light (on the left). If you want to force
+Đó là lý do trong hình trên, hiệu ứng ít nhận thấy hơn dưới ánh sáng trực tiếp (ở bên trái). Nếu bạn muốn buộc
 :abbr:`SSAO (Screen-Space Ambient Occlusion)` to work with direct light too,
-use the **Light Affect** parameter. Even though this is not physically correct,
-some artists like how it looks.
+sử dụng tham số **Light Affect**. Mặc dù điều này không đúng về mặt vật lý, một số họa sĩ thích cách nó hiển thị.
 
 :abbr:`SSAO (Screen-Space Ambient Occlusion)` looks best when combined with a
-real source of indirect light, like VoxelGI:
+nguồn sáng gián tiếp thực sự, chẳng hạn như VoxelGI:
 
 .. image:: img/environment_ssao2.webp
 
-Tweaking :abbr:`SSAO (Screen-Space Ambient Occlusion)` is possible with several
-parameters:
+Có thể tinh chỉnh :abbr:`SSAO (Screen-Space Ambient Occlusion)` bằng một số tham số:
 
 .. image:: img/environment_ssao_parameters.webp
 
-- **Radius:** The distance at which objects can occlude each other when
-  calculating screen-space ambient occlusion. Higher values will result in
-  occlusion over a greater distance at the cost of performance and quality.
-- **Intensity:** The primary screen-space ambient occlusion intensity. Acts as a
-  multiplier for the screen-space ambient occlusion effect. A higher value
-  results in darker occlusion.
-  Since :abbr:`SSAO (Screen-Space Ambient Occlusion)` is a screen-space effect,
-  it's recommended to remain conservative with this value.
+- **Radius:** Khoảng cách mà tại đó các đối tượng có thể che khuất lẫn nhau khi tính toán ambient occlusion trong không gian màn hình (screen-space ambient occlusion). Giá trị cao hơn sẽ tạo ra hiện tượng che khuất trên khoảng cách lớn hơn, nhưng phải đánh đổi bằng hiệu năng và chất lượng. - **Intensity:** Cường độ chính của ambient occlusion trong không gian màn hình. Hoạt động như một hệ số nhân cho hiệu ứng ambient occlusion trong không gian màn hình. Giá trị cao hơn tạo ra hiện tượng che khuất tối hơn. Vì :abbr:`SSAO (Screen-Space Ambient Occlusion)` là một hiệu ứng trong không gian màn hình, bạn nên giữ giá trị này ở mức thận trọng.
   :abbr:`SSAO (Screen-Space Ambient Occlusion)` that is too strong can be
-  distracting during gameplay.
-- **Power:** The distribution of occlusion. A higher value results in darker
-  occlusion, similar to **Intensity**, but with a sharper falloff.
-- **Detail:** Sets the strength of the additional level of detail for the
-  screen-space ambient occlusion effect. A high value makes the detail pass more
-  prominent, but it may contribute to aliasing in your final image.
-- **Horizon:** The threshold for considering whether a given point on a surface
-  is occluded or not represented as an angle from the horizon mapped into the
-  0.0-1.0 range. A value of 1.0 results in no occlusion.
-- **Sharpness:** The amount that the screen-space ambient occlusion effect is
-  allowed to blur over the edges of objects. Setting too high will result in
-  aliasing around the edges of objects. Setting too low will make object edges
-  appear blurry.
-- **Light Affect:** The screen-space ambient occlusion intensity in direct
-  light. In real life, ambient occlusion only applies to indirect light, which
-  means its effects can't be seen in direct light. Values higher than 0 will
-  make the :abbr:`SSAO (Screen-Space Ambient Occlusion)` effect visible in
-  direct light. Values above ``0.0`` are not physically accurate, but some
-  artists prefer this effect.
-- **AO Channel Affect** The screen-space ambient occlusion intensity on
-  materials that have an AO texture defined. Values higher than ``0.0`` will
-  make the SSAO effect visible in areas darkened by AO textures.
+  gây mất tập trung trong khi chơi. - **Power:** Mức phân bố của hiện tượng che khuất. Giá trị cao hơn tạo ra hiện tượng che khuất tối hơn, tương tự như **Intensity**, nhưng có độ suy giảm rõ hơn. - **Detail:** Thiết lập cường độ của mức độ chi tiết bổ sung cho hiệu ứng ambient occlusion trong không gian màn hình. Giá trị cao làm cho lớp chi tiết nổi bật hơn, nhưng có thể góp phần gây aliasing trong hình ảnh cuối cùng. - **Horizon:** Ngưỡng để xác định một điểm nhất định trên bề mặt có bị che khuất hay không, được biểu diễn dưới dạng một góc tính từ đường chân trời và ánh xạ vào phạm vi 0.0-1.0. Giá trị 1.0 sẽ không tạo ra hiện tượng che khuất. - **Sharpness:** Mức độ mà hiệu ứng ambient occlusion trong không gian màn hình được phép làm mờ qua các cạnh của đối tượng. Đặt quá cao sẽ gây aliasing xung quanh các cạnh của đối tượng. Đặt quá thấp sẽ khiến các cạnh của đối tượng trông bị mờ. - **Light Affect:** Cường độ ambient occlusion trong không gian màn hình dưới ánh sáng trực tiếp. Trong đời thực, ambient occlusion chỉ áp dụng cho ánh sáng gián tiếp, nghĩa là không thể thấy tác động của nó dưới ánh sáng trực tiếp. Các giá trị lớn hơn 0 sẽ làm cho hiệu ứng :abbr:`SSAO (Screen-Space Ambient Occlusion)` hiển thị dưới ánh sáng trực tiếp. Các giá trị lớn hơn ``0.0`` không chính xác về mặt vật lý, nhưng một số họa sĩ thích hiệu ứng này. - **AO Channel Affect** Cường độ ambient occlusion trong không gian màn hình trên các vật liệu đã xác định texture AO. Các giá trị lớn hơn ``0.0`` sẽ làm cho hiệu ứng SSAO hiển thị trong các vùng bị làm tối bởi texture AO.
 
-Additionally, you can adjust the quality of SSAO in the project settings'
-**Rendering > Environment > SSAO** section:
+Ngoài ra, bạn có thể điều chỉnh chất lượng của SSAO trong phần **Rendering > Environment > SSAO** của project settings:
 
-- **Quality:** Sets the quality of the screen-space ambient occlusion effect.
-  Higher values take more samples and so will result in better quality, at the
-  cost of performance. Setting this to Ultra will use the **Adaptive Target** setting
-  (see below).
-- **Half Size:** If ``true``, screen-space ambient occlusion will be rendered at
-  half size and then upscaled before being added to the scene. This is
-  significantly faster but may miss small details. If ``false``, screen-space
-  ambient occlusion will be rendered at full size.
-- **Adaptive Target:** Quality target to use when **Quality** is set to
-  **Ultra**. A value of ``0.0`` provides a quality and speed similar to Medium
-  while a value of ``1.0`` provides much higher quality than any of the other
-  settings at the cost of performance.
-- **Blur Passes:** Number of blur passes to use when computing screen-space
-  ambient occlusion. A higher number will result in a smoother look, but will be
-  slower to compute and will have less high-frequency detail.
-- **Fadeout From:** Distance at which the screen-space ambient occlusion effect
-  starts to fade out. Use this hide ambient occlusion from far away.
-- **Fadeout To:** Distance at which the screen-space ambient occlusion is fully
-  faded out. Use this hide ambient occlusion from far away.
+- **Quality:** Thiết lập chất lượng của hiệu ứng ambient occlusion trong không gian màn hình. Giá trị cao hơn sẽ lấy nhiều mẫu hơn, từ đó cho chất lượng tốt hơn, nhưng phải đánh đổi bằng hiệu năng. Đặt giá trị này thành Ultra sẽ sử dụng thiết lập **Adaptive Target** (xem bên dưới). - **Half Size:** Nếu ``true``, ambient occlusion trong không gian màn hình sẽ được kết xuất ở một nửa kích thước, sau đó được nâng kích thước trước khi thêm vào scene. Cách này nhanh hơn đáng kể nhưng có thể bỏ sót các chi tiết nhỏ. Nếu ``false``, ambient occlusion trong không gian màn hình sẽ được kết xuất ở kích thước đầy đủ. - **Adaptive Target:** Mục tiêu chất lượng được sử dụng khi **Quality** được đặt thành **Ultra**. Giá trị ``0.0`` cho chất lượng và tốc độ tương tự Medium, trong khi giá trị ``1.0`` cho chất lượng cao hơn nhiều so với mọi thiết lập khác, nhưng phải đánh đổi bằng hiệu năng. - **Blur Passes:** Số lần blur được sử dụng khi tính toán ambient occlusion trong không gian màn hình. Số lần cao hơn sẽ tạo ra hình ảnh mượt hơn, nhưng tính toán chậm hơn và có ít chi tiết tần số cao hơn. - **Fadeout From:** Khoảng cách mà tại đó hiệu ứng ambient occlusion trong không gian màn hình bắt đầu mờ dần. Sử dụng tùy chọn này để ẩn ambient occlusion ở khoảng cách xa. - **Fadeout To:** Khoảng cách mà tại đó ambient occlusion trong không gian màn hình mờ hoàn toàn. Sử dụng tùy chọn này để ẩn ambient occlusion ở khoảng cách xa.
 
 .. note::
 
-    Since Godot 4.6, a simplified version of SSAO is available in the Compatibility
-    renderer. This implementation has a different look, but should perform
-    significantly better on low-end devices compared to SSAO in Forward+.
+    Kể từ Godot 4.6, một phiên bản đơn giản hóa của SSAO đã có trong Compatibility renderer. Cách triển khai này có hình thức khác, nhưng sẽ cho hiệu năng tốt hơn đáng kể trên các thiết bị cấp thấp so với SSAO trong Forward+.
 
-    When using the Compatibility renderer, only the **Radius** and **Intensity**
-    parameters can be adjusted.
+    Khi sử dụng Compatibility renderer, chỉ có thể điều chỉnh các tham số **Radius** và **Intensity**.
 
 .. _doc_environment_and_post_processing_ssil:
 
-Screen-Space Indirect Lighting (SSIL)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Chiếu sáng gián tiếp trong không gian màn hình (Screen-Space Indirect Lighting — SSIL)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*This feature is only available when using the Forward+ renderer, not
-Mobile or Compatibility.*
+*Tính năng này chỉ khả dụng khi sử dụng Forward+ renderer, không khả dụng trên Mobile hoặc Compatibility.*
 
 :abbr:`SSIL (Screen-Space Indirect Lighting)` provides indirect lighting for
-small details or dynamic geometry that other global illumination techniques
-cannot cover. This applies to bounced diffuse lighting, but also emissive
-materials. When :abbr:`SSIL (Screen-Space Indirect Lighting)` is enabled on its
-own, the effect may not be that noticeable, which is intended.
+các chi tiết nhỏ hoặc hình học động mà các kỹ thuật global illumination khác không thể bao phủ. Điều này áp dụng cho ánh sáng khuếch tán dội lại, cũng như các vật liệu phát sáng. Khi :abbr:`SSIL (Screen-Space Indirect Lighting)` được bật riêng, hiệu ứng có thể không dễ nhận thấy, và đó là chủ đích.
 
-Instead, :abbr:`SSIL (Screen-Space Indirect Lighting)` is meant to be used as a
-*complement* to other global illumination techniques such as VoxelGI, SDFGI and
-LightmapGI. :abbr:`SSIL (Screen-Space Indirect Lighting)` also provides
-a subtle ambient occlusion effect, similar to SSAO, but with less detail.
+Thay vào đó, :abbr:`SSIL (Screen-Space Indirect Lighting)` được dùng như một *bổ trợ* cho các kỹ thuật global illumination khác như VoxelGI, SDFGI và LightmapGI. :abbr:`SSIL (Screen-Space Indirect Lighting)` cũng cung cấp một hiệu ứng ambient occlusion tinh tế, tương tự SSAO nhưng ít chi tiết hơn.
 
-This feature only provides indirect lighting. It is not a full global illumination
-solution. This makes it different from screen-space global illumination (SSGI)
-offered by other 3D engines. :abbr:`SSIL (Screen-Space Indirect Lighting)`
-can be combined with :abbr:`SSR (Screen-Space Reflections)` and/or
+Tính năng này chỉ cung cấp ánh sáng gián tiếp. Đây không phải là một giải pháp global illumination đầy đủ. Điều này khiến nó khác với global illumination trong không gian màn hình (screen-space global illumination — SSGI) do các 3D engine khác cung cấp. :abbr:`SSIL (Screen-Space Indirect Lighting)` có thể kết hợp với :abbr:`SSR (Screen-Space Reflections)` và/hoặc
 :abbr:`SSAO (Screen-Space Ambient Occlusion)` for greater visual quality
-(at the cost of performance).
+(đánh đổi bằng hiệu năng).
 
-Tweaking :abbr:`SSIL (Screen-Space Indirect Lighting)` is possible with several parameters:
+Có thể tinh chỉnh :abbr:`SSIL (Screen-Space Indirect Lighting)` bằng một số tham số:
 
-- **Radius:** The distance that bounced lighting can travel when using the
-  screen space indirect lighting effect. A larger value will result in light
-  bouncing further in a scene, but may result in under-sampling artifacts which
-  look like long spikes surrounding light sources.
-- **Intensity:** The brightness multiplier for the screen-space indirect
-  lighting effect. A higher value will result in brighter light.
-- **Sharpness:** The amount that the screen-space indirect lighting effect is
-  allowed to blur over the edges of objects. Setting too high will result in
-  aliasing around the edges of objects. Setting too low will make object edges
-  appear blurry.
-- **Normal Rejection:** Amount of normal rejection used when calculating
-  screen-space indirect lighting. Normal rejection uses the normal of a given
-  sample point to reject samples that are facing away from the current pixel.
-  Normal rejection is necessary to avoid light leaking when only one side of an
-  object is illuminated. However, normal rejection can be disabled if light
-  leaking is desirable, such as when the scene mostly contains emissive objects
-  that emit light from faces that cannot be seen from the camera.
+- **Radius:** Khoảng cách mà ánh sáng dội lại có thể truyền đi khi sử dụng hiệu ứng chiếu sáng gián tiếp trong không gian màn hình. Giá trị lớn hơn sẽ khiến ánh sáng dội xa hơn trong scene, nhưng có thể gây ra các artifact do lấy mẫu không đủ, trông giống như những tia dài bao quanh nguồn sáng. - **Intensity:** Hệ số nhân độ sáng cho hiệu ứng chiếu sáng gián tiếp trong không gian màn hình. Giá trị cao hơn sẽ tạo ra ánh sáng sáng hơn. - **Sharpness:** Mức độ mà hiệu ứng chiếu sáng gián tiếp trong không gian màn hình được phép làm mờ qua các cạnh của đối tượng. Đặt quá cao sẽ gây aliasing xung quanh các cạnh của đối tượng. Đặt quá thấp sẽ khiến các cạnh của đối tượng trông bị mờ. - **Normal Rejection:** Mức độ loại bỏ normal được sử dụng khi tính toán chiếu sáng gián tiếp trong không gian màn hình. Normal rejection sử dụng normal của một điểm mẫu nhất định để loại bỏ các mẫu hướng ra xa pixel hiện tại. Normal rejection là cần thiết để tránh rò rỉ ánh sáng khi chỉ một phía của đối tượng được chiếu sáng. Tuy nhiên, có thể tắt normal rejection nếu muốn có rò rỉ ánh sáng, chẳng hạn khi scene chủ yếu chứa các đối tượng phát sáng phát ra ánh sáng từ những mặt không thể nhìn thấy từ camera.
 
-Additionally, you can adjust the quality of SSIL in the project settings'
-**Rendering > Environment > SSIL** section:
+Ngoài ra, bạn có thể điều chỉnh chất lượng của SSIL trong phần **Rendering > Environment > SSIL** của project settings:
 
-- **Quality:** Sets the quality of the screen-space indirect lighting effect.
-  Higher values take more samples and so will result in better quality, at the
-  cost of performance. Setting this to Ultra will use the **Adaptive Target** setting
-  (see below).
-- **Half Size:** If ``true``, screen-space indirect lighting will be rendered at
-  half size and then upscaled before being added to the scene. This is
-  significantly faster but may miss small details. If ``false``, screen-space
-  indirect lighting will be rendered at full size.
-- **Adaptive Target:** Quality target to use when **Quality** is set to
-  **Ultra**. A value of ``0.0`` provides a quality and speed similar to Medium
-  while a value of ``1.0`` provides much higher quality than any of the other
-  settings at the cost of performance. When using the adaptive target, the
-  performance cost scales with the complexity of the scene.
-- **Blur Passes:** Number of blur passes to use when computing screen-space
-  indirect lighting. A higher number will result in a smoother look, but will be
-  slower to compute and will have less high-frequency detail.
-- **Fadeout From:** Distance at which the screen-space indirect lighting effect
-  starts to fade out. Use this to hide screen-space indirect lighting from far
-  away.
-- **Fadeout To:** Distance at which the screen-space indirect lighting is fully
-  faded out. Use this to hide screen-space indirect lighting from far away.
+- **Quality:** Thiết lập chất lượng của hiệu ứng chiếu sáng gián tiếp trong không gian màn hình. Giá trị cao hơn sẽ lấy nhiều mẫu hơn, từ đó cho chất lượng tốt hơn, nhưng phải đánh đổi bằng hiệu năng. Đặt giá trị này thành Ultra sẽ sử dụng thiết lập **Adaptive Target** (xem bên dưới). - **Half Size:** Nếu ``true``, chiếu sáng gián tiếp trong không gian màn hình sẽ được kết xuất ở một nửa kích thước, sau đó được nâng kích thước trước khi thêm vào scene. Cách này nhanh hơn đáng kể nhưng có thể bỏ sót các chi tiết nhỏ. Nếu ``false``, chiếu sáng gián tiếp trong không gian màn hình sẽ được kết xuất ở kích thước đầy đủ. - **Adaptive Target:** Mục tiêu chất lượng được sử dụng khi **Quality** được đặt thành **Ultra**. Giá trị ``0.0`` cho chất lượng và tốc độ tương tự Medium, trong khi giá trị ``1.0`` cho chất lượng cao hơn nhiều so với mọi thiết lập khác, nhưng phải đánh đổi bằng hiệu năng. Khi sử dụng adaptive target, chi phí hiệu năng tăng theo độ phức tạp của scene. - **Blur Passes:** Số lần blur được sử dụng khi tính toán chiếu sáng gián tiếp trong không gian màn hình. Số lần cao hơn sẽ tạo ra hình ảnh mượt hơn, nhưng tính toán chậm hơn và có ít chi tiết tần số cao hơn. - **Fadeout From:** Khoảng cách mà tại đó hiệu ứng chiếu sáng gián tiếp trong không gian màn hình bắt đầu mờ dần. Sử dụng tùy chọn này để ẩn chiếu sáng gián tiếp trong không gian màn hình ở khoảng cách xa. - **Fadeout To:** Khoảng cách mà tại đó chiếu sáng gián tiếp trong không gian màn hình mờ hoàn toàn. Sử dụng tùy chọn này để ẩn chiếu sáng gián tiếp trong không gian màn hình ở khoảng cách xa.
 
 .. image:: img/environment_ssil.webp
 
-Signed Distance Field Global Illumination (SDFGI)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Global Illumination bằng Signed Distance Field (SDFGI)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*This feature is only available when using the Forward+ renderer, not
-Mobile or Compatibility.*
+*Tính năng này chỉ khả dụng khi sử dụng Forward+ renderer, không khả dụng trên Mobile hoặc Compatibility.*
 
-Signed distance field global illumination (SDFGI) is a form of real-time global
-illumination. It is not a screen-space effect, which means it can provide global
-illumination for off-screen elements (unlike :abbr:`SSIL (Screen-Space Indirect Lighting)`).
+Global illumination bằng signed distance field (SDFGI) là một dạng global illumination theo thời gian thực. Đây không phải là hiệu ứng trong không gian màn hình, nghĩa là nó có thể cung cấp global illumination cho các phần tử ngoài màn hình (không giống :abbr:`SSIL (Screen-Space Indirect Lighting)`).
 
 .. seealso::
 
-    See :ref:`doc_using_sdfgi` for instructions on setting up this global
-    illumination technique.
+    Xem :ref:`doc_using_sdfgi` để biết hướng dẫn thiết lập kỹ thuật global illumination này.
 
 .. image:: img/environment_sdfgi.webp
 
@@ -587,128 +293,74 @@ Glow
 
 .. note::
 
-    When using the Compatibility rendering method, glow uses a different
-    implementation with some properties being unavailable and hidden from the
-    inspector: **Levels**, **Normalized**, **Strength**, **Blend Mode**,
-    **Mix**, **Map**, and **Map Strength**.
+    Khi sử dụng Compatibility rendering method, glow dùng một cách triển khai khác, trong đó một số thuộc tính không khả dụng và bị ẩn khỏi inspector: **Levels**, **Normalized**, **Strength**, **Blend Mode**, **Mix**, **Map** và **Map Strength**.
 
-    This implementation is optimized to run on low-end devices and is less
-    flexible as a result.
+    Cách triển khai này được tối ưu để chạy trên các thiết bị cấp thấp và vì vậy kém linh hoạt hơn.
 
-In photography and film, when light amount exceeds the maximum *luminance*
-(brightness) supported by the media, it generally bleeds outwards to darker
-regions of the image. This is simulated in Godot with the **Glow** effect.
+Trong nhiếp ảnh và điện ảnh, khi lượng ánh sáng vượt quá *luminance* (độ sáng) tối đa mà phương tiện hỗ trợ, ánh sáng thường lan ra ngoài về phía các vùng tối hơn của hình ảnh. Điều này được mô phỏng trong Godot bằng hiệu ứng **Glow**.
 
 .. image:: img/environment_glow1.webp
 
-By default, even if the effect is enabled, it will be weak or invisible. One of
-two conditions need to happen for it to actually show:
+Theo mặc định, ngay cả khi hiệu ứng được bật, nó vẫn yếu hoặc không hiển thị. Một trong hai điều kiện sau phải xảy ra để hiệu ứng thực sự hiển thị:
 
-- 1) The light in a pixel surpasses the **HDR Threshold** (where 0 is all light
-     surpasses it, and 1.0 is light over the tonemapper **White** value).
-     Normally, this value is expected to be at 1.0, but it can be lowered to
-     allow more light to bleed. There is also an extra parameter, **HDR Scale**,
-     that allows scaling (making brighter or darker) the light surpassing the
-     threshold.
+- 1) Ánh sáng trong một pixel vượt qua **HDR Threshold** (trong đó 0 nghĩa là mọi ánh sáng đều vượt qua ngưỡng, còn 1.0 là ánh sáng vượt quá giá trị **White** của tonemapper). Thông thường, giá trị này được kỳ vọng là 1.0, nhưng có thể giảm xuống để cho phép nhiều ánh sáng lan ra hơn. Ngoài ra còn có tham số **HDR Scale**, cho phép điều chỉnh tỷ lệ (làm sáng hơn hoặc tối hơn) lượng ánh sáng vượt qua ngưỡng.
 
 .. image:: img/environment_glow_threshold.webp
 
-- 2) The **Bloom** property has a value greater than ``0.0``. As it increases,
-     it sends the whole screen to the glow processor at higher amounts.
+- 2) Thuộc tính **Bloom** có giá trị lớn hơn ``0.0``. Khi giá trị này tăng, toàn bộ màn hình sẽ được gửi đến bộ xử lý glow với cường độ cao hơn.
 
 .. image:: img/environment_glow_bloom.webp
 
-Both will cause the light to start bleeding out of the brighter areas.
+Cả hai đều sẽ khiến ánh sáng bắt đầu tràn ra khỏi những vùng sáng hơn.
 
-Once glow is visible, it can be controlled with a few extra parameters:
+Khi hiệu ứng phát sáng đã hiển thị, bạn có thể điều khiển hiệu ứng này bằng một vài tham số bổ sung:
 
-- **Intensity** is an overall scale for the effect, it can be made stronger or
-  weaker (``0.0`` removes it).
-- **Strength** is how strong the gaussian filter kernel is processed. Greater
-  values make the filter saturate and expand outwards. In general, changing this
-  is not needed, as the size can be adjusted more efficiently with the **Levels**.
+- **Intensity** là tỷ lệ tổng thể của hiệu ứng; bạn có thể tăng hoặc giảm cường độ (``0.0`` sẽ loại bỏ hiệu ứng). - **Strength** xác định mức độ mạnh khi xử lý kernel của bộ lọc gaussian. Giá trị lớn hơn khiến bộ lọc bão hòa và mở rộng ra ngoài. Nhìn chung, bạn không cần thay đổi giá trị này, vì có thể điều chỉnh kích thước hiệu quả hơn bằng **Levels**.
 
-The **Blend Mode** of the effect can also be changed:
+Bạn cũng có thể thay đổi **Blend Mode** của hiệu ứng:
 
-- **Additive** is the strongest one, as it only adds the glow effect over the
-  image with no blending involved. In general, it's too strong to be used, but
-  can look good with low-intensity **Bloom** (produces a dream-like effect).
-- **Screen** ensures glow never brightens more than itself and it works great as
-  an all around.
-- **Softlight** is the default and weakest one, producing only a subtle color
-  disturbance around the objects. This mode works best on dark scenes.
-- **Replace** can be used to
+- **Additive** là chế độ mạnh nhất vì nó chỉ thêm hiệu ứng phát sáng lên hình ảnh mà không thực hiện blending. Nhìn chung, chế độ này quá mạnh để sử dụng, nhưng có thể trông đẹp khi dùng với **Bloom** có cường độ thấp (tạo ra hiệu ứng giống như trong mơ). - **Screen** đảm bảo hiệu ứng phát sáng không bao giờ làm sáng hơn chính nó và hoạt động tốt trong hầu hết trường hợp. - **Softlight** là chế độ mặc định và yếu nhất, chỉ tạo ra sự thay đổi màu sắc nhẹ xung quanh các vật thể. Chế độ này hoạt động tốt nhất trong các cảnh tối. - **Replace** có thể được dùng để
   :ref:`blur the whole screen <doc_environment_and_post_processing_using_glow_to_blur_the_screen>`
-  or debug the effect. It only shows the glow effect without the image below.
-- **Mix** mixes the glow effect with the main image. This can be used for
-  greater artistic control. The mix factor is controlled by the **Mix** property
-  which appears above the blend mode (only when the blend mode is set to Mix).
-  High mix factor values will appear to darken the image unless **Bloom** is
-  increased.
+  hoặc debug hiệu ứng. Chế độ này chỉ hiển thị hiệu ứng phát sáng mà không hiển thị hình ảnh bên dưới. - **Mix** trộn hiệu ứng phát sáng với hình ảnh chính. Bạn có thể dùng chế độ này để kiểm soát nghệ thuật tốt hơn. Hệ số trộn được điều khiển bằng thuộc tính **Mix**, xuất hiện phía trên blend mode (chỉ khi blend mode được đặt thành Mix). Giá trị hệ số trộn cao sẽ khiến hình ảnh có vẻ tối hơn, trừ khi **Bloom** được tăng lên.
 
-To change the glow effect size and shape, Godot provides **Levels**. Smaller
-levels are strong glows that appear around objects, while large levels are hazy
-glows covering the whole screen:
+Để thay đổi kích thước và hình dạng của hiệu ứng phát sáng, Godot cung cấp **Levels**. Các level nhỏ tạo ra ánh sáng mạnh xuất hiện xung quanh vật thể, trong khi các level lớn tạo ra ánh sáng mờ bao phủ toàn bộ màn hình:
 
 .. image:: img/environment_glow_layers.webp
 
-The real strength of this system, though, is to combine levels to create more
-interesting glow patterns:
+Tuy nhiên, điểm mạnh thực sự của hệ thống này là khả năng kết hợp các level để tạo ra những mẫu phát sáng thú vị hơn:
 
 .. image:: img/environment_glow_layers2.webp
 
-Finally, the glow effect can be controlled using a *glow map*, which is a
-texture that determines how bright glow should be on each part of the screen.
-This texture can optionally be colored to tint the glow effect to the glow map's
-color. The texture is stretched to fit the viewport, so using an aspect ratio
-that matches your viewport's most common aspect ratio (such as 16:9) is recommended
-to avoid visible distortion.
+Cuối cùng, bạn có thể điều khiển hiệu ứng phát sáng bằng *glow map*, một texture xác định độ sáng của hiệu ứng trên từng phần của màn hình. Texture này có thể được tô màu tùy chọn để nhuộm hiệu ứng phát sáng theo màu của glow map. Texture được kéo giãn để vừa với viewport, vì vậy bạn nên sử dụng tỷ lệ khung hình phù hợp với tỷ lệ khung hình thường dùng nhất của viewport (chẳng hạn như 16:9) để tránh hiện tượng méo rõ rệt.
 
-There are 2 main use cases for a glow map texture:
+Có 2 trường hợp sử dụng chính cho texture glow map:
 
-- Create a "lens dirt" effect using a dirt pattern texture.
-- Make glow less strong on specific parts of the screen by using a gradient texture.
+- Tạo hiệu ứng "lens dirt" bằng texture có mẫu bụi. - Làm cho hiệu ứng phát sáng yếu hơn ở những phần cụ thể của màn hình bằng texture gradient.
 
 .. image:: img/environment_glow_map.webp
 
-By default, glow uses a bicubic scaling filter on desktop platforms and a
-bilinear scaling filter on mobile platforms. The bicubic scaling filter results
-in higher quality with a less blocky appearance, but it has a performance cost
-on the GPU which can be significant on integrated graphics.
-The scale mode can be controlled using the
-**Rendering > Environment > Glow > Upscale Mode** project setting.
-This setting is only effective when using the Forward+ or Mobile renderers,
-as Compatibility uses a different glow implementation.
+Theo mặc định, glow sử dụng bộ lọc scaling bicubic trên các nền tảng desktop và bộ lọc scaling bilinear trên các nền tảng mobile. Bộ lọc scaling bicubic cho chất lượng cao hơn với hình ảnh ít bị vỡ khối hơn, nhưng làm tăng chi phí hiệu năng trên GPU, mức tăng này có thể đáng kể đối với graphics tích hợp. Bạn có thể điều khiển scale mode bằng project setting **Rendering > Environment > Glow > Upscale Mode**. Setting này chỉ có hiệu lực khi sử dụng renderer Forward+ hoặc Mobile, vì Compatibility sử dụng một implementation glow khác.
 
 .. image:: img/environment_and_post_processing_glow_scale_mode.webp
 
 .. _doc_environment_and_post_processing_using_glow_in_2d:
 
-Using glow in 2D
-~~~~~~~~~~~~~~~~
+Sử dụng glow trong 2D
+~~~~~~~~~~~~~~~~~~~~~
 
-There are 2 ways to use glow in 2D:
+Có 2 cách sử dụng glow trong 2D:
 
-- Since Godot 4.2, you can enable HDR for 2D rendering when using the Forward+
-  and Mobile rendering methods. This has a performance cost, but it allows for a
-  greater dynamic range. This also allows you to control which objects glow
-  using their individual **Modulate** or **Self Modulate** properties (use the
-  Intensity slider in the color picker). Enabling HDR can also reduce banding in the 2D
-  rendering output.
+- Kể từ Godot 4.2, bạn có thể bật HDR cho việc rendering 2D khi sử dụng phương thức rendering Forward+ và Mobile. Việc này làm tăng chi phí hiệu năng, nhưng cho phép có dynamic range lớn hơn. Tính năng này cũng cho phép bạn kiểm soát vật thể nào phát sáng bằng các thuộc tính **Modulate** hoặc **Self Modulate** riêng của chúng (sử dụng thanh trượt Intensity trong color picker). Bật HDR cũng có thể giảm hiện tượng banding trong đầu ra rendering 2D.
 
-  - To enable HDR in 2D, open the Project Settings, enable
+  - Để bật HDR trong 2D, hãy mở Project Settings và bật
     :ref:`Rendering > Viewport > HDR 2D<class_ProjectSettings_property_rendering/viewport/hdr_2d>`
-    then restart the editor.
+    sau đó khởi động lại editor.
 
-- If you want to maximize performance, you can leave HDR disabled for 2D
-  rendering. However, you will have less control on which objects glow.
+- Nếu muốn tối đa hóa hiệu năng, bạn có thể để HDR tắt khi rendering 2D. Tuy nhiên, bạn sẽ ít kiểm soát hơn đối với những vật thể phát sáng.
 
-  - Enable glow, set the environment background mode to **Canvas** then decrease
-    **Glow HDR Threshold** so that pixels that are not overbright will still
-    glow. To prevent UI elements from glowing, make them children of a
+  - Bật glow, đặt background mode của environment thành **Canvas**, sau đó giảm **Glow HDR Threshold** để các pixel không quá sáng vẫn phát sáng. Để ngăn các thành phần UI phát sáng, hãy đặt chúng làm các node con của một
     :ref:`class_CanvasLayer` node. You can control which layers are affected by
-    glow using the **Background > Canvas Max Layer** property of the Environment
-    resource.
+    node glow bằng thuộc tính **Background > Canvas Max Layer** của resource Environment.
 
 .. figure:: img/environment_and_post_processing_glow_in_2d.webp
    :align: center
@@ -720,42 +372,24 @@ There are 2 ways to use glow in 2D:
 
 .. warning::
 
-    The 2D renderer renders in linear color space if the
+    Renderer 2D render trong không gian màu tuyến tính nếu
     :ref:`Rendering > Viewport > HDR 2D<class_ProjectSettings_property_rendering/viewport/hdr_2d>`
-    project setting is enabled, so the ``source_color`` hint must also be used
-    for uniform samplers that are used as color input in ``canvas_item`` shaders.
-    If this is not done, the texture will appear washed out.
+    project setting được bật, vì vậy cũng phải sử dụng hint ``source_color`` cho các uniform sampler được dùng làm đầu vào màu trong các shader ``canvas_item``. Nếu không làm vậy, texture sẽ bị nhạt màu.
 
-    If 2D HDR is disabled, ``source_color`` will keep working correctly in
-    ``canvas_item`` shaders, so it's recommend to use it when relevant either
-    way.
+    Nếu HDR 2D bị tắt, ``source_color`` vẫn hoạt động chính xác trong các shader ``canvas_item``, vì vậy bạn nên sử dụng nó khi phù hợp trong mọi trường hợp.
 
-    Using linear color space also means that alpha blending will change. Sprites
-    with low opacity values generally become more visible, and font rendering will
-    look bolder due to the low-opacity pixels from the font antialiasing becoming
-    more visible. This also affects the editor's own rendering.
+    Việc sử dụng không gian màu tuyến tính cũng có nghĩa là alpha blending sẽ thay đổi. Các sprite có giá trị opacity thấp nhìn chung sẽ hiển thị rõ hơn, và việc render font sẽ trông đậm hơn do các pixel có opacity thấp từ quá trình antialiasing của font trở nên dễ thấy hơn. Điều này cũng ảnh hưởng đến rendering của chính editor.
 
 .. _doc_environment_and_post_processing_using_glow_to_blur_the_screen:
 
-Using glow to blur the screen
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sử dụng glow để làm mờ màn hình
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Glow can be used to blur the whole viewport, which is useful for background blur
-when a menu is open. Only 3D rendering will be affected unless the environment's
-background mode is set to **Canvas**. To prevent UI elements from being blurred
-when using the Canvas background mode, make them children of a :ref:`class_CanvasLayer`
-node. You can control which layers are affected by this blurring effect using the
-**Background > Canvas Max Layer** property of the Environment resource.
+Có thể sử dụng glow để làm mờ toàn bộ viewport, rất hữu ích khi làm mờ background lúc menu đang mở. Chỉ rendering 3D bị ảnh hưởng, trừ khi background mode của environment được đặt thành **Canvas**. Để ngăn các thành phần UI bị làm mờ khi sử dụng background mode Canvas, hãy đặt chúng làm các node con của một node :ref:`class_CanvasLayer`. Bạn có thể kiểm soát những layer nào bị ảnh hưởng bởi hiệu ứng làm mờ này bằng thuộc tính **Background > Canvas Max Layer** của resource Environment.
 
-To use glow as a blurring solution:
+Để sử dụng glow như một giải pháp làm mờ:
 
-- Enable **Normalized** and adjust levels according to preference. Increasing
-  higher level indices will result in a more blurred image. It's recommended to
-  leave a single glow level at ``1.0`` and leave all other glow levels at
-  ``0.0``, but this is not required. Note that the final appearance will vary
-  depending on viewport resolution.
-- Set **Intensity** to ``1.0`` and **Bloom** to ``1.0``.
-- Set the blend mode to **Replace** and **HDR Luminance Cap** to ``1.0``.
+- Bật **Normalized** và điều chỉnh các level theo mong muốn. Việc tăng các chỉ số level cao hơn sẽ tạo ra hình ảnh mờ hơn. Bạn nên để một glow level duy nhất ở ``1.0`` và để tất cả các glow level khác ở ``0.0``, nhưng đây không phải yêu cầu bắt buộc. Lưu ý rằng hình ảnh cuối cùng sẽ thay đổi tùy theo độ phân giải viewport. - Đặt **Intensity** thành ``1.0`` và **Bloom** thành ``1.0``. - Đặt blend mode thành **Replace** và **HDR Luminance Cap** thành ``1.0``.
 
 .. figure:: img/environment_and_post_processing_glow_blur.webp
    :align: center
@@ -763,240 +397,152 @@ To use glow as a blurring solution:
 
    Example of using glow to blur the 2D rendering in the menu's background
 
-Fog
-~~~
+Sương mù
+~~~~~~~~
 
 .. note::
 
-    This section refers to non-volumetric fog only.
-    It is possible to use both non-volumetric fog and :ref:`doc_volumetric_fog`
-    at the same time.
+    Phần này chỉ đề cập đến sương mù không thể tích. Bạn có thể sử dụng đồng thời sương mù không thể tích và :ref:`doc_volumetric_fog`.
 
-Fog, as in real life, makes distant objects fade away into a uniform color.
-There are two kinds of fog in Godot:
+Sương mù, giống như trong đời thực, khiến các vật thể ở xa dần biến mất vào một màu đồng nhất. Có hai loại sương mù trong Godot:
 
-- **Depth Fog:** This one is applied based on the distance from the camera.
-- **Height Fog:** This one is applied to any objects below (or above) a certain
-  height, regardless of the distance from the camera.
+- **Depth Fog:** Loại này được áp dụng dựa trên khoảng cách từ camera. - **Height Fog:** Loại này được áp dụng cho mọi vật thể nằm dưới (hoặc trên) một độ cao nhất định, bất kể khoảng cách từ camera.
 
 .. image:: img/environment_fog_depth_height.webp
 
-Both of these fog types can have their curves tweaked, making their transition more or less sharp.
+Bạn có thể điều chỉnh các curve của cả hai loại sương mù này, khiến quá trình chuyển tiếp sắc nét hơn hoặc mềm hơn.
 
-Two properties can be tweaked to make the fog effect more interesting:
+Có thể điều chỉnh hai thuộc tính để làm hiệu ứng sương mù thú vị hơn:
 
-The first is **Sun Scatter**, which makes use of the DirectionalLight3D's color
-and energy in the current scene. When looking toward the directional light
-(usually a sun), the fog will be tinted according to the light's color to
-simulate the sunlight passing through the fog.
+Thuộc tính đầu tiên là **Sun Scatter**, sử dụng màu và năng lượng của DirectionalLight3D trong scene hiện tại. Khi nhìn về phía directional light (thường là mặt trời), sương mù sẽ được nhuộm theo màu của ánh sáng để mô phỏng ánh nắng xuyên qua sương mù.
 
-The second is **Aerial Perspective**, which tints the fog color according to the
-sky color to better blend the sky with the background. Higher values will result
-in more tinting, with ``1.0`` fully replacing the regular fog color with aerial
-perspective. This can be used in large open world levels to provide a better
-sense of depth, or to avoid color discontinuities between the sky and fog colors.
+Thuộc tính thứ hai là **Aerial Perspective**, nhuộm màu sương mù theo màu bầu trời để hòa trộn bầu trời với background tốt hơn. Giá trị cao hơn sẽ tạo ra mức nhuộm màu mạnh hơn, trong đó ``1.0`` thay thế hoàn toàn màu sương mù thông thường bằng aerial perspective. Tính năng này có thể được dùng trong các level thế giới mở rộng lớn để tạo cảm nhận chiều sâu tốt hơn hoặc tránh sự gián đoạn màu sắc giữa màu bầu trời và màu sương mù.
 
-If both **Sun Scatter** and **Aerial Perspective** are greater than ``0.0``, sun
-scattering is applied on top of aerial perspective.
+Nếu cả **Sun Scatter** và **Aerial Perspective** đều lớn hơn ``0.0``, hiệu ứng tán xạ ánh sáng mặt trời sẽ được áp dụng bên trên aerial perspective.
 
 .. note::
 
-    Fog can cause banding to appear on the viewport, especially at
-    higher density levels. See :ref:`doc_3d_rendering_limitations_color_banding`
-    for guidance on reducing banding.
+    Sương mù có thể khiến banding xuất hiện trên viewport, đặc biệt ở các mức density cao hơn. Xem :ref:`doc_3d_rendering_limitations_color_banding` để biết hướng dẫn giảm banding.
 
-Volumetric Fog
-~~~~~~~~~~~~~~
+Sương mù thể tích
+~~~~~~~~~~~~~~~~~
 
-Volumetric fog provides a realistic fog effect to the scene, with fog color
-being affected by the lights that traverse the fog.
+Sương mù thể tích tạo ra hiệu ứng sương mù chân thực cho scene, trong đó màu sương mù bị ảnh hưởng bởi các nguồn sáng xuyên qua sương mù.
 
 .. seealso::
 
-  See :ref:`doc_volumetric_fog` for documentation on setting up volumetric fog.
+  Xem :ref:`doc_volumetric_fog` để biết tài liệu về cách thiết lập sương mù thể tích.
 
-Adjustments
-~~~~~~~~~~~
+Điều chỉnh
+~~~~~~~~~~
 
-At the end of processing, Godot offers the possibility to do some standard
-image adjustments.
+Ở cuối quá trình xử lý, Godot cung cấp khả năng thực hiện một số điều chỉnh hình ảnh tiêu chuẩn.
 
 .. image:: img/environment_adjustments.webp
 
-**Basic BCS adjustments**
+**Điều chỉnh BCS cơ bản**
 
-The first adjustment is being able to change the typical **Brightness**, **Contrast**,
-and **Saturation** properties:
+Điều chỉnh đầu tiên là khả năng thay đổi các thuộc tính **Brightness**, **Contrast** và **Saturation** thông thường:
 
 .. image:: img/environment_adjustments_bcs.webp
 
-**Color correction using a 1D gradient**
+**Hiệu chỉnh màu bằng gradient 1D**
 
-The second adjustment is by supplying a color correction gradient. This can be
-done by assigning a GradientTexture1D resource to the **Color Correction**
-property, or by loading a texture containing a horizontal gradient. The leftmost
-part of the gradient represents black in the source image, whereas the rightmost
-part of the gradient represents white in the source image.
+Điều chỉnh thứ hai là cung cấp một gradient hiệu chỉnh màu. Bạn có thể thực hiện việc này bằng cách gán một resource GradientTexture1D cho thuộc tính **Color Correction**, hoặc tải một texture chứa gradient ngang. Phần ngoài cùng bên trái của gradient biểu thị màu đen trong hình ảnh nguồn, còn phần ngoài cùng bên phải của gradient biểu thị màu trắng trong hình ảnh nguồn.
 
-A linear black-to-white gradient like the following one will produce no effect:
+Một gradient tuyến tính từ đen đến trắng như gradient sau sẽ không tạo ra hiệu ứng:
 
 .. image:: img/environment_adjustments_default_gradient.webp
 
-But creating custom ones will allow to map each channel to a different color:
+Tuy nhiên, việc tạo các gradient tùy chỉnh sẽ cho phép ánh xạ mỗi channel sang một màu khác:
 
 .. image:: img/environment_adjustments_custom_gradient.webp
 
-**Color correction using a 3D LUT**
+**Hiệu chỉnh màu bằng 3D LUT**
 
-A 3D look-up-texture (LUT) can also be used for color correction. This is a
-special texture used to modify each color channel separately from one another
-(red, green, blue). This image can be of any resolution, but since color
-correction is low-frequency data, sticking to low resolutions is recommended for
-performance reasons. A LUT texture's resolution is typically 17×17×17, 33×33×33,
-51×51×51 or 65×65×65 (the odd size allows for better interpolation).
+Bạn cũng có thể sử dụng look-up texture (LUT) 3D để hiệu chỉnh màu. Đây là một texture đặc biệt dùng để sửa đổi từng channel màu riêng biệt (đỏ, xanh lá, xanh dương). Hình ảnh này có thể có độ phân giải bất kỳ, nhưng vì hiệu chỉnh màu là dữ liệu tần số thấp nên bạn nên sử dụng độ phân giải thấp để đảm bảo hiệu năng. Độ phân giải của texture LUT thường là 17×17×17, 33×33×33, 51×51×51 hoặc 65×65×65 (kích thước lẻ cho phép nội suy tốt hơn).
 
-For this to work, the look-up texture's import mode must be set to Texture3D
-in the Import dock (instead of being imported as a regular Texture2D):
+Để tính năng này hoạt động, import mode của look-up texture phải được đặt thành Texture3D trong Import dock (thay vì được import dưới dạng Texture2D thông thường):
 
 .. image:: img/environment_adjustments_3d_lut_import.webp
 
-Make sure to configure the number of horizontal and vertical slices to import as
-well. If you don't do this, the LUT texture will not affect the viewport
-correctly when used. You can preview how the 3D texture was imported by
-double-clicking it, in the FileSystem dock, then going to the inspector to flip
-through the texture's layers.
+Hãy đảm bảo bạn cũng cấu hình số lát cắt ngang và dọc cần nhập. Nếu không làm vậy, texture LUT sẽ không tác động chính xác đến viewport khi được sử dụng. Bạn có thể xem trước cách texture 3D được nhập bằng cách nhấp đúp vào texture đó trong dock FileSystem, sau đó đi đến inspector để lật qua các lớp của texture.
 
-You can use this neutral 33×33×33 LUT template as a base (right-click and choose
-**Save as…**):
+Bạn có thể sử dụng template LUT 33×33×33 trung tính này làm cơ sở (nhấp chuột phải và chọn **Save as…**):
 
 .. image:: img/environment_adjustments_3d_lut_template.webp
 
-With the above LUT template, after changing its import mode to **Texture3D**,
-set its number of **Horizontal** slices to ``33`` in the Import dock then click
-**Reimport**. If you load this LUT into the **Color Correction** property, you
-won't see any visible difference for now since this texture is designed to be a
-neutral starting point.
+Với template LUT ở trên, sau khi thay đổi chế độ nhập thành **Texture3D**, hãy đặt số lát cắt **Horizontal** thành ``33`` trong dock Import, sau đó nhấp vào **Reimport**. Nếu bạn tải LUT này vào thuộc tính **Color Correction**, hiện tại bạn sẽ không thấy bất kỳ khác biệt nào vì texture này được thiết kế làm điểm khởi đầu trung tính.
 
-This LUT template can be modified in an image editor to provide a different
-mood to the image. A common workflow is to place the LUT image next to a
-screenshot of the project's 3D viewport, then use an image editor to modify both
-the LUT image and the screenshot at the same time. The LUT can then be saved and
-applied to the game engine to perform the same color correction in real-time.
+Bạn có thể chỉnh sửa template LUT này trong trình chỉnh sửa ảnh để tạo ra một sắc thái khác cho hình ảnh. Một quy trình phổ biến là đặt ảnh LUT cạnh ảnh chụp màn hình viewport 3D của dự án, sau đó sử dụng trình chỉnh sửa ảnh để chỉnh sửa đồng thời cả ảnh LUT và ảnh chụp màn hình. Sau đó, LUT có thể được lưu lại và áp dụng vào game engine để thực hiện cùng một phép hiệu chỉnh màu theo thời gian thực.
 
-For example, modifying the LUT template in an image editor to give it a
-"sepia" look results in the image on the right:
+Ví dụ, việc chỉnh sửa template LUT trong trình chỉnh sửa ảnh để tạo cho nó vẻ ngoài "sepia" sẽ cho ra hình ảnh ở bên phải:
 
 .. image:: img/environment_adjustments_3d_lut_comparison.webp
 
 .. note::
 
-    Adjustments and color correction are applied *after* tonemapping.
-    This means the tonemapping properties defined above still have an effect
-    when adjustments are enabled.
+    Các điều chỉnh và hiệu chỉnh màu được áp dụng *sau* tonemapping. Điều này có nghĩa là các thuộc tính tonemapping được định nghĩa ở trên vẫn có tác dụng khi bật các điều chỉnh.
 
-Camera attribute options
-------------------------
+Các tùy chọn thuộc tính camera
+------------------------------
 
-Godot has two kinds of camera attributes, physical and practical. When using
-CameraAttributesPhysical instead of CameraAttributesPractical, depth of field is
-automatically computed from the camera attributes' focus distance, focal length, and
-aperture. In addition, Frustum options are available.
+Godot có hai loại thuộc tính camera: physical và practical. Khi sử dụng CameraAttributesPhysical thay vì CameraAttributesPractical, độ sâu trường ảnh được tự động tính toán từ khoảng cách lấy nét, tiêu cự và khẩu độ của các thuộc tính camera. Ngoài ra, các tùy chọn Frustum cũng khả dụng.
 
 Depth of Field / Far Blur
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This effect simulates focal distance on cameras. It blurs objects behind
-a given range. It has an initial **Distance** with a **Transition** region
-(in world units):
+Hiệu ứng này mô phỏng khoảng cách lấy nét trên camera. Nó làm mờ các vật thể nằm phía sau một phạm vi nhất định. Hiệu ứng có **Distance** ban đầu cùng một vùng **Transition** (tính theo đơn vị trong thế giới):
 
 .. image:: img/environment_dof_far.webp
 
-The **Amount** parameter controls the amount of blur. For larger blurs, tweaking
-the depth of field quality in the advanced project settings may be needed to
-avoid artifacts.
+Tham số **Amount** kiểm soát mức độ làm mờ. Với độ mờ lớn hơn, có thể cần điều chỉnh chất lượng depth of field trong phần cài đặt dự án nâng cao để tránh hiện tượng lỗi hình ảnh.
 
 Depth of Field / Near Blur
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This effect simulates focal distance on cameras. It blurs objects close
-to the camera (acts in the opposite direction as far blur).
-It has an initial **Distance** with a **Transition** region (in world units):
+Hiệu ứng này mô phỏng khoảng cách lấy nét trên camera. Nó làm mờ các vật thể ở gần camera (hoạt động theo hướng ngược với far blur). Hiệu ứng có **Distance** ban đầu cùng một vùng **Transition** (tính theo đơn vị trong thế giới):
 
 .. image:: img/environment_dof_near.webp
 
-The **Amount** parameter controls the amount of blur. For larger blurs, tweaking
-the depth of field quality in the advanced project settings may be needed to
-avoid artifacts.
+Tham số **Amount** kiểm soát mức độ làm mờ. Với độ mờ lớn hơn, có thể cần điều chỉnh chất lượng depth of field trong phần cài đặt dự án nâng cao để tránh hiện tượng lỗi hình ảnh.
 
-It is common to use both blurs together to focus the viewer's attention on a
-given object, or create a so-called
-`"tilt shift" effect <https://en.wikipedia.org/wiki/Miniature_faking>`__.
+Thông thường, người ta sử dụng cả hai hiệu ứng làm mờ cùng nhau để tập trung sự chú ý của người xem vào một vật thể nhất định hoặc tạo ra hiệu ứng `"tilt shift" effect <https://en.wikipedia.org/wiki/Miniature_faking>`__.
 
 .. image:: img/environment_mixed_blur.webp
 
 Exposure
 ~~~~~~~~
 
-This multiplies the overall scene brightness visible from the camera. Higher
-values result in a visually brighter scene.
+Giá trị này nhân với độ sáng tổng thể của cảnh mà camera nhìn thấy. Giá trị cao hơn sẽ tạo ra cảnh sáng hơn về mặt hình ảnh.
 
 Auto Exposure
 ~~~~~~~~~~~~~
 
-*This feature is only available when using the Forward+ renderer, not
-Mobile or Compatibility.*
+*Tính năng này chỉ khả dụng khi sử dụng renderer Forward+, không khả dụng với Mobile hoặc Compatibility.*
 
-Even though, in most cases, lighting and texturing are heavily artist controlled,
-Godot supports a basic high dynamic range implementation with the auto exposure
-mechanism. This is generally used to add realism when combining interior areas
-with low light and bright outdoor areas. Auto exposure simulates the camera
-(or eye) in an effort to adapt between light and dark locations and their
-different amounts of light.
+Mặc dù trong hầu hết trường hợp, ánh sáng và texture được nghệ sĩ kiểm soát rất nhiều, Godot vẫn hỗ trợ cơ chế high dynamic range cơ bản với cơ chế auto exposure. Cơ chế này thường được dùng để tăng tính chân thực khi kết hợp các khu vực trong nhà có ánh sáng yếu với các khu vực ngoài trời sáng. Auto exposure mô phỏng camera (hoặc mắt người) trong nỗ lực thích ứng giữa các vị trí sáng và tối, cũng như mức độ ánh sáng khác nhau của chúng.
 
 .. note::
 
-    Auto exposure needs to evaluate the scene's brightness every frame, which
-    has a moderate performance cost. Therefore, it's recommended to leave Auto
-    Exposure disabled if it doesn't make much of a difference in your scene.
+    Auto exposure cần đánh giá độ sáng của cảnh trong mỗi frame, dẫn đến chi phí hiệu năng ở mức vừa phải. Vì vậy, bạn nên tắt Auto Exposure nếu nó không tạo ra nhiều khác biệt trong cảnh của mình.
 
 .. image:: img/environment_hdr_autoexp.webp
 
-The simplest way to use auto exposure is to make sure outdoor lights (or other
-strong lights) have energy beyond 1.0. This is done by tweaking their **Energy**
-multiplier (on the Light itself). To make it consistent, the **Sky** usually
-needs to use the energy multiplier too, to match with the directional light.
-Normally, values between 3.0 and 6.0 are enough to simulate indoor-outdoor conditions.
+Cách đơn giản nhất để sử dụng auto exposure là đảm bảo đèn ngoài trời (hoặc các đèn mạnh khác) có energy lớn hơn 1.0. Việc này được thực hiện bằng cách điều chỉnh multiplier **Energy** của chúng (ngay trên Light). Để duy trì tính nhất quán, **Sky** thường cũng cần sử dụng multiplier energy để khớp với directional light. Thông thường, các giá trị từ 3.0 đến 6.0 là đủ để mô phỏng điều kiện trong nhà và ngoài trời.
 
-By combining Auto Exposure with :ref:`doc_environment_and_post_processing_glow`
-post-processing, pixels that go over the tonemap **White** will bleed to the
-glow buffer, creating the typical bloom effect in photography.
+Bằng cách kết hợp Auto Exposure với hậu kỳ :ref:`doc_environment_and_post_processing_glow`, các pixel vượt quá **White** của tonemap sẽ tràn vào glow buffer, tạo ra hiệu ứng bloom đặc trưng trong nhiếp ảnh.
 
 .. image:: img/environment_hdr_bloom.webp
 
-The user-controllable values in the Auto Exposure section come with sensible
-defaults, but you can still tweak them:
+Các giá trị do người dùng kiểm soát trong phần Auto Exposure đi kèm các giá trị mặc định hợp lý, nhưng bạn vẫn có thể điều chỉnh chúng:
 
 .. image:: img/environment_hdr.webp
 
-- **Scale:** Value to scale the lighting. Higher values produce brighter
-  images, and lower values produce darker ones.
-- **Min Sensitivity / Min Exposure Value:** Minimum luminance that auto exposure
-  will aim to adjust for (in ISO when using CameraAttributesPractical, or in
-  EV100 when using CameraAttributesPhysical). Luminance is the average of the
-  light in all the pixels of the screen.
-- **Max Sensitivity / Max Exposure Value:** Maximum luminance that auto exposure
-  will aim to adjust for (in ISO when using CameraAttributesPractical, or in
-  EV100 when using CameraAttributesPhysical).
-- **Speed:** Speed at which luminance corrects itself. The higher the value, the
-  faster luminance correction happens. High values may be more suited to
-  fast-paced games, but can be distracting in some scenarios.
+- **Scale:** Giá trị dùng để scale ánh sáng. Giá trị cao hơn tạo ra hình ảnh sáng hơn, còn giá trị thấp hơn tạo ra hình ảnh tối hơn. - **Min Sensitivity / Min Exposure Value:** Độ chói tối thiểu mà auto exposure sẽ hướng đến khi điều chỉnh (tính theo ISO khi sử dụng CameraAttributesPractical hoặc theo EV100 khi sử dụng CameraAttributesPhysical). Độ chói là giá trị trung bình của ánh sáng trên tất cả pixel của màn hình. - **Max Sensitivity / Max Exposure Value:** Độ chói tối đa mà auto exposure sẽ hướng đến khi điều chỉnh (tính theo ISO khi sử dụng CameraAttributesPractical hoặc theo EV100 khi sử dụng CameraAttributesPhysical). - **Speed:** Tốc độ tự điều chỉnh của độ chói. Giá trị càng cao thì việc hiệu chỉnh độ chói càng nhanh. Các giá trị cao có thể phù hợp hơn với các game có nhịp độ nhanh, nhưng có thể gây mất tập trung trong một số trường hợp.
 
-When using CameraAttributesPractical, exposure is set using *sensitivity*
-defined in ISO instead of an exposure value in EV100. Typical ISO values are
-between 50 and 3200, with higher values resulting in higher final exposure. In
-real life, daytime photography generally uses ISO values between 100 and 800.
+Khi sử dụng CameraAttributesPractical, exposure được thiết lập bằng *sensitivity* được định nghĩa theo ISO thay vì một giá trị exposure theo EV100. Các giá trị ISO phổ biến nằm trong khoảng từ 50 đến 3200, trong đó giá trị cao hơn tạo ra exposure cuối cùng cao hơn. Trong đời thực, nhiếp ảnh ban ngày thường sử dụng các giá trị ISO từ 100 đến 800.
 
 .. seealso::
 
-    See :ref:`doc_physical_light_and_camera_units` if you wish to use real world
-    units to configure your camera's exposure, field of view and depth of field.
+    Xem :ref:`doc_physical_light_and_camera_units` nếu bạn muốn sử dụng các đơn vị thực tế để cấu hình exposure, field of view và depth of field của camera.

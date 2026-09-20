@@ -13,15 +13,15 @@ Tài liệu Godot – nhánh *4.7*
   .. note:: This documentation is translated from the `original English one
             <https://docs.godotengine.org/en/stable>`_ bởi các thành viên cộng đồng trên `Weblate <https://hosted.weblate.org/projects/godot-engine/godot-docs>`_.
 
-            Tùy thuộc vào mức độ hoàn thiện của quá trình dịch, bạn có thể bắt gặp những đoạn văn hoặc toàn bộ trang vẫn còn bằng tiếng Anh. Bạn có thể hỗ trợ cộng đồng bằng cách cung cấp bản dịch mới hoặc xem xét các bản dịch hiện có trên Weblate.
+            Tùy thuộc vào mức độ hoàn thành của nỗ lực dịch thuật, bạn có thể bắt gặp những đoạn văn hoặc toàn bộ trang vẫn còn bằng tiếng Anh. Bạn có thể giúp cộng đồng bằng cách cung cấp bản dịch mới hoặc xem xét các bản dịch hiện có trên Weblate.
 
-            Hiện tại, bản dịch bản địa hóa chỉ có sẵn cho nhánh "stable". Bạn vẫn có thể xem tài liệu tiếng Anh cho các phiên bản engine khác bằng bảng "Read the Docs" ở cuối thanh bên.
+            Hiện tại, bản dịch được bản địa hóa chỉ có sẵn cho nhánh "stable". Bạn vẫn có thể xem tài liệu tiếng Anh cho các phiên bản engine khác bằng bảng "Read the Docs" ở cuối thanh bên.
 
-Chào mừng bạn đến với tài liệu chính thức của `Godot Engine <https://godotengine.org>`__, engine trò chơi 2D và 3D miễn phí, mã nguồn mở, do cộng đồng phát triển! Nếu bạn mới làm quen với tài liệu này, chúng tôi khuyên bạn nên đọc
+Chào mừng bạn đến với tài liệu chính thức của `Godot Engine <https://godotengine.org>`__, một game engine 2D và 3D miễn phí, mã nguồn mở và do cộng đồng phát triển! Nếu bạn mới làm quen với tài liệu này, chúng tôi khuyên bạn nên đọc
 :ref:`introduction page <doc_about_intro>` to get an overview of what this
 những gì tài liệu cung cấp.
 
-Để bắt đầu đọc tài liệu liên quan, hãy chọn ô phù hợp với hồ sơ của bạn:
+Để bắt đầu đọc tài liệu phù hợp, hãy chọn ô tương ứng với hồ sơ của bạn:
 
 .. raw:: html
 
@@ -80,20 +80,20 @@ những gì tài liệu cung cấp.
     </style>
     <div class="grid-container">
         <a class="grid-item new-to-game" href="about/introduction.html">
-            I've never made a game before,<br>
-            <strong>I want to make a game.</strong>
+            Tôi chưa từng làm game,<br>
+            <strong>Tôi muốn làm một game.</strong>
         </a>
         <a class="grid-item know-game-learn-godot" href="getting_started/step_by_step/index.html">
-            I know how to make a game,<br>
-            <strong>I want to know how to use Godot.</strong>
+            Tôi biết cách làm game,<br>
+            <strong>Tôi muốn biết cách sử dụng Godot.</strong>
             </a>
         <a class="grid-item know-godot-learn-godot" href="tutorials/index.html">
-            I know how to use Godot,<br>
-            <strong>I want to learn more advanced Godot topics.</strong>
+            Tôi biết cách sử dụng Godot,<br>
+            <strong>Tôi muốn tìm hiểu thêm về các chủ đề nâng cao trong Godot.</strong>
         </a>
-        <a class="grid-item contribute-to-godot" href="https://contributing.godotengine.org/en/latest/organization/how_to_contribute.html">
-            I know how to use Godot,<br>
-            <strong>I want to contribute to Godot.</strong>
+        <a class="grid-item contribute-to-godot" href="https://contributing.godotengine.org/en/latest/index.html">
+            Tôi biết cách sử dụng Godot,<br>
+            <strong>Tôi muốn đóng góp cho Godot.</strong>
         </a>
     </div>
     <br>
@@ -103,25 +103,25 @@ Bạn cũng có thể sử dụng mục lục trong thanh bên để dễ dàng 
 Tham gia đóng góp
 -----------------
 
-Godot Engine là một dự án mã nguồn mở do cộng đồng tình nguyện viên phát triển. Nhóm tài liệu luôn cần phản hồi và sự trợ giúp của bạn để cải thiện các hướng dẫn và tài liệu tham khảo lớp. Nếu bạn không hiểu điều gì đó hoặc không thể tìm thấy nội dung mình cần trong tài liệu, hãy giúp chúng tôi làm tài liệu tốt hơn bằng cách cho chúng tôi biết!
+Godot Engine là một dự án mã nguồn mở được phát triển bởi cộng đồng tình nguyện viên. Nhóm tài liệu luôn cần phản hồi và sự trợ giúp của bạn để cải thiện các tutorial và tài liệu tham chiếu class. Nếu bạn không hiểu điều gì đó hoặc không thể tìm thấy nội dung mình cần trong tài liệu, hãy giúp chúng tôi làm tài liệu tốt hơn bằng cách cho chúng tôi biết!
 
-Gửi issue hoặc pull request trên `GitHub repository <https://github.com/godotengine/godot-docs/issues>`_, giúp chúng tôi `translate the documentation <https://hosted.weblate.org/engage/godot-engine/>`_ sang ngôn ngữ của bạn, hoặc trò chuyện với chúng tôi trên kênh ``#documentation`` tại `Godot Contributors Chat <https://chat.godotengine.org/>`_!
+Gửi issue hoặc pull request trên `GitHub repository <https://github.com/godotengine/godot-docs/issues>`_, giúp chúng tôi `dịch tài liệu <https://hosted.weblate.org/engage/godot-engine/>`_ sang ngôn ngữ của bạn, hoặc trò chuyện với chúng tôi trên kênh ``#documentation`` trong `Godot Contributors Chat <https://chat.godotengine.org/>`_!
 
 .. centered:: |weblate_widget|
 
 Tài liệu ngoại tuyến
 --------------------
 
-Để xem tài liệu ngoại tuyến, bạn có thể tải xuống bản HTML (được cập nhật vào thứ Hai hằng tuần): `stable <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-html-stable.zip>`__, `latest <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-html-master.zip>`__, `3.6 <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-html-3.6.zip>`__. Giải nén kho lưu trữ ZIP, sau đó mở ``index.html`` cấp cao nhất trong trình duyệt web.
+Để xem tài liệu ngoại tuyến, bạn có thể tải xuống bản HTML (được cập nhật vào mỗi thứ Hai): `stable <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-html-stable.zip>`__, `latest <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-html-master.zip>`__, `3.6 <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-html-3.6.zip>`__. Giải nén tệp lưu trữ ZIP, sau đó mở ``index.html`` cấp cao nhất trong trình duyệt web.
 
-Đối với thiết bị di động hoặc thiết bị đọc sách điện tử, bạn cũng có thể tải xuống bản ePub (được cập nhật vào thứ Hai hằng tuần): `stable <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-epub-stable.zip>`__, `latest <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-epub-master.zip>`__, `3.6 <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-epub-3.6.zip>`__. Giải nén kho lưu trữ ZIP, sau đó mở tệp ``GodotEngine.epub`` trong ứng dụng đọc sách điện tử.
+Đối với thiết bị di động hoặc thiết bị đọc sách điện tử, bạn cũng có thể tải xuống bản ePub (được cập nhật vào mỗi thứ Hai): `stable <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-epub-stable.zip>`__, `latest <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-epub-master.zip>`__, `3.6 <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-epub-3.6.zip>`__. Giải nén tệp lưu trữ ZIP, sau đó mở tệp ``GodotEngine.epub`` trong ứng dụng đọc sách điện tử.
 
-.. Bên dưới là cây mục lục chính của trang web tài liệu. Cây này bị ẩn trên chính trang đó, nhưng tạo thành thanh bên dùng để điều hướng.
+.. Dưới đây là cây mục lục chính của trang web tài liệu. Cây này bị ẩn trên chính trang đó, nhưng tạo thành thanh bên để điều hướng.
 
 .. toctree::
    :hidden:
    :maxdepth: 1
-   :caption: About
+   :caption: Giới thiệu
    :name: sec-general
 
    about/introduction
@@ -135,7 +135,7 @@ Tài liệu ngoại tuyến
 .. toctree::
    :hidden:
    :maxdepth: 1
-   :caption: Getting started
+   :caption: Bắt đầu
    :name: sec-learn
 
    getting_started/introduction/index
@@ -144,11 +144,11 @@ Tài liệu ngoại tuyến
    getting_started/first_3d_game/index
 
 
-.. Các phần bên dưới được chia thành hai nhóm. Trước tiên là các phần meta, bao quát những vấn đề chung. Bên dưới đó là danh sách các lĩnh vực khác nhau của engine. Các phần này được sắp xếp theo thứ tự bảng chữ cái. Vui lòng giữ nguyên thứ tự đó.
+.. Các phần bên dưới được chia thành hai nhóm. Trước tiên là các phần meta, bao quát những vấn đề chung. Bên dưới là danh sách các khu vực khác nhau của engine. Các phần này được sắp xếp theo thứ tự bảng chữ cái. Vui lòng giữ nguyên thứ tự đó.
 .. toctree::
    :hidden:
    :maxdepth: 1
-   :caption: Manual
+   :caption: Hướng dẫn sử dụng
    :name: sec-tutorials
 
    tutorials/best_practices/index
@@ -182,7 +182,7 @@ Tài liệu ngoại tuyến
 .. toctree::
    :hidden:
    :maxdepth: 1
-   :caption: Engine details
+   :caption: Chi tiết về Engine
    :name: sec-engine-details
 
    engine_details/architecture/index
@@ -196,7 +196,7 @@ Tài liệu ngoại tuyến
 .. toctree::
    :hidden:
    :maxdepth: 1
-   :caption: Community
+   :caption: Cộng đồng
    :name: sec-community
 
    community/asset_library/index
@@ -208,7 +208,7 @@ Tài liệu ngoại tuyến
 .. toctree::
    :hidden:
    :maxdepth: 1
-   :caption: Class reference
+   :caption: Tra cứu Class
    :name: sec-class-ref
 
    classes/index

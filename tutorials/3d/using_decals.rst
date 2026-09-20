@@ -1,55 +1,38 @@
 .. _doc_using_decals:
 
-Using decals
-============
+Sử dụng decal
+=============
 
 .. note::
 
-    Decals are only supported in the Forward+ and Mobile renderers, not the
-    Compatibility renderer.
+    Decal chỉ được hỗ trợ trong các renderer Forward+ và Mobile, không được hỗ trợ trong renderer Compatibility.
 
-    If using the Compatibility renderer, consider using Sprite3D as an alternative
-    for projecting decals onto (mostly) flat surfaces.
+    Nếu sử dụng renderer Compatibility, hãy cân nhắc dùng Sprite3D làm phương án thay thế để chiếu decal lên các bề mặt (chủ yếu) phẳng.
 
-Decals are projected textures that apply on opaque or transparent surfaces in
-3D. This projection happens in real-time and doesn't rely on mesh generation.
-This allows you to move decals every frame with only a small performance impact,
-even when applied on complex meshes.
+Decal là các texture được chiếu lên các bề mặt opaque hoặc transparent trong 3D. Việc chiếu này diễn ra theo thời gian thực và không phụ thuộc vào việc tạo mesh. Nhờ đó, bạn có thể di chuyển decal ở mỗi frame với chỉ một tác động nhỏ đến hiệu năng, ngay cả khi áp dụng lên các mesh phức tạp.
 
-While decals cannot add actual geometry detail onto the projected surface,
-decals can still make use of physically-based rendering to provide similar
-properties to full-blown :abbr:`PBR (Physically-Based Rendering)` materials.
+Mặc dù decal không thể thêm chi tiết geometry thực tế lên bề mặt được chiếu, decal vẫn có thể sử dụng physically-based rendering để cung cấp các thuộc tính tương tự như các material :abbr:`PBR (Physically-Based Rendering)` đầy đủ.
 
-On this page, you'll learn:
+Trong trang này, bạn sẽ tìm hiểu:
 
-- How to set up decals in the 3D editor.
-- How to create decals during gameplay in a 3D scene (such as bullet impacts).
-- How to balance decal configuration between performance and quality.
+- Cách thiết lập decal trong 3D editor. - Cách tạo decal trong khi gameplay diễn ra trong một 3D scene (chẳng hạn như vết đạn). - Cách cân bằng cấu hình decal giữa hiệu năng và chất lượng.
 
 .. seealso::
 
-    The Godot demo projects repository contains a
-    `3D decals demo <https://github.com/godotengine/godot-demo-projects/tree/master/3d/decals>`__.
+    Repository các demo project của Godot có một `3D decals demo <https://github.com/godotengine/godot-demo-projects/tree/master/3d/decals>`__.
 
-    If you're looking to write arbitrary 3D text on top of a surface, use
+    Nếu bạn muốn viết văn bản 3D tùy ý lên trên một bề mặt, hãy sử dụng
     :ref:`doc_3d_text` placed close to a surface instead of a Decal node.
 
-Use cases
----------
+Trường hợp sử dụng
+------------------
 
-Static decoration
-~~~~~~~~~~~~~~~~~
+Trang trí tĩnh
+~~~~~~~~~~~~~~
 
-Sometimes, the fastest way to add texture detail to a scene is to use decals.
-This is especially the case for organic detail, such as patches of dirt or sand
-scattered on a large surface. Decals can help break up texture repetition in
-scenes and make patterns look more natural. On a smaller scale, decals can also
-be used to create detail variations for objects. For example, decals can be used
-to add nuts and bolts on top of hard-surface geometry.
+Đôi khi, cách nhanh nhất để thêm chi tiết texture vào một scene là sử dụng decal. Điều này đặc biệt đúng với các chi tiết hữu cơ, chẳng hạn như những mảng đất hoặc cát rải rác trên một bề mặt lớn. Decal có thể giúp phá vỡ sự lặp lại của texture trong scene và khiến các pattern trông tự nhiên hơn. Ở quy mô nhỏ hơn, decal cũng có thể được dùng để tạo ra các biến thể chi tiết cho object. Ví dụ, decal có thể được dùng để thêm đai ốc và bu-lông lên trên geometry hard-surface.
 
-Since decals can inject their own :abbr:`PBR (Physically-Based Rendering)`
-properties on top of the projected surfaces, they can also be used to create
-footprints or wet puddles.
+Vì decal có thể đưa các thuộc tính :abbr:`PBR (Physically-Based Rendering)` của riêng chúng lên trên các bề mặt được chiếu, chúng cũng có thể được dùng để tạo dấu chân hoặc vũng nước ướt.
 
 .. figure:: img/decals_dirt.webp
    :align: center
@@ -57,34 +40,21 @@ footprints or wet puddles.
 
    Dirt added on top of level geometry using decals
 
-Dynamic gameplay elements
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Các yếu tố gameplay động
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-Decals can represent temporary or persistent gameplay effects such as bullet
-impacts and explosion scorches.
+Decal có thể biểu diễn các hiệu ứng gameplay tạm thời hoặc kéo dài, chẳng hạn như vết đạn và vết cháy do vụ nổ.
 
-Using an AnimationPlayer node or a script, decals can be made to fade over time
-(and then be removed using ``queue_free()``) to improve performance.
+Bằng cách sử dụng node AnimationPlayer hoặc một script, decal có thể được cho mờ dần theo thời gian (sau đó được xóa bằng ``queue_free()``) để cải thiện hiệu năng.
 
-Blob shadows
-~~~~~~~~~~~~
+Bóng blob
+~~~~~~~~~
 
-Blob shadows are frequently used in mobile projects (or to follow a retro art
-style), as real-time lighting tends to be too expensive on low-end mobile
-devices. However, when relying on baked lightmaps with fully baked lights,
-dynamic objects will not cast *any* shadow from those lights. This makes dynamic
-objects in lightmapped scenes look flat in comparison to real-time lighting,
-with dynamic objects almost looking like they're floating.
+Bóng blob thường được sử dụng trong các project mobile (hoặc để theo đuổi phong cách nghệ thuật retro), vì lighting theo thời gian thực thường quá tốn kém trên các thiết bị mobile cấp thấp. Tuy nhiên, khi dựa vào lightmap đã bake với các light được bake hoàn toàn, các object động sẽ không đổ *bất kỳ* bóng nào từ những light đó. Điều này khiến các object động trong scene sử dụng lightmap trông phẳng hơn so với lighting theo thời gian thực, gần như khiến các object động trông như đang lơ lửng.
 
-Thanks to blob shadows, dynamic objects can still cast an approximative shadow.
-Not only this helps with depth perception in the scene, but this can also be a
-gameplay element, especially in 3D platformers. The blob shadow's length can be
-extended to let the player know where they will land if they fall straight down.
+Nhờ bóng blob, các object động vẫn có thể đổ bóng gần đúng. Điều này không chỉ giúp cảm nhận độ sâu trong scene, mà còn có thể trở thành một yếu tố gameplay, đặc biệt trong các game platformer 3D. Có thể kéo dài bóng blob để cho người chơi biết họ sẽ tiếp đất ở đâu nếu rơi thẳng xuống.
 
-Even with real-time lighting, blob shadows can still be useful as a form of
-ambient occlusion for situations where SSAO is too expensive or too unstable due
-to its screen-space nature. For example, vehicles' underside shadows are
-well-represented using blob shadows.
+Ngay cả với lighting theo thời gian thực, bóng blob vẫn có thể hữu ích như một dạng ambient occlusion trong những tình huống mà SSAO quá tốn kém hoặc quá không ổn định do bản chất screen-space của nó. Ví dụ, bóng bên dưới xe được thể hiện tốt bằng bóng blob.
 
 .. figure:: img/decals_blob_shadow.webp
    :align: center
@@ -92,127 +62,54 @@ well-represented using blob shadows.
 
    Blob shadow under object comparison
 
-Quick start guide
------------------
+Hướng dẫn bắt đầu nhanh
+-----------------------
 
-Creating decals in the editor
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tạo decal trong editor
+~~~~~~~~~~~~~~~~~~~~~~
 
-1. Create a Decal node in the 3D editor.
-2. In the inspector, expand the **Textures** section and load a texture in
-   **Textures > Albedo**.
-3. Move the Decal node towards an object, then rotate it so the decal is visible
-   (and in the right orientation). If the decal appears mirrored, try to rotate
-   it by 180 degrees. You can double-check whether it's in the right orientation
-   by increasing **Parameters > Normal Fade** to 0.5. This will prevent the Decal
-   from being projected on surfaces that are not facing the decal.
-4. If your decal is meant to affect static objects only, configure it to prevent
-   affecting dynamic objects (or vice versa). To do so, change the decal's
-   **Cull Mask** property to exclude certain layers. After doing this, modify
-   your dynamic objects' MeshInstance3D nodes to change their visibility layers.
-   For instance, you can move them from layer 1 to layer 2, then disable layer 2
-   in the decal's **Cull Mask** property.
+1. Tạo một node Decal trong 3D editor. 2. Trong inspector, mở rộng phần **Textures** và tải một texture vào **Textures > Albedo**. 3. Di chuyển node Decal về phía một object, sau đó xoay node để decal hiển thị (và có đúng hướng). Nếu decal bị phản chiếu, hãy thử xoay nó 180 độ. Bạn có thể kiểm tra lại xem decal có đúng hướng hay không bằng cách tăng **Parameters > Normal Fade** lên 0.5. Việc này sẽ ngăn Decal được chiếu lên các bề mặt không hướng về phía decal. 4. Nếu decal của bạn chỉ nhằm tác động đến các object tĩnh, hãy cấu hình để ngăn decal tác động đến các object động (hoặc ngược lại). Để làm vậy, hãy thay đổi thuộc tính **Cull Mask** của decal nhằm loại trừ một số layer. Sau đó, sửa đổi các node MeshInstance3D của object động để thay đổi visibility layer của chúng. Chẳng hạn, bạn có thể chuyển chúng từ layer 1 sang layer 2, sau đó tắt layer 2 trong thuộc tính **Cull Mask** của decal.
 
-Decal node properties
----------------------
+Các thuộc tính của node Decal
+-----------------------------
 
-- **Extents:** The size of the decal. The Y axis determines the length of the
-  decal's projection. Keep the projection length as short as possible to improve
-  culling opportunities, therefore improving performance.
+- **Extents:** Kích thước của decal. Trục Y xác định độ dài phần chiếu của decal. Hãy giữ độ dài phần chiếu ngắn nhất có thể để tăng cơ hội culling, từ đó cải thiện hiệu năng.
 
 Textures
 ~~~~~~~~
 
-- **Albedo:** The albedo (diffuse/color) map to use for the decal. In
-  most situations, this is the texture you want to set first. If using a normal
-  or ORM map, an albedo map *must* be set to provide an alpha channel. This
-  alpha channel will be used as a mask to determine how much the normal/ORM maps
-  will affect the underlying surface.
-- **Normal:** The normal map to use for the decal. This can be used
-  to increase perceived detail on the decal by modifying how light reacts to it.
-  The impact of this texture is multiplied by the albedo texture's alpha channel
-  (but not **Albedo Mix**).
-- **ORM:** The Occlusion/Roughness/Metallic map to use for the decal.
-  This is an optimized format for storing PBR material maps. Ambient Occlusion
-  map is stored in the red channel, roughness map in the green channel, metallic
-  map in the blue channel. The impact of this texture is multiplied by the
-  albedo texture's alpha channel (but not **Albedo Mix**).
-- **Emission:** The emission texture to use for the decal. Unlike
-  **Albedo**, this texture will appear to glow in the dark.
+- **Albedo:** Map albedo (diffuse/color) được dùng cho decal. Trong hầu hết trường hợp, đây là texture bạn muốn thiết lập trước tiên. Nếu sử dụng map normal hoặc ORM, bắt buộc phải thiết lập map albedo để cung cấp kênh alpha. Kênh alpha này sẽ được dùng làm mask để xác định mức độ ảnh hưởng của các map normal/ORM lên bề mặt bên dưới. - **Normal:** Map normal được dùng cho decal. Có thể dùng map này để tăng chi tiết cảm nhận được trên decal bằng cách thay đổi cách ánh sáng phản ứng với decal. Tác động của texture này được nhân với kênh alpha của texture albedo (nhưng không nhân với **Albedo Mix**). - **ORM:** Map Occlusion/Roughness/Metallic được dùng cho decal. Đây là format được tối ưu để lưu trữ các map material PBR. Map Ambient Occlusion được lưu trong kênh đỏ, map roughness trong kênh xanh lá, map metallic trong kênh xanh dương. Tác động của texture này được nhân với kênh alpha của texture albedo (nhưng không nhân với **Albedo Mix**). - **Emission:** Texture emission được dùng cho decal. Không giống **Albedo**, texture này sẽ phát sáng trong bóng tối.
 
 Parameters
 ~~~~~~~~~~
 
-- **Emission Energy:** The brightness of the emission texture.
-- **Modulate:** Multiplies the color of the albedo and emission textures. Use
-  this to tint decals (e.g. for paint decals, or to increase variation by
-  randomizing each decal's modulation).
-- **Albedo Mix:** The opacity of the albedo texture. Unlike using an albedo
-  texture with a more transparent alpha channel, decreasing this value below
-  ``1.0`` does *not* reduce the impact of the normal/ORM texture on the
-  underlying surface. Set this to ``0.0`` when creating normal/ORM-only decals
-  such as footsteps or wet puddles.
-- **Normal Fade:** Fades the Decal if the angle between the Decal's
+- **Emission Energy:** Độ sáng của texture emission. - **Modulate:** Nhân màu của các texture albedo và emission. Dùng thuộc tính này để đổi màu decal (ví dụ: với decal sơn, hoặc để tăng biến thể bằng cách ngẫu nhiên hóa modulation của từng decal). - **Albedo Mix:** Độ mờ của texture albedo. Không giống việc sử dụng texture albedo với kênh alpha trong suốt hơn, giảm giá trị này xuống dưới ``1.0`` *không* làm giảm tác động của texture normal/ORM lên bề mặt bên dưới. Đặt giá trị này thành ``0.0`` khi tạo các decal chỉ có normal/ORM, chẳng hạn như dấu chân hoặc vũng nước ướt. - **Normal Fade:** Làm mờ Decal nếu góc giữa Decal và
   :abbr:`AABB (Axis-Aligned Bounding Box)` and the target surface becomes too large.
-  A value of ``0.0`` projects the decal regardless of angle, while a value of ``0.999``
-  limits the decal to surfaces that are nearly perpendicular. Setting **Normal
-  Fade** to a value greater than ``0.0`` has a small performance cost due to the
-  added normal angle computations.
+  Giá trị ``0.0`` sẽ chiếu decal bất kể góc nào, trong khi giá trị ``0.999`` giới hạn decal vào các bề mặt gần như vuông góc. Việc đặt **Normal Fade** thành giá trị lớn hơn ``0.0`` sẽ gây ra một chi phí hiệu năng nhỏ do phải tính toán thêm góc normal.
 
 Vertical Fade
 ~~~~~~~~~~~~~
 
-- **Upper Fade:** The curve over which the decal will fade as the surface gets
-  further from the center of the :abbr:`AABB (Axis-Aligned Bounding Box)`
-  (towards the decal's projection angle). Only positive values are valid.
-- **Lower Fade:** The curve over which the decal will fade as the surface gets
-  further from the center of the :abbr:`AABB (Axis-Aligned Bounding Box)` (away
-  from the decal's projection angle). Only positive values are valid.
+- **Upper Fade:** Đường cong mà decal sẽ mờ dần theo đó khi bề mặt cách xa hơn tâm của :abbr:`AABB (Axis-Aligned Bounding Box)` (về phía góc chiếu của decal). Chỉ các giá trị dương mới hợp lệ. - **Lower Fade:** Đường cong mà decal sẽ mờ dần theo đó khi bề mặt cách xa hơn tâm của :abbr:`AABB (Axis-Aligned Bounding Box)` (ra xa góc chiếu của decal). Chỉ các giá trị dương mới hợp lệ.
 
 Distance Fade
 ~~~~~~~~~~~~~
 
-- **Enabled:** Controls whether distance fade (a form of :abbr:`LOD (Level of Detail)`)
-  is enabled. The decal will fade out over **Begin + Length**, after which it
-  will be culled and not sent to the shader at all. Use this to reduce the number
-  of active decals in a scene and thus improve performance.
-- **Begin:** The distance from the camera at which the decal begins to fade away
-  (in 3D units).
-- **Length:** The distance over which the decal fades (in 3D units). The decal
-  becomes slowly more transparent over this distance and is completely invisible
-  at the end. Higher values result in a smoother fade-out transition, which is
-  more suited when the camera moves fast.
+- **Enabled:** Kiểm soát việc distance fade (một dạng :abbr:`LOD (Level of Detail)`) có được bật hay không. Decal sẽ mờ dần trong khoảng **Begin + Length**, sau đó sẽ bị cull và hoàn toàn không được gửi đến shader. Dùng thuộc tính này để giảm số lượng decal đang hoạt động trong scene, qua đó cải thiện hiệu năng. - **Begin:** Khoảng cách từ camera tại đó decal bắt đầu mờ đi (theo đơn vị 3D). - **Length:** Khoảng cách mà decal mờ dần (theo đơn vị 3D). Decal sẽ trở nên trong suốt hơn từ từ trong khoảng cách này và hoàn toàn không hiển thị ở cuối khoảng cách. Các giá trị cao hơn tạo ra chuyển tiếp mờ dần mượt hơn, phù hợp hơn khi camera di chuyển nhanh.
 
 Cull Mask
 ~~~~~~~~~
 
-- **Cull Mask:** Specifies which VisualInstance3D layers this decal will project
-  on. By default, decals affect all layers. This is used so you can specify which
-  types of objects receive the decal and which do not. This is especially useful
-  so you can ensure that dynamic objects don't accidentally receive a Decal
-  intended for the terrain under them.
+- **Cull Mask:** Chỉ định các layer VisualInstance3D mà decal này sẽ chiếu lên. Theo mặc định, decal tác động đến tất cả layer. Thuộc tính này được dùng để chỉ định loại object nào sẽ nhận decal và loại nào không. Điều này đặc biệt hữu ích để đảm bảo các object động không vô tình nhận một Decal vốn dành cho địa hình bên dưới chúng.
 
-Decal rendering order
----------------------
+Thứ tự render decal
+-------------------
 
-By default, decals are ordered based on the size of their :abbr:`AABB
-(Axis-Aligned Bounding Box)` and the distance to the camera. AABBs that are
-closer to the camera are rendered first, which means that decal rendering order
-can sometimes appear to change depending on camera position if some decals are
-positioned at the same location.
+Theo mặc định, decal được sắp xếp dựa trên kích thước :abbr:`AABB (Axis-Aligned Bounding Box)` của chúng và khoảng cách đến camera. Các AABB gần camera hơn sẽ được render trước, nghĩa là thứ tự render decal đôi khi có vẻ thay đổi tùy theo vị trí camera nếu một số decal nằm cùng vị trí.
 
-To resolve this, you can adjust the **Sorting Offset** property in the
-VisualInstance3D section of the Decal node inspector. This offset is not a
-strict priority order, but a *guideline* that the renderer will use as the AABB
-size still affects how decal sorting works. Therefore, higher values will
-*always* result in the decal being drawn above other decals with a lower sorting
-offset.
+Để giải quyết vấn đề này, bạn có thể điều chỉnh thuộc tính **Sorting Offset** trong phần VisualInstance3D của inspector node Decal. Offset này không phải là thứ tự ưu tiên tuyệt đối, mà là một *hướng dẫn* mà renderer sẽ sử dụng, vì kích thước AABB vẫn ảnh hưởng đến cách sắp xếp decal. Do đó, các giá trị cao hơn sẽ *luôn* khiến decal được vẽ bên trên các decal khác có sorting offset thấp hơn.
 
-If you want to ensure a decal is always rendered on top of other decals,
-you need to set its **Sorting Offset** property to a positive value greater than
-the AABB length of the largest decal that may overlap it. To make this decal
-drawn behind other decals instead, set the **Sorting Offset** to the same
-negative value.
+Nếu muốn đảm bảo một decal luôn được render bên trên các decal khác, bạn cần đặt thuộc tính **Sorting Offset** của decal đó thành một giá trị dương lớn hơn độ dài AABB của decal lớn nhất có thể chồng lên nó. Để decal này được vẽ phía sau các decal khác, hãy đặt **Sorting Offset** thành cùng giá trị nhưng âm.
 
 .. figure:: img/decals_sorting_offset.webp
    :align: center
@@ -220,53 +117,29 @@ negative value.
 
    VisualInstance3D Sorting Offset comparison on Decals
 
-Tweaking performance and quality
---------------------------------
+Điều chỉnh hiệu năng và chất lượng
+----------------------------------
 
-Decal rendering performance is mostly determined by their screen coverage, but
-also their number. In general, a few large decals that cover up most of the
-screen will be more expensive to render than many small decals that are
-scattered around.
+Hiệu năng render decal chủ yếu được quyết định bởi phần diện tích màn hình mà chúng bao phủ, nhưng số lượng decal cũng có ảnh hưởng. Nhìn chung, một vài decal lớn bao phủ phần lớn màn hình sẽ tốn nhiều chi phí render hơn nhiều decal nhỏ được rải rác xung quanh.
 
-To improve rendering performance, you can enable the **Distance Fade** property
-as described above. This will make distant decals fade out when they are far
-away from the camera (and may have little to no impact on the final scene
-rendering). Using node groups, you can also prevent non-essential decorative
-decals from spawning based on user configuration.
+Để cải thiện hiệu suất rendering, bạn có thể bật thuộc tính **Distance Fade** như mô tả ở trên. Điều này sẽ khiến các decal ở xa mờ dần khi chúng cách xa camera (và có thể ít hoặc không ảnh hưởng đến việc rendering cảnh cuối cùng). Bằng cách sử dụng node group, bạn cũng có thể ngăn các decal trang trí không thiết yếu được spawn dựa trên cấu hình của người dùng.
 
-The way decals are rendered also has an impact on performance. The
+Cách các decal được rendering cũng ảnh hưởng đến hiệu suất. Thiết lập project
 :ref:`Rendering > Textures > Decals > Filter<class_ProjectSettings_property_rendering/textures/decals/filter>`
-advanced project setting lets you control how decal
-textures should be filtered. **Nearest/Linear** does not use mipmaps. However,
-decals will look grainy at a distance. **Nearest/Linear Mipmaps** will look
-smoother at a distance, but decals will look blurry when viewed from oblique
-angles. This can be resolved by using **Nearest/Linear Mipmaps Anisotropic**,
-which provides the highest quality, but is also slower to render.
+nâng cao cho phép bạn kiểm soát cách các texture decal được filter. **Nearest/Linear** không sử dụng mipmap. Tuy nhiên, decal sẽ trông có hạt khi ở xa. **Nearest/Linear Mipmaps** sẽ trông mượt hơn khi ở xa, nhưng decal sẽ bị mờ khi được nhìn từ các góc xiên. Có thể khắc phục điều này bằng cách sử dụng **Nearest/Linear Mipmaps Anisotropic**, tùy chọn này mang lại chất lượng cao nhất nhưng cũng rendering chậm hơn.
 
-If your project has a pixel art style, consider setting the filter to one of the
-**Nearest** values so that decals use nearest-neighbor filtering. Otherwise,
-stick to **Linear**.
+Nếu project của bạn có phong cách pixel art, hãy cân nhắc đặt filter thành một trong các giá trị **Nearest** để decal sử dụng nearest-neighbor filtering. Nếu không, hãy dùng **Linear**.
 
-Limitations
------------
+Giới hạn
+--------
 
-Decals cannot affect material properties other than the ones listed above,
-such as height (for parallax mapping).
+Decal không thể tác động đến các thuộc tính material khác ngoài những thuộc tính được liệt kê ở trên, chẳng hạn như height (dùng cho parallax mapping).
 
-For performance reasons, decals use purely fixed rendering logic. This means
-decals cannot use custom shaders. However, custom shaders on the projected
-surfaces are able to read the information that is overridden by decals on top of
-them, such as roughness and metallic.
+Vì lý do hiệu suất, decal sử dụng logic rendering hoàn toàn cố định. Điều này có nghĩa là decal không thể sử dụng custom shader. Tuy nhiên, custom shader trên các bề mặt được chiếu có thể đọc thông tin bị decal ghi đè trên chúng, chẳng hạn như roughness và metallic.
 
-When using the Forward+ renderer, Godot uses a *clustering* approach for
-decal rendering. As many decals as desired can be added (as long as
-performance allows). However, there's still a default limit of 512 *clustered
-elements* that can be present in the current camera view. A clustered element is
-an omni light, a spot light, an area light, a :ref:`decal <doc_using_decals>`, or a
+Khi sử dụng Forward+ renderer, Godot sử dụng phương pháp *clustering* để rendering decal. Có thể thêm bao nhiêu decal tùy ý (miễn là hiệu suất cho phép). Tuy nhiên, vẫn có giới hạn mặc định là 512 *clustered elements* có thể xuất hiện trong chế độ xem của camera hiện tại. Một clustered element là omni light, spot light, area light, một :ref:`decal <doc_using_decals>`, hoặc một
 :ref:`reflection probe <doc_reflection_probes>`. This limit can be increased by adjusting
 :ref:`Max Clustered Elements<class_ProjectSettings_property_rendering/limits/cluster_builder/max_clustered_elements>`
-in **Project Settings > Rendering > Limits > Cluster Builder**.
+trong **Project Settings > Rendering > Limits > Cluster Builder**.
 
-When using the Mobile renderer, only 8 decals can be applied on each
-individual Mesh *resource*. If there are more decals affecting a single mesh,
-not all of them will be rendered on the mesh.
+Khi sử dụng Mobile renderer, chỉ có thể áp dụng 8 decal cho mỗi *resource* Mesh riêng lẻ. Nếu có nhiều decal hơn tác động đến một mesh, không phải tất cả chúng đều được rendering trên mesh đó.

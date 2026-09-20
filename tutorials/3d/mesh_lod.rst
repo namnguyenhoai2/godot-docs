@@ -1,49 +1,33 @@
 .. _doc_mesh_lod:
 
-Mesh level of detail (LOD)
-==========================
+Mức độ chi tiết của mesh (LOD)
+==============================
 
-Level of detail (LOD) is one of the most important ways to optimize rendering
-performance in a 3D project, along with :ref:`doc_occlusion_culling`.
+Mức độ chi tiết (LOD) là một trong những cách quan trọng nhất để tối ưu hiệu suất rendering trong một dự án 3D, cùng với :ref:`doc_occlusion_culling`.
 
-On this page, you'll learn:
+Trong trang này, bạn sẽ tìm hiểu:
 
-- How mesh LOD can improve your 3D project's rendering performance.
-- How to set up mesh LOD in Godot.
-- How to measure mesh LOD's effectiveness in your project
-  (and alternatives you can explore if it doesn't meet your expectations).
+- Mesh LOD có thể cải thiện hiệu suất rendering của dự án 3D như thế nào. - Cách thiết lập mesh LOD trong Godot. - Cách đo lường hiệu quả của mesh LOD trong dự án của bạn (và các phương án thay thế bạn có thể thử nếu kết quả không như mong đợi).
 
 .. seealso::
 
-    You can see how mesh LOD works in action using the
-    `Occlusion Culling and Mesh LOD demo project <https://github.com/godotengine/godot-demo-projects/tree/master/3d/occlusion_culling_mesh_lod>`__.
+    Bạn có thể xem mesh LOD hoạt động như thế nào qua `dự án demo Occlusion Culling và Mesh LOD <https://github.com/godotengine/godot-demo-projects/tree/master/3d/occlusion_culling_mesh_lod>`__.
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Historically, level of detail in 3D games involved manually authoring meshes
-with lower geometry density, then configuring the distance thresholds at which
-these lower-detailed meshes should be drawn. This approach is still used today
-when increased control is needed.
+Trước đây, level of detail trong game 3D thường liên quan đến việc tự tạo các mesh có mật độ hình học thấp hơn, sau đó cấu hình các ngưỡng khoảng cách tại đó những mesh có ít chi tiết hơn này sẽ được vẽ. Cách tiếp cận này vẫn được sử dụng ngày nay khi cần khả năng kiểm soát cao hơn.
 
-However, in projects that have a large amount of detailed 3D assets, setting up
-LOD manually can be a very time-consuming process. As a result, automatic mesh
-decimation and LOD configuration is becoming increasingly popular.
+Tuy nhiên, trong các dự án có một lượng lớn asset 3D chi tiết, việc thiết lập LOD thủ công có thể tốn rất nhiều thời gian. Do đó, việc tự động decimation mesh và cấu hình LOD ngày càng trở nên phổ biến.
 
-Godot provides a way to automatically generate less detailed meshes for LOD
-usage on import, then use those LOD meshes when needed automatically. This is
-completely transparent to the user.
-The `meshoptimizer <https://meshoptimizer.org/>`__ library is used for LOD mesh
-generation behind the scenes.
+Godot cung cấp cách tự động tạo các mesh ít chi tiết hơn để sử dụng cho LOD trong quá trình import, sau đó tự động sử dụng các mesh LOD này khi cần. Quy trình này hoàn toàn trong suốt đối với người dùng. Thư viện `meshoptimizer <https://meshoptimizer.org/>`__ được sử dụng để tạo mesh LOD ở phía sau.
 
-Mesh LOD works with any node that draws 3D meshes. This includes MeshInstance3D,
-MultiMeshInstance3D, GPUParticles3D and CPUParticles3D.
+Mesh LOD hoạt động với mọi node vẽ mesh 3D. Điều này bao gồm MeshInstance3D, MultiMeshInstance3D, GPUParticles3D và CPUParticles3D.
 
-Visual comparison
+So sánh trực quan
 -----------------
 
-Here is an example of LOD meshes generated on import. Lower detailed meshes
-will be used when the camera is far away from the object:
+Dưới đây là ví dụ về các mesh LOD được tạo trong quá trình import. Các mesh ít chi tiết hơn sẽ được sử dụng khi camera ở xa object:
 
 .. figure:: img/mesh_lod_comparison_shaded.png
    :align: center
@@ -51,7 +35,7 @@ will be used when the camera is far away from the object:
 
    From most detailed (left) to least detailed (right), shaded view
 
-Here's the same image with wireframe rendering to make the decimation easier to see:
+Đây là cùng hình ảnh đó với rendering dạng wireframe để dễ nhìn thấy quá trình decimation hơn:
 
 .. figure:: img/mesh_lod_comparison_wireframe.png
    :align: center
@@ -61,25 +45,16 @@ Here's the same image with wireframe rendering to make the decimation easier to 
 
 .. seealso::
 
-    If you need to manually configure level of detail with artist-created meshes,
-    use :ref:`doc_visibility_ranges` instead of automatic mesh LOD.
+    Nếu cần tự cấu hình level of detail bằng các mesh do artist tạo, hãy sử dụng :ref:`doc_visibility_ranges` thay vì mesh LOD tự động.
 
-Generating mesh LOD
--------------------
+Tạo mesh LOD
+------------
 
-By default, mesh LOD generation happens automatically for imported 3D scenes
-(glTF, .blend, Collada, FBX). Once LOD meshes are generated, they will
-automatically be used when rendering the scene. You don't need to configure
-anything manually.
+Theo mặc định, quá trình tạo mesh LOD diễn ra tự động đối với các scene 3D được import (glTF, .blend, Collada, FBX). Sau khi các mesh LOD được tạo, chúng sẽ tự động được sử dụng khi rendering scene. Bạn không cần cấu hình thủ công bất kỳ thứ gì.
 
-However, mesh LOD generation does **not** automatically happen for imported 3D
-meshes (OBJ). This is because OBJ files are not imported as full 3D scenes by
-default, but only as individual mesh resources to load into a MeshInstance3D
-node (or GPUParticles3D, CPUParticles3D, ...).
+Tuy nhiên, quá trình tạo mesh LOD **không** tự động diễn ra đối với các mesh 3D được import (OBJ). Điều này là vì theo mặc định, các file OBJ không được import dưới dạng scene 3D đầy đủ, mà chỉ được import dưới dạng các resource mesh riêng lẻ để load vào một node MeshInstance3D (hoặc GPUParticles3D, CPUParticles3D, ...).
 
-To make an OBJ file have mesh LOD generated for it, select it in the FileSystem
-dock, go to the Import dock, change its **Import As** option to **Scene** then
-click **Reimport**:
+Để tạo mesh LOD cho một file OBJ, hãy chọn file đó trong dock FileSystem, đi đến dock Import, thay đổi tùy chọn **Import As** thành **Scene**, sau đó nhấp vào **Reimport**:
 
 .. figure:: img/mesh_lod_obj_import.png
    :align: center
@@ -87,29 +62,20 @@ click **Reimport**:
 
    Changing the import type on an OBJ file in the Import dock
 
-This will require restarting the editor after clicking **Reimport**.
+Bạn sẽ cần khởi động lại editor sau khi nhấp vào **Reimport**.
 
 .. note::
 
-   The mesh LOD generation process is not perfect, and may occasionally
-   introduce rendering issues (especially in skinned meshes). Mesh LOD
-   generation can also take a while on complex meshes.
+   Quá trình tạo mesh LOD không hoàn hảo và đôi khi có thể gây ra các vấn đề về rendering (đặc biệt là với skinned mesh). Việc tạo mesh LOD cũng có thể mất một khoảng thời gian đối với các mesh phức tạp.
 
-   If mesh LOD causes a specific mesh to look broken, you can disable LOD
-   generation for it in the Import dock. This will also speed up resource
-   importing. This can be done globally in the 3D scene's import options, or on
-   a per-mesh basis using the Advanced Import Settings dialog.
+   Nếu mesh LOD khiến một mesh cụ thể trông bị lỗi, bạn có thể tắt việc tạo LOD cho mesh đó trong dock Import. Điều này cũng sẽ tăng tốc quá trình import resource. Bạn có thể thực hiện việc này trên toàn cục trong các tùy chọn import của scene 3D hoặc trên từng mesh bằng hộp thoại Advanced Import Settings.
 
-   See :ref:`Importing 3D scenes <doc_importing_3d_scenes_using_the_import_dock>`
-   for more information.
+   Xem :ref:`Importing 3D scenes <doc_importing_3d_scenes_using_the_import_dock>` để biết thêm thông tin.
 
-Comparing mesh LOD visuals and performance
+So sánh hình ảnh và hiệu suất của mesh LOD
 ------------------------------------------
 
-To disable mesh LOD in the editor for comparison purposes, use the
-**Disable Mesh LOD** advanced debug draw mode. This can be done using the menu
-in the top-left corner of the 3D viewport (labeled **Perspective** or
-**Orthogonal** depending on camera mode):
+Để tắt mesh LOD trong editor nhằm mục đích so sánh, hãy sử dụng chế độ advanced debug draw **Disable Mesh LOD**. Bạn có thể thực hiện việc này bằng menu ở góc trên bên trái của viewport 3D (được gắn nhãn **Perspective** hoặc **Orthogonal** tùy theo chế độ camera):
 
 .. figure:: img/mesh_lod_disable_lod.png
    :align: center
@@ -117,26 +83,16 @@ in the top-left corner of the 3D viewport (labeled **Perspective** or
 
    Disabling mesh LOD in the 3D viewport's top-left menu
 
-Enable **View Frame Time** in the same menu to view FPS in the top-right corner.
-Also enable **View Information** in the same menu to view the number of primitives
-(vertices + indices) rendered in the bottom-right corner.
+Bật **View Frame Time** trong cùng menu để xem FPS ở góc trên bên phải. Đồng thời bật **View Information** trong cùng menu để xem số primitive (vertex + index) được rendering ở góc dưới bên phải.
 
-If mesh LOD is working correctly in your scene and your camera is far away
-enough from the mesh, you should notice the number of drawn primitives
-decreasing and FPS increasing when mesh LOD is left enabled (unless you are
-CPU-bottlenecked).
+Nếu mesh LOD hoạt động đúng trong scene của bạn và camera đủ xa mesh, bạn sẽ nhận thấy số primitive được vẽ giảm xuống và FPS tăng lên khi mesh LOD được bật (trừ khi bạn bị giới hạn bởi CPU).
 
-To see mesh LOD decimation in action, change the debug draw mode to
-**Display Wireframe** in the menu specified above, then adjust the
-**Rendering > Mesh LOD > LOD Change > Threshold Pixels** project setting.
+Để xem quá trình decimation của mesh LOD hoạt động, hãy thay đổi chế độ debug draw thành **Display Wireframe** trong menu được chỉ định ở trên, sau đó điều chỉnh project setting **Rendering > Mesh LOD > LOD Change > Threshold Pixels**.
 
-Configuring mesh LOD performance and quality
---------------------------------------------
+Cấu hình hiệu suất và chất lượng của mesh LOD
+---------------------------------------------
 
-You can adjust how aggressive mesh LOD transitions should be in the root viewport
-by changing the **Rendering > Mesh LOD > LOD Change > Threshold Pixels** project
-setting. To change this value at runtime, set ``mesh_lod_threshold`` on the
-root viewport as follows:
+Bạn có thể điều chỉnh mức độ mạnh của các chuyển đổi mesh LOD trong viewport gốc bằng cách thay đổi project setting **Rendering > Mesh LOD > LOD Change > Threshold Pixels**. Để thay đổi giá trị này tại runtime, hãy đặt ``mesh_lod_threshold`` trên viewport gốc như sau:
 
 .. tabs::
  .. code-tab:: gdscript
@@ -147,55 +103,25 @@ root viewport as follows:
 
     GetTree().Root.MeshLodThreshold = 4.0f;
 
-Each viewport has its own ``mesh_lod_threshold`` property, which can be set
-independently from other viewports.
+Mỗi viewport có thuộc tính ``mesh_lod_threshold`` riêng, có thể được thiết lập độc lập với các viewport khác.
 
-The default mesh LOD threshold of 1 pixel is tuned to look *perceptually*
-lossless; it provides a significant performance gain with an unnoticeable loss
-in quality. Higher values will make LOD transitions happen sooner when the
-camera moves away, resulting in higher performance, but lower quality.
+Ngưỡng mesh LOD mặc định là 1 pixel được điều chỉnh để không thể nhận thấy sự suy giảm về mặt *perceptual*; nó mang lại mức tăng hiệu suất đáng kể mà không làm giảm chất lượng một cách dễ nhận thấy. Các giá trị cao hơn sẽ khiến chuyển đổi LOD diễn ra sớm hơn khi camera di chuyển ra xa, mang lại hiệu suất cao hơn nhưng chất lượng thấp hơn.
 
-If you need to perform per-object adjustments to mesh LOD, you can adjust how
-aggressive LOD transitions should be by adjusting the **LOD Bias** property on
-any node that inherits from GeometryInstance3D. Values *above* ``1.0`` will make
-LOD transitions happen later than usual (resulting in higher quality, but lower
-performance). Values *below* ``1.0`` will make LOD transitions happen sooner than
-usual (resulting in lower quality, but higher performance).
+Nếu cần điều chỉnh mesh LOD theo từng object, bạn có thể điều chỉnh mức độ mạnh của các chuyển đổi LOD bằng cách điều chỉnh thuộc tính **LOD Bias** trên bất kỳ node nào kế thừa từ GeometryInstance3D. Các giá trị *lớn hơn* ``1.0`` sẽ khiến chuyển đổi LOD diễn ra muộn hơn bình thường (mang lại chất lượng cao hơn nhưng hiệu suất thấp hơn). Các giá trị *nhỏ hơn* ``1.0`` sẽ khiến chuyển đổi LOD diễn ra sớm hơn bình thường (mang lại chất lượng thấp hơn nhưng hiệu suất cao hơn).
 
-Additionally, ReflectionProbe nodes have their own **Mesh LOD Threshold** property
-that can be adjusted to improve rendering performance when the reflection probe
-updates. This is especially important for ReflectionProbes that use the **Always**
-update mode.
+Ngoài ra, các node ReflectionProbe có thuộc tính **Mesh LOD Threshold** riêng, có thể được điều chỉnh để cải thiện hiệu suất rendering khi reflection probe được cập nhật. Điều này đặc biệt quan trọng đối với các ReflectionProbe sử dụng chế độ cập nhật **Always**.
 
 .. note::
 
-    When rendering the scene, mesh LOD selection uses a screen-space metric.
-    This means it automatically takes camera field of view and viewport
-    resolution into account. Higher camera FOV and lower viewport resolutions
-    will make LOD selection more aggressive; the engine will display heavily
-    decimated models earlier when the camera moves away.
+    Khi rendering scene, việc chọn mesh LOD sử dụng một metric trong không gian màn hình. Điều này có nghĩa là nó tự động tính đến field of view của camera và độ phân giải viewport. FOV camera cao hơn và độ phân giải viewport thấp hơn sẽ khiến việc chọn LOD mạnh hơn; engine sẽ hiển thị các model bị decimation nhiều hơn sớm hơn khi camera di chuyển ra xa.
 
-    As a result, unlike :ref:`doc_visibility_ranges`, you don't need to do
-    anything specific in your project to take camera FOV and viewport resolution
-    into account.
+    Do đó, không giống như :ref:`doc_visibility_ranges`, bạn không cần thực hiện bất kỳ thao tác cụ thể nào trong dự án để tính đến FOV camera và độ phân giải viewport.
 
-Using mesh LOD with MultiMesh and particles
+Sử dụng mesh LOD với MultiMesh và particles
 -------------------------------------------
 
-For LOD selection, the point of the node's :abbr:`AABB (Axis-Aligned Bounding Box)`
-that is the closest to the camera is used as a basis. This applies to any kind
-of mesh LOD (including for individual MeshInstance3D)s, but this has some implications
-for nodes that display multiple meshes at once, such as MultiMeshInstance3D,
-CPUParticles3D, and GPUParticles3D. Most importantly, this means that all
-instances will be drawn with the same LOD level at a given time.
+Để chọn LOD, điểm trên :abbr:`AABB (Axis-Aligned Bounding Box)` của node gần camera nhất sẽ được dùng làm cơ sở. Điều này áp dụng cho mọi loại mesh LOD (bao gồm cả các MeshInstance3D riêng lẻ), nhưng có một số hệ quả đối với các node hiển thị nhiều mesh cùng lúc, chẳng hạn như MultiMeshInstance3D, CPUParticles3D và GPUParticles3D. Quan trọng nhất là điều này có nghĩa tất cả instance sẽ được vẽ với cùng một mức LOD tại một thời điểm.
 
-If you are noticing incorrect LOD selection with GPUParticles3D, make sure
-the node's visibility AABB is configured by selecting the GPUParticles3D
-node and using **GPUParticles3D > Generate AABB** at the top of the 3D
-viewport.
+Nếu nhận thấy việc chọn LOD không chính xác với GPUParticles3D, hãy đảm bảo visibility AABB của node đã được cấu hình bằng cách chọn node GPUParticles3D và sử dụng **GPUParticles3D > Generate AABB** ở đầu viewport 3D.
 
-If you have instances in a MultiMesh that are far away from each other, they
-should be placed in a separate MultiMeshInstance3D node. Doing so will also
-improve rendering performance, as frustum and occlusion culling will be able to
-cull individual nodes (while they can't cull individual instances in a
-MultiMesh).
+Nếu các instance trong một MultiMesh nằm cách xa nhau, chúng nên được đặt trong một node MultiMeshInstance3D riêng. Làm như vậy cũng sẽ cải thiện hiệu suất rendering, vì frustum culling và occlusion culling có thể cull từng node riêng lẻ (trong khi chúng không thể cull từng instance riêng lẻ trong một MultiMesh).

@@ -1,77 +1,49 @@
 .. _doc_3d_text:
 
-3D text
-=======
+Văn bản 3D
+==========
 
-Introduction
-------------
+Giới thiệu
+----------
 
-In a project, there may be times when text needs to be created as part of a 3D
-scene and not just in the HUD. Godot provides 2 methods to do this: the
-Label3D node and the TextMesh *resource* for a MeshInstance3D node.
+Trong một project, đôi khi bạn cần tạo văn bản như một phần của cảnh 3D thay vì chỉ hiển thị trong HUD. Godot cung cấp 2 phương pháp để thực hiện việc này: node Label3D và *resource* TextMesh cho node MeshInstance3D.
 
-Additionally, Godot makes it possible to position Control nodes according to a
-3D point's position on the camera. This can be used as an alternative to "true"
-3D text in situations where Label3D and TextMesh aren't flexible enough.
+Ngoài ra, Godot cho phép định vị các node Control theo vị trí của một điểm 3D trên camera. Bạn có thể dùng cách này thay cho văn bản 3D "thực" trong những trường hợp Label3D và TextMesh không đủ linh hoạt.
 
 .. seealso::
 
-    You can see 3D text in action using the
-    `3D Labels and Texts demo project <https://github.com/godotengine/godot-demo-projects/tree/master/3d/labels_and_texts>`__.
+    Bạn có thể xem văn bản 3D hoạt động như thế nào trong `project demo 3D Labels and Texts <https://github.com/godotengine/godot-demo-projects/tree/master/3d/labels_and_texts>`__.
 
-    This page does **not** cover how to display a GUI scene within a 3D
-    environment. For information on how to achieve that, see the
-    `GUI in 3D <https://github.com/godotengine/godot-demo-projects/tree/master/viewport/gui_in_3d>`__
-    demo project.
+    Trang này **không** đề cập đến cách hiển thị một cảnh GUI trong môi trường 3D. Để biết cách thực hiện, hãy xem `project demo GUI in 3D <https://github.com/godotengine/godot-demo-projects/tree/master/viewport/gui_in_3d>`__.
 
 Label3D
 -------
 
 .. image:: img/label_3d.png
 
-Label3D behaves like a Label node, but in 3D space. Unlike the Label node, this
-Label3D node does **not** inherit properties of a GUI theme. However, its look
-remains customizable and uses the same font subresource as Control nodes
-(including support for :abbr:`MSDF (Multi-channel Signed Distance Font)` font
-rendering).
+Label3D hoạt động giống như node Label, nhưng trong không gian 3D. Không giống node Label, node Label3D này **không** kế thừa các thuộc tính của GUI theme. Tuy nhiên, giao diện của nó vẫn có thể tùy chỉnh và sử dụng cùng font subresource như các node Control (bao gồm hỗ trợ :abbr:`MSDF (Multi-channel Signed Distance Font)` font rendering).
 
-Advantages
-~~~~~~~~~~
+Ưu điểm
+~~~~~~~
 
-- Label3D is faster to generate than TextMesh. While both use a caching
-  mechanism to only render new glyphs once, Label3D will still be faster to
-  (re)generate, especially for long text. This can avoid stuttering during
-  gameplay on low-end CPUs or mobile.
-- Label3D can use bitmap fonts and dynamic fonts (with and without
+- Label3D tạo nhanh hơn TextMesh. Mặc dù cả hai đều sử dụng cơ chế caching để chỉ render các glyph mới một lần, Label3D vẫn tạo (hoặc tạo lại) nhanh hơn, đặc biệt với văn bản dài. Điều này có thể tránh hiện tượng giật trong khi chơi game trên CPU cấp thấp hoặc thiết bị di động. - Label3D có thể sử dụng bitmap font và dynamic font (có và không có
   :abbr:`MSDF (Multi-channel Signed Distance Font)` or mipmaps). This makes it
-  more flexible on that aspect compared to TextMesh, especially for rendering
-  fonts with self-intersecting outlines or colored fonts (emoji).
+  linh hoạt hơn về khía cạnh đó so với TextMesh, đặc biệt khi render font có đường viền tự giao nhau hoặc font có màu (emoji).
 
 .. seealso::
 
-    See :ref:`doc_gui_using_fonts` for guidelines on configuring font imports.
+    Xem :ref:`doc_gui_using_fonts` để biết hướng dẫn về cách cấu hình quá trình import font.
 
-Limitations
-~~~~~~~~~~~
+Hạn chế
+~~~~~~~
 
-By default, Label3D has limited interaction with a 3D environment. It can be
-occluded by geometry and lit by light sources if the **Shaded** flag is enabled.
-However, it will not cast shadows even if **Cast Shadow** is set to **On** in
-the Label3D's GeometryInstance3D properties. This is because the node internally
-generates a quad mesh (one glyph per quad) with transparent textures and has the
-same limitations as Sprite3D. Transparency sorting issues can also become apparent
-when several Label3Ds overlap, especially if they have outlines.
+Theo mặc định, Label3D có tương tác hạn chế với môi trường 3D. Nó có thể bị che khuất bởi hình học và được chiếu sáng bởi các nguồn sáng nếu bật cờ **Shaded**. Tuy nhiên, nó sẽ không đổ bóng ngay cả khi **Cast Shadow** được đặt thành **On** trong các thuộc tính GeometryInstance3D của Label3D. Điều này là do node này tạo nội bộ một quad mesh (mỗi glyph tương ứng với một quad) cùng các texture trong suốt và có những hạn chế giống như Sprite3D. Các vấn đề về sắp xếp transparency cũng có thể xuất hiện khi nhiều Label3D chồng lên nhau, đặc biệt nếu chúng có đường viền.
 
-This can be mitigated by setting the Label3D's transparency mode to **Alpha
-Cut**, at the cost of less smooth text rendering. The **Opaque Pre-Pass**
-transparency mode can preserve text smoothness while allowing the Label3D to
-cast shadows, but some transparency sorting issues will remain.
+Bạn có thể giảm thiểu vấn đề này bằng cách đặt transparency mode của Label3D thành **Alpha Cut**, đổi lại chất lượng render văn bản sẽ kém mượt hơn. Transparency mode **Opaque Pre-Pass** có thể duy trì độ mượt của văn bản đồng thời cho phép Label3D đổ bóng, nhưng một số vấn đề về sắp xếp transparency vẫn sẽ còn tồn tại.
 
-See :ref:`Transparency sorting <doc_3d_rendering_limitations_transparency_sorting>`
-section in the 3D rendering limitations page for more information.
+Xem phần :ref:`Transparency sorting <doc_3d_rendering_limitations_transparency_sorting>` trong trang về các hạn chế của 3D rendering để biết thêm thông tin.
 
-Text rendering quality can also suffer when the Label3D is viewed at a distance. To improve
-text rendering quality, :ref:`enable mipmaps on the font <doc_using_fonts_mipmaps>` or
+Chất lượng rendering văn bản cũng có thể bị ảnh hưởng khi Label3D được nhìn từ xa. Để cải thiện chất lượng rendering văn bản, :ref:`enable mipmaps on the font <doc_using_fonts_mipmaps>` hoặc
 :ref:`switch the font to use MSDF rendering <doc_using_fonts_msdf>`.
 
 TextMesh
@@ -79,95 +51,50 @@ TextMesh
 
 .. image:: img/text_mesh.png
 
-The TextMesh resource has similarities to Label3D. They both display text in a
-3D scene, and will use the same font subresource. However, instead of generating
-transparent quads, TextMesh generates 3D geometry that represents the glyphs'
-contours and has the properties of a mesh. As a result, a TextMesh is shaded by
-default and automatically casts shadows onto the environment. A TextMesh can
-also have a material applied to it (including custom shaders).
+TextMesh resource có một số điểm tương đồng với Label3D. Cả hai đều hiển thị văn bản trong một cảnh 3D và sử dụng cùng font subresource. Tuy nhiên, thay vì tạo các quad trong suốt, TextMesh tạo hình học 3D biểu diễn các đường bao của glyph và có các thuộc tính của một mesh. Do đó, TextMesh được shaded theo mặc định và tự động đổ bóng lên môi trường. TextMesh cũng có thể được áp dụng material (bao gồm custom shader).
 
-Here is an example of a texture and how it's applied to the mesh. You can use
-the texture below as a reference for the generated mesh's UV map:
+Dưới đây là một ví dụ về texture và cách texture đó được áp dụng vào mesh. Bạn có thể sử dụng texture bên dưới làm tham chiếu cho UV map của mesh được tạo:
 
 .. image:: img/text_mesh_texture.png
 
 .. image:: img/text_mesh_textured.png
 
-Advantages
-~~~~~~~~~~
+Ưu điểm
+~~~~~~~
 
-TextMesh has a few advantages over Label3D:
+TextMesh có một số ưu điểm so với Label3D:
 
-- TextMesh can use a texture to modify text color on a per-side basis.
-- TextMesh geometry can have actual depth to it, giving glyphs a 3D look.
-- TextMesh can use custom shaders, unlike Label3D.
+- TextMesh có thể sử dụng texture để thay đổi màu văn bản theo từng mặt. - Hình học TextMesh có thể có độ sâu thực, tạo cho glyph giao diện 3D. - TextMesh có thể sử dụng custom shader, không giống Label3D.
 
-Limitations
-~~~~~~~~~~~
+Hạn chế
+~~~~~~~
 
-There are some limitations to TextMesh:
+TextMesh có một số hạn chế:
 
-- No built-in outline support, unlike Label3D. This can be simulated using custom
-  shaders though.
-- Only dynamic fonts are supported (``.ttf``, ``.otf``, ``.woff``, ``.woff2``).
-  Bitmap fonts in the ``.fnt`` or ``.font`` formats are **not** supported.
-- Fonts with self-intersecting outlines will not render correctly.
-  If you notice rendering issues on fonts downloaded from websites such as
-  Google Fonts, try downloading the font from the font author's official
-  website instead.
-- Antialiasing the text rendering requires a full-scene antialiasing method to
-  be enabled such as MSAA, FXAA and temporal antialiasing (TAA). If no
-  antialiasing method is enabled, text will appear grainy, especially at a
-  distance. See :ref:`doc_3d_antialiasing` for more information.
+- Không có hỗ trợ outline tích hợp sẵn, không giống Label3D. Tuy nhiên, bạn có thể mô phỏng điều này bằng custom shader. - Chỉ dynamic font được hỗ trợ (``.ttf``, ``.otf``, ``.woff``, ``.woff2``). Bitmap font ở định dạng ``.fnt`` hoặc ``.font`` **không** được hỗ trợ. - Font có đường viền tự giao nhau sẽ không được render chính xác. Nếu bạn nhận thấy vấn đề rendering với các font tải xuống từ những website như Google Fonts, hãy thử tải font từ website chính thức của tác giả font. - Để antialiasing cho việc rendering văn bản, cần bật một phương pháp antialiasing cho toàn cảnh, chẳng hạn như MSAA, FXAA và temporal antialiasing (TAA). Nếu không bật phương pháp antialiasing nào, văn bản sẽ có dạng nhiễu, đặc biệt khi nhìn từ xa. Xem :ref:`doc_3d_antialiasing` để biết thêm thông tin.
 
-Projected Label node (or any other Control)
--------------------------------------------
+Node Label được chiếu (hoặc bất kỳ Control nào khác)
+----------------------------------------------------
 
-There is a last solution that is more complex to set up, but provides the most
-flexibility: projecting a 2D node onto 3D space. This can be achieved using the
-return value of :ref:`unproject_position<class_Camera3D_method_unproject_position>`
-method on a Camera3D node in a script's ``_process()`` function. This return value
-should then be used to set the ``position`` property of a Control node.
+Có một giải pháp cuối cùng phức tạp hơn khi thiết lập nhưng mang lại nhiều tính linh hoạt nhất: chiếu một node 2D lên không gian 3D. Bạn có thể thực hiện việc này bằng cách sử dụng giá trị trả về của method :ref:`unproject_position<class_Camera3D_method_unproject_position>` trên node Camera3D trong hàm ``_process()`` của một script. Sau đó, dùng giá trị trả về này để đặt thuộc tính ``position`` của một node Control.
 
-See the `3D waypoints <https://github.com/godotengine/godot-demo-projects/tree/master/3d/waypoints>`__
-demo for an example of this.
+Xem demo `3D waypoints <https://github.com/godotengine/godot-demo-projects/tree/master/3d/waypoints>`__ để biết ví dụ về cách thực hiện.
 
-Advantages
-~~~~~~~~~~
+Ưu điểm
+~~~~~~~
 
-- Any Control node can be used, including Label, RichTextLabel or even nodes such
-  as Button. This allows for powerful formatting and GUI interaction.
-- The script-based approach allows for complete freedom in positioning.
-  For example, this makes it considerably easier to pin Controls to the screen's
-  edges when they go off-screen (for in-game 3D markers).
-- Control theming is obeyed. This allows for easier customization that globally
-  applies to the project.
+- Có thể sử dụng bất kỳ node Control nào, bao gồm Label, RichTextLabel hoặc thậm chí các node như Button. Điều này cho phép định dạng mạnh mẽ và tương tác GUI. - Cách tiếp cận dựa trên script cho phép hoàn toàn tự do trong việc định vị. Ví dụ, cách này giúp ghim Control vào các cạnh màn hình dễ dàng hơn đáng kể khi chúng đi ra ngoài màn hình (dùng cho các marker 3D trong game). - Tuân theo Control theming. Điều này giúp tùy chỉnh dễ dàng hơn và áp dụng trên toàn project.
 
-Limitations
-~~~~~~~~~~~
+Hạn chế
+~~~~~~~
 
-- Projected Controls cannot be occluded by 3D geometry in any way. You can use a
-  RayCast to fully hide the control if its target position is occluded by a
-  collider, but this doesn't allow for partially hiding the control behind a
-  wall.
-- Changing text size depending on distance by adjusting the Control's ``scale``
-  property is possible, but it needs to be done manually. Label3D and TextMesh
-  automatically take care of this, at the cost of less flexibility (can't set a
-  minimum/maximum text size in pixels).
-- Handling resolution and aspect ratio changes must be taken into account in the
-  script, which can be challenging.
+- Projected Control không thể bị che khuất bởi hình học 3D theo bất kỳ cách nào. Bạn có thể dùng RayCast để ẩn hoàn toàn control nếu vị trí mục tiêu của nó bị collider che khuất, nhưng cách này không cho phép ẩn một phần control phía sau tường. - Có thể thay đổi kích thước văn bản theo khoảng cách bằng cách điều chỉnh thuộc tính ``scale`` của Control, nhưng bạn phải tự thực hiện. Label3D và TextMesh tự động xử lý việc này, đổi lại chúng kém linh hoạt hơn (không thể đặt kích thước văn bản tối thiểu/tối đa theo pixel). - Script cần xử lý các thay đổi về resolution và aspect ratio, điều này có thể gây khó khăn.
 
-Should I use Label3D, TextMesh or a projected Control?
-------------------------------------------------------
+Nên sử dụng Label3D, TextMesh hay Control được chiếu?
+-----------------------------------------------------
 
-In most scenarios, Label3D is recommended as it's easier to set up and provides
-higher rendering quality (especially if 3D antialiasing is disabled).
+Trong hầu hết các trường hợp, Label3D được khuyến nghị vì dễ thiết lập hơn và cung cấp chất lượng rendering cao hơn (đặc biệt khi 3D antialiasing bị tắt).
 
-For advanced use cases, TextMesh is more flexible as it allows styling the text
-with custom shaders. Custom shaders allow for modifying the final geometry, such
-as curving the text along a surface. Since the text is actual 3D geometry, the
-text can optionally have depth to it and can also contribute to global
-illumination.
+Đối với các trường hợp sử dụng nâng cao, TextMesh linh hoạt hơn vì cho phép tạo kiểu cho văn bản bằng custom shader. Custom shader cho phép sửa đổi hình học cuối cùng, chẳng hạn như uốn cong văn bản dọc theo một bề mặt. Vì văn bản là hình học 3D thực, bạn có thể tùy chọn tạo độ sâu cho văn bản và văn bản cũng có thể đóng góp vào global illumination.
 
-If you need features such as BBCode or Control theming support, then using a projected
-RichTextLabel node is the only way to go.
+Nếu bạn cần các tính năng như hỗ trợ BBCode hoặc Control theming, thì sử dụng một node RichTextLabel được chiếu là lựa chọn duy nhất.

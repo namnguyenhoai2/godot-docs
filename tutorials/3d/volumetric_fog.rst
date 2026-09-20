@@ -1,234 +1,101 @@
 .. _doc_volumetric_fog:
 
-Volumetric fog and fog volumes
-==============================
+Sương mù thể tích và các thể tích sương mù
+==========================================
 
 .. note::
 
-    Volumetric fog is only supported in the Forward+ renderer, not the Mobile or
-    Compatibility renderers.
+    Sương mù thể tích chỉ được hỗ trợ trong renderer Forward+, không được hỗ trợ trong renderer Mobile hoặc Compatibility.
 
-As described in :ref:`doc_environment_and_post_processing`, Godot supports
-various visual effects including two types of fog: traditional (non-volumetric)
-fog and volumetric fog. Traditional fog affects the entire scene at once and
-cannot be customized with :ref:`doc_fog_shader`.
+Như được mô tả trong :ref:`doc_environment_and_post_processing`, Godot hỗ trợ nhiều hiệu ứng hình ảnh, bao gồm hai loại sương mù: sương mù truyền thống (không thể tích) và sương mù thể tích. Sương mù truyền thống ảnh hưởng đến toàn bộ scene cùng lúc và không thể tùy chỉnh bằng :ref:`doc_fog_shader`.
 
-Volumetric fog can be used at the same time as non-volumetric fog if desired.
+Có thể sử dụng sương mù thể tích cùng lúc với sương mù không thể tích nếu muốn.
 
-On this page, you'll learn:
+Trên trang này, bạn sẽ học:
 
-- How to set up volumetric fog in Godot.
-- What fog volumes are and how they differ from "global" volumetric fog.
+- Cách thiết lập sương mù thể tích trong Godot. - FogVolume là gì và chúng khác với sương mù thể tích "toàn cục" như thế nào.
 
 .. seealso::
 
-    You can see how volumetric fog works in action using the
-    `Volumetric Fog demo project <https://github.com/godotengine/godot-demo-projects/tree/master/3d/volumetric_fog>`__.
+    Bạn có thể xem sương mù thể tích hoạt động như thế nào qua `dự án demo Volumetric Fog <https://github.com/godotengine/godot-demo-projects/tree/master/3d/volumetric_fog>`__.
 
-Here is a comparison between traditional fog (which does not interact with lighting)
-and volumetric fog, which is able to interact with lighting:
+Dưới đây là so sánh giữa sương mù truyền thống (không tương tác với ánh sáng) và sương mù thể tích, có thể tương tác với ánh sáng:
 
 .. image:: img/volumetric_fog_comparison.png
 
-Volumetric fog properties
--------------------------
+Các thuộc tính của sương mù thể tích
+------------------------------------
 
-After enabling volumetric fog in the WorldEnvironment node's Environment
-resource, you can edit the following properties:
+Sau khi bật sương mù thể tích trong resource Environment của node WorldEnvironment, bạn có thể chỉnh sửa các thuộc tính sau:
 
-- **Density:** The base *exponential* density of the volumetric fog. Set this to
-  the lowest density you want to have globally. FogVolumes can be used to add to
-  or subtract from this density in specific areas. A value of ``0.0`` disables
-  global volumetric fog while allowing FogVolumes to display volumetric fog in
-  specific areas. Fog rendering is exponential as in real life.
-- **Albedo:** The Color of the volumetric fog when interacting with lights. Mist
-  and fog have an albedo close to white (``Color(1, 1, 1, 1)``) while smoke
-  has a darker albedo.
-- **Emission:** The emitted light from the volumetric fog. Even with emission,
-  volumetric fog will not cast light onto other surfaces. Emission is useful to
-  establish an ambient color. As the volumetric fog effect uses
-  single-scattering only, fog tends to need a little bit of emission to soften
-  the harsh shadows.
-- **Emission Energy:** The brightness of the emitted light from the volumetric
-  fog.
-- **GI Inject:** Scales the strength of Global Illumination used in the
-  volumetric fog's albedo color. A value of ``0.0`` means that Global
-  Illumination will not impact the volumetric fog. This has a small performance
-  cost when set above ``0.0``.
-- **Anisotropy:** The direction of scattered light as it goes through the
-  volumetric fog. A value close to ``1.0`` means almost all light is scattered
-  forward. A value close to ``0.0`` means light is scattered equally in all
-  directions. A value close to ``-1.0`` means light is scattered mostly
-  backward. Fog and mist scatter light slightly forward, while smoke scatters
-  light equally in all directions.
-- **Length:** The distance over which the volumetric fog is computed. Increase
-  to compute fog over a greater range, decrease to add more detail when a long
-  range is not needed. For best quality fog, keep this as low as possible.
-- **Detail Spread:** The distribution of size down the length of the froxel
-  buffer. A higher value compresses the froxels closer to the camera and places
-  more detail closer to the camera.
-- **Ambient Inject:** Scales the strength of ambient light used in the
-  volumetric fog. A value of ``0.0`` means that ambient light will not impact
-  the volumetric fog. This has a small performance cost when set above ``0.0``.
-- **Sky Affect:** Controls how much volumetric fog should be drawn onto the
-  background sky. If set to ``0.0``, volumetric fog won't affect sky rendering
-  at all (including FogVolumes).
+- **Density:** Mật độ *exponential* cơ sở của sương mù thể tích. Đặt giá trị này thành mật độ thấp nhất mà bạn muốn áp dụng trên toàn cục. Có thể sử dụng FogVolumes để cộng hoặc trừ mật độ này trong các khu vực cụ thể. Giá trị ``0.0`` sẽ tắt sương mù thể tích toàn cục nhưng vẫn cho phép FogVolumes hiển thị sương mù thể tích trong các khu vực cụ thể. Việc render sương mù có tính exponential giống như trong thực tế. - **Albedo:** Color của sương mù thể tích khi tương tác với ánh sáng. Sương và mù có albedo gần với màu trắng (``Color(1, 1, 1, 1)``), trong khi khói có albedo tối hơn. - **Emission:** Ánh sáng phát ra từ sương mù thể tích. Ngay cả khi có emission, sương mù thể tích sẽ không chiếu sáng lên các bề mặt khác. Emission hữu ích để thiết lập màu môi trường. Vì hiệu ứng sương mù thể tích chỉ sử dụng single-scattering, sương mù thường cần một chút emission để làm mềm các bóng đổ gắt. - **Emission Energy:** Độ sáng của ánh sáng phát ra từ sương mù thể tích. - **GI Inject:** Điều chỉnh cường độ của Global Illumination được sử dụng trong màu albedo của sương mù thể tích. Giá trị ``0.0`` có nghĩa là Global Illumination sẽ không ảnh hưởng đến sương mù thể tích. Điều này gây ra một chi phí hiệu năng nhỏ khi được đặt cao hơn ``0.0``. - **Anisotropy:** Hướng của ánh sáng tán xạ khi truyền qua sương mù thể tích. Giá trị gần ``1.0`` có nghĩa là gần như toàn bộ ánh sáng bị tán xạ về phía trước. Giá trị gần ``0.0`` có nghĩa là ánh sáng được tán xạ đồng đều theo mọi hướng. Giá trị gần ``-1.0`` có nghĩa là ánh sáng chủ yếu bị tán xạ về phía sau. Sương và mù tán xạ ánh sáng hơi hướng về phía trước, trong khi khói tán xạ ánh sáng đồng đều theo mọi hướng. - **Length:** Khoảng cách mà sương mù thể tích được tính toán. Tăng giá trị để tính sương mù trên phạm vi lớn hơn, giảm giá trị để có thêm chi tiết khi không cần phạm vi xa. Để có chất lượng sương mù tốt nhất, hãy giữ giá trị này thấp nhất có thể. - **Detail Spread:** Phân bố kích thước dọc theo chiều dài của bộ đệm froxel. Giá trị cao hơn sẽ nén các froxel lại gần camera hơn và đặt nhiều chi tiết hơn ở gần camera. - **Ambient Inject:** Điều chỉnh cường độ của ánh sáng môi trường được sử dụng trong sương mù thể tích. Giá trị ``0.0`` có nghĩa là ánh sáng môi trường sẽ không ảnh hưởng đến sương mù thể tích. Điều này gây ra một chi phí hiệu năng nhỏ khi được đặt cao hơn ``0.0``. - **Sky Affect:** Kiểm soát mức độ sương mù thể tích được vẽ lên bầu trời nền. Nếu đặt thành ``0.0``, sương mù thể tích sẽ hoàn toàn không ảnh hưởng đến việc render bầu trời (bao gồm cả FogVolumes).
 
-Two additional properties are offered in the **Temporal Reprojection** section:
+Có thêm hai thuộc tính trong phần **Temporal Reprojection**:
 
-- **Temporal Reprojection > Enabled:** Enables temporal reprojection in the
-  volumetric fog. Temporal reprojection blends the current frame's volumetric
-  fog with the last frame's volumetric fog to smooth out jagged edges. The
-  performance cost is minimal, however it does lead to moving FogVolumes and
-  Light3Ds "ghosting" and leaving a trail behind them. When temporal
-  reprojection is enabled, try to avoid moving FogVolumes or Light3Ds too fast.
-  Short-lived dynamic lighting effects should have **Volumetric Fog Energy** set
-  to ``0.0`` to avoid ghosting.
-- **Temporal Reprojection > Amount:** The amount by which to blend the last
-  frame with the current frame. A higher number results in smoother volumetric
-  fog, but makes "ghosting" much worse. A lower value reduces ghosting but can
-  result in the per-frame temporal jitter becoming visible.
+- **Temporal Reprojection > Enabled:** Bật temporal reprojection trong sương mù thể tích. Temporal reprojection trộn sương mù thể tích của frame hiện tại với sương mù thể tích của frame trước để làm mượt các cạnh răng cưa. Chi phí hiệu năng là tối thiểu, tuy nhiên điều này khiến các FogVolume và Light3D đang di chuyển bị "bóng ma" và để lại vệt phía sau. Khi bật temporal reprojection, hãy cố gắng tránh di chuyển FogVolume hoặc Light3D quá nhanh. Các hiệu ứng chiếu sáng động tồn tại trong thời gian ngắn nên đặt **Volumetric Fog Energy** thành ``0.0`` để tránh bóng ma. - **Temporal Reprojection > Amount:** Mức độ trộn frame trước với frame hiện tại. Giá trị cao hơn tạo ra sương mù thể tích mượt hơn, nhưng khiến hiện tượng "bóng ma" nghiêm trọng hơn nhiều. Giá trị thấp hơn làm giảm bóng ma nhưng có thể khiến hiện tượng jitter theo thời gian giữa các frame trở nên nhìn thấy được.
 
 .. note::
 
-    Unlike non-volumetric fog, volumetric fog has a *finite* range. This means
-    volumetric fog cannot entirely cover a large world, as it will eventually
-    stop being rendered in the distance.
+    Không giống sương mù không thể tích, sương mù thể tích có phạm vi *hữu hạn*. Điều này có nghĩa là sương mù thể tích không thể bao phủ hoàn toàn một thế giới lớn, vì cuối cùng nó sẽ ngừng được render ở khoảng cách xa.
 
-    If you wish to hide distant areas from the player, it's recommended to
-    enable both non-volumetric fog and volumetric fog at the same time, and
-    adjust their density accordingly.
+    Nếu bạn muốn ẩn các khu vực xa khỏi người chơi, nên bật cả sương mù không thể tích và sương mù thể tích cùng lúc, rồi điều chỉnh mật độ của chúng cho phù hợp.
 
-Light interaction with volumetric fog
--------------------------------------
+Tương tác của ánh sáng với sương mù thể tích
+--------------------------------------------
 
-To simulate fog light scattering behavior in real life, all light types will
-interact with volumetric fog. How much each light will affect volumetric fog can
-be adjusted using the **Volumetric Fog Energy** property on each light. Enabling
-shadows on a light will also make those shadows visible on volumetric fog.
+Để mô phỏng hành vi tán xạ ánh sáng của sương mù trong thực tế, mọi loại ánh sáng sẽ tương tác với sương mù thể tích. Có thể điều chỉnh mức độ ảnh hưởng của từng ánh sáng đến sương mù thể tích bằng thuộc tính **Volumetric Fog Energy** trên mỗi ánh sáng. Việc bật bóng đổ trên một ánh sáng cũng sẽ làm cho các bóng đổ đó hiển thị trên sương mù thể tích.
 
-If fog light interaction is not desired for artistic reasons, this can be
-globally disabled by setting **Volumetric Fog > Albedo** to a pure black color
-in the Environment resource. Fog light interaction can also be disabled for
-specific lights by setting its **Volumetric Fog Energy** to ``0``. Doing so will
-also improve performance slightly by excluding the light from volumetric fog
-computations.
+Nếu không muốn ánh sáng tương tác với sương mù vì lý do nghệ thuật, bạn có thể tắt tính năng này trên toàn cục bằng cách đặt **Volumetric Fog > Albedo** thành màu đen thuần trong resource Environment. Bạn cũng có thể tắt tương tác của ánh sáng với sương mù cho từng ánh sáng cụ thể bằng cách đặt **Volumetric Fog Energy** của ánh sáng đó thành ``0``. Việc này cũng cải thiện hiệu năng một chút bằng cách loại trừ ánh sáng khỏi các phép tính sương mù thể tích.
 
-Using volumetric fog as a volumetric lighting solution
-------------------------------------------------------
+Sử dụng sương mù thể tích như một giải pháp chiếu sáng thể tích
+---------------------------------------------------------------
 
-While not physically accurate, it is possible to tune volumetric fog's settings
-to work as volumetric *lighting* solution. This means that unlit parts of the
-environment will not be darkened anymore by fog, but light will still be able to
-make fog brighter in specific areas.
+Mặc dù không chính xác về mặt vật lý, bạn có thể tinh chỉnh các thiết lập của sương mù thể tích để sử dụng nó như một giải pháp *chiếu sáng* thể tích. Điều này có nghĩa là các phần không được chiếu sáng của môi trường sẽ không còn bị sương mù làm tối, nhưng ánh sáng vẫn có thể làm sương mù sáng hơn ở các khu vực cụ thể.
 
-This can be done by setting volumetric fog density to the lowest permitted value
-*greater than zero* (``0.0001``), then increasing the **Volumetric Fog Energy**
-property on lights to much higher values than the default to compensate. Values
-between ``200.0`` and ``5000.0`` usually work well for this.
+Bạn có thể thực hiện điều này bằng cách đặt mật độ sương mù thể tích thành giá trị thấp nhất được phép *lớn hơn không* (``0.0001``), sau đó tăng thuộc tính **Volumetric Fog Energy** trên các ánh sáng lên các giá trị cao hơn nhiều so với mặc định để bù lại. Các giá trị từ ``200.0`` đến ``5000.0`` thường hoạt động tốt cho mục đích này.
 
 .. image:: img/volumetric_fog_lighting.png
 
-Balancing performance and quality
----------------------------------
+Cân bằng hiệu năng và chất lượng
+--------------------------------
 
-There are a few project settings available to adjust volumetric fog performance
-and quality:
+Có một số project settings giúp điều chỉnh hiệu năng và chất lượng của sương mù thể tích:
 
-- **Rendering > Environment > Volumetric Fog > Volume Size:** Base size used to
-  determine size of froxel buffer in the camera X-axis and Y-axis. The final
-  size is scaled by the aspect ratio of the screen, so actual values may differ
-  from what is set. Set a larger size for more detailed fog, set a smaller size
-  for better performance.
-- **Rendering > Environment > Volumetric Fog > Volume Depth:** Number of slices
-  to use along the depth of the froxel buffer for volumetric fog. A lower number
-  will be more efficient, but may result in artifacts appearing during camera
-  movement.
-- **Rendering > Environment > Volumetric Fog > Use Filter:** Enables filtering
-  of the volumetric fog effect prior to integration. This substantially blurs
-  the fog which reduces fine details, but also smooths out harsh edges and
-  aliasing artifacts. Disable when more detail is required.
+- **Rendering > Environment > Volumetric Fog > Volume Size:** Kích thước cơ sở được sử dụng để xác định kích thước của bộ đệm froxel trên trục X và trục Y của camera. Kích thước cuối cùng được điều chỉnh theo aspect ratio của màn hình, vì vậy các giá trị thực tế có thể khác với giá trị được đặt. Đặt kích thước lớn hơn để có sương mù chi tiết hơn, hoặc đặt kích thước nhỏ hơn để có hiệu năng tốt hơn. - **Rendering > Environment > Volumetric Fog > Volume Depth:** Số lượng lát cắt được sử dụng dọc theo chiều sâu của bộ đệm froxel cho sương mù thể tích. Số lượng thấp hơn sẽ hiệu quả hơn, nhưng có thể khiến các artifact xuất hiện khi camera di chuyển. - **Rendering > Environment > Volumetric Fog > Use Filter:** Bật tính năng lọc hiệu ứng sương mù thể tích trước khi tích hợp. Tính năng này làm mờ sương mù đáng kể, giúp giảm các chi tiết nhỏ nhưng cũng làm mượt các cạnh gắt và artifact aliasing. Hãy tắt tính năng này khi cần nhiều chi tiết hơn.
 
 .. note::
 
-    Volumetric fog can cause banding to appear on the viewport, especially at
-    higher density levels. See :ref:`doc_3d_rendering_limitations_color_banding`
-    for guidance on reducing banding.
+    Sương mù thể tích có thể gây ra hiện tượng banding trên viewport, đặc biệt ở các mức mật độ cao hơn. Xem :ref:`doc_3d_rendering_limitations_color_banding` để biết hướng dẫn giảm banding.
 
-Using fog volumes for local volumetric fog
-------------------------------------------
+Sử dụng fog volume cho sương mù thể tích cục bộ
+-----------------------------------------------
 
-Sometimes, you want fog to be constrained to specific areas. Conversely, you may
-want to have global volumetric fog, but fog should be excluded from certain
-areas. Both approaches can be followed using FogVolume nodes.
+Đôi khi, bạn muốn giới hạn sương mù trong các khu vực cụ thể. Ngược lại, bạn có thể muốn có sương mù thể tích toàn cục, nhưng loại trừ sương mù khỏi một số khu vực nhất định. Có thể thực hiện cả hai cách bằng các node FogVolume.
 
-Here's a quick start guide to using FogVolumes:
+Dưới đây là hướng dẫn bắt đầu nhanh để sử dụng FogVolume:
 
-- Make sure **Volumetric Fog** is enabled in the Environment properties. If
-  global volumetric fog is undesired, set its **Density** to ``0.0``.
-- Create a FogVolume node.
-- Assign a new FogMaterial to the FogVolume node's **Material** property.
-- In the FogMaterial, set **Density** to a positive value to increase density
-  within the FogVolume, or a negative value to subtract the density from global
-  volumetric fog.
-- Configure the FogVolume's extents and shape as needed.
+- Hãy đảm bảo **Volumetric Fog** được bật trong các thuộc tính Environment. Nếu không muốn có sương mù thể tích toàn cục, hãy đặt **Density** của nó thành ``0.0``. - Tạo một node FogVolume. - Gán một FogMaterial mới cho thuộc tính **Material** của node FogVolume. - Trong FogMaterial, đặt **Density** thành giá trị dương để tăng mật độ bên trong FogVolume, hoặc giá trị âm để trừ mật độ khỏi sương mù thể tích toàn cục. - Cấu hình phạm vi và hình dạng của FogVolume theo nhu cầu.
 
 .. note::
 
-    Thin fog volumes may appear to flicker when the camera moves or rotates.
-    This can be alleviated by increasing the
-    **Rendering > Environment > Volumetric Fog > Volume Depth** project setting
-    (at a performance cost) or by decreasing **Length** in the Environment
-    volumetric fog properties (at no performance cost, but at the cost of lower
-    fog range). Alternatively, the FogVolume can be made thicker and use a lower
-    density in the **Material**.
+    Các fog volume mỏng có thể nhấp nháy khi camera di chuyển hoặc xoay. Có thể giảm hiện tượng này bằng cách tăng project setting **Rendering > Environment > Volumetric Fog > Volume Depth** (đánh đổi bằng hiệu năng) hoặc giảm **Length** trong các thuộc tính sương mù thể tích của Environment (không ảnh hưởng đến hiệu năng, nhưng làm giảm phạm vi sương mù). Ngoài ra, có thể làm FogVolume dày hơn và sử dụng mật độ thấp hơn trong **Material**.
 
-FogVolume properties
---------------------
+Các thuộc tính của FogVolume
+----------------------------
 
-- **Extents:** The size of the FogVolume when **Shape** is **Ellipsoid**,
-  **Cone**, **Cylinder** or **Box**. If **Shape** is **Cone** or **Cylinder**,
-  the cone/cylinder will be adjusted to fit within the extents. Non-uniform
-  scaling of cone/cylinder shapes via the **Extents** property is not supported,
-  but you can scale the FogVolume node instead.
-- **Shape:** The shape of the FogVolume. This can be set to **Ellipsoid**,
-  **Cone**, **Cylinder**, **Box** or **World** (acts as global volumetric fog).
-- **Material:** The material used by the FogVolume. Can be either a
-  built-in FogMaterial or a custom ShaderMaterial (:ref:`doc_fog_shader`).
+- **Extents:** Kích thước của FogVolume khi **Shape** là **Ellipsoid**, **Cone**, **Cylinder** hoặc **Box**. Nếu **Shape** là **Cone** hoặc **Cylinder**, hình nón/hình trụ sẽ được điều chỉnh để vừa bên trong các extents. Không hỗ trợ scale không đồng nhất các hình nón/hình trụ thông qua thuộc tính **Extents**, nhưng bạn có thể scale node FogVolume thay thế. - **Shape:** Hình dạng của FogVolume. Có thể đặt thành **Ellipsoid**, **Cone**, **Cylinder**, **Box** hoặc **World** (hoạt động như sương mù thể tích toàn cục). - **Material:** Material được FogVolume sử dụng. Có thể là FogMaterial dựng sẵn hoặc ShaderMaterial tùy chỉnh (:ref:`doc_fog_shader`).
 
-After choosing **New FogMaterial** in the **Material** property, you can adjust
-the following properties in FogMaterial:
+Sau khi chọn **New FogMaterial** trong thuộc tính **Material**, bạn có thể điều chỉnh các thuộc tính sau trong FogMaterial:
 
-- **Density:** The density of the FogVolume. Denser objects are more opaque, but
-  may suffer from under-sampling artifacts that look like stripes. Negative
-  values can be used to subtract fog from other FogVolumes or global volumetric
-  fog.
-- **Albedo:** The single-scattering Color of the FogVolume. Internally, member
-  albedo is converted into single-scattering, which is additively blended with
-  other FogVolumes and global volumetric fog's **Albedo**.
-- **Emission:** The Color of the light emitted by the FogVolume. Emitted light
-  will not cast light or shadows on other objects, but can be useful for
-  modulating the Color of the FogVolume independently from light sources.
-- **Height Falloff:** The rate by which the height-based fog decreases in
-  density as height increases in world space. A high falloff will result in a
-  sharp transition, while a low falloff will result in a smoother transition.
-  A value of ``0.0`` results in uniform-density fog. The height threshold is
-  determined by the height of the associated FogVolume.
-- **Edge Fade:** The hardness of the edges of the FogVolume. A higher value will
-  result in softer edges, while a lower value will result in harder edges.
-- **Density Texture:** The 3D texture that is used to scale the member density
-  of the FogVolume. This can be used to vary fog density within the FogVolume
-  with any kind of static pattern. For animated effects, consider using a custom
+- **Density:** Độ đặc của FogVolume. Các đối tượng đặc hơn sẽ mờ đục hơn, nhưng có thể gặp hiện tượng lấy mẫu thiếu, tạo ra các lỗi hình ảnh trông như các sọc. Có thể dùng các giá trị âm để trừ sương khỏi những FogVolume khác hoặc sương thể tích toàn cục. - **Albedo:** Color tán xạ đơn của FogVolume. Về mặt nội bộ, thành viên albedo được chuyển đổi thành tán xạ đơn, sau đó được hòa trộn cộng với các FogVolume khác và **Albedo** của sương thể tích toàn cục. - **Emission:** Color của ánh sáng do FogVolume phát ra. Ánh sáng phát ra sẽ không chiếu sáng hoặc tạo bóng lên các đối tượng khác, nhưng có thể hữu ích để điều chỉnh Color của FogVolume độc lập với các nguồn sáng. - **Height Falloff:** Tốc độ giảm độ đặc của sương dựa trên độ cao khi độ cao tăng trong không gian thế giới. Falloff cao sẽ tạo ra sự chuyển tiếp gắt, còn Falloff thấp sẽ tạo ra sự chuyển tiếp mượt hơn. Giá trị ``0.0`` tạo ra sương có độ đặc đồng đều. Ngưỡng độ cao được xác định bởi độ cao của FogVolume liên kết. - **Edge Fade:** Độ cứng của các cạnh FogVolume. Giá trị cao hơn sẽ tạo ra các cạnh mềm hơn, còn giá trị thấp hơn sẽ tạo ra các cạnh cứng hơn. - **Density Texture:** Texture 3D được dùng để điều chỉnh độ đặc của thành viên density trong FogVolume. Bạn có thể dùng thuộc tính này để tạo biến thiên độ đặc của sương bên trong FogVolume theo bất kỳ mẫu tĩnh nào. Đối với các hiệu ứng hoạt ảnh, hãy cân nhắc sử dụng một shader tùy chỉnh
   :ref:`fog shader <doc_fog_shader>`.
-  You can import any image as a 3D texture by
+  Bạn có thể import bất kỳ hình ảnh nào dưới dạng texture 3D bằng cách
   :ref:`changing its import type in the Import dock <doc_importing_images_changing_import_type>`.
 
-Using 3D noise density textures
+Sử dụng texture độ đặc nhiễu 3D
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Since Godot 4.1, there is a NoiseTexture3D resource that can be used to
-procedurally generate 3D noise. This is well-suited to FogMaterial density
-textures, which can result in more detailed fog effects:
+Kể từ Godot 4.1, có một resource NoiseTexture3D có thể được dùng để tạo nhiễu 3D theo quy trình. Resource này rất phù hợp với các texture độ đặc của FogMaterial, từ đó có thể tạo ra các hiệu ứng sương chi tiết hơn:
 
 .. figure:: img/volumetric_fog_fog_material_density_texture.webp
    :alt: FogMaterial comparison (without and with density texture)
@@ -236,73 +103,40 @@ textures, which can result in more detailed fog effects:
    Screenshot taken with **Volume Size** project setting set to 192 to make
    high-frequency detail more visible in the fog.
 
-To do so, select the **Density Texture** property and choose **New NoiseTexture3D**.
-Edit this NoiseTexture3D by clicking it, then click **Noise** at the bottom of the
-NoiseTexture3D properties and choose **New FastNoiseLite**. Adjust the noise texture's
-width, height and depth according to your fog volume's dimensions.
+Để thực hiện việc này, hãy chọn thuộc tính **Density Texture** rồi chọn **New NoiseTexture3D**. Chỉnh sửa NoiseTexture3D bằng cách nhấp vào nó, sau đó nhấp vào **Noise** ở cuối các thuộc tính của NoiseTexture3D và chọn **New FastNoiseLite**. Điều chỉnh chiều rộng, chiều cao và độ sâu của texture nhiễu theo kích thước FogVolume của bạn.
 
-To improve performance, it's recommended to use low texture sizes (64×64×64 or lower),
-as high-frequency detail is difficult to notice in a FogVolume. If you wish to represent
-more detailed density variations, you will need to increase
-**Rendering > Environment > Volumetric Fog > Volume Size** in the project settings,
-which has a performance cost.
+Để cải thiện hiệu năng, bạn nên dùng kích thước texture nhỏ (64×64×64 hoặc thấp hơn), vì rất khó nhận thấy chi tiết tần số cao trong FogVolume. Nếu muốn thể hiện các biến thiên độ đặc chi tiết hơn, bạn sẽ cần tăng **Rendering > Environment > Volumetric Fog > Volume Size** trong phần cài đặt project, điều này sẽ làm giảm hiệu năng.
 
 .. note::
 
-    NoiseTexture3D's **Color Ramp** affects FogMaterial density textures, but
-    since only the texture's red channel is sampled, only the color ramp's red
-    channel will affect the resulting density.
+    **Color Ramp** của NoiseTexture3D ảnh hưởng đến các texture độ đặc của FogMaterial, nhưng vì chỉ lấy mẫu kênh đỏ của texture nên chỉ kênh đỏ của color ramp mới ảnh hưởng đến độ đặc kết quả.
 
-    However, using a color ramp will *not* tint the fog volume according to the
-    texture. You would need to use a custom shader that reads a Texture3D to
-    achieve this.
+    Tuy nhiên, sử dụng color ramp sẽ *không* tô màu volume sương theo texture. Bạn sẽ cần dùng một shader tùy chỉnh đọc Texture3D để thực hiện việc này.
 
-Custom FogVolume shaders
-------------------------
+Shader FogVolume tùy chỉnh
+--------------------------
 
-This page only covers the built-in settings offered by FogMaterial. If you need
-to customize fog behavior within a FogVolume node (such as creating animated fog),
-FogVolume nodes' appearance can be customized using :ref:`doc_fog_shader`.
+Trang này chỉ đề cập đến các cài đặt tích hợp sẵn do FogMaterial cung cấp. Nếu cần tùy chỉnh hành vi của sương bên trong một node FogVolume (chẳng hạn như tạo sương động), bạn có thể tùy chỉnh hình thức của các node FogVolume bằng :ref:`doc_fog_shader`.
 
-Faking volumetric fog using quads
----------------------------------
+Giả lập sương thể tích bằng quad
+--------------------------------
 
-In some cases, it may be better to use specially configured QuadMeshes as an
-alternative to volumetric fog:
+Trong một số trường hợp, sử dụng QuadMesh được cấu hình đặc biệt có thể phù hợp hơn so với sương thể tích:
 
-- Quads work with any rendering method, including Mobile and Compatibility.
-- Quads do not require temporal reprojection to look smooth, which makes
-  them suited to fast-moving dynamic effects such as lasers. They can also
-  represent small details which volumetric fog cannot do efficiently.
-- Quads generally have a lower performance cost than volumetric fog.
+- Quad hoạt động với mọi phương thức render, bao gồm Mobile và Compatibility. - Quad không cần temporal reprojection để hiển thị mượt mà, nên phù hợp với các hiệu ứng động chuyển động nhanh như laser. Chúng cũng có thể thể hiện các chi tiết nhỏ mà sương thể tích không thể xử lý hiệu quả. - Quad nhìn chung có chi phí hiệu năng thấp hơn sương thể tích.
 
-This approach has a few downsides though:
+Tuy nhiên, phương pháp này cũng có một số nhược điểm:
 
-- The fog effect has less realistic falloff, especially if the camera enters the fog.
-- Transparency sorting issues may occur when sprites overlap.
-- Performance will not necessarily be better than volumetric fog if there are
-  lots of sprites close to the camera.
+- Hiệu ứng sương có falloff kém chân thực hơn, đặc biệt là khi camera đi vào sương. - Có thể xảy ra vấn đề sắp xếp độ trong suốt khi các sprite chồng lên nhau. - Hiệu năng không nhất thiết tốt hơn sương thể tích nếu có nhiều sprite ở gần camera.
 
-To create a QuadMesh-based fog sprite:
+Để tạo một sprite sương dựa trên QuadMesh:
 
-1. Create a MeshInstance3D node with a QuadMesh resource in the **Mesh**
-   property. Set the size as desired.
-2. Create a new StandardMaterial3D in the mesh's **Material** property.
-3. In the StandardMaterial3D, set **Shading > Shading Mode** to **Unshaded**,
-   **Billboard > Mode** to **Enabled**, enable **Proximity Fade** and set
-   **Distance Fade** to **Pixel Alpha**.
-4. Set the **Albedo > Texture** to the texture below (right-click and choose **Save as…**):
+1. Tạo một node MeshInstance3D với resource QuadMesh trong thuộc tính **Mesh**. Đặt kích thước theo mong muốn. 2. Tạo một StandardMaterial3D mới trong thuộc tính **Material** của mesh. 3. Trong StandardMaterial3D, đặt **Shading > Shading Mode** thành **Unshaded**, **Billboard > Mode** thành **Enabled**, bật **Proximity Fade** và đặt **Distance Fade** thành **Pixel Alpha**. 4. Đặt **Albedo > Texture** thành texture bên dưới (nhấp chuột phải và chọn **Save as…**):
 
    .. image:: img/volumetric_fog_quad_mesh_texture.webp
 
-5. *After* setting the albedo texture, go to the Import dock, select the texture
-   and change its compression mode to **Lossless** to improve quality.
+5. *Sau khi* đặt texture albedo, đi đến dock Import, chọn texture rồi thay đổi chế độ nén thành **Lossless** để cải thiện chất lượng.
 
-The fog's color is set using the **Albedo > Color** property; its density is set
-using the color's alpha channel. For best results, you will have to adjust
-**Proximity Fade > Distance** and **Distance Fade > Max Distance** depending on
-the size of your QuadMesh.
+Màu của sương được đặt bằng thuộc tính **Albedo > Color**; độ đặc của sương được đặt bằng kênh alpha của màu. Để có kết quả tốt nhất, bạn sẽ phải điều chỉnh **Proximity Fade > Distance** và **Distance Fade > Max Distance** tùy theo kích thước QuadMesh.
 
-Optionally, billboarding may be left disabled if you place the quad in a way
-where all of its corners are in solid geometry. This can be useful for fogging
-large planes that the camera cannot enter, such as bottomless pits.
+Bạn có thể giữ tắt billboarding nếu đặt quad sao cho tất cả các góc của nó đều nằm trong hình học đặc. Điều này có thể hữu ích khi tạo sương cho các mặt phẳng lớn mà camera không thể đi vào, chẳng hạn như các hố không đáy.

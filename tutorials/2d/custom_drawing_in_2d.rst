@@ -26,13 +26,13 @@ Thêm một script vào bất kỳ node dẫn xuất từ :ref:`CanvasItem <clas
 
     extends Node2D
 
-    func _draw(): pass # Your draw commands here.
+    func _draw(): pass # Các lệnh vẽ của bạn ở đây.
 
  .. code-tab:: csharp
 
     using Godot;
 
-    public partial class MyNode2D : Node2D { public override void _Draw() { // Your draw commands here. } }
+    public partial class MyNode2D : Node2D { public override void _Draw() { // Các lệnh vẽ của bạn ở đây. } }
 
 Các lệnh vẽ được mô tả trong tài liệu tham khảo lớp :ref:`CanvasItem <class_CanvasItem>`. Có rất nhiều lệnh và chúng ta sẽ xem một số lệnh trong các ví dụ dưới đây.
 
@@ -77,7 +77,7 @@ Trong một số trường hợp, chúng ta có thể cần vẽ lại ở mỗi
 
     extends Node2D
 
-    func _draw(): pass # Your draw commands here.
+    func _draw(): pass # Các lệnh vẽ của bạn ở đây.
 
     func _process(_delta): queue_redraw()
 
@@ -85,7 +85,7 @@ Trong một số trường hợp, chúng ta có thể cần vẽ lại ở mỗi
 
     using Godot;
 
-    public partial class MyNode2D : Node2D { public override void _Draw() { // Your draw commands here. }
+    public partial class MyNode2D : Node2D { public override void _Draw() { // Các lệnh vẽ của bạn ở đây. }
 
         public override void _Process(double delta) { QueueRedraw(); } }
 
@@ -188,7 +188,7 @@ Trước tiên, chúng ta sẽ xác định một tập hợp các điểm—hay
 
     var head : PackedVector2Array
 
-    func float_array_to_Vector2Array(coords : Array) -> PackedVector2Array: # Convert the array of floats into a PackedVector2Array. var array : PackedVector2Array = [] for coord in coords: array.append(Vector2(coord[0], coord[1])) return array
+    func float_array_to_Vector2Array(coords : Array) -> PackedVector2Array: # Chuyển mảng các số thực thành một PackedVector2Array. var array : PackedVector2Array = [] for coord in coords: array.append(Vector2(coord[0], coord[1])) return array
 
     func _ready(): head = float_array_to_Vector2Array(coords_head);
 
@@ -196,7 +196,7 @@ Trước tiên, chúng ta sẽ xác định một tập hợp các điểm—hay
 
     private Vector2[] _head;
 
-    private Vector2[] FloatArrayToVector2Array(float[,] coords) { // Convert the array of floats into an array of Vector2. int size = coords.GetUpperBound(0); Vector2[] array = new Vector2[size + 1]; for (int i = 0; i <= size; i++) { array[i] = new Vector2(coords[i, 0], coords[i, 1]); } return array; }
+    private Vector2[] FloatArrayToVector2Array(float[,] coords) { // Chuyển mảng các số thực thành một mảng Vector2. int size = coords.GetUpperBound(0); Vector2[] array = new Vector2[size + 1]; for (int i = 0; i <= size; i++) { array[i] = new Vector2(coords[i, 0], coords[i, 1]); } return array; }
 
     public override void _Ready() { _head = FloatArrayToVector2Array(_coordsHead); }
 
@@ -207,11 +207,11 @@ và truyền vào các điểm (dưới dạng một mảng tọa độ Vector2)
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _draw(): # We are going to paint with this color. var godot_blue : Color = Color("478cbf") # We pass the PackedVector2Array to draw the shape. draw_polygon(head, [ godot_blue ])
+    func _draw(): # Chúng ta sẽ tô bằng màu này. var godot_blue : Color = Color("478cbf") # We pass the PackedVector2Array to draw the shape. draw_polygon(head, [ godot_blue ])
 
  .. code-tab:: csharp
 
-    public override void _Draw() { // We are going to paint with this color. Color godotBlue = new Color("478cbf"); // We pass the array of Vector2 to draw the shape. DrawPolygon(_head, [godotBlue]); }
+    public override void _Draw() { // Chúng ta sẽ tô bằng màu này. Color godotBlue = new Color("478cbf"); // We pass the array of Vector2 to draw the shape. DrawPolygon(_head, [godotBlue]); }
 
 Khi chạy, bạn sẽ thấy kết quả tương tự như sau:
 
@@ -260,20 +260,20 @@ Cuối cùng, chúng ta sẽ sử dụng phương thức
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _draw(): # We will use white to draw the line. var white : Color = Color.WHITE var godot_blue : Color = Color("478cbf")
+    func _draw(): # Chúng ta sẽ sử dụng màu trắng để vẽ đường. var white : Color = Color.WHITE var godot_blue : Color = Color("478cbf")
 
         draw_polygon(head, [ godot_blue ])
 
-        # We draw the while line on top of the previous shape. draw_polyline(mouth, white, _mouth_width)
+        # Chúng ta vẽ đường màu trắng lên trên hình dạng trước đó. draw_polyline(mouth, white, _mouth_width)
 
 
  .. code-tab:: csharp
 
-    public override void _Draw() { // We will use white to draw the line. Color white = Colors.White; Color godotBlue = new Color("478cbf");
+    public override void _Draw() { // Chúng ta sẽ sử dụng màu trắng để vẽ đường. Color white = Colors.White; Color godotBlue = new Color("478cbf");
 
         DrawPolygon(_head, [godotBlue]);
 
-        // We draw the while line on top of the previous shape. DrawPolyline(_mouth, white, _mouthWidth); }
+        // Chúng ta vẽ đường màu trắng lên trên hình dạng trước đó. DrawPolyline(_mouth, white, _mouthWidth); }
 
 Bạn sẽ nhận được kết quả sau:
 
@@ -301,7 +301,7 @@ tham số là một :ref:`Vector2<class_Vector2>` chứa tọa độ tâm của 
 
         draw_polygon(head, [ godot_blue ]) draw_polyline(mouth, white, _mouth_width)
 
-        # Four circles for the 2 eyes: 2 white, 2 grey. draw_circle(Vector2(42.479, 65.4825), 9.3905, white) draw_circle(Vector2(85.524, 65.4825), 9.3905, white) draw_circle(Vector2(43.423, 65.92), 6.246, grey) draw_circle(Vector2(84.626, 66.008), 6.246, grey)
+        # Bốn hình tròn cho 2 mắt: 2 hình tròn màu trắng, 2 hình tròn màu xám. draw_circle(Vector2(42.479, 65.4825), 9.3905, white) draw_circle(Vector2(85.524, 65.4825), 9.3905, white) draw_circle(Vector2(43.423, 65.92), 6.246, grey) draw_circle(Vector2(84.626, 66.008), 6.246, grey)
 
  .. code-tab:: csharp
 
@@ -310,7 +310,7 @@ tham số là một :ref:`Vector2<class_Vector2>` chứa tọa độ tâm của 
 
         DrawPolygon(_head, [godotBlue]); DrawPolyline(_mouth, white, _mouthWidth);
 
-        // Four circles for the 2 eyes: 2 white, 2 grey. DrawCircle(new Vector2(42.479f, 65.4825f), 9.3905f, white); DrawCircle(new Vector2(85.524f, 65.4825f), 9.3905f, white); DrawCircle(new Vector2(43.423f, 65.92f), 6.246f, grey); DrawCircle(new Vector2(84.626f, 66.008f), 6.246f, grey); }
+        // Bốn hình tròn cho 2 mắt: 2 hình tròn màu trắng, 2 hình tròn màu xám. DrawCircle(new Vector2(42.479f, 65.4825f), 9.3905f, white); DrawCircle(new Vector2(85.524f, 65.4825f), 9.3905f, white); DrawCircle(new Vector2(43.423f, 65.92f), 6.246f, grey); DrawCircle(new Vector2(84.626f, 66.008f), 6.246f, grey); }
 
 Khi thực thi, bạn sẽ nhận được kết quả tương tự như sau:
 
@@ -335,7 +335,7 @@ một đoạn duy nhất bằng cách cung cấp tọa độ điểm đầu và 
 
         draw_polygon(head, [ godot_blue ]) draw_polyline(mouth, white, _mouth_width) draw_circle(Vector2(42.479, 65.4825), 9.3905, white) draw_circle(Vector2(85.524, 65.4825), 9.3905, white) draw_circle(Vector2(43.423, 65.92), 6.246, grey) draw_circle(Vector2(84.626, 66.008), 6.246, grey)
 
-        # Draw a short but thick white vertical line for the nose. draw_line(Vector2(64.273, 60.564), Vector2(64.273, 74.349), white, 5.8)
+        # Vẽ một đường thẳng đứng màu trắng, ngắn nhưng dày, cho mũi. draw_line(Vector2(64.273, 60.564), Vector2(64.273, 74.349), white, 5.8)
 
  .. code-tab:: csharp
 
@@ -343,7 +343,7 @@ một đoạn duy nhất bằng cách cung cấp tọa độ điểm đầu và 
 
         DrawPolygon(_head, [godotBlue]); DrawPolyline(_mouth, white, _mouthWidth); DrawCircle(new Vector2(42.479f, 65.4825f), 9.3905f, white); DrawCircle(new Vector2(85.524f, 65.4825f), 9.3905f, white); DrawCircle(new Vector2(43.423f, 65.92f), 6.246f, grey); DrawCircle(new Vector2(84.626f, 66.008f), 6.246f, grey);
 
-        // Draw a short but thick white vertical line for the nose. DrawLine(new Vector2(64.273f, 60.564f), new Vector2(64.273f, 74.349f), white, 5.8f); }
+        // Vẽ một đường thẳng đứng màu trắng, ngắn nhưng dày, cho mũi. DrawLine(new Vector2(64.273f, 60.564f), new Vector2(64.273f, 74.349f), white, 5.8f); }
 
 Bây giờ bạn sẽ có thể thấy hình dạng sau trên màn hình:
 
@@ -367,7 +367,7 @@ Chúng ta sẽ sử dụng phương thức :ref:`draw_string <class_CanvasItem_m
 
         draw_polygon(head, [ godot_blue ]) draw_polyline(mouth, white, _mouth_width) draw_circle(Vector2(42.479, 65.4825), 9.3905, white) draw_circle(Vector2(85.524, 65.4825), 9.3905, white) draw_circle(Vector2(43.423, 65.92), 6.246, grey) draw_circle(Vector2(84.626, 66.008), 6.246, grey) draw_line(Vector2(64.273, 60.564), Vector2(64.273, 74.349), white, 5.8)
 
-        # Draw GODOT text below the logo with the default font, size 22. draw_string(default_font, Vector2(20, 130), "GODOT", HORIZONTAL_ALIGNMENT_CENTER, 90, 22)
+        # Vẽ văn bản GODOT bên dưới logo bằng phông chữ mặc định, cỡ 22. draw_string(default_font, Vector2(20, 130), "GODOT", HORIZONTAL_ALIGNMENT_CENTER, 90, 22)
 
  .. code-tab:: csharp
 
@@ -377,7 +377,7 @@ Chúng ta sẽ sử dụng phương thức :ref:`draw_string <class_CanvasItem_m
 
         DrawPolygon(_head, [godotBlue]); DrawPolyline(_mouth, white, _mouthWidth); DrawCircle(new Vector2(42.479f, 65.4825f), 9.3905f, white); DrawCircle(new Vector2(85.524f, 65.4825f), 9.3905f, white); DrawCircle(new Vector2(43.423f, 65.92f), 6.246f, grey); DrawCircle(new Vector2(84.626f, 66.008f), 6.246f, grey); DrawLine(new Vector2(64.273f, 60.564f), new Vector2(64.273f, 74.349f), white, 5.8f);
 
-        // Draw GODOT text below the logo with the default font, size 22. DrawString(_defaultFont, new Vector2(20f, 130f), "GODOT", HorizontalAlignment.Center, 90, 22); }
+        // Vẽ văn bản GODOT bên dưới logo bằng phông chữ mặc định, cỡ 22. DrawString(_defaultFont, new Vector2(20f, 130f), "GODOT", HorizontalAlignment.Center, 90, 22); }
 
 Ở đây, trước tiên chúng ta nạp phông chữ giao diện mặc định đã cấu hình vào biến defaultFont (thay vào đó có thể đặt một phông chữ tùy chỉnh), sau đó truyền các tham số sau: phông chữ, vị trí, văn bản, căn chỉnh ngang, chiều rộng và cỡ phông chữ.
 
@@ -423,7 +423,7 @@ Ví dụ, nếu muốn hình dạng tùy chỉnh vừa thiết kế xoay, chúng
 
     extends Node2D
 
-    @export var rotation_speed : float = 1 # In radians per second.
+    @export var rotation_speed : float = 1 # Tính theo radian trên giây.
 
     func _ready(): rotation = 0 ...
 
@@ -431,7 +431,7 @@ Ví dụ, nếu muốn hình dạng tùy chỉnh vừa thiết kế xoay, chúng
 
  .. code-tab:: csharp
 
-    [Export] public float RotationSpeed { get; set; } = 1.0f; // In radians per second.
+    [Export] public float RotationSpeed { get; set; } = 1.0f; // Tính theo radian trên giây.
 
     public override void _Ready() { Rotation = 0; ... }
 
@@ -584,9 +584,9 @@ Việc tính toán cung này sẽ phức tạp hơn so với trường hợp đ�
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _draw(): # Average points to get center. var center : Vector2 = Vector2((_point2.x + point1.x) / 2, (_point2.y + point1.y) / 2) # Calculate the rest of the arc parameters. var radius : float = point1.distance_to(_point2) / 2 var start_angle : float = (_point2 - point1).angle() var end_angle : float = (point1 - _point2).angle() if end_angle < 0: # end_angle is likely negative, normalize it. end_angle += TAU
+    func _draw(): # Lấy trung bình các điểm để tìm tâm. var center : Vector2 = Vector2((_point2.x + point1.x) / 2, (_point2.y + point1.y) / 2) # Tính các tham số còn lại của cung. var radius : float = point1.distance_to(_point2) / 2 var start_angle : float = (_point2 - point1).angle() var end_angle : float = (point1 - _point2).angle() if end_angle < 0: # end_angle có thể là số âm, hãy chuẩn hóa nó. end_angle += TAU
 
-        # Finally, draw the arc. draw_arc(center, radius, start_angle, end_angle, segments, color, width, antialiasing)
+        # Cuối cùng, vẽ cung. draw_arc(center, radius, start_angle, end_angle, segments, color, width, antialiasing)
 
  .. code-tab:: csharp
 

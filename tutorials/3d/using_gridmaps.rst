@@ -1,58 +1,46 @@
 .. _doc_using_gridmaps:
 
-Using GridMaps
-==============
+Sử dụng GridMaps
+================
 
-Introduction
-------------
+Giới thiệu
+----------
 
 :ref:`Gridmaps <class_GridMap>` are a tool for creating 3D
-game levels, similar to the way :ref:`TileMap <doc_using_tilemaps>`
-works in 2D. You start with a predefined collection of 3D meshes (a
+các level của game, tương tự như cách :ref:`TileMap <doc_using_tilemaps>` hoạt động trong 2D. Bạn bắt đầu với một tập hợp mesh 3D được định nghĩa trước (một
 :ref:`class_MeshLibrary`) that can be placed on a grid,
-as if you were building a level with an unlimited amount of Lego blocks.
+như thể bạn đang xây dựng một level với số lượng khối Lego không giới hạn.
 
-Collisions and navigation can also be added to the meshes, just like you
-would do with the tiles of a tilemap.
+Bạn cũng có thể thêm collision và navigation vào các mesh, giống như cách bạn thực hiện với các tile của tilemap.
 
-Example project
+Project mẫu
+-----------
+
+Để tìm hiểu cách GridMaps hoạt động, trước tiên hãy tải project mẫu: `gridmap_starter.zip <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/gridmap_starter.zip>`_.
+
+Giải nén project này và thêm nó vào Project Manager bằng nút "Import". Bạn có thể nhận được một popup cho biết project cần được chuyển đổi sang phiên bản Godot mới hơn; hãy nhấp vào **Convert project.godot**.
+
+Tạo MeshLibrary
 ---------------
 
-To learn how GridMaps work, start by downloading the sample project:
-`gridmap_starter.zip <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/gridmap_starter.zip>`_.
-
-Unzip this project and add it to the Project Manager using the "Import"
-button. You may get a popup saying that it needs to be converted to a newer Godot
-version, click **Convert project.godot**.
-
-Creating a MeshLibrary
-----------------------
-
-To begin, you need a :ref:`class_MeshLibrary`, which is a collection
-of individual meshes that can be used in the gridmap. Open the "mesh_library_source.tscn"
-scene to see an example of how to set up the mesh library.
+Để bắt đầu, bạn cần một :ref:`class_MeshLibrary`, đây là một tập hợp các mesh riêng lẻ có thể được sử dụng trong gridmap. Mở scene "mesh_library_source.tscn" để xem ví dụ về cách thiết lập mesh library.
 
 .. image:: img/gridmap_meshlibrary1.webp
 
-As you can see, this scene has a :ref:`class_Node3D` node as its root, and
-a number of :ref:`class_MeshInstance3D` node children.
+Như bạn có thể thấy, scene này có một node :ref:`class_Node3D` làm node gốc và một số node con :ref:`class_MeshInstance3D`.
 
-If you don't need any physics in your scene, then you're done. However, in most
-cases you'll want to assign collision bodies to the meshes.
+Nếu scene của bạn không cần physics thì bạn đã hoàn tất. Tuy nhiên, trong hầu hết trường hợp, bạn sẽ muốn gán các collision body cho các mesh.
 
 Collisions
 ----------
 
-You can manually assign a :ref:`class_StaticBody3D` and
+Bạn có thể gán thủ công một :ref:`class_StaticBody3D` và
 :ref:`class_CollisionShape3D` to each mesh. Alternatively, you can use the "Mesh" menu
-to automatically create the collision body based on the mesh data.
+để tự động tạo collision body dựa trên dữ liệu mesh.
 
 .. image:: img/gridmap_create_body.webp
 
-Note that a "Convex" collision body will work better for simple meshes. For more
-complex shapes, select "Create Trimesh Static Body". Once each mesh has
-a physics body and collision shape assigned, your mesh library is ready to
-be used.
+Lưu ý rằng collision body "Convex" sẽ hoạt động tốt hơn đối với các mesh đơn giản. Với các hình dạng phức tạp hơn, hãy chọn "Create Trimesh Static Body". Sau khi mỗi mesh đã được gán một physics body và collision shape, mesh library của bạn đã sẵn sàng để sử dụng.
 
 .. image:: img/gridmap_mesh_scene.webp
 
@@ -60,164 +48,93 @@ be used.
 Materials
 ---------
 
-Only the materials from within the meshes are used when generating the mesh
-library. Materials set on the node will be ignored.
+Chỉ các material bên trong mesh được sử dụng khi tạo mesh library. Các material được thiết lập trên node sẽ bị bỏ qua.
 
 NavigationMeshes
 ----------------
 
-Like all mesh instances, MeshLibrary items can be assigned a :ref:`class_NavigationMesh`
-resource, which can be created manually, or baked as described below.
+Giống như mọi mesh instance, các item của MeshLibrary có thể được gán một resource :ref:`class_NavigationMesh`, có thể được tạo thủ công hoặc bake như mô tả bên dưới.
 
-To create the NavigationMesh from a MeshLibrary scene export, place a
+Để tạo NavigationMesh từ thao tác export scene MeshLibrary, hãy đặt một
 :ref:`class_NavigationRegion3D` child node below the main MeshInstance3D for the GridMap
-item. Add a valid NavigationMesh resource to the NavigationRegion3D and some source
-geometry nodes below and bake the NavigationMesh.
+item. Thêm một resource NavigationMesh hợp lệ vào NavigationRegion3D cùng với một số node source geometry bên dưới, rồi bake NavigationMesh.
 
 .. note::
 
-    With small grid cells it is often necessary to reduce the NavigationMesh properties
-    for agent radius and region minimum size.
+    Với các cell grid nhỏ, thường cần giảm các thuộc tính NavigationMesh dành cho agent radius và region minimum size.
 
 .. image:: img/meshlibrary_scene.png
 
-Nodes below the NavigationRegion3D are ignored for the MeshLibrary scene export, so
-additional nodes can be added as source geometry just for baking the navmesh.
+Các node bên dưới NavigationRegion3D sẽ bị bỏ qua khi export scene MeshLibrary, vì vậy có thể thêm các node bổ sung làm source geometry chỉ để bake navmesh.
 
 .. warning::
 
-    The baked cell size of the NavigationMesh must match the NavigationServer map cell
-    size to properly merge the navigation meshes of different grid cells.
+    Cell size đã bake của NavigationMesh phải khớp với cell size của map NavigationServer để các navigation mesh của những cell grid khác nhau được hợp nhất chính xác.
 
 Lightmaps
 ---------
 
-It is possible to bake lightmaps onto a GridMap. Lightmap UV2 data will be reused
-from meshes if already present. If UV2 data is not present, then it will be
-automatically generated on bake with a lightmap texel size of 0.1 units.
-To generate UV2 data with a different lightmap texel size, you can set the
-global illumination mode in the Import dock to **Static Lightmaps**
-and specify the texel size there. This option must be changed *before* the scene
-is converted to a MeshLibrary, as changing it later on will not affect
-the existing MeshLibrary data.
+Bạn có thể bake lightmap lên GridMap. Dữ liệu Lightmap UV2 sẽ được tái sử dụng từ các mesh nếu đã tồn tại. Nếu không có dữ liệu UV2, dữ liệu này sẽ được tự động tạo khi bake với lightmap texel size là 0.1 units. Để tạo dữ liệu UV2 với lightmap texel size khác, bạn có thể đặt global illumination mode trong Import dock thành **Static Lightmaps** và chỉ định texel size tại đó. Phải thay đổi tùy chọn này *trước* khi scene được chuyển đổi thành MeshLibrary, vì thay đổi sau đó sẽ không ảnh hưởng đến dữ liệu MeshLibrary hiện có.
 
-Aside from this peculiarity, the lightmap baking process is the same as for any other 3D scene.
-See :ref:`doc_using_lightmap_gi` for more information about lightmap baking.
+Ngoài điểm đặc biệt này, quy trình bake lightmap cũng giống như đối với mọi scene 3D khác. Xem :ref:`doc_using_lightmap_gi` để biết thêm thông tin về việc bake lightmap.
 
-MeshLibrary format
+Định dạng MeshLibrary
+---------------------
+
+Tóm lại các ràng buộc cụ thể của định dạng MeshLibrary: một scene MeshLibrary có Node3D làm node gốc và một số node con sẽ trở thành các item MeshLibrary. Mỗi node con của node gốc nên:
+
+- Là một :ref:`class_MeshInstance3D`, sẽ trở thành item MeshLibrary. Chỉ mesh hiển thị này được export. - Có một material trong material slot của mesh, *không phải* trong các material slot của MeshInstance3D. - Có tối đa một node con :ref:`class_StaticBody3D`, dùng cho collision. StaticBody3D phải có một hoặc nhiều node con :ref:`class_CollisionShape3D`. - Có tối đa một node con :ref:`class_NavigationRegion3D`, dùng cho navigation. NavigationRegion3D có thể có một hoặc nhiều node con :ref:`class_MeshInstance3D` bổ sung, có thể được bake cho navigation nhưng sẽ không được export dưới dạng mesh hiển thị.
+
+Chỉ định dạng cụ thể này được nhận diện. Các loại node khác được đặt làm node con sẽ không được nhận diện và export. GridMap không phải là một hệ thống đa dụng để đặt *node* trên grid, mà là một hệ thống chuyên biệt, được tối ưu hóa để đặt *mesh* cùng collision và navigation.
+
+Export MeshLibrary
 ------------------
 
-To summarize the specific constraints of the MeshLibrary format, a MeshLibrary
-scene has a Node3D as the root node, and several child nodes which will become
-MeshLibrary items. Each child of the root node should:
-
-- Be a :ref:`class_MeshInstance3D`, which will become the MeshLibrary item. Only
-  this visual mesh will be exported.
-- Have a material, in the mesh's material slot, *not* the MeshInstance3D's
-  material slots.
-- Have up to one :ref:`class_StaticBody3D` child, for collision. The
-  StaticBody3D should have one or more :ref:`class_CollisionShape3D` children.
-- Have up to one :ref:`class_NavigationRegion3D` child, for navigation. The
-  NavigationRegion3D can have one or more additional :ref:`class_MeshInstance3D`
-  children, which can be baked for navigation, but won't be exported as a visual
-  mesh.
-
-Only this specific format is recognized. Other node types placed as children
-will not be recognized and exported. GridMap is not a general-purpose system for
-placing *nodes* on a grid, but rather a specific, optimized system, designed to
-place *meshes* with collisions and navigation.
-
-Exporting the MeshLibrary
--------------------------
-
-To export the library, click on **Scene > Export As... > MeshLibrary...**, and save it
-as a resource.
+Để export library, hãy nhấp vào **Scene > Export As... > MeshLibrary...** và lưu nó dưới dạng resource.
 
 .. image:: img/gridmap_export.webp
 
-You can find an already exported MeshLibrary in the project named ``MeshLibrary.tres``.
+Bạn có thể tìm thấy một MeshLibrary đã được export trong project có tên ``MeshLibrary.tres``.
 
-Using GridMap
--------------
+Sử dụng GridMap
+---------------
 
-Create a new scene and add a GridMap node. Add the mesh library by dragging
-the resource file from the FileSystem dock and dropping it in the **Mesh Library**
-property in the Inspector.
+Tạo một scene mới và thêm node GridMap. Thêm mesh library bằng cách kéo file resource từ FileSystem dock rồi thả vào thuộc tính **Mesh Library** trong Inspector.
 
 .. image:: img/gridmap_mesh_library_inspector.webp
 
-Inspector properties
-~~~~~~~~~~~~~~~~~~~~
+Các thuộc tính Inspector
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-The **Physics Material** setting allows you to override the physics material for
-every mesh in the NavigationMesh.
+Thiết lập **Physics Material** cho phép bạn ghi đè physics material cho mọi mesh trong NavigationMesh.
 
-Under **Cells**, the **Size** property should be set to the size of your meshes. You
-can leave it at the default value for the demo. Uncheck the **Center Y** property.
+Trong **Cells**, thuộc tính **Size** nên được đặt bằng kích thước của các mesh. Bạn có thể giữ giá trị mặc định cho bản demo. Bỏ chọn thuộc tính **Center Y**.
 
-The **Collision** options allow you to set the collision layer, collision mask, and
-priority for the entire grid. For more information on how those work see the
+Các tùy chọn **Collision** cho phép bạn đặt collision layer, collision mask và priority cho toàn bộ grid. Để biết thêm thông tin về cách chúng hoạt động, hãy xem
 :ref:`doc_physics_index` section.
 
-Under **Navigation** is the "Bake Navigation" option. If enabled it creates a
-navigation region for each cell that uses a mesh library item with a navigation
-mesh.
+Trong **Navigation** có tùy chọn "Bake Navigation". Nếu được bật, tùy chọn này sẽ tạo một navigation region cho mỗi cell sử dụng item mesh library có navigation mesh.
 
-If you click on the MeshLibrary itself in the inspector you can adjust settings for
-individual meshes, such as their navigation mesh, navigation layers, or if the mesh
-casts shadows.
+Nếu nhấp vào chính MeshLibrary trong inspector, bạn có thể điều chỉnh các thiết lập cho từng mesh, chẳng hạn như navigation mesh, navigation layers hoặc việc mesh có đổ bóng hay không.
 
 .. image:: img/gridmap_mesh_library_settings.webp
 
-GridMap panel
+Panel GridMap
 ~~~~~~~~~~~~~
 
-At the bottom of the editor is the GridMap panel, which should have opened
-automatically when you added the GridMap node.
+Ở cuối editor là panel GridMap, panel này sẽ tự động mở khi bạn thêm node GridMap.
 
 .. image:: img/gridmap_panel.webp
 
-From left to right in the toolbar:
+Từ trái sang phải trên toolbar:
 
-- **Transform**: Adds a gizmo to the scene that allows you to change the
-  relative position and rotation of the gridmap in the scene.
-- **Selection**: While active you can select an area in the viewport, click and drag
-  to select more than one space on the grid.
-- **Erase**: While active, click in the viewport and delete meshes.
-- **Paint**: While active, click in the viewport and add whatever mesh is currently
-  selected in the GridMap panel to the scene.
-- **Pick**: While active, clicking on a gridmap mesh in the viewport will cause
-  it to be selected in the GridMap panel.
-- **Fill**: Fill the area that has been selected in the viewport with whatever mesh
-  is selected in the GridMap bottom panel.
-- **Move**: Move whatever mesh or meshes are currently selected in the viewport.
-- **Duplicate**: Create a copy of whatever the selected mesh or meshes in the
-  GridMap are.
-- **Delete**: Similar to erase, but for the entire selected area.
-- **Cursor Rotate X**: While the paint tool is selected, this will rotate the mesh
-  that will be painted on the X-axis. This will also rotate selected areas if they
-  are being moved.
-- **Cursor Rotate Y**: While the paint tool is selected, this will rotate the mesh
-  that will be painted on the Y-axis. This will also rotate selected areas if they
-  are being moved.
-- **Cursor Rotate Z**: While the paint tool is selected, this will rotate the mesh
-  that will be painted on the Z-axis. This will also rotate selected areas if they
-  are being moved.
-- **Change Grid Floor**: Adjusts what floor is currently being worked on. Can be
-  changed with the arrows, typing a value in the field, or :kbd:`Ctrl + Mouse wheel`.
-- **Filter Meshes**: Used to search for a specific mesh in the bottom panel.
-- **Zoom**: Controls the zoom level on meshes in the bottom panel.
-- **Layout toggles**: These two buttons toggle between different layouts for meshes
-  in the bottom panel.
-- **Tools dropdown**: This button opens a dropdown menu with a few more options.
+- **Transform**: Thêm một gizmo vào scene, cho phép bạn thay đổi vị trí tương đối và rotation của gridmap trong scene. - **Selection**: Khi đang bật, bạn có thể chọn một vùng trong viewport; nhấp và kéo để chọn nhiều hơn một ô trên grid. - **Erase**: Khi đang bật, nhấp vào viewport để xóa mesh. - **Paint**: Khi đang bật, nhấp vào viewport để thêm mesh hiện đang được chọn trong panel GridMap vào scene. - **Pick**: Khi đang bật, nhấp vào một mesh gridmap trong viewport sẽ chọn mesh đó trong panel GridMap. - **Fill**: Tô đầy vùng đã chọn trong viewport bằng mesh đang được chọn trong panel GridMap bên dưới. - **Move**: Di chuyển mesh hoặc các mesh hiện đang được chọn trong viewport. - **Duplicate**: Tạo một bản sao của mesh hoặc các mesh đang được chọn trong GridMap. - **Delete**: Tương tự erase nhưng áp dụng cho toàn bộ vùng đã chọn. - **Cursor Rotate X**: Khi công cụ paint được chọn, thao tác này sẽ xoay mesh sẽ được vẽ theo trục X. Thao tác này cũng xoay các vùng đã chọn nếu chúng đang được di chuyển. - **Cursor Rotate Y**: Khi công cụ paint được chọn, thao tác này sẽ xoay mesh sẽ được vẽ theo trục Y. Thao tác này cũng xoay các vùng đã chọn nếu chúng đang được di chuyển. - **Cursor Rotate Z**: Khi công cụ paint được chọn, thao tác này sẽ xoay mesh sẽ được vẽ theo trục Z. Thao tác này cũng xoay các vùng đã chọn nếu chúng đang được di chuyển. - **Change Grid Floor**: Điều chỉnh floor hiện đang được thao tác. Có thể thay đổi bằng các mũi tên, nhập giá trị vào trường hoặc :kbd:`Ctrl + Mouse wheel`. - **Filter Meshes**: Dùng để tìm kiếm một mesh cụ thể trong panel bên dưới. - **Zoom**: Điều khiển mức zoom của các mesh trong panel bên dưới. - **Layout toggles**: Hai nút này chuyển đổi giữa các layout khác nhau cho các mesh trong panel bên dưới. - **Tools dropdown**: Nút này mở một menu dropdown với thêm một số tùy chọn.
 
 .. image:: img/gridmap_dropdown.webp
 
-Clicking on **Settings** in that dropdown brings up a window that allows you to
-change the **Pick Distance**, which is the maximum distance at which tiles can be placed
-on a GridMap, relative to the camera position (in meters).
+Nhấp vào **Settings** trong dropdown đó sẽ mở ra một cửa sổ cho phép bạn thay đổi **Pick Distance**, tức khoảng cách tối đa mà tại đó các tile có thể được đặt trên GridMap, tính tương đối so với vị trí camera (theo mét).
 
-Using GridMap in code
----------------------
+Sử dụng GridMap trong code
+--------------------------
 
-See :ref:`class_GridMap` for details on the node's methods and member variables.
+Xem :ref:`class_GridMap` để biết chi tiết về các method và member variable của node.

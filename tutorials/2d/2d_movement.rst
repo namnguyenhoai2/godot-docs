@@ -64,7 +64,7 @@ Trong hàm ``get_input()``, chúng ta sử dụng :ref:`Input <class_Input>` ``g
 Sau đó, chúng ta có thể đặt vận tốc bằng cách nhân vector hướng này, có độ dài là ``1``, với tốc độ mong muốn.
 
 .. tip:: If you've never used vector math before, or need a refresher,
-         bạn có thể xem phần giải thích về cách sử dụng vector trong Godot tại :ref:`doc_vector_math`.
+         Bạn có thể xem phần giải thích về cách sử dụng vector trong Godot tại :ref:`doc_vector_math`.
 
 .. note::
 
@@ -183,7 +183,7 @@ Ví dụ cuối cùng này chỉ sử dụng chuột để điều khiển nhân
 
     var target = position
 
-    func _input(event): # Use is_action_pressed to only accept single taps as input instead of mouse drags. if event.is_action_pressed(&"click"): target = get_global_mouse_position()
+    func _input(event): # Sử dụng is_action_pressed để chỉ chấp nhận các lần nhấp đơn làm đầu vào thay vì thao tác kéo chuột. if event.is_action_pressed(&"click"): target = get_global_mouse_position()
 
     func _physics_process(delta): velocity = position.direction_to(target) * speed # look_at(target) if position.distance_to(target) > 10: move_and_slide()
 
@@ -195,7 +195,7 @@ Ví dụ cuối cùng này chỉ sử dụng chuột để điều khiển nhân
 
         private Vector2 _target;
 
-        public override void _Input(InputEvent @event) { // Use IsActionPressed to only accept single taps as input instead of mouse drags. if (@event.IsActionPressed("click")) { _target = GetGlobalMousePosition(); } }
+        public override void _Input(InputEvent @event) { // Sử dụng IsActionPressed để chỉ chấp nhận các lần nhấp đơn làm đầu vào thay vì thao tác kéo chuột. if (@event.IsActionPressed("click")) { _target = GetGlobalMousePosition(); } }
 
         public override void _PhysicsProcess(double delta) { Velocity = Position.DirectionTo(_target) * Speed; // LookAt(_target); if (Position.DistanceTo(_target) > 10) { MoveAndSlide(); } } }
 

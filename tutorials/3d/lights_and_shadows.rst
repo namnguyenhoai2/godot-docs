@@ -1,326 +1,184 @@
 .. _doc_lights_and_shadows:
 
-3D lights and shadows
-=====================
+Đèn và bóng đổ 3D
+=================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Light sources emit light that mixes with the materials and produces a visible
-result. Light can come from several types of sources in a scene:
+Các nguồn sáng phát ra ánh sáng, ánh sáng này hòa trộn với vật liệu và tạo ra kết quả hiển thị. Ánh sáng có thể đến từ một số loại nguồn trong một cảnh:
 
-- From the material itself, in the form of the emission color (though it does
-  not affect nearby objects unless baked or screen-space indirect lighting is enabled).
-- Light nodes: DirectionalLight3D, OmniLight3D, SpotLight3D, and AreaLight3D.
-- Ambient light in the :ref:`Environment <class_Environment>` or
+- Từ chính vật liệu, dưới dạng màu phát xạ (tuy nhiên, nó không ảnh hưởng đến các đối tượng lân cận trừ khi tính năng chiếu sáng gián tiếp được bake hoặc trong screen-space được bật). - Các light node: DirectionalLight3D, OmniLight3D, SpotLight3D và AreaLight3D. - Ánh sáng môi trường trong :ref:`Environment <class_Environment>` hoặc
   :ref:`doc_reflection_probes`.
 - Global illumination (:ref:`LightmapGI <doc_using_lightmap_gi>`,
   :ref:`VoxelGI <doc_using_voxel_gi>` or :ref:`SDFGI <doc_using_sdfgi>`).
 
-The emission color is a material property. You can read more about it
-in the :ref:`doc_standard_material_3d` tutorial.
+Màu phát xạ là một thuộc tính của vật liệu. Bạn có thể đọc thêm về thuộc tính này trong tutorial :ref:`doc_standard_material_3d`.
 
 .. seealso::
 
-    You can compare various types of lights in action using the
-    `3D Lights and Shadows demo project <https://github.com/godotengine/godot-demo-projects/tree/master/3d/lights_and_shadows>`__.
+    Bạn có thể so sánh trực tiếp các loại đèn khác nhau bằng cách sử dụng `dự án demo Đèn và Bóng đổ 3D <https://github.com/godotengine/godot-demo-projects/tree/master/3d/lights_and_shadows>`__.
 
-Light nodes
------------
+Light node
+----------
 
-There are four types of light nodes: :ref:`class_DirectionalLight3D`,
+Có bốn loại light node: :ref:`class_DirectionalLight3D`,
 :ref:`class_OmniLight3D`, :ref:`class_SpotLight3D`, and :ref:`class_AreaLight3D`. Let's take a look at the common
-parameters for lights:
+các tham số của đèn:
 
 .. image:: img/light_params.png
 
-Each property has a specific function:
+Mỗi thuộc tính có một chức năng cụ thể:
 
-- **Color:** Base color for emitted light.
-- **Energy:** Energy multiplier. This is useful for saturating lights or working with :ref:`doc_high_dynamic_range`.
-- **Indirect Energy:** Secondary multiplier used with indirect light (light bounces). This works with :ref:`doc_using_lightmap_gi`, VoxelGI or SDFGI.
-- **Volumetric Fog Energy:** Secondary multiplier used with volumetric fog. This only has an effect when volumetric fog is enabled.
-- **Negative:** Light becomes subtractive instead of additive. It's sometimes useful to manually compensate some dark corners.
-- **Specular:** Affects the intensity of the specular blob in objects affected by this light. At zero, this light becomes a pure diffuse light.
-- **Bake Mode:** Sets the bake mode for the light. See :ref:`doc_using_lightmap_gi`.
-- **Cull Mask:** Objects that are in the selected layers below will be affected by this light.
-  Note that objects disabled via this cull mask will still cast shadows.
-  If you don't want disabled objects to cast shadows, adjust the **Cast Shadow**
-  property on the GeometryInstance3D to the desired value.
+- **Color:** Màu cơ bản của ánh sáng phát ra. - **Energy:** Hệ số nhân năng lượng. Thuộc tính này hữu ích để làm bão hòa ánh sáng hoặc làm việc với :ref:`doc_high_dynamic_range`. - **Indirect Energy:** Hệ số nhân phụ được sử dụng với ánh sáng gián tiếp (ánh sáng phản xạ). Thuộc tính này hoạt động với :ref:`doc_using_lightmap_gi`, VoxelGI hoặc SDFGI. - **Volumetric Fog Energy:** Hệ số nhân phụ được sử dụng với sương mù thể tích. Thuộc tính này chỉ có tác dụng khi sương mù thể tích được bật. - **Negative:** Ánh sáng trở thành dạng trừ thay vì cộng. Đôi khi thuộc tính này hữu ích để bù thủ công cho một số góc tối. - **Specular:** Ảnh hưởng đến cường độ của vùng sáng specular trên các đối tượng chịu ảnh hưởng của đèn này. Khi bằng 0, đèn này trở thành đèn diffuse thuần túy. - **Bake Mode:** Thiết lập chế độ bake cho đèn. Xem :ref:`doc_using_lightmap_gi`. - **Cull Mask:** Các đối tượng nằm trong những layer được chọn bên dưới sẽ chịu ảnh hưởng của đèn này. Lưu ý rằng các đối tượng bị vô hiệu hóa qua cull mask này vẫn đổ bóng. Nếu không muốn các đối tượng bị vô hiệu hóa đổ bóng, hãy điều chỉnh thuộc tính **Cast Shadow** trên GeometryInstance3D thành giá trị mong muốn.
 
 .. seealso::
 
-    See :ref:`doc_physical_light_and_camera_units` if you wish to use real world
-    units to configure your lights' intensity and color temperature.
+    Xem :ref:`doc_physical_light_and_camera_units` nếu bạn muốn sử dụng các đơn vị trong thế giới thực để cấu hình cường độ và nhiệt độ màu của đèn.
 
-Light number limits
--------------------
+Giới hạn số lượng đèn
+---------------------
 
-When using the Forward+ renderer, Godot uses a *clustering* approach for
-real-time lighting. As many lights as desired can be added (as long as
-performance allows). However, there's still a default limit of 512 *clustered
-elements* that can be present in the current camera view. A clustered element is
-an omni light, a spot light, an area light, a :ref:`decal <doc_using_decals>`, or a
+Khi sử dụng renderer Forward+, Godot dùng phương pháp *clustering* cho việc chiếu sáng theo thời gian thực. Bạn có thể thêm bao nhiêu đèn tùy ý (miễn là hiệu năng cho phép). Tuy nhiên, vẫn có giới hạn mặc định là 512 *clustered element* có thể hiện diện trong góc nhìn hiện tại của camera. Một clustered element có thể là omni light, spot light, area light, :ref:`decal <doc_using_decals>` hoặc một
 :ref:`reflection probe <doc_reflection_probes>`. This limit can be increased by adjusting
 :ref:`Max Clustered Elements<class_ProjectSettings_property_rendering/limits/cluster_builder/max_clustered_elements>`
-in **Project Settings > Rendering > Limits > Cluster Builder**.
+trong **Project Settings > Rendering > Limits > Cluster Builder**.
 
-When using the Mobile renderer, there is a limitation of 8 OmniLights + 8 SpotLights
-per mesh resource. There is also a limit of 256 OmniLights + 256 SpotLights that
-can be rendered in the current camera view. These limits currently cannot be changed.
+Khi sử dụng renderer Mobile, có giới hạn 8 OmniLights + 8 SpotLights cho mỗi mesh resource. Ngoài ra còn có giới hạn 256 OmniLights + 256 SpotLights có thể được render trong góc nhìn hiện tại của camera. Hiện tại không thể thay đổi các giới hạn này.
 
-When using the Compatibility renderer, up to 8 OmniLights + 8 SpotLights can be
-rendered per mesh resource. This limit can be increased in the advanced Project
-Settings by adjusting
+Khi sử dụng renderer Compatibility, tối đa 8 OmniLights + 8 SpotLights có thể được render cho mỗi mesh resource. Có thể tăng giới hạn này trong Project Settings nâng cao bằng cách điều chỉnh
 :ref:`Max Renderable Elements<class_ProjectSettings_property_rendering/limits/opengl/max_renderable_elements>`
-and/or :ref:`Max Lights per Object<class_ProjectSettings_property_rendering/limits/opengl/max_lights_per_object>`
-in **Rendering > Limits > OpenGL**, at the cost of performance and longer shader
-compilation times. The limit can also be decreased to reduce shader compilation
-times and improve performance slightly.
+và/hoặc :ref:`Max Lights per Object<class_ProjectSettings_property_rendering/limits/opengl/max_lights_per_object>` trong **Rendering > Limits > OpenGL**, nhưng phải đánh đổi bằng hiệu năng và thời gian biên dịch shader lâu hơn. Bạn cũng có thể giảm giới hạn để rút ngắn thời gian biên dịch shader và cải thiện đôi chút hiệu năng.
 
-With all rendering methods, up to 8 DirectionalLights can be visible at a time.
-However, each additional DirectionalLight with shadows enabled will reduce the
-effective shadow resolution of each DirectionalLight. This is because
-directional shadow atlas is shared between all lights.
+Với tất cả các phương thức rendering, tối đa 8 DirectionalLights có thể hiển thị cùng lúc. Tuy nhiên, mỗi DirectionalLight bổ sung có bật bóng đổ sẽ làm giảm độ phân giải bóng đổ hiệu dụng của từng DirectionalLight. Điều này là do directional shadow atlas được dùng chung giữa tất cả các đèn.
 
-If the rendering limit is exceeded, lights will start popping in and out during
-camera movement, which can be distracting. Enabling **Distance Fade** on light
-nodes can help reduce this issue while also improving performance. Splitting
-your meshes into smaller portions can also help, especially for level geometry
-(which also improves culling efficiency).
+Nếu vượt quá giới hạn rendering, các đèn sẽ bắt đầu liên tục xuất hiện rồi biến mất trong khi camera di chuyển, gây mất tập trung. Bật **Distance Fade** trên các light node có thể giúp giảm vấn đề này đồng thời cải thiện hiệu năng. Chia mesh thành các phần nhỏ hơn cũng có thể hữu ích, đặc biệt đối với hình học của level (điều này cũng cải thiện hiệu quả culling).
 
-If you need to render more lights than possible in a given renderer,
-consider using :ref:`baked lightmaps <doc_using_lightmap_gi>` with lights' bake
-mode set to **Static**. This allows lights to be fully baked, which also makes
-them much faster to render. You can also use emissive materials with any
+Nếu cần render nhiều đèn hơn khả năng của một renderer nhất định, hãy cân nhắc sử dụng :ref:`baked lightmaps <doc_using_lightmap_gi>` với bake mode của đèn được đặt thành **Static**. Điều này cho phép bake hoàn toàn các đèn, đồng thời giúp render chúng nhanh hơn nhiều. Bạn cũng có thể sử dụng vật liệu phát sáng với bất kỳ
 :ref:`global illumination <doc_introduction_to_global_illumination>` technique
-as a replacement for light nodes that emit light over a large area.
+nào để thay thế cho các light node phát sáng trên một khu vực lớn.
 
 Shadow mapping
 --------------
 
-Lights can optionally cast shadows. This gives them greater realism (light does
-not reach occluded areas), but it can incur a bigger performance cost.
-There is a list of generic shadow parameters, each also has a specific function:
+Đèn có thể tùy chọn đổ bóng. Điều này giúp chúng chân thực hơn (ánh sáng không chiếu tới các khu vực bị che khuất), nhưng có thể làm tăng chi phí hiệu năng. Có một danh sách các tham số bóng đổ chung, mỗi tham số cũng có một chức năng cụ thể:
 
-- **Enabled:** Check to enable shadow mapping in this light.
-- **Opacity:** Areas occluded are darkened by this opacity factor. Shadows are
-  fully opaque by default, but this can be changed to make shadows translucent
-  for a given light.
-- **Bias:** When this parameter is too low, self-shadowing occurs. When too
-  high, shadows separate from the casters. Tweak to what works best for you.
-- **Normal Bias:** When this parameter is too low, self-shadowing occurs. When too
-  high, shadows appear misaligned from the casters. Tweak to what works best for you.
-- **Transmittance Bias:** When this parameter is too low, self-shadowing
-  occurs on materials that have transmittance enabled. When too high, shadows
-  will not affect materials that have transmittance enabled consistently. Tweak
-  to what works best for you.
-- **Reverse Cull Face:** Some scenes work better when shadow mapping is rendered
-  with face-culling inverted.
-- **Blur:** Multiplies the shadow blur radius for this light. This works with
-  both traditional shadow mapping and contact-hardening shadows (lights with
-  **Angular Distance** or **Size** greater than ``0.0``). Higher values result
-  in softer shadows, which will also appear to be more temporally stable for
-  moving objects. The downside of increasing shadow blur is that it will make
-  the grainy pattern used for filtering more noticeable.
-  See also :ref:`doc_lights_and_shadows_shadow_filter_mode`.
-- **Caster Mask:** Shadows are only cast by objects in these layers. Note that
-  this mask does not affect which objects shadows are cast *onto*.
+- **Enabled:** Chọn để bật shadow mapping cho đèn này. - **Opacity:** Các khu vực bị che khuất sẽ tối đi theo hệ số opacity này. Theo mặc định, bóng đổ hoàn toàn không trong suốt, nhưng có thể thay đổi để làm bóng đổ trong mờ đối với một đèn cụ thể. - **Bias:** Khi tham số này quá thấp, hiện tượng tự đổ bóng sẽ xảy ra. Khi quá cao, bóng đổ sẽ tách khỏi đối tượng đổ bóng. Hãy điều chỉnh đến giá trị phù hợp nhất với bạn. - **Normal Bias:** Khi tham số này quá thấp, hiện tượng tự đổ bóng sẽ xảy ra. Khi quá cao, bóng đổ có vẻ bị lệch khỏi đối tượng đổ bóng. Hãy điều chỉnh đến giá trị phù hợp nhất với bạn. - **Transmittance Bias:** Khi tham số này quá thấp, hiện tượng tự đổ bóng sẽ xảy ra trên các vật liệu đã bật transmittance. Khi quá cao, bóng đổ sẽ không tác động nhất quán lên các vật liệu đã bật transmittance. Hãy điều chỉnh đến giá trị phù hợp nhất với bạn. - **Reverse Cull Face:** Một số cảnh hoạt động tốt hơn khi shadow mapping được render với việc culling mặt bị đảo ngược. - **Blur:** Nhân bán kính làm mờ bóng đổ của đèn này. Thuộc tính này hoạt động với cả shadow mapping truyền thống và contact-hardening shadow (các đèn có **Angular Distance** hoặc **Size** lớn hơn ``0.0``). Giá trị cao hơn tạo ra bóng đổ mềm hơn, đồng thời có vẻ ổn định hơn theo thời gian đối với các đối tượng chuyển động. Nhược điểm của việc tăng độ mờ bóng đổ là làm cho mẫu nhiễu dùng để lọc trở nên dễ nhận thấy hơn. Xem thêm :ref:`doc_lights_and_shadows_shadow_filter_mode`. - **Caster Mask:** Chỉ các đối tượng trong những layer này mới đổ bóng. Lưu ý rằng mask này không ảnh hưởng đến việc bóng đổ được chiếu *lên* những đối tượng nào.
 
 .. image:: img/lights_and_shadows_blur.webp
 
-Tweaking shadow bias
-~~~~~~~~~~~~~~~~~~~~
+Điều chỉnh bias của bóng đổ
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Below is an image of what tweaking bias looks like. Default values work for most
-cases, but in general, it depends on the size and complexity of geometry.
+Dưới đây là hình ảnh minh họa việc điều chỉnh bias. Các giá trị mặc định phù hợp với hầu hết trường hợp, nhưng nhìn chung còn phụ thuộc vào kích thước và độ phức tạp của hình học.
 
-If the **Shadow Bias** or **Shadow Normal Bias** is set too low for a given light,
-the shadow will be "smeared" onto the objects. This will cause the light's
-intended appearance to darken, and is called *shadow acne*:
+Nếu **Shadow Bias** hoặc **Shadow Normal Bias** được đặt quá thấp đối với một đèn nhất định, bóng đổ sẽ bị "lem" lên các đối tượng. Điều này khiến vẻ ngoài vốn có của ánh sáng bị tối đi và được gọi là *shadow acne*:
 
 .. image:: img/lights_and_shadows_acne.webp
 
-On the other hand, if the **Shadow Bias** or **Shadow Normal Bias** is set too
-high for a given light, the shadow may appear to be disconnected from the
-object. This is called *peter-panning*:
+Ngược lại, nếu **Shadow Bias** hoặc **Shadow Normal Bias** được đặt quá cao đối với một đèn nhất định, bóng đổ có thể trông như bị tách khỏi đối tượng. Hiện tượng này được gọi là *peter-panning*:
 
 .. image:: img/lights_and_shadows_peter_panning.webp
 
-In general, increasing **Shadow Normal Bias** is preferred over increasing
-**Shadow Bias**. Increasing **Shadow Normal Bias** does not cause as much
-peter-panning as increasing **Shadow Bias**, but it can still resolve
-most shadow acne issues efficiently. The downside of increasing **Shadow Normal
-Bias** is that it can make shadows appear thinner for certain objects.
+Nhìn chung, nên tăng **Shadow Normal Bias** thay vì tăng **Shadow Bias**. Tăng **Shadow Normal Bias** không gây ra hiện tượng peter-panning nhiều như tăng **Shadow Bias**, nhưng vẫn có thể xử lý hiệu quả hầu hết vấn đề shadow acne. Nhược điểm của việc tăng **Shadow Normal Bias** là có thể khiến bóng đổ trông mỏng hơn trên một số đối tượng.
 
-Any sort of bias issues can be fixed by
+Mọi vấn đề liên quan đến bias đều có thể được khắc phục bằng cách
 :ref:`increasing the shadow map resolution <doc_lights_and_shadows_balancing_performance_and_quality>`,
-at the cost of decreased performance.
+nhưng phải đánh đổi bằng hiệu năng giảm.
 
 .. note::
 
-    Tweaking shadow mapping settings is an art – there are no "one size fits
-    all" settings. To achieve the best visuals, you may need to use different
-    shadow bias values on a per-light basis.
+    Việc điều chỉnh các thiết lập shadow mapping là một nghệ thuật – không có thiết lập "phù hợp cho mọi trường hợp". Để đạt được hình ảnh tốt nhất, bạn có thể cần sử dụng các giá trị shadow bias khác nhau cho từng đèn.
 
-**Note on Appearance Changes**: When enabling shadows on a light, be aware that the light's
-appearance might change compared to when it's rendered without shadows in the compatibility
-renderer. Due to limitations with older mobile devices, shadows are implemented using a multi-pass
-rendering approach so lights with shadows are rendered in sRGB space instead of linear space.
-This change in rendering space can sometimes drastically alter the light's appearance. To achieve a similar
-appearance to an unshadowed light, you may need to adjust the light's energy setting.
+**Lưu ý về thay đổi giao diện**: Khi bật bóng đổ trên một đèn, hãy lưu ý rằng giao diện của đèn có thể thay đổi so với khi được render không có bóng đổ trong renderer Compatibility. Do những hạn chế của các thiết bị di động cũ, bóng đổ được triển khai bằng phương pháp rendering nhiều pass, vì vậy các đèn có bóng đổ được render trong không gian sRGB thay vì không gian tuyến tính. Thay đổi không gian rendering này đôi khi có thể làm thay đổi đáng kể giao diện của đèn. Để đạt được giao diện tương tự như đèn không có bóng đổ, bạn có thể cần điều chỉnh thiết lập energy của đèn.
 
 .. _doc_lights_and_shadows_directional_light:
 
 Directional light
 -----------------
 
-This is the most common type of light and represents a light source very far
-away (such as the sun). It is also the cheapest light to compute and should be
-used whenever possible (although it's not the cheapest shadow-map to compute,
-but more on that later).
+Đây là loại đèn phổ biến nhất và đại diện cho một nguồn sáng ở rất xa (chẳng hạn như mặt trời). Đây cũng là loại đèn có chi phí tính toán thấp nhất và nên được sử dụng bất cứ khi nào có thể (mặc dù shadow-map của nó không phải loại có chi phí tính toán thấp nhất, nhưng sẽ nói thêm về điều đó sau).
 
-Directional light models an infinite number of parallel light rays
-covering the whole scene. The directional light node is represented by a big arrow which
-indicates the direction of the light rays. However, the position of the node
-does not affect the lighting at all and can be anywhere.
+Directional light mô phỏng vô số tia sáng song song bao phủ toàn bộ cảnh. Directional light node được biểu diễn bằng một mũi tên lớn cho biết hướng của các tia sáng. Tuy nhiên, vị trí của node hoàn toàn không ảnh hưởng đến việc chiếu sáng và có thể nằm ở bất kỳ đâu.
 
 .. image:: img/light_directional.png
 
-Every face whose front-side is hit by the light rays is lit, while the others
-stay dark. Unlike most other light types, directional lights don't have specific
-parameters.
+Mọi mặt có mặt trước bị các tia sáng chiếu vào đều được chiếu sáng, trong khi các mặt còn lại vẫn tối. Không giống hầu hết các loại đèn khác, directional light không có các tham số riêng.
 
-The directional light also offers an **Angular Distance** property, which
-determines the light's angular size in degrees. Increasing this above ``0.0``
-will make shadows softer at greater distances from the caster, while also
-affecting the sun's appearance in procedural sky materials. This is called a
-*contact-hardening* shadow (also known as PCSS).
+Directional light cũng cung cấp thuộc tính **Angular Distance**, xác định kích thước góc của đèn theo độ. Tăng giá trị này cao hơn ``0.0`` sẽ làm bóng đổ mềm hơn khi khoảng cách từ đối tượng đổ bóng tăng, đồng thời ảnh hưởng đến diện mạo của mặt trời trong các vật liệu bầu trời procedural. Đây được gọi là bóng đổ *contact-hardening* (còn gọi là PCSS).
 
-For reference, the angular distance of the Sun viewed from the Earth is
-approximately ``0.5``. This kind of shadow is expensive, so check the
-recommendations in :ref:`doc_lights_and_shadows_pcss_recommendations` if setting
-this value above ``0.0`` on lights with shadows enabled.
+Để tham khảo, khoảng cách góc của Mặt Trời khi nhìn từ Trái Đất xấp xỉ ``0.5``. Loại bóng đổ này tốn nhiều tài nguyên, vì vậy hãy xem các khuyến nghị trong :ref:`doc_lights_and_shadows_pcss_recommendations` nếu đặt giá trị này cao hơn ``0.0`` trên các đèn đã bật bóng đổ.
 
 Directional shadow mapping
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To compute shadow maps, the scene is rendered (only depth) from an orthogonal
-point of view that covers the whole scene (or up to the max distance). There is,
-however, a problem with this approach because objects closer to the camera
-receive low-resolution shadows that may appear blocky.
+Để tính shadow map, cảnh được render (chỉ độ sâu) từ một góc nhìn trực giao bao quát toàn bộ cảnh (hoặc tối đa đến khoảng cách lớn nhất). Tuy nhiên, cách tiếp cận này có một vấn đề: các đối tượng ở gần camera hơn sẽ nhận shadow có độ phân giải thấp, khiến chúng có thể trông bị vỡ hình.
 
-To fix this, a technique named *Parallel Split Shadow Maps* (PSSM) is used.
-This splits the view frustum in 2 or 4 areas. Each area gets its own shadow map.
-This allows small areas close to the viewer to have the same shadow resolution
-as a huge, far-away area. When shadows are enabled for DirectionalLight3D, the
-default shadow mode is PSSM with 4 splits. In scenarios where an object is large
-enough to appear in all four splits, it results in increased draw calls. Specifically,
-such an object will be rendered five times in total: once for each of the four shadow
-splits and once for the final scene rendering. This can impact performance, understanding
-this behavior is important for optimizing your scene and managing performance expectations.
+Để khắc phục điều này, một kỹ thuật có tên *Parallel Split Shadow Maps* (PSSM) được sử dụng. Kỹ thuật này chia view frustum thành 2 hoặc 4 vùng. Mỗi vùng có shadow map riêng. Nhờ đó, các vùng nhỏ ở gần người xem có thể có cùng độ phân giải shadow như một vùng rất lớn ở xa. Khi shadow được bật cho DirectionalLight3D, chế độ shadow mặc định là PSSM với 4 vùng chia. Trong các trường hợp một đối tượng đủ lớn để xuất hiện trong cả bốn vùng chia, số lần draw call sẽ tăng. Cụ thể, đối tượng đó sẽ được render tổng cộng năm lần: một lần cho mỗi trong bốn vùng shadow và một lần cho lần render cảnh cuối cùng. Điều này có thể ảnh hưởng đến hiệu năng; việc hiểu hành vi này rất quan trọng để tối ưu hóa cảnh và quản lý kỳ vọng về hiệu năng.
 
 .. image:: img/lights_and_shadows_pssm_explained.webp
 
-With this, shadows become more detailed:
+Nhờ vậy, shadow trở nên chi tiết hơn:
 
 .. image:: img/lights_and_shadows_directional_mode.webp
 
-To control PSSM, a number of parameters are exposed:
+Để điều khiển PSSM, một số tham số được cung cấp:
 
 .. image:: img/lights_and_shadows_directional_shadow_params.webp
 
-Each split distance is controlled relative to the camera far (or shadow
-**Max Distance** if greater than ``0.0``). ``0.0`` is the eye position and
-``1.0`` is where the shadow ends at a distance. Splits are in-between.
-Default values generally work well, but tweaking the first split a bit is common
-to give more detail to close objects (like a character in a third-person game).
+Khoảng cách của mỗi vùng chia được điều khiển tương đối so với camera far (hoặc **Max Distance** của shadow nếu lớn hơn ``0.0``). ``0.0`` là vị trí mắt và ``1.0`` là nơi shadow kết thúc tại một khoảng cách nhất định. Các vùng chia nằm ở giữa. Các giá trị mặc định nhìn chung hoạt động tốt, nhưng việc tinh chỉnh vùng chia đầu tiên đôi chút là cách thường dùng để cung cấp nhiều chi tiết hơn cho các đối tượng ở gần (chẳng hạn như nhân vật trong game góc nhìn người thứ ba).
 
-Always make sure to set a shadow **Max Distance** according to what the scene
-needs. A lower maximum distance will result in better-looking shadows and better
-performance, as fewer objects will need to be included in shadow rendering. You
-can also adjust **Fade Start** to control how aggressive the shadow fade-out
-should be at a distance. For scenes where the **Max Distance** fully covers the
-scene at any given camera position, you can increase **Fade Start** to ``1.0``
-to prevent the shadow from fading at a distance. This should not be done in
-scenes where **Max Distance** doesn't fully cover the scene, as the shadow will
-appear to be suddenly cut off at a distance.
+Luôn nhớ đặt **Max Distance** của shadow phù hợp với nhu cầu của cảnh. Khoảng cách tối đa thấp hơn sẽ tạo ra shadow đẹp hơn và hiệu năng tốt hơn, vì sẽ có ít đối tượng cần được đưa vào quá trình render shadow hơn. Bạn cũng có thể điều chỉnh **Fade Start** để kiểm soát mức độ shadow mờ dần theo khoảng cách. Đối với các cảnh mà **Max Distance** bao phủ hoàn toàn cảnh tại mọi vị trí của camera, bạn có thể tăng **Fade Start** lên ``1.0`` để ngăn shadow mờ dần theo khoảng cách. Không nên làm vậy trong các cảnh mà **Max Distance** không bao phủ hoàn toàn cảnh, vì shadow sẽ có vẻ bị cắt đột ngột ở một khoảng cách nào đó.
 
-Sometimes, the transition between a split and the next can look bad. To fix
-this, the **Blend Splits** option can be turned on, which sacrifices detail and
-performance in exchange for smoother transitions:
+Đôi khi, sự chuyển tiếp giữa một vùng chia và vùng tiếp theo có thể trông không đẹp. Để khắc phục điều này, có thể bật tùy chọn **Blend Splits**, đánh đổi chi tiết và hiệu năng để có sự chuyển tiếp mượt mà hơn:
 
 .. image:: img/blend_splits.png
 
-The **Shadow > Normal Bias** parameter can be used to fix special cases of
-self-shadowing when objects are perpendicular to the light. The only downside is
-that it makes the shadow a bit thinner. Consider increasing **Shadow > Normal
-Bias** before increasing **Shadow > Bias** in most situations.
+Có thể sử dụng tham số **Shadow > Normal Bias** để khắc phục các trường hợp đặc biệt về self-shadowing khi các đối tượng vuông góc với nguồn sáng. Nhược điểm duy nhất là shadow sẽ mỏng hơn một chút. Trong hầu hết trường hợp, hãy cân nhắc tăng **Shadow > Normal Bias** trước khi tăng **Shadow > Bias**.
 
-Lastly, **Pancake Size** is a property that can be adjusted to fix missing
-shadows when using large objects with unsubdivided meshes. Only change this
-value if you notice missing shadows that are not related to shadow biasing
-issues.
+Cuối cùng, **Pancake Size** là một thuộc tính có thể được điều chỉnh để khắc phục shadow bị thiếu khi sử dụng các đối tượng lớn với mesh chưa được chia nhỏ. Chỉ thay đổi giá trị này nếu bạn nhận thấy shadow bị thiếu mà nguyên nhân không liên quan đến các vấn đề về shadow bias.
 
 .. _doc_lights_and_shadows_omni_light:
 
-Omni light
-----------
+Đèn Omni
+--------
 
-Omni light is a point source that emits light spherically in all directions up to a given
-radius.
+Đèn Omni là một nguồn sáng dạng điểm, phát ánh sáng hình cầu theo mọi hướng trong phạm vi bán kính cho trước.
 
 .. image:: img/light_omni.png
 
-In real life, light attenuation is an inverse function, which means omni lights don't have a radius.
-This is a problem because it means computing several omni lights would become demanding.
+Trong thực tế, độ suy giảm ánh sáng là một hàm nghịch đảo, nghĩa là đèn Omni không có bán kính. Đây là một vấn đề vì việc tính toán nhiều đèn Omni sẽ trở nên tốn tài nguyên.
 
-To solve this, a **Range** parameter is introduced together with an attenuation function.
+Để giải quyết vấn đề này, tham số **Range** được giới thiệu cùng với một hàm suy giảm.
 
 .. image:: img/light_omni_params.png
 
-These two parameters allow tweaking how this works visually in order to find aesthetically pleasing results.
+Hai tham số này cho phép tinh chỉnh cách hiệu ứng hoạt động về mặt hình ảnh để đạt được kết quả thẩm mỹ mong muốn.
 
 .. image:: img/light_attenuation.png
 
-A **Size** parameter is also available in OmniLight3D. Increasing this value
-will make the light fade out slower and shadows appear blurrier when far away
-from the caster. This can be used to simulate area lights to an extent. This is
-called a *contact-hardening* shadow (also known as PCSS). This kind of shadow is
-expensive, so check the recommendations in
+Một tham số **Size** cũng có trong OmniLight3D. Việc tăng giá trị này sẽ khiến ánh sáng mờ dần chậm hơn và shadow trở nên mờ hơn khi ở xa vật thể đổ shadow. Có thể sử dụng tham số này để phần nào mô phỏng đèn vùng. Loại shadow này được gọi là shadow *contact-hardening* (còn được gọi là PCSS). Loại shadow này tốn nhiều tài nguyên, vì vậy hãy xem các khuyến nghị trong
 :ref:`doc_lights_and_shadows_pcss_recommendations` if setting this value above
-``0.0`` on lights with shadows enabled.
+``0.0`` trên các đèn đã bật shadow.
 
 .. image:: img/lights_and_shadows_pcss.webp
 
-Omni shadow mapping
-~~~~~~~~~~~~~~~~~~~
+Ánh xạ shadow của đèn Omni
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Omni light shadow mapping is relatively straightforward. The main issue that
-needs to be considered is the algorithm used to render it.
+Ánh xạ shadow của đèn Omni tương đối đơn giản. Vấn đề chính cần cân nhắc là thuật toán được sử dụng để render nó.
 
-Omni Shadows can be rendered as either **Dual Paraboloid** or **Cube** mapped.
-**Dual Paraboloid** renders quickly, but can cause deformations, while **Cube**
-is more correct, but slower. The default is **Cube**, but consider changing it
-to **Dual Paraboloid** for lights where it doesn't make much of a visual
-difference.
+Omni Shadow có thể được render dưới dạng ánh xạ **Dual Paraboloid** hoặc **Cube**. **Dual Paraboloid** render nhanh, nhưng có thể gây biến dạng, trong khi **Cube** chính xác hơn nhưng chậm hơn. Mặc định là **Cube**, nhưng hãy cân nhắc chuyển sang **Dual Paraboloid** đối với những đèn mà việc thay đổi này không tạo ra khác biệt đáng kể về hình ảnh.
 
 .. image:: img/lights_and_shadows_dual_parabolid_vs_cubemap.webp
 
-If the objects being rendered are mostly irregular and subdivided, Dual
-Paraboloid is usually enough. In any case, as these shadows are cached in a
-shadow atlas (more on that at the end), it may not make a difference in
-performance for most scenes.
+Nếu các đối tượng được render chủ yếu có hình dạng bất quy tắc và đã được chia nhỏ, Dual Paraboloid thường là đủ. Trong mọi trường hợp, vì các shadow này được lưu vào shadow atlas (sẽ nói thêm ở cuối), hiệu năng có thể không thay đổi đối với hầu hết các cảnh.
 
-Omni lights with shadows enabled can make use of projectors. The projector
-texture will *multiply* the light's color by the color at a given point on the
-texture. As a result, lights will usually appear to be darker once a projector
-texture is assigned; you can increase **Energy** to compensate for this.
+Các đèn Omni đã bật shadow có thể sử dụng projector. Texture của projector sẽ *nhân* màu của đèn với màu tại một điểm nhất định trên texture. Do đó, đèn thường sẽ trông tối hơn sau khi được gán texture projector; bạn có thể tăng **Energy** để bù lại.
 
-Omni light projector textures require a special 360° panorama mapping, similar
-to :ref:`class_PanoramaSkyMaterial` textures.
+Texture projector của đèn Omni yêu cầu một kiểu ánh xạ panorama 360° đặc biệt, tương tự như texture :ref:`class_PanoramaSkyMaterial`.
 
-With the projector texture below, the following result is obtained:
+Với texture projector bên dưới, kết quả thu được như sau:
 
 .. image:: img/lights_and_shadows_omni_projector_example.webp
 
@@ -328,44 +186,30 @@ With the projector texture below, the following result is obtained:
 
 .. tip::
 
-    If you've acquired omni projectors in the form of cubemap images, you can use
-    `this web-based conversion tool <https://danilw.github.io/GLSL-howto/cubemap_to_panorama_js/cubemap_to_panorama.html>`__
-    to convert them to a single panorama image.
+    Nếu bạn đã có projector Omni dưới dạng ảnh cubemap, bạn có thể sử dụng `công cụ chuyển đổi trên web này <https://danilw.github.io/GLSL-howto/cubemap_to_panorama_js/cubemap_to_panorama.html>`__ để chuyển đổi chúng thành một ảnh panorama duy nhất.
 
 .. _doc_lights_and_shadows_spot_light:
 
-Spot light
-----------
+Đèn Spot
+--------
 
-Spot lights are similar to omni lights, except they emit light only into a cone
-(or "cutoff"). They are useful to simulate flashlights,
-car lights, reflectors, spots, etc. This type of light is also attenuated towards the
-opposite direction it points to.
+Đèn Spot tương tự đèn Omni, ngoại trừ việc chúng chỉ phát ánh sáng vào một hình nón (hay "cutoff"). Chúng hữu ích để mô phỏng đèn pin, đèn xe, đèn phản chiếu, đèn sân khấu, v.v. Loại đèn này cũng bị suy giảm theo hướng ngược lại với hướng mà nó chiếu tới.
 
-Spot lights share the same **Range**, **Attenuation** and **Size** as OmniLight3D,
-and add two extra parameters:
+Đèn Spot dùng chung **Range**, **Attenuation** và **Size** với OmniLight3D, đồng thời bổ sung thêm hai tham số:
 
-- **Angle:** The aperture angle of the light.
-- **Angle Attenuation:** The cone attenuation, which helps soften the cone borders.
+- **Angle:** Góc khẩu độ của đèn. - **Angle Attenuation:** Độ suy giảm của hình nón, giúp làm mềm các đường biên của hình nón.
 
-Spot shadow mapping
-~~~~~~~~~~~~~~~~~~~
+Ánh xạ shadow của đèn Spot
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Spots feature the same parameters as omni lights for shadow mapping. Rendering
-spot shadow maps is significantly faster compared to omni lights, as only one
-shadow texture needs to be rendered (instead of rendering 6 faces, or 2 in dual
-paraboloid mode).
+Đèn Spot có cùng các tham số ánh xạ shadow như đèn Omni. Việc render shadow map của đèn Spot nhanh hơn đáng kể so với đèn Omni, vì chỉ cần render một texture shadow (thay vì render 6 mặt, hoặc 2 mặt trong chế độ dual paraboloid).
 
-Spot lights with shadows enabled can make use of projectors. The projector
-texture will *multiply* the light's color by the color at a given point on the
-texture. As a result, lights will usually appear to be darker once a projector
-texture is assigned; you can increase **Energy** to compensate for this.
+Các đèn Spot đã bật shadow có thể sử dụng projector. Texture của projector sẽ *nhân* màu của đèn với màu tại một điểm nhất định trên texture. Do đó, đèn thường sẽ trông tối hơn sau khi được gán texture projector; bạn có thể tăng **Energy** để bù lại.
 
-Unlike omni light projectors, a spot light projector texture doesn't need to
-follow a special format to look correct. It will be mapped in a way similar to a
+Không giống projector của đèn Omni, texture projector của đèn Spot không cần tuân theo định dạng đặc biệt để hiển thị chính xác. Nó sẽ được ánh xạ theo cách tương tự như một
 :ref:`decal <doc_using_decals>`.
 
-With the projector texture below, the following result is obtained:
+Với texture projector bên dưới, kết quả thu được như sau:
 
 .. image:: img/lights_and_shadows_spot_projector_example.webp
 
@@ -373,281 +217,160 @@ With the projector texture below, the following result is obtained:
 
 .. note::
 
-    Spot lights with wide angles will have lower-quality shadows than spot
-    lights with narrow angles, as the shadow map is spread over a larger
-    surface. At angles wider than 89 degrees, spot light shadows will stop
-    working entirely. If you need shadows for wider lights, use an omni light
-    instead.
+    Đèn Spot có góc rộng sẽ có shadow chất lượng thấp hơn đèn Spot có góc hẹp, vì shadow map được trải trên một bề mặt lớn hơn. Ở các góc rộng hơn 89 độ, shadow của đèn Spot sẽ hoàn toàn ngừng hoạt động. Nếu cần shadow cho các đèn có góc rộng hơn, hãy sử dụng đèn Omni thay thế.
 
 .. _doc_lights_and_shadows_area_light:
 
-Area light
-----------
+Đèn vùng
+--------
 
-Sometimes, you want lighting to come from a large area instead of a single
-point. Area lights are useful for simulating soft, diffuse lighting, such as
-light coming from a window or a lit billboard.
+Đôi khi, bạn muốn ánh sáng phát ra từ một vùng lớn thay vì một điểm duy nhất. Đèn vùng hữu ích để mô phỏng ánh sáng mềm, khuếch tán, chẳng hạn như ánh sáng phát ra từ cửa sổ hoặc bảng quảng cáo được chiếu sáng.
 
-Godot provides the :ref:`class_AreaLight3D` node for this purpose, which emits
-light from a rectangular area. The node only emits light and has no other visual
-representation in the scene. The screenshots below use a :ref:`class_Sprite3D`
-node as a child of the area light for visualization purposes.
+Godot cung cấp node :ref:`class_AreaLight3D` cho mục đích này; node này phát ánh sáng từ một vùng hình chữ nhật. Node này chỉ phát ánh sáng và không có biểu diễn trực quan nào khác trong cảnh. Các ảnh chụp màn hình bên dưới sử dụng node :ref:`class_Sprite3D` làm node con của đèn vùng để phục vụ mục đích trực quan hóa.
 
 .. warning::
 
-    This type of light is the most expensive to render in real-time. It should
-    be used sparingly, especially when shadows are enabled.
-    Consider using them only for cinematics or when targeting high-end devices.
+    Đây là loại đèn tốn nhiều tài nguyên nhất khi render theo thời gian thực. Nên sử dụng hạn chế, đặc biệt khi đã bật shadow. Hãy cân nhắc chỉ sử dụng chúng cho các đoạn phim hoặc khi nhắm đến các thiết bị cao cấp.
 
-    In Forward+, as soon as one area light is visible in the view frustum, it
-    incurs an additional performance cost on **all** rendered objects in the
-    scene, even those that are not reached by an area light. This tradeoff
-    allows for a greater number of area lights to be rendered (clustered
-    lighting).
+    Trong Forward+, ngay khi một đèn vùng hiển thị trong view frustum, nó sẽ gây thêm chi phí hiệu năng cho **tất cả** đối tượng được render trong cảnh, kể cả những đối tượng không được đèn vùng chiếu tới. Sự đánh đổi này cho phép render số lượng đèn vùng lớn hơn (clustered lighting).
 
-    In Mobile and Compatibility, only objects that are reached by an area light
-    incur an additional performance cost.
+    Trong Mobile và Compatibility, chỉ các đối tượng được đèn vùng chiếu tới mới phải chịu thêm chi phí hiệu năng.
 
-Area lights can also cast shadows, with variable penumbra simulated using
+Đèn vùng cũng có thể đổ shadow, với penumbra thay đổi được mô phỏng bằng
 :ref:`PCSS <doc_lights_and_shadows_pcss_recommendations>` by default. The size
-of this penumbra can be controlled with the Light3D **Size** property. This
-effect can be quite demanding, so it can be turned off by setting **Size** to
-``0.0``.
+Có thể điều khiển mức độ của penumbra này bằng thuộc tính **Size** của Light3D. Hiệu ứng này có thể khá tốn tài nguyên, vì vậy có thể tắt bằng cách đặt **Size** thành ``0.0``.
 
 .. note::
 
-    Shadows cast by an area light may look incorrect if the object casting shadows
-    doesn't have enough subdivisions and it's very close to the area light.
-    This is the same limitation as Dual Paraboloid shadow mode on an omni light.
+    Shadow do đèn vùng tạo ra có thể trông không chính xác nếu đối tượng đổ shadow không có đủ subdivisions và ở quá gần đèn vùng. Đây cũng là giới hạn của chế độ shadow Dual Paraboloid trên đèn Omni.
 
 .. image:: img/lights_and_shadows_area_example.webp
 
 .. note::
 
-    Since area lights are difficult to simulate in a real-time rasterized
-    renderer, they come with a number of limitations.
+    Vì đèn vùng khó mô phỏng trong một renderer rasterized theo thời gian thực, chúng đi kèm với một số giới hạn.
 
-    For small light sources, you will likely get better results when using point
-    lights. Shadows from area lights are crude approximations, as they are
-    calculated as if they were point lights, and may appear to be distorted at
-    the edges. To get a better result, make sure the meshes in the light's range
-    are sufficiently subdivided.
+    Đối với các nguồn sáng nhỏ, bạn có thể sẽ đạt kết quả tốt hơn khi sử dụng đèn điểm. Shadow từ đèn vùng chỉ là các phép xấp xỉ thô, vì chúng được tính như thể là đèn điểm và có thể trông bị biến dạng ở các cạnh. Để có kết quả tốt hơn, hãy đảm bảo các mesh trong phạm vi của đèn được chia nhỏ đầy đủ.
 
-    Area lights suffer from light leaking on the backside of geometry closely in
-    front of them at grazing angles, so be careful with where you place them.
+    Đèn vùng dễ gây ra hiện tượng ánh sáng lọt ở mặt sau của hình học nằm ngay phía trước chúng tại các góc chiếu sượt, vì vậy hãy cẩn thận khi bố trí chúng.
 
-    Lastly, not all material features are fully supported; area lights are
-    practically limited to Lambertian diffuse and GGX specular shading, while
-    anisotropic materials will appear as if isotropic. Vertex shading is also
-    not implemented for area lights.
+    Cuối cùng, không phải tất cả các đặc tính của vật liệu đều được hỗ trợ đầy đủ; area light thực tế chỉ bị giới hạn ở shading diffuse Lambertian và specular GGX, trong khi vật liệu anisotropic sẽ hiển thị như thể là isotropic. Vertex shading cũng chưa được triển khai cho area light.
 
-Area lights emit light in a rectangular area defined by the **Area > Size**
-property (not to be confused with the generic Light3D **Size** property). To get
-a physically accurate result, you should resize this area to match the size of
-the real-life light source you are trying to simulate. For example, if you are
-simulating a 1-meter neon tube that is 10 centimeters wide, set the area
-size to ``(1, 0.1)`` and adjust the energy accordingly.
+Area light phát sáng trong một vùng hình chữ nhật được xác định bởi thuộc tính **Area > Size** (không nên nhầm với thuộc tính **Size** chung của Light3D). Để có kết quả chính xác về mặt vật lý, bạn nên thay đổi kích thước vùng này để khớp với kích thước của nguồn sáng thực tế mà bạn đang mô phỏng. Ví dụ: nếu bạn đang mô phỏng một ống neon dài 1 mét và rộng 10 centimet, hãy đặt kích thước vùng thành ``(1, 0.1)`` và điều chỉnh energy tương ứng.
 
-By default, the light's energy is normalized: the larger the area, the weaker
-the light. This allows you to change the area size without needing to adjust the
-energy to compensate, which is useful for animation. You can disable this
-behavior by unchecking **Area > Normalize Energy** if you want the energy to be
-independent of the area size.
+Theo mặc định, energy của light được normalize: vùng càng lớn thì light càng yếu. Điều này cho phép bạn thay đổi kích thước vùng mà không cần điều chỉnh energy để bù lại, rất hữu ích cho animation. Bạn có thể tắt hành vi này bằng cách bỏ chọn **Area > Normalize Energy** nếu muốn energy độc lập với kích thước vùng.
 
-The rectangular area can optionally be textured. This can be effectively used to
-change the light's shape into any 2D shape, or tint it in different colors. The
-texture's alpha channel is treated as black (no light coming through). The area
-light's texture will be visible in reflections according to the surface's
-roughness. This behavior is different from omni/spot projectors, as it does not
-project the texture directly onto all diffuse lighting.
+Vùng hình chữ nhật có thể tùy chọn sử dụng texture. Điều này có thể được dùng hiệu quả để thay đổi hình dạng của light thành bất kỳ hình dạng 2D nào hoặc nhuộm nó bằng các màu khác nhau. Kênh alpha của texture được xử lý như màu đen (không có ánh sáng đi qua). Texture của area light sẽ hiển thị trong reflection tùy theo roughness của bề mặt. Hành vi này khác với projector omni/spot, vì nó không chiếu texture trực tiếp lên toàn bộ diffuse lighting.
 
-When using a textures that are transparent or black toward the edges, you might
-want to leave a gap of a few pixels to make sure the texture is blurred
-smoothly.
+Khi sử dụng texture trong suốt hoặc có màu đen ở các cạnh, bạn có thể muốn chừa một khoảng trống vài pixel để đảm bảo texture được làm mờ mượt mà.
 
 .. image:: img/lights_and_shadows_area_texture.webp
 
 .. note::
 
-    Changing the area light's texture at runtime can be expensive, especially if
-    the texture is large.
+    Việc thay đổi texture của area light tại runtime có thể tốn nhiều tài nguyên, đặc biệt nếu texture lớn.
 
-    To reduce the performance impact of switching textures at runtime, make sure
-    each dimension of an area texture is either a multiple of 128 pixels, or a
-    power of two. This removes the need for a scaling pass, which slows down
-    texture changes. The textures don't necessarily have to be square to be
-    optimal. Examples of optimal texture sizes include 32×64, 128×128, and
-    256×384.
+    Để giảm tác động đến hiệu năng khi chuyển texture tại runtime, hãy đảm bảo mỗi chiều của texture area hoặc là bội số của 128 pixel, hoặc là lũy thừa của hai. Điều này loại bỏ nhu cầu thực hiện scaling pass, vốn làm chậm quá trình thay đổi texture. Texture không nhất thiết phải là hình vuông để đạt hiệu năng tối ưu. Các ví dụ về kích thước texture tối ưu gồm 32×64, 128×128 và 256×384.
 
-    Textured area lights are not supported in the Compatibility renderer.
+    Texture area light không được hỗ trợ trong Compatibility renderer.
 
 .. _doc_lights_and_shadows_shadow_atlas:
 
 Shadow atlas
 ------------
 
-Unlike Directional lights, which have their own shadow texture, omni, spot, and area
-lights are assigned to slots of a shadow atlas. This atlas can be configured in
-the advanced Project Settings (**Rendering > Lights And Shadows > Positional Shadow**).
+Không giống Directional light, vốn có texture shadow riêng, omni, spot và area light được gán vào các slot của shadow atlas. Atlas này có thể được cấu hình trong Project Settings nâng cao (**Rendering > Lights And Shadows > Positional Shadow**).
 
-The resolution applies to the whole shadow atlas. This atlas is divided into four quadrants:
+Độ phân giải áp dụng cho toàn bộ shadow atlas. Atlas này được chia thành bốn quadrant:
 
 .. image:: img/lights_and_shadows_shadow_quadrants.webp
 
-Each quadrant can be subdivided to allocate any number of shadow maps; the following is the default subdivision:
+Mỗi quadrant có thể được chia nhỏ để phân bổ số lượng shadow map bất kỳ; cách chia mặc định như sau:
 
 .. image:: img/lights_and_shadows_shadow_quadrants2.webp
 
-The shadow atlas allocates space as follows:
+Shadow atlas phân bổ không gian như sau:
 
-- The biggest shadow map size (when no subdivision is used) represents a light the size of the screen (or bigger).
-- Subdivisions (smaller maps) represent shadows for lights that are further away from view and proportionally smaller.
+- Kích thước shadow map lớn nhất (khi không sử dụng subdivision) đại diện cho một light có kích thước bằng màn hình (hoặc lớn hơn). - Subdivision (các map nhỏ hơn) đại diện cho shadow của những light ở xa góc nhìn hơn và nhỏ hơn theo tỷ lệ.
 
-Every frame, the following procedure is performed for all lights:
+Mỗi frame, quy trình sau được thực hiện cho tất cả light:
 
-1. Check if the light is on a slot of the right size. If not, re-render it and move it to a larger/smaller slot.
-2. Check if any object affecting the shadow map has changed. If it did, re-render the light.
-3. If neither of the above has happened, nothing is done, and the shadow is left untouched.
+1. Kiểm tra xem light có nằm trong slot đúng kích thước hay không. Nếu không, render lại light và chuyển nó sang slot lớn hơn/nhỏ hơn. 2. Kiểm tra xem có object nào ảnh hưởng đến shadow map đã thay đổi hay không. Nếu có, render lại light. 3. Nếu không có điều nào ở trên xảy ra, không làm gì cả và giữ nguyên shadow.
 
-If the slots in a quadrant are full, lights are pushed back to smaller slots,
-depending on size and distance. If all slots in all quadrants are full, some
-lights will not be able to render shadows even if shadows are enabled on them.
+Nếu các slot trong một quadrant đã đầy, light sẽ được đẩy về các slot nhỏ hơn, tùy thuộc vào kích thước và khoảng cách. Nếu tất cả slot trong mọi quadrant đều đầy, một số light sẽ không thể render shadow ngay cả khi chúng đã bật shadow.
 
-The default shadow allocation strategy allows rendering up to 88 lights with
-shadows enabled in the camera frustum (4 + 4 + 16 + 64):
+Chiến lược phân bổ shadow mặc định cho phép render tối đa 88 light với shadow được bật trong camera frustum (4 + 4 + 16 + 64):
 
-1. The first and most detailed quadrant can store 4 shadows.
-2. The second quadrant can store 4 other shadows.
-3. The third quadrant can store 16 shadows, with less detail.
-4. The fourth and least detailed quadrant can store 64 shadows, with even less detail.
+1. Quadrant đầu tiên và chi tiết nhất có thể lưu trữ 4 shadow. 2. Quadrant thứ hai có thể lưu trữ 4 shadow khác. 3. Quadrant thứ ba có thể lưu trữ 16 shadow, với ít chi tiết hơn. 4. Quadrant thứ tư và ít chi tiết nhất có thể lưu trữ 64 shadow, với thậm chí ít chi tiết hơn.
 
-Using a higher number of shadows per quadrant allows supporting a greater amount
-of total lights with shadows enabled, while also improving performance (as
-shadows will be rendered at a lower resolution for each light). However,
-increasing the number of shadows per quadrant comes at the cost of lower shadow
-quality.
+Sử dụng số lượng shadow cao hơn cho mỗi quadrant cho phép hỗ trợ tổng số light lớn hơn với shadow được bật, đồng thời cải thiện hiệu năng (vì shadow sẽ được render ở độ phân giải thấp hơn cho mỗi light). Tuy nhiên, việc tăng số lượng shadow cho mỗi quadrant phải đánh đổi bằng chất lượng shadow thấp hơn.
 
-In some cases, you may want to use a different allocation strategy. For example,
-in a top-down game where all lights are around the same size, you may want to
-set all quadrants to have the same subdivision so that all lights have shadows
-of similar quality level.
+Trong một số trường hợp, bạn có thể muốn sử dụng một chiến lược phân bổ khác. Ví dụ: trong một game top-down, nơi tất cả light có kích thước gần như nhau, bạn có thể muốn đặt tất cả quadrant sử dụng cùng một subdivision để mọi light có shadow với mức chất lượng tương tự.
 
 .. _doc_lights_and_shadows_balancing_performance_and_quality:
 
-Balancing performance and quality
----------------------------------
+Cân bằng hiệu năng và chất lượng
+--------------------------------
 
-Shadow rendering is a critical topic in 3D rendering performance. It's important
-to make the right choices here to avoid creating bottlenecks.
+Việc render shadow là một chủ đề quan trọng đối với hiệu năng 3D rendering. Điều quan trọng là đưa ra lựa chọn phù hợp ở đây để tránh tạo ra các bottleneck.
 
-Directional shadow quality settings can be changed at runtime by calling the
-appropriate :ref:`class_RenderingServer` methods.
+Có thể thay đổi các thiết lập chất lượng directional shadow tại runtime bằng cách gọi các method :ref:`class_RenderingServer` tương ứng.
 
-Positional (omni/spot/area) shadow quality settings can be changed at runtime on the
-root :ref:`class_Viewport`.
+Có thể thay đổi các thiết lập chất lượng positional (omni/spot/area) shadow tại runtime trên root :ref:`class_Viewport`.
 
-Shadow map size
-~~~~~~~~~~~~~~~
+Kích thước shadow map
+~~~~~~~~~~~~~~~~~~~~~
 
-High shadow resolutions result in sharper shadows, but at a significant
-performance cost. It should also be noted that *sharper shadows are not always
-more realistic*. In most cases, this should be kept at its default value of
-``4096`` or decreased to ``2048`` for low-end GPUs.
+Độ phân giải shadow cao tạo ra shadow sắc nét hơn, nhưng phải trả giá đáng kể về hiệu năng. Cũng cần lưu ý rằng *shadow sắc nét hơn không phải lúc nào cũng chân thực hơn*. Trong hầu hết trường hợp, nên giữ giá trị mặc định là ``4096`` hoặc giảm xuống ``2048`` đối với GPU cấp thấp.
 
-If positional shadows become too blurry after decreasing the shadow map size,
-you can counteract this by adjusting the
+Nếu positional shadow trở nên quá mờ sau khi giảm kích thước shadow map, bạn có thể khắc phục bằng cách điều chỉnh
 :ref:`shadow atlas <doc_lights_and_shadows_shadow_atlas>` quadrants to contain
-fewer shadows. This will allow each shadow to be rendered at a higher resolution.
+ít shadow hơn. Điều này cho phép render mỗi shadow ở độ phân giải cao hơn.
 
 .. _doc_lights_and_shadows_shadow_filter_mode:
 
-Shadow filter mode
-~~~~~~~~~~~~~~~~~~
+Chế độ lọc shadow
+~~~~~~~~~~~~~~~~~
 
-Several shadow map quality settings can be chosen here. The default **Soft Low**
-is a good balance between performance and quality for scenes with detailed
-textures, as the texture detail will help make the dithering pattern less noticeable.
+Tại đây có thể chọn một số thiết lập chất lượng shadow map. Mặc định **Soft Low** là sự cân bằng tốt giữa hiệu năng và chất lượng cho các scene có texture chi tiết, vì độ chi tiết của texture sẽ giúp làm cho pattern dithering ít dễ nhận thấy hơn.
 
-However, in projects with less detailed textures, the shadow dithering pattern
-may be more visible. To hide this pattern, you can either enable
+Tuy nhiên, trong các project có texture ít chi tiết hơn, pattern dithering của shadow có thể dễ nhận thấy hơn. Để ẩn pattern này, bạn có thể bật
 :ref:`doc_3d_antialiasing_taa`, :ref:`doc_3d_antialiasing_fsr2`,
 :ref:`doc_3d_antialiasing_fxaa`, or increase the shadow filter quality to
-**Soft Medium** or higher.
+**Soft Medium** hoặc cao hơn.
 
-The **Soft Very Low** setting will automatically decrease shadow blur to make
-artifacts from the low sample count less visible. Conversely, the **Soft High**
-and **Soft Ultra** settings will automatically increase shadow blur to better
-make use of the increased sample count.
+Thiết lập **Soft Very Low** sẽ tự động giảm độ blur của shadow để khiến các artifact do số lượng sample thấp ít dễ nhận thấy hơn. Ngược lại, các thiết lập **Soft High** và **Soft Ultra** sẽ tự động tăng độ blur của shadow để tận dụng tốt hơn số lượng sample tăng thêm.
 
 .. image:: img/lights_and_shadows_filter_quality.webp
 
-16-bits versus 32-bit
-~~~~~~~~~~~~~~~~~~~~~
+16-bit so với 32-bit
+~~~~~~~~~~~~~~~~~~~~
 
-By default, Godot uses 16-bit depth textures for shadow map rendering. This is
-recommended in most cases as it performs better without a noticeable difference
-in quality.
+Theo mặc định, Godot sử dụng depth texture 16-bit để render shadow map. Đây là lựa chọn được khuyến nghị trong hầu hết trường hợp vì có hiệu năng tốt hơn mà không tạo ra khác biệt đáng kể về chất lượng.
 
-If **16 Bits** is disabled, 32-bit depth textures will be used instead. This
-can result in less artifacting in large scenes and large lights with shadows
-enabled. However, the difference is often barely visible, yet this can have a
-significant performance cost.
+Nếu **16 Bits** bị tắt, depth texture 32-bit sẽ được sử dụng thay thế. Điều này có thể làm giảm artifact trong các scene lớn và các light lớn đã bật shadow. Tuy nhiên, khác biệt thường gần như không thể nhận thấy, trong khi chi phí hiệu năng có thể đáng kể.
 
-Light/shadow distance fade
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Fade khoảng cách light/shadow
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-OmniLight3D, SpotLight3D, and AreaLight3D offer several properties to hide distant lights.
-This can improve performance significantly in large scenes with dozens of lights
-or more.
+OmniLight3D, SpotLight3D và AreaLight3D cung cấp một số thuộc tính để ẩn các light ở xa. Điều này có thể cải thiện đáng kể hiệu năng trong các scene lớn có hàng chục light trở lên.
 
-- **Enabled:** Controls whether distance fade (a form of :abbr:`LOD (Level of Detail)`)
-  is enabled. The light will fade out over **Begin + Length**, after which it
-  will be culled and not sent to the shader at all. Use this to reduce the number
-  of active lights in a scene and thus improve performance.
-- **Begin:** The distance from the camera at which the light begins to fade away
-  (in 3D units).
-- **Shadow:** The distance from the camera at which the shadow begins to fade away
-  (in 3D units). This can be used to fade out shadows sooner compared to the light,
-  further improving performance. Only available if shadows are enabled for the light.
-- **Length:** The distance over which the light and shadow fades (in 3D units).
-  The light becomes slowly more transparent over this distance and is completely
-  invisible at the end. Higher values result in a smoother fade-out transition,
-  which is more suited when the camera moves fast.
+- **Enabled:** Kiểm soát việc distance fade (một dạng :abbr:`LOD (Level of Detail)`) có được bật hay không. Light sẽ fade out trong khoảng **Begin + Length**, sau đó sẽ bị culling và hoàn toàn không được gửi đến shader. Sử dụng tùy chọn này để giảm số lượng light đang hoạt động trong scene và nhờ đó cải thiện hiệu năng. - **Begin:** Khoảng cách từ camera tại đó light bắt đầu fade out (tính theo đơn vị 3D). - **Shadow:** Khoảng cách từ camera tại đó shadow bắt đầu fade out (tính theo đơn vị 3D). Có thể dùng tùy chọn này để fade out shadow sớm hơn light, từ đó cải thiện hiệu năng hơn nữa. Chỉ khả dụng nếu shadow được bật cho light. - **Length:** Khoảng cách mà light và shadow fade out (tính theo đơn vị 3D). Light sẽ dần trở nên trong suốt hơn trong khoảng cách này và hoàn toàn biến mất ở cuối khoảng cách. Giá trị cao hơn tạo ra quá trình fade-out mượt mà hơn, phù hợp hơn khi camera di chuyển nhanh.
 
 .. _doc_lights_and_shadows_pcss_recommendations:
 
-PCSS recommendations
+Khuyến nghị về PCSS
+~~~~~~~~~~~~~~~~~~~
+
+Percentage-closer soft shadow (PCSS) tạo ra diện mạo shadow mapping chân thực hơn, với kích thước penumbra thay đổi tùy theo khoảng cách giữa vật thể đổ shadow và bề mặt nhận shadow. Điều này có chi phí hiệu năng cao, đặc biệt đối với directional light.
+
+Để tránh các vấn đề về hiệu năng, bạn nên:
+
+- Chỉ sử dụng một số ít light có bật PCSS shadow tại một thời điểm. Hiệu ứng này thường dễ nhận thấy nhất trên các light lớn và sáng. Các nguồn sáng phụ mờ hơn thường không hưởng lợi nhiều từ việc sử dụng PCSS shadow. - Cung cấp một thiết lập cho phép người dùng tắt PCSS shadow. Đối với directional light, có thể thực hiện việc này bằng cách đặt thuộc tính ``light_angular_distance`` của DirectionalLight3D thành ``0.0`` trong một script. Đối với positional light, có thể thực hiện việc này bằng cách đặt thuộc tính ``light_size`` của OmniLight3D hoặc SpotLight3D thành ``0.0`` trong một script.
+
+Chế độ lọc projector
 ~~~~~~~~~~~~~~~~~~~~
 
-Percentage-closer soft shadows (PCSS) provide a more realistic shadow mapping
-appearance, with the penumbra size varying depending on the distance between the
-caster and the surface receiving the shadow. This comes at a high performance
-cost, especially for directional lights.
+Cách projector được render cũng ảnh hưởng đến hiệu suất. Thiết lập dự án nâng cao **Rendering > Textures > Light Projectors > Filter** cho phép bạn kiểm soát cách lọc texture của projector. **Nearest/Linear** không sử dụng mipmap, nhờ đó render nhanh hơn. Tuy nhiên, projector sẽ trông bị nhiễu hạt khi ở xa. **Nearest/Linear Mipmaps** sẽ trông mượt hơn khi ở xa, nhưng projector sẽ bị mờ khi nhìn từ các góc xiên. Có thể khắc phục điều này bằng cách sử dụng **Nearest/Linear Mipmaps Anisotropic**, đây là chế độ có chất lượng cao nhất nhưng cũng tốn tài nguyên nhất.
 
-To avoid performance issues, it's recommended to:
-
-- Only use a handful of lights with PCSS shadows enabled at a given time. The
-  effect is generally most visible on large, bright lights. Secondary light
-  sources that are more faint usually don't benefit much from using PCSS
-  shadows.
-- Provide a setting for users to disable PCSS shadows. On directional lights,
-  this can be done by setting the DirectionalLight3D's
-  ``light_angular_distance`` property to ``0.0`` in a script. On positional
-  lights, this can be done by setting the OmniLight3D or SpotLight3D's
-  ``light_size`` property to ``0.0`` in a script.
-
-Projector filter mode
-~~~~~~~~~~~~~~~~~~~~~
-
-The way projectors are rendered also has an impact on performance. The
-**Rendering > Textures > Light Projectors > Filter** advanced project setting
-lets you control how projector textures should be filtered. **Nearest/Linear** do
-not use mipmaps, which makes them faster to render. However, projectors will
-look grainy at distance. **Nearest/Linear Mipmaps** will look smoother at a
-distance, but projectors will look blurry when viewed from oblique angles. This
-can be resolved by using **Nearest/Linear Mipmaps Anisotropic**, which is the
-highest-quality mode, but also the most expensive.
-
-If your project has a pixel art style, consider setting the filter to one of the
-**Nearest** values so that projectors use nearest-neighbor filtering. Otherwise,
-stick to **Linear**.
+Nếu project của bạn có phong cách pixel art, hãy cân nhắc đặt bộ lọc thành một trong các giá trị **Nearest** để projector sử dụng phép lọc nearest-neighbor. Nếu không, hãy dùng **Linear**.
