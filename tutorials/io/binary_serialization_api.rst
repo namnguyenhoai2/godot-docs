@@ -8,23 +8,23 @@ API serialization nhị phân
 Giới thiệu
 ----------
 
-Godot có một API serialization dựa trên Variant. API này được dùng để chuyển đổi các kiểu dữ liệu thành một mảng byte một cách hiệu quả. API này được cung cấp thông qua các hàm toàn cục :ref:`bytes_to_var() <class_@GlobalScope_method_bytes_to_var>` và :ref:`var_to_bytes() <class_@GlobalScope_method_var_to_bytes>`, nhưng cũng được sử dụng trong các phương thức ``get_var`` và ``store_var`` của
+Godot có một API serialization dựa trên Variant. API này được dùng để chuyển đổi các kiểu dữ liệu thành một mảng byte một cách hiệu quả. API này được cung cấp thông qua các hàm global :ref:`bytes_to_var() <class_@GlobalScope_method_bytes_to_var>` và :ref:`var_to_bytes() <class_@GlobalScope_method_var_to_bytes>`, nhưng cũng được sử dụng trong các phương thức ``get_var`` và ``store_var`` của
 :ref:`class_FileAccess` as well as the packet APIs for :ref:`class_PacketPeer`.
-Định dạng này *không* được dùng cho các scene và resource nhị phân.
+Định dạng này *không* được sử dụng cho các scene và resource nhị phân.
 
-Object đầy đủ so với ID của instance Object
+Object đầy đủ so với ID instance của Object
 -------------------------------------------
 
-Nếu một biến được serialize bằng ``full_objects = true``, thì mọi Object chứa trong biến đó sẽ được serialize và đưa vào kết quả. Quá trình này được thực hiện đệ quy.
+Nếu một biến được serialize bằng ``full_objects = true``, thì mọi Object nằm trong biến đó sẽ được serialize và đưa vào kết quả. Quá trình này được thực hiện đệ quy.
 
-Nếu ``full_objects = false``, thì chỉ các ID instance của mọi Object chứa trong biến mới được serialize.
+Nếu ``full_objects = false``, thì chỉ các ID instance của mọi Object nằm trong biến mới được serialize.
 
 Đặc tả packet
 -------------
 
-Packet được thiết kế để luôn được đệm đến 4 byte. Tất cả giá trị đều được mã hóa theo thứ tự little-endian. Tất cả packet đều có header 4 byte biểu diễn một số nguyên, chỉ định kiểu dữ liệu.
+Packet được thiết kế để luôn được đệm đến 4 byte. Tất cả giá trị đều được mã hóa theo thứ tự little-endian. Mọi packet đều có header 4 byte biểu diễn một số nguyên, dùng để xác định kiểu dữ liệu.
 
-Hai byte có giá trị thấp nhất được dùng để xác định kiểu, trong khi hai byte có giá trị cao nhất chứa các flag:
+Hai byte có giá trị thấp nhất được dùng để xác định kiểu, còn hai byte có giá trị cao nhất chứa các flag:
 
 ::
 
@@ -95,7 +95,7 @@ Hai byte có giá trị thấp nhất được dùng để xác định kiểu, 
 | 29     | max                      |
 +--------+--------------------------+
 
-Tiếp theo là nội dung thực tế của packet, nội dung này thay đổi tùy theo từng kiểu packet. Lưu ý rằng điều này giả định Godot được biên dịch với số thực single-precision, đây là mặc định. Nếu Godot được biên dịch với số thực double-precision, độ dài của các trường "Float" trong cấu trúc dữ liệu phải là 8, và offset phải là ``(offset - 4) * 2 + 4``. Bản thân kiểu "float" luôn sử dụng double precision.
+Tiếp theo là nội dung packet thực tế, nội dung này thay đổi tùy theo từng kiểu packet. Lưu ý rằng điều này giả định Godot được biên dịch với các số thực single-precision, đây là thiết lập mặc định. Nếu Godot được biên dịch với các số thực double-precision, độ dài của các trường "Float" trong cấu trúc dữ liệu phải là 8, và offset phải là ``(offset - 4) * 2 + 4``. Bản thân kiểu "float" luôn sử dụng double precision.
 
 0: null
 ~~~~~~~
@@ -131,7 +131,7 @@ Nếu flag ``ENCODE_FLAG_64`` được đặt (``flags & 1 == 1``), số nguyên
 3: :ref:`float<class_float>`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Nếu không có flag nào được đặt (flags == 0), số thực được gửi dưới dạng single precision 32 bit:
+Nếu không có flag nào được đặt (flags == 0), số thực được gửi dưới dạng single-precision 32 bit:
 
 +----------+-------+---------+-----------------------------------+
 | Offset   | Len   | Type    | Description                       |
@@ -139,7 +139,7 @@ Nếu không có flag nào được đặt (flags == 0), số thực được g�
 | 4        | 4     | Float   | IEEE 754 single-precision float   |
 +----------+-------+---------+-----------------------------------+
 
-Nếu flag ``ENCODE_FLAG_64`` được đặt (``flags & 1 == 1``), số thực được gửi dưới dạng số double precision 64 bit:
+Nếu flag ``ENCODE_FLAG_64`` được đặt (``flags & 1 == 1``), số thực được gửi dưới dạng số double-precision 64 bit:
 
 +----------+-------+---------+-----------------------------------+
 | Offset   | Len   | Type    | Description                       |
@@ -389,8 +389,8 @@ Mỗi chuỗi name được đệm đến 4 byte.
 
 Một Object có thể được serialize theo ba cách khác nhau: dưới dạng giá trị null, với ``full_objects = false``, hoặc với ``full_objects = true``.
 
-Một giá trị null
-^^^^^^^^^^^^^^^^
+Giá trị null
+^^^^^^^^^^^^
 
 +----------+-------+------------+-------------------------------------------------+
 | Offset   | Len   | Type       | Description                                     |
@@ -398,8 +398,8 @@ Một giá trị null
 | 4        | 4     | Integer    | Zero (32-bit signed integer)                    |
 +----------+-------+------------+-------------------------------------------------+
 
-``full_objects`` bị tắt
-^^^^^^^^^^^^^^^^^^^^^^^
+``full_objects`` bị vô hiệu hóa
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 +----------+-------+------------+-------------------------------------------------+
 | Offset   | Len   | Type       | Description                                     |
@@ -440,7 +440,7 @@ Một giá trị null
    :ref:`_get_property_list<class_Object_private_method__get_property_list>`
    phương thức trong class của mình. Bạn cũng có thể kiểm tra cách cấu hình property usage bằng cách gọi ``Object._get_property_list`` Xem
    :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` for the
-   các usage flag khả dụng.
+   các usage flag có thể có.
 
 18: :ref:`Dictionary<class_dictionary>`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -451,7 +451,7 @@ Một giá trị null
 | 4        | 4     | Integer   | val&0x7FFFFFFF = elements, val&0x80000000 = shared (bool)           |
 +----------+-------+-----------+---------------------------------------------------------------------+
 
-Sau đó là các cặp key và value, với số lượng bằng "elements", lần lượt từng cặp một, sử dụng cùng định dạng này.
+Tiếp theo là các cặp key và value, với số lượng bằng "elements", lần lượt từng cặp một, sử dụng cùng định dạng này.
 
 19: :ref:`Array<class_array>`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -462,7 +462,7 @@ Sau đó là các cặp key và value, với số lượng bằng "elements", l�
 | 4        | 4     | Integer   | val&0x7FFFFFFF = elements, val&0x80000000 = shared (bool)           |
 +----------+-------+-----------+---------------------------------------------------------------------+
 
-Sau đó là các value, với số lượng bằng "elements", lần lượt từng value một, sử dụng cùng định dạng này.
+Tiếp theo là các value, với số lượng bằng "elements", lần lượt từng value một, sử dụng cùng định dạng này.
 
 20: :ref:`PackedByteArray<class_PackedByteArray>`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
