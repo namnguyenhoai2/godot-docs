@@ -1,82 +1,58 @@
 .. _doc_gdscript_more_efficiently:
 
-GDScript: An introduction to dynamic languages
-==============================================
+GDScript: Giới thiệu về các ngôn ngữ động
+=========================================
 
-About
------
+Giới thiệu
+----------
 
-This tutorial aims to be a quick reference for how to use GDScript more
-efficiently. It focuses on common cases specific to the language, but
-also covers a lot of information on dynamically typed languages.
+Tutorial này nhằm cung cấp một tài liệu tham khảo nhanh về cách sử dụng GDScript hiệu quả hơn. Nội dung tập trung vào các trường hợp phổ biến đặc thù của ngôn ngữ này, đồng thời cũng đề cập đến nhiều thông tin về các ngôn ngữ kiểu động.
 
-It's meant to be especially useful for programmers with little or no previous
-experience with dynamically typed languages.
+Tutorial này đặc biệt hữu ích cho những lập trình viên có ít hoặc chưa có kinh nghiệm với các ngôn ngữ kiểu động.
 
-Dynamic nature
+Tính chất động
 --------------
 
-Pros & cons of dynamic typing
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Ưu và nhược điểm của kiểu động
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-GDScript is a Dynamically Typed language. As such, its main advantages
-are that:
+GDScript là một ngôn ngữ kiểu động (Dynamically Typed). Vì vậy, các ưu điểm chính của nó là:
 
--  The language is easy to get started with.
--  Most code can be written and changed quickly and without hassle.
--  The code is easy to read (little clutter).
--  No compilation is required to test.
--  Runtime is tiny.
--  It has duck-typing and polymorphism by nature.
+-  Ngôn ngữ này dễ bắt đầu. - Hầu hết code có thể được viết và thay đổi nhanh chóng mà không gặp rắc rối. - Code dễ đọc (ít rườm rà). - Không cần biên dịch để kiểm thử. - Runtime rất nhỏ gọn. - Bản chất ngôn ngữ có duck-typing và polymorphism.
 
-While the main disadvantages are:
+Trong khi các nhược điểm chính là:
 
--  Less performance than statically typed languages.
--  More difficult to refactor (symbols can't be traced).
--  Some errors that would typically be detected at compile time in
-   statically typed languages only appear while running the code
-   (because expression parsing is more strict).
--  Less flexibility for code-completion (some variable types are only
-   known at runtime).
+-  Hiệu năng thấp hơn so với các ngôn ngữ kiểu tĩnh. - Khó refactor hơn (không thể truy vết các symbol). - Một số lỗi vốn thường được phát hiện tại thời điểm biên dịch trong các ngôn ngữ kiểu tĩnh chỉ xuất hiện khi chạy code (vì việc phân tích biểu thức nghiêm ngặt hơn). - Ít linh hoạt hơn trong việc code-completion (một số kiểu biến chỉ được biết tại runtime).
 
-This, translated to reality, means that Godot used with GDScript is a combination
-designed to create games quickly and efficiently. For games that are very
-computationally intensive and can't benefit from the engine built-in
-tools (such as the Vector types, Physics Engine, Math library, etc), the
-possibility of using C++ is present too. This allows you to still create most of the
-game in GDScript and add small bits of C++ in the areas that need
-a performance boost.
+Khi áp dụng vào thực tế, điều này có nghĩa là Godot khi dùng cùng GDScript tạo thành một sự kết hợp được thiết kế để tạo game nhanh chóng và hiệu quả. Đối với những game đòi hỏi tính toán rất lớn và không thể tận dụng các công cụ tích hợp sẵn của engine (chẳng hạn như các kiểu Vector, Physics Engine, thư viện Math, v.v.), bạn vẫn có thể sử dụng C++. Nhờ đó, bạn vẫn có thể tạo phần lớn game bằng GDScript và thêm một số phần nhỏ bằng C++ ở những khu vực cần tăng hiệu năng.
 
-Variables & assignment
-~~~~~~~~~~~~~~~~~~~~~~
+Biến và phép gán
+~~~~~~~~~~~~~~~~
 
-All variables in a dynamically typed language are "variant"-like. This
-means that their type is not fixed, and is only modified through
-assignment. Example:
+Tất cả biến trong một ngôn ngữ kiểu động đều tương tự "variant". Điều này có nghĩa là kiểu của chúng không cố định và chỉ thay đổi thông qua phép gán. Ví dụ:
 
-Static:
+Tĩnh:
 
 .. code-block:: cpp
 
-    int a; // Value uninitialized.
-    a = 5; // This is valid.
-    a = "Hi!"; // This is invalid.
+    int a; // Giá trị chưa được khởi tạo.
+    a = 5; // Điều này hợp lệ.
+    a = "Hi!"; // Điều này không hợp lệ.
 
-Dynamic:
+Động:
 
 ::
 
-    var a # 'null' by default.
-    a = 5 # Valid, 'a' becomes an integer.
-    a = "Hi!" # Valid, 'a' changed to a string.
+    var a # Mặc định là 'null'.
+    a = 5 # Hợp lệ, 'a' trở thành một số nguyên.
+    a = "Hi!" # Hợp lệ, 'a' được đổi thành một chuỗi.
 
-As function arguments:
-~~~~~~~~~~~~~~~~~~~~~~
+Với các đối số của hàm:
+~~~~~~~~~~~~~~~~~~~~~~~
 
-Functions are of dynamic nature too, which means they can be called with
-different arguments, for example:
+Các hàm cũng có tính chất động, nghĩa là chúng có thể được gọi với các đối số khác nhau, ví dụ:
 
-Static:
+Tĩnh:
 
 .. code-block:: cpp
 
@@ -87,10 +63,10 @@ Static:
 
     [..]
 
-    print_value(55); // Valid.
-    print_value("Hello"); // Invalid.
+    print_value(55); // Hợp lệ.
+    print_value("Hello"); // Không hợp lệ.
 
-Dynamic:
+Động:
 
 ::
 
@@ -99,22 +75,15 @@ Dynamic:
 
     [..]
 
-    print_value(55) # Valid.
-    print_value("Hello") # Valid.
+    print_value(55) # Hợp lệ.
+    print_value("Hello") # Hợp lệ.
 
-Pointers & referencing:
-~~~~~~~~~~~~~~~~~~~~~~~
+Con trỏ và tham chiếu:
+~~~~~~~~~~~~~~~~~~~~~~
 
-In static languages, such as C or C++ (and to some extent Java and C#),
-there is a distinction between a variable and a pointer/reference to a
-variable. The latter allows the object to be modified by other functions
-by passing a reference to the original one.
+Trong các ngôn ngữ tĩnh, chẳng hạn như C hoặc C++ (và ở một mức độ nào đó là Java và C#), có sự khác biệt giữa một biến và một con trỏ/tham chiếu đến biến đó. Cách sau cho phép các hàm khác sửa đổi object bằng cách truyền tham chiếu đến object ban đầu.
 
-In C# or Java, everything not a built-in type (int, float, sometimes
-String) is always a pointer or a reference. References are also
-garbage-collected automatically, which means they are erased when no
-longer used. Dynamically typed languages tend to use this memory model,
-too. Some Examples:
+Trong C# hoặc Java, mọi thứ không phải là kiểu dựng sẵn (int, float, đôi khi là String) luôn là một con trỏ hoặc tham chiếu. Các tham chiếu cũng được garbage collector tự động thu gom, nghĩa là chúng bị xóa khi không còn được sử dụng. Các ngôn ngữ kiểu động cũng có xu hướng sử dụng mô hình bộ nhớ này. Một số ví dụ:
 
 -  C++:
 
@@ -127,9 +96,9 @@ too. Some Examples:
 
     void do_something() {
 
-        SomeClass *instance = new SomeClass; // Created as pointer.
-        use_class(instance); // Passed as pointer.
-        delete instance; // Otherwise it will leak memory.
+        SomeClass *instance = new SomeClass; // Được tạo dưới dạng con trỏ.
+        use_class(instance); // Được truyền dưới dạng con trỏ.
+        delete instance; // Nếu không, nó sẽ làm rò rỉ bộ nhớ.
     }
 
 -  Java:
@@ -144,72 +113,64 @@ too. Some Examples:
 
     public final void do_something() {
 
-        SomeClass instance = new SomeClass(); // Created as reference.
-        use_class(instance); // Passed as reference.
-        // Garbage collector will get rid of it when not in
-        // use and freeze your game randomly for a second.
+        SomeClass instance = new SomeClass(); // Được tạo dưới dạng tham chiếu.
+        use_class(instance); // Được truyền dưới dạng tham chiếu.
+        // Garbage collector sẽ loại bỏ nó khi không còn được
+        // sử dụng và khiến game của bạn bị đóng băng ngẫu nhiên trong một giây.
     }
 
 -  GDScript:
 
 ::
 
-    func use_class(instance): # Does not care about class type
-        instance.use() # Will work with any class that has a ".use()" method.
+    func use_class(instance): # Không quan tâm đến kiểu class
+        instance.use() # Sẽ hoạt động với bất kỳ class nào có phương thức ".use()".
 
     func do_something():
-        var instance = SomeClass.new() # Created as reference.
-        use_class(instance) # Passed as reference.
-        # Will be unreferenced and deleted.
+        var instance = SomeClass.new() # Được tạo dưới dạng tham chiếu.
+        use_class(instance) # Được truyền dưới dạng tham chiếu.
+        # Sẽ không còn tham chiếu và bị xóa.
 
-In GDScript, only base types (int, float, string and the vector types)
-are passed by value to functions (value is copied). Everything else
-(instances, arrays, dictionaries, etc) is passed as reference. Classes
-that inherit :ref:`class_RefCounted` (the default if nothing is specified)
-will be freed when not used, but manual memory management is allowed too
-if inheriting manually from :ref:`class_Object`.
+Trong GDScript, chỉ các kiểu cơ sở (int, float, string và các kiểu vector) được truyền theo giá trị cho các hàm (giá trị được sao chép). Mọi thứ khác (instance, array, dictionary, v.v.) được truyền theo tham chiếu. Các class kế thừa :ref:`class_RefCounted` (mặc định nếu không chỉ định gì) sẽ được giải phóng khi không còn được sử dụng, nhưng bạn cũng có thể tự quản lý bộ nhớ nếu kế thừa thủ công từ :ref:`class_Object`.
 
-Arrays
-------
+Array
+-----
 
-Arrays in dynamically typed languages can contain many different mixed
-datatypes inside and are always dynamic (can be resized at any time).
-Compare for example arrays in statically typed languages:
+Array trong các ngôn ngữ kiểu động có thể chứa nhiều kiểu dữ liệu khác nhau bên trong và luôn là kiểu động (có thể thay đổi kích thước bất kỳ lúc nào). Hãy so sánh, chẳng hạn, array trong các ngôn ngữ kiểu tĩnh:
 
 .. code-block:: cpp
 
-    int *array = new int[4]; // Create array.
-    array[0] = 10; // Initialize manually.
-    array[1] = 20; // Can't mix types.
+    int *array = new int[4]; // Tạo array.
+    array[0] = 10; // Khởi tạo thủ công.
+    array[1] = 20; // Không thể trộn các kiểu.
     array[2] = 40;
     array[3] = 60;
-    // Can't resize.
-    use_array(array); // Passed as pointer.
-    delete[] array; // Must be freed.
+    // Không thể thay đổi kích thước.
+    use_array(array); // Được truyền dưới dạng con trỏ.
+    delete[] array; // Phải được giải phóng.
 
-    // or
+    // hoặc
 
     std::vector<int> array;
     array.resize(4);
-    array[0] = 10; // Initialize manually.
-    array[1] = 20; // Can't mix types.
+    array[0] = 10; // Khởi tạo thủ công.
+    array[1] = 20; // Không thể trộn các kiểu.
     array[2] = 40;
     array[3] = 60;
-    array.resize(3); // Can be resized.
-    use_array(array); // Passed reference or value.
-    // Freed when stack ends.
+    array.resize(3); // Có thể thay đổi kích thước.
+    use_array(array); // Được truyền dưới dạng tham chiếu hoặc giá trị.
+    // Được giải phóng khi stack kết thúc.
 
-And in GDScript:
+Và trong GDScript:
 
 ::
 
-    var array = [10, "hello", 40, 60] # You can mix types.
-    array.resize(3) # Can be resized.
-    use_array(array) # Passed as reference.
-    # Freed when no longer in use.
+    var array = [10, "hello", 40, 60] # Bạn có thể trộn các kiểu.
+    array.resize(3) # Có thể thay đổi kích thước.
+    use_array(array) # Được truyền dưới dạng tham chiếu.
+    # Được giải phóng khi không còn được sử dụng.
 
-In dynamically typed languages, arrays can also double as other
-datatypes, such as lists:
+Trong các ngôn ngữ kiểu động, array cũng có thể đóng vai trò như các kiểu dữ liệu khác, chẳng hạn như list:
 
 ::
 
@@ -218,7 +179,7 @@ datatypes, such as lists:
     array.append(5)
     array.pop_front()
 
-Or unordered sets:
+Hoặc set không có thứ tự:
 
 ::
 
@@ -226,41 +187,33 @@ Or unordered sets:
     if a in [10, 20, 30]:
         print("We have a winner!")
 
-Dictionaries
-------------
+Dictionary
+----------
 
-Dictionaries are a powerful tool in dynamically typed languages. In
-GDScript, untyped dictionaries can be used for many cases where a statically
-typed language would tend to use another data structure.
+Dictionary là một công cụ mạnh mẽ trong các ngôn ngữ kiểu động. Trong GDScript, dictionary không định kiểu có thể được dùng cho nhiều trường hợp mà một ngôn ngữ kiểu tĩnh thường sẽ sử dụng một cấu trúc dữ liệu khác.
 
-Dictionaries can map any value to any other value with complete
-disregard for the datatype used as either key or value. Contrary to
-popular belief, they are efficient because they can be implemented
-with hash tables. They are, in fact, so efficient that some languages
-will go as far as implementing arrays as dictionaries.
+Dictionary có thể ánh xạ bất kỳ giá trị nào đến bất kỳ giá trị nào khác mà hoàn toàn không quan tâm đến kiểu dữ liệu được dùng làm key hoặc value. Trái với quan niệm phổ biến, chúng có hiệu năng tốt vì có thể được triển khai bằng hash table. Trên thực tế, chúng hiệu quả đến mức một số ngôn ngữ còn triển khai array dưới dạng dictionary.
 
-Example of Dictionary:
+Ví dụ về Dictionary:
 
 ::
 
     var d = {"name": "John", "age": 22}
     print("Name: ", d["name"], " Age: ", d["age"])
 
-Dictionaries are also dynamic, keys can be added or removed at any point
-at little cost:
+Dictionary cũng là kiểu động; bạn có thể thêm hoặc xóa key vào bất kỳ thời điểm nào với chi phí thấp:
 
 ::
 
-    d["mother"] = "Rebecca" # Addition.
-    d["age"] = 11 # Modification.
-    d.erase("name") # Removal.
+    d["mother"] = "Rebecca" # Thêm.
+    d["age"] = 11 # Sửa đổi.
+    d.erase("name") # Xóa.
 
-In most cases, two-dimensional arrays can often be implemented more
-easily with dictionaries. Here's a battleship game example:
+Trong hầu hết trường hợp, array hai chiều thường có thể được triển khai dễ dàng hơn bằng dictionary. Dưới đây là ví dụ về một game battleship:
 
 ::
 
-    # Battleship Game
+    # Game Battleship
 
     const SHIP = 0
     const SHIP_HIT = 1
@@ -274,12 +227,12 @@ easily with dictionaries. Here's a battleship game example:
         board[Vector2(1, 3)] = SHIP
 
     func missile(pos):
-        if pos in board: # Something at that position.
-            if board[pos] == SHIP: # There was a ship! hit it.
+        if pos in board: # Có thứ gì đó ở vị trí đó.
+            if board[pos] == SHIP: # Có một con tàu! Bắn trúng nó.
                 board[pos] = SHIP_HIT
             else:
-                print("Already hit here!") # Hey dude you already hit here.
-        else: # Nothing, mark as water.
+                print("Already hit here!") # Này bạn, bạn đã bắn vào đây rồi.
+        else: # Không có gì, đánh dấu là nước.
             board[pos] = WATER_HIT
 
     func game():
@@ -288,34 +241,31 @@ easily with dictionaries. Here's a battleship game example:
         missile(Vector2(5, 8))
         missile(Vector2(2, 3))
 
-Dictionaries can also be used as data markup or quick structures. While
-GDScript's dictionaries resemble python dictionaries, it also supports Lua
-style syntax and indexing, which makes it useful for writing initial
-states and quick structs:
+Dictionary cũng có thể được dùng làm markup dữ liệu hoặc các cấu trúc nhanh. Mặc dù dictionary của GDScript tương tự dictionary của Python, nó cũng hỗ trợ cú pháp và indexing kiểu Lua, khiến nó hữu ích khi viết các trạng thái ban đầu và struct nhanh:
 
 ::
 
-    # Same example, lua-style support.
-    # This syntax is a lot more readable and usable.
-    # Like any GDScript identifier, keys written in this form cannot start
-    # with a digit.
+    # Cùng ví dụ đó, với hỗ trợ kiểu Lua.
+    # Cú pháp này dễ đọc và dễ sử dụng hơn nhiều.
+    # Giống như mọi identifier của GDScript, key được viết theo dạng này không thể bắt đầu
+    # bằng một chữ số.
 
     var d = {
         name = "John",
         age = 22
     }
 
-    print("Name: ", d.name, " Age: ", d.age) # Used "." based indexing.
+    print("Name: ", d.name, " Age: ", d.age) # Sử dụng indexing dựa trên ".".
 
     # Indexing
 
     d["mother"] = "Rebecca"
-    d.mother = "Caroline" # This would work too to create a new key.
+    d.mother = "Caroline" # Cách này cũng có thể được dùng để tạo một key mới.
 
-For & while
------------
+For và while
+------------
 
-Iterating using the C-style for loop in C-derived languages can be quite complex:
+Việc lặp bằng vòng lặp for kiểu C trong các ngôn ngữ bắt nguồn từ C có thể khá phức tạp:
 
 .. code-block:: cpp
 
@@ -327,7 +277,7 @@ Iterating using the C-style for loop in C-derived languages can be quite complex
         printf("Value: %c Index: %d\n", strings[i], i);
     }
 
-    // Even in STL:
+    // Ngay cả trong STL:
     std::list<std::string> strings;
 
     [..]
@@ -336,37 +286,36 @@ Iterating using the C-style for loop in C-derived languages can be quite complex
         std::cout << *it << std::endl;
     }
 
-Because of this, GDScript makes the opinionated decision to have a for-in loop over iterables instead:
+Vì lý do này, GDScript đưa ra quyết định mang tính định hướng là sử dụng vòng lặp for-in trên các iterable thay thế:
 
 ::
 
     for s in strings:
         print(s)
 
-Container datatypes (arrays and dictionaries) are iterable. Dictionaries
-allow iterating the keys:
+Các kiểu dữ liệu container (array và dictionary) đều là iterable. Dictionary cho phép lặp qua các key:
 
 ::
 
     for key in dict:
         print(key, " -> ", dict[key])
 
-Iterating with indices is also possible:
+Bạn cũng có thể lặp với index:
 
 ::
 
     for i in range(strings.size()):
         print(strings[i])
 
-The ``range()`` function can take 3 arguments:
+Hàm ``range()`` có thể nhận 3 đối số:
 
 ::
 
-    range(n) # Will count from 0 to n in steps of 1. The parameter n is exclusive.
-    range(b, n) # Will count from b to n in steps of 1. The parameters b is inclusive. The parameter n is exclusive.
-    range(b, n, s) # Will count from b to n, in steps of s. The parameters b is inclusive. The parameter n is exclusive.
+    range(n) # Sẽ đếm từ 0 đến n với bước nhảy 1. Tham số n không được bao gồm.
+    range(b, n) # Sẽ đếm từ b đến n với bước nhảy 1. Tham số b được bao gồm. Tham số n không được bao gồm.
+    range(b, n, s) # Sẽ đếm từ b đến n với bước nhảy s. Tham số b được bao gồm. Tham số n không được bao gồm.
 
-Some examples involving C-style for loops:
+Một số ví dụ liên quan đến vòng lặp for kiểu C:
 
 .. code-block:: cpp
 
@@ -376,7 +325,7 @@ Some examples involving C-style for loops:
 
     for (int i = 5; i < 10; i += 2) {}
 
-Translate to:
+Chuyển thành:
 
 ::
 
@@ -389,13 +338,13 @@ Translate to:
     for i in range(5, 10, 2):
         pass
 
-And backwards looping done through a negative counter:
+Và việc lặp ngược được thực hiện thông qua một bộ đếm âm:
 
 ::
 
     for (int i = 10; i > 0; i--) {}
 
-Becomes:
+Trở thành:
 
 ::
 
@@ -405,7 +354,7 @@ Becomes:
 While
 -----
 
-while() loops are the same everywhere:
+Vòng lặp while() giống nhau ở mọi nơi:
 
 ::
 
@@ -415,11 +364,9 @@ while() loops are the same everywhere:
         print(strings[i])
         i += 1
 
-Custom iterators
-----------------
-You can create custom iterators in case the default ones don't quite meet your
-needs by overriding ``_iter_init()``, ``_iter_next()``, and ``_iter_get()``
-functions in your script. An example implementation of a forward iterator follows:
+Iterator tùy chỉnh
+------------------
+Bạn có thể tạo iterator tùy chỉnh nếu các iterator mặc định không hoàn toàn đáp ứng nhu cầu của mình, bằng cách override các hàm ``_iter_init()``, ``_iter_next()`` và ``_iter_get()`` trong script. Dưới đây là một triển khai iterator tiến:
 
 ::
 
@@ -437,7 +384,7 @@ functions in your script. An example implementation of a forward iterator follow
             return current < _end
 
         func _iter_init(iter):
-            # Initialize the state to store the current value.
+            # Khởi tạo state để lưu trữ giá trị hiện tại.
             iter[0] = _start
             return _should_continue(iter[0])
 
@@ -446,43 +393,32 @@ functions in your script. An example implementation of a forward iterator follow
             return _should_continue(iter[0])
 
         func _iter_get(iter):
-            # The state is not wrapped in an array for `_iter_get()`.
-            # The iteration value is the same as the state.
+            # State không được bọc trong một array cho `_iter_get()`.
+            # Giá trị lặp giống với state.
             return iter
 
-And it can be used like any other iterator:
+Và nó có thể được sử dụng như mọi iterator khác:
 
 ::
 
     var itr = ForwardIterator.new(0, 6, 2)
     for i in itr:
-        print(i) # Will print 0, 2, and 4.
+        print(i) # Sẽ in ra 0, 2 và 4.
 
-It is possible but discouraged to store the state in a member variable.
-Multiple states are necessary in cases such as nested loops where the same
-iterator instance is used simultaneously. The ``iter`` parameter in
-``_iter_init()`` and ``_iter_next()`` is a single-element array so that updates
-can persist. Whereas in ``_iter_get()``, the state is is not wrapped because it
-is supposed to be read-only.
+Có thể lưu state trong một member variable, nhưng không được khuyến khích. Cần có nhiều state trong những trường hợp như các vòng lặp lồng nhau, nơi cùng một iterator instance được sử dụng đồng thời. Tham số ``iter`` trong ``_iter_init()`` và ``_iter_next()`` là một mảng một phần tử để các cập nhật có thể được duy trì. Trong khi đó, trong ``_iter_get()``, state không được bọc vì nó được cho là chỉ-đọc.
 
-Returning ``true`` from ``_iter_init()`` and ``_iter_next()`` indicates that the
-iterator is valid. Returning ``false`` will terminate the loop.
+Việc trả về ``true`` từ ``_iter_init()`` và ``_iter_next()`` cho biết iterator hợp lệ. Trả về ``false`` sẽ kết thúc vòng lặp.
 
-For more details see :ref:`_iter_init() <class_Object_private_method__iter_init>`,
+Để biết thêm chi tiết, hãy xem :ref:`_iter_init() <class_Object_private_method__iter_init>`,
 :ref:`_iter_next() <class_Object_private_method__iter_next>`, and
 :ref:`_iter_get() <class_Object_private_method__iter_get>`.
 
 Duck typing
 -----------
 
-One of the most difficult concepts to grasp when moving from a
-statically typed language to a dynamic one is duck typing. Duck typing
-makes overall code design much simpler and straightforward to write, but
-it's not obvious how it works.
+Một trong những khái niệm khó nắm bắt nhất khi chuyển từ một ngôn ngữ được định kiểu tĩnh sang một ngôn ngữ động là duck typing. Duck typing khiến việc thiết kế code tổng thể trở nên đơn giản hơn nhiều và dễ viết hơn, nhưng cách nó hoạt động không hề rõ ràng.
 
-As an example, imagine a situation where a big rock is falling down a
-tunnel, smashing everything on its way. The code for the rock, in a
-statically typed language would be something like:
+Ví dụ, hãy hình dung một tình huống trong đó một tảng đá lớn đang rơi xuống một đường hầm và đập vỡ mọi thứ trên đường đi. Code cho tảng đá trong một ngôn ngữ được định kiểu tĩnh sẽ tương tự như sau:
 
 .. code-block:: cpp
 
@@ -491,42 +427,26 @@ statically typed language would be something like:
         entity->smash();
     }
 
-This way, everything that can be smashed by a rock would have to
-inherit Smashable. If a character, enemy, piece of furniture, small rock
-were all smashable, they would need to inherit from the class Smashable,
-possibly requiring multiple inheritance. If multiple inheritance was
-undesired, then they would have to inherit a common class like Entity.
-Yet, it would not be very elegant to add a virtual method ``smash()`` to
-Entity only if a few of them can be smashed.
+Theo cách này, mọi thứ có thể bị một tảng đá đập vỡ đều phải kế thừa Smashable. Nếu một nhân vật, kẻ địch, món đồ nội thất hoặc tảng đá nhỏ đều có thể bị đập vỡ, chúng sẽ cần kế thừa từ class Smashable, có thể phải dùng multiple inheritance. Nếu không muốn dùng multiple inheritance, chúng sẽ phải kế thừa một class chung như Entity. Tuy nhiên, sẽ không thật thanh lịch nếu thêm một virtual method ``smash()`` vào Entity chỉ vì một vài đối tượng trong số đó có thể bị đập vỡ.
 
-With dynamically typed languages, this is not a problem. Duck typing
-makes sure you only have to define a ``smash()`` function where required
-and that's it. No need to consider inheritance, base classes, etc.
+Với các ngôn ngữ được định kiểu động, đây không phải là vấn đề. Duck typing đảm bảo rằng bạn chỉ cần định nghĩa một function ``smash()`` ở nơi cần thiết là xong. Không cần phải cân nhắc inheritance, base class, v.v.
 
 ::
 
     func _on_object_hit(object):
         object.smash()
 
-And that's it. If the object that hit the big rock has a smash() method,
-it will be called. No need for inheritance or polymorphism. Dynamically
-typed languages only care about the instance having the desired method
-or member, not what it inherits or the class type. The definition of
-Duck Typing should make this clearer:
+Vậy là xong. Nếu object va vào tảng đá lớn có method smash(), method đó sẽ được gọi. Không cần inheritance hay polymorphism. Các ngôn ngữ được định kiểu động chỉ quan tâm instance có method hoặc member mong muốn hay không, chứ không quan tâm nó kế thừa gì hoặc thuộc class type nào. Định nghĩa về Duck Typing dưới đây sẽ giúp điều này rõ ràng hơn:
 
-*"When I see a bird that walks like a duck and swims like a duck and
-quacks like a duck, I call that bird a duck"*
+*"Khi tôi thấy một con chim đi như vịt, bơi như vịt và kêu như vịt, tôi gọi con chim đó là vịt"*
 
-In this case, it translates to:
+Trong trường hợp này, điều đó có nghĩa là:
 
-*"If the object can be smashed, don't care what it is, just smash it."*
+*"Nếu object có thể bị đập vỡ, thì không cần quan tâm nó là gì, cứ đập vỡ nó đi."*
 
-Yes, we should call it Hulk typing instead.
+Đúng vậy, thay vào đó chúng ta nên gọi nó là Hulk typing.
 
-It's possible that the object being hit doesn't have a smash() function.
-Some dynamically typed languages simply ignore a method call when it
-doesn't exist, but GDScript is stricter, so checking if the function
-exists is desirable:
+Có thể object bị va phải không có function smash(). Một số ngôn ngữ được định kiểu động đơn giản là bỏ qua lời gọi method khi method đó không tồn tại, nhưng GDScript nghiêm ngặt hơn, vì vậy nên kiểm tra xem function có tồn tại hay không:
 
 ::
 
@@ -534,4 +454,4 @@ exists is desirable:
         if object.has_method("smash"):
             object.smash()
 
-Then, define that method and anything the rock touches can be smashed.
+Sau đó, hãy định nghĩa method đó và mọi thứ mà tảng đá chạm vào đều có thể bị đập vỡ.

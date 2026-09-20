@@ -1,114 +1,81 @@
-C# basics
-=========
+Kiến thức cơ bản về C#
+======================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-This page provides a brief introduction to C#, both what it is and
-how to use it in Godot. Afterwards, you may want to look at
+Trang này cung cấp phần giới thiệu ngắn gọn về C#, bao gồm C# là gì và cách sử dụng trong Godot. Sau đó, bạn có thể muốn xem
 :ref:`how to use specific features <doc_c_sharp_features>`, read about the
 :ref:`differences between the C# and the GDScript API <doc_c_sharp_differences>`,
-and (re)visit the :ref:`Scripting section <doc_scripting>` of the
-step-by-step tutorial.
+và xem lại :ref:`Scripting section <doc_scripting>` của hướng dẫn từng bước.
 
-C# is a high-level programming language developed by Microsoft. In Godot,
-it is implemented with the modern .NET runtime.
+C# là một ngôn ngữ lập trình cấp cao do Microsoft phát triển. Trong Godot, ngôn ngữ này được triển khai bằng runtime .NET hiện đại.
 
 .. attention::
 
-    Projects written in C# using Godot 4 currently cannot be exported to the web
-    platform. To use C# on the web platform, consider Godot 3 instead.
-    Android and iOS platform support is available as of Godot 4.2, but is
-    experimental and :ref:`some limitations apply <doc_c_sharp_platforms>`.
+    Các project được viết bằng C# sử dụng Godot 4 hiện chưa thể export sang nền tảng web. Để sử dụng C# trên nền tảng web, hãy cân nhắc dùng Godot 3. Hỗ trợ nền tảng Android và iOS có từ Godot 4.2, nhưng vẫn đang ở trạng thái thử nghiệm và :ref:`some limitations apply <doc_c_sharp_platforms>`.
 
 .. note::
 
-    This is **not** a full-scale tutorial on the C# language as a whole.
-    If you aren't already familiar with its syntax or features, see the
-    `Microsoft C# guide <https://docs.microsoft.com/en-us/dotnet/csharp/index>`_
-    or look for a suitable introduction elsewhere.
+    Đây **không phải** là hướng dẫn đầy đủ về toàn bộ ngôn ngữ C#. Nếu bạn chưa quen với cú pháp hoặc các tính năng của ngôn ngữ này, hãy xem `Microsoft C# guide <https://docs.microsoft.com/en-us/dotnet/csharp/index>`_ hoặc tìm một phần giới thiệu phù hợp ở nơi khác.
 
 .. _doc_c_sharp_setup:
 
-Prerequisites
--------------
+Điều kiện tiên quyết
+--------------------
 
-Godot bundles the parts of .NET needed to run already-compiled games.
-However, Godot does not bundle the tools required to build and compile
-games, such as MSBuild and the C# compiler. These are
-included in the .NET SDK, and need to be installed separately.
+Godot tích hợp các thành phần .NET cần thiết để chạy các game đã được compile. Tuy nhiên, Godot không tích hợp các công cụ cần thiết để build và compile game, chẳng hạn như MSBuild và trình biên dịch C#. Các công cụ này nằm trong .NET SDK và cần được cài đặt riêng.
 
-In summary, you must have installed the .NET SDK **and** the .NET-enabled
-version of Godot.
+Tóm lại, bạn phải cài đặt .NET SDK **và** phiên bản Godot hỗ trợ .NET.
 
-Download and install the latest stable version of the SDK from the
-`.NET download page <https://dotnet.microsoft.com/download>`__.
-Godot 4.5 requires .NET 8 or later, but exporting to Android requires .NET 9 or later.
+Tải xuống và cài đặt phiên bản ổn định mới nhất của SDK từ `.NET download page <https://dotnet.microsoft.com/download>`__. Godot 4.5 yêu cầu .NET 8 trở lên, nhưng để export sang Android thì cần .NET 9 trở lên.
 
 .. important::
 
-    Be sure to install the 64-bit version of the SDK(s)
-    if you are using the 64-bit version of Godot.
+    Hãy nhớ cài đặt phiên bản 64-bit của SDK nếu bạn đang sử dụng phiên bản Godot 64-bit.
 
-If you are building Godot from source, make sure to follow the steps to enable
-.NET support in your build as outlined in the :ref:`doc_compiling_with_dotnet`
-page.
+Nếu bạn build Godot từ source, hãy đảm bảo làm theo các bước để bật hỗ trợ .NET trong bản build như được nêu trên trang :ref:`doc_compiling_with_dotnet`.
 
 .. _doc_c_sharp_setup_external_editor:
 
-Configuring an external editor
-------------------------------
+Cấu hình external editor
+------------------------
 
-C# support in Godot's built-in script editor is minimal. Consider using an
-external IDE or editor, such as  `Visual Studio Code <https://code.visualstudio.com/>`__
-or `Visual Studio <https://visualstudio.microsoft.com/>`__. These provide autocompletion, debugging, and other
-useful features for C#. To select an external editor in Godot,
-click on **Editor → Editor Settings** and scroll down to
-**Dotnet**. Under **Dotnet**, click on **Editor**, and select your
-external editor of choice. Godot currently supports the following
-external editors:
+Hỗ trợ C# trong script editor tích hợp sẵn của Godot còn hạn chế. Hãy cân nhắc sử dụng một IDE hoặc editor bên ngoài, chẳng hạn như `Visual Studio Code <https://code.visualstudio.com/>`__ hoặc `Visual Studio <https://visualstudio.microsoft.com/>`__. Các công cụ này cung cấp tính năng autocompletion, debugging và những tính năng hữu ích khác cho C#. Để chọn external editor trong Godot, hãy nhấp vào **Editor → Editor Settings** rồi cuộn xuống **Dotnet**. Trong **Dotnet**, nhấp vào **Editor** và chọn external editor bạn muốn sử dụng. Hiện tại Godot hỗ trợ các external editor sau:
 
-- Visual Studio 2022
-- Visual Studio Code
-- MonoDevelop
-- Visual Studio for Mac
-- JetBrains Rider
+- Visual Studio 2022 - Visual Studio Code - MonoDevelop - Visual Studio for Mac - JetBrains Rider
 
-See the following sections for how to configure an external editor:
+Xem các phần sau để biết cách cấu hình external editor:
 
 JetBrains Rider
 ~~~~~~~~~~~~~~~
 
-After reading the "Prerequisites" section, you can download and install
-`JetBrains Rider <https://www.jetbrains.com/rider/download>`__.
+Sau khi đọc phần "Prerequisites", bạn có thể tải xuống và cài đặt `JetBrains Rider <https://www.jetbrains.com/rider/download>`__.
 
-In Godot's **Editor → Editor Settings** menu:
+Trong menu **Editor → Editor Settings** của Godot:
 
-- Set **Dotnet** -> **Editor** -> **External Editor** to **JetBrains Rider**.
+- Đặt **Dotnet** -> **Editor** -> **External Editor** thành **JetBrains Rider**.
 
-In Rider:
+Trong Rider:
 
-- Set **MSBuild version** to **.NET Core**.
-- If you are using a Rider version below 2024.2, install the **Godot support** plugin. This functionality is now built into Rider.
+- Đặt **MSBuild version** thành **.NET Core**. - Nếu bạn đang sử dụng phiên bản Rider cũ hơn 2024.2, hãy cài đặt plugin **Godot support**. Tính năng này hiện đã được tích hợp sẵn trong Rider.
 
 Visual Studio Code
 ~~~~~~~~~~~~~~~~~~
 
-After reading the "Prerequisites" section, you can download and install
-`Visual Studio Code <https://code.visualstudio.com/download>`__ (aka VS Code).
+Sau khi đọc phần "Prerequisites", bạn có thể tải xuống và cài đặt `Visual Studio Code <https://code.visualstudio.com/download>`__ (còn gọi là VS Code).
 
-In Godot's **Editor → Editor Settings** menu:
+Trong menu **Editor → Editor Settings** của Godot:
 
-- Set **Dotnet** -> **Editor** -> **External Editor** to **Visual Studio Code**.
+- Đặt **Dotnet** -> **Editor** -> **External Editor** thành **Visual Studio Code**.
 
-In Visual Studio Code:
+Trong Visual Studio Code:
 
-- Install the `C# <https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp>`__ extension.
+- Cài đặt extension `C# <https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp>`__.
 
-To configure a project for debugging, you need a ``tasks.json`` and ``launch.json`` file in
-the ``.vscode`` folder with the necessary configuration.
+Để cấu hình một project cho việc debugging, bạn cần có file ``tasks.json`` và ``launch.json`` trong thư mục ``.vscode`` với cấu hình cần thiết.
 
-Here is an example ``launch.json``:
+Sau đây là một ví dụ về ``launch.json``:
 
 .. code-block:: json
 
@@ -128,11 +95,9 @@ Here is an example ``launch.json``:
         ]
     }
 
-For this launch configuration to work, you need to either setup a GODOT4
-environment variable that points to the Godot executable, or replace ``program``
-parameter with the path to the Godot executable.
+Để launch configuration này hoạt động, bạn cần thiết lập một biến môi trường GODOT4 trỏ đến file thực thi Godot, hoặc thay thế tham số ``program`` bằng đường dẫn đến file thực thi Godot.
 
-Here is an example ``tasks.json``:
+Sau đây là một ví dụ về ``tasks.json``:
 
 .. code-block:: json
 
@@ -151,77 +116,47 @@ Here is an example ``tasks.json``:
         ]
     }
 
-Now, when you start the debugger in Visual Studio Code, your Godot project will run.
+Giờ đây, khi khởi động debugger trong Visual Studio Code, project Godot của bạn sẽ chạy.
 
-Visual Studio (Windows only)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Visual Studio (chỉ dành cho Windows)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Download and install the latest version of
-`Visual Studio <https://visualstudio.microsoft.com/downloads/>`__.
-Visual Studio will include the required SDKs if you have the correct
-workloads selected, so you don't need to manually install the things
-listed in the "Prerequisites" section.
+Tải xuống và cài đặt phiên bản mới nhất của `Visual Studio <https://visualstudio.microsoft.com/downloads/>`__. Visual Studio sẽ bao gồm các SDK cần thiết nếu bạn chọn đúng workloads, vì vậy bạn không cần cài đặt thủ công những thành phần được liệt kê trong phần "Prerequisites".
 
-While installing Visual Studio, select this workload:
+Trong quá trình cài đặt Visual Studio, hãy chọn workload này:
 
 - .NET desktop development
 
-In Godot's **Editor → Editor Settings** menu:
+Trong menu **Editor → Editor Settings** của Godot:
 
-- Set **Dotnet** -> **Editor** -> **External Editor** to **Visual Studio**.
+- Đặt **Dotnet** -> **Editor** -> **External Editor** thành **Visual Studio**.
 
 .. note:: If you see an error like "Unable to find package Godot.NET.Sdk",
-          your NuGet configuration may be incorrect and need to be fixed.
+          cấu hình NuGet của bạn có thể không chính xác và cần được sửa.
 
-          A simple way to fix the NuGet configuration file is to regenerate it.
-          In a file explorer window, go to ``%AppData%\NuGet``. Rename or delete
-          the ``NuGet.Config`` file. When you build your Godot project again,
-          the file will be automatically created with default values.
+          Một cách đơn giản để sửa file cấu hình NuGet là tạo lại file đó. Trong cửa sổ file explorer, đi đến ``%AppData%\NuGet``. Đổi tên hoặc xóa file ``NuGet.Config``. Khi bạn build lại project Godot, file này sẽ tự động được tạo với các giá trị mặc định.
 
-To debug your C# scripts using Visual Studio, open the .sln file that is generated
-after opening the first C# script in the editor. In the **Debug** menu, go to the
-**Debug Properties** menu item for your project. Click the **Create a new profile**
-button and choose **Executable**. In the **Executable** field, browse to the path
-of the C# version of the Godot editor, or type ``%GODOT4%`` if you have created an
-environment variable for the Godot executable path. It must be the path to the main Godot
-executable, not the 'console' version. For the **Working Directory**, type a single period,
-``.``, meaning the current directory. Also check the **Enable native code debugging**
-checkbox. You may now close this window, click downward arrow on the debug profile
-dropdown, and select your new launch profile. Hit the green start button, and your
-game will begin playing in debug mode.
+Để debug các script C# bằng Visual Studio, hãy mở file .sln được tạo sau khi mở script C# đầu tiên trong editor. Trong menu **Debug**, đi đến mục menu **Debug Properties** của project. Nhấp vào nút **Create a new profile** và chọn **Executable**. Trong trường **Executable**, hãy duyệt đến đường dẫn của phiên bản C# của Godot editor hoặc nhập ``%GODOT4%`` nếu bạn đã tạo một biến môi trường cho đường dẫn đến file thực thi Godot. Đường dẫn này phải trỏ đến file thực thi Godot chính, không phải phiên bản 'console'. Đối với **Working Directory**, hãy nhập một dấu chấm đơn, ``.``, biểu thị thư mục hiện tại. Đồng thời chọn checkbox **Enable native code debugging**. Bây giờ bạn có thể đóng cửa sổ này, nhấp vào mũi tên hướng xuống trên dropdown debug profile và chọn launch profile mới. Nhấn nút start màu xanh lá, game của bạn sẽ bắt đầu chạy ở debug mode.
 
 
-Creating a C# script
---------------------
+Tạo script C#
+-------------
 
-After you successfully set up C# for Godot, you should see the following option
-when selecting **Attach Script** in the context menu of a node in your scene:
+Sau khi thiết lập C# cho Godot thành công, bạn sẽ thấy tùy chọn sau khi chọn **Attach Script** trong context menu của một node trong scene:
 
 .. image:: img/attachcsharpscript.webp
 
-Note that while some specifics change, most concepts work the same
-when using C# for scripting. If you're new to Godot, you may want to follow
-the tutorials on :ref:`doc_scripting` at this point.
-While some documentation pages still lack C# examples, most notions
-can be transferred from GDScript.
+Lưu ý rằng dù một số chi tiết có thay đổi, hầu hết các khái niệm vẫn hoạt động tương tự khi sử dụng C# để viết script. Nếu bạn mới làm quen với Godot, ở thời điểm này bạn có thể muốn làm theo các tutorial trên :ref:`doc_scripting`. Mặc dù một số trang tài liệu vẫn chưa có ví dụ C#, hầu hết các khái niệm đều có thể chuyển đổi từ GDScript.
 
-Project setup and workflow
---------------------------
+Thiết lập project và workflow
+-----------------------------
 
-When you create the first C# script, Godot initializes the C# project files
-for your Godot project. This includes generating a C# solution (``.sln``)
-and a project file (``.csproj``), as well as some utility files and folders
-(``.godot/mono``).
-All of these but ``.godot/mono`` are important and should be committed to your
-version control system. Everything under ``.godot`` can be safely added to the
-ignore list of your VCS.
-When troubleshooting, it can sometimes help to delete the ``.godot/mono`` folder
-and let it regenerate.
+Khi bạn tạo script C# đầu tiên, Godot sẽ khởi tạo các file project C# cho project Godot của bạn. Việc này bao gồm tạo một C# solution (``.sln``) và một project file (``.csproj``), cùng với một số file và thư mục tiện ích (``.godot/mono``). Tất cả các thành phần này, ngoại trừ ``.godot/mono``, đều quan trọng và nên được commit vào hệ thống version control của bạn. Mọi thứ bên trong ``.godot`` đều có thể an toàn được thêm vào danh sách ignore của VCS. Khi troubleshooting, đôi khi việc xóa thư mục ``.godot/mono`` và để Godot tạo lại thư mục này có thể hữu ích.
 
-Example
--------
+Ví dụ
+-----
 
-Here's a blank C# script with some comments to demonstrate how it works.
+Dưới đây là một script C# trống với một số comment để minh họa cách hoạt động.
 
 .. code-block:: csharp
 
@@ -229,93 +164,64 @@ Here's a blank C# script with some comments to demonstrate how it works.
 
     public partial class YourCustomClass : Node
     {
-        // Member variables here, example:
+        // Các member variable ở đây, ví dụ:
         private int _a = 2;
         private string _b = "textvar";
 
         public override void _Ready()
         {
-            // Called every time the node is added to the scene.
-            // Initialization here.
+            // Được gọi mỗi khi node được thêm vào scene.
+            // Phần khởi tạo ở đây.
             GD.Print("Hello from C# to Godot :)");
         }
 
         public override void _Process(double delta)
         {
-            // Called every frame. Delta is time since the last frame.
-            // Update game logic here.
+            // Được gọi ở mỗi frame. Delta là khoảng thời gian kể từ frame trước đó.
+            // Cập nhật logic game ở đây.
         }
     }
 
-As you can see, functions normally in global scope in GDScript like Godot's
-``print`` function are available in the ``GD`` static class which is part of
-the ``Godot`` namespace. For a full list of methods in the ``GD`` class, see the
-class reference pages for
+Như bạn có thể thấy, các function thường nằm trong global scope ở GDScript, chẳng hạn như function ``print`` của Godot, có sẵn trong static class ``GD``, thuộc namespace ``Godot``. Để xem danh sách đầy đủ các method trong class ``GD``, hãy xem các trang class reference dành cho
 :ref:`@GDScript <class_@gdscript>` and :ref:`@GlobalScope <class_@globalscope>`.
 
 .. note::
 
-    Keep in mind that the class you wish to attach to your node should have the same
-    name as the ``.cs`` file. Otherwise, you will get the following error:
+    Hãy nhớ rằng class bạn muốn attach vào node phải có cùng tên với file ``.cs``. Nếu không, bạn sẽ nhận được lỗi sau:
 
     *"Cannot find class XXX for script res://XXX.cs"*
 
 .. _doc_c_sharp_general_differences:
 
-General differences between C# and GDScript
--------------------------------------------
+Những khác biệt chung giữa C# và GDScript
+-----------------------------------------
 
-The C# API uses ``PascalCase`` instead of ``snake_case`` in GDScript/C++.
-Where possible, fields and getters/setters have been converted to properties.
-In general, the C# Godot API strives to be as idiomatic as is reasonably possible.
+C# API sử dụng ``PascalCase`` thay vì ``snake_case`` trong GDScript/C++. Khi có thể, các field và getter/setter đã được chuyển đổi thành property. Nhìn chung, C# Godot API hướng tới việc mang tính idiomatic nhất có thể trong phạm vi hợp lý.
 
-For more information, see the :ref:`doc_c_sharp_differences` page.
+Để biết thêm thông tin, hãy xem trang :ref:`doc_c_sharp_differences`.
 
 .. warning::
 
-    You need to (re)build the project assemblies whenever you want to see new
-    exported variables or signals in the editor. This build can be manually
-    triggered by clicking the **Build** button in the top right corner of the
-    editor.
+    Bạn cần (re)build các project assembly mỗi khi muốn thấy các biến được export hoặc signal mới trong editor. Có thể kích hoạt thủ công quá trình build này bằng cách nhấp vào nút **Build** ở góc trên bên phải của editor.
 
     .. image:: img/build_dotnet.webp
 
-    You will also need to rebuild the project assemblies to apply changes in
-    "tool" scripts.
+    Bạn cũng cần rebuild các project assembly để áp dụng những thay đổi trong các script "tool".
 
-Current gotchas and known issues
---------------------------------
+Các điểm cần lưu ý và vấn đề đã biết hiện tại
+---------------------------------------------
 
-As C# support is quite new in Godot, there are some growing pains and things
-that need to be ironed out. Below is a list of the most important issues
-you should be aware of when diving into C# in Godot, but if in doubt, also
-take a look over the official
-`issue tracker for .NET issues <https://github.com/godotengine/godot/labels/topic%3Adotnet>`_.
+Vì hỗ trợ C# trong Godot còn khá mới, vẫn có một số khó khăn ban đầu và những vấn đề cần được hoàn thiện. Dưới đây là danh sách các vấn đề quan trọng nhất mà bạn nên biết khi bắt đầu sử dụng C# trong Godot, nhưng nếu không chắc chắn, bạn cũng nên xem qua `issue tracker for .NET issues <https://github.com/godotengine/godot/labels/topic%3Adotnet>`_ chính thức.
 
-- Writing editor plugins is possible, but it is currently quite convoluted.
-- State is currently not saved and restored when hot-reloading,
-  with the exception of exported variables.
-- Attached C# scripts should refer to a class that has a class name
-  that matches the file name.
-- There are some methods such as ``Get()``/``Set()``, ``Call()``/``CallDeferred()``
-  and signal connection method ``Connect()`` that rely on Godot's ``snake_case`` API
-  naming conventions.
-  So when using e.g. ``CallDeferred("AddChild")``, ``AddChild`` will not work because
-  the API is expecting the original ``snake_case`` version ``add_child``. However, you
-  can use any custom properties or methods without this limitation.
-  Prefer using the exposed ``StringName`` in the ``PropertyName``, ``MethodName`` and
-  ``SignalName`` to avoid extra ``StringName`` allocations and worrying about snake_case naming.
+- Writing editor plugins is possible, but it is currently quite convoluted. - State is currently not saved and restored when hot-reloading, with the exception of exported variables. - Attached C# scripts should refer to a class that has a class name that matches the file name. - There are some methods such as ``Get()``/``Set()``, ``Call()``/``CallDeferred()`` and signal connection method ``Connect()`` that rely on Godot's ``snake_case`` API naming conventions. So when using e.g. ``CallDeferred("AddChild")``, ``AddChild`` will not work because the API is expecting the original ``snake_case`` version ``add_child``. However, you can use any custom properties or methods without this limitation. Prefer using the exposed ``StringName`` in the ``PropertyName``, ``MethodName`` and ``SignalName`` to avoid extra ``StringName`` allocations and worrying about snake_case naming.
 
 
-As of Godot 4.0, exporting .NET projects is supported for desktop platforms
-(Linux, Windows and macOS). Other platforms will gain support in future 4.x
-releases.
+Kể từ Godot 4.0, việc export các project .NET được hỗ trợ trên các nền tảng desktop (Linux, Windows và macOS). Các nền tảng khác sẽ được hỗ trợ trong những bản phát hành 4.x tương lai.
 
-Common pitfalls
----------------
+Các lỗi thường gặp
+------------------
 
-You might encounter the following error when trying to modify some values in Godot
-objects, e.g. when trying to change the X coordinate of a ``Node2D``:
+Bạn có thể gặp lỗi sau khi cố gắng sửa đổi một số giá trị trong các object của Godot, chẳng hạn khi cố thay đổi tọa độ X của một ``Node2D``:
 
 .. code-block:: csharp
     :emphasize-lines: 5
@@ -330,13 +236,9 @@ objects, e.g. when trying to change the X coordinate of a ``Node2D``:
         }
     }
 
-This is perfectly normal. Structs (in this example, a ``Vector2``) in C# are
-copied on assignment, meaning that when you retrieve such an object from a
-property or an indexer, you get a copy of it, not the object itself. Modifying
-said copy without reassigning it afterwards won't achieve anything.
+Điều này hoàn toàn bình thường. Các struct (trong ví dụ này là một ``Vector2``) trong C# được sao chép khi gán, nghĩa là khi bạn lấy một object như vậy từ một property hoặc indexer, bạn nhận được một bản sao của nó, không phải chính object đó. Việc sửa đổi bản sao nói trên mà không gán lại sau đó sẽ không mang lại kết quả gì.
 
-The workaround is simple: retrieve the entire struct, modify the value you want
-to modify, and reassign the property.
+Cách khắc phục rất đơn giản: lấy toàn bộ struct, sửa đổi giá trị bạn muốn thay đổi, rồi gán lại property.
 
 .. code-block:: csharp
 
@@ -344,28 +246,22 @@ to modify, and reassign the property.
     newPosition.X = 100.0f;
     Position = newPosition;
 
-Since C# 10, it is also possible to use `with expressions <https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/with-expression>`_
-on structs, allowing you to do the same thing in a single line.
+Kể từ C# 10, bạn cũng có thể sử dụng `with expressions <https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/with-expression>`_ trên các struct, cho phép thực hiện cùng việc đó trên một dòng duy nhất.
 
 .. code-block:: csharp
 
     Position = Position with { X = 100.0f };
 
-You can read more about this error on the `C# language reference <https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-messages/cs1612>`_.
+Bạn có thể đọc thêm về lỗi này tại `C# language reference <https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-messages/cs1612>`_.
 
-Performance of C# in Godot
---------------------------
+Hiệu năng của C# trong Godot
+----------------------------
 
 .. seealso::
 
-    For a performance comparison of the languages Godot supports,
-    see :ref:`doc_faq_which_programming_language_is_fastest`.
+    Để xem so sánh hiệu năng giữa các ngôn ngữ được Godot hỗ trợ, hãy xem :ref:`doc_faq_which_programming_language_is_fastest`.
 
-Most properties of Godot C# objects that are based on ``GodotObject``
-(e.g. any ``Node`` like ``Control`` or ``Node3D`` like ``Camera3D``) require native (interop) calls as they talk to
-Godot's C++ core.
-Consider assigning values of such properties into a local variable if you need to modify or read them multiple times at
-a single code location:
+Hầu hết các property của object Godot C# dựa trên ``GodotObject`` (chẳng hạn như mọi ``Node`` như ``Control`` hoặc ``Node3D`` như ``Camera3D``) đều yêu cầu các native call (interop), vì chúng giao tiếp với core C++ của Godot. Hãy cân nhắc gán giá trị của các property như vậy vào một biến cục bộ nếu bạn cần sửa đổi hoặc đọc chúng nhiều lần tại cùng một vị trí trong code:
 
 .. code-block:: csharp
 
@@ -377,39 +273,34 @@ a single code location:
         {
             for (var i = 0; i < 10; i++)
             {
-                // Position is read and set 10 times which incurs native interop.
-                // Furthermore the object is repositioned 10 times in 3D space which
-                // takes additional time.
+                // Position được đọc và thiết lập 10 lần, dẫn đến các lần interop với native.
+                // Ngoài ra, object được reposition 10 lần trong không gian 3D, việc này
+                // tốn thêm thời gian.
                 Position += new Vector3(i, i);
             }
         }
 
         private void Reposition()
         {
-            // A variable is used to avoid native interop for Position on every loop.
+            // Một biến được sử dụng để tránh interop với native đối với Position trong mỗi vòng lặp.
             var newPosition = Position;
             for (var i = 0; i < 10; i++)
             {
                 newPosition += new Vector3(i, i);
             }
-            // Setting Position only once avoids native interop and repositioning in 3D space.
+            // Chỉ thiết lập Position một lần giúp tránh interop với native và việc reposition trong không gian 3D.
             Position = newPosition;
         }
     }
 
-Passing raw arrays (such as ``byte[]``) or ``string`` to Godot's C# API requires marshalling which is
-comparatively pricey.
+Việc truyền các mảng raw (chẳng hạn như ``byte[]``) hoặc ``string`` đến API C# của Godot yêu cầu marshalling, vốn tương đối tốn kém.
 
-The implicit conversion from ``string`` to ``NodePath`` or ``StringName`` incur both the native interop and marshalling
-costs as the ``string`` has to be marshalled and passed to the respective native constructor.
+Việc chuyển đổi ngầm định từ ``string`` sang ``NodePath`` hoặc ``StringName`` phát sinh cả chi phí interop với native và marshalling, vì ``string`` phải được marshal và truyền đến native constructor tương ứng.
 
-Using NuGet packages in Godot
------------------------------
+Sử dụng package NuGet trong Godot
+---------------------------------
 
-`NuGet <https://www.nuget.org/>`_ packages can be installed and used with Godot,
-as with any C# project. Many IDEs are able to add packages directly.
-They can also be added manually by adding the package reference in
-the ``.csproj`` file located in the project root:
+Các package `NuGet <https://www.nuget.org/>`_ có thể được cài đặt và sử dụng với Godot, giống như trong mọi project C#. Nhiều IDE có thể thêm package trực tiếp. Bạn cũng có thể thêm chúng thủ công bằng cách thêm package reference vào file ``.csproj`` nằm trong thư mục gốc của project:
 
 .. code-block:: xml
     :emphasize-lines: 2
@@ -420,16 +311,13 @@ the ``.csproj`` file located in the project root:
         ...
     </Project>
 
-Godot automatically downloads and sets up newly added NuGet packages
-the next time it builds the project.
+Godot tự động tải xuống và thiết lập các package NuGet mới được thêm vào trong lần build project tiếp theo.
 
-Profiling your C# code
-----------------------
+Profiling code C# của bạn
+-------------------------
 
-The following tools may be used for performance and memory profiling of your managed code:
+Có thể sử dụng các công cụ sau để profiling hiệu năng và bộ nhớ của managed code:
 
-- JetBrains Rider with dotTrace/dotMemory plugin.
-- Standalone JetBrains dotTrace/dotMemory.
-- Visual Studio.
+- JetBrains Rider với plugin dotTrace/dotMemory. - JetBrains dotTrace/dotMemory độc lập. - Visual Studio.
 
-Profiling managed and unmanaged code at once is possible with both JetBrains tools and Visual Studio, but limited to Windows.
+Có thể profiling đồng thời managed code và unmanaged code bằng cả các công cụ của JetBrains lẫn Visual Studio, nhưng chỉ giới hạn trên Windows.

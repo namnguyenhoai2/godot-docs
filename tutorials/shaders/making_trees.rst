@@ -1,54 +1,54 @@
 .. _doc_making_trees:
 
-Making trees
-============
+Tạo cây
+=======
 
-This is a short tutorial on how to make trees and other types of vegetation from scratch.
+Đây là một hướng dẫn ngắn về cách tự tạo cây và các loại thảm thực vật khác từ đầu.
 
-The aim is to not focus on the modeling techniques (there are plenty of tutorials about that), but how to make them look good in Godot.
+Mục tiêu không phải là tập trung vào các kỹ thuật modeling (có rất nhiều hướng dẫn về chủ đề đó), mà là cách làm cho chúng trông đẹp trong Godot.
 
 .. image:: img/tree_sway.gif
 
-Start with a tree
------------------
+Bắt đầu với một cái cây
+-----------------------
 
-I took this tree from SketchFab:
+Tôi đã lấy cái cây này từ SketchFab:
 
 .. image:: img/tree_base.png
 
 https://sketchfab.com/models/ea5e6ed7f9d6445ba69589d503e8cebf
 
-and opened it in Blender.
+và mở nó trong Blender.
 
-Paint with vertex colors
-------------------------
+Tô bằng vertex color
+--------------------
 
-The first thing you may want to do is to use the vertex colors to paint how much the tree will sway when there is wind. Just use the vertex color painting tool of your favorite 3D modeling program and paint something like this:
+Điều đầu tiên bạn có thể muốn làm là sử dụng vertex color để tô mức độ cây sẽ đung đưa khi có gió. Chỉ cần sử dụng công cụ tô vertex color của phần mềm modeling 3D yêu thích và tô một hình tương tự như sau:
 
 .. image:: img/tree_vertex_paint.png
 
-This is a bit exaggerated, but the idea is that color indicates how much sway affects every part of the tree. This scale here represents it better:
+Hình này hơi cường điệu, nhưng ý tưởng là màu sắc cho biết độ đung đưa ảnh hưởng đến từng phần của cây nhiều đến mức nào. Thang đo này thể hiện điều đó rõ hơn:
 
 .. image:: img/tree_gradient.png
 
-Write a custom shader for the leaves
-------------------------------------
+Viết custom shader cho lá
+-------------------------
 
-This is an example of a shader for leaves:
+Đây là một ví dụ về shader cho lá:
 
 .. code-block:: glsl
 
     shader_type spatial;
     render_mode depth_prepass_alpha, cull_disabled, world_vertex_coords;
 
-This is a spatial shader. There is no front/back culling (so leaves can be seen from both sides), and alpha prepass is used, so there are less depth artifacts that result from using transparency (and leaves cast shadow). Finally, for the sway effect, world coordinates are recommended, so the tree can be duplicated, moved, etc. and it will still work together with other trees.
+Đây là một spatial shader. Không có front/back culling (vì vậy có thể nhìn thấy lá từ cả hai phía), và alpha prepass được sử dụng, nhờ đó có ít artifact về độ sâu hơn do sử dụng transparency (đồng thời lá cũng đổ bóng). Cuối cùng, đối với hiệu ứng đung đưa, nên sử dụng tọa độ thế giới, để cây có thể được nhân bản, di chuyển, v.v. mà vẫn hoạt động cùng với các cây khác.
 
 .. code-block:: glsl
 
     uniform sampler2D texture_albedo : source_color;
     uniform vec4 transmission : source_color;
 
-Here, the texture is read, as well as a transmission color, which is used to add some back-lighting to the leaves, simulating subsurface scattering.
+Ở đây, texture được đọc, cùng với một transmission color, được dùng để thêm hiệu ứng chiếu sáng từ phía sau cho lá, mô phỏng subsurface scattering.
 
 
 .. code-block:: glsl
@@ -64,10 +64,10 @@ Here, the texture is read, as well as a transmission color, which is used to add
         VERTEX.z += sin(VERTEX.z * sway_phase_len * 0.9123 + TIME * sway_speed * 1.3123) * strength;
     }
 
-This is the code to create the sway of the leaves. It's basic (just uses a sinewave multiplying by the time and axis position, but works well). Notice that the strength is multiplied by the color. Every axis uses a different small near 1.0 multiplication factor so axes don't appear in sync.
+Đây là code để tạo chuyển động đung đưa của lá. Nó khá cơ bản (chỉ sử dụng một sóng sine nhân với thời gian và vị trí trên trục, nhưng hoạt động tốt). Hãy chú ý rằng strength được nhân với màu sắc. Mỗi trục sử dụng một hệ số nhân nhỏ khác nhau, gần với 1.0, để các trục không chuyển động đồng bộ.
 
 
-Finally, all that's left is the fragment shader:
+Cuối cùng, tất cả những gì còn lại là fragment shader:
 
 .. code-block:: glsl
 
@@ -80,14 +80,13 @@ Finally, all that's left is the fragment shader:
         SSS_TRANSMITTANCE_COLOR = transmission.rgba;
     }
 
-And this is pretty much it.
+Và về cơ bản là xong.
 
-The trunk shader is similar, except it does not write to the alpha channel (thus no alpha prepass is needed) and does not require transmission to work. Both shaders can be improved by adding normal mapping, AO and other maps.
+Shader cho thân cây cũng tương tự, ngoại trừ việc nó không ghi vào kênh alpha (do đó không cần alpha prepass) và không yêu cầu transmission để hoạt động. Cả hai shader đều có thể được cải thiện bằng cách thêm normal mapping, AO và các map khác.
 
-Improving the shader
---------------------
+Cải thiện shader
+----------------
 
-There are many more resources on how to do this that you can read. Now that you know the basics, a recommended read is the chapter from GPU Gems3 about how Crysis does this
-(focus mostly on the sway code, as many other techniques shown there are obsolete):
+Bạn có thể đọc thêm nhiều tài liệu về cách thực hiện việc này. Giờ bạn đã biết những điều cơ bản, một tài liệu đáng đọc là chương trong GPU Gems3 về cách Crysis thực hiện việc này (chủ yếu tập trung vào code chuyển động đung đưa, vì nhiều kỹ thuật khác được trình bày ở đó đã lỗi thời):
 
 https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch16.html

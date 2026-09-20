@@ -1,67 +1,41 @@
 .. _doc_bbcode_in_richtextlabel:
 
-BBCode in RichTextLabel
-=======================
+BBCode trong RichTextLabel
+==========================
 
-Introduction
-------------
+Giới thiệu
+----------
 
 :ref:`class_Label` nodes are great for displaying basic text, but they have limitations.
-If you want to change the color of the text, or its alignment, you can only do that to
-the entire label. You can't make a part of the text have another color, or have a part
-of the text centered. To get around these limitations, you would use a :ref:`class_RichTextLabel`.
+Nếu muốn thay đổi màu văn bản hoặc căn chỉnh văn bản, bạn chỉ có thể áp dụng cho toàn bộ label. Bạn không thể làm cho một phần văn bản có màu khác hoặc căn giữa một phần văn bản. Để khắc phục những hạn chế này, bạn có thể sử dụng :ref:`class_RichTextLabel`.
 
 :ref:`class_RichTextLabel` allows for complex formatting of text using a markup syntax or
-the built-in API. It uses BBCodes for the markup syntax, a system of tags that designate
-formatting rules for a part of the text. You may be familiar with them if you ever used
-forums (also known as `bulletin boards`, hence the "BB" in "BBCode").
+API tích hợp sẵn. API này sử dụng BBCode làm cú pháp markup, một hệ thống các tag xác định quy tắc định dạng cho một phần văn bản. Bạn có thể đã quen thuộc với chúng nếu từng sử dụng các diễn đàn (còn được gọi là `bulletin boards`, do đó có "BB" trong "BBCode").
 
-Unlike Label, RichTextLabel also comes with its own vertical scrollbar. This
-scrollbar is automatically displayed if the text does not fit within the
-control's size. The scrollbar can be disabled by unchecking the
-**Scroll Active** property in the RichTextLabel inspector.
+Không giống Label, RichTextLabel cũng có thanh cuộn dọc riêng. Thanh cuộn này tự động hiển thị nếu văn bản không vừa với kích thước của control. Bạn có thể tắt thanh cuộn bằng cách bỏ chọn thuộc tính **Scroll Active** trong inspector của RichTextLabel.
 
-Note that the BBCode tags can also be used to some extent for other use cases:
+Lưu ý rằng các tag BBCode cũng có thể được sử dụng ở một mức độ nhất định cho các trường hợp sử dụng khác:
 
-- BBCode can be used to :ref:`format comments in the XML source of the class reference <doc_class_reference_bbcode>`.
-- BBCode can be used in :ref:`GDScript documentation comments <doc_gdscript_documentation_comments_bbcode_and_class_reference>`.
-- BBCode can be used when :ref:`printing rich text to the Output bottom panel <doc_output_panel_printing_rich_text>`.
+- BBCode có thể được sử dụng để :ref:`format comments in the XML source of the class reference <doc_class_reference_bbcode>`. - BBCode có thể được sử dụng trong :ref:`GDScript documentation comments <doc_gdscript_documentation_comments_bbcode_and_class_reference>`. - BBCode có thể được sử dụng khi :ref:`printing rich text to the Output bottom panel <doc_output_panel_printing_rich_text>`.
 
 .. seealso::
 
-    You can see how BBCode in RichTextLabel works in action using the
-    `Rich Text Label with BBCode demo project <https://github.com/godotengine/godot-demo-projects/tree/master/gui/rich_text_bbcode>`__.
+    Bạn có thể xem BBCode trong RichTextLabel hoạt động như thế nào qua `Rich Text Label with BBCode demo project <https://github.com/godotengine/godot-demo-projects/tree/master/gui/rich_text_bbcode>`__.
 
-Using BBCode
-------------
+Sử dụng BBCode
+--------------
 
-By default, :ref:`class_RichTextLabel` functions like a normal :ref:`class_Label`.
-It has the :ref:`text <class_RichTextLabel_property_text>` property, which you can
-edit to have uniformly formatted text. To be able to use BBCode for rich text formatting,
-you need to turn on the BBCode mode by setting :ref:`bbcode_enabled <class_RichTextLabel_property_bbcode_enabled>`.
-After that, you can edit the :ref:`text <class_RichTextLabel_property_text>`
-property using available tags. Both properties are located at the top of the inspector
-after selecting a RichTextLabel node.
+Theo mặc định, :ref:`class_RichTextLabel` hoạt động như một :ref:`class_Label` thông thường. Nó có thuộc tính :ref:`text <class_RichTextLabel_property_text>`, bạn có thể chỉnh sửa thuộc tính này để văn bản được định dạng đồng nhất. Để có thể sử dụng BBCode cho việc định dạng văn bản phong phú, bạn cần bật chế độ BBCode bằng cách đặt :ref:`bbcode_enabled <class_RichTextLabel_property_bbcode_enabled>`. Sau đó, bạn có thể chỉnh sửa thuộc tính :ref:`text <class_RichTextLabel_property_text>` bằng các tag khả dụng. Cả hai thuộc tính đều nằm ở đầu inspector sau khi chọn một node RichTextLabel.
 
 .. image:: img/bbcode_in_richtextlabel_inspector.webp
 
-For example, ``BBCode [color=green]test[/color]`` would render the word "test" with
-a green color.
+Ví dụ, ``BBCode [color=green]test[/color]`` sẽ hiển thị từ "test" bằng màu xanh lá.
 
 .. image:: img/bbcode_in_richtextlabel_basic_example.webp
 
-Most BBCodes consist of 3 parts: the opening tag, the content and the closing
-tag. The opening tag delimits the start of the formatted part, and can also
-carry some configuration options. Some opening tags, like the ``color`` one
-shown above, also require a value to work. Other opening tags may accept
-multiple options (separated by spaces within the opening tag). The closing tag
-delimits the end of the formatted part. In some cases, both the closing tag and
-the content can be omitted.
+Hầu hết BBCode gồm 3 phần: tag mở, nội dung và tag đóng. Tag mở đánh dấu phần bắt đầu của vùng được định dạng và cũng có thể chứa một số tùy chọn cấu hình. Một số tag mở, như tag ``color`` được minh họa ở trên, cũng yêu cầu một giá trị để hoạt động. Các tag mở khác có thể chấp nhận nhiều tùy chọn (được phân tách bằng khoảng trắng bên trong tag mở). Tag đóng đánh dấu phần kết thúc của vùng được định dạng. Trong một số trường hợp, cả tag đóng và nội dung đều có thể được bỏ qua.
 
-Unlike BBCode in HTML, leading/trailing whitespace is not removed by a
-RichTextLabel upon display. Duplicate spaces are also displayed as-is in the
-final output. This means that when displaying a code block in a RichTextLabel,
-you don't need to use a preformatted text tag.
+Không giống BBCode trong HTML, khoảng trắng ở đầu/cuối không bị RichTextLabel loại bỏ khi hiển thị. Các khoảng trắng trùng lặp cũng được hiển thị nguyên trạng trong kết quả cuối cùng. Điều này có nghĩa là khi hiển thị một khối mã trong RichTextLabel, bạn không cần sử dụng tag văn bản được định dạng trước.
 
 .. code-block:: none
 
@@ -73,14 +47,13 @@ you don't need to use a preformatted text tag.
 
 .. note::
 
-    RichTextLabel doesn't support entangled BBCode tags. For example, instead of
-    using:
+    RichTextLabel không hỗ trợ các tag BBCode lồng chéo. Ví dụ, thay vì sử dụng:
 
     ::
 
         [b]bold[i]bold italic[/b]italic[/i]
 
-    Use:
+    Hãy sử dụng:
 
     ::
 
@@ -88,19 +61,12 @@ you don't need to use a preformatted text tag.
 
 .. _doc_bbcode_in_richtextlabel_handling_user_input_safely:
 
-Handling user input safely
---------------------------
+Xử lý đầu vào của người dùng an toàn
+------------------------------------
 
-In a scenario where users may freely input text (such as chat in a multiplayer
-game), you should make sure users cannot use arbitrary BBCode tags that will be
-parsed by RichTextLabel. This is to avoid inappropriate use of formatting, which
-can be problematic if ``[url]`` tags are handled by your RichTextLabel (as players
-may be able to create clickable links to phishing sites or similar).
+Trong trường hợp người dùng có thể tự do nhập văn bản (chẳng hạn như chat trong một game nhiều người chơi), bạn nên đảm bảo người dùng không thể sử dụng các tag BBCode tùy ý được RichTextLabel phân tích. Điều này nhằm tránh việc sử dụng định dạng không phù hợp, có thể gây ra vấn đề nếu các tag ``[url]`` được RichTextLabel xử lý (vì người chơi có thể tạo các liên kết có thể nhấp đến các trang web lừa đảo hoặc tương tự).
 
-Using RichTextLabel's ``[lb]`` and/or ``[rb]`` tags, we can replace the opening and/or
-closing brackets of any BBCode tag in a message with those escaped tags. This
-prevents users from using BBCode that will be parsed as tags – instead, the
-BBCode will be displayed as text.
+Bằng cách sử dụng các tag ``[lb]`` và/hoặc ``[rb]`` của RichTextLabel, chúng ta có thể thay thế dấu ngoặc mở và/hoặc đóng của bất kỳ tag BBCode nào trong một message bằng các tag đã escape tương ứng. Điều này ngăn người dùng sử dụng BBCode được phân tích dưới dạng tag – thay vào đó, BBCode sẽ được hiển thị dưới dạng văn bản.
 
 .. figure:: img/bbcode_in_richtextlabel_escaping_user_input.webp
    :align: center
@@ -108,7 +74,7 @@ BBCode will be displayed as text.
 
    Example of unescaped user input resulting in BBCode injection (2nd line) and escaped user input (3rd line)
 
-The above image was created using the following script:
+Hình ảnh trên được tạo bằng script sau:
 
 ::
 
@@ -120,28 +86,26 @@ The above image was created using the following script:
         append_chat_line_escaped("Player 2", "Hello [color=red]BBCode injection[/color] (with escaping)!")
 
 
-    # Returns escaped BBCode that won't be parsed by RichTextLabel as tags.
+    # Trả về BBCode đã escape, không bị RichTextLabel phân tích dưới dạng tag.
     func escape_bbcode(bbcode_text):
-        # We only need to replace opening brackets to prevent tags from being parsed.
+        # Chúng ta chỉ cần thay thế các dấu ngoặc mở để ngăn tag bị phân tích.
         return bbcode_text.replace("[", "[lb]")
 
 
-    # Appends the user's message as-is, without escaping. This is dangerous!
+    # Thêm message của người dùng nguyên trạng, không escape. Điều này rất nguy hiểm!
     func append_chat_line(username, message):
         append_text("%s: [color=green]%s[/color]\n" % [username, message])
 
 
-    # Appends the user's message with escaping.
-    # Remember to escape both the player name and message contents.
+    # Thêm message của người dùng sau khi escape.
+    # Hãy nhớ escape cả tên người chơi và nội dung message.
     func append_chat_line_escaped(username, message):
         append_text("%s: [color=green]%s[/color]\n" % [escape_bbcode(username), escape_bbcode(message)])
 
-Stripping BBCode tags
----------------------
+Loại bỏ các tag BBCode
+----------------------
 
-For certain use cases, it can be desired to remove BBCode tags from the string.
-This is useful when displaying the RichTextLabel's text in another Control that
-does not support BBCode (such as a tooltip):
+Đối với một số trường hợp sử dụng, bạn có thể muốn xóa các tag BBCode khỏi chuỗi. Điều này hữu ích khi hiển thị văn bản của RichTextLabel trong một Control khác không hỗ trợ BBCode (chẳng hạn như tooltip):
 
 .. code::
 
@@ -151,86 +115,61 @@ does not support BBCode (such as a tooltip):
         var regex = RegEx.new()
         regex.compile("\\[.*?\\]")
         var text_without_tags = regex.sub(text, "", true)
-        # `text_without_tags` contains the text with all BBCode tags removed.
+        # `text_without_tags` chứa văn bản đã xóa toàn bộ tag BBCode.
 
 .. note::
 
-    Removing BBCode tags entirely isn't advised for user input, as it can
-    modify the displayed text without users understanding why part of their
-    message was removed.
+    Không nên xóa hoàn toàn các tag BBCode đối với đầu vào của người dùng, vì điều này có thể thay đổi văn bản hiển thị mà người dùng không hiểu tại sao một phần message của họ lại bị xóa.
     :ref:`Escaping user input <doc_bbcode_in_richtextlabel_handling_user_input_safely>`
-    should be preferred instead.
+    thay vào đó nên được ưu tiên sử dụng.
 
-Performance
------------
+Hiệu năng
+---------
 
-In most cases, you can use BBCode directly as-is since text formatting is rarely
-a heavy task. However, with particularly large RichTextLabels (such as console
-logs spanning thousands of lines), you may encounter stuttering during gameplay
-when the RichTextLabel's text is updated.
+Trong hầu hết trường hợp, bạn có thể sử dụng BBCode nguyên trạng vì việc định dạng văn bản hiếm khi là tác vụ nặng. Tuy nhiên, với các RichTextLabel đặc biệt lớn (chẳng hạn như nhật ký console dài hàng nghìn dòng), bạn có thể gặp hiện tượng giật trong lúc chơi game khi văn bản của RichTextLabel được cập nhật.
 
-There are several ways to alleviate this:
+Có một số cách để giảm vấn đề này:
 
-- Use the ``append_text()`` function instead of appending to the ``text``
-  property. This function will only parse BBCode for the added text, rather than
-  parsing BBCode from the entire ``text`` property.
-- Use ``push_[tag]()`` and ``pop()`` functions to add tags to RichTextLabel instead of
-  using BBCode.
-- Enable the **Threading > Threaded** property in RichTextLabel. This won't
-  speed up processing, but it will prevent the main thread from blocking, which
-  avoids stuttering during gameplay. Only enable threading if it's actually
-  needed in your project, as threading has some overhead.
+- Sử dụng hàm ``append_text()`` thay vì nối vào thuộc tính ``text``. Hàm này chỉ phân tích BBCode cho phần văn bản được thêm vào, thay vì phân tích BBCode từ toàn bộ thuộc tính ``text``. - Sử dụng các hàm ``push_[tag]()`` và ``pop()`` để thêm tag vào RichTextLabel thay vì sử dụng BBCode. - Bật thuộc tính **Threading > Threaded** trong RichTextLabel. Điều này không làm tăng tốc quá trình xử lý, nhưng sẽ ngăn main thread bị block, nhờ đó tránh hiện tượng giật trong lúc chơi game. Chỉ bật threading nếu project của bạn thực sự cần, vì threading có một số overhead.
 
 .. _doc_bbcode_in_richtextlabel_use_functions:
 
-Using push_[tag]() and pop() functions instead of BBCode
---------------------------------------------------------
+Sử dụng các hàm push_[tag]() và pop() thay cho BBCode
+-----------------------------------------------------
 
-If you don't want to use BBCode for performance reasons, you can use functions
-provided by RichTextLabel to create formatting tags without writing BBCode in
-the text.
+Nếu không muốn sử dụng BBCode vì lý do hiệu năng, bạn có thể sử dụng các hàm do RichTextLabel cung cấp để tạo các tag định dạng mà không cần viết BBCode trong văn bản.
 
-Every BBCode tag (including effects) has a ``push_[tag]()`` function (where
-``[tag]`` is the tag's name). There are also a few convenience functions
-available, such as ``push_bold_italics()`` that combines both ``push_bold()``
-and ``push_italics()`` into a single tag. See the
+Mỗi tag BBCode (bao gồm cả effect) đều có một hàm ``push_[tag]()`` (trong đó ``[tag]`` là tên của tag). Ngoài ra còn có một số hàm tiện ích, chẳng hạn như ``push_bold_italics()``, kết hợp cả ``push_bold()`` và ``push_italics()`` thành một tag duy nhất. Xem các hàm
 :ref:`RichTextLabel class reference <class_RichTextLabel>` for a complete list of
-``push_[tag]()`` functions.
+``push_[tag]()``.
 
-The ``pop()`` function is used to end *any* tag. Since BBCode is a tag *stack*,
-using ``pop()`` will close the most recently started tags first.
+Hàm ``pop()`` được dùng để kết thúc *bất kỳ* tag nào. Vì BBCode là một *stack* tag, việc sử dụng ``pop()`` sẽ đóng các tag được bắt đầu gần nhất trước.
 
-The following script will result in the same visual output as using
-``BBCode [color=green]test [i]example[/i][/color]``:
+Script sau sẽ cho kết quả hiển thị giống như khi sử dụng ``BBCode [color=green]test [i]example[/i][/color]``:
 
 ::
 
     extends RichTextLabel
 
     func _ready():
-        append_text("BBCode ")  # Trailing space separates words from each other.
+        append_text("BBCode ")  # Khoảng trắng ở cuối phân tách các từ với nhau.
         push_color(Color.GREEN)
-        append_text("test ")  # Trailing space separates words from each other.
+        append_text("test ")  # Khoảng trắng ở cuối phân tách các từ với nhau.
         push_italics()
         append_text("example")
-        pop()  # Ends the tag opened by `push_italics()`.
-        pop()  # Ends the tag opened by `push_color()`.
+        pop()  # Kết thúc tag được mở bởi `push_italics()`.
+        pop()  # Kết thúc tag được mở bởi `push_color()`.
 
 .. warning::
 
-    Do **not** set the ``text`` property directly when using formatting functions.
-    Appending to the ``text`` property will erase all modifications made to the
-    RichTextLabel using the ``append_text()``, ``push_[tag]()`` and ``pop()``
-    functions.
+    **Không** đặt trực tiếp thuộc tính ``text`` khi sử dụng các hàm định dạng. Việc nối vào thuộc tính ``text`` sẽ xóa mọi thay đổi được thực hiện trên RichTextLabel bằng các hàm ``append_text()``, ``push_[tag]()`` và ``pop()``.
 
-Reference
+Tham khảo
 ---------
 
 .. seealso::
 
-    *Some* of these BBCode tags can be used in tooltips for ``@export`` script
-    variables as well as in the XML source of the class reference. For more
-    information, see :ref:`Class reference BBCode <doc_class_reference_bbcode>`.
+    *Một số* tag BBCode này có thể được sử dụng trong tooltip cho các biến script ``@export``, cũng như trong XML source của class reference. Để biết thêm thông tin, hãy xem :ref:`Class reference BBCode <doc_class_reference_bbcode>`.
 
 .. list-table::
   :class: wrap-normal
@@ -238,120 +177,120 @@ Reference
   :widths: 60 40
 
   * - Tag
-    - Example
+    - Ví dụ
 
   * - | **b**
-      | Makes ``{text}`` use the bold (or bold italics) font of ``RichTextLabel``.
+      | Khiến ``{text}`` sử dụng font đậm (hoặc đậm nghiêng) của ``RichTextLabel``.
 
     - ``[b]{text}[/b]``
 
   * - | **i**
-      | Makes ``{text}`` use the italics (or bold italics) font of ``RichTextLabel``.
+      | Khiến ``{text}`` sử dụng font nghiêng (hoặc đậm nghiêng) của ``RichTextLabel``.
 
     - ``[i]{text}[/i]``
 
   * - | **u**
-      | Makes ``{text}`` underlined.
+      | Gạch chân ``{text}``.
 
     - ``[u]{text}[/u]``
       ``[u color={color}]{text}[/u]``
 
   * - | **s**
-      | Makes ``{text}`` strikethrough.
+      | Gạch ngang ``{text}``.
 
     - ``[s]{text}[/s]``
       ``[s color={color}]{text}[/s]``
 
   * - | **code**
-      | Makes ``{text}`` use the mono font of ``RichTextLabel``.
+      | Khiến ``{text}`` sử dụng font mono của ``RichTextLabel``.
 
     - ``[code]{text}[/code]``
 
   * - | **char**
-      | Adds Unicode character with hexadecimal UTF-32 ``{codepoint}``.
+      | Thêm ký tự Unicode với ``{codepoint}`` UTF-32 ở dạng thập lục phân.
 
     - ``[char={codepoint}]``
 
   * - | **p**
-      | Adds new paragraph with ``{text}``. Supports configuration options,
-        see :ref:`doc_bbcode_in_richtextlabel_paragraph_options`.
+      | Thêm đoạn văn mới với ``{text}``. Hỗ trợ các tùy chọn cấu hình,
+        xem :ref:`doc_bbcode_in_richtextlabel_paragraph_options`.
 
     - | ``[p]{text}[/p]``
       | ``[p {options}]{text}[/p]``
 
   * - | **br**
-      | Adds line break in a text, without adding a new paragraph.
-        If used within a list, this won't create a new list item,
-        but will add a line break within the current item instead.
+      | Thêm ngắt dòng vào văn bản mà không thêm đoạn văn mới.
+        Nếu được sử dụng bên trong danh sách, tag này sẽ không tạo mục danh sách mới,
+        mà thay vào đó sẽ thêm ngắt dòng bên trong mục hiện tại.
 
     - ``[br]``
 
   * - | **hr**
-      | Adds new a horizontal rule to separate content. Supports configuration options,
-        see :ref:`doc_bbcode_in_richtextlabel_hr_options`.
+      | Thêm đường kẻ ngang mới để phân tách nội dung. Hỗ trợ các tùy chọn cấu hình,
+        xem :ref:`doc_bbcode_in_richtextlabel_hr_options`.
 
     - | ``[hr]``
       | ``[hr {options}]``
 
   * - | **center**
-      | Makes ``{text}`` horizontally centered.
-      | Same as ``[p align=center]``.
+      | Căn giữa ``{text}`` theo chiều ngang.
+      | Giống ``[p align=center]``.
 
     - ``[center]{text}[/center]``
 
   * - | **left**
-      | Makes ``{text}`` horizontally left-aligned.
-      | Same as ``[p align=left]``.
+      | Căn ``{text}`` về bên trái theo chiều ngang.
+      | Giống ``[p align=left]``.
 
     - ``[left]{text}[/left]``
 
   * - | **right**
-      | Makes ``{text}`` horizontally right-aligned.
-      | Same as ``[p align=right]``.
+      | Căn ``{text}`` về bên phải theo chiều ngang.
+      | Giống ``[p align=right]``.
 
     - ``[right]{text}[/right]``
 
   * - | **fill**
-      | Makes ``{text}`` fill the full width of ``RichTextLabel``.
-      | Same as ``[p align=fill]``.
+      | Khiến ``{text}`` lấp đầy toàn bộ chiều rộng của ``RichTextLabel``.
+      | Giống ``[p align=fill]``.
 
     - ``[fill]{text}[/fill]``
 
   * - | **indent**
-      | Indents ``{text}`` once.
-        The indentation width is the same as with ``[ul]`` or ``[ol]``, but without a bullet point.
+      | Thụt lề ``{text}`` một lần.
+        Độ rộng thụt lề giống với ``[ul]`` hoặc ``[ol]``, nhưng không có dấu đầu dòng.
 
     - ``[indent]{text}[/indent]``
 
   * - | **url**
-      | Creates a hyperlink (underlined and clickable text). Can contain optional
-        ``{text}`` or display ``{link}`` as is. Supports configuration options,
-        see :ref:`doc_bbcode_in_richtextlabel_url_options`.
-      | **Must be handled with the "meta_clicked" signal to have an effect,** see :ref:`doc_bbcode_in_richtextlabel_handling_url_tag_clicks`.
+      | Tạo một siêu liên kết (văn bản được gạch chân và có thể nhấp vào). Có thể chứa tùy chọn
+        ``{text}`` hoặc hiển thị ``{link}`` nguyên trạng. Hỗ trợ các tùy chọn cấu hình,
+        xem :ref:`doc_bbcode_in_richtextlabel_url_options`.
+      | **Phải được xử lý bằng signal "meta_clicked" để có hiệu lực,** xem :ref:`doc_bbcode_in_richtextlabel_handling_url_tag_clicks`.
 
     - | ``[url]{link}[/url]``
       | ``[url={link}]{text}[/url]``
       | ``[url {options}]{text}[/url]``
 
   * - | **hint**
-      | Creates a tooltip hint that is displayed when hovering the text with the mouse.
-        While not required, it's recommended to put tooltip text between double or single quotes.
-        Note that it is not possible to escape quotes using ``\"`` or ``\'``. To use
-        single quotes for apostrophes in the hint string, you must use double quotes
-        to surround the string.
+      | Tạo một gợi ý tooltip được hiển thị khi di chuột lên văn bản.
+        Mặc dù không bắt buộc, bạn nên đặt văn bản tooltip giữa dấu ngoặc kép hoặc dấu nháy đơn.
+        Lưu ý rằng không thể escape dấu nháy bằng ``\"`` hoặc ``\'``. Để sử dụng
+        dấu nháy đơn cho dấu lược trong chuỗi gợi ý, bạn phải dùng dấu ngoặc kép
+        để bao quanh chuỗi.
     - | ``[hint="{tooltip text displayed on hover}"]{text}[/hint]``
 
   * - | **img**
-      | Inserts an image from the ``{path}`` (can be any valid :ref:`class_Texture2D` resource).
-      | If ``{width}`` is provided, the image will try to fit that width maintaining
-        the aspect ratio.
-      | If both ``{width}`` and ``{height}`` are provided, the image will be scaled
-        to that size.
-      | Add ``%`` to the end of ``{width}`` or ``{height}`` value to specify it as percentages of the control width instead of pixels.
-      | Add ``em`` to the end of ``{width}`` or ``{height}`` value to specify it as a ratio of the current font size. For example, ``height=1em`` will make the image as tall as the surrounding text.
-      | If ``{valign}`` configuration is provided, the image will try to align to the
-        surrounding text, see :ref:`doc_bbcode_in_richtextlabel_image_and_table_alignment`.
-      | Supports configuration options, see :ref:`doc_bbcode_in_richtextlabel_image_options`.
+      | Chèn một hình ảnh từ ``{path}`` (có thể là bất kỳ resource :ref:`class_Texture2D` hợp lệ nào).
+      | Nếu cung cấp ``{width}``, hình ảnh sẽ cố gắng vừa với chiều rộng đó trong khi vẫn giữ
+        tỷ lệ khung hình.
+      | Nếu cung cấp cả ``{width}`` và ``{height}``, hình ảnh sẽ được scale
+        theo kích thước đó.
+      | Thêm ``%`` vào cuối giá trị ``{width}`` hoặc ``{height}`` để chỉ định giá trị đó theo phần trăm chiều rộng của control thay vì pixel.
+      | Thêm ``em`` vào cuối giá trị ``{width}`` hoặc ``{height}`` để chỉ định giá trị đó theo tỷ lệ so với cỡ chữ hiện tại. Ví dụ, ``height=1em`` sẽ làm cho hình ảnh cao bằng văn bản xung quanh.
+      | Nếu cung cấp cấu hình ``{valign}``, hình ảnh sẽ cố gắng căn chỉnh với
+        văn bản xung quanh, xem :ref:`doc_bbcode_in_richtextlabel_image_and_table_alignment`.
+      | Hỗ trợ các tùy chọn cấu hình, xem :ref:`doc_bbcode_in_richtextlabel_image_options`.
 
     - | ``[img]{path}[/img]``
       | ``[img={width}]{path}[/img]``
@@ -360,95 +299,95 @@ Reference
       | ``[img {options}]{path}[/img]``
 
   * - | **font**
-      | Makes ``{text}`` use a font resource from the ``{path}``.
-      | Supports configuration options, see :ref:`doc_bbcode_in_richtextlabel_font_options`.
+      | Khiến ``{text}`` sử dụng một font resource từ ``{path}``.
+      | Hỗ trợ các tùy chọn cấu hình, xem :ref:`doc_bbcode_in_richtextlabel_font_options`.
 
     - | ``[font={path}]{text}[/font]``
       | ``[font {options}]{text}[/font]``
 
   * - | **font_size**
-      | Use custom font size for ``{text}``.
+      | Sử dụng cỡ chữ tùy chỉnh cho ``{text}``.
 
     - ``[font_size={size}]{text}[/font_size]``
 
   * - | **dropcap**
-      | Use a different font size and color for ``{text}``, while making the tag's contents
-        span multiple lines if it's large enough.
-      | A `drop cap <https://www.computerhope.com/jargon/d/dropcap.htm>`__ is typically one
-        uppercase character, but ``[dropcap]`` supports containing multiple characters.
-        ``margins`` values are comma-separated and can be positive, zero or negative.
-        Values must **not** be separated by spaces; otherwise, the values won't be parsed correctly.
-        Negative top and bottom margins are particularly useful to allow the rest of
-        the paragraph to display below the dropcap.
+      | Sử dụng cỡ chữ và màu khác cho ``{text}``, đồng thời khiến nội dung của tag
+        trải dài qua nhiều dòng nếu đủ lớn.
+      | Một `drop cap <https://www.computerhope.com/jargon/d/dropcap.htm>`__ thường là một
+        ký tự viết hoa, nhưng ``[dropcap]`` hỗ trợ chứa nhiều ký tự.
+        Các giá trị ``margins`` được phân tách bằng dấu phẩy và có thể dương, bằng không hoặc âm.
+        Các giá trị **không được** phân tách bằng khoảng trắng; nếu không, chúng sẽ không được phân tích cú pháp chính xác.
+        Lề trên và dưới âm đặc biệt hữu ích để cho phép phần còn lại của
+        đoạn văn hiển thị bên dưới dropcap.
 
     - ``[dropcap font={font} font_size={size} color={color} outline_size={size} outline_color={color} margins={left},{top},{right},{bottom}]{text}[/dropcap]``
 
   * - | **opentype_features**
-      | Enables custom OpenType font features for ``{text}``. Features must be provided as
-        a comma-separated ``{list}``. Values must **not** be separated by spaces;
-        otherwise, the list won't be parsed correctly.
+      | Bật các tính năng font OpenType tùy chỉnh cho ``{text}``. Các tính năng phải được cung cấp dưới dạng
+        một ``{list}`` được phân tách bằng dấu phẩy. Các giá trị **không được** phân tách bằng khoảng trắng;
+        nếu không, danh sách sẽ không được phân tích cú pháp chính xác.
 
     - | ``[opentype_features={list}]``
       | ``{text}``
       | ``[/opentype_features]``
 
   * - | **lang**
-      | Overrides the language for ``{text}`` that is set by the **BiDi > Language** property
-        in :ref:`class_RichTextLabel`. ``{code}`` must be an ISO :ref:`language code <doc_locales>`.
-        This can be used to enforce the use of a specific script for a language without
-        starting a new paragraph. Some font files may contain script-specific substitutes,
-        in which case they will be used.
+      | Ghi đè ngôn ngữ cho ``{text}`` được đặt bởi thuộc tính **BiDi > Language**
+        trong :ref:`class_RichTextLabel`. ``{code}`` phải là một :ref:`language code <doc_locales>` ISO.
+        Có thể dùng tùy chọn này để buộc sử dụng một script cụ thể cho một ngôn ngữ mà không
+        bắt đầu một đoạn văn mới. Một số file font có thể chứa các thay thế dành riêng cho script,
+        trong trường hợp đó chúng sẽ được sử dụng.
 
     - ``[lang={code}]{text}[/lang]``
 
   * - | **color**
-      | Changes the color of ``{text}``. Color must be provided by a common name (see
+      | Thay đổi màu của ``{text}``. Màu phải được cung cấp bằng một tên thông dụng (xem
         :ref:`doc_bbcode_in_richtextlabel_named_colors`) or using the HEX format (e.g.
-        ``#ff00ff``, see :ref:`doc_bbcode_in_richtextlabel_hex_colors`).
+        ``#ff00ff``, xem :ref:`doc_bbcode_in_richtextlabel_hex_colors`).
 
     - ``[color={code/name}]{text}[/color]``
 
   * - | **bgcolor**
-      | Draws the color behind ``{text}``. This can be used to highlight text.
-        Accepts same values as the ``color`` tag.
-        By default, there is a slight padding which is controlled by the
-        ``text_highlight_h_padding`` and ``text_highlight_v_padding`` theme items
-        in the RichTextLabel node. Set padding to ``0`` to avoid potential overlapping
-        issues when there are background colors on neighboring lines/columns.
+      | Vẽ màu phía sau ``{text}``. Có thể dùng tùy chọn này để làm nổi bật văn bản.
+        Chấp nhận các giá trị giống như tag ``color``.
+        Theo mặc định, có một khoảng đệm nhỏ được điều khiển bởi
+        các theme item ``text_highlight_h_padding`` và ``text_highlight_v_padding``
+        trong node RichTextLabel. Đặt padding thành ``0`` để tránh các vấn đề chồng lấn tiềm ẩn
+        khi có màu nền trên các dòng/cột liền kề.
 
     - ``[bgcolor={code/name}]{text}[/bgcolor]``
 
   * - | **fgcolor**
-      | Draws the color in front of ``{text}``. This can be used to "redact" text by using
-        an opaque foreground color. Accepts same values as the ``color`` tag.
-        By default, there is a slight padding which is controlled by the
-        ``text_highlight_h_padding`` and ``text_highlight_v_padding`` theme items
-        in the RichTextLabel node. Set padding to ``0`` to avoid potential overlapping
-        issues when there are foreground colors on neighboring lines/columns.
+      | Vẽ màu phía trước ``{text}``. Có thể dùng màu tiền cảnh đục để "che" văn bản.
+        Chấp nhận các giá trị giống như tag ``color``.
+        Theo mặc định, có một khoảng đệm nhỏ được điều khiển bởi
+        các theme item ``text_highlight_h_padding`` và ``text_highlight_v_padding``
+        trong node RichTextLabel. Đặt padding thành ``0`` để tránh các vấn đề chồng lấn tiềm ẩn
+        khi có màu tiền cảnh trên các dòng/cột liền kề.
 
     - ``[fgcolor={code/name}]{text}[/fgcolor]``
 
   * - | **outline_size**
-      | Use custom font outline size for ``{text}``.
+      | Sử dụng kích thước outline font tùy chỉnh cho ``{text}``.
 
     - | ``[outline_size={size}]``
       | ``{text}``
       | ``[/outline_size]``
 
   * - | **outline_color**
-      | Use custom outline color for ``{text}``. Accepts same values as the ``color`` tag.
+      | Sử dụng màu outline tùy chỉnh cho ``{text}``. Chấp nhận các giá trị giống như tag ``color``.
 
     - | ``[outline_color={code/name}]``
       | ``{text}``
       | ``[/outline_color]``
 
   * - | **table**
-      | Creates a table with the ``{number}`` of columns. Use the ``cell`` tag to define
-        table cells.
-      | If ``{valign}`` configuration is provided, the table will try to align to the
-        surrounding text, see :ref:`doc_bbcode_in_richtextlabel_image_and_table_alignment`.
-      | If baseline alignment is used, the table is aligned to the baseline of the row with index ``{alignment_row}`` (zero-based).
-      | ``{name}`` is a table name for assistive apps (screen reader).
+      | Tạo một bảng với ``{number}`` cột. Sử dụng tag ``cell`` để định nghĩa
+        các ô của bảng.
+      | Nếu cung cấp cấu hình ``{valign}``, bảng sẽ cố gắng căn chỉnh với
+        văn bản xung quanh, xem :ref:`doc_bbcode_in_richtextlabel_image_and_table_alignment`.
+      | Nếu sử dụng căn chỉnh theo baseline, bảng sẽ được căn chỉnh theo baseline của hàng có chỉ số ``{alignment_row}`` (bắt đầu từ 0).
+      | ``{name}`` là tên bảng dành cho các ứng dụng hỗ trợ (trình đọc màn hình).
 
     - | ``[table={number}]{cells}[/table]``
       | ``[table={number},{valign}]{cells}[/table]``
@@ -456,66 +395,61 @@ Reference
       | ``[table={number},{valign},{alignment_row} name={name}]{cells}[/table]``
 
   * - | **cell**
-      | Adds a cell with ``{text}`` to the table.
-      | If ``{ratio}`` is provided, the cell will try to expand to that value proportionally
-        to other cells and their ratio values.
-      | Supports configuration options, see :ref:`doc_bbcode_in_richtextlabel_cell_options`.
+      | Thêm một ô có ``{text}`` vào bảng.
+      | Nếu cung cấp ``{ratio}``, ô sẽ cố gắng mở rộng theo tỷ lệ đến giá trị đó
+        so với các ô khác và các giá trị tỷ lệ của chúng.
+      | Hỗ trợ các tùy chọn cấu hình, xem :ref:`doc_bbcode_in_richtextlabel_cell_options`.
 
     - | ``[cell]{text}[/cell]``
       | ``[cell={ratio}]{text}[/cell]``
       | ``[cell {options}]{text}[/cell]``
 
   * - | **ul**
-      | Adds an unordered list. List ``{items}`` must be provided by putting one item per
-        line of text.
-      | The bullet point can be customized using the ``{bullet}`` parameter,
-        see :ref:`doc_bbcode_in_richtextlabel_unordered_list_bullet`.
+      | Thêm danh sách không có thứ tự. ``{items}`` của danh sách phải được cung cấp bằng cách đặt mỗi mục trên một
+        dòng văn bản.
+      | Có thể tùy chỉnh dấu đầu dòng bằng tham số ``{bullet}``,
+        xem :ref:`doc_bbcode_in_richtextlabel_unordered_list_bullet`.
 
     - | ``[ul]{items}[/ul]``
       | ``[ul bullet={bullet}]{items}[/ul]``
 
   * - | **ol**
-      | Adds an ordered (numbered) list of the given ``{type}`` (see :ref:`doc_bbcode_in_richtextlabel_list_types`).
-        List ``{items}`` must be provided by putting one item per line of text.
+      | Thêm danh sách có thứ tự (đánh số) của ``{type}`` đã cho (xem :ref:`doc_bbcode_in_richtextlabel_list_types`).
+        ``{items}`` của danh sách phải được cung cấp bằng cách đặt mỗi mục trên một dòng văn bản.
 
     - ``[ol type={type}]{items}[/ol]``
 
   * - | **lb**, **rb**
-      | Adds ``[`` and ``]`` respectively. Allows escaping BBCode markup.
-      | These are self-closing tags, which means you do not need to close them
-        (and there is no ``[/lb]`` or ``[/rb]`` closing tag).
+      | Lần lượt thêm ``[`` và ``]``. Cho phép escape markup BBCode.
+      | Đây là các tag tự đóng, nghĩa là bạn không cần đóng chúng
+        (và không có tag đóng ``[/lb]`` hoặc ``[/rb]``).
 
-    - | ``[lb]b[rb]text[lb]/b[rb]`` will display as ``[b]text[/b]``.
+    - | ``[lb]b[rb]text[lb]/b[rb]`` sẽ hiển thị dưới dạng ``[b]text[/b]``.
 
-  * - | Several Unicode control characters can be added using their own self-closing tags.
-      | This can result in easier maintenance compared to pasting those
-      | control characters directly in the text.
+  * - | Có thể thêm một số ký tự điều khiển Unicode bằng các tag tự đóng riêng.
+      | Điều này có thể giúp bảo trì dễ dàng hơn so với việc dán trực tiếp các
+      ký tự điều khiển đó vào văn bản.
 
-    - | ``[lrm]`` (left-to-right mark), ``[rlm]`` (right-to-left mark), ``[lre]`` (left-to-right embedding),
-      | ``[rle]`` (right-to-left embedding), ``[lro]`` (left-to-right override), ``[rlo]`` (right-to-left override),
-      | ``[pdf]`` (pop directional formatting), ``[alm]`` (Arabic letter mark), ``[lri]`` (left-to-right isolate),
-      | ``[rli]`` (right-to-left isolate), ``[fsi]`` (first strong isolate), ``[pdi]`` (pop directional isolate),
-      | ``[zwj]`` (zero-width joiner), ``[zwnj]`` (zero-width non-joiner), ``[wj]`` (word joiner),
-      | ``[shy]`` (soft hyphen)
+    - | ``[lrm]`` (dấu từ trái sang phải), ``[rlm]`` (dấu từ phải sang trái), ``[lre]`` (nhúng từ trái sang phải),
+      | ``[rle]`` (nhúng từ phải sang trái), ``[lro]`` (ghi đè từ trái sang phải), ``[rlo]`` (ghi đè từ phải sang trái),
+      | ``[pdf]`` (loại định dạng hướng), ``[alm]`` (dấu chữ Ả Rập), ``[lri]`` (cô lập từ trái sang phải),
+      | ``[rli]`` (cô lập từ phải sang trái), ``[fsi]`` (cô lập mạnh đầu tiên), ``[pdi]`` (loại cô lập hướng),
+      | ``[zwj]`` (bộ nối độ rộng bằng không), ``[zwnj]`` (bộ không nối độ rộng bằng không), ``[wj]`` (bộ nối từ),
+      | ``[shy]`` (dấu gạch nối mềm)
 
 .. note::
 
-    Tags for bold (``[b]``) and italics (``[i]``) formatting work best if the
-    appropriate custom fonts are set up in the RichTextLabelNode's theme
-    overrides. If no custom bold or italic fonts are defined,
-    `faux bold and italic fonts <https://fonts.google.com/knowledge/glossary/faux_fake_pseudo_synthesized>`__
-    will be generated by Godot. These fonts rarely look good in comparison to hand-made bold/italic font variants.
+    Các thẻ định dạng in đậm (``[b]``) và in nghiêng (``[i]``) hoạt động tốt nhất nếu các font tùy chỉnh tương ứng được thiết lập trong phần ghi đè theme của RichTextLabelNode. Nếu không xác định font in đậm hoặc in nghiêng tùy chỉnh, `faux bold and italic fonts <https://fonts.google.com/knowledge/glossary/faux_fake_pseudo_synthesized>`__ sẽ được Godot tạo. Những font này hiếm khi có hình thức đẹp bằng các biến thể font in đậm/in nghiêng được tạo thủ công.
 
-    The monospaced (``[code]``) tag **only** works if a custom font is set up in
-    the RichTextLabel node's theme overrides. Otherwise, monospaced text will use the regular font.
+    Thẻ monospaced (``[code]``) **chỉ** hoạt động nếu một font tùy chỉnh được thiết lập trong phần ghi đè theme của node RichTextLabel. Nếu không, văn bản monospaced sẽ sử dụng font thông thường.
 
-    There are no BBCode tags to control vertical centering of text yet.
+    Hiện chưa có thẻ BBCode để điều khiển việc căn giữa theo chiều dọc của văn bản.
 
-    Options can be skipped for all tags.
+    Có thể bỏ qua các tùy chọn đối với tất cả các thẻ.
 
 .. _doc_bbcode_in_richtextlabel_paragraph_options:
 
-Paragraph options
+Tùy chọn đoạn văn
 ~~~~~~~~~~~~~~~~~
 
 - **align**
@@ -526,7 +460,7 @@ Paragraph options
   | `Default` | ``left``                                                                               |
   +-----------+----------------------------------------------------------------------------------------+
 
-  Text horizontal alignment.
+  Căn chỉnh văn bản theo chiều ngang.
 
 - **bidi_override**, **st**
 
@@ -537,7 +471,7 @@ Paragraph options
   | `Default` | ``default``                                                                                                  |
   +-----------+--------------------------------------------------------------------------------------------------------------+
 
-  Structured text override.
+  Ghi đè văn bản có cấu trúc.
 
 - **justification_flags**, **jst**
 
@@ -549,7 +483,7 @@ Paragraph options
   | `Default` | ``word,kashida,skip_last,do_not_skip_single``                                                          |
   +-----------+--------------------------------------------------------------------------------------------------------+
 
-  Justification (fill alignment) option. See :ref:`class_TextServer` for more details.
+  Tùy chọn căn đều (căn lấp đầy). Xem :ref:`class_TextServer` để biết thêm chi tiết.
 
 - **direction**, **dir**
 
@@ -559,7 +493,7 @@ Paragraph options
   | `Default` | Inherit                                                         |
   +-----------+-----------------------------------------------------------------+
 
-  Base BiDi direction.
+  Hướng BiDi cơ sở.
 
 - **language**, **lang**
 
@@ -569,7 +503,7 @@ Paragraph options
   | `Default` | Inherit                                    |
   +-----------+--------------------------------------------+
 
-  Locale override. Some font files may contain script-specific substitutes, in which case they will be used.
+  Ghi đè locale. Một số tệp font có thể chứa các font thay thế dành riêng cho từng script; trong trường hợp đó, chúng sẽ được sử dụng.
 
 - **tab_stops**
 
@@ -579,38 +513,30 @@ Paragraph options
   | `Default` | Width of the space character in the font           |
   +-----------+----------------------------------------------------+
 
-  Overrides the horizontal offsets for each tab character. When the end of the
-  list is reached, the tab stops will loop over. For example, if you set
-  ``tab_stops`` to ``10.0,30.0``, the first tab will be at ``10`` pixels, the
-  second tab will be at ``10 + 30 = 40`` pixels, and the third tab will be at
-  ``10 + 30 + 10 = 50`` pixels from the origin of the RichTextLabel.
+  Ghi đè các độ lệch theo chiều ngang cho từng ký tự tab. Khi đến cuối danh sách, các điểm dừng tab sẽ lặp lại. Ví dụ: nếu bạn đặt ``tab_stops`` thành ``10.0,30.0``, tab đầu tiên sẽ ở vị trí ``10`` pixel, tab thứ hai ở vị trí ``10 + 30 = 40`` pixel và tab thứ ba ở vị trí ``10 + 30 + 10 = 50`` pixel tính từ gốc của RichTextLabel.
 
 .. _doc_bbcode_in_richtextlabel_handling_url_tag_clicks:
 
-Handling ``[url]`` tag clicks
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Xử lý thao tác nhấp vào thẻ ``[url]``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-By default, ``[url]`` tags do nothing when clicked. This is to allow flexible use
-of ``[url]`` tags rather than limiting them to opening URLs in a web browser.
+Theo mặc định, các thẻ ``[url]`` không làm gì khi được nhấp vào. Điều này cho phép sử dụng linh hoạt các thẻ ``[url]`` thay vì giới hạn chúng vào việc mở URL trong trình duyệt web.
 
-To handle clicked ``[url]`` tags, connect the ``RichTextLabel`` node's
+Để xử lý các thẻ ``[url]`` được nhấp vào, hãy kết nối node ``RichTextLabel`` với
 :ref:`meta_clicked <class_RichTextLabel_signal_meta_clicked>` signal to a script function.
 
-For example, the following method can be connected to ``meta_clicked`` to open
-clicked URLs using the user's default web browser:
+Ví dụ: có thể kết nối phương thức sau với ``meta_clicked`` để mở các URL được nhấp vào bằng trình duyệt web mặc định của người dùng:
 
 ::
 
-    # This assumes RichTextLabel's `meta_clicked` signal was connected to
-    # the function below using the signal connection dialog.
+    # Điều này giả định rằng signal `meta_clicked` của RichTextLabel đã được kết nối với
+    # hàm bên dưới bằng hộp thoại kết nối signal.
     func _richtextlabel_on_meta_clicked(meta):
-        # `meta` is not guaranteed to be a String, so convert it to a String
-        # to avoid script errors at runtime.
+        # `meta` không được đảm bảo là một String, vì vậy hãy chuyển đổi nó thành một String
+        # để tránh lỗi script trong runtime.
         OS.shell_open(str(meta))
 
-For more advanced use cases, it's also possible to store JSON in a ``[url]``
-tag's option and parse it in the function that handles the ``meta_clicked`` signal.
-For example:
+Đối với các trường hợp sử dụng nâng cao hơn, bạn cũng có thể lưu JSON trong tùy chọn của thẻ ``[url]`` và phân tích cú pháp nó trong hàm xử lý signal ``meta_clicked``. Ví dụ:
 
 .. code-block:: none
 
@@ -619,7 +545,7 @@ For example:
 
 .. _doc_bbcode_in_richtextlabel_hr_options:
 
-Horizontal rule options
+Tùy chọn đường kẻ ngang
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 - **color**
@@ -630,7 +556,7 @@ Horizontal rule options
   | `Default` | ``Color(1, 1, 1, 1)``                      |
   +-----------+--------------------------------------------+
 
-  Color tint of the rule (modulation).
+  Màu sắc của đường kẻ (modulation).
 
 - **height**
 
@@ -640,7 +566,7 @@ Horizontal rule options
   | `Default` | ``2``                                      |
   +-----------+--------------------------------------------+
 
-  Target height of the rule in pixels, add ``%`` to the end of value to specify it as percentages of the control width instead of pixels.
+  Chiều cao mục tiêu của đường kẻ tính bằng pixel; thêm ``%`` vào cuối giá trị để chỉ định dưới dạng phần trăm chiều rộng của control thay vì pixel.
 
 - **width**
 
@@ -650,7 +576,7 @@ Horizontal rule options
   | `Default` | ``90%``                                    |
   +-----------+--------------------------------------------+
 
-  Target width of the rule in pixels, add ``%`` to the end of value to specify it as percentages of the control width instead of pixels.
+  Chiều rộng mục tiêu của đường kẻ tính bằng pixel; thêm ``%`` vào cuối giá trị để chỉ định dưới dạng phần trăm chiều rộng của control thay vì pixel.
 
 - **align**
 
@@ -660,13 +586,13 @@ Horizontal rule options
   | `Default` | ``center``                                                                             |
   +-----------+----------------------------------------------------------------------------------------+
 
-  Horizontal alignment.
+  Căn chỉnh theo chiều ngang.
 
 
 .. _doc_bbcode_in_richtextlabel_url_options:
 
-URL options
-~~~~~~~~~~~
+Tùy chọn URL
+~~~~~~~~~~~~
 
 - **underline**
 
@@ -676,7 +602,7 @@ URL options
   | `Default` | ``always``                                 |
   +-----------+--------------------------------------------+
 
-  URL underlining mode.
+  Chế độ gạch chân URL.
 
 - **tooltip**
 
@@ -686,7 +612,7 @@ URL options
   | `Default` |                                            |
   +-----------+--------------------------------------------+
 
-  URL tooltip.
+  Tooltip của URL.
 
 - **href**
 
@@ -696,13 +622,13 @@ URL options
   | `Default` |                                            |
   +-----------+--------------------------------------------+
 
-  URL target address.
+  Địa chỉ đích của URL.
 
 
 .. _doc_bbcode_in_richtextlabel_image_options:
 
-Image options
-~~~~~~~~~~~~~
+Tùy chọn hình ảnh
+~~~~~~~~~~~~~~~~~
 
 - **color**
 
@@ -712,7 +638,7 @@ Image options
   | `Default` | Inherit                                    |
   +-----------+--------------------------------------------+
 
-  Color tint of the image (modulation).
+  Màu sắc của hình ảnh (modulation).
 
 - **height**
 
@@ -722,15 +648,13 @@ Image options
   | `Default` | Inherit                                    |
   +-----------+--------------------------------------------+
 
-  Target height of the image in pixels.
+  Chiều cao mục tiêu của hình ảnh tính bằng pixel.
 
-  Alternative units to pixels can be specified:
+  Có thể chỉ định các đơn vị thay thế cho pixel:
 
-  - Add ``%`` to the end of the value to specify it as a percentage of the control width instead of pixels.
-    For example, ``height=50%`` will make the image half as tall as the control is wide.
+  - Thêm ``%`` vào cuối giá trị để chỉ định dưới dạng phần trăm chiều rộng của control thay vì pixel. Ví dụ, ``height=50%`` sẽ làm cho hình ảnh cao bằng một nửa chiều rộng của control.
 
-  - Add ``em`` to the end of the value to specify it as a ratio of the surrounding font size instead of pixels.
-    For example, ``height=1em`` will make the image as tall as the surrounding text.
+  - Thêm ``em`` vào cuối giá trị để chỉ định dưới dạng tỷ lệ so với cỡ font xung quanh thay vì pixel. Ví dụ, ``height=1em`` sẽ làm cho hình ảnh cao bằng văn bản xung quanh.
 
 - **width**
 
@@ -740,15 +664,13 @@ Image options
   | `Default` | Inherit                                    |
   +-----------+--------------------------------------------+
 
-  Target width of the image in pixels.
+  Chiều rộng mục tiêu của hình ảnh tính bằng pixel.
 
-  Alternative units to pixels can be specified:
+  Có thể chỉ định các đơn vị thay thế cho pixel:
 
-  - Add ``%`` to the end of the value to specify it as a percentage of the control width instead of pixels.
-    For example, ``width=50%`` will make the image take up half of the control width.
+  - Thêm ``%`` vào cuối giá trị để chỉ định dưới dạng phần trăm chiều rộng của control thay vì pixel. Ví dụ, ``width=50%`` sẽ làm cho hình ảnh chiếm một nửa chiều rộng của control.
 
-  - Add ``em`` to the end of the value to specify it as a ratio of the surrounding font size instead of pixels.
-    For example, ``width=1em`` will make the image as wide as the surrounding text is tall.
+  - Thêm ``em`` vào cuối giá trị để chỉ định dưới dạng tỷ lệ so với cỡ font xung quanh thay vì pixel. Ví dụ, ``width=1em`` sẽ làm cho hình ảnh rộng bằng chiều cao của văn bản xung quanh.
 
 - **region**
 
@@ -758,7 +680,7 @@ Image options
   | `Default` | Inherit                                    |
   +-----------+--------------------------------------------+
 
-  Region rect of the image. This can be used to display a single image from a spritesheet.
+  Hình chữ nhật vùng của hình ảnh. Có thể dùng tùy chọn này để hiển thị một hình ảnh đơn từ spritesheet.
 
 - **pad**
 
@@ -768,7 +690,7 @@ Image options
   | `Default` | ``false``                                  |
   +-----------+--------------------------------------------+
 
-  If set to ``true``, and the image is smaller than the size specified by ``width`` and ``height``, the image padding is added to match the size instead of upscaling.
+  Nếu được đặt thành ``true`` và hình ảnh nhỏ hơn kích thước được chỉ định bởi ``width`` và ``height``, phần đệm của hình ảnh sẽ được thêm vào để khớp kích thước thay vì phóng to.
 
 - **tooltip**
 
@@ -778,7 +700,7 @@ Image options
   | `Default` |                                            |
   +-----------+--------------------------------------------+
 
-  Image tooltip.
+  Tooltip của hình ảnh.
 
 - **align**
 
@@ -788,7 +710,7 @@ Image options
   | `Default` | ``center,center``                                                      |
   +-----------+------------------------------------------------------------------------+
 
-  Image alignment to the surrounding text.
+  Căn chỉnh hình ảnh với văn bản xung quanh.
 
 - **alt**
 
@@ -798,21 +720,16 @@ Image options
   | `Default` |                                            |
   +-----------+--------------------------------------------+
 
-  Image description for assistive apps (screen reader).
+  Mô tả hình ảnh dành cho các ứng dụng hỗ trợ (trình đọc màn hình).
 
 .. _doc_bbcode_in_richtextlabel_image_and_table_alignment:
 
-Image and table vertical alignment
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Căn chỉnh theo chiều dọc của hình ảnh và bảng
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When a vertical alignment value is provided with the ``[img]`` or ``[table]`` tag
-the image/table will try to align itself against the surrounding text. Alignment is
-performed using a vertical point of the image and a vertical point of the text.
-There are 3 possible points on the image (``top``, ``center``, and ``bottom``) and 4
-possible points on the text and table (``top``, ``center``, ``baseline``, and ``bottom``),
-which can be used in any combination.
+Khi một giá trị căn chỉnh theo chiều dọc được cung cấp cùng thẻ ``[img]`` hoặc ``[table]``, hình ảnh/bảng sẽ cố gắng tự căn chỉnh với văn bản xung quanh. Việc căn chỉnh được thực hiện bằng cách sử dụng một điểm theo chiều dọc của hình ảnh và một điểm theo chiều dọc của văn bản. Có 3 điểm khả dụng trên hình ảnh (``top``, ``center`` và ``bottom``) và 4 điểm khả dụng trên văn bản và bảng (``top``, ``center``, ``baseline`` và ``bottom``), có thể kết hợp theo bất kỳ cách nào.
 
-To specify both points, use their full or short names as a value of the image/table tag:
+Để chỉ định cả hai điểm, hãy sử dụng tên đầy đủ hoặc tên viết tắt của chúng làm giá trị của thẻ hình ảnh/bảng:
 
 .. code-block:: none
 
@@ -823,24 +740,21 @@ To specify both points, use their full or short names as a value of the image/ta
 
 .. code-block:: none
 
-    text [table=3,center]...[/table] text  # Center to center.
-    text [table=3,top,bottom]...[/table] text # Top of the table to the bottom of text.
-    text [table=3,baseline,baseline,1]...[/table] text # Baseline of the second row (rows use zero-based indexing) to the baseline of text.
+    text [table=3,center]...[/table] text  # Giữa với giữa.
+    text [table=3,top,bottom]...[/table] text # Đầu bảng với cuối văn bản.
+    text [table=3,baseline,baseline,1]...[/table] text # Baseline của hàng thứ hai (các hàng được đánh chỉ mục bắt đầu từ 0) với baseline của văn bản.
 
 .. image:: img/bbcode_in_richtextlabel_table_align.webp
 
-You can also specify just one value (``top``, ``center``, or ``bottom``) to make
-use of a corresponding preset (``top-top``, ``center-center``, and ``bottom-bottom``
-respectively).
+Bạn cũng có thể chỉ định chỉ một giá trị (``top``, ``center`` hoặc ``bottom``) để sử dụng preset tương ứng (``top-top``, ``center-center`` và ``bottom-bottom``).
 
-Short names for the values are ``t`` (``top``), ``c`` (``center``), ``l`` (``baseline``),
-and ``b`` (``bottom``).
+Tên viết tắt của các giá trị là ``t`` (``top``), ``c`` (``center``), ``l`` (``baseline``) và ``b`` (``bottom``).
 
 
 .. _doc_bbcode_in_richtextlabel_font_options:
 
-Font options
-~~~~~~~~~~~~
+Tùy chọn font
+~~~~~~~~~~~~~
 
 - **name**, **n**
 
@@ -850,7 +764,7 @@ Font options
   | `Default` | Inherit                                    |
   +-----------+--------------------------------------------+
 
-  Font resource path.
+  Đường dẫn tài nguyên font.
 
 - **size**, **s**
 
@@ -860,7 +774,7 @@ Font options
   | `Default` | Inherit                                    |
   +-----------+--------------------------------------------+
 
-  Custom font size.
+  Cỡ font tùy chỉnh.
 
 - **glyph_spacing**, **gl**
 
@@ -870,7 +784,7 @@ Font options
   | `Default` | Inherit                                    |
   +-----------+--------------------------------------------+
 
-  Extra spacing for each glyph.
+  Khoảng cách bổ sung cho từng glyph.
 
 - **space_spacing**, **sp**
 
@@ -880,7 +794,7 @@ Font options
   | `Default` | Inherit                                    |
   +-----------+--------------------------------------------+
 
-  Extra spacing for the space character.
+  Khoảng cách bổ sung cho ký tự dấu cách.
 
 - **top_spacing**, **top**
 
@@ -890,7 +804,7 @@ Font options
   | `Default` | Inherit                                    |
   +-----------+--------------------------------------------+
 
-  Extra spacing at the top of the line.
+  Khoảng cách bổ sung ở phía trên dòng.
 
 - **bottom_spacing**, **bt**
 
@@ -900,7 +814,7 @@ Font options
   | `Default` | Inherit                                    |
   +-----------+--------------------------------------------+
 
-  Extra spacing at the bottom of the line.
+  Khoảng cách bổ sung ở phía dưới dòng.
 
 - **embolden**, **emb**
 
@@ -910,7 +824,7 @@ Font options
   | `Default` | ``0.0``                                    |
   +-----------+--------------------------------------------+
 
-  Font embolden strength, if it is not equal to zero, emboldens the font outlines. Negative values reduce the outline thickness.
+  Độ mạnh làm đậm font; nếu khác không, tùy chọn này sẽ làm đậm các đường viền của font. Giá trị âm làm giảm độ dày đường viền.
 
 - **face_index**, **fi**
 
@@ -920,7 +834,7 @@ Font options
   | `Default` | ``0``                                      |
   +-----------+--------------------------------------------+
 
-  An active face index in the TrueType / OpenType collection.
+  Chỉ mục face đang hoạt động trong bộ sưu tập TrueType / OpenType.
 
 - **slant**, **sln**
 
@@ -930,7 +844,7 @@ Font options
   | `Default` | ``0.0``                                    |
   +-----------+--------------------------------------------+
 
-  Font slant strength, positive values slant glyphs to the right. Negative values to the left.
+  Độ mạnh nghiêng của font; giá trị dương làm nghiêng glyph sang phải, giá trị âm làm nghiêng sang trái.
 
 - **opentype_variation**, **otv**
 
@@ -940,13 +854,13 @@ Font options
   | `Default` |                                                                                  |
   +-----------+----------------------------------------------------------------------------------+
 
-  Font OpenType variation coordinates. See `OpenType variation tags <https://docs.microsoft.com/en-us/typography/opentype/spec/dvaraxisreg>`__.
+  Tọa độ biến thiên OpenType của font. Xem `OpenType variation tags <https://docs.microsoft.com/en-us/typography/opentype/spec/dvaraxisreg>`__.
 
-  Note: The value should be enclosed in ``"`` to allow using ``=`` inside it:
+  Lưu ý: Giá trị phải được đặt trong ``"`` để cho phép sử dụng ``=`` bên trong:
 
 .. code-block:: none
 
-    [font otv="wght=200,wdth=400"] # Sets variable font weight and width.
+    [font otv="wght=200,wdth=400"] # Thiết lập độ đậm và chiều rộng của font biến thiên.
 
 - **opentype_features**, **otf**
 
@@ -956,25 +870,22 @@ Font options
   | `Default` |                                                                                |
   +-----------+--------------------------------------------------------------------------------+
 
-  Font OpenType features. See `OpenType features tags <https://docs.microsoft.com/en-us/typography/opentype/spec/featuretags>`__.
+  Các tính năng OpenType của font. Xem `OpenType features tags <https://docs.microsoft.com/en-us/typography/opentype/spec/featuretags>`__.
 
-  Note: The value should be enclosed in ``"`` to allow using ``=`` inside it:
+  Lưu ý: Giá trị phải được đặt trong ``"`` để cho phép sử dụng ``=`` bên trong:
 
 .. code-block:: none
 
-    [font otf="calt=0,zero=1"] # Disable contextual alternates, enable slashed zero.
+    [font otf="calt=0,zero=1"] # Tắt các biến thể theo ngữ cảnh, bật số 0 có gạch chéo.
 
 .. _doc_bbcode_in_richtextlabel_named_colors:
 
-Named colors
-~~~~~~~~~~~~
+Tên màu
+~~~~~~~
 
-For tags that allow specifying a color by name, you can use names of the constants from
-the built-in :ref:`class_Color` class. Named colors can be specified in a number of
-styles using different casings: ``DARK_RED``, ``DarkRed``, and ``darkred`` will give
-the same exact result.
+Đối với các thẻ cho phép chỉ định màu theo tên, bạn có thể sử dụng tên của các hằng số trong class :ref:`class_Color` tích hợp sẵn. Có thể chỉ định tên màu theo nhiều kiểu viết hoa khác nhau: ``DARK_RED``, ``DarkRed`` và ``darkred`` sẽ cho cùng một kết quả chính xác.
 
-See this image for a list of color constants:
+Xem hình ảnh này để biết danh sách các hằng số màu:
 
 .. image:: /img/color_constants.png
 
@@ -982,22 +893,17 @@ See this image for a list of color constants:
 
 .. _doc_bbcode_in_richtextlabel_hex_colors:
 
-Hexadecimal color codes
-~~~~~~~~~~~~~~~~~~~~~~~
+Mã màu thập lục phân
+~~~~~~~~~~~~~~~~~~~~
 
-For opaque RGB colors, any valid 6-digit hexadecimal code is supported, e.g.
-``[color=#ffffff]white[/color]``. Shorthand RGB color codes such as ``#6f2``
-(equivalent to ``#66ff22``) are also supported.
+Đối với màu RGB không trong suốt, mọi mã thập lục phân 6 chữ số hợp lệ đều được hỗ trợ, ví dụ: ``[color=#ffffff]white[/color]``. Các mã màu RGB rút gọn như ``#6f2`` (tương đương với ``#66ff22``) cũng được hỗ trợ.
 
-For transparent RGB colors, any RGBA 8-digit hexadecimal code can be used,
-e.g. ``[color=#ffffff88]translucent white[/color]``. Note that the alpha channel
-is the **last** component of the color code, not the first one. Short RGBA
-color codes such as ``#6f28`` (equivalent to ``#66ff2288``) are supported as well.
+Đối với màu RGB trong suốt, có thể sử dụng mọi mã thập lục phân RGBA 8 chữ số, ví dụ: ``[color=#ffffff88]translucent white[/color]``. Lưu ý rằng kênh alpha là thành phần **cuối cùng** của mã màu, không phải thành phần đầu tiên. Các mã màu RGBA rút gọn như ``#6f28`` (tương đương với ``#66ff2288``) cũng được hỗ trợ.
 
 .. _doc_bbcode_in_richtextlabel_cell_options:
 
-Cell options
-~~~~~~~~~~~~
+Tùy chọn ô
+~~~~~~~~~~
 
 - **shrink**
 
@@ -1007,7 +913,7 @@ Cell options
   | `Default` | ``true``                                   |
   +-----------+--------------------------------------------+
 
-  If ``true``, cell can shrink to its contents.
+  Nếu là ``true``, ô có thể thu nhỏ theo nội dung của nó.
 
 - **expand**
 
@@ -1017,8 +923,7 @@ Cell options
   | `Default` | 1                                          |
   +-----------+--------------------------------------------+
 
-  Cell expansion ratio. This defines which cells will try to expand to
-  proportionally to other cells and their expansion ratios.
+  Tỷ lệ mở rộng ô. Tùy chọn này xác định những ô nào sẽ cố gắng mở rộng theo tỷ lệ với các ô khác và tỷ lệ mở rộng của chúng.
 
 - **border**
 
@@ -1028,7 +933,7 @@ Cell options
   | `Default` | Inherit                                    |
   +-----------+--------------------------------------------+
 
-  Cell border color.
+  Màu đường viền của ô.
 
 - **bg**
 
@@ -1038,8 +943,7 @@ Cell options
   | `Default` | Inherit                                    |
   +-----------+--------------------------------------------+
 
-  Cell background color. For alternating odd/even row backgrounds,
-  you can use ``bg=odd_color,even_color``.
+  Màu nền của ô. Để tạo nền cho các hàng lẻ/chẵn xen kẽ, bạn có thể sử dụng ``bg=odd_color,even_color``.
 
 - **padding**
 
@@ -1049,159 +953,101 @@ Cell options
   | `Default` | ``0,0,0,0``                                                              |
   +-----------+--------------------------------------------------------------------------+
 
-  Left, top, right, and bottom cell padding.
+  Khoảng đệm bên trái, bên trên, bên phải và bên dưới của ô.
 
 .. _doc_bbcode_in_richtextlabel_unordered_list_bullet:
 
-Unordered list bullet
-~~~~~~~~~~~~~~~~~~~~~
+Dấu đầu dòng của danh sách không có thứ tự
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-By default, the ``[ul]`` tag uses the ``U+2022`` "Bullet" Unicode glyph as the
-bullet character. This behavior is similar to web browsers. The bullet character
-can be customized using ``[ul bullet={bullet}]``. If provided, this ``{bullet}``
-parameter must be a string with no enclosing quotes (for example,
-``[bullet=*]``). You can add trailing spaces after the bullet character
-to increase the spacing between the bullet and the list item text.
+Theo mặc định, thẻ ``[ul]`` sử dụng ký tự Unicode ``U+2022`` "Bullet" làm ký tự đầu dòng. Cách hoạt động này tương tự các trình duyệt web. Bạn có thể tùy chỉnh ký tự đầu dòng bằng ``[ul bullet={bullet}]``. Nếu được cung cấp, tham số ``{bullet}`` này phải là một chuỗi không có dấu ngoặc kép bao quanh (ví dụ: ``[bullet=*]``). Bạn có thể thêm khoảng trắng ở cuối sau ký tự đầu dòng để tăng khoảng cách giữa ký tự đầu dòng và văn bản của mục.
 
-See `Bullet (typography) on Wikipedia <https://en.wikipedia.org/wiki/Bullet_(typography)>`__
-for a list of common bullet characters that you can paste directly in the ``bullet`` parameter.
+Xem `Bullet (typography) on Wikipedia <https://en.wikipedia.org/wiki/Bullet_(typography)>`__ để biết danh sách các ký tự đầu dòng phổ biến mà bạn có thể dán trực tiếp vào tham số ``bullet``.
 
 .. _doc_bbcode_in_richtextlabel_list_types:
 
-Ordered list types
-~~~~~~~~~~~~~~~~~~
+Các loại danh sách có thứ tự
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ordered lists can be used to automatically mark items with numbers
-or letters in ascending order. This tag supports the following
-type options:
+Danh sách có thứ tự có thể được sử dụng để tự động đánh dấu các mục bằng số hoặc chữ cái theo thứ tự tăng dần. Thẻ này hỗ trợ các tùy chọn type sau:
 
-- ``1`` - Numbers, using language specific numbering system if possible.
-- ``a``, ``A`` - Lower and upper case Latin letters.
-- ``i``, ``I`` - Lower and upper case Roman numerals.
+- ``1`` - Số, sử dụng hệ thống đánh số riêng của ngôn ngữ nếu có thể. - ``a``, ``A`` - Chữ cái Latin viết thường và viết hoa. - ``i``, ``I`` - Chữ số La Mã viết thường và viết hoa.
 
-Text effects
-------------
+Hiệu ứng văn bản
+----------------
 
-BBCode can also be used to create different text effects that can optionally be
-animated. Several customizable effects are provided out of the box, and you can
-easily create your own. By default, animated effects will pause
+BBCode cũng có thể được sử dụng để tạo các hiệu ứng văn bản khác nhau, tùy chọn có thể được animate. Một số hiệu ứng có thể tùy chỉnh được cung cấp sẵn, và bạn có thể dễ dàng tạo hiệu ứng của riêng mình. Theo mặc định, các hiệu ứng được animate sẽ tạm dừng
 :ref:`when the SceneTree is paused <doc_pausing_games>`. You can change this
-behavior by adjusting the RichTextLabel's **Process > Mode** property.
+hoạt động bằng cách điều chỉnh thuộc tính **Process > Mode** của RichTextLabel.
 
-All examples below mention the default values for options in the listed tag format.
+Tất cả các ví dụ bên dưới đều đề cập đến các giá trị mặc định của những tùy chọn trong định dạng thẻ được liệt kê.
 
 .. note::
 
-    Text effects that move characters' positions may result in characters being
-    clipped by the RichTextLabel node bounds.
+    Các hiệu ứng văn bản làm thay đổi vị trí của ký tự có thể khiến ký tự bị cắt theo ranh giới của node RichTextLabel.
 
-    You can resolve this by disabling **Control > Layout > Clip Contents** in
-    the inspector after selecting the RichTextLabel node, or ensuring there is
-    enough margin added around the text by using line breaks above and below the
-    line using the effect.
+    Bạn có thể khắc phục điều này bằng cách tắt **Control > Layout > Clip Contents** trong inspector sau khi chọn node RichTextLabel, hoặc đảm bảo có đủ khoảng cách xung quanh văn bản bằng cách sử dụng ngắt dòng bên trên và bên dưới dòng sử dụng hiệu ứng.
 
 Pulse
 ~~~~~
 
 .. image:: img/bbcode_in_richtextlabel_effect_pulse.webp
 
-Pulse creates an animated pulsing effect that multiplies each character's
-opacity and color. It can be used to bring attention to specific text. Its tag
-format is ``[pulse freq=1.0 color=#ffffff40 ease=-2.0]{text}[/pulse]``.
+Pulse tạo hiệu ứng nhấp nháy được animate, làm thay đổi độ mờ và màu của từng ký tự. Có thể dùng hiệu ứng này để thu hút sự chú ý vào văn bản cụ thể. Định dạng thẻ của nó là ``[pulse freq=1.0 color=#ffffff40 ease=-2.0]{text}[/pulse]``.
 
-``freq`` controls the frequency of the half-pulsing cycle (higher is faster). A
-full pulsing cycle takes ``2 * (1.0 / freq)`` seconds. ``color`` is the target
-color multiplier for blinking. The default mostly fades out text, but not
-entirely. ``ease`` is the easing function exponent to use. Negative values
-provide in-out easing, which is why the default is ``-2.0``.
+``freq`` kiểm soát tần số của chu kỳ nhấp nháy một nửa (giá trị càng cao thì càng nhanh). Một chu kỳ nhấp nháy đầy đủ mất ``2 * (1.0 / freq)`` giây. ``color`` là hệ số màu mục tiêu dùng cho hiệu ứng nhấp nháy. Theo mặc định, văn bản hầu như mờ đi hoàn toàn, nhưng không hoàn toàn. ``ease`` là số mũ của hàm easing được sử dụng. Các giá trị âm cung cấp easing in-out, đó là lý do giá trị mặc định là ``-2.0``.
 
 Wave
 ~~~~
 
 .. image:: img/bbcode_in_richtextlabel_effect_wave.webp
 
-Wave makes the text go up and down. Its tag format is
-``[wave amp=50.0 freq=5.0 connected=1]{text}[/wave]``.
+Wave làm cho văn bản di chuyển lên xuống. Định dạng thẻ của nó là ``[wave amp=50.0 freq=5.0 connected=1]{text}[/wave]``.
 
-``amp`` controls how high and low the effect goes, and ``freq`` controls how
-fast the text goes up and down. A ``freq`` value of ``0`` will result in no
-visible waves, and negative ``freq`` values won't display any waves either. If
-``connected`` is ``1`` (default), glyphs with ligatures will be moved together.
-If ``connected`` is ``0``, each glyph is moved individually even if they are
-joined by ligatures. This can work around certain rendering issues with font
-ligatures.
+``amp`` kiểm soát độ cao và độ thấp của hiệu ứng, còn ``freq`` kiểm soát tốc độ văn bản di chuyển lên xuống. Giá trị ``freq`` bằng ``0`` sẽ khiến không có sóng nào hiển thị, và các giá trị ``freq`` âm cũng sẽ không hiển thị sóng. Nếu ``connected`` là ``1`` (mặc định), các glyph có ligature sẽ được di chuyển cùng nhau. Nếu ``connected`` là ``0``, mỗi glyph sẽ được di chuyển riêng lẻ ngay cả khi chúng được nối với nhau bằng ligature. Điều này có thể khắc phục một số vấn đề render với font ligature.
 
 Tornado
 ~~~~~~~
 
 .. image:: img/bbcode_in_richtextlabel_effect_tornado.webp
 
-Tornado makes the text move around in a circle. Its tag format is
-``[tornado radius=10.0 freq=1.0 connected=1]{text}[/tornado]``.
+Tornado làm cho văn bản di chuyển theo vòng tròn. Định dạng thẻ của nó là ``[tornado radius=10.0 freq=1.0 connected=1]{text}[/tornado]``.
 
-``radius`` is the radius of the circle that controls the offset, ``freq`` is how
-fast the text moves in a circle. A ``freq`` value of ``0`` will pause the
-animation, while negative ``freq`` will play the animation backwards. If
-``connected`` is ``1`` (default), glyphs with ligatures will be moved together.
-If ``connected`` is ``0``, each glyph is moved individually even if they are
-joined by ligatures. This can work around certain rendering issues with font
-ligatures.
+``radius`` là bán kính của vòng tròn kiểm soát độ lệch, còn ``freq`` là tốc độ văn bản di chuyển theo vòng tròn. Giá trị ``freq`` bằng ``0`` sẽ tạm dừng animation, còn ``freq`` âm sẽ phát animation theo chiều ngược lại. Nếu ``connected`` là ``1`` (mặc định), các glyph có ligature sẽ được di chuyển cùng nhau. Nếu ``connected`` là ``0``, mỗi glyph sẽ được di chuyển riêng lẻ ngay cả khi chúng được nối với nhau bằng ligature. Điều này có thể khắc phục một số vấn đề render với font ligature.
 
 Shake
 ~~~~~
 
 .. image:: img/bbcode_in_richtextlabel_effect_shake.webp
 
-Shake makes the text shake. Its tag format is
-``[shake rate=20.0 level=5 connected=1]{text}[/shake]``.
+Shake làm cho văn bản rung. Định dạng thẻ của nó là ``[shake rate=20.0 level=5 connected=1]{text}[/shake]``.
 
-``rate`` controls how fast the text shakes, ``level`` controls how far the text
-is offset from the origin. If ``connected`` is ``1`` (default), glyphs with
-ligatures will be moved together. If ``connected`` is ``0``, each glyph is moved
-individually even if they are joined by ligatures. This can work around certain
-rendering issues with font ligatures.
+``rate`` kiểm soát tốc độ rung của văn bản, còn ``level`` kiểm soát độ lệch của văn bản so với gốc. Nếu ``connected`` là ``1`` (mặc định), các glyph có ligature sẽ được di chuyển cùng nhau. Nếu ``connected`` là ``0``, mỗi glyph sẽ được di chuyển riêng lẻ ngay cả khi chúng được nối với nhau bằng ligature. Điều này có thể khắc phục một số vấn đề render với font ligature.
 
 Fade
 ~~~~
 
 .. image:: img/bbcode_in_richtextlabel_effect_fade.webp
 
-Fade creates a static fade effect that multiplies each character's opacity.
-Its tag format is ``[fade start=4 length=14]{text}[/fade]``.
+Fade tạo hiệu ứng mờ tĩnh, làm thay đổi độ mờ của từng ký tự. Định dạng thẻ của nó là ``[fade start=4 length=14]{text}[/fade]``.
 
-``start`` controls the starting position of the falloff relative to where the fade
-command is inserted, ``length`` controls over how many characters should the fade
-out take place.
+``start`` kiểm soát vị trí bắt đầu của độ suy giảm so với vị trí chèn lệnh fade, còn ``length`` kiểm soát hiệu ứng mờ dần sẽ diễn ra trong bao nhiêu ký tự.
 
 Rainbow
 ~~~~~~~
 
 .. image:: img/bbcode_in_richtextlabel_effect_rainbow.webp
 
-Rainbow gives the text a rainbow color that changes over time. Its tag format is
-``[rainbow freq=1.0 sat=0.8 val=0.8 speed=1.0]{text}[/rainbow]``.
+Rainbow tạo cho văn bản màu cầu vồng thay đổi theo thời gian. Định dạng thẻ của nó là ``[rainbow freq=1.0 sat=0.8 val=0.8 speed=1.0]{text}[/rainbow]``.
 
-``freq`` determines how many letters the rainbow extends over before it repeats itself,
-``sat`` is the saturation of the rainbow, ``val`` is the value of the rainbow. ``speed``
-is the number of full rainbow cycles per second. A positive ``speed`` value will play
-the animation forwards, a value of ``0`` will pause the animation, and a negative
-``speed`` value will play the animation backwards.
+``freq`` xác định số lượng chữ cái mà cầu vồng kéo dài qua trước khi lặp lại, ``sat`` là độ bão hòa của cầu vồng, còn ``val`` là value của cầu vồng. ``speed`` là số chu kỳ cầu vồng đầy đủ mỗi giây. Giá trị ``speed`` dương sẽ phát animation theo chiều thuận, giá trị ``0`` sẽ tạm dừng animation, còn giá trị ``speed`` âm sẽ phát animation theo chiều ngược lại.
 
-Font outlines are *not* affected by the rainbow effect (they keep their original color).
-Existing font colors are overridden by the rainbow effect. However, CanvasItem's
-**Modulate** and **Self Modulate** properties will affect how the rainbow effect
-looks, as modulation multiplies its final colors.
+Outline của font *không* bị ảnh hưởng bởi hiệu ứng rainbow (chúng giữ nguyên màu ban đầu). Các màu font hiện có sẽ bị hiệu ứng rainbow ghi đè. Tuy nhiên, các thuộc tính **Modulate** và **Self Modulate** của CanvasItem sẽ ảnh hưởng đến hình thức của hiệu ứng rainbow, vì modulation nhân với màu cuối cùng của nó.
 
-Custom BBCode tags and text effects
------------------------------------
+Thẻ BBCode và hiệu ứng văn bản tùy chỉnh
+----------------------------------------
 
-You can extend the :ref:`class_RichTextEffect` resource type to create your own custom
-BBCode tags. Create a new script file that extends the :ref:`class_RichTextEffect` resource type
-and give the script a ``class_name`` so that the effect can be selected in the inspector.
-Add the ``@tool`` annotation to your GDScript file if you wish to have these custom effects
-run within the editor itself. The RichTextLabel does not need to have a script attached,
-nor does it need to be running in ``tool`` mode. The new effect can be registered in
-the Inspector by adding it to the **Markup > Custom Effects** array, or in code with the
+Bạn có thể mở rộng loại resource :ref:`class_RichTextEffect` để tạo các thẻ BBCode tùy chỉnh của riêng mình. Tạo một file script mới mở rộng loại resource :ref:`class_RichTextEffect` và đặt cho script một ``class_name`` để hiệu ứng có thể được chọn trong inspector. Thêm annotation ``@tool`` vào file GDScript nếu bạn muốn các hiệu ứng tùy chỉnh này chạy ngay trong editor. RichTextLabel không cần gắn script, cũng không cần chạy ở ``tool`` mode. Bạn có thể đăng ký hiệu ứng mới trong Inspector bằng cách thêm nó vào mảng **Markup > Custom Effects**, hoặc trong code bằng
 :ref:`install_effect() <class_RichTextLabel_method_install_effect>` method:
 
 .. figure:: img/bbcode_in_richtextlabel_selecting_custom_richtexteffect.webp
@@ -1212,44 +1058,20 @@ the Inspector by adding it to the **Markup > Custom Effects** array, or in code 
 
 .. warning::
 
-    If the custom effect is not registered within the RichTextLabel's
-    **Markup > Custom Effects** property, no effect will be visible and the original
-    tag will be left as-is.
+    Nếu hiệu ứng tùy chỉnh chưa được đăng ký trong thuộc tính **Markup > Custom Effects** của RichTextLabel, sẽ không có hiệu ứng nào hiển thị và thẻ gốc sẽ được giữ nguyên.
 
-There is only one function that you need to extend: ``_process_custom_fx(char_fx)``.
-Optionally, you can also provide a custom BBCode identifier by adding a member
-name ``bbcode``. The code will check the ``bbcode`` property automatically or will
-use the name of the file to determine what the BBCode tag should be.
+Chỉ có một function mà bạn cần mở rộng: ``_process_custom_fx(char_fx)``. Ngoài ra, bạn cũng có thể cung cấp một identifier BBCode tùy chỉnh bằng cách thêm member name ``bbcode``. Code sẽ tự động kiểm tra thuộc tính ``bbcode`` hoặc sử dụng tên file để xác định thẻ BBCode.
 
 ``_process_custom_fx``
 ~~~~~~~~~~~~~~~~~~~~~~
 
-This is where the logic of each effect takes place and is called once per glyph
-during the draw phase of text rendering. This passes in a :ref:`class_CharFXTransform`
-object, which holds a few variables to control how the associated glyph is rendered:
+Đây là nơi logic của từng hiệu ứng được thực thi và được gọi một lần cho mỗi glyph trong giai đoạn vẽ của quá trình render văn bản. Hàm này truyền vào một object :ref:`class_CharFXTransform`, chứa một số biến để kiểm soát cách glyph tương ứng được render:
 
-- ``outline`` is ``true`` if effect is called for drawing text outline.
-- ``range`` tells you how far into a given custom effect block you are in as an
-  index.
-- ``elapsed_time`` is the total amount of time the text effect has been running.
-- ``visible`` will tell you whether the glyph is visible or not and will also allow you
-  to hide a given portion of text.
-- ``offset`` is an offset position relative to where the given glyph should render under
-  normal circumstances.
-- ``color`` is the color of a given glyph.
-- ``glyph_index`` and ``font`` is glyph being drawn and font data resource used to draw it.
-- Finally, ``env`` is a :ref:`class_Dictionary` of parameters assigned to a given custom
-  effect. You can use :ref:`get() <class_Dictionary_method_get>` with an optional default value
-  to retrieve each parameter, if specified by the user. For example ``[custom_fx spread=0.5
-  color=#FFFF00]test[/custom_fx]`` would have a float ``spread`` and Color ``color``
-  parameters in its ``env`` Dictionary. See below for more usage examples.
+- ``outline`` là ``true`` nếu hiệu ứng được gọi để vẽ outline của văn bản. - ``range`` cho biết bạn đã đi được bao xa trong một block hiệu ứng tùy chỉnh nhất định, dưới dạng một index. - ``elapsed_time`` là tổng thời gian hiệu ứng văn bản đã chạy. - ``visible`` cho biết glyph có hiển thị hay không, đồng thời cho phép bạn ẩn một phần văn bản nhất định. - ``offset`` là vị trí offset tương đối so với vị trí glyph tương ứng sẽ render trong điều kiện bình thường. - ``color`` là màu của một glyph. - ``glyph_index`` và ``font`` lần lượt là glyph đang được vẽ và resource dữ liệu font được dùng để vẽ glyph đó. - Cuối cùng, ``env`` là một :ref:`class_Dictionary` các parameter được gán cho một hiệu ứng tùy chỉnh nhất định. Bạn có thể sử dụng :ref:`get() <class_Dictionary_method_get>` cùng với một giá trị mặc định tùy chọn để truy xuất từng parameter, nếu người dùng đã chỉ định. Ví dụ, ``[custom_fx spread=0.5 color=#FFFF00]test[/custom_fx]`` sẽ có các parameter float ``spread`` và Color ``color`` trong Dictionary ``env``. Xem bên dưới để biết thêm các ví dụ sử dụng.
 
-The last thing to note about this function is that it is necessary to return a boolean
-``true`` value to verify that the effect processed correctly. This way, if there's a problem
-with rendering a given glyph, it will back out of rendering custom effects entirely until
-the user fixes whatever error cropped up in their custom effect logic.
+Điều cuối cùng cần lưu ý về function này là bạn cần trả về một giá trị boolean ``true`` để xác nhận rằng hiệu ứng đã được xử lý chính xác. Nhờ đó, nếu có vấn đề khi render một glyph nào đó, hệ thống sẽ ngừng hoàn toàn việc render các hiệu ứng tùy chỉnh cho đến khi người dùng khắc phục lỗi phát sinh trong logic hiệu ứng tùy chỉnh.
 
-Here are some examples of custom effects:
+Dưới đây là một số ví dụ về hiệu ứng tùy chỉnh:
 
 Ghost
 ~~~~~
@@ -1260,13 +1082,13 @@ Ghost
     extends RichTextEffect
     class_name RichTextGhost
 
-    # Syntax: [ghost freq=5.0 span=10.0][/ghost]
+    # Cú pháp: [ghost freq=5.0 span=10.0][/ghost]
 
-    # Define the tag name.
+    # Xác định tên thẻ.
     var bbcode = "ghost"
 
     func _process_custom_fx(char_fx):
-        # Get parameters, or use the provided default value if missing.
+        # Lấy các parameter hoặc sử dụng giá trị mặc định được cung cấp nếu thiếu.
         var speed = char_fx.env.get("freq", 5.0)
         var span = char_fx.env.get("span", 10.0)
 
@@ -1283,17 +1105,17 @@ Matrix
     extends RichTextEffect
     class_name RichTextMatrix
 
-    # Syntax: [matrix clean=2.0 dirty=1.0 span=50][/matrix]
+    # Cú pháp: [matrix clean=2.0 dirty=1.0 span=50][/matrix]
 
-    # Define the tag name.
+    # Xác định tên thẻ.
     var bbcode = "matrix"
 
-    # Gets TextServer for retrieving font information.
+    # Lấy TextServer để truy xuất thông tin font.
     func get_text_server():
         return TextServerManager.get_primary_interface()
 
     func _process_custom_fx(char_fx):
-        # Get parameters, or use the provided default value if missing.
+        # Lấy các parameter hoặc sử dụng giá trị mặc định được cung cấp nếu thiếu.
         var clear_time = char_fx.env.get("clean", 2.0)
         var dirty_time = char_fx.env.get("dirty", 1.0)
         var text_span = char_fx.env.get("span", 50)
@@ -1313,7 +1135,7 @@ Matrix
         char_fx.glyph_index = get_text_server().font_get_glyph_index(char_fx.font, 1, value, 0)
         return true
 
-This will add a few new BBCode commands, which can be used like so:
+Thao tác này sẽ thêm một số lệnh BBCode mới, có thể được sử dụng như sau:
 
 .. code-block:: none
 

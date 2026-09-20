@@ -1,103 +1,74 @@
 .. _doc_scene_unique_nodes:
 
-Scene Unique Nodes
-==================
+Các nút duy nhất trong scene
+============================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Using ``get_node()`` to reference nodes from a script can sometimes be fragile.
-If you move a button in a UI scene from one panel to another, the button's node
-path changes, and if a script uses ``get_node()`` with a hard-coded node path,
-the script will not be able to find the button anymore.
+Việc sử dụng ``get_node()`` để tham chiếu đến các nút từ một script đôi khi có thể dễ gặp lỗi. Nếu bạn di chuyển một button trong một UI scene từ panel này sang panel khác, node path của button sẽ thay đổi; và nếu một script sử dụng ``get_node()`` với node path được hard-code, script đó sẽ không thể tìm thấy button nữa.
 
-In situations like this, the node can be turned into a scene
-unique node to avoid having to update the script every time
-the node's path is changed.
+Trong những tình huống như vậy, có thể chuyển node thành một scene unique node để không phải cập nhật script mỗi khi node path của node thay đổi.
 
-Creation and usage
-------------------
+Tạo và sử dụng
+--------------
 
-There are two ways to create a scene unique node.
+Có hai cách để tạo một scene unique node.
 
-In the Scene tree dock, right-click on a node and select
-**Access as Unique Name** in the context menu.
+Trong dock Scene, nhấp chuột phải vào một node và chọn **Access as Unique Name** trong context menu.
 
 .. image:: img/unique_name.webp
 
-After selecting the option, the node will now have a percent symbol (**%**) next
-to its name in the scene tree:
+Sau khi chọn tùy chọn này, node sẽ có thêm ký hiệu phần trăm (**%**) bên cạnh tên trong scene tree:
 
 .. image:: img/percent.webp
 
-You can also do this while renaming the node by adding "%" to the beginning of the name.
-Once you confirm, the percent symbol will appear next to its name.
+Bạn cũng có thể thực hiện việc này khi đổi tên node bằng cách thêm "%" vào đầu tên. Sau khi bạn xác nhận, ký hiệu phần trăm sẽ xuất hiện bên cạnh tên node.
 
-You can now use the node in your script. For example, you can reference it with
-a ``get_node()`` method call by typing the % symbol, followed by the node's
-name:
+Bây giờ bạn có thể sử dụng node trong script. Ví dụ: bạn có thể tham chiếu đến node bằng lời gọi method ``get_node()`` bằng cách nhập ký hiệu %, theo sau là tên của node:
 
 .. tabs::
 
  .. code-tab:: gdscript GDScript
 
     get_node("%RedButton").text = "Hello"
-    %RedButton.text = "Hello" # Shorter syntax
+    %RedButton.text = "Hello" # Cú pháp ngắn hơn
 
  .. code-tab:: csharp
 
     GetNode<Button>("%RedButton").Text = "Hello";
 
-Same-scene limitation
----------------------
+Giới hạn trong cùng scene
+-------------------------
 
-A scene unique node can only be retrieved by a node inside the same scene. To
-demonstrate this limitation, consider this example **Player** scene that
-instances a **Sword** scene:
+Một scene unique node chỉ có thể được lấy bởi một node nằm trong cùng scene. Để minh họa giới hạn này, hãy xem xét scene **Player** mẫu này, trong đó tạo instance của scene **Sword**:
 
 .. image:: img/unique_name_scene_instance_example.webp
 
-Here are the results of ``get_node()`` calls inside the **Player** script:
+Sau đây là kết quả của các lời gọi ``get_node()`` bên trong script **Player**:
 
-- ``get_node("%Eyes")`` returns the **Eyes** node.
-- ``get_node("%Hilt")`` returns ``null``.
+- ``get_node("%Eyes")`` trả về node **Eyes**. - ``get_node("%Hilt")`` trả về ``null``.
 
-These are the results of ``get_node()`` calls inside the **Sword** script:
+Sau đây là kết quả của các lời gọi ``get_node()`` bên trong script **Sword**:
 
-- ``get_node("%Eyes")`` returns ``null``.
-- ``get_node("%Hilt")`` returns the **Hilt** node.
+- ``get_node("%Eyes")`` trả về ``null``. - ``get_node("%Hilt")`` trả về node **Hilt**.
 
-If a script has access to a node in another scene, it can call ``get_node()`` on
-that node to get scene unique nodes from that node's scene. This also works in a
-node path, which avoids multiple ``get_node()`` calls. Here are two ways to get
-the **Hilt** node from the **Player** script using scene unique nodes:
+Nếu một script có quyền truy cập vào một node trong scene khác, nó có thể gọi ``get_node()`` trên node đó để lấy các scene unique node từ scene của node đó. Điều này cũng hoạt động trong node path, giúp tránh phải gọi ``get_node()`` nhiều lần. Sau đây là hai cách lấy node **Hilt** từ script **Player** bằng scene unique node:
 
-- ``get_node("Hand/Sword").get_node("%Hilt")`` returns the **Hilt** node.
-- ``get_node("Hand/Sword/%Hilt")`` also returns the **Hilt** node.
+- ``get_node("Hand/Sword").get_node("%Hilt")`` trả về node **Hilt**. - ``get_node("Hand/Sword/%Hilt")`` cũng trả về node **Hilt**.
 
-Scene unique names don't only work at the end of a node path. They can be used
-in the middle to navigate from one node to another. For example, the **Sword** node
-is marked as a scene unique node in the **Player** scene, so this is possible:
+Tên duy nhất trong scene không chỉ hoạt động ở cuối node path. Chúng có thể được sử dụng ở giữa node path để điều hướng từ node này sang node khác. Ví dụ: node **Sword** được đánh dấu là scene unique node trong scene **Player**, vì vậy có thể thực hiện như sau:
 
-- ``get_node("%Sword/%Hilt")`` returns the **Hilt** node.
+- ``get_node("%Sword/%Hilt")`` trả về node **Hilt**.
 
-Alternatives
-------------
+Các lựa chọn thay thế
+---------------------
 
-Scene unique nodes are a useful tool to navigate a scene. However, there are
-some situations where other techniques may be better.
+Scene unique node là một công cụ hữu ích để điều hướng trong scene. Tuy nhiên, có một số tình huống mà các kỹ thuật khác có thể phù hợp hơn.
 
-A :ref:`Group <doc_groups>` allows locating a node (or a group of many nodes)
-from any other node, no matter what scene the two nodes are located in.
+Một :ref:`Group <doc_groups>` cho phép định vị một node (hoặc một nhóm gồm nhiều node) từ bất kỳ node nào khác, bất kể hai node nằm trong scene nào.
 
-A :ref:`Singleton (Autoload) <doc_singletons_autoload>` is an always loaded node
-that can be accessed directly by any node regardless of the scene. These are useful
-when some data or functionality is shared globally.
+Một :ref:`Singleton (Autoload) <doc_singletons_autoload>` là một node luôn được load và có thể được bất kỳ node nào truy cập trực tiếp, bất kể scene nào. Những node này hữu ích khi một số dữ liệu hoặc chức năng được chia sẻ trên toàn cục.
 
 :ref:`Node.find_child() <class_Node_method_find_child>` finds a node by name
-without knowing its full path. This seems similar to a scene unique node, but
-this method is able to find nodes in nested scenes, and doesn't require marking
-the node in the scene editor in any way. However, this method is slow. Scene
-unique nodes are cached by Godot and are fast to retrieve, but each time the
-method is called, ``find_child()`` needs to check every descendant (every child,
-grandchild, and so on).
+mà không cần biết full path của nó. Cách này có vẻ tương tự scene unique node, nhưng có thể tìm thấy các node trong những scene lồng nhau và không yêu cầu đánh dấu node theo bất kỳ cách nào trong scene editor. Tuy nhiên, cách này chậm. Godot cache các scene unique node nên việc lấy chúng nhanh, nhưng mỗi lần method được gọi, ``find_child()`` phải kiểm tra mọi node hậu duệ (mọi node con, node cháu, v.v.).

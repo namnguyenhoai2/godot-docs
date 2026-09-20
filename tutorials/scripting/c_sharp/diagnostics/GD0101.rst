@@ -1,46 +1,36 @@
-GD0101: The exported member is static
-=====================================
+GD0101: Thành viên được export là static
+========================================
 
-====================================  ======================================
-                                      Value
-====================================  ======================================
-**Rule ID**                           GD0101
-**Category**                          Usage
-**Fix is breaking or non-breaking**   Breaking - If the ``static`` keyword is removed
+==================================== ====================================== Giá trị ==================================== ====================================== **ID quy tắc** GD0101 **Danh mục** Cách sử dụng **Việc sửa lỗi có gây breaking change hay không** Breaking - Nếu từ khóa ``static`` bị xóa
 
-                                      Non-breaking - If the ``[Export]`` attribute is removed
-**Enabled by default**                Yes
-====================================  ======================================
+                                      Không breaking - Nếu attribute ``[Export]`` bị xóa **Được bật theo mặc định** Có ==================================== ======================================
 
-Cause
------
+Nguyên nhân
+-----------
 
-A static member is annotated with the ``[Export]`` attribute. Static members
-can't be exported.
+Một thành viên static được chú thích bằng attribute ``[Export]``. Không thể export các thành viên static.
 
-Rule description
-----------------
+Mô tả quy tắc
+-------------
 
-Godot doesn't allow exporting static members.
+Godot không cho phép export các thành viên static.
 
 .. code-block:: csharp
 
-    // Static members can't be exported.
+    // Không thể export các thành viên static.
     [Export]
     public static int InvalidProperty { get; set; }
 
-    // Instance members can be exported.
+    // Có thể export các thành viên instance.
     [Export]
     public int ValidProperty { get; set; }
 
-How to fix violations
----------------------
+Cách khắc phục vi phạm
+----------------------
 
-To fix a violation of this rule, remove the ``[Export]`` attribute or remove the
-``static`` keyword.
+Để khắc phục vi phạm quy tắc này, hãy xóa attribute ``[Export]`` hoặc xóa từ khóa ``static``.
 
-When to suppress warnings
--------------------------
+Khi nào nên tắt cảnh báo
+------------------------
 
-Do not suppress a warning from this rule. Static members can't be exported so
-they will be ignored by Godot, resulting in runtime errors.
+Không nên tắt cảnh báo từ quy tắc này. Không thể export các thành viên static, vì vậy Godot sẽ bỏ qua chúng, dẫn đến lỗi runtime.

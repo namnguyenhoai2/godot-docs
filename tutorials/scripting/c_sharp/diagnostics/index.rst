@@ -2,11 +2,10 @@
 
 .. _doc_c_sharp_diagnostics:
 
-C# diagnostics
-==============
+Chẩn đoán C#
+============
 
-Godot includes analyzers that inspect your C# source code to check for invalid
-or unsupported code and let you know that something is wrong during build time.
+Godot tích hợp các analyzer để kiểm tra mã nguồn C# của bạn, phát hiện mã không hợp lệ hoặc không được hỗ trợ, đồng thời cho bạn biết có vấn đề xảy ra trong thời gian build.
 
 .. rubric:: Rules
    :heading-level: 2

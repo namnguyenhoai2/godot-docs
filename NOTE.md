@@ -51,3 +51,15 @@ uv run sphinx-autobuild -b epub . _build/epub
 Nhưng EPUB không phù hợp để preview liên tục như HTML; nên dùng HTML để dịch và kiểm tra nhanh, rồi build EPUB khi hoàn thành một phần/chương lớn.
 
 Lưu ý: Godot Docs có nhiều directive, tab code, video, ảnh, link nội bộ. Một số thành phần vốn dành cho web có thể bị Sphinx giản lược hoặc hiển thị không đẹp trong EPUB.
+
+
+---
+# Check
+
+uv run sphinx-build -b dummy --keep-going . _build/check
+
+
+---
+host on R2
+300baicodethieunhi.com/godot
+300baicodethieunhi.com/react

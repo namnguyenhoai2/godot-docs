@@ -1,44 +1,32 @@
-GD0001: Missing partial modifier on declaration of type that derives from GodotObject
-=====================================================================================
+GD0001: Thiếu bộ bổ nghĩa partial trong khai báo kiểu kế thừa từ GodotObject
+============================================================================
 
-====================================  ======================================
-                                      Value
-====================================  ======================================
-**Rule ID**                           GD0001
-**Category**                          Usage
-**Fix is breaking or non-breaking**   Non-breaking
-**Enabled by default**                Yes
-====================================  ======================================
+==================================== ====================================== Giá trị ==================================== ====================================== **ID quy tắc** GD0001 **Danh mục** Cách sử dụng **Sửa lỗi có phá vỡ hay không** Không phá vỡ **Được bật theo mặc định** Có ==================================== ======================================
 
-Cause
------
+Nguyên nhân
+-----------
 
-A type that derives from ``GodotObject`` is not declared partial.
+Một kiểu kế thừa từ ``GodotObject`` không được khai báo với partial.
 
-Rule description
-----------------
+Mô tả quy tắc
+-------------
 
-Godot source generators add generated code to user-defined types to implement
-the integration with the engine. Source generators can't add generated code to
-types that aren't declared partial.
+Các source generator của Godot thêm mã được tạo vào những kiểu do người dùng định nghĩa để triển khai tích hợp với engine. Source generator không thể thêm mã được tạo vào những kiểu không được khai báo với partial.
 
 .. code-block:: csharp
 
-    // The source generators can't enhance this type to work with Godot.
+    // Source generator không thể tăng cường kiểu này để kiểu này hoạt động với Godot.
     public class InvalidNode : Node { }
 
-    // The source generators can enhance this type to work with Godot.
+    // Source generator có thể tăng cường kiểu này để kiểu này hoạt động với Godot.
     public partial class ValidNode : Node { }
 
-How to fix violations
----------------------
+Cách khắc phục vi phạm
+----------------------
 
-To fix a violation of this rule, add the ``partial`` keyword to the type
-declaration.
+Để khắc phục vi phạm quy tắc này, hãy thêm từ khóa ``partial`` vào khai báo kiểu.
 
-When to suppress warnings
+Khi nào cần ngăn cảnh báo
 -------------------------
 
-Do not suppress a warning from this rule. Types that derive from ``GodotObject``
-but aren't partial can't be enhanced by the source generators, resulting in
-unexpected runtime errors.
+Không ngăn cảnh báo từ quy tắc này. Các kiểu kế thừa từ ``GodotObject`` nhưng không có partial không thể được source generator tăng cường, dẫn đến các lỗi runtime ngoài dự kiến.

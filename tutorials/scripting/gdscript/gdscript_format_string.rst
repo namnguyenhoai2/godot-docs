@@ -1,59 +1,44 @@
 .. _doc_gdscript_printf:
 
-GDScript format strings
-=======================
+Chuỗi định dạng GDScript
+========================
 
-Godot offers multiple ways to dynamically change the contents of strings:
+Godot cung cấp nhiều cách để thay đổi nội dung của các chuỗi một cách linh động:
 
-- Format strings: ``var string = "I have %s cats." % "3"``
-- The ``String.format()`` method: ``var string = "I have {0} cats.".format([3])``
-- String concatenation: ``var string = "I have " + str(3) + " cats."``
+- Chuỗi định dạng: ``var string = "I have %s cats." % "3"`` - Phương thức ``String.format()``: ``var string = "I have {0} cats.".format([3])`` - Nối chuỗi: ``var string = "I have " + str(3) + " cats."``
 
-This page explains how to use format strings, and briefly explains the ``format()``
-method and string concatenation.
+Trang này giải thích cách sử dụng chuỗi định dạng, đồng thời giải thích ngắn gọn về phương thức ``format()`` và phép nối chuỗi.
 
-Format strings
---------------
+Chuỗi định dạng
+---------------
 
-*Format strings* are a way to reuse text templates to succinctly create different
-but similar strings.
+*Chuỗi định dạng* là một cách tái sử dụng các mẫu văn bản để ngắn gọn tạo ra những chuỗi khác nhau nhưng tương tự nhau.
 
-Format strings are just like normal strings, except they contain certain
-placeholder character sequences such as ``%s``. These placeholders can then
-be replaced by parameters handed to the format string.
+Chuỗi định dạng cũng giống như chuỗi thông thường, ngoại trừ việc chúng chứa một số chuỗi ký tự giữ chỗ nhất định, chẳng hạn như ``%s``. Sau đó, các giữ chỗ này có thể được thay thế bằng các tham số được truyền cho chuỗi định dạng.
 
-Examine this concrete GDScript example:
+Hãy xem xét ví dụ GDScript cụ thể sau:
 
 ::
 
-    # Define a format string with placeholder '%s'
+    # Định nghĩa một chuỗi định dạng với giữ chỗ '%s'
     var format_string = "We're waiting for %s."
 
-    # Using the '%' operator, the placeholder is replaced with the desired value
+    # Sử dụng toán tử '%', giữ chỗ được thay thế bằng giá trị mong muốn
     var actual_string = format_string % "Godot"
 
     print(actual_string)
-    # Output: "We're waiting for Godot."
+    # Kết quả: "We're waiting for Godot."
 
-Placeholders always start with a ``%``, but the next character or characters,
-the *format specifier*, determines how the given value is converted to a
-string.
+Các giữ chỗ luôn bắt đầu bằng ``%``, nhưng ký tự hoặc các ký tự tiếp theo, gọi là *định dạng chỉ định* (format specifier), sẽ quyết định cách giá trị được chuyển đổi thành chuỗi.
 
-The ``%s`` seen in the example above is the simplest placeholder and works for
-most use cases: it converts the value by the same method by which an implicit
-String conversion or :ref:`str() <class_@GlobalScope_method_str>` would convert
-it. Strings remain unchanged, booleans turn into either ``"true"`` or ``"false"``,
-``int`` and ``float`` types become decimals, and other types usually return their data
-in a human-readable string.
+``%s`` xuất hiện trong ví dụ trên là giữ chỗ đơn giản nhất và hoạt động trong hầu hết trường hợp sử dụng: nó chuyển đổi giá trị bằng cùng phương thức mà một phép chuyển đổi String ngầm định hoặc :ref:`str() <class_@GlobalScope_method_str>` sẽ sử dụng. Các chuỗi được giữ nguyên, boolean được chuyển thành ``"true"`` hoặc ``"false"``, các kiểu ``int`` và ``float`` trở thành số thập phân, còn các kiểu khác thường trả về dữ liệu của chúng dưới dạng chuỗi mà con người có thể đọc được.
 
-There are other `format specifiers`_.
+Có các `Định dạng chỉ định`_ khác.
 
-Multiple placeholders
----------------------
+Nhiều giữ chỗ
+-------------
 
-Format strings may contain multiple placeholders. In such a case, the values
-are handed in the form of an array, one value per placeholder (unless using a
-format specifier with ``*``, see `dynamic padding`_):
+Chuỗi định dạng có thể chứa nhiều giữ chỗ. Trong trường hợp đó, các giá trị được truyền dưới dạng một mảng, mỗi giữ chỗ tương ứng với một giá trị (trừ khi sử dụng định dạng chỉ định với ``*``, xem `Đệm động`_):
 
 ::
 
@@ -61,26 +46,21 @@ format specifier with ``*``, see `dynamic padding`_):
     var actual_string = format_string % ["Estragon", "GDScript"]
 
     print(actual_string)
-    # Output: "Estragon was reluctant to learn GDScript, but now he enjoys it."
+    # Kết quả: "Estragon was reluctant to learn GDScript, but now he enjoys it."
 
-Note the values are inserted in order. Remember all placeholders must be
-replaced at once, so there must be an appropriate number of values.
-
-
-Format specifiers
------------------
-
-There are format specifiers other than ``s`` that can be used in placeholders.
-They consist of one or more characters. Some of them work by themselves like
-``s``, some appear before other characters, some only work with certain
-values or characters.
+Lưu ý rằng các giá trị được chèn theo thứ tự. Hãy nhớ rằng tất cả giữ chỗ phải được thay thế cùng lúc, vì vậy phải có số lượng giá trị phù hợp.
 
 
-Placeholder types
-~~~~~~~~~~~~~~~~~
+Định dạng chỉ định
+------------------
 
-One and only one of these must always appear as the last character in a format
-specifier. Apart from ``s``, these require certain types of parameters.
+Ngoài ``s``, còn có các định dạng chỉ định khác có thể được sử dụng trong các giữ chỗ. Chúng bao gồm một hoặc nhiều ký tự. Một số hoạt động độc lập như ``s``, một số xuất hiện trước các ký tự khác, còn một số chỉ hoạt động với những giá trị hoặc ký tự nhất định.
+
+
+Các kiểu giữ chỗ
+~~~~~~~~~~~~~~~~
+
+Một và chỉ một trong các ký tự này luôn phải xuất hiện ở vị trí cuối cùng trong định dạng chỉ định. Ngoài ``s``, các ký tự này yêu cầu những kiểu tham số nhất định.
 
 +-------+---------------------------------------------------------------------+
 | ``s`` | **Simple** conversion to String by the same method as implicit      |
@@ -111,11 +91,10 @@ specifier. Apart from ``s``, these require certain types of parameters.
 +-------+---------------------------------------------------------------------+
 
 
-Placeholder modifiers
-~~~~~~~~~~~~~~~~~~~~~
+Bộ bổ nghĩa giữ chỗ
+~~~~~~~~~~~~~~~~~~~
 
-These characters appear before the above. Some of them work only under certain
-conditions.
+Các ký tự này xuất hiện trước những ký tự nêu trên. Một số chỉ hoạt động trong những điều kiện nhất định.
 
 +---------+-------------------------------------------------------------------+
 | ``+``   | In number specifiers, **show + sign** if positive.                |
@@ -135,120 +114,104 @@ conditions.
 +---------+-------------------------------------------------------------------+
 
 
-Padding
--------
+Đệm
+---
 
-The ``.`` (*dot*), ``*`` (*asterisk*), ``-`` (*minus sign*) and digit
-(``0``-``9``) characters are used for padding. This allows printing several
-values aligned vertically as if in a column, provided a fixed-width font is
-used.
+The ``.`` (*dot*), ``*`` (*asterisk*), ``-`` (*minus sign*) and digit (``0``-``9``) characters are used for padding. This allows printing several values aligned vertically as if in a column, provided a fixed-width font is used.
 
-To pad a string to a minimum length, add an integer to the specifier:
+Để đệm một chuỗi đến độ dài tối thiểu, hãy thêm một số nguyên vào định dạng chỉ định:
 
 ::
 
     print("%10d" % 12345)
-    # output: "     12345"
-    # 5 leading spaces for a total length of 10
+    # kết quả: "     12345"
+    # 5 khoảng trắng ở đầu, tổng độ dài là 10
 
-If the integer starts with ``0``, integer values are padded with zeroes
-instead of white space:
+Nếu số nguyên bắt đầu bằng ``0``, các giá trị số nguyên sẽ được đệm bằng số 0 thay vì khoảng trắng:
 
 ::
 
     print("%010d" % 12345)
-    # output: "0000012345"
+    # kết quả: "0000012345"
 
-Precision can be specified for real numbers by adding a ``.`` (*dot*) with an
-integer following it. With no integer after ``.``, a precision of 0 is used,
-rounding to integer values. The integer to use for padding must appear before
-the dot.
+Có thể chỉ định độ chính xác cho các số thực bằng cách thêm ``.`` (*dấu chấm*) rồi theo sau là một số nguyên. Nếu không có số nguyên sau ``.``, độ chính xác được đặt là 0 và giá trị được làm tròn thành số nguyên. Số nguyên dùng để đệm phải xuất hiện trước dấu chấm.
 
 ::
 
-    # Pad to minimum length of 10, round to 3 decimal places
+    # Đệm đến độ dài tối thiểu là 10, làm tròn đến 3 chữ số thập phân
     print("%10.3f" % 10000.5555)
-    # Output: " 10000.556"
-    # 1 leading space
+    # Kết quả: " 10000.556"
+    # 1 khoảng trắng ở đầu
 
-The ``-`` character will cause padding to the right rather than the left,
-useful for right text alignment:
+Ký tự ``-`` sẽ khiến phần đệm được thêm vào bên phải thay vì bên trái, hữu ích khi căn chỉnh văn bản sang phải:
 
 ::
 
     print("%-10d" % 12345678)
-    # Output: "12345678  "
-    # 2 trailing spaces
+    # Kết quả: "12345678  "
+    # 2 khoảng trắng ở cuối
 
 
-Dynamic padding
-~~~~~~~~~~~~~~~
+Đệm động
+~~~~~~~~
 
-By using the ``*`` (*asterisk*) character, the padding or precision can be set
-without modifying the format string. It is used in place of an integer in the
-format specifier. The values for padding and precision are then passed when
-formatting:
+Bằng cách sử dụng ký tự ``*`` (*dấu hoa thị*), có thể đặt phần đệm hoặc độ chính xác mà không cần sửa đổi chuỗi định dạng. Ký tự này được dùng thay cho một số nguyên trong định dạng chỉ định. Sau đó, các giá trị dùng cho phần đệm và độ chính xác được truyền vào khi định dạng:
 
 ::
 
     var format_string = "%*.*f"
-    # Pad to length of 7, round to 3 decimal places:
+    # Đệm đến độ dài 7, làm tròn đến 3 chữ số thập phân:
     print(format_string % [7, 3, 8.8888])
-    # Output: "  8.889"
-    # 2 leading spaces
+    # Kết quả: "  8.889"
+    # 2 khoảng trắng ở đầu
 
-It is still possible to pad with zeroes in integer placeholders by adding ``0``
-before ``*``:
+Vẫn có thể đệm bằng số 0 trong các giữ chỗ số nguyên bằng cách thêm ``0`` trước ``*``:
 
 ::
 
     print("%0*d" % [2, 3])
-    # Output: "03"
+    # Kết quả: "03"
 
 
-Escape sequence
----------------
+Chuỗi thoát
+-----------
 
-To insert a literal ``%`` character into a format string, it must be escaped to
-avoid reading it as a placeholder. This is done by doubling the character:
+Để chèn một ký tự ``%`` theo nghĩa đen vào chuỗi định dạng, ký tự đó phải được escape để tránh bị đọc như một giữ chỗ. Việc này được thực hiện bằng cách nhân đôi ký tự:
 
 ::
 
     var health = 56
     print("Remaining health: %d%%" % health)
-    # Output: "Remaining health: 56%"
+    # Kết quả: "Remaining health: 56%"
 
 
-String format method
---------------------
+Phương thức định dạng chuỗi
+---------------------------
 
-There is also another way to format text in GDScript, namely the
+Ngoài ra còn có một cách khác để định dạng văn bản trong GDScript, đó là phương thức
 :ref:`String.format() <class_String_method_format>`
-method. It replaces all occurrences of a key in the string with the corresponding
-value. The method can handle arrays or dictionaries for the key/value pairs.
+Phương thức này thay thế tất cả các lần xuất hiện của một khóa trong chuỗi bằng giá trị tương ứng. Phương thức có thể xử lý các mảng hoặc dictionary cho các cặp khóa/giá trị.
 
-Arrays can be used as key, index, or mixed style (see below examples). Order only
-matters when the index or mixed style of Array is used.
+Mảng có thể được sử dụng theo kiểu khóa, chỉ mục hoặc kết hợp (xem các ví dụ bên dưới). Thứ tự chỉ quan trọng khi sử dụng kiểu chỉ mục hoặc kiểu kết hợp của Array.
 
-A quick example in GDScript:
+Một ví dụ nhanh trong GDScript:
 
 ::
 
-    # Define a format string
+    # Định nghĩa một chuỗi định dạng
     var format_string = "We're waiting for {str}"
 
-    # Using the 'format' method, replace the 'str' placeholder
+    # Sử dụng phương thức 'format', thay thế giữ chỗ 'str'
     var actual_string = format_string.format({"str": "Godot"})
 
     print(actual_string)
-    # Output: "We're waiting for Godot"
+    # Kết quả: "We're waiting for Godot"
 
 
-Format method examples
-~~~~~~~~~~~~~~~~~~~~~~
+Các ví dụ về phương thức format
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following are some examples of how to use the various invocations of the
-``String.format()``  method.
+Sau đây là một số ví dụ về cách sử dụng các cách gọi khác nhau của phương thức ``String.format()``.
 
 +------------+-----------+------------------------------------------------------------------------------+-------------------+
 | **Type**   | **Style** | **Example**                                                                  | **Result**        |
@@ -268,8 +231,7 @@ The following are some examples of how to use the various invocations of the
 | Array      | no index  | ``"Hi, {} v{}!".format(["Godette", "3.0"], "{}")``                           | Hi, Godette v3.0! |
 +------------+-----------+------------------------------------------------------------------------------+-------------------+
 
-Placeholders can also be customized when using ``String.format``, here's some
-examples of that functionality.
+Các giữ chỗ cũng có thể được tùy chỉnh khi sử dụng ``String.format``; dưới đây là một số ví dụ về chức năng đó.
 
 
 +-----------------+------------------------------------------------------+------------------+
@@ -282,8 +244,7 @@ examples of that functionality.
 | Prefix          | ``"Hi, %0 v%1".format(["Godette", "3.0"], "%_")``    | Hi, Godette v3.0 |
 +-----------------+------------------------------------------------------+------------------+
 
-Combining both the ``String.format`` method and the ``%`` operator could be useful, as
-``String.format`` does not have a way to manipulate the representation of numbers.
+Việc kết hợp cả phương thức ``String.format`` và toán tử ``%`` có thể hữu ích, vì ``String.format`` không có cách thao tác với cách biểu diễn số.
 
 +---------------------------------------------------------------------------+-------------------+
 | **Example**                                                               | **Result**        |
@@ -291,26 +252,23 @@ Combining both the ``String.format`` method and the ``%`` operator could be usef
 | ``"Hi, {0} v{version}".format({0:"Godette", "version":"%0.2f" % 3.114})`` | Hi, Godette v3.11 |
 +---------------------------------------------------------------------------+-------------------+
 
-String concatenation
---------------------
+Nối chuỗi
+---------
 
-You can also combine strings by *concatenating* them together, using the ``+``
-operator.
+Bạn cũng có thể kết hợp các chuỗi bằng cách *nối* chúng lại với nhau, sử dụng toán tử ``+``.
 
 ::
 
-    # Define a base string
+    # Định nghĩa chuỗi cơ sở
     var base_string = "We're waiting for "
 
-    # Concatenate the string
+    # Nối chuỗi
     var actual_string = base_string + "Godot"
 
     print(actual_string)
-    # Output: "We're waiting for Godot"
+    # Kết quả: "We're waiting for Godot"
 
-When using string concatenation, values that are not strings must be converted using
-the ``str()`` function. There is no way to specify the string format of converted
-values.
+Khi sử dụng phép nối chuỗi, các giá trị không phải chuỗi phải được chuyển đổi bằng hàm ``str()``. Không có cách nào chỉ định định dạng chuỗi của các giá trị đã chuyển đổi.
 
 ::
 
@@ -319,12 +277,10 @@ values.
     var actual_string = "Hi, " + name_string + " v" + str(version) + "!"
 
     print(actual_string)
-    # Output: "Hi, Godette v3!"
+    # Kết quả: "Hi, Godette v3!"
 
-Because of these limitations, format strings or the ``format()`` method are often
-a better choice. In many cases, string concatenation is also less readable.
+Do những hạn chế này, chuỗi định dạng hoặc phương thức ``format()`` thường là lựa chọn tốt hơn. Trong nhiều trường hợp, phép nối chuỗi cũng khó đọc hơn.
 
 .. note::
 
-    In Godot's C++ code, GDScript format strings can be accessed using the
-    ``vformat()`` helper function in the :ref:`Variant<class_Variant>` header.
+    Trong mã C++ của Godot, có thể truy cập các chuỗi định dạng GDScript bằng hàm trợ giúp ``vformat()`` trong header :ref:`Variant<class_Variant>`.

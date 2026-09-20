@@ -1,81 +1,59 @@
 .. _doc_idle_and_physics_processing:
 
-Idle and Physics Processing
-===========================
+Xử lý nhàn rỗi và Xử lý vật lý
+==============================
 
-Games run in a loop. Each frame, you need to update the state of your game world
-before drawing it on screen. Godot provides two virtual methods in the Node
-class to do so: :ref:`Node._process() <class_Node_private_method__process>` and
+Game chạy trong một vòng lặp. Ở mỗi frame, bạn cần cập nhật trạng thái của thế giới game trước khi vẽ nó lên màn hình. Godot cung cấp hai virtual method trong class Node để thực hiện việc này: :ref:`Node._process() <class_Node_private_method__process>` và
 :ref:`Node._physics_process() <class_Node_private_method__physics_process>`. If you
-define either or both in a script, the engine will call them automatically.
+khi bạn định nghĩa một hoặc cả hai phương thức này trong script, engine sẽ tự động gọi chúng.
 
-There are two types of processing available to you:
+Có hai loại xử lý mà bạn có thể sử dụng:
 
-1. **Idle processing** allows you to run code that updates a node every frame,
-   as often as possible.
-2. **Physics processing** happens at a fixed rate, 60 times per second by
-   default. This is independent of your game's actual framerate, and keeps physics
-   running smoothly. You should use it for anything that involves the physics
-   engine, like moving a body that collides with the environment.
+1. **Xử lý nhàn rỗi** cho phép bạn chạy code cập nhật một node ở mỗi frame, thường xuyên nhất có thể. 2. **Xử lý vật lý** diễn ra với một tần suất cố định, mặc định là 60 lần mỗi giây. Tần suất này độc lập với framerate thực tế của game và giúp physics chạy ổn định. Bạn nên sử dụng nó cho mọi thứ liên quan đến physics engine, chẳng hạn như di chuyển một body va chạm với môi trường.
 
-You can activate idle processing by defining the ``_process()`` method in a
-script. You can turn it off and back on by calling :ref:`Node.set_process()
-<class_Node_method_set_process>`.
+Bạn có thể kích hoạt xử lý nhàn rỗi bằng cách định nghĩa phương thức ``_process()`` trong một script. Bạn có thể tắt và bật lại phương thức này bằng cách gọi :ref:`Node.set_process() <class_Node_method_set_process>`.
 
-The engine calls this method every time it draws a frame:
+Engine gọi phương thức này mỗi khi vẽ một frame:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     func _process(delta):
-        # Do something...
+        # Thực hiện một việc gì đó...
         pass
 
  .. code-tab:: csharp
 
     public override void _Process(double delta)
     {
-        // Do something...
+        // Thực hiện một việc gì đó...
     }
 
-Keep in mind that the frequency at which the engine calls ``_process()`` depends
-on your application's framerate, which varies over time and across devices.
+Hãy nhớ rằng tần suất engine gọi ``_process()`` phụ thuộc vào framerate của ứng dụng, vốn thay đổi theo thời gian và giữa các thiết bị.
 
-The function's ``delta`` parameter is the time elapsed in seconds since the
-previous call to ``_process()``. Use this parameter to make calculations
-independent of the framerate. For example, you should always multiply a speed
-value by ``delta`` to animate a moving object.
+Tham số ``delta`` của function là thời gian tính bằng giây đã trôi qua kể từ lần gọi trước đó đến ``_process()``. Hãy sử dụng tham số này để các phép tính không phụ thuộc vào framerate. Ví dụ: bạn luôn nên nhân giá trị tốc độ với ``delta`` để tạo chuyển động cho một object.
 
-Physics processing works with a similar virtual function:
-``_physics_process()``. Use it for calculations that must happen before each
-physics step, like moving a character that collides with the game world. As
-mentioned above, ``_physics_process()`` runs at fixed time intervals as much as
-possible to keep the physics interactions stable. You can change the interval
-between physics steps in the Project Settings, under Physics -> Common ->
-Physics Fps. By default, it's set to run 60 times per second.
+Xử lý vật lý hoạt động với một virtual function tương tự: ``_physics_process()``. Hãy sử dụng nó cho các phép tính phải diễn ra trước mỗi bước physics, chẳng hạn như di chuyển một character va chạm với thế giới game. Như đã đề cập ở trên, ``_physics_process()`` chạy ở các khoảng thời gian cố định nhiều nhất có thể để giữ cho các tương tác physics ổn định. Bạn có thể thay đổi khoảng thời gian giữa các bước physics trong Project Settings, tại Physics -> Common -> Physics Fps. Mặc định, nó được đặt để chạy 60 lần mỗi giây.
 
-The engine calls this method before every physics step:
+Engine gọi phương thức này trước mỗi bước physics:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     func _physics_process(delta):
-        # Do something...
+        # Thực hiện một việc gì đó...
         pass
 
  .. code-tab:: csharp
 
     public override void _PhysicsProcess(double delta)
     {
-        // Do something...
+        // Thực hiện một việc gì đó...
     }
 
-The function ``_process()`` is not synchronized with physics. Its rate depends on
-hardware and game optimization. It also runs after the physics step in
-single-threaded games.
+Function ``_process()`` không được đồng bộ với physics. Tần suất của nó phụ thuộc vào phần cứng và mức độ tối ưu hóa game. Trong các game single-threaded, nó cũng chạy sau bước physics.
 
-You can see the ``_process()`` function at work by creating a scene with a
-single Label node, with the following script attached to it:
+Bạn có thể xem function ``_process()`` hoạt động bằng cách tạo một scene chỉ có một node Label và gắn script sau vào node đó:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -86,7 +64,7 @@ single Label node, with the following script attached to it:
 
     func _process(delta):
         time += delta
-        text = str(time) # 'text' is a built-in Label property.
+        text = str(time) # 'text' là một thuộc tính tích hợp sẵn của Label.
 
  .. code-tab:: csharp
 
@@ -99,8 +77,8 @@ single Label node, with the following script attached to it:
         public override void _Process(double delta)
         {
             _time += delta;
-            Text = _time.ToString(); // 'Text' is a built-in Label property.
+            Text = _time.ToString(); // 'Text' là một thuộc tính tích hợp sẵn của Label.
         }
     }
 
-When you run the scene, you should see a counter increasing each frame.
+Khi chạy scene, bạn sẽ thấy một bộ đếm tăng lên sau mỗi frame.

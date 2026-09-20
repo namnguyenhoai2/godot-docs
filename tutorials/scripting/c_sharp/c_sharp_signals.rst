@@ -3,45 +3,40 @@
 C# signals
 ==========
 
-For a detailed explanation of signals in general, see the :ref:`doc_signals` section in the step
-by step tutorial.
+Để xem phần giải thích chi tiết về signals nói chung, hãy xem phần :ref:`doc_signals` trong tutorial từng bước.
 
-Signals are implemented using C# events, the idiomatic way to represent
+Signals được triển khai bằng các C# event, là cách tự nhiên để biểu diễn
 :ref:`the observer pattern<doc_key_concepts_signals>` in C#. This is the
-recommended way to use signals in C# and the focus of this page.
+cách được khuyến nghị để sử dụng signals trong C# và là trọng tâm của trang này.
 
-In some cases it's necessary to use the older
+Trong một số trường hợp, cần sử dụng cách cũ hơn
 :ref:`Connect()<class_object_method_connect>` and
 :ref:`Disconnect()<class_object_method_disconnect>` APIs.
-See :ref:`using_connect_and_disconnect` for more details.
+Xem :ref:`using_connect_and_disconnect` để biết thêm chi tiết.
 
-If you encounter a ``System.ObjectDisposedException`` while handling a signal,
-you might be missing a signal disconnection. See
+Nếu bạn gặp phải một ``System.ObjectDisposedException`` khi xử lý signal, có thể bạn đã bỏ sót việc ngắt kết nối signal. Hãy xem
 :ref:`disconnecting_automatically_when_the_receiver_is_freed` for more details.
 
-Signals as C# events
---------------------
+Signals dưới dạng C# event
+--------------------------
 
-To provide more type-safety, Godot signals are also all available through `events <https://learn.microsoft.com/en-us/dotnet/csharp/events-overview>`_.
-You can handle these events, as any other event, with the ``+=`` and ``-=`` operators.
+Để tăng độ an toàn kiểu, tất cả Godot signal cũng đều khả dụng thông qua `events <https://learn.microsoft.com/en-us/dotnet/csharp/events-overview>`_. Bạn có thể xử lý các event này như mọi event khác, bằng các toán tử ``+=`` và ``-=``.
 
 .. code-block:: csharp
 
     Timer myTimer = GetNode<Timer>("Timer");
     myTimer.Timeout += () => GD.Print("Timeout!");
 
-In addition, you can always access signal names associated with a node type through its nested
-``SignalName`` class. This is useful when, for example, you want to await on a signal (see :ref:`doc_c_sharp_differences_await`).
+Ngoài ra, bạn luôn có thể truy cập tên signal gắn với một loại node thông qua class ``SignalName`` lồng nhau của nó. Điều này hữu ích khi, chẳng hạn, bạn muốn await một signal (xem :ref:`doc_c_sharp_differences_await`).
 
 .. code-block:: csharp
 
     await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 
-Custom signals as C# events
----------------------------
+Custom signal dưới dạng C# event
+--------------------------------
 
-To declare a custom event in your C# script, use the ``[Signal]`` attribute on a public delegate type.
-Note that the name of this delegate needs to end with ``EventHandler``.
+Để khai báo một custom event trong C# script, hãy sử dụng attribute ``[Signal]`` trên một kiểu delegate public. Lưu ý rằng tên của delegate này cần kết thúc bằng ``EventHandler``.
 
 .. code-block:: csharp
 
@@ -51,9 +46,7 @@ Note that the name of this delegate needs to end with ``EventHandler``.
     [Signal]
     public delegate void MySignalWithArgumentEventHandler(string myString);
 
-Once this is done, Godot will create the appropriate events automatically behind the scenes. You
-can then use said events as you'd do for any other Godot signal. Note that events are named using
-your delegate's name minus the final ``EventHandler`` part.
+Sau khi hoàn tất, Godot sẽ tự động tạo các event tương ứng ở phía sau. Sau đó, bạn có thể sử dụng các event này như với bất kỳ Godot signal nào khác. Lưu ý rằng event được đặt tên bằng tên delegate của bạn, bỏ đi phần ``EventHandler`` cuối cùng.
 
 .. code-block:: csharp
 
@@ -70,16 +63,14 @@ your delegate's name minus the final ``EventHandler`` part.
 
 .. warning::
 
-    If you want to connect to these signals in the editor, you will need to (re)build the project
-    to see them appear.
+    Nếu muốn kết nối với các signal này trong editor, bạn cần build lại project để chúng xuất hiện.
 
-    You can click the **Build** button in the upper-right corner of the editor to do so.
+    Bạn có thể nhấp vào nút **Build** ở góc trên bên phải của editor để thực hiện việc đó.
 
-Signal emission
----------------
+Phát signal
+-----------
 
-To emit signals, use the ``EmitSignal`` method. Note that, as for signals defined by the engine,
-your custom signal names are listed under the nested ``SignalName`` class.
+Để phát signal, hãy sử dụng method ``EmitSignal``. Lưu ý rằng, cũng như các signal do engine định nghĩa, tên custom signal của bạn được liệt kê trong class ``SignalName`` lồng nhau.
 
 .. code-block:: csharp
 
@@ -89,12 +80,11 @@ your custom signal names are listed under the nested ``SignalName`` class.
         EmitSignal(SignalName.MySignalWithArgument, "World");
     }
 
-In contrast with other C# events, you cannot use ``Invoke`` to raise events tied to Godot signals.
+Khác với các C# event khác, bạn không thể sử dụng ``Invoke`` để phát các event gắn với Godot signal.
 
-Signals support arguments of any :ref:`Variant-compatible type <c_sharp_variant_compatible_types>`.
+Signal hỗ trợ các đối số thuộc mọi :ref:`Variant-compatible type <c_sharp_variant_compatible_types>`.
 
-Consequently, any ``Node`` or ``RefCounted`` will be compatible automatically, but custom data objects will need
-to inherit from ``GodotObject`` or one of its subclasses.
+Do đó, mọi ``Node`` hoặc ``RefCounted`` sẽ tự động tương thích, nhưng các custom data object cần kế thừa từ ``GodotObject`` hoặc một trong các subclass của nó.
 
 .. code-block:: csharp
 
@@ -106,16 +96,12 @@ to inherit from ``GodotObject`` or one of its subclasses.
         public string MySecondString { get; set; }
     }
 
-Bound values
-------------
+Các giá trị được bind
+---------------------
 
-Sometimes you'll want to bind values to a signal when the connection is established, rather than
-(or in addition to) when the signal is emitted. To do so, you can use an anonymous function like in
-the following example.
+Đôi khi, bạn sẽ muốn bind các giá trị vào signal khi thiết lập kết nối, thay vì (hoặc בנוסף vào) khi signal được phát. Để làm vậy, bạn có thể sử dụng anonymous function như trong ví dụ sau.
 
-Here, the :ref:`Button.Pressed <class_BaseButton_signal_pressed>` signal does not take any argument. But we
-want to use the same ``ModifyValue`` for both the "plus" and "minus" buttons. So we bind the
-modifier value at the time we're connecting the signals.
+Ở đây, signal :ref:`Button.Pressed <class_BaseButton_signal_pressed>` không nhận bất kỳ đối số nào. Nhưng chúng ta muốn sử dụng cùng một ``ModifyValue`` cho cả nút "plus" và "minus". Vì vậy, chúng ta bind giá trị modifier tại thời điểm kết nối các signal.
 
 .. code-block:: csharp
 
@@ -135,13 +121,10 @@ modifier value at the time we're connecting the signals.
         Value += modifier;
     }
 
-Signal creation at runtime
---------------------------
+Tạo signal trong runtime
+------------------------
 
-Finally, you can create custom signals directly while your game is running. Use the ``AddUserSignal``
-method for that. Be aware that it should be executed before any use of said signals (either
-connecting to them or emitting them). Also, note that signals created this way won't be visible through the
-``SignalName`` nested class.
+Cuối cùng, bạn có thể tạo custom signal trực tiếp trong khi game đang chạy. Hãy sử dụng method ``AddUserSignal`` cho việc đó. Lưu ý rằng method này phải được thực thi trước khi sử dụng các signal đó (dù là kết nối với chúng hay phát chúng). Ngoài ra, các signal được tạo theo cách này sẽ không hiển thị thông qua class ``SignalName`` lồng nhau.
 
 .. code-block:: csharp
 
@@ -153,19 +136,17 @@ connecting to them or emitting them). Also, note that signals created this way w
 
 .. _using_connect_and_disconnect:
 
-Using Connect and Disconnect
-----------------------------
+Sử dụng Connect và Disconnect
+-----------------------------
 
-In general, it isn't recommended to use
+Nói chung, không nên sử dụng
 :ref:`Connect()<class_object_method_connect>` and
 :ref:`Disconnect()<class_object_method_disconnect>`. These APIs don't provide as
-much type safety as the events. However, they're necessary for
+nhiều type safety như event. Tuy nhiên, chúng cần thiết cho
 :ref:`connecting to signals defined by GDScript <connecting_to_signals_cross_language>`
-and passing :ref:`ConnectFlags<enum_Object_ConnectFlags>`.
+và truyền :ref:`ConnectFlags<enum_Object_ConnectFlags>`.
 
-In the following example, pressing the button for the first time prints
-``Greetings!``. ``OneShot`` disconnects the signal, so pressing the button again
-does nothing.
+Trong ví dụ sau, lần đầu nhấn nút sẽ in ``Greetings!``. ``OneShot`` ngắt kết nối signal, vì vậy nhấn nút lần nữa sẽ không làm gì cả.
 
 .. code-block:: csharp
 
@@ -182,16 +163,12 @@ does nothing.
 
 .. _disconnecting_automatically_when_the_receiver_is_freed:
 
-Disconnecting automatically when the receiver is freed
-------------------------------------------------------
+Tự động ngắt kết nối khi receiver được giải phóng
+-------------------------------------------------
 
-Normally, when any ``GodotObject`` is freed (such as any ``Node``), Godot
-automatically disconnects all connections associated with that object. This
-happens for both signal emitters and signal receivers.
+Thông thường, khi bất kỳ ``GodotObject`` nào được giải phóng (chẳng hạn như bất kỳ ``Node`` nào), Godot sẽ tự động ngắt tất cả kết nối gắn với object đó. Điều này áp dụng cho cả signal emitter và signal receiver.
 
-For example, a node with this code will print "Hello!" when the button is
-pressed, then free itself. Freeing the node disconnects the signal, so pressing
-the button again doesn't do anything:
+Ví dụ, một node có đoạn code này sẽ in "Hello!" khi nhấn nút, sau đó tự giải phóng. Việc giải phóng node sẽ ngắt kết nối signal, vì vậy nhấn nút lần nữa sẽ không làm gì cả:
 
 .. code-block:: csharp
 
@@ -207,27 +184,20 @@ the button again doesn't do anything:
         Free();
     }
 
-When a signal receiver is freed while the signal emitter is still alive, in some
-cases automatic disconnection won't happen:
+Khi một signal receiver được giải phóng trong lúc signal emitter vẫn còn tồn tại, việc ngắt kết nối tự động sẽ không xảy ra trong một số trường hợp:
 
-- The signal is connected to a lambda expression that captures a variable.
-- The signal is a custom signal.
+- Signal được kết nối với một lambda expression capture một variable. - Signal là một custom signal.
 
-The following sections explain these cases in more detail and include
-suggestions for how to disconnect manually.
+Các phần sau giải thích chi tiết hơn về những trường hợp này và đưa ra các gợi ý về cách ngắt kết nối thủ công.
 
 .. note::
 
-    Automatic disconnection is totally reliable if a signal emitter is freed
-    before any of its receivers are freed. With a project style that prefers
-    this pattern, the above limits may not be a concern.
+    Việc ngắt kết nối tự động hoàn toàn đáng tin cậy nếu signal emitter được giải phóng trước khi bất kỳ receiver nào của nó được giải phóng. Với một project style ưu tiên pattern này, các giới hạn trên có thể không đáng lo ngại.
 
-No automatic disconnection: a lambda expression that captures a variable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Không tự động ngắt kết nối: lambda expression capture một variable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you connect to a lambda expression that captures variables, Godot can't tell
-that the lambda is associated with the instance that created it. This causes
-this example to have potentially unexpected behavior:
+Nếu bạn kết nối với một lambda expression capture các variable, Godot không thể biết lambda đó gắn với instance đã tạo ra nó. Điều này khiến ví dụ sau có hành vi có thể không như mong đợi:
 
 .. code-block:: csharp
 
@@ -235,7 +205,7 @@ this example to have potentially unexpected behavior:
     int x = 0;
     myTimer.Timeout += () =>
     {
-        x++; // This lambda expression captures x.
+        x++; // Lambda expression này capture x.
         GD.Print($"Tick {x} my name is {Name}");
         if (x == 3)
         {
@@ -252,12 +222,9 @@ this example to have potentially unexpected behavior:
     Time's up!
     [...] System.ObjectDisposedException: Cannot access a disposed object.
 
-On tick 4, the lambda expression tries to access the ``Name`` property of the
-node, but the node has already been freed. This causes the exception.
+Ở tick 4, lambda expression cố truy cập property ``Name`` của node, nhưng node đã được giải phóng. Điều này gây ra exception.
 
-To disconnect, keep a reference to the delegate created by the lambda expression
-and pass that to ``-=``. For example, this node connects and disconnects using
-the ``_EnterTree`` and ``_ExitTree`` lifecycle methods:
+Để ngắt kết nối, hãy giữ một reference đến delegate được tạo bởi lambda expression và truyền reference đó vào ``-=``. Ví dụ, node này kết nối và ngắt kết nối bằng các lifecycle method ``_EnterTree`` và ``_ExitTree``:
 
 .. code-block:: csharp
 
@@ -287,34 +254,22 @@ the ``_EnterTree`` and ``_ExitTree`` lifecycle methods:
         MyTimer.Timeout -= _tick;
     }
 
-In this example, ``Free`` causes the node to leave the tree, which calls
-``_ExitTree``. ``_ExitTree`` disconnects the signal, so ``_tick`` is never
-called again.
+Trong ví dụ này, ``Free`` khiến node rời khỏi tree, việc này gọi ``_ExitTree``. ``_ExitTree`` ngắt kết nối signal, vì vậy ``_tick`` sẽ không bao giờ được gọi lại.
 
-The lifecycle methods to use depend on what the node does. Another option is to
-connect to signals in ``_Ready`` and disconnect in ``Dispose``.
+Các lifecycle method cần sử dụng phụ thuộc vào việc node thực hiện gì. Một lựa chọn khác là kết nối với signal trong ``_Ready`` và ngắt kết nối trong ``Dispose``.
 
 .. note::
 
-    Godot uses `Delegate.Target <https://learn.microsoft.com/en-us/dotnet/api/system.delegate.target>`_
-    to determine what instance a delegate is associated with. When a lambda
-    expression doesn't capture a variable, the generated delegate's ``Target``
-    is the instance that created the delegate. When a variable is captured, the
-    ``Target`` instead points at a generated type that stores the captured
-    variable. This is what breaks the association. If you want to see if a
-    delegate will be automatically cleaned up, try checking its ``Target``.
+    Godot sử dụng `Delegate.Target <https://learn.microsoft.com/en-us/dotnet/api/system.delegate.target>`_ để xác định delegate được gắn với instance nào. Khi lambda expression không capture variable, ``Target`` của delegate được tạo là instance đã tạo delegate đó. Khi một variable được capture, ``Target`` lại trỏ đến một type được tạo để lưu variable đã capture. Đây là nguyên nhân phá vỡ mối liên kết. Nếu muốn kiểm tra xem một delegate có được tự động dọn dẹp hay không, hãy thử kiểm tra ``Target`` của nó.
 
-    ``Callable.From`` doesn't affect the ``Delegate.Target``, so connecting a
-    lambda that captures variables using ``Connect`` doesn't work any better
-    than ``+=``.
+    ``Callable.From`` không ảnh hưởng đến ``Delegate.Target``, vì vậy việc kết nối một lambda capture các variable bằng ``Connect`` cũng không hiệu quả hơn ``+=``.
 
-No automatic disconnection: a custom signal
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Không tự động ngắt kết nối: custom signal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Connecting to a custom signal using ``+=`` doesn't disconnect automatically when
-the receiving node is freed.
+Kết nối với custom signal bằng ``+=`` sẽ không tự động ngắt kết nối khi receiving node được giải phóng.
 
-To disconnect, use ``-=`` at an appropriate time. For example:
+Để ngắt kết nối, hãy sử dụng ``-=`` vào thời điểm thích hợp. Ví dụ:
 
 .. code-block:: csharp
 
@@ -331,8 +286,7 @@ To disconnect, use ``-=`` at an appropriate time. For example:
         Target.MySignal -= OnMySignal;
     }
 
-Another solution is to use ``Connect``, which does disconnect automatically with
-custom signals:
+Một giải pháp khác là sử dụng ``Connect``, vốn sẽ tự động ngắt kết nối với custom signal:
 
 .. code-block:: csharp
 

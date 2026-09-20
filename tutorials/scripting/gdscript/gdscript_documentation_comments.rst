@@ -1,32 +1,21 @@
 .. _doc_gdscript_documentation_comments:
 
-GDScript documentation comments
-===============================
+Các comment documentation của GDScript
+======================================
 
-In GDScript, comments can be used to document your code and add descriptions to the
-members of a script. There are two differences between a normal comment and a documentation
-comment. Firstly, a documentation comment should start with double hash symbols
-``##``. Secondly, it must immediately precede a script member, or for script descriptions,
-be placed at the top of the script. If an exported variable is documented,
-its description is used as a tooltip in the editor. This documentation can be
-generated as XML files by the editor.
+Trong GDScript, comment có thể được dùng để document code và thêm mô tả cho các member của một script. Có hai điểm khác nhau giữa comment thông thường và comment documentation. Thứ nhất, comment documentation phải bắt đầu bằng hai ký hiệu hash ``##``. Thứ hai, nó phải đứng ngay trước một member của script hoặc, đối với mô tả script, phải được đặt ở đầu script. Nếu một biến được export có documentation, mô tả của biến sẽ được dùng làm tooltip trong editor. Documentation này có thể được editor tạo dưới dạng các tệp XML.
 
-Documenting a script
---------------------
+Document một script
+-------------------
 
-Comments documenting a script must come before any member documentation. A
-suggested format for script documentation can be divided into three parts.
+Các comment document một script phải xuất hiện trước mọi documentation của member. Định dạng được đề xuất cho documentation của script có thể được chia thành ba phần.
 
-- A brief description of the script.
-- Detailed description.
-- Tutorials and deprecated/experimental marks.
+- Mô tả ngắn gọn về script. - Mô tả chi tiết. - Tutorial và các đánh dấu deprecated/experimental.
 
-To separate these from each other, the documentation comments use special tags.
-The tag must be at the beginning of a line (ignoring preceding white space)
-and must have the format ``@``, followed by the keyword.
+Để phân tách các phần này, comment documentation sử dụng các tag đặc biệt. Tag phải nằm ở đầu một dòng (bỏ qua khoảng trắng ở trước) và phải có định dạng ``@``, theo sau là keyword.
 
-Tags
-~~~~
+Tag
+~~~
 
 +-------------------+--------------------------------------------------------+
 | Brief description | No tag. Lives at the very beginning of                 |
@@ -45,16 +34,16 @@ Tags
 |                   | | ``@experimental: This class is unstable.``           |
 +-------------------+--------------------------------------------------------+
 
-For example:
+Ví dụ:
 
 ::
 
     class_name MyClass
     extends Node2D
-    ## A brief description of the class's role and functionality.
+    ## Mô tả ngắn gọn về vai trò và chức năng của class.
     ##
-    ## The description of the script, what it can do,
-    ## and any further detail.
+    ## Mô tả về script, những gì nó có thể làm,
+    ## và mọi chi tiết bổ sung.
     ##
     ## @tutorial:             https://example.com/tutorial_1
     ## @tutorial(Tutorial 2): https://example.com/tutorial_2
@@ -62,34 +51,23 @@ For example:
 
 .. warning::
 
-    If there is any space in between the tag name and colon, for example
-    ``@tutorial  :``, it won't be treated as a valid tag and will be ignored.
+    Nếu có khoảng trắng giữa tên tag và dấu hai chấm, chẳng hạn ``@tutorial :``, nó sẽ không được xem là tag hợp lệ và sẽ bị bỏ qua.
 
 .. note::
 
-    When the description spans multiple lines, the preceding and trailing white
-    spaces will be stripped and joined with a single space. To preserve the line
-    break use ``[br]``. See also `BBCode and class reference`_ below.
+    Khi mô tả trải dài trên nhiều dòng, khoảng trắng ở đầu và cuối sẽ bị loại bỏ, sau đó các dòng được nối bằng một khoảng trắng. Để giữ ngắt dòng, hãy sử dụng ``[br]``. Xem thêm `BBCode và tham chiếu class`_ bên dưới.
 
-Documenting script members
---------------------------
+Document các member của script
+------------------------------
 
-Members that are applicable for documentation:
+Các member áp dụng cho documentation:
 
-- Signal
-- Enum
-- Enum value
-- Constant
-- Variable
-- Function
-- Inner class
+- Signal - Enum - Giá trị enum - Constant - Variable - Function - Inner class
 
-Documentation of a script member must immediately precede the member or its annotations
-if it has any. The description can have more than one line but every line must start with
-the double hash symbol ``##`` to be considered as part of the documentation.
+Documentation của một member trong script phải đứng ngay trước member đó hoặc các annotation của nó, nếu có. Mô tả có thể dài hơn một dòng, nhưng mọi dòng phải bắt đầu bằng hai ký hiệu hash ``##`` để được xem là một phần của documentation.
 
-Tags
-~~~~
+Tag
+~~~
 
 +--------------+--------------------------------------------------+
 | Description  | No tag.                                          |
@@ -101,149 +79,137 @@ Tags
 |              | | ``@experimental: This method is incomplete.``  |
 +--------------+--------------------------------------------------+
 
-For example:
+Ví dụ:
 
 ::
 
-    ## The description of the variable.
-    ## @deprecated: Use [member other_var] instead.
+    ## Mô tả về biến.
+    ## @deprecated: Thay vào đó, hãy dùng [member other_var].
     var my_var
 
-Alternatively, you can use inline documentation comments:
+Ngoài ra, bạn có thể sử dụng comment documentation inline:
 
 ::
 
-    signal my_signal ## My signal.
+    signal my_signal ## Signal của tôi.
 
-    enum MyEnum { ## My enum.
-        VALUE_A = 0, ## Value A.
-        VALUE_B = 1, ## Value B.
+    enum MyEnum { ## Enum của tôi.
+        VALUE_A = 0, ## Giá trị A.
+        VALUE_B = 1, ## Giá trị B.
     }
 
-    const MY_CONST = 1 ## My constant.
+    const MY_CONST = 1 ## Constant của tôi.
 
-    var my_var ## My variable.
+    var my_var ## Variable của tôi.
 
 
-    func my_func(): ## My func.
+    func my_func(): ## Func của tôi.
         pass
 
 
-    class MyClass: ## My class.
+    class MyClass: ## Class của tôi.
         pass
 
-The script documentation will update in the editor help window every time the script is updated.
-If any member variable or function name starts with an underscore, it will be treated as private.
-It will not appear in the documentation and will be ignored in the help window.
+Documentation của script sẽ được cập nhật trong cửa sổ trợ giúp của editor mỗi khi script được cập nhật. Nếu tên của bất kỳ member variable hoặc function nào bắt đầu bằng dấu gạch dưới, nó sẽ được xem là private. Nó sẽ không xuất hiện trong documentation và sẽ bị bỏ qua trong cửa sổ trợ giúp.
 
-Complete script example
+Ví dụ script hoàn chỉnh
 -----------------------
 
 ::
 
     class_name MyClass
     extends Node2D
-    ## A brief description of the class's role and functionality.
+    ## Mô tả ngắn gọn về vai trò và chức năng của class.
     ##
-    ## The description of the script, what it can do,
-    ## and any further detail.
+    ## Mô tả về script, những gì nó có thể làm,
+    ## và mọi chi tiết bổ sung.
     ##
     ## @tutorial:             https://example.com/tutorial_1
     ## @tutorial(Tutorial 2): https://example.com/tutorial_2
     ## @experimental
 
-    ## The description of a signal.
+    ## Mô tả về một signal.
     signal my_signal
 
-    ## This is a description of the below enum.
+    ## Đây là mô tả của enum bên dưới.
     enum Direction {
-        ## Direction up.
+        ## Hướng lên.
         UP = 0,
-        ## Direction down.
+        ## Hướng xuống.
         DOWN = 1,
-        ## Direction left.
+        ## Hướng sang trái.
         LEFT = 2,
-        ## Direction right.
+        ## Hướng sang phải.
         RIGHT = 3,
     }
 
-    ## The description of a constant.
+    ## Mô tả về một constant.
     const GRAVITY = 9.8
 
-    ## The description of the variable v1.
+    ## Mô tả về variable v1.
     var v1
 
-    ## This is a multiline description of the variable v2.[br]
-    ## The type information below will be extracted for the documentation.
+    ## Đây là mô tả nhiều dòng của variable v2.[br]
+    ## Thông tin kiểu bên dưới sẽ được trích xuất cho documentation.
     var v2: int
 
-    ## If the member has any annotation, the annotation should
-    ## immediately precede it.
+    ## Nếu member có annotation, annotation đó phải
+    ## đứng ngay trước member.
     @export
     var v3 := some_func()
 
 
-    ## As the following function is documented, even though its name starts with
-    ## an underscore, it will appear in the help window.
+    ## Vì function sau đây được document, mặc dù tên của nó bắt đầu bằng
+    ## dấu gạch dưới, nó sẽ xuất hiện trong cửa sổ trợ giúp.
     func _fn(p1: int, p2: String) -> int:
         return 0
 
 
-    # The below function isn't documented and its name starts with an underscore
-    # so it will treated as private and will not be shown in the help window.
+    # Function bên dưới không được document và tên của nó bắt đầu bằng dấu gạch dưới
+    # nên nó sẽ được xem là private và không được hiển thị trong cửa sổ trợ giúp.
     func _internal() -> void:
         pass
 
 
-    ## Documenting an inner class.
+    ## Document một inner class.
     ##
-    ## The same rules apply here. The documentation must
-    ## immediately precede the class definition.
+    ## Các quy tắc tương tự cũng được áp dụng ở đây. Documentation phải
+    ## đứng ngay trước định nghĩa class.
     ##
     ## @tutorial: https://example.com/tutorial
     ## @experimental
     class Inner:
 
-        ## Inner class variable v4.
+        ## Variable v4 của inner class.
         var v4
 
 
-        ## Inner class function fn.
+        ## Function fn của inner class.
         func fn(): pass
 
-``@deprecated`` and ``@experimental`` tags
-------------------------------------------
+Các tag ``@deprecated`` và ``@experimental``
+--------------------------------------------
 
-You can mark a class or any of its members as deprecated or experimental.
-This will add the corresponding indicator in the built-in documentation viewer.
-Optionally, you can provide a short message explaining why the API is not recommended.
-This can be especially useful for plugin and library creators.
+Bạn có thể đánh dấu một class hoặc bất kỳ member nào của nó là deprecated hoặc experimental. Việc này sẽ thêm chỉ báo tương ứng vào trình xem documentation tích hợp sẵn. Bạn cũng có thể cung cấp một thông báo ngắn giải thích lý do API không được khuyến nghị. Điều này đặc biệt hữu ích cho những người tạo plugin và library.
 
 .. image:: img/deprecated_and_experimental_tags.webp
 
-- **Deprecated** marks a non-recommended API that is subject to removal or incompatible change
-  in a future major release. Usually the API is kept for backwards compatibility.
-- **Experimental** marks a new unstable API that may be changed or removed in the current
-  major branch. Using this API is not recommended in production code.
+- **Deprecated** đánh dấu một API không được khuyến nghị và có thể bị loại bỏ hoặc thay đổi không tương thích trong một bản phát hành major trong tương lai. Thông thường, API vẫn được giữ lại để đảm bảo khả năng tương thích ngược. - **Experimental** đánh dấu một API mới, chưa ổn định, có thể bị thay đổi hoặc loại bỏ trong nhánh major hiện tại. Không khuyến nghị sử dụng API này trong code production.
 
 .. note::
 
-    While technically you can use both ``@deprecated`` and ``@experimental`` tags on the same
-    class/member, this is not recommended as it is against common conventions.
+    Mặc dù về mặt kỹ thuật bạn có thể sử dụng cả hai tag ``@deprecated`` và ``@experimental`` trên cùng một class/member, nhưng không nên làm vậy vì trái với các quy ước phổ biến.
 
 .. _doc_gdscript_documentation_comments_bbcode_and_class_reference:
 
-BBCode and class reference
+BBCode và tham chiếu class
 --------------------------
 
-Godot's class reference supports BBCode-like tags. They add nice formatting to the text which could also
-be used in the documentation. See also :ref:`class reference bbcode <doc_class_reference_bbcode>`.
-Note that this is slightly different from the ``RichTextLabel`` :ref:`BBCode <doc_bbcode_in_richtextlabel>`.
+Tham chiếu class của Godot hỗ trợ các tag tương tự BBCode. Chúng thêm định dạng đẹp cho văn bản, và định dạng này cũng có thể được sử dụng trong documentation. Xem thêm :ref:`class reference bbcode <doc_class_reference_bbcode>`. Lưu ý rằng cách này hơi khác với ``RichTextLabel`` :ref:`BBCode <doc_bbcode_in_richtextlabel>`.
 
-Whenever you link to a member of another class, you need to specify the class name.
-For links to the same class, the class name is optional and can be omitted.
+Bất cứ khi nào liên kết đến một member của class khác, bạn cần chỉ định tên class. Đối với liên kết đến cùng một class, tên class là tùy chọn và có thể được bỏ qua.
 
-Here's the list of available tags:
+Dưới đây là danh sách các tag khả dụng:
 
 +--------------------------------+----------------------------------------------+--------------------------------------------------------------+
 | Tag and Description            | Example                                      | Result                                                       |
@@ -332,22 +298,18 @@ Here's the list of available tags:
 
 .. note::
 
-    1. Currently only :ref:`class_@GDScript` has annotations.
-    2. ``[kbd]`` disables BBCode until the parser encounters ``[/kbd]``.
-    3. ``[code]`` disables BBCode until the parser encounters ``[/code]``.
-    4. ``[codeblock]`` disables BBCode until the parser encounters ``[/codeblock]``.
+    1. Hiện tại chỉ :ref:`class_@GDScript` có annotation. 2. ``[kbd]`` vô hiệu hóa BBCode cho đến khi parser gặp ``[/kbd]``. 3. ``[code]`` vô hiệu hóa BBCode cho đến khi parser gặp ``[/code]``. 4. ``[codeblock]`` vô hiệu hóa BBCode cho đến khi parser gặp ``[/codeblock]``.
 
 .. warning::
 
-    Use ``[codeblock]`` for pre-formatted code blocks. Inside ``[codeblock]``,
-    always use **four spaces** for indentation (the parser will delete tabs).
+    Sử dụng ``[codeblock]`` cho các code block đã được định dạng sẵn. Bên trong ``[codeblock]``, luôn sử dụng **bốn khoảng trắng** để thụt lề (parser sẽ xóa các tab).
 
 ::
 
-    ## Do something for this plugin. Before using the method
-    ## you first have to [method initialize] [MyPlugin].[br]
-    ## [color=yellow]Warning:[/color] Always [method clean] after use.[br]
-    ## Usage:
+    ## Thực hiện việc gì đó cho plugin này. Trước khi sử dụng method
+    ## trước tiên bạn phải [method initialize] [MyPlugin].[br]
+    ## [color=yellow]Cảnh báo:[/color] Luôn [method clean] sau khi sử dụng.[br]
+    ## Cách sử dụng:
     ## [codeblock]
     ## func _ready():
     ##     the_plugin.initialize()
@@ -357,9 +319,6 @@ Here's the list of available tags:
     func do_something():
         pass
 
-By default, ``[codeblock]`` highlights GDScript syntax. You can change it using
-the ``lang`` attribute. Currently supported options are:
+Theo mặc định, ``[codeblock]`` làm nổi bật cú pháp GDScript. Bạn có thể thay đổi điều này bằng attribute ``lang``. Các tùy chọn hiện được hỗ trợ là:
 
-- ``[codeblock lang=text]`` disables syntax highlighting;
-- ``[codeblock lang=gdscript]`` highlights GDScript syntax;
-- ``[codeblock lang=csharp]`` highlights C# syntax (only in .NET version).
+- ``[codeblock lang=text]`` vô hiệu hóa tô sáng cú pháp; - ``[codeblock lang=gdscript]`` tô sáng cú pháp GDScript; - ``[codeblock lang=csharp]`` tô sáng cú pháp C# (chỉ trong phiên bản .NET).

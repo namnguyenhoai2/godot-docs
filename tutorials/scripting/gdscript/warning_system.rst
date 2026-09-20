@@ -1,53 +1,35 @@
 .. _doc_gdscript_warning_system:
 
-GDScript warning system
-=======================
+Hệ thống cảnh báo của GDScript
+==============================
 
-The GDScript warning system complements :ref:`static typing <doc_gdscript_static_typing>`
-(but it can work without static typing too). It's here to help you avoid
-mistakes that are hard to spot during development, and that may lead
-to runtime errors.
+Hệ thống cảnh báo của GDScript bổ trợ cho :ref:`static typing <doc_gdscript_static_typing>` (nhưng cũng có thể hoạt động mà không cần kiểu tĩnh). Hệ thống này giúp bạn tránh những lỗi khó phát hiện trong quá trình phát triển và có thể dẫn đến lỗi runtime.
 
-You can configure warnings in the Project Settings under the section
-called **GDScript**:
+Bạn có thể cấu hình các cảnh báo trong Project Settings, tại mục có tên **GDScript**:
 
 .. image:: img/typed_gdscript_warning_system_settings.webp
 
 .. note::
-   You must enable **Advanced Settings** in order to see the
-   GDScript section in the sidebar. You can also search for "GDScript" when
-   Advanced Settings is off.
+   Bạn phải bật **Advanced Settings** để thấy mục GDScript trong thanh bên. Bạn cũng có thể tìm kiếm "GDScript" khi Advanced Settings đang tắt.
 
-You can find a list of warnings for the active GDScript file in the
-script editor's status bar. The example below has 2 warnings:
+Bạn có thể tìm thấy danh sách các cảnh báo cho tệp GDScript đang hoạt động trên thanh trạng thái của trình soạn thảo script. Ví dụ dưới đây có 2 cảnh báo:
 
 .. image:: img/typed_gdscript_warning_example.webp
 
-To ignore single warnings within a file, use the
+Để bỏ qua từng cảnh báo riêng lẻ trong một tệp, hãy sử dụng
 :ref:`@warning_ignore <class_@GDScript_annotation_@warning_ignore>` annotation.
-You can click on the ignore link to the left of the warning's description.
-Godot will add an annotation above the corresponding line and the code
-won't trigger the corresponding warning anymore:
+Bạn có thể nhấp vào liên kết ignore ở bên trái phần mô tả cảnh báo. Godot sẽ thêm một annotation phía trên dòng tương ứng và mã sẽ không còn kích hoạt cảnh báo tương ứng nữa:
 
 .. image:: img/typed_gdscript_warning_system_ignore.webp
 
-To ignore multiple warnings in a region within a file, use the
+Để bỏ qua nhiều cảnh báo trong một vùng của tệp, hãy sử dụng
 :ref:`@warning_ignore_start <class_@GDScript_annotation_@warning_ignore_start>`
-and :ref:`@warning_ignore_restore <class_@GDScript_annotation_@warning_ignore_restore>`
-annotations. You can omit ``@warning_ignore_restore`` if you want to ignore
-the specified warning types until the end of the file.
+và các annotation :ref:`@warning_ignore_restore <class_@GDScript_annotation_@warning_ignore_restore>`. Bạn có thể bỏ qua ``@warning_ignore_restore`` nếu muốn bỏ qua các loại cảnh báo được chỉ định cho đến hết tệp.
 
-The names of the warnings to ignore match the names of the project settings.
-For example, to ignore the warning configured by the
+Tên của các cảnh báo cần bỏ qua trùng với tên của các thiết lập dự án. Ví dụ: để bỏ qua cảnh báo được cấu hình bởi
 :ref:`debug/gdscript/warnings/unused_variable <class_ProjectSettings_property_debug/gdscript/warnings/unused_variable>`
-project setting, use ``@warning_ignore("unused_variable")``.
-An autocompletion dialog displays when entering a warning name in the
-annotation, listing all available warnings.
+thiết lập dự án, hãy sử dụng ``@warning_ignore("unused_variable")``. Một hộp thoại tự động hoàn thành sẽ hiển thị khi nhập tên cảnh báo trong annotation, liệt kê tất cả các cảnh báo khả dụng.
 
-Warnings won't prevent the game from running, but you can turn them into
-errors if you'd like. This way your game won't compile unless you fix
-all warnings. Head to the ``GDScript`` section of the Project Settings to
-turn on this option to the warning that you want. Here's the same file as
-the previous example with the warning ``unused_variable`` as an error turned on:
+Các cảnh báo sẽ không ngăn trò chơi chạy, nhưng bạn có thể chuyển chúng thành lỗi nếu muốn. Theo cách này, trò chơi sẽ không biên dịch trừ khi bạn sửa tất cả cảnh báo. Hãy đi đến mục ``GDScript`` trong Project Settings để bật tùy chọn này cho cảnh báo mà bạn muốn. Dưới đây là cùng tệp với ví dụ trước, trong đó cảnh báo ``unused_variable`` đã được bật dưới dạng lỗi:
 
 .. image:: img/typed_gdscript_warning_system_errors.webp

@@ -1,75 +1,41 @@
 .. _doc_gui_theme_type_variations:
 
-Theme type variations
-=====================
+Các biến thể kiểu theme
+=======================
 
-When designing a user interface there may be times when a :ref:`Control <class_Control>` node
-needs to have a different look than what is normally defined by a :ref:`Theme <class_Theme>`.
-Every control node has theme property overrides, which allow you to redefine the styling for
-each individual UI element.
+Khi thiết kế giao diện người dùng, đôi khi một node :ref:`Control <class_Control>` cần có giao diện khác với giao diện thường được định nghĩa bởi :ref:`Theme <class_Theme>`. Mỗi control node đều có các thuộc tính ghi đè theme, cho phép bạn định nghĩa lại kiểu dáng cho từng phần tử UI riêng lẻ.
 
 .. figure:: img/themecheck.webp
    :align: center
 
-This approach quickly becomes hard to manage, if you need to share the same custom look
-between several controls. Imagine that you use gray, blue, and red variants of :ref:`Button <class_Button>`
-throughout your project. Setting it up every time you add a new button element to your interface
-is a tedious task.
+Cách tiếp cận này nhanh chóng trở nên khó quản lý nếu bạn cần chia sẻ cùng một giao diện tùy chỉnh giữa nhiều control. Hãy tưởng tượng bạn sử dụng các biến thể màu xám, xanh dương và đỏ của :ref:`Button <class_Button>` trong toàn bộ project. Việc thiết lập lại mỗi lần thêm một button mới vào giao diện là một công việc tẻ nhạt.
 
-To help with the organization and to better utilize the :ref:`power of themes <doc_gui_skinning>`
-you can use theme type variations. These work like normal theme types, but instead
-of being self-sufficient and standalone they extend another, base type.
+Để giúp tổ chức tốt hơn và tận dụng :ref:`power of themes <doc_gui_skinning>` hiệu quả hơn, bạn có thể sử dụng các biến thể kiểu theme. Chúng hoạt động giống như các kiểu theme thông thường, nhưng thay vì độc lập và tự đầy đủ, chúng mở rộng một kiểu cơ sở khác.
 
-Following the previous example, your theme can have some styles, colors, and fonts
-defined for the ``Button`` type, customizing the looks of every button element in your UI.
-To then have a gray, red, or blue button you would create a new type, e.g. ``GrayButton``, and
-mark it as a variation of the base ``Button`` type.
+Theo ví dụ trước, theme của bạn có thể định nghĩa một số style, màu sắc và font cho kiểu ``Button``, tùy chỉnh giao diện của mọi button trong UI. Sau đó, để có button màu xám, đỏ hoặc xanh dương, bạn sẽ tạo một kiểu mới, chẳng hạn ``GrayButton``, và đánh dấu kiểu đó là một biến thể của kiểu cơ sở ``Button``.
 
-Type variations can replace some aspects of the base type, but keep others.
-They can also define properties that the base style hasn't defined. For example,
-your ``GrayButton`` can override the ``normal`` style from the base ``Button``
-and add ``font_color`` that ``Button`` has never defined. The control will use
-a combination of both types giving priority to the type variation.
+Các biến thể kiểu có thể thay thế một số khía cạnh của kiểu cơ sở nhưng giữ lại những khía cạnh khác. Chúng cũng có thể định nghĩa các thuộc tính mà style cơ sở chưa định nghĩa. Ví dụ, ``GrayButton`` của bạn có thể ghi đè style ``normal`` từ kiểu cơ sở ``Button`` và thêm ``font_color`` mà ``Button`` chưa từng định nghĩa. Control sẽ sử dụng sự kết hợp của cả hai kiểu, trong đó ưu tiên biến thể kiểu.
 
 .. note::
-   The way controls resolve what theme items they use from each type and each
-   theme is better described in the :ref:`Customizing a project <doc_gui_theme_in_project>`
-   section of the "Introduction to GUI skinning" article.
+   Cách các control xác định những mục theme chúng sử dụng từ từng kiểu và từng theme được mô tả rõ hơn trong phần :ref:`Customizing a project <doc_gui_theme_in_project>` của bài viết "Giới thiệu về GUI skinning".
 
-Creating a type variation
--------------------------
+Tạo một biến thể kiểu
+---------------------
 
-To create a type variation open the theme editor, then click the plus icon
-next to the **Type** dropdown on the right side of the editor. Type in what
-you want to name your theme type variation in the text box, then click **Add Type**.
+Để tạo một biến thể kiểu, hãy mở theme editor, sau đó nhấp vào biểu tượng dấu cộng bên cạnh menu thả xuống **Type** ở phía bên phải của editor. Nhập tên bạn muốn đặt cho biến thể kiểu theme vào hộp văn bản, rồi nhấp vào **Add Type**.
 
-Below the **Type** dropdown are the property tabs. Switch to the tab with a wrench
-and screwdriver icon.
+Bên dưới menu thả xuống **Type** là các tab thuộc tính. Chuyển sang tab có biểu tượng cờ lê và tua vít.
 
 .. figure:: img/base_type.webp
    :align: center
 
-Click on the plus icon next to the **Base Type** field. You can select the base type
-there, which would typically be the name of a control node class (e.g., ``Button``, ``Label``, etc).
-Type variations can also chain and extend other type variations. This works in the
-same way control nodes inherit styling of their base class. For example, ``CheckButton``
-inherits styles from ``Button`` because corresponding node types extend each other.
+Nhấp vào biểu tượng dấu cộng bên cạnh trường **Base Type**. Tại đây, bạn có thể chọn kiểu cơ sở, thường là tên của một class control node (ví dụ: ``Button``, ``Label``, v.v.). Các biến thể kiểu cũng có thể liên kết chuỗi và mở rộng các biến thể kiểu khác. Cơ chế này giống như cách các control node kế thừa style từ base class của chúng. Ví dụ, ``CheckButton`` kế thừa style từ ``Button`` vì các kiểu node tương ứng mở rộng lẫn nhau.
 
-After you select the base type, you should now be able to see its properties on the other
-tabs in the theme editor. You can edit them as usual.
+Sau khi chọn kiểu cơ sở, bạn sẽ có thể thấy các thuộc tính của kiểu đó trên những tab khác trong theme editor. Bạn có thể chỉnh sửa chúng như bình thường.
 
-Using a type variation
-----------------------
+Sử dụng một biến thể kiểu
+-------------------------
 
-Now that a type variation has been created you can apply it to your nodes.
-In the inspector dock, under the **Theme** property of a control node,
-you can find the **Theme Type Variation** property. It is empty by default,
-which means that only the base type has an effect on this node.
+Sau khi đã tạo một biến thể kiểu, bạn có thể áp dụng nó cho các node của mình. Trong inspector dock, bên dưới thuộc tính **Theme** của một control node, bạn sẽ tìm thấy thuộc tính **Theme Type Variation**. Theo mặc định, thuộc tính này để trống, nghĩa là chỉ kiểu cơ sở có tác động đến node này.
 
-You can either select a type variation from a dropdown list, or input its name
-manually. Variations appear on the list only if the type variation belongs to
-the project-wide theme, which you can configure in the project settings. For
-any other case you have to input the name of the variation manually. Click on
-the pencil icon to the right. Then type in the name of the type variation and click the
-check mark icon or press enter. If a type variation with that name exists it
-will now be used by the node.
+Bạn có thể chọn một biến thể kiểu từ danh sách thả xuống hoặc nhập tên của biến thể theo cách thủ công. Các biến thể chỉ xuất hiện trong danh sách nếu biến thể kiểu đó thuộc về theme ở cấp project, được cấu hình trong phần cài đặt project. Trong mọi trường hợp khác, bạn phải nhập tên biến thể theo cách thủ công. Nhấp vào biểu tượng bút chì ở bên phải. Sau đó nhập tên biến thể kiểu và nhấp vào biểu tượng dấu kiểm hoặc nhấn enter. Nếu tồn tại một biến thể kiểu có tên đó, node sẽ sử dụng biến thể này.

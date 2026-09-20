@@ -1,38 +1,29 @@
 .. _doc_godot_cpp_docs_system:
 
-Adding documentation
-====================
+Thêm tài liệu
+=============
 
 .. note::
 
-    Adding documentation for GDExtensions is only possible with Godot 4.3 and later.
+    Chỉ có thể thêm tài liệu cho GDExtensions từ Godot 4.3 trở lên.
 
-The GDExtension documentation system works in a similar manner to the built-in engine documentation: It uses
+Hệ thống tài liệu GDExtension hoạt động tương tự như tài liệu engine tích hợp sẵn: Nó sử dụng
 :ref:`XML files <doc_class_reference_primer>` (one per class) to document the exposed constructors, properties, methods,
-constants, signals, and more.
+hằng số, signal và nhiều thành phần khác.
 
-To get started, identify your project's test project folder, which should contain a Godot project with your extension
-installed and working. If you are using `godot-cpp-template <https://github.com/godotengine/godot-cpp-template>`__, your
-GDExtension project already has a ``project`` folder. Alternatively, you can add one by following the steps
-described in :ref:`doc_godot_cpp_getting_started`.
-Inside the ``project`` folder, run the following terminal command:
+Để bắt đầu, hãy xác định thư mục test project của dự án, thư mục này phải chứa một Godot project có extension của bạn được cài đặt và hoạt động. Nếu bạn đang sử dụng `godot-cpp-template <https://github.com/godotengine/godot-cpp-template>`__, GDExtension project của bạn đã có sẵn thư mục ``project``. Ngoài ra, bạn có thể thêm thư mục này bằng cách làm theo các bước được mô tả trong :ref:`doc_godot_cpp_getting_started`. Bên trong thư mục ``project``, hãy chạy lệnh terminal sau:
 
 .. code-block:: shell
 
-    # Replace "godot" with the full path to a Godot editor binary
-    # if Godot is not installed in your `PATH`.
+    # Thay "godot" bằng đường dẫn đầy đủ đến Godot editor binary
+    # nếu Godot chưa được cài đặt trong `PATH` của bạn.
     godot --doctool ../ --gdextension-docs
 
-This command instructs Godot to generate documentation via the ``--doctool`` and ``--gdextension-docs`` commands.
-The ``../`` argument specifies the base path of your GDExtension.
+Lệnh này yêu cầu Godot tạo tài liệu thông qua các lệnh ``--doctool`` và ``--gdextension-docs``. Đối số ``../`` chỉ định đường dẫn cơ sở của GDExtension.
 
-After running this command, you should find XML files for your registered GDExtension classes inside the ``doc_classes``
-folder in your GDExtension project. You could edit them now, but for this tutorial, the empty files will suffice.
+Sau khi chạy lệnh này, bạn sẽ thấy các tệp XML cho những GDExtension class đã đăng ký bên trong thư mục ``doc_classes`` trong GDExtension project của bạn. Bạn có thể chỉnh sửa chúng ngay bây giờ, nhưng trong tutorial này, các tệp trống là đủ.
 
-Now that you have XML files containing your documentation, the next step is to include them in your GDExtension binary.
-Assuming you are using SCons as your build system, you can add the following lines to your ``SConstruct`` file. If you
-are using `godot-cpp-template <https://github.com/godotengine/godot-cpp-template>`__, your file already contains code
-for this.
+Bây giờ bạn đã có các tệp XML chứa tài liệu, bước tiếp theo là đưa chúng vào GDExtension binary. Giả sử bạn đang sử dụng SCons làm build system, bạn có thể thêm các dòng sau vào tệp ``SConstruct``. Nếu bạn đang sử dụng `godot-cpp-template <https://github.com/godotengine/godot-cpp-template>`__, tệp của bạn đã chứa đoạn code này.
 
 .. code-block:: py
 
@@ -40,51 +31,38 @@ for this.
         doc_data = env.GodotCPPDocData("src/gen/doc_data.gen.cpp", source=Glob("doc_classes/*.xml"))
         sources.append(doc_data)
 
-The ``if`` statement avoids adding the documentation to release builds of your GDExtension, where it is not needed.
-SCons then loads all the XML files inside the ``doc_classes`` directory, and appends the resulting targets
-to the ``sources`` array, to be included in your GDExtension build.
+Câu lệnh ``if`` tránh thêm tài liệu vào các bản build release của GDExtension, nơi không cần đến chúng. Sau đó, SCons tải tất cả các tệp XML bên trong thư mục ``doc_classes`` và nối các target thu được vào mảng ``sources``, để đưa vào GDExtension build của bạn.
 
-After building, launch your Godot project again. You can open the documentation of one of your extension
-classes either using :kbd:`Ctrl + Click` on a class name in the script editor, or inside by finding it in the Editor
-help dialog. If everything went well, you should see something like this:
+Sau khi build, hãy khởi chạy lại Godot project của bạn. Bạn có thể mở tài liệu của một trong các extension class bằng cách sử dụng :kbd:`Ctrl + Click` trên tên class trong script editor, hoặc tìm class đó trong hộp thoại Editor help. Nếu mọi việc diễn ra đúng như dự kiến, bạn sẽ thấy nội dung tương tự như sau:
 
 .. image:: img/gdextension_docs_generation.webp
 
-Writing and styling documentation
----------------------------------
+Viết và định kiểu tài liệu
+--------------------------
 
-The format of the class reference XML files is the same as the one used by Godot. It is documented in
+Định dạng của các tệp class reference XML giống với định dạng được Godot sử dụng. Định dạng này được mô tả trong
 :ref:`doc_class_reference_primer`.
 
-If you are looking for pointers to write high quality documentation, feel free to refer to Godot's
-`documentation guidelines <https://contributing.godotengine.org/en/latest/documentation/guidelines/index.html>`__.
+Nếu bạn đang tìm kiếm hướng dẫn để viết tài liệu chất lượng cao, hãy tham khảo `documentation guidelines <https://contributing.godotengine.org/en/latest/documentation/guidelines/index.html>`__ của Godot.
 
-Publishing documentation online
--------------------------------
+Xuất bản tài liệu trực tuyến
+----------------------------
 
-You may want to publish an online reference for your GDExtension, similar to this website.
-The most important step is to build reStructuredText (``.rst``) files from your XML class reference:
+Bạn có thể muốn xuất bản một reference trực tuyến cho GDExtension của mình, tương tự như website này. Bước quan trọng nhất là build các tệp reStructuredText (``.rst``) từ class reference XML của bạn:
 
 .. code-block:: shell
 
-    # You need a version.py file, so download it first.
+    # Bạn cần một tệp version.py, vì vậy hãy tải tệp này xuống trước.
     curl -sSLO https://raw.githubusercontent.com/godotengine/godot/refs/heads/master/version.py
 
-    # Edit version.py according to your project before proceeding.
-    # Then, run the rst generator. You'll need to have Python installed for this command to work.
+    # Chỉnh sửa version.py theo dự án của bạn trước khi tiếp tục.
+    # Sau đó, chạy rst generator. Bạn cần cài đặt Python để lệnh này hoạt động.
     curl -sSL https://raw.githubusercontent.com/godotengine/godot/master/doc/tools/make_rst.py | python3 - -o "docs/classes" -l "en" doc_classes
 
-Your ``.rst`` files will now be available in ``docs/classes/``. From here, you can use
-any documentation builder that supports reStructuredText syntax to create a website from them.
+Các tệp ``.rst`` của bạn giờ đây sẽ có sẵn trong ``docs/classes/``. Từ đây, bạn có thể sử dụng bất kỳ documentation builder nào hỗ trợ cú pháp reStructuredText để tạo website từ chúng.
 
-`godot-docs <https://github.com/godotengine/godot-docs>`_ uses `Sphinx <https://www.sphinx-doc.org/en/master/>`_.
-You can use the repository as a basis to build your own documentation system.
-The following guide describes the basic steps, but they are not exhaustive:
-you will need a bit of personal insight to make it work.
+`godot-docs <https://github.com/godotengine/godot-docs>`_ sử dụng `Sphinx <https://www.sphinx-doc.org/en/master/>`_. Bạn có thể dùng repository này làm cơ sở để xây dựng hệ thống tài liệu của riêng mình. Hướng dẫn sau đây mô tả các bước cơ bản, nhưng không đầy đủ: bạn sẽ cần một chút hiểu biết và phán đoán của riêng mình để làm cho nó hoạt động.
 
-1. Add `godot-docs <https://github.com/godotengine/godot-docs>`_ as a submodule to your ``docs/`` folder.
-2. Copy over its ``conf.py``, ``index.rst``, ``.readthedocs.yaml`` files into ``/docs/``. You may later decide to copy over and edit more of godot-docs' files, like ``_templates/layout.html``.
-3. Modify these files according to your project. This mostly involves adjusting paths to point to the ``godot-docs`` subfolder, as well as strings to reflect it's your project rather than Godot you're building the docs for.
-4. Create an account on `readthedocs.org <http://readthedocs.org>`_. Import your project, and modify its base ``.readthedocs.yaml`` file path to ``/docs/.readthedocs.yaml``.
+1. Thêm `godot-docs <https://github.com/godotengine/godot-docs>`_ dưới dạng submodule vào thư mục ``docs/`` của bạn. 2. Sao chép các tệp ``conf.py``, ``index.rst``, ``.readthedocs.yaml`` của nó vào ``/docs/``. Sau này, bạn có thể quyết định sao chép và chỉnh sửa thêm các tệp của godot-docs, chẳng hạn như ``_templates/layout.html``. 3. Sửa đổi các tệp này theo dự án của bạn. Việc này chủ yếu bao gồm điều chỉnh các đường dẫn để trỏ đến thư mục con ``godot-docs``, cũng như điều chỉnh các chuỗi để thể hiện rằng bạn đang build tài liệu cho dự án của mình thay vì cho Godot. 4. Tạo tài khoản trên `readthedocs.org <http://readthedocs.org>`_. Import dự án của bạn và sửa đổi đường dẫn tệp ``.readthedocs.yaml`` cơ sở của dự án thành ``/docs/.readthedocs.yaml``.
 
-Once you have completed all these steps, your documentation should be available at ``<repo-name>.readthedocs.io``.
+Sau khi hoàn tất tất cả các bước này, tài liệu của bạn sẽ có sẵn tại ``<repo-name>.readthedocs.io``.

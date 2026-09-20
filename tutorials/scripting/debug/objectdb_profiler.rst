@@ -1,39 +1,26 @@
 .. _doc_objectdb_profiler:
 
-Using the ObjectDB profiler
-===========================
+Sử dụng ObjectDB profiler
+=========================
 
-Since Godot 4.6, there is a new **ObjectDB Profiler** tab in the Debugger bottom panel.
-This profiler allows you to take snapshots of the current state of the ObjectDB,
-which is the database that contains all the :ref:`class_object`-derived classes
-currently allocated in memory. This is useful for identifying memory leaks and
-understanding the memory usage of your project.
+Kể từ Godot 4.6, một tab **ObjectDB Profiler** mới đã được thêm vào panel phía dưới của Debugger. Profiler này cho phép bạn chụp snapshot về trạng thái hiện tại của ObjectDB, cơ sở dữ liệu chứa tất cả các class dẫn xuất từ :ref:`class_object` hiện đang được cấp phát trong bộ nhớ. Tính năng này hữu ích để xác định memory leak và tìm hiểu mức sử dụng bộ nhớ của project.
 
-Additionally, this tool is able to visualize differences between two snapshots.
-This can be used to identify improvements or regressions in memory usage after
-making changes to your project. Reducing memory usage can lead to better performance,
-even in cases where memory is not a bottleneck. By reducing memory usage,
-you can perform fewer allocations, which can be a costly operation, especially
-if performed in large amounts during gameplay.
+Ngoài ra, công cụ này có thể trực quan hóa sự khác biệt giữa hai snapshot. Bạn có thể dùng tính năng này để xác định những cải thiện hoặc suy giảm về mức sử dụng bộ nhớ sau khi thay đổi project. Giảm mức sử dụng bộ nhớ có thể mang lại hiệu năng tốt hơn, ngay cả trong trường hợp bộ nhớ không phải là bottleneck. Bằng cách giảm mức sử dụng bộ nhớ, bạn có thể thực hiện ít thao tác cấp phát hơn; đây có thể là một thao tác tốn kém, đặc biệt khi được thực hiện với số lượng lớn trong lúc gameplay.
 
 .. seealso::
 
-   See :ref:`doc_node_alternatives` for information on using lighter-weight
-   alternatives to nodes, which can help reduce memory usage in your project.
+   Xem :ref:`doc_node_alternatives` để biết thông tin về việc sử dụng các lựa chọn thay thế nhẹ hơn cho node, giúp giảm mức sử dụng bộ nhớ trong project.
 
 .. warning::
 
-    The ObjectDB profiler does **not** track every bit of memory used by the engine or
-    by external libraries. Native engine classes that are not exposed to the scripting
-    API will not appear in snapshots.
+    ObjectDB profiler **không** theo dõi mọi phần bộ nhớ được engine hoặc các thư viện bên ngoài sử dụng. Các class native của engine không được expose qua scripting API sẽ không xuất hiện trong snapshot.
 
-    Consider using external memory profiling tools if you need access to this information.
+    Hãy cân nhắc sử dụng các công cụ memory profiling bên ngoài nếu bạn cần truy cập thông tin này.
 
-Usage
------
+Cách sử dụng
+------------
 
-Open the ObjectDB Profiler tab in the :menu:`Debugger` bottom panel.
-You will land on the summary page with no snapshots taken yet.
+Mở tab ObjectDB Profiler trong panel phía dưới :menu:`Debugger`. Bạn sẽ được đưa đến trang tóm tắt, khi chưa có snapshot nào được chụp.
 
 .. figure:: img/objectdb_profiler_summary_no_snapshots.webp
    :align: center
@@ -41,10 +28,7 @@ You will land on the summary page with no snapshots taken yet.
 
    ObjectDB profiler summary with no snapshots taken
 
-Run the project, then get to a point where you'd like to take a snapshot
-(for example, after loading a level). Click :button:`Take ObjectDB Snapshot`
-to take a snapshot at the current point in time. If the button appears grayed out,
-make sure the project is running first.
+Chạy project, sau đó đến thời điểm bạn muốn chụp snapshot (ví dụ: sau khi load một level). Nhấp :button:`Take ObjectDB Snapshot` để chụp snapshot tại thời điểm hiện tại. Nếu nút này bị làm mờ, hãy đảm bảo project đang chạy trước.
 
 .. figure:: img/objectdb_profiler_summary_snapshot.webp
    :align: center
@@ -52,27 +36,18 @@ make sure the project is running first.
 
    ObjectDB profiler summary with one snapshot taken
 
-You can take multiple snapshots during a single run of the project.
-Also, you can right-click a snapshot in the snapshot list to rename it,
-show it in the file manager, or delete it.
+Bạn có thể chụp nhiều snapshot trong một lần chạy project. Ngoài ra, bạn có thể nhấp chuột phải vào snapshot trong danh sách snapshot để đổi tên, hiển thị snapshot trong trình quản lý file hoặc xóa snapshot.
 
 .. tip::
 
-    It's a good idea to rename snapshots
-    after taking them to give them descriptive names (e.g., ``before_optimization``,
-    ``after_optimization``). Regardless of the name, the date at which the snapshot
-    was taken remains saved in the snapshot file itself.
+    Bạn nên đổi tên snapshot sau khi chụp để đặt cho chúng những tên mô tả (ví dụ: ``before_optimization``, ``after_optimization``). Bất kể tên snapshot là gì, ngày snapshot được chụp vẫn được lưu trong chính file snapshot.
 
-    Snapshot files have a ``.odb_snapshot`` extension and are located in
-    ``user://objectdb_snapshots/`` (see :ref:`Data paths <doc_data_paths_accessing_persistent_user_data>`
-    details). These can safely be copied across devices, as they're platform-independent.
+    Các file snapshot có phần mở rộng ``.odb_snapshot`` và nằm tại ``user://objectdb_snapshots/`` (xem chi tiết :ref:`Data paths <doc_data_paths_accessing_persistent_user_data>`). Bạn có thể an toàn sao chép các file này giữa các thiết bị, vì chúng độc lập với nền tảng.
 
-Viewing differences between snapshots
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Xem sự khác biệt giữa các snapshot
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-After taking at least two snapshots, the :menu:`Diff Against` dropdown becomes
-available. Here, you can select another snapshot to compare the currently selected
-snapshot with.
+Sau khi chụp ít nhất hai snapshot, dropdown :menu:`Diff Against` sẽ khả dụng. Tại đây, bạn có thể chọn một snapshot khác để so sánh với snapshot hiện đang được chọn.
 
 .. figure:: img/objectdb_profiler_summary_diff_against.webp
    :align: center
@@ -80,7 +55,7 @@ snapshot with.
 
    Diff Against dropdown in the bottom-left corner of the ObjectDB profiler
 
-The summary page will then show the differences between the two snapshots:
+Sau đó, trang tóm tắt sẽ hiển thị sự khác biệt giữa hai snapshot:
 
 .. figure:: img/objectdb_profiler_summary_snapshot_diff.webp
    :align: center
@@ -88,14 +63,12 @@ The summary page will then show the differences between the two snapshots:
 
    Two snapshots being compared in the Summary tab
 
-This also applies to every other tab in the ObjectDB profiler, which will show
-the differences between the two snapshots in additional columns.
+Điều này cũng áp dụng cho mọi tab khác trong ObjectDB profiler; các tab đó sẽ hiển thị sự khác biệt giữa hai snapshot trong những cột bổ sung.
 
 Classes
 ^^^^^^^
 
-In the Classes tab, you can view how many instances of each class have been
-created at the moment the snapshot was taken:
+Trong tab Classes, bạn có thể xem số instance của mỗi class đã được tạo tại thời điểm snapshot được chụp:
 
 .. figure:: img/objectdb_profiler_classes.webp
    :align: center
@@ -103,9 +76,7 @@ created at the moment the snapshot was taken:
 
    One snapshots being viewed in the Classes tab
 
-When in diff mode, it will show the class instance count for the currently
-selected snapshot (column A) and the snapshot that is being diffed against
-(column B). It will also show the difference in instance count in the column Delta.
+Khi ở diff mode, tab này sẽ hiển thị số lượng instance của class trong snapshot hiện đang được chọn (cột A) và snapshot được dùng để so sánh (cột B). Tab này cũng sẽ hiển thị sự chênh lệch về số lượng instance trong cột Delta.
 
 .. figure:: img/objectdb_profiler_classes_diff.webp
    :align: center
@@ -113,7 +84,7 @@ selected snapshot (column A) and the snapshot that is being diffed against
 
    Two snapshots being compared in the Classes tab. Here, column A is ``second_session``, column B is ``first_session``
 
-You can click on a class in the list on the right to view it in the inspector.
+Bạn có thể nhấp vào một class trong danh sách bên phải để xem class đó trong inspector.
 
 .. figure:: img/objectdb_profiler_classes_inspector.webp
    :align: center
@@ -123,21 +94,14 @@ You can click on a class in the list on the right to view it in the inspector.
 
 .. tip::
 
-   Previewing instances in the inspector is also available in other tabs
-   (Nodes, Objects, and RefCounted).
+   Bạn cũng có thể xem trước các instance trong inspector ở những tab khác (Nodes, Objects và RefCounted).
 
 Objects
 ^^^^^^^
 
-The Objects tab is similar, but differs in the way it presents data. Here,
-every instance is listed in a linear fashion, instead of grouping them by class.
-When selecting an object, you will see a list of other objects it references
-on the right (:menu:`Outbound References`), as well as a list of objects
-it's being referenced by (:menu:`Inbound References`).
+Tab Objects tương tự, nhưng khác ở cách trình bày dữ liệu. Tại đây, mọi instance được liệt kê theo thứ tự tuyến tính thay vì được nhóm theo class. Khi chọn một object, bạn sẽ thấy danh sách các object khác mà nó tham chiếu ở bên phải (:menu:`Outbound References`), cũng như danh sách các object đang tham chiếu đến nó (:menu:`Inbound References`).
 
-This allows you to view objects either in a "top-down" manner (viewing
-what objects a given object references) or in a "bottom-up" manner (viewing
-what objects reference a given object).
+Điều này cho phép bạn xem các object theo cách "từ trên xuống" (xem một object nhất định tham chiếu đến những object nào) hoặc theo cách "từ dưới lên" (xem những object nào tham chiếu đến một object nhất định).
 
 .. figure:: img/objectdb_profiler_objects_top_down.webp
    :align: center
@@ -145,10 +109,7 @@ what objects reference a given object).
 
    The Objects tab being used to view objects in a "top-down" manner
 
-In the above image, clicking the ``default_font`` object in the list will
-switch the view to the perspective of that object. This object is being
-referenced by a lot of other objects as well, which effectively switches
-to a "bottom-up" perspective.
+Trong hình trên, việc nhấp vào object ``default_font`` trong danh sách sẽ chuyển chế độ xem sang góc nhìn của object đó. Object này cũng được rất nhiều object khác tham chiếu đến, qua đó chuyển sang góc nhìn "từ dưới lên".
 
 .. figure:: img/objectdb_profiler_objects_bottom_up.webp
    :align: center
@@ -159,7 +120,7 @@ to a "bottom-up" perspective.
 Nodes
 ^^^^^
 
-Next, the Nodes tab shows the scene tree at the time the snapshot was taken.
+Tiếp theo, tab Nodes hiển thị scene tree tại thời điểm snapshot được chụp.
 
 .. figure:: img/objectdb_profiler_nodes.webp
    :align: center
@@ -167,9 +128,7 @@ Next, the Nodes tab shows the scene tree at the time the snapshot was taken.
 
    The Nodes tab being used to view the scene tree
 
-This tab is particularly interesting in diff view, since it supports showing
-the difference between the two snapshots in a more visual manner.
-When :button:`Combined Diff` is unchecked, you can see the differences side by side.
+Tab này đặc biệt thú vị trong diff view, vì nó hỗ trợ hiển thị sự khác biệt giữa hai snapshot theo cách trực quan hơn. Khi :button:`Combined Diff` không được chọn, bạn có thể xem các điểm khác biệt cạnh nhau.
 
 .. figure:: img/objectdb_profiler_nodes_diff_separate.webp
    :align: center
@@ -177,9 +136,7 @@ When :button:`Combined Diff` is unchecked, you can see the differences side by s
 
    Separate diff view in the Nodes tab
 
-When :button:`Combined Diff` is checked, you can see the differences merged
-into a single tree, with added nodes highlighted in green and removed nodes
-highlighted in red.
+Khi :button:`Combined Diff` được chọn, bạn có thể xem các điểm khác biệt được gộp vào một tree duy nhất, với các node được thêm được tô sáng màu xanh lá và các node bị xóa được tô sáng màu đỏ.
 
 .. figure:: img/objectdb_profiler_nodes_diff_combined.webp
    :align: center
@@ -187,10 +144,7 @@ highlighted in red.
 
    Combined diff view in the Nodes tab
 
-Additionally, you can view a list of orphan nodes (nodes that are not
-attached to the scene tree root) at the end of the tree view. You can view
-it more easily by collapsing the root node, since these are listed outside
-the main scene tree.
+Ngoài ra, bạn có thể xem danh sách các node mồ côi (các node không được gắn vào root của scene tree) ở cuối phần hiển thị tree. Bạn có thể xem danh sách này dễ dàng hơn bằng cách thu gọn root node, vì các node này được liệt kê bên ngoài scene tree chính.
 
 .. figure:: img/objectdb_profiler_nodes_orphan.webp
    :align: center
@@ -201,20 +155,13 @@ the main scene tree.
 RefCounted
 ^^^^^^^^^^
 
-The last tab is the RefCounted tab. This tab is similar to the Objects
-tab, but it shows the reference counts of :ref:`class_refcounted`-derived
-classes directly in the table. The table has four columns:
+Tab cuối cùng là tab RefCounted. Tab này tương tự tab Objects, nhưng hiển thị trực tiếp số lượng reference của các class dẫn xuất từ :ref:`class_refcounted` trong bảng. Bảng có bốn cột:
 
-- **Native Refs:** The number of native engine references to the object.
-- **ObjectDB Refs:** The number of ObjectDB references to the object.
-- **Total Refs:** The sum of native references and ObjectDB references.
-- **ObjectDB Cycles:** The number of circular references detected.
+- **Native Refs:** Số lượng reference native của engine đến object. - **ObjectDB Refs:** Số lượng reference ObjectDB đến object. - **Total Refs:** Tổng số native reference và ObjectDB reference. - **ObjectDB Cycles:** Số lượng circular reference được phát hiện.
 
-When in diff view, snapshot B is always listed *above* snapshot A
-if a RefCounted instance exists in both snapshots.
+Khi ở diff view, snapshot B luôn được liệt kê *bên trên* snapshot A nếu một instance RefCounted tồn tại trong cả hai snapshot.
 
-The list on the right shows details on the selected instance,
-including a list of references and whether these are duplicates.
+Danh sách bên phải hiển thị thông tin chi tiết về instance được chọn, bao gồm danh sách các reference và việc chúng có bị trùng lặp hay không.
 
 .. figure:: img/objectdb_profiler_refcounted.webp
    :align: center
@@ -224,5 +171,5 @@ including a list of references and whether these are duplicates.
 
 .. note::
 
-   The RefCounted tab does **not** list objects that derive directly from
+   Tab RefCounted **không** liệt kê các object dẫn xuất trực tiếp từ
    :ref:`class_object`, as these don't use reference counting.

@@ -5,8 +5,7 @@
 C++ (godot-cpp)
 ===============
 
-This section documents `godot-cpp <https://github.com/godotengine/godot-cpp>`__,
-the official C++ GDExtension bindings maintained as part of the Godot project.
+Phần này trình bày `godot-cpp <https://github.com/godotengine/godot-cpp>`__, các binding GDExtension C++ chính thức được duy trì trong khuôn khổ dự án Godot.
 
 .. toctree::
    :maxdepth: 1

@@ -1,31 +1,19 @@
 .. _doc_screen-reading_shaders:
 
-Screen-reading shaders
-======================
+Shader đọc màn hình
+===================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-It is often desired to make a shader that reads from the same
-screen to which it's writing. 3D APIs, such as OpenGL or DirectX, make this very
-difficult because of internal hardware limitations. GPUs are extremely
-parallel, so reading and writing causes all sorts of cache and coherency
-problems. As a result, not even the most modern hardware supports this
-properly.
+Thông thường, người ta muốn tạo một shader đọc từ chính màn hình mà nó đang ghi vào. Các API 3D như OpenGL hoặc DirectX khiến việc này trở nên rất khó khăn do những giới hạn phần cứng nội tại. GPU có tính song song cực cao, vì vậy việc đọc và ghi gây ra đủ loại vấn đề về cache và tính nhất quán. Do đó, ngay cả phần cứng hiện đại nhất cũng không hỗ trợ việc này một cách đúng đắn.
 
-The workaround is to make a copy of the screen, or a part of the screen,
-to a back-buffer and then read from it while drawing. Godot provides a
-few tools that make this process easy.
+Cách xử lý là tạo một bản sao của màn hình, hoặc một phần màn hình, vào back-buffer rồi đọc từ đó trong khi vẽ. Godot cung cấp một số công cụ giúp quá trình này trở nên dễ dàng.
 
 Screen texture
 --------------
 
-Godot :ref:`doc_shading_language` has a special texture to access the already
-rendered contents of the screen. It is used by specifying a hint when declaring
-a ``sampler2D`` uniform: ``hint_screen_texture``. A special built-in varying
-``SCREEN_UV`` can be used to obtain the UV relative to the screen for the current
-fragment. As a result, this canvas_item fragment shader results in an invisible
-object, because it only shows what lies behind:
+Godot :ref:`doc_shading_language` có một texture đặc biệt để truy cập nội dung màn hình đã được render. Bạn sử dụng nó bằng cách chỉ định một hint khi khai báo uniform ``sampler2D``: ``hint_screen_texture``. Có thể sử dụng varying dựng sẵn đặc biệt ``SCREEN_UV`` để lấy UV tương đối so với màn hình cho fragment hiện tại. Do đó, canvas_item fragment shader này tạo ra một đối tượng vô hình, vì nó chỉ hiển thị những gì nằm phía sau:
 
 .. code-block:: glsl
 
@@ -37,26 +25,16 @@ object, because it only shows what lies behind:
         COLOR = textureLod(screen_texture, SCREEN_UV, 0.0);
     }
 
-``textureLod`` is used here as we only want to read from the bottom mipmap. If
-you want to read from a blurred version of the texture instead, you can increase
-the third argument to ``textureLod`` and change the hint ``filter_nearest`` to
-``filter_nearest_mipmap`` (or any other filter with mipmaps enabled). If using a
-filter with mipmaps, Godot will automatically calculate the blurred texture for
-you.
+``textureLod`` được sử dụng ở đây vì chúng ta chỉ muốn đọc từ mipmap dưới cùng. Nếu muốn đọc từ một phiên bản làm mờ của texture, bạn có thể tăng đối số thứ ba lên ``textureLod`` và đổi hint ``filter_nearest`` thành ``filter_nearest_mipmap`` (hoặc bất kỳ filter nào khác có bật mipmap). Khi sử dụng filter có mipmap, Godot sẽ tự động tính toán texture đã làm mờ cho bạn.
 
 .. warning::
 
-    If the filter mode is not changed to a filter mode that contains ``mipmap`` in its name,
-    ``textureLod`` with an LOD parameter greater than ``0.0`` will have the same appearance
-    as with the ``0.0`` LOD parameter.
+    Nếu filter mode không được đổi thành một filter mode có chứa ``mipmap`` trong tên, ``textureLod`` với tham số LOD lớn hơn ``0.0`` sẽ có hình thức giống với tham số LOD ``0.0``.
 
-Screen texture example
-----------------------
+Ví dụ về screen texture
+-----------------------
 
-The screen texture can be used for many things. There is a
-special demo for *Screen Space Shaders*, that you can download to see
-and learn. One example is a simple shader to adjust brightness, contrast
-and saturation:
+Screen texture có thể được sử dụng cho nhiều mục đích. Có một bản demo đặc biệt về *Screen Space Shaders*, bạn có thể tải xuống để xem và học hỏi. Một ví dụ là shader đơn giản để điều chỉnh độ sáng, độ tương phản và độ bão hòa:
 
 .. code-block:: glsl
 
@@ -78,83 +56,48 @@ and saturation:
         COLOR.rgb = c;
     }
 
-Behind the scenes
------------------
+Cơ chế bên trong
+----------------
 
-While this seems magical, it's not. In 2D, when ``hint_screen_texture`` is first
-found in a node that is about to be drawn, Godot does a full-screen copy to a
-back-buffer. Subsequent nodes that use it in shaders will not have the screen
-copied for them, because this ends up being inefficient. In 3D, the screen is
-copied after the opaque geometry pass, but before the transparent geometry pass,
-so transparent objects will not be captured in the screen texture.
+Mặc dù có vẻ kỳ diệu, nhưng thực ra không phải vậy. Trong 2D, khi ``hint_screen_texture`` được tìm thấy lần đầu tiên trong một node sắp được vẽ, Godot sẽ sao chép toàn màn hình vào back-buffer. Các node tiếp theo sử dụng nó trong shader sẽ không được sao chép màn hình riêng, vì việc này trở nên không hiệu quả. Trong 3D, màn hình được sao chép sau opaque geometry pass nhưng trước transparent geometry pass, vì vậy các đối tượng trong suốt sẽ không được ghi lại trong screen texture.
 
-As a result, in 2D, if shaders that use ``hint_screen_texture`` overlap, the
-second one will not use the result of the first one, resulting in unexpected
-visuals:
+Do đó, trong 2D, nếu các shader sử dụng ``hint_screen_texture`` chồng lên nhau, shader thứ hai sẽ không sử dụng kết quả của shader thứ nhất, dẫn đến hình ảnh không như mong đợi:
 
 .. image:: img/texscreen_demo1.png
 
-In the above image, the second sphere (top right) is using the same source for
-the screen texture as the first one below, so the first one "disappears", or is
-not visible.
+Trong hình trên, hình cầu thứ hai (phía trên bên phải) đang sử dụng cùng nguồn screen texture với hình cầu thứ nhất ở bên dưới, vì vậy hình cầu thứ nhất "biến mất" hoặc không hiển thị.
 
-In 2D, this can be corrected via the :ref:`BackBufferCopy <class_BackBufferCopy>`
-node, which can be instantiated between both spheres. BackBufferCopy can work by
-either specifying a screen region or the whole screen:
+Trong 2D, vấn đề này có thể được khắc phục thông qua node :ref:`BackBufferCopy <class_BackBufferCopy>`, được tạo instance giữa hai hình cầu. BackBufferCopy có thể hoạt động bằng cách chỉ định một vùng màn hình hoặc toàn bộ màn hình:
 
 .. image:: img/texscreen_bbc.png
 
-With correct back-buffer copying, the two spheres blend correctly:
+Khi sao chép back-buffer đúng cách, hai hình cầu sẽ hòa trộn chính xác:
 
 .. image:: img/texscreen_demo2.png
 
 .. warning::
 
-    In 3D, materials that use ``hint_screen_texture`` are considered transparent themselves and
-    will not appear in the resulting screen texture of other materials.
-    If you plan to instance a scene that uses a material with ``hint_screen_texture``,
-    you will need to use a BackBufferCopy node.
+    Trong 3D, các material sử dụng ``hint_screen_texture`` được xem là trong suốt và bản thân chúng sẽ không xuất hiện trong screen texture kết quả của các material khác. Nếu dự định tạo instance cho một scene sử dụng material có ``hint_screen_texture``, bạn sẽ cần sử dụng một node BackBufferCopy.
 
-In 3D, there is less flexibility to solve this particular issue because the
-screen texture is only captured once. Be careful when using the screen texture
-in 3D as it won't capture transparent objects and may capture some opaque
-objects that are in front of the object using the screen texture.
+Trong 3D, có ít linh hoạt hơn để giải quyết vấn đề cụ thể này vì screen texture chỉ được ghi lại một lần. Hãy cẩn thận khi sử dụng screen texture trong 3D, vì nó sẽ không ghi lại các đối tượng trong suốt và có thể ghi lại một số đối tượng opaque nằm phía trước đối tượng sử dụng screen texture.
 
-You can reproduce the back-buffer logic in 3D by creating a :ref:`Viewport <class_Viewport>`
-with a camera in the same position as your object, and then use the
+Bạn có thể mô phỏng logic back-buffer trong 3D bằng cách tạo một :ref:`Viewport <class_Viewport>` với camera ở cùng vị trí với đối tượng của bạn, rồi sử dụng
 :ref:`Viewport's <class_Viewport>` texture instead of the screen texture.
 
-Back-buffer logic
+Logic back-buffer
 -----------------
 
-So, to make it clearer, here's how the backbuffer copying logic works in 2D in
-Godot:
+Để làm rõ hơn, sau đây là cách logic sao chép backbuffer hoạt động trong 2D của Godot:
 
--  If a node uses ``hint_screen_texture``, the entire screen is copied to the
-   back buffer before drawing that node. This only happens the first
-   time; subsequent nodes do not trigger this.
--  If a BackBufferCopy node was processed before the situation in the point
-   above (even if ``hint_screen_texture`` was not used), the behavior described
-   in the point above does not happen. In other words, automatic copying of the
-   entire screen only happens if ``hint_screen_texture`` is used in a node for
-   the first time and no BackBufferCopy node (not disabled) was found before in
-   tree-order.
--  BackBufferCopy can copy either the entire screen or a region. If set to only
-   a region (not the whole screen) and your shader uses pixels not in the region
-   copied, the result of that read is undefined (most likely garbage from
-   previous frames). In other words, it's possible to use BackBufferCopy to copy
-   back a region of the screen and then read the screen texture from a different
-   region. Avoid this behavior!
+-  Nếu một node sử dụng ``hint_screen_texture``, toàn bộ màn hình sẽ được sao chép vào back buffer trước khi node đó được vẽ. Việc này chỉ xảy ra lần đầu; các node tiếp theo sẽ không kích hoạt nó. - Nếu một node BackBufferCopy đã được xử lý trước trường hợp nêu ở điểm trên (ngay cả khi không sử dụng ``hint_screen_texture``), hành vi được mô tả ở điểm trên sẽ không xảy ra. Nói cách khác, việc tự động sao chép toàn bộ màn hình chỉ xảy ra nếu ``hint_screen_texture`` được sử dụng lần đầu trong một node và trước đó không tìm thấy node BackBufferCopy nào (không bị vô hiệu hóa) theo thứ tự trong cây. - BackBufferCopy có thể sao chép toàn bộ màn hình hoặc một vùng. Nếu chỉ đặt sao chép một vùng (không phải toàn bộ màn hình) và shader của bạn sử dụng các pixel không nằm trong vùng được sao chép, kết quả của thao tác đọc đó là không xác định (nhiều khả năng là dữ liệu rác từ các frame trước). Nói cách khác, bạn có thể sử dụng BackBufferCopy để sao chép ngược một vùng của màn hình rồi đọc screen texture từ một vùng khác. Hãy tránh hành vi này!
 
 
 Depth texture
 -------------
 
-For 3D shaders, it's also possible to access the screen depth buffer. For this,
-the ``hint_depth_texture`` hint is used. This texture is not linear; it must be
-converted using the inverse projection matrix.
+Đối với shader 3D, bạn cũng có thể truy cập depth buffer của màn hình. Để làm việc này, sử dụng hint ``hint_depth_texture``. Texture này không tuyến tính; nó phải được chuyển đổi bằng inverse projection matrix.
 
-The following code retrieves the 3D position below the pixel being drawn:
+Đoạn code sau lấy vị trí 3D bên dưới pixel đang được vẽ:
 
 .. code-block:: glsl
 
@@ -171,13 +114,9 @@ Normal-roughness texture
 
 .. note::
 
-    Normal-roughness texture is only supported in the Forward+ rendering method,
-    not Mobile or Compatibility.
+    Normal-roughness texture chỉ được hỗ trợ trong phương thức render Forward+, không được hỗ trợ trong Mobile hoặc Compatibility.
 
-Similarly, the normal-roughness texture can be used to read the normals and
-roughness of objects rendered in the depth prepass. The normal is stored in the
-``.xyz`` channels (mapped to the 0-1 range) while the roughness is stored in the
-``.w`` channel.
+Tương tự, normal-roughness texture có thể được sử dụng để đọc normal và roughness của các đối tượng được render trong depth prepass. Normal được lưu trong các channel ``.xyz`` (được ánh xạ vào phạm vi 0-1), còn roughness được lưu trong channel ``.w``.
 
 .. code-block:: glsl
 
@@ -188,17 +127,12 @@ roughness of objects rendered in the depth prepass. The normal is stored in the
         vec3 screen_normal = texture(normal_roughness_texture, SCREEN_UV).xyz;
         screen_normal = screen_normal * 2.0 - 1.0;
 
-Redefining screen textures
---------------------------
+Định nghĩa lại screen texture
+-----------------------------
 
-The screen texture hints (``hint_screen_texture``, ``hint_depth_texture``, and
-``hint_normal_roughness_texture``) can be used with multiple uniforms. For
-example, you may want to read from the texture multiple times with a different
-repeat flag or filter flag.
+Các hint của screen texture (``hint_screen_texture``, ``hint_depth_texture`` và ``hint_normal_roughness_texture``) có thể được sử dụng với nhiều uniform. Ví dụ, bạn có thể muốn đọc texture nhiều lần với cờ repeat hoặc cờ filter khác nhau.
 
-The following example shows a shader that reads the screen space normal with
-linear filtering, but reads the screen space roughness using nearest neighbor
-filtering.
+Ví dụ sau đây cho thấy một shader đọc normal trong screen space bằng linear filtering, nhưng đọc roughness trong screen space bằng nearest neighbor filtering.
 
 .. code-block:: glsl
 

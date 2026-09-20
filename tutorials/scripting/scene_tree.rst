@@ -1,154 +1,99 @@
 .. _doc_scene_tree:
 
-Using SceneTree
-===============
+Sử dụng SceneTree
+=================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-In previous tutorials, everything revolved around the concept of
-nodes. Scenes are collections of nodes. They become active once
-they enter the *scene tree*.
+Trong các tutorial trước, mọi thứ đều xoay quanh khái niệm node. Scene là tập hợp các node. Chúng trở nên hoạt động khi được đưa vào *scene tree*.
 
 MainLoop
 --------
 
-The way Godot works internally is as follows: There is the
+Cách Godot hoạt động bên trong như sau: Có
 :ref:`OS <class_OS>` class,
-which is the only instance that runs at the beginning. Afterwards, all
-drivers, servers, scripting languages, scene system, etc. are loaded.
+đây là instance duy nhất chạy ngay từ đầu. Sau đó, tất cả driver, server, ngôn ngữ scripting, hệ thống scene, v.v. sẽ được tải.
 
-When initialization is complete, :ref:`OS <class_OS>` needs to be
-supplied a :ref:`MainLoop <class_MainLoop>`
-to run. Up to this point, all this is internals working (you can check
-main/main.cpp file in the source code if you are ever interested to
-see how this works internally).
+Khi quá trình khởi tạo hoàn tất, :ref:`OS <class_OS>` cần được cung cấp một :ref:`MainLoop <class_MainLoop>` để chạy. Cho đến thời điểm này, tất cả những gì diễn ra đều là hoạt động nội bộ (bạn có thể xem tệp main/main.cpp trong source code nếu muốn tìm hiểu cách hoạt động bên trong).
 
-The user program, or game, starts in the MainLoop. This class has a few
-methods, for initialization, idle (frame-synchronized callback), fixed
-(physics-synchronized callback), and input. Again, this is low
-level and when making games in Godot, writing your own MainLoop seldom makes sense.
+Chương trình của người dùng, hay game, bắt đầu trong MainLoop. Class này có một số method dùng cho việc khởi tạo, idle (callback đồng bộ theo frame), fixed (callback đồng bộ theo physics) và input. Một lần nữa, đây là cấp thấp, và khi làm game trong Godot, việc tự viết MainLoop hiếm khi hợp lý.
 
 SceneTree
 ---------
 
-One of the ways to explain how Godot works is that it's a high-level
-game engine over a low-level middleware.
+Một cách để giải thích cách Godot hoạt động là: đây là một game engine cấp cao chạy trên middleware cấp thấp.
 
-The scene system is the game engine, while the :ref:`OS <class_OS>`
-and servers are the low-level API.
+Hệ thống scene là game engine, còn :ref:`OS <class_OS>` và các server là API cấp thấp.
 
-The scene system provides its own main loop to OS,
+Hệ thống scene cung cấp main loop riêng cho OS,
 :ref:`SceneTree <class_SceneTree>`.
-This is automatically instanced and set when running a scene, no need
-to do any extra work.
+Thành phần này được tự động tạo instance và thiết lập khi chạy một scene, không cần thực hiện thêm bất kỳ công việc nào.
 
-It's important to know that this class exists because it has a few
-important uses:
+Điều quan trọng là phải biết class này tồn tại vì nó có một số công dụng quan trọng:
 
--  It contains the root :ref:`Viewport <class_Viewport>`, to which a
-   scene is added as a child when it's first opened to become
-   part of the *Scene Tree* (more on that next).
--  It contains information about the groups and has the means to call all
-   nodes in a group or get a list of them.
--  It contains some global state functionality, such as setting pause
-   mode or quitting the process.
+-  Nó chứa :ref:`Viewport <class_Viewport>` gốc, nơi một scene được thêm vào làm child khi lần đầu được mở để trở thành một phần của *Scene Tree* (sẽ nói thêm về điều này ở phần sau). - Nó chứa thông tin về các group và có khả năng gọi tất cả node trong một group hoặc lấy danh sách các node đó. - Nó chứa một số chức năng về trạng thái toàn cục, chẳng hạn như thiết lập pause mode hoặc thoát process.
 
-When a node is part of the Scene Tree, the
+Khi một node là một phần của Scene Tree,
 :ref:`SceneTree <class_SceneTree>`
-singleton can be obtained by calling
+singleton có thể được lấy bằng cách gọi
 :ref:`Node.get_tree() <class_Node_method_get_tree>`.
 
 Root viewport
 -------------
 
-The root :ref:`Viewport <class_Viewport>`
-is always at the top of the scene. From a node, it can be obtained in
-two different ways:
+:ref:`Viewport <class_Viewport>` gốc luôn nằm ở trên cùng của scene. Từ một node, có thể lấy nó bằng hai cách khác nhau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-        get_tree().root # Access via scene main loop.
-        get_node("/root") # Access via absolute path.
+        get_tree().root # Truy cập thông qua main loop của scene.
+        get_node("/root") # Truy cập thông qua absolute path.
 
  .. code-tab:: csharp
 
-        GetTree().Root // Access via scene main loop.
-        GetNode("/root"); // Access via absolute path.
+        GetTree().Root // Truy cập thông qua main loop của scene.
+        GetNode("/root"); // Truy cập thông qua absolute path.
 
-This node contains the main viewport. Anything that is a child of a
+Node này chứa viewport chính. Mọi thứ là child của một
 :ref:`Viewport <class_Viewport>`
-is drawn inside of it by default, so it makes sense that the top of all
-nodes is always a node of this type otherwise nothing would be seen.
+đều được vẽ bên trong nó theo mặc định, vì vậy việc node ở trên cùng luôn thuộc kiểu này là hợp lý; nếu không, sẽ không thấy gì.
 
-While other viewports can be created in the scene (for split-screen
-effects and such), this one is the only one that is never created by the
-user. It's created automatically inside SceneTree.
+Mặc dù có thể tạo các viewport khác trong scene (chẳng hạn để tạo hiệu ứng split-screen), đây là viewport duy nhất không bao giờ được người dùng tạo. Nó được tự động tạo bên trong SceneTree.
 
 Scene tree
 ----------
 
-When a node is connected, directly or indirectly, to the root
-viewport, it becomes part of the *scene tree*.
+Khi một node được kết nối, trực tiếp hoặc gián tiếp, với root viewport, nó trở thành một phần của *scene tree*.
 
-This means that as explained in previous tutorials, it will get the
-``_enter_tree()`` and ``_ready()`` callbacks (as well as ``_exit_tree()``).
+Điều này có nghĩa là, như đã giải thích trong các tutorial trước, nó sẽ nhận các callback ``_enter_tree()`` và ``_ready()`` (cũng như ``_exit_tree()``).
 
 .. image:: img/activescene.webp
 
-When nodes enter the *Scene Tree*, they become active. They get access
-to everything they need to process, get input, display 2D and 3D visuals,
-receive and send notifications, play sounds, etc. When they are removed from the
-*scene tree*, they lose these abilities.
+Khi các node đi vào *Scene Tree*, chúng trở nên hoạt động. Chúng có quyền truy cập vào mọi thứ cần thiết để xử lý, nhận input, hiển thị hình ảnh 2D và 3D, nhận và gửi notification, phát âm thanh, v.v. Khi bị xóa khỏi *scene tree*, chúng sẽ mất các khả năng này.
 
-Tree order
-----------
+Thứ tự trong tree
+-----------------
 
-Most node operations in Godot, such as drawing 2D, processing, or getting
-notifications are done in *tree order*, or top to bottom as seen in the
-editor (also known as pre-order traversal):
+Hầu hết các thao tác trên node trong Godot, chẳng hạn như vẽ 2D, xử lý hoặc nhận notification, đều được thực hiện theo *tree order*, tức từ trên xuống dưới như hiển thị trong editor (còn gọi là duyệt pre-order):
 
 .. image:: img/toptobottom.webp
 
-For example, the top node in a scene has its ``_process()`` function
-called first, then the node below it has its ``_process()`` function called,
-then the node below that and so on.
+Ví dụ, node trên cùng trong một scene sẽ được gọi function ``_process()`` trước, sau đó node ngay bên dưới sẽ được gọi function ``_process()``, rồi đến node bên dưới nó, cứ tiếp tục như vậy.
 
-An important exception is the ``_ready()`` function: each parent node has its
-``_ready()`` function called only after all its child nodes have their
-``_ready()`` functions called, so that the parent knows its children are
-completely ready to be accessed. This is also known as post-order traversal.
-In the above image, ``NameLabel`` would be notified first (but only after its
-children, if it had any!), followed by ``Name``, etc., and ``Panel`` would be
-notified last.
+Một ngoại lệ quan trọng là function ``_ready()``: mỗi node cha chỉ được gọi function ``_ready()`` sau khi tất cả node con của nó đã được gọi function ``_ready()``, ताकि node cha biết rằng các node con đã hoàn toàn sẵn sàng để được truy cập. Đây còn được gọi là duyệt post-order. Trong hình trên, ``NameLabel`` sẽ nhận notification trước (nhưng chỉ sau các node con của nó, nếu có!), tiếp theo là ``Name``, v.v., và ``Panel`` sẽ nhận notification cuối cùng.
 
-The order of operations can also be overridden using the ``process_priority``
-node property. Nodes with a lower number are called first. For example, nodes
-with the priorities "0, 1, 2, 3" would be called in that order from left to right.
+Có thể ghi đè thứ tự thao tác bằng thuộc tính node ``process_priority``. Các node có số nhỏ hơn sẽ được gọi trước. Ví dụ, các node có độ ưu tiên "0, 1, 2, 3" sẽ được gọi theo thứ tự đó từ trái sang phải.
 
-"Becoming active" by entering the *Scene Tree*
-----------------------------------------------
+“Trở nên hoạt động” bằng cách đi vào *Scene Tree*
+-------------------------------------------------
 
-#. A scene is loaded from disk or created by scripting.
-#. The root node of that scene (only one root, remember?) is added as
-   either a child of the "root" Viewport (from SceneTree), or to any
-   of its descendants.
-#. Every node of the newly added scene will receive the "enter_tree"
-   notification ( ``_enter_tree()`` callback in GDScript) in
-   top-to-bottom order (pre-order traversal).
-#. Every node will receive the "ready" notification ( ``_ready()``
-   callback in GDScript) for convenience, once all its children have
-   received the "ready" notification (post-order traversal).
-#. When a scene (or part of it) is removed, they receive the "exit
-   scene" notification ( ``_exit_tree()`` callback in GDScript) in
-   bottom-to-top order (the exact reverse of top-to-bottom order).
+#. Một scene được tải từ ổ đĩa hoặc được tạo bằng scripting. #. Node gốc của scene đó (hãy nhớ rằng chỉ có một node gốc) được thêm vào làm child của Viewport "root" (từ SceneTree), hoặc vào bất kỳ node con nào của nó. #. Mọi node trong scene mới được thêm sẽ nhận notification "enter_tree" (callback ``_enter_tree()`` trong GDScript) theo thứ tự từ trên xuống dưới (duyệt pre-order). #. Mọi node sẽ nhận notification "ready" (callback ``_ready()`` trong GDScript) để thuận tiện, sau khi tất cả node con của nó đã nhận notification "ready" (duyệt post-order). #. Khi một scene (hoặc một phần của scene) bị xóa, các node đó sẽ nhận notification "exit scene" (callback ``_exit_tree()`` trong GDScript) theo thứ tự từ dưới lên trên (hoàn toàn ngược với thứ tự từ trên xuống dưới).
 
-Changing current scene
-----------------------
+Thay đổi scene hiện tại
+-----------------------
 
-After a scene is loaded, you may want to change this scene for
-another one. One way to do this is to use the
+Sau khi một scene được tải, bạn có thể muốn chuyển sang một scene khác. Một cách để thực hiện việc này là sử dụng function
 :ref:`SceneTree.change_scene_to_file() <class_SceneTree_method_change_scene_to_file>`
 function:
 
@@ -165,9 +110,9 @@ function:
         GetTree().ChangeSceneToFile("res://levels/level2.tscn");
     }
 
-Rather than using file paths, one can also use ready-made
+Thay vì sử dụng file path, bạn cũng có thể sử dụng các
 :ref:`PackedScene <class_PackedScene>` resources using the equivalent
-function
+function có sẵn
 :ref:`SceneTree.change_scene_to_packed(PackedScene scene) <class_SceneTree_method_change_scene_to_packed>`:
 
 .. tabs::
@@ -186,9 +131,4 @@ function
         GetTree().ChangeSceneToPacked(nextScene);
     }
 
-These are quick and useful ways to switch scenes but have the drawback
-that the game will stall until the new scene is loaded and running. At
-some point in the development of your game, it may be preferable to create proper loading
-screens with progress bar, animated indicators or threaded (background)
-loading. This must be done manually using :ref:`doc_singletons_autoload`
-and :ref:`doc_background_loading`.
+Đây là những cách nhanh chóng và hữu ích để chuyển scene, nhưng có nhược điểm là game sẽ bị đứng cho đến khi scene mới được tải và chạy. Ở một thời điểm nào đó trong quá trình phát triển game, bạn có thể muốn tạo các màn hình loading phù hợp với progress bar, indicator động hoặc loading theo thread (background). Việc này phải được thực hiện thủ công bằng cách sử dụng :ref:`doc_singletons_autoload` và :ref:`doc_background_loading`.

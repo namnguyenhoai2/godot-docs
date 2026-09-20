@@ -1,17 +1,14 @@
 .. _doc_spatial_shader:
 
-Spatial shaders
-===============
+Shader không gian
+=================
 
-Spatial shaders are used for shading 3D objects. They are the most complex type of shader Godot offers.
-Spatial shaders are highly configurable with different render modes and different rendering options
-(e.g. Subsurface Scattering, Transmission, Ambient Occlusion, Rim lighting, etc.). Users can optionally
-write vertex, fragment, and light processor functions to affect how objects are drawn.
+Shader không gian được dùng để đổ bóng cho các đối tượng 3D. Đây là loại shader phức tạp nhất mà Godot cung cấp. Shader không gian có khả năng cấu hình cao với nhiều chế độ kết xuất và tùy chọn kết xuất khác nhau (ví dụ: Subsurface Scattering, Transmission, Ambient Occlusion, Rim lighting, v.v.). Người dùng có thể tùy chọn viết các hàm xử lý vertex, fragment và light để tác động đến cách các đối tượng được vẽ.
 
-Render modes
-------------
+Chế độ kết xuất
+---------------
 
-For visual examples of these render modes, see :ref:`Standard Material 3D and ORM Material 3D<doc_standard_material_3d>`.
+Để xem các ví dụ trực quan về những chế độ kết xuất này, hãy xem :ref:`Standard Material 3D and ORM Material 3D<doc_standard_material_3d>`.
 
 +-------------------------------+------------------------------------------------------------------------------------------------------+
 | Render mode                   | Description                                                                                          |
@@ -100,33 +97,24 @@ For visual examples of these render modes, see :ref:`Standard Material 3D and OR
 | **fog_disabled**              | Disable receiving depth-based or volumetric fog. Useful for ``blend_add`` materials like particles.  |
 +-------------------------------+------------------------------------------------------------------------------------------------------+
 
-Stencil modes
--------------
+Chế độ stencil
+--------------
 
 .. note::
 
-    Stencil support is experimental, use at your own risk.
-    We will try to not break compatibility as much as possible,
-    but if significant flaws are found in the API, it may change
-    in the next minor version.
+    Tính năng hỗ trợ stencil đang ở trạng thái thử nghiệm, hãy tự chịu rủi ro khi sử dụng. Chúng tôi sẽ cố gắng không phá vỡ khả năng tương thích nhiều nhất có thể, nhưng nếu phát hiện các lỗi nghiêm trọng trong API, API có thể thay đổi ở phiên bản minor tiếp theo.
 
-Stencil operations are a set of operations that allow writing to
-an efficient buffer in an hardware-accelerated manner.
-This is generally used to mask in or out parts of the scene.
+Các thao tác stencil là một tập hợp các thao tác cho phép ghi vào một buffer hiệu quả theo cách được tăng tốc bằng phần cứng. Tính năng này thường được dùng để che vào hoặc che ra các phần của scene.
 
-Some of the most well-known uses are:
+Một số cách sử dụng phổ biến nhất là:
 
-- Outlines: Mask out the inner mesh that is being outlined to avoid inner outlines.
-- X-Ray: Display a mesh behind other objects.
-- Portals: Draw geometry that is normally "impossible" (non-Euclidian) by masking objects.
+- Outlines: Che mesh bên trong đang được tạo outline để tránh xuất hiện outline bên trong. - X-Ray: Hiển thị một mesh phía sau các đối tượng khác. - Portals: Vẽ hình học vốn thường là "không thể" (phi Euclid) bằng cách che các đối tượng.
 
 .. note::
 
-    You can only read from the stencil buffer in the transparent pass.
-    Any attempt to read in the opaque pass will fail, as it's currently not supported behavior.
+    Bạn chỉ có thể đọc từ stencil buffer trong transparent pass. Mọi nỗ lực đọc trong opaque pass sẽ thất bại, vì hành vi này hiện chưa được hỗ trợ.
 
-    Note that for compositor effects, the main renderer's stencil buffer can't be copied
-    to a custom texture.
+    Lưu ý rằng đối với các hiệu ứng compositor, stencil buffer của renderer chính không thể được sao chép vào một texture tùy chỉnh.
 
 +-------------------------------+------------------------------------------------------------------------------------------------------+
 | Stencil mode                  | Description                                                                                          |
@@ -152,21 +140,17 @@ Some of the most well-known uses are:
 | **compare_greater_or_equal**  | Pass stencil test if the reference value is greater than or equal to the stencil buffer value.       |
 +-------------------------------+------------------------------------------------------------------------------------------------------+
 
-Built-ins
----------
+Built-in
+--------
 
-Values marked as ``in`` are read-only. Values marked as ``out`` can optionally be written to and will
-not necessarily contain sensible values. Values marked as ``inout`` provide a sensible default
-value, and can optionally be written to. Samplers cannot be written to so they are not marked.
+Các giá trị được đánh dấu là ``in`` chỉ có thể đọc. Các giá trị được đánh dấu là ``out`` có thể được ghi tùy chọn và không nhất thiết chứa các giá trị hợp lý. Các giá trị được đánh dấu là ``inout`` cung cấp một giá trị mặc định hợp lý và có thể được ghi tùy chọn. Không thể ghi vào sampler nên chúng không được đánh dấu.
 
-Not all built-ins are available in all processing functions. To access a vertex
-built-in from the ``fragment()`` function, you can use a :ref:`varying <doc_shading_language_varyings>`.
-The same applies for accessing fragment built-ins from the ``light()`` function.
+Không phải tất cả built-in đều khả dụng trong mọi hàm xử lý. Để truy cập một vertex built-in từ hàm ``fragment()``, bạn có thể sử dụng một :ref:`varying <doc_shading_language_varyings>`. Điều tương tự cũng áp dụng khi truy cập fragment built-in từ hàm ``light()``.
 
-Global built-ins
-----------------
+Built-in toàn cục
+-----------------
 
-Global built-ins are available everywhere, including custom functions.
+Built-in toàn cục khả dụng ở mọi nơi, bao gồm cả các hàm tùy chỉnh.
 
 +-----------------------------+-----------------------------------------------------------------------------------------------------+
 | Built-in                    | Description                                                                                         |
@@ -200,17 +184,14 @@ Global built-ins are available everywhere, including custom functions.
 |                             | This can be used to render objects differently in shadow maps compared to their regular rendering.  |
 +-----------------------------+-----------------------------------------------------------------------------------------------------+
 
-Vertex built-ins
-----------------
+Vertex built-in
+---------------
 
-Vertex data (``VERTEX``, ``NORMAL``, ``TANGENT``, and ``BITANGENT``) are presented in model space
-(also called local space). If not written to, these values will not be modified and be
-passed through as they came, then transformed into view space to be used in ``fragment()``.
+Dữ liệu vertex (``VERTEX``, ``NORMAL``, ``TANGENT`` và ``BITANGENT``) được cung cấp trong model space (còn gọi là local space). Nếu không được ghi, các giá trị này sẽ không bị thay đổi mà được truyền tiếp như ban đầu, sau đó được chuyển đổi sang view space để sử dụng trong ``fragment()``.
 
-They can optionally be presented in world space by using the ``world_vertex_coords`` render mode.
+Bạn có thể tùy chọn cung cấp chúng trong world space bằng cách sử dụng chế độ kết xuất ``world_vertex_coords``.
 
-Users can disable the built-in modelview transform (projection will still happen later) and do
-it manually with the following code:
+Người dùng có thể tắt phép biến đổi modelview tích hợp (phép chiếu vẫn sẽ diễn ra sau đó) và thực hiện thủ công bằng đoạn code sau:
 
 .. code-block:: glsl
 
@@ -224,22 +205,15 @@ it manually with the following code:
         TANGENT = normalize((MODELVIEW_MATRIX * vec4(TANGENT, 0.0)).xyz);
     }
 
-Other built-ins, such as ``UV``, ``UV2``, and ``COLOR``, are also passed through to the ``fragment()`` function if not modified.
+Các built-in khác, chẳng hạn như ``UV``, ``UV2`` và ``COLOR``, cũng được truyền tiếp đến hàm ``fragment()`` nếu không bị sửa đổi.
 
-Users can override the modelview and projection transforms using the ``POSITION`` built-in. If ``POSITION`` is written
-to anywhere in the shader, it will always be used, so the user becomes responsible for ensuring that it always has
-an acceptable value. When ``POSITION`` is used, the value from ``VERTEX`` is ignored and projection does not happen.
-However, the value passed to the fragment shader still comes from ``VERTEX``.
+Người dùng có thể ghi đè các phép biến đổi modelview và projection bằng built-in ``POSITION``. Nếu ``POSITION`` được ghi ở bất kỳ đâu trong shader, nó sẽ luôn được sử dụng, vì vậy người dùng có trách nhiệm đảm bảo rằng nó luôn có một giá trị chấp nhận được. Khi ``POSITION`` được sử dụng, giá trị từ ``VERTEX`` sẽ bị bỏ qua và phép chiếu sẽ không diễn ra. Tuy nhiên, giá trị được truyền đến fragment shader vẫn đến từ ``VERTEX``.
 
-For instancing, the ``INSTANCE_CUSTOM`` variable contains the instance custom data. When using particles, this information
-is usually:
+Đối với instancing, biến ``INSTANCE_CUSTOM`` chứa dữ liệu tùy chỉnh của instance. Khi sử dụng particle, thông tin này thường là:
 
-* **x**: Rotation angle in radians.
-* **y**: Phase during lifetime (``0.0`` to ``1.0``).
-* **z**: Animation frame.
+* **x**: Góc xoay tính bằng radian. * **y**: Pha trong suốt vòng đời (``0.0`` đến ``1.0``). * **z**: Khung hình animation.
 
-This allows you to easily adjust the shader to a particle system using default particle material. When writing a custom particle
-shader, this value can be used as desired.
+Điều này cho phép bạn dễ dàng điều chỉnh shader cho một hệ thống particle sử dụng material particle mặc định. Khi viết shader particle tùy chỉnh, bạn có thể sử dụng giá trị này theo ý muốn.
 
 +----------------------------------------+--------------------------------------------------------+
 | Built-in                               | Description                                            |
@@ -351,18 +325,16 @@ shader, this value can be used as desired.
 
 .. note::
 
-    ``MODELVIEW_MATRIX`` combines both the ``MODEL_MATRIX`` and ``VIEW_MATRIX`` and is better suited when floating point issues may arise. For example, if the object is very far away from the world origin, you may run into floating point issues when using the separated ``MODEL_MATRIX`` and ``VIEW_MATRIX``.
+    ``MODELVIEW_MATRIX`` kết hợp cả ``MODEL_MATRIX`` và ``VIEW_MATRIX``, phù hợp hơn khi có thể phát sinh vấn đề về số dấu phẩy động. Ví dụ, nếu đối tượng ở rất xa gốc tọa độ của world, bạn có thể gặp vấn đề về số dấu phẩy động khi sử dụng ``MODEL_MATRIX`` và ``VIEW_MATRIX`` tách biệt.
 
 .. note::
 
-    ``INV_VIEW_MATRIX`` is the matrix used for rendering the object in that pass, unlike ``MAIN_CAM_INV_VIEW_MATRIX``, which is the matrix of the camera in the scene. In the shadow pass, ``INV_VIEW_MATRIX``'s view is based on the camera that is located at the position of the light.
+    ``INV_VIEW_MATRIX`` là ma trận được dùng để kết xuất đối tượng trong pass đó, không giống ``MAIN_CAM_INV_VIEW_MATRIX``, là ma trận của camera trong scene. Trong shadow pass, view của ``INV_VIEW_MATRIX`` dựa trên camera nằm tại vị trí của light.
 
-Fragment built-ins
-------------------
+Fragment built-in
+-----------------
 
-The default use of a Godot fragment processor function is to set up the material properties of your object
-and to let the built-in renderer handle the final shading. However, you are not required to use all
-these properties, and if you don't write to them, Godot will optimize away the corresponding functionality.
+Cách sử dụng mặc định của hàm xử lý fragment trong Godot là thiết lập các thuộc tính material của đối tượng và để renderer tích hợp xử lý việc đổ bóng cuối cùng. Tuy nhiên, bạn không bắt buộc phải sử dụng tất cả các thuộc tính này; nếu không ghi vào chúng, Godot sẽ tối ưu hóa bằng cách loại bỏ chức năng tương ứng.
 
 +----------------------------------------+--------------------------------------------------------------------------------------------------+
 | Built-in                               | Description                                                                                      |
@@ -534,42 +506,39 @@ these properties, and if you don't write to them, Godot will optimize away the c
 
 .. note::
 
-    Shaders going through the transparent pipeline when ``ALPHA`` is written to
-    may exhibit transparency sorting issues. Read the
+    Các shader đi qua transparent pipeline khi ghi vào ``ALPHA`` có thể gặp vấn đề về sắp xếp độ trong suốt. Đọc
     :ref:`transparency sorting section in the 3D rendering limitations page <doc_3d_rendering_limitations_transparency_sorting>`
-    for more information and ways to avoid issues.
+    để biết thêm thông tin và các cách tránh vấn đề này.
 
-Light built-ins
----------------
+Light built-in
+--------------
 
-Writing light processor functions is completely optional. You can skip the ``light()`` function by using
-the ``unshaded`` render mode. If no light function is written, Godot will use the material properties
-written to in the ``fragment()`` function to calculate the lighting for you (subject to the render mode).
+Việc viết các hàm xử lý light là hoàn toàn tùy chọn. Bạn có thể bỏ qua hàm ``light()`` bằng cách sử dụng chế độ kết xuất ``unshaded``. Nếu không viết hàm light, Godot sẽ sử dụng các thuộc tính material được ghi trong hàm ``fragment()`` để tính toán ánh sáng cho bạn (tùy thuộc vào chế độ kết xuất).
 
-The ``light()`` function is called for every light in every pixel. It is called within a loop for each light type.
+Hàm ``light()`` được gọi cho mỗi light trong mỗi pixel. Hàm được gọi bên trong một vòng lặp cho từng loại light.
 
-Below is an example of a custom ``light()`` function using a Lambertian lighting model:
+Dưới đây là ví dụ về một hàm ``light()`` tùy chỉnh sử dụng mô hình chiếu sáng Lambertian:
 
 .. code-block:: glsl
 
     void light() {
         if (LIGHT_IS_AREA) {
-            // Area light GGX shading.
+            // Đổ bóng GGX của area light.
             DIFFUSE_LIGHT += LIGHT_AREA_DIFFUSE_MULTIPLIER * ATTENUATION * LIGHT_COLOR;
             SPECULAR_LIGHT += LIGHT_AREA_SPECULAR_MULTIPLIER * ATTENUATION * LIGHT_COLOR * SPECULAR_AMOUNT;
         } else {
-            // Used for all other light types (directional, omni, spot).
+            // Được sử dụng cho tất cả các loại light khác (directional, omni, spot).
             DIFFUSE_LIGHT += clamp(dot(NORMAL, LIGHT), 0.0, 1.0) * ATTENUATION * LIGHT_COLOR / PI;
         }
     }
 
-If you want the lights to add together, add the light contribution to ``DIFFUSE_LIGHT`` using ``+=``, rather than overwriting it.
+Nếu muốn các light cộng dồn với nhau, hãy thêm phần đóng góp của light vào ``DIFFUSE_LIGHT`` bằng ``+=``, thay vì ghi đè lên nó.
 
 .. warning::
 
-    The ``light()`` function won't be run if the ``vertex_lighting`` render mode is enabled, or if
+    Hàm ``light()`` sẽ không được chạy nếu chế độ kết xuất ``vertex_lighting`` được bật hoặc nếu
     :ref:`Rendering > Quality > Shading > Force Vertex Shading<class_ProjectSettings_property_rendering/shading/overrides/force_vertex_shading>`
-    is enabled in the Project Settings. (It's enabled by default on mobile platforms.)
+    được bật trong Project Settings. (Theo mặc định, tùy chọn này được bật trên các nền tảng mobile.)
 
 +-----------------------------------+------------------------------------------------------------------------+
 | Built-in                          | Description                                                            |
@@ -636,13 +605,10 @@ If you want the lights to add together, add the light contribution to ``DIFFUSE_
 
 .. note::
 
-    Shaders going through the transparent pipeline when ``ALPHA`` is written to
-    may exhibit transparency sorting issues. Read the
+    Các shader đi qua transparent pipeline khi ghi vào ``ALPHA`` có thể gặp vấn đề về sắp xếp độ trong suốt. Đọc
     :ref:`transparency sorting section in the 3D rendering limitations page <doc_3d_rendering_limitations_transparency_sorting>`
-    for more information and ways to avoid issues.
+    để biết thêm thông tin và các cách tránh vấn đề này.
 
-    Transparent materials also cannot cast shadows or appear in
-    ``hint_screen_texture`` and ``hint_depth_texture`` uniforms. This in turn prevents those
-    materials from appearing in screen-space reflections or refraction.
+    Material trong suốt cũng không thể đổ bóng hoặc xuất hiện trong các uniform ``hint_screen_texture`` và ``hint_depth_texture``. Điều này khiến các material đó không xuất hiện trong phản xạ hoặc khúc xạ trong screen space.
     :ref:`SDFGI <doc_using_sdfgi>` sharp reflections are not visible on transparent
-    materials (only rough reflections are visible on transparent materials).
+    material (chỉ có thể thấy các phản xạ thô trên material trong suốt).

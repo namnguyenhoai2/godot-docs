@@ -1,18 +1,15 @@
 .. _doc_c_sharp_variant:
 
-C# Variant
+Variant C#
 ==========
 
-For a detailed explanation of Variant in general, see the :ref:`Variant <class_Variant>` documentation page.
+Để biết giải thích chi tiết về Variant nói chung, hãy xem trang tài liệu :ref:`Variant <class_Variant>`.
 
-``Godot.Variant`` is used to represent Godot's native :ref:`Variant <class_Variant>` type. Any
+``Godot.Variant`` được dùng để biểu diễn kiểu :ref:`Variant <class_Variant>` gốc của Godot. Bất kỳ
 :ref:`Variant-compatible type <c_sharp_variant_compatible_types>` can be converted from/to it.
-We recommend avoiding ``Godot.Variant`` unless it is necessary to interact with untyped engine APIs.
-Take advantage of C#'s type safety when possible.
+Chúng tôi khuyến nghị tránh sử dụng ``Godot.Variant`` trừ khi cần tương tác với các engine API không định kiểu. Hãy tận dụng tính an toàn kiểu của C# khi có thể.
 
-Converting from a Variant-compatible C# type to ``Godot.Variant`` can be done using implicit
-conversions. There are also ``CreateFrom`` method overloads and the generic ``Variant.From<T>``
-methods. Only the syntax is different: the behavior is the same.
+Có thể chuyển đổi từ một kiểu C# tương thích với Variant sang ``Godot.Variant`` bằng các phép chuyển đổi ngầm định. Ngoài ra còn có các overload phương thức ``CreateFrom`` và các phương thức generic ``Variant.From<T>``. Chỉ khác nhau về cú pháp: hành vi là như nhau.
 
 .. code-block:: csharp
 
@@ -23,18 +20,14 @@ methods. Only the syntax is different: the behavior is the same.
     Variant numberVariant2 = Variant.CreateFrom(x);
     Variant numberVariant3 = Variant.From(x);
 
-Implicit conversions to ``Godot.Variant`` make passing variants as method arguments very convenient.
-For example, the third argument of :ref:`tween_property<class_Tween_method_tween_property>`
-specifying the final color of the tween is a ``Godot.Variant``.
+Các phép chuyển đổi ngầm định sang ``Godot.Variant`` giúp việc truyền các variant làm đối số phương thức trở nên rất thuận tiện. Ví dụ, đối số thứ ba của :ref:`tween_property<class_Tween_method_tween_property>`, dùng để chỉ định màu cuối cùng của tween, là một ``Godot.Variant``.
 
 .. code-block:: csharp
 
     Tween tween = CreateTween();
     tween.TweenProperty(GetNode("Sprite"), "modulate", Colors.Red, 1.0f);
 
-Converting from ``Godot.Variant`` to a C# type can be done using explicit conversions. There are
-also ``Variant.As{TYPE}`` methods and the generic ``Variant.As<T>`` method. All of these behave the
-same.
+Có thể chuyển đổi từ ``Godot.Variant`` sang một kiểu C# bằng các phép chuyển đổi tường minh. Ngoài ra còn có các phương thức ``Variant.As{TYPE}`` và phương thức generic ``Variant.As<T>``. Tất cả đều có hành vi như nhau.
 
 .. code-block:: csharp
 
@@ -46,107 +39,42 @@ same.
 
 .. note::
 
-    The ``Variant.As{TYPE}`` methods are typically named after C# types (``Int32``), not C# keywords
-    (``int``).
+    Các phương thức ``Variant.As{TYPE}`` thường được đặt tên theo các kiểu C# (``Int32``), không phải theo các từ khóa C# (``int``).
 
-If the Variant type doesn't match the conversion target type, the consequences vary depending on the
-source and target values.
+Nếu kiểu Variant không khớp với kiểu đích của phép chuyển đổi, hệ quả sẽ khác nhau tùy thuộc vào các giá trị nguồn và đích.
 
-- The conversion may examine the value and return a similar but potentially unexpected value of the
-  target type. For example, the string ``"42a"`` may be converted to the integer ``42``.
-- The default value of the target type may be returned.
-- An empty array may be returned.
-- An exception may be thrown.
+- Phép chuyển đổi có thể kiểm tra giá trị và trả về một giá trị tương tự nhưng có khả năng không như mong đợi của kiểu đích. Ví dụ, chuỗi ``"42a"`` có thể được chuyển đổi thành số nguyên ``42``. - Giá trị mặc định của kiểu đích có thể được trả về. - Một mảng rỗng có thể được trả về. - Một exception có thể được throw.
 
-Converting to the correct type avoids complicated behavior and should be preferred.
+Chuyển đổi sang đúng kiểu sẽ tránh được hành vi phức tạp và nên được ưu tiên.
 
-The ``Variant.Obj`` property returns a C# ``object`` with the correct value for any variant. This
-may be useful when the type of Variant is completely unknown. However, when possible, prefer more
-specific conversions. ``Variant.Obj`` evaluates a ``switch`` on ``Variant.VariantType`` and it may
-not be necessary. Also, if the result is a value type, it is boxed.
+Thuộc tính ``Variant.Obj`` trả về một ``object`` C# với giá trị chính xác cho mọi variant. Điều này có thể hữu ích khi hoàn toàn không biết kiểu của Variant. Tuy nhiên, khi có thể, hãy ưu tiên các phép chuyển đổi cụ thể hơn. ``Variant.Obj`` đánh giá một ``switch`` trên ``Variant.VariantType`` và có thể không cần thiết. Ngoài ra, nếu kết quả là một value type, nó sẽ được boxed.
 
-For example, if the potential for ``Variant.As<MyNode>()`` to throw an invalid cast exception isn't
-acceptable, consider using a ``Variant.As<GodotObject>() is MyNode n`` type pattern instead.
+Ví dụ, nếu không thể chấp nhận khả năng ``Variant.As<MyNode>()`` throw invalid cast exception, hãy cân nhắc sử dụng type pattern ``Variant.As<GodotObject>() is MyNode n`` thay thế.
 
 .. note::
 
-    Since the Variant type in C# is a struct, it can't be null. To create a "null"
-    Variant, use the ``default`` keyword or the ``Godot.Variant`` parameterless constructor.
+    Vì kiểu Variant trong C# là một struct nên nó không thể là null. Để tạo một Variant "null", hãy sử dụng từ khóa ``default`` hoặc constructor không tham số ``Godot.Variant``.
 
 .. _c_sharp_variant_compatible_types:
 
-Variant-compatible types
-------------------------
+Các kiểu tương thích với Variant
+--------------------------------
 
-A Variant-compatible type can be converted to and from a ``Godot.Variant``.
-These C# types are Variant-compatible:
+Một kiểu tương thích với Variant có thể được chuyển đổi sang và từ một ``Godot.Variant``. Các kiểu C# sau tương thích với Variant:
 
-* All the `built-in value types <https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/built-in-types-table>`_,
-  except ``decimal``, ``nint`` and ``nuint``.
-* ``string``.
-* Classes derived from :ref:`GodotObject <class_Object>`.
-* Collections types defined in the ``Godot.Collections`` namespace.
+* Tất cả `built-in value types <https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/built-in-types-table>`_, ngoại trừ ``decimal``, ``nint`` và ``nuint``. * ``string``. * Các class kế thừa từ :ref:`GodotObject <class_Object>`. * Các kiểu collection được định nghĩa trong namespace ``Godot.Collections``.
 
-Full list of Variant types and their equivalent C# type:
+Danh sách đầy đủ các kiểu Variant và kiểu C# tương đương:
 
-=======================  ===========================================================
-Variant.Type             C# Type
-=======================  ===========================================================
-``Nil``                  ``null`` (Not a type)
-``Bool``                 ``bool``
-``Int``                  ``long`` (Godot stores 64-bit integers in Variant)
-``Float``                ``double`` (Godot stores 64-bit floats in Variant)
-``String``               ``string``
-``Vector2``              ``Godot.Vector2``
-``Vector2I``             ``Godot.Vector2I``
-``Rect2``                ``Godot.Rect2``
-``Rect2I``               ``Godot.Rect2I``
-``Vector3``              ``Godot.Vector3``
-``Vector3I``             ``Godot.Vector3I``
-``Transform2D``          ``Godot.Transform2D``
-``Vector4``              ``Godot.Vector4``
-``Vector4I``             ``Godot.Vector4I``
-``Plane``                ``Godot.Plane``
-``Quaternion``           ``Godot.Quaternion``
-``Aabb``                 ``Godot.Aabb``
-``Basis``                ``Godot.Basis``
-``Transform3D``          ``Godot.Transform3D``
-``Projection``           ``Godot.Projection``
-``Color``                ``Godot.Color``
-``StringName``           ``Godot.StringName``
-``NodePath``             ``Godot.NodePath``
-``Rid``                  ``Godot.Rid``
-``Object``               ``Godot.GodotObject`` or any derived type.
-``Callable``             ``Godot.Callable``
-``Signal``               ``Godot.Signal``
-``Dictionary``           ``Godot.Collections.Dictionary``
-``Array``                ``Godot.Collections.Array``
-``PackedByteArray``      ``byte[]``
-``PackedInt32Array``     ``int[]``
-``PackedInt64Array``     ``long[]``
-``PackedFloat32Array``   ``float[]``
-``PackedFloat64Array``   ``double[]``
-``PackedStringArray``    ``string[]``
-``PackedVector2Array``   ``Godot.Vector2[]``
-``PackedVector3Array``   ``Godot.Vector3[]``
-``PackedVector4Array``   ``Godot.Vector4[]``
-``PackedColorArray``     ``Godot.Color[]``
-=======================  ===========================================================
+======================= =========================================================== Kiểu Variant Kiểu C# ======================= =========================================================== ``Nil`` ``null`` (Không phải là một kiểu) ``Bool`` ``bool`` ``Int`` ``long`` (Godot lưu các số nguyên 64-bit trong Variant) ``Float`` ``double`` (Godot lưu các số thực 64-bit trong Variant) ``String`` ``string`` ``Vector2`` ``Godot.Vector2`` ``Vector2I`` ``Godot.Vector2I`` ``Rect2`` ``Godot.Rect2`` ``Rect2I`` ``Godot.Rect2I`` ``Vector3`` ``Godot.Vector3`` ``Vector3I`` ``Godot.Vector3I`` ``Transform2D`` ``Godot.Transform2D`` ``Vector4`` ``Godot.Vector4`` ``Vector4I`` ``Godot.Vector4I`` ``Plane`` ``Godot.Plane`` ``Quaternion`` ``Godot.Quaternion`` ``Aabb`` ``Godot.Aabb`` ``Basis`` ``Godot.Basis`` ``Transform3D`` ``Godot.Transform3D`` ``Projection`` ``Godot.Projection`` ``Color`` ``Godot.Color`` ``StringName`` ``Godot.StringName`` ``NodePath`` ``Godot.NodePath`` ``Rid`` ``Godot.Rid`` ``Object`` ``Godot.GodotObject`` hoặc bất kỳ kiểu dẫn xuất nào. ``Callable`` ``Godot.Callable`` ``Signal`` ``Godot.Signal`` ``Dictionary`` ``Godot.Collections.Dictionary`` ``Array`` ``Godot.Collections.Array`` ``PackedByteArray`` ``byte[]`` ``PackedInt32Array`` ``int[]`` ``PackedInt64Array`` ``long[]`` ``PackedFloat32Array`` ``float[]`` ``PackedFloat64Array`` ``double[]`` ``PackedStringArray`` ``string[]`` ``PackedVector2Array`` ``Godot.Vector2[]`` ``PackedVector3Array`` ``Godot.Vector3[]`` ``PackedVector4Array`` ``Godot.Vector4[]`` ``PackedColorArray`` ``Godot.Color[]`` ======================= ===========================================================
 
 .. warning::
 
-    Godot uses 64-bit integers and floats in Variant. Smaller integer and float types
-    such as ``int``, ``short`` and ``float`` are supported since they can fit in the
-    bigger type. Be aware that when a conversion is performed, using the wrong
-    type will result in potential precision loss.
+    Godot sử dụng các số nguyên và số thực 64-bit trong Variant. Các kiểu số nguyên và số thực nhỏ hơn như ``int``, ``short`` và ``float`` được hỗ trợ vì chúng có thể vừa với kiểu lớn hơn. Lưu ý rằng khi thực hiện chuyển đổi, việc sử dụng sai kiểu có thể dẫn đến mất độ chính xác.
 
 .. warning::
 
-    Enums are supported by ``Godot.Variant`` since their underlying type is an integer
-    type which are all compatible. However, implicit conversions don't exist, enums must
-    be manually converted to their underlying integer type before they can converted to/from
-    ``Godot.Variant`` or use the generic ``Variant.As<T>`` and ``Variant.From<T>`` methods
-    to convert them.
+    Enum được ``Godot.Variant`` hỗ trợ vì kiểu nền của chúng là một kiểu số nguyên và tất cả các kiểu số nguyên đều tương thích. Tuy nhiên, các phép chuyển đổi ngầm định không tồn tại; enum phải được chuyển đổi thủ công sang kiểu số nguyên nền trước khi có thể được chuyển đổi sang/từ ``Godot.Variant``, hoặc sử dụng các phương thức generic ``Variant.As<T>`` và ``Variant.From<T>`` để chuyển đổi chúng.
 
     .. code-block:: csharp
 
@@ -158,23 +86,19 @@ Variant.Type             C# Type
         Variant variant2 = Variant.From(MyEnum.A);
         MyEnum enum2 = variant2.As<MyEnum>();
 
-Using Variant in a generic context
-----------------------------------
+Sử dụng Variant trong ngữ cảnh generic
+--------------------------------------
 
-When using generics, you may be interested in restricting the generic ``T`` type to be
-only one of the Variant-compatible types. This can be achieved using the ``[MustBeVariant]``
-attribute.
+Khi sử dụng generic, bạn có thể muốn giới hạn kiểu generic ``T`` chỉ còn một trong các kiểu tương thích với Variant. Có thể thực hiện điều này bằng attribute ``[MustBeVariant]``.
 
 .. code-block:: csharp
 
     public void MethodThatOnlySupportsVariants<[MustBeVariant] T>(T onlyVariant)
     {
-        // Do something with the Variant-compatible value.
+        // Thực hiện một việc gì đó với giá trị tương thích với Variant.
     }
 
-Combined with the generic ``Variant.From<T>`` allows you to obtain an instance of ``Godot.Variant``
-from an instance of a generic ``T`` type. Then it can be used in any API that only supports the
-``Godot.Variant`` struct.
+Kết hợp với generic ``Variant.From<T>``, điều này cho phép bạn lấy một instance của ``Godot.Variant`` từ một instance của kiểu generic ``T``. Sau đó, instance này có thể được sử dụng trong bất kỳ API nào chỉ hỗ trợ struct ``Godot.Variant``.
 
 .. code-block:: csharp
 
@@ -186,12 +110,10 @@ from an instance of a generic ``T`` type. Then it can be used in any API that on
 
     public void Method2(Variant variant)
     {
-        // Do something with variant.
+        // Thực hiện một việc gì đó với variant.
     }
 
-In order to invoke a method with a generic parameter annotated with the ``[MustBeVariant]``
-attribute, the value must be a Variant-compatible type or a generic ``T`` type annotated
-with the ``[MustBeVariant]`` attribute as well.
+Để gọi một phương thức có tham số generic được chú thích bằng attribute ``[MustBeVariant]``, giá trị phải là một kiểu tương thích với Variant hoặc một kiểu generic ``T`` cũng được chú thích bằng attribute ``[MustBeVariant]``.
 
 .. code-block:: csharp
 
@@ -201,14 +123,14 @@ with the ``[MustBeVariant]`` attribute as well.
 
     public void Main<[MustBeVariant] T1, T2>(T1 someGeneric1, T2 someGeneric2)
     {
-        MyMethod(42); // Works because `int` is a Variant-compatible type.
-        MyMethod(new ObjectDerivedClass()); // Works because any type that derives from `GodotObject` is a Variant-compatible type.
-        MyMethod(new NonObjectDerivedClass()); // Does NOT work because the type is not Variant-compatible.
-        MyMethod(someGeneric1); // Works because `T1` is annotated with the `[MustBeVariant]` attribute.
-        MyMethod(someGeneric2); // Does NOT work because `T2` is NOT annotated with the `[MustBeVariant]` attribute.
+        MyMethod(42); // Hoạt động vì `int` là một kiểu tương thích với Variant.
+        MyMethod(new ObjectDerivedClass()); // Hoạt động vì bất kỳ kiểu nào kế thừa từ `GodotObject` đều là kiểu tương thích với Variant.
+        MyMethod(new NonObjectDerivedClass()); // KHÔNG hoạt động vì kiểu này không tương thích với Variant.
+        MyMethod(someGeneric1); // Hoạt động vì `T1` được chú thích bằng attribute `[MustBeVariant]`.
+        MyMethod(someGeneric2); // KHÔNG hoạt động vì `T2` KHÔNG được chú thích bằng attribute `[MustBeVariant]`.
     }
 
     public void MyMethod<[MustBeVariant] T>(T variant)
     {
-        // Do something with variant.
+        // Thực hiện một việc gì đó với variant.
     }

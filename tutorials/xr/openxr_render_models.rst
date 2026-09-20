@@ -1,134 +1,72 @@
 .. _doc_openxr_render_models:
 
-OpenXR Render Models
-====================
+Render Models của OpenXR
+========================
 
-A cornerstone of OpenXR's API design is being as platform agnostic as possible.
-A great example of this is OpenXR's action map system where XR runtimes
-have to support core interaction profiles to fall back on,
-if no interaction profile exists for the hardware being used.
-This ensures that OpenXR applications keep functioning even when used on
-hardware that didn't exist when the application was released,
-or that the developers of the application did not have access too.
+Một nền tảng cốt lõi trong thiết kế API của OpenXR là tính độc lập với nền tảng cao nhất có thể. Một ví dụ điển hình là hệ thống action map của OpenXR, trong đó các XR runtime phải hỗ trợ những interaction profile cốt lõi để dự phòng nếu không tồn tại interaction profile cho phần cứng đang được sử dụng. Điều này đảm bảo các ứng dụng OpenXR vẫn tiếp tục hoạt động ngay cả khi được sử dụng trên phần cứng chưa tồn tại tại thời điểm ứng dụng được phát hành, hoặc mà các nhà phát triển ứng dụng không có quyền tiếp cận.
 
-A consequence of this is that the application developer doesn't know with any
-certainty what hardware is being used, as the XR runtime could be mimicking
-other hardware.
-The application developer thus can't show anything in relation to the actual
-hardware used, the most common use case being showing the controllers the user
-is currently holding.
+Hệ quả của điều này là nhà phát triển ứng dụng không thể biết chắc phần cứng nào đang được sử dụng, vì XR runtime có thể mô phỏng phần cứng khác. Do đó, nhà phát triển ứng dụng không thể hiển thị bất cứ thứ gì liên quan đến phần cứng thực tế đang được sử dụng; trường hợp phổ biến nhất là hiển thị các controller mà người dùng hiện đang cầm.
 
-Showing the correct controller models and having these models
-correctly positioned is important to a proper sense of immersion.
+Việc hiển thị đúng các model controller và định vị chính xác các model này rất quan trọng để tạo cảm giác hòa mình phù hợp.
 
-This is where OpenXR's `render models API <https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XR_EXT_render_models>`_ comes in.
-This API allows us to query the XR runtime for 3D assets that are correct
-for the physical hardware being used.
-The API also allows us to query the position of this hardware within the
-tracking volume and the correct positioning of subcomponents of this hardware.
+Đây là lúc `render models API <https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XR_EXT_render_models>`_ của OpenXR phát huy tác dụng. API này cho phép chúng ta truy vấn XR runtime để lấy các tài sản 3D phù hợp với phần cứng vật lý đang được sử dụng. API cũng cho phép chúng ta truy vấn vị trí của phần cứng này trong tracking volume và vị trí chính xác của các thành phần con của phần cứng.
 
-For instance, we can correctly position and animate the trigger or show buttons
-being pressed.
+Ví dụ, chúng ta có thể định vị và tạo animation chính xác cho trigger hoặc hiển thị các nút đang được nhấn.
 
-For those runtimes that support the
-`controller data source for hand tracking <https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XR_EXT_hand_tracking_data_source>`_
-, we can also correctly position the user's fingers and hand according to the
-shape of the controller.
-Do note that this works in combination with the
-`hand joints motion range extension <https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XR_EXT_hand_joints_motion_range>`_
-to prevent clipping of the fingers.
+Đối với các runtime hỗ trợ `controller data source for hand tracking <https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XR_EXT_hand_tracking_data_source>`_, chúng ta cũng có thể định vị chính xác các ngón tay và bàn tay của người dùng theo hình dạng của controller. Lưu ý rằng tính năng này hoạt động kết hợp với `hand joints motion range extension <https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XR_EXT_hand_joints_motion_range>`_ để tránh các ngón tay bị xuyên qua vật thể.
 
-OpenXR Render models node
+Node OpenXR Render models
 -------------------------
 
-The :ref:`OpenXRRenderModelManager<class_OpenXRRenderModelManager>`
-node can be used to automate most of the render models functionality.
-This node keeps track of the active render models currently made
-available by the XR runtime.
+Node :ref:`OpenXRRenderModelManager<class_OpenXRRenderModelManager>` có thể được dùng để tự động hóa hầu hết chức năng render models. Node này theo dõi các render model đang hoạt động hiện được XR runtime cung cấp.
 
-It will create child nodes for each active render model resulting in
-that render model being displayed.
+Node này sẽ tạo các node con cho từng render model đang hoạt động, khiến render model đó được hiển thị.
 
-This node must have an :ref:`XROrigin3D<class_XROrigin3D>` node as an
-ancestor.
+Node này phải có một node :ref:`XROrigin3D<class_XROrigin3D>` làm ancestor.
 
-If ``tracker`` is set to ``Any`` our node will show all render models
-currently being tracked. In this scenario this node must be a direct
-child of our :ref:`XROrigin3D<class_XROrigin3D>` node.
+Nếu ``tracker`` được đặt thành ``Any``, node của chúng ta sẽ hiển thị tất cả render model hiện đang được tracking. Trong trường hợp này, node này phải là node con trực tiếp của node :ref:`XROrigin3D<class_XROrigin3D>`.
 
-If ``tracker`` is set to ``None set`` our node will only show render
-models for which no tracker has been identified. In this scenario this
-node must also be a direct child of our
+Nếu ``tracker`` được đặt thành ``None set``, node của chúng ta sẽ chỉ hiển thị các render model chưa xác định được tracker. Trong trường hợp này, node này cũng phải là node con trực tiếp của
 :ref:`XROrigin3D<class_XROrigin3D>` node.
 
-If ``tracker`` is set to ``Left Hand`` or ``Right Hand`` our node will
-only show render models related to our left or right hand respectively.
-In this scenario, our node can be placed deeper in the scene tree.
+Nếu ``tracker`` được đặt thành ``Left Hand`` hoặc ``Right Hand``, node của chúng ta sẽ chỉ hiển thị các render model tương ứng với tay trái hoặc tay phải. Trong trường hợp này, node của chúng ta có thể được đặt sâu hơn trong scene tree.
 
 .. warning::
 
-    For most XR runtimes this means the render model represents a controller
-    that is actually being held by the user but this is not a guarantee.
-    Some XR runtimes will always set the tracker to either the left or right
-    hand even if the controller is not currently held but is being tracked.
-    You should always test this as this will lead to unwanted behavior.
+    Đối với hầu hết XR runtime, điều này có nghĩa là render model đại diện cho một controller thực sự đang được người dùng cầm, nhưng đây không phải là điều được đảm bảo. Một số XR runtime sẽ luôn đặt tracker thành tay trái hoặc tay phải, ngay cả khi controller hiện không được cầm nhưng vẫn đang được tracking. Bạn luôn nên kiểm thử điều này vì nó có thể dẫn đến hành vi không mong muốn.
 
-In this scenario we can also specify an action for a pose in the action map
-by setting the ``make_local_to_pose`` property to the pose action.
-Use this in combination with an :ref:`XRController3D<class_XRController3D>`
-node that is using the same pose and you can now add a layer that allows
-you to deviate from the tracked position of both your controller and the
-related render model (see example below).
+Trong trường hợp này, chúng ta cũng có thể chỉ định một action cho pose trong action map bằng cách đặt thuộc tính ``make_local_to_pose`` thành pose action. Kết hợp thuộc tính này với một node :ref:`XRController3D<class_XRController3D>` đang sử dụng cùng pose, giờ đây bạn có thể thêm một layer cho phép thay đổi vị trí tracking của cả controller và render model liên quan (xem ví dụ bên dưới).
 
 .. note::
 
-    Combining the above with hand tracking does introduce the problem
-    that hand tracking is completely independent from the action map
-    system. You will need to combine the hand tracking and controller
-    tracking poses to properly offset the render models.
+    Việc kết hợp nội dung trên với hand tracking tạo ra một vấn đề: hand tracking hoàn toàn độc lập với hệ thống action map. Bạn sẽ cần kết hợp các pose hand tracking và controller tracking để offset render model đúng cách.
 
-    This falls beyond the scope of this documentation.
+    Điều này nằm ngoài phạm vi của tài liệu này.
 
-Render model manager example
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Ví dụ về render model manager
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can download `our render models demo <https://github.com/godotengine/godot-demo-projects/tree/master/xr/openxr_render_models>`_
-which implements the setup described below.
+Bạn có thể tải xuống `our render models demo <https://github.com/godotengine/godot-demo-projects/tree/master/xr/openxr_render_models>`_, trong đó triển khai thiết lập được mô tả bên dưới.
 
 .. image:: img/openxr_render_models_setup.webp
 
-In this setup we find an :ref:`OpenXRRenderModelManager<class_OpenXRRenderModelManager>`
-node directly underneath our :ref:`XROrigin3D<class_XROrigin3D>` node.
-On this node our ``target`` property is set to ``None set`` and will handle
-showing all render models that are currently not related to our left or
-right hand controllers.
+Trong thiết lập này, chúng ta tìm thấy một node :ref:`OpenXRRenderModelManager<class_OpenXRRenderModelManager>` nằm ngay bên dưới node :ref:`XROrigin3D<class_XROrigin3D>`. Trên node này, thuộc tính ``target`` được đặt thành ``None set`` và sẽ xử lý việc hiển thị tất cả render model hiện không liên quan đến controller tay trái hoặc tay phải của chúng ta.
 
-We then see the same setup for our left and right hand so we'll focus on
-just the left hand.
+Sau đó, chúng ta thấy cùng một thiết lập cho tay trái và tay phải, vì vậy chúng ta sẽ chỉ tập trung vào tay trái.
 
-We have an :ref:`XRController3D<class_XRController3D>` that will track the
-location of our hand.
+Chúng ta có một :ref:`XRController3D<class_XRController3D>` để tracking vị trí bàn tay.
 
 .. note::
 
-    We are using the ``grip`` pose in this example. The ``palm`` pose is
-    arguably more suitable and predictable however it is not supported
-    by all XR runtimes. See the hand tracking demo project for a
-    solution to switching between these poses based on what is supported.
+    Trong ví dụ này, chúng ta sử dụng pose ``grip``. Pose ``palm`` được cho là phù hợp và dễ dự đoán hơn, tuy nhiên không được tất cả XR runtime hỗ trợ. Hãy xem project hand tracking demo để biết giải pháp chuyển đổi giữa các pose này dựa trên những pose được hỗ trợ.
 
-As a child of the node we have an :ref:`AnimatableBody3D<class_AnimatableBody3D>`
-node that follows the tracked location of the hand **but** will interact
-with physics objects to stop the player's hand from going through walls etc.
-This node has a collision shape that encapsulates the hand.
+Là node con của node này, chúng ta có một node :ref:`AnimatableBody3D<class_AnimatableBody3D>` đi theo vị trí tracking của bàn tay **nhưng** sẽ tương tác với các physics object để ngăn bàn tay của người chơi đi xuyên qua tường, v.v. Node này có một collision shape bao quanh bàn tay.
 
 .. note::
 
-    It is important to set the physics priority so that this logic runs
-    after any physics logic that moves the XROrigin3D node or the hand
-    will lag a frame behind.
+    Điều quan trọng là phải đặt physics priority để logic này chạy sau mọi physics logic di chuyển node XROrigin3D; nếu không, bàn tay sẽ bị trễ một frame.
 
-The script below shows a basic implementation for this that you can build
-upon.
+Script bên dưới cho thấy một cách triển khai cơ bản mà bạn có thể xây dựng thêm.
 
 .. code-block:: gdscript
 
@@ -136,27 +74,23 @@ upon.
     extends AnimatableBody3D
 
     func _ready():
-        # Make sure these are set correctly.
+        # Hãy đảm bảo các giá trị này được thiết lập chính xác.
         top_level = true
         sync_to_physics = false
         process_physics_priority = -90
 
     func _physics_process(_delta):
-        # Follow our parent node around.
+        # Đi theo node cha của chúng ta.
         var dest_transform = get_parent().global_transform
 
-        # We just apply rotation for this example.
+        # Trong ví dụ này, chúng ta chỉ áp dụng rotation.
         global_basis = dest_transform.basis
 
-        # Attempt to move to where our tracked hand is.
+        # Cố gắng di chuyển đến vị trí bàn tay đang được tracking.
         move_and_collide(dest_transform.origin - global_position)
 
 
-Finally we see another :ref:`OpenXRRenderModelManager<class_OpenXRRenderModelManager>`
-node, this one with ``target`` set to the appropriate hand and
-``make_local_to_pose`` set to the correct pose.
-This will ensure that the render models related to this hand are properly
-shown and offset if our collision handler has altered the location.
+Cuối cùng, chúng ta thấy một node :ref:`OpenXRRenderModelManager<class_OpenXRRenderModelManager>` khác; node này có ``target`` được đặt thành bàn tay tương ứng và ``make_local_to_pose`` được đặt thành pose chính xác. Điều này đảm bảo các render model liên quan đến bàn tay này được hiển thị đúng và offset nếu collision handler đã thay đổi vị trí.
 
 .. raw:: html
 
@@ -165,111 +99,83 @@ shown and offset if our collision handler has altered the location.
     </div>
 
 
-Render model node
+Node render model
 -----------------
 
-The :ref:`OpenXRRenderModel<class_OpenXRRenderModel>` node implements
-all the logic to display and position a given render model provided by
-the render models API.
+Node :ref:`OpenXRRenderModel<class_OpenXRRenderModel>` triển khai toàn bộ logic để hiển thị và định vị một render model cụ thể do render models API cung cấp.
 
-Instances of this node are added by the render model manager node we used up
-above but you can interact with these directly if you wish.
+Các instance của node này được thêm bởi render model manager node mà chúng ta đã sử dụng ở trên, nhưng bạn cũng có thể tương tác trực tiếp với chúng nếu muốn.
 
-Whenever Godot obtains information about a new render model an RID is
-created to reference that render model.
+Mỗi khi Godot nhận được thông tin về một render model mới, một RID sẽ được tạo để tham chiếu đến render model đó.
 
-By assigning that RID to the ``render_model`` property on this node,
-the node will start displaying the render model and manage both the
-transform that places the render model in the correct place and
-animates all the sub objects.
+Bằng cách gán RID đó cho thuộc tính ``render_model`` trên node này, node sẽ bắt đầu hiển thị render model và quản lý cả transform đặt render model vào đúng vị trí lẫn việc tạo animation cho tất cả object con.
 
-The ``get_top_level_path`` function will return the top level path
-associated with this render model. This will point to either the
-left or right hand. As the top level path can be set or cleared
-depending on whether the user picks up, or puts down, the controller
-you can connect to the ``render_model_top_level_path_changes`` signal
-and react to these changes.
+Hàm ``get_top_level_path`` sẽ trả về top level path liên kết với render model này. Path này sẽ trỏ đến tay trái hoặc tay phải. Vì top level path có thể được thiết lập hoặc xóa tùy thuộc vào việc người dùng cầm lên hay đặt controller xuống, bạn có thể kết nối với signal ``render_model_top_level_path_changes`` và phản ứng với những thay đổi này.
 
-Depending on your setup of the
+Tùy thuộc vào thiết lập của
 :ref:`OpenXRRenderModelManager<class_OpenXRRenderModelManager>` nodes,
-render models will be removed or added as their top level path changes.
+các render model sẽ bị xóa hoặc được thêm vào khi top level path của chúng thay đổi.
 
-Backend access
---------------
+Truy cập backend
+----------------
 
-The nodes we've detailed out above handle all the display logic
-for us but it is possible to interact with the data that drives
-this directly and create your own implementation.
+Các node được mô tả chi tiết ở trên xử lý toàn bộ logic hiển thị cho chúng ta, nhưng bạn vẫn có thể tương tác trực tiếp với dữ liệu điều khiển chúng và tạo triển khai của riêng mình.
 
-For this you can access the
+Để làm vậy, bạn có thể truy cập
 :ref:`OpenXRRenderModelExtension<class_OpenXRRenderModelExtension>`
 singleton.
 
-This object also lets you query whether render models are
-supported and enabled on the device currently being used by
-calling the ``is_active`` function on this object.
+Object này cũng cho phép bạn truy vấn xem render model có được hỗ trợ và bật trên thiết bị hiện đang được sử dụng hay không bằng cách gọi hàm ``is_active`` trên object này.
 
-The built-in logic implements the
-`interaction render model API <https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XR_EXT_interaction_render_model>`_
-that lists all render models related to controllers and similar
-devices that are present in the action map.
-It will automatically create and remove render model entities
-that are exposed through this API.
+Logic tích hợp sẵn triển khai `interaction render model API <https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XR_EXT_interaction_render_model>`_, liệt kê tất cả render model liên quan đến controller và các thiết bị tương tự hiện diện trong action map. Logic này sẽ tự động tạo và xóa các entity render model được cung cấp thông qua API này.
 
-As other extensions become available these can be implemented
-in a GDExtension plugin. Such a plugin can call
-``render_model_create`` and ``render_model_destroy`` to
-create the object that will provide access to that render
-model through the core render models API.
+Khi có các extension khác, chúng có thể được triển khai trong một plugin GDExtension. Plugin như vậy có thể gọi ``render_model_create`` và ``render_model_destroy`` để tạo object cung cấp quyền truy cập vào render model đó thông qua core render models API.
 
-You should not destroy a render model outside of this logic.
+Bạn không nên hủy một render model bên ngoài logic này.
 
-You can connect to the ``render_model_added`` and
-``render_model_removed`` signals to be informed when new render
-models are added or removed.
+Bạn có thể kết nối với các signal ``render_model_added`` và ``render_model_removed`` để được thông báo khi render model mới được thêm vào hoặc xóa đi.
 
-The core methods for working with this API are listed
-below:
+Các phương thức cốt lõi để làm việc với API này được liệt kê bên dưới:
 
 .. list-table:: Render model extension functions
    :header-rows: 1
 
-   * - Function
-     - Description
+   * - Hàm
+     - Mô tả
    * - render_model_get_all
-     - Provides an array of RIDs for all render models
-       that are being tracked.
+     - Cung cấp một mảng RID cho tất cả render model
+       đang được tracking.
    * - render_model_new_scene_instance
-     - Provides a new scene that contains all meshes
-       needed to display the render model.
+     - Cung cấp một scene mới chứa tất cả mesh
+       cần thiết để hiển thị render model.
    * - render_model_get_subaction_paths
-     - Provides a list of subaction paths from your
-       action map related to this render mode.
+     - Cung cấp danh sách subaction path từ
+       action map liên quan đến render model này.
    * - render_model_get_top_level_path
-     - Returns the top level path associated with this
-       render model (if any).
-       Use the ``render_model_top_level_path_changed``
-       signal to react to this changing.
+     - Trả về top level path liên kết với
+       render model này (nếu có).
+       Sử dụng signal ``render_model_top_level_path_changed``
+       để phản ứng với thay đổi này.
    * - render_model_get_confidence
-     - Returns the tracking confidence for the tracking
-       data for this render model.
+     - Trả về độ tin cậy tracking của dữ liệu
+       tracking cho render model này.
    * - render_model_get_root_transform
-     - Returns the root transform for this render model
-       within our current reference space. This can be
-       used to place the render model in space.
+     - Trả về root transform của render model này
+       trong reference space hiện tại của chúng ta. Giá trị này có thể được
+       dùng để đặt render model trong không gian.
    * - render_model_get_animatable_node_count
-     - Returns the number of nodes in our render model
-       scene that can be animated
+     - Trả về số node trong scene render model của chúng ta
+       có thể được tạo animation
    * - render_model_get_animatable_node_name
-     - Returns the name of the node that we can animate.
-       Note that this node can be any number of levels
-       deep within the scene.
+     - Trả về tên của node mà chúng ta có thể animate.
+       Lưu ý rằng node này có thể nằm ở bất kỳ số cấp độ nào
+       bên trong scene.
    * - render_model_is_animatable_node_visible
-     - Returns true if this animatable node should be
-       visible
+     - Trả về true nếu node có thể animate này cần được
+       hiển thị
    * - render_model_get_animatable_node_transform
-     - Returns the transform for this animatable node.
-       This is a local transform that can be directly
-       applied.
+     - Trả về transform của node có thể animate này.
+       Đây là một local transform có thể được
+       áp dụng trực tiếp.
 
 

@@ -1,131 +1,112 @@
 .. _doc_openxr_spatial_entities:
 
-OpenXR spatial entities
-=======================
+Các thực thể không gian OpenXR
+==============================
 
-For any sort of augmented reality application you need to access real world information, and be able to
-track real world locations. OpenXR's spatial entities API was introduced for this exact purpose.
+Đối với mọi loại ứng dụng thực tế tăng cường, bạn cần truy cập thông tin về thế giới thực và có khả năng theo dõi các vị trí trong thế giới thực. API spatial entities của OpenXR được giới thiệu chính xác để phục vụ mục đích này.
 
-It has a very modular design. The core of the API defines how real world entities are structured,
-how they are found, and how information about them is stored and accessed.
+API này có thiết kế rất mô-đun. Phần cốt lõi của API xác định cách các thực thể trong thế giới thực được cấu trúc, cách tìm thấy chúng cũng như cách thông tin về chúng được lưu trữ và truy cập.
 
-Various extensions are added on top, which implement specific systems such as marker tracking,
-plane tracking, and anchors. These are referred to as spatial capabilities.
+Nhiều extension khác nhau được thêm vào bên trên để triển khai các hệ thống cụ thể như theo dõi marker, theo dõi mặt phẳng và anchor. Chúng được gọi là spatial capabilities.
 
-Each entity that can be handled by the system is broken up into smaller components, which makes it easy
-to extend the system and add new capabilities.
+Mỗi thực thể có thể được hệ thống xử lý được chia thành các component nhỏ hơn, nhờ đó dễ dàng mở rộng hệ thống và thêm các capability mới.
 
-Vendors have the ability to implement and expose additional capabilities and component types that can be
-used with the core API. For Godot these can be implemented in extensions. These implementations
-however fall outside of the scope of this manual.
+Các nhà cung cấp có khả năng triển khai và cung cấp thêm các capability cùng loại component có thể được sử dụng với core API. Trong Godot, những capability này có thể được triển khai trong các extension. Tuy nhiên, các triển khai này nằm ngoài phạm vi của tài liệu hướng dẫn này.
 
-Finally it is important to note that the spatial entity system makes use of asynchronous functions.
-This means that you can start a process, and then get informed of it finishing later on.
+Cuối cùng, điều quan trọng cần lưu ý là hệ thống spatial entity sử dụng các hàm bất đồng bộ (asynchronous functions). Điều này có nghĩa là bạn có thể bắt đầu một quy trình, sau đó được thông báo khi quy trình hoàn tất.
 
-Setup
------
+Thiết lập
+---------
 
-In order to use spatial entities you need to enable the related project settings.
-You can find these in the OpenXR section:
+Để sử dụng spatial entities, bạn cần bật các project settings liên quan. Bạn có thể tìm thấy chúng trong phần OpenXR:
 
 .. image:: img/openxr_spatial_entities_project_settings.webp
 
 .. list-table:: Spatial entity settings
    :header-rows: 1
 
-   * - Setting
-     - Description
-   * - Enabled
-     - Enables the core of the spatial entities system. This must be enabled for any of the spatial
-       entities systems to work.
-   * - Enable spatial anchors
-     - Enables the spatial anchors capability that allow creating and tracking spatial anchors.
-   * - Enable persistent anchors
-     - Enables the ability to make spatial anchors persistent. This means that their location is stored
-       and can be retrieved in subsequent sessions.
-   * - Enable built-in anchor detection
-     - Enables our built-in anchor detection logic, this will automatically retrieve persistent anchors
-       and adjust the positioning of anchors when tracking is updated.
-   * - Enable plane tracking
-     - Enables the plane tracking capability that allows detection of surfaces such as floors, walls,
-       ceilings, and tables.
-   * - Enable built-in plane detection
-     - Enables our built-in plane detection logic, this will automatically react to new plane data
-       becoming available.
-   * - Enable marker tracking
-     - Enables our marker tracking capability that allows detection of markers such as QR codes,
-       Aruco markers, and April tags.
-   * - Enable built-in marker tracking
-     - Enables our built-in marker detection logic, this will automatically react to new markers being
-       found or markers being moved around the player's space.
+   * - Cài đặt
+     - Mô tả
+   * - Đã bật
+     - Bật phần cốt lõi của hệ thống spatial entities. Phải bật mục này để bất kỳ hệ thống spatial
+       entities nào hoạt động.
+   * - Bật spatial anchors
+     - Bật capability spatial anchors, cho phép tạo và theo dõi spatial anchors.
+   * - Bật persistent anchors
+     - Bật khả năng duy trì spatial anchors. Điều này có nghĩa là vị trí của chúng được lưu trữ
+       và có thể được truy xuất trong các session tiếp theo.
+   * - Bật phát hiện anchor tích hợp sẵn
+     - Bật logic phát hiện anchor tích hợp sẵn của chúng tôi; logic này sẽ tự động truy xuất các persistent anchors
+       và điều chỉnh vị trí của các anchor khi việc tracking được cập nhật.
+   * - Bật plane tracking
+     - Bật capability plane tracking, cho phép phát hiện các bề mặt như sàn nhà, tường,
+       trần nhà và bàn.
+   * - Bật phát hiện plane tích hợp sẵn
+     - Bật logic phát hiện plane tích hợp sẵn của chúng tôi; logic này sẽ tự động phản hồi khi dữ liệu plane mới
+       trở nên khả dụng.
+   * - Bật marker tracking
+     - Bật capability marker tracking của chúng tôi, cho phép phát hiện các marker như mã QR,
+       marker Aruco và April tags.
+   * - Bật marker tracking tích hợp sẵn
+     - Bật logic phát hiện marker tích hợp sẵn của chúng tôi; logic này sẽ tự động phản hồi khi các marker mới được
+       tìm thấy hoặc khi các marker được di chuyển trong không gian của người chơi.
 
 .. note::
 
-    Note that various XR devices also require permission flags to be set. These will need to be
-    enabled in the export preset settings.
+    Lưu ý rằng nhiều thiết bị XR cũng yêu cầu thiết lập các permission flags. Bạn cần bật chúng trong phần export preset settings.
 
-Enabling the different capabilities activates the related OpenXR APIs, but additional logic is needed
-to interact with this data.
-For each core system we have built-in logic that can be enabled that will do this for you.
+Việc bật các capability khác nhau sẽ kích hoạt các OpenXR API liên quan, nhưng cần thêm logic để tương tác với dữ liệu này. Đối với mỗi hệ thống cốt lõi, chúng tôi có logic tích hợp sẵn mà bạn có thể bật để thực hiện việc này thay mình.
 
-We'll discuss the spatial entities system under the assumption that the built-in logic is enabled first.
-We will then take a look at the underlying APIs and how you can implement this yourself, however it
-should be noted that this is often overkill and that the underlying APIs are mostly exposed to allow
-GDExtension plugins to implement additional capabilities.
+Chúng ta sẽ thảo luận về hệ thống spatial entities với giả định rằng trước tiên logic tích hợp sẵn đã được bật. Sau đó, chúng ta sẽ xem xét các API nền tảng và cách bạn có thể tự triển khai chúng. Tuy nhiên, cần lưu ý rằng việc này thường là quá mức cần thiết và các API nền tảng chủ yếu được cung cấp để các plugin GDExtension triển khai thêm capability.
 
-Creating our spatial manager
-----------------------------
+Tạo spatial manager
+-------------------
 
-When spatial entities are detected or created an
+Khi các spatial entities được phát hiện hoặc tạo, một
 :ref:`OpenXRSpatialEntityTracker<class_OpenXRSpatialEntityTracker>`
-object is instantiated and registered with the :ref:`XRServer<class_XRServer>`.
+object sẽ được khởi tạo và đăng ký với :ref:`XRServer<class_XRServer>`.
 
-Each type of spatial entity will implement its own subclass and we can thus react differently to
-each type of entity.
+Mỗi loại spatial entity sẽ triển khai subclass riêng, vì vậy chúng ta có thể phản hồi khác nhau đối với từng loại entity.
 
-Generally speaking we will instance different subscenes for each type of entity.
-As the tracker objects can be used with :ref:`XRAnchor3D<class_XRAnchor3D>` nodes, these subscenes
-should have such a node as their root node.
+Nói chung, chúng ta sẽ instance các subscene khác nhau cho từng loại entity. Vì các tracker object có thể được sử dụng với các node :ref:`XRAnchor3D<class_XRAnchor3D>`, những subscene này nên có một node như vậy làm root node.
 
-All entity trackers will expose their location through the ``default`` pose.
+Tất cả entity tracker sẽ cung cấp vị trí của chúng thông qua pose ``default``.
 
-We can automate creating these subscenes and adding them to our scene tree by creating a manager
-object. As all locations are local to the :ref:`XROrigin3D<class_XROrigin3D>` node, we should create
-our manager as a child node of our origin node.
+Chúng ta có thể tự động hóa việc tạo các subscene và thêm chúng vào scene tree bằng cách tạo một manager object. Vì tất cả vị trí đều là local so với node :ref:`XROrigin3D<class_XROrigin3D>`, chúng ta nên tạo manager dưới dạng node con của origin node.
 
-Below is the basis of the script that implements our manager logic:
+Dưới đây là phần cơ bản của script triển khai logic manager của chúng ta:
 
 .. code-block:: gdscript
 
     class_name SpatialEntitiesManager
     extends Node3D
 
-    ## Signals a new spatial entity node was added.
+    ## Phát tín hiệu khi một node spatial entity mới được thêm vào.
     signal added_spatial_entity(node: XRNode3D)
 
-    ## Signals a spatial entity node is about to be removed.
+    ## Phát tín hiệu ngay trước khi một node spatial entity bị xóa.
     signal removed_spatial_entity(node: XRNode3D)
 
-    ## Scene to instantiate for spatial anchor entities.
+    ## Scene sẽ được instance cho các spatial anchor entity.
     @export var spatial_anchor_scene: PackedScene
 
-    ## Scene to instantiate for plane tracking spatial entities.
+    ## Scene sẽ được instance cho các spatial entity theo dõi plane.
     @export var plane_tracker_scene: PackedScene
 
-    ## Scene to instantiate for marker tracking spatial entities.
+    ## Scene sẽ được instance cho các spatial entity theo dõi marker.
     @export var marker_tracker_scene: PackedScene
 
-    # Trackers we manage nodes for.
+    # Các tracker mà chúng ta quản lý node cho chúng.
     var _managed_nodes: Dictionary[XRTracker, XRAnchor3D]
 
-    # Enter tree is called whenever our node is added to our scene.
+    # Enter tree được gọi mỗi khi node của chúng ta được thêm vào scene.
     func _enter_tree():
-        # Connect to signals that inform us about tracker changes.
+        # Kết nối với các signal thông báo cho chúng ta về những thay đổi của tracker.
         XRServer.tracker_added.connect(_on_tracker_added)
         XRServer.tracker_updated.connect(_on_tracker_updated)
         XRServer.tracker_removed.connect(_on_tracker_removed)
 
-        # Set up existing trackers.
+        # Thiết lập các tracker hiện có.
         var trackers : Dictionary = XRServer.get_trackers(XRServer.TRACKER_ANCHOR)
         for tracker_name in trackers:
             var tracker: XRTracker = trackers[tracker_name]
@@ -133,14 +114,14 @@ Below is the basis of the script that implements our manager logic:
                 _add_tracker(tracker)
 
 
-    # Exit tree is called whenever our node is removed from our scene.
+    # Exit tree được gọi mỗi khi node của chúng ta bị xóa khỏi scene.
     func _exit_tree():
-        # Clean up our signals.
+        # Dọn dẹp các signal của chúng ta.
         XRServer.tracker_added.disconnect(_on_tracker_added)
         XRServer.tracker_updated.disconnect(_on_tracker_updated)
         XRServer.tracker_removed.disconnect(_on_tracker_removed)
 
-        # Clean up trackers.
+        # Dọn dẹp các tracker.
         for tracker in _managed_nodes:
             removed_spatial_entity.emit(_managed_nodes[tracker])
             remove_child(_managed_nodes[tracker])
@@ -149,18 +130,18 @@ Below is the basis of the script that implements our manager logic:
         _managed_nodes.clear()
 
 
-    # See if this tracker should be managed by us and add it.
+    # Kiểm tra xem tracker này có nên được chúng ta quản lý hay không và thêm nó vào.
     func _add_tracker(tracker: OpenXRSpatialEntityTracker):
         var new_node: XRAnchor3D
 
         if _managed_nodes.has(tracker):
-            # Already being managed by us!
+            # Đã được chúng ta quản lý!
             return
 
         if tracker is OpenXRAnchorTracker:
             # Note: Generally spatial anchors are controlled by the developer and
-            # are unlikely to be handled by our manager.
-            # But just for completeness we'll add it in.
+            # khó có khả năng được manager của chúng ta xử lý.
+            # Nhưng để đầy đủ, chúng ta vẫn sẽ thêm nó vào.
             if spatial_anchor_scene:
                 var new_scene = spatial_anchor_scene.instantiate()
                 if new_scene is XRAnchor3D:
@@ -185,14 +166,14 @@ Below is the basis of the script that implements our manager logic:
                     push_error("Marker tracking scene doesn't have an XRAnchor3D as a root node and can't be used!")
                     new_scene.free()
         else:
-            # Type of spatial entity tracker we're not supporting?
+            # Loại spatial entity tracker mà chúng ta không hỗ trợ?
             push_warning("OpenXR Spatial Entities: Unsupported anchor tracker " + tracker.get_name() + " of type " + tracker.get_class())
 
         if not new_node:
-            # No scene defined or able to be instantiated? We're done!
+            # Không có scene được xác định hoặc không thể instance? Vậy là xong!
             return
 
-        # Set up and add to our scene.
+        # Thiết lập và thêm vào scene của chúng ta.
         new_node.tracker = tracker.name
         new_node.pose = "default"
         _managed_nodes[tracker] = new_node
@@ -201,7 +182,7 @@ Below is the basis of the script that implements our manager logic:
         added_spatial_entity.emit(new_node)
 
 
-    # A new tracker was added to our XRServer.
+    # Một tracker mới đã được thêm vào XRServer của chúng ta.
     func _on_tracker_added(tracker_name: StringName, type: int):
         if type == XRServer.TRACKER_ANCHOR:
             var tracker: XRTracker = XRServer.get_tracker(tracker_name)
@@ -209,80 +190,54 @@ Below is the basis of the script that implements our manager logic:
                 _add_tracker(tracker)
 
 
-    # A tracked managed by XRServer was changed.
+    # Một tracker được XRServer quản lý đã thay đổi.
     func _on_tracker_updated(_tracker_name: StringName, _type: int):
-        # For now we ignore this, there aren't any changes here we need to react
-        # to and the instanced scene can react to this itself if needed.
+        # Hiện tại chúng ta bỏ qua việc này vì không có thay đổi nào ở đây mà chúng ta cần phản hồi
+        # và scene đã được instance có thể tự phản hồi nếu cần.
         pass
 
 
-    # A tracker was removed from our XRServer.
+    # Một tracker đã bị xóa khỏi XRServer của chúng ta.
     func _on_tracker_removed(tracker_name: StringName, type: int):
         if type == XRServer.TRACKER_ANCHOR:
             var tracker: XRTracker = XRServer.get_tracker(tracker_name)
             if _managed_nodes.has(tracker):
-                # We emit this right before we remove it!
+                # Chúng ta phát tín hiệu này ngay trước khi xóa nó!
                 removed_spatial_entity.emit(_managed_nodes[tracker])
 
-                # Remove the node.
+                # Xóa node.
                 remove_child(_managed_nodes[tracker])
 
-                # Queue free the node.
+                # Đưa node vào hàng đợi để giải phóng.
                 _managed_nodes[tracker].queue_free()
 
-                # And remove from our managed nodes.
+                # Và xóa khỏi các node được chúng ta quản lý.
                 _managed_nodes.erase(tracker)
 
 Spatial anchors
 ---------------
 
-Spatial anchors allow us to map real world locations in our virtual world in such a way that the
-XR runtime will keep track of these locations and adjust them as needed.
-If supported, anchors can be made persistent which means the anchors will be recreated in the correct
-location when your application starts again.
+Spatial anchors cho phép chúng ta ánh xạ các vị trí trong thế giới thực vào thế giới ảo theo cách mà XR runtime sẽ tiếp tục theo dõi các vị trí này và điều chỉnh chúng khi cần. Nếu được hỗ trợ, các anchor có thể được duy trì, nghĩa là chúng sẽ được tạo lại ở đúng vị trí khi ứng dụng của bạn khởi động lại.
 
-You can think of use cases such as:
-- placing virtual windows around your space that are recreated when your application restarts
-- placing virtual objects on your table or on your walls and have them recreated
+Bạn có thể hình dung các trường hợp sử dụng như: - đặt các cửa sổ ảo xung quanh không gian của bạn để chúng được tạo lại khi ứng dụng khởi động lại - đặt các object ảo trên bàn hoặc tường và tạo lại chúng
 
-Spatial anchors are tracked using :ref:`OpenXRAnchorTracker<class_OpenXRAnchorTracker>` objects
-registered with the XRServer.
+Spatial anchors được theo dõi bằng các object :ref:`OpenXRAnchorTracker<class_OpenXRAnchorTracker>` được đăng ký với XRServer.
 
-When needed, the location of the spatial anchor will be updated automatically; the pose on the
-related tracker will be updated and thus the :ref:`XRAnchor3D<class_XRAnchor3D>` node will
-reposition.
+Khi cần, vị trí của spatial anchor sẽ được tự động cập nhật; pose trên tracker liên quan sẽ được cập nhật và do đó node :ref:`XRAnchor3D<class_XRAnchor3D>` sẽ được định vị lại.
 
-When a spatial anchor has been made persistent, a Universally Unique Identifier (or UUID) is
-assigned to the anchor. You will need to store this with whatever information you need to
-reconstruct the scene.
-In our example code below we'll simply call ``set_scene_path`` and ``get_scene_path``, but you
-will need to supply your own implementations for these functions.
+Khi một spatial anchor được duy trì, một Universally Unique Identifier (hay UUID) sẽ được gán cho anchor đó. Bạn cần lưu UUID này cùng với mọi thông tin cần thiết để tái tạo scene. Trong code mẫu dưới đây, chúng ta sẽ gọi đơn giản là ``set_scene_path`` và ``get_scene_path``, nhưng bạn sẽ cần tự cung cấp các triển khai cho những hàm này.
 
-In order to create a persistent anchor you need to follow a specific flow:
-- Create the spatial anchor
-- Wait until the tracking status changes to ``ENTITY_TRACKING_STATE_TRACKING``
-- Make the anchor persistent
-- Obtain the UUID and save it
+Để tạo một persistent anchor, bạn cần thực hiện theo một quy trình cụ thể: - Tạo spatial anchor - Chờ cho đến khi trạng thái tracking thay đổi thành ``ENTITY_TRACKING_STATE_TRACKING`` - Duy trì anchor - Lấy UUID và lưu lại
 
-When an existing persistent anchor is found a new tracker is added that has the UUID already
-set. It is this difference in workflow that allows us to correctly react to new and existing
-persistent anchors.
+Khi tìm thấy một persistent anchor hiện có, một tracker mới sẽ được thêm vào và UUID đã được thiết lập sẵn. Sự khác biệt trong workflow này cho phép chúng ta phản hồi chính xác với các persistent anchor mới và hiện có.
 
 .. note::
 
-    If you unpersist an anchor, the UUID is destroyed but the anchor is not
-    removed automatically.
-    You will need to react to the completion of unpersisting an anchor and then clean it up.
-    Also you will get an error if you try to destroy an anchor that is still persistent.
+    Nếu bạn hủy trạng thái persistent của một anchor, UUID sẽ bị hủy nhưng anchor không tự động bị xóa. Bạn cần phản hồi khi việc hủy trạng thái persistent của anchor hoàn tất, sau đó dọn dẹp anchor. Ngoài ra, bạn sẽ nhận được lỗi nếu cố gắng hủy một anchor vẫn đang ở trạng thái persistent.
 
-To complete our anchor system we start by creating a scene that we'll set as the scene
-to instantiate for anchors on our spatial manager node.
+Để hoàn thiện hệ thống anchor, trước tiên chúng ta tạo một scene và đặt scene đó làm scene sẽ được instance cho các anchor trên spatial manager node.
 
-This scene should have an :ref:`XRAnchor3D<class_XRAnchor3D>` node as the root but nothing
-else. We will add a script to it that will load a subscene that contains the actual visual
-aspect of our anchor so we can create different anchors in our scene.
-We'll assume the intention is to make these anchors persistent and save the path to this
-subscene as metadata for our UUID.
+Scene này nên có một node :ref:`XRAnchor3D<class_XRAnchor3D>` làm root nhưng không có gì khác. Chúng ta sẽ thêm một script vào đó để load một subscene chứa phần hiển thị thực tế của anchor, nhờ đó có thể tạo các anchor khác nhau trong scene. Chúng ta sẽ giả định mục đích là duy trì các anchor này và lưu path đến subscene dưới dạng metadata cho UUID của chúng.
 
 .. code-block:: gdscript
 
@@ -293,25 +248,25 @@ subscene as metadata for our UUID.
     var child_scene: Node
     var made_persistent: bool = false
 
-    ## Return the scene path for our UUID.
+    ## Trả về path của scene cho UUID của chúng ta.
     func get_scene_path(p_uuid: String) -> String:
-        # Placeholder, implement this.
+        # Placeholder, hãy triển khai phần này.
         return ""
 
 
-    ## Store our scene path for our UUID.
+    ## Lưu path của scene cho UUID của chúng ta.
     func set_scene_path(p_uuid: String, p_scene_path: String):
-        # Placeholder, implement this.
+        # Placeholder, hãy triển khai phần này.
         pass
 
 
-    ## Remove info related to our UUID.
+    ## Xóa thông tin liên quan đến UUID của chúng ta.
     func remove_uuid(p_uuid: String):
-        # Placeholder, implement this.
+        # Placeholder, hãy triển khai phần này.
         pass
 
 
-    ## Set our child scene for this anchor, call this when creating a new anchor.
+    ## Thiết lập scene con cho anchor này; gọi hàm này khi tạo anchor mới.
     func set_child_scene(p_child_scene_path: String):
         var packed_scene: PackedScene = load(p_child_scene_path)
         if not packed_scene:
@@ -324,20 +279,20 @@ subscene as metadata for our UUID.
         add_child(child_scene)
 
 
-    # Called when our tracking state changes.
+    # Được gọi khi trạng thái tracking của chúng ta thay đổi.
     func _on_spatial_tracking_state_changed(new_state) -> void:
         if new_state == OpenXRSpatialEntityTracker.ENTITY_TRACKING_STATE_TRACKING and not made_persistent:
-            # Only attempt to do this once.
+            # Chỉ thử thực hiện việc này một lần.
             made_persistent = true
 
-            # This warning is optional if you don't want to rely on persistence.
+            # Cảnh báo này là tùy chọn nếu bạn không muốn phụ thuộc vào persistence.
             if not OpenXRSpatialAnchorCapability.is_spatial_persistence_supported():
                 push_warning("Persistent spatial anchors are not supported on this device!")
                 return
 
-            # Make this persistent, this will notify that the UUID changed on the anchor,
-            # we can then store our scene path which we've already applied to our
-            # tracked scene.
+            # Lưu trạng thái này, thao tác này sẽ thông báo rằng UUID đã thay đổi trên anchor,
+            # sau đó chúng ta có thể lưu đường dẫn scene mà chúng ta đã áp dụng cho
+            # scene được theo dõi.
             OpenXRSpatialAnchorCapability.persist_anchor(anchor_tracker, RID(), Callable())
 
 
@@ -346,16 +301,16 @@ subscene as metadata for our UUID.
             made_persistent = true
 
             if child_scene:
-                # If we already have a subscene, save that with the UUID.
+                # Nếu đã có subscene, hãy lưu subscene đó cùng với UUID.
                 set_scene_path(anchor_tracker.uuid, child_scene.scene_file_path)
             else:
-                # If we do not, look up the UUID in our stored cache.
+                # Nếu chưa có, hãy tra UUID trong cache đã lưu.
                 var scene_path: String = get_scene_path(anchor_tracker.uuid)
                 if scene_path.is_empty():
-                    # Give a warning that we don't have a scene file stored for this UUID.
+                    # Hiển thị cảnh báo rằng chúng ta không có file scene được lưu cho UUID này.
                     push_warning("Unknown UUID given, can't determine child scene.")
 
-                    # Load a default scene so we can at least see something.
+                    # Tải một scene mặc định để ít nhất chúng ta có thể nhìn thấy thứ gì đó.
                     set_child_scene("res://unknown_anchor.tscn")
                     return
 
@@ -370,33 +325,32 @@ subscene as metadata for our UUID.
             anchor_tracker.spatial_tracking_state_changed.connect(_on_spatial_tracking_state_changed)
             anchor_tracker.uuid_changed.connect(_on_uuid_changed)
 
-With our anchor scene in place we can add a couple of functions to our spatial manager script
-to create or remove anchors:
+Sau khi đã có anchor scene, chúng ta có thể thêm một vài function vào script spatial manager để tạo hoặc xóa anchor:
 
 .. code-block:: gdscript
 
     ...
 
-    ## Create a new spatial anchor with the associated child scene.
-    ## If persistent anchors are supported, this will be created as a persistent node
-    ## and we will store the child scene path with the anchor's UUID for future recreation.
+    ## Tạo một spatial anchor mới cùng với child scene tương ứng.
+    ## Nếu persistent anchor được hỗ trợ, anchor này sẽ được tạo dưới dạng persistent node
+    ## và chúng ta sẽ lưu đường dẫn child scene cùng với UUID của anchor để tái tạo trong tương lai.
     func create_spatial_anchor(p_transform: Transform3D, p_child_scene_path: String):
-        # Do we have anchor support?
+        # Chúng ta có hỗ trợ anchor không?
         if not OpenXRSpatialAnchorCapability.is_spatial_anchor_supported():
             push_error("Spatial anchors are not supported on this device!")
             return
 
-        # Adjust our transform to local space.
+        # Điều chỉnh transform sang local space.
         var t: Transform3D = global_transform.inverse() * p_transform
 
-        # Create anchor on our current manager.
+        # Tạo anchor trên manager hiện tại.
         var new_anchor = OpenXRSpatialAnchorCapability.create_new_anchor(t, RID())
         if not new_anchor:
             push_error("Couldn't create an anchor for %s." % [ p_child_scene_path ])
             return
 
-        # Creating a new anchor should have resulted in an XRAnchor being added to the scene
-        # by our manager. We can thus continue assuming this has happened.
+        # Việc tạo anchor mới sẽ thêm một XRAnchor vào scene
+        # bởi manager của chúng ta. Vì vậy, chúng ta có thể tiếp tục với giả định rằng việc này đã xảy ra.
 
         var anchor_scene = get_tracked_scene(new_anchor)
         if not anchor_scene:
@@ -409,10 +363,10 @@ to create or remove anchors:
         anchor_scene.set_child_scene(p_child_scene_path)
 
 
-    ## Removes this spatial anchor from our scene.
-    ## If the spatial anchor is persistent, the associated UUID will be cleared.
+    ## Xóa spatial anchor này khỏi scene của chúng ta.
+    ## Nếu spatial anchor là persistent, UUID tương ứng sẽ được xóa.
     func remove_spatial_anchor(p_anchor: XRAnchor3D):
-        # Do we have anchor support?
+        # Chúng ta có hỗ trợ anchor không?
         if not OpenXRSpatialAnchorCapability.is_spatial_anchor_supported():
             push_error("Spatial anchors are not supported on this device!")
             return
@@ -421,22 +375,22 @@ to create or remove anchors:
         if tracker and tracker is OpenXRAnchorTracker:
             var anchor_tracker: OpenXRAnchorTracker = tracker
             if anchor_tracker.has_uuid() and OpenXRSpatialAnchorCapability.is_spatial_persistence_supported():
-                # If we have a UUID we should first make the anchor unpersistent
-                # and then remove it on its callback.
+                # Nếu có UUID, trước tiên chúng ta nên hủy trạng thái persistent của anchor
+                # rồi xóa nó trong callback của anchor.
                 remove_uuid(anchor_tracker.uuid)
                 OpenXRSpatialAnchorCapability.unpersist_anchor(anchor_tracker, RID(), _on_unpersist_complete)
             else:
-                # Otherwise we can just remove it.
-                # This will remove it from the XRServer, which in turn will trigger cleaning up our node.
+                # Nếu không, chúng ta chỉ cần xóa nó.
+                # Thao tác này sẽ xóa nó khỏi XRServer, từ đó kích hoạt việc dọn dẹp node của chúng ta.
                 OpenXRSpatialAnchorCapability.remove_anchor(tracker)
 
 
     func _on_unpersist_complete(p_tracker: XRTracker):
-        # Our tracker is now no longer persistent, we can remove it.
+        # Tracker của chúng ta giờ không còn persistent nữa, chúng ta có thể xóa nó.
         OpenXRSpatialAnchorCapability.remove_anchor(p_tracker)
 
 
-    ## Retrieve the scene we've added for a given tracker (if any).
+    ## Lấy scene mà chúng ta đã thêm cho một tracker nhất định (nếu có).
     func get_tracked_scene(p_tracker: XRTracker) -> XRNode3D:
         for node in get_children():
             if node is XRNode3D and node.tracker == p_tracker.name:
@@ -446,44 +400,30 @@ to create or remove anchors:
 
 .. note::
 
-    There seems to be a bit of magic going on in the code above.
-    Whenever a spatial anchor is created or removed on our anchor capability,
-    the related tracker object is created or destroyed.
-    This results in the spatial manager adding or removing the child scene for this
-    anchor. Hence we can rely on this here.
+    Có vẻ như đoạn code trên đang thực hiện một chút phép thuật. Bất cứ khi nào một spatial anchor được tạo hoặc xóa trên anchor capability, đối tượng tracker liên quan sẽ được tạo hoặc hủy. Điều này khiến spatial manager thêm hoặc xóa child scene cho anchor này. Vì vậy, chúng ta có thể dựa vào điều đó ở đây.
 
-Plane tracking
---------------
+Theo dõi mặt phẳng
+------------------
 
-Plane tracking allows us to detect surfaces such as walls, floors, ceilings, and tables in
-the player's vicinity. This data could come from a room capture performed by the user at
-any time in the past, or detected live by optical sensors.
-The plane tracking extension doesn't make a distinction here.
+Tính năng theo dõi mặt phẳng cho phép chúng ta phát hiện các bề mặt như tường, sàn, trần nhà và bàn ở gần người chơi. Dữ liệu này có thể đến từ quá trình chụp lại căn phòng do người dùng thực hiện vào bất kỳ thời điểm nào trước đó hoặc được các cảm biến quang học phát hiện trực tiếp. Plane tracking extension không phân biệt hai trường hợp này.
 
 .. note::
 
-    Some XR runtimes do require vendor extensions to enable and/or configure this process
-    but the data will be exposed through this extension.
+    Một số XR runtime yêu cầu vendor extension để bật và/hoặc cấu hình quy trình này, nhưng dữ liệu sẽ được cung cấp thông qua extension này.
 
-The code we wrote up above for the spatial manager will already detect our new planes.
-We do need to set up a new scene and assign that scene to the spatial manager.
+Đoạn code chúng ta đã viết ở trên cho spatial manager sẽ tự động phát hiện các plane mới. Tuy nhiên, chúng ta cần thiết lập một scene mới và gán scene đó cho spatial manager.
 
-The root node for this scene must be an :ref:`XRAnchor3D<class_XRAnchor3D>` node.
-We'll add a :ref:`StaticBody3D<class_StaticBody3D>` node as a child and add a
+Node gốc của scene này phải là một node :ref:`XRAnchor3D<class_XRAnchor3D>`. Chúng ta sẽ thêm một node :ref:`StaticBody3D<class_StaticBody3D>` làm node con và thêm một
 :ref:`CollisionShape3D<class_CollisionShape3D>` and :ref:`MeshInstance3D<class_MeshInstance3D>`
-node as children of the static body.
+node làm các node con của static body.
 
 .. image:: img/openxr_plane_anchor.webp
 
-The static body and collision shape will allow us to make the plane interactable.
+Static body và collision shape sẽ cho phép chúng ta làm cho plane có thể tương tác.
 
-The mesh instance node allows us to apply a "hole punch" material to the plane,
-when combined with passthrough this turns our plane into a visual occluder.
-Alternatively we can assign a material that will visualize the plane for debugging.
+Mesh instance node cho phép chúng ta áp dụng material "hole punch" cho plane; khi kết hợp với passthrough, nó biến plane thành một visual occluder. Ngoài ra, chúng ta có thể gán một material trực quan hóa plane để debug.
 
-We configure this material as the ``material_override`` material on our MeshInstance3D.
-For our "hole punch" material, create a :ref:`ShaderMaterial<class_ShaderMaterial>`
-and use the following code as the shader code:
+Chúng ta cấu hình material này làm material ``material_override`` trên MeshInstance3D. Đối với material "hole punch", hãy tạo một :ref:`ShaderMaterial<class_ShaderMaterial>` và sử dụng đoạn code sau làm shader code:
 
 .. code-block:: glsl
 
@@ -494,7 +434,7 @@ and use the following code as the shader code:
         ALBEDO = vec3(0.0, 0.0, 0.0);
     }
 
-We also need to add a script to our scene to ensure our collision and mesh are applied.
+Chúng ta cũng cần thêm một script vào scene để đảm bảo collision và mesh của chúng ta được áp dụng.
 
 .. code-block:: gdscript
 
@@ -504,14 +444,14 @@ We also need to add a script to our scene to ensure our collision and mesh are a
 
     func _update_mesh_and_collision():
         if plane_tracker:
-            # Place our static body using our offset so both collision
-            # and mesh are positioned correctly.
+            # Đặt static body bằng offset của chúng ta để cả collision
+            # và mesh đều được định vị chính xác.
             $StaticBody3D.transform = plane_tracker.get_mesh_offset()
 
-            # Set our mesh so we can occlude the surface.
+            # Thiết lập mesh để chúng ta có thể che khuất bề mặt.
             $StaticBody3D/MeshInstance3D.mesh = plane_tracker.get_mesh()
 
-            # And set our shape so we can have things collide things with our surface.
+            # Và thiết lập shape để các vật thể có thể va chạm với bề mặt của chúng ta.
             $StaticBody3D/CollisionShape3D.shape = plane_tracker.get_shape()
 
 
@@ -522,31 +462,20 @@ We also need to add a script to our scene to ensure our collision and mesh are a
 
             plane_tracker.mesh_changed.connect(_update_mesh_and_collision)
 
-If supported by the XR runtime there is additional metadata you can query on the plane tracker
-object.
-Of specific note is the ``plane_label`` property that, if available, identifies the type of surface.
-Please consult the :ref:`OpenXRPlaneTracker<class_OpenXRPlaneTracker>` class documentation for
-further information.
+Nếu được XR runtime hỗ trợ, bạn có thể truy vấn thêm metadata trên plane tracker object. Đáng chú ý là property ``plane_label``; nếu có, property này xác định loại bề mặt. Vui lòng tham khảo tài liệu về class :ref:`OpenXRPlaneTracker<class_OpenXRPlaneTracker>` để biết thêm thông tin.
 
-Marker tracking
+Theo dõi marker
 ---------------
 
-Marker tracking detects specific markers in the real world. These are usually printed images such
-as QR codes.
+Marker tracking phát hiện các marker cụ thể trong thế giới thực. Đây thường là những hình ảnh được in, chẳng hạn như mã QR.
 
-The API exposes support for 4 different codes, QR codes, Micro QR codes, Aruco codes, and April tags,
-however XR runtimes are not required to support them all.
+API cung cấp hỗ trợ cho 4 loại mã khác nhau: mã QR, mã Micro QR, mã Aruco và April tag; tuy nhiên, XR runtime không bắt buộc phải hỗ trợ tất cả các loại này.
 
-When markers are detected, :ref:`OpenXRMarkerTracker<class_OpenXRMarkerTracker>` objects are
-instantiated and registered with the XRServer.
+Khi phát hiện được marker, các object :ref:`OpenXRMarkerTracker<class_OpenXRMarkerTracker>` sẽ được khởi tạo và đăng ký với XRServer.
 
-Our existing spatial manager code already detects these, all we need to do is create a scene
-with an :ref:`XRAnchor3D<class_XRAnchor3D>` node at the root, save this, and assign it to the
-spatial manager as the scene to instantiate for markers.
+Code spatial manager hiện có của chúng ta đã tự động phát hiện các marker này; tất cả những gì cần làm là tạo một scene có node :ref:`XRAnchor3D<class_XRAnchor3D>` ở gốc, lưu scene đó và gán nó cho spatial manager làm scene cần khởi tạo cho các marker.
 
-The marker tracker should be fully configured when assigned, so all that is needed is a
-``_ready`` function that reacts to the marker data. Below is a template for the
-required code:
+Marker tracker phải được cấu hình đầy đủ khi được gán, vì vậy tất cả những gì cần thiết là một function ``_ready`` phản hồi dữ liệu marker. Dưới đây là template cho đoạn code bắt buộc:
 
 .. code-block:: gdscript
 
@@ -561,84 +490,65 @@ required code:
                 OpenXRSpatialComponentMarkerList.MARKER_TYPE_QRCODE:
                     var data = marker_tracker.get_marker_data()
                     if data is String:
-                        # Data is a QR code as a string, usually a URL.
+                        # Dữ liệu là một mã QR dạng chuỗi, thường là một URL.
                         pass
                     elif data is PackedByteArray:
-                        # Data is binary, can be anything.
+                        # Dữ liệu ở dạng binary, có thể là bất kỳ thứ gì.
                         pass
                 OpenXRSpatialComponentMarkerList.MARKER_TYPE_MICRO_QRCODE:
                     var data = marker_tracker.get_marker_data()
                     if data is String:
-                        # Data is a QR code as a string, usually a URL.
+                        # Dữ liệu là một mã QR dạng chuỗi, thường là một URL.
                         pass
                     elif data is PackedByteArray:
-                        # Data is binary, can be anything.
+                        # Dữ liệu ở dạng binary, có thể là bất kỳ thứ gì.
                         pass
                 OpenXRSpatialComponentMarkerList.MARKER_TYPE_ARUCO:
-                    # Use marker_tracker.marker_id to identify the marker.
+                    # Sử dụng marker_tracker.marker_id để xác định marker.
                     pass
                 OpenXRSpatialComponentMarkerList.MARKER_TYPE_APRIL_TAG:
-                    # Use marker_tracker.marker_id to identify the marker.
+                    # Sử dụng marker_tracker.marker_id để xác định marker.
                     pass
 
-As we can see, QR Codes provide a data block that is either a string or a byte array.
-Aruco and April tags provide an ID that is read from the code.
+Như chúng ta có thể thấy, QR Code cung cấp một block dữ liệu có thể là chuỗi hoặc mảng byte. Aruco và April tag cung cấp một ID được đọc từ mã.
 
-It's up to your use case how best to link the marker data to the scene that needs to be loaded.
-An example would be to encode the name of the asset you wish to display in a QR code.
+Cách liên kết dữ liệu marker với scene cần được tải như thế nào là tùy thuộc vào trường hợp sử dụng của bạn. Một ví dụ là mã hóa tên của asset bạn muốn hiển thị vào mã QR.
 
-Backend access
---------------
+Truy cập backend
+----------------
 
-For most purposes the core system, along with any vendor extensions, should be what most
-users would use as provided.
+Đối với hầu hết mục đích, core system cùng với mọi vendor extension sẽ là những gì mà phần lớn người dùng sử dụng theo cách được cung cấp.
 
-For those who are implementing vendor extensions, or those for whom the built-in logic doesn't
-suffice, backend access is provided through a set of singleton objects.
+Đối với những người triển khai vendor extension hoặc những người mà logic tích hợp sẵn không đáp ứng đủ nhu cầu, quyền truy cập backend được cung cấp thông qua một tập hợp các singleton object.
 
-These objects can also be used to query what capabilities are supported by the headset in use.
-We've already added code that checks for these in our spatial manager and spatial anchor code
-in the sections above.
+Các object này cũng có thể được dùng để truy vấn những capability nào được headset đang sử dụng hỗ trợ. Chúng ta đã thêm code kiểm tra các capability này trong spatial manager và spatial anchor ở các phần trên.
 
 .. note::
 
-    The spatial entities system will encapsulate many OpenXR entities in resources that are
-    returned as RIDs.
+    Hệ thống spatial entities sẽ đóng gói nhiều OpenXR entity vào các resource được trả về dưới dạng RID.
 
 Spatial entity core
 ~~~~~~~~~~~~~~~~~~~
 
-The core spatial entity functionality is exposed through the
+Chức năng spatial entity cốt lõi được cung cấp thông qua
 :ref:`OpenXRSpatialEntityExtension<class_OpenXRSpatialEntityExtension>` singleton.
 
-Specific logic is exposed through capabilities that introduce specialised component types,
-and give access to specific types of entities, however they all use the same mechanisms
-for accessing the entity data managed by the spatial entity system.
+Logic cụ thể được cung cấp thông qua các capability, trong đó giới thiệu những component type chuyên biệt và cho phép truy cập các entity type cụ thể; tuy nhiên, tất cả đều sử dụng cùng một cơ chế để truy cập dữ liệu entity do hệ thống spatial entity quản lý.
 
-We'll start by having a look at the individual components that make up the core system.
+Chúng ta sẽ bắt đầu bằng cách xem xét các component riêng lẻ tạo nên core system.
 
-Spatial contexts
-""""""""""""""""
+Spatial context
+"""""""""""""""
 
-A spatial context is the main object through which we query the spatial entities system.
-Spatial contexts allow us to configure how we interact with one or more capabilities.
+Spatial context là object chính mà thông qua đó chúng ta truy vấn hệ thống spatial entities. Spatial context cho phép chúng ta cấu hình cách tương tác với một hoặc nhiều capability.
 
-It's recommended to create a spatial context for each capability that you wish to interact
-with, in fact, this is what Godot does for its built-in logic.
+Bạn nên tạo một spatial context cho mỗi capability mà bạn muốn tương tác; trên thực tế, đây cũng là cách Godot thực hiện đối với logic tích hợp sẵn.
 
-We start by setting the capability configuration objects for the capabilities we wish to
-access.
-Each capability will enable the components we support for that capability.
-Settings can determine which components will be enabled.
-We'll look at these configuration objects in more detail as we look at each supported capability.
+Chúng ta bắt đầu bằng cách thiết lập các capability configuration object cho những capability mà mình muốn truy cập. Mỗi capability sẽ bật các component được hỗ trợ cho capability đó. Các setting có thể quyết định component nào sẽ được bật. Chúng ta sẽ xem xét các configuration object này chi tiết hơn khi tìm hiểu từng capability được hỗ trợ.
 
-Creating a spatial context is an asynchronous action. This means we ask the XR runtime to
-create a spatial context, and at a point in the future the XR runtime will provide us
-with the result.
+Tạo một spatial context là một thao tác bất đồng bộ (asynchronous). Điều này có nghĩa là chúng ta yêu cầu XR runtime tạo một spatial context, rồi tại một thời điểm trong tương lai, XR runtime sẽ cung cấp kết quả cho chúng ta.
 
-The following script is the start of our example and can be added as a node to your scene.
-It shows the creation of a spatial context for plane tracking,
-and sets up our entity discovery.
+Script sau đây là phần khởi đầu của ví dụ và có thể được thêm dưới dạng một node vào scene của bạn. Script minh họa việc tạo một spatial context cho plane tracking và thiết lập quá trình khám phá entity.
 
 .. code-block:: gdscript
 
@@ -647,51 +557,51 @@ and sets up our entity discovery.
     var spatial_context: RID
 
     func _set_up_spatial_context():
-        # Already set up?
+        # Đã thiết lập?
         if spatial_context:
             return
 
-        # Not supported or we're not yet ready?
+        # Không được hỗ trợ hoặc chúng ta chưa sẵn sàng?
         if not OpenXRSpatialPlaneTrackingCapability.is_supported():
             return
 
-        # We'll use plane tracking as an example here, our configuration object
-        # here does not have any additional configuration. It just needs to exist.
+        # Ở đây chúng ta sẽ sử dụng plane tracking làm ví dụ; configuration object của chúng ta
+        # ở đây không có cấu hình bổ sung nào. Nó chỉ cần tồn tại.
         var plane_capability : OpenXRSpatialCapabilityConfigurationPlaneTracking = OpenXRSpatialCapabilityConfigurationPlaneTracking.new()
 
         var future_result : OpenXRFutureResult = OpenXRSpatialEntityExtension.create_spatial_context([ plane_capability ])
 
-        # Wait for async completion.
+        # Chờ hoàn tất thao tác async.
         await future_result.completed
 
-        # Obtain our result.
+        # Lấy kết quả.
         spatial_context = future_result.get_spatial_context()
         if spatial_context:
-            # Connect to our discovery signal.
+            # Kết nối với discovery signal.
             OpenXRSpatialEntityExtension.spatial_discovery_recommended.connect(_on_perform_discovery)
 
-            # Perform our initial discovery.
+            # Thực hiện lần discovery ban đầu.
             _on_perform_discovery(spatial_context)
 
 
     func _enter_tree():
         var openxr_interface : OpenXRInterface = XRServer.find_interface("OpenXR")
         if openxr_interface and openxr_interface.is_initialized():
-            # Just in case our session hasn't started yet,
-            # call our spatial context creation on start.
+            # Để đề phòng session của chúng ta chưa bắt đầu,
+            # hãy gọi thao tác tạo spatial context khi bắt đầu.
             openxr_interface.session_begun.connect(_set_up_spatial_context)
 
-            # And in case it is already up and running, call it already,
-            # it will exit if we've called it too early.
+            # Và trong trường hợp session đã hoạt động, hãy gọi nó ngay,
+            # nó sẽ thoát nếu chúng ta gọi quá sớm.
             _set_up_spatial_context()
 
 
     func _exit_tree():
         if spatial_context:
-            # Disconnect from our discovery signal.
+            # Ngắt kết nối khỏi discovery signal.
             OpenXRSpatialEntityExtension.spatial_discovery_recommended.disconnect(_on_perform_discovery)
 
-            # Free our spatial context, this will clean it up.
+            # Giải phóng spatial context; thao tác này sẽ dọn dẹp nó.
             OpenXRSpatialEntityExtension.free_spatial_context(spatial_context)
             spatial_context = RID()
 
@@ -701,27 +611,20 @@ and sets up our entity discovery.
 
 
     func _on_perform_discovery(p_spatial_context):
-        # See next section.
+        # Xem phần tiếp theo.
         pass
 
-Discovery snapshots
-"""""""""""""""""""
+Discovery snapshot
+""""""""""""""""""
 
-Once our spatial context has been created the XR runtime will start managing spatial entities
-according to the configuration of the specified capabilities.
+Sau khi spatial context được tạo, XR runtime sẽ bắt đầu quản lý các spatial entity theo cấu hình của những capability được chỉ định.
 
-In order to find new entities, or to get information about our current entities, we can create
-a discovery snapshot. This will tell the XR runtime to gather specific data related to all
-the spatial entities currently managed by the spatial context.
+Để tìm các entity mới hoặc lấy thông tin về những entity hiện tại, chúng ta có thể tạo một discovery snapshot. Thao tác này sẽ yêu cầu XR runtime thu thập dữ liệu cụ thể liên quan đến tất cả spatial entity hiện đang được spatial context quản lý.
 
-This function is asynchronous as it may take some time to gather this data and offer its results.
-Generally speaking you will want to perform a discovery snapshot when new entities are found.
-OpenXR emits an event when there are new entities to be processed, this results in the
-``spatial_discovery_recommended`` signal being emitted by our
+Hàm này là bất đồng bộ vì có thể cần chút thời gian để thu thập dữ liệu này và cung cấp kết quả. Nói chung, bạn sẽ muốn thực hiện một discovery snapshot khi tìm thấy các entity mới. OpenXR phát ra một sự kiện khi có các entity mới cần được xử lý, điều này khiến tín hiệu ``spatial_discovery_recommended`` được phát ra bởi
 :ref:`OpenXRSpatialEntityExtension<class_OpenXRSpatialEntityExtension>` singleton.
 
-Note in the example code shown above, we're already connecting to this signal and calling the
-``_on_perform_discovery`` method on our node. Let's implement this:
+Lưu ý trong đoạn mã ví dụ ở trên, chúng ta đã kết nối với tín hiệu này và gọi phương thức ``_on_perform_discovery`` trên node của mình. Hãy triển khai điều này:
 
 .. code-block:: gdscript
 
@@ -730,55 +633,47 @@ Note in the example code shown above, we're already connecting to this signal an
     var discovery_result : OpenXRFutureResult
 
     func _on_perform_discovery(p_spatial_context):
-        # We get this signal for all spatial contexts, so exit if this is not for us.
+        # Chúng ta nhận được tín hiệu này cho tất cả spatial context, vì vậy hãy thoát nếu tín hiệu này không dành cho chúng ta.
         if p_spatial_context != spatial_context:
             return
 
-        # If we currently have an ongoing discovery result, cancel it.
+        # Nếu hiện tại chúng ta đang có một kết quả discovery đang diễn ra, hãy hủy nó.
         if discovery_result:
             discovery_result.cancel_discovery()
 
-        # Perform our discovery.
+        # Thực hiện discovery.
         discovery_result = OpenXRSpatialEntityExtension.discover_spatial_entities(spatial_context, [ \
                 OpenXRSpatialEntityExtension.COMPONENT_TYPE_BOUNDED_2D, \
                 OpenXRSpatialEntityExtension.COMPONENT_TYPE_PLANE_ALIGNMENT \
             ])
 
-        # Wait for async completion.
+        # Chờ hoàn tất async.
         await discovery_result.completed
 
         var snapshot : RID = discovery_result.get_spatial_snapshot()
         if snapshot:
-            # Process our snapshot result.
+            # Xử lý kết quả snapshot của chúng ta.
             _process_snapshot(snapshot)
 
-            # And clean up our snapshot.
+            # Và dọn dẹp snapshot của chúng ta.
             OpenXRSpatialEntityExtension.free_spatial_snapshot(snapshot)
 
 
     func _process_snapshot(p_snapshot):
-        # See further down.
+        # Xem phần bên dưới.
         pass
 
 
-Note that when calling ``discover_spatial_entities`` we specify a list of components.
-The discovery query will find any entity that is managed by the spatial context and has
-at least one of the specified components.
+Lưu ý rằng khi gọi ``discover_spatial_entities``, chúng ta chỉ định một danh sách component. Discovery query sẽ tìm mọi entity được spatial context quản lý và có ít nhất một trong các component đã chỉ định.
 
-Update snapshots
-""""""""""""""""
+Cập nhật snapshot
+"""""""""""""""""
 
-Performing an update snapshot allows us to get updated information about entities
-we already found previously with our discovery snapshot.
-This function is synchronous, and is mainly meant to obtain status and positioning data
-and can be run every frame.
+Thực hiện update snapshot cho phép chúng ta lấy thông tin đã cập nhật về các entity mà trước đó chúng ta đã tìm thấy bằng discovery snapshot. Hàm này là synchronous và chủ yếu dùng để lấy dữ liệu về trạng thái và vị trí, đồng thời có thể được chạy ở mỗi frame.
 
-Generally speaking you would only perform update snapshots when it's likely entities
-change or have a lifetime process. A good example of this are persistent anchors and
-markers. Consult the documentation about a capability to determine if this is needed.
+Nói chung, bạn chỉ thực hiện update snapshot khi có khả năng các entity thay đổi hoặc có một quy trình vòng đời. Một ví dụ điển hình là persistent anchor và marker. Hãy tham khảo tài liệu về một capability để xác định liệu việc này có cần thiết hay không.
 
-It is not needed for plane tracking however to complete our example, here is an example
-of what an update snapshot would look like for plane tracking if we needed one:
+Tuy nhiên, việc này không cần thiết đối với plane tracking. Dù vậy, để hoàn thiện ví dụ, dưới đây là ví dụ về update snapshot cho plane tracking nếu chúng ta cần:
 
 .. code-block:: gdscript
 
@@ -800,33 +695,24 @@ of what an update snapshot would look like for plane tracking if we needed one:
                 OpenXRSpatialEntityExtension.COMPONENT_TYPE_PLANE_ALIGNMENT \
             ])
         if snapshot:
-            # Process our snapshot.
+            # Xử lý snapshot của chúng ta.
             _process_snapshot(snapshot)
 
-            # And clean up our snapshot.
+            # Và dọn dẹp snapshot của chúng ta.
             OpenXRSpatialEntityExtension.free_spatial_snapshot(snapshot)
 
-Note that in our example here we're using the same ``_process_snapshot`` function to process the snapshot.
-This makes sense in most situations. However if the components you've specified when creating the snapshot
-are different between your discovery snapshot and your update snapshot,
-you have to take the different components into account.
+Lưu ý rằng trong ví dụ này, chúng ta sử dụng cùng một hàm ``_process_snapshot`` để xử lý snapshot. Điều này hợp lý trong hầu hết tình huống. Tuy nhiên, nếu các component bạn chỉ định khi tạo snapshot khác nhau giữa discovery snapshot và update snapshot, bạn phải tính đến các component khác nhau đó.
 
-Querying snapshots
-""""""""""""""""""
+Truy vấn snapshot
+"""""""""""""""""
 
-Once we have a snapshot we can run queries over that snapshot to obtain the data held within.
-The snapshot is guaranteed to remain unchanged until you free it.
+Sau khi có snapshot, chúng ta có thể chạy các query trên snapshot đó để lấy dữ liệu bên trong. Snapshot được đảm bảo không thay đổi cho đến khi bạn giải phóng nó.
 
-For each component we've added to our snapshot we have an accompanying data object.
-This data object has a double function, adding it to your query ensures we query that component type,
-and it is the object into which the queried data is loaded.
+Với mỗi component đã thêm vào snapshot, chúng ta có một data object tương ứng. Data object này có hai chức năng: thêm nó vào query sẽ đảm bảo chúng ta query đúng loại component đó, đồng thời đây cũng là object mà dữ liệu được query sẽ được nạp vào.
 
-There is one special data object that must always be added to our request list as the very first
-entry and that is :ref:`OpenXRSpatialQueryResultData<class_OpenXRSpatialQueryResultData>`.
-This object will hold an entry for every returned entity with its unique ID and the current state
-of the entity.
+Có một data object đặc biệt luôn phải được thêm vào danh sách request ở vị trí đầu tiên, đó là :ref:`OpenXRSpatialQueryResultData<class_OpenXRSpatialQueryResultData>`. Object này sẽ chứa một entry cho mỗi entity được trả về, cùng với ID duy nhất và trạng thái hiện tại của entity.
 
-Completing our discovery logic we add the following:
+Hoàn thiện logic discovery, chúng ta thêm những nội dung sau:
 
 .. code-block:: gdscript
 
@@ -835,13 +721,13 @@ Completing our discovery logic we add the following:
     var entities : Dictionary[int, OpenXRSpatialEntityTracker]
 
     func _process_snapshot(p_snapshot):
-        # Always include our query result data.
+        # Luôn include dữ liệu kết quả query.
         var query_result_data : OpenXRSpatialQueryResultData = OpenXRSpatialQueryResultData.new()
 
-        # Add our bounded 2D component data.
+        # Thêm dữ liệu bounded 2D component.
         var bounded2d_list : OpenXRSpatialComponentBounded2DList = OpenXRSpatialComponentBounded2DList.new()
 
-        # And our plane alignment component data.
+        # Và dữ liệu plane alignment component.
         var alignment_list : OpenXRSpatialComponentPlaneAlignmentList = OpenXRSpatialComponentPlaneAlignmentList.new()
 
         if OpenXRSpatialEntityExtension.query_snapshot(p_snapshot, [ query_result_data, bounded2d_list, alignment_list]):
@@ -850,10 +736,10 @@ Completing our discovery logic we add the following:
                 var entity_state = query_result_data.get_entity_state(i)
 
                 if entity_state == OpenXRSpatialEntityTracker.ENTITY_TRACKING_STATE_STOPPED:
-                    # This state should only appear when doing an update snapshot
-                    # and tells us this entity is no longer tracked.
-                    # We thus remove it from our dictionary which should result
-                    # in the entity being cleaned up.
+                    # Trạng thái này chỉ xuất hiện khi thực hiện update snapshot
+                    # và cho chúng ta biết entity này không còn được tracking.
+                    # Do đó, chúng ta xóa nó khỏi dictionary, việc này sẽ khiến
+                    # entity được dọn dẹp.
                     if entities.has(entity_id):
                         var entity_tracker : OpenXRSpatialEntityTracker = entities[entity_id]
                         entity_tracker.spatial_tracking_state = entity_state
@@ -870,116 +756,94 @@ Completing our discovery logic we add the following:
                         entities[entity_id] = entity_tracker
                         register_with_xr_server = true
 
-                    # Copy the state.
+                    # Sao chép trạng thái.
                     entity_tracker.spatial_tracking_state = entity_state
 
-                    # If we're tracking, we should query the rest of our components.
+                    # Nếu đang tracking, chúng ta nên query các component còn lại.
                     if entity_state == OpenXRSpatialEntityTracker.ENTITY_TRACKING_STATE_TRACKING:
                         var center_pose : Transform3D = bounded2d_list.get_center_pose(i)
                         entity_tracker.set_pose("default", center_pose, Vector3(), Vector3(), XRPose.XR_TRACKING_CONFIDENCE_HIGH)
 
-                        # For this example I'm using OpenXRSpatialEntityTracker which does not
-                        # hold further data. You should extend this class to store the additional
-                        # state retrieved. For plane tracking this would be OpenXRPlaneTracker
-                        # and we can store the following data in the tracker:
+                        # Trong ví dụ này, tôi sử dụng OpenXRSpatialEntityTracker, vốn không
+                        # chứa thêm dữ liệu nào. Bạn nên mở rộng class này để lưu trữ phần
+                        # trạng thái bổ sung được truy xuất. Đối với plane tracking, đó sẽ là OpenXRPlaneTracker
+                        # và chúng ta có thể lưu trữ dữ liệu sau trong tracker:
                         var size : Vector2 = bounded2d_list.get_size(i)
                         var alignment = alignment_list.get_plane_alignment(i)
                     else:
                         entity_tracker.invalidate_pose("default")
 
-                    # We don't register our tracker until after we've set our initial data.
+                    # Chúng ta không đăng ký tracker cho đến sau khi thiết lập dữ liệu ban đầu.
                     if register_with_xr_server:
                         XRServer.add_tracker(entity_tracker)
 
 .. note::
 
-    In the above example we're relying on ``ENTITY_TRACKING_STATE_STOPPED`` to clean up
-    spatial entities that are no longer being tracked. This is only available with update snapshots.
+    Trong ví dụ trên, chúng ta dựa vào ``ENTITY_TRACKING_STATE_STOPPED`` để dọn dẹp các spatial entity không còn được tracking. Tính năng này chỉ khả dụng với update snapshot.
 
-    For capabilities that only rely on discovery snapshots you may wish to do a cleanup based on
-    entities that are no longer part of the snapshot instead of relying on the state change.
+    Đối với các capability chỉ dựa vào discovery snapshot, bạn có thể muốn thực hiện việc dọn dẹp dựa trên các entity không còn thuộc snapshot, thay vì dựa vào thay đổi trạng thái.
 
-Spatial entities
-""""""""""""""""
+Spatial entity
+""""""""""""""
 
-With the above information we now know how to query our spatial entities and get information about
-them, but there is a little more we need to look at when it comes to the entities themselves.
+Với các thông tin trên, giờ chúng ta đã biết cách query spatial entity và lấy thông tin về chúng, nhưng vẫn còn một số điều cần xem xét liên quan đến bản thân các entity.
 
-In theory we're getting all our data from our snapshots, however OpenXR has an extra API
-where we create a spatial entity object from our entity ID.
-While this object exists the XR runtime knows that we are using this entity and that the
-entity is not cleaned up early. This is a prerequisite for performing an update query on
-this entity.
+Về lý thuyết, chúng ta lấy toàn bộ dữ liệu từ snapshot. Tuy nhiên, OpenXR có thêm một API cho phép chúng ta tạo spatial entity object từ entity ID. Khi object này tồn tại, XR runtime biết rằng chúng ta đang sử dụng entity này và entity đó sẽ không bị dọn dẹp sớm. Đây là điều kiện tiên quyết để thực hiện update query trên entity này.
 
-In our example code we do so by calling ``OpenXRSpatialEntityExtension.make_spatial_entity``.
+Trong mã ví dụ, chúng ta thực hiện việc này bằng cách gọi ``OpenXRSpatialEntityExtension.make_spatial_entity``.
 
-Some spatial entity APIs will automatically create the object for us.
-In this case we need to call ``OpenXRSpatialEntityExtension.add_spatial_entity`` to register
-the created object with our implementation.
+Một số spatial entity API sẽ tự động tạo object cho chúng ta. Trong trường hợp này, chúng ta cần gọi ``OpenXRSpatialEntityExtension.add_spatial_entity`` để đăng ký object đã tạo với implementation của mình.
 
-Both functions return an RID that we can use in further functions that require our entity object.
+Cả hai hàm đều trả về một RID mà chúng ta có thể sử dụng trong các hàm tiếp theo yêu cầu entity object.
 
-When we're done we can call ``OpenXRSpatialEntityExtension.free_spatial_entity``.
+Khi hoàn tất, chúng ta có thể gọi ``OpenXRSpatialEntityExtension.free_spatial_entity``.
 
-Note that we didn't do so in our example code. This is automatically handled when our
+Lưu ý rằng chúng ta không làm vậy trong mã ví dụ. Việc này được tự động xử lý khi
 :ref:`OpenXRSpatialEntityTracker<class_OpenXRSpatialEntityTracker>` instance is destroyed.
 
 Spatial anchor capability
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Spatial anchors are managed by our :ref:`OpenXRSpatialAnchorCapability<class_OpenXRSpatialAnchorCapability>`
-singleton object.
-After the OpenXR session has been created you can call ``OpenXRSpatialAnchorCapability.is_spatial_anchor_supported``
-to check if the spatial anchor feature is supported on your hardware.
+Spatial anchor được quản lý bởi singleton object :ref:`OpenXRSpatialAnchorCapability<class_OpenXRSpatialAnchorCapability>` của chúng ta. Sau khi OpenXR session được tạo, bạn có thể gọi ``OpenXRSpatialAnchorCapability.is_spatial_anchor_supported`` để kiểm tra xem tính năng spatial anchor có được phần cứng của bạn hỗ trợ hay không.
 
-The spatial anchor capability breaks the mold a little from what we've shown above.
+Spatial anchor capability có một số điểm khác với những gì chúng ta đã trình bày ở trên.
 
-The spatial anchor system allows us to identify, track, persist, and share a physical location.
-What makes this different is that we're creating and destroying the anchor and are thus
-managing its lifecycle.
+Hệ thống spatial anchor cho phép chúng ta xác định, tracking, persist và chia sẻ một vị trí vật lý. Điểm khác biệt là chúng ta tạo và hủy anchor, do đó quản lý vòng đời của anchor.
 
-We thus only use the discovery system to discover anchors created and persisted in previous sessions,
-or anchors shared with us.
+Vì vậy, chúng ta chỉ sử dụng discovery system để phát hiện các anchor được tạo và persist trong những session trước, hoặc các anchor được chia sẻ với chúng ta.
 
 .. note::
 
-    Sharing of anchors is currently not supported in the spatial entities specification.
+    Hiện tại, việc chia sẻ anchor chưa được hỗ trợ trong spatial entities specification.
 
-As we showed in our example before we always start with creating a spatial context but now using the
+Như đã trình bày trong ví dụ trước, chúng ta luôn bắt đầu bằng việc tạo spatial context, nhưng lần này sử dụng
 :ref:`OpenXRSpatialCapabilityConfigurationAnchor<class_OpenXRSpatialCapabilityConfigurationAnchor>`
-configuration object.
-We'll show an example of this code after we discuss persistence scopes.
-First we'll look at managing local anchors.
+configuration object. Chúng ta sẽ trình bày ví dụ về đoạn mã này sau khi thảo luận về persistence scope. Trước tiên, hãy xem cách quản lý local anchor.
 
-There is no difference in creating spatial anchors from what we've discussed around the built-in
-logic. The only important thing is to pass your own spatial context as a parameter to
-``OpenXRSpatialAnchorCapability.create_new_anchor``.
+Việc tạo spatial anchor không khác với logic tích hợp sẵn mà chúng ta đã thảo luận. Điều quan trọng duy nhất là truyền spatial context của bạn làm tham số cho ``OpenXRSpatialAnchorCapability.create_new_anchor``.
 
-Making an anchor persistent requires you to wait until the anchor is tracking, this means that you
-must perform update queries for any anchor you create so you can process state changes.
+Để persist một anchor, bạn cần chờ cho đến khi anchor đang tracking. Điều này có nghĩa là bạn phải thực hiện update query cho mọi anchor được tạo để có thể xử lý các thay đổi trạng thái.
 
-In order to enable making anchors persistent you also have to set up a persistence scope.
-In the core of OpenXR two types of persistence scopes are supported:
+Để bật khả năng persist anchor, bạn cũng phải thiết lập persistence scope. Trong phần core của OpenXR, hai loại persistence scope được hỗ trợ:
 
 .. list-table:: Persistence scopes
    :header-rows: 1
 
    * - Enum
-     - Description
+     - Mô tả
    * - PERSISTENCE_SCOPE_SYSTEM_MANAGED
-     - Provides the application with read-only access (i.e. applications cannot modify this store)
-       to spatial entities persisted and managed by the system.
-       The application can use the UUID in the persistence component for this store to correlate
-       entities across spatial contexts and device reboots.
+     - Cung cấp cho application quyền truy cập chỉ đọc (tức là application không thể sửa đổi store này)
+       đối với các spatial entity được system persist và quản lý.
+       Application có thể sử dụng UUID trong persistence component của store này để đối chiếu
+       các entity giữa các spatial context và những lần khởi động lại thiết bị.
    * - PERSISTENCE_SCOPE_LOCAL_ANCHORS
-     - Persistence operations and data access is limited to spatial anchors, on the same device,
-       for the same user and app (using `persist_anchor` and
-       `unpersist_anchor` functions)
+     - Các thao tác persistence và quyền truy cập dữ liệu chỉ giới hạn ở spatial anchor, trên cùng một thiết bị,
+       đối với cùng một user và app (sử dụng `persist_anchor` và
+       các hàm `unpersist_anchor`)
 
-We'll start with a new script that handles our spatial anchors. It will be similar to the
-script presented earlier but with a few differences.
+Chúng ta sẽ bắt đầu với một script mới để xử lý spatial anchor. Script này sẽ tương tự script được trình bày trước đó nhưng có một vài điểm khác biệt.
 
-The first being the creation of our persistence scope.
+Điểm khác biệt đầu tiên là việc tạo persistence scope.
 
 .. code-block:: gdscript
 
@@ -988,17 +852,17 @@ The first being the creation of our persistence scope.
     var persistence_context : RID
 
     func _set_up_persistence_context():
-        # Already set up?
+        # Đã được thiết lập?
         if persistence_context:
-            # Check our spatial context.
+            # Kiểm tra spatial context của chúng ta.
             _set_up_spatial_context()
             return
 
-        # Not supported or we're not yet ready? Just exit.
+        # Không được hỗ trợ hoặc chúng ta chưa sẵn sàng? Hãy thoát.
         if not OpenXRSpatialAnchorCapability.is_spatial_anchor_supported():
             return
 
-        # If we can't use a persistence scope, just create our spatial context without one.
+        # Nếu không thể sử dụng persistence scope, chỉ cần tạo spatial context mà không có scope.
         if not OpenXRSpatialAnchorCapability.is_spatial_persistence_supported():
             _set_up_spatial_context()
             return
@@ -1009,51 +873,51 @@ The first being the creation of our persistence scope.
         elif OpenXRSpatialAnchorCapability.is_persistence_scope_supported(OpenXRSpatialAnchorCapability.PERSISTENCE_SCOPE_SYSTEM_MANAGED):
             scope = OpenXRSpatialAnchorCapability.PERSISTENCE_SCOPE_SYSTEM_MANAGED
         else:
-            # Don't have a known persistence scope, report and just set up without it.
+            # Không có persistence scope đã biết, hãy báo cáo và thiết lập mà không có scope đó.
             push_error("No known persistence scope is supported.")
             _set_up_spatial_context()
             return
 
-        # Create our persistence scope.
+        # Tạo persistence scope của chúng ta.
         var future_result : OpenXRFutureResult = OpenXRSpatialAnchorCapability.create_persistence_context(scope)
         if not future:
-            # Couldn't create persistence scope? Just set up without it.
+            # Không thể tạo persistence scope? Hãy thiết lập mà không có scope đó.
             _set_up_spatial_context()
             return
 
-        # Now wait for our process to complete.
+        # Bây giờ chờ process của chúng ta hoàn tất.
         await future_result.completed
 
-        # Get our result.
+        # Lấy kết quả của chúng ta.
         persistence_context = future_result.get_result()
         if persistence_context:
-            # Now set up our spatial context.
+            # Bây giờ thiết lập spatial context của chúng ta.
             _set_up_spatial_context()
 
 
     func _enter_tree():
         var openxr_interface : OpenXRInterface = XRServer.find_interface("OpenXR")
         if openxr_interface and openxr_interface.is_initialized():
-            # Just in case our session hasn't started yet,
-            # call our context creation on start beginning with our persistence scope.
+            # Để đề phòng session của chúng ta chưa bắt đầu,
+            # hãy gọi việc tạo context khi bắt đầu, bắt đầu bằng persistence scope của chúng ta.
             openxr_interface.session_begun.connect(_set_up_persistence_context)
 
-            # And in case it is already up and running, call it already,
-            # it will exit if we've called it too early.
+            # Và trong trường hợp nó đã hoạt động, hãy gọi nó ngay,
+            # nó sẽ thoát nếu chúng ta gọi quá sớm.
             _set_up_persistence_context()
 
 
     func _exit_tree():
         if spatial_context:
-            # Disconnect from our discovery signal.
+            # Ngắt kết nối khỏi discovery signal của chúng ta.
             OpenXRSpatialEntityExtension.spatial_discovery_recommended.disconnect(_on_perform_discovery)
 
-            # Free our spatial context, this will clean it up.
+            # Giải phóng spatial context của chúng ta; việc này sẽ dọn dẹp nó.
             OpenXRSpatialEntityExtension.free_spatial_context(spatial_context)
             spatial_context = RID()
 
         if persistence_context:
-            # Free our persistence context...
+            # Giải phóng persistence context của chúng ta...
             OpenXRSpatialAnchorCapability.free_persistence_context(persistence_context)
             persistence_context = RID()
 
@@ -1061,7 +925,7 @@ The first being the creation of our persistence scope.
         if openxr_interface and openxr_interface.is_initialized():
             openxr_interface.session_begun.disconnect(_set_up_persistence_context)
 
-With our persistence scope created, we can now create our spatial context.
+Sau khi đã tạo persistence scope, giờ chúng ta có thể tạo spatial context.
 
 .. code-block:: gdscript
 
@@ -1070,18 +934,18 @@ With our persistence scope created, we can now create our spatial context.
     var spatial_context: RID
 
     func _set_up_spatial_context():
-        # Already set up?
+        # Đã được thiết lập?
         if spatial_context:
             return
 
-        # Not supported or we're not yet set up.
+        # Không được hỗ trợ hoặc chúng ta chưa thiết lập xong.
         if not OpenXRSpatialAnchorCapability.is_spatial_anchor_supported():
             return
 
-        # Create our anchor capability.
+        # Tạo anchor capability của chúng ta.
         var anchor_capability : OpenXRSpatialCapabilityConfigurationAnchor = OpenXRSpatialCapabilityConfigurationAnchor.new()
 
-        # And set up our persistence configuration object (if needed).
+        # Và thiết lập persistence configuration object (nếu cần).
         var persistence_config : OpenXRSpatialContextPersistenceConfig
         if persistence_context:
             persistence_config = OpenXRSpatialContextPersistenceConfig.new()
@@ -1089,40 +953,37 @@ With our persistence scope created, we can now create our spatial context.
 
         var future_result : OpenXRFutureResultg = OpenXRSpatialEntityExtension.create_spatial_context([ anchor_capability ], persistence_config)
 
-        # Wait for async completion.
+        # Chờ hoàn tất async.
         await future_result.completed
 
-        # Obtain our result.
+        # Nhận kết quả của chúng ta.
         spatial_context = future_result.get_spatial_context()
         if spatial_context:
-            # Connect to our discovery signal.
+            # Kết nối với signal discovery của chúng ta.
             OpenXRSpatialEntityExtension.spatial_discovery_recommended.connect(_on_perform_discovery)
 
-            # Perform our initial discovery.
+            # Thực hiện discovery ban đầu của chúng ta.
             _on_perform_discovery(spatial_context)
 
 
-Creating our discovery snapshot for our anchors is nearly the same as we did before, however it only makes sense
-to create our snapshot for persistent anchors. We already know the anchors we created during our session, we
-just want access to those coming from the XR runtime.
+Việc tạo snapshot discovery cho các anchor của chúng ta gần như giống hệt những gì đã làm trước đây, tuy nhiên chỉ hợp lý khi tạo snapshot cho các anchor persistent. Chúng ta đã biết các anchor được tạo trong session, nên chỉ cần truy cập những anchor đến từ XR runtime.
 
-We also want to perform regular update queries, here we are only interested in the state so we do want to
-process our snapshot slightly differently.
+Chúng ta cũng muốn thực hiện các truy vấn cập nhật định kỳ; ở đây chúng ta chỉ quan tâm đến state, vì vậy cần xử lý snapshot hơi khác một chút.
 
-The anchor system gives us access to two components:
+Hệ thống anchor cho phép chúng ta truy cập hai component:
 
 .. list-table:: Anchor components
    :header-rows: 1
 
    * - Component
      - Data class
-     - Description
+     - Mô tả
    * - COMPONENT_TYPE_ANCHOR
      - :ref:`OpenXRSpatialComponentAnchorList<class_OpenXRSpatialComponentAnchorList>`
-     - Provides us with the pose (location + orientation) of each anchor
+     - Cung cấp pose (vị trí + hướng) của mỗi anchor
    * - COMPONENT_TYPE_PERSISTENCE
      - :ref:`OpenXRSpatialComponentPersistenceList<class_OpenXRSpatialComponentPersistenceList>`
-     - Provides us with the persistence state and UUID of each anchor
+     - Cung cấp persistence state và UUID của mỗi anchor
 
 .. code-block:: gdscript
 
@@ -1132,33 +993,33 @@ The anchor system gives us access to two components:
     var entities : Dictionary[int, OpenXRAnchorTracker]
 
     func _on_perform_discovery(p_spatial_context):
-        # We get this signal for all spatial contexts, so exit if this is not for us.
+        # Chúng ta nhận signal này cho tất cả spatial context, vì vậy hãy thoát nếu đây không phải spatial context của chúng ta.
         if p_spatial_context != spatial_context:
             return
 
-        # Skip this if we don't have a persistence context.
+        # Bỏ qua bước này nếu chúng ta không có persistence context.
         if not persistence_context:
             return
 
-        # If we currently have an ongoing discovery result, cancel it.
+        # Nếu hiện đang có một discovery result đang hoạt động, hãy hủy nó.
         if discovery_result:
             discovery_result.cancel_discovery()
 
-        # Perform our discovery.
+        # Thực hiện discovery của chúng ta.
         discovery_result = OpenXRSpatialEntityExtension.discover_spatial_entities(spatial_context, [ \
                 OpenXRSpatialEntityExtension.COMPONENT_TYPE_ANCHOR, \
                 OpenXRSpatialEntityExtension.COMPONENT_TYPE_PERSISTENCE \
             ])
 
-        # Wait for async completion.
+        # Chờ async hoàn tất.
         await discovery_result.completed
 
         var snapshot : RID = discovery_result.get_spatial_snapshot()
         if snapshot:
-            # Process our snapshot result.
+            # Xử lý kết quả snapshot của chúng ta.
             _process_snapshot(snapshot, true)
 
-            # And clean up our snapshot.
+            # Và dọn dẹp snapshot của chúng ta.
             OpenXRSpatialEntityExtension.free_spatial_snapshot(snapshot)
 
 
@@ -1173,15 +1034,15 @@ The anchor system gives us access to two components:
         for entity_id in entities:
             entity_rids.push_back(entities[entity_id].entity)
 
-        # We just want our anchor component here.
+        # Ở đây chúng ta chỉ cần anchor component.
         var snapshot : RID = OpenXRSpatialEntityExtension.update_spatial_entities(spatial_context, entity_rids, [ \
                 OpenXRSpatialEntityExtension.COMPONENT_TYPE_ANCHOR, \
             ])
         if snapshot:
-            # Process our snapshot.
+            # Xử lý snapshot của chúng ta.
             _process_snapshot(snapshot)
 
-            # And clean up our snapshot.
+            # Và dọn dẹp snapshot của chúng ta.
             OpenXRSpatialEntityExtension.free_spatial_snapshot(snapshot)
 
 
@@ -1189,8 +1050,7 @@ The anchor system gives us access to two components:
         pass
 
 
-Finally we can process our snapshot. Note that we are using :ref:`OpenXRAnchorTracker<class_OpenXRAnchorTracker>`
-as our tracker class as this already has all the support for anchors built in.
+Cuối cùng, chúng ta có thể xử lý snapshot. Lưu ý rằng chúng ta sử dụng :ref:`OpenXRAnchorTracker<class_OpenXRAnchorTracker>` làm tracker class, vì class này đã tích hợp sẵn toàn bộ hỗ trợ cho anchor.
 
 .. code-block:: gdscript
 
@@ -1199,18 +1059,18 @@ as our tracker class as this already has all the support for anchors built in.
     func _process_snapshot(p_snapshot, p_get_uuids):
         var result_data : Array
 
-        # Always include our query result data.
+        # Luôn bao gồm dữ liệu query result của chúng ta.
         var query_result_data : OpenXRSpatialQueryResultData = OpenXRSpatialQueryResultData.new()
         result_data.push_back(query_result_data)
 
-        # Add our anchor component data.
+        # Thêm dữ liệu anchor component của chúng ta.
         var anchor_list : OpenXRSpatialComponentAnchorList = OpenXRSpatialComponentAnchorList.new()
         result_data.push_back(anchor_list)
 
-        # And our persistent component data.
+        # Và dữ liệu persistent component của chúng ta.
         var persistent_list : OpenXRSpatialComponentPersistenceList
         if p_get_uuids:
-            # Only add this when we need it.
+            # Chỉ thêm dữ liệu này khi cần.
             persistent_list = OpenXRSpatialComponentPersistenceList.new()
             result_data.push_back(persistent_list)
 
@@ -1220,10 +1080,10 @@ as our tracker class as this already has all the support for anchors built in.
                 var entity_state = query_result_data.get_entity_state(i)
 
                 if entity_state == OpenXRSpatialEntityTracker.ENTITY_TRACKING_STATE_STOPPED:
-                    # This state should only appear when doing an update snapshot
-                    # and tells us this entity is no longer tracked.
-                    # We thus remove it from our dictionary which should result
-                    # in the entity being cleaned up.
+                    # State này chỉ xuất hiện khi thực hiện update snapshot
+                    # và cho biết entity này không còn được tracking.
+                    # Do đó, chúng ta xóa nó khỏi dictionary, việc này sẽ khiến
+                    # entity được dọn dẹp.
                     if entities.has(entity_id):
                         var entity_tracker : OpenXRAnchorTracker = entities[entity_id]
                         entity_tracker.spatial_tracking_state = entity_state
@@ -1240,67 +1100,62 @@ as our tracker class as this already has all the support for anchors built in.
                         entities[entity_id] = entity_tracker
                         register_with_xr_server = true
 
-                    # Copy the state.
+                    # Sao chép state.
                     entity_tracker.spatial_tracking_state = entity_state
 
-                    # If we're tracking, we update our position.
+                    # Nếu đang tracking, chúng ta cập nhật vị trí.
                     if entity_state == OpenXRSpatialEntityTracker.ENTITY_TRACKING_STATE_TRACKING:
                         var anchor_transform = anchor_list.get_entity_pose(i)
                         entity_tracker.set_pose("default", anchor_transform, Vector3(), Vector3(), XRPose.XR_TRACKING_CONFIDENCE_HIGH)
                     else:
                         entity_tracker.invalidate_pose("default")
 
-                    # But persistence data is a big exception, it can be provided even if we're not tracking.
+                    # Tuy nhiên, persistence data là một ngoại lệ lớn: nó có thể được cung cấp ngay cả khi chúng ta không tracking.
                     if p_get_uuids:
                         var persistent_state = persistent_list.get_persistent_state(i)
                         if persistent_state == 1:
                             entity_tracker.uuid = persistent_list.get_persistent_uuid(i)
 
-                    # We don't register our tracker until after we've set our initial data.
+                    # Chúng ta không register tracker cho đến sau khi đã thiết lập initial data.
                     if register_with_xr_server:
                         XRServer.add_tracker(entity_tracker)
 
-Plane tracking capability
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Khả năng plane tracking
+~~~~~~~~~~~~~~~~~~~~~~~
 
-Plane tracking is handled by the
+Plane tracking được xử lý bởi
 :ref:`OpenXRSpatialPlaneTrackingCapability<class_OpenXRSpatialPlaneTrackingCapability>`
 singleton class.
 
-After the OpenXR session has been created you can call ``OpenXRSpatialPlaneTrackingCapability.is_supported``
-to check if the plane tracking feature is supported on your hardware.
+Sau khi OpenXR session được tạo, bạn có thể gọi ``OpenXRSpatialPlaneTrackingCapability.is_supported`` để kiểm tra xem tính năng plane tracking có được hỗ trợ trên phần cứng của bạn hay không.
 
-While we've provided most of the code for plane tracking up above, we'll present the full implementation below
-as it has a few small tweaks.
-There is no need to update snapshots here, we just do our discovery snapshot and implement our process function.
+Mặc dù phần lớn code cho plane tracking đã được cung cấp ở trên, chúng ta sẽ trình bày implementation đầy đủ bên dưới vì có một vài điều chỉnh nhỏ. Ở đây không cần cập nhật snapshot; chúng ta chỉ thực hiện discovery snapshot và triển khai hàm process.
 
-Plane tracking gives access to two components that are guaranteed to be supported, and three optional components.
+Plane tracking cho phép truy cập hai component bắt buộc được hỗ trợ và ba component tùy chọn.
 
 .. list-table:: Plane tracking components
    :header-rows: 1
 
    * - Component
      - Data class
-     - Description
+     - Mô tả
    * - COMPONENT_TYPE_BOUNDED_2D
      - :ref:`OpenXRSpatialComponentBounded2DList<class_OpenXRSpatialComponentBounded2DList>`
-     - Provides us with the center pose and bounding rectangle for each plane.
+     - Cung cấp center pose và bounding rectangle của mỗi plane.
    * - COMPONENT_TYPE_PLANE_ALIGNMENT
      - :ref:`OpenXRSpatialComponentPlaneAlignmentList<class_OpenXRSpatialComponentPlaneAlignmentList>`
-     - Provides us with the alignment of each plane
+     - Cung cấp alignment của mỗi plane
    * - COMPONENT_TYPE_MESH_2D
      - :ref:`OpenXRSpatialComponentMesh2DList<class_OpenXRSpatialComponentMesh2DList>`
-     - Provides us with a 2D mesh that shapes each plane
+     - Cung cấp mesh 2D tạo hình cho mỗi plane
    * - COMPONENT_TYPE_POLYGON_2D
      - :ref:`OpenXRSpatialComponentPolygon2DList<class_OpenXRSpatialComponentPolygon2DList>`
-     - Provides us with a 2D polygon that shapes each plane
+     - Cung cấp polygon 2D tạo hình cho mỗi plane
    * - COMPONENT_TYPE_PLANE_SEMANTIC_LABEL
      - :ref:`OpenXRSpatialComponentPlaneSemanticLabelList<class_OpenXRSpatialComponentPlaneSemanticLabelList>`
-     - Provides us with a type identification of each plane
+     - Cung cấp type identification của mỗi plane
 
-Our plane tracking configuration object already enables all supported components, but we'll need to interrogate
-it so we'll store our instance in a member variable.
-We can use our :ref:`OpenXRPlaneTracker<class_OpenXRPlaneTracker>` tracker object to store our component data.
+Configuration object cho plane tracking đã bật tất cả component được hỗ trợ, nhưng chúng ta sẽ cần truy vấn nó, nên sẽ lưu instance vào một member variable. Chúng ta có thể sử dụng tracker object :ref:`OpenXRPlaneTracker<class_OpenXRPlaneTracker>` để lưu component data.
 
 .. code-block:: gdscript
 
@@ -1312,51 +1167,51 @@ We can use our :ref:`OpenXRPlaneTracker<class_OpenXRPlaneTracker>` tracker objec
     var entities : Dictionary[int, OpenXRPlaneTracker]
 
     func _set_up_spatial_context():
-        # Already set up?
+        # Đã được thiết lập?
         if spatial_context:
             return
 
-        # Not supported or we're not yet ready?
+        # Không được hỗ trợ hoặc chúng ta chưa sẵn sàng?
         if not OpenXRSpatialPlaneTrackingCapability.is_supported():
             return
 
-        # We'll use plane tracking as an example here, our configuration object
-        # here does not have any additional configuration. It just needs to exist.
+        # Ở đây chúng ta sẽ dùng plane tracking làm ví dụ; configuration object của chúng ta
+        # không có configuration bổ sung nào. Nó chỉ cần tồn tại.
         plane_capability = OpenXRSpatialCapabilityConfigurationPlaneTracking.new()
 
         var future_result : OpenXRFutureResult = OpenXRSpatialEntityExtension.create_spatial_context([ plane_capability ])
 
-        # Wait for async completion.
+        # Chờ async hoàn tất.
         await future_result.completed
 
-        # Obtain our result.
+        # Nhận kết quả của chúng ta.
         spatial_context = future_result.get_spatial_context()
         if spatial_context:
-            # Connect to our discovery signal.
+            # Kết nối với signal discovery của chúng ta.
             OpenXRSpatialEntityExtension.spatial_discovery_recommended.connect(_on_perform_discovery)
 
-            # Perform our initial discovery.
+            # Thực hiện discovery ban đầu của chúng ta.
             _on_perform_discovery(spatial_context)
 
 
     func _enter_tree():
         var openxr_interface : OpenXRInterface = XRServer.find_interface("OpenXR")
         if openxr_interface and openxr_interface.is_initialized():
-            # Just in case our session hasn't started yet,
-            # call our spatial context creation on start.
+            # Đề phòng session của chúng ta chưa bắt đầu,
+            # hãy gọi thao tác tạo spatial context khi bắt đầu.
             openxr_interface.session_begun.connect(_set_up_spatial_context)
 
-            # And in case it is already up and running, call it already,
-            # it will exit if we've called it too early.
+            # Và nếu nó đã hoạt động, hãy gọi ngay,
+            # nó sẽ thoát nếu chúng ta gọi quá sớm.
             _set_up_spatial_context()
 
 
     func _exit_tree():
         if spatial_context:
-            # Disconnect from our discovery signal.
+            # Ngắt kết nối khỏi signal discovery của chúng ta.
             OpenXRSpatialEntityExtension.spatial_discovery_recommended.disconnect(_on_perform_discovery)
 
-            # Free our spatial context, this will clean it up.
+            # Giải phóng spatial context của chúng ta; thao tác này sẽ dọn dẹp nó.
             OpenXRSpatialEntityExtension.free_spatial_context(spatial_context)
             spatial_context = RID()
 
@@ -1366,51 +1221,51 @@ We can use our :ref:`OpenXRPlaneTracker<class_OpenXRPlaneTracker>` tracker objec
 
 
     func _on_perform_discovery(p_spatial_context):
-        # We get this signal for all spatial contexts, so exit if this is not for us.
+        # Chúng ta nhận signal này cho tất cả spatial context, vì vậy hãy thoát nếu đây không phải spatial context của chúng ta.
         if p_spatial_context != spatial_context:
             return
 
-        # If we currently have an ongoing discovery result, cancel it.
+        # Nếu hiện đang có một discovery result đang hoạt động, hãy hủy nó.
         if discovery_result:
             discovery_result.cancel_discovery()
 
-        # Perform our discovery.
+        # Thực hiện discovery của chúng ta.
         discovery_result = OpenXRSpatialEntityExtension.discover_spatial_entities(spatial_context, \
                 plane_capability.get_enabled_components())
 
-        # Wait for async completion.
+        # Chờ async hoàn tất.
         await discovery_result.completed
 
         var snapshot : RID = discovery_result.get_spatial_snapshot()
         if snapshot:
-            # Process our snapshot result.
+            # Xử lý kết quả snapshot của chúng ta.
             _process_snapshot(snapshot)
 
-            # And clean up our snapshot.
+            # Và dọn dẹp snapshot của chúng ta.
             OpenXRSpatialEntityExtension.free_spatial_snapshot(snapshot)
 
 
     func _process_snapshot(p_snapshot):
         var result_data : Array
 
-        # Make a copy of the entities we've currently found.
+        # Tạo một bản sao của các entity mà chúng ta hiện đã tìm thấy.
         var org_entities : PackedInt64Array
         for entity_id in entities:
             org_entities.push_back(entity_id)
 
-        # Always include our query result data.
+        # Luôn bao gồm dữ liệu query result của chúng ta.
         var query_result_data : OpenXRSpatialQueryResultData = OpenXRSpatialQueryResultData.new()
         result_data.push_back(query_result_data)
 
-        # Add our bounded 2D component data.
+        # Thêm dữ liệu bounded 2D component của chúng ta.
         var bounded2d_list : OpenXRSpatialComponentBounded2DList = OpenXRSpatialComponentBounded2DList.new()
         result_data.push_back(bounded2d_list)
 
-        # And our plane alignment component data.
+        # Và dữ liệu plane alignment component của chúng ta.
         var alignment_list : OpenXRSpatialComponentPlaneAlignmentList = OpenXRSpatialComponentPlaneAlignmentList.new()
         result_data.push_back(alignment_list)
 
-        # We need either a Mesh2D or a Polygon2D, we don't need both.
+        # Chúng ta cần Mesh2D hoặc Polygon2D, không cần cả hai.
         var mesh2d_list : OpenXRSpatialComponentMesh2DList
         var polygon2d_list : OpenXRSpatialComponentPolygon2DList
         if plane_capability.get_supports_mesh_2d():
@@ -1420,7 +1275,7 @@ We can use our :ref:`OpenXRPlaneTracker<class_OpenXRPlaneTracker>` tracker objec
             polygon2d_list = OpenXRSpatialComponentPolygon2DList.new()
             result_data.push_back(polygon2d_list)
 
-        # And add our semantic labels if supported.
+        # Và thêm semantic label nếu được hỗ trợ.
         var label_list : OpenXRSpatialComponentPlaneSemanticLabelList
         if plane_capability.get_supports_labels():
             label_list = OpenXRSpatialComponentPlaneSemanticLabelList.new()
@@ -1431,13 +1286,13 @@ We can use our :ref:`OpenXRPlaneTracker<class_OpenXRPlaneTracker>` tracker objec
                 var entity_id = query_result_data.get_entity_id(i)
                 var entity_state = query_result_data.get_entity_state(i)
 
-                # Remove the entity from our original list.
+                # Xóa entity khỏi danh sách ban đầu của chúng ta.
                 if org_entities.has(entity_id):
                     org_entities.erase(entity_id)
 
                 if entity_state == OpenXRSpatialEntityTracker.ENTITY_TRACKING_STATE_STOPPED:
-                    # We're not doing update snapshots so we shouldn't get this,
-                    # but just to future proof:
+                    # Chúng ta không thực hiện update snapshot, nên sẽ không nhận được state này,
+                    # nhưng để đảm bảo tương thích trong tương lai:
                     if entities.has(entity_id):
                         var entity_tracker : OpenXRPlaneTracker = entities[entity_id]
                         entity_tracker.spatial_tracking_state = entity_state
@@ -1454,10 +1309,10 @@ We can use our :ref:`OpenXRPlaneTracker<class_OpenXRPlaneTracker>` tracker objec
                         entities[entity_id] = entity_tracker
                         register_with_xr_server = true
 
-                    # Copy the state.
+                    # Sao chép state.
                     entity_tracker.spatial_tracking_state = entity_state
 
-                    # If we're tracking, we should query the rest of our components.
+                    # Nếu đang tracking, chúng ta nên truy vấn các component còn lại.
                     if entity_state == OpenXRSpatialEntityTracker.ENTITY_TRACKING_STATE_TRACKING:
                         var center_pose : Transform3D = bounded2d_list.get_center_pose(i)
                         entity_tracker.set_pose("default", center_pose, Vector3(), Vector3(), XRPose.XR_TRACKING_CONFIDENCE_HIGH)
@@ -1471,7 +1326,7 @@ We can use our :ref:`OpenXRPlaneTracker<class_OpenXRPlaneTracker>` tracker objec
                                     mesh2d_list.get_vertices(p_snapshot, i), \
                                     mesh2d_list.get_indices(p_snapshot, i))
                         elif polygon2d_list:
-                            # The logic in our tracker will convert the polygon to a mesh.
+                            # Logic trong tracker sẽ chuyển polygon thành mesh.
                             entity_tracker.set_mesh_data( \
                                     polygon2d_list.get_transform(i), \
                                     polygon2d_list.get_vertices(p_snapshot, i))
@@ -1483,11 +1338,11 @@ We can use our :ref:`OpenXRPlaneTracker<class_OpenXRPlaneTracker>` tracker objec
                     else:
                         entity_tracker.invalidate_pose("default")
 
-                    # We don't register our tracker until after we've set our initial data.
+                    # Chúng ta không register tracker cho đến sau khi đã thiết lập initial data.
                     if register_with_xr_server:
                         XRServer.add_tracker(entity_tracker)
 
-        # Any entities we've got left over, we can remove.
+        # Chúng ta có thể xóa mọi entity còn lại.
         for entity_id in org_entities:
             var entity_tracker : OpenXRPlaneTracker = entities[entity_id]
             entity_tracker.spatial_tracking_state = OpenXRSpatialEntityTracker.ENTITY_TRACKING_STATE_STOPPED
@@ -1495,25 +1350,22 @@ We can use our :ref:`OpenXRPlaneTracker<class_OpenXRPlaneTracker>` tracker objec
             entities.erase(entity_id)
 
 
-Marker tracking capability
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Khả năng marker tracking
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-Marker tracking is handled by the
+Marker tracking được xử lý bởi
 :ref:`OpenXRSpatialMarkerTrackingCapability<class_OpenXRSpatialMarkerTrackingCapability>`
 singleton class.
 
-Marker tracking works similarly to plane tracking, however we're now tracking specific entities in
-the real world based on some code printed on an object like a piece of paper.
+Marker tracking hoạt động tương tự plane tracking, tuy nhiên lúc này chúng ta tracking các entity cụ thể trong thế giới thực dựa trên một đoạn code được in trên một vật thể, chẳng hạn như một tờ giấy.
 
-There are various different marker tracking options. OpenXR supports 4 out of the box, the following
-table provides more information and the function name with which to check if your headset supports
-a given option:
+Có nhiều tùy chọn marker tracking khác nhau. OpenXR hỗ trợ sẵn 4 tùy chọn; bảng sau cung cấp thêm thông tin và tên function dùng để kiểm tra xem headset của bạn có hỗ trợ một tùy chọn cụ thể hay không:
 
 .. list-table:: Marker tracking options
    :header-rows: 1
 
-   * - Option
-     - Check for support
+   * - Tùy chọn
+     - Kiểm tra hỗ trợ
      - Configuration object
    * - April tag
      - ``april_tag_is_supported``
@@ -1528,13 +1380,11 @@ a given option:
      - ``micro_qrcode_is_supported``
      - :ref:`OpenXRSpatialCapabilityConfigurationMicroQrCode<class_OpenXRSpatialCapabilityConfigurationMicroQrCode>`
 
-Each option has its own configuration object that you can use when creating a spatial entity.
+Mỗi tùy chọn có configuration object riêng mà bạn có thể sử dụng khi tạo spatial entity.
 
-QR codes allow you to encode a string which is decoded by the XR runtime and accessible when a marker is found.
-With April tags and Aruco markers, binary data is encoded which you again can access when a marker is found,
-however you need to configure the detection with the correct decoding format.
+QR code cho phép encode một string, sau đó được XR runtime decode và có thể truy cập khi tìm thấy marker. Với April tag và Aruco marker, binary data được encode; bạn cũng có thể truy cập dữ liệu này khi tìm thấy marker, tuy nhiên cần cấu hình detection với decoding format chính xác.
 
-As an example we'll create a spatial context that will find QR codes and Aruco markers.
+Ví dụ, chúng ta sẽ tạo một spatial context để tìm QR code và Aruco marker.
 
 .. code-block:: gdscript
 
@@ -1545,60 +1395,60 @@ As an example we'll create a spatial context that will find QR codes and Aruco m
     var spatial_context: RID
 
     func _set_up_spatial_context():
-        # Already set up?
+        # Đã được thiết lập?
         if spatial_context:
             return
 
         var configurations : Array
 
-        # Add our QR code configuration.
+        # Thêm QR code configuration của chúng ta.
         if not OpenXRSpatialMarkerTrackingCapability.qrcode_is_supported():
             qrcode_config = OpenXRSpatialCapabilityConfigurationQrCode.new()
             configurations.push_back(qrcode_config)
 
-        # Add our Aruco marker configuration.
+        # Thêm Aruco marker configuration của chúng ta.
         if not OpenXRSpatialMarkerTrackingCapability.aruco_is_supported():
             aruco_config = OpenXRSpatialCapabilityConfigurationAruco.new()
             aruco_config.aruco_dict = OpenXRSpatialCapabilityConfigurationAruco.ARUCO_DICT_7X7_1000
             configurations.push_back(aruco_config)
 
-        # Nothing supported?
+        # Không được hỗ trợ?
         if configurations.is_empty():
             return
 
         var future_result : OpenXRFutureResult = OpenXRSpatialEntityExtension.create_spatial_context(configurations)
 
-        # Wait for async completion.
+        # Chờ async hoàn tất.
         await future_result.completed
 
-        # Obtain our result.
+        # Nhận kết quả của chúng ta.
         spatial_context = future_result.get_spatial_context()
         if spatial_context:
-            # Connect to our discovery signal.
+            # Kết nối với signal discovery của chúng ta.
             OpenXRSpatialEntityExtension.spatial_discovery_recommended.connect(_on_perform_discovery)
 
-            # Perform our initial discovery.
+            # Thực hiện discovery ban đầu của chúng ta.
             _on_perform_discovery(spatial_context)
 
 
     func _enter_tree():
         var openxr_interface : OpenXRInterface = XRServer.find_interface("OpenXR")
         if openxr_interface and openxr_interface.is_initialized():
-            # Just in case our session hasn't started yet,
-            # call our spatial context creation on start.
+            # Đề phòng session của chúng ta chưa bắt đầu,
+            # hãy gọi thao tác tạo spatial context khi bắt đầu.
             openxr_interface.session_begun.connect(_set_up_spatial_context)
 
-            # And in case it is already up and running, call it already,
-            # it will exit if we've called it too early.
+            # Và nếu nó đã hoạt động, hãy gọi ngay,
+            # nó sẽ thoát nếu chúng ta gọi quá sớm.
             _set_up_spatial_context()
 
 
     func _exit_tree():
         if spatial_context:
-            # Disconnect from our discovery signal.
+            # Ngắt kết nối khỏi signal discovery của chúng ta.
             OpenXRSpatialEntityExtension.spatial_discovery_recommended.disconnect(_on_perform_discovery)
 
-            # Free our spatial context, this will clean it up.
+            # Giải phóng spatial context của chúng ta; thao tác này sẽ dọn dẹp nó.
             OpenXRSpatialEntityExtension.free_spatial_context(spatial_context)
             spatial_context = RID()
 
@@ -1607,22 +1457,22 @@ As an example we'll create a spatial context that will find QR codes and Aruco m
             openxr_interface.session_begun.disconnect(_set_up_spatial_context)
 
 
-Every marker regardless of typer will consist of two components:
+Mỗi marker, bất kể type nào, sẽ gồm hai component:
 
 .. list-table:: Marker tracking components
    :header-rows: 1
 
    * - Component
      - Data class
-     - Description
+     - Mô tả
    * - COMPONENT_TYPE_MARKER
      - :ref:`OpenXRSpatialComponentMarkerList<class_OpenXRSpatialComponentMarkerList>`
-     - Provides us with the type, ID (Aruco and April Tag), and/or data (QR Code) for each marker.
+     - Cung cấp type, ID (Aruco và April Tag) và/hoặc data (QR Code) của mỗi marker.
    * - COMPONENT_TYPE_BOUNDED_2D
      - :ref:`OpenXRSpatialComponentBounded2DList<class_OpenXRSpatialComponentBounded2DList>`
-     - Provides us with the center pose and bounding rectangle for each plane.
+     - Cung cấp center pose và bounding rectangle của mỗi plane.
 
-We add our discovery implementation:
+Chúng ta thêm implementation cho discovery:
 
 .. code-block:: gdscript
 
@@ -1632,54 +1482,54 @@ We add our discovery implementation:
     var entities : Dictionary[int, OpenXRMarkerTracker]
 
     func _on_perform_discovery(p_spatial_context):
-        # We get this signal for all spatial contexts, so exit if this is not for us.
+        # Chúng ta nhận signal này cho tất cả spatial context, vì vậy hãy thoát nếu đây không phải spatial context của chúng ta.
         if p_spatial_context != spatial_context:
             return
 
-        # If we currently have an ongoing discovery result, cancel it.
+        # Nếu hiện đang có một discovery result đang hoạt động, hãy hủy nó.
         if discovery_result:
             discovery_result.cancel_discovery()
 
-        # Perform our discovery.
+        # Thực hiện discovery của chúng ta.
         discovery_result = OpenXRSpatialEntityExtension.discover_spatial_entities(spatial_context, [\
                 OpenXRSpatialEntityExtension.COMPONENT_TYPE_MARKER, \
                 OpenXRSpatialEntityExtension.COMPONENT_TYPE_BOUNDED_2D \
             ])
 
-        # Wait for async completion.
+        # Chờ tác vụ bất đồng bộ hoàn tất.
         await discovery_result.completed
 
         var snapshot : RID = discovery_result.get_spatial_snapshot()
         if snapshot:
-            # Process our snapshot result.
+            # Xử lý kết quả snapshot của chúng ta.
             _process_snapshot(snapshot, true)
 
-            # And clean up our snapshot.
+            # Và dọn dẹp snapshot của chúng ta.
             OpenXRSpatialEntityExtension.free_spatial_snapshot(snapshot)
 
 
     func _process_snapshot(p_snapshot, bool p_is_discovery):
         var result_data : Array
 
-        # Make a copy of the entities we've currently found.
+        # Tạo một bản sao của các thực thể mà hiện tại chúng ta đã tìm thấy.
         var org_entities : PackedInt64Array
         if p_is_discovery:
-            # Only on discovery will we check if we have untracked entities to clean up.
+            # Chỉ trong discovery, chúng ta mới kiểm tra xem có thực thể chưa được theo dõi nào cần dọn dẹp hay không.
             for entity_id in entities:
                 org_entities.push_back(entity_id)
 
-        # Always include our query result data.
+        # Luôn bao gồm dữ liệu kết quả truy vấn của chúng ta.
         var query_result_data : OpenXRSpatialQueryResultData = OpenXRSpatialQueryResultData.new()
         result_data.push_back(query_result_data)
 
-        # And our marker component data.
+        # Và dữ liệu marker component của chúng ta.
         var marker_list : OpenXRSpatialComponentMarkerList
         if p_is_discovery:
-            # Only on discovery do we check our marker data
+            # Chỉ trong discovery, chúng ta mới kiểm tra dữ liệu marker của mình
             marker_list = OpenXRSpatialComponentMarkerList.new()
             result_data.push_back(marker_list)
 
-        # Add our bounded 2D component data.
+        # Thêm dữ liệu bounded 2D component của chúng ta.
         var bounded2d_list : OpenXRSpatialComponentBounded2DList = OpenXRSpatialComponentBounded2DList.new()
         result_data.push_back(bounded2d_list)
 
@@ -1688,13 +1538,13 @@ We add our discovery implementation:
                 var entity_id = query_result_data.get_entity_id(i)
                 var entity_state = query_result_data.get_entity_state(i)
 
-                # Remove the entity from our original list.
+                # Xóa thực thể khỏi danh sách ban đầu của chúng ta.
                 if org_entities.has(entity_id):
                     org_entities.erase(entity_id)
 
                 if entity_state == OpenXRSpatialEntityTracker.ENTITY_TRACKING_STATE_STOPPED:
-                    # We should only get this when doing an update,
-                    # and we'll remove our marker in that case.
+                    # Chúng ta chỉ nhận được điều này khi thực hiện một bản cập nhật,
+                    # và trong trường hợp đó, chúng ta sẽ xóa marker của mình.
                     if entities.has(entity_id):
                         var entity_tracker : OpenXRMarkerTracker = entities[entity_id]
                         entity_tracker.spatial_tracking_state = entity_state
@@ -1711,10 +1561,10 @@ We add our discovery implementation:
                         entities[entity_id] = entity_tracker
                         register_with_xr_server = true
 
-                    # Copy the state.
+                    # Sao chép state.
                     entity_tracker.spatial_tracking_state = entity_state
 
-                    # If we're tracking, we should query the rest of our components.
+                    # Nếu đang theo dõi, chúng ta nên truy vấn các component còn lại.
                     if entity_state == OpenXRSpatialEntityTracker.ENTITY_TRACKING_STATE_TRACKING:
                         var center_pose : Transform3D = bounded2d_list.get_center_pose(i)
                         entity_tracker.set_pose("default", center_pose, Vector3(), Vector3(), XRPose.XR_TRACKING_CONFIDENCE_HIGH)
@@ -1728,19 +1578,19 @@ We add our discovery implementation:
                     else:
                         entity_tracker.invalidate_pose("default")
 
-                    # We don't register our tracker until after we've set our initial data.
+                    # Chúng ta không đăng ký tracker cho đến khi thiết lập dữ liệu ban đầu.
                     if register_with_xr_server:
                         XRServer.add_tracker(entity_tracker)
 
         if p_is_discovery:
-            # Any entities we've got left over, we can remove.
+            # Chúng ta có thể xóa mọi thực thể còn sót lại.
             for entity_id in org_entities:
                 var entity_tracker : OpenXRMarkerTracker = entities[entity_id]
                 entity_tracker.spatial_tracking_state = OpenXRSpatialEntityTracker.ENTITY_TRACKING_STATE_STOPPED
                 XRServer.remove_tracker(entity_tracker)
                 entities.erase(entity_id)
 
-And we add our update functionality:
+Và chúng ta thêm chức năng update:
 
 .. code-block:: gdscript
 
@@ -1758,13 +1608,13 @@ And we add our update functionality:
         for entity_id in entities:
             entity_rids.push_back(entities[entity_id].entity)
 
-        # We just want our anchor component here.
+        # Ở đây, chúng ta chỉ cần anchor component.
         var snapshot : RID = OpenXRSpatialEntityExtension.update_spatial_entities(spatial_context, entity_rids, [ \
                 OpenXRSpatialEntityExtension.COMPONENT_TYPE_BOUNDED_2D, \
             ])
         if snapshot:
-            # Process our snapshot.
+            # Xử lý snapshot của chúng ta.
             _process_snapshot(snapshot, false)
 
-            # And clean up our snapshot.
+            # Và dọn dẹp snapshot của chúng ta.
             OpenXRSpatialEntityExtension.free_spatial_snapshot(snapshot)

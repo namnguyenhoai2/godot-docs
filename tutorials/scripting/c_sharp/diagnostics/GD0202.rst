@@ -1,60 +1,44 @@
-GD0202: The parameter of the delegate signature of the signal is not supported
-==============================================================================
+GD0202: Tham số trong chữ ký delegate của signal không được hỗ trợ
+==================================================================
 
-====================================  ======================================
-                                      Value
-====================================  ======================================
-**Rule ID**                           GD0202
-**Category**                          Usage
-**Fix is breaking or non-breaking**   Breaking - If the parameter type is changed
+==================================== ====================================== Giá trị ==================================== ====================================== **ID quy tắc** GD0202 **Danh mục** Cách sử dụng **Bản sửa lỗi có breaking change hay không** Breaking - Nếu kiểu của tham số bị thay đổi
 
-                                      Non-breaking - If the ``[Signal]`` attribute is removed
-**Enabled by default**                Yes
-====================================  ======================================
+                                      Non-breaking - Nếu thuộc tính ``[Signal]`` bị xóa **Được bật theo mặc định** Có ==================================== ======================================
 
-Cause
------
+Nguyên nhân
+-----------
 
-An unsupported type is specified for a parameter of a delegate annotated with
-the ``[Signal]`` attribute when a
+Một kiểu không được hỗ trợ được chỉ định cho tham số của một delegate có chú thích bằng thuộc tính ``[Signal]`` khi một
 :ref:`Variant-compatible type <c_sharp_variant_compatible_types>` is expected.
 
-Rule description
-----------------
+Mô tả quy tắc
+-------------
 
-Every signal parameter must be Variant-compatible so it can be marshalled when
-emitting the signal and invoking the callbacks.
+Mọi tham số của signal phải tương thích với Variant để có thể được marshal khi phát signal và gọi các callback.
 
 .. code-block:: csharp
 
     class SomeType { }
 
-    // SomeType is not a valid parameter type because it doesn't derive from GodotObject,
-    // so it's not compatible with Variant.
+    // SomeType không phải là kiểu tham số hợp lệ vì nó không kế thừa từ GodotObject,
+    // nên không tương thích với Variant.
     public void InvalidSignalEventHandler(SomeType someType);
 
-    // System.Int32 is a valid type because it's compatible with Variant.
+    // System.Int32 là một kiểu hợp lệ vì nó tương thích với Variant.
     public void ValidSignalEventHandler(int someInt);
 
-Take a look at the :ref:`C# signals <doc_c_sharp_signals>` documentation for more
-information about how to declare and use signals.
+Hãy xem tài liệu về :ref:`C# signals <doc_c_sharp_signals>` để biết thêm thông tin về cách khai báo và sử dụng signal.
 
-How to fix violations
----------------------
+Cách khắc phục vi phạm
+----------------------
 
-To fix a violation of this rule, change the parameter type to be Variant-compatible
-or remove the ``[Signal]`` attribute from the delegate. Note that removing the
-attribute will mean the signal is not registered.
+Để khắc phục vi phạm quy tắc này, hãy thay đổi kiểu tham số thành kiểu tương thích với Variant hoặc xóa thuộc tính ``[Signal]`` khỏi delegate. Lưu ý rằng việc xóa thuộc tính sẽ khiến signal không được đăng ký.
 
 .. tip::
 
-    If the signal doesn't need to interact with Godot, consider using
-    `C# events <https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/events/>`_
-    directly. Pure C# events allow you to use any C# type for its parameters.
+    Nếu signal không cần tương tác với Godot, hãy cân nhắc sử dụng trực tiếp `C# events <https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/events/>`_. Các event C# thuần cho phép bạn sử dụng bất kỳ kiểu C# nào cho tham số của chúng.
 
-When to suppress warnings
--------------------------
+Khi nào nên bỏ qua cảnh báo
+---------------------------
 
-Do not suppress a warning from this rule. Signal delegates with parameters that
-can't be marshalled will result in runtime errors when emitting the signal or
-invoking the callbacks.
+Không nên bỏ qua cảnh báo từ quy tắc này. Các delegate của signal có tham số không thể được marshal sẽ gây ra lỗi runtime khi phát signal hoặc gọi các callback.

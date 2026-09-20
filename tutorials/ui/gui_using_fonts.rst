@@ -1,77 +1,47 @@
 .. _doc_gui_using_fonts:
 
-Using Fonts
-===========
+Sử dụng Font
+============
 
-Godot allows you to set specific fonts for different UI nodes.
+Godot cho phép bạn đặt các font cụ thể cho những node UI khác nhau.
 
-There are three different places where you can setup font usage.
-The first is the theme editor. Choose the node you want to set the
-font for and select the font tab. The second is in the inspector
-for control nodes under **Theme Overrides > Fonts**. Lastly, in
-the inspector settings for themes under **Default Font**.
+Có ba vị trí khác nhau để thiết lập việc sử dụng font. Đầu tiên là trình chỉnh sửa theme. Chọn node mà bạn muốn đặt font rồi chọn tab font. Thứ hai là trong inspector của các control node, tại **Theme Overrides > Fonts**. Cuối cùng là trong phần cài đặt inspector của theme, tại **Default Font**.
 
-If no font override is specified anywhere,
-`Open Sans <https://fonts.google.com/specimen/Open+Sans>`__ SemiBold
-is used as the default project font.
+Nếu không có font override nào được chỉ định ở bất kỳ đâu, `Open Sans <https://fonts.google.com/specimen/Open+Sans>`__ SemiBold sẽ được sử dụng làm font mặc định của project.
 
 .. note::
 
-    Since Godot 4.0, font sizes are no longer defined in the font itself but are
-    instead defined in the node that uses the font. This is done in the
-    **Theme Overrides > Font Sizes** section of the inspector.
+    Kể từ Godot 4.0, kích thước font không còn được xác định trong chính font mà được xác định trong node sử dụng font. Việc này được thực hiện trong mục **Theme Overrides > Font Sizes** của inspector.
 
-    This allows changing the font size without having to duplicate the font
-    resource for every different font size.
+    Điều này cho phép thay đổi kích thước font mà không cần nhân bản resource font cho từng kích thước font khác nhau.
 
-There are 2 kinds of font files: *dynamic* (TTF/OTF/WOFF/WOFF2 formats) and
-*bitmap* (BMFont ``.fnt`` format or monospaced image). Dynamic fonts are the
-most commonly used option, as they can be resized and still look crisp at higher
-sizes. Thanks to their vector-based nature, they can also contain a lot more
-glyphs while keeping a reasonable file size compared to bitmap fonts. Dynamic
-fonts also support some advanced features that bitmap fonts cannot support, such
-as *ligatures* (several characters transforming into a single different design).
+Có 2 loại file font: *dynamic* (các định dạng TTF/OTF/WOFF/WOFF2) và *bitmap* (định dạng BMFont ``.fnt`` hoặc hình ảnh monospaced). Dynamic font là lựa chọn được sử dụng phổ biến nhất, vì có thể thay đổi kích thước mà vẫn hiển thị sắc nét ở các kích thước lớn hơn. Nhờ bản chất dựa trên vector, chúng cũng có thể chứa nhiều glyph hơn trong khi vẫn giữ kích thước file hợp lý so với bitmap font. Dynamic font cũng hỗ trợ một số tính năng nâng cao mà bitmap font không hỗ trợ, chẳng hạn như *ligature* (nhiều ký tự biến đổi thành một thiết kế khác duy nhất).
 
 .. tip::
 
-    You can find freely licensed font files on websites such as `Google Fonts
-    <https://fonts.google.com/>`__ and `Font Library
-    <https://fontlibrary.org/>`__.
+    Bạn có thể tìm các file font được cấp phép tự do trên những website như `Google Fonts <https://fonts.google.com/>`__ và `Font Library <https://fontlibrary.org/>`__.
 
-    Fonts are covered by copyright. Double-check the license of a font before
-    using it, as not all fonts allow commercial use without purchasing a license.
+    Font được bảo vệ bởi bản quyền. Hãy kiểm tra kỹ license của font trước khi sử dụng, vì không phải font nào cũng cho phép sử dụng thương mại mà không cần mua license.
 
 .. seealso::
 
-    You can see how fonts work in action using the
-    `BiDI and Font Features demo project <https://github.com/godotengine/godot-demo-projects/tree/master/gui/bidi_and_font_features>`__.
+    Bạn có thể xem cách font hoạt động trên thực tế bằng cách sử dụng `BiDI and Font Features demo project <https://github.com/godotengine/godot-demo-projects/tree/master/gui/bidi_and_font_features>`__.
 
-Dynamic fonts
--------------
-
-Godot supports the following dynamic font formats:
-
-- TrueType Font or Collection (``.ttf``, ``.ttc``)
-- OpenType Font or Collection (``.otf``, ``.otc``)
-- Web Open Font Format 1 (``.woff``)
-- Web Open Font Format 2 (``.woff2``)
-
-While ``.woff`` and especially ``.woff2`` tend to result in smaller file sizes,
-there is no universally "better" font format. In most situations, it's
-recommended to use the font format that was shipped on the font developer's
-website.
-
-Bitmap fonts
+Dynamic font
 ------------
 
-Godot supports the BMFont (``.fnt``) bitmap font format. This is a format created
-by the `BMFont <https://www.angelcode.com/products/bmfont/>`__ program. Many
-BMFont-compatible programs also exist, like `BMGlyph <https://www.bmglyph.com/>`__ or web-based `fontcutter <https://github.com/fabienbk/fontcutter>`__.
+Godot hỗ trợ các định dạng dynamic font sau:
 
-Alternatively, you can import any image to be used as a bitmap font.
-To do so, select the image in the FileSystem dock, go to the
-Import dock, change its import type to **Font Data (Image Font)** then
-click **Reimport**:
+- TrueType Font hoặc Collection (``.ttf``, ``.ttc``) - OpenType Font hoặc Collection (``.otf``, ``.otc``) - Web Open Font Format 1 (``.woff``) - Web Open Font Format 2 (``.woff2``)
+
+Mặc dù ``.woff`` và đặc biệt là ``.woff2`` thường cho kích thước file nhỏ hơn, không có định dạng font nào "tốt hơn" một cách tuyệt đối. Trong hầu hết tình huống, bạn nên sử dụng định dạng font được cung cấp trên website của nhà phát triển font.
+
+Bitmap font
+-----------
+
+Godot hỗ trợ định dạng bitmap font BMFont (``.fnt``). Đây là định dạng được tạo bởi chương trình `BMFont <https://www.angelcode.com/products/bmfont/>`__. Ngoài ra còn có nhiều chương trình tương thích với BMFont, chẳng hạn như `BMGlyph <https://www.bmglyph.com/>`__ hoặc `fontcutter <https://github.com/fabienbk/fontcutter>`__ trên nền web.
+
+Ngoài ra, bạn có thể import bất kỳ hình ảnh nào để sử dụng làm bitmap font. Để thực hiện việc này, chọn hình ảnh trong dock FileSystem, chuyển đến dock Import, đổi loại import thành **Font Data (Image Font)** rồi nhấp vào **Reimport**:
 
 .. figure:: img/using_fonts_bitmap_font_from_image_import_options.webp
    :align: center
@@ -79,10 +49,7 @@ click **Reimport**:
 
    Changing import type to **Font Data (Image Font)**
 
-The font's character set layout can be in any order, but orders that match
-standard Unicode are recommended as they'll require far less configuration to
-import. For example, the bitmap font below contains
-`ASCII <https://en.wikipedia.org/wiki/ASCII>`__ characters and follows standard ASCII ordering:
+Bố cục bộ ký tự của font có thể theo bất kỳ thứ tự nào, nhưng nên sử dụng thứ tự khớp với Unicode tiêu chuẩn vì sẽ cần ít cấu hình hơn nhiều khi import. Ví dụ, bitmap font bên dưới chứa các ký tự `ASCII <https://en.wikipedia.org/wiki/ASCII>`__ và tuân theo thứ tự ASCII tiêu chuẩn:
 
 .. figure:: img/using_fonts_monospace_bitmap_font_example.webp
    :align: center
@@ -91,8 +58,7 @@ import. For example, the bitmap font below contains
    Credit: `LibreQuake <https://github.com/MissLav/LibreQuake/blob/master/lq1/gfx-wad/CONCHARS.png>`__
    (scaled and cropped to exclude extended range)
 
-The following import options can be used to import the above font image
-successfully:
+Có thể sử dụng các tùy chọn import sau để import thành công hình ảnh font ở trên:
 
 .. figure:: img/using_fonts_bitmap_font_from_image_example_configuration.webp
    :align: center
@@ -100,37 +66,19 @@ successfully:
 
    Import options to use for the above example font
 
-The **Character Ranges** option is an array that maps each position on the image
-(in tile coordinates, not pixels). The font atlas is traversed from left to
-right and top to bottom. Characters can be specified with decimal numbers
-(``127``), hexadecimal numbers (``0x007f``) or between *single* quotes
-(``'~'``). Ranges can be specified with a hyphen between characters.
+Tùy chọn **Character Ranges** là một mảng ánh xạ từng vị trí trên hình ảnh (theo tọa độ tile, không phải pixel). Font atlas được duyệt từ trái sang phải và từ trên xuống dưới. Có thể chỉ định ký tự bằng số thập phân (``127``), số thập lục phân (``0x007f``) hoặc đặt giữa dấu *nháy đơn* (``'~'``). Có thể chỉ định phạm vi bằng dấu gạch nối giữa các ký tự.
 
-For instance, ``0-127`` (or ``0x0000-0x007f``) denotes the full ASCII range.
-As another example, ``' '-'~'`` is equivalent to ``32-127`` and denotes the range
-of *printable* (visible) ASCII characters.
+Ví dụ, ``0-127`` (hoặc ``0x0000-0x007f``) biểu thị toàn bộ phạm vi ASCII. Một ví dụ khác, ``' '-'~'`` tương đương với ``32-127`` và biểu thị phạm vi các ký tự ASCII *có thể in* (hiển thị được).
 
-Make sure the **Character Ranges** option doesn't exceed the number of
-**Columns** × **Rows** defined. Otherwise, the font will fail to import.
+Hãy đảm bảo tùy chọn **Character Ranges** không vượt quá số lượng **Columns** × **Rows** đã xác định. Nếu không, font sẽ không import được.
 
-If your font image contains margins not used for font glyphs (such as
-attribution information), try adjusting **Image Margin**. This is a margin
-applied only once around the whole image.
+Nếu hình ảnh font của bạn chứa các phần lề không được sử dụng cho glyph font (chẳng hạn như thông tin ghi công), hãy thử điều chỉnh **Image Margin**. Đây là phần lề chỉ được áp dụng một lần quanh toàn bộ hình ảnh.
 
-If your font image contains guides (in the form of lines between glyphs) or
-if spacing between characters appears incorrect, try adjusting **Character
-Margin**. This margin is applied for every imported glyph.
+Nếu hình ảnh font của bạn chứa các đường căn chỉnh (dưới dạng các đường giữa những glyph) hoặc khoảng cách giữa các ký tự có vẻ không chính xác, hãy thử điều chỉnh **Character Margin**. Phần lề này được áp dụng cho từng glyph được import.
 
-If you need finer control over character spacing than
-what the **Character Margin** options provide, you have more options.
+Nếu cần kiểm soát khoảng cách giữa các ký tự chi tiết hơn so với những gì các tùy chọn **Character Margin** cung cấp, bạn có thêm các lựa chọn khác.
 
-For one, **Character Ranges** supports 3 additional arguments after the
-specified range of characters.
-These additional arguments control their positioning and spacing.
-They represent space advance, X axis offset, and Y axis offset in that order.
-They will change the space advance and offset of each character
-by the amount of pixels written. Space advance is most useful if, for example,
-your lowercase letters are thinner than your uppercase letters.
+Trước hết, **Character Ranges** hỗ trợ thêm 3 đối số sau phạm vi ký tự đã chỉ định. Các đối số bổ sung này kiểm soát vị trí và khoảng cách của chúng. Theo thứ tự, chúng biểu thị độ tiến của khoảng trắng, độ lệch trên trục X và độ lệch trên trục Y. Chúng sẽ thay đổi độ tiến của khoảng trắng và độ lệch của từng ký tự theo số pixel được ghi. Độ tiến của khoảng trắng hữu ích nhất khi, chẳng hạn, các chữ cái thường của bạn mảnh hơn các chữ cái hoa.
 
 .. figure:: img/using_fonts_bitmap_font_advance_offsets_diagram.webp
    :align: center
@@ -138,63 +86,42 @@ your lowercase letters are thinner than your uppercase letters.
 
    Do note that the offsets can cause your text to be cropped off the edge of your label boundaries.
 
-Secondly, you can also set up **Kerning Pairs** for individual characters.
-Specify your kerning pair by typing two sets of characters separated by a space,
-then followed by another space, a number to specify how many extra/less pixels to
-space those two sets of characters when placed next to each other.
+Thứ hai, bạn cũng có thể thiết lập **Kerning Pairs** cho từng ký tự. Chỉ định cặp kerning bằng cách nhập hai tập hợp ký tự cách nhau bởi một khoảng trắng, sau đó thêm một khoảng trắng khác và một số để chỉ định số pixel cộng thêm/bớt đi giữa hai tập hợp ký tự đó khi chúng được đặt cạnh nhau.
 
 .. figure:: img/using_fonts_bitmap_kerning_pairs_example.webp
 
-If needed, your kerning pair characters can be specified by Unicode character code
-by entering ``\uXXXX`` where XXXX is the hexadecimal value of the Unicode character.
+Nếu cần, có thể chỉ định các ký tự trong cặp kerning bằng mã ký tự Unicode bằng cách nhập ``\uXXXX`` trong đó XXXX là giá trị thập lục phân của ký tự Unicode.
 
-Loading a font file
--------------------
+Tải file font
+-------------
 
-To load a font file (dynamic or bitmap), use the resource dropdown's
-**Quick Load** or **Load** option next to a font property, then navigate to the
-font file in question:
+Để tải file font (dynamic hoặc bitmap), sử dụng tùy chọn **Quick Load** hoặc **Load** trong menu thả xuống resource bên cạnh thuộc tính font, sau đó điều hướng đến file font cần dùng:
 
 .. figure:: img/using_fonts_load_font.webp
    :align: center
 
    Loading a font file
 
-You can also drag-and-drop a font file from the FileSystem dock to the inspector
-property that accepts a Font resource.
+Bạn cũng có thể kéo và thả file font từ dock FileSystem vào thuộc tính inspector chấp nhận resource Font.
 
 .. warning::
 
-   In Godot 4.0 and later, texture filter and repeat properties are defined in
-   the location where the texture is used, rather than on the texture itself.
-   This also applies to fonts (both dynamic fonts and bitmap fonts).
+   Trong Godot 4.0 trở lên, các thuộc tính texture filter và repeat được xác định tại vị trí texture được sử dụng, thay vì trên chính texture. Điều này cũng áp dụng cho font (cả dynamic font và bitmap font).
 
-   Fonts that have a pixel art appearance should have bilinear filtering disabled
-   by changing the **Rendering > Textures > Canvas Textures > Default Texture Filter**
-   project setting to **Nearest**.
+   Các font có hình thức pixel art nên tắt bộ lọc bilinear bằng cách đổi thiết lập project **Rendering > Textures > Canvas Textures > Default Texture Filter** thành **Nearest**.
 
-   The font size must also be an integer multiple of the design size (which
-   varies on a per-font basis), and the Control node using the font must be
-   scaled by an integer multiple as well. Otherwise, the font may look blurry.
-   Font sizes in Godot are specified in pixels (px), not points (pt). Keep this
-   in mind when comparing font sizes across different software.
+   Kích thước font cũng phải là bội số nguyên của kích thước thiết kế (thay đổi tùy theo từng font), đồng thời Control node sử dụng font cũng phải được scale theo một bội số nguyên. Nếu không, font có thể bị mờ. Kích thước font trong Godot được chỉ định theo pixel (px), không phải point (pt). Hãy lưu ý điều này khi so sánh kích thước font giữa các phần mềm khác nhau.
 
-   The texture filter mode can also be set on individual nodes that inherit from CanvasItem
-   by setting :ref:`CanvasItem.texture_filter <class_CanvasItem_property_texture_filter>`.
+   Chế độ texture filter cũng có thể được đặt trên từng node kế thừa từ CanvasItem bằng cách đặt :ref:`CanvasItem.texture_filter <class_CanvasItem_property_texture_filter>`.
 
-Font outlines and shadows
--------------------------
+Viền và bóng của font
+---------------------
 
-Font outlines and shadows can be used to improve readability when the background
-color isn't known in advance. For instance, this is the case for HUD elements
-that are drawn over a 2D/3D scene.
+Có thể sử dụng viền và bóng của font để cải thiện khả năng đọc khi màu nền chưa được biết trước. Ví dụ, trường hợp này xảy ra với các phần tử HUD được vẽ chồng lên scene 2D/3D.
 
-Font outlines are available in most nodes that derive from Control, in addition
-to :ref:`class_Label3D`.
+Viền font khả dụng trong hầu hết các node kế thừa từ Control, ngoài :ref:`class_Label3D`.
 
-To enable outline for a font on a given node, configure the theme overrides
-**Font Outline Color** and **Outline Size** in the inspector. The result should
-look like this:
+Để bật viền cho font trên một node cụ thể, hãy cấu hình các theme override **Font Outline Color** và **Outline Size** trong inspector. Kết quả sẽ trông như sau:
 
 .. figure:: img/using_fonts_outline_example.webp
    :align: center
@@ -204,17 +131,11 @@ look like this:
 
 .. note::
 
-   If using a font with MSDF rendering, its **MSDF Pixel Range** import option
-   be set to at least *twice* the value of the outline size for outline
-   rendering to look correct. Otherwise, the outline may appear to be cut off
-   earlier than intended.
+   Nếu sử dụng font với MSDF rendering, tùy chọn import **MSDF Pixel Range** phải được đặt ít nhất bằng *hai lần* giá trị của kích thước viền để việc render viền hiển thị chính xác. Nếu không, viền có thể bị cắt sớm hơn dự kiến.
 
-Support for font shadows is more limited: they are only available in
+Khả năng hỗ trợ bóng font hạn chế hơn: chúng chỉ khả dụng trong
 :ref:`class_Label` and :ref:`class_RichTextLabel`. Additionally, font shadows
-always have a hard edge (but you can reduce their opacity to make them look more
-subtle). To enable font shadows on a given node, configure the **Font Shadow
-Color**, **Shadow Offset X**, and **Shadow Offset Y** theme overrides in a Label
-or RichTextLabel node accordingly:
+luôn có cạnh cứng (nhưng bạn có thể giảm độ mờ để khiến chúng trông nhẹ hơn). Để bật bóng font trên một node cụ thể, hãy cấu hình các theme override **Font Shadow Color**, **Shadow Offset X** và **Shadow Offset Y** tương ứng trong node Label hoặc RichTextLabel:
 
 .. figure:: img/using_fonts_shadow.webp
    :align: center
@@ -222,7 +143,7 @@ or RichTextLabel node accordingly:
 
    Configuring font shadow in a Label node
 
-The result should look like this:
+Kết quả sẽ trông như sau:
 
 .. figure:: img/using_fonts_shadow_example.webp
    :align: center
@@ -232,36 +153,25 @@ The result should look like this:
 
 .. tip::
 
-    You can create local overrides to font display in Label nodes by creating a
+    Bạn có thể tạo các override cục bộ cho cách hiển thị font trong các node Label bằng cách tạo một
     :ref:`class_LabelSettings` resource that you reuse across Label nodes. This
-    resource takes priority over :ref:`theme properties <doc_gui_skinning>`.
+    resource được ưu tiên hơn :ref:`theme properties <doc_gui_skinning>`.
 
-Advanced font features
-----------------------
+Tính năng font nâng cao
+-----------------------
 
 .. _doc_using_fonts_antialiasing:
 
 Antialiasing
 ~~~~~~~~~~~~
 
-You can adjust how the font should be smoothed out when rendering by adjusting
-*antialiasing* and *hinting*. These are different properties, with different use
-cases.
+Bạn có thể điều chỉnh cách làm mượt font khi render bằng cách điều chỉnh *antialiasing* và *hinting*. Đây là các thuộc tính khác nhau, với những trường hợp sử dụng khác nhau.
 
-Antialiasing controls how glyph edges should be smoothed out when rasterizing
-the font. The default antialiasing method (**Grayscale**) works well on every
-display technology. However, at small sizes, grayscale antialiasing may result
-in fonts looking blurry.
+Antialiasing kiểm soát cách làm mượt các cạnh glyph khi rasterize font. Phương pháp antialiasing mặc định (**Grayscale**) hoạt động tốt trên mọi công nghệ màn hình. Tuy nhiên, ở kích thước nhỏ, antialiasing grayscale có thể khiến font trông bị mờ.
 
-The antialiasing sharpness can be improved by using LCD subpixel optimization,
-which exploits the subpixel patterns of most LCD displays by offsetting the font
-antialiasing on a per-channel basis (red/green/blue). The downside is that this
-can introduce "fringing" on edges, especially on display technologies that don't
-use standard RGB subpixels (such as OLED displays).
+Có thể cải thiện độ sắc nét của antialiasing bằng cách sử dụng tối ưu hóa subpixel LCD, tận dụng các mẫu subpixel của hầu hết màn hình LCD bằng cách offset antialiasing của font theo từng channel (đỏ/xanh lá/xanh dương). Nhược điểm là điều này có thể tạo ra hiện tượng "fringing" ở các cạnh, đặc biệt trên những công nghệ màn hình không sử dụng subpixel RGB tiêu chuẩn (chẳng hạn như màn hình OLED).
 
-In most games, it's recommended to stick to the default **Grayscale**
-antialiasing. For non-game applications, LCD subpixel optimization is worth
-exploring.
+Trong hầu hết game, nên giữ antialiasing mặc định **Grayscale**. Đối với các ứng dụng không phải game, tối ưu hóa subpixel LCD là một lựa chọn đáng để thử nghiệm.
 
 .. figure:: img/using_fonts_antialiasing_comparison.webp
    :align: center
@@ -271,20 +181,14 @@ exploring.
 
 .. note::
 
-    Antialiasing cannot be changed on :ref:`MSDF-rendered fonts <doc_using_fonts_msdf>`
-    – these are always rendered with grayscale antialiasing.
+    Không thể thay đổi antialiasing trên :ref:`MSDF-rendered fonts <doc_using_fonts_msdf>` – chúng luôn được render bằng antialiasing grayscale.
 
 .. _doc_using_fonts_hinting:
 
 Hinting
 ~~~~~~~
 
-Hinting controls how aggressively glyph edges should be snapped to pixels when
-rasterizing the font. **None** results in the smoothest appearance, which can
-make the font look blurry at small sizes. **Light** (default) is sharper by
-snapping glyph edges to pixels on the Y axis only, while **Full** is even sharper
-by snapping glyph edges to pixels on both X and Y axes. Depending on personal
-preference, you may prefer using one hinting mode over the other.
+Hinting kiểm soát mức độ tích cực của việc căn các cạnh glyph theo pixel khi rasterize font. **None** cho kết quả hiển thị mượt nhất, nhưng có thể khiến font trông mờ ở kích thước nhỏ. **Light** (mặc định) sắc nét hơn bằng cách chỉ căn các cạnh glyph theo pixel trên trục Y, còn **Full** thậm chí sắc nét hơn bằng cách căn các cạnh glyph theo pixel trên cả trục X và Y. Tùy theo sở thích cá nhân, bạn có thể thích sử dụng một chế độ hinting hơn chế độ kia.
 
 .. figure:: img/using_fonts_hinting_comparison.webp
    :align: center
@@ -294,88 +198,52 @@ preference, you may prefer using one hinting mode over the other.
 
 .. note::
 
-    If changing the hinting mode has no visible effect after clicking
-    **Reimport**, it's usually because the font doesn't include hinting
-    instructions. This can be resolved by looking for a version of the font file
-    that includes hinting instructions, or enabling **Force Autohinter** in the
-    Import dock. This will use `FreeType <https://freetype.org/>`__'s autohinter
-    to automatically add hinting instructions to the imported font.
+    Nếu việc thay đổi chế độ hinting không tạo ra hiệu ứng trực quan nào sau khi nhấp vào **Reimport**, nguyên nhân thường là font không chứa các instruction hinting. Bạn có thể khắc phục bằng cách tìm một phiên bản của file font có chứa các instruction hinting, hoặc bật **Force Autohinter** trong Import dock. Tùy chọn này sẽ sử dụng autohinter của `FreeType <https://freetype.org/>`__ để tự động thêm các instruction hinting vào font đã import.
 
 .. _doc_using_fonts_subpixel_positioning:
 
-Subpixel positioning
-~~~~~~~~~~~~~~~~~~~~
+Định vị subpixel
+~~~~~~~~~~~~~~~~
 
-Subpixel positioning can be adjusted. This is a `FreeType <https://freetype.org/>`__
-feature that allows glyphs to be rendered more closely to their intended form.
-The default setting of **Auto** automatically enables subpixel positioning at
-small sizes, but disables it at large font sizes to improve rasterization
-performance.
+Có thể điều chỉnh định vị subpixel. Đây là một tính năng `FreeType <https://freetype.org/>`__ cho phép render glyph gần hơn với hình dạng dự kiến. Thiết lập mặc định **Auto** sẽ tự động bật định vị subpixel ở các kích thước nhỏ, nhưng tắt tính năng này ở các kích thước font lớn để cải thiện hiệu năng rasterization.
 
-You can force the subpixel positioning mode to **Disabled**, **One half of a
-pixel** or **One quarter of a pixel**. **One quarter of a pixel** provides the
-best quality, at the cost of longer rasterization times.
+Bạn có thể buộc chế độ định vị subpixel thành **Disabled**, **One half of a pixel** hoặc **One quarter of a pixel**. **One quarter of a pixel** mang lại chất lượng tốt nhất, nhưng thời gian rasterization sẽ lâu hơn.
 
-Changing antialiasing, hinting and subpixel positioning has the most visible
-effect at smaller font sizes.
+Việc thay đổi antialiasing, hinting và định vị subpixel có ảnh hưởng trực quan rõ nhất ở các kích thước font nhỏ.
 
 .. warning::
 
-   Fonts that have a pixel art appearance should have their subpixel positioning
-   mode set to **Disabled**. Otherwise, the font may appear to have uneven pixel
-   sizes.
+   Các font có giao diện pixel art nên đặt chế độ định vị subpixel thành **Disabled**. Nếu không, font có thể trông như có các kích thước pixel không đồng đều.
 
-   This step is not required for bitmap fonts, as subpixel positioning is only
-   relevant for dynamic fonts (which are usually made of vector elements).
+   Bước này không bắt buộc đối với bitmap font, vì định vị subpixel chỉ liên quan đến dynamic font (thường được tạo thành từ các phần tử vector).
 
 .. _doc_using_fonts_mipmaps:
 
 Mipmaps
 ~~~~~~~
 
-By default, fonts do not have mipmaps generated to reduce memory usage and speed
-up rasterization. However, this can cause downscaled fonts to become grainy. This
-can be especially noticeable with :ref:`doc_3d_text` that doesn't have **Fixed
-Size** enabled. This can also occur when displaying text with a traditional rasterized
-(non-:ref:`MSDF <doc_using_fonts_msdf>`) font in a Control node that has its scale
-lower than ``(1, 1)``.
+Theo mặc định, font không được tạo mipmaps nhằm giảm mức sử dụng bộ nhớ và tăng tốc rasterization. Tuy nhiên, điều này có thể khiến font được thu nhỏ trở nên nhiễu hạt. Hiện tượng này có thể đặc biệt dễ nhận thấy với :ref:`doc_3d_text` không bật **Fixed Size**. Hiện tượng tương tự cũng có thể xảy ra khi hiển thị văn bản bằng font rasterized truyền thống (không phải :ref:`MSDF <doc_using_fonts_msdf>`) trong một Control node có scale thấp hơn ``(1, 1)``.
 
-After selecting a font in the FileSystem dock, you can enable the **Mipmaps** in
-the Import dock to improve downscaled font rendering appearance.
+Sau khi chọn một font trong FileSystem dock, bạn có thể bật **Mipmaps** trong Import dock để cải thiện giao diện hiển thị của font được thu nhỏ.
 
-Mipmaps can be enabled on MSDF fonts as well. This can improve font rendering
-quality a little at smaller-than-default sizes, but MSDF fonts are already
-resistant to graininess out of the box.
+Bạn cũng có thể bật mipmaps cho MSDF font. Điều này có thể cải thiện một chút chất lượng hiển thị font ở các kích thước nhỏ hơn mặc định, nhưng MSDF font vốn đã chống nhiễu hạt tốt.
 
 .. _doc_using_fonts_msdf:
 
-MSDF font rendering
-~~~~~~~~~~~~~~~~~~~
+Render font MSDF
+~~~~~~~~~~~~~~~~
 
-Multi-channel signed distance field (MSDF) font rendering allows rendering fonts
-at any size, without having to re-rasterize them when their size changes.
+Render font bằng multi-channel signed distance field (MSDF) cho phép render font ở mọi kích thước mà không cần rasterize lại khi kích thước thay đổi.
 
-MSDF font rendering has 2 upsides over traditional font rasterization, which
-Godot uses by default:
+Render font MSDF có 2 ưu điểm so với rasterization font truyền thống, vốn được Godot sử dụng theo mặc định:
 
-- The font will always look crisp, even at huge sizes.
-- There is less stuttering when rendering characters *at large font sizes* for
-  the first time, as there is no rasterization performed.
+- Font sẽ luôn trông sắc nét, ngay cả ở các kích thước rất lớn. - Ít bị giật hơn khi lần đầu render các ký tự *ở kích thước font lớn*, vì không thực hiện rasterization.
 
-The downsides of MSDF font rendering are:
+Nhược điểm của render font MSDF là:
 
-- Higher baseline cost for font rendering. This is usually not noticeable on
-  desktop platforms, but it can have an impact on low-end mobile devices.
-- Fonts at small sizes will not look as clear as rasterized fonts, due to the
-  lack of hinting.
-- Rendering new glyphs for the first time *at small font sizes* may be more
-  expensive compared to traditional rasterized fonts.
+- Chi phí cơ bản cho việc render font cao hơn. Điều này thường không đáng kể trên các nền tảng desktop, nhưng có thể ảnh hưởng đến các thiết bị di động cấu hình thấp. - Font ở các kích thước nhỏ sẽ không rõ bằng font được rasterize, do thiếu hinting. - Việc render các glyph mới lần đầu *ở kích thước font nhỏ* có thể tốn kém hơn so với font được rasterize truyền thống.
   :ref:`doc_using_fonts_font_prerendering` can be used to alleviate this.
-- LCD subpixel optimization cannot be enabled for MSDF fonts.
-- Fonts with self-intersecting outlines will not render correctly in MSDF mode.
-  If you notice rendering issues on fonts downloaded from websites such as
-  `Google Fonts <https://fonts.google.com>`__, try downloading the font from the
-  font author's official website instead.
+- Không thể bật tối ưu hóa subpixel LCD cho MSDF font. - Font có outline tự giao nhau sẽ không render chính xác ở chế độ MSDF. Nếu nhận thấy vấn đề khi render các font tải xuống từ những website như `Google Fonts <https://fonts.google.com>`__, hãy thử tải font từ website chính thức của tác giả font.
 
 .. figure:: img/using_fonts_rasterized_vs_msdf_comparison.webp
    :align: center
@@ -384,9 +252,7 @@ The downsides of MSDF font rendering are:
    Comparison of font rasterization methods.
    From top to bottom: rasterized without oversampling, rasterized with oversampling, MSDF
 
-To enable MSDF rendering for a given font, select it in the FileSystem dock, go
-to the Import dock, enable **Multichannel Signed Distance Field**, then click
-**Reimport**:
+Để bật MSDF rendering cho một font cụ thể, hãy chọn font đó trong FileSystem dock, chuyển đến Import dock, bật **Multichannel Signed Distance Field**, sau đó nhấp vào **Reimport**:
 
 .. figure:: img/using_fonts_msdf_import_options.webp
    :align: center
@@ -396,21 +262,16 @@ to the Import dock, enable **Multichannel Signed Distance Field**, then click
 
 .. _doc_using_fonts_emoji:
 
-Using emoji
-~~~~~~~~~~~
+Sử dụng emoji
+~~~~~~~~~~~~~
 
-Godot has limited support for emoji fonts:
+Godot hỗ trợ emoji font ở mức hạn chế:
 
-- CBDT/CBLC (embedded PNGs) and SVG emoji fonts are supported.
-- COLR/CPAL emoji fonts (custom vector format) are **not** supported.
-- EMJC bitmap image compression (used by iOS' system emoji font) is **not** supported.
-  This means that to support emoji on iOS, you must use a custom font that
-  uses SVG or PNG bitmap compression instead.
+- CBDT/CBLC (PNG được nhúng) và SVG emoji font được hỗ trợ. - COLR/CPAL emoji font (định dạng vector tùy chỉnh) **không** được hỗ trợ. - EMJC bitmap image compression (được iOS' system emoji font sử dụng) **không** được hỗ trợ. Điều này có nghĩa là để hỗ trợ emoji trên iOS, bạn phải sử dụng font tùy chỉnh dùng SVG hoặc PNG bitmap compression.
 
-For Godot to be able to display emoji, the font used (or one of its
+Để Godot có thể hiển thị emoji, font được sử dụng (hoặc một trong các
 :ref:`fallbacks <doc_using_fonts_font_fallbacks>`) needs to include them.
-Otherwise, emoji won't be displayed and placeholder "tofu" characters will
-appear instead:
+Nếu không, emoji sẽ không được hiển thị và thay vào đó sẽ xuất hiện các ký tự giữ chỗ "tofu":
 
 .. figure:: img/using_fonts_emoji_placeholder_characters.webp
    :align: center
@@ -418,9 +279,7 @@ appear instead:
 
    Default appearance when trying to use emoji in a label
 
-After adding a font to display emoji such as
-`Noto Color Emoji <https://fonts.google.com/noto/specimen/Noto+Color+Emoji>`__,
-you get the expected result:
+Sau khi thêm một font để hiển thị emoji như `Noto Color Emoji <https://fonts.google.com/noto/specimen/Noto+Color+Emoji>`__, bạn sẽ nhận được kết quả như mong đợi:
 
 .. figure:: img/using_fonts_emoji_correct_characters.webp
    :align: center
@@ -428,126 +287,83 @@ you get the expected result:
 
    Correct appearance after adding an emoji font to the label
 
-To use a regular font alongside emoji, it's recommended to specify a
+Để sử dụng font thông thường cùng với emoji, bạn nên chỉ định một
 :ref:`fallback font <doc_using_fonts_font_fallbacks>` that points to the
-emoji font in the regular font's advanced import options. If you wish to use
-the default project font while displaying emoji, leave the **Base Font**
-property in FontVariation empty while adding a font fallback pointing to the
-emoji font:
+emoji font trong các tùy chọn import nâng cao của font thông thường. Nếu muốn sử dụng font mặc định của project trong khi hiển thị emoji, hãy để trống thuộc tính **Base Font** trong FontVariation khi thêm một font fallback trỏ đến emoji font:
 
 .. tip::
 
-    Emoji fonts are quite large in size, so you may want to :ref:`load a system
-    font <doc_using_fonts_system_fonts>` to provide emoji glyphs rather than
-    bundling it with your project. This allows providing full emoji support in
-    your project without increasing the size of its exported PCK. The downside
-    is that emoji will look different depending on the platform, and loading
-    system fonts is not supported on all platforms.
+    Emoji font có kích thước khá lớn, vì vậy bạn có thể muốn :ref:`load a system font <doc_using_fonts_system_fonts>` để cung cấp các glyph emoji thay vì đóng gói font cùng project. Điều này cho phép cung cấp đầy đủ hỗ trợ emoji trong project mà không làm tăng kích thước PCK được export. Nhược điểm là emoji sẽ trông khác nhau tùy theo nền tảng, và việc load system font không được hỗ trợ trên mọi nền tảng.
 
-    It's possible to use a system font as a fallback font too.
+    Bạn cũng có thể sử dụng system font làm fallback font.
 
-Using icon fonts
-~~~~~~~~~~~~~~~~
+Sử dụng icon font
+~~~~~~~~~~~~~~~~~
 
-Tools like `Fontello <https://fontello.com/>`__ can be used to generate font
-files containing vectors imported from SVG files. This can be used to render
-custom vector elements as part of your text, or to create extruded 3D icons
-with :ref:`doc_3d_text` and TextMesh.
+Các công cụ như `Fontello <https://fontello.com/>`__ có thể được sử dụng để tạo các file font chứa vector được import từ file SVG. Bạn có thể dùng cách này để render các phần tử vector tùy chỉnh như một phần của văn bản, hoặc tạo các icon 3D đùn với :ref:`doc_3d_text` và TextMesh.
 
 .. note::
 
-    Fontello currently does not support creating multicolored fonts (which Godot
-    can render). As of November 2022, support for multicolored fonts in icon
-    font generation tools remains scarce.
+    Hiện tại Fontello không hỗ trợ tạo font nhiều màu (loại font mà Godot có thể render). Tính đến tháng 11 năm 2022, hỗ trợ font nhiều màu trong các công cụ tạo icon font vẫn còn rất hạn chế.
 
-Depending on your use cases, this may lead to better results compared to using
-the ``img`` tag in :ref:`RichTextLabel <doc_bbcode_in_richtextlabel>`. Unlike
-bitmap images (including SVGs which are rasterized on import by Godot),
-true vector data can be resized to any size without losing quality.
+Tùy theo trường hợp sử dụng, cách này có thể mang lại kết quả tốt hơn so với việc sử dụng tag ``img`` trong :ref:`RichTextLabel <doc_bbcode_in_richtextlabel>`. Không giống như bitmap image (bao gồm SVG được Godot rasterize khi import), dữ liệu vector thực có thể được thay đổi kích thước đến bất kỳ kích thước nào mà không làm giảm chất lượng.
 
-After downloading the generated font file, load it in your Godot project then
-specify it as a custom font for a Label, RichTextLabel or Label3D node. Switch
-over to the Fontello web interface, then copy the character by selecting it then
-pressing :kbd:`Ctrl + C` (:kbd:`Cmd + C` on macOS). Paste the character in the
-**Text** property of your Label node. The character will appear as a placeholder
-glyph in the inspector, but it should appear correctly in the 2D/3D viewport.
+Sau khi tải xuống file font đã tạo, hãy load file đó vào project Godot, sau đó chỉ định nó làm custom font cho một node Label, RichTextLabel hoặc Label3D. Chuyển sang giao diện web Fontello, rồi sao chép ký tự bằng cách chọn ký tự đó và nhấn :kbd:`Ctrl + C` (:kbd:`Cmd + C` trên macOS). Dán ký tự vào thuộc tính **Text** của node Label. Ký tự sẽ xuất hiện dưới dạng glyph giữ chỗ trong inspector, nhưng sẽ hiển thị chính xác trong viewport 2D/3D.
 
-To use an icon font alongside a traditional font in the same Control, you can
-specify the icon font as a :ref:`fallback <doc_using_fonts_font_fallbacks>`.
-This works because icon fonts use the Unicode *private use area*, which is
-reserved for use by custom fonts and doesn't contain standard glyphs by design.
+Để sử dụng icon font cùng với font truyền thống trong cùng một Control, bạn có thể chỉ định icon font làm :ref:`fallback <doc_using_fonts_font_fallbacks>`. Cách này hoạt động vì icon font sử dụng *private use area* của Unicode, khu vực được dành riêng cho font tùy chỉnh và vốn không chứa các glyph tiêu chuẩn.
 
 .. note::
 
-    Several modern icon fonts such as `Font Awesome 6 <https://fontawesome.com/download>`__
-    have a desktop variant that uses *ligatures* to specify icons. This allows you to
-    specify icons by entering their name directly in the **Text** property of any
-    node that can display fonts. Once the icon's name is fully entered as text
-    (such as ``house``), it will be replaced by the icon.
+    Một số icon font hiện đại như `Font Awesome 6 <https://fontawesome.com/download>`__ có một biến thể desktop sử dụng *ligature* để chỉ định icon. Điều này cho phép bạn chỉ định icon bằng cách nhập trực tiếp tên của chúng vào thuộc tính **Text** của bất kỳ node nào có thể hiển thị font. Khi nhập đầy đủ tên của icon dưới dạng văn bản (chẳng hạn như ``house``), tên đó sẽ được thay thế bằng icon.
 
-    While easier to use, this approach cannot be used with font fallbacks as the main
-    font's characters will take priority over the fallback font's ligatures.
+    Mặc dù dễ sử dụng hơn, cách tiếp cận này không thể dùng với font fallback, vì các ký tự của font chính sẽ được ưu tiên hơn ligature của font fallback.
 
 .. _doc_using_fonts_font_fallbacks:
 
-Font fallbacks
-~~~~~~~~~~~~~~
+Font fallback
+~~~~~~~~~~~~~
 
-Godot supports defining one or more fallbacks when the main font lacks a glyph
-to be displayed. There are 2 main use cases for defining font fallbacks:
+Godot hỗ trợ định nghĩa một hoặc nhiều fallback khi font chính không có glyph cần hiển thị. Có 2 trường hợp sử dụng chính để định nghĩa font fallback:
 
-- Use a font that only supports Latin character sets, but use another font to
-  be able to display text another character set such as Cyrillic.
-- Use a font to render text, and another font to render emoji or icons.
+- Sử dụng một font chỉ hỗ trợ các bộ ký tự Latin, nhưng dùng một font khác để có thể hiển thị văn bản thuộc bộ ký tự khác, chẳng hạn như Cyrillic. - Sử dụng một font để render văn bản và một font khác để render emoji hoặc icon.
 
-Open the Advanced Import Settings dialog by double-clicking the font file in the
-FileSystem dock. You can also select the font in the FileSystem dock, go to the
-Import dock then choose **Advanced…** at the bottom:
+Mở hộp thoại Advanced Import Settings bằng cách nhấp đúp vào file font trong FileSystem dock. Bạn cũng có thể chọn font trong FileSystem dock, chuyển đến Import dock rồi chọn **Advanced…** ở phía dưới:
 
 .. figure:: img/using_fonts_advanced_import_settings.webp
    :align: center
 
    Import dock
 
-In the dialog that appears, look for **Fallbacks** section
-on the sidebar on the right, click the **Array[Font] (size 0)** text to expand
-the property, then click **Add Element**:
+Trong hộp thoại xuất hiện, tìm phần **Fallbacks** trên thanh bên ở bên phải, nhấp vào dòng **Array[Font] (size 0)** để mở rộng thuộc tính, sau đó nhấp vào **Add Element**:
 
 .. figure:: img/using_fonts_font_fallbacks_add.webp
    :align: center
 
    Adding font fallback
 
-Click the dropdown arrow on the new element, then choose a font file using the
-**Quick Load** or **Load** options:
+Nhấp vào mũi tên dropdown trên phần tử mới, sau đó chọn một file font bằng tùy chọn **Quick Load** hoặc **Load**:
 
 .. figure:: img/using_fonts_font_fallbacks_load.webp
    :align: center
 
    Loading font fallback
 
-It is possible to add fallback fonts while using the default project font. To do
-so, leave the **Base Font** property empty while adding one or more font
-fallbacks.
+Bạn có thể thêm font fallback khi sử dụng font mặc định của project. Để thực hiện việc này, hãy để trống thuộc tính **Base Font** trong khi thêm một hoặc nhiều font fallback.
 
 .. note::
 
-    Font fallbacks can also be defined on a local basis similar to
+    Font fallback cũng có thể được định nghĩa ở cấp cục bộ, tương tự như
     :ref:`doc_using_fonts_opentype_font_features`, but this is not covered here
-    for brevity reasons.
+    vì lý do ngắn gọn.
 
 .. _doc_using_fonts_variable_fonts:
 
-Variable fonts
-~~~~~~~~~~~~~~
+Variable font
+~~~~~~~~~~~~~
 
-Godot has full support for `variable fonts <https://variablefonts.io/>`__, which
-allow you to use a single font file to represent various font weights and styles
-(regular, bold, italic, …). This must be supported by the font file you're using.
+Godot hỗ trợ đầy đủ `variable fonts <https://variablefonts.io/>`__, cho phép bạn sử dụng một file font duy nhất để biểu diễn nhiều độ đậm và kiểu font khác nhau (regular, bold, italic, …). File font bạn đang sử dụng phải hỗ trợ tính năng này.
 
-To use a variable font, create a :ref:`class_FontVariation` resource in the
-location where you intend to use the font, then load a font file within the
-FontVariation resource:
+Để sử dụng variable font, hãy tạo một resource :ref:`class_FontVariation` tại vị trí bạn dự định sử dụng font, sau đó load một file font bên trong resource FontVariation:
 
 .. figure:: img/using_fonts_font_variation_create.webp
    :align: center
@@ -559,20 +375,16 @@ FontVariation resource:
 
    Loading a font file into the FontVariation resource
 
-Scroll down to the FontVariation's **Variation** section, then click the
-**Variation Coordinates** text to expand the list of axes that can be adjusted:
+Cuộn xuống phần **Variation** của FontVariation, sau đó nhấp vào dòng chữ **Variation Coordinates** để mở rộng danh sách các trục có thể điều chỉnh:
 
 .. figure:: img/using_fonts_font_variation_variable_font.webp
    :align: center
 
    List of variation axes
 
-The set of axes you can adjust depends on the font loaded. Some variable fonts
-only support one axis of adjustment (typically *weight* or *slant*), while
-others may support multiple axes of adjustment.
+Tập hợp các trục bạn có thể điều chỉnh phụ thuộc vào font đã tải. Một số variable font chỉ hỗ trợ một trục điều chỉnh (thường là *weight* hoặc *slant*), trong khi những font khác có thể hỗ trợ nhiều trục điều chỉnh.
 
-For example, here's the `Inter V <https://rsms.me/inter/>`__ font with a
-*weight* of ``900`` and a *slant* of ``-10``:
+Ví dụ: đây là font `Inter V <https://rsms.me/inter/>`__ với *weight* là ``900`` và *slant* là ``-10``:
 
 .. figure:: img/using_fonts_font_variation_variable_font_example.webp
    :align: center
@@ -581,9 +393,7 @@ For example, here's the `Inter V <https://rsms.me/inter/>`__ font with a
 
 .. tip::
 
-    While variable font axis names and scales aren't standardized,
-    some common conventions are usually followed by font designers.
-    The *weight* axis is standardized in OpenType to work as follows:
+    Mặc dù tên và thang đo của các trục variable font chưa được chuẩn hóa, một số quy ước phổ biến thường được các nhà thiết kế font tuân theo. Trục *weight* được chuẩn hóa trong OpenType để hoạt động như sau:
 
     +------------+--------------------------------+
     | Axis value | Effective font weight          |
@@ -609,31 +419,21 @@ For example, here's the `Inter V <https://rsms.me/inter/>`__ font with a
     | ``950``    | Extra Black (Ultra Black)      |
     +------------+--------------------------------+
 
-You can save the FontVariation to a ``.tres`` resource file to reuse it in other
-places:
+Bạn có thể lưu FontVariation vào một file resource ``.tres`` để sử dụng lại ở những nơi khác:
 
 .. figure:: img/using_fonts_font_variation_save_to_file.webp
    :align: center
 
    Saving FontVariation to an external resource file
 
-Faux bold and italic
-~~~~~~~~~~~~~~~~~~~~
+Bold và italic giả lập
+~~~~~~~~~~~~~~~~~~~~~~
 
-When writing text in bold or italic, using font variants specifically designed
-for this looks better. Spacing between glyphs will be more consistent when using
-a bold font, and certain glyphs' shapes may change entirely in italic variants
-(compare "a" and *"a"*).
+Khi viết văn bản in đậm hoặc in nghiêng, sử dụng các font variant được thiết kế riêng cho mục đích này sẽ cho kết quả đẹp hơn. Khoảng cách giữa các glyph sẽ nhất quán hơn khi sử dụng font bold, và hình dạng của một số glyph có thể thay đổi hoàn toàn trong các variant italic (hãy so sánh "a" và *"a"*).
 
-However, real bold and italic fonts require shipping more font files, which
-increases distribution size. A single :ref:`variable font <doc_using_fonts_variable_fonts>`
-file can also be used, but this file will be larger than a single non-variable font.
-While file size is usually not an issue for desktop projects, it can be a concern
-for mobile/web projects that strive to keep distribution size as low as possible.
+Tuy nhiên, các font bold và italic thực sự yêu cầu phân phối thêm nhiều file font, làm tăng kích thước bản phân phối. Cũng có thể sử dụng một file :ref:`variable font <doc_using_fonts_variable_fonts>`, nhưng file này sẽ lớn hơn một font không biến thiên đơn lẻ. Mặc dù kích thước file thường không phải vấn đề đối với các project desktop, đây có thể là mối quan tâm đối với các project mobile/web cần giữ kích thước bản phân phối ở mức thấp nhất có thể.
 
-To allow bold and italic fonts to be displayed without having to ship additional
-fonts (or use a variable font that is larger in size), Godot supports *faux*
-bold and italic.
+Để cho phép hiển thị font bold và italic mà không cần phân phối thêm font (hoặc sử dụng variable font có kích thước lớn hơn), Godot hỗ trợ bold và italic *giả lập*.
 
 .. figure:: img/using_fonts_faux_bold_italic_vs_real_bold_italic.webp
    :align: center
@@ -641,89 +441,55 @@ bold and italic.
 
    Faux bold/italic (top), real bold/italic (bottom). Normal font used: Open Sans SemiBold
 
-Faux bold and italic is automatically used in :ref:`class_RichTextLabel`'s bold
-and italic tags if no custom fonts are provided for bold and/or italic.
+Bold và italic giả lập được tự động sử dụng trong các tag bold và italic của :ref:`class_RichTextLabel` nếu không cung cấp font tùy chỉnh cho bold và/hoặc italic.
 
-To use faux bold, create a FontVariation resource in a property where a Font
-resource is expected. Set **Variation > Embolden** to a positive value to make a
-font bolder, or to a negative value to make it less bold. Recommended values are
-between ``0.5`` and ``1.2`` depending on the font.
+Để sử dụng bold giả lập, hãy tạo một resource FontVariation trong thuộc tính yêu cầu một resource Font. Đặt **Variation > Embolden** thành giá trị dương để làm font đậm hơn, hoặc giá trị âm để làm font bớt đậm. Các giá trị được khuyến nghị nằm trong khoảng từ ``0.5`` đến ``1.2``, tùy thuộc vào font.
 
-Faux italic is created by skewing the text, which is done by modifying the
-per-character transform. This is also provided in FontVariation using the
-**Variation > Transform** property. Setting the ``yx`` component of the
-character transform to a positive value will italicize the text. Recommended
-values are between ``0.2`` and ``0.4`` depending on the font.
+Italic giả lập được tạo bằng cách làm nghiêng văn bản, thông qua việc sửa đổi phép biến đổi của từng ký tự. Tính năng này cũng được cung cấp trong FontVariation thông qua thuộc tính **Variation > Transform**. Đặt component ``yx`` của phép biến đổi ký tự thành giá trị dương sẽ làm văn bản in nghiêng. Các giá trị được khuyến nghị nằm trong khoảng từ ``0.2`` đến ``0.4``, tùy thuộc vào font.
 
-Adjusting font spacing
-~~~~~~~~~~~~~~~~~~~~~~
+Điều chỉnh khoảng cách của font
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For stylistic purposes or for better readability, you may want to adjust how a
-font is presented in Godot.
+Vì mục đích tạo kiểu hoặc để dễ đọc hơn, bạn có thể muốn điều chỉnh cách một font được hiển thị trong Godot.
 
-Create a FontVariation resource in a property where a Font resource is expected.
-There are 4 properties available in the **Variation > Extra Spacing** section,
-which accept positive and negative values:
+Hãy tạo một resource FontVariation trong thuộc tính yêu cầu một resource Font. Có 4 thuộc tính trong phần **Variation > Extra Spacing**, chấp nhận các giá trị dương và âm:
 
-- **Glyph:** Additional spacing between every glyph.
-- **Space:** Additional spacing between words.
-- **Top:** Additional spacing above glyphs. This is used for multiline text,
-  but also to calculate the minimum size of controls such as :ref:`class_Label`
-  and :ref:`class_Button`.
-- **Bottom:** Additional spacing below glyphs. This is used for multiline text,
-  but also to calculate the minimum size of controls such as :ref:`class_Label`
-  and :ref:`class_Button`.
+- **Glyph:** Khoảng cách bổ sung giữa mỗi glyph. - **Space:** Khoảng cách bổ sung giữa các từ. - **Top:** Khoảng cách bổ sung phía trên glyph. Khoảng cách này được sử dụng cho văn bản nhiều dòng, đồng thời để tính kích thước tối thiểu của các control như :ref:`class_Label` và :ref:`class_Button`. - **Bottom:** Khoảng cách bổ sung phía dưới glyph. Khoảng cách này được sử dụng cho văn bản nhiều dòng, đồng thời để tính kích thước tối thiểu của các control như :ref:`class_Label` và :ref:`class_Button`.
 
-The **Variation > Transform** property can also be adjusted to stretch
-characters horizontally or vertically. This is specifically done by adjusting
-the ``xx`` (horizontal scale) and ``yy`` (vertical scale) components. Remember
-to adjust glyph spacing to account for any changes, as glyph transform doesn't
-affect how much space each glyph takes in the text. Non-uniform scaling of this
-kind should be used sparingly, as fonts are generally not designed to be
-displayed with stretching.
+Bạn cũng có thể điều chỉnh thuộc tính **Variation > Transform** để kéo giãn các ký tự theo chiều ngang hoặc chiều dọc. Cụ thể, hãy điều chỉnh các component ``xx`` (tỉ lệ theo chiều ngang) và ``yy`` (tỉ lệ theo chiều dọc). Hãy nhớ điều chỉnh khoảng cách glyph để bù cho mọi thay đổi, vì phép biến đổi glyph không ảnh hưởng đến lượng không gian mà mỗi glyph chiếm trong văn bản. Nên hạn chế sử dụng kiểu scaling không đồng đều này, vì font thường không được thiết kế để hiển thị dưới dạng bị kéo giãn.
 
 .. _doc_using_fonts_opentype_font_features:
 
-OpenType font features
-~~~~~~~~~~~~~~~~~~~~~~
+Các tính năng của font OpenType
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Godot supports enabling OpenType font features, which are a standardized way to
-define alternate characters that can be toggled without having to swap font
-files entirely. Despite being named OpenType font features, these are also
-supported in TrueType (``.ttf``) and WOFF/WOFF2 font files.
+Godot hỗ trợ bật các tính năng của font OpenType, đây là một cách được chuẩn hóa để xác định các ký tự thay thế có thể bật mà không cần thay hoàn toàn file font. Mặc dù được gọi là các tính năng của font OpenType, chúng cũng được hỗ trợ trong các file TrueType (``.ttf``) và WOFF/WOFF2.
 
-Support for OpenType features highly depends on the font used. Some fonts don't
-support any OpenType features, while other fonts can support dozens of
-toggleable features.
+Mức độ hỗ trợ các tính năng OpenType phụ thuộc rất nhiều vào font được sử dụng. Một số font không hỗ trợ bất kỳ tính năng OpenType nào, trong khi các font khác có thể hỗ trợ hàng chục tính năng có thể bật/tắt.
 
-There are 2 ways to use OpenType font features:
+Có 2 cách sử dụng các tính năng của font OpenType:
 
-**Globally on a font file**
+**Trên toàn bộ file font**
 
-Open the Advanced Import Settings dialog by double-clicking the font file in the
-FileSystem dock. You can also select the font in the FileSystem dock, go to the
-Import dock then choose **Advanced…** at the bottom:
+Mở hộp thoại Advanced Import Settings bằng cách nhấp đúp vào file font trong dock FileSystem. Bạn cũng có thể chọn font trong dock FileSystem, chuyển đến dock Import rồi chọn **Advanced…** ở phía dưới:
 
 .. figure:: img/using_fonts_advanced_import_settings.webp
    :align: center
 
    Import dock
 
-In the dialog that appears, look for the **Metadata Overrides > OpenType
-Features** section on the sidebar on the right, click the
-**Features (0 of N set)** text to expand the property, then click
-**Add Feature**:
+Trong hộp thoại xuất hiện, tìm phần **Metadata Overrides > OpenType Features** trên thanh bên phải, nhấp vào dòng chữ **Features (0 of N set)** để mở rộng thuộc tính, sau đó nhấp vào **Add Feature**:
 
 .. figure:: img/using_fonts_advanced_import_settings_opentype_features.webp
    :align: center
 
    OpenType feature overrides in Advanced Import Settings
 
-**In a specific font usage (FontVariation)**
+**Trong một trường hợp sử dụng font cụ thể (FontVariation)**
 
-To use a font feature, create a FontVariation resource like you would do for a
+Để sử dụng một tính năng của font, hãy tạo một resource FontVariation như cách bạn tạo một
 :ref:`variable font <doc_using_fonts_variable_fonts>`, then load a font file
-within the FontVariation resource:
+trong resource FontVariation:
 
 .. figure:: img/using_fonts_font_variation_create.webp
    :align: center
@@ -735,26 +501,21 @@ within the FontVariation resource:
 
    Loading a font file into a FontVariation resource
 
-Scroll down to the FontVariation's **OpenType Features** section, click the
-**Features (0 of N set)** text to expand the property, then click **Add Feature**
-and select the desired feature in the dropdown:
+Cuộn xuống phần **OpenType Features** của FontVariation, nhấp vào dòng chữ **Features (0 of N set)** để mở rộng thuộc tính, sau đó nhấp vào **Add Feature** và chọn tính năng mong muốn trong danh sách thả xuống:
 
 .. figure:: img/using_fonts_font_variation_opentype_features.webp
    :align: center
 
    Specifying OpenType features in a FontVariation resource
 
-For example, here's the `Inter <https://rsms.me/inter/>`__ font without the
-*Slashed Zero* feature (top), then with the *Slashed Zero* OpenType feature enabled
-(bottom):
+Ví dụ: đây là font `Inter <https://rsms.me/inter/>`__ không bật tính năng *Slashed Zero* (ở trên), sau đó bật tính năng OpenType *Slashed Zero* (ở dưới):
 
 .. figure:: img/using_fonts_font_variation_slashed_zero.webp
    :align: center
 
    OpenType feature comparison (Inter)
 
-You can disable ligatures and/or kerning for a specific font by adding OpenType
-features, then unchecking them in the inspector:
+Bạn có thể tắt ligature và/hoặc kerning cho một font cụ thể bằng cách thêm các tính năng OpenType, sau đó bỏ chọn chúng trong inspector:
 
 .. figure:: img/using_fonts_font_variation_disable_ligatures.webp
    :align: center
@@ -763,35 +524,23 @@ features, then unchecking them in the inspector:
 
 .. _doc_using_fonts_system_fonts:
 
-System fonts
-~~~~~~~~~~~~
+Font hệ thống
+~~~~~~~~~~~~~
 
 .. warning::
 
-    Loading system fonts is only supported on Windows, macOS, Linux, Android and iOS.
+    Chỉ hỗ trợ tải font hệ thống trên Windows, macOS, Linux, Android và iOS.
 
-    However, loading system fonts on Android is unreliable as there is no
-    official API for doing so. Godot has to rely on parsing system configuration
-    files, which can be modified by third-party Android vendors. This may result
-    in non-functional system font loading.
+    Tuy nhiên, việc tải font hệ thống trên Android không đáng tin cậy vì không có API chính thức để thực hiện việc này. Godot phải dựa vào việc phân tích các file cấu hình hệ thống, vốn có thể bị các nhà cung cấp Android bên thứ ba sửa đổi. Điều này có thể khiến việc tải font hệ thống không hoạt động.
 
-System fonts are a different type of resource compared to imported fonts. They
-are never actually imported into the project, but are loaded at runtime. This
-has 2 benefits:
+Font hệ thống là một loại resource khác so với font đã import. Chúng không bao giờ thực sự được import vào project mà được tải tại runtime. Điều này mang lại 2 lợi ích:
 
-- The fonts are not included within the exported PCK file, leading to a smaller
-  file size for the exported project.
-- Since fonts are not included with the exported project, this avoids licensing
-  issues that would occur if proprietary system fonts were distributed alongside
-  the project.
+- Font không được đưa vào file PCK đã export, giúp giảm kích thước file của project đã export. - Vì font không được đưa vào project đã export, điều này tránh được các vấn đề về giấy phép có thể phát sinh nếu các font hệ thống độc quyền được phân phối cùng với project.
 
-The engine automatically uses system fonts as fallback fonts, which makes it
-possible to display CJK characters and emoji without having to load a custom
-font. There are some restrictions that apply though, as mentioned in the
+Engine tự động sử dụng font hệ thống làm font fallback, nhờ đó có thể hiển thị các ký tự CJK và emoji mà không cần tải font tùy chỉnh. Tuy nhiên, có một số hạn chế áp dụng, như đã đề cập trong
 :ref:`Using emoji <doc_using_fonts_emoji>` section.
 
-Create a :ref:`class_SystemFont` resource in the location where you desire to
-use the system font:
+Tạo một resource :ref:`class_SystemFont` tại vị trí bạn muốn sử dụng font hệ thống:
 
 .. figure:: img/using_fonts_system_font_create.webp
    :align: center
@@ -803,11 +552,9 @@ use the system font:
 
    Specifying a font name to use in a SystemFont resource
 
-You can either specify one or more font names explicitly (such as ``Arial``), or
-specify the name of a font *alias* that maps to a "standard" default font for
-the system:
+Bạn có thể chỉ định rõ một hoặc nhiều tên font (chẳng hạn như ``Arial``), hoặc chỉ định tên của một *alias* font ánh xạ đến một font mặc định "tiêu chuẩn" của hệ thống:
 
-.. Android font information sourced from <https://android.googlesource.com/platform/frameworks/base/+/master/data/fonts/fonts.xml>
+.. Thông tin font Android lấy từ <https://android.googlesource.com/platform/frameworks/base/+/master/data/fonts/fonts.xml>
 
 +----------------+-----------------+----------------+-------------------------+-------------------------+
 | Font alias     | Windows         | macOS/iOS      | Linux                   | Android                 |
@@ -823,72 +570,43 @@ the system:
 | ``fantasy``    | Gabriola        | Papyrus        | *Handled by fontconfig* | Droid Sans Mono         |
 +----------------+-----------------+----------------+-------------------------+-------------------------+
 
-On Android, Roboto is used for Latin/Cyrillic text and Noto Sans is used for
-other languages' glyphs such as CJK. On third-party Android distributions, the
-exact font selection may differ.
+Trên Android, Roboto được sử dụng cho văn bản Latin/Cyrillic và Noto Sans được sử dụng cho glyph của các ngôn ngữ khác như CJK. Trên các bản phân phối Android của bên thứ ba, font được chọn cụ thể có thể khác.
 
-If specifying more than one font, the first font that is found on the system
-will be used (from top to bottom). Font names and aliases are case-insensitive
-on all platforms.
+Nếu chỉ định nhiều font, font đầu tiên được tìm thấy trên hệ thống sẽ được sử dụng (từ trên xuống dưới). Tên font và alias không phân biệt chữ hoa chữ thường trên tất cả các nền tảng.
 
-Like for font variations, you can save the SystemFont arrangement to a resource
-file to reuse it in other places.
+Giống như với các font variation, bạn có thể lưu cấu hình SystemFont vào một file resource để sử dụng lại ở những nơi khác.
 
-Remember that different system fonts have different metrics, which means that
-text that can fit within a rectangle on one platform may not be doing so on
-another platform. Always reserve some additional space during development so
-that labels can extend further if needed.
+Hãy nhớ rằng các font hệ thống khác nhau có các metric khác nhau, nghĩa là văn bản có thể vừa trong một hình chữ nhật trên nền tảng này nhưng lại không vừa trên nền tảng khác. Trong quá trình phát triển, hãy luôn chừa thêm một khoảng trống để các label có thể mở rộng thêm nếu cần.
 
 .. note::
 
-    Unlike Windows and macOS/iOS, the set of default fonts shipped on Linux
-    depends on the distribution. This means that on different Linux
-    distributions, different fonts may be displayed for a given system font name
-    or alias.
+    Không giống Windows và macOS/iOS, tập hợp font mặc định được cung cấp trên Linux phụ thuộc vào bản phân phối. Điều này có nghĩa là trên các bản phân phối Linux khác nhau, các font khác nhau có thể được hiển thị cho cùng một tên hoặc alias font hệ thống.
 
-It is also possible to load fonts at runtime even if they aren't installed on the system.
-See :ref:`Runtime loading and saving <doc_runtime_file_loading_and_saving_fonts>`
-for details.
+Bạn cũng có thể tải font tại runtime ngay cả khi chúng chưa được cài đặt trên hệ thống. Xem :ref:`Runtime loading and saving <doc_runtime_file_loading_and_saving_fonts>` để biết chi tiết.
 
 .. _doc_using_fonts_font_prerendering:
 
-Font prerendering
-~~~~~~~~~~~~~~~~~
+Prerender font
+~~~~~~~~~~~~~~
 
-When using traditional rasterized fonts, Godot caches glyphs on a per-font and
-per-size basis. This reduces stuttering, but it can still occur the first time a
-glyph is displayed when running the project. This can be especially noticeable
-at higher font sizes or on mobile devices.
+Khi sử dụng font rasterized truyền thống, Godot lưu cache glyph theo từng font và kích thước. Điều này làm giảm hiện tượng giật, nhưng hiện tượng này vẫn có thể xảy ra lần đầu tiên một glyph được hiển thị khi chạy project. Điều này có thể đặc biệt dễ nhận thấy ở kích thước font lớn hơn hoặc trên thiết bị di động.
 
-When using MSDF fonts, they only need to be rasterized once to a special signed
-distance field texture. This means caching can be done purely on a per-font
-basis, without taking the font size into consideration. However, the initial
-rendering of MSDF fonts is slower compared to a traditional rasterized font at a
-medium size.
+Khi sử dụng font MSDF, chúng chỉ cần được rasterize một lần vào một texture signed distance field đặc biệt. Điều này có nghĩa là có thể thực hiện caching thuần túy theo từng font mà không cần xét đến kích thước font. Tuy nhiên, lần render đầu tiên của font MSDF chậm hơn so với font rasterized truyền thống ở kích thước trung bình.
 
-To avoid stuttering issues related to font rendering, it is possible to
-*prerender* certain glyphs. This can be done for all glyphs you intend to use
-(for optimal results), or only for common glyphs that are most likely to appear
-during gameplay (to reduce file size). Glyphs that aren't pre-rendered will be
-rasterized on-the-fly as usual.
+Để tránh các vấn đề giật liên quan đến việc render font, bạn có thể *prerender* một số glyph nhất định. Bạn có thể thực hiện việc này cho tất cả glyph dự định sử dụng (để đạt kết quả tối ưu), hoặc chỉ cho các glyph phổ biến có nhiều khả năng xuất hiện trong quá trình chơi game (để giảm kích thước file). Các glyph chưa được prerender sẽ vẫn được rasterize ngay khi cần như bình thường.
 
 .. note::
 
-    In both cases (traditional and MSDF), font rasterization is done on the CPU.
-    This means that the GPU performance doesn't affect how long it takes for fonts
-    to be rasterized.
+    Trong cả hai trường hợp (truyền thống và MSDF), việc rasterize font được thực hiện trên CPU. Điều này có nghĩa là hiệu năng GPU không ảnh hưởng đến thời gian rasterize font.
 
-Open the Advanced Import Settings dialog by double-clicking the font file in the
-FileSystem dock. You can also select the font in the FileSystem dock, go to the
-Import dock then choose **Advanced…** at the bottom:
+Mở hộp thoại Advanced Import Settings bằng cách nhấp đúp vào tệp font trong FileSystem dock. Bạn cũng có thể chọn font trong FileSystem dock, chuyển đến Import dock rồi chọn **Advanced…** ở dưới cùng:
 
 .. figure:: img/using_fonts_advanced_import_settings.webp
    :align: center
 
    Import dock
 
-Move to the **Pre-render Configurations** tab of the Advanced Import Settings dialog,
-then add a configuration by clicking the "plus" symbol:
+Chuyển đến tab **Pre-render Configurations** của hộp thoại Advanced Import Settings, sau đó thêm một configuration bằng cách nhấp vào biểu tượng "plus":
 
 .. figure:: img/using_fonts_advanced_import_settings_prerender_new_configuration.webp
    :align: center
@@ -896,23 +614,17 @@ then add a configuration by clicking the "plus" symbol:
 
    Adding a new prerendering configuration in the Advanced Import Settings dialog
 
-After adding a configuration, make sure it is selected by clicking its name
-once. You can also rename the configuration by double-clicking it.
+Sau khi thêm một configuration, hãy đảm bảo configuration đó được chọn bằng cách nhấp một lần vào tên của nó. Bạn cũng có thể đổi tên configuration bằng cách nhấp đúp vào nó.
 
-There are 2 ways to add glyphs to be prerendered to a given configuration. It is
-possible to use both approaches in a cumulative manner:
+Có 2 cách để thêm glyph cần được prerender vào một configuration nhất định. Bạn có thể sử dụng cả hai cách theo kiểu cộng dồn:
 
-**Using text from translations**
+**Sử dụng văn bản từ bản dịch**
 
-For most projects, this approach is the most convenient to use, as it
-automatically sources text from your language translations. The downside is that
-it can only be used if your project supports
+Đối với hầu hết các project, đây là cách thuận tiện nhất, vì nó tự động lấy văn bản từ các bản dịch ngôn ngữ của bạn. Nhược điểm là cách này chỉ có thể được sử dụng nếu project của bạn hỗ trợ
 :ref:`internationalization <doc_internationalizing_games>`. Otherwise, stick to
-the "Using custom text" approach described below.
+cách tiếp cận "Using custom text" được mô tả bên dưới.
 
-After adding translations to the Project Settings, use the
-**Glyphs from the Translations** tab to check translations by double-clicking them,
-then click **Shape All Strings in the Translations and Add Glyphs** at the bottom:
+Sau khi thêm các bản dịch vào Project Settings, hãy sử dụng tab **Glyphs from the Translations** để kiểm tra các bản dịch bằng cách nhấp đúp vào chúng, sau đó nhấp vào **Shape All Strings in the Translations and Add Glyphs** ở dưới cùng:
 
 .. figure:: img/using_fonts_advanced_import_settings_prerender_translation.webp
    :align: center
@@ -922,21 +634,13 @@ then click **Shape All Strings in the Translations and Add Glyphs** at the botto
 
 .. note::
 
-    The list of prerendered glyphs is not automatically updated when
-    translations are updated, so you need to repeat this process if your
-    translations have changed significantly.
+    Danh sách các glyph đã prerender không được tự động cập nhật khi bản dịch thay đổi, vì vậy bạn cần lặp lại quy trình này nếu bản dịch đã thay đổi đáng kể.
 
-**Using custom text**
+**Sử dụng văn bản tùy chỉnh**
 
-While it requires manually specifying text that will appear in the game, this is
-the most efficient approach for games which don't feature user text input. This
-approach is worth exploring for mobile games to reduce the file size of the
-distributed app.
+Mặc dù yêu cầu chỉ định thủ công văn bản sẽ xuất hiện trong game, đây là cách hiệu quả nhất đối với các game không có chức năng nhập văn bản từ người dùng. Cách này đáng để cân nhắc đối với game mobile nhằm giảm kích thước tệp của app được phân phối.
 
-To use existing text as a baseline for prerendering, go to the **Glyphs from the
-Text** sub-tab of the Advanced Import Settings dialog, enter text in the window
-on the right, then click **Shape Text and Add Glyphs** at the bottom of the
-dialog:
+Để sử dụng văn bản hiện có làm cơ sở cho việc prerender, hãy chuyển đến sub-tab **Glyphs from the Text** của hộp thoại Advanced Import Settings, nhập văn bản vào cửa sổ bên phải, sau đó nhấp vào **Shape Text and Add Glyphs** ở dưới cùng của hộp thoại:
 
 .. figure:: img/using_fonts_advanced_import_settings_prerender_text.webp
    :align: center
@@ -946,21 +650,13 @@ dialog:
 
 .. tip::
 
-    If your project supports :ref:`internationalization <doc_internationalizing_games>`,
-    you can paste the contents of your CSV or PO files in the above box to quickly
-    prerender all possible characters that may be rendered during gameplay
-    (excluding user-provided or non-translatable strings).
+    Nếu project của bạn hỗ trợ :ref:`internationalization <doc_internationalizing_games>`, bạn có thể dán nội dung của các tệp CSV hoặc PO vào ô bên trên để nhanh chóng prerender tất cả ký tự có thể được hiển thị trong quá trình chơi game (không bao gồm các chuỗi do người dùng cung cấp hoặc không cần dịch).
 
-**By enabling character sets**
+**Bằng cách bật các bộ ký tự**
 
-The second method requires less configuration and fewer updates if your game's
-text changes, and is more suited to text-heavy games or multiplayer games with
-chat. On the other hand, it may cause glyphs that never show up in the game to
-be prerendered, which is less efficient in terms of file size.
+Phương pháp thứ hai yêu cầu ít cấu hình và ít cập nhật hơn nếu văn bản trong game thay đổi, đồng thời phù hợp hơn với các game nhiều văn bản hoặc game multiplayer có chat. Mặt khác, phương pháp này có thể khiến các glyph không bao giờ xuất hiện trong game vẫn được prerender, kém hiệu quả hơn về kích thước tệp.
 
-To use existing text as a baseline for prerendering, go to the **Glyphs from the
-Character Map** sub-tab of the Advanced Import Settings dialog, then
-*double-click* character sets to be enabled on the right:
+Để sử dụng văn bản hiện có làm cơ sở cho việc prerender, hãy chuyển đến sub-tab **Glyphs from the Character Map** của hộp thoại Advanced Import Settings, sau đó *nhấp đúp* vào các bộ ký tự cần bật ở bên phải:
 
 .. figure:: img/using_fonts_advanced_import_settings_prerender_character_map.webp
    :align: center
@@ -968,39 +664,25 @@ Character Map** sub-tab of the Advanced Import Settings dialog, then
 
    Enabling prerendering in the Advanced Import Settings dialog with the **Glyphs from the Character Map** tab
 
-To ensure full prerendering, the character sets you need to enable depend on
-which languages are supported in your game. For English, only **Basic Latin**
-needs to be enabled. Enabling **Latin-1 Supplement** as well allows fully
-covering many more languages, such as French, German and Spanish. For Russian,
-**Cyrillic** needs to be enabled, and so on.
+Để đảm bảo prerender đầy đủ, các bộ ký tự bạn cần bật phụ thuộc vào những ngôn ngữ được hỗ trợ trong game. Đối với tiếng Anh, chỉ cần bật **Basic Latin**. Bật thêm **Latin-1 Supplement** sẽ cho phép hỗ trợ đầy đủ nhiều ngôn ngữ hơn, chẳng hạn như tiếng Pháp, tiếng Đức và tiếng Tây Ban Nha. Đối với tiếng Nga, cần bật **Cyrillic**, v.v.
 
-Default project font properties
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Thuộc tính font mặc định của project
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the **GUI > Theme** section of the advanced Project Settings, you can choose
-how the default font should be rendered:
+Trong phần **GUI > Theme** của Project Settings nâng cao, bạn có thể chọn cách font mặc định được render:
 
-- **Default Font Antialiasing:** Controls the
+- **Default Font Antialiasing:** Kiểm soát
   :ref:`antialiasing <doc_using_fonts_antialiasing>` method used
-  for the default project font.
-- **Default Font Hinting:** Controls the
+  cho font mặc định của project. - **Default Font Hinting:** Kiểm soát
   :ref:`hinting <doc_using_fonts_hinting>` method used for
-  the default project font.
-- **Default Font Subpixel Positioning:** Controls the
+  font mặc định của project. - **Default Font Subpixel Positioning:** Kiểm soát
   :ref:`subpixel positioning <doc_using_fonts_subpixel_positioning>`
-  method for the default project font.
-- **Default Font Multichannel Signed Distance Field:** If ``true``, makes the
-  default project font use :ref:`MSDF font rendering <doc_using_fonts_msdf>` instead
-  of traditional rasterization.
-- **Default Font Generate Mipmaps:** If ``true``, enables
+  phương pháp cho font mặc định của project. - **Default Font Multichannel Signed Distance Field:** Nếu ``true``, khiến font mặc định của project sử dụng :ref:`MSDF font rendering <doc_using_fonts_msdf>` thay vì rasterization truyền thống. - **Default Font Generate Mipmaps:** Nếu ``true``, bật
   :ref:`mipmap <doc_using_fonts_mipmaps>` generation and
-  usage for the default project font.
+  việc sử dụng đối với font mặc định của project.
 
 .. note::
 
-    These project settings *only* affect the default project font (the one that
-    is hardcoded in the engine binary).
+    Các thiết lập project này *chỉ* ảnh hưởng đến font mặc định của project (font được hardcode trong binary của engine).
 
-    Custom fonts' properties are controlled by their respective import options
-    instead. You can use the **Import Defaults** section of the Project Settings
-    dialog to override default import options for custom fonts.
+    Các thuộc tính của font tùy chỉnh được kiểm soát bởi những tùy chọn import tương ứng của chúng. Bạn có thể sử dụng phần **Import Defaults** trong hộp thoại Project Settings để ghi đè các tùy chọn import mặc định cho font tùy chỉnh.

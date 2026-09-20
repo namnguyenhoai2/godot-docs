@@ -1,64 +1,39 @@
 .. _doc_shader_preprocessor:
 
-Shader preprocessor
-===================
+Bộ tiền xử lý shader
+====================
 
-Why use a shader preprocessor?
-------------------------------
+Tại sao sử dụng bộ tiền xử lý shader?
+-------------------------------------
 
-In programming languages, a *preprocessor* allows changing the code before the
-compiler reads it. Unlike the compiler, the preprocessor does not care about
-whether the syntax of the preprocessed code is valid. The preprocessor always
-performs what the *directives* tell it to do. A directive is a statement
-starting with a hash symbol (``#``). It is not a *keyword* of the shader
-language (such as ``if`` or ``for``), but a special kind of token within the
-language.
+Trong các ngôn ngữ lập trình, một *bộ tiền xử lý* cho phép thay đổi mã trước khi trình biên dịch đọc mã đó. Không giống trình biên dịch, bộ tiền xử lý không quan tâm cú pháp của mã đã được tiền xử lý có hợp lệ hay không. Bộ tiền xử lý luôn thực hiện những gì các *chỉ thị* yêu cầu. Chỉ thị là một câu lệnh bắt đầu bằng ký hiệu dấu thăng (``#``). Đây không phải là một *từ khóa* của ngôn ngữ shader (chẳng hạn như ``if`` hoặc ``for``), mà là một loại token đặc biệt trong ngôn ngữ.
 
-To avoid repetition and improve code reuse, you can use a shader preprocessor
-within text-based shaders. The syntax is similar to what most GLSL shader
-compilers support (which in turn is similar to the C/C++ preprocessor).
+Để tránh lặp lại và cải thiện khả năng tái sử dụng mã, bạn có thể sử dụng bộ tiền xử lý shader trong các shader dựa trên văn bản. Cú pháp tương tự cú pháp mà hầu hết các trình biên dịch shader GLSL hỗ trợ (vốn tương tự bộ tiền xử lý C/C++).
 
 .. note::
 
-    The shader preprocessor is not available in :ref:`visual shaders <doc_visual_shaders>`.
-    If you need to introduce preprocessor statements to a visual shader, you can
-    convert it to a text-based shader using the **Convert to Shader** option in
-    the VisualShader inspector resource dropdown. This conversion is a one-way
-    operation; text shaders cannot be converted back to visual shaders.
+    Bộ tiền xử lý shader không khả dụng trong :ref:`visual shaders <doc_visual_shaders>`. Nếu cần thêm các câu lệnh tiền xử lý vào visual shader, bạn có thể chuyển nó thành shader dựa trên văn bản bằng tùy chọn **Convert to Shader** trong menu thả xuống tài nguyên của inspector VisualShader. Thao tác chuyển đổi này chỉ thực hiện được theo một chiều; không thể chuyển shader văn bản ngược lại thành visual shader.
 
-Directives
-----------
+Chỉ thị
+-------
 
-General syntax
-~~~~~~~~~~~~~~
+Cú pháp chung
+~~~~~~~~~~~~~
 
-- Preprocessor directives do not use brackets (``{}``), but can use parentheses.
-- Preprocessor directives **never** end with semicolons (with the exception of ``#define``,
-  where this is allowed but potentially dangerous).
-- Preprocessor directives can span several lines by ending each line with a
-  backslash (``\``). The first line break *not* featuring a backslash will end
-  the preprocessor statement.
+- Các chỉ thị tiền xử lý không sử dụng dấu ngoặc vuông (``{}``), nhưng có thể sử dụng dấu ngoặc đơn. - Các chỉ thị tiền xử lý **không bao giờ** kết thúc bằng dấu chấm phẩy (ngoại trừ ``#define``, trong đó dấu chấm phẩy được cho phép nhưng có thể gây nguy hiểm). - Các chỉ thị tiền xử lý có thể trải dài trên nhiều dòng bằng cách kết thúc mỗi dòng bằng dấu gạch chéo ngược (``\``). Dòng ngắt đầu tiên *không* có dấu gạch chéo ngược sẽ kết thúc câu lệnh tiền xử lý.
 
 #define
 ~~~~~~~
 
-**Syntax:** ``#define <identifier> [replacement_code]``.
+**Cú pháp:** ``#define <identifier> [replacement_code]``.
 
-Defines the identifier after that directive as a macro, and replaces all
-successive occurrences of it with the replacement code given in the shader.
-Replacement is performed on a "whole words" basis, which means no replacement is
-performed if the string is part of another string (without any spaces or
-operators separating it).
+Định nghĩa identifier sau chỉ thị đó dưới dạng macro và thay thế mọi lần xuất hiện tiếp theo của identifier này bằng mã thay thế được cung cấp trong shader. Việc thay thế được thực hiện theo đơn vị "từ hoàn chỉnh", nghĩa là không thay thế nếu chuỗi đó là một phần của chuỗi khác (không có khoảng trắng hoặc toán tử phân tách).
 
-Defines with replacements may also have one or more *arguments*, which can then
-be passed when referencing the define (similar to a function call).
+Các định nghĩa có mã thay thế cũng có thể có một hoặc nhiều *đối số*, sau đó có thể truyền các đối số này khi tham chiếu đến define (tương tự một lời gọi hàm).
 
-If the replacement code is not defined, the identifier may only be used with
-``#ifdef`` or ``#ifndef`` directives.
+Nếu mã thay thế không được định nghĩa, identifier chỉ có thể được sử dụng với các chỉ thị ``#ifdef`` hoặc ``#ifndef``.
 
-If the *concatenation* symbol (``##``) is present in the replacement code then
-it will be removed upon macro insertion, together with any space surrounding
-it, and join the surrounding words and arguments into a new token.
+Nếu ký hiệu *nối* (``##``) xuất hiện trong mã thay thế, ký hiệu này sẽ bị xóa khi chèn macro, cùng với mọi khoảng trắng xung quanh nó, đồng thời nối các từ và đối số xung quanh thành một token mới.
 
 .. code-block:: glsl
 
@@ -71,27 +46,24 @@ it, and join the surrounding words and arguments into a new token.
         ALBEDO = tex0.rgb;
     }
 
-Compared to constants (``const CONSTANT = value;``), ``#define`` can be used
-anywhere within the shader (including in uniform hints).
-``#define`` can also be used to insert arbitrary shader code at any location,
-while constants can't do that.
+So với các hằng số (``const CONSTANT = value;``), ``#define`` có thể được sử dụng ở bất kỳ đâu trong shader (bao gồm cả trong các gợi ý uniform). ``#define`` cũng có thể được sử dụng để chèn mã shader tùy ý vào bất kỳ vị trí nào, trong khi các hằng số không thể làm điều đó.
 
 .. code-block:: glsl
 
     shader_type spatial;
 
-    // Notice the lack of semicolon at the end of the line, as the replacement text
-    // shouldn't insert a semicolon on its own.
-    // If the directive ends with a semicolon, the semicolon is inserted in every usage
-    // of the directive, even when this causes a syntax error.
+    // Lưu ý rằng dòng này không có dấu chấm phẩy ở cuối, vì văn bản thay thế
+    // không nên tự chèn dấu chấm phẩy.
+    // Nếu chỉ thị kết thúc bằng dấu chấm phẩy, dấu chấm phẩy sẽ được chèn vào mọi lần sử dụng
+    // chỉ thị đó, ngay cả khi điều này gây ra lỗi cú pháp.
     #define USE_MY_COLOR
     #define MY_COLOR vec3(1, 0, 0)
 
-    // Replacement with arguments.
-    // All arguments are required (no default values can be provided).
+    // Thay thế có đối số.
+    // Tất cả đối số đều bắt buộc (không thể cung cấp giá trị mặc định).
     #define BRIGHTEN_COLOR(r, g, b) vec3(r + 0.5, g + 0.5, b + 0.5)
 
-    // Multiline replacement using backslashes for continuation:
+    // Thay thế nhiều dòng bằng dấu gạch chéo ngược để tiếp tục dòng:
     #define SAMPLE(param1, param2, param3, param4) long_function_call( \
             param1, \
             param2, \
@@ -106,15 +78,14 @@ while constants can't do that.
     }
 
 
-Defining a ``#define`` for an identifier that is already defined results in an
-error. To prevent this, use ``#undef <identifier>``.
+Định nghĩa một ``#define`` cho một identifier đã được định nghĩa sẽ gây ra lỗi. Để tránh điều này, hãy sử dụng ``#undef <identifier>``.
 
 #undef
 ~~~~~~
 
-**Syntax:** ``#undef identifier``
+**Cú pháp:** ``#undef identifier``
 
-The ``#undef`` directive may be used to cancel a previously defined ``#define`` directive:
+Có thể sử dụng chỉ thị ``#undef`` để hủy một chỉ thị ``#define`` đã được định nghĩa trước đó:
 
 .. code-block:: glsl
 
@@ -131,208 +102,179 @@ The ``#undef`` directive may be used to cancel a previously defined ``#define`` 
         return MY_COLOR;
     }
 
-    // Like in most preprocessors, undefining a define that was not previously defined is allowed
-    // (and won't print any warning or error).
+    // Giống như trong hầu hết các bộ tiền xử lý, việc hủy một define chưa từng được định nghĩa trước đó là hợp lệ
+    // (và sẽ không in ra cảnh báo hay lỗi nào).
     #undef THIS_DOES_NOT_EXIST
 
-Without ``#undef`` in the above example, there would be a macro redefinition error.
+Nếu không có ``#undef`` trong ví dụ trên, sẽ xảy ra lỗi định nghĩa lại macro.
 
 #if
 ~~~
 
-**Syntax:** ``#if <condition>``
+**Cú pháp:** ``#if <condition>``
 
-The ``#if`` directive checks whether the ``condition`` passed. If it evaluates
-to a non-zero value, the code block is included, otherwise it is skipped.
+Chỉ thị ``#if`` kiểm tra ``condition`` được truyền vào. Nếu kết quả đánh giá là giá trị khác không, khối mã sẽ được đưa vào; nếu không, khối mã sẽ bị bỏ qua.
 
-To evaluate correctly, the condition must be an expression giving a simple
-floating-point, integer or boolean result. There may be multiple condition
-blocks connected by ``&&`` (AND) or ``||`` (OR) operators. It may be continued
-by an ``#else`` block, but **must** be ended with the ``#endif`` directive.
+Để được đánh giá chính xác, điều kiện phải là một biểu thức cho kết quả là một giá trị dấu phẩy động, số nguyên hoặc boolean đơn giản. Có thể có nhiều khối điều kiện được nối bằng các toán tử ``&&`` (AND) hoặc ``||`` (OR). Khối này có thể được tiếp nối bằng khối ``#else``, nhưng **phải** kết thúc bằng chỉ thị ``#endif``.
 
 .. code-block:: glsl
 
     #define VAR 3
-    #define USE_LIGHT 0 // Evaluates to `false`.
-    #define USE_COLOR 1 // Evaluates to `true`.
+    #define USE_LIGHT 0 // Đánh giá thành `false`.
+    #define USE_COLOR 1 // Đánh giá thành `true`.
 
     #if VAR == 3 && (USE_LIGHT || USE_COLOR)
-    // Condition is `true`. Include this portion in the final shader.
+    // Điều kiện là `true`. Đưa phần này vào shader cuối cùng.
     #endif
 
-Using the ``defined()`` *preprocessor function*, you can check whether the
-passed identifier is defined a by ``#define`` placed above that directive. This
-is useful for creating multiple shader versions in the same file. It may be
-continued by an ``#else`` block, but must be ended with the ``#endif`` directive.
+Bằng *hàm tiền xử lý* ``defined()``, bạn có thể kiểm tra xem identifier được truyền vào có được định nghĩa bởi một ``#define`` đặt phía trên chỉ thị đó hay không. Điều này hữu ích khi tạo nhiều phiên bản shader trong cùng một tệp. Khối này có thể được tiếp nối bằng khối ``#else``, nhưng phải kết thúc bằng chỉ thị ``#endif``.
 
-The ``defined()`` function's result can be negated by using the ``!`` (boolean NOT)
-symbol in front of it. This can be used to check whether a define is *not* set.
+Kết quả của hàm ``defined()`` có thể được phủ định bằng cách sử dụng ký hiệu ``!`` (NOT boolean) ở phía trước hàm. Có thể dùng cách này để kiểm tra xem một define *chưa* được thiết lập hay không.
 
 .. code-block:: glsl
 
     #define USE_LIGHT
     #define USE_COLOR
 
-    // Correct syntax:
+    // Cú pháp chính xác:
     #if defined(USE_LIGHT) || defined(USE_COLOR) || !defined(USE_REFRACTION)
-    // Condition is `true`. Include this portion in the final shader.
+    // Điều kiện là `true`. Đưa phần này vào shader cuối cùng.
     #endif
 
-Be careful, as ``defined()`` must only wrap a single identifier within parentheses, never more:
+Hãy cẩn thận: ``defined()`` chỉ được bao bọc một identifier duy nhất bên trong dấu ngoặc đơn, không bao giờ được bao bọc nhiều hơn:
 
 .. code-block:: glsl
 
-    // Incorrect syntax (parentheses are not placed where they should be):
+    // Cú pháp không chính xác (dấu ngoặc đơn không được đặt đúng vị trí):
     #if defined(USE_LIGHT || USE_COLOR || !USE_REFRACTION)
-    // This will cause an error or not behave as expected.
+    // Điều này sẽ gây ra lỗi hoặc khiến mã không hoạt động như mong đợi.
     #endif
 
 .. tip::
 
-    In the shader editor, preprocessor branches that evaluate to ``false`` (and
-    are therefore excluded from the final compiled shader) will appear grayed
-    out. This does not apply to runtime ``if`` statements.
+    Trong shader editor, các nhánh tiền xử lý đánh giá thành ``false`` (và do đó bị loại khỏi shader được biên dịch cuối cùng) sẽ hiển thị màu xám. Điều này không áp dụng cho các câu lệnh ``if`` runtime.
 
-**#if preprocessor versus if statement: Performance caveats**
+**Bộ tiền xử lý #if so với câu lệnh if: Lưu ý về hiệu năng**
 
-The :ref:`shading language <doc_shading_language>` supports runtime ``if`` statements:
+:ref:`shading language <doc_shading_language>` hỗ trợ các câu lệnh ``if`` runtime:
 
 .. code-block:: glsl
 
     uniform bool USE_LIGHT = true;
 
     if (USE_LIGHT) {
-        // This part is included in the compiled shader, and always run.
+        // Phần này được đưa vào shader đã biên dịch và luôn được chạy.
     } else {
-        // This part is included in the compiled shader, but never run.
+        // Phần này được đưa vào shader đã biên dịch nhưng không bao giờ được chạy.
     }
 
-If the uniform is never changed, this behaves identical to the following usage
-of the ``#if`` preprocessor statement:
+Nếu uniform không bao giờ thay đổi, cách này hoạt động giống hệt cách sử dụng câu lệnh tiền xử lý ``#if`` sau đây:
 
 .. code-block:: glsl
 
     #define USE_LIGHT
 
     #if defined(USE_LIGHT)
-    // This part is included in the compiled shader, and always run.
+    // Phần này được đưa vào shader đã biên dịch và luôn được chạy.
     #else
-    // This part is *not* included in the compiled shader (and therefore never run).
+    // Phần này *không* được đưa vào shader đã biên dịch (và do đó không bao giờ được chạy).
     #endif
 
-However, the ``#if`` variant can be faster in certain scenarios. This is because
-all runtime branches in a shader are still compiled and variables within
-those branches may still take up register space, even if they are never run in
-practice.
+Tuy nhiên, biến thể ``#if`` có thể nhanh hơn trong một số trường hợp. Nguyên nhân là tất cả các nhánh runtime trong shader vẫn được biên dịch và các biến bên trong những nhánh đó vẫn có thể chiếm dung lượng thanh ghi, ngay cả khi trên thực tế chúng không bao giờ được chạy.
 
-Modern GPUs are `quite effective <https://medium.com/@jasonbooth_86226/branching-on-a-gpu-18bfc83694f2>`__
-at performing "static" branching. "Static" branching refers to ``if`` statements where
-*all* pixels/vertices evaluate to the same result in a given shader invocation. However,
-high amounts of :abbr:`VGPRs (Vector General-Purpose Register)` (which can be caused by
-having too many branches) can still slow down shader execution significantly.
+Các GPU hiện đại `quite effective <https://medium.com/@jasonbooth_86226/branching-on-a-gpu-18bfc83694f2>`__ rất tốt trong việc thực hiện phân nhánh "tĩnh". Phân nhánh "tĩnh" là các câu lệnh ``if`` trong đó *tất cả* pixel/vertex đều cho cùng một kết quả trong một lần gọi shader nhất định. Tuy nhiên, lượng lớn :abbr:`VGPRs (Vector General-Purpose Register)` (có thể do có quá nhiều nhánh) vẫn có thể làm chậm đáng kể quá trình thực thi shader.
 
 #elif
 ~~~~~
 
-The ``#elif`` directive stands for "else if" and checks the condition passed if
-the above ``#if`` evaluated to ``false``. ``#elif`` can only be used within an
-``#if`` block. It is possible to use several ``#elif`` statements after an ``#if`` statement.
+Chỉ thị ``#elif`` là viết tắt của "else if" và kiểm tra điều kiện được truyền vào nếu ``#if`` ở trên đánh giá thành ``false``. ``#elif`` chỉ có thể được sử dụng bên trong một khối ``#if``. Có thể sử dụng nhiều câu lệnh ``#elif`` sau một câu lệnh ``#if``.
 
 .. code-block:: glsl
 
     #define VAR 2
 
     #if VAR == 0
-    // Not included.
+    // Không được đưa vào.
     #elif VAR == 1
-    // Not included.
+    // Không được đưa vào.
     #elif VAR == 2
-    // Condition is `true`. Include this portion in the final shader.
+    // Điều kiện là `true`. Đưa phần này vào shader cuối cùng.
     #else
-    // Not included.
+    // Không được đưa vào.
     #endif
 
-Like with ``#if``, the ``defined()`` preprocessor function can be used:
+Giống như ``#if``, có thể sử dụng hàm tiền xử lý ``defined()``:
 
 .. code-block:: glsl
 
     #define SHADOW_QUALITY_MEDIUM
 
     #if defined(SHADOW_QUALITY_HIGH)
-    // High shadow quality.
+    // Chất lượng bóng cao.
     #elif defined(SHADOW_QUALITY_MEDIUM)
-    // Medium shadow quality.
+    // Chất lượng bóng trung bình.
     #else
-    // Low shadow quality.
+    // Chất lượng bóng thấp.
     #endif
 
 #ifdef
 ~~~~~~
 
-**Syntax:** ``#ifdef <identifier>``
+**Cú pháp:** ``#ifdef <identifier>``
 
-This is a shorthand for ``#if defined(...)``. Checks whether the passed
-identifier is defined by ``#define`` placed above that directive. This is useful
-for creating multiple shader versions in the same file. It may be continued by an
-``#else`` block, but must be ended with the ``#endif`` directive.
+Đây là cách viết tắt của ``#if defined(...)``. Kiểm tra xem identifier được truyền vào có được định nghĩa bởi ``#define`` được đặt phía trên directive đó hay không. Điều này hữu ích khi tạo nhiều phiên bản shader trong cùng một tệp. Có thể tiếp nối bằng một block ``#else``, nhưng phải kết thúc bằng directive ``#endif``.
 
 .. code-block:: glsl
 
     #define USE_LIGHT
 
     #ifdef USE_LIGHT
-    // USE_LIGHT is defined. Include this portion in the final shader.
+    // USE_LIGHT đã được định nghĩa. Đưa phần này vào shader cuối cùng.
     #endif
 
-The processor does *not* support ``#elifdef`` as a shortcut for ``#elif defined(...)``.
-Instead, use the following series of ``#ifdef`` and ``#else`` when you need more
-than two branches:
+Bộ xử lý *không* hỗ trợ ``#elifdef`` như một cách viết tắt cho ``#elif defined(...)``. Thay vào đó, hãy sử dụng chuỗi ``#ifdef`` và ``#else`` sau đây khi cần nhiều hơn hai nhánh:
 
 .. code-block:: glsl
 
     #define SHADOW_QUALITY_MEDIUM
 
     #ifdef SHADOW_QUALITY_HIGH
-    // High shadow quality.
+    // Chất lượng bóng cao.
     #else
     #ifdef SHADOW_QUALITY_MEDIUM
-    // Medium shadow quality.
+    // Chất lượng bóng trung bình.
     #else
-    // Low shadow quality.
-    #endif // This ends `SHADOW_QUALITY_MEDIUM`'s branch.
-    #endif // This ends `SHADOW_QUALITY_HIGH`'s branch.
+    // Chất lượng bóng thấp.
+    #endif // Kết thúc nhánh của `SHADOW_QUALITY_MEDIUM`.
+    #endif // Kết thúc nhánh của `SHADOW_QUALITY_HIGH`.
 
 #ifndef
 ~~~~~~~
 
-**Syntax:** ``#ifndef <identifier>``
+**Cú pháp:** ``#ifndef <identifier>``
 
-This is a shorthand for ``#if !defined(...)``. Similar to ``#ifdef``, but checks
-whether the passed identifier is **not** defined by ``#define`` before that
-directive.
+Đây là cách viết tắt của ``#if !defined(...)``. Tương tự ``#ifdef``, nhưng kiểm tra xem identifier được truyền vào **không** được định nghĩa bởi ``#define`` trước directive đó hay không.
 
-This is the exact opposite of ``#ifdef``; it will always match in situations
-where ``#ifdef`` would never match, and vice versa.
+Đây chính xác là điều ngược lại với ``#ifdef``; nó sẽ luôn khớp trong những tình huống mà ``#ifdef`` sẽ không bao giờ khớp, và ngược lại.
 
 .. code-block:: glsl
 
     #define USE_LIGHT
 
     #ifndef USE_LIGHT
-    // Evaluates to `false`. This portion won't be included in the final shader.
+    // Đánh giá thành `false`. Phần này sẽ không được đưa vào shader cuối cùng.
     #endif
 
     #ifndef USE_COLOR
-    // Evaluates to `true`. This portion will be included in the final shader.
+    // Đánh giá thành `true`. Phần này sẽ được đưa vào shader cuối cùng.
     #endif
 
 #else
 ~~~~~
 
-**Syntax:** ``#else``
+**Cú pháp:** ``#else``
 
-Defines the optional block which is included when the previously defined ``#if``,
-``#elif``, ``#ifdef`` or ``#ifndef`` directive evaluates to false.
+Định nghĩa block tùy chọn được đưa vào khi directive ``#if``, ``#elif``, ``#ifdef`` hoặc ``#ifndef`` được định nghĩa trước đó đánh giá thành false.
 
 .. code-block:: glsl
 
@@ -351,18 +293,16 @@ Defines the optional block which is included when the previously defined ``#if``
 #endif
 ~~~~~~
 
-**Syntax:** ``#endif``
+**Cú pháp:** ``#endif``
 
-Used as terminator for the ``#if``, ``#ifdef``, ``#ifndef`` or subsequent ``#else`` directives.
+Được dùng làm terminator cho các directive ``#if``, ``#ifdef``, ``#ifndef`` hoặc directive ``#else`` tiếp theo.
 
 #error
 ~~~~~~
 
-**Syntax:** ``#error <message>``
+**Cú pháp:** ``#error <message>``
 
-The ``#error`` directive forces the preprocessor to emit an error with optional message.
-For example, it's useful when used within ``#if`` block to provide a strict limitation of the
-defined value.
+Directive ``#error`` buộc preprocessor phát ra một lỗi cùng thông báo tùy chọn. Ví dụ, directive này hữu ích khi được dùng trong block ``#if`` để áp dụng giới hạn nghiêm ngặt cho giá trị đã định nghĩa.
 
 .. code-block:: glsl
 
@@ -376,55 +316,37 @@ defined value.
 #include
 ~~~~~~~~
 
-**Syntax:** ``#include "path"``
+**Cú pháp:** ``#include "path"``
 
-The ``#include`` directive includes the *entire* content of a shader include
-file in a shader. ``"path"`` can be an absolute ``res://`` path or relative to
-the current shader file. Relative paths are only allowed in shaders that are
-saved to ``.gdshader`` or ``.gdshaderinc`` files, while absolute paths can be
-used in shaders that are built into a scene/resource file.
+Directive ``#include`` đưa *toàn bộ* nội dung của tệp shader include vào một shader. ``"path"`` có thể là đường dẫn ``res://`` tuyệt đối hoặc đường dẫn tương đối so với tệp shader hiện tại. Chỉ các shader được lưu vào tệp ``.gdshader`` hoặc ``.gdshaderinc`` mới được phép sử dụng đường dẫn tương đối, trong khi đường dẫn tuyệt đối có thể được dùng trong các shader được tích hợp vào tệp scene/resource.
 
-You can create new shader includes by using the **File > Create Shader Include**
-menu option of the shader editor, or by creating a new :ref:`ShaderInclude<class_ShaderInclude>` resource
-in the FileSystem dock.
+Bạn có thể tạo shader include mới bằng tùy chọn menu **File > Create Shader Include** của shader editor, hoặc bằng cách tạo một resource :ref:`ShaderInclude<class_ShaderInclude>` mới trong dock FileSystem.
 
-Shader includes can be included from within any shader, or other shader include, at
-any point in the file.
+Shader include có thể được đưa vào từ bất kỳ shader hoặc shader include nào khác, tại bất kỳ vị trí nào trong tệp.
 
-When including shader includes in the global scope of a shader, it is recommended
-to do this after the initial ``shader_type`` statement.
+Khi đưa shader include vào global scope của shader, bạn nên thực hiện việc này sau statement ``shader_type`` ban đầu.
 
-You can also include shader includes from within the body a function. Please note that
-the shader editor is likely going to report errors for your shader include's code, as it
-may not be valid outside of the context that it was written for. You can either choose
-to ignore these errors (the shader will still compile fine), or you can wrap the include
-in an ``#ifdef`` block that checks for a define from your shader.
+Bạn cũng có thể đưa shader include vào bên trong phần thân của một function. Lưu ý rằng shader editor có thể sẽ báo lỗi đối với code trong shader include, vì code đó có thể không hợp lệ khi nằm ngoài context mà nó được viết cho. Bạn có thể chọn bỏ qua các lỗi này (shader vẫn sẽ compile bình thường), hoặc bọc include trong một block ``#ifdef`` để kiểm tra một define từ shader của bạn.
 
-``#include`` is useful for creating libraries of helper functions (or macros)
-and reducing code duplication. When using ``#include``, be careful about naming
-collisions, as redefining functions or macros is not allowed.
+``#include`` hữu ích khi tạo các thư viện helper function (hoặc macro) và giảm việc lặp code. Khi sử dụng ``#include``, hãy cẩn thận với các xung đột tên, vì không cho phép định nghĩa lại function hoặc macro.
 
-``#include`` is subject to several restrictions:
+``#include`` chịu một số hạn chế:
 
-- Only shader include resources (ending with ``.gdshaderinc``) can be included.
-  ``.gdshader`` files cannot be included by another shader, but a
-  ``.gdshaderinc`` file can include other ``.gdshaderinc`` files.
-- Cyclic dependencies are **not** allowed and will result in an error.
-- To avoid infinite recursion, include depth is limited to 25 steps.
+- Chỉ các shader include resource (có phần mở rộng ``.gdshaderinc``) mới có thể được include. Các tệp ``.gdshader`` không thể được shader khác include, nhưng một tệp ``.gdshaderinc`` có thể include các tệp ``.gdshaderinc`` khác. - Không cho phép **cyclic dependency** và sẽ dẫn đến lỗi. - Để tránh đệ quy vô hạn, độ sâu include được giới hạn ở 25 bước.
 
-Example shader include file:
+Tệp shader include ví dụ:
 
 .. code-block:: glsl
 
     // fancy_color.gdshaderinc
 
-    // While technically allowed, there is usually no `shader_type` declaration in include files.
+    // Mặc dù về mặt kỹ thuật được phép, các tệp include thường không có khai báo `shader_type`.
 
     vec3 get_fancy_color() {
         return vec3(0.3, 0.6, 0.9);
     }
 
-Example base shader (using the include file we created above):
+Shader cơ sở ví dụ (sử dụng tệp include mà chúng ta đã tạo ở trên):
 
 .. code-block:: glsl
 
@@ -435,47 +357,39 @@ Example base shader (using the include file we created above):
     #include "res://fancy_color.gdshaderinc"
 
     void fragment() {
-        // No error, as we've included a definition for `get_fancy_color()` via the shader include.
+        // Không có lỗi, vì chúng ta đã include định nghĩa cho `get_fancy_color()` thông qua shader include.
         COLOR = get_fancy_color();
     }
 
 #pragma
 ~~~~~~~
 
-**Syntax:** ``#pragma value``
+**Cú pháp:** ``#pragma value``
 
-The ``#pragma`` directive provides additional information to the preprocessor or compiler.
+Directive ``#pragma`` cung cấp thông tin bổ sung cho preprocessor hoặc compiler.
 
-Currently, it may have only one value: ``disable_preprocessor``. If you don't need
-the preprocessor, use that directive to speed up shader compilation by excluding
-the preprocessor step.
+Hiện tại, directive này chỉ có thể nhận một giá trị: ``disable_preprocessor``. Nếu không cần preprocessor, hãy sử dụng directive đó để tăng tốc quá trình compile shader bằng cách loại bỏ bước preprocessor.
 
 .. code-block:: glsl
 
     #pragma disable_preprocessor
 
     #if USE_LIGHT
-    // This causes a shader compilation error, as the `#if USE_LIGHT` and `#endif`
-    // are included as-is in the final shader code.
+    // Điều này gây ra lỗi compile shader, vì `#if USE_LIGHT` và `#endif`
+    // được giữ nguyên như trong code shader cuối cùng.
     #endif
 
-Built-in defines
-----------------
+Các define tích hợp sẵn
+-----------------------
 
-Current renderer
-~~~~~~~~~~~~~~~~
+Renderer hiện tại
+~~~~~~~~~~~~~~~~~
 
-Since Godot 4.4, you can check which renderer is currently used with the built-in
-defines ``CURRENT_RENDERER``, ``RENDERER_COMPATIBILITY``, ``RENDERER_MOBILE``,
-and ``RENDERER_FORWARD_PLUS``:
+Kể từ Godot 4.4, bạn có thể kiểm tra renderer hiện đang được sử dụng bằng các define tích hợp sẵn ``CURRENT_RENDERER``, ``RENDERER_COMPATIBILITY``, ``RENDERER_MOBILE`` và ``RENDERER_FORWARD_PLUS``:
 
-- ``CURRENT_RENDERER`` is set to either ``0``, ``1``, or ``2`` depending on the
-  current renderer.
-- ``RENDERER_COMPATIBILITY`` is always ``0``.
-- ``RENDERER_MOBILE`` is always ``1``.
-- ``RENDERER_FORWARD_PLUS`` is always ``2``.
+- ``CURRENT_RENDERER`` được đặt thành ``0``, ``1`` hoặc ``2`` tùy thuộc vào renderer hiện tại. - ``RENDERER_COMPATIBILITY`` luôn là ``0``. - ``RENDERER_MOBILE`` luôn là ``1``. - ``RENDERER_FORWARD_PLUS`` luôn là ``2``.
 
-As an example, this shader sets ``ALBEDO`` to a different color in each renderer:
+Ví dụ, shader này đặt ``ALBEDO`` thành một màu khác nhau trong mỗi renderer:
 
 .. code-block:: glsl
 

@@ -1,132 +1,88 @@
 .. _doc_your_first_spatial_shader:
 
-Your first 3D shader
-====================
+Shader 3D đầu tiên của bạn
+==========================
 
-You have decided to start writing your own custom Spatial shader. Maybe you saw
-a cool trick online that was done with shaders, or you have found that the
+Bạn đã quyết định bắt đầu viết Spatial shader tùy chỉnh của riêng mình. Có thể bạn đã thấy một thủ thuật thú vị trên mạng được thực hiện bằng shader, hoặc bạn nhận thấy rằng
 :ref:`StandardMaterial3D <class_StandardMaterial3D>` isn't quite meeting your
-needs. Either way, you have decided to write your own and now you need to figure
-out where to start.
+cần thiết. Dù thế nào đi nữa, bạn đã quyết định tự viết shader và bây giờ cần tìm hiểu nên bắt đầu từ đâu.
 
-This tutorial will explain how to write a Spatial shader and will cover more
-topics than the :ref:`CanvasItem <doc_your_first_canvasitem_shader>` tutorial.
+Tutorial này sẽ giải thích cách viết Spatial shader và đề cập đến nhiều chủ đề hơn tutorial :ref:`CanvasItem <doc_your_first_canvasitem_shader>`.
 
-Spatial shaders have more built-in functionality than CanvasItem shaders. The
-expectation with spatial shaders is that Godot has already provided the
-functionality for common use cases and all the user needs to do in the shader is
-set the proper parameters. This is especially true for a PBR (physically based
-rendering) workflow.
+Spatial shader có nhiều chức năng built-in hơn CanvasItem shader. Với spatial shader, Godot được kỳ vọng đã cung cấp sẵn chức năng cho các trường hợp sử dụng phổ biến và người dùng chỉ cần thiết lập các tham số phù hợp trong shader. Điều này đặc biệt đúng với quy trình PBR (physically based rendering).
 
-This is a two-part tutorial. In this first part we will create terrain using
-vertex displacement from a heightmap in the
-vertex function. In the :ref:`second part <doc_your_second_spatial_shader>` we
-will take the concepts from this tutorial and set up
-custom materials in a fragment shader by writing an ocean water shader.
+Đây là tutorial gồm hai phần. Trong phần đầu tiên, chúng ta sẽ tạo terrain bằng cách dịch chuyển vertex từ heightmap trong hàm vertex. Trong :ref:`second part <doc_your_second_spatial_shader>`, chúng ta sẽ áp dụng các khái niệm từ tutorial này và thiết lập các material tùy chỉnh trong fragment shader bằng cách viết một ocean water shader.
 
 .. note:: This tutorial assumes some basic shader knowledge such as types
-          (``vec2``, ``float``, ``sampler2D``), and functions. If you are
-          uncomfortable with these concepts it is best to get a gentle
-          introduction from `The Book of Shaders
-          <https://thebookofshaders.com>`_ before completing this tutorial.
+          (``vec2``, ``float``, ``sampler2D``) và các hàm. Nếu bạn chưa quen với những khái niệm này, tốt nhất nên tìm hiểu nhập môn nhẹ nhàng từ `The Book of Shaders <https://thebookofshaders.com>`_ trước khi hoàn thành tutorial này.
 
-Where to assign my material
----------------------------
+Nơi gán material của tôi
+------------------------
 
-In 3D, objects are drawn using :ref:`Meshes <class_Mesh>`. Meshes are a resource
-type that store geometry (the shape of your object) and materials (the color and
-how the object reacts to light) in units called "surfaces". A Mesh can have
-multiple surfaces, or just one. Typically, you would import a mesh from another
-program (e.g. Blender). But Godot also has a few :ref:`PrimitiveMeshes
-<class_primitivemesh>` that allow you to add basic geometry to a scene without
-importing Meshes.
+Trong 3D, các object được vẽ bằng :ref:`Meshes <class_Mesh>`. Mesh là một loại resource lưu trữ geometry (hình dạng của object) và material (màu sắc và cách object phản ứng với ánh sáng) trong các đơn vị gọi là "surface". Một Mesh có thể có nhiều surface hoặc chỉ một surface. Thông thường, bạn sẽ import mesh từ một chương trình khác (ví dụ: Blender). Tuy nhiên, Godot cũng có một số :ref:`PrimitiveMeshes <class_primitivemesh>` cho phép bạn thêm geometry cơ bản vào scene mà không cần import Mesh.
 
-There are multiple node types that you can use to draw a mesh. The main one is
+Có nhiều loại node mà bạn có thể dùng để vẽ một mesh. Loại chính là
 :ref:`MeshInstance3D <class_MeshInstance3D>`, but you can also use :ref:`GPUParticles3D
-<class_GPUParticles3D>`, :ref:`MultiMeshes <class_MultiMesh>` (with a
+<class_GPUParticles3D>`, :ref:`MultiMeshes <class_MultiMesh>` (với một
 :ref:`MultiMeshInstance3D <class_MultiMeshInstance3D>`), or others.
 
-Typically, a material is associated with a given surface in a mesh, but some
-nodes, like MeshInstance3D, allow you to override the material for a specific
-surface, or for all surfaces.
+Thông thường, một material được liên kết với một surface cụ thể trong mesh, nhưng một số node, như MeshInstance3D, cho phép bạn override material cho một surface cụ thể hoặc cho tất cả surface.
 
-If you set a material on the surface or mesh itself, then all MeshInstance3Ds that
-share that mesh will share that material. However, if you want to reuse the same
-mesh across multiple mesh instances, but have different materials for each
-instance then you should set the material on the MeshInstance3D.
+Nếu bạn đặt material trên chính surface hoặc mesh, thì tất cả MeshInstance3D dùng chung mesh đó cũng sẽ dùng chung material đó. Tuy nhiên, nếu bạn muốn tái sử dụng cùng một mesh cho nhiều mesh instance nhưng có material khác nhau cho từng instance, bạn nên đặt material trên MeshInstance3D.
 
-For this tutorial we will set our material on the mesh itself rather than taking
-advantage of the MeshInstance3D's ability to override materials.
+Trong tutorial này, chúng ta sẽ đặt material trên chính mesh thay vì tận dụng khả năng override material của MeshInstance3D.
 
-Setting up
-----------
+Thiết lập
+---------
 
-Add a new :ref:`MeshInstance3D <class_MeshInstance3D>` node to your scene.
+Thêm một node :ref:`MeshInstance3D <class_MeshInstance3D>` mới vào scene.
 
-In the inspector tab, set the MeshInstance3D's **Mesh** property to a new
+Trong tab inspector, đặt thuộc tính **Mesh** của MeshInstance3D thành một
 :ref:`PlaneMesh <class_planemesh>` resource, by clicking on ``<empty>`` and
-choosing **New PlaneMesh**. Then expand the resource by clicking on the image of
-a plane that appears.
+mới bằng cách chọn **New PlaneMesh**. Sau đó mở rộng resource bằng cách nhấp vào hình ảnh plane xuất hiện.
 
-This adds a plane to our scene.
+Thao tác này thêm một plane vào scene.
 
-Then, in the viewport, click in the upper left corner on the **Perspective** button.
-In the menu that appears, select **Display Wireframe**.
+Tiếp theo, trong viewport, nhấp vào nút **Perspective** ở góc trên bên trái. Trong menu xuất hiện, chọn **Display Wireframe**.
 
-This will allow you to see the triangles making up the plane.
+Thao tác này cho phép bạn nhìn thấy các triangle tạo nên plane.
 
 .. image:: img/plane.webp
 
-Now set **Subdivide Width** and **Subdivide Depth** of the :ref:`PlaneMesh <class_planemesh>` to ``32``.
+Bây giờ đặt **Subdivide Width** và **Subdivide Depth** của :ref:`PlaneMesh <class_planemesh>` thành ``32``.
 
 .. image:: img/plane-sub-set.webp
 
-You can see that there are now many more triangles in the
+Bạn có thể thấy hiện đã có nhiều triangle hơn trong
 :ref:`MeshInstance3D<class_MeshInstance3D>`. This will give us more vertices to work with
-and thus allow us to add more detail.
+và do đó cho phép chúng ta thêm nhiều chi tiết hơn.
 
 .. image:: img/plane-sub.webp
 
 :ref:`PrimitiveMeshes <class_primitivemesh>`, like PlaneMesh, only have one
-surface, so instead of an array of materials there is only one. Set the
-**Material** to a new ShaderMaterial, then expand the material by clicking on
-the sphere that appears.
+surface, vì vậy thay vì một mảng material, ở đây chỉ có một material. Đặt **Material** thành một ShaderMaterial mới, sau đó mở rộng material bằng cách nhấp vào hình cầu xuất hiện.
 
 .. note::
-  Materials that inherit from the :ref:`class_Material` resource, such as :ref:`class_StandardMaterial3D`
-  and :ref:`class_ParticleProcessMaterial`, can be converted to a :ref:`class_ShaderMaterial`
-  and their existing properties will be converted to an accompanying text shader.
-  To do so, right-click on the material in the FileSystem dock and choose
-  **Convert to ShaderMaterial**. You can also do so by right-clicking on any
-  property holding a reference to the material in the inspector.
+  Các material kế thừa từ resource :ref:`class_Material`, chẳng hạn như :ref:`class_StandardMaterial3D` và :ref:`class_ParticleProcessMaterial`, có thể được chuyển đổi thành :ref:`class_ShaderMaterial` và các thuộc tính hiện có của chúng sẽ được chuyển đổi thành một text shader đi kèm. Để thực hiện việc này, nhấp chuột phải vào material trong dock FileSystem và chọn **Convert to ShaderMaterial**. Bạn cũng có thể thực hiện bằng cách nhấp chuột phải vào bất kỳ thuộc tính nào đang chứa tham chiếu đến material trong inspector.
 
-Now set the material's **Shader** to a new Shader by clicking ``<empty>`` and
-select **New Shader...**. Leave the default settings, give your shader a name,
-and click **Create**.
+Bây giờ đặt **Shader** của material thành một Shader mới bằng cách nhấp vào ``<empty>`` rồi chọn **New Shader...**. Giữ nguyên các thiết lập mặc định, đặt tên cho shader và nhấp vào **Create**.
 
-Click on the shader in the inspector, and the shader editor should now pop up. You
-are ready to begin writing your first Spatial shader!
+Nhấp vào shader trong inspector, lúc này shader editor sẽ xuất hiện. Bạn đã sẵn sàng bắt đầu viết Spatial shader đầu tiên của mình!
 
-Shader magic
-------------
+Phép màu shader
+---------------
 
 .. image:: img/shader-editor.webp
 
-The new shader is already generated with a ``shader_type`` variable, the
-``vertex()`` function, and the ``fragment()`` function. The first thing Godot
-shaders need is a declaration of what type of shader they are. In this case the
-``shader_type`` is set to ``spatial`` because this is a spatial shader.
+Shader mới đã được tạo sẵn với một biến ``shader_type``, hàm ``vertex()`` và hàm ``fragment()``. Điều đầu tiên Godot shader cần là khai báo loại shader. Trong trường hợp này, ``shader_type`` được đặt thành ``spatial`` vì đây là spatial shader.
 
 .. code-block:: glsl
 
   shader_type spatial;
 
-The ``vertex()`` function determines where the vertices of your :ref:`MeshInstance3D<class_MeshInstance3D>`
-appear in the final scene. We will be using it to offset the height of each vertex
-and make our flat plane appear like a little terrain.
+Hàm ``vertex()`` xác định vị trí các vertex của :ref:`MeshInstance3D<class_MeshInstance3D>` xuất hiện trong scene cuối cùng. Chúng ta sẽ dùng hàm này để thay đổi độ cao của từng vertex và làm cho plane phẳng của chúng ta trông giống một terrain nhỏ.
 
-With nothing in the ``vertex()`` function, Godot will use its default vertex
-shader. We can start to make changes by adding a single line:
+Khi hàm ``vertex()`` không có nội dung, Godot sẽ dùng vertex shader mặc định. Chúng ta có thể bắt đầu thay đổi bằng cách thêm một dòng duy nhất:
 
 .. code-block:: glsl
 
@@ -134,18 +90,13 @@ shader. We can start to make changes by adding a single line:
     VERTEX.y += cos(VERTEX.x) * sin(VERTEX.z);
   }
 
-Adding this line, you should get an image like the one below.
+Sau khi thêm dòng này, bạn sẽ nhận được hình ảnh giống như bên dưới.
 
 .. image:: img/cos.webp
 
-Okay, let's unpack this. The ``y`` value of the ``VERTEX`` is being increased.
-And we are passing the ``x`` and ``z`` components of the ``VERTEX`` as arguments
-to :ref:`cos() <shader_func_cos>` and :ref:`sin() <shader_func_sin>`; that gives
-us a wave-like appearance across the ``x`` and ``z`` axes.
+Được rồi, hãy phân tích điều này. Giá trị ``y`` của ``VERTEX`` đang được tăng lên. Và chúng ta truyền các component ``x`` và ``z`` của ``VERTEX`` làm đối số cho :ref:`cos() <shader_func_cos>` và :ref:`sin() <shader_func_sin>`; điều đó tạo ra diện mạo giống như sóng trên các trục ``x`` và ``z``.
 
-What we want to achieve is the look of little hills; after all. ``cos()`` and
-``sin()`` already look kind of like hills. We do so by scaling the inputs to the
-``cos()`` and ``sin()`` functions.
+Điều chúng ta muốn đạt được là diện mạo của những ngọn đồi nhỏ; dù sao thì. ``cos()`` và ``sin()`` vốn đã trông hơi giống những ngọn đồi. Chúng ta thực hiện điều này bằng cách scale các input của các hàm ``cos()`` và ``sin()``.
 
 .. code-block:: glsl
 
@@ -155,40 +106,32 @@ What we want to achieve is the look of little hills; after all. ``cos()`` and
 
 .. image:: img/cos4.webp
 
-This looks better, but it is still too spiky and repetitive, let's make it a
-little more interesting.
+Trông đã đẹp hơn, nhưng vẫn quá nhọn và lặp lại; hãy làm cho nó thú vị hơn một chút.
 
-Noise heightmap
----------------
+Heightmap từ noise
+------------------
 
-Noise is a very popular tool for faking the look of terrain. Think of it as
-similar to the cosine function where you have repeating hills except, with
-noise, each hill has a different height.
+Noise là một công cụ rất phổ biến để giả lập diện mạo của terrain. Hãy hình dung nó tương tự hàm cosine, trong đó bạn có những ngọn đồi lặp lại, ngoại trừ việc với noise, mỗi ngọn đồi có một độ cao khác nhau.
 
-Godot provides the :ref:`NoiseTexture2D <class_noisetexture2D>` resource for
-generating a noise texture that can be accessed from a shader.
+Godot cung cấp resource :ref:`NoiseTexture2D <class_noisetexture2D>` để tạo noise texture có thể được truy cập từ shader.
 
-To access a texture in a shader add the following code near the top of your
-shader, outside the ``vertex()`` function.
+Để truy cập texture trong shader, hãy thêm đoạn code sau gần đầu shader, bên ngoài hàm ``vertex()``.
 
 .. code-block:: glsl
 
   uniform sampler2D noise;
 
-This will allow you to send a noise texture to the shader. Now look in the
-inspector under your material. You should see a section called **Shader Parameters**.
-If you open it up, you'll see a parameter called "Noise".
+Thao tác này cho phép bạn truyền một noise texture vào shader. Bây giờ hãy nhìn vào inspector bên dưới material. Bạn sẽ thấy một section có tên **Shader Parameters**. Nếu mở section đó, bạn sẽ thấy một tham số có tên "Noise".
 
-Set this **Noise** parameter to a new :ref:`NoiseTexture2D <class_noisetexture2D>`.
-Then in your NoiseTexture2D, set its **Noise** property to a new
+Đặt tham số **Noise** này thành một :ref:`NoiseTexture2D <class_noisetexture2D>` mới. Sau đó, trong NoiseTexture2D, đặt thuộc tính **Noise** của nó thành một
 :ref:`FastNoiseLite <class_fastnoiselite>`. The FastNoiseLite class is used by
-the NoiseTexture2D to generate a heightmap.
+mới để NoiseTexture2D tạo heightmap.
 
-Once you set it up and should look like this.
+Sau khi thiết lập xong, kết quả sẽ trông như thế này.
 
 .. image:: img/noise-set.webp
 
-Now, access the noise texture using the ``texture()`` function:
+Bây giờ, truy cập noise texture bằng hàm ``texture()``:
 
 .. code-block:: glsl
 
@@ -198,142 +141,95 @@ Now, access the noise texture using the ``texture()`` function:
   }
 
 :ref:`texture() <shader_func_texture>` takes a texture as the first argument and
-a ``vec2`` for the position on the texture as the second argument. We use the
-``x`` and ``z`` channels of ``VERTEX`` to determine where on the texture to look
-up.
+một ``vec2`` cho vị trí trên texture làm đối số thứ hai. Chúng ta sử dụng các channel ``x`` và ``z`` của ``VERTEX`` để xác định vị trí cần tra cứu trên texture.
 
-Since the PlaneMesh coordinates are within the ``[-1.0, 1.0]`` range (for a size
-of ``2.0``), while the texture coordinates are within ``[0.0, 1.0]``, to remap
-the coordinates we divide by the size of the PlaneMesh by ``2.0`` and add
-``0.5`` .
+Vì tọa độ của PlaneMesh nằm trong khoảng ``[-1.0, 1.0]`` (với kích thước ``2.0``), còn tọa độ texture nằm trong ``[0.0, 1.0]``, nên để ánh xạ lại tọa độ, chúng ta chia cho kích thước của PlaneMesh theo ``2.0`` và cộng thêm ``0.5`` .
 
-``texture()`` returns a ``vec4`` of the ``r, g, b, a`` channels at the position.
-Since the noise texture is grayscale, all of the values are the same, so we can
-use any one of the channels as the height. In this case we'll use the ``r``, or
-``x`` channel.
+``texture()`` trả về một ``vec4`` của các channel ``r, g, b, a`` tại vị trí đó. Vì noise texture là grayscale nên tất cả các giá trị đều giống nhau, do đó chúng ta có thể dùng bất kỳ channel nào làm độ cao. Trong trường hợp này, chúng ta sẽ dùng channel ``r`` hoặc ``x``.
 
 .. note::
 
-  ``xyzw`` is the same as ``rgba`` in GLSL, so instead of ``texture().x``
-  above, we could use ``texture().r``. See the `OpenGL documentation
-  <https://www.khronos.org/opengl/wiki/Data_Type_(GLSL)#Vectors>`_ for more
-  details.
+  ``xyzw`` giống với ``rgba`` trong GLSL, vì vậy thay vì ``texture().x`` ở trên, chúng ta có thể dùng ``texture().r``. Xem `OpenGL documentation <https://www.khronos.org/opengl/wiki/Data_Type_(GLSL)#Vectors>`_ để biết thêm chi tiết.
 
-Using this code you can see the texture creates random looking hills.
+Với đoạn code này, bạn có thể thấy texture tạo ra những ngọn đồi trông ngẫu nhiên.
 
 .. image:: img/noise.webp
 
-Right now it is too spiky, we want to soften the hills a bit. To do that, we
-will use a uniform. You already used a uniform above to pass in the noise
-texture, now let's learn how they work.
+Hiện tại các ngọn đồi quá nhọn, chúng ta muốn làm chúng mềm hơn một chút. Để làm điều đó, chúng ta sẽ dùng một uniform. Bạn đã sử dụng uniform ở trên để truyền noise texture; bây giờ hãy tìm hiểu cách chúng hoạt động.
 
-Uniforms
---------
+Uniform
+-------
 
 :ref:`Uniform variables <doc_shading_language_uniforms>` allow you to pass data
-from the game into the shader. They are
-very useful for controlling shader effects. Uniforms can be almost any datatype
-that can be used in the shader. To use a uniform, you declare it in your
+từ game vào shader. Chúng rất hữu ích để điều khiển các hiệu ứng shader. Uniform có thể là gần như bất kỳ datatype nào được dùng trong shader. Để sử dụng uniform, bạn khai báo nó trong
 :ref:`Shader<class_Shader>` using the keyword ``uniform``.
 
-Let's make a uniform that changes the height of the terrain.
+Hãy tạo một uniform thay đổi độ cao của terrain.
 
 .. code-block:: glsl
 
   uniform float height_scale = 0.5;
 
 
-Godot lets you initialize a uniform with a value; here, ``height_scale`` is set
-to ``0.5``. You can set uniforms from GDScript by calling the function
+Godot cho phép bạn khởi tạo một uniform bằng một giá trị; ở đây, ``height_scale`` được đặt thành ``0.5``. Bạn có thể đặt uniform từ GDScript bằng cách gọi hàm
 :ref:`set_shader_parameter() <class_ShaderMaterial_method_set_shader_parameter>`
-on the material corresponding to the shader. The value passed from GDScript
-takes precedence over the value used to initialize it in the shader.
+trên material tương ứng với shader. Giá trị được truyền từ GDScript sẽ được ưu tiên hơn giá trị dùng để khởi tạo trong shader.
 
 .. code-block:: gdscript
 
-  # called from the MeshInstance3D
+  # được gọi từ MeshInstance3D
   mesh.material.set_shader_parameter("height_scale", 0.5)
 
 .. note:: Changing uniforms in Spatial-based nodes is different from
-          CanvasItem-based nodes. Here, we set the material inside the PlaneMesh
-          resource. In other mesh resources you may need to first access the
-          material by calling ``surface_get_material()``. While in the
-          MeshInstance3D you would access the material using
-          ``get_surface_material()`` or ``material_override``.
+          node dựa trên CanvasItem. Ở đây, chúng ta đặt material bên trong resource PlaneMesh. Với các mesh resource khác, trước tiên bạn có thể cần truy cập material bằng cách gọi ``surface_get_material()``. Còn trong MeshInstance3D, bạn sẽ truy cập material bằng ``get_surface_material()`` hoặc ``material_override``.
 
-Remember that the string passed into ``set_shader_parameter()`` must match the name
-of the uniform variable in the shader. You can use the
-uniform variable anywhere inside your shader. Here, we will
-use it to set the height value instead of arbitrarily multiplying by ``0.5``.
+Hãy nhớ rằng chuỗi được truyền vào ``set_shader_parameter()`` phải khớp với tên của biến uniform trong shader. Bạn có thể sử dụng biến uniform ở bất kỳ đâu bên trong shader. Ở đây, chúng ta sẽ dùng nó để đặt giá trị độ cao thay vì nhân tùy ý với ``0.5``.
 
 .. code-block:: glsl
 
   VERTEX.y += height * height_scale;
 
-Now it looks much better.
+Bây giờ trông đẹp hơn nhiều.
 
 .. image:: img/noise-low.webp
 
-Using uniforms, we can even change the value every frame to animate the height
-of the terrain. Combined with :ref:`Tweens <class_Tween>`, this can be
-especially useful for animations.
+Bằng cách sử dụng uniforms, chúng ta thậm chí có thể thay đổi giá trị ở mỗi frame để tạo animation cho độ cao của địa hình. Khi kết hợp với :ref:`Tweens <class_Tween>`, cách này đặc biệt hữu ích cho các animation.
 
-Interacting with light
+Tương tác với ánh sáng
 ----------------------
 
-First, turn wireframe off. To do so, open the **Perspective** menu in the
-upper-left of the viewport again, and select **Display Normal**. Additionally in
-the 3D scene toolbar, turn off preview sunlight.
+Trước tiên, hãy tắt wireframe. Để làm vậy, mở lại menu **Perspective** ở góc trên bên trái của viewport và chọn **Display Normal**. Ngoài ra, trong thanh công cụ cảnh 3D, hãy tắt preview sunlight.
 
 .. image:: img/normal.webp
 
-Note how the mesh color goes flat. This is because the lighting on it is flat.
-Let's add a light!
+Hãy chú ý rằng màu của mesh trở nên đồng nhất. Đó là vì ánh sáng trên mesh cũng đồng nhất. Hãy thêm một light!
 
-First, we will add an :ref:`OmniLight3D<class_OmniLight3D>` to the scene, and
-drag it up so it is above the terrain.
+Trước tiên, chúng ta sẽ thêm một :ref:`OmniLight3D<class_OmniLight3D>` vào scene, rồi kéo nó lên để nó nằm phía trên địa hình.
 
 .. image:: img/light.webp
 
-You can see the light affecting the terrain, but it looks odd. The problem is
-the light is affecting the terrain as if it were a flat plane. This is because
-the light shader uses the normals from the :ref:`Mesh <class_mesh>` to calculate
-light.
+Bạn có thể thấy light đang tác động lên địa hình, nhưng kết quả trông khá kỳ lạ. Vấn đề là light đang tác động lên địa hình như thể nó là một mặt phẳng. Đó là vì light shader sử dụng các normal từ :ref:`Mesh <class_mesh>` để tính toán ánh sáng.
 
-The normals are stored in the Mesh, but we are changing the shape of the Mesh in
-the shader, so the normals are no longer correct. To fix this, we can
-recalculate the normals in the shader or use a normal texture that corresponds
-to our noise. Godot makes both easy for us.
+Các normal được lưu trong Mesh, nhưng chúng ta đang thay đổi hình dạng của Mesh trong shader, nên các normal không còn chính xác nữa. Để khắc phục, chúng ta có thể tính toán lại các normal trong shader hoặc sử dụng một normal texture tương ứng với noise của mình. Godot giúp chúng ta thực hiện cả hai cách này một cách dễ dàng.
 
-You can calculate the new normal manually in the vertex function and then just
-set ``NORMAL``. With ``NORMAL`` set, Godot will do all the difficult lighting
-calculations for us. We will cover this method in the next part of this
-tutorial, for now we will read normals from a texture.
+Bạn có thể tự tính toán normal mới trong hàm vertex, sau đó chỉ cần đặt ``NORMAL``. Khi đã đặt ``NORMAL``, Godot sẽ thực hiện mọi phép tính ánh sáng phức tạp thay cho chúng ta. Chúng ta sẽ tìm hiểu phương pháp này trong phần tiếp theo của tutorial; còn bây giờ, chúng ta sẽ đọc các normal từ một texture.
 
-Instead we will rely on the NoiseTexture again to calculate normals for us. We
-do that by passing in a second noise texture.
+Thay vào đó, chúng ta sẽ tiếp tục dựa vào NoiseTexture để tính toán các normal cho mình. Chúng ta thực hiện việc này bằng cách truyền vào một noise texture thứ hai.
 
 .. code-block:: glsl
 
   uniform sampler2D normalmap;
 
-Set this second uniform texture to another :ref:`NoiseTexture2D <class_noisetexture2D>` with another
+Đặt uniform texture thứ hai này thành một :ref:`NoiseTexture2D <class_noisetexture2D>` khác với một
 :ref:`FastNoiseLite <class_fastnoiselite>`. But this time, check **As Normal Map**.
 
 .. image:: img/normal-set.webp
 
-When we have normals that correspond to a specific vertex we set ``NORMAL``, but
-if you have a normalmap that comes from a texture, set the normal using
-``NORMAL_MAP`` in the ``fragment()`` function. This way Godot will handle
-wrapping the texture around the mesh automatically.
+Khi có các normal tương ứng với một vertex cụ thể, chúng ta đặt ``NORMAL``, nhưng nếu bạn có một normalmap lấy từ một texture, hãy đặt normal bằng ``NORMAL_MAP`` trong hàm ``fragment()``. Nhờ vậy, Godot sẽ tự động xử lý việc wrap texture quanh mesh.
 
-Lastly, in order to ensure that we are reading from the same places on the noise
-texture and the normalmap texture, we are going to pass the ``VERTEX.xz``
-position from the ``vertex()`` function to the ``fragment()`` function. We do
-that using a :ref:`varying <doc_shading_language_varyings>`.
+Cuối cùng, để đảm bảo rằng chúng ta đang đọc từ cùng một vị trí trên noise texture và normalmap texture, chúng ta sẽ truyền vị trí ``VERTEX.xz`` từ hàm ``vertex()`` sang hàm ``fragment()``. Chúng ta thực hiện việc này bằng một :ref:`varying <doc_shading_language_varyings>`.
 
-Above the ``vertex()`` define a ``varying vec2`` called ``tex_position``. And
-inside the ``vertex()`` function assign ``VERTEX.xz`` to ``tex_position``.
+Bên trên ``vertex()``, hãy định nghĩa một ``varying vec2`` có tên là ``tex_position``. Và bên trong hàm ``vertex()``, hãy gán ``VERTEX.xz`` cho ``tex_position``.
 
 .. code-block:: glsl
 
@@ -345,7 +241,7 @@ inside the ``vertex()`` function assign ``VERTEX.xz`` to ``tex_position``.
     VERTEX.y += height * height_scale;
   }
 
-And now we can access ``tex_position`` from the ``fragment()`` function.
+Và bây giờ chúng ta có thể truy cập ``tex_position`` từ hàm ``fragment()``.
 
 .. code-block:: glsl
 
@@ -353,20 +249,18 @@ And now we can access ``tex_position`` from the ``fragment()`` function.
     NORMAL_MAP = texture(normalmap, tex_position).xyz;
   }
 
-With the normals in place the light now reacts to the height of the mesh
-dynamically.
+Khi các normal đã được thiết lập, light giờ đây phản ứng linh hoạt theo độ cao của mesh.
 
 .. image:: img/normalmap.webp
 
-We can even drag the light around and the lighting will update automatically.
+Chúng ta thậm chí có thể kéo light đi xung quanh, và ánh sáng sẽ tự động cập nhật.
 
 .. image:: img/normalmap2.webp
 
-Full code
----------
+Toàn bộ code
+------------
 
-Here is the full code for this tutorial. You can see it is not very long as
-Godot handles most of the difficult stuff for you.
+Đây là toàn bộ code của tutorial này. Bạn có thể thấy nó không dài lắm vì Godot đã xử lý phần lớn những công việc phức tạp thay cho bạn.
 
 .. code-block:: glsl
 
@@ -388,7 +282,4 @@ Godot handles most of the difficult stuff for you.
     NORMAL_MAP = texture(normalmap, tex_position).xyz;
   }
 
-That is everything for this part. Hopefully, you now understand the basics of
-vertex shaders in Godot. In the next part of this tutorial we will write a
-fragment function to accompany this vertex function and we will cover a more
-advanced technique to turn this terrain into an ocean of moving waves.
+Đó là tất cả nội dung của phần này. Hy vọng giờ đây bạn đã hiểu những điều cơ bản về vertex shader trong Godot. Trong phần tiếp theo của tutorial, chúng ta sẽ viết một hàm fragment để đi cùng với hàm vertex này, đồng thời tìm hiểu một kỹ thuật nâng cao hơn để biến địa hình này thành một đại dương với những con sóng chuyển động.

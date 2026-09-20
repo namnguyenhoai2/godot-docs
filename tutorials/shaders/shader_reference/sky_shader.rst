@@ -1,28 +1,15 @@
 .. _doc_sky_shader:
 
-Sky shaders
-===========
+Sky shader
+==========
 
-Sky shaders are a special type of shader used for drawing sky backgrounds
-and for updating radiance cubemaps which are used for image-based lighting
-(IBL). Sky shaders only have one processing function, the ``sky()``
-function.
+Sky shader là một loại shader đặc biệt được dùng để vẽ nền bầu trời và cập nhật các radiance cubemap được dùng cho image-based lighting (IBL). Sky shader chỉ có một hàm xử lý duy nhất, hàm ``sky()``.
 
-There are three places the sky shader is used.
+Có ba nơi sky shader được sử dụng.
 
-* First the sky shader is used to draw the sky when you have selected to use
-  a Sky as the background in your scene.
-* Second, the sky shader is used to update the radiance cubemap
-  when using the Sky for ambient color or reflections.
-* Third, the sky shader is used to draw the lower res subpasses which can be
-  used in the high-res background or cubemap pass.
+* Đầu tiên, sky shader được dùng để vẽ bầu trời khi bạn chọn sử dụng Sky làm nền trong scene. * Thứ hai, sky shader được dùng để cập nhật radiance cubemap khi sử dụng Sky cho màu môi trường hoặc hiệu ứng phản chiếu. * Thứ ba, sky shader được dùng để vẽ các subpass có độ phân giải thấp hơn, có thể được sử dụng trong background pass hoặc cubemap pass có độ phân giải cao.
 
-In total, this means the sky shader can run up
-to six times per frame, however, in practice it will be much less than that
-because the radiance cubemap does not need to be updated every frame, and
-not all subpasses will be used. You can change the behavior of the shader
-based on where it is called by checking the ``AT_*_PASS`` booleans. For
-example:
+Tổng cộng, điều này có nghĩa là sky shader có thể chạy tối đa sáu lần trong mỗi frame. Tuy nhiên, trên thực tế con số này sẽ ít hơn nhiều vì radiance cubemap không cần được cập nhật ở mỗi frame và không phải tất cả subpass đều được sử dụng. Bạn có thể thay đổi hành vi của shader dựa trên nơi nó được gọi bằng cách kiểm tra các giá trị boolean ``AT_*_PASS``. Ví dụ:
 
 .. code-block:: glsl
 
@@ -30,52 +17,31 @@ example:
 
     void sky() {
         if (AT_CUBEMAP_PASS) {
-            // Sets the radiance cubemap to a nice shade of blue instead of doing
-            // expensive sky calculations
+            // Đặt radiance cubemap thành một sắc xanh lam đẹp mắt thay vì thực hiện
+            // các phép tính bầu trời tốn kém
             COLOR = vec3(0.2, 0.6, 1.0);
         } else {
-            // Do expensive sky calculations for background sky only
+            // Thực hiện các phép tính bầu trời tốn kém chỉ cho bầu trời nền
             COLOR = get_sky_color(EYEDIR);
         }
     }
 
 
-When using the sky shader to draw a background, the shader will be called for
-all non-occluded fragments on the screen. However, for the background's
-subpasses, the shader will be called for every pixel of the subpass.
+Khi sử dụng sky shader để vẽ nền, shader sẽ được gọi cho tất cả fragment không bị che khuất trên màn hình. Tuy nhiên, đối với các subpass của nền, shader sẽ được gọi cho từng pixel của subpass.
 
-When using the sky shader to update the radiance cubemap, the sky shader
-will be called for every pixel in the cubemap. On the other hand, the shader
-will only be called when the radiance cubemap needs to be updated. The radiance
-cubemap needs to be updated when any of the shader parameters are updated.
-For example, if ``TIME`` is used in the shader, then the radiance cubemap
-will update every frame. The following list of changes force an update of
-the radiance cubemap:
+Khi sử dụng sky shader để cập nhật radiance cubemap, sky shader sẽ được gọi cho từng pixel trong cubemap. Mặt khác, shader chỉ được gọi khi radiance cubemap cần được cập nhật. Radiance cubemap cần được cập nhật khi bất kỳ tham số nào của shader được cập nhật. Ví dụ: nếu ``TIME`` được sử dụng trong shader, radiance cubemap sẽ được cập nhật ở mỗi frame. Danh sách thay đổi sau đây sẽ buộc radiance cubemap phải cập nhật:
 
-* ``TIME`` is used.
-* ``POSITION`` is used and the camera position changes.
-* If any ``LIGHTX_*`` properties are used and any
+* ``TIME`` được sử dụng. * ``POSITION`` được sử dụng và vị trí camera thay đổi. * Nếu bất kỳ thuộc tính ``LIGHTX_*`` nào được sử dụng và bất kỳ
   :ref:`DirectionalLight3D <class_DirectionalLight3D>` changes.
-* If any uniform is changed in the shader.
-* If the screen is resized and either of the subpasses are used.
+* uniform nào được thay đổi trong shader. * Nếu kích thước màn hình thay đổi và một trong hai subpass được sử dụng.
 
-Try to avoid updating the radiance cubemap needlessly. If you do need to
-update the radiance cubemap each frame, make sure your
+Hãy tránh cập nhật radiance cubemap một cách không cần thiết. Nếu bạn cần cập nhật radiance cubemap ở mỗi frame, hãy đảm bảo rằng
 :ref:`Sky process mode <class_Sky_property_process_mode>` is set to
 :ref:`PROCESS_MODE_REALTIME <class_Sky_constant_PROCESS_MODE_REALTIME>`.
 
-Note that the :ref:`process mode <class_Sky_property_process_mode>` only
-affects the rendering of the radiance cubemap. The visible sky is always
-rendered by calling the fragment shader for every pixel. With complex fragment
-shaders, this can result in a high rendering overhead. If the sky is static
-(the conditions listed above are met) or changes slowly, running the full
-fragment shader every frame is not needed. This can be avoided by rendering the
-full sky into the radiance cubemap, and reading from this cubemap when
-rendering the visible sky. With a completely static sky, this means that it
-needs to be rendered only once.
+Lưu ý rằng :ref:`process mode <class_Sky_property_process_mode>` chỉ ảnh hưởng đến việc render radiance cubemap. Bầu trời hiển thị luôn được render bằng cách gọi fragment shader cho từng pixel. Với các fragment shader phức tạp, điều này có thể gây ra overhead render lớn. Nếu bầu trời là tĩnh (các điều kiện được liệt kê ở trên được đáp ứng) hoặc thay đổi chậm, không cần chạy toàn bộ fragment shader ở mỗi frame. Có thể tránh điều này bằng cách render toàn bộ bầu trời vào radiance cubemap, rồi đọc từ cubemap này khi render bầu trời hiển thị. Với một bầu trời hoàn toàn tĩnh, điều này có nghĩa là bầu trời chỉ cần được render một lần.
 
-The following code renders the full sky into the radiance cubemap and reads
-from that cubemap for displaying the visible sky:
+Đoạn code sau render toàn bộ bầu trời vào radiance cubemap và đọc từ cubemap đó để hiển thị bầu trời nhìn thấy:
 
 .. code-block:: glsl
 
@@ -87,7 +53,7 @@ from that cubemap for displaying the visible sky:
 
             vec4 col = vec4(0.0);
 
-            // Complex color calculation
+            // Tính toán màu phức tạp
 
             COLOR = col.xyz;
             ALPHA = 1.0;
@@ -96,17 +62,12 @@ from that cubemap for displaying the visible sky:
         }
     }
 
-This way, the complex calculations happen only in the cubemap pass, which can
-be optimized by setting the sky's :ref:`process mode <class_Sky_property_process_mode>`
-and the :ref:`radiance size <class_Sky_property_radiance_size>` to get the
-desired balance between performance and visual fidelity.
+Theo cách này, các phép tính phức tạp chỉ diễn ra trong cubemap pass, vốn có thể được tối ưu bằng cách đặt :ref:`process mode <class_Sky_property_process_mode>` và :ref:`radiance size <class_Sky_property_radiance_size>` của sky để đạt được sự cân bằng mong muốn giữa hiệu năng và độ trung thực hình ảnh.
 
-Render modes
-------------
+Chế độ render
+-------------
 
-Subpasses allow you to do more expensive calculations at a lower resolution
-to speed up your shaders. For example the following code renders clouds at
-a lower resolution than the rest of the sky:
+Subpass cho phép bạn thực hiện các phép tính tốn kém hơn ở độ phân giải thấp hơn để tăng tốc shader. Ví dụ: đoạn code sau render mây ở độ phân giải thấp hơn phần còn lại của bầu trời:
 
 .. code-block:: glsl
 
@@ -115,12 +76,12 @@ a lower resolution than the rest of the sky:
 
     void sky() {
         if (AT_HALF_RES_PASS) {
-            // Run cloud calculation for 1/4 of the pixels
+            // Chạy phép tính mây cho 1/4 số pixel
             vec4 color = generate_clouds(EYEDIR);
             COLOR = color.rgb;
             ALPHA = color.a;
         } else {
-            // At full resolution pass, blend sky and clouds together
+            // Ở pass có độ phân giải đầy đủ, trộn bầu trời và mây với nhau
             vec3 color = generate_sky(EYEDIR);
             COLOR = color + HALF_RES_COLOR.rgb * HALF_RES_COLOR.a;
         }
@@ -136,19 +97,17 @@ a lower resolution than the rest of the sky:
 | **disable_fog**          | If used, fog will not affect the sky.                                 |
 +--------------------------+-----------------------------------------------------------------------+
 
-Built-ins
----------
+Built-in
+--------
 
-Values marked as ``in`` are read-only. Values marked as ``out`` can optionally
-be written to and will not necessarily contain sensible values. Samplers cannot
-be written to so they are not marked.
+Các giá trị được đánh dấu là ``in`` chỉ được đọc. Các giá trị được đánh dấu là ``out`` có thể được ghi vào tùy chọn và không nhất thiết chứa các giá trị hợp lý. Không thể ghi vào sampler nên chúng không được đánh dấu.
 
-Global built-ins
-----------------
+Global built-in
+---------------
 
-Global built-ins are available everywhere, including in custom functions.
+Global built-in khả dụng ở mọi nơi, bao gồm cả trong các hàm tùy chỉnh.
 
-There are 4 ``LIGHTX`` lights, accessed as ``LIGHT0``, ``LIGHT1``, ``LIGHT2``, and ``LIGHT3``.
+Có 4 ánh sáng ``LIGHTX``, được truy cập dưới dạng ``LIGHT0``, ``LIGHT1``, ``LIGHT2`` và ``LIGHT3``.
 
 
 +---------------------------------+--------------------------------------------------------------------------------------------------------------------------+
@@ -193,8 +152,8 @@ There are 4 ``LIGHTX`` lights, accessed as ``LIGHT0``, ``LIGHT1``, ``LIGHT2``, a
 |                                 | Euler's number, the base of the natural logarithm.                                                                       |
 +---------------------------------+--------------------------------------------------------------------------------------------------------------------------+
 
-Sky built-ins
--------------
+Sky built-in
+------------
 
 +-------------------------------+-----------------------------------------------------------------------------------------------------+
 | Built-in                      | Description                                                                                         |

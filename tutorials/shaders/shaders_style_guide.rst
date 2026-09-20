@@ -1,35 +1,26 @@
 .. _doc_shaders_style_guide:
 
-Shaders style guide
-===================
+Hướng dẫn về style của shader
+=============================
 
-This style guide lists conventions to write elegant shaders. The goal is to
-encourage writing clean, readable code and promote consistency across projects,
-discussions, and tutorials. Hopefully, this will also support the development of
-auto-formatting tools.
+Hướng dẫn về style này liệt kê các quy ước để viết shader thanh thoát. Mục tiêu là khuyến khích viết code sạch, dễ đọc và thúc đẩy tính nhất quán giữa các dự án, cuộc thảo luận và tutorial. Hy vọng tài liệu này cũng hỗ trợ việc phát triển các công cụ tự động format.
 
-Since the Godot shader language is close to C-style languages and GLSL, this
-guide is inspired by Godot's own GLSL formatting. You can view examples of
-GLSL files in Godot's source code
-`here <https://github.com/godotengine/godot/blob/master/drivers/gles3/shaders/>`__.
+Vì ngôn ngữ shader của Godot gần với các ngôn ngữ kiểu C và GLSL, hướng dẫn này được lấy cảm hứng từ cách format GLSL của chính Godot. Bạn có thể xem các ví dụ về file GLSL trong mã nguồn của Godot `here <https://github.com/godotengine/godot/blob/master/drivers/gles3/shaders/>`__.
 
-Style guides aren't meant as hard rulebooks. At times, you may not be able to
-apply some of the guidelines below. When that happens, use your best judgment,
-and ask fellow developers for insights.
+Style guide không nhằm trở thành những bộ luật cứng nhắc. Đôi khi, bạn có thể không áp dụng được một số hướng dẫn dưới đây. Khi đó, hãy sử dụng phán đoán tốt nhất của mình và hỏi các developer khác để có thêm góc nhìn.
 
-In general, keeping your code consistent in your projects and within your team is
-more important than following this guide to a tee.
+Nhìn chung, việc giữ code nhất quán trong các dự án và trong nhóm của bạn quan trọng hơn việc tuân thủ hướng dẫn này một cách tuyệt đối.
 
 .. note:: Godot's built-in shader editor uses a lot of these conventions
-          by default. Let it help you.
+          theo mặc định. Hãy để nó hỗ trợ bạn.
 
-Here is a complete shader example based on these guidelines:
+Sau đây là một ví dụ shader hoàn chỉnh dựa trên các hướng dẫn này:
 
 .. code-block:: glsl
 
     shader_type canvas_item;
-    // Screen-space shader to adjust a 2D scene's brightness, contrast
-    // and saturation. Taken from
+    // Shader trong screen space để điều chỉnh độ sáng, độ tương phản của một scene 2D
+    // và độ bão hòa. Lấy từ
     // https://github.com/godotengine/godot-demo-projects/blob/master/2d/screen_space_shaders/shaders/BCS.gdshader
 
     uniform sampler2D screen_texture : hint_screen_texture, filter_linear_mipmap;
@@ -47,23 +38,20 @@ Here is a complete shader example based on these guidelines:
         COLOR.rgb = c;
     }
 
-Formatting
-----------
+Format
+------
 
-Encoding and special characters
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Encoding và ký tự đặc biệt
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Use line feed (**LF**) characters to break lines, not CRLF or CR. *(editor default)*
-* Use one line feed character at the end of each file. *(editor default)*
-* Use **UTF-8** encoding without a `byte order mark <https://en.wikipedia.org/wiki/Byte_order_mark>`_. *(editor default)*
-* Use **Tabs** instead of spaces for indentation. *(editor default)*
+* Sử dụng ký tự line feed (**LF**) để ngắt dòng, không dùng CRLF hoặc CR. *(mặc định của editor)* * Sử dụng một ký tự line feed ở cuối mỗi file. *(mặc định của editor)* * Sử dụng encoding **UTF-8** không có `byte order mark <https://en.wikipedia.org/wiki/Byte_order_mark>`_. *(mặc định của editor)* * Sử dụng **Tab** thay vì space để thụt lề. *(mặc định của editor)*
 
-Indentation
-~~~~~~~~~~~
+Thụt lề
+~~~~~~~
 
-Each indent level should be one tab greater than the block containing it.
+Mỗi cấp thụt lề phải nhiều hơn block chứa nó một tab.
 
-**Good**:
+**Tốt**:
 
 .. code-block:: glsl
 
@@ -71,7 +59,7 @@ Each indent level should be one tab greater than the block containing it.
         COLOR = vec3(1.0, 1.0, 1.0);
     }
 
-**Bad**:
+**Xấu**:
 
 .. code-block:: glsl
 
@@ -79,10 +67,9 @@ Each indent level should be one tab greater than the block containing it.
             COLOR = vec3(1.0, 1.0, 1.0);
     }
 
-Use 2 indent levels to distinguish continuation lines from
-regular code blocks.
+Sử dụng 2 cấp thụt lề để phân biệt các dòng tiếp nối với các block code thông thường.
 
-**Good**:
+**Tốt**:
 
 .. code-block:: glsl
 
@@ -90,7 +77,7 @@ regular code blocks.
             atan(NORMAL.x, NORMAL.z),
             acos(NORMAL.y));
 
-**Bad**:
+**Xấu**:
 
 .. code-block:: glsl
 
@@ -99,17 +86,12 @@ regular code blocks.
         acos(NORMAL.y));
 
 
-Line breaks and blank lines
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Ngắt dòng và dòng trống
+~~~~~~~~~~~~~~~~~~~~~~~
 
-For a general indentation rule, follow
-`the "1TBS Style" <https://en.wikipedia.org/wiki/Indentation_style#Variant:_1TBS_(OTBS)>`_
-which recommends placing the brace associated with a control statement on the
-same line. Always use braces for statements, even if they only span one line.
-This makes them easier to refactor and avoids mistakes when adding more lines to
-an ``if`` statement or similar.
+Đối với quy tắc thụt lề chung, hãy làm theo `the "1TBS Style" <https://en.wikipedia.org/wiki/Indentation_style#Variant:_1TBS_(OTBS)>`_, trong đó khuyến nghị đặt dấu ngoặc nhọn đi kèm với một câu lệnh điều khiển trên cùng dòng. Luôn sử dụng dấu ngoặc nhọn cho các câu lệnh, ngay cả khi chúng chỉ trải dài một dòng. Điều này giúp chúng dễ refactor hơn và tránh sai sót khi thêm nhiều dòng vào một câu lệnh ``if`` hoặc tương tự.
 
-**Good**:
+**Tốt**:
 
 .. code-block:: glsl
 
@@ -119,7 +101,7 @@ an ``if`` statement or similar.
         }
     }
 
-**Bad**:
+**Xấu**:
 
 .. code-block:: glsl
 
@@ -129,10 +111,10 @@ an ``if`` statement or similar.
             // ...
     }
 
-Blank lines
-~~~~~~~~~~~
+Dòng trống
+~~~~~~~~~~
 
-Surround function definitions with one (and only one) blank line:
+Bao quanh các định nghĩa hàm bằng một (và chỉ một) dòng trống:
 
 .. code-block:: glsl
 
@@ -144,23 +126,21 @@ Surround function definitions with one (and only one) blank line:
         // ...
     }
 
-Use one (and only one) blank line inside functions to separate logical sections.
+Sử dụng một (và chỉ một) dòng trống bên trong các hàm để phân tách những phần logic.
 
-Line length
+Độ dài dòng
 ~~~~~~~~~~~
 
-Keep individual lines of code under 100 characters.
+Giữ mỗi dòng code dưới 100 ký tự.
 
-If you can, try to keep lines under 80 characters. This helps to read the code
-on small displays and with two shaders opened side-by-side in an external text
-editor. For example, when looking at a differential revision.
+Nếu có thể, hãy cố gắng giữ các dòng dưới 80 ký tự. Điều này giúp đọc code trên màn hình nhỏ và khi mở hai shader cạnh nhau trong một text editor bên ngoài. Ví dụ, khi xem một revision khác biệt.
 
-One statement per line
-~~~~~~~~~~~~~~~~~~~~~~
+Một câu lệnh trên mỗi dòng
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Never combine multiple statements on a single line.
+Không bao giờ gộp nhiều câu lệnh trên cùng một dòng.
 
-**Good**:
+**Tốt**:
 
 .. code-block:: glsl
 
@@ -169,7 +149,7 @@ Never combine multiple statements on a single line.
         EMISSION = vec3(1.0);
     }
 
-**Bad**:
+**Xấu**:
 
 .. code-block:: glsl
 
@@ -177,7 +157,7 @@ Never combine multiple statements on a single line.
         ALBEDO = vec3(1.0); EMISSION = vec3(1.0);
     }
 
-The only exception to that rule is the ternary operator:
+Ngoại lệ duy nhất của quy tắc này là toán tử ternary:
 
 .. code-block:: glsl
 
@@ -186,65 +166,58 @@ The only exception to that rule is the ternary operator:
         ALBEDO = should_be_white ? vec3(1.0) : vec3(0.0);
     }
 
-Comment spacing
-~~~~~~~~~~~~~~~
+Khoảng cách trong comment
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Regular comments should start with a space, but not code that you comment out.
-This helps differentiate text comments from disabled code.
+Các comment thông thường nên bắt đầu bằng một khoảng trắng, nhưng code được comment out thì không. Điều này giúp phân biệt comment dạng văn bản với code bị vô hiệu hóa.
 
-**Good**:
+**Tốt**:
 
 .. code-block:: glsl
 
-    // This is a comment.
+    // Đây là một comment.
     //return;
 
-**Bad**:
+**Xấu**:
 
 .. code-block:: glsl
 
-    //This is a comment.
+    //Đây là một comment.
     // return;
 
-Don't use multiline comment syntax if your comment can fit on a single line:
+Không sử dụng cú pháp comment nhiều dòng nếu comment của bạn có thể vừa trên một dòng:
 
 .. code-block:: glsl
 
-    /* This is another comment. */
+    /* Đây là một comment khác. */
 
 .. note::
 
-   In the shader editor, to make the selected code a comment (or uncomment it),
-   press :kbd:`Ctrl + K`. This feature adds or removes ``//`` at the start of
-   the selected lines.
+   Trong shader editor, để biến phần code được chọn thành comment (hoặc bỏ comment), hãy nhấn :kbd:`Ctrl + K`. Tính năng này thêm hoặc xóa ``//`` ở đầu các dòng được chọn.
 
-Documentation comments
-~~~~~~~~~~~~~~~~~~~~~~
+Comment tài liệu
+~~~~~~~~~~~~~~~~
 
-Use the following format for documentation comments above uniforms, with **two**
-leading asterisks (``/**``) and follow-up asterisks on every line:
+Sử dụng format sau cho các comment tài liệu bên trên uniform, với **hai** dấu hoa thị ở đầu (``/**``) và các dấu hoa thị tiếp theo trên mỗi dòng:
 
 .. code-block:: glsl
 
     /**
-     * This is a documentation comment.
-     * These lines will appear in the inspector when hovering the shader parameter
-     * named "Something".
-     * You can use [b]BBCode[/b] [i]formatting[/i] in the comment.
+     * Đây là một comment tài liệu.
+     * Các dòng này sẽ xuất hiện trong inspector khi di chuột lên tham số shader
+     * có tên là "Something".
+     * Bạn có thể sử dụng [b]BBCode[/b] [i]formatting[/i] trong comment.
      */
     uniform int something = 1;
 
-These comments will appear when hovering a property in the inspector. If you
-don't wish the comment to be visible in the inspector, use the standard comment
-syntax instead (``// ...`` or ``/* ... */`` with only one leading asterisk).
+Các comment này sẽ xuất hiện khi di chuột lên một property trong inspector. Nếu không muốn comment hiển thị trong inspector, hãy sử dụng cú pháp comment tiêu chuẩn thay thế (``// ...`` hoặc ``/* ... */`` với chỉ một dấu hoa thị ở đầu).
 
-Whitespace
-~~~~~~~~~~
+Khoảng trắng
+~~~~~~~~~~~~
 
-Always use one space around operators and after commas. Also, avoid extraneous spaces
-in function calls.
+Luôn sử dụng một khoảng trắng xung quanh các toán tử và sau dấu phẩy. Ngoài ra, tránh các khoảng trắng thừa trong lời gọi hàm.
 
-**Good**:
+**Tốt**:
 
 .. code-block:: glsl
 
@@ -252,7 +225,7 @@ in function calls.
     COLOR.r = COLOR.g + 0.1;
     COLOR.b = some_function(1.0, 2.0);
 
-**Bad**:
+**Xấu**:
 
 .. code-block:: glsl
 
@@ -260,21 +233,19 @@ in function calls.
     COLOR.r = COLOR.g+0.1;
     COLOR.b = some_function (1.0,2.0);
 
-Don't use spaces to align expressions vertically:
+Không sử dụng khoảng trắng để căn chỉnh các biểu thức theo chiều dọc:
 
 .. code-block:: glsl
 
     ALBEDO.r   = 1.0;
     EMISSION.r = 1.0;
 
-Floating-point numbers
-~~~~~~~~~~~~~~~~~~~~~~
+Số thực dấu phẩy động
+~~~~~~~~~~~~~~~~~~~~~
 
-Always specify at least one digit for both the integer and fractional part. This
-makes it easier to distinguish floating-point numbers from integers, as well as
-distinguishing numbers greater than 1 from those lower than 1.
+Luôn chỉ định ít nhất một chữ số cho cả phần nguyên và phần thập phân. Điều này giúp phân biệt số thực dấu phẩy động với số nguyên dễ hơn, đồng thời phân biệt các số lớn hơn 1 với các số nhỏ hơn 1.
 
-**Good**:
+**Tốt**:
 
 .. code-block:: glsl
 
@@ -282,7 +253,7 @@ distinguishing numbers greater than 1 from those lower than 1.
         ALBEDO.rgb = vec3(5.0, 0.1, 0.2);
     }
 
-**Bad**:
+**Xấu**:
 
 .. code-block:: glsl
 
@@ -290,37 +261,32 @@ distinguishing numbers greater than 1 from those lower than 1.
         ALBEDO.rgb = vec3(5., .1, .2);
     }
 
-Accessing vector members
-------------------------
+Truy cập các member của vector
+------------------------------
 
-Use ``r``, ``g``, ``b``, and ``a`` when accessing a vector's members if it
-contains a color. If the vector contains anything else than a color, use ``x``,
-``y``, ``z``, and ``w``. This allows those reading your code to better
-understand what the underlying data represents.
+Sử dụng ``r``, ``g``, ``b`` và ``a`` khi truy cập các member của vector nếu vector đó chứa màu. Nếu vector chứa bất kỳ thứ gì khác ngoài màu, hãy sử dụng ``x``, ``y``, ``z`` và ``w``. Điều này giúp người đọc code hiểu rõ hơn dữ liệu bên dưới biểu diễn điều gì.
 
-**Good**:
+**Tốt**:
 
 .. code-block:: glsl
 
     COLOR.rgb = vec3(5.0, 0.1, 0.2);
 
-**Bad**:
+**Xấu**:
 
 .. code-block:: glsl
 
     COLOR.xyz = vec3(5.0, 0.1, 0.2);
 
-Naming conventions
-------------------
+Quy ước đặt tên
+---------------
 
-These naming conventions follow the Godot Engine style. Breaking these will make
-your code clash with the built-in naming conventions, leading to inconsistent
-code.
+Các quy ước đặt tên này tuân theo style của Godot Engine. Việc phá vỡ các quy ước này sẽ khiến code của bạn xung đột với quy ước đặt tên tích hợp sẵn, dẫn đến code không nhất quán.
 
-Functions and variables
-~~~~~~~~~~~~~~~~~~~~~~~
+Hàm và biến
+~~~~~~~~~~~
 
-Use snake\_case to name functions and variables:
+Sử dụng snake\_case để đặt tên cho hàm và biến:
 
 .. code-block:: glsl
 
@@ -328,28 +294,24 @@ Use snake\_case to name functions and variables:
         float some_variable = 0.5;
    }
 
-Constants
-~~~~~~~~~
+Hằng số
+~~~~~~~
 
-Write constants with CONSTANT\_CASE, that is to say in all caps with an
-underscore (\_) to separate words:
+Viết hằng số bằng CONSTANT\_CASE, tức là viết toàn bộ bằng chữ hoa và sử dụng dấu gạch dưới (\_) để phân tách các từ:
 
 .. code-block:: glsl
 
     const float GOLDEN_RATIO = 1.618;
 
-Preprocessor directives
-~~~~~~~~~~~~~~~~~~~~~~~
+Các chỉ thị tiền xử lý
+~~~~~~~~~~~~~~~~~~~~~~
 
 :ref:`doc_shader_preprocessor` directives should be written in CONSTANT_CASE.
-Directives should be written without any indentation before them, even if
-nested within a function.
+Các chỉ thị phải được viết mà không có bất kỳ thụt lề nào ở phía trước, ngay cả khi nằm bên trong một hàm.
 
-To preserve the natural flow of indentation when shader errors are printed to
-the console, extra indentation should **not** be added within ``#if``,
-``#ifdef`` or ``#ifndef`` blocks:
+Để giữ luồng thụt lề tự nhiên khi lỗi shader được in ra console, **không** được thêm thụt lề bổ sung bên trong các block ``#if``, ``#ifdef`` hoặc ``#ifndef``:
 
-**Good**:
+**Tốt**:
 
 .. code-block:: glsl
 
@@ -363,7 +325,7 @@ the console, extra indentation should **not** be added within ``#if``,
     #endif
     }
 
-**Bad**:
+**Xấu**:
 
 .. code-block:: glsl
 
@@ -377,15 +339,12 @@ the console, extra indentation should **not** be added within ``#if``,
         #endif
     }
 
-Applying formatting automatically
----------------------------------
+Áp dụng format tự động
+----------------------
 
-To automatically format shader files, you can use
-`clang-format <https://clang.llvm.org/docs/ClangFormat.html>`__ on one or several
-``.gdshader`` files, as the syntax is close enough to a C-style language.
+Để tự động format các file shader, bạn có thể sử dụng `clang-format <https://clang.llvm.org/docs/ClangFormat.html>`__ trên một hoặc nhiều file ``.gdshader``, vì cú pháp đủ gần với một ngôn ngữ kiểu C.
 
-However, the default style in clang-format doesn't follow this style guide,
-so you need to save this file as ``.clang-format`` in your project's root folder:
+Tuy nhiên, style mặc định trong clang-format không tuân theo style guide này, nên bạn cần lưu file này dưới tên ``.clang-format`` trong thư mục gốc của dự án:
 
 .. code-block:: yaml
 
@@ -406,19 +365,17 @@ so you need to save this file as ``.clang-format`` in your project's root folder
     KeepEmptyLinesAtTheStartOfBlocks: false
     RemoveSemicolon: true
     SpacesInLineCommentPrefix:
-      Minimum: 0 # We want a minimum of 1 for comments, but allow 0 for disabled code.
+      Minimum: 0 # Chúng ta muốn giá trị tối thiểu là 1 cho comment, nhưng cho phép giá trị 0 đối với code bị vô hiệu hóa.
       Maximum: -1
     TabWidth: 4
     UseTab: Always
 
-While in the project root, you can then call ``clang-format -i path/to/shader.gdshader``
-in a terminal to format a single shader file, or ``clang-format -i path/to/folder/*.gdshader``
-to format all shaders in a folder.
+Khi đang ở thư mục gốc của dự án, bạn có thể gọi ``clang-format -i path/to/shader.gdshader`` trong terminal để format một file shader, hoặc ``clang-format -i path/to/folder/*.gdshader`` để format tất cả shader trong một thư mục.
 
-Code order
-----------
+Thứ tự code
+-----------
 
-We suggest to organize shader code this way:
+Chúng tôi đề xuất tổ chức code shader như sau:
 
 .. code-block:: glsl
 
@@ -435,19 +392,13 @@ We suggest to organize shader code this way:
     09. fragment() function
     10. light() function
 
-We optimized the order to make it easy to read the code from top to bottom, to
-help developers reading the code for the first time understand how it works, and
-to avoid errors linked to the order of variable declarations.
+Chúng tôi đã tối ưu thứ tự này để code dễ đọc từ trên xuống dưới, giúp các developer lần đầu đọc code hiểu cách hoạt động của nó và tránh các lỗi liên quan đến thứ tự khai báo biến.
 
-This code order follows two rules of thumb:
+Thứ tự code này tuân theo hai quy tắc kinh nghiệm:
 
-1. Metadata and properties first, followed by methods.
-2. "Public" comes before "private". In a shader language's context, "public"
-   refers to what's easily adjustable by the user (uniforms).
+1. Trước tiên là metadata và property, tiếp theo là các method. 2. "Public" đứng trước "private". Trong ngữ cảnh của ngôn ngữ shader, "public" đề cập đến những gì người dùng có thể dễ dàng điều chỉnh (uniform).
 
-Local variables
-~~~~~~~~~~~~~~~
+Biến cục bộ
+~~~~~~~~~~~
 
-Declare local variables as close as possible to their first use. This makes it
-easier to follow the code, without having to scroll too much to find where the
-variable was declared.
+Khai báo biến cục bộ gần vị trí sử dụng đầu tiên của chúng nhất có thể. Điều này giúp theo dõi code dễ hơn mà không phải cuộn quá nhiều để tìm nơi biến được khai báo.

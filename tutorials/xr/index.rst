@@ -1,10 +1,8 @@
 :allow_comments: False
 
-XR
-==
+XR ==
 
-This section of the manual covers everything related to XR (
-Virtual Reality and Augmented Reality).
+Phần này của tài liệu hướng dẫn bao quát mọi nội dung liên quan đến XR (Thực tế ảo và Thực tế tăng cường).
 
 .. toctree::
    :maxdepth: 1
@@ -12,8 +10,8 @@ Virtual Reality and Augmented Reality).
 
    xr_terminology
 
-Getting Started
----------------
+Bắt đầu
+-------
 
 .. toctree::
    :maxdepth: 1
@@ -23,8 +21,8 @@ Getting Started
    ar_passthrough
    xr_next_steps
 
-XR Interfaces
--------------
+Các interface XR
+----------------
 
 OpenXR
 ~~~~~~
@@ -52,8 +50,8 @@ WebXR
 
    webxr_intro
 
-Others
-~~~~~~
+Khác
+~~~~
 
 .. toctree::
    :maxdepth: 1
@@ -74,7 +72,7 @@ Godot XR Tools
    introducing_xr_tools
    basic_xr_locomotion
 
-Advanced Topics
+Chủ đề nâng cao
 ---------------
 
 .. toctree::

@@ -3,109 +3,84 @@
 AR / Passthrough
 ================
 
-Augmented Reality is supported through various methods depending on the capabilities of the hardware.
+Thực tế tăng cường được hỗ trợ thông qua nhiều phương thức khác nhau, tùy thuộc vào khả năng của phần cứng.
 
-Headsets such as the Magic Leap and glasses such as TiltFive show the rendered result on
-`see-through displays <https://en.wikipedia.org/wiki/See-through_display>`__ allowing the user
-to see the real world.
+Các headset như Magic Leap và kính như TiltFive hiển thị kết quả được render trên `see-through displays <https://en.wikipedia.org/wiki/See-through_display>`__, cho phép người dùng nhìn thấy thế giới thực.
 
-Headsets such as the Quest, HTC Elite, and Lynx R1 implement this through a technique called video passthrough,
-where cameras record the real world and these images are used as the background on top of which our rendered
-result is used.
+Các headset như Quest, HTC Elite và Lynx R1 triển khai tính năng này thông qua một kỹ thuật gọi là video passthrough, trong đó camera ghi lại thế giới thực và những hình ảnh này được dùng làm nền, bên trên đó kết quả render của chúng ta được hiển thị.
 
 .. note::
 
-    Passthrough is implemented very differently across platforms.
+    Passthrough được triển khai rất khác nhau giữa các nền tảng.
 
-    In Godot 4.3 we have implemented a unified approach that is explained on this help page
-    so you don't need to worry about these differences, the :ref:`XRInterface <class_xrinterface>`
-    implementation is now responsible for applying the correct platform-dependent method [#]_.
+    Trong Godot 4.3, chúng tôi đã triển khai một phương pháp thống nhất được giải thích trên trang trợ giúp này, vì vậy bạn không cần lo lắng về những khác biệt đó; việc triển khai :ref:`XRInterface <class_xrinterface>` hiện chịu trách nhiệm áp dụng phương thức phụ thuộc vào nền tảng phù hợp [#]_.
 
-    For headsets such as the Meta Quest and HTC Elite you will need to use the
-    `OpenXR vendors plugin v3.0.0 <https://github.com/GodotVR/godot_openxr_vendors/releases>`__
-    or later to enable video passthrough.
+    Đối với các headset như Meta Quest và HTC Elite, bạn sẽ cần sử dụng `OpenXR vendors plugin v3.0.0 <https://github.com/GodotVR/godot_openxr_vendors/releases>`__ hoặc phiên bản mới hơn để bật video passthrough.
 
-    For backwards compatibility the old API for passthrough is still available but it is recommended
-    to follow the new instructions below.
+    Để tương thích ngược, API cũ cho passthrough vẫn khả dụng, nhưng bạn nên làm theo hướng dẫn mới bên dưới.
 
-Environment blend modes
------------------------
+Chế độ hòa trộn môi trường
+--------------------------
 
-The way we configure VR or AR functionality is through setting the environment blend mode.
-This mode determines how the (real world) environment is blended with the virtual world.
+Cách chúng ta cấu hình chức năng VR hoặc AR là thiết lập chế độ hòa trộn môi trường. Chế độ này xác định cách môi trường (thế giới thực) được hòa trộn với thế giới ảo.
 
 .. list-table:: Blend modes
   :widths: 35 65
   :header-rows: 1
 
-  * - Blend mode
-    - Description
+  * - Chế độ hòa trộn
+    - Mô tả
   * - XR_ENV_BLEND_MODE_OPAQUE
-    - The rendered image is opaque, we do not see the real world. We're in VR mode.
-      This will turn off passthrough if video-passthrough is used.
+    - Hình ảnh được render là không trong suốt, chúng ta không nhìn thấy thế giới thực. Chúng ta đang ở chế độ VR.
+      Tùy chọn này sẽ tắt passthrough nếu sử dụng video-passthrough.
   * - XR_ENV_BLEND_MODE_ADDITIVE
-    - The rendered image is added to the real world and will look semi transparent.
-      This mode is generally used with see-through devices that are unable to obscure
-      the real world.
-      This will turn on passthrough if video-passthrough is used.
+    - Hình ảnh được render được cộng vào thế giới thực và sẽ trông bán trong suốt.
+      Chế độ này thường được sử dụng với các thiết bị see-through không thể che khuất
+      thế giới thực.
+      Tùy chọn này sẽ bật passthrough nếu sử dụng video-passthrough.
   * - XR_ENV_BLEND_MODE_ALPHA_BLEND
-    - The rendered image is alpha blended with the real world.
-      On see-through devices that support this, the alpha will control the translucency
-      of the optics.
-      On video-passthrough devices alpha blending is applied with the video image.
-      passthrough will also be enabled if applicable.
+    - Hình ảnh được render được alpha blend với thế giới thực.
+      Trên các thiết bị see-through hỗ trợ tính năng này, alpha sẽ điều khiển độ trong mờ
+      của hệ thống quang học.
+      Trên các thiết bị video-passthrough, alpha blending được áp dụng với hình ảnh video.
+      passthrough cũng sẽ được bật nếu phù hợp.
 
-You can set the environment blend mode for your application through the ``environment_blend_mode``
-property of the :ref:`XRInterface <class_xrinterface>` instance.
+Bạn có thể thiết lập chế độ hòa trộn môi trường cho ứng dụng của mình thông qua thuộc tính ``environment_blend_mode`` của instance :ref:`XRInterface <class_xrinterface>`.
 
-You can query the supported blend modes on the hardware using the
-``get_supported_environment_blend_modes`` property on the same instance.
+Bạn có thể truy vấn các chế độ hòa trộn được phần cứng hỗ trợ bằng thuộc tính ``get_supported_environment_blend_modes`` trên cùng instance đó.
 
-Configuring your background
----------------------------
+Cấu hình nền
+------------
 
-When setting the blend mode to ``XR_ENV_BLEND_MODE_ALPHA_BLEND`` you must set
-the ``transparent_bg`` property on :ref:`Viewport <class_viewport>` to true.
-When using the ``XR_ENV_BLEND_MODE_ADDITIVE`` blend mode you should set your
-background color to black.
+Khi đặt chế độ hòa trộn thành ``XR_ENV_BLEND_MODE_ALPHA_BLEND``, bạn phải đặt thuộc tính ``transparent_bg`` trên :ref:`Viewport <class_viewport>` thành true. Khi sử dụng chế độ hòa trộn ``XR_ENV_BLEND_MODE_ADDITIVE``, bạn nên đặt màu nền thành màu đen.
 
-Either solution will result in the background rendering not contributing to lighting.
-It is thus also recommended you adjust your environment settings accordingly and ensure
-there is adequate ambient light set to illuminate your scene.
+Cả hai giải pháp đều khiến việc render nền không đóng góp vào ánh sáng. Vì vậy, bạn cũng nên điều chỉnh các thiết lập môi trường cho phù hợp và bảo đảm có đủ ánh sáng môi trường để chiếu sáng cảnh của mình.
 
 .. note::
 
-    Some AR SDKs do provide ambient lighting information or even provide a full radiance
-    map to allow for real world reflections in your virtual objects.
-    The core Godot XR functionality doesn't currently have support for this, however this
-    functionality can be exposed through plugins.
+    Một số AR SDK cung cấp thông tin về ánh sáng môi trường, thậm chí còn cung cấp một bản đồ bức xạ đầy đủ để cho phép phản chiếu thế giới thực trên các vật thể ảo. Tuy nhiên, chức năng Godot XR cốt lõi hiện chưa hỗ trợ điều này; chức năng này có thể được cung cấp thông qua các plugin.
 
-OpenXR specific
----------------
+Cụ thể cho OpenXR
+-----------------
 
-In OpenXR you can configure the default blend mode you want to use.
-Godot will select this blend mode at startup if available.
-If not available Godot will default to the first supported blend mode provided
-by the XR runtime.
+Trong OpenXR, bạn có thể cấu hình chế độ hòa trộn mặc định mà mình muốn sử dụng. Godot sẽ chọn chế độ hòa trộn này khi khởi động nếu chế độ đó khả dụng. Nếu không khả dụng, Godot sẽ mặc định sử dụng chế độ hòa trộn đầu tiên được XR runtime hỗ trợ cung cấp.
 
 .. image:: img/openxr_default_blend_mode.webp
 
-For passthrough devices OpenXR requires additional settings to be configured.
-These settings are platform-dependent and provided through the OpenXR vendors plugin.
+Đối với các thiết bị passthrough, OpenXR yêu cầu cấu hình thêm một số thiết lập. Những thiết lập này phụ thuộc vào nền tảng và được cung cấp thông qua plugin của các nhà cung cấp OpenXR.
 
-For example, these are the settings required on Meta Quest:
+Ví dụ, đây là các thiết lập cần thiết trên Meta Quest:
 
 .. image:: img/openxr_export_passthrough.webp
 
-The ``Passthrough`` setting defines whether passthrough is supported or even required.
+Thiết lập ``Passthrough`` xác định liệu passthrough có được hỗ trợ hoặc thậm chí có bắt buộc hay không.
 
-The ``Boundary Mode`` allows you to define whether the guardian is needed,
-disabling this fully requires passthrough to be enabled at all times.
+``Boundary Mode`` cho phép bạn xác định liệu guardian có cần thiết hay không; để tắt hoàn toàn guardian, passthrough phải luôn được bật.
 
-Putting it together
--------------------
+Kết hợp các phần
+----------------
 
-Putting the above together we can use the following code as a base:
+Kết hợp những nội dung trên, chúng ta có thể sử dụng đoạn code sau làm cơ sở:
 
 .. code-block:: gdscript
 
@@ -144,40 +119,25 @@ Putting the above together we can use the following code as a base:
         environment.ambient_light_source = Environment.AMBIENT_SOURCE_BG
         return true
 
-Shadow to opacity
------------------
+Chuyển bóng đổ thành độ trong suốt
+----------------------------------
 
-Shadow to opacity is a render mode for Godot spatial shaders
-that was introduced in Godot 3 specifically for AR.
-It is a special render mode where the more a surface is in shadow,
-the more opaque the surface becomes. When a surface is fully lit,
-the surface becomes fully transparent and thus shows the real world.
+Chuyển bóng đổ thành độ trong suốt là một render mode dành cho Godot spatial shader, được giới thiệu trong Godot 3 nhằm phục vụ AR. Đây là một render mode đặc biệt, trong đó bề mặt càng ở trong bóng tối thì càng trở nên không trong suốt. Khi một bề mặt được chiếu sáng hoàn toàn, bề mặt đó trở nên hoàn toàn trong suốt và do đó hiển thị thế giới thực.
 
-However the surface is rendered during the opaque state effectively.
-This has two consequences:
+Tuy nhiên, bề mặt này thực tế được render trong trạng thái opaque. Điều này dẫn đến hai hệ quả:
 
-* As both the depth buffer and color buffer are written to, we occlude
-  any geometry behind our surface even when fully transparent.
-* As we are making the surface opaque if in shadow, we can have virtual
-  objects cast shadows on real world objects [#]_.
+* Vì cả depth buffer và color buffer đều được ghi, chúng ta che khuất mọi hình học phía sau bề mặt ngay cả khi bề mặt hoàn toàn trong suốt. * Vì chúng ta làm cho bề mặt trở nên opaque khi ở trong bóng tối, các vật thể ảo có thể đổ bóng lên các vật thể trong thế giới thực [#]_.
 
 .. figure:: img/xr_passthrough_example.webp
     :alt: Image showing shadow to opacity being used to show the user's desk.
 
     Image showing shadow to opacity being used to show the user's desk.
 
-This enabled the following use cases:
+Điều này cho phép thực hiện các trường hợp sử dụng sau:
 
-* You can render a box mesh around a real world table, this ensures the
-  table remains visible even if a virtual object is placed underneath it.
-  The virtual object will be correctly occluded.
-  Placing a virtual object on top of the real world table, will result in
-  a shadow being cast on the table.
-* You can use a shader with this render mode when render a hand mesh
-  using the hand tracking functionality, and ensure your hands properly
-  occlude virtual objects.
+* Bạn có thể render một box mesh bao quanh một chiếc bàn trong thế giới thực; điều này bảo đảm chiếc bàn vẫn hiển thị ngay cả khi một vật thể ảo được đặt bên dưới nó. Vật thể ảo sẽ được che khuất chính xác. Việc đặt một vật thể ảo lên trên chiếc bàn trong thế giới thực sẽ khiến bóng đổ lên mặt bàn. * Bạn có thể sử dụng shader với render mode này khi render hand mesh bằng chức năng hand tracking, đồng thời bảo đảm bàn tay của bạn che khuất đúng cách các vật thể ảo.
 
-The following shader code is a good base for this functionality:
+Đoạn shader code sau là cơ sở phù hợp cho chức năng này:
 
 .. code-block:: glsl
 
@@ -188,5 +148,5 @@ The following shader code is a good base for this functionality:
         ALBEDO = vec3(0.0, 0.0, 0.0);
     }
 
-.. [#] Restrictions may apply depending on XR interface implementation.
-.. [#] This feature is still being perfected.
+.. [#] Có thể áp dụng các hạn chế tùy thuộc vào việc triển khai XR interface.
+.. [#] Tính năng này vẫn đang được hoàn thiện.

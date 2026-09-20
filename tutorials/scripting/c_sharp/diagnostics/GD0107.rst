@@ -1,36 +1,24 @@
-GD0107: Types not derived from Node should not export Node members
-==================================================================
+GD0107: Các type không kế thừa từ Node không được export các thành viên của Node
+================================================================================
 
-====================================  ======================================
-                                      Value
-====================================  ======================================
-**Rule ID**                           GD0107
-**Category**                          Usage
-**Fix is breaking or non-breaking**   Breaking
-**Enabled by default**                Yes
-====================================  ======================================
+==================================== ====================================== Giá trị ==================================== ====================================== **Mã quy tắc** GD0107 **Danh mục** Cách sử dụng **Bản sửa lỗi có breaking hoặc non-breaking** Breaking **Được bật theo mặc định** Có ==================================== ======================================
 
-Cause
------
+Nguyên nhân
+-----------
 
-A type that doesn't derive from ``Node`` contains an exported field or property
-of a type that derives from ``Node``.
+Một type không kế thừa từ ``Node`` chứa một field hoặc property được export có kiểu kế thừa từ ``Node``.
 
-Rule description
-----------------
+Mô tả quy tắc
+-------------
 
-Exported nodes are serialized as ``NodePath``. Only types derived from ``Node``
-are able to get the node instance from the ``NodePath``.
+Các node được export sẽ được serialize dưới dạng ``NodePath``. Chỉ các type kế thừa từ ``Node`` mới có thể lấy instance của node từ ``NodePath``.
 
-How to fix violations
----------------------
+Cách khắc phục vi phạm
+----------------------
 
-To fix a violation of this rule, avoid exporting ``Node`` members on a type that
-doesn't derive from ``Node``, or consider exporting a ``NodePath``.
+Để khắc phục vi phạm quy tắc này, tránh export các member ``Node`` trên một type không kế thừa từ ``Node``, hoặc cân nhắc export một ``NodePath``.
 
-When to suppress warnings
--------------------------
+Khi nào nên suppress cảnh báo
+-----------------------------
 
-Do not suppress a warning from this rule. Types that don't derive from ``Node``
-will be unable to retrieve the right node instance for exported ``Node`` members,
-resulting in unexpected runtime errors.
+Không nên suppress cảnh báo từ quy tắc này. Các type không kế thừa từ ``Node`` sẽ không thể truy xuất đúng instance của node cho các member ``Node`` được export, dẫn đến các lỗi runtime ngoài dự kiến.

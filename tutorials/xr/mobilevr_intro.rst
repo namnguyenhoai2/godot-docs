@@ -1,18 +1,13 @@
 .. _doc_mobilevr_intro:
 
-Mobile VR
-=========
+VR di động
+==========
 
-Godot has a mobile VR implementation that is meant to be used with phones placed inside of a VR holder.
-It is implemented through the :ref:`MobileVRInterface <class_mobilevrinterface>`.
-This is a bare bones implementation that outputs a side by side stereoscopic image.
-It supports basic 3DOF tracking on phones that provide gyroscope and accelerometer data.
+Godot có một triển khai VR di động dành cho việc sử dụng với điện thoại được đặt bên trong giá đỡ VR. Tính năng này được triển khai thông qua :ref:`MobileVRInterface <class_mobilevrinterface>`. Đây là một triển khai tối giản, xuất ra hình ảnh lập thể song song. Tính năng này hỗ trợ tracking 3DOF cơ bản trên các điện thoại cung cấp dữ liệu từ con quay hồi chuyển và gia tốc kế.
 
 .. warning::
 
-    This implementation is not actively maintained. As it allows maintainers and reviewers the ability
-    to test stereoscopic rendering without the need for expensive XR hardware,
-    this XR interface is mostly used for diagnostic purposes.
+    Triển khai này hiện không được duy trì tích cực. Vì cho phép các maintainer và reviewer kiểm thử việc render lập thể mà không cần phần cứng XR đắt tiền, interface XR này chủ yếu được sử dụng cho mục đích chẩn đoán.
 
 
 .. tabs::
@@ -27,7 +22,7 @@ It supports basic 3DOF tracking on phones that provide gyroscope and acceleromet
         if xr_interface and xr_interface.initialize():
             print("Mobile VR initialized successfully")
 
-            # Change our main viewport to output to the HMD.
+            # Thay đổi viewport chính để xuất ra HMD.
             get_viewport().use_xr = true
         else:
             print("Mobile VR not initialized, please check if your headset is connected")
@@ -47,7 +42,7 @@ It supports basic 3DOF tracking on phones that provide gyroscope and acceleromet
             {
                 GD.Print("Mobile VR initialized successfully");
 
-                // Change our main viewport to output to the HMD.
+                // Thay đổi viewport chính để xuất ra HMD.
                 GetViewport().UseXR = true;
             }
             else
@@ -57,9 +52,6 @@ It supports basic 3DOF tracking on phones that provide gyroscope and acceleromet
         }
     }
 
-The mobile VR interface has various settings that control the output provided to screen.
-The most important two are the ``k1`` and ``k2`` constants that affect the amount of barrel distortion
-that is applied to counter the lens distortion of the VR phone holder used.
-Many have a QR code you can scan that provides this information.
+Interface VR di động có nhiều thiết lập khác nhau để điều khiển đầu ra hiển thị trên màn hình. Hai thiết lập quan trọng nhất là các hằng số ``k1`` và ``k2``, ảnh hưởng đến mức độ biến dạng barrel được áp dụng để bù cho biến dạng của thấu kính trong giá đỡ điện thoại VR được sử dụng. Nhiều thiết bị có mã QR mà bạn có thể quét để cung cấp thông tin này.
 
-It is also important to provide the correct dimensions of the device and the phone's display, these metrics are stored in centimeters.
+Điều quan trọng không kém là cung cấp chính xác kích thước của thiết bị và màn hình điện thoại; các thông số này được lưu trữ theo đơn vị centimet.

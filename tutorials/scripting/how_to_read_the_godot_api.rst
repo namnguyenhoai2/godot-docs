@@ -1,171 +1,142 @@
 .. _doc_how_to_read_the_godot_api:
 
-How to read the Godot API
-=========================
+Cách đọc Godot API
+==================
 
-On this page, you'll learn how to read the class reference for the Godot API.
+Trong trang này, bạn sẽ học cách đọc tài liệu tham chiếu lớp cho Godot API.
 
-The API, or Application Programming Interface, is an index of what Godot offers
-users. It provides a brief summary of which classes exist, how they are
-related to each other, what features they have, and how to use them.
+API, hay Application Programming Interface, là mục lục về những gì Godot cung cấp cho người dùng. API cung cấp phần tóm tắt ngắn gọn về các lớp hiện có, mối quan hệ giữa chúng, các tính năng của chúng và cách sử dụng chúng.
 
-Inheritance
------------
+Kế thừa
+-------
 
 .. image:: img/class_api_inheritance.webp
 
-At the top of each file, you will see the name of the class.
+Ở đầu mỗi tệp, bạn sẽ thấy tên của lớp.
 
-The "Inherits" section lists each class the current one inherits.
-Here ``CanvasItem`` inherits ``Node`` and ``Node`` inherits ``Object``.
+Phần "Inherits" liệt kê từng lớp mà lớp hiện tại kế thừa. Ở đây ``CanvasItem`` kế thừa ``Node`` và ``Node`` kế thừa ``Object``.
 
-The "Inherited By" section lists each class which directly inherits the
-current class. Here ``Control`` and ``Node2D`` both inherit ``CanvasItem``.
+Phần "Inherited By" liệt kê từng lớp trực tiếp kế thừa lớp hiện tại. Ở đây cả ``Control`` và ``Node2D`` đều kế thừa ``CanvasItem``.
 
-Brief Description
------------------
+Mô tả ngắn gọn
+--------------
 
 .. image:: img/class_api_brief_description.webp
 
-Next a brief description of the class. This text appears in Godot Editor
-popups for creating Nodes, Resources, and other types.
+Tiếp theo là phần mô tả ngắn gọn về lớp. Văn bản này xuất hiện trong các cửa sổ bật lên của Godot Editor để tạo Nodes, Resources và các kiểu khác.
 
-Description
------------
+Mô tả
+-----
 
 .. image:: img/class_api_description.webp
 
-Next a more detailed description the class, its features, and its use case(s).
+Tiếp theo là phần mô tả chi tiết hơn về lớp, các tính năng và trường hợp sử dụng của lớp.
 
-Things you may find here:
+Những nội dung bạn có thể tìm thấy ở đây:
 
-1. Specifics of how the class works.
+1. Các chi tiết cụ thể về cách lớp hoạt động.
 
-2. Code samples of common use cases.
+2. Các mẫu code về những trường hợp sử dụng phổ biến.
 
-3. Usage details which are shared between each of the class's methods.
+3. Các chi tiết sử dụng được dùng chung giữa từng method của lớp.
 
-4. Warnings about required dependencies or configuration.
+4. Các cảnh báo về dependency hoặc configuration bắt buộc.
 
-5. Links to other related parts of the Godot API.
+5. Các liên kết đến những phần liên quan khác của Godot API.
 
 Tutorials
 ---------
 
 .. image:: img/class_api_tutorials.webp
 
-The page then provides links to parts of the manual which mention or make use
-of the current class.
+Sau đó, trang cung cấp các liên kết đến những phần của manual có đề cập hoặc sử dụng lớp hiện tại.
 
 Properties
 ----------
 
 .. image:: img/class_api_properties_table.webp
 
-The Properties table lists the variables which belong to each instance of the
-class, also known as the "properties."
+Bảng Properties liệt kê các biến thuộc về từng instance của lớp, còn được gọi là "properties".
 
-The left column contains the data type of the property. The text is also a
-link to that data type's Godot API page.
+Cột bên trái chứa data type của property. Văn bản này cũng là một liên kết đến trang Godot API của data type đó.
 
-The center column contains the name of the property. The text is also a link
-to that property's full description on the page. Use this name to get the
-property's data or set a new value to it.
+Cột ở giữa chứa tên của property. Văn bản này cũng là một liên kết đến phần mô tả đầy đủ của property trên trang. Sử dụng tên này để lấy dữ liệu của property hoặc đặt giá trị mới cho nó.
 
-The right column contains the default value of the property. To initialize it
-with a different value, you must set a different value via script or the
-Inspector.
+Cột bên phải chứa giá trị mặc định của property. Để khởi tạo property bằng một giá trị khác, bạn phải đặt giá trị khác thông qua script hoặc Inspector.
 
 Methods
 -------
 
 .. image:: img/class_api_methods_table.webp
 
-The Methods table lists the functions which belong to each instance of the
-class, also known as the "methods."
+Bảng Methods liệt kê các function thuộc về từng instance của lớp, còn được gọi là "methods".
 
-The left column contains the data type of the method's return value.
+Cột bên trái chứa data type của giá trị trả về từ method.
 
-The right column contains the name, parameters, and qualifiers of the method.
-The name is the text before the opening parenthesis. It is also a link to the
-method's full description on the page. Use this name to call the method.
+Cột bên phải chứa tên, parameters và qualifiers của method. Tên là phần văn bản đứng trước dấu ngoặc đơn mở. Đây cũng là một liên kết đến phần mô tả đầy đủ của method trên trang. Sử dụng tên này để gọi method.
 
-For each parameter, the page details its data type, name, and default value,
-if any.
+Với mỗi parameter, trang nêu chi tiết data type, tên và giá trị mặc định của parameter, nếu có.
 
-Possible qualifiers include...
+Các qualifier có thể bao gồm...
 
-- ``const``: the method does not change any data in the class instance.
-- ``virtual``: the method does nothing but wait for a script to override it.
-- ``vararg``: the method can accept an arbitrary number of arguments.
+- ``const``: method không thay đổi bất kỳ dữ liệu nào trong instance của lớp. - ``virtual``: method không làm gì ngoài việc chờ một script override nó. - ``vararg``: method có thể nhận một số lượng arguments tùy ý.
 
 Signals
 -------
 
 .. image:: img/class_api_signals.webp
 
-The Signals list details the names and parameters of events which "signal" a
-change in game state to other class instances.
+Danh sách Signals nêu chi tiết tên và parameters của các event "signal" một thay đổi trong trạng thái game đến những instance lớp khác.
 
-Like the Methods table, any parameters will include their data type and name.
+Giống như bảng Methods, mọi parameter đều bao gồm data type và tên của parameter.
 
-Each signal also has a detailed explanation of when the signal is emitted.
+Mỗi signal cũng có phần giải thích chi tiết về thời điểm signal được phát.
 
 Enumerations
 ------------
 
 .. image:: img/class_api_enumerations.webp
 
-The Enumerations list details the enumerable data types associated with the
-current class.
+Danh sách Enumerations nêu chi tiết các enumerable data type được liên kết với lớp hiện tại.
 
-For each enumeration, the page states its name and then lists its possible
-values.
+Với mỗi enumeration, trang nêu tên của enumeration rồi liệt kê các giá trị có thể có.
 
-For each enumeration value, the page states its name, its integer value, and
-an explanation of its use case(s) and/or affects.
+Với mỗi giá trị enumeration, trang nêu tên, giá trị integer và phần giải thích về trường hợp sử dụng và/hoặc ảnh hưởng của giá trị đó.
 
 Constants
 ---------
 
 .. image:: img/class_api_constants.webp
 
-The Constants list details named integer constants in the current class.
+Danh sách Constants nêu chi tiết các hằng số integer có tên trong lớp hiện tại.
 
-For each constant, the page states its name, its integer value, and an
-explanation of its use case(s) and/or affects.
+Với mỗi constant, trang nêu tên, giá trị integer và phần giải thích về trường hợp sử dụng và/hoặc ảnh hưởng của constant đó.
 
-``NOTIFICATION_*`` constants' descriptions will state which engine event
-triggers the notification.
+Mô tả của các constant ``NOTIFICATION_*`` sẽ nêu engine event nào kích hoạt notification.
 
-Property Descriptions
----------------------
+Mô tả Property
+--------------
 
 .. image:: img/class_api_property_descriptions.webp
 
-The Property Descriptions list details everything about each property.
+Danh sách Property Descriptions nêu chi tiết mọi thông tin về từng property.
 
-It restates the data type and name of the property.
+Phần này nhắc lại data type và tên của property.
 
-Every property in the Godot API is bound to a pair of setter and getter
-functions. Using either is equivalent. They are listed here.
+Mọi property trong Godot API đều được liên kết với một cặp setter và getter function. Sử dụng một trong hai là tương đương nhau. Chúng được liệt kê ở đây.
 
-Below that is a detailed summary of what the property's data represents, its
-use case(s) and/or the affects of changing it. It may include code samples
-and/or links to relevant parts of the Godot API.
+Bên dưới là phần tóm tắt chi tiết về ý nghĩa dữ liệu của property, các trường hợp sử dụng và/hoặc ảnh hưởng của việc thay đổi property. Phần này có thể bao gồm các mẫu code và/hoặc liên kết đến những phần liên quan của Godot API.
 
 .. note:: Knowing the setter and getter names is useful when one must bind a
-          method name or :ref:`Callable<class_Callable>` to something.
+          tên method hoặc :ref:`Callable<class_Callable>` thành một thứ gì đó.
 
-Method Descriptions
--------------------
+Mô tả Method
+------------
 
 .. image:: img/class_api_method_descriptions.webp
 
-The Method Descriptions list details everything about each method.
+Danh sách Method Descriptions nêu chi tiết mọi thông tin về từng method.
 
-It restates the method's return data type, parameter names/types/defaults, and
-qualifiers.
+Phần này nhắc lại data type giá trị trả về của method, tên/type/default của các parameter và các qualifier.
 
-Below that is a detailed summary of what the method does and its use case(s).
-It may include code samples and/or links to relevant parts of the Godot API.
+Bên dưới là phần tóm tắt chi tiết về chức năng của method và các trường hợp sử dụng của method. Phần này có thể bao gồm các mẫu code và/hoặc liên kết đến những phần liên quan của Godot API.

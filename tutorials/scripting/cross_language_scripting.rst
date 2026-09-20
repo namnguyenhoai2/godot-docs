@@ -1,14 +1,11 @@
 .. _doc_cross_language_scripting:
 
-Cross-language scripting
-========================
+Lập trình script đa ngôn ngữ
+============================
 
-Godot allows you to mix and match scripting languages to suit your needs.
-This means a single project can define nodes in both C# and GDScript.
-This page will go through the possible interactions between two nodes written
-in different languages.
+Godot cho phép bạn kết hợp và sử dụng các ngôn ngữ scripting tùy theo nhu cầu. Điều này có nghĩa là một project có thể định nghĩa các node bằng cả C# và GDScript. Trang này sẽ trình bày các tương tác có thể có giữa hai node được viết bằng các ngôn ngữ khác nhau.
 
-The following two scripts will be used as references throughout this page.
+Hai script sau đây sẽ được dùng làm tham chiếu trong suốt trang này.
 
 .. tabs::
 
@@ -85,18 +82,15 @@ The following two scripts will be used as references throughout this page.
         }
     }
 
-Instantiating nodes
--------------------
+Khởi tạo node
+-------------
 
-If you're not using nodes from the scene tree, you'll probably want to
-instantiate nodes directly from the code.
+Nếu bạn không sử dụng các node từ scene tree, có lẽ bạn sẽ muốn khởi tạo node trực tiếp từ code.
 
-Instantiating C# nodes from GDScript
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Khởi tạo node C# từ GDScript
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Using C# from GDScript doesn't need much work. Once loaded
-(see :ref:`doc_gdscript_classes_as_resources`), the script can be instantiated
-with :ref:`new() <class_CSharpScript_method_new>`.
+Sử dụng C# từ GDScript không cần nhiều thao tác. Sau khi được load (xem :ref:`doc_gdscript_classes_as_resources`), script có thể được khởi tạo bằng :ref:`new() <class_CSharpScript_method_new>`.
 
 .. code-block:: gdscript
 
@@ -105,132 +99,115 @@ with :ref:`new() <class_CSharpScript_method_new>`.
 
 .. warning::
 
-    When creating ``.cs`` scripts, you should always keep in mind that the class
-    Godot will use is the one named like the ``.cs`` file itself. If that class
-    does not exist in the file, you'll see the following error:
-    ``Invalid call. Nonexistent function `new` in base``.
+    Khi tạo script ``.cs``, bạn luôn cần ghi nhớ rằng class Godot sẽ sử dụng là class có tên giống với chính file ``.cs``. Nếu class đó không tồn tại trong file, bạn sẽ thấy lỗi sau: ``Invalid call. Nonexistent function `new` in base``.
 
-    For example, MyCoolNode.cs should contain a class named MyCoolNode.
+    Ví dụ, MyCoolNode.cs phải chứa một class có tên MyCoolNode.
 
-    The C# class needs to derive a Godot class, for example ``GodotObject``.
-    Otherwise, the same error will occur.
+    Class C# cần kế thừa một class Godot, chẳng hạn như ``GodotObject``. Nếu không, lỗi tương tự sẽ xảy ra.
 
-    You also need to check your ``.cs`` file is referenced in the project's
-    ``.csproj`` file. Otherwise, the same error will occur.
+    Bạn cũng cần kiểm tra để đảm bảo file ``.cs`` được tham chiếu trong file ``.csproj`` của project. Nếu không, lỗi tương tự sẽ xảy ra.
 
-Instantiating GDScript nodes from C#
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Khởi tạo node GDScript từ C#
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-From the C# side, everything work the same way. Once loaded, the GDScript can
-be instantiated with :ref:`GDScript.New() <class_GDScript_method_new>`.
+Từ phía C#, mọi thứ cũng hoạt động theo cách tương tự. Sau khi được load, GDScript có thể được khởi tạo bằng :ref:`GDScript.New() <class_GDScript_method_new>`.
 
 .. code-block:: csharp
 
     var myGDScript = GD.Load<GDScript>("res://path/to/my_gd_script.gd");
-    var myGDScriptNode = (GodotObject)myGDScript.New(); // This is a GodotObject.
+    var myGDScriptNode = (GodotObject)myGDScript.New(); // Đây là một GodotObject.
 
-Here we are using an :ref:`class_Object`, but you can use type conversion like
-explained in :ref:`doc_c_sharp_features_type_conversion_and_casting`.
+Ở đây chúng ta đang sử dụng một :ref:`class_Object`, nhưng bạn có thể sử dụng chuyển đổi kiểu như được giải thích trong :ref:`doc_c_sharp_features_type_conversion_and_casting`.
 
-Accessing fields
-----------------
+Truy cập các field
+------------------
 
-Accessing C# fields from GDScript
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Truy cập field C# từ GDScript
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Accessing C# fields from GDScript is straightforward, you shouldn't have
-anything to worry about.
+Việc truy cập field C# từ GDScript rất đơn giản, bạn không cần phải lo lắng gì.
 
 .. code-block:: gdscript
 
-    # Output: "my c# value".
+    # Kết quả: "my c# value".
     print(my_csharp_node.MyProperty)
     my_csharp_node.MyProperty = "MY C# VALUE"
-    # Output: "MY C# VALUE".
+    # Kết quả: "MY C# VALUE".
     print(my_csharp_node.MyProperty)
 
-Accessing GDScript fields from C#
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Truy cập field GDScript từ C#
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As C# is statically typed, accessing GDScript from C# is a bit more
-convoluted. You will have to use :ref:`GodotObject.Get() <class_Object_method_get>`
-and :ref:`GodotObject.Set() <class_Object_method_set>`. The first argument is the name of the field you want to access.
+Vì C# là ngôn ngữ kiểu tĩnh, việc truy cập GDScript từ C# phức tạp hơn một chút. Bạn sẽ phải sử dụng :ref:`GodotObject.Get() <class_Object_method_get>` và :ref:`GodotObject.Set() <class_Object_method_set>`. Đối số đầu tiên là tên của field bạn muốn truy cập.
 
 .. code-block:: csharp
 
-    // Output: "my gdscript value".
+    // Kết quả: "my gdscript value".
     GD.Print(myGDScriptNode.Get("my_property"));
     myGDScriptNode.Set("my_property", "MY GDSCRIPT VALUE");
-    // Output: "MY GDSCRIPT VALUE".
+    // Kết quả: "MY GDSCRIPT VALUE".
     GD.Print(myGDScriptNode.Get("my_property"));
 
-Keep in mind that when setting a field value you should only use types the
-GDScript side knows about.
-Essentially, you want to work with built-in types as described in
+Hãy nhớ rằng khi thiết lập giá trị của một field, bạn chỉ nên sử dụng các kiểu mà phía GDScript biết. Về cơ bản, bạn muốn làm việc với các kiểu dựng sẵn như được mô tả trong
 :ref:`doc_gdscript_builtin_types` or classes extending :ref:`class_Object`.
 
-Calling methods
----------------
+Gọi method
+----------
 
-Calling C# methods from GDScript
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Gọi method C# từ GDScript
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Again, calling C# methods from GDScript should be straightforward. The
-marshalling process will do its best to cast the arguments to match
-function signatures.
-If that's impossible, you'll see the following error: ``Invalid call. Nonexistent function `FunctionName```.
+Again, calling C# methods from GDScript should be straightforward. The marshalling process will do its best to cast the arguments to match function signatures. If that's impossible, you'll see the following error: ``Invalid call. Nonexistent function `FunctionName```.
 
 .. code-block:: gdscript
 
-    # Output: "my_gd_script_node" (or name of node where this code is placed).
+    # Kết quả: "my_gd_script_node" (hoặc tên của node nơi đoạn code này được đặt).
     my_csharp_node.PrintNodeName(self)
-    # This line will fail.
+    # Dòng này sẽ thất bại.
     # my_csharp_node.PrintNodeName()
 
-    # Outputs "Hello there!" twice, once per line.
+    # Xuất "Hello there!" hai lần, mỗi lần trên một dòng.
     my_csharp_node.PrintNTimes("Hello there!", 2)
 
-    # Output: "a", "b", "c" (one per line).
+    # Kết quả: "a", "b", "c" (mỗi giá trị trên một dòng).
     my_csharp_node.PrintArray(["a", "b", "c"])
-    # Output: "1", "2", "3"  (one per line).
+    # Kết quả: "1", "2", "3" (mỗi giá trị trên một dòng).
     my_csharp_node.PrintArray([1, 2, 3])
 
-Calling GDScript methods from C#
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Gọi method GDScript từ C#
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To call GDScript methods from C# you'll need to use
+Để gọi method GDScript từ C#, bạn sẽ cần sử dụng
 :ref:`GodotObject.Call() <class_Object_method_call>`. The first argument is the
-name of the method you want to call. The following arguments will be passed
-to said method.
+tên của method bạn muốn gọi. Các đối số sau đây sẽ được truyền vào method đó.
 
 .. code-block:: csharp
 
-    // Output: "MyCSharpNode" (or name of node where this code is placed).
+    // Kết quả: "MyCSharpNode" (hoặc tên của node nơi đoạn code này được đặt).
     myGDScriptNode.Call("print_node_name", this);
-    // This line will fail silently and won't error out.
+    // Dòng này sẽ âm thầm thất bại và không báo lỗi.
     // myGDScriptNode.Call("print_node_name");
 
-    // Outputs "Hello there!" twice, once per line.
+    // Xuất "Hello there!" hai lần, mỗi lần trên một dòng.
     myGDScriptNode.Call("print_n_times", "Hello there!", 2);
 
     string[] arr = ["a", "b", "c"];
-    // Output: "a", "b", "c" (one per line).
+    // Kết quả: "a", "b", "c" (mỗi giá trị trên một dòng).
     myGDScriptNode.Call("print_array", arr);
-    // Output: "1", "2", "3"  (one per line).
+    // Kết quả: "1", "2", "3" (mỗi giá trị trên một dòng).
     myGDScriptNode.Call("print_array", new int[] { 1, 2, 3 });
     // Note how the type of each array entry does not matter
-    // as long as it can be handled by the marshaller.
+    // miễn là marshaller có thể xử lý được.
 
 .. _connecting_to_signals_cross_language:
 
-Connecting to signals
----------------------
+Kết nối với signal
+------------------
 
-Connecting to C# signals from GDScript
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Kết nối với signal C# từ GDScript
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Connecting to a C# signal from GDScript is the same as connecting to a signal
-defined in GDScript:
+Kết nối với một signal C# từ GDScript cũng giống như kết nối với một signal được định nghĩa trong GDScript:
 
 .. code-block:: gdscript
 
@@ -238,11 +215,10 @@ defined in GDScript:
 
     my_csharp_node.MySignalWithParams.connect(my_signal_with_params_handler)
 
-Connecting to GDScript signals from C#
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Kết nối với signal GDScript từ C#
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Connecting to a GDScript signal from C# only works with the ``Connect`` method
-because no C# static types exist for signals defined by GDScript:
+Việc kết nối với một signal GDScript từ C# chỉ hoạt động với method ``Connect`` vì không tồn tại kiểu tĩnh C# cho các signal được định nghĩa bởi GDScript:
 
 .. code-block:: csharp
 
@@ -250,11 +226,7 @@ because no C# static types exist for signals defined by GDScript:
 
     myGDScriptNode.Connect("my_signal_with_params", Callable.From<string, int>(MySignalWithParamsHandler));
 
-Inheritance
------------
+Kế thừa
+-------
 
-A GDScript file may not inherit from a C# script. Likewise, a C# script may not
-inherit from a GDScript file. Due to how complex this would be to implement,
-this limitation is unlikely to be lifted in the future. See
-`this GitHub issue <https://github.com/godotengine/godot/issues/38352>`__
-for more information.
+Một file GDScript không thể kế thừa từ một script C#. Tương tự, một script C# không thể kế thừa từ một file GDScript. Do việc triển khai điều này quá phức tạp, hạn chế này khó có khả năng được gỡ bỏ trong tương lai. Xem `this GitHub issue <https://github.com/godotengine/godot/issues/38352>`__ để biết thêm thông tin.

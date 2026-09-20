@@ -1,22 +1,19 @@
 .. _doc_texture_blit_shader:
 
-Texture blit shaders
-====================
+Shader blit texture
+===================
 
-Texture blit shaders are used to define the behavior of blit calls on a
+Shader blit texture được sử dụng để xác định hành vi của các lệnh gọi blit trên một
 :ref:`DrawableTexture2D <doc_drawable_textures>`.
 
-Texture blit shaders only have one processing function, the ``blit()`` function,
-which runs for every pixel of the source texture inside the rect given to
-``blit_rect()``.
+Shader blit texture chỉ có một hàm xử lý là hàm ``blit()``, hàm này chạy cho mọi pixel của texture nguồn nằm trong hình chữ nhật được truyền cho ``blit_rect()``.
 
 .. seealso::
 
-    See :ref:`doc_drawable_textures` for more information on how to use texture
-    blit shaders as part of a DrawableTexture.
+    Xem :ref:`doc_drawable_textures` để biết thêm thông tin về cách sử dụng shader blit texture như một phần của DrawableTexture.
 
-Render modes
-------------
+Chế độ render
+-------------
 
 +---------------------------------+-------------------------------------------------------------------------+
 | Render mode                     | Description                                                             |
@@ -34,19 +31,17 @@ Render modes
 
 .. note::
 
-    There is no premultiplied alpha blend mode for Texture blit shaders.
+    Không có chế độ trộn alpha premultiplied dành cho shader blit texture.
 
-Built-ins
----------
+Các built-in
+------------
 
-Values marked as ``in`` are read-only. Values marked as ``out`` can optionally be written to and will
-not necessarily contain sensible values. Values marked as ``inout`` provide a sensible default
-value, and can optionally be written to. Samplers cannot be written to so they are not marked.
+Các giá trị được đánh dấu là ``in`` chỉ có thể đọc. Các giá trị được đánh dấu là ``out`` có thể được ghi tùy chọn và không nhất thiết chứa các giá trị hợp lý. Các giá trị được đánh dấu là ``inout`` cung cấp một giá trị mặc định hợp lý và có thể được ghi tùy chọn. Sampler không thể được ghi nên không được đánh dấu.
 
-Global built-ins
-----------------
+Các built-in toàn cục
+---------------------
 
-Global built-ins are available everywhere, including custom functions.
+Các built-in toàn cục có sẵn ở mọi nơi, bao gồm cả các hàm tùy chỉnh.
 
 +-------------------+------------------------------------------------------------------------------------------+
 | Built-in          | Description                                                                              |
@@ -72,15 +67,13 @@ Global built-ins are available everywhere, including custom functions.
 +-------------------+------------------------------------------------------------------------------------------+
 
 
-Blit built-ins
---------------
+Các built-in của blit
+---------------------
 
-Source textures
-~~~~~~~~~~~~~~~
+Texture nguồn
+~~~~~~~~~~~~~
 
-Texture blit shaders have up to 4 source textures bound as inputs. These can be
-accessed with a ``sampler2D`` using ``hint_blit_source0``,
-``hint_blit_source1``, ``hint_blit_source2``, and ``hint_blit_source3``.
+Shader blit texture có tối đa 4 texture nguồn được liên kết làm đầu vào. Có thể truy cập các texture này bằng một ``sampler2D`` sử dụng ``hint_blit_source0``, ``hint_blit_source1``, ``hint_blit_source2`` và ``hint_blit_source3``.
 
 +---------------------------------------------+---------------------------------------------------------------+
 | Built-in                                    | Description                                                   |

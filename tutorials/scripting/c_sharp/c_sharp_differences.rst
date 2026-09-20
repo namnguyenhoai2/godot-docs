@@ -1,49 +1,32 @@
 .. _doc_c_sharp_differences:
 
-C# API differences to GDScript
-==============================
+Các khác biệt về API giữa C# và GDScript
+========================================
 
-This is an (incomplete) list of API differences between C# and GDScript.
+Đây là danh sách (chưa đầy đủ) các khác biệt về API giữa C# và GDScript.
 
-General differences
+Các khác biệt chung
 -------------------
 
-As explained in :ref:`doc_c_sharp_general_differences`, ``PascalCase`` is used
-to access Godot APIs in C# instead of the ``snake_case`` used by GDScript and
-C++. Where possible, fields and getters/setters have been converted to
-properties. In general, the C# Godot API strives to be as idiomatic as is
-reasonably possible. See the :ref:`doc_c_sharp_styleguide`, which we encourage
-you to also use for your own C# code.
+Như đã giải thích trong :ref:`doc_c_sharp_general_differences`, ``PascalCase`` được dùng để truy cập các API của Godot trong C# thay cho ``snake_case`` được GDScript và C++ sử dụng. Khi có thể, các field và getter/setter đã được chuyển đổi thành property. Nhìn chung, C# Godot API hướng tới việc tuân theo phong cách tự nhiên nhất có thể. Hãy xem :ref:`doc_c_sharp_styleguide`, chúng tôi cũng khuyến khích bạn sử dụng cho code C# của mình.
 
-In GDScript, the setters/getters of a property can be called directly, although
-this is not encouraged. In C#, only the property is defined. For example, to
-translate the GDScript code ``x.set_name("Friend")`` to C#, write
-``x.Name = "Friend";``.
+Trong GDScript, setter/getter của một property có thể được gọi trực tiếp, mặc dù không được khuyến khích. Trong C#, chỉ property được định nghĩa. Ví dụ, để chuyển code GDScript ``x.set_name("Friend")`` sang C#, hãy viết ``x.Name = "Friend";``.
 
-A C# IDE will provide intellisense, which is extremely useful when figuring out
-renamed C# APIs. The built-in Godot script editor has no support for C#
-intellisense, and it also doesn't provide many other C# development tools that
-are considered essential. See :ref:`doc_c_sharp_setup_external_editor`.
+Một C# IDE sẽ cung cấp tính năng intellisense, cực kỳ hữu ích khi xác định các C# API đã được đổi tên. Trình soạn thảo script tích hợp của Godot không hỗ trợ C# intellisense và cũng không cung cấp nhiều công cụ phát triển C# khác vốn được xem là thiết yếu. Hãy xem :ref:`doc_c_sharp_setup_external_editor`.
 
-Global scope
-------------
+Phạm vi toàn cục
+----------------
 
-Global functions and some constants had to be moved to classes, since C#
-does not allow declaring them in namespaces.
-Most global constants were moved to their own enums.
+Các hàm toàn cục và một số hằng số phải được chuyển vào các class, vì C# không cho phép khai báo chúng trong namespace. Hầu hết hằng số toàn cục đã được chuyển vào các enum riêng.
 
-Constants
-~~~~~~~~~
+Hằng số
+~~~~~~~
 
-In C#, only primitive types can be constant. For example, the ``TAU`` constant
-is replaced by the ``Mathf.Tau`` constant, but the ``Vector2.RIGHT`` constant
-is replaced by the ``Vector2.Right`` read-only property. This behaves similarly
-to a constant, but can't be used in some contexts like ``switch`` statements.
+Trong C#, chỉ các kiểu nguyên thủy mới có thể là hằng số. Ví dụ, hằng số ``TAU`` được thay thế bằng hằng số ``Mathf.Tau``, nhưng hằng số ``Vector2.RIGHT`` được thay thế bằng read-only property ``Vector2.Right``. Property này hoạt động tương tự một hằng số, nhưng không thể được dùng trong một số ngữ cảnh như các câu lệnh ``switch``.
 
-Global enum constants were moved to their own enums.
-For example, ``ERR_*`` constants were moved to the ``Error`` enum.
+Các hằng số enum toàn cục đã được chuyển vào các enum riêng. Ví dụ, các hằng số ``ERR_*`` được chuyển vào enum ``Error``.
 
-Special cases:
+Các trường hợp đặc biệt:
 
 =======================  ===========================================================
 GDScript                 C#
@@ -52,38 +35,32 @@ GDScript                 C#
 ``OP_*``                 ``Variant.Operator`` enum
 =======================  ===========================================================
 
-Math functions
-~~~~~~~~~~~~~~
+Các hàm toán học
+~~~~~~~~~~~~~~~~
 
-Math global functions, like ``abs``, ``acos``, ``asin``, ``atan`` and ``atan2``, are
-located under ``Mathf`` as ``Abs``, ``Acos``, ``Asin``, ``Atan`` and ``Atan2``.
-The ``PI`` constant can be found as ``Mathf.Pi``.
+Các hàm toán học toàn cục, như ``abs``, ``acos``, ``asin``, ``atan`` và ``atan2``, nằm dưới ``Mathf`` với tên lần lượt là ``Abs``, ``Acos``, ``Asin``, ``Atan`` và ``Atan2``. Hằng số ``PI`` có thể được tìm thấy dưới dạng ``Mathf.Pi``.
 
-C# also provides static `System.Math`_ and `System.MathF`_ classes that may
-contain other useful mathematical operations.
+C# cũng cung cấp các class static `System.Math`_ và `System.MathF`_, có thể chứa những phép toán toán học hữu ích khác.
 
 .. _System.Math: https://learn.microsoft.com/en-us/dotnet/api/system.math
 .. _System.MathF: https://learn.microsoft.com/en-us/dotnet/api/system.mathf
 
-Random functions
-~~~~~~~~~~~~~~~~
+Các hàm ngẫu nhiên
+~~~~~~~~~~~~~~~~~~
 
-Random global functions, like ``rand_range`` and ``rand_seed``, are located under ``GD``.
-Example: ``GD.RandRange`` and ``GD.RandSeed``.
+Các hàm ngẫu nhiên toàn cục, như ``rand_range`` và ``rand_seed``, nằm dưới ``GD``. Ví dụ: ``GD.RandRange`` và ``GD.RandSeed``.
 
-Consider using `System.Random`_ or, if you need cryptographically strong randomness,
-`System.Security.Cryptography.RandomNumberGenerator`_.
+Hãy cân nhắc sử dụng `System.Random`_ hoặc, nếu bạn cần tính ngẫu nhiên mạnh về mặt mật mã, `System.Security.Cryptography.RandomNumberGenerator`_.
 
 .. _System.Random: https://learn.microsoft.com/en-us/dotnet/api/system.random
 .. _System.Security.Cryptography.RandomNumberGenerator: https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.randomnumbergenerator
 
-Other functions
-~~~~~~~~~~~~~~~
+Các hàm khác
+~~~~~~~~~~~~
 
-Many other global functions like ``print`` and ``var_to_str`` are located under ``GD``.
-Example: ``GD.Print`` and ``GD.VarToStr``.
+Nhiều hàm toàn cục khác như ``print`` và ``var_to_str`` nằm dưới ``GD``. Ví dụ: ``GD.Print`` và ``GD.VarToStr``.
 
-Exceptions:
+Ngoại lệ:
 
 ============================  =======================================================
 GDScript                      C#
@@ -94,13 +71,12 @@ GDScript                      C#
 ``is_instance_valid(obj)``    ``GodotObject.IsInstanceValid(obj)``
 ============================  =======================================================
 
-Tips
-~~~~
+Mẹo
+~~~
 
-Sometimes it can be useful to use the ``using static`` directive. This directive allows
-to access the members and nested types of a class without specifying the class name.
+Đôi khi việc sử dụng directive ``using static`` có thể hữu ích. Directive này cho phép truy cập các member và nested type của một class mà không cần chỉ định tên class.
 
-Example:
+Ví dụ:
 
 .. code-block:: csharp
 
@@ -110,14 +86,14 @@ Example:
     {
         static Test()
         {
-            Print("Hello"); // Instead of GD.Print("Hello");
+            Print("Hello"); // Thay vì GD.Print("Hello");
         }
     }
 
-Full list of equivalences
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Danh sách đầy đủ các tương đương
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-List of Godot's global scope functions and their equivalent in C#:
+Danh sách các hàm trong phạm vi toàn cục của Godot và tương đương của chúng trong C#:
 
 ===============================  ==============================================================
 GDScript                         C#
@@ -247,7 +223,7 @@ wrapi                            Mathf.Wrap
 .. _float.IsNaN: https://learn.microsoft.com/en-us/dotnet/api/system.single.isnan
 .. _object.ReferenceEquals: https://learn.microsoft.com/en-us/dotnet/api/system.object.referenceequals
 
-List of GDScript utility functions and their equivalent in C#:
+Danh sách các hàm tiện ích của GDScript và tương đương của chúng trong C#:
 
 =======================  ==============================================================
 GDScript                 C#
@@ -271,17 +247,14 @@ type_exists              ClassDB.ClassExists(type)
 .. _System.Environment.StackTrace: https://learn.microsoft.com/en-us/dotnet/api/system.environment.stacktrace
 .. _System.Linq.Enumerable.Range: https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable.range
 
-``preload``, as it works in GDScript, is not available in C#.
-Use ``GD.Load`` or ``ResourceLoader.Load`` instead.
+``preload``, với cách hoạt động như trong GDScript, không khả dụng trong C#. Thay vào đó, hãy sử dụng ``GD.Load`` hoặc ``ResourceLoader.Load``.
 
-``@export`` annotation
+Annotation ``@export``
 ----------------------
 
-Use the ``[Export]`` attribute instead of the GDScript ``@export`` annotation.
-This attribute can also be provided with optional :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` and ``hintString`` parameters.
-Default values can be set by assigning a value.
+Sử dụng attribute ``[Export]`` thay cho annotation ``@export`` của GDScript. Attribute này cũng có thể được cung cấp cùng các tham số :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` và ``hintString`` tùy chọn. Có thể thiết lập giá trị mặc định bằng cách gán một giá trị.
 
-Example:
+Ví dụ:
 
 .. code-block:: csharp
 
@@ -302,34 +275,30 @@ Example:
         private string _icon;
     }
 
-See also: :ref:`doc_c_sharp_exports`.
+Xem thêm: :ref:`doc_c_sharp_exports`.
 
-``signal`` keyword
+Keyword ``signal``
 ------------------
 
-Use the ``[Signal]`` attribute to declare a signal instead of the GDScript ``signal`` keyword.
-This attribute should be used on a `delegate`, whose name signature will be used to define the signal.
-The `delegate` must have the ``EventHandler`` suffix, an `event` will be generated in the class with the same name but without the suffix, use that event's name with ``EmitSignal``.
+Sử dụng attribute ``[Signal]`` để khai báo signal thay cho keyword ``signal`` của GDScript. Attribute này phải được sử dụng trên một ``delegate``, trong đó signature của tên sẽ được dùng để định nghĩa signal. ``delegate`` phải có hậu tố ``EventHandler``, một ``event`` sẽ được tạo trong class với cùng tên nhưng không có hậu tố; hãy sử dụng tên của event đó với ``EmitSignal``.
 
 .. code-block:: csharp
 
     [Signal]
     delegate void MySignalEventHandler(string willSendAString);
 
-See also: :ref:`doc_c_sharp_signals`.
+Xem thêm: :ref:`doc_c_sharp_signals`.
 
-`@onready` annotation
----------------------
+Annotation ``@onready``
+-----------------------
 
-GDScript has the ability to defer the initialization of a member variable until the ready function
-is called with `@onready` (cf. :ref:`doc_gdscript_onready_annotation`).
-For example:
+GDScript có khả năng trì hoãn việc khởi tạo member variable cho đến khi hàm ready được gọi bằng :ref:`@onready <doc_gdscript_onready_annotation>`. Ví dụ:
 
 .. code-block:: gdscript
 
     @onready var my_label = get_node("MyLabel")
 
-However C# does not have this ability. To achieve the same effect you need to do this.
+Tuy nhiên, C# không có khả năng này. Để đạt được hiệu ứng tương tự, bạn cần làm như sau.
 
 .. code-block:: csharp
 
@@ -340,33 +309,26 @@ However C# does not have this ability. To achieve the same effect you need to do
         _myLabel = GetNode<Label>("MyLabel");
     }
 
-Singletons
-----------
+Singleton
+---------
 
-Singletons are available as static classes rather than using the singleton pattern.
-This is to make code less verbose than it would be with an ``Instance`` property.
+Singleton khả dụng dưới dạng static class thay vì sử dụng singleton pattern. Cách này giúp code ngắn gọn hơn so với khi sử dụng property ``Instance``.
 
-Example:
+Ví dụ:
 
 .. code-block:: csharp
 
     Input.IsActionPressed("ui_down")
 
-However, in some very rare cases this is not enough. For example, you may want
-to access a member from the base class ``GodotObject``, like ``Connect``.
-For such use cases we provide a static property named ``Singleton`` that returns
-the singleton instance. The type of this instance is ``GodotObject``.
+Tuy nhiên, trong một số trường hợp rất hiếm, cách này vẫn chưa đủ. Ví dụ, bạn có thể muốn truy cập một member từ base class ``GodotObject``, chẳng hạn như ``Connect``. Trong những trường hợp như vậy, chúng tôi cung cấp một static property có tên ``Singleton``, trả về instance singleton. Kiểu của instance này là ``GodotObject``.
 
-Example:
+Ví dụ:
 
 .. code-block:: csharp
 
     Input.Singleton.JoyConnectionChanged += Input_JoyConnectionChanged;
 
-If you are developing main screen plugins, it is essential to note that
-``EditorInterface`` is not a static class in C#, unlike in GDScript.
-Therefore, you must use the singleton pattern to obtain an instance of the
-``EditorInterface``:
+Nếu bạn đang phát triển main screen plugin, điều cần thiết là phải lưu ý rằng ``EditorInterface`` không phải là static class trong C#, không giống như trong GDScript. Vì vậy, bạn phải sử dụng singleton pattern để lấy một instance của ``EditorInterface``:
 
 ====================  ==============================================================
 GDScript              C#
@@ -377,25 +339,20 @@ GDScript              C#
 String
 ------
 
-Use ``System.String`` (``string``). Most of Godot's String methods have an
-equivalent in ``System.String`` or are provided by the ``StringExtensions``
-class as extension methods.
+Sử dụng ``System.String`` (``string``). Hầu hết các method String của Godot đều có tương đương trong ``System.String`` hoặc được class ``StringExtensions`` cung cấp dưới dạng extension method.
 
-Note that C# strings use UTF-16 encoding, while Godot Strings use UTF-32 encoding.
+Lưu ý rằng string trong C# sử dụng encoding UTF-16, trong khi String của Godot sử dụng encoding UTF-32.
 
-Example:
+Ví dụ:
 
 .. code-block:: csharp
 
     string text = "Get up!";
     string[] bigrams = text.Bigrams(); // ["Ge", "et", "t ", " u", "up", "p!"]
 
-Strings are immutable in .NET, so all methods that manipulate a string don't
-modify the original string and return a newly created string with the
-modifications applied. To avoid creating multiple string allocations consider
-using a `StringBuilder`_.
+String là immutable trong .NET, vì vậy tất cả method thao tác với một string đều không sửa đổi string ban đầu mà trả về một string mới được tạo với các thay đổi đã áp dụng. Để tránh tạo nhiều allocation cho string, hãy cân nhắc sử dụng `StringBuilder`_.
 
-List of Godot's String methods and their equivalent in C#:
+Danh sách các method String của Godot và tương đương của chúng trong C#:
 
 =======================  ==============================================================
 GDScript                 C#
@@ -504,7 +461,7 @@ xml_escape               StringExtensions.XMLEscape
 xml_unescape             StringExtensions.XMLUnescape
 =======================  ==============================================================
 
-List of Godot's PackedByteArray methods that create a String and their C# equivalent:
+Danh sách các method PackedByteArray của Godot tạo String và tương đương của chúng trong C#:
 
 =========================  ==============================================================
 GDScript                   C#
@@ -518,11 +475,7 @@ hex_encode                 StringExtensions.HexEncode (Consider using `System.Co
 
 .. note::
 
-    .NET provides path utility methods under the
-    `System.IO.Path`_
-    class. They can only be used with native OS paths, not Godot paths
-    (paths that start with ``res://`` or ``user://``).
-    See :ref:`doc_data_paths`.
+    .NET cung cấp các method tiện ích xử lý path trong class `System.IO.Path`_. Chúng chỉ có thể được sử dụng với path gốc của OS, không phải path của Godot (các path bắt đầu bằng ``res://`` hoặc ``user://``). Xem :ref:`doc_data_paths`.
 
 .. _$ string interpolation: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated
 .. _double.ToString: https://learn.microsoft.com/en-us/dotnet/api/system.double.tostring
@@ -589,7 +542,7 @@ hex_encode                 StringExtensions.HexEncode (Consider using `System.Co
 NodePath
 --------
 
-The following method was converted to a property with a different name:
+Method sau đây đã được chuyển thành property với tên khác:
 
 ====================  ==============================================================
 GDScript              C#
@@ -600,7 +553,7 @@ GDScript              C#
 Signal
 ------
 
-The following methods were converted to properties with their respective names changed:
+Các method sau đây đã được chuyển thành property với tên tương ứng được thay đổi:
 
 ====================  ==============================================================
 GDScript              C#
@@ -609,16 +562,14 @@ GDScript              C#
 ``get_object()``      ``Owner``
 ====================  ==============================================================
 
-The ``Signal`` type implements the awaitable pattern which means it can be used with
-the ``await`` keyword. See :ref:`doc_c_sharp_differences_await`.
+Kiểu ``Signal`` triển khai awaitable pattern, nghĩa là có thể được sử dụng với keyword ``await``. Xem :ref:`doc_c_sharp_differences_await`.
 
-Instead of using the ``Signal`` type, the recommended way to use Godot signals in C# is
-to use the generated C# events. See :ref:`doc_c_sharp_signals`.
+Thay vì sử dụng kiểu ``Signal``, cách được khuyến nghị để sử dụng signal của Godot trong C# là dùng các C# event được tạo tự động. Xem :ref:`doc_c_sharp_signals`.
 
 Callable
 --------
 
-The following methods were converted to properties with their respective names changed:
+Các method sau đây đã được chuyển thành property với tên tương ứng được thay đổi:
 
 ====================  ==============================================================
 GDScript              C#
@@ -627,16 +578,13 @@ GDScript              C#
 ``get_method()``      ``Method``
 ====================  ==============================================================
 
-Currently C# supports ``Callable`` if one of the following holds:
+Hiện tại C# hỗ trợ ``Callable`` nếu một trong các điều kiện sau đúng:
 
-* ``Callable`` was created using the C# ``Callable`` type.
-* ``Callable`` is a basic version of the engine's ``Callable``. Custom ``Callable``\ s
-  are unsupported. A ``Callable`` is custom when any of the following holds:
+* ``Callable`` được tạo bằng kiểu C# ``Callable``. * ``Callable`` là phiên bản cơ bản của ``Callable`` của engine. Các ``Callable`` tùy chỉnh không được hỗ trợ. Một ``Callable`` là tùy chỉnh khi có bất kỳ điều kiện nào sau đây:
 
-  * ``Callable`` has bound information (``Callable``\ s created with ``bind``/``unbind`` are unsupported).
-  * ``Callable`` was created from other languages through the GDExtension API.
+  * ``Callable`` has bound information (``Callable``\ s created with ``bind``/``unbind`` are unsupported). * ``Callable`` was created from other languages through the GDExtension API.
 
-Some methods such as ``bind`` and ``unbind`` are not implemented, use lambdas instead:
+Một số method như ``bind`` và ``unbind`` chưa được triển khai; thay vào đó, hãy sử dụng lambda:
 
 .. code-block:: csharp
 
@@ -648,14 +596,14 @@ Some methods such as ``bind`` and ``unbind`` are not implemented, use lambdas in
         GD.Print($"Hello {name}");
     }
 
-The lambda captures the ``name`` variable so it can be bound to the ``SayHello`` method.
+Lambda capture biến ``name`` để có thể bind biến này vào method ``SayHello``.
 
 RID
 ---
 
-This type is named ``Rid`` in C# to follow the .NET naming convention.
+Kiểu này có tên là ``Rid`` trong C# để tuân theo quy ước đặt tên của .NET.
 
-The following methods were converted to properties with their respective names changed:
+Các method sau đây đã được chuyển thành property với tên tương ứng được thay đổi:
 
 ====================  ==============================================================
 GDScript              C#
@@ -667,11 +615,9 @@ GDScript              C#
 Basis
 -----
 
-Structs cannot have parameterless constructors in C#. Therefore, ``new Basis()``
-initializes all primitive members to their default value. Use ``Basis.Identity``
-for the equivalent of ``Basis()`` in GDScript and C++.
+Struct không thể có constructor không tham số trong C#. Vì vậy, ``new Basis()`` khởi tạo tất cả member nguyên thủy về giá trị mặc định của chúng. Hãy sử dụng ``Basis.Identity`` để có tương đương với ``Basis()`` trong GDScript và C++.
 
-The following method was converted to a property with a different name:
+Method sau đây đã được chuyển thành property với tên khác:
 
 ====================  ==============================================================
 GDScript              C#
@@ -682,11 +628,9 @@ GDScript              C#
 Transform2D
 -----------
 
-Structs cannot have parameterless constructors in C#. Therefore, ``new Transform2D()``
-initializes all primitive members to their default value.
-Please use ``Transform2D.Identity`` for the equivalent of ``Transform2D()`` in GDScript and C++.
+Struct không thể có constructor không tham số trong C#. Vì vậy, ``new Transform2D()`` khởi tạo tất cả member nguyên thủy về giá trị mặc định của chúng. Hãy sử dụng ``Transform2D.Identity`` để có tương đương với ``Transform2D()`` trong GDScript và C++.
 
-The following methods were converted to properties with their respective names changed:
+Các method sau đây đã được chuyển thành property với tên tương ứng được thay đổi:
 
 ====================  ==============================================================
 GDScript              C#
@@ -699,11 +643,9 @@ GDScript              C#
 Transform3D
 -----------
 
-Structs cannot have parameterless constructors in C#. Therefore, ``new Transform3D()``
-initializes all primitive members to their default value.
-Please use ``Transform3D.Identity`` for the equivalent of ``Transform3D()`` in GDScript and C++.
+Struct không thể có constructor không tham số trong C#. Vì vậy, ``new Transform3D()`` khởi tạo tất cả member nguyên thủy về giá trị mặc định của chúng. Hãy sử dụng ``Transform3D.Identity`` để có tương đương với ``Transform3D()`` trong GDScript và C++.
 
-The following methods were converted to properties with their respective names changed:
+Các method sau đây đã được chuyển thành property với tên tương ứng được thay đổi:
 
 ====================  ==============================================================
 GDScript              C#
@@ -715,7 +657,7 @@ GDScript              C#
 Rect2
 -----
 
-The following field was converted to a property with a *slightly* different name:
+Field sau đây đã được chuyển thành property với tên *hơi* khác:
 
 ================  ==================================================================
 GDScript          C#
@@ -723,7 +665,7 @@ GDScript          C#
 ``end``           ``End``
 ================  ==================================================================
 
-The following method was converted to a property with a different name:
+Method sau đây đã được chuyển thành property với tên khác:
 
 ================  ==================================================================
 GDScript          C#
@@ -734,9 +676,9 @@ GDScript          C#
 Rect2i
 ------
 
-This type is named ``Rect2I`` in C# to follow the .NET naming convention.
+Kiểu này được đặt tên là ``Rect2I`` trong C# để tuân theo quy ước đặt tên của .NET.
 
-The following field was converted to a property with a *slightly* different name:
+Trường sau đây đã được chuyển đổi thành một property với tên *hơi* khác:
 
 ================  ==================================================================
 GDScript          C#
@@ -744,7 +686,7 @@ GDScript          C#
 ``end``           ``End``
 ================  ==================================================================
 
-The following method was converted to a property with a different name:
+Method sau đây đã được chuyển đổi thành một property với tên khác:
 
 ================  ==================================================================
 GDScript          C#
@@ -755,9 +697,9 @@ GDScript          C#
 AABB
 ----
 
-This type is named ``Aabb`` in C# to follow the .NET naming convention.
+Kiểu này được đặt tên là ``Aabb`` trong C# để tuân theo quy ước đặt tên của .NET.
 
-The following method was converted to a property with a different name:
+Method sau đây đã được chuyển đổi thành một property với tên khác:
 
 ================  ==================================================================
 GDScript          C#
@@ -768,30 +710,23 @@ GDScript          C#
 Quaternion
 ----------
 
-Structs cannot have parameterless constructors in C#. Therefore, ``new Quaternion()``
-initializes all primitive members to their default value.
-Please use ``Quaternion.Identity`` for the equivalent of ``Quaternion()`` in GDScript and C++.
+Struct không thể có constructor không tham số trong C#. Do đó, ``new Quaternion()`` khởi tạo tất cả member nguyên thủy về giá trị mặc định của chúng. Vui lòng sử dụng ``Quaternion.Identity`` để có được phiên bản tương đương với ``Quaternion()`` trong GDScript và C++.
 
 Projection
 ----------
 
-Structs cannot have parameterless constructors in C#. Therefore, ``new Projection()``
-initializes all primitive members to their default value.
-Please use ``Projection.Identity`` for the equivalent of ``Projection()`` in GDScript and C++.
+Struct không thể có constructor không tham số trong C#. Do đó, ``new Projection()`` khởi tạo tất cả member nguyên thủy về giá trị mặc định của chúng. Vui lòng sử dụng ``Projection.Identity`` để có được phiên bản tương đương với ``Projection()`` trong GDScript và C++.
 
 Color
 -----
 
-Structs cannot have parameterless constructors in C#. Therefore, ``new Color()``
-initializes all primitive members to their default value (which represents the transparent black color).
-Please use ``Colors.Black`` for the equivalent of ``Color()`` in GDScript and C++.
+Struct không thể có constructor không tham số trong C#. Do đó, ``new Color()`` khởi tạo tất cả member nguyên thủy về giá trị mặc định của chúng (đại diện cho màu đen trong suốt). Vui lòng sử dụng ``Colors.Black`` để có được phiên bản tương đương với ``Color()`` trong GDScript và C++.
 
-The global ``Color8`` method to construct a Color from bytes is available as a static method
-in the Color type.
+Method toàn cục ``Color8`` để tạo một Color từ các byte được cung cấp dưới dạng static method trong kiểu Color.
 
-The Color constants are available in the ``Colors`` static class as readonly properties.
+Các hằng số Color được cung cấp dưới dạng readonly property trong static class ``Colors``.
 
-The following method was converted to a property with a different name:
+Method sau đây đã được chuyển đổi thành một property với tên khác:
 
 ====================  ==============================================================
 GDScript              C#
@@ -799,7 +734,7 @@ GDScript              C#
 ``get_luminance()``   ``Luminance``
 ====================  ==============================================================
 
-The following method was converted to a method with a different name:
+Method sau đây đã được chuyển đổi thành một method với tên khác:
 
 ====================  ==============================================================
 GDScript              C#
@@ -807,7 +742,7 @@ GDScript              C#
 ``html(String)``      ``FromHtml(ReadOnlySpan<char>)``
 ====================  ==============================================================
 
-The following methods are available as constructors:
+Các method sau đây được cung cấp dưới dạng constructor:
 
 ====================  ==============================================================
 GDScript              C#
@@ -819,68 +754,56 @@ GDScript              C#
 Array
 -----
 
-The equivalent of packed arrays are ``System.Array``.
+Tương đương với packed array là ``System.Array``.
 
-See also :ref:`PackedArray in C# <doc_c_sharp_collections_packedarray>`.
+Xem thêm :ref:`PackedArray in C# <doc_c_sharp_collections_packedarray>`.
 
-Use ``Godot.Collections.Array`` for an untyped ``Variant`` array.
-``Godot.Collections.Array<T>`` is a type-safe wrapper around ``Godot.Collections.Array``.
+Sử dụng ``Godot.Collections.Array`` cho một array ``Variant`` không định kiểu. ``Godot.Collections.Array<T>`` là một wrapper type-safe cho ``Godot.Collections.Array``.
 
-See also :ref:`Array in C# <doc_c_sharp_collections_array>`.
+Xem thêm :ref:`Array in C# <doc_c_sharp_collections_array>`.
 
 Dictionary
 ----------
 
-Use ``Godot.Collections.Dictionary`` for an untyped ``Variant`` dictionary.
-``Godot.Collections.Dictionary<TKey, TValue>`` is a type-safe wrapper around ``Godot.Collections.Dictionary``.
+Sử dụng ``Godot.Collections.Dictionary`` cho một dictionary ``Variant`` không định kiểu. ``Godot.Collections.Dictionary<TKey, TValue>`` là một wrapper type-safe cho ``Godot.Collections.Dictionary``.
 
-See also :ref:`Dictionary in C# <doc_c_sharp_collections_dictionary>`.
+Xem thêm :ref:`Dictionary in C# <doc_c_sharp_collections_dictionary>`.
 
 Variant
 -------
 
-``Godot.Variant`` is used to represent Godot's native :ref:`Variant <class_Variant>` type.
-Any :ref:`Variant-compatible type <c_sharp_variant_compatible_types>` can be converted from/to it.
+``Godot.Variant`` được dùng để biểu diễn kiểu :ref:`Variant <class_Variant>` gốc của Godot. Bất kỳ :ref:`Variant-compatible type <c_sharp_variant_compatible_types>` nào cũng có thể được chuyển đổi từ hoặc sang kiểu này.
 
-See also: :ref:`doc_c_sharp_variant`.
+Xem thêm: :ref:`doc_c_sharp_variant`.
 
-Communicating with other scripting languages
---------------------------------------------
+Giao tiếp với các ngôn ngữ scripting khác
+-----------------------------------------
 
-This is explained extensively in :ref:`doc_cross_language_scripting`.
+Nội dung này được giải thích đầy đủ trong :ref:`doc_cross_language_scripting`.
 
 .. _doc_c_sharp_differences_await:
 
-``await`` keyword
+Từ khóa ``await``
 -----------------
 
-Something similar to GDScript's ``await`` keyword can be achieved with C#'s
-`await keyword <https://docs.microsoft.com/en-US/dotnet/csharp/language-reference/keywords/await>`_.
+Có thể đạt được điều tương tự như từ khóa ``await`` của GDScript bằng `await keyword <https://docs.microsoft.com/en-US/dotnet/csharp/language-reference/keywords/await>`_ của C#.
 
-The ``await`` keyword in C# can be used with any awaitable expression. It's commonly
-used with operands of the types `Task`_, `Task<TResult>`_, `ValueTask`_, or `ValueTask<TResult>`_.
+Từ khóa ``await`` trong C# có thể được sử dụng với bất kỳ biểu thức awaitable nào. Từ khóa này thường được sử dụng với các toán hạng thuộc kiểu `Task`_, `Task<TResult>`_, `ValueTask`_ hoặc `ValueTask<TResult>`_.
 
-An expression ``t`` is awaitable if one of the following holds:
+Một biểu thức ``t`` là awaitable nếu thỏa mãn một trong các điều kiện sau:
 
-* ``t`` is of compile-time type ``dynamic``.
-* ``t`` has an accessible instance or extension method called ``GetAwaiter`` with no
-  parameters and no type parameters, and a return type ``A`` for which all of the
-  following hold:
+* ``t`` có kiểu tại thời điểm biên dịch là ``dynamic``. * ``t`` có một instance method hoặc extension method có thể truy cập tên là ``GetAwaiter``, không có tham số và không có type parameter, với kiểu trả về ``A`` thỏa mãn tất cả các điều kiện sau:
 
-  * ``A`` implements the interface ``System.Runtime.CompilerServices.INotifyCompletion``.
-  * ``A`` has an accessible, readable instance property ``IsCompleted`` of type ``bool``.
-  * ``A`` has an accessible instance method ``GetResult`` with no parameters and no type
-    parameters.
+  * ``A`` triển khai interface ``System.Runtime.CompilerServices.INotifyCompletion``. * ``A`` có một instance property ``IsCompleted`` có thể truy cập, có thể đọc, thuộc kiểu ``bool``. * ``A`` có một instance method ``GetResult`` có thể truy cập, không có tham số và không có type parameter.
 
 .. _Task: https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task
 .. _Task<TResult>: https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1
 .. _ValueTask: https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.valuetask
 .. _ValueTask<TResult>: https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.valuetask-1
 
-An equivalent of awaiting a signal in GDScript can be achieved with the ``await`` keyword and
-``GodotObject.ToSignal``.
+Có thể đạt được phiên bản tương đương với việc await một signal trong GDScript bằng từ khóa ``await`` và ``GodotObject.ToSignal``.
 
-Example:
+Ví dụ:
 
 .. code-block:: csharp
 

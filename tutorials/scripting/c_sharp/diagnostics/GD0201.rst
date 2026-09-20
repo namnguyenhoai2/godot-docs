@@ -1,51 +1,38 @@
-GD0201: The name of the delegate must end with 'EventHandler'
-=============================================================
+GD0201: Tên của delegate phải kết thúc bằng 'EventHandler'
+==========================================================
 
-====================================  ======================================
-                                      Value
-====================================  ======================================
-**Rule ID**                           GD0201
-**Category**                          Usage
-**Fix is breaking or non-breaking**   Breaking
-**Enabled by default**                Yes
-====================================  ======================================
+==================================== ====================================== Giá trị ==================================== ====================================== **ID quy tắc** GD0201 **Danh mục** Cách sử dụng **Bản sửa lỗi có làm thay đổi khả năng tương thích hay không** Breaking **Được bật theo mặc định** Có ==================================== ======================================
 
-Cause
------
+Nguyên nhân
+-----------
 
-A delegate annotated with the ``[Signal]`` attribute has a name that doesn't
-end with 'EventHandler'.
+Một delegate được chú thích bằng thuộc tính ``[Signal]`` có tên không kết thúc bằng 'EventHandler'.
 
-Rule description
-----------------
+Mô tả quy tắc
+-------------
 
-Godot source generators will generate C# events using the name of the delegate
-with the 'EventHandler' suffix removed. Adding the 'EventHandler' suffix to the
-name of delegates used in events is a `.NET naming convention <https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/names-of-classes-structs-and-interfaces#names-of-common-types>`_.
+Các source generator của Godot sẽ tạo các event C# bằng cách sử dụng tên của delegate sau khi loại bỏ hậu tố 'EventHandler'. Việc thêm hậu tố 'EventHandler' vào tên của các delegate được sử dụng trong event là một `.NET naming convention <https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/names-of-classes-structs-and-interfaces#names-of-common-types>`_.
 
-Using a suffix for the delegate allows the generated event to use the name without
-the suffix avoiding a naming conflict.
+Việc sử dụng hậu tố cho delegate cho phép event được tạo ra sử dụng tên không có hậu tố, nhờ đó tránh xung đột tên.
 
 .. code-block:: csharp
 
-    // This delegate is invalid since the name doesn't end with 'EventHandler'.
+    // Delegate này không hợp lệ vì tên không kết thúc bằng 'EventHandler'.
     [Signal]
     public void InvalidSignal();
 
-    // This delegate is valid since the name ends with 'EventHandler'.
+    // Delegate này hợp lệ vì tên kết thúc bằng 'EventHandler'.
     [Signal]
     public void ValidSignalEventHandler();
 
-Take a look at the :ref:`C# signals <doc_c_sharp_signals>` documentation for more
-information about how to declare and use signals.
+Hãy xem tài liệu :ref:`C# signals <doc_c_sharp_signals>` để biết thêm thông tin về cách khai báo và sử dụng signal.
 
-How to fix violations
----------------------
+Cách khắc phục vi phạm
+----------------------
 
-To fix a violation of this rule, add 'EventHandler' to the end of the delegate name.
+Để khắc phục vi phạm quy tắc này, hãy thêm 'EventHandler' vào cuối tên delegate.
 
-When to suppress warnings
--------------------------
+Khi nào cần tắt cảnh báo
+------------------------
 
-Do not suppress a warning from this rule. Signal delegates without the suffix
-will be ignored by the source generator, so the signal won't be registered.
+Không tắt cảnh báo từ quy tắc này. Các signal delegate không có hậu tố sẽ bị source generator bỏ qua, vì vậy signal sẽ không được đăng ký.

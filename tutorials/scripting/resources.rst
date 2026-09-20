@@ -1,85 +1,59 @@
 .. _doc_resources:
 
-Resources
-=========
+Tài nguyên
+==========
 
-Nodes and resources
--------------------
+Node và tài nguyên
+------------------
 
-Up to this tutorial, we focused on the :ref:`Node <class_Node>`
-class in Godot as that's the one you use to code behavior and
-most of the engine's features rely on it. There is
-another datatype that is just as important:
+Cho đến tutorial này, chúng ta tập trung vào class :ref:`Node <class_Node>` trong Godot vì đây là class được dùng để lập trình hành vi và hầu hết tính năng của engine đều dựa vào nó. Có một kiểu dữ liệu khác cũng quan trọng không kém:
 :ref:`Resource <class_Resource>`.
 
-*Nodes* give you functionality: they draw sprites, 3D models, simulate physics,
-arrange user interfaces, etc. **Resources** are **data containers**. They don't
-do anything on their own: instead, nodes use the data contained in resources.
+*Node* cung cấp chức năng: chúng vẽ sprite, model 3D, mô phỏng vật lý, sắp xếp giao diện người dùng, v.v. **Resource** là **các vùng chứa dữ liệu**. Chúng không tự làm gì cả; thay vào đó, node sử dụng dữ liệu chứa trong resource.
 
-Anything Godot saves or loads from disk is a resource. Be it a scene (a ``.tscn``
-or a ``.scn`` file), an image, a script... Here are some :ref:`Resource <class_Resource>` examples:
+Bất kỳ thứ gì Godot lưu hoặc tải từ ổ đĩa đều là một resource. Có thể là một scene (tệp ``.tscn`` hoặc ``.scn``), một hình ảnh, một script... Dưới đây là một số ví dụ :ref:`Resource <class_Resource>`:
 
-- :ref:`Texture <class_Texture>`
-- :ref:`Script <class_Script>`
-- :ref:`Mesh <class_Mesh>`
-- :ref:`Animation <class_Animation>`
-- :ref:`AudioStream <class_AudioStream>`
-- :ref:`Font <class_Font>`
-- :ref:`Translation <class_Translation>`
+- :ref:`Texture <class_Texture>` - :ref:`Script <class_Script>` - :ref:`Mesh <class_Mesh>` - :ref:`Animation <class_Animation>` - :ref:`AudioStream <class_AudioStream>` - :ref:`Font <class_Font>` - :ref:`Translation <class_Translation>`
 
-When the engine loads a resource from disk, **it only loads it once**. If a copy
-of that resource is already in memory, trying to load the resource again will
-return the same copy every time. As resources only contain data, there is no need
-to duplicate them.
+Khi engine tải một resource từ ổ đĩa, **nó chỉ tải resource đó một lần**. Nếu một bản sao của resource đó đã có trong bộ nhớ, việc tải lại resource sẽ luôn trả về cùng bản sao đó. Vì resource chỉ chứa dữ liệu nên không cần tạo bản sao cho chúng.
 
-Every object, be it a Node or a Resource, can export properties. There are many
-types of Properties, like String, integer, Vector2, etc., and any of these types
-can become a resource. This means that both nodes and resources can contain
-resources as properties:
+Mọi object, dù là Node hay Resource, đều có thể export các property. Có nhiều kiểu Property, như String, integer, Vector2, v.v., và bất kỳ kiểu nào trong số này cũng có thể trở thành một resource. Điều này có nghĩa là cả node và resource đều có thể chứa resource dưới dạng property:
 
 .. image:: img/nodes_resources.webp
 
-External vs built-in
---------------------
+Bên ngoài và tích hợp sẵn
+-------------------------
 
-There are two ways to save resources. They can be:
+Có hai cách để lưu resource. Chúng có thể là:
 
-1. **External** to a scene, saved on the disk as individual files.
-2. **Built-in**, saved inside the ``.tscn`` or the ``.scn`` file they're attached to.
+1. **External**, nằm bên ngoài scene và được lưu trên ổ đĩa dưới dạng các tệp riêng lẻ. 2. **Built-in**, được lưu bên trong tệp ``.tscn`` hoặc ``.scn`` mà chúng được gắn vào.
 
-To be more specific, here's a :ref:`Texture2D <class_Texture2D>`
-in a :ref:`Sprite2D <class_Sprite2D>` node:
+Cụ thể hơn, đây là một :ref:`Texture2D <class_Texture2D>` trong một node :ref:`Sprite2D <class_Sprite2D>`:
 
 .. image:: img/spriteprop.webp
 
-Clicking the resource preview allows us to view the resource's properties.
+Nhấp vào phần xem trước resource cho phép chúng ta xem các property của resource.
 
 .. image:: img/resourcerobi.webp
 
-The path property tells us where the resource comes from. In this case, it comes
-from a PNG image called ``robi.png``. When the resource comes from a file like
-this, it is an external resource. If you erase the path or this path is empty,
-it becomes a built-in resource.
+Property path cho biết resource bắt nguồn từ đâu. Trong trường hợp này, nó bắt nguồn từ một hình ảnh PNG có tên ``robi.png``. Khi resource đến từ một tệp như vậy, đó là external resource. Nếu bạn xóa path hoặc path này để trống, nó sẽ trở thành built-in resource.
 
-The switch between built-in and external resources happens when you save the
-scene. In the example above, if you erase the path ``"res://robi.png"`` and
-save, Godot will save the image inside the ``.tscn`` scene file.
+Việc chuyển đổi giữa built-in resource và external resource xảy ra khi bạn lưu scene. Trong ví dụ trên, nếu bạn xóa path ``"res://robi.png"`` rồi lưu, Godot sẽ lưu hình ảnh bên trong tệp scene ``.tscn``.
 
 .. note::
 
-    Even if you save a built-in resource, when you instance a scene multiple
-    times, the engine will only load one copy of it.
+    Ngay cả khi bạn lưu một built-in resource, khi instance một scene nhiều lần, engine cũng chỉ tải một bản sao của resource đó.
 
-Loading resources from code
----------------------------
+Tải resource từ code
+--------------------
 
-There are two ways to load resources from code. First, you can use the ``load()`` function anytime:
+Có hai cách để tải resource từ code. Trước tiên, bạn có thể sử dụng hàm ``load()`` bất cứ lúc nào:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     func _ready():
-        # Godot loads the Resource when it reads this very line.
+        # Godot tải Resource khi đọc chính dòng này.
         var imported_resource = load("res://robi.png")
         $sprite.texture = imported_resource
 
@@ -87,36 +61,32 @@ There are two ways to load resources from code. First, you can use the ``load()`
 
     public override void _Ready()
     {
-        // Godot loads the Resource when it executes this line.
+        // Godot tải Resource khi thực thi dòng này.
         var texture = GD.Load<Texture>("res://Robi.png");
         var sprite = GetNode<Sprite2D>("sprite");
         sprite.Texture = texture;
     }
 
-You can also ``preload`` resources. Unlike ``load``, this function will read the
-file from disk and load it at compile-time. As a result, you cannot call ``preload``
-with a variable path: you need to use a constant string.
+Bạn cũng có thể ``preload`` resource. Không giống ``load``, hàm này sẽ đọc tệp từ ổ đĩa và tải tệp tại thời điểm compile. Do đó, bạn không thể gọi ``preload`` với một path dạng biến: bạn cần sử dụng một chuỗi hằng.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     func _ready():
-        # Godot loads the resource at compile-time
+        # Godot tải resource tại thời điểm compile
         var imported_resource = preload("res://robi.png")
         get_node("sprite").texture = imported_resource
 
  .. code-tab:: csharp
 
-    // 'preload()' is unavailable in C Sharp.
+    // 'preload()' không khả dụng trong C Sharp.
 
-Loading scenes
---------------
+Tải scene
+---------
 
-Scenes are also resources, but there is a catch. Scenes saved to disk are
-resources of type :ref:`PackedScene <class_PackedScene>`. The
-scene is packed inside a :ref:`Resource <class_Resource>`.
+Scene cũng là resource, nhưng có một điểm cần lưu ý. Scene được lưu trên ổ đĩa là các resource thuộc kiểu :ref:`PackedScene <class_PackedScene>`. Scene được đóng gói bên trong một :ref:`Resource <class_Resource>`.
 
-To get an instance of the scene, you have to use the
+Để lấy một instance của scene, bạn phải sử dụng
 :ref:`PackedScene.instantiate() <class_PackedScene_method_instantiate>` method.
 
 .. tabs::
@@ -137,79 +107,54 @@ To get an instance of the scene, you have to use the
         AddChild(bullet);
     }
 
-This method creates the nodes in the scene's hierarchy, configures them, and
-returns the root node of the scene. You can then add it as a child of any other
-node.
+Phương thức này tạo các node trong hệ phân cấp của scene, cấu hình chúng và trả về node gốc của scene. Sau đó, bạn có thể thêm nó làm node con của bất kỳ node nào khác.
 
-The approach has several advantages. As the :ref:`PackedScene.instantiate()
-<class_PackedScene_method_instantiate>` function is fast, you can create new
-enemies, bullets, effects, etc. without having to load them again from disk each
-time. Remember that, as always, images, meshes, etc. are all shared between the
-scene instances.
+Cách tiếp cận này có một số ưu điểm. Vì hàm :ref:`PackedScene.instantiate() <class_PackedScene_method_instantiate>` rất nhanh, bạn có thể tạo enemy, đạn, hiệu ứng mới, v.v. mà không phải tải lại chúng từ ổ đĩa mỗi lần. Hãy nhớ rằng, như mọi khi, hình ảnh, mesh, v.v. đều được dùng chung giữa các instance của scene.
 
-Freeing resources
------------------
+Giải phóng resource
+-------------------
 
-When a :ref:`Resource <class_Resource>` is no longer in use, it will automatically free itself.
-Since, in most cases, Resources are contained in Nodes, when you free a node,
-the engine frees all the resources it owns as well if no other node uses them.
+Khi một :ref:`Resource <class_Resource>` không còn được sử dụng, nó sẽ tự động tự giải phóng. Vì trong hầu hết trường hợp, Resource được chứa trong Node, khi bạn giải phóng một node, engine cũng sẽ giải phóng tất cả resource mà node đó sở hữu nếu không có node nào khác sử dụng chúng.
 
-Creating your own resources
----------------------------
+Tạo resource của riêng bạn
+--------------------------
 
-Like any Object in Godot, users can also script Resources. Resource scripts
-inherit the ability to freely translate between object properties and serialized
-text or binary data (\*.tres, \*.res). They also inherit the reference-counting
-memory management from the RefCounted type.
+Giống như mọi Object trong Godot, người dùng cũng có thể viết script cho Resource. Resource script kế thừa khả năng chuyển đổi tự do giữa các property của object và văn bản hoặc dữ liệu nhị phân được serialize (\*.tres, \*.res). Chúng cũng kế thừa cơ chế quản lý bộ nhớ reference-counting từ kiểu RefCounted.
 
-This comes with many distinct advantages over alternative data
-structures, such as JSON, CSV, or custom TXT files. Users can only import these
-assets as a :ref:`Dictionary <class_Dictionary>` (JSON) or as a
+Điều này mang lại nhiều ưu điểm riêng biệt so với các cấu trúc dữ liệu thay thế như JSON, CSV hoặc tệp TXT tùy chỉnh. Người dùng chỉ có thể import các asset này dưới dạng :ref:`Dictionary <class_Dictionary>` (JSON) hoặc dưới dạng một
 :ref:`FileAccess <class_FileAccess>` to parse. What sets Resources apart is their
-inheritance of :ref:`Object <class_Object>`, :ref:`RefCounted <class_RefCounted>`,
-and :ref:`Resource <class_Resource>` features:
+kế thừa các tính năng của :ref:`Object <class_Object>`, :ref:`RefCounted <class_RefCounted>` và :ref:`Resource <class_Resource>`:
 
-- They can define constants, so constants from other data fields or objects are not needed.
+- Chúng có thể định nghĩa các hằng số, vì vậy không cần đến các hằng số từ những trường dữ liệu hoặc object khác.
 
-- They can define methods, including setter/getter methods for properties. This allows for abstraction and encapsulation of the underlying data. If the Resource script's structure needs to change, the game using the Resource need not also change.
+- Chúng có thể định nghĩa các method, bao gồm method setter/getter cho property. Điều này cho phép trừu tượng hóa và đóng gói dữ liệu bên dưới. Nếu cấu trúc của Resource script cần thay đổi, game sử dụng Resource cũng không cần phải thay đổi theo.
 
-- They can define signals, so Resources can trigger responses to changes in the data they manage.
+- Chúng có thể định nghĩa signal, nhờ đó Resource có thể kích hoạt phản hồi trước những thay đổi trong dữ liệu mà chúng quản lý.
 
-- They have defined properties, so users know 100% that their data will exist.
+- Chúng có các property được định nghĩa, vì vậy người dùng biết chắc 100% rằng dữ liệu của họ sẽ tồn tại.
 
-- Resource auto-serialization and deserialization is a built-in Godot Engine feature. Users do not need to implement custom logic to import/export a resource file's data.
+- Tính năng auto-serialization và deserialization cho Resource được tích hợp sẵn trong Godot Engine. Người dùng không cần triển khai logic tùy chỉnh để import/export dữ liệu của một tệp resource.
 
-- Resources can even serialize sub-Resources recursively, meaning users can design even more sophisticated data structures.
+- Resource thậm chí có thể serialize đệ quy các sub-Resource, nghĩa là người dùng có thể thiết kế các cấu trúc dữ liệu phức tạp hơn nữa.
 
-- Users can save Resources as version-control-friendly text files (\*.tres). Upon exporting a game, Godot serializes resource files as binary files (\*.res) for increased speed and compression.
+- Người dùng có thể lưu Resource dưới dạng các tệp văn bản thân thiện với version control (\*.tres). Khi export game, Godot serialize các tệp resource thành tệp nhị phân (\*.res) để tăng tốc độ và khả năng nén.
 
-- Godot Engine's Inspector renders and edits Resource files out-of-the-box. As such, users often do not need to implement custom logic to visualize or edit their data. To do so, double-click the resource file in the FileSystem dock or click the folder icon in the Inspector and open the file in the dialog.
+- Inspector của Godot Engine có thể hiển thị và chỉnh sửa các tệp Resource ngay khi cài đặt. Do đó, người dùng thường không cần triển khai logic tùy chỉnh để trực quan hóa hoặc chỉnh sửa dữ liệu. Để làm vậy, hãy nhấp đúp vào tệp resource trong dock FileSystem hoặc nhấp vào biểu tượng thư mục trong Inspector rồi mở tệp trong hộp thoại.
 
-- They can extend **other** resource types besides just the base Resource.
+- Chúng có thể mở rộng **các** kiểu resource khác chứ không chỉ kiểu Resource cơ sở.
 
-Godot makes it easy to create custom Resources in the Inspector.
+Godot giúp dễ dàng tạo Resource tùy chỉnh trong Inspector.
 
-1. Create a new Resource object in the Inspector. This can even be a type that derives Resource, so long as your script is extending that type.
-2. Set the ``script`` property in the Inspector to be your script.
+1. Tạo một object Resource mới trong Inspector. Đây thậm chí có thể là một kiểu kế thừa từ Resource, miễn là script của bạn đang mở rộng kiểu đó. 2. Đặt property ``script`` trong Inspector thành script của bạn.
 
-The Inspector will now display your Resource script's custom properties. If one edits
-those values and saves the resource, the Inspector serializes the custom properties
-too! To save a resource from the Inspector, click the save icon at the top of the Inspector,
-and select "Save" or "Save As...".
+Inspector giờ sẽ hiển thị các property tùy chỉnh của Resource script. Nếu bạn chỉnh sửa các giá trị đó rồi lưu resource, Inspector cũng sẽ serialize các property tùy chỉnh! Để lưu resource từ Inspector, hãy nhấp vào biểu tượng lưu ở đầu Inspector rồi chọn "Save" hoặc "Save As...".
 
-If the script's language supports :ref:`script classes <doc_gdscript_basics_class_name>`,
-then it streamlines the process. Defining a name for your script alone will add it to
-the Inspector's creation dialog. This will auto-add your script to the Resource
-object you create.
+Nếu ngôn ngữ của script hỗ trợ :ref:`script classes <doc_gdscript_basics_class_name>`, quy trình sẽ được đơn giản hóa. Chỉ cần định nghĩa tên cho script là đủ để thêm script vào hộp thoại tạo của Inspector. Script của bạn sẽ được tự động thêm vào object Resource mà bạn tạo.
 
-Let's see some examples.
-Create a :ref:`Resource <class_Resource>` and name it ``bot_stats``.
-It should appear in your file tab with the full name ``bot_stats.tres``.
-Without a script, it's useless, so let's add some data and logic!
-Attach a script to it named ``bot_stats.gd`` (or just create a new script, and then drag it to it).
+Hãy xem một vài ví dụ. Tạo một :ref:`Resource <class_Resource>` và đặt tên là ``bot_stats``. Nó sẽ xuất hiện trong tab tệp của bạn với tên đầy đủ là ``bot_stats.tres``. Không có script thì nó vô dụng, vì vậy hãy thêm một ít dữ liệu và logic! Gắn một script có tên ``bot_stats.gd`` vào nó (hoặc chỉ cần tạo một script mới rồi kéo script đó vào).
 
 .. note::
-    To make the new resource class appear in the Create Resource GUI you need to provide a class name for GDScript, or use the [GlobalClass] attribute in C#.
+    Để class resource mới xuất hiện trong GUI Create Resource, bạn cần cung cấp tên class cho GDScript hoặc sử dụng attribute [GlobalClass] trong C#.
 
 .. tabs::
   .. code-tab:: gdscript GDScript
@@ -221,9 +166,9 @@ Attach a script to it named ``bot_stats.gd`` (or just create a new script, and t
     @export var sub_resource: Resource
     @export var strings: PackedStringArray
 
-    # Make sure that every parameter has a default value.
-    # Otherwise, there will be problems with creating and editing
-    # your resource via the inspector.
+    # Hãy đảm bảo mọi parameter đều có giá trị mặc định.
+    # Nếu không, việc tạo và chỉnh sửa
+    # resource của bạn thông qua inspector sẽ gặp vấn đề.
     func _init(p_health = 0, p_sub_resource = null, p_strings = []):
         health = p_health
         sub_resource = p_sub_resource
@@ -248,11 +193,11 @@ Attach a script to it named ``bot_stats.gd`` (or just create a new script, and t
                 [Export]
                 public string[] Strings { get; set; }
 
-                // Make sure you provide a parameterless constructor.
-                // In C#, a parameterless constructor is different from a
-                // constructor with all default values.
-                // Without a parameterless constructor, Godot will have problems
-                // creating and editing your resource via the inspector.
+                // Hãy đảm bảo bạn cung cấp một constructor không có parameter.
+                // Trong C#, constructor không có parameter khác với
+                // constructor có tất cả giá trị mặc định.
+                // Nếu không có constructor không có parameter, Godot sẽ gặp vấn đề khi
+                // tạo và chỉnh sửa resource của bạn thông qua inspector.
                 public BotStats() : this(0, null, null) {}
 
                 public BotStats(int health, Resource subResource, string[] strings)
@@ -264,7 +209,7 @@ Attach a script to it named ``bot_stats.gd`` (or just create a new script, and t
             }
         }
 
-Now, create a :ref:`CharacterBody3D <class_CharacterBody3D>`, name it ``Bot``, and add the following script to it:
+Bây giờ, hãy tạo một :ref:`CharacterBody3D <class_CharacterBody3D>`, đặt tên là ``Bot`` và thêm script sau vào đó:
 
 .. tabs::
   .. code-tab:: gdscript GDScript
@@ -274,11 +219,11 @@ Now, create a :ref:`CharacterBody3D <class_CharacterBody3D>`, name it ``Bot``, a
     @export var stats: Resource
 
     func _ready():
-        # Uses an implicit, duck-typed interface for any 'health'-compatible resources.
+        # Sử dụng interface implicit, kiểu duck-typed cho mọi resource tương thích với 'health'.
         if stats:
             stats.health = 10
             print(stats.health)
-            # Prints "10"
+            # In "10"
 
   .. code-tab:: csharp
 
@@ -296,25 +241,19 @@ Now, create a :ref:`CharacterBody3D <class_CharacterBody3D>`, name it ``Bot``, a
                 {
                     if (Stats is BotStats botStats)
                     {
-                        GD.Print(botStats.Health); // Prints '10'.
+                        GD.Print(botStats.Health); // In '10'.
                     }
                 }
             }
         }
 
-Now, select the :ref:`CharacterBody3D <class_CharacterBody3D>` node which we named ``bot``, and drag&drop the ``bot_stats.tres`` resource onto the Inspector. It should print 10! Obviously, this setup can be used for more advanced features than this, but as long you really understand *how* it all worked, you should figure out everything else related to Resources.
+Bây giờ, hãy chọn node :ref:`CharacterBody3D <class_CharacterBody3D>` mà chúng ta đã đặt tên là ``bot``, rồi kéo và thả resource ``bot_stats.tres`` vào Inspector. Nó sẽ in ra 10! Rõ ràng, cách thiết lập này có thể được dùng cho các tính năng nâng cao hơn thế, nhưng miễn là bạn thực sự hiểu *cách* mọi thứ hoạt động, bạn sẽ có thể tự tìm hiểu mọi điều khác liên quan đến Resource.
 
 .. note::
 
-    Resource scripts are similar to Unity's ScriptableObjects. The Inspector
-    provides built-in support for custom resources. If desired though, users
-    can even design their own Control-based tool scripts and combine them
-    with an :ref:`EditorPlugin <class_EditorPlugin>` to create custom
-    visualizations and editors for their data.
+    Resource script tương tự như ScriptableObject của Unity. Inspector cung cấp hỗ trợ tích hợp sẵn cho resource tùy chỉnh. Tuy nhiên, nếu muốn, người dùng thậm chí có thể tự thiết kế các tool script dựa trên Control và kết hợp chúng với một :ref:`EditorPlugin <class_EditorPlugin>` để tạo các trình chỉnh sửa và phần trực quan hóa tùy chỉnh cho dữ liệu của mình.
 
-    Unreal Engine's DataTables and CurveTables are also easy to recreate with
-    Resource scripts. DataTables are a String mapped to a custom struct, similar
-    to a Dictionary mapping a String to a secondary custom Resource script.
+    DataTable và CurveTable của Unreal Engine cũng dễ dàng được tái tạo bằng Resource script. DataTable là một String được ánh xạ tới một struct tùy chỉnh, tương tự như một Dictionary ánh xạ String tới một Resource script tùy chỉnh thứ cấp.
 
     .. tabs::
       .. code-tab:: gdscript GDScript
@@ -325,8 +264,8 @@ Now, select the :ref:`CharacterBody3D <class_CharacterBody3D>` node which we nam
         const BotStats = preload("bot_stats.gd")
 
         var data = {
-            "GodotBot": BotStats.new(10), # Creates instance with 10 health.
-            "DifferentBot": BotStats.new(20) # A different one with 20 health.
+            "GodotBot": BotStats.new(10), # Tạo instance với 10 health.
+            "DifferentBot": BotStats.new(20) # Một instance khác với 20 health.
         }
 
         func _init():
@@ -342,33 +281,25 @@ Now, select the :ref:`CharacterBody3D <class_CharacterBody3D>` node which we nam
 
             public BotStatsTable()
             {
-                _stats["GodotBot"] = new BotStats(10); // Creates instance with 10 health.
-                _stats["DifferentBot"] = new BotStats(20); // A different one with 20 health.
+                _stats["GodotBot"] = new BotStats(10); // Tạo instance với 10 health.
+                _stats["DifferentBot"] = new BotStats(20); // Một cái khác có 20 máu.
                 GD.Print(_stats);
             }
         }
 
-    Instead of inlining the Dictionary values, one could also, alternatively:
+    Thay vì nhúng trực tiếp các giá trị Dictionary, cũng có thể:
 
-    1. Import a table of values from a spreadsheet and generate these key-value pairs.
+    1. Import một bảng giá trị từ spreadsheet và tạo các cặp key-value này.
 
-    2. Design a visualization within the editor and create a plugin that adds it
-       to the Inspector when you open these types of Resources.
+    2. Thiết kế một visualization trong editor và tạo một plugin để thêm nó vào Inspector khi bạn mở các loại Resources này.
 
-    CurveTables are the same thing, except mapped to an Array of float values
-    or a :ref:`Curve <class_Curve>`/:ref:`Curve2D <class_Curve2D>` resource object.
+    CurveTables are the same thing, except mapped to an Array of float values or a :ref:`Curve <class_Curve>`/:ref:`Curve2D <class_Curve2D>` resource object.
 
 .. warning::
 
-    Beware that resource files (\*.tres/\*.res) will store the path of the script
-    they use in the file. When loaded, they will fetch and load this script as an
-    extension of their type. This means that trying to assign an
-    inner class of a script (i.e. using the ``class`` keyword in GDScript) won't
-    work. Godot will not serialize the custom properties on the script inner class properly.
+    Hãy lưu ý rằng các resource file (\*.tres/\*.res) sẽ lưu đường dẫn của script mà chúng sử dụng trong file. Khi được load, chúng sẽ tìm nạp và load script này như một phần mở rộng của kiểu dữ liệu. Điều này có nghĩa là việc cố gắng gán một inner class của một script (tức là sử dụng keyword ``class`` trong GDScript) sẽ không hoạt động. Godot sẽ không serialize đúng các thuộc tính tùy chỉnh trên inner class của script.
 
-    In the example below, Godot would load the ``Node`` script, see that it doesn't
-    extend ``Resource``, and then determine that the script failed to load for the
-    Resource object since the types are incompatible.
+    Trong ví dụ dưới đây, Godot sẽ load script ``Node``, nhận thấy rằng script này không extends ``Resource``, rồi xác định rằng script không load được cho Resource object vì các kiểu dữ liệu không tương thích.
 
     .. tabs::
       .. code-tab:: gdscript GDScript
@@ -382,7 +313,7 @@ Now, select the :ref:`CharacterBody3D <class_CharacterBody3D>` node which we nam
         func _ready():
             var my_res = MyResource.new()
 
-            # This will NOT serialize the 'value' property.
+            # Điều này sẽ KHÔNG serialize thuộc tính 'value'.
             ResourceSaver.save(my_res, "res://my_res.tres")
       .. code-tab:: csharp
 
@@ -401,7 +332,7 @@ Now, select the :ref:`CharacterBody3D <class_CharacterBody3D>` node which we nam
             {
                 var res = new MyResource();
 
-                // This will NOT serialize the 'Value' property.
+                // Điều này sẽ KHÔNG serialize thuộc tính 'Value'.
                 ResourceSaver.Save(res, "res://MyRes.tres");
             }
         }

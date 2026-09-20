@@ -1,171 +1,105 @@
 .. _doc_openxr_hand_tracking:
 
-OpenXR hand tracking
-====================
+Theo dõi bàn tay OpenXR
+=======================
 
-Introduction
-------------
+Giới thiệu
+----------
 
 .. note::
 
-    This page focuses specifically on the feature set exposed through OpenXR.
-    Parts of the functionality presented here also applies to WebXR and can by provided
-    by other XR interfaces.
+    Trang này tập trung cụ thể vào tập hợp tính năng được cung cấp thông qua OpenXR. Một phần chức năng được trình bày ở đây cũng áp dụng cho WebXR và có thể được cung cấp bởi các giao diện XR khác.
 
-When discussing hand tracking it is important to know that there are differences of opinion as to where lines are drawn.
-The practical result of this is that there are differences in implementation between the different OpenXR runtimes.
-You may find yourself in a place where chosen hardware doesn't support a piece of the puzzle or does things differently
-enough from the other platforms that you need to do extra work.
+Khi thảo luận về tính năng theo dõi bàn tay, điều quan trọng là phải biết rằng có nhiều quan điểm khác nhau về ranh giới được đặt ở đâu. Kết quả thực tế là có sự khác biệt trong cách triển khai giữa các OpenXR runtime khác nhau. Bạn có thể gặp trường hợp phần cứng đã chọn không hỗ trợ một mảnh ghép nào đó, hoặc hoạt động đủ khác so với các nền tảng khác khiến bạn phải thực hiện thêm công việc.
 
-That said, recent improvements to the OpenXR specification are closing these gaps and as platforms implement
-these improvements we are getting closer to a future where we have either full portability between platforms
-or at least a clear way to detect the capabilities of a platform.
+Dù vậy, những cải tiến gần đây đối với đặc tả OpenXR đang thu hẹp các khoảng cách này, và khi các nền tảng triển khai những cải tiến đó, chúng ta đang tiến gần hơn đến một tương lai trong đó hoặc là có khả năng chuyển đổi hoàn toàn giữa các nền tảng, hoặc ít nhất có một cách rõ ràng để phát hiện các capability của một nền tảng.
 
-When we look at the early days of VR the focus of the major platforms was on tracked controller based input.
-Here we are tracking a physical device that also has buttons for further input.
-From the tracking data we can infer the location of the player's hands but no further information is known,
-traditionally it was left up to the game to implement a mechanism to display the player's hand and animate
-the fingers based on further input from the controller, be it due to buttons being pressed or through proximity
-sensors.
-Often fingers are also placed based on context, what the user is holding, and what action a user is performing.
+Khi nhìn lại những ngày đầu của VR, trọng tâm của các nền tảng lớn là input dựa trên controller được theo dõi. Ở đây, chúng ta theo dõi một thiết bị vật lý cũng có các nút để nhận thêm input. Từ dữ liệu theo dõi, chúng ta có thể suy ra vị trí bàn tay của người chơi, nhưng không biết thêm thông tin nào khác; theo cách truyền thống, game phải tự triển khai cơ chế để hiển thị bàn tay của người chơi và animate các ngón tay dựa trên input bổ sung từ controller, dù input đó đến từ việc nhấn nút hay từ các cảm biến tiệm cận. Các ngón tay thường cũng được đặt dựa trên ngữ cảnh, thứ người dùng đang cầm và hành động người dùng đang thực hiện.
 
-More recently optical hand tracking has become a popular solution, where cameras track the user's hands
-and full tracking data for the hand and finger positions becomes available.
-Many vendors saw this as completely separate from controller tracking and introduced independent APIs to
-access hand and finger positions and orientation data.
-When handling input, it was up to the game developer to implement a gesture detection mechanism.
+Gần đây hơn, optical hand tracking đã trở thành một giải pháp phổ biến, trong đó camera theo dõi bàn tay người dùng và cung cấp đầy đủ dữ liệu theo dõi vị trí bàn tay, ngón tay. Nhiều nhà cung cấp xem đây là một hệ thống hoàn toàn tách biệt với controller tracking và giới thiệu các API độc lập để truy cập vị trí bàn tay, ngón tay và dữ liệu orientation. Khi xử lý input, game developer phải tự triển khai cơ chế phát hiện gesture.
 
-This split also exists in OpenXR, where controller tracking is handled primarily by the action map system,
-while optical hand tracking is primarily handled by the hand tracking API extension.
+Sự phân tách này cũng tồn tại trong OpenXR, trong đó controller tracking chủ yếu được xử lý bởi hệ thống action map, còn optical hand tracking chủ yếu được xử lý bởi extension hand tracking API.
 
-However, the world is not that black and white and we're seeing a number of scenarios
-where we cross the line:
+Tuy nhiên, thế giới không chỉ có hai màu trắng và đen, và chúng ta đang thấy một số tình huống trong đó hai phạm vi này giao nhau:
 
- *  Devices that fit in both categories, such as tracked gloves
-    and controllers such as the Index controller that also perform finger tracking.
- *  XR Runtimes that implement inferred hand tracking from controller data as a means
-    to solve proper finger placement for multiple controllers.
- *  XR applications that wish to seamlessly switch between controller and hand tracking
-    offering the same user experience regardless of approach used.
+ *  Các thiết bị phù hợp với cả hai nhóm, chẳng hạn như găng tay được theo dõi và các controller như Index controller, vốn cũng thực hiện finger tracking. * Các XR Runtime triển khai inferred hand tracking từ dữ liệu controller nhằm giải quyết việc đặt ngón tay chính xác cho nhiều controller. * Các XR application muốn chuyển đổi liền mạch giữa controller và hand tracking, mang lại cùng một trải nghiệm người dùng bất kể sử dụng phương pháp nào.
 
-OpenXR is answering this call by introducing further extensions that lets us query the capabilities of
-the XR runtime/hardware or that add further functionality across this divide.
-The problem that currently does remain is that there are gaps in adopting these extensions,
-with some platforms thus not reporting capabilities to their full extent.
-As such you may need to test for the features available on specific hardware
-and adjust your approach accordingly.
+OpenXR đang đáp lại nhu cầu này bằng cách giới thiệu thêm các extension cho phép chúng ta truy vấn capability của XR runtime/hardware hoặc bổ sung thêm chức năng vượt qua ranh giới này. Vấn đề hiện vẫn còn là các extension này chưa được áp dụng đồng đều, nên một số nền tảng chưa báo cáo đầy đủ capability của mình. Vì vậy, bạn có thể cần kiểm tra các feature có sẵn trên phần cứng cụ thể và điều chỉnh cách tiếp cận cho phù hợp.
 
-Demo project
-------------
+Dự án demo
+----------
 
-The information presented on this page was used to create a demo project that can be found
-`here <https://github.com/godotengine/godot-demo-projects/tree/master/xr/openxr_hand_tracking_demo>`_.
+Thông tin được trình bày trên trang này đã được dùng để tạo một dự án demo có thể tìm thấy `here <https://github.com/godotengine/godot-demo-projects/tree/master/xr/openxr_hand_tracking_demo>`_.
 
 
-The Hand Tracking API
----------------------
+Hand Tracking API
+-----------------
 
-As mentioned in our introduction, the hand tracking API is primarily used with optical hand tracking
-and on many platforms only works when the user is not holding a controller.
-Some platforms support controller inferred hand tracking meaning that you will get hand tracking data
-even if the user is holding a controller.
-This includes SteamVR, Meta Quest (currently native only but Meta link support is likely coming),
-and hopefully soon others as well.
+Như đã đề cập trong phần giới thiệu, hand tracking API chủ yếu được sử dụng với optical hand tracking và trên nhiều nền tảng chỉ hoạt động khi người dùng không cầm controller. Một số nền tảng hỗ trợ controller inferred hand tracking, nghĩa là bạn vẫn nhận được dữ liệu hand tracking ngay cả khi người dùng đang cầm controller. Các nền tảng này bao gồm SteamVR, Meta Quest (hiện chỉ native, nhưng hỗ trợ Meta link có khả năng sẽ sớm được bổ sung), và hy vọng sắp tới sẽ có thêm các nền tảng khác.
 
-The hand tracking implementation in Godot has been standardized around the Godot Humanoid Skeleton
-and works both in OpenXR and WebXR. The instructions below will thus work in both environments.
+Cách triển khai hand tracking trong Godot đã được chuẩn hóa xoay quanh Godot Humanoid Skeleton và hoạt động cả trong OpenXR lẫn WebXR. Do đó, các hướng dẫn bên dưới sẽ hoạt động trong cả hai môi trường.
 
-In order to use the hand tracking API with OpenXR you first need to enable it.
-This can be done in the project settings:
+Để sử dụng hand tracking API với OpenXR, trước tiên bạn cần bật nó. Bạn có thể thực hiện việc này trong project settings:
 
 .. image:: img/xr_enable_handtracking.webp
 
-For some standalone XR devices you also need to configure the hand tracking extension in export settings,
-for instance for Meta Quest:
+Đối với một số thiết bị XR độc lập, bạn cũng cần cấu hình hand tracking extension trong export settings, chẳng hạn như với Meta Quest:
 
 .. image:: img/openxr_enable_hand_tracking_meta.webp
 
-Now you need to add 3 components into your scene for each hand:
+Bây giờ bạn cần thêm 3 component vào scene cho mỗi bàn tay:
 
- *  A tracked node to position the hand.
- *  A properly skinned hand mesh with skeleton.
- *  A skeleton modifier that applies finger tracking data to the skeleton.
+ *  Một tracked node để định vị bàn tay. * Một hand mesh có skeleton, được skin đúng cách. * Một skeleton modifier áp dụng dữ liệu finger tracking vào skeleton.
 
 .. image:: img/openxr_hand_tracking_nodes.webp
 
 Hand tracking node
 ~~~~~~~~~~~~~~~~~~
 
-The hand tracking system uses separate hand trackers to track the position of the player's hands
-within our tracking space.
+Hệ thống hand tracking sử dụng các hand tracker riêng biệt để theo dõi vị trí bàn tay của người chơi trong tracking space của chúng ta.
 
-This information has been separated out for the following use cases:
+Thông tin này được tách riêng để phục vụ các trường hợp sử dụng sau:
 
- *  Tracking happens in the local space of the :ref:`XROrigin3D <class_xrorigin3d>` node.
-    This node must be a child of the `XROrigin3D` node in order to be correctly placed.
- *  This node can be used as an IK target when an upper body mesh with arms is used instead
-    of separate hand meshes.
- *  Actual placement of the hands may be loosely bound to the tracking in scenarios such as
-    avatar creation UIs, fake mirrors, or similar situations
-    resulting in the hand mesh and finger tracking being localized elsewhere.
+ *  Việc tracking diễn ra trong local space của node :ref:`XROrigin3D <class_xrorigin3d>`. Node này phải là child của node `XROrigin3D` để được đặt đúng vị trí. * Node này có thể được sử dụng làm IK target khi dùng upper body mesh có cánh tay thay vì các hand mesh riêng biệt. * Vị trí thực tế của bàn tay có thể chỉ ràng buộc lỏng lẻo với tracking trong các tình huống như UI tạo avatar, fake mirror hoặc các trường hợp tương tự, khiến hand mesh và finger tracking được localize ở nơi khác.
 
-We'll concentrate on the first use case only.
+Chúng ta sẽ chỉ tập trung vào trường hợp sử dụng đầu tiên.
 
-For this you need to add an :ref:`XRNode3D <class_xrnode3d>` node to your ``XROrigin3D`` node.
+Để làm việc này, bạn cần thêm một node :ref:`XRNode3D <class_xrnode3d>` vào node ``XROrigin3D``.
 
- *  On this node the ``tracker`` should be set to ``/user/hand_tracker/left`` or ``/user/hand_tracker/right``
-    for the left or right hand respectively.
- *  The ``pose`` should remain set to ``default``, no other option will work here.
- *  The checkbox ``Show When Tracked`` will automatically hide this node if no tracking data is available,
-    or make this node visible if tracking data is available.
+ *  Trên node này, ``tracker`` phải được đặt thành ``/user/hand_tracker/left`` hoặc ``/user/hand_tracker/right``, tương ứng với bàn tay trái hoặc phải. * ``pose`` phải được giữ ở giá trị ``default``; không tùy chọn nào khác hoạt động ở đây. * Checkbox ``Show When Tracked`` sẽ tự động ẩn node này nếu không có dữ liệu tracking, hoặc làm node này hiển thị nếu có dữ liệu tracking.
 
-Rigged hand mesh
+Hand mesh có rig
 ~~~~~~~~~~~~~~~~
 
-In order to display our hand we need a hand mesh that is properly rigged and skinned.
-For this Godot uses the hand bone structure as defined for the :ref:`Godot Humanoid <class_skeletonprofilehumanoid>`
-but optionally supporting an extra tip bone for each finger.
+Để hiển thị bàn tay, chúng ta cần một hand mesh đã được rig và skin đúng cách. Để thực hiện việc này, Godot sử dụng cấu trúc hand bone được định nghĩa cho :ref:`Godot Humanoid <class_skeletonprofilehumanoid>`, nhưng tùy chọn hỗ trợ thêm một tip bone cho mỗi ngón tay.
 
-The `OpenXR hand tracking demo <https://github.com/godotengine/godot-demo-projects/tree/master/xr/openxr_hand_tracking_demo>`_
-contains example glTF files of properly rigged hands.
+`OpenXR hand tracking demo <https://github.com/godotengine/godot-demo-projects/tree/master/xr/openxr_hand_tracking_demo>`_ chứa các tệp glTF mẫu của những bàn tay đã được rig đúng cách.
 
-We will be using those here and add them as a child to our ``XRNode3D`` node.
-We also need to enable editable children to gain access to our :ref:`Skeleton3D <class_skeleton3d>` node.
+Chúng ta sẽ sử dụng các tệp đó ở đây và thêm chúng làm child của node ``XRNode3D``. Chúng ta cũng cần bật editable children để truy cập node :ref:`Skeleton3D <class_skeleton3d>`.
 
-The hand skeleton modifier
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Skeleton modifier của bàn tay
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Finally we need to add an :ref:`XRHandModifier3D <class_xrhandmodifier3d>` node as a child to our ``Skeleton3D`` node.
-This node will obtain the finger tracking data from OpenXR and apply it the hand model.
+Cuối cùng, chúng ta cần thêm một node :ref:`XRHandModifier3D <class_xrhandmodifier3d>` làm child của node ``Skeleton3D``. Node này sẽ nhận dữ liệu finger tracking từ OpenXR và áp dụng dữ liệu đó vào hand model.
 
-You need to set the ``Hand Tracker`` property to either ``/user/hand_tracker/left`` or ``/user/hand_tracker/right``
-depending on whether we are apply the tracking data of respectively the left or right hand.
+Bạn cần đặt property ``Hand Tracker`` thành ``/user/hand_tracker/left`` hoặc ``/user/hand_tracker/right``, tùy thuộc vào việc chúng ta đang áp dụng dữ liệu tracking của bàn tay trái hay phải.
 
-You can also set the ``Bone Update`` mode on this node.
+Bạn cũng có thể đặt mode ``Bone Update`` trên node này.
 
- *  ``Full`` applies the hand tracking data fully.
-    This does mean that the skeleton positioning will potentially reflect the size of the actual hand of the user.
-    This can lead to scrunching effect if meshes aren't weighted properly to account for this.
-    Make sure you test your game with players of all sizes when optical hand tracking is used!
- *  ``Rotation Only`` will only apply rotation to the bones of the hands and keep the bone length as is.
-    In this mode the size of the hand mesh doesn't change.
+ *  ``Full`` áp dụng đầy đủ dữ liệu hand tracking. Điều này có nghĩa là vị trí skeleton có thể phản ánh kích thước bàn tay thực tế của người dùng. Việc này có thể dẫn đến hiệu ứng co dúm nếu mesh không được weight đúng cách để tính đến điều đó. Hãy đảm bảo bạn kiểm thử game với người chơi có mọi kích thước khi sử dụng optical hand tracking! * ``Rotation Only`` chỉ áp dụng rotation cho các bone của bàn tay và giữ nguyên độ dài bone. Ở mode này, kích thước của hand mesh không thay đổi.
 
-With this added, when we run the project we should see the hand correctly displayed if hand tracking is supported.
+Sau khi thêm thành phần này, khi chạy project, chúng ta sẽ thấy bàn tay được hiển thị chính xác nếu hand tracking được hỗ trợ.
 
-The hand tracking data source
------------------------------
+Nguồn dữ liệu hand tracking
+---------------------------
 
-This is an OpenXR extension that provides information about the source of the hand tracking data.
-At this moment only a few runtimes implement it but if it is available, Godot will activate it.
+Đây là một OpenXR extension cung cấp thông tin về nguồn của dữ liệu hand tracking. Hiện tại chỉ có một vài runtime triển khai extension này, nhưng nếu extension khả dụng, Godot sẽ kích hoạt nó.
 
-If this extension is not supported and thus unknown is returned, you can make the following assumptions:
+Nếu extension này không được hỗ trợ và do đó trả về unknown, bạn có thể đưa ra các giả định sau:
 
- *  If you are using SteamVR (including Steam link), only controller based hand tracking is supported.
- *  For any other runtime, if hand tracking is supported, only optical hand tracking is supported
-    (Note, Meta Link currently fall into this category).
- *  In all other cases, no hand tracking is supported at all.
+ *  Nếu bạn đang sử dụng SteamVR (bao gồm Steam link), chỉ controller based hand tracking được hỗ trợ. * Với mọi runtime khác, nếu hand tracking được hỗ trợ thì chỉ optical hand tracking được hỗ trợ (Lưu ý: Meta Link hiện thuộc trường hợp này). * Trong mọi trường hợp còn lại, hand tracking hoàn toàn không được hỗ trợ.
 
-You can access this information through code:
+Bạn có thể truy cập thông tin này thông qua code:
 
 .. code-block:: gdscript
 
@@ -185,171 +119,106 @@ You can access this information through code:
     else:
         print("No hand tracker registered")
 
-This example logs the state for the left hand.
+Ví dụ này ghi log trạng thái của bàn tay trái.
 
-If in this example no hand tracker is returned by ``get_tracker``,
-this means the hand tracking API is not supported on the XR runtime at all.
+Nếu trong ví dụ này không có hand tracker nào được ``get_tracker`` trả về, điều đó có nghĩa là hand tracking API hoàn toàn không được XR runtime hỗ trợ.
 
-If there is a tracker but `has_tracking_data` is false, the user's hand is currently not being tracked.
-This is likely caused by one of the following reasons:
+Nếu có tracker nhưng `has_tracking_data` là false, bàn tay của người dùng hiện không được tracking. Nguyên nhân có thể là một trong những lý do sau:
 
- *  The player's hand is not visible by any of the tracking cameras on the headset
- *  The player is currently using a controller and the headset only supports optical hand tracking
- *  The controller is turned off and only controller hand tracking is supported.
+ *  Bàn tay của người chơi không hiển thị trong bất kỳ camera tracking nào trên headset * Người chơi hiện đang sử dụng controller và headset chỉ hỗ trợ optical hand tracking * Controller đã tắt và chỉ controller hand tracking được hỗ trợ.
 
-Handling user input
--------------------
+Xử lý user input
+----------------
 
-Reacting to actions performed by the user is handled through :ref:`doc_xr_action_map`
-if controllers are used.
-In the action map you can map various inputs like the trigger or joystick on the controller
-to an action. This can then drive logic in your game.
+Việc phản hồi các action do người dùng thực hiện được xử lý thông qua :ref:`doc_xr_action_map` nếu sử dụng controller. Trong action map, bạn có thể ánh xạ nhiều input khác nhau, chẳng hạn như trigger hoặc joystick trên controller, vào một action. Sau đó, action này có thể điều khiển logic trong game.
 
-When hand tracking is used we originally had no such inputs,
-inputs are driven by gestures made by the user such as making a fist to grab
-or pinching the thumb and index finger together to select something.
-It was up to the game developer to implement this.
+Khi sử dụng hand tracking, ban đầu chúng ta không có những input như vậy; input được tạo ra bởi các gesture do người dùng thực hiện, chẳng hạn như nắm tay để grab hoặc chụm ngón cái và ngón trỏ lại với nhau để chọn một thứ gì đó. Game developer phải tự triển khai cơ chế này.
 
-Recognizing that there is an increasing demand for applications that can switch seamlessly
-between controller and hand tracking and the need some form of basic input capability,
-a number of extensions were added to the specification that provide some basic gesture recognition
-and can be used with the action map.
+Nhận thấy nhu cầu ngày càng tăng đối với các ứng dụng có thể chuyển đổi liền mạch giữa tracking bằng controller và tracking bằng tay, cũng như nhu cầu về một dạng khả năng nhập liệu cơ bản, một số extension đã được thêm vào specification để cung cấp khả năng nhận diện gesture cơ bản và có thể được sử dụng với action map.
 
-The hand interaction profile
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Hand interaction profile
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-The `hand interaction profile extension <https://github.khronos.org/OpenXR-Inventory/extension_support.html#XR_EXT_hand_interaction>`_
-is a new core extension which supports pinch, grasp, and poke gestures and related poses.
-There is still limited support for this extension but it should become available in more
-runtimes in the near future.
+`hand interaction profile extension <https://github.khronos.org/OpenXR-Inventory/extension_support.html#XR_EXT_hand_interaction>`_ là một core extension mới hỗ trợ các gesture pinch, grasp và poke, cùng các pose liên quan. Extension này hiện vẫn được hỗ trợ hạn chế, nhưng dự kiến sẽ khả dụng trong nhiều runtime hơn trong tương lai gần.
 
 .. image:: img/openxr_hand_interaction_profile.webp
 
-The pinch gesture is triggered by pinching your thumb and index finger together.
-This is often used as a select gesture for menu systems, similar to using your controller
-to point at an object and press the trigger to select and is thus often mapped as such.
+Gesture pinch được kích hoạt bằng cách chụm ngón cái và ngón trỏ lại với nhau. Gesture này thường được sử dụng như một gesture select cho các hệ thống menu, tương tự như việc dùng controller để trỏ vào một đối tượng và nhấn trigger để chọn, vì vậy thường được mapping theo cách này.
 
- *  The ``pinch pose`` is a pose positioned in the middle between the tip of the thumb and
-    the tip of the index finger and oriented such that a ray cast can be used to identify a target.
- *  The ``pinch`` float input is a value between 0.0 (the tip of the thumb and index finger are apart)
-    and 1.0 (the tip of the thumb and index finger are touching).
- *  The ``pinch ready`` input is true when the tips of the fingers are (close to) touching.
+ *  ``pinch pose`` là một pose được đặt ở chính giữa đầu ngón cái và đầu ngón trỏ, đồng thời được định hướng để có thể sử dụng ray cast nhằm xác định target. * Input float ``pinch`` là một giá trị từ 0.0 (đầu ngón cái và ngón trỏ cách nhau) đến 1.0 (đầu ngón cái và ngón trỏ chạm nhau). * Input ``pinch ready`` có giá trị true khi các đầu ngón tay (gần như) chạm nhau.
 
-The grasp gesture is triggered by making a fist and is often used to pick items up,
-similar to engaging the squeeze input on controllers.
+Gesture grasp được kích hoạt bằng cách nắm bàn tay thành nắm đấm và thường được dùng để nhặt các vật thể lên, tương tự như việc kích hoạt input squeeze trên controller.
 
- *  The ``grasp`` float input is a value between 0.0 (open hand) and 1.0 (fist).
- *  The ``grasp ready`` input is true when the user made a fist.
+ *  Input float ``grasp`` là một giá trị từ 0.0 (bàn tay mở) đến 1.0 (nắm đấm). * Input ``grasp ready`` có giá trị true khi người dùng nắm tay thành nắm đấm.
 
-The poke gesture is triggered by extending your index finger, this one is a bit
-of an exception as the pose at the tip of your index finger is often used to poke
-an interactable object. The ``poke pose`` is a pose positioned on the tip of the index finger.
+Gesture poke được kích hoạt bằng cách duỗi ngón trỏ; đây là một ngoại lệ nhỏ vì pose ở đầu ngón trỏ thường được dùng để chọc vào một đối tượng có thể tương tác. ``poke pose`` là một pose được đặt ở đầu ngón trỏ.
 
-Finally the ``aim activate (ready)`` input is defined as an input that is 1.0/true
-when the index finger is extended and pointing at a target that can be activated.
-How runtimes interpret this, is not clear.
+Cuối cùng, input ``aim activate (ready)`` được định nghĩa là một input có giá trị 1.0/true khi ngón trỏ được duỗi ra và đang trỏ vào một target có thể được kích hoạt. Cách các runtime diễn giải điều này vẫn chưa rõ.
 
-With this setup the normal ``left_hand`` and ``right_hand`` trackers are used and you can
-thus seamlessly switch between controller and hand tracking input.
+Với thiết lập này, các tracker ``left_hand`` và ``right_hand`` thông thường được sử dụng, do đó bạn có thể chuyển đổi liền mạch giữa input tracking bằng controller và tracking bằng tay.
 
 .. note::
 
-    You need to enable the hand interaction profile extension in the OpenXR project settings.
+    Bạn cần bật extension hand interaction profile trong phần cài đặt project OpenXR.
 
 Microsoft hand interaction profile
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The `Microsoft hand interaction profile extension <https://github.khronos.org/OpenXR-Inventory/extension_support.html#XR_MSFT_hand_interaction>`_
-was introduced by Microsoft and loosely mimics the simple controller profile.
-Meta has also added support for this extension but only on their native OpenXR client,
-it is currently not available over Meta Link.
+`Microsoft hand interaction profile extension <https://github.khronos.org/OpenXR-Inventory/extension_support.html#XR_MSFT_hand_interaction>`_ được Microsoft giới thiệu và mô phỏng tương đối giống profile controller đơn giản. Meta cũng đã thêm hỗ trợ cho extension này, nhưng chỉ trên OpenXR client native của họ; hiện extension này chưa khả dụng qua Meta Link.
 
 .. image:: img/openxr_msft_hand_interaction_profile.webp
 
-Pinch support is exposed through the ``select`` input, the value of which
-is 0.0 when the tip of the thumb and index finger are apart
-and 1.0 when they are together.
+Hỗ trợ pinch được cung cấp thông qua input ``select``; giá trị của input này là 0.0 khi đầu ngón cái và ngón trỏ cách nhau, và 1.0 khi chúng chạm nhau.
 
-Note that in this profile the ``aim pose`` is redefined as a pose between thumb
-and index finger, oriented so a ray cast can be used to identify a target.
+Lưu ý rằng trong profile này, ``aim pose`` được định nghĩa lại thành một pose nằm giữa ngón cái và ngón trỏ, được định hướng để có thể sử dụng ray cast nhằm xác định target.
 
-Grasp support is exposed through the ``squeeze`` input, the value of which
-is 0.0 when the hand is open, and 1.0 when a fist is made.
+Hỗ trợ grasp được cung cấp thông qua input ``squeeze``; giá trị của input này là 0.0 khi bàn tay mở và 1.0 khi bàn tay nắm thành nắm đấm.
 
-With this setup the normal ``left_hand`` and ``right_hand`` trackers are used and you can
-thus seamlessly switch between controller and hand tracking input.
+Với thiết lập này, các tracker ``left_hand`` và ``right_hand`` thông thường được sử dụng, do đó bạn có thể chuyển đổi liền mạch giữa input tracking bằng controller và tracking bằng tay.
 
 HTC hand interaction profile
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The `HTC hand interaction profile extension <https://github.khronos.org/OpenXR-Inventory/extension_support.html#XR_HTC_hand_interaction>`_
-was introduced by HTC and is defined similarly to the Microsoft extension.
-It is only supported by HTC for the Focus 3 and Elite XR headsets.
+`HTC hand interaction profile extension <https://github.khronos.org/OpenXR-Inventory/extension_support.html#XR_HTC_hand_interaction>`_ được HTC giới thiệu và được định nghĩa tương tự extension của Microsoft. Extension này chỉ được HTC hỗ trợ trên các headset Focus 3 và Elite XR.
 
 .. image:: img/openxr_htc_hand_interaction_profile.webp
 
-See the Microsoft hand interaction profile for the gesture support.
+Xem Microsoft hand interaction profile để biết về hỗ trợ gesture.
 
-The defining difference is that this extension introduces two new trackers,
-``/user/hand_htc/left`` and ``/user/hand_htc/right``.
-This means that extra logic needs to be implemented to switch between the default trackers
-and the HTC specific trackers when the user puts down, or picks up, their controller.
+Điểm khác biệt chính là extension này giới thiệu hai tracker mới, ``/user/hand_htc/left`` và ``/user/hand_htc/right``. Điều này có nghĩa là cần triển khai logic bổ sung để chuyển đổi giữa các tracker mặc định và các tracker riêng của HTC khi người dùng đặt controller xuống hoặc cầm controller lên.
 
 Simple controller profile
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The simple controller profile is a standard core profile defined as a fallback profile
-when a controller is used for which no profile exists.
+Simple controller profile là một core profile tiêu chuẩn, được định nghĩa làm profile dự phòng khi sử dụng một controller chưa có profile tương ứng.
 
-There are a number of OpenXR runtimes that will mimic controllers through
-the simple controller profile when hand tracking is used.
+Có một số OpenXR runtime sẽ mô phỏng controller thông qua simple controller profile khi sử dụng hand tracking.
 
-Unfortunately there is no sound way to determine whether an unknown controller is used
-or whether hand tracking is emulating a controller through this profile.
+Đáng tiếc là không có cách đáng tin cậy để xác định liệu một controller không xác định đang được sử dụng hay hand tracking đang mô phỏng controller thông qua profile này.
 
 .. image:: img/openxr_simple_controller_hand.webp
 
-XR runtimes are free to define how the simple controller profile operates,
-so there is also no certainty to how this profile is mapped to gestures.
+Các XR runtime được tự do định nghĩa cách simple controller profile hoạt động, vì vậy cũng không chắc chắn profile này được mapping với gesture như thế nào.
 
-The most common mapping seems to be that ``select click`` is true
-when the tip of the thumb and index fingers are touching while the
-user's palm is facing away from the user.
-``menu click`` will be true when tip of the thumb and index fingers
-are touching while the user's palm is facing towards the user.
+Cách mapping phổ biến nhất dường như là ``select click`` có giá trị true khi đầu ngón cái và ngón trỏ chạm nhau trong khi lòng bàn tay của người dùng hướng ra xa người dùng. ``menu click`` sẽ có giá trị true khi đầu ngón cái và ngón trỏ chạm nhau trong khi lòng bàn tay của người dùng hướng về phía người dùng.
 
-With this setup the normal ``left_hand`` and ``right_hand`` trackers are used and you can
-thus seamlessly switch between controller and hand tracking input.
+Với thiết lập này, các tracker ``left_hand`` và ``right_hand`` thông thường được sử dụng, do đó bạn có thể chuyển đổi liền mạch giữa input tracking bằng controller và tracking bằng tay.
 
 .. note::
 
-    As some of these interaction profiles have overlap it is important to know
-    that you can add each profile to your action map and the XR runtime will choose
-    the best fitting profile.
+    Vì một số interaction profile có phần chồng lấp, điều quan trọng cần biết là bạn có thể thêm từng profile vào action map, và XR runtime sẽ chọn profile phù hợp nhất.
 
-    For instance, a Meta Quest supports both the Microsoft hand interaction profile
-    and simple controller profile.
-    If both are specified the Microsoft hand interaction profile will take precedence
-    and will be used.
+    Chẳng hạn, Meta Quest hỗ trợ cả Microsoft hand interaction profile và simple controller profile. Nếu chỉ định cả hai, Microsoft hand interaction profile sẽ được ưu tiên và được sử dụng.
 
-    The expectation is that once Meta supports the core hand interaction profile
-    extension, that profile will take precedence over both Microsoft
-    and simple controller profiles.
+    Dự kiến một khi Meta hỗ trợ core hand interaction profile extension, profile đó sẽ được ưu tiên hơn cả Microsoft profile và simple controller profile.
 
-Gesture based input
-~~~~~~~~~~~~~~~~~~~
+Input dựa trên gesture
+~~~~~~~~~~~~~~~~~~~~~~
 
-If the platform doesn't support any interaction profiles when hand tracking is used,
-or if you're building an application where you need more complicated gesture support
-you're going to need to build your own gesture recognition system.
+Nếu platform không hỗ trợ interaction profile nào khi sử dụng hand tracking, hoặc nếu bạn đang xây dựng một ứng dụng cần hỗ trợ gesture phức tạp hơn, bạn sẽ cần xây dựng hệ thống nhận diện gesture của riêng mình.
 
-You can obtain the full hand tracking data through the :ref:`XRHandTracker <class_xrhandtracker>`
-resource for each hand. You can obtain the hand tracker by calling ``XRServer.get_tracker``
-and using either ``/user/hand_tracker/left`` or ``/user/hand_tracker/left`` as the tracker.
-This resource provides access to all the joint information for the given hand.
+Bạn có thể lấy toàn bộ dữ liệu hand tracking thông qua resource :ref:`XRHandTracker <class_xrhandtracker>` cho mỗi bàn tay. Bạn có thể lấy hand tracker bằng cách gọi ``XRServer.get_tracker`` và sử dụng ``/user/hand_tracker/left`` hoặc ``/user/hand_tracker/left`` làm tracker. Resource này cung cấp quyền truy cập vào toàn bộ thông tin joint của bàn tay tương ứng.
 
-Detailing out a full gesture recognition algorithm goes beyond the scope of this manual
-however there are a number of community projects you can look at:
+Việc trình bày chi tiết một thuật toán nhận diện gesture hoàn chỉnh nằm ngoài phạm vi của manual này, tuy nhiên có một số dự án cộng đồng mà bạn có thể tham khảo:
 
- *  `Julian Todd's Auto hands library <https://github.com/Godot-Dojo/Godot-XR-AH>`_
- *  `Malcolm Nixons Hand Pose Detector <https://github.com/Malcolmnixon/GodotXRHandPoseDetector>`_
+ *  `Julian Todd's Auto hands library <https://github.com/Godot-Dojo/Godot-XR-AH>`_ * `Malcolm Nixons Hand Pose Detector <https://github.com/Malcolmnixon/GodotXRHandPoseDetector>`_

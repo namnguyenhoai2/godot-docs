@@ -1,29 +1,24 @@
 .. _doc_nodes_and_scene_instances:
 
-Nodes and scene instances
-=========================
+Node và instance của scene
+==========================
 
-This guide explains how to get nodes, create nodes, add them as a child, and
-instantiate scenes from code.
+Hướng dẫn này giải thích cách lấy node, tạo node, thêm node làm node con và instantiate scene bằng code.
 
 .. seealso::
 
-    Check the :ref:`doc_instancing` tutorial to learn about Godot's approach to scene instancing.
+    Xem tutorial :ref:`doc_instancing` để tìm hiểu về cách Godot xử lý việc instancing scene.
 
-Getting nodes
--------------
+Lấy node
+--------
 
-You can get a reference to a node by calling the :ref:`Node.get_node()
-<class_Node_method_get_node>` method. For this to work, the child node must be
-present in the scene tree. Getting it in the parent node's ``_ready()`` function
-guarantees that.
+Bạn có thể lấy một reference đến node bằng cách gọi method :ref:`Node.get_node() <class_Node_method_get_node>`. Để cách này hoạt động, node con phải có mặt trong scene tree. Việc lấy node trong hàm ``_ready()`` của node cha sẽ đảm bảo điều đó.
 
-If, for example, you have a scene tree like this, and you want to get a reference to the
-Sprite2D and Camera2D nodes to access them in your script.
+Ví dụ, nếu bạn có một scene tree như sau và muốn lấy reference đến các node Sprite2D và Camera2D để truy cập chúng trong script.
 
 .. image:: img/nodes_and_scene_instances_player_scene_example.webp
 
-To do so, you can use the following code.
+Để làm vậy, bạn có thể sử dụng đoạn code sau.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -48,29 +43,24 @@ To do so, you can use the following code.
         _camera2D = GetNode<Camera2D>("Camera2D");
     }
 
-Note that you get nodes using their name, not their type. Above, "Sprite2D" and
-"Camera2D" are the nodes' names in the scene.
+Lưu ý rằng bạn lấy node bằng tên của chúng, không phải bằng type. Ở trên, "Sprite2D" và "Camera2D" là tên của các node trong scene.
 
 .. image:: img/nodes_and_scene_instances_sprite_node.webp
 
-If you rename the Sprite2D node as Skin in the Scene dock, you have to change the
-line that gets the node to ``get_node("Skin")`` in the script.
+Nếu bạn đổi tên node Sprite2D thành Skin trong Scene dock, bạn phải đổi dòng lấy node thành ``get_node("Skin")`` trong script.
 
 .. image:: img/nodes_and_scene_instances_sprite_node_renamed.webp
 
-Node paths
-----------
+Đường dẫn node
+--------------
 
-When getting a reference to a node, you're not limited to getting a direct child. The ``get_node()`` function
-supports paths, a bit like when working with a file browser. Add a slash to
-separate nodes.
+Khi lấy reference đến một node, bạn không bị giới hạn ở việc lấy node con trực tiếp. Hàm ``get_node()`` hỗ trợ các path, tương tự như khi làm việc với file browser. Thêm dấu gạch chéo để phân tách các node.
 
-Take the following example scene, with the script attached to the UserInterface
-node.
+Hãy xem scene ví dụ sau, trong đó script được gắn vào node UserInterface.
 
 .. image:: img/nodes_and_scene_instances_ui_scene_example.webp
 
-To get the AnimationPlayer node, you would use the following code.
+Để lấy node AnimationPlayer, bạn sẽ sử dụng đoạn code sau.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -92,39 +82,30 @@ To get the AnimationPlayer node, you would use the following code.
     }
 
 .. note:: As with file paths, you can use ".." to get a parent node. The best
-          practice is to avoid doing that though not to break encapsulation.
-          You can also start the path with a forward
-          slash to make it absolute, in which case your topmost node would be
-          "/root", the application's predefined root viewport.
+          tuy nhiên, bạn nên tránh làm vậy để không phá vỡ tính đóng gói (encapsulation). Bạn cũng có thể bắt đầu path bằng dấu gạch chéo xuôi để biến nó thành path tuyệt đối; trong trường hợp đó, node ở trên cùng của bạn sẽ là "/root", viewport gốc được định sẵn của ứng dụng.
 
-Syntactic sugar
-~~~~~~~~~~~~~~~
+Cú pháp viết tắt
+~~~~~~~~~~~~~~~~
 
-You can use two shorthands to shorten your code in GDScript. Firstly, putting the
-``@onready`` annotation before a member variable makes it initialize right before
-the ``_ready()`` callback.
+Bạn có thể sử dụng hai cách viết tắt để rút gọn code trong GDScript. Trước tiên, đặt annotation ``@onready`` trước một member variable sẽ khiến nó được khởi tạo ngay trước callback ``_ready()``.
 
 .. code-block:: gdscript
 
     @onready var sprite2d = get_node("Sprite2D")
 
-There is also a short notation for ``get_node()``: the dollar sign, "$". You
-place it before the name or path of the node you want to get.
+Ngoài ra còn có cách viết ngắn gọn cho ``get_node()``: dấu đô la, "$". Bạn đặt nó trước tên hoặc path của node muốn lấy.
 
 .. code-block:: gdscript
 
     @onready var sprite2d = $Sprite2D
     @onready var animation_player = $ShieldBar/AnimationPlayer
 
-Creating nodes
---------------
+Tạo node
+--------
 
-To create a node from code, call its ``new()`` method like for any other
-class-based datatype.
+Để tạo một node bằng code, hãy gọi method ``new()`` của node đó, giống như với mọi datatype dựa trên class khác.
 
-You can store the newly created node's reference in a variable and call
-``add_child()`` to add it as a child of the node to which you attached the
-script.
+Bạn có thể lưu reference của node vừa tạo vào một biến và gọi ``add_child()`` để thêm nó làm node con của node mà bạn đã gắn script.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -132,8 +113,8 @@ script.
     var sprite2d
 
     func _ready():
-        sprite2d = Sprite2D.new() # Create a new Sprite2D.
-        add_child(sprite2d) # Add it as a child of this node.
+        sprite2d = Sprite2D.new() # Tạo một Sprite2D mới.
+        add_child(sprite2d) # Thêm nó làm node con của node này.
 
  .. code-tab:: csharp
 
@@ -143,14 +124,11 @@ script.
     {
         base._Ready();
 
-        _sprite2D = new Sprite2D(); // Create a new Sprite2D.
-        AddChild(_sprite2D); // Add it as a child of this node.
+        _sprite2D = new Sprite2D(); // Tạo một Sprite2D mới.
+        AddChild(_sprite2D); // Thêm nó làm node con của node này.
     }
 
-To delete a node and free it from memory, you can call its ``queue_free()``
-method. Doing so queues the node for deletion at the end of the current frame
-after it has finished processing. At that point, the engine removes the node from
-the scene and frees the object in memory.
+Để xóa một node và giải phóng nó khỏi bộ nhớ, bạn có thể gọi method ``queue_free()`` của node đó. Thao tác này đưa node vào hàng đợi để xóa vào cuối frame hiện tại, sau khi node đã xử lý xong. Khi đó, engine sẽ xóa node khỏi scene và giải phóng object trong bộ nhớ.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -161,33 +139,24 @@ the scene and frees the object in memory.
 
     _sprite2D.QueueFree();
 
-Before calling ``sprite2d.queue_free()``, the remote scene tree looks like this.
+Trước khi gọi ``sprite2d.queue_free()``, remote scene tree trông như sau.
 
 .. image:: img/nodes_and_scene_instances_remote_tree_with_sprite.webp
 
-After the engine freed the node, the remote scene tree doesn't display the
-sprite anymore.
+Sau khi engine giải phóng node, remote scene tree không còn hiển thị sprite nữa.
 
 .. image:: img/nodes_and_scene_instances_remote_tree_no_sprite.webp
 
-You can alternatively call ``free()`` to immediately destroy the node. You
-should do this with care as any reference to it will instantly become invalid.
-We recommend using ``queue_free()`` unless you know what you're doing.
+Ngoài ra, bạn có thể gọi ``free()`` để hủy node ngay lập tức. Bạn nên thận trọng khi làm vậy vì mọi reference đến node sẽ ngay lập tức trở nên không hợp lệ. Chúng tôi khuyến nghị sử dụng ``queue_free()`` trừ khi bạn biết mình đang làm gì.
 
-When you free a node, it also frees all its children. Thanks to this, to delete
-an entire branch of the scene tree, you only have to free the topmost parent
-node.
+Khi giải phóng một node, engine cũng giải phóng tất cả node con của nó. Nhờ vậy, để xóa toàn bộ một nhánh của scene tree, bạn chỉ cần giải phóng node cha ở trên cùng.
 
-Instancing scenes
------------------
+Instancing scene
+----------------
 
-Scenes are templates from which you can create as many reproductions as you'd
-like. This operation is called instancing, and doing it from code happens in two
-steps:
+Scene là các template mà từ đó bạn có thể tạo bao nhiêu bản sao tùy thích. Thao tác này được gọi là instancing, và thực hiện bằng code gồm hai bước:
 
-1. Loading the scene from the local drive.
-2. Creating an instance of the loaded :ref:`PackedScene <class_PackedScene>`
-   resource.
+1. 1. Tải scene từ ổ đĩa cục bộ. 2. Tạo một instance của resource :ref:`PackedScene <class_PackedScene>` đã tải.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -198,19 +167,14 @@ steps:
 
     var scene = GD.Load<PackedScene>("res://MyScene.tscn");
 
-Preloading the scene can improve the user's experience as the load operation
-happens when the compiler reads the script and not at runtime. This feature is
-only available with GDScript.
+Preload scene có thể cải thiện trải nghiệm của người dùng vì thao tác load diễn ra khi compiler đọc script chứ không phải trong runtime. Tính năng này chỉ khả dụng với GDScript.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     var scene = preload("res://my_scene.tscn")
 
-At that point, ``scene`` is a packed scene resource, not a node. To create the
-actual node, you need to call :ref:`PackedScene.instantiate()
-<class_PackedScene_method_instantiate>`. It returns a tree of nodes that you can use
-as a child of your current node.
+Khi đó, ``scene`` là một packed scene resource, không phải một node. Để tạo node thực tế, bạn cần gọi :ref:`PackedScene.instantiate() <class_PackedScene_method_instantiate>`. Method này trả về một cây node mà bạn có thể sử dụng làm node con của node hiện tại.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -223,6 +187,4 @@ as a child of your current node.
     var instance = scene.Instantiate();
     AddChild(instance);
 
-The advantage of this two-step process is you can keep a packed scene loaded and
-create new instances on the fly. For example, to quickly instance several
-enemies or bullets.
+Ưu điểm của quy trình hai bước này là bạn có thể giữ một packed scene đã load và tạo các instance mới ngay khi cần. Ví dụ, để nhanh chóng instance nhiều enemy hoặc bullet.

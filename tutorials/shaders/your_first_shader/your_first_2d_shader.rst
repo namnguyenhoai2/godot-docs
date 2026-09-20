@@ -1,108 +1,66 @@
 .. _doc_your_first_canvasitem_shader:
 
-Your first 2D shader
-====================
+Shader 2D đầu tiên của bạn
+==========================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Shaders are special programs that execute on the GPU and are used for rendering
-graphics. All modern rendering is done with shaders. For a more detailed
-description of what shaders are please see :ref:`What are shaders
-<doc_introduction_to_shaders>`.
+Shader là những chương trình đặc biệt thực thi trên GPU và được dùng để render đồ họa. Mọi hoạt động rendering hiện đại đều được thực hiện bằng shader. Để xem mô tả chi tiết hơn về shader, vui lòng xem :ref:`What are shaders <doc_introduction_to_shaders>`.
 
-This tutorial will focus on the practical aspects of writing shader programs by
-walking you through the process of writing a shader with both vertex and
-fragment functions. This tutorial targets absolute beginners to shaders.
+Tutorial này tập trung vào các khía cạnh thực tiễn của việc viết chương trình shader bằng cách hướng dẫn bạn qua quy trình viết một shader với cả các hàm vertex và fragment. Tutorial này dành cho những người hoàn toàn mới làm quen với shader.
 
 .. note:: If you have experience writing shaders and are just looking for an
-          overview of how shaders work in Godot, see the :ref:`Shading Reference
-          <toc-shading-reference>`.
+          tổng quan về cách shader hoạt động trong Godot, hãy xem :ref:`Shading Reference <toc-shading-reference>`.
 
-Setup
------
+Thiết lập
+---------
 
 :ref:`CanvasItem shaders <doc_canvas_item_shader>` are used to draw all 2D
-objects in Godot, while :ref:`Spatial <doc_spatial_shader>` shaders are used
-to draw all 3D objects.
+các object trong Godot, còn shader :ref:`Spatial <doc_spatial_shader>` được dùng để vẽ tất cả object 3D.
 
-In order to use a shader it must be attached inside a :ref:`Material
-<class_Material>` which must be attached to an object. Materials are a type of
+Để sử dụng shader, shader phải được gắn vào một :ref:`Material <class_Material>`, và resource này phải được gắn vào một object. Material là một loại
 :ref:`Resource <doc_resources>`. To draw multiple objects with the same
-material, the material must be attached to each object.
+material, material phải được gắn vào từng object.
 
-All objects derived from a :ref:`CanvasItem <class_CanvasItem>` have a material
-property. This includes all :ref:`GUI elements <class_Control>`, :ref:`Sprite2Ds
-<class_Sprite2D>`, :ref:`TileMapLayers <class_TileMapLayer>`, :ref:`MeshInstance2Ds
-<class_MeshInstance2D>` etc. They also have an option to inherit their parent's
-material. This can be useful if you have a large number of nodes that you want
-to use the same material.
+Tất cả object kế thừa từ :ref:`CanvasItem <class_CanvasItem>` đều có thuộc tính material. Điều này bao gồm tất cả :ref:`GUI elements <class_Control>`, :ref:`Sprite2Ds <class_Sprite2D>`, :ref:`TileMapLayers <class_TileMapLayer>`, :ref:`MeshInstance2Ds <class_MeshInstance2D>`, v.v. Chúng cũng có tùy chọn kế thừa material của node cha. Điều này hữu ích khi bạn có một số lượng lớn node muốn sử dụng cùng một material.
 
-To begin, create a Sprite2D node. :ref:`You can use any CanvasItem <doc_custom_drawing_in_2d>`,
-so long as it is drawing to the canvas, so for this tutorial we will use a Sprite2D,
-as it is the easiest CanvasItem to start drawing with.
+Để bắt đầu, hãy tạo một node Sprite2D. :ref:`You can use any CanvasItem <doc_custom_drawing_in_2d>`, miễn là nó đang vẽ lên canvas, vì vậy trong tutorial này chúng ta sẽ dùng Sprite2D, do đây là CanvasItem dễ bắt đầu vẽ nhất.
 
-In the Inspector, click beside "Texture" where it says "[empty]" and select
-"Load", then select "icon.svg". For new projects, this is the Godot icon. You
-should now see the icon in the viewport.
+Trong Inspector, nhấp bên cạnh "Texture", tại chỗ hiển thị "[empty]", rồi chọn "Load", sau đó chọn "icon.svg". Với các project mới, đây là icon Godot. Bây giờ bạn sẽ thấy icon trong viewport.
 
-Next, look down in the Inspector, under the CanvasItem section, click beside
-"Material" and select "New ShaderMaterial". This creates a new Material
-resource. Click on the sphere that appears. Godot currently doesn't know whether
-you are writing a CanvasItem Shader or a Spatial Shader and it previews the
-output of spatial shaders. So what you are seeing is the output of the default
-Spatial Shader.
+Tiếp theo, nhìn xuống Inspector, trong phần CanvasItem, nhấp bên cạnh "Material" và chọn "New ShaderMaterial". Thao tác này tạo một resource Material mới. Nhấp vào hình cầu xuất hiện. Hiện tại Godot chưa biết bạn đang viết CanvasItem Shader hay Spatial Shader, và nó xem trước output của spatial shader. Vì vậy, thứ bạn đang thấy là output của Spatial Shader mặc định.
 
 .. note::
-  Materials that inherit from the :ref:`class_Material` resource, such as :ref:`class_StandardMaterial3D`
-  and :ref:`class_ParticleProcessMaterial`, can be converted to a :ref:`class_ShaderMaterial`
-  and their existing properties will be converted to an accompanying text shader.
-  To do so, right-click on the material in the FileSystem dock and choose
-  **Convert to ShaderMaterial**. You can also do so by right-clicking on any
-  property holding a reference to the material in the inspector.
+  Các material kế thừa từ resource :ref:`class_Material`, chẳng hạn như :ref:`class_StandardMaterial3D` và :ref:`class_ParticleProcessMaterial`, có thể được chuyển đổi thành :ref:`class_ShaderMaterial`, đồng thời các thuộc tính hiện có của chúng sẽ được chuyển đổi thành một text shader đi kèm. Để thực hiện, hãy nhấp chuột phải vào material trong dock FileSystem và chọn **Convert to ShaderMaterial**. Bạn cũng có thể thực hiện việc này bằng cách nhấp chuột phải vào bất kỳ thuộc tính nào trong inspector đang chứa tham chiếu đến material.
 
-Click beside "Shader" and select "New Shader". Finally, click on the shader
-you just created and the shader editor will open. You are now ready to begin writing
-your first shader.
+Nhấp bên cạnh "Shader" và chọn "New Shader". Cuối cùng, nhấp vào shader bạn vừa tạo để mở shader editor. Bây giờ bạn đã sẵn sàng bắt đầu viết shader đầu tiên của mình.
 
-Your first CanvasItem shader
-----------------------------
+CanvasItem shader đầu tiên của bạn
+----------------------------------
 
-In Godot, all shaders start with a line specifying what type of shader they are.
-It uses the following format:
+Trong Godot, mọi shader đều bắt đầu bằng một dòng chỉ rõ loại shader. Dòng này có định dạng sau:
 
 .. code-block:: glsl
 
   shader_type canvas_item;
 
-Because we are writing a CanvasItem shader, we specify ``canvas_item`` in the
-first line. All our code will go beneath this declaration.
+Vì chúng ta đang viết CanvasItem shader, nên ở dòng đầu tiên, chúng ta chỉ định ``canvas_item``. Toàn bộ code của chúng ta sẽ nằm bên dưới khai báo này.
 
-This line tells the engine which built-in variables and functionality to supply
-you with.
+Dòng này cho engine biết những biến built-in và chức năng nào cần cung cấp cho bạn.
 
-In Godot you can override three functions to control how the shader operates;
-``vertex``, ``fragment``, and ``light``. This tutorial will walk you through
-writing a shader with both vertex and fragment functions. Light functions are
-significantly more complex than vertex and fragment functions and so will not be
-covered here.
+Trong Godot, bạn có thể override ba hàm để điều khiển cách shader hoạt động; ``vertex``, ``fragment`` và ``light``. Tutorial này sẽ hướng dẫn bạn viết một shader với cả các hàm vertex và fragment. Các hàm light phức tạp hơn đáng kể so với các hàm vertex và fragment, vì vậy sẽ không được đề cập ở đây.
 
-Your first fragment function
-----------------------------
+Hàm fragment đầu tiên của bạn
+-----------------------------
 
-The fragment function runs for every pixel in a Sprite2D and determines what color
-that pixel should be.
+Hàm fragment chạy cho từng pixel trong một Sprite2D và xác định pixel đó nên có màu gì.
 
-They are restricted to the pixels covered by the Sprite2D, that means you cannot
-use one to, for example, create an outline around a Sprite2D.
+Chúng chỉ bị giới hạn trong các pixel được Sprite2D bao phủ, điều đó có nghĩa là bạn không thể dùng chúng để, chẳng hạn, tạo đường viền quanh một Sprite2D.
 
-The most basic fragment function does nothing except assign a single color to
-every pixel.
+Hàm fragment cơ bản nhất không làm gì ngoài việc gán một màu duy nhất cho mọi pixel.
 
-We do so by writing a ``vec4`` to the built-in variable ``COLOR``. ``vec4`` is
-shorthand for constructing a vector with 4 numbers. For more information about
-vectors see the :ref:`Vector math tutorial <doc_vector_math>`. ``COLOR`` is both
-an input variable to the fragment function and the final output from it.
+Chúng ta thực hiện việc này bằng cách viết một ``vec4`` vào biến built-in ``COLOR``. ``vec4`` là cách viết tắt để tạo một vector gồm 4 số. Để biết thêm thông tin về vector, hãy xem :ref:`Vector math tutorial <doc_vector_math>`. ``COLOR`` vừa là một biến input của hàm fragment, vừa là output cuối cùng của hàm đó.
 
 .. code-block:: glsl
 
@@ -112,20 +70,15 @@ an input variable to the fragment function and the final output from it.
 
 .. image:: img/blue-box.png
 
-Congratulations! You're done. You have successfully written your first shader in
-Godot.
+Chúc mừng! Bạn đã hoàn thành. Bạn đã viết thành công shader đầu tiên trong Godot.
 
-Now let's make things more complex.
+Bây giờ hãy làm mọi thứ phức tạp hơn.
 
-There are many inputs to the fragment function that you can use for calculating
-``COLOR``. ``UV`` is one of them. UV coordinates are specified in your Sprite2D
-(without you knowing it!) and they tell the shader where to read from textures
-for each part of the mesh.
+Có nhiều input cho hàm fragment mà bạn có thể dùng để tính toán ``COLOR``. ``UV`` là một trong số đó. Tọa độ UV được chỉ định trong Sprite2D của bạn (mà bạn không hề biết!) và cho shader biết cần đọc từ texture ở đâu cho từng phần của mesh.
 
-In the fragment function you can only read from ``UV``, but you can use it in
-other functions or to assign values to ``COLOR`` directly.
+Trong hàm fragment, bạn chỉ có thể đọc từ ``UV``, nhưng bạn có thể sử dụng nó trong các hàm khác hoặc gán trực tiếp các giá trị cho ``COLOR``.
 
-``UV`` varies between 0-1 from left-right and from top-bottom.
+``UV`` thay đổi từ 0-1 theo chiều trái-phải và từ trên xuống dưới.
 
 .. image:: img/iconuv.png
 
@@ -137,73 +90,61 @@ other functions or to assign values to ``COLOR`` directly.
 
 .. image:: img/UV.png
 
-Using ``TEXTURE`` built-in
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sử dụng biến built-in ``TEXTURE``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The default fragment function reads from the set Sprite2D texture and displays it.
+Hàm fragment mặc định đọc từ texture Sprite2D đã được thiết lập và hiển thị texture đó.
 
-When you want to adjust a color in a Sprite2D you can adjust the color
-from the texture manually like in the code below.
+Khi muốn điều chỉnh màu của một Sprite2D, bạn có thể điều chỉnh thủ công màu từ texture như trong đoạn code dưới đây.
 
 .. code-block:: glsl
 
   void fragment(){
-    // This shader will result in a blue-tinted icon
+    // Shader này sẽ tạo ra một icon có sắc xanh lam
     COLOR.b = 1.0;
   }
 
-Certain nodes, like Sprite2Ds, have a dedicated texture variable that can be accessed
-in the shader using ``TEXTURE``. If you want to use the Sprite2D texture to combine
-with other colors, you can use the ``UV`` with the ``texture`` function to access
-this variable. Use them to redraw the Sprite2D with the texture.
+Một số node, chẳng hạn như Sprite2D, có một biến texture chuyên dụng mà bạn có thể truy cập trong shader bằng ``TEXTURE``. Nếu muốn sử dụng texture Sprite2D để kết hợp với các màu khác, bạn có thể dùng ``UV`` cùng với hàm ``texture`` để truy cập biến này. Hãy dùng chúng để vẽ lại Sprite2D bằng texture.
 
 .. code-block:: glsl
 
   void fragment(){
-    COLOR = texture(TEXTURE, UV); // Read from texture again.
-    COLOR.b = 1.0; //set blue channel to 1.0
+    COLOR = texture(TEXTURE, UV); // Đọc lại từ texture.
+    COLOR.b = 1.0; //đặt kênh blue thành 1.0
   }
 
 .. image:: img/blue-tex.png
 
-Uniform input
+Input uniform
 ~~~~~~~~~~~~~
 
-Uniform input is used to pass data into a shader that will be the same across
-the entire shader.
+Input uniform được dùng để truyền dữ liệu vào shader, và dữ liệu này sẽ giống nhau trong toàn bộ shader.
 
-You can use uniforms by defining them at the top of your shader like so:
+Bạn có thể sử dụng uniform bằng cách định nghĩa chúng ở đầu shader như sau:
 
 .. code-block:: glsl
 
   uniform float size;
 
-For more information about usage see the :ref:`Shading Language doc
-<doc_shading_language>`.
+Để biết thêm thông tin về cách sử dụng, hãy xem :ref:`Shading Language doc <doc_shading_language>`.
 
-Add a uniform to change the amount of blue in our Sprite2D.
+Thêm một uniform để thay đổi mức blue trong Sprite2D của chúng ta.
 
 .. code-block:: glsl
 
-  uniform float blue = 1.0; // you can assign a default value to uniforms
+  uniform float blue = 1.0; // bạn có thể gán giá trị mặc định cho uniform
 
   void fragment(){
-    COLOR = texture(TEXTURE, UV); // Read from texture
+    COLOR = texture(TEXTURE, UV); // Đọc từ texture
     COLOR.b = blue;
   }
 
-Now you can change the amount of blue in the Sprite2D from the editor. Look back
-at the Inspector under where you created your shader. You should see a section
-called "Shader Param". Unfold that section and you will see the uniform you just
-declared. If you change the value in the editor, it will overwrite the default
-value you provided in the shader.
+Bây giờ bạn có thể thay đổi mức blue trong Sprite2D từ editor. Hãy nhìn lại Inspector, bên dưới nơi bạn đã tạo shader. Bạn sẽ thấy một phần có tên "Shader Param". Mở rộng phần đó và bạn sẽ thấy uniform vừa khai báo. Nếu thay đổi giá trị trong editor, giá trị đó sẽ ghi đè lên giá trị mặc định bạn đã cung cấp trong shader.
 
-Interacting with shaders from code
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tương tác với shader từ code
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can change uniforms from code using the function ``set_shader_parameter()``
-which is called on the node's material resource. With a Sprite2D node, the
-following code can be used to set the ``blue`` uniform.
+Bạn có thể thay đổi uniform từ code bằng hàm ``set_shader_parameter()``, được gọi trên resource material của node. Với một node Sprite2D, bạn có thể sử dụng đoạn code sau để thiết lập uniform ``blue``.
 
 .. tabs::
 
@@ -217,24 +158,18 @@ following code can be used to set the ``blue`` uniform.
   var blueValue = 1.0;
   ((ShaderMaterial)Material).SetShaderParameter("blue", blueValue);
 
-Note that the name of the uniform is a string. The string must match exactly
-with how it is written in the shader, including spelling and case.
+Lưu ý rằng tên của uniform là một string. String này phải khớp chính xác với cách nó được viết trong shader, bao gồm cả chính tả và kiểu chữ.
 
-Your first vertex function
---------------------------
+Hàm vertex đầu tiên của bạn
+---------------------------
 
-Now that we have a fragment function, let's write a vertex function.
+Bây giờ chúng ta đã có một hàm fragment, hãy viết một hàm vertex.
 
-Use the vertex function to calculate where on the screen each vertex should end
-up.
+Sử dụng hàm vertex để tính toán vị trí cuối cùng của từng vertex trên màn hình.
 
-The most important variable in the vertex function is ``VERTEX``. Initially, it
-specifies the vertex coordinates in your model, but you also write to it to
-determine where to actually draw those vertices. ``VERTEX`` is a ``vec2`` that
-is initially presented in local-space (i.e. not relative to the camera,
-viewport, or parent nodes).
+Biến quan trọng nhất trong hàm vertex là ``VERTEX``. Ban đầu, nó chỉ định tọa độ vertex trong model, nhưng bạn cũng ghi vào nó để xác định vị trí thực sự cần vẽ các vertex đó. ``VERTEX`` là một ``vec2``, ban đầu được biểu diễn trong local-space (tức là không tương đối với camera, viewport hoặc các node cha).
 
-You can offset the vertices by directly adding to ``VERTEX``.
+Bạn có thể offset các vertex bằng cách cộng trực tiếp vào ``VERTEX``.
 
 .. code-block:: glsl
 
@@ -242,24 +177,18 @@ You can offset the vertices by directly adding to ``VERTEX``.
     VERTEX += vec2(10.0, 0.0);
   }
 
-Combined with the ``TIME`` built-in variable, this can be used for basic
-animation.
+Kết hợp với biến built-in ``TIME``, cách này có thể được dùng cho animation cơ bản.
 
 .. code-block:: glsl
 
   void vertex() {
-    // Animate Sprite2D moving in big circle around its location
+    // Animate Sprite2D chuyển động theo một vòng tròn lớn quanh vị trí của nó
     VERTEX += vec2(cos(TIME)*100.0, sin(TIME)*100.0);
   }
 
-Conclusion
-----------
+Kết luận
+--------
 
-At their core, shaders do what you have seen so far, they compute ``VERTEX`` and
-``COLOR``. It is up to you to dream up more complex mathematical strategies for
-assigning values to those variables.
+Về bản chất, shader thực hiện những gì bạn đã thấy, đó là tính toán ``VERTEX`` và ``COLOR``. Việc nghĩ ra các chiến lược toán học phức tạp hơn để gán giá trị cho những biến đó là tùy thuộc vào bạn.
 
-For inspiration, take a look at some of the more advanced shader tutorials, and
-look at other sites like `Shadertoy
-<https://www.shadertoy.com/results?query=&sort=popular&from=10&num=4>`_ and `The
-Book of Shaders <https://thebookofshaders.com>`_.
+Để tìm cảm hứng, hãy xem một số tutorial shader nâng cao hơn và tham khảo các trang khác như `Shadertoy <https://www.shadertoy.com/results?query=&sort=popular&from=10&num=4>`_ và `The Book of Shaders <https://thebookofshaders.com>`_.

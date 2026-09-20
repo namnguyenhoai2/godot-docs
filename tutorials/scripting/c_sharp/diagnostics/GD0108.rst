@@ -1,27 +1,17 @@
-GD0108: The exported tool button is not in a tool class
-=======================================================
+GD0108: Nút công cụ được export không nằm trong một lớp công cụ
+===============================================================
 
-====================================  ======================================
-                                      Value
-====================================  ======================================
-**Rule ID**                           GD0108
-**Category**                          Usage
-**Fix is breaking or non-breaking**   Non-breaking
-**Enabled by default**                Yes
-====================================  ======================================
+==================================== ====================================== Giá trị ==================================== ====================================== **ID quy tắc** GD0108 **Danh mục** Cách sử dụng **Bản sửa lỗi có gây breaking change hay không** Không gây breaking change **Được bật theo mặc định** Có ==================================== ======================================
 
-Cause
------
+Nguyên nhân
+-----------
 
-A property is annotated with the ``[ExportToolButton]`` attribute in a class that
-is **not** annotated with the ``[Tool]`` attribute.
+Một property được chú thích bằng attribute ``[ExportToolButton]`` trong một class **không** được chú thích bằng attribute ``[Tool]``.
 
-Rule description
-----------------
+Mô tả quy tắc
+-------------
 
-The ``[ExportToolButton]`` is used to create clickable buttons in the inspector so,
-like every other script that runs in the editor, it needs to be annotated with the
-``[Tool]`` attribute.
+``[ExportToolButton]`` được dùng để tạo các nút có thể nhấp trong inspector, vì vậy, giống như mọi script khác chạy trong editor, nó cần được chú thích bằng attribute ``[Tool]``.
 
 .. code-block:: csharp
     :emphasize-lines: 1
@@ -38,14 +28,12 @@ like every other script that runs in the editor, it needs to be annotated with t
         }
     }
 
-How to fix violations
----------------------
+Cách khắc phục các vi phạm
+--------------------------
 
-To fix a violation of this rule, add the ``[Tool]`` attribute to the class that
-contains the member annotated with the ``[ExportToolButton]`` attribute.
+Để khắc phục vi phạm quy tắc này, hãy thêm attribute ``[Tool]`` vào class chứa member được chú thích bằng attribute ``[ExportToolButton]``.
 
-When to suppress warnings
--------------------------
+Khi nào cần bỏ qua cảnh báo
+---------------------------
 
-Do not suppress a warning from this rule. The clickable buttons in the inspector
-won't be functional if their script is not annotated with the ``[Tool]`` attribute.
+Không bỏ qua cảnh báo từ quy tắc này. Các nút có thể nhấp trong inspector sẽ không hoạt động nếu script của chúng không được chú thích bằng attribute ``[Tool]``.

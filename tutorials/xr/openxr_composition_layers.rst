@@ -1,114 +1,70 @@
 .. _doc_openxr_composition_layers:
 
-OpenXR composition layers
-=========================
+Các lớp composition của OpenXR
+==============================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-In XR games you generally want to create user interactions that happen in 3D space
-and involve users touching objects as if they are touching them in real life.
+Trong các game XR, nhìn chung bạn muốn tạo ra những tương tác của người dùng diễn ra trong không gian 3D và liên quan đến việc người dùng chạm vào các đối tượng như thể họ đang chạm vào chúng ngoài đời thực.
 
-Sometimes however creating a more traditional 2D interface is unavoidable.
-In XR however you can't just add 2D components to your scene.
-Godot needs depth information to properly position these elements so they appear at
-a comfortable place for the user.
-Even with depth information there are headsets with slanted displays that make it impossible
-for the standard 2D pipeline to correctly render the 2D elements.
+Tuy nhiên, đôi khi việc tạo một giao diện 2D truyền thống hơn là điều không thể tránh khỏi. Nhưng trong XR, bạn không thể chỉ thêm các thành phần 2D vào scene. Godot cần thông tin về chiều sâu để định vị đúng các phần tử này, sao cho chúng xuất hiện ở vị trí thoải mái đối với người dùng. Ngay cả khi có thông tin về chiều sâu, một số headset có màn hình nghiêng khiến pipeline 2D tiêu chuẩn không thể render chính xác các phần tử 2D.
 
-The solution then is to render the UI to a :ref:`SubViewport <class_subviewport>`
-and display the result of this using a :ref:`ViewportTexture <class_viewporttexture>` on a 3D mesh.
-The :ref:`QuadMesh <class_quadmesh>` is a suitable option for this.
+Giải pháp là render UI vào một :ref:`SubViewport <class_subviewport>` rồi hiển thị kết quả bằng :ref:`ViewportTexture <class_viewporttexture>` trên một mesh 3D. :ref:`QuadMesh <class_quadmesh>` là một lựa chọn phù hợp cho việc này.
 
 .. note::
-    See the `GUI in 3D <https://github.com/godotengine/godot-demo-projects/tree/master/viewport/gui_in_3d>`_
-    example project for an example of this approach.
+    Xem project mẫu `GUI in 3D <https://github.com/godotengine/godot-demo-projects/tree/master/viewport/gui_in_3d>`_ để biết ví dụ về cách tiếp cận này.
 
-The problem with displaying the viewport in this way is that the rendered result
-is sampled for lens distortion by the XR runtime and the resulting quality loss
-can make UI text hard to read.
+Vấn đề khi hiển thị viewport theo cách này là kết quả đã render sẽ được XR runtime lấy mẫu để biến dạng theo thấu kính, và chất lượng suy giảm do đó có thể khiến văn bản UI khó đọc.
 
-OpenXR offers a solution to this problem through composition layers.
-With composition layers it is possible for the contents of a viewport to be projected
-on a surface after lens distortion resulting in a much higher quality end result.
+OpenXR cung cấp giải pháp cho vấn đề này thông qua các composition layer. Với composition layer, nội dung của viewport có thể được chiếu lên một bề mặt sau khi biến dạng theo thấu kính, mang lại kết quả cuối cùng có chất lượng cao hơn nhiều.
 
 .. note::
-    As not all XR runtimes support all composition layer types,
-    Godot implements a fallback solution where we render the viewport
-    as part of the normal scene but with the aforementioned quality
-    limitations.
+    Vì không phải mọi XR runtime đều hỗ trợ tất cả các loại composition layer, Godot triển khai một giải pháp fallback, trong đó viewport được render như một phần của scene thông thường nhưng vẫn có những hạn chế về chất lượng đã nêu ở trên.
 
 .. warning::
-    When the composition layer is supported,
-    it is the XR runtime that presents the subviewport.
-    This means the UI is only visible in the headset,
-    it will not be accessible by Godot and will thus
-    not be shown when you have a spectator view on the desktop.
+    Khi composition layer được hỗ trợ, chính XR runtime sẽ hiển thị subviewport. Điều này có nghĩa là UI chỉ hiển thị trong headset, Godot không thể truy cập vào UI và do đó UI sẽ không được hiển thị khi bạn xem spectator view trên desktop.
 
-There are currently 3 nodes that expose this functionality:
+Hiện tại có 3 node cung cấp chức năng này:
 
-- :ref:`OpenXRCompositionLayerCylinder <class_OpenXRCompositionLayerCylinder>` shows the contents of the SubViewport on the inside of a cylinder (or "slice" of a cylinder).
-- :ref:`OpenXRCompositionLayerEquirect <class_OpenXRCompositionLayerEquirect>` shows the contents of the SubViewport on the interior of a sphere (or "slice" of a sphere).
-- :ref:`OpenXRCompositionLayerQuad <class_OpenXRCompositionLayerQuad>` shows the contents of the SubViewport on a flat rectangle.
+- :ref:`OpenXRCompositionLayerCylinder <class_OpenXRCompositionLayerCylinder>` hiển thị nội dung của SubViewport ở mặt trong của một hình trụ (hoặc "lát cắt" của hình trụ). - :ref:`OpenXRCompositionLayerEquirect <class_OpenXRCompositionLayerEquirect>` hiển thị nội dung của SubViewport ở mặt trong của một hình cầu (hoặc "lát cắt" của hình cầu). - :ref:`OpenXRCompositionLayerQuad <class_OpenXRCompositionLayerQuad>` hiển thị nội dung của SubViewport trên một hình chữ nhật phẳng.
 
-Setting up the SubViewport
---------------------------
+Thiết lập SubViewport
+---------------------
 
-The first step is adding a SubViewport for our 2D UI,
-this doesn't require any specific steps.
-For our example we do mark the viewport as transparent.
+Bước đầu tiên là thêm một SubViewport cho UI 2D của chúng ta; việc này không yêu cầu bước đặc biệt nào. Trong ví dụ của mình, chúng ta đánh dấu viewport là trong suốt.
 
-You can now create the 2D UI by adding child nodes to the SubViewport as you normally would.
-It is advisable to save the 2D UI in a subscene, this makes it easier to do your layout.
+Bây giờ bạn có thể tạo UI 2D bằng cách thêm các node con vào SubViewport như bình thường. Bạn nên lưu UI 2D trong một subscene; điều này giúp bạn dễ dàng thực hiện layout hơn.
 
 .. image:: img/openxr_composition_layer_subviewport.webp
 
 .. warning::
-    The update mode "When Visible" will not work as Godot can't determine whether
-    the viewport is visible to the user.
-    When assigning our viewport to a composition layer Godot will automatically adjust this.
+    Chế độ cập nhật "When Visible" sẽ không hoạt động vì Godot không thể xác định viewport có hiển thị với người dùng hay không. Khi gán viewport của chúng ta cho một composition layer, Godot sẽ tự động điều chỉnh chế độ này.
 
-Adding a composition layer
---------------------------
+Thêm composition layer
+----------------------
 
-The second step is adding our composition layer.
-We can add the correct composition layer node as a child node of
-our :ref:`XROrigin3D <class_xrorigin3d>` node.
-This is very important as the XR runtime positions everything in relation to our origin.
+Bước thứ hai là thêm composition layer. Chúng ta có thể thêm node composition layer phù hợp làm node con của node :ref:`XROrigin3D <class_xrorigin3d>`. Điều này rất quan trọng vì XR runtime định vị mọi thứ theo mối quan hệ với origin của chúng ta.
 
-We want to position the composition layer so it is at eye height and roughly 1 to 1.5 meters
-away from the player.
+Chúng ta muốn định vị composition layer sao cho nó ở độ cao ngang tầm mắt và cách người chơi khoảng 1 đến 1,5 mét.
 
-We now assign the SubViewport to the ``Layer Viewport`` property and enable Alpha Blend.
+Bây giờ chúng ta gán SubViewport cho thuộc tính ``Layer Viewport`` và bật Alpha Blend.
 
 .. image:: img/openxr_composition_layer_quad.webp
 
 .. note::
-    As the player can walk away from the origin point,
-    you will want to reposition the composition layer when the player recenters the view.
-    Using the reference space ``Local Floor`` will apply this logic automatically.
+    Vì người chơi có thể đi ra xa điểm origin, bạn sẽ muốn định vị lại composition layer khi người chơi căn giữa lại góc nhìn. Sử dụng reference space ``Local Floor`` sẽ tự động áp dụng logic này.
 
-Making the interface work
--------------------------
+Làm cho giao diện hoạt động
+---------------------------
 
-So far we're only displaying our UI, to make it work we need to add some code.
-For this example we're going to keep things simple and
-make one of the controllers work as a pointer.
-We'll then simulate mouse actions with this pointer.
+Cho đến giờ chúng ta mới chỉ hiển thị UI; để UI hoạt động, chúng ta cần thêm một số code. Trong ví dụ này, chúng ta sẽ giữ mọi thứ đơn giản và dùng một trong các controller làm pointer. Sau đó, chúng ta sẽ mô phỏng các thao tác chuột bằng pointer này.
 
-This code also requires a ``MeshInstance3D`` node called ``Pointer`` to be added
-as a child to our ``OpenXRCompositionLayerQuad`` node.
-We configure a ``SphereMesh`` with a radius ``0.01`` meters.
-We'll be using this as a helper to visualize where the user is pointing.
+Code này cũng yêu cầu thêm một node ``MeshInstance3D`` có tên ``Pointer`` làm node con của node ``OpenXRCompositionLayerQuad``. Chúng ta cấu hình một ``SphereMesh`` với bán kính ``0.01`` mét. Chúng ta sẽ dùng nó làm trợ giúp để trực quan hóa vị trí người dùng đang trỏ tới.
 
-The main function that drives this functionality is the ``intersects_ray``
-function on our composition layer node.
-This function takes the global position and orientation of our pointer and returns
-the UV where our ray intersects our viewport.
-It returns ``Vector2(-1.0, -1.0)`` if we're not pointing at our viewport.
+Hàm chính điều khiển chức năng này là hàm ``intersects_ray`` trên node composition layer của chúng ta. Hàm này nhận vị trí và hướng toàn cục của pointer, rồi trả về UV tại vị trí tia của chúng ta giao với viewport. Hàm trả về ``Vector2(-1.0, -1.0)`` nếu chúng ta không trỏ vào viewport.
 
-We start with setting up some variables, important here are the export variables
-which identify our controller node with which we point to our screen.
+Chúng ta bắt đầu bằng việc thiết lập một số biến; ở đây quan trọng là các biến export, dùng để xác định node controller mà chúng ta sử dụng để trỏ vào màn hình.
 
 .. code:: gdscript
 
@@ -124,9 +80,7 @@ which identify our controller node with which we point to our screen.
 
     ...
 
-Next we define a helper function that takes the value returned from ``intersects_ray``
-and gives us the global position for that intersection point.
-This implementation only works for our ``OpenXRCompositionLayerQuad`` node.
+Tiếp theo, chúng ta định nghĩa một hàm trợ giúp nhận giá trị được trả về từ ``intersects_ray`` và cung cấp vị trí toàn cục của điểm giao đó. Cách triển khai này chỉ hoạt động với node ``OpenXRCompositionLayerQuad`` của chúng ta.
 
 .. code:: gdscript
 
@@ -141,8 +95,7 @@ This implementation only works for our ``OpenXRCompositionLayerQuad`` node.
 
     ...
 
-We also define a helper function that takes our ``intersect`` value and
-returns our location in the viewport's local coordinate system:
+Chúng ta cũng định nghĩa một hàm trợ giúp nhận giá trị ``intersect`` và trả về vị trí của chúng ta trong hệ tọa độ cục bộ của viewport:
 
 .. code:: gdscript
 
@@ -157,18 +110,15 @@ returns our location in the viewport's local coordinate system:
 
     ...
 
-The main logic happens in our ``_process`` function.
-Here we start by hiding our pointer,
-we then check if we have a valid controller and viewport,
-and we call ``intersects_ray`` with the position and orientation of our controller:
+Logic chính diễn ra trong hàm ``_process``. Trước tiên, chúng ta ẩn pointer, sau đó kiểm tra xem mình có controller và viewport hợp lệ hay không, rồi gọi ``intersects_ray`` với vị trí và hướng của controller:
 
 .. code:: gdscript
 
     ...
 
-    # Called every frame. 'delta' is the elapsed time since the previous frame.
+    # Được gọi ở mỗi frame. 'delta' là khoảng thời gian đã trôi qua kể từ frame trước đó.
     func _process(_delta):
-        # Hide our pointer, we'll make it visible if we're interacting with the viewport.
+        # Ẩn pointer; chúng ta sẽ hiển thị nó nếu đang tương tác với viewport.
         $Pointer.visible = false
 
         if controller and layer_viewport:
@@ -177,8 +127,7 @@ and we call ``intersects_ray`` with the position and orientation of our controll
 
     ...
 
-Next we check if we're intersecting with our viewport.
-If so, we check if our button is pressed and place our pointer at our intersection point.
+Tiếp theo, chúng ta kiểm tra xem có đang giao với viewport hay không. Nếu có, chúng ta kiểm tra xem button đã được nhấn chưa và đặt pointer tại điểm giao của chúng ta.
 
 .. code:: gdscript
 
@@ -187,23 +136,21 @@ If so, we check if our button is pressed and place our pointer at our intersecti
             if intersect != NO_INTERSECTION:
                 var is_pressed : bool = controller.is_button_pressed(button_action)
 
-                # Place our pointer where we're pointing
+                # Đặt pointer tại vị trí chúng ta đang trỏ tới
                 var pos : Vector3 = _intersect_to_global_pos(intersect)
                 $Pointer.visible = true
                 $Pointer.global_position = pos
 
     ...
 
-If we were intersecting in our previous process call and our pointer has moved,
-we prepare an :ref:`InputEventMouseMotion <class_InputEventMouseMotion>` object
-to simulate our mouse moving and send that to our viewport for further processing.
+Nếu chúng ta đã giao với viewport trong lần gọi process trước đó và pointer đã di chuyển, chúng ta chuẩn bị một đối tượng :ref:`InputEventMouseMotion <class_InputEventMouseMotion>` để mô phỏng thao tác di chuyển chuột, rồi gửi đối tượng đó đến viewport để xử lý tiếp.
 
 .. code:: gdscript
 
     ...
 
                 if was_intersect != NO_INTERSECTION and intersect != was_intersect:
-                    # Pointer moved
+                    # Pointer đã di chuyển
                     var event : InputEventMouseMotion = InputEventMouseMotion.new()
                     var from : Vector2 = _intersect_to_viewport_pos(was_intersect)
                     var to : Vector2 = _intersect_to_viewport_pos(intersect)
@@ -215,16 +162,14 @@ to simulate our mouse moving and send that to our viewport for further processin
 
     ...
 
-If we've just released our button we also prepare
-an :ref:`InputEventMouseButton <class_InputEventMouseButton>` object
-to simulate a button release and send that to our viewport for further processing.
+Nếu chúng ta vừa nhả button, chúng ta cũng chuẩn bị một đối tượng :ref:`InputEventMouseButton <class_InputEventMouseButton>` để mô phỏng thao tác nhả button và gửi đối tượng đó đến viewport để xử lý tiếp.
 
 .. code:: gdscript
 
     ...
 
                 if not is_pressed and was_pressed:
-                    # Button was let go?
+                    # Đã nhả button?
                     var event : InputEventMouseButton = InputEventMouseButton.new()
                     event.button_index = 1
                     event.pressed = false
@@ -233,16 +178,14 @@ to simulate a button release and send that to our viewport for further processin
 
     ...
 
-Or if we've just pressed our button we prepare
-an :ref:`InputEventMouseButton <class_InputEventMouseButton>` object
-to simulate a button press and send that to our viewport for further processing.
+Hoặc nếu chúng ta vừa nhấn button, chúng ta chuẩn bị một đối tượng :ref:`InputEventMouseButton <class_InputEventMouseButton>` để mô phỏng thao tác nhấn button và gửi đối tượng đó đến viewport để xử lý tiếp.
 
 .. code:: gdscript
 
     ...
 
                 elif is_pressed and not was_pressed:
-                    # Button was pressed?
+                    # Đã nhấn button?
                     var event : InputEventMouseButton = InputEventMouseButton.new()
                     event.button_index = 1
                     event.button_mask = MOUSE_BUTTON_MASK_LEFT
@@ -252,7 +195,7 @@ to simulate a button press and send that to our viewport for further processing.
 
     ...
 
-Next we remember our state for next frame.
+Tiếp theo, chúng ta ghi nhớ trạng thái để dùng cho frame tiếp theo.
 
 .. code:: gdscript
 
@@ -263,7 +206,7 @@ Next we remember our state for next frame.
 
     ...
 
-Finally, if we aren't intersecting, we clear our state.
+Cuối cùng, nếu không có giao với viewport, chúng ta xóa trạng thái.
 
 .. code:: gdscript
 
@@ -274,20 +217,14 @@ Finally, if we aren't intersecting, we clear our state.
                 was_intersect = NO_INTERSECTION
 
 
-Hole punching
--------------
+Khoét lỗ
+--------
 
-As the composition layer is composited on top of the render result,
-it can be rendered in front of objects that are actually forward of the viewport.
+Vì composition layer được composited bên trên kết quả render, nó có thể được render phía trước những đối tượng thực sự nằm phía trước viewport.
 
-By enabling hole punch you instruct Godot to render a transparent object
-where our viewport is displayed.
-It does this in a way that fills the depth buffer and clears the current rendering result.
-Anything behind our viewport will now be cleared,
-while anything in front of our viewport will be rendered as usual.
+Bằng cách bật hole punch, bạn yêu cầu Godot render một đối tượng trong suốt tại nơi viewport được hiển thị. Godot thực hiện việc này theo cách lấp đầy depth buffer và xóa kết quả render hiện tại. Mọi thứ phía sau viewport giờ sẽ bị xóa, trong khi mọi thứ phía trước viewport vẫn được render như bình thường.
 
-You also need to set ``Sort Order`` to a negative value,
-the XR compositor will now draw the viewport first, and then overlay our rendering result.
+Bạn cũng cần đặt ``Sort Order`` thành một giá trị âm; XR compositor lúc này sẽ vẽ viewport trước, rồi phủ kết quả render của chúng ta lên trên.
 
 .. figure:: img/openxr_composition_layer_hole_punch.webp
    :align: center

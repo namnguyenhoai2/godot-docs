@@ -3,81 +3,68 @@
 Groups
 ======
 
-Groups in Godot work like tags in other software. You can add a node to as many
-groups as you want. Then, in code, you can use the SceneTree to:
+Groups trong Godot hoạt động giống như tags trong các phần mềm khác. Bạn có thể thêm một node vào bao nhiêu group tùy ý. Sau đó, trong code, bạn có thể dùng SceneTree để:
 
-- Get a list of nodes in a group.
-- Call a method on all nodes in a group.
-- Send a notification to all nodes in a group.
+- Lấy danh sách các node trong một group. - Gọi một method trên tất cả node trong một group. - Gửi một notification đến tất cả node trong một group.
 
-This is a useful feature to organize large scenes and decouple code.
+Đây là một tính năng hữu ích để tổ chức các scene lớn và tách rời code.
 
 
-Managing groups
----------------
+Quản lý groups
+--------------
 
-Groups are created by adding a node to a new group name, and likewise they are
-removed by removing all nodes from a given group.
+Groups được tạo bằng cách thêm một node vào tên group mới, và tương tự, chúng được xóa bằng cách xóa tất cả node khỏi một group nhất định.
 
-There are two ways to add/remove nodes to groups:
+Có hai cách để thêm/xóa node khỏi groups:
 
-- During design, by using the Groups dock in the editor, or the Groups tab in the Globals dock in project settings.
-- During execution, by calling :ref:`Node.add_to_group() <class_Node_method_add_to_group>`
-  or :ref:`Node.remove_from_group() <class_Node_method_remove_from_group>`.
+- Trong quá trình thiết kế, bằng cách sử dụng Groups dock trong editor hoặc tab Groups trong Globals dock của project settings. - Trong quá trình thực thi, bằng cách gọi :ref:`Node.add_to_group() <class_Node_method_add_to_group>` hoặc :ref:`Node.remove_from_group() <class_Node_method_remove_from_group>`.
 
 .. tip::
 
-    While not strictly required, it's recommended to use the ``snake_case`` naming
-    convention for group names.
+    Mặc dù không bắt buộc nghiêm ngặt, bạn nên sử dụng quy ước đặt tên ``snake_case`` cho tên các group.
 
-Using the Groups dock
-~~~~~~~~~~~~~~~~~~~~~
+Sử dụng Groups dock
+~~~~~~~~~~~~~~~~~~~
 
-You can create new groups using the Groups dock.
+Bạn có thể tạo groups mới bằng Groups dock.
 
 .. image:: img/groups_dock.webp
 
-Select a node in the Scene dock then click the add button with the + symbol.
+Chọn một node trong Scene dock, sau đó nhấp vào nút thêm có biểu tượng +.
 
 .. image:: img/groups_add_new_group_button.webp
 
-You should now see the Create New Group modal appear. Write the group name in the field.
+Bây giờ bạn sẽ thấy modal Create New Group xuất hiện. Nhập tên group vào trường này.
 
-You can optionally mark the option "Global", which will make the group visible project-wide,
-and able to be reused in any project scene. This will also allow you to give it a description.
+Bạn có thể tùy chọn đánh dấu "Global", để group hiển thị trên toàn project và có thể được sử dụng lại trong bất kỳ scene nào của project. Tùy chọn này cũng cho phép bạn thêm mô tả cho group.
 
-When done, press Ok to create it.
+Khi hoàn tất, nhấn Ok để tạo group.
 
 .. image:: img/groups_add_new_group_modal.webp
 
-You should see the new groups appear in the Groups dock under Scene Groups if the Global option was
-unmarked, or under Global Groups if that option was marked.
+Bạn sẽ thấy các group mới xuất hiện trong Groups dock, bên dưới Scene Groups nếu tùy chọn Global không được đánh dấu, hoặc bên dưới Global Groups nếu tùy chọn đó được đánh dấu.
 
-A selected Node from the Scene dock can be added into groups by marking the checkbox on the left side
-of the groups in the Groups dock. The node you had selected when creating a new group will be automatically checked.
+Một Node được chọn trong Scene dock có thể được thêm vào các group bằng cách đánh dấu checkbox ở bên trái các group trong Groups dock. Node bạn đã chọn khi tạo group mới sẽ tự động được đánh dấu.
 
 .. image:: img/groups_dock_with_created_groups.webp
 
-All groups present in the project that were marked as Global, created from any scene, will be visible under Global Groups.
+Tất cả group trong project được đánh dấu là Global và được tạo từ bất kỳ scene nào sẽ hiển thị bên dưới Global Groups.
 
-Any other group derived from nodes in the current scene will appear under Scene Groups.
+Mọi group khác được tạo từ các node trong scene hiện tại sẽ xuất hiện bên dưới Scene Groups.
 
 .. warning:: The same underlying logic is used for both Global and Scene groups.
-             Groups with the same name are considered one and the same. This feature is purely organizational.
+             Các group có cùng tên được xem là một group duy nhất. Tính năng này chỉ nhằm mục đích tổ chức.
 
 .. image:: img/groups_node_tab_with_multiple_types_of_groups.webp
 
-You can manage Global Groups in the Groups tab of the Globals dock, inside Project Settings. There, you will be able to add new
-global groups, or change existing groups' names and descriptions.
+Bạn có thể quản lý Global Groups trong tab Groups của Globals dock, bên trong Project Settings. Tại đó, bạn có thể thêm các global group mới hoặc thay đổi tên và mô tả của các group hiện có.
 
 .. image:: img/groups_global_groups_settings.webp
 
-Using code
-~~~~~~~~~~
+Sử dụng code
+~~~~~~~~~~~~
 
-You can also manage groups from scripts. The following code adds the node to
-which you attach the script to the ``guards`` group as soon as it enters the
-scene tree.
+Bạn cũng có thể quản lý groups từ các script. Đoạn code sau thêm node mà bạn gắn script vào group ``guards`` ngay khi node đó đi vào scene tree.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -94,11 +81,9 @@ scene tree.
         AddToGroup("guards");
     }
 
-Imagine you're creating an infiltration game. When an
-enemy spots the player, you want all guards and robots to be on alert.
+Hãy tưởng tượng bạn đang tạo một game xâm nhập. Khi một enemy phát hiện player, bạn muốn tất cả guard và robot chuyển sang trạng thái cảnh giác.
 
-In the fictional example below, we use ``SceneTree.call_group()`` to alert all
-enemies that the player was spotted.
+Trong ví dụ giả tưởng bên dưới, chúng ta sử dụng ``SceneTree.call_group()`` để cảnh báo tất cả enemy rằng player đã bị phát hiện.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -113,10 +98,9 @@ enemies that the player was spotted.
         GetTree().CallGroup("guards", "enter_alert_mode");
     }
 
-The above code calls the function ``enter_alert_mode`` on every member of the
-group ``guards``.
+Đoạn code trên gọi function ``enter_alert_mode`` trên mọi member của group ``guards``.
 
-To get the full list of nodes in the ``guards`` group as an array, you can call
+Để lấy toàn bộ danh sách các node trong group ``guards`` dưới dạng một array, bạn có thể gọi
 :ref:`SceneTree.get_nodes_in_group()
 <class_SceneTree_method_get_nodes_in_group>`:
 
@@ -129,7 +113,4 @@ To get the full list of nodes in the ``guards`` group as an array, you can call
 
     var guards = GetTree().GetNodesInGroup("guards");
 
-The :ref:`SceneTree <class_SceneTree>` class provides many more useful methods
-to interact with scenes, their node hierarchy, and groups. It allows you to
-switch scenes easily or reload them, quit the game or pause and unpause it. It
-also provides useful signals.
+Class :ref:`SceneTree <class_SceneTree>` cung cấp nhiều method hữu ích khác để tương tác với các scene, hệ thống phân cấp node và groups. Class này cho phép bạn dễ dàng chuyển đổi scene hoặc tải lại chúng, thoát game hoặc tạm dừng và tiếp tục game. Class này cũng cung cấp các signal hữu ích.

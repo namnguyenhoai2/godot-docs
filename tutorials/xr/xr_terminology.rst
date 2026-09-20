@@ -1,30 +1,26 @@
 .. _doc_xr_terminology:
 
-XR Terminology
-==============
+Thuật ngữ XR
+============
 
-This page defines how terms such as *XR*, *VR*, and *AR* are used within Godot.
+Trang này định nghĩa cách sử dụng các thuật ngữ như *XR*, *VR* và *AR* trong Godot.
 
-These terms are not always used consistently across the industry. In Godot, we use clear
-and practical definitions to avoid ambiguity and to better reflect how these technologies
-are actually implemented.
+Các thuật ngữ này không phải lúc nào cũng được sử dụng nhất quán trong toàn ngành. Trong Godot, chúng tôi sử dụng các định nghĩa rõ ràng và thực tế để tránh sự mơ hồ, đồng thời phản ánh tốt hơn cách các công nghệ này thực sự được triển khai.
 
 XR (Extended Reality)
 ---------------------
 
-**XR** is an umbrella term that covers all extended reality technologies supported by Godot.
+**XR** là thuật ngữ bao quát tất cả các công nghệ extended reality được Godot hỗ trợ.
 
-In practice, XR refers to the complete system exposed through the
+Trên thực tế, XR đề cập đến toàn bộ hệ thống được cung cấp thông qua
 :ref:`XRServer <class_xrserver>` and related APIs. This system abstracts away platform
-differences and provides a unified way to build XR applications.
+các khác biệt và cung cấp một cách thống nhất để xây dựng các ứng dụng XR.
 
-XR includes:
+XR bao gồm:
 
-- Virtual Reality (VR)
-- Augmented Reality (AR)
+- Virtual Reality (VR) - Augmented Reality (AR)
 
-From a development perspective, XR is the entry point for working with both fully
-virtual experiences and those that combine virtual and real-world elements.
+Xét từ góc độ phát triển, XR là điểm khởi đầu để làm việc với cả những trải nghiệm hoàn toàn ảo và những trải nghiệm kết hợp các yếu tố ảo với thế giới thực.
 
 VR (Virtual Reality)
 --------------------
@@ -35,33 +31,24 @@ VR (Virtual Reality)
         <iframe src="https://www.youtube-nocookie.com/embed/xJKQ2ca5zVw" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
     </div>
 
-**Virtual Reality (VR)** refers to fully **immersive** experiences where the user is placed
-inside a completely virtual environment.
+**Virtual Reality (VR)** đề cập đến những trải nghiệm **immersive** hoàn toàn, trong đó người dùng được đặt bên trong một môi trường hoàn toàn ảo.
 
-When using VR, the user does not see the real world. Instead, everything they see is
-rendered by the application, and their movement is tracked and applied to the virtual
-camera and controllers.
+Khi sử dụng VR, người dùng không nhìn thấy thế giới thực. Thay vào đó, mọi thứ họ nhìn thấy đều được ứng dụng render, còn chuyển động của họ được theo dõi và áp dụng cho camera ảo và các controller.
 
-In Godot, VR typically involves:
+Trong Godot, VR thường bao gồm:
 
-- Head-mounted displays (HMDs)
-- Fully virtual 3D scenes
-- 6DOF (six degrees of freedom) tracking for head and controllers
+- Head-mounted display (HMD) - Các cảnh 3D hoàn toàn ảo - Tracking 6DOF (sáu bậc tự do) cho đầu và controller
 
-This is the most common use of XR in Godot. See
+Đây là cách sử dụng XR phổ biến nhất trong Godot. Xem
 :ref:`Setting up XR <doc_setting_up_xr>` for how to get started.
 
 .. note::
 
-    Even in VR applications, passthrough can be used if supported by the headset.
+    Ngay cả trong các ứng dụng VR, passthrough vẫn có thể được sử dụng nếu headset hỗ trợ.
 
-    In this case, passthrough is typically used to reveal specific real-world
-    elements, such as a keyboard, mouse, or other peripherals, while the rest
-    of the experience remains fully virtual.
+    Trong trường hợp này, passthrough thường được sử dụng để hiển thị các thành phần cụ thể của thế giới thực, chẳng hạn như bàn phím, chuột hoặc các thiết bị ngoại vi khác, trong khi phần còn lại của trải nghiệm vẫn hoàn toàn ảo.
 
-    This is a hybrid use case and differs from Augmented Reality, as passthrough
-    is not used to place virtual content into the real world, but to selectively
-    expose parts of the real world within a VR experience.
+    Đây là một trường hợp sử dụng hybrid và khác với Augmented Reality, vì passthrough không được sử dụng để đặt nội dung ảo vào thế giới thực, mà để chọn lọc hiển thị các phần của thế giới thực bên trong một trải nghiệm VR.
 
 AR (Augmented Reality)
 ----------------------
@@ -72,37 +59,26 @@ AR (Augmented Reality)
         <iframe src="https://www.youtube-nocookie.com/embed/8B8RnFokAFc" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
     </div>
 
-**Augmented Reality (AR)** refers to experiences where virtual content is overlaid onto
-the real world.
+**Augmented Reality (AR)** đề cập đến những trải nghiệm trong đó nội dung ảo được phủ lên thế giới thực.
 
-The user continues to see their physical surroundings, while virtual objects are rendered
-in a way that makes them appear part of that environment.
+Người dùng vẫn tiếp tục nhìn thấy môi trường xung quanh trong thế giới thực, trong khi các vật thể ảo được render theo cách khiến chúng trông như một phần của môi trường đó.
 
-In Godot, AR is treated as a single concept, regardless of the type of device used.
-This includes XR headsets using camera passthrough, see-through glasses with displays, and handheld devices
-such as phones and tablets.
+Trong Godot, AR được xem là một khái niệm duy nhất, bất kể loại thiết bị được sử dụng. Điều này bao gồm các headset XR sử dụng camera passthrough, kính see-through có màn hình hiển thị và các thiết bị cầm tay như điện thoại, máy tính bảng.
 
-For XR devices and AR glasses that support standards such as OpenXR or WebXR, AR
-functionality is available through the XR system. In these cases, applications can run
-across different devices with minimal changes. Passthrough on VR headsets is one example
-of this, and is simply a technical method used to enable AR capabilities on such devices.
+Đối với các thiết bị XR và kính AR hỗ trợ những standard như OpenXR hoặc WebXR, chức năng AR được cung cấp thông qua hệ thống XR. Trong các trường hợp này, ứng dụng có thể chạy trên nhiều thiết bị khác nhau với rất ít thay đổi. Passthrough trên các headset VR là một ví dụ về điều này và đơn giản chỉ là một phương pháp kỹ thuật được sử dụng để kích hoạt các khả năng AR trên những thiết bị đó.
 
-Outside of Godot, this type of experience is sometimes referred to as "Mixed Reality (MR)".
-In Godot documentation, this is treated as Augmented Reality to avoid ambiguity.
-Passthrough is considered an implementation detail, not a separate category.
+Bên ngoài Godot, loại trải nghiệm này đôi khi được gọi là "Mixed Reality (MR)". Trong tài liệu Godot, loại trải nghiệm này được xem là Augmented Reality để tránh sự mơ hồ. Passthrough được xem là một chi tiết triển khai, không phải một danh mục riêng biệt.
 
-See :ref:`AR passthrough <doc_openxr_passthrough>` for an example of AR using the XR system.
+Xem :ref:`AR passthrough <doc_openxr_passthrough>` để biết ví dụ về AR sử dụng hệ thống XR.
 
 .. note::
 
-    Handheld platforms such as phones and tablets currently do not provide OpenXR support.
+    Các nền tảng cầm tay như điện thoại và máy tính bảng hiện chưa cung cấp hỗ trợ OpenXR.
 
-    Instead, AR functionality is exposed through proprietary APIs and requires
-    platform-specific plugins:
+    Thay vào đó, chức năng AR được cung cấp thông qua các API độc quyền và yêu cầu các plugin dành riêng cho từng nền tảng:
 
 	- `ARCore plugin (Android) <https://github.com/godotvr/godot_arcore>`_
 
-    This results in platform-specific implementations that are not fully portable.
+    Điều này dẫn đến các cách triển khai dành riêng cho từng nền tảng và không hoàn toàn portable.
 
-    OpenXR is capable of supporting handheld AR. If adopted by platform vendors, this would
-    allow AR applications to run across phones, headsets, and glasses using a shared codebase.
+    OpenXR có khả năng hỗ trợ AR trên các thiết bị cầm tay. Nếu được các nhà cung cấp nền tảng áp dụng, điều này sẽ cho phép các ứng dụng AR chạy trên điện thoại, headset và kính bằng một codebase dùng chung.

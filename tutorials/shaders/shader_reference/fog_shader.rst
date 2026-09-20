@@ -1,34 +1,27 @@
 .. _doc_fog_shader:
 
-Fog shaders
-===========
+Shader sương mù
+===============
 
-Fog shaders are used to define how fog is added to (or subtracted from) a scene in
-a given area. Fog shaders are always used together with
+Shader sương mù được dùng để xác định cách sương mù được thêm vào (hoặc loại bỏ khỏi) một cảnh trong một khu vực nhất định. Shader sương mù luôn được sử dụng cùng với
 :ref:`FogVolumes <class_FogVolume>` and volumetric fog. Fog shaders only have
-one processing function, the ``fog()`` function.
+một hàm xử lý, hàm ``fog()``.
 
-The resolution of the fog shaders depends on the resolution of the
-volumetric fog froxel grid. Accordingly, the level of detail that a fog shader
-can add depends on how close the :ref:`FogVolume <class_FogVolume>` is to the
-camera.
+Độ phân giải của shader sương mù phụ thuộc vào độ phân giải của lưới froxel của sương mù thể tích. Theo đó, mức độ chi tiết mà một shader sương mù có thể thêm vào phụ thuộc vào khoảng cách từ :ref:`FogVolume <class_FogVolume>` đến camera.
 
-Fog shaders are a special form of compute shader that is called once for
-every froxel that is touched by an axis-aligned bounding box of the associated
+Shader sương mù là một dạng đặc biệt của compute shader, được gọi một lần cho mỗi froxel bị chạm bởi một bounding box căn chỉnh theo trục của đối tượng liên kết
 :ref:`FogVolume <class_FogVolume>`. This means that froxels that just barely
-touch a given :ref:`FogVolume <class_FogVolume>` will still be used.
+các :ref:`FogVolume <class_FogVolume>` nhất định chạm tới vẫn sẽ được sử dụng.
 
-Built-ins
----------
+Built-in
+--------
 
-Values marked as ``in`` are read-only. Values marked as ``out`` can optionally
-be written to and will not necessarily contain sensible values. Samplers cannot
-be written to so they are not marked.
+Các giá trị được đánh dấu là ``in`` chỉ được đọc. Các giá trị được đánh dấu là ``out`` có thể được ghi tùy chọn và không nhất thiết phải chứa các giá trị hợp lý. Sampler không thể được ghi nên không được đánh dấu.
 
-Global built-ins
-----------------
+Built-in toàn cục
+-----------------
 
-Global built-ins are available everywhere, including in custom functions.
+Built-in toàn cục có sẵn ở mọi nơi, bao gồm cả trong các hàm tùy chỉnh.
 
 +-----------------------------------+-------------------------------------------------------------------------------------------------+
 | Built-in                          | Description                                                                                     |
@@ -52,12 +45,12 @@ Global built-ins are available everywhere, including in custom functions.
 |                                   | Euler's number, the base of the natural logarithm.                                              |
 +-----------------------------------+-------------------------------------------------------------------------------------------------+
 
-Fog built-ins
--------------
+Built-in của sương mù
+---------------------
 
-All of the output values of fog volumes overlap one another. This allows
+Tất cả các giá trị đầu ra của các volume sương mù chồng lên nhau. Điều này cho phép
 :ref:`FogVolumes <class_FogVolume>` to be rendered efficiently as they can all
-be drawn at once.
+được vẽ cùng một lúc.
 
 +-------------------------------+-------------------------------------------------------------------------------------------------+
 | Built-in                      | Description                                                                                     |

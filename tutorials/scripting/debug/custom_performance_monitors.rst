@@ -1,34 +1,23 @@
 .. _doc_custom_performance_monitors:
 
-Custom performance monitors
-===========================
+Trình giám sát hiệu năng tùy chỉnh
+==================================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-As explained in the :ref:`doc_debugger_panel` documentation, Godot features a
-**Debugger > Monitors** bottom panel that allows tracking various values with
-graphs showing their evolution over time. The data for those graphs is sourced
-from the engine's :ref:`class_Performance` singleton.
+Như đã giải thích trong tài liệu :ref:`doc_debugger_panel`, Godot cung cấp một panel bên dưới **Debugger > Monitors**, cho phép theo dõi nhiều giá trị khác nhau bằng các biểu đồ thể hiện sự thay đổi của chúng theo thời gian. Dữ liệu cho các biểu đồ này được lấy từ singleton :ref:`class_Performance` của engine.
 
-Godot lets you declare custom values to be displayed in the Monitors tab.
-Example use cases for custom performance monitors include:
+Godot cho phép bạn khai báo các giá trị tùy chỉnh để hiển thị trong tab Monitors. Một số trường hợp sử dụng trình giám sát hiệu năng tùy chỉnh gồm:
 
-- Displaying performance metrics that are specific to your project. For
-  instance, in a voxel game, you could create a performance monitor to track the
-  number of chunks that are loaded every second.
-- Displaying in-game metrics that are not strictly related to performance, but
-  are still useful to graph for debugging purposes. For instance, you could
-  track the number of enemies present in the game to make sure your spawning
-  mechanic works as intended.
+- Hiển thị các chỉ số hiệu năng cụ thể cho dự án của bạn. Ví dụ, trong một game voxel, bạn có thể tạo một trình giám sát hiệu năng để theo dõi số chunk được tải mỗi giây. - Hiển thị các chỉ số trong game không liên quan trực tiếp đến hiệu năng nhưng vẫn hữu ích khi biểu diễn trên biểu đồ cho mục đích debug. Ví dụ, bạn có thể theo dõi số kẻ địch hiện diện trong game để đảm bảo cơ chế spawn hoạt động như mong muốn.
 
-Creating a custom performance monitor
--------------------------------------
+Tạo trình giám sát hiệu năng tùy chỉnh
+--------------------------------------
 
-In this example, we'll create a custom performance monitor to track how many
-enemies are present in the currently running project.
+Trong ví dụ này, chúng ta sẽ tạo một trình giám sát hiệu năng tùy chỉnh để theo dõi số kẻ địch hiện diện trong project đang chạy.
 
-The main scene features a :ref:`class_Timer` node with the following script attached:
+Scene chính có một node :ref:`class_Timer` với script sau được gắn vào:
 
 ::
 
@@ -36,12 +25,12 @@ The main scene features a :ref:`class_Timer` node with the following script atta
 
 
     func _ready():
-        # The slash delimiter is used to determine the category of the monitor.
-        # If there is no slash in the monitor name, a generic "Custom" category
-        # will be used instead.
+        # Dấu phân cách slash được dùng để xác định category của monitor.
+        # Nếu tên monitor không có slash, category "Custom" chung
+        # sẽ được sử dụng thay thế.
         Performance.add_custom_monitor("game/enemies", get_enemy_count)
         timeout.connect(_on_timeout)
-        # Spawn 20 enemies per second.
+        # Spawn 20 kẻ địch mỗi giây.
         wait_time = 0.05
         start()
 
@@ -51,19 +40,18 @@ The main scene features a :ref:`class_Timer` node with the following script atta
         get_parent().add_child(enemy)
 
 
-    # This function is called every time the performance monitor is queried
-    # (this occurs once per second in the editor, more if called manually).
-    # The function must return a number greater than or equal to 0 (int or float).
+    # Hàm này được gọi mỗi khi performance monitor được truy vấn
+    # (việc này xảy ra một lần mỗi giây trong editor, hoặc nhiều hơn nếu được gọi thủ công).
+    # Hàm phải trả về một số lớn hơn hoặc bằng 0 (int hoặc float).
     func get_enemy_count():
         return get_tree().get_nodes_in_group("enemies").size()
 
 
-The second parameter of
+Tham số thứ hai của
 :ref:`Performance.add_custom_monitor<class_Performance_method_add_custom_monitor>`
-is a :ref:`class_Callable`.
+là một :ref:`class_Callable`.
 
-``enemy.tscn`` is a scene with a Node2D root node and Timer child node. The
-Node2D has the following script attached:
+``enemy.tscn`` là một scene có node gốc Node2D và node con Timer. Node2D có script sau được gắn vào:
 
 ::
 
@@ -73,7 +61,7 @@ Node2D has the following script attached:
     func _ready():
         add_to_group("enemies")
         $Timer.timeout.connect(_on_timer_timeout)
-        # Despawn enemies 2.5 seconds after they spawn.
+        # Despawn kẻ địch 2,5 giây sau khi chúng spawn.
         $Timer.wait_time = 2.5
         $Timer.start()
 
@@ -81,15 +69,9 @@ Node2D has the following script attached:
     func _on_timer_timeout():
         queue_free()
 
-In this example, since we spawn 20 enemies per second, and each enemy despawns
-2.5 seconds after they spawn, we expect the number of enemies present in the
-scene to stabilize to 50. We can make sure about this by looking at the graph.
+Trong ví dụ này, vì chúng ta spawn 20 kẻ địch mỗi giây và mỗi kẻ địch despawn 2,5 giây sau khi spawn, chúng ta kỳ vọng số kẻ địch hiện diện trong scene sẽ ổn định ở mức 50. Chúng ta có thể xác nhận điều này bằng cách xem biểu đồ.
 
-To visualize the graph created from this custom performance monitor, run the
-project, switch to the editor while the project is running and open **Debugger >
-Monitors** at the bottom of the editor window. Scroll down to the newly
-available **Game** section and check **Enemies**. You should see a graph
-appearing as follows:
+Để trực quan hóa biểu đồ được tạo từ performance monitor tùy chỉnh này, hãy chạy project, chuyển sang editor trong khi project đang chạy và mở **Debugger > Monitors** ở cuối cửa sổ editor. Cuộn xuống phần **Game** mới xuất hiện và chọn **Enemies**. Bạn sẽ thấy một biểu đồ xuất hiện như sau:
 
 .. figure:: img/custom_performance_monitors_graph_example.webp
    :align: center
@@ -99,20 +81,13 @@ appearing as follows:
 
 .. note::
 
-    The performance monitor handling code doesn't have to live in the same
-    script as the nodes themselves. You may choose to move the performance
-    monitor registration and getter function to an :ref:`autoload
-    <doc_singletons_autoload>` instead.
+    Code xử lý performance monitor không nhất thiết phải nằm trong cùng script với các node. Thay vào đó, bạn có thể chuyển phần đăng ký performance monitor và hàm getter sang một :ref:`autoload <doc_singletons_autoload>`.
 
-Querying a performance monitor in a project
--------------------------------------------
+Truy vấn performance monitor trong một project
+----------------------------------------------
 
-If you wish to display the value of the performance monitor in the running
-project's window (rather than the editor), use
-``Performance.get_custom_monitor("category/name")`` to fetch the value of the
-custom monitor. You can display the value using a :ref:`class_Label`,
+Nếu muốn hiển thị giá trị của performance monitor trong cửa sổ của project đang chạy (thay vì trong editor), hãy dùng ``Performance.get_custom_monitor("category/name")`` để lấy giá trị của monitor tùy chỉnh. Bạn có thể hiển thị giá trị bằng :ref:`class_Label`,
 :ref:`class_RichTextLabel`, :ref:`doc_custom_drawing_in_2d`, :ref:`doc_3d_text`,
-etc.
+v.v.
 
-This method can be used in exported projects as well (debug and release mode),
-which allows you to create visualizations outside the editor.
+Phương thức này cũng có thể được sử dụng trong các project đã export (ở chế độ debug và release), cho phép bạn tạo các hình ảnh trực quan bên ngoài editor.

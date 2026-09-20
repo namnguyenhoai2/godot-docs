@@ -1,68 +1,38 @@
 .. _doc_gui_navigation:
 
-Keyboard/Controller Navigation and Focus
-========================================
+Điều hướng và lấy focus bằng Bàn phím/Controller
+================================================
 
-It is a common requirement for a user interface to have full keyboard
-and controller support for navigation and interaction. There are two main
-reasons why this is beneficial for projects: improved accessibility (not everyone
-can use mouse or touch controls for interactions), and getting your project
-ready for consoles (or just for people who prefer to game with a controller on PC).
+Một yêu cầu phổ biến đối với giao diện người dùng là phải hỗ trợ đầy đủ bàn phím và controller cho việc điều hướng và tương tác. Có hai lý do chính khiến điều này mang lại lợi ích cho các project: cải thiện khả năng accessibility (không phải ai cũng có thể sử dụng chuột hoặc thao tác cảm ứng để tương tác), và giúp project sẵn sàng cho console (hoặc đơn giản là phục vụ những người thích chơi game bằng controller trên PC).
 
-Navigating between UI elements with keyboard or controller is done by
-changing which node is actively selected. This is also called changing UI focus.
-Every :ref:`Control <class_Control>` node in Godot is capable of having focus.
-By default, some control nodes have the ability to automatically grab focus
-reacting to built-in UI actions such as ``ui_up``, ``ui_down``, ``ui_focus_next``, etc.
-These actions can be seen in the project settings in the input map and can be modified.
+Việc điều hướng giữa các phần tử UI bằng bàn phím hoặc controller được thực hiện bằng cách thay đổi node nào đang được chọn. Thao tác này còn được gọi là thay đổi UI focus. Mọi node :ref:`Control <class_Control>` trong Godot đều có khả năng nhận focus. Theo mặc định, một số control node có khả năng tự động lấy focus khi phản hồi các UI action tích hợp sẵn như ``ui_up``, ``ui_down``, ``ui_focus_next``, v.v. Bạn có thể xem các action này trong project settings, tại input map, và sửa đổi chúng.
 
 .. warning::
 
-    Because these actions are used for focus they should not be used for any
-    gameplay code.
+    Vì các action này được dùng cho focus, không nên sử dụng chúng cho bất kỳ gameplay code nào.
 
-Node settings
--------------
+Cài đặt node
+------------
 
-In addition to the built-in logic, you can define what is known as focus neighbors
-for each individual control node. This allows to finely tune the path the UI focus
-takes across the user interface of your project. The settings for individual
-nodes can be found in the Inspector dock, under the "Focus" category of the
-"Control" section.
+Ngoài logic tích hợp sẵn, bạn có thể định nghĩa thứ được gọi là focus neighbor cho từng control node riêng lẻ. Điều này cho phép tinh chỉnh chính xác đường đi của UI focus trong giao diện người dùng của project. Bạn có thể tìm thấy các cài đặt cho từng node trong Inspector dock, dưới danh mục "Focus" của phần "Control".
 
 .. image:: img/focus_settings.png
 
-Neighbor options are used to define nodes for 4-directional navigation, such
-as using arrow keys or a D-pad on a controller. For example, the bottom neighbor
-will be used when navigating down with the down arrow or by pushing down on
-the D-pad. The "Next" and "Previous" options are used with the focus shift button,
-such as :kbd:`Tab` on desktop operating systems.
+Các tùy chọn neighbor được dùng để định nghĩa node cho việc điều hướng 4 hướng, chẳng hạn như sử dụng các phím mũi tên hoặc D-pad trên controller. Ví dụ, bottom neighbor sẽ được sử dụng khi điều hướng xuống bằng phím mũi tên xuống hoặc khi nhấn xuống trên D-pad. Các tùy chọn "Next" và "Previous" được sử dụng với nút chuyển focus, chẳng hạn như :kbd:`Tab` trên các hệ điều hành desktop.
 
 .. note::
-    A node can lose focus if it becomes hidden.
+    Một node có thể mất focus nếu bị ẩn.
 
-The mode setting defines how a node can be focused. **All** means a node can
-be focused by clicking on it with the mouse, or selecting it with a keyboard
-or controller. **Click** means it can only be focused on by clicking on it.
-Finally, **None** means it can't be focused at all. Different control nodes have
-different default settings for this based on how they are typically used, for
-example, :ref:`Label <class_Label>` nodes are set to "None" by default,
-while :ref:`buttons <class_Button>` are set to "All".
+Cài đặt mode xác định cách một node có thể nhận focus. **All** nghĩa là node có thể nhận focus bằng cách nhấp vào nó bằng chuột hoặc chọn nó bằng bàn phím hay controller. **Click** nghĩa là node chỉ có thể nhận focus bằng cách nhấp vào nó. Cuối cùng, **None** nghĩa là node hoàn toàn không thể nhận focus. Các control node khác nhau có cài đặt mặc định khác nhau tùy theo cách chúng thường được sử dụng; ví dụ, các node :ref:`Label <class_Label>` được đặt thành "None" theo mặc định, trong khi :ref:`buttons <class_Button>` được đặt thành "All".
 
-Make sure to properly configure your scenes for focus and navigation. If a node has
-no focus neighbor configured, the engine will try to guess the next control automatically.
-This may result in unintended behavior, especially in a complex user interface that doesn't
-have well-defined vertical or horizontal navigation flow.
+Hãy đảm bảo cấu hình đúng các scene cho focus và điều hướng. Nếu một node chưa được cấu hình focus neighbor, engine sẽ cố gắng tự động đoán control tiếp theo. Điều này có thể dẫn đến hành vi ngoài ý muốn, đặc biệt trong một giao diện người dùng phức tạp không có luồng điều hướng dọc hoặc ngang được xác định rõ ràng.
 
-Necessary code
+Code cần thiết
 --------------
 
-For keyboard and controller navigation to work correctly, any node must be focused by
-using code when the scene starts. Without doing this, pressing buttons or keys won't
-do anything.
+Để việc điều hướng bằng bàn phím và controller hoạt động chính xác, bất kỳ node nào cũng phải được focus bằng code khi scene bắt đầu. Nếu không thực hiện việc này, thao tác nhấn nút hoặc phím sẽ không có tác dụng.
 
-You can use the :ref:`Control.grab_focus() <class_Control_method_grab_focus>` method
-to focus a control. Here is a basic example of setting initial focus with code:
+Bạn có thể sử dụng method :ref:`Control.grab_focus() <class_Control_method_grab_focus>` để focus một control. Dưới đây là ví dụ cơ bản về cách thiết lập focus ban đầu bằng code:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -77,5 +47,4 @@ to focus a control. Here is a basic example of setting initial focus with code:
         GetNode<Button>("StartButton").GrabFocus.CallDeferred();
     }
 
-Now when the scene starts, the "Start Button" node will be focused, and the keyboard
-or a controller can be used to navigate between it and other UI elements.
+Khi scene bắt đầu, node "Start Button" sẽ được focus, và có thể sử dụng bàn phím hoặc controller để điều hướng giữa node này với các phần tử UI khác.

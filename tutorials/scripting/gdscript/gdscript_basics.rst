@@ -1,49 +1,42 @@
 .. _doc_gdscript_reference:
 
-GDScript reference
-==================
+Tài liệu tham khảo GDScript
+===========================
 
 :ref:`GDScript<doc_gdscript>` is a high-level, `object-oriented
-<https://en.wikipedia.org/wiki/Object-oriented_programming>`_, `imperative
-<https://en.wikipedia.org/wiki/Imperative_programming>`_, and `gradually typed
-<https://en.wikipedia.org/wiki/Gradual_typing>`_ programming language built for Godot.
-It uses an indentation-based syntax similar to languages like
-`Python <https://en.wikipedia.org/wiki/Python_%28programming_language%29>`_.
-Its goal is to be optimized for and tightly integrated with Godot Engine,
-allowing great flexibility for content creation and integration.
+<https://en.wikipedia.org/wiki/Object-oriented_programming>`_, `imperative <https://en.wikipedia.org/wiki/Imperative_programming>`_, và ngôn ngữ lập trình `gradually typed <https://en.wikipedia.org/wiki/Gradual_typing>`_ được xây dựng cho Godot. Ngôn ngữ này sử dụng cú pháp dựa trên thụt lề, tương tự các ngôn ngữ như `Python <https://en.wikipedia.org/wiki/Python_%28programming_language%29>`_. Mục tiêu là được tối ưu hóa cho Godot Engine và tích hợp chặt chẽ với nó, cho phép linh hoạt cao trong việc tạo nội dung và tích hợp.
 
-GDScript is entirely independent from Python and is not based on it.
+GDScript hoàn toàn độc lập với Python và không dựa trên Python.
 
-History
+Lịch sử
 -------
 
 .. note::
 
-    Documentation about GDScript's history has been moved to the
+    Tài liệu về lịch sử của GDScript đã được chuyển đến
     :ref:`Frequently Asked Questions <doc_faq_what_is_gdscript>`.
 
-Example of GDScript
--------------------
+Ví dụ về GDScript
+-----------------
 
-Some people can learn better by taking a look at the syntax, so
-here's an example of how GDScript looks.
+Một số người có thể học tốt hơn bằng cách xem qua cú pháp, vì vậy dưới đây là một ví dụ về hình thức của GDScript.
 
 ::
 
-    # Everything after "#" is a comment.
-    # A file is a class!
+    # Mọi thứ sau "#" đều là chú thích.
+    # Một tệp là một class!
 
-    # (optional) icon to show in the editor dialogs:
+    # icon (tùy chọn) sẽ hiển thị trong các hộp thoại của editor:
     @icon("res://path/to/optional/icon.svg")
 
-    # (optional) class definition:
+    # định nghĩa class (tùy chọn):
     class_name MyClass
 
-    # Inheritance:
+    # Kế thừa:
     extends BaseClass
 
 
-    # Member variables.
+    # Các biến thành viên.
     var a = 5
     var s = "Hello"
     var arr = [1, 2, 3]
@@ -52,20 +45,20 @@ here's an example of how GDScript looks.
     var typed_var: int
     var inferred_type := "String"
 
-    # Constants.
+    # Hằng số.
     const ANSWER = 42
     const THE_NAME = "Charly"
 
-    # Enums.
+    # Enum.
     enum {UNIT_NEUTRAL, UNIT_ENEMY, UNIT_ALLY}
     enum Named {THING_1, THING_2, ANOTHER_THING = -1}
 
-    # Built-in vector types.
+    # Các kiểu vector tích hợp.
     var v2 = Vector2(1, 2)
     var v3 = Vector3(1, 2, 3)
 
 
-    # Function, with a default value for the last parameter.
+    # Hàm có giá trị mặc định cho tham số cuối.
     func some_function(param1, param2, param3 = 123):
         const local_const = 5
 
@@ -92,18 +85,18 @@ here's an example of how GDScript looks.
         return local_var
 
 
-    # Functions override functions with the same name on the base/super class.
-    # If you still want to call them, use "super":
+    # Các hàm override những hàm có cùng tên trong base/super class.
+    # Nếu bạn vẫn muốn gọi chúng, hãy sử dụng "super":
     func something(p1, p2):
         super(p1, p2)
 
 
-    # It's also possible to call another function in the super class:
+    # Bạn cũng có thể gọi một hàm khác trong super class:
     func other_something(p1, p2):
         super.something(p1, p2)
 
 
-    # Inner class
+    # Class bên trong
     class Something:
         var a = 10
 
@@ -114,34 +107,21 @@ here's an example of how GDScript looks.
         var lv = Something.new()
         print(lv.a)
 
-If you have previous experience with statically typed languages such as
-C, C++, or C# but never used a dynamically typed one before, it is advised you
-read this tutorial: :ref:`doc_gdscript_more_efficiently`.
+Nếu bạn đã có kinh nghiệm với các ngôn ngữ kiểu tĩnh như C, C++ hoặc C# nhưng chưa từng sử dụng ngôn ngữ kiểu động nào, bạn nên đọc tutorial này: :ref:`doc_gdscript_more_efficiently`.
 
-Identifiers
------------
+Identifier
+----------
 
-Any string that restricts itself to alphabetic characters (``a`` to ``z`` and
-``A`` to ``Z``), digits (``0`` to ``9``) and ``_`` qualifies as an identifier.
-Additionally, identifiers must not begin with a digit. Identifiers are
-case-sensitive (``foo`` is different from ``FOO``).
+Bất kỳ chuỗi nào chỉ bao gồm các ký tự chữ cái (từ ``a`` đến ``z`` và từ ``A`` đến ``Z``), chữ số (từ ``0`` đến ``9``) và ``_`` đều được xem là một identifier. Ngoài ra, identifier không được bắt đầu bằng chữ số. Identifier phân biệt chữ hoa chữ thường (``foo`` khác với ``FOO``).
 
-Identifiers may also contain most Unicode characters part of
-`UAX#31 <https://www.unicode.org/reports/tr31/>`__. This allows you to use
-identifier names written in languages other than English. Unicode characters
-that are considered "confusable" for ASCII characters and emoji are not allowed
-in identifiers.
+Identifier cũng có thể chứa hầu hết các ký tự Unicode thuộc `UAX#31 <https://www.unicode.org/reports/tr31/>`__. Điều này cho phép bạn sử dụng tên identifier được viết bằng các ngôn ngữ khác ngoài tiếng Anh. Các ký tự Unicode được xem là "dễ gây nhầm lẫn" với ký tự ASCII và emoji không được phép dùng trong identifier.
 
-Keywords
---------
+Từ khóa
+-------
 
-The following is the list of keywords supported by the language. Since
-keywords are reserved words (tokens), they can't be used as identifiers.
-Operators (like ``in``, ``not``, ``and`` or ``or``) and names of built-in types
-as listed in the following sections are also reserved.
+Sau đây là danh sách các từ khóa được ngôn ngữ hỗ trợ. Vì từ khóa là các từ dành riêng (token), chúng không thể được dùng làm identifier. Các operator (như ``in``, ``not``, ``and`` hoặc ``or``) và tên của các kiểu tích hợp được liệt kê trong những phần sau cũng là các từ dành riêng.
 
-Keywords are defined in the `GDScript tokenizer <https://github.com/godotengine/godot/blob/master/modules/gdscript/gdscript_tokenizer.cpp>`_
-in case you want to take a look under the hood.
+Các từ khóa được định nghĩa trong `GDScript tokenizer <https://github.com/godotengine/godot/blob/master/modules/gdscript/gdscript_tokenizer.cpp>`_ nếu bạn muốn xem cách chúng hoạt động bên trong.
 
 +------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
 |  Keyword   | Description                                                                                                                                       |
@@ -218,12 +198,10 @@ in case you want to take a look under the hood.
 | NAN        | NAN (not a number) constant. Used as impossible result from calculations.                                                                         |
 +------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Operators
----------
+Operator
+--------
 
-The following is the list of supported operators and their precedence. All binary operators are `left-associative <https://en.wikipedia.org/wiki/Operator_associativity>`_,
-including the ``**`` operator. This means that ``2 ** 2 ** 3`` is equal to ``(2 ** 2) ** 3``. Use parentheses to explicitly specify precedence you need, for
-example ``2 ** (2 ** 3)``. The ternary ``if/else`` operator is right-associative.
+Sau đây là danh sách các operator được hỗ trợ và độ ưu tiên của chúng. Tất cả operator nhị phân đều là `left-associative <https://en.wikipedia.org/wiki/Operator_associativity>`_, bao gồm cả operator ``**``. Điều này có nghĩa là ``2 ** 2 ** 3`` tương đương với ``(2 ** 2) ** 3``. Hãy sử dụng dấu ngoặc để chỉ định rõ độ ưu tiên cần dùng, chẳng hạn như ``2 ** (2 ** 3)``. Operator ba ngôi ``if/else`` kết hợp phải.
 
 +---------------------------------------+-----------------------------------------------------------------------------+
 | **Operator**                          | **Description**                                                             |
@@ -317,21 +295,14 @@ example ``2 ** (2 ** 3)``. The ternary ``if/else`` operator is right-associative
 
 .. note::
 
-    The behavior of some operators may differ from what you expect:
+    Một số operator có thể hoạt động khác với điều bạn mong đợi:
 
-    1. If both operands of the ``/`` operator are :ref:`int <class_int>`, then integer division is performed instead of fractional. For example ``5 / 2 == 2``, not ``2.5``.
-       If this is not desired, use at least one :ref:`float <class_float>` literal (``x / 2.0``), cast (``float(x) / y``), or multiply by ``1.0`` (``x * 1.0 / y``).
-    2. The ``%`` operator is only available for ints, for floats use the :ref:`fmod() <class_@GlobalScope_method_fmod>` function.
-    3. For negative values, the ``%`` operator and ``fmod()`` use `truncation <https://en.wikipedia.org/wiki/Truncation>`_ instead of rounding towards negative infinity.
-       This means that the remainder has a sign. If you need the remainder in a mathematical sense, use the :ref:`posmod() <class_@GlobalScope_method_posmod>` and
+    1. Nếu cả hai toán hạng của operator ``/`` đều là :ref:`int <class_int>`, phép chia số nguyên sẽ được thực hiện thay vì phép chia phân số. Ví dụ ``5 / 2 == 2``, không phải ``2.5``. Nếu đây không phải điều bạn muốn, hãy sử dụng ít nhất một literal :ref:`float <class_float>` (``x / 2.0``), ép kiểu (``float(x) / y``) hoặc nhân với ``1.0`` (``x * 1.0 / y``). 2. Operator ``%`` chỉ khả dụng cho int; với float, hãy sử dụng hàm :ref:`fmod() <class_@GlobalScope_method_fmod>`. 3. Với các giá trị âm, operator ``%`` và ``fmod()`` sử dụng `truncation <https://en.wikipedia.org/wiki/Truncation>`_ thay vì làm tròn về âm vô cùng. Điều này có nghĩa là phần dư có dấu. Nếu cần phần dư theo nghĩa toán học, hãy sử dụng :ref:`posmod() <class_@GlobalScope_method_posmod>` và
        :ref:`fposmod() <class_@GlobalScope_method_fposmod>` functions instead.
-    4. The ``==`` and ``!=`` operators sometimes allow you to compare values of different types (for example, ``1 == 1.0`` is true), but in other cases it can cause
-       a runtime error. If you're not sure about the types of the operands, you can safely use the :ref:`is_same() <class_@GlobalScope_method_is_same>` function
-       (but note that it is more strict about types and references). To compare floats, use the :ref:`is_equal_approx() <class_@GlobalScope_method_is_equal_approx>`
-       and :ref:`is_zero_approx() <class_@GlobalScope_method_is_zero_approx>` functions instead.
+    4. Các operator ``==`` và ``!=`` đôi khi cho phép bạn so sánh các giá trị thuộc các kiểu khác nhau (ví dụ, ``1 == 1.0`` là true), nhưng trong những trường hợp khác, chúng có thể gây ra lỗi runtime. Nếu không chắc chắn về kiểu của các toán hạng, bạn có thể sử dụng an toàn hàm :ref:`is_same() <class_@GlobalScope_method_is_same>` (nhưng lưu ý rằng hàm này nghiêm ngặt hơn về kiểu và reference). Để so sánh float, hãy sử dụng các hàm :ref:`is_equal_approx() <class_@GlobalScope_method_is_equal_approx>` và :ref:`is_zero_approx() <class_@GlobalScope_method_is_zero_approx>`.
 
-Literals
---------
+Literal
+-------
 
 +---------------------------------+-------------------------------------------+
 | **Example(s)**                  | **Description**                           |
@@ -361,7 +332,7 @@ Literals
 | ``^"Node/Label"``               | :ref:`NodePath <class_NodePath>`          |
 +---------------------------------+-------------------------------------------+
 
-There are also two constructs that look like literals, but actually are not:
+Ngoài ra còn có hai cấu trúc trông giống literal nhưng thực tế không phải:
 
 +---------------------------------+-------------------------------------------+
 | **Example**                     | **Description**                           |
@@ -371,17 +342,16 @@ There are also two constructs that look like literals, but actually are not:
 | ``%UniqueNode``                 | Shorthand for ``get_node("%UniqueNode")`` |
 +---------------------------------+-------------------------------------------+
 
-Integers and floats can have their numbers separated with ``_`` to make them more readable.
-The following ways to write numbers are all valid:
+Số nguyên và số thực có thể được phân tách bằng ``_`` để dễ đọc hơn. Các cách viết số sau đây đều hợp lệ:
 
 ::
 
-    12_345_678  # Equal to 12345678.
-    3.141_592_7  # Equal to 3.1415927.
-    0x8080_0000_ffff  # Equal to 0x80800000ffff.
-    0b11_00_11_00  # Equal to 0b11001100.
+    12_345_678  # Bằng 12345678.
+    3.141_592_7  # Bằng 3.1415927.
+    0x8080_0000_ffff  # Bằng 0x80800000ffff.
+    0b11_00_11_00  # Bằng 0b11001100.
 
-**Regular string literals** can contain the following escape sequences:
+**Literal chuỗi thông thường** có thể chứa các escape sequence sau:
 
 +---------------------+---------------------------------+
 | **Escape sequence** | **Expands to**                  |
@@ -415,59 +385,45 @@ The following ways to write numbers are all valid:
 |                     | (hexadecimal, case-insensitive) |
 +---------------------+---------------------------------+
 
-There are two ways to represent an escaped Unicode character above ``0xFFFF``:
+Có hai cách biểu diễn một ký tự Unicode đã escape phía trên ``0xFFFF``:
 
-- as a `UTF-16 surrogate pair <https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF>`_ ``\uXXXX\uXXXX``.
-- as a single UTF-32 codepoint ``\UXXXXXX``.
+- dưới dạng một `UTF-16 surrogate pair <https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF>`_ ``\uXXXX\uXXXX``. - dưới dạng một codepoint UTF-32 duy nhất ``\UXXXXXX``.
 
-Also, using ``\`` followed by a newline inside a string will allow you to continue it in the next line,
-without inserting a newline character in the string itself.
+Ngoài ra, sử dụng ``\`` theo sau bởi một dòng mới bên trong chuỗi sẽ cho phép bạn tiếp tục chuỗi ở dòng tiếp theo mà không chèn ký tự dòng mới vào chính chuỗi đó.
 
-A string enclosed in quotes of one type (for example ``"``) can contain quotes of another type
-(for example ``'``) without escaping. Triple-quoted strings allow you to avoid escaping up to
-two consecutive quotes of the same type (unless they are adjacent to the string edges).
+Một chuỗi được bao quanh bằng dấu ngoặc kép của một loại (ví dụ ``"``) có thể chứa dấu ngoặc kép của loại khác (ví dụ ``'``) mà không cần escape. Chuỗi được đặt trong ba dấu ngoặc kép cho phép bạn không cần escape tối đa hai dấu ngoặc kép liên tiếp cùng loại (trừ khi chúng nằm liền kề với mép chuỗi).
 
-**Raw string literals** always encode the string as it appears in the source code.
-This is especially useful for regular expressions. A raw string literal doesn't process escape sequences,
-however it does recognize ``\\`` and ``\"`` (``\'``) and replaces them with themselves.
-Thus, a string can have a quote that matches the opening one, but only if it's preceded by a backslash.
+**Literal chuỗi raw** luôn mã hóa chuỗi đúng như cách nó xuất hiện trong mã nguồn. Điều này đặc biệt hữu ích cho regular expression. Literal chuỗi raw không xử lý escape sequence, nhưng nhận diện ``\\`` và ``\"`` (``\'``) rồi thay thế chúng bằng chính chúng. Do đó, một chuỗi có thể chứa dấu ngoặc kép trùng với dấu ngoặc mở, nhưng chỉ khi dấu ngoặc đó đứng sau một dấu gạch chéo ngược.
 
 ::
 
-    print("\tchar=\"\\t\"")  # Prints `    char="\t"`.
-    print(r"\tchar=\"\\t\"") # Prints `\tchar=\"\\t\"`.
+    print("\tchar=\"\\t\"")  # In `    char="\t"`.
+    print(r"\tchar=\"\\t\"") # In `\tchar=\"\\t\"`.
 
 .. note::
 
-    Some strings cannot be represented using raw string literals: you cannot have an odd number
-    of backslashes at the end of a string or have an unescaped opening quote inside the string.
-    However, in practice this doesn't matter since you can use a different quote type
-    or use concatenation with a regular string literal.
+    Một số chuỗi không thể được biểu diễn bằng literal chuỗi raw: bạn không thể có số lẻ dấu gạch chéo ngược ở cuối chuỗi hoặc có dấu ngoặc mở chưa được escape bên trong chuỗi. Tuy nhiên, trên thực tế điều này không đáng kể vì bạn có thể sử dụng loại dấu ngoặc khác hoặc nối với một literal chuỗi thông thường.
 
-GDScript also supports :ref:`format strings <doc_gdscript_printf>`.
+GDScript cũng hỗ trợ :ref:`format strings <doc_gdscript_printf>`.
 
-Annotations
------------
+Annotation
+----------
 
-Annotations are special tokens in GDScript that act as modifiers to an entire script,
-a declaration, a statement, or a location in the source code. Annotations may affect
-how the script is treated by the Godot editor and the GDScript compiler.
+Annotation là các token đặc biệt trong GDScript, hoạt động như modifier cho toàn bộ script, một khai báo, một câu lệnh hoặc một vị trí trong mã nguồn. Annotation có thể ảnh hưởng đến cách script được xử lý bởi Godot editor và GDScript compiler.
 
-Every annotation starts with the ``@`` character and is specified by a name. A
-detailed description and example for each annotation can be found inside the
+Mỗi annotation bắt đầu bằng ký tự ``@`` và được chỉ định bằng một tên. Mô tả chi tiết và ví dụ cho từng annotation có thể được tìm thấy trong
 :ref:`GDScript class reference <class_@GDScript>`.
 
-For instance, you can use it to export a value to the editor:
+Ví dụ, bạn có thể sử dụng nó để export một giá trị sang editor:
 
 ::
 
     @export_range(1, 100, 1, "or_greater")
     var ranged_var: int = 50
 
-For more information about exporting properties, read the :ref:`GDScript exports <doc_gdscript_exports>`
-article.
+Để biết thêm thông tin về việc export property, hãy đọc bài viết :ref:`GDScript exports <doc_gdscript_exports>`.
 
-Any constant expression compatible with the required argument type can be passed as an annotation argument value:
+Bất kỳ biểu thức hằng số nào tương thích với kiểu đối số bắt buộc đều có thể được truyền làm giá trị đối số của annotation:
 
 ::
 
@@ -476,11 +432,9 @@ Any constant expression compatible with the required argument type can be passed
     @export_range(0.0, 0.5 * MAX_SPEED)
     var initial_speed: float = 0.25 * MAX_SPEED
 
-Annotations can be specified one per line or all in the same line. They affect
-the next statement that isn't an annotation. Annotations can have arguments sent
-between parentheses and separated by commas.
+Annotation có thể được chỉ định mỗi annotation trên một dòng hoặc tất cả trên cùng một dòng. Chúng tác động đến câu lệnh tiếp theo không phải là annotation. Annotation có thể nhận đối số được đặt giữa các dấu ngoặc đơn và phân tách bằng dấu phẩy.
 
-Both of these are the same:
+Cả hai cách này đều giống nhau:
 
 ::
 
@@ -492,13 +446,10 @@ Both of these are the same:
 
 .. _doc_gdscript_onready_annotation:
 
-``@onready`` annotation
+Annotation ``@onready``
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-When using nodes, it's common to desire to keep references to parts
-of the scene in a variable. As scenes are only warranted to be
-configured when entering the active scene tree, the sub-nodes can only
-be obtained when a call to ``Node._ready()`` is made.
+Khi sử dụng node, việc muốn giữ reference đến các phần của scene trong một biến là điều phổ biến. Vì scene chỉ được đảm bảo đã được cấu hình khi đi vào active scene tree, các sub-node chỉ có thể được lấy khi gọi ``Node._ready()``.
 
 ::
 
@@ -508,10 +459,7 @@ be obtained when a call to ``Node._ready()`` is made.
     func _ready():
         my_label = get_node("MyLabel")
 
-This can get a little cumbersome, especially when nodes and external
-references pile up. For this, GDScript has the ``@onready`` annotation, that
-defers initialization of a member variable until ``_ready()`` is called. It
-can replace the above code with a single line:
+Điều này có thể hơi rườm rà, đặc biệt khi các node và external reference tăng lên. Vì vậy, GDScript có annotation ``@onready``, trì hoãn việc khởi tạo một biến thành viên cho đến khi ``_ready()`` được gọi. Nó có thể thay thế đoạn mã trên bằng một dòng duy nhất:
 
 ::
 
@@ -519,10 +467,7 @@ can replace the above code with a single line:
 
 .. warning::
 
-    Applying ``@onready`` and any ``@export`` annotation to the same variable
-    doesn't work as you might expect. The ``@onready`` annotation will cause
-    the default value to be set after the ``@export`` takes effect and will
-    override it:
+    Việc áp dụng annotation ``@onready`` và bất kỳ annotation ``@export`` nào cho cùng một biến không hoạt động như bạn có thể mong đợi. Annotation ``@onready`` sẽ khiến giá trị mặc định được thiết lập sau khi ``@export`` có hiệu lực và sẽ ghi đè giá trị đó:
 
     ::
 
@@ -539,49 +484,35 @@ can replace the above code with a single line:
         func _ready():
             prints(a, b) # exported_value_a init_value_b
 
-    Therefore, the ``ONREADY_WITH_EXPORT`` warning is generated, which is treated
-    as an error by default. We do not recommend disabling or ignoring it.
+    Do đó, cảnh báo ``ONREADY_WITH_EXPORT`` được tạo ra và theo mặc định được xem là lỗi. Chúng tôi không khuyến nghị vô hiệu hóa hoặc bỏ qua cảnh báo này.
 
-Comments
---------
+Chú thích
+---------
 
-Anything from a ``#`` to the end of the line is ignored and is
-considered a comment.
+Mọi thứ từ ``#`` đến cuối dòng đều bị bỏ qua và được xem là chú thích.
 
 ::
 
-    # This is a comment.
+    # Đây là một chú thích.
 
 .. tip::
 
-    In the Godot script editor, special keywords are highlighted within comments
-    to bring the user's attention to specific comments:
+    Trong Godot script editor, các từ khóa đặc biệt được tô sáng bên trong chú thích để thu hút sự chú ý của người dùng đến những chú thích cụ thể:
 
-    - **Critical** *(appears in red)*: ``ALERT``, ``ATTENTION``, ``CAUTION``,
-      ``CRITICAL``, ``DANGER``, ``SECURITY``
-    - **Warning** *(appears in yellow)*: ``BUG``, ``DEPRECATED``, ``FIXME``,
-      ``HACK``, ``TASK``, ``TBD``, ``TODO``, ``WARNING``
-    - **Notice** *(appears in green)*: ``INFO``, ``NOTE``, ``NOTICE``, ``TEST``,
-      ``TESTING``
+    - **Nghiêm trọng** *(hiển thị màu đỏ)*: ``ALERT``, ``ATTENTION``, ``CAUTION``, ``CRITICAL``, ``DANGER``, ``SECURITY`` - **Cảnh báo** *(hiển thị màu vàng)*: ``BUG``, ``DEPRECATED``, ``FIXME``, ``HACK``, ``TASK``, ``TBD``, ``TODO``, ``WARNING`` - **Thông báo** *(hiển thị màu xanh lá)*: ``INFO``, ``NOTE``, ``NOTICE``, ``TEST``, ``TESTING``
 
-    These keywords are case-sensitive, so they must be written in uppercase for them
-    to be recognized:
+    Các keyword này phân biệt chữ hoa chữ thường, vì vậy chúng phải được viết bằng chữ hoa để được nhận diện:
 
     ::
 
-        # In the example below, "TODO" will appear in yellow by default.
-        # The `:` symbol after the keyword is not required, but it's often used.
+        # Trong ví dụ bên dưới, "TODO" sẽ mặc định hiển thị bằng màu vàng.
+        # Ký hiệu `:` sau keyword không bắt buộc, nhưng thường được sử dụng.
 
         # TODO: Add more items for the player to choose from.
 
-    The list of highlighted keywords and their colors can be changed in the **Text
-    Editor > Theme > Comment Markers** section of the Editor Settings.
+    Danh sách các keyword được tô sáng và màu của chúng có thể được thay đổi trong mục **Text Editor > Theme > Comment Markers** của Editor Settings.
 
-Use two hash symbols (``##``) instead of one (``#``) to add a *documentation
-comment*, which will appear in the script documentation and in the inspector
-description of an exported variable. Documentation comments must be placed
-directly *above* a documentable item (such as a member variable), or at the top
-of a file. Dedicated formatting options are also available. See
+Sử dụng hai ký hiệu hash (``##``) thay vì một ký hiệu (``#``) để thêm *documentation comment*, nội dung này sẽ xuất hiện trong tài liệu script và phần mô tả trong inspector của một biến được export. Documentation comment phải được đặt trực tiếp *phía trên* một mục có thể được lập tài liệu (chẳng hạn như một member variable), hoặc ở đầu file. Ngoài ra còn có các tùy chọn định dạng chuyên dụng. Xem
 :ref:`doc_gdscript_documentation_comments` for details.
 
 ::
@@ -597,17 +528,13 @@ of a file. Dedicated formatting options are also available. See
 Code regions
 ------------
 
-Code regions are special types of comments that the script editor understands as
-*foldable regions*. This means that after writing code region comments, you can
-collapse and expand the region by clicking the arrow that appears at the left of
-the comment. This arrow appears within a purple square to be distinguishable
-from standard code folding.
+Code regions là các loại comment đặc biệt mà script editor hiểu là *foldable regions*. Điều này có nghĩa là sau khi viết comment cho code region, bạn có thể thu gọn và mở rộng region bằng cách nhấp vào mũi tên xuất hiện ở bên trái comment. Mũi tên này xuất hiện bên trong một hình vuông màu tím để dễ phân biệt với thao tác code folding tiêu chuẩn.
 
-The syntax is as follows:
+Cú pháp như sau:
 
 ::
 
-    # Important: There must be *no* space between the `#` and `region` or `endregion`.
+    # Quan trọng: Không được có *bất kỳ* khoảng trắng nào giữa `#` và `region` hoặc `endregion`.
 
     # Region without a description:
     #region
@@ -621,19 +548,17 @@ The syntax is as follows:
 
 .. tip::
 
-    To create a code region quickly, select several lines in the script editor,
-    right-click the selection then choose **Create Code Region**. The region
-    description will be selected automatically for editing.
+    Để nhanh chóng tạo một code region, hãy chọn vài dòng trong script editor, nhấp chuột phải vào vùng chọn rồi chọn **Create Code Region**. Mô tả region sẽ tự động được chọn để chỉnh sửa.
 
-    It is possible to nest code regions within other code regions.
+    Bạn có thể lồng các code region bên trong những code region khác.
 
-Here's a concrete usage example of code regions:
+Sau đây là một ví dụ cụ thể về cách sử dụng code region:
 
 ::
 
-    # This comment is outside the code region. It will be visible when collapsed.
+    # Comment này nằm bên ngoài code region. Nó sẽ hiển thị khi region được thu gọn.
     #region Terrain generation
-    # This comment is inside the code region. It won't be visible when collapsed.
+    # Comment này nằm bên trong code region. Nó sẽ không hiển thị khi region được thu gọn.
     func generate_lakes():
         pass
 
@@ -649,32 +574,23 @@ Here's a concrete usage example of code regions:
         pass
     #endregion
 
-This can be useful to organize large chunks of code into easier to understand
-sections. However, remember that external editors generally don't support this
-feature, so make sure your code is easy to follow even when not relying on
-folding code regions.
+Điều này có thể hữu ích để sắp xếp các khối code lớn thành những phần dễ hiểu hơn. Tuy nhiên, hãy nhớ rằng các external editor thường không hỗ trợ tính năng này, vì vậy hãy đảm bảo code của bạn vẫn dễ theo dõi ngay cả khi không dựa vào việc folding code region.
 
 .. note::
 
-    Individual functions and indented sections (such as ``if`` and ``for``) can
-    *always* be collapsed in the script editor. This means you should avoid
-    using a code region to contain a single function or indented section, as it
-    won't bring much of a benefit. Code regions work best when they're used to
-    group multiple elements together.
+    Các function riêng lẻ và những phần được thụt lề (chẳng hạn như ``if`` và ``for``) *luôn* có thể được thu gọn trong script editor. Điều này có nghĩa là bạn nên tránh sử dụng code region để chứa một function hoặc một phần được thụt lề duy nhất, vì cách này không mang lại nhiều lợi ích. Code region hoạt động hiệu quả nhất khi được dùng để nhóm nhiều phần tử lại với nhau.
 
 Line continuation
 -----------------
 
-A line of code in GDScript can be continued on the next line by using a backslash
-(``\``). Add one at the end of a line and the code on the next line will act like
-it's where the backslash is. Here is an example:
+Một dòng code trong GDScript có thể được tiếp tục ở dòng kế tiếp bằng cách sử dụng dấu gạch chéo ngược (``\``). Thêm dấu này ở cuối dòng, và code ở dòng kế tiếp sẽ hoạt động như thể nó nằm tại vị trí của dấu gạch chéo ngược. Sau đây là một ví dụ:
 
 ::
 
     var a = 1 + \
     2
 
-A line can be continued multiple times like this:
+Một dòng có thể được tiếp tục nhiều lần như sau:
 
 ::
 
@@ -688,66 +604,51 @@ A line can be continued multiple times like this:
 Built-in types
 --------------
 
-Built-in types are stack-allocated. They are passed as values. This means a copy
-is created on each assignment or when passing them as arguments to functions.
-The exceptions are ``Object``, ``Array``, ``Dictionary``, and packed arrays
-(such as ``PackedByteArray``), which are passed by reference so they are shared.
-All arrays, ``Dictionary``, and some objects (``Node``, ``Resource``)
-have a ``duplicate()`` method that allows you to make a copy.
+Built-in types được cấp phát trên stack. Chúng được truyền dưới dạng value. Điều này có nghĩa là một bản sao được tạo ra trong mỗi phép gán hoặc khi truyền chúng làm argument cho các function. Ngoại lệ là ``Object``, ``Array``, ``Dictionary`` và các packed array (chẳng hạn như ``PackedByteArray``), vốn được truyền theo reference nên được dùng chung. Tất cả array, ``Dictionary`` và một số object (``Node``, ``Resource``) đều có method ``duplicate()`` cho phép bạn tạo một bản sao.
 
 Basic built-in types
 ~~~~~~~~~~~~~~~~~~~~
 
-A variable in GDScript can be assigned to several built-in types.
+Một variable trong GDScript có thể được gán cho một số built-in type.
 
 null
 ^^^^
 
-``null`` is an empty data type that contains no information and can not
-be assigned any other value.
+``null`` là một kiểu dữ liệu rỗng, không chứa thông tin nào và không thể được gán bất kỳ giá trị nào khác.
 
-Only types that inherit from Object can have a ``null`` value
-(Object is therefore called a "nullable" type).
+Chỉ những type kế thừa từ Object mới có thể nhận giá trị ``null`` (do đó Object được gọi là type "nullable").
 :ref:`Variant types <doc_variant_class>` must have a valid value at all times,
-and therefore cannot have a ``null`` value.
+và vì vậy không thể nhận giá trị ``null``.
 
 :ref:`bool <class_bool>`
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Short for "boolean", it can only contain ``true`` or ``false``.
+Viết tắt của "boolean", type này chỉ có thể chứa ``true`` hoặc ``false``.
 
 :ref:`int <class_int>`
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Short for "integer", it stores whole numbers (positive and negative).
-It is stored as a 64-bit value, equivalent to ``int64_t`` in C++.
+Viết tắt của "integer", type này lưu trữ các số nguyên (dương và âm). Nó được lưu dưới dạng giá trị 64-bit, tương đương với ``int64_t`` trong C++.
 
 :ref:`float <class_float>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Stores real numbers, including decimals, using floating-point values.
-It is stored as a 64-bit value, equivalent to ``double`` in C++.
-Note: Currently, data structures such as ``Vector2``, ``Vector3``, and
-``PackedFloat32Array`` store 32-bit single-precision ``float`` values.
+Lưu trữ các số thực, bao gồm cả số thập phân, bằng các giá trị dấu phẩy động. Nó được lưu dưới dạng giá trị 64-bit, tương đương với ``double`` trong C++. Lưu ý: Hiện tại, các cấu trúc dữ liệu như ``Vector2``, ``Vector3`` và ``PackedFloat32Array`` lưu trữ các giá trị ``float`` dấu phẩy động single-precision 32-bit.
 
 :ref:`String <class_String>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A sequence of characters in `Unicode format <https://en.wikipedia.org/wiki/Unicode>`_.
+Một chuỗi ký tự trong `Unicode format <https://en.wikipedia.org/wiki/Unicode>`_.
 
 :ref:`StringName <class_StringName>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-An immutable string that allows only one instance of each name. They are slower to
-create and may result in waiting for locks when multithreading. In exchange, they're
-very fast to compare, which makes them good candidates for dictionary keys.
+Một string bất biến chỉ cho phép một instance của mỗi name. Chúng tạo chậm hơn và có thể khiến phải chờ lock khi multithreading. Đổi lại, chúng so sánh rất nhanh, nên phù hợp để làm key cho dictionary.
 
 :ref:`NodePath <class_NodePath>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A pre-parsed path to a node or a node property.  It can be
-easily assigned to, and from, a String. They are useful to interact with
-the tree to get a node, or affecting properties like with :ref:`Tweens <class_Tween>`.
+Một path đã được phân tích trước đến một node hoặc thuộc tính của node. Nó có thể dễ dàng được gán từ và cho một String. Chúng hữu ích khi tương tác với tree để lấy một node hoặc tác động đến các thuộc tính như với :ref:`Tweens <class_Tween>`.
 
 Vector built-in types
 ~~~~~~~~~~~~~~~~~~~~~
@@ -755,69 +656,57 @@ Vector built-in types
 :ref:`Vector2 <class_Vector2>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2D vector type containing ``x`` and ``y`` fields. Can also be
-accessed as an array.
+Type vector 2D chứa các field ``x`` và ``y``. Cũng có thể được truy cập như một array.
 
 :ref:`Vector2i <class_Vector2i>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Same as a Vector2 but the components are integers. Useful for representing
-items in a 2D grid.
+Giống Vector2 nhưng các component là số nguyên. Hữu ích để biểu diễn các phần tử trong một grid 2D.
 
 :ref:`Rect2 <class_Rect2>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2D Rectangle type containing two vectors fields: ``position`` and ``size``.
-Also contains an ``end`` field which is ``position + size``.
+Type Rectangle 2D chứa hai field vector: ``position`` và ``size``. Cũng chứa một field ``end`` có giá trị là ``position + size``.
 
 :ref:`Vector3 <class_Vector3>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-3D vector type containing ``x``, ``y`` and ``z`` fields. This can also
-be accessed as an array.
+Type vector 3D chứa các field ``x``, ``y`` và ``z``. Cũng có thể được truy cập như một array.
 
 :ref:`Vector3i <class_Vector3i>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Same as Vector3 but the components are integers. Can be use for indexing items
-in a 3D grid.
+Giống Vector3 nhưng các component là số nguyên. Có thể dùng để đánh index các phần tử trong một grid 3D.
 
 :ref:`Transform2D <class_Transform2D>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-3×2 matrix used for 2D transforms.
+Ma trận 3×2 được sử dụng cho các phép biến đổi 2D.
 
 :ref:`Plane <class_Plane>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-3D Plane type in normalized form that contains a ``normal`` vector field
-and a ``d`` scalar distance.
+Type Plane 3D ở dạng normalized, chứa một field vector ``normal`` và một khoảng cách scalar ``d``.
 
 :ref:`Quaternion <class_Quaternion>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Quaternion is a datatype used for representing a 3D rotation. It's
-useful for interpolating rotations.
+Quaternion là một datatype được sử dụng để biểu diễn phép xoay 3D. Nó hữu ích khi nội suy các phép xoay.
 
 :ref:`AABB <class_AABB>`
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Axis-aligned bounding box (or 3D box) contains 2 vectors fields: ``position``
-and ``size``. Also contains an ``end`` field which is
-``position + size``.
+Axis-aligned bounding box (hay box 3D) chứa 2 field vector: ``position`` và ``size``. Nó cũng chứa một field ``end`` có giá trị là ``position + size``.
 
 :ref:`Basis <class_Basis>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-3x3 matrix used for 3D rotation and scale. It contains 3 vector fields
-(``x``, ``y`` and ``z``) and can also be accessed as an array of 3D
-vectors.
+Ma trận 3x3 được sử dụng cho phép xoay và scale 3D. Nó chứa 3 field vector (``x``, ``y`` và ``z``) và cũng có thể được truy cập như một array gồm các vector 3D.
 
 :ref:`Transform3D <class_Transform3D>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-3D Transform contains a Basis field ``basis`` and a Vector3 field
-``origin``.
+Transform 3D chứa một field Basis ``basis`` và một field Vector3 ``origin``.
 
 Engine built-in types
 ~~~~~~~~~~~~~~~~~~~~~
@@ -825,18 +714,17 @@ Engine built-in types
 :ref:`Color <class_Color>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Color data type contains ``r``, ``g``, ``b``, and ``a`` fields. It can
-also be accessed as ``h``, ``s``, and ``v`` for hue/saturation/value.
+Datatype Color chứa các field ``r``, ``g``, ``b`` và ``a``. Nó cũng có thể được truy cập dưới dạng ``h``, ``s`` và ``v`` tương ứng với hue/saturation/value.
 
 :ref:`RID <class_RID>`
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Resource ID (RID). Servers use generic RIDs to reference opaque data.
+Resource ID (RID). Các server sử dụng RID generic để tham chiếu đến dữ liệu opaque.
 
 :ref:`Object <class_Object>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Base class for anything that is not a built-in type.
+Base class cho mọi thứ không phải là built-in type.
 
 Container built-in types
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -844,30 +732,24 @@ Container built-in types
 :ref:`Array <class_Array>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Generic sequence of arbitrary object types, including other arrays or dictionaries (see below).
-The array can resize dynamically. Arrays are indexed starting from index ``0``.
-Negative indices count from the end.
+Sequence generic của các object type tùy ý, bao gồm cả array hoặc dictionary khác (xem bên dưới). Array có thể tự động thay đổi kích thước. Array được đánh index bắt đầu từ index ``0``. Các index âm được tính từ cuối.
 
 ::
 
     var arr = []
     arr = [1, 2, 3]
-    var b = arr[1] # This is 2.
-    var c = arr[arr.size() - 1] # This is 3.
-    var d = arr[-1] # Same as the previous line, but shorter.
-    arr[0] = "Hi!" # Replacing value 1 with "Hi!".
-    arr.append(4) # Array is now ["Hi!", 2, 3, 4].
+    var b = arr[1] # Đây là 2.
+    var c = arr[arr.size() - 1] # Đây là 3.
+    var d = arr[-1] # Giống dòng trước, nhưng ngắn hơn.
+    arr[0] = "Hi!" # Thay thế giá trị 1 bằng "Hi!".
+    arr.append(4) # Array hiện là ["Hi!", 2, 3, 4].
 
 Typed arrays
 ^^^^^^^^^^^^
 
-Godot also features support for typed arrays. On write operations, Godot checks that
-element values match the specified type, so the array cannot contain invalid values.
-The GDScript static analyzer takes typed arrays into account, however array methods like
-``front()`` and ``back()`` still have the ``Variant`` return type.
+Godot cũng hỗ trợ typed array. Trong các thao tác ghi, Godot kiểm tra xem giá trị của phần tử có khớp với type được chỉ định hay không, vì vậy array không thể chứa các giá trị không hợp lệ. GDScript static analyzer có tính đến typed array, tuy nhiên các method của array như ``front()`` và ``back()`` vẫn có return type là ``Variant``.
 
-Typed arrays have the syntax ``Array[Type]``, where ``Type`` can be any ``Variant`` type,
-native or user class, or enum. Nested array types (like ``Array[Array[int]]``) are not supported.
+Mảng có kiểu có cú pháp ``Array[Type]``, trong đó ``Type`` có thể là bất kỳ kiểu ``Variant`` nào, lớp native hoặc lớp do người dùng định nghĩa, hay enum. Không hỗ trợ các kiểu mảng lồng nhau (như ``Array[Array[int]]``).
 
 ::
 
@@ -877,76 +759,46 @@ native or user class, or enum. Nested array types (like ``Array[Array[int]]``) a
     var d: Array[MyEnum]
     var e: Array[Variant]
 
-``Array`` and ``Array[Variant]`` are the same thing.
+``Array`` và ``Array[Variant]`` là cùng một thứ.
 
 .. note::
 
-    Arrays are passed by reference, so the array element type is also an attribute of the in-memory
-    structure referenced by a variable in runtime. The static type of a variable restricts the structures
-    that it can reference to. Therefore, you **cannot** assign an array with a different element type,
-    even if the type is a subtype of the required type.
+    Mảng được truyền theo tham chiếu, vì vậy kiểu phần tử mảng cũng là một thuộc tính của cấu trúc trong bộ nhớ mà một biến tham chiếu đến trong runtime. Kiểu tĩnh của một biến giới hạn các cấu trúc mà biến đó có thể tham chiếu đến. Do đó, bạn **không thể** gán một mảng có kiểu phần tử khác, ngay cả khi kiểu đó là kiểu con của kiểu được yêu cầu.
 
-    If you want to *convert* a typed array, you can create a new array and use the
+    Nếu muốn *chuyển đổi* một mảng có kiểu, bạn có thể tạo một mảng mới và sử dụng
     :ref:`Array.assign() <class_Array_method_assign>` method:
 
     ::
 
         var a: Array[Node2D] = [Node2D.new()]
 
-        # (OK) You can add the value to the array because `Node2D` extends `Node`.
+        # (OK) Bạn có thể thêm giá trị vào mảng vì `Node2D` kế thừa `Node`.
         var b: Array[Node] = [a[0]]
 
-        # (Error) You cannot assign an `Array[Node2D]` to an `Array[Node]` variable.
+        # (Lỗi) Bạn không thể gán một `Array[Node2D]` cho một biến `Array[Node]`.
         b = a
 
-        # (OK) But you can use the `assign()` method instead. Unlike the `=` operator,
-        # the `assign()` method copies the contents of the array, not the reference.
+        # (OK) Tuy nhiên, bạn có thể sử dụng phương thức `assign()`. Không giống toán tử `=`,
+        # phương thức `assign()` sao chép nội dung của mảng, không phải tham chiếu.
         b.assign(a)
 
-    The only exception was made for the ``Array`` (``Array[Variant]``) type, for user convenience
-    and compatibility with old code. However, operations on untyped arrays are considered unsafe.
+    Ngoại lệ duy nhất được áp dụng cho kiểu ``Array`` (``Array[Variant]``), nhằm thuận tiện cho người dùng và tương thích với mã cũ. Tuy nhiên, các thao tác trên mảng không có kiểu được xem là không an toàn.
 
 .. _doc_gdscript_packed_arrays:
 
-Packed arrays
-^^^^^^^^^^^^^
+Mảng Packed
+^^^^^^^^^^^
 
-PackedArrays are generally faster to iterate on and modify compared to a typed
-Array of the same type (e.g. PackedInt64Array versus Array[int]) and consume
-less memory. In the worst case, they are expected to be as fast as an untyped
-Array. Conversely, non-Packed Arrays (typed or not) have extra convenience
-methods such as :ref:`Array.map <class_Array_method_map>` that PackedArrays
-lack. Consult the :ref:`class reference <class_PackedFloat32Array>` for details
-on the methods available. Typed Arrays are generally faster to iterate on and
-modify than untyped Arrays.
+PackedArrays nhìn chung nhanh hơn khi lặp qua và sửa đổi so với một Array có kiểu cùng loại (ví dụ: PackedInt64Array so với Array[int]) và sử dụng ít bộ nhớ hơn. Trong trường hợp tệ nhất, chúng được kỳ vọng có tốc độ tương đương với một Array không có kiểu. Ngược lại, các Array không phải Packed (có kiểu hoặc không) có thêm các phương thức tiện ích như :ref:`Array.map <class_Array_method_map>` mà PackedArrays không có. Hãy tham khảo :ref:`class reference <class_PackedFloat32Array>` để biết chi tiết về các phương thức hiện có. Array có kiểu nhìn chung nhanh hơn khi lặp qua và sửa đổi so với Array không có kiểu.
 
-While all Arrays can cause memory fragmentation when they become large enough,
-if memory usage and performance (iteration and modification speed) is a concern
-and the type of data you're storing is compatible with one of the ``Packed``
-Array types, then using those may yield improvements. However, if you do not
-have such concerns (e.g. the size of your array does not reach the tens of
-thousands of elements) it is likely more helpful to use regular or typed
-Arrays, as they provide convenience methods that can make your code easier to
-write and maintain (and potentially faster if your data requires such
-operations a lot). If the data you will store is of a known type (including
-your own defined classes), prefer to use a typed Array as it may yield better
-performance in iteration and modification compared to an untyped Array.
+Mặc dù mọi Array đều có thể gây phân mảnh bộ nhớ khi đủ lớn, nếu việc sử dụng bộ nhớ và hiệu năng (tốc độ lặp qua và sửa đổi) là mối quan tâm, đồng thời kiểu dữ liệu bạn lưu trữ tương thích với một trong các kiểu Array ``Packed``, thì việc sử dụng chúng có thể mang lại cải thiện. Tuy nhiên, nếu bạn không gặp những mối quan tâm đó (ví dụ: kích thước mảng không đạt đến hàng chục nghìn phần tử), việc sử dụng Array thông thường hoặc Array có kiểu có thể hữu ích hơn, vì chúng cung cấp các phương thức tiện ích giúp mã dễ viết và bảo trì hơn (và có thể nhanh hơn nếu dữ liệu của bạn thường xuyên yêu cầu các thao tác như vậy). Nếu dữ liệu bạn sẽ lưu trữ có kiểu xác định (bao gồm cả các lớp do bạn tự định nghĩa), hãy ưu tiên sử dụng Array có kiểu vì nó có thể mang lại hiệu năng tốt hơn khi lặp qua và sửa đổi so với Array không có kiểu.
 
-- :ref:`PackedByteArray <class_PackedByteArray>`: An array of bytes (integers from 0 to 255).
-- :ref:`PackedInt32Array <class_PackedInt32Array>`: An array of 32-bit integers.
-- :ref:`PackedInt64Array <class_PackedInt64Array>`: An array of 64-bit integers.
-- :ref:`PackedFloat32Array <class_PackedFloat32Array>`: An array of 32-bit floats.
-- :ref:`PackedFloat64Array <class_PackedFloat64Array>`: An array of 64-bit floats.
-- :ref:`PackedStringArray <class_PackedStringArray>`: An array of strings.
-- :ref:`PackedVector2Array <class_PackedVector2Array>`: An array of :ref:`Vector2 <class_Vector2>` values.
-- :ref:`PackedVector3Array <class_PackedVector3Array>`: An array of :ref:`Vector3 <class_Vector3>` values.
-- :ref:`PackedVector4Array <class_PackedVector4Array>`: An array of :ref:`Vector4 <class_Vector4>` values.
-- :ref:`PackedColorArray <class_PackedColorArray>`: An array of :ref:`Color <class_Color>` values.
+- :ref:`PackedByteArray <class_PackedByteArray>`: Một mảng byte (số nguyên từ 0 đến 255). - :ref:`PackedInt32Array <class_PackedInt32Array>`: Một mảng số nguyên 32-bit. - :ref:`PackedInt64Array <class_PackedInt64Array>`: Một mảng số nguyên 64-bit. - :ref:`PackedFloat32Array <class_PackedFloat32Array>`: Một mảng số thực 32-bit. - :ref:`PackedFloat64Array <class_PackedFloat64Array>`: Một mảng số thực 64-bit. - :ref:`PackedStringArray <class_PackedStringArray>`: Một mảng chuỗi. - :ref:`PackedVector2Array <class_PackedVector2Array>`: Một mảng các giá trị :ref:`Vector2 <class_Vector2>`. - :ref:`PackedVector3Array <class_PackedVector3Array>`: Một mảng các giá trị :ref:`Vector3 <class_Vector3>`. - :ref:`PackedVector4Array <class_PackedVector4Array>`: Một mảng các giá trị :ref:`Vector4 <class_Vector4>`. - :ref:`PackedColorArray <class_PackedColorArray>`: Một mảng các giá trị :ref:`Color <class_Color>`.
 
 :ref:`Dictionary <class_Dictionary>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Associative container which contains values referenced by unique keys.
+Container kết hợp chứa các giá trị được tham chiếu bởi các khóa duy nhất.
 
 ::
 
@@ -959,10 +811,7 @@ Associative container which contains values referenced by unique keys.
         "more_key": "Hello"
     }
 
-Lua-style table syntax is also supported. Lua-style uses ``=`` instead of ``:``
-and doesn't use quotes to mark string keys (making for slightly less to write).
-However, keys written in this form can't start with a digit (like any GDScript
-identifier), and must be string literals.
+Cú pháp table kiểu Lua cũng được hỗ trợ. Cú pháp kiểu Lua sử dụng ``=`` thay vì ``:`` và không dùng dấu ngoặc kép để đánh dấu các khóa chuỗi (do đó cần viết ít hơn một chút). Tuy nhiên, các khóa được viết theo dạng này không thể bắt đầu bằng chữ số (giống mọi identifier của GDScript) và phải là string literal.
 
 ::
 
@@ -973,43 +822,34 @@ identifier), and must be string literals.
         more_key = "Hello"
     }
 
-To add a key to an existing dictionary, access it like an existing key and
-assign to it:
+Để thêm một khóa vào dictionary hiện có, hãy truy cập khóa đó như một khóa hiện có và gán giá trị cho nó:
 
 ::
 
-    var d = {} # Create an empty Dictionary.
-    d.waiting = 14 # Add String "waiting" as a key and assign the value 14 to it.
-    d[4] = "hello" # Add integer 4 as a key and assign the String "hello" as its value.
-    d["Godot"] = 3.01 # Add String "Godot" as a key and assign the value 3.01 to it.
+    var d = {} # Tạo một Dictionary rỗng.
+    d.waiting = 14 # Thêm String "waiting" làm khóa và gán giá trị 14 cho khóa đó.
+    d[4] = "hello" # Thêm số nguyên 4 làm khóa và gán String "hello" làm giá trị của khóa đó.
+    d["Godot"] = 3.01 # Thêm String "Godot" làm khóa và gán giá trị 3.01 cho khóa đó.
 
     var test = 4
-    # Prints "hello" by indexing the dictionary with a dynamic key.
-    # This is not the same as `d.test`. The bracket syntax equivalent to
-    # `d.test` is `d["test"]`.
+    # In ra "hello" bằng cách lập chỉ mục dictionary với một khóa động.
+    # Điều này không giống với `d.test`. Cú pháp dấu ngoặc vuông tương đương với
+    # `d.test` là `d["test"]`.
     print(d[test])
 
 .. note::
 
-    The bracket syntax can be used to access properties of any
+    Cú pháp dấu ngoặc vuông có thể được dùng để truy cập các thuộc tính của bất kỳ
     :ref:`class_Object`, not just Dictionaries. Keep in mind it will cause a
-    script error when attempting to index a non-existing property. To avoid
-    this, use the :ref:`Object.get() <class_Object_method_get>` and
+    lỗi script khi cố lập chỉ mục một thuộc tính không tồn tại. Để tránh điều này, hãy sử dụng :ref:`Object.get() <class_Object_method_get>` và
     :ref:`Object.set() <class_Object_method_set>` methods instead.
 
-Typed dictionaries
+Dictionary có kiểu
 ^^^^^^^^^^^^^^^^^^
 
-Godot 4.4 added support for typed dictionaries. On write operations, Godot checks that
-element keys and values match the specified type, so the dictionary cannot contain invalid
-keys or values. The GDScript static analyzer takes typed dictionaries into account. However,
-dictionary methods that return values still have the ``Variant`` return type.
+Godot 4.4 đã thêm hỗ trợ cho dictionary có kiểu. Khi thực hiện thao tác ghi, Godot kiểm tra xem khóa và giá trị của phần tử có khớp với kiểu đã chỉ định hay không, vì vậy dictionary không thể chứa khóa hoặc giá trị không hợp lệ. Trình phân tích tĩnh GDScript cũng tính đến dictionary có kiểu. Tuy nhiên, các phương thức dictionary trả về giá trị vẫn có kiểu trả về ``Variant``.
 
-Typed dictionaries have the syntax ``Dictionary[KeyType, ValueType]``, where ``KeyType`` and ``ValueType``
-can be any ``Variant`` type, native or user class, or enum. Both the key and value type **must** be specified,
-but you can use ``Variant`` to make either of them untyped.
-Nested typed collections (like ``Dictionary[String, Dictionary[String, int]]``)
-are not supported.
+Dictionary có kiểu có cú pháp ``Dictionary[KeyType, ValueType]``, trong đó ``KeyType`` và ``ValueType`` có thể là bất kỳ kiểu ``Variant`` nào, lớp native hoặc lớp do người dùng định nghĩa, hay enum. **Phải** chỉ định cả kiểu khóa và kiểu giá trị, nhưng bạn có thể sử dụng ``Variant`` để đặt một trong hai thành không có kiểu. Không hỗ trợ các collection có kiểu lồng nhau (như ``Dictionary[String, Dictionary[String, int]]``).
 
 ::
 
@@ -1017,113 +857,83 @@ are not supported.
     var b: Dictionary[String, Node]
     var c: Dictionary[Vector2i, MyClass]
     var d: Dictionary[MyEnum, float]
-    # String keys, values can be any type.
+    # Khóa là chuỗi, giá trị có thể có bất kỳ kiểu nào.
     var e: Dictionary[String, Variant]
-    # Keys can be any type, boolean values.
+    # Khóa có thể có bất kỳ kiểu nào, giá trị là boolean.
     var f: Dictionary[Variant, bool]
 
-``Dictionary`` and ``Dictionary[Variant, Variant]`` are the same thing.
+``Dictionary`` và ``Dictionary[Variant, Variant]`` là cùng một thứ.
 
 :ref:`Signal <class_Signal>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A signal is a message that can be emitted by an object to those who want to
-listen to it. The Signal type can be used for passing the emitter around.
+Signal là một thông điệp có thể được một object phát ra cho những đối tượng muốn lắng nghe nó. Kiểu Signal có thể được dùng để truyền emitter.
 
-Signals are better used by getting them from actual objects, e.g. ``$Button.button_up``.
+Signal được sử dụng tốt hơn bằng cách lấy chúng từ các object thực tế, ví dụ ``$Button.button_up``.
 
 :ref:`Callable <class_Callable>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Contains an object and a function, which is useful for passing functions as
-values (e.g. when connecting to signals).
+Chứa một object và một function, hữu ích khi truyền các function dưới dạng giá trị (ví dụ: khi kết nối với signal).
 
-Getting a method as a member returns a callable. ``var x = $Sprite2D.rotate``
-will set the value of ``x`` to a callable with ``$Sprite2D`` as the object and
-``rotate`` as the method.
+Lấy một method dưới dạng member sẽ trả về một callable. ``var x = $Sprite2D.rotate`` sẽ đặt giá trị của ``x`` thành một callable với ``$Sprite2D`` là object và ``rotate`` là method.
 
-You can call it using the ``call`` method: ``x.call(PI)``.
+Bạn có thể gọi nó bằng phương thức ``call``: ``x.call(PI)``.
 
-Variables
----------
+Biến
+----
 
-Variables can exist as class members or local to functions. They are
-created with the ``var`` keyword and may, optionally, be assigned a
-value upon initialization.
+Biến có thể tồn tại dưới dạng member của class hoặc là biến cục bộ trong các function. Chúng được tạo bằng keyword ``var`` và có thể, tùy chọn, được gán một giá trị khi khởi tạo.
 
 ::
 
-    var a # Data type is 'null' by default.
+    var a # Kiểu dữ liệu mặc định là 'null'.
     var b = 5
     var c = 3.8
-    var d = b + c # Variables are always initialized in direct order (see below).
+    var d = b + c # Các biến luôn được khởi tạo theo thứ tự trực tiếp (xem bên dưới).
 
-Variables can optionally have a type specification. When a type is specified,
-the variable will be forced to have always that same type, and trying to assign
-an incompatible value will raise an error.
+Biến có thể tùy chọn có đặc tả kiểu. Khi một kiểu được chỉ định, biến sẽ luôn bị buộc phải có đúng kiểu đó, và việc cố gán một giá trị không tương thích sẽ gây ra lỗi.
 
-Types are specified in the variable declaration using a ``:`` (colon) symbol
-after the variable name, followed by the type.
+Kiểu được chỉ định trong khai báo biến bằng ký hiệu ``:`` (dấu hai chấm) sau tên biến, tiếp theo là kiểu.
 
 ::
 
     var my_vector2: Vector2
     var my_node: Node = Sprite2D.new()
 
-If the variable is initialized within the declaration, the type can be inferred, so
-it's possible to omit the type name:
+Nếu biến được khởi tạo ngay trong khai báo, kiểu có thể được suy luận, vì vậy có thể bỏ qua tên kiểu:
 
 ::
 
-    var my_vector2 := Vector2() # 'my_vector2' is of type 'Vector2'.
-    var my_node := Sprite2D.new() # 'my_node' is of type 'Sprite2D'.
+    var my_vector2 := Vector2() # 'my_vector2' có kiểu 'Vector2'.
+    var my_node := Sprite2D.new() # 'my_node' có kiểu 'Sprite2D'.
 
-Type inference is only possible if the assigned value has a defined type, otherwise
-it will raise an error.
+Suy luận kiểu chỉ có thể thực hiện nếu giá trị được gán có kiểu xác định; nếu không, sẽ gây ra lỗi.
 
-Valid types are:
+Các kiểu hợp lệ gồm:
 
-- Built-in types (Array, Vector2, int, String, etc.).
-- Engine classes (Node, Resource, RefCounted, etc.).
-- Constant names if they contain a script resource (``MyScript`` if you declared ``const MyScript = preload("res://my_script.gd")``).
-- Other classes in the same script, respecting scope (``InnerClass.NestedClass`` if you declared ``class NestedClass`` inside the ``class InnerClass`` in the same scope).
-- Script classes declared with the ``class_name`` keyword.
-- Autoloads registered as singletons.
+- Các kiểu dựng sẵn (Array, Vector2, int, String, v.v.). - Các class của engine (Node, Resource, RefCounted, v.v.). - Tên hằng nếu chúng chứa một script resource (``MyScript`` nếu bạn đã khai báo ``const MyScript = preload("res://my_script.gd")``). - Các class khác trong cùng script, tuân theo scope (``InnerClass.NestedClass`` nếu bạn đã khai báo ``class NestedClass`` bên trong ``class InnerClass`` trong cùng scope). - Các script class được khai báo bằng keyword ``class_name``. - Các Autoload được đăng ký dưới dạng singleton.
 
 .. note::
 
-    While ``Variant`` is a valid type specification, it's not an actual type. It
-    only means there's no set type and is equivalent to not having a static type
-    at all. Therefore, inference is not allowed by default for ``Variant``,
-    since it's likely a mistake.
+    Mặc dù ``Variant`` là một đặc tả kiểu hợp lệ, nó không phải là một kiểu thực tế. Nó chỉ có nghĩa là không có kiểu cố định và tương đương với việc hoàn toàn không có kiểu tĩnh. Vì vậy, theo mặc định, suy luận không được phép đối với ``Variant``, vì nhiều khả năng đó là một lỗi.
 
-    You can turn off this check, or make it only a warning, by changing it in
-    the project settings. See :ref:`doc_gdscript_warning_system` for details.
+    Bạn có thể tắt kiểm tra này hoặc chỉ coi nó là cảnh báo bằng cách thay đổi trong project settings. Xem :ref:`doc_gdscript_warning_system` để biết chi tiết.
 
-Initialization order
-~~~~~~~~~~~~~~~~~~~~
+Thứ tự khởi tạo
+~~~~~~~~~~~~~~~
 
-Member variables are initialized in the following order:
+Các biến member được khởi tạo theo thứ tự sau:
 
-1. Depending on the variable's static type, the variable is either ``null``
-   (untyped variables and objects) or has a default value of the type
-   (``0`` for ``int``, ``false`` for ``bool``, etc.).
-2. The specified values are assigned in the order of the variables in the script,
-   from top to bottom.
+1. Tùy thuộc vào kiểu tĩnh của biến, biến sẽ ``null`` (các biến không có kiểu và object) hoặc có giá trị mặc định của kiểu đó (``0`` đối với ``int``, ``false`` đối với ``bool``, v.v.). 2. Các giá trị đã chỉ định được gán theo thứ tự của các biến trong script, từ trên xuống dưới.
 
-   - (Only for ``Node``-derived classes) If the ``@onready`` annotation is applied to a variable,
-     its initialization is deferred to step 5.
+   - (Chỉ áp dụng cho các class kế thừa ``Node``) Nếu annotation ``@onready`` được áp dụng cho một biến, việc khởi tạo biến đó sẽ được trì hoãn đến bước 5.
 
-3. If defined, the ``_init()`` method is called.
-4. When instantiating scenes and resources, the exported values are assigned.
-5. (Only for ``Node``-derived classes) ``@onready`` variables are initialized.
-6. (Only for ``Node``-derived classes) If defined, the ``_ready()`` method is called.
+3. Nếu được định nghĩa, method ``_init()`` sẽ được gọi. 4. Khi khởi tạo scene và resource, các giá trị được export sẽ được gán. 5. (Chỉ áp dụng cho các class kế thừa ``Node``) Các biến ``@onready`` được khởi tạo. 6. (Chỉ áp dụng cho các class kế thừa ``Node``) Nếu được định nghĩa, method ``_ready()`` sẽ được gọi.
 
 .. warning::
 
-    You can specify a complex expression as a variable initializer, including function calls.
-    Make sure the variables are initialized in the correct order, otherwise your values
-    may be overwritten. For example:
+    Bạn có thể chỉ định một biểu thức phức tạp làm bộ khởi tạo biến, bao gồm cả lời gọi function. Hãy đảm bảo các biến được khởi tạo đúng thứ tự, nếu không các giá trị của bạn có thể bị ghi đè. Ví dụ:
 
     ::
 
@@ -1139,7 +949,7 @@ Member variables are initialized in the following order:
         func _init() -> void:
             print(_data)
 
-    Will print:
+    Sẽ in ra:
 
     ::
 
@@ -1147,35 +957,28 @@ Member variables are initialized in the following order:
         { "a": 1, "b": 2 }
         {  }
 
-    To fix this, move the ``_data`` variable definition above the ``a`` definition
-    or remove the empty dictionary assignment (``= {}``).
+    Để khắc phục điều này, hãy di chuyển phần định nghĩa biến ``_data`` lên trên phần định nghĩa ``a`` hoặc xóa phép gán từ điển rỗng (``= {}``).
 
 .. _doc_gdscript_basics_static_variables:
 
-Static variables
-~~~~~~~~~~~~~~~~
+Biến static
+~~~~~~~~~~~
 
-A class member variable can be declared static:
+Một biến thành viên của class có thể được khai báo là static:
 
 ::
 
     static var a
 
-Static variables belong to the class, not instances. This means that static variables
-share values between multiple instances, unlike regular member variables.
+Các biến static thuộc về class, không phải các instance. Điều này có nghĩa là các biến static chia sẻ giá trị giữa nhiều instance, không giống các biến thành viên thông thường.
 
-From inside a class, you can access static variables from any function, both static and non-static.
-From outside the class, you can access static variables using the class or an instance
-(the second is not recommended as it is less readable).
+Bên trong một class, bạn có thể truy cập các biến static từ mọi function, cả static và non-static. Bên ngoài class, bạn có thể truy cập các biến static bằng class hoặc một instance (cách thứ hai không được khuyến nghị vì khó đọc hơn).
 
 .. note::
 
-    The ``@export`` and ``@onready`` annotations cannot be applied to a static variable.
-    Local variables cannot be static.
+    Không thể áp dụng các annotation ``@export`` và ``@onready`` cho biến static. Biến cục bộ không thể là static.
 
-The following example defines a ``Person`` class with a static variable named ``max_id``.
-We increment the ``max_id`` in the ``_init()`` function. This makes it easy to keep track
-of the number of ``Person`` instances in our game.
+Ví dụ sau định nghĩa một class ``Person`` với một biến static có tên ``max_id``. Chúng ta tăng ``max_id`` trong function ``_init()``. Điều này giúp dễ dàng theo dõi số lượng instance ``Person`` trong game.
 
 ::
 
@@ -1192,8 +995,7 @@ of the number of ``Person`` instances in our game.
         id = max_id
         name = p_name
 
-In this code, we create two instances of our ``Person`` class and check that the class
-and every instance have the same ``max_id`` value, because the variable is static and accessible to every instance.
+Trong code này, chúng ta tạo hai instance của class ``Person`` và kiểm tra để chắc chắn rằng class và mọi instance đều có cùng giá trị ``max_id``, vì biến này là static và có thể được truy cập bởi mọi instance.
 
 ::
 
@@ -1211,7 +1013,7 @@ and every instance have the same ``max_id`` value, because the variable is stati
         print(person1.max_id) # 2
         print(person2.max_id) # 2
 
-Static variables can have type hints, setters and getters:
+Các biến static có thể có type hint, setter và getter:
 
 ::
 
@@ -1223,7 +1025,7 @@ Static variables can have type hints, setters and getters:
         set(value):
             balance = -value
 
-A base class static variable can also be accessed via a child class:
+Một biến static của base class cũng có thể được truy cập thông qua child class:
 
 ::
 
@@ -1242,26 +1044,18 @@ A base class static variable can also be accessed via a child class:
 
 .. note::
 
-    When referencing a static variable from a tool script, the other script
-    containing the static variable **must** also be a tool script.
-    See :ref:`Running code in the editor <doc_running_code_in_the_editor_important_information>`
-    for details.
+    Khi tham chiếu đến một biến static từ tool script, script khác chứa biến static đó cũng **phải** là một tool script. Xem :ref:`Running code in the editor <doc_running_code_in_the_editor_important_information>` để biết chi tiết.
 
-``@static_unload`` annotation
+annotation ``@static_unload``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Since GDScript classes are resources, having static variables in a script prevents it from being unloaded
-even if there are no more instances of that class and no other references left. This can be important
-if static variables store large amounts of data or hold references to other project resources, such as scenes.
-You should clean up this data manually, or use the :ref:`@static_unload <class_@GDScript_annotation_@static_unload>`
-annotation if static variables don't store important data and can be reset.
+Vì các class GDScript là resource, việc có các biến static trong một script sẽ ngăn script đó được unload ngay cả khi không còn instance nào của class đó và không còn reference nào khác. Điều này có thể quan trọng nếu các biến static lưu trữ lượng dữ liệu lớn hoặc giữ reference đến các resource khác của project, chẳng hạn như scene. Bạn nên tự dọn dẹp dữ liệu này hoặc sử dụng annotation :ref:`@static_unload <class_@GDScript_annotation_@static_unload>` nếu các biến static không lưu trữ dữ liệu quan trọng và có thể được reset.
 
 .. warning::
 
-    Currently, due to a bug, scripts are never freed, even if ``@static_unload`` annotation is used.
+    Hiện tại, do một bug, các script không bao giờ được free, ngay cả khi sử dụng annotation ``@static_unload``.
 
-Note that ``@static_unload`` applies to the entire script (including inner classes)
-and must be placed at the top of the script, before ``class_name`` and ``extends``:
+Lưu ý rằng ``@static_unload`` áp dụng cho toàn bộ script (bao gồm cả các inner class) và phải được đặt ở đầu script, trước ``class_name`` và ``extends``:
 
 ::
 
@@ -1269,157 +1063,138 @@ and must be placed at the top of the script, before ``class_name`` and ``extends
     class_name MyNode
     extends Node
 
-See also `Static functions`_ and `Static constructor`_.
+Xem thêm `Các hàm static`_ và `Static constructor`_.
 
-Casting
+Ép kiểu
 ~~~~~~~
 
-Values assigned to typed variables must have a compatible type. If it's needed to
-coerce a value to be of a certain type, in particular for object types, you can
-use the casting operator ``as``.
+Các giá trị được gán cho biến có kiểu phải có kiểu tương thích. Nếu cần ép một giá trị về một kiểu nhất định, đặc biệt đối với các kiểu object, bạn có thể sử dụng toán tử ép kiểu ``as``.
 
-Casting between object types results in the same object if the value is of the
-same type or a subtype of the cast type.
+Ép kiểu giữa các kiểu object sẽ cho ra cùng object nếu giá trị có cùng kiểu hoặc là subtype của kiểu được ép sang.
 
 ::
 
     var my_node2D: Node2D
-    my_node2D = $Sprite2D as Node2D # Works since Sprite2D is a subtype of Node2D.
+    my_node2D = $Sprite2D as Node2D # Hoạt động vì Sprite2D là một subtype của Node2D.
 
-If the value is not a subtype, the casting operation will result in a ``null`` value.
+Nếu giá trị không phải là subtype, thao tác ép kiểu sẽ cho ra một giá trị ``null``.
 
 ::
 
     var my_node2D: Node2D
-    my_node2D = $Button as Node2D # Results in 'null' since a Button is not a subtype of Node2D.
+    my_node2D = $Button as Node2D # Cho kết quả là 'null' vì Button không phải là subtype của Node2D.
 
-For built-in types, they will be forcibly converted if possible, otherwise the
-engine will raise an error.
+Đối với các kiểu dựng sẵn, chúng sẽ được chuyển đổi bắt buộc nếu có thể; nếu không, engine sẽ phát sinh lỗi.
 
 ::
 
     var my_int: int
-    my_int = "123" as int # The string can be converted to int.
-    my_int = Vector2() as int # A Vector2 can't be converted to int, this will cause an error.
+    my_int = "123" as int # Chuỗi có thể được chuyển đổi thành int.
+    my_int = Vector2() as int # Một Vector2 không thể được chuyển đổi thành int, điều này sẽ gây ra lỗi.
 
-Casting is also useful to have better type-safe variables when interacting with
-the scene tree:
+Ép kiểu cũng hữu ích để có các biến an toàn kiểu tốt hơn khi tương tác với scene tree:
 
 ::
 
-    # Will infer the variable to be of type Sprite2D.
+    # Sẽ suy luận biến có kiểu là Sprite2D.
     var my_sprite := $Character as Sprite2D
 
-    # Will fail if $AnimPlayer is not an AnimationPlayer, even if it has the method 'play()'.
+    # Sẽ thất bại nếu $AnimPlayer không phải là một AnimationPlayer, ngay cả khi nó có method 'play()'.
     ($AnimPlayer as AnimationPlayer).play("walk")
 
-Constants
----------
+Hằng số
+-------
 
-Constants are values you cannot change when the game is running.
-Their value must be known at compile-time. Using the
-``const`` keyword allows you to give a constant value a name. Trying to assign a
-value to a constant after it's declared will give you an error.
+Hằng số là các giá trị bạn không thể thay đổi khi game đang chạy. Giá trị của chúng phải được biết tại thời điểm compile. Sử dụng keyword ``const`` cho phép bạn đặt tên cho một giá trị hằng số. Việc cố gắng gán giá trị cho một hằng số sau khi nó được khai báo sẽ gây ra lỗi.
 
-We recommend using constants whenever a value is not meant to change.
+Chúng tôi khuyến nghị sử dụng hằng số bất cứ khi nào một giá trị không được dự định thay đổi.
 
 ::
 
     const A = 5
     const B = Vector2(20, 20)
-    const C = 10 + 20 # Constant expression.
-    const D = Vector2(20, 30).x # Constant expression: 20.
-    const E = [1, 2, 3, 4][0] # Constant expression: 1.
-    const F = sin(20) # 'sin()' can be used in constant expressions.
-    const G = x + 20 # Invalid; this is not a constant expression!
-    const H = A + 20 # Constant expression: 25 (`A` is a constant).
+    const C = 10 + 20 # Biểu thức hằng số.
+    const D = Vector2(20, 30).x # Biểu thức hằng số: 20.
+    const E = [1, 2, 3, 4][0] # Biểu thức hằng số: 1.
+    const F = sin(20) # 'sin()' có thể được sử dụng trong các biểu thức hằng số.
+    const G = x + 20 # Không hợp lệ; đây không phải là biểu thức hằng số!
+    const H = A + 20 # Biểu thức hằng số: 25 (`A` là một hằng số).
 
-Although the type of constants is inferred from the assigned value, it's also
-possible to add explicit type specification:
+Mặc dù kiểu của hằng số được suy luận từ giá trị được gán, bạn cũng có thể thêm chỉ định kiểu rõ ràng:
 
 ::
 
     const A: int = 5
     const B: Vector2 = Vector2()
 
-Assigning a value of an incompatible type will raise an error.
+Việc gán một giá trị có kiểu không tương thích sẽ gây ra lỗi.
 
-You can also create constants inside a function, which is useful to name local
-magic values.
+Bạn cũng có thể tạo hằng số bên trong một function, điều này hữu ích để đặt tên cho các giá trị magic cục bộ.
 
-Enums
-~~~~~
+Enum
+~~~~
 
-Enums are basically a shorthand for constants, and are pretty useful if you
-want to assign consecutive integers to some constant.
+Enum về cơ bản là cách viết tắt cho các hằng số và khá hữu ích nếu bạn muốn gán các số nguyên liên tiếp cho một số hằng số.
 
 ::
 
     enum {TILE_BRICK, TILE_FLOOR, TILE_SPIKE, TILE_TELEPORT}
 
-    # Is the same as:
+    # Tương đương với:
     const TILE_BRICK = 0
     const TILE_FLOOR = 1
     const TILE_SPIKE = 2
     const TILE_TELEPORT = 3
 
 
-If you pass a name to the enum, it will put all the keys inside a constant
+Nếu truyền một tên cho enum, nó sẽ đặt tất cả key vào bên trong một hằng số
 :ref:`Dictionary <class_Dictionary>` of that name. This means all constant methods of
-a dictionary can also be used with a named enum. This only works for
-GDScript enums, not for enums from built-in classes.
+Một dictionary cũng có thể được sử dụng với enum có tên. Cách này chỉ hoạt động với enum GDScript, không áp dụng cho enum từ các class dựng sẵn.
 
 .. important:: Keys in a named enum are not registered
-               as global constants. They should be accessed prefixed
-               by the enum's name (``Name.KEY``).
+               dưới dạng các hằng số global. Chúng nên được truy cập với tiền tố là tên của enum (``Name.KEY``).
 
 ::
 
     enum State {STATE_IDLE, STATE_JUMP = 5, STATE_SHOOT}
 
-    # Is the same as:
+    # Tương đương với:
     const State = {STATE_IDLE = 0, STATE_JUMP = 5, STATE_SHOOT = 6}
-    # Access values with State.STATE_IDLE, etc.
+    # Truy cập các giá trị bằng State.STATE_IDLE, v.v.
 
     func _ready():
-        # Access values with Name.KEY, prints '5'
+        # Truy cập các giá trị bằng Name.KEY, in ra '5'
         print(State.STATE_JUMP)
-        # Use dictionary methods:
-        # prints '["STATE_IDLE", "STATE_JUMP", "STATE_SHOOT"]'
+        # Sử dụng các method của dictionary:
+        # in ra '["STATE_IDLE", "STATE_JUMP", "STATE_SHOOT"]'
         print(State.keys())
-        # prints '{ "STATE_IDLE": 0, "STATE_JUMP": 5, "STATE_SHOOT": 6 }'
+        # in ra '{ "STATE_IDLE": 0, "STATE_JUMP": 5, "STATE_SHOOT": 6 }'
         print(State)
-        # prints '[0, 5, 6]'
+        # in ra '[0, 5, 6]'
         print(State.values())
 
-If not assigning a value to a key of an enum it will be assigned the previous value plus one,
-or ``0`` if it is the first entry in the enum. Multiple keys with the same value are allowed.
+Nếu không gán giá trị cho một key của enum, nó sẽ được gán giá trị trước đó cộng một, hoặc ``0`` nếu đó là entry đầu tiên trong enum. Cho phép nhiều key có cùng giá trị.
 
 
-Functions
----------
+Function
+--------
 
-Functions always belong to a `class <Classes_>`_. The scope priority for
-variable look-up is: local → class member → global. The ``self`` variable is
-always available and is provided as an option for accessing class members
-(see `self`_), but is not always required (and should *not* be sent as the
-function's first argument, unlike Python).
+Function luôn thuộc về một `class <Classes_>`_. Thứ tự ưu tiên của scope khi tra cứu biến là: local → thành viên class → global. Biến ``self`` luôn khả dụng và được cung cấp như một tùy chọn để truy cập các thành viên class (xem `self`_), nhưng không phải lúc nào cũng cần thiết (và *không được* truyền nó làm đối số đầu tiên của function, không giống Python).
 
 ::
 
     func my_function(a, b):
         print(a)
         print(b)
-        return a + b  # Return is optional; without it 'null' is returned.
+        return a + b  # Return là tùy chọn; nếu không có, 'null' sẽ được trả về.
 
-A function can ``return`` at any point. The default return value is ``null``.
+Một function có thể ``return`` tại bất kỳ thời điểm nào. Giá trị return mặc định là ``null``.
 
-By default, all function parameters are required. You can make one or more
-parameters at the end optional by assigning a default value to them:
+Theo mặc định, tất cả tham số của function đều bắt buộc. Bạn có thể làm cho một hoặc nhiều tham số ở cuối trở thành tùy chọn bằng cách gán giá trị mặc định cho chúng:
 
 ::
 
-    # Since the last two parameters are optional, all these calls are valid:
+    # Vì hai tham số cuối là tùy chọn, tất cả các lời gọi sau đều hợp lệ:
     # - my_function(1)
     # - my_function(1, 20)
     # - my_function(1, 20, 100)
@@ -1428,7 +1203,7 @@ parameters at the end optional by assigning a default value to them:
         print(b_optional)
         print(c_optional)
 
-If a function contains only one line of code, it can be written on one line:
+Nếu một function chỉ chứa một dòng code, có thể viết function đó trên một dòng:
 
 ::
 
@@ -1438,51 +1213,41 @@ If a function contains only one line of code, it can be written on one line:
 
     func empty_function(): pass
 
-Functions can also have type specification for the arguments and for the return
-value. Types for arguments can be added in a similar way to variables:
+Function cũng có thể chỉ định kiểu cho các đối số và giá trị return. Có thể thêm kiểu cho các đối số theo cách tương tự như với biến:
 
 ::
 
     func my_function(a: int, b: String):
         pass
 
-If a function argument has a default value, it's possible to infer the type:
+Nếu một đối số của function có giá trị mặc định, có thể suy luận kiểu:
 
 ::
 
     func my_function(int_arg := 42, String_arg := "string"):
         pass
 
-The return type of the function can be specified after the arguments list using
-the arrow token (``->``):
+Kiểu return của function có thể được chỉ định sau danh sách đối số bằng token mũi tên (``->``):
 
 ::
 
     func my_int_function() -> int:
         return 0
 
-Functions that have a return type **must** return a proper value. Setting the
-type as ``void`` means the function doesn't return anything. Void functions can
-return early with the ``return`` keyword, but they can't return any value.
+Các function có kiểu return **phải** trả về một giá trị phù hợp. Đặt kiểu là ``void`` có nghĩa là function không trả về gì. Các function void có thể return sớm bằng keyword ``return``, nhưng không thể return bất kỳ giá trị nào.
 
 ::
 
     func void_function() -> void:
-        return # Can't return a value.
+        return # Không thể return một giá trị.
 
 .. note:: Non-void functions must **always** return a value, so if your code has
-          branching statements (such as an ``if``/``else`` construct), all the
-          possible paths must have a return. E.g., if you have a ``return``
-          inside an ``if`` block but not after it, the editor will raise an
-          error because if the block is not executed, the function won't have a
-          valid value to return.
+          branching statements (such as an ``if``/``else`` construct), all the possible paths must have a return. E.g., if you have a ``return`` inside an ``if`` block but not after it, the editor will raise an error because if the block is not executed, the function won't have a valid value to return.
 
-Referencing functions
-~~~~~~~~~~~~~~~~~~~~~
+Tham chiếu đến function
+~~~~~~~~~~~~~~~~~~~~~~~
 
-Functions are first-class values in terms of the :ref:`Callable <class_Callable>` object.
-Referencing a function by name without calling it will automatically generate the proper
-callable. This can be used to pass functions as arguments.
+Function là các giá trị hạng nhất xét theo object :ref:`Callable <class_Callable>`. Việc tham chiếu đến một function bằng tên mà không gọi nó sẽ tự động tạo ra callable thích hợp. Bạn có thể sử dụng cách này để truyền function làm đối số.
 
 ::
 
@@ -1498,124 +1263,115 @@ callable. This can be used to pass functions as arguments.
     func _ready() -> void:
         var my_array = [1, 2, 3]
         var plus_one = map(my_array, add1)
-        print(plus_one) # Prints `[2, 3, 4]`.
+        print(plus_one) # In ra `[2, 3, 4]`.
 
 .. note::
 
-    Callables **must** be called with the :ref:`call() <class_Callable_method_call>` method.
-    You cannot use the ``()`` operator directly. This behavior is implemented to avoid
-    performance issues on direct function calls.
+    Callable **phải** được gọi bằng method :ref:`call() <class_Callable_method_call>`. Bạn không thể sử dụng trực tiếp toán tử ``()``. Hành vi này được triển khai để tránh các vấn đề về hiệu năng khi gọi function trực tiếp.
 
-Lambda functions
-~~~~~~~~~~~~~~~~
+Function lambda
+~~~~~~~~~~~~~~~
 
-Lambda functions allow you to declare functions that do not belong to a class. Instead, a
+Function lambda cho phép bạn khai báo các function không thuộc về class. Thay vào đó, một
 :ref:`Callable <class_Callable>` object is created and assigned to a variable directly.
-This can be useful to create callables to pass around without polluting the class scope.
+Điều này có thể hữu ích để tạo các callable nhằm truyền đi mà không làm ô nhiễm scope của class.
 
 ::
 
     var lambda = func (x):
         print(x)
 
-To call the created lambda you can use the :ref:`call() <class_Callable_method_call>` method:
+Để gọi lambda đã tạo, bạn có thể sử dụng method :ref:`call() <class_Callable_method_call>`:
 
 ::
 
-    lambda.call(42) # Prints `42`.
+    lambda.call(42) # In ra `42`.
 
-Lambda functions can be named for debugging purposes (the name is displayed in the Debugger):
+Các hàm lambda có thể được đặt tên cho mục đích debugging (tên này được hiển thị trong Debugger):
 
 ::
 
     var lambda = func my_lambda(x):
         print(x)
 
-You can specify type hints for lambda functions in the same way as for regular ones:
+Bạn có thể chỉ định type hint cho các hàm lambda theo cách tương tự như đối với các hàm thông thường:
 
 ::
 
     var lambda := func (x: int) -> void:
         print(x)
 
-Note that if you want to return a value from a lambda function, an explicit ``return``
-is required (you can't omit ``return``):
+Lưu ý rằng nếu muốn trả về một giá trị từ hàm lambda, cần có ``return`` tường minh (bạn không thể bỏ qua ``return``):
 
 ::
 
     var lambda = func (x): return x ** 2
-    print(lambda.call(2)) # Prints `4`.
+    print(lambda.call(2)) # In ra `4`.
 
-Lambda functions capture the local environment:
+Các hàm lambda capture môi trường cục bộ:
 
 ::
 
     var x = 42
     var lambda = func ():
-        print(x) # Prints `42`.
+        print(x) # In ra `42`.
     lambda.call()
 
 .. warning::
 
-    Local variables are captured by value once, when the lambda is created.
-    So they won't be updated in the lambda if reassigned in the outer function:
+    Các biến cục bộ được capture theo giá trị một lần tại thời điểm lambda được tạo. Vì vậy, chúng sẽ không được cập nhật trong lambda nếu được gán lại trong hàm bên ngoài:
 
     ::
 
         var x = 42
         var lambda = func (): print(x)
-        lambda.call() # Prints `42`.
+        lambda.call() # In ra `42`.
         x = "Hello"
-        lambda.call() # Prints `42`.
+        lambda.call() # In ra `42`.
 
-    Also, a lambda cannot reassign an outer local variable. After exiting the lambda,
-    the variable will be unchanged, because the lambda capture implicitly shadows it:
+    Ngoài ra, lambda không thể gán lại một biến cục bộ bên ngoài. Sau khi thoát khỏi lambda, biến này sẽ không thay đổi, vì việc capture của lambda ngầm shadow biến đó:
 
     ::
 
         var x = 42
         var lambda = func ():
-            print(x) # Prints `42`.
-            x = "Hello" # Produces the `CONFUSABLE_CAPTURE_REASSIGNMENT` warning.
-            print(x) # Prints `Hello`.
+            print(x) # In ra `42`.
+            x = "Hello" # Tạo warning `CONFUSABLE_CAPTURE_REASSIGNMENT`.
+            print(x) # In ra `Hello`.
         lambda.call()
-        print(x) # Prints `42`.
+        print(x) # In ra `42`.
 
-    However, if you use pass-by-reference data types (arrays, dictionaries, and objects),
-    then the content changes are shared until you reassign the variable:
+    Tuy nhiên, nếu bạn sử dụng các kiểu dữ liệu pass-by-reference (array, dictionary và object), thì các thay đổi về nội dung sẽ được chia sẻ cho đến khi bạn gán lại biến:
 
     ::
 
         var a = []
         var lambda = func ():
             a.append(1)
-            print(a) # Prints `[1]`.
-            a = [2] # Produces the `CONFUSABLE_CAPTURE_REASSIGNMENT` warning.
-            print(a) # Prints `[2]`.
+            print(a) # In ra `[1]`.
+            a = [2] # Tạo warning `CONFUSABLE_CAPTURE_REASSIGNMENT`.
+            print(a) # In ra `[2]`.
         lambda.call()
-        print(a) # Prints `[1]`.
+        print(a) # In ra `[1]`.
 
-Static functions
-~~~~~~~~~~~~~~~~
+Các hàm static
+~~~~~~~~~~~~~~
 
-A function can be declared static. When a function is static, it has no access to the instance member variables or ``self``.
-A static function has access to static variables. Also static functions are useful to make libraries of helper functions:
+Một hàm có thể được khai báo là static. Khi một hàm là static, nó không có quyền truy cập vào các biến thành viên của instance hoặc ``self``. Một hàm static có quyền truy cập vào các biến static. Ngoài ra, các hàm static rất hữu ích để tạo các thư viện gồm những hàm helper:
 
 ::
 
     static func sum2(a, b):
         return a + b
 
-Lambda functions cannot be declared static.
+Các hàm lambda không thể được khai báo là static.
 
-See also `Static variables`_ and `Static constructor`_.
+Xem thêm `Biến static`_ và `Static constructor`_.
 
-Variadic functions
-~~~~~~~~~~~~~~~~~~
+Các hàm variadic
+~~~~~~~~~~~~~~~~
 
-A variadic function is a function that can take a variable number of arguments.
-Since Godot 4.5, GDScript supports variadic functions. To declare a variadic function,
-you need to use the *rest parameter*, which collects all the excess arguments into an array.
+Hàm variadic là một hàm có thể nhận số lượng đối số thay đổi. Kể từ Godot 4.5, GDScript hỗ trợ các hàm variadic. Để khai báo một hàm variadic, bạn cần sử dụng *rest parameter*, tham số này thu thập tất cả đối số dư vào một array.
 
 ::
 
@@ -1629,15 +1385,13 @@ you need to use the *rest parameter*, which collects all the excess arguments in
         my_func(1, 2, 3, 4)    # 1 2 [3, 4]
         my_func(1, 2, 3, 4, 5) # 1 2 [3, 4, 5]
 
-A function can have at most one rest parameter, which must be the last one in the parameter list.
-The rest parameter cannot have a default value. Static and lambda functions can also be variadic.
+Một hàm có nhiều nhất một rest parameter, và tham số này phải là tham số cuối cùng trong danh sách tham số. Rest parameter không thể có giá trị mặc định. Các hàm static và lambda cũng có thể là variadic.
 
-Static typing works for variadic functions too. However, typed arrays are currently not supported
-as a static type of the rest parameter:
+Static typing cũng hoạt động với các hàm variadic. Tuy nhiên, typed array hiện chưa được hỗ trợ như một kiểu static của rest parameter:
 
 ::
 
-    # You cannot specify `...values: Array[int]`.
+    # Bạn không thể chỉ định `...values: Array[int]`.
     func sum(...values: Array) -> int:
         var result := 0
         for value in values:
@@ -1647,77 +1401,65 @@ as a static type of the rest parameter:
 
 .. note::
 
-    Although you can declare functions as variadic using the rest parameter, unpacking parameters
-    when calling a function using *spread syntax* that exists in some languages (JavaScript, PHP)
-    is currently not supported in GDScript. However, you can use ``callv()`` to call a function
-    with an array of arguments:
+    Mặc dù bạn có thể khai báo các hàm là variadic bằng cách sử dụng rest parameter, việc unpack các tham số khi gọi một hàm bằng *spread syntax* hiện có trong một số ngôn ngữ (JavaScript, PHP) hiện chưa được GDScript hỗ trợ. Tuy nhiên, bạn có thể sử dụng ``callv()`` để gọi một hàm với một array các đối số:
 
     ::
 
         func test_func(...args):
             #log_data(...args) # This won't work.
-            log_data.callv(args) # This will work.
+            log_data.callv(args) # Cách này sẽ hoạt động.
 
         func log_data(...values):
-            # You should use `callv()` if you want to pass `values` as the argument list,
-            # rather than passing the array as the first argument.
+            # Bạn nên sử dụng `callv()` nếu muốn truyền `values` làm danh sách đối số,
+            # thay vì truyền array làm đối số đầu tiên.
             prints.callv(values)
-            # You can use array concatenation to prepend/append the argument list.
+            # Bạn có thể sử dụng phép nối array để thêm danh sách đối số vào đầu/cuối.
             write_data.callv(["user://log.txt"] + values)
 
         func write_data(path, ...values):
             # ...
 
-Abstract functions
-~~~~~~~~~~~~~~~~~~
+Các hàm abstract
+~~~~~~~~~~~~~~~~
 
-See `Abstract classes and methods`_.
+Xem `Abstract class và method`_.
 
-Statements and control flow
----------------------------
+Các statement và control flow
+-----------------------------
 
-Statements are standard and can be assignments, function calls, control
-flow structures, etc. (see below). ``;`` as a statement separator is
-entirely optional.
+Các statement là những cấu trúc tiêu chuẩn và có thể là phép gán, lệnh gọi hàm, cấu trúc control flow, v.v. (xem bên dưới). ``;`` làm dấu phân cách statement hoàn toàn là tùy chọn.
 
-Expressions
-~~~~~~~~~~~
+Các expression
+~~~~~~~~~~~~~~
 
-Expressions are sequences of operators and their operands in orderly fashion. An expression by itself can be a
-statement too, though only calls are reasonable to use as statements since other expressions don't have side effects.
+Expression là các chuỗi operator và toán hạng của chúng theo thứ tự. Bản thân một expression cũng có thể là một statement, mặc dù chỉ các lệnh gọi là hợp lý để sử dụng làm statement vì các expression khác không có side effect.
 
-Expressions return values that can be assigned to valid targets. Operands to some operator can be another
-expression. An assignment is not an expression and thus does not return any value.
+Expression trả về các giá trị có thể được gán cho những target hợp lệ. Toán hạng của một số operator có thể là một expression khác. Phép gán không phải là một expression và do đó không trả về giá trị nào.
 
-Here are some examples of expressions:
+Sau đây là một số ví dụ về expression:
 
 ::
 
-    2 + 2 # Binary operation.
-    -5 # Unary operation.
-    "okay" if x > 4 else "not okay" # Ternary operation.
-    x # Identifier representing variable or constant.
-    x.a # Attribute access.
-    x[4] # Subscript access.
-    x > 2 or x < 5 # Comparisons and logic operators.
-    x == y + 2 # Equality test.
-    do_something() # Function call.
-    [1, 2, 3] # Array definition.
-    {A = 1, B = 2} # Dictionary definition.
-    preload("res://icon.svg") # Preload builtin function.
-    self # Reference to current instance.
+    2 + 2 # Phép toán nhị phân.
+    -5 # Phép toán một ngôi.
+    "okay" if x > 4 else "not okay" # Phép toán ba ngôi.
+    x # Identifier đại diện cho biến hoặc hằng số.
+    x.a # Truy cập attribute.
+    x[4] # Truy cập subscript.
+    x > 2 or x < 5 # Các operator so sánh và logic.
+    x == y + 2 # Kiểm tra tính bằng nhau.
+    do_something() # Lệnh gọi hàm.
+    [1, 2, 3] # Định nghĩa array.
+    {A = 1, B = 2} # Định nghĩa dictionary.
+    preload("res://icon.svg") # Hàm builtin preload.
+    self # Tham chiếu đến instance hiện tại.
 
-Identifiers, attributes, and subscripts are valid assignment targets. Other expressions cannot be on the left side of
-an assignment.
+Identifier, attribute và subscript là các target hợp lệ của phép gán. Các expression khác không thể nằm ở phía bên trái của phép gán.
 
 self
 ^^^^
 
-``self`` can be used to refer to the current instance and is often equivalent to
-directly referring to symbols available in the current script. However, ``self``
-also allows you to access properties, methods, and other names that are defined
-dynamically (i.e. are expected to exist in subtypes of the current class, or are
-provided using :ref:`_set() <class_Object_private_method__set>` and/or
+``self`` có thể được sử dụng để tham chiếu đến instance hiện tại và thường tương đương với việc tham chiếu trực tiếp đến các symbol khả dụng trong script hiện tại. Tuy nhiên, ``self`` cũng cho phép bạn truy cập các property, method và tên khác được định nghĩa động (tức là được kỳ vọng tồn tại trong các subtype của class hiện tại, hoặc được cung cấp bằng :ref:`_set() <class_Object_private_method__set>` và/hoặc
 :ref:`_get() <class_Object_private_method__get>`).
 
 ::
@@ -1725,31 +1467,24 @@ provided using :ref:`_set() <class_Object_private_method__set>` and/or
     extends Node
 
     func _ready():
-        # Compile time error, as `my_var` is not defined in the current class or its ancestors.
+        # Lỗi tại thời điểm compile, vì `my_var` không được định nghĩa trong class hiện tại hoặc các class tổ tiên của nó.
         print(my_var)
-        # Checked at runtime, thus may work for dynamic properties or descendant classes.
+        # Được kiểm tra tại runtime, vì vậy có thể hoạt động với các property động hoặc các class hậu duệ.
         print(self.my_var)
 
-        # Compile time error, as `my_func()` is not defined in the current class or its ancestors.
+        # Lỗi tại thời điểm compile, vì `my_func()` không được định nghĩa trong class hiện tại hoặc các class tổ tiên của nó.
         my_func()
-        # Checked at runtime, thus may work for descendant classes.
+        # Được kiểm tra tại runtime, vì vậy có thể hoạt động với các class hậu duệ.
         self.my_func()
 
 .. warning::
 
-    Beware that accessing members of child classes in the base class is often
-    considered a bad practice, because this blurs the area of responsibility of
-    any given piece of code, making the overall relationship between parts of
-    your game harder to reason about. Besides that, one can simply forget that
-    the parent class had some expectations about it's descendants.
+    Hãy cẩn thận: việc truy cập các member của class con trong class cơ sở thường được xem là một practice không tốt, vì điều này làm mờ phạm vi trách nhiệm của từng đoạn code, khiến mối quan hệ tổng thể giữa các phần trong game của bạn khó suy luận hơn. Ngoài ra, bạn có thể đơn giản quên rằng class cha có một số kỳ vọng đối với các class hậu duệ của nó.
 
 if/else/elif
 ~~~~~~~~~~~~
 
-Simple conditions are created by using the ``if``/``else``/``elif`` syntax.
-Parenthesis around conditions are allowed, but not required. Given the
-nature of the tab-based indentation, ``elif`` can be used instead of
-``else``/``if`` to maintain a level of indentation.
+Simple conditions are created by using the ``if``/``else``/``elif`` syntax. Parenthesis around conditions are allowed, but not required. Given the nature of the tab-based indentation, ``elif`` can be used instead of ``else``/``if`` to maintain a level of indentation.
 
 ::
 
@@ -1760,7 +1495,7 @@ nature of the tab-based indentation, ``elif`` can be used instead of
     else:
         statement(s)
 
-Short statements can be written on the same line as the condition:
+Các statement ngắn có thể được viết trên cùng dòng với điều kiện:
 
 ::
 
@@ -1769,17 +1504,14 @@ Short statements can be written on the same line as the condition:
         var x = 3 + 3
         return x
 
-Sometimes, you might want to assign a different initial value based on a
-boolean expression. In this case, ternary-if expressions come in handy:
+Đôi khi, bạn có thể muốn gán một giá trị ban đầu khác nhau dựa trên một biểu thức boolean. Trong trường hợp này, expression ternary-if rất hữu ích:
 
 ::
 
     var x = (value) if (expression) else (value)
     y += 3 if y < 10 else -1
 
-Ternary-if expressions can be nested to handle more than 2 cases. When nesting
-ternary-if expressions, it is recommended to wrap the complete expression over
-multiple lines to preserve readability:
+Các expression ternary-if có thể được lồng nhau để xử lý hơn 2 trường hợp. Khi lồng các expression ternary-if, bạn nên đặt toàn bộ expression trên nhiều dòng để duy trì khả năng đọc:
 
 ::
 
@@ -1793,8 +1525,8 @@ multiple lines to preserve readability:
     )
     print(fruit)  # banana
 
-    # Alternative syntax with backslashes instead of parentheses (for multi-line expressions).
-    # Less lines required, but harder to refactor.
+    # Cú pháp thay thế sử dụng dấu gạch chéo ngược thay vì dấu ngoặc (cho các expression nhiều dòng).
+    # Cần ít dòng hơn nhưng khó refactor hơn.
     var fruit_alt = \
             "apple" if count == 2 \
             else "pear" if count == 1 \
@@ -1802,24 +1534,21 @@ multiple lines to preserve readability:
             else "orange"
     print(fruit_alt)  # banana
 
-You may also wish to check if a value is contained within something. You can
-use an ``if`` statement combined with the ``in`` operator to accomplish this:
+Bạn cũng có thể muốn kiểm tra xem một giá trị có nằm trong một thứ gì đó hay không. Bạn có thể sử dụng một statement ``if`` kết hợp với operator ``in`` để thực hiện việc này:
 
 ::
 
-    # Check if a letter is in a string.
+    # Kiểm tra xem một chữ cái có nằm trong một string hay không.
     var text = "abc"
     if 'b' in text: print("The string contains b")
 
-    # Check if a variable is contained within a node.
+    # Kiểm tra xem một biến có nằm trong một node hay không.
     if "varName" in get_parent(): print("varName is defined in parent!")
 
 while
 ~~~~~
 
-Simple loops are created by using ``while`` syntax. Loops can be broken
-using ``break`` or continued using ``continue`` (which skips to the next
-iteration of the loop without executing any further code in the current iteration):
+Các loop đơn giản được tạo bằng cú pháp ``while``. Có thể dừng loop bằng ``break`` hoặc tiếp tục bằng ``continue`` (lệnh này chuyển đến iteration tiếp theo của loop mà không thực thi thêm code nào trong iteration hiện tại):
 
 ::
 
@@ -1829,47 +1558,43 @@ iteration of the loop without executing any further code in the current iteratio
 for
 ~~~
 
-To iterate through a range, such as an array or table, a *for* loop is
-used. When iterating over an array, the current array element is stored in
-the loop variable. When iterating over a dictionary, the *key* is stored
-in the loop variable.
+Để lặp qua một range, chẳng hạn như array hoặc table, người ta sử dụng loop *for*. Khi lặp qua một array, phần tử array hiện tại được lưu trong biến loop. Khi lặp qua một dictionary, *key* được lưu trong biến loop.
 
 ::
 
     for x in [5, 7, 11]:
-        statement # Loop iterates 3 times with 'x' as 5, then 7 and finally 11.
+        statement # Loop lặp 3 lần với 'x' lần lượt là 5, 7 và cuối cùng là 11.
 
     var names = ["John", "Marta", "Samantha", "Jimmy"]
-    for name: String in names: # Typed loop variable.
-        print(name) # Prints name's content.
+    for name: String in names: # Biến loop có kiểu.
+        print(name) # In nội dung của name.
 
     var dict = {"a": 0, "b": 1, "c": 2}
     for i in dict:
-        print(dict[i]) # Prints 0, then 1, then 2.
+        print(dict[i]) # In lần lượt 0, rồi 1, rồi 2.
 
     for i in range(3):
-        statement # Similar to [0, 1, 2] but does not allocate an array.
+        statement # Tương tự [0, 1, 2] nhưng không cấp phát một array.
 
     for i in range(1, 3):
-        statement # Similar to [1, 2] but does not allocate an array.
+        statement # Tương tự [1, 2] nhưng không cấp phát một array.
 
     for i in range(2, 8, 2):
-        statement # Similar to [2, 4, 6] but does not allocate an array.
+        statement # Tương tự [2, 4, 6] nhưng không cấp phát một array.
 
     for i in range(8, 2, -2):
-        statement # Similar to [8, 6, 4] but does not allocate an array.
+        statement # Tương tự [8, 6, 4] nhưng không cấp phát một array.
 
     for c in "Hello":
-        print(c) # Iterate through all characters in a String, print every letter on new line.
+        print(c) # Lặp qua tất cả ký tự trong một String, in từng chữ cái trên một dòng mới.
 
     for i in 3:
-        statement # Similar to range(3).
+        statement # Tương tự range(3).
 
     for i in 2.2:
-        statement # Similar to range(ceil(2.2)).
+        statement # Tương tự range(ceil(2.2)).
 
-If you want to assign values on an array as it is being iterated through, it
-is best to use ``for i in array.size()``.
+Nếu muốn gán giá trị cho các phần tử trong array khi đang lặp qua array, tốt nhất nên sử dụng ``for i in array.size()``.
 
 ::
 
@@ -1877,31 +1602,27 @@ is best to use ``for i in array.size()``.
         array[i] = "Hello World"
 
 
-The loop variable is local to the for-loop and assigning to it will not change
-the value on the array. Objects passed by reference (such as nodes) can still
-be manipulated by calling methods on the loop variable.
+Biến loop là biến cục bộ của for-loop và việc gán cho biến này sẽ không thay đổi giá trị trong array. Các object được truyền theo reference (chẳng hạn như node) vẫn có thể được thao tác bằng cách gọi method trên biến loop.
 
 ::
 
     for string in string_array:
-        string = "Hello World" # This has no effect
+        string = "Hello World" # Điều này không có tác dụng
 
     for node in node_array:
-        node.add_to_group("Cool_Group") # This has an effect
+        node.add_to_group("Cool_Group") # Điều này có tác dụng
 
-match
-~~~~~
+khớp
+~~~~
 
-A ``match`` statement is used to branch execution of a program.
-It's the equivalent of the ``switch`` statement found in many other languages, but offers some additional features.
+Câu lệnh ``match`` được dùng để phân nhánh quá trình thực thi của một chương trình. Nó tương đương với câu lệnh ``switch`` có trong nhiều ngôn ngữ khác, nhưng cung cấp thêm một số tính năng.
 
 .. warning::
 
-    ``match`` is more type strict than the ``==`` operator. For example ``1`` will **not** match ``1.0``. The only exception is ``String`` vs ``StringName`` matching:
-    for example, the String ``"hello"`` is considered equal to the StringName ``&"hello"``.
+    ``match`` kiểm tra kiểu nghiêm ngặt hơn toán tử ``==``. Ví dụ, ``1`` sẽ **không** khớp với ``1.0``. Ngoại lệ duy nhất là khi so khớp ``String`` với ``StringName``: ví dụ, String ``"hello"`` được xem là bằng với StringName ``&"hello"``.
 
-Basic syntax
-^^^^^^^^^^^^
+Cú pháp cơ bản
+^^^^^^^^^^^^^^
 
 ::
 
@@ -1912,28 +1633,23 @@ Basic syntax
             <block>
         <...>
 
-Crash-course for people who are familiar with switch statements
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Tóm tắt nhanh cho những người đã quen với các câu lệnh switch
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Replace ``switch`` with ``match``.
-2. Remove ``case``.
-3. Remove any ``break``\ s.
-4. Change ``default`` to a single underscore.
+1. Replace ``switch`` with ``match``. 2. Remove ``case``. 3. Remove any ``break``\ s. 4. Change ``default`` to a single underscore.
 
-Control flow
-^^^^^^^^^^^^
+Luồng điều khiển
+^^^^^^^^^^^^^^^^
 
-The patterns are matched from top to bottom.
-If a pattern matches, the first corresponding block will be executed. After that, the execution continues below the ``match`` statement.
+Các pattern được so khớp từ trên xuống dưới. Nếu một pattern khớp, block tương ứng đầu tiên sẽ được thực thi. Sau đó, quá trình thực thi tiếp tục bên dưới câu lệnh ``match``.
 
 .. note::
 
-    The special ``continue`` behavior in ``match`` supported in 3.x was removed in Godot 4.0.
+    Hành vi ``continue`` đặc biệt trong ``match`` được hỗ trợ ở phiên bản 3.x đã bị loại bỏ trong Godot 4.0.
 
-The following pattern types are available:
+Các loại pattern sau đây được cung cấp:
 
-- Literal pattern
-    Matches a `literal <Literals_>`_:
+- Literal pattern Khớp với một `literal <Literals_>`_:
 
     ::
 
@@ -1945,8 +1661,7 @@ The following pattern types are available:
             "test":
                 print("Oh snap! It's a string!")
 
-- Expression pattern
-    Matches a constant expression, an identifier, or an attribute access (``A.B``):
+- Expression pattern Khớp với một biểu thức hằng, một identifier hoặc một attribute access (``A.B``):
 
     ::
 
@@ -1958,10 +1673,9 @@ The following pattern types are available:
             TYPE_ARRAY:
                 print("array")
 
-- Wildcard pattern
-    This pattern matches everything. It's written as a single underscore.
+- Wildcard pattern Pattern này khớp với mọi thứ. Nó được viết bằng một dấu gạch dưới duy nhất.
 
-    It can be used as the equivalent of the ``default`` in a ``switch`` statement in other languages:
+    Có thể dùng nó tương đương với ``default`` trong câu lệnh ``switch`` ở các ngôn ngữ khác:
 
     ::
 
@@ -1973,9 +1687,7 @@ The following pattern types are available:
             _:
                 print("It's not 1 or 2. I don't care to be honest.")
 
-- Binding pattern
-    A binding pattern introduces a new variable. Like the wildcard pattern, it matches everything - and also gives that value a name.
-    It's especially useful in array and dictionary patterns:
+- Binding pattern Binding pattern khai báo một biến mới. Giống như wildcard pattern, nó khớp với mọi thứ — đồng thời đặt tên cho giá trị đó. Pattern này đặc biệt hữu ích với array pattern và dictionary pattern:
 
     ::
 
@@ -1987,14 +1699,13 @@ The following pattern types are available:
             var new_var:
                 print("It's not 1 or 2, it's ", new_var)
 
-- Array pattern
-    Matches an array. Every single element of the array pattern is a pattern itself, so you can nest them.
+- Array pattern Khớp với một array. Mỗi phần tử trong array pattern bản thân nó đều là một pattern, vì vậy bạn có thể lồng chúng vào nhau.
 
-    The length of the array is tested first, it has to be the same size as the pattern, otherwise the pattern doesn't match.
+    Trước tiên, độ dài của array được kiểm tra; nó phải có cùng kích thước với pattern, nếu không pattern sẽ không khớp.
 
-    **Open-ended array**: An array can be bigger than the pattern by making the last subpattern ``..``.
+    **Array mở**: Một array có thể lớn hơn pattern bằng cách đặt subpattern cuối cùng là ``..``.
 
-    Every subpattern has to be comma-separated.
+    Mỗi subpattern phải được phân tách bằng dấu phẩy.
 
     ::
 
@@ -2008,18 +1719,17 @@ The following pattern types are available:
             [42, ..]:
                 print("Open ended array")
 
-- Dictionary pattern
-    Works in the same way as the array pattern. Every key has to be a constant pattern.
+- Dictionary pattern Hoạt động giống như array pattern. Mỗi key phải là một constant pattern.
 
-    The size of the dictionary is tested first, it has to be the same size as the pattern, otherwise the pattern doesn't match.
+    Trước tiên, kích thước của dictionary được kiểm tra; nó phải bằng kích thước của pattern, nếu không pattern sẽ không khớp.
 
-    **Open-ended dictionary**: A dictionary can be bigger than the pattern by making the last subpattern ``..``.
+    **Dictionary mở**: Một dictionary có thể lớn hơn pattern bằng cách đặt subpattern cuối cùng là ``..``.
 
-    Every subpattern has to be comma separated.
+    Mỗi subpattern phải được phân tách bằng dấu phẩy.
 
-    If you don't specify a value, then only the existence of the key is checked.
+    Nếu bạn không chỉ định một value, thì chỉ sự tồn tại của key được kiểm tra.
 
-    A value pattern is separated from the key pattern with a ``:``.
+    Một value pattern được phân tách khỏi key pattern bằng ``:``.
 
     ::
 
@@ -2035,8 +1745,7 @@ The following pattern types are available:
             {"key": "godotisawesome", ..}:
                 print("I only checked for one entry and ignored the rest")
 
-- Multiple patterns
-    You can also specify multiple patterns separated by a comma. These patterns aren't allowed to have any bindings in them.
+- Multiple patterns Bạn cũng có thể chỉ định nhiều pattern, được phân tách bằng dấu phẩy. Các pattern này không được phép chứa binding nào.
 
     ::
 
@@ -2046,16 +1755,12 @@ The following pattern types are available:
             "Sword", "Splash potion", "Fist":
                 print("Yep, you've taken damage")
 
-Pattern guards
-^^^^^^^^^^^^^^
+Pattern guard
+^^^^^^^^^^^^^
 
-A *pattern guard* is an optional condition that follows the pattern list
-and allows you to make additional checks before choosing a ``match`` branch.
-Unlike a pattern, a pattern guard can be an arbitrary expression.
+*Pattern guard* là một điều kiện tùy chọn đi sau danh sách pattern, cho phép bạn thực hiện thêm các kiểm tra trước khi chọn một nhánh ``match``. Không giống pattern, pattern guard có thể là một biểu thức bất kỳ.
 
-Only one branch can be executed per ``match``. Once a branch is chosen, the rest are not checked.
-If you want to use the same pattern for multiple branches or to prevent choosing a branch with too general pattern,
-you can specify a pattern guard after the list of patterns with the ``when`` keyword:
+Mỗi ``match`` chỉ có thể thực thi một nhánh. Khi một nhánh được chọn, các nhánh còn lại sẽ không được kiểm tra. Nếu bạn muốn dùng cùng một pattern cho nhiều nhánh hoặc ngăn việc chọn một nhánh có pattern quá tổng quát, bạn có thể chỉ định pattern guard sau danh sách pattern bằng từ khóa ``when``:
 
 ::
 
@@ -2073,40 +1778,32 @@ you can specify a pattern guard after the list of patterns with the ``when`` key
         [var x, var y]:
             print("Point (%s, %s)" % [x, y])
 
-- If there is no matching pattern for the current branch, the pattern guard
-  is **not** evaluated and the patterns of the next branch are checked.
-- If a matching pattern is found, the pattern guard is evaluated.
+- Nếu không có pattern nào khớp với nhánh hiện tại, pattern guard sẽ **không** được đánh giá và các pattern của nhánh tiếp theo sẽ được kiểm tra. - Nếu tìm thấy một pattern khớp, pattern guard sẽ được đánh giá.
 
-  - If it's true, then the body of the branch is executed and ``match`` ends.
-  - If it's false, then the patterns of the next branch are checked.
+  - Nếu kết quả là true, phần thân của nhánh sẽ được thực thi và ``match`` kết thúc. - Nếu kết quả là false, các pattern của nhánh tiếp theo sẽ được kiểm tra.
 
-Classes
--------
+Class
+-----
 
-By default, all script files are unnamed classes. In this case, you can only
-reference them using the file's path, using either a relative or an absolute
-path. For example, if you name a script file ``character.gd``:
+Theo mặc định, tất cả các script file đều là class không có tên. Trong trường hợp này, bạn chỉ có thể tham chiếu đến chúng bằng path của file, sử dụng path tương đối hoặc tuyệt đối. Ví dụ, nếu bạn đặt tên cho một script file là ``character.gd``:
 
 ::
 
-   # Inherit from 'character.gd'.
+   # Kế thừa từ 'character.gd'.
 
    extends "res://path/to/character.gd"
 
-   # Load character.gd and create a new node instance from it.
+   # Load character.gd và tạo một node instance mới từ đó.
 
    var Character = load("res://path/to/character.gd")
    var character_node = Character.new()
 
 .. _doc_gdscript_basics_class_name:
 
-Registering named classes
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Đăng ký named class
+~~~~~~~~~~~~~~~~~~~
 
-You can give your class a name to register it as a new type in Godot's
-editor. For that, you use the ``class_name`` keyword. You can optionally use
-the ``@icon`` annotation with a path to an image, to use it as an icon. Your
-class will then appear with its new icon in the editor:
+Bạn có thể đặt tên cho class để đăng ký nó thành một type mới trong editor của Godot. Để làm vậy, bạn dùng từ khóa ``class_name``. Bạn cũng có thể dùng annotation ``@icon`` với path đến một image để sử dụng image đó làm icon. Khi đó, class của bạn sẽ xuất hiện cùng icon mới trong editor:
 
 ::
 
@@ -2120,17 +1817,15 @@ class will then appear with its new icon in the editor:
 
 .. tip::
 
-    SVG images that are used as custom node icons should have the
-    **Editor > Scale With Editor Scale** and **Editor > Convert Icons With Editor Theme**
+    Các image SVG được dùng làm icon tùy chỉnh cho node nên có **Editor > Scale With Editor Scale** và **Editor > Convert Icons With Editor Theme**
     :ref:`import options <doc_importing_images_editor_import_options>` enabled. This allows
-    icons to follow the editor's scale and theming settings if the icons are designed with
-    the same color palette as Godot's own icons.
+    để các icon tuân theo cài đặt scale và theme của editor nếu chúng được thiết kế với cùng bảng màu như các icon riêng của Godot.
 
-Here's a class file example:
+Sau đây là một ví dụ về class file:
 
 ::
 
-    # Saved as a file named 'character.gd'.
+    # Được lưu dưới dạng file có tên 'character.gd'.
 
     class_name Character
 
@@ -2147,14 +1842,13 @@ Here's a class file example:
         print(ResourceLoader.load("res://character.gd"))
         print(Character)
 
-If you want to use ``extends`` too, you can keep both on the same line:
+Nếu bạn cũng muốn sử dụng ``extends``, bạn có thể đặt cả hai trên cùng một dòng:
 
 ::
 
     class_name MyNode extends Node
 
-Named classes are globally registered, which means they become available to use
-in other scripts without the need to ``load`` or ``preload`` them:
+Named class được đăng ký trên toàn cục, nghĩa là chúng có thể được dùng trong các script khác mà không cần ``load`` hoặc ``preload`` chúng:
 
 ::
 
@@ -2165,59 +1859,38 @@ in other scripts without the need to ``load`` or ``preload`` them:
 
 .. note::
 
-    Godot initializes non-static variables every time you create an instance,
-    and this includes arrays and dictionaries. This is in the spirit of thread safety,
-    since scripts can be initialized in separate threads without the user knowing.
+    Godot khởi tạo các biến không static mỗi lần bạn tạo một instance, bao gồm cả array và dictionary. Điều này phù hợp với nguyên tắc an toàn luồng (thread safety), vì các script có thể được khởi tạo trong những thread riêng biệt mà người dùng không biết.
 
 .. warning::
 
-    The Godot editor will hide these custom classes with names that begin with the prefix
-    "Editor" in the 'Create New Node' or 'Create New Scene' dialog windows. The classes
-    are available for instantiation at runtime via their class names, but are
-    automatically hidden by the editor windows along with the built-in editor nodes used
-    by the Godot editor.
+    Editor của Godot sẽ ẩn các custom class có tên bắt đầu bằng tiền tố "Editor" trong các cửa sổ hộp thoại 'Create New Node' hoặc 'Create New Scene'. Các class này vẫn có thể được khởi tạo trong runtime thông qua tên class, nhưng sẽ tự động bị các cửa sổ editor ẩn đi cùng với các editor node tích hợp được editor của Godot sử dụng.
 
 .. _doc_gdscript_basics_abstract_class:
 
-Abstract classes and methods
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Abstract class và method
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-Since Godot 4.5, you can define abstract classes and methods using
-the ``@abstract`` annotation.
+Kể từ Godot 4.5, bạn có thể định nghĩa abstract class và method bằng annotation ``@abstract``.
 
-An abstract class is a class that cannot be instantiated directly.
-Instead, it is meant to be inherited by other classes. Attempting to instantiate
-an abstract class will result in an error.
+Abstract class là một class không thể được khởi tạo trực tiếp. Thay vào đó, nó được dùng để các class khác kế thừa. Việc cố khởi tạo một abstract class sẽ dẫn đến lỗi.
 
-An abstract method is a method that has no implementation. Therefore, a newline
-or a semicolon is expected after the function header. This defines a contract that
-inheriting classes must conform to, because the method signature must be compatible
-when overriding.
+Abstract method là một method không có phần triển khai. Vì vậy, sau function header phải có newline hoặc dấu chấm phẩy. Điều này định nghĩa một contract mà các class kế thừa phải tuân theo, vì method signature phải tương thích khi override.
 
-Inheriting classes must either provide implementations for all abstract methods,
-or the inheriting class must be marked as abstract. If a class has at least one
-abstract method (either its own or an unimplemented inherited one),
-then it must also be marked as abstract. However, the reverse is not true:
-an abstract class is allowed to have no abstract methods.
+Các class kế thừa phải cung cấp phần triển khai cho tất cả abstract method, hoặc class kế thừa phải được đánh dấu là abstract. Nếu một class có ít nhất một abstract method (do chính class đó định nghĩa hoặc được kế thừa nhưng chưa triển khai), thì class đó cũng phải được đánh dấu là abstract. Tuy nhiên, điều ngược lại không đúng: một abstract class được phép không có abstract method nào.
 
 .. tip::
 
-    If you want to declare a method as optional to be overridden, you should use
-    a non-abstract method and provide a default implementation.
+    Nếu bạn muốn khai báo một method là tùy chọn để override, bạn nên dùng một method không phải abstract và cung cấp phần triển khai mặc định.
 
-For example, you could have an abstract class called ``Shape`` that defines
-an abstract method called ``draw()``. You can then create subclasses like ``Circle``
-and ``Square`` that implement the ``draw()`` method in their own way.
-This allows you to define a common *interface* for all shapes without
-having to implement all the details in the abstract class itself:
+Ví dụ, bạn có thể có một abstract class tên là ``Shape`` định nghĩa một abstract method tên là ``draw()``. Sau đó, bạn có thể tạo các subclass như ``Circle`` và ``Square`` triển khai method ``draw()`` theo cách riêng của chúng. Điều này cho phép bạn định nghĩa một *interface* chung cho mọi shape mà không cần triển khai toàn bộ chi tiết ngay trong abstract class:
 
 ::
 
     @abstract class Shape:
         @abstract func draw()
 
-    # This is a concrete (non-abstract) subclass of Shape.
-    # You **must** implement all abstract methods in concrete classes.
+    # Đây là một subclass cụ thể (không phải abstract) của Shape.
+    # Bạn **phải** triển khai tất cả abstract method trong các concrete class.
     class Circle extends Shape:
         func draw():
             print("Drawing a circle.")
@@ -2226,9 +1899,7 @@ having to implement all the details in the abstract class itself:
         func draw():
             print("Drawing a square.")
 
-Both inner classes and classes created using ``class_name`` can be abstract.
-This example creates two abstract classes, one of which is a subclass of another
-abstract class:
+Cả inner class và class được tạo bằng ``class_name`` đều có thể là abstract. Ví dụ này tạo ra hai abstract class, trong đó một class là subclass của abstract class còn lại:
 
 ::
 
@@ -2240,25 +1911,22 @@ abstract class:
         func _ready():
             pass
 
-    # This is an example of a concrete subclass of `AbstractInnerClass`.
-    # This class can be instantiated using `AbstractClass.ConcreteInnerClass.new()`
-    # in other scripts, even though it's part of an abstract `class_name` script.
+    # Đây là một ví dụ về concrete subclass của `AbstractInnerClass`.
+    # Class này có thể được khởi tạo bằng `AbstractClass.ConcreteInnerClass.new()`
+    # trong các script khác, dù nó là một phần của script `class_name` abstract.
     class ConcreteInnerClass extends AbstractInnerClass:
         func _ready():
             print("Concrete class ready.")
 
 .. warning::
 
-    Since an abstract class cannot be instantiated, it is not possible to attach
-    an abstract class to a node. If you attempt to do so, the engine will print
-    an error when running the scene:
+    Vì abstract class không thể được khởi tạo, nên không thể gắn abstract class vào một node. Nếu bạn cố làm vậy, engine sẽ in ra lỗi khi chạy scene:
 
     .. code-block:: none
 
         Cannot set object script. Script '<path to script>' should not be abstract.
 
-Unnamed classes can also be defined as abstract, the ``@abstract`` annotation
-must precede ``extends``:
+Các class không có tên cũng có thể được định nghĩa là abstract; annotation ``@abstract`` phải đứng trước ``extends``:
 
 ::
 
@@ -2268,105 +1936,87 @@ must precede ``extends``:
 Inheritance
 ~~~~~~~~~~~
 
-A class (stored as a file) can inherit from:
+Một class (được lưu dưới dạng file) có thể kế thừa từ:
 
-- A global class.
-- Another class file.
-- An inner class inside another class file.
+- Một global class. - Một class file khác. - Một inner class bên trong class file khác.
 
-Multiple inheritance is not allowed.
+Không cho phép multiple inheritance.
 
-Inheritance uses the ``extends`` keyword:
+Inheritance sử dụng từ khóa ``extends``:
 
 ::
 
-    # Inherit/extend a globally available class.
+    # Kế thừa/mở rộng một class có sẵn trên toàn cục.
     extends SomeClass
 
-    # Inherit/extend a named class file.
+    # Kế thừa/mở rộng một class file có tên.
     extends "somefile.gd"
 
-    # Inherit/extend an inner class in another file.
+    # Kế thừa/mở rộng một inner class trong file khác.
     extends "somefile.gd".SomeInnerClass
 
 .. note::
 
-    If inheritance is not explicitly defined, the class will default to inheriting
+    Nếu tính kế thừa không được định nghĩa rõ ràng, lớp sẽ mặc định kế thừa
     :ref:`class_RefCounted`.
 
-To check if a given instance inherits from a given class,
-the ``is`` keyword can be used:
+Để kiểm tra xem một instance đã cho có kế thừa từ một lớp đã cho hay không, có thể sử dụng từ khóa ``is``:
 
 ::
 
-    # Cache the enemy class.
+    # Lưu vào cache lớp enemy.
     const Enemy = preload("enemy.gd")
 
     # [...]
 
-    # Use 'is' to check inheritance.
+    # Sử dụng 'is' để kiểm tra tính kế thừa.
     if entity is Enemy:
         entity.apply_damage()
 
-To call a function in a *super class* (i.e. one ``extend``-ed in your current
-class), use the ``super`` keyword:
+To call a function in a *super class* (i.e. one ``extend``-ed in your current class), use the ``super`` keyword:
 
 ::
 
     super(args)
 
-This is especially useful because functions in extending classes replace
-functions with the same name in their super classes. If you still want to
-call them, you can use ``super``:
+Điều này đặc biệt hữu ích vì các hàm trong các lớp mở rộng sẽ thay thế các hàm có cùng tên trong super class của chúng. Nếu bạn vẫn muốn gọi chúng, bạn có thể sử dụng ``super``:
 
 ::
 
     func some_func(x):
-        super(x) # Calls the same function on the super class.
+        super(x) # Gọi cùng một hàm trên super class.
 
-If you need to call a different function from the super class, you can specify
-the function name with the attribute operator:
+Nếu cần gọi một hàm khác từ super class, bạn có thể chỉ định tên hàm bằng toán tử thuộc tính:
 
 ::
 
     func overriding():
-        return 0 # This overrides the method in the base class.
+        return 0 # Điều này ghi đè method trong base class.
 
     func dont_override():
-        return super.overriding() # This calls the method as defined in the base class.
+        return super.overriding() # Điều này gọi method như được định nghĩa trong base class.
 
 .. warning::
 
-    One of the common misconceptions is trying to override *non-virtual* engine methods
-    such as ``get_class()``, ``queue_free()``, etc. This is not supported for technical reasons.
+    Một trong những hiểu lầm phổ biến là cố gắng ghi đè các method engine *non-virtual* như ``get_class()``, ``queue_free()``, v.v. Điều này không được hỗ trợ vì lý do kỹ thuật.
 
-    In Godot 3, you can *shadow* engine methods in GDScript, and it will work if you call this method in GDScript.
-    However, the engine will **not** execute your code if the method is called inside the engine on some event.
+    Trong Godot 3, bạn có thể *shadow* các method engine trong GDScript, và nó sẽ hoạt động nếu bạn gọi method này trong GDScript. Tuy nhiên, engine sẽ **không** thực thi code của bạn nếu method được gọi bên trong engine khi xảy ra một sự kiện nào đó.
 
-    In Godot 4, even shadowing may not always work, as GDScript optimizes native method calls.
-    Therefore, we added the ``NATIVE_METHOD_OVERRIDE`` warning, which is treated as an error by default.
-    We strongly advise against disabling or ignoring the warning.
+    Trong Godot 4, ngay cả shadowing cũng có thể không phải lúc nào cũng hoạt động, vì GDScript tối ưu hóa các native method call. Do đó, chúng tôi đã thêm cảnh báo ``NATIVE_METHOD_OVERRIDE``, cảnh báo này mặc định được xử lý như một lỗi. Chúng tôi đặc biệt khuyến nghị không tắt hoặc bỏ qua cảnh báo này.
 
-    Note that this does not apply to virtual methods such as ``_ready()``, ``_process()`` and others
-    (marked with the ``virtual`` qualifier in the documentation and the names start with an underscore).
-    These methods are specifically for customizing engine behavior and can be overridden in GDScript.
-    Signals and notifications can also be useful for these purposes.
+    Lưu ý rằng điều này không áp dụng cho các virtual method như ``_ready()``, ``_process()`` và các method khác (được đánh dấu bằng qualifier ``virtual`` trong tài liệu và tên bắt đầu bằng dấu gạch dưới). Các method này được thiết kế riêng để tùy chỉnh hành vi của engine và có thể được ghi đè trong GDScript. Signals và notifications cũng có thể hữu ích cho các mục đích này.
 
 Class constructor
 ~~~~~~~~~~~~~~~~~
 
-The class constructor, called on class instantiation, is named ``_init``. If you
-want to call the base class constructor, you can also use the ``super`` syntax.
-Note that every class has an implicit constructor that is always called
-(defining the default values of class variables). ``super`` is used to call the
-explicit constructor:
+Class constructor, được gọi khi khởi tạo class, có tên là ``_init``. Nếu muốn gọi constructor của base class, bạn cũng có thể sử dụng cú pháp ``super``. Lưu ý rằng mọi class đều có một constructor ngầm định luôn được gọi (để định nghĩa các giá trị mặc định của biến class). ``super`` được sử dụng để gọi constructor tường minh:
 
 ::
 
     func _init(arg):
-       super("some_default", arg) # Call the custom base constructor.
+       super("some_default", arg) # Gọi custom base constructor.
 
-This is better explained through examples. Consider this scenario:
+Điều này được giải thích rõ hơn qua các ví dụ. Hãy xét kịch bản sau:
 
 ::
 
@@ -2389,20 +2039,12 @@ This is better explained through examples. Consider this scenario:
 
     func _init(e = null, m = null):
         super(e)
-        # Do something with 'e'.
+        # Thực hiện thao tác nào đó với 'e'.
         message = m
 
-There are a few things to keep in mind here:
+Có một vài điều cần ghi nhớ ở đây:
 
-1. If the inherited class (``state.gd``) defines an ``_init`` constructor that takes
-   arguments (``e`` in this case), then the inheriting class (``idle.gd``) *must*
-   define ``_init`` as well and pass appropriate parameters to ``_init`` from ``state.gd``.
-2. ``idle.gd`` can have a different number of arguments than the base class ``state.gd``.
-3. In the example above, ``e`` passed to the ``state.gd`` constructor is the same ``e`` passed
-   in to ``idle.gd``.
-4. If ``idle.gd``'s ``_init`` constructor takes 0 arguments, it still needs to pass some value
-   to the ``state.gd`` base class, even if it does nothing. This brings us to the fact that you
-   can pass expressions to the base constructor as well, not just variables, e.g.:
+1. If the inherited class (``state.gd``) defines an ``_init`` constructor that takes arguments (``e`` in this case), then the inheriting class (``idle.gd``) *must* define ``_init`` as well and pass appropriate parameters to ``_init`` from ``state.gd``. 2. ``idle.gd`` can have a different number of arguments than the base class ``state.gd``. 3. In the example above, ``e`` passed to the ``state.gd`` constructor is the same ``e`` passed in to ``idle.gd``. 4. If ``idle.gd``'s ``_init`` constructor takes 0 arguments, it still needs to pass some value to the ``state.gd`` base class, even if it does nothing. This brings us to the fact that you can pass expressions to the base constructor as well, not just variables, e.g.:
 
 ::
 
@@ -2414,8 +2056,7 @@ There are a few things to keep in mind here:
 Static constructor
 ~~~~~~~~~~~~~~~~~~
 
-A static constructor is a static function ``_static_init`` that is called automatically
-when the class is loaded, after the static variables have been initialized:
+Static constructor là một static function ``_static_init`` được tự động gọi khi class được tải, sau khi các static variable đã được khởi tạo:
 
 ::
 
@@ -2424,22 +2065,20 @@ when the class is loaded, after the static variables have been initialized:
     static func _static_init():
         my_static_var = 2
 
-A static constructor cannot take arguments and must not return any value.
+Static constructor không thể nhận đối số và không được trả về bất kỳ giá trị nào.
 
 .. _doc_gdscript_basics_inner_classes:
 
 Inner classes
 ~~~~~~~~~~~~~
 
-A class file can contain inner classes. Inner classes are defined using the
-``class`` keyword. They are instanced using the ``ClassName.new()``
-function.
+Một class file có thể chứa các inner class. Inner class được định nghĩa bằng từ khóa ``class``. Chúng được khởi tạo bằng function ``ClassName.new()``.
 
 ::
 
-    # Inside a class file.
+    # Bên trong một class file.
 
-    # An inner class in this class file.
+    # Một inner class trong class file này.
     class SomeInnerClass:
         var a = 5
 
@@ -2448,7 +2087,7 @@ function.
             print(a)
 
 
-    # This is the constructor of the class file's main class.
+    # Đây là constructor của main class trong class file.
     func _init():
         var c = SomeInnerClass.new()
         c.print_value_of_a()
@@ -2458,17 +2097,14 @@ function.
 Classes as resources
 ~~~~~~~~~~~~~~~~~~~~
 
-Classes stored as files are treated as :ref:`GDScripts <class_GDScript>`. They
-must be loaded from disk to access them in other classes. This is done using
-either the ``load`` or ``preload`` functions (see below). Instancing of a loaded
-class resource is done by calling the ``new`` function on the class object:
+Các class được lưu dưới dạng file được xem là :ref:`GDScripts <class_GDScript>`. Chúng phải được tải từ disk để có thể truy cập trong các class khác. Việc này được thực hiện bằng function ``load`` hoặc ``preload`` (xem bên dưới). Việc khởi tạo một class resource đã tải được thực hiện bằng cách gọi function ``new`` trên class object:
 
 ::
 
-    # Load the class resource when calling load().
+    # Tải class resource khi gọi load().
     var MyClass = load("myclass.gd")
 
-    # Preload the class only once at compile time.
+    # Preload class chỉ một lần tại compile time.
     const MyClass = preload("myclass.gd")
 
 
@@ -2481,23 +2117,19 @@ Exports
 
 .. note::
 
-    Documentation about exports has been moved to :ref:`doc_gdscript_exports`.
+    Tài liệu về exports đã được chuyển đến :ref:`doc_gdscript_exports`.
 
 
 .. _doc_gdscript_basics_setters_getters:
 
-Properties (setters and getters)
---------------------------------
+Properties (setters và getters)
+-------------------------------
 
-Sometimes, you want a class' member variable to do more than just hold data and actually perform
-some validation or computation whenever its value changes. It may also be desired to
-encapsulate its access in some way.
+Đôi khi, bạn muốn member variable của một class làm được nhiều hơn việc chỉ lưu dữ liệu và thực hiện một số validation hoặc computation mỗi khi giá trị của nó thay đổi. Bạn cũng có thể muốn đóng gói quyền truy cập vào nó theo một cách nào đó.
 
-For this, GDScript provides a special syntax to define properties using the ``set`` and ``get``
-keywords after a variable declaration. Then you can define a code block that will be executed
-when the variable is accessed or assigned.
+Để thực hiện việc này, GDScript cung cấp cú pháp đặc biệt để định nghĩa properties bằng các keyword ``set`` và ``get`` sau khai báo biến. Sau đó, bạn có thể định nghĩa một code block sẽ được thực thi khi biến được truy cập hoặc gán giá trị.
 
-Example:
+Ví dụ:
 
 ::
 
@@ -2510,44 +2142,36 @@ Example:
 
 .. note::
 
-    Unlike ``setget`` in previous Godot versions, ``set`` and ``get`` methods are **always** called (except as noted below),
-    even when accessed inside the same class (with or without prefixing with ``self.``). This makes the behavior
-    consistent. If you need direct access to the value, use another variable for direct access and make the property
-    code use that name.
+    Không giống ``setget`` trong các phiên bản Godot trước đây, các method ``set`` và ``get`` **luôn** được gọi (trừ các trường hợp được lưu ý bên dưới), ngay cả khi được truy cập bên trong cùng class (có hoặc không có tiền tố ``self.``). Điều này giúp hành vi nhất quán. Nếu cần truy cập trực tiếp vào giá trị, hãy sử dụng một biến khác để truy cập trực tiếp và để code property sử dụng tên đó.
 
-Alternative syntax
-~~~~~~~~~~~~~~~~~~
+Cú pháp thay thế
+~~~~~~~~~~~~~~~~
 
-Also there is another notation to use existing class functions if you want to split the code from the variable declaration
-or you need to reuse the code across multiple properties (but you can't distinguish which property the setter/getter is being called for):
+Ngoài ra còn có một cách ký hiệu khác để sử dụng các function class hiện có nếu bạn muốn tách code khỏi khai báo biến hoặc cần tái sử dụng code trên nhiều property (nhưng bạn không thể phân biệt setter/getter nào đang được gọi cho property nào):
 
 ::
 
     var my_prop:
         get = get_my_prop, set = set_my_prop
 
-This can also be done in the same line:
+Điều này cũng có thể được thực hiện trên cùng một dòng:
 
 ::
 
     var my_prop: get = get_my_prop, set = set_my_prop
 
-The setter and getter must use the same notation, mixing styles for the same variable is not allowed.
+Setter và getter phải sử dụng cùng một cách ký hiệu; không cho phép trộn các kiểu cho cùng một biến.
 
 .. note::
 
-    You cannot specify type hints for *inline* setters and getters. This is done on purpose to reduce the boilerplate.
-    If the variable is typed, then the setter's argument is automatically of the same type, and the getter's return value must match it.
-    Separated setter/getter functions can have type hints, and the type must match the variable's type or be a wider type.
+    Bạn không thể chỉ định type hint cho setter và getter *inline*. Điều này được thực hiện có chủ ý để giảm boilerplate. Nếu biến được định kiểu, đối số của setter sẽ tự động có cùng kiểu, và giá trị trả về của getter phải khớp với kiểu đó. Các function setter/getter tách biệt có thể có type hint, và kiểu đó phải khớp với kiểu của biến hoặc là một kiểu rộng hơn.
 
-When setter/getter is not called
+Khi setter/getter không được gọi
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When a variable is initialized, the value of the initializer will be written directly to the variable.
-This occurs even if the ``@onready`` or ``@export`` annotation is applied to the variable.
+Khi một biến được khởi tạo, giá trị của initializer sẽ được ghi trực tiếp vào biến. Điều này xảy ra ngay cả khi annotation ``@onready`` hoặc ``@export`` được áp dụng cho biến.
 
-Using the variable's name to set it inside its own setter or to get it inside its own getter will directly access the underlying member.
-This prevents infinite recursion and saves you from explicitly declaring another variable:
+Việc sử dụng tên của biến để gán giá trị cho nó bên trong setter của chính nó hoặc lấy giá trị bên trong getter của chính nó sẽ truy cập trực tiếp vào member underlying. Điều này ngăn đệ quy vô hạn và giúp bạn không phải khai báo rõ ràng một biến khác:
 
 ::
 
@@ -2559,19 +2183,18 @@ This prevents infinite recursion and saves you from explicitly declaring another
             changed.emit(value)
             warns_when_changed = value
 
-This also applies to the alternative syntax:
+Điều này cũng áp dụng cho cú pháp thay thế:
 
 ::
 
     var my_prop: set = set_my_prop
 
     func set_my_prop(value):
-        my_prop = value # No infinite recursion.
+        my_prop = value # Không có đệ quy vô hạn.
 
 .. warning::
 
-    The exception does **not** propagate to other functions called in the setter/getter.
-    For example, the following code **will** cause an infinite recursion:
+    Ngoại lệ **không** lan truyền đến các function khác được gọi trong setter/getter. Ví dụ, đoạn code sau **sẽ** gây ra đệ quy vô hạn:
 
 ::
 
@@ -2580,18 +2203,14 @@ This also applies to the alternative syntax:
                 set_my_prop(value)
 
         func set_my_prop(value):
-            my_prop = value # Infinite recursion, since `set_my_prop()` is not the setter.
+            my_prop = value # Đệ quy vô hạn, vì `set_my_prop()` không phải là setter.
 
 .. _doc_gdscript_tool_mode:
 
 Tool mode
 ---------
 
-By default, scripts don't run inside the editor and only the exported
-properties can be changed. In some cases, it is desired that they do run
-inside the editor (as long as they don't execute game code or manually
-avoid doing so). For this, the ``@tool`` annotation exists and must be
-placed at the top of the file:
+Theo mặc định, script không chạy bên trong editor và chỉ có thể thay đổi các exported property. Trong một số trường hợp, bạn muốn chúng chạy bên trong editor (miễn là chúng không thực thi game code hoặc tự tránh làm như vậy). Để thực hiện việc này, annotation ``@tool`` tồn tại và phải được đặt ở đầu file:
 
 ::
 
@@ -2602,35 +2221,25 @@ placed at the top of the file:
         print("Hello")
 
 
-See :ref:`doc_running_code_in_the_editor` for more information.
+Xem :ref:`doc_running_code_in_the_editor` để biết thêm thông tin.
 
 .. warning:: Be cautious when freeing nodes with ``queue_free()`` or ``free()``
-             in a tool script (especially the script's owner itself). As tool
-             scripts run their code in the editor, misusing them may lead to
-             crashing the editor.
+             trong một tool script (đặc biệt là chính owner của script). Vì tool script chạy code của chúng trong editor, việc sử dụng sai có thể khiến editor bị crash.
 
 .. _doc_gdscript_basics_memory_management:
 
-Memory management
------------------
+Quản lý bộ nhớ
+--------------
 
-Godot implements reference counting to free certain instances that are no longer
-used, instead of a garbage collector, or requiring purely manual management.
-Any instance of the :ref:`class_RefCounted` class (or any class that inherits
-it, such as :ref:`class_Resource`) will be freed automatically when no longer
-in use. For an instance of any class that is not a :ref:`class_RefCounted`
-(such as :ref:`class_Node` or the base :ref:`class_Object` type), it will
-remain in memory until it is deleted with ``free()`` (or ``queue_free()``
-for Nodes).
+Godot triển khai reference counting để giải phóng một số instance không còn được sử dụng, thay vì sử dụng garbage collector hoặc yêu cầu quản lý hoàn toàn thủ công. Mọi instance của class :ref:`class_RefCounted` (hoặc bất kỳ class nào kế thừa nó, chẳng hạn như :ref:`class_Resource`) sẽ được tự động giải phóng khi không còn được sử dụng. Đối với instance của bất kỳ class nào không phải là :ref:`class_RefCounted` (chẳng hạn như :ref:`class_Node` hoặc kiểu :ref:`class_Object` cơ sở), nó sẽ vẫn tồn tại trong bộ nhớ cho đến khi được xóa bằng ``free()`` (hoặc ``queue_free()`` đối với Nodes).
 
 .. note::
 
-    If a :ref:`class_Node` is deleted via ``free()`` or ``queue_free()``,
-    all of its children will also recursively be deleted.
+    Nếu một :ref:`class_Node` bị xóa thông qua ``free()`` hoặc ``queue_free()``, tất cả các child của nó cũng sẽ bị xóa đệ quy.
 
-To avoid reference cycles that can't be freed, a
+Để tránh các reference cycle không thể được giải phóng, một
 :ref:`weakref() <class_@GlobalScope_method_weakref>` function is provided for
-creating weak references, which allow access to the object without preventing a
+việc tạo weak reference, cho phép truy cập vào object mà không ngăn cản một
 :ref:`class_RefCounted` from freeing. Here is an example:
 
 
@@ -2643,9 +2252,9 @@ creating weak references, which allow access to the object without preventing a
     func _ready():
         var f = FileAccess.open("user://example_file.json", FileAccess.READ)
         my_file_ref = weakref(f)
-        # the FileAccess class inherits RefCounted, so it will be freed when not in use
+        # class FileAccess kế thừa RefCounted, vì vậy nó sẽ được giải phóng khi không được sử dụng
 
-        # the WeakRef will not prevent f from being freed when other_node is finished
+        # WeakRef sẽ không ngăn f bị giải phóng khi other_node hoàn tất
         other_node.use_file(f)
 
     func _this_is_called_later():
@@ -2653,41 +2262,30 @@ creating weak references, which allow access to the object without preventing a
         if my_file:
             my_file.close()
 
-Alternatively, when not using references, the
-``is_instance_valid(instance)`` can be used to check if an object has been
-freed.
+Ngoài ra, khi không sử dụng các reference, có thể dùng ``is_instance_valid(instance)`` để kiểm tra xem một object đã được giải phóng hay chưa.
 
 .. _doc_gdscript_signals:
 
 Signals
 -------
 
-Signals are a tool to emit messages from an object that other objects can react
-to. To create custom signals for a class, use the ``signal`` keyword.
+Signals là một công cụ để phát message từ một object mà các object khác có thể phản hồi. Để tạo signal tùy chỉnh cho một class, hãy dùng keyword ``signal``.
 
 ::
 
    extends Node
 
 
-   # A signal named health_depleted.
+   # Một signal có tên health_depleted.
    signal health_depleted
 
 .. note::
 
-   Signals are a `Callback
-   <https://en.wikipedia.org/wiki/Callback_(computer_programming)>`_
-   mechanism. They also fill the role of Observers, a common programming
-   pattern. For more information, read the `Observer tutorial
-   <https://gameprogrammingpatterns.com/observer.html>`_ in the
-   Game Programming Patterns ebook.
+   Signals là một cơ chế `Callback <https://en.wikipedia.org/wiki/Callback_(computer_programming)>`_. Chúng cũng đảm nhiệm vai trò của Observers, một programming pattern phổ biến. Để biết thêm thông tin, hãy đọc `Observer tutorial <https://gameprogrammingpatterns.com/observer.html>`_ trong ebook Game Programming Patterns.
 
-You can connect these signals to methods the same way you connect built-in
-signals of nodes like :ref:`class_Button` or :ref:`class_RigidBody3D`.
+Bạn có thể kết nối các signal này với các method giống như cách bạn kết nối các signal tích hợp sẵn của những node như :ref:`class_Button` hoặc :ref:`class_RigidBody3D`.
 
-In the example below, we connect the ``health_depleted`` signal from a
-``Character`` node to a ``Game`` node. When the ``Character`` node emits the
-signal, the game node's ``_on_character_health_depleted`` is called:
+Trong ví dụ dưới đây, chúng ta kết nối signal ``health_depleted`` từ một node ``Character`` với một node ``Game``. Khi node ``Character`` phát signal, ``_on_character_health_depleted`` của game node sẽ được gọi:
 
 ::
 
@@ -2701,16 +2299,11 @@ signal, the game node's ``_on_character_health_depleted`` is called:
     func _on_character_health_depleted():
         get_tree().reload_current_scene()
 
-You can emit as many arguments as you want along with a signal.
+Bạn có thể phát bao nhiêu argument tùy ý cùng với một signal.
 
-Here is an example where this is useful. Let's say we want a life bar on screen
-to react to health changes with an animation, but we want to keep the user
-interface separate from the player in our scene tree.
+Sau đây là một ví dụ cho thấy điều này hữu ích. Giả sử chúng ta muốn một thanh máu trên màn hình phản hồi các thay đổi về health bằng một animation, nhưng muốn giữ giao diện người dùng tách biệt với player trong scene tree.
 
-In our ``character.gd`` script, we define a ``health_changed`` signal and emit
-it with :ref:`Signal.emit() <class_Signal_method_emit>`, and from
-a ``Game`` node higher up our scene tree, we connect it to the ``Lifebar`` using
-the :ref:`Signal.connect() <class_Signal_method_connect>` method:
+Trong script ``character.gd``, chúng ta định nghĩa một signal ``health_changed`` và phát nó bằng :ref:`Signal.emit() <class_Signal_method_emit>`, còn từ một node ``Game`` ở vị trí cao hơn trong scene tree, chúng ta kết nối nó với ``Lifebar`` bằng method :ref:`Signal.connect() <class_Signal_method_connect>`:
 
 ::
 
@@ -2724,8 +2317,8 @@ the :ref:`Signal.connect() <class_Signal_method_connect>` method:
         var old_health = health
         health -= amount
 
-        # We emit the health_changed signal every time the
-        # character takes damage.
+        # Chúng ta phát signal health_changed mỗi khi
+        # character nhận damage.
         health_changed.emit(old_health, health)
     ...
 
@@ -2733,8 +2326,8 @@ the :ref:`Signal.connect() <class_Signal_method_connect>` method:
 
     # lifebar.gd
 
-    # Here, we define a function to use as a callback when the
-    # character's health_changed signal is emitted.
+    # Ở đây, chúng ta định nghĩa một function để dùng làm callback khi
+    # signal health_changed của character được phát.
 
     ...
     func _on_Character_health_changed(old_value, new_value):
@@ -2743,14 +2336,12 @@ the :ref:`Signal.connect() <class_Signal_method_connect>` method:
         else:
             progress_bar.modulate = Color.GREEN
 
-        # Imagine that `animate` is a user-defined function that animates the
-        # bar filling up or emptying itself.
+        # Hãy tưởng tượng `animate` là một function do người dùng định nghĩa, dùng để tạo animation cho
+        # thanh đầy lên hoặc cạn đi.
         progress_bar.animate(old_value, new_value)
     ...
 
-In the ``Game`` node, we get both the ``Character`` and ``Lifebar`` nodes, then
-connect the character, that emits the signal, to the receiver, the ``Lifebar``
-node in this case.
+Trong node ``Game``, chúng ta lấy cả hai node ``Character`` và ``Lifebar``, sau đó kết nối character, node phát signal, với receiver, trong trường hợp này là node ``Lifebar``.
 
 ::
 
@@ -2762,35 +2353,24 @@ node in this case.
 
         character_node.health_changed.connect(lifebar_node._on_Character_health_changed)
 
-This allows the ``Lifebar`` to react to health changes without coupling it to
-the ``Character`` node.
+Điều này cho phép ``Lifebar`` phản hồi các thay đổi về health mà không tạo coupling với node ``Character``.
 
-You can write optional argument names in parentheses after the signal's definition:
+Bạn có thể viết tên các argument tùy chọn trong dấu ngoặc đơn sau phần định nghĩa signal:
 
 ::
 
-    # Defining a signal that forwards two arguments.
+    # Định nghĩa một signal chuyển tiếp hai argument.
     signal health_changed(old_value, new_value)
 
-These arguments show up in the editor's Signals dock, and Godot can use them to
-generate callback functions for you. However, you can still emit any number of
-arguments when you emit signals; it's up to you to emit the correct values.
+Các argument này sẽ xuất hiện trong Signals dock của editor, và Godot có thể dùng chúng để tạo các callback function cho bạn. Tuy nhiên, bạn vẫn có thể phát số lượng argument bất kỳ khi phát signal; bạn có trách nhiệm phát đúng các value.
 
 .. image:: img/gdscript_basics_signals_node_tab_1.png
 
-You can also create copies of GDScript Callable objects which accept additional
-arguments using :ref:`Callable.bind() <class_Callable_method_bind>`. This
-allows you to add extra information to the connection if the emitted signal
-itself doesn't give you access to all the data that you need.
+Bạn cũng có thể tạo các bản sao của GDScript Callable object chấp nhận các argument bổ sung bằng :ref:`Callable.bind() <class_Callable_method_bind>`. Điều này cho phép bạn thêm thông tin vào connection nếu bản thân signal được phát không cung cấp quyền truy cập vào tất cả dữ liệu bạn cần.
 
-When the signal is emitted, the callback method receives the bound values, in
-addition to those provided by the signal.
+Khi signal được phát, callback method sẽ nhận các value đã bind, ngoài những value do signal cung cấp.
 
-Building on the example above, let's say we want to display a log of the damage
-taken by each character on the screen, like ``Player1 took 22 damage.``. The
-``health_changed`` signal doesn't give us the name of the character that took
-damage. So when we connect the signal to the in-game console, we can add the
-character's name using the bind method:
+Dựa trên ví dụ trên, giả sử chúng ta muốn hiển thị log về damage mà mỗi character nhận trên màn hình, như ``Player1 took 22 damage.``. Signal ``health_changed`` không cung cấp cho chúng ta tên của character đã nhận damage. Vì vậy, khi kết nối signal với in-game console, chúng ta có thể thêm tên của character bằng method bind:
 
 ::
 
@@ -2802,7 +2382,7 @@ character's name using the bind method:
 
         character_node.health_changed.connect(battle_log_node._on_Character_health_changed.bind(character_node.name))
 
-Our ``BattleLog`` node receives each bound element as an extra argument:
+Node ``BattleLog`` của chúng ta nhận mỗi element đã bind làm một argument bổ sung:
 
 ::
 
@@ -2816,25 +2396,22 @@ Our ``BattleLog`` node receives each bound element as an extra argument:
         label.text += character_name + " took " + str(damage) + " damage."
 
 
-Awaiting signals or coroutines
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Chờ signals hoặc coroutines
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ``await`` keyword can be used to create `coroutines <https://en.wikipedia.org/wiki/Coroutine>`_
-which wait until a signal is emitted before continuing execution. Using the ``await`` keyword with a signal or a
-call to a function that is also a coroutine will immediately return the control to the caller. When the signal is
-emitted (or the called coroutine finishes), it will resume execution from the point on where it stopped.
+Keyword ``await`` có thể được dùng để tạo `coroutines <https://en.wikipedia.org/wiki/Coroutine>`_, chúng sẽ chờ cho đến khi một signal được phát trước khi tiếp tục thực thi. Việc dùng keyword ``await`` với một signal hoặc một lời gọi đến function cũng là một coroutine sẽ ngay lập tức trả quyền điều khiển về caller. Khi signal được phát (hoặc coroutine được gọi hoàn tất), nó sẽ tiếp tục thực thi từ điểm đã dừng.
 
-For example, to stop execution until the user presses a button, you can do something like this:
+Ví dụ, để dừng thực thi cho đến khi người dùng nhấn một button, bạn có thể làm như sau:
 
 ::
 
     func wait_confirmation():
         print("Prompting user")
-        await $Button.button_up # Waits for the button_up signal from Button node.
+        await $Button.button_up # Chờ signal button_up từ node Button.
         print("User confirmed")
         return true
 
-In this case, the ``wait_confirmation`` becomes a coroutine, which means that the caller also needs to await it:
+Trong trường hợp này, ``wait_confirmation`` trở thành một coroutine, nghĩa là caller cũng cần await nó:
 
 ::
 
@@ -2846,15 +2423,14 @@ In this case, the ``wait_confirmation`` becomes a coroutine, which means that th
         else:
             print("User cancelled")
 
-Note that requesting a coroutine's return value without ``await`` will trigger an error:
+Lưu ý rằng việc yêu cầu return value của một coroutine mà không có ``await`` sẽ gây ra lỗi:
 
 ::
 
     func wrong():
-        var confirmed = wait_confirmation() # Will give an error.
+        var confirmed = wait_confirmation() # Sẽ gây ra lỗi.
 
-However, if you don't depend on the result, you can just call it asynchronously, which won't stop execution and won't
-make the current function a coroutine:
+Tuy nhiên, nếu bạn không phụ thuộc vào result, bạn chỉ cần gọi nó bất đồng bộ (asynchronously), thao tác này sẽ không dừng việc thực thi và không biến function hiện tại thành một coroutine:
 
 ::
 
@@ -2862,8 +2438,7 @@ make the current function a coroutine:
         wait_confirmation()
         print("This will be printed immediately, before the user press the button.")
 
-If you use ``await`` with an expression that isn't a signal nor a coroutine, the value will be returned immediately and the
-function won't give the control back to the caller:
+Nếu bạn dùng ``await`` với một expression không phải là signal hay coroutine, value sẽ được trả về ngay lập tức và function sẽ không trả quyền điều khiển lại cho caller:
 
 ::
 
@@ -2874,7 +2449,7 @@ function won't give the control back to the caller:
     func get_five():
         return 5
 
-This also means that returning a signal from a function that isn't a coroutine will make the caller await that signal:
+Điều này cũng có nghĩa là việc trả về một signal từ một function không phải là coroutine sẽ khiến caller await signal đó:
 
 ::
 
@@ -2886,11 +2461,9 @@ This also means that returning a signal from a function that isn't a coroutine w
         print("Button was pressed")
 
 .. note:: Unlike ``yield`` in previous Godot versions, you cannot obtain the function state object.
-          This is done to ensure type safety.
-          With this type safety in place, a function cannot say that it returns an ``int`` while it actually returns a function state object
-          during runtime.
+          Điều này được thực hiện để đảm bảo type safety. Khi có type safety này, một function không thể nói rằng nó trả về ``int`` trong khi trên thực tế lại trả về một function state object trong runtime.
 
-You can store the arguments passed to the signal's parameters. If there is only one parameter, the awaited value will have the same type as the argument:
+Bạn có thể lưu các argument được truyền vào các parameter của signal. Nếu chỉ có một parameter, value được await sẽ có cùng type với argument:
 
 ::
 
@@ -2898,7 +2471,7 @@ You can store the arguments passed to the signal's parameters. If there is only 
         var signal_args = await $Button.toggled
         assert(typeof(signal_args) == TYPE_BOOL)
 
-If there is more than one parameter, the awaited value will be of type ``Array``:
+Nếu có nhiều hơn một parameter, value được await sẽ có type ``Array``:
 
 ::
 
@@ -2906,7 +2479,7 @@ If there is more than one parameter, the awaited value will be of type ``Array``
         var signal_args = await $HTTPRequest.request_completed
         assert(typeof(signal_args) == TYPE_ARRAY)
 
-Otherwise, the awaited value will be ``null``:
+Nếu không, value được await sẽ là ``null``:
 
 ::
 
@@ -2914,25 +2487,19 @@ Otherwise, the awaited value will be ``null``:
         var signal_args = await $Button.button_up
         assert(signal_args == null)
 
-Assert keyword
+Keyword assert
 --------------
 
-The ``assert`` keyword can be used to check conditions in debug builds. These
-assertions are ignored in non-debug builds. This means that the expression
-passed as argument won't be evaluated in a project exported in release mode.
-Due to this, assertions must **not** contain expressions that have
-side effects. Otherwise, the behavior of the script would vary
-depending on whether the project is run in a debug build.
+Keyword ``assert`` có thể được dùng để kiểm tra các điều kiện trong debug build. Các assertion này sẽ bị bỏ qua trong non-debug build. Điều này có nghĩa là expression được truyền làm argument sẽ không được evaluate trong project được export ở release mode. Vì vậy, assertion **không được** chứa các expression có side effect. Nếu không, hành vi của script sẽ thay đổi tùy theo việc project có được chạy trong debug build hay không.
 
 ::
 
-    # Check that 'i' is 0. If 'i' is not 0, an assertion error will occur.
+    # Kiểm tra 'i' bằng 0. Nếu 'i' không bằng 0, sẽ xảy ra lỗi assertion.
     assert(i == 0)
 
-When running a project from the editor, the project will be paused if an
-assertion error occurs.
+Khi chạy một project từ editor, project sẽ bị tạm dừng nếu xảy ra lỗi assertion.
 
-You can optionally pass a custom error message to be shown if the assertion fails:
+Bạn có thể tùy chọn truyền một error message tùy chỉnh để hiển thị nếu assertion thất bại:
 
 ::
 

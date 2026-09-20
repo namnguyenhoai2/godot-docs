@@ -1,30 +1,23 @@
-GD0105: The exported property is an indexer
+GD0105: Property được export là một indexer
 ===========================================
 
-====================================  ======================================
-                                      Value
-====================================  ======================================
-**Rule ID**                           GD0105
-**Category**                          Usage
-**Fix is breaking or non-breaking**   Non-breaking
-**Enabled by default**                Yes
-====================================  ======================================
+==================================== ====================================== Giá trị ==================================== ====================================== **ID quy tắc** GD0105 **Danh mục** Cách sử dụng **Bản sửa lỗi có gây breaking change hay không** Không breaking **Được bật theo mặc định** Có ==================================== ======================================
 
-Cause
------
+Nguyên nhân
+-----------
 
-An indexer is annotated with the ``[Export]`` attribute. Indexers can't be exported.
+Một indexer được chú thích bằng thuộc tính ``[Export]``. Không thể export các indexer.
 
-Rule description
-----------------
+Mô tả quy tắc
+-------------
 
-Godot doesn't allow exporting indexer properties.
+Godot không cho phép export các property indexer.
 
 .. code-block:: csharp
 
     private int[] _backingField;
 
-    // Indexers can't be exported.
+    // Không thể export các indexer.
     [Export]
     public int this[int index]
     {
@@ -32,13 +25,12 @@ Godot doesn't allow exporting indexer properties.
         set => _backingField[index] = value;
     }
 
-How to fix violations
----------------------
+Cách khắc phục vi phạm
+----------------------
 
-To fix a violation of this rule, remove the ``[Export]`` attribute.
+Để khắc phục vi phạm quy tắc này, hãy xóa thuộc tính ``[Export]``.
 
-When to suppress warnings
--------------------------
+Khi nào cần tắt cảnh báo
+------------------------
 
-Do not suppress a warning from this rule. Indexers can't be exported so
-they will be ignored by Godot, resulting in runtime errors.
+Không tắt cảnh báo từ quy tắc này. Không thể export các indexer, vì vậy chúng sẽ bị Godot bỏ qua, dẫn đến lỗi runtime.

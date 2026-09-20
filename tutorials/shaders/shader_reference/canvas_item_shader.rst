@@ -1,17 +1,16 @@
 .. _doc_canvas_item_shader:
 
-CanvasItem shaders
-==================
+Shader CanvasItem
+=================
 
-CanvasItem shaders are used to draw all 2D elements in Godot. These include
-all nodes that inherit from CanvasItems, and all GUI elements.
+Shader CanvasItem được dùng để vẽ tất cả các phần tử 2D trong Godot. Chúng bao gồm tất cả các node kế thừa từ CanvasItems và tất cả các phần tử GUI.
 
-CanvasItem shaders contain fewer built-in variables and functionality than
+Shader CanvasItem chứa ít biến built-in và chức năng hơn
 :ref:`Spatial shaders<doc_spatial_shader>`, but they maintain the same basic structure
-with vertex, fragment, and light processor functions.
+với các hàm xử lý vertex, fragment và light.
 
-Render modes
-------------
+Chế độ kết xuất
+---------------
 
 +---------------------------------+----------------------------------------------------------------------+
 | Render mode                     | Description                                                          |
@@ -38,21 +37,17 @@ Render modes
 | **world_vertex_coords**         | ``VERTEX`` is modified in world coordinates instead of local.        |
 +---------------------------------+----------------------------------------------------------------------+
 
-Built-ins
----------
+Built-in
+--------
 
-Values marked as ``in`` are read-only. Values marked as ``out`` can optionally be written to and will
-not necessarily contain sensible values. Values marked as ``inout`` provide a sensible default
-value, and can optionally be written to. Samplers cannot be written to so they are not marked.
+Các giá trị được đánh dấu là ``in`` chỉ có thể đọc. Các giá trị được đánh dấu là ``out`` có thể được ghi tùy chọn và không nhất thiết chứa các giá trị hợp lý. Các giá trị được đánh dấu là ``inout`` cung cấp một giá trị mặc định hợp lý và có thể được ghi tùy chọn. Không thể ghi vào sampler nên chúng không được đánh dấu.
 
-Not all built-ins are available in all processing functions. To access a vertex
-built-in from the ``fragment()`` function, you can use a :ref:`varying <doc_shading_language_varyings>`.
-The same applies for accessing fragment built-ins from the ``light()`` function.
+Không phải tất cả built-in đều khả dụng trong mọi hàm xử lý. Để truy cập một built-in của vertex từ hàm ``fragment()``, bạn có thể sử dụng một :ref:`varying <doc_shading_language_varyings>`. Điều tương tự cũng áp dụng khi truy cập các built-in của fragment từ hàm ``light()``.
 
-Global built-ins
-----------------
+Built-in toàn cục
+-----------------
 
-Global built-ins are available everywhere, including custom functions.
+Built-in toàn cục khả dụng ở mọi nơi, bao gồm cả các hàm tùy chỉnh.
 
 +-------------------+-------------------------------------------------------------------------------------------------+
 | Built-in          | Description                                                                                     |
@@ -76,14 +71,12 @@ Global built-ins are available everywhere, including custom functions.
 |                   | Euler's number, the base of the natural logarithm.                                              |
 +-------------------+-------------------------------------------------------------------------------------------------+
 
-Vertex built-ins
-----------------
+Built-in của vertex
+-------------------
 
-Vertex data (``VERTEX``) is presented in local space (pixel coordinates, relative to the Node2D's origin).
-If not written to, these values will not be modified and be passed through as they came.
+Dữ liệu vertex (``VERTEX``) được cung cấp trong không gian cục bộ (tọa độ pixel, tương đối so với gốc của Node2D). Nếu không được ghi, các giá trị này sẽ không bị thay đổi và được truyền tiếp như ban đầu.
 
-The user can disable the built-in model to world transform (world to screen and projection will still
-happen later) and do it manually with the following code:
+Người dùng có thể tắt phép biến đổi built-in từ model sang world (việc biến đổi từ world sang screen và projection vẫn sẽ diễn ra sau đó) và tự thực hiện bằng đoạn code sau:
 
 .. code-block:: glsl
 
@@ -95,14 +88,11 @@ happen later) and do it manually with the following code:
         VERTEX = (MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy;
     }
 
-Other built-ins, such as ``UV`` and ``COLOR``, are also passed through to the ``fragment()`` function if not modified.
+Các built-in khác, chẳng hạn như ``UV`` và ``COLOR``, cũng được truyền tiếp đến hàm ``fragment()`` nếu không bị thay đổi.
 
-For instancing, the ``INSTANCE_CUSTOM`` variable contains the instance custom data. When using particles, this information
-is usually:
+Đối với instancing, biến ``INSTANCE_CUSTOM`` chứa dữ liệu tùy chỉnh của instance. Khi sử dụng particle, thông tin này thường là:
 
-* **x**: Rotation angle in radians.
-* **y**: Phase during lifetime (``0.0`` to ``1.0``).
-* **z**: Animation frame.
+* **x**: Góc xoay tính bằng radian. * **y**: Pha trong suốt vòng đời (``0.0`` đến ``1.0``). * **z**: Khung hình animation.
 
 +--------------------------------+----------------------------------------------------------------+
 | Built-in                       | Description                                                    |
@@ -151,28 +141,21 @@ is usually:
 
 
 
-Fragment built-ins
-------------------
+Built-in của fragment
+---------------------
 
-COLOR and TEXTURE
-~~~~~~~~~~~~~~~~~
+COLOR và TEXTURE
+~~~~~~~~~~~~~~~~
 
-The built-in variable ``COLOR`` is used for a few things:
+Biến built-in ``COLOR`` được dùng cho một vài mục đích:
 
-  - In the ``vertex()`` function, ``COLOR`` contains the color from the vertex
-    primitive multiplied by the CanvasItem's
+  - Trong hàm ``vertex()``, ``COLOR`` chứa màu từ primitive của vertex được nhân với
     :ref:`modulate<class_CanvasItem_property_modulate>` multiplied by the
-    CanvasItem's :ref:`self_modulate<class_CanvasItem_property_self_modulate>`.
-  - In the ``fragment()`` function, the input value ``COLOR`` is that same value
-    multiplied by the color from the default ``TEXTURE`` (if present).
-  - In the ``fragment()`` function, ``COLOR`` is also the final output.
+    :ref:`self_modulate<class_CanvasItem_property_self_modulate>` của CanvasItem. - Trong hàm ``fragment()``, giá trị đầu vào ``COLOR`` là cùng giá trị đó được nhân với màu từ ``TEXTURE`` mặc định (nếu có). - Trong hàm ``fragment()``, ``COLOR`` cũng là đầu ra cuối cùng.
 
-Certain nodes (for example, :ref:`Sprite2D <class_Sprite2D>`) display a texture
-by default, for example :ref:`texture <class_Sprite2D_property_texture>`. When
-using a custom ``fragment()`` function, you have a few options on how to sample
-this texture.
+Một số node (ví dụ: :ref:`Sprite2D <class_Sprite2D>`) hiển thị texture theo mặc định, chẳng hạn như :ref:`texture <class_Sprite2D_property_texture>`. Khi sử dụng hàm ``fragment()`` tùy chỉnh, bạn có một số tùy chọn về cách lấy mẫu texture này.
 
-To read only the contents of the default texture, ignoring the vertex ``COLOR``:
+Để chỉ đọc nội dung của texture mặc định, bỏ qua ``COLOR`` của vertex:
 
 .. code-block:: glsl
 
@@ -180,17 +163,16 @@ To read only the contents of the default texture, ignoring the vertex ``COLOR``:
     COLOR = texture(TEXTURE, UV);
   }
 
-To read the contents of the default texture multiplied by vertex ``COLOR``:
+Để đọc nội dung của texture mặc định được nhân với ``COLOR`` của vertex:
 
 .. code-block:: glsl
 
   void fragment() {
-    // Equivalent to an empty fragment() function, since COLOR is also the output variable.
+    // Tương đương với một hàm fragment() rỗng, vì COLOR cũng là biến đầu ra.
     COLOR = COLOR;
   }
 
-To read only the vertex ``COLOR`` in ``fragment()``, ignoring the main texture,
-you must pass ``COLOR`` as a varying, then read it in ``fragment()``:
+Để chỉ đọc ``COLOR`` của vertex trong ``fragment()``, bỏ qua texture chính, bạn phải truyền ``COLOR`` dưới dạng varying, sau đó đọc nó trong ``fragment()``:
 
 .. code-block:: glsl
 
@@ -205,10 +187,7 @@ you must pass ``COLOR`` as a varying, then read it in ``fragment()``:
 NORMAL
 ~~~~~~
 
-Similarly, if a normal map is used in the :ref:`CanvasTexture <class_CanvasTexture>`, Godot uses
-it by default and assigns its value to the built-in ``NORMAL`` variable. If you are using a normal
-map meant for use in 3D, it will appear inverted. In order to use it in your shader, you must assign
-it to the ``NORMAL_MAP`` property. Godot will handle converting it for use in 2D and overwriting ``NORMAL``.
+Tương tự, nếu một normal map được sử dụng trong :ref:`CanvasTexture <class_CanvasTexture>`, Godot sẽ dùng nó theo mặc định và gán giá trị của nó cho biến built-in ``NORMAL``. Nếu bạn đang sử dụng một normal map dành cho 3D, nó sẽ hiển thị bị đảo ngược. Để sử dụng nó trong shader, bạn phải gán nó cho thuộc tính ``NORMAL_MAP``. Godot sẽ xử lý việc chuyển đổi để sử dụng trong 2D và ghi đè ``NORMAL``.
 
 .. code-block:: glsl
 
@@ -277,22 +256,16 @@ it to the ``NORMAL_MAP`` property. Godot will handle converting it for use in 2D
 |                                             | ``TEXTURE`` color. Also output color value.                   |
 +---------------------------------------------+---------------------------------------------------------------+
 
-Light built-ins
----------------
+Built-in của light
+------------------
 
-Light processor functions work differently in Godot 4.x than they did in Godot
-3.x. In Godot 4.x all lighting is done during the regular draw pass. In other
-words, Godot no longer draws the object again for each light.
+Các hàm xử lý light hoạt động khác trong Godot 4.x so với Godot 3.x. Trong Godot 4.x, toàn bộ việc chiếu sáng được thực hiện trong lượt vẽ thông thường. Nói cách khác, Godot không còn vẽ lại đối tượng cho từng light nữa.
 
-Use the ``unshaded`` render mode if you do not want the ``light()`` function to
-run. Use the ``light_only`` render mode if you only want to see the impact of
-lighting on an object; this can be useful when you only want the object visible
-where it is covered by light.
+Sử dụng chế độ kết xuất ``unshaded`` nếu bạn không muốn hàm ``light()`` chạy. Sử dụng chế độ kết xuất ``light_only`` nếu bạn chỉ muốn thấy tác động của ánh sáng lên một đối tượng; điều này hữu ích khi bạn chỉ muốn đối tượng hiển thị tại những nơi nó được ánh sáng phủ lên.
 
-If you define a ``light()`` function it will replace the built-in light function,
-even if your light function is empty.
+Nếu bạn định nghĩa một hàm ``light()``, hàm đó sẽ thay thế hàm light built-in, ngay cả khi hàm light của bạn rỗng.
 
-Below is an example of a light shader that takes a CanvasItem's normal map into account:
+Dưới đây là một ví dụ về light shader có tính đến normal map của CanvasItem:
 
 .. code-block:: glsl
 
@@ -348,18 +321,12 @@ Below is an example of a light shader that takes a CanvasItem's normal map into 
 | out vec4 **SHADOW_MODULATE**     | Multiply shadows cast at this point by this color.                           |
 +----------------------------------+------------------------------------------------------------------------------+
 
-SDF functions
--------------
+Các hàm SDF
+-----------
 
-There are a few additional functions implemented to sample an automatically
-generated Signed Distance Field texture. These functions are available in the ``fragment()``
-and ``light()`` functions of CanvasItem shaders. Custom functions may also use them as long
-as they are called from supported functions.
+Có một số hàm bổ sung được triển khai để lấy mẫu texture Signed Distance Field được tự động tạo. Các hàm này khả dụng trong các hàm ``fragment()`` và ``light()`` của shader CanvasItem. Các hàm tùy chỉnh cũng có thể sử dụng chúng miễn là được gọi từ các hàm được hỗ trợ.
 
-The signed distance field is generated from :ref:`class_LightOccluder2D` nodes
-present in the scene with the **SDF Collision** property enabled (which is the
-default). See the :ref:`2D lights and shadows <doc_2d_lights_and_shadows_setting_up_shadows>`
-documentation for more information.
+Signed Distance Field được tạo từ các node :ref:`class_LightOccluder2D` có trong scene với thuộc tính **SDF Collision** được bật (đây là thiết lập mặc định). Xem tài liệu :ref:`2D lights and shadows <doc_2d_lights_and_shadows_setting_up_shadows>` để biết thêm thông tin.
 
 +-----------------------------------------------+-------------------------------------------+
 | Function                                      | Description                               |

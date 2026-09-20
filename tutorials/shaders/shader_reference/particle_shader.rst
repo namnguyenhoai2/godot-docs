@@ -1,34 +1,26 @@
 .. _doc_particle_shader:
 
-Particle shaders
-================
+Particle shader
+===============
 
-Particle shaders are a special type of shader that runs before the object is
-drawn. They are used for calculating material properties such as color,
-position, and rotation. They can be drawn with any regular material for CanvasItem
-or Spatial, depending on whether they are 2D or 3D.
+Particle shader là một loại shader đặc biệt chạy trước khi đối tượng được vẽ. Chúng được dùng để tính toán các thuộc tính của material như màu sắc, vị trí và góc xoay. Chúng có thể được vẽ bằng bất kỳ material thông thường nào cho CanvasItem hoặc Spatial, tùy thuộc vào việc chúng là 2D hay 3D.
 
-Particle shaders are unique because they are not used to draw the object itself;
-they are used to calculate particle properties, which are then used by a
+Particle shader có tính đặc thù vì chúng không được dùng để vẽ chính đối tượng; chúng được dùng để tính toán các thuộc tính của particle, sau đó được sử dụng bởi một
 :ref:`CanvasItem<doc_canvas_item_shader>` or :ref:`Spatial<doc_spatial_shader>`
-shader. They contain two processor functions: ``start()`` and ``process()``.
+shader. Chúng chứa hai hàm processor: ``start()`` và ``process()``.
 
-Unlike other shader types, particle shaders keep the data that was output the
-previous frame. Therefore, particle shaders can be used for complex effects that
-take place over multiple frames.
+Không giống các loại shader khác, particle shader giữ lại dữ liệu được xuất ra ở frame trước đó. Vì vậy, particle shader có thể được dùng cho các hiệu ứng phức tạp diễn ra trong nhiều frame.
 
 .. note::
 
-    Particle shaders are only available with GPU-based particle nodes
-    (:ref:`class_GPUParticles2D` and :ref:`class_GPUParticles3D`).
+    Particle shader chỉ khả dụng với các node particle dựa trên GPU (:ref:`class_GPUParticles2D` và :ref:`class_GPUParticles3D`).
 
-    CPU-based particle nodes (:ref:`class_CPUParticles2D` and
+    Các node particle dựa trên CPU (:ref:`class_CPUParticles2D` và
     :ref:`class_CPUParticles3D`) are *rendered* on the GPU (which means they can
-    use custom CanvasItem or Spatial shaders), but their motion is *simulated*
-    on the CPU.
+    sử dụng shader CanvasItem hoặc Spatial tùy chỉnh), nhưng chuyển động của chúng được *mô phỏng* trên CPU.
 
-Render modes
-------------
+Render mode
+-----------
 
 +--------------------------+-------------------------------------------+
 | Render mode              | Description                               |
@@ -42,17 +34,15 @@ Render modes
 | **collision_use_scale**  | Scale the particle's size for collisions. |
 +--------------------------+-------------------------------------------+
 
-Built-ins
----------
+Built-in
+--------
 
-Values marked as ``in`` are read-only. Values marked as ``out`` can optionally be written to and will
-not necessarily contain sensible values. Values marked as ``inout`` provide a sensible default
-value, and can optionally be written to. Samplers cannot be written to so they are not marked.
+Các giá trị được đánh dấu là ``in`` chỉ được đọc. Các giá trị được đánh dấu là ``out`` có thể được ghi tùy chọn và không nhất thiết chứa các giá trị hợp lệ. Các giá trị được đánh dấu là ``inout`` cung cấp một giá trị mặc định hợp lệ và có thể được ghi tùy chọn. Sampler không thể được ghi nên không được đánh dấu.
 
-Global built-ins
-----------------
+Global built-in
+---------------
 
-Global built-ins are available everywhere, including custom functions.
+Global built-in khả dụng ở mọi nơi, bao gồm cả các hàm tùy chỉnh.
 
 +-------------------+-------------------------------------------------------------------------------------------------+
 | Built-in          | Description                                                                                     |
@@ -75,10 +65,10 @@ Global built-ins are available everywhere, including custom functions.
 | in float **E**    | An ``E`` constant (``2.718281``). Euler's number, the base of the natural logarithm.            |
 +-------------------+-------------------------------------------------------------------------------------------------+
 
-Start and Process built-ins
----------------------------
+Built-in của Start và Process
+-----------------------------
 
-These properties can be accessed from both the ``start()`` and ``process()`` functions.
+Các thuộc tính này có thể được truy cập từ cả hai hàm ``start()`` và ``process()``.
 
 +------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
 | Function                           | Description                                                                                                                             |
@@ -130,10 +120,10 @@ These properties can be accessed from both the ``start()`` and ``process()`` fun
 +------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
 
 .. note:: In order to use the ``COLOR`` variable in a StandardMaterial3D, set ``vertex_color_use_as_albedo``
-          to ``true``. In a ShaderMaterial, access it with the ``COLOR`` variable.
+          đến ``true``. Trong một ShaderMaterial, hãy truy cập nó bằng biến ``COLOR``.
 
-Start built-ins
----------------
+Built-in của Start
+------------------
 
 +---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Built-in                        | Description                                                                                                                                                                           |
@@ -149,8 +139,8 @@ Start built-ins
 | in bool **RESTART_CUSTOM**      | ``true`` if particle is restarted, or emitted without a custom property (i.e. this particle was created by ``emit_subparticle()`` without the ``FLAG_EMIT_CUSTOM`` flag).             |
 +---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Process built-ins
------------------
+Built-in của Process
+--------------------
 
 +------------------------------------+---------------------------------------------------------------------------------------------------------+
 | Built-in                           | Description                                                                                             |
@@ -166,15 +156,10 @@ Process built-ins
 | in vec3 **ATTRACTOR_FORCE**        | A combined force of the attractors at the moment on that particle.                                      |
 +------------------------------------+---------------------------------------------------------------------------------------------------------+
 
-Process functions
------------------
+Hàm Process
+-----------
 
-``emit_subparticle()`` is currently the only custom function supported by
-particle shaders. It allows users to add a new particle with specified
-parameters from a sub-emitter. The newly created particle will only use the
-properties that match the ``flags`` parameter. For example, the
-following code will emit a particle with a specified position, velocity, and
-color, but unspecified rotation, scale, and custom value:
+``emit_subparticle()`` hiện là hàm tùy chỉnh duy nhất được particle shader hỗ trợ. Hàm này cho phép người dùng thêm một particle mới với các tham số được chỉ định từ một sub-emitter. Particle mới được tạo sẽ chỉ sử dụng các thuộc tính khớp với tham số ``flags``. Ví dụ: đoạn mã sau sẽ phát ra một particle với vị trí, vận tốc và màu được chỉ định, nhưng không chỉ định góc xoay, tỉ lệ và giá trị tùy chỉnh:
 
 .. code-block:: glsl
 

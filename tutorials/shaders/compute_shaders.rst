@@ -1,105 +1,80 @@
 .. _doc_compute_shaders:
 
-Using compute shaders
-=====================
+Sử dụng compute shader
+======================
 
-This tutorial will walk you through the process of creating a minimal compute
-shader. But first, a bit of background on compute shaders and how they work with
-Godot.
+Tutorial này sẽ hướng dẫn bạn từng bước tạo một compute shader tối giản. Nhưng trước tiên, hãy tìm hiểu một chút về compute shader và cách chúng hoạt động với Godot.
 
 .. note::
 
-   This tutorial assumes you are familiar with shaders generally. If you are new
-   to shaders please read :ref:`doc_introduction_to_shaders` and :ref:`your
-   first shader <toc-your-first-shader>` before proceeding with this tutorial.
+   Tutorial này giả định rằng bạn đã quen thuộc với shader nói chung. Nếu bạn mới làm quen với shader, hãy đọc :ref:`doc_introduction_to_shaders` và :ref:`your first shader <toc-your-first-shader>` trước khi tiếp tục tutorial này.
 
-A compute shader is a special type of shader program that is orientated towards
-general purpose programming. In other words, they are more flexible than vertex
-shaders and fragment shaders as they don't have a fixed purpose (i.e.
-transforming vertices or writing colors to an image). Unlike fragment shaders
-and vertex shaders, compute shaders have very little going on behind the scenes.
-The code you write is what the GPU runs and very little else. This can make them
-a very useful tool to offload heavy calculations to the GPU.
+Compute shader là một loại shader program đặc biệt, được định hướng cho lập trình đa mục đích. Nói cách khác, chúng linh hoạt hơn vertex shader và fragment shader vì không có mục đích cố định (ví dụ: biến đổi vertex hoặc ghi màu vào một image). Không giống fragment shader và vertex shader, compute shader có rất ít hoạt động diễn ra ngầm phía sau. Code bạn viết chính là thứ GPU chạy, và hầu như không có gì khác. Điều này khiến chúng trở thành một công cụ rất hữu ích để chuyển các phép tính nặng sang GPU.
 
-Now let's get started by creating a short compute shader.
+Bây giờ, hãy bắt đầu bằng cách tạo một compute shader ngắn.
 
-First, in the **external** text editor of your choice, create a new file called
-``compute_example.glsl`` in your project folder. When you write compute shaders
-in Godot, you write them in GLSL directly. The Godot shader language is based on
-GLSL. If you are familiar with normal shaders in Godot, the syntax below will
-look somewhat familiar.
+Trước tiên, trong **trình soạn thảo văn bản bên ngoài** mà bạn chọn, hãy tạo một file mới có tên ``compute_example.glsl`` trong thư mục project. Khi viết compute shader trong Godot, bạn viết trực tiếp bằng GLSL. Ngôn ngữ shader của Godot dựa trên GLSL. Nếu đã quen với shader thông thường trong Godot, cú pháp bên dưới sẽ khá quen thuộc.
 
 .. note::
 
-   Compute shaders can only be used from RenderingDevice-based renderers (the
-   Forward+ or Mobile renderer). To follow along with this tutorial, ensure that
-   you are using the Forward+ or Mobile renderer. The setting for which is
-   located in the top right-hand corner of the editor.
+   Compute shader chỉ có thể được sử dụng từ các renderer dựa trên RenderingDevice (renderer Forward+ hoặc Mobile). Để làm theo tutorial này, hãy đảm bảo bạn đang sử dụng renderer Forward+ hoặc Mobile. Thiết lập này nằm ở góc trên bên phải của editor.
 
-   Note that compute shader support is generally poor on mobile devices (due to
-   driver bugs), even if they are technically supported.
+   Lưu ý rằng hỗ trợ compute shader nhìn chung khá kém trên các thiết bị mobile (do lỗi driver), ngay cả khi chúng được hỗ trợ về mặt kỹ thuật.
 
-Let's take a look at this compute shader code:
+Hãy cùng xem code của compute shader này:
 
 .. code-block:: glsl
 
     #[compute]
     #version 450
 
-    // Invocations in the (x, y, z) dimension
+    // Các invocation trong chiều (x, y, z)
     layout(local_size_x = 2, local_size_y = 1, local_size_z = 1) in;
 
-    // A binding to the buffer we create in our script
+    // Một binding tới buffer chúng ta tạo trong script
     layout(set = 0, binding = 0, std430) restrict buffer MyDataBuffer {
         float data[];
     }
     my_data_buffer;
 
-    // The code we want to execute in each invocation
+    // Code mà chúng ta muốn thực thi trong mỗi invocation
     void main() {
-        // gl_GlobalInvocationID.x uniquely identifies this invocation across all work groups
+        // gl_GlobalInvocationID.x xác định duy nhất invocation này trong tất cả workgroup
         my_data_buffer.data[gl_GlobalInvocationID.x] *= 2.0;
     }
 
-This code takes an array of floats, multiplies each element by 2 and store the
-results back in the buffer array. Now let's look at it line-by-line.
+Code này nhận một mảng float, nhân mỗi phần tử với 2 và lưu kết quả trở lại mảng buffer. Bây giờ hãy xem từng dòng một.
 
 .. code-block:: glsl
 
     #[compute]
     #version 450
 
-These two lines communicate two things:
+Hai dòng này truyền đạt hai thông tin:
 
- 1. The following code is a compute shader. This is a Godot-specific hint that is needed for the editor to properly import the shader file.
- 2. The code is using GLSL version 450.
+ 1. 1. Code sau đây là một compute shader. Đây là gợi ý dành riêng cho Godot, cần thiết để editor import file shader đúng cách. 2. Code đang sử dụng GLSL version 450.
 
-You should never have to change these two lines for your custom compute shaders.
+Bạn sẽ không bao giờ cần thay đổi hai dòng này đối với các compute shader tùy chỉnh của mình.
 
 .. code-block:: glsl
 
-    // Invocations in the (x, y, z) dimension
+    // Các invocation trong chiều (x, y, z)
     layout(local_size_x = 2, local_size_y = 1, local_size_z = 1) in;
 
-Next, we communicate the number of invocations to be used in each workgroup.
-Invocations are instances of the shader that are running within the same
-workgroup. When we launch a compute shader from the CPU, we tell it how many
-workgroups to run. Workgroups run in parallel to each other. While running one
-workgroup, you cannot access information in another workgroup. However,
-invocations in the same workgroup can have some limited access to other invocations.
+Tiếp theo, chúng ta khai báo số invocation sẽ được sử dụng trong mỗi workgroup. Invocation là các instance của shader đang chạy bên trong cùng một workgroup. Khi khởi chạy một compute shader từ CPU, chúng ta cho shader biết cần chạy bao nhiêu workgroup. Các workgroup chạy song song với nhau. Khi đang chạy một workgroup, bạn không thể truy cập thông tin trong workgroup khác. Tuy nhiên, các invocation trong cùng một workgroup có thể có quyền truy cập giới hạn vào các invocation khác.
 
-Think about workgroups and invocations as a giant nested ``for`` loop.
+Hãy hình dung workgroup và invocation như một vòng lặp ``for`` lồng nhau khổng lồ.
 
 .. code-block:: glsl
 
     for (int x = 0; x < workgroup_size_x; x++) {
       for (int y = 0; y < workgroup_size_y; y++) {
          for (int z = 0; z < workgroup_size_z; z++) {
-            // Each workgroup runs independently and in parallel.
+            // Mỗi workgroup chạy độc lập và song song.
             for (int local_x = 0; local_x < invocation_size_x; local_x++) {
                for (int local_y = 0; local_y < invocation_size_y; local_y++) {
                   for (int local_z = 0; local_z < invocation_size_z; local_z++) {
-                     // Compute shader runs here.
+                     // Compute shader chạy ở đây.
                   }
                }
             }
@@ -108,143 +83,119 @@ Think about workgroups and invocations as a giant nested ``for`` loop.
     }
 
 
-Workgroups and invocations are an advanced topic. For now, remember that we will
-be running two invocations per workgroup.
+Workgroup và invocation là một chủ đề nâng cao. Hiện tại, hãy nhớ rằng chúng ta sẽ chạy hai invocation trong mỗi workgroup.
 
 .. code-block:: glsl
 
-    // A binding to the buffer we create in our script
+    // Một binding tới buffer chúng ta tạo trong script
     layout(set = 0, binding = 0, std430) restrict buffer MyDataBuffer {
         float data[];
     }
     my_data_buffer;
 
-Here we provide information about the memory that the compute shader will have
-access to. The ``layout`` property allows us to tell the shader where to look
-for the buffer, we will need to match these ``set`` and ``binding`` positions
-from the CPU side later.
+Ở đây, chúng ta cung cấp thông tin về vùng nhớ mà compute shader sẽ có quyền truy cập. Thuộc tính ``layout`` cho phép chúng ta cho shader biết cần tìm buffer ở đâu; sau này, chúng ta sẽ cần khớp các vị trí ``set`` và ``binding`` này từ phía CPU.
 
-The ``restrict`` keyword tells the shader that this buffer is only going to be
-accessed from one place in this shader. In other words, we won't bind this
-buffer in another ``set`` or ``binding`` index. This is important as it allows
-the shader compiler to optimize the shader code. Always use ``restrict`` when
-you can.
+Từ khóa ``restrict`` cho shader biết rằng buffer này sẽ chỉ được truy cập từ một vị trí trong shader này. Nói cách khác, chúng ta sẽ không bind buffer này vào một chỉ mục ``set`` hoặc ``binding`` khác. Điều này quan trọng vì cho phép shader compiler tối ưu code shader. Hãy luôn sử dụng ``restrict`` khi có thể.
 
-This is an *unsized* buffer, which means it can be any size. So we need to be
-careful not to read from an index larger than the size of the buffer.
+Đây là một buffer *không có kích thước cố định* (unsized), nghĩa là nó có thể có bất kỳ kích thước nào. Vì vậy, chúng ta cần cẩn thận để không đọc từ một chỉ mục lớn hơn kích thước của buffer.
 
 .. code-block:: glsl
 
-    // The code we want to execute in each invocation
+    // Code mà chúng ta muốn thực thi trong mỗi invocation
     void main() {
-        // gl_GlobalInvocationID.x uniquely identifies this invocation across all work groups
+        // gl_GlobalInvocationID.x xác định duy nhất invocation này trong tất cả workgroup
         my_data_buffer.data[gl_GlobalInvocationID.x] *= 2.0;
     }
 
-Finally, we write the ``main`` function which is where all the logic happens. We
-access a position in the storage buffer using the ``gl_GlobalInvocationID``
-built-in variables. ``gl_GlobalInvocationID`` gives you the global unique ID for
-the current invocation.
+Cuối cùng, chúng ta viết hàm ``main``, nơi diễn ra toàn bộ logic. Chúng ta truy cập một vị trí trong storage buffer bằng các biến built-in ``gl_GlobalInvocationID``. ``gl_GlobalInvocationID`` cung cấp ID duy nhất toàn cục của invocation hiện tại.
 
-To continue, write the code above into your newly created ``compute_example.glsl``
-file.
+Để tiếp tục, hãy viết code ở trên vào file ``compute_example.glsl`` mới tạo.
 
-Create a local RenderingDevice
+Tạo một RenderingDevice cục bộ
 ------------------------------
 
-To interact with and execute a compute shader, we need a script.
-Create a new script in the language of your choice and attach it to any Node
-in your scene.
+Để tương tác và thực thi một compute shader, chúng ta cần một script. Hãy tạo một script mới bằng ngôn ngữ bạn chọn và gắn nó vào bất kỳ Node nào trong scene.
 
-Now to execute our shader we need a local :ref:`class_RenderingDevice`
-which can be created using the :ref:`class_RenderingServer`:
+Bây giờ, để thực thi shader, chúng ta cần một :ref:`class_RenderingDevice` cục bộ, có thể được tạo bằng :ref:`class_RenderingServer`:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Create a local rendering device.
+    # Tạo một rendering device cục bộ.
     var rd := RenderingServer.create_local_rendering_device()
 
  .. code-tab:: csharp
 
-    // Create a local rendering device.
+    // Tạo một rendering device cục bộ.
     var rd = RenderingServer.CreateLocalRenderingDevice();
 
-After that, we can load the newly created shader file ``compute_example.glsl``
-and create a precompiled version of it using this:
+Sau đó, chúng ta có thể load file shader mới tạo ``compute_example.glsl`` và tạo một phiên bản đã precompile bằng đoạn code sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Load GLSL shader
+    # Load shader GLSL
     var shader_file := load("res://compute_example.glsl")
     var shader_spirv: RDShaderSPIRV = shader_file.get_spirv()
     var shader := rd.shader_create_from_spirv(shader_spirv)
 
  .. code-tab:: csharp
 
-    // Load GLSL shader
+    // Load shader GLSL
     var shaderFile = GD.Load<RDShaderFile>("res://compute_example.glsl");
     var shaderBytecode = shaderFile.GetSpirV();
     var shader = rd.ShaderCreateFromSpirV(shaderBytecode);
 
 .. warning::
 
-    Local RenderingDevices cannot be debugged using tools such as
-    `RenderDoc <https://renderdoc.org/>`__.
+    Không thể debug Local RenderingDevice bằng các công cụ như `RenderDoc <https://renderdoc.org/>`__.
 
-Provide input data
-------------------
+Cung cấp dữ liệu đầu vào
+------------------------
 
-As you might remember, we want to pass an input array to our shader, multiply
-each element by 2 and get the results.
+Như bạn có thể nhớ, chúng ta muốn truyền một mảng đầu vào vào shader, nhân mỗi phần tử với 2 và nhận kết quả.
 
-We need to create a buffer to pass values to a compute shader. We are dealing
-with an array of floats, so we will use a storage buffer for this example. A
-storage buffer takes an array of bytes and allows the CPU to transfer data to
-and from the GPU.
+Chúng ta cần tạo một buffer để truyền các giá trị vào compute shader. Vì đang làm việc với một mảng float, chúng ta sẽ sử dụng storage buffer cho ví dụ này. Storage buffer nhận một mảng byte và cho phép CPU truyền dữ liệu đến và đi từ GPU.
 
-So let's initialize an array of floats and create a storage buffer:
+Vì vậy, hãy khởi tạo một mảng float và tạo một storage buffer:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Prepare our data. We use floats in the shader, so we need 32 bit.
+    # Chuẩn bị dữ liệu. Chúng ta sử dụng float trong shader, vì vậy cần 32 bit.
     var input := PackedFloat32Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     var input_bytes := input.to_byte_array()
 
-    # Create a storage buffer that can hold our float values.
-    # Each float has 4 bytes (32 bit) so 10 x 4 = 40 bytes
+    # Tạo một storage buffer có thể chứa các giá trị float của chúng ta.
+    # Mỗi float có 4 byte (32 bit), vì vậy 10 x 4 = 40 byte
     var buffer := rd.storage_buffer_create(input_bytes.size(), input_bytes)
 
  .. code-tab:: csharp
 
-    // Prepare our data. We use floats in the shader, so we need 32 bit.
+    // Chuẩn bị dữ liệu. Chúng ta sử dụng float trong shader, vì vậy cần 32 bit.
     float[] input = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     var inputBytes = new byte[input.Length * sizeof(float)];
     Buffer.BlockCopy(input, 0, inputBytes, 0, inputBytes.Length);
 
-    // Create a storage buffer that can hold our float values.
-    // Each float has 4 bytes (32 bit) so 10 x 4 = 40 bytes
+    // Tạo một storage buffer có thể chứa các giá trị float của chúng ta.
+    // Mỗi float có 4 byte (32 bit), vì vậy 10 x 4 = 40 byte
     var buffer = rd.StorageBufferCreate((uint)inputBytes.Length, inputBytes);
 
-With the buffer in place we need to tell the rendering device to use this
-buffer. To do that we will need to create a uniform (like in normal shaders) and
-assign it to a uniform set which we can pass to our shader later.
+Sau khi đã có buffer, chúng ta cần cho rendering device biết sẽ sử dụng buffer này. Để làm vậy, chúng ta cần tạo một uniform (như trong shader thông thường) và gán nó vào một uniform set để có thể truyền vào shader sau này.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Create a uniform to assign the buffer to the rendering device
+    # Tạo một uniform để gán buffer vào rendering device
     var uniform := RDUniform.new()
     uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_STORAGE_BUFFER
-    uniform.binding = 0 # this needs to match the "binding" in our shader file
+    uniform.binding = 0 # điều này cần khớp với "binding" trong file shader của chúng ta
     uniform.add_id(buffer)
-    var uniform_set := rd.uniform_set_create([uniform], shader, 0) # the last parameter (the 0) needs to match the "set" in our shader file
+    var uniform_set := rd.uniform_set_create([uniform], shader, 0) # tham số cuối cùng (giá trị 0) cần khớp với "set" trong file shader của chúng ta
 
  .. code-tab:: csharp
 
-    // Create a uniform to assign the buffer to the rendering device
+    // Tạo một uniform để gán buffer vào rendering device
     var uniform = new RDUniform
     {
         UniformType = RenderingDevice.UniformType.StorageBuffer,
@@ -254,25 +205,19 @@ assign it to a uniform set which we can pass to our shader later.
     var uniformSet = rd.UniformSetCreate([uniform], shader, 0);
 
 
-Defining a compute pipeline
----------------------------
+Định nghĩa một compute pipeline
+-------------------------------
 
-The next step is to create a set of instructions our GPU can execute.
-We need a pipeline and a compute list for that.
+Bước tiếp theo là tạo một tập hợp instruction mà GPU có thể thực thi. Để làm vậy, chúng ta cần một pipeline và một compute list.
 
-The steps we need to do to compute our result are:
+Các bước cần thực hiện để tính toán kết quả là:
 
-1. Create a new pipeline.
-2. Begin a list of instructions for our GPU to execute.
-3. Bind our compute list to our pipeline
-4. Bind our buffer uniform to our pipeline
-5. Specify how many workgroups to use
-6. End the list of instructions
+1. 1. Tạo một pipeline mới. 2. Bắt đầu một danh sách instruction để GPU thực thi. 3. Bind compute list vào pipeline. 4. Bind buffer uniform vào pipeline. 5. Chỉ định số workgroup cần sử dụng. 6. Kết thúc danh sách instruction.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Create a compute pipeline
+    # Tạo một compute pipeline
     var pipeline := rd.compute_pipeline_create(shader)
     var compute_list := rd.compute_list_begin()
     rd.compute_list_bind_compute_pipeline(compute_list, pipeline)
@@ -282,7 +227,7 @@ The steps we need to do to compute our result are:
 
  .. code-tab:: csharp
 
-    // Create a compute pipeline
+    // Tạo một compute pipeline
     var pipeline = rd.ComputePipelineCreate(shader);
     var computeList = rd.ComputeListBegin();
     rd.ComputeListBindComputePipeline(computeList, pipeline);
@@ -290,68 +235,47 @@ The steps we need to do to compute our result are:
     rd.ComputeListDispatch(computeList, xGroups: 5, yGroups: 1, zGroups: 1);
     rd.ComputeListEnd();
 
-Note that we are dispatching the compute shader with 5 work groups in the
-X axis, and one in the others. Since we have 2 local invocations in the X axis
-(specified in our shader), 10 compute shader invocations will be launched in
-total. If you read or write to indices outside of the range of your buffer, you
-may access memory outside of your shaders control or parts of other variables
-which may cause issues on some hardware.
+Lưu ý rằng chúng ta dispatch compute shader với 5 workgroup trên trục X và mỗi trục còn lại có 1 workgroup. Vì chúng ta có 2 local invocation trên trục X (được chỉ định trong shader), tổng cộng sẽ khởi chạy 10 compute shader invocation. Nếu bạn đọc hoặc ghi vào các chỉ mục nằm ngoài phạm vi của buffer, bạn có thể truy cập vùng nhớ nằm ngoài quyền kiểm soát của shader hoặc các phần của biến khác, điều này có thể gây ra sự cố trên một số phần cứng.
 
-Execute a compute shader
-------------------------
+Thực thi một compute shader
+---------------------------
 
-After all of this we are almost done, but we still need to execute our pipeline.
-So far we have only recorded what we would like the GPU to do; we have not
-actually run the shader program.
+Sau tất cả các bước này, chúng ta gần hoàn thành, nhưng vẫn cần thực thi pipeline. Cho đến lúc này, chúng ta mới chỉ ghi lại những gì muốn GPU thực hiện; chúng ta chưa thực sự chạy shader program.
 
-To execute our compute shader we need to submit the pipeline to the GPU and
-wait for the execution to finish:
+Để thực thi compute shader, chúng ta cần submit pipeline lên GPU và chờ quá trình thực thi hoàn tất:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Submit to GPU and wait for sync
+    # Submit lên GPU và chờ đồng bộ
     rd.submit()
     rd.sync()
 
  .. code-tab:: csharp
 
-    // Submit to GPU and wait for sync
+    // Submit lên GPU và chờ đồng bộ
     rd.Submit();
     rd.Sync();
 
-Ideally, you would not call ``sync()`` to synchronize the RenderingDevice right
-away as it will cause the CPU to wait for the GPU to finish working. In our
-example, we synchronize right away because we want our data available for reading
-right away. In general, you will want to wait *at least* 2 or 3 frames before
-synchronizing so that the GPU is able to run in parallel with the CPU.
+Lý tưởng nhất là bạn không nên gọi ``sync()`` để đồng bộ RenderingDevice ngay lập tức, vì điều đó sẽ khiến CPU phải chờ GPU hoàn thành công việc. Trong ví dụ này, chúng ta đồng bộ ngay vì muốn dữ liệu có thể được đọc ngay lập tức. Nhìn chung, bạn nên chờ *ít nhất* 2 hoặc 3 frame trước khi đồng bộ để GPU có thể chạy song song với CPU.
 
 .. warning::
 
-    Long computations can cause Windows graphics drivers to "crash" due to
+    Các phép tính kéo dài có thể khiến driver đồ họa của Windows "crash" do
     :abbr:`TDR (Timeout Detection and Recovery)` being triggered by Windows.
-    This is a mechanism that reinitializes the graphics driver after a certain
-    amount of time has passed without any activity from the graphics driver
-    (usually 5 to 10 seconds).
+    Đây là một cơ chế khởi tạo lại driver đồ họa sau khi đã trôi qua một khoảng thời gian nhất định mà driver đồ họa không có bất kỳ hoạt động nào (thường là 5 đến 10 giây).
 
-    Depending on the duration your compute shader takes to execute, you may need
-    to split it into multiple dispatches to reduce the time each dispatch takes
-    and reduce the chances of triggering a TDR. Given TDR is time-dependent,
-    slower GPUs may be more prone to TDRs when running a given compute shader
-    compared to a faster GPU.
+    Tùy thuộc vào thời gian thực thi của compute shader, bạn có thể cần chia shader thành nhiều dispatch để giảm thời gian của mỗi dispatch và giảm khả năng kích hoạt TDR. Vì TDR phụ thuộc vào thời gian, GPU chậm có thể dễ gặp TDR hơn khi chạy một compute shader nhất định so với GPU nhanh hơn.
 
-Retrieving results
-------------------
+Truy xuất kết quả
+-----------------
 
-You may have noticed that, in the example shader, we modified the contents of the
-storage buffer. In other words, the shader read from our array and stored the data
-in the same array again so our results are already there. Let's retrieve
-the data and print the results to our console.
+Có thể bạn đã nhận thấy rằng trong shader mẫu, chúng ta đã sửa đổi nội dung của storage buffer. Nói cách khác, shader đã đọc dữ liệu từ mảng của chúng ta rồi lưu dữ liệu đó trở lại chính mảng này, vì vậy kết quả của chúng ta đã có sẵn ở đó. Hãy truy xuất dữ liệu và in kết quả ra console của chúng ta.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Read back the data from the buffer
+    # Đọc lại dữ liệu từ buffer
     var output_bytes := rd.buffer_get_data(buffer)
     var output := output_bytes.to_float32_array()
     print("Input: ", input)
@@ -359,31 +283,21 @@ the data and print the results to our console.
 
  .. code-tab:: csharp
 
-    // Read back the data from the buffers
+    // Đọc lại dữ liệu từ các buffer
     var outputBytes = rd.BufferGetData(buffer);
     var output = new float[input.Length];
     Buffer.BlockCopy(outputBytes, 0, output, 0, outputBytes.Length);
     GD.Print("Input: ", string.Join(", ", input));
     GD.Print("Output: ", string.Join(", ", output));
 
-Freeing memory
-------------------
+Giải phóng bộ nhớ
+-----------------
 
-The ``buffer``, ``pipeline``, and ``uniform_set`` variables we've been using are
-each an :ref:`class_RID`. Because RenderingDevice is meant to be a lower-level
-API, RIDs aren't freed automatically. This means that once you're done using
-``buffer`` or any other RID, you are responsible for freeing its memory
-manually using the RenderingDevice's
+Các biến ``buffer``, ``pipeline`` và ``uniform_set`` mà chúng ta đã sử dụng đều là :ref:`class_RID`. Vì RenderingDevice được thiết kế như một API cấp thấp hơn, RID không được tự động giải phóng. Điều này có nghĩa là sau khi sử dụng xong ``buffer`` hoặc bất kỳ RID nào khác, bạn có trách nhiệm tự giải phóng bộ nhớ của nó bằng cách sử dụng RenderingDevice's
 :ref:`free_rid()<class_RenderingDevice_method_free_rid>` method.
 
-With that, you have everything you need to get started working with compute
-shaders.
+Như vậy, bạn đã có mọi thứ cần thiết để bắt đầu làm việc với compute shader.
 
 .. seealso::
 
-   The demo projects repository contains a
-   `Compute Shader Heightmap demo <https://github.com/godotengine/godot-demo-projects/tree/master/compute/heightmap>`__
-   This project performs heightmap image generation on the CPU and
-   GPU separately, which lets you compare how a similar algorithm can be
-   implemented in two different ways (with the GPU implementation being faster
-   in most cases).
+   Repository của các dự án demo chứa một `Compute Shader Heightmap demo <https://github.com/godotengine/godot-demo-projects/tree/master/compute/heightmap>`__ Dự án này thực hiện việc tạo ảnh heightmap riêng biệt trên CPU và GPU, cho phép bạn so sánh cách triển khai một thuật toán tương tự theo hai cách khác nhau (trong đó cách triển khai trên GPU nhanh hơn trong hầu hết các trường hợp).

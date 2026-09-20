@@ -1,89 +1,53 @@
 .. _doc_about_godot_cpp:
 
-About godot-cpp
-===============
+Giới thiệu về godot-cpp
+=======================
 
-`godot-cpp <https://github.com/godotengine/godot-cpp>`__ are the official C++ GDExtension bindings, maintained
-as part of the Godot project.
+`godot-cpp <https://github.com/godotengine/godot-cpp>`__ là các binding C++ GDExtension chính thức, được duy trì như một phần của dự án Godot.
 
-godot-cpp is built with the :ref:`GDExtension system <doc_gdextension>`, which allows access to Godot in almost the
-same way as :ref:`modules <doc_custom_modules_in_cpp>`: A lot of `engine code <https://github.com/godotengine/godot>`__
-can be used in your godot-cpp project almost exactly as it is.
+godot-cpp được xây dựng bằng :ref:`GDExtension system <doc_gdextension>`, cho phép truy cập Godot gần như theo cùng cách với :ref:`modules <doc_custom_modules_in_cpp>`: Bạn có thể sử dụng rất nhiều `engine code <https://github.com/godotengine/godot>`__ trong dự án godot-cpp gần như nguyên trạng.
 
-In particular, godot-cpp has access to all functions that :ref:`GDScript <doc_gdscript>` and :ref:`C# <doc_c_sharp>`
-have, and additional access to a few more for fast low-level access of data, or deeper integration with Godot.
+Cụ thể, godot-cpp có quyền truy cập vào tất cả các hàm mà :ref:`GDScript <doc_gdscript>` và :ref:`C# <doc_c_sharp>` có, đồng thời có thêm quyền truy cập vào một số hàm khác để truy cập dữ liệu cấp thấp nhanh hơn hoặc tích hợp sâu hơn với Godot.
 
-Differences between godot-cpp and C++ modules
+Sự khác biệt giữa godot-cpp và các C++ module
 ---------------------------------------------
 
-You can use both `godot-cpp <https://github.com/godotengine/godot-cpp>`__
-and :ref:`C++ modules <doc_custom_modules_in_cpp>` to run C or C++ code in a Godot project.
+Bạn có thể sử dụng cả `godot-cpp <https://github.com/godotengine/godot-cpp>`__ và :ref:`C++ modules <doc_custom_modules_in_cpp>` để chạy mã C hoặc C++ trong một dự án Godot.
 
-They also both allow you to integrate third-party libraries into Godot. The one
-you should choose depends on your needs.
+Cả hai cũng cho phép bạn tích hợp các thư viện bên thứ ba vào Godot. Lựa chọn phù hợp phụ thuộc vào nhu cầu của bạn.
 
-Advantages of godot-cpp
-~~~~~~~~~~~~~~~~~~~~~~~
+Ưu điểm của godot-cpp
+~~~~~~~~~~~~~~~~~~~~~
 
-Unlike modules, godot-cpp (and GDExtensions, in general) don't require
-compiling the engine's source code, making it easier to distribute your work.
-It gives you access to most of the API available to GDScript and C#, allowing
-you to code game logic with full control regarding performance. It's ideal if
-you need high-performance code you'd like to distribute as an add-on in the
+Không giống các module, godot-cpp (và GDExtension nói chung) không yêu cầu biên dịch mã nguồn của engine, giúp phân phối sản phẩm của bạn dễ dàng hơn. Nó cho phép bạn truy cập hầu hết API có sẵn cho GDScript và C#, cho phép bạn viết logic game với toàn quyền kiểm soát hiệu năng. Đây là lựa chọn lý tưởng nếu bạn cần mã hiệu năng cao và muốn phân phối mã đó dưới dạng một add-on trong
 :ref:`Asset Store <doc_what_is_asset_store>`.
 
-Also:
+Ngoài ra:
 
-- You can use the same compiled godot-cpp library in the editor and exported
-  project. With C++ modules, you have to recompile all the export templates you
-  plan to use if you require its functionality at runtime.
-- godot-cpp only requires you to compile your library, not the whole engine.
-  That's unlike C++ modules, which are statically compiled into the engine.
-  Every time you change a module, you need to recompile the engine. Even with
-  incremental builds, this process is slower than using godot-cpp.
+- Bạn có thể sử dụng cùng một thư viện godot-cpp đã biên dịch trong editor và project đã export. Với các C++ module, bạn phải biên dịch lại tất cả export template mà mình định sử dụng nếu cần chức năng của module đó khi runtime. - godot-cpp chỉ yêu cầu bạn biên dịch thư viện của mình, không phải toàn bộ engine. Điều này khác với các C++ module, vốn được biên dịch tĩnh vào engine. Mỗi khi thay đổi một module, bạn cần biên dịch lại engine. Ngay cả với incremental build, quy trình này vẫn chậm hơn so với sử dụng godot-cpp.
 
-Advantages of C++ modules
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Ưu điểm của các C++ module
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We recommend :ref:`C++ modules <doc_custom_modules_in_cpp>` in cases where
-godot-cpp (or another GDExtension system) isn't enough:
+Chúng tôi khuyến nghị :ref:`C++ modules <doc_custom_modules_in_cpp>` trong những trường hợp godot-cpp (hoặc một hệ thống GDExtension khác) không đủ đáp ứng:
 
-- C++ modules provide deeper integration into the engine. GDExtension's access
-  is not as deep as static modules.
-- You can use C++ modules to provide additional features in a project without
-  carrying native library files around. This extends to exported projects.
+- Các C++ module cung cấp khả năng tích hợp sâu hơn vào engine. Khả năng truy cập của GDExtension không sâu bằng các static module. - Bạn có thể sử dụng các C++ module để cung cấp thêm tính năng cho một dự án mà không cần mang theo các tệp native library. Điều này cũng áp dụng cho các project đã export.
 
 .. note::
 
-    If you notice that specific systems are not accessible via godot-cpp
-    but are via custom modules, feel free to open an issue on the
-    `godot-cpp repository <https://github.com/godotengine/godot-cpp>`__
-    to discuss implementation options for exposing the missing functionality.
+    Nếu nhận thấy một số hệ thống cụ thể không thể truy cập thông qua godot-cpp nhưng lại có thể truy cập thông qua custom module, bạn có thể mở issue trên `godot-cpp repository <https://github.com/godotengine/godot-cpp>`__ để thảo luận về các phương án triển khai nhằm cung cấp chức năng còn thiếu.
 
 .. _doc_what_is_gdextension_version_compatibility:
 
-Version compatibility
----------------------
+Khả năng tương thích phiên bản
+------------------------------
 
-GDExtensions targeting an earlier version of Godot should work in later
-minor versions, but not vice-versa. For example, a GDExtension targeting Godot 4.2
-should work just fine in Godot 4.3, but one targeting Godot 4.3 won't work in Godot 4.2.
+Các GDExtension nhắm đến một phiên bản Godot cũ hơn sẽ hoạt động trong các phiên bản minor mới hơn, nhưng không hoạt động theo chiều ngược lại. Ví dụ, một GDExtension nhắm đến Godot 4.2 sẽ hoạt động bình thường trong Godot 4.3, nhưng một GDExtension nhắm đến Godot 4.3 sẽ không hoạt động trong Godot 4.2.
 
-For this reason, when creating GDExtensions, you may want to target the lowest version of
-Godot that has the features you need, *not* the most recent version of Godot. This can
-save you from needing to create multiple builds for different versions of Godot.
+Vì lý do này, khi tạo GDExtension, bạn nên nhắm đến phiên bản Godot thấp nhất có các tính năng mình cần, *không phải* phiên bản Godot mới nhất. Điều này có thể giúp bạn không phải tạo nhiều bản build cho các phiên bản Godot khác nhau.
 
-There is one exception to this: extensions targeting Godot 4.0 will **not** work with
-Godot 4.1 and later (see :ref:`updating_your_gdextension_for_godot_4_1`).
+Có một ngoại lệ: các extension nhắm đến Godot 4.0 **sẽ không** hoạt động với Godot 4.1 trở lên (xem :ref:`updating_your_gdextension_for_godot_4_1`).
 
-GDExtensions are also only compatible with engine builds that use the same
-level of floating-point precision the extension was compiled for. This means
-that if you use an engine build with double-precision floats, the extension must
-also be compiled for double-precision floats and use an ``extension_api.json``
-file generated by your custom engine build. See :ref:`doc_large_world_coordinates`
-for details.
+Nói chung, các GDExtension chỉ tương thích với những bản build của engine sử dụng cùng mức độ chính xác số thực như mức mà extension được biên dịch. Điều này có nghĩa là nếu bạn sử dụng một bản build của engine với số thực độ chính xác kép, extension cũng phải được biên dịch cho số thực độ chính xác kép và sử dụng tệp ``extension_api.json`` được tạo bởi bản build engine tùy chỉnh của bạn. Xem :ref:`doc_large_world_coordinates` để biết chi tiết.
 
-Generally speaking, if you build a custom version of Godot, you should generate an
-``extension_api.json`` from it for your GDExtensions, because it may have some differences
-from official Godot builds. You can learn more about the process of using custom
-``extension_api.json`` files in the :ref:`build system section <doc_godot_cpp_build_system>`.
+Nói chung, nếu bạn build một phiên bản Godot tùy chỉnh, bạn nên tạo một ``extension_api.json`` từ phiên bản đó cho các GDExtension của mình, vì nó có thể có một số điểm khác biệt so với các bản build Godot chính thức. Bạn có thể tìm hiểu thêm về quy trình sử dụng các tệp ``extension_api.json`` tùy chỉnh trong :ref:`build system section <doc_godot_cpp_build_system>`.

@@ -1,38 +1,26 @@
-GD0110: The exported tool button is not a Callable
-==================================================
+GD0110: Nút tool được export không phải là Callable
+===================================================
 
-====================================  ======================================
-                                      Value
-====================================  ======================================
-**Rule ID**                           GD0110
-**Category**                          Usage
-**Fix is breaking or non-breaking**   Breaking - If the property's type is changed to ``Callable``
+==================================== ====================================== Giá trị ==================================== ====================================== **ID quy tắc** GD0110 **Danh mục** Cách sử dụng **Bản sửa lỗi có gây breaking change hay không** Gây breaking change - Nếu kiểu của thuộc tính được đổi thành ``Callable``
 
-                                      Non-breaking - If the ``[ExportToolButton]`` is replaced with ``[Export]``
-**Enabled by default**                Yes
-====================================  ======================================
+                                      Không gây breaking change - Nếu ``[ExportToolButton]`` được thay thế bằng ``[Export]`` **Được bật theo mặc định** Có ==================================== ======================================
 
-Cause
------
+Nguyên nhân
+-----------
 
-A property of a type different from ``Callable`` is annotated with the
-``[ExportToolButton]`` attribute.
+Một thuộc tính có kiểu khác ``Callable`` được chú thích bằng thuộc tính ``[ExportToolButton]``.
 
-Rule description
-----------------
+Mô tả quy tắc
+-------------
 
-The ``[ExportToolButton]`` attribute is used to create clickable buttons in the inspector, so
-the property must be a ``Callable`` that will be executed when clicking the button.
+Thuộc tính ``[ExportToolButton]`` được dùng để tạo các nút có thể nhấp trong inspector, vì vậy thuộc tính này phải là một ``Callable`` sẽ được thực thi khi nhấp vào nút.
 
-How to fix violations
----------------------
+Cách khắc phục các lỗi vi phạm
+------------------------------
 
-To fix a violation of this rule, change the type of the property to ``Callable``.
-Alternatively, if you intended to export a normal property, replace the
-``[ExportToolButton]`` attribute with ``[Export]``.
+Để khắc phục lỗi vi phạm quy tắc này, hãy đổi kiểu của thuộc tính thành ``Callable``. Ngoài ra, nếu bạn định export một thuộc tính thông thường, hãy thay thuộc tính ``[ExportToolButton]`` bằng ``[Export]``.
 
-When to suppress warnings
--------------------------
+Khi nào nên tắt cảnh báo
+------------------------
 
-Do not suppress a warning from this rule. The exported property must be a ``Callable``
-so it can executed in the editor when clicking the button in the inspector.
+Không nên tắt cảnh báo từ quy tắc này. Thuộc tính được export phải là một ``Callable`` để có thể được thực thi trong editor khi nhấp vào nút trong inspector.

@@ -1,55 +1,42 @@
-GD0401: The class must derive from Godot.GodotObject or a derived class
-=======================================================================
+GD0401: Lớp phải kế thừa từ Godot.GodotObject hoặc một lớp dẫn xuất
+===================================================================
 
-====================================  ======================================
-                                      Value
-====================================  ======================================
-**Rule ID**                           GD0401
-**Category**                          Usage
-**Fix is breaking or non-breaking**   Breaking - If changing the inheritance chain
+==================================== ====================================== Giá trị ==================================== ====================================== **ID quy tắc** GD0401 **Danh mục** Cách sử dụng **Việc sửa lỗi có phá vỡ tương thích hay không** Phá vỡ tương thích - Nếu thay đổi chuỗi kế thừa
 
-                                      Non-breaking - If removing the ``[GlobalClass]`` attribute
-**Enabled by default**                Yes
-====================================  ======================================
+                                      Không phá vỡ tương thích - Nếu xóa thuộc tính ``[GlobalClass]`` **Được bật theo mặc định** Có ==================================== ======================================
 
-Cause
------
+Nguyên nhân
+-----------
 
-A type annotated with the ``[GlobalClass]`` attribute does not derive from
-``GodotObject``.
+Một kiểu được chú thích bằng thuộc tính ``[GlobalClass]`` không kế thừa từ ``GodotObject``.
 
-Rule description
-----------------
+Mô tả quy tắc
+-------------
 
-The ``[GlobalClass]`` has no effect for types that don't derive from ``GodotObject``.
-Every :ref:`global class <doc_c_sharp_global_classes>` must ultimately derive from
-``GodotObject`` so it can be marshalled.
+``[GlobalClass]`` không có tác dụng đối với các kiểu không kế thừa từ ``GodotObject``. Mọi :ref:`global class <doc_c_sharp_global_classes>` cuối cùng đều phải kế thừa từ ``GodotObject`` để có thể được marshal.
 
 .. code-block:: csharp
 
-    // This type is not registered as a global class because it doesn't derive from GodotObject.
+    // Kiểu này không được đăng ký làm global class vì không kế thừa từ GodotObject.
     [GlobalClass]
     class SomeType { }
 
-    // This type is a global class because it derives from Godot.Node
-    // which ultimately derives from GodotObject.
+    // Kiểu này là một global class vì nó kế thừa từ Godot.Node
+    // mà cuối cùng kế thừa từ GodotObject.
     [GlobalClass]
     class MyNode : Node { }
 
-    // This type is a global class because it derives from Godot.Resource
-    // which ultimately derives from GodotObject.
+    // Kiểu này là một global class vì nó kế thừa từ Godot.Resource
+    // mà cuối cùng kế thừa từ GodotObject.
     [GlobalClass]
     class MyResource : Resource { }
 
-How to fix violations
----------------------
+Cách khắc phục các vi phạm
+--------------------------
 
-To fix a violation of this rule, change the type to derive from ``GodotObject``
-or remove the ``[GlobalClass]`` attribute.
+Để khắc phục vi phạm quy tắc này, hãy thay đổi kiểu để kế thừa từ ``GodotObject`` hoặc xóa thuộc tính ``[GlobalClass]``.
 
-When to suppress warnings
--------------------------
+Khi nào cần bỏ qua cảnh báo
+---------------------------
 
-Do not suppress a warning from this rule. Adding the ``[GlobalClass]`` to a type
-that doesn't derive from ``GodotObject`` is an easy mistake to make and this
-warning helps users realize that it may result in unexpected errors.
+Không nên bỏ qua cảnh báo từ quy tắc này. Việc thêm ``[GlobalClass]`` vào một kiểu không kế thừa từ ``GodotObject`` là một lỗi dễ mắc phải, và cảnh báo này giúp người dùng nhận ra rằng điều đó có thể dẫn đến các lỗi không mong muốn.

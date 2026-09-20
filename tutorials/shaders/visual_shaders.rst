@@ -1,121 +1,71 @@
 .. _doc_visual_shaders:
 
-Using VisualShaders
-===================
+Sử dụng VisualShaders
+=====================
 
-VisualShaders are the visual alternative for creating shaders.
+VisualShaders là một lựa chọn trực quan để tạo shader.
 
-As shaders are inherently linked to visuals, the graph-based approach with
-previews of textures, materials, etc. offers a lot of additional convenience
-compared to purely script-based shaders. On the other hand, VisualShaders do not
-expose all features of the shader script and using both in parallel might be
-necessary for specific effects.
+Vì shader vốn gắn liền với hình ảnh, cách tiếp cận dựa trên graph với bản xem trước của texture, material, v.v. mang lại nhiều tiện lợi hơn so với shader hoàn toàn dựa trên script. Mặt khác, VisualShaders không cung cấp tất cả tính năng của shader script, vì vậy có thể cần sử dụng song song cả hai để tạo các hiệu ứng cụ thể.
 
 .. note::
 
-    If you are not familiar with shaders, start by reading
+    Nếu bạn chưa quen với shader, hãy bắt đầu bằng cách đọc
     :ref:`doc_introduction_to_shaders`.
 
-Creating a VisualShader
------------------------
+Tạo một VisualShader
+--------------------
 
-VisualShaders can be created in any :ref:`class_ShaderMaterial`. To begin using
-VisualShaders, create a new ``ShaderMaterial`` in an object of your choice.
+VisualShader có thể được tạo trong bất kỳ :ref:`class_ShaderMaterial` nào. Để bắt đầu sử dụng VisualShader, hãy tạo một ``ShaderMaterial`` mới trong đối tượng tùy ý.
 
 .. image:: img/shader_material_create_mesh.webp
 
-Then assign a :ref:`class_Shader` resource to the ``Shader`` property.
+Sau đó, gán một resource :ref:`class_Shader` cho thuộc tính ``Shader``.
 
 .. image:: img/visual_shader_create.webp
 
-Click on the new ``Shader`` resource and the Create Shader dialog will
-open automatically. Change the Type option to :ref:`class_VisualShader`
-in the dropdown, then give it a name.
+Nhấp vào resource ``Shader`` mới và hộp thoại Create Shader sẽ tự động mở. Thay đổi tùy chọn Type thành :ref:`class_VisualShader` trong menu thả xuống, sau đó đặt tên cho shader.
 
 .. image:: img/visual_shader_create2.webp
 
-Click on the visual shader you just created to open the Shader Editor.
-The layout of the Shader Editor comprises four parts, a file list on
-the left, the upper toolbar, the graph itself, and a material preview
-on the right that can be toggled off
+Nhấp vào visual shader vừa tạo để mở Shader Editor. Bố cục của Shader Editor gồm bốn phần: danh sách file ở bên trái, thanh công cụ phía trên, graph ở giữa và phần xem trước material ở bên phải, có thể tắt
 
 .. image:: img/visual_shader_editor2.webp
 
-From left to right in the toolbar:
+Từ trái sang phải trong thanh công cụ:
 
-- The arrow can be used to toggle the files panel's visibility.
-- The ``File`` button opens a dropdown menu for saving, loading, and creating
-  files.
-- The ``Add Node`` button displays a popup menu to let you add nodes to the
-  shader graph.
-- The drop-down menu is the shader type: Vertex, Fragment and Light. Like for
-  script shaders, it defines what built-in nodes will be available.
-- The following buttons and number input control the zooming level, grid
-  snapping and distance between grid lines (in pixels).
-- The toggle controls if the graph minimap in the bottom right of the editor
-  is visible or not.
-- The automatically arrange selected nodes button will try to organize any
-  nodes you have selected as efficiently and cleanly as possible.
-- The Manage Varyings button opens a dropdown that lets you add or remove a
-  varying.
-- The show generated code button shows shader code corresponding to your graph.
-- The toggle turns the material preview on or off.
-- The ``Online Docs`` button opens this documentation page in your web browser.
-- The last button allows you to put the shader editor in its own window,
-  separate from the rest of the editor.
+- Mũi tên dùng để bật hoặc tắt khả năng hiển thị của bảng file. - Nút ``File`` mở menu thả xuống để lưu, tải và tạo file. - Nút ``Add Node`` hiển thị menu popup, cho phép bạn thêm node vào shader graph. - Menu thả xuống là loại shader: Vertex, Fragment và Light. Giống như với script shader, menu này xác định các node dựng sẵn nào sẽ khả dụng. - Các nút tiếp theo và ô nhập số điều khiển mức zoom, tính năng bắt dính theo grid và khoảng cách giữa các đường grid (tính bằng pixel). - Công tắc này điều khiển việc minimap của graph ở góc dưới bên phải của editor có hiển thị hay không. - Nút tự động sắp xếp các node đã chọn sẽ cố gắng tổ chức mọi node bạn chọn một cách hiệu quả và gọn gàng nhất có thể. - Nút Manage Varyings mở menu thả xuống cho phép bạn thêm hoặc xóa một varying. - Nút hiển thị code được tạo ra sẽ hiển thị shader code tương ứng với graph của bạn. - Công tắc này bật hoặc tắt phần xem trước material. - Nút ``Online Docs`` mở trang tài liệu này trong trình duyệt web. - Nút cuối cùng cho phép bạn đưa shader editor vào một cửa sổ riêng, tách khỏi phần còn lại của editor.
 
 .. note::
 
-    Although VisualShaders do not require coding, they share the same logic with
-    script shaders. It is advised to learn the basics of both to have a good
-    understanding of the shading pipeline.
+    Mặc dù VisualShader không yêu cầu viết code, chúng vẫn dùng chung logic với script shader. Bạn nên học những kiến thức cơ bản của cả hai để hiểu rõ pipeline shading.
 
-    The visual shader graph is converted to a script shader behind the scene,
-    and you can see this code by pressing the last button in the toolbar. This
-    can be convenient to understand what a given node does and how to reproduce
-    it in scripts.
+    Visual shader graph được chuyển đổi thành script shader ở phía sau, và bạn có thể xem code này bằng cách nhấn nút cuối cùng trên thanh công cụ. Điều này có thể giúp bạn hiểu một node nhất định thực hiện gì và cách tái tạo nó bằng script.
 
-Using the Visual Shader Editor
-------------------------------
+Sử dụng Visual Shader Editor
+----------------------------
 
-By default, every new ``VisualShader`` will have an output node. Every node
-connection ends at one of the output node's sockets. A node is the basic unit to
-create your shader. To add a new node, click on the ``Add Node`` button on the
-upper left corner or right click on any empty location in the graph, and a menu
-will pop up.
+Theo mặc định, mọi ``VisualShader`` mới đều có một output node. Mỗi kết nối node kết thúc tại một trong các socket của output node. Node là đơn vị cơ bản để tạo shader. Để thêm node mới, hãy nhấp vào nút ``Add Node`` ở góc trên bên trái hoặc nhấp chuột phải vào bất kỳ vị trí trống nào trong graph; một menu sẽ bật lên.
 
 .. image:: img/vs_popup.webp
 
-This popup has the following properties:
+Popup này có các đặc điểm sau:
 
-- If you right-click on the graph, this menu will be called at the cursor
-  position and the created node, in that case, will also be placed under that
-  position; otherwise, it will be created at the graph's center.
-- It can be resized horizontally and vertically allowing more content to be
-  shown. Size transform and tree content position are saved between the calls,
-  so if you suddenly closed the popup you can easily restore its previous state.
-- The ``Expand All`` and ``Collapse All`` options in the drop-down option menu
-  can be used to easily list the available nodes.
-- You can also drag and drop nodes from the popup onto the graph.
+- Nếu bạn nhấp chuột phải vào graph, menu này sẽ được gọi tại vị trí con trỏ và node được tạo trong trường hợp đó cũng sẽ được đặt bên dưới vị trí ấy; nếu không, node sẽ được tạo ở trung tâm graph. - Popup có thể được thay đổi kích thước theo chiều ngang và chiều dọc, cho phép hiển thị nhiều nội dung hơn. Biến đổi kích thước và vị trí nội dung của tree được lưu lại giữa các lần mở, vì vậy nếu bạn vô tình đóng popup, bạn có thể dễ dàng khôi phục trạng thái trước đó. - Các tùy chọn ``Expand All`` và ``Collapse All`` trong menu tùy chọn thả xuống có thể được dùng để dễ dàng liệt kê các node khả dụng. - Bạn cũng có thể kéo và thả node từ popup vào graph.
 
-While the popup has nodes sorted in categories, it can seem overwhelming at
-first. Try to add some of the nodes, plug them in the output socket and observe
-what happens.
+Mặc dù popup sắp xếp các node theo danh mục, ban đầu nó có thể khiến bạn thấy choáng ngợp. Hãy thử thêm một số node, kết nối chúng vào output socket và quan sát điều gì xảy ra.
 
-When connecting any ``scalar`` output to a ``vector`` input, all components of
-the vector will take the value of the scalar.
+Khi kết nối bất kỳ output ``scalar`` nào với input ``vector``, tất cả component của vector sẽ nhận giá trị của scalar.
 
-When connecting any ``vector`` output to a ``scalar`` input, the value of the
-scalar will be the average of the vector's components.
+Khi kết nối bất kỳ output ``vector`` nào với input ``scalar``, giá trị của scalar sẽ là giá trị trung bình của các component trong vector.
 
-Visual Shader node interface
-------------------------------
+Giao diện node của Visual Shader
+--------------------------------
 
-Visual shader nodes have input and output ports. The input ports are located on the left side of the node, and output ports are located on the right side of the node.
+Node của Visual Shader có các port input và output. Port input nằm ở phía bên trái của node, còn port output nằm ở phía bên phải của node.
 
 .. figure:: img/vs_node.webp
 
-These ports are colored to differentiate type of port:
+Các port này được tô màu để phân biệt loại port:
 
 .. |scalar| image:: img/vs_scalar.webp
 .. |vector| image:: img/vs_vector.webp
@@ -128,126 +78,95 @@ These ports are colored to differentiate type of port:
    :widths: auto
    :header-rows: 1
 
-   * - Type
-     - Color
-     - Description
-     - Example
+   * - Loại
+     - Màu
+     - Mô tả
+     - Ví dụ
    * - Scalar
-     - Gray
-     - Scalar is a single value.
+     - Xám
+     - Scalar là một giá trị đơn.
      - |scalar|
    * - Vector
-     - Purple
-     - Vector is a set of values.
+     - Tím
+     - Vector là một tập hợp các giá trị.
      - |vector|
    * - Boolean
-     - Green
-     - On or off, true or false.
+     - Xanh lá
+     - Bật hoặc tắt, đúng hoặc sai.
      - |boolean|
    * - Transform
-     - Pink
-     - A matrix, usually used to transform vertices.
+     - Hồng
+     - Một ma trận, thường được dùng để biến đổi vertex.
      - |transform|
    * - Sampler
-     - Orange
-     - A texture sampler. It can be used to sample textures.
+     - Cam
+     - Một texture sampler. Có thể dùng nó để lấy mẫu texture.
      - |sampler|
 
-All of the types are used in the calculations of vertices, fragments, and lights in the shader. For example: matrix multiplication,
-vector addition, or scalar division.
+Tất cả các loại này được sử dụng trong phép tính của vertex, fragment và light trong shader. Ví dụ: phép nhân ma trận, phép cộng vector hoặc phép chia scalar.
 
-There are other types but these are the main ones.
+Có những loại khác, nhưng đây là các loại chính.
 
-Visual Shader nodes
--------------------
+Các node của Visual Shader
+--------------------------
 
-Below are some special nodes that are worth knowing about. The list is not
-exhaustive and might be expanded with more nodes and examples.
+Dưới đây là một số node đặc biệt mà bạn nên biết. Danh sách này không đầy đủ và có thể được mở rộng thêm với nhiều node và ví dụ khác.
 
-Expression node
+Node Expression
 ~~~~~~~~~~~~~~~
 
-The ``Expression`` node allows you to write Godot Shading Language (GLSL-like)
-expressions inside your visual shaders. The node has buttons to add any amount
-of required input and output ports and can be resized. You can also set up the
-name and type of each port. The expression you have entered will apply
-immediately to the material (once the focus leaves the expression text box). Any
-parsing or compilation errors will be printed to the Output tab. The outputs are
-initialized to their zero value by default. The node is located under the
-Special tab and can be used in all shader modes.
+Node ``Expression`` cho phép bạn viết các biểu thức Godot Shading Language (tương tự GLSL) bên trong visual shader. Node này có các nút để thêm số lượng tùy ý các port input và output cần thiết, đồng thời có thể thay đổi kích thước. Bạn cũng có thể thiết lập tên và loại của từng port. Biểu thức bạn nhập sẽ được áp dụng ngay cho material (sau khi focus rời khỏi ô nhập biểu thức). Mọi lỗi phân tích hoặc biên dịch sẽ được in ra tab Output. Theo mặc định, các output được khởi tạo với giá trị zero tương ứng. Node này nằm trong tab Special và có thể được sử dụng ở mọi chế độ shader.
 
-The possibilities of this node are almost limitless – you can write complex
-procedures, and use all the power of text-based shaders, such as loops, the
-``discard`` keyword, extended types, etc. For example:
+Khả năng của node này gần như vô hạn – bạn có thể viết các thủ tục phức tạp và sử dụng toàn bộ sức mạnh của shader dựa trên text, chẳng hạn như vòng lặp, từ khóa ``discard``, các kiểu mở rộng, v.v. Ví dụ:
 
 .. image:: img/vs_expression2.png
 
-Reroute node
+Node Reroute
 ~~~~~~~~~~~~
 
-The ``Reroute`` node is used purely for organizational purposes. In a complicated
-shader with many nodes you may find that the paths between nodes can make
-things hard to read. Reroute, as its name suggests, allows you to adjust the path
-between nodes to make things easier to read. You can even have multiple reroute
-nodes for a single path, which can be used to make right angles.
+Node ``Reroute`` chỉ được dùng cho mục đích tổ chức. Trong một shader phức tạp với nhiều node, bạn có thể thấy các đường nối giữa các node khiến việc đọc trở nên khó khăn. Reroute, đúng như tên gọi, cho phép bạn điều chỉnh đường nối giữa các node để chúng dễ đọc hơn. Bạn thậm chí có thể có nhiều node reroute trên cùng một đường nối, dùng để tạo các góc vuông.
 
 .. image:: img/vs_reroute.webp
 
-To move a reroute node move your mouse cursor above it, and grab the handle that
-appears.
+Để di chuyển node reroute, hãy đưa con trỏ chuột lên nó rồi kéo tay nắm xuất hiện.
 
 .. image:: img/vs_reroute_handle.webp
 
-Fresnel node
+Node Fresnel
 ~~~~~~~~~~~~
 
-The ``Fresnel`` node is designed to accept normal and view vectors and produces
-a scalar which is the saturated dot product between them. Additionally, you can
-setup the inversion and the power of equation. The ``Fresnel`` node is great for
-adding a rim-like lighting effect to objects.
+Node ``Fresnel`` được thiết kế để nhận các vector normal và view, sau đó tạo ra một scalar là tích vô hướng đã bão hòa giữa chúng. Ngoài ra, bạn có thể thiết lập phép đảo và số mũ của phương trình. Node ``Fresnel`` rất hữu ích để thêm hiệu ứng ánh sáng giống như viền sáng cho các đối tượng.
 
 .. image:: img/vs_fresnel.webp
 
-Boolean node
+Node Boolean
 ~~~~~~~~~~~~
 
-The ``Boolean`` node can be converted to ``Scalar`` or ``Vector`` to represent
-``0`` or ``1`` and ``(0, 0, 0)`` or ``(1, 1, 1)`` respectively. This property
-can be used to enable or disable some effect parts with one click.
+Node ``Boolean`` có thể được chuyển đổi thành ``Scalar`` hoặc ``Vector`` để biểu diễn ``0`` hoặc ``1`` và ``(0, 0, 0)`` hoặc ``(1, 1, 1)`` tương ứng. Có thể dùng thuộc tính này để bật hoặc tắt một số phần của hiệu ứng chỉ bằng một lần nhấp.
 
 .. image:: img/vs_boolean.gif
 
-If node
+Node If
 ~~~~~~~
 
-The ``If`` node allows you to setup a vector which will be returned the result
-of the comparison between ``a`` and ``b``. There are three vectors which can be
-returned: ``a == b`` (in that case the tolerance parameter is provided as a
-comparison threshold – by default it is equal to the minimal value, i.e.
-``0.00001``), ``a > b`` and ``a < b``.
+Node ``If`` cho phép bạn thiết lập một vector sẽ được trả về dựa trên kết quả so sánh giữa ``a`` và ``b``. Có ba vector có thể được trả về: ``a == b`` (trong trường hợp đó, tham số tolerance được cung cấp dưới dạng ngưỡng so sánh – theo mặc định, nó bằng giá trị nhỏ nhất, tức là ``0.00001``), ``a > b`` và ``a < b``.
 
 .. image:: img/vs_if.png
 
-Switch node
+Node Switch
 ~~~~~~~~~~~
 
-The ``Switch`` node returns a vector if the boolean condition is ``true`` or
-``false``. ``Boolean`` was introduced above. If you want to convert a vector
-to a true boolean, all components of the vector should be non-zero.
+Node ``Switch`` trả về một vector nếu điều kiện boolean là ``true`` hoặc ``false``. ``Boolean`` đã được giới thiệu ở trên. Nếu muốn chuyển đổi một vector thành boolean true, tất cả component của vector phải khác zero.
 
 .. image:: img/vs_switch.webp
 
 Mesh Emitter
 ~~~~~~~~~~~~
 
-The ``Mesh Emitter`` node is used for emitting particles from mesh vertices. This is
-only available for shaders that are in ``Particles`` mode.
+Node ``Mesh Emitter`` được dùng để phát particle từ các vertex của mesh. Node này chỉ khả dụng cho các shader ở chế độ ``Particles``.
 
-Keep in mind that not all 3D objects are mesh files. a glTF file can't be dragged
-and dropped into the graph. However, you can create an inherited scene from it,
-save the mesh in that scene as its own file, and use that.
+Hãy nhớ rằng không phải mọi đối tượng 3D đều là file mesh. Không thể kéo và thả file glTF vào graph. Tuy nhiên, bạn có thể tạo một scene kế thừa từ file đó, lưu mesh trong scene ấy thành file riêng và sử dụng file đó.
 
 .. image:: img/vs_meshemitter.webp
 
-You can also drag and drop obj files into the graph editor to add the node
-for that specific mesh, other mesh files will not work for this.
+Bạn cũng có thể kéo và thả các file obj vào graph editor để thêm node cho mesh cụ thể đó; các file mesh khác sẽ không hoạt động theo cách này.

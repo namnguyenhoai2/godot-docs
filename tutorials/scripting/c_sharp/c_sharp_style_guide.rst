@@ -1,75 +1,56 @@
 .. _doc_c_sharp_styleguide:
 
-C# style guide
-==============
+Hướng dẫn về phong cách C#
+==========================
 
-Having well-defined and consistent coding conventions is important for every project, and Godot
-is no exception to this rule.
+Việc có các quy ước viết mã được xác định rõ ràng và nhất quán là điều quan trọng đối với mọi dự án, và Godot cũng không ngoại lệ.
 
-This page contains a coding style guide, which is followed by developers of and contributors to Godot
-itself. As such, it is mainly intended for those who want to contribute to the project, but since
-the conventions and guidelines mentioned in this article are those most widely adopted by the users
-of the language, we encourage you to do the same, especially if you do not have such a guide yet.
+Trang này chứa hướng dẫn về phong cách viết mã được các nhà phát triển và cộng tác viên của chính Godot tuân theo. Vì vậy, hướng dẫn này chủ yếu dành cho những người muốn đóng góp cho dự án, nhưng vì các quy ước và hướng dẫn được đề cập trong bài viết này là những quy ước được người dùng ngôn ngữ áp dụng rộng rãi nhất, chúng tôi khuyến khích bạn cũng làm như vậy, đặc biệt nếu bạn chưa có hướng dẫn tương tự.
 
 .. note:: This article is by no means an exhaustive guide on how to follow the standard coding
-        conventions or best practices. If you feel unsure of an aspect which is not covered here,
-        please refer to more comprehensive documentation, such as
-        `C# Coding Conventions <https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions>`_ or
-        `Framework Design Guidelines <https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/naming-guidelines>`_.
+        các quy ước hoặc phương pháp hay nhất. Nếu bạn không chắc chắn về một khía cạnh không được đề cập ở đây, hãy tham khảo tài liệu toàn diện hơn, chẳng hạn như `C# Coding Conventions <https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions>`_ hoặc `Framework Design Guidelines <https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/naming-guidelines>`_.
 
-Language specification
-----------------------
+Đặc tả ngôn ngữ
+---------------
 
-Godot currently uses **C# version 12.0** in its engine and example source code,
-as this is the version supported by .NET 8.0 (the current baseline requirement).
-So, before we move to a newer version, care must be taken to avoid mixing
-language features only available in C# 13.0 or later.
+Hiện tại Godot sử dụng **C# phiên bản 12.0** trong engine và mã nguồn ví dụ, vì đây là phiên bản được .NET 8.0 hỗ trợ (yêu cầu cơ sở hiện tại). Do đó, trước khi chuyển sang phiên bản mới hơn, cần cẩn thận để tránh sử dụng lẫn các tính năng ngôn ngữ chỉ có trong C# 13.0 trở lên.
 
-For detailed information on C# features in different versions, please see
-`What's New in C# <https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/>`_.
+Để biết thông tin chi tiết về các tính năng C# trong những phiên bản khác nhau, hãy xem `What's New in C# <https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/>`_.
 
-Formatting
-----------
+Định dạng
+---------
 
-General guidelines
-~~~~~~~~~~~~~~~~~~
+Hướng dẫn chung
+~~~~~~~~~~~~~~~
 
-* Use line feed (**LF**) characters to break lines, not CRLF or CR.
-* Use one line feed character at the end of each file, except for `csproj` files.
-* Use **UTF-8** encoding without a `byte order mark <https://en.wikipedia.org/wiki/Byte_order_mark>`_.
-* Use **4 spaces** instead of tabs for indentation (which is referred to as "soft tabs").
-* Consider breaking a line into several if it's longer than 100 characters.
+* Sử dụng ký tự line feed (**LF**) để ngắt dòng, không sử dụng CRLF hoặc CR. * Sử dụng một ký tự line feed ở cuối mỗi tệp, ngoại trừ các tệp `csproj`. * Sử dụng encoding **UTF-8** không có `byte order mark <https://en.wikipedia.org/wiki/Byte_order_mark>`_. * Sử dụng **4 khoảng trắng** thay cho tab để thụt lề (được gọi là "soft tabs"). * Cân nhắc chia một dòng thành nhiều dòng nếu dòng đó dài hơn 100 ký tự.
 
 
-Line breaks and blank lines
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Ngắt dòng và dòng trống
+~~~~~~~~~~~~~~~~~~~~~~~
 
-For a general indentation rule, follow `the "Allman Style" <https://en.wikipedia.org/wiki/Indentation_style#Allman_style>`_
-which recommends placing the brace associated with a control statement on the next line, indented to
-the same level:
+Đối với quy tắc thụt lề chung, hãy làm theo `the "Allman Style" <https://en.wikipedia.org/wiki/Indentation_style#Allman_style>`_, trong đó khuyến nghị đặt dấu ngoặc nhọn liên kết với một câu lệnh điều khiển ở dòng tiếp theo, được thụt lề cùng cấp:
 
 .. code-block:: csharp
 
-    // Use this style:
+    // Sử dụng phong cách này:
     if (x > 0)
     {
         DoSomething();
     }
 
-    // NOT this:
+    // KHÔNG sử dụng phong cách này:
     if (x > 0) {
         DoSomething();
     }
 
-However, you may choose to omit line breaks inside brackets:
+Tuy nhiên, bạn có thể chọn bỏ qua ngắt dòng bên trong các dấu ngoặc:
 
-* For simple property accessors.
-* For simple object, array, or collection initializers.
-* For abstract auto property, indexer, or event declarations.
+* Đối với các accessor của property đơn giản. * Đối với các initializer của object, array hoặc collection đơn giản. * Đối với các khai báo abstract auto property, indexer hoặc event.
 
 .. code-block:: csharp
 
-    // You may put the brackets in a single line in following cases:
+    // Bạn có thể đặt các dấu ngoặc trên cùng một dòng trong các trường hợp sau:
     public interface MyInterface
     {
         int MyProperty { get; set; }
@@ -87,80 +68,64 @@ However, you may choose to omit line breaks inside brackets:
         }
     }
 
-Insert a blank line:
+Chèn một dòng trống:
 
-* After a list of ``using`` statements.
-* Between method, properties, and inner type declarations.
-* At the end of each file.
+* Sau một danh sách các câu lệnh ``using``. * Giữa các khai báo method, property và inner type. * Ở cuối mỗi tệp.
 
-Field and constant declarations can be grouped together according to relevance. In that case, consider
-inserting a blank line between the groups for easier reading.
+Các khai báo field và constant có thể được nhóm lại với nhau theo mức độ liên quan. Trong trường hợp đó, hãy cân nhắc chèn một dòng trống giữa các nhóm để dễ đọc hơn.
 
-Avoid inserting a blank line:
+Tránh chèn một dòng trống:
 
-* After ``{``, the opening brace.
-* Before ``}``, the closing brace.
-* After a comment block or a single-line comment.
-* Adjacent to another blank line.
+* Sau ``{``, dấu ngoặc nhọn mở. * Trước ``}``, dấu ngoặc nhọn đóng. * Sau một khối comment hoặc một comment một dòng. * Liền kề với một dòng trống khác.
 
 .. code-block:: csharp
 
     using System;
     using Godot;
-                                              // Blank line after `using` list.
+                                              // Dòng trống sau danh sách `using`.
     public class MyClass
-    {                                         // No blank line after `{`.
+    {                                         // Không có dòng trống sau `{`.
         public enum MyEnum
         {
             Value,
-            AnotherValue                      // No blank line before `}`.
+            AnotherValue                      // Không có dòng trống trước `}`.
         }
-                                              // Blank line around inner types.
+                                              // Dòng trống xung quanh inner type.
         public const int SomeConstant = 1;
         public const int AnotherConstant = 2;
 
-        private Vector3 _x;                  // Related constants or fields can be
-        private Vector3 _y;                  // grouped together.
+        private Vector3 _x;                  // Các constant hoặc field liên quan có thể được
+        private Vector3 _y;                  // nhóm lại với nhau.
 
         private float _width;
         private float _height;
 
         public int MyProperty { get; set; }
-                                              // Blank line around properties.
+                                              // Dòng trống xung quanh property.
         public void MyMethod()
         {
-            // Some comment.
-            AnotherMethod();                  // No blank line after a comment.
+            // Một comment nào đó.
+            AnotherMethod();                  // Không có dòng trống sau comment.
         }
-                                              // Blank line around methods.
+                                              // Dòng trống xung quanh method.
         public void AnotherMethod()
         {
         }
     }
 
 
-Using spaces
-~~~~~~~~~~~~
+Sử dụng khoảng trắng
+~~~~~~~~~~~~~~~~~~~~
 
-Insert a space:
+Chèn một khoảng trắng:
 
-* Around a binary and ternary operator.
-* Between an opening parenthesis and ``if``, ``for``, ``foreach``, ``catch``, ``while``, ``lock`` or ``using`` keywords.
-* Before and within a single line accessor block.
-* Between accessors in a single line accessor block.
-* After a comma which is not at the end of a line.
-* After a semicolon in a ``for`` statement.
-* After a colon in a single line ``case`` statement.
-* Around a colon in a type declaration.
-* Around a lambda arrow.
-* After a single-line comment symbol (``//``), and before it if used at the end of a line.
-* After the opening brace, and before the closing brace in a single line initializer.
+* Xung quanh toán tử nhị phân và toán tử ba ngôi. * Giữa dấu ngoặc đơn mở và ``if``, ``for``, ``foreach``, ``catch``, ``while``, ``lock`` hoặc các keyword ``using``. * Trước và bên trong một accessor block một dòng. * Giữa các accessor trong một accessor block một dòng. * Sau dấu phẩy không nằm ở cuối dòng. * Sau dấu chấm phẩy trong câu lệnh ``for``. * Sau dấu hai chấm trong câu lệnh ``case`` một dòng. * Xung quanh dấu hai chấm trong khai báo type. * Xung quanh mũi tên lambda. * Sau ký hiệu comment một dòng (``//``), và trước ký hiệu đó nếu được dùng ở cuối dòng. * Sau dấu ngoặc nhọn mở và trước dấu ngoặc nhọn đóng trong một initializer một dòng.
 
-Do not use a space:
+Không sử dụng khoảng trắng:
 
-* After type cast parentheses.
+* Sau dấu ngoặc của phép ép kiểu.
 
-The following example shows a proper use of spaces, according to some of the above mentioned conventions:
+Ví dụ sau đây minh họa cách sử dụng khoảng trắng đúng theo một số quy ước được đề cập ở trên:
 
 .. code-block:: csharp
 
@@ -178,7 +143,7 @@ The following example shows a proper use of spaces, according to some of the abo
             int[] values = { 1, 2, 3, 4 };
             int sum = 0;
 
-            // Single line comment.
+            // Comment một dòng.
             for (int i = 0; i < values.Length; i++)
             {
                 switch (i)
@@ -190,15 +155,14 @@ The following example shows a proper use of spaces, according to some of the abo
                 }
             }
 
-            i += (int)MyProperty; // No space after a type cast.
+            i += (int)MyProperty; // Không có khoảng trắng sau phép ép kiểu.
         }
     }
 
-Naming conventions
-------------------
+Quy ước đặt tên
+---------------
 
-Use **PascalCase** for all namespaces, type names and member level identifiers (i.e. methods, properties,
-constants, events), except for private fields:
+Sử dụng **PascalCase** cho tất cả namespace, tên type và identifier ở cấp member (tức là method, property, constant, event), ngoại trừ private field:
 
 .. code-block:: csharp
 
@@ -218,12 +182,11 @@ constants, events), except for private fields:
         }
     }
 
-Use **camelCase** for all other identifiers (i.e. local variables, method arguments), and use
-an underscore (``_``) as a prefix for private fields (but not for methods or properties, as explained above):
+Sử dụng **camelCase** cho tất cả identifier còn lại (tức là local variable, tham số method), và sử dụng dấu gạch dưới (``_``) làm tiền tố cho private field (nhưng không dùng cho method hoặc property, như đã giải thích ở trên):
 
 .. code-block:: csharp
 
-    private Vector3 _aimingAt; // Use an `_` prefix for private fields.
+    private Vector3 _aimingAt; // Sử dụng tiền tố `_` cho private field.
 
     private void Attack(float attackStrength)
     {
@@ -232,10 +195,9 @@ an underscore (``_``) as a prefix for private fields (but not for methods or pro
         targetFound?.Hit(attackStrength);
     }
 
-There's an exception with acronyms which consist of two letters, like ``UI``, which should be written in
-uppercase letters where PascalCase would be expected, and in lowercase letters otherwise.
+Có một ngoại lệ đối với các acronym gồm hai chữ cái, chẳng hạn như ``UI``, vốn phải được viết bằng chữ in hoa ở nơi PascalCase được sử dụng, và bằng chữ thường trong các trường hợp khác.
 
-Note that ``id`` is **not** an acronym, so it should be treated as a normal identifier:
+Lưu ý rằng ``id`` **không phải** là một acronym, vì vậy nó phải được xử lý như một identifier thông thường:
 
 .. code-block:: csharp
 
@@ -246,48 +208,40 @@ Note that ``id`` is **not** an acronym, so it should be treated as a normal iden
         get { return uiManager; }
     }
 
-It is generally discouraged to use a type name as a prefix of an identifier, like ``string strText``
-or ``float fPower``, for example. An exception is made, however, for interfaces, which
-**should**, in fact, have an uppercase letter ``I`` prefixed to their names, like ``IInventoryHolder`` or ``IDamageable``.
+Nhìn chung, không nên sử dụng tên type làm tiền tố của một identifier, chẳng hạn như ``string strText`` hoặc ``float fPower``. Tuy nhiên, có một ngoại lệ dành cho interface: chúng **nên** có một chữ cái in hoa ``I`` làm tiền tố trong tên, chẳng hạn như ``IInventoryHolder`` hoặc ``IDamageable``.
 
-Lastly, consider choosing descriptive names and do not try to shorten them too much if it affects
-readability.
+Cuối cùng, hãy cân nhắc chọn những tên mang tính mô tả và đừng cố rút ngắn chúng quá nhiều nếu điều đó ảnh hưởng đến khả năng đọc.
 
-For instance, if you want to write code to find a nearby enemy and hit it with a weapon, prefer:
+Ví dụ, nếu bạn muốn viết mã để tìm một kẻ địch ở gần và tấn công nó bằng vũ khí, hãy ưu tiên:
 
 .. code-block:: csharp
 
     FindNearbyEnemy()?.Damage(weaponDamage);
 
-Rather than:
+Thay vì:
 
 .. code-block:: csharp
 
     FindNode()?.Change(wpnDmg);
 
-Member variables
-----------------
-
-Don't declare member variables if they are only used locally in a method, as it
-makes the code more difficult to follow. Instead, declare them as local
-variables in the method's body.
-
-Local variables
+Member variable
 ---------------
 
-Declare local variables as close as possible to their first use. This makes it
-easier to follow the code, without having to scroll too much to find where the
-variable was declared.
+Đừng khai báo member variable nếu chúng chỉ được sử dụng cục bộ trong một method, vì điều đó khiến mã khó theo dõi hơn. Thay vào đó, hãy khai báo chúng dưới dạng local variable trong phần thân của method.
 
-Implicitly typed local variables
---------------------------------
+Local variable
+--------------
 
-Consider using implicitly typing (``var``) for declaration of a local variable, but do so
-**only when the type is evident** from the right side of the assignment:
+Khai báo local variable gần nhất có thể với lần sử dụng đầu tiên của nó. Điều này giúp dễ theo dõi mã hơn mà không phải cuộn quá nhiều để tìm nơi variable được khai báo.
+
+Local variable được định kiểu ngầm
+----------------------------------
+
+Cân nhắc sử dụng định kiểu ngầm (``var``) khi khai báo local variable, nhưng **chỉ khi type có thể được suy ra rõ ràng** từ phía bên phải của phép gán:
 
 .. code-block:: csharp
 
-    // You can use `var` for these cases:
+    // Bạn có thể sử dụng `var` trong các trường hợp sau:
 
     var direction = new Vector2(1, 0);
 
@@ -299,27 +253,19 @@ Consider using implicitly typing (``var``) for declaration of a local variable, 
     {
     }
 
-    // But not for these:
+    // Nhưng không sử dụng cho các trường hợp sau:
 
     var value = GetValue();
 
     var velocity = direction * 1.5;
 
-    // It's generally a better idea to use explicit typing for numeric values, especially with
-    // the existence of the `real_t` alias in Godot, which can either be double or float
-    // depending on the build configuration.
+    // Nhìn chung, sử dụng định kiểu tường minh cho các giá trị số là một ý hay hơn, đặc biệt khi có
+    // alias `real_t` trong Godot, có thể là double hoặc float
+    // tùy thuộc vào cấu hình build.
 
     var value = 1.5;
 
-Other considerations
---------------------
+Các lưu ý khác
+--------------
 
- * Use explicit access modifiers.
- * Use properties instead of non-private fields.
- * Use modifiers in this order:
-   ``public``/``protected``/``private``/``internal``/``virtual``/``override``/``abstract``/``new``/``static``/``readonly``.
- * Avoid using fully-qualified names or ``this.`` prefix for members when it's not necessary.
- * Remove unused ``using`` statements and unnecessary parentheses.
- * Consider omitting the default initial value for a type.
- * Consider using null-conditional operators or type initializers to make the code more compact.
- * Use safe cast when there is a possibility of the value being a different type, and use direct cast otherwise.
+ * Use explicit access modifiers. * Use properties instead of non-private fields. * Use modifiers in this order: ``public``/``protected``/``private``/``internal``/``virtual``/``override``/``abstract``/``new``/``static``/``readonly``. * Avoid using fully-qualified names or ``this.`` prefix for members when it's not necessary. * Remove unused ``using`` statements and unnecessary parentheses. * Consider omitting the default initial value for a type. * Consider using null-conditional operators or type initializers to make the code more compact. * Use safe cast when there is a possibility of the value being a different type, and use direct cast otherwise.
