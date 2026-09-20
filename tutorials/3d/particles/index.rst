@@ -2,43 +2,29 @@
 
 .. _doc_3d_particles:
 
-Particle systems (3D)
-=====================
+Hệ thống particle (3D)
+======================
 
-This section of the tutorial covers (3D) GPU-accelerated particle systems. Most of the things
-discussed here apply to CPU particles as well.
+Phần này của tutorial trình bày về các hệ thống particle (3D) được tăng tốc bằng GPU. Hầu hết những nội dung được thảo luận ở đây cũng áp dụng cho particle CPU.
 
 .. rubric:: Introduction
    :heading-level: 2
 
-You can use particle systems to simulate complex physical effects like fire, sparks,
-smoke, magical effects, and many more. They are very well suited for creating dynamic and organic
-behavior and adding "life" to your scenes.
+Bạn có thể sử dụng hệ thống particle để mô phỏng các hiệu ứng vật lý phức tạp như lửa, tia lửa, khói, hiệu ứng ma thuật và nhiều hiệu ứng khác. Chúng đặc biệt phù hợp để tạo ra hành vi năng động, tự nhiên và thêm "sức sống" vào các scene của bạn.
 
-The idea is that a particle is emitted at a fixed interval and with a fixed lifetime. During
-its lifetime, every particle will have the same base behavior. What makes each particle different
-from the others and creates the organic look is the randomness that you can add to most of its
-parameters and behaviors.
+Ý tưởng là một particle được phát ra theo một khoảng thời gian cố định và có lifetime cố định. Trong suốt lifetime của nó, mọi particle sẽ có cùng hành vi cơ bản. Điều khiến mỗi particle khác biệt với những particle khác và tạo ra vẻ tự nhiên là tính ngẫu nhiên mà bạn có thể thêm vào hầu hết các tham số và hành vi của nó.
 
-Every particle system you create in Godot consists of two main parts: particles and emitters.
+Mỗi hệ thống particle bạn tạo trong Godot gồm hai phần chính: particle và emitter.
 
 .. rubric:: Particles
    :heading-level: 3
 
-A particle is the visible part of a particle system. It's what you see on the screen when a particle
-system is active: The tiny specks of dust, the flames of a fire, the glowing orbs of a magical
-effect. You can have anywhere between a couple hundred and tens of thousands of particles in a
-single system. You can randomize a particle's size, its speed and movement direction, and change its
-color over the course of its lifetime. When you think of a fire, you can think of all the little
-embers flying away from it as individual particles.
+Particle là phần hiển thị của một hệ thống particle. Đó là những gì bạn nhìn thấy trên màn hình khi một hệ thống particle đang hoạt động: những hạt bụi nhỏ li ti, ngọn lửa, những quả cầu phát sáng của một hiệu ứng ma thuật. Một hệ thống có thể có từ vài trăm đến hàng chục nghìn particle. Bạn có thể ngẫu nhiên hóa kích thước, tốc độ và hướng chuyển động của particle, đồng thời thay đổi màu của nó trong suốt lifetime. Khi nghĩ về một ngọn lửa, bạn có thể hình dung tất cả những đốm than nhỏ bay ra từ đó như các particle riêng lẻ.
 
 .. rubric:: Emitters
    :heading-level: 3
 
-An emitter is what's creating the particles. Emitters are usually not visible, but they can have
-a shape. That shape controls where and how particles are spawned, for example whether they should fill
-a room like dust or shoot away from a single point like a fountain. Going back to the fire example,
-an emitter would be the heat at the center of the fire that creates the embers and the flames.
+Emitter là thành phần tạo ra các particle. Emitter thường không hiển thị, nhưng có thể có một hình dạng. Hình dạng đó kiểm soát vị trí và cách các particle được spawn, chẳng hạn chúng sẽ lấp đầy một căn phòng như bụi hay bắn ra từ một điểm duy nhất như đài phun nước. Quay lại ví dụ về ngọn lửa, emitter sẽ là phần nhiệt ở trung tâm ngọn lửa, tạo ra các đốm than và ngọn lửa.
 
 .. rubric:: Node overview
    :heading-level: 3
@@ -49,30 +35,19 @@ an emitter would be the heat at the center of the fire that creates the embers a
 
    All 3D particle nodes available in Godot
 
-There are two types of 3D particle systems in Godot: :ref:`class_GPUParticles3D`, which are processed on the GPU,
-and :ref:`class_CPUParticles3D`, which are processed on the CPU.
+Có hai loại hệ thống particle 3D trong Godot: :ref:`class_GPUParticles3D`, được xử lý trên GPU, và :ref:`class_CPUParticles3D`, được xử lý trên CPU.
 
-CPU particle systems are less flexible than their GPU counterpart, but they work on a wider range of hardware and
-provide better support for older devices and mobile phones. Because they are processed on the CPU,
-they are not as performant as GPU particle systems and can't render as many individual particles.
-In addition they currently do not have all the available options GPU particles have for control.
+Hệ thống particle CPU kém linh hoạt hơn so với phiên bản GPU tương ứng, nhưng hoạt động trên nhiều loại hardware hơn và hỗ trợ tốt hơn cho các thiết bị cũ cũng như điện thoại di động. Vì được xử lý trên CPU nên chúng không có hiệu năng tốt bằng hệ thống particle GPU và không thể render nhiều particle riêng lẻ như vậy. Ngoài ra, hiện tại chúng chưa có đầy đủ các tùy chọn điều khiển mà particle GPU cung cấp.
 
-GPU particle systems run on the GPU and can render hundreds of thousands of particles on modern
-hardware. You can write custom particle shaders for them, which makes them very flexible. You can
-also make them interact with the environment by using attractor and collision nodes.
+Hệ thống particle GPU chạy trên GPU và có thể render hàng trăm nghìn particle trên hardware hiện đại. Bạn có thể viết các particle shader tùy chỉnh cho chúng, nhờ đó chúng rất linh hoạt. Bạn cũng có thể khiến chúng tương tác với môi trường bằng cách sử dụng các node attractor và collision.
 
-There are three particle attractor nodes: :ref:`class_GPUParticlesAttractorBox3D`, :ref:`class_GPUParticlesAttractorSphere3D`,
-and :ref:`class_GPUParticlesAttractorVectorField3D`. An attractor node applies a force to all particles
-in its reach and pulls them closer or pushes them away based on the direction of that force.
+Có ba node particle attractor: :ref:`class_GPUParticlesAttractorBox3D`, :ref:`class_GPUParticlesAttractorSphere3D` và :ref:`class_GPUParticlesAttractorVectorField3D`. Một node attractor tác dụng một lực lên tất cả particle trong phạm vi ảnh hưởng của nó, kéo chúng lại gần hoặc đẩy chúng ra xa dựa trên hướng của lực đó.
 
-There are several particle collision nodes. :ref:`class_GPUParticlesCollisionBox3D` and
+Có một số node particle collision. :ref:`class_GPUParticlesCollisionBox3D` và
 :ref:`class_GPUParticlesCollisionSphere3D` are the simple ones. You can use them to create basic
-shapes like boxes, a floor, or a wall that particles collide with. The other two nodes provide
-more complex collision behavior. The :ref:`class_GPUParticlesCollisionSDF3D` is useful when you want
-indoor scenes to collide with particles without having to create all the individual box and sphere
-colliders by hand. If you want particles to collide with large outdoor scenes, you would use the
+các hình dạng như box, floor hoặc wall mà particle va chạm vào. Hai node còn lại cung cấp hành vi collision phức tạp hơn. :ref:`class_GPUParticlesCollisionSDF3D` hữu ích khi bạn muốn các scene trong nhà va chạm với particle mà không phải tự tạo tất cả collider box và sphere riêng lẻ. Nếu muốn particle va chạm với các scene ngoài trời lớn, bạn sẽ sử dụng
 :ref:`class_GPUParticlesCollisionHeightField3D` node. It creates a heightmap of your world and the
-objects in it and uses that for large-scale particle collisions.
+các object trong đó và dùng chúng cho các collision particle quy mô lớn.
 
 
 .. rubric:: Basic usage

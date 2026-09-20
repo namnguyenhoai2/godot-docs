@@ -1,16 +1,13 @@
 .. _doc_surfacetool:
 
-Using the SurfaceTool
-=====================
+Sử dụng SurfaceTool
+===================
 
-The :ref:`SurfaceTool <class_surfacetool>` provides a useful interface for constructing geometry.
-The interface is similar to the :ref:`ImmediateMesh <class_ImmediateMesh>` class. You
-set each per-vertex attribute (e.g. normal, uv, color) and then when you add a vertex it
-captures the attributes.
+:ref:`SurfaceTool <class_surfacetool>` cung cấp một interface hữu ích để xây dựng hình học. Interface này tương tự như class :ref:`ImmediateMesh <class_ImmediateMesh>`. Bạn thiết lập từng thuộc tính trên mỗi vertex (ví dụ: normal, uv, color), sau đó khi thêm một vertex, các thuộc tính đó sẽ được ghi nhận.
 
-The SurfaceTool also provides some useful helper functions like ``index()`` and ``generate_normals()``.
+SurfaceTool cũng cung cấp một số helper function hữu ích như ``index()`` và ``generate_normals()``.
 
-Attributes are added before each vertex is added:
+Các thuộc tính được thêm trước khi thêm từng vertex:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -19,43 +16,40 @@ Attributes are added before each vertex is added:
 
     st.begin(Mesh.PRIMITIVE_TRIANGLES)
 
-    st.set_normal() # Overwritten by normal below.
-    st.set_normal() # Added to next vertex.
-    st.set_color() # Added to next vertex.
-    st.add_vertex() # Captures normal and color above.
-    st.set_normal() # Normal never added to a vertex.
+    st.set_normal() # Bị ghi đè bởi normal bên dưới.
+    st.set_normal() # Được thêm vào vertex tiếp theo.
+    st.set_color() # Được thêm vào vertex tiếp theo.
+    st.add_vertex() # Ghi nhận normal và color ở trên.
+    st.set_normal() # Normal không bao giờ được thêm vào vertex.
 
  .. code-tab:: csharp
 
-    st.SetNormal(); // Overwritten by normal below.
-    st.SetNormal(); // Added to next vertex.
-    st.SetColor(); // Added to next vertex.
-    st.AddVertex(); // Captures normal and color above.
-    st.SetNormal(); // Normal never added to a vertex.
+    st.SetNormal(); // Bị ghi đè bởi normal bên dưới.
+    st.SetNormal(); // Được thêm vào vertex tiếp theo.
+    st.SetColor(); // Được thêm vào vertex tiếp theo.
+    st.AddVertex(); // Ghi nhận normal và color ở trên.
+    st.SetNormal(); // Normal không bao giờ được thêm vào vertex.
 
-When finished generating your geometry with the :ref:`SurfaceTool <class_surfacetool>`,
-call ``commit()`` to finish generating the mesh. If an :ref:`ArrayMesh <class_ArrayMesh>` is passed
-to ``commit()``, then it appends a new surface to the end of the ArrayMesh. While if nothing is passed
-in, ``commit()`` returns an ArrayMesh.
+Khi hoàn tất việc tạo hình học bằng :ref:`SurfaceTool <class_surfacetool>`, hãy gọi ``commit()`` để hoàn tất việc tạo mesh. Nếu truyền một :ref:`ArrayMesh <class_ArrayMesh>` vào ``commit()``, nó sẽ thêm một surface mới vào cuối ArrayMesh. Còn nếu không truyền gì, ``commit()`` sẽ trả về một ArrayMesh.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Add surface to existing ArrayMesh.
+    # Thêm surface vào ArrayMesh hiện có.
     st.commit(mesh)
 
-    # -- Or Alternatively --
+    # -- Hoặc thay thế --
 
-    # Create new ArrayMesh.
+    # Tạo ArrayMesh mới.
     var mesh = st.commit()
 
  .. code-tab:: csharp
 
     st.Commit(mesh);
-    // Or:
+    // Hoặc:
     var mesh = st.Commit();
 
-The code below creates a triangle without indices.
+Đoạn code bên dưới tạo một triangle không có index.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -64,10 +58,10 @@ The code below creates a triangle without indices.
 
     st.begin(Mesh.PRIMITIVE_TRIANGLES)
 
-    # Prepare attributes for add_vertex.
+    # Chuẩn bị các thuộc tính cho add_vertex.
     st.set_normal(Vector3(0, 0, 1))
     st.set_uv(Vector2(0, 0))
-    # Call last for each vertex, adds the above attributes.
+    # Gọi hàm này sau cùng cho mỗi vertex; hàm sẽ thêm các thuộc tính ở trên.
     st.add_vertex(Vector3(-1, -1, 0))
 
     st.set_normal(Vector3(0, 0, 1))
@@ -78,7 +72,7 @@ The code below creates a triangle without indices.
     st.set_uv(Vector2(1, 1))
     st.add_vertex(Vector3(1, 1, 0))
 
-    # Commit to a mesh.
+    # Commit vào một mesh.
     var mesh = st.commit()
 
  .. code-tab:: csharp
@@ -87,10 +81,10 @@ The code below creates a triangle without indices.
 
     st.Begin(Mesh.PrimitiveType.Triangles);
 
-    // Prepare attributes for AddVertex.
+    // Chuẩn bị các thuộc tính cho AddVertex.
     st.SetNormal(new Vector3(0, 0, 1));
     st.SetUV(new Vector2(0, 0));
-    // Call last for each vertex, adds the above attributes.
+    // Gọi hàm này sau cùng cho mỗi vertex; hàm sẽ thêm các thuộc tính ở trên.
     st.AddVertex(new Vector3(-1, -1, 0));
 
     st.SetNormal(new Vector3(0, 0, 1));
@@ -101,18 +95,15 @@ The code below creates a triangle without indices.
     st.SetUV(new Vector2(1, 1));
     st.AddVertex(new Vector3(1, 1, 0));
 
-    // Commit to a mesh.
+    // Commit vào một mesh.
     var mesh = st.Commit();
 
-You can optionally add an index array, either by calling ``add_index()`` and adding
-vertices to the index array manually, or by calling ``index()`` once,
-which generates the index array automatically and
-shrinks the vertex array to remove duplicate vertices.
+Bạn có thể tùy chọn thêm một index array, bằng cách gọi ``add_index()`` rồi thêm các vertex vào index array theo cách thủ công, hoặc gọi ``index()`` một lần để tự động tạo index array và thu nhỏ vertex array nhằm loại bỏ các vertex trùng lặp.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Suppose we have a quad defined by 6 vertices as follows
+    # Giả sử chúng ta có một quad được định nghĩa bởi 6 vertex như sau
     st.add_vertex(Vector3(-1, 1, 0))
     st.add_vertex(Vector3(1, 1, 0))
     st.add_vertex(Vector3(-1, -1, 0))
@@ -121,16 +112,16 @@ shrinks the vertex array to remove duplicate vertices.
     st.add_vertex(Vector3(1, -1, 0))
     st.add_vertex(Vector3(-1, -1, 0))
 
-    # We can make the quad more efficient by using an index array and only utilizing 4 vertices:
+    # Chúng ta có thể làm quad hiệu quả hơn bằng cách sử dụng index array và chỉ dùng 4 vertex:
 
     st.add_vertex(Vector3(-1, 1, 0))
     st.add_vertex(Vector3(1, 1, 0))
     st.add_vertex(Vector3(-1, -1, 0))
     st.add_vertex(Vector3(1, -1, 0))
 
-    # Creates a quad from four corner vertices.
-    # add_index() can be called before or after add_vertex()
-    # since it's not an attribute of a vertex itself.
+    # Tạo một quad từ bốn vertex ở các góc.
+    # add_index() có thể được gọi trước hoặc sau add_vertex()
+    # vì nó không phải là thuộc tính của chính vertex.
     st.add_index(0)
     st.add_index(1)
     st.add_index(2)
@@ -139,12 +130,12 @@ shrinks the vertex array to remove duplicate vertices.
     st.add_index(3)
     st.add_index(2)
 
-    # Alternatively we can use ``st.index()`` which will create the quad for us and remove the duplicate vertices
+    # Ngoài ra, chúng ta có thể sử dụng ``st.index()``, hàm này sẽ tạo quad cho chúng ta và loại bỏ các vertex trùng lặp
     st.index()
 
  .. code-tab:: csharp
 
-    // Suppose we have a quad defined by 6 vertices as follows.
+    // Giả sử chúng ta có một quad được định nghĩa bởi 6 vertex như sau.
     st.AddVertex(new Vector3(-1, 1, 0));
     st.AddVertex(new Vector3(1, 1, 0));
     st.AddVertex(new Vector3(-1, -1, 0));
@@ -153,14 +144,14 @@ shrinks the vertex array to remove duplicate vertices.
     st.AddVertex(new Vector3(1, -1, 0));
     st.AddVertex(new Vector3(-1, -1, 0));
 
-    // We can make the quad more efficient by using an index array and only utilizing 4 vertices:
+    // Chúng ta có thể làm quad hiệu quả hơn bằng cách sử dụng index array và chỉ dùng 4 vertex:
     st.AddVertex(new Vector3(-1, -1, 0));
     st.AddVertex(new Vector3(1, 1, 0));
     st.AddVertex(new Vector3(-1, -1, 0));
     st.AddVertex(new Vector3(1, 1, 0));
 
-    // Creates a quad from four corner vertices.
-    // AddIndex does not need to be called before AddVertex.
+    // Tạo một quad từ bốn vertex ở các góc.
+    // Không cần gọi AddIndex trước AddVertex.
     st.AddIndex(0);
     st.AddIndex(1);
     st.AddIndex(2);
@@ -169,11 +160,10 @@ shrinks the vertex array to remove duplicate vertices.
     st.AddIndex(3);
     st.AddIndex(2);
 
-    // Alternatively we can use `st.Index()` which will create the quad for us and remove the duplicate vertices.
+    // Ngoài ra, chúng ta có thể sử dụng `st.Index()`, hàm này sẽ tạo quad cho chúng ta và loại bỏ các vertex trùng lặp.
     st.Index();
 
-Similarly, if you have an index array, but you want each vertex to be unique (e.g. because
-you want to use unique normals or colors per face instead of per-vertex), you can call ``deindex()``.
+Tương tự, nếu bạn có một index array nhưng muốn mỗi vertex là duy nhất (ví dụ: vì bạn muốn sử dụng normal hoặc color riêng cho từng face thay vì cho từng vertex), bạn có thể gọi ``deindex()``.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -184,17 +174,9 @@ you want to use unique normals or colors per face instead of per-vertex), you ca
 
     st.Deindex();
 
-If you don't add custom normals yourself, you can add them using ``generate_normals()``, which should
-be called after generating geometry and before committing the mesh using ``commit()`` or
-``commit_to_arrays()``. Calling ``generate_normals(true)`` will flip the resulting normals. As a side
-note, ``generate_normals()`` only works if the primitive type is set to ``Mesh.PRIMITIVE_TRIANGLES``.
+Nếu bạn không tự thêm custom normal, bạn có thể thêm chúng bằng ``generate_normals()``, hàm này nên được gọi sau khi tạo hình học và trước khi commit mesh bằng ``commit()`` hoặc ``commit_to_arrays()``. Việc gọi ``generate_normals(true)`` sẽ lật các normal thu được. Ngoài ra, ``generate_normals()`` chỉ hoạt động nếu primitive type được đặt thành ``Mesh.PRIMITIVE_TRIANGLES``.
 
-You may notice that normal mapping or other material properties look broken on
-the generated mesh. This is because normal mapping **requires** the mesh to
-feature *tangents*, which are separate from *normals*. You can either add custom
-tangents manually, or generate them automatically with
-``generate_tangents()``. This method requires that each vertex have UVs and
-normals set already.
+Bạn có thể nhận thấy normal mapping hoặc các thuộc tính material khác trông không đúng trên mesh được tạo. Nguyên nhân là normal mapping **yêu cầu** mesh phải có *tangent*, vốn tách biệt với *normal*. Bạn có thể tự thêm custom tangent hoặc tự động tạo chúng bằng ``generate_tangents()``. Phương thức này yêu cầu mỗi vertex đã được thiết lập UV và normal.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -209,8 +191,4 @@ normals set already.
     st.GenerateNormals();
     st.GenerateTangents();
 
-By default, when generating normals, they will be calculated on a per-vertex basis (i.e. they will
-be "smooth normals"). If you want flat vertex normals (i.e. a single normal vector per face), when
-adding vertices, call ``add_smooth_group(i)`` where ``i`` is a unique number per vertex.
-``add_smooth_group()`` needs to be called while building the geometry, e.g. before the call to
-``add_vertex()``.
+Theo mặc định, khi tạo normal, chúng sẽ được tính trên cơ sở từng vertex (tức là chúng sẽ là "smooth normal"). Nếu bạn muốn flat vertex normal (tức là một vector normal duy nhất cho mỗi face), khi thêm vertex, hãy gọi ``add_smooth_group(i)``, trong đó ``i`` là một số duy nhất cho mỗi vertex. Cần gọi ``add_smooth_group()`` trong khi xây dựng hình học, chẳng hạn trước lệnh gọi ``add_vertex()``.

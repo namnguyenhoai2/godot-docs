@@ -1,53 +1,33 @@
 .. _doc_immediatemesh:
 
-Using ImmediateMesh
-===================
+Sử dụng ImmediateMesh
+=====================
 
-The :ref:`ImmediateMesh <class_ImmediateMesh>` is a convenient tool to create
-dynamic geometry using an OpenGL 1.x-style API. Which makes it both approachable
-to use and efficient for meshes which need to be updated every frame.
+:ref:`ImmediateMesh <class_ImmediateMesh>` là một công cụ tiện lợi để tạo hình học động bằng API theo phong cách OpenGL 1.x. Điều này giúp công cụ dễ tiếp cận và hoạt động hiệu quả với các mesh cần được cập nhật mỗi frame.
 
-Generating complex geometry (several thousand vertices) with this tool is inefficient, even if it's
-done only once. Instead, it is designed to generate simple geometry that changes every frame.
+Việc tạo hình học phức tạp (vài nghìn đỉnh) bằng công cụ này không hiệu quả, ngay cả khi chỉ thực hiện một lần. Thay vào đó, công cụ được thiết kế để tạo hình học đơn giản thay đổi trong mỗi frame.
 
-First, you need to create a :ref:`MeshInstance3D <class_meshinstance3d>` and add
-an :ref:`ImmediateMesh <class_ImmediateMesh>` to it in the Inspector.
+Trước tiên, bạn cần tạo một :ref:`MeshInstance3D <class_meshinstance3d>` và thêm một :ref:`ImmediateMesh <class_ImmediateMesh>` vào đó trong Inspector.
 
-Next, add a script to the MeshInstance3D. The code for the ImmediateMesh should
-go in the ``_process()`` function if you want it to update each frame, or in the
-``_ready()`` function if you want to create the mesh once and not update it. If
-you only generate a surface once, the ImmediateMesh is just as efficient as any
-other kind of mesh as the generated mesh is cached and reused.
+Tiếp theo, thêm một script vào MeshInstance3D. Mã cho ImmediateMesh nên được đặt trong hàm ``_process()`` nếu bạn muốn cập nhật nó mỗi frame, hoặc trong hàm ``_ready()`` nếu bạn muốn tạo mesh một lần và không cập nhật nó. Nếu bạn chỉ tạo một surface một lần, ImmediateMesh cũng hiệu quả như mọi loại mesh khác vì mesh được tạo ra sẽ được cache và tái sử dụng.
 
-To begin generating geometry you must call ``surface_begin()``.
-``surface_begin()`` takes a ``PrimitiveType`` as an argument. ``PrimitiveType``
-instructs the GPU how to arrange the primitive based on the vertices given
-whether it is triangles, lines, points, etc. A complete list can be found under
-the :ref:`Mesh <class_mesh>` class reference page.
+Để bắt đầu tạo hình học, bạn phải gọi ``surface_begin()``. ``surface_begin()`` nhận một ``PrimitiveType`` làm đối số. ``PrimitiveType`` chỉ dẫn GPU cách sắp xếp primitive dựa trên các đỉnh đã cung cấp, chẳng hạn như triangles, lines, points, v.v. Bạn có thể tìm thấy danh sách đầy đủ trên trang tham chiếu lớp :ref:`Mesh <class_mesh>`.
 
-Once you have called ``surface_begin()`` you are ready to start adding vertices.
-You add vertices one at a time. First you add vertex specific attributes such as
-normals or UVs using ``surface_set_****()`` (e.g. ``surface_set_normal()``).
-Then you call ``surface_add_vertex()`` to add a vertex with those attributes.
-For example:
+Sau khi gọi ``surface_begin()``, bạn đã sẵn sàng bắt đầu thêm các đỉnh. Bạn thêm từng đỉnh một. Trước tiên, bạn thêm các thuộc tính riêng của đỉnh như normals hoặc UVs bằng ``surface_set_****()`` (ví dụ: ``surface_set_normal()``). Sau đó, bạn gọi ``surface_add_vertex()`` để thêm một đỉnh cùng các thuộc tính đó. Ví dụ:
 
 .. tabs::
   .. code-tab:: gdscript GDScript
 
-    # Add a vertex with normal and uv.
+    # Thêm một đỉnh có normal và uv.
     surface_set_normal(Vector3(0, 1, 0))
     surface_set_uv(Vector2(1, 1))
     surface_add_vertex(Vector3(0, 0, 1))
 
-Only attributes added before the call to ``surface_add_vertex()`` will be
-included in that vertex. If you add an attribute twice before calling
-``surface_add_vertex()``, only the second call will be used.
+Chỉ các thuộc tính được thêm trước khi gọi ``surface_add_vertex()`` mới được đưa vào đỉnh đó. Nếu bạn thêm một thuộc tính hai lần trước khi gọi ``surface_add_vertex()``, chỉ lần gọi thứ hai mới được sử dụng.
 
-Finally, once you have added all your vertices call ``surface_end()`` to signal
-that you have finished generating the surface. You can call ``surface_begin()``
-and ``surface_end()`` multiple times to generate multiple surfaces for the mesh.
+Cuối cùng, sau khi đã thêm tất cả các đỉnh, hãy gọi ``surface_end()`` để báo hiệu rằng bạn đã hoàn tất việc tạo surface. Bạn có thể gọi ``surface_begin()`` và ``surface_end()`` nhiều lần để tạo nhiều surface cho mesh.
 
-The example code below draws a single triangle in the ``_ready()`` function.
+Đoạn mã ví dụ dưới đây vẽ một tam giác duy nhất trong hàm ``_ready()``.
 
 .. tabs::
   .. code-tab:: gdscript GDScript
@@ -55,13 +35,13 @@ The example code below draws a single triangle in the ``_ready()`` function.
     extends MeshInstance3D
 
     func _ready():
-        # Begin draw.
+        # Bắt đầu vẽ.
         mesh.surface_begin(Mesh.PRIMITIVE_TRIANGLES)
 
-        # Prepare attributes for add_vertex.
+        # Chuẩn bị các thuộc tính cho add_vertex.
         mesh.surface_set_normal(Vector3(0, 0, 1))
         mesh.surface_set_uv(Vector2(0, 0))
-        # Call last for each vertex, adds the above attributes.
+        # Gọi lần cuối cho mỗi đỉnh để thêm các thuộc tính ở trên.
         mesh.surface_add_vertex(Vector3(-1, -1, 0))
 
         mesh.surface_set_normal(Vector3(0, 0, 1))
@@ -72,13 +52,10 @@ The example code below draws a single triangle in the ``_ready()`` function.
         mesh.surface_set_uv(Vector2(1, 1))
         mesh.surface_add_vertex(Vector3(1, 1, 0))
 
-        # End drawing.
+        # Kết thúc vẽ.
         mesh.surface_end()
 
-The ImmediateMesh can also be used across frames. Each time you call
-``surface_begin()`` and ``surface_end()``, you are adding a new surface to the
-ImmediateMesh. If you want to recreate the mesh from scratch each frame, call
-``clear_surfaces()`` before calling ``surface_begin()``.
+ImmediateMesh cũng có thể được sử dụng qua nhiều frame. Mỗi lần bạn gọi ``surface_begin()`` và ``surface_end()``, bạn đang thêm một surface mới vào ImmediateMesh. Nếu muốn tạo lại mesh từ đầu trong mỗi frame, hãy gọi ``clear_surfaces()`` trước khi gọi ``surface_begin()``.
 
 .. tabs::
   .. code-tab:: gdscript GDScript
@@ -87,15 +64,15 @@ ImmediateMesh. If you want to recreate the mesh from scratch each frame, call
 
     func _process(delta):
 
-        # Clean up before drawing.
+        # Dọn dẹp trước khi vẽ.
         mesh.clear_surfaces()
 
-        # Begin draw.
+        # Bắt đầu vẽ.
         mesh.surface_begin(Mesh.PRIMITIVE_TRIANGLES)
 
-        # Draw mesh.
+        # Vẽ mesh.
 
-        # End drawing.
+        # Kết thúc vẽ.
         mesh.surface_end()
 
-The above code will dynamically create and draw a single surface each frame.
+Đoạn mã trên sẽ tự động tạo và vẽ một surface duy nhất trong mỗi frame.

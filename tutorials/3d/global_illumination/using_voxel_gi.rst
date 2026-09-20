@@ -1,24 +1,19 @@
 .. _doc_using_voxel_gi:
 
-Using Voxel global illumination
-===============================
+Sử dụng global illumination Voxel
+=================================
 
-VoxelGI is a form of fully real-time global illumination, intended to be used
-for small/medium-scale 3D scenes. VoxelGI is fairly demanding on the GPU, so
-it's best used when targeting dedicated graphics cards.
+VoxelGI là một dạng global illumination hoàn toàn theo thời gian thực, được thiết kế để sử dụng cho các cảnh 3D quy mô nhỏ/trung bình. VoxelGI khá ngốn GPU, vì vậy phù hợp nhất khi nhắm đến các card đồ họa chuyên dụng.
 
 .. important::
 
-    VoxelGI is only supported when using the Forward+ renderer, not the Mobile or
-    Compatibility renderers.
+    VoxelGI chỉ được hỗ trợ khi sử dụng Forward+ renderer, không được hỗ trợ bởi Mobile hoặc Compatibility renderer.
 
 .. seealso::
 
-    Not sure if VoxelGI is suited to your needs?
-    See :ref:`doc_introduction_to_global_illumination_comparison`
-    for a comparison of GI techniques available in Godot 4.
+    Không chắc VoxelGI có phù hợp với nhu cầu của bạn không? Xem :ref:`doc_introduction_to_global_illumination_comparison` để so sánh các kỹ thuật GI có trong Godot 4.
 
-Visual comparison
+So sánh trực quan
 -----------------
 
 .. figure:: img/gi_none.webp
@@ -31,193 +26,77 @@ Visual comparison
 
    VoxelGI enabled.
 
-Setting up VoxelGI
-------------------
+Thiết lập VoxelGI
+-----------------
 
-1. Make sure your static level geometry is imported with the Light Baking option
-   set to **Static** or **Static Lightmaps** in the Import dock.
-   For manually added MeshInstance3D nodes, make sure the **Global Illumination > Mode**
-   property is set to **Static** in the inspector.
-2. Create a VoxelGI node in the Scene tree dock.
-3. Move the VoxelGI node to the center of the area you want it to cover by
-   dragging the manipulation gizmo in the 3D viewport. Then adjust the VoxelGI's
-   extents by dragging the red points in the 3D viewport (or enter values in the
-   inspector). Make sure the VoxelGI's extents aren't unnecessarily large, or
-   quality will suffer.
-4. Select the VoxelGI node and click **Bake** at the top of the 3D editor viewport.
-   This will take at least a few seconds to complete (depending on the number of VoxelGI
-   subdivisions and scene complexity).
+1. Hãy đảm bảo hình học level tĩnh của bạn được import với tùy chọn Light Baking đặt thành **Static** hoặc **Static Lightmaps** trong dock Import. Đối với các node MeshInstance3D được thêm thủ công, hãy đảm bảo thuộc tính **Global Illumination > Mode** được đặt thành **Static** trong inspector. 2. Tạo một node VoxelGI trong dock Scene tree. 3. Di chuyển node VoxelGI đến trung tâm khu vực bạn muốn nó bao phủ bằng cách kéo gizmo thao tác trong viewport 3D. Sau đó điều chỉnh extents của VoxelGI bằng cách kéo các điểm màu đỏ trong viewport 3D (hoặc nhập các giá trị trong inspector). Hãy đảm bảo extents của VoxelGI không lớn hơn mức cần thiết, nếu không chất lượng sẽ bị ảnh hưởng. 4. Chọn node VoxelGI và nhấp vào **Bake** ở phía trên viewport của trình chỉnh sửa 3D. Quá trình này sẽ mất ít nhất vài giây để hoàn tất (tùy thuộc vào số lượng subdivision của VoxelGI và độ phức tạp của cảnh).
 
-If at least one mesh contained within the VoxelGI's extents has its global
-illumination mode set to **Static**, you should see indirect lighting appear
-within the scene.
+Nếu ít nhất một mesh nằm trong extents của VoxelGI có chế độ global illumination được đặt thành **Static**, bạn sẽ thấy ánh sáng gián tiếp xuất hiện trong cảnh.
 
 .. note::
 
-    To avoid bloating text-based scene files with large amounts of binary data,
-    make sure the VoxelGIData resource is *always* saved to an external binary file.
-    This file must be saved with a ``.res`` (binary resource) extension instead of
-    ``.tres`` (text-based resource).
-    Using an external binary resource for VoxelGIData will keep your text-based
-    scene small while ensuring it loads and saves quickly.
+    Để tránh làm phình to các scene file dạng văn bản với lượng lớn dữ liệu nhị phân, hãy đảm bảo resource VoxelGIData *luôn* được lưu vào một file nhị phân bên ngoài. File này phải được lưu với phần mở rộng ``.res`` (binary resource) thay vì ``.tres`` (text-based resource). Việc sử dụng resource nhị phân bên ngoài cho VoxelGIData sẽ giúp scene dạng văn bản của bạn nhỏ gọn, đồng thời đảm bảo scene được tải và lưu nhanh chóng.
 
-VoxelGI node properties
------------------------
+Các thuộc tính của node VoxelGI
+-------------------------------
 
-The following properties can be adjusted in the VoxelGI node inspector before
-baking:
+Có thể điều chỉnh các thuộc tính sau trong inspector của node VoxelGI trước khi bake:
 
-- **Subdiv:** Higher values result in more precise indirect lighting, at the cost
-  of lower performance, longer bake times and increased storage requirements.
-- **Extents:** Represents the size of the box in which indirect lighting should
-  be baked. Extents are centered around the VoxelGI node's origin.
+- **Subdiv:** Giá trị cao hơn cho ánh sáng gián tiếp chính xác hơn, nhưng phải đánh đổi bằng hiệu suất thấp hơn, thời gian bake lâu hơn và yêu cầu lưu trữ cao hơn. - **Extents:** Đại diện cho kích thước của hình hộp nơi ánh sáng gián tiếp sẽ được bake. Extents được căn giữa quanh origin của node VoxelGI.
 
-The following properties can be adjusted in the VoxelGIData *resource* that is
-contained within a VoxelGI node after it has been baked:
+Có thể điều chỉnh các thuộc tính sau trong *resource* VoxelGIData nằm trong node VoxelGI sau khi node này được bake:
 
-- **Dynamic Range:** The maximum brightness that can be represented in indirect lighting.
-  Higher values make it possible to represent brighter indirect light,
-  at the cost of lower precision (which can result in visible banding).
-  If in doubt, leave this unchanged.
-- **Energy:** The indirect lighting's overall energy. This also effects the energy
-  of direct lighting emitted by meshes with emissive materials.
-- **Bias:** Optional bias added to lookups into the voxel buffer at runtime.
-  This helps avoid self-occlusion artifacts.
-- **Normal Bias:** Similar to **Bias**, but offsets the lookup into the voxel buffer
-  by the surface normal. This also helps avoid self-occlusion artifacts. Higher
-  values reduce self-reflections visible in non-rough materials, at the cost of
-  more visible light leaking and flatter-looking indirect lighting. To
-  prioritize hiding self-reflections over lighting quality, set **Bias** to
-  ``0.0`` and **Normal Bias** to a value between ``1.0`` and ``2.0``.
-- **Propagation:** The energy factor to use for bounced indirect lighting.
-  Higher values will result in brighter, more diffuse lighting
-  (which may end up looking too flat). When **Use Two Bounces** is enabled,
-  you may want to decrease **Propagation** to compensate for the overall brighter
-  indirect lighting.
-- **Use Two Bounces:** If enabled, lighting will bounce twice instead of just once.
-  This results in more realistic-looking indirect lighting, and makes indirect lighting
-  visible in reflections as well. Enabling this generally has no noticeable performance cost.
-- **Interior:** If enabled, environment sky lighting will not be taken into account by VoxelGI.
-  This should be enabled in indoor scenes to avoid light leaking from the environment.
+- **Dynamic Range:** Độ sáng tối đa có thể được biểu diễn trong ánh sáng gián tiếp. Giá trị cao hơn cho phép biểu diễn ánh sáng gián tiếp sáng hơn, nhưng phải đánh đổi bằng độ chính xác thấp hơn (có thể dẫn đến hiện tượng banding nhìn thấy được). Nếu không chắc chắn, hãy giữ nguyên giá trị này. - **Energy:** Năng lượng tổng thể của ánh sáng gián tiếp. Thuộc tính này cũng ảnh hưởng đến năng lượng của ánh sáng trực tiếp phát ra bởi các mesh có material emissive. - **Bias:** Bias tùy chọn được thêm vào các phép tra cứu trong voxel buffer khi runtime. Điều này giúp tránh các artifact tự che khuất. - **Normal Bias:** Tương tự **Bias**, nhưng offset phép tra cứu trong voxel buffer theo surface normal. Điều này cũng giúp tránh các artifact tự che khuất. Giá trị cao hơn làm giảm các phản xạ trên chính bề mặt nhìn thấy được trong các material không rough, nhưng phải đánh đổi bằng hiện tượng light leaking rõ hơn và ánh sáng gián tiếp trông phẳng hơn. Để ưu tiên ẩn các phản xạ trên chính bề mặt hơn chất lượng ánh sáng, hãy đặt **Bias** thành ``0.0`` và **Normal Bias** thành một giá trị từ ``1.0`` đến ``2.0``. - **Propagation:** Hệ số năng lượng dùng cho ánh sáng gián tiếp dội lại. Giá trị cao hơn sẽ tạo ra ánh sáng sáng hơn, khuếch tán hơn (có thể khiến ánh sáng trông quá phẳng). Khi **Use Two Bounces** được bật, bạn có thể muốn giảm **Propagation** để bù cho ánh sáng gián tiếp tổng thể sáng hơn. - **Use Two Bounces:** Nếu được bật, ánh sáng sẽ dội lại hai lần thay vì chỉ một lần. Điều này tạo ra ánh sáng gián tiếp trông chân thực hơn, đồng thời làm cho ánh sáng gián tiếp xuất hiện trong các phản xạ. Việc bật tùy chọn này thường không gây ảnh hưởng đáng kể đến hiệu suất. - **Interior:** Nếu được bật, ánh sáng từ bầu trời môi trường sẽ không được VoxelGI tính đến. Nên bật tùy chọn này trong các cảnh trong nhà để tránh ánh sáng bị rò rỉ từ môi trường.
 
-VoxelGI interaction with lights and objects
--------------------------------------------
+Tương tác của VoxelGI với ánh sáng và đối tượng
+-----------------------------------------------
 
-To ensure correct visuals when using VoxelGI, you must configure your meshes
-and lights' global illumination properties according to their *purpose* in the
-scene (static or dynamic).
+Để đảm bảo hình ảnh hiển thị chính xác khi sử dụng VoxelGI, bạn phải cấu hình các thuộc tính global illumination của mesh và light theo *mục đích* của chúng trong cảnh (tĩnh hoặc động).
 
-There are 3 global illumination modes available for meshes:
+Có 3 chế độ global illumination cho mesh:
 
-- **Disabled:** The mesh won't be taken into account for VoxelGI baking.
-  The mesh will *receive* indirect lighting from the scene, but it will not
-  *contribute* indirect lighting to the scene.
-- **Static (default):** The mesh will be taken into account for VoxelGI baking. The mesh will
-  both receive *and* contribute indirect lighting to the scene. If the mesh
-  is changed in any way after baking, the VoxelGI node must be baked again.
-  Otherwise, indirect lighting will look incorrect.
-- **Dynamic:** The mesh won't be taken into account for VoxelGI baking, but it will
-  still receive *and* contribute indirect lighting to the scene in real-time.
-  This option is much slower compared to **Static**. Only use the **Dynamic**
-  global illumination mode on large meshes that will change significantly during gameplay.
+- **Disabled:** Mesh sẽ không được tính đến khi bake VoxelGI. Mesh sẽ *nhận* ánh sáng gián tiếp từ cảnh, nhưng sẽ không *đóng góp* ánh sáng gián tiếp cho cảnh. - **Static (default):** Mesh sẽ được tính đến khi bake VoxelGI. Mesh vừa *nhận* vừa *đóng góp* ánh sáng gián tiếp cho cảnh. Nếu mesh bị thay đổi theo bất kỳ cách nào sau khi bake, node VoxelGI phải được bake lại. Nếu không, ánh sáng gián tiếp sẽ hiển thị không chính xác. - **Dynamic:** Mesh sẽ không được tính đến khi bake VoxelGI, nhưng vẫn *nhận* và *đóng góp* ánh sáng gián tiếp cho cảnh theo thời gian thực. Tùy chọn này chậm hơn nhiều so với **Static**. Chỉ sử dụng chế độ global illumination **Dynamic** trên các mesh lớn sẽ thay đổi đáng kể trong quá trình gameplay.
 
 .. note::
 
-    For meshes with the **Static** bake mode, the VoxelGI baking system is not able
-    to make use of custom shaders (:ref:`class_ShaderMaterial`). These meshes will be
-    considered to be pure black, only acting as light blockers. You can make
-    VoxelGI take custom shaders into account by using the **Dynamic** bake mode
-    for these objects, but this has a performance cost.
+    Đối với các mesh có chế độ bake **Static**, hệ thống baking VoxelGI không thể sử dụng custom shader (:ref:`class_ShaderMaterial`). Các mesh này sẽ được xem như hoàn toàn màu đen và chỉ đóng vai trò chặn ánh sáng. Bạn có thể khiến VoxelGI tính đến custom shader bằng cách sử dụng chế độ bake **Dynamic** cho các đối tượng này, nhưng điều đó sẽ làm giảm hiệu suất.
 
-    For :ref:`class_BaseMaterial3D`, some properties are currently ignored during baking.
-    This can impact visuals if the material's albedo or emission texture was designed
-    around using certain UV mappings:
+    Đối với :ref:`class_BaseMaterial3D`, hiện tại một số thuộc tính sẽ bị bỏ qua trong quá trình baking. Điều này có thể ảnh hưởng đến hình ảnh hiển thị nếu texture albedo hoặc emission của material được thiết kế dựa trên việc sử dụng một số UV mapping nhất định:
 
-    - **UV1 > Offset**
-    - **UV1 > Scale**
-    - **UV1 > Triplanar**
-    - **Emission > On UV2**
+    - **UV1 > Offset** - **UV1 > Scale** - **UV1 > Triplanar** - **Emission > On UV2**
 
-Additionally, there are 3 bake modes available for lights
-(DirectionalLight3D, OmniLight3D, SpotLight3D, and AreaLight3D):
+Ngoài ra, có 3 chế độ bake cho light (DirectionalLight3D, OmniLight3D, SpotLight3D và AreaLight3D):
 
-- **Disabled:** The light won't be taken into account for VoxelGI baking.
-  The light won't contribute indirect lighting to the scene.
-- **Static:** The light will be taken into account for VoxelGI baking.
-  The light will contribute indirect lighting to the scene. If the light
-  is changed in any way after baking, the VoxelGI node must be baked again or
-  indirect lighting will look incorrect. If in doubt, use this mode for level lighting.
-- **Dynamic (default):** The light won't be taken into account for VoxelGI baking,
-  but it will still contribute indirect lighting to the scene in real-time.
-  This option is slower compared to **Static**. Only use the **Dynamic** global
-  illumination mode on lights that will change significantly during gameplay.
+- **Disabled:** Light sẽ không được tính đến khi bake VoxelGI. Light sẽ không đóng góp ánh sáng gián tiếp cho cảnh. - **Static:** Light sẽ được tính đến khi bake VoxelGI. Light sẽ đóng góp ánh sáng gián tiếp cho cảnh. Nếu light bị thay đổi theo bất kỳ cách nào sau khi bake, node VoxelGI phải được bake lại, nếu không ánh sáng gián tiếp sẽ hiển thị không chính xác. Nếu không chắc chắn, hãy sử dụng chế độ này cho ánh sáng level. - **Dynamic (default):** Light sẽ không được tính đến khi bake VoxelGI, nhưng vẫn đóng góp ánh sáng gián tiếp cho cảnh theo thời gian thực. Tùy chọn này chậm hơn so với **Static**. Chỉ sử dụng chế độ global illumination **Dynamic** trên các light sẽ thay đổi đáng kể trong quá trình gameplay.
 
 .. note::
 
-    The amount of indirect energy emitted by a light depends on its color,
-    energy *and* indirect energy properties. To make a specific light emit more
-    or less indirect energy without affecting the amount of direct light emitted
-    by the light, adjust the **Indirect Energy** property in the Light3D inspector.
+    Lượng năng lượng gián tiếp phát ra bởi một light phụ thuộc vào các thuộc tính color, energy *và* indirect energy của nó. Để khiến một light cụ thể phát ra nhiều hoặc ít năng lượng gián tiếp hơn mà không ảnh hưởng đến lượng ánh sáng trực tiếp do light phát ra, hãy điều chỉnh thuộc tính **Indirect Energy** trong inspector của Light3D.
 
 .. seealso::
 
-    See :ref:`doc_introduction_to_global_illumination_gi_mode_recommendations`
-    for general usage recommendations.
+    Xem :ref:`doc_introduction_to_global_illumination_gi_mode_recommendations` để biết các khuyến nghị sử dụng chung.
 
-Adjusting VoxelGI performance and quality
------------------------------------------
-
-Since VoxelGI is relatively demanding, it will perform best on systems with recent
-dedicated GPUs. On older dedicated GPUs and integrated graphics,
-tweaking the settings is necessary to achieve reasonable performance.
-
-In the Project Settings' **Rendering > Global Illumination** section,
-VoxelGI quality can also be adjusted in two ways:
-
-- **Voxel Gi > Quality:** If set to **Low**
-  instead of **High**, voxel cone tracing will only use 4 taps instead of 6.
-  This speeds up rendering at the cost of less pronounced ambient occlusion.
-- **Gi > Use Half Resolution:** If enabled, both VoxelGI and SDFGI will have
-  their GI buffer rendering at halved resolution. For instance, when rendering
-  in 3840×2160, the GI buffer will be computed at a 1920×1080 resolution.
-  Enabling this option saves a lot of GPU time, but it can introduce visible
-  aliasing around thin details.
-
-Note that the **Advanced** toggle must be enabled in the project settings dialog
-for the above settings to be visible.
-
-Additionally, VoxelGI can be disabled entirely by hiding the VoxelGI node.
-This can be used for comparison purposes or to improve performance on low-end systems.
-
-Reducing VoxelGI light leaks and artifacts
+Điều chỉnh hiệu suất và chất lượng VoxelGI
 ------------------------------------------
 
-After baking VoxelGI, you may notice indirect light is leaking at some spots
-in your level geometry. This can be remedied in several ways:
+Vì VoxelGI tương đối ngốn tài nguyên, nó sẽ hoạt động tốt nhất trên các hệ thống có GPU chuyên dụng đời mới. Trên các GPU chuyên dụng đời cũ và đồ họa tích hợp, cần tinh chỉnh các thiết lập để đạt hiệu suất hợp lý.
 
-- For both light leaking and artifacts, try moving or rotating the VoxelGI node
-  then bake it again.
-- To combat light leaking in general, ensure your level geometry is fully sealed.
-  This is best done in the 3D modeling software used to design the level,
-  but primitive MeshInstance3D nodes with their global illumination mode set to
-  **Static** can also be used.
-- To combat light leaking with thin geometry, it's recommended to make the geometry
-  in question thicker. If this is not possible, then add a primitive MeshInstance3D
-  node with its global illumination mode set to **Static**. Bake VoxelGI again,
-  then hide the primitive MeshInstance3D node (it will still be taken into account by VoxelGI).
-  For optimal results, the MeshInstance3D should have a material whose color
-  matches the original thin geometry.
-- To combat artifacts that can appear on reflective surfaces, try increasing
-  **Bias** and/or **Normal Bias** in the VoxelGIData resource as described above.
-  Do not increase these values too high, or light leaking will become more pronounced.
+Trong phần **Rendering > Global Illumination** của Project Settings, chất lượng VoxelGI cũng có thể được điều chỉnh theo hai cách:
 
-If you notice VoxelGI nodes popping in and out of existence as the camera moves,
-this is most likely because the engine is rendering too many VoxelGI instances
-at once. Godot is limited to rendering 8 VoxelGI nodes at once, which means up
-to 8 instances can be in the camera view before some of them will start
-flickering.
+- **Voxel Gi > Quality:** Nếu đặt thành **Low** thay vì **High**, voxel cone tracing sẽ chỉ sử dụng 4 taps thay vì 6. Điều này tăng tốc độ rendering nhưng phải đánh đổi bằng ambient occlusion kém rõ rệt hơn. - **Gi > Use Half Resolution:** Nếu được bật, cả VoxelGI và SDFGI sẽ render GI buffer ở độ phân giải giảm một nửa. Ví dụ, khi rendering ở 3840×2160, GI buffer sẽ được tính toán ở độ phân giải 1920×1080. Bật tùy chọn này giúp tiết kiệm đáng kể thời gian GPU, nhưng có thể tạo ra aliasing nhìn thấy được xung quanh các chi tiết mảnh.
 
-Additionally, for performance reasons, Godot can only blend between 2 VoxelGI
-nodes at a given pixel on the screen. If you have more than 2 VoxelGI nodes
-overlapping, global illumination may appear to flicker as the camera moves or
-rotates.
+Lưu ý rằng phải bật toggle **Advanced** trong hộp thoại project settings để các thiết lập trên hiển thị.
+
+Ngoài ra, có thể vô hiệu hóa hoàn toàn VoxelGI bằng cách ẩn node VoxelGI. Điều này có thể được dùng cho mục đích so sánh hoặc để cải thiện hiệu suất trên các hệ thống cấu hình thấp.
+
+Giảm hiện tượng light leaking và artifact của VoxelGI
+-----------------------------------------------------
+
+Sau khi bake VoxelGI, bạn có thể nhận thấy ánh sáng gián tiếp bị rò rỉ tại một số vị trí trong hình học level. Có thể khắc phục điều này theo một số cách:
+
+- Đối với cả hiện tượng rò rỉ ánh sáng và artifact, hãy thử di chuyển hoặc xoay node VoxelGI, sau đó bake lại. - Để khắc phục hiện tượng rò rỉ ánh sáng nói chung, hãy đảm bảo geometry của level được bịt kín hoàn toàn. Cách tốt nhất là thực hiện việc này trong phần mềm 3D modeling được dùng để thiết kế level, nhưng cũng có thể sử dụng các node MeshInstance3D nguyên thủy với chế độ global illumination được đặt thành **Static**. - Để khắc phục hiện tượng rò rỉ ánh sáng với geometry mỏng, bạn nên làm cho geometry đó dày hơn. Nếu không thể thực hiện việc này, hãy thêm một node MeshInstance3D nguyên thủy với chế độ global illumination được đặt thành **Static**. Bake VoxelGI lại, sau đó ẩn node MeshInstance3D nguyên thủy (node này vẫn sẽ được VoxelGI tính đến). Để đạt kết quả tối ưu, MeshInstance3D nên có material với màu khớp với geometry mỏng ban đầu. - Để khắc phục các artifact có thể xuất hiện trên bề mặt phản chiếu, hãy thử tăng **Bias** và/hoặc **Normal Bias** trong resource VoxelGIData như mô tả ở trên. Không tăng các giá trị này quá cao, nếu không hiện tượng rò rỉ ánh sáng sẽ trở nên rõ rệt hơn.
+
+Nếu bạn nhận thấy các node VoxelGI liên tục xuất hiện rồi biến mất khi camera di chuyển, nguyên nhân rất có thể là engine đang render quá nhiều instance VoxelGI cùng lúc. Godot bị giới hạn ở việc render 8 node VoxelGI cùng lúc, nghĩa là tối đa 8 instance có thể nằm trong tầm nhìn của camera trước khi một số instance bắt đầu nhấp nháy.
+
+Ngoài ra, vì lý do hiệu năng, Godot chỉ có thể blend giữa 2 node VoxelGI tại mỗi pixel trên màn hình. Nếu có hơn 2 node VoxelGI chồng lấp nhau, global illumination có thể xuất hiện hiện tượng nhấp nháy khi camera di chuyển hoặc xoay.

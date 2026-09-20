@@ -1,31 +1,23 @@
 .. _doc_3d_particles_attractors:
 
-3D Particle attractors
-----------------------
+Bộ hút hạt 3D
+-------------
 
 .. figure:: img/particle_attractor.webp
    :alt: Particle attractors
 
-Particle attractors are nodes that apply a force to all particles within their reach. They pull
-particles closer or push them away based on the direction of that force. There are three types
-of attractors: :ref:`class_GPUParticlesAttractorBox3D`, :ref:`class_GPUParticlesAttractorSphere3D`,
-and :ref:`class_GPUParticlesAttractorVectorField3D`. You can instantiate them at runtime and
-change their properties from gameplay code; you can even animate and combine them for complex
-attraction effects.
+Bộ hút hạt là các node áp dụng một lực lên tất cả hạt trong phạm vi ảnh hưởng của chúng. Chúng kéo các hạt lại gần hoặc đẩy chúng ra xa dựa trên hướng của lực đó. Có ba loại bộ hút: :ref:`class_GPUParticlesAttractorBox3D`, :ref:`class_GPUParticlesAttractorSphere3D` và :ref:`class_GPUParticlesAttractorVectorField3D`. Bạn có thể khởi tạo chúng khi runtime và thay đổi các thuộc tính của chúng từ gameplay code; thậm chí bạn còn có thể animate và kết hợp chúng để tạo ra các hiệu ứng hút phức tạp.
 
-.. UPDATE: Not implemented. When particle attractors are implemented for 2D
-.. particle systems, remove this note and remove this comment.
+.. CẬP NHẬT: Chưa được triển khai. Khi bộ hút hạt được triển khai cho hệ thống hạt 2D .., hãy xóa ghi chú này và xóa comment này.
 
 .. note::
 
-   Particle attractors are not yet implemented for 2D particle systems.
+   Bộ hút hạt hiện chưa được triển khai cho hệ thống hạt 2D.
 
-The first thing you have to do if you want to use attractors is enable the ``Attractor Interaction``
-property on the ParticleProcessMaterial. Do this for every particle system that needs to react to attractors.
-Like most properties in Godot, you can also change this at runtime.
+Điều đầu tiên bạn phải làm nếu muốn sử dụng bộ hút là bật thuộc tính ``Attractor Interaction`` trên ParticleProcessMaterial. Hãy thực hiện việc này cho mọi hệ thống hạt cần phản ứng với bộ hút. Giống như hầu hết các thuộc tính trong Godot, bạn cũng có thể thay đổi thuộc tính này trong runtime.
 
-Common properties
-~~~~~~~~~~~~~~~~~
+Các thuộc tính phổ biến
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. figure:: img/particle_attractor_common.webp
    :alt: Common particle attractor properties
@@ -33,20 +25,11 @@ Common properties
 
    Common attractor properties
 
-There are some properties that you can find on all attractors. They're located in the
-``GPUParticlesAttractor3D`` section in the inspector.
+Có một số thuộc tính mà bạn có thể tìm thấy trên tất cả bộ hút. Chúng nằm trong phần ``GPUParticlesAttractor3D`` trong inspector.
 
-``Strength`` controls how strong the attractor force is. A positive value pulls particles
-closer to the attractor's center, while a negative value pushes them away.
+``Strength`` kiểm soát độ mạnh của lực hút. Giá trị dương kéo các hạt lại gần tâm của bộ hút, trong khi giá trị âm đẩy chúng ra xa.
 
-``Attenuation`` controls the strength falloff within the attractor's influence region. Every
-particle attractor has a boundary. Its strength is weakest at the border of this boundary
-and strongest at its center. Particles outside of the boundary are not affected by the attractor
-at all. The attenuation curve controls how the strength weakens over that distance. A straight
-line means that the strength is proportional to the distance: if a particle is halfway
-between the boundary and the center, the attractor strength will be half of what it is
-at the center. Different curve shapes change how fast particles accelerate towards the
-attractor.
+``Attenuation`` kiểm soát mức suy giảm cường độ trong vùng ảnh hưởng của bộ hút. Mỗi bộ hút hạt đều có một ranh giới. Cường độ của nó yếu nhất tại biên của ranh giới này và mạnh nhất tại tâm. Các hạt nằm ngoài ranh giới hoàn toàn không bị bộ hút ảnh hưởng. Đường cong attenuation kiểm soát cách cường độ suy yếu theo khoảng cách đó. Một đường thẳng có nghĩa là cường độ tỉ lệ với khoảng cách: nếu một hạt nằm giữa ranh giới và tâm, cường độ của bộ hút sẽ bằng một nửa so với tại tâm. Các hình dạng đường cong khác nhau sẽ thay đổi tốc độ các hạt tăng tốc về phía bộ hút.
 
 .. figure:: img/particle_attractor_curve.webp
    :alt: Different attractor attenuation curves
@@ -55,12 +38,7 @@ attractor.
    at the boundary border and slowly at the center (middle), slowly at the boundary and
    fast at the center (right).
 
-The ``Directionality`` property changes the direction towards which particles are pulled.
-At a value of ``0.0``, there is no directionality, which means that particles are pulled towards
-the attractor's center. At ``1.0``, the attractor is fully directional, which means particles
-will be pulled along the attractor's local ``-Z``-axis. You can change the global direction
-by rotating the attractor. If ``Strength`` is negative, particles are instead pulled along
-the ``+Z``-axis.
+Thuộc tính ``Directionality`` thay đổi hướng mà các hạt bị kéo về. Ở giá trị ``0.0``, không có tính định hướng, nghĩa là các hạt bị kéo về phía tâm của bộ hút. Ở ``1.0``, bộ hút hoàn toàn có tính định hướng, nghĩa là các hạt sẽ bị kéo dọc theo trục ``-Z`` cục bộ của bộ hút. Bạn có thể thay đổi hướng toàn cục bằng cách xoay bộ hút. Nếu ``Strength`` là số âm, các hạt thay vào đó sẽ bị kéo dọc theo trục ``+Z``.
 
 .. figure:: img/particle_attractor_direction.webp
    :alt: Different attractor directionality values
@@ -68,13 +46,10 @@ the ``+Z``-axis.
    No directionality (left) vs. full directionality (right). Notice how the particles move along
    the attractor's local Z-axis.
 
-The ``Cull Mask`` property controls which particle systems are affected by an attractor based
-on each system's :ref:`visibility layers <class_VisualInstance3D>`. A particle system is only
-affected by an attractor if at least one of the system's visibility layers is enabled in the
-attractor's cull mask.
+Thuộc tính ``Cull Mask`` kiểm soát những hệ thống hạt nào bị bộ hút ảnh hưởng, dựa trên :ref:`visibility layers <class_VisualInstance3D>` của từng hệ thống. Một hệ thống hạt chỉ bị bộ hút ảnh hưởng nếu ít nhất một trong các visibility layer của hệ thống được bật trong cull mask của bộ hút.
 
-Box attractors
-~~~~~~~~~~~~~~
+Bộ hút hình hộp
+~~~~~~~~~~~~~~~
 
 .. figure:: img/particle_attractor_box_entry.webp
    :alt: Particle attractor box
@@ -82,21 +57,17 @@ Box attractors
 
    Box attractor in the node list
 
-Box attractors have a box-shaped influence region. You control their size with the ``Extents``
-property. Box extents always measure half of the sides of its bounds, so a value of
-``(X=1.0,Y=1.0,Z=1.0)`` creates a box with an influence region that is 2 meters wide on each side.
+Bộ hút hình hộp có vùng ảnh hưởng dạng hộp. Bạn kiểm soát kích thước của chúng bằng thuộc tính ``Extents``. Box extents luôn đo bằng một nửa độ dài các cạnh của bounds, vì vậy giá trị ``(X=1.0,Y=1.0,Z=1.0)`` sẽ tạo ra một hộp có vùng ảnh hưởng rộng 2 mét theo mỗi cạnh.
 
-To create a box attractor, add a new child node to your scene and select ``GPUParticlesAttractorBox3D``
-from the list of available nodes. You can animate the box position or attach it to a
-moving node for more dynamic effects.
+Để tạo một bộ hút hình hộp, hãy thêm một child node mới vào scene và chọn ``GPUParticlesAttractorBox3D`` từ danh sách các node khả dụng. Bạn có thể animate vị trí của hộp hoặc gắn nó vào một node đang di chuyển để tạo ra các hiệu ứng linh động hơn.
 
 .. figure:: img/particle_attractor_box.webp
    :alt: Box attractor parts particle field
 
    A box attractor with a negative strength value parts a particle field as it moves through it.
 
-Sphere attractors
-~~~~~~~~~~~~~~~~~
+Bộ hút hình cầu
+~~~~~~~~~~~~~~~
 
 .. figure:: img/particle_attractor_sphere_entry.webp
    :alt: Particle attractor sphere
@@ -104,22 +75,17 @@ Sphere attractors
 
    Sphere attractor in the node list
 
-Sphere attractors have a spherical influence region. You control their size with the ``Radius``
-property. While box attractors don't have to be perfect cubes, sphere attractors will always be
-spheres: You can't set width independently from height. If you want to use a sphere attractor for
-elongated shapes, you have to change its ``Scale`` in the attractor's ``Node3D`` section.
+Bộ hút hình cầu có vùng ảnh hưởng dạng hình cầu. Bạn kiểm soát kích thước của chúng bằng thuộc tính ``Radius``. Mặc dù bộ hút hình hộp không nhất thiết phải là các hình lập phương hoàn hảo, bộ hút hình cầu sẽ luôn là hình cầu: Bạn không thể thiết lập chiều rộng độc lập với chiều cao. Nếu muốn sử dụng bộ hút hình cầu cho các hình dạng thuôn dài, bạn phải thay đổi ``Scale`` của nó trong phần ``Node3D`` của bộ hút.
 
-To create a sphere attractor, add a new child node to your scene and select ``GPUParticlesAttractorSphere3D``
-from the list of available nodes. You can animate the sphere position or attach it to a
-moving node for more dynamic effects.
+Để tạo một bộ hút hình cầu, hãy thêm một child node mới vào scene và chọn ``GPUParticlesAttractorSphere3D`` từ danh sách các node khả dụng. Bạn có thể animate vị trí của hình cầu hoặc gắn nó vào một node đang di chuyển để tạo ra các hiệu ứng linh động hơn.
 
 .. figure:: img/particle_attractor_sphere.webp
    :alt: Sphere attractor parts particle field
 
    A sphere attractor with a negative strength value parts a particle field as it moves through it.
 
-Vector field attractors
-~~~~~~~~~~~~~~~~~~~~~~~
+Bộ hút trường vector
+~~~~~~~~~~~~~~~~~~~~
 
 .. figure:: img/particle_attractor_vector_entry.webp
    :alt: Particle attractor vector field
@@ -127,47 +93,26 @@ Vector field attractors
 
    Vector field attractor in the node list
 
-A vector field is a 3D area that contains vectors positioned on a grid. The grid density controls
-how many vectors there are and how far they're spread apart. Each vector in a vector field points
-in a specific direction. This can be completely random or aligned in a way that forms distinct
-patterns and paths.
+Trường vector là một vùng 3D chứa các vector được sắp xếp trên một grid. Mật độ grid kiểm soát số lượng vector và khoảng cách giữa chúng. Mỗi vector trong một trường vector trỏ theo một hướng cụ thể. Hướng này có thể hoàn toàn ngẫu nhiên hoặc được căn chỉnh theo cách tạo thành các pattern và đường đi riêng biệt.
 
-When particles interact with a vector field, their movement direction changes to match the nearest vector
-in the field. As a particle moves closer to the next vector in the field, it changes
-direction to match that vector's direction. The particle's speed depends on the vector's length.
+Khi các hạt tương tác với một trường vector, hướng chuyển động của chúng thay đổi để khớp với vector gần nhất trong trường. Khi một hạt di chuyển đến gần vector tiếp theo trong trường, nó sẽ thay đổi hướng để khớp với hướng của vector đó. Tốc độ của hạt phụ thuộc vào độ dài của vector.
 
-Like box attractors, vector field attractors have a box-shaped influence region. You control their size with the ``Extents``
-property, where a value of ``(X=1.0,Y=1.0,Z=1.0)`` creates a box with an influence region that is
-2 meters wide on each side. The ``Texture`` property takes a :ref:`3D texture <class_Texture3D>`
-where every pixel represents a vector with the pixel's color interpreted as the vector's direction and size.
+Giống như bộ hút hình hộp, bộ hút trường vector có vùng ảnh hưởng dạng hộp. Bạn kiểm soát kích thước của chúng bằng thuộc tính ``Extents``, trong đó giá trị ``(X=1.0,Y=1.0,Z=1.0)`` sẽ tạo ra một hộp có vùng ảnh hưởng rộng 2 mét theo mỗi cạnh. Thuộc tính ``Texture`` nhận một :ref:`3D texture <class_Texture3D>`, trong đó mỗi pixel đại diện cho một vector với màu của pixel được diễn giải thành hướng và kích thước của vector.
 
 .. note::
 
-   When a texture is used as a vector field, there are two types of conversion you need to be aware of:
+   Khi một texture được sử dụng làm trường vector, có hai kiểu chuyển đổi mà bạn cần nắm rõ:
 
-   1. The texture coordinates map to the attractor bounds. The image below shows which part of the texture
-      corresponds to which part of the vector field volume. For example, the bottom half of the texture
-      affects the top half of the vector field attractor because ``+Y`` points down in the texture UV space,
-      but up in Godot's world space.
-   2. The pixel color values map to direction vectors in space. The image below provides an overview. Since
-      particles can move in two directions along each axis, the lower half of the color range represents
-      negative direction values while the upper half represents positive direction values. So a yellow pixel
-      ``(R=1,G=1,B=0)`` maps to the vector ``(X=1,Y=1,Z=-1)`` while a neutral gray ``(R=0.5,G=0.5,B=0.5)``
-      results in no movement at all.
+   1. Tọa độ texture ánh xạ tới bounds của bộ hút. Hình ảnh bên dưới cho biết phần nào của texture tương ứng với phần nào của volume trường vector. Ví dụ, nửa dưới của texture ảnh hưởng đến nửa trên của bộ hút trường vector vì ``+Y`` hướng xuống trong không gian UV của texture nhưng hướng lên trong không gian thế giới của Godot. 2. Các giá trị màu của pixel ánh xạ tới các vector hướng trong không gian. Hình ảnh bên dưới cung cấp một cái nhìn tổng quan. Vì các hạt có thể di chuyển theo hai hướng trên mỗi trục, nửa dưới của dải màu biểu thị các giá trị hướng âm, trong khi nửa trên biểu thị các giá trị hướng dương. Vì vậy, một pixel màu vàng ``(R=1,G=1,B=0)`` ánh xạ tới vector ``(X=1,Y=1,Z=-1)``, trong khi màu xám trung tính ``(R=0.5,G=0.5,B=0.5)`` dẫn đến việc hoàn toàn không có chuyển động.
 
    .. figure:: img/particle_attractor_vector_mapping.webp
       :alt: Mapping from texture to vector field
 
-To create a vector field attractor, add a new child node to your scene and select ``GPUParticlesAttractorVectorField3D``
-from the list of available nodes. You can animate the attractor's position or attach it to a
-moving node for more dynamic effects.
+Để tạo một bộ hút trường vector, hãy thêm một child node mới vào scene và chọn ``GPUParticlesAttractorVectorField3D`` từ danh sách các node khả dụng. Bạn có thể animate vị trí của bộ hút hoặc gắn nó vào một node đang di chuyển để tạo ra các hiệu ứng linh động hơn.
 
 .. tip::
 
-   If you don't have external tools to create vector field textures, you can use
-   a NoiseTexture3D with a Color Ramp attached as a vector field texture. The
-   Color Ramp can be modified to adjust how much each coordinate is affected by
-   the vector field.
+   Nếu không có các công cụ bên ngoài để tạo texture trường vector, bạn có thể sử dụng NoiseTexture3D với một Color Ramp được gắn vào làm texture trường vector. Có thể chỉnh sửa Color Ramp để điều chỉnh mức độ ảnh hưởng của trường vector lên từng tọa độ.
 
 .. figure:: img/particle_attractor_vector.webp
    :alt: Vector field attractor in a field of particles

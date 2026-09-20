@@ -1,45 +1,26 @@
 .. _doc_using_lightmap_gi:
 
-Using Lightmap global illumination
-==================================
+Sử dụng global illumination bằng Lightmap
+=========================================
 
-Baked lightmaps are a workflow for adding indirect (or fully baked)
-lighting to a scene. Unlike the :ref:`VoxelGI <doc_using_voxel_gi>` and
+Lightmap đã bake là một quy trình dùng để thêm ánh sáng gián tiếp (hoặc ánh sáng bake hoàn toàn) vào scene. Không giống :ref:`VoxelGI <doc_using_voxel_gi>` và
 :ref:`SDFGI <doc_using_sdfgi>` approaches, baked lightmaps work fine on low-end PCs
-and mobile devices, as they consume almost no resources at runtime. Also unlike
-VoxelGI and SDFGI, baked lightmaps can optionally be used to store direct
-lighting, which provides even further performance gains.
+và các thiết bị di động, vì chúng gần như không tiêu tốn tài nguyên trong runtime. Ngoài ra, không giống VoxelGI và SDFGI, lightmap đã bake có thể tùy chọn được dùng để lưu ánh sáng trực tiếp, nhờ đó cải thiện hiệu năng hơn nữa.
 
-Unlike VoxelGI and SDFGI, baked lightmaps are completely static. Once baked, they
-can't be modified at all. They also don't provide the scene with reflections, so
-using :ref:`doc_reflection_probes` together with it on interiors (or using a Sky
-on exteriors) is a requirement to get good quality.
+Không giống VoxelGI và SDFGI, lightmap đã bake hoàn toàn tĩnh. Sau khi bake, chúng không thể được chỉnh sửa dưới bất kỳ hình thức nào. Chúng cũng không cung cấp phản chiếu cho scene, vì vậy việc sử dụng :ref:`doc_reflection_probes` cùng với nó trong các không gian nội thất (hoặc sử dụng Sky trong không gian ngoại thất) là yêu cầu bắt buộc để đạt chất lượng tốt.
 
-As they are baked, they have fewer problems than VoxelGI and SDFGI regarding
-light bleeding, and indirect light will often look better. The downside is that
-baking lightmaps takes longer compared to baking VoxelGI. While baking VoxelGI
-can be done in a matter of seconds, baking lightmaps can take several minutes if
-not more. This can slow down iteration speed significantly, so it is recommended
-to bake lightmaps only when you actually need to see changes in lighting.
-Lightmaps are baked on the GPU, making light baking faster if you have a
-mid-range or high-end dedicated GPU.
+Vì được bake, chúng ít gặp vấn đề về light bleeding hơn VoxelGI và SDFGI, đồng thời ánh sáng gián tiếp thường trông đẹp hơn. Nhược điểm là việc bake lightmap mất nhiều thời gian hơn so với bake VoxelGI. Trong khi bake VoxelGI có thể hoàn tất chỉ trong vài giây, bake lightmap có thể mất vài phút hoặc lâu hơn. Điều này có thể làm giảm đáng kể tốc độ lặp, vì vậy bạn chỉ nên bake lightmap khi thực sự cần xem các thay đổi về ánh sáng. Lightmap được bake trên GPU, nên quá trình bake ánh sáng sẽ nhanh hơn nếu bạn có GPU chuyên dụng tầm trung hoặc cao cấp.
 
-Baking lightmaps will also reserve baked materials' UV2 slot, which means you can
-no longer use it for other purposes in materials (either in the built-in
+Baking lightmap cũng sẽ dành riêng slot UV2 của các material đã bake, nghĩa là bạn không thể sử dụng slot này cho các mục đích khác trong material (dù là trong
 :ref:`doc_standard_material_3d` or in custom shaders).
 
-Despite their lack of flexibility, baked lightmaps typically offer both the best
-quality *and* performance at the same time in (mostly) static scenes. This makes
-lightmaps still popular in game development, despite lightmaps being the
-oldest technique for global illumination in video games.
+Mặc dù thiếu tính linh hoạt, lightmap đã bake thường mang lại cả chất lượng *và* hiệu năng tốt nhất cùng lúc trong các scene (phần lớn) tĩnh. Vì vậy, lightmap vẫn phổ biến trong phát triển game, dù lightmap là kỹ thuật global illumination lâu đời nhất trong game.
 
 .. seealso::
 
-    Not sure if LightmapGI is suited to your needs?
-    See :ref:`doc_introduction_to_global_illumination_comparison`
-    for a comparison of GI techniques available in Godot 4.
+    Không chắc LightmapGI có phù hợp với nhu cầu của bạn không? Xem :ref:`doc_introduction_to_global_illumination_comparison` để so sánh các kỹ thuật GI hiện có trong Godot 4.
 
-Visual comparison
+So sánh trực quan
 -----------------
 
 .. figure:: img/gi_none.webp
@@ -60,415 +41,214 @@ Visual comparison
    but lower quality visuals. Notice the blurrier sun shadow in the top-right
    corner.
 
-Here are some comparisons of how LightmapGI vs. VoxelGI look. Notice that
-lightmaps are more accurate, but also suffer from the fact
-that lighting is on an unwrapped texture, so transitions and resolution may not
-be that good. VoxelGI looks less accurate (as it's an approximation), but
-smoother overall.
+Dưới đây là một số so sánh về hình ảnh của LightmapGI và VoxelGI. Hãy lưu ý rằng lightmap chính xác hơn, nhưng cũng chịu ảnh hưởng bởi việc ánh sáng nằm trên một texture đã unwrap, nên các chuyển tiếp và độ phân giải có thể không được tốt. VoxelGI trông kém chính xác hơn (vì chỉ là một phép xấp xỉ), nhưng nhìn chung mượt hơn.
 
 .. image:: img/lightmap_gi_comparison.png
 
-SDFGI is also less accurate compared to LightmapGI. However, SDFGI can support
-large open worlds without any need for baking.
+SDFGI cũng kém chính xác hơn so với LightmapGI. Tuy nhiên, SDFGI có thể hỗ trợ các thế giới mở lớn mà không cần bake.
 
-Setting up
-----------
+Thiết lập
+---------
 
 .. warning::
 
-    Baking lightmaps in the web editors is not supported due to
-    graphics API limitations. On the web platform, only *rendering* lightmaps
-    that were baked on a different platform is supported.
+    Không hỗ trợ bake lightmap trong các web editor do những hạn chế của graphics API. Trên nền tảng web, chỉ hỗ trợ *render* các lightmap đã được bake trên một nền tảng khác.
 
 .. note::
 
-    The LightmapGI node only bakes nodes that are on the same level as the
-    LightmapGI node (siblings), or nodes that are children of the
-    LightmapGI node. This allows you to use several LightmapGI nodes to bake
-    different parts of the scene, independently from each other.
+    Node LightmapGI chỉ bake các node nằm cùng cấp với node LightmapGI (các node sibling), hoặc các node là con của node LightmapGI. Điều này cho phép bạn sử dụng nhiều node LightmapGI để bake các phần khác nhau của scene một cách độc lập.
 
-First of all, before the lightmapper can do anything, the objects to be baked need
-a UV2 layer and a texture size. A UV2 layer is a set of secondary texture coordinates
-that ensures any face in the object has its own place in the UV map. Faces must
-not share pixels in the texture.
+Trước hết, trước khi lightmapper có thể thực hiện bất kỳ thao tác nào, các object cần bake phải có một layer UV2 và một kích thước texture. Layer UV2 là một tập hợp các tọa độ texture phụ, bảo đảm mỗi face trong object có vị trí riêng trên UV map. Các face không được dùng chung pixel trong texture.
 
-There are a few ways to ensure your object has a unique UV2 layer and texture size:
+Có một vài cách để bảo đảm object của bạn có layer UV2 và kích thước texture riêng:
 
-Unwrap on scene import (recommended)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Unwrap khi import scene (khuyến nghị)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In most scenarios, this is the best approach to use. The only downside is that,
-on large models, unwrapping can take a while on import. Nonetheless, Godot will
-cache the UV2 across reimports, so it will only be regenerated when needed.
+Trong hầu hết trường hợp, đây là cách tốt nhất để sử dụng. Nhược điểm duy nhất là với các model lớn, thao tác unwrap có thể mất một lúc khi import. Tuy nhiên, Godot sẽ cache UV2 qua các lần reimport, vì vậy UV2 chỉ được tạo lại khi cần.
 
-Select the imported scene in the filesystem dock, then go to the **Import** dock.
-There, the following option can be modified:
+Chọn scene đã import trong filesystem dock, sau đó chuyển đến **Import** dock. Tại đó, bạn có thể chỉnh sửa tùy chọn sau:
 
 .. image:: img/lightmap_gi_import.webp
 
-The **Meshes > Light Baking** option must be set to **Static Lightmaps (VoxelGI/SDFGI/LightmapGI)**:
+Tùy chọn **Meshes > Light Baking** phải được đặt thành **Static Lightmaps (VoxelGI/SDFGI/LightmapGI)**:
 
 .. image:: img/lightmap_gi_mesh_import_meshes.webp
 
-When unwrapping on import, you can adjust the texture size using the **Meshes > Lightmap
-Texel Size** option. *Lower* values will result in more detailed lightmaps,
-possibly resulting in higher visual quality at the cost of longer bake times and
-larger lightmap file sizes. The default value of ``0.2`` is suited for
-small/medium-sized scenes, but you may want to increase it to ``0.5`` or even
-more for larger scenes. This is especially the case if you're baking indirect
-lighting only, as indirect light is low-frequency data (which means it doesn't
-need high-resolution textures to be accurately represented).
+Khi unwrap lúc import, bạn có thể điều chỉnh kích thước texture bằng tùy chọn **Meshes > Lightmap Texel Size**. Giá trị *thấp hơn* sẽ tạo ra lightmap chi tiết hơn, có thể cho chất lượng hình ảnh cao hơn nhưng phải đánh đổi bằng thời gian bake lâu hơn và kích thước file lightmap lớn hơn. Giá trị mặc định ``0.2`` phù hợp với các scene nhỏ/trung bình, nhưng bạn có thể muốn tăng lên ``0.5`` hoặc thậm chí cao hơn đối với các scene lớn hơn. Điều này đặc biệt đúng nếu bạn chỉ bake ánh sáng gián tiếp, vì ánh sáng gián tiếp là dữ liệu tần số thấp (nghĩa là không cần texture độ phân giải cao để được biểu diễn chính xác).
 
-The effect of setting this option is that all meshes within the scene will have
-their UV2 maps properly generated.
+Việc đặt tùy chọn này sẽ khiến tất cả mesh trong scene được tạo UV2 map đúng cách.
 
 .. warning::
 
-    When reusing a mesh within a scene, keep in mind that UVs will be generated
-    for the first instance found. If the mesh is reused with different scales
-    (and the scales are wildly different, more than half or twice), this will
-    result in inefficient lightmaps. To avoid this, adjust the **Lightmap
-    Scale** property in the GeometryInstance3D section of a MeshInstance3D node.
-    This lets you *increase* the level of lightmap detail for specific
-    MeshInstance3D nodes (but not decrease it).
+    Khi sử dụng lại một mesh trong scene, hãy nhớ rằng UV sẽ được tạo cho instance đầu tiên được tìm thấy. Nếu mesh được sử dụng lại với các scale khác nhau (và các scale chênh lệch rất lớn, lớn hơn một nửa hoặc gấp đôi), điều này sẽ tạo ra lightmap kém hiệu quả. Để tránh điều này, hãy điều chỉnh thuộc tính **Lightmap Scale** trong phần GeometryInstance3D của một node MeshInstance3D. Thuộc tính này cho phép bạn *tăng* mức độ chi tiết của lightmap cho các node MeshInstance3D cụ thể (nhưng không thể giảm).
 
-    Also, the ``*.unwrap_cache`` files should *not* be ignored in version control
-    as these files guarantee that UV2 reimports are consistent across platforms
-    and engine versions.
+    Ngoài ra, các file ``*.unwrap_cache`` *không nên* bị bỏ qua trong version control, vì những file này bảo đảm rằng việc reimport UV2 nhất quán giữa các nền tảng và các phiên bản engine.
 
-Unwrap from within Godot
-~~~~~~~~~~~~~~~~~~~~~~~~
+Unwrap từ bên trong Godot
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. warning::
 
-    If this Mesh menu operation is used on an imported 3D scene, the generated
-    UV2 will be lost when the scene is reloaded.
+    Nếu thao tác trong menu Mesh này được sử dụng trên một scene 3D đã import, UV2 được tạo sẽ bị mất khi scene được tải lại.
 
-Godot has an option to unwrap meshes and visualize the UV channels. After
-selecting a MeshInstance3D node, it can be found in the **Mesh** menu at the top
-of the 3D editor viewport:
+Godot có tùy chọn unwrap mesh và trực quan hóa các kênh UV. Sau khi chọn một node MeshInstance3D, bạn có thể tìm thấy tùy chọn này trong menu **Mesh** ở phía trên viewport của trình chỉnh sửa 3D:
 
 .. image:: img/lightmap_gi_mesh_menu.webp
 
-This will generate a second set of UV2 coordinates which can be used for baking.
-It will also set the texture size automatically.
+Thao tác này sẽ tạo một bộ tọa độ UV2 thứ hai để dùng cho việc bake. Nó cũng sẽ tự động đặt kích thước texture.
 
-Unwrap from your 3D modeling software
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Unwrap từ phần mềm modeling 3D của bạn
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The last option is to do it from your favorite 3D app. This approach is
-generally **not recommended**, but it's explained so that you know it exists.
-The main advantage is that, on complex objects that you may want to re-import a
-lot, the texture generation process can be quite costly within Godot, so having
-it unwrapped before import can be faster.
+Tùy chọn cuối cùng là thực hiện việc này từ ứng dụng 3D yêu thích của bạn. Cách tiếp cận này nhìn chung **không được khuyến nghị**, nhưng được giải thích để bạn biết nó tồn tại. Ưu điểm chính là đối với các object phức tạp mà bạn có thể muốn re-import nhiều lần, quá trình tạo texture trong Godot có thể khá tốn thời gian, nên unwrap trước khi import có thể nhanh hơn.
 
-Simply do an unwrap on the second UV2 layer.
+Chỉ cần thực hiện unwrap trên layer UV2 thứ hai.
 
 .. image:: img/lightmap_gi_blender.webp
 
-Then import the 3D scene normally. Remember you will need to set the texture
-size on the mesh after import.
+Sau đó import scene 3D như bình thường. Hãy nhớ rằng bạn sẽ cần đặt kích thước texture cho mesh sau khi import.
 
 .. image:: img/lightmap_gi_lmsize.webp
 
-If you use external meshes on import, the size will be kept. Be wary that most
-unwrappers in 3D modeling software are not quality-oriented, as they are meant
-to work quickly. You will mostly need to use seams or other techniques to create
-better unwrapping.
+Nếu sử dụng mesh bên ngoài khi import, kích thước sẽ được giữ nguyên. Hãy lưu ý rằng hầu hết công cụ unwrap trong phần mềm modeling 3D không chú trọng chất lượng, vì chúng được thiết kế để hoạt động nhanh. Phần lớn trường hợp, bạn sẽ cần sử dụng seam hoặc các kỹ thuật khác để tạo kết quả unwrap tốt hơn.
 
-Generating UV2 for primitive meshes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tạo UV2 cho các mesh primitive
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
 
-    This option is only available for primitive meshes such as :ref:`class_BoxMesh`,
+    Tùy chọn này chỉ khả dụng cho các mesh primitive như :ref:`class_BoxMesh`,
     :ref:`class_CylinderMesh`, :ref:`class_PlaneMesh`, etc.
 
-Enabling UV2 on primitive meshes allows you to make them receive and contribute
-to baked lighting. This can be used in certain lighting setups. For instance,
-you could hide a torus that has an emissive material after baking lightmaps to
-create an area light that follows the shape of a torus.
+Bật UV2 trên các mesh primitive cho phép chúng nhận và đóng góp vào ánh sáng đã bake. Tùy chọn này có thể được sử dụng trong một số thiết lập ánh sáng nhất định. Ví dụ, bạn có thể ẩn một torus có material emissive sau khi bake lightmap để tạo một area light theo hình dạng của torus.
 
-By default, primitive meshes do not have UV2 generated to save resources (as
-these meshes may be created during gameplay). You can edit a primitive mesh in
-the inspector and enable **Add UV2** to make the engine procedurally generate
-UV2 for a primitive mesh. The default **UV2 Padding** value is tuned to avoid
-most lightmap bleeding, without wasting too much space on the edges. If you
-notice lightmap bleeding on a specific primitive mesh only, you may have to
-increase **UV2 Padding**.
+Theo mặc định, mesh primitive không được tạo UV2 để tiết kiệm tài nguyên (vì các mesh này có thể được tạo trong gameplay). Bạn có thể chỉnh sửa một mesh primitive trong inspector và bật **Add UV2** để engine tạo UV2 theo quy trình cho mesh primitive. Giá trị **UV2 Padding** mặc định được tinh chỉnh để tránh hầu hết lightmap bleeding mà không lãng phí quá nhiều không gian ở các cạnh. Nếu bạn chỉ nhận thấy lightmap bleeding trên một mesh primitive cụ thể, có thể bạn sẽ phải tăng **UV2 Padding**.
 
-**Lightmap Size Hint** represents the size taken by a single mesh on the
-lightmap texture, which varies depending on the mesh's size properties and the
-**UV2 Padding** value. **Lightmap Size Hint** should not be manually changed, as
-any modifications will be lost when the scene is reloaded.
+**Lightmap Size Hint** biểu thị kích thước mà một mesh chiếm trên texture lightmap, kích thước này thay đổi tùy thuộc vào các thuộc tính kích thước của mesh và giá trị **UV2 Padding**. Không nên tự thay đổi **Lightmap Size Hint**, vì mọi sửa đổi sẽ bị mất khi scene được tải lại.
 
-Generating UV2 for CSG nodes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tạo UV2 cho các node CSG
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-Since Godot 4.4, you can
+Kể từ Godot 4.4, bạn có thể
 :ref:`convert a CSG node and its children to a MeshInstance3D <doc_csg_tools_converting_to_mesh_instance_3d>`.
-This can be used to bake lightmaps on a CSG node by following these steps:
+Bạn có thể dùng cách này để bake lightmap trên một node CSG bằng cách thực hiện các bước sau:
 
-- Select the root CSG node and choose **CSG > Bake Mesh Instance** at the top of the 3D editor viewport.
-- Hide the root CSG node that was just baked (it is not hidden automatically).
-- Select the newly created MeshInstance3D node and choose **Mesh > Unwrap UV2 for Lightmap/AO**.
-- Bake lightmaps.
+- Chọn node CSG gốc và chọn **CSG > Bake Mesh Instance** ở phía trên viewport của trình chỉnh sửa 3D. - Ẩn node CSG gốc vừa được bake (node này không tự động bị ẩn). - Chọn node MeshInstance3D mới được tạo và chọn **Mesh > Unwrap UV2 for Lightmap/AO**. - Bake lightmap.
 
 .. tip::
 
-    Remember to keep the original CSG node in the scene tree, so that you can
-    perform changes to the geometry later if needed. To make changes to the
-    geometry, remove the MeshInstance3D node and make the root CSG node visible
-    again.
+    Hãy nhớ giữ node CSG gốc trong scene tree để có thể thay đổi hình học sau này nếu cần. Để thay đổi hình học, hãy xóa node MeshInstance3D và hiển thị lại node CSG gốc.
 
-Checking UV2
+Kiểm tra UV2
 ~~~~~~~~~~~~
 
-In the **Mesh** menu mentioned before, the UV2 texture coordinates can be visualized.
-If something is failing, double-check that the meshes have these UV2 coordinates:
+Trong menu **Mesh** đã đề cập trước đó, bạn có thể trực quan hóa các tọa độ texture UV2. Nếu có vấn đề, hãy kiểm tra lại để bảo đảm các mesh có những tọa độ UV2 này:
 
 .. image:: img/lightmap_gi_uvchannel.webp
 
-Setting up the scene
---------------------
+Thiết lập scene
+---------------
 
-Before anything is done, a **LightmapGI** node needs to be added to a scene.
-This will enable light baking on all nodes (and sub-nodes) in that scene, even
-on instanced scenes.
+Trước khi thực hiện bất kỳ thao tác nào, cần thêm một node **LightmapGI** vào scene. Node này sẽ bật tính năng bake ánh sáng trên tất cả node (và sub-node) trong scene đó, kể cả các scene được instance.
 
 .. image:: img/lightmap_gi_scene.webp
 
-A sub-scene can be instanced several times, as this is supported by the baker.
-Each instance will be assigned a lightmap of its own. To avoid issues with
-inconsistent lightmap texel scaling, make sure to respect the rule about mesh
-scaling mentioned before.
+Một sub-scene có thể được instance nhiều lần, vì baker hỗ trợ việc này. Mỗi instance sẽ được gán một lightmap riêng. Để tránh các vấn đề do việc scale texel của lightmap không nhất quán, hãy bảo đảm tuân thủ quy tắc về scale mesh đã đề cập trước đó.
 
-Setting up meshes
-~~~~~~~~~~~~~~~~~
+Thiết lập mesh
+~~~~~~~~~~~~~~
 
-For a **MeshInstance3D** node to take part in the baking process, it needs to have
-its bake mode set to **Static**. Meshes that have their bake mode set to **Disabled**
-or **Dynamic** will be ignored by the lightmapper.
+Để một node **MeshInstance3D** tham gia vào quá trình bake, bake mode của node phải được đặt thành **Static**. Các mesh có bake mode được đặt thành **Disabled** hoặc **Dynamic** sẽ bị lightmapper bỏ qua.
 
 .. image:: img/lightmap_gi_use.webp
 
-When auto-generating lightmaps on scene import, this is enabled automatically.
+Khi tự động tạo lightmap trong lúc nhập scene, tùy chọn này sẽ tự động được bật.
 
-Setting up lights
-~~~~~~~~~~~~~~~~~
+Thiết lập đèn
+~~~~~~~~~~~~~
 
-Lights are baked with indirect light only by default. This means that shadowmapping
-and lighting are still dynamic and affect moving objects, but light bounces from
-that light will be baked.
+Theo mặc định, đèn chỉ được bake với ánh sáng gián tiếp. Điều này có nghĩa là shadowmapping và lighting vẫn là động và ảnh hưởng đến các đối tượng đang di chuyển, nhưng các lần ánh sáng dội lại từ đèn đó sẽ được bake.
 
-Lights can be disabled (no bake) or be fully baked (direct and indirect). This
-can be controlled from the **Bake Mode** menu in lights:
+Có thể tắt đèn (không bake) hoặc bake hoàn toàn (trực tiếp và gián tiếp). Bạn có thể điều khiển tùy chọn này từ menu **Bake Mode** của đèn:
 
 .. image:: img/lightmap_gi_bake_mode.webp
 
-The modes are:
+Các mode gồm:
 
 Disabled
 ~~~~~~~~
 
-The light is ignored when baking lightmaps. This is the mode to use for dynamic
-lighting effects such as explosions and weapon effects.
+Đèn sẽ bị bỏ qua khi baking lightmap. Đây là mode nên dùng cho các hiệu ứng lighting động như vụ nổ và hiệu ứng vũ khí.
 
 .. warning::
 
-    Hiding a light has no effect on the resulting lightmap bake. This means
-    you must use the Disabled bake mode instead of hiding the Light node by
-    disabling its **Visible** property.
+    Việc ẩn đèn không ảnh hưởng đến lightmap bake thu được. Điều này có nghĩa là bạn phải dùng bake mode Disabled thay vì ẩn Light node bằng cách tắt thuộc tính **Visible** của nó.
 
 Dynamic
 ~~~~~~~
 
-This is the default mode, and is a compromise between performance and real-time
-friendliness. Only indirect lighting will be baked. Direct light and shadows are
-still real-time, as they would be without LightmapGI.
+Đây là mode mặc định, là sự cân bằng giữa hiệu năng và khả năng hoạt động theo thời gian thực. Chỉ lighting gián tiếp được bake. Ánh sáng trực tiếp và bóng vẫn là thời gian thực, giống như khi không có LightmapGI.
 
-This mode allows performing *subtle* changes to a light's color, energy and
-position while still looking fairly correct. For example, you can use this
-to create flickering static torches that have their indirect light baked.
+Mode này cho phép thực hiện các thay đổi *nhẹ* đối với màu sắc, năng lượng và vị trí của đèn mà hình ảnh vẫn khá chính xác. Ví dụ: bạn có thể dùng mode này để tạo các ngọn đuốc tĩnh nhấp nháy có ánh sáng gián tiếp được bake.
 
-Depending on the value of **Shadowmask Mode**, it is possible to still get
-distant baked shadows for DirectionalLight3D. This allows shadows up close to be
-real-time and show dynamic objects, while allowing static objects in the
-distance to still cast shadows.
+Tùy thuộc vào giá trị của **Shadowmask Mode**, DirectionalLight3D vẫn có thể tạo ra bóng được bake ở xa. Điều này cho phép bóng ở khoảng cách gần được xử lý theo thời gian thực và hiển thị các đối tượng động, đồng thời cho phép các đối tượng tĩnh ở xa vẫn đổ bóng.
 
 Static
 ~~~~~~
 
-Both indirect and direct lighting will be baked. Since static surfaces can skip
-lighting and shadow computations entirely, this mode provides the best
-performance along with smooth shadows that never fade based on distance. The
-real-time light will not affect baked surfaces anymore, but it will still affect
-dynamic objects. When using the **All** bake mode on a light, dynamic objects
-will not cast real-time shadows onto baked surfaces, so you need to use a
-different approach such as blob shadows instead. Blob shadows can be implemented
-with a Decal node.
+Cả lighting gián tiếp và trực tiếp đều sẽ được bake. Vì các bề mặt tĩnh có thể bỏ qua hoàn toàn việc tính toán lighting và shadow, mode này mang lại hiệu năng tốt nhất cùng với các bóng mượt không bao giờ mờ dần theo khoảng cách. Đèn thời gian thực sẽ không còn ảnh hưởng đến các bề mặt đã bake, nhưng vẫn ảnh hưởng đến các đối tượng động. Khi dùng bake mode **All** trên một đèn, các đối tượng động sẽ không đổ bóng theo thời gian thực lên các bề mặt đã bake, vì vậy bạn cần dùng một cách tiếp cận khác, chẳng hạn như blob shadow. Blob shadow có thể được triển khai bằng Decal node.
 
-The light will not be adjustable at all during gameplay. Moving the light or
-changing its color (or energy) will not have any effect on static surfaces.
+Không thể điều chỉnh đèn trong lúc gameplay. Việc di chuyển đèn hoặc thay đổi màu sắc (hoặc năng lượng) của đèn sẽ không có tác dụng lên các bề mặt tĩnh.
 
-Since bake modes can be adjusted on a per-light basis, it is possible to create
-hybrid baked light setups. One popular option is to use a real-time
-DirectionalLight with its bake mode set to **Dynamic**, and use the **Static**
-bake mode for OmniLights and SpotLights. This provides good performance while
-still allowing dynamic objects to cast real-time shadows in outdoor areas.
+Vì bake mode có thể được điều chỉnh cho từng đèn, bạn có thể tạo các thiết lập lighting bake kết hợp. Một lựa chọn phổ biến là dùng DirectionalLight theo thời gian thực với bake mode được đặt thành **Dynamic**, đồng thời dùng bake mode **Static** cho OmniLight và SpotLight. Cách này mang lại hiệu năng tốt mà vẫn cho phép các đối tượng động đổ bóng theo thời gian thực trong các khu vực ngoài trời.
 
-Fully baked lights can also make use of light nodes' **Size** (omni/spot) or
-**Angular Distance** (directional) properties. This allows for shadows with
-realistic penumbra that increases in size as the distance between the caster and
-the shadow increases. This also has a lower performance cost compared to
-real-time PCSS shadows, as only dynamic objects have real-time shadows rendered
-on them.
+Đèn được bake hoàn toàn cũng có thể sử dụng các thuộc tính **Size** (omni/spot) hoặc **Angular Distance** (directional) của light node. Điều này cho phép tạo bóng có vùng nửa tối (penumbra) chân thực, tăng kích thước khi khoảng cách giữa vật thể đổ bóng và bóng tăng lên. Cách này cũng có chi phí hiệu năng thấp hơn so với bóng PCSS theo thời gian thực, vì chỉ các đối tượng động mới được render bóng theo thời gian thực.
 
 .. image:: img/lightmap_gi_omnilight_size.png
 
 Baking
 ------
 
-To begin the bake process, click the **Bake Lightmaps** button at the top of the
-3D editor viewport when selecting the LightmapGI node:
+Để bắt đầu quá trình bake, hãy nhấp vào nút **Bake Lightmaps** ở đầu viewport của 3D editor khi chọn LightmapGI node:
 
 .. image:: img/lightmap_gi_bake.webp
 
-This can take from seconds to minutes (or hours) depending on scene size, bake
-method and quality selected.
+Quá trình này có thể mất từ vài giây đến vài phút (hoặc vài giờ), tùy thuộc vào kích thước scene, phương thức bake và chất lượng được chọn.
 
 .. warning::
 
-    Baking lightmaps is a process that can require a lot of video memory,
-    especially if the resulting texture is large. Due to internal limitations,
-    the engine may also crash if the generated texture size is too large (even
-    on systems with a lot of video memory).
+    Baking lightmap là một quá trình có thể yêu cầu rất nhiều video memory, đặc biệt nếu texture thu được có kích thước lớn. Do các giới hạn nội bộ, engine cũng có thể bị crash nếu kích thước texture được tạo quá lớn (ngay cả trên các hệ thống có nhiều video memory).
 
-    To avoid crashes, make sure the lightmap texel size in the Import dock is
-    set to a high enough value.
+    Để tránh crash, hãy đảm bảo kích thước texel của lightmap trong Import dock được đặt đủ lớn.
 
-Tweaks
-~~~~~~
+Tinh chỉnh
+~~~~~~~~~~
 
-- **Quality:** Four bake quality modes are provided: Low, Medium, High, and
-  Ultra. Higher quality takes more time, but result in a better-looking lightmap
-  with less noise. The difference is especially noticeable with emissive
-  materials or areas that get little to no direct lighting. Each bake quality
-  mode can be further adjusted in the Project Settings.
-- **Supersampling:** This creates the lightmap at a higher resolution and then
-  downsamples it. This reduces noise and light leaking, and produces better
-  shadows with small scale details. However, using it will increase bake times and
-  memory usage during lightmap baking. The **Supersampling Factor** changes the size
-  the lightmap is rendered at before downsampling.
-- **Bounces:** The number of bounces to use for indirect lighting. The default
-  value (``3``) is a good compromise between bake times and quality. Higher
-  values will make light bounce around more times before it stops, which makes
-  indirect lighting look smoother (but also possibly brighter depending on
-  materials and geometry).
-- **Bounce Indirect Energy:** The global multiplier to use when baking lights'
-  indirect energy. This multiplies each light's own **Indirect Energy** value.
-  Values different from ``1.0`` are not physically accurate, but can be used for
-  artistic effect.
-- **Directional:** If enabled, stores directional information for lightmaps.
-  This improves normal mapped materials' appearance for baked surfaces,
-  especially with fully baked lights (since they also have direct light baked).
-  The downside is that directional lightmaps are slightly more expensive to render.
-  They also require more time to bake and result in larger file sizes.
-- **Shadowmask Mode:** If set to a mode other than **None**, the first DirectionalLight3D
-  in the scene with the **Dynamic** global illumination mode will have its static shadows
-  baked to a separate texture called a *shadowmask*. This can be used to allow distant
-  static objects to cast shadows onto other static objects regardless of the distance
-  from the camera. See the :ref:`section on shadowmasking <doc_using_lightmap_gi_shadowmask>`
-  for further details.
-- **Interior:** If enabled, environment lighting will not be sourced. Use this
-  for purely indoor scenes to avoid light leaks.
-- **Use Texture for Bounces:** If enabled, a texture with the lighting
-  information will be generated to speed up the generation of indirect lighting
-  at the cost of some accuracy. The geometry might exhibit extra light leak
-  artifacts when using low resolution lightmaps or UVs that stretch the lightmap
-  significantly across surfaces. Leave this enabled if unsure.
-- **Use Denoiser:** If enabled, uses a denoising algorithm to make the lightmap
-  significantly less noisy. This increases bake times and can occasionally
-  introduce artifacts, but the result is often worth it. See
+- **Quality:** Có bốn mode bake quality: Low, Medium, High và Ultra. Chất lượng cao hơn sẽ mất nhiều thời gian hơn, nhưng tạo ra lightmap đẹp hơn với ít noise hơn. Khác biệt này đặc biệt dễ nhận thấy với các vật liệu emissive hoặc những khu vực nhận rất ít hoặc không nhận lighting trực tiếp. Mỗi mode bake quality có thể được điều chỉnh thêm trong Project Settings. - **Supersampling:** Tạo lightmap ở độ phân giải cao hơn rồi downsample. Điều này làm giảm noise và light leaking, đồng thời tạo ra bóng tốt hơn với các chi tiết có quy mô nhỏ. Tuy nhiên, việc sử dụng tùy chọn này sẽ làm tăng thời gian bake và mức sử dụng bộ nhớ trong quá trình baking lightmap. **Supersampling Factor** thay đổi kích thước mà lightmap được render trước khi downsample. - **Bounces:** Số lần dội được dùng cho lighting gián tiếp. Giá trị mặc định (``3``) là sự cân bằng tốt giữa thời gian bake và chất lượng. Giá trị cao hơn sẽ khiến ánh sáng dội qua lại nhiều lần hơn trước khi dừng, làm cho lighting gián tiếp trông mượt hơn (nhưng cũng có thể sáng hơn, tùy thuộc vào vật liệu và hình học). - **Bounce Indirect Energy:** Hệ số nhân toàn cục được dùng khi baking năng lượng gián tiếp của đèn. Hệ số này nhân với giá trị **Indirect Energy** riêng của từng đèn. Các giá trị khác ``1.0`` không chính xác về mặt vật lý, nhưng có thể được dùng cho hiệu ứng nghệ thuật. - **Directional:** Nếu được bật, lưu thông tin directional cho lightmap. Điều này cải thiện diện mạo của các vật liệu có normal map trên các bề mặt đã bake, đặc biệt với đèn được bake hoàn toàn (vì chúng cũng có ánh sáng trực tiếp được bake). Nhược điểm là directional lightmap tốn nhiều chi phí render hơn một chút. Chúng cũng cần nhiều thời gian bake hơn và tạo ra kích thước file lớn hơn. - **Shadowmask Mode:** Nếu được đặt thành mode khác **None**, DirectionalLight3D đầu tiên trong scene có mode global illumination **Dynamic** sẽ có bóng tĩnh được bake vào một texture riêng gọi là *shadowmask*. Có thể dùng tùy chọn này để cho phép các đối tượng tĩnh ở xa đổ bóng lên các đối tượng tĩnh khác bất kể khoảng cách đến camera. Xem :ref:`section on shadowmasking <doc_using_lightmap_gi_shadowmask>` để biết thêm chi tiết. - **Interior:** Nếu được bật, lighting môi trường sẽ không được lấy nguồn. Dùng tùy chọn này cho các scene hoàn toàn trong nhà để tránh light leak. - **Use Texture for Bounces:** Nếu được bật, một texture chứa thông tin lighting sẽ được tạo để tăng tốc quá trình tạo lighting gián tiếp, đổi lại là một phần độ chính xác. Hình học có thể xuất hiện thêm các artifact light leak khi dùng lightmap hoặc UV có độ phân giải thấp làm kéo giãn lightmap đáng kể trên các bề mặt. Nếu không chắc chắn, hãy để tùy chọn này được bật. - **Use Denoiser:** Nếu được bật, sử dụng thuật toán khử noise để làm cho lightmap ít noise hơn đáng kể. Tùy chọn này làm tăng thời gian bake và đôi khi có thể tạo ra artifact, nhưng kết quả thường rất đáng giá. Xem
   :ref:`doc_using_lightmap_gi_denoising` for more information.
-- **Denoiser Strength:** The strength of denoising step applied to the generated
-  lightmaps. Higher values are more effective at removing noise, but can reduce
-  shadow detail for static shadows. Only effective if denoising is enabled and
-  the denoising method is :abbr:`JNLM (Non-Local Means with Joint Filtering)`
-  (:abbr:`OIDN (Open Image Denoise)` does not have a denoiser strength setting).
-- **Bias:** The offset value to use for shadows in 3D units. You generally don't
-  need to change this value, except if you run into issues with light bleeding or
-  dark spots in your lightmap after baking. This setting does not affect real-time
-  shadows casted on baked surfaces (for lights with **Dynamic** bake mode).
-- **Max Texture Size:** The maximum texture size for the generated texture
-  atlas. Higher values will result in fewer slices being generated, but may not
-  work on all hardware as a result of hardware limitations on texture sizes.
-  Leave this at its default value of ``16384`` if unsure.
-- **Environment > Mode:** Controls how environment lighting is sourced when
-  baking lightmaps. The default value of **Scene** is suited for levels with
-  visible exterior parts. For purely indoor scenes, set this to **Disabled** to
-  avoid light leaks and speed up baking. This can also be set to **Custom Sky**
-  or **Custom Color** to use environment lighting that differs from the actual
-  scene's environment sky.
-- **Gen Probes > Subdiv:** See :ref:`doc_using_lightmap_gi_dynamic_objects`.
-- **Data > Light Data:** See :ref:`doc_using_lightmap_gi_data`.
+- **Denoiser Strength:** Mức độ của bước khử noise được áp dụng cho các lightmap được tạo. Giá trị cao hơn sẽ loại bỏ noise hiệu quả hơn, nhưng có thể làm giảm chi tiết bóng đối với bóng tĩnh. Chỉ có tác dụng nếu tính năng khử noise được bật và phương thức khử noise là :abbr:`JNLM (Non-Local Means with Joint Filtering)` (:abbr:`OIDN (Open Image Denoise)` không có thiết lập denoiser strength). - **Bias:** Giá trị offset được dùng cho bóng trong các đơn vị 3D. Nhìn chung, bạn không cần thay đổi giá trị này, trừ khi gặp vấn đề với light bleeding hoặc các đốm tối trong lightmap sau khi bake. Thiết lập này không ảnh hưởng đến bóng theo thời gian thực được đổ lên các bề mặt đã bake (đối với đèn có bake mode **Dynamic**). - **Max Texture Size:** Kích thước texture tối đa cho texture atlas được tạo. Giá trị cao hơn sẽ tạo ra ít lát hơn, nhưng có thể không hoạt động trên mọi phần cứng do giới hạn phần cứng về kích thước texture. Nếu không chắc chắn, hãy giữ giá trị mặc định là ``16384``. - **Environment > Mode:** Điều khiển cách lấy nguồn lighting môi trường khi baking lightmap. Giá trị mặc định **Scene** phù hợp với các level có phần bên ngoài hiển thị được. Đối với scene hoàn toàn trong nhà, đặt thành **Disabled** để tránh light leak và tăng tốc quá trình bake. Bạn cũng có thể đặt thành **Custom Sky** hoặc **Custom Color** để sử dụng lighting môi trường khác với sky môi trường thực tế của scene. - **Gen Probes > Subdiv:** Xem :ref:`doc_using_lightmap_gi_dynamic_objects`. - **Data > Light Data:** Xem :ref:`doc_using_lightmap_gi_data`.
 
 .. _doc_using_lightmap_gi_shadowmask:
 
-Using shadowmasking for distant directional shadows
----------------------------------------------------
+Sử dụng shadowmask cho bóng directional ở xa
+--------------------------------------------
 
-When using a DirectionalLight3D, the maximum distance at which it can draw
-real-time shadows is limited by its **Shadow Max Distance** property. This can
-be an issue in large scenes, as distant objects won't appear to have any shadows
-from the DirectionalLight3D. While this can be resolved by using the **Static**
-global illumination mode on the DirectionalLight3D, this has several downsides:
+Khi sử dụng DirectionalLight3D, khoảng cách tối đa mà nó có thể vẽ bóng theo thời gian thực bị giới hạn bởi thuộc tính **Shadow Max Distance**. Đây có thể là vấn đề trong các scene lớn, vì các đối tượng ở xa sẽ không có bóng từ DirectionalLight3D. Mặc dù có thể giải quyết vấn đề này bằng cách dùng mode global illumination **Static** trên DirectionalLight3D, cách này có một số nhược điểm:
 
-- Since both direct and indirect light are baked, there is no way for dynamic
-  objects to cast shadows onto static surfaces in a realistic manner. Godot skips
-  shadow sampling entirely in this case to avoid "double lighting" artifacts.
-- Static shadows up close lack in detail, as they only rely on the lightmap texture
-  and not on real-time shadow cascades.
+- Vì cả ánh sáng trực tiếp và gián tiếp đều được bake, không có cách nào để các đối tượng động đổ bóng lên các bề mặt tĩnh theo cách chân thực. Godot bỏ qua hoàn toàn việc lấy mẫu bóng trong trường hợp này để tránh artifact "double lighting". - Bóng tĩnh ở khoảng cách gần thiếu chi tiết, vì chúng chỉ dựa vào texture lightmap chứ không dựa vào các cascade bóng theo thời gian thực.
 
-We can avoid these downsides while still benefiting from distant shadows by
-using *shadowmasking*. While dynamic objects won't receive shadows from the
-shadowmask, it still greatly improves visuals since most scenes are primarily
-comprised of static objects.
+Chúng ta có thể tránh các nhược điểm này mà vẫn hưởng lợi từ bóng ở xa bằng cách sử dụng *shadowmasking*. Mặc dù các đối tượng động sẽ không nhận bóng từ shadowmask, cách này vẫn cải thiện đáng kể hình ảnh vì hầu hết scene chủ yếu bao gồm các đối tượng tĩnh.
 
-Since the lightmap texture alone doesn't contain shadow information, we can bake
-this shadow information to a separate texture called a *shadowmask*.
+Vì chỉ riêng texture lightmap không chứa thông tin bóng, chúng ta có thể bake thông tin bóng này vào một texture riêng gọi là *shadowmask*.
 
-Shadowmasking only affects the first DirectionalLight3D in the scene (determined
-by tree order) that has the **Dynamic** global illumination mode. It is not
-possible to use shadowmasking with the **Static** global illumination mode, as
-this mode skips shadow sampling on static objects entirely. This is because the
-Static global illumination mode bakes both direct and indirect light.
+Shadowmasking chỉ ảnh hưởng đến DirectionalLight3D đầu tiên trong scene (được xác định theo thứ tự cây) có chế độ global illumination **Dynamic**. Không thể sử dụng shadowmasking với chế độ global illumination **Static**, vì chế độ này hoàn toàn bỏ qua việc lấy mẫu bóng trên các vật thể tĩnh. Điều này là do chế độ global illumination Static bake cả ánh sáng trực tiếp lẫn gián tiếp.
 
-Three shadowmasking modes are available:
+Có ba chế độ shadowmasking:
 
-- **None (default):** Don't bake a shadowmask texture. Directional shadows will
-  not be visible outside the range specified by the DirectionalLight3D's
-  **Shadow Max Distance** property.
-- **Replace:** Bakes a shadowmask texture, and uses it to draw directional
-  shadows when outside the range specified by the DirectionalLight3D's **Shadow
-  Max Distance** property. Shadows within this range remain fully real-time.
-  This option generally makes the most sense for most scenes, as it can deal
-  well with static objects that exhibit subtle motion (e.g. foliage shadows).
-- **Overlay:** Bakes a shadowmask texture, and uses it to draw directional
-  shadows regardless of the distance from the camera. Shadows within the range
-  of the DirectionalLight3D's **Shadow Max Distance** property will be overlaid
-  with real-time shadows. This can make the transition between real-time and
-  baked shadows less jarring, at the cost of a "smearing" effect present on
-  static object shadows depending on lightmap texel density. Also, this mode
-  can't deal as well with static objects that exhibit subtle motion (such as
-  foliage), as the baked shadows can't be animated over time. Still, for scenes
-  where the camera moves quickly, this may be a better choice than **Replace**.
+- **None (mặc định):** Không bake texture shadowmask. Bóng định hướng sẽ không hiển thị bên ngoài phạm vi được chỉ định bởi thuộc tính **Shadow Max Distance** của DirectionalLight3D. - **Replace:** Bake texture shadowmask và sử dụng texture này để vẽ bóng định hướng khi nằm ngoài phạm vi được chỉ định bởi thuộc tính **Shadow Max Distance** của DirectionalLight3D. Bóng trong phạm vi này vẫn hoàn toàn theo thời gian thực. Tùy chọn này nhìn chung phù hợp nhất với hầu hết scene, vì có thể xử lý tốt các vật thể tĩnh có chuyển động nhỏ (ví dụ: bóng của tán lá). - **Overlay:** Bake texture shadowmask và sử dụng texture này để vẽ bóng định hướng bất kể khoảng cách đến camera. Bóng trong phạm vi thuộc tính **Shadow Max Distance** của DirectionalLight3D sẽ được phủ bằng bóng theo thời gian thực. Điều này có thể làm cho quá trình chuyển tiếp giữa bóng theo thời gian thực và bóng đã bake bớt đột ngột, nhưng phải đánh đổi bằng hiệu ứng "nhòe" xuất hiện trên bóng của vật thể tĩnh, tùy thuộc vào mật độ texel của lightmap. Ngoài ra, chế độ này không xử lý tốt bằng các vật thể tĩnh có chuyển động nhỏ (chẳng hạn như tán lá), vì bóng đã bake không thể được animate theo thời gian. Tuy vậy, đối với các scene mà camera di chuyển nhanh, đây có thể là lựa chọn tốt hơn **Replace**.
 
-Here's a visual comparison of the shadowmask modes with a scene where the
-**Shadow Max Distance** was set very low for comparison purposes. The blue boxes
-are dynamic objects, while the rest of the scene is a static object. There is
-only a single DirectionalLight3D in the scene with the Dynamic global
-illumination mode:
+Dưới đây là so sánh trực quan giữa các chế độ shadowmask với một scene trong đó **Shadow Max Distance** được đặt rất thấp để phục vụ mục đích so sánh. Các hộp màu xanh là vật thể động, còn phần còn lại của scene là một vật thể tĩnh. Scene chỉ có một DirectionalLight3D duy nhất với chế độ global illumination Dynamic:
 
 .. figure:: img/lightmap_gi_shadowmask.webp
    :align: center
@@ -478,32 +258,21 @@ illumination mode:
 
 .. note::
 
-    It is possible to switch between the **Replace** and **Overlay** shadowmask
-    modes without having to bake lightmaps again.
+    Có thể chuyển đổi giữa các chế độ shadowmask **Replace** và **Overlay** mà không cần bake lại lightmap.
 
-Balancing bake times with quality
----------------------------------
+Cân bằng thời gian bake và chất lượng
+-------------------------------------
 
-Since high-quality bakes can take very long (up to dozens of minutes for large
-complex scenes), it is recommended to use lower quality settings at first. Then,
-once you are confident with your scene's lighting setup, raise the quality
-settings and perform a "final" bake before exporting your project.
+Vì quá trình bake chất lượng cao có thể mất rất nhiều thời gian (lên đến hàng chục phút đối với các scene lớn và phức tạp), bạn nên sử dụng các thiết lập chất lượng thấp hơn lúc đầu. Sau đó, khi đã chắc chắn về thiết lập ánh sáng của scene, hãy tăng các thiết lập chất lượng và thực hiện một lần bake "cuối cùng" trước khi export project.
 
-Reducing the lightmap resolution by increasing **Lightmap Texel Size** on the
-imported 3D scenes will also speed up baking significantly. However, this will
-require you to reimport all lightmapped 3D scenes before you can bake lightmaps
-again.
+Giảm độ phân giải lightmap bằng cách tăng **Lightmap Texel Size** trên các scene 3D đã import cũng sẽ giúp tăng tốc đáng kể quá trình bake. Tuy nhiên, bạn sẽ phải reimport tất cả scene 3D sử dụng lightmap trước khi có thể bake lại lightmap.
 
 .. _doc_using_lightmap_gi_denoising:
 
-Denoising
+Khử nhiễu
 ---------
 
-Since baking lightmaps relies on raytracing, there will always be visible noise
-in the "raw" baked lightmap. Noise is especially visible in areas that are
-difficult to reach by bounced light, such as indoor areas with small openings
-where the sunlight can enter. Noise can be reduced by increasing bake quality,
-but doing so will increase bake times significantly.
+Vì quá trình bake lightmap dựa trên raytracing, lightmap đã bake "thô" sẽ luôn có nhiễu nhìn thấy được. Nhiễu đặc biệt dễ thấy ở những khu vực khó tiếp cận bởi ánh sáng phản xạ, chẳng hạn như các khu vực trong nhà có những khe hở nhỏ nơi ánh sáng mặt trời có thể chiếu vào. Có thể giảm nhiễu bằng cách tăng chất lượng bake, nhưng điều này sẽ làm tăng đáng kể thời gian bake.
 
 .. figure:: img/lightmap_gi_denoiser_comparison.webp
    :align: center
@@ -511,22 +280,14 @@ but doing so will increase bake times significantly.
 
    Comparison between denoising disabled and enabled (with the default JNLM denoiser).
 
-To combat noise without increasing bake times too much, a denoiser can be used.
-A denoiser is an algorithm that runs on the final baked lightmap, detects patterns of
-noise and softens them while attempting to best preserve detail.
-Godot offers two denoising algorithms:
+Để khắc phục nhiễu mà không làm thời gian bake tăng quá nhiều, có thể sử dụng denoiser. Denoiser là một thuật toán chạy trên lightmap đã bake cuối cùng, phát hiện các mẫu nhiễu và làm mềm chúng, đồng thời cố gắng bảo toàn chi tiết tốt nhất có thể. Godot cung cấp hai thuật toán khử nhiễu:
 
 JNLM (Non-Local Means with Joint Filtering)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-JNLM is the default denoising method and is included in Godot. It uses a simple
-but efficient denoising algorithm known as *non-local means*. JNLM runs on the
-GPU using a compute shader, and is compatible with any GPU that can run Godot
-4's RenderingDevice-based renderers. No additional setup is required.
+JNLM là phương pháp khử nhiễu mặc định và được tích hợp trong Godot. Phương pháp này sử dụng một thuật toán khử nhiễu đơn giản nhưng hiệu quả có tên là *non-local means*. JNLM chạy trên GPU bằng compute shader và tương thích với mọi GPU có thể chạy các renderer dựa trên RenderingDevice của Godot 4. Không cần thiết lập bổ sung.
 
-JNLM's denoising can be adjusted using the **Denoiser Strength** property that
-is visible when **Use Denoiser** enabled. Higher values can be more effective at
-removing noise, at the cost of suppressing shadow detail for static shadows.
+Có thể điều chỉnh khả năng khử nhiễu của JNLM bằng thuộc tính **Denoiser Strength**, thuộc tính này hiển thị khi **Use Denoiser** được bật. Giá trị cao hơn có thể loại bỏ nhiễu hiệu quả hơn, nhưng phải đánh đổi bằng việc làm giảm chi tiết bóng của các bóng tĩnh.
 
 .. figure:: img/lightmap_gi_denoiser_jnlm_strength.webp
    :align: center
@@ -537,45 +298,21 @@ removing noise, at the cost of suppressing shadow detail for static shadows.
 OIDN (Open Image Denoise)
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Unlike JNLM, OIDN uses a machine learning approach to denoising lightmaps. It
-features a model specifically trained to remove noise from lightmaps while
-preserving more shadow detail in most scenes compared to JNLM.
+Khác với JNLM, OIDN sử dụng phương pháp machine learning để khử nhiễu lightmap. OIDN có một model được huấn luyện riêng để loại bỏ nhiễu khỏi lightmap đồng thời bảo toàn nhiều chi tiết bóng hơn trong hầu hết scene so với JNLM.
 
-OIDN can run on the GPU if hardware acceleration is configured. With a modern
-high-end GPU, this can provide a speedup of over 50× over CPU-based denoising:
+OIDN có thể chạy trên GPU nếu đã cấu hình hardware acceleration. Với GPU hiện đại, cao cấp, cách này có thể nhanh hơn hơn 50 lần so với khử nhiễu dựa trên CPU:
 
-- On AMD GPUs, HIP must be installed and configured.
-- On NVIDIA GPUs, CUDA must be installed and configured. This may automatically
-  be done by the NVIDIA installer, but on Linux, CUDA libraries may not be
-  installed by default. Double-check that the CUDA packages from your Linux
-  distribution are installed.
-- On Intel GPUs, SYCL must be installed and configured.
+- Trên GPU AMD, phải cài đặt và cấu hình HIP. - Trên GPU NVIDIA, phải cài đặt và cấu hình CUDA. Trình cài đặt NVIDIA có thể tự động thực hiện việc này, nhưng trên Linux, các thư viện CUDA có thể không được cài đặt mặc định. Hãy kiểm tra lại để bảo đảm các package CUDA từ bản phân phối Linux của bạn đã được cài đặt. - Trên GPU Intel, phải cài đặt và cấu hình SYCL.
 
-If hardware acceleration is not available, OIDN will fall back to multithreaded
-CPU-based denoising. To confirm whether GPU-based denoising is working, use a
-GPU utilization monitor while baking lightmaps and look at the GPU utilization
-percentage and VRAM utilization while the denoising step is shown in the Godot
-editor. The ``nvidia-smi`` command line tool can be useful for this.
+Nếu hardware acceleration không khả dụng, OIDN sẽ chuyển sang khử nhiễu đa luồng dựa trên CPU. Để xác nhận khử nhiễu dựa trên GPU có hoạt động hay không, hãy sử dụng công cụ theo dõi mức sử dụng GPU trong khi bake lightmap và xem phần trăm mức sử dụng GPU cũng như mức sử dụng VRAM trong khi bước khử nhiễu đang được hiển thị trong Godot editor. Công cụ dòng lệnh ``nvidia-smi`` có thể hữu ích cho việc này.
 
-OIDN is not included with Godot due to its relatively large download size. You
-can download precompiled OIDN binary packages from its
-`website <https://www.openimagedenoise.org/downloads.html>`__.
-Extract the package to a location on your PC, then specify the path to the
-``oidnDenoise`` executable in the Editor Settings (**FileSystem > Tools > OIDN >
-OIDN Denoise Path**). This executable is located within the ``bin`` folder of
-the binary package you extracted.
+OIDN không được tích hợp trong Godot do dung lượng tải xuống tương đối lớn. Bạn có thể tải các package binary OIDN đã biên dịch sẵn từ `website <https://www.openimagedenoise.org/downloads.html>`__. Giải nén package vào một vị trí trên PC, sau đó chỉ định đường dẫn đến executable ``oidnDenoise`` trong Editor Settings (**FileSystem > Tools > OIDN > OIDN Denoise Path**). Executable này nằm trong thư mục ``bin`` của package binary mà bạn đã giải nén.
 
-After specifying the path to the OIDN denoising executable, change the denoising
-method in the project settings by setting **Rendering > Lightmapping >
-Denoiser** to **OIDN**. This will affect all lightmap bakes on this project
-after the setting is changed.
+Sau khi chỉ định đường dẫn đến executable khử nhiễu OIDN, hãy thay đổi phương pháp khử nhiễu trong project settings bằng cách đặt **Rendering > Lightmapping > Denoiser** thành **OIDN**. Thay đổi này sẽ ảnh hưởng đến tất cả lần bake lightmap của project này sau khi thiết lập được thay đổi.
 
 .. note::
 
-    The denoising method is configured in the project settings instead of the
-    editor settings. This is done so that different team members working on the
-    same project are assured to be using the same denoising method for
-    consistent results.
+    Phương pháp khử nhiễu được cấu hình trong project settings thay vì editor settings. Cách này bảo đảm các thành viên khác nhau trong team cùng làm việc trên một project sẽ sử dụng cùng một phương pháp khử nhiễu để có kết quả nhất quán.
 
 .. figure:: img/lightmap_gi_denoiser_jnlm_vs_oidn.webp
    :align: center
@@ -586,65 +323,35 @@ after the setting is changed.
 
 .. _doc_using_lightmap_gi_dynamic_objects:
 
-Dynamic objects
----------------
+Vật thể động
+------------
 
-Unlike VoxelGI and SDFGI, dynamic objects receive indirect lighting differently
-compared to static objects. This is because lightmapping is only performed on
-static objects.
+Khác với VoxelGI và SDFGI, các vật thể động nhận ánh sáng gián tiếp theo cách khác với các vật thể tĩnh. Điều này là do lightmapping chỉ được thực hiện trên các vật thể tĩnh.
 
-To display indirect lighting on dynamic objects, a 3D probe system is used, with
-light probes being spread throughout the scene. When baking lightmaps, the
-lightmapper will calculate the amount of *indirect* light received by the probe.
-Direct light is not stored within light probes, even for lights that have their
-bake mode set to **Static** (as dynamic objects continue to be lit in
-real-time).
+Để hiển thị ánh sáng gián tiếp trên các vật thể động, hệ thống probe 3D được sử dụng, với các light probe được phân bố khắp scene. Khi bake lightmap, lightmapper sẽ tính toán lượng ánh sáng *gián tiếp* mà probe nhận được. Ánh sáng trực tiếp không được lưu trong light probe, ngay cả đối với những light có bake mode được đặt thành **Static** (vì các vật thể động vẫn tiếp tục được chiếu sáng theo thời gian thực).
 
-There are 2 ways to add light probes to a scene:
+Có 2 cách để thêm light probe vào scene:
 
-- **Automatic:** Set **Gen Probes > Subdiv** to a value other than **Disabled**,
-  then bake lightmaps. The default is ``8``, but you can choose a greater value
-  to improve precision at the cost of longer bake times and larger output file
-  size.
-- **Manual:** In addition or as an alternative to generating probes
-  automatically, you can add light probes manually by adding :ref:`class_LightmapProbe`
-  nodes to the scene. This can be used to improve lighting detail in areas frequently
-  travelled by dynamic objects. After placing LightmapProbe nodes in the scene,
-  you must bake lightmaps again for them to be effective.
+- **Automatic:** Đặt **Gen Probes > Subdiv** thành một giá trị khác **Disabled**, sau đó bake lightmap. Giá trị mặc định là ``8``, nhưng bạn có thể chọn giá trị lớn hơn để cải thiện độ chính xác, đổi lại thời gian bake lâu hơn và kích thước file đầu ra lớn hơn. - **Manual:** Ngoài hoặc thay cho việc tự động tạo probe, bạn có thể thêm light probe thủ công bằng cách thêm các node :ref:`class_LightmapProbe` vào scene. Cách này có thể được sử dụng để cải thiện chi tiết ánh sáng ở những khu vực thường xuyên có vật thể động đi qua. Sau khi đặt các node LightmapProbe trong scene, bạn phải bake lại lightmap để chúng có hiệu lực.
 
 .. note::
 
-    After baking lightmaps, you will notice white spheres in the 3D scene that
-    represent how baked lighting will affect dynamic objects. These spheres do
-    **not** appear in the running project.
+    Sau khi bake lightmap, bạn sẽ thấy các hình cầu màu trắng trong scene 3D, biểu thị cách ánh sáng đã bake sẽ ảnh hưởng đến các vật thể động. Các hình cầu này **không** xuất hiện trong project đang chạy.
 
-    If you want to hide these spheres in the editor, toggle **View > Gizmos >
-    LightmapGI** at the top of the 3D editor (a "closed eye" icon indicates the
-    gizmo is hidden).
+    Nếu muốn ẩn các hình cầu này trong editor, hãy bật/tắt **View > Gizmos > LightmapGI** ở đầu 3D editor (biểu tượng "mắt nhắm" cho biết gizmo đang bị ẩn).
 
 .. _doc_using_lightmap_gi_data:
 
-Lightmap data
--------------
+Dữ liệu lightmap
+----------------
 
-The **Data > Light Data** property in the LightmapGI node contains the lightmap
-data after baking. Textures are saved to disk, but this also contains the
-capture data for dynamic objects, which can be heavy. If you are using a scene
-in ``.tscn`` format, you should save this resource to an external binary
-``.lmbake`` file to avoid bloating the ``.tscn`` scene with binary data encoded
-in Base64.
+Thuộc tính **Data > Light Data** trong node LightmapGI chứa dữ liệu lightmap sau khi bake. Texture được lưu vào ổ đĩa, nhưng thuộc tính này cũng chứa dữ liệu capture cho các vật thể động, có thể có dung lượng lớn. Nếu bạn đang sử dụng scene ở định dạng ``.tscn``, bạn nên lưu resource này vào một file binary ``.lmbake`` bên ngoài để tránh làm phình scene ``.tscn`` bằng dữ liệu binary được mã hóa ở dạng Base64.
 
 .. tip::
 
-    The generated EXR file can be viewed and even edited using an image editor
-    to perform post-processing if needed. However, keep in mind that changes to
-    the EXR file will be lost when baking lightmaps again.
+    File EXR được tạo có thể được xem và thậm chí chỉnh sửa bằng image editor để thực hiện hậu kỳ nếu cần. Tuy nhiên, hãy nhớ rằng mọi thay đổi đối với file EXR sẽ bị mất khi bake lại lightmap.
 
-Reducing LightmapGI artifacts
------------------------------
+Giảm artifact của LightmapGI
+----------------------------
 
-If you notice LightmapGI nodes popping in and out of existence as the camera
-moves, this is most likely because the engine is rendering too many LightmapGI
-instances at once. Godot is limited to rendering 8 LightmapGI nodes at once,
-which means up to 8 instances can be in the camera view before some of them will
-start flickering.
+Nếu nhận thấy các node LightmapGI liên tục xuất hiện rồi biến mất khi camera di chuyển, nguyên nhân rất có thể là engine đang render quá nhiều instance LightmapGI cùng lúc. Godot bị giới hạn ở 8 node LightmapGI được render cùng lúc, nghĩa là tối đa 8 instance có thể nằm trong tầm nhìn của camera trước khi một số instance bắt đầu nhấp nháy.

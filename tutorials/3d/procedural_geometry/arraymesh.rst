@@ -1,23 +1,17 @@
 .. _doc_arraymesh:
 
-Using the ArrayMesh
-===================
+Sử dụng ArrayMesh
+=================
 
-This tutorial will present the basics of using an :ref:`ArrayMesh <class_arraymesh>`.
+Hướng dẫn này sẽ trình bày những kiến thức cơ bản về cách sử dụng :ref:`ArrayMesh <class_arraymesh>`.
 
-To do so, we will use the function :ref:`add_surface_from_arrays() <class_ArrayMesh_method_add_surface_from_arrays>`,
-which takes up to five parameters. The first two are required, while the last three are optional.
+Để thực hiện việc này, chúng ta sẽ sử dụng hàm :ref:`add_surface_from_arrays() <class_ArrayMesh_method_add_surface_from_arrays>`, hàm này nhận tối đa năm tham số. Hai tham số đầu tiên là bắt buộc, còn ba tham số cuối là tùy chọn.
 
-The first parameter is the ``PrimitiveType``, an OpenGL concept that instructs the GPU
-how to arrange the primitive based on the vertices given, i.e. whether they represent triangles,
-lines, points, etc. See :ref:`Mesh.PrimitiveType <enum_Mesh_PrimitiveType>` for the options available.
+Tham số đầu tiên là ``PrimitiveType``, một khái niệm của OpenGL dùng để chỉ dẫn cho GPU cách sắp xếp primitive dựa trên các vertex được cung cấp, tức là chúng biểu diễn triangle, line, point, v.v. Xem :ref:`Mesh.PrimitiveType <enum_Mesh_PrimitiveType>` để biết các tùy chọn hiện có.
 
-The second parameter, ``arrays``, is the actual Array that stores the mesh information. The array is a normal Godot array that
-is constructed with empty brackets ``[]``. It stores a ``Packed**Array`` (e.g. PackedVector3Array,
-PackedInt32Array, etc.) for each type of information that will be used to build the surface.
+Tham số thứ hai, ``arrays``, là Array thực tế lưu trữ thông tin mesh. Array này là một Godot array thông thường được tạo bằng cặp ngoặc vuông rỗng ``[]``. Nó lưu một ``Packed**Array`` (ví dụ: PackedVector3Array, PackedInt32Array, v.v.) cho mỗi loại thông tin sẽ được sử dụng để xây dựng surface.
 
-Common elements of ``arrays`` are listed below, together with the position they must have within ``arrays``.
-See :ref:`Mesh.ArrayType <enum_Mesh_ArrayType>` for a full list.
+Các phần tử phổ biến của ``arrays`` được liệt kê bên dưới, cùng với vị trí mà chúng phải có trong ``arrays``. Xem :ref:`Mesh.ArrayType <enum_Mesh_ArrayType>` để biết danh sách đầy đủ.
 
 
 .. list-table::
@@ -27,12 +21,12 @@ See :ref:`Mesh.ArrayType <enum_Mesh_ArrayType>` for a full list.
     :header-rows: 1
 
     * - Index
-      - Mesh.ArrayType Enum
-      - Array type
+      - Enum Mesh.ArrayType
+      - Loại Array
 
     * - 0
       - ``ARRAY_VERTEX``
-      - :ref:`PackedVector3Array <class_PackedVector3Array>` or :ref:`PackedVector2Array <class_PackedVector2Array>`
+      - :ref:`PackedVector3Array <class_PackedVector3Array>` hoặc :ref:`PackedVector2Array <class_PackedVector2Array>`
 
     * - 1
       - ``ARRAY_NORMAL``
@@ -40,8 +34,8 @@ See :ref:`Mesh.ArrayType <enum_Mesh_ArrayType>` for a full list.
 
     * - 2
       - ``ARRAY_TANGENT``
-      - :ref:`PackedFloat32Array <class_PackedFloat32Array>` or :ref:`PackedFloat64Array <class_PackedFloat64Array>` of groups of 4 floats. The first 3 floats determine the tangent, and the last float the binormal
-        direction as -1 or 1.
+      - :ref:`PackedFloat32Array <class_PackedFloat32Array>` hoặc :ref:`PackedFloat64Array <class_PackedFloat64Array>` gồm các nhóm 4 float. 3 float đầu tiên xác định tangent, còn float cuối xác định hướng binormal
+        theo giá trị -1 hoặc 1.
 
     * - 3
       - ``ARRAY_COLOR``
@@ -49,43 +43,38 @@ See :ref:`Mesh.ArrayType <enum_Mesh_ArrayType>` for a full list.
 
     * - 4
       - ``ARRAY_TEX_UV``
-      - :ref:`PackedVector2Array <class_PackedVector2Array>` or :ref:`PackedVector3Array <class_PackedVector3Array>`
+      - :ref:`PackedVector2Array <class_PackedVector2Array>` hoặc :ref:`PackedVector3Array <class_PackedVector3Array>`
 
     * - 5
       - ``ARRAY_TEX_UV2``
-      - :ref:`PackedVector2Array <class_PackedVector2Array>` or :ref:`PackedVector3Array <class_PackedVector3Array>`
+      - :ref:`PackedVector2Array <class_PackedVector2Array>` hoặc :ref:`PackedVector3Array <class_PackedVector3Array>`
 
     * - 10
       - ``ARRAY_BONES``
-      - :ref:`PackedFloat32Array <class_PackedFloat32Array>` of groups of 4 floats or :ref:`PackedInt32Array <class_PackedInt32Array>` of groups of 4 ints. Each group lists indexes of 4 bones that affects a given vertex.
+      - :ref:`PackedFloat32Array <class_PackedFloat32Array>` gồm các nhóm 4 float hoặc :ref:`PackedInt32Array <class_PackedInt32Array>` gồm các nhóm 4 int. Mỗi nhóm liệt kê index của 4 bone ảnh hưởng đến một vertex nhất định.
 
     * - 11
       - ``ARRAY_WEIGHTS``
-      - :ref:`PackedFloat32Array <class_PackedFloat32Array>` or :ref:`PackedFloat64Array <class_PackedFloat64Array>` of groups of 4 floats. Each float lists the amount of weight the corresponding bone in ``ARRAY_BONES`` has on a given vertex.
+      - :ref:`PackedFloat32Array <class_PackedFloat32Array>` hoặc :ref:`PackedFloat64Array <class_PackedFloat64Array>` gồm các nhóm 4 float. Mỗi float liệt kê mức độ ảnh hưởng của bone tương ứng trong ``ARRAY_BONES`` lên một vertex nhất định.
 
     * - 12
       - ``ARRAY_INDEX``
       - :ref:`PackedInt32Array <class_PackedInt32Array>`
 
-In most cases when creating a mesh, we define it by its vertex positions. So usually, the array of vertices (at index 0) is required, while the index array (at index 12) is optional and
-will only be used if included. It is also possible to create a mesh with only the index array and no vertex array, but that's beyond the scope of this tutorial.
+Trong hầu hết trường hợp khi tạo mesh, chúng ta xác định mesh bằng vị trí các vertex. Vì vậy, array vertex (ở index 0) thường là bắt buộc, còn array index (ở index 12) là tùy chọn và chỉ được sử dụng nếu được đưa vào. Cũng có thể tạo mesh chỉ với array index mà không có array vertex, nhưng nội dung đó nằm ngoài phạm vi của hướng dẫn này.
 
-All the other arrays carry information about the vertices. They are optional and will only be used if included. Some of these arrays (e.g. ``ARRAY_COLOR``)
-use one entry per vertex to provide extra information about vertices. They must have the same size as the vertex array. Other arrays (e.g. ``ARRAY_TANGENT``) use
-four entries to describe a single vertex. These must be exactly four times larger than the vertex array.
+Tất cả các array khác chứa thông tin về vertex. Chúng là tùy chọn và chỉ được sử dụng nếu được đưa vào. Một số array trong đó (ví dụ: ``ARRAY_COLOR``) sử dụng một phần tử cho mỗi vertex để cung cấp thêm thông tin về vertex. Chúng phải có cùng kích thước với array vertex. Các array khác (ví dụ: ``ARRAY_TANGENT``) sử dụng bốn phần tử để mô tả một vertex. Các array này phải lớn hơn array vertex chính xác bốn lần.
 
-For normal usage, the last three parameters in :ref:`add_surface_from_arrays() <class_arraymesh_method_add_surface_from_arrays>` are typically left empty.
+Trong cách sử dụng thông thường, ba tham số cuối trong :ref:`add_surface_from_arrays() <class_arraymesh_method_add_surface_from_arrays>` thường được để trống.
 
-Setting up the ArrayMesh
-------------------------
+Thiết lập ArrayMesh
+-------------------
 
-In the editor, create a :ref:`MeshInstance3D <class_meshinstance3d>` and add an :ref:`ArrayMesh <class_arraymesh>` to it in the Inspector.
-Normally, adding an ArrayMesh in the editor is not useful, but in this case it allows us to access the ArrayMesh
-from code without creating one.
+Trong editor, tạo một :ref:`MeshInstance3D <class_meshinstance3d>` rồi thêm một :ref:`ArrayMesh <class_arraymesh>` vào đó trong Inspector. Thông thường, việc thêm ArrayMesh trong editor không hữu ích, nhưng trong trường hợp này, nó cho phép chúng ta truy cập ArrayMesh từ code mà không cần tạo một ArrayMesh mới.
 
-Next, add a script to the MeshInstance3D.
+Tiếp theo, thêm một script vào MeshInstance3D.
 
-Under ``_ready()``, create a new Array.
+Bên dưới ``_ready()``, tạo một Array mới.
 
 .. tabs::
   .. code-tab:: gdscript GDScript
@@ -96,9 +85,7 @@ Under ``_ready()``, create a new Array.
 
     Godot.Collections.Array surfaceArray = [];
 
-This will be the array that we keep our surface information in - it will hold
-all the arrays of data that the surface needs. Godot will expect it to be of
-size ``Mesh.ARRAY_MAX``, so resize it accordingly.
+Đây sẽ là array dùng để lưu thông tin surface — nó sẽ chứa tất cả các array dữ liệu mà surface cần. Godot sẽ yêu cầu array này có kích thước ``Mesh.ARRAY_MAX``, vì vậy hãy thay đổi kích thước cho phù hợp.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -111,7 +98,7 @@ size ``Mesh.ARRAY_MAX``, so resize it accordingly.
     Godot.Collections.Array surfaceArray = [];
     surfaceArray.Resize((int)Mesh.ArrayType.Max);
 
-Next create the arrays for each data type you will use.
+Tiếp theo, tạo các array cho từng loại dữ liệu mà bạn sẽ sử dụng.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -128,8 +115,7 @@ Next create the arrays for each data type you will use.
     List<Vector3> normals = [];
     List<int> indices = [];
 
-Once you have filled your data arrays with your geometry you can create a mesh
-by adding each array to ``surface_array`` and then committing to the mesh.
+Sau khi điền geometry vào các array dữ liệu, bạn có thể tạo mesh bằng cách thêm từng array vào ``surface_array``, sau đó commit vào mesh.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -139,7 +125,7 @@ by adding each array to ``surface_array`` and then committing to the mesh.
     surface_array[Mesh.ARRAY_NORMAL] = normals
     surface_array[Mesh.ARRAY_INDEX] = indices
 
-    # No blendshapes, lods, or compression used.
+    # Không sử dụng blendshape, lod hoặc compression.
     mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, surface_array)
 
  .. code-tab:: csharp C#
@@ -152,14 +138,14 @@ by adding each array to ``surface_array`` and then committing to the mesh.
     var arrMesh = Mesh as ArrayMesh;
     if (arrMesh != null)
     {
-        // No blendshapes, lods, or compression used.
+        // Không sử dụng blendshape, lod hoặc compression.
         arrMesh.AddSurfaceFromArrays(Mesh.PrimitiveType.Triangles, surfaceArray);
     }
 
 .. note:: In this example, we used ``Mesh.PRIMITIVE_TRIANGLES``, but you can use any primitive type
-          available from mesh.
+          có sẵn từ mesh.
 
-Put together, the full code looks like:
+Gộp lại, toàn bộ code sẽ như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -170,24 +156,24 @@ Put together, the full code looks like:
         var surface_array = []
         surface_array.resize(Mesh.ARRAY_MAX)
 
-        # PackedVector**Arrays for mesh construction.
+        # PackedVector**Arrays để xây dựng mesh.
         var verts = PackedVector3Array()
         var uvs = PackedVector2Array()
         var normals = PackedVector3Array()
         var indices = PackedInt32Array()
 
         #######################################
-        ## Insert code here to generate mesh ##
+        ## Chèn code ở đây để tạo mesh ##
         #######################################
 
-        # Assign arrays to surface array.
+        # Gán các array vào surface array.
         surface_array[Mesh.ARRAY_VERTEX] = verts
         surface_array[Mesh.ARRAY_TEX_UV] = uvs
         surface_array[Mesh.ARRAY_NORMAL] = normals
         surface_array[Mesh.ARRAY_INDEX] = indices
 
-        # Create mesh surface from mesh array.
-        # No blendshapes, lods, or compression used.
+        # Tạo mesh surface từ mesh array.
+        # Không sử dụng blendshape, lod hoặc compression.
         mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, surface_array)
 
  .. code-tab:: csharp C#
@@ -199,17 +185,17 @@ Put together, the full code looks like:
             Godot.Collections.Array surfaceArray = [];
             surfaceArray.Resize((int)Mesh.ArrayType.Max);
 
-            // C# arrays cannot be resized or expanded, so use Lists to create geometry.
+            // C# array không thể được resize hoặc mở rộng, vì vậy hãy sử dụng List để tạo geometry.
             List<Vector3> verts = [];
             List<Vector2> uvs = [];
             List<Vector3> normals = [];
             List<int> indices = [];
 
             /***********************************
-            * Insert code here to generate mesh.
+            * Chèn code ở đây để tạo mesh.
             * *********************************/
 
-            // Convert Lists to arrays and assign to surface array
+            // Chuyển List thành array và gán vào surface array
             surfaceArray[(int)Mesh.ArrayType.Vertex] = verts.ToArray();
             surfaceArray[(int)Mesh.ArrayType.TexUV] = uvs.ToArray();
             surfaceArray[(int)Mesh.ArrayType.Normal] = normals.ToArray();
@@ -218,31 +204,28 @@ Put together, the full code looks like:
             var arrMesh = Mesh as ArrayMesh;
             if (arrMesh != null)
             {
-                // Create mesh surface from mesh array
-                // No blendshapes, lods, or compression used.
+                // Tạo mesh surface từ mesh array
+                // Không sử dụng blendshape, lod hoặc compression.
                 arrMesh.AddSurfaceFromArrays(Mesh.PrimitiveType.Triangles, surfaceArray);
             }
         }
     }
 
 
-The code that goes in the middle can be whatever you want. Below we will present some
-example code for generating shapes, starting with a rectangle.
+Phần code ở giữa có thể là bất cứ thứ gì bạn muốn. Bên dưới, chúng ta sẽ trình bày một số code mẫu để tạo hình dạng, bắt đầu với một hình chữ nhật.
 
-Generating a rectangle
-----------------------
+Tạo hình chữ nhật
+-----------------
 
-Since we are using ``Mesh.PRIMITIVE_TRIANGLES`` to render, we will construct a rectangle
-with triangles.
+Vì chúng ta sử dụng ``Mesh.PRIMITIVE_TRIANGLES`` để render, chúng ta sẽ tạo một hình chữ nhật bằng các triangle.
 
-A rectangle is formed by two triangles sharing four vertices. For our example, we will create
-a rectangle with its top left point at ``(0, 0, 0)`` with a width and length of one as shown below:
+Một hình chữ nhật được tạo thành từ hai triangle dùng chung bốn vertex. Trong ví dụ này, chúng ta sẽ tạo một hình chữ nhật có điểm trên cùng bên trái tại ``(0, 0, 0)``, với chiều rộng và chiều dài đều bằng một, như minh họa bên dưới:
 
 .. image:: img/array_mesh_rectangle_as_triangles.webp
   :scale: 33%
   :alt: A rectangle made of two triangles sharing four vertices.
 
-To draw this rectangle, define the coordinates of each vertex in the ``verts`` array.
+Để vẽ hình chữ nhật này, hãy xác định tọa độ của từng vertex trong array ``verts``.
 
 .. tabs::
   .. code-tab:: gdscript GDScript
@@ -264,8 +247,7 @@ To draw this rectangle, define the coordinates of each vertex in the ``verts`` a
         new Vector3(1, 0, 1),
     });
 
-The ``uvs`` array helps describe where parts of a texture should go onto the mesh. The values
-range from 0 to 1. Depending on your texture, you may want to change these values.
+Array ``uvs`` giúp mô tả vị trí các phần của texture trên mesh. Các giá trị nằm trong khoảng từ 0 đến 1. Tùy thuộc vào texture, bạn có thể muốn thay đổi các giá trị này.
 
 .. tabs::
   .. code-tab:: gdscript GDScript
@@ -287,9 +269,7 @@ range from 0 to 1. Depending on your texture, you may want to change these value
         new Vector2(1, 1),
     });
 
-The ``normals`` array is used to describe the direction the vertices face and is
-used in lighting calculations. For this example, we will default to the ``Vector3.UP``
-direction.
+Array ``normals`` được dùng để mô tả hướng mà các vertex quay về và được sử dụng trong các phép tính lighting. Trong ví dụ này, chúng ta sẽ mặc định sử dụng hướng ``Vector3.UP``.
 
 .. tabs::
   .. code-tab:: gdscript GDScript
@@ -311,14 +291,9 @@ direction.
         Vector3.Up,
     });
 
-The ``indices`` array defines the order vertices are drawn. Godot
-renders in a *clockwise* direction, meaning that we must specify the vertices
-of a triangle we want to draw in clockwise order.
+Array ``indices`` xác định thứ tự các vertex được vẽ. Godot render theo hướng *clockwise*, nghĩa là chúng ta phải chỉ định các vertex của một triangle muốn vẽ theo thứ tự clockwise.
 
-For example, to draw the first triangle, we will want to draw the vertices ``(0, 0, 0)``,
-``(1, 0, 0)``, and ``(0, 0, 1)`` in that order. This is the same as drawing ``vert[0]``, ``vert[2]``, and
-``vert[1]``, i.e., indices 0, 2, and 1, in the ``verts`` array. These index values are what the
-``indices`` array defines.
+Ví dụ, để vẽ triangle đầu tiên, chúng ta sẽ muốn vẽ các vertex ``(0, 0, 0)``, ``(1, 0, 0)`` và ``(0, 0, 1)`` theo thứ tự đó. Điều này tương đương với việc vẽ ``vert[0]``, ``vert[2]`` và ``vert[1]``, tức là các index 0, 2 và 1, trong array ``verts``. Các giá trị index này được xác định bởi array ``indices``.
 
 .. list-table::
    :header-rows: 1
@@ -353,19 +328,19 @@ For example, to draw the first triangle, we will want to draw the vertices ``(0,
   .. code-tab:: gdscript GDScript
 
     indices = PackedInt32Array([
-            0, 2, 1, # Draw the first triangle.
-            2, 3, 1, # Draw the second triangle.
+            0, 2, 1, # Vẽ triangle đầu tiên.
+            2, 3, 1, # Vẽ triangle thứ hai.
         ])
 
   .. code-tab:: csharp C#
 
     indices.AddRange(new int[]
     {
-        0, 2, 1, // Draw the first triangle.
-        2, 3, 1, // Draw the second triangle.
+        0, 2, 1, // Vẽ triangle đầu tiên.
+        2, 3, 1, // Vẽ triangle thứ hai.
     });
 
-Put together, the rectangle generation code looks like:
+Gộp lại, code tạo hình chữ nhật sẽ như sau:
 
 .. tabs::
   .. code-tab:: gdscript GDScript
@@ -374,7 +349,7 @@ Put together, the rectangle generation code looks like:
 
     func _ready():
 
-      # Insert setting up the PackedVector**Arrays here.
+      # Chèn phần thiết lập PackedVector**Arrays ở đây.
 
       verts = PackedVector3Array([
               Vector3(0, 0, 0),
@@ -402,7 +377,7 @@ Put together, the rectangle generation code looks like:
               2, 3, 1,
           ])
 
-      # Insert committing to the ArrayMesh here.
+      # Chèn phần commit vào ArrayMesh ở đây.
 
   .. code-tab:: csharp C#
 
@@ -412,7 +387,7 @@ Put together, the rectangle generation code looks like:
     {
       public override void _Ready()
       {
-          // Insert setting up the surface array and lists here.
+          // Chèn phần thiết lập surface array và List ở đây.
 
           verts.AddRange(new Vector3[]
           {
@@ -444,21 +419,16 @@ Put together, the rectangle generation code looks like:
               2, 3, 1,
           });
 
-          // Insert committing to the ArrayMesh here.
+          // Chèn phần commit vào ArrayMesh ở đây.
       }
     }
 
-For a more complex example, see the sphere generation section below.
+Để xem một ví dụ phức tạp hơn, hãy xem phần tạo sphere bên dưới.
 
-Generating a sphere
--------------------
+Tạo sphere
+----------
 
-Here is sample code for generating a sphere. Although the code is presented in
-GDScript, there is nothing Godot specific about the approach to generating it.
-This implementation has nothing in particular to do with ArrayMeshes and is just a
-generic approach to generating a sphere. If you are having trouble understanding it
-or want to learn more about procedural geometry in general, you can use any tutorial
-that you find online.
+Dưới đây là code mẫu để tạo sphere. Mặc dù code được trình bày bằng GDScript, cách tiếp cận để tạo sphere không có gì đặc thù của Godot. Cách triển khai này không liên quan cụ thể đến ArrayMesh mà chỉ là một cách tiếp cận tổng quát để tạo sphere. Nếu bạn gặp khó khăn khi hiểu code hoặc muốn tìm hiểu thêm về procedural geometry nói chung, bạn có thể sử dụng bất kỳ hướng dẫn nào tìm được trên mạng.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -471,20 +441,20 @@ that you find online.
 
     func _ready():
 
-        # Insert setting up the PackedVector**Arrays here.
+        # Chèn phần thiết lập PackedVector**Arrays ở đây.
 
-        # Vertex indices.
+        # Index của vertex.
         var thisrow = 0
         var prevrow = 0
         var point = 0
 
-        # Loop over rings.
+        # Lặp qua các ring.
         for i in range(rings + 1):
             var v = float(i) / rings
             var w = sin(PI * v)
             var y = cos(PI * v)
 
-            # Loop over segments in ring.
+            # Lặp qua các segment trong ring.
             for j in range(radial_segments + 1):
                 var u = float(j) / radial_segments
                 var x = sin(u * PI * 2.0)
@@ -495,7 +465,7 @@ that you find online.
                 uvs.append(Vector2(u, v))
                 point += 1
 
-                # Create triangles in ring using indices.
+                # Tạo các triangle trong ring bằng index.
                 if i > 0 and j > 0:
                     indices.append(prevrow + j - 1)
                     indices.append(prevrow + j)
@@ -508,7 +478,7 @@ that you find online.
             prevrow = thisrow
             thisrow = point
 
-      # Insert committing to the ArrayMesh here.
+      # Chèn phần commit vào ArrayMesh ở đây.
 
  .. code-tab:: csharp C#
 
@@ -520,21 +490,21 @@ that you find online.
 
         public override void _Ready()
         {
-            // Insert setting up the surface array and lists here.
+            // Chèn phần thiết lập surface array và List ở đây.
 
-            // Vertex indices.
+            // Index của vertex.
             var thisRow = 0;
             var prevRow = 0;
             var point = 0;
 
-            // Loop over rings.
+            // Lặp qua các ring.
             for (var i = 0; i < _rings + 1; i++)
             {
                 var v = ((float)i) / _rings;
                 var w = Mathf.Sin(Mathf.Pi * v);
                 var y = Mathf.Cos(Mathf.Pi * v);
 
-                // Loop over segments in ring.
+                // Lặp qua các segment trong ring.
                 for (var j = 0; j < _radialSegments + 1; j++)
                 {
                     var u = ((float)j) / _radialSegments;
@@ -546,7 +516,7 @@ that you find online.
                     uvs.Add(new Vector2(u, v));
                     point += 1;
 
-                    // Create triangles in ring using indices.
+                    // Tạo các triangle trong ring bằng index.
                     if (i > 0 && j > 0)
                     {
                         indices.Add(prevRow + j - 1);
@@ -563,23 +533,22 @@ that you find online.
                 thisRow = point;
             }
 
-            // Insert committing to the ArrayMesh here.
+            // Chèn phần commit vào ArrayMesh ở đây.
         }
     }
 
-Saving
-------
+Lưu
+---
 
-Finally, we can use the :ref:`ResourceSaver <class_resourcesaver>` class to save the ArrayMesh.
-This is useful when you want to generate a mesh and then use it later without having to re-generate it.
+Cuối cùng, chúng ta có thể sử dụng class :ref:`ResourceSaver <class_resourcesaver>` để lưu ArrayMesh. Điều này hữu ích khi bạn muốn tạo một mesh rồi sử dụng nó sau đó mà không phải tạo lại.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Saves mesh to a .tres file with compression enabled.
+    # Lưu mesh vào file .tres với compression được bật.
     ResourceSaver.save(mesh, "res://sphere.tres", ResourceSaver.FLAG_COMPRESS)
 
  .. code-tab:: csharp C#
 
-    // Saves mesh to a .tres file with compression enabled.
+    // Lưu mesh vào file .tres với compression được bật.
     ResourceSaver.Save(Mesh, "res://sphere.tres", ResourceSaver.SaverFlags.Compress);

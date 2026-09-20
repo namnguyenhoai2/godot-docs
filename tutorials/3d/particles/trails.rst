@@ -1,12 +1,11 @@
 .. _doc_3d_particles_trails:
 
-3D Particle trails
-------------------
+Vệt hạt 3D
+----------
 
 .. note::
 
-     Particle trails are only supported in the Forward+ and Mobile renderers,
-     not Compatibility.
+     Vệt hạt chỉ được hỗ trợ trong các renderer Forward+ và Mobile, không được hỗ trợ trong Compatibility.
 
 .. figure:: img/particle_trails.webp
    :alt: Particle trails
@@ -17,19 +16,12 @@
 
    Setting up particle trails
 
-Godot provides several types of trails you can add to a particle system. Before you can
-work with trails, you need to set up a couple of parameters first. Create a new particle
-system and assign a process material :ref:`as described before <doc_creating_3d_particle_system>`.
-In the ``Trails`` group of the particle system, check the box next to ``Enabled`` and
-increase the emission duration by setting ``Lifetime`` to something like ``0.8``. On
-the process material, set ``Direction`` to ``(X=0,Y=1.0,Z=0)`` and ``Initial Velocity`` to
-``10.0`` for both ``Min`` and ``Max``.
+Godot cung cấp một số loại vệt mà bạn có thể thêm vào particle system. Trước khi có thể làm việc với vệt, bạn cần thiết lập một vài tham số trước. Tạo một particle system mới và gán một process material :ref:`as described before <doc_creating_3d_particle_system>`. Trong nhóm ``Trails`` của particle system, đánh dấu vào ô bên cạnh ``Enabled`` và tăng thời lượng phát bằng cách đặt ``Lifetime`` thành một giá trị như ``0.8``. Trong process material, đặt ``Direction`` thành ``(X=0,Y=1.0,Z=0)`` và ``Initial Velocity`` thành ``10.0`` cho cả ``Min`` và ``Max``.
 
-The only thing that's still missing is a mesh for the draw pass. The type of mesh that you
-set here controls what kind of particle trail you will end up with.
+Điều duy nhất còn thiếu là một mesh cho draw pass. Loại mesh bạn đặt ở đây sẽ quyết định loại vệt hạt mà bạn tạo ra.
 
-Ribbon trails
-~~~~~~~~~~~~~
+Vệt dải
+~~~~~~~
 
 .. figure:: img/particle_ribbon_mesh.webp
    :alt: Particle ribbon
@@ -37,74 +29,48 @@ Ribbon trails
 
    Important ribbon mesh parameters
 
-The simplest type of particle trail is the ribbon trail. Navigate to the ``Draw Passes``
-section and select ``New RibbonTrailMesh`` from the options for ``Pass 1``. A
+Loại vệt hạt đơn giản nhất là vệt dải. Điều hướng đến phần ``Draw Passes`` và chọn ``New RibbonTrailMesh`` từ các tùy chọn của ``Pass 1``. Một
 :ref:`RibbonTrailMesh <class_RibbonTrailMesh>` is a simple quad that is divided into
-sections and then stretched and repeated along those sections.
+các phần, sau đó được kéo dài và lặp lại dọc theo những phần đó.
 
-Assign a new :ref:`Standard Material <doc_standard_material_3d>` to the ``Material``
-property and enable ``Use Particle Trails`` in the ``Transform`` property group. The
-particles should now be emitting in trails.
+Gán một :ref:`Standard Material <doc_standard_material_3d>` mới cho thuộc tính ``Material`` và bật ``Use Particle Trails`` trong nhóm thuộc tính ``Transform``. Giờ đây các hạt sẽ được phát ra thành các vệt.
 
-You have two options for the ribbon mesh ``Shape`` parameter. ``Cross`` creates two
-perpendicular quads, making the particle trail a little more three-dimensional. This
-really only makes sense if you don't draw the trails in ``Particle Billboard`` mode
-and helps when looking at the particles from different angles. The ``Flat`` option
-limits the mesh to a single quad and works best with billboard particles.
+Bạn có hai tùy chọn cho tham số ``Shape`` của ribbon mesh. ``Cross`` tạo ra hai quad vuông góc với nhau, khiến vệt hạt có dạng ba chiều hơn một chút. Điều này chỉ thực sự có ý nghĩa nếu bạn không vẽ các vệt ở chế độ ``Particle Billboard``, đồng thời giúp ích khi quan sát các hạt từ nhiều góc khác nhau. Tùy chọn ``Flat`` giới hạn mesh ở một quad duy nhất và hoạt động tốt nhất với các billboard particles.
 
-The ``Size`` parameter controls the trail's width. Use it to make trails wider or
-more narrow.
+Tham số ``Size`` điều khiển độ rộng của vệt. Sử dụng nó để làm cho vệt rộng hơn hoặc hẹp hơn.
 
-``Sections``, ``Section Length`` and ``Section Segments`` all work together to
-control how smooth the particle trail looks. When a particle trail does not travel
-in a straight line, the more sections it has the smoother it looks as it bends and swirls.
-``Section Length`` controls the length of each section. Multiply this value by
-the number of sections to know the trail's total length.
+``Sections``, ``Section Length`` và ``Section Segments`` phối hợp với nhau để điều khiển độ mượt của vệt hạt. Khi một vệt hạt không di chuyển theo đường thẳng, vệt sẽ trông mượt hơn khi uốn cong và xoáy nếu có nhiều phần hơn. ``Section Length`` điều khiển độ dài của mỗi phần. Nhân giá trị này với số phần để biết tổng độ dài của vệt.
 
 .. figure:: img/particle_ribbon_sections.webp
    :alt: Particle ribbon sections
 
    3 sections, 1m section length (left) vs. 12 sections, 0.25m section length (right). Notice how the total length of the trails stays the same.
 
-The ``Section Segments`` parameter further subdivides each section into segments.
-It has no effect on the smoothness of the trail's sections, though. Instead, it controls
-the smoothness of the particle trail's overall shape. The ``Curve`` property defines
-this shape. Click the box next to ``Curve`` and assign or create a new curve. The
-trail will be shaped just like the curve with the curve's value at ``0.0`` at the
-trail's head and the curve's value at ``1.0`` at the trail's tail.
+Tham số ``Section Segments`` tiếp tục chia mỗi phần thành các đoạn nhỏ hơn. Tuy nhiên, nó không ảnh hưởng đến độ mượt của các phần trong vệt. Thay vào đó, nó điều khiển độ mượt của hình dạng tổng thể của vệt hạt. Thuộc tính ``Curve`` xác định hình dạng này. Nhấp vào ô bên cạnh ``Curve`` rồi gán hoặc tạo một curve mới. Vệt sẽ có hình dạng giống hệt curve, với giá trị của curve tại ``0.0`` ở đầu vệt và giá trị của curve tại ``1.0`` ở đuôi vệt.
 
 .. figure:: img/particle_ribbon_curve.webp
    :alt: Particle ribbon curves
 
    Particle trails shaped by different curves. The trails move from left to right.
 
-Depending on the complexity of the curve, the particle trail's shape will not look
-very smooth when the number of sections is low. This is where the ``Section Segments`` property
-comes in. Increasing the amount of section segments adds more vertices to the trail's
-sides so that it can follow the curve more closely.
+Tùy thuộc vào độ phức tạp của curve, hình dạng của vệt hạt sẽ không trông thật mượt khi số phần thấp. Đây là lúc thuộc tính ``Section Segments`` phát huy tác dụng. Tăng số đoạn của mỗi phần sẽ thêm nhiều vertex hơn vào các cạnh của vệt, để vệt có thể bám sát curve hơn.
 
 .. figure:: img/particle_ribbon_segments.webp
    :alt: Particle ribbon segments
 
    Particle trail shape smoothness: 1 segment per section (top), 12 segments per section (bottom)
 
-Tube trails
-~~~~~~~~~~~
+Vệt ống
+~~~~~~~
 
-Tube trails share a lot of their properties with ribbon trails. The big difference between them
-is that tube trails emit cylindrical meshes instead of quads.
+Vệt ống có nhiều thuộc tính chung với vệt dải. Điểm khác biệt lớn là vệt ống phát ra các mesh hình trụ thay vì quad.
 
 .. figure:: img/particle_tube.webp
    :alt: Particle tube trails
 
    Tube trails emit cylindrical particles
 
-To create a tube trail, navigate to the ``Draw Passes`` section and select ``New TubeTrailMesh``
-from the options for ``Pass 1``. A :ref:`TubeTrailMesh <class_TubeTrailMesh>` is a cylinder
-that is divided into sections and then stretched and repeated along those sections. Assign a
-new :ref:`Standard Material <doc_standard_material_3d>` to the ``Material`` property and enable
-``Use Particle Trails`` in the ``Transform`` property group. The particles should now be emitting
-in long, cylindrical trails.
+Để tạo vệt ống, điều hướng đến phần ``Draw Passes`` và chọn ``New TubeTrailMesh`` từ các tùy chọn của ``Pass 1``. Một :ref:`TubeTrailMesh <class_TubeTrailMesh>` là một hình trụ được chia thành các phần, sau đó được kéo dài và lặp lại dọc theo những phần đó. Gán một :ref:`Standard Material <doc_standard_material_3d>` mới cho thuộc tính ``Material`` và bật ``Use Particle Trails`` trong nhóm thuộc tính ``Transform``. Giờ đây các hạt sẽ được phát ra thành những vệt hình trụ dài.
 
 .. figure:: img/particle_tube_mesh.webp
    :alt: Particle tube
@@ -112,21 +78,11 @@ in long, cylindrical trails.
 
    Important tube mesh parameters
 
-The ``Radius`` and ``Radial Steps`` properties are to tube trails what ``Size`` is to ribbon trails.
-``Radius`` defines the radius of the tube and increases or decreases its overall size. ``Radial Steps``
-controls the number of sides around the tube's circumference. A higher value increases the resolution
-of the tube's cap.
+Các thuộc tính ``Radius`` và ``Radial Steps`` đối với vệt ống tương đương với ``Size`` đối với vệt dải. ``Radius`` xác định bán kính của ống và làm tăng hoặc giảm kích thước tổng thể của nó. ``Radial Steps`` điều khiển số cạnh quanh chu vi của ống. Giá trị cao hơn sẽ tăng độ phân giải của phần nắp ống.
 
-``Sections`` and ``Section Length`` work the same for tube trails and ribbon trails. They control how
-smooth the tube trail looks when it is bending and twisting instead of moving in a straight line.
-Increasing the number of sections will make it look smoother. Change the ``Section Length`` property
-to change the length of each section and with it the total length of the trail. ``Section Rings``
-is the tube equivalent of the ``Section Segments`` property for ribbons. It subdivides the sections
-and adds more geometry to the tube to better fit the custom shape defined in the ``Curve`` property.
+``Sections`` và ``Section Length`` hoạt động giống nhau đối với vệt ống và vệt dải. Chúng điều khiển độ mượt của vệt ống khi nó uốn cong và xoắn thay vì di chuyển theo đường thẳng. Tăng số phần sẽ giúp vệt trông mượt hơn. Thay đổi thuộc tính ``Section Length`` để thay đổi độ dài của mỗi phần, đồng thời thay đổi tổng độ dài của vệt. ``Section Rings`` là phiên bản tương đương dành cho ống của thuộc tính ``Section Segments`` đối với dải. Nó chia nhỏ các phần và thêm hình học vào ống để khớp tốt hơn với hình dạng tùy chỉnh được xác định trong thuộc tính ``Curve``.
 
-You can shape tube trails with curves, just as you can with ribbon trails. Click the box next to the
-``Curve`` property and assign or create a new curve. The trail will be shaped like the curve with
-the curve's value at ``0.0`` at the trail's head and the curve's value at ``1.0`` at the trail's tail.
+Bạn có thể tạo hình cho vệt ống bằng curve, giống như với vệt dải. Nhấp vào ô bên cạnh thuộc tính ``Curve`` rồi gán hoặc tạo một curve mới. Vệt sẽ có hình dạng giống curve, với giá trị của curve tại ``0.0`` ở đầu vệt và giá trị của curve tại ``1.0`` ở đuôi vệt.
 
 .. figure:: img/particle_tube_curve.webp
    :alt: Particle tubes
@@ -134,11 +90,7 @@ the curve's value at ``0.0`` at the trail's head and the curve's value at ``1.0`
    Particle tube trails with a custom curve shape: 4 radial steps, 3 sections, 1 section ring (left),
    12 radial steps, 9 sections, 3 section rings (right)
 
-An important property you might want to set is ``Transform Align`` in the particle
-system's ``Drawing`` group. If you leave it as is, the tubes will not preserve volume; they
-flatten out as they move because their Y-axis keeps pointing up even as they change direction.
-This can cause a lot of rendering artifacts. Set the property to ``Y to Velocity`` instead
-and each particle trail keeps its Y-axis aligned along the direction of its movement.
+Một thuộc tính quan trọng mà bạn có thể muốn thiết lập là ``Transform Align`` trong nhóm ``Drawing`` của particle system. Nếu giữ nguyên, các ống sẽ không bảo toàn thể tích; chúng bị dẹt ra khi di chuyển vì trục Y của chúng luôn hướng lên ngay cả khi chúng đổi hướng. Điều này có thể gây ra nhiều lỗi hiển thị. Thay vào đó, hãy đặt thuộc tính thành ``Y to Velocity``, khi đó mỗi vệt hạt sẽ giữ cho trục Y của nó thẳng hàng với hướng chuyển động.
 
 .. figure:: img/particle_tube_align.webp
    :alt: Particle tubes aligned
