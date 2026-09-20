@@ -149,6 +149,8 @@ if on_rtd:
 # }
 
 html_theme_options = {
+    'analytics_id': 'G-29ZK00ZM5D',  #  Provided by Google in your dashboard
+    'analytics_anonymize_ip': False,
     "logo_only": True,
 
     "collapse_navigation": True,

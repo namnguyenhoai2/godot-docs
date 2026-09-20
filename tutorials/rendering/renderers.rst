@@ -1,32 +1,21 @@
 .. _doc_renderers:
 
-Overview of renderers
-=====================
+Tổng quan về các renderer
+=========================
 
 .. seealso::
 
-    This page gives an overview of Godot's renderers, focusing on the differences
-    between their rendering features. For more technical details on the renderers,
-    see :ref:`doc_internal_rendering_architecture`.
+    Trang này cung cấp tổng quan về các renderer của Godot, tập trung vào sự khác biệt giữa các tính năng rendering của chúng. Để biết thêm chi tiết kỹ thuật về các renderer, hãy xem :ref:`doc_internal_rendering_architecture`.
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Godot 4 includes three renderers:
+Godot 4 bao gồm ba renderer:
 
-- **Forward+**. The most advanced renderer, suited for desktop platforms only.
-  Used by default on desktop platforms. This renderer uses **Vulkan**, **Direct3D 12**,
-  or **Metal** as the rendering driver, and it uses the **RenderingDevice** backend.
-- **Mobile**. Fewer features, but renders simple scenes faster. Suited for mobile
-  and desktop platforms. Used by default on mobile platforms. This renderer uses
-  **Vulkan**, **Direct3D 12**, or **Metal** as the rendering driver, and it uses
-  the **RenderingDevice** backend.
-- **Compatibility**, sometimes called **GL Compatibility**. The least advanced
-  renderer, suited for low-end desktop and mobile platforms. Used by default on
-  the web platform. This renderer uses **OpenGL** as the rendering driver.
+- **Forward+**. Renderer tiên tiến nhất, chỉ phù hợp với các nền tảng desktop. Được sử dụng mặc định trên các nền tảng desktop. Renderer này sử dụng **Vulkan**, **Direct3D 12** hoặc **Metal** làm rendering driver và sử dụng backend **RenderingDevice**. - **Mobile**. Có ít tính năng hơn nhưng rendering các scene đơn giản nhanh hơn. Phù hợp với các nền tảng mobile và desktop. Được sử dụng mặc định trên các nền tảng mobile. Renderer này sử dụng **Vulkan**, **Direct3D 12** hoặc **Metal** làm rendering driver và sử dụng backend **RenderingDevice**. - **Compatibility**, đôi khi được gọi là **GL Compatibility**. Renderer kém tiên tiến nhất, phù hợp với các nền tảng desktop và mobile cấp thấp. Được sử dụng mặc định trên nền tảng web. Renderer này sử dụng **OpenGL** làm rendering driver.
 
-Renderers, rendering drivers, and RenderingDevice
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Renderer, rendering driver và RenderingDevice
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. figure:: img/renderers_rendering_layers.webp
   :alt: Diagram of rendering layers. The Compatibility renderer runs on the OpenGL
@@ -36,94 +25,52 @@ Renderers, rendering drivers, and RenderingDevice
 
   Godot's rendering abstraction layers.
 
-The *renderer*, or *rendering method*, determines which features are available.
-Most of the time, this is the only thing you need to think about. Godot's renderers
-are **Forward+**, **Mobile**, and **Compatibility**.
+*Renderer*, hay *rendering method*, xác định những tính năng khả dụng. Hầu hết thời gian, đây là điều duy nhất bạn cần quan tâm. Các renderer của Godot là **Forward+**, **Mobile** và **Compatibility**.
 
-The *rendering driver* tells the GPU what to do, using a graphics API. Godot can
-use the **OpenGL**, **Vulkan**, **Direct3D 12**, and **Metal** rendering drivers.
-Not every GPU supports every rendering driver, and therefore not every GPU supports
-all renderers. Vulkan, Direct3D 12, and Metal are modern, low-level graphics APIs,
-and require newer hardware. OpenGL is an older graphics API that runs on most hardware.
+*Rendering driver* cho GPU biết cần làm gì bằng cách sử dụng một graphics API. Godot có thể sử dụng các rendering driver **OpenGL**, **Vulkan**, **Direct3D 12** và **Metal**. Không phải GPU nào cũng hỗ trợ mọi rendering driver, vì vậy không phải GPU nào cũng hỗ trợ tất cả renderer. Vulkan, Direct3D 12 và Metal là các graphics API hiện đại, cấp thấp và yêu cầu phần cứng mới hơn. OpenGL là một graphics API cũ hơn, chạy được trên hầu hết phần cứng.
 
-RenderingDevice is a *rendering backend*, an abstraction layer between the renderer
-and the rendering driver. It is used by the Forward+ and Mobile renderers, and
-these renderers are sometimes called "RenderingDevice-based renderers".
+RenderingDevice là một *rendering backend*, tức lớp trừu tượng nằm giữa renderer và rendering driver. Nó được sử dụng bởi các renderer Forward+ và Mobile, và các renderer này đôi khi được gọi là "RenderingDevice-based renderers".
 
-Choosing a renderer
--------------------
+Chọn renderer
+-------------
 
-Choosing a renderer is a complex question, and depends on your hardware and the
-which platforms you are developing for. As a starting point:
+Việc chọn renderer là một câu hỏi phức tạp và phụ thuộc vào phần cứng của bạn cũng như những nền tảng mà bạn đang phát triển cho. Để bắt đầu:
 
-Choose **Forward+** if:
+Chọn **Forward+** nếu:
 
-    - You are developing for desktop.
-    - You have relatively new hardware which supports Vulkan, Direct3D 12, or Metal.
-    - You are developing a 3D game.
-    - You want to use the most advanced rendering features.
+    - Bạn đang phát triển cho desktop. - Bạn có phần cứng tương đối mới hỗ trợ Vulkan, Direct3D 12 hoặc Metal. - Bạn đang phát triển một game 3D. - Bạn muốn sử dụng các tính năng rendering tiên tiến nhất.
 
-Choose **Mobile** if:
+Chọn **Mobile** nếu:
 
-    - You are developing for newer mobile devices, desktop XR, standalone XR, or
-      desktop.
-    - You have relatively new hardware which supports Vulkan, Direct3D 12, or Metal.
-    - You are developing a 3D game.
-    - You want to use advanced rendering features, subject to the limitations
-      of mobile hardware.
+    - Bạn đang phát triển cho các thiết bị mobile đời mới, desktop XR, XR độc lập hoặc desktop. - Bạn có phần cứng tương đối mới hỗ trợ Vulkan, Direct3D 12 hoặc Metal. - Bạn đang phát triển một game 3D. - Bạn muốn sử dụng các tính năng rendering tiên tiến, trong phạm vi các giới hạn của phần cứng mobile.
 
-Choose **Compatibility** if:
+Chọn **Compatibility** nếu:
 
-    - You are developing for older mobile devices, or older desktop devices.
-      The Compatibility renderer supports the widest range of hardware.
-    - You are developing for web. In this case, Compatibility is the only choice.
-    - You have older hardware which does not support Vulkan. In this case,
-      Compatibility is the only choice.
-    - You are developing a 2D game, or a 3D game which does not need advanced
-      rendering features.
-    - You want the best performance possible on all devices and don't need advanced
-      rendering features.
+    - Bạn đang phát triển cho các thiết bị mobile đời cũ hoặc thiết bị desktop đời cũ. Renderer Compatibility hỗ trợ phạm vi phần cứng rộng nhất. - Bạn đang phát triển cho web. Trong trường hợp này, Compatibility là lựa chọn duy nhất. - Bạn có phần cứng cũ không hỗ trợ Vulkan. Trong trường hợp này, Compatibility là lựa chọn duy nhất. - Bạn đang phát triển một game 2D hoặc một game 3D không cần các tính năng rendering tiên tiến. - Bạn muốn có hiệu năng tốt nhất có thể trên mọi thiết bị và không cần các tính năng rendering tiên tiến.
 
-Keep in mind every game is unique, and this is only a starting point. For example,
-you might choose to use the Compatibility renderer even though you have the latest
-GPU, so you can support the widest range of hardware. Or you might want to use the
-Forward+ renderer for a 2D game, so you can use advanced features like compute shaders.
+Hãy nhớ rằng mỗi game đều có những đặc điểm riêng và đây chỉ là điểm khởi đầu. Ví dụ, bạn có thể chọn sử dụng renderer Compatibility dù đang có GPU mới nhất, để hỗ trợ phạm vi phần cứng rộng nhất. Hoặc bạn có thể muốn sử dụng renderer Forward+ cho một game 2D, để dùng các tính năng tiên tiến như compute shader.
 
-Switching between renderers
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Chuyển đổi giữa các renderer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the editor, you can always switch between renderers by clicking on the renderer
-name in the upper-right corner of the editor.
+Trong editor, bạn luôn có thể chuyển đổi giữa các renderer bằng cách nhấp vào tên renderer ở góc trên bên phải của editor.
 
-Switching between renderers may require some manual tweaks to your scene, lighting,
-and environment, since each renderer is different. In general, switching between
-the Mobile and Forward+ renderers will require fewer adjustments than switching
-between the Compatibility renderer and the Forward+ or Mobile renderers.
+Việc chuyển đổi giữa các renderer có thể yêu cầu một số điều chỉnh thủ công đối với scene, lighting và environment, vì mỗi renderer đều khác nhau. Nhìn chung, việc chuyển đổi giữa các renderer Mobile và Forward+ sẽ yêu cầu ít điều chỉnh hơn so với việc chuyển đổi giữa renderer Compatibility và renderer Forward+ hoặc Mobile.
 
-Since Godot 4.4, when using Forward+ or Mobile, if Vulkan is not supported, the
-engine will fall back to Direct3D 12 and vice versa. If the attempted fallback
-driver is not supported either, the engine will then fall back to Compatibility
-when the RenderingDevice backend is not supported. This allows the project to run
-anyway, but it may look different than the intended appearance due to the more
-limited renderer. This behavior can be disabled in the project settings by unchecking
+Kể từ Godot 4.4, khi sử dụng Forward+ hoặc Mobile, nếu Vulkan không được hỗ trợ, engine sẽ chuyển sang Direct3D 12 và ngược lại. Nếu rendering driver dự phòng được thử cũng không được hỗ trợ, engine sẽ chuyển sang Compatibility khi backend RenderingDevice không được hỗ trợ. Điều này cho phép project vẫn chạy được, nhưng giao diện có thể khác với hình thức dự kiến do renderer bị giới hạn hơn. Bạn có thể tắt hành vi này trong project settings bằng cách bỏ chọn
 :ref:`Rendering > Rendering Device > Fallback to OpenGL 3<class_ProjectSettings_property_rendering/rendering_device/fallback_to_opengl3>`.
 
-Feature comparison
-------------------
+So sánh tính năng
+-----------------
 
-This is not a complete list of the features of each renderer. If a feature is
-not listed here, it is available in all renderers, though it may be much faster
-on some renderers. For a list of *all* features in Godot, see :ref:`doc_list_of_features`.
+Đây không phải là danh sách đầy đủ các tính năng của từng renderer. Nếu một tính năng không được liệt kê ở đây, tính năng đó khả dụng trên tất cả renderer, mặc dù có thể nhanh hơn nhiều trên một số renderer. Để xem danh sách *tất cả* tính năng trong Godot, hãy xem :ref:`doc_list_of_features`.
 
-Hardware with RenderingDevice support is hardware which can run Vulkan, Direct3D
-12, or Metal.
+Phần cứng có hỗ trợ RenderingDevice là phần cứng có thể chạy Vulkan, Direct3D 12 hoặc Metal.
 
-Overall comparison
-~~~~~~~~~~~~~~~~~~
+So sánh tổng quan
+~~~~~~~~~~~~~~~~~
 
-.. Note that these tables use emojis, which are not monospaced in most editors.
-.. The tables look malformed but are not. When making changes, check the nearby
-.. lines for guidance.
+.. Lưu ý rằng các bảng này sử dụng emoji, vốn không có độ rộng cố định trong hầu hết editor. .. Các bảng trông có vẻ bị lỗi định dạng nhưng thực ra không phải vậy. Khi thực hiện thay đổi, hãy kiểm tra các dòng .. lân cận để được hướng dẫn.
 
 +---------------------+--------------------------+--------------------------+--------------------------+
 | Feature             | Compatibility            | Mobile                   | Forward+                 |
@@ -188,10 +135,10 @@ Overall comparison
 |                     |                          | Metal.                   | Metal.                   |
 +---------------------+--------------------------+--------------------------+--------------------------+
 
-Lights and shadows
-~~~~~~~~~~~~~~~~~~
+Đèn và bóng
+~~~~~~~~~~~
 
-See :ref:`doc_lights_and_shadows` for more information.
+Xem :ref:`doc_lights_and_shadows` để biết thêm thông tin.
 
 +-------------------------+--------------------------+--------------------------+--------------------------+
 | Feature                 | Compatibility            | Mobile                   | Forward+                 |
@@ -223,7 +170,7 @@ See :ref:`doc_lights_and_shadows` for more information.
 Global Illumination
 ~~~~~~~~~~~~~~~~~~~
 
-See :ref:`doc_introduction_to_global_illumination` for more information.
+Xem :ref:`doc_introduction_to_global_illumination` để biết thêm thông tin.
 
 +-------------------------+--------------------------+--------------------------+--------------------------+
 | Feature                 | Compatibility            | Mobile                   | Forward+                 |
@@ -248,10 +195,10 @@ See :ref:`doc_introduction_to_global_illumination` for more information.
 | (SDFGI)                 |                          |                          |                          |
 +-------------------------+--------------------------+--------------------------+--------------------------+
 
-Environment and post-processing
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Environment và hậu kỳ
+~~~~~~~~~~~~~~~~~~~~~
 
-See :ref:`doc_environment_and_post_processing` for more information.
+Xem :ref:`doc_environment_and_post_processing` để biết thêm thông tin.
 
 +-------------------------+--------------------------+--------------------------+--------------------------+
 | Feature                 | Compatibility            | Mobile                   | Forward+                 |
@@ -285,10 +232,10 @@ See :ref:`doc_environment_and_post_processing` for more information.
 | with CompositorEffects  |                          |                          |                          |
 +-------------------------+--------------------------+--------------------------+--------------------------+
 
-Antialiasing
+Khử răng cưa
 ~~~~~~~~~~~~
 
-See :ref:`doc_3d_antialiasing` for more information.
+Xem :ref:`doc_3d_antialiasing` để biết thêm thông tin.
 
 +-------------------+--------------------------+--------------------------+--------------------------+
 | Feature           | Compatibility            | Mobile                   | Forward+                 |
@@ -311,10 +258,10 @@ See :ref:`doc_3d_antialiasing` for more information.
 | roughness limiter |                          |                          |                          |
 +-------------------+--------------------------+--------------------------+--------------------------+
 
-StandardMaterial features
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Các tính năng của StandardMaterial
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-See :ref:`doc_standard_material_3d` for more information.
+Xem :ref:`doc_standard_material_3d` để biết thêm thông tin.
 
 +-------------------------+--------------------------+--------------------------+--------------------------+
 | Feature                 | Compatibility            | Mobile                   | Forward+                 |
@@ -323,10 +270,10 @@ See :ref:`doc_standard_material_3d` for more information.
 |                         |                          |                          |                          |
 +-------------------------+--------------------------+--------------------------+--------------------------+
 
-Shader features
-~~~~~~~~~~~~~~~
+Các tính năng của shader
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-See :ref:`doc_shading_reference` for more information.
+Xem :ref:`doc_shading_reference` để biết thêm thông tin.
 
 +-------------------------+--------------------------+--------------------------+--------------------------+
 | Feature                 | Compatibility            | Mobile                   | Forward+                 |
@@ -343,8 +290,8 @@ See :ref:`doc_shading_reference` for more information.
 |                         |                          | penalty on older devices.|                          |
 +-------------------------+--------------------------+--------------------------+--------------------------+
 
-Other features
-~~~~~~~~~~~~~~
+Các tính năng khác
+~~~~~~~~~~~~~~~~~~
 
 +-------------------------+--------------------------+--------------------------+--------------------------+
 | Feature                 | Compatibility            | Mobile                   | Forward+                 |

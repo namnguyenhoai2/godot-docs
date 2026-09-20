@@ -1,12 +1,11 @@
 :allow_comments: False
 
-Rendering
-=========
+Kết xuất
+========
 
 .. seealso::
 
-   Most rendering topics are covered in :ref:`2D rendering <doc_2d_rendering>`
-   and :ref:`3D rendering <doc_3d_rendering>`.
+   Hầu hết các chủ đề về rendering đều được đề cập trong :ref:`2D rendering <doc_2d_rendering>` và :ref:`3D rendering <doc_3d_rendering>`.
 
 .. toctree::
    :maxdepth: 1

@@ -104,7 +104,7 @@ Ví dụ: Làm rung thiết bị
 Ví dụ: Truy cập các lớp bên trong
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Có thể truy cập các lớp bên trong của Java bằng dấu ``Có thể truy cập các lớp bên trong của Java bằng dấu `:
+Có thể truy cập các lớp bên trong của Java bằng dấu ``Có thể truy cập các lớp bên trong của Java bằng dấu`` :
 
 .. code-block:: gdscript
 

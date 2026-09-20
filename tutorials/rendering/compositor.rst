@@ -1,48 +1,30 @@
 .. _doc_compositor:
 
-The Compositor
-==============
+Compositor
+==========
 
-The compositor is a new feature in Godot 4 that allows control over
-the rendering pipeline when rendering the contents of a :ref:`Viewport <class_Viewport>`.
+Compositor là một tính năng mới trong Godot 4, cho phép kiểm soát rendering pipeline khi render nội dung của một :ref:`Viewport <class_Viewport>`.
 
-It can be configured on a :ref:`WorldEnvironment <class_WorldEnvironment>`
-node where it applies to all Viewports, or it can be configured on
-a :ref:`Camera3D <class_Camera3D>` and apply only to
-the Viewport using that camera.
+Tính năng này có thể được cấu hình trên node :ref:`WorldEnvironment <class_WorldEnvironment>`, khi đó nó áp dụng cho tất cả Viewport; hoặc có thể được cấu hình trên :ref:`Camera3D <class_Camera3D>` và chỉ áp dụng cho Viewport sử dụng camera đó.
 
-The :ref:`Compositor <class_Compositor>` resource is used to configure
-the compositor. To get started, create a new compositor on the appropriate node:
+Resource :ref:`Compositor <class_Compositor>` được dùng để cấu hình compositor. Để bắt đầu, hãy tạo một compositor mới trên node thích hợp:
 
 .. image:: img/new_compositor.webp
 
 .. note::
 
-    The compositor is currently a feature that is only supported by
-    the Mobile and Forward+ renderers.
+    Hiện tại, compositor chỉ được hỗ trợ bởi các renderer Mobile và Forward+.
 
-Compositor effects
-------------------
+Compositor effect
+-----------------
 
-Compositor effects allow you to insert additional logic into the rendering
-pipeline at various stages. This is an advanced feature that requires
-a high level of understanding of the rendering pipeline to use to
-its best advantage.
+Compositor effect cho phép bạn chèn logic bổ sung vào rendering pipeline ở nhiều giai đoạn khác nhau. Đây là một tính năng nâng cao, đòi hỏi hiểu biết sâu về rendering pipeline để có thể tận dụng hiệu quả nhất.
 
-As the core logic of the compositor effect is called from the rendering
-pipeline it is important to note that this logic will thus run within
-the thread on which rendering takes place.
-Care needs to be taken to ensure we don't run into threading issues.
+Vì logic cốt lõi của compositor effect được gọi từ rendering pipeline, cần lưu ý rằng logic này sẽ chạy trong thread thực hiện việc rendering. Cần cẩn thận để đảm bảo chúng ta không gặp vấn đề về threading.
 
-To illustrate how to use compositor effects we'll create a simple
-post processing effect that allows you to write your own shader code
-and apply this full screen through a compute shader.
-You can find the finished demo project `here <https://github.com/godotengine/godot-demo-projects/tree/master/compute/post_shader>`_.
+Để minh họa cách sử dụng compositor effect, chúng ta sẽ tạo một post-processing effect đơn giản, cho phép bạn viết shader code của riêng mình và áp dụng nó trên toàn màn hình thông qua compute shader. Bạn có thể tìm thấy project demo hoàn chỉnh `here <https://github.com/godotengine/godot-demo-projects/tree/master/compute/post_shader>`_.
 
-We start by creating a new script called ``post_process_shader.gd``.
-We'll make this a tool script so we can see the compositor effect work in the editor.
-We need to extend our node from :ref:`CompositorEffect <class_CompositorEffect>`.
-We must also give our script a class name.
+Trước tiên, chúng ta tạo một script mới có tên ``post_process_shader.gd``. Chúng ta sẽ biến script này thành tool script để có thể thấy compositor effect hoạt động trong editor. Chúng ta cần cho node của mình kế thừa từ :ref:`CompositorEffect <class_CompositorEffect>`. Đồng thời, script cũng phải có class name.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -56,8 +38,7 @@ We must also give our script a class name.
     [GlobalClass, Tool]
     public partial class PostProcessShader : CompositorEffect
 
-Next we're going to define a constant for our shader template code.
-This is the boilerplate code that makes our compute shader work.
+Tiếp theo, chúng ta sẽ định nghĩa một hằng số cho shader template code. Đây là boilerplate code giúp compute shader của chúng ta hoạt động.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -65,18 +46,18 @@ This is the boilerplate code that makes our compute shader work.
     const template_shader: String = """
     #version 450
 
-    // Invocations in the (x, y, z) dimension
+    // Các invocation trong chiều (x, y, z)
     layout(local_size_x = 8, local_size_y = 8, local_size_z = 1) in;
 
     layout(rgba16f, set = 0, binding = 0) uniform image2D color_image;
 
-    // Our push constant
+    // Push constant của chúng ta
     layout(push_constant, std430) uniform Params {
         vec2 raster_size;
         vec2 reserved;
     } params;
 
-    // The code we want to execute in each invocation
+    // Code chúng ta muốn thực thi trong mỗi invocation
     void main() {
         ivec2 uv = ivec2(gl_GlobalInvocationID.xy);
         ivec2 size = ivec2(params.raster_size);
@@ -98,18 +79,18 @@ This is the boilerplate code that makes our compute shader work.
     private const string _templateShader = @"
     #version 450
 
-    // Invocations in the (x, y, z) dimension
+    // Các invocation trong chiều (x, y, z)
     layout(local_size_x = 8, local_size_y = 8, local_size_z = 1) in;
 
     layout(rgba16f, set = 0, binding = 0) uniform image2D color_image;
 
-    // Our push constant
+    // Push constant của chúng ta
     layout(push_constant, std430) uniform Params {
 	    vec2 raster_size;
 	    vec2 reserved;
     } params;
 
-    // The code we want to execute in each invocation
+    // Code chúng ta muốn thực thi trong mỗi invocation
     void main() {
 	    ivec2 uv = ivec2(gl_GlobalInvocationID.xy);
 	    ivec2 size = ivec2(params.raster_size);
@@ -126,18 +107,13 @@ This is the boilerplate code that makes our compute shader work.
     }
     ";
 
-For more information on how compute shaders work,
-please check :ref:`Using compute shaders <doc_compute_shaders>`.
+Để biết thêm thông tin về cách compute shader hoạt động, hãy xem :ref:`Using compute shaders <doc_compute_shaders>`.
 
-The important bit here is that for every pixel on our screen,
-our ``main`` function is executed and inside of this we load
-the current color value of our pixel, execute our user code,
-and write our modified color back to our color image.
+Điểm quan trọng ở đây là với mỗi pixel trên màn hình, hàm ``main`` của chúng ta sẽ được thực thi. Bên trong hàm này, chúng ta tải giá trị màu hiện tại của pixel, thực thi user code, rồi ghi màu đã được chỉnh sửa trở lại color image.
 
-``#COMPUTE_CODE`` gets replaced by our user code.
+``#COMPUTE_CODE`` sẽ được thay thế bằng user code của chúng ta.
 
-In order to set our user code, we need an export variable.
-We'll also define a few script variables we'll be using:
+Để thiết lập user code, chúng ta cần một biến export. Chúng ta cũng sẽ định nghĩa một vài biến của script để sử dụng:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -180,118 +156,105 @@ We'll also define a few script variables we'll be using:
     private bool _shaderIsDirty = true;
 
 
-Note the use of a :ref:`Mutex <class_Mutex>` in our code.
-Most of our implementation gets called from the rendering engine
-and thus runs within our rendering thread.
+Lưu ý việc sử dụng :ref:`Mutex <class_Mutex>` trong code của chúng ta. Phần lớn implementation được gọi từ rendering engine và do đó chạy trong rendering thread.
 
-We need to ensure that we set our new shader code, and mark our
-shader code as dirty, without our render thread accessing this
-data at the same time.
+Chúng ta cần đảm bảo thiết lập shader code mới và đánh dấu shader code là dirty, mà không để render thread truy cập dữ liệu này cùng lúc.
 
-Next we initialize our effect.
+Tiếp theo, chúng ta khởi tạo effect.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Called when this resource is constructed.
+    # Được gọi khi resource này được tạo.
     func _init():
         effect_callback_type = EFFECT_CALLBACK_TYPE_POST_TRANSPARENT
         rd = RenderingServer.get_rendering_device()
 
  .. code-tab:: csharp
 
-    // Called when this resource is constructed.
+    // Được gọi khi resource này được tạo.
     public PostProcessShader()
     {
         EffectCallbackType = EffectCallbackTypeEnum.PostTransparent;
         _rd = RenderingServer.GetRenderingDevice();
     }
 
-The main thing here is setting our ``effect_callback_type`` which tells
-the rendering engine at what stage of the render pipeline to call our code.
+Điều quan trọng ở đây là thiết lập ``effect_callback_type``, cho rendering engine biết cần gọi code của chúng ta ở giai đoạn nào trong render pipeline.
 
 .. note::
 
-    Currently we only have access to the stages of the 3D rendering pipeline!
+    Hiện tại, chúng ta chỉ có quyền truy cập vào các giai đoạn của 3D rendering pipeline!
 
-We also get a reference to our rendering device, which will come in very handy.
+Chúng ta cũng nhận được một reference đến rendering device, thứ sẽ rất hữu ích.
 
-We also need to clean up after ourselves, for this we react to the
-``NOTIFICATION_PREDELETE`` notification:
+Chúng ta cũng cần dọn dẹp sau khi hoàn tất. Để làm việc này, chúng ta phản hồi ``NOTIFICATION_PREDELETE`` notification:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # System notifications, we want to react on the notification that
-    # alerts us we are about to be destroyed.
+    # System notification; chúng ta muốn phản hồi notification cho biết
+    # rằng chúng ta sắp bị hủy.
     func _notification(what):
         if what == NOTIFICATION_PREDELETE:
             if shader.is_valid():
-                # Freeing our shader will also free any dependents such as the pipeline!
+                # Việc giải phóng shader cũng sẽ giải phóng mọi dependent như pipeline!
                 rd.free_rid(shader)
 
  .. code-tab:: csharp
 
-    // System notifications, we want to react on the notification that
-    // alerts us we are about to be destroyed.
+    // System notification; chúng ta muốn phản hồi notification cho biết
+    // rằng chúng ta sắp bị hủy.
     public override void _Notification(int what)
     {
         if (what == NotificationPredelete)
         {
             if (_shader.IsValid)
             {
-                // Freeing our shader will also free any dependents such as the pipeline!
+                // Việc giải phóng shader cũng sẽ giải phóng mọi dependent như pipeline!
                 _rd.FreeRid(_shader);
             }
         }
     }
 
-Note that we do not use our mutex here even though we create our shader inside
-of our render thread.
-The methods on our rendering server are thread safe and ``free_rid`` will
-be postponed cleaning up the shader until after any frames currently being
-rendered are finished.
+Lưu ý rằng ở đây chúng ta không sử dụng mutex, dù tạo shader bên trong render thread. Các method trên rendering server đều thread-safe và ``free_rid`` sẽ trì hoãn việc dọn dẹp shader cho đến khi mọi frame đang được render hoàn tất.
 
-Also note that we are not freeing our pipeline. The rendering device does
-dependency tracking and as the pipeline is dependent on the shader, it will
-be automatically freed when the shader is destructed.
+Cũng lưu ý rằng chúng ta không giải phóng pipeline. Rendering device thực hiện dependency tracking và vì pipeline phụ thuộc vào shader, nó sẽ tự động được giải phóng khi shader bị hủy.
 
-From this point onwards our code will run on the rendering thread.
+Từ thời điểm này trở đi, code của chúng ta sẽ chạy trên rendering thread.
 
-Our next step is a helper function that will recompile the shader if the user
-code was changed.
+Bước tiếp theo là một helper function để biên dịch lại shader nếu user code đã thay đổi.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Check if our shader has changed and needs to be recompiled.
+    # Kiểm tra xem shader của chúng ta có thay đổi và cần được biên dịch lại hay không.
     func _check_shader() -> bool:
         if not rd:
             return false
 
         var new_shader_code: String = ""
 
-        # Check if our shader is dirty.
+        # Kiểm tra xem shader của chúng ta có dirty hay không.
         mutex.lock()
         if shader_is_dirty:
             new_shader_code = shader_code
             shader_is_dirty = false
         mutex.unlock()
 
-        # We don't have a (new) shader?
+        # Chúng ta không có shader (mới)?
         if new_shader_code.is_empty():
             return pipeline.is_valid()
 
-        # Apply template.
+        # Áp dụng template.
         new_shader_code = _templateShader.replace("#COMPUTE_CODE", new_shader_code);
 
-        # Out with the old.
+        # Loại bỏ shader cũ.
         if shader.is_valid():
             rd.free_rid(shader)
             shader = RID()
             pipeline = RID()
 
-        # In with the new.
+        # Đưa shader mới vào.
         var shader_source: RDShaderSource = RDShaderSource.new()
         shader_source.language = RenderingDevice.SHADER_LANGUAGE_GLSL
         shader_source.source_compute = new_shader_code
@@ -311,7 +274,7 @@ code was changed.
 
  .. code-tab:: csharp
 
-    // Check if our shader has changed and needs to be recompiled.
+    // Kiểm tra xem shader của chúng ta có thay đổi và cần được biên dịch lại hay không.
     public bool CheckShader()
     {
         if (_rd is null)
@@ -321,7 +284,7 @@ code was changed.
 
         var newShaderCode = "";
 
-        // Check if our shader is dirty.
+        // Kiểm tra xem shader của chúng ta có dirty hay không.
         _mutex.Lock();
         if (_shaderIsDirty)
         {
@@ -330,16 +293,16 @@ code was changed.
         }
         _mutex.Unlock();
 
-        // We don't have a (new) shader?
+        // Chúng ta không có shader (mới)?
         if (newShaderCode == "")
         {
             return _pipeline.IsValid;
         }
 
-        // Apply template.
+        // Áp dụng template.
         newShaderCode = _templateShader.Replace("#COMPUTE_CODE", newShaderCode);
 
-        // Out with the old.
+        // Loại bỏ shader cũ.
         if (_shader.IsValid)
         {
             _rd.FreeRid(_shader);
@@ -347,7 +310,7 @@ code was changed.
             _pipeline = new Rid();
         }
 
-        // In with the new.
+        // Đưa shader mới vào.
         RDShaderSource shaderSource = new RDShaderSource();
         shaderSource.Language = RenderingDevice.ShaderLanguage.Glsl;
         shaderSource.SourceCompute = newShaderCode;
@@ -369,46 +332,35 @@ code was changed.
         return _pipeline.IsValid;
     }
 
-At the top of this method we again use our mutex to protect accessing our
-user shader code and our is dirty flag.
-We make a local copy of the user shader code if our user shader code is dirty.
+Ở đầu method này, chúng ta lại sử dụng mutex để bảo vệ việc truy cập user shader code và cờ is dirty. Nếu user shader code của chúng ta dirty, chúng ta tạo một bản sao cục bộ của nó.
 
-If we don't have a new code fragment, we return true if we already have a
-valid pipeline.
+Nếu không có code fragment mới, chúng ta trả về true nếu đã có một pipeline hợp lệ.
 
-If we do have a new code fragment we embed it in our template code and then
-compile it.
+Nếu có code fragment mới, chúng ta nhúng nó vào template code rồi biên dịch.
 
 .. warning::
-    The code shown here compiles our new code in runtime.
-    This is great for prototyping as we can immediately see the effect
-    of the changed shader.
+    Code được hiển thị ở đây biên dịch code mới trong runtime. Điều này rất hữu ích cho việc prototyping, vì chúng ta có thể thấy ngay hiệu ứng của shader đã thay đổi.
 
-    This prevents precompiling and caching this shader which may be an issues
-    on some platforms such as consoles.
-    Note that the demo project comes with an alternative example where
-    a ``glsl`` file contains the entire compute shader and this is used.
-    Godot is able to precompile and cache the shader with this approach.
+    Điều này ngăn việc precompile và caching shader, vốn có thể gây vấn đề trên một số nền tảng như console. Lưu ý rằng project demo đi kèm một ví dụ thay thế, trong đó file ``glsl`` chứa toàn bộ compute shader và được sử dụng. Với cách tiếp cận này, Godot có thể precompile và cache shader.
 
-Finally we need to implement our effect callback, the rendering engine will call
-this at the right stage of rendering.
+Cuối cùng, chúng ta cần implement effect callback; rendering engine sẽ gọi callback này ở đúng giai đoạn của quá trình rendering.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Called by the rendering thread every frame.
+    # Được rendering thread gọi mỗi frame.
     func _render_callback(p_effect_callback_type, p_render_data):
         if rd and p_effect_callback_type == EFFECT_CALLBACK_TYPE_POST_TRANSPARENT and _check_shader():
-            # Get our render scene buffers object, this gives us access to our render buffers.
+            # Lấy render scene buffers object; object này cho phép chúng ta truy cập render buffers.
             # Note that implementation differs per renderer hence the need for the cast.
             var render_scene_buffers: RenderSceneBuffersRD = p_render_data.get_render_scene_buffers()
             if render_scene_buffers:
-                # Get our render size, this is the 3D render resolution!
+                # Lấy render size; đây là độ phân giải 3D render!
                 var size = render_scene_buffers.get_internal_size()
                 if size.x == 0 and size.y == 0:
                     return
 
-                # We can use a compute shader here.
+                # Ở đây chúng ta có thể sử dụng compute shader.
                 var x_groups = (size.x - 1) / 8 + 1
                 var y_groups = (size.y - 1) / 8 + 1
                 var z_groups = 1
@@ -420,21 +372,21 @@ this at the right stage of rendering.
                 push_constant.push_back(0.0)
                 push_constant.push_back(0.0)
 
-                # Loop through views just in case we're doing stereo rendering. No extra cost if this is mono.
+                # Lặp qua các view phòng trường hợp chúng ta đang thực hiện stereo rendering. Nếu là mono thì không phát sinh chi phí bổ sung.
                 var view_count = render_scene_buffers.get_view_count()
                 for view in range(view_count):
-                    # Get the RID for our color image, we will be reading from and writing to it.
+                    # Lấy RID của color image; chúng ta sẽ đọc và ghi dữ liệu vào image này.
                     var input_image = render_scene_buffers.get_color_layer(view)
 
-                    # Create a uniform set.
-                    # This will be cached; the cache will be cleared if our viewport's configuration is changed.
+                    # Tạo một uniform set.
+                    # Uniform set này sẽ được cache; cache sẽ bị xóa nếu cấu hình viewport thay đổi.
                     var uniform: RDUniform = RDUniform.new()
                     uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_IMAGE
                     uniform.binding = 0
                     uniform.add_id(input_image)
                     var uniform_set = UniformSetCacheRD.get_cache(shader, 0, [ uniform ])
 
-                    # Run our compute shader.
+                    # Chạy compute shader.
                     var compute_list:= rd.compute_list_begin()
                     rd.compute_list_bind_compute_pipeline(compute_list, pipeline)
                     rd.compute_list_bind_uniform_set(compute_list, uniform_set, 0)
@@ -444,25 +396,25 @@ this at the right stage of rendering.
 
  .. code-tab:: csharp
 
-    // Called by the rendering thread every frame.
+    // Được rendering thread gọi mỗi frame.
     public override void _RenderCallback(int effectCallbackType, RenderData renderData)
     {
         if (_rd is not null && effectCallbackType == (int)EffectCallbackTypeEnum.PostTransparent && CheckShader())
         {
-            // Get our render scene buffers object, this gives us access to our render buffers.
+            // Lấy render scene buffers object; object này cho phép chúng ta truy cập render buffers.
             // Note that implementation differs per renderer hence the need for the cast.
 
             RenderSceneBuffersRD renderSceneBuffers = renderData.GetRenderSceneBuffers() as RenderSceneBuffersRD;
             if (renderSceneBuffers is not null)
             {
-                // Get our render size, this is the 3D resolution!
+                // Lấy render size; đây là độ phân giải 3D!
                 var size = renderSceneBuffers.GetInternalSize();
                 if (size.X == 0 && size.Y == 0)
                 {
                     return;
                 }
 
-                // We can use a compute shader here.
+                // Ở đây chúng ta có thể sử dụng compute shader.
                 uint xGroups = (uint)((size.X - 1) / 8 + 1);
                 uint yGroups = (uint)((size.Y - 1) / 8 + 1);
                 uint zGroups = 1;
@@ -472,15 +424,15 @@ this at the right stage of rendering.
                 byte[] pushConstant = new byte[tempPushConstant.Length * sizeof(float)];
                 Buffer.BlockCopy(tempPushConstant, 0, pushConstant, 0, pushConstant.Length);
 
-                // Loop through views just in case we're doing stereo rendering. No extra cost if this is mono.
+                // Lặp qua các view phòng trường hợp chúng ta đang thực hiện stereo rendering. Nếu là mono thì không phát sinh chi phí bổ sung.
                 var viewCount = renderSceneBuffers.GetViewCount();
                 for (uint view = 0; view < viewCount; view++)
                 {
-                    // Get the RID for our color image, we will be reading from and writing to it.
+                    // Lấy RID của color image; chúng ta sẽ đọc và ghi dữ liệu vào image này.
                     var inputImage = renderSceneBuffers.GetColorLayer(view);
 
-                    // Create a uniform set.
-                    // This will be cached; the cache will be cleared if our viewport's configuration is changed.
+                    // Tạo một uniform set.
+                    // Uniform set này sẽ được cache; cache sẽ bị xóa nếu cấu hình viewport thay đổi.
                     RDUniform uniform = new RDUniform()
                     {
                         UniformType = RenderingDevice.UniformType.Image,
@@ -489,7 +441,7 @@ this at the right stage of rendering.
                     uniform.AddId(inputImage);
                     var uniformSet = UniformSetCacheRD.GetCache(_shader, 0, [uniform]);
 
-                    // Run our compute shader.
+                    // Chạy compute shader.
                     var computeList = _rd.ComputeListBegin();
                     _rd.ComputeListBindComputePipeline(computeList, _pipeline);
                     _rd.ComputeListBindUniformSet(computeList, uniformSet, 0);
@@ -500,86 +452,55 @@ this at the right stage of rendering.
         }
     }
 
-At the start of this method we check if we have a rendering device,
-if our callback type is the correct one, and check if we have our shader.
+Ở đầu method này, chúng ta kiểm tra xem có rendering device hay không, callback type có chính xác hay không, và có shader hay không.
 
 .. note::
 
-    The check for the effect type is only a safety mechanism.
-    We've set this in our ``_init`` function, however it is possible
-    for the user to change this in the UI.
+    Việc kiểm tra effect type chỉ là một cơ chế an toàn. Chúng ta đã thiết lập giá trị này trong function ``_init``, tuy nhiên người dùng vẫn có thể thay đổi nó trong UI.
 
-Our ``p_render_data`` parameter gives us access to an object that holds
-data specific to the frame we're currently rendering. We're currently only
-interested in our render scene buffers, which provide us access to all the
-internal buffers used by the rendering engine.
-Note that we cast this to :ref:`RenderSceneBuffersRD <class_RenderSceneBuffersRD>`
-to expose the full API to this data.
+Tham số ``p_render_data`` cho phép chúng ta truy cập một object chứa dữ liệu cụ thể của frame hiện đang được render. Hiện tại, chúng ta chỉ quan tâm đến render scene buffers, vốn cho phép truy cập tất cả buffer nội bộ được rendering engine sử dụng. Lưu ý rằng chúng ta cast tham số này sang :ref:`RenderSceneBuffersRD <class_RenderSceneBuffersRD>` để expose toàn bộ API của dữ liệu này.
 
-Next we obtain our ``internal size`` which is the resolution of our 3D render
-buffers before they are upscaled (if applicable), upscaling happens after our
-post processes have run.
+Tiếp theo, chúng ta lấy ``internal size``, là độ phân giải của 3D render buffers trước khi được upscale (nếu có). Việc upscaling diễn ra sau khi các post-process của chúng ta chạy.
 
-From our internal size we calculate our group size, see our local size in our
-template shader.
+Từ kích thước nội bộ, chúng ta tính group size; hãy xem local size trong template shader.
 
-.. UPDATE: Not supported yet. When structs are supported here, update this
-.. paragraph.
+.. CẬP NHẬT: Hiện chưa được hỗ trợ. Khi struct được hỗ trợ ở đây, hãy cập nhật đoạn văn này. ..
 
-We also populate our push constant so our shader knows our size.
-Godot does not support structs here **yet** so we use a
-``PackedFloat32Array`` to store this data into. Note that we have
-to pad this array with a 16 byte alignment. In other words, the
-length of our array needs to be a multiple of 4.
+Chúng ta cũng điền push constant để shader biết kích thước của mình. Godot **vẫn chưa** hỗ trợ struct ở đây, vì vậy chúng ta sử dụng ``PackedFloat32Array`` để lưu dữ liệu này. Lưu ý rằng chúng ta phải pad array này theo alignment 16 byte. Nói cách khác, độ dài của array phải là bội số của 4.
 
-Now we loop through our views, this is in case we're using multiview rendering
-which is applicable for stereo rendering (XR). In most cases we will only have
-one view.
+Bây giờ chúng ta lặp qua các view, phòng trường hợp sử dụng multiview rendering, vốn áp dụng cho stereo rendering (XR). Trong hầu hết trường hợp, chúng ta sẽ chỉ có một view.
 
 .. note::
 
-    There is no performance benefit to use multiview for post processing
-    here, handling the views separately like this will still enable the GPU
-    to use parallelism if beneficial.
+    Ở đây, việc sử dụng multiview cho post processing không mang lại lợi ích về hiệu năng; việc xử lý riêng từng view như thế này vẫn cho phép GPU sử dụng tính song song nếu có lợi.
 
-Next we obtain the color buffer for this view. This is the buffer into which
-our 3D scene has been rendered.
+Tiếp theo, chúng ta lấy color buffer cho view này. Đây là buffer mà scene 3D của chúng ta đã được render vào.
 
-We then prepare a uniform set so we can communicate the color buffer to our
-shader.
+Sau đó, chúng ta chuẩn bị một uniform set để có thể truyền color buffer đến shader.
 
-Note the use of our :ref:`UniformSetCacheRD <class_UniformSetCacheRD>` cache
-which ensures we can check for our uniform set each frame.
-As our color buffer can change from frame to frame and our uniform cache
-will automatically clean up uniform sets when buffers are freed, this is
-the safe way to ensure we do not leak memory or use an outdated set.
+Lưu ý việc sử dụng cache :ref:`UniformSetCacheRD <class_UniformSetCacheRD>` của chúng ta, giúp đảm bảo rằng chúng ta có thể kiểm tra uniform set ở mỗi frame. Vì color buffer của chúng ta có thể thay đổi từ frame này sang frame khác và uniform cache sẽ tự động dọn dẹp các uniform set khi buffer được giải phóng, đây là cách an toàn để đảm bảo chúng ta không làm rò rỉ bộ nhớ hoặc sử dụng một set đã lỗi thời.
 
-Finally we build our compute list by binding our pipeline,
-binding our uniform set, pushing our push constant data,
-and calling dispatch for our groups.
+Cuối cùng, chúng ta xây dựng compute list bằng cách binding pipeline, binding uniform set, đẩy dữ liệu push constant và gọi dispatch cho các group.
 
-With our compositor effect completed, we now need to add it to our compositor.
+Sau khi hoàn tất compositor effect, giờ chúng ta cần thêm nó vào compositor.
 
-On our compositor we expand the compositor effects property
-and press ``Add Element``.
+Trong compositor, chúng ta mở rộng thuộc tính compositor effects và nhấn ``Add Element``.
 
-Now we can add our compositor effect:
+Bây giờ chúng ta có thể thêm compositor effect của mình:
 
 .. image:: img/add_compositor_effect.webp
 
-After selecting our ``PostProcessShader`` we need to set our user shader code:
+Sau khi chọn ``PostProcessShader``, chúng ta cần thiết lập user shader code:
 
 .. code-block:: glsl
 
     float gray = color.r * 0.2125 + color.g * 0.7154 + color.b * 0.0721;
     color.rgb = vec3(gray);
 
-With that all done, our output is in grayscale.
+Sau khi hoàn tất mọi thứ, output của chúng ta ở dạng grayscale.
 
 .. image:: img/post_process_shader.webp
 
 .. note::
 
-    For a more advanced example of post effects, check out the
-    `Radial blur based sky rays <https://github.com/BastiaanOlij/RERadialSunRays>`_
-    example project created by Bastiaan Olij.
+    Để xem một ví dụ nâng cao hơn về post effects, hãy tham khảo project mẫu `Radial blur based sky rays <https://github.com/BastiaanOlij/RERadialSunRays>`_ do Bastiaan Olij tạo.
