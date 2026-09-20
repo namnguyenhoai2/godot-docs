@@ -1,82 +1,56 @@
 .. _doc_2d_sprite_animation:
 
-2D sprite animation
-===================
+Hoạt ảnh sprite 2D
+==================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-In this tutorial, you'll learn how to create 2D animated
-characters with the AnimatedSprite2D class and the AnimationPlayer.
-Typically, when you create or download an animated character,
-it will come in one of two ways: as individual images or as a single sprite sheet
-containing all the animation's frames.
-Both can be animated in Godot with the AnimatedSprite2D class.
+Trong hướng dẫn này, bạn sẽ học cách tạo các nhân vật 2D có hoạt ảnh bằng lớp AnimatedSprite2D và AnimationPlayer. Thông thường, khi tạo hoặc tải xuống một nhân vật có hoạt ảnh, bạn sẽ nhận được một trong hai dạng: các hình ảnh riêng lẻ hoặc một sprite sheet duy nhất chứa tất cả các khung hình của hoạt ảnh. Cả hai dạng đều có thể được tạo hoạt ảnh trong Godot bằng lớp AnimatedSprite2D.
 
-First, we'll use :ref:`AnimatedSprite2D <class_AnimatedSprite2D>` to
-animate a collection of individual images.
-Then we will animate a sprite sheet using this class.
-Finally, we will learn another way to animate a sprite sheet
-with :ref:`AnimationPlayer <class_AnimationPlayer>` and the *Animation*
-property of :ref:`Sprite2D <class_Sprite2D>`.
+Trước tiên, chúng ta sẽ sử dụng :ref:`AnimatedSprite2D <class_AnimatedSprite2D>` để tạo hoạt ảnh cho một tập hợp các hình ảnh riêng lẻ. Sau đó, chúng ta sẽ tạo hoạt ảnh cho một sprite sheet bằng lớp này. Cuối cùng, chúng ta sẽ tìm hiểu một cách khác để tạo hoạt ảnh cho sprite sheet bằng :ref:`AnimationPlayer <class_AnimationPlayer>` và thuộc tính *Animation* của :ref:`Sprite2D <class_Sprite2D>`.
 
 .. note:: Art for the following examples by https://opengameart.org/users/ansimuz and tgfcoder.
 
-Individual images with AnimatedSprite2D
----------------------------------------
+Các hình ảnh riêng lẻ với AnimatedSprite2D
+------------------------------------------
 
-In this scenario, you have a collection of images, each containing one of your
-character's animation frames. For this example, we'll use the following
-animation:
+Trong trường hợp này, bạn có một tập hợp các hình ảnh, mỗi hình ảnh chứa một khung hình hoạt ảnh của nhân vật. Trong ví dụ này, chúng ta sẽ sử dụng hoạt ảnh sau:
 
 .. image:: img/2d_animation_run_preview.gif
 
-You can download the images here:
-`2d_sprite_animation_assets.zip <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/2d_sprite_animation_assets.zip>`_
+Bạn có thể tải xuống các hình ảnh tại đây: `2d_sprite_animation_assets.zip <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/2d_sprite_animation_assets.zip>`_
 
-Unzip the images and place them in your project folder. Set up your scene tree
-with the following nodes:
+Giải nén các hình ảnh và đặt chúng vào thư mục dự án của bạn. Thiết lập cây cảnh với các nút sau:
 
 .. image:: img/2d_animation_tree1.webp
 
 .. note:: The root node could also be :ref:`Area2D <class_Area2D>` or
           :ref:`RigidBody2D <class_RigidBody2D>`. The animation will still be
-          made in the same way. Once the animation is completed, you can
-          assign a shape to the CollisionShape2D. See
+          được tạo theo cách tương tự. Sau khi hoàn tất hoạt ảnh, bạn có thể gán một hình dạng cho CollisionShape2D. Xem
           :ref:`Physics Introduction <doc_physics_introduction>` for more
-          information.
+          thông tin.
 
-Now select the ``AnimatedSprite2D`` and in its *SpriteFrames* property, select
-"New SpriteFrames".
+Bây giờ chọn ``AnimatedSprite2D`` và trong thuộc tính *SpriteFrames* của nó, chọn "New SpriteFrames".
 
 .. image:: img/2d_animation_new_spriteframes.webp
 
-Click on the new SpriteFrames resource and you'll see a new panel appear at the
-bottom of the editor window:
+Nhấp vào tài nguyên SpriteFrames mới và bạn sẽ thấy một bảng điều khiển mới xuất hiện ở cuối cửa sổ trình chỉnh sửa:
 
 .. image:: img/2d_animation_spriteframes.webp
 
-From the FileSystem dock on the left side, drag the 8 individual images into
-the center part of the SpriteFrames panel. On the left side, change the name
-of the animation from "default" to "run".
+Từ dock FileSystem ở bên trái, kéo 8 hình ảnh riêng lẻ vào phần trung tâm của bảng SpriteFrames. Ở bên trái, đổi tên hoạt ảnh từ "default" thành "run".
 
 .. image:: img/2d_animation_spriteframes_done.webp
 
-Use the "Play" buttons on the top-right of the *Filter Animations* input to preview the animation.
-You should now see the animation playing in the viewport.
-However, it is a bit slow. To fix this,
-change the *Speed (FPS)* setting in the SpriteFrames panel to 10.
+Sử dụng các nút "Play" ở phía trên bên phải của ô nhập *Filter Animations* để xem trước hoạt ảnh. Bây giờ bạn sẽ thấy hoạt ảnh đang chạy trong khung nhìn. Tuy nhiên, hoạt ảnh hơi chậm. Để khắc phục, hãy thay đổi thiết lập *Speed (FPS)* trong bảng SpriteFrames thành 10.
 
-You can add additional animations by clicking the "Add Animation" button and
-adding additional images.
+Bạn có thể thêm các hoạt ảnh khác bằng cách nhấp vào nút "Add Animation" và thêm các hình ảnh khác.
 
-Controlling the animation
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Điều khiển hoạt ảnh
+~~~~~~~~~~~~~~~~~~~
 
-Once the animation is complete, you can control the animation via code using
-the ``play()`` and ``stop()`` methods. Here is a brief example to play the
-animation while the right arrow key is held, and stop it when the key is
-released.
+Sau khi hoàn tất hoạt ảnh, bạn có thể điều khiển hoạt ảnh thông qua mã bằng các phương thức ``play()`` và ``stop()``. Dưới đây là một ví dụ ngắn để phát hoạt ảnh khi phím mũi tên phải được nhấn giữ và dừng khi thả phím.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -85,146 +59,102 @@ released.
 
     @onready var _animated_sprite = $AnimatedSprite2D
 
-    func _process(_delta):
-        if Input.is_action_pressed("ui_right"):
-            _animated_sprite.play("run")
-        else:
-            _animated_sprite.stop()
+    func _process(_delta): if Input.is_action_pressed("ui_right"): _animated_sprite.play("run") else: _animated_sprite.stop()
 
  .. code-tab:: csharp
 
     using Godot;
 
-    public partial class Character : CharacterBody2D
-    {
-        private AnimatedSprite2D _animatedSprite;
+    public partial class Character : CharacterBody2D { private AnimatedSprite2D _animatedSprite;
 
-        public override void _Ready()
-        {
-            _animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-        }
+        public override void _Ready() { _animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D"); }
 
-        public override void _Process(double delta)
-        {
-            if (Input.IsActionPressed("ui_right"))
-            {
-                _animatedSprite.Play("run");
-            }
-            else
-            {
-                _animatedSprite.Stop();
-            }
-        }
-    }
+        public override void _Process(double delta) { if (Input.IsActionPressed("ui_right")) { _animatedSprite.Play("run"); } else { _animatedSprite.Stop(); } } }
 
 
-Sprite sheet with AnimatedSprite2D
-----------------------------------
+Sprite sheet với AnimatedSprite2D
+---------------------------------
 
-You can also easily animate from a sprite sheet with the class ``AnimatedSprite2D``.
-We will use this public domain sprite sheet:
+Bạn cũng có thể dễ dàng tạo hoạt ảnh từ một sprite sheet bằng lớp ``AnimatedSprite2D``. Chúng ta sẽ sử dụng sprite sheet thuộc phạm vi công cộng sau:
 
 .. image:: img/2d_animation_frog_spritesheet.png
 
-Right-click the image and choose "Save Image As" to download it,
-and then copy the image into your project folder.
+Nhấp chuột phải vào hình ảnh và chọn "Save Image As" để tải xuống, sau đó sao chép hình ảnh vào thư mục dự án của bạn.
 
-Set up your scene tree the same way you did previously when using individual images.
-Select the ``AnimatedSprite2D`` and in its *SpriteFrames* property, select "New SpriteFrames".
+Thiết lập cây cảnh giống như trước đây khi sử dụng các hình ảnh riêng lẻ. Chọn ``AnimatedSprite2D`` và trong thuộc tính *SpriteFrames* của nó, chọn "New SpriteFrames".
 
-Click on the new SpriteFrames resource.
-This time, when the bottom panel appears, select "Add frames from a Sprite Sheet".
+Nhấp vào tài nguyên SpriteFrames mới. Lần này, khi bảng điều khiển phía dưới xuất hiện, hãy chọn "Add frames from a Sprite Sheet".
 
 .. image:: img/2d_animation_add_from_spritesheet.webp
 
-You will be prompted to open a file. Select your sprite sheet.
+Bạn sẽ được nhắc mở một tệp. Hãy chọn sprite sheet của bạn.
 
-A new window will open, showing your sprite sheet.
-The first thing you will need to do is to change the number of vertical and horizontal images in your sprite sheet.
-In this sprite sheet, we have four images horizontally and two images vertically.
+Một cửa sổ mới sẽ mở ra, hiển thị sprite sheet của bạn. Việc đầu tiên bạn cần làm là thay đổi số lượng hình ảnh theo chiều dọc và chiều ngang trong sprite sheet. Trong sprite sheet này, chúng ta có bốn hình ảnh theo chiều ngang và hai hình ảnh theo chiều dọc.
 
 .. image:: img/2d_animation_spritesheet_select_rows.webp
 
-Next, select the frames from the sprite sheet that you want to include in your animation.
-We will select the top four, then click "Add 4 frames" to create the animation.
+Tiếp theo, chọn các khung hình trong sprite sheet mà bạn muốn đưa vào hoạt ảnh. Chúng ta sẽ chọn bốn khung hình trên cùng, sau đó nhấp vào "Add 4 frames" để tạo hoạt ảnh.
 
 .. image:: img/2d_animation_spritesheet_selectframes.webp
 
-You will now see your animation under the list of animations in the bottom panel.
-Double click on default to change the name of the animation to jump.
+Bây giờ bạn sẽ thấy hoạt ảnh của mình trong danh sách các hoạt ảnh ở bảng điều khiển phía dưới. Nhấp đúp vào default để đổi tên hoạt ảnh thành jump.
 
 .. image:: img/2d_animation_spritesheet_animation.webp
 
-Finally, check the play button on the SpriteFrames editor to see your frog jump!
+Cuối cùng, nhấp vào nút phát trong trình chỉnh sửa SpriteFrames để xem chú ếch của bạn nhảy!
 
 .. image:: img/2d_animation_play_spritesheet_animation.webp
 
 
-Sprite sheet with AnimationPlayer
----------------------------------
+Sprite sheet với AnimationPlayer
+--------------------------------
 
-Another way that you can animate when using a sprite sheet is to use a standard
+Một cách khác để tạo hoạt ảnh khi sử dụng sprite sheet là dùng một
 :ref:`Sprite2D <class_Sprite2D>` node to display the texture, and then animating the
-change from texture to texture with :ref:`AnimationPlayer <class_AnimationPlayer>`.
+cách chuyển từ texture này sang texture khác với :ref:`AnimationPlayer <class_AnimationPlayer>`.
 
-Consider this sprite sheet, which contains 6 frames of animation:
+Hãy xem xét sprite sheet này, chứa 6 khung hình hoạt ảnh:
 
 .. image:: img/2d_animation_player-run.png
 
-Right-click the image and choose "Save Image As" to download, then copy the
-image into your project folder.
+Nhấp chuột phải vào hình ảnh và chọn "Save Image As" để tải xuống, sau đó sao chép hình ảnh vào thư mục dự án của bạn.
 
-Our goal is to display these images one after another in a loop. Start by
-setting up your scene tree:
+Mục tiêu của chúng ta là lần lượt hiển thị các hình ảnh này theo một vòng lặp. Hãy bắt đầu bằng cách thiết lập cây cảnh:
 
 .. image:: img/2d_animation_tree2.webp
 
 .. note:: The root node could also be :ref:`Area2D <class_Area2D>` or
           :ref:`RigidBody2D <class_RigidBody2D>`. The animation will still be
-          made in the same way. Once the animation is completed, you can
-          assign a shape to the CollisionShape2D. See
+          được tạo theo cách tương tự. Sau khi hoàn tất hoạt ảnh, bạn có thể gán một hình dạng cho CollisionShape2D. Xem
           :ref:`Physics Introduction <doc_physics_introduction>` for more
-          information.
+          thông tin.
 
-Drag the spritesheet into the Sprite's *Texture* property, and you'll see the
-whole sheet displayed on the screen. To slice it up into individual frames,
-expand the *Animation* section in the Inspector and set the *Hframes* to ``6``.
-*Hframes* and *Vframes* are the number of horizontal and vertical frames in
-your sprite sheet.
+Kéo spritesheet vào thuộc tính *Texture* của Sprite, và bạn sẽ thấy toàn bộ sheet được hiển thị trên màn hình. Để cắt nó thành các khung hình riêng lẻ, hãy mở rộng phần *Animation* trong Inspector và đặt *Hframes* thành ``6``. *Hframes* và *Vframes* là số lượng khung hình theo chiều ngang và chiều dọc trong sprite sheet của bạn.
 
 .. image:: img/2d_animation_setframes.webp
 
-Now try changing the value of the *Frame* property. You'll see that it ranges
-from ``0`` to ``5`` and the image displayed by the Sprite2D changes accordingly.
-This is the property we'll be animating.
+Bây giờ hãy thử thay đổi giá trị của thuộc tính *Frame*. Bạn sẽ thấy giá trị này nằm trong khoảng từ ``0`` đến ``5``, và hình ảnh được Sprite2D hiển thị cũng thay đổi tương ứng. Đây là thuộc tính mà chúng ta sẽ tạo hoạt ảnh.
 
-Select the ``AnimationPlayer`` and click the "Animation" button followed by
-"New". Name the new animation "walk". Set the animation length to ``0.6`` and
-click the "Loop" button so that our animation will repeat.
+Chọn ``AnimationPlayer`` và nhấp vào nút "Animation", sau đó chọn "New". Đặt tên cho hoạt ảnh mới là "walk". Đặt độ dài hoạt ảnh thành ``0.6`` và nhấp vào nút "Loop" để hoạt ảnh của chúng ta lặp lại.
 
 .. image:: img/2d_animation_new_animation.webp
 
-Now select the ``Sprite2D`` node and click the key icon to add a new track.
+Bây giờ chọn nút ``Sprite2D`` và nhấp vào biểu tượng khóa để thêm một track mới.
 
 .. image:: img/2d_animation_new_track.webp
 
-Continue adding frames at each point in the timeline (``0.1`` seconds by
-default), until you have all the frames from 0 to 5. You'll see the frames
-actually appearing in the animation track:
+Tiếp tục thêm các khung hình tại mỗi điểm trên dòng thời gian (mặc định là ``0.1`` giây), cho đến khi bạn có tất cả các khung hình từ 0 đến 5. Bạn sẽ thấy các khung hình thực sự xuất hiện trên track hoạt ảnh:
 
 .. image:: img/2d_animation_full_animation.webp
 
-Press "Play" on the animation to see how it looks.
+Nhấn "Play" trên hoạt ảnh để xem nó trông như thế nào.
 
 .. image:: img/2d_animation_running.gif
 
-Controlling an AnimationPlayer animation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Điều khiển hoạt ảnh AnimationPlayer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Like with AnimatedSprite2D, you can control the animation via code using
-the ``play()`` and ``stop()`` methods. Again, here is an example to play the
-animation while the right arrow key is held, and stop it when the key is
-released.
+Tương tự như với AnimatedSprite2D, bạn có thể điều khiển hoạt ảnh thông qua mã bằng các phương thức ``play()`` và ``stop()``. Một lần nữa, dưới đây là ví dụ để phát hoạt ảnh khi phím mũi tên phải được nhấn giữ và dừng khi thả phím.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -233,54 +163,22 @@ released.
 
     @onready var _animation_player = $AnimationPlayer
 
-    func _process(_delta):
-        if Input.is_action_pressed("ui_right"):
-            _animation_player.play("walk")
-        else:
-            _animation_player.stop()
+    func _process(_delta): if Input.is_action_pressed("ui_right"): _animation_player.play("walk") else: _animation_player.stop()
 
  .. code-tab:: csharp
 
     using Godot;
 
-    public partial class Character : CharacterBody2D
-    {
-        private AnimationPlayer _animationPlayer;
+    public partial class Character : CharacterBody2D { private AnimationPlayer _animationPlayer;
 
-        public override void _Ready()
-        {
-            _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-        }
+        public override void _Ready() { _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer"); }
 
-        public override void _Process(double delta)
-        {
-            if (Input.IsActionPressed("ui_right"))
-            {
-                _animationPlayer.Play("walk");
-            }
-            else
-            {
-                _animationPlayer.Stop();
-            }
-        }
-    }
+        public override void _Process(double delta) { if (Input.IsActionPressed("ui_right")) { _animationPlayer.Play("walk"); } else { _animationPlayer.Stop(); } } }
 
 .. note:: If updating both an animation and a separate property at once
-          (for example, a platformer may update the sprite's ``h_flip``/``v_flip``
-          properties when a character turns while starting a 'turning' animation),
-          it's important to keep in mind that ``play()`` isn't applied instantly.
-          Instead, it's applied the next time the :ref:`AnimationPlayer <class_AnimationPlayer>` is processed.
-          This may end up being on the next frame, causing a 'glitch' frame,
-          where the property change was applied, but the animation was not.
-          If this turns out to be a problem, after calling ``play()``, you can call ``advance(0)``
-          to update the animation immediately.
+          (ví dụ, một trò chơi platformer có thể cập nhật các thuộc tính ``h_flip``/``v_flip`` của sprite khi nhân vật xoay người trong lúc bắt đầu một hoạt ảnh 'turning'), điều quan trọng cần lưu ý là ``play()`` không được áp dụng ngay lập tức. Thay vào đó, nó được áp dụng vào lần tiếp theo :ref:`AnimationPlayer <class_AnimationPlayer>` được xử lý. Điều này có thể xảy ra ở khung hình tiếp theo, gây ra một khung hình 'glitch', trong đó thay đổi thuộc tính đã được áp dụng nhưng hoạt ảnh thì chưa. Nếu đây trở thành vấn đề, sau khi gọi ``play()``, bạn có thể gọi ``advance(0)`` để cập nhật hoạt ảnh ngay lập tức.
 
-Summary
+Tóm tắt
 -------
 
-These examples illustrate the two classes you can use in Godot for 2D animation.
-``AnimationPlayer`` is a bit more complex than ``AnimatedSprite2D``,
-but it provides additional functionality, since you can also
-animate other properties like position or scale.
-The class ``AnimationPlayer`` can also be used with an ``AnimatedSprite2D``.
-Experiment to see what works best for your needs.
+Các ví dụ này minh họa hai lớp mà bạn có thể sử dụng trong Godot để tạo hoạt ảnh 2D. ``AnimationPlayer`` phức tạp hơn một chút so với ``AnimatedSprite2D``, nhưng cung cấp thêm chức năng, vì bạn cũng có thể tạo hoạt ảnh cho các thuộc tính khác như vị trí hoặc tỷ lệ. Lớp ``AnimationPlayer`` cũng có thể được sử dụng với một ``AnimatedSprite2D``. Hãy thử nghiệm để xem cách nào phù hợp nhất với nhu cầu của bạn.

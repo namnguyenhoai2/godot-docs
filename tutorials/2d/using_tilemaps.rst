@@ -1,37 +1,23 @@
 .. _doc_using_tilemaps:
 
-Using TileMaps
-==============
+Sử dụng TileMap
+===============
 
 .. seealso::
 
-    This page assumes you have created or downloaded a TileSet already. If not,
-    please read :ref:`doc_using_tilesets` first as you will need a TileSet
-    to create a TileMap.
+    Trang này giả định rằng bạn đã tạo hoặc tải xuống một TileSet. Nếu chưa, trước tiên hãy đọc :ref:`doc_using_tilesets` vì bạn sẽ cần một TileSet để tạo TileMap.
 
-Introduction
-------------
+Giới thiệu
+----------
 
-A tilemap is a grid of tiles used to create a game's layout. There are several
-benefits to using :ref:`TileMapLayer <class_TileMapLayer>` nodes to design your levels.
-First, they make it possible to draw the layout by "painting" the tiles onto a
-grid, which is much faster than placing individual :ref:`Sprite2D <class_Sprite2D>`
-nodes one by one. Second, they allow for much larger levels because they are
-optimized for drawing large numbers of tiles. Finally, you can add collision,
-occlusion, and navigation shapes to tiles, adding greater functionality to
-the TileMap.
+Tilemap là một lưới các ô được sử dụng để tạo bố cục của trò chơi. Có một số lợi ích khi sử dụng các node :ref:`TileMapLayer <class_TileMapLayer>` để thiết kế màn chơi. Thứ nhất, chúng cho phép vẽ bố cục bằng cách "tô" các ô lên lưới, nhanh hơn nhiều so với việc đặt từng node :ref:`Sprite2D <class_Sprite2D>` riêng lẻ. Thứ hai, chúng cho phép tạo các màn chơi lớn hơn nhiều vì được tối ưu hóa để vẽ số lượng lớn các ô. Cuối cùng, bạn có thể thêm các hình dạng va chạm, che khuất và điều hướng vào các ô, giúp TileMap có thêm nhiều chức năng hơn.
 
-Specifying the TileSet in the TileMapLayer
-------------------------------------------
+Chỉ định TileSet trong TileMapLayer
+-----------------------------------
 
-If you've followed the previous page on :ref:`doc_using_tilesets`, you should
-have a TileSet resource that is built into the TileMapLayer node. This is good for
-prototyping, but in a real world project, you will generally have multiple
-levels reusing the same tileset.
+Nếu bạn đã làm theo trang trước về :ref:`doc_using_tilesets`, bạn sẽ có một tài nguyên TileSet được tích hợp trong node TileMapLayer. Điều này phù hợp cho việc tạo nguyên mẫu, nhưng trong một dự án thực tế, nhìn chung bạn sẽ có nhiều màn chơi cùng sử dụng một tileset.
 
-The recommended way to reuse the same TileSet in several TileMapLayer nodes is to save
-the TileSet to an external resource. To do so, click the dropdown next to the TileSet
-resource and choose **Save**:
+Cách được khuyến nghị để sử dụng lại cùng một TileSet trong nhiều node TileMapLayer là lưu TileSet thành một tài nguyên bên ngoài. Để thực hiện việc này, hãy nhấp vào danh sách thả xuống bên cạnh tài nguyên TileSet và chọn **Save**:
 
 .. figure:: img/using_tilemaps_save_tileset_to_resource.webp
    :align: center
@@ -39,76 +25,52 @@ resource and choose **Save**:
 
    Saving the built-in TileSet resource to an external resource file
 
-Multiple TileMapLayers and settings
+Nhiều TileMapLayer và các thiết lập
 -----------------------------------
 
-When working with tilemaps it's generally advised that you use multiple TileMapLayer
-nodes when appropriate. Using multiple layers can be advantageous, for example,
-this allows you to distinguish foreground tiles from background tiles for better
-organization. You can place one tile per layer at a given location, which allows you
-to overlap several tiles together if you have more than one layer.
+Khi làm việc với tilemap, nhìn chung bạn nên sử dụng nhiều node TileMapLayer khi thích hợp. Việc sử dụng nhiều layer có thể mang lại lợi ích; chẳng hạn, điều này cho phép bạn phân biệt các ô tiền cảnh với các ô hậu cảnh để tổ chức tốt hơn. Bạn có thể đặt một ô trên mỗi layer tại một vị trí nhất định, cho phép chồng nhiều ô lên nhau nếu bạn có nhiều hơn một layer.
 
-Each TileMapLayer node has several properties you can adjust:
+Mỗi node TileMapLayer có một số thuộc tính mà bạn có thể điều chỉnh:
 
-- **Enabled:** If ``true``, the layer is visible in the editor and when running
-  the project.
-- **TileSet** The tileset used by the TileMapLayer node.
+- **Enabled:** Nếu ``true``, layer sẽ hiển thị trong trình chỉnh sửa và khi chạy dự án. - **TileSet** Tileset được node TileMapLayer sử dụng.
 
-Rendering
-~~~~~~~~~
+Kết xuất
+~~~~~~~~
 
-- **Y Sort Origin:** The vertical offset to use for Y-sorting on each tile (in pixels).
-  Only effective if **Y Sort Enabled** under CanvasItem settings is ``true``.
-- **X Draw Order Reversed** Reverses the order tiles are drawn on the X axis. Requires
-  that **Y Sort Enabled** under CanvasItem settings is ``true``.
-- **Rendering Quadrant Size** A quadrant is a group of tiles drawn together on a single
-  CanvasItem for optimization purposes. This setting defines the length of a square's
-  side in the map's coordinate system. The quadrant size does not apply to a Y sorted
-  TileMapLayer since tiles are grouped by Y position in that case.
+- **Y Sort Origin:** Độ lệch theo chiều dọc được sử dụng để sắp xếp theo Y trên mỗi ô (tính bằng pixel). Chỉ có hiệu lực nếu **Y Sort Enabled** trong các thiết lập CanvasItem là ``true``. - **X Draw Order Reversed** Đảo ngược thứ tự vẽ các ô trên trục X. Yêu cầu **Y Sort Enabled** trong các thiết lập CanvasItem là ``true``. - **Rendering Quadrant Size** Một quadrant là một nhóm các ô được vẽ cùng nhau trên một CanvasItem duy nhất nhằm mục đích tối ưu hóa. Thiết lập này xác định độ dài cạnh của một hình vuông trong hệ tọa độ của bản đồ. Kích thước quadrant không áp dụng cho TileMapLayer được sắp xếp theo Y vì trong trường hợp đó, các ô được nhóm theo vị trí Y.
 
-Physics
-~~~~~~~
-- **Collision Enabled** Enables or disables collision.
-- **Use Kinematic Bodies** When true TileMapLayer collision shapes will be instantiated
-  as kinematic bodies.
-- **Collision Visibility Mode** Whether or not the TileMapLayer's collision shapes are
-  visible. If set to default, then it depends on the show collision debug settings.
+Vật lý
+~~~~~~
+- **Collision Enabled** Bật hoặc tắt va chạm. - **Use Kinematic Bodies** Khi là true, các hình dạng va chạm của TileMapLayer sẽ được khởi tạo dưới dạng các vật thể động học. - **Collision Visibility Mode** Xác định các hình dạng va chạm của TileMapLayer có hiển thị hay không. Nếu đặt thành mặc định, điều này phụ thuộc vào các thiết lập gỡ lỗi hiển thị va chạm.
 
-Navigation
+Điều hướng
 ~~~~~~~~~~
 
-- **Navigation Enabled** Whether or not navigation regions are enabled.
-- **Navigation Visible** Whether or not the TileMapLayer's navigation meshes are
-  visible. If set to default then it depends on the show navigation debug settings.
+- **Navigation Enabled** Xác định các vùng điều hướng có được bật hay không. - **Navigation Visible** Xác định các lưới điều hướng của TileMapLayer có hiển thị hay không. Nếu đặt thành mặc định, điều này phụ thuộc vào các thiết lập gỡ lỗi hiển thị điều hướng.
 
 .. tip::
 
-    TileMap built-in navigation has many practical limitations that result in inferior pathfinding performance and pathfollowing quality.
+    Điều hướng tích hợp của TileMap có nhiều hạn chế thực tế, dẫn đến hiệu suất tìm đường và chất lượng bám theo đường đi kém hơn.
 
-    After designing the TileMap consider baking it to a more optimized navigation mesh (and disabling the TileMap NavigationLayer) using a :ref:`NavigationRegion2D <class_NavigationRegion2D>` or the :ref:`NavigationServer2D <class_NavigationServer2D>`. See :ref:`doc_navigation_using_navigationmeshes` for additional information.
+    Sau khi thiết kế TileMap, hãy cân nhắc việc nướng nó thành một lưới điều hướng được tối ưu hóa hơn (và tắt TileMap NavigationLayer) bằng cách sử dụng một :ref:`NavigationRegion2D <class_NavigationRegion2D>` hoặc :ref:`NavigationServer2D <class_NavigationServer2D>`. Xem :ref:`doc_navigation_using_navigationmeshes` để biết thêm thông tin.
 
 .. warning::
 
-    2D navigation meshes can not be "layered" or stacked on top of each other like visuals or physics shapes. Attempting to stack navigation meshes on the same navigation map will result in merge and logical errors that break the pathfinding.
+    Các lưới điều hướng 2D không thể được "xếp lớp" hoặc chồng lên nhau như hình ảnh hoặc hình dạng vật lý. Việc cố gắng chồng các lưới điều hướng trên cùng một bản đồ điều hướng sẽ dẫn đến các lỗi hợp nhất và logic làm hỏng quá trình tìm đường.
 
-Reordering layers
-~~~~~~~~~~~~~~~~~
+Sắp xếp lại các layer
+~~~~~~~~~~~~~~~~~~~~~
 
-You can reorder layers by drag-and-dropping their node in the Scene tab. You can
-also switch between which TileMapLayer node you're working on by using the buttons
-in the top right corner of the TileMap editor.
+Bạn có thể sắp xếp lại các layer bằng cách kéo và thả node của chúng trong tab Scene. Bạn cũng có thể chuyển đổi giữa các node TileMapLayer mà mình đang làm việc bằng các nút ở góc trên bên phải của trình chỉnh sửa TileMap.
 
 .. note::
 
-    You can create, rename or reorder layers in the future without affecting
-    existing tiles. Be careful though, as *removing* a layer will also remove
-    all tiles that were placed on the layer.
+    Bạn có thể tạo, đổi tên hoặc sắp xếp lại các layer trong tương lai mà không ảnh hưởng đến các ô hiện có. Tuy nhiên, hãy cẩn thận vì *xóa* một layer cũng sẽ xóa tất cả các ô đã được đặt trên layer đó.
 
-Opening the TileMap editor
+Mở trình chỉnh sửa TileMap
 --------------------------
 
-Select the TileMapLayer node, then open the TileMap panel at the bottom
-of the editor:
+Chọn node TileMapLayer, sau đó mở bảng TileMap ở cuối trình chỉnh sửa:
 
 .. figure:: img/using_tilemaps_open_tilemap_editor.webp
    :align: center
@@ -116,11 +78,10 @@ of the editor:
 
    Opening the TileMap panel at the bottom of the editor. The TileMapLayer node must be selected first.
 
-Selecting tiles to use for painting
------------------------------------
+Chọn các ô để sử dụng khi tô
+----------------------------
 
-First, if you've created additional layers above, make sure you've selected the
-layer you wish to paint on:
+Trước tiên, nếu bạn đã tạo thêm các layer, hãy đảm bảo rằng bạn đã chọn layer muốn tô lên:
 
 .. figure:: img/using_tilemaps_select_layer.webp
    :align: center
@@ -130,17 +91,11 @@ layer you wish to paint on:
 
 .. tip::
 
-    In the 2D editor, the layers you aren't currently editing from the same
-    TileMapLayer node will appear grayed out while in the TileMap editor. You can
-    disable this behavior by clicking the icon next to the layer selection menu
-    (**Highlight Selected TileMap Layer** tooltip).
+    Trong trình chỉnh sửa 2D, các layer mà bạn hiện không chỉnh sửa từ cùng một node TileMapLayer sẽ hiển thị mờ đi khi ở trong trình chỉnh sửa TileMap. Bạn có thể tắt hành vi này bằng cách nhấp vào biểu tượng bên cạnh menu chọn layer (chú giải công cụ **Highlight Selected TileMap Layer**).
 
-You can skip the above step if you haven't created additional layers, as the
-first layer is automatically selected when entering the TileMap editor.
+Bạn có thể bỏ qua bước trên nếu chưa tạo thêm layer, vì layer đầu tiên sẽ tự động được chọn khi vào trình chỉnh sửa TileMap.
 
-Before you can place tiles in the 2D editor, you must select one or more tiles
-in the TileMap panel located at the bottom of the editor. To do so, click a tile
-in the TileMap panel, or hold down the mouse button to select multiple tiles:
+Trước khi có thể đặt các ô trong trình chỉnh sửa 2D, bạn phải chọn một hoặc nhiều ô trong bảng TileMap ở cuối trình chỉnh sửa. Để thực hiện việc này, hãy nhấp vào một ô trong bảng TileMap hoặc giữ nút chuột để chọn nhiều ô:
 
 .. figure:: img/using_tilemaps_select_single_tile_from_tileset.webp
    :align: center
@@ -150,18 +105,11 @@ in the TileMap panel, or hold down the mouse button to select multiple tiles:
 
 .. tip::
 
-    Like in the 2D and TileSet editors, you can pan across the TileMap panel using
-    the middle or right mouse buttons, and zoom using the mouse wheel or buttons in
-    the top-left corner.
+    Tương tự như trong trình chỉnh sửa 2D và TileSet, bạn có thể di chuyển vùng nhìn trong bảng TileMap bằng nút chuột giữa hoặc phải, và thu phóng bằng con lăn chuột hoặc các nút ở góc trên bên trái.
 
-You can also hold down :kbd:`Shift` to append to the current selection. When
-selecting more than one tile, multiple tiles will be placed every time you
-perform a painting operation. This can be used to paint structures composed of
-multiple tiles in a single click (such as large platforms or trees).
+Bạn cũng có thể giữ :kbd:`Shift` để thêm vào vùng chọn hiện tại. Khi chọn nhiều hơn một ô, nhiều ô sẽ được đặt mỗi khi bạn thực hiện thao tác tô. Điều này có thể được dùng để tô các cấu trúc gồm nhiều ô chỉ bằng một lần nhấp (chẳng hạn như các nền tảng lớn hoặc cây cối).
 
-The final selection does not have to be contiguous: if there is empty space
-between selected tiles, it will be left empty in the pattern that will be
-painted in the 2D editor.
+Vùng chọn cuối cùng không nhất thiết phải liền nhau: nếu có khoảng trống giữa các ô đã chọn, khoảng trống đó sẽ được giữ nguyên trong mẫu được tô trong trình chỉnh sửa 2D.
 
 .. figure:: img/using_tilemaps_select_multiple_tiles_from_tileset.webp
    :align: center
@@ -169,8 +117,7 @@ painted in the 2D editor.
 
    Selecting multiple tiles in the TileMap editor by holding down the left mouse button
 
-If you've created alternative tiles in your TileSet, you can select them for
-painting on the right of the base tiles:
+Nếu bạn đã tạo các ô thay thế trong TileSet, bạn có thể chọn chúng để tô ở bên phải các ô cơ sở:
 
 .. figure:: img/using_tilemaps_use_alternative_tile.webp
    :align: center
@@ -178,7 +125,7 @@ painting on the right of the base tiles:
 
    Selecting an alternative tile in the TileMap editor
 
-Lastly, if you've created a *scenes collection* in the TileSet, you can place scene tiles in the TileMap:
+Cuối cùng, nếu bạn đã tạo một *scenes collection* trong TileSet, bạn có thể đặt các ô cảnh trong TileMap:
 
 .. figure:: img/using_tilemaps_placing_scene_tiles.webp
    :align: center
@@ -186,82 +133,59 @@ Lastly, if you've created a *scenes collection* in the TileSet, you can place sc
 
    Placing a scene tile containing particles using the TileMap editor
 
-Painting modes and tools
+Các chế độ và công cụ tô
 ------------------------
 
-Using the toolbar at the top of the TileMap editor, you can choose between
-several painting modes and tools. These modes affect operation when clicking in
-the 2D editor, **not** the TileMap panel itself.
+Bằng thanh công cụ ở đầu trình chỉnh sửa TileMap, bạn có thể chọn giữa nhiều chế độ và công cụ tô. Các chế độ này ảnh hưởng đến thao tác khi nhấp trong trình chỉnh sửa 2D, **không phải** chính bảng TileMap.
 
-From left to right, the painting modes and tools you can choose are:
+Từ trái sang phải, các chế độ và công cụ tô bạn có thể chọn là:
 
-Selection
-~~~~~~~~~
-
-Select tiles by clicking a single tile, or by holding down the left mouse button to
-select multiple with a rectangle in the 2D editor. Note that empty space cannot be
-selected: if you create a rectangle selection, only non-empty tiles will be selected.
-
-To append to the current selection, hold :kbd:`Shift` then select a tile.
-To remove from the current selection, hold :kbd:`Ctrl` then select a tile.
-
-The selection can then be used in any other painting mode to quickly create copies
-of an already-placed pattern.
-
-You can remove the selected tiles from the TileMap by pressing :kbd:`Del`.
-
-You can toggle this mode temporarily while in Paint mode by holding :kbd:`Ctrl`
-then performing a selection.
-
-.. tip::
-
-    You can copy and paste tiles that were already placed by performing a
-    selection, pressing :kbd:`Ctrl + C` then pressing :kbd:`Ctrl + V`.
-    The selection will be pasted after left-clicking. You can press
-    :kbd:`Ctrl + V` another time to perform more pastes this way.
-    Right-click or press :kbd:`Escape` to cancel pasting.
-
-Paint
-~~~~~
-
-The standard Paint mode allows you to place tiles by clicking or holding
-down the left mouse button.
-
-If you right-click, the currently selected tile will be erased from the tilemap.
-In other words, it will be replaced by empty space.
-
-If you have selected multiple tiles in the TileMap or using the Selection tool,
-they will be placed every time you click or drag the mouse while holding down
-the left mouse button.
-
-.. tip::
-
-    While in Paint mode, you can draw a line by holding :kbd:`Shift` *before*
-    holding down the left mouse button, then dragging the mouse to the line's end
-    point. This is identical to using the Line tool described below.
-
-    You can also draw a rectangle by holding :kbd:`Ctrl` and :kbd:`Shift`
-    *before* holding down the left mouse button, then dragging the mouse to the
-    rectangle's end point. This is identical to using the Rectangle tool
-    described below.
-
-    Lastly, you can pick existing tiles in the 2D editor by holding :kbd:`Ctrl`
-    then clicking on a tile (or holding and dragging the mouse).
-    This will switch the currently painted tile(s) to the tile(s) you've just clicked.
-    This is identical to using the Picker tool described below.
-
-Line
+Chọn
 ~~~~
 
-After selecting Line Paint mode, you can draw in a line that is
-always 1 tile thick (no matter its orientation).
+Chọn các ô bằng cách nhấp vào một ô hoặc giữ nút chuột trái để chọn nhiều ô bằng một hình chữ nhật trong trình chỉnh sửa 2D. Lưu ý rằng không thể chọn khoảng trống: nếu bạn tạo vùng chọn hình chữ nhật, chỉ các ô không trống mới được chọn.
 
-If you right-click while in Line Paint mode, you will erase in a line.
+Để thêm vào vùng chọn hiện tại, hãy giữ :kbd:`Shift` rồi chọn một ô. Để xóa khỏi vùng chọn hiện tại, hãy giữ :kbd:`Ctrl` rồi chọn một ô.
 
-If you have selected multiple tiles in the TileMap or using the Selection tool,
-you can place them in a repeating pattern across the line.
+Sau đó, bạn có thể sử dụng vùng chọn ở bất kỳ chế độ tô nào khác để nhanh chóng tạo các bản sao của một mẫu đã được đặt.
 
-You can toggle this mode temporarily while in Paint or Eraser mode by holding
+Bạn có thể xóa các ô đã chọn khỏi TileMap bằng cách nhấn :kbd:`Del`.
+
+Bạn có thể tạm thời bật chế độ này khi đang ở chế độ Paint bằng cách giữ :kbd:`Ctrl` rồi thực hiện thao tác chọn.
+
+.. tip::
+
+    Bạn có thể sao chép và dán các ô đã được đặt bằng cách thực hiện thao tác chọn, nhấn :kbd:`Ctrl + C` rồi nhấn :kbd:`Ctrl + V`. Vùng chọn sẽ được dán sau khi nhấp chuột trái. Bạn có thể nhấn
+    :kbd:`Ctrl + V` another time to perform more pastes this way.
+    Nhấp chuột phải hoặc nhấn :kbd:`Escape` để hủy thao tác dán.
+
+Tô
+~~~
+
+Chế độ Paint tiêu chuẩn cho phép bạn đặt các ô bằng cách nhấp hoặc giữ nút chuột trái.
+
+Nếu nhấp chuột phải, ô hiện đang được chọn sẽ bị xóa khỏi tilemap. Nói cách khác, ô đó sẽ được thay thế bằng khoảng trống.
+
+Nếu bạn đã chọn nhiều ô trong TileMap hoặc bằng công cụ Selection, chúng sẽ được đặt mỗi khi bạn nhấp hoặc kéo chuột trong khi giữ nút chuột trái.
+
+.. tip::
+
+    Trong chế độ Paint, bạn có thể vẽ một đường bằng cách giữ :kbd:`Shift` *trước khi* giữ nút chuột trái, sau đó kéo chuột đến điểm cuối của đường. Điều này giống hệt việc sử dụng công cụ Line được mô tả bên dưới.
+
+    Bạn cũng có thể vẽ một hình chữ nhật bằng cách giữ :kbd:`Ctrl` và :kbd:`Shift` *trước khi* giữ nút chuột trái, sau đó kéo chuột đến điểm cuối của hình chữ nhật. Điều này giống hệt việc sử dụng công cụ Rectangle được mô tả bên dưới.
+
+    Cuối cùng, bạn có thể chọn các ô hiện có trong trình chỉnh sửa 2D bằng cách giữ :kbd:`Ctrl` rồi nhấp vào một ô (hoặc giữ và kéo chuột). Thao tác này sẽ chuyển các ô đang được tô thành các ô bạn vừa nhấp. Điều này giống hệt việc sử dụng công cụ Picker được mô tả bên dưới.
+
+Đường
+~~~~~
+
+Sau khi chọn chế độ Line Paint, bạn có thể vẽ một đường luôn dày 1 ô (bất kể hướng của đường).
+
+Nếu nhấp chuột phải khi đang ở chế độ Line Paint, bạn sẽ xóa theo một đường.
+
+Nếu bạn đã chọn nhiều ô trong TileMap hoặc bằng công cụ Selection, bạn có thể đặt chúng theo một mẫu lặp lại dọc theo đường.
+
+Bạn có thể tạm thời bật chế độ này khi đang ở chế độ Paint hoặc Eraser bằng cách giữ
 :kbd:`Shift` then drawing.
 
 .. figure:: img/using_tilesets_line_tool_multiple_tiles.webp
@@ -270,42 +194,30 @@ You can toggle this mode temporarily while in Paint or Eraser mode by holding
 
    Using the line tool after selecting two tiles to draw platforms diagonally
 
-Rectangle
-~~~~~~~~~
+Hình chữ nhật
+~~~~~~~~~~~~~
 
-After selecting Rectangle Paint mode, you can draw in an axis-aligned
-rectangle.
+Sau khi chọn chế độ Vẽ hình chữ nhật, bạn có thể vẽ trong một hình chữ nhật thẳng trục.
 
-If you right-click while in Rectangle Paint mode, you will erase in
-an axis-aligned rectangle.
+Nếu nhấp chuột phải khi đang ở chế độ Vẽ hình chữ nhật, bạn sẽ xóa trong một hình chữ nhật thẳng trục.
 
-If you have selected multiple tiles in the TileMap or using the Selection tool,
-you can place them in a repeating pattern within the rectangle.
+Nếu đã chọn nhiều ô trong TileMap hoặc bằng công cụ Selection, bạn có thể đặt chúng theo một mẫu lặp lại trong hình chữ nhật.
 
-You can toggle this mode temporarily while in Paint or Eraser mode by holding
+Bạn có thể tạm thời chuyển sang chế độ này khi đang ở chế độ Paint hoặc Eraser bằng cách giữ
 :kbd:`Ctrl` and :kbd:`Shift` then drawing.
 
 Bucket Fill
 ~~~~~~~~~~~
 
-After selecting Bucket Fill mode, you can choose whether painting should be
-limited to contiguous areas only by toggling the **Contiguous** checkbox that
-appears on the right of the toolbar.
+Sau khi chọn chế độ Bucket Fill, bạn có thể chọn giới hạn việc vẽ chỉ trong các khu vực liên thông bằng cách bật hoặc tắt hộp kiểm **Contiguous** xuất hiện ở bên phải thanh công cụ.
 
-If you enable **Contiguous** (the default), only matching tiles that touch the
-current selection will be replaced. This contiguous check is performed
-horizontally and vertically, but *not* diagonally.
+Nếu bật **Contiguous** (mặc định), chỉ các ô khớp chạm vào vùng chọn hiện tại mới được thay thế. Kiểm tra tính liên thông này được thực hiện theo chiều ngang và chiều dọc, nhưng *không* theo đường chéo.
 
-If you disable **Contiguous**, all tiles with the same ID in the entire TileMap will
-be replaced by the currently selected tile. If selecting an empty tile with
-**Contiguous** unchecked, all tiles in the rectangle that encompasses the
-TileMap's effective area will be replaced instead.
+Nếu tắt **Contiguous**, tất cả các ô có cùng ID trong toàn bộ TileMap sẽ được thay thế bằng ô hiện được chọn. Nếu chọn một ô trống khi **Contiguous** đang tắt, tất cả các ô trong hình chữ nhật bao quanh vùng hiệu dụng của TileMap sẽ được thay thế.
 
-If you right-click while in Bucket Fill mode, you will replace matching tiles
-with empty tiles.
+Nếu nhấp chuột phải khi đang ở chế độ Bucket Fill, bạn sẽ thay thế các ô khớp bằng ô trống.
 
-If you have selected multiple tiles in the TileMap or using the Selection tool,
-you can place them in a repeating pattern within the filled area.
+Nếu đã chọn nhiều ô trong TileMap hoặc bằng công cụ Selection, bạn có thể đặt chúng theo một mẫu lặp lại trong vùng đã tô.
 
 .. figure:: img/using_tilemaps_bucket_fill.webp
    :align: center
@@ -316,40 +228,25 @@ you can place them in a repeating pattern within the filled area.
 Picker
 ~~~~~~
 
-After selecting Picker mode, you can pick existing tiles in the 2D editor by
-holding :kbd:`Ctrl` then clicking on a tile. This will switch the currently
-painted tile to the tile you've just clicked. You can also pick multiple tiles
-at once by holding down the left mouse button and forming a rectangle selection.
-Only non-empty tiles can be picked.
+Sau khi chọn chế độ Picker, bạn có thể chọn các ô hiện có trong trình chỉnh sửa 2D bằng cách giữ :kbd:`Ctrl` rồi nhấp vào một ô. Thao tác này sẽ chuyển ô đang được vẽ thành ô bạn vừa nhấp vào. Bạn cũng có thể chọn nhiều ô cùng lúc bằng cách giữ nút chuột trái và tạo vùng chọn hình chữ nhật. Chỉ các ô không trống mới có thể được chọn.
 
-You can toggle this mode temporarily while in Paint mode by holding :kbd:`Ctrl`
-then clicking or dragging the mouse.
+Bạn có thể tạm thời chuyển sang chế độ này khi đang ở chế độ Paint bằng cách giữ :kbd:`Ctrl` rồi nhấp hoặc kéo chuột.
 
 Eraser
 ~~~~~~
 
-This mode is combined with any other painting mode (Paint, Line, Rectangle,
-Bucket Fill). When eraser mode is enabled, tiles will be replaced by empty tiles
-instead of drawing new lines when left-clicking.
+Chế độ này được kết hợp với mọi chế độ vẽ khác (Paint, Line, Rectangle, Bucket Fill). Khi bật chế độ Eraser, các ô sẽ được thay thế bằng ô trống thay vì vẽ các đường mới khi nhấp chuột trái.
 
-You can toggle this mode temporarily while in any other mode by right-clicking
-instead of left-clicking.
+Bạn có thể tạm thời chuyển sang chế độ này khi đang ở bất kỳ chế độ nào khác bằng cách nhấp chuột phải thay vì nhấp chuột trái.
 
-Painting randomly using scattering
-----------------------------------
+Vẽ ngẫu nhiên bằng cách rải
+---------------------------
 
-While painting, you can optionally enable *randomization*. When enabled,
-a random tile will be chosen between all the currently selected tiles when
-painting. This is supported with the Paint, Line, Rectangle and Bucket Fill
-tools. For effective paint randomization, you must select multiple tiles
-in the TileMap editor or use scattering (both approaches can be combined).
+Trong khi vẽ, bạn có thể tùy chọn bật tính năng *ngẫu nhiên hóa*. Khi được bật, một ô ngẫu nhiên sẽ được chọn trong số tất cả các ô hiện đang được chọn khi vẽ. Tính năng này được hỗ trợ với các công cụ Paint, Line, Rectangle và Bucket Fill. Để việc ngẫu nhiên hóa khi vẽ có hiệu quả, bạn phải chọn nhiều ô trong trình chỉnh sửa TileMap hoặc sử dụng tính năng rải (có thể kết hợp cả hai cách).
 
-If **Scattering** is set to a value greater than 0, there is a chance that no tile
-will be placed when painting. This can be used to add occasional, non-repeating
-detail to large areas (such as adding grass or crumbs on a large top-down
-TileMap).
+Nếu **Scattering** được đặt thành giá trị lớn hơn 0, sẽ có khả năng không có ô nào được đặt khi vẽ. Tính năng này có thể được dùng để thêm các chi tiết không lặp lại, xuất hiện không thường xuyên vào những khu vực lớn (chẳng hạn như thêm cỏ hoặc vụn bánh mì trên một TileMap nhìn từ trên xuống lớn).
 
-Example when using Paint mode:
+Ví dụ khi sử dụng chế độ Paint:
 
 .. figure:: img/using_tilemaps_scatter_tiles.webp
    :align: center
@@ -357,7 +254,7 @@ Example when using Paint mode:
 
    Selecting from several times to randomly choose, then painting by holding down the left mouse button
 
-Example when using Bucket Fill mode:
+Ví dụ khi sử dụng chế độ Bucket Fill:
 
 .. figure:: img/using_tilemaps_bucket_fill_scatter.webp
    :align: center
@@ -367,19 +264,16 @@ Example when using Bucket Fill mode:
 
 .. note::
 
-    Eraser mode does not take randomization and scattering into account.
-    All tiles within the selection are always removed.
+    Chế độ Eraser không tính đến tính năng ngẫu nhiên hóa và rải. Tất cả các ô trong vùng chọn luôn bị xóa.
 
-Saving and loading premade tile placements using patterns
----------------------------------------------------------
+Lưu và tải các vị trí ô được tạo sẵn bằng các mẫu
+-------------------------------------------------
 
-While you can copy and paste tiles while in Select mode, you may wish to save
-premade *patterns* of tiles to place together in a go. This can be done on a
-per-TileMap basis by choosing the **Patterns** tab of the TileMap editor.
+Mặc dù bạn có thể sao chép và dán các ô khi ở chế độ Select, bạn có thể muốn lưu các *mẫu* ô được tạo sẵn để đặt chúng cùng lúc. Bạn có thể thực hiện việc này cho từng TileMap bằng cách chọn thẻ **Patterns** trong trình chỉnh sửa TileMap.
 
-To create a new pattern, switch to Select mode, perform a selection and press
+Để tạo một mẫu mới, chuyển sang chế độ Select, thực hiện việc chọn và nhấn
 :kbd:`Ctrl + C`. Click on empty space within the Patterns tab (a blue focus
-rectangle should appear around the empty space), then press :kbd:`Ctrl + V`:
+một hình chữ nhật sẽ xuất hiện quanh khoảng trống), sau đó nhấn :kbd:`Ctrl + V`:
 
 .. figure:: img/using_tilemaps_create_pattern.webp
    :align: center
@@ -387,8 +281,7 @@ rectangle should appear around the empty space), then press :kbd:`Ctrl + V`:
 
    Creating a new pattern from a selection in the TileMap editor
 
-To use an existing pattern, click its image in the **Patterns** tab, switch to
-any painting mode, then left-click somewhere in the 2D editor:
+Để sử dụng một mẫu hiện có, hãy nhấp vào hình ảnh của mẫu trong thẻ **Patterns**, chuyển sang bất kỳ chế độ vẽ nào, sau đó nhấp chuột trái vào một vị trí bất kỳ trong trình chỉnh sửa 2D:
 
 .. figure:: img/using_tilemaps_use_pattern.webp
    :align: center
@@ -396,36 +289,24 @@ any painting mode, then left-click somewhere in the 2D editor:
 
    Placing an existing pattern using the TileMap editor
 
-Like multi-tile selections, patterns will be repeated if used with the Line,
-Rectangle or Bucket Fill painting modes.
+Giống như các vùng chọn nhiều ô, các mẫu sẽ được lặp lại nếu được sử dụng với các chế độ vẽ Line, Rectangle hoặc Bucket Fill.
 
 .. note::
 
-    Despite being edited in the TileMap editor, patterns are stored in the
-    TileSet resource. This allows reusing patterns in different TileMapLayer nodes
-    after loading a TileSet resource saved to an external file.
+    Mặc dù được chỉnh sửa trong trình chỉnh sửa TileMap, các mẫu được lưu trong tài nguyên TileSet. Điều này cho phép tái sử dụng các mẫu trong những node TileMapLayer khác sau khi tải một tài nguyên TileSet được lưu vào một tệp bên ngoài.
 
-Handling tile connections automatically using terrains
-------------------------------------------------------
+Tự động xử lý kết nối giữa các ô bằng terrain
+---------------------------------------------
 
-To use terrains, the TileMapLayer node must feature at least one terrain set and a
-terrain within this terrain set. See
+Để sử dụng terrain, node TileMapLayer phải có ít nhất một terrain set và một terrain bên trong terrain set này. Xem
 :ref:`doc_using_tilesets_creating_terrain_sets` if you haven't created a terrain
-set for the TileSet yet.
+set cho TileSet.
 
-There are 3 kinds of painting modes available for terrain connections:
+Có 3 loại chế độ vẽ khả dụng cho các kết nối terrain:
 
-- **Connect**, where tiles are connected to surrounding tiles on the same
-  TileMapLayer.
-- **Path**, where tiles are connected to tiles painted in the same stroke (until
-  the mouse button is released).
-- Tile-specific overrides to resolve conflicts or handle situations not covered
-  by the terrain system.
+- **Connect**, trong đó các ô được kết nối với những ô xung quanh trên cùng TileMapLayer. - **Path**, trong đó các ô được kết nối với những ô được vẽ trong cùng một nét vẽ (cho đến khi thả nút chuột). - Các ghi đè dành riêng cho từng ô để giải quyết xung đột hoặc xử lý những tình huống không được hệ thống terrain đề cập.
 
-The Connect mode is easier to use, but Path is more flexible as it allows for
-more artist control during painting. For instance, Path can allow roads to be
-directly adjacent to each other without being connected to each other, while
-Connect will force both roads to be connected.
+Chế độ Connect dễ sử dụng hơn, nhưng Path linh hoạt hơn vì cho phép nghệ sĩ kiểm soát nhiều hơn trong quá trình vẽ. Chẳng hạn, Path có thể cho phép các con đường nằm ngay sát nhau mà không kết nối với nhau, trong khi Connect sẽ buộc cả hai con đường phải được kết nối.
 
 .. figure:: img/using_tilemaps_terrain_select_connect_mode.webp
    :align: center
@@ -439,8 +320,7 @@ Connect will force both roads to be connected.
 
    Selecting Path mode in the TileMap editor's Terrains tab
 
-Lastly, you can select specific tiles from the terrain to resolve conflicts in
-certain situations:
+Cuối cùng, bạn có thể chọn các ô cụ thể từ terrain để giải quyết xung đột trong một số tình huống nhất định:
 
 .. figure:: img/using_tilemaps_terrain_paint_specific_tiles.webp
    :align: center
@@ -448,14 +328,12 @@ certain situations:
 
    Painting with specific tiles in the TileMap editor's Terrains tab
 
-Any tile that has at least one of its bits set to a value set to the
-corresponding terrain ID will appear in the list of tiles to choose from.
+Bất kỳ ô nào có ít nhất một bit được đặt thành giá trị tương ứng với terrain ID sẽ xuất hiện trong danh sách các ô để chọn.
 
-Handling missing tiles
-----------------------
+Xử lý các ô bị thiếu
+--------------------
 
-If you remove tiles in the TileSet that are referenced in a TileMap, the TileMap
-will display a placeholder to indicate that an invalid tile ID is placed:
+Nếu xóa các ô trong TileSet đang được tham chiếu trong một TileMap, TileMap sẽ hiển thị một phần giữ chỗ để cho biết rằng một tile ID không hợp lệ đã được đặt:
 
 .. figure:: img/using_tilemaps_missing_tiles.webp
    :align: center
@@ -463,12 +341,8 @@ will display a placeholder to indicate that an invalid tile ID is placed:
 
    Missing tiles in the TileMap editor due to the TileSet reference being broken
 
-These placeholders are **not** visible in the running project, but the tile data
-is still persisted to disk. This allows you to safely close and reopen such
-scenes. Once you re-add a tile with the matching ID, the tiles will appear with
-the new tile's appearance.
+Các phần giữ chỗ này **không** hiển thị trong dự án đang chạy, nhưng dữ liệu ô vẫn được lưu vào ổ đĩa. Điều này cho phép bạn đóng và mở lại các cảnh đó một cách an toàn. Khi thêm lại một ô có ID khớp, các ô sẽ hiển thị với hình thức của ô mới.
 
 .. note::
 
-    Missing tile placeholders may not be visible until you select the TileMapLayer
-    node and open the TileMap editor.
+    Các phần giữ chỗ cho ô bị thiếu có thể không hiển thị cho đến khi bạn chọn node TileMapLayer và mở trình chỉnh sửa TileMap.

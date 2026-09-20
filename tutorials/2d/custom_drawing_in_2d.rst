@@ -1,33 +1,23 @@
 .. _doc_custom_drawing_in_2d:
 
-Custom drawing in 2D
-====================
+Vẽ tùy chỉnh trong 2D
+=====================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Godot has nodes to draw sprites, polygons, particles, text, and many other
-common game development needs. However, if you need something specific
-not covered with the standard nodes you can make any 2D node (for example,
+Godot có các node để vẽ sprite, đa giác, hạt, văn bản và nhiều nhu cầu phát triển trò chơi phổ biến khác. Tuy nhiên, nếu bạn cần một thứ cụ thể không được hỗ trợ bởi các node tiêu chuẩn, bạn có thể khiến bất kỳ node 2D nào (ví dụ như
 :ref:`Control <class_Control>` or :ref:`Node2D <class_Node2D>`-based)
-draw on screen using custom commands.
+vẽ trên màn hình bằng các lệnh tùy chỉnh.
 
-Custom drawing in a 2D node is *really* useful. Here are some use cases:
+Vẽ tùy chỉnh trong một node 2D *thực sự* hữu ích. Sau đây là một số trường hợp sử dụng:
 
--  Drawing shapes or logic that existing nodes can't do, such as an image
-   with trails or a special animated polygon.
--  Drawing a large number of simple objects, such as a grid or a board
-   for a 2d game. Custom drawing avoids the overhead of using a large number
-   of nodes, possibly lowering memory usage and improving performance.
--  Making a custom UI control. There are plenty of controls available,
-   but when you have unusual needs, you will likely need a custom
-   control.
+-  Vẽ các hình dạng hoặc logic mà những node hiện có không thể thực hiện, chẳng hạn như một hình ảnh có vệt kéo dài hoặc một đa giác hoạt ảnh đặc biệt. - Vẽ một số lượng lớn các đối tượng đơn giản, chẳng hạn như lưới hoặc bàn cờ cho trò chơi 2D. Vẽ tùy chỉnh tránh được chi phí sử dụng một số lượng lớn node, có khả năng làm giảm mức sử dụng bộ nhớ và cải thiện hiệu suất. - Tạo một control UI tùy chỉnh. Có rất nhiều control có sẵn, nhưng khi bạn có các nhu cầu khác thường, rất có thể bạn sẽ cần một control tùy chỉnh.
 
-Drawing
--------
+Vẽ
+---
 
-Add a script to any :ref:`CanvasItem <class_CanvasItem>`
-derived node, like :ref:`Control <class_Control>` or
+Thêm một script vào bất kỳ node dẫn xuất từ :ref:`CanvasItem <class_CanvasItem>` nào, chẳng hạn như :ref:`Control <class_Control>` hoặc
 :ref:`Node2D <class_Node2D>`. Then override the
 :ref:`_draw()<class_CanvasItem_private_method__draw>` function.
 
@@ -36,1025 +26,578 @@ derived node, like :ref:`Control <class_Control>` or
 
     extends Node2D
 
-    func _draw():
-        pass  # Your draw commands here.
+    func _draw(): pass # Your draw commands here.
 
  .. code-tab:: csharp
 
     using Godot;
 
-    public partial class MyNode2D : Node2D
-    {
-        public override void _Draw()
-        {
-            // Your draw commands here.
-        }
-    }
+    public partial class MyNode2D : Node2D { public override void _Draw() { // Your draw commands here. } }
 
-Draw commands are described in the :ref:`CanvasItem <class_CanvasItem>`
-class reference. There are plenty of them and we will see some of them
-in the examples below.
+Các lệnh vẽ được mô tả trong tài liệu tham khảo lớp :ref:`CanvasItem <class_CanvasItem>`. Có rất nhiều lệnh và chúng ta sẽ xem một số lệnh trong các ví dụ dưới đây.
 
-Updating
+Cập nhật
 --------
 
-The :ref:`_draw <class_CanvasItem_private_method__draw>` function is only called
-once, and then the draw commands are cached and remembered, so further calls
-are unnecessary.
+Hàm :ref:`_draw <class_CanvasItem_private_method__draw>` chỉ được gọi một lần, sau đó các lệnh vẽ được lưu vào bộ nhớ đệm và ghi nhớ, vì vậy không cần gọi thêm lần nào nữa.
 
-If re-drawing is required because a variable or something else changed,
-call :ref:`CanvasItem.queue_redraw <class_CanvasItem_method_queue_redraw>`
-in that same node and a new ``_draw()`` call will happen.
+Nếu cần vẽ lại vì một biến hoặc thứ gì đó khác đã thay đổi, hãy gọi :ref:`CanvasItem.queue_redraw <class_CanvasItem_method_queue_redraw>` trong chính node đó và một lần gọi ``_draw()`` mới sẽ diễn ra.
 
-Here is a little more complex example, where we have a texture variable
-that can be modified at any time, and using a
+Sau đây là một ví dụ phức tạp hơn một chút, trong đó chúng ta có một biến texture có thể được sửa đổi bất kỳ lúc nào, và sử dụng một
 :ref:`setter<doc_gdscript_basics_setters_getters>`, it forces a redraw
-of the texture when modified:
+của texture khi texture được sửa đổi:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     extends Node2D
 
-    @export var texture : Texture2D:
-        set(value):
-            texture = value
-            queue_redraw()
+    @export var texture : Texture2D: set(value): texture = value queue_redraw()
 
-    func _draw():
-        draw_texture(texture, Vector2())
+    func _draw(): draw_texture(texture, Vector2())
 
  .. code-tab:: csharp
 
     using Godot;
 
-    public partial class MyNode2D : Node2D
-    {
-        private Texture2D _texture;
+    public partial class MyNode2D : Node2D { private Texture2D _texture;
 
-        [Export]
-        public Texture2D Texture
-        {
-            get
-            {
-                return _texture;
-            }
+        [Export] public Texture2D Texture { get { return _texture; }
 
-            set
-            {
-                _texture = value;
-                QueueRedraw();
-            }
-        }
+            set { _texture = value; QueueRedraw(); } }
 
-        public override void _Draw()
-        {
-            DrawTexture(_texture, new Vector2());
-        }
-    }
+        public override void _Draw() { DrawTexture(_texture, new Vector2()); } }
 
-To see it in action, you can set the texture to be the Godot icon on the
-editor by dragging and dropping the default ``icon.svg`` from the
-``FileSystem`` tab to the Texture property on the ``Inspector`` tab.
-When changing the ``Texture`` property value while the previous script is
-running, the texture will also change automatically.
+Để xem nó hoạt động, bạn có thể đặt texture thành biểu tượng Godot trong trình chỉnh sửa bằng cách kéo và thả ``icon.svg`` mặc định từ tab ``FileSystem`` vào thuộc tính Texture trong tab ``Inspector``. Khi thay đổi giá trị thuộc tính ``Texture`` trong lúc script trước đó đang chạy, texture cũng sẽ tự động thay đổi.
 
-In some cases, we may need to redraw every frame. For this,
-call :ref:`queue_redraw <class_CanvasItem_method_queue_redraw>`
-from the :ref:`_process <class_Node_private_method__process>` method, like this:
+Trong một số trường hợp, chúng ta có thể cần vẽ lại ở mỗi khung hình. Để làm điều này, hãy gọi :ref:`queue_redraw <class_CanvasItem_method_queue_redraw>` từ phương thức :ref:`_process <class_Node_private_method__process>`, như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     extends Node2D
 
-    func _draw():
-        pass  # Your draw commands here.
+    func _draw(): pass # Your draw commands here.
 
-    func _process(_delta):
-        queue_redraw()
+    func _process(_delta): queue_redraw()
 
  .. code-tab:: csharp
 
     using Godot;
 
-    public partial class MyNode2D : Node2D
-    {
-        public override void _Draw()
-        {
-            // Your draw commands here.
-        }
+    public partial class MyNode2D : Node2D { public override void _Draw() { // Your draw commands here. }
 
-        public override void _Process(double delta)
-        {
-            QueueRedraw();
-        }
-    }
+        public override void _Process(double delta) { QueueRedraw(); } }
 
-Coordinates and line width alignment
-------------------------------------
+Căn chỉnh tọa độ và độ rộng đường
+---------------------------------
 
-The drawing API uses the CanvasItem's coordinate system, not necessarily pixel
-coordinates. This means ``_draw()`` uses the coordinate space created after
-applying the CanvasItem's transform. Additionally, you can apply a custom
-transform on top of it by using
+API vẽ sử dụng hệ tọa độ của CanvasItem, không nhất thiết là tọa độ pixel. Điều này có nghĩa là ``_draw()`` sử dụng không gian tọa độ được tạo sau khi áp dụng phép biến đổi của CanvasItem. Ngoài ra, bạn có thể áp dụng một phép biến đổi tùy chỉnh lên trên nó bằng cách sử dụng
 :ref:`draw_set_transform<class_CanvasItem_method_draw_set_transform>` or
 :ref:`draw_set_transform_matrix<class_CanvasItem_method_draw_set_transform_matrix>`.
 
-When using :ref:`draw_line <class_CanvasItem_method_draw_line>`, you should
-consider the width of the line. When using a width that is an odd size, the
-position of the start and end points should be shifted by ``0.5`` to keep the
-line centered, as shown below.
+Khi sử dụng :ref:`draw_line <class_CanvasItem_method_draw_line>`, bạn nên cân nhắc độ rộng của đường. Khi sử dụng độ rộng là một số lẻ, vị trí của điểm đầu và điểm cuối nên được dịch chuyển ``0.5`` để giữ cho đường được căn giữa, như minh họa bên dưới.
 
 .. image:: img/draw_line.png
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _draw():
-        draw_line(Vector2(1.5, 1.0), Vector2(1.5, 4.0), Color.GREEN, 1.0)
-        draw_line(Vector2(4.0, 1.0), Vector2(4.0, 4.0), Color.GREEN, 2.0)
-        draw_line(Vector2(7.5, 1.0), Vector2(7.5, 4.0), Color.GREEN, 3.0)
+    func _draw(): draw_line(Vector2(1.5, 1.0), Vector2(1.5, 4.0), Color.GREEN, 1.0) draw_line(Vector2(4.0, 1.0), Vector2(4.0, 4.0), Color.GREEN, 2.0) draw_line(Vector2(7.5, 1.0), Vector2(7.5, 4.0), Color.GREEN, 3.0)
 
  .. code-tab:: csharp
 
-    public override void _Draw()
-    {
-        DrawLine(new Vector2(1.5f, 1.0f), new Vector2(1.5f, 4.0f), Colors.Green, 1.0f);
-        DrawLine(new Vector2(4.0f, 1.0f), new Vector2(4.0f, 4.0f), Colors.Green, 2.0f);
-        DrawLine(new Vector2(7.5f, 1.0f), new Vector2(7.5f, 4.0f), Colors.Green, 3.0f);
-    }
+    public override void _Draw() { DrawLine(new Vector2(1.5f, 1.0f), new Vector2(1.5f, 4.0f), Colors.Green, 1.0f); DrawLine(new Vector2(4.0f, 1.0f), new Vector2(4.0f, 4.0f), Colors.Green, 2.0f); DrawLine(new Vector2(7.5f, 1.0f), new Vector2(7.5f, 4.0f), Colors.Green, 3.0f); }
 
-The same applies to the :ref:`draw_rect <class_CanvasItem_method_draw_rect>`
-method with ``filled = false``.
+Điều tương tự cũng áp dụng cho phương thức :ref:`draw_rect <class_CanvasItem_method_draw_rect>` với ``filled = false``.
 
 .. image:: img/draw_rect.png
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _draw():
-        draw_rect(Rect2(1.0, 1.0, 3.0, 3.0), Color.GREEN)
-        draw_rect(Rect2(5.5, 1.5, 2.0, 2.0), Color.GREEN, false, 1.0)
-        draw_rect(Rect2(9.0, 1.0, 5.0, 5.0), Color.GREEN)
-        draw_rect(Rect2(16.0, 2.0, 3.0, 3.0), Color.GREEN, false, 2.0)
+    func _draw(): draw_rect(Rect2(1.0, 1.0, 3.0, 3.0), Color.GREEN) draw_rect(Rect2(5.5, 1.5, 2.0, 2.0), Color.GREEN, false, 1.0) draw_rect(Rect2(9.0, 1.0, 5.0, 5.0), Color.GREEN) draw_rect(Rect2(16.0, 2.0, 3.0, 3.0), Color.GREEN, false, 2.0)
 
  .. code-tab:: csharp
 
-    public override void _Draw()
-    {
-        DrawRect(new Rect2(1.0f, 1.0f, 3.0f, 3.0f), Colors.Green);
-        DrawRect(new Rect2(5.5f, 1.5f, 2.0f, 2.0f), Colors.Green, false, 1.0f);
-        DrawRect(new Rect2(9.0f, 1.0f, 5.0f, 5.0f), Colors.Green);
-        DrawRect(new Rect2(16.0f, 2.0f, 3.0f, 3.0f), Colors.Green, false, 2.0f);
-    }
+    public override void _Draw() { DrawRect(new Rect2(1.0f, 1.0f, 3.0f, 3.0f), Colors.Green); DrawRect(new Rect2(5.5f, 1.5f, 2.0f, 2.0f), Colors.Green, false, 1.0f); DrawRect(new Rect2(9.0f, 1.0f, 5.0f, 5.0f), Colors.Green); DrawRect(new Rect2(16.0f, 2.0f, 3.0f, 3.0f), Colors.Green, false, 2.0f); }
 
-Antialiased drawing
--------------------
+Vẽ khử răng cưa
+---------------
 
-Godot offers method parameters in :ref:`draw_line<class_CanvasItem_method_draw_line>`
-to enable antialiasing, but not all custom drawing methods offer this ``antialiased``
-parameter.
+Godot cung cấp các tham số phương thức trong :ref:`draw_line<class_CanvasItem_method_draw_line>` để bật khử răng cưa, nhưng không phải tất cả các phương thức vẽ tùy chỉnh đều cung cấp tham số ``antialiased`` này.
 
-For custom drawing methods that don't provide an ``antialiased`` parameter,
-you can enable 2D MSAA instead, which affects rendering in the entire viewport.
-This provides high-quality antialiasing, but a higher performance cost and only
-on specific elements. See :ref:`doc_2d_antialiasing` for more information.
+Đối với các phương thức vẽ tùy chỉnh không cung cấp tham số ``antialiased``, thay vào đó bạn có thể bật MSAA 2D, tùy chọn này ảnh hưởng đến việc kết xuất trong toàn bộ viewport. Cách này cung cấp khả năng khử răng cưa chất lượng cao, nhưng có chi phí hiệu năng cao hơn và chỉ áp dụng cho các phần tử cụ thể. Xem :ref:`doc_2d_antialiasing` để biết thêm thông tin.
 
-Here is a comparison of a line of minimal width (``width=-1``) drawn with
-``antialiased=false``, ``antialiased=true``, and ``antialiased=false`` with
-2D MSAA 2x, 4x, and 8x enabled.
+Sau đây là phép so sánh một đường có độ rộng tối thiểu (``width=-1``) được vẽ bằng ``antialiased=false``, ``antialiased=true`` và ``antialiased=false``, với MSAA 2D 2x, 4x và 8x được bật.
 
 .. image:: img/draw_antialiasing_options.webp
 
-Tools
------
+Công cụ
+-------
 
-Drawing your own nodes might also be desired while running them in the
-editor. This can be used as a preview or visualization of some feature or
-behavior.
+Bạn cũng có thể muốn vẽ các node của riêng mình trong khi chạy chúng trong trình chỉnh sửa. Điều này có thể được dùng để xem trước hoặc trực quan hóa một tính năng hay hành vi nào đó.
 
-To do this, you can use the :ref:`tool annotation<doc_gdscript_tool_mode>`
-on both GDScript and C#. See
+Để thực hiện việc này, bạn có thể sử dụng :ref:`tool annotation<doc_gdscript_tool_mode>` trên cả GDScript và C#. Xem
 :ref:`the example below<doc_draw_show_drawing_while_editing_example>` and
 :ref:`doc_running_code_in_the_editor` for more information.
 
 .. _doc_draw_custom_example_1:
 
-Example 1: drawing a custom shape
----------------------------------
+Ví dụ 1: vẽ một hình dạng tùy chỉnh
+-----------------------------------
 
-We will now use the custom drawing functionality of the Godot Engine to draw
-something that Godot doesn't provide functions for. We will recreate the Godot
-logo but with code- only using drawing functions.
+Bây giờ chúng ta sẽ sử dụng chức năng vẽ tùy chỉnh của Godot Engine để vẽ một thứ mà Godot không cung cấp hàm cho nó. Chúng ta sẽ tái tạo logo Godot nhưng chỉ bằng code, sử dụng các hàm vẽ.
 
-You will have to code a function to perform this and draw it yourself.
+Bạn sẽ phải lập trình một hàm để thực hiện việc này và tự mình vẽ nó.
 
 .. note::
 
-    The following instructions use a fixed set of coordinates that could be too small
-    for high resolution screens (larger than 1080p). If that is your case, and the
-    drawing is too small consider increasing your window scale in the project setting
+    Các hướng dẫn sau đây sử dụng một tập tọa độ cố định có thể quá nhỏ đối với màn hình độ phân giải cao (lớn hơn 1080p). Nếu gặp trường hợp đó và hình vẽ quá nhỏ, hãy cân nhắc tăng tỷ lệ cửa sổ trong phần cài đặt dự án
     :ref:`Display > Window > Stretch > Scale<class_ProjectSettings_property_display/window/stretch/scale>`
-    to adjust the project to a higher resolution (a 2 or 4 scale tends to work well).
+    để điều chỉnh dự án lên độ phân giải cao hơn (tỷ lệ 2 hoặc 4 thường hoạt động tốt).
 
-Drawing a custom polygon shape
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Vẽ một hình đa giác tùy chỉnh
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-While there is a dedicated node to draw custom polygons (
+Mặc dù có một node chuyên dụng để vẽ các đa giác tùy chỉnh (
 :ref:`Polygon2D <class_Polygon2D>`), we will use in this case exclusively lower
-level drawing functions to combine them on the same node and be able to create
-more complex shapes later on.
+các hàm vẽ cấp độ để kết hợp chúng trên cùng một node và có thể tạo ra các hình dạng phức tạp hơn về sau.
 
-First, we will define a set of points -or X and Y coordinates- that will form
-the base of our shape:
+Trước tiên, chúng ta sẽ xác định một tập hợp các điểm—hay tọa độ X và Y—tạo thành nền tảng cho hình dạng của chúng ta:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     extends Node2D
 
-    var coords_head : Array = [
-        [ 22.952, 83.271 ],  [ 28.385, 98.623 ],
-        [ 53.168, 107.647 ], [ 72.998, 107.647 ],
-        [ 99.546, 98.623 ],  [ 105.048, 83.271 ],
-        [ 105.029, 55.237 ], [ 110.740, 47.082 ],
-        [ 102.364, 36.104 ], [ 94.050, 40.940 ],
-        [ 85.189, 34.445 ],  [ 85.963, 24.194 ],
-        [ 73.507, 19.930 ],  [ 68.883, 28.936 ],
-        [ 59.118, 28.936 ],  [ 54.494, 19.930 ],
-        [ 42.039, 24.194 ],  [ 42.814, 34.445 ],
-        [ 33.951, 40.940 ],  [ 25.637, 36.104 ],
-        [ 17.262, 47.082 ],  [ 22.973, 55.237 ]
-    ]
+    var coords_head : Array = [ [ 22.952, 83.271 ], [ 28.385, 98.623 ], [ 53.168, 107.647 ], [ 72.998, 107.647 ], [ 99.546, 98.623 ], [ 105.048, 83.271 ], [ 105.029, 55.237 ], [ 110.740, 47.082 ], [ 102.364, 36.104 ], [ 94.050, 40.940 ], [ 85.189, 34.445 ], [ 85.963, 24.194 ], [ 73.507, 19.930 ], [ 68.883, 28.936 ], [ 59.118, 28.936 ], [ 54.494, 19.930 ], [ 42.039, 24.194 ], [ 42.814, 34.445 ], [ 33.951, 40.940 ], [ 25.637, 36.104 ], [ 17.262, 47.082 ], [ 22.973, 55.237 ] ]
 
  .. code-tab:: csharp
 
     using Godot;
 
-    public partial class MyNode2D : Node2D
-    {
-        private float[,] _coordsHead =
-        {
-            { 22.952f, 83.271f },  { 28.385f, 98.623f },
-            { 53.168f, 107.647f }, { 72.998f, 107.647f },
-            { 99.546f, 98.623f },  { 105.048f, 83.271f },
-            { 105.029f, 55.237f }, { 110.740f, 47.082f },
-            { 102.364f, 36.104f }, { 94.050f, 40.940f },
-            { 85.189f, 34.445f },  { 85.963f, 24.194f },
-            { 73.507f, 19.930f },  { 68.883f, 28.936f },
-            { 59.118f, 28.936f },  { 54.494f, 19.930f },
-            { 42.039f, 24.194f },  { 42.814f, 34.445f },
-            { 33.951f, 40.940f },  { 25.637f, 36.104f },
-            { 17.262f, 47.082f },  { 22.973f, 55.237f }
-        };
-    }
+    public partial class MyNode2D : Node2D { private float[,] _coordsHead = { { 22.952f, 83.271f }, { 28.385f, 98.623f }, { 53.168f, 107.647f }, { 72.998f, 107.647f }, { 99.546f, 98.623f }, { 105.048f, 83.271f }, { 105.029f, 55.237f }, { 110.740f, 47.082f }, { 102.364f, 36.104f }, { 94.050f, 40.940f }, { 85.189f, 34.445f }, { 85.963f, 24.194f }, { 73.507f, 19.930f }, { 68.883f, 28.936f }, { 59.118f, 28.936f }, { 54.494f, 19.930f }, { 42.039f, 24.194f }, { 42.814f, 34.445f }, { 33.951f, 40.940f }, { 25.637f, 36.104f }, { 17.262f, 47.082f }, { 22.973f, 55.237f } }; }
 
-This format, while compact, is not the one that Godot understands to
-draw a polygon. In a different scenario we could have to load
-these coordinates from a file or calculate the positions while the
-application is running, so some transformation may be needed.
+Định dạng này tuy nhỏ gọn nhưng không phải là định dạng mà Godot hiểu để vẽ một đa giác. Trong một tình huống khác, chúng ta có thể phải tải các tọa độ này từ một tệp hoặc tính toán các vị trí trong khi ứng dụng đang chạy, vì vậy có thể cần thực hiện một số phép biến đổi.
 
-To transform these coordinates into the right format, we will create a new
-method ``float_array_to_Vector2Array()``. Then we will override the ``_ready()``
-function, which Godot will call only once -at the start of the execution-
-to load those coordinates into a variable:
+Để biến đổi các tọa độ này sang đúng định dạng, chúng ta sẽ tạo một phương thức mới ``float_array_to_Vector2Array()``. Sau đó, chúng ta sẽ ghi đè hàm ``_ready()``, hàm mà Godot sẽ chỉ gọi một lần—khi bắt đầu thực thi—để tải các tọa độ đó vào một biến:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     var head : PackedVector2Array
 
-    func float_array_to_Vector2Array(coords : Array) -> PackedVector2Array:
-        # Convert the array of floats into a PackedVector2Array.
-        var array : PackedVector2Array = []
-        for coord in coords:
-            array.append(Vector2(coord[0], coord[1]))
-        return array
+    func float_array_to_Vector2Array(coords : Array) -> PackedVector2Array: # Convert the array of floats into a PackedVector2Array. var array : PackedVector2Array = [] for coord in coords: array.append(Vector2(coord[0], coord[1])) return array
 
-    func _ready():
-        head = float_array_to_Vector2Array(coords_head);
+    func _ready(): head = float_array_to_Vector2Array(coords_head);
 
  .. code-tab:: csharp
 
     private Vector2[] _head;
 
-    private Vector2[] FloatArrayToVector2Array(float[,] coords)
-    {
-        // Convert the array of floats into an array of Vector2.
-        int size = coords.GetUpperBound(0);
-        Vector2[] array = new Vector2[size + 1];
-        for (int i = 0; i <= size; i++)
-        {
-            array[i] = new Vector2(coords[i, 0], coords[i, 1]);
-        }
-        return array;
-    }
+    private Vector2[] FloatArrayToVector2Array(float[,] coords) { // Convert the array of floats into an array of Vector2. int size = coords.GetUpperBound(0); Vector2[] array = new Vector2[size + 1]; for (int i = 0; i <= size; i++) { array[i] = new Vector2(coords[i, 0], coords[i, 1]); } return array; }
 
-    public override void _Ready()
-    {
-        _head = FloatArrayToVector2Array(_coordsHead);
-    }
+    public override void _Ready() { _head = FloatArrayToVector2Array(_coordsHead); }
 
-To finally draw our first shape, we will use the method
+Cuối cùng, để vẽ hình đầu tiên, chúng ta sẽ sử dụng phương thức
 :ref:`draw_polygon <class_CanvasItem_method_draw_polygon>`
-and pass the points (as an array of Vector2 coordinates) and its color,
-like this:
+và truyền vào các điểm (dưới dạng một mảng tọa độ Vector2) cùng màu của nó, như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _draw():
-        # We are going to paint with this color.
-        var godot_blue : Color = Color("478cbf")
-        # We pass the PackedVector2Array to draw the shape.
-        draw_polygon(head, [ godot_blue ])
+    func _draw(): # We are going to paint with this color. var godot_blue : Color = Color("478cbf") # We pass the PackedVector2Array to draw the shape. draw_polygon(head, [ godot_blue ])
 
  .. code-tab:: csharp
 
-    public override void _Draw()
-    {
-        // We are going to paint with this color.
-        Color godotBlue = new Color("478cbf");
-        // We pass the array of Vector2 to draw the shape.
-        DrawPolygon(_head, [godotBlue]);
-    }
+    public override void _Draw() { // We are going to paint with this color. Color godotBlue = new Color("478cbf"); // We pass the array of Vector2 to draw the shape. DrawPolygon(_head, [godotBlue]); }
 
-When running it you should see something like this:
+Khi chạy, bạn sẽ thấy kết quả tương tự như sau:
 
 .. image:: img/draw_godot_logo_polygon.webp
 
-Note the lower part of the logo looks segmented- this is because a low
-amount of points were used to define that part. To simulate a smooth curve,
-we could add more points to our array, or maybe use a mathematical function to
-interpolate a curve and create a smooth shape from code (see
+Lưu ý rằng phần dưới của logo trông có vẻ bị phân đoạn—đó là vì chúng ta đã sử dụng quá ít điểm để xác định phần đó. Để mô phỏng một đường cong mượt mà, chúng ta có thể thêm nhiều điểm hơn vào mảng hoặc có thể sử dụng một hàm toán học để nội suy một đường cong và tạo ra một hình dạng mượt mà từ mã (xem
 :ref:`example 2<doc_draw_custom_example_2>`).
 
-Polygons will always **connect its last defined point to its first
-one** in order to have a closed shape.
+Các đa giác sẽ luôn **nối điểm được xác định cuối cùng với điểm đầu tiên** để tạo thành một hình khép kín.
 
-Drawing connected lines
-~~~~~~~~~~~~~~~~~~~~~~~
+Vẽ các đường nối tiếp nhau
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Drawing a sequence of connected lines that don't close down to form a polygon
-is very similar to the previous method. We will use a connected set of lines to
-draw Godot's logo mouth.
+Việc vẽ một chuỗi các đường nối tiếp nhau nhưng không khép kín để tạo thành đa giác rất giống với phương thức trước đó. Chúng ta sẽ sử dụng một tập hợp các đường nối tiếp nhau để vẽ miệng của logo Godot.
 
-First, we will define the list of coordinates that form the mouth shape, like this:
+Trước tiên, chúng ta sẽ xác định danh sách các tọa độ tạo thành hình dạng của miệng, như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    var coords_mouth = [
-        [ 22.817, 81.100 ], [ 38.522, 82.740 ],
-        [ 39.001, 90.887 ], [ 54.465, 92.204 ],
-        [ 55.641, 84.260 ], [ 72.418, 84.177 ],
-        [ 73.629, 92.158 ], [ 88.895, 90.923 ],
-        [ 89.556, 82.673 ], [ 105.005, 81.100 ]
-    ]
+    var coords_mouth = [ [ 22.817, 81.100 ], [ 38.522, 82.740 ], [ 39.001, 90.887 ], [ 54.465, 92.204 ], [ 55.641, 84.260 ], [ 72.418, 84.177 ], [ 73.629, 92.158 ], [ 88.895, 90.923 ], [ 89.556, 82.673 ], [ 105.005, 81.100 ] ]
 
  .. code-tab:: csharp
 
-    private float[,] _coordsMouth =
-    {
-        { 22.817f, 81.100f }, { 38.522f, 82.740f },
-        { 39.001f, 90.887f }, { 54.465f, 92.204f },
-        { 55.641f, 84.260f }, { 72.418f, 84.177f },
-        { 73.629f, 92.158f }, { 88.895f, 90.923f },
-        { 89.556f, 82.673f }, { 105.005f, 81.100f }
-    };
+    private float[,] _coordsMouth = { { 22.817f, 81.100f }, { 38.522f, 82.740f }, { 39.001f, 90.887f }, { 54.465f, 92.204f }, { 55.641f, 84.260f }, { 72.418f, 84.177f }, { 73.629f, 92.158f }, { 88.895f, 90.923f }, { 89.556f, 82.673f }, { 105.005f, 81.100f } };
 
-We will load these coordinates into a variable and define an additional
-variable with the configurable line thickness:
+Chúng ta sẽ nạp các tọa độ này vào một biến và định nghĩa thêm một biến cho độ dày đường có thể cấu hình:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    var mouth : PackedVector2Array
-    var _mouth_width : float = 4.4
+    var mouth : PackedVector2Array var _mouth_width : float = 4.4
 
-    func _ready():
-        head = float_array_to_Vector2Array(coords_head);
-        mouth = float_array_to_Vector2Array(coords_mouth);
+    func _ready(): head = float_array_to_Vector2Array(coords_head); mouth = float_array_to_Vector2Array(coords_mouth);
 
  .. code-tab:: csharp
 
-    private Vector2[] _mouth;
-    private float _mouthWidth = 4.4f;
+    private Vector2[] _mouth; private float _mouthWidth = 4.4f;
 
-    public override void _Ready()
-    {
-        _head = FloatArrayToVector2Array(_coordsHead);
-        _mouth = FloatArrayToVector2Array(_coordsMouth);
-    }
+    public override void _Ready() { _head = FloatArrayToVector2Array(_coordsHead); _mouth = FloatArrayToVector2Array(_coordsMouth); }
 
-And finally we will use the method
+Cuối cùng, chúng ta sẽ sử dụng phương thức
 :ref:`draw_polyline <class_CanvasItem_method_draw_polyline>` to actually
-draw the line, like this:
+để vẽ đường, như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _draw():
-        # We will use white to draw the line.
-        var white : Color = Color.WHITE
-        var godot_blue : Color = Color("478cbf")
+    func _draw(): # We will use white to draw the line. var white : Color = Color.WHITE var godot_blue : Color = Color("478cbf")
 
         draw_polygon(head, [ godot_blue ])
 
-        # We draw the while line on top of the previous shape.
-        draw_polyline(mouth, white, _mouth_width)
+        # We draw the while line on top of the previous shape. draw_polyline(mouth, white, _mouth_width)
 
 
  .. code-tab:: csharp
 
-    public override void _Draw()
-    {
-        // We will use white to draw the line.
-        Color white = Colors.White;
-        Color godotBlue = new Color("478cbf");
+    public override void _Draw() { // We will use white to draw the line. Color white = Colors.White; Color godotBlue = new Color("478cbf");
 
         DrawPolygon(_head, [godotBlue]);
 
-        // We draw the while line on top of the previous shape.
-        DrawPolyline(_mouth, white, _mouthWidth);
-    }
+        // We draw the while line on top of the previous shape. DrawPolyline(_mouth, white, _mouthWidth); }
 
-You should get the following output:
+Bạn sẽ nhận được kết quả sau:
 
 .. image:: img/draw_godot_logo_polyline.webp
 
-Unlike ``draw_polygon()``, polylines can only have a single unique color
-for all its points (the second argument). This method has 2 additional
-arguments: the width of the line (which is as small as possible by default)
-and enabling or disabling the antialiasing (it is disabled by default).
+Không giống như ``draw_polygon()``, các đường đa tuyến chỉ có thể có một màu duy nhất cho tất cả các điểm của chúng (đối số thứ hai). Phương thức này có thêm 2 đối số: độ rộng của đường (theo mặc định là nhỏ nhất có thể) và tùy chọn bật hoặc tắt khử răng cưa (mặc định là tắt).
 
-The order of the ``_draw`` calls is important- like with the Node positions on
-the tree hierarchy, the different shapes will be drawn from top to bottom,
-resulting in the latest shapes hiding earlier ones if they overlap. In this
-case we want the mouth drawn over the head, so we put it afterwards.
+Thứ tự các lệnh gọi ``_draw`` rất quan trọng—giống như vị trí của các Node trong hệ phân cấp cây, các hình dạng khác nhau sẽ được vẽ từ trên xuống dưới, khiến các hình dạng được vẽ sau che khuất các hình dạng trước đó nếu chúng chồng lên nhau. Trong trường hợp này, chúng ta muốn miệng được vẽ đè lên đầu, vì vậy đặt nó sau đầu.
 
-Notice how we can define colors in different ways, either with a hexadecimal
-code or a predefined color name. Check the class :ref:`Color <class_Color>` for other
-constants and ways to define Colors.
+Lưu ý rằng chúng ta có thể định nghĩa màu theo nhiều cách khác nhau, bằng mã thập lục phân hoặc tên màu được định nghĩa sẵn. Hãy kiểm tra lớp :ref:`Color <class_Color>` để xem các hằng số khác và những cách định nghĩa Color khác.
 
-Drawing circles
-~~~~~~~~~~~~~~~
+Vẽ hình tròn
+~~~~~~~~~~~~
 
-To create the eyes, we are going to add 4 additional calls to draw the eye
-shapes, in different sizes, colors and positions.
+Để tạo mắt, chúng ta sẽ thêm 4 lệnh gọi bổ sung để vẽ các hình dạng của mắt với kích thước, màu sắc và vị trí khác nhau.
 
-To draw a circle, you position it based on its center using the
+Để vẽ một hình tròn, bạn định vị nó dựa trên tâm của nó bằng cách sử dụng
 :ref:`draw_circle <class_CanvasItem_method_draw_circle>` method. The first
-parameter is a :ref:`Vector2<class_Vector2>` with the coordinates of its center, the second is
-its radius, and the third is its color:
+tham số là một :ref:`Vector2<class_Vector2>` chứa tọa độ tâm của nó, tham số thứ hai là bán kính và tham số thứ ba là màu của nó:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _draw():
-        var white : Color = Color.WHITE
-        var godot_blue : Color = Color("478cbf")
-        var grey : Color = Color("414042")
+    func _draw(): var white : Color = Color.WHITE var godot_blue : Color = Color("478cbf") var grey : Color = Color("414042")
 
-        draw_polygon(head, [ godot_blue ])
-        draw_polyline(mouth, white, _mouth_width)
+        draw_polygon(head, [ godot_blue ]) draw_polyline(mouth, white, _mouth_width)
 
-        # Four circles for the 2 eyes: 2 white, 2 grey.
-        draw_circle(Vector2(42.479, 65.4825), 9.3905, white)
-        draw_circle(Vector2(85.524, 65.4825), 9.3905, white)
-        draw_circle(Vector2(43.423, 65.92), 6.246, grey)
-        draw_circle(Vector2(84.626, 66.008), 6.246, grey)
+        # Four circles for the 2 eyes: 2 white, 2 grey. draw_circle(Vector2(42.479, 65.4825), 9.3905, white) draw_circle(Vector2(85.524, 65.4825), 9.3905, white) draw_circle(Vector2(43.423, 65.92), 6.246, grey) draw_circle(Vector2(84.626, 66.008), 6.246, grey)
 
  .. code-tab:: csharp
 
 
-    public override void _Draw()
-    {
-        Color white = Colors.White;
-        Color godotBlue = new Color("478cbf");
-        Color grey = new Color("414042");
+    public override void _Draw() { Color white = Colors.White; Color godotBlue = new Color("478cbf"); Color grey = new Color("414042");
 
-        DrawPolygon(_head, [godotBlue]);
-        DrawPolyline(_mouth, white, _mouthWidth);
+        DrawPolygon(_head, [godotBlue]); DrawPolyline(_mouth, white, _mouthWidth);
 
-        // Four circles for the 2 eyes: 2 white, 2 grey.
-        DrawCircle(new Vector2(42.479f, 65.4825f), 9.3905f, white);
-        DrawCircle(new Vector2(85.524f, 65.4825f), 9.3905f, white);
-        DrawCircle(new Vector2(43.423f, 65.92f), 6.246f, grey);
-        DrawCircle(new Vector2(84.626f, 66.008f), 6.246f, grey);
-    }
+        // Four circles for the 2 eyes: 2 white, 2 grey. DrawCircle(new Vector2(42.479f, 65.4825f), 9.3905f, white); DrawCircle(new Vector2(85.524f, 65.4825f), 9.3905f, white); DrawCircle(new Vector2(43.423f, 65.92f), 6.246f, grey); DrawCircle(new Vector2(84.626f, 66.008f), 6.246f, grey); }
 
-When executing it, you should have something like this:
+Khi thực thi, bạn sẽ nhận được kết quả tương tự như sau:
 
 .. image:: img/draw_godot_logo_circle.webp
 
 
-For partial, unfilled arcs (portions of a circle shape between certain
-arbitrary angles), you can use the method
+Đối với các cung không đầy đủ, không tô kín (các phần của một hình tròn nằm giữa một số góc tùy ý), bạn có thể sử dụng phương thức
 :ref:`draw_arc <class_CanvasItem_method_draw_arc>`.
 
-Drawing lines
-~~~~~~~~~~~~~
+Vẽ các đường thẳng
+~~~~~~~~~~~~~~~~~~
 
-To draw the final shape (the nose) we will use a line to approximate it.
+Để vẽ hình dạng cuối cùng (mũi), chúng ta sẽ sử dụng một đường thẳng để mô phỏng nó.
 
 :ref:`draw_line <class_CanvasItem_method_draw_line>` can be used to draw
-a single segment by providing its start and end coordinates as arguments,
-like this:
+một đoạn duy nhất bằng cách cung cấp tọa độ điểm đầu và điểm cuối làm các đối số, như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _draw():
-        var white : Color = Color.WHITE
-        var godot_blue : Color = Color("478cbf")
-        var grey : Color = Color("414042")
+    func _draw(): var white : Color = Color.WHITE var godot_blue : Color = Color("478cbf") var grey : Color = Color("414042")
 
-        draw_polygon(head, [ godot_blue ])
-        draw_polyline(mouth, white, _mouth_width)
-        draw_circle(Vector2(42.479, 65.4825), 9.3905, white)
-        draw_circle(Vector2(85.524, 65.4825), 9.3905, white)
-        draw_circle(Vector2(43.423, 65.92), 6.246, grey)
-        draw_circle(Vector2(84.626, 66.008), 6.246, grey)
+        draw_polygon(head, [ godot_blue ]) draw_polyline(mouth, white, _mouth_width) draw_circle(Vector2(42.479, 65.4825), 9.3905, white) draw_circle(Vector2(85.524, 65.4825), 9.3905, white) draw_circle(Vector2(43.423, 65.92), 6.246, grey) draw_circle(Vector2(84.626, 66.008), 6.246, grey)
 
-        # Draw a short but thick white vertical line for the nose.
-        draw_line(Vector2(64.273, 60.564), Vector2(64.273, 74.349), white, 5.8)
+        # Draw a short but thick white vertical line for the nose. draw_line(Vector2(64.273, 60.564), Vector2(64.273, 74.349), white, 5.8)
 
  .. code-tab:: csharp
 
-    public override void _Draw()
-    {
-        Color white = Colors.White;
-        Color godotBlue = new Color("478cbf");
-        Color grey = new Color("414042");
+    public override void _Draw() { Color white = Colors.White; Color godotBlue = new Color("478cbf"); Color grey = new Color("414042");
 
-        DrawPolygon(_head, [godotBlue]);
-        DrawPolyline(_mouth, white, _mouthWidth);
-        DrawCircle(new Vector2(42.479f, 65.4825f), 9.3905f, white);
-        DrawCircle(new Vector2(85.524f, 65.4825f), 9.3905f, white);
-        DrawCircle(new Vector2(43.423f, 65.92f), 6.246f, grey);
-        DrawCircle(new Vector2(84.626f, 66.008f), 6.246f, grey);
+        DrawPolygon(_head, [godotBlue]); DrawPolyline(_mouth, white, _mouthWidth); DrawCircle(new Vector2(42.479f, 65.4825f), 9.3905f, white); DrawCircle(new Vector2(85.524f, 65.4825f), 9.3905f, white); DrawCircle(new Vector2(43.423f, 65.92f), 6.246f, grey); DrawCircle(new Vector2(84.626f, 66.008f), 6.246f, grey);
 
-        // Draw a short but thick white vertical line for the nose.
-        DrawLine(new Vector2(64.273f, 60.564f), new Vector2(64.273f, 74.349f),
-                 white, 5.8f);
-    }
+        // Draw a short but thick white vertical line for the nose. DrawLine(new Vector2(64.273f, 60.564f), new Vector2(64.273f, 74.349f), white, 5.8f); }
 
-You should now be able to see the following shape on screen:
+Bây giờ bạn sẽ có thể thấy hình dạng sau trên màn hình:
 
 .. image:: img/draw_godot_logo_line.webp
 
-Note that if multiple unconnected lines are going to be drawn at the same time,
-you may get additional performance by drawing all of them in a single call, using
-the :ref:`draw_multiline <class_CanvasItem_method_draw_multiline>` method.
+Lưu ý rằng nếu nhiều đường không nối nhau được vẽ cùng lúc, bạn có thể đạt được hiệu năng cao hơn bằng cách vẽ tất cả chúng trong một lệnh gọi duy nhất, sử dụng phương thức :ref:`draw_multiline <class_CanvasItem_method_draw_multiline>`.
 
-Drawing text
-~~~~~~~~~~~~
+Vẽ văn bản
+~~~~~~~~~~
 
-While using the :ref:`Label <class_Label>` Node is the most common way to add
-text to your application, the low-level `_draw` function includes functionality
-to add text to your custom Node drawing. We will use it to add the name "GODOT"
-under the robot head.
+Mặc dù sử dụng Node :ref:`Label <class_Label>` là cách phổ biến nhất để thêm văn bản vào ứng dụng, hàm cấp thấp `_draw` cũng bao gồm chức năng thêm văn bản vào phần vẽ Node tùy chỉnh của bạn. Chúng ta sẽ sử dụng nó để thêm tên "GODOT" bên dưới đầu robot.
 
-We will use the :ref:`draw_string <class_CanvasItem_method_draw_string>` method
-to do it, like this:
+Chúng ta sẽ sử dụng phương thức :ref:`draw_string <class_CanvasItem_method_draw_string>` để thực hiện việc này, như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     var default_font : Font = ThemeDB.fallback_font;
 
-    func _draw():
-        var white : Color = Color.WHITE
-        var godot_blue : Color = Color("478cbf")
-        var grey : Color = Color("414042")
+    func _draw(): var white : Color = Color.WHITE var godot_blue : Color = Color("478cbf") var grey : Color = Color("414042")
 
-        draw_polygon(head, [ godot_blue ])
-        draw_polyline(mouth, white, _mouth_width)
-        draw_circle(Vector2(42.479, 65.4825), 9.3905, white)
-        draw_circle(Vector2(85.524, 65.4825), 9.3905, white)
-        draw_circle(Vector2(43.423, 65.92), 6.246, grey)
-        draw_circle(Vector2(84.626, 66.008), 6.246, grey)
-        draw_line(Vector2(64.273, 60.564), Vector2(64.273, 74.349), white, 5.8)
+        draw_polygon(head, [ godot_blue ]) draw_polyline(mouth, white, _mouth_width) draw_circle(Vector2(42.479, 65.4825), 9.3905, white) draw_circle(Vector2(85.524, 65.4825), 9.3905, white) draw_circle(Vector2(43.423, 65.92), 6.246, grey) draw_circle(Vector2(84.626, 66.008), 6.246, grey) draw_line(Vector2(64.273, 60.564), Vector2(64.273, 74.349), white, 5.8)
 
-        # Draw GODOT text below the logo with the default font, size 22.
-        draw_string(default_font, Vector2(20, 130), "GODOT",
-                    HORIZONTAL_ALIGNMENT_CENTER, 90, 22)
+        # Draw GODOT text below the logo with the default font, size 22. draw_string(default_font, Vector2(20, 130), "GODOT", HORIZONTAL_ALIGNMENT_CENTER, 90, 22)
 
  .. code-tab:: csharp
 
     private Font _defaultFont = ThemeDB.FallbackFont;
 
-    public override void _Draw()
-    {
-        Color white = Colors.White;
-        Color godotBlue = new Color("478cbf");
-        Color grey = new Color("414042");
+    public override void _Draw() { Color white = Colors.White; Color godotBlue = new Color("478cbf"); Color grey = new Color("414042");
 
-        DrawPolygon(_head, [godotBlue]);
-        DrawPolyline(_mouth, white, _mouthWidth);
-        DrawCircle(new Vector2(42.479f, 65.4825f), 9.3905f, white);
-        DrawCircle(new Vector2(85.524f, 65.4825f), 9.3905f, white);
-        DrawCircle(new Vector2(43.423f, 65.92f), 6.246f, grey);
-        DrawCircle(new Vector2(84.626f, 66.008f), 6.246f, grey);
-        DrawLine(new Vector2(64.273f, 60.564f), new Vector2(64.273f, 74.349f),
-                 white, 5.8f);
+        DrawPolygon(_head, [godotBlue]); DrawPolyline(_mouth, white, _mouthWidth); DrawCircle(new Vector2(42.479f, 65.4825f), 9.3905f, white); DrawCircle(new Vector2(85.524f, 65.4825f), 9.3905f, white); DrawCircle(new Vector2(43.423f, 65.92f), 6.246f, grey); DrawCircle(new Vector2(84.626f, 66.008f), 6.246f, grey); DrawLine(new Vector2(64.273f, 60.564f), new Vector2(64.273f, 74.349f), white, 5.8f);
 
-        // Draw GODOT text below the logo with the default font, size 22.
-        DrawString(_defaultFont, new Vector2(20f, 130f), "GODOT",
-                   HorizontalAlignment.Center, 90, 22);
-    }
+        // Draw GODOT text below the logo with the default font, size 22. DrawString(_defaultFont, new Vector2(20f, 130f), "GODOT", HorizontalAlignment.Center, 90, 22); }
 
-Here we first load into the defaultFont variable the configured default theme
-font (a custom one can be set instead) and then we pass the following
-parameters: font, position, text, horizontal alignment, width, and font size.
+Ở đây, trước tiên chúng ta nạp phông chữ giao diện mặc định đã cấu hình vào biến defaultFont (thay vào đó có thể đặt một phông chữ tùy chỉnh), sau đó truyền các tham số sau: phông chữ, vị trí, văn bản, căn chỉnh ngang, chiều rộng và cỡ phông chữ.
 
-You should see the following on your screen:
+Bạn sẽ thấy kết quả sau trên màn hình:
 
 .. image:: img/draw_godot_logo_text.webp
 
-Additional parameters as well as other methods related to text and characters
-can be found on the :ref:`CanvasItem <class_CanvasItem>` class reference.
+Bạn có thể tìm thấy các tham số bổ sung cũng như những phương thức khác liên quan đến văn bản và ký tự trong tài liệu tham chiếu lớp :ref:`CanvasItem <class_CanvasItem>`.
 
 .. _doc_draw_show_drawing_while_editing_example:
 
-Show the drawing while editing
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Hiển thị hình vẽ trong khi chỉnh sửa
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-While the code so far is able to draw the logo on a running window, it will
-not show up on the ``2D view`` on the editor. In certain cases you would
-also like to show your custom Node2D or control on the editor, to position
-and scale it appropriately, like most other nodes do.
+Mặc dù đoạn mã hiện tại có thể vẽ logo trên một cửa sổ đang chạy, logo sẽ không xuất hiện trên ``2D view`` trong trình chỉnh sửa. Trong một số trường hợp, bạn cũng sẽ muốn hiển thị Node2D hoặc control tùy chỉnh của mình trong trình chỉnh sửa để định vị và điều chỉnh tỷ lệ cho phù hợp, giống như hầu hết các node khác.
 
-To show the logo directly on the editor (without running it), you can use the
+Để hiển thị logo trực tiếp trong trình chỉnh sửa (mà không cần chạy), bạn có thể sử dụng
 :ref:`@tool<doc_gdscript_tool_mode>` annotation to request the custom drawing
-of the node to also appear while editing, like this:
+của node để nó cũng xuất hiện trong khi chỉnh sửa, như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    @tool
-    extends Node2D
+    @tool extends Node2D
 
  .. code-tab:: csharp
 
     using Godot;
 
-    [Tool]
-    public partial class MyNode2D : Node2D
+    [Tool] public partial class MyNode2D : Node2D
 
-You will need to save your scene, rebuild your project (for C# only) and reload
-the current scene manually at the menu option ``Scene > Reload Saved Scene``
-to refresh the current node in the ``2D`` view the first time you add or remove
-the ``@tool`` annotation.
+Bạn sẽ cần lưu scene, build lại project (chỉ với C#) và tải lại scene hiện tại theo tùy chọn menu ``Scene > Reload Saved Scene`` theo cách thủ công để làm mới node hiện tại trong chế độ xem ``2D`` vào lần đầu tiên bạn thêm hoặc xóa annotation ``@tool``.
 
-Animation
-~~~~~~~~~
+Hoạt ảnh
+~~~~~~~~
 
-If we wanted to make the custom shape change at runtime, we could modify the
-methods called or its arguments at execution time, or apply a transform.
+Nếu muốn làm cho hình dạng tùy chỉnh thay đổi trong thời gian chạy, chúng ta có thể sửa đổi các phương thức được gọi hoặc các đối số của chúng trong thời gian thực thi, hoặc áp dụng một phép biến đổi.
 
-For example, if we want the custom shape we just designed to rotate, we could add
-the following variable and code to the ``_ready`` and ``_process`` methods:
+Ví dụ, nếu muốn hình dạng tùy chỉnh vừa thiết kế xoay, chúng ta có thể thêm biến và đoạn mã sau vào các phương thức ``_ready`` và ``_process``:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     extends Node2D
 
-    @export var rotation_speed : float = 1  # In radians per second.
+    @export var rotation_speed : float = 1 # In radians per second.
 
-    func _ready():
-        rotation = 0
-        ...
+    func _ready(): rotation = 0 ...
 
-    func _process(delta: float):
-        rotation -= rotation_speed * delta
+    func _process(delta: float): rotation -= rotation_speed * delta
 
  .. code-tab:: csharp
 
-    [Export]
-    public float RotationSpeed { get; set; } = 1.0f;  // In radians per second.
+    [Export] public float RotationSpeed { get; set; } = 1.0f; // In radians per second.
 
-    public override void _Ready()
-    {
-        Rotation = 0;
-        ...
-    }
+    public override void _Ready() { Rotation = 0; ... }
 
-    public override void _Process(double delta)
-    {
-        Rotation -= RotationSpeed * (float)delta;
-    }
+    public override void _Process(double delta) { Rotation -= RotationSpeed * (float)delta; }
 
-The problem with the above code is that because we have created the points
-approximately on a rectangle starting from the upper left corner, the ``(0, 0)``
-coordinate and extending to the right and down, we see that the rotation is done
-using the top left corner as pivot. A position transform change on the node
-won't help us here, as the rotation transform is applied first.
+Vấn đề với đoạn mã trên là vì chúng ta đã tạo các điểm gần đúng trên một hình chữ nhật bắt đầu từ góc trên bên trái, bắt đầu tại tọa độ ``(0, 0)`` và mở rộng sang phải và xuống dưới, nên phép xoay được thực hiện với góc trên bên trái làm tâm xoay. Việc thay đổi phép biến đổi vị trí trên node sẽ không giúp ích trong trường hợp này, vì phép biến đổi xoay được áp dụng trước.
 
-While we could rewrite all of the points' coordinates to be centered around
-``(0, 0)``, including negative coordinates, that would be a lot of work.
+Mặc dù chúng ta có thể viết lại tọa độ của tất cả các điểm để chúng nằm quanh tâm ``(0, 0)``, bao gồm cả các tọa độ âm, nhưng việc đó sẽ tốn rất nhiều công sức.
 
-One possible way to work around this is to use the lower level
+Một cách có thể dùng để khắc phục vấn đề này là sử dụng
 :ref:`draw_set_transform<class_CanvasItem_method_draw_set_transform>`
-method to fix this issue, translating all points in the CanvasItem's own space,
-and then moving it back to its original place with a regular node transform,
-either in the editor or in code, like this:
+phương thức cấp thấp hơn để giải quyết vấn đề, chuyển tất cả các điểm trong không gian riêng của CanvasItem, sau đó đưa nó trở lại vị trí ban đầu bằng một phép biến đổi node thông thường, trong trình chỉnh sửa hoặc trong code, như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
 
-    func _ready():
-        rotation = 0
-        position = Vector2(60, 60)
-        ...
+    func _ready(): rotation = 0 position = Vector2(60, 60) ...
 
-    func _draw():
-        draw_set_transform(Vector2(-60, -60))
-        ...
+    func _draw(): draw_set_transform(Vector2(-60, -60)) ...
 
  .. code-tab:: csharp
 
-    public override void _Ready()
-    {
-        Rotation = 0;
-        Position = new Vector2(60, 60);
-        ...
-    }
+    public override void _Ready() { Rotation = 0; Position = new Vector2(60, 60); ... }
 
-    public override void _Draw()
-    {
-        DrawSetTransform(new Vector2(-60.0f, -60.0f));
-        ...
-    }
+    public override void _Draw() { DrawSetTransform(new Vector2(-60.0f, -60.0f)); ... }
 
-This is the result, rotating around a pivot now on ``(60, 60)``:
+Đây là kết quả, hiện tại xoay quanh một tâm xoay nằm tại ``(60, 60)``:
 
 .. image:: img/draw_godot_rotation.webp
 
-If what we wanted to animate was a property inside the ``_draw()`` call, we must remember to
-call ``queue_redraw()`` to force a refresh, as otherwise it would not be updated on screen.
+Nếu thứ chúng ta muốn tạo hoạt ảnh là một thuộc tính bên trong lệnh gọi ``_draw()``, cần nhớ gọi ``queue_redraw()`` để buộc làm mới, nếu không thuộc tính đó sẽ không được cập nhật trên màn hình.
 
-For example, this is how we can make the robot appear to open and close its mouth, by
-changing the width of its mouth line follow a sinusoidal (:ref:`sin<class_@globalscope_method_sin>`) curve:
+Ví dụ, đây là cách chúng ta có thể làm cho robot trông như đang mở và đóng miệng bằng cách thay đổi độ rộng đường miệng theo một đường cong hình sin (:ref:`sin<class_@globalscope_method_sin>`):
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    var _mouth_width : float = 4.4
-    var _max_width : float = 7
-    var _time : float = 0
+    var _mouth_width : float = 4.4 var _max_width : float = 7 var _time : float = 0
 
-    func _process(delta : float):
-        _time += delta
-        _mouth_width = abs(sin(_time) * _max_width)
-        queue_redraw()
+    func _process(delta : float): _time += delta _mouth_width = abs(sin(_time) * _max_width) queue_redraw()
 
-    func _draw():
-        ...
-        draw_polyline(mouth, white, _mouth_width)
-        ...
+    func _draw(): ... draw_polyline(mouth, white, _mouth_width) ...
 
  .. code-tab:: csharp
 
-    private float _mouthWidth = 4.4f;
-    private float _maxWidth = 7f;
-    private float _time = 0f;
+    private float _mouthWidth = 4.4f; private float _maxWidth = 7f; private float _time = 0f;
 
-    public override void _Process(double delta)
-    {
-        _time += (float)delta;
-        _mouthWidth = Mathf.Abs(Mathf.Sin(_time) * _maxWidth);
-        QueueRedraw();
-    }
+    public override void _Process(double delta) { _time += (float)delta; _mouthWidth = Mathf.Abs(Mathf.Sin(_time) * _maxWidth); QueueRedraw(); }
 
-    public override void _Draw()
-    {
-        ...
-        DrawPolyline(_mouth, white, _mouthWidth);
-        ...
-    }
+    public override void _Draw() { ... DrawPolyline(_mouth, white, _mouthWidth); ... }
 
-It will look somewhat like this when run:
+Khi chạy, kết quả sẽ trông gần giống như sau:
 
 .. image:: img/draw_godot_mouth_animation.webp
 
-Please note that ``_mouth_width`` is a user defined property like any other
-and it or any other used as a drawing argument can be animated using more
-standard and high-level methods such as a :ref:`Tween<class_Tween>` or an
+Lưu ý rằng ``_mouth_width`` là một thuộc tính do người dùng định nghĩa giống như mọi thuộc tính khác, và nó hoặc bất kỳ thuộc tính nào khác được dùng làm đối số vẽ đều có thể được tạo hoạt ảnh bằng các phương thức tiêu chuẩn và cấp cao hơn, chẳng hạn như :ref:`Tween<class_Tween>` hoặc một
 :ref:`AnimationPlayer<class_AnimationPlayer>` Node. The only difference is
-that a ``queue_redraw()`` call is needed to apply those changes so they get
-shown on screen.
+rằng cần có lệnh gọi ``queue_redraw()`` để áp dụng những thay đổi đó nhằm hiển thị chúng trên màn hình.
 
 .. _doc_draw_custom_example_2:
 
-Example 2: drawing a dynamic line
----------------------------------
+Ví dụ 2: vẽ một đường động
+--------------------------
 
-The previous example was useful to learn how to draw and modify nodes with
-custom shapes and animations. This could have some advantages, such as using
-exact coordinates and vectors for drawing, rather than bitmaps -which means
-they will scale well when transformed on screen. In some cases, similar results
-could be achieved composing higher level functionality with nodes such as
+Ví dụ trước hữu ích để tìm hiểu cách vẽ và sửa đổi các node bằng hình dạng tùy chỉnh và hoạt ảnh. Cách này có thể mang lại một số lợi ích, chẳng hạn như sử dụng tọa độ và vector chính xác để vẽ thay vì bitmap - điều đó có nghĩa là chúng sẽ giữ được chất lượng tốt khi được biến đổi trên màn hình. Trong một số trường hợp, có thể đạt được kết quả tương tự bằng cách kết hợp chức năng cấp cao hơn với các node như
 :ref:`sprites<class_Sprite2D>` or
 :ref:`AnimatedSprites<class_AnimatedSprite2D>` loading SVG resources (which are
-also images defined with vectors) and the
+cũng như hình ảnh được xác định bằng vector) và
 :ref:`AnimationPlayer<class_AnimationPlayer>` node.
 
-In other cases that will not be possible because we will not know what the
-resulting graphical representation will be before running the code. Here we
-will see how to draw a dynamic line whose coordinates are not known beforehand,
-and are affected by the user's input.
+Trong những trường hợp khác, điều đó sẽ không thể thực hiện được vì chúng ta sẽ không biết biểu diễn đồ họa thu được sẽ như thế nào trước khi chạy code. Ở đây, chúng ta sẽ xem cách vẽ một đường động có tọa độ chưa biết trước và bị tác động bởi thao tác nhập của người dùng.
 
-Drawing a straight line between 2 points
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Vẽ một đường thẳng giữa 2 điểm
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Let's assume we want to draw a straight line between 2 points, the first one
-will be fixed on the upper left corner ``(0, 0)`` and the second will be defined
-by the cursor position on screen.
+Giả sử chúng ta muốn vẽ một đường thẳng giữa 2 điểm; điểm đầu tiên sẽ cố định ở góc trên bên trái ``(0, 0)``, còn điểm thứ hai sẽ được xác định bởi vị trí con trỏ trên màn hình.
 
-We could draw a dynamic line between those 2 points like this:
+Chúng ta có thể vẽ một đường động giữa 2 điểm đó như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     extends Node2D
 
-    var point1 : Vector2 = Vector2(0, 0)
-    var width : int = 10
-    var color : Color = Color.GREEN
+    var point1 : Vector2 = Vector2(0, 0) var width : int = 10 var color : Color = Color.GREEN
 
     var _point2 : Vector2
 
-    func _process(_delta):
-        var mouse_position = get_viewport().get_mouse_position()
-        if mouse_position != _point2:
-            _point2 = mouse_position
-            queue_redraw()
+    func _process(_delta): var mouse_position = get_viewport().get_mouse_position() if mouse_position != _point2: _point2 = mouse_position queue_redraw()
 
-    func _draw():
-        draw_line(point1, _point2, color, width)
+    func _draw(): draw_line(point1, _point2, color, width)
 
  .. code-tab:: csharp
 
-    using Godot;
-    using System;
+    using Godot; using System;
 
-    public partial class MyNode2DLine : Node2D
-    {
-        public Vector2 Point1 { get; set; } = new Vector2(0f, 0f);
-        public int Width { get; set; } = 10;
-        public Color Color { get; set; } = Colors.Green;
+    public partial class MyNode2DLine : Node2D { public Vector2 Point1 { get; set; } = new Vector2(0f, 0f); public int Width { get; set; } = 10; public Color Color { get; set; } = Colors.Green;
 
         private Vector2 _point2;
 
-        public override void _Process(double delta)
-        {
-            Vector2 mousePosition = GetViewport().GetMousePosition();
-            if (mousePosition != _point2)
-            {
-                _point2 = mousePosition;
-                QueueRedraw();
-            }
-        }
+        public override void _Process(double delta) { Vector2 mousePosition = GetViewport().GetMousePosition(); if (mousePosition != _point2) { _point2 = mousePosition; QueueRedraw(); } }
 
-        public override void _Draw()
-        {
-            DrawLine(Point1, _point2, Color, Width);
-        }
-    }
+        public override void _Draw() { DrawLine(Point1, _point2, Color, Width); } }
 
-In this example we obtain the position of the mouse in the default viewport
-every frame with the method
+Trong ví dụ này, chúng ta lấy vị trí chuột trong viewport mặc định ở mỗi khung hình bằng phương thức
 :ref:`get_mouse_position <class_Viewport_method_get_mouse_position>`. If the
-position has changed since the last draw request (a small optimization to
-avoid redrawing on every frame)- we will schedule a redraw. Our ``_draw()``
-method only has one line: requesting the drawing of a green line of
-width 10 pixels between the top left corner and that obtained position.
+vị trí đã thay đổi kể từ yêu cầu vẽ lần trước (một tối ưu hóa nhỏ để tránh vẽ lại ở mỗi khung hình) - chúng ta sẽ lên lịch vẽ lại. Phương thức ``_draw()`` của chúng ta chỉ có một dòng: yêu cầu vẽ một đường màu xanh lá cây rộng 10 pixel giữa góc trên bên trái và vị trí đã lấy được đó.
 
-The width, color, and position of the starting point can be configured with
-with the corresponding properties.
+Có thể cấu hình độ rộng, màu sắc và vị trí của điểm bắt đầu bằng các thuộc tính tương ứng.
 
-It should look like this when run:
+Khi chạy, kết quả sẽ trông như sau:
 
 .. image:: img/draw_line_between_2_points.webp
 
-Drawing an arc between 2 points
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Vẽ một cung giữa 2 điểm
+~~~~~~~~~~~~~~~~~~~~~~~
 
-The above example works, but we may want to join those 2 points with a
-different shape or function, other than a straight line.
+Ví dụ trên hoạt động, nhưng có thể chúng ta muốn nối 2 điểm đó bằng một hình dạng hoặc chức năng khác thay vì một đường thẳng.
 
-Let's try now creating an arc (a portion of a circumference) between
-both points.
+Bây giờ hãy thử tạo một cung (một phần của đường tròn) giữa hai điểm.
 
-Exporting the line starting point, segments, width, color, and antialiasing will
-allow us to modify those properties very easily directly from the editor
-inspector panel:
+Việc export điểm bắt đầu của đường, số đoạn, độ rộng, màu sắc và khử răng cưa sẽ cho phép chúng ta dễ dàng sửa đổi các thuộc tính đó trực tiếp từ bảng inspector của trình chỉnh sửa:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     extends Node2D
 
-    @export var point1 : Vector2 = Vector2(0, 0)
-    @export_range(1, 1000) var segments : int = 100
-    @export var width : int = 10
-    @export var color : Color = Color.GREEN
-    @export var antialiasing : bool = false
+    @export var point1 : Vector2 = Vector2(0, 0) @export_range(1, 1000) var segments : int = 100 @export var width : int = 10 @export var color : Color = Color.GREEN @export var antialiasing : bool = false
 
     var _point2 : Vector2
 
  .. code-tab:: csharp
 
-    using Godot;
-    using System;
+    using Godot; using System;
 
-    public partial class MyNode2DLine : Node2D
-    {
-        [Export]
-        public Vector2 Point1 { get; set; } = new Vector2(0f, 0f);
-        [Export]
-        public float Length { get; set; } = 350f;
-        [Export(PropertyHint.Range, "1,1000,")]
-        public int Segments { get; set; } = 100;
-        [Export]
-        public int Width { get; set; } = 10;
-        [Export]
-        public Color Color { get; set; } = Colors.Green;
-        [Export]
-        public bool AntiAliasing { get; set; } = false;
+    public partial class MyNode2DLine : Node2D { [Export] public Vector2 Point1 { get; set; } = new Vector2(0f, 0f); [Export] public float Length { get; set; } = 350f; [Export(PropertyHint.Range, "1,1000,")] public int Segments { get; set; } = 100; [Export] public int Width { get; set; } = 10; [Export] public Color Color { get; set; } = Colors.Green; [Export] public bool AntiAliasing { get; set; } = false;
 
-        private Vector2 _point2;
-    }
+        private Vector2 _point2; }
 
 .. image:: img/draw_dynamic_exported_properties.webp
 
-To draw the arc, we can use the method
+Để vẽ cung, chúng ta có thể sử dụng phương thức
 :ref:`draw_arc<class_CanvasItem_method_draw_arc>`. There are many
-arcs that pass through 2 points, so we will chose for this example
-the semicircle that has its center in the middle point between the 2 initial
-points.
+các cung đi qua 2 điểm, vì vậy trong ví dụ này, chúng ta sẽ chọn nửa đường tròn có tâm nằm tại điểm giữa hai điểm ban đầu.
 
-Calculating this arc will be more complex than in the case of the line:
+Việc tính toán cung này sẽ phức tạp hơn so với trường hợp đường thẳng:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    func _draw():
-        # Average points to get center.
-        var center : Vector2 = Vector2((_point2.x + point1.x) / 2,
-                                       (_point2.y + point1.y) / 2)
-        # Calculate the rest of the arc parameters.
-        var radius : float = point1.distance_to(_point2) / 2
-        var start_angle : float = (_point2 - point1).angle()
-        var end_angle : float = (point1 - _point2).angle()
-        if end_angle < 0:  # end_angle is likely negative, normalize it.
-            end_angle += TAU
+    func _draw(): # Average points to get center. var center : Vector2 = Vector2((_point2.x + point1.x) / 2, (_point2.y + point1.y) / 2) # Calculate the rest of the arc parameters. var radius : float = point1.distance_to(_point2) / 2 var start_angle : float = (_point2 - point1).angle() var end_angle : float = (point1 - _point2).angle() if end_angle < 0: # end_angle is likely negative, normalize it. end_angle += TAU
 
-        # Finally, draw the arc.
-        draw_arc(center, radius, start_angle, end_angle, segments, color,
-                 width, antialiasing)
+        # Finally, draw the arc. draw_arc(center, radius, start_angle, end_angle, segments, color, width, antialiasing)
 
  .. code-tab:: csharp
 
-    public override void _Draw()
-    {
-        // Average points to get center.
-        Vector2 center = new Vector2((_point2.X + Point1.X) / 2.0f,
-                                        (_point2.Y + Point1.Y) / 2.0f);
-        // Calculate the rest of the arc parameters.
-        float radius = Point1.DistanceTo(_point2) / 2.0f;
-        float startAngle = (_point2 - Point1).Angle();
-        float endAngle = (Point1 - _point2).Angle();
-        if (endAngle < 0.0f)  // endAngle is likely negative, normalize it.
-        {
-            endAngle += Mathf.Tau;
-        }
+    public override void _Draw() { // Lấy trung bình các điểm để tìm tâm. Vector2 center = new Vector2((_point2.X + Point1.X) / 2.0f, (_point2.Y + Point1.Y) / 2.0f); // Tính các tham số còn lại của cung. float radius = Point1.DistanceTo(_point2) / 2.0f; float startAngle = (_point2 - Point1).Angle(); float endAngle = (Point1 - _point2).Angle(); if (endAngle < 0.0f) // endAngle có thể là số âm, hãy chuẩn hóa nó. { endAngle += Mathf.Tau; }
 
-        // Finally, draw the arc.
-        DrawArc(center, radius, startAngle, endAngle, Segments, Color,
-                Width, AntiAliasing);
-    }
+        // Cuối cùng, vẽ cung. DrawArc(center, radius, startAngle, endAngle, Segments, Color, Width, AntiAliasing); }
 
-The center of the semicircle will be the middle point between both points.
-The radius will be half the distance between both points.
-The start and end angles will be the angles of the vector from point1
-to point2 and vice-versa.
-Note we had to normalize the ``end_angle`` in positive values because if
-``end_angle`` is less than ``start_angle``, the arc will be drawn
-counter-clockwise, which we don't want in this case (the arc would be
-upside-down).
+Tâm của hình bán nguyệt sẽ là điểm chính giữa hai điểm. Bán kính sẽ bằng một nửa khoảng cách giữa hai điểm. Góc bắt đầu và góc kết thúc sẽ là các góc của vector từ point1 đến point2 và ngược lại. Lưu ý rằng chúng ta phải chuẩn hóa ``end_angle`` thành các giá trị dương vì nếu ``end_angle`` nhỏ hơn ``start_angle``, cung sẽ được vẽ ngược chiều kim đồng hồ, điều mà chúng ta không muốn trong trường hợp này (cung sẽ bị lộn ngược).
 
-The result should be something like this, with the arc going down and
-between the points:
+Kết quả sẽ tương tự như sau, với cung hướng xuống và nằm giữa các điểm:
 
 .. image:: img/draw_arc_between_2_points.webp
 
-Feel free to play with the parameters in the inspector to obtain different
-results: change the color, the width, the antialiasing, and increase the
-number of segments to increase the curve smoothness, at the cost of extra
-performance.
+Bạn có thể thoải mái thử các tham số trong trình kiểm tra để tạo ra những kết quả khác nhau: thay đổi màu sắc, độ rộng, khử răng cưa và tăng số lượng đoạn để đường cong mượt hơn, đổi lại sẽ tốn thêm hiệu năng.

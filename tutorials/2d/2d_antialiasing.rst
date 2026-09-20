@@ -1,28 +1,23 @@
 .. _doc_2d_antialiasing:
 
-2D antialiasing
+Khử răng cưa 2D
 ===============
 
-.. Images on this page were generated using the project below
-.. (except for `antialiasing_none_scaled.webp`):
-.. https://github.com/Calinou/godot-antialiasing-comparison
+.. Hình ảnh trên trang này được tạo bằng dự án bên dưới .. (ngoại trừ `antialiasing_none_scaled.webp`): .. https://github.com/Calinou/godot-antialiasing-comparison
 
 .. seealso::
 
-    Godot also supports antialiasing in 3D rendering. This is covered on the
+    Godot cũng hỗ trợ khử răng cưa trong kết xuất 3D. Nội dung này được trình bày trên
     :ref:`doc_3d_antialiasing` page.
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Due to their limited resolution, scenes rendered in 2D can exhibit aliasing
-artifacts. These artifacts usually manifest in the form of a "staircase" effect on
-geometry edges, and are most noticeable when using nodes such as :ref:`class_Line2D`,
+Do có độ phân giải hạn chế, các cảnh được kết xuất trong 2D có thể xuất hiện các hiện tượng răng cưa. Những hiện tượng này thường biểu hiện dưới dạng hiệu ứng "bậc thang" trên các cạnh hình học và dễ nhận thấy nhất khi sử dụng các node như :ref:`class_Line2D`,
 :ref:`class_Polygon2D` or :ref:`class_TextureProgressBar`. :ref:`doc_custom_drawing_in_2d`
-can also have aliasing artifacts for methods that don't support antialiasing.
+cũng có thể xuất hiện hiện tượng răng cưa đối với những phương thức không hỗ trợ khử răng cưa.
 
-In the example below, you can notice how
-edges have a blocky appearance:
+Trong ví dụ dưới đây, bạn có thể nhận thấy các cạnh có vẻ ngoài dạng khối:
 
 .. figure:: img/antialiasing_none_scaled.webp
    :alt: Image is scaled by 2× with nearest-neighbor filtering to make aliasing more noticeable.
@@ -30,65 +25,37 @@ edges have a blocky appearance:
 
    Image is scaled by 2× with nearest-neighbor filtering to make aliasing more noticeable.
 
-To combat this, Godot supports several methods of enabling antialiasing on 2D rendering.
+Để khắc phục điều này, Godot hỗ trợ một số phương pháp bật khử răng cưa khi kết xuất 2D.
 
-Antialiasing property in Line2D and custom drawing
---------------------------------------------------
+Thuộc tính khử răng cưa trong Line2D và tính năng vẽ tùy chỉnh
+--------------------------------------------------------------
 
-This is the recommended method, as it has a lower performance impact in most cases.
+Đây là phương pháp được khuyến nghị vì trong hầu hết trường hợp, tác động đến hiệu suất thấp hơn.
 
-Line2D has an **Antialiased** property which you can enable in the inspector.
-Also, several methods for :ref:`doc_custom_drawing_in_2d` support an optional
-``antialiased`` parameter, which can be set to ``true`` when calling the
-function.
+Line2D có thuộc tính **Antialiased** mà bạn có thể bật trong trình kiểm tra. Ngoài ra, một số phương thức cho :ref:`doc_custom_drawing_in_2d` hỗ trợ tham số ``antialiased`` tùy chọn, có thể đặt thành ``true`` khi gọi hàm.
 
-These methods do not require MSAA to be enabled, which makes their *baseline*
-performance cost low. In other words, there is no permanent added cost if you're
-not drawing any antialiased geometry at some point.
+Các phương thức này không yêu cầu bật MSAA, nhờ đó chi phí hiệu suất *cơ bản* thấp. Nói cách khác, sẽ không có chi phí phát sinh cố định nếu tại một thời điểm nào đó bạn không vẽ hình học được khử răng cưa.
 
-The downside of these antialiasing methods is that they work by generating
-additional geometry. If you're generating complex 2D geometry that's updated
-every frame, this may be a bottleneck. Also, Polygon2D, TextureProgressBar, and
-several custom drawing methods don't feature an antialiased property. For these
-nodes, you can use 2D multisample antialiasing instead.
+Nhược điểm của các phương pháp khử răng cưa này là chúng hoạt động bằng cách tạo thêm hình học. Nếu bạn tạo hình học 2D phức tạp và cập nhật hình học đó trong mỗi khung hình, đây có thể trở thành điểm nghẽn. Ngoài ra, Polygon2D, TextureProgressBar và một số phương thức vẽ tùy chỉnh không có thuộc tính khử răng cưa. Đối với các node này, thay vào đó bạn có thể sử dụng khử răng cưa đa mẫu 2D.
 
-Multisample antialiasing (MSAA)
--------------------------------
+Khử răng cưa đa mẫu (MSAA)
+--------------------------
 
-*This is only available in the Forward+ and Mobile renderers, not the
-Compatibility renderer.*
+*Tính năng này chỉ khả dụng trong các trình kết xuất Forward+ và Mobile, không khả dụng trong trình kết xuất Compatibility.*
 
-Before enabling MSAA in 2D, it's important to understand what MSAA will operate
-on. MSAA in 2D follows similar restrictions as in 3D. While it does not
-introduce any blurriness, its scope of application is limited. The main
-applications of 2D MSAA are:
+Trước khi bật MSAA trong 2D, điều quan trọng là phải hiểu MSAA sẽ tác động lên những gì. MSAA trong 2D có các giới hạn tương tự như trong 3D. Mặc dù không gây ra hiện tượng mờ, phạm vi áp dụng của nó bị giới hạn. Các ứng dụng chính của MSAA 2D là:
 
-- Geometry edges, such as line and polygon drawing.
-- Sprite edges *only for pixels touching one of the texture's edges*. This works
-  for both linear and nearest-neighbor filtering. Sprite edges created using
-  transparency on the image are not affected by MSAA.
+- Các cạnh hình học, chẳng hạn như khi vẽ đường và đa giác. - Các cạnh sprite *chỉ đối với những pixel chạm vào một trong các cạnh của texture*. Điều này hoạt động với cả bộ lọc tuyến tính và bộ lọc láng giềng gần nhất. Các cạnh sprite được tạo bằng độ trong suốt trên hình ảnh không bị MSAA ảnh hưởng.
 
-The downside of MSAA is that it only operates on edges. This is because MSAA
-increases the number of *coverage* samples, but not the number of *color*
-samples. However, since the number of color samples did not increase, fragment
-shaders are still run for each pixel only once. As a result, MSAA will **not
-affect** the following kinds of aliasing in any way:
+Nhược điểm của MSAA là nó chỉ hoạt động trên các cạnh. Điều này là do MSAA tăng số lượng mẫu *coverage*, nhưng không tăng số lượng mẫu *color*. Tuy nhiên, vì số lượng mẫu màu không tăng nên các trình đổ bóng phân mảnh vẫn chỉ được chạy một lần cho mỗi pixel. Do đó, MSAA sẽ **không ảnh hưởng** đến các loại răng cưa sau đây theo bất kỳ cách nào:
 
-- Aliasing *within* nearest-neighbor filtered textures (pixel art).
-- Aliasing caused by custom 2D shaders.
-- Specular aliasing when using Light2D.
-- Aliasing in font rendering.
+- Răng cưa *bên trong* các texture được lọc bằng bộ lọc láng giềng gần nhất (pixel art). - Răng cưa do shader 2D tùy chỉnh gây ra. - Răng cưa phản chiếu khi sử dụng Light2D. - Răng cưa trong quá trình kết xuất phông chữ.
 
-MSAA can be enabled in the Project Settings by changing the value of the
+Có thể bật MSAA trong Project Settings bằng cách thay đổi giá trị của
 :ref:`Rendering > Anti Aliasing > Quality > MSAA 2D<class_ProjectSettings_property_rendering/anti_aliasing/quality/msaa_2d>`
-setting. It's important to change the value of the **MSAA 2D** setting and not **MSAA 3D**, as these are entirely
-separate settings.
+cài đặt. Điều quan trọng là phải thay đổi giá trị của cài đặt **MSAA 2D**, không phải **MSAA 3D**, vì đây là hai cài đặt hoàn toàn riêng biệt.
 
-Comparison between no antialiasing (left) and various MSAA levels (right). The
-top-left corner contains a Line2D node, the top-right corner contains 2
-TextureProgressBar nodes. The bottom contains 8 pixel art sprites, with 4 of
-them touching the edges (green background) and 4 of them not touching the edges
-(Godot logo):
+So sánh giữa không khử răng cưa (bên trái) và các mức MSAA khác nhau (bên phải). Góc trên bên trái chứa một node Line2D, góc trên bên phải chứa 2 node TextureProgressBar. Phần dưới chứa 8 sprite pixel art, trong đó 4 sprite chạm vào các cạnh (nền màu xanh lá) và 4 sprite không chạm vào các cạnh (logo Godot):
 
 .. image:: img/antialiasing_msaa_2x.webp
 

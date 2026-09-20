@@ -1,41 +1,26 @@
 .. _doc_using_tilesets:
 
-Using TileSets
-==============
+Sử dụng TileSet
+===============
 
-Introduction
-------------
+Giới thiệu
+----------
 
-A tilemap is a grid of tiles used to create a game's layout. There are several
-benefits to using :ref:`TileMapLayer <class_TileMapLayer>` nodes to design your
-levels. First, they let you draw a layout by "painting" tiles onto a grid,
-which is much faster than placing individual :ref:`Sprite2D
-<class_Sprite2D>` nodes one by one. Second, they allow for larger levels
-because they are optimized for drawing large numbers of tiles.
-Finally, they allow you to add greater functionality to your tiles with
-collision, occlusion, and navigation shapes.
+Tilemap là một lưới các tile được dùng để tạo bố cục của một trò chơi. Có một số lợi ích khi sử dụng các node :ref:`TileMapLayer <class_TileMapLayer>` để thiết kế màn chơi. Trước tiên, chúng cho phép bạn vẽ bố cục bằng cách “tô” các tile lên một lưới, nhanh hơn nhiều so với việc đặt từng node :ref:`Sprite2D <class_Sprite2D>` riêng lẻ. Thứ hai, chúng cho phép tạo các màn chơi lớn hơn vì được tối ưu hóa để vẽ số lượng lớn tile. Cuối cùng, chúng cho phép bạn bổ sung nhiều chức năng hơn cho các tile thông qua các hình dạng va chạm, che khuất và điều hướng.
 
-To use TileMapLayer nodes, you will need to create a TileSet first. A TileSet is a
-collection of tiles that can be placed in a TileMapLayer node. After creating a
-TileSet, you will be able to place them :ref:`using the TileMap editor
-<doc_using_tilemaps>`.
+Để sử dụng các node TileMapLayer, trước tiên bạn cần tạo một TileSet. TileSet là một tập hợp các tile có thể được đặt trong node TileMapLayer. Sau khi tạo TileSet, bạn sẽ có thể đặt chúng :ref:`using the TileMap editor <doc_using_tilemaps>`.
 
-To follow this guide, you will need an image containing your tiles where every
-tile has the same size (large objects can be split into several tiles). This
-image is called a *tilesheet*. Tiles do not have to be square: they can be
-rectangular, hexagonal, or isometric (pseudo-3D perspective).
+Để làm theo hướng dẫn này, bạn sẽ cần một hình ảnh chứa các tile, trong đó mọi tile đều có cùng kích thước (các đối tượng lớn có thể được chia thành nhiều tile). Hình ảnh này được gọi là một *tilesheet*. Các tile không nhất thiết phải có dạng vuông: chúng có thể là hình chữ nhật, hình lục giác hoặc isometric (phối cảnh giả 3D).
 
-Creating a new TileSet
-----------------------
+Tạo TileSet mới
+---------------
 
 .. _doc_creating_tilesets_using_tilesheet:
 
-Using a tilesheet
+Sử dụng tilesheet
 ~~~~~~~~~~~~~~~~~
 
-This demonstration will use the following tiles taken from
-`Kenney's "Abstract Platformer" pack <https://kenney.nl/assets/abstract-platformer>`__.
-We'll use this particular *tilesheet* from the set:
+Phần minh họa này sẽ sử dụng các tile sau, lấy từ gói `Kenney's "Abstract Platformer" pack <https://kenney.nl/assets/abstract-platformer>`__. Chúng ta sẽ sử dụng *tilesheet* cụ thể này trong bộ:
 
 .. figure:: img/using_tilesets_kenney_abstract_platformer_tile_sheet.webp
    :align: center
@@ -43,7 +28,7 @@ We'll use this particular *tilesheet* from the set:
 
    Tilesheet with 64×64 tiles. Credit: `Kenney <https://kenney.nl/assets/abstract-platformer>`__
 
-Create a new **TileMapLayer** node, then select it and create a new TileSet resource in the inspector:
+Tạo một node **TileMapLayer** mới, sau đó chọn node đó và tạo một tài nguyên TileSet mới trong inspector:
 
 .. figure:: img/using_tilesets_create_new_tileset.webp
    :align: center
@@ -51,16 +36,9 @@ Create a new **TileMapLayer** node, then select it and create a new TileSet reso
 
    Creating a new TileSet resource within the TileMapLayer node
 
-After creating the TileSet resource, click the value to unfold it in the
-inspector. The default tile shape is Square, but you can also choose Isometric,
-Half-Offset Square or Hexagon (depending on the shape of your tile images). If
-using a tile shape other than Square, you may also need to adjust the **Tile
-Layout** and **Tile Offset Axis** properties. Lastly, enabling the
-**Rendering > UV Clipping** property may be useful if you wish tiles to be clipped
-by their tile coordinates. This ensures tiles cannot draw outside their allocated
-area on the tilesheet.
+Sau khi tạo tài nguyên TileSet, hãy nhấp vào giá trị đó để mở rộng trong inspector. Hình dạng tile mặc định là Square, nhưng bạn cũng có thể chọn Isometric, Half-Offset Square hoặc Hexagon (tùy thuộc vào hình dạng của hình ảnh tile). Nếu sử dụng hình dạng tile khác Square, bạn cũng có thể cần điều chỉnh các thuộc tính **Tile Layout** và **Tile Offset Axis**. Cuối cùng, bật thuộc tính **Rendering > UV Clipping** có thể hữu ích nếu bạn muốn các tile được cắt theo tọa độ tile của chúng. Điều này đảm bảo các tile không thể vẽ ra ngoài vùng được cấp phát trên tilesheet.
 
-Set the tile size to 64×64 in the inspector to match the example tilesheet:
+Đặt kích thước tile thành 64×64 trong inspector để khớp với tilesheet mẫu:
 
 .. figure:: img/using_tilesets_specify_size_then_edit.webp
    :align: center
@@ -68,14 +46,9 @@ Set the tile size to 64×64 in the inspector to match the example tilesheet:
 
    Setting the tile size to 64×64 to match the example tilesheet
 
-If relying on automatic tiles creation (like we're about to do here), you must
-set the tile size **before** creating the *atlas*. The atlas will
-determine which tiles from the tilesheet can be added to a TileMapLayer node
-(as not every part of the image may be a valid tile).
+Nếu dựa vào việc tạo tile tự động (như chúng ta sắp thực hiện ở đây), bạn phải đặt kích thước tile **trước khi** tạo *atlas*. Atlas sẽ xác định những tile nào từ tilesheet có thể được thêm vào node TileMapLayer (vì không phải mọi phần của hình ảnh đều có thể là một tile hợp lệ).
 
-Open the **TileSet** panel at the bottom of the editor, then click and drag the
-tilesheet image onto the panel. You will be asked whether to create tiles
-automatically. Answer **Yes**:
+Mở panel **TileSet** ở cuối trình chỉnh sửa, sau đó nhấp và kéo hình ảnh tilesheet vào panel. Bạn sẽ được hỏi có muốn tự động tạo tile hay không. Hãy trả lời **Yes**:
 
 .. figure:: img/using_tilesets_create_tiles_automatically.webp
    :align: center
@@ -83,17 +56,13 @@ automatically. Answer **Yes**:
 
    Automatically creating tiles based on tilesheet image content
 
-This will automatically create tiles according to the tile size you specified
-earlier in the TileSet resource. This greatly speeds up initial tile setup.
+Thao tác này sẽ tự động tạo các tile theo kích thước tile bạn đã chỉ định trước đó trong tài nguyên TileSet. Điều này giúp tăng tốc đáng kể quá trình thiết lập tile ban đầu.
 
 .. note::
 
-    When using automatic tile generation based on image contents, parts of the
-    tilesheet that are *fully* transparent will not have tiles generated.
+    Khi sử dụng tính năng tạo tile tự động dựa trên nội dung hình ảnh, những phần của tilesheet *hoàn toàn* trong suốt sẽ không được tạo tile.
 
-If there are tiles from the tilesheet you do not wish to be present in atlas,
-choose the Eraser tool at the top of the tileset preview, then click the tiles
-you wish to remove:
+Nếu có những tile từ tilesheet mà bạn không muốn xuất hiện trong atlas, hãy chọn công cụ Eraser ở đầu phần xem trước tileset, sau đó nhấp vào những tile bạn muốn xóa:
 
 .. figure:: img/using_tilesets_eraser_tool.webp
    :align: center
@@ -101,21 +70,15 @@ you wish to remove:
 
    Using the Eraser tool to remove unwanted tiles from the TileSet atlas
 
-You can also right-click a tile and choose **Delete**, as an alternative to the
-Eraser tool.
+Bạn cũng có thể nhấp chuột phải vào một tile và chọn **Delete**, thay cho công cụ Eraser.
 
 .. tip::
 
-    Like in the 2D and TileMap editors, you can pan across the TileSet panel using
-    the middle or right mouse buttons, and zoom using the mouse wheel or buttons in
-    the top-left corner.
+    Tương tự như trong trình chỉnh sửa 2D và TileMap, bạn có thể di chuyển trong panel TileSet bằng nút chuột giữa hoặc chuột phải, và thu phóng bằng con lăn chuột hoặc các nút ở góc trên bên trái.
 
-If you wish to source tiles from several tilesheet images for a single TileSet,
-create additional atlases and assign textures to each of them before continuing.
-It is also possible to use one image per tile this way (although using
-tilesheets is recommended for better usability).
+Nếu muốn lấy tile từ nhiều hình ảnh tilesheet cho một TileSet duy nhất, hãy tạo thêm các atlas và gán texture cho từng atlas trước khi tiếp tục. Bạn cũng có thể sử dụng một hình ảnh cho mỗi tile theo cách này (mặc dù nên sử dụng tilesheet để dễ thao tác hơn).
 
-You can adjust properties for the atlas in the middle column:
+Bạn có thể điều chỉnh các thuộc tính của atlas trong cột giữa:
 
 .. figure:: img/using_tilesets_properties.webp
    :align: center
@@ -123,30 +86,11 @@ You can adjust properties for the atlas in the middle column:
 
    Adjusting TileSet atlas properties in the dedicated inspector (part of the TileSet panel)
 
-The following properties can be adjusted on the atlas:
+Có thể điều chỉnh các thuộc tính sau trên atlas:
 
-- **ID:** The identifier (unique within this TileSet), used for sorting.
-- **Name:** The human-readable name for the atlas. Use a descriptive name
-  here for organizational purposes (such as "terrain", "decoration", etc).
-- **Margins:** The margins on the image's edges that should not be selectable as
-  tiles (in pixels). Increasing this can be useful if you download a tilesheet
-  image that has margins on the edges (e.g. for attribution).
-- **Separation:** The separation between each tile on the atlas in pixels.
-  Increasing this can be useful if the tilesheet image you're using contains
-  guides (such as outlines between every tile).
-- **Texture Region Size:** The size of each tile on the atlas in pixels. In most
-  cases, this should match the tile size defined in the TileMapLayer property
-  (although this is not strictly necessary).
-- **Use Texture Padding:** If checked, adds a 1-pixel transparent edge around
-  each tile to prevent texture bleeding when filtering is enabled.
-  It's recommended to leave this enabled unless you're running into rendering issues
-  due to texture padding.
+- **ID:** Mã định danh (duy nhất trong TileSet này), được dùng để sắp xếp. - **Name:** Tên dễ đọc dành cho atlas. Hãy sử dụng một tên mang tính mô tả để phục vụ mục đích tổ chức (chẳng hạn như "terrain", "decoration", v.v.). - **Margins:** Phần lề ở các cạnh của hình ảnh không được phép chọn làm tile (tính bằng pixel). Việc tăng giá trị này có thể hữu ích nếu bạn tải xuống một hình ảnh tilesheet có phần lề ở các cạnh (ví dụ để ghi công). - **Separation:** Khoảng cách giữa mỗi tile trên atlas, tính bằng pixel. Việc tăng giá trị này có thể hữu ích nếu hình ảnh tilesheet bạn đang sử dụng chứa các đường hướng dẫn (chẳng hạn như đường viền giữa mỗi tile). - **Texture Region Size:** Kích thước của mỗi tile trên atlas, tính bằng pixel. Trong hầu hết trường hợp, giá trị này nên khớp với kích thước tile được xác định trong thuộc tính TileMapLayer (mặc dù điều này không bắt buộc). - **Use Texture Padding:** Nếu được chọn, tùy chọn này sẽ thêm một cạnh trong suốt rộng 1 pixel xung quanh mỗi tile để ngăn hiện tượng texture bleeding khi bật tính năng lọc. Bạn nên để tùy chọn này luôn được bật, trừ khi gặp vấn đề hiển thị do texture padding.
 
-Note that changing texture margin, separation and region size may cause tiles to
-be lost (as some of them would be located outside the atlas image's
-coordinates). To regenerate tiles automatically from the tilesheet, use the
-three vertical dots menu button at the top of the TileSet editor and choose
-**Create Tiles in Non-Transparent Texture Regions**:
+Lưu ý rằng việc thay đổi texture margin, separation và region size có thể khiến các tile bị mất (vì một số tile sẽ nằm ngoài tọa độ của hình ảnh atlas). Để tự động tạo lại tile từ tilesheet, hãy sử dụng nút menu có ba dấu chấm dọc ở đầu trình chỉnh sửa TileSet và chọn **Create Tiles in Non-Transparent Texture Regions**:
 
 .. figure:: img/using_tilesets_recreate_tiles_automatically.webp
    :align: center
@@ -154,28 +98,19 @@ three vertical dots menu button at the top of the TileSet editor and choose
 
    Recreating tiles automatically after changing atlas properties
 
-Using a collection of scenes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sử dụng một tập hợp các scene
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can also place actual *scenes* as tiles. This allows you to use
-any collection of nodes as a tile. For example, you could use scene tiles to
-place gameplay elements, such as shops the player may be able to interact with.
-You could also use scene tiles to place AudioStreamPlayer2Ds (for ambient
-sounds), particle effects, and more.
+Bạn cũng có thể đặt các *scene* thực tế làm tile. Điều này cho phép bạn sử dụng bất kỳ tập hợp node nào làm một tile. Ví dụ, bạn có thể dùng scene tile để đặt các thành phần gameplay, chẳng hạn như các cửa hàng mà người chơi có thể tương tác. Bạn cũng có thể dùng scene tile để đặt các AudioStreamPlayer2D (cho âm thanh môi trường), hiệu ứng hạt và nhiều thành phần khác.
 
 .. warning::
 
-   Scene tiles come with a greater performance overhead compared to atlases, as
-   every scene is instanced individually for every placed tile.
+   Scene tile có chi phí hiệu năng cao hơn so với atlas, vì mỗi scene được tạo instance riêng cho từng tile được đặt.
 
-   It's recommended to only use scene tiles when necessary. To draw sprites in a
-   tile without any kind of advanced manipulation,
+   Bạn chỉ nên sử dụng scene tile khi cần thiết. Để vẽ sprite trong một tile mà không cần bất kỳ thao tác nâng cao nào,
    :ref:`use atlases instead <doc_creating_tilesets_using_tilesheet>`.
 
-For this example, we'll create a scene containing a CPUParticles2D root node.
-Save this scene to a scene file (separate from the scene containing the
-TileMapLayer), then switch to the scene containing the TileMapLayer node. Open the TileSet
-editor, and create a new **Scenes Collection** in the left column:
+Trong ví dụ này, chúng ta sẽ tạo một scene chứa node gốc CPUParticles2D. Lưu scene này vào một tệp scene (tách biệt với scene chứa TileMapLayer), sau đó chuyển sang scene chứa node TileMapLayer. Mở trình chỉnh sửa TileSet và tạo một **Scenes Collection** mới trong cột bên trái:
 
 .. figure:: img/using_tilesets_creating_scene_collection.webp
    :align: center
@@ -183,9 +118,7 @@ editor, and create a new **Scenes Collection** in the left column:
 
    Creating a scenes collection in the TileSet editor
 
-After creating a scenes collection, you can enter a descriptive name for the
-scenes collection in the middle column if you wish. Select this scenes
-collection then create a new scene slot:
+Sau khi tạo một scenes collection, bạn có thể nhập tên mô tả cho scenes collection trong cột giữa nếu muốn. Chọn scenes collection này, sau đó tạo một scene slot mới:
 
 .. figure:: img/using_tilesets_scene_collection_create_scene_tile.webp
    :align: center
@@ -193,8 +126,7 @@ collection then create a new scene slot:
 
    Creating a scene tile after selecting the scenes collection in the TileSet editor
 
-Select this scene slot in the right column, then use **Quick Load** (or
-**Load**) to load the scene file containing the particles:
+Chọn scene slot này trong cột bên phải, sau đó sử dụng **Quick Load** (hoặc **Load**) để tải tệp scene chứa các hạt:
 
 .. figure:: img/using_tilesets_adding_scene_tile.webp
    :align: center
@@ -202,21 +134,14 @@ Select this scene slot in the right column, then use **Quick Load** (or
 
    Creating a scene slot, then loading a scene file into it in the TileSet editor
 
-You now have a scene tile in your TileSet. Once you switch to the TileMap
-editor, you'll be able to select it from the scenes collection and paint it like
-any other tile.
+Bây giờ bạn đã có một scene tile trong TileSet. Khi chuyển sang trình chỉnh sửa TileMap, bạn sẽ có thể chọn scene tile đó từ scenes collection và tô nó như bất kỳ tile nào khác.
 
-Merging several atlases into a single atlas
--------------------------------------------
+Gộp nhiều atlas thành một atlas duy nhất
+----------------------------------------
 
-Using multiple atlases within a single TileSet resource can sometimes be useful,
-but it can also be cumbersome in certain situations (especially if you're using
-one image per tile). Godot allows you to merge several atlases into a single
-atlas for easier organization.
+Việc sử dụng nhiều atlas trong một tài nguyên TileSet duy nhất đôi khi có thể hữu ích, nhưng cũng có thể gây bất tiện trong một số tình huống (đặc biệt nếu bạn sử dụng một hình ảnh cho mỗi tile). Godot cho phép bạn gộp nhiều atlas thành một atlas duy nhất để dễ tổ chức hơn.
 
-To do so, you must have more than one atlas created in the TileSet resource.
-Use the "three vertical dots" menu button located at the bottom of the list of
-atlases, then choose **Open Atlas Merging Tool**:
+Để thực hiện việc này, bạn phải có nhiều hơn một atlas được tạo trong tài nguyên TileSet. Sử dụng nút menu "three vertical dots" nằm ở cuối danh sách atlas, sau đó chọn **Open Atlas Merging Tool**:
 
 .. figure:: img/using_tilesets_open_atlas_merging_tool.webp
    :align: center
@@ -224,7 +149,7 @@ atlases, then choose **Open Atlas Merging Tool**:
 
    Opening the atlas merging tool after creating multiple atlases
 
-This will open a dialog, in which you can select several atlases by holding
+Thao tác này sẽ mở một hộp thoại, trong đó bạn có thể chọn nhiều atlas bằng cách giữ
 :kbd:`Shift` or :kbd:`Ctrl` then clicking on multiple elements:
 
 .. figure:: img/using_tilesets_atlas_merging_tool_dialog.webp
@@ -233,48 +158,26 @@ This will open a dialog, in which you can select several atlases by holding
 
    Using the atlas merging tool dialog
 
-Choose **Merge** to merge the selected atlases into a single atlas image (which
-translates to a single atlas within the TileSet). The unmerged atlases will be
-removed within the TileSet, but *the original tilesheet images will be kept on
-the filesystem*. If you don't want the unmerged atlases to be removed from the
-TileSet resource, choose **Merge (Keep Original Atlases)** instead.
+Chọn **Merge** để gộp các atlas đã chọn thành một hình ảnh atlas duy nhất (tương ứng với một atlas duy nhất trong TileSet). Các atlas chưa được gộp sẽ bị xóa khỏi TileSet, nhưng *các hình ảnh tilesheet gốc sẽ vẫn được giữ trong hệ thống tệp*. Nếu không muốn các atlas chưa được gộp bị xóa khỏi tài nguyên TileSet, hãy chọn **Merge (Keep Original Atlases)** thay thế.
 
 .. tip::
 
-    TileSet features a system of *tile proxies*. Tile proxies are a mapping
-    table that allows notifying the TileMap using a given TileSet that a given
-    set of tile identifiers should be replaced by another one.
+    TileSet có một hệ thống *tile proxy*. Tile proxy là một bảng ánh xạ cho phép thông báo cho TileMap đang sử dụng một TileSet nhất định rằng một tập hợp mã định danh tile nhất định nên được thay thế bằng một tập hợp khác.
 
-    Tile proxies are automatically set up when merging different atlases, but
-    they can also be set manually thanks to the **Manage Tile Proxies** dialog
-    you can access using the "three vertical dots" menu mentioned above.
+    Tile proxy được tự động thiết lập khi gộp các atlas khác nhau, nhưng bạn cũng có thể thiết lập thủ công thông qua hộp thoại **Manage Tile Proxies**, có thể truy cập bằng menu "three vertical dots" đã đề cập ở trên.
 
-    Manually creating tile proxies may be useful when you changed an atlas ID or
-    want to replace all tiles from an atlas by the ones from another atlas. Note
-    that when editing a TileMap, you can replace all cells by their
-    corresponding mapped value.
+    Việc tạo tile proxy thủ công có thể hữu ích khi bạn thay đổi ID của một atlas hoặc muốn thay thế tất cả tile từ một atlas bằng tile từ atlas khác. Lưu ý rằng khi chỉnh sửa một TileMap, bạn có thể thay thế tất cả các ô bằng giá trị ánh xạ tương ứng của chúng.
 
-Adding collision, navigation and occlusion to the TileSet
----------------------------------------------------------
+Thêm va chạm, điều hướng và che khuất vào TileSet
+-------------------------------------------------
 
-We've now successfully created a basic TileSet. We could start using it in the
-TileMapLayer node now, but it currently lacks any form of collision detection.
-This means the player and other objects could walk straight through the floor or
-walls.
+Bây giờ chúng ta đã tạo thành công một TileSet cơ bản. Chúng ta có thể bắt đầu sử dụng nó trong node TileMapLayer, nhưng hiện tại nó chưa có bất kỳ hình thức phát hiện va chạm nào. Điều này có nghĩa là người chơi và các đối tượng khác có thể đi thẳng xuyên qua sàn hoặc tường.
 
-If you use :ref:`2D navigation <doc_navigation_overview_2d>`, you'll also need
-to define navigation polygons for tiles to generate a navigation mesh that
-agents can use for pathfinding.
+Nếu bạn sử dụng :ref:`2D navigation <doc_navigation_overview_2d>`, bạn cũng sẽ cần xác định các polygon điều hướng cho tile để tạo một lưới điều hướng mà các agent có thể sử dụng để tìm đường.
 
-Lastly, if you use :ref:`doc_2d_lights_and_shadows` or GPUParticles2D, you may
-also want your TileSet to be able to cast shadows and collide with particles.
-This requires defining occluder polygons for "solid" tiles on the TileSet.
+Cuối cùng, nếu bạn sử dụng :ref:`doc_2d_lights_and_shadows` hoặc GPUParticles2D, bạn cũng có thể muốn TileSet của mình có khả năng đổ bóng và va chạm với các hạt. Điều này yêu cầu xác định các polygon che khuất cho các tile "solid" trong TileSet.
 
-To be able to define collision, navigation and occlusion shapes for each tile,
-you will need to create a physics, navigation or occlusion layer for the TileSet
-resource first. To do so, select the TileMapLayer node, click the TileSet property
-value in the inspector to edit it then unfold **Physics Layers** and choose
-**Add Element**:
+Để có thể xác định các hình dạng va chạm, điều hướng và che khuất cho từng ô, trước tiên bạn cần tạo một lớp vật lý, điều hướng hoặc che khuất cho tài nguyên TileSet. Để thực hiện việc này, hãy chọn node TileMapLayer, nhấp vào giá trị thuộc tính TileSet trong trình kiểm tra để chỉnh sửa, sau đó mở **Physics Layers** và chọn **Add Element**:
 
 .. figure:: img/using_tilesets_create_physics_layer.webp
    :align: center
@@ -282,7 +185,7 @@ value in the inspector to edit it then unfold **Physics Layers** and choose
 
    Creating a physics layer in the TileSet resource inspector (within the TileMapLayer node)
 
-If you also need navigation support, now is a good time to create a navigation layer:
+Nếu bạn cũng cần hỗ trợ điều hướng, đây là lúc thích hợp để tạo một lớp điều hướng:
 
 .. figure:: img/using_tilesets_create_navigation_layer.webp
    :align: center
@@ -290,7 +193,7 @@ If you also need navigation support, now is a good time to create a navigation l
 
    Creating a navigation layer in the TileSet resource inspector (within the TileMapLayer node)
 
-If you need support for light polygon occluders, now is a good time to create an occlusion layer:
+Nếu bạn cần hỗ trợ các vật cản đa giác ánh sáng, đây là lúc thích hợp để tạo một lớp che khuất:
 
 .. figure:: img/using_tilesets_create_occlusion_layer.webp
    :align: center
@@ -300,17 +203,11 @@ If you need support for light polygon occluders, now is a good time to create an
 
 .. note::
 
-    Future steps in this tutorial are tailored to creating collision polygons,
-    but the procedure for navigation and occlusion is very similar.
-    Their respective polygon editors behave in the same way, so these steps are
-    not repeated for brevity.
+    Các bước tiếp theo trong hướng dẫn này tập trung vào việc tạo các đa giác va chạm, nhưng quy trình dành cho điều hướng và che khuất cũng tương tự. Trình chỉnh sửa đa giác tương ứng hoạt động theo cùng một cách, vì vậy các bước này không được lặp lại để tránh dài dòng.
 
-    The only caveat is that the tile's occlusion polygon property is part of a
-    **Rendering** subsection in the atlas inspector. Make sure to unfold this
-    section so you can edit the polygon.
+    Điểm cần lưu ý duy nhất là thuộc tính đa giác che khuất của ô nằm trong mục **Rendering** của trình kiểm tra atlas. Hãy mở mục này để bạn có thể chỉnh sửa đa giác.
 
-After creating a physics layer, you have access to the **Physics Layer** section
-in the TileSet atlas inspector:
+Sau khi tạo một lớp vật lý, bạn có quyền truy cập vào mục **Physics Layer** trong trình kiểm tra atlas TileSet:
 
 .. figure:: img/using_tilesets_selecting_collision_editor.webp
    :align: center
@@ -318,9 +215,7 @@ in the TileSet atlas inspector:
 
    Opening the collision editor while in Select mode
 
-You can quickly create a rectangle collision shape by pressing :kbd:`F` while
-the TileSet editor is focused. If the keyboard shortcut doesn't work, try
-clicking in the empty area around the polygon editor to focus it:
+Bạn có thể nhanh chóng tạo một hình dạng va chạm hình chữ nhật bằng cách nhấn :kbd:`F` khi trình chỉnh sửa TileSet đang được chọn. Nếu phím tắt không hoạt động, hãy thử nhấp vào vùng trống xung quanh trình chỉnh sửa đa giác để lấy tiêu điểm:
 
 .. figure:: img/using_tilesets_using_default_rectangle_collision.webp
    :align: center
@@ -328,19 +223,11 @@ clicking in the empty area around the polygon editor to focus it:
 
    Using default rectangle collision shape by pressing :kbd:`F`
 
-In this tile collision editor, you have access to all the 2D polygon editing tools:
+Trong trình chỉnh sửa va chạm của ô này, bạn có quyền truy cập vào tất cả các công cụ chỉnh sửa đa giác 2D:
 
-- Use the toolbar above the polygon to toggle between creating a new polygon,
-  editing an existing polygon and removing points on the polygon. The "three vertical dots"
-  menu button offers additional options, such as rotating and flipping the polygon.
-- Create new points by clicking and dragging a line between two points.
-- Remove a point by right-clicking it (or using the Remove tool described above
-  and left-clicking).
-- Pan in the editor by middle-clicking or right-clicking. (Right-click panning
-  can only be used in areas where there is no point nearby.)
+- Sử dụng thanh công cụ phía trên đa giác để chuyển đổi giữa việc tạo đa giác mới, chỉnh sửa đa giác hiện có và xóa các điểm trên đa giác. Nút menu "ba chấm dọc" cung cấp các tùy chọn bổ sung, chẳng hạn như xoay và lật đa giác. - Tạo các điểm mới bằng cách nhấp và kéo một đường giữa hai điểm. - Xóa một điểm bằng cách nhấp chuột phải vào điểm đó (hoặc sử dụng công cụ Remove được mô tả ở trên rồi nhấp chuột trái). - Di chuyển khung nhìn trong trình chỉnh sửa bằng cách nhấp chuột giữa hoặc nhấp chuột phải. (Chỉ có thể sử dụng thao tác di chuyển bằng chuột phải ở những khu vực không có điểm nào ở gần.)
 
-You can use the default rectangle shape to quickly create a triangle-shaped
-collision shape by removing one of the points:
+Bạn có thể sử dụng hình chữ nhật mặc định để nhanh chóng tạo một hình dạng va chạm hình tam giác bằng cách xóa một trong các điểm:
 
 .. figure:: img/using_tilesets_creating_triangle_collision.webp
    :align: center
@@ -348,7 +235,7 @@ collision shape by removing one of the points:
 
    Creating a triangle collision shape by right-clicking one of the corners to remove it
 
-You can also use the rectangle as a base for more complex shapes by adding more points:
+Bạn cũng có thể sử dụng hình chữ nhật làm nền tảng cho các hình dạng phức tạp hơn bằng cách thêm nhiều điểm:
 
 .. figure:: img/using_tilesets_drawing_custom_collision.webp
    :align: center
@@ -358,26 +245,15 @@ You can also use the rectangle as a base for more complex shapes by adding more 
 
 .. tip::
 
-    If you have a large tileset, specifying the collision for each tile
-    individually could take a lot of time. This is especially true as TileMaps
-    tend to have many tiles with common collision patterns (such as solid blocks
-    or 45-degree slopes). To apply a similar collision shape to several tiles
-    quickly, use functionality to
+    Nếu bạn có một tileset lớn, việc chỉ định va chạm cho từng ô riêng lẻ có thể tốn rất nhiều thời gian. Điều này đặc biệt đúng vì TileMap thường có nhiều ô với các mẫu va chạm phổ biến (chẳng hạn như khối đặc hoặc dốc 45 độ). Để nhanh chóng áp dụng một hình dạng va chạm tương tự cho nhiều ô, hãy sử dụng chức năng để
     :ref:`assign properties to multiple tiles at once <doc_using_tilemaps_assigning_properties_to_multiple_tiles>`.
 
-Assigning custom metadata to the TileSet's tiles
+Gán siêu dữ liệu tùy chỉnh cho các ô của TileSet
 ------------------------------------------------
 
-You can assign custom data on a per-tile basis using *custom data layers*.
-This can be useful to store information specific to your game, such as the damage
-that a tile should deal when the player touches it, or whether a tile can be
-destroyed using a weapon.
+Bạn có thể gán dữ liệu tùy chỉnh cho từng ô bằng cách sử dụng *custom data layers*. Điều này có thể hữu ích để lưu trữ thông tin dành riêng cho trò chơi của bạn, chẳng hạn như lượng sát thương mà một ô sẽ gây ra khi người chơi chạm vào ô đó, hoặc liệu một ô có thể bị phá hủy bằng vũ khí hay không.
 
-The data is associated with the tile in the TileSet: all instances of the placed
-tile will use the same custom data. If you need to create a variant of a tile
-that has different custom data, this can be done by :ref:`creating an
-alternative tile <doc_using_tilesets_creating_alternative_tiles>` and changing
-the custom data for the alternative tile only.
+Dữ liệu được liên kết với ô trong TileSet: tất cả các thực thể của ô đã được đặt sẽ sử dụng cùng một dữ liệu tùy chỉnh. Nếu bạn cần tạo một biến thể của ô có dữ liệu tùy chỉnh khác, bạn có thể thực hiện việc này bằng :ref:`creating an alternative tile <doc_using_tilesets_creating_alternative_tiles>` và chỉ thay đổi dữ liệu tùy chỉnh cho ô thay thế.
 
 .. figure:: img/using_tilesets_create_custom_data_layer.webp
    :align: center
@@ -391,12 +267,9 @@ the custom data for the alternative tile only.
 
    Example of configured custom data layers with game-specific properties
 
-You can reorder custom data without breaking existing metadata: the TileSet
-editor will update automatically after reordering custom data properties.
+Bạn có thể sắp xếp lại dữ liệu tùy chỉnh mà không làm hỏng siêu dữ liệu hiện có: trình chỉnh sửa TileSet sẽ tự động cập nhật sau khi sắp xếp lại các thuộc tính dữ liệu tùy chỉnh.
 
-With the custom data layers example shown above, we're assigning a tile to have the
-``damage_per_second`` metadata set to ``25`` and the ``destructible`` metadata
-to ``false``:
+Với ví dụ về các lớp dữ liệu tùy chỉnh được hiển thị ở trên, chúng ta đang gán cho một ô siêu dữ liệu ``damage_per_second`` có giá trị ``25`` và siêu dữ liệu ``destructible`` có giá trị ``false``:
 
 .. figure:: img/using_tilesets_edit_custom_data.webp
    :align: center
@@ -405,7 +278,7 @@ to ``false``:
    Editing custom data in the TileSet editor while in Select mode
 
 :ref:`Tile property painting <doc_using_tilemaps_using_tile_property_painting>`
-can also be used for custom data:
+cũng có thể được sử dụng cho dữ liệu tùy chỉnh:
 
 .. figure:: img/using_tilesets_paint_custom_data.webp
    :align: center
@@ -415,41 +288,26 @@ can also be used for custom data:
 
 .. _doc_using_tilesets_creating_terrain_sets:
 
-Creating terrain sets (autotiling)
-----------------------------------
+Tạo các bộ địa hình (tự động lát)
+---------------------------------
 
 .. note::
 
-    This functionality was implemented in a different form as *autotiling* in Godot 3.x.
-    Terrains are essentially a more powerful replacement of autotiles. Unlike
-    autotiles, terrains can support transitions from one terrain to another, as
-    a tile may define several terrains at once.
+    Chức năng này từng được triển khai dưới một hình thức khác với tên gọi *autotiling* trong Godot 3.x. Về cơ bản, địa hình là một phiên bản thay thế mạnh mẽ hơn của autotile. Không giống autotile, địa hình có thể hỗ trợ chuyển tiếp từ địa hình này sang địa hình khác, vì một ô có thể xác định nhiều địa hình cùng lúc.
 
-    Unlike before, where autotiles were a specific kind of tiles, terrains are
-    only a set of properties assigned to atlas tiles. These properties are then
-    used by a dedicated TileMap painting mode that selects tiles featuring
-    terrain data in a smart way. This means any terrain tile can be either
-    painted as terrain or as a single tile, like any other.
+    Không giống như trước đây, khi autotile là một loại ô cụ thể, địa hình chỉ là một tập hợp các thuộc tính được gán cho các ô atlas. Sau đó, các thuộc tính này được sử dụng bởi một chế độ vẽ TileMap chuyên dụng, chế độ này lựa chọn các ô có dữ liệu địa hình theo cách thông minh. Điều này có nghĩa là bất kỳ ô địa hình nào cũng có thể được vẽ dưới dạng địa hình hoặc dưới dạng một ô đơn, giống như mọi ô khác.
 
-A "polished" tileset generally features variations that you should use on
-corners or edges of platforms, floors, etc. While these can be placed manually,
-this quickly becomes tedious. Handling this situation with procedurally
-generated levels can also be difficult and require a lot of code.
+Một tileset "hoàn thiện" thường có các biến thể mà bạn nên sử dụng ở các góc hoặc cạnh của bục, sàn, v.v. Mặc dù có thể đặt chúng thủ công, việc này nhanh chóng trở nên tẻ nhạt. Xử lý tình huống này với các màn chơi được tạo theo quy trình cũng có thể khó khăn và đòi hỏi nhiều mã.
 
-Godot offers *terrains* to perform this kind of tile connection automatically.
-This allows you to have the "correct" tile variants automatically used.
+Godot cung cấp *terrains* để tự động thực hiện kiểu kết nối ô này. Điều này cho phép bạn tự động sử dụng các biến thể ô "đúng".
 
-Terrains are grouped into terrain sets. Each terrain set is assigned a mode from
-**Match Corners and Sides**, **Match Corners** and **Match sides**. They define how
-terrains are matched to each other in a terrain set.
+Các địa hình được nhóm thành các bộ địa hình. Mỗi bộ địa hình được gán một chế độ từ **Match Corners and Sides**, **Match Corners** và **Match sides**. Chúng xác định cách các địa hình được đối sánh với nhau trong một bộ địa hình.
 
 .. note::
 
-    The above modes correspond to the previous bitmask modes autotiles used in
-    Godot 3.x: 2×2, 3×3 or 3×3 minimal. This is also similar to what
-    the `Tiled <https://www.mapeditor.org/>`__ editor features.
+    Các chế độ trên tương ứng với các chế độ bitmask trước đây mà autotile sử dụng trong Godot 3.x: 2×2, 3×3 hoặc 3×3 minimal. Điều này cũng tương tự như những gì trình chỉnh sửa `Tiled <https://www.mapeditor.org/>`__ cung cấp.
 
-Select the TileMapLayer node, go to the inspector and create a new terrain set within the TileSet *resource*:
+Chọn node TileMapLayer, đi tới trình kiểm tra và tạo một bộ địa hình mới trong *resource* TileSet:
 
 .. figure:: img/using_tilesets_create_terrain_set.webp
    :align: center
@@ -457,7 +315,7 @@ Select the TileMapLayer node, go to the inspector and create a new terrain set w
 
    Creating a terrain set in the TileSet resource inspector (within the TileMapLayer node)
 
-After creating a terrain set, you **must** create one or more terrains *within* the terrain set:
+Sau khi tạo một bộ địa hình, bạn **phải** tạo một hoặc nhiều địa hình *within* bộ địa hình đó:
 
 .. figure:: img/using_tilesets_create_terrain.webp
    :align: center
@@ -465,16 +323,11 @@ After creating a terrain set, you **must** create one or more terrains *within* 
 
    Creating a terrain within the terrain set
 
-In the TileSet editor, switch to Select mode and click a tile. In the middle
-column, unfold the **Terrains** section then assign a terrain set ID and a
-terrain ID for the tile. ``-1`` means "no terrain set" or "no terrain", which
-means you must set **Terrain Set** to ``0`` or greater before you can set
-**Terrain** to ``0`` or greater.
+Trong trình chỉnh sửa TileSet, chuyển sang chế độ Select và nhấp vào một ô. Trong cột giữa, mở mục **Terrains**, sau đó gán ID bộ địa hình và ID địa hình cho ô. ``-1`` có nghĩa là "không có bộ địa hình" hoặc "không có địa hình", nghĩa là bạn phải đặt **Terrain Set** thành ``0`` hoặc lớn hơn trước khi có thể đặt **Terrain** thành ``0`` hoặc lớn hơn.
 
 .. note::
 
-   Terrain set IDs and terrain IDs are independent from each other. They also
-   start from ``0``, not ``1``.
+   ID bộ địa hình và ID địa hình độc lập với nhau. Chúng cũng bắt đầu từ ``0``, không phải ``1``.
 
 .. figure:: img/using_tilesets_configure_terrain_on_tile.webp
    :align: center
@@ -482,16 +335,9 @@ means you must set **Terrain Set** to ``0`` or greater before you can set
 
    Configuring terrain on a single tile in the TileSet editor's Select mode
 
-After doing so, you can now configure the **Terrain Peering Bits** section which
-becomes visible in the middle column. The peering bits determine which tile will
-be placed depending on neighboring tiles. ``-1`` is a special value which refers
-to empty space.
+Sau khi thực hiện việc đó, bạn có thể cấu hình mục **Terrain Peering Bits**, mục này sẽ hiển thị trong cột giữa. Các bit liên kết địa hình xác định ô nào sẽ được đặt tùy thuộc vào các ô lân cận. ``-1`` là một giá trị đặc biệt dùng để chỉ khoảng trống.
 
-For example, if a tile has all its bits set to ``0`` or greater, it will only
-appear if *all* 8 neighboring tiles are using a tile with the same terrain ID.
-If a tile has its bits set to ``0`` or greater,
-but the top-left, top and top-right bits are set to ``-1``, it will only appear
-if there is empty space on top of it (including diagonally).
+Ví dụ: nếu một ô có tất cả các bit được đặt thành ``0`` hoặc lớn hơn, ô đó sẽ chỉ xuất hiện nếu *tất cả* 8 ô lân cận đều sử dụng một ô có cùng ID địa hình. Nếu một ô có các bit được đặt thành ``0`` hoặc lớn hơn, nhưng các bit trên-trái, trên và trên-phải được đặt thành ``-1``, ô đó sẽ chỉ xuất hiện nếu phía trên nó có khoảng trống (bao gồm cả theo đường chéo).
 
 .. figure:: img/using_tilesets_configure_terrain_peering_bits.webp
    :align: center
@@ -499,7 +345,7 @@ if there is empty space on top of it (including diagonally).
 
    Configuring terrain peering bits on a single tile in the TileSet editor's Select mode
 
-An example configuration for a full tilesheet may look as follows:
+Một cấu hình mẫu cho một tilesheet đầy đủ có thể trông như sau:
 
 .. figure:: img/using_tilesets_terrain_example_tilesheet.webp
    :align: center
@@ -515,31 +361,23 @@ An example configuration for a full tilesheet may look as follows:
 
 .. _doc_using_tilemaps_assigning_properties_to_multiple_tiles:
 
-Assigning properties to multiple tiles at once
-----------------------------------------------
+Gán thuộc tính cho nhiều ô cùng lúc
+-----------------------------------
 
-There are two ways to assign properties to multiple tiles at once.
-Depending on your use cases, one method may be faster than the other:
+Có hai cách để gán thuộc tính cho nhiều ô cùng lúc. Tùy vào trường hợp sử dụng, một phương pháp có thể nhanh hơn phương pháp còn lại:
 
-Using multiple tile selection
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sử dụng tính năng chọn nhiều ô
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you wish to configure various properties on several tiles at once,
-choose the **Select** mode at the top of the TileSet editor:
+Nếu bạn muốn cấu hình nhiều thuộc tính trên nhiều ô cùng lúc, hãy chọn chế độ **Select** ở phía trên trình chỉnh sửa TileSet:
 
-After doing this, you can select multiple tiles on the right column by holding
+Sau khi thực hiện việc này, bạn có thể chọn nhiều ô trong cột bên phải bằng cách giữ
 :kbd:`Shift` then clicking on tiles. You can also perform rectangle selection by
-holding down the left mouse button then dragging the mouse. Lastly, you can
-deselect tiles that were already selected (without affecting the rest of the
-selection) by holding :kbd:`Shift` then clicking on a selected tile.
+giữ nút chuột trái rồi kéo chuột. Cuối cùng, bạn có thể bỏ chọn các ô đã được chọn (mà không ảnh hưởng đến phần còn lại của vùng chọn) bằng cách giữ :kbd:`Shift` rồi nhấp vào một ô đã chọn.
 
-You can then assign properties using the inspector in the middle column of the
-TileSet editor. Only properties that you change here will be applied to all
-selected tiles. Like in the editor's inspector, properties that differ on
-selected tiles will remain different until you edit them.
+Sau đó, bạn có thể gán thuộc tính bằng trình kiểm tra trong cột giữa của trình chỉnh sửa TileSet. Chỉ những thuộc tính mà bạn thay đổi ở đây mới được áp dụng cho tất cả các ô đã chọn. Giống như trình kiểm tra của trình chỉnh sửa, các thuộc tính khác nhau giữa những ô đã chọn sẽ vẫn khác nhau cho đến khi bạn chỉnh sửa chúng.
 
-With numerical and color properties, you will also see a preview of the
-property's value on all tiles in the atlas after editing a property:
+Đối với các thuộc tính dạng số và màu sắc, bạn cũng sẽ thấy bản xem trước giá trị của thuộc tính trên tất cả các ô trong atlas sau khi chỉnh sửa một thuộc tính:
 
 .. figure:: img/using_tilesets_select_and_set_tile_properties.webp
    :align: center
@@ -549,15 +387,12 @@ property's value on all tiles in the atlas after editing a property:
 
 .. _doc_using_tilemaps_using_tile_property_painting:
 
-Using tile property painting
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sử dụng tính năng vẽ thuộc tính ô
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you wish to apply a single property to several tiles at once,
-you can use the *property painting* mode for this purpose.
+Nếu bạn muốn áp dụng một thuộc tính duy nhất cho nhiều ô cùng lúc, bạn có thể sử dụng chế độ *property painting* cho mục đích này.
 
-Configure a property to be painted in the middle column, then
-click on tiles (or hold down the left mouse button) in the right column
-to "paint" properties onto tiles.
+Cấu hình một thuộc tính cần vẽ trong cột giữa, sau đó nhấp vào các ô (hoặc giữ nút chuột trái) trong cột bên phải để "vẽ" các thuộc tính lên các ô.
 
 .. figure:: img/using_tilesets_paint_tile_properties.webp
    :align: center
@@ -565,8 +400,7 @@ to "paint" properties onto tiles.
 
    Painting tile properties using the TileSet editor
 
-Tile property painting is especially useful with properties that are
-time-consuming to set manually, such as collision shapes:
+Tính năng vẽ thuộc tính ô đặc biệt hữu ích với những thuộc tính tốn nhiều thời gian để thiết lập thủ công, chẳng hạn như các hình dạng va chạm:
 
 .. figure:: img/using_tilesets_paint_tile_properties_collision.webp
    :align: center
@@ -576,23 +410,16 @@ time-consuming to set manually, such as collision shapes:
 
 .. _doc_using_tilesets_creating_alternative_tiles:
 
-Creating alternative tiles
---------------------------
+Tạo các ô thay thế
+------------------
 
-Sometimes, you want to use a single tile image (found only once within the
-atlas), but configured in different ways. For example, you may want to use the
-same tile image, but rotated, flipped, or modulated with a different color. This
-can be done using *alternative tiles*.
+Đôi khi, bạn muốn sử dụng một hình ảnh ô duy nhất (chỉ xuất hiện một lần trong atlas), nhưng được cấu hình theo những cách khác nhau. Ví dụ: bạn có thể muốn sử dụng cùng một hình ảnh ô, nhưng xoay, lật hoặc điều chỉnh màu khác. Bạn có thể thực hiện việc này bằng *alternative tiles*.
 
 .. tip::
 
-      Since Godot 4.2, you don't have to create alternative tiles to rotate or
-      flip tiles anymore. You can rotate any tile while placing it in the
-      TileMap editor by using the rotation/flip buttons in the TileMap editor
-      toolbar.
+      Kể từ Godot 4.2, bạn không còn phải tạo các ô thay thế để xoay hoặc lật ô nữa. Bạn có thể xoay bất kỳ ô nào trong khi đặt ô đó trong trình chỉnh sửa TileMap bằng cách sử dụng các nút xoay/lật trên thanh công cụ của trình chỉnh sửa TileMap.
 
-To create an alternative tile, right-click a base tile in the atlas displayed by
-the TileSet editor, then choose **Create an Alternative Tile**:
+Để tạo một ô thay thế, hãy nhấp chuột phải vào một ô cơ sở trong atlas được hiển thị bởi trình chỉnh sửa TileSet, sau đó chọn **Create an Alternative Tile**:
 
 .. figure:: img/using_tilesets_create_alternative_tile.webp
    :align: center
@@ -600,14 +427,9 @@ the TileSet editor, then choose **Create an Alternative Tile**:
 
    Creating an alternative tile by right-clicking a base tile in the TileSet editor
 
-If currently in Select mode, the alternative tile will already be selected
-for editing. If not currently in Select mode, you can still create alternative
-tiles, but you will need to switch to Select mode and select the alternative
-tile to edit it.
+Nếu hiện đang ở chế độ Select, ô thay thế sẽ được chọn sẵn để chỉnh sửa. Nếu hiện không ở chế độ Select, bạn vẫn có thể tạo các ô thay thế, nhưng bạn sẽ cần chuyển sang chế độ Select và chọn ô thay thế để chỉnh sửa.
 
-If you don't see the alternative tile, pan over to the right of the atlas image,
-as alternative tiles always appear on the right of base tiles of a given atlas
-in the TileSet editor:
+Nếu bạn không thấy ô thay thế, hãy di chuyển khung nhìn sang bên phải của hình ảnh atlas, vì các ô thay thế luôn xuất hiện ở bên phải các ô cơ sở của một atlas nhất định trong trình chỉnh sửa TileSet:
 
 .. figure:: img/using_tilesets_configure_alternative_tile.webp
    :align: center
@@ -615,40 +437,12 @@ in the TileSet editor:
 
    Configuring an alternative tile after clicking it in the TileSet editor
 
-After selecting an alternative tile, you can change any properties using the
-middle column like you would on a base tile. However, the list of exposed
-properties is different compared to base tiles:
+Sau khi chọn một tile thay thế, bạn có thể thay đổi mọi thuộc tính bằng cột giữa giống như trên tile cơ sở. Tuy nhiên, danh sách các thuộc tính được hiển thị khác với tile cơ sở:
 
-- **Alternative ID:** The unique numerical identifier for this alternative tile.
-  Changing it will break existing TileMaps, so be careful! This ID also controls
-  the sorting in the list of alternative tiles displayed in the editor.
-- **Rendering > Flip H:** If ``true``, the tile is horizontally flipped.
-- **Rendering > Flip V:** If ``true``, the tile is vertically flipped.
-- **Rendering > Transpose:** If ``true``, the tile is rotated 90 degrees
-  *counter-clockwise* and then flipped vertically. In practice, this means that
-  to rotate a tile by 90 degrees clockwise without flipping it, you should
-  enable **Flip H** and **Transpose**. To rotate a tile by 180 degrees
-  clockwise, enable **Flip H** and **Flip V**. To rotate a tile by 270 degrees
-  clockwise, enable **Flip V** and **Transpose**.
-- **Rendering > Texture Origin:** The origin to use for drawing the tile. This
-  can be used to visually offset the tile compared to the base tile.
-- **Rendering > Modulate:** The color multiplier to use when rendering the tile.
-- **Rendering > Material:** The material to use for this tile. This can be used
-  to apply a different blend mode or custom shaders to a single tile.
-- **Z Index:** The sorting order for this tile. Higher values will make the tile
-  render in front of others on the same layer.
-- **Y Sort Origin:** The vertical offset to use for tile sorting based on its Y
-  coordinate (in pixels). This allows using layers as if they were on different
-  height for top-down games. Adjusting this can help alleviate issues with
-  sorting certain tiles. Only effective if **Y Sort Enabled** is ``true`` on
-  the TileMapLayer node under **CanvasItem > Ordering**
+- **Alternative ID:** Mã nhận dạng số duy nhất cho tile thay thế này. Việc thay đổi mã này sẽ làm hỏng các TileMap hiện có, vì vậy hãy cẩn thận! Mã này cũng kiểm soát thứ tự sắp xếp trong danh sách các tile thay thế được hiển thị trong trình chỉnh sửa. - **Rendering > Flip H:** Nếu ``true``, tile sẽ được lật theo chiều ngang. - **Rendering > Flip V:** Nếu ``true``, tile sẽ được lật theo chiều dọc. - **Rendering > Transpose:** Nếu ``true``, tile sẽ được xoay 90 độ *ngược chiều kim đồng hồ* rồi lật theo chiều dọc. Trên thực tế, điều này có nghĩa là để xoay tile 90 độ theo chiều kim đồng hồ mà không lật tile, bạn nên bật **Flip H** và **Transpose**. Để xoay tile 180 độ theo chiều kim đồng hồ, hãy bật **Flip H** và **Flip V**. Để xoay tile 270 độ theo chiều kim đồng hồ, hãy bật **Flip V** và **Transpose**. - **Rendering > Texture Origin:** Điểm gốc dùng để vẽ tile. Bạn có thể sử dụng thuộc tính này để tạo độ lệch trực quan cho tile so với tile cơ sở. - **Rendering > Modulate:** Hệ số màu dùng khi kết xuất tile. - **Rendering > Material:** Material dùng cho tile này. Bạn có thể sử dụng thuộc tính này để áp dụng chế độ hòa trộn khác hoặc shader tùy chỉnh cho một tile riêng lẻ. - **Z Index:** Thứ tự sắp xếp của tile này. Các giá trị cao hơn sẽ khiến tile được kết xuất ở phía trước các tile khác trên cùng một lớp. - **Y Sort Origin:** Độ lệch theo chiều dọc dùng để sắp xếp tile dựa trên tọa độ Y của tile (tính bằng pixel). Điều này cho phép sử dụng các lớp như thể chúng nằm ở những độ cao khác nhau trong các game góc nhìn từ trên xuống. Điều chỉnh thuộc tính này có thể giúp giảm các vấn đề khi sắp xếp một số tile nhất định. Chỉ có hiệu lực nếu **Y Sort Enabled** là ``true`` trên node TileMapLayer trong **CanvasItem > Ordering**
 
-You can create an additional alternative tile variant by clicking the large "+"
-icon next to the alternative tile. This is equivalent to selecting the base tile
-and right-clicking it to choose **Create an Alternative Tile** again.
+Bạn có thể tạo thêm một biến thể tile thay thế bằng cách nhấp vào biểu tượng "+" lớn bên cạnh tile thay thế. Thao tác này tương đương với việc chọn tile cơ sở rồi nhấp chuột phải vào tile đó để chọn lại **Create an Alternative Tile**.
 
 .. note::
 
-    When creating an alternative tile, none of the properties from the base tile
-    are inherited. You must set properties again on the alternative tile if you
-    wish those to be identical on the base tile and the alternative tile.
+    Khi tạo tile thay thế, không thuộc tính nào từ tile cơ sở được kế thừa. Bạn phải thiết lập lại các thuộc tính trên tile thay thế nếu muốn chúng giống hệt nhau giữa tile cơ sở và tile thay thế.

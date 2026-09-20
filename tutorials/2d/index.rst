@@ -1,16 +1,13 @@
 :allow_comments: False
 
-Godot includes a dedicated 2D renderer and 2D physics engine, as well as
-2D-specific features like tilemaps, particles, and animation systems. This
-section covers most 2D-specific topics in Godot.
+Godot tích hợp một trình kết xuất 2D chuyên dụng và một công cụ vật lý 2D, cùng các tính năng dành riêng cho 2D như tilemap, hạt và hệ thống hoạt ảnh. Phần này trình bày hầu hết các chủ đề dành riêng cho 2D trong Godot.
 
-For 2D topics not covered in this section, see also :ref:`doc_2d_skeletons` and
+Đối với các chủ đề 2D không được đề cập trong phần này, hãy xem thêm :ref:`doc_2d_skeletons` và
 :ref:`doc_navigation_overview_2d`. For using physics in 2D, see
 :ref:`doc_physics_index`. There is also a step-by-step tutorial on creating a 2D
-game in :ref:`doc_your_first_2d_game`.
+trò chơi trong :ref:`doc_your_first_2d_game`.
 
-2D
-==
+2D ==
 
 .. toctree::
    :maxdepth: 1
@@ -22,8 +19,8 @@ game in :ref:`doc_your_first_2d_game`.
 
 .. _doc_2d_rendering:
 
-Rendering
----------
+Kết xuất
+--------
 
 .. toctree::
    :maxdepth: 1
@@ -38,8 +35,8 @@ Rendering
    custom_drawing_in_2d
    2d_parallax
 
-Physics and movement
---------------------
+Vật lý và chuyển động
+---------------------
 
 .. toctree::
    :maxdepth: 1
@@ -47,8 +44,8 @@ Physics and movement
 
    2d_movement
 
-Tools
------
+Công cụ
+-------
 
 .. toctree::
    :maxdepth: 1

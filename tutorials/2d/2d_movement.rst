@@ -1,38 +1,30 @@
 .. _doc_2d_movement:
 
-2D movement overview
-====================
+Tổng quan về chuyển động 2D
+===========================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Every beginner has been there: "How do I move my character?" Depending on the
-style of game you're making, you may have special requirements, but in general
-the movement in most 2D games is based on a small number of designs.
+Mọi người mới bắt đầu đều từng hỏi: "Làm thế nào để di chuyển nhân vật của mình?" Tùy thuộc vào phong cách trò chơi bạn đang tạo, bạn có thể có những yêu cầu đặc biệt, nhưng nhìn chung, chuyển động trong hầu hết trò chơi 2D dựa trên một số ít thiết kế.
 
-We'll use :ref:`CharacterBody2D <class_CharacterBody2D>` for these examples,
-but the principles will apply to other node types (Area2D, RigidBody2D) as well.
+Chúng ta sẽ sử dụng :ref:`CharacterBody2D <class_CharacterBody2D>` cho các ví dụ này, nhưng những nguyên tắc này cũng áp dụng cho các loại node khác (Area2D, RigidBody2D).
 
 .. _doc_2d_movement_setup:
 
-Setup
------
+Thiết lập
+---------
 
-Each example below uses the same scene setup. Start with a ``CharacterBody2D`` with two
-children: ``Sprite2D`` and ``CollisionShape2D``. You can use the Godot icon (``icon.svg``)
-for the Sprite2D's texture or use any other 2D image you have.
+Mỗi ví dụ dưới đây đều sử dụng cùng một thiết lập scene. Bắt đầu với một ``CharacterBody2D`` có hai node con: ``Sprite2D`` và ``CollisionShape2D``. Bạn có thể sử dụng biểu tượng Godot (``icon.svg``) làm texture cho Sprite2D hoặc sử dụng bất kỳ hình ảnh 2D nào khác mà bạn có.
 
-Open ``Project -> Project Settings`` and select the "Input Map" tab. Add the following
-input actions (see :ref:`InputEvent <doc_inputevent>` for details):
+Mở ``Project -> Project Settings`` và chọn tab "Input Map". Thêm các hành động đầu vào sau (xem :ref:`InputEvent <doc_inputevent>` để biết chi tiết):
 
 .. image:: img/movement_inputs.webp
 
-8-way movement
---------------
+Chuyển động 8 hướng
+-------------------
 
-In this scenario, you want the user to press the four directional keys (up/left/down/right
-or W/A/S/D) and move in the selected direction. The name "8-way movement" comes from the
-fact that the player can move diagonally by pressing two keys at the same time.
+Trong trường hợp này, bạn muốn người dùng nhấn bốn phím định hướng (lên/trái/xuống/phải hoặc W/A/S/D) và di chuyển theo hướng đã chọn. Tên gọi "chuyển động 8 hướng" xuất phát từ việc người chơi có thể di chuyển theo đường chéo bằng cách nhấn hai phím cùng lúc.
 
 .. video:: video/movement_8way.webm
     :alt: 8-way movement
@@ -42,7 +34,7 @@ fact that the player can move diagonally by pressing two keys at the same time.
     :align: default
     :width: 100%
 
-Attach a script to the character body and add the following code:
+Gắn một script vào thân nhân vật và thêm đoạn mã sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -51,58 +43,38 @@ Attach a script to the character body and add the following code:
 
     @export var speed = 400
 
-    func get_input():
-        var input_direction = Input.get_vector("left", "right", "up", "down")
-        velocity = input_direction * speed
+    func get_input(): var input_direction = Input.get_vector("left", "right", "up", "down") velocity = input_direction * speed
 
-    func _physics_process(delta):
-        get_input()
-        move_and_slide()
+    func _physics_process(delta): get_input() move_and_slide()
 
  .. code-tab:: csharp
 
     using Godot;
 
-    public partial class Movement : CharacterBody2D
-    {
-        [Export]
-        public int Speed { get; set; } = 400;
+    public partial class Movement : CharacterBody2D { [Export] public int Speed { get; set; } = 400;
 
-        public void GetInput()
-        {
+        public void GetInput() {
 
-            Vector2 inputDirection = Input.GetVector("left", "right", "up", "down");
-            Velocity = inputDirection * Speed;
-        }
+            Vector2 inputDirection = Input.GetVector("left", "right", "up", "down"); Velocity = inputDirection * Speed; }
 
-        public override void _PhysicsProcess(double delta)
-        {
-            GetInput();
-            MoveAndSlide();
-        }
-    }
+        public override void _PhysicsProcess(double delta) { GetInput(); MoveAndSlide(); } }
 
-In the ``get_input()`` function, we use :ref:`Input <class_Input>` ``get_vector()`` to check for the
-four key events and sum return a direction vector.
+Trong hàm ``get_input()``, chúng ta sử dụng :ref:`Input <class_Input>` ``get_vector()`` để kiểm tra bốn sự kiện phím và cộng, trả về một vector hướng.
 
-We can then set our velocity by multiplying this direction vector, which has a
-length of ``1``, by our desired speed.
+Sau đó, chúng ta có thể đặt vận tốc bằng cách nhân vector hướng này, có độ dài là ``1``, với tốc độ mong muốn.
 
 .. tip:: If you've never used vector math before, or need a refresher,
-         you can see an explanation of vector usage in Godot at :ref:`doc_vector_math`.
+         bạn có thể xem phần giải thích về cách sử dụng vector trong Godot tại :ref:`doc_vector_math`.
 
 .. note::
 
-    If the code above does nothing when you press the keys, double-check that
-    you've set up input actions correctly as described in the
+    Nếu đoạn mã trên không làm gì khi bạn nhấn các phím, hãy kiểm tra lại xem bạn đã thiết lập đúng các hành động đầu vào như mô tả trong
     :ref:`doc_2d_movement_setup` part of this tutorial.
 
-Rotation + movement
--------------------
+Xoay + chuyển động
+------------------
 
-This type of movement is sometimes called "Asteroids-style" because it resembles
-how that classic arcade game worked. Pressing left/right rotates the character,
-while up/down moves it forward or backward in whatever direction it's facing.
+Kiểu chuyển động này đôi khi được gọi là "phong cách Asteroids" vì nó tương tự cách trò chơi arcade kinh điển đó hoạt động. Nhấn trái/phải sẽ xoay nhân vật, còn lên/xuống sẽ di chuyển nhân vật về phía trước hoặc phía sau theo bất kỳ hướng nào mà nhân vật đang đối mặt.
 
 .. video:: video/movement_rotate_keyboard.webm
     :alt: Rotation + movement
@@ -117,60 +89,36 @@ while up/down moves it forward or backward in whatever direction it's facing.
 
     extends CharacterBody2D
 
-    @export var speed = 400
-    @export var rotation_speed = 1.5
+    @export var speed = 400 @export var rotation_speed = 1.5
 
     var rotation_direction = 0
 
-    func get_input():
-        rotation_direction = Input.get_axis("left", "right")
-        velocity = transform.x * Input.get_axis("down", "up") * speed
+    func get_input(): rotation_direction = Input.get_axis("left", "right") velocity = transform.x * Input.get_axis("down", "up") * speed
 
-    func _physics_process(delta):
-        get_input()
-        rotation += rotation_direction * rotation_speed * delta
-        move_and_slide()
+    func _physics_process(delta): get_input() rotation += rotation_direction * rotation_speed * delta move_and_slide()
 
  .. code-tab:: csharp
 
     using Godot;
 
-    public partial class Movement : CharacterBody2D
-    {
-        [Export]
-        public int Speed { get; set; } = 400;
+    public partial class Movement : CharacterBody2D { [Export] public int Speed { get; set; } = 400;
 
-        [Export]
-        public float RotationSpeed { get; set; } = 1.5f;
+        [Export] public float RotationSpeed { get; set; } = 1.5f;
 
         private float _rotationDirection;
 
-        public void GetInput()
-        {
-            _rotationDirection = Input.GetAxis("left", "right");
-            Velocity = Transform.X * Input.GetAxis("down", "up") * Speed;
-        }
+        public void GetInput() { _rotationDirection = Input.GetAxis("left", "right"); Velocity = Transform.X * Input.GetAxis("down", "up") * Speed; }
 
-        public override void _PhysicsProcess(double delta)
-        {
-            GetInput();
-            Rotation += _rotationDirection * RotationSpeed * (float)delta;
-            MoveAndSlide();
-        }
-    }
+        public override void _PhysicsProcess(double delta) { GetInput(); Rotation += _rotationDirection * RotationSpeed * (float)delta; MoveAndSlide(); } }
 
-Here we've added two variables to track our rotation direction and speed.
-The rotation is applied directly to the body's ``rotation`` property.
+Ở đây, chúng ta đã thêm hai biến để theo dõi hướng và tốc độ xoay. Việc xoay được áp dụng trực tiếp vào thuộc tính ``rotation`` của thân.
 
-To set the velocity, we use the body's ``transform.x`` which is a vector pointing
-in the body's "forward" direction, and multiply that by the speed.
+Để đặt vận tốc, chúng ta sử dụng ``transform.x`` của thân, đây là một vector trỏ theo hướng "tiến về phía trước" của thân, rồi nhân vector đó với tốc độ.
 
-Rotation + movement (mouse)
----------------------------
+Xoay + chuyển động (chuột)
+--------------------------
 
-This style of movement is a variation of the previous one. This time, the direction
-is set by the mouse position instead of the keyboard. The character will always
-"look at" the mouse pointer. The forward/back inputs remain the same, however.
+Kiểu chuyển động này là một biến thể của kiểu trước. Lần này, hướng được xác định bởi vị trí chuột thay vì bàn phím. Nhân vật sẽ luôn "nhìn về phía" con trỏ chuột. Tuy nhiên, các đầu vào tiến/lùi vẫn giữ nguyên.
 
 .. video:: video/movement_rotate_mouse.webm
     :alt: Rotation + movement (mouse)
@@ -187,39 +135,21 @@ is set by the mouse position instead of the keyboard. The character will always
 
     @export var speed = 400
 
-    func get_input():
-        look_at(get_global_mouse_position())
-        velocity = transform.x * Input.get_axis("down", "up") * speed
+    func get_input(): look_at(get_global_mouse_position()) velocity = transform.x * Input.get_axis("down", "up") * speed
 
-    func _physics_process(delta):
-        get_input()
-        move_and_slide()
+    func _physics_process(delta): get_input() move_and_slide()
 
  .. code-tab:: csharp
 
     using Godot;
 
-    public partial class Movement : CharacterBody2D
-    {
-        [Export]
-        public int Speed { get; set; } = 400;
+    public partial class Movement : CharacterBody2D { [Export] public int Speed { get; set; } = 400;
 
-        public void GetInput()
-        {
-            LookAt(GetGlobalMousePosition());
-            Velocity = Transform.X * Input.GetAxis("down", "up") * Speed;
-        }
+        public void GetInput() { LookAt(GetGlobalMousePosition()); Velocity = Transform.X * Input.GetAxis("down", "up") * Speed; }
 
-        public override void _PhysicsProcess(double delta)
-        {
-            GetInput();
-            MoveAndSlide();
-        }
-    }
+        public override void _PhysicsProcess(double delta) { GetInput(); MoveAndSlide(); } }
 
-Here we're using the :ref:`Node2D <class_Node2D>` ``look_at()`` method to
-point the player towards the mouse's position. Without this function, you
-could get the same effect by setting the angle like this:
+Ở đây, chúng ta sử dụng phương thức :ref:`Node2D <class_Node2D>` ``look_at()`` để hướng người chơi về phía vị trí của chuột. Nếu không có hàm này, bạn có thể đạt được hiệu ứng tương tự bằng cách đặt góc như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -231,11 +161,10 @@ could get the same effect by setting the angle like this:
     var rotation = GetGlobalMousePosition().AngleToPoint(Position);
 
 
-Click-and-move
---------------
+Nhấp và di chuyển
+-----------------
 
-This last example uses only the mouse to control the character. Clicking
-on the screen will cause the player to move to the target location.
+Ví dụ cuối cùng này chỉ sử dụng chuột để điều khiển nhân vật. Nhấp vào màn hình sẽ khiến người chơi di chuyển đến vị trí đích.
 
 .. video:: video/movement_click.webm
     :alt: Click-and-move
@@ -254,65 +183,33 @@ on the screen will cause the player to move to the target location.
 
     var target = position
 
-    func _input(event):
-        # Use is_action_pressed to only accept single taps as input instead of mouse drags.
-        if event.is_action_pressed(&"click"):
-            target = get_global_mouse_position()
+    func _input(event): # Use is_action_pressed to only accept single taps as input instead of mouse drags. if event.is_action_pressed(&"click"): target = get_global_mouse_position()
 
-    func _physics_process(delta):
-        velocity = position.direction_to(target) * speed
-        # look_at(target)
-        if position.distance_to(target) > 10:
-            move_and_slide()
+    func _physics_process(delta): velocity = position.direction_to(target) * speed # look_at(target) if position.distance_to(target) > 10: move_and_slide()
 
  .. code-tab:: csharp
 
     using Godot;
 
-    public partial class Movement : CharacterBody2D
-    {
-        [Export]
-        public int Speed { get; set; } = 400;
+    public partial class Movement : CharacterBody2D { [Export] public int Speed { get; set; } = 400;
 
         private Vector2 _target;
 
-        public override void _Input(InputEvent @event)
-        {
-            // Use IsActionPressed to only accept single taps as input instead of mouse drags.
-            if (@event.IsActionPressed("click"))
-            {
-                _target = GetGlobalMousePosition();
-            }
-        }
+        public override void _Input(InputEvent @event) { // Use IsActionPressed to only accept single taps as input instead of mouse drags. if (@event.IsActionPressed("click")) { _target = GetGlobalMousePosition(); } }
 
-        public override void _PhysicsProcess(double delta)
-        {
-            Velocity = Position.DirectionTo(_target) * Speed;
-            // LookAt(_target);
-            if (Position.DistanceTo(_target) > 10)
-            {
-                MoveAndSlide();
-            }
-        }
-    }
+        public override void _PhysicsProcess(double delta) { Velocity = Position.DirectionTo(_target) * Speed; // LookAt(_target); if (Position.DistanceTo(_target) > 10) { MoveAndSlide(); } } }
 
 
-Note the ``distance_to()`` check we make prior to movement. Without this test,
-the body would "jitter" upon reaching the target position, as it moves
-slightly past the position and tries to move back, only to move too far and
-repeat.
+Lưu ý bước kiểm tra ``distance_to()`` mà chúng ta thực hiện trước khi di chuyển. Nếu không có phép kiểm tra này, thân sẽ "rung" khi đến vị trí đích, vì nó di chuyển hơi vượt qua vị trí đó rồi cố gắng quay lại, nhưng lại di chuyển quá xa và lặp lại quá trình này.
 
-Uncommenting the ``look_at()`` line will also turn the body to point in its
-direction of motion if you prefer.
+Bỏ chú thích dòng ``look_at()`` cũng sẽ khiến thân xoay theo hướng chuyển động nếu bạn muốn.
 
 .. tip:: This technique can also be used as the basis of a "following" character.
-         The ``target`` position can be that of any object you want to move to.
+         Vị trí ``target`` có thể là vị trí của bất kỳ đối tượng nào mà bạn muốn di chuyển đến.
 
-Summary
+Tóm tắt
 -------
 
-You may find these code samples useful as starting points for your own projects.
-Feel free to use them and experiment with them to see what you can make.
+Bạn có thể thấy các mẫu mã này hữu ích làm điểm khởi đầu cho những dự án của riêng mình. Hãy thoải mái sử dụng và thử nghiệm với chúng để xem bạn có thể tạo ra những gì.
 
-You can download this sample project here:
-`2d_movement_starter.zip <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/2d_movement_starter.zip>`_
+Bạn có thể tải xuống dự án mẫu tại đây: `2d_movement_starter.zip <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/2d_movement_starter.zip>`_

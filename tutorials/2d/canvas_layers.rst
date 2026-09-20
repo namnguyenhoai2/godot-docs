@@ -1,64 +1,42 @@
 .. _doc_canvas_layers:
 
-Canvas layers
-=============
+Các lớp Canvas
+==============
 
-Viewport and Canvas items
--------------------------
+Các mục Viewport và Canvas
+--------------------------
 
 :ref:`CanvasItem <class_CanvasItem>` is the base for all 2D nodes, be it regular
-2D nodes, such as :ref:`Node2D <class_Node2D>`, or :ref:`Control <class_Control>`.
-Both inherit from :ref:`CanvasItem <class_CanvasItem>`.
-You can arrange canvas items in trees. Each item will inherit its parent's
-transform: when the parent moves, its children move too.
+Các node 2D, chẳng hạn như :ref:`Node2D <class_Node2D>`, hoặc :ref:`Control <class_Control>`. Cả hai đều kế thừa từ :ref:`CanvasItem <class_CanvasItem>`. Bạn có thể sắp xếp các mục canvas thành các cây. Mỗi mục sẽ kế thừa phép biến đổi của mục cha: khi mục cha di chuyển, các mục con của nó cũng di chuyển theo.
 
-CanvasItem nodes, and nodes inheriting from them, are direct or indirect children of a
+Các node CanvasItem và những node kế thừa từ chúng là các node con trực tiếp hoặc gián tiếp của một
 :ref:`Viewport <class_Viewport>`, that displays them.
 
-The Viewport's property
+Thuộc tính của Viewport
 :ref:`Viewport.canvas_transform <class_Viewport_property_canvas_transform>`,
-allows to apply a custom :ref:`Transform2D <class_Transform2D>`
-transform to the CanvasItem hierarchy it contains. Nodes such as
+cho phép áp dụng một phép biến đổi :ref:`Transform2D <class_Transform2D>` tùy chỉnh cho hệ phân cấp CanvasItem mà nó chứa. Các node như
 :ref:`Camera2D <class_Camera2D>` work by changing that transform.
 
-To achieve effects like scrolling, manipulating the canvas transform property is
-more efficient than moving the root canvas item and the entire scene with it.
+Để tạo ra các hiệu ứng như cuộn, việc thao tác với thuộc tính canvas transform sẽ hiệu quả hơn so với việc di chuyển mục canvas gốc và toàn bộ cảnh cùng với nó.
 
-Usually though, we don't want *everything* in the game or app to be subject to the canvas
-transform. For example:
+Tuy nhiên, thông thường chúng ta không muốn *mọi thứ* trong trò chơi hoặc ứng dụng chịu tác động của phép biến đổi canvas. Ví dụ:
 
--  **Parallax Backgrounds**: Backgrounds that move slower than the rest
-   of the stage.
--  **UI**: Think of a user interface (UI) or head-up display (HUD) superimposed on our view of the game world. We want a life counter, score display and other elements to retain their screen positions even when our view of the game world changes.
--  **Transitions**: We may want visual effects used for transitions (fades, blends) to remain at a fixed screen location.
+-  **Nền Parallax**: Nền di chuyển chậm hơn phần còn lại của màn chơi. - **UI**: Hãy nghĩ đến một giao diện người dùng (UI) hoặc màn hình hiển thị thông tin (HUD) được chồng lên khung nhìn của chúng ta về thế giới trò chơi. Chúng ta muốn bộ đếm mạng, bảng điểm và các thành phần khác giữ nguyên vị trí trên màn hình ngay cả khi khung nhìn của chúng ta về thế giới trò chơi thay đổi. - **Chuyển cảnh**: Chúng ta có thể muốn các hiệu ứng hình ảnh được dùng cho chuyển cảnh (mờ dần, hòa trộn) vẫn ở một vị trí cố định trên màn hình.
 
-How to solve these problems in a single scene tree?
+Làm thế nào để giải quyết các vấn đề này trong một cây cảnh duy nhất?
 
 CanvasLayers
 ------------
 
-The answer is :ref:`CanvasLayer <class_CanvasLayer>`,
-which is a node that adds a separate 2D rendering layer for all its
-children and grand-children. Viewport children will draw by default at
-layer "0", while a CanvasLayer will draw at any numeric layer. Layers
-with a greater number will be drawn above those with a smaller number.
-CanvasLayers also have their own transform and do not depend on the
-transform of other layers. This allows the UI to be fixed in screen-space
-while our view on the game world changes.
+Câu trả lời là :ref:`CanvasLayer <class_CanvasLayer>`, một node bổ sung một lớp kết xuất 2D riêng cho tất cả các node con và node cháu của nó. Theo mặc định, các node con của Viewport sẽ được vẽ ở lớp "0", trong khi CanvasLayer sẽ được vẽ ở bất kỳ lớp số nào. Các lớp có số lớn hơn sẽ được vẽ phía trên các lớp có số nhỏ hơn. CanvasLayer cũng có phép biến đổi riêng và không phụ thuộc vào phép biến đổi của các lớp khác. Điều này cho phép UI được cố định trong không gian màn hình trong khi khung nhìn của chúng ta về thế giới trò chơi thay đổi.
 
-An example of this is creating a parallax background. This can be done
-with a CanvasLayer at layer "-1". The screen with the points, life
-counter and pause button can also be created at layer "1".
+Một ví dụ là tạo nền parallax. Có thể thực hiện việc này bằng một CanvasLayer ở lớp "-1". Màn hình hiển thị điểm số, bộ đếm mạng và nút tạm dừng cũng có thể được tạo ở lớp "1".
 
-Here's a diagram of how it looks:
+Dưới đây là sơ đồ minh họa:
 
 .. image:: img/canvaslayers.png
 
-CanvasLayers are independent of tree order, and they only depend on
-their layer number, so they can be instantiated when needed.
+CanvasLayer độc lập với thứ tự trong cây và chỉ phụ thuộc vào số lớp, vì vậy chúng có thể được khởi tạo khi cần.
 
 .. note::   CanvasLayers aren't necessary to control the drawing order of nodes.
-            The standard way to ensuring that a node is correctly drawn 'in front' or 'behind' others is to manipulate the
-            order of the nodes in the scene panel. Perhaps counterintuitively, the topmost nodes in the scene panel are drawn
-            on *behind* lower ones in the viewport. 2D nodes also have the :ref:`CanvasItem.z_index <class_CanvasItem_property_z_index>`
-            property for controlling their drawing order.
+            Cách tiêu chuẩn để đảm bảo một node được vẽ đúng 'phía trước' hoặc 'phía sau' các node khác là điều chỉnh thứ tự của các node trong bảng scene. Trái với trực giác, các node ở trên cùng trong bảng scene được vẽ *phía sau* các node bên dưới trong viewport. Các node 2D cũng có thuộc tính :ref:`CanvasItem.z_index <class_CanvasItem_property_z_index>` để kiểm soát thứ tự vẽ của chúng.
