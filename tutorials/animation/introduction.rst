@@ -1,93 +1,72 @@
 .. _doc_introduction_animation:
 
-Introduction to the animation features
-======================================
+Giới thiệu về các tính năng animation
+=====================================
 
-The :ref:`class_AnimationPlayer` node allows you to create anything
-from simple to complex animations.
+Node :ref:`class_AnimationPlayer` cho phép bạn tạo mọi loại animation, từ đơn giản đến phức tạp.
 
-In this guide you learn to:
+Trong hướng dẫn này, bạn sẽ học cách:
 
--  Work with the Animation Panel
--  Animate any property of any node
--  Create a simple animation
+-  Làm việc với Animation Panel - Animate mọi thuộc tính của mọi node - Tạo một animation đơn giản
 
-In Godot, you can animate anything available in the Inspector, such as
-Node transforms, sprites, UI elements, particles, visibility and color
-of materials, and so on. You can also modify values of script variables
-and even call functions.
+Trong Godot, bạn có thể animate mọi thứ có trong Inspector, chẳng hạn như transform của Node, sprite, phần tử UI, particle, khả năng hiển thị và màu của material, v.v. Bạn cũng có thể sửa đổi giá trị của các biến script và thậm chí gọi các function.
 
-Create an AnimationPlayer node
-------------------------------
+Tạo một node AnimationPlayer
+----------------------------
 
-To use the animation tools we first have to create an
+Để sử dụng các công cụ animation, trước tiên chúng ta phải tạo một
 :ref:`class_AnimationPlayer` node.
 
-The AnimationPlayer node type is the data container for your animations.
-One AnimationPlayer node can hold multiple animations, which can
-automatically transition to one another.
+Loại node AnimationPlayer là nơi chứa dữ liệu cho các animation của bạn. Một node AnimationPlayer có thể chứa nhiều animation, và các animation này có thể tự động chuyển tiếp sang nhau.
 
 .. figure:: img/animation_create_animationplayer.webp
    :alt: The AnimationPlayer node
 
    The AnimationPlayer node
 
-After you create an AnimationPlayer node, click on it to
-open the Animation Panel at the bottom of the viewport.
+Sau khi tạo node AnimationPlayer, hãy nhấp vào node đó để mở Animation Panel ở phía dưới viewport.
 
 .. figure:: img/animation_animation_panel.webp
    :alt: The animation panel position
 
    The animation panel position
 
-The animation panel consists of four parts:
+Animation panel gồm bốn phần:
 
 .. figure:: img/animation_animation_panel_overview.webp
    :alt: The animation panel
 
    The animation panel
 
--  Animation controls (i.e. add, load, save, and delete animations)
--  The tracks listing
--  The timeline with keyframes
--  The timeline and track controls, where you can zoom the timeline and
-   edit tracks, for example.
+-  Các điều khiển animation (chẳng hạn như thêm, tải, lưu và xóa animation) - Danh sách track - Timeline với các keyframe - Các điều khiển timeline và track, nơi bạn có thể phóng to timeline và chỉnh sửa track, chẳng hạn.
 
-Computer animation relies on keyframes
---------------------------------------
+Computer animation dựa trên keyframe
+------------------------------------
 
-A keyframe defines the value of a property at a point in time.
+Một keyframe xác định giá trị của một thuộc tính tại một thời điểm.
 
-Diamond shapes represent keyframes in the timeline. A line between two
-keyframes indicates that the value doesn't change between them.
+Các hình thoi biểu thị keyframe trên timeline. Một đường nối giữa hai keyframe cho biết giá trị không thay đổi giữa chúng.
 
 .. figure:: img/animation_keyframes.webp
    :alt: Keyframes in Godot
 
    Keyframes in Godot
 
-You set values of a node's properties and create animation keyframes for them.
-When the animation runs, the engine will interpolate the values between the
-keyframes, resulting in them gradually changing over time.
+Bạn thiết lập giá trị cho các thuộc tính của một node và tạo các keyframe animation cho chúng. Khi animation chạy, engine sẽ nội suy các giá trị giữa các keyframe, khiến chúng dần thay đổi theo thời gian.
 
 .. figure:: img/animation_illustration.webp
    :alt: Two keyframes are all it takes to obtain a smooth motion
 
    Two keyframes are all it takes to obtain a smooth motion
 
-The timeline defines how long the animation will take. You can insert keyframes
-at various points, and change their timing.
+Timeline xác định thời lượng của animation. Bạn có thể chèn keyframe tại nhiều thời điểm khác nhau và thay đổi thời gian của chúng.
 
 .. figure:: img/animation_timeline.webp
    :alt: The timeline in the animation panel
 
    The timeline in the animation panel
 
-Each line in the Animation Panel is an animation track that references a
-Normal or Transform property of a node. Each track stores a path to
-a node and its affected property. For example, the position track
-in the illustration refers to the ``position`` property of the Sprite2D
-node.
+Mỗi dòng trong Animation Panel là một animation track tham chiếu đến thuộc tính Normal hoặc Transform của một node. Mỗi track lưu một path đến node và thuộc tính chịu ảnh hưởng của node đó. Ví dụ, position track trong hình minh họa tham chiếu đến thuộc tính ``position`` của node Sprite2D.
 
 .. figure:: img/animation_normal_track.webp
    :alt: Example of Normal animation tracks
@@ -96,19 +75,16 @@ node.
 
 .. tip::
 
-   If you animate the wrong property, you can edit a track's path at any time
-   by double-clicking on it and typing the new path. Play the animation using the
-   "Play from beginning" button |Play from beginning| (or pressing
+   Nếu animate nhầm thuộc tính, bạn có thể chỉnh sửa path của track bất kỳ lúc nào bằng cách nhấp đúp vào path đó và nhập path mới. Chạy animation bằng nút "Play from beginning" |Play from beginning| (hoặc nhấn
    :kbd:`Shift + D` on keyboard) to see the changes instantly.
 
-Tutorial: Creating a simple animation
--------------------------------------
+Tutorial: Tạo một animation đơn giản
+------------------------------------
 
-Scene setup
-~~~~~~~~~~~
+Thiết lập scene
+~~~~~~~~~~~~~~~
 
-For this tutorial, we'll create a Sprite node with an AnimationPlayer as
-its child. We will animate the sprite to move between two points on the screen.
+Trong tutorial này, chúng ta sẽ tạo một node Sprite với AnimationPlayer làm node con. Chúng ta sẽ animate sprite để di chuyển giữa hai điểm trên màn hình.
 
 .. figure:: img/animation_animation_player_tree.webp
    :alt: Our scene setup
@@ -117,314 +93,222 @@ its child. We will animate the sprite to move between two points on the screen.
 
 .. warning::
 
-   AnimationPlayer inherits from Node instead of Node2D or Node3D, which means
-   that the child nodes will not inherit the transform from the parent nodes
-   due to a bare Node being present in the hierarchy.
+   AnimationPlayer kế thừa từ Node thay vì Node2D hoặc Node3D, điều này có nghĩa là các node con sẽ không kế thừa transform từ các node cha do có một Node thuần túy trong hierarchy.
 
-   Therefore, it is not recommended to add nodes that have a 2D/3D transform
-   as a child of an AnimationPlayer node.
+   Do đó, bạn không nên thêm các node có transform 2D/3D làm node con của node AnimationPlayer.
 
-The sprite holds an image texture. For this tutorial, select the Sprite2D node,
-click Texture in the Inspector, and then click Load. Select the default Godot
-icon for the sprite's texture.
+Sprite chứa một image texture. Trong tutorial này, hãy chọn node Sprite2D, nhấp vào Texture trong Inspector, sau đó nhấp vào Load. Chọn icon Godot mặc định làm texture cho sprite.
 
-Adding an animation
-~~~~~~~~~~~~~~~~~~~
+Thêm một animation
+~~~~~~~~~~~~~~~~~~
 
-Select the AnimationPlayer node and click the "Animation" button in the
-animation editor. From the list, select "New" (|Add Animation|) to add a new
-animation. Enter a name for the animation in the dialog box.
+Chọn node AnimationPlayer và nhấp vào nút "Animation" trong animation editor. Từ danh sách, chọn "New" (|Add Animation|) để thêm animation mới. Nhập tên cho animation vào hộp thoại.
 
 .. figure:: img/animation_create_new_animation.webp
    :alt: Add a new animation
 
    Add a new animation
 
-Managing animation libraries
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Quản lý animation library
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For reusability, the animation is registered in a list in the animation library resource. If you add an animation to AnimationPlayer without specifying any particular settings, the animation will be registered in the [Global] animation library that AnimationPlayer has by default.
+Để có thể tái sử dụng, animation được đăng ký trong một danh sách thuộc resource animation library. Nếu bạn thêm một animation vào AnimationPlayer mà không chỉ định bất kỳ thiết lập cụ thể nào, animation sẽ được đăng ký trong animation library [Global] mà AnimationPlayer có sẵn theo mặc định.
 
 .. figure:: img/animation_library.webp
    :alt: Manage animations
 
    Manage animations
 
-If there are multiple animation libraries and you try to add an animation, a dialog box will appear with options.
+Nếu có nhiều animation library và bạn cố gắng thêm một animation, một hộp thoại sẽ xuất hiện cùng các tùy chọn.
 
 .. figure:: img/animation_library_dialog.webp
    :alt: Add a new animation with library option
 
    Add a new animation with library option
 
-Adding a track
+Thêm một track
 ~~~~~~~~~~~~~~
 
-To add a new track for our sprite, select it and take a look at the
-toolbar:
+Để thêm một track mới cho sprite, hãy chọn sprite và xem toolbar:
 
 .. figure:: img/animation_convenience_buttons.webp
    :alt: Convenience buttons
 
    Convenience buttons
 
-These switches and buttons allow you to add keyframes for the selected
-node's location, rotation, and scale. Since we are only animating the sprite's
-position, make sure that only the location switch is selected. The selected
-switches are blue.
+Các switch và nút này cho phép bạn thêm keyframe cho vị trí, rotation và scale của node được chọn. Vì chúng ta chỉ animate vị trí của sprite, hãy đảm bảo chỉ switch location được chọn. Các switch được chọn có màu xanh dương.
 
-Click on the key button to create the first keyframe. Since we don't have a
-track set up for the Position property yet, Godot will offer to
-create it for us. Click **Create**.
+Nhấp vào nút key để tạo keyframe đầu tiên. Vì chúng ta chưa thiết lập track cho thuộc tính Position, Godot sẽ đề nghị tạo track đó cho chúng ta. Nhấp vào **Create**.
 
-Godot will create a new track and insert our first keyframe at the beginning of
-the timeline:
+Godot sẽ tạo một track mới và chèn keyframe đầu tiên của chúng ta ở đầu timeline:
 
 .. figure:: img/animation_track.webp
    :alt: The sprite track
 
    The sprite track
 
-The second keyframe
-~~~~~~~~~~~~~~~~~~~
+Keyframe thứ hai
+~~~~~~~~~~~~~~~~
 
-We need to set our sprite's end location and how long it will take for it to get there.
+Chúng ta cần thiết lập vị trí cuối của sprite và khoảng thời gian để sprite đi đến đó.
 
-Let's say we want it to take two seconds to move between the points. By
-default, the animation is set to last only one second, so change the animation
-length to 2 in the controls on the right side of the animation panel's timeline
-header.
+Giả sử chúng ta muốn sprite mất hai giây để di chuyển giữa hai điểm. Theo mặc định, animation chỉ kéo dài một giây, vì vậy hãy đổi thời lượng animation thành 2 trong các điều khiển ở bên phải phần tiêu đề timeline của animation panel.
 
 .. figure:: img/animation_set_length.webp
    :alt: Animation length
 
    Animation length
 
-Now, move the sprite right, to its final position. You can use the *Move tool* in the
-toolbar or set the *Position*'s X value in the *Inspector*.
+Bây giờ, hãy di chuyển sprite sang phải, đến vị trí cuối cùng. Bạn có thể sử dụng *Move tool* trong toolbar hoặc đặt giá trị X của *Position* trong *Inspector*.
 
-Click on the timeline header near the two-second mark in the animation panel
-and then click the key button in the toolbar to create the second keyframe.
+Nhấp vào phần tiêu đề timeline gần mốc hai giây trong animation panel, sau đó nhấp vào nút key trên toolbar để tạo keyframe thứ hai.
 
-Run the animation
-~~~~~~~~~~~~~~~~~
+Chạy animation
+~~~~~~~~~~~~~~
 
-Click on the "Play from beginning" (|Play from beginning|) button.
+Nhấp vào nút "Play from beginning" (|Play from beginning|).
 
-Yay! Our animation runs:
+Tuyệt! Animation của chúng ta chạy rồi:
 
 .. figure:: img/animation_simple.gif
    :alt: The animation
 
    The animation
 
-Autoplay on load
-~~~~~~~~~~~~~~~~
+Tự động phát khi tải
+~~~~~~~~~~~~~~~~~~~~
 
-You can make it so an animation plays automatically when the AnimationPlayer nodes
-scene starts, or joins another scene. To do this click the "Autoplay on load"
-button in the animation editor, it's right next to the edit button.
+Bạn có thể thiết lập để animation tự động phát khi scene của node AnimationPlayer bắt đầu hoặc được thêm vào một scene khác. Để thực hiện việc này, hãy nhấp vào nút "Autoplay on load" trong animation editor; nút này nằm ngay bên cạnh nút edit.
 
 .. image:: img/autoplay_on_load.webp
 
-The icon for it will also appear in front of the name of the animation, so you can
-easily identify which one is the autoplay animation.
+Icon của nó cũng sẽ xuất hiện phía trước tên animation, để bạn dễ dàng xác định animation nào là animation tự động phát.
 
-Back and forth
-~~~~~~~~~~~~~~
+Qua lại
+~~~~~~~
 
-Godot has an interesting feature that we can use in animations. When Animation
-Looping is set but there's no keyframe specified at the end of the animation,
-the first keyframe is also the last.
+Godot có một tính năng thú vị mà chúng ta có thể sử dụng trong animation. Khi Animation Looping được bật nhưng không có keyframe nào được chỉ định ở cuối animation, keyframe đầu tiên cũng sẽ là keyframe cuối cùng.
 
-This means we can extend the animation length to four seconds now, and Godot
-will also calculate the frames from the last keyframe to the first, moving
-our sprite back and forth.
+Điều này có nghĩa là giờ đây chúng ta có thể kéo dài thời lượng animation lên bốn giây, và Godot cũng sẽ tính toán các frame từ keyframe cuối đến keyframe đầu tiên, khiến sprite di chuyển qua lại.
 
 .. figure:: img/animation_loop.webp
    :alt: Animation loop
 
    Animation loop
 
-You can change this behavior by changing the track's loop mode. This is covered
-in the next chapter.
+Bạn có thể thay đổi hành vi này bằng cách thay đổi loop mode của track. Nội dung này sẽ được trình bày trong chương tiếp theo.
 
-Track settings
-~~~~~~~~~~~~~~
+Thiết lập track
+~~~~~~~~~~~~~~~
 
-Each property track has a settings panel at the end, where you can set its update
-mode, track interpolation, and loop mode.
+Mỗi property track có một settings panel ở cuối, nơi bạn có thể thiết lập update mode, track interpolation và loop mode của track.
 
 .. figure:: img/animation_track_settings.webp
    :alt: Track settings
 
    Track settings
 
-The update mode of a track tells Godot when to update the property
-values. This can be:
+Update mode của một track cho Godot biết thời điểm cần cập nhật các giá trị thuộc tính. Các chế độ có thể là:
 
--  **Continuous:** Update the property on each frame
--  **Discrete:** Only update the property on keyframes
--  **Capture:** if the first keyframe's time is greater than ``0.0``, the
-   current value of the property will be remembered and
-   will be blended with the first animation key. For example, you
-   could use the Capture mode to move a node that's located anywhere
-   to a specific location.
+-  **Continuous:** Cập nhật thuộc tính ở mỗi frame - **Discrete:** Chỉ cập nhật thuộc tính tại các keyframe - **Capture:** nếu thời điểm của keyframe đầu tiên lớn hơn ``0.0``, giá trị hiện tại của thuộc tính sẽ được ghi nhớ và blend với animation key đầu tiên. Ví dụ, bạn có thể sử dụng Capture mode để di chuyển một node đang ở bất kỳ vị trí nào đến một vị trí cụ thể.
 
 .. figure:: img/animation_track_rate.webp
    :alt: Track mode
 
    Track mode
 
-You will usually use "Continuous" mode. The other types are used to
-script complex animations.
+Thông thường bạn sẽ sử dụng mode "Continuous". Các loại khác được dùng để viết script cho những animation phức tạp.
 
-Track interpolation tells Godot how to calculate the frame values between
-keyframes. These interpolation modes are supported:
+Track interpolation cho Godot biết cách tính các giá trị frame giữa các keyframe. Các interpolation mode được hỗ trợ là:
 
--  Nearest: Set the nearest keyframe value
--  Linear: Set the value based on a linear function calculation between
-   the two keyframes
--  Cubic: Set the value based on a cubic function calculation between
-   the two keyframes
--  Linear Angle (Only appears in rotation property): Linear mode with shortest path rotation
--  Cubic Angle (Only appears in rotation property): Cubic mode with shortest path rotation
+-  Nearest: Đặt giá trị của keyframe gần nhất - Linear: Đặt giá trị dựa trên phép tính hàm tuyến tính giữa hai keyframe - Cubic: Đặt giá trị dựa trên phép tính hàm bậc ba giữa hai keyframe - Linear Angle (Chỉ xuất hiện trong thuộc tính rotation): Mode Linear với rotation theo đường ngắn nhất - Cubic Angle (Chỉ xuất hiện trong thuộc tính rotation): Mode Cubic với rotation theo đường ngắn nhất
 
 .. figure:: img/animation_track_interpolation.webp
    :alt: Track interpolation
 
    Track interpolation
 
-With Cubic interpolation, animation is slower at keyframes and faster between
-them, which leads to more natural movement. Cubic interpolation is commonly
-used for character animation. Linear interpolation animates changes at a fixed
-pace, resulting in a more robotic effect.
+Với interpolation Cubic, animation chậm hơn tại các keyframe và nhanh hơn ở giữa chúng, tạo ra chuyển động tự nhiên hơn. Interpolation Cubic thường được sử dụng cho character animation. Interpolation Linear animate các thay đổi với tốc độ cố định, tạo ra hiệu ứng giống robot hơn.
 
-Godot supports two loop modes, which affect the animation when it's set to
-loop:
+Godot hỗ trợ hai loop mode, ảnh hưởng đến animation khi animation được thiết lập lặp:
 
 .. figure:: img/animation_track_loop_modes.webp
    :alt: Loop modes
 
    Loop modes
 
--  Clamp loop interpolation: When this is selected, the animation stops
-   after the last keyframe for this track. When the first keyframe is
-   reached again, the animation will reset to its values.
--  Wrap loop interpolation: When this is selected, Godot calculates the
-   animation after the last keyframe to reach the values of the first
-   keyframe again.
+-  Clamp loop interpolation: Khi được chọn, animation sẽ dừng sau keyframe cuối cùng của track này. Khi keyframe đầu tiên được đạt tới lần nữa, animation sẽ đặt lại về các giá trị của nó. - Wrap loop interpolation: Khi được chọn, Godot sẽ tính toán animation sau keyframe cuối cùng để một lần nữa đạt đến các giá trị của keyframe đầu tiên.
 
-Keyframes for other properties
-------------------------------
+Keyframe cho các thuộc tính khác
+--------------------------------
 
-Godot's animation system isn't restricted to position, rotation, and scale.
-You can animate any property.
+Hệ thống animation của Godot không bị giới hạn ở position, rotation và scale. Bạn có thể animate bất kỳ thuộc tính nào.
 
-If you select your sprite while the animation panel is visible, Godot will
-display a small keyframe button in the *Inspector* for each of the sprite's
-properties. Click on one of these buttons to add a track and keyframe to
-the current animation.
+Nếu bạn chọn sprite trong khi animation panel đang hiển thị, Godot sẽ hiển thị một nút keyframe nhỏ trong *Inspector* cho từng thuộc tính của sprite. Nhấp vào một trong các nút này để thêm track và keyframe vào animation hiện tại.
 
 .. figure:: img/animation_properties_keyframe.webp
    :alt: Keyframes for other properties
 
    Keyframes for other properties
 
-Edit keyframes
---------------
+Chỉnh sửa keyframe
+------------------
 
-You can click on a keyframe in the animation timeline to display and
-edit its value in the *Inspector*.
+Bạn có thể nhấp vào một keyframe trên animation timeline để hiển thị và chỉnh sửa giá trị của nó trong *Inspector*.
 
 .. figure:: img/animation_keyframe_editor_key.webp
    :alt: Keyframe editor editing a key
 
    Keyframe editor editing a key
 
-You can also edit the easing value for a keyframe here by clicking and dragging
-its easing curve. This tells Godot how to interpolate the animated property when it
-reaches this keyframe.
+Bạn cũng có thể chỉnh sửa giá trị easing cho một keyframe tại đây bằng cách nhấp và kéo đường cong easing của keyframe. Điều này cho Godot biết cách nội suy thuộc tính được animate khi thuộc tính đạt đến keyframe này.
 
-You can tweak your animations this way until the movement "looks right."
+Bạn có thể điều chỉnh animation theo cách này cho đến khi chuyển động "trông đúng mắt".
 
 .. |Play from beginning| image:: img/animation_play_from_beginning.png
 .. |Add Animation| image:: img/animation_add.png
 
-Using RESET tracks
-------------------
+Sử dụng RESET track
+-------------------
 
-You can set up a special *RESET* animation to contain the "default pose".
-This is used to ensure that the default pose is restored when you save
-the scene and open it again in the editor.
+Bạn có thể thiết lập một animation *RESET* đặc biệt để chứa "default pose". Animation này được dùng để đảm bảo default pose được khôi phục khi bạn lưu scene và mở lại scene đó trong editor.
 
-For existing tracks, you can add an animation called "RESET" (case-sensitive),
-then add tracks for each property that you want to reset.
-The only keyframe should be at time 0, and give it the desired default value
-for each track.
+Đối với các track hiện có, bạn có thể thêm một animation có tên "RESET" (phân biệt chữ hoa chữ thường), sau đó thêm track cho từng property mà bạn muốn reset. Keyframe duy nhất phải ở thời điểm 0 và chứa giá trị mặc định mong muốn cho từng track.
 
-If AnimationPlayer's **Reset On Save** property is set to ``true``,
-the scene will be saved with the effects of the reset animation applied
-(as if it had been seeked to time ``0.0``).
-This only affects the saved file – the property tracks in the editor stay
-where they were.
+Nếu property **Reset On Save** của AnimationPlayer được đặt thành ``true``, scene sẽ được lưu với các hiệu ứng của animation reset đã được áp dụng (như thể scene đã được seek đến thời điểm ``0.0``). Điều này chỉ ảnh hưởng đến file đã lưu – các property track trong editor vẫn giữ nguyên vị trí của chúng.
 
-If you want to reset the tracks in the editor, select the AnimationPlayer node,
-open the **Animation** bottom panel then choose **Apply Reset** in the
-animation editor's **Edit** dropdown menu.
+Nếu muốn reset các track trong editor, hãy chọn node AnimationPlayer, mở bottom panel **Animation**, sau đó chọn **Apply Reset** trong menu dropdown **Edit** của animation editor.
 
-When using the keyframe icon next to a property in the inspector the editor will
-ask you to automatically create a RESET track.
+Khi sử dụng biểu tượng keyframe bên cạnh một property trong inspector, editor sẽ hỏi bạn có muốn tự động tạo một track RESET hay không.
 
 .. note:: RESET tracks are also used as reference values for blending. See also `For better blending <../animation/animation_tree.html#for-better-blending>`__.
 
 Onion Skinning
 --------------
 
-Godot's animation editor allows you use onion skinning while creating an
-animation. To turn this feature on click on the onion icon in the top right
-of the animation editor. Now there will be transparent red copies of what
-is being animated in its previous positions in the animation.
+Animation editor của Godot cho phép bạn sử dụng onion skinning khi tạo animation. Để bật tính năng này, hãy nhấp vào biểu tượng onion ở góc trên bên phải của animation editor. Lúc này, các bản sao trong suốt màu đỏ của đối tượng đang được animate ở những vị trí trước đó trong animation sẽ xuất hiện.
 
 .. image:: img/onion_skin.webp
 
-The three dots button next to the onion skinning button opens a dropdown
-menu that lets you adjust how it works, including the ability to use
-onion skinning for future frames.
+Nút ba chấm bên cạnh nút onion skinning sẽ mở một menu dropdown, cho phép bạn điều chỉnh cách tính năng này hoạt động, bao gồm cả khả năng sử dụng onion skinning cho các frame trong tương lai.
 
 Animation Markers
 -----------------
 
-Animation markers can be used to play a specific part of an animation rather than
-the whole thing. Here is a use case example, there's an animation file that has a
-character doing two distinct actions, and the project requires the whole animation,
-as well as both actions individually. Instead of making two additional animations,
-markers can be placed on the timeline, and both actions can now be played
-individually.
+Animation marker có thể được dùng để phát một phần cụ thể của animation thay vì toàn bộ animation. Ví dụ, một file animation có một character thực hiện hai hành động riêng biệt, và project yêu cầu cả toàn bộ animation lẫn từng hành động riêng lẻ. Thay vì tạo thêm hai animation, bạn có thể đặt marker trên timeline, sau đó phát riêng từng hành động.
 
-To add a marker to an animation right click the space above the timeline and select
-**Insert Marker...**.
+Để thêm marker vào animation, hãy nhấp chuột phải vào khoảng trống phía trên timeline và chọn **Insert Marker...**.
 
 .. image:: img/animation_marker_click_area.webp
 
-All markers require a unique name within the animation. You can also set the color
-of the markers for improved organization.
+Mọi marker đều yêu cầu một tên duy nhất trong animation. Bạn cũng có thể đặt màu cho các marker để sắp xếp dễ theo dõi hơn.
 
-To play the part of the animation between two markers use the :ref:`play_section_with_markers()<class_AnimationPlayer_method_play_section_with_markers>`
-and :ref:`play_section_with_markers_backwards()<class_AnimationPlayer_method_play_section_with_markers_backwards>`
-methods. If no start marker is specified then the beginning of the animation is
-used, and if no end marker is specified, then the end of the animation is used.
+Để phát phần animation nằm giữa hai marker, hãy sử dụng các method :ref:`play_section_with_markers()<class_AnimationPlayer_method_play_section_with_markers>` và :ref:`play_section_with_markers_backwards()<class_AnimationPlayer_method_play_section_with_markers_backwards>`. Nếu không chỉ định marker bắt đầu, phần đầu của animation sẽ được sử dụng; nếu không chỉ định marker kết thúc, phần cuối của animation sẽ được sử dụng.
 
-If the end marker is after the end of the animation then the ``AnimationPlayer`` will
-clamp the end of the section so it does not go past the end of the animation.
+Nếu marker kết thúc nằm sau phần cuối của animation, ``AnimationPlayer`` sẽ giới hạn phần cuối của section để section không vượt quá phần cuối của animation.
 
-To preview the animation between two markers use :kbd:`Shift + Click` to
-select the markers. When two are selected the space between them should be
-highlighted in red.
+Để xem trước animation giữa hai marker, hãy sử dụng :kbd:`Shift + Click` để chọn các marker. Khi hai marker được chọn, khoảng giữa chúng sẽ được tô sáng màu đỏ.
 
 .. image:: img/animation_marker_selected.webp
 
-Now all of the play animation buttons will act as if the selected
-area is the whole animation. **Play Animation from Start** will treat the first
-marker as the start of the animation, **Play Animation Backwards from End**
-will treat the second marker as the end, and so on.
+Lúc này, tất cả các nút phát animation sẽ hoạt động như thể vùng đã chọn là toàn bộ animation. **Play Animation from Start** sẽ coi marker đầu tiên là điểm bắt đầu của animation, **Play Animation Backwards from End** sẽ coi marker thứ hai là điểm kết thúc, v.v.

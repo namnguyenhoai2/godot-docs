@@ -1,7 +1,7 @@
 :allow_comments: False
 
-Assets pipeline
-===============
+Pipeline tài nguyên
+===================
 
 .. toctree::
    :maxdepth: 1

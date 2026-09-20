@@ -1,46 +1,25 @@
 .. _doc_importing_translations:
 
-Importing translations
-======================
+Nhập bản dịch
+=============
 
-Games and internationalization
-------------------------------
+Trò chơi và quốc tế hóa
+-----------------------
 
-The gaming community isn't monolingual or monocultural. It's made up of
-many different languages and cultures - just like the Godot community!
-If you want to allow players to experience your game in their language,
-one of things you'll need to provide is text translations, which Godot
-supports via internationalized text.
+Cộng đồng game không đơn ngữ hay đơn văn hóa. Cộng đồng này bao gồm nhiều ngôn ngữ và nền văn hóa khác nhau — cũng giống như cộng đồng Godot! Nếu muốn cho phép người chơi trải nghiệm game bằng ngôn ngữ của họ, một trong những điều bạn cần cung cấp là bản dịch văn bản, được Godot hỗ trợ thông qua văn bản quốc tế hóa.
 
-In regular desktop or mobile applications, internationalized text is
-usually located in resource files (or .po files for GNU stuff). Games,
-however, can use several orders of magnitude more text than
-applications, so they must support efficient methods for dealing with
-loads of multilingual text.
+Trong các ứng dụng desktop hoặc mobile thông thường, văn bản quốc tế hóa thường nằm trong các tệp tài nguyên (hoặc tệp .po đối với các phần mềm GNU). Tuy nhiên, game có thể sử dụng lượng văn bản lớn hơn các ứng dụng vài bậc độ lớn, vì vậy chúng phải hỗ trợ các phương pháp hiệu quả để xử lý khối lượng lớn văn bản đa ngôn ngữ.
 
-There are two approaches to generate multilingual language games and
-applications. Both are based on a key:value system. The first is to use
-one of the languages as the key (usually English), the second is to use a
-specific identifier. The first approach is probably easier for
-development if a game is released first in English, later in other
-languages, but a complete nightmare if working with many languages at
-the same time.
+Có hai cách tiếp cận để tạo game và ứng dụng đa ngôn ngữ. Cả hai đều dựa trên hệ thống key:value. Cách thứ nhất là sử dụng một trong các ngôn ngữ làm key (thường là tiếng Anh), cách thứ hai là sử dụng một identifier cụ thể. Cách tiếp cận thứ nhất có thể dễ phát triển hơn nếu game được phát hành trước bằng tiếng Anh rồi sau đó bằng các ngôn ngữ khác, nhưng sẽ là một cơn ác mộng hoàn toàn nếu làm việc với nhiều ngôn ngữ cùng lúc.
 
-In general, games use the second approach and a unique ID is used for
-each string. This allows you to revise the text while it is being
-translated to other languages. The unique ID can be a number, a string,
-or a string with a number (it's just a unique string anyway).
+Nhìn chung, game sử dụng cách tiếp cận thứ hai và một ID duy nhất được dùng cho mỗi chuỗi. Điều này cho phép bạn chỉnh sửa văn bản trong khi văn bản đang được dịch sang các ngôn ngữ khác. ID duy nhất có thể là một số, một chuỗi hoặc một chuỗi có kèm số (dù sao thì nó cũng chỉ là một chuỗi duy nhất).
 
-Supported formats
------------------
+Các định dạng được hỗ trợ
+-------------------------
 
-To complete the picture and allow efficient support for translations,
-Godot has a special importer that can read CSV files. Most spreadsheet
-editors can export to this format, so the only requirement is that the
-files have a special arrangement. See
+Để hoàn thiện khả năng này và cho phép hỗ trợ bản dịch một cách hiệu quả, Godot có một importer đặc biệt có thể đọc các tệp CSV. Hầu hết các trình chỉnh sửa bảng tính đều có thể xuất sang định dạng này, vì vậy yêu cầu duy nhất là các tệp phải có bố cục đặc biệt. Xem
 :ref:`doc_localization_using_spreadsheets` for detailed info on
-formatting and importing CSVs.
+định dạng và nhập CSV.
 
-If you need a more powerful file format, Godot also supports loading
-translations written in the gettext ``.po`` format. See
+Nếu cần một định dạng tệp mạnh mẽ hơn, Godot cũng hỗ trợ tải các bản dịch được viết ở định dạng gettext ``.po``. Xem
 :ref:`doc_localization_using_gettext` for details.

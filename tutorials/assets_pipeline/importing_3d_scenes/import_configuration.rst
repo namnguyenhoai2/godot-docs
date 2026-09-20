@@ -1,32 +1,21 @@
 .. _doc_importing_3d_scenes_import_configuration:
 
-Import configuration
-====================
+Nhập cấu hình
+=============
 
-Godot provides several ways to customize the imported data, such as the
-import dock, the advanced import setting dialog, and inherited scenes.
-This can be used to make further changes to the imported scene, such
-as adjusting meshes, adding physics information, and adding new nodes.
-You can also write a script that runs code at the end of the import
-process to perform arbitrary customization.
+Godot cung cấp một số cách để tùy chỉnh dữ liệu đã nhập, chẳng hạn như dock Import, hộp thoại Advanced Import Settings và các scene kế thừa. Bạn có thể sử dụng các cách này để thực hiện thêm những thay đổi đối với scene đã nhập, chẳng hạn như điều chỉnh mesh, thêm thông tin vật lý và thêm node mới. Bạn cũng có thể viết một script chạy code ở cuối quá trình nhập để thực hiện các tùy chỉnh tùy ý.
 
-Note that, when applicable, modifying the original data should be preferred
-to configuring the scene after import. This helps minimize the differences
-between the 3D modeling application and the imported scene. See the
+Lưu ý rằng, khi có thể, nên ưu tiên sửa đổi dữ liệu gốc thay vì cấu hình scene sau khi nhập. Điều này giúp giảm thiểu khác biệt giữa ứng dụng tạo mô hình 3D và scene đã nhập. Xem
 :ref:`doc_importing_3d_scenes_model_export_considerations` and
 :ref:`doc_importing_3d_scenes_node_type_customization` articles
-for more information.
+để biết thêm thông tin.
 
-Import workflows
-----------------
+Quy trình nhập
+--------------
 
-Since Godot can only save its own scene format (``.tscn``/``.scn``), Godot
-cannot save over the original 3D scene file (which uses a different format).
-This is also a safer approach as it avoids making accidental changes to the
-source file.
+Since Godot can only save its own scene format (``.tscn``/``.scn``), Godot cannot save over the original 3D scene file (which uses a different format). This is also a safer approach as it avoids making accidental changes to the source file.
 
-To allow customizing the scene and its materials, Godot's scene importer allows
-for different workflows regarding how data is imported.
+Để cho phép tùy chỉnh scene và các material của scene, scene importer của Godot cho phép sử dụng các quy trình khác nhau liên quan đến cách dữ liệu được nhập.
 
 .. figure:: img/importing_3d_scenes_import_dock.webp
    :align: center
@@ -34,246 +23,97 @@ for different workflows regarding how data is imported.
 
    Import dock after selecting a 3D scene in the FileSystem dock
 
-This import process is customizable using 3 separate interfaces, depending on your needs:
+Quy trình nhập này có thể được tùy chỉnh bằng 3 giao diện riêng biệt, tùy theo nhu cầu của bạn:
 
-- The **Import** dock, after selecting the 3D scene by clicking it once in the
-  FileSystem dock.
-- The **Advanced Import Settings** dialog, which can be accessed by double-clicking
-  the 3D scene in the FileSystem dock or by clicking the **Advanced…** button in
-  the Import dock. This allows you to customize per-object options in Godot, and
-  preview models and animations. Please see the :ref:`doc_advanced_import_settings`
-  page for more information.
-- :ref:`Import hints <doc_importing_3d_scenes_node_type_customization>`, which are special
-  suffixes added to object names in the 3D modeling software. This allows you to
-  customize per-object options in the 3D modeling software.
+- Dock **Import**, sau khi chọn scene 3D bằng cách nhấp một lần vào scene đó trong dock FileSystem. - Hộp thoại **Advanced Import Settings**, có thể mở bằng cách nhấp đúp vào scene 3D trong dock FileSystem hoặc nhấp vào nút **Advanced…** trong dock Import. Hộp thoại này cho phép bạn tùy chỉnh các tùy chọn cho từng object trong Godot, đồng thời xem trước model và animation. Vui lòng xem trang :ref:`doc_advanced_import_settings` để biết thêm thông tin. - :ref:`Import hints <doc_importing_3d_scenes_node_type_customization>`, là các hậu tố đặc biệt được thêm vào tên object trong phần mềm tạo mô hình 3D. Điều này cho phép bạn tùy chỉnh các tùy chọn cho từng object trong phần mềm tạo mô hình 3D.
 
-For basic customization, using the Import dock suffices. However, for more
-complex operations such as defining material overrides on a per-material basis,
-you'll need to use the Advanced Import Settings dialog, import hints, or possibly both.
+Đối với các tùy chỉnh cơ bản, sử dụng dock Import là đủ. Tuy nhiên, đối với các thao tác phức tạp hơn như xác định material override cho từng material, bạn sẽ cần sử dụng hộp thoại Advanced Import Settings, import hints hoặc có thể là cả hai.
 
 .. _doc_importing_3d_scenes_using_the_import_dock:
 
-Using the Import dock
-~~~~~~~~~~~~~~~~~~~~~
+Sử dụng dock Import
+~~~~~~~~~~~~~~~~~~~
 
-The following options can be adjusted in the Import dock after selecting a 3D
-scene in the FileSystem dock:
+Bạn có thể điều chỉnh các tùy chọn sau trong dock Import sau khi chọn một scene 3D trong dock FileSystem:
 
-- **Root Type:** The node type to use as a root node. Using node types that
-  inherit from Node3D is recommended. Otherwise, you'll lose the ability to
-  position the node directly in the 3D editor.
-- **Root Name:** The name of the root node in the imported scene. This is
-  generally not noticeable when instancing the scene in the editor (or
-  drag-and-dropping from the FileSystem dock), as the root node is renamed to
-  match the filename in this case.
-- **Apply Root Scale:** If enabled, **Root Scale** will be *applied* on the
-  meshes and animations directly, while keeping the root node's scale to the
-  default `(1, 1, 1)`. This means that if you add a child node later on within
-  the imported scene, it won't be scaled. If disabled, **Root Scale** will
-  multiply the scale of the root node instead.
+- **Root Type:** Loại node được sử dụng làm root node. Bạn nên sử dụng các loại node kế thừa từ Node3D. Nếu không, bạn sẽ mất khả năng định vị node trực tiếp trong trình chỉnh sửa 3D. - **Root Name:** Tên của root node trong scene đã nhập. Thông thường, điều này không dễ nhận thấy khi instance scene trong trình chỉnh sửa (hoặc kéo và thả từ dock FileSystem), vì trong trường hợp này root node được đổi tên để khớp với tên tệp. - **Apply Root Scale:** Nếu bật, **Root Scale** sẽ được *áp dụng* trực tiếp lên các mesh và animation, đồng thời giữ scale của root node ở giá trị mặc định `(1, 1, 1)`. Điều này có nghĩa là nếu sau đó bạn thêm một child node bên trong scene đã nhập, node đó sẽ không bị scale. Nếu tắt, **Root Scale** sẽ nhân với scale của root node.
 
 **Meshes**
 
-- **Ensure Tangents:** If checked, generate vertex tangents using
-  `Mikktspace <http://www.mikktspace.com/>`__ if the input meshes don't have
-  tangent data. When possible, it's recommended to let the 3D modeling software
-  generate tangents on export instead on relying on this option. Tangents are
-  required for correct display of normal and height maps, along with any
-  material/shader features that require tangents. If you don't need material
-  features that require tangents, disabling this can reduce output file size and
-  speed up importing if the source 3D file doesn't contain tangents.
-- **Generate LODs:** If checked, generates lower detail variants of the
-  mesh which will be displayed in the distance to improve rendering performance.
-  Not all meshes benefit from LOD, especially if they are never rendered from
-  far away. Disabling this can reduce output file size and speed up importing.
-  See :ref:`doc_mesh_lod` for more information.
-- **Create Shadow Meshes:** If checked, enables the generation of
-  shadow meshes on import. This optimizes shadow rendering without reducing
-  quality by welding vertices together when possible. This in turn reduces the
-  memory bandwidth required to render shadows. Shadow mesh generation currently
-  doesn't support using a lower detail level than the source mesh (but shadow
-  rendering will make use of LODs when relevant).
-- **Light Baking:** Configures the meshes'
+- **Ensure Tangents:** Nếu được chọn, tạo vertex tangent bằng `Mikktspace <http://www.mikktspace.com/>`__ nếu các mesh đầu vào không có dữ liệu tangent. Khi có thể, bạn nên để phần mềm tạo mô hình 3D tạo tangent khi export thay vì dựa vào tùy chọn này. Tangent cần thiết để hiển thị chính xác normal map và height map, cùng với mọi tính năng material/shader yêu cầu tangent. Nếu bạn không cần các tính năng material yêu cầu tangent, việc tắt tùy chọn này có thể giảm kích thước tệp đầu ra và tăng tốc quá trình nhập nếu tệp 3D nguồn không chứa tangent. - **Generate LODs:** Nếu được chọn, tạo các biến thể mesh có độ chi tiết thấp hơn, được hiển thị ở khoảng cách xa để cải thiện hiệu năng render. Không phải mesh nào cũng hưởng lợi từ LOD, đặc biệt nếu chúng không bao giờ được render từ xa. Việc tắt tùy chọn này có thể giảm kích thước tệp đầu ra và tăng tốc quá trình nhập. Xem :ref:`doc_mesh_lod` để biết thêm thông tin. - **Create Shadow Meshes:** Nếu được chọn, bật việc tạo shadow mesh khi nhập. Tùy chọn này tối ưu hóa việc render bóng mà không làm giảm chất lượng bằng cách hợp nhất các vertex khi có thể. Nhờ đó, băng thông bộ nhớ cần thiết để render bóng cũng giảm. Hiện tại, việc tạo shadow mesh không hỗ trợ sử dụng mức độ chi tiết thấp hơn mesh nguồn (nhưng quá trình render bóng sẽ sử dụng LOD khi phù hợp). - **Light Baking:** Cấu hình các mesh
   :ref:`global illumination mode <class_GeometryInstance3D_property_gi_mode>`
-  in the 3D scene. If set to **Static Lightmaps**, sets the meshes' GI mode to
-  **Static** and generates UV2 on import for :ref:`lightmap baking <doc_using_lightmap_gi>`.
-- **Lightmap Texel Size:** Only visible if **Light Baking** is set to **Static
-  Lightmaps**. Controls the size of each texel on the baked lightmap. A smaller
-  value results in more precise lightmaps, at the cost of larger lightmap sizes
-  and longer bake times.
+  trong scene 3D. Nếu được đặt thành **Static Lightmaps**, tùy chọn này đặt chế độ GI của các mesh thành **Static** và tạo UV2 khi nhập cho :ref:`lightmap baking <doc_using_lightmap_gi>`. - **Lightmap Texel Size:** Chỉ hiển thị khi **Light Baking** được đặt thành **Static Lightmaps**. Kiểm soát kích thước của mỗi texel trên lightmap đã bake. Giá trị nhỏ hơn sẽ tạo ra lightmap chính xác hơn, đổi lại là kích thước lightmap lớn hơn và thời gian bake lâu hơn.
 
 **Skins**
 
-- **Use Named Skins:** If checked, use named :ref:`Skins <class_Skin>` for animation.
-  The :ref:`class_MeshInstance3D` node contains 3 properties of relevance here: a skeleton
-  NodePath pointing to the Skeleton3D node (usually ``..``), a mesh, and a skin:
+- **Use Named Skins:** Nếu được chọn, sử dụng :ref:`Skins <class_Skin>` có tên cho animation. Node :ref:`class_MeshInstance3D` chứa 3 thuộc tính liên quan ở đây: một Skeleton NodePath trỏ đến node Skeleton3D (thường là ``..``), một mesh và một skin:
 
-  - The :ref:`class_Skeleton3D` node contains a list of bones with names, their pose and rest,
-    a name and a parent bone.
-  - The mesh is all of the raw vertex data needed to display a mesh. In terms of the mesh,
-    it knows how vertices are weight-painted and uses some internal numbering
-    often imported from 3D modeling software.
-  - The skin contains the information necessary to bind this mesh onto this Skeleton3D.
-    For every one of the internal bone IDs chosen by the 3D modeling software, it contains two things.
-    Firstly, a Matrix known as the Bind Pose Matrix, Inverse Bind Matrix, or IBM for short.
-    Secondly, the Skin contains each bone's name (if **Use Named Skins** is enabled),
-    or the bone's index within the Skeleton3D list (if **Use Named Skins** is disabled).
+  - Node :ref:`class_Skeleton3D` chứa danh sách các bone cùng với tên, pose và rest của chúng, một tên và một bone cha. - Mesh là toàn bộ dữ liệu vertex thô cần thiết để hiển thị một mesh. Xét về mesh, nó biết cách các vertex được weight-paint và sử dụng một số thứ tự nội bộ thường được nhập từ phần mềm tạo mô hình 3D. - Skin chứa thông tin cần thiết để bind mesh này vào Skeleton3D. Với mỗi ID bone nội bộ được phần mềm tạo mô hình 3D chọn, nó chứa hai thành phần. Thứ nhất là một Matrix được gọi là Bind Pose Matrix, Inverse Bind Matrix hoặc viết tắt là IBM. Thứ hai, Skin chứa tên của từng bone (nếu **Use Named Skins** được bật) hoặc chỉ số của bone trong danh sách Skeleton3D (nếu **Use Named Skins** bị tắt).
 
-Together, this information is enough to tell Godot how to use the bone poses in
-the Skeleton3D node to render the mesh from each MeshInstance3D. Note that each
-MeshInstance3D may share binds, as is common in models exported from Blender, or
-each MeshInstance3D may use a separate Skin object, as is common in models
-exported from other tools such as Maya.
+Kết hợp lại, những thông tin này đủ để cho Godot biết cách sử dụng các pose của bone trong node Skeleton3D để render mesh từ từng MeshInstance3D. Lưu ý rằng mỗi MeshInstance3D có thể dùng chung các bind, như thường thấy ở các model được export từ Blender, hoặc mỗi MeshInstance3D có thể sử dụng một object Skin riêng, như thường thấy ở các model được export từ các công cụ khác như Maya.
 
 
 **Animation**
 
-- **Import:** If checked, import animations from the 3D scene.
-- **FPS:** The number of frames per second to use for baking animation curves to
-  a series of points with linear interpolation. It's recommended to configure
-  this value to match the value you're using as a baseline in your 3D modeling
-  software. Higher values result in more precise animation with fast movement
-  changes, at the cost of higher file sizes and memory usage. Thanks to
-  interpolation, there is usually not much benefit in going above 30 FPS (as the
-  animation will still appear smooth at higher rendering framerates).
-- **Trimming:** Trim the beginning and end of animations if there are no
-  keyframe changes. This can reduce output file size and memory usage with
-  certain 3D scenes, depending on the contents of their animation tracks.
-- **Remove Immutable Tracks:** Remove animation tracks that only contain default
-  values. This can reduce output file size and memory usage with certain 3D
-  scenes, depending on the contents of their animation tracks.
+- **Import:** Nếu được chọn, nhập các animation từ scene 3D. - **FPS:** Số frame mỗi giây được sử dụng để bake các đường cong animation thành một chuỗi điểm với phép nội suy tuyến tính. Bạn nên cấu hình giá trị này khớp với giá trị đang được sử dụng làm cơ sở trong phần mềm tạo mô hình 3D. Giá trị cao hơn tạo ra animation chính xác hơn với các thay đổi chuyển động nhanh, đổi lại là kích thước tệp và mức sử dụng bộ nhớ cao hơn. Nhờ phép nội suy, thông thường không có nhiều lợi ích khi vượt quá 30 FPS (vì animation vẫn sẽ trông mượt ở các framerate render cao hơn). - **Trimming:** Cắt phần đầu và cuối của animation nếu không có thay đổi keyframe. Điều này có thể giảm kích thước tệp đầu ra và mức sử dụng bộ nhớ với một số scene 3D, tùy thuộc vào nội dung của các animation track. - **Remove Immutable Tracks:** Xóa các animation track chỉ chứa giá trị mặc định. Điều này có thể giảm kích thước tệp đầu ra và mức sử dụng bộ nhớ với một số scene 3D, tùy thuộc vào nội dung của các animation track.
 
 **Import Script**
 
-- **Path:** Path to an import script, which can run code *after*
-  the import process has completed for custom processing.
-  See :ref:`doc_importing_3d_scenes_import_script` for more information.
+- **Path:** Đường dẫn đến một import script, có thể chạy code *sau khi* quá trình nhập hoàn tất để thực hiện xử lý tùy chỉnh. Xem :ref:`doc_importing_3d_scenes_import_script` để biết thêm thông tin.
 
 **glTF**
 
-- **Embedded Texture Handling:** Controls how textures embedded within glTF
-  scenes should be handled. **Discard All Textures** will not import any
-  textures, which is useful if you wish to manually set up materials in Godot
-  instead. **Extract Textures** extracts textures to external images, resulting
-  in smaller file sizes and more control over import options. **Embed as Basis
-  Universal** and **Embed as Uncompressed** keeps the textures embedded in the
-  imported scene, with and without VRAM compression respectively.
+- **Embedded Texture Handling:** Kiểm soát cách xử lý các texture được nhúng trong scene glTF. **Discard All Textures** sẽ không nhập bất kỳ texture nào, hữu ích nếu bạn muốn tự thiết lập material trong Godot. **Extract Textures** trích xuất texture thành các image bên ngoài, giúp kích thước tệp nhỏ hơn và cho phép kiểm soát nhiều hơn đối với các tùy chọn nhập. **Embed as Basis Universal** và **Embed as Uncompressed** giữ texture được nhúng trong scene đã nhập, lần lượt có và không có nén VRAM.
 
 **FBX**
 
-- **Importer** Which import method is used. ubfx handles fbx files as fbx files.
-  FBX2glTF converts FBX files to glTF on import and requires additional setup.
-  FBX2glTF is not recommended unless you have a specific reason to use it over
-  ufbx or working with a different file format.
-- **Allow Geometry Helper Nodes** enables or disables geometry helper nodes
-- **Embedded Texture Handling:** Controls how textures embedded within fbx
-  scenes should be handled. **Discard All Textures** will not import any
-  textures, which is useful if you wish to manually set up materials in Godot
-  instead. **Extract Textures** extracts textures to external images, resulting
-  in smaller file sizes and more control over import options. **Embed as Basis
-  Universal** and **Embed as Uncompressed** keeps the textures embedded in the
-  imported scene, with and without VRAM compression respectively.
+- **Importer** Phương thức nhập được sử dụng. ubfx xử lý các tệp fbx dưới dạng tệp fbx. FBX2glTF chuyển đổi các tệp FBX thành glTF khi nhập và yêu cầu thiết lập bổ sung. Không nên sử dụng FBX2glTF trừ khi bạn có lý do cụ thể để dùng nó thay cho ufbx hoặc cần làm việc với một định dạng tệp khác. - **Allow Geometry Helper Nodes** bật hoặc tắt các geometry helper node - **Embedded Texture Handling:** Kiểm soát cách xử lý các texture được nhúng trong scene fbx. **Discard All Textures** sẽ không nhập bất kỳ texture nào, hữu ích nếu bạn muốn tự thiết lập material trong Godot. **Extract Textures** trích xuất texture thành các image bên ngoài, giúp kích thước tệp nhỏ hơn và cho phép kiểm soát nhiều hơn đối với các tùy chọn nhập. **Embed as Basis Universal** và **Embed as Uncompressed** giữ texture được nhúng trong scene đã nhập, lần lượt có và không có nén VRAM.
 
 **Blender-specific options**
 
-Only visible for ``.blend`` files.
+Chỉ hiển thị đối với các tệp ``.blend``.
 
 **Nodes**
 
-- **Visible:** **All** imports everything, even invisible objects. **Visible Only**
-  only imports visible objects. **Renderable** only imports objects that are marked
-  as renderable in Blender, regardless of whether they are actually visible.
-  In Blender, renderability is toggled by clicking the camera icon next to each object
-  in the Outliner, while visibility is toggled by the eye icon.
-- **Active Collection Only:** If checked, only imports nodes that are in the active collection
-  in Blender.
-- **Punctual Lights:** If checked, imports lights (directional, omni, and spot) from Blender.
-  "Punctual" is not to be confused with "positional", which is why directional lights
-  are also included.
-- **Cameras:** If checked, imports cameras from Blender.
-- **Custom Properties:** If checked, imports custom properties from Blender as glTF extras.
-  This data can then be used from an editor plugin that uses
+- **Visible:** **All** nhập mọi thứ, kể cả các đối tượng không hiển thị. **Visible Only** chỉ nhập các đối tượng đang hiển thị. **Renderable** chỉ nhập các đối tượng được đánh dấu là có thể render trong Blender, bất kể chúng có thực sự hiển thị hay không. Trong Blender, khả năng render được bật/tắt bằng cách nhấp vào biểu tượng camera bên cạnh từng đối tượng trong Outliner, còn khả năng hiển thị được bật/tắt bằng biểu tượng con mắt. - **Active Collection Only:** Nếu được chọn, chỉ nhập các node nằm trong collection đang hoạt động trong Blender. - **Punctual Lights:** Nếu được chọn, nhập các đèn (directional, omni và spot) từ Blender. Không nên nhầm "Punctual" với "positional", đó là lý do directional lights cũng được bao gồm. - **Cameras:** Nếu được chọn, nhập các camera từ Blender. - **Custom Properties:** Nếu được chọn, nhập các thuộc tính tùy chỉnh từ Blender dưới dạng glTF extras. Dữ liệu này sau đó có thể được sử dụng từ một editor plugin sử dụng
   :ref:`GLTFDocument.register_gltf_document_extension() <class_GLTFDocument_method_register_gltf_document_extension>`,
-  which can set node metadata on import (among other use cases).
-- **Modifiers:** If set to **No Modifiers**, object modifiers are ignored on import.
-  If set to **All Modifiers**, applies modifiers to objects on import.
+  có thể thiết lập metadata của node khi import (ngoài các trường hợp sử dụng khác). - **Modifiers:** Nếu được đặt thành **No Modifiers**, các object modifier sẽ bị bỏ qua khi import. Nếu được đặt thành **All Modifiers**, các modifier sẽ được áp dụng cho các object khi import.
 
 **Meshes**
 
-- **Colors:** If checked, imports vertex colors from Blender.
-- **UVs:** If checked, imports vertex UV1 and UV2 from Blender.
-- **Normals:** If checked, imports vertex normals from Blender.
-- **Export Geometry Nodes Instances:** If checked, imports
-  `geometry node <https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/introduction.html>`__
-  instances from Blender.
-- **GPU Instances** If checked, imports instances and particle systems as GLTF's
-  buffer/accessor data instead of numerous singular Mesh3D object. This does not
-  include Geometry Nodes instancing.
-- **Tangents:** If checked, imports vertex tangents from Blender.
-- **Skins:** **None** skips skeleton skin data import from Blender. **4 Influences (Compatible)**
-  imports skin data to be compatible with all renderers, at the cost of lower precision
-  for certain rigs. **All Influences** imports skin data with all influences
-  (up to 8 in Godot), which is more precise but may not be compatible with all renderers.
-- **Export Bones Deforming Mesh Only:** If checked, only imports bones that deform the mesh
-  from Blender.
+- **Colors:** Nếu được chọn, nhập vertex colors từ Blender. - **UVs:** Nếu được chọn, nhập vertex UV1 và UV2 từ Blender. - **Normals:** Nếu được chọn, nhập vertex normals từ Blender. - **Export Geometry Nodes Instances:** Nếu được chọn, nhập các instance `geometry node <https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/introduction.html>`__ từ Blender. - **GPU Instances** Nếu được chọn, nhập các instance và particle system dưới dạng dữ liệu buffer/accessor của GLTF thay vì nhiều Mesh3D object riêng lẻ. Tùy chọn này không bao gồm Geometry Nodes instancing. - **Tangents:** Nếu được chọn, nhập vertex tangents từ Blender. - **Skins:** **None** bỏ qua việc import dữ liệu skeleton skin từ Blender. **4 Influences (Compatible)** nhập dữ liệu skin để tương thích với tất cả renderer, nhưng phải đánh đổi bằng độ chính xác thấp hơn đối với một số rig. **All Influences** nhập dữ liệu skin với tất cả influence (tối đa 8 trong Godot), cho độ chính xác cao hơn nhưng có thể không tương thích với mọi renderer. - **Export Bones Deforming Mesh Only:** Nếu được chọn, chỉ nhập các bone làm biến dạng mesh từ Blender.
 
 **Materials**
 
-- **Unpack Enabled:** If checked, unpacks the original images to the Godot filesystem
-  and uses them. This allows changing image import settings like VRAM compression.
-  If unchecked, allows Blender to convert the original images, such as repacking
-  roughness and metallic into one roughness + metallic texture. In most cases,
-  this option should be left checked, but if the ``.blend`` file's images
-  aren't in the correct format, this must be disabled for correct behavior.
-- **Export Materials:** If set to **Placeholder**, does not import materials,
-  but keeps surface slots so that separate materials can be assigned to different surfaces.
-  If set to **Export**, imports materials as-is (note that procedural Blender materials
-  may not work correctly). If set to **Named Placeholder**, imports materials,
-  but doesn't import images that are packed into the ``.blend`` file.
-  Textures will have to be reassigned manually in the imported materials.
+- **Unpack Enabled:** Nếu được chọn, giải nén các ảnh gốc vào hệ thống tệp của Godot và sử dụng chúng. Điều này cho phép thay đổi các thiết lập import ảnh như nén VRAM. Nếu không được chọn, cho phép Blender chuyển đổi các ảnh gốc, chẳng hạn như đóng gói lại roughness và metallic vào một texture roughness + metallic. Trong hầu hết trường hợp, nên giữ tùy chọn này ở trạng thái được chọn, nhưng nếu các ảnh của file ``.blend`` không ở đúng định dạng, phải tắt tùy chọn này để hoạt động chính xác. - **Export Materials:** Nếu được đặt thành **Placeholder**, không import materials nhưng vẫn giữ các surface slot để có thể gán các material riêng biệt cho những surface khác nhau. Nếu được đặt thành **Export**, import materials nguyên trạng (lưu ý rằng các material Blender dạng procedural có thể không hoạt động chính xác). Nếu được đặt thành **Named Placeholder**, import materials nhưng không import các ảnh được đóng gói trong file ``.blend``. Các texture sẽ phải được gán lại thủ công trong các material đã import.
 
 **Animation**
 
-- **Limit Playback:** If checked, limits animation import to the playback range
-  defined in Blender (the **Start** and **End** options at the right of the animation timeline
-  in Blender). This can avoid including unused animation data, making the imported scene smaller
-  and faster to load. However, this can also result in missing animation data if the playback range
-  is not set correctly in Blender.
-- **Always Sample:** If checked, forces animation sampling on import to ensure consistency
-  between how Blender and glTF perform animation interpolation, at the cost of larger file sizes.
-  If unchecked, there may be differences in how animations are interpolated between what you see
-  in Blender and the imported scene in Godot, due to different interpolation semantics
-  between both.
-- **Group Tracks:** If checked, imports animations (actives and on NLA tracks) as
-  separate tracks. If unchecked, all the currently assigned actions become one glTF animation.
+- **Limit Playback:** Nếu được chọn, giới hạn việc import animation trong phạm vi playback được xác định trong Blender (các tùy chọn **Start** và **End** ở bên phải timeline animation trong Blender). Điều này có thể tránh đưa vào dữ liệu animation không được sử dụng, giúp scene đã import nhỏ hơn và tải nhanh hơn. Tuy nhiên, điều này cũng có thể khiến dữ liệu animation bị thiếu nếu phạm vi playback không được thiết lập chính xác trong Blender. - **Always Sample:** Nếu được chọn, buộc thực hiện animation sampling khi import để đảm bảo tính nhất quán giữa cách Blender và glTF thực hiện animation interpolation, nhưng phải đánh đổi bằng kích thước file lớn hơn. Nếu không được chọn, có thể có khác biệt trong cách animation được nội suy giữa những gì bạn thấy trong Blender và scene đã import trong Godot, do semantics nội suy khác nhau giữa hai bên. - **Group Tracks:** Nếu được chọn, import các animation (actives và trên NLA track) dưới dạng các track riêng biệt. Nếu không được chọn, tất cả action hiện được gán sẽ trở thành một glTF animation.
 
 .. _doc_importing_3d_scenes_import_script:
 
-Using import scripts for automation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sử dụng import script để tự động hóa
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A special script to process the whole scene after import can be provided.
-This is great for post-processing, changing materials, doing funny stuff with
-the geometry, and more.
+Có thể cung cấp một script đặc biệt để xử lý toàn bộ scene sau khi import. Script này rất hữu ích cho việc post-processing, thay đổi material, thực hiện các thao tác thú vị với geometry và nhiều việc khác.
 
-Create a script that is not attached to any node by right-clicking in the
-FileSystem dock and choosing **New > Script…**. In the script editor, write the
-following:
+Tạo một script không được gắn vào node nào bằng cách nhấp chuột phải trong FileSystem dock và chọn **New > Script…**. Trong script editor, hãy viết như sau:
 
 ::
 
-    @tool # Needed so it runs in editor.
+    @tool # Cần thiết để script chạy trong editor.
     extends EditorScenePostImport
 
-    # This sample changes all node names.
-    # Called right after the scene is imported and gets the root node.
+    # Mẫu này thay đổi tất cả tên node.
+    # Được gọi ngay sau khi scene được import và nhận root node.
     func _post_import(scene):
-        # Change all node names to "modified_[oldnodename]"
+        # Đổi tất cả tên node thành "modified_[oldnodename]"
         iterate(scene)
-        return scene # Remember to return the imported scene
+        return scene # Nhớ trả về scene đã import
 
-    # Recursive function that is called on every node
-    # (for demonstration purposes; EditorScenePostImport only requires a `_post_import(scene)` function).
+    # Hàm đệ quy được gọi trên mọi node
+    # (cho mục đích minh họa; EditorScenePostImport chỉ yêu cầu một hàm `_post_import(scene)`).
     func iterate(node):
         if node != null:
             print_rich("Post-import: [b]%s[/b] -> [b]%s[/b]" % [node.name, "modified_" + node.name])
@@ -282,23 +122,16 @@ following:
                 iterate(child)
 
 
-The ``_post_import(scene: Node)`` function takes the imported scene as argument
-(the parameter is actually the root node of the scene). The scene that will
-finally be used **must** be returned (even if the scene can be entirely different).
+Hàm ``_post_import(scene: Node)`` nhận scene đã import làm đối số (tham số này thực tế là root node của scene). Scene cuối cùng sẽ được sử dụng **phải** được trả về (ngay cả khi scene đó hoàn toàn khác).
 
-To use your script, locate the script in the import tab's "Path" option under the "Import Script" category.
+Để sử dụng script, tìm script trong tùy chọn "Path" của import tab, bên dưới danh mục "Import Script".
 
-Using animation libraries
+Sử dụng animation library
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can also choose to import **only** animations from a glTF file and
-nothing else. This is used in some asset pipelines to distribute animations
-separately from models. For example, this allows you to use one set of
-animations for several characters, without having to duplicate animation data in
-every character.
+Bạn cũng có thể chọn chỉ import **các animation** từ một file glTF và không import gì khác. Cách này được sử dụng trong một số asset pipeline để phân phối animation riêng biệt khỏi model. Ví dụ, cách này cho phép bạn sử dụng một bộ animation cho nhiều character mà không phải sao chép dữ liệu animation vào từng character.
 
-To do so, select the glTF file in the FileSystem dock, then change the import
-mode to Animation Library in the Import dock:
+Để thực hiện việc này, chọn file glTF trong FileSystem dock, sau đó đổi import mode thành Animation Library trong Import dock:
 
 .. figure:: img/importing_3d_scenes_changing_import_type.webp
    :align: center
@@ -306,59 +139,38 @@ mode to Animation Library in the Import dock:
 
    Changing the import type to Animation Library in the Import dock
 
-Click **Reimport** and restart the editor when prompted. After restarting, the
-glTF file will be imported as an :ref:`class_AnimationLibrary` instead of a
+Nhấp **Reimport** và khởi động lại editor khi được nhắc. Sau khi khởi động lại, file glTF sẽ được import dưới dạng :ref:`class_AnimationLibrary` thay vì một
 :ref:`class_PackedScene`. This animation library can then be referenced in an
 :ref:`class_AnimationPlayer` node.
 
-The import options that are visible after changing the import mode to Animation
-Library act the same as when using the Scene import mode. See
+Các tùy chọn import hiển thị sau khi đổi import mode thành Animation Library hoạt động giống như khi sử dụng Scene import mode. Xem
 :ref:`doc_importing_3d_scenes_using_the_import_dock` for more information.
 
 Filter script
 ~~~~~~~~~~~~~
 
-It is possible to specify a filter script in a special syntax to decide which
-tracks from which animations should be kept.
+Có thể chỉ định một filter script theo cú pháp đặc biệt để quyết định những track nào từ những animation nào sẽ được giữ lại.
 
-The filter script is executed against each imported animation. The syntax
-consists of two types of statements, the first for choosing which animations to
-filter, and the second for filtering individual tracks within the matched
-animation. All name patterns are performed using a case-insensitive expression
-match, with support for ``?`` and ``*`` wildcards (using
+Filter script được thực thi trên từng animation đã import. Cú pháp bao gồm hai loại câu lệnh: loại đầu tiên dùng để chọn những animation cần lọc, loại thứ hai dùng để lọc từng track trong animation phù hợp. Tất cả name pattern đều được thực hiện bằng phép so khớp biểu thức không phân biệt chữ hoa chữ thường, với hỗ trợ wildcard ``?`` và ``*`` (sử dụng
 :ref:`String.matchn() <class_String_method_matchn>` under the hood).
 
-The script must start with an animation filter statement (as denoted by the line
-beginning with an ``@``). For example, if we would like to apply filters to all
-imported animations which have a name ending in ``"_Loop"``:
+Script phải bắt đầu bằng một câu lệnh animation filter (được biểu thị bằng dòng bắt đầu với ``@``). Ví dụ: nếu muốn áp dụng filter cho tất cả animation đã import có tên kết thúc bằng ``"_Loop"``:
 
 .. code:: text
 
     @+*_Loop
 
-Similarly, additional patterns can be added to the same line, separated by
-commas. Here is a modified example to additionally *include* all animations with
-names that begin with ``"Arm_Left"``, but also *exclude* all animations which
-have names ending in ``"Attack"``:
+Tương tự, có thể thêm các pattern bổ sung vào cùng một dòng, được phân tách bằng dấu phẩy. Đây là một ví dụ đã chỉnh sửa để *include* thêm tất cả animation có tên bắt đầu bằng ``"Arm_Left"``, nhưng cũng *exclude* tất cả animation có tên kết thúc bằng ``"Attack"``:
 
 .. code:: text
 
     @+*_Loop, +Arm_Left*, -*Attack
 
-Following the animation selection filter statement, we add track filtering
-patterns to indicate which animation tracks should be kept or discarded. If no
-track filter patterns are specified, then all tracks within the matched
-animations will be discarded!
+Sau câu lệnh animation selection filter, chúng ta thêm các pattern lọc track để chỉ ra những animation track nào cần được giữ lại hoặc loại bỏ. Nếu không chỉ định pattern lọc track nào, tất cả track trong các animation phù hợp sẽ bị loại bỏ!
 
-It's important to note that track filter statements are applied in order for
-each track within the animation, this means that one line may include a track, a
-later rule can still discard it. Similarly, a track excluded by an early rule
-may then be re-included once again by a filter rule further down in the filter
-script.
+Điều quan trọng cần lưu ý là các câu lệnh lọc track được áp dụng theo thứ tự cho từng track trong animation; điều này có nghĩa là một dòng có thể include một track, nhưng một rule xuất hiện sau đó vẫn có thể discard track này. Tương tự, một track bị exclude bởi rule trước đó có thể được include lại bởi một filter rule ở vị trí sau trong filter script.
 
-For example: include all tracks in animations with names ending in ``"_Loop"``,
-but discard any tracks affecting a ``"Skeleton"`` which end in ``"Control"``,
-unless they have ``"Arm"`` in their name:
+Ví dụ: include tất cả track trong các animation có tên kết thúc bằng ``"_Loop"``, nhưng discard mọi track tác động lên một ``"Skeleton"`` và kết thúc bằng ``"Control"``, trừ khi tên của chúng có ``"Arm"``:
 
 ::
 
@@ -367,22 +179,16 @@ unless they have ``"Arm"`` in their name:
     -Skeleton:*Control
     +*Arm*
 
-In the above example, tracks like ``"Skeleton:Leg_Control"`` would be discarded,
-while tracks such as ``"Skeleton:Head"`` or ``"Skeleton:Arm_Left_Control"``
-would be retained.
+Trong ví dụ trên, các track như ``"Skeleton:Leg_Control"`` sẽ bị discard, trong khi các track như ``"Skeleton:Head"`` hoặc ``"Skeleton:Arm_Left_Control"`` sẽ được giữ lại.
 
-Any track filter lines that do not begin with a ``+`` or ``-`` are ignored.
+Mọi dòng lọc track không bắt đầu bằng ``+`` hoặc ``-`` đều bị bỏ qua.
 
-Scene inheritance
------------------
+Kế thừa scene
+-------------
 
-In many cases, it may be desired to make manual modifications to the imported
-scene. By default, this is not possible because if the source 3D asset changes,
-Godot will re-import the *whole* scene.
+Trong nhiều trường hợp, bạn có thể muốn thực hiện các chỉnh sửa thủ công đối với scene đã import. Theo mặc định, điều này không thể thực hiện vì nếu asset 3D nguồn thay đổi, Godot sẽ import lại *toàn bộ* scene.
 
-However, it is possible to make local modifications by using *scene
-inheritance*. If you try to open the imported scene using **Scene > Open
-Scene…** or **Scene > Quick Open Scene…**, the following dialog will appear:
+Tuy nhiên, có thể thực hiện các chỉnh sửa cục bộ bằng cách sử dụng *scene inheritance*. Nếu bạn thử mở scene đã import bằng **Scene > Open Scene…** hoặc **Scene > Quick Open Scene…**, hộp thoại sau sẽ xuất hiện:
 
 .. figure:: img/importing_3d_scenes_create_inherited_scene_dialog.webp
    :align: center
@@ -390,11 +196,8 @@ Scene…** or **Scene > Quick Open Scene…**, the following dialog will appear:
 
    Dialog when opening an imported 3D scene in the editor
 
-In inherited scenes, the only limitations for modification are:
+Trong các scene được kế thừa, những giới hạn duy nhất đối với việc chỉnh sửa là:
 
-- Nodes from the base scene can't be removed, but additional nodes can be added
-  anywhere.
-- Subresources can't be edited. Instead, you need to save them externally as
-  described above.
+- Không thể xóa các node từ scene cơ sở, nhưng có thể thêm các node bổ sung ở bất kỳ đâu. - Không thể chỉnh sửa subresource. Thay vào đó, bạn cần lưu chúng ra bên ngoài như mô tả ở trên.
 
-Other than that, everything is allowed.
+Ngoài những điều đó, mọi thao tác đều được phép.

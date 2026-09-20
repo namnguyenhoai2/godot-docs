@@ -1,36 +1,30 @@
 .. _doc_exporting_3d_scenes:
 
-Exporting 3D scenes
-===================
+Xuất scene 3D
+=============
 
-Overview
---------
+Tổng quan
+---------
 
-In Godot, it is possible to export 3D scenes as a glTF 2.0 file. You can
-export as a glTF binary (``.glb`` file) or glTF embedded with textures
-(``gltf`` + ``.bin`` + textures). This allows you to create scenes in Godot,
-such as a CSG mesh blockout for a level, export it to clean it up in a
-program such as Blender, and then bring it back into Godot.
+Trong Godot, bạn có thể xuất scene 3D dưới dạng tệp glTF 2.0. Bạn có thể xuất dưới dạng glTF binary (``.glb`` file) hoặc glTF nhúng texture (``gltf`` + ``.bin`` + textures). Điều này cho phép bạn tạo scene trong Godot, chẳng hạn như blockout khối lưới CSG cho một level, xuất scene đó để chỉnh sửa trong một chương trình như Blender, rồi đưa trở lại Godot.
 
 .. note::
 
-    Only Blender 2.83 and newer can import glTF files exported by Godot.
+    Chỉ Blender 2.83 trở lên mới có thể import các tệp glTF được Godot xuất.
 
-To export a scene in the editor go to **Scene > Export As... > glTF 2.0 Scene...**
+Để xuất một scene trong editor, hãy vào **Scene > Export As... > glTF 2.0 Scene...**
 
 .. image:: img/gltf_godot_export.png
 
-Limitations
------------
+Hạn chế
+-------
 
-There are several limitations with glTF export.
+glTF export có một số hạn chế.
 
-* No support for exporting particles since their implementation varies across engines.
-* ShaderMaterials cannot be exported.
-* No support for exporting 2D scenes.
+* Không hỗ trợ xuất particles vì cách triển khai của chúng khác nhau giữa các engine. * Không thể xuất ShaderMaterials. * Không hỗ trợ xuất scene 2D.
 
 .. seealso::
 
-    3D scenes can be saved at runtime using
+    Các scene 3D có thể được lưu trong runtime bằng cách sử dụng
     :ref:`runtime file loading and saving <doc_runtime_file_loading_and_saving_3d_scenes>`,
-    including from an exported project.
+    bao gồm cả từ một project đã được export.

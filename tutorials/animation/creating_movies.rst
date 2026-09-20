@@ -1,64 +1,34 @@
 .. _doc_creating_movies:
 
-Creating movies
-===============
+Tạo phim
+========
 
-Godot can record **non-real-time** video and audio from any 2D or 3D project.
-This kind of recording is also called *offline rendering*.
-There are many scenarios where this is useful:
+Godot có thể ghi video và âm thanh **không theo thời gian thực** từ bất kỳ dự án 2D hoặc 3D nào. Kiểu ghi này còn được gọi là *kết xuất ngoại tuyến (offline rendering)*. Có nhiều trường hợp việc này hữu ích:
 
-- Recording game trailers for promotional use.
-- Recording cutscenes that will be :ref:`displayed as pre-recorded videos <doc_playing_videos>`
-  in the final game. This allows for using higher quality settings
-  (at the cost of file size), regardless of the player's hardware.
-- Recording procedurally generated animations or motion design. User interaction
-  remains possible during video recording, and audio can be included as well
-  (although you won't be able to hear it while the video is recording).
-- Comparing the visual output of graphics settings, shaders, or rendering techniques
-  in an animated scene.
+- Ghi trailer game để quảng bá. - Ghi các đoạn cắt cảnh sẽ được :ref:`displayed as pre-recorded videos <doc_playing_videos>` trong game cuối cùng. Điều này cho phép sử dụng các thiết lập chất lượng cao hơn (đổi lại là kích thước tệp lớn hơn), bất kể phần cứng của người chơi. - Ghi các animation được tạo theo quy trình (procedurally generated) hoặc motion design. Tương tác của người dùng vẫn khả dụng trong khi ghi video, đồng thời có thể đưa âm thanh vào (mặc dù bạn sẽ không thể nghe thấy âm thanh đó trong khi video đang được ghi). - So sánh đầu ra hình ảnh của các thiết lập đồ họa, shader hoặc kỹ thuật kết xuất trong một cảnh animation.
 
-With Godot's animation features such as the AnimationPlayer node, Tweeners,
-particles and shaders, it can effectively be used to create any kind of 2D and
-3D animations (and still images).
+Với các tính năng animation của Godot như node AnimationPlayer, Tweener, particle và shader, Godot có thể được sử dụng hiệu quả để tạo mọi loại animation 2D và 3D (cũng như hình ảnh tĩnh).
 
-If you are already used to Godot's workflow, you may find yourself more
-productive by using Godot for video rendering compared to Blender. That said,
-renderers designed for non-real-time usage such as Cycles and Eevee can result
-in better visuals (at the cost of longer rendering times).
+Nếu đã quen với workflow của Godot, bạn có thể làm việc hiệu quả hơn khi sử dụng Godot để kết xuất video thay vì Blender. Tuy vậy, các renderer được thiết kế cho việc sử dụng không theo thời gian thực như Cycles và Eevee có thể tạo ra hình ảnh đẹp hơn (đổi lại thời gian kết xuất lâu hơn).
 
-Compared to real-time video recording, some advantages of non-real-time recording include:
+So với việc ghi video theo thời gian thực, một số ưu điểm của ghi không theo thời gian thực gồm:
 
-- Use any graphics settings (including extremely demanding settings) regardless
-  of your hardware's capabilities. The output video will *always* have perfect
-  frame pacing; it will never exhibit dropped frames or stuttering.
-  Faster hardware will allow you to render a given animation in less time, but
-  the visual output remains identical.
-- Render at a higher resolution than the screen resolution, without having to
-  rely on driver-specific tools such as NVIDIA's Dynamic Super Resolution or
-  AMD's Virtual Super Resolution.
-- Render at a higher framerate than the video's target framerate, then
+- Sử dụng bất kỳ thiết lập đồ họa nào (bao gồm cả các thiết lập cực kỳ nặng) bất kể khả năng của phần cứng. Video đầu ra sẽ *luôn* có nhịp khung hình hoàn hảo; không bao giờ xuất hiện hiện tượng rớt khung hình hoặc giật hình. Phần cứng nhanh hơn sẽ cho phép bạn kết xuất một animation nhất định trong thời gian ngắn hơn, nhưng đầu ra hình ảnh vẫn giống hệt nhau. - Kết xuất ở độ phân giải cao hơn độ phân giải màn hình mà không cần dựa vào các công cụ riêng của driver như Dynamic Super Resolution của NVIDIA hoặc Virtual Super Resolution của AMD. - Kết xuất ở framerate cao hơn framerate mục tiêu của video, sau đó
   :ref:`post-process to generate high-quality motion blur <doc_creating_movies_motion_blur>`.
-  This also makes effects that converge over several frames (such as temporal antialiasing,
-  SDFGI and volumetric fog) look better.
+  Điều này cũng giúp các hiệu ứng hội tụ qua nhiều khung hình (chẳng hạn như temporal antialiasing, SDFGI và volumetric fog) trông đẹp hơn.
 
 .. warning::
 
-    **This feature is not designed for capturing real-time footage during gameplay.**
+    **Tính năng này không được thiết kế để ghi lại footage theo thời gian thực trong khi chơi game.**
 
-    Players should use something like `OBS Studio <https://obsproject.com/>`__ or
-    `SimpleScreenRecorder <https://www.maartenbaert.be/simplescreenrecorder/>`__
-    to record gameplay videos, as they do a much better job at intercepting the
-    compositor than Godot can do using Vulkan or OpenGL natively.
+    Người chơi nên sử dụng các công cụ như `OBS Studio <https://obsproject.com/>`__ hoặc `SimpleScreenRecorder <https://www.maartenbaert.be/simplescreenrecorder/>`__ để ghi video gameplay, vì chúng làm tốt hơn nhiều việc chặn compositor so với khả năng của Godot khi sử dụng Vulkan hoặc OpenGL nguyên bản.
 
-    That said, if your game runs at near-real-time speeds when capturing,
-    you can still use this feature (but it will lack audible sound playback,
-    as sound is saved directly to the video file).
+    Tuy vậy, nếu game của bạn chạy ở tốc độ gần thời gian thực khi ghi, bạn vẫn có thể sử dụng tính năng này (nhưng sẽ không có phát âm thanh để nghe, vì âm thanh được lưu trực tiếp vào tệp video).
 
-Enabling Movie Maker mode
--------------------------
+Bật chế độ Movie Maker
+----------------------
 
-To enable Movie Maker mode, click the "movie reel" button in the top-right
-corner of the editor *before* running the project:
+Để bật chế độ Movie Maker, hãy nhấp vào nút "movie reel" ở góc trên bên phải của editor *trước khi* chạy project:
 
 .. figure:: img/creating_movies_enable_movie_maker_mode.webp
    :align: center
@@ -66,9 +36,7 @@ corner of the editor *before* running the project:
 
    Movie Maker mode is disabled, click the "movie reel" icon to enable
 
-A menu will be displayed with options to enable Movie Maker mode and to go to
-the settings. The icon gets a background matching the accent color when Movie
-Maker mode is enabled:
+Một menu sẽ hiển thị các tùy chọn để bật chế độ Movie Maker và đi đến phần cài đặt. Khi chế độ Movie Maker được bật, biểu tượng sẽ có nền trùng với màu nhấn:
 
 .. figure:: img/creating_movies_disable_movie_maker_mode.webp
    :align: center
@@ -76,16 +44,13 @@ Maker mode is enabled:
 
    Movie Maker mode is enabled, click the "movie reel" icon again to disable
 
-Movie Maker status is **not** persisted when the editor quits, so you must
-re-enable Movie Maker mode again after restarting the editor if needed.
+Trạng thái Movie Maker **không** được lưu lại khi editor thoát, vì vậy nếu cần, bạn phải bật lại chế độ Movie Maker sau khi khởi động lại editor.
 
 .. note::
 
-    Toggling Movie Maker mode while running the project will not have any
-    effect until the project is restarted.
+    Việc bật hoặc tắt chế độ Movie Maker trong khi project đang chạy sẽ không có hiệu lực cho đến khi project được khởi động lại.
 
-Before you can record video by running the project, you still need to configure
-the output file path. This path can be set for all scenes in the Project Settings:
+Trước khi có thể ghi video bằng cách chạy project, bạn vẫn cần cấu hình đường dẫn tệp đầu ra. Có thể thiết lập đường dẫn này cho tất cả các scene trong Project Settings:
 
 .. figure:: img/creating_movies_project_settings.webp
    :align: center
@@ -93,10 +58,7 @@ the output file path. This path can be set for all scenes in the Project Setting
 
    Movie Maker project settings (with Advanced toggle enabled)
 
-Alternatively, you can set the output file path on a per-scene basis by adding a
-String metadata with the name ``movie_file`` to the scene's **root node**. This
-is only used when the main scene is set to the scene in question, or when
-running the scene directly by pressing :kbd:`F6` (:kbd:`Cmd + R` on macOS).
+Ngoài ra, bạn có thể thiết lập đường dẫn tệp đầu ra cho từng scene bằng cách thêm metadata kiểu String có tên ``movie_file`` vào **root node** của scene. Tùy chọn này chỉ được sử dụng khi scene chính được đặt thành scene tương ứng, hoặc khi chạy trực tiếp scene bằng cách nhấn :kbd:`F6` (:kbd:`Cmd + R` trên macOS).
 
 .. figure:: img/creating_movies_set_per_scene_metadata.webp
    :align: center
@@ -104,40 +66,32 @@ running the scene directly by pressing :kbd:`F6` (:kbd:`Cmd + R` on macOS).
 
    Inspector view after creating a ``movie_file`` metadata of type String
 
-The path specified in the project settings or metadata can be either absolute,
-or relative to the project root.
+Đường dẫn được chỉ định trong project settings hoặc metadata có thể là đường dẫn tuyệt đối hoặc đường dẫn tương đối so với project root.
 
-Once you've configured and enabled Movie Maker mode, it will be automatically used
-when running the project from the editor.
+Sau khi đã cấu hình và bật chế độ Movie Maker, chế độ này sẽ tự động được sử dụng khi chạy project từ editor.
 
-Command line usage
-~~~~~~~~~~~~~~~~~~
+Sử dụng dòng lệnh
+~~~~~~~~~~~~~~~~~
 
-Movie Maker can also be enabled from the :ref:`command line <doc_command_line_tutorial>`:
+Movie Maker cũng có thể được bật từ :ref:`command line <doc_command_line_tutorial>`:
 
 ::
 
     godot --path /path/to/your_project --write-movie output.avi
 
-If the output path is relative, then it is **relative to the project folder**,
-not the current working directory. In the above example, the file will be
-written to ``/path/to/your_project/output.avi``. This behavior is similar to the
-``--export-release`` command line argument.
+Nếu đường dẫn đầu ra là đường dẫn tương đối, thì nó **tương đối so với thư mục project**, không phải thư mục làm việc hiện tại. Trong ví dụ trên, tệp sẽ được ghi vào ``/path/to/your_project/output.avi``. Hành vi này tương tự đối số dòng lệnh ``--export-release``.
 
-Since Movie Maker's output resolution is set by the viewport size, you can
-adjust the window size on startup to override it if the project uses the
-``disabled`` or ``canvas_items`` :ref:`stretch mode <doc_multiple_resolutions>`:
+Vì độ phân giải đầu ra của Movie Maker được thiết lập bởi kích thước viewport, bạn có thể điều chỉnh kích thước cửa sổ khi khởi động để ghi đè giá trị này nếu project sử dụng ``disabled`` hoặc ``canvas_items`` :ref:`stretch mode <doc_multiple_resolutions>`:
 
 ::
 
     godot --path /path/to/your_project --write-movie output.avi --resolution 1280x720
 
-Note that the window size is clamped by your display's resolution. See
+Lưu ý rằng kích thước cửa sổ bị giới hạn bởi độ phân giải của màn hình. Xem
 :ref:`doc_creating_movies_recording_at_higher_resolution` if you need to record
-a video at a higher resolution than the screen resolution.
+video ở độ phân giải cao hơn độ phân giải màn hình.
 
-The recording FPS can also be overridden on the command line,
-without having to edit the Project Settings:
+FPS ghi cũng có thể được ghi đè trên dòng lệnh mà không cần chỉnh sửa Project Settings:
 
 ::
 
@@ -145,188 +99,84 @@ without having to edit the Project Settings:
 
 .. note::
 
-    The ``--write-movie`` and ``--fixed-fps`` command line arguments are both available
-    in exported projects. Movie Maker mode cannot be toggled while the project is running,
-    but you can use the :ref:`OS.execute() <class_OS_method_execute>` method to
-    run a second instance of the exported project that will record a video file.
+    Cả hai đối số dòng lệnh ``--write-movie`` và ``--fixed-fps`` đều khả dụng trong các project đã export. Không thể bật hoặc tắt chế độ Movie Maker khi project đang chạy, nhưng bạn có thể sử dụng phương thức :ref:`OS.execute() <class_OS_method_execute>` để chạy một instance thứ hai của project đã export nhằm ghi một tệp video.
 
-Choosing an output format
--------------------------
+Chọn định dạng đầu ra
+---------------------
 
-Output formats are provided by the :ref:`MovieWriter <class_MovieWriter>` class.
-Godot has 3 built-in :ref:`MovieWriters <class_MovieWriter>`, and more can be
-implemented by extensions:
+Các định dạng đầu ra được cung cấp bởi class :ref:`MovieWriter <class_MovieWriter>`. Godot có 3 :ref:`MovieWriters <class_MovieWriter>` tích hợp sẵn, và có thể triển khai thêm bằng extension:
 
-OGV (recommended)
+OGV (khuyến nghị)
 ~~~~~~~~~~~~~~~~~
 
-OGV container with Theora for video and Vorbis for audio. Features lossy video
-and audio compression with a good balance of file size and encoding speed, with
-a better image quality than MJPEG. It has 4 speed levels that can be adjusted
-by changing **Editor > Movie Writer > Encoding Speed** with the fastest one
-being around as fast as AVI with better compression. At slower speed levels, it
-can compress even better while keeping the same image quality. The lossy
-compression quality can be adjusted by changing **Editor > Movie Writer > Video
-Quality** for video and **Editor > Movie Writer > Audio Quality** for audio.
+Container OGV với Theora cho video và Vorbis cho âm thanh. Có tính năng nén video và âm thanh có mất dữ liệu, với sự cân bằng tốt giữa kích thước tệp và tốc độ encoding, đồng thời cho chất lượng hình ảnh tốt hơn MJPEG. Có 4 mức tốc độ, có thể điều chỉnh bằng cách thay đổi **Editor > Movie Writer > Encoding Speed**, trong đó mức nhanh nhất có tốc độ gần tương đương AVI nhưng nén tốt hơn. Ở các mức tốc độ thấp hơn, có thể nén tốt hơn nữa mà vẫn giữ nguyên chất lượng hình ảnh. Có thể điều chỉnh chất lượng nén có mất dữ liệu bằng cách thay đổi **Editor > Movie Writer > Video Quality** cho video và **Editor > Movie Writer > Audio Quality** cho âm thanh.
 
-The Keyframe Interval can be adjusted by changing **Editor > Movie Writer >
-Keyframe Interval**. In some cases, increasing this setting can improve
-compression efficiency without downsides.
+Có thể điều chỉnh Keyframe Interval bằng cách thay đổi **Editor > Movie Writer > Keyframe Interval**. Trong một số trường hợp, việc tăng thiết lập này có thể cải thiện hiệu quả nén mà không gây bất lợi.
 
-The resulting file can be viewed in Godot with :ref:`VideoStreamPlayer
-<class_VideoStreamPlayer>` and most video players but not web browsers. OGV
-does not support transparency.
+Tệp kết quả có thể được xem trong Godot bằng :ref:`VideoStreamPlayer <class_VideoStreamPlayer>` và hầu hết các trình phát video, nhưng không thể xem bằng trình duyệt web. OGV không hỗ trợ transparency.
 
-To use OGV, specify a path to a ``.ogv`` file to be created in the **Editor >
-Movie Writer > Movie File** project setting.
+Để sử dụng OGV, hãy chỉ định đường dẫn đến tệp ``.ogv`` sẽ được tạo trong project setting **Editor > Movie Writer > Movie File**.
 
 .. note::
 
-   OGV can only be recorded in editor builds.
-   On the other hand, :ref:`OGV playback <doc_playing_videos>`
-   is possible in both editor and export template builds.
+   OGV chỉ có thể được ghi trong các bản build editor. Ngược lại, :ref:`OGV playback <doc_playing_videos>` có thể được thực hiện trong cả các bản build editor và export template.
 
 AVI
 ~~~
 
-AVI container with MJPEG for video and uncompressed audio. Features lossy video
-compression, resulting in medium file sizes and fast encoding. The lossy
-compression quality can be adjusted by changing
-**Editor > Movie Writer > Video Quality**.
+Container AVI với MJPEG cho video và âm thanh không nén. Có tính năng nén video có mất dữ liệu, tạo ra kích thước tệp trung bình và tốc độ encoding nhanh. Có thể điều chỉnh chất lượng nén có mất dữ liệu bằng cách thay đổi **Editor > Movie Writer > Video Quality**.
 
-The resulting file can be viewed in most video players, but it must be converted
-to another format for viewing on the web or by Godot with the VideoStreamPlayer
-node. MJPEG does not support transparency. AVI output is currently limited to a
-file of 4 GB in size at most.
+Tệp kết quả có thể được xem trong hầu hết các trình phát video, nhưng phải được chuyển đổi sang định dạng khác để xem trên web hoặc xem bằng Godot với node VideoStreamPlayer. MJPEG không hỗ trợ transparency. Đầu ra AVI hiện bị giới hạn ở tệp có kích thước tối đa 4 GB.
 
-To use AVI, specify a path to a ``.avi`` file to be created in the
-**Editor > Movie Writer > Movie File** project setting.
+Để sử dụng AVI, hãy chỉ định đường dẫn đến tệp ``.avi`` sẽ được tạo trong project setting **Editor > Movie Writer > Movie File**.
 
 PNG
 ~~~
 
-PNG image sequence for video and WAV for audio. Features lossless video
-compression, at the cost of large file sizes and slow encoding. This is designed
-to be
+Chuỗi hình ảnh PNG cho video và WAV cho âm thanh. Có tính năng nén video không mất dữ liệu, đổi lại là kích thước tệp lớn và tốc độ encoding chậm. Tùy chọn này được thiết kế để
 :ref:`encoded to a video file with an external tool after recording <doc_creating_movies_converting_avi>`.
 
-Transparency is supported, but the root viewport **must** have its
-``transparent_bg`` property set to ``true`` for transparency to be visible on
-the output image. This can be achieved by enabling the **Rendering > Transparent
-Background** advanced project setting. **Display > Window > Size > Transparent**
-and **Display > Window > Per Pixel Transparency > Enabled** can optionally be
-enabled to allow transparency to be previewed while recording the video, but
-they do not have to be enabled for the output image to contain transparency.
+Transparency được hỗ trợ, nhưng viewport gốc **phải** có thuộc tính ``transparent_bg`` được đặt thành ``true`` để transparency hiển thị trong hình ảnh đầu ra. Có thể thực hiện việc này bằng cách bật project setting nâng cao **Rendering > Transparent Background**. Có thể tùy chọn bật **Display > Window > Size > Transparent** và **Display > Window > Per Pixel Transparency > Enabled** để xem trước transparency trong khi ghi video, nhưng không cần bật các tùy chọn này để hình ảnh đầu ra có transparency.
 
-To use PNG, specify a ``.png`` file to be created in the
-**Editor > Movie Writer > Movie File** project setting. The generated ``.wav``
-file will have the same name as the ``.png`` file (minus the extension).
+Để sử dụng PNG, hãy chỉ định tệp ``.png`` sẽ được tạo trong project setting **Editor > Movie Writer > Movie File**. Tệp ``.wav`` được tạo sẽ có cùng tên với tệp ``.png`` (bỏ phần mở rộng).
 
-Custom
-~~~~~~
+Tùy chỉnh
+~~~~~~~~~
 
-If you need to encode directly to a different format or pipe a stream through
-third-party software, you can extend the MovieWriter class to create your own
-movie writers. This should typically be done using GDExtension for performance
-reasons.
+Nếu cần encoding trực tiếp sang một định dạng khác hoặc pipe một stream qua phần mềm bên thứ ba, bạn có thể mở rộng class MovieWriter để tạo movie writer của riêng mình. Thông thường nên thực hiện việc này bằng GDExtension vì lý do hiệu năng.
 
-Configuration
--------------
+Cấu hình
+--------
 
-In the **Editor > Movie Writer** section of the Project Settings, there are
-several options you can configure. Some of them are only visible after enabling
-the **Advanced** toggle in the top-right corner of the Project Settings dialog.
+Trong phần **Editor > Movie Writer** của Project Settings, có một số tùy chọn bạn có thể cấu hình. Một số tùy chọn chỉ hiển thị sau khi bật toggle **Advanced** ở góc trên bên phải của hộp thoại Project Settings.
 
-- **Mix Rate Hz:** The audio mix rate to use in the recorded audio when writing
-  a movie. This can be different from the project's mix rate, but this
-  value must be divisible by the recorded FPS to prevent audio from
-  desynchronizing over time.
-- **Speaker Mode:** The speaker mode to use in the recorded audio when writing
-  a movie (stereo, 5.1 surround or 7.1 surround).
-- **Video Quality:** The image quality to use when writing a video to an OGV or
-  AVI file, between ``0.01`` and ``1.0`` (inclusive). Higher quality values result
-  in better-looking output at the cost of larger file sizes. Recommended quality
-  values are between ``0.75`` and ``0.9``. Even at quality ``1.0``, compression
-  remains lossy. This setting does not affect audio quality and is ignored when
-  writing to a PNG image sequence.
-- **Movie File:** The output path for the movie. This can be absolute or
-  relative to the project root.
-- **Disable V-Sync:** If enabled, requests V-Sync to be disabled when writing a
-  movie. This can speed up video writing if the hardware is fast enough to
-  render, encode and save the video at a framerate higher than the monitor's
-  refresh rate. This setting has no effect if the operating system or graphics
-  driver forces V-Sync with no way for applications to disable it.
-- **FPS:** The rendered frames per second in the output movie. Higher values
-  result in smoother animation, at the cost of longer rendering times and larger
-  output file sizes. Most video hosting platforms do not support FPS values
-  higher than 60, but you can use a higher value and use that to generate motion
-  blur.
-- **Audio Quality:** The audio quality to use when writing a video to an OGV
-  file, between ``-0.1`` and ``1.0`` (inclusive). Higher quality values result
-  in better audio quality at the cost of very slightly larger file sizes.
-  Recommended quality values are between ``0.3`` and ``0.5``. Even at quality
-  ``1.0``, compression remains lossy.
-- **Encoding Speed:** The speed level to use when writing a video to an OGV
-  file. Faster speed levels have less compression efficiency. The image quality
-  stays barely the same.
-- **Keyframe Interval:** Also known as GOP (Group Of Pictures), the maximum
-  number of inter-frames to use when writing to an OGV file. Higher values can
-  improve compression efficiency without quality loss but at the cost of slower
-  video seeks.
+- **Tần số mix Hz:** Tần số mix âm thanh được sử dụng trong âm thanh đã ghi khi ghi movie. Giá trị này có thể khác với tần số mix của project, nhưng phải chia hết cho FPS đã ghi để tránh âm thanh bị mất đồng bộ theo thời gian. - **Chế độ loa:** Chế độ loa được sử dụng trong âm thanh đã ghi khi ghi movie (stereo, surround 5.1 hoặc surround 7.1). - **Chất lượng video:** Chất lượng hình ảnh được sử dụng khi ghi video vào tệp OGV hoặc AVI, trong khoảng từ ``0.01`` đến ``1.0`` (bao gồm cả hai giá trị). Giá trị chất lượng cao hơn tạo ra đầu ra đẹp hơn nhưng tệp có dung lượng lớn hơn. Giá trị chất lượng được khuyến nghị nằm trong khoảng từ ``0.75`` đến ``0.9``. Ngay cả ở chất lượng ``1.0``, quá trình nén vẫn là nén mất dữ liệu. Thiết lập này không ảnh hưởng đến chất lượng âm thanh và bị bỏ qua khi ghi vào chuỗi hình ảnh PNG. - **Tệp movie:** Đường dẫn đầu ra của movie. Đường dẫn này có thể là đường dẫn tuyệt đối hoặc tương đối so với thư mục gốc của project. - **Tắt V-Sync:** Nếu bật, yêu cầu tắt V-Sync khi ghi movie. Điều này có thể tăng tốc độ ghi video nếu phần cứng đủ nhanh để render, encode và lưu video ở framerate cao hơn tần số quét của màn hình. Thiết lập này không có tác dụng nếu hệ điều hành hoặc graphics driver bắt buộc sử dụng V-Sync mà không cho phép ứng dụng tắt tính năng này. - **FPS:** Số khung hình mỗi giây được render trong movie đầu ra. Giá trị cao hơn tạo ra animation mượt hơn nhưng thời gian render lâu hơn và tệp đầu ra lớn hơn. Hầu hết các nền tảng lưu trữ video không hỗ trợ giá trị FPS cao hơn 60, nhưng bạn có thể sử dụng giá trị cao hơn để tạo motion blur. - **Chất lượng âm thanh:** Chất lượng âm thanh được sử dụng khi ghi video vào tệp OGV, trong khoảng từ ``-0.1`` đến ``1.0`` (bao gồm cả hai giá trị). Giá trị chất lượng cao hơn tạo ra âm thanh chất lượng tốt hơn nhưng tệp có dung lượng lớn hơn một chút. Giá trị chất lượng được khuyến nghị nằm trong khoảng từ ``0.3`` đến ``0.5``. Ngay cả ở chất lượng ``1.0``, quá trình nén vẫn là nén mất dữ liệu. - **Tốc độ encoding:** Mức tốc độ được sử dụng khi ghi video vào tệp OGV. Các mức tốc độ nhanh hơn có hiệu quả nén thấp hơn. Chất lượng hình ảnh hầu như không thay đổi. - **Khoảng cách keyframe:** Còn được gọi là GOP (Group Of Pictures), đây là số lượng inter-frame tối đa được sử dụng khi ghi vào tệp OGV. Giá trị cao hơn có thể cải thiện hiệu quả nén mà không làm giảm chất lượng, nhưng khiến việc seek video chậm hơn.
 
 .. note::
 
-    When using the ``disabled`` or ``2d`` :ref:`stretch modes <doc_multiple_resolutions>`,
-    the output file's resolution is set by the window size. Make sure to resize
-    the window *before* the splash screen has ended. For this purpose, it's
-    recommended to adjust the
-    **Display > Window > Size > Window Width Override** and
-    **Window Height Override** advanced project settings.
+    Khi sử dụng ``disabled`` hoặc ``2d`` :ref:`stretch modes <doc_multiple_resolutions>`, độ phân giải của tệp đầu ra được đặt theo kích thước cửa sổ. Hãy đảm bảo thay đổi kích thước cửa sổ *trước khi* splash screen kết thúc. Để thực hiện việc này, bạn nên điều chỉnh các thiết lập project nâng cao **Display > Window > Size > Window Width Override** và **Window Height Override**.
 
-    See also :ref:`doc_creating_movies_recording_at_higher_resolution`.
+    Xem thêm :ref:`doc_creating_movies_recording_at_higher_resolution`.
 
-Quitting Movie Maker mode
--------------------------
+Thoát chế độ Movie Maker
+------------------------
 
-To safely quit a project that is using Movie Maker mode, use the X button at the
-top of the window, or call ``get_tree().quit()`` in a script. You can also use
-the ``--quit-after N`` command line argument where ``N`` is the number of frames
-to render before quitting.
+Để thoát an toàn khỏi một project đang sử dụng chế độ Movie Maker, hãy sử dụng nút X ở phía trên cửa sổ hoặc gọi ``get_tree().quit()`` trong script. Bạn cũng có thể sử dụng đối số dòng lệnh ``--quit-after N``, trong đó ``N`` là số frame cần render trước khi thoát.
 
-Pressing :kbd:`F8` (:kbd:`Cmd + .` on macOS) or pressing :kbd:`Ctrl + C` on the
-terminal running Godot is **not recommended**, as it will result in an
-improperly formatted AVI file with no duration information. For PNG image
-sequences, PNG images will not be negatively altered, but the associated WAV
-file will still lack duration information. OGV files might end up with slightly
-different duration video and audio tracks but still valid.
+Nhấn :kbd:`F8` (:kbd:`Cmd + .` trên macOS) hoặc nhấn :kbd:`Ctrl + C` trên terminal đang chạy Godot **không được khuyến nghị**, vì thao tác này sẽ tạo ra tệp AVI có định dạng không đúng và không có thông tin thời lượng. Đối với chuỗi hình ảnh PNG, các hình ảnh PNG sẽ không bị ảnh hưởng, nhưng tệp WAV đi kèm vẫn thiếu thông tin thời lượng. Các tệp OGV có thể có track video và âm thanh với thời lượng hơi khác nhau nhưng vẫn hợp lệ.
 
-Some video players may still be able to play the AVI or WAV file with working
-video and audio. However, software that makes use of the AVI or WAV file such as
-video editors may not be able to open the file.
+Một số trình phát video vẫn có thể phát tệp AVI hoặc WAV với video và âm thanh hoạt động bình thường. Tuy nhiên, phần mềm sử dụng tệp AVI hoặc WAV, chẳng hạn như các trình chỉnh sửa video, có thể không mở được tệp.
 :ref:`Using a video converter program <doc_creating_movies_converting_avi>`
-can help in those cases.
+có thể giúp ích trong những trường hợp đó.
 
-If you're using an AnimationPlayer to control a "main action" in the scene (such
-as camera movement), you can enable the **Movie Quit On Finish** property on the
-AnimationPlayer node in question. When enabled, this property will make Godot
-quit on its own when an animation is done playing *and* the engine is running in
-Movie Maker mode. Note that *this property has no effect on looping animations*.
-Therefore, you need to make sure that the animation is set as non-looping.
+Nếu bạn sử dụng AnimationPlayer để điều khiển một "main action" trong scene (chẳng hạn như chuyển động camera), bạn có thể bật thuộc tính **Movie Quit On Finish** trên node AnimationPlayer tương ứng. Khi được bật, thuộc tính này sẽ khiến Godot tự thoát khi animation phát xong *và* engine đang chạy ở chế độ Movie Maker. Lưu ý rằng *thuộc tính này không có tác dụng với các animation lặp*. Vì vậy, bạn cần đảm bảo animation được đặt ở chế độ không lặp.
 
-Using high-quality graphics settings
-------------------------------------
+Sử dụng thiết lập graphics chất lượng cao
+-----------------------------------------
 
-The ``movie`` :ref:`feature tag <doc_feature_tags>` can be used to override
-specific project settings. This is useful to enable high-quality graphics settings
-that wouldn't be fast enough to run in real-time speeds on your hardware.
-Remember that putting every setting to its maximum value can still slow down
-movie saving speed, especially when recording at higher resolutions. Therefore,
-it's still recommended to only increase graphics settings if they make a meaningful
-difference in the output image.
+``movie`` :ref:`feature tag <doc_feature_tags>` có thể được sử dụng để override các thiết lập project cụ thể. Điều này hữu ích khi bật các thiết lập graphics chất lượng cao vốn không đủ nhanh để chạy theo thời gian thực trên phần cứng của bạn. Hãy nhớ rằng việc đặt mọi thiết lập ở giá trị tối đa vẫn có thể làm chậm tốc độ lưu movie, đặc biệt khi ghi ở độ phân giải cao hơn. Vì vậy, bạn vẫn chỉ nên tăng các thiết lập graphics nếu chúng tạo ra sự khác biệt đáng kể trong hình ảnh đầu ra.
 
-This feature tag can also be queried in a script to increase quality settings
-that are set in the Environment resource. For example, to further improve SDFGI
-detail and reduce light leaking:
+Feature tag này cũng có thể được truy vấn trong script để tăng các thiết lập chất lượng được đặt trong resource Environment. Ví dụ, để cải thiện thêm chi tiết SDFGI và giảm hiện tượng light leaking:
 
 .. tabs::
  .. code-tab:: gdscript
@@ -335,8 +185,8 @@ detail and reduce light leaking:
 
     func _ready():
         if OS.has_feature("movie"):
-            # When recording a movie, improve SDFGI cell density
-            # without decreasing its maximum distance.
+            # Khi ghi movie, tăng mật độ cell SDFGI
+            # mà không giảm khoảng cách tối đa của nó.
             get_viewport().world_3d.environment.sdfgi_min_cell_size *= 0.25
             get_viewport().world_3d.environment.sdfgi_cascades = 8
 
@@ -350,8 +200,8 @@ detail and reduce light leaking:
         {
             if (OS.HasFeature("movie"))
             {
-                // When recording a movie, improve SDFGI cell density
-                // without decreasing its maximum distance.
+                // Khi ghi movie, tăng mật độ cell SDFGI
+                // mà không giảm khoảng cách tối đa của nó.
                 GetViewport().World3D.Environment.SdfgiMinCellSize *= 0.25f;
                 GetViewport().World3D.Environment.SdfgiCascades = 8;
             }
@@ -360,109 +210,69 @@ detail and reduce light leaking:
 
 .. _doc_creating_movies_recording_at_higher_resolution:
 
-Rendering at a higher resolution than the screen resolution
------------------------------------------------------------
+Render ở độ phân giải cao hơn độ phân giải màn hình
+---------------------------------------------------
 
-The overall rendering quality can be improved significantly by rendering at high
-resolutions such as 4K or 8K.
-
-.. note::
-
-    For 3D rendering, Godot provides a **Rendering > Scaling 3D > Scale**
-    advanced project setting, which can be set above ``1.0`` to obtain
-    *supersample antialiasing*. The 3D rendering is then *downsampled* when it's
-    drawn on the viewport. This provides an expensive but high-quality form of
-    antialiasing, without increasing the final output resolution.
-
-    Consider using this project setting first, as it avoids slowing down movie
-    writing speeds and increasing output file size compared to actually
-    increasing the output resolution.
-
-If you wish to render 2D at a higher resolution, or if you actually need the
-higher raw pixel output for 3D rendering, you can increase the resolution above
-what the screen allows.
-
-By default, Godot uses the ``disabled`` :ref:`stretch modes <doc_multiple_resolutions>`
-in projects. If using ``disabled`` or ``canvas_items`` stretch mode,
-the window size dictates the output video resolution.
-
-On the other hand, if the project is configured to use the ``viewport`` stretch
-mode, the viewport resolution dictates the output video resolution. The viewport
-resolution is set using the **Display > Window > Size > Viewport Width** and
-**Viewport Height** project settings. This can be used to render a video at a
-higher resolution than the screen resolution.
-
-To make the window smaller during recording without affecting the output video
-resolution, you can set the **Display > Window > Size > Window Width Override**
-and **Window Height Override** advanced project settings to values greater than
-``0``.
-
-To apply a resolution override only when recording a movie, you can override
-those settings with the ``movie`` :ref:`feature tag <doc_feature_tags>`.
-
-Post-processing steps
----------------------
-
-Some common post-processing steps are listed below.
+Chất lượng render tổng thể có thể được cải thiện đáng kể bằng cách render ở độ phân giải cao như 4K hoặc 8K.
 
 .. note::
 
-    When using several post-processing steps, try to perform all of them in a
-    single FFmpeg command. This will save encoding time and improve quality by
-    avoiding multiple lossy encoding steps.
+    Đối với 3D rendering, Godot cung cấp thiết lập project nâng cao **Rendering > Scaling 3D > Scale**, có thể đặt cao hơn ``1.0`` để tạo *supersample antialiasing*. Sau đó, 3D rendering sẽ được *downsample* khi được vẽ trên viewport. Điều này cung cấp một hình thức antialiasing chất lượng cao nhưng tốn tài nguyên, mà không làm tăng độ phân giải đầu ra cuối cùng.
+
+    Hãy cân nhắc sử dụng thiết lập project này trước, vì nó tránh làm chậm tốc độ ghi movie và tăng dung lượng tệp đầu ra so với việc thực sự tăng độ phân giải đầu ra.
+
+Nếu bạn muốn render 2D ở độ phân giải cao hơn hoặc thực sự cần đầu ra pixel thô cao hơn cho 3D rendering, bạn có thể tăng độ phân giải vượt quá mức màn hình cho phép.
+
+Theo mặc định, Godot sử dụng ``disabled`` :ref:`stretch modes <doc_multiple_resolutions>` trong các project. Nếu sử dụng chế độ stretch ``disabled`` hoặc ``canvas_items``, kích thước cửa sổ sẽ quyết định độ phân giải video đầu ra.
+
+Mặt khác, nếu project được cấu hình sử dụng chế độ stretch ``viewport``, độ phân giải viewport sẽ quyết định độ phân giải video đầu ra. Độ phân giải viewport được thiết lập bằng các thiết lập project **Display > Window > Size > Viewport Width** và **Viewport Height**. Bạn có thể sử dụng cách này để render video ở độ phân giải cao hơn độ phân giải màn hình.
+
+Để làm cửa sổ nhỏ hơn trong quá trình ghi mà không ảnh hưởng đến độ phân giải video đầu ra, bạn có thể đặt các thiết lập project nâng cao **Display > Window > Size > Window Width Override** và **Window Height Override** thành các giá trị lớn hơn ``0``.
+
+Để chỉ áp dụng override độ phân giải khi ghi movie, bạn có thể override các thiết lập đó bằng ``movie`` :ref:`feature tag <doc_feature_tags>`.
+
+Các bước hậu kỳ
+---------------
+
+Một số bước hậu kỳ phổ biến được liệt kê bên dưới.
+
+.. note::
+
+    Khi sử dụng nhiều bước hậu kỳ, hãy cố gắng thực hiện tất cả trong một lệnh FFmpeg duy nhất. Điều này sẽ tiết kiệm thời gian encoding và cải thiện chất lượng bằng cách tránh nhiều bước encoding mất dữ liệu.
 
 .. _doc_creating_movies_converting_avi:
 
-Converting OGV/AVI video to MP4
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Chuyển đổi video OGV/AVI sang MP4
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-While some platforms such as YouTube support uploading the AVI file directly, many
-others will require a conversion step beforehand. `HandBrake <https://handbrake.fr/>`__
-(GUI) and `FFmpeg <https://ffmpeg.org/>`__ (CLI) are popular open source tools
-for this purpose. FFmpeg has a steeper learning curve, but it's more powerful.
+Mặc dù một số nền tảng như YouTube hỗ trợ tải trực tiếp tệp AVI lên, nhiều nền tảng khác sẽ yêu cầu thực hiện bước chuyển đổi trước. `HandBrake <https://handbrake.fr/>`__ (GUI) và `FFmpeg <https://ffmpeg.org/>`__ (CLI) là các công cụ mã nguồn mở phổ biến cho mục đích này. FFmpeg có đường cong học tập dốc hơn, nhưng mạnh mẽ hơn.
 
-The command below converts an OGV/AVI video to an MP4 (H.264) video with a
-Constant Rate Factor (CRF) of 15. This results in a relatively large file, but
-is well-suited for platforms that will re-encode your videos to reduce their
-size (such as most video sharing websites):
+Lệnh bên dưới chuyển đổi video OGV/AVI thành video MP4 (H.264) với Constant Rate Factor (CRF) là 15. Kết quả là một tệp tương đối lớn, nhưng rất phù hợp với các nền tảng sẽ re-encode video của bạn để giảm dung lượng (chẳng hạn như hầu hết các website chia sẻ video):
 
 ::
 
     ffmpeg -i input.avi -crf 15 output.mp4
 
-To get a smaller file at the cost of quality, *increase* the CRF value in the
-above command.
+Để có tệp nhỏ hơn với sự đánh đổi về chất lượng, hãy *tăng* giá trị CRF trong lệnh trên.
 
-To get a file with a better size/quality ratio (at the cost of slower encoding
-times), add ``-preset veryslow`` before ``-crf 15`` in the above command. On the
-contrary, ``-preset veryfast`` can be used to achieve faster encoding at the
-cost of a worse size/quality ratio.
+Để có tệp với tỷ lệ dung lượng/chất lượng tốt hơn (đánh đổi bằng thời gian encoding lâu hơn), hãy thêm ``-preset veryslow`` trước ``-crf 15`` trong lệnh trên. Ngược lại, có thể sử dụng ``-preset veryfast`` để encoding nhanh hơn nhưng tỷ lệ dung lượng/chất lượng kém hơn.
 
 .. _doc_creating_movies_converting_image_sequence:
 
-Converting PNG image sequence + WAV audio to a video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Chuyển đổi chuỗi hình ảnh PNG + âm thanh WAV thành video
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you chose to record a PNG image sequence with a WAV file beside it,
-you need to convert it to a video before you can use it elsewhere.
+Nếu bạn chọn ghi một chuỗi hình ảnh PNG cùng với tệp WAV bên cạnh, bạn cần chuyển đổi chúng thành video trước khi có thể sử dụng ở nơi khác.
 
-The filename for the PNG image sequence generated by Godot always contains 8
-digits, starting at 0 with zero-padded numbers. If you specify an output
-path ``folder/example.png``, Godot will write ``folder/example00000000.png``,
-``folder/example00000001.png``, and so on in that folder. The audio will be saved
-at ``folder/example.wav``.
+Tên tệp của chuỗi hình ảnh PNG do Godot tạo luôn chứa 8 chữ số, bắt đầu từ 0 với các số được thêm số 0 ở đầu. Nếu bạn chỉ định đường dẫn đầu ra ``folder/example.png``, Godot sẽ ghi ``folder/example00000000.png``, ``folder/example00000001.png``, v.v. vào thư mục đó. Âm thanh sẽ được lưu tại ``folder/example.wav``.
 
-The FPS is specified using the ``-r`` argument. It should match the FPS
-specified during recording. Otherwise, the video will appear to be slowed down
-or sped up, and audio will be out of sync with the video.
+FPS được chỉ định bằng đối số ``-r``. Giá trị này phải khớp với FPS được chỉ định trong quá trình ghi. Nếu không, video sẽ có vẻ bị làm chậm hoặc tăng tốc, và âm thanh sẽ không đồng bộ với video.
 
 ::
 
     ffmpeg -r 60 -i input%08d.png -i input.wav -crf 15 output.mp4
 
-If you recorded a PNG image sequence with transparency enabled, you need to use
-a video format that supports storing transparency. MP4/H.264 doesn't support
-storing transparency, so you can use WebM/VP9 as an alternative:
+Nếu bạn đã ghi một chuỗi hình ảnh PNG với tính năng trong suốt được bật, bạn cần sử dụng định dạng video hỗ trợ lưu độ trong suốt. MP4/H.264 không hỗ trợ lưu độ trong suốt, vì vậy bạn có thể sử dụng WebM/VP9 thay thế:
 
 ::
 
@@ -470,25 +280,21 @@ storing transparency, so you can use WebM/VP9 as an alternative:
 
 .. _doc_creating_movies_motion_blur:
 
-Cutting video
-~~~~~~~~~~~~~
+Cắt video
+~~~~~~~~~
 
-You can trim parts of the video you don't want to keep after the video is
-recorded. For example, to discard everything before 12.1 seconds and keep
-only 5.2 seconds of video after that point:
+Bạn có thể cắt bỏ những phần video không muốn giữ lại sau khi đã ghi video. Ví dụ, để loại bỏ mọi thứ trước giây thứ 12.1 và chỉ giữ lại 5.2 giây video sau thời điểm đó:
 
 ::
 
     ffmpeg -i input.avi -ss 00:00:12.10 -t 00:00:05.20 -crf 15 output.mp4
 
-Cutting videos can also be done with the GUI tool
-`LosslessCut <https://losslesscut.app/>`__.
+Bạn cũng có thể cắt video bằng công cụ GUI `LosslessCut <https://losslesscut.app/>`__.
 
-Resizing video
-~~~~~~~~~~~~~~
+Thay đổi kích thước video
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following command resizes a video to be 1080 pixels tall (1080p),
-while preserving its existing aspect ratio:
+Lệnh sau thay đổi kích thước video để có chiều cao 1080 pixel (1080p), đồng thời giữ nguyên tỷ lệ khung hình hiện có:
 
 ::
 
@@ -497,37 +303,26 @@ while preserving its existing aspect ratio:
 
 .. _doc_creating_movies_reducing_framerate:
 
-Reducing framerate
-~~~~~~~~~~~~~~~~~~
+Giảm framerate
+~~~~~~~~~~~~~~
 
-The following command changes a video's framerate to 30 FPS, dropping some of
-the original frames if there are more in the input video:
+Lệnh sau thay đổi framerate của video thành 30 FPS, loại bỏ một số frame ban đầu nếu video đầu vào có nhiều frame hơn:
 
 ::
 
     ffmpeg -i input.avi -r 30 -crf 15 output.mp4
 
-Generating accumulation motion blur with FFmpeg
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tạo motion blur tích lũy bằng FFmpeg
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Godot does not have built-in support for motion blur, but it can still be
-created in recorded videos.
+Godot không có hỗ trợ tích hợp cho motion blur, nhưng bạn vẫn có thể tạo hiệu ứng này trong các video đã ghi.
 
-If you record the video at a multiple of the original framerate, you can blend
-the frames together then reduce the framerate to produce a video with
-*accumulation motion blur*. This motion blur can look very good, but it can take
-a long time to generate since you have to render many more frames per second (on
-top of the time spent on post-processing).
+Nếu ghi video ở bội số của framerate ban đầu, bạn có thể trộn các frame lại với nhau rồi giảm framerate để tạo video có *motion blur tích lũy*. Hiệu ứng motion blur này có thể trông rất đẹp, nhưng sẽ mất nhiều thời gian để tạo vì bạn phải render nhiều frame hơn mỗi giây (ngoài thời gian xử lý hậu kỳ).
 
-Example with a 240 FPS source video, generating 4× motion blur and decreasing
-its output framerate to 60 FPS:
+Ví dụ với video nguồn 240 FPS, tạo motion blur 4× và giảm framerate đầu ra xuống 60 FPS:
 
 ::
 
     ffmpeg -i input.avi -vf "tmix=frames=4, fps=60" -crf 15 output.mp4
 
-This also makes effects that converge over several frames (such as temporal
-antialiasing, SDFGI and volumetric fog) converge faster and therefore look
-better, since they'll be able to work with more data at a given time.
-See :ref:`doc_creating_movies_reducing_framerate` if you want to get this benefit
-without adding motion blur.
+Điều này cũng giúp các hiệu ứng hội tụ qua nhiều frame (chẳng hạn như temporal antialiasing, SDFGI và volumetric fog) hội tụ nhanh hơn và do đó trông đẹp hơn, vì chúng có thể làm việc với nhiều dữ liệu hơn tại một thời điểm nhất định. Xem :ref:`doc_creating_movies_reducing_framerate` nếu bạn muốn có lợi ích này mà không thêm motion blur.

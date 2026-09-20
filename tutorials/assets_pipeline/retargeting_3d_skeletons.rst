@@ -1,98 +1,72 @@
 .. _doc_retargeting_3d_skeletons:
 
-Retargeting 3D Skeletons
-========================
+Retarget Skeleton 3D
+====================
 
-To share animations among multiple Skeletons
---------------------------------------------
+Để chia sẻ animation giữa nhiều Skeleton
+----------------------------------------
 
-Godot has Position/Rotation/Scale 3D tracks (which this document calls "Transform" tracks)
-with Nodepaths to bones for Skeleton bone animation. This means you can't
-share animations between multiple Skeletons just by using the same bone
-names.
+Godot có các track Position/Rotation/Scale 3D (mà tài liệu này gọi là track "Transform") với Nodepath trỏ đến các bone để tạo animation cho bone của Skeleton. Điều này có nghĩa là bạn không thể chia sẻ animation giữa nhiều Skeleton chỉ bằng cách sử dụng cùng tên bone.
 
-Godot allows each bone to have a parent-child relationship and can have rotation
-and scale as well as position, which means that bones that share a name can still
-have different Transform values.
+Godot cho phép mỗi bone có quan hệ cha-con và có rotation, scale cũng như position, điều này có nghĩa là các bone cùng tên vẫn có thể có các giá trị Transform khác nhau.
 
-The Skeleton stores the Transform values necessary for the default pose as Bone Rest.
-If Bone Pose is equal to Bone Rest, it means that the Skeleton is in the default pose.
+Skeleton lưu trữ các giá trị Transform cần thiết cho pose mặc định dưới dạng Bone Rest. Nếu Bone Pose bằng Bone Rest, điều đó có nghĩa là Skeleton đang ở pose mặc định.
 
 .. note:: Godot 3 and Godot 4 have different Bone Pose behaviors.
-          In Godot 3, Bone Pose is relative to Bone Rest, but in Godot 4,
-          it includes Bone Rest. See this
-          `article <https://godotengine.org/article/animation-data-redesign-40>`__
-          for more information.
+          Trong Godot 3, Bone Pose là tương đối so với Bone Rest, nhưng trong Godot 4, nó bao gồm cả Bone Rest. Xem `article <https://godotengine.org/article/animation-data-redesign-40>`__ để biết thêm thông tin.
 
-Skeletal models have different Bone Rests depending on the environment from
-which they were exported. For example, the bones of a glTF model output from Blender
-have "Edit Bone Orientation" as the Bone Rest rotation. However, there are skeletal
-models without any Bone Rest rotations, such as the glTF model output from Maya.
+Các model skeletal có Bone Rest khác nhau tùy thuộc vào môi trường mà chúng được export. Ví dụ, các bone của model glTF được output từ Blender có "Edit Bone Orientation" làm rotation của Bone Rest. Tuy nhiên, có những model skeletal không có rotation Bone Rest, chẳng hạn như model glTF được output từ Maya.
 
-To share animations in Godot, it is necessary to match Bone Rests as well as Bone Names
-to remove unwanted tracks in some cases. You can do that using the scene importer.
+Để chia sẻ animation trong Godot, cần khớp cả Bone Rest lẫn Bone Name nhằm loại bỏ các track không mong muốn trong một số trường hợp. Bạn có thể thực hiện việc này bằng scene importer.
 
-Options for Retargeting
------------------------
+Các tùy chọn cho Retargeting
+----------------------------
 
 Bone Map
 ~~~~~~~~
 
-When you select the Skeleton3D node in the advanced scene import menu, a menu will appear
-on the right-hand side containing the "Retarget" section. The Retarget section has a single
-property ``bone_map``.
+Khi bạn chọn node Skeleton3D trong advanced scene import menu, một menu sẽ xuất hiện ở phía bên phải, chứa section "Retarget". Section Retarget có một property duy nhất ``bone_map``.
 
 .. image:: img/retargeting1.webp
 
-With the Skeleton node selected, first set up a new :ref:`class_bonemap` and :ref:`class_skeletonprofile`.
-Godot has a preset called :ref:`class_skeletonprofilehumanoid` for humanoid models.
-This tutorial proceeds with the assumption that you are using :ref:`class_skeletonprofilehumanoid`.
+Khi đã chọn node Skeleton, trước tiên hãy thiết lập một :ref:`class_bonemap` mới và :ref:`class_skeletonprofile`. Godot có một preset tên là :ref:`class_skeletonprofilehumanoid` dành cho các model humanoid. Tutorial này tiếp tục với giả định rằng bạn đang sử dụng :ref:`class_skeletonprofilehumanoid`.
 
 .. note:: If you need a profile that is different from :ref:`class_skeletonprofilehumanoid`, you can export
-          a :ref:`class_skeletonprofile` from the editor by selecting a Skeleton3D and using the **Skeleton3D** menu in the 3D viewport's toolbar.
+          một :ref:`class_skeletonprofile` từ editor bằng cách chọn Skeleton3D và sử dụng menu **Skeleton3D** trên toolbar của viewport 3D.
 
-When you use :ref:`class_skeletonprofilehumanoid`, auto-mapping will be performed when the
+Khi bạn sử dụng :ref:`class_skeletonprofilehumanoid`, auto-mapping sẽ được thực hiện khi
 :ref:`class_skeletonprofile` is set. If the auto-mapping does not work well, you can map bones manually.
 
 .. image:: img/retargeting2.webp
 
-Any missing, duplicate or incorrect parent-child relationship mappings will be indicated
-by a magenta / red button (depending on the editor setting). It does not block the import process,
-but it warns that animations may not be shared correctly.
+Mọi mapping quan hệ cha-con bị thiếu, trùng lặp hoặc không chính xác sẽ được chỉ báo bằng một button màu magenta / đỏ (tùy thuộc vào thiết lập của editor). Điều này không chặn quá trình import, nhưng cảnh báo rằng animation có thể không được chia sẻ chính xác.
 
 .. note:: The auto-mapping uses pattern matching for the bone names. So we recommend
-          to use common English names for bones.
+          sử dụng các tên tiếng Anh phổ biến cho bone.
 
-After you set up the ``bone_map``, several options are available in the sections below.
+Sau khi thiết lập ``bone_map``, một số tùy chọn sẽ có sẵn trong các section bên dưới.
 
 .. image:: img/retargeting3.webp
 
 Remove Tracks
 ~~~~~~~~~~~~~
 
-If you import resources as an :ref:`class_animationlibrary` that will be shared, we recommend to enable these options.
-However, if you import resources as scenes, these should be disabled in some cases.
-For example, if you import a character with animated accessories,
-these options may cause the accessories to not animate.
+Nếu bạn import resource dưới dạng :ref:`class_animationlibrary` sẽ được chia sẻ, chúng tôi khuyến nghị bật các tùy chọn này. Tuy nhiên, nếu bạn import resource dưới dạng scene, trong một số trường hợp nên tắt chúng. Ví dụ, nếu bạn import một character có accessory được animated, các tùy chọn này có thể khiến accessory không được animate.
 
 Except Bone Transform
 ^^^^^^^^^^^^^^^^^^^^^
 
-Removes any tracks except the bone Transform track from the animations.
+Xóa mọi track ngoại trừ track bone Transform khỏi các animation.
 
 Unimportant Positions
 ^^^^^^^^^^^^^^^^^^^^^
 
-Removes Position tracks other than ``root_bone`` and ``scale_base_bone``
-defined in :ref:`class_skeletonprofile` from the animations. In :ref:`class_skeletonprofilehumanoid`,
-this means that to remove Position tracks other than "Root" and "Hips".
-Since Godot 4, animations include Bone Rest in the Transform value. If you disable this option,
-the animation may change the body shape unpredictably.
+Xóa các track Position khác với ``root_bone`` và ``scale_base_bone`` được định nghĩa trong :ref:`class_skeletonprofile` khỏi các animation. Trong :ref:`class_skeletonprofilehumanoid`, điều này có nghĩa là xóa các track Position khác với "Root" và "Hips". Kể từ Godot 4, animation bao gồm Bone Rest trong giá trị Transform. Nếu bạn tắt tùy chọn này, hình dạng cơ thể có thể thay đổi một cách khó đoán.
 
 Unmapped Bones
 ^^^^^^^^^^^^^^
 
-Removes unmapped bone Transform tracks from the animations.
+Xóa các track bone Transform chưa được mapping khỏi các animation.
 
 Bone Renamer
 ~~~~~~~~~~~~
@@ -100,74 +74,51 @@ Bone Renamer
 Rename Bones
 ^^^^^^^^^^^^
 
-Rename the mapped bones.
+Đổi tên các bone đã được mapping.
 
 Unique Node
 ^^^^^^^^^^^
 
-Makes Skeleton a unique node with the name specified in the ``skeleton_name``.
-This allows the animation track paths to be unified independent of the scene hierarchy.
+Biến Skeleton thành một node duy nhất với tên được chỉ định trong ``skeleton_name``. Điều này cho phép thống nhất các path của animation track, không phụ thuộc vào hierarchy của scene.
 
 Rest Fixer
 ~~~~~~~~~~
 
-Reference poses defined in :ref:`class_skeletonprofilehumanoid` have the following rules:
+Các reference pose được định nghĩa trong :ref:`class_skeletonprofilehumanoid` tuân theo những quy tắc sau:
 
-* The humanoid is T-pose
-* The humanoid is facing +Z in the Right-Handed Y-UP Coordinate System
-* The humanoid should not have a Transform as Node
-* Directs the +Y axis from the parent joint to the child joint
-* +X rotation bends the joint like a muscle contracting
+* Humanoid ở T-pose * Humanoid hướng về +Z trong Right-Handed Y-UP Coordinate System * Humanoid không được có Transform dưới dạng Node * Trục +Y hướng từ joint cha đến joint con * Rotation +X bẻ cong joint như một cơ đang co
 
-These rules are convenient definitions for blend animation and Inverse Kinematics (IK).
-If your model does not match this definition, you need to fix it with these options.
+Các quy tắc này là những định nghĩa thuận tiện cho blend animation và Inverse Kinematics (IK). Nếu model của bạn không khớp với định nghĩa này, bạn cần sửa nó bằng các tùy chọn này.
 
 Apply Node Transform
 ^^^^^^^^^^^^^^^^^^^^
 
-If the asset is not exported correctly for sharing, the imported Skeleton may have
-a Transform as a Node. For example, a glTF exported from Blender with no "Apply Transform"
-executed is one such case. It looks like the model matches the definition,
-but the internal Transforms are different from the definition.
-This option fixes such models by applying Transforms on import.
+Nếu asset không được export đúng cách để chia sẻ, Skeleton được import có thể có một Transform dưới dạng Node. Ví dụ, glTF được export từ Blender mà không thực hiện "Apply Transform" là một trường hợp như vậy. Model có vẻ khớp với định nghĩa, nhưng các Transform nội bộ lại khác với định nghĩa. Tùy chọn này sửa các model như vậy bằng cách áp dụng Transform khi import.
 
 .. note:: If the imported scene contains objects other than Skeletons, this option may have a negative effect.
 
 Normalize Position Tracks
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Position track is used mostly for model movement, but sharing the moving animation
-between models with different heights may cause the appearance of slipping
-due to the difference in stride length. This option normalizes the Position track values
-based on the ``scale_base_bone`` height. The ``scale_base_bone`` height is stored
-in the Skeleton as the ``motion_scale``, and the normalized Position track values is
-multiplied by that value on playback. If this option is disabled, the Position tracks
-is not normalized and the Skeleton's ``motion_scale`` is always imported as ``1.0``.
+Track Position chủ yếu được dùng cho chuyển động của model, nhưng việc chia sẻ animation chuyển động giữa các model có chiều cao khác nhau có thể gây ra hiện tượng trượt do sự khác biệt về độ dài sải chân. Tùy chọn này chuẩn hóa các giá trị của track Position dựa trên chiều cao ``scale_base_bone``. Chiều cao ``scale_base_bone`` được lưu trong Skeleton dưới dạng ``motion_scale``, và các giá trị track Position đã chuẩn hóa được nhân với giá trị đó khi playback. Nếu tắt tùy chọn này, các track Position sẽ không được chuẩn hóa và ``motion_scale`` của Skeleton luôn được import dưới dạng ``1.0``.
 
-With :ref:`class_skeletonprofilehumanoid`, ``scale_base_bone`` is "Hips", therefore the Hips' height is used as the ``motion_scale``.
+Với :ref:`class_skeletonprofilehumanoid`, ``scale_base_bone`` là "Hips", do đó chiều cao của Hips được sử dụng làm ``motion_scale``.
 
 Overwrite Axis
 ^^^^^^^^^^^^^^
 
-Unifies the models' Bone Rests by overwriting it to match the reference poses defined in the :ref:`class_skeletonprofile`.
+Thống nhất Bone Rest của các model bằng cách ghi đè chúng để khớp với các reference pose được định nghĩa trong :ref:`class_skeletonprofile`.
 
 .. note:: This is the most important option for sharing animations in Godot 4,
-          but be aware that this option can produce horrible results **if the original Bone Rest set externally is important**.
-          If you want to share animations with keeping the original Bone Rest,
-          consider to use the `Realtime Retarget Module <https://github.com/TokageItLab/realtime_retarget>`__.
+          nhưng hãy lưu ý rằng tùy chọn này có thể tạo ra kết quả tệ **nếu Bone Rest gốc được thiết lập bên ngoài là quan trọng**. Nếu bạn muốn chia sẻ animation mà vẫn giữ Bone Rest gốc, hãy cân nhắc sử dụng `Realtime Retarget Module <https://github.com/TokageItLab/realtime_retarget>`__.
 
 Fix Silhouette
 ^^^^^^^^^^^^^^
 
-Attempts to make the model's silhouette match that of the reference poses defined in the :ref:`class_skeletonprofile`,
-such as T-Pose. This cannot fix silhouettes which are too different, and it may not work for fixing bone roll.
+Cố gắng làm cho silhouette của model khớp với silhouette của các reference pose được định nghĩa trong :ref:`class_skeletonprofile`, chẳng hạn như T-Pose. Tùy chọn này không thể sửa các silhouette quá khác biệt và có thể không hiệu quả trong việc sửa bone roll.
 
-With :ref:`class_skeletonprofilehumanoid`, this option does not need to be enabled for T-pose models,
-but should be enabled for A-pose models. However in that case, the fixed foot results
-may be bad depending on the heel height of the model, so it may be necessary to add
-the :ref:`class_skeletonprofile` bone names you do not want fixed in the ``filter`` array, as in the below example.
+Với :ref:`class_skeletonprofilehumanoid`, tùy chọn này không cần được bật cho các model T-pose, nhưng nên được bật cho các model A-pose. Tuy nhiên, trong trường hợp đó, kết quả sửa foot có thể không tốt tùy thuộc vào chiều cao gót của model, vì vậy có thể cần thêm các tên bone :ref:`class_skeletonprofile` mà bạn không muốn sửa vào array ``filter``, như trong ví dụ bên dưới.
 
 .. image:: img/retargeting4.webp
 
-Also, for models with bent knees or feet, it may be necessary to adjust the ``scale_base_bone`` height.
-For that, you can use ``base_height_adjustment`` option.
+Ngoài ra, đối với các model có đầu gối hoặc bàn chân bị cong, có thể cần điều chỉnh chiều cao ``scale_base_bone``. Để làm vậy, bạn có thể sử dụng tùy chọn ``base_height_adjustment``.

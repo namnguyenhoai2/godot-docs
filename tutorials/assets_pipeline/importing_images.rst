@@ -1,74 +1,55 @@
 .. _doc_importing_images:
 
-Importing images
-================
+Nhập hình ảnh
+=============
 
-Supported image formats
------------------------
+Các định dạng hình ảnh được hỗ trợ
+----------------------------------
 
-Godot can import the following image formats:
+Godot có thể nhập các định dạng hình ảnh sau:
 
 **Raster:**
 
-- BMP (``.bmp``) - All pixel formats are supported, but :abbr:`RLE (Run-Length Encoding)`
-  compression is not supported.
+- BMP (``.bmp``) - Tất cả các định dạng pixel đều được hỗ trợ, nhưng không hỗ trợ tính năng nén :abbr:`RLE (Run-Length Encoding)`.
 
-- DirectDraw Surface (``.dds``) - If mipmaps are present in the texture, they will be
-  loaded directly. This can be used to achieve effects using custom mipmaps.
+- DirectDraw Surface (``.dds``) - Nếu texture có mipmap, chúng sẽ được tải trực tiếp. Có thể dùng tính năng này để tạo hiệu ứng bằng mipmap tùy chỉnh.
 
-- Khronos Texture (``.ktx``) - Decoding is done using
-  `libktx <https://github.com/KhronosGroup/KTX-Software>`__. Only supports 2D images.
-  Cubemaps, texture arrays, and de-padding are not supported.
+- Khronos Texture (``.ktx``) - Việc giải mã được thực hiện bằng `libktx <https://github.com/KhronosGroup/KTX-Software>`__. Chỉ hỗ trợ hình ảnh 2D. Không hỗ trợ cubemap, mảng texture và bỏ padding.
 
-- OpenEXR (``.exr``) - Supports HDR (highly recommended for panorama skies).
+- OpenEXR (``.exr``) - Hỗ trợ HDR (rất khuyến nghị dùng cho bầu trời panorama).
 
-- Radiance HDR (``.hdr``) - Supports HDR (highly recommended for panorama skies).
+- Radiance HDR (``.hdr``) - Hỗ trợ HDR (rất khuyến nghị dùng cho bầu trời panorama).
 
-- JPEG (``.jpg``, ``.jpeg``) - Doesn't support transparency per the format's limitations.
+- JPEG (``.jpg``, ``.jpeg``) - Không hỗ trợ độ trong suốt do giới hạn của định dạng.
 
-- PNG (``.png``) - Precision is limited to 8 bits per channel upon importing (no HDR images).
+- PNG (``.png``) - Độ chính xác bị giới hạn ở 8 bit trên mỗi kênh khi nhập (không hỗ trợ hình ảnh HDR).
 
 - Truevision Targa (``.tga``)
 
-- WebP (``.webp``) - WebP files support transparency and can be compressed lossily or losslessly.
-  The precision is limited to 8 bits per channel.
+- WebP (``.webp``) - Các tệp WebP hỗ trợ độ trong suốt và có thể được nén lossy hoặc lossless. Độ chính xác bị giới hạn ở 8 bit trên mỗi kênh.
 
 **Vector:**
 
 - SVG (``.svg``)
 
-  - By default, SVGs are rasterized at import-time.
+  - Theo mặc định, SVG được rasterize tại thời điểm nhập.
 
-  - SVG is the only image format that can be imported as DPITexture, which allows
-    for run-time rasterization to match the current oversampling factor.
-    See :ref:`doc_importing_images_changing_import_type` for details.
+  - SVG là định dạng hình ảnh duy nhất có thể được nhập dưới dạng DPITexture, cho phép rasterize tại runtime để khớp với hệ số oversampling hiện tại. Xem :ref:`doc_importing_images_changing_import_type` để biết chi tiết.
 
-  - Godot uses the `ThorVG <https://www.thorvg.org/>`__ library for SVG rendering.
-    `SVG feature support is limited <https://www.thorvg.org/about#:~:text=certain%20features%20remain%20unsupported%20within%20the%20current%20framework>`__;
-    complex vectors may not render correctly. :ref:`Text must be converted to paths <doc_importing_images_svg_text>`;
-    otherwise, it won't appear in the rasterized image. For complex vectors, rendering them
-    to PNGs using `Inkscape <https://inkscape.org/>`__ is often a better solution.
-    This can be automated thanks to its
-    `command-line interface <https://wiki.inkscape.org/wiki/index.php/Using_the_Command_Line#Export_files>`__.
+  - Godot sử dụng thư viện `ThorVG <https://www.thorvg.org/>`__ để render SVG. `SVG feature support is limited <https://www.thorvg.org/about#:~:text=certain%20features%20remain%20unsupported%20within%20the%20current%20framework>`__; các vector phức tạp có thể không được render chính xác. :ref:`Text must be converted to paths <doc_importing_images_svg_text>`; nếu không, nó sẽ không xuất hiện trong hình ảnh đã rasterize. Đối với các vector phức tạp, render chúng thành PNG bằng `Inkscape <https://inkscape.org/>`__ thường là giải pháp tốt hơn. Việc này có thể được tự động hóa nhờ `command-line interface <https://wiki.inkscape.org/wiki/index.php/Using_the_Command_Line#Export_files>`__ của nó.
 
-  - You can check whether ThorVG can render a certain vector correctly using its
-    `web-based viewer <https://www.thorvg.org/viewer>`__.
+  - Bạn có thể kiểm tra xem ThorVG có thể render chính xác một vector cụ thể hay không bằng `web-based viewer <https://www.thorvg.org/viewer>`__ của nó.
 
 .. note::
 
-    If you've compiled the Godot editor from source with specific modules disabled,
-    some formats may not be available.
+    Nếu bạn đã biên dịch trình chỉnh sửa Godot từ mã nguồn với một số module cụ thể bị vô hiệu hóa, một số định dạng có thể không khả dụng.
 
-Importing textures
-------------------
+Nhập texture
+------------
 
-The default action in Godot is to import images as textures. Textures are stored
-in video memory. Their pixel data can't be accessed directly from the CPU
-without converting them back to an :ref:`class_Image` in a script. This is what
-makes drawing them efficient.
+Hành động mặc định trong Godot là nhập hình ảnh dưới dạng texture. Texture được lưu trong bộ nhớ video. Không thể truy cập trực tiếp dữ liệu pixel từ CPU nếu không chuyển chúng trở lại thành một :ref:`class_Image` trong script. Đây là yếu tố giúp việc vẽ texture đạt hiệu suất cao.
 
-There are over a dozen import options that can be adjusted after selecting an
-image in the FileSystem dock:
+Có hơn một chục tùy chọn nhập có thể điều chỉnh sau khi chọn một hình ảnh trong dock FileSystem:
 
 .. figure:: img/importing_images_import_dock.webp
    :align: center
@@ -79,132 +60,59 @@ image in the FileSystem dock:
 
 .. _doc_importing_images_changing_import_type:
 
-Changing import type
-~~~~~~~~~~~~~~~~~~~~
+Thay đổi kiểu nhập
+~~~~~~~~~~~~~~~~~~
 
-It is possible to choose other types of imported resources in the Import dock:
+Có thể chọn các kiểu resource được nhập khác trong dock Import:
 
-- **BitMap:** 1-bit monochrome texture (intended to be used as a click mask in
+- **BitMap:** texture đơn sắc 1 bit (dự kiến được dùng làm mặt nạ nhấp chuột trong
   :ref:`class_TextureButton` and :ref:`class_TouchScreenButton`). This resource
-  type cannot be displayed directly onto 2D or 3D nodes, but the pixel values
-  can be queried from a script using :ref:`get_bit
-  <class_BitMap_method_get_bit>`.
-- **Cubemap:** Import the texture as a 6-sided cubemap, with interpolation
-  between the cubemap's sides (seamless cubemaps), which can be sampled in
-  custom shaders.
-- **CubemapArray:** Import the texture as a collection of 6-sided cubemaps,
-  which can be sampled in custom shaders. This resource type can only be
-  displayed when using the Forward+ or Mobile renderers, not the Compatibility
-  renderer.
-- **DPITexture:** Only available for SVG images. Similar to Texture2D, but can be
-  re-rasterized at different scales in the editor and at runtime without needing
-  to be reimported.
-  See :ref:`doc_multiple_resolutions_font_and_image_oversampling` for details.
-- **Font Data (Monospace Image Font):** Import the image as a bitmap font where
-  all characters have the same width. See :ref:`doc_gui_using_fonts`.
-- **Image:** Import the image as-is. This resource type cannot be displayed
-  directly onto 2D or 3D nodes, but the pixel values can be queried from a
-  script using :ref:`get_pixel<class_Image_method_get_pixel>`.
-- **Texture2D:** Import the image as a 2-dimensional texture, suited for display
-  on 2D and 3D surfaces. This is the default import mode.
-- **Texture2DArray:** Import the image as a collection of 2-dimensional textures.
-  Texture2DArray is similar to a 3-dimensional texture, but without
-  interpolation between layers. Built-in 2D and 3D shaders cannot display
-  texture arrays, so you must create a custom shader in :ref:`2D <doc_canvas_item_shader>`
-  or :ref:`3D <doc_spatial_shader>` to display a texture from a texture array.
-- **Texture3D:** Import the image as a 3-dimensional texture. This is *not* a 2D
-  texture applied onto a 3D surface. Texture3D is similar to a texture array, but
-  with interpolation between layers. Texture3D is typically used for
+  kiểu này không thể được hiển thị trực tiếp trên các node 2D hoặc 3D, nhưng có thể truy vấn các giá trị pixel từ script bằng :ref:`get_bit <class_BitMap_method_get_bit>`. - **Cubemap:** Nhập texture dưới dạng cubemap 6 mặt, với phép nội suy giữa các mặt của cubemap (cubemap liền mạch), có thể được lấy mẫu trong các shader tùy chỉnh. - **CubemapArray:** Nhập texture dưới dạng một tập hợp các cubemap 6 mặt, có thể được lấy mẫu trong các shader tùy chỉnh. Kiểu resource này chỉ có thể được hiển thị khi sử dụng renderer Forward+ hoặc Mobile, không phải renderer Compatibility. - **DPITexture:** Chỉ khả dụng cho hình ảnh SVG. Tương tự Texture2D, nhưng có thể được rasterize lại ở các tỷ lệ khác nhau trong editor và runtime mà không cần nhập lại. Xem :ref:`doc_multiple_resolutions_font_and_image_oversampling` để biết chi tiết. - **Font Data (Monospace Image Font):** Nhập hình ảnh dưới dạng bitmap font trong đó tất cả ký tự có cùng chiều rộng. Xem :ref:`doc_gui_using_fonts`. - **Image:** Nhập hình ảnh nguyên trạng. Kiểu resource này không thể được hiển thị trực tiếp trên các node 2D hoặc 3D, nhưng có thể truy vấn các giá trị pixel từ script bằng :ref:`get_pixel<class_Image_method_get_pixel>`. - **Texture2D:** Nhập hình ảnh dưới dạng texture 2 chiều, phù hợp để hiển thị trên các bề mặt 2D và 3D. Đây là chế độ nhập mặc định. - **Texture2DArray:** Nhập hình ảnh dưới dạng một tập hợp các texture 2 chiều. Texture2DArray tương tự texture 3 chiều, nhưng không có phép nội suy giữa các layer. Các shader 2D và 3D tích hợp sẵn không thể hiển thị mảng texture, vì vậy bạn phải tạo shader tùy chỉnh trong :ref:`2D <doc_canvas_item_shader>` hoặc :ref:`3D <doc_spatial_shader>` để hiển thị texture từ một mảng texture. - **Texture3D:** Nhập hình ảnh dưới dạng texture 3 chiều. Đây *không phải* là texture 2D được áp dụng lên một bề mặt 3D. Texture3D tương tự mảng texture, nhưng có phép nội suy giữa các layer. Texture3D thường được dùng cho
   :ref:`class_FogMaterial` density maps in :ref:`volumetric fog
-  <doc_volumetric_fog>`, :ref:`particle attractor <doc_3d_particles_attractors>`
-  vector fields, :ref:`class_Environment` 3D LUT color correction, and custom shaders.
-- **TextureAtlas:** Import the image as an *atlas* of different textures. Can be
-  used to reduce memory usage for animated 2D sprites. Only supported in 2D due
-  to missing support in built-in 3D shaders.
+  <doc_volumetric_fog>`, các trường vector :ref:`particle attractor <doc_3d_particles_attractors>`, :ref:`class_Environment` 3D LUT để hiệu chỉnh màu và các shader tùy chỉnh. - **TextureAtlas:** Nhập hình ảnh dưới dạng *atlas* gồm nhiều texture khác nhau. Có thể dùng để giảm mức sử dụng bộ nhớ cho các sprite 2D động. Chỉ được hỗ trợ trong 2D do các shader 3D tích hợp sẵn chưa hỗ trợ.
 
-For **Cubemap**, the expected image order is X+, X-, Y+, Y-, Z+, Z-
-(in Godot's coordinate system, so Y+ is "up" and Z- is "forward").
-Here are templates you can use for cubemap images (right-click > **Save Link As…**):
+Đối với **Cubemap**, thứ tự hình ảnh dự kiến là X+, X-, Y+, Y-, Z+, Z- (trong hệ tọa độ của Godot, vì vậy Y+ là "lên trên" và Z- là "hướng về phía trước"). Dưới đây là các template bạn có thể dùng cho hình ảnh cubemap (nhấp chuột phải > **Save Link As…**):
 
-- :download:`2×3 cubemap template (default layout option) <img/cubemap_template_2x3.webp>`
-- :download:`3×2 cubemap template <img/cubemap_template_3x2.webp>`
-- :download:`1×6 cubemap template <img/cubemap_template_1x6.webp>`
-- :download:`6×1 cubemap template <img/cubemap_template_6x1.webp>`
+- :download:`2×3 cubemap template (default layout option) <img/cubemap_template_2x3.webp>` - :download:`3×2 cubemap template <img/cubemap_template_3x2.webp>` - :download:`1×6 cubemap template <img/cubemap_template_1x6.webp>` - :download:`6×1 cubemap template <img/cubemap_template_6x1.webp>`
 
 Detect 3D
 ~~~~~~~~~
 
-The default import options (no mipmaps and **Lossless** compression) are suited
-for 2D, but are not ideal for most 3D projects. **Detect 3D** makes Godot aware
-of when a texture is used in a 3D scene (such as a texture in a
+Các tùy chọn nhập mặc định (không có mipmap và nén **Lossless**) phù hợp với 2D, nhưng không lý tưởng cho hầu hết dự án 3D. **Detect 3D** giúp Godot nhận biết khi texture được sử dụng trong một cảnh 3D (chẳng hạn như texture trong một
 :ref:`class_BaseMaterial3D`). If this happens, several import options are
-changed so the texture flags are friendlier to 3D. Mipmaps are enabled and the
-compression mode is changed to **VRAM Compressed** unless
+được thay đổi để các cờ texture phù hợp hơn với 3D. Mipmap được bật và chế độ nén được đổi thành **VRAM Compressed** trừ khi
 :ref:`doc_importing_images_detect_3d_compress_to` is changed. The texture is
-also reimported automatically.
+cũng được tự động nhập lại.
 
-A message is printed to the Output panel when a texture is detected to be used in 3D.
+Một thông báo được in trong panel Output khi phát hiện texture được sử dụng trong 3D.
 
-If you run into quality issues when a texture is detected to be used in 3D (e.g.
-for pixel art textures), change the
+Nếu bạn gặp vấn đề về chất lượng khi phát hiện texture được sử dụng trong 3D (ví dụ: texture pixel art), hãy thay đổi
 :ref:`doc_importing_images_detect_3d_compress_to` option before using the
-texture in 3D, or change :ref:`doc_importing_images_compress_mode` to
-**Lossless** after using the texture in 3D. This is preferable to disabling
-**Detect 3D**, as mipmap generation remains enabled to prevent textures from
-looking grainy at a distance.
+texture trong 3D hoặc đổi :ref:`doc_importing_images_compress_mode` thành **Lossless** sau khi sử dụng texture trong 3D. Cách này tốt hơn việc tắt **Detect 3D**, vì việc tạo mipmap vẫn được bật để ngăn texture bị nhiễu hạt khi ở xa.
 
-Import options
---------------
+Tùy chọn nhập
+-------------
 
 .. seealso::
 
-    Since Godot 4.0, texture filter and repeat modes are set in the CanvasItem
-    properties in 2D (with a project setting acting as a default), and in a
+    Kể từ Godot 4.0, chế độ lọc và lặp texture được thiết lập trong các thuộc tính CanvasItem ở chế độ 2D (với một thiết lập project làm mặc định), và trong một
     :ref:`per-material configuration in 3D <doc_standard_material_3d_sampling>`.
-    In custom shaders, filter and repeat mode is changed on the ``sampler2D``
-    uniform using hints described in the :ref:`doc_shading_language`
-    documentation.
+    Trong các shader tùy chỉnh, chế độ lọc và lặp được thay đổi trên uniform ``sampler2D`` bằng các hint được mô tả trong tài liệu :ref:`doc_shading_language`.
 
 .. _doc_importing_images_compress_mode:
 
 Compress > Mode
 ~~~~~~~~~~~~~~~
 
-Images are one of the largest assets in a game. To handle them efficiently, they
-need to be compressed. Godot offers several compression methods, depending on
-the use case.
+Hình ảnh là một trong những asset lớn nhất trong game. Để xử lý chúng hiệu quả, cần nén chúng. Godot cung cấp một số phương pháp nén, tùy thuộc vào trường hợp sử dụng.
 
-- **Lossless:** This is the default and most common compression mode for 2D assets.
-  It shows assets without any kind of artifacting, and disk compression is
-  decent. It will use considerably more amount of video memory than
-  VRAM Compression, though. This is also the recommended setting for pixel art.
-- **Lossy:** This is a good choice for large 2D assets. It has some artifacts,
-  but less than VRAM compression and the file size is several times lower
-  compared to Lossless or VRAM Uncompressed. Video memory usage isn't decreased
-  by this mode; it's the same as with Lossless or VRAM Uncompressed.
-- **VRAM Compressed:** This is the default and most common compression mode for
-  3D assets. Size on disk is reduced and video memory usage is also decreased
-  considerably (usually by a factor between 4 and 6). This mode should be
-  avoided for 2D as it exhibits noticeable artifacts, especially for
-  lower-resolution textures.
-- **VRAM Uncompressed:** Only useful for formats that can't be compressed, such
-  as raw floating-point images.
-- **Basis Universal:** This alternative VRAM compression mode encodes the
-  texture to a format that can be transcoded to most GPU-compressed formats at
-  load-time. This provides very small files that make use of VRAM compression,
-  at the cost of lower quality compared to VRAM Compressed and slow compression
-  times. VRAM usage is usually the same as VRAM Compressed. Basis Universal does
-  not support floating-point image formats (the engine will internally fall back
-  to VRAM Compressed instead).
+- **Lossless:** Đây là chế độ nén mặc định và phổ biến nhất cho asset 2D. Nó hiển thị asset mà không tạo ra bất kỳ artifact nào, đồng thời mức nén trên đĩa khá tốt. Tuy nhiên, nó sẽ sử dụng nhiều bộ nhớ video hơn đáng kể so với VRAM Compression. Đây cũng là thiết lập được khuyến nghị cho pixel art. - **Lossy:** Đây là lựa chọn phù hợp cho các asset 2D lớn. Nó tạo ra một số artifact, nhưng ít hơn VRAM compression, và kích thước tệp thấp hơn vài lần so với Lossless hoặc VRAM Uncompressed. Chế độ này không làm giảm mức sử dụng bộ nhớ video; mức sử dụng giống với Lossless hoặc VRAM Uncompressed. - **VRAM Compressed:** Đây là chế độ nén mặc định và phổ biến nhất cho asset 3D. Kích thước trên đĩa được giảm xuống và mức sử dụng bộ nhớ video cũng giảm đáng kể (thường từ 4 đến 6 lần). Nên tránh dùng chế độ này cho 2D vì nó tạo ra các artifact dễ nhận thấy, đặc biệt với texture có độ phân giải thấp. - **VRAM Uncompressed:** Chỉ hữu ích cho các định dạng không thể nén, chẳng hạn như hình ảnh dấu phẩy động thô. - **Basis Universal:** Chế độ nén VRAM thay thế này mã hóa texture thành một định dạng có thể được chuyển mã sang hầu hết các định dạng nén GPU tại thời điểm tải. Cách này tạo ra các tệp rất nhỏ có sử dụng tính năng nén VRAM, nhưng đánh đổi bằng chất lượng thấp hơn so với VRAM Compressed và thời gian nén chậm. Mức sử dụng VRAM thường giống với VRAM Compressed. Basis Universal không hỗ trợ các định dạng hình ảnh dấu phẩy động (engine sẽ tự động chuyển về VRAM Compressed).
 
 .. note::
 
-    Even in 3D, "pixel art" textures should have VRAM compression disabled as it
-    will negatively affect their appearance, without improving performance
-    significantly due to their low resolution.
+    Ngay cả trong 3D, các texture "pixel art" cũng nên tắt tính năng nén VRAM vì nó sẽ ảnh hưởng tiêu cực đến hình thức của texture mà không cải thiện đáng kể hiệu suất do độ phân giải thấp.
 
-In this table, each of the 5 options are described together with their
-advantages and disadvantages (|good| = best, |bad| = worst):
+Trong bảng này, mỗi trong 5 tùy chọn được mô tả cùng với ưu điểm và nhược điểm của chúng (|good| = tốt nhất, |bad| = kém nhất):
 
 +------------------+-------------------------------+----------------------+------------------------------------------------------+------------------------+--------------------------------------+
 | Compress mode    | Lossless                      | Lossy                | VRAM Compressed                                      | VRAM Uncompressed      | Basis Universal                      |
@@ -228,7 +136,7 @@ advantages and disadvantages (|good| = best, |bad| = worst):
 
 .. |regular| image:: img/regular.png
 
-Estimated memory usage for a single RGBA8 texture with mipmaps enabled:
+Mức sử dụng bộ nhớ ước tính cho một texture RGBA8 đơn với mipmap được bật:
 
 +---------------+---------------------+---------------------+---------------------+---------------------+---------------------+
 | Texture size  | Lossless            | Lossy               | VRAM Compressed     | VRAM Uncompressed   | Basis Universal     |
@@ -248,22 +156,13 @@ Estimated memory usage for a single RGBA8 texture with mipmaps enabled:
 
 .. note::
 
-    In the above table, memory usage will be reduced by 25% for images that do
-    not have an alpha channel (RGB8). Memory usage will be further decreased by
-    25% for images that have mipmaps disabled.
+    Trong bảng trên, mức sử dụng bộ nhớ sẽ giảm 25% đối với hình ảnh không có kênh alpha (RGB8). Mức sử dụng bộ nhớ sẽ tiếp tục giảm 25% đối với hình ảnh đã tắt mipmap.
 
-Notice how at larger resolutions, the impact of VRAM compression is much
-greater. With a 4:1 compression ratio (6:1 for opaque textures with S3TC), VRAM
-compression effectively allows a texture to be twice as large on each axis,
-while using the same amount of memory on the GPU.
+Lưu ý rằng ở các độ phân giải lớn hơn, tác động của việc nén VRAM lớn hơn nhiều. Với tỷ lệ nén 4:1 (6:1 đối với texture không trong suốt với S3TC), nén VRAM thực tế cho phép texture lớn gấp đôi trên mỗi trục, trong khi vẫn sử dụng cùng lượng bộ nhớ trên GPU.
 
-VRAM compression also reduces the memory bandwidth required to sample the
-texture, which can speed up rendering in memory bandwidth-constrained scenarios
-(which are frequent on integrated graphics and mobile). These factors combined
-make VRAM compression a must-have for 3D games with high-resolution textures.
+Nén VRAM cũng làm giảm băng thông bộ nhớ cần thiết để lấy mẫu texture, nhờ đó có thể tăng tốc quá trình render trong các trường hợp bị giới hạn bởi băng thông bộ nhớ (thường gặp trên đồ họa tích hợp và thiết bị di động). Kết hợp lại, các yếu tố này khiến nén VRAM trở thành yếu tố bắt buộc đối với game 3D sử dụng texture độ phân giải cao.
 
-You can preview how much memory a texture takes by double-clicking it in the
-FileSystem dock, then looking at the Inspector:
+Bạn có thể xem trước texture chiếm bao nhiêu bộ nhớ bằng cách nhấp đúp vào texture trong dock FileSystem, sau đó xem trong Inspector:
 
 .. figure:: img/importing_images_inspector_preview.webp
    :align: center
@@ -276,64 +175,37 @@ Compress > High Quality
 
 .. note::
 
-    High-quality VRAM texture compression is only supported in the Forward+ and
-    Mobile renderers.
+    Nén texture VRAM chất lượng cao chỉ được hỗ trợ trong các renderer Forward+ và Mobile.
 
-    When using the Compatibility renderer, this option is always considered
-    disabled.
+    Khi sử dụng renderer Compatibility, tùy chọn này luôn được xem là bị tắt.
 
-If enabled, uses BPTC compression on desktop platforms and :abbr:`ASTC (Adaptive
-Scalable Texture Compression)` compression on mobile platforms. When using BPTC,
-BC7 is used for SDR textures and BC6H is used for HDR textures.
+Nếu được bật, sử dụng nén BPTC trên các nền tảng desktop và nén :abbr:`ASTC (Adaptive Scalable Texture Compression)` trên các nền tảng mobile. Khi sử dụng BPTC, BC7 được dùng cho texture SDR và BC6H được dùng cho texture HDR.
 
-If disabled (default), uses the faster but lower-quality S3TC compression on
-desktop platforms and ETC2 on mobile/web platforms. When using S3TC, DXT1 (BC1)
-is used for opaque textures and DXT5 (BC3) is used for transparent or normal map
-(:abbr:`RGTC (Red-Green Texture Compression)`) textures.
+Nếu bị tắt (mặc định), sử dụng nén S3TC nhanh hơn nhưng chất lượng thấp hơn trên các nền tảng desktop và ETC2 trên các nền tảng mobile/web. Khi sử dụng S3TC, DXT1 (BC1) được dùng cho texture không trong suốt, còn DXT5 (BC3) được dùng cho texture trong suốt hoặc texture normal map (:abbr:`RGTC (Red-Green Texture Compression)`).
 
-BPTC and ASTC support VRAM compression for HDR textures, but S3TC and ETC2 do
-not (see **HDR Compression** below).
+BPTC và ASTC hỗ trợ nén VRAM cho texture HDR, nhưng S3TC và ETC2 thì không (xem **HDR Compression** bên dưới).
 
 Compress > HDR Compression
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
 
-    This option only has an effect on textures that are imported as HDR formats in Godot
-    (``.hdr`` and ``.exr`` files).
+    Tùy chọn này chỉ có tác dụng với các texture được import dưới dạng HDR trong Godot (các tệp ``.hdr`` và ``.exr``).
 
-If set to **Disabled**, never uses VRAM compression for HDR textures, regardless
-of whether they're opaque or transparent. Instead, the texture is converted to
-RGBE9995 (9-bits per channel + 5-bit exponent = 32 bits per pixel) to reduce
-memory usage compared to a half-float or single-precision float image format.
+Nếu được đặt thành **Disabled**, không bao giờ sử dụng nén VRAM cho texture HDR, bất kể chúng không trong suốt hay trong suốt. Thay vào đó, texture được chuyển đổi thành RGBE9995 (9-bit cho mỗi kênh + số mũ 5-bit = 32 bit trên mỗi pixel) để giảm mức sử dụng bộ nhớ so với định dạng ảnh half-float hoặc single-precision float.
 
-If set to **Opaque Only** (default), only uses VRAM compression for opaque HDR
-textures. This is due to a limitation of HDR formats, as there is no
-VRAM-compressed HDR format that supports transparency at the same time.
+Nếu được đặt thành **Opaque Only** (mặc định), chỉ sử dụng nén VRAM cho texture HDR không trong suốt. Điều này là do một hạn chế của các định dạng HDR, vì không có định dạng HDR được nén VRAM nào đồng thời hỗ trợ độ trong suốt.
 
-If set to **Always**, will force VRAM compression even for HDR textures with an
-alpha channel. To perform this, the alpha channel is discarded on import.
+Nếu được đặt thành **Always**, sẽ buộc sử dụng nén VRAM ngay cả với texture HDR có kênh alpha. Để thực hiện việc này, kênh alpha sẽ bị loại bỏ khi import.
 
 Compress > Normal Map
 ~~~~~~~~~~~~~~~~~~~~~
 
-When using a texture as normal map, only the red and green channels are
-required. Given regular texture compression algorithms produce artifacts that
-don't look that nice in normal maps, the :abbr:`RGTC (Red-Green Texture Compression)`
-compression format is the best fit for this data. Forcing this option to **Enable**
-will make Godot import the image as :abbr:`RGTC (Red-Green Texture Compression)` compressed.
-By default, it's set to **Detect**. This means that if the texture is ever detected to
-be used as a normal map, it will be changed to **Enable** and reimported automatically.
+Khi sử dụng texture làm normal map, chỉ cần các kênh đỏ và xanh lá. Vì các thuật toán nén texture thông thường tạo ra các artifact không đẹp khi dùng cho normal map, định dạng nén :abbr:`RGTC (Red-Green Texture Compression)` là lựa chọn phù hợp nhất cho dữ liệu này. Buộc tùy chọn này thành **Enable** sẽ khiến Godot import ảnh dưới dạng được nén bằng :abbr:`RGTC (Red-Green Texture Compression)`. Theo mặc định, tùy chọn này được đặt thành **Detect**. Điều đó có nghĩa là nếu texture được phát hiện đang được dùng làm normal map, nó sẽ được chuyển thành **Enable** và tự động reimport.
 
-Note that :abbr:`RGTC (Red-Green Texture Compression)` compression affects the
-resulting normal map image. You will have to adjust custom shaders that use the
-normal map's blue channel to take this into account. Built-in material shaders
-already ignore the blue channel in a normal map (regardless of the actual normal
-map's contents).
+Lưu ý rằng việc nén :abbr:`RGTC (Red-Green Texture Compression)` ảnh hưởng đến ảnh normal map kết quả. Bạn sẽ phải điều chỉnh các custom shader sử dụng kênh xanh dương của normal map để tính đến điều này. Các shader material tích hợp sẵn đã bỏ qua kênh xanh dương trong normal map (bất kể nội dung thực tế của normal map).
 
-In the example below, the normal map with :abbr:`RGTC (Red-Green Texture Compression)`
-compression is able to preserve its detail much better, while
-using the same amount of memory as a standard RGBA VRAM-compressed texture:
+Trong ví dụ bên dưới, normal map với nén :abbr:`RGTC (Red-Green Texture Compression)` có thể giữ lại chi tiết tốt hơn nhiều, đồng thời sử dụng cùng lượng bộ nhớ như một texture RGBA được nén VRAM tiêu chuẩn:
 
 .. figure:: img/importing_images_normal_map_rgtc.webp
    :align: center
@@ -343,295 +215,181 @@ using the same amount of memory as a standard RGBA VRAM-compressed texture:
 
 .. note::
 
-  Godot requires the normal map to use the X+, Y+ and Z+ coordinates, which is
-  known as an OpenGL-style normal map. If you've imported a material made to be
-  used with another engine, it may be DirectX-style. In this case, the normal map
-  needs to be converted by enabling the **Normal Map Invert Y** import option.
+  Godot yêu cầu normal map sử dụng các tọa độ X+, Y+ và Z+, được gọi là normal map kiểu OpenGL. Nếu bạn đã import một material được tạo để sử dụng với engine khác, nó có thể là kiểu DirectX. Trong trường hợp này, normal map cần được chuyển đổi bằng cách bật tùy chọn import **Normal Map Invert Y**.
 
-  More information about normal maps (including a coordinate order table for
-  popular engines) can be found
-  `here <http://wiki.polycount.com/wiki/Normal_Map_Technical_Details>`__.
+  Có thể tìm thêm thông tin về normal map (bao gồm bảng thứ tự tọa độ cho các engine phổ biến) `here <http://wiki.polycount.com/wiki/Normal_Map_Technical_Details>`__.
 
 Compress > Channel Pack
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-If set to **sRGB Friendly** (default), prevents the RG color format from being
-used as it does not support sRGB color.
+Nếu được đặt thành **sRGB Friendly** (mặc định), ngăn không cho sử dụng định dạng màu RG vì định dạng này không hỗ trợ màu sRGB.
 
-If set to **Optimized**, allows the RG color format to be used if the texture
-does not use the blue channel.
+Nếu được đặt thành **Optimized**, cho phép sử dụng định dạng màu RG nếu texture không sử dụng kênh xanh dương.
 
-A third option **Normal Map (RG Channels)** is *only* available in layered
-textures (:ref:`class_Cubemap`, :ref:`class_CubemapArray`, :ref:`class_Texture2DArray`
-and :ref:`class_Texture3D`). This forces all layers from the texture to be imported
-with the RG color format, with only the red and green
-channels preserved. :abbr:`RGTC (Red-Green Texture Compression)` compression is able to
-preserve its detail much better, while using the same amount of memory as a standard
-RGBA VRAM-compressed texture. This only has an effect on textures with the **VRAM Compressed**
-or **Basis Universal** compression modes.
+Tùy chọn thứ ba **Normal Map (RG Channels)** *chỉ* khả dụng trong các texture dạng layer (:ref:`class_Cubemap`, :ref:`class_CubemapArray`, :ref:`class_Texture2DArray` và :ref:`class_Texture3D`). Tùy chọn này buộc tất cả layer của texture được import bằng định dạng màu RG, chỉ giữ lại các kênh đỏ và xanh lá. Nén :abbr:`RGTC (Red-Green Texture Compression)` có thể giữ lại chi tiết tốt hơn nhiều, đồng thời sử dụng cùng lượng bộ nhớ như một texture RGBA được nén VRAM tiêu chuẩn. Tùy chọn này chỉ có tác dụng với texture sử dụng chế độ nén **VRAM Compressed** hoặc **Basis Universal**.
 
 .. _doc_importing_images_mipmaps:
 
 Mipmaps > Generate
 ~~~~~~~~~~~~~~~~~~
 
-If enabled, smaller versions of the texture are generated on import. For
-example, a 64×64 texture will generate 6 mipmaps (32×32, 16×16, 8×8, 4×4, 2×2,
-1×1). This has several benefits:
+Nếu được bật, các phiên bản nhỏ hơn của texture sẽ được tạo khi import. Ví dụ, texture 64×64 sẽ tạo 6 mipmap (32×32, 16×16, 8×8, 4×4, 2×2, 1×1). Điều này mang lại một số lợi ích:
 
-- Textures will not become grainy in the distance (in 3D), or if scaled down due
-  to camera zoom or CanvasItem scale (in 2D).
-- Performance will improve if the texture is displayed in the distance, since
-  sampling smaller versions of the original texture is faster and requires less
-  memory bandwidth.
+- Texture sẽ không bị nhiễu hạt khi ở xa (trong 3D), hoặc khi được thu nhỏ do zoom camera hoặc scale của CanvasItem (trong 2D). - Hiệu năng sẽ được cải thiện nếu texture được hiển thị ở xa, vì việc lấy mẫu các phiên bản nhỏ hơn của texture gốc nhanh hơn và cần ít băng thông bộ nhớ hơn.
 
-The downside of mipmaps is that they increase memory usage by roughly 33%.
+Nhược điểm của mipmap là chúng làm tăng mức sử dụng bộ nhớ khoảng 33%.
 
-It's recommended to enable mipmaps in 3D. However, in 2D, this should only be
-enabled if your project visibly benefits from having mipmaps enabled. If the
-camera never zooms out significantly, there won't be a benefit to enabling
-mipmaps but memory usage will increase.
+Bạn nên bật mipmap trong 3D. Tuy nhiên, trong 2D, chỉ nên bật tùy chọn này nếu dự án của bạn thực sự hưởng lợi rõ rệt từ việc bật mipmap. Nếu camera không bao giờ zoom out đáng kể, việc bật mipmap sẽ không mang lại lợi ích nhưng sẽ làm tăng mức sử dụng bộ nhớ.
 
 Mipmaps > Limit
 ~~~~~~~~~~~~~~~
 
-.. UPDATE: Not implemented. When Mipmaps > Limit is implemented, remove this
-.. warning and remove this comment.
+.. UPDATE: Chưa được triển khai. Khi Mipmaps > Limit được triển khai, hãy xóa cảnh báo .. này và xóa comment này.
 
 .. warning::
 
-    **Mipmaps > Limit** is currently not implemented and has no effect when changed.
+    **Mipmaps > Limit** hiện chưa được triển khai và không có tác dụng khi thay đổi.
 
-If set to a value greater than ``-1``, limits the maximum number of mipmaps that
-can be generated. This can be decreased if you don't want textures to become too
-low-resolution at extreme distances, at the cost of some graininess.
+Nếu được đặt thành giá trị lớn hơn ``-1``, giới hạn số lượng mipmap tối đa có thể được tạo. Có thể giảm giá trị này nếu bạn không muốn texture trở nên có độ phân giải quá thấp ở khoảng cách cực xa, đổi lại sẽ có một chút nhiễu hạt.
 
 Roughness > Mode
 ~~~~~~~~~~~~~~~~
 
-The color channel to consider as a roughness map in this texture. Only effective if
-**Roughness > Src Normal** is not empty.
+Kênh màu được xem là roughness map trong texture này. Chỉ có tác dụng nếu **Roughness > Src Normal** không trống.
 
 Roughness > Src Normal
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The path to the texture to consider as a normal map for roughness filtering on
-import. Specifying this can help decrease specular aliasing slightly in 3D.
+Đường dẫn đến texture được xem là normal map để lọc roughness khi import. Việc chỉ định texture này có thể giúp giảm nhẹ hiện tượng specular aliasing trong 3D.
 
-Roughness filtering on import is only used in 3D rendering, not 2D.
+Lọc roughness khi import chỉ được sử dụng trong quá trình render 3D, không phải 2D.
 
 Process > Fix Alpha Border
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This puts pixels of the same surrounding color in transition from transparent to
-opaque areas. For textures displayed with bilinear filtering, this helps
-mitigate the outline effect when exporting images from an image editor.
+Tùy chọn này đặt các pixel có cùng màu với vùng xung quanh vào phần chuyển tiếp từ vùng trong suốt sang vùng không trong suốt. Đối với texture được hiển thị bằng bilinear filtering, điều này giúp giảm hiệu ứng đường viền khi export ảnh từ image editor.
 
 .. image:: img/fixedborder.png
 
-It's recommended to leave this enabled (as it is by default), unless this causes
-issues for a particular image.
+Bạn nên để tùy chọn này bật (như mặc định), trừ khi nó gây ra sự cố với một ảnh cụ thể.
 
 Process > Premult Alpha
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-An alternative to fixing darkened borders with **Fix Alpha Border** is to use
-premultiplied alpha. By enabling this option, the texture will be converted to
-this format. A premultiplied alpha texture requires specific materials to be
-displayed correctly:
+Một cách thay thế cho việc sửa các đường viền bị tối bằng **Fix Alpha Border** là sử dụng alpha premultiplied. Bằng cách bật tùy chọn này, texture sẽ được chuyển đổi sang định dạng đó. Texture alpha premultiplied yêu cầu các material cụ thể để được hiển thị chính xác:
 
-- In 2D, a :ref:`class_CanvasItemMaterial` will need to be created and
-  configured to use the **Premultiplied Alpha** blend mode on CanvasItems that use this
-  texture. In :ref:`custom canvas item shaders <doc_canvas_item_shader>`,
-  ``render_mode blend_premul_alpha;`` should be used.
-- In 3D, a :ref:`class_BaseMaterial3D` will need to be created and configured
-  to use the **Premult Alpha** blend mode on materials that use this texture.
-  In :ref:`custom spatial shaders <doc_spatial_shader>`,
-  ``render_mode blend_premul_alpha;`` should be used.
+- Trong 2D, cần tạo một :ref:`class_CanvasItemMaterial` và cấu hình để sử dụng chế độ blend **Premultiplied Alpha** trên các CanvasItem sử dụng texture này. Trong :ref:`custom canvas item shaders <doc_canvas_item_shader>`, nên sử dụng ``render_mode blend_premul_alpha;``. - Trong 3D, cần tạo một :ref:`class_BaseMaterial3D` và cấu hình để sử dụng chế độ blend **Premult Alpha** trên các material sử dụng texture này. Trong :ref:`custom spatial shaders <doc_spatial_shader>`, nên sử dụng ``render_mode blend_premul_alpha;``.
 
 Process > Normal Map Invert Y
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Godot requires the normal map to use the X+, Y+ and Z+ coordinates, which is
-known as an OpenGL-style normal map. If you've imported a material made to be
-used with another engine, it may be DirectX-style. In this case, the normal map
-needs to be converted by enabling the **Normal Map Invert Y** import option.
+Godot yêu cầu normal map sử dụng các tọa độ X+, Y+ và Z+, được gọi là normal map kiểu OpenGL. Nếu bạn đã import một material được tạo để sử dụng với engine khác, nó có thể là kiểu DirectX. Trong trường hợp này, normal map cần được chuyển đổi bằng cách bật tùy chọn import **Normal Map Invert Y**.
 
-More information about normal maps (including a coordinate order table for
-popular engines) can be found
-`here <http://wiki.polycount.com/wiki/Normal_Map_Technical_Details>`__.
+Có thể tìm thêm thông tin về normal map (bao gồm bảng thứ tự tọa độ cho các engine phổ biến) `here <http://wiki.polycount.com/wiki/Normal_Map_Technical_Details>`__.
 
 Process > HDR as sRGB
 ~~~~~~~~~~~~~~~~~~~~~
 
-Some HDR images you can find online may be broken and contain sRGB color data
-(instead of linear color data). It is advised not to use those files. If you
-absolutely have to, enabling this option on will make them look correct.
+Một số ảnh HDR bạn tìm thấy trên mạng có thể bị lỗi và chứa dữ liệu màu sRGB (thay vì dữ liệu màu tuyến tính). Bạn không nên sử dụng những tệp đó. Nếu nhất thiết phải dùng, việc bật tùy chọn này sẽ khiến chúng hiển thị chính xác.
 
 .. warning::
 
-    Enabling **HDR as sRGB** on well-formatted HDR images will cause the
-    resulting image to look too dark, so leave this disabled if unsure.
+    Bật **HDR as sRGB** trên các ảnh HDR được định dạng đúng sẽ khiến ảnh kết quả quá tối, vì vậy hãy để tùy chọn này tắt nếu không chắc chắn.
 
 Process > HDR Clamp Exposure
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Some HDR panorama images you can find online may contain extremely bright
-pixels, due to being taken from real life sources without any clipping.
+Một số ảnh panorama HDR bạn tìm thấy trên mạng có thể chứa các pixel cực kỳ sáng do được chụp từ nguồn thực tế mà không thực hiện clipping.
 
-While these HDR panorama images are accurate to real life, this can cause the
-radiance map generated by Godot to contain sparkles when used as a background
-sky. This can be seen in material reflections (even on rough materials in
-extreme cases). Enabling **HDR Clamp Exposure** can resolve this using a smart
-clamping formula that does not introduce *visible* clipping – glow will keep
-working when looking at the background sky.
+Mặc dù các ảnh panorama HDR này chính xác với thực tế, điều này có thể khiến radiance map do Godot tạo ra chứa các điểm lấp lánh khi được dùng làm background sky. Hiện tượng này có thể thấy trong các phản chiếu của material (thậm chí trong những trường hợp đặc biệt, trên cả material rough). Bật **HDR Clamp Exposure** có thể giải quyết vấn đề này bằng công thức clamp thông minh, không tạo ra clipping *nhìn thấy được* – glow vẫn tiếp tục hoạt động khi nhìn vào background sky.
 
 Process > Size Limit
 ~~~~~~~~~~~~~~~~~~~~
 
-If set to a value greater than ``0``, the size of the texture is limited on
-import to a value smaller than or equal to the value specified here. For
-non-square textures, the size limit affects the longer dimension, with the
-shorter dimension scaled to preserve aspect ratio. Resizing is performed using
-cubic interpolation.
+Nếu được đặt thành giá trị lớn hơn ``0``, kích thước texture sẽ bị giới hạn khi import ở mức nhỏ hơn hoặc bằng giá trị được chỉ định tại đây. Đối với texture không vuông, giới hạn kích thước áp dụng cho chiều dài hơn, còn chiều ngắn hơn được scale để giữ nguyên tỷ lệ khung hình. Việc thay đổi kích thước được thực hiện bằng nội suy cubic.
 
-This can be used to reduce memory usage without affecting the source images, or
-avoid issues with textures not displaying on mobile/web platforms (as these
-usually can't display textures larger than 4096×4096).
+Có thể dùng tùy chọn này để giảm mức sử dụng bộ nhớ mà không ảnh hưởng đến ảnh nguồn, hoặc tránh các sự cố khi texture không hiển thị trên các nền tảng mobile/web (vì những nền tảng này thường không thể hiển thị texture lớn hơn 4096×4096).
 
 .. _doc_importing_images_detect_3d_compress_to:
 
 Detect 3D > Compress To
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-This changes the :ref:`doc_importing_images_compress_mode` option that is used
-when a texture is detected as being used in 3D.
+Tùy chọn này thay đổi tùy chọn :ref:`doc_importing_images_compress_mode` được sử dụng khi texture được phát hiện là đang được dùng trong 3D.
 
-Changing this import option only has an effect if a texture is detected as being
-used in 3D. Changing this to **Disabled** then reimporting will not change the
-existing compress mode on a texture (if it's detected to be used in 3D), but
-choosing **VRAM Compressed** or **Basis Universal** will.
+Việc thay đổi tùy chọn import này chỉ có hiệu lực nếu texture được phát hiện là đang được sử dụng trong 3D. Việc chuyển tùy chọn này thành **Disabled** rồi reimport sẽ không thay đổi chế độ nén hiện có trên texture (nếu texture được phát hiện là đang được sử dụng trong 3D), nhưng chọn **VRAM Compressed** hoặc **Basis Universal** thì có.
 
 SVG > Scale
 ~~~~~~~~~~~
 
-*This is only available for SVG images.*
+*Tùy chọn này chỉ khả dụng cho hình ảnh SVG.*
 
-The scale the SVG should be rendered at, with ``1.0`` being the original design
-size. Higher values result in a larger image. Note that unlike font
-oversampling, this affects the physical size the SVG is rendered at in 2D. See
-also **Editor > Scale With Editor Scale** below.
+Scale mà SVG sẽ được render, trong đó ``1.0`` là kích thước thiết kế ban đầu. Giá trị cao hơn sẽ tạo ra hình ảnh lớn hơn. Lưu ý rằng không giống như font oversampling, tùy chọn này ảnh hưởng đến kích thước vật lý mà SVG được render trong 2D. Xem thêm **Editor > Scale With Editor Scale** bên dưới.
 
 .. _doc_importing_images_editor_import_options:
 
 Editor > Scale With Editor Scale
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*This is only available for SVG images.*
+*Tùy chọn này chỉ khả dụng cho hình ảnh SVG.*
 
-If true, scales the imported image to match the editor's display scale factor.
-This should be enabled for editor plugin icons and custom class icons, but
-should be left disabled otherwise.
+Nếu là true, scale hình ảnh đã import để khớp với hệ số scale hiển thị của editor. Bạn nên bật tùy chọn này cho icon của editor plugin và icon của custom class, nhưng nên để tắt trong các trường hợp khác.
 
 Editor > Convert Colors With Editor Theme
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*This is only available for SVG images.*
+*Tùy chọn này chỉ khả dụng cho hình ảnh SVG.*
 
-If checked, converts the imported image's colors to match the editor's icon and
-font color palette. This assumes the image uses the exact same colors as
+Nếu được chọn, tùy chọn này sẽ chuyển đổi màu của hình ảnh đã import để khớp với bảng màu icon và font của editor. Điều này giả định rằng hình ảnh sử dụng chính xác cùng màu với
 :ref:`Godot's own color palette for editor icons <doc_editor_icons>`, with the
-source file designed for a dark editor theme. This should be enabled for editor
-plugin icons and custom class icons, but should be left disabled otherwise.
+file nguồn được thiết kế cho theme editor tối. Bạn nên bật tùy chọn này cho icon của editor plugin và icon của custom class, nhưng nên để tắt trong các trường hợp khác.
 
 .. _doc_importing_images_svg_text:
 
-Importing SVG images with text
+Import hình ảnh SVG có văn bản
 ------------------------------
 
-As the SVG library used in Godot doesn't support rasterizing text found in SVG
-images, text must be converted to a path first. Otherwise, text won't appear in
-the rasterized image.
+Do thư viện SVG được sử dụng trong Godot không hỗ trợ rasterize văn bản có trong hình ảnh SVG, trước tiên bạn phải chuyển văn bản thành path. Nếu không, văn bản sẽ không xuất hiện trong hình ảnh đã rasterize.
 
-There are two ways to achieve this in a non-destructive manner, so you can keep
-editing the original text afterwards:
+Có hai cách để thực hiện việc này theo phương thức không phá hủy (non-destructive), nhờ đó bạn vẫn có thể tiếp tục chỉnh sửa văn bản gốc sau này:
 
-- Select your text object in Inkscape, then duplicate it in place by pressing
+- Chọn đối tượng văn bản trong Inkscape, sau đó duplicate đối tượng tại đúng vị trí bằng cách nhấn
   :kbd:`Ctrl + D` and use **Path > Object to Path**. Hide the original text
-  object afterwards using the **Layers and Objects** dock.
-- Use the Inkscape command line to export an SVG from another SVG file with text
-  converted to paths:
+  đối tượng sau đó bằng dock **Layers and Objects**. - Sử dụng command line của Inkscape để export một SVG từ một file SVG khác với văn bản đã được chuyển thành path:
 
 ::
 
     inkscape --export-text-to-path --export-filename svg_with_text_converted_to_path.svg svg_with_text.svg
 
-Best practices
---------------
+Các phương pháp hay nhất
+------------------------
 
-Supporting high-resolution texture sizes in 2D without artifacts
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Hỗ trợ kích thước texture độ phân giải cao trong 2D mà không có artifact
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To support :ref:`multiple resolutions <doc_multiple_resolutions>` with crisp
-visuals at high resolutions, you will need to use high-resolution source images
-(suited for the highest resolution you wish to support without blurriness, which
-is typically 4K in modern desktop games).
+Để hỗ trợ :ref:`multiple resolutions <doc_multiple_resolutions>` với hình ảnh sắc nét ở độ phân giải cao, bạn cần sử dụng hình ảnh nguồn độ phân giải cao (phù hợp với độ phân giải cao nhất mà bạn muốn hỗ trợ mà không bị mờ; trong các game desktop hiện đại, độ phân giải này thường là 4K).
 
-There are 2 ways to proceed:
+Có 2 cách để thực hiện:
 
-- Use a high base resolution in the project settings (such as 4K), then use the
-  textures at original scale. This is an easier approach.
-- Use a low base resolution in the project settings (such as 1080p), then
-  downscale textures when using them. This is often more difficult and can make
-  various calculations in script tedious, so the approach described above is
-  recommended instead.
+- Sử dụng độ phân giải cơ sở cao trong project settings (chẳng hạn 4K), sau đó sử dụng texture ở scale gốc. Đây là cách dễ hơn. - Sử dụng độ phân giải cơ sở thấp trong project settings (chẳng hạn 1080p), sau đó downscale texture khi sử dụng. Cách này thường khó hơn và có thể khiến nhiều phép tính trong script trở nên tẻ nhạt, vì vậy cách được mô tả ở trên được khuyến nghị hơn.
 
-After doing this, you may notice that textures become grainy at lower viewport
-resolutions. To resolve this, enable **Mipmaps** on textures used in 2D in the
-Import dock. This will increase memory usage.
+Sau khi thực hiện việc này, bạn có thể nhận thấy texture trở nên nhiễu hạt ở các độ phân giải viewport thấp hơn. Để khắc phục, hãy bật **Mipmaps** trên các texture được sử dụng trong 2D tại dock Import. Việc này sẽ làm tăng mức sử dụng bộ nhớ.
 
-Enabling mipmaps can also make textures appear blurrier, but you can choose
-to make textures sharper (at the cost of some graininess) by setting
-**Rendering > Textures > Default Filters > Texture Mipmap Bias** to a
-negative value.
+Việc bật mipmap cũng có thể khiến texture trông mờ hơn, nhưng bạn có thể làm texture sắc nét hơn (đánh đổi bằng một phần nhiễu hạt) bằng cách đặt **Rendering > Textures > Default Filters > Texture Mipmap Bias** thành một giá trị âm.
 
-Use appropriate texture sizes in 3D
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sử dụng kích thước texture phù hợp trong 3D
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-While there's no "one size fits all" recommendation, here are some general
-recommendations for choosing texture sizes in 3D:
+Mặc dù không có khuyến nghị "một kích thước phù hợp cho mọi trường hợp", dưới đây là một số khuyến nghị chung khi chọn kích thước texture trong 3D:
 
-- The size of a texture should be adjusted to have a consistent texel density
-  compared to surrounding objects. While this cannot be ensured perfectly when
-  sticking to power-of-two texture sizes, it's usually possible to keep texture
-  detail fairly consistent throughout a 3D scene.
-- The smaller the object appears on screen, the smaller its texture should be.
-  For example, a tree that only appears in the background doesn't need a texture
-  resolution as high as other objects the player may be able to walk close to.
-- Using power-of-two texture sizes is recommended, but is not required. Textures
-  don't have to be square – sizes such as 1024×512 are acceptable.
-- There are diminishing returns to using large texture sizes, despite the
-  increased memory usage and loading times. Most modern 3D games not using a
-  pixel art style stick to 2048×2048 textures on average, with 1024×1024 and
-  512×512 for textures spanning smaller surfaces.
-- When working with physically-based materials in 3D, you can reduce memory
-  usage and file size without affecting quality too much by using a lower
-  resolution for certain texture maps. This works especially well for textures
-  that only feature low-frequency detail (such as a normal map for a snow
-  texture).
+- Kích thước của texture nên được điều chỉnh để có mật độ texel nhất quán so với các object xung quanh. Mặc dù không thể đảm bảo hoàn toàn khi chỉ sử dụng kích thước texture lũy thừa của hai, thông thường vẫn có thể duy trì chi tiết texture khá nhất quán trong toàn bộ một cảnh 3D. - Object càng nhỏ trên màn hình thì texture của nó càng nên nhỏ. Ví dụ, một cái cây chỉ xuất hiện ở hậu cảnh không cần độ phân giải texture cao như các object khác mà người chơi có thể đi đến gần. - Khuyến nghị sử dụng kích thước texture lũy thừa của hai, nhưng đây không phải là yêu cầu bắt buộc. Texture không nhất thiết phải vuông – các kích thước như 1024×512 vẫn được chấp nhận. - Việc sử dụng kích thước texture lớn có hiệu quả giảm dần, dù làm tăng mức sử dụng bộ nhớ và thời gian tải. Hầu hết game 3D hiện đại không sử dụng phong cách pixel art thường dùng texture 2048×2048 ở mức trung bình, cùng với 1024×1024 và 512×512 cho các texture phủ những bề mặt nhỏ hơn. - Khi làm việc với các vật liệu dựa trên đặc tính vật lý trong 3D, bạn có thể giảm mức sử dụng bộ nhớ và kích thước file mà không ảnh hưởng quá nhiều đến chất lượng bằng cách sử dụng độ phân giải thấp hơn cho một số texture map nhất định. Cách này đặc biệt hiệu quả với các texture chỉ có chi tiết tần số thấp (chẳng hạn normal map cho texture tuyết).
 
-If you have control over how the 3D models are created, these tips are also
-worth exploring:
+Nếu bạn có quyền kiểm soát cách tạo các model 3D, những mẹo sau cũng đáng để tìm hiểu:
 
-- When working with 3D models that are mostly symmetrical, you may be able to
-  use mirrored UVs to double the effective texel density. This may look
-  unnatural when used on human faces though.
-- When working with 3D models using a low-poly style and plain colors, you can
-  rely on vertex colors instead of textures to represent colors on the model's
-  surfaces.
+- Khi làm việc với các model 3D phần lớn có tính đối xứng, bạn có thể sử dụng UV được mirror để tăng gấp đôi mật độ texel hiệu dụng. Tuy nhiên, cách này có thể trông không tự nhiên khi được sử dụng trên khuôn mặt người. - Khi làm việc với các model 3D sử dụng phong cách low-poly và màu đơn sắc, bạn có thể dùng vertex color thay cho texture để thể hiện màu sắc trên các bề mặt của model.
 
 .. seealso::
 
-    Images can be loaded and saved at runtime using
+    Có thể load và save hình ảnh tại runtime bằng cách sử dụng
     :ref:`runtime file loading and saving <doc_runtime_file_loading_and_saving_images>`,
-    including from an exported project.
+    bao gồm cả từ một project đã export.

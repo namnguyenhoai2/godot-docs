@@ -1,99 +1,63 @@
 .. _doc_import_process:
 
-Import process
-==============
+Quy trình import
+================
 
-Importing assets in Godot
--------------------------
+Import asset trong Godot
+------------------------
 
-To import assets in Godot, place your assets (image files, scenes, audio
-files, fonts, etc) directly in the project folder. There are 2 ways to achieve this:
+Để import asset trong Godot, hãy đặt asset của bạn (tệp hình ảnh, scene, tệp âm thanh, font, v.v.) trực tiếp vào thư mục dự án. Có 2 cách để thực hiện việc này:
 
-- **For any file type:** Copy files manually with your operating system's file manager.
-- **For file types that can be imported by Godot:**
-  Drag-and-drop files from the operating system's file manager to the editor's FileSystem dock.
-  This only works with *resource* file types (i.e. file types that Godot can import).
+- **Với mọi loại tệp:** Sao chép tệp thủ công bằng trình quản lý tệp của hệ điều hành. - **Với các loại tệp có thể được Godot import:** Kéo và thả tệp từ trình quản lý tệp của hệ điều hành vào dock FileSystem của editor. Cách này chỉ hoạt động với các loại tệp *resource* (tức là những loại tệp mà Godot có thể import).
 
-Godot will automatically import these files internally and keep the imported
-resources hidden in a ``res://.godot/imported/`` folder.
+Godot sẽ tự động import các tệp này ở bên trong và giữ các resource đã import ở chế độ ẩn trong một thư mục ``res://.godot/imported/``.
 
-This means that when trying to access imported assets through code, you
-need to use the :ref:`Resource Loader<class_ResourceLoader>` as it will
-automatically take into account where the internal files are saved. If you
-try and access an imported asset using the :ref:`FileAccess <class_FileAccess>` class,
-it will work in the editor, but **it will break in the exported project**.
+Điều này có nghĩa là khi cố gắng truy cập các asset đã import thông qua code, bạn cần sử dụng :ref:`Resource Loader<class_ResourceLoader>`, vì nó sẽ tự động tính đến vị trí lưu các tệp bên trong. Nếu bạn cố gắng truy cập một asset đã import bằng class :ref:`FileAccess <class_FileAccess>`, thao tác này sẽ hoạt động trong editor, nhưng **sẽ bị lỗi trong project đã export**.
 
-However, the :ref:`Resource Loader<class_ResourceLoader>` cannot access
-non-imported files. Only the :ref:`FileAccess <class_FileAccess>` class can.
+Tuy nhiên, :ref:`Resource Loader<class_ResourceLoader>` không thể truy cập các tệp chưa được import. Chỉ class :ref:`FileAccess <class_FileAccess>` mới có thể làm vậy.
 
-Changing import parameters
---------------------------
+Thay đổi tham số import
+-----------------------
 
 .. note::
 
-    Import parameters are only present in *non-native* Godot resource types.
-    This means Godot's own scene and resource file formats (``.tscn``, ``.scn``,
-    ``.tres``, ``.res``) don't have import options you can select in the Import
-    dock.
+    Các tham số import chỉ xuất hiện trong những loại resource Godot *không phải native*. Điều này có nghĩa là các định dạng tệp scene và resource riêng của Godot (``.tscn``, ``.scn``, ``.tres``, ``.res``) không có các tùy chọn import để bạn chọn trong dock Import.
 
-To change the import parameters of an asset in Godot, select the relevant
-resource in the FileSystem dock:
+Để thay đổi tham số import của một asset trong Godot, hãy chọn resource tương ứng trong dock FileSystem:
 
 .. image:: img/import_process_example.webp
 
-After adjusting the parameters, click **Reimport**. Be careful: if you select
-another file in the FileSystem dock before clicking **Reimport**, changes will
-be discarded. After clicking **Reimport**, the chosen parameters will only be
-used for this asset and on future reimports.
+Sau khi điều chỉnh các tham số, hãy nhấp vào **Reimport**. Hãy cẩn thận: nếu bạn chọn một tệp khác trong dock FileSystem trước khi nhấp vào **Reimport**, các thay đổi sẽ bị hủy. Sau khi nhấp vào **Reimport**, các tham số đã chọn sẽ chỉ được sử dụng cho asset này và trong những lần reimport sau.
 
-Changing the import parameters of several assets at the same time is also
-possible. Select all of them together in the FileSystem dock and the
-exposed parameters will apply to all of them when reimporting.
+Bạn cũng có thể thay đổi tham số import của nhiều asset cùng lúc. Hãy chọn tất cả chúng trong dock FileSystem, các tham số được hiển thị sẽ được áp dụng cho tất cả khi reimport.
 
-Reimporting multiple assets
----------------------------
+Reimport nhiều asset
+--------------------
 
-While working on a project you may find that several assets need to have
-the same parameters changed, such as enabling mipmaps, but you only want
-those specific parameters changed. To do this, select every asset you want
-to reimport in the file system. In the import tab there will now be a
-checkbox to the left of every import parameter.
+Trong quá trình làm việc với một dự án, bạn có thể thấy cần thay đổi cùng một tham số cho nhiều asset, chẳng hạn như bật mipmap, nhưng chỉ muốn thay đổi những tham số cụ thể đó. Để thực hiện việc này, hãy chọn mọi asset mà bạn muốn reimport trong hệ thống tệp. Trong tab Import lúc này sẽ có một hộp kiểm ở bên trái mỗi tham số import.
 
 .. image:: img/reimport_multiple.webp
 
-Select the checkbox of the parameters you want to change on your imported
-assets, then change the parameters normally. Finally, click the reimport
-button and every selected asset will be reimported with only those
-parameters changed.
+Hãy chọn hộp kiểm của các tham số mà bạn muốn thay đổi trên các asset đã import, sau đó thay đổi các tham số như bình thường. Cuối cùng, hãy nhấp vào nút reimport và mọi asset đã chọn sẽ được reimport với chỉ những tham số đó được thay đổi.
 
-Automatic reimport
-------------------
+Reimport tự động
+----------------
 
-When the MD5 checksum of the source asset changes, Godot will perform an
-automatic reimport of it, applying the preset configured for that specific
-asset.
+Khi checksum MD5 của asset nguồn thay đổi, Godot sẽ tự động reimport asset đó và áp dụng preset đã cấu hình cho asset cụ thể đó.
 
-Ignoring specific folders
+Bỏ qua các thư mục cụ thể
 -------------------------
 
-Sometimes, you have files that you don't want to be imported by Godot, such as
-images used in a game's press kit or promotional materials. You can place those
-files in a folder that you instruct Godot to ignore. Ignoring a folder ensures
-it is not imported by Godot; this also hides the folder from the FileSystem
-dock. Ignoring a folder also results in its contents not being exported with the
-project, therefore reducing the exported PCK size.
+Đôi khi, bạn có những tệp không muốn Godot import, chẳng hạn như hình ảnh được dùng trong press kit hoặc tài liệu quảng bá của trò chơi. Bạn có thể đặt các tệp đó vào một thư mục mà bạn chỉ định để Godot bỏ qua. Việc bỏ qua một thư mục đảm bảo thư mục đó không được Godot import; đồng thời, thư mục cũng bị ẩn khỏi dock FileSystem. Việc bỏ qua một thư mục cũng khiến nội dung của thư mục đó không được export cùng project, nhờ đó giảm kích thước PCK đã export.
 
-See :ref:`doc_project_organization_ignoring_specific_folders`
-in the project organization tutorial for details.
+Xem :ref:`doc_project_organization_ignoring_specific_folders` trong tutorial tổ chức project để biết thêm chi tiết.
 
-Files generated
----------------
+Các tệp được tạo
+----------------
 
-Importing will add an extra ``<asset>.import`` file next to the source file,
-containing the import configuration.
+Thao tác import sẽ thêm một tệp ``<asset>.import`` bổ sung bên cạnh tệp nguồn, chứa cấu hình import.
 
-**Make sure to commit these files to your version control system**, as these
-files contain important metadata.
+**Hãy đảm bảo commit các tệp này vào hệ thống version control của bạn**, vì các tệp này chứa metadata quan trọng.
 
 ::
 
@@ -102,8 +66,7 @@ files contain important metadata.
     example.png.import
     project.godot
 
-Additionally, extra assets will be present in the hidden
-``res://.godot/imported/`` folder:
+Ngoài ra, các asset bổ sung sẽ nằm trong thư mục ``res://.godot/imported/`` bị ẩn:
 
 ::
 
@@ -111,54 +74,37 @@ Additionally, extra assets will be present in the hidden
     example.png-218a8f2b3041327d8a5756f3a245f83b.ctex
     example.png-218a8f2b3041327d8a5756f3a245f83b.md5
 
-If any of the files present in this folder is erased (or the whole folder), the
-asset or assets will be reimported automatically. As such, committing the
-``.godot/`` folder to the version control system is not recommended. While
-committing this folder can shorten reimporting time when checking out on another
-computer, it requires considerably more space and bandwidth.
+Nếu bất kỳ tệp nào trong thư mục này bị xóa (hoặc toàn bộ thư mục bị xóa), asset hoặc các asset đó sẽ tự động được reimport. Vì vậy, không nên commit thư mục ``.godot/`` vào hệ thống version control. Mặc dù việc commit thư mục này có thể rút ngắn thời gian reimport khi checkout trên một máy tính khác, nó lại yêu cầu nhiều không gian lưu trữ và băng thông hơn đáng kể.
 
-The default version control metadata that can be generated on project creation
-will automatically ignore the ``.godot/`` folder.
+Metadata version control mặc định có thể được tạo khi tạo project sẽ tự động bỏ qua thư mục ``.godot/``.
 
-Changing import resource type
+Thay đổi loại resource import
 -----------------------------
 
-Some source assets can be imported as different types of resources. For this,
-select the relevant type of resource desired then click **Reimport**:
+Một số asset nguồn có thể được import thành các loại resource khác nhau. Để thực hiện việc này, hãy chọn loại resource mong muốn tương ứng, sau đó nhấp vào **Reimport**:
 
 .. image:: img/import_process_changing_import_type.webp
 
-Select ``Keep File (exported as is)`` as resource type to skip file import, files
-with this resource type will be preserved as is during project export.
+Chọn ``Keep File (exported as is)`` làm loại resource để bỏ qua việc import tệp; các tệp thuộc loại resource này sẽ được giữ nguyên trong quá trình export project.
 
-Select ``Skip File (not exported)`` as resource type to skip file import and ignore
-file during project export.
+Chọn ``Skip File (not exported)`` làm loại resource để bỏ qua việc import tệp và bỏ qua tệp đó trong quá trình export project.
 
-Changing default import parameters
-----------------------------------
+Thay đổi tham số import mặc định
+--------------------------------
 
-Different types of projects might require different defaults. Changing the import
-options to a predefined set of options can be achieved by using the
-**Preset...** Menu. Besides some resource types offering presets, the default
-settings can be saved and cleared too:
+Các loại project khác nhau có thể yêu cầu các giá trị mặc định khác nhau. Bạn có thể thay đổi các tùy chọn import thành một tập hợp tùy chọn được định trước bằng cách sử dụng menu **Preset...**. Ngoài việc một số loại resource cung cấp preset, bạn cũng có thể lưu và xóa các thiết lập mặc định:
 
 .. image:: img/import_process_change_preset.webp
 
-The default import parameters for a given resource type can be changed
-project-wide using the **Import Defaults** tab of the Project Settings dialog:
+Có thể thay đổi các tham số import mặc định cho một loại resource nhất định trên toàn project bằng tab **Import Defaults** trong hộp thoại Project Settings:
 
 .. image:: img/import_process_import_defaults.webp
 
-Further reading
----------------
+Đọc thêm
+--------
 
-This workflow takes a little time to get used to, but it enforces a more correct
-way to deal with resources.
+Quy trình này cần một chút thời gian để làm quen, nhưng nó thúc đẩy một cách xử lý resource đúng đắn hơn.
 
-There are many types of assets available for import. Continue reading to
-understand how to work with all of them:
+Có nhiều loại asset có thể được import. Hãy tiếp tục đọc để hiểu cách làm việc với tất cả chúng:
 
-- :ref:`doc_importing_images`
-- :ref:`doc_importing_audio_samples`
-- :ref:`doc_importing_3d_scenes`
-- :ref:`doc_importing_translations`
+- :ref:`doc_importing_images` - :ref:`doc_importing_audio_samples` - :ref:`doc_importing_3d_scenes` - :ref:`doc_importing_translations`
