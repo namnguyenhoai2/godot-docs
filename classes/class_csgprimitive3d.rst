@@ -27,7 +27,7 @@ Lớp cha cho nhiều primitive CSG khác nhau. Lớp này chứa mã và chức
 Hướng dẫn
 ---------
 
-- :doc:`Prototyping levels with CSG <../tutorials/3d/csg_tools>`
+- :doc:`Tạo nguyên mẫu level bằng CSG <../tutorials/3d/csg_tools>`
 
 .. rst-class:: classref-reftable-group
 

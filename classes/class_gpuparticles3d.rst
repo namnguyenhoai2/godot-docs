@@ -28,7 +28,7 @@ Use :ref:`process_material<class_GPUParticles3D_property_process_material>` to a
 Tutorials
 ---------
 
-- :doc:`Particle systems (3D) <../tutorials/3d/particles/index>`
+ :doc:`Hệ thống particle (3D) <../tutorials/3d/particles/index>`
 
 - :doc:`Controlling thousands of fish with Particles <../tutorials/performance/vertex_animation/controlling_thousands_of_fish>`
 

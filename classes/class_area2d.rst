@@ -3,7 +3,7 @@
 .. meta::
 	:keywords: trigger
 
-.. KHÔNG ĐƯỢC CHỈNH SỬA TỆP NÀY!!! .. Được tự động tạo từ mã nguồn của Godot engine. .. Generator: https://github.com/godotengine/godot/tree/master/doc/tools/make_rst.py. .. XML source: https://github.com/godotengine/godot/tree/master/doc/classes/Area2D.xml.
+.. KHÔNG ĐƯỢC CHỈNH SỬA TỆP NÀY!!! .. Được tự động tạo từ mã nguồn của engine Godot. .. Generator: https://github.com/godotengine/godot/tree/master/doc/tools/make_rst.py. .. XML source: https://github.com/godotengine/godot/tree/master/doc/classes/Area2D.xml.
 
 .. _class_Area2D:
 
@@ -12,14 +12,14 @@ Area2D
 
 **Kế thừa:** :ref:`CollisionObject2D<class_CollisionObject2D>` **<** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A region of 2D space that detects other :ref:`CollisionObject2D<class_CollisionObject2D>`\ s entering or exiting it.
+Một vùng không gian 2D phát hiện các :ref:`CollisionObject2D<class_CollisionObject2D>`\ s khác đi vào hoặc rời khỏi vùng đó.
 
 .. rst-class:: classref-introduction-group
 
 Mô tả
 -----
 
-**Area2D** is a region of 2D space defined by one or multiple :ref:`CollisionShape2D<class_CollisionShape2D>` or :ref:`CollisionPolygon2D<class_CollisionPolygon2D>` child nodes. It detects when other :ref:`CollisionObject2D<class_CollisionObject2D>`\ s enter or exit it, and it also keeps track of which collision objects haven't exited it yet (i.e. which one are overlapping it).
+**Area2D** là một vùng không gian 2D được xác định bởi một hoặc nhiều node con :ref:`CollisionShape2D<class_CollisionShape2D>` hoặc :ref:`CollisionPolygon2D<class_CollisionPolygon2D>`. Nó phát hiện khi các :ref:`CollisionObject2D<class_CollisionObject2D>`\ s khác đi vào hoặc rời khỏi vùng đó, đồng thời theo dõi các đối tượng va chạm chưa rời khỏi vùng (tức là các đối tượng đang chồng lấp với vùng).
 
 Node này cũng có thể thay đổi hoặc ghi đè cục bộ các tham số vật lý (gravity, damping) và định tuyến âm thanh đến các audio bus tùy chỉnh.
 
@@ -30,7 +30,7 @@ Node này cũng có thể thay đổi hoặc ghi đè cục bộ các tham số 
 Hướng dẫn
 ---------
 
-- :doc:`Using Area2D <../tutorials/physics/using_area_2d>`
+- :doc:`Sử dụng Area2D <../tutorials/physics/using_area_2d>`
 
 - `2D Dodge The Creeps Demo <https://godotengine.org/asset-library/asset/2712>`__
 
@@ -106,8 +106,8 @@ Phương thức
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Signal
+------
 
 .. _class_Area2D_signal_area_entered:
 
@@ -141,9 +141,9 @@ Signals
 
 Được phát khi một :ref:`Shape2D<class_Shape2D>` của ``area`` nhận được đi vào một shape của area này. Yêu cầu :ref:`monitoring<class_Area2D_property_monitoring>` được đặt thành ``true``.
 
-\ ``local_shape_index`` và ``area_shape_index`` lần lượt chứa các chỉ mục của những shape tương tác từ area này và area còn lại. ``area_rid`` chứa :ref:`RID<class_RID>` của area còn lại. Có thể sử dụng các giá trị này với :ref:`PhysicsServer2D<class_PhysicsServer2D>`.
+\ ``local_shape_index`` và ``area_shape_index`` lần lượt chứa chỉ số của các shape tương tác từ area này và area còn lại. ``area_rid`` chứa :ref:`RID<class_RID>` của area còn lại. Có thể sử dụng các giá trị này với :ref:`PhysicsServer2D<class_PhysicsServer2D>`.
 
-\ **Ví dụ:** Lấy node :ref:`CollisionShape2D<class_CollisionShape2D>` từ chỉ mục shape:
+\ **Ví dụ:** Lấy node :ref:`CollisionShape2D<class_CollisionShape2D>` từ chỉ số shape:
 
 
 .. tabs::
@@ -182,7 +182,7 @@ Xem thêm :ref:`area_shape_entered<class_Area2D_signal_area_shape_entered>`.
 
 **body_entered**\ (\ body\: :ref:`Node2D<class_Node2D>`\ ) :ref:`🔗<class_Area2D_signal_body_entered>`
 
-Emitted when the received ``body`` enters this area. ``body`` can be a :ref:`PhysicsBody2D<class_PhysicsBody2D>` or a :ref:`TileMap<class_TileMap>`. :ref:`TileMap<class_TileMap>`\ s are detected if their :ref:`TileSet<class_TileSet>` has collision shapes configured. Requires :ref:`monitoring<class_Area2D_property_monitoring>` to be set to ``true``.
+Được phát khi ``body`` nhận được đi vào area này. ``body`` có thể là một :ref:`PhysicsBody2D<class_PhysicsBody2D>` hoặc :ref:`TileMap<class_TileMap>`. Các :ref:`TileMap<class_TileMap>`\ s được phát hiện nếu :ref:`TileSet<class_TileSet>` của chúng đã được cấu hình collision shape. Yêu cầu :ref:`monitoring<class_Area2D_property_monitoring>` được đặt thành ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -194,7 +194,7 @@ Emitted when the received ``body`` enters this area. ``body`` can be a :ref:`Phy
 
 **body_exited**\ (\ body\: :ref:`Node2D<class_Node2D>`\ ) :ref:`🔗<class_Area2D_signal_body_exited>`
 
-Emitted when the received ``body`` exits this area. ``body`` can be a :ref:`PhysicsBody2D<class_PhysicsBody2D>` or a :ref:`TileMap<class_TileMap>`. :ref:`TileMap<class_TileMap>`\ s are detected if their :ref:`TileSet<class_TileSet>` has collision shapes configured. Requires :ref:`monitoring<class_Area2D_property_monitoring>` to be set to ``true``.
+Được phát khi ``body`` nhận được rời khỏi area này. ``body`` có thể là một :ref:`PhysicsBody2D<class_PhysicsBody2D>` hoặc :ref:`TileMap<class_TileMap>`. Các :ref:`TileMap<class_TileMap>`\ s được phát hiện nếu :ref:`TileSet<class_TileSet>` của chúng đã được cấu hình collision shape. Yêu cầu :ref:`monitoring<class_Area2D_property_monitoring>` được đặt thành ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -206,11 +206,11 @@ Emitted when the received ``body`` exits this area. ``body`` can be a :ref:`Phys
 
 **body_shape_entered**\ (\ body_rid\: :ref:`RID<class_RID>`, body\: :ref:`Node2D<class_Node2D>`, body_shape_index\: :ref:`int<class_int>`, local_shape_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Area2D_signal_body_shape_entered>`
 
-Emitted when a :ref:`Shape2D<class_Shape2D>` of the received ``body`` enters a shape of this area. ``body`` can be a :ref:`PhysicsBody2D<class_PhysicsBody2D>` or a :ref:`TileMap<class_TileMap>`. :ref:`TileMap<class_TileMap>`\ s are detected if their :ref:`TileSet<class_TileSet>` has collision shapes configured. Requires :ref:`monitoring<class_Area2D_property_monitoring>` to be set to ``true``.
+Được phát khi một :ref:`Shape2D<class_Shape2D>` của ``body`` nhận được đi vào một shape của area này. ``body`` có thể là một :ref:`PhysicsBody2D<class_PhysicsBody2D>` hoặc :ref:`TileMap<class_TileMap>`. Các :ref:`TileMap<class_TileMap>`\ s được phát hiện nếu :ref:`TileSet<class_TileSet>` của chúng đã được cấu hình collision shape. Yêu cầu :ref:`monitoring<class_Area2D_property_monitoring>` được đặt thành ``true``.
 
-\ ``local_shape_index`` và ``body_shape_index`` lần lượt chứa các chỉ mục của những shape tương tác từ area này và body tương tác. ``body_rid`` chứa :ref:`RID<class_RID>` của body. Có thể sử dụng các giá trị này với :ref:`PhysicsServer2D<class_PhysicsServer2D>`.
+\ ``local_shape_index`` và ``body_shape_index`` lần lượt chứa chỉ số của các shape tương tác từ area này và body tương tác. ``body_rid`` chứa :ref:`RID<class_RID>` của body. Có thể sử dụng các giá trị này với :ref:`PhysicsServer2D<class_PhysicsServer2D>`.
 
-\ **Ví dụ:** Lấy node :ref:`CollisionShape2D<class_CollisionShape2D>` từ chỉ mục shape:
+\ **Ví dụ:** Lấy node :ref:`CollisionShape2D<class_CollisionShape2D>` từ chỉ số shape:
 
 
 .. tabs::
@@ -235,7 +235,7 @@ Emitted when a :ref:`Shape2D<class_Shape2D>` of the received ``body`` enters a s
 
 **body_shape_exited**\ (\ body_rid\: :ref:`RID<class_RID>`, body\: :ref:`Node2D<class_Node2D>`, body_shape_index\: :ref:`int<class_int>`, local_shape_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Area2D_signal_body_shape_exited>`
 
-Emitted when a :ref:`Shape2D<class_Shape2D>` of the received ``body`` exits a shape of this area. ``body`` can be a :ref:`PhysicsBody2D<class_PhysicsBody2D>` or a :ref:`TileMap<class_TileMap>`. :ref:`TileMap<class_TileMap>`\ s are detected if their :ref:`TileSet<class_TileSet>` has collision shapes configured. Requires :ref:`monitoring<class_Area2D_property_monitoring>` to be set to ``true``.
+Được phát khi một :ref:`Shape2D<class_Shape2D>` của ``body`` nhận được rời khỏi một shape của area này. ``body`` có thể là một :ref:`PhysicsBody2D<class_PhysicsBody2D>` hoặc :ref:`TileMap<class_TileMap>`. Các :ref:`TileMap<class_TileMap>`\ s được phát hiện nếu :ref:`TileSet<class_TileSet>` của chúng đã được cấu hình collision shape. Yêu cầu :ref:`monitoring<class_Area2D_property_monitoring>` được đặt thành ``true``.
 
 Xem thêm :ref:`body_shape_entered<class_Area2D_signal_body_shape_entered>`.
 
@@ -268,7 +268,7 @@ Area này không ảnh hưởng đến gravity/damping.
 
 :ref:`SpaceOverride<enum_Area2D_SpaceOverride>` **SPACE_OVERRIDE_COMBINE** = ``1``
 
-Area này cộng các giá trị gravity/damping của nó vào kết quả đã được tính cho đến thời điểm hiện tại (theo thứ tự :ref:`priority<class_Area2D_property_priority>`).
+Area này cộng các giá trị gravity/damping của nó vào kết quả đã tính được cho đến thời điểm hiện tại (theo thứ tự :ref:`priority<class_Area2D_property_priority>`).
 
 .. _class_Area2D_constant_SPACE_OVERRIDE_COMBINE_REPLACE:
 
@@ -276,7 +276,7 @@ Area này cộng các giá trị gravity/damping của nó vào kết quả đã
 
 :ref:`SpaceOverride<enum_Area2D_SpaceOverride>` **SPACE_OVERRIDE_COMBINE_REPLACE** = ``2``
 
-Area này cộng các giá trị gravity/damping của nó vào kết quả đã được tính cho đến thời điểm hiện tại (theo thứ tự :ref:`priority<class_Area2D_property_priority>`), bỏ qua mọi area có độ ưu tiên thấp hơn.
+Area này cộng các giá trị gravity/damping của nó vào kết quả đã tính được cho đến thời điểm hiện tại (theo thứ tự :ref:`priority<class_Area2D_property_priority>`), bỏ qua mọi area có độ ưu tiên thấp hơn.
 
 .. _class_Area2D_constant_SPACE_OVERRIDE_REPLACE:
 
@@ -292,7 +292,7 @@ Area này thay thế mọi gravity/damping, kể cả các giá trị mặc đ�
 
 :ref:`SpaceOverride<enum_Area2D_SpaceOverride>` **SPACE_OVERRIDE_REPLACE_COMBINE** = ``4``
 
-Area này thay thế mọi gravity/damping đã được tính cho đến thời điểm hiện tại (theo thứ tự :ref:`priority<class_Area2D_property_priority>`), nhưng vẫn tiếp tục tính các area còn lại.
+Area này thay thế mọi gravity/damping đã tính được cho đến thời điểm hiện tại (theo thứ tự :ref:`priority<class_Area2D_property_priority>`), nhưng vẫn tiếp tục tính các area còn lại.
 
 .. rst-class:: classref-section-separator
 
@@ -313,7 +313,7 @@ Mô tả thuộc tính
 
 - |void| **set_angular_damp**\ (\ value\: :ref:`float<class_float>`\ ) - :ref:`float<class_float>` **get_angular_damp**\ (\ )
 
-Tốc độ các đối tượng ngừng quay trong area này. Đại diện cho vận tốc góc bị mất đi mỗi giây.
+Tốc độ các đối tượng ngừng quay trong area này. Đại diện cho vận tốc góc bị mất mỗi giây.
 
 Xem :ref:`ProjectSettings.physics/2d/default_angular_damp<class_ProjectSettings_property_physics/2d/default_angular_damp>` để biết thêm chi tiết về damping.
 
@@ -331,7 +331,7 @@ Xem :ref:`ProjectSettings.physics/2d/default_angular_damp<class_ProjectSettings_
 
 - |void| **set_angular_damp_space_override_mode**\ (\ value\: :ref:`SpaceOverride<enum_Area2D_SpaceOverride>`\ ) - :ref:`SpaceOverride<enum_Area2D_SpaceOverride>` **get_angular_damp_space_override_mode**\ (\ )
 
-Chế độ ghi đè dùng cho các phép tính damping góc trong area này.
+Chế độ ghi đè cho các phép tính angular damping trong area này.
 
 .. rst-class:: classref-item-separator
 
@@ -443,9 +443,9 @@ Nếu gravity là một điểm (xem :ref:`gravity_point<class_Area2D_property_g
 
 - |void| **set_gravity_point_unit_distance**\ (\ value\: :ref:`float<class_float>`\ ) - :ref:`float<class_float>` **get_gravity_point_unit_distance**\ (\ )
 
-Khoảng cách tại đó cường độ gravity bằng :ref:`gravity<class_Area2D_property_gravity>`. Ví dụ: trên một hành tinh có bán kính 100 pixel và gravity bề mặt là 4.0 px/s², đặt :ref:`gravity<class_Area2D_property_gravity>` thành 4.0 và khoảng cách đơn vị thành 100.0. Gravity sẽ suy giảm theo định luật nghịch đảo bình phương, vì vậy trong ví dụ này, tại khoảng cách 200 pixel từ tâm, gravity sẽ là 1.0 px/s² (gấp đôi khoảng cách, 1/4 gravity), tại 50 pixel, gravity sẽ là 16.0 px/s² (một nửa khoảng cách, gấp 4 gravity), v.v.
+Khoảng cách tại đó cường độ gravity bằng :ref:`gravity<class_Area2D_property_gravity>`. Ví dụ, trên một hành tinh có bán kính 100 pixel và gravity bề mặt là 4.0 px/s², hãy đặt :ref:`gravity<class_Area2D_property_gravity>` thành 4.0 và khoảng cách đơn vị thành 100.0. Gravity sẽ suy giảm theo định luật nghịch đảo bình phương, vì vậy trong ví dụ này, ở khoảng cách 200 pixel từ tâm, gravity sẽ là 1.0 px/s² (khoảng cách gấp đôi, gravity bằng 1/4), ở 50 pixel, gravity sẽ là 16.0 px/s² (khoảng cách bằng một nửa, gravity gấp 4 lần), v.v.
 
-Điều trên chỉ đúng khi khoảng cách đơn vị là một số dương. Khi đặt giá trị này thành 0.0, gravity sẽ không đổi bất kể khoảng cách.
+Điều trên chỉ đúng khi khoảng cách đơn vị là một số dương. Khi được đặt thành 0.0, gravity sẽ không đổi bất kể khoảng cách.
 
 .. rst-class:: classref-item-separator
 
@@ -461,7 +461,7 @@ Khoảng cách tại đó cường độ gravity bằng :ref:`gravity<class_Area
 
 - |void| **set_gravity_space_override_mode**\ (\ value\: :ref:`SpaceOverride<enum_Area2D_SpaceOverride>`\ ) - :ref:`SpaceOverride<enum_Area2D_SpaceOverride>` **get_gravity_space_override_mode**\ (\ )
 
-Chế độ ghi đè dùng cho các phép tính gravity trong area này.
+Chế độ ghi đè cho các phép tính gravity trong area này.
 
 .. rst-class:: classref-item-separator
 
@@ -477,7 +477,7 @@ Chế độ ghi đè dùng cho các phép tính gravity trong area này.
 
 - |void| **set_linear_damp**\ (\ value\: :ref:`float<class_float>`\ ) - :ref:`float<class_float>` **get_linear_damp**\ (\ )
 
-Tốc độ các đối tượng ngừng chuyển động trong area này. Đại diện cho vận tốc tuyến tính bị mất đi mỗi giây.
+Tốc độ các đối tượng ngừng chuyển động trong area này. Đại diện cho vận tốc tuyến tính bị mất mỗi giây.
 
 Xem :ref:`ProjectSettings.physics/2d/default_linear_damp<class_ProjectSettings_property_physics/2d/default_linear_damp>` để biết thêm chi tiết về damping.
 
@@ -495,7 +495,7 @@ Xem :ref:`ProjectSettings.physics/2d/default_linear_damp<class_ProjectSettings_p
 
 - |void| **set_linear_damp_space_override_mode**\ (\ value\: :ref:`SpaceOverride<enum_Area2D_SpaceOverride>`\ ) - :ref:`SpaceOverride<enum_Area2D_SpaceOverride>` **get_linear_damp_space_override_mode**\ (\ )
 
-Chế độ ghi đè cho các phép tính giảm chấn tuyến tính trong vùng này.
+Chế độ ghi đè để tính toán lực cản tuyến tính trong vùng này.
 
 .. rst-class:: classref-item-separator
 
@@ -511,7 +511,7 @@ Chế độ ghi đè cho các phép tính giảm chấn tuyến tính trong vùn
 
 - |void| **set_monitorable**\ (\ value\: :ref:`bool<class_bool>`\ ) - :ref:`bool<class_bool>` **is_monitorable**\ (\ )
 
-Nếu ``true``, các vùng đang monitoring khác có thể phát hiện vùng này.
+Nếu ``true``, các vùng đang giám sát khác có thể phát hiện vùng này.
 
 .. rst-class:: classref-item-separator
 
@@ -527,7 +527,7 @@ Nếu ``true``, các vùng đang monitoring khác có thể phát hiện vùng n
 
 - |void| **set_monitoring**\ (\ value\: :ref:`bool<class_bool>`\ ) - :ref:`bool<class_bool>` **is_monitoring**\ (\ )
 
-Nếu ``true``, vùng này phát hiện các body hoặc vùng đi vào và rời khỏi nó.
+Nếu ``true``, vùng này sẽ phát hiện các body hoặc area đi vào và rời khỏi vùng.
 
 .. rst-class:: classref-item-separator
 
@@ -543,7 +543,7 @@ Nếu ``true``, vùng này phát hiện các body hoặc vùng đi vào và rờ
 
 - |void| **set_priority**\ (\ value\: :ref:`int<class_int>`\ ) - :ref:`int<class_int>` **get_priority**\ (\ )
 
-Độ ưu tiên của vùng. Các vùng có độ ưu tiên cao hơn được xử lý trước. Vật lý của :ref:`World2D<class_World2D>` luôn được xử lý sau cùng, sau tất cả các vùng.
+Độ ưu tiên của area. Các area có độ ưu tiên cao hơn sẽ được xử lý trước. Physics của :ref:`World2D<class_World2D>` luôn được xử lý sau cùng, sau tất cả các area.
 
 .. rst-class:: classref-section-separator
 
@@ -551,8 +551,8 @@ Nếu ``true``, vùng này phát hiện các body hoặc vùng đi vào và rờ
 
 .. rst-class:: classref-descriptions-group
 
-Mô tả các phương thức
----------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Area2D_method_get_overlapping_areas:
 
@@ -560,9 +560,9 @@ Mô tả các phương thức
 
 :ref:`Array<class_Array>`\[:ref:`Area2D<class_Area2D>`\] **get_overlapping_areas**\ (\ ) |const| :ref:`🔗<class_Area2D_method_get_overlapping_areas>`
 
-Trả về danh sách các **Area2D**\ s giao nhau. :ref:`CollisionObject2D.collision_layer<class_CollisionObject2D_property_collision_layer>` của vùng chồng lấn phải là một phần của :ref:`CollisionObject2D.collision_mask<class_CollisionObject2D_property_collision_mask>` của vùng này thì vùng đó mới được phát hiện.
+Trả về danh sách các **Area2D**\ s giao nhau. :ref:`CollisionObject2D.collision_layer<class_CollisionObject2D_property_collision_layer>` của area chồng lấp phải là một phần của :ref:`CollisionObject2D.collision_mask<class_CollisionObject2D_property_collision_mask>` của area này thì mới được phát hiện.
 
-Vì lý do hiệu năng (tất cả va chạm được xử lý cùng lúc), danh sách này được thay đổi một lần trong bước vật lý, không phải ngay sau khi các đối tượng được di chuyển. Hãy cân nhắc sử dụng signals thay thế.
+Vì lý do hiệu năng (tất cả collision đều được xử lý cùng lúc), danh sách này được cập nhật một lần trong bước physics, không phải ngay sau khi các object được di chuyển. Hãy cân nhắc sử dụng signal thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -574,9 +574,9 @@ Vì lý do hiệu năng (tất cả va chạm được xử lý cùng lúc), dan
 
 :ref:`Array<class_Array>`\[:ref:`Node2D<class_Node2D>`\] **get_overlapping_bodies**\ (\ ) |const| :ref:`🔗<class_Area2D_method_get_overlapping_bodies>`
 
-Returns a list of intersecting :ref:`PhysicsBody2D<class_PhysicsBody2D>`\ s and :ref:`TileMap<class_TileMap>`\ s. The overlapping body's :ref:`CollisionObject2D.collision_layer<class_CollisionObject2D_property_collision_layer>` must be part of this area's :ref:`CollisionObject2D.collision_mask<class_CollisionObject2D_property_collision_mask>` in order to be detected.
+Trả về danh sách các :ref:`PhysicsBody2D<class_PhysicsBody2D>`\ s và :ref:`TileMap<class_TileMap>`\ s giao nhau. :ref:`CollisionObject2D.collision_layer<class_CollisionObject2D_property_collision_layer>` của body chồng lấp phải là một phần của :ref:`CollisionObject2D.collision_mask<class_CollisionObject2D_property_collision_mask>` của area này thì mới được phát hiện.
 
-Vì lý do hiệu năng (tất cả va chạm được xử lý cùng lúc), danh sách này được thay đổi một lần trong bước vật lý, không phải ngay sau khi các đối tượng được di chuyển. Hãy cân nhắc sử dụng signals thay thế.
+Vì lý do hiệu năng (tất cả collision đều được xử lý cùng lúc), danh sách này được cập nhật một lần trong bước physics, không phải ngay sau khi các object được di chuyển. Hãy cân nhắc sử dụng signal thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -588,9 +588,9 @@ Vì lý do hiệu năng (tất cả va chạm được xử lý cùng lúc), dan
 
 :ref:`bool<class_bool>` **has_overlapping_areas**\ (\ ) |const| :ref:`🔗<class_Area2D_method_has_overlapping_areas>`
 
-Trả về ``true`` nếu giao nhau với bất kỳ **Area2D**\ s nào, nếu không thì trả về ``false``. :ref:`CollisionObject2D.collision_layer<class_CollisionObject2D_property_collision_layer>` của vùng chồng lấn phải là một phần của :ref:`CollisionObject2D.collision_mask<class_CollisionObject2D_property_collision_mask>` của vùng này thì vùng đó mới được phát hiện.
+Trả về ``true`` nếu giao nhau với bất kỳ **Area2D**\ s nào, nếu không thì trả về ``false``. :ref:`CollisionObject2D.collision_layer<class_CollisionObject2D_property_collision_layer>` của area chồng lấp phải là một phần của :ref:`CollisionObject2D.collision_mask<class_CollisionObject2D_property_collision_mask>` của area này thì mới được phát hiện.
 
-Vì lý do hiệu năng (tất cả va chạm được xử lý cùng lúc), danh sách các vùng chồng lấn được thay đổi một lần trong bước vật lý, không phải ngay sau khi các đối tượng được di chuyển. Hãy cân nhắc sử dụng signals thay thế.
+Vì lý do hiệu năng (tất cả collision đều được xử lý cùng lúc), danh sách các area chồng lấp được cập nhật một lần trong bước physics, không phải ngay sau khi các object được di chuyển. Hãy cân nhắc sử dụng signal thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -602,9 +602,9 @@ Vì lý do hiệu năng (tất cả va chạm được xử lý cùng lúc), dan
 
 :ref:`bool<class_bool>` **has_overlapping_bodies**\ (\ ) |const| :ref:`🔗<class_Area2D_method_has_overlapping_bodies>`
 
-Returns ``true`` if intersecting any :ref:`PhysicsBody2D<class_PhysicsBody2D>`\ s or :ref:`TileMap<class_TileMap>`\ s, otherwise returns ``false``. The overlapping body's :ref:`CollisionObject2D.collision_layer<class_CollisionObject2D_property_collision_layer>` must be part of this area's :ref:`CollisionObject2D.collision_mask<class_CollisionObject2D_property_collision_mask>` in order to be detected.
+Trả về ``true`` nếu giao nhau với bất kỳ :ref:`PhysicsBody2D<class_PhysicsBody2D>`\ s hoặc :ref:`TileMap<class_TileMap>`\ s nào, nếu không thì trả về ``false``. :ref:`CollisionObject2D.collision_layer<class_CollisionObject2D_property_collision_layer>` của body chồng lấp phải là một phần của :ref:`CollisionObject2D.collision_mask<class_CollisionObject2D_property_collision_mask>` của area này thì mới được phát hiện.
 
-Vì lý do hiệu năng (tất cả va chạm được xử lý cùng lúc), danh sách các body chồng lấn được thay đổi một lần trong bước vật lý, không phải ngay sau khi các đối tượng được di chuyển. Hãy cân nhắc sử dụng signals thay thế.
+Vì lý do hiệu năng (tất cả collision đều được xử lý cùng lúc), danh sách các body chồng lấp được cập nhật một lần trong bước physics, không phải ngay sau khi các object được di chuyển. Hãy cân nhắc sử dụng signal thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -616,9 +616,9 @@ Vì lý do hiệu năng (tất cả va chạm được xử lý cùng lúc), dan
 
 :ref:`bool<class_bool>` **overlaps_area**\ (\ area\: :ref:`Node<class_Node>`\ ) |const| :ref:`🔗<class_Area2D_method_overlaps_area>`
 
-Trả về ``true`` nếu **Area2D** được chỉ định giao nhau hoặc chồng lấn với **Area2D** này, nếu không thì trả về ``false``.
+Trả về ``true`` nếu **Area2D** đã cho giao nhau hoặc chồng lấp với **Area2D** này, nếu không thì trả về ``false``.
 
-\ **Lưu ý:** Kết quả của phép kiểm tra này không cập nhật ngay sau khi di chuyển các đối tượng. Để đảm bảo hiệu năng, danh sách các đối tượng chồng lấn được cập nhật một lần mỗi frame và trước bước vật lý. Hãy cân nhắc sử dụng signals thay thế.
+\ **Lưu ý:** Kết quả của phép kiểm tra này không có ngay sau khi di chuyển các object. Để đảm bảo hiệu năng, danh sách các phần chồng lấp được cập nhật một lần mỗi frame và trước bước physics. Hãy cân nhắc sử dụng signal thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -630,11 +630,11 @@ Trả về ``true`` nếu **Area2D** được chỉ định giao nhau hoặc ch�
 
 :ref:`bool<class_bool>` **overlaps_body**\ (\ body\: :ref:`Node<class_Node>`\ ) |const| :ref:`🔗<class_Area2D_method_overlaps_body>`
 
-Trả về ``true`` nếu physics body được chỉ định giao nhau hoặc chồng lấn với **Area2D** này, nếu không thì trả về ``false``.
+Trả về ``true`` nếu physics body đã cho giao nhau hoặc chồng lấp với **Area2D** này, nếu không thì trả về ``false``.
 
-\ **Lưu ý:** Kết quả của phép kiểm tra này không cập nhật ngay sau khi di chuyển các đối tượng. Để đảm bảo hiệu năng, danh sách các đối tượng chồng lấn được cập nhật một lần mỗi frame và trước bước vật lý. Hãy cân nhắc sử dụng signals thay thế.
+\ **Lưu ý:** Kết quả của phép kiểm tra này không có ngay sau khi di chuyển các object. Để đảm bảo hiệu năng, danh sách các phần chồng lấp được cập nhật một lần mỗi frame và trước bước physics. Hãy cân nhắc sử dụng signal thay thế.
 
-Đối số ``body`` có thể là một instance :ref:`PhysicsBody2D<class_PhysicsBody2D>` hoặc :ref:`TileMap<class_TileMap>`. Mặc dù TileMaps bản thân không phải là physics body, chúng đăng ký các tile của mình với các collision shape dưới dạng một physics body ảo.
+Đối số ``body`` có thể là một instance :ref:`PhysicsBody2D<class_PhysicsBody2D>` hoặc :ref:`TileMap<class_TileMap>`. Mặc dù TileMap bản thân không phải là physics body, chúng đăng ký các tile của mình với các collision shape dưới dạng một physics body ảo.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`

@@ -3,7 +3,7 @@
 .. meta::
 	:keywords: sound, sfx
 
-.. KHÔNG ĐƯỢC CHỈNH SỬA TỆP NÀY!!! .. Được tự động tạo từ mã nguồn của Godot engine. .. Generator: https://github.com/godotengine/godot/tree/master/doc/tools/make_rst.py. .. XML source: https://github.com/godotengine/godot/tree/master/doc/classes/AudioStreamPlayer2D.xml.
+.. KHÔNG ĐƯỢC CHỈNH SỬA TỆP NÀY!!! .. Tự động tạo từ mã nguồn của Godot engine. .. Generator: https://github.com/godotengine/godot/tree/master/doc/tools/make_rst.py. .. XML source: https://github.com/godotengine/godot/tree/master/doc/classes/AudioStreamPlayer2D.xml.
 
 .. _class_AudioStreamPlayer2D:
 
@@ -12,7 +12,7 @@ AudioStreamPlayer2D
 
 **Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Phát âm thanh định vị trong không gian 2D.
+Phát âm thanh theo vị trí trong không gian 2D.
 
 .. rst-class:: classref-introduction-group
 
@@ -21,18 +21,18 @@ Mô tả
 
 Phát âm thanh được giảm cường độ theo khoảng cách đến listener.
 
-Theo mặc định, âm thanh được nghe từ giữa màn hình. Bạn có thể thay đổi điều này bằng cách thêm một node :ref:`AudioListener2D<class_AudioListener2D>` vào scene và bật nó bằng cách gọi :ref:`AudioListener2D.make_current()<class_AudioListener2D_method_make_current>` trên node đó.
+Theo mặc định, âm thanh được nghe từ trung tâm màn hình. Bạn có thể thay đổi điều này bằng cách thêm một node :ref:`AudioListener2D<class_AudioListener2D>` vào scene và bật nó bằng cách gọi :ref:`AudioListener2D.make_current()<class_AudioListener2D_method_make_current>` trên node đó.
 
-Xem thêm :ref:`AudioStreamPlayer<class_AudioStreamPlayer>` để phát âm thanh không định vị.
+Xem thêm :ref:`AudioStreamPlayer<class_AudioStreamPlayer>` để phát âm thanh không theo vị trí.
 
-\ **Lưu ý:** Ẩn node **AudioStreamPlayer2D** không vô hiệu hóa đầu ra âm thanh của node đó. Để tạm thời vô hiệu hóa đầu ra âm thanh của **AudioStreamPlayer2D**, hãy đặt :ref:`volume_db<class_AudioStreamPlayer2D_property_volume_db>` thành một giá trị rất thấp như ``-100`` (mức này không thể nghe thấy đối với tai người).
+\ **Lưu ý:** Việc ẩn node **AudioStreamPlayer2D** không vô hiệu hóa đầu ra âm thanh của node đó. Để tạm thời vô hiệu hóa đầu ra âm thanh của **AudioStreamPlayer2D**, hãy đặt :ref:`volume_db<class_AudioStreamPlayer2D_property_volume_db>` thành một giá trị rất thấp như ``-100`` (mức này không thể nghe được đối với tai người).
 
 .. rst-class:: classref-introduction-group
 
 Tutorial
 --------
 
-- :doc:`Audio streams <../tutorials/audio/audio_streams>`
+- :doc:`Luồng âm thanh <../tutorials/audio/audio_streams>`
 
 .. rst-class:: classref-reftable-group
 
@@ -109,7 +109,7 @@ Các signal
 
 **finished**\ (\ ) :ref:`🔗<class_AudioStreamPlayer2D_signal_finished>`
 
-Được phát ra khi âm thanh ngừng phát.
+Được phát ra khi âm thanh dừng phát.
 
 .. rst-class:: classref-section-separator
 
@@ -130,7 +130,7 @@ Mô tả thuộc tính
 
 - |void| **set_area_mask**\ (\ value\: :ref:`int<class_int>`\ ) - :ref:`int<class_int>` **get_area_mask**\ (\ )
 
-Determines which :ref:`Area2D<class_Area2D>` layers affect the sound for reverb and audio bus effects. Areas can be used to redirect :ref:`AudioStream<class_AudioStream>`\ s so that they play in a certain audio bus. An example of how you might use this is making a "water" area so that sounds played in the water are redirected through an audio bus to make them sound like they are being played underwater.
+Xác định các layer của :ref:`Area2D<class_Area2D>` ảnh hưởng đến âm thanh đối với hiệu ứng reverb và audio bus. Có thể dùng các Area để chuyển hướng :ref:`AudioStream<class_AudioStream>`\ s để chúng phát trên một audio bus nhất định. Một ví dụ về cách sử dụng là tạo một Area "water" để các âm thanh phát trong nước được chuyển qua một audio bus, khiến chúng nghe như đang được phát dưới nước.
 
 .. rst-class:: classref-item-separator
 
@@ -180,7 +180,7 @@ Nếu ``true``, âm thanh sẽ phát khi được thêm vào scene tree.
 
 Bus mà âm thanh này đang phát trên đó.
 
-\ **Lưu ý:** Khi đặt thuộc tính này, hãy nhớ rằng không có bước xác thực nào được thực hiện để kiểm tra xem tên đã cho có khớp với một bus hiện có hay không. Điều này là do audio bus layout có thể được tải sau khi thuộc tính này được đặt. Nếu không thể phân giải tên đã cho tại runtime, nó sẽ chuyển về ``"Master"``.
+\ **Lưu ý:** Khi thiết lập thuộc tính này, hãy nhớ rằng không có bước validation nào được thực hiện để kiểm tra xem tên đã cho có khớp với một bus hiện có hay không. Nguyên nhân là audio bus layout có thể được tải sau khi thuộc tính này được thiết lập. Nếu không thể phân giải tên đã cho trong runtime, nó sẽ chuyển về ``"Master"``.
 
 .. rst-class:: classref-item-separator
 
@@ -212,7 +212,7 @@ Khoảng cách tối đa mà từ đó vẫn có thể nghe thấy âm thanh.
 
 - |void| **set_max_polyphony**\ (\ value\: :ref:`int<class_int>`\ ) - :ref:`int<class_int>` **get_max_polyphony**\ (\ )
 
-Số lượng âm thanh tối đa mà node này có thể phát cùng lúc. Việc phát thêm âm thanh sau khi đạt đến giá trị này sẽ ngắt các âm thanh cũ nhất.
+Số lượng âm thanh tối đa mà node này có thể phát đồng thời. Việc phát thêm âm thanh sau khi đạt đến giá trị này sẽ ngắt các âm thanh cũ nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -260,9 +260,9 @@ Cao độ và tempo của âm thanh, dưới dạng hệ số nhân với sample
 
 - |void| **set_playback_type**\ (\ value\: :ref:`PlaybackType<enum_AudioServer_PlaybackType>`\ ) - :ref:`PlaybackType<enum_AudioServer_PlaybackType>` **get_playback_type**\ (\ )
 
-**Experimental:** Thuộc tính này có thể bị thay đổi hoặc loại bỏ trong các phiên bản tương lai.
+**Experimental:** Thuộc tính này có thể bị thay đổi hoặc xóa trong các phiên bản tương lai.
 
-Kiểu playback của stream player. Nếu được đặt khác giá trị mặc định, nó sẽ buộc sử dụng kiểu playback đó.
+Loại phát của stream player. Nếu được đặt khác giá trị mặc định, nó sẽ buộc sử dụng loại phát đó.
 
 .. rst-class:: classref-item-separator
 
@@ -310,7 +310,7 @@ Nếu ``true``, âm thanh đang phát hoặc đã được xếp hàng để ph�
 
 - |void| **set_stream_paused**\ (\ value\: :ref:`bool<class_bool>`\ ) - :ref:`bool<class_bool>` **get_stream_paused**\ (\ )
 
-Nếu ``true``, playback sẽ bị tạm dừng. Bạn có thể tiếp tục bằng cách đặt :ref:`stream_paused<class_AudioStreamPlayer2D_property_stream_paused>` thành ``false``.
+Nếu ``true``, quá trình phát sẽ tạm dừng. Bạn có thể tiếp tục bằng cách đặt :ref:`stream_paused<class_AudioStreamPlayer2D_property_stream_paused>` thành ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -344,7 +344,7 @@ Nếu ``true``, playback sẽ bị tạm dừng. Bạn có thể tiếp tục b�
 
 Âm lượng cơ sở trước khi giảm cường độ, dưới dạng giá trị tuyến tính.
 
-\ **Lưu ý:** Member này sửa đổi :ref:`volume_db<class_AudioStreamPlayer2D_property_volume_db>` để thuận tiện sử dụng. Giá trị trả về tương đương với kết quả của :ref:`@GlobalScope.db_to_linear()<class_@GlobalScope_method_db_to_linear>` trên :ref:`volume_db<class_AudioStreamPlayer2D_property_volume_db>`. Việc đặt member này tương đương với việc đặt :ref:`volume_db<class_AudioStreamPlayer2D_property_volume_db>` thành kết quả của :ref:`@GlobalScope.linear_to_db()<class_@GlobalScope_method_linear_to_db>` trên một giá trị.
+\ **Lưu ý:** Member này sửa đổi :ref:`volume_db<class_AudioStreamPlayer2D_property_volume_db>` để thuận tiện. Giá trị trả về tương đương với kết quả của :ref:`@GlobalScope.db_to_linear()<class_@GlobalScope_method_db_to_linear>` trên :ref:`volume_db<class_AudioStreamPlayer2D_property_volume_db>`. Việc thiết lập member này tương đương với việc đặt :ref:`volume_db<class_AudioStreamPlayer2D_property_volume_db>` thành kết quả của :ref:`@GlobalScope.linear_to_db()<class_@GlobalScope_method_linear_to_db>` trên một giá trị.
 
 .. rst-class:: classref-section-separator
 
@@ -385,7 +385,7 @@ Trả về đối tượng :ref:`AudioStreamPlayback<class_AudioStreamPlayback>`
 
 :ref:`bool<class_bool>` **has_stream_playback**\ (\ ) :ref:`🔗<class_AudioStreamPlayer2D_method_has_stream_playback>`
 
-Trả về liệu :ref:`AudioStreamPlayer<class_AudioStreamPlayer>` có thể trả về đối tượng :ref:`AudioStreamPlayback<class_AudioStreamPlayback>` hay không.
+Trả về việc :ref:`AudioStreamPlayer<class_AudioStreamPlayer>` có thể trả về đối tượng :ref:`AudioStreamPlayback<class_AudioStreamPlayback>` hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -397,7 +397,7 @@ Trả về liệu :ref:`AudioStreamPlayer<class_AudioStreamPlayer>` có thể tr
 
 |void| **play**\ (\ from_position\: :ref:`float<class_float>` = 0.0\ ) :ref:`🔗<class_AudioStreamPlayer2D_method_play>`
 
-Xếp hàng để âm thanh phát ở frame physics tiếp theo, bắt đầu từ vị trí ``from_position`` đã cho, tính bằng giây.
+Xếp âm thanh vào hàng đợi để phát ở frame vật lý tiếp theo, từ vị trí ``from_position`` đã cho, tính bằng giây.
 
 .. rst-class:: classref-item-separator
 

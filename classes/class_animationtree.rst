@@ -1,6 +1,6 @@
 :github_url: hide
 
-.. KHÔNG ĐƯỢC CHỈNH SỬA TỆP NÀY!!! .. Được tự động tạo từ mã nguồn của Godot engine. .. Generator: https://github.com/godotengine/godot/tree/master/doc/tools/make_rst.py. .. XML source: https://github.com/godotengine/godot/tree/master/doc/classes/AnimationTree.xml.
+.. KHÔNG ĐƯỢC CHỈNH SỬA TỆP NÀY!!! .. Được tạo tự động từ mã nguồn của Godot engine. .. Generator: https://github.com/godotengine/godot/tree/master/doc/tools/make_rst.py. .. XML source: https://github.com/godotengine/godot/tree/master/doc/classes/AnimationTree.xml.
 
 .. _class_AnimationTree:
 
@@ -9,30 +9,30 @@ AnimationTree
 
 **Kế thừa:** :ref:`AnimationMixer<class_AnimationMixer>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Một node được sử dụng cho các chuyển tiếp animation nâng cao trong một :ref:`AnimationPlayer<class_AnimationPlayer>`.
+Một node được dùng cho các chuyển tiếp animation nâng cao trong một :ref:`AnimationPlayer<class_AnimationPlayer>`.
 
 .. rst-class:: classref-introduction-group
 
 Mô tả
 -----
 
-Một node được sử dụng cho các chuyển tiếp animation nâng cao trong một :ref:`AnimationPlayer<class_AnimationPlayer>`.
+Một node được dùng cho các chuyển tiếp animation nâng cao trong một :ref:`AnimationPlayer<class_AnimationPlayer>`.
 
-\ **Note:** When linked with an :ref:`AnimationPlayer<class_AnimationPlayer>`, several properties and methods of the corresponding :ref:`AnimationPlayer<class_AnimationPlayer>` will not function as expected. Playback and transitions should be handled using only the **AnimationTree** and its constituent :ref:`AnimationNode<class_AnimationNode>`\ (s). The :ref:`AnimationPlayer<class_AnimationPlayer>` node should be used solely for adding, deleting, and editing animations.
+\ **Lưu ý:** Khi được liên kết với một :ref:`AnimationPlayer<class_AnimationPlayer>`, một số thuộc tính và phương thức của :ref:`AnimationPlayer<class_AnimationPlayer>` tương ứng sẽ không hoạt động như mong đợi. Việc phát và chuyển tiếp nên được xử lý chỉ bằng **AnimationTree** và các :ref:`AnimationNode<class_AnimationNode>`\ (s) cấu thành nó. Node :ref:`AnimationPlayer<class_AnimationPlayer>` chỉ nên được dùng để thêm, xóa và chỉnh sửa animation.
 
 .. rst-class:: classref-introduction-group
 
 Hướng dẫn
 ---------
 
-- :doc:`Using AnimationTree <../tutorials/animation/animation_tree>`
+- :doc:`Sử dụng AnimationTree <../tutorials/animation/animation_tree>`
 
 - `Third Person Shooter (TPS) Demo <https://godotengine.org/asset-library/asset/2710>`__
 
 .. rst-class:: classref-reftable-group
 
-Các thuộc tính
---------------
+Thuộc tính
+----------
 
 .. table::
    :widths: auto
@@ -51,8 +51,8 @@ Các thuộc tính
 
 .. rst-class:: classref-reftable-group
 
-Các phương thức
----------------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -69,8 +69,8 @@ Các phương thức
 
 .. rst-class:: classref-descriptions-group
 
-Các signal
-----------
+Tín hiệu
+--------
 
 .. _class_AnimationTree_signal_animation_player_changed:
 
@@ -78,7 +78,7 @@ Các signal
 
 **animation_player_changed**\ (\ ) :ref:`🔗<class_AnimationTree_signal_animation_player_changed>`
 
-Được phát ra khi :ref:`anim_player<class_AnimationTree_property_anim_player>` được thay đổi.
+Được phát khi :ref:`anim_player<class_AnimationTree_property_anim_player>` thay đổi.
 
 .. rst-class:: classref-section-separator
 
@@ -86,8 +86,8 @@ Các signal
 
 .. rst-class:: classref-descriptions-group
 
-Các enumeration
----------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_AnimationTree_AnimationProcessCallback:
 
@@ -101,7 +101,7 @@ enum **AnimationProcessCallback**: :ref:`🔗<enum_AnimationTree_AnimationProces
 
 :ref:`AnimationProcessCallback<enum_AnimationTree_AnimationProcessCallback>` **ANIMATION_PROCESS_PHYSICS** = ``0``
 
-**Không dùng nữa:** Xem :ref:`AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS<class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS>`.
+**Đã ngừng sử dụng:** Xem :ref:`AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS<class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS>`.
 
 
 
@@ -111,7 +111,7 @@ enum **AnimationProcessCallback**: :ref:`🔗<enum_AnimationTree_AnimationProces
 
 :ref:`AnimationProcessCallback<enum_AnimationTree_AnimationProcessCallback>` **ANIMATION_PROCESS_IDLE** = ``1``
 
-**Không dùng nữa:** Xem :ref:`AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_IDLE<class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_PROCESS_IDLE>`.
+**Đã ngừng sử dụng:** Xem :ref:`AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_IDLE<class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_PROCESS_IDLE>`.
 
 
 
@@ -121,7 +121,7 @@ enum **AnimationProcessCallback**: :ref:`🔗<enum_AnimationTree_AnimationProces
 
 :ref:`AnimationProcessCallback<enum_AnimationTree_AnimationProcessCallback>` **ANIMATION_PROCESS_MANUAL** = ``2``
 
-**Không dùng nữa:** Xem :ref:`AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_MANUAL<class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_PROCESS_MANUAL>`.
+**Đã ngừng sử dụng:** Xem :ref:`AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_MANUAL<class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_PROCESS_MANUAL>`.
 
 
 
@@ -144,7 +144,7 @@ Mô tả thuộc tính
 
 - |void| **set_advance_expression_base_node**\ (\ value\: :ref:`NodePath<class_NodePath>`\ ) - :ref:`NodePath<class_NodePath>` **get_advance_expression_base_node**\ (\ )
 
-Đường dẫn đến :ref:`Node<class_Node>` được sử dụng để đánh giá :ref:`AnimationNode<class_AnimationNode>` :ref:`Expression<class_Expression>` nếu không được chỉ định rõ ràng ở bên trong.
+Đường dẫn đến :ref:`Node<class_Node>` được dùng để đánh giá :ref:`AnimationNode<class_AnimationNode>` :ref:`Expression<class_Expression>` nếu không được chỉ định rõ ràng ở bên trong.
 
 .. rst-class:: classref-item-separator
 
@@ -160,7 +160,7 @@ Mô tả thuộc tính
 
 - |void| **set_animation_player**\ (\ value\: :ref:`NodePath<class_NodePath>`\ ) - :ref:`NodePath<class_NodePath>` **get_animation_player**\ (\ )
 
-Đường dẫn đến :ref:`AnimationPlayer<class_AnimationPlayer>` được sử dụng để tạo animation.
+Đường dẫn đến :ref:`AnimationPlayer<class_AnimationPlayer>` được dùng cho việc tạo animation.
 
 .. rst-class:: classref-item-separator
 
@@ -193,9 +193,9 @@ Mô tả phương thức
 
 :ref:`AnimationProcessCallback<enum_AnimationTree_AnimationProcessCallback>` **get_process_callback**\ (\ ) |const| :ref:`🔗<class_AnimationTree_method_get_process_callback>`
 
-**Không dùng nữa:** Thay vào đó, hãy sử dụng :ref:`AnimationMixer.callback_mode_process<class_AnimationMixer_property_callback_mode_process>`.
+**Đã ngừng sử dụng:** Thay vào đó, hãy dùng :ref:`AnimationMixer.callback_mode_process<class_AnimationMixer_property_callback_mode_process>`.
 
-Trả về thông báo process mà tại đó cần cập nhật animation.
+Trả về thông báo xử lý mà tại đó animation được cập nhật.
 
 .. rst-class:: classref-item-separator
 
@@ -207,9 +207,9 @@ Trả về thông báo process mà tại đó cần cập nhật animation.
 
 |void| **set_process_callback**\ (\ mode\: :ref:`AnimationProcessCallback<enum_AnimationTree_AnimationProcessCallback>`\ ) :ref:`🔗<class_AnimationTree_method_set_process_callback>`
 
-**Không dùng nữa:** Thay vào đó, hãy sử dụng :ref:`AnimationMixer.callback_mode_process<class_AnimationMixer_property_callback_mode_process>`.
+**Đã ngừng sử dụng:** Thay vào đó, hãy dùng :ref:`AnimationMixer.callback_mode_process<class_AnimationMixer_property_callback_mode_process>`.
 
-Thiết lập thông báo process mà tại đó cần cập nhật animation.
+Thiết lập thông báo xử lý mà tại đó animation được cập nhật.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`

@@ -25,7 +25,7 @@ Node dùng để lưu màn hình hiện đang hiển thị vào back-buffer. Vù
 Hướng dẫn
 ---------
 
-- :doc:`Screen-reading shaders <../tutorials/shaders/screen-reading_shaders>`
+- :doc:`Shader đọc màn hình <../tutorials/shaders/screen-reading_shaders>`
 
 .. rst-class:: classref-reftable-group
 

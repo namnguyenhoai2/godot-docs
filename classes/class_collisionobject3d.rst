@@ -1,6 +1,6 @@
 :github_url: hide
 
-.. KHÔNG ĐƯỢC CHỈNH SỬA TỆP NÀY!!! .. Được tự động tạo từ các mã nguồn của Godot engine. .. Generator: https://github.com/godotengine/godot/tree/master/doc/tools/make_rst.py. .. XML source: https://github.com/godotengine/godot/tree/master/doc/classes/CollisionObject3D.xml.
+.. KHÔNG ĐƯỢC CHỈNH SỬA TỆP NÀY!!! .. Được tự động tạo từ mã nguồn engine Godot. .. Generator: https://github.com/godotengine/godot/tree/master/doc/tools/make_rst.py. .. XML source: https://github.com/godotengine/godot/tree/master/doc/classes/CollisionObject3D.xml.
 
 .. _class_CollisionObject3D:
 
@@ -18,14 +18,14 @@ Lớp cơ sở trừu tượng cho các đối tượng vật lý 3D.
 Mô tả
 -----
 
-Abstract base class for 3D physics objects. **CollisionObject3D** can hold any number of :ref:`Shape3D<class_Shape3D>`\ s for collision. Each shape must be assigned to a *shape owner*. Shape owners are not nodes and do not appear in the editor, but are accessible through code using the ``shape_owner_*`` methods.
+Lớp cơ sở trừu tượng cho các đối tượng vật lý 3D. **CollisionObject3D** có thể chứa bất kỳ số lượng :ref:`Shape3D<class_Shape3D>`\ s nào để xử lý va chạm. Mỗi shape phải được gán cho một *shape owner*. Shape owner không phải là node và không xuất hiện trong editor, nhưng có thể được truy cập thông qua code bằng các phương thức ``shape_owner_*``.
 
-\ **Cảnh báo:** Với scale không đồng nhất, node này có thể sẽ không hoạt động như mong đợi. Bạn nên giữ scale giống nhau trên tất cả các trục và thay đổi shape va chạm của nó thay thế.
+\ **Cảnh báo:** Với scale không đồng nhất, node này có thể sẽ không hoạt động như mong đợi. Bạn nên giữ scale giống nhau trên tất cả các trục và thay vào đó điều chỉnh các collision shape của nó.
 
 .. rst-class:: classref-reftable-group
 
-Các thuộc tính
---------------
+Thuộc tính
+----------
 
 .. table::
    :widths: auto
@@ -46,8 +46,8 @@ Các thuộc tính
 
 .. rst-class:: classref-reftable-group
 
-Các phương thức
----------------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -106,8 +106,8 @@ Các phương thức
 
 .. rst-class:: classref-descriptions-group
 
-Các signal
-----------
+Signal
+------
 
 .. _class_CollisionObject3D_signal_input_event:
 
@@ -115,7 +115,7 @@ Các signal
 
 **input_event**\ (\ camera\: :ref:`Node<class_Node>`, event\: :ref:`InputEvent<class_InputEvent>`, event_position\: :ref:`Vector3<class_Vector3>`, normal\: :ref:`Vector3<class_Vector3>`, shape_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_CollisionObject3D_signal_input_event>`
 
-Được phát ra khi đối tượng nhận được một :ref:`InputEvent<class_InputEvent>` chưa được xử lý. ``event_position`` là vị trí trong world space của con trỏ chuột trên bề mặt của shape có chỉ mục ``shape_idx`` và ``normal`` là vector pháp tuyến của bề mặt tại điểm đó.
+Được phát ra khi xảy ra một input event chưa được xử lý. Yêu cầu :ref:`input_ray_pickable<class_CollisionObject3D_property_input_ray_pickable>` là ``true`` và ít nhất một bit :ref:`collision_layer<class_CollisionObject3D_property_collision_layer>` được đặt. Xem :ref:`_input_event()<class_CollisionObject3D_private_method__input_event>` để biết chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -127,9 +127,9 @@ Các signal
 
 **mouse_entered**\ (\ ) :ref:`🔗<class_CollisionObject3D_signal_mouse_entered>`
 
-Được phát ra khi con trỏ chuột đi vào bất kỳ shape nào của đối tượng này. Yêu cầu :ref:`input_ray_pickable<class_CollisionObject3D_property_input_ray_pickable>` là ``true`` và ít nhất một bit :ref:`collision_layer<class_CollisionObject3D_property_collision_layer>` được thiết lập.
+Được phát ra khi con trỏ chuột đi vào bất kỳ shape nào của đối tượng này. Yêu cầu :ref:`input_ray_pickable<class_CollisionObject3D_property_input_ray_pickable>` là ``true`` và ít nhất một bit :ref:`collision_layer<class_CollisionObject3D_property_collision_layer>` được đặt.
 
-\ **Lưu ý:** Do thiếu cơ chế phát hiện va chạm liên tục, signal này có thể không được phát ra theo thứ tự mong đợi nếu chuột di chuyển đủ nhanh và vùng của **CollisionObject3D** nhỏ. Signal này cũng có thể không được phát ra nếu một **CollisionObject3D** khác đang chồng lấn lên **CollisionObject3D** đang xét.
+\ **Lưu ý:** Do thiếu cơ chế phát hiện va chạm liên tục, signal này có thể không được phát theo thứ tự mong đợi nếu chuột di chuyển đủ nhanh và vùng của **CollisionObject3D** nhỏ. Signal này cũng có thể không được phát nếu một **CollisionObject3D** khác đang chồng lấp lên **CollisionObject3D** được đề cập.
 
 .. rst-class:: classref-item-separator
 
@@ -141,9 +141,9 @@ Các signal
 
 **mouse_exited**\ (\ ) :ref:`🔗<class_CollisionObject3D_signal_mouse_exited>`
 
-Được phát ra khi con trỏ chuột rời khỏi tất cả các shape của đối tượng này. Yêu cầu :ref:`input_ray_pickable<class_CollisionObject3D_property_input_ray_pickable>` là ``true`` và ít nhất một bit :ref:`collision_layer<class_CollisionObject3D_property_collision_layer>` được thiết lập.
+Được phát ra khi con trỏ chuột rời khỏi tất cả shape của đối tượng này. Yêu cầu :ref:`input_ray_pickable<class_CollisionObject3D_property_input_ray_pickable>` là ``true`` và ít nhất một bit :ref:`collision_layer<class_CollisionObject3D_property_collision_layer>` được đặt.
 
-\ **Lưu ý:** Do thiếu cơ chế phát hiện va chạm liên tục, signal này có thể không được phát ra theo thứ tự mong đợi nếu chuột di chuyển đủ nhanh và vùng của **CollisionObject3D** nhỏ. Signal này cũng có thể không được phát ra nếu một **CollisionObject3D** khác đang chồng lấn lên **CollisionObject3D** đang xét.
+\ **Lưu ý:** Do thiếu cơ chế phát hiện va chạm liên tục, signal này có thể không được phát theo thứ tự mong đợi nếu chuột di chuyển đủ nhanh và vùng của **CollisionObject3D** nhỏ. Signal này cũng có thể không được phát nếu một **CollisionObject3D** khác đang chồng lấp lên **CollisionObject3D** được đề cập.
 
 .. rst-class:: classref-section-separator
 
@@ -151,8 +151,8 @@ Các signal
 
 .. rst-class:: classref-descriptions-group
 
-Các kiểu liệt kê
-----------------
+Các enum
+--------
 
 .. _enum_CollisionObject3D_DisableMode:
 
@@ -168,7 +168,7 @@ enum **DisableMode**: :ref:`🔗<enum_CollisionObject3D_DisableMode>`
 
 Khi :ref:`Node.process_mode<class_Node_property_process_mode>` được đặt thành :ref:`Node.PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`, xóa khỏi mô phỏng vật lý để dừng mọi tương tác vật lý với **CollisionObject3D** này.
 
-Tự động thêm lại vào mô phỏng vật lý khi :ref:`Node<class_Node>` được xử lý lần nữa.
+Tự động được thêm lại vào mô phỏng vật lý khi :ref:`Node<class_Node>` được xử lý lại.
 
 .. _class_CollisionObject3D_constant_DISABLE_MODE_MAKE_STATIC:
 
@@ -176,9 +176,9 @@ Tự động thêm lại vào mô phỏng vật lý khi :ref:`Node<class_Node>` 
 
 :ref:`DisableMode<enum_CollisionObject3D_DisableMode>` **DISABLE_MODE_MAKE_STATIC** = ``1``
 
-Khi :ref:`Node.process_mode<class_Node_property_process_mode>` được đặt thành :ref:`Node.PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`, chuyển body thành static. Không ảnh hưởng đến :ref:`Area3D<class_Area3D>`. :ref:`PhysicsBody3D<class_PhysicsBody3D>` không thể bị tác động bởi lực hoặc các body khác khi ở trạng thái static.
+Khi :ref:`Node.process_mode<class_Node_property_process_mode>` được đặt thành :ref:`Node.PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`, chuyển body thành static. Không ảnh hưởng đến :ref:`Area3D<class_Area3D>`. :ref:`PhysicsBody3D<class_PhysicsBody3D>` không thể bị tác động bởi lực hoặc các body khác khi đang static.
 
-Tự động đặt :ref:`PhysicsBody3D<class_PhysicsBody3D>` về mode ban đầu khi :ref:`Node<class_Node>` được xử lý lần nữa.
+Tự động đặt :ref:`PhysicsBody3D<class_PhysicsBody3D>` trở lại mode ban đầu khi :ref:`Node<class_Node>` được xử lý lại.
 
 .. _class_CollisionObject3D_constant_DISABLE_MODE_KEEP_ACTIVE:
 
@@ -186,7 +186,7 @@ Tự động đặt :ref:`PhysicsBody3D<class_PhysicsBody3D>` về mode ban đ�
 
 :ref:`DisableMode<enum_CollisionObject3D_DisableMode>` **DISABLE_MODE_KEEP_ACTIVE** = ``2``
 
-Khi :ref:`Node.process_mode<class_Node_property_process_mode>` được đặt thành :ref:`Node.PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`, không tác động đến mô phỏng vật lý.
+Khi :ref:`Node.process_mode<class_Node_property_process_mode>` được đặt thành :ref:`Node.PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`, không ảnh hưởng đến mô phỏng vật lý.
 
 .. rst-class:: classref-section-separator
 
@@ -207,9 +207,9 @@ Mô tả thuộc tính
 
 - |void| **set_collision_layer**\ (\ value\: :ref:`int<class_int>`\ ) - :ref:`int<class_int>` **get_collision_layer**\ (\ )
 
-Các layer vật lý mà CollisionObject3D này **nằm trong**. Các đối tượng va chạm có thể tồn tại trong một hoặc nhiều layer trong số 32 layer khác nhau. Xem thêm :ref:`collision_mask<class_CollisionObject3D_property_collision_mask>`.
+Các lớp vật lý mà CollisionObject3D này **nằm trong**. Các đối tượng va chạm có thể tồn tại trong một hoặc nhiều trong số 32 lớp khác nhau. Xem thêm :ref:`collision_mask<class_CollisionObject3D_property_collision_mask>`. Để thay đổi giá trị này dễ dàng hơn từ một script, hãy xem :ref:`set_collision_layer_value()<class_CollisionObject3D_method_set_collision_layer_value>`.
 
-\ **Lưu ý:** Đối tượng A chỉ có thể phát hiện tiếp xúc với đối tượng B nếu đối tượng B nằm trong bất kỳ layer nào mà đối tượng A quét. Xem `Collision layers and masks <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ trong tài liệu để biết thêm thông tin.
+\ **Lưu ý:** Đối tượng A chỉ có thể phát hiện tiếp xúc với đối tượng B nếu đối tượng B nằm trong bất kỳ lớp nào mà đối tượng A quét. Xem `Collision layers and masks <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ trong tài liệu để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -225,9 +225,9 @@ Các layer vật lý mà CollisionObject3D này **nằm trong**. Các đối tư
 
 - |void| **set_collision_mask**\ (\ value\: :ref:`int<class_int>`\ ) - :ref:`int<class_int>` **get_collision_mask**\ (\ )
 
-Các layer vật lý mà CollisionObject3D này **quét**. Các đối tượng va chạm có thể quét một hoặc nhiều layer trong số 32 layer khác nhau. Xem thêm :ref:`collision_layer<class_CollisionObject3D_property_collision_layer>`.
+Các lớp vật lý mà CollisionObject3D này **quét**. Các đối tượng va chạm có thể quét một hoặc nhiều trong số 32 lớp khác nhau. Xem thêm :ref:`collision_layer<class_CollisionObject3D_property_collision_layer>`. Để thay đổi giá trị này dễ dàng hơn từ một script, hãy xem :ref:`set_collision_mask_value()<class_CollisionObject3D_method_set_collision_mask_value>`.
 
-\ **Lưu ý:** Đối tượng A chỉ có thể phát hiện tiếp xúc với đối tượng B nếu đối tượng B nằm trong bất kỳ layer nào mà đối tượng A quét. Xem `Collision layers and masks <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ trong tài liệu để biết thêm thông tin.
+\ **Lưu ý:** Đối tượng A chỉ có thể phát hiện tiếp xúc với đối tượng B nếu đối tượng B nằm trong bất kỳ lớp nào mà đối tượng A quét. Xem `Collision layers and masks <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ trong tài liệu để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -243,7 +243,7 @@ Các layer vật lý mà CollisionObject3D này **quét**. Các đối tượng 
 
 - |void| **set_collision_priority**\ (\ value\: :ref:`float<class_float>`\ ) - :ref:`float<class_float>` **get_collision_priority**\ (\ )
 
-Mức ưu tiên được sử dụng để giải quyết va chạm khi xảy ra xuyên lấn. Mức ưu tiên càng cao thì độ xuyên vào đối tượng càng thấp. Ví dụ, điều này có thể được sử dụng để ngăn người chơi xuyên qua ranh giới của một level.
+Mức độ ưu tiên được dùng để giải quyết hiện tượng xuyên thấu khi xảy ra va chạm. Mức độ ưu tiên càng cao thì độ xuyên vào đối tượng càng thấp. Ví dụ, điều này có thể được dùng để ngăn người chơi phá vỡ ranh giới của một level.
 
 .. rst-class:: classref-item-separator
 
@@ -291,7 +291,7 @@ Nếu ``true``, **CollisionObject3D** sẽ tiếp tục nhận các input event 
 
 - |void| **set_ray_pickable**\ (\ value\: :ref:`bool<class_bool>`\ ) - :ref:`bool<class_bool>` **is_ray_pickable**\ (\ )
 
-Nếu ``true``, đối tượng này có thể được chọn. Một đối tượng có thể được chọn có thể phát hiện con trỏ chuột đi vào/rời khỏi, và nếu chuột ở bên trong nó thì báo cáo các input event. Yêu cầu ít nhất một bit :ref:`collision_layer<class_CollisionObject3D_property_collision_layer>` được thiết lập.
+Nếu ``true``, đối tượng này có thể được chọn. Một đối tượng có thể được chọn có thể phát hiện con trỏ chuột đi vào/rời khỏi nó và báo cáo các input event nếu chuột đang ở bên trong nó. Yêu cầu ít nhất một bit :ref:`collision_layer<class_CollisionObject3D_property_collision_layer>` được đặt.
 
 .. rst-class:: classref-section-separator
 
@@ -308,9 +308,13 @@ Mô tả phương thức
 
 |void| **_input_event**\ (\ camera\: :ref:`Camera3D<class_Camera3D>`, event\: :ref:`InputEvent<class_InputEvent>`, event_position\: :ref:`Vector3<class_Vector3>`, normal\: :ref:`Vector3<class_Vector3>`, shape_idx\: :ref:`int<class_int>`\ ) |virtual| :ref:`🔗<class_CollisionObject3D_private_method__input_event>`
 
-Receives unhandled :ref:`InputEvent<class_InputEvent>`\ s. ``event_position`` is the location in world space of the mouse pointer on the surface of the shape with index ``shape_idx`` and ``normal`` is the normal vector of the surface at that point. Connect to the :ref:`input_event<class_CollisionObject3D_signal_input_event>` signal to easily pick up these events.
+Phát hiện các :ref:`InputEvent<class_InputEvent>`\ s chuột và cảm ứng chưa được xử lý thông qua ``event`` khi chúng xảy ra trong lúc con trỏ đang di trên đối tượng. Các gesture event không được phát hiện. ``camera`` là :ref:`Camera3D<class_Camera3D>` nơi event bắt nguồn (để phát hiện các camera bên trong viewport khác với viewport chính, :ref:`Viewport.physics_object_picking<class_Viewport_property_physics_object_picking>` cha cần được đặt thành ``true``). ``event_position`` là vị trí bị raycast từ camera đến chuột chạm tới, trong global space. ``normal`` là vector pháp tuyến của bề mặt tại điểm đó trong world space. ``shape_idx`` là chỉ mục của shape được phát hiện từ :ref:`PhysicsServer3D<class_PhysicsServer3D>`.
 
-\ **Lưu ý:** :ref:`_input_event()<class_CollisionObject3D_private_method__input_event>` yêu cầu :ref:`input_ray_pickable<class_CollisionObject3D_property_input_ray_pickable>` là ``true`` và ít nhất một bit :ref:`collision_layer<class_CollisionObject3D_property_collision_layer>` được thiết lập.
+Xem thêm :ref:`Node._unhandled_input()<class_Node_private_method__unhandled_input>`, :ref:`shape_find_owner()<class_CollisionObject3D_method_shape_find_owner>` và :ref:`shape_owner_get_owner()<class_CollisionObject3D_method_shape_owner_get_owner>`.
+
+\ **Lưu ý:** Các event :ref:`InputEventScreenDrag<class_InputEventScreenDrag>` được kích hoạt nếu các drag event bắt đầu khi con trỏ đang di trên đối tượng hoặc khi đối tượng nằm trên đường đi của drag event.
+
+\ **Lưu ý:** :ref:`_input_event()<class_CollisionObject3D_private_method__input_event>` yêu cầu :ref:`input_ray_pickable<class_CollisionObject3D_property_input_ray_pickable>` là ``true`` và ít nhất một bit :ref:`collision_layer<class_CollisionObject3D_property_collision_layer>` được đặt.
 
 .. rst-class:: classref-item-separator
 
@@ -322,7 +326,7 @@ Receives unhandled :ref:`InputEvent<class_InputEvent>`\ s. ``event_position`` is
 
 |void| **_mouse_enter**\ (\ ) |virtual| :ref:`🔗<class_CollisionObject3D_private_method__mouse_enter>`
 
-Được gọi khi con trỏ chuột đi vào bất kỳ shape nào của đối tượng này. Yêu cầu :ref:`input_ray_pickable<class_CollisionObject3D_property_input_ray_pickable>` là ``true`` và ít nhất một bit :ref:`collision_layer<class_CollisionObject3D_property_collision_layer>` được thiết lập. Lưu ý rằng việc di chuyển giữa các shape khác nhau trong cùng một **CollisionObject3D** sẽ không khiến hàm này được gọi.
+Được gọi khi con trỏ chuột đi vào bất kỳ shape nào của đối tượng này. Yêu cầu :ref:`input_ray_pickable<class_CollisionObject3D_property_input_ray_pickable>` là ``true`` và ít nhất một bit :ref:`collision_layer<class_CollisionObject3D_property_collision_layer>` được đặt. Lưu ý rằng việc di chuyển giữa các shape khác nhau bên trong một **CollisionObject3D** duy nhất sẽ không khiến hàm này được gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -334,7 +338,7 @@ Receives unhandled :ref:`InputEvent<class_InputEvent>`\ s. ``event_position`` is
 
 |void| **_mouse_exit**\ (\ ) |virtual| :ref:`🔗<class_CollisionObject3D_private_method__mouse_exit>`
 
-Được gọi khi con trỏ chuột rời khỏi tất cả các shape của đối tượng này. Yêu cầu :ref:`input_ray_pickable<class_CollisionObject3D_property_input_ray_pickable>` là ``true`` và ít nhất một bit :ref:`collision_layer<class_CollisionObject3D_property_collision_layer>` được thiết lập. Lưu ý rằng việc di chuyển giữa các shape khác nhau trong cùng một **CollisionObject3D** sẽ không khiến hàm này được gọi.
+Được gọi khi con trỏ chuột rời khỏi tất cả shape của đối tượng này. Yêu cầu :ref:`input_ray_pickable<class_CollisionObject3D_property_input_ray_pickable>` là ``true`` và ít nhất một bit :ref:`collision_layer<class_CollisionObject3D_property_collision_layer>` được đặt. Lưu ý rằng việc di chuyển giữa các shape khác nhau bên trong một **CollisionObject3D** duy nhất sẽ không khiến hàm này được gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -346,7 +350,7 @@ Receives unhandled :ref:`InputEvent<class_InputEvent>`\ s. ``event_position`` is
 
 :ref:`int<class_int>` **create_shape_owner**\ (\ owner\: :ref:`Object<class_Object>`\ ) :ref:`🔗<class_CollisionObject3D_method_create_shape_owner>`
 
-Tạo một shape owner mới cho đối tượng đã cho. Trả về ``owner_id`` của owner mới để tham chiếu sau này.
+Tạo một shape owner mới cho đối tượng đã cho. Trả về ``owner_id`` của owner mới để tham chiếu về sau.
 
 .. rst-class:: classref-item-separator
 
@@ -358,7 +362,7 @@ Tạo một shape owner mới cho đối tượng đã cho. Trả về ``owner_i
 
 :ref:`bool<class_bool>` **get_collision_layer_value**\ (\ layer_number\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CollisionObject3D_method_get_collision_layer_value>`
 
-Trả về liệu layer được chỉ định của :ref:`collision_layer<class_CollisionObject3D_property_collision_layer>` có được bật hay không, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
+Trả về việc lớp được chỉ định của :ref:`collision_layer<class_CollisionObject3D_property_collision_layer>` có được bật hay không, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -370,7 +374,7 @@ Trả về liệu layer được chỉ định của :ref:`collision_layer<class
 
 :ref:`bool<class_bool>` **get_collision_mask_value**\ (\ layer_number\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CollisionObject3D_method_get_collision_mask_value>`
 
-Trả về liệu layer được chỉ định của :ref:`collision_mask<class_CollisionObject3D_property_collision_mask>` có được bật hay không, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
+Trả về việc layer được chỉ định của :ref:`collision_mask<class_CollisionObject3D_property_collision_mask>` có được bật hay không, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -394,7 +398,7 @@ Trả về :ref:`RID<class_RID>` của đối tượng.
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **get_shape_owners**\ (\ ) :ref:`🔗<class_CollisionObject3D_method_get_shape_owners>`
 
-Trả về một :ref:`Array<class_Array>` gồm các mã định danh ``owner_id``. Bạn có thể sử dụng các id này trong những phương thức khác nhận ``owner_id`` làm đối số.
+Trả về một :ref:`Array<class_Array>` gồm các mã định danh ``owner_id``. Bạn có thể sử dụng các mã này trong những phương thức khác nhận ``owner_id`` làm đối số.
 
 .. rst-class:: classref-item-separator
 
@@ -430,7 +434,7 @@ Xóa shape owner đã cho.
 
 |void| **set_collision_layer_value**\ (\ layer_number\: :ref:`int<class_int>`, value\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_CollisionObject3D_method_set_collision_layer_value>`
 
-Dựa trên ``value``, bật hoặc tắt layer được chỉ định trong :ref:`collision_layer<class_CollisionObject3D_property_collision_layer>`, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
+Dựa trên ``value``, bật hoặc tắt layer được chỉ định trong :ref:`collision_layer<class_CollisionObject3D_property_collision_layer>`, với ``layer_number`` nằm trong khoảng từ 1 đến 32. Điều này giúp đơn giản hóa việc chỉnh sửa collision layer của **CollisionObject3D** này so với việc gán trực tiếp thuộc tính :ref:`collision_layer<class_CollisionObject3D_property_collision_layer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -442,7 +446,7 @@ Dựa trên ``value``, bật hoặc tắt layer được chỉ định trong :re
 
 |void| **set_collision_mask_value**\ (\ layer_number\: :ref:`int<class_int>`, value\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_CollisionObject3D_method_set_collision_mask_value>`
 
-Dựa trên ``value``, bật hoặc tắt layer được chỉ định trong :ref:`collision_mask<class_CollisionObject3D_property_collision_mask>`, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
+Dựa trên ``value``, bật hoặc tắt layer được chỉ định trong :ref:`collision_mask<class_CollisionObject3D_property_collision_mask>`, với ``layer_number`` nằm trong khoảng từ 1 đến 32. Điều này giúp đơn giản hóa việc chỉnh sửa collision mask của **CollisionObject3D** này so với việc gán trực tiếp thuộc tính :ref:`collision_mask<class_CollisionObject3D_property_collision_mask>`.
 
 .. rst-class:: classref-item-separator
 

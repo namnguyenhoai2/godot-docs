@@ -20,7 +20,7 @@ Hãy lưu ý rằng nhìn chung có hai loại asset khác nhau mà bạn có th
 
 * Các asset được gắn nhãn "Templates", "Projects" hoặc "Demos" sẽ xuất hiện trong thẻ "Asset Library" của Godot Project Manager. Đây là các dự án Godot độc lập có thể tự chạy.
 
-* Các asset khác sẽ xuất hiện bên trong trình soạn thảo Godot, trong thẻ màn hình chính "Asset Library", bên cạnh "2D", "3D" và "Script". Những asset này предназначены để tải xuống và đưa vào một dự án Godot hiện có.
+* Các asset khác sẽ xuất hiện bên trong trình soạn thảo Godot, trong thẻ màn hình chính "Asset Library", bên cạnh "2D", "3D" và "Script". Những asset này có mục đích để tải xuống và đưa vào một dự án Godot hiện có.
 
 Các câu hỏi thường gặp
 ----------------------

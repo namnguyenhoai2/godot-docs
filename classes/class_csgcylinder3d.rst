@@ -25,7 +25,7 @@ Node này cho phép bạn tạo một hình trụ (hoặc hình nón) để sử
 Tutorials
 ---------
 
-- :doc:`Prototyping levels with CSG <../tutorials/3d/csg_tools>`
+- :doc:`Tạo nguyên mẫu level bằng CSG <../tutorials/3d/csg_tools>`
 
 .. rst-class:: classref-reftable-group
 

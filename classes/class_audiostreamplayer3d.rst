@@ -12,27 +12,27 @@ AudioStreamPlayer3D
 
 **Kế thừa:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Phát âm thanh có định vị trong không gian 3D.
+Phát âm thanh định vị trong không gian 3D.
 
 .. rst-class:: classref-introduction-group
 
 Mô tả
 -----
 
-Phát âm thanh với các hiệu ứng âm thanh có định vị, dựa trên vị trí tương đối của audio listener. Các hiệu ứng định vị bao gồm suy giảm theo khoảng cách, tính định hướng và hiệu ứng Doppler. Để tăng tính chân thực, một bộ lọc low-pass được áp dụng cho các âm thanh ở xa. Có thể tắt bộ lọc này bằng cách đặt :ref:`attenuation_filter_cutoff_hz<class_AudioStreamPlayer3D_property_attenuation_filter_cutoff_hz>` thành ``20500``.
+Phát âm thanh với các hiệu ứng âm thanh định vị, dựa trên vị trí tương đối của audio listener. Các hiệu ứng định vị bao gồm suy giảm theo khoảng cách, tính định hướng và hiệu ứng Doppler. Để tăng tính chân thực, một bộ lọc low-pass được áp dụng cho các âm thanh ở xa. Có thể tắt bộ lọc này bằng cách đặt :ref:`attenuation_filter_cutoff_hz<class_AudioStreamPlayer3D_property_attenuation_filter_cutoff_hz>` thành ``20500``.
 
-Theo mặc định, âm thanh được nghe từ vị trí camera. Có thể thay đổi điều này bằng cách thêm một node :ref:`AudioListener3D<class_AudioListener3D>` vào scene và bật node đó bằng cách gọi :ref:`AudioListener3D.make_current()<class_AudioListener3D_method_make_current>` trên nó.
+Theo mặc định, âm thanh được nghe từ vị trí của camera. Có thể thay đổi điều này bằng cách thêm một node :ref:`AudioListener3D<class_AudioListener3D>` vào scene và bật node đó bằng cách gọi :ref:`AudioListener3D.make_current()<class_AudioListener3D_method_make_current>` trên nó.
 
-Xem thêm :ref:`AudioStreamPlayer<class_AudioStreamPlayer>` để phát âm thanh không có định vị.
+Xem thêm :ref:`AudioStreamPlayer<class_AudioStreamPlayer>` để phát âm thanh không định vị.
 
-\ **Lưu ý:** Việc ẩn node **AudioStreamPlayer3D** không tắt đầu ra âm thanh của node. Để tạm thời tắt đầu ra âm thanh của **AudioStreamPlayer3D**, hãy đặt :ref:`volume_db<class_AudioStreamPlayer3D_property_volume_db>` thành một giá trị rất thấp như ``-100`` (không thể nghe thấy bằng tai người).
+\ **Lưu ý:** Ẩn một node **AudioStreamPlayer3D** không tắt đầu ra âm thanh của node đó. Để tạm thời tắt đầu ra âm thanh của **AudioStreamPlayer3D**, hãy đặt :ref:`volume_db<class_AudioStreamPlayer3D_property_volume_db>` thành một giá trị rất thấp như ``-100`` (mức này con người không thể nghe thấy).
 
 .. rst-class:: classref-introduction-group
 
 Hướng dẫn
 ---------
 
-- :doc:`Audio streams <../tutorials/audio/audio_streams>`
+- :doc:`Luồng âm thanh <../tutorials/audio/audio_streams>`
 
 .. rst-class:: classref-reftable-group
 
@@ -148,7 +148,7 @@ enum **AttenuationModel**: :ref:`🔗<enum_AudioStreamPlayer3D_AttenuationModel>
 
 :ref:`AttenuationModel<enum_AudioStreamPlayer3D_AttenuationModel>` **ATTENUATION_INVERSE_DISTANCE** = ``0``
 
-Suy giảm độ lớn theo khoảng cách tuyến tính.
+Suy giảm độ lớn âm thanh theo khoảng cách tuyến tính.
 
 .. _class_AudioStreamPlayer3D_constant_ATTENUATION_INVERSE_SQUARE_DISTANCE:
 
@@ -156,7 +156,7 @@ Suy giảm độ lớn theo khoảng cách tuyến tính.
 
 :ref:`AttenuationModel<enum_AudioStreamPlayer3D_AttenuationModel>` **ATTENUATION_INVERSE_SQUARE_DISTANCE** = ``1``
 
-Suy giảm độ lớn theo bình phương khoảng cách.
+Suy giảm độ lớn âm thanh theo bình phương khoảng cách.
 
 .. _class_AudioStreamPlayer3D_constant_ATTENUATION_LOGARITHMIC:
 
@@ -164,7 +164,7 @@ Suy giảm độ lớn theo bình phương khoảng cách.
 
 :ref:`AttenuationModel<enum_AudioStreamPlayer3D_AttenuationModel>` **ATTENUATION_LOGARITHMIC** = ``2``
 
-Suy giảm độ lớn theo khoảng cách logarithmic.
+Suy giảm độ lớn âm thanh theo khoảng cách logarithmic.
 
 .. _class_AudioStreamPlayer3D_constant_ATTENUATION_DISABLED:
 
@@ -172,7 +172,7 @@ Suy giảm độ lớn theo khoảng cách logarithmic.
 
 :ref:`AttenuationModel<enum_AudioStreamPlayer3D_AttenuationModel>` **ATTENUATION_DISABLED** = ``3``
 
-Không suy giảm độ lớn theo khoảng cách. Âm thanh vẫn được nghe theo vị trí, không giống như :ref:`AudioStreamPlayer<class_AudioStreamPlayer>`. :ref:`ATTENUATION_DISABLED<class_AudioStreamPlayer3D_constant_ATTENUATION_DISABLED>` có thể kết hợp với giá trị :ref:`max_distance<class_AudioStreamPlayer3D_property_max_distance>` lớn hơn ``0.0`` để đạt được suy giảm tuyến tính được giới hạn trong một hình cầu có kích thước xác định.
+Không suy giảm độ lớn âm thanh theo khoảng cách. Âm thanh vẫn được nghe theo vị trí, không giống như một :ref:`AudioStreamPlayer<class_AudioStreamPlayer>`. Có thể kết hợp :ref:`ATTENUATION_DISABLED<class_AudioStreamPlayer3D_constant_ATTENUATION_DISABLED>` với giá trị :ref:`max_distance<class_AudioStreamPlayer3D_property_max_distance>` lớn hơn ``0.0`` để đạt được suy giảm tuyến tính được giới hạn trong một hình cầu có kích thước xác định.
 
 .. rst-class:: classref-item-separator
 
@@ -190,7 +190,7 @@ enum **DopplerTracking**: :ref:`🔗<enum_AudioStreamPlayer3D_DopplerTracking>`
 
 :ref:`DopplerTracking<enum_AudioStreamPlayer3D_DopplerTracking>` **DOPPLER_TRACKING_DISABLED** = ``0``
 
-Tắt theo dõi Doppler.
+Tắt theo dõi doppler.
 
 .. _class_AudioStreamPlayer3D_constant_DOPPLER_TRACKING_IDLE_STEP:
 
@@ -198,7 +198,7 @@ Tắt theo dõi Doppler.
 
 :ref:`DopplerTracking<enum_AudioStreamPlayer3D_DopplerTracking>` **DOPPLER_TRACKING_IDLE_STEP** = ``1``
 
-Thực hiện theo dõi Doppler trong các frame process (xem :ref:`Node.NOTIFICATION_INTERNAL_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PROCESS>`).
+Thực hiện theo dõi doppler trong các frame process (xem :ref:`Node.NOTIFICATION_INTERNAL_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PROCESS>`).
 
 .. _class_AudioStreamPlayer3D_constant_DOPPLER_TRACKING_PHYSICS_STEP:
 
@@ -206,7 +206,7 @@ Thực hiện theo dõi Doppler trong các frame process (xem :ref:`Node.NOTIFIC
 
 :ref:`DopplerTracking<enum_AudioStreamPlayer3D_DopplerTracking>` **DOPPLER_TRACKING_PHYSICS_STEP** = ``2``
 
-Thực hiện theo dõi Doppler trong các frame physics (xem :ref:`Node.NOTIFICATION_INTERNAL_PHYSICS_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PHYSICS_PROCESS>`).
+Thực hiện theo dõi doppler trong các frame physics (xem :ref:`Node.NOTIFICATION_INTERNAL_PHYSICS_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PHYSICS_PROCESS>`).
 
 .. rst-class:: classref-section-separator
 
@@ -227,7 +227,7 @@ Mô tả thuộc tính
 
 - |void| **set_area_mask**\ (\ value\: :ref:`int<class_int>`\ ) - :ref:`int<class_int>` **get_area_mask**\ (\ )
 
-Determines which :ref:`Area3D<class_Area3D>` layers affect the sound for reverb and audio bus effects. Areas can be used to redirect :ref:`AudioStream<class_AudioStream>`\ s so that they play in a certain audio bus. An example of how you might use this is making a "water" area so that sounds played in the water are redirected through an audio bus to make them sound like they are being played underwater.
+Xác định các layer :ref:`Area3D<class_Area3D>` ảnh hưởng đến âm thanh đối với các hiệu ứng reverb và audio bus. Có thể dùng các Area để chuyển hướng :ref:`AudioStream<class_AudioStream>`\ s để chúng phát trong một audio bus nhất định. Một ví dụ về cách sử dụng là tạo một Area "water" để các âm thanh phát trong nước được chuyển qua một audio bus, khiến chúng nghe như đang được phát dưới nước.
 
 .. rst-class:: classref-item-separator
 
@@ -243,7 +243,7 @@ Determines which :ref:`Area3D<class_Area3D>` layers affect the sound for reverb 
 
 - |void| **set_attenuation_filter_cutoff_hz**\ (\ value\: :ref:`float<class_float>`\ ) - :ref:`float<class_float>` **get_attenuation_filter_cutoff_hz**\ (\ )
 
-Tần số cutoff của bộ lọc low-pass suy giảm, tính bằng Hz. Âm thanh trên tần số này bị suy giảm nhiều hơn âm thanh dưới tần số này. Để tắt hiệu ứng này, hãy đặt giá trị này thành ``20500`` vì tần số này cao hơn giới hạn nghe được của tai người.
+Tần số cutoff của bộ lọc low-pass suy giảm, tính bằng Hz. Âm thanh trên tần số này bị suy giảm nhiều hơn âm thanh dưới tần số này. Để tắt hiệu ứng này, hãy đặt giá trị này thành ``20500`` vì tần số này cao hơn giới hạn thính giác của con người.
 
 .. rst-class:: classref-item-separator
 
@@ -259,7 +259,7 @@ Tần số cutoff của bộ lọc low-pass suy giảm, tính bằng Hz. Âm tha
 
 - |void| **set_attenuation_filter_db**\ (\ value\: :ref:`float<class_float>`\ ) - :ref:`float<class_float>` **get_attenuation_filter_db**\ (\ )
 
-Mức độ bộ lọc ảnh hưởng đến độ lớn, tính bằng decibel.
+Mức độ ảnh hưởng của bộ lọc đến độ lớn âm thanh, tính bằng decibel.
 
 .. rst-class:: classref-item-separator
 
@@ -275,7 +275,7 @@ Mức độ bộ lọc ảnh hưởng đến độ lớn, tính bằng decibel.
 
 - |void| **set_attenuation_model**\ (\ value\: :ref:`AttenuationModel<enum_AudioStreamPlayer3D_AttenuationModel>`\ ) - :ref:`AttenuationModel<enum_AudioStreamPlayer3D_AttenuationModel>` **get_attenuation_model**\ (\ )
 
-Xác định âm thanh sẽ nhỏ đi theo khoảng cách một cách tuyến tính, theo bình phương, logarithmic hay không bị ảnh hưởng bởi khoảng cách, qua đó tắt suy giảm.
+Xác định âm thanh sẽ nhỏ dần theo khoảng cách một cách tuyến tính, theo bình phương, theo logarithmic hay không bị ảnh hưởng bởi khoảng cách, qua đó tắt suy giảm.
 
 .. rst-class:: classref-item-separator
 
@@ -309,7 +309,7 @@ Nếu ``true``, âm thanh sẽ phát khi node AudioStreamPlayer3D được thêm
 
 Audio bus mà âm thanh này đang phát trên đó.
 
-\ **Lưu ý:** Khi đặt thuộc tính này, hãy nhớ rằng không có bước validation nào được thực hiện để kiểm tra xem tên đã cho có khớp với một bus hiện có hay không. Điều này là do các audio bus layout có thể được tải sau khi thuộc tính này được đặt. Nếu không thể phân giải tên đã cho tại runtime, tên đó sẽ chuyển về ``"Master"``.
+\ **Lưu ý:** Khi đặt thuộc tính này, hãy nhớ rằng không có bước validation nào được thực hiện để kiểm tra xem tên đã cho có khớp với một bus hiện có hay không. Điều này là do các audio bus layout có thể được tải sau khi thuộc tính này được đặt. Nếu không thể phân giải tên đã cho tại runtime, nó sẽ fallback về ``"Master"``.
 
 .. rst-class:: classref-item-separator
 
@@ -327,7 +327,7 @@ Audio bus mà âm thanh này đang phát trên đó.
 
 Xác định hiệu ứng Doppler sẽ được tính toán ở bước nào.
 
-\ **Note:** If :ref:`doppler_tracking<class_AudioStreamPlayer3D_property_doppler_tracking>` is not :ref:`DOPPLER_TRACKING_DISABLED<class_AudioStreamPlayer3D_constant_DOPPLER_TRACKING_DISABLED>` but the current :ref:`Camera3D<class_Camera3D>`/:ref:`AudioListener3D<class_AudioListener3D>` has doppler tracking disabled, the Doppler effect will be heard but will not take the movement of the current listener into account. If accurate Doppler effect is desired, doppler tracking should be enabled on both the **AudioStreamPlayer3D** and the current :ref:`Camera3D<class_Camera3D>`/:ref:`AudioListener3D<class_AudioListener3D>`.
+\ **Lưu ý:** Nếu :ref:`doppler_tracking<class_AudioStreamPlayer3D_property_doppler_tracking>` không phải là :ref:`DOPPLER_TRACKING_DISABLED<class_AudioStreamPlayer3D_constant_DOPPLER_TRACKING_DISABLED>` nhưng :ref:`Camera3D<class_Camera3D>`/:ref:`AudioListener3D<class_AudioListener3D>` hiện tại đã tắt theo dõi doppler, hiệu ứng Doppler vẫn được nghe thấy nhưng sẽ không tính đến chuyển động của listener hiện tại. Nếu cần hiệu ứng Doppler chính xác, nên bật theo dõi doppler trên cả **AudioStreamPlayer3D** và :ref:`Camera3D<class_Camera3D>`/:ref:`AudioListener3D<class_AudioListener3D>` hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -375,7 +375,7 @@ Nếu ``true``, âm thanh sẽ được suy giảm theo hướng của âm thanh
 
 - |void| **set_emission_angle_filter_attenuation_db**\ (\ value\: :ref:`float<class_float>`\ ) - :ref:`float<class_float>` **get_emission_angle_filter_attenuation_db**\ (\ )
 
-Hệ số suy giảm được sử dụng nếu listener nằm ngoài :ref:`emission_angle_degrees<class_AudioStreamPlayer3D_property_emission_angle_degrees>` và :ref:`emission_angle_enabled<class_AudioStreamPlayer3D_property_emission_angle_enabled>` được đặt, tính bằng decibel.
+Hệ số suy giảm được sử dụng nếu listener ở ngoài :ref:`emission_angle_degrees<class_AudioStreamPlayer3D_property_emission_angle_degrees>` và :ref:`emission_angle_enabled<class_AudioStreamPlayer3D_property_emission_angle_enabled>` được đặt, tính bằng decibel.
 
 .. rst-class:: classref-item-separator
 
@@ -407,7 +407,7 @@ Hệ số suy giảm được sử dụng nếu listener nằm ngoài :ref:`emis
 
 - |void| **set_max_distance**\ (\ value\: :ref:`float<class_float>`\ ) - :ref:`float<class_float>` **get_max_distance**\ (\ )
 
-Khoảng cách mà vượt quá đó thì hoàn toàn không thể nghe thấy âm thanh. Chỉ có tác dụng nếu được đặt thành giá trị lớn hơn ``0.0``. :ref:`max_distance<class_AudioStreamPlayer3D_property_max_distance>` hoạt động kết hợp với :ref:`unit_size<class_AudioStreamPlayer3D_property_unit_size>`. Tuy nhiên, không giống như :ref:`unit_size<class_AudioStreamPlayer3D_property_unit_size>`, hành vi của nó phụ thuộc vào :ref:`attenuation_model<class_AudioStreamPlayer3D_property_attenuation_model>`, :ref:`max_distance<class_AudioStreamPlayer3D_property_max_distance>` luôn hoạt động theo cách tuyến tính. Điều này có thể ngăn **AudioStreamPlayer3D** yêu cầu audio mixing khi listener ở xa, nhờ đó tiết kiệm tài nguyên CPU.
+Khoảng cách mà sau đó hoàn toàn không thể nghe thấy âm thanh. Chỉ có hiệu lực nếu được đặt thành giá trị lớn hơn ``0.0``. :ref:`max_distance<class_AudioStreamPlayer3D_property_max_distance>` hoạt động cùng với :ref:`unit_size<class_AudioStreamPlayer3D_property_unit_size>`. Tuy nhiên, không giống :ref:`unit_size<class_AudioStreamPlayer3D_property_unit_size>`, vốn có hành vi phụ thuộc vào :ref:`attenuation_model<class_AudioStreamPlayer3D_property_attenuation_model>`, :ref:`max_distance<class_AudioStreamPlayer3D_property_max_distance>` luôn hoạt động theo cách tuyến tính. Điều này có thể ngăn **AudioStreamPlayer3D** yêu cầu trộn âm thanh khi listener ở xa, nhờ đó tiết kiệm tài nguyên CPU.
 
 .. rst-class:: classref-item-separator
 
@@ -423,7 +423,7 @@ Khoảng cách mà vượt quá đó thì hoàn toàn không thể nghe thấy �
 
 - |void| **set_max_polyphony**\ (\ value\: :ref:`int<class_int>`\ ) - :ref:`int<class_int>` **get_max_polyphony**\ (\ )
 
-Số lượng âm thanh tối đa mà node này có thể phát cùng lúc. Việc phát thêm âm thanh sau khi đạt đến giá trị này sẽ cắt âm thanh cũ nhất.
+Số lượng âm thanh tối đa mà node này có thể phát cùng lúc. Việc phát thêm âm thanh sau khi đạt đến giá trị này sẽ ngắt các âm thanh cũ nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -439,11 +439,11 @@ Số lượng âm thanh tối đa mà node này có thể phát cùng lúc. Vi�
 
 - |void| **set_panning_strength**\ (\ value\: :ref:`float<class_float>`\ ) - :ref:`float<class_float>` **get_panning_strength**\ (\ )
 
-Điều chỉnh độ mạnh panning của node này bằng cách nhân :ref:`ProjectSettings.audio/general/3d_panning_strength<class_ProjectSettings_property_audio/general/3d_panning_strength>` cơ sở với hệ số này. Nếu tích bằng ``0.0`` thì stereo panning bị tắt và âm lượng giống nhau trên mọi channel. Nếu tích bằng ``1.0`` thì một trong các channel sẽ bị tắt tiếng khi âm thanh nằm chính xác về bên trái (hoặc bên phải) của listener.
+Điều chỉnh cường độ panning của node này bằng cách nhân :ref:`ProjectSettings.audio/general/3d_panning_strength<class_ProjectSettings_property_audio/general/3d_panning_strength>` cơ sở với hệ số này. Nếu tích bằng ``0.0`` thì stereo panning bị tắt và âm lượng giống nhau trên tất cả các kênh. Nếu tích bằng ``1.0`` thì một trong các kênh sẽ bị tắt tiếng khi âm thanh nằm chính xác bên trái (hoặc bên phải) listener.
 
-Hai cách bố trí stereo với hai loa triển khai `WebAudio standard for StereoPannerNode Panning <https://webaudio.github.io/web-audio-api/#stereopanner-algorithm>`__, trong đó âm lượng là cosine của một nửa góc phương vị đến tai.
+Cấu hình stereo hai loa triển khai `WebAudio standard for StereoPannerNode Panning <https://webaudio.github.io/web-audio-api/#stereopanner-algorithm>`__, trong đó âm lượng là cosine của một nửa góc phương vị đến tai.
 
-Đối với các cách bố trí loa khác như 5.1 và 7.1, thuật toán SPCAP (Speaker-Placement Correction Amplitude) được triển khai.
+Đối với các cấu hình loa khác như 5.1 và 7.1, thuật toán SPCAP (Speaker-Placement Correction Amplitude) được triển khai.
 
 .. rst-class:: classref-item-separator
 
@@ -459,7 +459,7 @@ Hai cách bố trí stereo với hai loa triển khai `WebAudio standard for Ste
 
 - |void| **set_pitch_scale**\ (\ value\: :ref:`float<class_float>`\ ) - :ref:`float<class_float>` **get_pitch_scale**\ (\ )
 
-Cao độ và tempo của âm thanh, dưới dạng hệ số nhân của sample rate của sample âm thanh.
+Cao độ và tempo của âm thanh, dưới dạng hệ số nhân với sample rate của mẫu âm thanh.
 
 .. rst-class:: classref-item-separator
 
@@ -475,9 +475,9 @@ Cao độ và tempo của âm thanh, dưới dạng hệ số nhân của sample
 
 - |void| **set_playback_type**\ (\ value\: :ref:`PlaybackType<enum_AudioServer_PlaybackType>`\ ) - :ref:`PlaybackType<enum_AudioServer_PlaybackType>` **get_playback_type**\ (\ )
 
-**Thử nghiệm:** Thuộc tính này có thể bị thay đổi hoặc loại bỏ trong các phiên bản tương lai.
+**Thử nghiệm:** Thuộc tính này có thể được thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-Kiểu playback của stream player. Nếu được đặt khác giá trị mặc định, nó sẽ buộc sử dụng kiểu playback đó.
+Kiểu playback của stream player. Nếu được đặt thành giá trị khác giá trị mặc định, thuộc tính này sẽ buộc sử dụng kiểu playback đó.
 
 .. rst-class:: classref-item-separator
 
@@ -525,7 +525,7 @@ Tài nguyên :ref:`AudioStream<class_AudioStream>` sẽ được phát.
 
 - |void| **set_stream_paused**\ (\ value\: :ref:`bool<class_bool>`\ ) - :ref:`bool<class_bool>` **get_stream_paused**\ (\ )
 
-Nếu ``true``, quá trình phát sẽ bị tạm dừng. Bạn có thể tiếp tục bằng cách đặt :ref:`stream_paused<class_AudioStreamPlayer3D_property_stream_paused>` thành ``false``.
+Nếu ``true``, quá trình phát sẽ bị tạm dừng. Bạn có thể tiếp tục phát bằng cách đặt :ref:`stream_paused<class_AudioStreamPlayer3D_property_stream_paused>` thành ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -557,7 +557,7 @@ Hệ số của hiệu ứng suy giảm âm thanh. Giá trị cao hơn khiến �
 
 - |void| **set_volume_db**\ (\ value\: :ref:`float<class_float>`\ ) - :ref:`float<class_float>` **get_volume_db**\ (\ )
 
-Mức âm thanh cơ bản trước khi suy giảm, tính bằng decibel.
+Mức âm thanh cơ sở trước khi suy giảm, tính bằng decibel.
 
 .. rst-class:: classref-item-separator
 
@@ -573,9 +573,9 @@ Mức âm thanh cơ bản trước khi suy giảm, tính bằng decibel.
 
 - |void| **set_volume_linear**\ (\ value\: :ref:`float<class_float>`\ ) - :ref:`float<class_float>` **get_volume_linear**\ (\ )
 
-Mức âm thanh cơ bản trước khi suy giảm, dưới dạng giá trị tuyến tính.
+Mức âm thanh cơ sở trước khi suy giảm, dưới dạng giá trị tuyến tính.
 
-\ **Lưu ý:** Thành viên này sửa đổi :ref:`volume_db<class_AudioStreamPlayer3D_property_volume_db>` để thuận tiện. Giá trị trả về tương đương với kết quả của :ref:`@GlobalScope.db_to_linear()<class_@GlobalScope_method_db_to_linear>` trên :ref:`volume_db<class_AudioStreamPlayer3D_property_volume_db>`. Việc thiết lập thành viên này tương đương với việc đặt :ref:`volume_db<class_AudioStreamPlayer3D_property_volume_db>` thành kết quả của :ref:`@GlobalScope.linear_to_db()<class_@GlobalScope_method_linear_to_db>` trên một giá trị.
+\ **Lưu ý:** Thành viên này sửa đổi :ref:`volume_db<class_AudioStreamPlayer3D_property_volume_db>` để thuận tiện. Giá trị được trả về tương đương với kết quả của :ref:`@GlobalScope.db_to_linear()<class_@GlobalScope_method_db_to_linear>` trên :ref:`volume_db<class_AudioStreamPlayer3D_property_volume_db>`. Việc đặt thành viên này tương đương với việc đặt :ref:`volume_db<class_AudioStreamPlayer3D_property_volume_db>` thành kết quả của :ref:`@GlobalScope.linear_to_db()<class_@GlobalScope_method_linear_to_db>` trên một giá trị.
 
 .. rst-class:: classref-section-separator
 
@@ -616,7 +616,7 @@ Trả về đối tượng :ref:`AudioStreamPlayback<class_AudioStreamPlayback>`
 
 :ref:`bool<class_bool>` **has_stream_playback**\ (\ ) :ref:`🔗<class_AudioStreamPlayer3D_method_has_stream_playback>`
 
-Trả về liệu :ref:`AudioStreamPlayer<class_AudioStreamPlayer>` có thể trả về đối tượng :ref:`AudioStreamPlayback<class_AudioStreamPlayback>` hay không.
+Trả về việc :ref:`AudioStreamPlayer<class_AudioStreamPlayer>` có thể trả về đối tượng :ref:`AudioStreamPlayback<class_AudioStreamPlayback>` hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -628,7 +628,7 @@ Trả về liệu :ref:`AudioStreamPlayer<class_AudioStreamPlayer>` có thể tr
 
 |void| **play**\ (\ from_position\: :ref:`float<class_float>` = 0.0\ ) :ref:`🔗<class_AudioStreamPlayer3D_method_play>`
 
-Xếp âm thanh vào hàng đợi để phát ở frame vật lý tiếp theo, bắt đầu từ vị trí ``from_position`` đã cho, tính bằng giây.
+Đưa âm thanh vào hàng đợi để phát ở frame vật lý tiếp theo, bắt đầu từ vị trí ``from_position`` đã cho, tính bằng giây.
 
 .. rst-class:: classref-item-separator
 

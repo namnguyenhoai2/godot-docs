@@ -30,7 +30,7 @@ Use the :ref:`process_material<class_GPUParticles2D_property_process_material>` 
 Tutorials
 ---------
 
-- :doc:`Particle systems (2D) <../tutorials/2d/particle_systems_2d>`
+ :doc:`Hệ thống particle (2D) <../tutorials/2d/particle_systems_2d>`
 
 - `2D Particles Demo <https://godotengine.org/asset-library/asset/2724>`__
 

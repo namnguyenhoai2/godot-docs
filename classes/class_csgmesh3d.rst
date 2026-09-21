@@ -25,7 +25,7 @@ Node CSG này cho phép bạn sử dụng bất kỳ tài nguyên mesh nào làm
 Hướng dẫn
 ---------
 
-- :doc:`Prototyping levels with CSG <../tutorials/3d/csg_tools>`
+- :doc:`Tạo nguyên mẫu level bằng CSG <../tutorials/3d/csg_tools>`
 
 .. rst-class:: classref-reftable-group
 

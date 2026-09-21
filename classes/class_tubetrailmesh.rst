@@ -30,7 +30,7 @@ Tutorials
 
 - :doc:`3D Particle trails <../tutorials/3d/particles/trails>`
 
-- :doc:`Particle systems (3D) <../tutorials/3d/particles/index>`
+ :doc:`Hệ thống particle (3D) <../tutorials/3d/particles/index>`
 
 .. rst-class:: classref-reftable-group
 

@@ -12,21 +12,21 @@ CanvasModulate
 
 **Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Một node áp dụng màu phủ cho canvas.
+Một node áp dụng màu phủ lên canvas.
 
 .. rst-class:: classref-introduction-group
 
 Mô tả
 -----
 
-**CanvasModulate** applies a color tint to all nodes on a canvas. Only one can be used to tint a canvas, but :ref:`CanvasLayer<class_CanvasLayer>`\ s can be used to render things independently.
+**CanvasModulate** áp dụng màu phủ cho tất cả các node trên một canvas. Chỉ có thể sử dụng một node để phủ màu cho canvas, nhưng có thể sử dụng :ref:`CanvasLayer<class_CanvasLayer>`\ s để render các đối tượng một cách độc lập.
 
 .. rst-class:: classref-introduction-group
 
 Hướng dẫn
 ---------
 
-- :doc:`2D lights and shadows <../tutorials/2d/2d_lights_and_shadows>`
+- :doc:`Ánh sáng và bóng đổ 2D <../tutorials/2d/2d_lights_and_shadows>`
 
 .. rst-class:: classref-reftable-group
 

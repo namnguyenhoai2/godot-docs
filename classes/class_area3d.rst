@@ -3,7 +3,7 @@
 .. meta::
 	:keywords: trigger
 
-.. KHÔNG ĐƯỢC CHỈNH SỬA TỆP NÀY!!! .. Được tự động tạo từ mã nguồn của Godot engine. .. Generator: https://github.com/godotengine/godot/tree/master/doc/tools/make_rst.py. .. XML source: https://github.com/godotengine/godot/tree/master/doc/classes/Area3D.xml.
+.. KHÔNG ĐƯỢC CHỈNH SỬA TỆP NÀY!!! .. Được tạo tự động từ mã nguồn engine Godot. .. Generator: https://github.com/godotengine/godot/tree/master/doc/tools/make_rst.py. .. XML source: https://github.com/godotengine/godot/tree/master/doc/classes/Area3D.xml.
 
 .. _class_Area3D:
 
@@ -12,27 +12,27 @@ Area3D
 
 **Kế thừa:** :ref:`CollisionObject3D<class_CollisionObject3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A region of 3D space that detects other :ref:`CollisionObject3D<class_CollisionObject3D>`\ s entering or exiting it.
+Một vùng không gian 3D phát hiện các :ref:`CollisionObject3D<class_CollisionObject3D>`\ s khác đi vào hoặc rời khỏi vùng đó.
 
 .. rst-class:: classref-introduction-group
 
 Mô tả
 -----
 
-**Area3D** is a region of 3D space defined by one or multiple :ref:`CollisionShape3D<class_CollisionShape3D>` or :ref:`CollisionPolygon3D<class_CollisionPolygon3D>` child nodes. It detects when other :ref:`CollisionObject3D<class_CollisionObject3D>`\ s enter or exit it, and it also keeps track of which collision objects haven't exited it yet (i.e. which one are overlapping it).
+**Area3D** là một vùng không gian 3D được xác định bởi một hoặc nhiều node con :ref:`CollisionShape3D<class_CollisionShape3D>` hoặc :ref:`CollisionPolygon3D<class_CollisionPolygon3D>`. Nó phát hiện khi các :ref:`CollisionObject3D<class_CollisionObject3D>`\ s khác đi vào hoặc rời khỏi vùng đó, đồng thời theo dõi các đối tượng va chạm chưa rời khỏi vùng (tức là các đối tượng đang chồng lấn với vùng).
 
-Node này cũng có thể thay đổi hoặc ghi đè cục bộ các tham số vật lý (gravity, damping) và định tuyến audio đến các audio bus tùy chỉnh.
+Node này cũng có thể thay đổi hoặc ghi đè cục bộ các tham số vật lý (gravity, damping) và định tuyến âm thanh đến các audio bus tùy chỉnh.
 
-\ **Lưu ý:** Các area và body được tạo bằng :ref:`PhysicsServer3D<class_PhysicsServer3D>` có thể không tương tác như mong đợi với **Area3D**\ s và có thể không phát signal hoặc theo dõi object chính xác.
+\ **Lưu ý:** Các area và body được tạo bằng :ref:`PhysicsServer3D<class_PhysicsServer3D>` có thể không tương tác như mong đợi với **Area3D**\ s, đồng thời có thể không phát signal hoặc theo dõi đối tượng chính xác.
 
-\ **Warning:** Using a :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>` inside a :ref:`CollisionShape3D<class_CollisionShape3D>` child of this node (created e.g. by using the **Create Trimesh Collision Sibling** option in the **Mesh** menu that appears when selecting a :ref:`MeshInstance3D<class_MeshInstance3D>` node) may give unexpected results, since this collision shape is hollow. If this is not desired, it has to be split into multiple :ref:`ConvexPolygonShape3D<class_ConvexPolygonShape3D>`\ s or primitive shapes like :ref:`BoxShape3D<class_BoxShape3D>`, or in some cases it may be replaceable by a :ref:`CollisionPolygon3D<class_CollisionPolygon3D>`.
+\ **Cảnh báo:** Việc sử dụng :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>` bên trong một node con :ref:`CollisionShape3D<class_CollisionShape3D>` của node này (được tạo, chẳng hạn, bằng tùy chọn **Create Trimesh Collision Sibling** trong menu **Mesh** xuất hiện khi chọn một node :ref:`MeshInstance3D<class_MeshInstance3D>`) có thể cho kết quả không như mong đợi, vì collision shape này là rỗng. Nếu không mong muốn điều này, cần tách nó thành nhiều :ref:`ConvexPolygonShape3D<class_ConvexPolygonShape3D>`\ s hoặc các primitive shape như :ref:`BoxShape3D<class_BoxShape3D>`, hoặc trong một số trường hợp có thể thay thế bằng một :ref:`CollisionPolygon3D<class_CollisionPolygon3D>`.
 
 .. rst-class:: classref-introduction-group
 
 Hướng dẫn
 ---------
 
-- :doc:`Using Area2D <../tutorials/physics/using_area_2d>`
+- :doc:`Sử dụng Area2D <../tutorials/physics/using_area_2d>`
 
 - `3D Platformer Demo <https://godotengine.org/asset-library/asset/2748>`__
 
@@ -40,7 +40,7 @@ Hướng dẫn
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -94,8 +94,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -120,8 +120,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Signal
+------
 
 .. _class_Area3D_signal_area_entered:
 
@@ -129,7 +129,7 @@ Signals
 
 **area_entered**\ (\ area\: :ref:`Area3D<class_Area3D>`\ ) :ref:`🔗<class_Area3D_signal_area_entered>`
 
-Được phát ra khi ``area`` nhận được đi vào area này. Yêu cầu :ref:`monitoring<class_Area3D_property_monitoring>` được đặt thành ``true``.
+Được phát khi ``area`` nhận được đi vào area này. Yêu cầu :ref:`monitoring<class_Area3D_property_monitoring>` được đặt thành ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -141,7 +141,7 @@ Signals
 
 **area_exited**\ (\ area\: :ref:`Area3D<class_Area3D>`\ ) :ref:`🔗<class_Area3D_signal_area_exited>`
 
-Được phát ra khi ``area`` nhận được rời khỏi area này. Yêu cầu :ref:`monitoring<class_Area3D_property_monitoring>` được đặt thành ``true``.
+Được phát khi ``area`` nhận được rời khỏi area này. Yêu cầu :ref:`monitoring<class_Area3D_property_monitoring>` được đặt thành ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -153,11 +153,11 @@ Signals
 
 **area_shape_entered**\ (\ area_rid\: :ref:`RID<class_RID>`, area\: :ref:`Area3D<class_Area3D>`, area_shape_index\: :ref:`int<class_int>`, local_shape_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Area3D_signal_area_shape_entered>`
 
-Được phát ra khi một :ref:`Shape3D<class_Shape3D>` của ``area`` nhận được đi vào một shape của area này. Yêu cầu :ref:`monitoring<class_Area3D_property_monitoring>` được đặt thành ``true``.
+Được phát khi một :ref:`Shape3D<class_Shape3D>` của ``area`` nhận được đi vào một shape của area này. Yêu cầu :ref:`monitoring<class_Area3D_property_monitoring>` được đặt thành ``true``.
 
-\ ``local_shape_index`` và ``area_shape_index`` lần lượt chứa các index của những shape tương tác từ area này và area còn lại. ``area_rid`` chứa :ref:`RID<class_RID>` của area còn lại. Có thể sử dụng các giá trị này với :ref:`PhysicsServer3D<class_PhysicsServer3D>`.
+\ ``local_shape_index`` và ``area_shape_index`` lần lượt chứa chỉ mục của các shape tương tác từ area này và area còn lại. ``area_rid`` chứa :ref:`RID<class_RID>` của area còn lại. Có thể sử dụng các giá trị này với :ref:`PhysicsServer3D<class_PhysicsServer3D>`.
 
-\ **Ví dụ:** Lấy node :ref:`CollisionShape3D<class_CollisionShape3D>` từ shape index:
+\ **Ví dụ:** Lấy node :ref:`CollisionShape3D<class_CollisionShape3D>` từ chỉ mục shape:
 
 
 .. tabs::
@@ -182,7 +182,7 @@ Signals
 
 **area_shape_exited**\ (\ area_rid\: :ref:`RID<class_RID>`, area\: :ref:`Area3D<class_Area3D>`, area_shape_index\: :ref:`int<class_int>`, local_shape_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Area3D_signal_area_shape_exited>`
 
-Được phát ra khi một :ref:`Shape3D<class_Shape3D>` của ``area`` nhận được rời khỏi một shape của area này. Yêu cầu :ref:`monitoring<class_Area3D_property_monitoring>` được đặt thành ``true``.
+Được phát khi một :ref:`Shape3D<class_Shape3D>` của ``area`` nhận được rời khỏi một shape của area này. Yêu cầu :ref:`monitoring<class_Area3D_property_monitoring>` được đặt thành ``true``.
 
 Xem thêm :ref:`area_shape_entered<class_Area3D_signal_area_shape_entered>`.
 
@@ -196,9 +196,9 @@ Xem thêm :ref:`area_shape_entered<class_Area3D_signal_area_shape_entered>`.
 
 **body_entered**\ (\ body\: :ref:`Node3D<class_Node3D>`\ ) :ref:`🔗<class_Area3D_signal_body_entered>`
 
-Emitted when the received ``body`` enters this area. ``body`` can be a :ref:`PhysicsBody3D<class_PhysicsBody3D>`, :ref:`SoftBody3D<class_SoftBody3D>` or :ref:`GridMap<class_GridMap>`. :ref:`GridMap<class_GridMap>`\ s are detected if their :ref:`MeshLibrary<class_MeshLibrary>` has collision shapes configured. Requires :ref:`monitoring<class_Area3D_property_monitoring>` to be set to ``true``.
+Được phát khi ``body`` nhận được đi vào area này. ``body`` có thể là một :ref:`PhysicsBody3D<class_PhysicsBody3D>`, :ref:`SoftBody3D<class_SoftBody3D>` hoặc :ref:`GridMap<class_GridMap>`. Các :ref:`GridMap<class_GridMap>`\ s được phát hiện nếu :ref:`MeshLibrary<class_MeshLibrary>` của chúng đã được cấu hình collision shape. Yêu cầu :ref:`monitoring<class_Area3D_property_monitoring>` được đặt thành ``true``.
 
-\ **Lưu ý:** Godot Physics không hỗ trợ báo cáo các vùng chồng lấp với :ref:`SoftBody3D<class_SoftBody3D>`, vì vậy sẽ không phát signal này trong những trường hợp đó.
+\ **Lưu ý:** Godot Physics không hỗ trợ báo cáo việc chồng lấn với :ref:`SoftBody3D<class_SoftBody3D>`, vì vậy sẽ không phát signal này trong những trường hợp đó.
 
 .. rst-class:: classref-item-separator
 
@@ -210,9 +210,9 @@ Emitted when the received ``body`` enters this area. ``body`` can be a :ref:`Phy
 
 **body_exited**\ (\ body\: :ref:`Node3D<class_Node3D>`\ ) :ref:`🔗<class_Area3D_signal_body_exited>`
 
-Emitted when the received ``body`` exits this area. ``body`` can be a :ref:`PhysicsBody3D<class_PhysicsBody3D>`, :ref:`SoftBody3D<class_SoftBody3D>` or :ref:`GridMap<class_GridMap>`. :ref:`GridMap<class_GridMap>`\ s are detected if their :ref:`MeshLibrary<class_MeshLibrary>` has collision shapes configured. Requires :ref:`monitoring<class_Area3D_property_monitoring>` to be set to ``true``.
+Được phát khi ``body`` nhận được rời khỏi area này. ``body`` có thể là một :ref:`PhysicsBody3D<class_PhysicsBody3D>`, :ref:`SoftBody3D<class_SoftBody3D>` hoặc :ref:`GridMap<class_GridMap>`. Các :ref:`GridMap<class_GridMap>`\ s được phát hiện nếu :ref:`MeshLibrary<class_MeshLibrary>` của chúng đã được cấu hình collision shape. Yêu cầu :ref:`monitoring<class_Area3D_property_monitoring>` được đặt thành ``true``.
 
-\ **Lưu ý:** Godot Physics không hỗ trợ báo cáo các vùng chồng lấp với :ref:`SoftBody3D<class_SoftBody3D>`, vì vậy sẽ không phát signal này trong những trường hợp đó.
+\ **Lưu ý:** Godot Physics không hỗ trợ báo cáo việc chồng lấn với :ref:`SoftBody3D<class_SoftBody3D>`, vì vậy sẽ không phát signal này trong những trường hợp đó.
 
 .. rst-class:: classref-item-separator
 
@@ -224,13 +224,13 @@ Emitted when the received ``body`` exits this area. ``body`` can be a :ref:`Phys
 
 **body_shape_entered**\ (\ body_rid\: :ref:`RID<class_RID>`, body\: :ref:`Node3D<class_Node3D>`, body_shape_index\: :ref:`int<class_int>`, local_shape_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Area3D_signal_body_shape_entered>`
 
-Emitted when a :ref:`Shape3D<class_Shape3D>` of the received ``body`` enters a shape of this area. ``body`` can be a :ref:`PhysicsBody3D<class_PhysicsBody3D>`, :ref:`SoftBody3D<class_SoftBody3D>` or :ref:`GridMap<class_GridMap>`. :ref:`GridMap<class_GridMap>`\ s are detected if their :ref:`MeshLibrary<class_MeshLibrary>` has collision shapes configured. Requires :ref:`monitoring<class_Area3D_property_monitoring>` to be set to ``true``.
+Được phát khi một :ref:`Shape3D<class_Shape3D>` của ``body`` nhận được đi vào một shape của area này. ``body`` có thể là một :ref:`PhysicsBody3D<class_PhysicsBody3D>`, :ref:`SoftBody3D<class_SoftBody3D>` hoặc :ref:`GridMap<class_GridMap>`. Các :ref:`GridMap<class_GridMap>`\ s được phát hiện nếu :ref:`MeshLibrary<class_MeshLibrary>` của chúng đã được cấu hình collision shape. Yêu cầu :ref:`monitoring<class_Area3D_property_monitoring>` được đặt thành ``true``.
 
-\ ``local_shape_index`` và ``body_shape_index`` lần lượt chứa các index của những shape tương tác từ area này và body tương tác. ``body_rid`` chứa :ref:`RID<class_RID>` của body. Có thể sử dụng các giá trị này với :ref:`PhysicsServer3D<class_PhysicsServer3D>`.
+\ ``local_shape_index`` và ``body_shape_index`` lần lượt chứa chỉ mục của các shape tương tác từ area này và body tương tác. ``body_rid`` chứa :ref:`RID<class_RID>` của body. Có thể sử dụng các giá trị này với :ref:`PhysicsServer3D<class_PhysicsServer3D>`.
 
-\ **Lưu ý:** Godot Physics không hỗ trợ báo cáo các vùng chồng lấp với :ref:`SoftBody3D<class_SoftBody3D>`, vì vậy sẽ không phát signal này trong những trường hợp đó.
+\ **Lưu ý:** Godot Physics không hỗ trợ báo cáo việc chồng lấn với :ref:`SoftBody3D<class_SoftBody3D>`, vì vậy sẽ không phát signal này trong những trường hợp đó.
 
-\ **Ví dụ:** Lấy node :ref:`CollisionShape3D<class_CollisionShape3D>` từ shape index:
+\ **Ví dụ:** Lấy node :ref:`CollisionShape3D<class_CollisionShape3D>` từ chỉ mục shape:
 
 
 .. tabs::
@@ -255,11 +255,11 @@ Emitted when a :ref:`Shape3D<class_Shape3D>` of the received ``body`` enters a s
 
 **body_shape_exited**\ (\ body_rid\: :ref:`RID<class_RID>`, body\: :ref:`Node3D<class_Node3D>`, body_shape_index\: :ref:`int<class_int>`, local_shape_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Area3D_signal_body_shape_exited>`
 
-Emitted when a :ref:`Shape3D<class_Shape3D>` of the received ``body`` exits a shape of this area. ``body`` can be a :ref:`PhysicsBody3D<class_PhysicsBody3D>`, :ref:`SoftBody3D<class_SoftBody3D>` or :ref:`GridMap<class_GridMap>`. :ref:`GridMap<class_GridMap>`\ s are detected if their :ref:`MeshLibrary<class_MeshLibrary>` has collision shapes configured. Requires :ref:`monitoring<class_Area3D_property_monitoring>` to be set to ``true``.
+Được phát khi một :ref:`Shape3D<class_Shape3D>` của ``body`` nhận được rời khỏi một shape của area này. ``body`` có thể là một :ref:`PhysicsBody3D<class_PhysicsBody3D>`, :ref:`SoftBody3D<class_SoftBody3D>` hoặc :ref:`GridMap<class_GridMap>`. Các :ref:`GridMap<class_GridMap>`\ s được phát hiện nếu :ref:`MeshLibrary<class_MeshLibrary>` của chúng đã được cấu hình collision shape. Yêu cầu :ref:`monitoring<class_Area3D_property_monitoring>` được đặt thành ``true``.
 
 Xem thêm :ref:`body_shape_entered<class_Area3D_signal_body_shape_entered>`.
 
-\ **Lưu ý:** Godot Physics không hỗ trợ báo cáo các vùng chồng lấp với :ref:`SoftBody3D<class_SoftBody3D>`, vì vậy sẽ không phát signal này trong những trường hợp đó.
+\ **Lưu ý:** Godot Physics không hỗ trợ báo cáo việc chồng lấn với :ref:`SoftBody3D<class_SoftBody3D>`, vì vậy sẽ không phát signal này trong những trường hợp đó.
 
 .. rst-class:: classref-section-separator
 
@@ -267,8 +267,8 @@ Xem thêm :ref:`body_shape_entered<class_Area3D_signal_body_shape_entered>`.
 
 .. rst-class:: classref-descriptions-group
 
-Các enumeration
----------------
+Các enum
+--------
 
 .. _enum_Area3D_SpaceOverride:
 
@@ -298,7 +298,7 @@ Area này cộng các giá trị gravity/damping của nó vào kết quả đã
 
 :ref:`SpaceOverride<enum_Area3D_SpaceOverride>` **SPACE_OVERRIDE_COMBINE_REPLACE** = ``2``
 
-Area này cộng các giá trị gravity/damping của nó vào kết quả đã tính đến thời điểm hiện tại (theo thứ tự :ref:`priority<class_Area3D_property_priority>`), bỏ qua mọi area có priority thấp hơn.
+Area này cộng các giá trị gravity/damping của nó vào kết quả đã tính đến thời điểm hiện tại (theo thứ tự :ref:`priority<class_Area3D_property_priority>`), bỏ qua mọi area có mức ưu tiên thấp hơn.
 
 .. _class_Area3D_constant_SPACE_OVERRIDE_REPLACE:
 
@@ -306,7 +306,7 @@ Area này cộng các giá trị gravity/damping của nó vào kết quả đã
 
 :ref:`SpaceOverride<enum_Area3D_SpaceOverride>` **SPACE_OVERRIDE_REPLACE** = ``3``
 
-Area này thay thế mọi gravity/damping, kể cả các giá trị mặc định, bỏ qua mọi area có priority thấp hơn.
+Area này thay thế mọi gravity/damping, kể cả các giá trị mặc định, bỏ qua mọi area có mức ưu tiên thấp hơn.
 
 .. _class_Area3D_constant_SPACE_OVERRIDE_REPLACE_COMBINE:
 
@@ -322,8 +322,8 @@ Area này thay thế mọi gravity/damping đã được tính đến thời đi
 
 .. rst-class:: classref-descriptions-group
 
-Mô tả Property
---------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Area3D_property_angular_damp:
 
@@ -335,7 +335,7 @@ Mô tả Property
 
 - |void| **set_angular_damp**\ (\ value\: :ref:`float<class_float>`\ ) - :ref:`float<class_float>` **get_angular_damp**\ (\ )
 
-Tốc độ các object ngừng quay trong area này. Đại diện cho vận tốc góc bị mất đi mỗi giây.
+Tốc độ các đối tượng ngừng quay trong area này. Biểu thị vận tốc góc bị mất đi mỗi giây.
 
 Xem :ref:`ProjectSettings.physics/3d/default_angular_damp<class_ProjectSettings_property_physics/3d/default_angular_damp>` để biết thêm chi tiết về damping.
 
@@ -353,7 +353,7 @@ Xem :ref:`ProjectSettings.physics/3d/default_angular_damp<class_ProjectSettings_
 
 - |void| **set_angular_damp_space_override_mode**\ (\ value\: :ref:`SpaceOverride<enum_Area3D_SpaceOverride>`\ ) - :ref:`SpaceOverride<enum_Area3D_SpaceOverride>` **get_angular_damp_space_override_mode**\ (\ )
 
-Chế độ ghi đè để tính angular damping trong area này.
+Chế độ ghi đè dùng cho các phép tính damping góc trong area này.
 
 .. rst-class:: classref-item-separator
 
@@ -433,7 +433,7 @@ Vector gravity của area (chưa được chuẩn hóa).
 
 - |void| **set_gravity_is_point**\ (\ value\: :ref:`bool<class_bool>`\ ) - :ref:`bool<class_bool>` **is_gravity_a_point**\ (\ )
 
-Nếu ``true``, gravity được tính từ một điểm (được thiết lập qua :ref:`gravity_point_center<class_Area3D_property_gravity_point_center>`). Xem thêm :ref:`gravity_space_override<class_Area3D_property_gravity_space_override>`.
+Nếu ``true``, gravity được tính từ một điểm (được đặt bằng :ref:`gravity_point_center<class_Area3D_property_gravity_point_center>`). Xem thêm :ref:`gravity_space_override<class_Area3D_property_gravity_space_override>`.
 
 .. rst-class:: classref-item-separator
 
@@ -465,9 +465,9 @@ Nếu gravity là một điểm (xem :ref:`gravity_point<class_Area3D_property_g
 
 - |void| **set_gravity_point_unit_distance**\ (\ value\: :ref:`float<class_float>`\ ) - :ref:`float<class_float>` **get_gravity_point_unit_distance**\ (\ )
 
-Khoảng cách tại đó cường độ trọng lực bằng :ref:`gravity<class_Area3D_property_gravity>`. Ví dụ, với một hành tinh có bán kính 100 mét và trọng lực bề mặt là 4.0 m/s², hãy đặt :ref:`gravity<class_Area3D_property_gravity>` thành 4.0 và khoảng cách đơn vị thành 100.0. Trọng lực sẽ suy giảm theo định luật nghịch đảo bình phương, vì vậy trong ví dụ này, ở cách tâm 200 mét, trọng lực sẽ là 1.0 m/s² (khoảng cách tăng gấp đôi, trọng lực còn 1/4), ở 50 mét sẽ là 16.0 m/s² (khoảng cách giảm một nửa, trọng lực tăng gấp 4 lần), v.v.
+Khoảng cách tại đó cường độ trọng lực bằng :ref:`gravity<class_Area3D_property_gravity>`. Ví dụ, trên một hành tinh có bán kính 100 mét và trọng lực bề mặt là 4.0 m/s², hãy đặt :ref:`gravity<class_Area3D_property_gravity>` thành 4.0 và khoảng cách đơn vị thành 100.0. Trọng lực sẽ giảm theo định luật nghịch đảo bình phương, vì vậy trong ví dụ này, ở cách tâm 200 mét, trọng lực sẽ là 1.0 m/s² (khoảng cách tăng gấp đôi, trọng lực giảm còn 1/4), còn ở 50 mét, trọng lực sẽ là 16.0 m/s² (khoảng cách giảm một nửa, trọng lực tăng gấp 4 lần), v.v.
 
-Điều trên chỉ đúng khi khoảng cách đơn vị là một số dương. Khi đặt giá trị này thành 0.0, trọng lực sẽ không đổi bất kể khoảng cách.
+Điều trên chỉ đúng khi khoảng cách đơn vị là một số dương. Khi được đặt thành 0.0, trọng lực sẽ không đổi bất kể khoảng cách.
 
 .. rst-class:: classref-item-separator
 
@@ -483,7 +483,7 @@ Khoảng cách tại đó cường độ trọng lực bằng :ref:`gravity<clas
 
 - |void| **set_gravity_space_override_mode**\ (\ value\: :ref:`SpaceOverride<enum_Area3D_SpaceOverride>`\ ) - :ref:`SpaceOverride<enum_Area3D_SpaceOverride>` **get_gravity_space_override_mode**\ (\ )
 
-Chế độ ghi đè cho các phép tính trọng lực trong khu vực này.
+Chế độ ghi đè cho các phép tính trọng lực trong vùng này.
 
 .. rst-class:: classref-item-separator
 
@@ -499,7 +499,7 @@ Chế độ ghi đè cho các phép tính trọng lực trong khu vực này.
 
 - |void| **set_linear_damp**\ (\ value\: :ref:`float<class_float>`\ ) - :ref:`float<class_float>` **get_linear_damp**\ (\ )
 
-Tốc độ mà các đối tượng dừng chuyển động trong khu vực này. Đại diện cho vận tốc tuyến tính bị mất mỗi giây.
+Tốc độ mà các đối tượng ngừng chuyển động trong vùng này. Đại diện cho vận tốc tuyến tính bị mất đi mỗi giây.
 
 Xem :ref:`ProjectSettings.physics/3d/default_linear_damp<class_ProjectSettings_property_physics/3d/default_linear_damp>` để biết thêm chi tiết về damping.
 
@@ -517,7 +517,7 @@ Xem :ref:`ProjectSettings.physics/3d/default_linear_damp<class_ProjectSettings_p
 
 - |void| **set_linear_damp_space_override_mode**\ (\ value\: :ref:`SpaceOverride<enum_Area3D_SpaceOverride>`\ ) - :ref:`SpaceOverride<enum_Area3D_SpaceOverride>` **get_linear_damp_space_override_mode**\ (\ )
 
-Chế độ ghi đè cho các phép tính damping tuyến tính trong khu vực này.
+Chế độ ghi đè cho các phép tính damping tuyến tính trong vùng này.
 
 .. rst-class:: classref-item-separator
 
@@ -533,7 +533,7 @@ Chế độ ghi đè cho các phép tính damping tuyến tính trong khu vực 
 
 - |void| **set_monitorable**\ (\ value\: :ref:`bool<class_bool>`\ ) - :ref:`bool<class_bool>` **is_monitorable**\ (\ )
 
-Nếu ``true``, các khu vực monitoring khác có thể phát hiện khu vực này.
+Nếu ``true``, các vùng đang theo dõi khác có thể phát hiện vùng này.
 
 .. rst-class:: classref-item-separator
 
@@ -549,7 +549,7 @@ Nếu ``true``, các khu vực monitoring khác có thể phát hiện khu vực
 
 - |void| **set_monitoring**\ (\ value\: :ref:`bool<class_bool>`\ ) - :ref:`bool<class_bool>` **is_monitoring**\ (\ )
 
-Nếu ``true``, khu vực này sẽ phát hiện các body hoặc khu vực đi vào và rời khỏi nó.
+Nếu ``true``, vùng này sẽ phát hiện các body hoặc vùng đi vào và rời khỏi nó.
 
 .. rst-class:: classref-item-separator
 
@@ -565,7 +565,7 @@ Nếu ``true``, khu vực này sẽ phát hiện các body hoặc khu vực đi 
 
 - |void| **set_priority**\ (\ value\: :ref:`int<class_int>`\ ) - :ref:`int<class_int>` **get_priority**\ (\ )
 
-Độ ưu tiên của khu vực. Các khu vực có độ ưu tiên cao hơn được xử lý trước. Vật lý của :ref:`World3D<class_World3D>` luôn được xử lý sau cùng, sau tất cả các khu vực.
+Mức ưu tiên của vùng. Các vùng có mức ưu tiên cao hơn sẽ được xử lý trước. Vật lý của :ref:`World3D<class_World3D>` luôn được xử lý sau cùng, sau tất cả các vùng.
 
 .. rst-class:: classref-item-separator
 
@@ -581,7 +581,7 @@ Nếu ``true``, khu vực này sẽ phát hiện các body hoặc khu vực đi 
 
 - |void| **set_reverb_amount**\ (\ value\: :ref:`float<class_float>`\ ) - :ref:`float<class_float>` **get_reverb_amount**\ (\ )
 
-Mức độ mà khu vực này áp dụng reverb cho âm thanh liên kết với nó. Có phạm vi từ ``0`` đến ``1`` với độ chính xác ``0.1``.
+Mức độ mà vùng này áp dụng reverb cho âm thanh liên kết với nó. Phạm vi từ ``0`` đến ``1``, với độ chính xác ``0.1``.
 
 .. rst-class:: classref-item-separator
 
@@ -597,7 +597,7 @@ Mức độ mà khu vực này áp dụng reverb cho âm thanh liên kết với
 
 - |void| **set_use_reverb_bus**\ (\ value\: :ref:`bool<class_bool>`\ ) - :ref:`bool<class_bool>` **is_using_reverb_bus**\ (\ )
 
-Nếu ``true``, khu vực này áp dụng reverb cho âm thanh liên kết với nó.
+Nếu ``true``, vùng này sẽ áp dụng reverb cho âm thanh liên kết với nó.
 
 .. rst-class:: classref-item-separator
 
@@ -613,7 +613,7 @@ Nếu ``true``, khu vực này áp dụng reverb cho âm thanh liên kết với
 
 - |void| **set_reverb_bus_name**\ (\ value\: :ref:`StringName<class_StringName>`\ ) - :ref:`StringName<class_StringName>` **get_reverb_bus_name**\ (\ )
 
-Tên của reverb bus được sử dụng cho âm thanh liên kết với khu vực này.
+Tên của reverb bus sẽ được sử dụng cho âm thanh liên kết với vùng này.
 
 .. rst-class:: classref-item-separator
 
@@ -629,7 +629,7 @@ Tên của reverb bus được sử dụng cho âm thanh liên kết với khu v
 
 - |void| **set_reverb_uniformity**\ (\ value\: :ref:`float<class_float>`\ ) - :ref:`float<class_float>` **get_reverb_uniformity**\ (\ )
 
-Mức độ mà reverb của khu vực này tạo ra hiệu ứng đồng nhất. Có phạm vi từ ``0`` đến ``1`` với độ chính xác ``0.1``.
+Mức độ mà reverb của vùng này tạo ra hiệu ứng đồng nhất. Phạm vi từ ``0`` đến ``1``, với độ chính xác ``0.1``.
 
 .. rst-class:: classref-item-separator
 
@@ -645,7 +645,7 @@ Mức độ mà reverb của khu vực này tạo ra hiệu ứng đồng nhất
 
 - |void| **set_wind_attenuation_factor**\ (\ value\: :ref:`float<class_float>`\ ) - :ref:`float<class_float>` **get_wind_attenuation_factor**\ (\ )
 
-Tốc độ theo hàm mũ mà lực gió giảm dần theo khoảng cách từ nguồn gốc của nó.
+Tốc độ theo hàm mũ mà lực gió giảm dần theo khoảng cách từ nguồn của nó.
 
 \ **Lưu ý:** Lực gió này chỉ áp dụng cho các node :ref:`SoftBody3D<class_SoftBody3D>`. Các physics body khác hiện không bị ảnh hưởng bởi gió.
 
@@ -663,7 +663,7 @@ Tốc độ theo hàm mũ mà lực gió giảm dần theo khoảng cách từ n
 
 - |void| **set_wind_force_magnitude**\ (\ value\: :ref:`float<class_float>`\ ) - :ref:`float<class_float>` **get_wind_force_magnitude**\ (\ )
 
-Độ lớn của lực gió dành riêng cho khu vực.
+Độ lớn của lực gió dành riêng cho vùng.
 
 \ **Lưu ý:** Lực gió này chỉ áp dụng cho các node :ref:`SoftBody3D<class_SoftBody3D>`. Các physics body khác hiện không bị ảnh hưởng bởi gió.
 
@@ -681,7 +681,7 @@ Tốc độ theo hàm mũ mà lực gió giảm dần theo khoảng cách từ n
 
 - |void| **set_wind_source_path**\ (\ value\: :ref:`NodePath<class_NodePath>`\ ) - :ref:`NodePath<class_NodePath>` **get_wind_source_path**\ (\ )
 
-:ref:`Node3D<class_Node3D>` được sử dụng để xác định hướng và nguồn gốc của lực gió dành riêng cho khu vực. Hướng này ngược với trục z của local transform của :ref:`Node3D<class_Node3D>`, còn nguồn gốc là gốc của local transform của :ref:`Node3D<class_Node3D>`.
+:ref:`Node3D<class_Node3D>` được dùng để chỉ định hướng và nguồn của lực gió dành riêng cho vùng. Hướng này ngược với trục z của biến đổi cục bộ của :ref:`Node3D<class_Node3D>`, còn nguồn của nó là gốc của biến đổi cục bộ của :ref:`Node3D<class_Node3D>`.
 
 \ **Lưu ý:** Lực gió này chỉ áp dụng cho các node :ref:`SoftBody3D<class_SoftBody3D>`. Các physics body khác hiện không bị ảnh hưởng bởi gió.
 
@@ -700,9 +700,9 @@ Mô tả phương thức
 
 :ref:`Array<class_Array>`\[:ref:`Area3D<class_Area3D>`\] **get_overlapping_areas**\ (\ ) |const| :ref:`🔗<class_Area3D_method_get_overlapping_areas>`
 
-Trả về danh sách các **Area3D**\ s giao nhau. :ref:`CollisionObject3D.collision_layer<class_CollisionObject3D_property_collision_layer>` của khu vực chồng lấn phải là một phần của :ref:`CollisionObject3D.collision_mask<class_CollisionObject3D_property_collision_mask>` của khu vực này thì mới được phát hiện.
+Trả về danh sách các **Area3D**\ s giao nhau. :ref:`CollisionObject3D.collision_layer<class_CollisionObject3D_property_collision_layer>` của vùng chồng lấp phải là một phần của :ref:`CollisionObject3D.collision_mask<class_CollisionObject3D_property_collision_mask>` của vùng này thì mới được phát hiện.
 
-Vì lý do hiệu năng (tất cả các va chạm được xử lý cùng lúc), danh sách này được cập nhật một lần trong bước physics, không phải ngay sau khi các đối tượng được di chuyển. Hãy cân nhắc sử dụng signals thay thế.
+Vì lý do hiệu năng (tất cả va chạm được xử lý cùng lúc), danh sách này được cập nhật một lần trong bước vật lý, không phải ngay sau khi các đối tượng được di chuyển. Hãy cân nhắc sử dụng signals thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -714,11 +714,11 @@ Vì lý do hiệu năng (tất cả các va chạm được xử lý cùng lúc)
 
 :ref:`Array<class_Array>`\[:ref:`Node3D<class_Node3D>`\] **get_overlapping_bodies**\ (\ ) |const| :ref:`🔗<class_Area3D_method_get_overlapping_bodies>`
 
-Returns a list of intersecting :ref:`PhysicsBody3D<class_PhysicsBody3D>`\ s, :ref:`SoftBody3D<class_SoftBody3D>`\ s, and :ref:`GridMap<class_GridMap>`\ s. The overlapping body's :ref:`CollisionObject3D.collision_layer<class_CollisionObject3D_property_collision_layer>` must be part of this area's :ref:`CollisionObject3D.collision_mask<class_CollisionObject3D_property_collision_mask>` in order to be detected.
+Trả về danh sách các :ref:`PhysicsBody3D<class_PhysicsBody3D>`\ s, :ref:`SoftBody3D<class_SoftBody3D>`\ s và :ref:`GridMap<class_GridMap>`\ s giao nhau. :ref:`CollisionObject3D.collision_layer<class_CollisionObject3D_property_collision_layer>` của body chồng lấp phải là một phần của :ref:`CollisionObject3D.collision_mask<class_CollisionObject3D_property_collision_mask>` của vùng này thì mới được phát hiện.
 
-Vì lý do hiệu năng (tất cả các va chạm được xử lý cùng lúc), danh sách này được cập nhật một lần trong bước physics, không phải ngay sau khi các đối tượng được di chuyển. Hãy cân nhắc sử dụng signals thay thế.
+Vì lý do hiệu năng (tất cả va chạm được xử lý cùng lúc), danh sách này được cập nhật một lần trong bước vật lý, không phải ngay sau khi các đối tượng được di chuyển. Hãy cân nhắc sử dụng signals thay thế.
 
-\ **Lưu ý:** Godot Physics không hỗ trợ báo cáo các phần chồng lấn với :ref:`SoftBody3D<class_SoftBody3D>`, vì vậy sẽ không trả về các body như vậy.
+\ **Lưu ý:** Godot Physics không hỗ trợ báo cáo các vùng chồng lấp với :ref:`SoftBody3D<class_SoftBody3D>`, vì vậy sẽ không trả về các body như vậy.
 
 .. rst-class:: classref-item-separator
 
@@ -730,9 +730,9 @@ Vì lý do hiệu năng (tất cả các va chạm được xử lý cùng lúc)
 
 :ref:`bool<class_bool>` **has_overlapping_areas**\ (\ ) |const| :ref:`🔗<class_Area3D_method_has_overlapping_areas>`
 
-Trả về ``true`` nếu giao nhau với bất kỳ **Area3D**\ s nào, nếu không thì trả về ``false``. :ref:`CollisionObject3D.collision_layer<class_CollisionObject3D_property_collision_layer>` của khu vực chồng lấn phải là một phần của :ref:`CollisionObject3D.collision_mask<class_CollisionObject3D_property_collision_mask>` của khu vực này thì mới được phát hiện.
+Trả về ``true`` nếu giao nhau với bất kỳ **Area3D**\ s nào, nếu không thì trả về ``false``. :ref:`CollisionObject3D.collision_layer<class_CollisionObject3D_property_collision_layer>` của vùng chồng lấp phải là một phần của :ref:`CollisionObject3D.collision_mask<class_CollisionObject3D_property_collision_mask>` của vùng này thì mới được phát hiện.
 
-Vì lý do hiệu năng, danh sách các khu vực chồng lấn được cập nhật một lần trong bước physics, không phải ngay sau khi các đối tượng được di chuyển. Hãy cân nhắc sử dụng signals thay thế.
+Vì lý do hiệu năng, danh sách các vùng chồng lấp được cập nhật một lần trong bước vật lý (các va chạm đều được xử lý cùng lúc), không phải ngay sau khi các đối tượng được di chuyển. Hãy cân nhắc sử dụng signals thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -744,11 +744,11 @@ Vì lý do hiệu năng, danh sách các khu vực chồng lấn được cập 
 
 :ref:`bool<class_bool>` **has_overlapping_bodies**\ (\ ) |const| :ref:`🔗<class_Area3D_method_has_overlapping_bodies>`
 
-Returns ``true`` if intersecting any :ref:`PhysicsBody3D<class_PhysicsBody3D>`\ s, :ref:`SoftBody3D<class_SoftBody3D>`\ s, or :ref:`GridMap<class_GridMap>`\ s, otherwise returns ``false``. The overlapping body's :ref:`CollisionObject3D.collision_layer<class_CollisionObject3D_property_collision_layer>` must be part of this area's :ref:`CollisionObject3D.collision_mask<class_CollisionObject3D_property_collision_mask>` in order to be detected.
+Trả về ``true`` nếu giao nhau với bất kỳ :ref:`PhysicsBody3D<class_PhysicsBody3D>`\ s, :ref:`SoftBody3D<class_SoftBody3D>`\ s hoặc :ref:`GridMap<class_GridMap>`\ s nào, nếu không thì trả về ``false``. :ref:`CollisionObject3D.collision_layer<class_CollisionObject3D_property_collision_layer>` của body chồng lấp phải là một phần của :ref:`CollisionObject3D.collision_mask<class_CollisionObject3D_property_collision_mask>` của vùng này thì mới được phát hiện.
 
-Vì lý do hiệu năng, danh sách các body chồng lấn được cập nhật một lần trong bước physics, không phải ngay sau khi các đối tượng được di chuyển. Hãy cân nhắc sử dụng signals thay thế.
+Vì lý do hiệu năng, danh sách các body chồng lấp được cập nhật một lần trong bước vật lý (các va chạm đều được xử lý cùng lúc), không phải ngay sau khi các đối tượng được di chuyển. Hãy cân nhắc sử dụng signals thay thế.
 
-\ **Lưu ý:** Godot Physics không hỗ trợ báo cáo các phần chồng lấn với :ref:`SoftBody3D<class_SoftBody3D>`, vì vậy sẽ không xem xét các body như vậy.
+\ **Lưu ý:** Godot Physics không hỗ trợ báo cáo các vùng chồng lấp với :ref:`SoftBody3D<class_SoftBody3D>`, vì vậy sẽ không xem xét các body như vậy.
 
 .. rst-class:: classref-item-separator
 
@@ -760,9 +760,9 @@ Vì lý do hiệu năng, danh sách các body chồng lấn được cập nhậ
 
 :ref:`bool<class_bool>` **overlaps_area**\ (\ area\: :ref:`Node<class_Node>`\ ) |const| :ref:`🔗<class_Area3D_method_overlaps_area>`
 
-Trả về ``true`` nếu **Area3D** đã cho giao nhau hoặc chồng lấn với **Area3D** này, nếu không thì trả về ``false``.
+Trả về ``true`` nếu **Area3D** được cung cấp giao nhau hoặc chồng lấp với **Area3D** này, nếu không thì trả về ``false``.
 
-\ **Lưu ý:** Kết quả của phép kiểm tra này không được cập nhật ngay sau khi di chuyển các đối tượng. Vì lý do hiệu năng, danh sách các phần chồng lấn được cập nhật một lần mỗi frame và trước bước physics. Hãy cân nhắc sử dụng signals thay thế.
+\ **Lưu ý:** Kết quả của phép kiểm tra này không được cập nhật ngay sau khi di chuyển các đối tượng. Vì lý do hiệu năng, danh sách chồng lấp được cập nhật một lần mỗi frame và trước bước vật lý. Hãy cân nhắc sử dụng signals thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -774,13 +774,13 @@ Trả về ``true`` nếu **Area3D** đã cho giao nhau hoặc chồng lấn v�
 
 :ref:`bool<class_bool>` **overlaps_body**\ (\ body\: :ref:`Node<class_Node>`\ ) |const| :ref:`🔗<class_Area3D_method_overlaps_body>`
 
-Trả về ``true`` nếu physics body đã cho giao nhau hoặc chồng lấn với **Area3D** này, nếu không thì trả về ``false``.
+Trả về ``true`` nếu physics body được cung cấp giao nhau hoặc chồng lấp với **Area3D** này, nếu không thì trả về ``false``.
 
-\ Đối số ``body`` có thể là một instance của :ref:`PhysicsBody3D<class_PhysicsBody3D>`, :ref:`SoftBody3D<class_SoftBody3D>` hoặc :ref:`GridMap<class_GridMap>`. Mặc dù GridMaps không phải là physics body, chúng đăng ký các tile của mình với các collision shape dưới dạng một physics body ảo.
+Đối số \ ``body`` có thể là một instance của :ref:`PhysicsBody3D<class_PhysicsBody3D>`, :ref:`SoftBody3D<class_SoftBody3D>` hoặc :ref:`GridMap<class_GridMap>`. Mặc dù GridMaps không phải là physics body, chúng đăng ký các tile của mình với các collision shape dưới dạng một physics body ảo.
 
-\ **Lưu ý:** Kết quả của phép kiểm tra này không được cập nhật ngay sau khi di chuyển các đối tượng. Vì lý do hiệu năng, danh sách các phần chồng lấn được cập nhật một lần mỗi frame và trước bước physics. Hãy cân nhắc sử dụng signals thay thế.
+\ **Lưu ý:** Kết quả của phép kiểm tra này không được cập nhật ngay sau khi di chuyển các đối tượng. Vì lý do hiệu năng, danh sách chồng lấp được cập nhật một lần mỗi frame và trước bước vật lý. Hãy cân nhắc sử dụng signals thay thế.
 
-\ **Lưu ý:** Godot Physics không hỗ trợ báo cáo các phần chồng lấn với :ref:`SoftBody3D<class_SoftBody3D>`, vì vậy trong những trường hợp đó sẽ trả về ``false``.
+\ **Lưu ý:** Godot Physics không hỗ trợ báo cáo các vùng chồng lấp với :ref:`SoftBody3D<class_SoftBody3D>`, vì vậy trong những trường hợp đó sẽ trả về ``false``.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`

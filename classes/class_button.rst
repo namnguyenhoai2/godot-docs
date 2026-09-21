@@ -1,11 +1,11 @@
 :github_url: hide
 
-.. KHÔNG ĐƯỢC CHỈNH SỬA TỆP NÀY!!! .. Được tự động tạo từ mã nguồn của Godot engine. .. Trình tạo: https://github.com/godotengine/godot/tree/master/doc/tools/make_rst.py. .. Nguồn XML: https://github.com/godotengine/godot/tree/master/doc/classes/Button.xml.
+.. KHÔNG ĐƯỢC CHỈNH SỬA TỆP NÀY!!! .. Tự động tạo từ mã nguồn của Godot engine. .. Trình tạo: https://github.com/godotengine/godot/tree/master/doc/tools/make_rst.py. .. Nguồn XML: https://github.com/godotengine/godot/tree/master/doc/classes/Button.xml.
 
 .. _class_Button:
 
-Nút
-===
+Button
+======
 
 **Kế thừa:** :ref:`BaseButton<class_BaseButton>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
@@ -18,7 +18,7 @@ Một nút theo theme có thể chứa văn bản và biểu tượng.
 Mô tả
 -----
 
-**Button** là nút theo theme tiêu chuẩn. Nó có thể chứa văn bản và biểu tượng, đồng thời sẽ hiển thị chúng theo :ref:`Theme<class_Theme>` hiện tại.
+**Button** là nút theo theme tiêu chuẩn. Nút có thể chứa văn bản và biểu tượng, đồng thời sẽ hiển thị chúng theo :ref:`Theme<class_Theme>` hiện tại.
 
 \ **Ví dụ:** Tạo một nút và kết nối một phương thức sẽ được gọi khi nút được nhấn:
 
@@ -55,7 +55,7 @@ Mô tả
 
 Xem thêm :ref:`BaseButton<class_BaseButton>`, chứa các thuộc tính và phương thức phổ biến liên quan đến node này.
 
-\ **Lưu ý:** Các nút hỗ trợ multitouch thông qua thao tác chạm, cho phép nhấn nhiều nút cùng lúc. Nếu không, thao tác chuột sẽ được sử dụng, giới hạn tương tác ở một lần nhấn nút tại một thời điểm.
+\ **Lưu ý:** Button hỗ trợ multitouch thông qua đầu vào cảm ứng, cho phép nhấn nhiều nút cùng lúc. Nếu không, đầu vào chuột sẽ được sử dụng, giới hạn tương tác chỉ còn một lần nhấn nút tại một thời điểm.
 
 .. rst-class:: classref-introduction-group
 
@@ -243,7 +243,7 @@ Các cờ cắt khoảng trắng khi ngắt dòng tự động. Xem :ref:`TextSe
 
 - |void| **set_clip_text**\ (\ value\: :ref:`bool<class_bool>`\ ) - :ref:`bool<class_bool>` **get_clip_text**\ (\ )
 
-Nếu ``true``, văn bản quá lớn không thể vừa với nút sẽ bị cắt theo chiều ngang. Nếu ``false``, nút sẽ luôn đủ rộng để chứa văn bản. Văn bản không bị cắt theo chiều dọc và chiều cao của nút không bị ảnh hưởng bởi thuộc tính này.
+Nếu ``true``, văn bản quá lớn không thể vừa trong nút sẽ bị cắt theo chiều ngang. Nếu ``false``, nút sẽ luôn đủ rộng để chứa văn bản. Văn bản không bị cắt theo chiều dọc và chiều cao của nút không bị ảnh hưởng bởi thuộc tính này.
 
 .. rst-class:: classref-item-separator
 
@@ -259,7 +259,7 @@ Nếu ``true``, văn bản quá lớn không thể vừa với nút sẽ bị c�
 
 - |void| **set_expand_icon**\ (\ value\: :ref:`bool<class_bool>`\ ) - :ref:`bool<class_bool>` **is_expand_icon**\ (\ )
 
-Khi được bật, biểu tượng của nút sẽ phóng to/thu nhỏ để vừa với kích thước nút nhưng vẫn giữ nguyên tỷ lệ. Xem thêm :ref:`icon_max_width<class_Button_theme_constant_icon_max_width>`.
+Khi được bật, biểu tượng của nút sẽ phóng to/thu nhỏ để vừa với kích thước của nút trong khi vẫn giữ nguyên tỷ lệ. Xem thêm :ref:`icon_max_width<class_Button_theme_constant_icon_max_width>`.
 
 .. rst-class:: classref-item-separator
 
@@ -275,7 +275,7 @@ Khi được bật, biểu tượng của nút sẽ phóng to/thu nhỏ để v�
 
 - |void| **set_flat**\ (\ value\: :ref:`bool<class_bool>`\ ) - :ref:`bool<class_bool>` **is_flat**\ (\ )
 
-Các nút phẳng không hiển thị phần trang trí.
+Button phẳng không hiển thị phần trang trí.
 
 .. rst-class:: classref-item-separator
 
@@ -293,7 +293,7 @@ Các nút phẳng không hiển thị phần trang trí.
 
 Biểu tượng của nút; nếu có văn bản, biểu tượng sẽ được đặt trước văn bản.
 
-Để chỉnh sửa lề và khoảng cách của biểu tượng, hãy sử dụng thuộc tính theme :ref:`h_separation<class_Button_theme_constant_h_separation>` và các thuộc tính ``content_margin_*`` của :ref:`StyleBox<class_StyleBox>` được sử dụng.
+Để chỉnh sửa lề và khoảng cách của biểu tượng, hãy sử dụng thuộc tính theme :ref:`h_separation<class_Button_theme_constant_h_separation>` và các thuộc tính ``content_margin_*`` của :ref:`StyleBox<class_StyleBox>`\ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -309,7 +309,7 @@ Biểu tượng của nút; nếu có văn bản, biểu tượng sẽ được 
 
 - |void| **set_icon_alignment**\ (\ value\: :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>`\ ) - :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` **get_icon_alignment**\ (\ )
 
-Xác định biểu tượng sẽ được căn theo chiều ngang về bên trái, bên phải hay ở giữa nút. Sử dụng cùng các hằng số :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` như căn chỉnh văn bản. Nếu được căn giữa theo cả chiều ngang và chiều dọc, văn bản sẽ được vẽ bên trên biểu tượng.
+Chỉ định biểu tượng sẽ được căn theo chiều ngang về bên trái, bên phải hay ở giữa nút. Sử dụng cùng các hằng số :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` như căn chỉnh văn bản. Nếu được căn giữa theo cả chiều ngang và chiều dọc, văn bản sẽ được vẽ chồng lên biểu tượng.
 
 .. rst-class:: classref-item-separator
 
@@ -325,7 +325,7 @@ Xác định biểu tượng sẽ được căn theo chiều ngang về bên tr�
 
 - |void| **set_language**\ (\ value\: :ref:`String<class_String>`\ ) - :ref:`String<class_String>` **get_language**\ (\ )
 
-Mã ngôn ngữ được sử dụng cho các thuật toán ngắt dòng và định hình văn bản. Nếu để trống, locale hiện tại sẽ được sử dụng thay thế.
+Mã ngôn ngữ được sử dụng cho các thuật toán ngắt dòng và định hình văn bản. Nếu để trống, locale hiện tại sẽ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -357,7 +357,7 @@ Văn bản của nút sẽ được hiển thị bên trong vùng của nút.
 
 - |void| **set_text_direction**\ (\ value\: :ref:`TextDirection<enum_Control_TextDirection>`\ ) - :ref:`TextDirection<enum_Control_TextDirection>` **get_text_direction**\ (\ )
 
-Hướng viết cơ bản của văn bản.
+Hướng viết cơ sở của văn bản.
 
 .. rst-class:: classref-item-separator
 
@@ -373,7 +373,7 @@ Hướng viết cơ bản của văn bản.
 
 - |void| **set_text_overrun_behavior**\ (\ value\: :ref:`OverrunBehavior<enum_TextServer_OverrunBehavior>`\ ) - :ref:`OverrunBehavior<enum_TextServer_OverrunBehavior>` **get_text_overrun_behavior**\ (\ )
 
-Thiết lập cách cắt khi văn bản vượt quá hình chữ nhật giới hạn của node.
+Thiết lập hành vi cắt khi văn bản vượt quá hình chữ nhật giới hạn của node.
 
 .. rst-class:: classref-item-separator
 
@@ -389,7 +389,7 @@ Thiết lập cách cắt khi văn bản vượt quá hình chữ nhật giới 
 
 - |void| **set_vertical_icon_alignment**\ (\ value\: :ref:`VerticalAlignment<enum_@GlobalScope_VerticalAlignment>`\ ) - :ref:`VerticalAlignment<enum_@GlobalScope_VerticalAlignment>` **get_vertical_icon_alignment**\ (\ )
 
-Xác định biểu tượng sẽ được căn theo chiều dọc lên trên, xuống dưới hay ở giữa nút. Sử dụng cùng các hằng số :ref:`VerticalAlignment<enum_@GlobalScope_VerticalAlignment>` như căn chỉnh văn bản. Nếu được căn giữa theo cả chiều ngang và chiều dọc, văn bản sẽ được vẽ bên trên biểu tượng.
+Chỉ định biểu tượng sẽ được căn theo chiều dọc lên trên, xuống dưới hay ở giữa nút. Sử dụng cùng các hằng số :ref:`VerticalAlignment<enum_@GlobalScope_VerticalAlignment>` như căn chỉnh văn bản. Nếu được căn giữa theo cả chiều ngang và chiều dọc, văn bản sẽ được vẽ chồng lên biểu tượng.
 
 .. rst-class:: classref-section-separator
 
@@ -430,7 +430,7 @@ Mô tả thuộc tính theme
 
 :ref:`Color<class_Color>` **font_focus_color** = ``Color(0.95, 0.95, 0.95, 1)`` :ref:`🔗<class_Button_theme_color_font_focus_color>`
 
-:ref:`Color<class_Color>` văn bản được sử dụng khi **Button** được focus. Chỉ thay thế màu văn bản thông thường của nút. Các trạng thái bị vô hiệu hóa, di chuột và được nhấn sẽ được ưu tiên hơn màu này.
+:ref:`Color<class_Color>` văn bản được sử dụng khi **Button** được focus. Chỉ thay thế màu văn bản thông thường của nút. Các trạng thái bị vô hiệu hóa, đang hover và đang nhấn được ưu tiên hơn màu này.
 
 .. rst-class:: classref-item-separator
 
@@ -442,7 +442,7 @@ Mô tả thuộc tính theme
 
 :ref:`Color<class_Color>` **font_hover_color** = ``Color(0.95, 0.95, 0.95, 1)`` :ref:`🔗<class_Button_theme_color_font_hover_color>`
 
-:ref:`Color<class_Color>` văn bản được sử dụng khi di chuột lên **Button**.
+:ref:`Color<class_Color>` văn bản được sử dụng khi **Button** đang được hover.
 
 .. rst-class:: classref-item-separator
 
@@ -454,7 +454,7 @@ Mô tả thuộc tính theme
 
 :ref:`Color<class_Color>` **font_hover_pressed_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_Button_theme_color_font_hover_pressed_color>`
 
-:ref:`Color<class_Color>` văn bản được sử dụng khi di chuột lên **Button** và nhấn nút.
+:ref:`Color<class_Color>` văn bản được sử dụng khi **Button** đang được hover và nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -502,7 +502,7 @@ Màu sắc đường viền văn bản của **Button**.
 
 :ref:`Color<class_Color>` **icon_focus_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_Button_theme_color_icon_focus_color>`
 
-:ref:`Color<class_Color>` điều biến biểu tượng được sử dụng khi **Button** được focus. Chỉ thay thế màu điều biến thông thường của nút. Các trạng thái bị vô hiệu hóa, di chuột và được nhấn sẽ được ưu tiên hơn màu này.
+:ref:`Color<class_Color>` điều biến biểu tượng được sử dụng khi **Button** được focus. Chỉ thay thế màu điều biến thông thường của nút. Các trạng thái bị vô hiệu hóa, đang hover và đang nhấn được ưu tiên hơn màu này.
 
 .. rst-class:: classref-item-separator
 
@@ -514,7 +514,7 @@ Màu sắc đường viền văn bản của **Button**.
 
 :ref:`Color<class_Color>` **icon_hover_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_Button_theme_color_icon_hover_color>`
 
-:ref:`Color<class_Color>` điều biến biểu tượng được sử dụng khi di chuột lên **Button**.
+:ref:`Color<class_Color>` điều biến biểu tượng được sử dụng khi **Button** đang được hover.
 
 .. rst-class:: classref-item-separator
 
@@ -526,7 +526,7 @@ Màu sắc đường viền văn bản của **Button**.
 
 :ref:`Color<class_Color>` **icon_hover_pressed_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_Button_theme_color_icon_hover_pressed_color>`
 
-:ref:`Color<class_Color>` điều biến biểu tượng được sử dụng khi di chuột lên **Button** và nhấn nút.
+:ref:`Color<class_Color>` điều biến biểu tượng được sử dụng khi **Button** đang được hover và nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -562,7 +562,7 @@ Màu sắc đường viền văn bản của **Button**.
 
 :ref:`int<class_int>` **align_to_largest_stylebox** = ``0`` :ref:`🔗<class_Button_theme_constant_align_to_largest_stylebox>`
 
-Hằng số này hoạt động như một boolean. Nếu ``true``, kích thước tối thiểu của nút và việc căn chỉnh văn bản/biểu tượng luôn dựa trên các lề stylebox lớn nhất; nếu không, chúng dựa trên các lề stylebox của trạng thái nút hiện tại.
+Hằng số này hoạt động như một boolean. Nếu ``true``, kích thước tối thiểu của nút và căn chỉnh văn bản/biểu tượng luôn dựa trên các lề stylebox lớn nhất; nếu không, chúng dựa trên các lề stylebox của trạng thái nút hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -574,7 +574,7 @@ Hằng số này hoạt động như một boolean. Nếu ``true``, kích thư�
 
 :ref:`int<class_int>` **h_separation** = ``4`` :ref:`🔗<class_Button_theme_constant_h_separation>`
 
-Khoảng cách theo chiều ngang giữa biểu tượng và văn bản của **Button**. Các giá trị âm sẽ được coi là ``0`` khi được sử dụng.
+Khoảng cách theo chiều ngang giữa biểu tượng và văn bản của **Button**. Các giá trị âm sẽ được xem là ``0`` khi được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -586,7 +586,7 @@ Khoảng cách theo chiều ngang giữa biểu tượng và văn bản của **
 
 :ref:`int<class_int>` **icon_max_width** = ``0`` :ref:`🔗<class_Button_theme_constant_icon_max_width>`
 
-Chiều rộng tối đa cho phép của biểu tượng **Button**. Giới hạn này được áp dụng trên kích thước mặc định của biểu tượng hoặc kích thước mở rộng của nó nếu :ref:`expand_icon<class_Button_property_expand_icon>` là ``true``. Chiều cao được điều chỉnh theo tỷ lệ của biểu tượng. Nếu nút có các biểu tượng bổ sung (ví dụ: :ref:`CheckBox<class_CheckBox>`), chúng cũng sẽ bị giới hạn.
+Chiều rộng tối đa cho phép của biểu tượng **Button**. Giới hạn này được áp dụng trên kích thước mặc định của biểu tượng hoặc kích thước đã mở rộng của nó nếu :ref:`expand_icon<class_Button_property_expand_icon>` là ``true``. Chiều cao được điều chỉnh theo tỷ lệ của biểu tượng. Nếu nút có các biểu tượng bổ sung (ví dụ: :ref:`CheckBox<class_CheckBox>`), chúng cũng sẽ bị giới hạn.
 
 .. rst-class:: classref-item-separator
 
@@ -598,7 +598,7 @@ Chiều rộng tối đa cho phép của biểu tượng **Button**. Giới hạ
 
 :ref:`int<class_int>` **line_spacing** = ``0`` :ref:`🔗<class_Button_theme_constant_line_spacing>`
 
-Khoảng cách dọc bổ sung giữa các dòng (tính bằng pixel); khoảng cách được cộng vào độ hạ dòng. Giá trị này có thể là số âm.
+Khoảng cách dọc bổ sung giữa các dòng (tính bằng pixel); khoảng cách được thêm vào độ hạ dòng. Giá trị này có thể là số âm.
 
 .. rst-class:: classref-item-separator
 
@@ -612,7 +612,7 @@ Khoảng cách dọc bổ sung giữa các dòng (tính bằng pixel); khoảng 
 
 Kích thước đường viền văn bản.
 
-\ **Lưu ý:** Nếu sử dụng font có bật :ref:`FontFile.multichannel_signed_distance_field<class_FontFile_property_multichannel_signed_distance_field>`, :ref:`FontFile.msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` của font đó phải được đặt ít nhất bằng *hai lần* giá trị của :ref:`outline_size<class_Button_theme_constant_outline_size>` để việc hiển thị đường viền trông chính xác. Nếu không, đường viền có thể bị cắt sớm hơn dự kiến.
+\ **Lưu ý:** Nếu sử dụng font có bật :ref:`FontFile.multichannel_signed_distance_field<class_FontFile_property_multichannel_signed_distance_field>`, :ref:`FontFile.msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` của font phải được đặt ít nhất bằng *hai lần* giá trị của :ref:`outline_size<class_Button_theme_constant_outline_size>` để việc hiển thị đường viền chính xác. Nếu không, đường viền có thể trông như bị cắt sớm hơn dự kiến.
 
 .. rst-class:: classref-item-separator
 
@@ -636,7 +636,7 @@ Kích thước đường viền văn bản.
 
 :ref:`int<class_int>` **font_size** :ref:`🔗<class_Button_theme_font_size_font_size>`
 
-Cỡ font của văn bản **Button**.
+Cỡ chữ của văn bản **Button**.
 
 .. rst-class:: classref-item-separator
 
@@ -756,7 +756,7 @@ Biểu tượng mặc định cho **Button**. Chỉ xuất hiện nếu :ref:`ic
 
 :ref:`StyleBox<class_StyleBox>` **normal_mirrored** :ref:`🔗<class_Button_theme_style_normal_mirrored>`
 
-:ref:`StyleBox<class_StyleBox>` mặc định cho **Button** (dành cho bố cục từ phải sang trái).
+:ref:`StyleBox<class_StyleBox>` mặc định cho **Button** (đối với bố cục từ phải sang trái).
 
 .. rst-class:: classref-item-separator
 

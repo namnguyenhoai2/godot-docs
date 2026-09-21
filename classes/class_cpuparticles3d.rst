@@ -25,7 +25,7 @@ Xem thêm :ref:`GPUParticles3D<class_GPUParticles3D>`, cung cấp cùng chức n
 Hướng dẫn
 ---------
 
-- :doc:`Particle systems (3D) <../tutorials/3d/particles/index>`
+ :doc:`Hệ thống particle (3D) <../tutorials/3d/particles/index>`
 
 .. rst-class:: classref-reftable-group
 

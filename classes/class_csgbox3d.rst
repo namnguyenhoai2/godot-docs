@@ -1,6 +1,6 @@
 :github_url: hide
 
-.. KHÔNG ĐƯỢC CHỈNH SỬA TỆP NÀY!!! .. Được tự động tạo từ mã nguồn của Godot engine. .. Trình tạo: https://github.com/godotengine/godot/tree/master/doc/tools/make_rst.py. .. Nguồn XML: https://github.com/godotengine/godot/tree/master/modules/csg/doc_classes/CSGBox3D.xml.
+.. KHÔNG ĐƯỢC CHỈNH SỬA TỆP NÀY!!! .. Được tự động tạo từ các mã nguồn của Godot engine. .. Generator: https://github.com/godotengine/godot/tree/master/doc/tools/make_rst.py. .. XML source: https://github.com/godotengine/godot/tree/master/modules/csg/doc_classes/CSGBox3D.xml.
 
 .. _class_CSGBox3D:
 
@@ -9,27 +9,27 @@ CSGBox3D
 
 **Kế thừa:** :ref:`CSGPrimitive3D<class_CSGPrimitive3D>` **<** :ref:`CSGShape3D<class_CSGShape3D>` **<** :ref:`GeometryInstance3D<class_GeometryInstance3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Một hình hộp CSG.
+Một hình dạng hộp CSG.
 
 .. rst-class:: classref-introduction-group
 
 Mô tả
 -----
 
-Node này cho phép bạn tạo một hình hộp để sử dụng với hệ thống CSG.
+Node này cho phép bạn tạo một hộp để sử dụng với hệ thống CSG.
 
-\ **Lưu ý:** Các node CSG предназначены để tạo nguyên mẫu level. Việc tạo node CSG có chi phí CPU đáng kể so với việc tạo một :ref:`MeshInstance3D<class_MeshInstance3D>` với một :ref:`PrimitiveMesh<class_PrimitiveMesh>`. Việc di chuyển một node CSG bên trong một node CSG khác cũng có chi phí CPU đáng kể, vì vậy nên tránh thao tác này trong quá trình gameplay.
+\ **Lưu ý:** Các node CSG được dùng cho mục đích tạo nguyên mẫu level. Việc tạo các node CSG có chi phí CPU đáng kể so với việc tạo một :ref:`MeshInstance3D<class_MeshInstance3D>` với một :ref:`PrimitiveMesh<class_PrimitiveMesh>`. Việc di chuyển một node CSG bên trong một node CSG khác cũng có chi phí CPU đáng kể, vì vậy nên tránh thực hiện việc này trong khi gameplay.
 
 .. rst-class:: classref-introduction-group
 
-Hướng dẫn
+Tutorials
 ---------
 
-- :doc:`Prototyping levels with CSG <../tutorials/3d/csg_tools>`
+- :doc:`Tạo nguyên mẫu level bằng CSG <../tutorials/3d/csg_tools>`
 
 .. rst-class:: classref-reftable-group
 
-Thuộc tính
+Properties
 ----------
 
 .. table::
@@ -60,7 +60,7 @@ Mô tả thuộc tính
 
 - |void| **set_material**\ (\ value\: :ref:`Material<class_Material>`\ ) - :ref:`Material<class_Material>` **get_material**\ (\ )
 
-Vật liệu được sử dụng để render hình hộp.
+Material được dùng để render hộp.
 
 .. rst-class:: classref-item-separator
 
@@ -76,7 +76,7 @@ Vật liệu được sử dụng để render hình hộp.
 
 - |void| **set_size**\ (\ value\: :ref:`Vector3<class_Vector3>`\ ) - :ref:`Vector3<class_Vector3>` **get_size**\ (\ )
 
-Chiều rộng, chiều cao và chiều sâu của hình hộp.
+Chiều rộng, chiều cao và chiều sâu của hộp.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`

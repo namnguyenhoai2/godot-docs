@@ -1,6 +1,6 @@
 :github_url: hide
 
-.. KHÔNG ĐƯỢC CHỈNH SỬA TỆP NÀY!!! .. Được tự động tạo từ mã nguồn của Godot engine. .. Generator: https://github.com/godotengine/godot/tree/master/doc/tools/make_rst.py. .. XML source: https://github.com/godotengine/godot/tree/master/doc/classes/CanvasLayer.xml.
+.. KHÔNG ĐƯỢC CHỈNH SỬA TỆP NÀY!!! .. Được tạo tự động từ mã nguồn engine Godot. .. Generator: https://github.com/godotengine/godot/tree/master/doc/tools/make_rst.py. .. XML source: https://github.com/godotengine/godot/tree/master/doc/classes/CanvasLayer.xml.
 
 .. _class_CanvasLayer:
 
@@ -18,29 +18,29 @@ Một node được dùng để render độc lập các đối tượng trong m
 Mô tả
 -----
 
-:ref:`CanvasItem<class_CanvasItem>`-derived nodes that are direct or indirect children of a **CanvasLayer** will be drawn in that layer. The layer is a numeric index that defines the draw order. The default 2D scene renders with index ``0``, so a **CanvasLayer** with index ``-1`` will be drawn below, and a **CanvasLayer** with index ``1`` will be drawn above. This order will hold regardless of the :ref:`CanvasItem.z_index<class_CanvasItem_property_z_index>` of the nodes within each layer.
+Các node bắt nguồn từ :ref:`CanvasItem<class_CanvasItem>` là các node con trực tiếp hoặc gián tiếp của **CanvasLayer** sẽ được vẽ trong layer đó. Layer là một chỉ mục dạng số xác định thứ tự vẽ. Scene 2D mặc định được render với chỉ mục ``0``, vì vậy **CanvasLayer** có chỉ mục ``-1`` sẽ được vẽ bên dưới, còn **CanvasLayer** có chỉ mục ``1`` sẽ được vẽ bên trên. Thứ tự này vẫn được giữ nguyên bất kể :ref:`CanvasItem.z_index<class_CanvasItem_property_z_index>` của các node trong mỗi layer.
 
-\ **CanvasLayer**\ có thể được ẩn và cũng có thể tùy chọn bám theo viewport. Điều này khiến chúng hữu ích cho các HUD như lớp phủ thanh máu (trên các layer ``1`` trở lên) hoặc background (trên các layer ``-1`` trở xuống).
+\ Các **CanvasLayer** có thể được ẩn và cũng có thể tùy chọn bám theo viewport. Điều này khiến chúng hữu ích cho các HUD như lớp phủ thanh máu (trên các layer ``1`` trở lên) hoặc background (trên các layer ``-1`` trở xuống).
 
-\ **Note:** Embedded :ref:`Window<class_Window>`\ s are placed on layer ``1024``. :ref:`CanvasItem<class_CanvasItem>`\ s on layers ``1025`` and higher appear in front of embedded windows.
+\ **Lưu ý:** Các :ref:`Window<class_Window>` được nhúng được đặt trên layer ``1024``. Các :ref:`CanvasItem<class_CanvasItem>` trên layer ``1025`` trở lên sẽ xuất hiện phía trước các cửa sổ được nhúng.
 
-\ **Note:** Each **CanvasLayer** is drawn on one specific :ref:`Viewport<class_Viewport>` and cannot be shared between multiple :ref:`Viewport<class_Viewport>`\ s, see :ref:`custom_viewport<class_CanvasLayer_property_custom_viewport>`. When using multiple :ref:`Viewport<class_Viewport>`\ s, for example in a split-screen game, you need to create an individual **CanvasLayer** for each :ref:`Viewport<class_Viewport>` you want it to be drawn on.
+\ **Lưu ý:** Mỗi **CanvasLayer** được vẽ trên một :ref:`Viewport<class_Viewport>` cụ thể và không thể được dùng chung giữa nhiều :ref:`Viewport<class_Viewport>`, xem :ref:`custom_viewport<class_CanvasLayer_property_custom_viewport>`. Khi sử dụng nhiều :ref:`Viewport<class_Viewport>`, chẳng hạn trong một game chia đôi màn hình, bạn cần tạo một **CanvasLayer** riêng cho mỗi :ref:`Viewport<class_Viewport>` mà bạn muốn nó được vẽ trên đó.
 
 .. rst-class:: classref-introduction-group
 
 Tutorial
 --------
 
-- :doc:`Viewport and canvas transforms <../tutorials/2d/2d_transforms>`
+- :doc:`Viewport và các phép biến đổi canvas <../tutorials/2d/2d_transforms>`
 
-- :doc:`Canvas layers <../tutorials/2d/canvas_layers>`
+- :doc:`Các canvas layer <../tutorials/2d/canvas_layers>`
 
 - `2D Dodge The Creeps Demo <https://godotengine.org/asset-library/asset/2712>`__
 
 .. rst-class:: classref-reftable-group
 
-Các thuộc tính
---------------
+Thuộc tính
+----------
 
 .. table::
    :widths: auto
@@ -67,8 +67,8 @@ Các thuộc tính
 
 .. rst-class:: classref-reftable-group
 
-Các phương thức
----------------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -89,8 +89,8 @@ Các phương thức
 
 .. rst-class:: classref-descriptions-group
 
-Signal
-------
+Tín hiệu
+--------
 
 .. _class_CanvasLayer_signal_visibility_changed:
 
@@ -98,7 +98,7 @@ Signal
 
 **visibility_changed**\ (\ ) :ref:`🔗<class_CanvasLayer_signal_visibility_changed>`
 
-Được phát ra khi khả năng hiển thị của layer thay đổi. Xem :ref:`visible<class_CanvasLayer_property_visible>`.
+Được phát khi khả năng hiển thị của layer thay đổi. Xem :ref:`visible<class_CanvasLayer_property_visible>`.
 
 .. rst-class:: classref-section-separator
 
@@ -135,9 +135,9 @@ Node :ref:`Viewport<class_Viewport>` tùy chỉnh được gán cho **CanvasLaye
 
 - |void| **set_follow_viewport**\ (\ value\: :ref:`bool<class_bool>`\ ) - :ref:`bool<class_bool>` **is_following_viewport**\ (\ )
 
-Nếu được bật, **CanvasLayer** duy trì vị trí của nó trong world space. Nếu bị tắt, **CanvasLayer** giữ nguyên tại một vị trí cố định trên màn hình.
+Khi được bật, **CanvasLayer** duy trì vị trí của nó trong không gian thế giới. Khi bị tắt, **CanvasLayer** giữ nguyên tại một vị trí cố định trên màn hình.
 
-Kết hợp với :ref:`follow_viewport_scale<class_CanvasLayer_property_follow_viewport_scale>`, tùy chọn này có thể được dùng để tạo hiệu ứng pseudo-3D.
+Kết hợp với :ref:`follow_viewport_scale<class_CanvasLayer_property_follow_viewport_scale>`, tính năng này có thể được dùng để tạo hiệu ứng pseudo-3D.
 
 .. rst-class:: classref-item-separator
 
@@ -169,11 +169,11 @@ Scale layer khi sử dụng :ref:`follow_viewport_enabled<class_CanvasLayer_prop
 
 - |void| **set_layer**\ (\ value\: :ref:`int<class_int>`\ ) - :ref:`int<class_int>` **get_layer**\ (\ )
 
-Chỉ số layer dùng cho thứ tự vẽ. Các giá trị thấp hơn được vẽ phía sau các giá trị cao hơn.
+Chỉ mục layer cho thứ tự vẽ. Các giá trị thấp hơn được vẽ phía sau các giá trị cao hơn.
 
-\ **Lưu ý:** Nếu nhiều CanvasLayer có cùng chỉ số layer, các node con :ref:`CanvasItem<class_CanvasItem>` của một CanvasLayer sẽ được vẽ phía sau các node con :ref:`CanvasItem<class_CanvasItem>` của CanvasLayer kia. CanvasLayer nào được vẽ phía trước là không xác định.
+\ **Lưu ý:** Nếu nhiều CanvasLayer có cùng chỉ mục layer, các node con :ref:`CanvasItem<class_CanvasItem>` của một CanvasLayer sẽ được vẽ phía sau các node con :ref:`CanvasItem<class_CanvasItem>` của CanvasLayer còn lại. CanvasLayer nào được vẽ phía trước là không xác định.
 
-\ **Lưu ý:** Chỉ số layer phải nằm trong khoảng từ :ref:`RenderingServer.CANVAS_LAYER_MIN<class_RenderingServer_constant_CANVAS_LAYER_MIN>` đến :ref:`RenderingServer.CANVAS_LAYER_MAX<class_RenderingServer_constant_CANVAS_LAYER_MAX>` (bao gồm cả hai). Bất kỳ giá trị nào khác sẽ bị quay vòng.
+\ **Lưu ý:** Chỉ mục layer phải nằm giữa :ref:`RenderingServer.CANVAS_LAYER_MIN<class_RenderingServer_constant_CANVAS_LAYER_MIN>` và :ref:`RenderingServer.CANVAS_LAYER_MAX<class_RenderingServer_constant_CANVAS_LAYER_MAX>` (bao gồm cả hai). Mọi giá trị khác sẽ quay vòng.
 
 .. rst-class:: classref-item-separator
 
@@ -205,7 +205,7 @@ Offset cơ sở của layer.
 
 - |void| **set_rotation**\ (\ value\: :ref:`float<class_float>`\ ) - :ref:`float<class_float>` **get_rotation**\ (\ )
 
-Rotation của layer, tính bằng radian.
+Rotation của layer tính bằng radian.
 
 .. rst-class:: classref-item-separator
 
@@ -253,9 +253,9 @@ Transform của layer.
 
 - |void| **set_visible**\ (\ value\: :ref:`bool<class_bool>`\ ) - :ref:`bool<class_bool>` **is_visible**\ (\ )
 
-Nếu ``false``, mọi :ref:`CanvasItem<class_CanvasItem>` dưới **CanvasLayer** này sẽ bị ẩn.
+Nếu ``false``, mọi :ref:`CanvasItem<class_CanvasItem>` bên dưới **CanvasLayer** này sẽ bị ẩn.
 
-Không giống :ref:`CanvasItem.visible<class_CanvasItem_property_visible>`, khả năng hiển thị của **CanvasLayer** không được lan truyền đến các layer bên dưới.
+Không giống :ref:`CanvasItem.visible<class_CanvasItem_property_visible>`, khả năng hiển thị của **CanvasLayer** không được truyền đến các layer bên dưới.
 
 .. rst-class:: classref-section-separator
 
@@ -284,7 +284,7 @@ Trả về RID của canvas được layer này sử dụng.
 
 :ref:`Transform2D<class_Transform2D>` **get_final_transform**\ (\ ) |const| :ref:`🔗<class_CanvasLayer_method_get_final_transform>`
 
-Returns the transform from the **CanvasLayer**\ s coordinate system to the :ref:`Viewport<class_Viewport>`\ s coordinate system.
+Trả về transform từ hệ tọa độ của **CanvasLayer** đến hệ tọa độ của :ref:`Viewport<class_Viewport>`.
 
 .. rst-class:: classref-item-separator
 
@@ -296,7 +296,7 @@ Returns the transform from the **CanvasLayer**\ s coordinate system to the :ref:
 
 |void| **hide**\ (\ ) :ref:`🔗<class_CanvasLayer_method_hide>`
 
-Ẩn mọi :ref:`CanvasItem<class_CanvasItem>` dưới **CanvasLayer** này. Tương đương với việc đặt :ref:`visible<class_CanvasLayer_property_visible>` thành ``false``.
+Ẩn mọi :ref:`CanvasItem<class_CanvasItem>` bên dưới **CanvasLayer** này. Tương đương với việc đặt :ref:`visible<class_CanvasLayer_property_visible>` thành ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -308,7 +308,7 @@ Returns the transform from the **CanvasLayer**\ s coordinate system to the :ref:
 
 |void| **show**\ (\ ) :ref:`🔗<class_CanvasLayer_method_show>`
 
-Hiển thị mọi :ref:`CanvasItem<class_CanvasItem>` dưới **CanvasLayer** này. Tương đương với việc đặt :ref:`visible<class_CanvasLayer_property_visible>` thành ``true``.
+Hiển thị mọi :ref:`CanvasItem<class_CanvasItem>` bên dưới **CanvasLayer** này. Tương đương với việc đặt :ref:`visible<class_CanvasLayer_property_visible>` thành ``true``.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`

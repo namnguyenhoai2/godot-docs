@@ -503,7 +503,7 @@ Nếu là true, tùy chọn này bật các phần của shader cần thiết đ
 Use Z Clip Scale
 ~~~~~~~~~~~~~~~~
 
-Thu nhỏ đối tượng đang được kết xuất về phía camera để tránh bị cắt vào các vật thể như tường. Tùy chọn này предназначены để sử dụng cho các đối tượng cố định tương đối với camera, chẳng hạn như cánh tay của người chơi, công cụ, v.v. Ánh sáng và bóng đổ sẽ tiếp tục hoạt động chính xác khi điều chỉnh thiết lập này, nhưng các hiệu ứng trong không gian màn hình như SSAO và SSR có thể bị lỗi với các giá trị scale thấp hơn. Vì vậy, hãy cố gắng giữ thiết lập này càng gần 1.0 càng tốt.
+Thu nhỏ đối tượng đang được kết xuất về phía camera để tránh bị cắt vào các vật thể như tường. Tùy chọn này có mục đích để sử dụng cho các đối tượng cố định tương đối với camera, chẳng hạn như cánh tay của người chơi, công cụ, v.v. Ánh sáng và bóng đổ sẽ tiếp tục hoạt động chính xác khi điều chỉnh thiết lập này, nhưng các hiệu ứng trong không gian màn hình như SSAO và SSR có thể bị lỗi với các giá trị scale thấp hơn. Vì vậy, hãy cố gắng giữ thiết lập này càng gần 1.0 càng tốt.
 
 Use FOV Override
 ~~~~~~~~~~~~~~~~

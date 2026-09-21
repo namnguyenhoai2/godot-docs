@@ -25,7 +25,7 @@ Xem thêm :ref:`GPUParticles2D<class_GPUParticles2D>`, cung cấp cùng chức n
 Hướng dẫn
 ---------
 
-- :doc:`Particle systems (2D) <../tutorials/2d/particle_systems_2d>`
+ :doc:`Hệ thống particle (2D) <../tutorials/2d/particle_systems_2d>`
 
 .. rst-class:: classref-reftable-group
 
