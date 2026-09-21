@@ -16,7 +16,7 @@ Một physics body 3D không thể bị di chuyển bởi các lực bên ngoài
 Mô tả
 -----
 
-An animatable 3D physics body. It can't be moved by external forces or contacts, but can be moved manually by other means such as code, :ref:`AnimationMixer<class_AnimationMixer>`\ s (with :ref:`AnimationMixer.callback_mode_process<class_AnimationMixer_property_callback_mode_process>` set to :ref:`AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS<class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS>`), and :ref:`RemoteTransform3D<class_RemoteTransform3D>`.
+Một physics body 2D có thể được tạo hiệu ứng chuyển động. Nó không thể bị di chuyển bởi các lực hoặc va chạm bên ngoài, nhưng có thể được di chuyển thủ công bằng các phương thức khác, chẳng hạn như bằng mã, :ref:`AnimationMixer<class_AnimationMixer>`\ s (với :ref:`AnimationMixer.callback_mode_process<class_AnimationMixer_property_callback_mode_process>` được đặt thành :ref:`AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS<class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS>`), và :ref:`RemoteTransform3D<class_RemoteTransform3D>`.
 
 Khi **AnimatableBody3D** được di chuyển, vận tốc tuyến tính và vận tốc góc của nó được ước tính và dùng để tác động đến các physics body khác trên đường đi của nó. Điều này khiến nó hữu ích cho các platform, cửa và những đối tượng chuyển động khác.
 
