@@ -2,909 +2,753 @@
 
 .. _doc_list_of_features:
 
-List of features
-================
+Danh sách tính năng
+===================
 
-This page aims to list **all** features currently supported by Godot.
+Trang này nhằm liệt kê **tất cả** các tính năng hiện được Godot hỗ trợ.
 
 .. note::
 
-    This page lists features supported by the current stable version of
-    Godot. Some of these features are not available in the
-    `3.x release series <https://docs.godotengine.org/en/3.6/about/list_of_features.html>`__.
+    Trang này liệt kê các tính năng được phiên bản ổn định hiện tại hỗ trợ
+    Godot. Một số tính năng này không có trong
+    `nhánh phát hành 3.x <https://docs.godotengine.org/en/3.6/about/list_of_features.html>`__.
 
-Platforms
----------
+Nền tảng
+--------
 
 .. seealso::
 
-    See :ref:`doc_system_requirements` for hardware and software version requirements.
+    Xem :ref:`doc_system_requirements` để biết các yêu cầu về phiên bản phần cứng và phần mềm.
 
 .. note::
 
-    For information about console support, see the `Godot website <https://godotengine.org/consoles/>`_.
+    Để biết thông tin về việc hỗ trợ console, hãy xem `trang web Godot <https://godotengine.org/consoles/>`_.
 
-**Can run both the editor and exported projects:**
+**Có thể chạy cả editor và các project đã export:**
 
-- Windows (x86 and ARM, 64-bit and 32-bit).
-- macOS (x86 and ARM, 64-bit only).
-- Linux (x86 and ARM, 64-bit and 32-bit).
+- Windows (x86 và ARM, 64-bit và 32-bit).
+- macOS (x86 và ARM, chỉ 64-bit).
+- Linux (x86 và ARM, 64-bit và 32-bit).
 
-   - Binaries are statically linked and can run on any distribution if compiled
-     on an old enough base distribution.
-   - Official binaries are compiled using the
-     `Godot Engine buildroot <https://github.com/godotengine/buildroot>`__,
-     allowing for binaries that work across common Linux distributions.
+   - Các binary được liên kết tĩnh và có thể chạy trên mọi distribution nếu được biên dịch trên một distribution nền đủ cũ.
+   - Các binary chính thức được biên dịch bằng `Godot Engine buildroot <https://github.com/godotengine/buildroot>`__, cho phép tạo ra các binary hoạt động trên những distribution Linux phổ biến.
 
-- Android (editor support is experimental).
-- :ref:`Web browsers <doc_using_the_web_editor>`. Experimental in 4.0,
-  using Godot 3.x is recommended instead when targeting HTML5.
+- Android (editor đang được hỗ trợ thử nghiệm).
+- :ref:`Trình duyệt web <doc_using_the_web_editor>`. Đang thử nghiệm trong 4.0; thay vào đó, khi nhắm đến HTML5, bạn nên sử dụng Godot 3.x.
 
 .. note::
 
-    Linux supports rv64 (RISC-V), ppc64 & ppc32 (PowerPC), and loongarch64. However
-    you must compile the editor for that platform (as well as export templates)
-    yourself, no official downloads are currently provided. RISC-V compiling
-    instructions can be found on the :ref:`doc_compiling_for_linuxbsd` page.
+    Linux hỗ trợ rv64 (RISC-V), ppc64 và ppc32 (PowerPC), cũng như loongarch64. Tuy nhiên, bạn phải tự biên dịch editor cho nền tảng đó (cũng như các export template); hiện chưa có bản tải xuống chính thức. Có thể tìm thấy hướng dẫn biên dịch RISC-V trên trang :ref:`doc_compiling_for_linuxbsd`.
 
-**Runs exported projects:**
+**Chạy các project đã export:**
 
 - iOS.
 
-Godot aims to be as platform-independent as possible and can be
-:ref:`ported to new platforms <doc_custom_platform_ports>` with relative ease.
+Godot hướng đến việc độc lập với nền tảng nhiều nhất có thể và có thể được
+:ref:`port sang các nền tảng mới <doc_custom_platform_ports>` tương đối dễ dàng.
 
 .. note::
 
-    Projects written in C# using Godot 4 currently cannot be exported to the
-    web platform. To use C# on that platform, consider Godot 3 instead.
-    Android and iOS platform support is available as of Godot 4.2, but is
-    experimental and :ref:`some limitations apply <doc_c_sharp_platforms>`.
+    Các project được viết bằng C# sử dụng Godot 4 hiện không thể export sang nền tảng web. Để sử dụng C# trên nền tảng đó, hãy cân nhắc dùng Godot 3. Hỗ trợ nền tảng Android và iOS có từ Godot 4.2, nhưng đang ở trạng thái thử nghiệm và :ref:`có một số hạn chế <doc_c_sharp_platforms>`.
 
 Editor
 ------
 
-**Features:**
+**Tính năng:**
 
-- Scene tree editor.
-- Built-in script editor. Also supports editing text files and using custom
-  syntax highlighters.
-- Support for :ref:`external script editors <doc_external_editor>` such as
-  Visual Studio Code or Vim.
-- GDScript :ref:`debugger <doc_debugger_panel>`.
+- Trình chỉnh sửa scene tree.
+- Trình chỉnh sửa script tích hợp sẵn. Đồng thời hỗ trợ chỉnh sửa các tệp văn bản và sử dụng syntax highlighter tùy chỉnh.
+- Hỗ trợ :ref:`external script editor <doc_external_editor>` như Visual Studio Code hoặc Vim.
+- :ref:`debugger <doc_debugger_panel>` GDScript.
 
-   - Supports debugging in threads.
+   - Hỗ trợ debug trong các thread.
 
-- Visual profiler with CPU and GPU time indications for each step of the
-  rendering pipeline.
-- Performance monitoring tools, including
-  :ref:`custom performance monitors <doc_custom_performance_monitors>`.
-- Supports :ref:`tracing profilers <doc_tracing_profilers>` like
-  :ref:`doc_profiler_tracy` and :ref:`doc_profiler_perfetto` for deeper optimization tasks.
-- Any script can be :ref:`run in the editor <doc_running_code_in_the_editor>`
-  and provide custom functionality such as clickable buttons in the inspector,
-  without needing to create an editor plugin.
-- Live script reloading.
-- Live scene editing.
+- Visual profiler hiển thị thời gian CPU và GPU cho từng bước của rendering pipeline.
+- Các công cụ theo dõi hiệu năng, bao gồm
+  :ref:`custom performance monitor <doc_custom_performance_monitors>`.
+- Hỗ trợ :ref:`tracing profiler <doc_tracing_profilers>` như
+  :ref:`doc_profiler_tracy` và :ref:`doc_profiler_perfetto` cho các tác vụ tối ưu hóa chuyên sâu hơn.
+- Mọi script đều có thể được :ref:`chạy trong editor <doc_running_code_in_the_editor>` và cung cấp các chức năng tùy chỉnh như các nút có thể nhấp trong inspector mà không cần tạo editor plugin.
+- Tải lại script trực tiếp.
+- Chỉnh sửa scene trực tiếp.
 
-   - Changes *will* reflect in the editor and *will* be kept after closing the running project.
+   - Các thay đổi *sẽ* được phản ánh trong editor và *sẽ* được giữ lại sau khi đóng project đang chạy.
 
-- Live camera replication (disabled by default).
+- Đồng bộ camera trực tiếp (mặc định bị tắt).
 
-   - Move the in-editor camera and see the result in the running project.
+   - Di chuyển camera trong editor và xem kết quả trong project đang chạy.
 
 - Remote inspector.
 
-   - Changes *won't* reflect in the editor and *won't* be kept after closing the running project.
+   - Các thay đổi *sẽ không* được phản ánh trong editor và *sẽ không* được giữ lại sau khi đóng project đang chạy.
 
-- Run multiple simultaneous project instances from a single editor instance
-  (useful for client/server testing).
-- Optional :ref:`game embedding <doc_game_embedding>` to run the project in a panel within the editor.
+- Chạy đồng thời nhiều instance project từ một instance editor duy nhất (hữu ích khi kiểm thử client/server).
+- Tùy chọn :ref:`nhúng game <doc_game_embedding>` để chạy project trong một panel bên trong editor.
 
-  - Select 2D and 3D nodes in the project's viewport to inspect them in the editor.
-  - Move the camera within the project using the 2D and 3D camera overrides.
-  - Supports time scale adjustments, pausing, and frame advance.
-  - Supports muting the project.
+  - Chọn các node 2D và 3D trong viewport của project để kiểm tra chúng trong editor.
+  - Di chuyển camera trong project bằng các tùy chọn ghi đè camera 2D và 3D.
+  - Hỗ trợ điều chỉnh time scale, tạm dừng và tiến từng frame.
+  - Hỗ trợ tắt tiếng project.
 
-- Ruler tool to measure distances in 2D and 3D.
-- Vertex snapping support in 3D.
-- Support for following the selection as it moves in 3D by using Focus Selection twice.
-- Built-in offline class reference documentation.
-- Use the editor in dozens of languages contributed by the community.
+- Công cụ thước để đo khoảng cách trong 2D và 3D.
+- Hỗ trợ bắt dính vertex trong 3D.
+- Hỗ trợ theo dõi lựa chọn khi nó di chuyển trong 3D bằng cách sử dụng Focus Selection hai lần.
+- Tài liệu tham khảo class ngoại tuyến tích hợp sẵn.
+- Sử dụng editor bằng hàng chục ngôn ngữ do cộng đồng đóng góp.
 
-**Plugins:**
+**Plugin:**
 
-- Editor plugins can be downloaded from the
-  :ref:`Asset Store <doc_what_is_asset_store>` to extend editor functionality.
-- :ref:`Create your own plugins <doc_making_plugins>` using GDScript to add new
-  features or speed up your workflow.
-- :ref:`Download projects from the Asset Store <doc_using_asset_store_editor>`
-  in the Project Manager and import them directly.
+- Có thể tải editor plugin từ
+  :ref:`Asset Store <doc_what_is_asset_store>` để mở rộng chức năng của editor.
+- :ref:`Tạo plugin của riêng bạn <doc_making_plugins>` bằng GDScript để thêm tính năng mới hoặc tăng tốc quy trình làm việc.
+- :ref:`Tải project từ Asset Store <doc_using_asset_store_editor>` trong Project Manager và import trực tiếp.
 
 Rendering
 ---------
 
-Godot 4 includes three renderers:
+Godot 4 bao gồm ba renderer:
 
-- **Forward+**. The most advanced renderer, suited for desktop platforms only.
-  Used by default on desktop platforms. This renderer uses **Vulkan**, **Direct3D 12**,
-  or **Metal** as the rendering driver, and it uses the **RenderingDevice** backend.
-- **Mobile**. Fewer features, but renders simple scenes faster. Suited for mobile
-  and desktop platforms. Used by default on mobile platforms. This renderer uses
-  **Vulkan**, **Direct3D 12**, or **Metal** as the rendering driver, and it uses
-  the **RenderingDevice** backend.
-- **Compatibility**, sometimes called **GL Compatibility**. The least advanced
-  renderer, suited for low-end desktop and mobile platforms. Used by default on
-  the web platform. This renderer uses **OpenGL** as the rendering driver.
+- **Forward+**. Renderer tiên tiến nhất, chỉ phù hợp với các nền tảng desktop. Được sử dụng mặc định trên các nền tảng desktop. Renderer này sử dụng **Vulkan**, **Direct3D 12** hoặc **Metal** làm rendering driver và sử dụng backend **RenderingDevice**.
+- **Mobile**. Có ít tính năng hơn nhưng render các scene đơn giản nhanh hơn. Phù hợp với các nền tảng mobile và desktop. Được sử dụng mặc định trên các nền tảng mobile. Renderer này sử dụng **Vulkan**, **Direct3D 12** hoặc **Metal** làm rendering driver và sử dụng backend **RenderingDevice**.
+- **Compatibility**, đôi khi được gọi là **GL Compatibility**. Renderer ít tiên tiến nhất, phù hợp với các nền tảng desktop và mobile cấp thấp. Được sử dụng mặc định trên nền tảng web. Renderer này sử dụng **OpenGL** làm rendering driver.
 
 .. seealso::
 
-    See :ref:`doc_renderers` for a detailed comparison of the rendering methods.
+    Xem :ref:`doc_renderers` để biết phần so sánh chi tiết giữa các phương pháp rendering.
 
-2D graphics
------------
+Đồ họa 2D
+---------
 
-- Sprite, polygon and line rendering.
+- Rendering sprite, polygon và đường thẳng.
 
-   - High-level tools to draw lines and polygons such as
-     :ref:`class_Polygon2D` and :ref:`class_Line2D`, with support for texturing.
+   - Các công cụ cấp cao để vẽ đường thẳng và polygon như
+     :ref:`class_Polygon2D` và :ref:`class_Line2D`, với hỗ trợ texturing.
 
-- AnimatedSprite2D as a helper for creating animated sprites.
-- Parallax layers.
+- :ref:`class_AnimatedSprite2D` làm công cụ hỗ trợ tạo sprite động.
+- Các lớp parallax.
 
-   - Pseudo-3D support including preview in the editor.
+   - Hỗ trợ pseudo-3D, bao gồm xem trước trong editor.
 
-- :ref:`2D lighting <doc_2d_lights_and_shadows>` with normal maps and specular maps.
+- :ref:`Chiếu sáng 2D <doc_2d_lights_and_shadows>` với normal map và specular map.
 
-   - Point (omni/spot) and directional 2D lights.
-   - Hard or soft shadows (adjustable on a per-light basis).
-   - Custom shaders can access a real-time :abbr:`SDF (Signed Distance Field)`
-     representation of the 2D scene based on :ref:`class_LightOccluder2D` nodes,
-     which can be used for improved 2D lighting effects including 2D global illumination.
+   - Đèn 2D dạng điểm (omni/spot) và định hướng.
+   - Bóng cứng hoặc mềm (có thể điều chỉnh riêng cho từng đèn).
+   - Các shader tùy chỉnh có thể truy cập biểu diễn :abbr:`SDF (Signed Distance Field)` theo thời gian thực của cảnh 2D, dựa trên các node :ref:`class_LightOccluder2D`, có thể dùng để cải thiện hiệu ứng chiếu sáng 2D, bao gồm global illumination 2D.
 
-- :ref:`Font rendering <doc_gui_using_fonts>` using bitmaps, rasterization using FreeType
-  or multi-channel signed distance fields (MSDF).
+- :ref:`Rendering font <doc_gui_using_fonts>` bằng bitmap, rasterization sử dụng FreeType hoặc signed distance field đa kênh (MSDF).
 
-   - Bitmap fonts can be exported using tools like BMFont, or imported from images
-     (for fixed-width fonts only).
-   - Dynamic fonts support monochrome fonts as well as colored fonts (e.g. for emoji).
-     Supported formats are TTF, OTF, WOFF1 and WOFF2.
-   - Dynamic fonts support optional font outlines with adjustable width and color.
-   - Dynamic fonts support variable fonts and OpenType features including ligatures.
-   - Dynamic fonts support simulated bold and italic when the font file lacks
-     those styles.
-   - Dynamic fonts support oversampling to keep fonts sharp at higher resolutions.
-   - Dynamic fonts support subpixel positioning to make fonts crisper at low sizes.
-   - Dynamic fonts support LCD subpixel optimizations to make fonts even crisper at low sizes.
-   - Signed distance field fonts can be scaled at any resolution without
-     requiring re-rasterization. Multi-channel usage makes SDF fonts scale down
-     to lower sizes better compared to monochrome SDF fonts.
+   - Có thể export font bitmap bằng các công cụ như BMFont hoặc import từ hình ảnh (chỉ dành cho font có độ rộng cố định).
+   - Font động hỗ trợ font đơn sắc cũng như font màu (ví dụ: emoji). Các định dạng được hỗ trợ là TTF, OTF, WOFF1 và WOFF2.
+   - Font động hỗ trợ outline font tùy chọn với độ rộng và màu sắc có thể điều chỉnh.
+   - Font động hỗ trợ variable font và các tính năng OpenType, bao gồm ligature.
+   - Font động hỗ trợ mô phỏng chữ đậm và chữ nghiêng khi file font không có các kiểu này.
+   - Font động hỗ trợ oversampling để giữ cho font sắc nét hơn ở độ phân giải cao.
+   - Font động hỗ trợ định vị subpixel để làm font rõ nét hơn ở kích thước nhỏ.
+   - Font động hỗ trợ tối ưu hóa subpixel LCD để làm font rõ nét hơn nữa ở kích thước nhỏ.
+   - Font signed distance field có thể được scale ở mọi độ phân giải mà không cần rasterization lại. Việc sử dụng đa kênh giúp font SDF scale xuống các kích thước nhỏ tốt hơn so với font SDF đơn sắc.
 
-- :ref:`Oversampling <doc_multiple_resolutions_font_and_image_oversampling>` for SVG images
-  using the :ref:`class_DPITexture` import type. This allows for sharper results when scaling
-  up the texture by re-rasterizing the SVG source image to a new resolution at run-time.
+- :ref:`Oversampling <doc_multiple_resolutions_font_and_image_oversampling>` cho hình ảnh SVG bằng :ref:`class_DPITexture` import type. Điều này cho kết quả sắc nét hơn khi scale texture lên bằng cách rasterization lại hình ảnh nguồn SVG thành độ phân giải mới trong lúc runtime.
 
-  - Oversampling can optionally take individual :ref:`class_CanvasItem` scales into
-    account for crisper rendering when scaling nodes.
+  - Oversampling có thể tùy chọn tính đến các :ref:`class_CanvasItem` scale riêng lẻ để rendering sắc nét hơn khi scale node.
 
-- GPU-based :ref:`particles <doc_particle_systems_2d>` with support for
-  :ref:`custom particle shaders <doc_particle_shader>`.
-- CPU-based particles.
-- Optional :ref:`2D HDR rendering <doc_environment_and_post_processing_using_glow_in_2d>`
-  for better glow capabilities.
-- Optional debanding to reduce banding artifacts in gradients.
-- :ref:`HDR output <doc_hdr_output>` on supported platforms and renderers.
+- :ref:`particle <doc_particle_systems_2d>` dựa trên GPU với hỗ trợ
+  :ref:`shader particle tùy chỉnh <doc_particle_shader>`.
+- Particle dựa trên CPU.
+- Tùy chọn :ref:`rendering HDR 2D <doc_environment_and_post_processing_using_glow_in_2d>` để cải thiện khả năng tạo glow.
+- Tùy chọn debanding để giảm hiện tượng banding trong gradient.
+- :ref:`Đầu ra HDR <doc_hdr_output>` trên các platform và renderer được hỗ trợ.
 
-2D tools
---------
-
-- :ref:`TileMaps <doc_using_tilemaps>` for 2D tile-based level design.
-- 2D camera with built-in smoothing and drag margins.
-- Path2D node to represent a path in 2D space.
-
-   - Can be drawn in the editor or generated procedurally.
-   - PathFollow2D node to make nodes follow a Path2D.
-
-- :ref:`2D geometry helper class <class_Geometry2D>`.
-
-2D physics
+Công cụ 2D
 ----------
 
-**Physics bodies:**
+- :ref:`TileMap <doc_using_tilemaps>` để thiết kế level 2D dựa trên tile.
+- Camera 2D với tính năng smoothing và drag margin tích hợp sẵn.
+- Node Path2D để biểu diễn một đường dẫn trong không gian 2D.
 
-- Static bodies.
-- Animatable bodies (for objects moving only by script or animation, such as doors and platforms).
-- Rigid bodies.
-- Character bodies.
-- Joints.
-- Areas to detect bodies entering or leaving it.
-- :ref:`Physics interpolation <doc_physics_interpolation>`.
+   - Có thể vẽ trong editor hoặc tạo bằng phương pháp procedural.
+   - Node PathFollow2D để khiến các node đi theo một Path2D.
 
-**Collision detection:**
+- :ref:`class hỗ trợ hình học 2D <class_Geometry2D>`.
 
-- Built-in shapes: line, box, circle, capsule, world boundary (infinite plane).
-- Collision polygons (can be drawn manually or generated from a sprite in the editor).
+Vật lý 2D
+---------
 
-3D graphics
------------
+**Physics body:**
 
-- Linear HDR internal lighting calculations.
-- Optional debanding to reduce banding artifacts in gradients.
-- :ref:`HDR output <doc_hdr_output>` on supported platforms and renderers.
-- Perspective, orthographic and frustum-offset cameras.
-- When using the Forward+ renderer, a depth prepass is used to improve
-  performance in complex scenes by reducing the cost of overdraw.
-- :ref:`doc_variable_rate_shading` on supported GPUs in Forward+ and Mobile.
+- Body tĩnh.
+- Body có thể animation (dành cho các đối tượng chỉ di chuyển bằng script hoặc animation, chẳng hạn như cửa và platform).
+- Rigid body.
+- Character body.
+- Joint.
+- Area để phát hiện các body đi vào hoặc rời khỏi area đó.
+- :ref:`Nội suy vật lý <doc_physics_interpolation>`.
 
-**Physically-based rendering (built-in material features):**
+**Phát hiện va chạm:**
 
-- Follows the Disney PBR model.
-- Supports Burley, Lambert, Lambert Wrap (half-Lambert) and Toon diffuse shading modes.
-- Supports Schlick-GGX, Toon and Disabled specular shading modes.
-- Uses a roughness-metallic workflow with support for ORM textures.
-- Uses horizon specular occlusion (Filament model) to improve material appearance.
+- Các shape tích hợp sẵn: đường thẳng, hình hộp, hình tròn, capsule, biên thế giới (mặt phẳng vô hạn).
+- Polygon va chạm (có thể vẽ thủ công hoặc tạo từ sprite trong editor).
+
+Đồ họa 3D
+---------
+
+- Tính toán chiếu sáng nội bộ HDR tuyến tính.
+- Tùy chọn debanding để giảm hiện tượng banding trong gradient.
+- :ref:`Đầu ra HDR <doc_hdr_output>` trên các platform và renderer được hỗ trợ.
+- Camera phối cảnh, trực giao và có frustum offset.
+- Khi sử dụng renderer Forward+, depth prepass được dùng để cải thiện hiệu năng trong các cảnh phức tạp bằng cách giảm chi phí overdraw.
+- :ref:`doc_variable_rate_shading` trên các GPU được hỗ trợ trong Forward+ và Mobile.
+
+**Rendering dựa trên vật lý (các tính năng material tích hợp sẵn):**
+
+- Tuân theo model PBR của Disney.
+- Hỗ trợ các chế độ diffuse shading Burley, Lambert, Lambert Wrap (half-Lambert) và Toon.
+- Hỗ trợ các chế độ specular shading Schlick-GGX, Toon và Disabled.
+- Sử dụng quy trình roughness-metallic với hỗ trợ texture ORM.
+- Sử dụng horizon specular occlusion (model Filament) để cải thiện diện mạo material.
 - Normal mapping.
-- Parallax/relief mapping with automatic level of detail based on distance.
-- Detail mapping for the albedo and normal maps.
-- Sub-surface scattering and transmittance.
-- Screen-space refraction with support for material roughness (resulting in blurry refraction).
-- Proximity fade (soft particles) and distance fade.
-- Distance fade can use alpha blending or dithering to avoid going through
-  the transparent pipeline.
-- Dithering can be determined on a per-pixel or per-object basis.
+- Parallax/relief mapping với level of detail tự động dựa trên khoảng cách.
+- Detail mapping cho albedo map và normal map.
+- Subsurface scattering và transmittance.
+- Refraction trong screen-space với hỗ trợ roughness của material (tạo ra refraction mờ).
+- Fade theo độ gần (particle mềm) và fade theo khoảng cách.
+- Fade theo khoảng cách có thể sử dụng alpha blending hoặc dithering để tránh đi qua transparent pipeline.
+- Dithering có thể được xác định theo từng pixel hoặc từng object.
 
-**Real-time lighting:**
+**Chiếu sáng theo thời gian thực:**
 
-- :ref:`Directional lights <doc_lights_and_shadows_directional_light>` (sun/moon).
-- :ref:`Omnidirectional lights <doc_lights_and_shadows_omni_light>`.
-- :ref:`Spot lights <doc_lights_and_shadows_spot_light>` with adjustable cone angle and attenuation.
-- :ref:`Rectangular area lights <doc_lights_and_shadows_area_light>` with an optional texture
-  to determine the shape and color.
-- Specular, indirect light, and volumetric fog energy can be adjusted on a per-light basis.
-- Adjustable light "size" for spherical omni and disc spot lights (will also make shadows
-  blurrier with variable penumbra).
-- Optional distance fade system to fade distant lights and their shadows, improving performance.
-- When using the Forward+ renderer (default on desktop), lights are
-  rendered with clustered forward optimizations to decrease their individual cost.
-  Clustered rendering also lifts any limits on the number of lights that can be used on a mesh.
-- When using the Mobile renderer, up to 8 omni lights, 8 spot lights, and 8 area lights can
-  be displayed per mesh resource. Baked lighting can be used to overcome this limit
-  if needed.
+- :ref:`Đèn định hướng <doc_lights_and_shadows_directional_light>` (mặt trời/mặt trăng).
+- :ref:`Đèn đa hướng <doc_lights_and_shadows_omni_light>`.
+- :ref:`Đèn spotlight <doc_lights_and_shadows_spot_light>` với góc hình nón và độ suy giảm có thể điều chỉnh.
+- :ref:`Đèn vùng hình chữ nhật <doc_lights_and_shadows_area_light>` với texture tùy chọn để xác định hình dạng và màu sắc.
+- Có thể điều chỉnh năng lượng của ánh sáng phản xạ, ánh sáng gián tiếp và sương mù thể tích cho từng đèn.
+- Có thể điều chỉnh "kích thước" đèn cho đèn omni hình cầu và đèn spotlight dạng đĩa (đồng thời làm bóng đổ mờ hơn với vùng nửa tối biến thiên).
+- Hệ thống làm mờ theo khoảng cách tùy chọn để làm mờ các đèn ở xa và bóng đổ của chúng, giúp cải thiện hiệu năng.
+- Khi sử dụng renderer Forward+ (mặc định trên máy tính), các đèn được render với các tối ưu hóa clustered forward để giảm chi phí riêng lẻ. Clustered rendering cũng loại bỏ mọi giới hạn về số lượng đèn có thể sử dụng trên một mesh.
+- Khi sử dụng renderer Mobile, tối đa 8 đèn omni, 8 đèn spotlight và 8 đèn vùng có thể được hiển thị trên mỗi tài nguyên mesh. Có thể sử dụng baked lighting để vượt qua giới hạn này nếu cần.
 
-**Shadow mapping:**
+**Lập bản đồ bóng đổ:**
 
-- *DirectionalLight3D:* Orthogonal (fastest), PSSM 2-split and 4-split.
-  Supports blending between splits.
-- *OmniLight3D:* Dual paraboloid (fast) or cubemap (slower but more accurate).
-  Supports colored projector textures in the form of panoramas.
-- *SpotLight3D:* Single texture. Supports colored projector textures.
-- *AreaLight3D:* Single texture with dual paraboloid distortion to approximate
-  the light's shape.
-- Shadow normal offset bias and shadow pancaking to decrease the amount of
-  visible shadow acne and peter-panning.
-- :abbr:`PCSS (Percentage Closer Soft Shadows)`-like shadow blur based on the
-  light size and distance from the surface the shadow is cast on. Supported for
-  all light types.
-- Adjustable shadow blur on a per-light basis.
+- *DirectionalLight3D:* Trực giao (nhanh nhất), PSSM chia 2 phần và chia 4 phần. Hỗ trợ chuyển tiếp giữa các phần.
+- *OmniLight3D:* Paraboloid kép (nhanh) hoặc cubemap (chậm hơn nhưng chính xác hơn). Hỗ trợ texture máy chiếu có màu dưới dạng panorama.
+- *SpotLight3D:* Texture đơn. Hỗ trợ texture máy chiếu có màu.
+- *AreaLight3D:* Texture đơn với biến dạng paraboloid kép để xấp xỉ hình dạng của đèn.
+- Độ lệch chuẩn của pháp tuyến bóng đổ và kỹ thuật shadow pancaking để giảm hiện tượng bóng đổ bị lốm đốm và bóng đổ bị tách khỏi vật thể.
+- Độ mờ bóng đổ tương tự :abbr:`PCSS (Percentage Closer Soft Shadows)` dựa trên kích thước đèn và khoảng cách từ bề mặt mà bóng đổ lên. Được hỗ trợ cho tất cả loại đèn.
+- Có thể điều chỉnh độ mờ bóng đổ cho từng đèn.
 
-**Global illumination with indirect lighting:**
+**Global illumination với ánh sáng gián tiếp:**
 
-- :ref:`Baked lightmaps <doc_using_lightmap_gi>` (fast, but can't be updated at runtime).
+- :ref:`Lightmap baked <doc_using_lightmap_gi>` (nhanh nhưng không thể cập nhật trong runtime).
 
-   - Supports baking indirect light only or baking both direct and indirect lighting.
-     The bake mode can be adjusted on a per-light basis to allow for hybrid light
-     baking setups.
-   - Supports lighting dynamic objects using automatic and manually placed probes.
-   - Optionally supports directional lighting based on spherical harmonics.
-   - Optionally supports baking a shadowmask for distant static directional shadows.
-   - Optional supersampling at bake-time to improve quality and reduce light leaking
-     at the cost of increased bake times and memory usage during baking.
-   - Lightmaps are baked on the GPU using compute shaders (much faster than
-     CPU lightmapping). Baking can only be performed from the editor, not in
-     exported projects.
-   - Supports GPU-based :ref:`denoising <doc_using_lightmap_gi_denoising>`
-     with JNLM out of the box, or higher-quality CPU/GPU-based denoising with
-     OIDN (requires downloading OIDN separately).
-   - Lightmaps are rendered with bicubic filtering to reduce scaling artifacts.
+   - Hỗ trợ bake chỉ ánh sáng gián tiếp hoặc bake cả ánh sáng trực tiếp và gián tiếp. Có thể điều chỉnh chế độ bake cho từng đèn để cho phép thiết lập bake ánh sáng lai.
+   - Hỗ trợ chiếu sáng các đối tượng động bằng probe tự động và probe được đặt thủ công.
+   - Tùy chọn hỗ trợ chiếu sáng định hướng dựa trên spherical harmonics.
+   - Tùy chọn hỗ trợ bake shadowmask cho bóng đổ định hướng tĩnh ở xa.
+   - Tùy chọn supersampling tại thời điểm bake để cải thiện chất lượng và giảm hiện tượng rò rỉ ánh sáng, với cái giá là thời gian bake lâu hơn và mức sử dụng bộ nhớ cao hơn trong quá trình bake.
+   - Lightmap được bake trên GPU bằng compute shader (nhanh hơn nhiều so với lightmap trên CPU). Chỉ có thể thực hiện bake từ editor, không phải trong các project đã export.
+   - Hỗ trợ :ref:`khử nhiễu <doc_using_lightmap_gi_denoising>` dựa trên GPU với JNLM ngay khi cài đặt, hoặc khử nhiễu dựa trên CPU/GPU có chất lượng cao hơn với OIDN (cần tải OIDN riêng).
+   - Lightmap được render bằng bộ lọc bicubic để giảm các sai lệch do scaling.
 
-- :ref:`Voxel-based GI probes <doc_using_voxel_gi>`. Supports
-  dynamic lights *and* dynamic occluders, while also supporting reflections.
-  Requires a fast baking step which can be performed in the editor or at
-  runtime (including from an exported project).
-- :ref:`Signed-distance field GI <doc_using_sdfgi>` designed for large open worlds.
-  Supports dynamic lights, but not dynamic occluders. Supports reflections.
-  No baking required.
-- :ref:`Screen-space indirect lighting (SSIL) <doc_environment_and_post_processing_ssil>`
-  at half or full resolution. Fully real-time and supports any kind of emissive
-  light source (including decals).
-- VoxelGI and SDFGI use a deferred pass to allow for rendering GI at half
-  resolution to improve performance (while still having functional MSAA support).
+- :ref:`Probe GI dựa trên voxel <doc_using_voxel_gi>`. Hỗ trợ đèn động *và* vật cản động, đồng thời hỗ trợ phản xạ. Cần một bước bake nhanh có thể thực hiện trong editor hoặc tại runtime (bao gồm cả từ project đã export).
+- :ref:`GI bằng trường khoảng cách có dấu <doc_using_sdfgi>` được thiết kế cho các thế giới mở rộng lớn. Hỗ trợ đèn động nhưng không hỗ trợ vật cản động. Hỗ trợ phản xạ. Không cần bake.
+- :ref:`Chiếu sáng gián tiếp trong không gian màn hình (SSIL) <doc_environment_and_post_processing_ssil>` ở độ phân giải một nửa hoặc đầy đủ. Hoàn toàn theo thời gian thực và hỗ trợ mọi loại nguồn sáng phát xạ (bao gồm decal).
+- VoxelGI và SDFGI sử dụng một deferred pass để cho phép render GI ở độ phân giải một nửa nhằm cải thiện hiệu năng (đồng thời vẫn hỗ trợ MSAA đầy đủ chức năng).
 
-**Reflections:**
+**Phản xạ:**
 
-- Voxel-based reflections (when using GI probes) and SDF-based reflections
-  (when using signed distance field GI). Voxel-based reflections are visible
-  on transparent surfaces, while rough SDF-based reflections are visible
-  on transparent surfaces.
-- Fast baked reflections or slow real-time reflections using ReflectionProbe.
-  Parallax box correction can optionally be enabled.
-- Screen-space reflections with support for material roughness.
-- Reflection techniques can be mixed together for greater accuracy or scalability.
-- When using the Forward+ renderer (default on desktop), reflection probes are
-  rendered with clustered forward optimizations to decrease their individual cost.
-  Clustered rendering also lifts any limits on the number of reflection probes
-  that can be used on a mesh.
-- When using the Mobile renderer, up to 8 reflection probes can be displayed per mesh
-  resource. When using the Compatibility renderer, up to 2 reflection probes can
-  be displayed per mesh resource.
+- Phản xạ dựa trên voxel (khi sử dụng probe GI) và phản xạ dựa trên SDF (khi sử dụng GI bằng trường khoảng cách có dấu). Phản xạ dựa trên voxel hiển thị trên các bề mặt trong suốt, trong khi phản xạ dựa trên SDF thô cũng hiển thị trên các bề mặt trong suốt.
+- Phản xạ baked nhanh hoặc phản xạ theo thời gian thực chậm bằng ReflectionProbe. Tùy chọn có thể bật hiệu chỉnh hộp parallax.
+- Phản xạ trong không gian màn hình với hỗ trợ roughness của material.
+- Có thể kết hợp các kỹ thuật phản xạ để đạt độ chính xác hoặc khả năng mở rộng cao hơn.
+- Khi sử dụng renderer Forward+ (mặc định trên máy tính), các probe phản xạ được render với các tối ưu hóa clustered forward để giảm chi phí riêng lẻ. Clustered rendering cũng loại bỏ mọi giới hạn về số lượng probe phản xạ có thể sử dụng trên một mesh.
+- Khi sử dụng renderer Mobile, tối đa 8 probe phản xạ có thể được hiển thị trên mỗi mesh
+  resource. Khi sử dụng renderer Compatibility, tối đa 2 probe phản xạ có thể
+  được hiển thị trên mỗi tài nguyên mesh.
 
-**Decals:**
+**Decal:**
 
-- :ref:`Supports albedo <doc_using_decals>`, emissive, :abbr:`ORM (Occlusion Roughness Metallic)`,
-  and normal mapping.
-- Texture channels are smoothly overlaid on top of the underlying material,
-  with support for normal/ORM-only decals.
-- Support for normal fade to fade the decal depending on its incidence angle.
-- Does not rely on runtime mesh generation. This means decals can be used on
-  complex skinned meshes with no performance penalty, even if the decal moves every frame.
-- Support for nearest, bilinear, trilinear or anisotropic texture filtering (configured globally).
-- Optional distance fade system to fade distant decals, improving performance.
-- When using the Forward+ renderer (default on desktop), decals are
-  rendered with clustered forward optimizations to decrease their individual cost.
-  Clustered rendering also lifts any limits on the number of decals that can be used on a mesh.
-- When using the Mobile renderer, up to 8 decals can be displayed per mesh
-  resource.
+- :ref:`Hỗ trợ albedo <doc_using_decals>`, emissive, :abbr:`ORM (Occlusion Roughness Metallic)`, và normal mapping.
+- Các kênh texture được phủ mượt lên trên material bên dưới, với hỗ trợ decal chỉ có normal/ORM.
+- Hỗ trợ làm mờ normal để làm mờ decal tùy theo góc tới của nó.
+- Không phụ thuộc vào việc tạo mesh tại runtime. Điều này có nghĩa là decal có thể được sử dụng trên các mesh skinned phức tạp mà không bị phạt hiệu năng, ngay cả khi decal di chuyển ở mỗi frame.
+- Hỗ trợ lọc texture nearest, bilinear, trilinear hoặc anisotropic (được cấu hình trên toàn cục).
+- Hệ thống làm mờ theo khoảng cách tùy chọn để làm mờ các decal ở xa, giúp cải thiện hiệu năng.
+- Khi sử dụng renderer Forward+ (mặc định trên máy tính), các decal được render với các tối ưu hóa clustered forward để giảm chi phí riêng lẻ. Clustered rendering cũng loại bỏ mọi giới hạn về số lượng decal có thể sử dụng trên một mesh.
+- Khi sử dụng renderer Mobile, tối đa 8 decal có thể được hiển thị trên mỗi tài nguyên mesh.
 
-**Sky:**
+**Bầu trời:**
 
-- Panorama sky (using an HDRI).
-- Procedural sky and Physically-based sky that respond to the DirectionalLights in the scene.
-- Support for :ref:`custom sky shaders <doc_sky_shader>`, which can be animated.
-- The radiance map used for ambient and specular light can be updated in
-  real-time depending on the quality settings chosen.
+- Bầu trời panorama (sử dụng HDRI).
+- Sky dạng procedural và sky dựa trên vật lý phản hồi theo các DirectionalLights trong cảnh.
+- Hỗ trợ :ref:`custom sky shaders <doc_sky_shader>`, có thể được animation.
+- Bản đồ radiance được dùng cho ánh sáng ambient và specular có thể được cập nhật theo thời gian thực tùy thuộc vào các thiết lập chất lượng đã chọn.
 
 **Fog:**
 
-- Exponential depth fog.
-- Exponential height fog.
-- Support for automatic fog color depending on the sky color (aerial perspective).
-- Support for sun scattering in the fog.
-- Support for controlling how much fog rendering should affect the sky, with
-  separate controls for traditional and volumetric fog.
-- Support for making specific materials ignore fog.
+- Fog độ sâu theo hàm mũ.
+- Fog độ cao theo hàm mũ.
+- Hỗ trợ tự động xác định màu fog dựa trên màu sky (aerial perspective).
+- Hỗ trợ tán xạ ánh nắng trong fog.
+- Hỗ trợ kiểm soát mức độ ảnh hưởng của việc render fog lên sky, với các tùy chọn điều khiển riêng cho fog truyền thống và fog thể tích.
+- Hỗ trợ để các material cụ thể bỏ qua fog.
 
 **Volumetric fog:**
 
-- Global :ref:`volumetric fog <doc_volumetric_fog>` that reacts to lights and shadows.
-- Volumetric fog can take indirect light into account when using VoxelGI or SDFGI.
-- Fog volume nodes that can be placed to add fog to specific areas (or remove fog from specific areas).
-  Supported shapes include box, ellipse, cone, cylinder, and 3D texture-based density maps.
-- Each fog volume can have its own custom shader.
-- Can be used together with traditional fog.
+- :ref:`volumetric fog <doc_volumetric_fog>` toàn cục phản ứng với ánh sáng và bóng đổ.
+- Volumetric fog có thể tính đến ánh sáng gián tiếp khi sử dụng VoxelGI hoặc SDFGI.
+- Các node fog volume có thể được đặt vào để thêm fog cho những khu vực cụ thể (hoặc loại bỏ fog khỏi những khu vực cụ thể). Các hình dạng được hỗ trợ gồm box, ellipse, cone, cylinder và density map dựa trên texture 3D.
+- Mỗi fog volume có thể có shader tùy chỉnh riêng.
+- Có thể được sử dụng cùng với fog truyền thống.
 
 **Particles:**
 
-- GPU-based particles with support for subemitters (2D + 3D), trails (2D + 3D),
-  attractors (3D only) and collision (2D + 3D).
+- Particles dựa trên GPU với hỗ trợ cho subemitters (2D + 3D), trails (2D + 3D), attractors (chỉ 3D) và collision (2D + 3D).
 
-  - 3D particle attractor shapes supported: box, sphere and 3D vector fields.
-  - 3D particle collision shapes supported: box, sphere, baked signed distance field
-    and real-time heightmap (suited for open world weather effects).
-  - 2D particle collision is handled using a signed distance field generated in real-time
-    based on :ref:`class_LightOccluder2D` nodes in the scene.
-  - Trails can use the built-in ribbon trail and tube trail meshes, or custom
-    meshes with skeletons.
-  - Support for custom particle shaders with manual emission.
+  - Các hình dạng attractor cho particle 3D được hỗ trợ: box, sphere và vector field 3D.
+  - Các hình dạng collision cho particle 3D được hỗ trợ: box, sphere, signed distance field đã bake và heightmap theo thời gian thực (phù hợp với hiệu ứng thời tiết trong open world).
+  - Collision của particle 2D được xử lý bằng signed distance field được tạo theo thời gian thực dựa trên các node :ref:`class_LightOccluder2D` trong cảnh.
+  - Trails có thể sử dụng các mesh ribbon trail và tube trail tích hợp sẵn, hoặc các mesh tùy chỉnh có skeleton.
+  - Hỗ trợ custom particle shaders với emission thủ công.
 
-- CPU-based particles.
+- Particles dựa trên CPU.
 
 **Post-processing:**
 
 - Tonemapping (Linear, Reinhard, Filmic, ACES, AgX).
-- Automatic exposure adjustments based on viewport brightness (and manual exposure override).
-- Near and far depth of field with adjustable bokeh simulation (box, hexagon, circle).
-- Screen-space ambient occlusion (SSAO) at half or full resolution.
-- Glow/bloom with optional bicubic upscaling and several blend modes available:
-  Screen, Soft Light, Add, Replace, Mix.
-- Glow can have a colored dirt map texture, acting as a lens dirt effect.
-- Glow can be :ref:`used as a screen-space blur effect <doc_environment_and_post_processing_using_glow_to_blur_the_screen>`.
-- Color correction using a one-dimensional ramp or a 3D LUT texture.
-- Roughness limiter to reduce the impact of specular aliasing.
-- Brightness, contrast and saturation adjustments.
+- Tự động điều chỉnh exposure dựa trên độ sáng của viewport (và ghi đè exposure thủ công).
+- Depth of field gần và xa với mô phỏng bokeh có thể điều chỉnh (box, hexagon, circle).
+- Screen-space ambient occlusion (SSAO) ở độ phân giải một nửa hoặc đầy đủ.
+- Glow/bloom với tùy chọn upscaling bicubic và nhiều blend mode: Screen, Soft Light, Add, Replace, Mix.
+- Glow có thể sử dụng texture dirt map có màu, hoạt động như hiệu ứng lens dirt.
+- Glow có thể được :ref:`dùng như hiệu ứng làm mờ trong screen-space <doc_environment_and_post_processing_using_glow_to_blur_the_screen>`.
+- Hiệu chỉnh màu bằng ramp một chiều hoặc texture 3D LUT.
+- Bộ giới hạn roughness để giảm ảnh hưởng của specular aliasing.
+- Điều chỉnh độ sáng, độ tương phản và độ bão hòa.
 
 **Texture filtering:**
 
-- Nearest, bilinear, trilinear or anisotropic filtering.
-- Filtering options are defined on a per-use basis, not a per-texture basis.
+- Filtering nearest, bilinear, trilinear hoặc anisotropic.
+- Các tùy chọn filtering được xác định theo từng lần sử dụng, không phải theo từng texture.
 
 **Texture VRAM compression:**
 
-- BPTC (for high-quality compression targeting desktop platforms).
-- ASTC (for high-quality compression targeting mobile platforms).
-- ETC2 (for fast compression targeting mobile platforms).
-- S3TC (for fast compression targeting desktop platforms).
-- Basis Universal (slow, but only requires one encoding for all platforms).
+- BPTC (dùng để compression chất lượng cao, nhắm đến các nền tảng desktop).
+- ASTC (dùng để compression chất lượng cao, nhắm đến các nền tảng mobile).
+- ETC2 (dùng để compression nhanh, nhắm đến các nền tảng mobile).
+- S3TC (dùng để compression nhanh, nhắm đến các nền tảng desktop).
+- Basis Universal (chậm, nhưng chỉ yêu cầu một lần encoding cho mọi nền tảng).
 
 **Antialiasing:**
 
-- Temporal :ref:`antialiasing <doc_3d_antialiasing>` (TAA).
-- AMD FidelityFX Super Resolution 2.2 :ref:`antialiasing <doc_3d_antialiasing>` (FSR2),
-  which can be used at native resolution as a form of high-quality temporal antialiasing.
-- Multi-sample antialiasing (MSAA), for both :ref:`doc_2d_antialiasing` and :ref:`doc_3d_antialiasing`.
+- :ref:`antialiasing <doc_3d_antialiasing>` theo thời gian (TAA).
+- :ref:`antialiasing <doc_3d_antialiasing>` AMD FidelityFX Super Resolution 2.2 (FSR2), có thể được sử dụng ở độ phân giải gốc như một dạng antialiasing theo thời gian chất lượng cao.
+- Multi-sample antialiasing (MSAA), cho cả :ref:`doc_2d_antialiasing` và :ref:`doc_3d_antialiasing`.
 - Fast approximate antialiasing (FXAA).
-- Super-sample antialiasing (SSAA) using bilinear 3D scaling and a 3D resolution scale above 1.0.
-- Alpha antialiasing, MSAA alpha to coverage and alpha hashing on a per-material basis.
+- Super-sample antialiasing (SSAA) sử dụng scaling 3D bilinear và scale độ phân giải 3D lớn hơn 1.0.
+- Antialiasing alpha, alpha to coverage của MSAA và alpha hashing theo từng material.
 
 **Resolution scaling:**
 
-- Support for :ref:`rendering 3D at a lower resolution <doc_resolution_scaling>`
-  while keeping 2D rendering at the original scale. This can be used to improve
-  performance on low-end systems or improve visuals on high-end systems.
-- Resolution scaling uses nearest-neighbor filtering, bilinear filtering,
-  AMD FidelityFX Super Resolution 1.0 (FSR1), or AMD FidelityFX Super Resolution 2.2.1
-  (FSR2).
-- Texture mipmap LOD bias is adjusted automatically to improve quality at lower
-  resolution scales. It can also be modified with a manual offset.
+- Hỗ trợ :ref:`render 3D ở độ phân giải thấp hơn <doc_resolution_scaling>` trong khi vẫn giữ rendering 2D ở scale ban đầu. Có thể sử dụng tính năng này để cải thiện hiệu năng trên các hệ thống cấp thấp hoặc cải thiện hình ảnh trên các hệ thống cao cấp.
+- Resolution scaling sử dụng filtering nearest-neighbor, filtering bilinear, AMD FidelityFX Super Resolution 1.0 (FSR1) hoặc AMD FidelityFX Super Resolution 2.2.1 (FSR2).
+- LOD bias của texture mipmap được tự động điều chỉnh để cải thiện chất lượng ở các scale độ phân giải thấp hơn. Bias này cũng có thể được thay đổi bằng offset thủ công.
 
-Most effects listed above can be adjusted for better performance or to further
-improve quality. This can be helpful when
-:ref:`using Godot for offline rendering <doc_creating_movies>`.
+Hầu hết các hiệu ứng được liệt kê ở trên có thể được điều chỉnh để đạt hiệu năng tốt hơn hoặc cải thiện thêm chất lượng. Điều này có thể hữu ích khi
+:ref:`sử dụng Godot để render offline <doc_creating_movies>`.
 
-3D tools
---------
-
-- Built-in meshes: cube, cylinder/cone, (hemi)sphere, prism, plane, quad, torus, ribbon, tube.
-- :ref:`GridMaps <doc_using_gridmaps>` for 3D tile-based level design.
-- :ref:`Constructive solid geometry <doc_csg_tools>` (intended for prototyping).
-- Tools for :ref:`procedural geometry generation <doc_procedural_geometry>`.
-- Path3D node to represent a path in 3D space.
-
-   - Can be drawn in the editor or generated procedurally.
-   - PathFollow3D node to make nodes follow a Path3D.
-
-- :ref:`3D geometry helper class <class_Geometry3D>`.
-- Support for exporting the current scene as a glTF 2.0 file, both from the editor
-  and at runtime from an exported project.
-
-3D physics
+Công cụ 3D
 ----------
 
-**Physics bodies:**
+- Mesh tích hợp sẵn: cube, cylinder/cone, (hemi)sphere, prism, plane, quad, torus, ribbon, tube.
+- :ref:`GridMaps <doc_using_gridmaps>` để thiết kế level 3D dựa trên tile.
+- :ref:`Constructive solid geometry <doc_csg_tools>` (dùng cho prototyping).
+- Các công cụ để :ref:`tạo geometry procedural <doc_procedural_geometry>`.
+- Node Path3D để biểu diễn một path trong không gian 3D.
 
-- Static bodies.
-- Animatable bodies (for objects moving only by script or animation, such as doors and platforms).
-- Rigid bodies.
-- Character bodies.
-- Vehicle bodies (intended for arcade physics, not simulation).
-- Joints.
-- :ref:`Soft bodies <doc_soft_body>`.
-- :ref:`Ragdolls <doc_ragdoll_system>`.
-- Areas to detect bodies entering or leaving it.
-- :ref:`Physics interpolation <doc_physics_interpolation>`.
+   - Có thể được vẽ trong editor hoặc tạo bằng procedural.
+   - Node PathFollow3D để khiến các node đi theo một Path3D.
 
-**Collision detection:**
+- :ref:`Lớp trợ giúp hình học 3D <class_Geometry3D>`.
+- Hỗ trợ xuất scene hiện tại dưới dạng tệp glTF 2.0, cả từ editor lẫn trong runtime từ project đã xuất.
 
-- Built-in shapes: cuboid, sphere, capsule, cylinder, world boundary (infinite plane).
-- Generate triangle collision shapes for any mesh from the editor.
-- Generate one or several convex collision shapes for any mesh from the editor.
+Vật lý 3D
+---------
 
-Shaders
--------
+**Các body vật lý:**
 
-- *2D:* Custom vertex, fragment, and light shaders.
-- *3D:* Custom vertex, fragment, light, sky, and fog shaders.
-- Custom shaders can procedurally generate and modify textures in real-time using
+- Các body tĩnh.
+- Các body có thể hoạt ảnh (dành cho các đối tượng chỉ di chuyển bằng script hoặc animation, chẳng hạn như cửa và platform).
+- Các rigid body.
+- Các character body.
+- Các vehicle body (dành cho vật lý kiểu arcade, không dành cho mô phỏng).
+- Các joint.
+- :ref:`Các soft body <doc_soft_body>`.
+- :ref:`Ragdoll <doc_ragdoll_system>`.
+- Các area để phát hiện body đi vào hoặc rời khỏi chúng.
+- :ref:`Nội suy vật lý <doc_physics_interpolation>`.
+
+**Phát hiện va chạm:**
+
+- Các shape tích hợp: hình hộp, hình cầu, capsule, hình trụ, ranh giới thế giới (mặt phẳng vô hạn).
+- Tạo các shape va chạm tam giác cho mọi mesh từ editor.
+- Tạo một hoặc nhiều shape va chạm lồi cho mọi mesh từ editor.
+
+Shader
+------
+
+- *2D:* Shader vertex, fragment và light tùy chỉnh.
+- *3D:* Shader vertex, fragment, light, sky và fog tùy chỉnh.
+- Shader tùy chỉnh có thể tạo và sửa đổi texture theo thủ tục trong thời gian thực bằng
   :ref:`class_DrawableTexture2D`.
-- Text-based shaders using a :ref:`shader language inspired by GLSL <doc_shading_language>`.
-- Syntax highlighting is provided on GitHub by using ``gdshader``
-  as the language name in a Markdown code block.
-- Visual shader editor.
+- Shader dựa trên văn bản sử dụng :ref:`ngôn ngữ shader lấy cảm hứng từ GLSL <doc_shading_language>`.
+- GitHub cung cấp tính năng tô sáng cú pháp bằng cách sử dụng ``gdshader`` làm tên ngôn ngữ trong một khối mã Markdown.
+- Trình chỉnh sửa shader trực quan.
 
-   - Support for :ref:`visual shader plugins <doc_visual_shader_plugins>`.
+   - Hỗ trợ :ref:`plugin shader trực quan <doc_visual_shader_plugins>`.
 
 Scripting
 ---------
 
-**General:**
+**Tổng quan:**
 
-- Object-oriented design pattern with scripts extending nodes.
-- Signals and groups for communicating between scripts.
-- Support for :ref:`cross-language scripting <doc_cross_language_scripting>`.
-- Many 2D, 3D and 4D linear algebra data types such as vectors and transforms.
+- Mẫu thiết kế hướng đối tượng với các script mở rộng node.
+- Signal và group để giao tiếp giữa các script.
+- Hỗ trợ :ref:`scripting đa ngôn ngữ <doc_cross_language_scripting>`.
+- Nhiều kiểu dữ liệu đại số tuyến tính 2D, 3D và 4D như vector và transform.
 
 :ref:`GDScript: <doc_gdscript>`
 
-- :ref:`High-level interpreted language <doc_gdscript_reference>` with
-  :ref:`optional static typing <doc_gdscript_static_typing>`.
-- Syntax inspired by Python. However, GDScript is **not** based on Python.
-- Syntax highlighting is provided on GitHub by using ``gdscript``
-  as the language name in a Markdown code block.
-- :ref:`Use threads <doc_using_multiple_threads>` to perform asynchronous actions
-  or make use of multiple processor cores.
+- :ref:`Ngôn ngữ thông dịch cấp cao <doc_gdscript_reference>` với
+  :ref:`kiểu tĩnh tùy chọn <doc_gdscript_static_typing>`.
+- Cú pháp lấy cảm hứng từ Python. Tuy nhiên, GDScript **không** dựa trên Python.
+- GitHub cung cấp tính năng tô sáng cú pháp bằng cách sử dụng ``gdscript`` làm tên ngôn ngữ trong một khối mã Markdown.
+- :ref:`Sử dụng thread <doc_using_multiple_threads>` để thực hiện các tác vụ bất đồng bộ hoặc tận dụng nhiều lõi xử lý.
 
 :ref:`C#: <doc_c_sharp>`
 
-- Packaged in a separate binary to keep file sizes and dependencies down.
-- Supports .NET 8 and higher.
+- Được đóng gói trong một binary riêng để giảm kích thước tệp và dependency.
+- Hỗ trợ .NET 8 trở lên.
 
-   - Full support for the C# 12.0 syntax and features.
+   - Hỗ trợ đầy đủ cú pháp và tính năng của C# 12.0.
 
-- Supports Windows, Linux, and macOS. Since Godot 4.2, experimental support for
-  Android and iOS is also available.
+- Hỗ trợ Windows, Linux và macOS. Kể từ Godot 4.2, Android và iOS cũng được hỗ trợ thử nghiệm.
 
-   - On the iOS platform only some architectures are supported: ``arm64``.
-   - The web platform is currently unsupported. To use C# on that platform,
-     consider Godot 3 instead.
+   - Trên nền tảng iOS, chỉ một số architecture được hỗ trợ: ``arm64``.
+   - Nền tảng web hiện chưa được hỗ trợ. Để sử dụng C# trên nền tảng đó, hãy cân nhắc dùng Godot 3.
 
-- Using an external editor is recommended to benefit from IDE functionality.
+- Nên sử dụng editor bên ngoài để tận dụng các chức năng IDE.
 
 **GDExtension (C, C++, Rust, D, ...):**
 
-- When you need it, link to native libraries for higher performance and third-party
-  integrations.
+- Khi cần, hãy liên kết với các thư viện native để đạt hiệu năng cao hơn và tích hợp với bên thứ ba.
 
-   - For scripting game logic, GDScript or C# are recommended if their
-     performance is suitable.
+   - Để viết game logic, nên dùng GDScript hoặc C# nếu hiệu năng của chúng phù hợp.
 
-- Official GDExtension bindings for `C <https://github.com/godotengine/godot-headers>`__
-  and `C++ <https://github.com/godotengine/godot-cpp>`__.
+- Các binding GDExtension chính thức cho `C <https://github.com/godotengine/godot-headers>`__ và `C++ <https://github.com/godotengine/godot-cpp>`__.
 
-   - Use any build system and language features you wish.
+   - Sử dụng bất kỳ build system và tính năng ngôn ngữ nào bạn muốn.
 
-- Actively developed GDExtension bindings for `D <https://github.com/godot-dlang/godot-dlang>`__,
-  `Swift <https://github.com/migueldeicaza/SwiftGodot>`__, and `Rust <https://github.com/godot-rust/gdextension>`__
-  bindings provided by the community. (Some of these bindings may be experimental and not production-ready).
+- Các binding GDExtension cho `D <https://github.com/godot-dlang/godot-dlang>`__, `Swift <https://github.com/migueldeicaza/SwiftGodot>`__ và `Rust <https://github.com/godot-rust/gdextension>`__ đang được cộng đồng tích cực phát triển. (Một số binding trong đó có thể đang thử nghiệm và chưa sẵn sàng cho production).
 
-Audio
------
+Âm thanh
+--------
 
-**Features:**
+**Tính năng:**
 
-- Mono, stereo, 5.1 and 7.1 output.
-- Non-positional and positional playback in 2D and 3D.
+- Đầu ra mono, stereo, 5.1 và 7.1.
+- Phát âm thanh không định vị và có định vị trong 2D và 3D.
 
-   - Optional Doppler effect in 2D and 3D.
+   - Hiệu ứng Doppler tùy chọn trong 2D và 3D.
 
-- Support for re-routable :ref:`audio buses <doc_audio_buses>` and effects
-  with dozens of effects included.
-- Support for polyphony (playing several sounds from a single :ref:`class_AudioStreamPlayer`
-  node).
-- Support for random volume and pitch.
-- Support for real-time pitch scaling.
-- Support for sequential/random sample selection, including repetition prevention
-  when using random sample selection.
-- :ref:`class_AudioListener2D` and :ref:`class_AudioListener3D` nodes to listen from a position
-  different from the camera.
-- Support for :ref:`procedural audio generation <class_AudioStreamGenerator>`.
-- Audio input to record microphones.
-- :ref:`Text to speech <doc_text_to_speech>` using platform-provided TTS engines.
-- MIDI input.
+- Hỗ trợ :ref:`bus âm thanh <doc_audio_buses>` có thể định tuyến lại và các effect, bao gồm hàng chục effect.
+- Hỗ trợ polyphony (phát nhiều âm thanh từ một :ref:`class_AudioStreamPlayer` node).
+- Hỗ trợ volume và pitch ngẫu nhiên.
+- Hỗ trợ điều chỉnh pitch theo thời gian thực.
+- Hỗ trợ chọn sample tuần tự/ngẫu nhiên, bao gồm ngăn lặp lại khi chọn sample ngẫu nhiên.
+- :ref:`class_AudioListener2D` và :ref:`class_AudioListener3D` node để lắng nghe từ một vị trí khác với camera.
+- Hỗ trợ :ref:`tạo âm thanh theo thủ tục <class_AudioStreamGenerator>`.
+- Đầu vào âm thanh để ghi âm từ microphone.
+- :ref:`Chuyển văn bản thành giọng nói <doc_text_to_speech>` bằng các engine TTS do nền tảng cung cấp.
+- Đầu vào MIDI.
 
-   - No support for MIDI output yet.
+   - Hiện chưa hỗ trợ đầu ra MIDI.
 
-**APIs used:**
+**API được sử dụng:**
 
 - *Windows:* WASAPI.
 - *macOS:* CoreAudio.
-- *Linux:* PulseAudio or ALSA.
+- *Linux:* PulseAudio hoặc ALSA.
 
 Import
 ------
 
-- Support for :ref:`custom import plugins <doc_import_plugins>`.
+- Hỗ trợ :ref:`plugin import tùy chỉnh <doc_import_plugins>`.
 
-**Formats:**
+**Định dạng:**
 
-- *Images:* See :ref:`doc_importing_images`.
-- *Audio:*
+- *Hình ảnh:* Xem :ref:`doc_importing_images`.
+- *Âm thanh:*
 
-   - WAV with optional :abbr:`QOA (Quite OK Audio)` or IMA-ADPCM compression.
+   - WAV với tùy chọn nén :abbr:`QOA (Quite OK Audio)` hoặc IMA-ADPCM.
    - Ogg Vorbis.
    - MP3.
 
-- *3D scenes:* See :ref:`doc_importing_3d_scenes`.
+- *Cảnh 3D:* Xem :ref:`doc_importing_3d_scenes`.
 
-   - glTF 2.0 *(recommended)*.
-   - ``.blend`` (by calling Blender's glTF export functionality transparently).
-   - FBX (by calling `FBX2glTF <https://github.com/godotengine/FBX2glTF>`__ transparently).
+   - glTF 2.0 *(khuyến nghị)*.
+   - ``.blend`` (bằng cách gọi ẩn chức năng xuất glTF của Blender).
+   - FBX (bằng cách gọi ẩn `FBX2glTF <https://github.com/godotengine/FBX2glTF>`__).
    - Collada (.dae).
-   - Wavefront OBJ (static scenes only, can be loaded directly as a mesh or imported as a 3D scene).
+   - Wavefront OBJ (chỉ dành cho cảnh tĩnh, có thể được tải trực tiếp dưới dạng mesh hoặc được nhập dưới dạng cảnh 3D).
 
-- Support for loading glTF 2.0 scenes at runtime, including from an exported project.
-- 3D meshes use `Mikktspace <http://www.mikktspace.com/>`__ to generate tangents
-  on import, which ensures consistency with other 3D applications such as Blender.
+- Hỗ trợ tải cảnh glTF 2.0 tại runtime, bao gồm cả từ project đã xuất.
+- Mesh 3D sử dụng `Mikktspace <http://www.mikktspace.com/>`__ để tạo tangent khi import, bảo đảm tính nhất quán với các ứng dụng 3D khác như Blender.
 
-Input
------
+Đầu vào
+-------
 
-- :ref:`Input mapping system <doc_input_examples>` using hardcoded input events
-  or remappable input actions.
+- :ref:`Hệ thống ánh xạ đầu vào <doc_input_examples>` sử dụng các sự kiện đầu vào được hardcode hoặc các input action có thể ánh xạ lại.
 
-   - Axis values can be mapped to two different actions with a configurable deadzone.
-   - Use the same code to support both keyboards and gamepads.
+   - Các giá trị trục có thể được ánh xạ tới hai action khác nhau với deadzone có thể cấu hình.
+   - Sử dụng cùng một đoạn code để hỗ trợ cả bàn phím và gamepad.
 
-- Keyboard input.
+- Đầu vào từ bàn phím.
 
-   - Keys can be mapped in "physical" mode to be independent of the keyboard layout.
+   - Các phím có thể được ánh xạ ở chế độ "physical" để không phụ thuộc vào bố cục bàn phím.
 
-- Mouse input.
+- Đầu vào từ chuột.
 
-   - The mouse cursor can be visible, hidden, captured or confined within the window.
-   - The mouse cursor's appearance can be changed to a custom image or one of the
-     system cursors.
-   - When captured, raw input is used on Windows and Linux to sidestep the OS'
-     mouse acceleration settings.
+   - Con trỏ chuột có thể hiển thị, ẩn, bị bắt hoặc bị giới hạn trong cửa sổ.
+   - Có thể thay đổi giao diện con trỏ chuột thành hình ảnh tùy chỉnh hoặc một trong các con trỏ hệ thống.
+   - Khi bị bắt, đầu vào thô được sử dụng trên Windows và Linux để bỏ qua các thiết lập tăng tốc chuột của hệ điều hành.
 
-- :ref:`Gamepad input <doc_controllers_gamepads_joysticks>`
-  (up to 8 simultaneous controllers).
+- :ref:`Đầu vào từ gamepad <doc_controllers_gamepads_joysticks>` (tối đa 8 bộ điều khiển đồng thời).
 
-  - Support for :ref:`changing the LED color <doc_controller_features_led_color>`
-    on supported controllers.
-  - Support for :ref:`reading motion sensors <doc_controller_features_motion_sensors>`
-    on supported controllers (used to implement gyro aiming).
+  - Hỗ trợ :ref:`thay đổi màu LED <doc_controller_features_led_color>` trên các bộ điều khiển được hỗ trợ.
+  - Hỗ trợ :ref:`đọc cảm biến chuyển động <doc_controller_features_motion_sensors>` trên các bộ điều khiển được hỗ trợ (dùng để triển khai ngắm bằng gyro).
 
-- Pen/tablet input with pressure and tilt support.
+- Đầu vào từ bút/tablet với hỗ trợ áp lực và độ nghiêng.
 
-Navigation
+Điều hướng
 ----------
 
-- A* algorithm in :ref:`2D <class_AStar2D>` and :ref:`3D <class_AStar3D>`.
-- Navigation meshes with dynamic obstacle avoidance in
-  :ref:`2D <doc_navigation_overview_2d>` and :ref:`3D <doc_navigation_overview_3d>`.
-- Generate navigation meshes from the editor or at runtime (including from an exported project).
+- Thuật toán A* trong :ref:`2D <class_AStar2D>` và :ref:`3D <class_AStar3D>`.
+- Mesh điều hướng với tính năng tránh chướng ngại vật động trong
+  :ref:`2D <doc_navigation_overview_2d>` và :ref:`3D <doc_navigation_overview_3d>`.
+- Tạo mesh điều hướng từ editor hoặc tại runtime (bao gồm cả từ project đã xuất).
 
 Networking
 ----------
 
-- Low-level TCP networking using :ref:`class_StreamPeer` and :ref:`class_TCPServer`.
-- Low-level UDP networking using :ref:`class_PacketPeer` and :ref:`class_UDPServer`.
-- Low-level HTTP requests using :ref:`class_HTTPClient`.
-- High-level HTTP requests using :ref:`class_HTTPRequest`.
+- Networking TCP cấp thấp sử dụng :ref:`class_StreamPeer` và :ref:`class_TCPServer`.
+- Networking UDP cấp thấp sử dụng :ref:`class_PacketPeer` và :ref:`class_UDPServer`.
+- Yêu cầu HTTP cấp thấp sử dụng :ref:`class_HTTPClient`.
+- Yêu cầu HTTP cấp cao sử dụng :ref:`class_HTTPRequest`.
 
-   - Supports HTTPS out of the box using bundled certificates.
+   - Hỗ trợ HTTPS ngay khi cài đặt bằng cách sử dụng các certificate đi kèm.
 
-- :ref:`High-level multiplayer <doc_high_level_multiplayer>` API using UDP and ENet.
+- API :ref:`multiplayer cấp cao <doc_high_level_multiplayer>` sử dụng UDP và ENet.
 
-   - Automatic replication using remote procedure calls (RPCs).
-   - Supports unreliable, reliable and ordered transfers.
+   - Tự động replication bằng remote procedure call (RPC).
+   - Hỗ trợ truyền không tin cậy, tin cậy và có thứ tự.
 
-- :ref:`WebSocket <doc_websocket>` client and server, available on all platforms.
-- :ref:`WebRTC <doc_webrtc>` client and server, available on all platforms.
-- Support for :ref:`UPnP <class_UPNP>` to sidestep the requirement to forward ports
-  when hosting a server behind a NAT.
+- Client và server :ref:`WebSocket <doc_websocket>`, khả dụng trên mọi nền tảng.
+- Client và server :ref:`WebRTC <doc_webrtc>`, khả dụng trên mọi nền tảng.
+- Hỗ trợ :ref:`UPnP <class_UPNP>` để bỏ qua yêu cầu chuyển tiếp port khi host server phía sau NAT.
 
-Internationalization
---------------------
+Quốc tế hóa
+-----------
 
-- Full support for Unicode including emoji.
-- Support for loading system fonts on Windows, macOS, and Linux.
+- Hỗ trợ đầy đủ Unicode, bao gồm emoji.
+- Hỗ trợ tải system font trên Windows, macOS và Linux.
 
-  - By default, system fonts are used as a fallback to display unsupported
-    characters. This allows proper display of multilingual text without
-    having to bundle large font files with a project.
+  - Theo mặc định, system font được sử dụng làm phương án dự phòng để hiển thị các ký tự không được hỗ trợ
+    characters. Điều này cho phép hiển thị chính xác văn bản đa ngôn ngữ mà không
+    phải đóng gói các tệp font lớn cùng với project.
 
-- Store localization strings using :ref:`CSV <doc_internationalizing_games>`
-  or :ref:`gettext <doc_localization_using_gettext>`.
+- Lưu trữ chuỗi bản địa hóa bằng :ref:`CSV <doc_internationalizing_games>` hoặc :ref:`gettext <doc_localization_using_gettext>`.
 
-  - Support for generating gettext POT and PO files from the editor.
+  - Hỗ trợ tạo tệp gettext POT và PO từ editor.
 
-- Use localized strings in your project automatically in GUI elements or by
-  using the ``tr()`` function.
-- Support for pluralization and translation contexts.
-- Support for :ref:`bidirectional typesetting <doc_internationalizing_games_bidi>`,
-  text shaping and OpenType localized forms.
-- Automatic UI mirroring for right-to-left locales.
-- Support for :ref:`pseudolocalization <doc_pseudolocalization>` to test your project
-  for i18n-friendliness.
+- Tự động sử dụng các chuỗi đã bản địa hóa trong project ở các phần tử GUI hoặc bằng cách sử dụng hàm ``tr()``.
+- Hỗ trợ số nhiều hóa và ngữ cảnh dịch.
+- Hỗ trợ :ref:`dàn chữ hai chiều <doc_internationalizing_games_bidi>`, định hình văn bản và các dạng bản địa hóa OpenType.
+- Tự động phản chiếu UI cho các locale từ phải sang trái.
+- Hỗ trợ :ref:`pseudolocalization <doc_pseudolocalization>` để kiểm tra mức độ thân thiện với i18n của project.
 
-Windowing and OS integration
-----------------------------
+Quản lý cửa sổ và tích hợp hệ điều hành
+---------------------------------------
 
-- Spawn multiple independent windows within a single process.
-- Move, resize, minimize, and maximize windows spawned by the project.
-- Change the window title and icon.
-- Create transparent windows to use as overlays, with polygon-based
-  mouse passthrough support.
-- Request attention (will cause the title bar to blink on most platforms).
-- Fullscreen mode.
-
-   - Uses borderless fullscreen by default on Windows for fast alt-tabbing,
-     but can optionally use exclusive fullscreen to reduce input lag.
-
-- Borderless windows (fullscreen or non-fullscreen).
-- Keep a window always on top.
-- Make a window ignore focus (useful for overlays).
-- Declare a window as a popup (hidden from task switcher)
-  or exclusive (prevents interacting with other windows from the same process).
-- Native file dialog support on Windows, macOS, Linux, and Android.
-- Tray icon support on Windows and macOS.
-- Global menu integration on macOS.
-- Client-side decorations on macOS.
-- Execute commands in a blocking or non-blocking manner (including running
-  multiple instances of the same project).
-- Open file paths and URLs using default or custom protocol handlers (if registered on the system).
-- Parse custom command line arguments.
-- Support for screen readers on Windows, macOS, and Linux.
-- Any Godot binary (editor or exported project) can be
-  :ref:`used as a headless server <doc_exporting_for_dedicated_servers>`
-  by starting it with the ``--headless`` command line argument.
-  This allows running the engine without a GPU or display server.
+- Tạo nhiều cửa sổ độc lập trong một process.
+- Di chuyển, thay đổi kích thước, thu nhỏ và phóng to các cửa sổ do project tạo ra.
+- Thay đổi tiêu đề và biểu tượng cửa sổ.
+- Tạo các cửa sổ trong suốt để dùng làm lớp phủ, với hỗ trợ cho phép chuột đi qua dựa trên polygon.
+- Yêu cầu chú ý (sẽ khiến thanh tiêu đề nhấp nháy trên hầu hết nền tảng).
+- Chế độ toàn màn hình (không viền và độc quyền).
+- Cửa sổ không viền (toàn màn hình hoặc không toàn màn hình).
+- Giữ cửa sổ luôn ở trên cùng.
+- Khiến cửa sổ bỏ qua focus (hữu ích cho lớp phủ).
+- Khai báo cửa sổ là popup (ẩn khỏi trình chuyển tác vụ) hoặc exclusive (ngăn tương tác với các cửa sổ khác trong cùng process).
+- Hỗ trợ hộp thoại tệp native trên Windows, macOS, Linux và Android.
+- Hỗ trợ biểu tượng khay hệ thống trên Windows và macOS.
+- Tích hợp menu toàn cục trên macOS.
+- Trang trí phía client trên macOS.
+- Thực thi các lệnh theo cách blocking hoặc non-blocking (bao gồm chạy nhiều instance của cùng một project).
+- Mở đường dẫn tệp và URL bằng trình xử lý giao thức mặc định hoặc tùy chỉnh (nếu đã được đăng ký trên hệ thống).
+- Phân tích các đối số dòng lệnh tùy chỉnh.
+- Hỗ trợ trình đọc màn hình trên Windows, macOS và Linux.
+- Bất kỳ binary Godot nào (editor hoặc project đã export) đều có thể được
+  :ref:`sử dụng làm server headless <doc_exporting_for_dedicated_servers>` bằng cách khởi động với đối số dòng lệnh ``--headless``. Điều này cho phép chạy engine mà không cần GPU hoặc display server.
 
 .. seealso::
 
-    See :ref:`doc_creating_applications` for details on using these features.
+    Xem :ref:`doc_creating_applications` để biết chi tiết về cách sử dụng các tính năng này.
 
-Mobile
-------
+Thiết bị di động
+----------------
 
-- :ref:`Virtual joystick <class_VirtualJoystick>` and :ref:`buttons <class_TouchScreenButton>`
-  for touch input.
-- In-app purchases on :ref:`Android <doc_android_in_app_purchases>`
-  and `iOS <https://github.com/godot-sdk-integrations/godot-storekit2>`_.
-- Support for advertisements using third-party modules.
-- Support for picture-in-picture mode on Android.
+- :ref:`Joystick ảo <class_VirtualJoystick>` và :ref:`buttons <class_TouchScreenButton>` cho thao tác nhập cảm ứng.
+- Mua hàng trong ứng dụng trên :ref:`Android <doc_android_in_app_purchases>` và `iOS <https://github.com/godot-sdk-integrations/godot-storekit2>`_.
+- Hỗ trợ quảng cáo bằng các module bên thứ ba.
+- Hỗ trợ chế độ picture-in-picture trên Android.
 
 .. _doc_xr_support:
 
-XR support (AR and VR)
-----------------------
+Hỗ trợ XR (AR và VR)
+--------------------
 
-- Support for desktop headsets using :ref:`OpenXR <doc_setting_up_xr>`. If a headset
-  works with SteamVR, it should work with Godot.
+- Hỗ trợ headset máy tính để bàn sử dụng :ref:`OpenXR <doc_setting_up_xr>`. Nếu một headset hoạt động với SteamVR thì headset đó cũng sẽ hoạt động với Godot.
 
-   - Godot also supports Quest over Link, AndroidXR Direct Preview, and Pico
-     Connect.
+   - Godot cũng hỗ trợ Quest qua Link, AndroidXR Direct Preview và Pico Connect.
 
-- Support for :ref:`Android-based headsets <doc_deploying_to_android>` using OpenXR.
-  Including support for the following standalone headsets:
+- Hỗ trợ :ref:`headset dựa trên Android <doc_deploying_to_android>` sử dụng OpenXR. Bao gồm hỗ trợ cho các headset độc lập sau:
 
-   - Meta Quest 1/2/3 and Pro
+   - Meta Quest 1/2/3 và Pro
    - Pico 4/4 Ultra
    - Magic Leap 2
    - Lynx R1
    - HTC Vive Focus Vision
-   - Android XR headsets
+   - Headset Android XR
 
-- Support for the Linux-based standalone Steam Frame using OpenXR.
+- Hỗ trợ Steam Frame độc lập dựa trên Linux sử dụng OpenXR.
 
-- Limited support for visionOS Apple headsets.
+- Hỗ trợ hạn chế cho headset Apple visionOS.
 
-  - Currently only exporting an application for use on a flat plane within the
-    headset is supported. Immersive experiences are not supported.
+  - Hiện tại, chỉ hỗ trợ export một ứng dụng để sử dụng trên một mặt phẳng trong headset. Không hỗ trợ trải nghiệm nhập vai.
 
-- Other devices supported through an XR plugin structure.
-- Various advanced toolkits are available that implement common features required by XR applications.
+- Các thiết bị khác được hỗ trợ thông qua cấu trúc plugin XR.
+- Có nhiều bộ công cụ nâng cao triển khai các tính năng phổ biến cần thiết cho ứng dụng XR.
 
-GUI system
-----------
+Hệ thống GUI
+------------
 
-Godot's GUI is built using the same Control nodes used to make games in Godot.
-The editor UI can easily be extended in many ways using add-ons.
+GUI của Godot được xây dựng bằng các node Control giống với những node được sử dụng để tạo game trong Godot. Có thể dễ dàng mở rộng UI của editor theo nhiều cách bằng các add-on.
 
-**Nodes:**
+**Các node:**
 
-- Buttons.
-- Checkboxes, check buttons, radio buttons.
-- Text entry using :ref:`class_LineEdit` (single line), :ref:`class_TextEdit`
-  (multiple lines), and :ref:`class_CodeEdit` (supports syntax highlighting,
-  line numbers, and more).
-- Dropdown menus using :ref:`class_PopupMenu` and :ref:`class_OptionButton`
-  with support for an optional search bar.
-- Scrollbars.
-- Labels.
-- RichTextLabel for :ref:`text formatted using BBCode <doc_bbcode_in_richtextlabel>`,
-  with support for animated custom effects.
-- Trees (can also be used to represent tables).
-- Color picker with RGB, HSV, and OKHSL modes, as well as custom color palettes.
-- Controls can be rotated and scaled.
-- Drag-and-drop support.
+- Các nút.
+- Checkbox, check button, radio button.
+- Nhập văn bản bằng :ref:`class_LineEdit` (một dòng), :ref:`class_TextEdit` (nhiều dòng) và :ref:`class_CodeEdit` (hỗ trợ syntax highlighting, số dòng và nhiều tính năng khác).
+- Menu thả xuống bằng :ref:`class_PopupMenu` và :ref:`class_OptionButton`, có hỗ trợ thanh tìm kiếm tùy chọn.
+- Thanh cuộn.
+- Nhãn.
+- RichTextLabel để :ref:`định dạng văn bản bằng BBCode <doc_bbcode_in_richtextlabel>`, có hỗ trợ các hiệu ứng tùy chỉnh động.
+- Cây (cũng có thể được sử dụng để biểu diễn bảng).
+- Bộ chọn màu với các chế độ RGB, HSV và OKHSL, cùng các bảng màu tùy chỉnh.
+- Có thể xoay và thay đổi tỷ lệ các Control.
+- Hỗ trợ kéo và thả.
 
-**Sizing:**
+**Kích thước:**
 
-- Anchors to keep GUI elements in a specific corner, edge or centered.
-- Containers to place GUI elements automatically following certain rules.
+- Anchor để giữ các phần tử GUI tại một góc, cạnh cụ thể hoặc ở giữa.
+- Container để tự động sắp xếp các phần tử GUI theo những quy tắc nhất định.
 
-   - :ref:`Stack <class_BoxContainer>` layouts.
-   - :ref:`Grid <class_GridContainer>` layouts.
-   - :ref:`Flow <class_FlowContainer>` layouts (similar to autowrapping text).
-   - :ref:`Margin <class_MarginContainer>`, :ref:`centered <class_CenterContainer>`
-     and :ref:`aspect ratio <class_AspectRatioContainer>` layouts.
-   - :ref:`Draggable splitter <class_SplitContainer>` layouts.
-   - :ref:`Foldable section <class_FoldableContainer>` layouts.
+   - :ref:`Stack <class_BoxContainer>` bố cục.
+   - :ref:`Grid <class_GridContainer>` bố cục.
+   - :ref:`Flow <class_FlowContainer>` bố cục (tương tự như văn bản tự động xuống dòng).
+   - :ref:`Margin <class_MarginContainer>`, :ref:`centered <class_CenterContainer>` và :ref:`bố cục theo tỷ lệ khung hình <class_AspectRatioContainer>`.
+   - :ref:`Bố cục splitter có thể kéo <class_SplitContainer>`.
+   - :ref:`Bố cục phần có thể thu gọn <class_FoldableContainer>`.
 
-- Scale to :ref:`multiple resolutions <doc_multiple_resolutions>` using the
-  ``canvas_items`` or ``viewport`` stretch modes.
-- Support any aspect ratio using anchors and the ``expand`` stretch aspect.
+- Chia tỷ lệ đến :ref:`nhiều độ phân giải <doc_multiple_resolutions>` bằng các chế độ stretch ``canvas_items`` hoặc ``viewport``.
+- Hỗ trợ mọi tỷ lệ khung hình bằng anchor và ``expand`` stretch aspect.
 
-**Theming:**
+**Chủ đề:**
 
-- Built-in theme editor.
+- Trình chỉnh sửa chủ đề tích hợp sẵn.
 
-   - Generate a theme based on the current editor theme settings.
+   - Tạo chủ đề dựa trên các thiết lập chủ đề hiện tại của editor.
 
-- Procedural vector-based theming using :ref:`class_StyleBoxFlat`.
+- Tạo chủ đề vector theo thủ tục bằng :ref:`class_StyleBoxFlat`.
 
-   - Supports rounded/beveled corners, drop shadows, per-border widths and antialiasing.
+   - Hỗ trợ các góc bo/vát, đổ bóng, độ rộng từng cạnh và antialiasing.
 
-- Texture-based theming using :ref:`class_StyleBoxTexture`.
+- Tạo chủ đề dựa trên texture bằng :ref:`class_StyleBoxTexture`.
 
-Godot's small distribution size can make it a suitable alternative to frameworks
-like Electron or Qt.
+Kích thước phân phối nhỏ của Godot có thể khiến nó trở thành lựa chọn thay thế phù hợp cho các framework như Electron hoặc Qt.
 
 Animation
 ---------
 
-- Direct kinematics and inverse kinematics.
-- Support for animating any property with customizable interpolation.
-- Support for calling methods in animation tracks.
-- Support for playing sounds in animation tracks.
-- Support for Bézier curves in animation.
+- Động học thuận và động học nghịch.
+- Hỗ trợ tạo animation cho bất kỳ thuộc tính nào với nội suy có thể tùy chỉnh.
+- Hỗ trợ gọi các method trong track animation.
+- Hỗ trợ phát âm thanh trong track animation.
+- Hỗ trợ đường cong Bézier trong animation.
 
-File formats
-------------
-
-- Scenes and resources can be saved in :ref:`text-based <doc_tscn_file_format>` or binary formats.
-
-   - Text-based formats are human-readable and more friendly to version control.
-   - Binary formats are faster to save/load for large scenes/resources.
-
-- Read and write text or binary files using :ref:`class_FileAccess`.
-
-   - Can optionally be compressed or encrypted.
-
-- Read and write :ref:`class_JSON` files.
-- Read and write INI-style configuration files using :ref:`class_ConfigFile`.
-
-   - Can (de)serialize any Godot datatype, including Vector2/3, Color, ...
-
-- Read XML files using :ref:`class_XMLParser`.
-- :ref:`Load and save images, audio/video, fonts and ZIP archives <doc_runtime_loading_and_saving>`
-  in an exported project without having to go through Godot's import system.
-- Pack game data into a PCK file (custom format optimized for fast seeking),
-  into a ZIP archive, or directly into the executable for single-file distribution.
-- :ref:`Export additional PCK files<doc_exporting_pcks>` that can be read
-  by the engine to support mods and DLCs.
-
-Miscellaneous
+Định dạng tệp
 -------------
 
-- :ref:`Video playback <doc_playing_videos>` with built-in support for Ogg Theora.
-- :ref:`Movie Maker mode <doc_creating_movies>` to record videos from a running
-  project with synchronized audio and perfect frame pacing.
-- :ref:`Low-level access to servers <doc_using_servers>` which allows bypassing
-  the scene tree's overhead when needed.
-- :ref:`Command line interface <doc_command_line_tutorial>` for automation.
+- Scene và resource có thể được lưu ở định dạng :ref:`dựa trên văn bản <doc_tscn_file_format>` hoặc binary.
 
-   - Export and deploy projects using continuous integration platforms.
-   - `Shell completion scripts <https://github.com/godotengine/godot/tree/master/misc/dist/shell>`__
-     are available for Bash, zsh and fish.
-   - Print colored text to standard output on all platforms using
+   - Định dạng dựa trên văn bản có thể đọc được đối với con người và thân thiện hơn với việc quản lý phiên bản.
+   - Định dạng binary lưu/tải scene/resource lớn nhanh hơn.
+
+- Đọc và ghi tệp văn bản hoặc tệp nhị phân bằng :ref:`class_FileAccess`.
+
+   - Có thể tùy chọn nén hoặc mã hóa.
+
+- Đọc và ghi tệp :ref:`class_JSON`.
+- Đọc và ghi tệp cấu hình kiểu INI bằng :ref:`class_ConfigFile`.
+
+   - Có thể (de)serialize mọi kiểu dữ liệu Godot, bao gồm Vector2/3, Color, ...
+
+- Đọc tệp XML bằng :ref:`class_XMLParser`.
+- :ref:`Tải và lưu hình ảnh, âm thanh/video, phông chữ và kho lưu trữ ZIP <doc_runtime_loading_and_saving>` trong project đã export mà không cần đi qua hệ thống import của Godot.
+- Đóng gói dữ liệu game vào tệp PCK (định dạng tùy chỉnh được tối ưu để tìm kiếm nhanh), vào kho lưu trữ ZIP hoặc trực tiếp vào tệp thực thi để phân phối dưới dạng một tệp duy nhất.
+- :ref:`Export các tệp PCK bổ sung <doc_exporting_pcks>` để engine có thể đọc chúng nhằm hỗ trợ mod và DLC.
+
+Linh tinh
+---------
+
+- :ref:`Phát video <doc_playing_videos>` với hỗ trợ tích hợp cho Ogg Theora.
+- :ref:`Chế độ Movie Maker <doc_creating_movies>` để ghi video từ một project đang chạy với âm thanh được đồng bộ và nhịp khung hình hoàn hảo.
+- :ref:`Truy cập cấp thấp vào các server <doc_using_servers>`, cho phép bỏ qua overhead của scene tree khi cần.
+- :ref:`Giao diện dòng lệnh <doc_command_line_tutorial>` để tự động hóa.
+
+   - Export và deploy project bằng các nền tảng continuous integration.
+   - `Các script shell completion <https://github.com/godotengine/godot/tree/master/misc/dist/shell>`__ có sẵn cho Bash, zsh và fish.
+   - In văn bản có màu ra standard output trên tất cả các nền tảng bằng cách sử dụng
      :ref:`print_rich <class_@GlobalScope_method_print_rich>`.
 
-- The editor can
-  :ref:`detect features used in a project and create a compilation profile <doc_engine_compilation_configuration_editor>`,
-  which can be used to create smaller export template binaries
-  with unneeded features disabled.
-- Support for :ref:`C++ modules <doc_custom_modules_in_cpp>` statically linked
-  into the engine binary.
+- Editor có thể
+  :ref:`phát hiện các tính năng được sử dụng trong project và tạo một compilation profile <doc_engine_compilation_configuration_editor>`, có thể dùng để tạo các binary export template nhỏ hơn với những tính năng không cần thiết bị vô hiệu hóa.
+- Hỗ trợ các :ref:`module C++ <doc_custom_modules_in_cpp>` được liên kết tĩnh vào binary của engine.
 
-  - Most built-in modules can be disabled at compile-time to reduce binary size
-    in custom builds. See :ref:`doc_optimizing_for_size` for details.
+  - Hầu hết module tích hợp có thể được vô hiệu hóa tại thời điểm compile để giảm kích thước binary trong các bản build tùy chỉnh. Xem :ref:`doc_optimizing_for_size` để biết chi tiết.
 
-- Engine and editor written in C++17.
+- Engine và editor được viết bằng C++17.
 
-   - Can be :ref:`compiled <doc_introduction_to_the_buildsystem>` using GCC,
-     Clang and MSVC. MinGW is also supported.
-   - Friendly towards packagers. In most cases, system libraries can be used
-     instead of the ones provided by Godot. The build system doesn't download anything.
-     Builds can be fully reproducible.
+   - Có thể được :ref:`compile <doc_introduction_to_the_buildsystem>` bằng GCC, Clang và MSVC. MinGW cũng được hỗ trợ.
+   - Thân thiện với các packager. Trong hầu hết trường hợp, có thể sử dụng các thư viện hệ thống thay cho những thư viện do Godot cung cấp. Hệ thống build không tải xuống bất kỳ thứ gì. Các bản build có thể được tái tạo hoàn toàn.
 
-- Licensed under the permissive MIT license.
+- Được cấp phép theo giấy phép MIT mang tính cởi mở.
 
-   - Open development process with `contributions welcome <https://contributing.godotengine.org/en/latest/organization/how_to_contribute.html>`__.
+   - Quy trình phát triển mở với `hoan nghênh đóng góp <https://contributing.godotengine.org/en/latest/index.html>`__.
 
 .. seealso::
 
-    The `Godot proposals repository <https://github.com/godotengine/godot-proposals>`__
-    lists features that have been requested by the community and may be implemented
-    in future Godot releases.
+    `Repository đề xuất Godot <https://github.com/godotengine/godot-proposals>`__ liệt kê các tính năng được cộng đồng yêu cầu và có thể được triển khai trong các bản phát hành Godot tương lai.
+
+.. _`Godot website`: https://godotengine.org/consoles/
+.. _`iOS`: https://github.com/godot-sdk-integrations/godot-storekit2

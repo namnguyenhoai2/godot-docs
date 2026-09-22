@@ -2,47 +2,34 @@
 
 .. _doc_complying_with_licenses:
 
-Complying with licenses
-=======================
+Tuân thủ giấy phép
+==================
 
 .. warning::
 
-    The recommendations in this page **are not legal advice.** They are provided
-    in good faith to help users navigate license attribution requirements.
+    Các khuyến nghị trên trang này **không phải là tư vấn pháp lý.** Nội dung được cung cấp một cách thiện chí để giúp người dùng đáp ứng các yêu cầu về ghi công của giấy phép.
 
-What are licenses?
-------------------
+Giấy phép là gì?
+----------------
 
-Godot is created and distributed under the `MIT License <https://opensource.org/licenses/MIT>`_.
-It doesn't have a sole owner, as every contributor that submits code to
-the project does it under this same license and keeps ownership of their
-contribution.
+Godot được tạo ra và phân phối theo `Giấy phép MIT <https://opensource.org/licenses/MIT>`_. Godot không có một chủ sở hữu duy nhất, vì mọi contributor gửi mã vào dự án đều thực hiện việc đó theo cùng giấy phép này và vẫn giữ quyền sở hữu đối với phần đóng góp của mình.
 
-The license is the legal requirement for you (or your company) to use and
-distribute the software (and derivative projects, including games made with it).
-Your game or project can have a different license, but it still needs to comply
-with the original one.
+Giấy phép là yêu cầu pháp lý để bạn (hoặc công ty của bạn) sử dụng và phân phối phần mềm (cũng như các dự án phái sinh, bao gồm cả game được tạo bằng phần mềm đó). Game hoặc dự án của bạn có thể sử dụng một giấy phép khác, nhưng vẫn phải tuân thủ giấy phép ban đầu.
 
 .. note::
 
-    This section covers compliance with licenses from a user perspective.
-    If you are interested in licence compliance as a contributor, you can find
-    guidelines `here <https://contributing.godotengine.org/en/latest/engine/guidelines/best_practices.html#don-t-use-complex-canned-solutions-for-simple-problems>`__.
+    Phần này đề cập đến việc tuân thủ giấy phép từ góc độ người dùng. Nếu bạn quan tâm đến việc tuân thủ giấy phép với tư cách contributor, bạn có thể tìm thấy các hướng dẫn trên trang `Các phương pháp hay nhất <https://contributing.godotengine.org/en/latest/development/engine/best_practices.html#don-t-use-complex-canned-solutions-for-simple-problems>`__.
 
 .. tip::
 
-    Alongside the Godot license text, remember to also list third-party notices
-    for assets you're using, such as textures, models, sounds, music and fonts.
-    This includes free assets, which often come with licenses that require
-    attribution.
+    Bên cạnh nội dung giấy phép của Godot, hãy nhớ liệt kê cả các thông báo của bên thứ ba cho những asset bạn đang sử dụng, chẳng hạn như texture, model, âm thanh, nhạc và font. Điều này bao gồm cả các asset miễn phí, vốn thường đi kèm với những giấy phép yêu cầu ghi công.
 
-Requirements
-------------
+Các yêu cầu
+-----------
 
-In the case of the MIT license, the only requirement is to include the license
-text somewhere in your game or derivative project.
+Trong trường hợp của giấy phép MIT, yêu cầu duy nhất là đưa nội dung giấy phép vào một nơi nào đó trong game hoặc dự án phái sinh của bạn.
 
-This text reads as follows:
+Nội dung này như sau:
 
 .. code-block:: none
 
@@ -69,95 +56,75 @@ This text reads as follows:
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 
-Beside its own MIT license, Godot includes code from a number of third-party
-libraries. See :ref:`doc_complying_with_licenses_thirdparty` for details.
+Bên cạnh giấy phép MIT của mình, Godot còn bao gồm mã từ một số bên thứ ba
+libraries. Xem :ref:`doc_complying_with_licenses_thirdparty` để biết chi tiết.
 
 .. note::
 
-    Your games do not need to be under the same license. You are free to release
-    your Godot projects under any license and to create commercial games with
-    the engine.
+    Game của bạn không cần phải sử dụng cùng giấy phép đó. Bạn được tự do phát hành các dự án Godot của mình theo bất kỳ giấy phép nào và tạo các game thương mại bằng engine này.
 
-Inclusion
----------
+Cách đưa vào
+------------
 
-The license text must be made available to the user. The license doesn't specify
-how the text has to be included, but here are the most common approaches (you
-only need to implement one of them, not all).
+Nội dung giấy phép phải được cung cấp cho người dùng. Giấy phép không quy định cụ thể cách đưa nội dung vào, nhưng dưới đây là những cách tiếp cận phổ biến nhất (bạn chỉ cần triển khai một cách, không cần tất cả).
 
-Credits screen
-~~~~~~~~~~~~~~
-
-Include the above license text somewhere in the credits screen. It can be at the
-bottom after showing the rest of the credits. Most large studios use this
-approach with open source licenses.
-
-Licenses screen
-~~~~~~~~~~~~~~~
-
-Some games have a special menu (often in the settings) to display licenses.
-This menu is typically accessed with a button called **Third-party Licenses**
-or **Open Source Licenses**.
-
-Output log
-~~~~~~~~~~
-
-Printing the license text using the :ref:`print() <class_@GlobalScope_method_print>`
-function may be enough on platforms where a global output log is readable.
-This is the case on desktop platforms, Android and HTML5 (but not iOS).
-
-Accompanying file
+Màn hình ghi công
 ~~~~~~~~~~~~~~~~~
 
-If the game is distributed on desktop platforms, a file containing the license
-text can be added to the software that is installed to the user PC.
+Đưa nội dung giấy phép nói trên vào một nơi nào đó trong màn hình ghi công. Nội dung này có thể nằm ở dưới cùng, sau khi hiển thị phần ghi công còn lại. Hầu hết các studio lớn đều sử dụng cách tiếp cận này với các giấy phép nguồn mở.
 
-Printed manual
+Màn hình giấy phép
+~~~~~~~~~~~~~~~~~~
+
+Một số game có một menu riêng (thường nằm trong phần cài đặt) để hiển thị giấy phép. Menu này thường được mở bằng một nút có tên **Third-party Licenses** hoặc **Open Source Licenses**.
+
+Nhật ký đầu ra
 ~~~~~~~~~~~~~~
 
-If the game includes a printed manual, the license text can be included there.
+Việc in nội dung giấy phép bằng hàm :ref:`print() <class_@GlobalScope_method_print>` có thể là đủ trên những nền tảng cho phép đọc nhật ký đầu ra toàn cục. Đây là trường hợp của các nền tảng desktop, Android và HTML5 (nhưng không phải iOS).
 
-Link to the license
-~~~~~~~~~~~~~~~~~~~
+Tệp đi kèm
+~~~~~~~~~~
 
-The Godot Engine developers consider that a link to ``godotengine.org/license``
-in your game documentation or credits would be an acceptable way to satisfy
-the license terms.
+Nếu game được phân phối trên các nền tảng desktop, bạn có thể thêm một tệp chứa nội dung giấy phép vào phần mềm được cài đặt trên PC của người dùng.
+
+Tài liệu hướng dẫn in giấy
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Nếu game có tài liệu hướng dẫn in giấy, bạn có thể đưa nội dung giấy phép vào đó.
+
+Liên kết đến giấy phép
+~~~~~~~~~~~~~~~~~~~~~~
+
+Các nhà phát triển Godot cho rằng việc đặt liên kết đến ``godotengine.org/license`` trong tài liệu hoặc phần ghi công của game là một cách chấp nhận được để đáp ứng các điều khoản của giấy phép.
 
 .. tip::
 
-    Godot provides several methods to get license information in the
-    :ref:`Engine <class_Engine>` singleton. This allows you to source the
-    license information directly from the engine binary, which prevents the
-    information from becoming outdated if you update engine versions.
+    Godot cung cấp một số phương thức để lấy thông tin giấy phép trong
+    singleton :ref:`Engine <class_Engine>`. Điều này cho phép bạn lấy thông tin giấy phép trực tiếp từ binary của engine, nhờ đó thông tin sẽ không trở nên lỗi thời nếu bạn cập nhật phiên bản engine.
 
-    For the engine itself:
+    Đối với chính engine:
 
     - :ref:`Engine.get_license_text<class_Engine_method_get_license_text>`
 
-    For third-party components used by the engine:
+    Đối với các thành phần bên thứ ba được engine sử dụng:
 
     - :ref:`Engine.get_license_info<class_Engine_method_get_license_info>`
     - :ref:`Engine.get_copyright_info<class_Engine_method_get_copyright_info>`
 
 .. _doc_complying_with_licenses_thirdparty:
 
-Third-party licenses
---------------------
+Giấy phép của bên thứ ba
+------------------------
 
-Godot itself contains software written by
-`third parties <https://github.com/godotengine/godot/blob/master/thirdparty/README.md>`_,
-which is compatible with, but not covered by Godot's MIT license.
+Bản thân Godot chứa phần mềm do `các bên thứ ba <https://github.com/godotengine/godot/blob/master/thirdparty/README.md>`_ viết, tương thích với giấy phép MIT của Godot nhưng không được giấy phép đó bao phủ.
 
-Many of these dependencies are distributed under permissive open source licenses
-which require attribution by explicitly citing their copyright statement and
-license text in the final product's documentation.
+Nhiều dependency trong số này được phân phối theo các giấy phép nguồn mở có tính permissive, yêu cầu ghi công bằng cách nêu rõ tuyên bố bản quyền và nội dung giấy phép của chúng trong tài liệu của sản phẩm cuối.
 
-Given the scope of the Godot project, this is fairly difficult to do thoroughly.
-For the Godot editor, the full documentation of third-party copyrights and
-licenses is provided in the `COPYRIGHT.txt <https://github.com/godotengine/godot/blob/master/COPYRIGHT.txt>`_
-file.
+Xét đến quy mô của dự án Godot, việc thực hiện đầy đủ điều này khá khó. Đối với Godot editor, tài liệu đầy đủ về bản quyền và giấy phép của bên thứ ba được cung cấp trong tệp `COPYRIGHT.txt <https://github.com/godotengine/godot/blob/master/COPYRIGHT.txt>`_.
 
-A good option for end users to document third-party licenses is to include this
-file in your project's distribution, which you can e.g. rename to
-``GODOT_COPYRIGHT.txt`` to prevent any confusion with your own code and assets.
+Một lựa chọn phù hợp để người dùng cuối ghi lại các giấy phép của bên thứ ba là đưa tệp này vào bản phân phối của dự án, ví dụ bạn có thể đổi tên tệp thành ``GODOT_COPYRIGHT.txt`` để tránh nhầm lẫn với mã và asset của chính bạn.
+
+.. _`MIT License`: https://opensource.org/licenses/MIT
+.. _`third parties`: https://github.com/godotengine/godot/blob/master/thirdparty/README.md
+.. _`COPYRIGHT.txt`: https://github.com/godotengine/godot/blob/master/COPYRIGHT.txt

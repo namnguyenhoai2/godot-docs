@@ -136,17 +136,32 @@ if on_rtd:
     using_rtd_theme = True
 
 # Theme options
+# html_theme_options = {
+#     # if we have a html_logo below, this shows /only/ the logo with no title text
+#     "logo_only": True,
+#     # Collapse navigation (False makes it tree-like)
+#     "collapse_navigation": False,
+#     # Remove version and language picker beneath the title
+#     "version_selector": False,
+#     "language_selector": False,
+#     # Set Flyout menu to attached
+#     "flyout_display": "attached",
+# }
+
 html_theme_options = {
-    # if we have a html_logo below, this shows /only/ the logo with no title text
+    # 'analytics_id': 'G-29ZK00ZM5D',  #  Provided by Google in your dashboard
+    'analytics_anonymize_ip': False,
     "logo_only": True,
-    # Collapse navigation (False makes it tree-like)
-    "collapse_navigation": False,
-    # Remove version and language picker beneath the title
+
+    "collapse_navigation": True,
+    "navigation_depth": 4,
+    "titles_only": True,
+
     "version_selector": False,
     "language_selector": False,
-    # Set Flyout menu to attached
     "flyout_display": "attached",
 }
+
 
 html_title = supported_languages[language] % ( "(" + version + ")" )
 

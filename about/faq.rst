@@ -5,49 +5,39 @@
 
 .. _doc_faq:
 
-Frequently asked questions
-==========================
+Các câu hỏi thường gặp
+======================
 
-What can I do with Godot? How much does it cost? What are the license terms?
-----------------------------------------------------------------------------
+Tôi có thể làm gì với Godot? Chi phí là bao nhiêu? Các điều khoản cấp phép là gì?
+---------------------------------------------------------------------------------
 
-Godot is `Free and open source Software <https://en.wikipedia.org/wiki/Free_and_open_source_software>`_
-available under the `OSI-approved <https://opensource.org/licenses/MIT>`_ MIT license. This means it is
-free as in "free speech" as well as in "free beer."
+Godot là `Phần mềm miễn phí và mã nguồn mở <https://en.wikipedia.org/wiki/Free_and_open_source_software>`_, được cung cấp theo giấy phép MIT `được OSI phê duyệt <https://opensource.org/licenses/MIT>`_. Điều này có nghĩa là phần mềm miễn phí theo cả nghĩa "tự do ngôn luận" lẫn nghĩa "bia miễn phí".
 
-In short:
+Tóm lại:
 
-* You are free to download and use Godot for any purpose: personal, non-profit, commercial, or otherwise.
-* You are free to modify, distribute, redistribute, and remix Godot to your heart's content, for any reason,
-  both non-commercially and commercially.
+* Bạn được tự do tải xuống và sử dụng Godot cho bất kỳ mục đích nào: cá nhân, phi lợi nhuận, thương mại hoặc mục đích khác.
+* Bạn được tự do sửa đổi, phân phối, phân phối lại và remix Godot tùy ý, vì bất kỳ lý do nào, cho cả mục đích phi thương mại và thương mại.
 
-All the contents of this accompanying documentation are published under the permissive Creative Commons
-Attribution 3.0 (`CC BY 3.0 <https://creativecommons.org/licenses/by/3.0/>`_) license, with attribution
-to "Juan Linietsky, Ariel Manzur and the Godot Engine community."
+Toàn bộ nội dung của tài liệu đi kèm này được phát hành theo giấy phép Creative Commons Attribution 3.0 (`CC BY 3.0 <https://creativecommons.org/licenses/by/3.0/>`_), với ghi công cho "Juan Linietsky, Ariel Manzur và cộng đồng Godot Engine".
 
-Logos and icons are generally under the same Creative Commons license. Note
-that some third-party libraries included with Godot's source code may have
-different licenses.
+Logo và biểu tượng nhìn chung cũng được áp dụng cùng giấy phép Creative Commons. Lưu ý rằng một số thư viện bên thứ ba đi kèm mã nguồn của Godot có thể có giấy phép khác.
 
-For full details, look at the `COPYRIGHT.txt <https://github.com/godotengine/godot/blob/master/COPYRIGHT.txt>`_
-as well as the `LICENSE.txt <https://github.com/godotengine/godot/blob/master/LICENSE.txt>`_
-and `logo LICENSE.txt <https://github.com/godotengine/godot/blob/master/misc/logo/LICENSE.txt>`_ files
-in the Godot repository.
+Để xem đầy đủ chi tiết, hãy xem các tệp `COPYRIGHT.txt <https://github.com/godotengine/godot/blob/master/COPYRIGHT.txt>`_, `LICENSE.txt <https://github.com/godotengine/godot/blob/master/LICENSE.txt>`_ và `logo LICENSE.txt <https://github.com/godotengine/godot/blob/master/misc/logo/LICENSE.txt>`_ trong repository Godot.
 
-Also, see `the license page on the Godot website <https://godotengine.org/license>`_.
+Ngoài ra, hãy xem `trang giấy phép trên website Godot <https://godotengine.org/license>`_.
 
-Which platforms are supported by Godot?
----------------------------------------
+Godot hỗ trợ những nền tảng nào?
+--------------------------------
 
-**For the editor:**
+**Đối với editor:**
 
 * Windows
 * macOS
 * Linux, \*BSD
-* Android (experimental)
-* `Web <https://editor.godotengine.org/>`__ (experimental)
+* Android (thử nghiệm)
+* `Web <https://editor.godotengine.org/>`__ (thử nghiệm)
 
-**For exporting your games:**
+**Để export game của bạn:**
 
 * Windows
 * macOS
@@ -56,563 +46,350 @@ Which platforms are supported by Godot?
 * iOS
 * Web
 
-Both 32- and 64-bit binaries are supported where it makes sense, with 64
-being the default. Official macOS builds support Apple Silicon natively as well as x86_64.
+Các binary 32-bit và 64-bit đều được hỗ trợ khi phù hợp, trong đó 64-bit là mặc định. Các bản build macOS chính thức hỗ trợ Apple Silicon nguyên bản cũng như x86_64.
 
-Some users also report building and using Godot successfully on ARM-based
-systems with Linux, like the Raspberry Pi.
+Một số người dùng cũng cho biết họ đã build và sử dụng Godot thành công trên các hệ thống dựa trên ARM chạy Linux, chẳng hạn như Raspberry Pi.
 
-For information about console support, see the `Godot website <https://godotengine.org/consoles/>`__.
+Để biết thông tin về hỗ trợ console, hãy xem `website Godot <https://godotengine.org/consoles/>`__.
 
-For more on this, see the sections on :ref:`exporting <toc-learn-workflow-export>`
-and :ref:`compiling Godot yourself <toc-devel-compiling>`.
+Để biết thêm về vấn đề này, hãy xem các phần về :ref:`export <toc-learn-workflow-export>` và :ref:`tự compile Godot <toc-devel-compiling>`.
 
 .. note::
 
-    Godot 3 also had support for Universal Windows Platform (UWP). This platform
-    port was removed in Godot 4 due to lack of maintenance, and it being
-    deprecated by Microsoft. It is still available in the current stable release
-    of Godot 3 for interested users.
+    Godot 3 cũng từng hỗ trợ Universal Windows Platform (UWP). Bản port cho nền tảng này đã bị loại bỏ trong Godot 4 do không được bảo trì và đã bị Microsoft ngừng hỗ trợ. Bản này vẫn có trong bản phát hành ổn định hiện tại của Godot 3 dành cho những người dùng quan tâm.
 
-Which programming languages are supported in Godot?
----------------------------------------------------
+Godot hỗ trợ những ngôn ngữ lập trình nào?
+------------------------------------------
 
-The officially supported languages for Godot are GDScript, C#, and C++.
-See the subcategories for each language in the :ref:`scripting <toc-learn-scripting>` section.
+Các ngôn ngữ được Godot chính thức hỗ trợ là GDScript, C# và C++. Xem các danh mục con tương ứng với từng ngôn ngữ trong phần :ref:`scripting <toc-learn-scripting>`.
 
-If you are just starting out with either Godot or game development in general,
-GDScript is the recommended language to learn and use since it is native to Godot.
-While scripting languages tend to be less performant than lower-level languages in
-the long run, for prototyping, developing Minimum Viable Products (MVPs), and
-focusing on Time-To-Market (TTM), GDScript will provide a fast, friendly, and capable
-way of developing your games.
+Nếu bạn mới bắt đầu với Godot hoặc với việc phát triển game nói chung, GDScript là ngôn ngữ được khuyến nghị nên học và sử dụng vì đây là ngôn ngữ native của Godot. Mặc dù các ngôn ngữ scripting thường kém performant hơn các ngôn ngữ cấp thấp về lâu dài, nhưng để prototyping, phát triển Minimum Viable Products (MVP) và tập trung vào Time-To-Market (TTM), GDScript mang lại một cách phát triển game nhanh, thân thiện và đầy đủ năng lực.
 
-Note that C# support is still relatively new, and as such, you may encounter
-some issues along the way. C# support is also currently missing on the web
-platform. Our friendly and hard-working development community is always
-ready to tackle new problems as they arise, but since this is an open source
-project, we recommend that you first do some due diligence yourself. Searching
-through discussions on
-`open issues <https://github.com/godotengine/godot/issues?q=is%3Aopen+is%3Aissue+label%3Atopic%3Adotnet>`__
-is a great way to start your troubleshooting.
+Lưu ý rằng hỗ trợ C# vẫn còn tương đối mới, vì vậy bạn có thể gặp một số vấn đề trong quá trình sử dụng. Hiện tại, hỗ trợ C# cũng chưa có trên web
+platform. Cộng đồng phát triển thân thiện và chăm chỉ của chúng tôi luôn
+sẵn sàng giải quyết các vấn đề mới phát sinh, nhưng vì đây là một dự án mã nguồn mở, chúng tôi khuyến nghị bạn trước hết nên tự tìm hiểu kỹ. Tìm kiếm trong các cuộc thảo luận về `các issue đang mở <https://github.com/godotengine/godot/issues?q=is%3Aopen+is%3Aissue+label%3Atopic%3Adotnet>`__ là một cách tuyệt vời để bắt đầu khắc phục sự cố.
 
-As for new languages, support is possible via third parties with GDExtensions. (See the question
-about plugins below). Work is currently underway, for example, on unofficial bindings for Godot
-to `Python <https://github.com/touilleMan/godot-python>`_ and `Nim <https://github.com/pragmagic/godot-nim>`_.
+Đối với các ngôn ngữ mới, bên thứ ba có thể cung cấp hỗ trợ thông qua GDExtensions. (Xem câu hỏi về plugin bên dưới.) Hiện tại, chẳng hạn, đang có công việc xây dựng các binding không chính thức cho Godot với `Python <https://github.com/touilleMan/godot-python>`_ và `Nim <https://github.com/pragmagic/godot-nim>`_.
 
 .. _doc_faq_what_is_gdscript:
 
-What is GDScript and why should I use it?
------------------------------------------
+GDScript là gì và tại sao tôi nên sử dụng nó?
+---------------------------------------------
 
-GDScript is Godot's integrated scripting language. It was built from the ground
-up to maximize Godot's potential in the least amount of code, affording both novice
-and expert developers alike to capitalize on Godot's strengths as fast as possible.
-If you've ever written anything in a language like Python before, then you'll feel
-right at home. For examples and a complete overview of the power GDScript offers
-you, check out the :ref:`GDScript scripting guide <doc_gdscript>`.
+GDScript là ngôn ngữ scripting tích hợp của Godot. Nó được xây dựng từ đầu để khai thác tối đa tiềm năng của Godot với lượng code ít nhất, giúp cả developer mới bắt đầu lẫn chuyên gia tận dụng các thế mạnh của Godot nhanh nhất có thể. Nếu bạn từng viết bất kỳ thứ gì bằng một ngôn ngữ như Python, bạn sẽ cảm thấy rất quen thuộc. Để xem các ví dụ và tổng quan đầy đủ về sức mạnh mà GDScript mang lại, hãy xem :ref:`hướng dẫn scripting GDScript <doc_gdscript>`.
 
-There are several reasons to use GDScript, but the most salient reason is the overall
-**reduction of complexity**.
+Có nhiều lý do để sử dụng GDScript, nhưng lý do nổi bật nhất là **giảm độ phức tạp** tổng thể.
 
-The original intent of creating a tightly integrated, custom scripting language for
-Godot was two-fold: first, it reduces the amount of time necessary to get up and running
-with Godot, giving developers a rapid way of exposing themselves to the engine with a
-focus on productivity; second, it reduces the overall burden of maintenance, attenuates
-the dimensionality of issues, and allows the developers of the engine to focus on squashing
-bugs and improving features related to the engine core, rather than spending a lot of time
-trying to get a small set of incremental features working across a large set of languages.
+Mục đích ban đầu của việc tạo ra một ngôn ngữ scripting tùy chỉnh được tích hợp chặt chẽ cho Godot có hai phần: thứ nhất, nó giảm thời gian cần thiết để bắt đầu sử dụng Godot, giúp developer nhanh chóng làm quen với engine và tập trung vào năng suất; thứ hai, nó giảm gánh nặng bảo trì tổng thể, thu hẹp phạm vi của các vấn đề và cho phép đội ngũ phát triển engine tập trung vào việc xử lý bug và cải thiện các tính năng liên quan đến phần lõi của engine, thay vì dành nhiều thời gian để làm cho một tập hợp nhỏ các tính năng bổ sung hoạt động trên nhiều ngôn ngữ.
 
-Since Godot is an open source project, it was imperative from the start to prioritize a
-more integrated and seamless experience over attracting additional users by supporting
-more familiar programming languages, especially when supporting those more familiar
-languages would result in a worse experience. We understand if you would rather use
-another language in Godot (see the list of supported options above). That being said, if
-you haven't given GDScript a try, try it for **three days**. Just like Godot,
-once you see how powerful it is and how rapid your development becomes, we think GDScript
-will grow on you.
+Vì Godot là một dự án mã nguồn mở, ngay từ đầu, việc ưu tiên trải nghiệm tích hợp và liền mạch hơn so với việc thu hút thêm người dùng bằng cách hỗ trợ các ngôn ngữ lập trình quen thuộc hơn là điều cấp thiết, đặc biệt khi việc hỗ trợ những ngôn ngữ quen thuộc hơn đó sẽ dẫn đến trải nghiệm kém hơn. Chúng tôi hiểu nếu bạn muốn sử dụng một ngôn ngữ khác trong Godot (xem danh sách các lựa chọn được hỗ trợ ở trên). Tuy vậy, nếu bạn chưa thử GDScript, hãy thử trong **ba ngày**. Cũng giống như Godot, một khi thấy nó mạnh mẽ đến mức nào và tốc độ phát triển của bạn được cải thiện ra sao, chúng tôi nghĩ bạn sẽ dần yêu thích GDScript.
 
-More information about getting comfortable with GDScript or dynamically typed
-languages can be found in the :ref:`doc_gdscript_more_efficiently` tutorial.
+Bạn có thể tìm thêm thông tin về cách làm quen với GDScript hoặc các ngôn ngữ kiểu động trong :ref:`doc_gdscript_more_efficiently` hướng dẫn.
 
-What were the motivations behind creating GDScript?
----------------------------------------------------
+Động lực nào đã dẫn đến việc tạo ra GDScript?
+---------------------------------------------
 
-In the early days, the engine used the `Lua <https://www.lua.org>`__ scripting
-language. Lua can be fast thanks to LuaJIT, but creating bindings to an object-oriented
-system (by using fallbacks) was complex and slow and took an enormous
-amount of code. After some experiments with `Python <https://www.python.org>`__,
-that also proved difficult to embed.
+Trong những ngày đầu, engine sử dụng ngôn ngữ scripting `Lua <https://www.lua.org>`__
+language. Lua có thể nhanh nhờ LuaJIT, nhưng việc tạo các binding cho một
+hệ thống hướng đối tượng (bằng cách sử dụng fallback) rất phức tạp, chậm và đòi hỏi một lượng code khổng lồ. Sau một số thử nghiệm với `Python <https://www.python.org>`__, chúng tôi nhận thấy ngôn ngữ này cũng khó nhúng.
 
-The main reasons for creating a custom scripting language for Godot were:
+Những lý do chính để tạo một ngôn ngữ scripting riêng cho Godot là:
 
-1. Poor threading support in most script VMs, and Godot uses threads
-   (Lua, Python, Squirrel, JavaScript, ActionScript, etc.).
-2. Poor class-extending support in most script VMs, and adapting to
-   the way Godot works is highly inefficient (Lua, Python, JavaScript).
-3. Many existing languages have horrible interfaces for binding to C++, resulting in a
-   large amount of code, bugs, bottlenecks, and general inefficiency (Lua, Python,
-   Squirrel, JavaScript, etc.). We wanted to focus on a great engine, not a great number
-   of integrations.
-4. No native vector types (Vector3, Transform3D, etc.), resulting in highly
-   reduced performance when using custom types (Lua, Python, Squirrel,
-   JavaScript, ActionScript, etc.).
-5. Garbage collector results in stalls or unnecessarily large memory
-   usage (Lua, Python, JavaScript, ActionScript, etc.).
-6. Difficulty integrating with the code editor for providing code
-   completion, live editing, etc. (all languages).
+1. Hầu hết các script VM đều hỗ trợ threading kém, trong khi Godot sử dụng thread (Lua, Python, Squirrel, JavaScript, ActionScript, v.v.).
+2. Hầu hết các script VM đều hỗ trợ mở rộng class kém, và việc điều chỉnh để phù hợp với cách Godot hoạt động rất kém hiệu quả (Lua, Python, JavaScript).
+3. Nhiều ngôn ngữ hiện có có interface rất tệ để binding với C++, dẫn đến lượng code lớn, bug, bottleneck và sự kém hiệu quả nói chung (Lua, Python, Squirrel, JavaScript, v.v.). Chúng tôi muốn tập trung vào một engine tuyệt vời, không phải một số lượng lớn tích hợp.
+4. Không có kiểu vector native (Vector3, Transform3D, v.v.), dẫn đến hiệu năng suy giảm đáng kể khi sử dụng các kiểu tùy chỉnh (Lua, Python, Squirrel, JavaScript, ActionScript, v.v.).
+5. Garbage collector gây ra hiện tượng tạm dừng hoặc việc sử dụng bộ nhớ lớn không cần thiết (Lua, Python, JavaScript, ActionScript, v.v.).
+6. Khó tích hợp với code editor để cung cấp tính năng hoàn tất code, chỉnh sửa trực tiếp, v.v. (tất cả các ngôn ngữ).
 
-GDScript was designed to curtail the issues above, and more.
+GDScript được thiết kế để khắc phục các vấn đề trên và nhiều vấn đề khác.
 
 .. _doc_faq_which_programming_language_is_fastest:
 
-Which programming language is fastest?
---------------------------------------
+Ngôn ngữ lập trình nào nhanh nhất?
+----------------------------------
 
-In most games, the *scripting language* itself is not the cause of performance
-problems. Instead, performance is slowed by inefficient algorithms (which are
-slow in all languages), by GPU performance, or by the common C++ engine code
-like physics or navigation. All languages supported by Godot are fast enough for
-general-purpose scripting. You should choose a language based on other factors,
-like ease-of-use, familiarity, platform support, or language features.
+Trong hầu hết các game, bản thân *ngôn ngữ scripting* không phải là nguyên nhân gây ra vấn đề về hiệu năng
+problems. Thay vào đó, hiệu năng bị giảm do các thuật toán kém hiệu quả (vốn
+chậm trong mọi ngôn ngữ), do hiệu năng GPU hoặc do các code engine C++ phổ biến như physics hoặc navigation. Tất cả các ngôn ngữ được Godot hỗ trợ đều đủ nhanh cho scripting đa mục đích. Bạn nên chọn ngôn ngữ dựa trên các yếu tố khác, chẳng hạn như mức độ dễ sử dụng, độ quen thuộc, khả năng hỗ trợ nền tảng hoặc các tính năng của ngôn ngữ.
 
-In general, the performance of C# and GDScript is within the same order of
-magnitude, and C++ is faster than both.
+Nhìn chung, hiệu năng của C# và GDScript nằm trong cùng một bậc độ lớn, còn C++ nhanh hơn cả hai.
 
-Comparing GDScript performance to C# is tricky, since C# can be faster in some
-specific cases. The C# *language* itself tends to be faster than GDScript, which
-means that C# can be faster in situations with few calls to Godot engine code.
-However, C# can be slower than GDScript when making many Godot API calls, due
-to the cost of *marshalling*. C#'s performance can also be brought down by garbage
-collection which occurs at random and unpredictable moments. This can result in
-stuttering issues in complex projects, and is not exclusive to Godot.
+Việc so sánh hiệu năng của GDScript với C# khá phức tạp, vì C# có thể nhanh hơn trong một số trường hợp cụ thể. Bản thân *ngôn ngữ* C# có xu hướng nhanh hơn GDScript, nghĩa là C# có thể nhanh hơn trong những tình huống có ít lời gọi đến code engine Godot. Tuy nhiên, C# có thể chậm hơn GDScript khi thực hiện nhiều lời gọi API Godot, do chi phí *marshalling*. Hiệu năng của C# cũng có thể bị giảm bởi garbage collection, vốn diễn ra tại những thời điểm ngẫu nhiên và không thể dự đoán. Điều này có thể gây ra hiện tượng giật trong các dự án phức tạp và không chỉ xảy ra với Godot.
 
-C++, using :ref:`GDExtension <doc_what_is_gdextension>`, will almost always be
-faster than either C# or GDScript. However, C++ is less easy to use than C# or
-GDScript, and is slower to develop with.
+C++, khi sử dụng :ref:`GDExtension <doc_what_is_gdextension>`, gần như luôn nhanh hơn C# hoặc GDScript. Tuy nhiên, C++ khó sử dụng hơn C# hoặc GDScript và tốc độ phát triển với C++ cũng chậm hơn.
 
-You can also use multiple languages within a single project, with
-:ref:`cross-language scripting <doc_cross_language_scripting>`, or by using
-GDExtension and scripting languages together. Be aware that doing so comes with
-its own complications.
+Bạn cũng có thể sử dụng nhiều ngôn ngữ trong cùng một dự án, bằng
+:ref:`scripting đa ngôn ngữ <doc_cross_language_scripting>`, hoặc bằng cách sử dụng GDExtension cùng với các ngôn ngữ scripting. Lưu ý rằng cách này cũng đi kèm những phức tạp riêng.
 
-What 3D model formats does Godot support?
------------------------------------------
+Godot hỗ trợ những định dạng model 3D nào?
+------------------------------------------
 
-You can find detailed information on supported formats, how to export them from
-your 3D modeling software, and how to import them for Godot in the
-:ref:`doc_importing_3d_scenes` documentation.
+Bạn có thể tìm thông tin chi tiết về các định dạng được hỗ trợ, cách export chúng từ phần mềm modeling 3D và cách import chúng vào Godot trong
+:ref:`doc_importing_3d_scenes` tài liệu.
 
-Will [insert closed SDK such as FMOD, GameWorks, etc.] be supported in Godot?
------------------------------------------------------------------------------
+[chèn SDK đóng như FMOD, GameWorks, v.v.] có được hỗ trợ trong Godot không?
+---------------------------------------------------------------------------
 
-The aim of Godot is to create a free and open source MIT-licensed engine that
-is modular and extendable. There are no plans for the core engine development
-community to support any third-party, closed-source/proprietary SDKs, as integrating
-with these would go against Godot's ethos.
+Mục tiêu của Godot là tạo ra một engine miễn phí, mã nguồn mở, được cấp phép theo MIT, có tính module hóa và khả năng mở rộng. Cộng đồng phát triển engine cốt lõi không có kế hoạch hỗ trợ bất kỳ SDK bên thứ ba, mã nguồn đóng hoặc độc quyền nào, vì việc tích hợp chúng đi ngược lại với triết lý của Godot.
 
-That said, because Godot is open source and modular, nothing prevents you or
-anyone else interested in adding those libraries as a module and shipping your
-game with them, as either open- or closed-source.
+Tuy vậy, vì Godot là mã nguồn mở và có tính module hóa, không có gì ngăn cản bạn hoặc bất kỳ ai quan tâm thêm các thư viện đó dưới dạng module và phát hành game của mình cùng với chúng, dù dưới dạng mã nguồn mở hay mã nguồn đóng.
 
-To see how support for your SDK of choice could still be provided, look at the
-Plugins question below.
+Để xem cách vẫn có thể cung cấp hỗ trợ cho SDK bạn chọn, hãy xem câu hỏi về Plugins bên dưới.
 
-If you know of a third-party SDK that is not supported by Godot but that offers
-free and open source integration, consider starting the integration work yourself.
-Godot is not owned by one person; it belongs to the community, and it grows along
-with ambitious community contributors like you.
+Nếu bạn biết một SDK bên thứ ba chưa được Godot hỗ trợ nhưng cung cấp tích hợp miễn phí và mã nguồn mở, hãy cân nhắc tự bắt đầu công việc tích hợp. Godot không thuộc sở hữu của một cá nhân; nó thuộc về cộng đồng và phát triển cùng với những người đóng góp đầy tham vọng trong cộng đồng như bạn.
 
-How can I extend Godot?
------------------------
+Tôi có thể mở rộng Godot như thế nào?
+-------------------------------------
 
-For extending Godot, like creating Godot Editor plugins or adding support
-for additional languages, take a look at :ref:`EditorPlugins <doc_making_plugins>`
-and tool scripts.
+Để mở rộng Godot, chẳng hạn như tạo plugin cho Godot Editor hoặc thêm hỗ trợ cho các ngôn ngữ khác, hãy xem :ref:`EditorPlugins <doc_making_plugins>` và các tool script.
 
-Also, see the official blog post on GDExtension, a way to develop native extensions for Godot:
+Ngoài ra, hãy xem bài viết chính thức trên blog về GDExtension, một cách để phát triển các extension native cho Godot:
 
-* `Introducing GDNative's successor, GDExtension <https://godotengine.org/article/introducing-gd-extensions>`_
+* `Giới thiệu GDExtension, phần kế nhiệm của GDNative <https://godotengine.org/article/introducing-gd-extensions>`_
 
-You can also take a look at the GDScript implementation, the Godot modules,
-as well as the `Jolt physics engine integration <https://github.com/godot-jolt/godot-jolt>`__
-for Godot. This would be a good starting point to see how another
-third-party library integrates with Godot.
+Bạn cũng có thể xem cách triển khai GDScript, các module của Godot, cũng như `tích hợp engine physics Jolt <https://github.com/godot-jolt/godot-jolt>`__ cho Godot. Đây sẽ là điểm khởi đầu phù hợp để xem một thư viện bên thứ ba khác tích hợp với Godot như thế nào.
 
-How do I install the Godot editor on my system (for desktop integration)?
--------------------------------------------------------------------------
+Làm cách nào để cài đặt Godot editor trên hệ thống của tôi (để tích hợp với desktop)?
+-------------------------------------------------------------------------------------
 
-Since you don't need to actually install Godot on your system to run it,
-this means desktop integration is not performed automatically.
-There are two ways to overcome this. You can install Godot from
-`Steam <https://store.steampowered.com/app/404790/Godot_Engine/>`__ (all platforms),
-`Scoop <https://scoop.sh/>`__ (Windows), `Homebrew <https://brew.sh/>`__ (macOS)
-or `Flathub <https://flathub.org/apps/details/org.godotengine.Godot>`__ (Linux).
-This will automatically perform the required steps for desktop integration.
+Vì bạn không thực sự cần cài đặt Godot trên hệ thống để chạy, nên việc tích hợp với desktop sẽ không được thực hiện tự động. Có hai cách để khắc phục điều này. Bạn có thể cài đặt Godot từ `Steam <https://store.steampowered.com/app/404790/Godot_Engine/>`__ (tất cả nền tảng), `Scoop <https://scoop.sh/>`__ (Windows), `Homebrew <https://brew.sh/>`__ (macOS) hoặc `Flathub <https://flathub.org/apps/details/org.godotengine.Godot>`__ (Linux). Thao tác này sẽ tự động thực hiện các bước cần thiết để tích hợp với desktop.
 
-Alternatively, you can manually perform the steps that an installer would do for you:
+Ngoài ra, bạn có thể tự thực hiện các bước mà trình cài đặt sẽ thực hiện thay bạn:
 
 Windows
 ~~~~~~~
 
-- Move the Godot executable to a stable location (i.e. outside of your Downloads folder),
-  so you don't accidentally move it and break the shortcut in the future.
-- Right-click the Godot executable and choose **Create Shortcut**.
-- Move the created shortcut to ``%APPDATA%\Microsoft\Windows\Start Menu\Programs``.
-  This is the user-wide location for shortcuts that will appear in the Start menu.
-  You can also pin Godot in the task bar by right-clicking the executable and choosing
-  **Pin to Task Bar**.
+- Di chuyển tệp thực thi Godot đến một vị trí ổn định (tức là bên ngoài thư mục Downloads), để bạn không vô tình di chuyển tệp và làm hỏng shortcut sau này.
+- Nhấp chuột phải vào tệp thực thi Godot và chọn **Create Shortcut**.
+- Di chuyển shortcut đã tạo đến ``%APPDATA%\Microsoft\Windows\Start Menu\Programs``. Đây là vị trí trên toàn hệ thống người dùng dành cho các shortcut sẽ xuất hiện trong menu Start. Bạn cũng có thể ghim Godot vào task bar bằng cách nhấp chuột phải vào tệp thực thi và chọn **Pin to Task Bar**.
 
 macOS
 ~~~~~
 
-Drag the extracted Godot application to ``/Applications/Godot.app``, then drag it
-to the Dock if desired. Spotlight will be able to find Godot as long as it's in
-``/Applications`` or ``~/Applications``.
+Kéo ứng dụng Godot đã giải nén vào ``/Applications/Godot.app``, sau đó kéo ứng dụng vào Dock nếu muốn. Spotlight sẽ có thể tìm thấy Godot miễn là ứng dụng nằm trong ``/Applications`` hoặc ``~/Applications``.
 
 Linux
 ~~~~~
 
-- Move the Godot binary to a stable location (i.e. outside of your Downloads folder),
-  so you don't accidentally move it and break the shortcut in the future.
-- Rename and move the Godot binary to a location present in your ``PATH`` environment variable.
-  This is typically ``/usr/local/bin/godot`` or ``/usr/bin/godot``.
-  Doing this requires administrator privileges,
-  but this also allows you to
-  :ref:`run the Godot editor from a terminal <doc_command_line_tutorial>` by entering ``godot``.
+- Di chuyển binary Godot đến một vị trí ổn định (tức là bên ngoài thư mục Downloads), để bạn không vô tình di chuyển tệp và làm hỏng shortcut sau này.
+- Đổi tên và di chuyển binary Godot đến một vị trí có trong biến môi trường ``PATH``. Vị trí này thường là ``/usr/local/bin/godot`` hoặc ``/usr/bin/godot``. Việc này yêu cầu quyền administrator, nhưng cũng cho phép bạn
+  :ref:`chạy trình chỉnh sửa Godot từ terminal <doc_command_line_tutorial>` bằng cách nhập ``godot``.
 
-  - If you cannot move the Godot editor binary to a protected location, you can
-    keep the binary somewhere in your home directory, and modify the ``Path=``
-    line in the ``.desktop`` file linked below to contain the full *absolute* path
-    to the Godot binary.
+  - Nếu không thể di chuyển binary của trình chỉnh sửa Godot đến một vị trí được bảo vệ, bạn có thể giữ binary ở đâu đó trong thư mục home của mình và sửa dòng ``Path=`` trong tệp ``.desktop`` được liên kết bên dưới để chứa đường dẫn *absolute* đầy đủ đến binary Godot.
 
-- Save `this .desktop file <https://raw.githubusercontent.com/godotengine/godot/master/misc/dist/linux/org.godotengine.Godot.desktop>`__
-  to ``$HOME/.local/share/applications/``. If you have administrator privileges,
-  you can also save the ``.desktop`` file to ``/usr/local/share/applications``
-  to make the shortcut available for all users.
+- Lưu `this .desktop file <https://raw.githubusercontent.com/godotengine/godot/master/misc/dist/linux/org.godotengine.Godot.desktop>`__ vào ``$HOME/.local/share/applications/``. Nếu có quyền administrator, bạn cũng có thể lưu tệp ``.desktop`` vào ``/usr/local/share/applications`` để shortcut khả dụng cho tất cả người dùng.
 
-Is the Godot editor a portable application?
--------------------------------------------
-
-In its default configuration, Godot is *semi-portable*. Its executable can run
-from any location (including non-writable locations) and never requires
-administrator privileges.
-
-However, configuration files will be written to the user-wide configuration or
-data directory. This is usually a good approach, but this means configuration files
-will not carry across machines if you copy the folder containing the Godot executable.
-See :ref:`doc_data_paths` for more information.
-
-If *true* portable operation is desired (e.g. for use on a USB stick),
-follow the steps in :ref:`doc_data_paths_self_contained_mode`.
-
-Why does Godot aim to keep its core feature set small?
-------------------------------------------------------
-
-Godot intentionally does not include features that can be implemented by add-ons
-unless they are used very often. One example of something not used often is
-advanced artificial intelligence functionality.
-
-There are several reasons for this:
-
-- **Code maintenance and surface for bugs.** Every time we accept new code in
-  the Godot repository, existing contributors often take the responsibility of
-  maintaining it. Some contributors don't always stick around after getting
-  their code merged, which can make it difficult for us to maintain the code in
-  question. This can lead to poorly maintained features with bugs that are never
-  fixed. On top of that, the "API surface" that needs to be tested and checked
-  for regressions keeps increasing over time.
-
-- **Ease of contribution.** By keeping the codebase small and tidy, it can remain
-  fast and easy to compile from source. This makes it easier for new
-  contributors to get started with Godot, without requiring them to purchase
-  high-end hardware.
-
-- **Keeping the binary size small for the editor.** Not everyone has a fast Internet
-  connection. Ensuring that everyone can download the Godot editor, extract it
-  and run it in less than 5 minutes makes Godot more accessible to developers in
-  all countries.
-
-- **Keeping the binary size small for export templates.** This directly impacts the
-  size of projects exported with Godot. On mobile and web platforms, keeping
-  file sizes low is important to ensure fast installation and loading on
-  underpowered devices. Again, there are many countries where high-speed
-  Internet is not readily available. To add to this, strict data usage caps are
-  often in effect in those countries.
-
-For all the reasons above, we have to be selective of what we can accept as core
-functionality in Godot. This is why we are aiming to move some core
-functionality to officially supported add-ons in future versions of Godot.
-In terms of binary size, this also has the advantage of making you pay only for
-what you actually use in your project. (In the meantime, you can
-:ref:`compile custom export templates with unused features disabled <doc_optimizing_for_size>`
-to optimize the distribution size of your project.)
-
-How should assets be created to handle multiple resolutions and aspect ratios?
-------------------------------------------------------------------------------
-
-This question pops up often and it's probably thanks to the misunderstanding
-created by Apple when they originally doubled the resolution of their devices.
-It made people think that having the same assets in different resolutions was a
-good idea, so many continued towards that path. That originally worked to a
-point and only for Apple devices, but then several Android and Apple devices
-with different resolutions and aspect ratios were created, with a very wide
-range of sizes and DPIs.
-
-The most common and proper way to achieve this is to, instead, use a single base
-resolution for the game and only handle different screen aspect ratios. This is
-mostly needed for 2D, as in 3D, it's just a matter of camera vertical or
-horizontal FOV.
-
-1. Choose a single base resolution for your game. Even if there are
-   devices that go up to 1440p and devices that go down to 400p, regular
-   hardware scaling in your device will take care of this at little or
-   no performance cost. The most common choices are either near 1080p
-   (1920x1080) or 720p (1280x720). Keep in mind the higher the
-   resolution, the larger your assets, the more memory they will take
-   and the longer the time it will take for loading.
-
-2. Use the stretch options in Godot; canvas items stretching while keeping
-   aspect ratios works best. Check the :ref:`doc_multiple_resolutions` tutorial
-   on how to achieve this.
-
-3. Determine a minimum resolution and then decide if you want your game
-   to stretch vertically or horizontally for different aspect ratios, or
-   if there is one aspect ratio and you want black bars to appear
-   instead. This is also explained in :ref:`doc_multiple_resolutions`.
-
-4. For user interfaces, use the :ref:`anchoring <doc_size_and_anchors>`
-   to determine where controls should stay and move. If UIs are more
-   complex, consider learning about Containers.
-
-And that's it! Your game should work in multiple resolutions.
-
-When is the next release of Godot out?
---------------------------------------
-
-When it's ready! See :ref:`doc_release_policy_when_is_next_release_out` for more
-information.
-
-Which Godot version should I use for a new project?
----------------------------------------------------
-
-We recommend using Godot 4.x for new projects, but depending on the feature set
-you need, it may be better to use 3.x instead. See
-:ref:`doc_release_policy_which_version_should_i_use` for more information.
-
-Should I upgrade my project to use new Godot versions?
-------------------------------------------------------
-
-Some new versions are safer to upgrade to than others. In general, whether you
-should upgrade depends on your project's circumstances. See
-:ref:`doc_release_policy_should_i_upgrade_my_project` for more information.
-
-Should I use the Forward+, Mobile, or Compatibility renderer?
+Trình chỉnh sửa Godot có phải là một ứng dụng portable không?
 -------------------------------------------------------------
 
-You can find a detailed comparison of the renderers in :ref:`doc_renderers`.
+Trong cấu hình mặc định, Godot là ứng dụng *semi-portable*. Tệp thực thi của ứng dụng có thể chạy từ bất kỳ vị trí nào (kể cả các vị trí không cho phép ghi) và không bao giờ yêu cầu quyền administrator.
 
-I would like to contribute! How can I get started?
---------------------------------------------------
+Tuy nhiên, các tệp cấu hình sẽ được ghi vào thư mục cấu hình hoặc dữ liệu trên toàn hệ thống người dùng. Đây thường là một cách tiếp cận tốt, nhưng điều đó có nghĩa là các tệp cấu hình sẽ không được chuyển sang máy khác nếu bạn sao chép thư mục chứa tệp thực thi Godot. Xem :ref:`doc_data_paths` để biết thêm thông tin.
 
-Awesome! As an open source project, Godot thrives off of the innovation and
-the ambition of developers like you.
+Nếu muốn sử dụng chế độ portable *true* hoàn toàn (ví dụ: để sử dụng trên USB), hãy làm theo các bước trong :ref:`doc_data_paths_self_contained_mode`.
 
-The best way to start contributing to Godot is by using it and reporting
-any `issues <https://github.com/godotengine/godot/issues>`_ that you might experience.
-A good bug report with clear reproduction steps helps your fellow contributors
-fix bugs quickly and efficiently. You can also report issues you find in the
-`online documentation <https://github.com/godotengine/godot-docs/issues>`_.
+Tại sao Godot hướng đến việc giữ cho bộ tính năng cốt lõi nhỏ gọn?
+------------------------------------------------------------------
 
-If you feel ready to submit your first PR, pick any issue that resonates with you from
-one of the links above and try your hand at fixing it. You will need to learn how to
-compile the engine from sources, or how to build the documentation. You also need to
-get familiar with Git, a version control system that Godot developers use.
+Godot cố ý không bao gồm các tính năng có thể được triển khai bằng add-on, trừ khi chúng được sử dụng rất thường xuyên. Một ví dụ về tính năng không được sử dụng thường xuyên là chức năng trí tuệ nhân tạo nâng cao.
 
-We explain how to work with the engine source, how to edit the documentation, and
-what other ways to contribute are there in our `documentation for contributors <https://contributing.godotengine.org/en/latest/organization/how_to_contribute.html>`__.
+Có một số lý do cho việc này:
 
-I have a great idea for Godot. How can I share it?
---------------------------------------------------
+- **Bảo trì code và phạm vi phát sinh bug.** Mỗi khi chúng tôi chấp nhận code mới vào repository Godot, những contributor hiện có thường nhận trách nhiệm bảo trì code đó. Một số contributor không phải lúc nào cũng tiếp tục gắn bó sau khi code của họ được merge, điều này có thể khiến chúng tôi khó bảo trì code trong
+  question. Điều này có thể dẫn đến các tính năng được bảo trì kém, với những bug không bao giờ được
+  fixed. Ngoài ra, "API surface" cần được kiểm thử và kiểm tra
+  để phát hiện regression cũng tiếp tục tăng theo thời gian.
 
-We are always looking for suggestions about how to improve the engine. User feedback
-is the main driving force behind our decision-making process, and limitations that
-you might face while working on your project are a great data point for us when considering
-engine enhancements.
+- **Dễ dàng đóng góp.** Bằng cách giữ cho codebase nhỏ gọn và ngăn nắp, codebase có thể tiếp tục được biên dịch nhanh chóng và dễ dàng từ source. Điều này giúp các contributor mới bắt đầu với Godot dễ dàng hơn mà không yêu cầu họ phải mua phần cứng cao cấp.
 
-If you experience a usability problem or are missing a feature in the current version of
-Godot, start by discussing it with our `community <https://godotengine.org/community/>`_.
-There may be other, perhaps better, ways to achieve the desired result that community members
-could suggest. And you can learn if other users experience the same issue, and figure out
-a good solution together.
+- **Giữ kích thước binary của trình chỉnh sửa nhỏ.** Không phải ai cũng có Internet nhanh
+  connection. Đảm bảo mọi người đều có thể tải xuống trình chỉnh sửa Godot, giải nén nó
+  và chạy trong chưa đầy 5 phút giúp Godot dễ tiếp cận hơn với các developer ở mọi quốc gia.
 
-If you come up with a well-defined idea for the engine, feel free to open a
-`proposal issue <https://github.com/godotengine/godot-proposals/issues>`_.
-Try to be specific and concrete while describing your problem and your proposed
-solution — only actionable proposals can be considered. It is not required, but
-if you want to implement it yourself, that's always appreciated!
+- **Giữ kích thước binary của export template nhỏ.** Điều này ảnh hưởng trực tiếp đến kích thước của các project được export bằng Godot. Trên nền tảng mobile và web, việc giữ kích thước tệp ở mức thấp rất quan trọng để đảm bảo cài đặt và tải nhanh trên các thiết bị có hiệu năng thấp. Một lần nữa, có nhiều quốc gia không dễ dàng tiếp cận Internet tốc độ cao. Ngoài ra, các quốc gia đó thường áp dụng giới hạn sử dụng dữ liệu nghiêm ngặt.
 
-If you only have a general idea without specific details, you can open a
-`proposal discussion <https://github.com/godotengine/godot-proposals/discussions>`_.
-These can be anything you want, and allow for a free-form discussion in search of
-a solution. Once you find one, a proposal issue can be opened.
+Vì tất cả những lý do trên, chúng tôi phải lựa chọn kỹ lưỡng các chức năng có thể được chấp nhận là chức năng cốt lõi trong Godot. Đây là lý do chúng tôi đang hướng tới việc chuyển một số chức năng cốt lõi thành các add-on được hỗ trợ chính thức trong những phiên bản Godot tương lai. Xét về kích thước binary, cách này cũng có ưu điểm là bạn chỉ phải trả cho những gì thực sự được sử dụng trong project của mình. (Trong thời gian chờ đợi, bạn có thể
+:ref:`biên dịch export template tùy chỉnh với các tính năng không sử dụng bị vô hiệu hóa <doc_optimizing_for_size>` để tối ưu kích thước phân phối của project.)
 
-Please, read the `readme <https://github.com/godotengine/godot-proposals/blob/master/README.md>`_
-document before creating a proposal to learn more about the process.
+Nên tạo asset như thế nào để hỗ trợ nhiều độ phân giải và tỷ lệ khung hình?
+---------------------------------------------------------------------------
+
+Câu hỏi này thường được đặt ra và có lẽ nguyên nhân là do sự hiểu lầm mà Apple tạo ra khi họ ban đầu tăng gấp đôi độ phân giải của các thiết bị. Điều đó khiến mọi người nghĩ rằng sử dụng cùng một asset ở các độ phân giải khác nhau là một ý tưởng hay, nên nhiều người tiếp tục đi theo hướng đó. Ban đầu, cách này có hiệu quả ở một mức độ nhất định và chỉ dành cho các thiết bị Apple, nhưng sau đó nhiều thiết bị Android và Apple với độ phân giải và tỷ lệ khung hình khác nhau đã được tạo ra, với phạm vi kích thước và DPI rất rộng.
+
+Cách phổ biến và phù hợp nhất để đạt được điều này là thay vào đó sử dụng một độ phân giải cơ sở duy nhất cho game và chỉ xử lý các tỷ lệ khung hình màn hình khác nhau. Điều này chủ yếu cần thiết cho 2D, vì trong 3D, vấn đề chỉ là FOV dọc hoặc ngang của camera.
+
+1. Chọn một độ phân giải cơ sở duy nhất cho trò chơi của bạn. Ngay cả khi có thiết bị hỗ trợ đến 1440p và thiết bị chỉ hỗ trợ 400p, việc scaling phần cứng thông thường trên thiết bị sẽ xử lý điều này với rất ít hoặc không làm giảm hiệu năng. Các lựa chọn phổ biến nhất là gần 1080p (1920x1080) hoặc 720p (1280x720). Hãy nhớ rằng độ phân giải càng cao thì asset của bạn càng lớn, chiếm càng nhiều bộ nhớ và mất càng nhiều thời gian để tải.
+
+2. Sử dụng các tùy chọn stretch trong Godot; việc stretch canvas items trong khi vẫn giữ nguyên aspect ratio là hiệu quả nhất. Hãy xem tutorial :ref:`doc_multiple_resolutions` để biết cách thực hiện.
+
+3. Xác định độ phân giải tối thiểu, sau đó quyết định xem bạn muốn trò chơi stretch theo chiều dọc hay chiều ngang đối với các aspect ratio khác nhau, hay chỉ có một aspect ratio và muốn xuất hiện các thanh màu đen
+   instead. Điều này cũng được giải thích trong :ref:`doc_multiple_resolutions`.
+
+4. Đối với user interface, hãy sử dụng :ref:`anchoring <doc_size_and_anchors>` để xác định vị trí các control cần giữ nguyên và di chuyển. Nếu UI phức tạp hơn, hãy cân nhắc tìm hiểu về Containers.
+
+Vậy là xong! Trò chơi của bạn sẽ hoạt động ở nhiều độ phân giải.
+
+Khi nào bản phát hành tiếp theo của Godot sẽ ra mắt?
+----------------------------------------------------
+
+Khi đã sẵn sàng! Xem :ref:`doc_release_policy_when_is_next_release_out` để biết thêm thông tin.
+
+Tôi nên sử dụng phiên bản Godot nào cho một dự án mới?
+------------------------------------------------------
+
+Chúng tôi khuyến nghị sử dụng Godot 4.x cho các dự án mới, nhưng tùy thuộc vào bộ tính năng bạn cần, sử dụng 3.x có thể phù hợp hơn. Xem
+:ref:`doc_release_policy_which_version_should_i_use` để biết thêm thông tin.
+
+Tôi có nên nâng cấp dự án của mình để sử dụng các phiên bản Godot mới không?
+----------------------------------------------------------------------------
+
+Một số phiên bản mới an toàn hơn khi nâng cấp so với các phiên bản khác. Nhìn chung, việc bạn có nên nâng cấp hay không phụ thuộc vào tình hình của dự án. Xem
+:ref:`doc_release_policy_should_i_upgrade_my_project` để biết thêm thông tin.
+
+Tôi nên sử dụng renderer Forward+, Mobile hay Compatibility?
+------------------------------------------------------------
+
+Bạn có thể tìm thấy phần so sánh chi tiết các renderer trong :ref:`doc_renderers`.
+
+Tôi muốn đóng góp! Tôi nên bắt đầu như thế nào?
+-----------------------------------------------
+
+Tuyệt vời! Là một dự án mã nguồn mở, Godot phát triển mạnh nhờ sự đổi mới và tham vọng của những developer như bạn.
+
+Cách tốt nhất để bắt đầu đóng góp cho Godot là sử dụng nó và báo cáo mọi `issues <https://github.com/godotengine/godot/issues>`_ mà bạn có thể gặp phải. Một bug report tốt với các bước tái hiện rõ ràng sẽ giúp những người cùng đóng góp nhanh chóng và hiệu quả sửa lỗi. Bạn cũng có thể báo cáo các issue tìm thấy trong `online documentation <https://github.com/godotengine/godot-docs/issues>`_.
+
+Nếu bạn cảm thấy đã sẵn sàng gửi PR đầu tiên, hãy chọn bất kỳ issue nào khiến bạn quan tâm từ một trong các liên kết ở trên và thử tự sửa issue đó. Bạn sẽ cần học cách compile engine từ source hoặc cách build documentation. Bạn cũng cần làm quen với Git, một hệ thống version control mà các developer của Godot sử dụng.
+
+Chúng tôi giải thích cách làm việc với source của engine, cách chỉnh sửa documentation và những cách đóng góp khác trong `documentation for contributors <https://contributing.godotengine.org/en/latest/index.html>`__ của chúng tôi.
+
+Tôi có một ý tưởng tuyệt vời cho Godot. Tôi có thể chia sẻ ý tưởng đó như thế nào?
+----------------------------------------------------------------------------------
+
+Chúng tôi luôn tìm kiếm các đề xuất về cách cải thiện engine. Phản hồi của người dùng là động lực chính cho quá trình ra quyết định của chúng tôi, và những hạn chế bạn có thể gặp phải khi làm việc với dự án của mình là dữ liệu rất hữu ích để chúng tôi cân nhắc các cải tiến cho engine.
+
+Nếu bạn gặp vấn đề về khả năng sử dụng hoặc thiếu một tính năng trong phiên bản Godot hiện tại, hãy bắt đầu bằng cách thảo luận vấn đề đó với `community <https://godotengine.org/community/>`_ của chúng tôi. Các thành viên cộng đồng có thể đề xuất những cách khác, có thể tốt hơn, để đạt được kết quả mong muốn. Bạn cũng có thể tìm hiểu xem những người dùng khác có gặp phải vấn đề tương tự không và cùng nhau tìm ra một giải pháp phù hợp.
+
+Nếu bạn nảy ra một ý tưởng được xác định rõ ràng cho engine, hãy thoải mái mở một `proposal issue <https://github.com/godotengine/godot-proposals/issues>`_. Hãy cố gắng mô tả vấn đề và giải pháp đề xuất một cách cụ thể, rõ ràng — chỉ những proposal có thể triển khai mới được xem xét. Điều này không bắt buộc, nhưng nếu bạn muốn tự mình triển khai thì luôn được hoan nghênh!
+
+Nếu bạn chỉ có một ý tưởng chung chung mà chưa có chi tiết cụ thể, bạn có thể mở một `proposal discussion <https://github.com/godotengine/godot-proposals/discussions>`_. Các discussion này có thể về bất kỳ điều gì bạn muốn và cho phép thảo luận tự do để tìm kiếm giải pháp. Khi tìm được giải pháp, bạn có thể mở một proposal issue.
+
+Vui lòng đọc tài liệu `readme <https://github.com/godotengine/godot-proposals/blob/master/README.md>`_ trước khi tạo proposal để tìm hiểu thêm về quy trình.
 
 .. _doc_faq_non_game_applications:
 
-Is it possible to use Godot to create non-game applications?
-------------------------------------------------------------
+Có thể sử dụng Godot để tạo các ứng dụng không phải trò chơi không?
+-------------------------------------------------------------------
 
-Yes! Godot features an extensive built-in UI system, and its small distribution
-size can make it a suitable alternative to frameworks like Electron or Qt.
+Có! Godot có một hệ thống UI tích hợp phong phú, và kích thước bản phân phối nhỏ có thể khiến Godot trở thành một lựa chọn thay thế phù hợp cho các framework như Electron hoặc Qt.
 
-See :ref:`doc_creating_applications` for more information.
+Xem :ref:`doc_creating_applications` để biết thêm thông tin.
 
 .. _doc_faq_use_godot_as_library:
 
-Is it possible to use Godot as a library?
------------------------------------------
-
-If you are looking to make a game with Godot, keep in mind Godot is designed
-to be used with its editor. We recommend you give it a try, as it
-will most likely save you time in the long term.
-
-For more specialized applications, it can make sense to look into using
-Godot as a library. Since Godot 4.6, there is **experimental** support
-for using Godot as a static or shared library in the form of LibGodot.
-This is currently supported on Windows, macOS, and Linux. Support for
-Android and iOS is planned for a future release.
-
-You can find sample applications that use Godot as a library in the
-`migeran/libgodot_project GitHub repository <https://github.com/migeran/libgodot_project>`__.
-
-What user interface toolkit does Godot use?
+Có thể sử dụng Godot như một library không?
 -------------------------------------------
 
-Godot does not use a standard :abbr:`GUI (Graphical User Interface)` toolkit
-like GTK, Qt or wxWidgets. Instead, Godot uses its own user interface toolkit,
-which is always rendered using hardware acceleration. There is no built-in software
-fallback, although external solutions that emulate graphics APIs on the CPU can be used.
+Nếu bạn muốn tạo một trò chơi bằng Godot, hãy nhớ rằng Godot được thiết kế để sử dụng cùng editor của nó. Chúng tôi khuyến nghị bạn dùng thử, vì về lâu dài, nhiều khả năng nó sẽ giúp bạn tiết kiệm thời gian.
 
-This toolkit is exposed in the form of Control nodes, which are used to render
-the editor (which is written in C++). These Control nodes can also be used in projects
-from any scripting language supported by Godot.
+Đối với các ứng dụng chuyên biệt hơn, việc xem xét sử dụng Godot như một library có thể hợp lý. Kể từ Godot 4.6, Godot có hỗ trợ **experimental** cho việc sử dụng Godot dưới dạng static hoặc shared library thông qua LibGodot. Hiện tại, tính năng này được hỗ trợ trên Windows, macOS và Linux. Hỗ trợ cho Android và iOS được lên kế hoạch trong một bản phát hành tương lai.
 
-This custom toolkit makes it possible to benefit from hardware acceleration and
-have a consistent appearance across all platforms. On top of that, it doesn't
-have to deal with the LGPL licensing caveats that come with GTK or Qt. Lastly,
-this means Godot is "eating its own dog food" since the editor itself is one of
-the most complex users of Godot's UI system.
+Bạn có thể tìm thấy các ứng dụng mẫu sử dụng Godot như một library trong `migeran/libgodot GitHub repository <https://github.com/migeran/libgodot>`__.
 
-This custom UI toolkit can be :ref:`embedded into other applications <doc_faq_use_godot_as_library>`
-(experimental). However, the preferred way to use it is to
-:ref:`use Godot to create non-game applications with the editor <doc_faq_non_game_applications>`.
+Godot sử dụng bộ công cụ user interface nào?
+--------------------------------------------
+
+Godot không sử dụng bộ công cụ :abbr:`GUI (Graphical User Interface)` tiêu chuẩn như GTK, Qt hoặc wxWidgets. Thay vào đó, Godot sử dụng bộ công cụ user interface riêng, luôn được render bằng hardware acceleration. Không có software fallback tích hợp, mặc dù có thể sử dụng các giải pháp bên ngoài mô phỏng graphics API trên CPU.
+
+Bộ công cụ này được cung cấp dưới dạng các Control node, được dùng để kết xuất editor (được viết bằng C++). Các Control node này cũng có thể được sử dụng trong các project dùng bất kỳ ngôn ngữ scripting nào được Godot hỗ trợ.
+
+Bộ công cụ tùy chỉnh này cho phép tận dụng khả năng tăng tốc phần cứng và duy trì giao diện nhất quán trên mọi nền tảng. Ngoài ra, nó không phải xử lý những điểm cần lưu ý về giấy phép LGPL đi kèm với GTK hoặc Qt. Cuối cùng, điều này có nghĩa là Godot đang "ăn chính thức ăn của mình" (eating its own dog food), vì bản thân editor là một trong những thành phần sử dụng hệ thống UI của Godot phức tạp nhất.
+
+Bộ công cụ UI tùy chỉnh này có thể được :ref:`nhúng vào các ứng dụng khác <doc_faq_use_godot_as_library>` (thử nghiệm). Tuy nhiên, cách được khuyến nghị để sử dụng nó là
+:ref:`dùng Godot để tạo các ứng dụng không phải game bằng editor <doc_faq_non_game_applications>`.
 
 .. _doc_faq_why_scons:
 
-Why does Godot use the SCons build system?
-------------------------------------------
+Tại sao Godot sử dụng build system SCons?
+-----------------------------------------
 
-Godot uses the `SCons <https://www.scons.org/>`__ build system. There are no
-plans to switch to a different build system in the near future. There are many
-reasons why we have chosen SCons over other alternatives. For example:
+Godot sử dụng build system `SCons <https://www.scons.org/>`__. Hiện chưa có kế hoạch chuyển sang build system khác trong tương lai gần. Có nhiều lý do khiến chúng tôi chọn SCons thay vì các phương án khác. Ví dụ:
 
--  Godot can be compiled for a dozen different platforms: all PC
-   platforms, all mobile platforms, many consoles, and WebAssembly.
--  Developers often need to compile for several of the platforms **at
-   the same time**, or even different targets of the same platform. They
-   can't afford reconfiguring and rebuilding the project each time.
-   SCons can do this with no sweat, without breaking the builds.
--  SCons will *never* break a build no matter how many changes,
-   configurations, additions, removals etc.
--  Godot's build process is not simple. Several files are generated by
-   code (binders), others are parsed (shaders), and others need to offer
-   customization (:ref:`modules <doc_custom_modules_in_cpp>`). This requires
-   complex logic which is easier to write in an actual programming language (like Python)
-   rather than using a mostly macro-based language only meant for building.
--  Godot's build process makes heavy use of cross-compiling tools. Each
-   platform has a specific detection process, and all these must be
-   handled as specific cases with special code written for each.
+-  Godot có thể được biên dịch cho hàng chục nền tảng khác nhau: tất cả nền tảng PC, tất cả nền tảng di động, nhiều console và WebAssembly.
+-  Các developer thường cần biên dịch cho nhiều nền tảng **cùng lúc**, hoặc thậm chí cho các target khác nhau của cùng một nền tảng. Họ không thể mất thời gian cấu hình lại và build lại project mỗi lần. SCons có thể thực hiện việc này dễ dàng mà không làm hỏng các bản build.
+-  SCons *không bao giờ* làm hỏng bản build, bất kể có bao nhiêu thay đổi, cấu hình, phần bổ sung, phần xóa bỏ, v.v.
+-  Quy trình build của Godot không đơn giản. Một số file được tạo bằng code (binder), một số file khác được phân tích cú pháp (shader), còn những file khác cần cho phép tùy chỉnh (:ref:`module <doc_custom_modules_in_cpp>`). Điều này đòi hỏi logic phức tạp, dễ viết hơn bằng một ngôn ngữ lập trình thực tế (chẳng hạn Python) thay vì một ngôn ngữ chủ yếu dựa trên macro và chỉ dành cho việc build.
+-  Quy trình build của Godot sử dụng nhiều công cụ cross-compile. Mỗi nền tảng có một quy trình phát hiện riêng, và tất cả những quy trình này phải được xử lý như các trường hợp cụ thể bằng code đặc biệt viết cho từng nền tảng.
 
-Please try to keep an open mind and get at least a little familiar with SCons if
-you are planning to build Godot yourself.
+Nếu dự định tự build Godot, hãy cố gắng giữ tinh thần cởi mở và làm quen ít nhất một chút với SCons.
 
 .. _doc_faq_why_not_stl:
 
-Why does Godot not use STL (Standard Template Library)?
--------------------------------------------------------
+Tại sao Godot không sử dụng STL (Standard Template Library)?
+------------------------------------------------------------
 
-Like many other libraries (Qt as an example), Godot does not make use of STL
-(with a few exceptions such as threading primitives). We believe STL is a great
-general-purpose library, but we had special requirements for Godot.
+Giống như nhiều library khác (chẳng hạn Qt), Godot không sử dụng STL (ngoại trừ một số trường hợp như các primitive về threading). Chúng tôi cho rằng STL là một library đa dụng tuyệt vời, nhưng Godot có những yêu cầu đặc biệt.
 
-* STL templates create very large symbols, which results in huge debug binaries. We use few
-  templates with very short names instead.
-* Most of our containers cater to special needs, like Vector, which uses copy on write and we
-  use to pass data around, or the RID system, which requires O(1) access time for performance.
-  Likewise, our hash map implementations are designed to integrate seamlessly with internal
-  engine types.
-* Our containers have memory tracking built-in, which helps better track memory usage.
-* For large arrays, we use pooled memory, which can be mapped to either a preallocated buffer
-  or virtual memory.
-* We use our custom String type, as the one provided by STL is too basic and lacks proper
-  internationalization support.
+* Các template của STL tạo ra những symbol rất lớn, dẫn đến các binary debug khổng lồ. Thay vào đó, chúng tôi sử dụng một số ít template có tên rất ngắn.
+* Phần lớn các container của chúng tôi phục vụ những nhu cầu đặc biệt, chẳng hạn như Vector, sử dụng copy on write và được dùng để truyền dữ liệu, hoặc hệ thống RID, yêu cầu thời gian truy cập O(1) để đảm bảo hiệu năng. Tương tự, các triển khai hash map của chúng tôi được thiết kế để tích hợp liền mạch với các kiểu dữ liệu nội bộ của engine.
+* Các container của chúng tôi tích hợp sẵn tính năng theo dõi bộ nhớ, giúp theo dõi việc sử dụng bộ nhớ tốt hơn.
+* Đối với các array lớn, chúng tôi sử dụng bộ nhớ dạng pool, có thể được ánh xạ tới buffer được cấp phát trước hoặc bộ nhớ ảo.
+* Chúng tôi sử dụng kiểu String tùy chỉnh, vì kiểu do STL cung cấp quá cơ bản và thiếu hỗ trợ quốc tế hóa phù hợp.
 
-Check out :ref:`Godot's container types <doc_core_types>` for alternatives.
+Hãy xem :ref:`các kiểu container của Godot <doc_core_types>` để tìm các phương án thay thế.
 
-Why does Godot not use exceptions?
-----------------------------------
+Tại sao Godot không sử dụng exception?
+--------------------------------------
 
-We believe games should not crash, no matter what. If an unexpected
-situation happens, Godot will print an error (which can be traced even to
-script), but then it will try to recover as gracefully as possible and keep
-going.
+Chúng tôi cho rằng game không nên bị crash, bất kể chuyện gì xảy ra. Nếu phát sinh tình huống bất ngờ, Godot sẽ in ra một lỗi (có thể truy vết ngay cả đến script), nhưng sau đó sẽ cố gắng khôi phục một cách êm thấm nhất có thể và tiếp tục chạy.
 
-Additionally, exceptions significantly increase the binary size for the
-executable and result in increased compile times.
+Ngoài ra, exception làm tăng đáng kể kích thước binary của executable và khiến thời gian biên dịch tăng lên.
 
-Does Godot use an ECS (Entity Component System)?
-------------------------------------------------
+Godot có sử dụng ECS (Entity Component System) không?
+-----------------------------------------------------
 
-Godot does **not** use an ECS and relies on inheritance instead. While there
-is no universally better approach, we found that using an inheritance-based approach
-resulted in better usability while still being fast enough for most use cases.
+Godot **không** sử dụng ECS mà thay vào đó dựa trên tính kế thừa. Mặc dù không có cách tiếp cận nào tốt hơn một cách tuyệt đối, chúng tôi nhận thấy cách tiếp cận dựa trên tính kế thừa mang lại khả năng sử dụng tốt hơn mà vẫn đủ nhanh cho hầu hết trường hợp sử dụng.
 
-That said, nothing prevents you from making use of composition in your project
-by creating child Nodes with individual scripts. These nodes can then be added and
-removed at runtime to dynamically add and remove behaviors.
+Tuy vậy, không có gì ngăn bạn sử dụng composition trong project bằng cách tạo các Node con với từng script riêng. Sau đó, bạn có thể thêm và xóa các node này trong runtime để linh động thêm và xóa các behavior.
 
-More information about Godot's design choices can be found in
-`this article <https://godotengine.org/article/why-isnt-godot-ecs-based-game-engine>`__.
+Bạn có thể tìm thêm thông tin về các lựa chọn thiết kế của Godot trong `bài viết này <https://godotengine.org/article/why-isnt-godot-ecs-based-game-engine>`__.
 
-Why does Godot not force users to implement DOD (Data-Oriented Design)?
------------------------------------------------------------------------
+Tại sao Godot không bắt buộc người dùng triển khai DOD (Data-Oriented Design)?
+------------------------------------------------------------------------------
 
-While Godot internally attempts to use cache coherency as much as possible,
-we believe users don't need to be forced to use DOD practices.
+Mặc dù bản thân Godot cố gắng sử dụng cache coherency nhiều nhất có thể, chúng tôi cho rằng không cần bắt buộc người dùng áp dụng các thực hành DOD.
 
-DOD is mostly a cache coherency optimization that can only provide
-significant performance improvements when dealing with dozens of
-thousands of objects which are processed every frame with little
-modification. That is, if you are moving a few hundred sprites or enemies
-per frame, DOD won't result in a meaningful improvement in performance. In
-such a case, you should consider a different approach to optimization.
+DOD chủ yếu là một tối ưu hóa cache coherency, chỉ có thể mang lại cải thiện hiệu năng đáng kể khi xử lý hàng chục nghìn object được xử lý trong mỗi frame với rất ít
+modification. Nghĩa là, nếu bạn di chuyển vài trăm sprite hoặc enemy
+trong mỗi frame, DOD sẽ không mang lại cải thiện hiệu năng đáng kể. Trong trường hợp đó, bạn nên cân nhắc một cách tiếp cận khác để tối ưu hóa.
 
-The vast majority of games do not need this and Godot provides handy helpers
-to do the job for most cases when you do.
+Phần lớn game không cần đến điều này, và Godot cung cấp các helper tiện dụng để thực hiện công việc trong hầu hết trường hợp khi bạn cần.
 
-If a game needs to process such a large amount of objects, our recommendation
-is to use C++ and GDExtensions for performance-heavy tasks and GDScript (or C#)
-for the rest of the game.
+Nếu game cần xử lý một lượng object lớn như vậy, chúng tôi khuyến nghị sử dụng C++ và GDExtensions cho các tác vụ nặng về hiệu năng, còn dùng GDScript (hoặc C#) cho phần còn lại của game.
 
-How can I support Godot development or contribute?
---------------------------------------------------
+Tôi có thể hỗ trợ việc phát triển Godot hoặc đóng góp như thế nào?
+------------------------------------------------------------------
 
-See `How to contribute <https://contributing.godotengine.org/en/latest/organization/how_to_contribute.html>`__.
+Xem `Cách đóng góp <https://contributing.godotengine.org/en/latest/index.html>`__.
 
-Who is working on Godot? How can I contact you?
------------------------------------------------
+Ai đang phát triển Godot? Tôi có thể liên hệ với các bạn như thế nào?
+---------------------------------------------------------------------
 
-See the corresponding page on the `Godot website <https://godotengine.org/contact>`__.
+Xem trang tương ứng trên `website Godot <https://godotengine.org/contact>`__.
+
+.. _`Free and open source Software`: https://en.wikipedia.org/wiki/Free_and_open_source_software
+.. _`OSI-approved`: https://opensource.org/licenses/MIT
+.. _`CC BY 3.0`: https://creativecommons.org/licenses/by/3.0/
+.. _`COPYRIGHT.txt`: https://github.com/godotengine/godot/blob/master/COPYRIGHT.txt
+.. _`LICENSE.txt`: https://github.com/godotengine/godot/blob/master/LICENSE.txt
+.. _`logo LICENSE.txt`: https://github.com/godotengine/godot/blob/master/misc/logo/LICENSE.txt
+.. _`the license page on the Godot website`: https://godotengine.org/license
+.. _`Python`: https://github.com/touilleMan/godot-python
+.. _`Nim`: https://github.com/pragmagic/godot-nim
+.. _`Introducing GDNative's successor, GDExtension`: https://godotengine.org/article/introducing-gd-extensions
+.. _`issues`: https://github.com/godotengine/godot/issues
+.. _`online documentation`: https://github.com/godotengine/godot-docs/issues
+.. _`community`: https://godotengine.org/community/
+.. _`proposal issue`: https://github.com/godotengine/godot-proposals/issues
+.. _`proposal discussion`: https://github.com/godotengine/godot-proposals/discussions
+.. _`readme`: https://github.com/godotengine/godot-proposals/blob/master/README.md

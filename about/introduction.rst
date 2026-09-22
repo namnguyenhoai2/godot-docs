@@ -2,8 +2,8 @@
 
 .. _doc_about_intro:
 
-Introduction
-============
+Giới thiệu
+==========
 
 .. tabs::
  .. code-tab:: gdscript
@@ -18,93 +18,58 @@ Introduction
         GD.Print("Hello world!");
     }
 
-Welcome to the official documentation of **Godot Engine**, the free and open source
-community-driven 2D and 3D game engine! Behind this mouthful, you will find a
-powerful yet user-friendly tool that you can use to develop any kind of game,
-for any platform and with no usage restriction whatsoever.
+Chào mừng bạn đến với tài liệu chính thức của **Godot Engine**, game engine 2D và 3D miễn phí, mã nguồn mở, do cộng đồng phát triển! Đằng sau cái tên dài này là một công cụ mạnh mẽ nhưng dễ sử dụng, cho phép bạn phát triển mọi loại game trên mọi nền tảng mà hoàn toàn không bị giới hạn về việc sử dụng.
 
-This page gives a broad overview of the engine and of this documentation,
-so that you know where to start if you are a beginner or
-where to look if you need information on a specific feature.
+Trang này cung cấp cái nhìn tổng quan về engine và tài liệu này, để bạn biết nên bắt đầu từ đâu nếu là người mới, hoặc tìm thông tin ở đâu nếu cần biết về một tính năng cụ thể.
 
-Before you start
-----------------
+Trước khi bắt đầu
+-----------------
 
-The :ref:`Tutorials and resources <doc_community_tutorials>` page lists
-video tutorials contributed by the community. If you prefer video to text,
-consider checking them out. Otherwise, :ref:`Getting Started <doc_getting_started_intro>`
-is a great starting point.
+Trang :ref:`Tutorials and resources <doc_community_tutorials>` liệt kê các video hướng dẫn do cộng đồng đóng góp. Nếu thích video hơn văn bản, bạn nên xem qua các video này. Nếu không, :ref:`Getting Started <doc_getting_started_intro>` là một điểm khởi đầu tuyệt vời.
 
-In case you have trouble with one of the tutorials or your project,
-you can find help on the various `Community channels <https://godotengine.org/community/>`_,
-especially the Godot `Discord <https://discord.gg/godotengine>`_ community and
-`Forum <https://forum.godotengine.org/>`_.
+Nếu gặp khó khăn với một trong các bài hướng dẫn hoặc dự án của mình, bạn có thể tìm trợ giúp trên nhiều `kênh cộng đồng <https://godotengine.org/community/>`_ khác nhau, đặc biệt là cộng đồng Godot trên `Discord <https://discord.gg/godotengine>`_ và `Forum <https://forum.godotengine.org/>`_.
 
-About Godot Engine
-------------------
+Giới thiệu về Godot Engine
+--------------------------
 
-A game engine is a complex tool and difficult to present in a few words.
-Here's a quick synopsis, which you are free to reuse
-if you need a quick write-up about Godot Engine:
+Game engine là một công cụ phức tạp và khó trình bày chỉ bằng vài từ. Dưới đây là phần tóm tắt nhanh mà bạn có thể tự do sử dụng nếu cần một đoạn giới thiệu ngắn về Godot Engine:
 
-    Godot Engine is a feature-packed, cross-platform game engine to create 2D
-    and 3D games from a unified interface. It provides a comprehensive set of
-    common tools, so that users can focus on making games without having to
-    reinvent the wheel. Games can be exported with one click to a number of
-    platforms, including the major desktop platforms (Linux, macOS, Windows),
-    mobile platforms (Android, iOS), as well as Web-based platforms and consoles.
+    Godot Engine là một game engine đa nền tảng, tích hợp nhiều tính năng, dùng để tạo game 2D và 3D từ một giao diện thống nhất. Engine cung cấp một bộ công cụ phổ biến toàn diện, giúp người dùng tập trung vào việc làm game mà không phải xây dựng lại những thứ đã có. Game có thể được xuất sang nhiều nền tảng chỉ bằng một cú nhấp, bao gồm các nền tảng máy tính để bàn chính (Linux, macOS, Windows), nền tảng di động (Android, iOS), cũng như các nền tảng dựa trên Web và console.
 
-    Godot is completely free and open source under the :ref:`permissive MIT
-    license <doc_complying_with_licenses>`. No strings attached, no royalties,
-    nothing. Users' games are theirs, down to the last line of engine code.
-    Godot's development is fully independent and community-driven, empowering
-    users to help shape their engine to match their expectations.
-    It is supported by the `Godot Foundation <https://godot.foundation/>`_
-    not-for-profit.
+    Godot hoàn toàn miễn phí và là mã nguồn mở theo :ref:`giấy phép MIT tự do <doc_complying_with_licenses>`. Không có ràng buộc, không có tiền bản quyền,
+    nothing. Game của người dùng thuộc về chính họ, cho đến dòng mã cuối cùng của engine.
+    Quá trình phát triển Godot hoàn toàn độc lập và do cộng đồng thúc đẩy, trao quyền cho người dùng tham gia định hình engine để phù hợp với mong muốn của họ. Dự án được hỗ trợ bởi tổ chức phi lợi nhuận `Godot Foundation <https://godot.foundation/>`_.
 
 
-Organization of the documentation
----------------------------------
+Cấu trúc của tài liệu
+---------------------
 
-This documentation is organized into several sections:
+Tài liệu này được chia thành một số phần:
 
-- **About** contains this introduction as well as
-  information about the engine, its history, its licensing, authors, etc. It
-  also contains the :ref:`doc_faq`.
-- **Getting Started** contains all necessary information on using the engine to
-  make games. It starts with the :ref:`doc_getting_started_intro` section which
-  should be the entry point for all new users. **This is the best place to start
-  if you're new!**
-- The **Manual** can be read or referenced as needed,
-  in any order. It contains feature-specific tutorials and documentation.
-- **Engine details** contains sections intended for advanced users and contributors,
-  with information on compiling the engine, working on the editor,
-  or developing C++ modules.
-- **Community** is dedicated to the life of Godot's community and contains a list of
-  recommended third-party tutorials and materials outside of this documentation.
-  It also provides details on the Asset Store. It also used to list Godot
-  communities, which are now listed on the `Godot website <https://godotengine.org/community/>`_.
-- Finally, the **Class reference** documents the full Godot API,
-  also available directly within the engine's script editor.
-  You can find information on all classes, functions, signals and so on here.
+- **About** chứa phần giới thiệu này cùng thông tin về engine, lịch sử, giấy phép, tác giả, v.v. Phần này cũng chứa :ref:`doc_faq`.
+- **Getting Started** chứa mọi thông tin cần thiết để sử dụng engine làm game. Phần này bắt đầu với mục :ref:`doc_getting_started_intro`, đây nên là điểm khởi đầu cho tất cả người dùng mới. **Đây là nơi tốt nhất để bắt đầu nếu bạn là người mới!**
+- **Manual** có thể được đọc hoặc tham khảo khi cần, theo bất kỳ thứ tự nào. Phần này chứa các bài hướng dẫn và tài liệu dành riêng cho từng tính năng.
+- **Engine details** chứa các phần dành cho người dùng nâng cao và cộng tác viên, với thông tin về cách biên dịch engine, làm việc trên editor hoặc phát triển các module C++.
+- **Community** dành riêng cho hoạt động của cộng đồng Godot và chứa danh sách các bài hướng dẫn, tài liệu bên thứ ba được đề xuất nằm ngoài tài liệu này. Phần này cũng cung cấp thông tin chi tiết về Asset Store. Trước đây, phần này cũng từng liệt kê các cộng đồng Godot, nhưng hiện chúng được liệt kê trên `trang web Godot <https://godotengine.org/community/>`_.
+- Cuối cùng, **Class reference** ghi lại đầy đủ API của Godot và cũng có thể được truy cập trực tiếp trong script editor của engine. Tại đây, bạn có thể tìm thông tin về tất cả class, function, signal, v.v.
 
-In addition to this documentation, you may also want to take a look at the
-various `Godot demo projects <https://github.com/godotengine/godot-demo-projects>`_.
+Ngoài tài liệu này, bạn cũng có thể xem qua các `dự án demo Godot <https://github.com/godotengine/godot-demo-projects>`_.
 
-About this documentation
-------------------------
+Giới thiệu về tài liệu này
+--------------------------
 
-Members of the Godot Engine community continuously write, correct, edit, and
-improve this documentation. We are always looking for more help. You can also
-contribute by opening Github issues or translating the documentation into your language.
-If you are interested in helping, see `How to contribute <https://contributing.godotengine.org/en/latest/organization/how_to_contribute.html>`__
-and `Writing documentation <https://contributing.godotengine.org/en/latest/documentation/manual/index.html>`__,
-or get in touch with the `Documentation team <https://godotengine.org/teams/#documentation>`_
-on `Godot Contributors Chat <https://chat.godotengine.org/>`_.
+Các thành viên trong cộng đồng Godot Engine liên tục viết, sửa, biên tập và cải thiện tài liệu này. Chúng tôi luôn mong muốn nhận được thêm sự hỗ trợ. Bạn cũng có thể đóng góp bằng cách mở issue trên Github hoặc dịch tài liệu sang ngôn ngữ của mình. Nếu muốn hỗ trợ, hãy xem `How to contribute <https://contributing.godotengine.org/en/latest/index.html>`__ và `Writing documentation <https://contributing.godotengine.org/en/latest/development/documentation/manual/index.html>`__, hoặc liên hệ với `Documentation team <https://godotengine.org/teams/#documentation>`_ trên `Godot Contributors Chat <https://chat.godotengine.org/>`_.
 
-All documentation content is licensed under the permissive Creative Commons Attribution 3.0
-(`CC BY 3.0 <https://creativecommons.org/licenses/by/3.0/>`_) license,
-with attribution to "*Juan Linietsky, Ariel Manzur, and the Godot Engine community*"
-unless otherwise noted.
+Toàn bộ nội dung tài liệu được cấp phép theo giấy phép Creative Commons Attribution 3.0 tự do (`CC BY 3.0 <https://creativecommons.org/licenses/by/3.0/>`_), ghi công "*Juan Linietsky, Ariel Manzur, and the Godot Engine community*" trừ khi có ghi chú khác.
 
-*Have fun reading and making games with Godot Engine!*
+*Chúc bạn đọc vui vẻ và tạo ra những game tuyệt vời với Godot Engine!*
+
+.. _`Community channels`: https://godotengine.org/community/
+.. _`Discord`: https://discord.gg/godotengine
+.. _`Forum`: https://forum.godotengine.org/
+.. _`Godot Foundation`: https://godot.foundation/
+.. _`Godot website`: https://godotengine.org/community/
+.. _`Godot demo projects`: https://github.com/godotengine/godot-demo-projects
+.. _`Documentation team`: https://godotengine.org/teams/#documentation
+.. _`Godot Contributors Chat`: https://chat.godotengine.org/
+.. _`CC BY 3.0`: https://creativecommons.org/licenses/by/3.0/

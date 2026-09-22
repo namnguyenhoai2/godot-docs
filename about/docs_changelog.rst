@@ -2,47 +2,43 @@
 
 .. _doc_docs_changelog:
 
-Documentation changelog
-=======================
+Nhật ký thay đổi tài liệu
+=========================
 
-The documentation is continually being improved. New releases
-include new pages, fixes and updates to existing pages, and many updates
-to the :ref:`class reference <doc_class_reference>`. Below is a list of new pages
-added since version 3.0.
+Tài liệu liên tục được cải thiện. Các bản phát hành mới bao gồm các trang mới, bản sửa lỗi và cập nhật cho các trang hiện có, cùng nhiều cập nhật cho :ref:`tài liệu tham chiếu class <doc_class_reference>`. Dưới đây là danh sách các trang mới được thêm kể từ phiên bản 3.0.
 
 .. note::
 
-    This document only contains new pages, so not all changes are reflected.
-    Many pages have been substantially updated but are not reflected in this document.
+    Tài liệu này chỉ bao gồm các trang mới, vì vậy không phải mọi thay đổi đều được phản ánh. Nhiều trang đã được cập nhật đáng kể nhưng không được phản ánh trong tài liệu này.
 
-New pages since version 4.6
----------------------------
+Các trang mới kể từ phiên bản 4.6
+---------------------------------
 
 Editor
 ~~~~~~
 
 - :ref:`doc_game_embedding`
 
-User Interface (UI)
-~~~~~~~~~~~~~~~~~~~
+Giao diện người dùng (UI)
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - :ref:`doc_creating_applications`
 
-New pages since version 4.5
----------------------------
+Các trang mới kể từ phiên bản 4.5
+---------------------------------
 
 Input
 ~~~~~
 
 - :ref:`doc_controller_features`
 
-Migrating
+Di chuyển
 ~~~~~~~~~
 
 - :ref:`doc_upgrading_to_godot_4.6`
 
-Platform-specific
-~~~~~~~~~~~~~~~~~
+Theo nền tảng
+~~~~~~~~~~~~~
 
 - :ref:`doc_resolving_crashes_on_android`
 - :ref:`doc_wayland_x11`
@@ -52,8 +48,8 @@ Scripting
 
 - :ref:`doc_godot_cpp_core_types`
 
-New pages since version 4.4
----------------------------
+Các trang mới kể từ phiên bản 4.4
+---------------------------------
 
 Editor
 ~~~~~~
@@ -65,7 +61,7 @@ GDExtension
 
 - :ref:`doc_gdextension_c_example`
 
-Migrating
+Di chuyển
 ~~~~~~~~~
 
 - :ref:`doc_upgrading_to_godot_4.5`
@@ -76,8 +72,8 @@ Scripting
 
 - :ref:`doc_logging`
 
-New pages since version 4.3
----------------------------
+Các trang mới kể từ phiên bản 4.3
+---------------------------------
 
 2D
 ~~
@@ -89,8 +85,8 @@ New pages since version 4.3
 
 - :ref:`doc_spring_arm`
 
-Debug
-~~~~~
+Gỡ lỗi
+~~~~~~
 
 - :ref:`doc_output_panel`
 
@@ -99,18 +95,18 @@ Editor
 
 - :ref:`doc_using_the_xr_editor`
 
-Migrating
+Di chuyển
 ~~~~~~~~~
 
 - :ref:`doc_upgrading_to_godot_4.4`
 
-Performance
-~~~~~~~~~~~
+Hiệu năng
+~~~~~~~~~
 
 - :ref:`doc_pipeline_compilations`
 
-Physics
-~~~~~~~
+Vật lý
+~~~~~~
 
 - :ref:`doc_physics_interpolation`
 - :ref:`doc_physics_interpolation_quick_start_guide`
@@ -119,8 +115,8 @@ Physics
 - :ref:`doc_advanced_physics_interpolation`
 - :ref:`doc_2d_and_3d_physics_interpolation`
 
-Rendering
-~~~~~~~~~
+Kết xuất
+~~~~~~~~
 
 - :ref:`doc_renderers`
 
@@ -129,11 +125,11 @@ Shaders
 
 - :ref:`doc_shader_functions`
 
-New pages since version 4.2
----------------------------
+Các trang mới kể từ phiên bản 4.2
+---------------------------------
 
-About
-~~~~~
+Giới thiệu
+~~~~~~~~~~
 
 - :ref:`doc_system_requirements`
 
@@ -142,8 +138,8 @@ About
 
 - :ref:`doc_2d_parallax`
 
-Contributing
-~~~~~~~~~~~~
+Đóng góp
+~~~~~~~~
 
 - :ref:`doc_handling_compatibility_breakages`
 
@@ -153,13 +149,13 @@ GDExtension
 - :ref:`doc_gdextension_file`
 - :ref:`doc_godot_cpp_docs_system`
 
-Migrating
+Di chuyển
 ~~~~~~~~~
 
 - :ref:`doc_upgrading_to_godot_4.3`
 
-Rendering
-~~~~~~~~~
+Kết xuất
+~~~~~~~~
 
 - :ref:`doc_compositor`
 
@@ -174,20 +170,20 @@ XR
 - :ref:`doc_openxr_body_tracking`
 
 
-New pages since version 4.1
----------------------------
+Các trang mới kể từ phiên bản 4.1
+---------------------------------
 
 C#
 ~~
 
 - :ref:`doc_c_sharp_diagnostics`
 
-Development
-~~~~~~~~~~~
+Phát triển
+~~~~~~~~~~
 
 - :ref:`doc_2d_coordinate_systems`
 
-Migrating
+Di chuyển
 ~~~~~~~~~
 
 - :ref:`doc_upgrading_to_godot_4.2`
@@ -197,32 +193,32 @@ I/O
 
 - :ref:`doc_runtime_loading_and_saving`
 
-Platform-specific
-~~~~~~~~~~~~~~~~~
+Theo nền tảng
+~~~~~~~~~~~~~
 
 - :ref:`doc_android_library`
 
-New pages since version 4.0
----------------------------
+Các trang mới kể từ phiên bản 4.0
+---------------------------------
 
-Development
-~~~~~~~~~~~
+Phát triển
+~~~~~~~~~~
 
 - :ref:`doc_internal_rendering_architecture`
 - :ref:`doc_using_sanitizers`
 
-Migrating
+Di chuyển
 ~~~~~~~~~
 
 - :ref:`doc_upgrading_to_godot_4.1`
 
-Physics
-~~~~~~~
+Vật lý
+~~~~~~
 
 - :ref:`doc_troubleshooting_physics_issues`
 
-New pages since version 3.6
----------------------------
+Các trang mới kể từ phiên bản 3.6
+---------------------------------
 
 2D
 ~~
@@ -249,23 +245,23 @@ Animation
 
 - :ref:`doc_creating_movies`
 
-Assets pipeline
-~~~~~~~~~~~~~~~
+Quy trình xử lý assets
+~~~~~~~~~~~~~~~~~~~~~~
 
 - :ref:`doc_retargeting_3d_skeletons`
 
-Development
-~~~~~~~~~~~
+Phát triển
+~~~~~~~~~~
 
 - :ref:`doc_custom_platform_ports`
 
-Migrating
+Di chuyển
 ~~~~~~~~~
 
 - :ref:`doc_upgrading_to_godot_4`
 
-Physics
-~~~~~~~
+Vật lý
+~~~~~~
 
 - :ref:`doc_large_world_coordinates`
 
@@ -289,13 +285,13 @@ XR
 - :ref:`doc_xr_action_map`
 - :ref:`doc_deploying_to_android`
 
-New pages since version 3.5
----------------------------
+Các trang mới kể từ phiên bản 3.5
+---------------------------------
 
-None.
+Không có.
 
-New pages since version 3.4
----------------------------
+Các trang mới kể từ phiên bản 3.4
+---------------------------------
 
 3D
 ~~
@@ -312,48 +308,48 @@ Editor
 
 - :ref:`doc_managing_editor_features`
 
-New pages since version 3.3
----------------------------
+Các trang mới kể từ phiên bản 3.3
+---------------------------------
 
 GDScript
 ~~~~~~~~
 
 - :ref:`doc_gdscript_documentation_comments`
 
-New pages since version 3.2
----------------------------
+Các trang mới kể từ phiên bản 3.2
+---------------------------------
 
 3D
 ~~
 
 - :ref:`doc_3d_rendering_limitations`
 
-About
-~~~~~
+Giới thiệu
+~~~~~~~~~~
 
 - :ref:`doc_troubleshooting`
 - :ref:`doc_list_of_features`
 - :ref:`doc_release_policy`
 
-Best practices
-~~~~~~~~~~~~~~
+Các phương pháp hay nhất
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 - :ref:`doc_version_control_systems`
 
-Development
-~~~~~~~~~~~
+Phát triển
+~~~~~~~~~~
 
 - :ref:`doc_common_engine_methods_and_macros_error_macros`
 - :ref:`doc_vulkan_validation_layers`
-- Configuring an IDE: :ref:`doc_configuring_an_ide_code_blocks`
+- Cấu hình IDE: :ref:`doc_configuring_an_ide_code_blocks`
 
 Editor
 ~~~~~~
 
 - :ref:`doc_using_the_web_editor`
 
-Export
-~~~~~~
+Xuất
+~~~~
 
 - :ref:`doc_exporting_for_dedicated_servers`
 
@@ -362,19 +358,19 @@ Input
 
 - :ref:`doc_controllers_gamepads_joysticks`
 
-Math
-~~~~
+Toán học
+~~~~~~~~
 
 - :ref:`doc_random_number_generation`
 
-Platform-specific
-~~~~~~~~~~~~~~~~~
+Theo nền tảng
+~~~~~~~~~~~~~
 
 - :ref:`doc_ios_plugin`
 - :ref:`doc_html5_shell_classref`
 
-Physics
-~~~~~~~
+Vật lý
+~~~~~~
 
 - :ref:`doc_collision_shapes_2d`
 - :ref:`doc_collision_shapes_3d`
@@ -391,18 +387,18 @@ Scripting
 - :ref:`doc_creating_script_templates`
 - :ref:`doc_evaluating_expressions`
 - :ref:`doc_what_is_gdextension`
-- :ref:`doc_gdscript_warning_system` (split from :ref:`doc_gdscript_static_typing`)
+- :ref:`doc_gdscript_warning_system` (tách từ :ref:`doc_gdscript_static_typing`)
 
-User Interface (UI)
-~~~~~~~~~~~~~~~~~~~
+Giao diện người dùng (UI)
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - :ref:`doc_control_node_gallery`
 
-New pages since version 3.1
----------------------------
+Các trang mới kể từ phiên bản 3.1
+---------------------------------
 
-Project workflow
-~~~~~~~~~~~~~~~~
+Quy trình làm việc của dự án
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - :ref:`doc_android_gradle_build`
 
@@ -411,14 +407,14 @@ Project workflow
 
 - :ref:`doc_2d_sprite_animation`
 
-Audio
-~~~~~
+Âm thanh
+~~~~~~~~
 
 - :ref:`doc_recording_with_microphone`
 - :ref:`doc_sync_with_audio`
 
-Math
-~~~~
+Toán học
+~~~~~~~~
 
 - :ref:`doc_beziers_and_curves`
 - :ref:`doc_interpolation`
@@ -428,15 +424,15 @@ Inputs
 
 - :ref:`doc_input_examples`
 
-Internationalization
-~~~~~~~~~~~~~~~~~~~~
+Quốc tế hóa
+~~~~~~~~~~~
 
 - :ref:`doc_localization_using_gettext`
 
 Shading
 ~~~~~~~
 
-- Your First Shader Series:
+- Chuỗi bài Your First Shader:
     - :ref:`doc_introduction_to_shaders`
     - :ref:`doc_your_first_canvasitem_shader`
     - :ref:`doc_your_first_spatial_shader`
@@ -455,50 +451,50 @@ Plugins
 - :ref:`doc_inspector_plugins`
 - :ref:`doc_visual_shader_plugins`
 
-Multi-threading
-~~~~~~~~~~~~~~~
+Đa luồng
+~~~~~~~~
 
 - :ref:`doc_using_multiple_threads`
 
-Creating content
-~~~~~~~~~~~~~~~~
+Tạo nội dung
+~~~~~~~~~~~~
 
-Procedural geometry series:
-  - :ref:`Procedural geometry <toc-procedural_geometry>`
+Chuỗi hình học procedural:
+  - :ref:`Hình học procedural <toc-procedural_geometry>`
   - :ref:`doc_arraymesh`
   - :ref:`doc_surfacetool`
   - :ref:`doc_meshdatatool`
   - :ref:`doc_immediatemesh`
 
-Optimization
-~~~~~~~~~~~~
+Tối ưu hóa
+~~~~~~~~~~
 
 - :ref:`doc_using_multimesh`
 - :ref:`doc_using_servers`
 
-Legal
-~~~~~
+Pháp lý
+~~~~~~~
 
 - :ref:`doc_complying_with_licenses`
 
-New pages since version 3.0
----------------------------
+Các trang mới kể từ phiên bản 3.0
+---------------------------------
 
-Step by step
-~~~~~~~~~~~~
+Từng bước
+~~~~~~~~~
 
 - :ref:`doc_signals`
-- Exporting
+- Xuất
 
 Scripting
 ~~~~~~~~~
 
 - :ref:`doc_gdscript_static_typing`
 
-Project workflow
-~~~~~~~~~~~~~~~~
+Quy trình làm việc của dự án
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Best Practices:
+Các phương pháp hay nhất:
 
 - :ref:`doc_introduction_best_practices`
 - :ref:`doc_what_are_godot_classes`
@@ -524,8 +520,8 @@ Best Practices:
 - :ref:`doc_animating_thousands_of_fish`
 - :ref:`doc_controlling_thousands_of_fish`
 
-Physics
-~~~~~~~
+Vật lý
+~~~~~~
 
 - :ref:`doc_ragdoll_system`
 - :ref:`doc_soft_body`
@@ -541,8 +537,8 @@ GUI
 
 - :ref:`doc_gui_containers`
 
-Viewports
-~~~~~~~~~
+Viewport
+~~~~~~~~
 
 - :ref:`doc_viewport_as_texture`
 - :ref:`doc_custom_postprocessing`
@@ -553,7 +549,7 @@ Shading
 - :ref:`doc_converting_glsl_to_godot_shaders`
 - :ref:`doc_advanced_postprocessing`
 
-Shading Reference:
+Tham chiếu Shading:
 
 - :ref:`doc_introduction_to_shaders`
 - :ref:`doc_shading_language`
@@ -567,35 +563,35 @@ Plugins
 - :ref:`doc_making_main_screen_plugins`
 - :ref:`doc_3d_gizmo_plugins`
 
-Platform-specific
-~~~~~~~~~~~~~~~~~
+Theo nền tảng
+~~~~~~~~~~~~~
 
 - :ref:`doc_customizing_html5_shell`
 
-Multi-threading
-~~~~~~~~~~~~~~~
+Đa luồng
+~~~~~~~~
 
 - :ref:`doc_thread_safe_apis`
 
-Creating content
-~~~~~~~~~~~~~~~~
+Tạo nội dung
+~~~~~~~~~~~~
 
 - :ref:`doc_making_trees`
 
-Miscellaneous
-~~~~~~~~~~~~~
+Linh tinh
+~~~~~~~~~
 
 - :ref:`doc_jitter_stutter`
 - :ref:`doc_running_code_in_the_editor`
 - :ref:`doc_change_scenes_manually`
 
-Compiling
+Biên dịch
 ~~~~~~~~~
 
 - :ref:`doc_optimizing_for_size`
 - :ref:`doc_compiling_with_script_encryption_key`
 
-Engine development
-~~~~~~~~~~~~~~~~~~
+Phát triển engine
+~~~~~~~~~~~~~~~~~
 
 - :ref:`doc_binding_to_external_libraries`

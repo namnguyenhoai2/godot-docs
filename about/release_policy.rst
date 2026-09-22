@@ -2,292 +2,188 @@
 
 .. _doc_release_policy:
 
-Godot release policy
-====================
+Chính sách phát hành Godot
+==========================
 
-Godot's release policy is in constant evolution. The description below
-provides a general idea of what to expect, but what will actually
-happen depends on the choices of core contributors and the needs of the
-community at a given time.
+Chính sách phát hành của Godot không ngừng được hoàn thiện. Phần mô tả dưới đây cung cấp ý tưởng khái quát về những gì có thể mong đợi, nhưng điều thực sự diễn ra sẽ phụ thuộc vào các quyết định của những người đóng góp cốt lõi và nhu cầu của cộng đồng tại từng thời điểm.
 
-Godot versioning
-----------------
+Đánh số phiên bản Godot
+-----------------------
 
-Godot loosely follows `Semantic Versioning <https://semver.org/>`__ with a
-``major.minor.patch`` versioning system, albeit with an interpretation of each
-term adapted to the complexity of a game engine:
+Godot tuân theo `Semantic Versioning <https://semver.org/>`__ ở mức tương đối, với hệ thống đánh số phiên bản ``major.minor.patch``, dù cách diễn giải từng thuật ngữ được điều chỉnh cho phù hợp với độ phức tạp của một game engine:
 
-- The ``major`` version is incremented when major compatibility breakages happen
-  which imply significant porting work to move projects from one major version
-  to another.
+- Phiên bản ``major`` được tăng lên khi xảy ra những thay đổi lớn làm phá vỡ khả năng tương thích, đòi hỏi nhiều công việc chuyển đổi để chuyển dự án từ phiên bản chính này sang phiên bản chính khác.
 
-  For example, porting Godot projects from Godot 3.x to Godot 4.x requires
-  running the project through a conversion tool, and then performing a number
-  of further adjustments manually for what the tool could not do automatically.
+  Ví dụ, để chuyển các dự án Godot từ Godot 3.x sang Godot 4.x, bạn cần chạy dự án qua một công cụ chuyển đổi, sau đó thực hiện thủ công một số điều chỉnh bổ sung đối với những việc mà công cụ không thể tự động thực hiện.
 
-- The ``minor`` version is incremented for feature releases that do not break
-  compatibility in a major way. Minor compatibility breakage in very specific
-  areas *may* happen in minor versions, but the vast majority of projects
-  should not be affected or require significant porting work.
+- Phiên bản ``minor`` được tăng lên đối với các bản phát hành tính năng không phá vỡ khả năng tương thích theo cách nghiêm trọng. Những phá vỡ nhỏ về khả năng tương thích trong các lĩnh vực rất cụ thể *có thể* xảy ra ở các phiên bản phụ, nhưng phần lớn dự án sẽ không bị ảnh hưởng hoặc không cần thực hiện nhiều công việc chuyển đổi.
 
-  This is because Godot, as a game engine, covers many areas like rendering,
-  physics, and scripting. Fixing bugs or implementing new features in one area
-  might sometimes require changing a feature's behavior or modifying a class's
-  interface, even if the rest of the engine API remains backwards compatible.
+  Điều này là do Godot, với vai trò là một game engine, bao quát nhiều lĩnh vực như kết xuất, vật lý và scripting. Việc sửa lỗi hoặc triển khai tính năng mới trong một lĩnh vực đôi khi có thể yêu cầu thay đổi hành vi của một tính năng hoặc sửa đổi interface của một class, ngay cả khi API của phần còn lại của engine vẫn tương thích ngược.
 
 .. tip::
 
-    Upgrading to a new minor version is recommended for all users,
-    but some testing is necessary to ensure that your project still behaves as
-    expected.
+    Tất cả người dùng đều nên nâng cấp lên phiên bản phụ mới, nhưng cần thực hiện một số kiểm thử để đảm bảo dự án vẫn hoạt động như mong đợi.
 
-- The ``patch`` version is incremented for maintenance releases which focus on
-  fixing bugs and security issues, implementing new requirements for platform
-  support, and backporting safe usability enhancements. Patch releases are
-  backwards compatible.
+- Phiên bản ``patch`` được tăng lên đối với các bản phát hành bảo trì, tập trung vào việc sửa lỗi và vấn đề bảo mật, triển khai các yêu cầu mới để hỗ trợ nền tảng, cũng như backport các cải tiến an toàn về khả năng sử dụng. Các bản phát hành patch tương thích ngược.
 
-  Patch versions may include minor new features which do not impact the
-  existing API, and thus have no risk of impacting existing projects.
+  Các phiên bản patch có thể bao gồm những tính năng mới nhỏ không ảnh hưởng đến API hiện có, do đó không có nguy cơ ảnh hưởng đến các dự án hiện có.
 
 .. tip::
 
-    Updating to new patch versions is therefore considered safe and strongly
-    recommended to all users of a given stable branch.
+    Vì vậy, việc cập nhật lên các phiên bản patch mới được xem là an toàn và được đặc biệt khuyến nghị cho tất cả người dùng của một stable branch nhất định.
 
-We call ``major.minor`` combinations *stable branches*. Each stable branch
-starts with a ``major.minor`` release (without the ``0`` for ``patch``) and is
-further developed for maintenance releases in a Git branch of the same name
-(for example patch updates for the 4.0 stable branch are developed in the
-``4.0`` Git branch).
+Chúng tôi gọi các tổ hợp ``major.minor`` phiên bản *nhánh ổn định*. Mỗi nhánh ổn định bắt đầu bằng một bản phát hành ``major.minor`` (không có ``0`` đối với ``patch``) và tiếp tục được phát triển cho các bản phát hành bảo trì trong một Git branch cùng tên (ví dụ: các bản cập nhật patch cho stable branch 4.0 được phát triển trong ``4.0`` Git branch).
 
-Release support timeline
-------------------------
+Lộ trình hỗ trợ các bản phát hành
+---------------------------------
 
 .. UPDATE: Table changes every minor version. Support policy may change.
 
-Stable branches are supported *at least* until the next stable branch is
-released and has received its first patch update. In practice, we support
-stable branches on a *best effort* basis for as long as they have active users
-who need maintenance updates.
+Các stable branch được hỗ trợ *ít nhất* cho đến khi stable branch tiếp theo được phát hành và nhận bản cập nhật patch đầu tiên. Trên thực tế, chúng tôi hỗ trợ các stable branch theo nguyên tắc *cố gắng hết sức* miễn là vẫn có người dùng đang hoạt động cần các bản cập nhật bảo trì.
 
-Whenever a new major version is released, we make the previous stable branch a
-long-term supported release, and do our best to provide fixes for issues
-encountered by users of that branch who cannot port complex projects to the new
-major version. This was the case for the 2.1 branch, and is the case for the
-3.x branch.
+Mỗi khi một phiên bản chính mới được phát hành, chúng tôi biến stable branch trước đó thành một bản phát hành được hỗ trợ dài hạn và cố gắng hết sức để cung cấp bản sửa lỗi cho các vấn đề mà người dùng của nhánh đó gặp phải nhưng không thể chuyển các dự án phức tạp sang phiên bản chính mới. Điều này đã xảy ra với branch 2.1 và cũng đang xảy ra với branch 3.x.
 
-In a given minor release series, only the latest patch release receives support.
-If you experience an issue using an older patch release, please upgrade to the
-latest patch release of that series and test again before reporting an issue
-on GitHub.
+Trong một chuỗi phát hành phiên bản phụ nhất định, chỉ bản phát hành patch mới nhất nhận được hỗ trợ. Nếu bạn gặp sự cố khi sử dụng bản phát hành patch cũ hơn, hãy nâng cấp lên bản phát hành patch mới nhất của chuỗi đó và kiểm thử lại trước khi báo cáo sự cố trên GitHub.
 
-+--------------+----------------------+--------------------------------------------------------------------------+
-| **Version**  | **Release date**     | **Support level**                                                        |
-+--------------+----------------------+--------------------------------------------------------------------------+
-| Godot 4.8    | Q4 2026 (estimate)   | |unstable| *Development.* Receives new features, usability and           |
-| (`master`)   |                      | performance improvements, as well as bug fixes, while under development. |
-+--------------+----------------------+--------------------------------------------------------------------------+
-| Godot 4.7    | June 2026            | |supported| Receives fixes for bugs and security issues, as well as      |
-|              |                      | patches that enable platform support.                                    |
-+--------------+----------------------+--------------------------------------------------------------------------+
-| Godot 4.6    | January 2026         | |supported| Receives fixes for bugs and security issues, as well as      |
-|              |                      | patches that enable platform support.                                    |
-+--------------+----------------------+--------------------------------------------------------------------------+
-| Godot 4.5    | September 2025       | |partial| Receives fixes for security and platform support issues only.  |
-+--------------+----------------------+--------------------------------------------------------------------------+
-| Godot 4.4    | March 2025           | |eol| No longer supported (last update: 4.4.1).                          |
-+--------------+----------------------+--------------------------------------------------------------------------+
-| Godot 4.3    | August 2024          | |eol| No longer supported (last update: 4.3).                            |
-+--------------+----------------------+--------------------------------------------------------------------------+
-| Godot 4.2    | November 2023        | |eol| No longer supported (last update: 4.2.2).                          |
-+--------------+----------------------+--------------------------------------------------------------------------+
-| Godot 4.1    | July 2023            | |eol| No longer supported (last update: 4.1.4).                          |
-+--------------+----------------------+--------------------------------------------------------------------------+
-| Godot 4.0    | March 2023           | |eol| No longer supported (last update: 4.0.4).                          |
-+--------------+----------------------+--------------------------------------------------------------------------+
-| Godot 3.7    | No ETA for now       | |supported| *Beta.* Receives new features, usability and performance     |
-| (`3.x`)      |                      | improvements, as well as bug fixes, while under development.             |
-+--------------+----------------------+--------------------------------------------------------------------------+
-| Godot 3.6    | September 2024       | |supported| Receives fixes for bugs and security issues, as well as      |
-|              |                      | patches that enable platform support.                                    |
-+--------------+----------------------+--------------------------------------------------------------------------+
-| Godot 3.5    | August 2022          | |eol| No longer supported (last update: 3.5.3).                          |
-+--------------+----------------------+--------------------------------------------------------------------------+
-| Godot 3.4    | November 2021        | |eol| No longer supported (last update: 3.4.5).                          |
-+--------------+----------------------+--------------------------------------------------------------------------+
-| Godot 3.3    | April 2021           | |eol| No longer supported (last update: 3.3.4).                          |
-+--------------+----------------------+--------------------------------------------------------------------------+
-| Godot 3.2    | January 2020         | |eol| No longer supported (last update: 3.2.3).                          |
-+--------------+----------------------+--------------------------------------------------------------------------+
-| Godot 3.1    | March 2019           | |eol| No longer supported (last update: 3.1.2).                          |
-+--------------+----------------------+--------------------------------------------------------------------------+
-| Godot 3.0    | January 2018         | |eol| No longer supported (last update: 3.0.6).                          |
-+--------------+----------------------+--------------------------------------------------------------------------+
-| Godot 2.1    | July 2016            | |eol| No longer supported (last update: 2.1.6).                          |
-+--------------+----------------------+--------------------------------------------------------------------------+
-| Godot 2.0    | February 2016        | |eol| No longer supported (last update: 2.0.4.1).                        |
-+--------------+----------------------+--------------------------------------------------------------------------+
-| Godot 1.1    | May 2015             | |eol| No longer supported.                                               |
-+--------------+----------------------+--------------------------------------------------------------------------+
-| Godot 1.0    | December 2014        | |eol| No longer supported.                                               |
-+--------------+----------------------+--------------------------------------------------------------------------+
++----------------------+--------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+| **Phiên bản**        | **Ngày phát hành**             | **Mức độ hỗ trợ**                                                                                                                                 |
++----------------------+--------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+| Godot 4.8 (`master`) | Quý 4 năm 2026 (ước tính)      | |unstable| *Đang phát triển.* Nhận các tính năng mới, cải tiến về khả năng sử dụng và hiệu năng, cũng như bản sửa lỗi trong thời gian phát triển. |
++----------------------+--------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+| Godot 4.7            | Tháng 6 năm 2026               | |supported| Nhận bản sửa lỗi và vấn đề bảo mật, cũng như các bản vá cho phép hỗ trợ nền tảng.                                                     |
++----------------------+--------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+| Godot 4.6            | Tháng 1 năm 2026               | |supported| Nhận bản sửa lỗi và vấn đề bảo mật, cũng như các bản vá cho phép hỗ trợ nền tảng.                                                     |
++----------------------+--------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+| Godot 4.5            | Tháng 9 năm 2025               | |partial| Chỉ nhận bản sửa lỗi cho các vấn đề bảo mật và hỗ trợ nền tảng.                                                                         |
++----------------------+--------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+| Godot 4.4            | Tháng 3 năm 2025               | |eol| Không còn được hỗ trợ (bản cập nhật cuối: 4.4.1).                                                                                           |
++----------------------+--------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+| Godot 4.3            | Tháng 8 năm 2024               | |eol| Không còn được hỗ trợ (bản cập nhật cuối: 4.3).                                                                                             |
++----------------------+--------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+| Godot 4.2            | Tháng 11 năm 2023              | |eol| Không còn được hỗ trợ (bản cập nhật cuối: 4.2.2).                                                                                           |
++----------------------+--------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+| Godot 4.1            | Tháng 7 năm 2023               | |eol| Không còn được hỗ trợ (cập nhật lần cuối: 4.1.4).                                                                                           |
++----------------------+--------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+| Godot 4.0            | Tháng 3 năm 2023               | |eol| Không còn được hỗ trợ (cập nhật lần cuối: 4.0.4).                                                                                           |
++----------------------+--------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+| Godot 3.7 (`3.x`)    | Hiện chưa có thời gian dự kiến | |supported| *Beta.* Nhận các tính năng mới, cải thiện khả năng sử dụng và hiệu suất, cũng như các bản sửa lỗi trong quá trình phát triển.         |
++----------------------+--------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+| Godot 3.6            | Tháng 9 năm 2024               | |supported| Nhận các bản sửa lỗi và bản vá cho vấn đề bảo mật, cũng như các bản vá cho phép hỗ trợ nền tảng.                                      |
++----------------------+--------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+| Godot 3.5            | Tháng 8 năm 2022               | |eol| Không còn được hỗ trợ (cập nhật lần cuối: 3.5.3).                                                                                           |
++----------------------+--------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+| Godot 3.4            | Tháng 11 năm 2021              | |eol| Không còn được hỗ trợ (cập nhật lần cuối: 3.4.5).                                                                                           |
++----------------------+--------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+| Godot 3.3            | Tháng 4 năm 2021               | |eol| Không còn được hỗ trợ (cập nhật lần cuối: 3.3.4).                                                                                           |
++----------------------+--------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+| Godot 3.2            | Tháng 1 năm 2020               | |eol| Không còn được hỗ trợ (cập nhật lần cuối: 3.2.3).                                                                                           |
++----------------------+--------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+| Godot 3.1            | Tháng 3 năm 2019               | |eol| Không còn được hỗ trợ (cập nhật lần cuối: 3.1.2).                                                                                           |
++----------------------+--------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+| Godot 3.0            | Tháng 1 năm 2018               | |eol| Không còn được hỗ trợ (cập nhật lần cuối: 3.0.6).                                                                                           |
++----------------------+--------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+| Godot 2.1            | Tháng 7 năm 2016               | |eol| Không còn được hỗ trợ (cập nhật lần cuối: 2.1.6).                                                                                           |
++----------------------+--------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+| Godot 2.0            | Tháng 2 năm 2016               | |eol| Không còn được hỗ trợ (cập nhật lần cuối: 2.0.4.1).                                                                                         |
++----------------------+--------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+| Godot 1.1            | Tháng 5 năm 2015               | |eol| Không còn được hỗ trợ.                                                                                                                      |
++----------------------+--------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+| Godot 1.0            | Tháng 12 năm 2014              | |eol| Không còn được hỗ trợ.                                                                                                                      |
++----------------------+--------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. |supported| image:: img/supported.png
 .. |partial| image:: img/partial.png
 .. |eol| image:: img/eol.png
 .. |unstable| image:: img/unstable.png
 
-**Legend:**
-|supported| Full support –
-|partial| Partial support –
-|eol| No support (end of life) –
-|unstable| Development version
+**Chú giải:** |supported| Hỗ trợ đầy đủ – |partial| Hỗ trợ một phần – |eol| Không hỗ trợ (đã hết vòng đời) – |unstable| Phiên bản đang phát triển
 
-Pre-release Godot versions aren't intended to be used in production and are
-provided for testing purposes only.
+Các phiên bản Godot tiền phát hành không nhằm mục đích sử dụng trong môi trường production và chỉ được cung cấp cho mục đích kiểm thử.
 
 .. seealso::
 
-    See :ref:`doc_upgrading_to_godot_4` for instructions on migrating a project
-    from Godot 3.x to 4.x.
+    Xem :ref:`doc_upgrading_to_godot_4` để biết hướng dẫn di chuyển một project từ Godot 3.x sang 4.x.
 
 .. _doc_release_policy_which_version_should_i_use:
 
-Which version should I use for a new project?
----------------------------------------------
+Tôi nên sử dụng phiên bản nào cho một project mới?
+--------------------------------------------------
 
-We recommend using Godot 4.x for new projects, as the Godot 4.x series will be
-supported long after 3.x stops receiving updates in the future. One caveat is
-that a lot of third-party documentation hasn't been updated for Godot 4.x yet.
-If you have to follow a tutorial designed for Godot 3.x, we recommend keeping
-:ref:`doc_upgrading_to_godot_4` open in a separate tab to check which methods
-have been renamed (if you get a script error while trying to use a specific node
-or method that was renamed in Godot 4.x).
+Chúng tôi khuyến nghị sử dụng Godot 4.x cho các project mới, vì dòng Godot 4.x sẽ tiếp tục được hỗ trợ trong thời gian dài sau khi 3.x ngừng nhận các bản cập nhật trong tương lai. Một điểm cần lưu ý là nhiều tài liệu của bên thứ ba vẫn chưa được cập nhật cho Godot 4.x. Nếu phải làm theo một tutorial được thiết kế cho Godot 3.x, chúng tôi khuyến nghị giữ
+:ref:`doc_upgrading_to_godot_4` mở trong một tab riêng để kiểm tra những method nào đã được đổi tên (nếu bạn gặp lỗi script khi cố sử dụng một node hoặc method cụ thể đã được đổi tên trong Godot 4.x).
 
-If your project requires a feature that is missing in 4.x (such as GLES2/WebGL
-1.0), you should use Godot 3.x for a new project instead.
+Nếu project của bạn yêu cầu một tính năng chưa có trong 4.x (chẳng hạn như GLES2/WebGL 1.0), bạn nên sử dụng Godot 3.x cho project mới.
 
 .. _doc_release_policy_should_i_upgrade_my_project:
 
-Should I upgrade my project to use new engine versions?
--------------------------------------------------------
+Tôi có nên nâng cấp project để sử dụng các phiên bản engine mới không?
+----------------------------------------------------------------------
 
 .. note::
 
-    Upgrading software while working on a project is inherently risky, so
-    consider whether it's a good idea for your project before attempting an
-    upgrade. Also, make backups of your project or use version control to
-    prevent losing data in case the upgrade goes wrong.
+    Việc nâng cấp phần mềm trong khi đang làm việc trên một project vốn tiềm ẩn rủi ro, vì vậy hãy cân nhắc xem đó có phải là ý tưởng phù hợp cho project của bạn hay không trước khi thực hiện một
+    upgrade. Ngoài ra, hãy tạo bản sao lưu cho project hoặc sử dụng version control để
+    tránh mất dữ liệu trong trường hợp quá trình nâng cấp gặp lỗi.
 
-    That said, we do our best to keep minor and especially patch releases
-    compatible with existing projects.
+    Tuy vậy, chúng tôi luôn cố gắng hết sức để giữ cho các bản phát hành minor và đặc biệt là patch tương thích với các project hiện có.
 
-The general recommendation is to upgrade your project to follow new *patch*
-releases, such as upgrading from 4.0.2 to 4.0.3. This ensures you get bug fixes,
-security updates and platform support updates (which is especially important for
-mobile platforms). You also get continued support, as only the last patch
-release receives support on official community platforms.
+Khuyến nghị chung là nâng cấp project để sử dụng các bản phát hành *patch* mới, chẳng hạn như nâng cấp từ 4.0.2 lên 4.0.3. Điều này đảm bảo bạn nhận được các bản sửa lỗi, bản cập nhật bảo mật và bản cập nhật hỗ trợ nền tảng (điều đặc biệt quan trọng đối với các nền tảng di động). Bạn cũng tiếp tục nhận được hỗ trợ, vì chỉ bản phát hành patch mới nhất được hỗ trợ trên các nền tảng cộng đồng chính thức.
 
-For *minor* releases, you should determine whether it's a good idea to upgrade
-on a case-by-case basis. We've made a lot of effort in making the upgrade
-process as seamless as possible, but some breaking changes may be present in
-minor releases, along with a greater risk of regressions. Some fixes included in
-minor releases may also change a class' expected behavior as required to fix
-some bugs. This is especially the case in classes marked as *experimental* in
-the documentation.
+Đối với các bản phát hành *minor*, bạn nên xác định xem nâng cấp có phải là lựa chọn phù hợp hay không trong từng trường hợp cụ thể. Chúng tôi đã nỗ lực rất nhiều để quy trình nâng cấp diễn ra liền mạch nhất có thể, nhưng các bản phát hành minor có thể chứa một số thay đổi gây lỗi tương thích, cùng với nguy cơ hồi quy cao hơn. Một số bản sửa lỗi trong các bản phát hành minor cũng có thể thay đổi hành vi dự kiến của một class để sửa một số lỗi. Điều này đặc biệt đúng với các class được đánh dấu là *experimental* trong tài liệu.
 
-*Major* releases bring a lot of new functionality, but they also remove
-previously existing functionality and may raise hardware requirements. They also
-require much more work to upgrade to compared to minor releases. As a result, we
-recommend sticking with the major release you've started your project with if
-you are happy with how your project currently works. For example, if your
-project was started with 3.5, we recommend upgrading to 3.5.2 and possibly 3.6
-in the future, but not to 4.0+, unless your project really needs the new
-features that come with 4.0+.
+Các bản phát hành *Major* mang đến nhiều chức năng mới, nhưng cũng loại bỏ các chức năng đã tồn tại trước đó và có thể làm tăng yêu cầu phần cứng. So với các bản phát hành minor, chúng cũng đòi hỏi nhiều công sức hơn để nâng cấp. Do đó, chúng tôi khuyến nghị bạn tiếp tục sử dụng bản phát hành major mà bạn đã bắt đầu project nếu hài lòng với cách project hiện hoạt động. Ví dụ: nếu project của bạn được bắt đầu với 3.5, chúng tôi khuyến nghị nâng cấp lên 3.5.2 và có thể lên 3.6 trong tương lai, nhưng không nên nâng cấp lên 4.0+, trừ khi project của bạn thực sự cần các tính năng mới đi kèm với 4.0+.
 
 .. _doc_release_policy_when_is_next_release_out:
 
-When is the next release out?
------------------------------
+Bản phát hành tiếp theo sẽ ra mắt khi nào?
+------------------------------------------
 
 .. UPDATE: Refers to specific current minor versions 3.6 and 3.7.
 
-While Godot contributors aren't working under any deadlines, we strive to
-publish minor releases relatively frequently.
+Mặc dù những người đóng góp cho Godot không làm việc theo bất kỳ thời hạn nào, chúng tôi vẫn cố gắng phát hành các bản phát hành minor tương đối thường xuyên.
 
-In particular, after the very long release cycle for 4.0, we are pivoting to
-a faster-paced development workflow, 4.1 released 4 months after 4.0, and 4.2
-released 4 months after 4.1.
+Cụ thể, sau chu kỳ phát hành rất dài của 4.0, chúng tôi đang chuyển sang quy trình phát triển với nhịp độ nhanh hơn: 4.1 được phát hành 4 tháng sau 4.0, và 4.2 được phát hành 4 tháng sau 4.1.
 
-Frequent minor releases will enable us to ship new features faster (possibly
-as experimental), get user feedback quickly, and iterate to improve those
-features and their usability. Likewise, the general user experience will be
-improved more steadily with a faster path to the end users.
+Các bản phát hành minor thường xuyên sẽ giúp chúng tôi phát hành tính năng mới nhanh hơn (có thể dưới dạng experimental), nhanh chóng nhận phản hồi từ người dùng và lặp lại để cải thiện các tính năng đó cũng như khả năng sử dụng của chúng. Tương tự, trải nghiệm người dùng nói chung sẽ được cải thiện ổn định hơn nhờ con đường nhanh hơn đến tay người dùng cuối.
 
-Maintenance (patch) releases are released as needed with potentially very
-short development cycles, to provide users of the current stable branch with
-the latest bug fixes for their production needs.
+Các bản phát hành bảo trì (patch) được phát hành khi cần, với các chu kỳ phát triển có thể rất ngắn, nhằm cung cấp cho người dùng của branch ổn định hiện tại những bản sửa lỗi mới nhất phục vụ nhu cầu production của họ.
 
-There is currently no planned release date for the next 3.x minor version, 3.7.
-The current stable release, 3.6, may be the last stable branch of Godot 3.x.
-Godot 3.x is supported on a best-effort basis, as long as contributors continue
-to maintain it.
+Hiện chưa có ngày phát hành dự kiến cho phiên bản minor 3.x tiếp theo, 3.7. Bản phát hành ổn định hiện tại, 3.6, có thể là branch ổn định cuối cùng của Godot 3.x. Godot 3.x được hỗ trợ trên cơ sở nỗ lực tốt nhất, miễn là những người đóng góp vẫn tiếp tục duy trì nó.
 
-What are the criteria for compatibility across engine versions?
----------------------------------------------------------------
+Tiêu chí tương thích giữa các phiên bản engine là gì?
+-----------------------------------------------------
 
 .. note::
 
-    This section is intended to be used by contributors to determine which
-    changes are safe for a given release. The list is not exhaustive; it only
-    outlines the most common situations encountered during Godot's development.
+    Phần này dành cho những người đóng góp sử dụng để xác định thay đổi nào là an toàn đối với một bản phát hành nhất định. Danh sách này không đầy đủ; nó chỉ nêu ra những tình huống phổ biến nhất gặp phải trong quá trình phát triển Godot.
 
-The following changes are acceptable in patch releases:
+Các thay đổi sau đây được chấp nhận trong các bản phát hành patch:
 
-- Fixing a bug in a way that has no major negative impact on most projects, such
-  as a visual or physics bug. Godot's physics engine is not deterministic, so
-  physics bug fixes are not considered to break compatibility. If fixing a bug
-  has a negative impact that could impact a lot of projects, it should be made
-  optional (e.g. using a project setting or separate method).
-- Adding a new optional parameter to a method.
-- Small-scale editor usability tweaks.
+- Sửa lỗi theo cách không gây ảnh hưởng tiêu cực đáng kể đến phần lớn project, chẳng hạn như lỗi hiển thị hoặc lỗi physics. Engine physics của Godot không mang tính deterministic, vì vậy các bản sửa lỗi physics không được xem là phá vỡ tính tương thích. Nếu việc sửa lỗi có ảnh hưởng tiêu cực đến nhiều project, thay đổi đó nên được đặt ở dạng tùy chọn (ví dụ: sử dụng project setting hoặc method riêng).
+- Thêm một parameter tùy chọn mới vào một method.
+- Các tinh chỉnh nhỏ về khả năng sử dụng của editor.
 
-Note that we tend to be more conservative with the fixes we allow in each
-subsequent patch release. For instance, 4.0.1 may receive more impactful fixes
-than 4.0.4 would.
+Lưu ý rằng chúng tôi có xu hướng thận trọng hơn với các bản sửa lỗi được cho phép trong mỗi bản phát hành patch tiếp theo. Chẳng hạn, 4.0.1 có thể nhận được các bản sửa lỗi có tác động lớn hơn so với 4.0.4.
 
-The following changes are acceptable in minor releases, but not patch releases:
+Các thay đổi sau đây được chấp nhận trong các bản phát hành minor, nhưng không được chấp nhận trong các bản phát hành patch:
 
-- Significant new features.
-- Renaming a method parameter. In C#, method parameters can be passed by name
-  (but not in GDScript). As a result, this can break some projects that use C#.
-- Deprecating a method, member variable, or class. This is done by adding a
-  deprecated flag to its class reference, which will show up in the editor. When
-  a method is marked as deprecated, it's slated to be removed in the next
-  *major* release.
-- Changes that affect the default project theme's visuals.
-- Bug fixes which significantly change the behavior or the output, with the aim
-  to meet user expectations better. In comparison, in patch releases, we may
-  favor keeping a buggy behavior so we don't break existing projects which
-  likely already rely on the bug or use a workaround.
-- Performance optimizations that result in visual changes.
+- Các tính năng mới đáng kể.
+- Đổi tên parameter của một method. Trong C#, parameter của method có thể được truyền theo tên (nhưng không thể làm vậy trong GDScript). Do đó, điều này có thể làm hỏng một số project sử dụng C#.
+- Đánh dấu một method, member variable hoặc class là deprecated. Việc này được thực hiện bằng cách thêm cờ deprecated vào class reference của nó; cờ này sẽ hiển thị trong editor. Khi một method được đánh dấu là deprecated, method đó dự kiến sẽ bị xóa trong bản phát hành *major* tiếp theo.
+- Các thay đổi ảnh hưởng đến giao diện trực quan của theme project mặc định.
+- Các bản sửa lỗi làm thay đổi đáng kể hành vi hoặc output, nhằm đáp ứng tốt hơn kỳ vọng của người dùng. Ngược lại, trong các bản phát hành patch, chúng tôi có thể ưu tiên giữ lại hành vi lỗi để không làm hỏng các project hiện có vốn có thể đã phụ thuộc vào lỗi đó hoặc sử dụng một workaround.
+- Các tối ưu hóa hiệu năng dẫn đến thay đổi về hiển thị.
 
-The following changes are considered **compatibility-breaking** and can only be
-performed in a new major release:
+Các thay đổi sau đây được xem là **compatibility-breaking** và chỉ có thể được thực hiện trong một bản phát hành major mới:
 
-- Renaming or removing a method, member variable, or class.
-- Modifying a node's inheritance tree by making it inherit from a different class.
-- Changing the default value of a project setting value in a way that affects existing
-  projects. To only affect new projects, the project manager should write a
-  modified ``project.godot`` instead.
+- Đổi tên hoặc xóa một method, member variable hoặc class.
+- Thay đổi cây kế thừa của một node bằng cách cho node đó kế thừa từ một class khác.
+- Thay đổi giá trị mặc định của một project setting theo cách ảnh hưởng đến các project hiện có
+  projects. Để chỉ ảnh hưởng đến các project mới, project manager nên ghi một
+  modified ``project.godot`` thay thế.
 
-Since Godot 5.0 hasn't been branched off yet, we currently discourage making
-compatibility-breaking changes of this kind.
+Vì Godot 5.0 vẫn chưa được tách branch, hiện tại chúng tôi không khuyến khích thực hiện các thay đổi kiểu này làm phá vỡ tính tương thích.
 
 .. note::
 
-      When modifying a method's signature in any fashion (including adding an
-      optional parameter), a GDExtension compatibility method must be created.
-      This ensures that existing GDExtensions continue to work across patch and
-      minor releases, so that users don't have to recompile them.
-      See :ref:`doc_handling_compatibility_breakages` for more information.
+      Khi sửa signature của một method dưới bất kỳ hình thức nào (bao gồm cả việc thêm parameter tùy chọn), phải tạo một method tương thích GDExtension. Điều này đảm bảo các GDExtension hiện có tiếp tục hoạt động xuyên suốt các bản phát hành patch và minor, để người dùng không phải biên dịch lại chúng. Xem :ref:`doc_handling_compatibility_breakages` để biết thêm thông tin.
