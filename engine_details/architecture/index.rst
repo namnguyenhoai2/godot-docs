@@ -2,11 +2,10 @@
 
 .. _doc_engine_architecture:
 
-Engine architecture
-===================
+Kiến trúc engine
+================
 
-This section introduces the global organization of Godot Engine's
-source code, and give useful tips for extending and fixing the engine on the C++ side.
+Phần này giới thiệu cách tổ chức tổng thể mã nguồn của Godot Engine, đồng thời cung cấp các mẹo hữu ích để mở rộng và sửa lỗi engine ở phía C++.
 
 .. toctree::
    :maxdepth: 1

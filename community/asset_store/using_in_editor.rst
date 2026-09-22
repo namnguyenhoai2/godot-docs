@@ -1,73 +1,53 @@
 .. _doc_using_asset_store_editor:
 
-Using the Asset Store in the Engine
-===================================
+Sử dụng Asset Store trong Engine
+================================
 
-Accessing it
-------------
+Truy cập Asset Store
+--------------------
 
-The Asset Store can be accessed from within Godot from the project manager.
+Có thể truy cập Asset Store từ trình quản lý dự án trong Godot.
 
 .. image:: img/asset_store_editor_projects.webp
 
-As well as within the editor.
+Cũng như từ bên trong editor.
 
 .. image:: img/asset_store_editor_workspace.webp
 
-The Project Manager's :button:`Asset Store` tab will only display assets that are
-standalone projects. This is denoted on the Asset Store with the *Template* tag.
+Tab :button:`Asset Store` của Project Manager chỉ hiển thị các asset là những dự án độc lập. Điều này được biểu thị trên Asset Store bằng thẻ *Template*.
 
-The editor's :button:`Asset Store` tab will only display assets that are *not* standalone
-projects. In other words, it will display assets from all categories except *Templates*.
+Tab :button:`Asset Store` của editor chỉ hiển thị các asset *không* độc lập
+projects. Nói cách khác, tab này sẽ hiển thị các asset thuộc mọi danh mục, ngoại trừ *Templates*.
 
-If this is the first time you've ever needed the engine to access the internet,
-you'll need to click the :button:`Go Online` button.
+Nếu đây là lần đầu tiên bạn cần Engine truy cập Internet, bạn sẽ cần nhấp vào nút :button:`Go Online`.
 
 .. image:: img/go_online.webp
 
-Downloading and installing assets
----------------------------------
+Tải xuống và cài đặt asset
+--------------------------
 
-Click on an asset, and Godot will fetch info about it from the Asset Store. Once
-it's finished, you will see a window similar to what the Asset Store website looks
-like, with some differences:
+Nhấp vào một asset, và Godot sẽ lấy thông tin về asset đó từ Asset Store. Khi hoàn tất, bạn sẽ thấy một cửa sổ có giao diện tương tự trang web Asset Store, với một số khác biệt:
 
 .. image:: img/asset_store_editor.webp
 
-Similarly to the web version of the Asset Store, here you can search for assets by
-category or name, and sort them by things such as name or edit date. Unlike when
-using the web frontend, the search results are updated in real-time (you do not have
-to press :button:`Search` after every change to your search query for the changes to
-take effect).
+Tương tự phiên bản web của Asset Store, tại đây bạn có thể tìm kiếm asset theo danh mục hoặc tên, đồng thời sắp xếp chúng theo những tiêu chí như tên hoặc ngày chỉnh sửa. Không giống như khi sử dụng giao diện web, kết quả tìm kiếm được cập nhật theo thời gian thực (bạn không phải nhấn :button:`Search` sau mỗi thay đổi đối với truy vấn tìm kiếm để các thay đổi có hiệu lực).
 
-When you click on an asset, you will see more information about it.
+Khi nhấp vào một asset, bạn sẽ thấy thêm thông tin về asset đó.
 
 .. image:: img/asset_store_editor_asset.webp
 
-If you click on the :button:`Download` button, Godot will fetch an archive of the asset,
-and will track download progress of it at the bottom of the editor window. If
-the download fails, you can retry it using the :button:`Retry` button.
+Nếu nhấp vào nút :button:`Download`, Godot sẽ lấy một archive của asset và theo dõi tiến trình tải xuống ở cuối cửa sổ editor. Nếu quá trình tải xuống thất bại, bạn có thể thử lại bằng nút :button:`Retry`.
 
-When it finishes downloading, the Configure Asset window will open automatically.
+Khi quá trình tải xuống hoàn tất, cửa sổ Configure Asset sẽ tự động mở.
 
 .. image:: img/asset_store_editor_configure.webp
 
-Here you can see a list of all the files that will be installed. If you click on the
-arrow on the top left, it will open a window where you can tick off any of the files
-that you do not wish to install. Any files that can't be installed will be shown in
-red, and hovering over them will show you a message stating why it cannot be
-installed.
+Tại đây, bạn có thể xem danh sách tất cả các tệp sẽ được cài đặt. Nếu nhấp vào mũi tên ở phía trên bên trái, một cửa sổ sẽ mở ra, tại đó bạn có thể bỏ chọn bất kỳ tệp nào không muốn cài đặt. Các tệp không thể cài đặt sẽ được hiển thị bằng màu đỏ; khi di chuột lên chúng, bạn sẽ thấy thông báo nêu rõ lý do không thể cài đặt.
 
 .. image:: img/asset_store_editor_installer_error.webp
 
-Once you are done, you can press the :button:`Install` button, which will unzip all the
-files in the archive, and import any assets contained in it, such as images or
-3D models. Once this is done, you should see a message stating that the package
-installation is complete.
+Sau khi hoàn tất, bạn có thể nhấn nút :button:`Install`. Nút này sẽ giải nén tất cả các tệp trong archive và import mọi asset có trong đó, chẳng hạn như hình ảnh hoặc model 3D. Khi hoàn tất, bạn sẽ thấy thông báo cho biết quá trình cài đặt package đã hoàn tất.
 
 .. image:: img/asset_store_editor_installer_success.webp
 
-You may also use the :button:`Import` button to import asset archives obtained
-elsewhere (such as downloading them directly from the Asset Store web frontend),
-which will take you through the same package installation procedure as with the
-assets downloaded directly via Godot that we just covered.
+Bạn cũng có thể sử dụng nút :button:`Import` để import các archive asset lấy từ nơi khác (chẳng hạn như tải trực tiếp từ giao diện web của Asset Store). Thao tác này sẽ đưa bạn qua cùng quy trình cài đặt package như với các asset được tải trực tiếp qua Godot mà chúng ta vừa đề cập.

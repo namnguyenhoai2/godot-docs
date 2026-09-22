@@ -1,50 +1,34 @@
 .. _doc_what_is_assetlib:
 
-About the Asset Library
-=======================
+Giới thiệu về Asset Library
+===========================
 
-The Godot Asset Library, otherwise known as the AssetLib, is a repository of
-user-submitted Godot addons, scripts, tools, and other resources, collectively referred
-to as assets. They're available to all Godot users for download directly from within the
-engine, but it can also be accessed at Godot's `official website <https://godotengine.org/asset-library/asset>`_.
+Godot Asset Library, còn được gọi là AssetLib, là một repository chứa các addon, script, tool và tài nguyên khác do người dùng đóng góp cho Godot, gọi chung là asset. Tất cả người dùng Godot đều có thể tải chúng xuống trực tiếp từ engine, nhưng bạn cũng có thể truy cập Asset Library tại `trang web chính thức <https://godotengine.org/asset-library/asset>`_ của Godot.
 
-On the surface, the Asset Library might look and function similar to asset
-stores available for other engines, such as Unity's Asset Store, or Unreal
-Engine's Marketplace, where you can submit both freely-available assets, as well
-as paid, commercial ones. In addition, often times such assets are distributed
-under non-free, proprietary licenses, limiting what you can do with them.
+Thoạt nhìn, Asset Library có thể trông giống và hoạt động tương tự các cửa hàng asset dành cho những engine khác, chẳng hạn như Asset Store của Unity hoặc Marketplace của Unreal Engine, nơi bạn có thể gửi cả asset miễn phí lẫn asset thương mại có tính phí. Ngoài ra, những asset như vậy thường được phân phối theo các giấy phép độc quyền, không miễn phí, giới hạn những gì bạn có thể làm với chúng.
 
-The Asset Library is different - all assets are distributed free of charge, and under
-a host of open source licenses (such as the MIT license, the GPL, and the Boost Software License).
-This makes the AssetLib more similar to the software repositories of a Linux distribution.
+Asset Library thì khác - tất cả asset đều được phân phối miễn phí và theo nhiều giấy phép nguồn mở, chẳng hạn như giấy phép MIT, GPL và Boost Software License. Vì vậy, AssetLib gần với các repository phần mềm của một bản phân phối Linux hơn.
 
-This set of pages will cover how to use the AssetLib (both from inside Godot, and on the
-website), how you can submit your own assets, and what the guidelines for submission are.
+Nhóm trang này sẽ hướng dẫn cách sử dụng AssetLib (cả bên trong Godot lẫn trên trang web), cách bạn có thể gửi asset của riêng mình và các nguyên tắc gửi asset.
 
-Please note that the AssetLib is relatively young - it may have various pain points, bugs,
-and usability issues. As with all Godot projects, the code repository is available on `GitHub <https://github.com/godotengine/godot-asset-library>`_,
-where you can submit pull requests and issues, so please do not hesitate to visit it!
+Xin lưu ý rằng AssetLib còn tương đối mới - có thể vẫn tồn tại nhiều điểm bất tiện, bug và vấn đề về khả năng sử dụng. Cũng như mọi dự án Godot, repository mã nguồn có sẵn trên `GitHub <https://github.com/godotengine/godot-asset-library>`_, nơi bạn có thể gửi pull request và issue, vì vậy đừng ngần ngại truy cập repository này!
 
-Types of assets
----------------
+Các loại asset
+--------------
 
-Be aware that there are, broadly, two different types of assets you can post.
+Hãy lưu ý rằng nhìn chung có hai loại asset khác nhau mà bạn có thể đăng.
 
-* Assets labeled as "Templates", "Projects", or "Demos" appear under
-  the "Asset Library" tab in the Godot Project Manager. These assets are
-  standalone Godot projects that can run by themselves.
+* Các asset được gắn nhãn "Templates", "Projects" hoặc "Demos" sẽ xuất hiện trong tab "Asset Library" của Godot Project Manager. Đây là những project Godot độc lập và có thể tự chạy.
 
-* Other assets show up inside of the Godot editor under the "Asset Library"
-  main screen tab, next to "2D", "3D", and "Script". These assets are
-  meant to be downloaded and placed into an existing Godot project.
+* Các asset khác sẽ xuất hiện bên trong Godot editor, trong tab màn hình chính "Asset Library", cạnh "2D", "3D" và "Script". Những asset này được thiết kế để tải xuống và đặt vào một project Godot hiện có.
 
-Frequently asked questions
---------------------------
+Câu hỏi thường gặp
+------------------
 
-Can paid assets be uploaded to the asset library?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Có thể tải asset có tính phí lên asset library không?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Not to the official one, though in the future, there might be other asset
-libraries which allow it.
-That said, you are allowed to monetize and sell Godot assets outside the
-Asset Library.
+Không phải asset library chính thức, mặc dù trong tương lai có thể sẽ có các asset library khác cho phép điều này. Tuy vậy, bạn được phép kiếm tiền và bán asset Godot bên ngoài Asset Library.
+
+.. _`official website`: https://godotengine.org/asset-library/asset
+.. _`GitHub`: https://github.com/godotengine/godot-asset-library

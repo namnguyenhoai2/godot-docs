@@ -1,154 +1,136 @@
 .. _doc_variant_class:
 
-Variant class
-=============
+Lớp Variant
+===========
 
-About
------
+Giới thiệu
+----------
 
-Variant is the most important datatype in Godot. A Variant takes up only 24
-bytes on 64-bit platforms (20 bytes on 32-bit platforms) and can store almost
-any engine datatype inside of it. Variants are rarely used to hold information
-for long periods of time, instead they are used mainly for communication,
-editing, serialization and generally moving data around.
+Variant là kiểu dữ liệu quan trọng nhất trong Godot. Một Variant chỉ chiếm 24 byte trên các nền tảng 64-bit (20 byte trên các nền tảng 32-bit) và có thể lưu trữ gần như mọi kiểu dữ liệu của engine bên trong nó. Variant hiếm khi được dùng để lưu giữ thông tin trong thời gian dài; thay vào đó, chúng chủ yếu được dùng cho việc giao tiếp, chỉnh sửa, serialization và nói chung là di chuyển dữ liệu.
 
-A Variant can:
+Variant có thể:
 
--  Store almost any datatype.
--  Perform operations between many variants (GDScript uses Variant as
-   its atomic/native datatype).
--  Be hashed, so it can be compared quickly to other variants.
--  Be used to convert safely between datatypes.
--  Be used to abstract calling methods and their arguments (Godot
-   exports all its functions through variants).
--  Be used to defer calls or move data between threads.
--  Be serialized as binary and stored to disk, or transferred via
-   network.
--  Be serialized to text and use it for printing values and editable
-   settings.
--  Work as an exported property, so the editor can edit it universally.
--  Be used for dictionaries, arrays, parsers, etc.
+-  Lưu trữ gần như mọi kiểu dữ liệu.
+-  Thực hiện các phép toán giữa nhiều Variant (GDScript sử dụng Variant làm kiểu dữ liệu nguyên tử/native).
+-  Được băm, nhờ đó có thể nhanh chóng so sánh với các Variant khác.
+-  Được dùng để chuyển đổi an toàn giữa các kiểu dữ liệu.
+-  Được dùng để trừu tượng hóa việc gọi các phương thức và đối số của chúng (Godot xuất tất cả các hàm của mình thông qua Variant).
+-  Được dùng để trì hoãn các lệnh gọi hoặc di chuyển dữ liệu giữa các thread.
+-  Được serialization dưới dạng nhị phân và lưu vào đĩa, hoặc truyền qua mạng.
+-  Được serialization thành văn bản và dùng để in các giá trị cũng như các thiết lập có thể chỉnh sửa.
+-  Hoạt động như một thuộc tính được export, để trình chỉnh sửa có thể chỉnh sửa nó một cách thống nhất.
+-  Được dùng cho dictionary, array, parser, v.v.
 
-Basically, thanks to the Variant class, writing Godot itself was a much,
-much easier task, as it allows for highly dynamic constructs not common
-of C++ with little effort. Become a friend of Variant today.
+Về cơ bản, nhờ lớp Variant, việc tự viết Godot trở nên dễ dàng hơn rất, rất nhiều, vì nó cho phép tạo các cấu trúc có tính động cao vốn không phổ biến trong C++ với rất ít công sức. Hãy trở thành bạn của Variant ngay hôm nay.
 
 .. note::
 
-    All types within Variant except Nil and Object **cannot** be ``null`` and
-    must always store a valid value. These types within Variant are therefore
-    called *non-nullable* types.
+    Tất cả các kiểu trong Variant ngoại trừ Nil và Object **không thể** là ``null`` và luôn phải lưu trữ một giá trị hợp lệ. Vì vậy, các kiểu này trong Variant được gọi là kiểu *không nullable*.
 
-    One of the Variant types is *Nil* which can only store the value ``null``.
-    Therefore, it is possible for a Variant to contain the value ``null``, even
-    though all Variant types excluding Nil and Object are non-nullable.
+    Một trong các kiểu của Variant là *Nil*, kiểu này chỉ có thể lưu trữ giá trị ``null``. Do đó, một Variant có thể chứa giá trị ``null``, mặc dù tất cả các kiểu của Variant, ngoại trừ Nil và Object, đều không nullable.
 
-References
-~~~~~~~~~~
+Tài liệu tham khảo
+~~~~~~~~~~~~~~~~~~
 
 -  `core/variant/variant.h <https://github.com/godotengine/godot/blob/master/core/variant/variant.h>`__
 
-List of variant types
----------------------
+Danh sách các kiểu Variant
+--------------------------
 
-These types are available in Variant:
+Các kiểu sau khả dụng trong Variant:
 
-+---------------------------------+---------------------------+
-| Type                            | Notes                     |
-+=================================+===========================+
-| Nil (can only store ``null``)   | Nullable type             |
-+---------------------------------+---------------------------+
-| :ref:`class_bool`               |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_int`                |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_float`              |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_string`             |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_vector2`            |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_vector2i`           |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_rect2`              | 2D counterpart of AABB    |
-+---------------------------------+---------------------------+
-| :ref:`class_rect2i`             |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_vector3`            |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_vector3i`           |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_transform2d`        |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_vector4`            |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_vector4i`           |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_plane`              |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_quaternion`         |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_aabb`               | 3D counterpart of Rect2   |
-+---------------------------------+---------------------------+
-| :ref:`class_basis`              |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_transform3d`        |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_projection`         |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_color`              |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_stringname`         |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_nodepath`           |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_rid`                |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_object`             | Nullable type             |
-+---------------------------------+---------------------------+
-| :ref:`class_callable`           |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_signal`             |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_dictionary`         |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_array`              |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_packedbytearray`    |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_packedint32array`   |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_packedint64array`   |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_packedfloat32array` |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_packedfloat64array` |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_packedstringarray`  |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_packedvector2array` |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_packedvector3array` |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_packedcolorarray`   |                           |
-+---------------------------------+---------------------------+
-| :ref:`class_packedvector4array` |                           |
-+---------------------------------+---------------------------+
++-----------------------------------+-----------------------+
+| Kiểu                              | Ghi chú               |
++===================================+=======================+
+| Nil (chỉ có thể lưu trữ ``null``) | Kiểu nullable         |
++-----------------------------------+-----------------------+
+| :ref:`class_bool`                 |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_int`                  |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_float`                |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_string`               |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_vector2`              |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_vector2i`             |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_rect2`                | Đối ngẫu 2D của AABB  |
++-----------------------------------+-----------------------+
+| :ref:`class_rect2i`               |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_vector3`              |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_vector3i`             |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_transform2d`          |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_vector4`              |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_vector4i`             |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_plane`                |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_quaternion`           |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_aabb`                 | Đối ngẫu 3D của Rect2 |
++-----------------------------------+-----------------------+
+| :ref:`class_basis`                |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_transform3d`          |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_projection`           |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_color`                |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_stringname`           |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_nodepath`             |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_rid`                  |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_object`               | Kiểu nullable         |
++-----------------------------------+-----------------------+
+| :ref:`class_callable`             |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_signal`               |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_dictionary`           |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_array`                |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_packedbytearray`      |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_packedint32array`     |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_packedint64array`     |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_packedfloat32array`   |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_packedfloat64array`   |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_packedstringarray`    |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_packedvector2array`   |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_packedvector3array`   |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_packedcolorarray`     |                       |
++-----------------------------------+-----------------------+
+| :ref:`class_packedvector4array`   |                       |
++-----------------------------------+-----------------------+
 
-Containers: Array and Dictionary
---------------------------------
+Container: Array và Dictionary
+------------------------------
 
-Both :ref:`class_array` and :ref:`class_dictionary` are implemented using
-variants. A Dictionary can match any datatype used as key to any other datatype.
-An Array just holds an array of Variants. Of course, a Variant can also hold a
-Dictionary or an Array inside, making it even more flexible.
+Cả :ref:`class_array` và :ref:`class_dictionary` đều được triển khai bằng Variant. Một Dictionary có thể ghép bất kỳ kiểu dữ liệu nào được dùng làm key với bất kỳ kiểu dữ liệu nào khác. Một Array chỉ chứa một mảng các Variant. Tất nhiên, một Variant cũng có thể chứa một Dictionary hoặc một Array bên trong, khiến nó càng linh hoạt hơn.
 
-Modifications to a container will modify all references to
-it. A :ref:`Mutex <doc_core_concurrency_types>` should be created to lock it if
-:ref:`multi-threaded access <doc_using_multiple_threads>` is desired.
+Các thay đổi đối với một container sẽ thay đổi tất cả các tham chiếu đến nó. Nên tạo một :ref:`Mutex <doc_core_concurrency_types>` để khóa container nếu
+muốn có :ref:`truy cập đa luồng <doc_using_multiple_threads>`.
 
-References
-~~~~~~~~~~
+Tài liệu tham khảo
+~~~~~~~~~~~~~~~~~~
 
 -  `core/variant/dictionary.h <https://github.com/godotengine/godot/blob/master/core/variant/dictionary.h>`__
 -  `core/variant/array.h <https://github.com/godotengine/godot/blob/master/core/variant/array.h>`__

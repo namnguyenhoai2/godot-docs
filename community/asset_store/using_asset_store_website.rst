@@ -1,64 +1,50 @@
 .. _doc_using_asset_store_website:
 
-Using the Asset Store Website
+Sử dụng trang web Asset Store
 =============================
 
-Overview
-~~~~~~~~
+Tổng quan
+~~~~~~~~~
 
-As mentioned before, you can access the web frontend of the Asset Store on
-`Godot's official website <https://store.godotengine.org>`_.
-This is what it looks like when you first visit it:
+Như đã đề cập trước đó, bạn có thể truy cập frontend web của Asset Store trên `trang web chính thức của Godot <https://store.godotengine.org>`_. Đây là giao diện khi bạn truy cập lần đầu:
 
 .. image:: img/asset_store_website.webp
 
-Searching
-~~~~~~~~~
+Tìm kiếm
+~~~~~~~~
 
-The search bar at the top of the page can be used to find assets. You can either
-type in the name of something specific you're looking for, or a tag such as ``2D``.
+Bạn có thể sử dụng thanh tìm kiếm ở đầu trang để tìm asset. Bạn có thể nhập tên của một thứ cụ thể mà mình đang tìm hoặc một thẻ như ``2D``.
 
 .. image:: img/asset_store_search.webp
 
-Note that the search results are not updated in real-time, so you will have to
-re-submit the search query each time you change the query settings.
+Lưu ý rằng kết quả tìm kiếm không được cập nhật theo thời gian thực, vì vậy bạn sẽ phải gửi lại truy vấn tìm kiếm mỗi khi thay đổi cài đặt truy vấn.
 
-You can also click on any tag a project has to pull up a search of other assets with
-that tag.
+Bạn cũng có thể nhấp vào bất kỳ thẻ nào của một project để mở kết quả tìm kiếm các asset khác có cùng thẻ đó.
 
-Breakdown of an asset
-~~~~~~~~~~~~~~~~~~~~~
+Phân tích một asset
+~~~~~~~~~~~~~~~~~~~
 
-Now let's take a look at what an asset's page looks like and what it contains.
+Bây giờ hãy cùng xem trang của một asset trông như thế nào và có những nội dung gì.
 
 .. image:: img/asset_store_asset.webp
 
-You'll immediately notice media showing off the asset in the center of the screen.
-Below that are 3 tabs, the description, changelog, and reviews.
+Bạn sẽ ngay lập tức nhận thấy phần media giới thiệu asset ở giữa màn hình. Bên dưới là 3 tab: phần mô tả, changelog và các bài đánh giá.
 
-The panel on the left is where you'll find the asset author, tags, license, source
-code link if applicable, download button, and the option to add it to your library
-if you're logged in.
+Bảng điều khiển bên trái là nơi bạn sẽ tìm thấy tác giả asset, các thẻ, giấy phép, liên kết đến mã nguồn nếu có, nút tải xuống và tùy chọn thêm asset vào thư viện nếu bạn đã đăng nhập.
 
-If you are logged in, there will be a "Flag this Asset" button below this panel. Use
-this to report the asset if there's an issue that may warrant removal, such as
-copyright infringement, theft, or impersonation. This is **not** for bug reports
-for the asset itself.
+Nếu đã đăng nhập, bên dưới bảng điều khiển này sẽ có nút "Flag this Asset". Hãy sử dụng nút này để báo cáo asset nếu có vấn đề có thể khiến asset bị gỡ bỏ, chẳng hạn như vi phạm bản quyền, đánh cắp hoặc mạo danh. Đây **không phải** là nơi để báo cáo lỗi của chính asset.
 
-Registering and logging in
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Đăng ký và đăng nhập
+~~~~~~~~~~~~~~~~~~~~
 
-In order to upload assets to the Asset Store, leave reviews on assets, and report
-assets, you need to login. You do **not** need to be logged in to browse and
-download the assets.
+Để tải asset lên Asset Store, viết đánh giá cho asset và báo cáo asset, bạn cần đăng nhập. Bạn **không** cần đăng nhập để duyệt và tải xuống các asset.
 
-The login/registration page can be accessed from any page, just click the button on
-the top right of the website, next to the "upload asset" button.
+Bạn có thể truy cập trang đăng nhập/đăng ký từ bất kỳ trang nào; chỉ cần nhấp vào nút ở góc trên bên phải của trang web, bên cạnh nút "upload asset".
 
 .. image:: img/login_button.webp
 
-There are several options for logging in using other accounts you may already have,
-such as GitHub and GitLab, or you can create a new account specifically for the
-Asset Store.
+Có một số tùy chọn đăng nhập bằng các tài khoản khác mà bạn có thể đã có, chẳng hạn như GitHub và GitLab, hoặc bạn có thể tạo một tài khoản mới dành riêng cho Asset Store.
 
 .. image:: img/login_options.webp
+
+.. _`Godot's official website`: https://store.godotengine.org

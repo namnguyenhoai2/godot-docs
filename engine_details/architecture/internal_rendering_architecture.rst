@@ -1,112 +1,57 @@
 .. _doc_internal_rendering_architecture:
 
-Internal rendering architecture
-===============================
+Kiến trúc rendering nội bộ
+==========================
 
-This page is a high-level overview of Godot 4's internal renderer design.
-It does not apply to previous Godot versions.
+Trang này là tổng quan cấp cao về thiết kế renderer nội bộ của Godot 4. Nội dung này không áp dụng cho các phiên bản Godot trước đây.
 
-The goal of this page is to document design decisions taken to best suit
-`Godot's design philosophy <https://contributing.godotengine.org/en/latest/engine/guidelines/best_practices.html>`__,
-while providing a starting point for new rendering contributors.
+Mục tiêu của trang này là ghi lại các quyết định thiết kế nhằm phù hợp nhất với `triết lý thiết kế của Godot <https://contributing.godotengine.org/en/latest/development/engine/best_practices.html>`__, đồng thời cung cấp điểm khởi đầu cho những người đóng góp mới cho rendering.
 
-If you have questions about rendering internals not answered here, feel free to
-ask in the ``#rendering`` channel of the
-`Godot Contributors Chat <https://chat.godotengine.org/channel/rendering>`__.
+Nếu bạn có câu hỏi về phần nội bộ của rendering chưa được giải đáp tại đây, hãy thoải mái hỏi trong kênh ``#rendering`` của `Godot Contributors Chat <https://chat.godotengine.org/channel/rendering>`__.
 
 .. note::
 
-    If you have difficulty understanding concepts on this page, it is
-    recommended to go through an OpenGL tutorial such as
-    `LearnOpenGL <https://learnopengl.com/>`__.
+    Nếu bạn gặp khó khăn khi hiểu các khái niệm trên trang này, bạn nên xem qua một tutorial về OpenGL, chẳng hạn như `LearnOpenGL <https://learnopengl.com/>`__.
 
-    Modern low-level APIs (Vulkan/Direct3D 12/Metal) require intermediate
-    knowledge of higher-level APIs (OpenGL/Direct3D 11) to be used
-    effectively. Thankfully, contributors rarely need to work directly with
-    low-level APIs. Godot's renderers are built entirely on OpenGL and
-    RenderingDevice, which is our abstraction over Vulkan/Direct3D 12/Metal.
+    Các API cấp thấp hiện đại (Vulkan/Direct3D 12/Metal) yêu cầu kiến thức trung gian về các API cấp cao hơn (OpenGL/Direct3D 11) để có thể được sử dụng hiệu quả. May mắn là những người đóng góp hiếm khi cần làm việc trực tiếp với các API cấp thấp. Các renderer của Godot được xây dựng hoàn toàn trên OpenGL và RenderingDevice, đây là lớp abstraction của chúng tôi trên Vulkan/Direct3D 12/Metal.
 
 .. _doc_internal_rendering_architecture_methods:
 
-Rendering methods
------------------
+Các phương thức rendering
+-------------------------
 
 Forward+
 ~~~~~~~~
 
-This is a forward renderer that uses a *clustered* approach to lighting.
+Đây là một forward renderer sử dụng phương pháp chiếu sáng *clustered*.
 
-Clustered lighting uses a compute shader to group lights into a 3D frustum
-aligned grid. Then, at render time, pixels can lookup what lights affect the
-grid cell they are in and only run light calculations for lights that might
-affect that pixel.
+Clustered lighting sử dụng compute shader để nhóm các nguồn sáng vào một lưới 3D được căn chỉnh theo frustum. Sau đó, tại thời điểm rendering, các pixel có thể tra cứu những nguồn sáng ảnh hưởng đến ô lưới chứa chúng và chỉ thực hiện tính toán ánh sáng cho những nguồn sáng có khả năng ảnh hưởng đến pixel đó.
 
-This approach can greatly speed up rendering performance on desktop hardware,
-but is substantially less efficient on mobile.
+Phương pháp này có thể tăng đáng kể hiệu năng rendering trên phần cứng desktop, nhưng kém hiệu quả hơn đáng kể trên mobile.
 
 Mobile
 ~~~~~~
 
-This is a forward renderer that uses a traditional single-pass approach to lighting.
-Internally, it is called **Forward Mobile**.
+Đây là một forward renderer sử dụng phương pháp chiếu sáng single-pass truyền thống. Về mặt nội bộ, nó được gọi là **Forward Mobile**.
 
-Intended for mobile platforms, but can also run on desktop platforms. This
-rendering method is optimized to perform well on mobile GPUs. Mobile GPUs have a
-very different architecture compared to desktop GPUs due to their unique
-constraints around battery usage, heat, and overall bandwidth limitations of
-reading and writing data. Compute shaders also have very limited support or
-aren't supported at all. As a result, the mobile renderer purely uses
-raster-based shaders (fragment/vertex).
+Được thiết kế cho các nền tảng mobile, nhưng cũng có thể chạy trên các nền tảng desktop. Phương thức rendering này được tối ưu để hoạt động tốt trên GPU mobile. GPU mobile có kiến trúc rất khác so với GPU desktop do những giới hạn riêng về mức sử dụng pin, nhiệt lượng và băng thông tổng thể khi đọc và ghi dữ liệu. Compute shader cũng có mức hỗ trợ rất hạn chế hoặc hoàn toàn không được hỗ trợ. Do đó, mobile renderer chỉ sử dụng các shader dựa trên raster (fragment/vertex).
 
-Unlike desktop GPUs, mobile GPUs perform *tile-based rendering*. Instead of
-rendering the whole image as a single unit, the image is divided in smaller
-tiles that fit within the faster internal memory of the mobile GPU. Each tile is
-rendered and then written out to the destination texture. This all happens
-automatically on the graphics driver.
+Khác với GPU desktop, GPU mobile thực hiện *tile-based rendering*. Thay vì rendering toàn bộ hình ảnh như một đơn vị duy nhất, hình ảnh được chia thành các tile nhỏ hơn, vừa với bộ nhớ nội bộ nhanh hơn của GPU mobile. Mỗi tile được rendering rồi ghi ra destination texture. Tất cả quá trình này diễn ra tự động trong graphics driver.
 
-The problem is that this introduces bottlenecks in our traditional approach. For
-desktop rendering, we render all opaque geometry, then handle the background,
-then transparent geometry, then post-processing. Each pass will need to read the
-current result into tile memory, perform its operations and then write it out
-again. We then wait for all tiles to be completed before moving on to the next
-pass.
+Vấn đề là điều này tạo ra các điểm nghẽn trong phương pháp truyền thống của chúng ta. Đối với rendering trên desktop, chúng ta render toàn bộ geometry opaque, sau đó xử lý background, tiếp đến là geometry trong suốt, rồi post-processing. Mỗi pass sẽ cần đọc kết quả hiện tại vào tile memory, thực hiện các thao tác của mình rồi ghi kết quả ra lại. Sau đó, chúng ta phải chờ tất cả tile hoàn tất trước khi chuyển sang pass tiếp theo.
 
-The first important change in the mobile renderer is that the mobile renderer
-does not use the RGBA16F texture formats that the desktop (Forward+) renderer does.
-Instead, it uses an R10G10B10A2 UNORM texture format unless the
-:ref:`rendering/viewport/hdr_2d<class_ProjectSettings_property_rendering/viewport/hdr_2d>`
-project setting is enabled. This halves the bandwidth required and has further improvements,
-as mobile hardware often further optimizes for 32-bit formats.
-The tradeoff is that by default, the mobile renderer has limited HDR
-capabilities due to the reduced precision and maximum values in the color data.
+Thay đổi quan trọng đầu tiên trong mobile renderer là mobile renderer không sử dụng các texture format RGBA16F như desktop (Forward+) renderer. Thay vào đó, nó sử dụng texture format R10G10B10A2 UNORM, trừ khi
+project setting :ref:`rendering/viewport/hdr_2d <class_ProjectSettings_property_rendering/viewport/hdr_2d>` được bật. Điều này giảm một nửa băng thông cần thiết và còn mang lại những cải thiện khác, vì phần cứng mobile thường tối ưu hơn nữa cho các format 32-bit. Đánh đổi là theo mặc định, mobile renderer có khả năng HDR hạn chế do độ chính xác và các giá trị tối đa trong dữ liệu màu bị giảm.
 
-When the :ref:`rendering/viewport/hdr_2d <class_ProjectSettings_property_rendering/viewport/hdr_2d>`
-project setting is enabled, the mobile renderer uses the same RGBA16F renderers as Forward+.
-This allows for full HDR support, but also increases bandwidth usage and can reduce
-performance on mobile GPUs or integrated graphics.
+Khi project setting :ref:`rendering/viewport/hdr_2d <class_ProjectSettings_property_rendering/viewport/hdr_2d>` được bật, mobile renderer sử dụng các renderer RGBA16F giống như Forward+. Điều này cho phép hỗ trợ HDR đầy đủ, nhưng cũng làm tăng mức sử dụng băng thông và có thể làm giảm hiệu năng trên GPU mobile hoặc đồ họa tích hợp.
 
-The second important change is the use of sub-passes whenever possible.
-Sub-passes allows us to perform the rendering steps end-to-end per tile saving
-on the overhead introduced by reading from and writing to the tiles between each
-rendering pass. The ability to use sub-passes is limited by the inability to
-read neighboring pixels, as we're constrained to working within a single tile.
+Thay đổi quan trọng thứ hai là sử dụng sub-pass bất cứ khi nào có thể. Sub-pass cho phép chúng ta thực hiện các bước rendering end-to-end trên từng tile, nhờ đó tiết kiệm overhead phát sinh do phải đọc từ và ghi vào các tile giữa mỗi rendering pass. Khả năng sử dụng sub-pass bị giới hạn bởi việc không thể đọc các pixel lân cận, vì chúng ta bị giới hạn trong phạm vi một tile duy nhất.
 
-This limitation of subpasses results in not being able to implement features
-such as glow and depth of field efficiently. Similarly, if there is a
-requirement to read from the screen texture or depth texture, we must fully
-write out the rendering result limiting our ability to use sub-passes. When such
-features are enabled, a mix of sub-passes and normal passes are used, and these
-features result in a notable performance penalty.
+Hạn chế này của subpass khiến chúng ta không thể triển khai hiệu quả các tính năng như glow và depth of field. Tương tự, nếu cần đọc từ screen texture hoặc depth texture, chúng ta phải ghi toàn bộ kết quả rendering ra ngoài, làm hạn chế khả năng sử dụng sub-pass. Khi các tính năng như vậy được bật, sự kết hợp giữa sub-pass và pass thông thường sẽ được sử dụng, đồng thời các tính năng này gây ra mức phạt hiệu năng đáng kể.
 
-On desktop platforms, the use of sub-passes won't have any impact on
-performance. However, this rendering method can still perform better than
-Forward+ in simple scenes thanks to its lower complexity and lower
-bandwidth usage. This is especially noticeable on low-end GPUs, integrated
-graphics or in VR applications.
+Trên các nền tảng desktop, việc sử dụng sub-pass sẽ không ảnh hưởng đến hiệu năng. Tuy nhiên, phương thức rendering này vẫn có thể hoạt động tốt hơn Forward+ trong các scene đơn giản nhờ độ phức tạp thấp hơn và mức sử dụng băng thông thấp hơn. Điều này đặc biệt dễ nhận thấy trên các GPU cấp thấp, đồ họa tích hợp hoặc trong các ứng dụng VR.
 
-Given its low-end focus, this rendering method does not provide high-end
-rendering features such as SDFGI and :ref:`doc_volumetric_fog`. Several
-post-processing effects are also not available.
+Do tập trung vào phần cứng cấp thấp, phương thức rendering này không cung cấp các tính năng rendering cao cấp như SDFGI và :ref:`doc_volumetric_fog`. Một số hiệu ứng post-processing cũng không khả dụng.
 
 .. _doc_internal_rendering_architecture_compatibility:
 
@@ -115,313 +60,203 @@ Compatibility
 
 .. note::
 
-    This is the only rendering method available when using the OpenGL driver.
-    This rendering method is not available when using Vulkan, Direct3D 12, or Metal.
+    Đây là phương thức rendering duy nhất khả dụng khi sử dụng OpenGL driver. Phương thức rendering này không khả dụng khi sử dụng Vulkan, Direct3D 12 hoặc Metal.
 
-This is a traditional (non-clustered) forward renderer. Internally, it is called
-**GL Compatibility**. It's intended for old GPUs that don't have Vulkan support,
-but still works very efficiently on newer hardware. Specifically, it is optimized
-for older and lower-end mobile devices. However, many optimizations carry over
-making it a good choice for older and lower-end desktop as well.
+Đây là một forward renderer truyền thống (không clustered). Về mặt nội bộ, nó được gọi là **GL Compatibility**. Phương thức này dành cho các GPU cũ không hỗ trợ Vulkan, nhưng vẫn hoạt động rất hiệu quả trên phần cứng mới hơn. Cụ thể, nó được tối ưu cho các thiết bị mobile cũ và cấp thấp hơn. Tuy nhiên, nhiều tối ưu hóa cũng áp dụng được cho desktop, khiến đây trở thành lựa chọn phù hợp cho các hệ thống desktop cũ và cấp thấp hơn.
 
-Like the Mobile renderer, the Compatibility renderer uses an R10G10B10A2 UNORM
-texture for 3D rendering. Unlike the mobile renderer, colors are tonemapped and
-stored in sRGB format so there is no HDR support. This avoids the need for a
-tonemapping pass and allows us to use the lower bit texture without substantial
-banding.
+Giống như Mobile renderer, Compatibility renderer sử dụng texture R10G10B10A2 UNORM cho rendering 3D. Khác với mobile renderer, màu sắc được tonemap và lưu ở format sRGB nên không hỗ trợ HDR. Điều này loại bỏ nhu cầu sử dụng một tonemapping pass và cho phép chúng ta dùng texture có số bit thấp hơn mà không bị banding đáng kể.
 
-The Compatibility renderer uses a traditional forward single-pass approach to
-drawing objects with lights, but it uses a multi-pass approach to draw lights
-with shadows. Specifically, in the first pass, it can draw multiple lights
-without shadows and up to one DirectionalLight3D with shadows. In each
-subsequent pass, it can draw up to one OmniLight3D, one SpotLight3D and one
-DirectionalLight3D with shadows. Lights with shadows will affect the scene
-differently than lights without shadows, as the lighting is blended in sRGB space
-instead of linear space. This difference in lighting will impact how the scene
-looks and needs to be kept in mind when designing scenes for the Compatibility
-renderer.
+Compatibility renderer sử dụng phương pháp forward single-pass truyền thống để vẽ các object có nguồn sáng, nhưng sử dụng phương pháp multi-pass để vẽ các nguồn sáng có shadow. Cụ thể, trong pass đầu tiên, nó có thể vẽ nhiều nguồn sáng không có shadow và tối đa một DirectionalLight3D có shadow. Trong mỗi pass tiếp theo, nó có thể vẽ tối đa một OmniLight3D, một SpotLight3D và một DirectionalLight3D có shadow. Các nguồn sáng có shadow sẽ ảnh hưởng đến scene khác với các nguồn sáng không có shadow, vì ánh sáng được blend trong không gian sRGB thay vì không gian tuyến tính. Sự khác biệt về ánh sáng này sẽ ảnh hưởng đến diện mạo của scene và cần được lưu ý khi thiết kế scene cho Compatibility renderer.
 
-Given its low-end focus, this rendering method does not provide high-end
-rendering features (even less so compared to Mobile). Most
-post-processing effects are not available.
+Do tập trung vào phần cứng cấp thấp, phương thức rendering này không cung cấp các tính năng rendering cao cấp (thậm chí còn ít hơn so với Mobile). Hầu hết hiệu ứng post-processing đều không khả dụng.
 
-Why not deferred rendering?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tại sao không sử dụng deferred rendering?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Forward rendering generally provides a better tradeoff for performance versus
-flexibility, especially when a clustered approach to lighting is used. While
-deferred rendering can be faster in some cases, it's also less flexible and
-requires using hacks to be able to use MSAA. Since games with a less realistic
-art style can benefit a lot from MSAA, we chose to go with forward rendering for
-Godot 4 (like Godot 3).
+Forward rendering nhìn chung mang lại sự đánh đổi tốt hơn giữa hiệu năng và tính linh hoạt, đặc biệt khi sử dụng phương pháp clustered cho việc chiếu sáng. Mặc dù deferred rendering có thể nhanh hơn trong một số trường hợp, nó cũng kém linh hoạt hơn và yêu cầu sử dụng các thủ thuật để có thể dùng MSAA. Vì các game có phong cách nghệ thuật ít chân thực hơn có thể hưởng lợi nhiều từ MSAA, chúng tôi đã chọn forward rendering cho Godot 4 (giống như Godot 3).
 
-That said, parts of the forward renderer *are* performed with a deferred approach
-to allow for some optimizations when possible. This applies to VoxelGI and SDFGI
-in particular.
+Tuy vậy, một số phần của forward renderer *được* thực hiện theo cách deferred để cho phép áp dụng một số tối ưu hóa khi có thể. Điều này đặc biệt áp dụng cho VoxelGI và SDFGI.
 
-A clustered deferred renderer may be developed in the future. This renderer
-could be used in situations where performance is favored over flexibility.
+Trong tương lai, có thể sẽ phát triển một clustered deferred renderer. Renderer này có thể được sử dụng trong những tình huống ưu tiên hiệu năng hơn tính linh hoạt.
 
-Rendering drivers
------------------
+Các rendering driver
+--------------------
 
-Godot 4 supports the following graphics APIs:
+Godot 4 hỗ trợ các graphics API sau:
 
 Vulkan
 ~~~~~~
 
-This is the main driver in Godot 4, with most of the development focus going
-towards this driver.
+Đây là driver chính trong Godot 4, với phần lớn trọng tâm phát triển được dành cho driver này.
 
-Vulkan 1.0 is required as a baseline, with optional Vulkan 1.1 and 1.2 features
-used when available. `volk <https://github.com/zeux/volk>`__ is used as a Vulkan
-loader, and
-`Vulkan Memory Allocator <https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator>`__
-is used for memory management.
+Vulkan 1.0 là yêu cầu cơ bản, còn các tính năng Vulkan 1.1 và 1.2 tùy chọn sẽ được sử dụng khi khả dụng. `volk <https://github.com/zeux/volk>`__ được sử dụng làm Vulkan loader, còn `Vulkan Memory Allocator <https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator>`__ được sử dụng để quản lý bộ nhớ.
 
-Both the Forward+ and Mobile
-:ref:`doc_internal_rendering_architecture_methods` are supported when using the
-Vulkan driver.
+Forward+ và Mobile
+:ref:`doc_internal_rendering_architecture_methods` đều được hỗ trợ khi sử dụng Vulkan driver.
 
-**Vulkan context creation:**
+**Tạo Vulkan context:**
 
 - `drivers/vulkan/rendering_context_driver_vulkan.cpp <https://github.com/godotengine/godot/blob/4.6/drivers/vulkan/rendering_context_driver_vulkan.cpp>`__
 
-**Direct3D 12 context creation:**
+**Tạo Direct3D 12 context:**
 
 - `drivers/d3d12/rendering_context_driver_d3d12.cpp <https://github.com/godotengine/godot/blob/4.6/drivers/d3d12/rendering_context_driver_d3d12.cpp>`__
 
 Direct3D 12
 ~~~~~~~~~~~
 
-Like Vulkan, the Direct3D 12 driver targets modern platforms only. It is
-designed to target both Windows and Xbox (whereas Vulkan can't be used directly on Xbox).
+Giống như Vulkan, Direct3D 12 driver chỉ nhắm đến các nền tảng hiện đại. Driver này được thiết kế để nhắm đến cả Windows và Xbox (trong khi Vulkan không thể được sử dụng trực tiếp trên Xbox).
 
-Both the Forward+ and Mobile :ref:`doc_internal_rendering_architecture_methods` can be
-used with Direct3D 12.
+Cả Forward+ và Mobile :ref:`doc_internal_rendering_architecture_methods` đều có thể được sử dụng với Direct3D 12.
 
-:ref:`doc_internal_rendering_architecture_core_shaders` are shared with the
-Vulkan renderer. Shaders are transpiled from
-:abbr:`SPIR-V (Standard Portable Intermediate Representation)` to
-:abbr:`DXIL (DirectX Intermediate Language)` using
-Mesa NIR (`more information <https://godotengine.org/article/d3d12-adventures-in-shaderland/>`__).
+:ref:`doc_internal_rendering_architecture_core_shaders` được dùng chung với Vulkan renderer. Shader được chuyển đổi từ
+:abbr:`SPIR-V (Standard Portable Intermediate Representation)` sang
+:abbr:`DXIL (DirectX Intermediate Language)` bằng Mesa NIR (`thông tin thêm <https://godotengine.org/article/d3d12-adventures-in-shaderland/>`__).
 
-**This driver is still experimental and only available in Godot 4.3 and later.**
-While Direct3D 12 allows supporting Direct3D-exclusive features on Windows 11 such
-as windowed optimizations and Auto HDR, Vulkan is still recommended for most projects.
-See the `pull request that introduced Direct3D 12 support <https://github.com/godotengine/godot/pull/70315>`__
-for more information.
+**Driver này vẫn đang trong giai đoạn thử nghiệm và chỉ khả dụng trong Godot 4.3 trở lên.** Mặc dù Direct3D 12 cho phép hỗ trợ các tính năng độc quyền của Direct3D trên Windows 11, chẳng hạn như tối ưu hóa cửa sổ và Auto HDR, Vulkan vẫn được khuyến nghị cho hầu hết các dự án. Xem `pull request giới thiệu hỗ trợ Direct3D 12 <https://github.com/godotengine/godot/pull/70315>`__ để biết thêm thông tin.
 
 Metal
 ~~~~~
 
-Godot provides a native Metal driver that works on all Apple Silicon hardware
-(macOS ARM). Compared to using the MoltenVK translation layer, this is
-significantly faster, particularly in CPU-bound scenarios.
+Godot cung cấp một Metal driver native hoạt động trên mọi phần cứng Apple Silicon (macOS ARM). So với việc sử dụng lớp chuyển đổi MoltenVK, driver này nhanh hơn đáng kể, đặc biệt trong các tình huống bị giới hạn bởi CPU.
 
-Both the Forward+ and Mobile :ref:`doc_internal_rendering_architecture_methods` can be
-used with Metal.
+Cả Forward+ và Mobile :ref:`doc_internal_rendering_architecture_methods` đều có thể được sử dụng với Metal.
 
-:ref:`doc_internal_rendering_architecture_core_shaders` are shared with the
-Vulkan renderer. Shaders are transpiled from GLSL to :abbr:`MSL (Metal Shading Language)`
-using SPIRV-Cross.
+:ref:`doc_internal_rendering_architecture_core_shaders` được dùng chung với Vulkan renderer. Shader được chuyển đổi từ GLSL sang :abbr:`MSL (Metal Shading Language)` bằng SPIRV-Cross.
 
-Godot also supports Metal rendering via `MoltenVK <https://github.com/KhronosGroup/MoltenVK>`__,
-which is used as a fallback when native Metal support is not available (e.g. on x86 macOS).
+Godot cũng hỗ trợ rendering bằng Metal thông qua `MoltenVK <https://github.com/KhronosGroup/MoltenVK>`__, được sử dụng làm phương án dự phòng khi không có hỗ trợ Metal native (ví dụ: trên macOS x86).
 
-Since Godot 4.7, Metal 4 is now used when supported. All Apple Silicon hardware
-supports Metal 4, but it must be running macOS 26 or later, or iOS 26 or later.
-Metal 3 is automatically used as a fallback on older macOS and iOS versions.
-See the `pull request that introduced Metal 4 support <https://github.com/godotengine/godot/pull/114484>`__
-for more information.
+Kể từ Godot 4.7, Metal 4 được sử dụng khi được hỗ trợ. Mọi phần cứng Apple Silicon đều hỗ trợ Metal 4, nhưng phải chạy macOS 26 trở lên hoặc iOS 26 trở lên. Metal 3 sẽ tự động được sử dụng làm phương án dự phòng trên các phiên bản macOS và iOS cũ hơn. Xem `pull request giới thiệu hỗ trợ Metal 4 <https://github.com/godotengine/godot/pull/114484>`__ để biết thêm thông tin.
 
 OpenGL
 ~~~~~~
 
-This driver uses OpenGL ES 3.0 and targets legacy and low-end devices that don't
-support Vulkan. OpenGL 3.3 Core Profile is used on desktop platforms to run this
-driver, as most graphics drivers on desktop don't support OpenGL ES.
-WebGL 2.0 is used for web exports.
+Driver này sử dụng OpenGL ES 3.0 và nhắm đến các thiết bị đời cũ và cấp thấp không hỗ trợ Vulkan. OpenGL 3.3 Core Profile được sử dụng trên các nền tảng desktop để chạy driver này, vì phần lớn graphics driver trên desktop không hỗ trợ OpenGL ES. WebGL 2.0 được sử dụng cho các bản export web.
 
-It is possible to use OpenGL ES 3.0 directly on desktop platforms
-by passing the ``--rendering-driver opengl3_es`` command line argument, although this
-will only work on graphics drivers that feature native OpenGL ES support (such
-as Mesa).
+Có thể sử dụng trực tiếp OpenGL ES 3.0 trên các nền tảng desktop bằng cách truyền đối số dòng lệnh ``--rendering-driver opengl3_es``, tuy nhiên cách này chỉ hoạt động trên các graphics driver có hỗ trợ OpenGL ES native (chẳng hạn như Mesa).
 
-Only the :ref:`doc_internal_rendering_architecture_compatibility` rendering
-method can be used with the OpenGL driver.
+Chỉ có rendering method :ref:`doc_internal_rendering_architecture_compatibility` mới có thể được sử dụng với OpenGL driver.
 
-:ref:`doc_internal_rendering_architecture_core_shaders` are entirely different
-from the Vulkan renderer.
+:ref:`doc_internal_rendering_architecture_core_shaders` hoàn toàn khác với Vulkan renderer.
 
-Many advanced features are not supported with this driver, as it targets low-end
-devices first and foremost.
+Driver này không hỗ trợ nhiều tính năng nâng cao, vì trước hết nó nhắm đến các thiết bị cấp thấp.
 
-Summary of rendering drivers/methods
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tóm tắt các rendering driver/method
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following rendering API + rendering method combinations are currently possible:
+Hiện có thể sử dụng các tổ hợp rendering API + rendering method sau:
 
-- Vulkan + Forward+ (optionally through MoltenVK on macOS and iOS)
-- Vulkan + Mobile (optionally through MoltenVK on macOS and iOS)
+- Vulkan + Forward+ (tùy chọn thông qua MoltenVK trên macOS và iOS)
+- Vulkan + Mobile (tùy chọn thông qua MoltenVK trên macOS và iOS)
 - Direct3D 12 + Forward+
 - Direct3D 12 + Mobile
 - Metal + Forward+
 - Metal + Mobile
-- OpenGL + Compatibility (optionally through ANGLE on Windows and macOS)
+- OpenGL + Compatibility (tùy chọn thông qua ANGLE trên Windows và macOS)
 
-Each combination has its own limitations and performance characteristics. Make
-sure to test your changes on all rendering methods if possible before opening a
-pull request.
+Mỗi tổ hợp đều có những hạn chế và đặc tính hiệu năng riêng. Nếu có thể, hãy kiểm tra các thay đổi của bạn trên tất cả rendering method trước khi mở pull request.
 
-RenderingDevice abstraction
----------------------------
+Kiến trúc abstraction của RenderingDevice
+-----------------------------------------
 
 .. note::
 
-    The OpenGL driver does not use the RenderingDevice abstraction.
+    OpenGL driver không sử dụng abstraction của RenderingDevice.
 
-To make the complexity of modern low-level graphics APIs more manageable,
-Godot uses its own abstraction called RenderingDevice.
+Để giúp quản lý độ phức tạp của các graphics API cấp thấp hiện đại, Godot sử dụng abstraction riêng có tên là RenderingDevice.
 
-This means that when writing code for modern rendering methods, you don't
-actually use the Vulkan, Direct3D 12, or Metal APIs directly. While this is still
-lower-level than an API like OpenGL, this makes working on the renderer easier,
-as RenderingDevice will abstract many API-specific quirks for you. The
-RenderingDevice presents a similar level of abstraction as WebGPU.
+Điều này có nghĩa là khi viết code cho các rendering method hiện đại, bạn không thực sự sử dụng trực tiếp các API Vulkan, Direct3D 12 hoặc Metal. Mặc dù vẫn ở mức thấp hơn một API như OpenGL, cách này giúp làm việc với renderer dễ dàng hơn, vì RenderingDevice sẽ trừu tượng hóa nhiều điểm khác biệt đặc thù của API cho bạn. RenderingDevice cung cấp mức độ abstraction tương tự WebGPU.
 
-**Vulkan RenderingDevice implementation:**
+**Triển khai Vulkan RenderingDevice:**
 
 - `drivers/vulkan/rendering_device_driver_vulkan.cpp <https://github.com/godotengine/godot/blob/4.6/drivers/vulkan/rendering_device_driver_vulkan.cpp>`__
 
-**Direct3D 12 RenderingDevice implementation:**
+**Triển khai Direct3D 12 RenderingDevice:**
 
 - `drivers/d3d12/rendering_device_driver_d3d12.cpp <https://github.com/godotengine/godot/blob/4.6/drivers/d3d12/rendering_device_driver_d3d12.cpp>`__
 
-**Metal RenderingDevice implementation:**
+**Triển khai Metal RenderingDevice:**
 
 - `drivers/metal/rendering_device_driver_metal.cpp <https://github.com/godotengine/godot/blob/master/drivers/metal/rendering_device_driver_metal.cpp>`__ - Metal 4
 - `drivers/metal/rendering_device_driver_metal3.cpp <https://github.com/godotengine/godot/blob/master/drivers/metal/rendering_device_driver_metal3.cpp>`__ - Metal 3
 
-Core rendering classes architecture
+Kiến trúc các lớp rendering cốt lõi
 -----------------------------------
 
-This diagram represents the structure of rendering classes in Godot, including the RenderingDevice abstraction:
+Sơ đồ này thể hiện cấu trúc của các lớp rendering trong Godot, bao gồm cả lớp trừu tượng RenderingDevice:
 
 .. image:: img/rendering_architecture_diagram.webp
 
-`View at full size <https://raw.githubusercontent.com/godotengine/godot-docs/master/engine_details/architecture/img/rendering_architecture_diagram.webp>`__
+`Xem ở kích thước đầy đủ <https://raw.githubusercontent.com/godotengine/godot-docs/master/engine_details/architecture/img/rendering_architecture_diagram.webp>`__
 
 .. _doc_internal_rendering_architecture_core_shaders:
 
 Core shaders
 ------------
 
-While shaders in Godot projects are written using a
-:ref:`custom language inspired by GLSL <doc_shading_language>`, core shaders are
-written directly in GLSL.
+Mặc dù shader trong các dự án Godot được viết bằng
+:ref:`ngôn ngữ tùy chỉnh lấy cảm hứng từ GLSL <doc_shading_language>`, core shader được viết trực tiếp bằng GLSL.
 
-These core shaders are embedded in the editor and export template binaries at
-compile-time. To see any changes you've made to those GLSL shaders, you need to
-recompile the editor or export template binary.
+Các core shader này được nhúng vào editor và các binary export template trong thời gian biên dịch. Để xem bất kỳ thay đổi nào bạn đã thực hiện đối với các shader GLSL đó, bạn cần biên dịch lại editor hoặc binary export template.
 
-Some material features such as height mapping, refraction and proximity fade are
-not part of core shaders, and are performed in the default BaseMaterial3D using
-the Godot shader language instead (not GLSL). This is done by procedurally
-generating the required shader code depending on the features enabled in the
-material.
+Một số tính năng material như height mapping, refraction và proximity fade không thuộc core shader mà được thực hiện trong BaseMaterial3D mặc định bằng ngôn ngữ shader của Godot (thay vì GLSL). Điều này được thực hiện bằng cách tạo mã shader cần thiết theo thủ tục, tùy thuộc vào các tính năng được bật trong material.
 
-By convention, shader files with ``_inc`` in their name are included in other
-GLSL files for better code reuse. Standard GLSL preprocessing is used to achieve
-this.
+Theo quy ước, các tệp shader có ``_inc`` trong tên sẽ được đưa vào các tệp GLSL khác để tái sử dụng mã tốt hơn. Việc này sử dụng tiền xử lý GLSL tiêu chuẩn.
 
 .. warning::
 
-    Core material shaders will be used by every material in the scene – both
-    with the default BaseMaterial3D and custom shaders. As a result, these
-    shaders must be kept as simple as possible to avoid performance issues and
-    ensure shader compilation doesn't become too slow.
+    Core material shader sẽ được mọi material trong scene sử dụng – cả với BaseMaterial3D mặc định lẫn custom shader. Do đó, các shader này phải được giữ đơn giản nhất có thể để tránh vấn đề về hiệu năng và bảo đảm quá trình biên dịch shader không trở nên quá chậm.
 
-    If you use ``if`` branching in a shader, performance may decrease as
-    :abbr:`VGPR (Vector General-Purpose Register)` usage will increase in the
-    shader. This happens even if all pixels evaluate to ``true`` or ``false`` in
-    a given frame.
+    Nếu bạn sử dụng ``if`` branching trong shader, hiệu năng có thể giảm vì
+    :abbr:`VGPR (việc sử dụng Vector General-Purpose Register)` sẽ tăng trong shader. Điều này xảy ra ngay cả khi tất cả pixel đều cho kết quả ``true`` hoặc ``false`` trong một frame nhất định.
 
-    If you use ``#if`` preprocessor branching, the number of required shader
-    versions will increase in the scene. In a worst-case scenario, adding a
-    single boolean ``#define`` can *double* the number of shader versions that
-    may need to be compiled in a given scene. In some cases, Vulkan
-    specialization constants can be used as a faster (but more limited)
-    alternative.
+    Nếu bạn sử dụng ``#if`` branching của preprocessor, số phiên bản shader cần thiết trong scene sẽ tăng. Trong trường hợp xấu nhất, việc thêm một ``#define`` boolean duy nhất có thể *tăng gấp đôi* số phiên bản shader có thể cần được biên dịch trong một scene nhất định. Trong một số trường hợp, specialization constant của Vulkan có thể được sử dụng như một giải pháp thay thế nhanh hơn (nhưng hạn chế hơn).
 
-    This means there is a high barrier to adding new built-in material features
-    in Godot, both in the core shaders and BaseMaterial3D. While BaseMaterial3D
-    can make use of dynamic code generation to only include the shader code if
-    the feature is enabled, it'll still require generating more shader versions
-    when these features are used in a project. This can make shader compilation
-    stutter more noticeable in complex 3D scenes.
+    Điều này có nghĩa là việc thêm các tính năng material tích hợp mới vào Godot có rào cản rất lớn, cả trong core shader lẫn BaseMaterial3D. Mặc dù BaseMaterial3D có thể sử dụng việc tạo mã động để chỉ đưa mã shader vào khi tính năng được bật, việc đó vẫn yêu cầu tạo thêm các phiên bản shader khi những tính năng này được sử dụng trong một dự án. Điều này có thể khiến hiện tượng giật do biên dịch shader dễ nhận thấy hơn trong các scene 3D phức tạp.
 
-    See
-    `The Shader Permutation Problem <https://therealmjp.github.io/posts/shader-permutations-part1/>`__
-    and
-    `Branching on a GPU <https://medium.com/@jasonbooth_86226/branching-on-a-gpu-18bfc83694f2>`__
-    blog posts for more information.
+    Xem các bài viết blog `The Shader Permutation Problem <https://therealmjp.github.io/posts/shader-permutations-part1/>`__ và `Branching on a GPU <https://medium.com/@jasonbooth_86226/branching-on-a-gpu-18bfc83694f2>`__ để biết thêm thông tin.
 
-**Core GLSL material shaders:**
+**Core GLSL material shader:**
 
 - Forward+: `servers/rendering/renderer_rd/shaders/forward_clustered/scene_forward_clustered.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/forward_clustered/scene_forward_clustered.glsl>`__
 - Mobile: `servers/rendering/renderer_rd/shaders/forward_mobile/scene_forward_mobile.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/forward_mobile/scene_forward_mobile.glsl>`__
 - Compatibility: `drivers/gles3/shaders/scene.glsl <https://github.com/godotengine/godot/blob/4.6/drivers/gles3/shaders/scene.glsl>`__
 
-**Material shader generation:**
+**Tạo material shader:**
 
 - `scene/resources/material.cpp <https://github.com/godotengine/godot/blob/4.6/scene/resources/material.cpp>`__
 
-**Other GLSL shaders for Forward+ and Mobile rendering methods:**
+**Các GLSL shader khác cho phương thức rendering Forward+ và Mobile:**
 
 - `servers/rendering/renderer_rd/shaders/ <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/>`__
 - `modules/lightmapper_rd/ <https://github.com/godotengine/godot/blob/4.6/modules/lightmapper_rd>`__
 
-**Other GLSL shaders for the Compatibility rendering method:**
+**Các GLSL shader khác cho phương thức rendering Compatibility:**
 
 - `drivers/gles3/shaders/ <https://github.com/godotengine/godot/blob/4.6/drivers/gles3/shaders/>`__
 
-2D and 3D rendering separation
-------------------------------
+Phân tách rendering 2D và 3D
+----------------------------
 
 .. note::
 
-    The following is only applicable in the Forward+ and Mobile
-    rendering methods, not in Compatibility. Multiple Viewports can be used to
-    emulate this when using the Compatibility renderer, or to perform 2D
-    resolution scaling.
+    Nội dung sau chỉ áp dụng cho các phương thức rendering Forward+ và Mobile, không áp dụng cho Compatibility. Có thể sử dụng nhiều Viewport để mô phỏng điều này khi sử dụng Compatibility renderer, hoặc để thực hiện scaling độ phân giải 2D.
 
-2D and 3D are rendered to separate buffers, as 2D rendering in Godot is performed
-in :abbr:`LDR (Low Dynamic Range)` sRGB-space while 3D rendering uses
-:abbr:`HDR (High Dynamic Range)` linear space.
+2D và 3D được render vào các buffer riêng biệt, vì rendering 2D trong Godot được thực hiện trong không gian sRGB :abbr:`LDR (Low Dynamic Range)`, còn rendering 3D sử dụng
+không gian tuyến tính :abbr:`HDR (High Dynamic Range)`.
 
-The color format used for 2D rendering is RGB8 (RGBA8 if the **Transparent**
-property on the Viewport is enabled). 3D rendering uses a 24-bit unsigned
-normalized integer depth buffer, or 32-bit signed floating-point if a 24-bit
-depth buffer is not supported by the hardware. 2D rendering does not use a depth
-buffer.
+Định dạng màu được sử dụng cho rendering 2D là RGB8 (RGBA8 nếu thuộc tính **Transparent** trên Viewport được bật). Rendering 3D sử dụng depth buffer số nguyên chưa chuẩn hóa không dấu 24-bit, hoặc số dấu phẩy động có dấu 32-bit nếu phần cứng không hỗ trợ depth buffer 24-bit. Rendering 2D không sử dụng depth buffer.
 
-3D resolution scaling is performed differently depending on whether bilinear or
-FSR 1.0 scaling is used. When bilinear scaling is used, no special upscaling
-shader is run. Instead, the viewport's texture is stretched and displayed with a
-linear sampler (which makes the filtering happen directly on the hardware). This
-allows maximizing the performance of bilinear 3D scaling.
+Scaling độ phân giải 3D được thực hiện khác nhau tùy thuộc vào việc sử dụng scaling bilinear hay FSR 1.0. Khi sử dụng scaling bilinear, không có shader upscale đặc biệt nào được chạy. Thay vào đó, texture của viewport được kéo giãn và hiển thị bằng linear sampler (khiến việc lọc diễn ra trực tiếp trên phần cứng). Điều này cho phép tối đa hóa hiệu năng của scaling 3D bilinear.
 
-The ``configure()`` function in RenderSceneBuffersRD reallocates the 2D/3D
-buffers when the resolution or scaling changes.
+``configure()`` function trong RenderSceneBuffersRD sẽ cấp phát lại các buffer 2D/3D khi độ phân giải hoặc scaling thay đổi.
 
 .. UPDATE: Planned feature. When dynamic resolution scaling is supported,
 .. update this paragraph.
 
-Dynamic resolution scaling isn't supported yet, but is planned in a future Godot
-release.
+Dynamic resolution scaling hiện chưa được hỗ trợ, nhưng đã được lên kế hoạch cho một bản phát hành Godot trong tương lai.
 
-**2D and 3D rendering buffer configuration C++ code:**
+**Mã C++ cấu hình buffer rendering 2D và 3D:**
 
 - `servers/rendering/renderer_rd/storage_rd/render_scene_buffers_rd.cpp <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/storage_rd/render_scene_buffers_rd.cpp>`__
 
@@ -430,138 +265,84 @@ release.
 - `servers/rendering/renderer_rd/effects/fsr.cpp <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/effects/fsr.cpp>`__
 - `thirdparty/amd-fsr/ <https://github.com/godotengine/godot/tree/master/thirdparty/amd-fsr>`__
 
-2D rendering techniques
------------------------
+Các kỹ thuật rendering 2D
+-------------------------
 
-2D light rendering is performed in a single pass to allow for better performance
-with large amounts of lights.
+Rendering ánh sáng 2D được thực hiện trong một pass duy nhất để đạt hiệu năng tốt hơn với số lượng lớn đèn.
 
-All rendering methods feature 2D batching to improve performance, which is
-especially noticeable with lots of text on screen.
+Tất cả các phương thức rendering đều có batching 2D để cải thiện hiệu năng, đặc biệt dễ nhận thấy khi có nhiều văn bản trên màn hình.
 
-MSAA can be enabled in 2D to provide "automatic" line and polygon antialiasing,
-but FXAA does not affect 2D rendering as it's calculated before 2D rendering
-begins. Godot's 2D drawing methods such as the Line2D node or some CanvasItem
-``draw_*()`` methods provide their own way of antialiasing based on triangle
-strips and vertex colors, which don't require MSAA to work.
+Có thể bật MSAA trong 2D để cung cấp khả năng khử răng cưa "tự động" cho đường thẳng và đa giác, nhưng FXAA không ảnh hưởng đến rendering 2D vì nó được tính toán trước khi rendering 2D bắt đầu. Các phương thức vẽ 2D của Godot như node Line2D hoặc một số ``draw_*()`` methods của CanvasItem cung cấp cách khử răng cưa riêng dựa trên triangle strip và vertex color, không yêu cầu MSAA để hoạt động.
 
-A 2D signed distance field representing LightOccluder2D nodes in the viewport is
-automatically generated if a user shader requests it. This can be used for
-various effects in custom shaders, such as 2D global illumination. It is also
-used to calculate particle collisions in 2D.
+Một signed distance field 2D đại diện cho các node LightOccluder2D trong viewport sẽ tự động được tạo nếu user shader yêu cầu. Field này có thể được sử dụng cho nhiều hiệu ứng khác nhau trong custom shader, chẳng hạn như global illumination 2D. Nó cũng được sử dụng để tính toán va chạm của particle trong 2D.
 
-**2D SDF generation GLSL shader:**
+**GLSL shader tạo 2D SDF:**
 
 - `servers/rendering/renderer_rd/shaders/canvas_sdf.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/canvas_sdf.glsl>`__
 
-3D rendering techniques
------------------------
+Các kỹ thuật rendering 3D
+-------------------------
 
 Reverse Z
 ~~~~~~~~~
 
-All of Godot's renderers use reverse Z. This means that the depth buffer is
-inverted, with ``1.0`` representing the near plane and ``0.0`` representing
-the far plane. This allows for
-`better precision <https://developer.nvidia.com/content/depth-precision-visualized>`__,
-especially at long distances.
+Tất cả renderer của Godot đều sử dụng reverse Z. Điều này có nghĩa là depth buffer bị đảo ngược, trong đó ``1.0`` biểu thị mặt phẳng gần và ``0.0`` biểu thị mặt phẳng xa. Điều này cho phép `độ chính xác tốt hơn <https://developer.nvidia.com/content/depth-precision-visualized>`__, đặc biệt là ở khoảng cách xa.
 
-Batching and instancing
-~~~~~~~~~~~~~~~~~~~~~~~
+Batching và instancing
+~~~~~~~~~~~~~~~~~~~~~~
 
-In the Forward+ renderer, Vulkan instancing is used to group rendering of
-identical opaque or alpha-tested objects for performance. (Alpha-blended objects
-are never instanced.) This is not as fast as static mesh merging, but it still
-allows instances to be culled individually.
+Trong renderer Forward+, Vulkan instancing được sử dụng để nhóm việc rendering các đối tượng opaque hoặc alpha-tested giống hệt nhau nhằm cải thiện hiệu năng. (Các đối tượng alpha-blended không bao giờ được instancing.) Cách này không nhanh bằng việc hợp nhất static mesh, nhưng vẫn cho phép culling từng instance riêng lẻ.
 
-Light, decal and reflection probe rendering
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Rendering light, decal và reflection probe
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
 
-  Decal rendering is currently not available in the Compatibility renderer.
+  Hiện tại, renderer Compatibility không hỗ trợ rendering decal.
 
-The Forward+ renderer uses clustered lighting. This
-allows using as many lights as you want; performance largely depends on screen
-coverage. Shadow-less lights can be almost free if they don't occupy much space
-on screen.
+Renderer Forward+ sử dụng clustered lighting. Điều này cho phép bạn sử dụng bao nhiêu light tùy ý; hiệu năng phần lớn phụ thuộc vào phần diện tích màn hình bị che phủ. Các light không có shadow có thể gần như không tốn chi phí nếu chúng không chiếm nhiều không gian trên màn hình.
 
-All rendering methods also support rendering up to 8 directional lights at the
-same time (albeit with lower shadow quality when more than one light has shadows
-enabled).
+Tất cả phương thức rendering cũng hỗ trợ rendering đồng thời tối đa 8 directional light (dù chất lượng shadow sẽ thấp hơn khi có nhiều hơn một light bật shadow).
 
-The Mobile renderer uses a single-pass lighting approach, with a
-limitation of 8 OmniLights + 8 SpotLights affecting each Mesh *resource* (plus a
-limitation of 256 OmniLights + 256 SpotLights in the camera view). These limits
-are hardcoded and can't be adjusted in the project settings.
+Renderer Mobile sử dụng phương pháp lighting một pass, với giới hạn 8 OmniLights + 8 SpotLights ảnh hưởng đến mỗi Mesh *tài nguyên* (cộng thêm giới hạn 256 OmniLights + 256 SpotLights trong vùng nhìn của camera). Các giới hạn này được hardcode và không thể điều chỉnh trong project settings.
 
-The Compatibility renderer uses a hybrid single-pass + multi-pass lighting
-approach. Lights without shadows are rendered in a single pass. Lights with
-shadows are rendered in multiple passes. This is required for performance
-reasons on mobile devices. As a result, performance does not scale well with
-many shadow-casting lights. It is recommended to only have a handful of lights
-with shadows in the camera frustum at a time and for those lights to be spread
-apart so that each object is only touched by 1 or 2 shadowed lights at a time.
-The maximum number of lights visible at once can be adjusted in the project
-settings.
+Renderer Compatibility sử dụng phương pháp lighting lai giữa một pass và nhiều pass. Các light không có shadow được rendering trong một pass. Các light có shadow được rendering qua nhiều pass. Điều này cần thiết vì lý do hiệu năng trên các thiết bị di động. Do đó, hiệu năng không mở rộng tốt khi có nhiều light tạo shadow. Bạn nên chỉ có một vài light có shadow trong camera frustum tại một thời điểm, đồng thời bố trí các light đó cách xa nhau để mỗi object chỉ bị tác động bởi 1 hoặc 2 light có shadow tại một thời điểm. Có thể điều chỉnh số lượng light tối đa hiển thị cùng lúc trong project settings.
 
 .. UPDATE: Planned feature. When static and dynamic shadow rendering are
 .. separated, update this paragraph.
 
-In all 3 methods, lights without shadows are much cheaper than lights with
-shadows. To improve performance, lights are only updated when the light is
-modified or when objects in its radius are modified. Godot currently doesn't
-separate static shadow rendering from dynamic shadow rendering, but this is
-planned in a future release.
+Trong cả 3 phương thức, light không có shadow rẻ hơn nhiều so với light có shadow. Để cải thiện hiệu năng, light chỉ được cập nhật khi light bị thay đổi hoặc khi các object trong bán kính của nó bị thay đổi. Hiện tại Godot không tách rendering static shadow khỏi rendering dynamic shadow, nhưng tính năng này đã được lên kế hoạch cho một bản phát hành trong tương lai.
 
-Clustering is also used for reflection probes and decal rendering in the
-Forward+ renderer.
+Clustering cũng được sử dụng cho reflection probe và rendering decal trong renderer Forward+.
 
-Area lights make use of the
-`Linearly Transformed Cosines <https://eheitzresearch.wordpress.com/757-2/>`__
-technique.
+Area light sử dụng kỹ thuật `Linearly Transformed Cosines <https://eheitzresearch.wordpress.com/757-2/>`__.
 
 Shadow mapping
 ~~~~~~~~~~~~~~
 
-Both Forward+ and Mobile methods use
-:abbr:`PCF (Percentage Closer Filtering)` to filter shadow maps and create a
-soft penumbra. Instead of using a fixed PCF pattern, these methods use a vogel
-disk pattern which allows for changing the number of samples and smoothly
-changing the quality.
+Cả phương thức Forward+ và Mobile đều sử dụng
+:abbr:`PCF (Percentage Closer Filtering)` để lọc shadow map và tạo penumbra mềm. Thay vì sử dụng một mẫu PCF cố định, các phương thức này sử dụng mẫu vogel disk, cho phép thay đổi số lượng sample và thay đổi chất lượng một cách mượt mà.
 
-Godot also supports percentage-closer soft shadows (PCSS) for more realistic
-shadow penumbra rendering. PCSS shadows are limited to the Forward+ renderer
-as they're too demanding to be usable in the Mobile renderer.
-PCSS also uses a vogel-disk shaped kernel.
+Godot cũng hỗ trợ percentage-closer soft shadow (PCSS) để rendering penumbra của shadow chân thực hơn. Shadow PCSS chỉ được giới hạn ở renderer Forward+ vì chúng đòi hỏi quá nhiều tài nguyên để có thể sử dụng trong renderer Mobile. PCSS cũng sử dụng kernel có hình dạng vogel disk.
 
-Additionally, both shadow-mapping techniques rotate the kernel on a per-pixel
-basis to help soften under-sampling artifacts.
+Ngoài ra, cả hai kỹ thuật shadow mapping đều xoay kernel theo từng pixel để giúp làm mềm các artifact do lấy mẫu thiếu.
 
-The Compatibility renderer supports shadow mapping for DirectionalLight3D,
-OmniLight3D, and SpotLight3D lights.
+Renderer Compatibility hỗ trợ shadow mapping cho các light DirectionalLight3D, OmniLight3D và SpotLight3D.
 
 Temporal antialiasing
 ~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
 
-    Only available in the Forward+ renderer, not the Mobile or Compatibility renderers.
+    Chỉ khả dụng trong renderer Forward+, không khả dụng trong renderer Mobile hoặc Compatibility.
 
-Godot uses a custom TAA implementation based on the old TAA implementation from
-`Spartan Engine <https://github.com/PanosK92/SpartanEngine>`__.
+Godot sử dụng một triển khai TAA tùy chỉnh dựa trên triển khai TAA cũ của `Spartan Engine <https://github.com/PanosK92/SpartanEngine>`__.
 
-Temporal antialiasing requires motion vectors to work. If motion vectors
-are not correctly generated, ghosting will occur when the camera or objects move.
+Temporal antialiasing yêu cầu motion vector để hoạt động. Nếu motion vector không được tạo chính xác, hiện tượng ghosting sẽ xảy ra khi camera hoặc các object di chuyển.
 
-Motion vectors are generated on the GPU in the main material shader. This is
-done by running the vertex shader corresponding to the previous rendered frame
-(with the previous camera transform) in addition to the vertex shader for the
-current rendered frame, then storing the difference between them in a color buffer.
+Motion vector được tạo trên GPU trong main material shader. Việc này được thực hiện bằng cách chạy vertex shader tương ứng với frame đã rendering trước đó (với phép biến đổi camera trước đó) cùng với vertex shader của frame hiện tại, sau đó lưu phần chênh lệch giữa chúng vào color buffer.
 
-Alternatively, FSR 2.2 can be used as an upscaling solution that also provides
-its own temporal antialiasing algorithm. FSR 2.2 is implemented on top of the
-RenderingDevice abstraction as opposed to using AMD's reference code directly.
+Ngoài ra, có thể sử dụng FSR 2.2 làm giải pháp upscaling, đồng thời cung cấp thuật toán temporal antialiasing riêng. FSR 2.2 được triển khai trên lớp trừu tượng RenderingDevice thay vì sử dụng trực tiếp mã tham chiếu của AMD.
 
 **TAA resolve:**
 
@@ -578,125 +359,102 @@ Global illumination
 
 .. note::
 
-    VoxelGI and SDFGI are only available in the Forward+ renderer, not the
-    Mobile or Compatibility renderers.
+    VoxelGI và SDFGI chỉ khả dụng trong renderer Forward+, không khả dụng trong renderer Mobile hoặc Compatibility.
 
-    LightmapGI *baking* is only available in the Forward+ and Mobile renderers,
-    and can only be performed within the editor (not in an exported
-    project). LightmapGI *rendering* is supported by the Compatibility renderer.
+    *Việc baking* LightmapGI chỉ khả dụng trong renderer Forward+ và Mobile, đồng thời chỉ có thể được thực hiện trong editor (không phải trong project đã export). *Việc rendering* LightmapGI được renderer Compatibility hỗ trợ.
 
-Godot supports voxel-based GI (VoxelGI), signed distance field GI (SDFGI) and
-lightmap baking and rendering (LightmapGI). These techniques can be used
-simultaneously if desired.
+Godot hỗ trợ GI dựa trên voxel (VoxelGI), GI dựa trên signed distance field (SDFGI) và baking cũng như rendering lightmap (LightmapGI). Có thể sử dụng đồng thời các kỹ thuật này nếu muốn.
 
-Lightmap baking happens on the GPU using Vulkan compute shaders. The GPU-based
-lightmapper is implemented in the LightmapperRD class, which inherits from the
-Lightmapper class. This allows for implementing additional lightmappers, paving
-the way for a future port of the CPU-based lightmapper present in Godot 3.x.
-This would allow baking lightmaps while using the Compatibility renderer.
+Việc baking lightmap diễn ra trên GPU bằng compute shader Vulkan. Lightmapper dựa trên GPU được triển khai trong class LightmapperRD, kế thừa từ class Lightmapper. Điều này cho phép triển khai thêm các lightmapper, mở đường cho việc port lightmapper dựa trên CPU hiện có trong Godot 3.x trong tương lai. Nhờ đó, có thể baking lightmap khi sử dụng renderer Compatibility.
 
-**Core GI C++ code:**
+**Mã C++ GI cốt lõi:**
 
 - `servers/rendering/renderer_rd/environment/gi.cpp <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/environment/gi.cpp>`__
-- `scene/3d/voxel_gi.cpp <https://github.com/godotengine/godot/blob/4.6/scene/3d/voxel_gi.cpp>`__ - VoxelGI node
-- `editor/scene/3d/voxel_gi_editor_plugin.cpp <https://github.com/godotengine/godot/blob/4.6/editor/scene/3d/voxel_gi_editor_plugin.cpp>`__ - Editor UI for the VoxelGI node
+- `scene/3d/voxel_gi.cpp <https://github.com/godotengine/godot/blob/4.6/scene/3d/voxel_gi.cpp>`__ - node VoxelGI
+- `editor/scene/3d/voxel_gi_editor_plugin.cpp <https://github.com/godotengine/godot/blob/4.6/editor/scene/3d/voxel_gi_editor_plugin.cpp>`__ - UI editor cho node VoxelGI
 
-**Core GI GLSL shaders:**
+**Các shader GLSL GI cốt lõi:**
 
 - `servers/rendering/renderer_rd/shaders/environment/voxel_gi.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/environment/voxel_gi.glsl>`__
-- `servers/rendering/renderer_rd/shaders/environment/voxel_gi_debug.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/environment/voxel_gi_debug.glsl>`__ - VoxelGI debug draw mode
-- `servers/rendering/renderer_rd/shaders/environment/sdfgi_debug.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/environment/sdfgi_debug.glsl>`__ - SDFGI Cascades debug draw mode
-- `servers/rendering/renderer_rd/shaders/environment/sdfgi_debug_probes.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/environment/sdfgi_debug_probes.glsl>`__ - SDFGI Probes debug draw mode
+- `servers/rendering/renderer_rd/shaders/environment/voxel_gi_debug.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/environment/voxel_gi_debug.glsl>`__ - chế độ vẽ gỡ lỗi VoxelGI
+- `servers/rendering/renderer_rd/shaders/environment/sdfgi_debug.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/environment/sdfgi_debug.glsl>`__ - chế độ vẽ gỡ lỗi Cascades của SDFGI
+- `servers/rendering/renderer_rd/shaders/environment/sdfgi_debug_probes.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/environment/sdfgi_debug_probes.glsl>`__ - chế độ vẽ gỡ lỗi Probes của SDFGI
 - `servers/rendering/renderer_rd/shaders/environment/sdfgi_integrate.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/environment/sdfgi_integrate.glsl>`__
 - `servers/rendering/renderer_rd/shaders/environment/sdfgi_preprocess.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/environment/sdfgi_preprocess.glsl>`__
 - `servers/rendering/renderer_rd/shaders/environment/sdfgi_direct_light.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/environment/sdfgi_direct_light.glsl>`__
 
-**Lightmapper C++ code:**
+**Mã C++ của Lightmapper:**
 
-- `scene/3d/lightmap_gi.cpp <https://github.com/godotengine/godot/blob/4.6/scene/3d/lightmap_gi.cpp>`__ - LightmapGI node
-- `editor/scene/3d/lightmap_gi_editor_plugin.cpp <https://github.com/godotengine/godot/blob/4.6/editor/scene/3d/lightmap_gi_editor_plugin.cpp>`__ - Editor UI for the LightmapGI node
-- `scene/3d/lightmapper.cpp <https://github.com/godotengine/godot/blob/4.6/scene/3d/lightmapper.cpp>`__ - Abstract class
-- `modules/lightmapper_rd/lightmapper_rd.cpp <https://github.com/godotengine/godot/blob/4.6/modules/lightmapper_rd/lightmapper_rd.cpp>`__ - GPU-based lightmapper implementation
+- `scene/3d/lightmap_gi.cpp <https://github.com/godotengine/godot/blob/4.6/scene/3d/lightmap_gi.cpp>`__ - node LightmapGI
+- `editor/scene/3d/lightmap_gi_editor_plugin.cpp <https://github.com/godotengine/godot/blob/4.6/editor/scene/3d/lightmap_gi_editor_plugin.cpp>`__ - UI editor cho node LightmapGI
+- `scene/3d/lightmapper.cpp <https://github.com/godotengine/godot/blob/4.6/scene/3d/lightmapper.cpp>`__ - Lớp trừu tượng
+- `modules/lightmapper_rd/lightmapper_rd.cpp <https://github.com/godotengine/godot/blob/4.6/modules/lightmapper_rd/lightmapper_rd.cpp>`__ - triển khai lightmapper dựa trên GPU
 
-**Lightmapper GLSL shaders:**
+**Các shader GLSL của Lightmapper:**
 
 - `modules/lightmapper_rd/lm_raster.glsl <https://github.com/godotengine/godot/blob/4.6/modules/lightmapper_rd/lm_raster.glsl>`__
 - `modules/lightmapper_rd/lm_compute.glsl <https://github.com/godotengine/godot/blob/4.6/modules/lightmapper_rd/lm_compute.glsl>`__
 - `modules/lightmapper_rd/lm_blendseams.glsl <https://github.com/godotengine/godot/blob/4.6/modules/lightmapper_rd/lm_blendseams.glsl>`__
 
-Depth of field
-~~~~~~~~~~~~~~
+Độ sâu trường ảnh
+~~~~~~~~~~~~~~~~~
 
 .. note::
 
-    Only available in the Forward+ and Mobile renderers, not the
-    Compatibility renderer.
+    Chỉ có trong các renderer Forward+ và Mobile, không có trong renderer Compatibility.
 
-The Forward+ and Mobile renderers use different approaches to DOF rendering, with
-different visual results. This is done to best match the performance characteristics
-of the target hardware. In Forward+, DOF is performed using a compute shader. In
-Mobile, DOF is performed using a fragment shader (raster).
+Các renderer Forward+ và Mobile sử dụng những cách tiếp cận khác nhau để render DOF, tạo ra các kết quả hình ảnh khác nhau. Điều này nhằm phù hợp nhất với đặc tính hiệu năng của phần cứng đích. Trong Forward+, DOF được thực hiện bằng compute shader. Trong Mobile, DOF được thực hiện bằng fragment shader (raster).
 
-Box, hexagon and circle bokeh shapes are available (from fastest to slowest).
-Depth of field can optionally be jittered every frame to improve its appearance
-when temporal antialiasing is enabled.
+Có các hình dạng bokeh hình hộp, hình lục giác và hình tròn (từ nhanh nhất đến chậm nhất). Có thể tùy chọn jitter độ sâu trường ảnh ở mỗi frame để cải thiện hình ảnh khi bật temporal antialiasing.
 
-**Depth of field C++ code:**
+**Mã C++ của độ sâu trường ảnh:**
 
 - `servers/rendering/renderer_rd/effects/bokeh_dof.cpp <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/effects/bokeh_dof.cpp>`__
 
-**Depth of field GLSL shader (compute - used for Forward+):**
+**Shader GLSL cho độ sâu trường ảnh (compute - dùng cho Forward+):**
 
 - `servers/rendering/renderer_rd/shaders/effects/bokeh_dof.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/effects/bokeh_dof.glsl>`__
 
-**Depth of field GLSL shader (raster - used for Mobile):**
+**Shader GLSL cho độ sâu trường ảnh (raster - dùng cho Mobile):**
 
 - `servers/rendering/renderer_rd/shaders/effects/bokeh_dof_raster.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/effects/bokeh_dof_raster.glsl>`__
 
-Screen-space effects (SSAO, SSIL, SSR, SSS)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Các hiệu ứng trong không gian màn hình (SSAO, SSIL, SSR, SSS)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
 
-    Only available in the Forward+ renderer, not the Mobile or Compatibility renderers.
+    Chỉ có trong renderer Forward+, không có trong các renderer Mobile hoặc Compatibility.
 
-The Forward+ renderer supports screen-space ambient occlusion,
-screen-space indirect lighting, screen-space reflections and subsurface scattering.
+Renderer Forward+ hỗ trợ ambient occlusion trong không gian màn hình, lighting gián tiếp trong không gian màn hình, reflections trong không gian màn hình và subsurface scattering.
 
-SSAO uses an implementation derived from Intel's
-`ASSAO <https://www.intel.com/content/www/us/en/developer/articles/technical/adaptive-screen-space-ambient-occlusion.html>`__
-(converted to Vulkan). SSIL is derived from SSAO to provide high-performance
-indirect lighting.
+SSAO sử dụng một triển khai bắt nguồn từ `ASSAO <https://www.intel.com/content/www/us/en/developer/articles/technical/adaptive-screen-space-ambient-occlusion.html>`__ của Intel (được chuyển đổi sang Vulkan). SSIL được phát triển từ SSAO để cung cấp lighting gián tiếp hiệu năng cao.
 
-When both SSAO and SSIL are enabled, parts of SSAO and SSIL are shared to reduce
-the performance impact.
+Khi bật cả SSAO và SSIL, một số phần của SSAO và SSIL được dùng chung để giảm tác động đến hiệu năng.
 
-SSAO, SSIL, and SSR are performed at half resolution by default to improve performance.
+Theo mặc định, SSAO, SSIL và SSR được thực hiện ở độ phân giải một nửa để cải thiện hiệu năng.
 
-SSR makes use of a Hi-Z buffer to improve performance. This Hi-Z buffer is generated
-from the depth buffer in a compute shader. See the
-`pull request that overhauled SSR <https://github.com/godotengine/godot/pull/111210>`__
-for more information.
+SSR sử dụng buffer Hi-Z để cải thiện hiệu năng. Buffer Hi-Z này được tạo từ depth buffer trong compute shader. Xem `pull request đã cải tiến SSR <https://github.com/godotengine/godot/pull/111210>`__ để biết thêm thông tin.
 
-**Screen-space effects C++ code:**
+**Mã C++ của các hiệu ứng trong không gian màn hình:**
 
 - `servers/rendering/renderer_rd/effects/ss_effects.cpp <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/effects/ss_effects.cpp>`__
 
-**Screen-space ambient occlusion GLSL shader:**
+**Shader GLSL cho ambient occlusion trong không gian màn hình:**
 
 - `servers/rendering/renderer_rd/shaders/effects/ssao.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/effects/ssao.glsl>`__
 - `servers/rendering/renderer_rd/shaders/effects/ssao_blur.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/effects/ssao_blur.glsl>`__
 - `servers/rendering/renderer_rd/shaders/effects/ssao_interleave.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/effects/ssao_interleave.glsl>`__
 - `servers/rendering/renderer_rd/shaders/effects/ssao_importance_map.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/effects/ssao_importance_map.glsl>`__
 
-**Screen-space indirect lighting GLSL shader:**
+**Shader GLSL cho lighting gián tiếp trong không gian màn hình:**
 
 - `servers/rendering/renderer_rd/shaders/effects/ssil.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/effects/ssil.glsl>`__
 - `servers/rendering/renderer_rd/shaders/effects/ssil_blur.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/effects/ssil_blur.glsl>`__
 - `servers/rendering/renderer_rd/shaders/effects/ssil_interleave.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/effects/ssil_interleave.glsl>`__
 - `servers/rendering/renderer_rd/shaders/effects/ssil_importance_map.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/effects/ssil_importance_map.glsl>`__
 
-**Screen-space reflections GLSL shader:**
+**Shader GLSL cho reflections trong không gian màn hình:**
 
 - `servers/rendering/renderer_rd/shaders/effects/screen_space_reflection.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/effects/screen_space_reflection.glsl>`__
 - `servers/rendering/renderer_rd/shaders/effects/screen_space_reflection_filter.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/effects/screen_space_reflection_filter.glsl>`__
@@ -708,154 +466,107 @@ for more information.
 
 - `servers/rendering/renderer_rd/shaders/effects/subsurface_scattering.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/effects/subsurface_scattering.glsl>`__
 
-Sky rendering
-~~~~~~~~~~~~~
+Kết xuất bầu trời
+~~~~~~~~~~~~~~~~~
 
 .. seealso::
 
     :ref:`doc_sky_shader`
 
-Godot supports using shaders to render the sky background. The radiance map
-(which is used to provide ambient light and reflections for PBR materials) is
-automatically updated based on the sky shader.
+Godot hỗ trợ sử dụng shader để kết xuất nền bầu trời. Bản đồ bức xạ (được dùng để cung cấp ánh sáng môi trường và phản chiếu cho các vật liệu PBR) sẽ tự động được cập nhật dựa trên sky shader.
 
-The SkyMaterial resources such as ProceduralSkyMaterial, PhysicalSkyMaterial and
-PanoramaSkyMaterial generate a built-in shader for sky rendering. This is
-similar to what BaseMaterial3D provides for 3D scene materials.
+Các resource SkyMaterial như ProceduralSkyMaterial, PhysicalSkyMaterial và PanoramaSkyMaterial tạo ra một shader dựng sẵn để kết xuất bầu trời. Cách này tương tự những gì BaseMaterial3D cung cấp cho các vật liệu scene 3D.
 
-A detailed technical implementation can be found in the
-`Custom sky shaders in Godot 4.0 <https://godotengine.org/article/custom-sky-shaders-godot-4-0>`__
-article.
+Bạn có thể tìm thấy phần triển khai kỹ thuật chi tiết trong bài viết `Custom sky shaders in Godot 4.0 <https://godotengine.org/article/custom-sky-shaders-godot-4-0>`__.
 
-**Sky rendering C++ code:**
+**Mã C++ kết xuất bầu trời:**
 
-- `servers/rendering/renderer_rd/environment/sky.cpp <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/environment/sky.cpp>`__ - Sky rendering
-- `scene/resources/sky.cpp <https://github.com/godotengine/godot/blob/4.6/scene/resources/sky.cpp>`__ - Sky resource (not to be confused with sky rendering)
-- `scene/resources/3d/sky_material.cpp <https://github.com/godotengine/godot/blob/4.6/scene/resources/3d/sky_material.cpp>`__ SkyMaterial resources (used in the Sky resource)
+- `servers/rendering/renderer_rd/environment/sky.cpp <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/environment/sky.cpp>`__ - Kết xuất bầu trời
+- `scene/resources/sky.cpp <https://github.com/godotengine/godot/blob/4.6/scene/resources/sky.cpp>`__ - Resource bầu trời (không nên nhầm với việc kết xuất bầu trời)
+- `scene/resources/3d/sky_material.cpp <https://github.com/godotengine/godot/blob/4.6/scene/resources/3d/sky_material.cpp>`__ Các resource SkyMaterial (được sử dụng trong resource Sky)
 
-**Sky rendering GLSL shader:**
+**Shader GLSL kết xuất bầu trời:**
 
-Volumetric fog
-~~~~~~~~~~~~~~
+Sương mù thể tích
+~~~~~~~~~~~~~~~~~
 
 .. note::
 
-    Only available in the Forward+ renderer, not the Mobile or Compatibility renderers.
+    Chỉ khả dụng trong Forward+, không khả dụng trong các renderer Mobile hoặc Compatibility.
 
 .. seealso::
 
     :ref:`doc_fog_shader`
 
-Godot supports a frustum-aligned voxel (froxel) approach to volumetric fog
-rendering. As opposed to a post-processing filter, this approach is more
-general-purpose as it can work with any light type. Fog can also use shaders for
-custom behavior, which allows animating the fog or using a 3D texture to
-represent density.
+Godot hỗ trợ phương pháp voxel (froxel) căn chỉnh theo frustum để kết xuất sương mù thể tích. Không giống như một bộ lọc hậu kỳ, phương pháp này có mục đích sử dụng tổng quát hơn vì có thể hoạt động với mọi loại ánh sáng. Sương mù cũng có thể sử dụng shader để tạo hành vi tùy chỉnh, cho phép tạo hiệu ứng chuyển động cho sương mù hoặc sử dụng texture 3D để biểu diễn mật độ.
 
-The FogMaterial resource generates a built-in shader for FogVolume nodes. This is
-similar to what BaseMaterial3D provides for 3D scene materials.
+Resource FogMaterial tạo ra một shader dựng sẵn cho các node FogVolume. Cách này tương tự những gì BaseMaterial3D cung cấp cho các vật liệu scene 3D.
 
-A detailed technical explanation can be found in the
-`Fog Volumes arrive in Godot 4.0 <https://godotengine.org/article/fog-volumes-arrive-in-godot-4>`__
-article.
+Bạn có thể tìm thấy phần giải thích kỹ thuật chi tiết trong bài viết `Fog Volumes arrive in Godot 4.0 <https://godotengine.org/article/fog-volumes-arrive-in-godot-4>`__.
 
-**Volumetric fog C++ code:**
+**Mã C++ sương mù thể tích:**
 
-- `servers/rendering/renderer_rd/environment/fog.cpp <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/environment/fog.cpp>`__ - General volumetric fog
-- `scene/3d/fog_volume.cpp <https://github.com/godotengine/godot/blob/4.6/scene/3d/fog_volume.cpp>`__ - FogVolume node
-- `scene/resources/3d/fog_material.cpp <https://github.com/godotengine/godot/blob/4.6/scene/resources/3d/fog_material.cpp>`__ - FogMaterial resource (used by FogVolume)
+- `servers/rendering/renderer_rd/environment/fog.cpp <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/environment/fog.cpp>`__ - Sương mù thể tích tổng quát
+- `scene/3d/fog_volume.cpp <https://github.com/godotengine/godot/blob/4.6/scene/3d/fog_volume.cpp>`__ - Node FogVolume
+- `scene/resources/3d/fog_material.cpp <https://github.com/godotengine/godot/blob/4.6/scene/resources/3d/fog_material.cpp>`__ - Resource FogMaterial (được FogVolume sử dụng)
 
-**Volumetric fog GLSL shaders:**
+**Các shader GLSL sương mù thể tích:**
 
 - `servers/rendering/renderer_rd/shaders/environment/volumetric_fog.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/environment/volumetric_fog.glsl>`__
 - `servers/rendering/renderer_rd/shaders/environment/volumetric_fog_process.glsl <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_rd/shaders/environment/volumetric_fog_process.glsl>`__
 
-Occlusion culling
-~~~~~~~~~~~~~~~~~
+Culling vật thể che khuất
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-While modern GPUs can handle drawing a lot of triangles, the number of draw
-calls in complex scenes can still be a bottleneck (even with Vulkan, Direct3D 12,
-and Metal).
+Mặc dù các GPU hiện đại có thể xử lý việc vẽ rất nhiều tam giác, số lượng draw call trong các scene phức tạp vẫn có thể trở thành nút thắt cổ chai (ngay cả với Vulkan, Direct3D 12 và Metal).
 
-Godot 4 supports occlusion culling to reduce overdraw (when the depth prepass
-is disabled) and reduce vertex throughput.
-This is done by rasterizing a low-resolution buffer on the CPU using
-`Embree <https://github.com/embree/embree>`__. The buffer's resolution depends
-on the number of CPU threads on the system, as this is done in parallel.
-This buffer includes occluder shapes that were baked in the editor or created at
-runtime. The occlusion culling buffer is jittered by a small amount every frame
-to help reduce under-sampling artifacts, which would lead to false positives
-(objects getting occluded when they shouldn't be).
+Godot 4 hỗ trợ culling vật thể che khuất để giảm overdraw (khi depth prepass bị tắt) và giảm vertex throughput. Việc này được thực hiện bằng cách rasterize một buffer độ phân giải thấp trên CPU thông qua `Embree <https://github.com/embree/embree>`__. Độ phân giải của buffer phụ thuộc vào số luồng CPU trên hệ thống, vì quá trình này được thực hiện song song. Buffer này bao gồm các hình dạng vật thể che khuất được bake trong editor hoặc tạo trong runtime. Buffer culling vật thể che khuất được jitter một lượng nhỏ ở mỗi frame để giúp giảm các hiện tượng giả do lấy mẫu thiếu, vốn có thể dẫn đến kết quả dương tính giả (các đối tượng bị che khuất dù không nên bị che khuất).
 
-As complex occluders can introduce a lot of strain on the CPU, baked occluders
-can be simplified automatically when generated in the editor.
+Vì các vật thể che khuất phức tạp có thể gây nhiều tải cho CPU, các vật thể che khuất được bake có thể được tự động đơn giản hóa khi tạo trong editor.
 
-Godot's occlusion culling doesn't support dynamic occluders yet, but
-OccluderInstance3D nodes can still have their visibility toggled or be moved.
-However, this will be slow when updating complex occluders this way. Therefore,
-updating occluders at runtime is best done only on simple occluder shapes such
-as quads or cuboids.
+Culling vật thể che khuất của Godot hiện chưa hỗ trợ các vật thể che khuất động, nhưng các node OccluderInstance3D vẫn có thể bật/tắt khả năng hiển thị hoặc được di chuyển. Tuy nhiên, việc cập nhật các vật thể che khuất phức tạp theo cách này sẽ chậm. Do đó, tốt nhất chỉ cập nhật vật thể che khuất trong runtime đối với các hình dạng đơn giản như quad hoặc cuboid.
 
-This CPU-based approach has a few advantages over other solutions, such as
-portals and rooms or a GPU-based culling solution:
+Phương pháp dựa trên CPU này có một số ưu điểm so với các giải pháp khác, chẳng hạn như portal và room hoặc giải pháp culling dựa trên GPU:
 
-- No manual setup required (but can be tweaked manually for best performance).
-- No frame delay, which is problematic in cutscenes during camera cuts or when
-  the camera moves fast behind a wall.
-- Works the same on all rendering drivers and methods, with no unpredictable
-  behavior depending on the driver or GPU hardware.
+- Không cần thiết lập thủ công (nhưng có thể tinh chỉnh thủ công để đạt hiệu năng tốt nhất).
+- Không có độ trễ frame, vốn gây vấn đề trong các cutscene khi camera chuyển cảnh hoặc khi camera di chuyển nhanh ra phía sau một bức tường.
+- Hoạt động giống nhau trên mọi rendering driver và phương thức, không có hành vi khó đoán tùy thuộc vào driver hoặc phần cứng GPU.
 
-Occlusion culling is performed by registering occluder meshes, which is done
-using OccluderInstance3D *nodes* (which themselves use Occluder3D *resources*).
-RenderingServer then performs occlusion culling by calling Embree in
-RendererSceneOcclusionCull.
+Culling vật thể che khuất được thực hiện bằng cách đăng ký các mesh vật thể che khuất, thông qua các *node* OccluderInstance3D (bản thân chúng sử dụng các *resource* Occluder3D). Sau đó, RenderingServer thực hiện culling vật thể che khuất bằng cách gọi Embree trong RendererSceneOcclusionCull.
 
-**Occlusion culling C++ code:**
+**Mã C++ culling vật thể che khuất:**
 
 - `scene/3d/occluder_instance_3d.cpp <https://github.com/godotengine/godot/blob/4.6/scene/3d/occluder_instance_3d.cpp>`__
 - `servers/rendering/renderer_scene_occlusion_cull.cpp <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_scene_occlusion_cull.cpp>`__
 
-Visibility range (LOD)
+Phạm vi hiển thị (LOD)
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Godot supports manually authored hierarchical level of detail (HLOD), with
-distances specified by the user in the inspector.
+Godot hỗ trợ hierarchical level of detail (HLOD) được tạo thủ công, với khoảng cách do người dùng chỉ định trong inspector.
 
-In RenderingSceneCull, the ``_scene_cull()`` and ``_render_scene()`` functions
-are where most of the LOD determination happens. Each viewport can render the
-same mesh with different LODs (to allow for split screen rendering to look correct).
+Trong RenderingSceneCull, các hàm ``_scene_cull()`` và ``_render_scene()`` là nơi phần lớn quá trình xác định LOD diễn ra. Mỗi viewport có thể kết xuất cùng một mesh với các LOD khác nhau (để hiển thị split screen chính xác).
 
-**Visibility range C++ code:**
+**Mã C++ phạm vi hiển thị:**
 
 - `servers/rendering/renderer_scene_cull.cpp <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_scene_cull.cpp>`__
 
-Automatic mesh LOD
-~~~~~~~~~~~~~~~~~~
+LOD mesh tự động
+~~~~~~~~~~~~~~~~
 
-The ImporterMesh class is used for the 3D mesh import workflow in the editor.
-Its ``generate_lods()`` function handles generating using the
-`meshoptimizer <https://meshoptimizer.org/>`__ library.
+Class ImporterMesh được sử dụng cho quy trình import mesh 3D trong editor. Hàm ``generate_lods()`` của class này xử lý việc tạo mesh bằng thư viện `meshoptimizer <https://meshoptimizer.org/>`__.
 
-LOD mesh generation also generates shadow meshes at the same time. These are
-meshes that have their vertices welded regardless of smoothing and materials.
-This is used to improve shadow rendering performance by lowering the vertex
-throughput required to render shadows.
+Việc tạo mesh LOD cũng đồng thời tạo các shadow mesh. Đây là những mesh có các vertex được weld bất kể smoothing và material. Tính năng này được dùng để cải thiện hiệu năng kết xuất bóng bằng cách giảm vertex throughput cần thiết để kết xuất bóng.
 
-The RenderingSceneCull class's ``_render_scene()`` function determines which
-mesh LOD should be used when rendering. Each viewport can render the
-same mesh with different LODs (to allow for split screen rendering to look correct).
+Hàm ``_render_scene()`` của class RenderingSceneCull xác định mesh LOD nào sẽ được sử dụng khi kết xuất. Mỗi viewport có thể kết xuất cùng một mesh với các LOD khác nhau (để hiển thị split screen chính xác).
 
-The mesh LOD is automatically chosen based on a screen coverage metric. This
-takes resolution and camera FOV changes into account without requiring user
-intervention. The threshold multiplier can be adjusted in the project settings.
+LOD mesh được tự động chọn dựa trên metric độ bao phủ màn hình. Metric này tính đến các thay đổi về độ phân giải và FOV của camera mà không cần người dùng can thiệp. Có thể điều chỉnh multiplier của ngưỡng trong project settings.
 
-To improve performance, shadow rendering and reflection probe rendering also choose
-their own mesh LOD thresholds (which can be different from the main scene rendering).
+Để cải thiện hiệu năng, việc kết xuất bóng đổ và kết xuất reflection probe cũng tự chọn các ngưỡng LOD của mesh riêng (có thể khác với việc kết xuất cảnh chính).
 
-**Mesh LOD generation on import C++ code:**
+**Mã C++ tạo LOD của mesh khi import:**
 
 - `scene/resources/3d/importer_mesh.cpp <https://github.com/godotengine/godot/blob/4.6/scene/resources/3d/importer_mesh.cpp>`__
 
-**Mesh LOD determination C++ code:**
+**Mã C++ xác định LOD của mesh:**
 
 - `servers/rendering/renderer_scene_cull.cpp <https://github.com/godotengine/godot/blob/4.6/servers/rendering/renderer_scene_cull.cpp>`__

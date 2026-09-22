@@ -1,145 +1,101 @@
 .. _doc_2d_coordinate_systems:
 
-2D coordinate systems and 2D transforms
-=======================================
+Hệ tọa độ 2D và phép biến đổi 2D
+================================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-This is a detailed overview of the available 2D coordinate systems and 2D transforms that are
-built in. The basic concepts are covered in :ref:`doc_viewport_and_canvas_transforms`.
+Đây là phần tổng quan chi tiết về các hệ tọa độ 2D và phép biến đổi 2D tích hợp sẵn. Các khái niệm cơ bản được trình bày trong :ref:`doc_viewport_and_canvas_transforms`.
 
-:ref:`Transform2D <class_Transform2D>` are matrices that convert coordinates from one coordinate
-system to another. In order to use them, it is beneficial to know which coordinate systems are
-available in Godot. For a deeper understanding, the :ref:`doc_matrices_and_transforms` tutorial
-offers insights to the underlying functionality.
+:ref:`Transform2D <class_Transform2D>` là các ma trận chuyển đổi tọa độ từ hệ tọa độ này sang hệ tọa độ khác. Để sử dụng chúng, bạn nên biết những hệ tọa độ nào có sẵn trong Godot. Để hiểu sâu hơn, tutorial :ref:`doc_matrices_and_transforms` cung cấp thông tin chi tiết về chức năng bên dưới.
 
-Godot 2D coordinate systems
----------------------------
+Hệ tọa độ 2D của Godot
+----------------------
 
-The following graphic gives an overview of Godot 2D coordinate systems and the available
-node-transforms, transform-functions and coordinate-system related functions. At the left
-is the OS Window Manager screen, at the right are the :ref:`CanvasItems <class_CanvasItem>`. For
-simplicity reasons this graphic doesn't include :ref:`SubViewport <class_SubViewport>`,
-:ref:`SubViewportContainer <class_SubViewportContainer>`, :ref:`ParallaxLayer<class_ParallaxLayer>`
-and :ref:`ParallaxBackground<class_ParallaxBackground>` all of which also influence transforms.
+Hình minh họa sau đây cung cấp tổng quan về các hệ tọa độ 2D của Godot và các node-transform, transform-function cũng như các function liên quan đến hệ tọa độ hiện có. Bên trái là màn hình OS Window Manager, bên phải là :ref:`CanvasItems <class_CanvasItem>`. Vì lý do đơn giản, hình minh họa này không bao gồm :ref:`SubViewport <class_SubViewport>`,
+:ref:`SubViewportContainer <class_SubViewportContainer>`, :ref:`ParallaxLayer<class_ParallaxLayer>` và :ref:`ParallaxBackground<class_ParallaxBackground>`, tất cả đều ảnh hưởng đến các phép biến đổi.
 
-The graphic is based on a node tree of the following form: ``Root Window (embed Windows)`` ⇒
-``Window (don't embed Windows)`` ⇒ ``CanvasLayer`` ⇒ ``CanvasItem`` ⇒ ``CanvasItem`` ⇒
-``CanvasItem``. There are more complex combinations possible, like deeply nested Window and
-SubViewports, however this example intends to provide an overview of the methodology in general.
+Hình minh họa dựa trên cây node có dạng sau: ``Root Window (embed Windows)`` ⇒ ``Window (don't embed Windows)`` ⇒ ``CanvasLayer`` ⇒ ``CanvasItem`` ⇒ ``CanvasItem`` ⇒ ``CanvasItem``. Có thể có những tổ hợp phức tạp hơn, chẳng hạn như Window và SubViewport lồng sâu, tuy nhiên ví dụ này nhằm cung cấp tổng quan về phương pháp nói chung.
 
 .. image:: img/transforms_overview.webp
     :target: ../../_images/transforms_overview.webp
 
-Click graphic to enlarge.
+Nhấp vào hình minh họa để phóng to.
 
-- **Item Coordinates**
-    This is the local coordinate system of a :ref:`CanvasItem <class_CanvasItem>`.
+- **Tọa độ Item**
+    Đây là hệ tọa độ cục bộ của một :ref:`CanvasItem <class_CanvasItem>`.
 
-- **Parent Item Coordinates**
-    This is the local coordinate system of the parent's *CanvasItem*. When positioning
-    *CanvasItems* in the *Canvas*, they usually inherit the transformations of their parent
-    *CanvasItems*. An exceptions is
+- **Tọa độ Item cha**
+    Đây là hệ tọa độ cục bộ của *CanvasItem* của node cha. Khi định vị các *CanvasItems* trong *Canvas*, chúng thường kế thừa các phép biến đổi của *CanvasItems* cha. Một ngoại lệ là
     :ref:`CanvasItems.top_level <class_CanvasItem_property_top_level>`.
 
-- **Canvas Coordinates**
-    As mentioned in the previous tutorial :ref:`doc_canvas_layers`, there are two types of canvases
-    (*Viewport* canvas and *CanvasLayer* canvas) and both have a canvas coordinate system. These
-    are also called world coordinates. A *Viewport* can contain multiple *Canvases* with different
-    coordinate systems.
+- **Tọa độ Canvas**
+    Như đã đề cập trong tutorial trước :ref:`doc_canvas_layers`, có hai loại canvas (*Viewport* canvas và *CanvasLayer* canvas), và cả hai đều có hệ tọa độ canvas. Chúng còn được gọi là tọa độ thế giới. Một *Viewport* có thể chứa nhiều *Canvases* với các hệ tọa độ khác nhau.
 
-- **Viewport Coordinates**
-    This is the coordinate system of the :ref:`Viewport <class_Viewport>`.
+- **Tọa độ Viewport**
+    Đây là hệ tọa độ của :ref:`Viewport <class_Viewport>`.
 
-- **Camera Coordinates**
-    This is only used internally for functionality like 3D-camera ray projections.
+- **Tọa độ Camera**
+    Hệ tọa độ này chỉ được sử dụng nội bộ cho các chức năng như phép chiếu tia của camera 3D.
 
-- **Embedder Coordinates / Screen Coordinates**
-    Every *Viewport* (*Window* or *SubViewport*) in the scene tree is embedded either in a
-    different node or in the OS Window Manager. This coordinate system's origin is identical to the
-    top-left corner of the *Window* or *SubViewport* and its scale is the one of the embedder or
-    the OS Window Manager.
+- **Tọa độ Embedder / Tọa độ màn hình**
+    Mỗi *Viewport* (*Window* hoặc *SubViewport*) trong scene tree được nhúng vào một node khác hoặc vào OS Window Manager. Gốc của hệ tọa độ này trùng với góc trên bên trái của *Window* hoặc *SubViewport*, còn tỷ lệ của nó là tỷ lệ của embedder hoặc OS Window Manager.
 
-    If the embedder is the OS Window Manager, then they are also called Screen Coordinates.
+    Nếu embedder là OS Window Manager, chúng cũng được gọi là Tọa độ màn hình.
 
-- **Absolute Embedder Coordinates / Absolute Screen Coordinates**
-    The origin of this coordinate system is the top-left corner of the embedding node or the OS
-    Window Manager screen. Its scale is the one of the embedder or the OS Window Manager.
+- **Tọa độ Embedder tuyệt đối / Tọa độ màn hình tuyệt đối**
+    Gốc của hệ tọa độ này là góc trên bên trái của node nhúng hoặc màn hình OS Window Manager. Tỷ lệ của nó là tỷ lệ của embedder hoặc OS Window Manager.
 
-    If the embedder is the OS Window Manager, then they are also called Absolute Screen
-    Coordinates.
+    Nếu embedder là OS Window Manager, chúng cũng được gọi là Tọa độ màn hình tuyệt đối.
 
 
-Node transforms
----------------
+Các phép biến đổi của node
+--------------------------
 
-Each of the mentioned nodes have one or more transforms associated with them and the combination of
-these nodes infer the transforms between the different coordinate systems. With a few exceptions,
-the transforms are :ref:`Transform2D <class_Transform2D>` and the following list shows details and
-effects of each of them.
+Mỗi node được đề cập đều có một hoặc nhiều phép biến đổi liên kết với nó, và sự kết hợp của các node này suy ra các phép biến đổi giữa những hệ tọa độ khác nhau. Ngoại trừ một vài trường hợp, các phép biến đổi là :ref:`Transform2D <class_Transform2D>`, và danh sách sau đây trình bày chi tiết cũng như tác động của từng phép biến đổi.
 
-- **CanvasItem transform**
-    *CanvasItems* are either *Control*-nodes or *Node2D*-nodes.
+- **Phép biến đổi CanvasItem**
+    *CanvasItems* là các node *Control* hoặc node *Node2D*.
 
-    For *Control* nodes this transform consists of a :ref:`position <class_Control_property_position>`
-    relative to the parent's origin and a :ref:`scale <class_Control_property_scale>` and
-    :ref:`rotation <class_Control_property_rotation>` around a
-    :ref:`pivot point <class_Control_property_pivot_offset>`.
+    Đối với các node *Control*, phép biến đổi này bao gồm một :ref:`position <class_Control_property_position>` so với gốc của node cha, cùng với một :ref:`scale <class_Control_property_scale>` và
+    :ref:`rotation <class_Control_property_rotation>` quanh một
+    :ref:`điểm pivot <class_Control_property_pivot_offset>`.
 
-    For *Node2D* nodes :ref:`transform <class_Node2D_property_transform>` consists of
+    Đối với các node *Node2D*, :ref:`transform <class_Node2D_property_transform>` bao gồm
     :ref:`position <class_Node2D_property_position>`, :ref:`rotation <class_Node2D_property_rotation>`,
-    :ref:`scale <class_Node2D_property_scale>` and :ref:`skew <class_Node2D_property_skew>`.
+    :ref:`scale <class_Node2D_property_scale>` và :ref:`skew <class_Node2D_property_skew>`.
 
-    The transform affects the item itself and usually also child-*CanvasItems* and in the case of a
-    *SubViewportContainer* it affects the contained *SubViewport*.
+    Phép biến đổi ảnh hưởng đến chính item đó và thường cả các *CanvasItems* con; trong trường hợp là một *SubViewportContainer*, nó ảnh hưởng đến *SubViewport* được chứa bên trong.
 
-- **CanvasLayer transform**
-    The *CanvasLayer's* :ref:`transform <class_CanvasLayer_property_transform>` affects all
-    *CanvasItems* within the *CanvasLayer*. It doesn't affect other *CanvasLayers* or *Windows* in
-    its *Viewport*.
+- **Phép biến đổi CanvasLayer**
+    *CanvasLayer's* :ref:`transform <class_CanvasLayer_property_transform>` ảnh hưởng đến tất cả *CanvasItems* bên trong *CanvasLayer*. Nó không ảnh hưởng đến các *CanvasLayers* hoặc *Windows* khác trong *Viewport* của nó.
 
-- **CanvasLayer follow viewport transform**
-    The *follow viewport transform* is an automatically calculated transform, that is based on the
-    *Viewport's* :ref:`canvas transform <class_Viewport_property_canvas_transform>` and the
-    *CanvasLayer's* :ref:`follow viewport scale <class_CanvasLayer_property_follow_viewport_scale>`
-    and can be used, if :ref:`enabled <class_CanvasLayer_property_follow_viewport_enabled>`, to
-    achieve a pseudo-3D effect. It affects the same child nodes as the *CanvasLayer transform*.
+- **Phép biến đổi CanvasLayer follow viewport**
+    *follow viewport transform* là một phép biến đổi được tự động tính toán, dựa trên *Viewport's* :ref:`canvas transform <class_Viewport_property_canvas_transform>` và *CanvasLayer's* :ref:`follow viewport scale <class_CanvasLayer_property_follow_viewport_scale>`, đồng thời có thể được sử dụng, nếu :ref:`enabled <class_CanvasLayer_property_follow_viewport_enabled>`, để tạo hiệu ứng pseudo-3D. Nó ảnh hưởng đến cùng các node con như *CanvasLayer transform*.
 
-- **Viewport canvas transform**
-    The :ref:`canvas transform <class_Viewport_property_canvas_transform>` affects all
-    *CanvasItems* in the *Viewport's* default canvas. It also affects *CanvasLayers*, that have
-    follow viewport transform enabled. The *Viewport's* active :ref:`Camera2D <class_Camera2D>`
-    works by changing this transform. It doesn't affect this *Viewport's* embedded *Windows*.
+- **Phép biến đổi canvas của Viewport**
+    :ref:`canvas transform <class_Viewport_property_canvas_transform>` ảnh hưởng đến tất cả *CanvasItems* trong canvas mặc định của *Viewport's*. Nó cũng ảnh hưởng đến *CanvasLayers* đã bật follow viewport transform. *Viewport's* đang hoạt động :ref:`Camera2D <class_Camera2D>` hoạt động bằng cách thay đổi phép biến đổi này. Nó không ảnh hưởng đến các *Windows* được nhúng trong *Viewport's* này.
 
-- **Viewport global canvas transform**
-    *Viewports* also have a :ref:`global canvas transform <class_Viewport_property_global_canvas_transform>`.
-    This is the master transform and affects all individual *Canvas Layer* and embedded *Window*
-    transforms. This is primarily used in Godot's CanvasItem Editor.
+- **Phép biến đổi canvas toàn cục của Viewport**
+    *Viewports* cũng có :ref:`global canvas transform <class_Viewport_property_global_canvas_transform>`. Đây là phép biến đổi chính, ảnh hưởng đến tất cả các phép biến đổi riêng lẻ của *Canvas Layer* và *Window* được nhúng. Phép biến đổi này chủ yếu được sử dụng trong CanvasItem Editor của Godot.
 
-- **Viewport stretch transform**
-    Finally, *Viewports* have a *stretch transform*, which is used when resizing or stretching the
-    viewport. This transform is used for :ref:`Windows <class_Window>` as described in
-    :ref:`doc_multiple_resolutions`, but can also be manually set on *SubViewports* by means of
-    :ref:`size <class_SubViewport_property_size>` and
-    :ref:`size_2d_override <class_SubViewport_property_size_2d_override>`. Its
+- **Biến đổi stretch của Viewport**
+    Cuối cùng, *Viewports* có một *stretch transform*, được sử dụng khi thay đổi kích thước hoặc kéo giãn viewport. Transform này được sử dụng cho :ref:`Windows <class_Window>` như mô tả trong
+    :ref:`doc_multiple_resolutions`, nhưng cũng có thể được đặt thủ công trên *SubViewports* bằng cách sử dụng
+    :ref:`size <class_SubViewport_property_size>` và
+    :ref:`size_2d_override <class_SubViewport_property_size_2d_override>`. Các giá trị của nó
     :ref:`translation <class_Transform2D_method_get_origin>`,
-    :ref:`rotation <class_Transform2D_method_get_rotation>` and
-    :ref:`skew <class_Transform2D_method_get_skew>` are the default values and it can only have
-    non-default :ref:`scale <class_Transform2D_method_get_scale>`.
+    :ref:`rotation <class_Transform2D_method_get_rotation>` và
+    :ref:`skew <class_Transform2D_method_get_skew>` là các giá trị mặc định và nó chỉ có thể có :ref:`scale <class_Transform2D_method_get_scale>` khác mặc định.
 
-- **Window transform**
-    In order to scale and position the *Window's* content as described in
-    :ref:`doc_multiple_resolutions`, each :ref:`Window <class_Window>` contains a
-    *window transform*. It is for example responsible for the black bars at the *Window's* sides so
-    that the *Viewport* is displayed with a fixed aspect ratio.
+- **Biến đổi Window**
+    Để scale và định vị nội dung của *Window* như mô tả trong
+    :ref:`doc_multiple_resolutions`, mỗi :ref:`Window <class_Window>` chứa một *window transform*. Ví dụ, nó chịu trách nhiệm tạo ra các dải màu đen ở hai bên của *Window* để *Viewport* được hiển thị với tỷ lệ khung hình cố định.
 
-- **Window position**
-    Every *Window* also has a :ref:`position <class_Window_property_position>` to describe its
-    position within its embedder. The embedder can be another *Viewport* or the OS Window Manager.
+- **Vị trí Window**
+    Mỗi *Window* cũng có một :ref:`position <class_Window_property_position>` để mô tả vị trí của nó bên trong trình nhúng. Trình nhúng có thể là một *Viewport* khác hoặc OS Window Manager.
 
-- **SubViewportContainer shrink transform**
-    :ref:`stretch <class_SubViewportContainer_property_stretch>` together with
-    :ref:`stretch_shrink <class_SubViewportContainer_property_stretch_shrink>` declare for a
-    *SubViewportContainer* if and by what integer factor the contained *SubViewport* should be
-    scaled in comparison to the container's size.
+- **Biến đổi shrink của SubViewportContainer**
+    :ref:`stretch <class_SubViewportContainer_property_stretch>` cùng với
+    :ref:`stretch_shrink <class_SubViewportContainer_property_stretch_shrink>` xác định cho một *SubViewportContainer* xem và theo hệ số nguyên nào *SubViewport* được chứa bên trong cần được scale so với kích thước của container.

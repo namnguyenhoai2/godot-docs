@@ -1,40 +1,31 @@
 .. _doc_what_is_asset_store:
 
-About the Asset Store
-=======================
+Giới thiệu về Asset Store
+=========================
 
-Overview
---------
+Tổng quan
+---------
 
-The Godot Asset Store is a repository of user-submitted Godot addons, scripts,
-tools, and other resources, collectively referred to as assets. They're available
-for download to all Godot users directly from within the engine, but can also be
-accessed at Godot's `official website <https://store.godotengine.org>`_.
+Godot Asset Store là một repository chứa các addon, script, công cụ và tài nguyên khác do người dùng gửi lên của Godot, gọi chung là asset. Tất cả người dùng Godot đều có thể tải chúng xuống trực tiếp từ trong engine, nhưng cũng có thể truy cập tại `trang web chính thức <https://store.godotengine.org>`_ của Godot.
 
-This set of pages will cover how to use the Asset Store (both from inside Godot, and
-on the website), how you can submit your own assets, and what the guidelines for
-submission are.
+Nhóm các trang này sẽ hướng dẫn cách sử dụng Asset Store (cả từ trong Godot và trên website), cách bạn có thể gửi asset của riêng mình cũng như các nguyên tắc gửi asset.
 
-Please note that the Asset Store is currently in beta. It may have various pain
-points, bugs, and usability issues. The code for the store itself is currently
-private, you can however submit bug reports and discuss new features `here <https://github.com/godotengine/godot-asset-store-tracker>`_.
+Xin lưu ý rằng Asset Store hiện đang ở giai đoạn beta. Asset Store có thể còn nhiều điểm bất tiện, bug và vấn đề về khả năng sử dụng. Code của chính store hiện đang ở chế độ private, tuy nhiên bạn có thể gửi báo cáo bug và thảo luận về các tính năng mới `tại đây <https://github.com/godotengine/godot-asset-store-tracker>`_.
 
-Types of assets
----------------
+Các loại asset
+--------------
 
-There are, broadly, two different types of assets you can post.
+Về cơ bản, có hai loại asset khác nhau mà bạn có thể đăng.
 
-* Assets labeled as "Templates" appear under the "Asset Store" tab in the Godot
-  Project Manager. These assets are standalone Godot projects that can run by
-  themselves.
+* Các asset được gắn nhãn "Templates" sẽ xuất hiện trong tab "Asset Store" của Godot Project Manager. Đây là các project Godot độc lập và có thể tự chạy.
 
-* Other assets show up inside the Godot editor under the "Asset Store"
-  main screen tab, next to "2D", "3D", and "Script". These assets are
-  meant to be downloaded and placed into an existing Godot project.
+* Các asset khác sẽ xuất hiện trong Godot editor, dưới tab màn hình chính "Asset Store", cạnh "2D", "3D" và "Script". Những asset này предназначены để tải xuống và đưa vào một project Godot hiện có.
 
-The old Asset library
----------------------
+Asset Library cũ
+----------------
 
-The Asset Store is the successor to the Asset Library. For now the library remains
-online and accessible. Assets have **not** been moved over to the new Asset Store
-automatically. All authors must re-upload their assets to the new store.
+Asset Store là phiên bản kế nhiệm của Asset Library. Hiện tại, thư viện này vẫn trực tuyến và có thể truy cập được. Các asset **chưa** được chuyển sang Asset Store mới
+automatically. Tất cả tác giả phải tải lại asset của mình lên store mới.
+
+.. _`official website`: https://store.godotengine.org
+.. _`here`: https://github.com/godotengine/godot-asset-store-tracker

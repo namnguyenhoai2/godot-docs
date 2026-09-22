@@ -1,86 +1,77 @@
 .. _doc_submitting_to_assetstore_faq:
 
-Frequently asked questions
-==========================
+Các câu hỏi thường gặp
+======================
 
-General store questions
------------------------
+Các câu hỏi chung về cửa hàng
+-----------------------------
 
-I found a bug in the store website, where do I report it?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tôi phát hiện một lỗi trên website cửa hàng, tôi nên báo lỗi ở đâu?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Please report it in the `asset store tracker repository <https://github.com/godotengine/godot-asset-store-tracker>`_.
+Vui lòng báo lỗi trong `repository theo dõi Asset Store <https://github.com/godotengine/godot-asset-store-tracker>`_.
 
-Is there anywhere I can suggest new features or improvements to the store itself?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tôi có thể đề xuất các tính năng mới hoặc cải tiến cho chính cửa hàng ở đâu không?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Yes! Please open an issue in the `asset store tracker repository <https://github.com/godotengine/godot-asset-store-tracker>`_.
+Có! Vui lòng mở một issue trong `repository theo dõi Asset Store <https://github.com/godotengine/godot-asset-store-tracker>`_.
 
-How do I report an asset for theft/copyright infringement/malicious code?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tôi phải báo cáo một asset do bị đánh cắp/vi phạm bản quyền/có mã độc như thế nào?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-At the bottom of the assets page, below the panel on the right, there is a
-"Flag This Asset" button. You **must** be logged in to use it.
+Ở cuối trang asset, bên dưới bảng điều khiển ở bên phải, có một nút "Flag This Asset". Bạn **phải** đăng nhập để sử dụng nút này.
 
-I can't find an addon I download before when this was the Asset Library, was everything old removed?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tôi không tìm thấy một addon mà trước đây tôi đã tải xuống khi nơi này còn là Asset Library, có phải mọi thứ cũ đã bị xóa không?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-While the Asset Store is the successor to the Asset Library, assets from there were
-not moved over automatically. If you don't see it, the author didn't re-upload it.
-For now, the `Asset Library website <https://godotengine.org/asset-library/asset>`_
-is still online, and you can download it there.
+Mặc dù Asset Store là phiên bản kế nhiệm của Asset Library, các asset từ đó không được tự động chuyển sang. Nếu bạn không thấy asset đó, tác giả đã không tải lại nó. Hiện tại, `website Asset Library <https://godotengine.org/asset-library/asset>`_ vẫn còn hoạt động và bạn có thể tải xuống asset đó tại đây.
 
-Asset submission questions
---------------------------
+Các câu hỏi về việc gửi asset
+-----------------------------
 
-Can I charge money for my assets?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Not currently, however that is planned and on the `roadmap <https://store.godotengine.org/roadmap/>`_.
-
-I consider my addon in the early alpha or beta stage of development, can I upload it?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Yes. You are allowed to upload your addon even if you feel it hasn't reached 1.0
-functionality. However we do ask that whatever releases you put on the store are
-functional. For example, say you've only implemented 4 of your 10 features but those
-4 do work (doesn't have to be bug free), that is functional. In comparison, an addon
-that adds numerous buttons to the editor that don't do anything if you click on them
-is non-functional.
-
-Can I link to a Patreon, Ko-Fi, or other 3rd party site to support development?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Yes. During the submission process you can set up a donate button to link to a
-donation site. If you have multiple then you can link the others in the description.
-
-Can I submit an addon that only works in Godot 3?
+Tôi có thể tính phí cho các asset của mình không?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Yes.
+Hiện tại thì chưa, tuy nhiên tính năng này đã được lên kế hoạch và có trong `lộ trình <https://store.godotengine.org/roadmap/>`_.
 
-I have an addon with a Godot 3 and Godot 4 version, do I submit it twice?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tôi cho rằng addon của mình đang ở giai đoạn alpha hoặc beta ban đầu của quá trình phát triển, tôi có thể tải nó lên không?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-That is what we recommend. Alternatively, you can submit it as a second version for
-a single asset, however be aware that may cause confusion among users.
+Yes. Bạn được phép tải addon lên ngay cả khi bạn cảm thấy nó chưa đạt đến phiên bản 1.0
+functionality. Tuy nhiên, chúng tôi yêu cầu mọi bản phát hành bạn đưa lên cửa hàng phải
+functional. Ví dụ, giả sử bạn mới chỉ triển khai 4 trong số 10 tính năng, nhưng những tính năng đó
+4 tính năng đó hoạt động (không nhất thiết phải không có lỗi), như vậy là có tính năng. Ngược lại, một addon thêm rất nhiều nút vào trình chỉnh sửa nhưng không làm gì khi bạn nhấp vào chúng thì là không có tính năng.
 
-Is there a size limit?
-~~~~~~~~~~~~~~~~~~~~~~
+Tôi có thể liên kết đến Patreon, Ko-Fi hoặc trang web bên thứ ba khác để hỗ trợ việc phát triển không?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Yes, a single version of an asset has a maximum size of 1GB.
+Yes. Trong quá trình gửi, bạn có thể thiết lập một nút donate để liên kết đến một
+trang web nhận quyên góp. Nếu bạn có nhiều trang như vậy, bạn có thể liên kết đến các trang còn lại trong phần mô tả.
 
-Can I upload AI generated assets or code?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tôi có thể gửi một addon chỉ hoạt động trong Godot 3 không?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Yes, however you must disclose what is AI generated, and how AI was used during the
-creation process when submitting the asset.
+Có.
 
-"AI" refers to any LLM/generative AI model like ChatGPT, Claude, Grok, etc., or any
-other models that fulfill the same role.
+Tôi có một addon với phiên bản dành cho Godot 3 và Godot 4, tôi có phải gửi hai lần không?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you're altering something AI generated, or using something AI generated inside of
-something created manually, that still counts and you must disclose it. For example,
-if you AI generate an image, and then tweak it manually afterwards. Or if you AI
-generate an image and put it inside a human created image, for example an AI
-painting in a drawing of a room.
+Đó là cách chúng tôi khuyến nghị. Ngoài ra, bạn có thể gửi addon đó dưới dạng phiên bản thứ hai của cùng một asset, tuy nhiên hãy lưu ý rằng điều này có thể gây nhầm lẫn cho người dùng.
+
+Có giới hạn kích thước không?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Có, một phiên bản riêng lẻ của asset có kích thước tối đa là 1GB.
+
+Tôi có thể tải lên asset hoặc code được tạo bởi AI không?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Có, tuy nhiên khi gửi asset, bạn phải công khai phần nào được tạo bởi AI và AI đã được sử dụng như thế nào trong quá trình tạo.
+
+"AI" đề cập đến mọi mô hình LLM/AI tạo sinh như ChatGPT, Claude, Grok, v.v. hoặc bất kỳ mô hình nào khác thực hiện cùng vai trò.
+
+Nếu bạn chỉnh sửa một nội dung được tạo bởi AI hoặc sử dụng nội dung được tạo bởi AI bên trong một nội dung được tạo thủ công, điều đó vẫn được tính và bạn phải công khai. Ví dụ: nếu bạn dùng AI để tạo một hình ảnh rồi chỉnh sửa thủ công sau đó. Hoặc nếu bạn dùng AI để tạo một hình ảnh rồi đặt nó vào bên trong một hình ảnh do con người tạo, chẳng hạn như một bức tranh do AI tạo trong bản vẽ một căn phòng.
+
+.. _`asset store tracker repository`: https://github.com/godotengine/godot-asset-store-tracker
+.. _`Asset Library website`: https://godotengine.org/asset-library/asset
+.. _`roadmap`: https://store.godotengine.org/roadmap/

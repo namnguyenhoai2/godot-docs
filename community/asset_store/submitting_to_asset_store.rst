@@ -1,93 +1,56 @@
 .. _doc_submitting_to_asset_store:
 
-Submitting to the Asset Store
-=============================
+Gửi lên Asset Store
+===================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-This tutorial aims to serve as a guide on how you can submit your own assets
-to the `Godot Asset Store <https://store.godotengine.org/>`_
-and share them with the Godot community.
+Hướng dẫn này nhằm cung cấp chỉ dẫn về cách bạn có thể gửi asset của riêng mình lên `Godot Asset Store <https://store.godotengine.org/>`_ và chia sẻ chúng với cộng đồng Godot.
 
-As mentioned in the :ref:`doc_using_asset_store_website` page, in order to be able to
-submit assets to the Asset Store, you need to have a registered account, and be
-logged in.
+Như đã đề cập trên :ref:`doc_using_asset_store_website` trang này, để có thể gửi asset lên Asset Store, bạn cần có một tài khoản đã đăng ký và đăng nhập vào tài khoản đó.
 
-Submission guidelines
----------------------
+Hướng dẫn gửi
+-------------
 
-Before submitting your asset, please ensure it follows all of the
-requirements, and also consider following the recommendations.
+Trước khi gửi asset, hãy đảm bảo asset đáp ứng tất cả các yêu cầu và cũng cân nhắc làm theo các khuyến nghị.
 
-Requirements
-~~~~~~~~~~~~
+Yêu cầu
+~~~~~~~
 
-Generally speaking, most assets people submit to the Asset Store
-are accepted. However, in order for your asset to be accepted, there
-are a few requirements it needs to meet to be approved.
+Nói chung, hầu hết các asset mà mọi người gửi lên Asset Store đều được chấp nhận. Tuy nhiên, để asset của bạn được chấp nhận, asset cần đáp ứng một số yêu cầu để được phê duyệt.
 
-* The asset must **work**. If the asset doesn't run or otherwise doesn't
-  work in the specified Godot version, then it will be rejected.
+* Asset phải **hoạt động**. Nếu asset không chạy hoặc không hoạt động theo cách khác trong phiên bản Godot đã chỉ định, asset sẽ bị từ chối.
 
-* The asset must have a proper **.gitignore** file. It's important to
-  keep redundant data out of the repository.
-  `Here's a template. <https://raw.githubusercontent.com/aaronfranke/gitignore/godot/Godot.gitignore>`_
+* Asset phải có tệp **.gitignore** phù hợp. Việc loại bỏ dữ liệu dư thừa khỏi repository là rất quan trọng. `Đây là một mẫu. <https://raw.githubusercontent.com/aaronfranke/gitignore/godot/Godot.gitignore>`_
 
-* No **submodules**, or any submodules must be non-essential. GitHub
-  does not include submodules in the downloaded ZIP file, so if the
-  asset needs the contents of the submodule, your asset won't work.
+* Không được có **submodule**, hoặc mọi submodule phải không thiết yếu. GitHub không đưa submodule vào tệp ZIP đã tải xuống, vì vậy nếu asset cần nội dung của submodule thì asset của bạn sẽ không hoạt động.
 
-* The **license** needs to be correct. The license listed on the Asset
-  Store must match the license in the repository. The repo **must**
-  have a license file, called either "LICENSE" or "LICENSE.md".
-  This file must contain the license text itself and a copyright
-  statement that includes the year(s) and copyright holder.
+* **Giấy phép** phải chính xác. Giấy phép được liệt kê trên Asset Store phải khớp với giấy phép trong repository. Repo **phải** có một tệp giấy phép, được đặt tên là "LICENSE" hoặc "LICENSE.md". Tệp này phải chứa chính văn bản giấy phép và một tuyên bố bản quyền bao gồm (các) năm và chủ sở hữu bản quyền.
 
-* Use proper **English** for the name and description of your asset.
-  This includes using correct capitalization, and using full
-  sentences in the description. You can also include other languages,
-  but there should at least be an English version.
+* Sử dụng **tiếng Anh** chuẩn cho tên và mô tả asset của bạn. Điều này bao gồm việc viết hoa đúng cách và sử dụng các câu đầy đủ trong phần mô tả. Bạn cũng có thể thêm các ngôn ngữ khác, nhưng ít nhất phải có phiên bản tiếng Anh.
 
-* The icon link must be a **direct link**. For icons hosted on GitHub, the
-  link must start with "raw.githubusercontent.com", not "github.com".
+* Liên kết biểu tượng phải là một **liên kết trực tiếp**. Đối với các biểu tượng được lưu trữ trên GitHub, liên kết phải bắt đầu bằng "raw.githubusercontent.com", không phải "github.com".
 
-Recommendations
-~~~~~~~~~~~~~~~
+Khuyến nghị
+~~~~~~~~~~~
 
-These things are not required for your asset to be approved, but
-if you follow these recommendations, you can help make the asset
-store a better place for all users.
+Những điều này không bắt buộc để asset của bạn được phê duyệt, nhưng nếu làm theo các khuyến nghị này, bạn có thể góp phần làm cho Asset Store trở thành một nơi tốt hơn cho tất cả người dùng.
 
-* When creating non-project assets, it is common practice to place your files
-  inside of an **addons/asset_name/** folder. Do this to avoid having your files
-  clash with other assets, or with the files of users installing your asset.
-  This folder will **not** be automatically generated when a user installs your asset.
+* Khi tạo asset không phải project, thông lệ phổ biến là đặt các tệp của bạn bên trong thư mục **addons/asset_name/**. Hãy làm vậy để tránh các tệp của bạn xung đột với những asset khác hoặc với các tệp của người dùng cài đặt asset của bạn. Thư mục này sẽ **không** được tự động tạo khi người dùng cài đặt asset của bạn.
 
-* Fix or suppress all script **warnings**. The warning system is there to
-  help identify issues with your code, but people using your asset
-  don't need to see them.
+* Sửa hoặc tắt tất cả **cảnh báo** của script. Hệ thống cảnh báo giúp xác định các vấn đề trong code của bạn, nhưng những người sử dụng asset không cần nhìn thấy chúng.
 
-* Make your code conform to the official **style guides**. Having a
-  consistent style helps other people read your code, and it also helps
-  if other people wish to contribute to your asset. See the
-  :ref:`doc_gdscript_styleguide` or the :ref:`doc_c_sharp_styleguide`.
+* Làm cho code của bạn tuân theo các **hướng dẫn về style** chính thức. Việc có style nhất quán giúp người khác đọc code của bạn và cũng hữu ích nếu người khác muốn đóng góp cho asset của bạn. Xem
+  :ref:`doc_gdscript_styleguide` hoặc :ref:`doc_c_sharp_styleguide`.
 
-* If you have screenshots in your repo, place them in their own subfolder
-  and add an empty **.gdignore** file in the same folder (note: **gd**, not **git**).
-  This prevents Godot from importing your screenshots.
-  On Windows, open a command prompt in the project folder and run
-  ``type nul > .gdignore`` to create a file whose name starts with a period.
+* Nếu repo của bạn có ảnh chụp màn hình, hãy đặt chúng trong một thư mục con riêng và thêm một tệp **.gdignore** trống vào cùng thư mục đó (lưu ý: **gd**, không phải **git**). Điều này ngăn Godot import các ảnh chụp màn hình của bạn. Trên Windows, mở command prompt trong thư mục project và chạy ``type nul > .gdignore`` để tạo một tệp có tên bắt đầu bằng dấu chấm.
 
-* If your asset is a library for working with other files,
-  consider including **example files** in the asset.
+* Nếu asset của bạn là một thư viện dùng để làm việc với các tệp khác, hãy cân nhắc đưa **các tệp ví dụ** vào asset.
 
-* Consider adding a **.gitattributes** file to your repo. This file allows
-  giving extra instructions to Git, such as specifying line endings and listing
-  files not required for your asset to function with the ``export-ignore``
-  directive. This directive removes such files from the resulting ZIP file,
-  preventing them from being downloaded by Asset Store users.
-  These are common examples of **.gitattributes**:
+* Hãy cân nhắc thêm tệp **.gitattributes** vào repo của bạn. Tệp này cho phép cung cấp thêm chỉ dẫn cho Git, chẳng hạn như chỉ định ký tự kết thúc dòng và liệt kê các tệp không cần thiết để asset của bạn hoạt động với ``export-ignore``
+  directive. Chỉ thị này loại bỏ các tệp đó khỏi tệp ZIP kết quả,
+  ngăn không cho người dùng Asset Store tải chúng xuống. Sau đây là các ví dụ phổ biến về **.gitattributes**:
 
   .. tabs::
 
@@ -110,103 +73,83 @@ store a better place for all users.
         /addons    !export-ignore
         /addons/** !export-ignore
 
-* If you are submitting a plugin, add a **copy** of your license and readme
-  to the plugin folder itself. This is the folder that users are guaranteed to
-  keep with their project, so a copy ensures they always have those files handy
-  (and helps them fulfill your licensing terms).
+* Nếu bạn đang gửi một plugin, hãy thêm một **bản sao** giấy phép và readme vào chính thư mục plugin. Đây là thư mục mà người dùng chắc chắn sẽ giữ lại cùng project của họ, vì vậy một bản sao đảm bảo họ luôn có sẵn các tệp đó (đồng thời giúp họ tuân thủ các điều khoản cấp phép của bạn).
 
-* While the Asset Store allows more than just GitHub, consider
-  hosting your asset's source code on **GitHub**. Other services may not
-  work reliably, and a lack of familiarity can be a barrier to contributors.
+* Mặc dù Asset Store hỗ trợ nhiều dịch vụ hơn chỉ GitHub, hãy cân nhắc lưu trữ source code của asset trên **GitHub**. Các dịch vụ khác có thể không hoạt động ổn định, và việc không quen thuộc với chúng có thể trở thành rào cản đối với những người đóng góp.
 
-Submitting
-----------
+Gửi
+---
 
-Once you are logged in, click on **Upload Asset** on the top right of the website.
-It will take you to the following page:
+Sau khi đăng nhập, hãy nhấp vào **Upload Asset** ở phía trên bên phải của website. Bạn sẽ được đưa đến trang sau:
 
 .. image:: img/asset_store_submit.webp
 
-Here is a breakdown of each field:
+Sau đây là giải thích về từng trường:
 
-* **Publisher**: This is the public name associated with the asset. For example, the
-  XR Tools asset has the publisher "Godot XR".
+* **Publisher**: Đây là tên công khai gắn với asset. Ví dụ: asset XR Tools có publisher là "Godot XR".
 
-* **Publisher Name**: The name of the new publisher you are creating.
+* **Publisher Name**: Tên của publisher mới mà bạn đang tạo.
 
-* **Publisher URL Slug**: how the publisher will appear in its link. For example,
-  the XR Tools asset has the following URL: ``https://store.godotengine.org/asset/godot-xr/godot-xr-tools/``
+* **Publisher URL Slug**: cách publisher sẽ xuất hiện trong liên kết của nó. Ví dụ: asset XR Tools có URL sau: ``https://store.godotengine.org/asset/godot-xr/godot-xr-tools/``
 
-  The publisher URL Slug in that is "godot-xr".
+  Publisher URL Slug trong liên kết đó là "godot-xr".
 
-* **Asset Name**: The name of your asset. Should be a unique, descriptive title of
-  what your asset is.
+* **Asset Name**: Tên asset của bạn. Nên là một tiêu đề độc nhất, mang tính mô tả về asset của bạn.
 
-* **Asset URL**: How the asset will be named in its link. For example,
-  the XR Tools asset has the following URL: ``https://store.godotengine.org/asset/godot-xr/godot-xr-tools/``
+* **Asset URL**: Cách asset sẽ được đặt tên trong liên kết của nó. Ví dụ: asset XR Tools có URL sau: ``https://store.godotengine.org/asset/godot-xr/godot-xr-tools/``
 
-  The asset URL for that link is "godot-xr-tools".
+  Asset URL của liên kết đó là "godot-xr-tools".
 
-After filling out those fields, agree to the terms of service after reading them,
-and click "Continue". You will be brought to the asset's management page, where
-you can edit almost everything about how it will appear on the store, as well as
-upload different versions.
+Sau khi điền các trường đó, hãy đọc và đồng ý với điều khoản dịch vụ, rồi nhấp vào "Continue". Bạn sẽ được đưa đến trang quản lý asset, nơi bạn có thể chỉnh sửa gần như mọi thông tin về cách asset sẽ xuất hiện trên store, cũng như tải lên các phiên bản khác nhau.
 
 .. image:: img/asset_store_management.webp
 
-Management pages
-----------------
+Các trang quản lý
+-----------------
 
-Overview
-~~~~~~~~
+Tổng quan
+~~~~~~~~~
 
-The overview tab lets you submit your asset for review. You can also view
-analytics including how many times it's been downloaded, page visits, and the number
-of people who have added it to their library.
+Tab tổng quan cho phép bạn gửi asset để xét duyệt. Bạn cũng có thể xem các số liệu phân tích, bao gồm số lượt tải xuống, lượt truy cập trang và số người đã thêm asset vào thư viện của họ.
 
-You can also delete the asset at the bottom of the page from this tab.
+Bạn cũng có thể xóa asset ở cuối trang từ tab này.
 
-Settings
-~~~~~~~~
+Cài đặt
+~~~~~~~
 
-This tab is where you set up the following general information about your asset:
+Đây là nơi bạn thiết lập các thông tin chung sau về asset của mình:
 
-* Asset Summary
-* Detailed description
+* Tóm tắt asset
+* Mô tả chi tiết
 * Tags
 * Asset type (Full Project or Addon)
 * License
 * Link to source code
-* AI usage disclosure (This is **mandatory** if you use AI)
+* AI usage disclosure (Đây là **bắt buộc** nếu bạn sử dụng AI)
 
 Media
 ~~~~~
 
-The media tab is where you upload your thumbnail, screenshots, an image for
-the featured page if you want, and link to a YouTube video if you have one.
+Tab Media là nơi bạn tải lên ảnh thu nhỏ, ảnh chụp màn hình, một hình ảnh cho trang nổi bật nếu muốn, và liên kết đến video YouTube nếu có.
 
 Versions
 ~~~~~~~~
 
-This is where you upload the actual asset files. For each version you upload you can
-give it a name, write a changelog, and specify the minimum Godot version (and
-maximum if applicable). There is also an additional information field for anything
-miscellaneous.
+Đây là nơi bạn tải lên các tệp asset thực tế. Với mỗi phiên bản tải lên, bạn có thể đặt tên, viết changelog và chỉ định phiên bản Godot tối thiểu (và tối đa nếu có). Ngoài ra còn có một trường thông tin bổ sung dành cho mọi nội dung khác.
 
-Each individual version has a maximum file size of 1GB.
+Mỗi phiên bản riêng lẻ có kích thước tệp tối đa là 1GB.
 
 Pricing
 ~~~~~~~
 
-While paid assets can't be uploaded yet, there are some settings relevant to free
-assets. You can link to another website where you accept donations, such as Patreon
-or Ko-Fi. You can also disable reviews if you want (in the future paid assets will
-**not** have this option).
+Mặc dù hiện chưa thể tải lên các asset trả phí, vẫn có một số cài đặt liên quan đến asset miễn phí
+assets. Bạn có thể liên kết đến một trang web khác nơi bạn nhận tiền quyên góp, chẳng hạn như Patreon
+hoặc Ko-Fi. Bạn cũng có thể tắt đánh giá nếu muốn (trong tương lai, các asset trả phí sẽ **không** có tùy chọn này).
 
 Submitting for review
 ---------------------
 
-Once you are done, press "Submit". Your asset will be entered into the review queue.
-You will be informed when your asset is reviewed. If it was rejected, you will be
-told why that may have been, and you will be able to submit it again with the
-appropriate changes.
+Khi hoàn tất, hãy nhấn "Submit". Asset của bạn sẽ được đưa vào hàng đợi xét duyệt. Bạn sẽ được thông báo khi asset của mình được xét duyệt. Nếu bị từ chối, bạn sẽ được cho biết lý do có thể dẫn đến việc đó và có thể gửi lại với những thay đổi phù hợp.
+
+.. _`Godot Asset Store`: https://store.godotengine.org/
+.. _`Here's a template.`: https://raw.githubusercontent.com/aaronfranke/gitignore/godot/Godot.gitignore
