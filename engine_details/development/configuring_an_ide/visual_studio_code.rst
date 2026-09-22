@@ -5,42 +5,36 @@ Visual Studio Code
 
 .. note::
 
-    This documentation is for contributions to the game engine, and not using
-    Visual Studio Code as a C# or GDScript editor. To code C# or GDScript in an external editor, see
-    :ref:`the C# guide to configure an external editor <doc_c_sharp_setup_external_editor>` or
-    :ref:`the GDScript guide to using an external text editor <doc_external_editor>`.
+    Tài liệu này dành cho việc đóng góp cho game engine, không phải để sử dụng Visual Studio Code làm trình soạn thảo C# hoặc GDScript. Để viết mã C# hoặc GDScript trong trình soạn thảo bên ngoài, hãy xem
+    :ref:`hướng dẫn C# để cấu hình trình soạn thảo bên ngoài <doc_c_sharp_setup_external_editor>` hoặc
+    :ref:`hướng dẫn GDScript về cách sử dụng trình soạn thảo văn bản bên ngoài <doc_external_editor>`.
 
-`Visual Studio Code <https://code.visualstudio.com>`_ is a free cross-platform code editor
-by `Microsoft <https://microsoft.com>`_ (not to be confused with :ref:`doc_configuring_an_ide_vs`).
+`Visual Studio Code <https://code.visualstudio.com>`_ là trình soạn thảo mã đa nền tảng miễn phí do `Microsoft <https://microsoft.com>`_ phát triển (không nên nhầm lẫn với :ref:`doc_configuring_an_ide_vs`).
 
 Importing the project
 ---------------------
 
-- Make sure the C/C++ extension is installed. You can find instructions in
-  the `official documentation <https://code.visualstudio.com/docs/languages/cpp>`_.
-  Alternatively, `clangd <https://open-vsx.org/extension/llvm-vs-code-extensions/vscode-clangd>`_
-  can be used instead.
-- When using the clangd extension, run ``scons compiledb=yes``.
-- From the Visual Studio Code's main screen open the Godot root folder with
-  **File > Open Folder...**.
-- Press :kbd:`Ctrl + Shift + P` to open the command prompt window and enter *Configure Task*.
+- Hãy đảm bảo đã cài đặt tiện ích C/C++. Bạn có thể tìm thấy hướng dẫn trong `tài liệu chính thức <https://code.visualstudio.com/docs/languages/cpp>`_. Ngoài ra, có thể sử dụng `clangd <https://open-vsx.org/extension/llvm-vs-code-extensions/vscode-clangd>`_.
+- Khi sử dụng tiện ích clangd, hãy chạy ``scons compiledb=yes``.
+- Từ màn hình chính của Visual Studio Code, mở thư mục gốc Godot bằng **File > Open Folder...**.
+- Nhấn :kbd:`Ctrl + Shift + P` để mở cửa sổ dòng lệnh và nhập *Configure Task*.
 
 .. figure:: img/vscode_configure_task.png
    :align: center
 
-- Select the **Create tasks.json file from template** option.
+- Chọn tùy chọn **Create tasks.json file from template**.
 
 .. figure:: img/vscode_create_tasksjson.png
    :align: center
 
-- Then select **Others**.
+- Sau đó chọn **Others**.
 
 .. figure:: img/vscode_create_tasksjson_others.png
    :align: center
 
-- If there is no such option as **Create tasks.json file from template** available, either delete the file if it already exists in your folder or create a ``.vscode/tasks.json`` file manually. See `Tasks in Visual Studio Code <https://code.visualstudio.com/docs/editor/tasks#_custom-tasks>`_ for more details on tasks.
+- Nếu không có tùy chọn **Create tasks.json file from template**, hãy xóa tệp đó nếu nó đã tồn tại trong thư mục của bạn hoặc tự tạo tệp ``.vscode/tasks.json``. Xem `Tasks in Visual Studio Code <https://code.visualstudio.com/docs/editor/tasks#_custom-tasks>`_ để biết thêm chi tiết về các task.
 
-- Within the ``tasks.json`` file find the ``"tasks"`` array and add a new section to it:
+- Trong tệp ``tasks.json``, tìm mảng ``"tasks"`` và thêm một phần mới vào đó:
 
   .. code-block:: js
     :caption: .vscode/tasks.json
@@ -51,7 +45,7 @@ Importing the project
       "type": "shell",
       "command": "scons",
       "args": [
-        // enable for debugging with breakpoints
+        // bật để debug với breakpoint
         "dev_build=yes",
       ],
       "problemMatcher": "$msCompile"
@@ -61,25 +55,24 @@ Importing the project
    :figclass: figure-w480
    :align: center
 
-   An example of a filled out ``tasks.json``.
+   Ví dụ về ``tasks.json`` đã được điền đầy đủ.
 
-Arguments can be different based on your own setup and needs. See
-:ref:`doc_introduction_to_the_buildsystem` for a full list of arguments.
+Các đối số có thể khác nhau tùy theo thiết lập và nhu cầu của bạn. Xem
+:ref:`doc_introduction_to_the_buildsystem` để biết danh sách đầy đủ các đối số.
 
 Debugging the project
 ---------------------
 
-To run and debug the project you need to create a new configuration in the ``launch.json`` file.
+Để chạy và debug project, bạn cần tạo một cấu hình mới trong tệp ``launch.json``.
 
-- Press :kbd:`Ctrl + Shift + D` to open the Run panel.
-- If ``launch.json`` file is missing you will be prompted to create a new one.
+- Nhấn :kbd:`Ctrl + Shift + D` để mở bảng Run.
+- Nếu thiếu tệp ``launch.json``, bạn sẽ được nhắc tạo tệp mới.
 
 .. figure:: img/vscode_1_create_launch.json.png
    :align: center
 
-- Select **C++ (GDB/LLDB)**. There may be another platform-specific option here. If selected,
-  adjust the configuration example provided accordingly.
-- Within the ``launch.json`` file find the ``"configurations"`` array and add a new section to it:
+- Chọn **C++ (GDB/LLDB)**. Tại đây có thể có một tùy chọn dành riêng cho nền tảng khác. Nếu chọn tùy chọn đó, hãy điều chỉnh ví dụ cấu hình được cung cấp cho phù hợp.
+- Trong tệp ``launch.json``, tìm mảng ``"configurations"`` và thêm một phần mới vào đó:
 
 .. tabs::
   .. code-tab:: js LinuxBSD
@@ -179,44 +172,40 @@ To run and debug the project you need to create a new configuration in the ``lau
    :figclass: figure-w480
    :align: center
 
-   An example of a filled out ``launch.json``.
+   Ví dụ về ``launch.json`` đã được điền đầy đủ.
 
 
 .. note::
 
-    Due to sporadic performance issues, it is recommended to use LLDB over GDB on Unix-based systems.
-    Make sure that the `CodeLLDB extension <https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb>`_
-    is installed for configurations using `lldb`.
+    Do các vấn đề hiệu năng xảy ra không thường xuyên, bạn nên sử dụng LLDB thay cho GDB trên các hệ thống dựa trên Unix. Hãy đảm bảo đã cài đặt tiện ích `CodeLLDB extension <https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb>`_ cho các cấu hình sử dụng `lldb`.
 
-    If you encounter issues with lldb, you may consider using gdb (see the LinuxBSD_gdb configuration).
+    Nếu gặp vấn đề với lldb, bạn có thể cân nhắc sử dụng gdb (xem cấu hình LinuxBSD_gdb).
 
-    Do note that lldb may work better with LLVM-based builds. See :ref:`doc_compiling_for_linuxbsd` for further information.
+    Lưu ý rằng lldb có thể hoạt động tốt hơn với các bản build dựa trên LLVM. Xem :ref:`doc_compiling_for_linuxbsd` để biết thêm thông tin.
 
-The name under ``program`` depends on your build configuration,
-e.g. ``godot.linuxbsd.editor.dev.x86_64`` for 64-bit LinuxBSD platform with
-``target=editor`` and ``dev_build=yes``.
+Tên trong ``program`` phụ thuộc vào cấu hình build của bạn, chẳng hạn như ``godot.linuxbsd.editor.dev.x86_64`` cho nền tảng LinuxBSD 64-bit với ``target=editor`` và ``dev_build=yes``.
 
 Configuring IntelliSense
 ------------------------
 
-For the C/C++ extension:
+Đối với tiện ích C/C++:
 
-To fix include errors you may be having, you need to configure some settings in the ``c_cpp_properties.json`` file.
+Để khắc phục các lỗi include có thể gặp phải, bạn cần cấu hình một số thiết lập trong tệp ``c_cpp_properties.json``.
 
-- First, make sure to build the project since some files need to be generated.
+- Trước tiên, hãy đảm bảo build project vì cần tạo một số tệp.
 
-- Edit the C/C++ Configuration file either with the UI or with text:
+- Chỉnh sửa tệp C/C++ Configuration bằng giao diện người dùng hoặc bằng văn bản:
 
 .. figure:: img/vscode_edit_configurations.webp
    :align: center
 
-- Add an include path for your platform, for example, ``${workspaceFolder}/platform/windows``.
+- Thêm đường dẫn include cho nền tảng của bạn, ví dụ: ``${workspaceFolder}/platform/windows``.
 
-- Add defines for the editor ``TOOLS_ENABLED``, debug builds ``DEBUG_ENABLED``, and tests ``TESTS_ENABLED``.
+- Thêm các define cho editor ``TOOLS_ENABLED``, các bản build debug ``DEBUG_ENABLED`` và các bản test ``TESTS_ENABLED``.
 
-- Make sure the compiler path is configured correctly to the compiler you are using. See :ref:`doc_introduction_to_the_buildsystem` for further information on your platform.
+- Hãy đảm bảo đường dẫn compiler được cấu hình chính xác đến compiler bạn đang sử dụng. Xem :ref:`doc_introduction_to_the_buildsystem` để biết thêm thông tin về nền tảng của bạn.
 
-- The ``c_cpp_properties.json`` file should look similar to this for Windows:
+- Tệp ``c_cpp_properties.json`` trên Windows sẽ có dạng tương tự như sau:
 
   .. code-block:: js
     :caption: .vscode/c_cpp_properties.json
@@ -247,32 +236,32 @@ To fix include errors you may be having, you need to configure some settings in 
       "version": 4
     }
 
-- Alternatively, you can use the scons argument ``compiledb=yes`` and set the compile commands setting ``compileCommands`` to ``compile_commands.json``, found in the advanced section of the C/C++ Configuration UI.
+- Ngoài ra, bạn có thể sử dụng đối số scons ``compiledb=yes`` và đặt thiết lập compile commands ``compileCommands`` thành ``compile_commands.json``, nằm trong phần nâng cao của giao diện C/C++ Configuration.
 
-  - This argument can be added to your build task in ``tasks.json`` since it will need to be run whenever files are added or moved.
+  - Có thể thêm đối số này vào build task trong ``tasks.json`` vì cần chạy nó mỗi khi tệp được thêm hoặc di chuyển.
 
 Linting class reference XML files
 ---------------------------------
 
-To get linting on class reference XML files, install the
-`vscode-xml extension <https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml>`__.
+Để lint các tệp XML tham chiếu class, hãy cài đặt `vscode-xml extension <https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml>`__.
 
 Displaying documentation on hover
 ---------------------------------
 
-By installing the
-`Godot Hover Docs extension <https://marketplace.visualstudio.com/items?itemName=RedMser.godot-hover-docs>`__,
-you can make class reference documentation appear when hovering symbols in C++
-source or header files. The information is sourced from local XML files, so it works offline.
+Bằng cách cài đặt `Godot Hover Docs extension <https://marketplace.visualstudio.com/items?itemName=RedMser.godot-hover-docs>`__, bạn có thể hiển thị tài liệu tham chiếu class khi di chuột qua các symbol trong tệp nguồn hoặc tệp header C++. Thông tin được lấy từ các tệp XML cục bộ nên có thể hoạt động ngoại tuyến.
 
 .. note::
 
-    This is only effective for symbols that are documented in the class reference XML,
-    i.e. those that are exposed to the scripting API. Internal engine symbols will not
-    show documentation on hover, unless they have a comment right above their declaration.
+    Tính năng này chỉ có tác dụng với các symbol được ghi tài liệu trong XML tham chiếu class, tức là những symbol được exposed cho scripting API. Các symbol nội bộ của engine sẽ không hiển thị tài liệu khi di chuột qua, trừ khi chúng có comment ngay phía trên phần khai báo.
 
 Troubleshooting
 ---------------
 
-If you run into any issues, ask for help in one of
-`Godot's community channels <https://godotengine.org/community>`__.
+Nếu gặp bất kỳ vấn đề nào, hãy yêu cầu trợ giúp trong một trong các `kênh cộng đồng của Godot <https://godotengine.org/community>`__.
+
+.. _`Visual Studio Code`: https://code.visualstudio.com
+.. _`Microsoft`: https://microsoft.com
+.. _`official documentation`: https://code.visualstudio.com/docs/languages/cpp
+.. _`clangd`: https://open-vsx.org/extension/llvm-vs-code-extensions/vscode-clangd
+.. _`Tasks in Visual Studio Code`: https://code.visualstudio.com/docs/editor/tasks#_custom-tasks
+.. _`CodeLLDB extension`: https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb

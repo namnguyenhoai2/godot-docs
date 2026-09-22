@@ -2,15 +2,12 @@
 
 .. _doc_configuring_an_ide:
 
-Configuring an IDE
-==================
+Cấu hình một IDE
+================
 
-We assume that you have already `cloned <https://github.com/godotengine/godot>`_
-and :ref:`compiled <toc-devel-compiling>` Godot.
+Chúng tôi giả định rằng bạn đã `cloned <https://github.com/godotengine/godot>`_ và :ref:`compiled <toc-devel-compiling>` Godot.
 
-You can easily develop Godot with any text editor and by invoking ``scons``
-on the command line, but if you want to work with an IDE (Integrated
-Development Environment), here are setup instructions for some popular ones:
+Bạn có thể dễ dàng phát triển Godot bằng bất kỳ trình soạn thảo văn bản nào và gọi ``scons`` trên dòng lệnh, nhưng nếu muốn làm việc với một IDE (Môi trường phát triển tích hợp), dưới đây là hướng dẫn thiết lập cho một số IDE phổ biến:
 
 .. toctree::
    :maxdepth: 1
@@ -26,16 +23,16 @@ Development Environment), here are setup instructions for some popular ones:
    visual_studio_code
    xcode
 
-It is possible to use other IDEs, but their setup is not documented yet.
+Bạn cũng có thể sử dụng các IDE khác, nhưng cách thiết lập cho chúng vẫn chưa được ghi lại.
 
-If your editor supports the `language server protocol <https://microsoft.github.io/language-server-protocol/>`__,
-you can use `clangd <https://clangd.llvm.org>`__ for completion, diagnostics, and more.
-You can generate a compilation database for use with clangd one of two ways:
+Nếu trình soạn thảo của bạn hỗ trợ `language server protocol <https://microsoft.github.io/language-server-protocol/>`__, bạn có thể sử dụng `clangd <https://clangd.llvm.org>`__ để hoàn tất mã, chẩn đoán lỗi và hơn thế nữa. Bạn có thể tạo cơ sở dữ liệu biên dịch để sử dụng với clangd theo một trong hai cách sau:
 
 .. code-block:: shell
 
-   # Generate compile_commands.json while compiling
+   # Tạo compile_commands.json trong khi biên dịch
    scons compiledb=yes
 
-   # Generate compile_commands.json without compiling
+   # Tạo compile_commands.json mà không biên dịch
    scons compiledb=yes compile_commands.json
+
+.. _`cloned`: https://github.com/godotengine/godot

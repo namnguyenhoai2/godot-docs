@@ -3,67 +3,67 @@
 Code::Blocks
 ============
 
-`Code::Blocks <https://codeblocks.org/>`_ is a free, open-source, cross-platform IDE.
+`Code::Blocks <https://codeblocks.org/>`_ là một IDE miễn phí, mã nguồn mở và đa nền tảng.
 
-Creating a new project
-----------------------
+Tạo dự án mới
+-------------
 
-From Code::Blocks' main screen, click **Create a new project** or select **File > New > Project...**.
+Từ màn hình chính của Code::Blocks, nhấp vào **Create a new project** hoặc chọn **File > New > Project...**.
 
 .. figure:: img/code_blocks_file_new_project.png
    :figclass: figure-w480
    :align: center
 
-In the **New from template** window, from **Projects**, select **Empty project**, and click **Go**.
+Trong cửa sổ **New from template**, từ **Projects**, chọn **Empty project**, rồi nhấp vào **Go**.
 
 .. figure:: img/code_blocks_new_empty_project.png
    :figclass: figure-w480
    :align: center
 
-Click Next, to pass the welcome to the new empty project wizard.
+Nhấp vào Next để bỏ qua lời chào của trình hướng dẫn tạo dự án trống mới.
 
 .. figure:: img/code_blocks_wizard_welcome.png
    :figclass: figure-w480
    :align: center
 
-The project file should be created in the root of the cloned project folder. To achieve this, first, ensure that the **Project title** is the same as the folder name that Godot was cloned into. Unless you cloned the project into a folder with a different name, this will be ``godot``.
+Tệp dự án phải được tạo trong thư mục gốc của thư mục dự án đã clone. Để thực hiện việc này, trước tiên hãy đảm bảo **Project title** giống với tên thư mục mà Godot được clone vào. Trừ khi bạn clone dự án vào một thư mục có tên khác, giá trị này sẽ là ``godot``.
 
-Second, ensure that the **Folder to create project in** is the folder you ran the Git clone command from, not the ``godot`` project folder. Confirm that the **Resulting filename** field will create the project file in the root of the cloned project folder.
+Thứ hai, hãy đảm bảo **Folder to create project in** là thư mục mà bạn đã chạy lệnh Git clone, không phải thư mục dự án ``godot``. Xác nhận rằng trường **Resulting filename** sẽ tạo tệp dự án trong thư mục gốc của thư mục dự án đã clone.
 
 .. figure:: img/code_blocks_project_title_and_location.png
    :figclass: figure-w480
    :align: center
 
-The compiler and configuration settings are managed through **SCons** and will be configured later. However, it's worth deselecting the **Create "Release" configuration** option; so only a single build target is created before clicking **Finish**.
+Trình biên dịch và các thiết lập cấu hình được quản lý thông qua **SCons** và sẽ được cấu hình sau. Tuy nhiên, bạn nên bỏ chọn tùy chọn **Create "Release" configuration**, để chỉ một build target được tạo trước khi nhấp vào **Finish**.
 
 .. figure:: img/code_blocks_compiler_and_configuration.png
    :figclass: figure-w480
    :align: center
 
-Configuring the build
----------------------
+Cấu hình build
+--------------
 
-The first step is to change the project properties. Right-click on the new project and select **Properties...**.
+Bước đầu tiên là thay đổi các thuộc tính của dự án. Nhấp chuột phải vào dự án mới và chọn **Properties...**.
 
 .. figure:: img/code_blocks_open_properties.png
    :figclass: figure-w480
    :align: center
 
-Check the **This is a custom Makefile** property. Click OK to save the changes.
+Chọn thuộc tính **This is a custom Makefile**. Nhấp vào OK để lưu các thay đổi.
 
 .. figure:: img/code_blocks_project_properties.png
    :figclass: figure-w480
    :align: center
 
-The next step is to change the build options. Right-click on the new project and select **Build Options...**.
+Bước tiếp theo là thay đổi các tùy chọn build. Nhấp chuột phải vào dự án mới và chọn **Build Options...**.
 
 .. figure:: img/code_blocks_open_build_options.png
    :figclass: figure-w480
    :align: center
 
-Select the **"Make" commands** tab and remove all the existing commands for all the build targets. For each build target enter the **SCons** command for creating the desired build in the **Build project/target** field. The minimum is ``scons``. For details on the **SCons** build options, see :ref:`doc_introduction_to_the_buildsystem`. It's also useful to add the ``scons --clean`` command in the **Clean project/target** field to the project's default commands.
+Chọn tab **"Make" commands** và xóa tất cả các lệnh hiện có cho mọi build target. Với mỗi build target, nhập lệnh **SCons** để tạo build mong muốn vào trường **Build project/target**. Giá trị tối thiểu là ``scons``. Để biết chi tiết về các tùy chọn build của **SCons**, hãy xem :ref:`doc_introduction_to_the_buildsystem`. Bạn cũng nên thêm lệnh ``scons --clean`` vào trường **Clean project/target** trong các lệnh mặc định của dự án.
 
-If you're using Windows, all the commands need to be preceded with ``cmd /c`` to initialize the command interpreter.
+Nếu bạn sử dụng Windows, tất cả các lệnh cần được đặt sau ``cmd /c`` để khởi tạo trình thông dịch lệnh.
 
 .. figure:: img/code_blocks_scons_minimum.png
    :figclass: figure-w480
@@ -73,57 +73,59 @@ If you're using Windows, all the commands need to be preceded with ``cmd /c`` to
    :figclass: figure-w480
    :align: center
 
-Windows example:
+Ví dụ trên Windows:
 
 .. figure:: img/code_blocks_scons_windows.png
    :figclass: figure-w480
    :align: center
 
-Code::Blocks should now be configured to build Godot; so either select **Build > Build**, click the gear button, or press :kbd:`Ctrl + F9`.
+Code::Blocks hiện đã được cấu hình để build Godot; vì vậy bạn có thể chọn **Build > Build**, nhấp vào nút bánh răng hoặc nhấn :kbd:`Ctrl + F9`.
 
-Configuring the run
--------------------
+Cấu hình việc chạy
+------------------
 
-Once **SCons** has successfully built the desired target, reopen the project **Properties...** and select the **Build targets** tab. In the **Output filename** field, browse to the ``bin`` folder and select the compiled file.
+Sau khi **SCons** build thành công target mong muốn, mở lại **Properties...** của dự án và chọn tab **Build targets**. Trong trường **Output filename**, duyệt đến thư mục ``bin`` và chọn tệp đã biên dịch.
 
-Deselect the **Auto-generate filename prefix** and **Auto-generate filename extension** options.
+Bỏ chọn các tùy chọn **Auto-generate filename prefix** và **Auto-generate filename extension**.
 
 .. figure:: img/code_blocks_build_targets.png
    :figclass: figure-w480
    :align: center
 
-Code::Blocks should now be configured to run your compiled Godot executable; so either select **Build > Run**, click the green arrow button, or press :kbd:`Ctrl + F10`.
+Code::Blocks hiện đã được cấu hình để chạy tệp thực thi Godot đã biên dịch của bạn; vì vậy bạn có thể chọn **Build > Run**, nhấp vào nút mũi tên màu xanh lá hoặc nhấn :kbd:`Ctrl + F10`.
 
-There are two additional points worth noting. First, if required, the **Execution working dir** field can be used to test specific projects, by setting it to the folder containing the ``project.godot`` file. Second, the **Build targets** tab can be used to add and remove build targets for working with and creating different builds.
+Có hai điểm bổ sung đáng lưu ý. Thứ nhất, nếu cần, có thể sử dụng trường **Execution working dir** để kiểm thử các dự án cụ thể bằng cách đặt trường này thành thư mục chứa tệp ``project.godot``. Thứ hai, có thể sử dụng tab **Build targets** để thêm và xóa các build target nhằm làm việc với và tạo các build khác nhau.
 
-Adding files to the project
----------------------------
+Thêm tệp vào dự án
+------------------
 
-To add all the Godot code files to the project, right-click on the new project and select **Add files recursively...**.
+Để thêm tất cả các tệp mã Godot vào dự án, nhấp chuột phải vào dự án mới và chọn **Add files recursively...**.
 
 .. figure:: img/code_blocks_add_files_recursively.png
    :figclass: figure-w480
    :align: center
 
-It should automatically select the project folder; so simply click **Open**. By default, all code files are included, so simply click **OK**.
+Thư mục dự án sẽ được tự động chọn; vì vậy chỉ cần nhấp vào **Open**. Theo mặc định, tất cả các tệp mã đều được bao gồm, vì vậy chỉ cần nhấp vào **OK**.
 
 .. figure:: img/code_blocks_select_files.png
    :figclass: figure-w480
    :align: center
 
-Code style configuration
-------------------------
+Cấu hình code style
+-------------------
 
-Before editing any files, remember that all code needs to comply with the `code style guidelines <https://contributing.godotengine.org/en/latest/engine/guidelines/code_style.html>`__. One important difference with Godot is the use of tabs for indents. Therefore, the key default editor setting that needs to be changed in Code::Blocks is to enable tabs for indents. This setting can be found by selecting **Settings > Editor**.
+Trước khi chỉnh sửa bất kỳ tệp nào, hãy nhớ rằng tất cả mã phải tuân thủ `code style guidelines <https://contributing.godotengine.org/en/latest/engine/guidelines/code_style.html>`__. Một điểm khác biệt quan trọng với Godot là việc sử dụng tab để thụt lề. Vì vậy, thiết lập editor mặc định quan trọng cần thay đổi trong Code::Blocks là bật tab để thụt lề. Có thể tìm thấy thiết lập này bằng cách chọn **Settings > Editor**.
 
 .. figure:: img/code_blocks_update_editor_settings.png
    :figclass: figure-w480
    :align: center
 
-Under **General Settings**, on the **Editor Settings** tab, under **Tab Options** check **Use TAB character**.
+Trong **General Settings**, trên tab **Editor Settings**, bên dưới **Tab Options**, chọn **Use TAB character**.
 
 .. figure:: img/code_block_use_tab_character.png
    :figclass: figure-w480
    :align: center
 
-That's it. You're ready to start contributing to Godot using the Code::Blocks IDE. Remember to save the project file and the **Workspace**. If you run into any issues, ask for help in one of `Godot's community channels <https://godotengine.org/community>`__.
+Vậy là xong. Bạn đã sẵn sàng bắt đầu đóng góp cho Godot bằng IDE Code::Blocks. Hãy nhớ lưu tệp dự án và **Workspace**. Nếu gặp bất kỳ vấn đề nào, hãy yêu cầu trợ giúp trong một trong các `Godot's community channels <https://godotengine.org/community>`__.
+
+.. _`Code::Blocks`: https://codeblocks.org/

@@ -3,81 +3,74 @@
 Xcode
 =====
 
-`Xcode <https://developer.apple.com/xcode>`_ is a free macOS-only IDE. You can
-download it from the Mac App Store.
+`Xcode <https://developer.apple.com/xcode>`_ là một IDE miễn phí chỉ dành cho macOS. Bạn có thể tải xuống IDE này từ Mac App Store.
 
-Importing the project
----------------------
+Nhập project
+------------
 
-- From Xcode's main screen create a new project using the **Other > External Build System** template.
+- Từ màn hình chính của Xcode, hãy tạo một project mới bằng template **Other > External Build System**.
 
 .. figure:: img/xcode_1_create_external_build_project.webp
    :figclass: figure-w480
    :align: center
 
-- Now choose a name for your project and set the path to scons executable in build tool (to find the path you can type ``where scons`` in a terminal).
+- Bây giờ hãy chọn tên cho project và đặt đường dẫn đến executable scons trong build tool (để tìm đường dẫn, bạn có thể nhập ``where scons`` trong terminal).
 
 .. figure:: img/xcode_2_set_external_build_project_parameters.webp
    :figclass: figure-w480
    :align: center
 
-- Open the main target from the **Targets** section and select the **Info** tab.
+- Mở target chính từ phần **Targets** và chọn tab **Info**.
 
 .. figure:: img/xcode_3_configure_scons.webp
    :figclass: figure-w480
    :align: center
 
-- Fill out the form with the following settings:
+- Điền biểu mẫu với các cài đặt sau:
 
-  +------------+------------------------------------------------------------------------------+
-  | Arguments  | See :ref:`doc_introduction_to_the_buildsystem` for a full list of arguments. |
-  +------------+------------------------------------------------------------------------------+
-  | Directory  | A full path to the Godot root folder                                         |
-  +------------+------------------------------------------------------------------------------+
+  +-----------+-------------------------------------------------------------------------------------+
+  | Arguments | Xem :ref:`doc_introduction_to_the_buildsystem` để biết danh sách đầy đủ các đối số. |
+  +-----------+-------------------------------------------------------------------------------------+
+  | Directory | Đường dẫn đầy đủ đến thư mục gốc của Godot                                          |
+  +-----------+-------------------------------------------------------------------------------------+
 
-- Add a Command Line Tool target which will be used for indexing the project by
-  choosing **File > New > Target...**.
+- Thêm target Command Line Tool, target này sẽ được dùng để lập chỉ mục project, bằng cách chọn **File > New > Target...**.
 
 .. figure:: img/xcode_4_add_new_target.webp
    :figclass: figure-w480
    :align: center
 
-- Select **macOS > Application > Command Line Tool**.
+- Chọn **macOS > Application > Command Line Tool**.
 
 .. figure:: img/xcode_5_select_command_line_target.webp
    :figclass: figure-w480
    :align: center
 
-.. note:: Name it something so you know not to compile with this target (e.g. ``GodotXcodeIndex``).
+.. note:: Đặt tên sao cho bạn biết không được biên dịch bằng target này (ví dụ: ``GodotXcodeIndex``).
 
-- For this target open the **Build Settings** tab and look for **Header Search Paths**.
-- Set **Header Search Paths** to the absolute path to the Godot root folder. You need to
-  include subdirectories as well. To achieve that, add two two asterisks (``**``) to the
-  end of the path, e.g. ``/Users/me/repos/godot-source/**``.
+- Đối với target này, hãy mở tab **Build Settings** và tìm **Header Search Paths**.
+- Đặt **Header Search Paths** thành đường dẫn tuyệt đối đến thư mục gốc của Godot. Bạn cũng cần bao gồm các thư mục con. Để thực hiện việc đó, hãy thêm hai dấu hoa thị (``**``) vào cuối đường dẫn, ví dụ: ``/Users/me/repos/godot-source/**``.
 
-- Add the Godot source to the project by dragging and dropping it into the project file browser.
-- Select **Create groups** for the **Added folders** option and check *only*
-  your command line indexing target in the **Add to targets** section.
+- Thêm mã nguồn Godot vào project bằng cách kéo và thả mã nguồn vào trình duyệt file của project.
+- Chọn **Create groups** cho tùy chọn **Added folders** và chỉ chọn *only* target lập chỉ mục bằng command line của bạn trong phần **Add to targets**.
 
 .. figure:: img/xcode_6_after_add_godot_source_to_project.webp
    :figclass: figure-w480
    :align: center
 
-- Xcode will now index the files. This may take a few minutes.
-- Once Xcode is done indexing, you should have jump-to-definition,
-  autocompletion, and full syntax highlighting.
+- Xcode sẽ lập chỉ mục các file ngay lúc này. Quá trình này có thể mất vài phút.
+- Sau khi Xcode lập chỉ mục xong, bạn sẽ có tính năng chuyển đến định nghĩa, tự động hoàn thành mã và tô sáng cú pháp đầy đủ.
 
-Debugging the project
----------------------
+Debug project
+-------------
 
-To enable debugging support you need to edit the external build target's build and run schemes.
+Để bật hỗ trợ debugging, bạn cần chỉnh sửa các scheme build và run của external build target.
 
-- Open the scheme editor of the external build target.
-- Locate the **Build > Post Actions** section.
-- Add a new script run action
-- Under **Provide build settings from** select your project. This allows to reference
-  the project directory within the script.
-- Create a script that will give the binary a name that Xcode can recognize, e.g.:
+- Mở trình chỉnh sửa scheme của external build target.
+- Tìm phần **Build > Post Actions**.
+- Thêm một script run action mới
+- Trong **Provide build settings from**, hãy chọn project của bạn. Việc này cho phép tham chiếu đến thư mục project trong script.
+- Tạo một script để đặt tên cho binary mà Xcode có thể nhận dạng, ví dụ:
 
 .. code-block:: shell
 
@@ -87,23 +80,20 @@ To enable debugging support you need to edit the external build target's build a
    :figclass: figure-w480
    :align: center
 
-- Build the external build target.
+- Build external build target.
 
-- Open the scheme editor again and select **Run**.
+- Mở lại trình chỉnh sửa scheme và chọn **Run**.
 
 .. figure:: img/xcode_8_setup_run_scheme.webp
    :figclass: figure-w480
    :align: center
 
-- Set the **Executable** to the file you linked in your post-build action script.
-- Check **Debug executable**.
-- You can add two arguments on the **Arguments** tab:
-  the ``-e`` flag opens the editor instead of the Project Manager, and the ``--path`` argument
-  tells the executable to open the specified project (must be provided as an *absolute* path
-  to the project root, not the ``project.godot`` file).
+- Đặt **Executable** thành file mà bạn đã liên kết trong script post-build action.
+- Chọn **Debug executable**.
+- Bạn có thể thêm hai đối số trong tab **Arguments**: cờ ``-e`` sẽ mở editor thay vì Project Manager, còn đối số ``--path`` yêu cầu executable mở project được chỉ định (phải cung cấp dưới dạng đường dẫn *absolute* đến thư mục gốc của project, không phải file ``project.godot``).
 
-To check that everything is working, put a breakpoint in ``platform/macos/godot_main_macos.mm`` and
-run the project.
+Để kiểm tra mọi thứ có hoạt động hay không, hãy đặt breakpoint trong ``platform/macos/godot_main_macos.mm`` rồi chạy project.
 
-If you run into any issues, ask for help in one of
-`Godot's community channels <https://godotengine.org/community>`__.
+Nếu gặp vấn đề, hãy yêu cầu trợ giúp trong một trong các `kênh cộng đồng của Godot <https://godotengine.org/community>`__.
+
+.. _`Xcode`: https://developer.apple.com/xcode

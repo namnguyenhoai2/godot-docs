@@ -3,34 +3,33 @@
 KDevelop
 ========
 
-`KDevelop <https://www.kdevelop.org>`_ is a free, open source IDE for all desktop platforms.
+`KDevelop <https://www.kdevelop.org>`_ là một IDE miễn phí, mã nguồn mở dành cho mọi nền tảng máy tính để bàn.
 
-Importing the project
----------------------
+Nhập project
+------------
 
-- From the KDevelop's main screen select **Open Project**.
+- Từ màn hình chính của KDevelop, chọn **Open Project**.
 
 .. figure:: img/kdevelop_newproject.webp
    :figclass: figure-w480
    :align: center
 
-   KDevelop's main screen.
+   Màn hình chính của KDevelop.
 
-- Navigate to the Godot root folder and select it.
-- On the next screen, choose **Custom Build System** for the **Project Manager**.
+- Điều hướng đến thư mục gốc của Godot và chọn thư mục đó.
+- Ở màn hình tiếp theo, chọn **Custom Build System** cho **Project Manager**.
 
 .. figure:: img/kdevelop_custombuild.webp
    :figclass: figure-w480
    :align: center
 
-- After the project has been imported, open the project configuration by right-clicking
-  on it in the **Projects** panel and selecting **Open Configuration..** option.
+- Sau khi project được nhập, mở cấu hình project bằng cách nhấp chuột phải vào project trong bảng **Projects**, rồi chọn tùy chọn **Open Configuration..**.
 
 .. figure:: img/kdevelop_openconfig.webp
    :figclass: figure-w480
    :align: center
 
-- Under **Language Support** open the **Includes/Imports** tab and add the following paths:
+- Trong **Language Support**, mở tab **Includes/Imports** và thêm các đường dẫn sau:
 
   .. code-block:: none
 
@@ -46,43 +45,41 @@ Importing the project
    :figclass: figure-w480
    :align: center
 
-- Apply the changes.
-- Under **Custom Build System** add a new build configuration with the following settings:
+- Áp dụng các thay đổi.
+- Trong **Custom Build System**, thêm một cấu hình build mới với các thiết lập sau:
 
-  +-----------------+------------------------------------------------------------------------------+
-  | Build Directory | *blank*                                                                      |
-  +-----------------+------------------------------------------------------------------------------+
-  | Enable          | **True**                                                                     |
-  +-----------------+------------------------------------------------------------------------------+
-  | Executable      | **scons**                                                                    |
-  +-----------------+------------------------------------------------------------------------------+
-  | Arguments       | See :ref:`doc_introduction_to_the_buildsystem` for a full list of arguments. |
-  +-----------------+------------------------------------------------------------------------------+
+  +---------------+-------------------------------------------------------------------------------------+
+  | Thư mục build | *blank*                                                                             |
+  +---------------+-------------------------------------------------------------------------------------+
+  | Bật           | **True**                                                                            |
+  +---------------+-------------------------------------------------------------------------------------+
+  | Executable    | **scons**                                                                           |
+  +---------------+-------------------------------------------------------------------------------------+
+  | Đối số        | Xem :ref:`doc_introduction_to_the_buildsystem` để biết danh sách đầy đủ các đối số. |
+  +---------------+-------------------------------------------------------------------------------------+
 
 .. figure:: img/kdevelop_buildconfig.webp
    :figclass: figure-w480
    :align: center
 
-- Apply the changes and close the configuration window.
+- Áp dụng các thay đổi và đóng cửa sổ cấu hình.
 
-Debugging the project
----------------------
+Debug project
+-------------
 
-- Select **Run > Configure Launches...** from the top menu.
+- Chọn **Run > Configure Launches...** từ menu trên cùng.
 
 .. figure:: img/kdevelop_configlaunches.webp
    :figclass: figure-w480
    :align: center
 
-- Click **Add** to create a new launch configuration.
-- Select **Executable** option and specify the path to your executable located in
-  the ``<Godot root directory>/bin`` folder. The name depends on your build configuration,
-  e.g. ``godot.linuxbsd.editor.dev.x86_64`` for 64-bit LinuxBSD platform with
-  ``platform=linuxbsd``, ``target=editor``, and ``dev_build=yes``.
+- Nhấp vào **Add** để tạo một cấu hình khởi chạy mới.
+- Chọn tùy chọn **Executable** và chỉ định đường dẫn đến executable nằm trong thư mục ``<Godot root directory>/bin``. Tên này phụ thuộc vào cấu hình build của bạn, ví dụ: ``godot.linuxbsd.editor.dev.x86_64`` cho nền tảng LinuxBSD 64-bit với ``platform=linuxbsd``, ``target=editor`` và ``dev_build=yes``.
 
 .. figure:: img/kdevelop_configlaunches2.webp
    :figclass: figure-w480
    :align: center
 
-If you run into any issues, ask for help in one of
-`Godot's community channels <https://godotengine.org/community>`__.
+Nếu gặp bất kỳ vấn đề nào, hãy yêu cầu trợ giúp trong một trong các `kênh cộng đồng của Godot <https://godotengine.org/community>`__.
+
+.. _`KDevelop`: https://www.kdevelop.org
