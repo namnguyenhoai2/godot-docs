@@ -1,58 +1,50 @@
 .. _doc_custom_resource_format_loaders:
 
-Custom resource format loaders
-==============================
+Trình nạp định dạng tài nguyên tùy chỉnh
+========================================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-ResourceFormatLoader is a factory interface for loading file assets.
-Resources are primary containers. When load is called on the same file
-path again, the previous loaded Resource will be referenced. Naturally,
-loaded resources must be stateless.
+ResourceFormatLoader là một giao diện factory để nạp các asset dạng tệp. Resource là các container chính. Khi gọi load lại trên cùng một đường dẫn tệp, Resource đã được nạp trước đó sẽ được tham chiếu. Do đó, các resource đã nạp phải không có trạng thái.
 
-This guide assumes the reader knows how to create C++ modules and Godot
-data types. If not, refer to this guide: :ref:`doc_custom_modules_in_cpp`
+Hướng dẫn này giả định người đọc biết cách tạo các module C++ và kiểu dữ liệu Godot. Nếu không, hãy tham khảo hướng dẫn này: :ref:`doc_custom_modules_in_cpp`
 
-References
-~~~~~~~~~~
+Tham khảo
+~~~~~~~~~
 
 - :ref:`ResourceLoader<class_resourceloader>`
 - `core/io/resource_loader.cpp <https://github.com/godotengine/godot/blob/master/core/io/resource_loader.cpp>`_
 
-What for?
----------
+Dùng để làm gì?
+---------------
 
-- Adding new support for many file formats
-- Audio formats
-- Video formats
-- Machine learning models
+- Bổ sung hỗ trợ cho nhiều định dạng tệp
+- Các định dạng âm thanh
+- Các định dạng video
+- Các model machine learning
 
-What not?
----------
+Không dùng cho việc gì?
+-----------------------
 
-- Raster images
+- Ảnh raster
 
-ImageFormatLoader should be used to load images.
+Nên sử dụng ImageFormatLoader để nạp ảnh.
 
-References
-~~~~~~~~~~
+Tham khảo
+~~~~~~~~~
 
 - `core/io/image_loader.h <https://github.com/godotengine/godot/blob/master/core/io/image_loader.h>`_
 
 
-Creating a ResourceFormatLoader
--------------------------------
+Tạo một ResourceFormatLoader
+----------------------------
 
-Each file format consist of a data container and a ``ResourceFormatLoader``.
+Mỗi định dạng tệp gồm một container dữ liệu và một ``ResourceFormatLoader``.
 
-ResourceFormatLoaders are classes which return all the
-necessary metadata for supporting new extensions in Godot. The
-class must return the format name and the extension string.
+ResourceFormatLoader là các class trả về toàn bộ metadata cần thiết để hỗ trợ các extension mới trong Godot. Class này phải trả về tên định dạng và chuỗi extension.
 
-In addition, ResourceFormatLoaders must convert file paths into
-resources with the ``load`` function. To load a resource, ``load`` must
-read and handle data serialization.
+Ngoài ra, ResourceFormatLoader phải chuyển đổi đường dẫn tệp thành resource bằng hàm ``load``. Để nạp một resource, ``load`` phải đọc và xử lý việc serialization dữ liệu.
 
 
 .. code-block:: cpp
@@ -101,11 +93,10 @@ read and handle data serialization.
         return ClassDB::is_parent_class(p_type, "Resource");
     }
 
-Creating a ResourceFormatSaver
-------------------------------
+Tạo một ResourceFormatSaver
+---------------------------
 
-If you'd like to be able to edit and save a resource, you can implement a
-``ResourceFormatSaver``:
+Nếu bạn muốn có thể chỉnh sửa và lưu một resource, bạn có thể triển khai một ``ResourceFormatSaver``:
 
 .. code-block:: cpp
     :caption: resource_saver_json.h
@@ -146,14 +137,12 @@ If you'd like to be able to edit and save a resource, you can implement a
         }
     }
 
-Creating custom data types
+Tạo kiểu dữ liệu tùy chỉnh
 --------------------------
 
-Godot may not have a proper substitute within its :ref:`doc_core_types`
-or managed resources. Godot needs a new registered data type to
-understand additional binary formats such as machine learning models.
+Godot có thể không có một thành phần thay thế phù hợp trong :ref:`doc_core_types` hoặc các resource được quản lý. Godot cần một kiểu dữ liệu mới được đăng ký để hiểu các định dạng nhị phân bổ sung, chẳng hạn như các model machine learning.
 
-Here is an example of creating a custom datatype:
+Sau đây là ví dụ về cách tạo một kiểu dữ liệu tùy chỉnh:
 
 .. code-block:: cpp
     :caption: resource_json.h
@@ -246,14 +235,12 @@ Here is an example of creating a custom datatype:
         return content;
     }
 
-Considerations
-~~~~~~~~~~~~~~
+Các điểm cần lưu ý
+~~~~~~~~~~~~~~~~~~
 
-Some libraries may not define certain common routines such as IO handling.
-Therefore, Godot call translations are required.
+Một số thư viện có thể không định nghĩa một số routine phổ biến, chẳng hạn như xử lý IO. Vì vậy, cần chuyển đổi các lời gọi của Godot.
 
-For example, here is the code for translating ``FileAccess``
-calls into ``std::istream``.
+Ví dụ, sau đây là code để chuyển đổi các lời gọi ``FileAccess`` thành ``std::istream``.
 
 .. code-block:: cpp
 
@@ -274,7 +261,7 @@ calls into ``std::istream``.
             } else {
                 size_t pos = _file->get_position();
                 uint8_t ret = _file->get_8();
-                _file->seek(pos); // Required since get_8() advances the read head.
+                _file->seek(pos); // Cần thiết vì get_8() tiến con trỏ đọc.
                 return ret;
             }
         }
@@ -287,19 +274,17 @@ calls into ``std::istream``.
     };
 
 
-References
-~~~~~~~~~~
+Tham khảo
+~~~~~~~~~
 
 - `istream <https://cplusplus.com/reference/istream/istream/>`_
 - `streambuf <https://cplusplus.com/reference/streambuf/streambuf/?kw=streambuf>`_
 - `core/io/file_access.h <https://github.com/godotengine/godot/blob/master/core/io/file_access.h>`_
 
-Registering the new file format
--------------------------------
+Đăng ký định dạng tệp mới
+-------------------------
 
-Godot registers ``ResourcesFormatLoader`` with a ``ResourceLoader``
-handler. The handler selects the proper loader automatically
-when ``load`` is called.
+Godot đăng ký ``ResourcesFormatLoader`` với một handler ``ResourceLoader``. Handler này tự động chọn loader phù hợp khi gọi ``load``.
 
 .. code-block:: cpp
     :caption: register_types.h
@@ -338,16 +323,15 @@ when ``load`` is called.
         json_saver.unref();
     }
 
-References
-~~~~~~~~~~
+Tham khảo
+~~~~~~~~~
 
 - `core/io/resource_loader.cpp <https://github.com/godotengine/godot/blob/master/core/io/resource_loader.cpp>`_
 
-Loading it on GDScript
-----------------------
+Nạp bằng GDScript
+-----------------
 
-Save a file called ``demo.json`` with the following contents and place it in the
-project's root folder:
+Lưu một tệp có tên ``demo.json`` với nội dung sau và đặt tệp đó vào thư mục gốc của project:
 
 .. code-block:: json
 
@@ -362,7 +346,7 @@ project's root folder:
       ]
     }
 
-Then attach the following script to any node:
+Sau đó, gắn script sau vào bất kỳ node nào:
 
 ::
 
@@ -372,3 +356,9 @@ Then attach the following script to any node:
 
     func _ready():
         print(json_resource.get_dict())
+
+.. _`core/io/resource_loader.cpp`: https://github.com/godotengine/godot/blob/master/core/io/resource_loader.cpp
+.. _`core/io/image_loader.h`: https://github.com/godotengine/godot/blob/master/core/io/image_loader.h
+.. _`istream`: https://cplusplus.com/reference/istream/istream/
+.. _`streambuf`: https://cplusplus.com/reference/streambuf/streambuf/?kw=streambuf
+.. _`core/io/file_access.h`: https://github.com/godotengine/godot/blob/master/core/io/file_access.h

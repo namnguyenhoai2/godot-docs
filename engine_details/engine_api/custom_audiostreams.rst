@@ -1,49 +1,37 @@
 .. _doc_custom_audiostreams:
 
-Custom AudioStreams
-===================
+AudioStreams tùy chỉnh
+======================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-AudioStream is the base class of all audio emitting objects.
-AudioStreamPlayer binds onto an AudioStream to emit PCM data
-into an AudioServer which manages audio drivers.
+AudioStream là lớp cơ sở của mọi đối tượng phát âm thanh. AudioStreamPlayer liên kết với một AudioStream để phát dữ liệu PCM vào AudioServer, nơi quản lý các audio driver.
 
-All audio resources require two audio based classes: AudioStream
-and AudioStreamPlayback. As a data container, AudioStream contains
-the resource and exposes itself to GDScript. AudioStream references
-its own internal custom AudioStreamPlayback which translates
-AudioStream into PCM data.
+Mọi audio resource đều cần hai lớp dựa trên audio: AudioStream và AudioStreamPlayback. Với vai trò là một bộ chứa dữ liệu, AudioStream chứa resource và cung cấp nó cho GDScript. AudioStream tham chiếu đến AudioStreamPlayback tùy chỉnh nội bộ của chính nó, lớp này chuyển AudioStream thành dữ liệu PCM.
 
-This guide assumes the reader knows how to create C++ modules. If not, refer to this guide
+Hướng dẫn này giả định rằng bạn biết cách tạo các C++ module. Nếu không, hãy tham khảo hướng dẫn này
 :ref:`doc_custom_modules_in_cpp`.
 
-References:
-~~~~~~~~~~~
+Tài liệu tham khảo:
+~~~~~~~~~~~~~~~~~~~
 
 -  `servers/audio/audio_stream.h <https://github.com/godotengine/godot/blob/master/servers/audio/audio_stream.h>`__
 -  `scene/audio/audio_stream_player.cpp <https://github.com/godotengine/godot/blob/master/scene/audio/audio_stream_player.cpp>`__
 
-What for?
----------
+Dùng để làm gì?
+---------------
 
-- Binding external libraries (like Wwise, FMOD, etc).
-- Adding custom audio queues
-- Adding support for more audio formats
+- Liên kết các thư viện bên ngoài (chẳng hạn như Wwise, FMOD, v.v.).
+- Thêm các audio queue tùy chỉnh
+- Thêm hỗ trợ cho nhiều audio format hơn
 
-Create an AudioStream
----------------------
+Tạo một AudioStream
+-------------------
 
-An AudioStream consists of three components: data container, stream name,
-and an AudioStreamPlayback friend class generator. Audio data can be
-loaded in a number of ways such as with an internal counter for a tone generator,
-internal/external buffer, or a file reference.
+Một AudioStream gồm ba thành phần: bộ chứa dữ liệu, tên stream và trình tạo lớp friend AudioStreamPlayback. Dữ liệu audio có thể được tải theo nhiều cách, chẳng hạn như dùng bộ đếm nội bộ cho tone generator, buffer nội bộ/bên ngoài hoặc tham chiếu đến một tệp.
 
-Some AudioStreams need to be stateless such as objects loaded from
-ResourceLoader. ResourceLoader loads once and references the same
-object regardless how many times ``load`` is called on a specific resource.
-Therefore, playback state must be self-contained in AudioStreamPlayback.
+Một số AudioStream cần phải stateless, chẳng hạn như các đối tượng được tải từ ResourceLoader. ResourceLoader chỉ tải một lần và tham chiếu đến cùng một đối tượng bất kể ``load`` được gọi bao nhiêu lần trên một resource cụ thể. Do đó, trạng thái phát phải được tự chứa trong AudioStreamPlayback.
 
 .. code-block:: cpp
     :caption: audiostream_mytone.h
@@ -68,7 +56,7 @@ Therefore, playback state must be self-contained in AudioStreamPlayback.
         virtual Ref<AudioStreamPlayback> instance_playback();
         virtual String get_stream_name() const;
         void gen_tone(int16_t *pcm_buf, int size);
-        virtual float get_length() const { return 0; } // if supported, otherwise return 0
+        virtual float get_length() const { return 0; } // nếu được hỗ trợ, nếu không thì trả về 0
         AudioStreamMyTone();
 
     protected:
@@ -111,18 +99,18 @@ Therefore, playback state must be self-contained in AudioStreamPlayback.
         ClassDB::bind_method(D_METHOD("get_stream_name"), &AudioStreamMyTone::get_stream_name);
     }
 
-References:
-~~~~~~~~~~~
+Tài liệu tham khảo:
+~~~~~~~~~~~~~~~~~~~
 
 -  `servers/audio/audio_stream.h <https://github.com/godotengine/godot/blob/master/servers/audio/audio_stream.h>`__
 
 
-Create an AudioStreamPlayback
------------------------------
+Tạo một AudioStreamPlayback
+---------------------------
 
-AudioStreamPlayer uses ``mix`` callback to obtain PCM data. The callback must match sample rate and fill the buffer.
+AudioStreamPlayer sử dụng ``mix`` callback để lấy dữ liệu PCM. Callback phải khớp với sample rate và điền đầy buffer.
 
-Since AudioStreamPlayback is controlled by the audio thread, i/o and dynamic memory allocation are forbidden.
+Vì AudioStreamPlayback được audio thread điều khiển, không được phép thực hiện I/O và cấp phát bộ nhớ động.
 
 .. code-block:: cpp
     :caption: audiostreamplayer_mytone.h
@@ -152,11 +140,11 @@ Since AudioStreamPlayback is controlled by the audio thread, i/o and dynamic mem
         virtual void start(float p_from_pos = 0.0);
         virtual void stop();
         virtual bool is_playing() const;
-        virtual int get_loop_count() const; // times it looped
+        virtual int get_loop_count() const; // số lần nó đã lặp
         virtual float get_playback_position() const;
         virtual void seek(float p_time);
         virtual void mix(AudioFrame *p_buffer, float p_rate_scale, int p_frames);
-        virtual float get_length() const; // if supported, otherwise return 0
+        virtual float get_length() const; // nếu được hỗ trợ, nếu không thì trả về 0
         AudioStreamPlaybackMyTone();
         ~AudioStreamPlaybackMyTone();
     };
@@ -227,12 +215,9 @@ Since AudioStreamPlayback is controlled by the audio thread, i/o and dynamic mem
 Resampling
 ~~~~~~~~~~
 
-Godot's AudioServer currently uses 44100 Hz sample rate. When other sample rates are
-needed such as 48000, either provide one or use AudioStreamPlaybackResampled.
-Godot provides cubic interpolation for audio resampling.
+AudioServer của Godot hiện sử dụng sample rate 44100 Hz. Khi cần các sample rate khác, chẳng hạn như 48000, hãy cung cấp một sample rate hoặc sử dụng AudioStreamPlaybackResampled. Godot cung cấp phép nội suy cubic để resampling audio.
 
-Instead of overloading ``mix``, AudioStreamPlaybackResampled uses ``_mix_internal`` to
-query AudioFrames and ``get_stream_sampling_rate`` to query current mix rate.
+Thay vì overload ``mix``, AudioStreamPlaybackResampled sử dụng ``_mix_internal`` để truy vấn AudioFrames và ``get_stream_sampling_rate`` để truy vấn mix rate hiện tại.
 
 .. code-block:: cpp
     :caption: mytone_audiostream_resampled.h
@@ -267,10 +252,10 @@ query AudioFrames and ``get_stream_sampling_rate`` to query current mix rate.
         virtual void start(float p_from_pos = 0.0);
         virtual void stop();
         virtual bool is_playing() const;
-        virtual int get_loop_count() const; // times it looped
+        virtual int get_loop_count() const; // số lần nó đã lặp
         virtual float get_playback_position() const;
         virtual void seek(float p_time);
-        virtual float get_length() const; // if supported, otherwise return 0
+        virtual float get_length() const; // nếu được hỗ trợ, nếu không thì trả về 0
         virtual float get_stream_sampling_rate();
         AudioStreamPlaybackResampledMyTone();
         ~AudioStreamPlaybackResampledMyTone();
@@ -342,8 +327,8 @@ query AudioFrames and ``get_stream_sampling_rate`` to query current mix rate.
         return active;
     }
 
-References:
-~~~~~~~~~~~
+Tài liệu tham khảo:
+~~~~~~~~~~~~~~~~~~~
 -  `core/math/audio_frame.h <https://github.com/godotengine/godot/blob/master/core/math/audio_frame.h>`__
 -  `servers/audio/audio_stream.h <https://github.com/godotengine/godot/blob/master/servers/audio/audio_stream.h>`__
 -  `scene/audio/audio_stream_player.cpp <https://github.com/godotengine/godot/blob/master/scene/audio/audio_stream_player.cpp>`__

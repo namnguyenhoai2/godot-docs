@@ -1,22 +1,19 @@
 .. _doc_what_is_gdextension:
 
-What is GDExtension?
-====================
+GDExtension là gì?
+==================
 
-**GDExtension** is a Godot-specific technology that lets the engine interact with
-native `shared libraries <https://en.wikipedia.org/wiki/Shared_library>`__
-at runtime. You can use it to run native code without compiling it with the engine.
+**GDExtension** là một công nghệ dành riêng cho Godot, cho phép engine tương tác với các `thư viện dùng chung <https://en.wikipedia.org/wiki/Shared_library>`__ native trong thời gian chạy. Bạn có thể sử dụng công nghệ này để chạy mã native mà không cần biên dịch mã đó cùng với engine.
 
-There are three primary methods with which this is achieved:
+Có ba phương thức chính để thực hiện việc này:
 
-* ``gdextension_interface.h``: A set of C functions that Godot and a GDExtension can use to communicate.
-* ``extension_api.json``: A list of C functions that are exposed from Godot APIs (:ref:`Core Features <doc_scripting_core_features>`).
-* :ref:`*.gdextension <doc_gdextension_file>`: A file format read by Godot to load a GDExtension.
+* ``gdextension_interface.h``: Một tập hợp các hàm C mà Godot và GDExtension có thể sử dụng để giao tiếp với nhau.
+* ``extension_api.json``: Một danh sách các hàm C được cung cấp từ các API của Godot (:ref:`Core Features <doc_scripting_core_features>`).
+* :ref:`*.gdextension <doc_gdextension_file>`: Định dạng tệp được Godot đọc để tải một GDExtension.
 
-Most people create GDExtensions with some existing language binding, such as :ref:`godot-cpp (for C++) <doc_godot_cpp>`,
-or one of the :ref:`community-made ones <doc_what_is_gdnative_third_party_bindings>`.
+Hầu hết mọi người tạo GDExtension bằng một language binding có sẵn, chẳng hạn như :ref:`godot-cpp (for C++) <doc_godot_cpp>`, hoặc một trong các language binding :ref:`do cộng đồng tạo ra <doc_what_is_gdnative_third_party_bindings>`.
 
-Version compatibility
----------------------
+Khả năng tương thích phiên bản
+------------------------------
 
-See :ref:`godot-cpp Version Compatibility <doc_what_is_gdextension_version_compatibility>`, which applies to all GDExtensions.
+Xem :ref:`godot-cpp Version Compatibility <doc_what_is_gdextension_version_compatibility>`, nội dung này áp dụng cho tất cả GDExtension.

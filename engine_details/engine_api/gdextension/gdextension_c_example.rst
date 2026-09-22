@@ -1,39 +1,30 @@
 .. _doc_gdextension_c_example:
 
-GDExtension C example
-=====================
+Ví dụ GDExtension bằng C
+========================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-This is a simple example on how to work with GDExtension directly with C code.
-Note that the API is not meant to be used directly, so this will definitely be
-quite verbose and require a lot of steps even for a small example. However, it
-serves as a reference for creating bindings for a different language. It is
-still possible to use the API directly if you prefer, which might be convenient
-when only binding a third-party library.
+Đây là một ví dụ đơn giản về cách làm việc trực tiếp với GDExtension bằng mã C. Lưu ý rằng API không được thiết kế để sử dụng trực tiếp, vì vậy đoạn mã này chắc chắn sẽ khá dài dòng và yêu cầu nhiều bước, ngay cả đối với một ví dụ nhỏ. Tuy nhiên, nó đóng vai trò là tài liệu tham khảo để tạo binding cho một ngôn ngữ khác. Bạn vẫn có thể sử dụng API trực tiếp nếu muốn, điều này có thể thuận tiện khi chỉ cần tạo binding cho một thư viện bên thứ ba.
 
-In this example we will create a custom node that moves a sprite on the screen
-based on the user's parameters. While very simple, it serves to show how to do
-some of the things with GDExtension, like registering custom classes with
-methods, properties, and signals. It gives an insight on the GDExtension API.
+Trong ví dụ này, chúng ta sẽ tạo một node tùy chỉnh để di chuyển một sprite trên màn hình dựa trên các tham số do người dùng cung cấp. Dù rất đơn giản, ví dụ này cho thấy cách thực hiện một số việc với GDExtension, chẳng hạn như đăng ký các class tùy chỉnh cùng với method, property và signal. Qua đó, bạn có thể hiểu rõ hơn về API GDExtension.
 
-Setting up the project
-----------------------
+Thiết lập project
+-----------------
 
-There are a few prerequisites you'll need:
+Bạn sẽ cần một số điều kiện tiên quyết sau:
 
-- a Godot 4.2 (or later) executable,
-- a C compiler,
-- SCons as a build tool.
+- một executable Godot 4.2 (hoặc mới hơn),
+- một trình biên dịch C,
+- SCons làm build tool.
 
-Since this is using the API directly, there's no need to use the
-`godot-cpp repository <https://github.com/godotengine/godot-cpp>`__.
+Vì ví dụ này sử dụng API trực tiếp nên không cần dùng repository `godot-cpp <https://github.com/godotengine/godot-cpp>`__.
 
-File structure
---------------
+Cấu trúc file
+-------------
 
-To organize our files, we're gonna split into mainly two folders:
+Để sắp xếp các file, chúng ta sẽ chủ yếu chia chúng thành hai folder:
 
 .. code-block:: none
 
@@ -43,48 +34,33 @@ To organize our files, we're gonna split into mainly two folders:
     |
     +--src/                   # source code of the extension we are building
 
-We also need a copy of the ``gdextension_interface.h`` header from the Godot
-source code, which can be obtained directly from the Godot executable by running
-the following command:
+Chúng ta cũng cần một bản sao của header ``gdextension_interface.h`` từ mã nguồn Godot. Bạn có thể lấy header này trực tiếp từ executable Godot bằng cách chạy lệnh sau:
 
 .. code-block:: none
 
     godot --dump-gdextension-interface
 
-This creates the header in the current folder, so you can just copy it to the ``src``
-folder in the example project.
+Lệnh này tạo header trong folder hiện tại, vì vậy bạn chỉ cần sao chép nó vào folder ``src`` trong project ví dụ.
 
-Lastly, there's another source of information we need to refer to, which is the JSON
-file with the Godot API reference. This file won't be used by the code directly, we
-will only use it to extract some information manually.
+Cuối cùng, chúng ta cần tham khảo thêm một nguồn thông tin khác: file JSON chứa thông tin tham chiếu API Godot. Mã sẽ không trực tiếp sử dụng file này; chúng ta chỉ dùng nó để trích xuất thủ công một số thông tin.
 
-To get this JSON file, just call the Godot executable:
+Để lấy file JSON này, chỉ cần gọi executable Godot:
 
 .. code-block:: none
 
     godot --dump-extension-api
 
-The resulting ``extension_api.json`` file will be created in the current
-folder. You can copy this file to the example folder to have it handy.
+File ``extension_api.json`` được tạo trong folder hiện tại. Bạn có thể sao chép file này vào folder ví dụ để tiện sử dụng.
 
 .. note::
-    This extension is targeting Godot 4.2, but it should work on later versions as
-    well. If you want to target a different minimal version, make sure to get the
-    header and the JSON from the version Godot version you are targeting.
+    Extension này nhắm đến Godot 4.2, nhưng cũng sẽ hoạt động trên các phiên bản mới hơn. Nếu muốn nhắm đến một phiên bản tối thiểu khác, hãy đảm bảo lấy header và file JSON từ phiên bản Godot mà bạn đang nhắm đến.
 
-Buildsystem
------------
+Build system
+------------
 
-Using a buildsystem makes our life a lot easier when dealing with C code. For
-the sake of convenience, we'll use SCons since it's the same as what Godot
-itself uses.
+Sử dụng build system giúp chúng ta dễ dàng hơn rất nhiều khi làm việc với mã C. Để thuận tiện, chúng ta sẽ dùng SCons vì đây cũng là công cụ mà chính Godot sử dụng.
 
-The following ``SConstruct`` file is a simple one that will build your extension
-to the current platform that you are using, be it Linux, macOS, or Windows. This
-will be a non-optimized build for debugging purposes. It also assumes a 64-bit
-build, which is relevant for some parts of the example code. Making other build
-types and cross-compilation is out of the scope of this tutorial. Save this file
-to the root folder.
+File ``SConstruct`` sau đây là một file đơn giản, có nhiệm vụ build extension cho platform hiện tại mà bạn đang sử dụng, có thể là Linux, macOS hoặc Windows. Đây sẽ là bản build không tối ưu hóa để phục vụ mục đích debug. File này cũng giả định bản build 64-bit, điều này có liên quan đến một số phần trong mã ví dụ. Việc tạo các kiểu build khác và cross-compilation nằm ngoài phạm vi của tutorial này. Hãy lưu file này vào folder gốc.
 
 .. code-block:: python
 
@@ -95,41 +71,38 @@ to the root folder.
 
     env = Environment()
 
-    # Set the target path and name.
+    # Đặt đường dẫn và tên target.
     target_path = "project/bin/"
     target_name = "libgdexample"
 
-    # Set the compiler and flags.
-    env.Append(CPPPATH=["src"])  # Add the src folder to the include path.
-    env.Append(CFLAGS=["-O0", "-g"])  # Make it a debug build.
+    # Đặt compiler và các flag.
+    env.Append(CPPPATH=["src"])  # Thêm folder src vào include path.
+    env.Append(CFLAGS=["-O0", "-g"])  # Tạo bản build debug.
 
-    # Use Clang on macOS.
+    # Sử dụng Clang trên macOS.
     if sys.platform == "darwin":
         env["CC"] = "clang"
 
-    # Add all C files in "src" folder as sources.
+    # Thêm tất cả file C trong folder "src" làm source.
     sources = env.Glob("src/*.c")
 
-    # Create a shared library.
+    # Tạo một shared library.
     library = env.SharedLibrary(
         target=path.join(target_path, target_name),
         source=sources,
     )
 
-    # Set the library as the default target.
+    # Đặt library làm target mặc định.
     env.Default(library)
 
-This will include all C files in the ``src`` folder, so we don't need to change
-this file when adding new source files.
+Thao tác này sẽ bao gồm tất cả file C trong folder ``src``, vì vậy chúng ta không cần thay đổi file này khi thêm source file mới.
 
-Initializing the extension
---------------------------
+Khởi tạo extension
+------------------
 
-The first bit of code will be responsible for initializing the extension. This is
-what makes Godot aware of what our GDExtension provides, such as classes and
-plugins.
+Phần mã đầu tiên chịu trách nhiệm khởi tạo extension. Đây là phần giúp Godot nhận biết những gì GDExtension của chúng ta cung cấp, chẳng hạn như class và plugin.
 
-Create the file ``init.h`` in the ``src`` folder, with the following contents:
+Tạo file ``init.h`` trong folder ``src``, với nội dung sau:
 
 .. code-block:: c
 
@@ -143,15 +116,11 @@ Create the file ``init.h`` in the ``src`` folder, with the following contents:
     void deinitialize_gdexample_module(void *p_userdata, GDExtensionInitializationLevel p_level);
     GDExtensionBool GDE_EXPORT gdexample_library_init(GDExtensionInterfaceGetProcAddress p_get_proc_address, GDExtensionClassLibraryPtr p_library, GDExtensionInitialization *r_initialization);
 
-The functions declared here have the signatures expected by the GDExtension API.
+Các function được khai báo ở đây có signature theo yêu cầu của API GDExtension.
 
-Note the inclusion of the ``defs.h`` file. This is one of our helpers to
-simplify writing the extension code. For now it will only contain the definition
-of ``GDE_EXPORT``, a macro that makes the function public in the shared library
-so Godot can properly call it. This macro helps abstracting what each compiler
-expects.
+Hãy lưu ý đến việc include file ``defs.h``. Đây là một trong các helper của chúng ta nhằm đơn giản hóa việc viết mã extension. Hiện tại, file này chỉ chứa định nghĩa của ``GDE_EXPORT``, một macro giúp function có thể public trong shared library để Godot gọi đúng cách. Macro này giúp trừu tượng hóa các yêu cầu của từng compiler.
 
-Create the ``defs.h`` file in the ``src`` folder with the following contents:
+Tạo file ``defs.h`` trong folder ``src`` với nội dung sau:
 
 .. code-block:: c
 
@@ -171,11 +140,9 @@ Create the ``defs.h`` file in the ``src`` folder with the following contents:
     #endif
     #endif // ! GDE_EXPORT
 
-We also include some standard headers to make things easier. Now we only have to
-include ``defs.h`` and those will come as a bonus.
+Chúng ta cũng include một số header chuẩn để mọi việc dễ dàng hơn. Bây giờ chúng ta chỉ cần include ``defs.h``, và các header đó sẽ được include kèm.
 
-Now, let's implement the functions we just declared. Create a file called
-``init.c`` in the ``src`` folder and add this code:
+Bây giờ, hãy triển khai các function mà chúng ta vừa khai báo. Tạo một file có tên ``init.c`` trong folder ``src`` và thêm đoạn mã sau:
 
 .. code-block:: c
 
@@ -199,22 +166,16 @@ Now, let's implement the functions we just declared. Create a file called
         return true;
     }
 
-What this does is set up the initialization data that Godot expects. The
-functions to initialize and deinitialize are set so Godot will call then when
-needed. It also sets the initialization level which varies per extension. Since
-we plan to add a custom node, the ``SCENE`` level is enough.
+Đoạn mã này thiết lập dữ liệu khởi tạo mà Godot yêu cầu. Các function khởi tạo và hủy khởi tạo được thiết lập để Godot gọi khi cần. Đoạn mã cũng đặt initialization level, giá trị này thay đổi tùy theo từng extension. Vì chúng ta dự định thêm một node tùy chỉnh nên level ``SCENE`` là đủ.
 
-We will fill the ``initialize_gdexample_module()`` function later to register our custom class.
+Chúng ta sẽ hoàn thiện function ``initialize_gdexample_module()`` sau để đăng ký class tùy chỉnh của mình.
 
-A basic class
--------------
+Một class cơ bản
+----------------
 
-In order to make an actual node, first we'll create a C struct to hold data and
-functions that will act as methods. The plan is to make this a custom node that
-inherits from :ref:`Sprite2D <class_Sprite2D>`.
+Để tạo một node thực tế, trước tiên chúng ta sẽ tạo một struct C để chứa dữ liệu và các function đóng vai trò là method. Mục tiêu là tạo một node tùy chỉnh kế thừa từ :ref:`Sprite2D <class_Sprite2D>`.
 
-Create a file called ``gdexample.h`` in the ``src`` folder with the following
-contents:
+Tạo file có tên ``gdexample.h`` trong folder ``src`` với nội dung sau:
 
 .. code-block:: c
 
@@ -224,38 +185,27 @@ contents:
 
     #include "defs.h"
 
-    // Struct to hold the node data.
+    // Struct chứa dữ liệu của node.
     typedef struct
     {
         // Metadata.
-        GDExtensionObjectPtr object; // Stores the underlying Godot object.
+        GDExtensionObjectPtr object; // Lưu object Godot bên dưới.
     } GDExample;
 
-    // Constructor for the node.
+    // Constructor của node.
     void gdexample_class_constructor(GDExample *self);
 
-    // Destructor for the node.
+    // Destructor của node.
     void gdexample_class_destructor(GDExample *self);
 
-    // Bindings.
+    // Các binding.
     void gdexample_class_bind_methods();
 
-Noteworthy here is the ``object`` field, which holds a pointer to
-the Godot object, and the ``gdexample_class_bind_methods()`` function, which will
-register the metadata of our custom class (properties, methods, and signals).
-The latter is not entirely necessary, as we can do it when registering the
-class, but it makes clearer to separate the concerns and let our class register
-its own metadata.
+Điểm đáng chú ý ở đây là field ``object``, chứa một pointer đến object Godot, và function ``gdexample_class_bind_methods()``, dùng để đăng ký metadata của class tùy chỉnh (property, method và signal). Function sau không hoàn toàn bắt buộc, vì chúng ta có thể thực hiện việc này khi đăng ký class, nhưng tách riêng các mối quan tâm và để class tự đăng ký metadata sẽ rõ ràng hơn.
 
-The ``object`` field is necessary because our class will inherit a Godot class.
-Since we can't inherit it directly, as we are not interacting with the source
-code (and C doesn't even have classes), we instead tell Godot to create an
-object of a type it knows and attach our extension to it. We will need the
-reference to such objects when calling methods on the parent class, for
-instance.
+Trường ``object`` là cần thiết vì class của chúng ta sẽ kế thừa một class Godot. Vì không thể kế thừa trực tiếp, do chúng ta không tương tác với mã nguồn (và C thậm chí còn không có class), thay vào đó chúng ta yêu cầu Godot tạo một object thuộc kiểu mà nó biết rồi gắn extension của chúng ta vào đó. Chẳng hạn, chúng ta sẽ cần tham chiếu đến những object như vậy khi gọi các method trên class cha.
 
-Let's create the source counterpart of this header. Create the file
-``gdexample.c`` in the ``src`` folder and add the following code to it:
+Hãy tạo phần tương ứng ở source của header này. Tạo file ``gdexample.c`` trong thư mục ``src`` và thêm đoạn mã sau vào đó:
 
 .. code-block:: c
 
@@ -274,28 +224,23 @@ Let's create the source counterpart of this header. Create the file
     }
 
 
-As we don't have anything to do with those functions yet, they'll stay empty
-for a while.
+Vì hiện tại chúng ta chưa cần làm gì với những function đó, chúng sẽ để trống trong một thời gian.
 
-The next step is registering our class. However, in order to do so we need to
-create a :ref:`StringName <class_StringName>` and for that we have to get a
-function from the GDExtension API. Since we'll need this a few times and we'll
-also need other things, let's create a wrapper API to facilitate this kind of
-chore.
+Bước tiếp theo là đăng ký class của chúng ta. Tuy nhiên, để làm vậy, chúng ta cần tạo một :ref:`StringName <class_StringName>`, và để làm điều đó, chúng ta phải lấy một function từ GDExtension API. Vì sẽ cần thực hiện việc này vài lần và cũng sẽ cần những thành phần khác, hãy tạo một wrapper API để đơn giản hóa loại công việc này.
 
-A wrapper API
--------------
+Một wrapper API
+---------------
 
-We'll start by creating an ``api.h`` file in the ``src`` folder:
+Trước tiên, hãy tạo file ``api.h`` trong thư mục ``src``:
 
 .. code-block:: c
 
     #pragma once
 
     /*
-    This file works as a collection of helpers to call the GDExtension API
-    in a less verbose way, as well as a cache for methods from the discovery API,
-    just so we don't have to keep loading the same methods again.
+    File này tập hợp các helper để gọi GDExtension API
+    theo cách ít dài dòng hơn, đồng thời lưu cache các method từ discovery API,
+    để chúng ta không phải liên tục tải lại cùng những method đó.
     */
 
     #include "gdextension_interface.h"
@@ -304,7 +249,7 @@ We'll start by creating an ``api.h`` file in the ``src`` folder:
 
     extern GDExtensionClassLibraryPtr class_library;
 
-    // API methods.
+    // Các method API.
 
     extern struct Constructors
     {
@@ -323,21 +268,13 @@ We'll start by creating an ``api.h`` file in the ``src`` folder:
 
     void load_api(GDExtensionInterfaceGetProcAddress p_get_proc_address);
 
-This file will include many other helpers as we fill our extension with
-something useful. For now it only has a pointer to a function that creates a
-StringName from a C string (in Latin-1 encoding) and another to destruct a
-StringName, which we'll need to use to avoid leaking memory, as well as the
-function to register a class, which is our initial goal.
+File này sẽ bao gồm nhiều helper khác khi chúng ta bổ sung thêm chức năng hữu ích cho extension. Hiện tại, file chỉ có một con trỏ đến function tạo StringName từ một chuỗi C (với encoding Latin-1) và một con trỏ khác để hủy StringName; chúng ta cần function này để tránh rò rỉ bộ nhớ, cùng với function đăng ký class, là mục tiêu ban đầu của chúng ta.
 
-We also keep a reference to the ``class_library`` here. This is something that
-Godot provides to us when initializing the extension and we'll need to use it
-when registering the things we create so Godot can tell which extension is
-making the call.
+Chúng ta cũng lưu một tham chiếu đến ``class_library`` ở đây. Đây là thứ Godot cung cấp khi khởi tạo extension, và chúng ta sẽ cần dùng nó khi đăng ký những thành phần mình tạo để Godot biết extension nào đang thực hiện lời gọi.
 
-There's also a function to load those function pointers from the GDExtension API.
+Ngoài ra còn có một function để tải các function pointer đó từ GDExtension API.
 
-Let's work on the source counterpart of this header. Create the ``api.c`` file
-in the ``src`` folder, adding the following code:
+Hãy làm phần tương ứng ở source của header này. Tạo file ``api.c`` trong thư mục ``src`` và thêm đoạn mã sau:
 
 .. code-block:: c
 
@@ -351,57 +288,37 @@ in the ``src`` folder, adding the following code:
 
     void load_api(GDExtensionInterfaceGetProcAddress p_get_proc_address)
     {
-        // Get helper functions first.
+        // Lấy các helper function trước.
         GDExtensionInterfaceVariantGetPtrDestructor variant_get_ptr_destructor = (GDExtensionInterfaceVariantGetPtrDestructor)p_get_proc_address("variant_get_ptr_destructor");
 
         // API.
         api.classdb_register_extension_class2 = (GDExtensionInterfaceClassdbRegisterExtensionClass2)p_get_proc_address("classdb_register_extension_class2");
 
-        // Constructors.
+        // Các constructor.
         constructors.string_name_new_with_latin1_chars = (GDExtensionInterfaceStringNameNewWithLatin1Chars)p_get_proc_address("string_name_new_with_latin1_chars");
 
-        // Destructors.
+        // Các destructor.
         destructors.string_name_destructor = variant_get_ptr_destructor(GDEXTENSION_VARIANT_TYPE_STRING_NAME);
     }
 
-The first important thing here is ``p_get_proc_address``. This a function from
-the GDExtension API that is passed during initialization. You can use this
-function to request specific functions from the API by their name. Here we are
-caching the results so we don't have to keep a reference for
-``p_get_proc_address`` everywhere and use our wrapper instead.
+Điều quan trọng đầu tiên ở đây là ``p_get_proc_address``. Đây là một function từ GDExtension API được truyền vào trong quá trình khởi tạo. Bạn có thể dùng function này để yêu cầu các function cụ thể từ API theo tên của chúng. Ở đây, chúng ta lưu cache kết quả để không phải giữ một tham chiếu đến ``p_get_proc_address`` ở khắp nơi mà có thể dùng wrapper của mình thay thế.
 
-At the start we request the ``variant_get_ptr_destructor()`` function. This is not
-going to be used outside of this function, so we don't add to our wrapper and
-only cache it locally. The cast is necessary to silence compiler warnings.
+Đầu tiên, chúng ta yêu cầu function ``variant_get_ptr_destructor()``. Function này sẽ không được dùng bên ngoài function hiện tại, nên chúng ta không thêm nó vào wrapper mà chỉ lưu cache cục bộ. Phép cast là cần thiết để tắt các cảnh báo của compiler.
 
-Then we get the function that creates a StringName from a C string, exactly what
-we mentioned before as a needed function. We store that in our ``constructors``
-struct.
+Sau đó, chúng ta lấy function tạo một StringName từ chuỗi C, đúng với function cần thiết đã đề cập trước đó. Chúng ta lưu function này trong struct ``constructors``.
 
-Next, we use the ``variant_get_ptr_destructor()`` function we just got to query
-for the destructor for StringName, using the enum value from
-``gdextension_interface.h`` API as a parameter. We could get destructors for
-other types in a similar manner, but we'll limit ourselves to what is needed for
-the example.
+Tiếp theo, chúng ta dùng function ``variant_get_ptr_destructor()`` vừa lấy để truy vấn destructor cho StringName, sử dụng giá trị enum từ API ``gdextension_interface.h`` làm tham số. Tương tự, chúng ta có thể lấy destructor cho các kiểu khác, nhưng trong ví dụ này, chúng ta sẽ chỉ giới hạn ở những gì cần thiết.
 
-Lastly, we get the ``classdb_register_extension_class2()`` function, which we'll
-need in order to register our custom class.
+Cuối cùng, chúng ta lấy function ``classdb_register_extension_class2()``, function cần thiết để đăng ký custom class của mình.
 
 .. note::
-    You may wonder why the ``2`` is there in the function name. This means it's the
-    second version of this function. The old version is kept to ensure backwards
-    compatibility with older extensions, but since we have the second version
-    available, it's best to use the new one, because we don't intend to support older
-    Godot versions in this example.
+    Bạn có thể thắc mắc tại sao ``2`` lại xuất hiện trong tên function. Điều này có nghĩa đây là phiên bản thứ hai của function đó. Phiên bản cũ được giữ lại để đảm bảo khả năng tương thích ngược với các extension cũ hơn, nhưng vì phiên bản thứ hai đã có sẵn, tốt nhất là dùng phiên bản mới, bởi trong ví dụ này chúng ta không định hỗ trợ các phiên bản Godot cũ hơn.
 
-    The ``gdextension_interface.h`` header documents in which Godot version each
-    function was introduced.
+    Header ``gdextension_interface.h`` ghi lại phiên bản Godot mà mỗi function được giới thiệu.
 
-We also define the ``class_library`` variable here, which will be set during
-initialization.
+Chúng ta cũng định nghĩa biến ``class_library`` ở đây; biến này sẽ được thiết lập trong quá trình khởi tạo.
 
-Speaking of initialization, now we have to change the ``init.c`` file in
-order to fill the things we just added:
+Nói về việc khởi tạo, bây giờ chúng ta phải thay đổi file ``init.c`` để điền những thành phần vừa thêm:
 
 .. code-block:: c
 
@@ -412,8 +329,7 @@ order to fill the things we just added:
 
         ...
 
-Here we set the ``class_library`` as needed and call our new ``load_api()``
-function. Don't forget to also include the new headers at the top of this file:
+Ở đây, chúng ta thiết lập ``class_library`` theo yêu cầu và gọi function ``load_api()`` mới của mình. Đừng quên include các header mới ở đầu file này:
 
 .. code-block:: c
 
@@ -423,8 +339,7 @@ function. Don't forget to also include the new headers at the top of this file:
     #include "gdexample.h"
     ...
 
-Since we are here, we can register our new custom class. Let's fill the
-``initialize_gdexample_module()`` function:
+Nhân tiện, chúng ta có thể đăng ký custom class mới. Hãy điền vào function ``initialize_gdexample_module()``:
 
 .. code-block:: c
 
@@ -435,7 +350,7 @@ Since we are here, we can register our new custom class. Let's fill the
             return;
         }
 
-        // Register class.
+        // Đăng ký class.
         StringName class_name;
         constructors.string_name_new_with_latin1_chars(&class_name, "GDExample", false);
         StringName parent_class_name;
@@ -468,75 +383,55 @@ Since we are here, we can register our new custom class. Let's fill the
 
         api.classdb_register_extension_class2(class_library, &class_name, &parent_class_name, &class_info);
 
-        // Bind methods.
+        // Bind các method.
         gdexample_class_bind_methods();
 
-        // Destruct things.
+        // Hủy các thành phần.
         destructors.string_name_destructor(&class_name);
         destructors.string_name_destructor(&parent_class_name);
     }
 
-The struct with the class information is the biggest thing here. None of its
-fields are required with the exception of ``create_instance_func`` and
-``free_instance_func``. We haven't made those functions yet, so we'll have
-to work on them soon. Note that we skip the initialization if it isn't at the
-``SCENE`` level. This function may be called multiple times, once for each
-level, but we only want to register our class once.
+Struct chứa thông tin class là phần lớn nhất ở đây. Không field nào của nó là bắt buộc, ngoại trừ ``create_instance_func`` và ``free_instance_func``. Chúng ta chưa tạo những function đó, nên sẽ phải thực hiện sớm. Lưu ý rằng chúng ta bỏ qua việc khởi tạo nếu nó không ở cấp độ ``SCENE``. Function này có thể được gọi nhiều lần, một lần cho mỗi cấp độ, nhưng chúng ta chỉ muốn đăng ký class một lần.
 
-The other undefined thing here is ``StringName``. This will be an opaque struct
-meant to hold the data of a Godot StringName in our extension. We'll define it
-in the appropriately named ``defs.h`` file:
+Thành phần chưa được định nghĩa khác ở đây là ``StringName``. Đây sẽ là một struct opaque dùng để chứa dữ liệu của một Godot StringName trong extension của chúng ta. Chúng ta sẽ định nghĩa nó trong file có tên phù hợp là ``defs.h``:
 
 .. code-block:: c
 
     ...
-    // The sizes can be obtained from the extension_api.json file.
+    // Có thể lấy kích thước từ file extension_api.json.
     #ifdef BUILD_32
     #define STRING_NAME_SIZE 4
     #else
     #define STRING_NAME_SIZE 8
     #endif
 
-    // Types.
+    // Các kiểu.
 
     typedef struct
     {
         uint8_t data[STRING_NAME_SIZE];
     } StringName;
 
-As mentioned in the comment, the sizes can be found in the
-``extension_api.json`` file that we generated earlier, under the
-``builtin_class_sizes`` property. The ``BUILD_32`` is never defined, as we
-assume we are working with a 64-bits build of Godot here, but if you need it you
-can add ``env.Append(CPPDEFINES=["BUILD_32"])`` to your ``SConstruct`` file.
+Như đã đề cập trong comment, có thể tìm thấy các kích thước trong file ``extension_api.json`` mà chúng ta đã tạo trước đó, bên dưới property ``builtin_class_sizes``. ``BUILD_32`` không bao giờ được định nghĩa, vì ở đây chúng ta giả định đang làm việc với bản build Godot 64-bit; nhưng nếu cần, bạn có thể thêm ``env.Append(CPPDEFINES=["BUILD_32"])`` vào file ``SConstruct``.
 
-The ``// Types.`` comment foreshadows that we'll be adding more types to this
-file. Let's leave that for later.
+Comment ``// Types.`` báo trước rằng chúng ta sẽ thêm nhiều kiểu hơn vào file này. Hãy để việc đó lại sau.
 
-The ``StringName`` struct here is just to hold Godot data, so we don't really
-care what is inside of it. Though, in this case, it is just a pointer to the
-data in the heap. We'll use this struct when we need to allocate data for a
-StringName ourselves, like we are doing when registering our class.
+Struct ``StringName`` ở đây chỉ dùng để chứa dữ liệu Godot, nên chúng ta không thực sự quan tâm bên trong nó có gì. Tuy nhiên, trong trường hợp này, nó chỉ là một con trỏ đến dữ liệu trên heap. Chúng ta sẽ dùng struct này khi cần tự cấp phát dữ liệu cho một StringName, chẳng hạn như khi đăng ký class.
 
-Back to registering, we need to work on our create and free functions. Let's
-include them in ``gdexample.h`` since they're specific to the custom class:
+Quay lại việc đăng ký, chúng ta cần thực hiện các function tạo và giải phóng. Hãy include chúng trong ``gdexample.h`` vì chúng chỉ dành riêng cho custom class:
 
 .. code-block:: c
 
     ...
-    // Bindings.
+    // Các binding.
     void gdexample_class_bind_methods();
     GDExtensionObjectPtr gdexample_class_create_instance(void *p_class_userdata);
     void gdexample_class_free_instance(void *p_class_userdata, GDExtensionClassInstancePtr p_instance);
     ...
 
-Before we can implement those functions, we'll need a few more things in our API.
-We need a way to allocate and free memory. While we could do this with good ol'
-``malloc()``, we can instead make use of Godot's memory management functions.
-We'll also need a way to create a Godot object and set it with our custom
-instance.
+Trước khi triển khai những function đó, chúng ta sẽ cần thêm một vài thành phần vào API. Chúng ta cần một cách để cấp phát và giải phóng bộ nhớ. Mặc dù có thể làm việc này bằng ``malloc()`` quen thuộc, chúng ta có thể thay vào đó sử dụng các function quản lý bộ nhớ của Godot. Chúng ta cũng cần một cách để tạo một Godot object và thiết lập nó với custom instance của mình.
 
-So let's change the ``api.h`` to include these new functions:
+Vậy hãy thay đổi ``api.h`` để bổ sung các hàm mới này:
 
 .. code-block:: c
 
@@ -551,7 +446,7 @@ So let's change the ``api.h`` to include these new functions:
         GDExtensionInterfaceMemFree mem_free;
     } api;
 
-Then we change the ``load_api()`` function in ``api.c`` to grab these new functions:
+Sau đó, thay đổi hàm ``load_api()`` trong ``api.c`` để lấy các hàm mới này:
 
 .. code-block:: c
 
@@ -568,8 +463,7 @@ Then we change the ``load_api()`` function in ``api.c`` to grab these new functi
         api.mem_free = (GDExtensionInterfaceMemFree)p_get_proc_address("mem_free");
     }
 
-Now we can go back to ``gdexample.c`` and define the new functions, without forgetting to
-include the ``api.h`` header:
+Bây giờ, chúng ta có thể quay lại ``gdexample.c`` và định nghĩa các hàm mới, đồng thời nhớ thêm header ``api.h``:
 
 .. code-block:: c
 
@@ -587,18 +481,18 @@ include the ``api.h`` header:
 
     GDExtensionObjectPtr gdexample_class_create_instance(void *p_class_userdata)
     {
-        // Create native Godot object;
+        // Tạo đối tượng Godot native;
         StringName class_name;
         constructors.string_name_new_with_latin1_chars(&class_name, "Sprite2D", false);
         GDExtensionObjectPtr object = api.classdb_construct_object(&class_name);
         destructors.string_name_destructor(&class_name);
 
-        // Create extension object.
+        // Tạo đối tượng extension.
         GDExample *self = (GDExample *)api.mem_alloc(sizeof(GDExample));
         gdexample_class_constructor(self);
         self->object = object;
 
-        // Set the extension instance in the native Godot object.
+        // Thiết lập instance của extension trong đối tượng Godot native.
         constructors.string_name_new_with_latin1_chars(&class_name, "GDExample", false);
         api.object_set_instance(object, &class_name, self);
         api.object_set_instance_binding(object, class_library, self, &gdexample_class_binding_callbacks);
@@ -618,38 +512,22 @@ include the ``api.h`` header:
         api.mem_free(self);
     }
 
-When instantiating an object, first we create a new Sprite2D object, since
-that's the parent of our class. Then we allocate memory for our custom struct
-and call its constructor. We save the pointer to the Godot object in the struct
-as well like we mentioned earlier.
+Khi khởi tạo một đối tượng, trước tiên chúng ta tạo một đối tượng Sprite2D mới, vì đó là lớp cha của lớp chúng ta. Sau đó, chúng ta cấp phát bộ nhớ cho struct tùy chỉnh và gọi constructor của nó. Như đã đề cập trước đó, chúng ta cũng lưu con trỏ đến đối tượng Godot trong struct.
 
-Then we set our custom struct as the instance data. This will make Godot know
-that the object is an instance of our custom class and properly call our custom
-methods for instance, as well as passing this data back.
+Sau đó, chúng ta thiết lập struct tùy chỉnh làm dữ liệu instance. Việc này giúp Godot biết rằng đối tượng là một instance của lớp tùy chỉnh, đồng thời gọi đúng các phương thức tùy chỉnh của chúng ta, cũng như truyền dữ liệu này trở lại.
 
-Note that we return the Godot object we created, not our custom struct.
+Lưu ý rằng chúng ta trả về đối tượng Godot đã tạo, không phải struct tùy chỉnh.
 
-For the ``gdextension_free_instance()`` function, we only call the destructor and free the memory we
-allocated for the custom data. It is not necessary to destruct the Godot object
-since that will be taken care of by the engine itself.
+Đối với hàm ``gdextension_free_instance()``, chúng ta chỉ gọi destructor và giải phóng bộ nhớ đã cấp phát cho dữ liệu tùy chỉnh. Không cần hủy đối tượng Godot, vì engine sẽ tự xử lý việc đó.
 
-A demo project
---------------
+Một dự án minh họa
+------------------
 
-Now that we can create and free our custom object, we should be able to try it
-out in an actual project. For this, you need to open Godot and create a new
-project in the ``project`` folder. The project manager may warn you the folder
-isn't empty if you have compiled the extension before, you can safely ignore
-this warning this time.
+Giờ đây, khi đã có thể tạo và giải phóng đối tượng tùy chỉnh, chúng ta có thể thử đối tượng này trong một dự án thực tế. Để làm vậy, hãy mở Godot và tạo một dự án mới trong thư mục ``project``. Trình quản lý dự án có thể cảnh báo rằng thư mục không trống nếu bạn đã biên dịch extension trước đó; lần này bạn có thể bỏ qua cảnh báo này.
 
-If you didn't compile the extension yet, it is the time to do it now. To do
-that, open a terminal or command prompt, navigate to the root folder of the
-extension and run ``scons``. It should compile quickly since the extension is
-very simple.
+Nếu bạn vẫn chưa biên dịch extension, bây giờ là lúc thực hiện việc đó. Hãy mở terminal hoặc command prompt, di chuyển đến thư mục gốc của extension và chạy ``scons``. Quá trình biên dịch sẽ diễn ra nhanh vì extension này rất đơn giản.
 
-Then, create a file called ``gdexample.gdextension`` inside the ``project`` folder.
-This is a Godot resource that describes the extension, allowing the engine to
-properly load it. Put the following content in this file:
+Sau đó, tạo một tệp có tên ``gdexample.gdextension`` bên trong thư mục ``project``. Đây là một resource của Godot mô tả extension, cho phép engine tải extension đúng cách. Đặt nội dung sau vào tệp này:
 
 .. code-block::
 
@@ -663,56 +541,28 @@ properly load it. Put the following content in this file:
     linux.debug = "res://bin/libgdexample.so"
     windows.debug = "res://bin/libgdexample.dll"
 
-As you can see, ``gdexample_library_init()`` is the same name of the function we
-defined in our ``init.c`` file. It is important that the names match because it
-is how Godot calls the entry point of the extension.
+Như bạn thấy, ``gdexample_library_init()`` là tên giống với hàm chúng ta đã định nghĩa trong tệp ``init.c``. Điều quan trọng là các tên phải khớp nhau, vì đây là cách Godot gọi entry point của extension.
 
-We also set the compatibility minimum to 4.2, since we are targeting this
-version. It should still work on later versions. If you are using a later Godot
-version and rely on the new features, you need to increase this value to a
-version number that has everything you use.
-See :ref:`doc_what_is_gdextension_version_compatibility` for more information.
+Chúng ta cũng đặt mức tương thích tối thiểu là 4.2, vì đang nhắm đến phiên bản này. Extension vẫn sẽ hoạt động trên các phiên bản mới hơn. Nếu bạn đang sử dụng phiên bản Godot mới hơn và phụ thuộc vào các tính năng mới, bạn cần tăng giá trị này lên số phiên bản có đầy đủ mọi thứ bạn sử dụng. Xem :ref:`doc_what_is_gdextension_version_compatibility` để biết thêm thông tin.
 
-In the ``[libraries]`` section we set up the paths to the shared library on
-different platforms. Here there's only the debug versions since that's what we
-are working on for the example. Using :ref:`feature tags <doc_feature_tags>` you
-can fine tune this to also provide release versions, add more target operating systems, as
-well as providing 32-bit and 64-bit binaries.
+Trong phần ``[libraries]``, chúng ta thiết lập các đường dẫn đến shared library trên những nền tảng khác nhau. Ở đây chỉ có các phiên bản debug vì đó là phần chúng ta đang thực hiện cho ví dụ này. Bằng cách sử dụng :ref:`feature tags <doc_feature_tags>`, bạn có thể tinh chỉnh để cung cấp cả các phiên bản release, thêm nhiều hệ điều hành đích hơn, cũng như cung cấp binary 32-bit và 64-bit.
 
-You can also add library dependencies and custom icons for your classes in this
-file, but this is out of the scope for this tutorial.
+Bạn cũng có thể thêm các dependency của library và icon tùy chỉnh cho các class trong tệp này, nhưng nội dung đó nằm ngoài phạm vi của tutorial này.
 
-After saving the file, go back to the editor. Godot should automatically load
-the extension. Nothing will be seen because our extension only registers a new
-class. To use this class add a ``Node2D`` as a root of the scene. Move it to
-the middle of viewport for better visibility. Then add a new child node to the
-root and in the **Create New Node** dialog search for "GDExample", the name of
-our class, as it should be listed there. If it isn't, it means that Godot didn't
-load the extension properly, so try restarting the editor and retrace the steps
-to see if anything went missing.
+Sau khi lưu tệp, hãy quay lại editor. Godot sẽ tự động tải extension. Sẽ không có gì hiển thị vì extension của chúng ta chỉ đăng ký một class mới. Để sử dụng class này, hãy thêm một ``Node2D`` làm root của scene. Di chuyển nó vào giữa viewport để dễ nhìn hơn. Sau đó, thêm một node con mới vào root và trong hộp thoại **Create New Node**, tìm kiếm "GDExample", là tên class của chúng ta; class này sẽ được liệt kê ở đó. Nếu không thấy, nghĩa là Godot chưa tải extension đúng cách. Hãy thử khởi động lại editor và thực hiện lại các bước để kiểm tra xem có bước nào bị bỏ sót hay không.
 
-Our custom class is derived from ``Sprite2D``, so it has a **Texture** property
-in the Inspector. Set this to the ``icon.svg`` file that Godot handily created
-for us when making the project. Save this scene as ``main.tscn`` and run it. You
-may want to set it as the main scene for convenience.
+Class tùy chỉnh của chúng ta kế thừa từ ``Sprite2D``, vì vậy nó có thuộc tính **Texture** trong Inspector. Hãy đặt thuộc tính này thành tệp ``icon.svg`` mà Godot đã thuận tiện tạo cho chúng ta khi tạo dự án. Lưu scene này dưới tên ``main.tscn`` và chạy nó. Bạn có thể đặt scene này làm scene chính để thuận tiện hơn.
 
 .. image:: img/gdextension_c_running.webp
 
-Voilà! We have a custom node running in Godot. However, it does not do anything
-and has nothing different than a regular ``Sprite2D`` node. We will fix that next by
-adding custom methods and properties.
+Voilà! Chúng ta đã có một node tùy chỉnh chạy trong Godot. Tuy nhiên, nó chưa làm gì và không có điểm gì khác biệt so với một node ``Sprite2D`` thông thường. Tiếp theo, chúng ta sẽ khắc phục điều đó bằng cách thêm các phương thức và thuộc tính tùy chỉnh.
 
-Custom methods
---------------
+Các phương thức tùy chỉnh
+-------------------------
 
-A common thing in extensions is creating methods for the custom classes and
-exposing those to the Godot API. We are going to create a couple of getters and
-setters which are need for binding the properties afterwards.
+Một việc thường làm trong extension là tạo các phương thức cho những class tùy chỉnh và expose chúng thông qua Godot API. Chúng ta sẽ tạo một vài getter và setter cần thiết để bind các thuộc tính sau này.
 
-First, let's add the new fields in our struct to hold the values for
-``amplitude`` and ``speed``, which we will use later on when creating the
-behavior for the node. Add them to the ``gdexample.h`` file, changing the
-``GDExample`` struct:
+Trước tiên, hãy thêm các field mới vào struct để lưu các giá trị của ``amplitude`` và ``speed``, những giá trị mà chúng ta sẽ sử dụng sau này khi tạo behavior cho node. Thêm chúng vào tệp ``gdexample.h``, bằng cách thay đổi struct ``GDExample``:
 
 .. code-block:: c
 
@@ -720,27 +570,26 @@ behavior for the node. Add them to the ``gdexample.h`` file, changing the
 
     typedef struct
     {
-        // Public properties.
+        // Các thuộc tính public.
         double amplitude;
         double speed;
         // Metadata.
-        GDExtensionObjectPtr object; // Stores the underlying Godot object.
+        GDExtensionObjectPtr object; // Lưu đối tượng Godot nền tảng.
     } GDExample;
 
     ...
 
 
-In the same file, add the declaration for the getters and setters, right after
-the destructor.
+Trong cùng tệp đó, hãy thêm phần khai báo cho các getter và setter ngay sau destructor.
 
 .. code-block:: c
 
     ...
 
-    // Destructor for the node.
+    // Destructor cho node.
     void gdexample_class_destructor(GDExample *self);
 
-    // Properties.
+    // Các thuộc tính.
     void gdexample_class_set_amplitude(GDExample *self, double amplitude);
     double gdexample_class_get_amplitude(const GDExample *self);
     void gdexample_class_set_speed(GDExample *self, double speed);
@@ -748,8 +597,7 @@ the destructor.
 
     ...
 
-In the ``gdexample.c`` file, we will initialize these values in the constructor
-and add the implementations for those new functions, which are quite trivial:
+Trong tệp ``gdexample.c``, chúng ta sẽ khởi tạo các giá trị này trong constructor và thêm phần triển khai cho những hàm mới đó; các hàm này khá đơn giản:
 
 .. code-block:: c
 
@@ -779,16 +627,11 @@ and add the implementations for those new functions, which are quite trivial:
         return self->speed;
     }
 
-To make those simple functions work when called by Godot, we will need some
-wrappers to help us properly convert the data to and from the engine.
+Để các hàm đơn giản đó hoạt động khi được Godot gọi, chúng ta sẽ cần một số wrapper giúp chuyển đổi dữ liệu đúng cách giữa chúng ta và engine.
 
-First, we will create wrappers for ``ptrcall``. This is what Godot uses when the
-types of the values are known to be exact, which avoids using Variant. We're
-gonna need two of those: one for the functions that take no arguments and
-return a ``double`` (for the getters) and another for the functions that take a
-single ``double`` argument and return nothing (for the setters).
+Trước tiên, chúng ta sẽ tạo các wrapper cho ``ptrcall``. Godot sử dụng kiểu này khi các kiểu của giá trị được biết chính xác, nhờ đó tránh phải dùng Variant. Chúng ta sẽ cần hai wrapper: một cho các hàm không nhận đối số và trả về ``double`` (dành cho getter), và một cho các hàm nhận một đối số ``double`` duy nhất nhưng không trả về gì (dành cho setter).
 
-Add the declarations to the ``api.h`` file:
+Thêm phần khai báo vào tệp ``api.h``:
 
 .. code-block:: c
 
@@ -796,71 +639,48 @@ Add the declarations to the ``api.h`` file:
     void ptrcall_1_float_arg_no_ret(void *method_userdata, GDExtensionClassInstancePtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret);
 
 
-Those two functions follow the ``GDExtensionClassMethodPtrCall`` type, as
-defined in the ``gdextension_interface.h``. We use ``float`` as a name here
-because in Godot the ``float`` type has double precision, so we keep this
-convention.
+Hai hàm này tuân theo kiểu ``GDExtensionClassMethodPtrCall``, được định nghĩa trong ``gdextension_interface.h``. Ở đây, chúng ta dùng ``float`` làm tên vì trong Godot, kiểu ``float`` có độ chính xác kép, nên chúng ta giữ theo quy ước này.
 
-Then we implement those functions in the ``api.c`` file:
+Sau đó, chúng ta triển khai các hàm này trong tệp ``api.c``:
 
 .. code-block:: c
 
     void ptrcall_0_args_ret_float(void *method_userdata, GDExtensionClassInstancePtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret)
     {
-        // Call the function.
+        // Gọi hàm.
         double (*function)(void *) = method_userdata;
         *((double *)r_ret) = function(p_instance);
     }
 
     void ptrcall_1_float_arg_no_ret(void *method_userdata, GDExtensionClassInstancePtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret)
     {
-        // Call the function.
+        // Gọi hàm.
         void (*function)(void *, double) = method_userdata;
         function(p_instance, *((double *)p_args[0]));
     }
 
-The ``method_userdata`` argument is a custom value that we give to Godot, in
-this case we will set as the function pointer for the one we want to call. So
-first we convert it to the function type, then we just call it by passing the
-arguments when needed, or setting the return value.
+Đối số ``method_userdata`` là một giá trị tùy chỉnh mà chúng ta cung cấp cho Godot; trong trường hợp này, chúng ta sẽ đặt nó làm con trỏ hàm cho hàm muốn gọi. Vì vậy, trước tiên chúng ta chuyển nó sang kiểu hàm, sau đó chỉ cần gọi hàm bằng cách truyền các đối số khi cần hoặc thiết lập giá trị trả về.
 
-The ``p_instance`` argument contains the custom instance of our class, which we
-gave with ``object_set_instance()`` when creating the object.
+Đối số ``p_instance`` chứa instance tùy chỉnh của class chúng ta, được truyền bằng ``object_set_instance()`` khi tạo đối tượng.
 
-``p_args`` is an array of arguments. Note this contains **pointers** to the
-values. That's why we dereference it when passing to our functions. The number
-of arguments will be declared when binding the function (which we will do soon)
-and it will always include default ones if those exist.
+``p_args`` là một mảng các đối số. Lưu ý rằng mảng này chứa các **con trỏ** đến các giá trị. Đó là lý do chúng ta giải tham chiếu nó khi truyền vào các hàm. Số lượng đối số sẽ được khai báo khi binding function (chúng ta sẽ thực hiện việc này ngay sau đây) và sẽ luôn bao gồm các đối số mặc định nếu có.
 
-Finally, the ``r_ret`` is a pointer to the variable where the return value needs to
-be set. Like the arguments, it will be the correct type as declared. For the
-function that does not return, we have to avoid setting it.
+Cuối cùng, ``r_ret`` là một con trỏ đến biến nơi cần đặt giá trị trả về. Giống như các đối số, nó sẽ có đúng kiểu đã khai báo. Đối với hàm không trả về giá trị, chúng ta phải tránh thiết lập nó.
 
-Note how the type and argument counts are exact, so if we needed different
-types, for example, we would have to create more wrappers. This could be
-automated using some code generation, but this is out of the scope for this
-tutorial.
+Lưu ý rằng kiểu và số lượng đối số phải chính xác, vì vậy nếu cần các kiểu khác nhau, chẳng hạn, chúng ta sẽ phải tạo thêm các wrapper. Việc này có thể được tự động hóa bằng cách sử dụng code generation, nhưng nằm ngoài phạm vi của tutorial này.
 
-While the ``ptrcall`` functions are used when types are exact, sometimes Godot cannot know
-if that's the case (when the call comes from a dynamically typed language, such
-as GDScript). In those situations it uses regular ``call`` functions, so we need to
-provide those as well when binding.
+Trong khi các hàm ``ptrcall`` được sử dụng khi các kiểu là chính xác, đôi khi Godot không thể biết liệu có phải như vậy hay không (khi lệnh gọi đến từ một ngôn ngữ có kiểu động, chẳng hạn như GDScript). Trong những trường hợp đó, nó sử dụng các hàm ``call`` thông thường, vì vậy chúng ta cũng cần cung cấp chúng khi binding.
 
-Let's create two new wrappers in the ``api.h`` file:
+Cuối cùng, hãy tạo hai wrapper mới trong file ``api.h``:
 
 .. code-block:: c
 
     void call_0_args_ret_float(void *method_userdata, GDExtensionClassInstancePtr p_instance, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count, GDExtensionVariantPtr r_return, GDExtensionCallError *r_error);
     void call_1_float_arg_no_ret(void *method_userdata, GDExtensionClassInstancePtr p_instance, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count, GDExtensionVariantPtr r_return, GDExtensionCallError *r_error);
 
-These follow the ``GDExtensionClassMethodCall`` type, which is a bit different.
-First, you receive pointers to Variants instead of exact types. There's also the
-amount of arguments and an error struct that you can set if something goes
-wrong.
+Các hàm này tuân theo kiểu ``GDExtensionClassMethodCall``, có một chút khác biệt. Trước tiên, bạn nhận được các con trỏ đến Variant thay vì các kiểu cụ thể. Ngoài ra còn có số lượng đối số và một struct lỗi mà bạn có thể thiết lập nếu có sự cố.
 
-In order to check the type and also extract interact with Variant, we will need
-a few more functions from the GDExtension API. So let's expand our wrapper
-structs:
+Để kiểm tra kiểu và trích xuất giá trị từ Variant, chúng ta sẽ cần thêm một vài hàm từ GDExtension API. Vì vậy, hãy mở rộng các struct wrapper của chúng ta:
 
 .. code-block:: c
 
@@ -878,13 +698,9 @@ structs:
         GDExtensionInterfaceVariantGetType variant_get_type;
     } api;
 
-The names say all about what those do. We have a couple of constructors to
-create and extract a floating point value to and from a Variant. We also have a
-couple of helpers to actually get those constructors, as well as a function to
-find out the type of a Variant.
+Tên của các hàm đã cho biết đầy đủ chức năng của chúng. Chúng ta có một vài constructor để tạo và trích xuất một giá trị dấu phẩy động vào và ra khỏi Variant. Chúng ta cũng có một vài helper để thực sự lấy các constructor đó, cùng với một hàm để xác định kiểu của một Variant.
 
-Let's get those from the API, like we did before, by changing the ``load_api()``
-function in the ``api.c`` file:
+Hãy lấy chúng từ API, giống như trước đây, bằng cách thay đổi hàm ``load_api()`` trong file ``api.c``:
 
 .. code-block:: c
 
@@ -899,20 +715,20 @@ function in the ``api.c`` file:
         api.variant_get_type = (GDExtensionInterfaceVariantGetType)p_get_proc_address("variant_get_type");
         ...
 
-        // Constructors.
+        // Các constructor.
         ...
         constructors.variant_from_float_constructor = api.get_variant_from_type_constructor(GDEXTENSION_VARIANT_TYPE_FLOAT);
         constructors.float_from_variant_constructor = api.get_variant_to_type_constructor(GDEXTENSION_VARIANT_TYPE_FLOAT);
         ...
     }
 
-Now that we have these set, we can implement our call wrappers in the same file:
+Bây giờ đã thiết lập xong các thành phần này, chúng ta có thể triển khai các wrapper lệnh gọi trong cùng file:
 
 .. code-block:: c
 
     void call_0_args_ret_float(void *method_userdata, GDExtensionClassInstancePtr p_instance, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count, GDExtensionVariantPtr r_return, GDExtensionCallError *r_error)
     {
-        // Check argument count.
+        // Kiểm tra số lượng đối số.
         if (p_argument_count != 0)
         {
             r_error->error = GDEXTENSION_CALL_ERROR_TOO_MANY_ARGUMENTS;
@@ -920,16 +736,16 @@ Now that we have these set, we can implement our call wrappers in the same file:
             return;
         }
 
-        // Call the function.
+        // Gọi hàm.
         double (*function)(void *) = method_userdata;
         double result = function(p_instance);
-        // Set resulting Variant.
+        // Thiết lập Variant kết quả.
         constructors.variant_from_float_constructor(r_return, &result);
     }
 
     void call_1_float_arg_no_ret(void *method_userdata, GDExtensionClassInstancePtr p_instance, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count, GDExtensionVariantPtr r_return, GDExtensionCallError *r_error)
     {
-        // Check argument count.
+        // Kiểm tra số lượng đối số.
         if (p_argument_count < 1)
         {
             r_error->error = GDEXTENSION_CALL_ERROR_TOO_FEW_ARGUMENTS;
@@ -943,7 +759,7 @@ Now that we have these set, we can implement our call wrappers in the same file:
             return;
         }
 
-        // Check the argument type.
+        // Kiểm tra kiểu của đối số.
         GDExtensionVariantType type = api.variant_get_type(p_args[0]);
         if (type != GDEXTENSION_VARIANT_TYPE_FLOAT)
         {
@@ -953,36 +769,26 @@ Now that we have these set, we can implement our call wrappers in the same file:
             return;
         }
 
-        // Extract the argument.
+        // Trích xuất đối số.
         double arg1;
         constructors.float_from_variant_constructor(&arg1, (GDExtensionVariantPtr)p_args[0]);
 
-        // Call the function.
+        // Gọi hàm.
         void (*function)(void *, double) = method_userdata;
         function(p_instance, arg1);
     }
 
-These functions are a bit longer but easy to follow. First they check if the
-argument count is as expected and if not they set the error struct and
-return. For the one that has one parameter, it also checks if the argument type
-is correct. This is important because mismatched types when extracting from
-Variant can cause crashes.
+Các hàm này dài hơn một chút nhưng dễ theo dõi. Trước tiên, chúng kiểm tra xem số lượng đối số có đúng như mong đợi hay không; nếu không, chúng thiết lập struct lỗi rồi trả về. Đối với hàm có một tham số, nó cũng kiểm tra xem kiểu đối số có chính xác hay không. Điều này rất quan trọng vì kiểu không khớp khi trích xuất từ Variant có thể gây ra crash.
 
-Then it proceeds to extract the argument using the constructor we setup before.
-The one with no arguments instead sets the return value after calling the
-function. Note how they use a pointer to a ``double`` variable, since this is
-what those constructors expect.
+Sau đó, hàm tiếp tục trích xuất đối số bằng constructor mà chúng ta đã thiết lập trước đó. Hàm không có đối số thay vào đó sẽ thiết lập giá trị trả về sau khi gọi hàm. Lưu ý rằng chúng sử dụng một con trỏ đến biến ``double``, vì đây là điều mà các constructor đó yêu cầu.
 
-Before we can actually bind our methods, we need a way to create
-``GDExtensionPropertyInfo`` instances. While we could do them inside the binding
-functions that we'll implement afterwards, it's easier to have a helper for it
-since we'll need it multiple times, including for when we bind properties.
+Trước khi thực sự binding các method, chúng ta cần một cách để tạo các instance ``GDExtensionPropertyInfo``. Mặc dù có thể thực hiện việc này bên trong các hàm binding mà chúng ta sẽ triển khai sau, việc có một helper sẽ dễ dàng hơn vì chúng ta sẽ cần nó nhiều lần, bao gồm cả khi binding các property.
 
-Let's create these two functions in the ``api.h`` file:
+Hãy tạo hai hàm này trong file ``api.h``:
 
 .. code-block:: c
 
-    // Create a PropertyInfo struct.
+    // Tạo một struct PropertyInfo.
     GDExtensionPropertyInfo make_property(
         GDExtensionVariantType type,
         const char *name);
@@ -997,14 +803,9 @@ Let's create these two functions in the ``api.h`` file:
 
     void destruct_property(GDExtensionPropertyInfo *info);
 
-The first one is a simplified version of the second since we usually don't need
-all the arguments for the property and are okay with the defaults. Then we also
-have a function to destruct the PropertyInfo since we need to create Strings and
-StringNames that need to be properly disposed of.
+Hàm đầu tiên là phiên bản đơn giản hóa của hàm thứ hai, vì thông thường chúng ta không cần tất cả các đối số cho property và có thể dùng các giá trị mặc định. Sau đó, chúng ta cũng có một hàm để hủy PropertyInfo, vì cần tạo các String và StringName phải được giải phóng đúng cách.
 
-Speaking of which, we also need a way to create and destruct Strings, so we'll
-make an addition to existing structs in this same file. We'll also get a new API
-function for actually binding our custom method.
+Nhân tiện, chúng ta cũng cần một cách để tạo và hủy String, vì vậy sẽ bổ sung vào các struct hiện có trong cùng file này. Chúng ta cũng sẽ lấy một hàm API mới để thực sự binding custom method của mình.
 
 .. code-block:: c
 
@@ -1026,12 +827,11 @@ function for actually binding our custom method.
         GDExtensionInterfaceClassdbRegisterExtensionClassMethod classdb_register_extension_class_method;
     } api;
 
-Before implementing those, let's do a quick stop in the ``defs.h`` file and
-include the size of the ``String`` type and a couple of enums:
+Trước khi triển khai các hàm đó, hãy tạm dừng một chút trong file ``defs.h`` và thêm kích thước của kiểu ``String`` cùng với một vài enum:
 
 .. code-block:: c
 
-    // The sizes can be obtained from the extension_api.json file.
+    // Có thể lấy các kích thước này từ file extension_api.json.
     #ifdef BUILD_32
     #define STRING_SIZE 4
     #define STRING_NAME_SIZE 4
@@ -1047,7 +847,7 @@ include the size of the ``String`` type and a couple of enums:
         uint8_t data[STRING_SIZE];
     } String;
 
-    // Enums.
+    // Các enum.
 
     typedef enum
     {
@@ -1062,15 +862,11 @@ include the size of the ``String`` type and a couple of enums:
         PROPERTY_USAGE_DEFAULT = PROPERTY_USAGE_STORAGE | PROPERTY_USAGE_EDITOR,
     } PropertyUsageFlags;
 
-While it's the same size as ``StringName``, it is more clear to use a different
-name for it.
+Mặc dù có cùng kích thước với ``StringName``, việc sử dụng một tên khác cho nó sẽ rõ ràng hơn.
 
-The enums here are just helpers to give names to the numbers they represent. The
-information about them is present in the ``extension_api.json`` file. Here we
-just set up the ones we need for the tutorial, to keep it more concise.
+Các enum ở đây chỉ là những helper dùng để đặt tên cho các số mà chúng đại diện. Thông tin về chúng có trong file ``extension_api.json``. Ở đây, chúng ta chỉ thiết lập những enum cần cho tutorial để giữ cho nội dung ngắn gọn hơn.
 
-Going now to the ``api.c``, we need to load the pointers to the new functions we
-added to the API.
+Tiếp theo, trong ``api.c``, chúng ta cần tải các con trỏ đến những hàm mới đã thêm vào API.
 
 .. code-block:: c
 
@@ -1081,16 +877,16 @@ added to the API.
         ...
         api.classdb_register_extension_class_method = (GDExtensionInterfaceClassdbRegisterExtensionClassMethod)p_get_proc_address("classdb_register_extension_class_method");
 
-        // Constructors.
+        // Các constructor.
         ...
         constructors.string_new_with_utf8_chars = (GDExtensionInterfaceStringNewWithUtf8Chars)p_get_proc_address("string_new_with_utf8_chars");
 
-        // Destructors.
+        // Các destructor.
         ...
         destructors.string_destructor = variant_get_ptr_destructor(GDEXTENSION_VARIANT_TYPE_STRING);
     }
 
-Then we can also implement the functions to create the ``PropertyInfo`` struct.
+Sau đó, chúng ta cũng có thể triển khai các hàm để tạo struct ``PropertyInfo``.
 
 .. code-block:: c
 
@@ -1141,32 +937,24 @@ Then we can also implement the functions to create the ``PropertyInfo`` struct.
     }
 
 
-The simple version of ``make_property()`` just calls the more complete one with a
-some default arguments. What those values mean exactly is out of the scope of
-this tutorial, check the page about the :ref:`Object class <doc_object_class>`
-for more details about binding methods and properties.
+Phiên bản đơn giản của ``make_property()`` chỉ gọi phiên bản đầy đủ hơn với một số đối số mặc định. Ý nghĩa chính xác của các giá trị đó nằm ngoài phạm vi của tutorial này; hãy xem trang về lớp :ref:`Object class <doc_object_class>` để biết thêm chi tiết về việc binding các method và property.
 
-The complete version is more involved. First, it creates ``String``'s and
-``StringName``'s for the needed fields, by allocating memory and calling their
-constructors. Then it creates a ``GDExtensionPropertyInfo`` struct and sets all
-the fields with the arguments provided. Finally it returns this created struct.
+Phiên bản đầy đủ phức tạp hơn. Trước tiên, nó tạo các ``String`` và ``StringName`` cho những trường cần thiết bằng cách cấp phát bộ nhớ và gọi constructor của chúng. Sau đó, nó tạo một struct ``GDExtensionPropertyInfo`` và thiết lập tất cả các trường bằng những đối số được cung cấp. Cuối cùng, nó trả về struct vừa tạo.
 
-The ``destruct_property()`` function is straightforward, it simply calls the
-destructors for the created objects and frees their allocated memory.
+Hàm ``destruct_property()`` khá đơn giản: nó chỉ gọi các destructor cho những đối tượng đã tạo và giải phóng bộ nhớ được cấp phát cho chúng.
 
-Let's go back again to the header ``api.h`` to create the functions that will
-actually bind the methods:
+Hãy quay lại header ``api.h`` để tạo các hàm thực sự binding các method:
 
 .. code-block:: c
 
-    // Version for 0 arguments, with return.
+    // Phiên bản cho 0 đối số, có giá trị trả về.
     void bind_method_0_r(
         const char *class_name,
         const char *method_name,
         void *function,
         GDExtensionVariantType return_type);
 
-    // Version for 1 argument, no return.
+    // Phiên bản cho 1 đối số, không có giá trị trả về.
     void bind_method_1(
         const char *class_name,
         const char *method_name,
@@ -1174,11 +962,11 @@ actually bind the methods:
         const char *arg1_name,
         GDExtensionVariantType arg1_type);
 
-Then switch back to the ``api.c`` file to implement these:
+Sau đó quay lại file ``api.c`` để triển khai các hàm này:
 
 .. code-block:: c
 
-    // Version for 0 arguments, with return.
+    // Phiên bản cho 0 đối số, có giá trị trả về.
     void bind_method_0_r(
         const char *class_name,
         const char *method_name,
@@ -1210,13 +998,13 @@ Then switch back to the ``api.c`` file to implement these:
 
         api.classdb_register_extension_class_method(class_library, &class_name_string, &method_info);
 
-        // Destruct things.
+        // Hủy các thành phần.
         destructors.string_name_destructor(&method_name_string);
         destructors.string_name_destructor(&class_name_string);
         destruct_property(&return_info);
     }
 
-    // Version for 1 argument, no return.
+    // Phiên bản cho 1 đối số, không có giá trị trả về.
     void bind_method_1(
         const char *class_name,
         const char *method_name,
@@ -1255,41 +1043,22 @@ Then switch back to the ``api.c`` file to implement these:
 
         api.classdb_register_extension_class_method(class_library, &class_name_string, &method_info);
 
-        // Destruct things.
+        // Hủy các thành phần.
         destructors.string_name_destructor(&method_name_string);
         destructors.string_name_destructor(&class_name_string);
         destruct_property(&args_info[0]);
     }
 
-Both functions are very similar. First, they create a ``StringName`` with the
-method name. This is created in the stack since we don't need to keep it after
-the function ends. Then they create local variables to hold the ``call_func``
-and ``ptrcall_func``, pointing to the helper functions we defined earlier.
+Cả hai hàm này rất giống nhau. Trước tiên, chúng tạo một ``StringName`` với tên phương thức. Đối tượng này được tạo trên stack vì chúng ta không cần giữ lại nó sau khi hàm kết thúc. Sau đó, chúng tạo các biến cục bộ để chứa ``call_func`` và ``ptrcall_func``, trỏ đến các hàm helper mà chúng ta đã định nghĩa trước đó.
 
-In the next step they diverge a bit. The first one creates a property for the
-return value, which has an empty name since it's not needed. The other creates
-an array of properties for the arguments, which in this case has a single
-element. This one also has an array of metadata, which can be used if there's
-something special about the argument (e.g. if an ``int`` value is 32 bits long
-instead of the default of 64 bits).
+Ở bước tiếp theo, chúng có khác nhau đôi chút. Hàm đầu tiên tạo một property cho giá trị trả về, có tên rỗng vì không cần đến tên này. Hàm còn lại tạo một mảng các property cho các đối số, trong trường hợp này có một phần tử duy nhất. Hàm này cũng có một mảng metadata, có thể được dùng nếu đối số có điều gì đó đặc biệt (ví dụ: nếu một giá trị ``int`` dài 32 bit thay vì mặc định là 64 bit).
 
-Afterwards, they create the ``GDExtensionClassMethodInfo`` with the required
-fields for each case. Then they make a ``StringName`` for the class name, in
-order to associate the method with the class. Next, they call the API function
-to actually bind this method to the class. Finally, we destruct the objects we
-created since they aren't needed anymore.
+Sau đó, chúng tạo ``GDExtensionClassMethodInfo`` với các trường bắt buộc cho từng trường hợp. Tiếp theo, chúng tạo một ``StringName`` cho tên class để liên kết phương thức với class. Sau đó, chúng gọi hàm API để thực sự bind phương thức này vào class. Cuối cùng, chúng hủy các object đã tạo vì không còn cần đến chúng nữa.
 
 .. note::
-    The bind helpers here use the call helpers we created earlier, so do note that
-    those call helpers only accept the Godot ``FLOAT`` type (which is equivalent to
-    ``double`` in C). If you intend to use this for other types, you would need to
-    check the type of the arguments and return type and select an appropriate
-    function callback. This is avoided here only to keep the example from becoming
-    even longer.
+    Các helper bind ở đây sử dụng những helper call mà chúng ta đã tạo trước đó, vì vậy hãy lưu ý rằng các helper call đó chỉ chấp nhận kiểu ``FLOAT`` của Godot (tương đương với ``double`` trong C). Nếu bạn định dùng cách này cho các kiểu khác, bạn cần kiểm tra kiểu của các đối số và kiểu trả về rồi chọn một function callback phù hợp. Ở đây chúng tôi tránh làm vậy chỉ để ví dụ không trở nên dài hơn nữa.
 
-Now that we have the means to bind methods, we can actually do so in our custom
-class. Go to the ``gdexample.c`` file and fill up the
-``gdexample_class_bind_methods()`` function:
+Bây giờ chúng ta đã có cách để bind các phương thức, nên có thể thực hiện việc đó trong custom class. Mở file ``gdexample.c`` và điền vào hàm ``gdexample_class_bind_methods()``:
 
 .. code-block:: c
 
@@ -1302,16 +1071,9 @@ class. Go to the ``gdexample.c`` file and fill up the
         bind_method_1("GDExample", "set_speed", gdexample_class_set_speed, "speed", GDEXTENSION_VARIANT_TYPE_FLOAT);
     }
 
-Since this function is already being called by the initialization process, we
-can stop here. This function is much more straightforward after we created all the
-infrastructure to make this work. You can see that implementing the binding
-functions inline here would take some space and also be quite repetitive. This
-also makes it easier to add another method in the future.
+Vì hàm này đã được quy trình khởi tạo gọi, chúng ta có thể dừng tại đây. Hàm này đơn giản hơn nhiều sau khi chúng ta đã tạo toàn bộ cơ sở hạ tầng cần thiết để nó hoạt động. Bạn có thể thấy rằng việc triển khai các hàm bind trực tiếp ở đây sẽ chiếm khá nhiều chỗ và cũng khá lặp lại. Cách này cũng giúp việc thêm một phương thức khác trong tương lai dễ dàng hơn.
 
-If you compile the code and reopen the Godot project, nothing will be different
-at first, since we only added two new methods. To ensure those are registered
-properly, you can search for ``GDExample`` in the editor help and verify they
-are present in the documentation page.
+Nếu biên dịch code và mở lại project Godot, ban đầu sẽ không có gì khác biệt vì chúng ta chỉ thêm hai phương thức mới. Để đảm bảo chúng đã được đăng ký đúng cách, bạn có thể tìm ``GDExample`` trong phần trợ giúp của editor và xác minh rằng chúng có mặt trên trang tài liệu.
 
 .. image:: img/gdextension_c_methods_doc.webp
 
@@ -1319,13 +1081,9 @@ are present in the documentation page.
 Custom properties
 -----------------
 
-Since we now have the getter and setter for our properties already bound, we can
-move forward to create actual properties that will be displayed in the Godot
-editor inspector.
+Vì getter và setter cho các property của chúng ta đã được bind, giờ đây chúng ta có thể tiếp tục tạo các property thực tế sẽ được hiển thị trong Inspector của editor Godot.
 
-Given our extensive setup in the previous section, there are only a few things
-needed to enable us to bind properties. First, let's get a new API function in
-the ``api.h`` file:
+Với phần thiết lập khá đầy đủ ở phần trước, chỉ còn vài việc cần làm để có thể bind các property. Trước tiên, hãy lấy một hàm API mới trong file ``api.h``:
 
 
 .. code-block:: c
@@ -1335,7 +1093,7 @@ the ``api.h`` file:
         GDExtensionInterfaceClassdbRegisterExtensionClassProperty classdb_register_extension_class_property;
     } api;
 
-Let's also declare a function here to bind properties:
+Chúng ta cũng hãy khai báo một hàm tại đây để bind các property:
 
 .. code-block:: c
 
@@ -1346,7 +1104,7 @@ Let's also declare a function here to bind properties:
         const char *getter,
         const char *setter);
 
-In the ``api.c`` file, we can load the new API function:
+Trong file ``api.c``, chúng ta có thể load hàm API mới:
 
 .. code-block:: c
 
@@ -1359,7 +1117,7 @@ In the ``api.c`` file, we can load the new API function:
         ...
     }
 
-Then we can implement our new helper function in this same file:
+Sau đó, chúng ta có thể triển khai hàm helper mới trong chính file này:
 
 .. code-block:: c
 
@@ -1380,23 +1138,16 @@ Then we can implement our new helper function in this same file:
 
         api.classdb_register_extension_class_property(class_library, &class_string_name, &info, &setter_name, &getter_name);
 
-        // Destruct things.
+        // Hủy các đối tượng.
         destructors.string_name_destructor(&class_string_name);
         destruct_property(&info);
         destructors.string_name_destructor(&getter_name);
         destructors.string_name_destructor(&setter_name);
     }
 
-This function is similar to the one for binding methods. The main difference is
-that we don't need an extra struct since we can simply use the
-``GDExtensionPropertyInfo`` that is created by our helper function, so it's more
-straightforward. It only creates the ``StringName`` values from the
-C strings, creates a property info struct using our helper, calls the API
-function to register the property in the class and then destructs all the objects
-we created.
+Hàm này tương tự hàm dùng để bind các phương thức. Điểm khác biệt chính là chúng ta không cần một struct bổ sung vì có thể sử dụng trực tiếp ``GDExtensionPropertyInfo`` được tạo bởi hàm helper, nên cách này đơn giản hơn. Hàm chỉ tạo các giá trị ``StringName`` từ các chuỗi C, tạo một struct thông tin property bằng helper của chúng ta, gọi hàm API để đăng ký property trong class, rồi hủy tất cả các object đã tạo.
 
-With this done, we can extend the ``gdexample_class_bind_methods()`` function in the
-``gdexample.c`` file:
+Sau khi hoàn tất, chúng ta có thể mở rộng hàm ``gdexample_class_bind_methods()`` trong file ``gdexample.c``:
 
 .. code-block:: c
 
@@ -1411,44 +1162,35 @@ With this done, we can extend the ``gdexample_class_bind_methods()`` function in
         bind_property("GDExample", "speed", GDEXTENSION_VARIANT_TYPE_FLOAT, "get_speed", "set_speed");
     }
 
-If you build the extension with ``scons``, you'll see in the Godot editor the new property shown
-not only on the documentation page for the custom class but also in the Inspector dock when the
-``GDExample`` node is selected.
+Nếu build extension bằng ``scons``, bạn sẽ thấy property mới trong editor Godot, không chỉ trên trang tài liệu của custom class mà còn trong dock Inspector khi node ``GDExample`` được chọn.
 
 .. image:: img/gdextension_c_inspector_properties.webp
 
 Binding virtual methods
 -----------------------
 
-Our custom node now has properties to influence how it operates, but it still
-doesn't do anything. In this section, we will bind the virtual method
-:ref:`_process() <class_Node_private_method__process>` and make our custom sprite
-move a little bit.
+Custom node của chúng ta hiện đã có các property để điều chỉnh cách nó hoạt động, nhưng nó vẫn chưa làm gì cả. Trong phần này, chúng ta sẽ bind virtual method
+:ref:`_process() <class_Node_private_method__process>` và làm cho custom sprite của chúng ta di chuyển một chút.
 
-In the ``gdexample.h`` file, let's add a function that represents the custom
-``_process()`` method:
+Trong file ``gdexample.h``, hãy thêm một hàm đại diện cho phương thức ``_process()`` tùy chỉnh:
 
 .. code-block:: c
 
-    // Methods.
+    // Các phương thức.
     void gdexample_class_process(GDExample *self, double delta);
 
-We'll also add a "private" field to keep track of the time passed in our custom
-struct. This is "private" only in the sense that it won't be bound to the Godot
-API, even though it is public in the C side, given the language lacks access
-modifiers.
+Chúng ta cũng sẽ thêm một trường "private" để theo dõi thời gian đã trôi qua trong custom struct. Trường này chỉ là "private" theo nghĩa nó sẽ không được bind vào Godot API, mặc dù nó là public ở phía C vì ngôn ngữ này không có access modifier.
 
 .. code-block:: c
 
     typedef struct
     {
-        // Private properties.
+        // Các property private.
         double time_passed;
         ...
     } GDExample;
 
-On the counterpart source file ``gdexample.c`` we need to initialize the new
-field in the constructor:
+Trong file source đối ứng ``gdexample.c``, chúng ta cần khởi tạo trường mới trong constructor:
 
 .. code-block:: c
 
@@ -1459,7 +1201,7 @@ field in the constructor:
         self->speed = 1.0;
     }
 
-Then we can create the simplest implementation for the ``_process`` method:
+Sau đó, chúng ta có thể tạo phần triển khai đơn giản nhất cho phương thức ``_process``:
 
 .. code-block:: c
 
@@ -1468,24 +1210,18 @@ Then we can create the simplest implementation for the ``_process`` method:
         self->time_passed += self->speed * delta;
     }
 
-For now it will do nothing but update the private field we created. We'll come
-back to this after the method is properly bound.
+Hiện tại, hàm này chỉ cập nhật trường private mà chúng ta đã tạo. Chúng ta sẽ quay lại phần này sau khi phương thức được bind đúng cách.
 
-Virtual methods are a bit different from the regular bindings. Instead of
-explicitly registering the method itself, we'll register a special function that
-Godot will call to ask if a particular virtual method is implemented in our
-extension. The engine will pass a ``StringName`` as an argument so, following
-the spirit of this tutorial, we'll create a helper function to check if it is
-equal to a C string.
+Virtual method hơi khác so với các binding thông thường. Thay vì đăng ký rõ ràng chính phương thức đó, chúng ta sẽ đăng ký một hàm đặc biệt mà Godot sẽ gọi để hỏi xem một virtual method cụ thể có được triển khai trong extension của chúng ta hay không. Engine sẽ truyền một ``StringName`` làm đối số, vì vậy theo tinh thần của tutorial này, chúng ta sẽ tạo một hàm helper để kiểm tra xem nó có bằng một chuỗi C hay không.
 
-Let's add the declaration to the ``api.h`` file:
+Hãy thêm khai báo vào file ``api.h``:
 
 .. code-block:: c
 
-    // Compare a StringName with a C string.
+    // So sánh một StringName với một chuỗi C.
     bool is_string_name_equal(GDExtensionConstStringNamePtr p_a, const char *p_b);
 
-We'll also add a new struct to this file, to hold function pointers for custom operators:
+Chúng ta cũng sẽ thêm một struct mới vào file này để chứa các function pointer cho những operator tùy chỉnh:
 
 .. code-block:: c
 
@@ -1494,7 +1230,7 @@ We'll also add a new struct to this file, to hold function pointers for custom o
         GDExtensionPtrOperatorEvaluator string_name_equal;
     } operators;
 
-Then in the ``api.c`` file we'll load the function pointer from the API:
+Sau đó, trong file ``api.c``, chúng ta sẽ load function pointer từ API:
 
 .. code-block:: c
 
@@ -1502,104 +1238,81 @@ Then in the ``api.c`` file we'll load the function pointer from the API:
 
     void load_api(GDExtensionInterfaceGetProcAddress p_get_proc_address)
     {
-        // Get helper functions first.
+        // Trước tiên lấy các hàm helper.
         ...
         GDExtensionInterfaceVariantGetPtrOperatorEvaluator variant_get_ptr_operator_evaluator = (GDExtensionInterfaceVariantGetPtrOperatorEvaluator)p_get_proc_address("variant_get_ptr_operator_evaluator");
 
         ...
 
-        // Operators.
+        // Các operator.
         operators.string_name_equal = variant_get_ptr_operator_evaluator(GDEXTENSION_VARIANT_OP_EQUAL, GDEXTENSION_VARIANT_TYPE_STRING_NAME, GDEXTENSION_VARIANT_TYPE_STRING_NAME);
     }
 
-As you can see we need a new local helper here in order to grab the function
-pointer for the operator.
+Như bạn thấy, ở đây chúng ta cần một helper cục bộ mới để lấy function pointer cho operator.
 
-With this handy, we can easily create our comparison function in the same file:
+Với thành phần này, chúng ta có thể dễ dàng tạo hàm so sánh trong cùng file:
 
 .. code-block:: c
 
     bool is_string_name_equal(GDExtensionConstStringNamePtr p_a, const char *p_b)
     {
-        // Create a StringName for the C string.
+        // Tạo một StringName cho chuỗi C.
         StringName string_name;
         constructors.string_name_new_with_latin1_chars(&string_name, p_b, false);
 
-        // Compare both StringNames.
+        // So sánh hai StringName.
         bool is_equal = false;
         operators.string_name_equal(p_a, &string_name, &is_equal);
 
-        // Destroy the created StringName.
+        // Hủy StringName đã tạo.
         destructors.string_name_destructor(&string_name);
 
-        // Return the result.
+        // Trả về kết quả.
         return is_equal;
     }
 
-This function creates a ``StringName`` from the argument, compares with
-the other one using the operator function pointer, and returns the result. Note
-that the return value for the operator is passed as an out reference, this is a
-common thing in the API.
+Hàm này tạo một ``StringName`` từ đối số, so sánh với đối tượng còn lại bằng function pointer của operator, rồi trả về kết quả. Lưu ý rằng giá trị trả về của operator được truyền dưới dạng một tham chiếu out; đây là cách làm phổ biến trong API.
 
-Let's go back to the ``gdexample.h`` file and add a couple of functions that
-will be used as the callbacks for the Godot API:
+Hãy quay lại tệp ``gdexample.h`` và thêm một vài hàm sẽ được dùng làm callback cho Godot API:
 
 .. code-block:: c
 
     void *gdexample_class_get_virtual_with_data(void *p_class_userdata, GDExtensionConstStringNamePtr p_name);
     void gdexample_class_call_virtual_with_data(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, void *p_virtual_call_userdata, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret);
 
-There are actually two ways of registering virtual methods. Only one has the
-``get`` part, in which you give Godot a properly crafted function pointer which
-will be called. For this we would need to create another helper for each virtual
-method, something that is not very convenient. Instead, we use the second method
-which allows us to return any data, and then Godot will call a second callback
-and give us back this data along with the call information. We can simply give
-our own function pointer as custom data and then have a single callback for all
-virtual methods. Although in this example we will only use it for one method,
-this way is simpler to expand.
+Thực tế có hai cách đăng ký các virtual method. Chỉ một cách có phần ``get``, trong đó bạn cung cấp cho Godot một function pointer được tạo đúng cách để Godot gọi. Với cách này, chúng ta cần tạo thêm một helper cho mỗi virtual method, khá bất tiện. Thay vào đó, chúng ta dùng cách thứ hai, cho phép trả về bất kỳ dữ liệu nào; sau đó Godot sẽ gọi một callback thứ hai và trả lại dữ liệu này cùng với thông tin về lời gọi. Chúng ta chỉ cần cung cấp function pointer của mình làm custom data, rồi dùng một callback duy nhất cho tất cả virtual method. Mặc dù trong ví dụ này chúng ta chỉ dùng nó cho một method, cách này dễ mở rộng hơn.
 
-So let's implement those two functions in the ``gdexample.c`` file:
+Vậy hãy triển khai hai hàm đó trong tệp ``gdexample.c``:
 
 .. code-block:: c
 
     void *gdexample_class_get_virtual_with_data(void *p_class_userdata, GDExtensionConstStringNamePtr p_name)
     {
-        // If it is the "_process" method, return a pointer to the gdexample_class_process function.
+        // Nếu đó là method "_process", hãy trả về con trỏ tới hàm gdexample_class_process.
         if (is_string_name_equal(p_name, "_process"))
         {
             return (void *)gdexample_class_process;
         }
-        // Otherwise, return NULL.
+        // Nếu không, hãy trả về NULL.
         return NULL;
     }
 
     void gdexample_class_call_virtual_with_data(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, void *p_virtual_call_userdata, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret)
     {
-        // If it is the "_process" method, call it with a helper.
+        // Nếu đó là method "_process", hãy gọi nó bằng một helper.
         if (p_virtual_call_userdata == &gdexample_class_process)
         {
             ptrcall_1_float_arg_no_ret(p_virtual_call_userdata, p_instance, p_args, r_ret);
         }
     }
 
-Those functions are also quite straightforward after making all the helpers
-previously.
+Sau khi đã tạo tất cả helper trước đó, các hàm này cũng khá đơn giản.
 
-For the first one, we simply check if the function name requested is
-``_process`` and if it is we return a function pointer to our implementation of
-it. Otherwise we return ``NULL``, signaling that the method is not being
-overridden. We don't use the ``p_class_userdata`` here since this function is
-meant only for one class and we don't have any data associated with it.
+Với hàm đầu tiên, chúng ta chỉ cần kiểm tra xem tên hàm được yêu cầu có phải là ``_process`` hay không; nếu đúng, trả về function pointer tới phần triển khai của nó. Nếu không, chúng ta trả về ``NULL``, cho biết method này không được override. Ở đây chúng ta không dùng ``p_class_userdata`` vì hàm này chỉ dành cho một class và không có dữ liệu nào liên kết với nó.
 
-The second one is similar. If it is the ``_process()`` method, it uses the given
-function pointer to call the ``ptrcall`` helper, passing the call arguments
-forward. Otherwise it simply does nothing, since we don't have any other virtual
-methods being implemented.
+Hàm thứ hai cũng tương tự. Nếu đó là method ``_process()``, hàm này dùng function pointer được cung cấp để gọi helper ``ptrcall``, chuyển tiếp các đối số của lời gọi. Nếu không, nó không làm gì cả vì chúng ta không triển khai virtual method nào khác.
 
-The only thing missing is using those callbacks when the class is registered. Go
-to the ``init.c`` file and change the ``class_info`` initialization to include
-those, replacing the ``NULL`` value used previously:
+Điều duy nhất còn thiếu là sử dụng các callback này khi đăng ký class. Hãy mở tệp ``init.c`` và thay đổi phần khởi tạo ``class_info`` để thêm chúng, thay cho giá trị ``NULL`` đã dùng trước đó:
 
 .. code-block:: c
 
@@ -1617,21 +1330,15 @@ those, replacing the ``NULL`` value used previously:
         ...
     }
 
-This is enough to bind the virtual method. If you build the extension and run
-the Godot project again, the ``_process()`` function will be called. You just won't
-be able to tell since the function itself does nothing visible. We will solve
-this now by making the custom node move following a pattern.
+Như vậy là đủ để binding virtual method. Nếu build extension rồi chạy lại project Godot, hàm ``_process()`` sẽ được gọi. Tuy nhiên, bạn sẽ không nhận ra điều đó vì bản thân hàm chưa thực hiện hành động nào có thể quan sát được. Bây giờ chúng ta sẽ giải quyết việc này bằng cách làm cho custom node di chuyển theo một pattern.
 
-In order to make our node do stuff, we'll need to call Godot methods. Not only
-the GDExtension API functions as we've being doing so far, but actual engine
-methods, as we would do with scripting. This naturally requires some extra setup.
+Để node thực hiện được hành động, chúng ta cần gọi các method của Godot. Không chỉ các hàm GDExtension API như đã làm từ đầu đến giờ, mà còn cả các method thực tế của engine, giống như khi viết script. Điều này đương nhiên cần thêm một số bước thiết lập.
 
-First, let's add :ref:`class_Vector2` to our ``defs.h`` file, so we
-can use it in our method:
+Trước tiên, hãy thêm :ref:`class_Vector2` vào tệp ``defs.h``, để chúng ta có thể dùng nó trong method của mình:
 
 .. code-block:: c
 
-    // The sizes can be obtained from the extension_api.json file.
+    // Có thể lấy kích thước từ tệp extension_api.json.
     ...
     #ifdef REAL_T_IS_DOUBLE
     #define VECTOR2_SIZE 16
@@ -1641,7 +1348,7 @@ can use it in our method:
 
     ...
 
-    // Types.
+    // Các type.
 
     ...
 
@@ -1650,11 +1357,9 @@ can use it in our method:
         uint8_t data[VECTOR2_SIZE];
     } Vector2;
 
-The ``REAL_T_IS_DOUBLE`` define is only needed if your Godot version was built
-with double precision support, which is not the default.
+Define ``REAL_T_IS_DOUBLE`` chỉ cần thiết nếu phiên bản Godot của bạn được build với hỗ trợ double precision, vốn không phải thiết lập mặc định.
 
-Now, in the ``api.h`` file, we'll add few things to the API structs, including a
-new one for holding engine methods to call.
+Bây giờ, trong tệp ``api.h``, chúng ta sẽ thêm một vài thành phần vào các struct API, bao gồm một struct mới để lưu các method của engine cần gọi.
 
 .. code-block:: c
 
@@ -1678,7 +1383,7 @@ new one for holding engine methods to call.
         GDExtensionInterfaceObjectMethodBindPtrcall object_method_bind_ptrcall;
     } api;
 
-Then in the ``api.c`` file we can grab the function pointers from Godot:
+Sau đó, trong tệp ``api.c``, chúng ta có thể lấy các function pointer từ Godot:
 
 .. code-block::
 
@@ -1702,19 +1407,11 @@ Then in the ``api.c`` file we can grab the function pointers from Godot:
         ...
     }
 
-The only noteworthy part here is the ``Vector2`` constructor, for which we request the
-index ``3``. Since there are multiple constructors with different kinds of
-arguments, we need to specify which one we want. In this case we're getting the
-one that takes two float numbers as the ``x`` and ``y`` coordinates, hence the
-name. This index can be retrieved from the ``extension_api.json`` file. Note we
-also need a new local helper to get it.
+Phần đáng chú ý duy nhất ở đây là constructor ``Vector2``, với constructor này chúng ta yêu cầu index ``3``. Vì có nhiều constructor với các kiểu đối số khác nhau, chúng ta cần chỉ rõ constructor muốn dùng. Trong trường hợp này, chúng ta lấy constructor nhận hai số float làm tọa độ ``x`` và ``y``, do đó có tên như vậy. Có thể lấy index này từ tệp ``extension_api.json``. Lưu ý rằng chúng ta cũng cần một local helper mới để lấy nó.
 
-Be aware that we don't get anything for the methods struct here. This is because
-this function is called too early in the initialization process, so classes
-won't be properly registered yet.
+Lưu ý rằng ở đây chúng ta không lấy gì cho struct methods. Lý do là hàm này được gọi quá sớm trong quá trình khởi tạo, nên các class chưa được đăng ký đầy đủ.
 
-Instead, we're gonna use the initialization level callback to grab those when we
-are registering our custom class. Add this to the ``init.c`` file:
+Thay vào đó, chúng ta sẽ dùng initialization level callback để lấy chúng khi đăng ký custom class. Hãy thêm đoạn này vào tệp ``init.c``:
 
 .. code-block:: c
 
@@ -1725,8 +1422,8 @@ are registering our custom class. Add this to the ``init.c`` file:
             return;
         }
 
-        // Get ClassDB methods here because the classes we need are all properly registered now.
-        // See extension_api.json for hashes.
+        // Lấy các method của ClassDB ở đây vì tất cả class chúng ta cần hiện đã được đăng ký đầy đủ.
+        // Xem extension_api.json để biết các hash.
         StringName native_class_name;
         StringName method_name;
 
@@ -1739,21 +1436,11 @@ are registering our custom class. Add this to the ``init.c`` file:
         ...
     }
 
-Here we create ``StringName``'s for the class and method we want to get, then use
-the GDExtension API to retrieve their ``MethodBind``, which is an object that
-represents the bound method. We get the ``set_position`` method from ``Node2D``
-since this is where it was registered, even though we're going to use it in a
-``Sprite2D``, a derived class.
+Ở đây, chúng ta tạo các ``StringName`` cho class và method muốn lấy, sau đó dùng GDExtension API để truy xuất ``MethodBind`` của chúng; đây là một object đại diện cho bound method. Chúng ta lấy method ``set_position`` từ ``Node2D`` vì đây là nơi method được đăng ký, mặc dù chúng ta sẽ dùng nó trong một ``Sprite2D``, là class dẫn xuất.
 
-The seemingly random number for getting the bind is actually a hash of the
-method signature. This allows Godot to match the method you're requesting even
-if in a future Godot version this signature changes, by providing a
-compatibility method that matches what you're asking for. This is one of the
-systems that allow the engine to load extensions made for previous versions. You
-can get the value of this hash from the ``extension_api.json`` file.
+Con số có vẻ ngẫu nhiên dùng để lấy bind thực ra là hash của method signature. Nhờ đó, Godot có thể khớp với method bạn yêu cầu ngay cả khi signature này thay đổi trong một phiên bản Godot tương lai, bằng cách cung cấp một compatibility method khớp với yêu cầu của bạn. Đây là một trong những hệ thống cho phép engine tải các extension được tạo cho những phiên bản trước. Bạn có thể lấy giá trị hash này từ tệp ``extension_api.json``.
 
-With all that, we can finally implement our custom ``_process()`` method in the
-``gdexample.c`` file:
+Với tất cả những điều đó, cuối cùng chúng ta có thể triển khai method custom ``_process()`` trong tệp ``gdexample.c``:
 
 .. code-block:: c
 
@@ -1769,47 +1456,37 @@ With all that, we can finally implement our custom ``_process()`` method in the
 
         Vector2 new_position;
 
-        // Set up the arguments for the Vector2 constructor.
+        // Thiết lập các đối số cho constructor của Vector2.
         double x = self->amplitude + (self->amplitude * sin(self->time_passed * 2.0));
         double y = self->amplitude + (self->amplitude * cos(self->time_passed * 1.5));
         GDExtensionConstTypePtr args[] = {&x, &y};
-        // Call the Vector2 constructor.
+        // Gọi constructor của Vector2.
         constructors.vector2_constructor_x_y(&new_position, args);
 
-        // Set up the arguments for the set_position method.
+        // Thiết lập các đối số cho method set_position.
         GDExtensionConstTypePtr args2[] = {&new_position};
-        // Call the set_position method.
+        // Gọi method set_position.
         api.object_method_bind_ptrcall(methods.node2d_set_position, self->object, args2, NULL);
     }
 
-After updating the time passed scaled by the ``speed`` property, it creates
-``x`` and ``y`` values based on that, also modulated by the ``amplitude``
-property. This is what will give the pattern effect. The ``math.h`` header is
-needed for the ``sin()`` and ``cos()`` functions used here.
+Sau khi cập nhật thời gian đã trôi qua, được scale theo property ``speed``, hàm này tạo các giá trị ``x`` và ``y`` dựa trên thời gian đó, đồng thời điều biến chúng theo property ``amplitude``. Đây là yếu tố tạo ra hiệu ứng pattern. Cần có header ``math.h`` cho các hàm ``sin()`` và ``cos()`` được dùng ở đây.
 
-Then it sets up an array of arguments to construct a ``Vector2``, followed by
-calling the constructor. It sets up another array of arguments and use it to
-call the ``set_position()`` method via the bind we acquired previously.
+Sau đó, hàm thiết lập một mảng các đối số để tạo một ``Vector2``, rồi gọi constructor. Hàm thiết lập thêm một mảng đối số khác và dùng nó để gọi method ``set_position()`` thông qua bind đã lấy trước đó.
 
-Since nothing here allocates any memory, there's not a need to cleanup.
+Vì không có phần nào ở đây cấp phát bộ nhớ nên không cần cleanup.
 
-Now we can build the extension again and reopen Godot. Even in the editor you'll
-see the custom sprite moving.
+Bây giờ chúng ta có thể build lại extension và mở lại Godot. Ngay cả trong editor, bạn cũng sẽ thấy custom sprite di chuyển.
 
 .. image:: img/gdextension_c_moving_sprite.gif
 
-Try changing the **Speed** and **Amplitude** properties and see how the sprite
-react.
+Hãy thử thay đổi các property **Speed** và **Amplitude**, rồi xem sprite phản ứng thế nào.
 
-Registering and emitting a signal
----------------------------------
+Đăng ký và phát signal
+----------------------
 
-To complete this tutorial, let's see how you can register a custom signal and
-emit it when appropriate. As you might have guessed, we'll need a few more
-function pointers from the API and more helper functions.
+Để hoàn tất tutorial này, hãy xem cách đăng ký một signal custom và phát signal đó vào thời điểm phù hợp. Như bạn có thể đoán, chúng ta sẽ cần thêm một vài function pointer từ API và nhiều helper function hơn.
 
-In the ``api.h`` file we're adding two things. One is an API function to
-register a signal, the other is a helper function to wrap the signal binding.
+Trong tệp ``api.h``, chúng ta sẽ thêm hai thứ. Một là hàm API để đăng ký signal, thứ còn lại là hàm helper để bọc việc liên kết signal.
 
 .. code-block:: c
 
@@ -1821,18 +1498,16 @@ register a signal, the other is a helper function to wrap the signal binding.
 
     ...
 
-    // Version for 1 argument.
+    // Phiên bản cho 1 đối số.
     void bind_signal_1(
         const char *class_name,
         const char *signal_name,
         const char *arg1_name,
         GDExtensionVariantType arg1_type);
 
-In this case we only have a version for one argument, since it's what we're
-going to use.
+Trong trường hợp này, chúng ta chỉ có phiên bản cho một đối số, vì đó là phiên bản chúng ta sẽ sử dụng.
 
-Moving to the ``api.c`` file, we can load this new function pointer and
-implement the helper:
+Chuyển sang tệp ``api.c``, chúng ta có thể tải con trỏ hàm mới này và triển khai helper:
 
 .. code-block:: c
 
@@ -1862,18 +1537,15 @@ implement the helper:
 
         api.classdb_register_extension_class_signal(class_library, &class_string_name, &signal_string_name, args_info, 1);
 
-        // Destruct things.
+        // Giải phóng các đối tượng.
         destructors.string_name_destructor(&class_string_name);
         destructors.string_name_destructor(&signal_string_name);
         destruct_property(&args_info[0]);
     }
 
-This one is very similar to the function to bind methods. The main difference is
-that we don't need to fill another struct, we just pass the needed names and the
-array of arguments. The ``1`` at the end means the amount of arguments the
-signal provides.
+Hàm này rất giống với hàm dùng để liên kết các method. Điểm khác biệt chính là chúng ta không cần điền thêm một struct; chỉ cần truyền các tên cần thiết và mảng đối số. ``1`` ở cuối cho biết số lượng đối số mà signal cung cấp.
 
-With this we can bind the signal in ``gdexample.c``:
+Với cách này, chúng ta có thể liên kết signal trong ``gdexample.c``:
 
 .. code-block:: c
 
@@ -1883,19 +1555,16 @@ With this we can bind the signal in ``gdexample.c``:
         bind_signal_1("GDExample", "position_changed", "new_position", GDEXTENSION_VARIANT_TYPE_VECTOR2);
     }
 
-In order to emit a signal, we need to call the
-:ref:`emit_signal() <class_Object_method_emit_signal>` method on our custom node.
-Since this is a ``vararg`` function (meaning it takes any amount of arguments),
-we cannot use ``ptrcall``. To do a regular call, we have to create Variants,
-which require a few more steps of plumbing to get done.
+Để phát một signal, chúng ta cần gọi
+method :ref:`emit_signal() <class_Object_method_emit_signal>` trên node tùy chỉnh của mình. Vì đây là một hàm ``vararg`` (nghĩa là nhận số lượng đối số bất kỳ), chúng ta không thể sử dụng ``ptrcall``. Để thực hiện một lời gọi thông thường, chúng ta phải tạo các Variant, việc này cần thêm một vài bước kết nối.
 
-First, in the ``defs.h`` file we create a definition for Variant:
+Trước tiên, trong tệp ``defs.h``, chúng ta tạo định nghĩa cho Variant:
 
 .. code-block:: c
 
     ...
 
-    // The sizes can be obtained from the extension_api.json file.
+    // Có thể lấy kích thước từ tệp extension_api.json.
     ...
     #ifdef REAL_T_IS_DOUBLE
     #define VARIANT_SIZE 40
@@ -1907,7 +1576,7 @@ First, in the ``defs.h`` file we create a definition for Variant:
 
     ...
 
-    // Types.
+    // Các kiểu.
 
     ...
 
@@ -1917,20 +1586,11 @@ First, in the ``defs.h`` file we create a definition for Variant:
     } Variant;
 
 
-We first set the size of Variant together with the size of Vector2 that we added
-before. Then we use it to create an opaque struct that is enough to hold the
-Variant data. Again, we set the size for double precision builds as a fallback,
-since by the official Godot builds use single precision.
+Trước hết, chúng ta đặt kích thước của Variant cùng với kích thước của Vector2 mà chúng ta đã thêm trước đó. Sau đó, chúng ta dùng nó để tạo một struct opaque đủ lớn để chứa dữ liệu Variant. Một lần nữa, chúng ta đặt kích thước cho các bản build dùng độ chính xác kép làm phương án dự phòng, vì các bản build Godot chính thức sử dụng độ chính xác đơn.
 
-The ``emit_signal()`` function will be called with two arguments. The first is
-the name of the signal to be emitted and the second is the argument we're
-passing to the signal connections, which is a Vector2 as we declared when
-binding it. So we're gonna create a helper function that can call a MethodBind
-with these types. Even though it does return something (an error code), we don't
-need to deal with it, so for now we're just going to ignore it.
+Hàm ``emit_signal()`` sẽ được gọi với hai đối số. Đối số đầu tiên là tên của signal cần phát, còn đối số thứ hai là đối số chúng ta truyền đến các kết nối signal, cụ thể là một Vector2 như đã khai báo khi liên kết. Vì vậy, chúng ta sẽ tạo một hàm helper có thể gọi MethodBind với các kiểu này. Mặc dù hàm có trả về một giá trị (mã lỗi), chúng ta không cần xử lý nó, nên hiện tại sẽ bỏ qua.
 
-In the ``api.h``, we're adding a few things to the existing structs, plus a new
-helper function for the call:
+Trong ``api.h``, chúng ta thêm một vài thành phần vào các struct hiện có, cùng với một hàm helper mới cho lời gọi:
 
 .. code-block:: c
 
@@ -1963,15 +1623,14 @@ helper function for the call:
 
     ...
 
-    // Helper to call with Variant arguments.
+    // Helper để gọi với các đối số Variant.
     void call_2_args_stringname_vector2_no_ret_variant(
         GDExtensionMethodBindPtr p_method_bind,
         GDExtensionObjectPtr p_instance,
         const GDExtensionTypePtr p_arg1,
         const GDExtensionTypePtr p_arg2);
 
-Now let's switch to the ``api.c`` file to load these new function pointers and
-implement the helper function.
+Bây giờ hãy chuyển sang tệp ``api.c`` để tải các con trỏ hàm mới này và triển khai hàm helper.
 
 .. code-block:: c
 
@@ -1981,12 +1640,12 @@ implement the helper function.
         ...
         api.object_method_bind_call = (GDExtensionInterfaceObjectMethodBindCall)p_get_proc_address("object_method_bind_call");
 
-        // Constructors.
+        // Các hàm khởi tạo.
         ...
         constructors.variant_from_string_name_constructor = api.get_variant_from_type_constructor(GDEXTENSION_VARIANT_TYPE_STRING_NAME);
         constructors.variant_from_vector2_constructor = api.get_variant_from_type_constructor(GDEXTENSION_VARIANT_TYPE_VECTOR2);
 
-        // Destructors.
+        // Các hàm hủy.
         ...
         destructors.variant_destroy = (GDExtensionInterfaceVariantDestroy)p_get_proc_address("variant_destroy");
 
@@ -1997,41 +1656,32 @@ implement the helper function.
 
     void call_2_args_stringname_vector2_no_ret_variant(GDExtensionMethodBindPtr p_method_bind, GDExtensionObjectPtr p_instance, const GDExtensionTypePtr p_arg1, const GDExtensionTypePtr p_arg2)
     {
-        // Set up the arguments for the call.
+        // Thiết lập các đối số cho lời gọi.
         Variant arg1;
         constructors.variant_from_string_name_constructor(&arg1, p_arg1);
         Variant arg2;
         constructors.variant_from_vector2_constructor(&arg2, p_arg2);
         GDExtensionConstVariantPtr args[] = {&arg1, &arg2};
 
-        // Add dummy return value storage.
+        // Thêm vùng lưu trữ cho giá trị trả về giả.
         Variant ret;
 
-        // Call the function.
+        // Gọi hàm.
         api.object_method_bind_call(p_method_bind, p_instance, args, 2, &ret, NULL);
 
-        // Destroy the arguments.
+        // Giải phóng các đối số.
         destructors.variant_destroy(&arg1);
         destructors.variant_destroy(&arg2);
         destructors.variant_destroy(&ret);
     }
 
-This helper function has some boilerplate code but is quite straightforward. It sets up the
-two arguments inside stack allocated Variants, then creates an array with
-pointers to those. It also sets up another Variant to keep the return value,
-which we don't need to construct since the call expects it to be uninitialized.
+Hàm helper này có một số đoạn mã khuôn mẫu nhưng khá dễ hiểu. Hàm thiết lập hai đối số bên trong các Variant được cấp phát trên stack, sau đó tạo một mảng chứa các con trỏ đến chúng. Hàm cũng thiết lập một Variant khác để lưu giá trị trả về; chúng ta không cần khởi tạo Variant này vì lời gọi yêu cầu nó ở trạng thái chưa khởi tạo.
 
-Then it actually calls the MethodBind using the instance we provided and the
-arguments. The ``NULL`` at the end would be a pointer to a
-``GDExtensionCallError`` struct. This can be used to treat potential errors when
-calling the functions (such as wrong arguments). For the sake of simplicity
-we're not gonna handle that here.
+Sau đó, hàm thực sự gọi MethodBind bằng instance và các đối số mà chúng ta đã cung cấp. ``NULL`` ở cuối sẽ là một con trỏ đến một struct ``GDExtensionCallError``. Nó có thể được dùng để xử lý các lỗi tiềm ẩn khi gọi hàm (chẳng hạn như đối số không đúng). Để đơn giản, chúng ta sẽ không xử lý lỗi đó ở đây.
 
-At the end we need to destruct the Variants we created. While technically the
-Vector2 one does not require destructing, it is clearer to cleanup everything.
+Cuối cùng, chúng ta cần giải phóng các Variant đã tạo. Mặc dù về mặt kỹ thuật, Variant Vector2 không cần được giải phóng, việc dọn dẹp tất cả sẽ rõ ràng hơn.
 
-We also need to load the MethodBind, which we'll do in the ``init.c`` file,
-right after loading the one for the ``set_position`` method we did before:
+Chúng ta cũng cần tải MethodBind, việc này sẽ được thực hiện trong tệp ``init.c``, ngay sau khi tải MethodBind cho method ``set_position`` mà chúng ta đã làm trước đó:
 
 .. code-block:: c
 
@@ -2045,33 +1695,29 @@ right after loading the one for the ``set_position`` method we did before:
         destructors.string_name_destructor(&native_class_name);
         destructors.string_name_destructor(&method_name);
 
-        // Register class.
+        // Đăng ký class.
         ...
     }
 
-Note that we reuse the ``native_class_name`` and ``method_name`` variables here,
-so we don't need to declare new ones.
+Lưu ý rằng ở đây chúng ta sử dụng lại các biến ``native_class_name`` và ``method_name``, nên không cần khai báo biến mới.
 
-Now go to the ``gdexample.h`` file where we're going to add a couple of fields:
+Bây giờ hãy mở tệp ``gdexample.h``, nơi chúng ta sẽ thêm một vài trường:
 
 .. code-block:: c
 
     typedef struct
     {
-        // Private properties.
+        // Các thuộc tính private.
         ..
         double time_emit;
         ..
         // Metadata.
-        StringName position_changed; // For signal.
+        StringName position_changed; // Cho signal.
     } GDExample;
 
-The first one will store the time passed since the last signal was emitted,
-since we'll be doing so at regular intervals. The other is just to cache the
-signal name so we don't need to create a new StringName every time.
+Trường đầu tiên sẽ lưu khoảng thời gian đã trôi qua kể từ lần signal cuối cùng được phát, vì chúng ta sẽ phát signal theo các khoảng thời gian đều đặn. Trường còn lại chỉ dùng để cache tên signal, ताकि không cần tạo một StringName mới mỗi lần.
 
-In the source ``gdexample.c`` file we can change the constructor and destructor
-to deal with the new fields:
+Trong tệp mã nguồn ``gdexample.c``, chúng ta có thể thay đổi hàm khởi tạo và hàm hủy để xử lý các trường mới:
 
 .. code-block:: c
 
@@ -2080,20 +1726,19 @@ to deal with the new fields:
         ...
         self->time_emit = 0.0;
 
-        // Construct the StringName for the signal.
+        // Tạo StringName cho signal.
         constructors.string_name_new_with_latin1_chars(&self->position_changed, "position_changed", false);
     }
 
     void gdexample_class_destructor(GDExample *self)
     {
-        // Destruct the StringName for the signal.
+        // Giải phóng StringName cho signal.
         destructors.string_name_destructor(&self->position_changed);
     }
 
-It is important to destruct the StringName to avoid memory leaks.
+Điều quan trọng là phải giải phóng StringName để tránh rò rỉ bộ nhớ.
 
-Now we can add to the ``gdexample_class_process()`` function to actually emit the
-signal:
+Bây giờ chúng ta có thể thêm vào hàm ``gdexample_class_process()`` để thực sự phát signal:
 
 .. code-block:: c
 
@@ -2104,26 +1749,21 @@ signal:
         self->time_emit += delta;
         if (self->time_emit >= 1.0)
         {
-            // Call the emit_signal method.
+            // Gọi method emit_signal.
             call_2_args_stringname_vector2_no_ret_variant(methods.object_emit_signal, self->object, &self->position_changed, &new_position);
             self->time_emit = 0.0;
         }
     }
 
-This updates the time passed for the signal emission and, if it is over one
-second it calls the ``emit_signal()`` function on the current instance, passing
-the name of the signal and the new position as arguments.
+Thao tác này cập nhật thời gian đã trôi qua cho việc phát signal và nếu thời gian đó vượt quá một giây, nó sẽ gọi hàm ``emit_signal()`` trên instance hiện tại, truyền tên signal và vị trí mới làm các đối số.
 
-Now we're done with our C GDExtension. Build it once more and reopen the Godot
-project in the editor.
+Bây giờ chúng ta đã hoàn tất C GDExtension. Hãy build lại một lần nữa và mở lại project Godot trong editor.
 
-In the documentation page for ``GDExample`` you can see the new signal we bound:
+Trong trang tài liệu của ``GDExample``, bạn có thể thấy signal mới mà chúng ta đã liên kết:
 
 .. image:: img/gdextension_c_signal_doc.webp
 
-To check it's working, let's add a small script to the root node, parent of our
-custom one, that prints the position to the output every time it receives the
-signal:
+Để kiểm tra xem nó có hoạt động không, hãy thêm một script nhỏ vào node gốc, là node cha của node tùy chỉnh, để in vị trí ra output mỗi khi nhận được signal:
 
 .. code-block:: gdscript
 
@@ -2135,25 +1775,16 @@ signal:
     func on_position_changed(new_position):
         prints("New position:", new_position)
 
-Run the project and you can observe the values being printed in the Output dock
-in the editor:
+Chạy project, bạn có thể quan sát các giá trị được in trong dock Output của trình chỉnh sửa:
 
 .. image:: img/gdextension_c_signal_print.webp
 
-Conclusion
-----------
+Kết luận
+--------
 
-This tutorial shows a basic extension with custom methods, properties, and
-signals. While it does require a good amount of boilerplate, it can scale well
-by creating helper functions to handle the tedious tasks.
+Tutorial này trình bày một extension cơ bản với các method, property và signal tùy chỉnh. Mặc dù cần khá nhiều boilerplate, extension vẫn có thể mở rộng tốt bằng cách tạo các hàm trợ giúp để xử lý những tác vụ tẻ nhạt.
 
-This should serve as a good basis to understand the GDExtension API and as a
-starting point to create custom binding generators. In fact, it would be
-possible to create bindings for C using such type of generator, making the
-actual coding look more like the ``gdexample.c`` file in this example, which is
-quite straightforward and not very verbose.
+Đây sẽ là nền tảng tốt để hiểu API GDExtension và là điểm khởi đầu để tạo các binding generator tùy chỉnh. Trên thực tế, có thể tạo binding cho C bằng loại generator này, khiến phần code thực tế trông giống hơn với file ``gdexample.c`` trong ví dụ này, vốn khá đơn giản và không quá dài dòng.
 
-If you want to create actual extensions, it is preferred to use the C++ bindings
-instead, as it takes away all of the boilerplate from your code. Check the
-:ref:`godot-cpp documentation <doc_godot_cpp>` to see how you can
-do this.
+Nếu muốn tạo các extension thực tế, bạn nên sử dụng binding C++ thay vào đó, vì chúng loại bỏ toàn bộ boilerplate khỏi code của bạn. Hãy xem
+:ref:`tài liệu godot-cpp <doc_godot_cpp>` để tìm hiểu cách thực hiện.

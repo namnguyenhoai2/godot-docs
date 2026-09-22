@@ -1,47 +1,29 @@
 .. _doc_custom_platform_ports:
 
-Custom platform ports
-=====================
+Các port nền tảng tùy chỉnh
+===========================
 
-Similar to :ref:`doc_custom_modules_in_cpp`, Godot's multi-platform architecture
-is designed in a way that allows creating platform ports without modifying any
-existing source code.
+Tương tự như :ref:`doc_custom_modules_in_cpp`, kiến trúc đa nền tảng của Godot được thiết kế để cho phép tạo các port nền tảng mà không cần sửa đổi bất kỳ mã nguồn hiện có nào.
 
-An example of a custom platform port distributed independently from the engine
-is `FRT <https://github.com/efornara/frt>`__, which targets single-board
-computers. Note that this platform port currently targets Godot 3.x; therefore,
-it does not use the :ref:`class_DisplayServer` abstraction that is new in Godot 4.
+Một ví dụ về port nền tảng tùy chỉnh được phân phối độc lập với engine là `FRT <https://github.com/efornara/frt>`__, nhắm đến các máy tính bo mạch đơn. Lưu ý rằng port nền tảng này hiện nhắm đến Godot 3.x; do đó, nó không sử dụng abstraction :ref:`class_DisplayServer` mới có trong Godot 4.
 
-Some reasons to create custom platform ports might be:
+Một số lý do để tạo port nền tảng tùy chỉnh có thể là:
 
-- You want to port your game to consoles
-  (see also the `Godot website on console support <https://godotengine.org/consoles/>`_),
-  but wish to write the platform layer yourself. This is a long and arduous process, as it
-  requires signing NDAs with console manufacturers, but it allows you to have
-  full control over the console porting process.
-- You want to port Godot to an exotic platform that isn't currently supported.
+- Bạn muốn port game của mình sang console (xem thêm `trang web Godot về hỗ trợ console <https://godotengine.org/consoles/>`_), nhưng muốn tự viết platform layer. Đây là một quá trình dài và gian nan vì yêu cầu ký NDA với các nhà sản xuất console, nhưng cho phép bạn toàn quyền kiểm soát quá trình port sang console.
+- Bạn muốn port Godot sang một nền tảng đặc thù hiện chưa được hỗ trợ.
 
-If you have questions about creating a custom platform port, feel free to ask in
-the ``#platforms`` channel of the
-`Godot Contributors Chat <https://chat.godotengine.org/channel/platforms>`__.
+Nếu bạn có câu hỏi về việc tạo port nền tảng tùy chỉnh, hãy thoải mái đặt câu hỏi trong kênh ``#platforms`` của `Godot Contributors Chat <https://chat.godotengine.org/channel/platforms>`__.
 
 .. note::
 
-    Godot is a modern engine with modern requirements. Even if you only
-    intend to run simple 2D projects on the target platform, it still requires
-    an amount of memory that makes it unviable to run on most retro consoles.
-    For reference, in Godot 4, an empty project with nothing visible requires
-    about 100 MB of RAM to run on Linux (50 MB in headless mode).
+    Godot là một engine hiện đại với các yêu cầu hiện đại. Ngay cả khi bạn chỉ định chạy các project 2D đơn giản trên nền tảng đích, engine vẫn yêu cầu lượng bộ nhớ khiến việc chạy trên hầu hết các console retro trở nên không khả thi. Để tham khảo, trong Godot 4, một project trống không hiển thị gì cần khoảng 100 MB RAM để chạy trên Linux (50 MB ở chế độ headless).
 
-    If you want to run Godot on heavily memory-constrained platforms, older
-    Godot versions have lower memory requirements. The porting process is
-    similar, with the exception of :ref:`class_DisplayServer` not being split
-    from the :ref:`class_OS` singleton.
+    Nếu muốn chạy Godot trên các nền tảng bị giới hạn nghiêm ngặt về bộ nhớ, các phiên bản Godot cũ hơn có yêu cầu bộ nhớ thấp hơn. Quá trình port tương tự, ngoại trừ việc :ref:`class_DisplayServer` không được tách khỏi singleton :ref:`class_OS`.
 
-Official platform ports
------------------------
+Các port nền tảng chính thức
+----------------------------
 
-The official platform ports can be used as a reference when creating a custom platform port:
+Có thể sử dụng các port nền tảng chính thức làm tài liệu tham khảo khi tạo port nền tảng tùy chỉnh:
 
 - `Windows <https://github.com/godotengine/godot/tree/master/platform/windows>`__
 - `macOS <https://github.com/godotengine/godot/tree/master/platform/macos>`__
@@ -50,142 +32,72 @@ The official platform ports can be used as a reference when creating a custom pl
 - `iOS <https://github.com/godotengine/godot/tree/master/platform/ios>`__
 - `Web <https://github.com/godotengine/godot/tree/master/platform/web>`__
 
-While platform code is usually self-contained, there are exceptions to this
-rule. For instance, audio drivers that are shared across several platforms and
-rendering drivers are located in the
-`drivers/ folder <https://github.com/godotengine/godot/tree/master/drivers>`__
-of the Godot source code.
+Mặc dù mã nền tảng thường được tự chứa, vẫn có những ngoại lệ đối với quy tắc này. Ví dụ, các audio driver được chia sẻ giữa nhiều nền tảng và các rendering driver nằm trong `thư mục drivers/ <https://github.com/godotengine/godot/tree/master/drivers>`__ của mã nguồn Godot.
 
-Creating a custom platform port
--------------------------------
+Tạo port nền tảng tùy chỉnh
+---------------------------
 
-Creating a custom platform port is a large undertaking which requires prior
-knowledge of the platform's SDKs. Depending on what features you need, the
-amount of work needed varies:
+Tạo một port nền tảng tùy chỉnh là một công việc lớn, đòi hỏi kiến thức trước đó về SDK của nền tảng. Tùy thuộc vào các tính năng bạn cần, khối lượng công việc cần thiết sẽ khác nhau:
 
-Required features of a platform port
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Các tính năng bắt buộc của port nền tảng
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-At the very least, a platform port must have methods from the :ref:`class_OS`
-singleton implemented to be buildable and usable for headless operation.
-A ``logo.svg`` (32×32) vector image must also be present within the platform
-folder. This logo is displayed in the Export dialog for each export preset
-targeting the platform in question.
+Tối thiểu, một port nền tảng phải triển khai các method từ singleton :ref:`class_OS` để có thể build và sử dụng cho hoạt động headless. Một vector image ``logo.svg`` (32×32) cũng phải có trong thư mục nền tảng. Logo này được hiển thị trong hộp thoại Export cho mỗi export preset nhắm đến nền tảng tương ứng.
 
-See `this implementation <https://github.com/godotengine/godot/blob/master/platform/linuxbsd/os_linuxbsd.cpp>`__
-for the Linux/\*BSD platform as an example. See also the
-`OS singleton header <https://github.com/godotengine/godot/blob/master/core/os/os.h>`__
-for reference.
+Xem `implementation này <https://github.com/godotengine/godot/blob/master/platform/linuxbsd/os_linuxbsd.cpp>`__ của nền tảng Linux/\*BSD làm ví dụ. Đồng thời xem `header của singleton OS <https://github.com/godotengine/godot/blob/master/core/os/os.h>`__ để tham khảo.
 
 .. note::
 
-    If your target platform is UNIX-like, consider inheriting from the ``OS_Unix``
-    class to get much of the work done automatically.
+    Nếu nền tảng đích của bạn giống UNIX, hãy cân nhắc kế thừa từ ``OS_Unix`` class để tự động hoàn thành phần lớn công việc.
 
-    If the platform is not UNIX-like, you might use the
-    `Windows port <https://github.com/godotengine/godot/blob/master/platform/windows/os_windows.cpp>`__
-    as a reference.
+    Nếu nền tảng không giống UNIX, bạn có thể dùng `Windows port <https://github.com/godotengine/godot/blob/master/platform/windows/os_windows.cpp>`__ làm tài liệu tham khảo.
 
-**detect.py file**
+**tệp detect.py**
 
-A ``detect.py`` file must be created within the platform's folder with all
-methods implemented. This file is required for SCons to detect the platform as a
-valid option for compiling. See the
-`detect.py file <https://github.com/godotengine/godot/blob/master/platform/linuxbsd/detect.py>`__
-for the Linux/\*BSD platform as an example.
+Phải tạo một ``detect.py`` file trong thư mục của nền tảng với tất cả các method đã được triển khai. Tệp này cần thiết để SCons phát hiện nền tảng là một tùy chọn hợp lệ khi biên dịch. Xem `tệp detect.py <https://github.com/godotengine/godot/blob/master/platform/linuxbsd/detect.py>`__ của nền tảng Linux/\*BSD làm ví dụ.
 
-All methods should be implemented within ``detect.py`` as follows:
+Tất cả các method phải được triển khai trong ``detect.py`` như sau:
 
-- ``is_active()``: Can be used to temporarily disable building for a platform.
-  This should generally always return ``True``.
-- ``get_name()``: Returns the platform's user-visible name as a string.
-- ``can_build()``: Return ``True`` if the host system is able to build for the
-  target platform, ``False`` otherwise. Do not put slow checks here, as this is
-  queried when the list of platforms is requested by the user. Use
-  ``configure()`` for extensive dependency checks instead.
-- ``get_opts()``: Returns the list of SCons build options that can be defined by
-  the user for this platform.
-- ``get_flags()``: Returns the list of overridden SCons flags for this platform.
-- ``configure()``: Perform build configuration, such as selecting compiler
-  options depending on SCons options chosen.
+- ``is_active()``: Có thể được dùng để tạm thời vô hiệu hóa việc build cho một nền tảng. Thông thường, method này luôn phải trả về ``True``.
+- ``get_name()``: Trả về tên hiển thị với người dùng của nền tảng dưới dạng chuỗi.
+- ``can_build()``: Trả về ``True`` nếu hệ thống host có thể build cho nền tảng đích, ngược lại trả về ``False``. Không thực hiện các kiểm tra chậm ở đây vì method này được truy vấn khi người dùng yêu cầu danh sách nền tảng. Thay vào đó, hãy dùng ``configure()`` cho các kiểm tra dependency mở rộng.
+- ``get_opts()``: Trả về danh sách các tùy chọn build SCons mà người dùng có thể định nghĩa cho nền tảng này.
+- ``get_flags()``: Trả về danh sách các cờ SCons bị override cho nền tảng này.
+- ``configure()``: Thực hiện cấu hình build, chẳng hạn như chọn các tùy chọn compiler tùy theo những tùy chọn SCons đã chọn.
 
-Optional features of a platform port
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Các tính năng tùy chọn của port nền tảng
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In practice, headless operation doesn't suffice if you want to see anything on
-screen and handle input devices. You may also want audio output for most
-games.
+Trên thực tế, hoạt động headless là chưa đủ nếu bạn muốn thấy nội dung trên màn hình và xử lý các thiết bị input. Với hầu hết game, bạn cũng có thể cần audio output.
 
-*Some links on this list point to the Linux/\*BSD platform implementation as a reference.*
+*Một số liên kết trong danh sách này trỏ đến implementation của nền tảng Linux/\*BSD để tham khảo.*
 
-- One or more `DisplayServers <https://github.com/godotengine/godot/blob/master/platform/linuxbsd/x11/display_server_x11.cpp>`__,
-  with the windowing methods implemented. DisplayServer also covers features such
-  as mouse support, touchscreen support and tablet driver (for pen input).
-  See the
-  `DisplayServer singleton header <https://github.com/godotengine/godot/blob/master/servers/display_server.h>`__
-  for reference.
+- Một hoặc nhiều `DisplayServers <https://github.com/godotengine/godot/blob/master/platform/linuxbsd/x11/display_server_x11.cpp>`__, với các method windowing đã được triển khai. DisplayServer cũng bao gồm các tính năng như hỗ trợ chuột, hỗ trợ touchscreen và tablet driver (cho input bằng bút). Xem `header của singleton DisplayServer <https://github.com/godotengine/godot/blob/master/servers/display_server.h>`__ để tham khảo.
 
-  - For platforms not featuring full windowing support (or if it's not relevant
-    for the port you are making), most windowing functions can be left mostly
-    unimplemented. These functions can be made to only check if the window ID is
-    ``MAIN_WINDOW_ID`` and specific operations like resizing may be tied to the
-    platform's screen resolution feature (if relevant). Any attempt to create
-    or manipulate other window IDs can be rejected.
-- *If the target platform supports the graphics APIs in question:* Rendering
-  context for `Vulkan <https://github.com/godotengine/godot/blob/master/platform/linuxbsd/x11/rendering_context_driver_vulkan_x11.cpp>`__,
-  `Direct3D 12 <https://github.com/godotengine/godot/blob/master/drivers/d3d12/rendering_context_driver_d3d12.cpp>`__
-  `OpenGL 3.3 or OpenGL ES 3.0 <https://github.com/godotengine/godot/blob/master/platform/linuxbsd/x11/gl_manager_x11.cpp>`__.
-- Input handlers for `keyboard <https://github.com/godotengine/godot/blob/master/platform/linuxbsd/x11/key_mapping_x11.cpp>`__
-  and `controller <https://github.com/godotengine/godot/blob/master/platform/linuxbsd/joypad_linux.cpp>`__.
-- One or more `audio drivers <https://github.com/godotengine/godot/blob/master/drivers/pulseaudio/audio_driver_pulseaudio.cpp>`__.
-  The audio driver can be located in the ``platform/`` folder (this is done for
-  the Android and Web platforms), or in the ``drivers/`` folder if multiple
-  platforms may be using this audio driver. See the
-  `AudioServer singleton header <https://github.com/godotengine/godot/blob/master/servers/audio_server.h>`__
-  for reference.
-- `Crash handler <https://github.com/godotengine/godot/blob/master/platform/linuxbsd/crash_handler_linuxbsd.cpp>`__,
-  for printing crash backtraces when the game crashes. This allows for easier
-  troubleshooting on platforms where logs aren't readily accessible.
-- `Text-to-speech driver <https://github.com/godotengine/godot/blob/master/platform/linuxbsd/tts_linux.cpp>`__
-  (for accessibility).
-- `Export handler <https://github.com/godotengine/godot/tree/master/platform/linuxbsd/export>`__
-  (for exporting from the editor, including :ref:`doc_one-click_deploy`).
-  Not required if you intend to export only a PCK from the editor, then run the
-  export template binary directly by renaming it to match the PCK file. See the
-  `EditorExportPlatform header <https://github.com/godotengine/godot/blob/master/editor/export/editor_export_platform.h>`__
-  for reference.
-  ``run_icon.svg`` (16×16) should be present within the platform folder if
-  :ref:`doc_one-click_deploy` is implemented for the target platform. This icon
-  is displayed at the top of the editor when one-click deploy is set up for the
-  target platform.
+  - Đối với các nền tảng không có hỗ trợ windowing đầy đủ (hoặc nếu tính năng này không liên quan đến port bạn đang tạo), hầu hết các hàm windowing có thể gần như không cần triển khai. Có thể để các hàm này chỉ kiểm tra xem window ID có phải là ``MAIN_WINDOW_ID`` hay không, và các thao tác cụ thể như thay đổi kích thước có thể gắn với tính năng độ phân giải màn hình của nền tảng (nếu phù hợp). Có thể từ chối mọi nỗ lực tạo hoặc thao tác với các window ID khác.
+- *Nếu nền tảng đích hỗ trợ các graphics API tương ứng:* Rendering context cho `Vulkan <https://github.com/godotengine/godot/blob/master/platform/linuxbsd/x11/rendering_context_driver_vulkan_x11.cpp>`__, `Direct3D 12 <https://github.com/godotengine/godot/blob/master/drivers/d3d12/rendering_context_driver_d3d12.cpp>`__ `OpenGL 3.3 hoặc OpenGL ES 3.0 <https://github.com/godotengine/godot/blob/master/platform/linuxbsd/x11/gl_manager_x11.cpp>`__.
+- Các input handler cho `keyboard <https://github.com/godotengine/godot/blob/master/platform/linuxbsd/x11/key_mapping_x11.cpp>`__ và `controller <https://github.com/godotengine/godot/blob/master/platform/linuxbsd/joypad_linux.cpp>`__.
+- Một hoặc nhiều `trình điều khiển âm thanh <https://github.com/godotengine/godot/blob/master/drivers/pulseaudio/audio_driver_pulseaudio.cpp>`__. Trình điều khiển âm thanh có thể nằm trong thư mục ``platform/`` (cách này được sử dụng cho các nền tảng Android và Web), hoặc trong thư mục ``drivers/`` nếu nhiều nền tảng có thể sử dụng trình điều khiển âm thanh này. Xem `tệp tiêu đề singleton AudioServer <https://github.com/godotengine/godot/blob/master/servers/audio_server.h>`__ để tham khảo.
+- `Bộ xử lý sự cố <https://github.com/godotengine/godot/blob/master/platform/linuxbsd/crash_handler_linuxbsd.cpp>`__, dùng để in backtrace khi game bị crash. Điều này giúp việc khắc phục sự cố dễ dàng hơn trên các nền tảng mà log không dễ truy cập.
+- `Trình điều khiển chuyển văn bản thành giọng nói <https://github.com/godotengine/godot/blob/master/platform/linuxbsd/tts_linux.cpp>`__ (cho khả năng tiếp cận).
+- `Bộ xử lý export <https://github.com/godotengine/godot/tree/master/platform/linuxbsd/export>`__ (để export từ editor, bao gồm :ref:`doc_one-click_deploy`). Không bắt buộc nếu bạn chỉ định export PCK từ editor, sau đó chạy trực tiếp binary export template bằng cách đổi tên nó để khớp với tên tệp PCK. Xem `tệp tiêu đề EditorExportPlatform <https://github.com/godotengine/godot/blob/master/editor/export/editor_export_platform.h>`__ để tham khảo. ``run_icon.svg`` (16×16) phải nằm trong thư mục nền tảng nếu
+  :ref:`doc_one-click_deploy` được triển khai cho nền tảng đích. Biểu tượng này được hiển thị ở đầu editor khi one-click deploy được thiết lập cho nền tảng đích.
 
-If the target platform doesn't support running Vulkan, Direct3D 12, OpenGL 3.3,
-or OpenGL ES 3.0, you have two options:
+Nếu nền tảng đích không hỗ trợ chạy Vulkan, Direct3D 12, OpenGL 3.3 hoặc OpenGL ES 3.0, bạn có hai lựa chọn:
 
-- Use a library at runtime to translate Vulkan or OpenGL calls to another graphics API.
-  For example, `MoltenVK <https://moltengl.com/moltenvk/>`__ is used on macOS
-  to translate Vulkan to Metal at runtime.
-- Create a new renderer from scratch. This is a large undertaking, especially if
-  you want to support both 2D and 3D rendering with advanced features.
+- Sử dụng một thư viện trong runtime để chuyển các lệnh gọi Vulkan hoặc OpenGL sang một graphics API khác. Ví dụ: `MoltenVK <https://moltengl.com/moltenvk/>`__ được sử dụng trên macOS để chuyển Vulkan sang Metal trong runtime.
+- Tạo một renderer mới từ đầu. Đây là một công việc lớn, đặc biệt nếu bạn muốn hỗ trợ cả rendering 2D và 3D với các tính năng nâng cao.
 
-Distributing a custom platform port
------------------------------------
+Phân phối một bản port nền tảng tùy chỉnh
+-----------------------------------------
 
 .. danger::
 
-    Before distributing a custom platform port, make sure you're allowed to
-    distribute all the code that is being linked against. Console SDKs are
-    typically under NDAs which prevent redistribution to the public.
+    Trước khi phân phối một bản port nền tảng tùy chỉnh, hãy đảm bảo bạn được phép phân phối toàn bộ mã được liên kết. SDK console thường chịu các NDA, ngăn việc phân phối lại cho công chúng.
 
-Platform ports are designed to be as self-contained as possible. Most of the
-code can be kept within a single folder located in ``platform/``. Like
-:ref:`doc_custom_modules_in_cpp`, this allows for streamlining the build process
-by making it possible to ``git clone`` a platform folder within a Godot repository
-clone's ``platform/`` folder, then run ``scons platform=<name>``. No other steps are
-necessary for building, unless third-party platform-specific dependencies need
-to be installed first.
+Các bản port nền tảng được thiết kế để tự chứa nhiều nhất có thể. Phần lớn mã có thể được giữ trong một thư mục duy nhất nằm tại ``platform/``. Như
+:ref:`doc_custom_modules_in_cpp`, điều này giúp đơn giản hóa quy trình build bằng cách cho phép bạn ``git clone`` một thư mục nền tảng trong thư mục ``platform/`` của bản clone repository Godot, sau đó chạy ``scons platform=<name>``. Không cần thực hiện thêm bước nào để build, trừ khi trước tiên cần cài đặt các dependency dành riêng cho nền tảng của bên thứ ba.
 
-However, when a custom rendering driver is needed, another folder must be added
-in ``drivers/``. In this case, the platform port can be distributed as a fork of
-the Godot repository, or as a collection of several folders that can be added
-over a Godot Git repository clone.
+Tuy nhiên, khi cần một trình điều khiển rendering tùy chỉnh, phải thêm một thư mục khác trong ``drivers/``. Trong trường hợp này, bản port nền tảng có thể được phân phối dưới dạng fork của repository Godot hoặc dưới dạng một tập hợp gồm nhiều thư mục có thể được thêm vào bản clone Git repository Godot.
+
+.. _`Godot website on console support`: https://godotengine.org/consoles/
