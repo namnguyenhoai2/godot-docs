@@ -1,117 +1,82 @@
 .. _doc_editor_icons:
 
-Editor icons
-============
+Biểu tượng của trình chỉnh sửa
+==============================
 
-When a new class is created and exposed to scripting, the editor's interface
-will display it with a default icon representing the base class it inherits
-from. In most cases, it's still recommended to create icons for new classes to
-improve the user experience.
+Khi một class mới được tạo và cung cấp cho scripting, giao diện của trình chỉnh sửa sẽ hiển thị class đó bằng biểu tượng mặc định đại diện cho base class mà nó kế thừa. Trong hầu hết trường hợp, bạn vẫn nên tạo biểu tượng cho các class mới để cải thiện trải nghiệm người dùng.
 
-Creating icons
+Tạo biểu tượng
 ~~~~~~~~~~~~~~
 
-To create new icons, you first need a vector graphics editor installed.
-For instance, you can use the open source `Inkscape <https://inkscape.org/>`_ editor.
+Để tạo biểu tượng mới, trước tiên bạn cần cài đặt một trình chỉnh sửa đồ họa vector. Chẳng hạn, bạn có thể sử dụng trình chỉnh sửa mã nguồn mở `Inkscape <https://inkscape.org/>`_.
 
-Clone the ``godot`` repository containing all the editor icons:
+Clone ``godot`` repository chứa tất cả biểu tượng của trình chỉnh sửa:
 
 .. code-block:: bash
 
     git clone https://github.com/godotengine/godot.git
 
-The icons must be created in a vector graphics editor in SVG format. There are
-three main requirements to follow:
+Biểu tượng phải được tạo bằng trình chỉnh sửa đồ họa vector ở định dạng SVG. Có ba yêu cầu chính cần tuân theo:
 
-- Icons must be 16×16. In Inkscape, you can configure the document size in
-  **File > Document Properties**.
-- Lines should be snapped to pixels whenever possible to remain crisp at lower DPI.
-  You can create a 16×16 grid in Inkscape to make this easier.
-- If the user has configured their editor to use a light theme, Godot will
-  convert the icon's colors based on a
-  `set of predefined color mappings <https://github.com/godotengine/godot/blob/master/editor/themes/editor_color_map.cpp>`__.
-  This is to ensure the icon always displays with a sufficient contrast rate.
-  Try to restrict your icon's color palette to colors found in the list above.
-  Otherwise, your icon may become difficult to read on a light background.
+- Biểu tượng phải có kích thước 16×16. Trong Inkscape, bạn có thể cấu hình kích thước tài liệu trong **File > Document Properties**.
+- Các đường nên được căn khớp với pixel bất cứ khi nào có thể để vẫn sắc nét ở DPI thấp hơn. Bạn có thể tạo một lưới 16×16 trong Inkscape để dễ thực hiện việc này hơn.
+- Nếu người dùng đã cấu hình trình chỉnh sửa để sử dụng giao diện sáng, Godot sẽ chuyển đổi màu của biểu tượng dựa trên `tập hợp ánh xạ màu được định nghĩa sẵn <https://github.com/godotengine/godot/blob/master/editor/themes/editor_color_map.cpp>`__. Điều này nhằm đảm bảo biểu tượng luôn hiển thị với độ tương phản đủ cao. Hãy cố gắng giới hạn bảng màu của biểu tượng ở các màu có trong danh sách trên. Nếu không, biểu tượng có thể trở nên khó đọc trên nền sáng.
 
-Once you're satisfied with the icon's design, save the icon in the cloned
-repository's ``editor/icons`` folder. The icon name should match the intended
-name in a case-sensitive manner. For example, to create an icon for
-CPUParticles2D, name the file ``CPUParticles2D.svg``.
+Sau khi hài lòng với thiết kế của biểu tượng, hãy lưu biểu tượng vào ``editor/icons`` folder của repository đã clone. Tên biểu tượng phải khớp với tên dự định, có phân biệt chữ hoa chữ thường. Ví dụ, để tạo biểu tượng cho CPUParticles2D, hãy đặt tên tệp là ``CPUParticles2D.svg``.
 
 .. tip::
 
-    You can also browse all existing icons on the
-    `Godot editor icons <https://godotengine.github.io/editor-icons/>`__
-    website.
+    Bạn cũng có thể duyệt qua tất cả biểu tượng hiện có trên trang web `Godot editor icons <https://godotengine.github.io/editor-icons/>`__.
 
-Import options for custom icons
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tùy chọn import cho biểu tượng tùy chỉnh
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For custom icons that are present in projects (as opposed to the engine source code),
-there are two import options you should enable:
+Đối với các biểu tượng tùy chỉnh có trong project (thay vì trong mã nguồn của engine), có hai tùy chọn import bạn nên bật:
 
-Scaling for hiDPI displays
+Co giãn cho màn hình hiDPI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Icons need to be scaled properly on hiDPI displays to ensure they remain
-crisp and large enough to be readable.
+Biểu tượng cần được co giãn đúng cách trên màn hình hiDPI để đảm bảo vẫn sắc nét và đủ lớn để đọc được.
 
-To ensure the icon is rendered at a correct scale on hiDPI displays, select the
-SVG file in the FileSystem dock, enable the **Editor > Scale with Editor Scale**
-option in the Import dock and click :button:`Reimport`. Note that this option is
-only available for icons in SVG format, as it requires the use of a vector
-format to work.
+Để đảm bảo biểu tượng được render ở tỷ lệ chính xác trên màn hình hiDPI, hãy chọn tệp SVG trong FileSystem dock, bật tùy chọn **Editor > Scale with Editor Scale** trong Import dock và nhấp vào :button:`Reimport`. Lưu ý rằng tùy chọn này chỉ khả dụng cho biểu tượng ở định dạng SVG, vì nó yêu cầu sử dụng định dạng vector để hoạt động.
 
-Color conversion for light editor themes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Chuyển đổi màu cho giao diện sáng của trình chỉnh sửa
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To ensure the icon has its colors converted when the user is using a light
-theme, select the SVG file in the FileSystem dock, enable the **Editor > Convert
-Colors with Editor Theme** option in the Import dock and click
-:button:`Reimport`. Note that this option is only available for icons in SVG
-format, as it requires the use of a vector format to work.
+Để đảm bảo màu của biểu tượng được chuyển đổi khi người dùng đang sử dụng giao diện sáng, hãy chọn tệp SVG trong FileSystem dock, bật tùy chọn **Editor > Convert Colors with Editor Theme** trong Import dock và nhấp vào
+:button:`Reimport`. Lưu ý rằng tùy chọn này chỉ khả dụng cho biểu tượng ở định dạng SVG, vì nó yêu cầu sử dụng định dạng vector để hoạt động.
 
-Icon optimization
-~~~~~~~~~~~~~~~~~
+Tối ưu hóa biểu tượng
+~~~~~~~~~~~~~~~~~~~~~
 
-Because the editor renders SVGs once at load time, they need to be small
-in size so they can be efficiently parsed. When the
-`pre-commit hook <https://contributing.godotengine.org/en/latest/engine/guidelines/code_style.html#pre-commit-hook>`__ runs, it automatically optimizes
-the SVG using `svgo <https://github.com/svg/svgo>`_.
+Vì trình chỉnh sửa render SVG một lần khi tải, chúng cần có kích thước nhỏ để có thể được phân tích cú pháp hiệu quả. Khi `pre-commit hook <https://contributing.godotengine.org/en/latest/engine/guidelines/code_style.html#pre-commit-hook>`__ chạy, nó sẽ tự động tối ưu hóa SVG bằng `svgo <https://github.com/svg/svgo>`_.
 
 .. note::
 
-    While this optimization step won't impact the icon's quality noticeably, it
-    will still remove editor-only information such as guides. Therefore, it's
-    recommended to keep the source SVG around if you need to make further
-    changes.
+    Mặc dù bước tối ưu hóa này không ảnh hưởng đáng kể đến chất lượng biểu tượng, nó vẫn sẽ loại bỏ các thông tin chỉ dành cho trình chỉnh sửa, chẳng hạn như đường căn chỉnh. Vì vậy, bạn nên giữ lại SVG nguồn nếu cần thực hiện thêm thay đổi.
 
-Integrating and sharing the icons
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tích hợp và chia sẻ biểu tượng
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you're contributing to the engine itself, you should make a pull request to
-add optimized icons to ``editor/icons`` in the main repository. Recompile the
-engine to make it pick up new icons for classes.
+Nếu bạn đang đóng góp cho chính engine, hãy tạo pull request để thêm các biểu tượng đã tối ưu hóa vào ``editor/icons`` trong repository chính. Biên dịch lại engine để engine nhận các biểu tượng mới cho các class.
 
-It's also possible to create custom icons within a module. If you're creating
-your own module and don't plan to integrate it with Godot, you don't need to
-make a separate pull request for your icons to be available within the editor
-as they can be self-contained.
+Bạn cũng có thể tạo biểu tượng tùy chỉnh bên trong một module. Nếu đang tạo module của riêng mình và không dự định tích hợp module đó với Godot, bạn không cần tạo pull request riêng để các biểu tượng khả dụng trong trình chỉnh sửa, vì chúng có thể được đóng gói độc lập.
 
-For specific instructions on how to create module icons, refer to
+Để xem hướng dẫn cụ thể về cách tạo biểu tượng cho module, hãy tham khảo
 :ref:`Creating custom module icons <doc_custom_module_icons>`.
 
-Troubleshooting
+Khắc phục sự cố
 ~~~~~~~~~~~~~~~
 
-If icons don't appear in the editor, make sure that:
+Nếu biểu tượng không xuất hiện trong trình chỉnh sửa, hãy đảm bảo rằng:
 
-1. Each icon's filename matches the naming requirement as described previously.
-2. The ``svg`` module is enabled at compile-time (it is enabled by default).
-   Without this module, icons won't appear in the editor at all.
+1. Tên tệp của mỗi biểu tượng khớp với yêu cầu đặt tên như đã mô tả trước đó.
+2. ``svg`` module được bật tại thời điểm biên dịch (được bật theo mặc định). Nếu không có module này, biểu tượng sẽ hoàn toàn không xuất hiện trong trình chỉnh sửa.
 
-References
-~~~~~~~~~~
+Tài liệu tham khảo
+~~~~~~~~~~~~~~~~~~
 
 -  `editor/icons <https://github.com/godotengine/godot/tree/master/editor/icons>`__
+
+.. _`Inkscape`: https://inkscape.org/
+.. _`svgo`: https://github.com/svg/svgo

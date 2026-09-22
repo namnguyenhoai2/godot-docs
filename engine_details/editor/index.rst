@@ -1,11 +1,9 @@
 :allow_comments: False
 
-Editor development
-==================
+Phát triển trình biên tập
+=========================
 
-This section documents how to work with the source code of the Godot editor.
-When contributing to the Godot engine, you should also read the
-`editor style guide <https://contributing.godotengine.org/en/latest/engine/guidelines/editor_style_guide.html>`__.
+Phần này trình bày cách làm việc với mã nguồn của trình biên tập Godot. Khi đóng góp cho Godot engine, bạn cũng nên đọc `hướng dẫn về phong cách trình biên tập <https://contributing.godotengine.org/en/latest/engine/guidelines/editor_style_guide.html>`__.
 
 .. toctree::
    :maxdepth: 1
