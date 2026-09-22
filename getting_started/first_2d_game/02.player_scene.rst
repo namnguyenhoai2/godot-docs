@@ -1,128 +1,81 @@
 .. _doc_your_first_2d_game_player_scene:
 
-Creating the player scene
-=========================
+Tạo scene người chơi
+====================
 
-With the project settings in place, we can start working on the
-player-controlled character.
+Sau khi hoàn tất các cài đặt dự án, chúng ta có thể bắt đầu làm việc với nhân vật do người chơi điều khiển.
 
-The first scene will define the ``Player`` object. One of the benefits of
-creating a separate Player scene is that we can test it separately, even before
-we've created other parts of the game.
+Scene đầu tiên sẽ định nghĩa đối tượng ``Player``. Một trong những lợi ích của việc tạo một scene Player riêng là chúng ta có thể kiểm thử riêng scene này, ngay cả trước khi tạo các phần khác của game.
 
-Node structure
---------------
+Cấu trúc node
+-------------
 
-To begin, we need to choose a root node for the player object. As a general
-rule, a scene's root node should reflect the object's desired functionality -
-what the object *is*. In the upper-left corner, in the "Scene" tab, click the
-"Other Node" button and add an :ref:`Area2D <class_Area2D>` node to the scene.
+Để bắt đầu, chúng ta cần chọn một node gốc cho đối tượng người chơi. Theo nguyên tắc chung, node gốc của một scene nên phản ánh chức năng mong muốn của đối tượng - đối tượng *is*. Ở góc trên bên trái, trong tab "Scene", hãy nhấp vào nút "Other Node" và thêm một node :ref:`Area2D <class_Area2D>` vào scene.
 
 .. note::
 
-    Godot also provides the :ref:`CharacterBody2D <class_CharacterBody2D>` node,
-    specifically designed for 2D characters, which includes built-in support for some
-    of the processes explained in this tutorial. In many real world projects, CharacterBody2D
-    would be a better choice for players and enemies. However, this tutorial focuses on
-    core concepts that apply to a wider range of nodes and use cases.
+    Godot cũng cung cấp node :ref:`CharacterBody2D <class_CharacterBody2D>`, được thiết kế riêng cho các nhân vật 2D, tích hợp sẵn hỗ trợ cho một số quy trình được giải thích trong tutorial này. Trong nhiều dự án thực tế, CharacterBody2D sẽ là lựa chọn phù hợp hơn cho người chơi và kẻ địch. Tuy nhiên, tutorial này tập trung vào các khái niệm cốt lõi áp dụng cho nhiều loại node và trường hợp sử dụng hơn.
 
 .. image:: img/add_node.webp
 
-When you add the ``Area2D`` node, Godot will display the following **warning icon**
-next to it in the scene tree:
+Khi thêm node ``Area2D``, Godot sẽ hiển thị **warning icon** sau đây bên cạnh node đó trong scene tree:
 
 .. image:: img/no_shape_warning.webp
 
-This warning tells us that the ``Area2D`` node requires a shape to detect collisions or overlaps.
-We can **ignore the warning temporarily** because we will first set up the player's visuals
-(using an animated sprite). Once the visuals are ready, we will add a collision shape as a child
-node. This will allow us to accurately size and position the shape based on the sprite's appearance.
+Cảnh báo này cho biết node ``Area2D`` yêu cầu một shape để phát hiện va chạm hoặc chồng lấp. Chúng ta có thể **ignore the warning temporarily** vì trước tiên chúng ta sẽ thiết lập phần hiển thị của người chơi (bằng một animated sprite). Sau khi phần hiển thị sẵn sàng, chúng ta sẽ thêm một collision shape làm node con. Nhờ đó, chúng ta có thể định kích thước và đặt shape chính xác dựa trên hình dạng của sprite.
 
 
-With ``Area2D`` we can detect objects that overlap or run into the player.
-Change the node's name to ``Player`` by double-clicking on it. Now that we've
-set the scene's root node, we can add additional nodes to give it more
-functionality.
+Với ``Area2D``, chúng ta có thể phát hiện các đối tượng chồng lấp hoặc va vào người chơi. Đổi tên node thành ``Player`` bằng cách nhấp đúp vào node đó. Giờ chúng ta đã thiết lập node gốc của scene, có thể thêm các node khác để cung cấp thêm chức năng.
 
-Before we add any children to the ``Player`` node, we want to make sure we don't
-accidentally move or resize them by clicking on them. Select the node and click
-the icon to the right of the lock. Its tooltip says "Groups the selected node
-with its children. This causes the parent to be selected when any child
-node is clicked in 2D and 3D view."
+Trước khi thêm các node con vào node ``Player``, chúng ta muốn đảm bảo không vô tình di chuyển hoặc thay đổi kích thước chúng khi nhấp vào. Chọn node đó rồi nhấp vào biểu tượng bên phải biểu tượng khóa. Chú giải của biểu tượng là "Groups the selected node with its children. This causes the parent to be selected when any child node is clicked in 2D and 3D view."
 
 .. image:: img/lock_children.webp
 
-Save the scene as ``player.tscn``. Click **Scene > Save**, or press :kbd:`Ctrl + S`
-on Windows/Linux or :kbd:`Cmd + S` on macOS.
+Lưu scene với tên ``player.tscn``. Nhấp vào **Scene > Save**, hoặc nhấn :kbd:`Ctrl + S` trên Windows/Linux hay :kbd:`Cmd + S` trên macOS.
 
-.. note:: For this project, we will be following the Godot naming conventions.
+.. note:: Trong dự án này, chúng ta sẽ tuân theo các quy ước đặt tên của Godot.
 
-          - **GDScript**: Classes (nodes) use PascalCase, variables and
-            functions use snake_case, and constants use ALL_CAPS (See
+          - **GDScript**: Các class (node) sử dụng PascalCase, các biến và hàm sử dụng snake_case, còn các hằng số sử dụng ALL_CAPS (Xem
             :ref:`doc_gdscript_styleguide`).
 
-          - **C#**: Classes, export variables and methods use PascalCase,
-            private fields use _camelCase, local variables and parameters use
-            camelCase (See :ref:`doc_c_sharp_styleguide`). Be careful to type
-            the method names precisely when connecting signals.
+          - **C#**: Các class, biến export và method sử dụng PascalCase, các field private sử dụng _camelCase, còn các biến cục bộ và tham số sử dụng camelCase (Xem :ref:`doc_c_sharp_styleguide`). Hãy cẩn thận nhập chính xác tên method khi kết nối signal.
 
 
-Sprite animation
-----------------
+Hoạt ảnh sprite
+---------------
 
-Click on the ``Player`` node and add (:kbd:`Ctrl + A` on Windows/Linux or
-:kbd:`Cmd + A` on macOS) a child node :ref:`AnimatedSprite2D
-<class_AnimatedSprite2D>`. The ``AnimatedSprite2D`` will handle the
-appearance and animations for our player. Notice that there is a warning symbol
-next to the node. An ``AnimatedSprite2D`` requires a :ref:`SpriteFrames
-<class_SpriteFrames>` resource, which is a list of the animations it can
-display. Make sure ``AnimatedSprite2D`` is selected and then find the ``Sprite Frames`` property under
-the ``Animation`` section in the Inspector and click "[empty]" -> "New SpriteFrames":
+Nhấp vào node ``Player`` và thêm ( :kbd:`Ctrl + A` trên Windows/Linux hoặc
+:kbd:`Cmd + A` trên macOS) một node con :ref:`AnimatedSprite2D <class_AnimatedSprite2D>`. ``AnimatedSprite2D`` sẽ xử lý phần hiển thị và các hoạt ảnh cho người chơi. Hãy chú ý rằng có một ký hiệu cảnh báo bên cạnh node này. Một ``AnimatedSprite2D`` yêu cầu một resource :ref:`SpriteFrames <class_SpriteFrames>`, là danh sách các hoạt ảnh mà nó có thể hiển thị. Đảm bảo đã chọn ``AnimatedSprite2D``, sau đó tìm thuộc tính ``Sprite Frames`` trong phần ``Animation`` của Inspector và nhấp vào "[empty]" -> "New SpriteFrames":
 
 .. image:: img/new_spriteframes.webp
 
-Click on the ``SpriteFrames`` you just created to open the "SpriteFrames" panel:
+Nhấp vào ``SpriteFrames`` vừa tạo để mở panel "SpriteFrames":
 
 .. image:: img/spriteframes_panel.webp
 
-On the left is a list of animations. Click the ``default`` one and rename it to
-``walk``. Then click the **Add Animation** button to create a second animation
-named ``up``.
+Bên trái là danh sách các hoạt ảnh. Nhấp vào hoạt ảnh ``default`` rồi đổi tên thành ``walk``. Sau đó nhấp vào nút **Add Animation** để tạo hoạt ảnh thứ hai có tên ``up``.
 
-Find the player images in the FileSystem dock - they're in the ``art`` folder
-you unzipped earlier. Drag the two images for each animation, into the
-**Animation Frames** side of the panel for the corresponding animation:
+Tìm các hình ảnh của người chơi trong dock FileSystem - chúng nằm trong thư mục ``art`` mà bạn đã giải nén trước đó. Kéo hai hình ảnh của mỗi hoạt ảnh vào phần **Animation Frames** của panel tương ứng với hoạt ảnh đó:
 
-- ``playerGrey_walk1`` and ``playerGrey_walk2`` for the ``walk`` animation
-- ``playerGrey_up1`` and ``playerGrey_up2`` for the ``up`` animation
+- ``playerGrey_walk1`` và ``playerGrey_walk2`` cho hoạt ảnh ``walk``
+- ``playerGrey_up1`` và ``playerGrey_up2`` cho hoạt ảnh ``up``
 
 .. image:: img/spriteframes_panel2.webp
 
-The player images are a bit too large for the game window, so we need to scale
-them down. Click on the ``AnimatedSprite2D`` node and set the ``Scale`` property
-to ``(0.5, 0.5)``. You can find it in the Inspector under the ``Node2D``
-heading.
+Hình ảnh của người chơi hơi quá lớn so với cửa sổ game, vì vậy chúng ta cần thu nhỏ chúng. Nhấp vào node ``AnimatedSprite2D`` và đặt thuộc tính ``Scale`` thành ``(0.5, 0.5)``. Bạn có thể tìm thấy thuộc tính này trong Inspector, bên dưới tiêu đề ``Node2D``.
 
 .. image:: img/player_scale.webp
 
-Finally, add a :ref:`CollisionShape2D <class_CollisionShape2D>` as a child of
-``Player``. This will determine the player's "hitbox", or the bounds of its
-collision area. For this character, a ``CapsuleShape2D`` node gives the best
-fit, so next to "Shape" in the Inspector, click "[empty]" -> "New
-CapsuleShape2D". Using the two size handles, resize the shape to cover the
-sprite:
+Cuối cùng, thêm một :ref:`CollisionShape2D <class_CollisionShape2D>` làm node con của ``Player``. Node này sẽ xác định "hitbox" của người chơi, hay giới hạn vùng va chạm của nó. Với nhân vật này, node ``CapsuleShape2D`` cho độ vừa vặn tốt nhất, vì vậy bên cạnh "Shape" trong Inspector, hãy nhấp vào "[empty]" -> "New CapsuleShape2D". Sử dụng hai nút điều chỉnh kích thước để thay đổi kích thước shape sao cho bao phủ sprite:
 
 .. image:: img/player_coll_shape.webp
 
-When you're finished, your ``Player`` scene should look like this:
+Khi hoàn tất, scene ``Player`` của bạn sẽ trông như sau:
 
 .. image:: img/player_scene_nodes.webp
 
-Once this is done, the warning on the ``Area2D`` node will disappear, as it now has
-a shape assigned and can interact with other objects.
+Sau khi hoàn tất, cảnh báo trên node ``Area2D`` sẽ biến mất, vì node này đã được gán một shape và có thể tương tác với các đối tượng khác.
 
-Make sure to save the scene again after these changes.
+Hãy nhớ lưu lại scene sau những thay đổi này.
 
-In the next part, we'll add a script to the player node to move and animate it.
-Then, we'll set up collision detection to know when the player got hit by
-something.
+Trong phần tiếp theo, chúng ta sẽ thêm một script vào node người chơi để di chuyển và tạo hoạt ảnh cho nó. Sau đó, chúng ta sẽ thiết lập tính năng phát hiện va chạm để biết khi nào người chơi bị thứ gì đó tấn công.
