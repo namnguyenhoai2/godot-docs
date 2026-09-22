@@ -1,125 +1,77 @@
 .. _doc_tscn_file_format:
 
-TSCN file format
-================
+Định dạng tệp TSCN
+==================
 
-The TSCN (text scene) file format represents a single scene tree inside
-Godot. Unlike binary SCN files, TSCN files have the advantage of being mostly
-human-readable and easy for version control systems to manage.
+Định dạng tệp TSCN (text scene) biểu diễn một cây scene đơn trong Godot. Không giống các tệp SCN nhị phân, tệp TSCN có ưu điểm là phần lớn có thể đọc được và dễ quản lý bằng các hệ thống kiểm soát phiên bản.
 
-The ESCN (exported scene) file format is identical to the TSCN file format, but
-is used to indicate to Godot that the file has been exported from another
-program and should not be edited by the user from within Godot.
-Unlike SCN and TSCN files, during import, ESCN files are compiled to binary
-SCN files stored inside the ``.godot/imported/`` folder.
-This reduces the data size and speeds up loading, as binary formats are faster
-to load compared to text-based formats.
+Định dạng tệp ESCN (exported scene) giống hệt định dạng tệp TSCN, nhưng được dùng để cho Godot biết rằng tệp đã được export từ một chương trình khác và người dùng không nên chỉnh sửa tệp từ bên trong Godot. Không giống các tệp SCN và TSCN, trong quá trình import, các tệp ESCN được biên dịch thành các tệp SCN nhị phân lưu trong thư mục ``.godot/imported/``. Điều này làm giảm kích thước dữ liệu và tăng tốc độ tải, vì các định dạng nhị phân tải nhanh hơn so với các định dạng dựa trên văn bản.
 
-To make files more compact, properties equal to the default value are not stored
-in scene/resource files. It is possible to write them manually, but they will be
-discarded when saving the file.
+Để làm cho tệp gọn hơn, các thuộc tính có giá trị bằng giá trị mặc định sẽ không được lưu trong các tệp scene/resource. Bạn có thể tự ghi chúng, nhưng chúng sẽ bị loại bỏ khi lưu tệp.
 
-For those looking for a complete description, the parsing is handled in the file
-`resource_format_text.cpp <https://github.com/godotengine/godot/blob/master/scene/resources/resource_format_text.cpp>`_
-in the ``ResourceFormatLoaderText`` class.
+Nếu cần mô tả đầy đủ, việc phân tích cú pháp được xử lý trong tệp `resource_format_text.cpp <https://github.com/godotengine/godot/blob/master/scene/resources/resource_format_text.cpp>`_ thuộc lớp ``ResourceFormatLoaderText``.
 
 .. note::
 
-    The scene and resource file formats have changed significantly in Godot 4,
-    with the introduction of string-based UIDs to replace incremental integer
-    IDs.
+    Định dạng tệp scene và resource đã thay đổi đáng kể trong Godot 4, với việc giới thiệu UID dựa trên chuỗi để thay thế các ID số nguyên tăng dần.
 
-    Mesh, skeleton and animation data is also stored differently compared to Godot 3.
-    You can read about some of the changes in this article:
-    `Animation data rework for 4.0 <https://godotengine.org/article/animation-data-redesign-40/>`__
+    Dữ liệu mesh, skeleton và animation cũng được lưu khác so với Godot 3. Bạn có thể đọc về một số thay đổi trong bài viết này: `Animation data rework for 4.0 <https://godotengine.org/article/animation-data-redesign-40/>`__
 
-    Scenes and resources saved with Godot 4.x contain ``format=3`` in their
-    header, whereas Godot 3.x uses ``format=2`` instead.
+    Các scene và resource được lưu bằng Godot 4.x chứa ``format=3`` trong phần header, trong khi Godot 3.x sử dụng ``format=2``.
 
-File structure
---------------
+Cấu trúc tệp
+------------
 
-There are five main sections inside the TSCN file:
+Có năm phần chính bên trong tệp TSCN:
 
-0. File descriptor
-1. External resources
-2. Internal resources
-3. Nodes
-4. Connections
+0. Mô tả tệp
+1. Resource bên ngoài
+2. Resource nội bộ
+3. Node
+4. Kết nối
 
-The file descriptor looks like ``[gd_scene format=3 uid="uid://cecaux1sm7mo0"]``
-and should be the first entry in the file. Note that scenes saved before Godot 4.6
-will also have a ``load_steps=<int>`` attribute in the file descriptor. This
-attribute is now deprecated and should be ignored if present.
+Mô tả tệp có dạng ``[gd_scene format=3 uid="uid://cecaux1sm7mo0"]`` và phải là mục đầu tiên trong tệp. Lưu ý rằng các scene được lưu trước Godot 4.6 cũng sẽ có thuộc tính ``load_steps=<int>`` trong mô tả tệp. Thuộc tính này hiện đã lỗi thời và nên được bỏ qua nếu có.
 
-``uid`` is a unique string-based identifier representing the scene. This is
-used by the engine to track files that are moved around, even while the editor
-is closed. Scripts can also load UID-based resources using the ``uid://`` path
-prefix to avoid relying on filesystem paths. This makes it possible to move
-around a file in the project, but still be able to load it in scripts without
-having to modify the script. Godot does not use external files to keep track of
-IDs, which means no central metadata storage location is required within the
-project. See `this pull request <https://github.com/godotengine/godot/pull/50786>`__
-for detailed information.
+``uid`` là một mã định danh duy nhất dựa trên chuỗi, đại diện cho scene. Engine dùng mã này để theo dõi các tệp được di chuyển, kể cả khi editor đang đóng. Script cũng có thể tải các resource dựa trên UID bằng tiền tố đường dẫn ``uid://`` để tránh phụ thuộc vào đường dẫn hệ thống tệp. Nhờ đó, bạn có thể di chuyển một tệp trong project mà vẫn tải được tệp đó trong script mà không cần sửa script. Godot không dùng các tệp bên ngoài để theo dõi ID, nghĩa là không cần vị trí lưu trữ metadata tập trung trong project. Xem `this pull request <https://github.com/godotengine/godot/pull/50786>`__ để biết thông tin chi tiết.
 
-These sections should appear in order, but it can be hard to distinguish them.
-The only difference between them is the first element in the heading for all of
-the items in the section. For example, the heading of all external resources
-should start with ``[ext_resource ...]``.
+Các phần này phải xuất hiện theo đúng thứ tự, nhưng có thể khó phân biệt chúng. Điểm khác biệt duy nhất giữa chúng là phần tử đầu tiên trong heading của tất cả các mục thuộc phần đó. Ví dụ, heading của tất cả resource bên ngoài phải bắt đầu bằng ``[ext_resource ...]``.
 
-A TSCN file may contain single-line comments starting with a semicolon (``;``).
-However, comments will be discarded when saving the file using the Godot editor.
-Whitespace within a TSCN file is not significant (except within strings), but
-extraneous whitespace will be discarded when saving the file.
+Tệp TSCN có thể chứa các comment một dòng bắt đầu bằng dấu chấm phẩy (``;``). Tuy nhiên, comment sẽ bị loại bỏ khi lưu tệp bằng Godot editor. Khoảng trắng trong tệp TSCN không có ý nghĩa (ngoại trừ bên trong chuỗi), nhưng khoảng trắng thừa sẽ bị loại bỏ khi lưu tệp.
 
-Entries inside the file
-~~~~~~~~~~~~~~~~~~~~~~~
+Các mục bên trong tệp
+~~~~~~~~~~~~~~~~~~~~~
 
-A heading looks like
-``[<resource_type> key1=value1 key2=value2 key3=value3 ...]``
-where resource_type is one of:
+Một heading có dạng ``[<resource_type> key1=value1 key2=value2 key3=value3 ...]``, trong đó resource_type là một trong các giá trị sau:
 
 - ``ext_resource``
 - ``sub_resource``
 - ``node``
 - ``connection``
 
-Below every heading comes zero or more ``key = value`` pairs. The
-values can be complex datatypes such as Arrays, Transforms, Colors, and
-so on. For example, a Node3D looks like:
+Bên dưới mỗi heading là không hoặc nhiều cặp ``key = value``. Các giá trị có thể là những kiểu dữ liệu phức tạp như Array, Transform, Color, v.v. Ví dụ, một Node3D có dạng:
 
 ::
 
     [node name="Cube" type="Node3D" unique_id=224283918]
     transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 3)
 
-The scene tree
---------------
+Cây scene
+---------
 
-The scene tree is made up of… nodes! The heading of each node consists of its
-name, parent, a unique ID (used to track nodes even if they are moved or
-renamed), and most of the time, a type. For example: ``[node name="PlayerCamera"
-type="Camera" parent="Player/Head" unique_id=1697057368]``
+Cây scene được tạo thành từ… các node! Heading của mỗi node gồm tên, parent, một ID duy nhất (dùng để theo dõi node ngay cả khi node được di chuyển hoặc đổi tên), và trong hầu hết trường hợp là một kiểu. Ví dụ: ``[node name="PlayerCamera" type="Camera" parent="Player/Head" unique_id=1697057368]``
 
-Note that ``unique_id`` is only present in scenes saved with Godot 4.6 or later.
-Therefore, it is not guaranteed to be present.
+Lưu ý rằng ``unique_id`` chỉ xuất hiện trong các scene được lưu bằng Godot 4.6 trở lên. Vì vậy, không đảm bảo rằng mục này luôn có mặt.
 
-Other valid keywords include:
+Các keyword hợp lệ khác gồm:
 
  - ``instance``
  - ``instance_placeholder``
  - ``owner``
- - ``index`` (sets the order of appearance in the tree; if absent, inherited nodes will take precedence over plain ones)
+ - ``index`` (đặt thứ tự xuất hiện trong cây; nếu không có, các node kế thừa sẽ được ưu tiên hơn các node thông thường)
  - ``groups``
- - ``node_paths`` (lists names of properties exported as a Node type, but referenced as a NodePath in the file)
+ - ``node_paths`` (liệt kê tên các thuộc tính được export dưới dạng Node, nhưng được tham chiếu dưới dạng NodePath trong tệp)
 
-The first node in the file, which is also the scene root, must **not** have a
-``parent="Path/To/Node"`` entry in its heading. All scene files should have
-exactly *one* scene root. If it doesn't, Godot will fail to import the file.
-The parent path of other nodes should be absolute, but shouldn't contain
-the scene root's name. If the node is a direct child of the scene root,
-the path should be ``"."``. Here is an example scene tree
-(but without any node content):
+Node đầu tiên trong tệp, cũng là scene root, **không** được có mục ``parent="Path/To/Node"`` trong heading. Tất cả các tệp scene phải có chính xác *một* scene root. Nếu không, Godot sẽ không thể import tệp. Đường dẫn parent của các node khác phải là đường dẫn tuyệt đối, nhưng không được chứa tên scene root. Nếu node là node con trực tiếp của scene root, đường dẫn phải là ``"."``. Sau đây là một ví dụ về cây scene (nhưng không có nội dung node nào):
 
 ::
 
@@ -130,14 +82,9 @@ the path should be ``"."``. Here is an example scene tree
 
 .. tip::
 
-    To make the file structure easier to grasp, you can save a file with any
-    given node or resource and then inspect it yourself in an external editor. You
-    can also make incremental changes in the Godot editor, and keep an external
-    text editor open on the ``.tscn`` or ``.tres`` file with auto-reload enabled
-    to see what changes.
+    Để dễ nắm bắt cấu trúc tệp hơn, bạn có thể lưu một tệp chứa bất kỳ node hoặc resource nào, rồi tự kiểm tra tệp đó trong một editor bên ngoài. Bạn cũng có thể thực hiện các thay đổi từng bước trong Godot editor và mở tệp ``.tscn`` hoặc ``.tres`` bằng một trình soạn thảo văn bản bên ngoài, bật tính năng tự động tải lại để xem các thay đổi.
 
-Here is an example of a scene containing a RigidBody3D-based ball with
-collision, visuals (mesh + light) and a camera parented to the RigidBody3D:
+Sau đây là ví dụ về một scene chứa một quả bóng dựa trên RigidBody3D với collision, phần hiển thị (mesh + light) và một camera được đặt làm con của RigidBody3D:
 
 ::
 
@@ -170,24 +117,13 @@ collision, visuals (mesh + light) and a camera parented to the RigidBody3D:
 NodePath
 ~~~~~~~~
 
-A tree structure is not enough to represent the whole scene. Godot uses a
-``NodePath(Path/To/Node)`` structure to refer to another node or attribute of
-the node anywhere in the scene tree. Paths are relative to the current node,
-with ``NodePath(".")`` pointing to the current node and ``NodePath("")``
-pointing to no node at all.
+Một cấu trúc cây là chưa đủ để biểu diễn toàn bộ scene. Godot sử dụng cấu trúc ``NodePath(Path/To/Node)`` để tham chiếu đến một node khác hoặc một thuộc tính của node ở bất kỳ đâu trong cây scene. Các path có tính tương đối so với node hiện tại, trong đó ``NodePath(".")`` trỏ đến node hiện tại và ``NodePath("")`` trỏ đến không node nào cả.
 
-For instance, MeshInstance3D uses ``NodePath()`` to point to its skeleton.
-Likewise, Animation tracks use ``NodePath()`` to point to node properties to
-animate.
+Ví dụ, MeshInstance3D sử dụng ``NodePath()`` để trỏ đến skeleton của nó. Tương tự, các track Animation sử dụng ``NodePath()`` để trỏ đến các thuộc tính node cần animate.
 
-NodePath can also point to a property using a ``:property_name`` suffix, and
-even point to a specific component for vector, transform and color types. This
-is used by Animation resources to point to specific properties to animate. For
-example, ``NodePath("MeshInstance3D:scale.x")`` points to the ``x`` component of
-the ``scale`` Vector3 property in MeshInstance3D.
+NodePath cũng có thể trỏ đến một thuộc tính bằng hậu tố ``:property_name``, thậm chí trỏ đến một component cụ thể đối với các kiểu vector, transform và color. Resource Animation sử dụng tính năng này để trỏ đến các thuộc tính cụ thể cần animate. Ví dụ, ``NodePath("MeshInstance3D:scale.x")`` trỏ đến component ``x`` của thuộc tính Vector3 ``scale`` trong MeshInstance3D.
 
-For example, the ``skeleton`` property in the MeshInstance3D node called
-``mesh`` points to its parent, ``Armature01``:
+Ví dụ, thuộc tính ``skeleton`` trong node MeshInstance3D có tên ``mesh`` trỏ đến parent của nó, ``Armature01``:
 
 ::
 
@@ -197,18 +133,15 @@ For example, the ``skeleton`` property in the MeshInstance3D node called
 Skeleton3D
 ~~~~~~~~~~
 
-The :ref:`class_Skeleton3D` node inherits the Node3D node, but may also have a
-list of bones described in key-value pairs in the format
-``bones/<id>/<attribute> = value``. The bone attributes consist of:
+Node :ref:`class_Skeleton3D` kế thừa node Node3D, nhưng cũng có thể có một danh sách bone được mô tả bằng các cặp key-value theo định dạng ``bones/<id>/<attribute> = value``. Các thuộc tính của bone gồm:
 
 - ``position``: Vector3
 - ``rotation``: Quaternion
 - ``scale``: Vector3
 
-These attributes are all optional. For instance, a bone may only define
-``position`` or ``rotation`` without defining the other properties.
+Tất cả các thuộc tính này đều là tùy chọn. Ví dụ, một bone có thể chỉ định nghĩa ``position`` hoặc ``rotation`` mà không định nghĩa các thuộc tính còn lại.
 
-Here's an example of a skeleton node with two bones:
+Sau đây là ví dụ về một node skeleton có hai bone:
 
 ::
 
@@ -222,12 +155,9 @@ Here's an example of a skeleton node with two bones:
 BoneAttachment3D
 ~~~~~~~~~~~~~~~~
 
-The :ref:`class_BoneAttachment3D` node is an intermediate node to describe some
-node being parented to a single bone in a Skeleton node. The BoneAttachment has
-a ``bone_name = "name of bone"`` property, as well as a property for the matching
-bone index.
+Nút :ref:`class_BoneAttachment3D` là một nút trung gian dùng để mô tả một nút được gắn làm nút con của một xương duy nhất trong một nút Skeleton. BoneAttachment có thuộc tính ``bone_name = "name of bone"``, cũng như một thuộc tính cho chỉ số xương tương ứng.
 
-An example of a :ref:`class_Marker3D` node parented to a bone in Skeleton:
+Ví dụ về một nút :ref:`class_Marker3D` được gắn làm nút con của một xương trong Skeleton:
 
 ::
 
@@ -242,76 +172,43 @@ An example of a :ref:`class_Marker3D` node parented to a bone in Skeleton:
 AnimationPlayer
 ~~~~~~~~~~~~~~~
 
-The :ref:`class_AnimationPlayer` node works with one or more animation libraries
-stored in :ref:`class_AnimationLibrary` resources. An animation library is a
-collection of individual :ref:`class_Animation` resources, whose structure is
-documented :ref:`here <doc_tscn_animation>`.
+Nút :ref:`class_AnimationPlayer` hoạt động với một hoặc nhiều thư viện animation được lưu trong các resource :ref:`class_AnimationLibrary`. Một thư viện animation là tập hợp các resource :ref:`class_Animation` riêng lẻ, cấu trúc của chúng được ghi lại :ref:`tại đây <doc_tscn_animation>`.
 
-This split between animations themselves and animation libraries was done in
-Godot 4, so that animations can be imported separately from 3D meshes, which is
-a common workflow in 3D animation software. See the `original pull request
-<https://github.com/godotengine/godot/pull/59980>`__ for details.
+Phần tách animation và thư viện animation được thực hiện trong Godot 4, để các animation có thể được import riêng khỏi các mesh 3D, đây là quy trình phổ biến trong phần mềm animation 3D. Xem `pull request gốc <https://github.com/godotengine/godot/pull/59980>`__ để biết chi tiết.
 
-If the library name is empty, then it acts as the unique source of animations
-for this AnimationPlayer. This allows using ``<animation_name>`` directly to
-play animations from script. If you name the library, then you must play it as
-``<library_name>/<animation_name>``. This ensures backwards compatibility and
-keeps the existing workflow if you don't want to use multiple animation
-libraries.
+Nếu tên thư viện trống, thư viện đó sẽ đóng vai trò là nguồn animation duy nhất cho AnimationPlayer này. Điều này cho phép sử dụng ``<animation_name>`` trực tiếp để phát animation từ script. Nếu đặt tên cho thư viện, bạn phải phát thư viện đó dưới dạng ``<library_name>/<animation_name>``. Điều này đảm bảo khả năng tương thích ngược và duy trì quy trình hiện có nếu bạn không muốn sử dụng nhiều thư viện animation.
 
 Resources
 ---------
 
-Resources are components that make up the nodes. For example, a MeshInstance3D
-node will have an accompanying ArrayMesh resource. The ArrayMesh resource
-may be either internal or external to the TSCN file.
+Resources là các thành phần cấu tạo nên các node. Ví dụ, một node MeshInstance3D sẽ có một resource ArrayMesh đi kèm. Resource ArrayMesh có thể là nội bộ hoặc bên ngoài tệp TSCN.
 
-References to the resources are handled by unique string-based IDs in the
-resource's heading. This is different from the ``uid`` property, which each
-external resource also has (but subresources don't).
+Các tham chiếu đến resource được xử lý bằng các ID dựa trên chuỗi duy nhất trong phần tiêu đề của resource. Điều này khác với thuộc tính ``uid``, thuộc tính mà mỗi external resource cũng có (nhưng subresource thì không).
 
-External resources and internal resources are referred to with
-``ExtResource("id")`` and ``SubResource("id")``, respectively. Because there
-are different methods to refer to internal and external resources, you can have
-the same ID for both an internal and external resource.
+External resource và internal resource lần lượt được tham chiếu bằng ``ExtResource("id")`` và ``SubResource("id")``. Vì có các phương thức khác nhau để tham chiếu internal resource và external resource, bạn có thể sử dụng cùng một ID cho cả một internal resource và một external resource.
 
-For example, to refer to the resource
-``[ext_resource type="Material" uid="uid://c4cp0al3ljsjv" path="res://material.tres" id="1_7bt6s"]``,
-you would use ``ExtResource("1_7bt6s")``.
+Ví dụ, để tham chiếu đến resource ``[ext_resource type="Material" uid="uid://c4cp0al3ljsjv" path="res://material.tres" id="1_7bt6s"]``, bạn sẽ sử dụng ``ExtResource("1_7bt6s")``.
 
 External resources
 ~~~~~~~~~~~~~~~~~~
 
-External resources are links to resources not contained within the TSCN file
-itself. An external resource consists of a path, a type, a UID (used to map its
-filesystem location to a unique identifier) and an ID (used to refer to the
-resource in the scene file).
+External resource là các liên kết đến những resource không nằm trong chính tệp TSCN. Một external resource bao gồm một đường dẫn, một kiểu, một UID (dùng để ánh xạ vị trí của nó trong filesystem với một mã định danh duy nhất) và một ID (dùng để tham chiếu resource trong tệp scene).
 
-Godot always generates absolute paths relative to the resource directory and
-thus prefixed with ``res://``, but paths relative to the TSCN file's location
-are also valid.
+Godot luôn tạo các đường dẫn tuyệt đối tương đối với thư mục resource và do đó được thêm tiền tố ``res://``, nhưng các đường dẫn tương đối với vị trí của tệp TSCN cũng hợp lệ.
 
-Some example external resources are:
+Một số ví dụ về external resource là:
 
 ::
 
     [ext_resource type="Texture2D" uid="uid://ccbm14ebjmpy1" path="res://gradient.tres" id="2_eorut"]
     [ext_resource type="Material" uid="uid://c4cp0al3ljsjv" path="material.tres" id="1_7bt6s"]
 
-Like TSCN files, a TRES file may contain single-line comments starting with a
-semicolon (``;``). However, comments will be discarded when saving the resource
-using the Godot editor.
-Whitespace within a TRES file is not significant (except within strings), but
-extraneous whitespace will be discarded when saving the file.
+Tương tự tệp TSCN, tệp TRES có thể chứa các chú thích một dòng bắt đầu bằng dấu chấm phẩy (``;``). Tuy nhiên, các chú thích sẽ bị loại bỏ khi lưu resource bằng Godot editor. Khoảng trắng trong tệp TRES không có ý nghĩa (ngoại trừ bên trong chuỗi), nhưng khoảng trắng thừa sẽ bị loại bỏ khi lưu tệp.
 
 Internal resources
 ~~~~~~~~~~~~~~~~~~
 
-A TSCN file can contain meshes, materials and other data. These are contained in
-the *internal resources* section of the file. The heading for an internal
-resource looks similar to those of external resources, except that it doesn't
-have a path. Internal resources also have ``key=value`` pairs under each
-heading. For example, a capsule collision shape looks like:
+Một tệp TSCN có thể chứa mesh, material và dữ liệu khác. Chúng nằm trong phần *internal resources* của tệp. Tiêu đề của một internal resource trông tương tự tiêu đề của external resource, ngoại trừ việc không có đường dẫn. Internal resource cũng có các cặp ``key=value`` bên dưới mỗi tiêu đề. Ví dụ, một capsule collision shape có dạng:
 
 ::
 
@@ -319,41 +216,28 @@ heading. For example, a capsule collision shape looks like:
     radius = 1.0
     height = 3.0
 
-Some internal resources contain links to other internal resources (such as a
-mesh having a material). In this case, the referring resource must appear
-*before* the reference to it. This means that order matters in the file's
-internal resources section.
+Một số internal resource chứa các liên kết đến những internal resource khác (chẳng hạn một mesh có một material). Trong trường hợp này, resource được tham chiếu phải xuất hiện *trước* tham chiếu đến nó. Điều này có nghĩa là thứ tự rất quan trọng trong phần internal resources của tệp.
 
 ArrayMesh
 ~~~~~~~~~
 
-An ArrayMesh consists of several surfaces contained in the ``_surfaces`` array
-(notice the leading underscore). Each surface's data is stored in a dictionary
-with the following keys:
+Một ArrayMesh bao gồm nhiều surface nằm trong mảng ``_surfaces`` (lưu ý dấu gạch dưới ở đầu). Dữ liệu của mỗi surface được lưu trong một dictionary với các key sau:
 
-- ``aabb``: The computed axis-aligned bounding box for visibility.
-- ``attribute_data``: Vertex attribute data, such as normals, tangents, vertex
-  colors, UV1, UV2 and custom vertex data.
-- ``bone_aabbs``: The axis-aligned bounding box of each bone for visibility.
-- ``format``: The surface's buffer format.
-- ``index_count``: The number of indices in the surface. This must match
-  ``index_data``'s size.
-- ``index_data``: The index data, which determines which vertices from
-  ``vertex_data`` are drawn.
-- ``lods``: Level of detail variations, stored as an array. Each LOD level
-  represents two values in the array. The first value is the percentage of
-  screen space the LOD level is most suited for (edge length); the second value
-  is the list of indices that should be drawn for the given LOD level.
-- ``material``: The material used when drawing the surface.
-- ``name``: The surface's name. This can be used in scripts and is imported from
-  3D DCCs.
-- ``primitive``: The surface's primitive type, matching the ``Mesh.PrimitiveType`` Godot enum. ``0`` = points, ``1`` = lines, ``2`` = line
-  strip, ``3`` = triangles (most common), ``4`` = triangle strip.
-- ``skin_data``: Bone weight data.
-- ``vertex_count``: Number of vertices in the surface. This must match ``vertex_data``'s size.
-- ``vertex_data``: The vertex position data.
+- ``aabb``: Hộp giới hạn căn chỉnh theo trục được tính toán để xác định khả năng hiển thị.
+- ``attribute_data``: Dữ liệu thuộc tính vertex, chẳng hạn như normal, tangent, màu vertex, UV1, UV2 và dữ liệu vertex tùy chỉnh.
+- ``bone_aabbs``: Hộp giới hạn căn chỉnh theo trục của mỗi xương để xác định khả năng hiển thị.
+- ``format``: Định dạng buffer của surface.
+- ``index_count``: Số lượng index trong surface. Giá trị này phải khớp với kích thước của ``index_data``.
+- ``index_data``: Dữ liệu index, xác định các vertex nào từ ``vertex_data`` sẽ được vẽ.
+- ``lods``: Các biến thể level of detail, được lưu dưới dạng một mảng. Mỗi level LOD biểu diễn hai giá trị trong mảng. Giá trị đầu tiên là phần trăm không gian màn hình mà level LOD phù hợp nhất (độ dài cạnh); giá trị thứ hai là danh sách các index cần được vẽ cho level LOD tương ứng.
+- ``material``: Material được sử dụng khi vẽ surface.
+- ``name``: Tên của surface. Tên này có thể được sử dụng trong script và được import từ các DCC 3D.
+- ``primitive``: Kiểu primitive của surface, tương ứng với enum Godot ``Mesh.PrimitiveType``. ``0`` = điểm, ``1`` = đường, ``2`` = dải đường, ``3`` = tam giác (phổ biến nhất), ``4`` = dải tam giác.
+- ``skin_data``: Dữ liệu trọng số xương.
+- ``vertex_count``: Số lượng vertex trong surface. Giá trị này phải khớp với kích thước của ``vertex_data``.
+- ``vertex_data``: Dữ liệu vị trí vertex.
 
-Here's an example of an ArrayMesh saved to its own ``.tres`` file. Some fields were shortened with ``...`` for brevity:
+Đây là ví dụ về một ArrayMesh được lưu trong tệp ``.tres`` riêng. Một số trường được rút gọn bằng ``...`` để văn bản ngắn gọn hơn:
 
 ::
 
@@ -385,45 +269,23 @@ Here's an example of an ArrayMesh saved to its own ``.tres`` file. Some fields w
 Animation
 ~~~~~~~~~
 
-Each animation has the following properties:
+Mỗi animation có các thuộc tính sau:
 
-- ``length``: The animation's length in seconds. Note that keyframes may be
-  placed outside the ``[0; length]`` interval, but they may have no effect
-  depending on the interpolation mode chosen.
-- ``loop_mode``: ``0`` = no looping, ``1`` = wrap-around looping, ``2`` =
-  clamped looping.
-- ``step``: The step size to use when editing this animation in the editor.
-  This is only used in the editor; it doesn't affect animation playback in any way.
+- ``length``: Độ dài của animation tính bằng giây. Lưu ý rằng keyframe có thể được đặt bên ngoài khoảng ``[0; length]``, nhưng có thể không có hiệu lực tùy thuộc vào chế độ nội suy được chọn.
+- ``loop_mode``: ``0`` = không lặp, ``1`` = lặp vòng, ``2`` = lặp giới hạn.
+- ``step``: Bước nhảy được sử dụng khi chỉnh sửa animation này trong editor. Giá trị này chỉ được sử dụng trong editor; nó không ảnh hưởng đến việc phát animation theo bất kỳ cách nào.
 
-Each track is described by a list of key-value pairs in the format
-``tracks/<id>/<attribute>``. Each track includes:
+Mỗi track được mô tả bằng một danh sách các cặp key-value theo định dạng ``tracks/<id>/<attribute>``. Mỗi track bao gồm:
 
-- ``type``: The track's type. This defines what kind of properties may be
-  animated by this track, and how it'll be exposed to the user in the editor.
-  Valid types are ``value`` (generic property track), ``position_3d``,
-  ``rotation_3d``, ``scale_3d``, ``blend_shape`` (optimized 3D animation
-  tracks), ``method`` (method call tracks), ``bezier`` (Bezier curve tracks),
-  ``audio`` (audio playback tracks), ``animation`` (tracks that play other
-  animations).
-- ``imported``: ``true`` if the track was created from an imported 3D scene,
-  ``false`` if it was manually created by the user in the Godot editor or using
-  a script.
-- ``enabled``: ``true`` if the track is effective, ``false`` if it was disabled
-  in the editor.
-- ``path``: Path to the node property that will be affected by the track. The
-  property is written after the node path with a ``:`` separator.
-- ``interp``: The interpolation mode to use. ``0`` = nearest, ``1`` = linear,
-  ``2`` = cubic, ``3`` = linear angle, ``4`` = cubic angle.
-- ``loop_wrap``: ``true`` if the track is designed to wrap around when the
-  animation is looping, ``false`` if the track clamps to the first/last
-  keyframes.
-- ``keys``: The animation track's values. This attribute's structure depends on the ``type``.
+- ``type``: Kiểu của track. Kiểu này xác định những thuộc tính nào có thể được animation hóa bởi track và cách chúng được hiển thị cho người dùng trong editor. Các kiểu hợp lệ là ``value`` (track thuộc tính chung), ``position_3d``, ``rotation_3d``, ``scale_3d``, ``blend_shape`` (track animation 3D được tối ưu hóa), ``method`` (track gọi phương thức), ``bezier`` (track đường cong Bezier), ``audio`` (track phát âm thanh), ``animation`` (track phát các animation khác).
+- ``imported``: ``true`` nếu track được tạo từ một scene 3D đã import, ``false`` nếu track được người dùng tạo thủ công trong Godot editor hoặc bằng script.
+- ``enabled``: ``true`` nếu track đang hoạt động, ``false`` nếu track đã bị vô hiệu hóa trong editor.
+- ``path``: Đường dẫn đến thuộc tính của node sẽ bị track tác động. Thuộc tính được viết sau đường dẫn node với dấu phân cách ``:``.
+- ``interp``: Chế độ nội suy sẽ sử dụng. ``0`` = nearest, ``1`` = linear, ``2`` = cubic, ``3`` = linear angle, ``4`` = cubic angle.
+- ``loop_wrap``: ``true`` nếu track được thiết kế để lặp vòng khi animation lặp lại, ``false`` nếu track giới hạn ở keyframe đầu tiên/cuối cùng.
+- ``keys``: Các giá trị của animation track. Cấu trúc của thuộc tính này phụ thuộc vào ``type``.
 
-Here is a scene containing an AnimationPlayer that scales down a cube over time
-using a generic property track. The AnimationLibrary workflow was not used, so
-the animation library has an empty name (but the animation is still given a
-``scale_down`` name). Note that the ``RESET`` track was not created in this
-AnimationPlayer for brevity:
+Dưới đây là một scene chứa AnimationPlayer thu nhỏ một hình lập phương theo thời gian bằng generic property track. Quy trình AnimationLibrary không được sử dụng, vì vậy animation library có tên trống (nhưng animation vẫn được đặt tên ``scale_down``). Lưu ý rằng track ``RESET`` không được tạo trong AnimationPlayer này để phần minh họa ngắn gọn hơn:
 
 ::
 
@@ -465,21 +327,11 @@ AnimationPlayer for brevity:
     [node name="Box" type="MeshInstance3D" parent="." unique_id=711004519]
     mesh = SubResource("BoxMesh_u688r")
 
-For generic property ``value`` tracks, ``keys`` is a dictionary containing 3
-arrays with positions in ``times`` (PackedFloat32Array), easing values in
-``transitions`` (PackedFloat32Array) and values in ``values`` (Array). There is
-an additional ``update`` property, which is an integer with the values ``0`` =
-continuous, ``1`` = discrete, ``2`` = capture.
+Đối với các track generic property ``value``, ``keys`` là một dictionary chứa 3 mảng với các vị trí trong ``times`` (PackedFloat32Array), các giá trị easing trong ``transitions`` (PackedFloat32Array) và các giá trị trong ``values`` (Array). Ngoài ra còn có thuộc tính ``update``, là một số nguyên với các giá trị ``0`` = continuous, ``1`` = discrete, ``2`` = capture.
 
-Here is a second Animation resource that makes use of the 3D Position and 3D
-Rotation tracks. These tracks (in addition to the 3D Scale track) replace
-Transform tracks from Godot 3. They are optimized for fast playback and can
-optionally be compressed.
+Dưới đây là một Animation resource thứ hai sử dụng các track 3D Position và 3D Rotation. Các track này (cùng với track 3D Scale) thay thế các track Transform từ Godot 3. Chúng được tối ưu để phát nhanh và có thể tùy chọn nén.
 
-The downside of these optimized track types is that they can't use custom easing
-values. Instead, all keyframes use linear interpolation. That said, you can
-still opt for using nearest or cubic interpolation for all keyframes in a given
-track by changing the track's interpolation mode.
+Nhược điểm của các loại track được tối ưu này là chúng không thể sử dụng các giá trị easing tùy chỉnh. Thay vào đó, mọi keyframe đều sử dụng nội suy linear. Tuy vậy, bạn vẫn có thể chọn sử dụng nội suy nearest hoặc cubic cho tất cả keyframe trong một track cụ thể bằng cách thay đổi chế độ nội suy của track.
 
 ::
 
@@ -503,14 +355,9 @@ track by changing the track's interpolation mode.
     tracks/1/loop_wrap = true
     tracks/1/keys = PackedFloat32Array(0, 1, 0.211, -0.047, 0.211, 0.953, 1.5, 1, 0.005, 0.976, -0.216, 0.022)
 
-For 3D position, rotation and scale tracks, ``keys`` is a PackedFloat32Array
-with all values stored in a sequence.
+Đối với các track 3D position, rotation và scale, ``keys`` là một PackedFloat32Array chứa tất cả giá trị theo một chuỗi.
 
-In the visual guide below, ``T`` is the keyframe's time in seconds since the
-start of the animation, ``E`` is the keyframe's transition (currently always
-``1``). For 3D position and scale tracks, ``X``, ``Y``, ``Z`` are the Vector3's
-coordinates. For 3D rotation tracks, ``X``, ``Y``, ``Z`` and ``W`` are the
-Quaternion's coordinates.
+Trong hướng dẫn trực quan bên dưới, ``T`` là thời gian của keyframe tính bằng giây kể từ khi animation bắt đầu, ``E`` là transition của keyframe (hiện luôn là ``1``). Đối với các track 3D position và scale, ``X``, ``Y``, ``Z`` là các tọa độ của Vector3. Đối với các track 3D rotation, ``X``, ``Y``, ``Z`` và ``W`` là các tọa độ của Quaternion.
 
 ::
 
@@ -519,3 +366,5 @@ Quaternion's coordinates.
 
     # For 3D rotation, which use Quaternion:
     tracks/<id>/keys = PackedFloat32Array(T, E,   X, Y, Z, W,      T, E,   X, Y, Z, W, ...)
+
+.. _`resource_format_text.cpp`: https://github.com/godotengine/godot/blob/master/scene/resources/resource_format_text.cpp

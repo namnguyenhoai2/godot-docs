@@ -1,7 +1,7 @@
 :allow_comments: False
 
-Godot file formats
-==================
+Các định dạng tệp của Godot
+===========================
 
 .. toctree::
    :maxdepth: 1
