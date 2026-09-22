@@ -1,13 +1,12 @@
-Debugging on macOS
-==================
+Debugging trên macOS
+====================
 
-Debugging Godot editor
-----------------------
+Debugging trình soạn thảo Godot
+-------------------------------
 
-Attaching a debugger to the signed macOS process requires the "com.apple.security.get-task-allow" entitlement, which is not enabled by default, since apps can't be notarized as long as it is enabled.
-If you want to debug an official build of the editor it should be re-signed with the proper entitlements.
+Việc đính kèm trình gỡ lỗi vào tiến trình macOS đã ký yêu cầu entitlement "com.apple.security.get-task-allow", vốn không được bật theo mặc định vì ứng dụng không thể được notarize khi entitlement này được bật. Nếu bạn muốn debug bản build chính thức của trình soạn thảo, bản build đó cần được ký lại với các entitlement phù hợp.
 
-Create an ``editor.entitlements`` text file with the following contents:
+Tạo một tệp văn bản ``editor.entitlements`` với nội dung sau:
 
 .. code-block:: xml
 
@@ -34,13 +33,13 @@ Create an ``editor.entitlements`` text file with the following contents:
         </dict>
     </plist>
 
-Then use the following command to re-sign the editor:
+Sau đó, sử dụng lệnh sau để ký lại trình soạn thảo:
 
 ::
 
     codesign -s - --deep --force --options=runtime --entitlements ./editor.entitlements ./path/to/Godot.app
 
-Debugging exported project
---------------------------
+Debugging project đã export
+---------------------------
 
-To allow debugging, select the ``codesign\debugging`` (``com.apple.security.get-task-allow``) entitlement during the export. When it is selected, notarization is not supported and should be disabled.
+Để cho phép debugging, hãy chọn entitlement ``codesign\debugging`` (``com.apple.security.get-task-allow``) trong quá trình export. Khi được chọn, notarization không được hỗ trợ và nên bị tắt.

@@ -1,10 +1,9 @@
 :allow_comments: False
 
-Debugging
-=========
+Gỡ lỗi
+======
 
-This section contains pages that provide guidance if you're looking at the
-engine code trying to find an underlying issue or an optimization possibility.
+Phần này chứa các trang hướng dẫn khi bạn đang xem xét mã nguồn của engine để tìm nguyên nhân sự cố hoặc khả năng tối ưu hóa.
 
 .. toctree::
    :maxdepth: 1
@@ -14,24 +13,19 @@ engine code trying to find an underlying issue or an optimization possibility.
    macos_debug
    vulkan/index
 
-Debugging the editor
---------------------
+Gỡ lỗi editor
+-------------
 
-When working on the Godot editor keep in mind that by default the executable
-will start in the Project Manager mode. Opening a project from the Project
-Manager spawns a new process, which stops the debugging session. To avoid that
-you should launch directly into the project using ``-e`` and ``--path`` launch
-options.
+Khi làm việc với Godot editor, hãy nhớ rằng theo mặc định, tệp thực thi sẽ khởi động ở chế độ Project Manager. Việc mở một project từ Project Manager sẽ tạo một tiến trình mới, khiến phiên gỡ lỗi dừng lại. Để tránh điều đó, bạn nên khởi chạy trực tiếp vào project bằng các tùy chọn khởi chạy ``-e`` và ``--path``.
 
-For example, using ``gdb`` directly, you may do this:
+Ví dụ, sử dụng trực tiếp ``gdb``, bạn có thể thực hiện như sau:
 
 .. code-block:: none
 
     gdb godot
     > run -e --path ~/myproject
 
-You can also run the editor directly from your project's folder. In that case,
-only the ``-e`` option is required.
+Bạn cũng có thể chạy editor trực tiếp từ thư mục của project. Trong trường hợp đó, chỉ cần tùy chọn ``-e``.
 
 .. code-block:: none
 
@@ -39,9 +33,7 @@ only the ``-e`` option is required.
     gdb godot
     > run -e
 
-You can learn more about these launch options and other command line arguments
-in the :ref:`command line tutorial <doc_command_line_tutorial>`.
+Bạn có thể tìm hiểu thêm về các tùy chọn khởi chạy này và những đối số dòng lệnh khác trong :ref:`hướng dẫn dòng lệnh <doc_command_line_tutorial>`.
 
-If you're using a code editor or an IDE to debug Godot, check out our
-:ref:`configuration guides <doc_configuring_an_ide>`, which cover the setup
-process for building and debugging with your particular editor.
+Nếu bạn đang sử dụng trình soạn thảo mã hoặc IDE để gỡ lỗi Godot, hãy xem
+:ref:`hướng dẫn cấu hình <doc_configuring_an_ide>`, trong đó trình bày quy trình thiết lập để build và gỡ lỗi bằng trình soạn thảo cụ thể của bạn.

@@ -1,63 +1,41 @@
 .. _doc_vulkan_validation_layers:
 
-Validation layers
-=================
+Các lớp validation
+==================
 
-Validation layers enable developers to verify their application's correct use of
-the Vulkan API. Validation layers can be enabled in both debug and release
-builds, including in exported projects.
+Các lớp validation cho phép developer kiểm tra việc sử dụng Vulkan API đúng cách trong ứng dụng của họ. Có thể bật các lớp validation trong cả bản build debug và release, kể cả trong các project đã export.
 
 .. note::
 
-    Enabling validation layers has a performance impact, so only enable them
-    when you actually need the output to debug the application.
+    Việc bật các lớp validation ảnh hưởng đến hiệu năng, vì vậy chỉ bật chúng khi bạn thực sự cần đầu ra để debug ứng dụng.
 
 Windows
 -------
 
-Install the Vulkan SDK `<https://vulkan.lunarg.com/sdk/home>`__, which contains
-validation layers as part of its default installation. No need to enable any
-optional features in the installer; installing the core Vulkan SDK suffices. You
-don't need to reboot after installing the SDK, but you may need to close and
-reopen your current terminal.
+Cài đặt Vulkan SDK ` <https://vulkan.lunarg.com/sdk/home>`__, trong đó các lớp validation được bao gồm trong bản cài đặt mặc định. Bạn không cần bật bất kỳ tính năng tùy chọn nào trong trình cài đặt; chỉ cần cài đặt Vulkan SDK core là đủ. Bạn không cần khởi động lại máy sau khi cài đặt SDK, nhưng có thể cần đóng và mở lại terminal hiện tại.
 
-After installing the Vulkan SDK, run Godot with the ``--gpu-validation``
-:ref:`command line argument <doc_command_line_tutorial>`. You can also specify
-``--gpu-abort`` which will make Godot quit as soon as a validation error happens.
-This can prevent your system from freezing if a validation error occurs.
+Sau khi cài đặt Vulkan SDK, hãy chạy Godot với ``--gpu-validation``
+:ref:`đối số dòng lệnh <doc_command_line_tutorial>`. Bạn cũng có thể chỉ định ``--gpu-abort``, tùy chọn này sẽ khiến Godot thoát ngay khi xảy ra lỗi validation. Điều này có thể ngăn hệ thống của bạn bị treo nếu xảy ra lỗi validation.
 
 macOS
 -----
 
 .. warning::
 
-    Official Godot macOS builds do **not** support validation layers, as these
-    are statically linked against the Vulkan SDK. Dynamic linking must be used
-    instead.
+    Các bản build Godot macOS chính thức **không** hỗ trợ các lớp validation, vì chúng được liên kết tĩnh với Vulkan SDK. Thay vào đó, phải sử dụng liên kết động.
 
-    In practice, this means that using validation layers on macOS **requires**
-    you to use a Godot build compiled with the ``use_volk=yes`` SCons option.
-    :ref:`doc_compiling_for_macos`. If testing validation layers on an exported
-    project, you must recompile the export template and specify it as a custom
-    export template in your project's macOS export preset.
+    Trên thực tế, điều này có nghĩa là để sử dụng các lớp validation trên macOS, bạn **phải** sử dụng bản build Godot được biên dịch với tùy chọn SCons ``use_volk=yes``.
+    :ref:`doc_compiling_for_macos`. Nếu kiểm thử các lớp validation trên một project đã export, bạn phải biên dịch lại export template và chỉ định template đó làm custom export template trong export preset macOS của project.
 
-Install the Vulkan SDK `<https://vulkan.lunarg.com/sdk/home>`__, which contains
-validation layers as part of its default installation. No need to enable any
-optional features in the installer; installing the core Vulkan SDK suffices. You
-don't need to reboot after installing the SDK, but you may need to close and
-reopen your current terminal.
+Cài đặt Vulkan SDK ` <https://vulkan.lunarg.com/sdk/home>`__, trong đó các lớp validation được bao gồm trong bản cài đặt mặc định. Bạn không cần bật bất kỳ tính năng tùy chọn nào trong trình cài đặt; chỉ cần cài đặt Vulkan SDK core là đủ. Bạn không cần khởi động lại máy sau khi cài đặt SDK, nhưng có thể cần đóng và mở lại terminal hiện tại.
 
-After installing the Vulkan SDK, run a Godot binary that was compiled with
-``use_volk=yes`` SCons option. Specify the ``--gpu-validation``
-:ref:`command line argument <doc_command_line_tutorial>`.
-You can also specify ``--gpu-abort`` which will make Godot quit as soon
-as a validation error happens. This can prevent your system from freezing
-if a validation error occurs.
+Sau khi cài đặt Vulkan SDK, hãy chạy binary Godot được biên dịch với tùy chọn SCons ``use_volk=yes``. Chỉ định ``--gpu-validation``
+:ref:`đối số dòng lệnh <doc_command_line_tutorial>`. Bạn cũng có thể chỉ định ``--gpu-abort``, tùy chọn này sẽ khiến Godot thoát ngay khi xảy ra lỗi validation. Điều này có thể ngăn hệ thống của bạn bị treo nếu xảy ra lỗi validation.
 
 Linux, \*BSD
 ------------
 
-Install Vulkan validation layers from your distribution's repositories:
+Cài đặt các lớp validation của Vulkan từ repository của bản phân phối của bạn:
 
 .. tabs::
 
@@ -121,50 +99,42 @@ Install Vulkan validation layers from your distribution's repositories:
 
             eopkg install -c vulkan-validation-layers
 
-You don't need to reboot after installing the validation layers, but you may
-need to close and reopen your current terminal.
+Bạn không cần khởi động lại máy sau khi cài đặt các lớp validation, nhưng có thể cần đóng và mở lại terminal hiện tại.
 
-After installing the package, run Godot with the ``--gpu-validation``
-:ref:`command line argument <doc_command_line_tutorial>`. You can also specify
-``--gpu-abort`` which will make Godot quit as soon as a validation error happens.
-This can prevent your system from freezing if a validation error occurs.
+Sau khi cài đặt package, hãy chạy Godot với ``--gpu-validation``
+:ref:`đối số dòng lệnh <doc_command_line_tutorial>`. Bạn cũng có thể chỉ định ``--gpu-abort``, tùy chọn này sẽ khiến Godot thoát ngay khi xảy ra lỗi validation. Điều này có thể ngăn hệ thống của bạn bị treo nếu xảy ra lỗi validation.
 
 iOS
 ---
 
-Validation layers are currently **not** supported on iOS.
+Các lớp validation hiện **chưa được** hỗ trợ trên iOS.
 
 Web
 ---
 
-Validation layers are **not** supported on the web platform, as there is no support
-for Vulkan there.
+Các lớp validation **không được** hỗ trợ trên nền tảng web, vì nền tảng này không hỗ trợ Vulkan.
 
 .. _doc_vulkan_validation_layers_android:
 
 Android
 -------
 
-After enabling validation layers on Android, a developer can see errors and
-warning messages in the ``adb logcat`` output.
+Sau khi bật các lớp validation trên Android, developer có thể xem các thông báo lỗi và cảnh báo trong ``adb logcat`` output.
 
-Enabling validation layers
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Bật các lớp validation
+~~~~~~~~~~~~~~~~~~~~~~
 
-Build validation layers from official sources
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Build các lớp validation từ nguồn chính thức
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To build Android libraries, follow the instructions on
-`Khronos' repository  <https://github.com/KhronosGroup/Vulkan-ValidationLayers/blob/master/BUILD.md#building-on-android>`__.
-After a successful build, the libraries will be located in ``Vulkan-ValidationLayers/build-android/libs``.
+Để build các thư viện Android, hãy làm theo hướng dẫn trong `repository của Khronos <https://github.com/KhronosGroup/Vulkan-ValidationLayers/blob/master/BUILD.md#building-on-android>`__. Sau khi build thành công, các thư viện sẽ nằm trong ``Vulkan-ValidationLayers/build-android/libs``.
 
-Copy libraries
-^^^^^^^^^^^^^^
+Sao chép các thư viện
+^^^^^^^^^^^^^^^^^^^^^
 
-Copy libraries from ``Vulkan-ValidationLayers/build-android/libs`` to
-``godot/platform/android/java/app/libs/debug/vulkan_validation_layers``.
+Sao chép các thư viện từ ``Vulkan-ValidationLayers/build-android/libs`` đến ``godot/platform/android/java/app/libs/debug/vulkan_validation_layers``.
 
-Your Godot source directory tree should look like on the example below:
+Cây thư mục source của Godot sẽ có dạng như ví dụ dưới đây:
 
 ::
 
@@ -181,10 +151,9 @@ Your Godot source directory tree should look like on the example below:
                                 |-- x86
                                 |-- x86_64
 
-If the subdirectory ``libs/debug/vulkan_validation_layers`` doesn't exist, create it.
+Nếu subdirectory ``libs/debug/vulkan_validation_layers`` không tồn tại, hãy tạo subdirectory đó.
 
-Compile and run the Android app
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Biên dịch và chạy ứng dụng Android
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Linked validation layers are automatically loaded and enabled in Android debug builds.
-You can use Godot's :ref:`doc_one-click_deploy` feature to quickly test your project with the validation layers enabled.
+Các lớp validation được liên kết sẽ tự động được tải và bật trong các bản build Android debug. Bạn có thể sử dụng tính năng :ref:`doc_one-click_deploy` của Godot để nhanh chóng kiểm thử project với các lớp validation được bật.

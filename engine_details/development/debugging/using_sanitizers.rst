@@ -1,210 +1,148 @@
 .. _doc_using_sanitizers:
 
-Using sanitizers
-================
+Sử dụng sanitizer
+=================
 
-What are sanitizers?
---------------------
+Sanitizer là gì?
+----------------
 
-Sanitizers are static instrumentation tools that help find bugs that traditional
-debuggers usually cannot catch. This is particularly useful when combined with
-:ref:`doc_unit_testing` in continuous integration.
+Sanitizer là các công cụ chèn mã tĩnh giúp tìm ra những lỗi mà trình gỡ lỗi truyền thống thường không thể phát hiện. Điều này đặc biệt hữu ích khi kết hợp với
+:ref:`doc_unit_testing` trong tích hợp liên tục.
 
-Sanitizers can be used on Windows, macOS and Linux by using the Clang (LLVM),
-GCC or Visual Studio compilers.
-:ref:`Certain platforms <doc_using_sanitizers_platform_specific_sanitizers>`
-may also have their own sanitizers available.
-In situations where a single sanitizer is provided by several different compilers,
-remember that their output and behavior will differ slightly.
+Có thể sử dụng sanitizer trên Windows, macOS và Linux bằng các compiler Clang (LLVM), GCC hoặc Visual Studio.
+:ref:`Một số nền tảng <doc_using_sanitizers_platform_specific_sanitizers>` cũng có thể cung cấp sanitizer riêng. Trong trường hợp một sanitizer được cung cấp bởi nhiều compiler khác nhau, hãy nhớ rằng kết quả và hành vi của chúng sẽ hơi khác nhau.
 
-Using sanitizers on Godot
--------------------------
+Sử dụng sanitizer trên Godot
+----------------------------
 
-Sanitizers **require** recompiling the binary. This means you cannot use
-official Godot binaries to run sanitizers.
+Sanitizer **yêu cầu** biên dịch lại binary. Điều này có nghĩa là bạn không thể sử dụng binary Godot chính thức để chạy sanitizer.
 
-When :ref:`compiling <toc-devel-compiling>` with any of the sanitizers enabled,
-the resulting binary will have the ``.san`` suffix added to its name to
-distinguish it from a binary without sanitizers.
+Khi :ref:`biên dịch <toc-devel-compiling>` với bất kỳ sanitizer nào được bật, binary tạo ra sẽ được thêm hậu tố ``.san`` vào tên để phân biệt với binary không có sanitizer.
 
-There is a performance impact as many additional runtime checks need to be
-performed. Memory utilization will also increase. It is possible to enable
-certain combinations of multiple sanitizers in a single build. Beware of the
-performance impact when using multiple sanitizers at once though, as the
-resulting binary may be excessively slow.
+Hiệu năng sẽ bị ảnh hưởng vì cần thực hiện nhiều kiểm tra runtime bổ sung. Mức sử dụng bộ nhớ cũng sẽ tăng. Có thể bật một số tổ hợp gồm nhiều sanitizer trong cùng một bản build. Tuy nhiên, hãy lưu ý đến ảnh hưởng hiệu năng khi sử dụng nhiều sanitizer cùng lúc, vì binary tạo ra có thể chậm quá mức.
 
-Certain options can be passed to sanitizers without having to recompile the
-binary using environment variables.
+Có thể truyền một số tùy chọn cho sanitizer thông qua các biến môi trường mà không cần biên dịch lại binary.
 
 .. _doc_using_sanitizers_address_sanitizer:
 
 Address sanitizer (ASAN)
 ------------------------
 
-- Available in Clang and GCC.
-- **Supported platforms:** Linux, macOS, Windows (Visual Studio), Web
-- `Clang ASAN documentation <https://clang.llvm.org/docs/AddressSanitizer.html>`__
+- Có trong Clang và GCC.
+- **Nền tảng được hỗ trợ:** Linux, macOS, Windows (Visual Studio), Web
+- `Tài liệu Clang ASAN <https://clang.llvm.org/docs/AddressSanitizer.html>`__
 
-The address sanitizer is generally the most frequently used sanitizer. It can
-diagnose issues such as buffer overruns and out-of-bounds access. If the engine
-crashes with a message such as ``free(): invalid pointer``, this is typically
-the result of a buffer overrun. (This message is printed by the C runtime, not
-Godot.)
+Address sanitizer nhìn chung là sanitizer được sử dụng thường xuyên nhất. Nó có thể chẩn đoán các vấn đề như tràn bộ đệm và truy cập vượt phạm vi. Nếu engine gặp sự cố với thông báo như ``free(): invalid pointer``, thì nguyên nhân thường là do tràn bộ đệm. (Thông báo này do C runtime in ra, không phải Godot.)
 
-In certain situations (such as detecting uninitialized memory reads),
-the address sanitizer doesn't suffice. The :ref:`doc_using_sanitizers_memory_sanitizer`
-should be used instead.
+Trong một số trường hợp (chẳng hạn như phát hiện thao tác đọc bộ nhớ chưa được khởi tạo), address sanitizer là chưa đủ. Thay vào đó, nên sử dụng :ref:`doc_using_sanitizers_memory_sanitizer`.
 
-It is also possible to detect use-after-return situations by specifying the
-``ASAN_OPTIONS=detect_stack_use_after_return=1`` environment variable before
-*running* Godot (not when compiling it). This increases the address sanitizer's
-runtime overhead, so only enable this feature when you actually need it.
+Bạn cũng có thể phát hiện các tình huống sử dụng sau khi trả về bằng cách chỉ định biến môi trường ``ASAN_OPTIONS=detect_stack_use_after_return=1`` trước khi *chạy* Godot (không phải khi biên dịch Godot). Điều này làm tăng overhead runtime của address sanitizer, vì vậy chỉ bật tính năng này khi thực sự cần.
 
-To enable the address sanitizer in a Godot build, pass the ``use_asan=yes``
-SCons option when compiling. Enabling ASAN generally makes the resulting binary
-about 2× slower.
+Để bật address sanitizer trong bản build Godot, hãy truyền tùy chọn SCons ``use_asan=yes`` khi biên dịch. Việc bật ASAN thường khiến binary tạo ra chậm hơn khoảng 2 lần.
 
 .. warning::
 
-    Due to a `design decision
-    <https://stackoverflow.com/questions/36971902/why-cant-clang-enable-all-sanitizers/>`__,
-    the address, memory and thread sanitizers are mutually exclusive. This means
-    you can only use one of those sanitizers in a given binary.
+    Do một `quyết định thiết kế <https://stackoverflow.com/questions/36971902/why-cant-clang-enable-all-sanitizers/>`__, address sanitizer, memory sanitizer và thread sanitizer loại trừ lẫn nhau. Điều này có nghĩa là bạn chỉ có thể sử dụng một trong các sanitizer đó trong một binary nhất định.
 
 Leak sanitizer (LSAN)
 ---------------------
 
-- Available in Clang and GCC.
-- **Supported platforms:** Linux, Web
-- `Clang LSAN documentation <https://clang.llvm.org/docs/LeakSanitizer.html>`__
+- Có trong Clang và GCC.
+- **Nền tảng được hỗ trợ:** Linux, Web
+- `Tài liệu Clang LSAN <https://clang.llvm.org/docs/LeakSanitizer.html>`__
 
-The leak sanitizer can detect memory leaks, which are situations where memory
-that is no longer in use is never freed by the running program. This can
-potentially lead to out-of-memory situations if the program runs for long
-enough. Since Godot may run on
-:ref:`dedicated servers <doc_exporting_for_dedicated_servers>` for months or
-even years without a restart, it's important to fix memory leaks when they occur.
+Leak sanitizer có thể phát hiện rò rỉ bộ nhớ, tức là những trường hợp bộ nhớ không còn được sử dụng nhưng không bao giờ được chương trình đang chạy giải phóng. Điều này có thể dẫn đến tình trạng hết bộ nhớ nếu chương trình chạy đủ lâu. Vì Godot có thể chạy trên
+:ref:`server chuyên dụng <doc_exporting_for_dedicated_servers>` trong nhiều tháng hoặc thậm chí nhiều năm mà không khởi động lại, nên việc khắc phục rò rỉ bộ nhớ ngay khi chúng xảy ra là rất quan trọng.
 
-To enable the leak sanitizer in a Godot build, pass the ``use_lsan=yes`` SCons
-option when compiling. Enabling LSAN only has a small performance overhead, but
-the program will be much slower to exit as leak detection occurs when the
-program exits.
+Để bật leak sanitizer trong bản build Godot, hãy truyền tùy chọn SCons ``use_lsan=yes`` khi biên dịch. Việc bật LSAN chỉ gây overhead hiệu năng nhỏ, nhưng chương trình sẽ thoát chậm hơn nhiều vì quá trình phát hiện rò rỉ diễn ra khi chương trình thoát.
 
 .. _doc_using_sanitizers_memory_sanitizer:
 
 Memory sanitizer (MSAN)
 -----------------------
 
-- Available in Clang only, not GCC.
-- **Supported platforms:** Linux
-- `Clang MSAN documentation <https://clang.llvm.org/docs/MemorySanitizer.html>`__
+- Chỉ có trong Clang, không có trong GCC.
+- **Nền tảng được hỗ trợ:** Linux
+- `Tài liệu Clang MSAN <https://clang.llvm.org/docs/MemorySanitizer.html>`__
 
-The memory sanitizer complements the
-:ref:`doc_using_sanitizers_address_sanitizer`. Unlike the address sanitizer,
-the memory sanitizer can detect uninitialized memory reads.
+Memory sanitizer bổ trợ cho
+:ref:`doc_using_sanitizers_address_sanitizer`. Không giống address sanitizer, memory sanitizer có thể phát hiện thao tác đọc bộ nhớ chưa được khởi tạo.
 
-To enable the memory sanitizer in a Godot build, pass the ``use_msan=yes``
-SCons option when compiling. Enabling MSAN generally makes the resulting binary
-about 3× slower.
+Để bật memory sanitizer trong bản build Godot, hãy truyền tùy chọn SCons ``use_msan=yes`` khi biên dịch. Việc bật MSAN thường khiến binary tạo ra chậm hơn khoảng 3 lần.
 
 .. warning::
 
-    Due to a `design decision
-    <https://stackoverflow.com/questions/36971902/why-cant-clang-enable-all-sanitizers/>`__,
-    the address, memory and thread sanitizers are mutually exclusive. This means
-    you can only use one of those sanitizers in a given binary.
+    Do một `quyết định thiết kế <https://stackoverflow.com/questions/36971902/why-cant-clang-enable-all-sanitizers/>`__, address sanitizer, memory sanitizer và thread sanitizer loại trừ lẫn nhau. Điều này có nghĩa là bạn chỉ có thể sử dụng một trong các sanitizer đó trong một binary nhất định.
 
 Thread sanitizer (TSAN)
 -----------------------
 
-- Available in Clang and GCC.
-- **Supported platforms:** Linux, macOS
-- `Clang TSAN documentation <https://clang.llvm.org/docs/ThreadSanitizer.html>`__
+- Có trong Clang và GCC.
+- **Nền tảng được hỗ trợ:** Linux, macOS
+- `Tài liệu Clang TSAN <https://clang.llvm.org/docs/ThreadSanitizer.html>`__
 
-The thread sanitizer is used to track down race conditions related to
-multithreading. A race condition is when multiple threads try to modify the same
-data at the same time. Since thread scheduling can be ordered in any fashion by
-the operating system, this leads to incorrect behavior that only occurs
-occasionally (and can be difficult to track as a result). To prevent a race
-condition, you need to add a lock to ensure only one thread can access the
-shared data at a given time.
+Thread sanitizer được dùng để truy tìm các race condition liên quan đến đa luồng. Race condition xảy ra khi nhiều thread cố gắng sửa đổi cùng một dữ liệu tại cùng một thời điểm. Vì hệ điều hành có thể sắp xếp thứ tự lập lịch thread theo bất kỳ cách nào, điều này dẫn đến hành vi không chính xác chỉ xảy ra đôi khi (và do đó có thể khó truy tìm). Để ngăn race condition, bạn cần thêm một lock nhằm bảo đảm chỉ một thread có thể truy cập dữ liệu dùng chung tại một thời điểm nhất định.
 
-To enable the thread sanitizer in a Godot build, pass the ``use_tsan=yes`` SCons
-option when compiling. Enabling TSAN generally makes the resulting binary 10×
-slower, while also multiplying memory usage by an approximately 8× factor.
+Để bật thread sanitizer trong bản build Godot, hãy truyền tùy chọn SCons ``use_tsan=yes`` khi biên dịch. Việc bật TSAN thường khiến binary tạo ra chậm hơn 10 lần, đồng thời làm mức sử dụng bộ nhớ tăng khoảng 8 lần.
 
 .. warning::
 
-    Due to a `design decision
-    <https://stackoverflow.com/questions/36971902/why-cant-clang-enable-all-sanitizers/>`__,
-    the address, memory and thread sanitizers are mutually exclusive. This means
-    you can only use one of those sanitizers in a given binary.
+    Do một `quyết định thiết kế <https://stackoverflow.com/questions/36971902/why-cant-clang-enable-all-sanitizers/>`__, address sanitizer, memory sanitizer và thread sanitizer loại trừ lẫn nhau. Điều này có nghĩa là bạn chỉ có thể sử dụng một trong các sanitizer đó trong một binary nhất định.
 
 .. note::
 
-    On Linux, if you stumble upon the following error:
+    Trên Linux, nếu gặp lỗi sau:
 
     ``FATAL: ThreadSanitizer: unexpected memory mapping``
 
-    You may need to temporarily lower the Address Space Layout Randomization (ASLR) entropy in your system with:
+    Bạn có thể cần tạm thời giảm entropy của Address Space Layout Randomization (ASLR) trên hệ thống bằng lệnh:
 
     .. code:: sh
 
         sudo sysctl vm.mmap_rnd_bits=28
 
-    Or preferably disable it entirely with:
+    Hoặc tốt hơn là tắt hoàn toàn bằng lệnh:
 
     .. code:: sh
 
         sudo sysctl kernel.randomize_va_space=0
 
-    And as soon as you are done with the thread sanitizer, increase the ASLR entropy with:
+    Ngay sau khi sử dụng xong thread sanitizer, hãy tăng entropy của ASLR bằng lệnh:
 
     .. code:: sh
 
         sudo sysctl vm.mmap_rnd_bits=32
 
-    Or re-enable ASLR with:
+    Hoặc bật lại ASLR bằng lệnh:
 
     .. code:: sh
 
         sudo sysctl kernel.randomize_va_space=2
 
-    Rebooting your machine will also revert the ASLR state to its default values.
+    Khởi động lại máy cũng sẽ đưa trạng thái ASLR về các giá trị mặc định.
 
-    It's important to revert the changes as soon as possible because lowering the ASLR entropy or disabling ASLR entirely can be a security risk.
+    Điều quan trọng là hoàn tác các thay đổi sớm nhất có thể vì việc giảm entropy của ASLR hoặc vô hiệu hóa hoàn toàn ASLR có thể gây ra rủi ro bảo mật.
 
-Undefined behavior sanitizer (UBSAN)
-------------------------------------
+Bộ sanitizer cho hành vi không xác định (UBSAN)
+-----------------------------------------------
 
-- Available in Clang and GCC.
-- **Supported platforms:** Linux, macOS, Web
-- `Clang UBSAN documentation <https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html>`__
+- Có trong Clang và GCC.
+- **Các nền tảng được hỗ trợ:** Linux, macOS, Web
+- `Tài liệu Clang UBSAN <https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html>`__
 
-The undefined behavior sanitizer is used to track down situations where the
-program exhibits random and unpredictable behavior. This is due to C/C++ code
-that is accepted by the compiler, but is not *correct*. Compiling with a
-different set of optimizations can also change the observed results of undefined
-behavior.
+Bộ sanitizer cho hành vi không xác định được dùng để tìm ra các tình huống trong đó chương trình thể hiện hành vi ngẫu nhiên và không thể dự đoán. Điều này là do mã C/C++ được compiler chấp nhận nhưng không *đúng*. Việc biên dịch với một tập tối ưu hóa khác cũng có thể thay đổi kết quả quan sát được của hành vi không xác định.
 
-To enable the undefined behavior sanitizer in a Godot build, pass the
-``use_ubsan=yes`` SCons option when compiling. Enabling UBSAN only has a small
-performance overhead.
+Để bật bộ sanitizer cho hành vi không xác định trong bản build Godot, hãy truyền tùy chọn SCons ``use_ubsan=yes`` khi biên dịch. Việc bật UBSAN chỉ gây ra một mức overhead hiệu năng nhỏ.
 
 .. _doc_using_sanitizers_platform_specific_sanitizers:
 
-Platform-specific sanitizers
-----------------------------
+Các bộ sanitizer dành riêng cho nền tảng
+----------------------------------------
 
 Web
 ~~~
 
-When :ref:`compiling for the Web <doc_compiling_for_web>`,
-there are 2 additional sanitizer SCons options available:
+Khi :ref:`biên dịch cho Web <doc_compiling_for_web>`, có thêm 2 tùy chọn SCons của sanitizer:
 
-- ``use_assertions=yes`` enables runtime Emscripten assertions, which can catch
-  various issues.
-- ``use_safe_heap=yes`` enables `Emscripten's SAFE_HEAP sanitizer <https://emscripten.org/docs/debugging/Sanitizers.html>`__.
-  It provides similar functionality to ASAN, but it focuses on issues that
-  are specific to WebAssembly. ``SAFE_HEAP`` is not guaranteed to be compatible
-  with ASAN and UBSAN in the same binary, so you may have to build it separately.
+- ``use_assertions=yes`` bật các assertion runtime của Emscripten, có thể phát hiện nhiều vấn đề khác nhau.
+- ``use_safe_heap=yes`` bật `bộ sanitizer SAFE_HEAP của Emscripten <https://emscripten.org/docs/debugging/Sanitizers.html>`__. Nó cung cấp chức năng tương tự ASAN nhưng tập trung vào các vấn đề đặc thù của WebAssembly. ``SAFE_HEAP`` không được đảm bảo tương thích với ASAN và UBSAN trong cùng một binary, vì vậy bạn có thể phải build riêng.
