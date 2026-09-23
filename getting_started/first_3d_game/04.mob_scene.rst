@@ -1,114 +1,82 @@
 .. _doc_first_3d_game_designing_the_mob_scene:
 
-Designing the mob scene
-=======================
+Thiết kế cảnh mob
+=================
 
-In this part, you're going to code the monsters, which we'll call mobs. In the
-next lesson, we'll spawn them randomly around the playable area.
+Trong phần này, bạn sẽ viết mã cho các quái vật, mà chúng ta sẽ gọi là mob. Trong bài học tiếp theo, chúng ta sẽ sinh chúng ngẫu nhiên quanh khu vực có thể chơi.
 
-Let's design the monsters themselves in a new scene. The node structure is going
-to be similar to the ``player.tscn`` scene.
+Hãy thiết kế các quái vật trong một scene mới. Cấu trúc node sẽ tương tự scene ``player.tscn``.
 
-Create a scene with, once again, a :ref:`CharacterBody3D <class_CharacterBody3D>` node as its root. Name it
-``Mob``. Add a child node :ref:`Node3D <class_Node3D>`, name it ``Pivot``. And drag and drop
-the file ``mob.glb`` from the *FileSystem* dock onto the ``Pivot`` to add the
-monster's 3D model to the scene.
+Tạo một scene với một node :ref:`CharacterBody3D <class_CharacterBody3D>` làm node gốc, như trước đây. Đặt tên cho node đó là ``Mob``. Thêm một node con :ref:`Node3D <class_Node3D>` và đặt tên là ``Pivot``. Sau đó, kéo và thả tệp ``mob.glb`` từ dock *FileSystem* vào ``Pivot`` để thêm model 3D của quái vật vào scene.
 
 .. image:: img/04.mob_scene/drag_drop_mob.webp
 
-You can rename the newly created ``mob`` node
-into ``Character``.
+Bạn có thể đổi tên node ``mob`` vừa tạo thành ``Character``.
 
 |image0|
 
-We need a collision shape for our body to work. Right-click on the ``Mob`` node,
-the scene's root, and click *Add Child Node*.
+Chúng ta cần một collision shape để body hoạt động. Nhấp chuột phải vào node ``Mob``, node gốc của scene, rồi nhấp vào *Add Child Node*.
 
 |image1|
 
-Add a :ref:`CollisionShape3D <class_CollisionShape3D>`.
+Thêm một :ref:`CollisionShape3D <class_CollisionShape3D>`.
 
 |image2|
 
 
-In the *Inspector*, assign a *BoxShape3D* to the *Shape* property.
+Trong *Inspector*, gán một *BoxShape3D* cho thuộc tính *Shape*.
 
 .. image:: img/01.game_setup/08.create_box_shape3D.webp
 
-We should change its size to fit the 3D model better. You can do so
-interactively by clicking and dragging on the orange dots.
+Chúng ta nên thay đổi kích thước của nó để vừa với model 3D hơn. Bạn có thể thực hiện việc này bằng cách nhấp và kéo các chấm màu cam.
 
-The box should touch the floor and be a little thinner than the model. Physics
-engines work in such a way that if the player's sphere touches even the box's
-corner, a collision will occur. If the box is a little too big compared to the
-3D model, you may die at a distance from the monster, and the game will feel
-unfair to the players.
+Khối hộp nên chạm sàn và mỏng hơn model một chút. Các physics engine hoạt động theo cách mà nếu hình cầu của người chơi chạm dù chỉ vào góc của khối hộp thì va chạm sẽ xảy ra. Nếu khối hộp hơi lớn so với model 3D, bạn có thể chết khi vẫn còn cách quái vật một khoảng, khiến trò chơi có cảm giác không công bằng với người chơi.
 
 |image4|
 
-Notice that my box is taller than the monster. It is okay in this game because
-we're looking at the scene from above and using a fixed perspective. Collision
-shapes don't have to match the model exactly. It's the way the game feels when
-you test it that should dictate their form and size.
+Lưu ý rằng khối hộp của tôi cao hơn quái vật. Điều đó không sao trong trò chơi này vì chúng ta nhìn scene từ trên cao và sử dụng góc nhìn cố định. Collision shape không nhất thiết phải khớp chính xác với model. Hình dạng và kích thước của chúng nên được quyết định bởi cảm giác của trò chơi khi bạn kiểm thử.
 
-Removing monsters off-screen
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Xóa quái vật khỏi màn hình
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We're going to spawn monsters at regular time intervals in the game level. If
-we're not careful, their count could increase to infinity, and we don't want
-that. Each mob instance has both a memory and a processing cost, and we don't
-want to pay for it when the mob is outside the screen.
+Chúng ta sẽ sinh quái vật theo các khoảng thời gian đều đặn trong level của trò chơi. Nếu không cẩn thận, số lượng của chúng có thể tăng đến vô hạn, và chúng ta không muốn điều đó. Mỗi instance của mob đều tiêu tốn bộ nhớ và chi phí xử lý, và chúng ta không muốn phải trả chi phí đó khi mob nằm ngoài màn hình.
 
-Once a monster leaves the screen, we don't need it anymore, so we should delete it.
-Godot has a node that detects when objects leave the screen,
-:ref:`VisibleOnScreenNotifier3D <class_VisibleOnScreenNotifier3D>`, and we're going to use it to destroy our mobs.
+Khi một quái vật rời khỏi màn hình, chúng ta không còn cần nó nữa, vì vậy nên xóa nó. Godot có một node phát hiện khi các đối tượng rời khỏi màn hình,
+:ref:`VisibleOnScreenNotifier3D <class_VisibleOnScreenNotifier3D>`, và chúng ta sẽ dùng nó để hủy các mob.
 
 .. note::
 
-    When you keep instancing an object, there's a technique you can
-    use to avoid the cost of creating and destroying instances all the time
-    called pooling. It consists of pre-creating an array of objects and reusing
-    them over and over.
+    Khi liên tục tạo instance của một đối tượng, bạn có thể sử dụng một kỹ thuật gọi là pooling để tránh chi phí tạo và hủy instance liên tục. Kỹ thuật này tạo sẵn một mảng các đối tượng rồi tái sử dụng chúng nhiều lần.
 
-    When working with GDScript, this usually isn't needed. The main
-    reason to use pools is to avoid freezes with garbage-collected languages
-    like C# or Lua. GDScript uses a different technique to manage memory,
-    reference counting, which doesn't have that caveat. You can learn more
-    about that here: :ref:`doc_gdscript_basics_memory_management`.
+    Khi làm việc với GDScript, việc này thường không cần thiết. Lý do chính để sử dụng pool là tránh hiện tượng đóng băng với các ngôn ngữ có garbage collection như C# hoặc Lua. GDScript sử dụng một kỹ thuật quản lý bộ nhớ khác là reference counting, không gặp hạn chế đó. Bạn có thể tìm hiểu thêm tại đây: :ref:`doc_gdscript_basics_memory_management`.
 
-Select the ``Mob`` node and add a child node :ref:`VisibleOnScreenNotifier3D <class_VisibleOnScreenNotifier3D>`. Another
-box, pink this time, appears. When this box completely leaves the screen, the
-node will emit a signal.
+Chọn node ``Mob`` và thêm một node con :ref:`VisibleOnScreenNotifier3D <class_VisibleOnScreenNotifier3D>`. Một khối hộp khác, lần này có màu hồng, sẽ xuất hiện. Khi khối hộp này hoàn toàn rời khỏi màn hình, node sẽ phát ra một signal.
 
 |image5|
 
-Resize it using the orange dots until it covers the entire 3D model.
+Thay đổi kích thước của nó bằng các chấm màu cam cho đến khi bao phủ toàn bộ model 3D.
 
 |image6|
 
-Coding the mob's movement
--------------------------
+Viết mã chuyển động của mob
+---------------------------
 
-Let's implement the monster's motion. We're going to do this in two steps.
-First, we'll write a script on the ``Mob`` that defines a function to initialize
-the monster. We'll then code the randomized spawn mechanism in the ``main.tscn`` scene
-and call the function from there.
+Hãy triển khai chuyển động của quái vật. Chúng ta sẽ thực hiện việc này qua hai bước. Trước tiên, chúng ta sẽ viết một script trên ``Mob`` để định nghĩa một hàm khởi tạo quái vật. Sau đó, chúng ta sẽ viết cơ chế sinh ngẫu nhiên trong scene ``main.tscn`` và gọi hàm từ đó.
 
-Attach a script to the ``Mob``.
+Gắn một script vào ``Mob``.
 
 |image7|
 
-Here's the movement code to start with. We define two properties, ``min_speed``
-and ``max_speed``, to define a random speed range, which we will later use to define ``CharacterBody3D.velocity``.
+Đây là mã chuyển động ban đầu. Chúng ta định nghĩa hai thuộc tính, ``min_speed`` và ``max_speed``, để xác định một khoảng tốc độ ngẫu nhiên, sau đó sẽ dùng khoảng này để xác định ``CharacterBody3D.velocity``.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     extends CharacterBody3D
 
-    # Minimum speed of the mob in meters per second.
+    # Tốc độ tối thiểu của mob tính bằng mét trên giây.
     @export var min_speed = 10.0
-    # Maximum speed of the mob in meters per second.
+    # Tốc độ tối đa của mob tính bằng mét trên giây.
     @export var max_speed = 18.0
 
 
@@ -121,12 +89,12 @@ and ``max_speed``, to define a random speed range, which we will later use to de
 
     public partial class Mob : CharacterBody3D
     {
-        // Don't forget to rebuild the project so the editor knows about the new export variable.
+        // Đừng quên rebuild project để editor nhận biết biến export mới.
 
-        // Minimum speed of the mob in meters per second
+        // Tốc độ tối thiểu của mob tính bằng mét trên giây
         [Export]
         public float MinSpeed { get; set; } = 10.0f;
-        // Maximum speed of the mob in meters per second
+        // Tốc độ tối đa của mob tính bằng mét trên giây
         [Export]
         public float MaxSpeed { get; set; } = 18.0f;
 
@@ -136,50 +104,40 @@ and ``max_speed``, to define a random speed range, which we will later use to de
         }
     }
 
-Similarly to the player, we move the mob every frame by calling the function
-``CharacterBody3D.move_and_slide()``. This time, we don't update
-the ``velocity`` every frame; we want the monster to move at a constant speed
-and leave the screen, even if it were to hit an obstacle.
+Tương tự người chơi, chúng ta di chuyển mob trong mỗi frame bằng cách gọi hàm ``CharacterBody3D.move_and_slide()``. Tuy nhiên lần này, chúng ta không cập nhật ``velocity`` trong mỗi frame; chúng ta muốn quái vật di chuyển với tốc độ không đổi và rời khỏi màn hình, ngay cả khi nó va phải chướng ngại vật.
 
-We need to define another function to calculate the ``CharacterBody3D.velocity``. This
-function will turn the monster towards the player and randomize both its angle
-of motion and its velocity.
+Chúng ta cần định nghĩa một hàm khác để tính ``CharacterBody3D.velocity``. Hàm này sẽ xoay quái vật về phía người chơi và ngẫu nhiên hóa cả góc chuyển động lẫn vận tốc của nó.
 
-The function will take a ``start_position``,the mob's spawn position, and the
-``player_position`` as its arguments.
+Hàm này sẽ nhận một ``start_position``, vị trí sinh của mob, và ``player_position`` làm các đối số.
 
-We position the mob at ``start_position`` and turn it towards the player using
-the ``look_at_from_position()`` method, and randomize the angle by rotating a
-random amount around the Y axis. Below, ``randf_range()`` outputs a random value
-between ``-PI / 4`` radians and ``PI / 4`` radians.
+Chúng ta đặt mob tại ``start_position`` và xoay nó về phía người chơi bằng phương thức ``look_at_from_position()``, đồng thời ngẫu nhiên hóa góc bằng cách xoay một lượng ngẫu nhiên quanh trục Y. Bên dưới, ``randf_range()`` xuất ra một giá trị ngẫu nhiên trong khoảng từ ``-PI / 4`` radian đến ``PI / 4`` radian.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # This function will be called from the Main scene.
+    # Hàm này sẽ được gọi từ scene Main.
     func initialize(start_position, player_position):
-        # We position the mob by placing it at start_position
-        # and rotate it towards player_position, so it looks at the player.
+        # Chúng ta đặt mob bằng cách đặt nó tại start_position
+        # và xoay nó về phía player_position để nó hướng về phía người chơi.
         look_at_from_position(start_position, player_position, Vector3.UP)
-        # Rotate this mob randomly within range of -45 and +45 degrees,
-        # so that it doesn't move directly towards the player.
+        # Xoay mob này ngẫu nhiên trong khoảng từ -45 đến +45 độ,
+        # để nó không di chuyển thẳng về phía người chơi.
         rotate_y(randf_range(-PI / 4, PI / 4))
 
  .. code-tab:: csharp
 
-    // This function will be called from the Main scene.
+    // Hàm này sẽ được gọi từ scene Main.
     public void Initialize(Vector3 startPosition, Vector3 playerPosition)
     {
-        // We position the mob by placing it at startPosition
-        // and rotate it towards playerPosition, so it looks at the player.
+        // Chúng ta đặt mob bằng cách đặt nó tại startPosition
+        // và xoay nó về phía playerPosition để nó hướng về phía người chơi.
         LookAtFromPosition(startPosition, playerPosition, Vector3.Up);
-        // Rotate this mob randomly within range of -45 and +45 degrees,
-        // so that it doesn't move directly towards the player.
+        // Xoay mob này ngẫu nhiên trong khoảng từ -45 đến +45 độ,
+        // để nó không di chuyển thẳng về phía người chơi.
         RotateY((float)GD.RandRange(-Mathf.Pi / 4.0, Mathf.Pi / 4.0));
     }
 
-We got a random position, now we need a ``random_speed``. ``randf_range()`` will be useful as it gives random float values, and we will use ``min_speed`` and ``max_speed``.
-``random_speed`` is just an float, and we just use it to multiply our ``CharacterBody3D.velocity``. After ``random_speed`` is applied, we rotate ``CharacterBody3D.velocity`` Vector3 towards the player.
+Chúng ta đã có một vị trí ngẫu nhiên, giờ cần một ``random_speed``. ``randf_range()`` sẽ hữu ích vì nó cung cấp các giá trị float ngẫu nhiên, và chúng ta sẽ sử dụng ``min_speed`` và ``max_speed``. ``random_speed`` chỉ là một float, và chúng ta chỉ dùng nó để nhân với ``CharacterBody3D.velocity``. Sau khi áp dụng ``random_speed``, chúng ta xoay Vector3 ``CharacterBody3D.velocity`` hướng về phía người chơi.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -187,12 +145,12 @@ We got a random position, now we need a ``random_speed``. ``randf_range()`` will
    func initialize(start_position, player_position):
        # ...
 
-       # We calculate a random speed (float)
+       # Chúng ta tính toán một tốc độ ngẫu nhiên (float)
        var random_speed = randf_range(min_speed, max_speed)
-       # We calculate a forward velocity that represents the speed.
+       # Chúng ta tính toán một vận tốc hướng về phía trước biểu thị tốc độ.
        velocity = Vector3.FORWARD * random_speed
-       # We then rotate the velocity vector based on the mob's Y rotation
-       # in order to move in the direction the mob is looking.
+       # Sau đó, chúng ta xoay vector vận tốc dựa trên góc xoay Y của quái vật
+       # để di chuyển theo hướng quái vật đang nhìn.
        velocity = velocity.rotated(Vector3.UP, rotation.y)
 
  .. code-tab:: csharp
@@ -201,33 +159,29 @@ We got a random position, now we need a ``random_speed``. ``randf_range()`` will
     {
         // ...
 
-        // We calculate a random speed (float).
+        // Chúng ta tính toán một tốc độ ngẫu nhiên (float).
         float randomSpeed = GD.RandRange(MinSpeed, MaxSpeed);
-        // We calculate a forward velocity that represents the speed.
+        // Chúng ta tính toán một vận tốc hướng về phía trước biểu thị tốc độ.
         Velocity = Vector3.Forward * randomSpeed;
-        // We then rotate the velocity vector based on the mob's Y rotation
-        // in order to move in the direction the mob is looking.
+        // Sau đó, chúng ta xoay vector vận tốc dựa trên góc xoay Y của quái vật
+        // để di chuyển theo hướng quái vật đang nhìn.
         Velocity = Velocity.Rotated(Vector3.Up, Rotation.Y);
     }
 
-Leaving the screen
-------------------
+Rời khỏi màn hình
+-----------------
 
-We still have to destroy the mobs when they leave the screen. To do so, we'll
-connect our :ref:`VisibleOnScreenNotifier3D <class_VisibleOnScreenNotifier3D>` node's ``screen_exited`` signal to the ``Mob``.
+Chúng ta vẫn phải hủy các quái vật khi chúng rời khỏi màn hình. Để làm vậy, chúng ta sẽ kết nối signal ``screen_exited`` của node :ref:`VisibleOnScreenNotifier3D <class_VisibleOnScreenNotifier3D>` với ``Mob``.
 
-Select the :ref:`VisibleOnScreenNotifier3D <class_VisibleOnScreenNotifier3D>` node and on the right side of the interface,
-navigate to the *Signals* dock. Double-click the ``screen_exited()`` signal.
+Chọn node :ref:`VisibleOnScreenNotifier3D <class_VisibleOnScreenNotifier3D>` và ở phía bên phải giao diện, chuyển đến dock *Signals*. Nhấp đúp vào signal ``screen_exited()``.
 
 |image9|
 
-Connect the signal to the ``Mob``
+Kết nối signal với ``Mob``
 
 |image10|
 
-This will add a new function for you in your mob script,
-``_on_visible_on_screen_notifier_3d_screen_exited()``. From it, call the ``queue_free()``
-method. This function destroys the instance it's called on.
+Thao tác này sẽ thêm một function mới vào script của quái vật, ``_on_visible_on_screen_notifier_3d_screen_exited()``. Từ đó, gọi method ``queue_free()``. Function này hủy instance mà nó được gọi trên đó.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -237,46 +191,45 @@ method. This function destroys the instance it's called on.
 
  .. code-tab:: csharp
 
-    // We also specified this function name in PascalCase in the editor's connection window.
+    // Chúng ta cũng đã chỉ định tên function này ở dạng PascalCase trong cửa sổ kết nối của editor.
     private void OnVisibilityNotifierScreenExited()
     {
         QueueFree();
     }
 
 
-Our monster is ready to enter the game! In the next part, you will spawn
-monsters in the game level.
+Quái vật của chúng ta đã sẵn sàng tham gia game! Trong phần tiếp theo, bạn sẽ spawn các quái vật trong level của game.
 
-Here is the complete ``mob.gd`` script for reference.
+Sau đây là script ``mob.gd`` hoàn chỉnh để bạn tham khảo.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     extends CharacterBody3D
 
-    # Minimum speed of the mob in meters per second.
+    # Tốc độ tối thiểu của quái vật tính bằng mét trên giây.
     @export var min_speed = 10.0
-    # Maximum speed of the mob in meters per second.
+    # Tốc độ tối đa của quái vật tính bằng mét trên giây.
     @export var max_speed = 18.0
 
     func _physics_process(_delta):
         move_and_slide()
 
-    # This function will be called from the Main scene.
+    # Function này sẽ được gọi từ scene Main.
     func initialize(start_position, player_position):
-        # We position the mob by placing it at start_position
-        # and rotate it towards player_position, so it looks at the player.
+        # Chúng ta định vị quái vật bằng cách đặt nó tại start_position
+        # và xoay nó về phía player_position để nó nhìn vào người chơi.
         look_at_from_position(start_position, player_position, Vector3.UP)
-        # Rotate this mob randomly within range of -45 and +45 degrees,
-        # so that it doesn't move directly towards the player.
+        # Xoay ngẫu nhiên quái vật này trong phạm vi từ -45 đến +45 độ,
+        # để nó không di chuyển thẳng về phía người chơi.
         rotate_y(randf_range(-PI / 4, PI / 4))
 
-        # We calculate a random speed (float)
+        # Chúng ta tính toán một tốc độ ngẫu nhiên (float)
         var random_speed = randf_range(min_speed, max_speed)
-        # We calculate a forward velocity that represents the speed.
+        # Chúng ta tính toán một vận tốc hướng về phía trước biểu thị tốc độ.
         velocity = Vector3.FORWARD * random_speed
-        # We then rotate the velocity vector based on the mob's Y rotation
-        # in order to move in the direction the mob is looking.
+        # Sau đó, chúng ta xoay vector vận tốc dựa trên góc xoay Y của quái vật
+        # để di chuyển theo hướng quái vật đang nhìn.
         velocity = velocity.rotated(Vector3.UP, rotation.y)
 
     func _on_visible_on_screen_notifier_3d_screen_exited():
@@ -288,10 +241,10 @@ Here is the complete ``mob.gd`` script for reference.
 
     public partial class Mob : CharacterBody3D
     {
-        // Minimum speed of the mob in meters per second.
+        // Tốc độ tối thiểu của quái vật tính bằng mét trên giây.
         [Export]
         public float MinSpeed { get; set; } = 10.0f;
-        // Maximum speed of the mob in meters per second.
+        // Tốc độ tối đa của quái vật tính bằng mét trên giây.
         [Export]
         public float MaxSpeed { get; set; } = 18.0f;
 
@@ -300,26 +253,26 @@ Here is the complete ``mob.gd`` script for reference.
             MoveAndSlide();
         }
 
-        // This function will be called from the Main scene.
+        // Function này sẽ được gọi từ scene Main.
         public void Initialize(Vector3 startPosition, Vector3 playerPosition)
         {
-            // We position the mob by placing it at startPosition
-            // and rotate it towards playerPosition, so it looks at the player.
+            // Chúng ta định vị quái vật bằng cách đặt nó tại startPosition
+            // và xoay nó về phía playerPosition để nó nhìn vào người chơi.
             LookAtFromPosition(startPosition, playerPosition, Vector3.Up);
-            // Rotate this mob randomly within range of -45 and +45 degrees,
-            // so that it doesn't move directly towards the player.
+            // Xoay ngẫu nhiên quái vật này trong phạm vi từ -45 đến +45 độ,
+            // để nó không di chuyển thẳng về phía người chơi.
             RotateY((float)GD.RandRange(-Mathf.Pi / 4.0, Mathf.Pi / 4.0));
 
-            // We calculate a random speed (float).
+            // Chúng ta tính toán một tốc độ ngẫu nhiên (float).
             float randomSpeed = GD.RandRange(MinSpeed, MaxSpeed);
-            // We calculate a forward velocity that represents the speed.
+            // Chúng ta tính toán một vận tốc hướng về phía trước biểu thị tốc độ.
             Velocity = Vector3.Forward * randomSpeed;
-            // We then rotate the velocity vector based on the mob's Y rotation
-            // in order to move in the direction the mob is looking.
+            // Sau đó, chúng ta xoay vector vận tốc dựa trên góc xoay Y của quái vật
+            // để di chuyển theo hướng quái vật đang nhìn.
             Velocity = Velocity.Rotated(Vector3.Up, Rotation.Y);
         }
 
-        // We also specified this function name in PascalCase in the editor's connection window.
+        // Chúng ta cũng đã chỉ định tên function này ở dạng PascalCase trong cửa sổ kết nối của editor.
         private void OnVisibilityNotifierScreenExited()
         {
             QueueFree();

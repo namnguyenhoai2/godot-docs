@@ -1,164 +1,123 @@
 .. _doc_first_3d_game_player_scene_and_input:
 
-Player scene and input actions
-==============================
+Scene của người chơi và các action đầu vào
+==========================================
 
-In the next two lessons, we will design the player scene, register custom input
-actions, and code player movement. By the end, you'll have a playable character
-that moves in eight directions.
+Trong hai bài học tiếp theo, chúng ta sẽ thiết kế scene của người chơi, đăng ký các action đầu vào tùy chỉnh và lập trình chuyển động của người chơi. Khi hoàn thành, bạn sẽ có một nhân vật có thể điều khiển, di chuyển theo tám hướng.
 
-Create a new scene by going to the **Scene** menu in the top-left
-and clicking **New Scene**.
+Tạo một scene mới bằng cách đi tới menu **Scene** ở góc trên bên trái và nhấp vào **New Scene**.
 
 .. image:: img/02.player_input/new_scene.webp
 
-Click the **Other Node** button and select the ``CharacterBody3D`` node type
-to create a :ref:`CharacterBody3D <class_CharacterBody3D>` as the root node.
+Nhấp vào nút **Other Node** và chọn loại node ``CharacterBody3D`` để tạo một :ref:`CharacterBody3D <class_CharacterBody3D>` làm node gốc.
 
 .. image:: img/02.player_input/add_character_body3D.webp
 
-Rename the :ref:`CharacterBody3D <class_CharacterBody3D>` to ``Player``.
-Character bodies are complementary to the area and rigid bodies used in the 2D
-game tutorial. Like rigid bodies, they can move and collide with the
-environment, but instead of being controlled by the physics engine, **you** dictate
-their movement. You will see how we use the node's unique features when we code
-the jump and squash mechanics.
+Đổi tên :ref:`CharacterBody3D <class_CharacterBody3D>` thành ``Player``. Character body bổ trợ cho area và rigid body được sử dụng trong bài hướng dẫn game 2D. Giống như rigid body, chúng có thể di chuyển và va chạm với môi trường, nhưng thay vì được physics engine điều khiển, **you** sẽ quyết định chuyển động của chúng. Bạn sẽ thấy cách chúng ta sử dụng các tính năng riêng của node này khi lập trình cơ chế nhảy và ép dẹp.
 
 .. seealso::
 
-    To learn more about the different physics node types, see the
+    Để tìm hiểu thêm về các loại physics node khác nhau, hãy xem
     :ref:`doc_physics_introduction`.
 
-For now, we're going to create a basic rig for our character's 3D model. This
-will allow us to rotate the model later via code while it plays an animation.
+Trước tiên, chúng ta sẽ tạo một rig cơ bản cho model 3D của nhân vật. Việc này sẽ cho phép chúng ta xoay model bằng code sau này trong khi model phát animation.
 
-Add a :ref:`Node3D <class_Node3D>` node as a child of ``Player``.
-Select the ``Player`` node in the **Scene** tree and click the "**+**" button to add a child node.
-Rename it to ``Pivot``.
+Thêm một node :ref:`Node3D <class_Node3D>` làm node con của ``Player``. Chọn node ``Player`` trong cây **Scene** rồi nhấp vào nút "**+**" để thêm node con. Đổi tên node đó thành ``Pivot``.
 
 .. image:: img/02.player_input/adding_node3D.webp
 
-Then, in the FileSystem dock, expand the ``art/`` folder
-by double-clicking it and drag and
-drop ``player.glb`` onto ``Pivot``.
+Tiếp theo, trong dock FileSystem, mở rộng thư mục ``art/`` bằng cách nhấp đúp vào thư mục đó, rồi kéo và thả ``player.glb`` vào ``Pivot``.
 
 .. image:: img/02.player_input/instantiating_the_model.webp
 
-This should instantiate the model as a child of ``Pivot``.
-You can rename it to ``Character``.
+Thao tác này sẽ khởi tạo model làm node con của ``Pivot``. Bạn có thể đổi tên node đó thành ``Character``.
 
 .. image:: img/02.player_input/scene_structure.webp
 
 .. note::
 
-    The ``.glb`` files contain 3D scene data based on the open source glTF 2.0
-    specification. They're a modern and powerful alternative to a proprietary format
-    like FBX, which Godot also supports. To produce these files, we designed the
-    model in `Blender 3D <https://www.blender.org/>`__ and exported it to glTF.
+    Các tệp ``.glb`` chứa dữ liệu scene 3D dựa trên đặc tả glTF 2.0 mã nguồn mở. Đây là lựa chọn hiện đại và mạnh mẽ thay cho định dạng độc quyền như FBX, định dạng mà Godot cũng hỗ trợ. Để tạo các tệp này, chúng tôi đã thiết kế model trong `Blender 3D <https://www.blender.org/>`__ rồi xuất model sang glTF.
 
-As with all kinds of physics nodes, we need a collision shape for our character
-to collide with the environment. Select the ``Player`` node again and add a child node
-:ref:`CollisionShape3D <class_CollisionShape3D>`. In the **Inspector**, on the **Shape** property,
-add a new :ref:`SphereShape3D <class_SphereShape3D>`.
+Cũng như mọi loại physics node, chúng ta cần một collision shape để nhân vật va chạm với môi trường. Chọn lại node ``Player`` và thêm một node con
+:ref:`CollisionShape3D <class_CollisionShape3D>`. Trong **Inspector**, tại thuộc tính **Shape**, hãy thêm một :ref:`SphereShape3D <class_SphereShape3D>` mới.
 
 .. image:: img/02.player_input/add_capsuleshape3d.webp
 
-The sphere's wireframe appears below the character.
+Khung dây của hình cầu sẽ xuất hiện bên dưới nhân vật.
 
 .. image:: img/02.player_input/sphere_shape.png
 
-It will be the shape the physics engine uses to collide with the environment, so
-we want it to better fit the 3D model. Make it a bit larger by dragging the orange
-dot in the viewport. My sphere has a radius of about ``0.8`` meters.
+Đây sẽ là hình dạng mà physics engine sử dụng để va chạm với môi trường, vì vậy chúng ta muốn nó khớp hơn với model 3D. Làm cho nó lớn hơn một chút bằng cách kéo chấm màu cam trong viewport. Hình cầu của tôi có bán kính khoảng ``0.8`` mét.
 
-Then, move the collision shape up so its bottom roughly aligns with the grid's plane.
+Sau đó, di chuyển collision shape lên để đáy của nó gần thẳng hàng với mặt phẳng của lưới.
 
 .. image:: img/02.player_input/moving_the_sphere_up.png
 
-To make moving the shape easier, you can toggle the model's visibility by clicking
-the **eye icon** next to the ``Character`` or the ``Pivot`` nodes.
+Để di chuyển shape dễ hơn, bạn có thể bật tắt khả năng hiển thị của model bằng cách nhấp vào **eye icon** bên cạnh node ``Character`` hoặc ``Pivot``.
 
 .. image:: img/02.player_input/toggling_visibility.webp
 
-Save the scene as ``player.tscn``.
+Lưu scene với tên ``player.tscn``.
 
-With the nodes ready, we can almost get coding. But first, we need to define
-some input actions.
+Khi các node đã sẵn sàng, chúng ta gần như có thể bắt đầu viết code. Nhưng trước hết, chúng ta cần định nghĩa một số action đầu vào.
 
 .. _doc_first_3d_game_input_actions:
 
-Creating input actions
+Tạo các action đầu vào
 ----------------------
 
-To move the character, we will listen to the player's input, like pressing the
-arrow keys. In Godot, while we could write all the key bindings in code, there's
-a powerful system that allows you to assign a label to a set of keys and
-buttons. This simplifies our scripts and makes them more readable.
+Để di chuyển nhân vật, chúng ta sẽ lắng nghe đầu vào của người chơi, chẳng hạn như việc nhấn các phím mũi tên. Trong Godot, dù có thể viết tất cả key binding trong code, vẫn có một hệ thống mạnh mẽ cho phép bạn gán một nhãn cho một nhóm phím và nút. Điều này giúp các script đơn giản hơn và dễ đọc hơn.
 
-This system is the Input Map. To access its editor, head to the **Project** menu
-and select **Project Settings...**.
+Hệ thống này là Input Map. Để mở trình chỉnh sửa, hãy đi tới menu **Project** và chọn **Project Settings...**.
 
 .. image:: img/02.player_input/project_settings.webp
 
-At the top, there are multiple tabs. Click on **Input Map**. This window allows
-you to add new actions at the top; they are your labels. In the bottom part, you
-can bind keys to these actions.
+Ở phía trên có nhiều tab. Nhấp vào **Input Map**. Cửa sổ này cho phép bạn thêm action mới ở phía trên; chúng chính là các nhãn của bạn. Ở phần dưới, bạn có thể bind các phím vào những action này.
 
 .. image:: img/02.player_input/input_map_tab.webp
 
-Godot projects come with some predefined actions designed for user interface
-design (see above screenshot). These will become visible if you enable the
-**Show Built-in Actions** toggle. We could use these here, but instead we're
-defining our own to support gamepads. Leave **Show Built-in Actions** disabled.
+Các project Godot đi kèm một số action được định nghĩa sẵn dành cho thiết kế giao diện người dùng (xem ảnh chụp màn hình ở trên). Các action này sẽ hiển thị nếu bạn bật tùy chọn **Show Built-in Actions**. Chúng ta có thể sử dụng chúng ở đây, nhưng thay vào đó sẽ tự định nghĩa action để hỗ trợ gamepad. Hãy để **Show Built-in Actions** ở trạng thái tắt.
 
-We're going to name our actions ``move_left``, ``move_right``, ``move_forward``,
-``move_back``, and ``jump``.
+Chúng ta sẽ đặt tên cho các action là ``move_left``, ``move_right``, ``move_forward``, ``move_back`` và ``jump``.
 
-To add an action, write its name in the bar at the top and press Enter or click the **Add** button.
+Để thêm một action, nhập tên của action vào thanh ở phía trên rồi nhấn Enter hoặc nhấp vào nút **Add**.
 
 .. image:: img/02.player_input/adding_action.webp
 
-Create the following five actions:
+Tạo năm action sau:
 
 .. image:: img/02.player_input/actions_list_empty.webp
 
-To bind a key or button to an action, click the "**+**" button to its right. Do this
-for ``move_left``. Press the left arrow key and click **OK**.
+Để bind một phím hoặc nút vào một action, nhấp vào nút "**+**" ở bên phải action đó. Làm vậy cho ``move_left``. Nhấn phím mũi tên trái rồi nhấp vào **OK**.
 
 .. image:: img/02.player_input/left_inputmap.webp
 
-Bind also the :kbd:`A` key, onto the action ``move_left``.
+Đồng thời bind phím :kbd:`A` vào action ``move_left``.
 
 .. image:: img/02.player_input/keyboard_keys.webp
 
-Let's now add support for a gamepad's left joystick. Click the "**+**" button again
-but this time, select the input within the input tree yourself.
-Select the negative X axis of the left joystick under **Joypad Axes**.
+Bây giờ hãy thêm hỗ trợ cho joystick trái của gamepad. Nhấp lại vào nút "**+**", nhưng lần này hãy tự chọn input trong cây input. Chọn trục X âm của joystick trái bên dưới **Joypad Axes**.
 
 .. image:: img/02.player_input/joystick_axis_input.webp
 
-Leave the other values as default and press **OK**.
+Giữ nguyên các giá trị khác ở mặc định rồi nhấn **OK**.
 
 .. note::
 
-    If you want controllers to have different input actions, you should use the Devices option in Additional Options. Device 0 corresponds to the first plugged gamepad, Device 1 corresponds to the second plugged gamepad, and so on.
+    Nếu muốn các controller có các action đầu vào khác nhau, bạn nên sử dụng tùy chọn Devices trong Additional Options. Device 0 tương ứng với gamepad đầu tiên được cắm vào, Device 1 tương ứng với gamepad thứ hai được cắm vào, v.v.
 
-Do the same for the other input actions. For example, bind the right arrow, D,
-and the left joystick's positive axis to ``move_right``. After binding all keys,
-your interface should look like this.
+Làm tương tự cho các action đầu vào còn lại. Ví dụ, bind phím mũi tên phải, D và trục dương của joystick trái vào ``move_right``. Sau khi bind tất cả các phím, giao diện của bạn sẽ trông như thế này.
 
 .. image:: img/02.player_input/move_inputs_mapped.webp
 
-The final action to set up is the ``jump`` action. Bind the Space key and the gamepad's
-A button located under **Joypad Buttons**.
+Action cuối cùng cần thiết lập là action ``jump``. Bind phím Space và nút A của gamepad, nằm bên dưới **Joypad Buttons**.
 
 .. image:: img/02.player_input/joy_button_option.webp
 
-Your jump input action should look like this.
+Action đầu vào cho thao tác nhảy của bạn sẽ trông như thế này.
 
 .. image:: img/02.player_input/jump_input_action.webp
 
-That's all the actions we need for this game. You can use this menu to label any
-groups of keys and buttons in your projects.
+Đó là tất cả các action chúng ta cần cho game này. Bạn có thể sử dụng menu này để gán nhãn cho mọi nhóm phím và nút trong các project của mình.
 
-In the next part, we'll code and test the player's movement.
+Trong phần tiếp theo, chúng ta sẽ lập trình và kiểm thử chuyển động của người chơi.

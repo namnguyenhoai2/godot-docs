@@ -2,58 +2,40 @@
 
 .. _doc_your_first_3d_game:
 
-Your first 3D game
-==================
+Trò chơi 3D đầu tiên của bạn
+============================
 
-In this step-by-step tutorial series, you will create your first complete 3D
-game with Godot. By the end of the series, you will have a simple yet finished
-project of your own like the animated gif below.
+Trong loạt hướng dẫn từng bước này, bạn sẽ tạo trò chơi 3D hoàn chỉnh đầu tiên của mình với Godot. Khi hoàn thành loạt bài, bạn sẽ có một dự án đơn giản nhưng hoàn chỉnh do chính mình thực hiện, giống như ảnh GIF động bên dưới.
 
 |image0|
 
-The game we'll code here is similar to :ref:`doc_your_first_2d_game`, with a twist:
-you can now jump and your goal is to squash the creeps. This way, you will both
-**recognize patterns** you learned in the previous tutorial and **build upon
-them** with new code and features.
+Trò chơi chúng ta sẽ lập trình ở đây tương tự :ref:`doc_your_first_2d_game`, nhưng có một điểm khác biệt: giờ đây bạn có thể nhảy và mục tiêu của bạn là nghiền bẹp những con quái. Nhờ đó, bạn vừa **nhận ra các mẫu** đã học trong hướng dẫn trước, vừa **xây dựng dựa trên chúng** bằng mã và tính năng mới.
 
-You will learn to:
+Bạn sẽ học cách:
 
-- Work with 3D coordinates with a jumping mechanic.
-- Use kinematic bodies to move 3D characters and detect when and how they
-  collide.
-- Use physics layers and a group to detect interactions with specific entities.
-- Code basic procedural gameplay by instancing monsters at regular time
-  intervals.
-- Design a movement animation and change its speed at runtime.
-- Draw a user interface on a 3D game.
+- Làm việc với tọa độ 3D bằng cơ chế nhảy.
+- Sử dụng các vật thể động học để di chuyển nhân vật 3D và phát hiện thời điểm cũng như cách chúng va chạm.
+- Sử dụng các lớp vật lý và một group để phát hiện tương tác với những thực thể cụ thể.
+- Lập trình gameplay thủ tục cơ bản bằng cách tạo instance các quái vật theo những khoảng thời gian đều đặn.
+- Thiết kế animation chuyển động và thay đổi tốc độ của nó trong runtime.
+- Vẽ giao diện người dùng trên trò chơi 3D.
 
-And more.
+Và nhiều nội dung khác.
 
-This tutorial is for beginners who followed the complete getting started series.
-We'll start slow with detailed instructions and shorten them as we do similar
-steps. If you're an experienced programmer, you can browse the complete demo's
-source code here:
+Hướng dẫn này dành cho những người mới bắt đầu đã hoàn thành toàn bộ loạt bài nhập môn. Chúng ta sẽ bắt đầu chậm rãi với các hướng dẫn chi tiết, rồi rút gọn khi thực hiện những bước tương tự. Nếu bạn là một lập trình viên có kinh nghiệm, bạn có thể xem mã nguồn của bản demo hoàn chỉnh tại đây:
 
-- `Squash the Creeps source code (GDScript) <https://github.com/godotengine/godot-demo-projects/tree/master/3d/squash_the_creeps>`__
-- `Squash the Creeps source code (C#) <https://github.com/godotengine/godot-demo-projects/tree/master/mono/squash_the_creeps>`__
+- `Mã nguồn Squash the Creeps (GDScript) <https://github.com/godotengine/godot-demo-projects/tree/master/3d/squash_the_creeps>`__
+- `Mã nguồn Squash the Creeps (C#) <https://github.com/godotengine/godot-demo-projects/tree/master/mono/squash_the_creeps>`__
 
 .. note::
 
-    You can follow this series without having done the 2D one. However, if
-    you're new to game development, we recommend you to start with 2D. 3D game
-    code is always more complex and the 2D series will give you foundations to
-    follow along more comfortably.
+    Bạn có thể theo dõi loạt bài này mà không cần hoàn thành loạt bài 2D. Tuy nhiên, nếu bạn mới làm game, chúng tôi khuyên bạn nên bắt đầu với 2D. Mã game 3D luôn phức tạp hơn, và loạt bài 2D sẽ cung cấp cho bạn nền tảng để theo dõi các bài học một cách dễ dàng hơn.
 
-We prepared some game assets so we can jump straight to the code. You can
-download them here: `Squash the Creeps assets
-<https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/3d_squash_the_creeps_starter.zip>`__.
+Chúng tôi đã chuẩn bị sẵn một số tài nguyên game để có thể bắt tay ngay vào viết mã. Bạn có thể tải chúng tại đây: `Tài nguyên Squash the Creeps <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/3d_squash_the_creeps_starter.zip>`__.
 
-We will first work on a basic prototype for the player's movement. We will then
-add the monsters that we'll spawn randomly around the screen. After that, we'll
-implement the jump and squashing mechanic before refining the game with some
-nice animation. We'll wrap up with the score and the retry screen.
+Trước tiên, chúng ta sẽ xây dựng prototype cơ bản cho chuyển động của người chơi. Sau đó, chúng ta sẽ thêm các quái vật được tạo ngẫu nhiên xung quanh màn hình. Tiếp theo, chúng ta sẽ triển khai cơ chế nhảy và nghiền bẹp trước khi hoàn thiện trò chơi bằng một số animation đẹp mắt. Cuối cùng, chúng ta sẽ thêm điểm số và màn hình chơi lại.
 
-Contents
+Nội dung
 --------
 
 .. toctree::

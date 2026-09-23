@@ -1,204 +1,160 @@
 .. _doc_first_3d_game_character_animation:
 
-Character animation
-===================
+Hoạt ảnh nhân vật
+=================
 
-In this final lesson, we'll use Godot's built-in animation tools to make our
-characters float and flap. You'll learn to design animations in the editor and
-use code to make your game feel alive.
+Trong bài học cuối cùng này, chúng ta sẽ sử dụng các công cụ hoạt ảnh tích hợp sẵn của Godot để khiến nhân vật bay lơ lửng và vỗ cánh. Bạn sẽ học cách thiết kế hoạt ảnh trong trình chỉnh sửa và sử dụng code để khiến trò chơi trở nên sống động.
 
 |image0|
 
-We'll start with an introduction to using the animation editor.
+Trước tiên, chúng ta sẽ tìm hiểu cách sử dụng trình chỉnh sửa hoạt ảnh.
 
-Using the animation editor
---------------------------
+Sử dụng trình chỉnh sửa hoạt ảnh
+--------------------------------
 
-The engine comes with tools to author animations in the editor. You can then use
-the code to play and control them at runtime.
+Engine đi kèm các công cụ để tạo hoạt ảnh trong trình chỉnh sửa. Sau đó, bạn có thể sử dụng code để phát và điều khiển chúng khi runtime.
 
-Open the player scene, select the ``Player`` node, and add an :ref:`AnimationPlayer <class_AnimationPlayer>` node.
+Mở player scene, chọn node ``Player``, rồi thêm node :ref:`AnimationPlayer <class_AnimationPlayer>`.
 
-The *Animation* dock appears in the bottom panel.
+Dock *Animation* xuất hiện trong panel phía dưới.
 
 |image1|
 
-It features a toolbar and the animation drop-down menu at the top, a track
-editor in the middle that's currently empty, and filter, snap, and zoom options
-at the bottom.
+Thanh công cụ và menu thả xuống animation nằm ở phía trên, trình chỉnh sửa track ở giữa hiện đang trống, còn các tùy chọn filter, snap và zoom nằm ở phía dưới.
 
-Let's create an animation. Click on *Animation -> New*.
+Hãy tạo một animation. Nhấp vào *Animation -> New*.
 
 |image2|
 
-Name the animation "float".
+Đặt tên cho animation là "float".
 
 |image3|
 
-Once you've created the animation, the timeline appears with numbers representing
-time in seconds.
+Sau khi tạo animation, timeline sẽ xuất hiện với các số biểu thị thời gian tính bằng giây.
 
 |image4|
 
-We want the animation to start playback automatically at the start of the game.
-Also, it should loop.
+Chúng ta muốn animation tự động bắt đầu phát khi game bắt đầu. Ngoài ra, animation cũng cần lặp lại.
 
-To do so, you can click the autoplay button (|Autoplay|) in the animation toolbar
-and the looping arrows, respectively.
+Để làm vậy, bạn có thể lần lượt nhấp vào nút autoplay (|Autoplay|) trên thanh công cụ animation và các mũi tên lặp.
 
 |image5|
 
-You can also pin the animation editor by clicking the pin icon in the top-right.
-This prevents it from folding when you click on the viewport and deselect the
-nodes.
+Bạn cũng có thể ghim trình chỉnh sửa animation bằng cách nhấp vào biểu tượng ghim ở góc trên bên phải. Thao tác này ngăn trình chỉnh sửa thu gọn khi bạn nhấp vào viewport và bỏ chọn các node.
 
 |image6|
 
-Set the animation duration to ``1.2`` seconds in the top-right of the dock.
+Đặt thời lượng animation thành ``1.2`` giây ở góc trên bên phải của dock.
 
-You should see the gray ribbon widen a bit. It shows you the start and end of
-your animation and the vertical blue line is your time cursor.
+Bạn sẽ thấy dải màu xám rộng ra một chút. Dải này cho biết điểm bắt đầu và kết thúc của animation, còn đường màu xanh dọc là con trỏ thời gian.
 
 |image7|
 
-You can click and drag the slider in the bottom-right to zoom in and out of the
-timeline.
+Bạn có thể nhấp và kéo thanh trượt ở góc dưới bên phải để phóng to hoặc thu nhỏ timeline.
 
 |image8|
 
-The float animation
--------------------
+Animation float
+---------------
 
-With the animation player node, you can animate most properties on as many nodes
-as you need. Notice the key icon next to properties in the *Inspector*. You can
-click any of them to create a keyframe, a time and value pair for the
-corresponding property. The keyframe gets inserted where your time cursor is in
-the timeline.
+Với node animation player, bạn có thể tạo animation cho hầu hết thuộc tính trên bao nhiêu node tùy ý. Hãy chú ý đến biểu tượng key bên cạnh các thuộc tính trong *Inspector*. Bạn có thể nhấp vào bất kỳ biểu tượng nào để tạo một keyframe, tức một cặp thời gian và giá trị tương ứng với thuộc tính đó. Keyframe sẽ được chèn tại vị trí con trỏ thời gian trên timeline.
 
-Let's insert our first keys. Here, we will animate both the position and the
-rotation of the ``Character`` node.
+Hãy chèn các key đầu tiên. Ở đây, chúng ta sẽ tạo animation cho cả position và rotation của node ``Character``.
 
-Select the ``Character`` and in the *Inspector* expand the *Transform* section. Click the key icon next to *Position*, and *Rotation*.
+Chọn ``Character``, rồi trong *Inspector*, mở rộng phần *Transform*. Nhấp vào biểu tượng key bên cạnh *Position* và *Rotation*.
 
 |image9|
 
 .. image:: img/09.adding_animations/curves.webp
 
-For this tutorial, just create RESET Track(s) which is the default choice
+Trong tutorial này, chỉ cần tạo RESET Track(s), đây là lựa chọn mặc định
 
-Two tracks appear in the editor with a diamond icon representing each keyframe.
+Hai track xuất hiện trong trình chỉnh sửa, với một biểu tượng hình thoi đại diện cho mỗi keyframe.
 
 |image10|
 
-You can click and drag on the diamonds to move them in time. Move the
-position key to ``0.3`` seconds and the rotation key to ``0.1`` seconds.
+Bạn có thể nhấp và kéo các hình thoi để di chuyển chúng theo thời gian. Di chuyển key position đến ``0.3`` giây và key rotation đến ``0.1`` giây.
 
 |image11|
 
-Move the time cursor to ``0.5`` seconds by clicking and dragging on the gray
-timeline, or by entering it into the input field.
+Di chuyển con trỏ thời gian đến ``0.5`` giây bằng cách nhấp và kéo trên timeline màu xám, hoặc nhập giá trị đó vào trường input.
 
 |timeline_05_click|
 
-In the *Inspector*, set the *Position*'s *Y* axis to ``0.65`` meters and the
-*Rotation*' *X* axis to ``8``.
+Trong *Inspector*, đặt trục *Y* của *Position* thành ``0.65`` mét và trục *X* của *Rotation*' thành ``8``.
 
-If you don't see the properties in the *Inspector* panel, first click on the
-``Character`` node again in the *Scene* dock.
+Nếu không thấy các thuộc tính trong panel *Inspector*, trước tiên hãy nhấp lại vào node ``Character`` trong dock *Scene*.
 
 |image12|
 
-Create a keyframe for both properties
+Tạo keyframe cho cả hai thuộc tính
 
 |second_keys_both|
 
-Now, move the position keyframe to ``0.7``
-seconds by dragging it on the timeline.
+Bây giờ, di chuyển keyframe position đến ``0.7`` giây bằng cách kéo nó trên timeline.
 
 |image13|
 
 .. note::
 
-    A lecture on the principles of animation is beyond the scope of this
-    tutorial. Just note that you don't want to time and space everything evenly.
-    Instead, animators play with timing and spacing, two core animation
-    principles. You want to offset and contrast in your character's motion to
-    make them feel alive.
+    Một bài giảng về các nguyên tắc hoạt ảnh nằm ngoài phạm vi của tutorial này. Chỉ cần lưu ý rằng bạn không nên chia đều thời gian và khoảng cách cho mọi thứ. Thay vào đó, animator sẽ điều chỉnh thời gian và khoảng cách, là hai nguyên tắc cốt lõi của hoạt ảnh. Bạn nên tạo độ lệch và tương phản trong chuyển động của nhân vật để khiến nhân vật có cảm giác sống động.
 
-Move the time cursor to the end of the animation, at ``1.2`` seconds. Set the Y
-position to about ``0.35`` and the X rotation to ``-9`` degrees. Once again,
-create a key for both properties.
+Di chuyển con trỏ thời gian đến cuối animation, tại ``1.2`` giây. Đặt position Y thành khoảng ``0.35`` và rotation X thành ``-9`` độ. Một lần nữa, hãy tạo key cho cả hai thuộc tính.
 
 |animation_final_keyframes|
 
-You can preview the result by clicking the play button or pressing :kbd:`Shift + D`.
-Click the stop button or press :kbd:`S` to stop playback.
+Bạn có thể xem trước kết quả bằng cách nhấp vào nút play hoặc nhấn :kbd:`Shift + D`. Nhấp vào nút stop hoặc nhấn :kbd:`S` để dừng phát.
 
 |image14|
 
-You can see that the engine interpolates between your keyframes to produce a
-continuous animation. At the moment, though, the motion feels very robotic. This
-is because the default interpolation is linear, causing constant transitions,
-unlike how living things move in the real world.
+Bạn có thể thấy engine nội suy giữa các keyframe để tạo ra một animation liên tục. Tuy nhiên, hiện tại chuyển động trông khá máy móc. Nguyên nhân là interpolation mặc định có dạng tuyến tính, khiến các chuyển tiếp diễn ra với tốc độ không đổi, không giống cách các vật thể sống chuyển động trong thế giới thực.
 
-We can control the transition between keyframes using easing curves.
+Chúng ta có thể kiểm soát chuyển tiếp giữa các keyframe bằng các đường cong easing.
 
-Click and drag around the first two keys in the timeline to box select them.
+Nhấp và kéo quanh hai key đầu tiên trên timeline để chọn chúng bằng khung.
 
 |image15|
 
-You can edit the properties of both keys simultaneously in the *Inspector*,
-where you can see an *Easing* property.
+Bạn có thể chỉnh sửa đồng thời thuộc tính của cả hai key trong *Inspector*, tại đó bạn sẽ thấy thuộc tính *Easing*.
 
 |image16|
 
-Click and drag on the curve, pulling it towards the left. This will make it
-ease-out, that is to say, transition fast initially and slow down as the time
-cursor reaches the next keyframe.
+Nhấp và kéo đường cong về phía bên trái. Thao tác này sẽ tạo ease-out, nghĩa là chuyển tiếp nhanh lúc đầu rồi chậm dần khi con trỏ thời gian tiến đến keyframe tiếp theo.
 
 |image17|
 
-Play the animation again to see the difference. The first half should already
-feel a bit bouncier.
+Phát lại animation để thấy sự khác biệt. Nửa đầu sẽ có cảm giác nảy hơn một chút.
 
-Apply an ease-out to the second keyframe in the rotation track.
+Áp dụng ease-out cho keyframe thứ hai trong track rotation.
 
 |image18|
 
-Do the opposite for the second position keyframe, dragging it to the right.
+Thực hiện ngược lại với keyframe position thứ hai, kéo nó sang bên phải.
 
 |image19|
 
-Your animation should look something like this.
+Animation của bạn sẽ trông tương tự như thế này.
 
 |image20|
 
 .. note::
 
-    Animations update the properties of the animated nodes every frame,
-    overriding initial values. If we directly animated the *Player* node, it
-    would prevent us from moving it in code. This is where the *Pivot* node
-    comes in handy: even though we animated the *Character*, we can still move
-    and rotate the *Pivot* and layer changes on top of the animation in a
-    script.
+    Animation cập nhật các thuộc tính của node được tạo animation ở mỗi frame, ghi đè các giá trị ban đầu. Nếu tạo animation trực tiếp cho node *Player*, chúng ta sẽ không thể di chuyển node đó bằng code. Đây là lúc node *Pivot* trở nên hữu ích: mặc dù đã tạo animation cho *Character*, chúng ta vẫn có thể di chuyển và xoay *Pivot*, rồi áp dụng các thay đổi bổ sung lên animation trong một script.
 
-If you play the game, the player's creature will now float!
+Nếu chạy game, sinh vật của player giờ sẽ bay lơ lửng!
 
-If the creature is a little too close to the floor, you can move the ``Pivot`` up
-to offset it.
+Nếu sinh vật hơi quá gần sàn, bạn có thể di chuyển ``Pivot`` lên trên để tạo độ lệch.
 
-Controlling the animation in code
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Điều khiển animation bằng code
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We can use code to control the animation playback based on the player's input.
-Let's change the animation speed when the character is moving.
+Chúng ta có thể sử dụng code để điều khiển việc phát animation dựa trên input của player. Hãy thay đổi tốc độ animation khi nhân vật đang di chuyển.
 
-Open the ``Player``'s script by clicking the script icon next to it.
+Mở script của ``Player`` bằng cách nhấp vào biểu tượng script bên cạnh nó.
 
 |image21|
 
-In ``_physics_process()``, after the line where we check the ``direction``
-vector, add the following code.
+Trong ``_physics_process()``, sau dòng kiểm tra vector ``direction``, hãy thêm đoạn mã sau.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -227,12 +183,9 @@ vector, add the following code.
         }
     }
 
-This code makes it so when the player moves, we multiply the playback speed by
-``4``. When they stop, we reset it to normal.
+Đoạn mã này khiến khi người chơi di chuyển, chúng ta nhân tốc độ phát với ``4``. Khi họ dừng lại, chúng ta đặt tốc độ về mức bình thường.
 
-We mentioned that the ``Pivot`` could layer transforms on top of the animation. We
-can make the character arc when jumping using the following line of code. Add it
-at the end of ``_physics_process()``.
+Chúng ta đã đề cập rằng ``Pivot`` có thể xếp các phép biến đổi chồng lên animation. Chúng ta có thể làm cho nhân vật vung người khi nhảy bằng dòng mã sau. Hãy thêm dòng này vào cuối ``_physics_process()``.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -250,31 +203,20 @@ at the end of ``_physics_process()``.
         pivot.Rotation = new Vector3(Mathf.Pi / 6.0f * Velocity.Y / JumpImpulse, pivot.Rotation.Y, pivot.Rotation.Z);
     }
 
-Animating the mobs
-------------------
+Tạo animation cho mobs
+----------------------
 
-Here's another nice trick with animations in Godot: as long as you use a similar
-node structure, you can copy them to different scenes.
+Đây là một thủ thuật hữu ích khác với animation trong Godot: miễn là bạn sử dụng cấu trúc node tương tự, bạn có thể sao chép chúng sang các scene khác.
 
-For example, both the ``Mob`` and the ``Player`` scenes have a ``Pivot`` and a
-``Character`` node, so we can reuse animations between them.
+Ví dụ, cả scene ``Mob`` và ``Player`` đều có node ``Pivot`` và ``Character``, vì vậy chúng ta có thể sử dụng lại animation giữa hai scene.
 
-Open the *Player* scene, select the AnimationPlayer node and then click on
-**Animation > Manage Animations...**. Click the *Copy animation to clipboard* button
-(two small squares) alongside the *float* animation. Click OK to close the window.
+Mở scene *Player*, chọn node AnimationPlayer rồi nhấp vào **Animation > Manage Animations...**. Nhấp vào nút *Copy animation to clipboard* (hai hình vuông nhỏ) bên cạnh animation *float*. Nhấp OK để đóng cửa sổ.
 
-Then open ``mob.tscn``, create an :ref:`AnimationPlayer <class_AnimationPlayer>` child
-node and select it. Click **Animation > Manage Animations**, then **New Library**. You
-should see the message "Global library will be created." Leave the text field blank and
-click OK. Click the *Paste* icon (clipboard) and it should appear in the window. Click OK
-to close the window.
+Sau đó mở ``mob.tscn``, tạo một node con :ref:`AnimationPlayer <class_AnimationPlayer>` rồi chọn node đó. Nhấp vào **Animation > Manage Animations**, sau đó chọn **New Library**. Bạn sẽ thấy thông báo "Global library will be created." Để trống trường văn bản rồi nhấp OK. Nhấp vào biểu tượng *Paste* (clipboard), và animation sẽ xuất hiện trong cửa sổ. Nhấp OK để đóng cửa sổ.
 
-Next, make sure that the autoplay button (|Autoplay|) and the looping
-arrows (Animation looping) are also turned on in the animation editor in the bottom panel.
-That's it; all monsters will now play the float animation.
+Tiếp theo, hãy đảm bảo rằng nút autoplay (|Autoplay|) và các mũi tên lặp (Animation looping) cũng được bật trong trình chỉnh sửa animation ở panel phía dưới. Vậy là xong; giờ tất cả quái vật sẽ phát animation float.
 
-We can change the playback speed based on the creature's ``random_speed``. Open
-the *Mob*'s script and at the end of the ``initialize()`` function, add the following line.
+Chúng ta có thể thay đổi tốc độ phát dựa trên ``random_speed`` của sinh vật. Mở script của *Mob* rồi thêm dòng sau vào cuối hàm ``initialize()``.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -291,15 +233,13 @@ the *Mob*'s script and at the end of the ``initialize()`` function, add the foll
         GetNode<AnimationPlayer>("AnimationPlayer").SpeedScale = randomSpeed / MinSpeed;
     }
 
-And with that, you finished coding your first complete 3D game.
+Vậy là bạn đã hoàn tất việc lập trình game 3D hoàn chỉnh đầu tiên của mình.
 
-**Congratulations**!
+**Chúc mừng**!
 
-In the next part, we'll quickly recap what you learned and give you some links
-to keep learning more. But for now, here are the complete ``player.gd`` and
-``mob.gd`` so you can check your code against them.
+Trong phần tiếp theo, chúng ta sẽ nhanh chóng ôn lại những gì bạn đã học và cung cấp một số liên kết để bạn tiếp tục học thêm. Nhưng trước hết, đây là các ``player.gd`` và ``mob.gd`` hoàn chỉnh để bạn có thể đối chiếu với mã của mình.
 
-Here's the *Player* script.
+Đây là script *Player*.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -308,84 +248,84 @@ Here's the *Player* script.
 
     signal hit
 
-    # How fast the player moves in meters per second.
+    # Tốc độ di chuyển của người chơi, tính bằng mét trên giây.
     @export var speed = 14
-    # The downward acceleration while in the air, in meters per second squared.
+    # Gia tốc hướng xuống khi đang ở trên không, tính bằng mét trên giây bình phương.
     @export var fall_acceleration = 75
-    # Vertical impulse applied to the character upon jumping in meters per second.
+    # Xung lực theo phương dọc tác dụng lên nhân vật khi nhảy, tính bằng mét trên giây.
     @export var jump_impulse = 20
-    # Vertical impulse applied to the character upon bouncing over a mob
-    # in meters per second.
+    # Xung lực theo phương dọc tác dụng lên nhân vật khi bật nảy trên một mob
+    # tính bằng mét trên giây.
     @export var bounce_impulse = 16
 
     var target_velocity = Vector3.ZERO
 
 
     func _physics_process(delta):
-        # We create a local variable to store the input direction
+        # Tạo một biến cục bộ để lưu hướng đầu vào
         var direction = Vector3.ZERO
 
-        # We check for each move input and update the direction accordingly
+        # Kiểm tra từng đầu vào di chuyển và cập nhật hướng tương ứng
         if Input.is_action_pressed("move_right"):
             direction.x = direction.x + 1
         if Input.is_action_pressed("move_left"):
             direction.x = direction.x - 1
         if Input.is_action_pressed("move_back"):
-            # Notice how we are working with the vector's x and z axes.
-            # In 3D, the XZ plane is the ground plane.
+            # Lưu ý rằng chúng ta đang làm việc với các trục x và z của vector.
+            # Trong 3D, mặt phẳng XZ là mặt phẳng mặt đất.
             direction.z = direction.z + 1
         if Input.is_action_pressed("move_forward"):
             direction.z = direction.z - 1
 
-        # Prevent diagonal movement being very fast
+        # Ngăn chuyển động theo đường chéo quá nhanh
         if direction != Vector3.ZERO:
             direction = direction.normalized()
-            # Setting the basis property will affect the rotation of the node.
+            # Việc thiết lập thuộc tính basis sẽ ảnh hưởng đến phép xoay của node.
             $Pivot.basis = Basis.looking_at(direction)
             $AnimationPlayer.speed_scale = 4
         else:
             $AnimationPlayer.speed_scale = 1
 
-        # Ground Velocity
+        # Vận tốc trên mặt đất
         target_velocity.x = direction.x * speed
         target_velocity.z = direction.z * speed
 
-        # Vertical Velocity
-        if not is_on_floor(): # If in the air, fall towards the floor
+        # Vận tốc theo phương dọc
+        if not is_on_floor(): # Nếu đang ở trên không, rơi xuống sàn
             target_velocity.y = target_velocity.y - (fall_acceleration * delta)
 
-        # Jumping.
+        # Nhảy.
         if is_on_floor() and Input.is_action_just_pressed("jump"):
             target_velocity.y = jump_impulse
 
-        # Iterate through all collisions that occurred this frame
-        # in C this would be for(int i = 0; i < collisions.Count; i++)
+        # Duyệt qua tất cả va chạm xảy ra trong frame này
+        # Trong C, đoạn này sẽ là for(int i = 0; i < collisions.Count; i++)
         for index in range(get_slide_collision_count()):
-            # We get one of the collisions with the player
+            # Lấy một trong các va chạm với người chơi
             var collision = get_slide_collision(index)
 
-            # If the collision is with ground
+            # Nếu va chạm xảy ra với mặt đất
             if collision.get_collider() == null:
                 continue
 
-            # If the collider is with a mob
+            # Nếu collider là một mob
             if collision.get_collider().is_in_group("mob"):
                 var mob = collision.get_collider()
-                # we check that we are hitting it from above.
+                # kiểm tra xem chúng ta có đang va vào nó từ phía trên hay không.
                 if Vector3.UP.dot(collision.get_normal()) > 0.1:
-                    # If so, we squash it and bounce.
+                    # Nếu đúng, làm bẹp nó và bật nảy.
                     mob.squash()
                     target_velocity.y = bounce_impulse
-                    # Prevent further duplicate calls.
+                    # Ngăn các lần gọi trùng lặp tiếp theo.
                     break
 
-        # Moving the Character
+        # Di chuyển Character
         velocity = target_velocity
         move_and_slide()
 
         $Pivot.rotation.x = PI / 6 * velocity.y / jump_impulse
 
-    # And this function at the bottom.
+    # Và hàm này ở phía dưới.
     func die():
         hit.emit()
         queue_free()
@@ -399,20 +339,20 @@ Here's the *Player* script.
 
     public partial class Player : CharacterBody3D
     {
-        // Emitted when the player was hit by a mob.
+        // Được phát ra khi người chơi bị một mob đánh trúng.
         [Signal]
         public delegate void HitEventHandler();
 
-        // How fast the player moves in meters per second.
+        // Tốc độ di chuyển của người chơi, tính bằng mét trên giây.
         [Export]
         public int Speed { get; set; } = 14;
-        // The downward acceleration when in the air, in meters per second squared.
+        // Gia tốc hướng xuống khi đang ở trên không, tính bằng mét trên giây bình phương.
         [Export]
         public int FallAcceleration { get; set; } = 75;
-        // Vertical impulse applied to the character upon jumping in meters per second.
+        // Xung lực theo phương dọc tác dụng lên nhân vật khi nhảy, tính bằng mét trên giây.
         [Export]
         public int JumpImpulse { get; set; } = 20;
-        // Vertical impulse applied to the character upon bouncing over a mob in meters per second.
+        // Xung lực theo phương dọc tác dụng lên nhân vật khi bật nảy trên một mob, tính bằng mét trên giây.
         [Export]
         public int BounceImpulse { get; set; } = 16;
 
@@ -420,10 +360,10 @@ Here's the *Player* script.
 
         public override void _PhysicsProcess(double delta)
         {
-            // We create a local variable to store the input direction.
+            // Tạo một biến cục bộ để lưu hướng đầu vào.
             var direction = Vector3.Zero;
 
-            // We check for each move input and update the direction accordingly.
+            // Kiểm tra từng đầu vào di chuyển và cập nhật hướng tương ứng.
             if (Input.IsActionPressed("move_right"))
             {
                 direction.X += 1.0f;
@@ -434,8 +374,8 @@ Here's the *Player* script.
             }
             if (Input.IsActionPressed("move_back"))
             {
-                // Notice how we are working with the vector's X and Z axes.
-                // In 3D, the XZ plane is the ground plane.
+                // Lưu ý rằng chúng ta đang làm việc với các trục X và Z của vector.
+                // Trong 3D, mặt phẳng XZ là mặt phẳng mặt đất.
                 direction.Z += 1.0f;
             }
             if (Input.IsActionPressed("move_forward"))
@@ -443,11 +383,11 @@ Here's the *Player* script.
                 direction.Z -= 1.0f;
             }
 
-            // Prevent diagonal movement being very fast.
+            // Ngăn chuyển động theo đường chéo quá nhanh.
             if (direction != Vector3.Zero)
             {
                 direction = direction.Normalized();
-                // Setting the basis property will affect the rotation of the node.
+                // Thiết lập thuộc tính basis sẽ ảnh hưởng đến phép xoay của node.
                 GetNode<Node3D>("Pivot").Basis = Basis.LookingAt(direction);
                 GetNode<AnimationPlayer>("AnimationPlayer").SpeedScale = 4;
             }
@@ -456,44 +396,44 @@ Here's the *Player* script.
                 GetNode<AnimationPlayer>("AnimationPlayer").SpeedScale = 1;
             }
 
-            // Ground velocity
+            // Vận tốc trên mặt đất
             _targetVelocity.X = direction.X * Speed;
             _targetVelocity.Z = direction.Z * Speed;
 
-            // Vertical velocity
+            // Vận tốc theo phương dọc
             if (!IsOnFloor())
             {
                 _targetVelocity.Y -= FallAcceleration * (float)delta;
             }
 
-            // Jumping.
+            // Nhảy.
             if (IsOnFloor() && Input.IsActionJustPressed("jump"))
             {
                 _targetVelocity.Y += JumpImpulse;
             }
 
-            // Iterate through all collisions that occurred this frame.
+            // Duyệt qua tất cả các va chạm xảy ra trong frame này.
             for (int index = 0; index < GetSlideCollisionCount(); index++)
             {
-                // We get one of the collisions with the player.
+                // Lấy một trong các va chạm với người chơi.
                 KinematicCollision3D collision = GetSlideCollision(index);
 
-                // If the collision is with a mob.
+                // Nếu va chạm là với một mob.
                 if (collision.GetCollider() is Mob mob)
                 {
-                    // We check that we are hitting it from above.
+                    // Kiểm tra xem chúng ta có va chạm từ phía trên hay không.
                     if (Vector3.Up.Dot(collision.GetNormal()) > 0.1f)
                     {
-                        // If so, we squash it and bounce.
+                        // Nếu đúng, nghiền bẹp nó và bật nảy.
                         mob.Squash();
                         _targetVelocity.Y = BounceImpulse;
-                        // Prevent further duplicate calls.
+                        // Ngăn các lệnh gọi trùng lặp tiếp theo.
                         break;
                     }
                 }
             }
 
-            // Moving the character
+            // Di chuyển nhân vật
             Velocity = _targetVelocity;
             MoveAndSlide();
 
@@ -514,39 +454,39 @@ Here's the *Player* script.
     }
 
 
-And the *Mob*'s script.
+Và script của *Mob*.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     extends CharacterBody3D
 
-    # Minimum speed of the mob in meters per second.
+    # Tốc độ tối thiểu của mob tính bằng mét trên giây.
     @export var min_speed = 10.0
-    # Maximum speed of the mob in meters per second.
+    # Tốc độ tối đa của mob tính bằng mét trên giây.
     @export var max_speed = 18.0
 
-    # Emitted when the player jumped on the mob
+    # Được phát ra khi người chơi nhảy lên mob
     signal squashed
 
     func _physics_process(_delta):
         move_and_slide()
 
-    # This function will be called from the Main scene.
+    # Hàm này sẽ được gọi từ scene Main.
     func initialize(start_position, player_position):
-        # We position the mob by placing it at start_position
-        # and rotate it towards player_position, so it looks at the player.
+        # Đặt vị trí của mob bằng cách đặt nó tại start_position
+        # và xoay nó về phía player_position để nó nhìn người chơi.
         look_at_from_position(start_position, player_position, Vector3.UP)
-        # Rotate this mob randomly within range of -45 and +45 degrees,
-        # so that it doesn't move directly towards the player.
+        # Xoay mob này ngẫu nhiên trong khoảng từ -45 đến +45 độ,
+        # để nó không di chuyển thẳng về phía người chơi.
         rotate_y(randf_range(-PI / 4, PI / 4))
 
-        # We calculate a random speed (float)
+        # Tính một tốc độ ngẫu nhiên (float)
         var random_speed = randf_range(min_speed, max_speed)
-        # We calculate a forward velocity that represents the speed.
+        # Tính một vận tốc hướng về phía trước biểu thị cho tốc độ.
         velocity = Vector3.FORWARD * random_speed
-        # We then rotate the velocity vector based on the mob's Y rotation
-        # in order to move in the direction the mob is looking.
+        # Sau đó xoay vector vận tốc dựa trên phép xoay Y của mob
+        # để di chuyển theo hướng mà mob đang nhìn.
         velocity = velocity.rotated(Vector3.UP, rotation.y)
 
         $AnimationPlayer.speed_scale = random_speed / min_speed
@@ -556,7 +496,7 @@ And the *Mob*'s script.
 
     func squash():
         squashed.emit()
-        queue_free() # Destroy this node
+        queue_free() # Hủy node này
 
  .. code-tab:: csharp
 
@@ -564,14 +504,14 @@ And the *Mob*'s script.
 
     public partial class Mob : CharacterBody3D
     {
-        // Emitted when the played jumped on the mob.
+        // Được phát ra khi người chơi nhảy lên mob.
         [Signal]
         public delegate void SquashedEventHandler();
 
-        // Minimum speed of the mob in meters per second
+        // Tốc độ tối thiểu của mob tính bằng mét trên giây
         [Export]
         public float MinSpeed { get; set; } = 10.0f;
-        // Maximum speed of the mob in meters per second
+        // Tốc độ tối đa của mob tính bằng mét trên giây
         [Export]
         public float MaxSpeed { get; set; } = 18.0f;
 
@@ -580,22 +520,22 @@ And the *Mob*'s script.
             MoveAndSlide();
         }
 
-        // This function will be called from the Main scene.
+        // Hàm này sẽ được gọi từ scene Main.
         public void Initialize(Vector3 startPosition, Vector3 playerPosition)
         {
-            // We position the mob by placing it at startPosition
-            // and rotate it towards playerPosition, so it looks at the player.
+            // Đặt vị trí của mob bằng cách đặt nó tại startPosition
+            // và xoay nó về phía playerPosition để nó nhìn người chơi.
             LookAtFromPosition(startPosition, playerPosition, Vector3.Up);
-            // Rotate this mob randomly within range of -45 and +45 degrees,
-            // so that it doesn't move directly towards the player.
+            // Xoay mob này ngẫu nhiên trong khoảng từ -45 đến +45 độ,
+            // để nó không di chuyển thẳng về phía người chơi.
             RotateY((float)GD.RandRange(-Mathf.Pi / 4.0, Mathf.Pi / 4.0));
 
-            // We calculate a random speed (float).
+            // Tính một tốc độ ngẫu nhiên (float).
             float randomSpeed = GD.RandRange(MinSpeed, MaxSpeed);
-            // We calculate a forward velocity that represents the speed.
+            // Tính một vận tốc hướng về phía trước biểu thị cho tốc độ.
             Velocity = Vector3.Forward * randomSpeed;
-            // We then rotate the velocity vector based on the mob's Y rotation
-            // in order to move in the direction the mob is looking.
+            // Sau đó xoay vector vận tốc dựa trên phép xoay Y của mob
+            // để di chuyển theo hướng mà mob đang nhìn.
             Velocity = Velocity.Rotated(Vector3.Up, Rotation.Y);
 
             GetNode<AnimationPlayer>("AnimationPlayer").SpeedScale = randomSpeed / MinSpeed;
@@ -604,7 +544,7 @@ And the *Mob*'s script.
         public void Squash()
         {
             EmitSignal(SignalName.Squashed);
-            QueueFree(); // Destroy this node
+            QueueFree(); // Hủy node này
         }
 
         private void OnVisibilityNotifierScreenExited()
