@@ -1,38 +1,30 @@
 .. _doc_2d_movement:
 
-2D movement overview
-====================
+Tổng quan về di chuyển 2D
+=========================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Every beginner has been there: "How do I move my character?" Depending on the
-style of game you're making, you may have special requirements, but in general
-the movement in most 2D games is based on a small number of designs.
+Mọi người mới bắt đầu đều từng đặt câu hỏi: "Làm thế nào để di chuyển nhân vật?" Tùy thuộc vào phong cách trò chơi bạn đang tạo, bạn có thể có những yêu cầu đặc biệt, nhưng nhìn chung, chuyển động trong hầu hết trò chơi 2D dựa trên một số ít kiểu thiết kế.
 
-We'll use :ref:`CharacterBody2D <class_CharacterBody2D>` for these examples,
-but the principles will apply to other node types (Area2D, RigidBody2D) as well.
+Chúng ta sẽ sử dụng :ref:`CharacterBody2D <class_CharacterBody2D>` cho các ví dụ này, nhưng các nguyên tắc cũng áp dụng cho những loại node khác (Area2D, RigidBody2D).
 
 .. _doc_2d_movement_setup:
 
-Setup
------
+Thiết lập
+---------
 
-Each example below uses the same scene setup. Start with a ``CharacterBody2D`` with two
-children: ``Sprite2D`` and ``CollisionShape2D``. You can use the Godot icon (``icon.svg``)
-for the Sprite2D's texture or use any other 2D image you have.
+Mỗi ví dụ dưới đây đều sử dụng cùng một thiết lập scene. Bắt đầu với một ``CharacterBody2D`` có hai node con: ``Sprite2D`` và ``CollisionShape2D``. Bạn có thể sử dụng biểu tượng Godot (``icon.svg``) làm texture cho Sprite2D hoặc dùng bất kỳ hình ảnh 2D nào khác mà bạn có.
 
-Open ``Project -> Project Settings`` and select the "Input Map" tab. Add the following
-input actions (see :ref:`InputEvent <doc_inputevent>` for details):
+Mở ``Project -> Project Settings`` và chọn tab "Input Map". Thêm các input action sau (xem :ref:`InputEvent <doc_inputevent>` để biết chi tiết):
 
 .. image:: img/movement_inputs.webp
 
-8-way movement
---------------
+Di chuyển 8 hướng
+-----------------
 
-In this scenario, you want the user to press the four directional keys (up/left/down/right
-or W/A/S/D) and move in the selected direction. The name "8-way movement" comes from the
-fact that the player can move diagonally by pressing two keys at the same time.
+Trong tình huống này, bạn muốn người dùng nhấn bốn phím điều hướng (lên/trái/xuống/phải hoặc W/A/S/D) và di chuyển theo hướng đã chọn. Tên gọi "di chuyển 8 hướng" xuất phát từ việc người chơi có thể di chuyển theo đường chéo bằng cách nhấn hai phím cùng lúc.
 
 .. video:: video/movement_8way.webm
     :alt: 8-way movement
@@ -42,7 +34,7 @@ fact that the player can move diagonally by pressing two keys at the same time.
     :align: default
     :width: 100%
 
-Attach a script to the character body and add the following code:
+Gắn một script vào character body và thêm đoạn mã sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -82,27 +74,21 @@ Attach a script to the character body and add the following code:
         }
     }
 
-In the ``get_input()`` function, we use :ref:`Input <class_Input>` ``get_vector()`` to check for the
-four key events and sum return a direction vector.
+Trong hàm ``get_input()``, chúng ta sử dụng :ref:`Input <class_Input>` ``get_vector()`` để kiểm tra bốn sự kiện phím và cộng lại thành một vector hướng.
 
-We can then set our velocity by multiplying this direction vector, which has a
-length of ``1``, by our desired speed.
+Sau đó, chúng ta có thể thiết lập velocity bằng cách nhân vector hướng này, vốn có độ dài ``1``, với tốc độ mong muốn.
 
-.. tip:: If you've never used vector math before, or need a refresher,
-         you can see an explanation of vector usage in Godot at :ref:`doc_vector_math`.
+.. tip:: Nếu bạn chưa từng sử dụng phép toán vector trước đây hoặc cần ôn lại, bạn có thể xem phần giải thích về cách sử dụng vector trong Godot tại :ref:`doc_vector_math`.
 
 .. note::
 
-    If the code above does nothing when you press the keys, double-check that
-    you've set up input actions correctly as described in the
-    :ref:`doc_2d_movement_setup` part of this tutorial.
+    Nếu đoạn mã trên không làm gì khi bạn nhấn các phím, hãy kiểm tra lại rằng bạn đã thiết lập input action đúng như mô tả trong phần
+    :ref:`doc_2d_movement_setup` của bài hướng dẫn này.
 
-Rotation + movement
--------------------
+Xoay + di chuyển
+----------------
 
-This type of movement is sometimes called "Asteroids-style" because it resembles
-how that classic arcade game worked. Pressing left/right rotates the character,
-while up/down moves it forward or backward in whatever direction it's facing.
+Kiểu di chuyển này đôi khi được gọi là "phong cách Asteroids" vì nó giống với cách trò chơi arcade kinh điển đó vận hành. Nhấn trái/phải sẽ xoay nhân vật, còn lên/xuống sẽ di chuyển nhân vật tiến hoặc lùi theo hướng mà nó đang đối mặt.
 
 .. video:: video/movement_rotate_keyboard.webm
     :alt: Rotation + movement
@@ -159,18 +145,14 @@ while up/down moves it forward or backward in whatever direction it's facing.
         }
     }
 
-Here we've added two variables to track our rotation direction and speed.
-The rotation is applied directly to the body's ``rotation`` property.
+Ở đây, chúng ta đã thêm hai biến để theo dõi hướng và tốc độ xoay. Phép xoay được áp dụng trực tiếp vào thuộc tính ``rotation`` của body.
 
-To set the velocity, we use the body's ``transform.x`` which is a vector pointing
-in the body's "forward" direction, and multiply that by the speed.
+Để thiết lập velocity, chúng ta sử dụng ``transform.x`` của body, đây là một vector trỏ theo hướng "tiến" của body, rồi nhân vector đó với tốc độ.
 
-Rotation + movement (mouse)
----------------------------
+Xoay + di chuyển (chuột)
+------------------------
 
-This style of movement is a variation of the previous one. This time, the direction
-is set by the mouse position instead of the keyboard. The character will always
-"look at" the mouse pointer. The forward/back inputs remain the same, however.
+Kiểu di chuyển này là một biến thể của kiểu trước. Lần này, hướng được xác định bởi vị trí chuột thay vì bàn phím. Nhân vật sẽ luôn "nhìn về phía" con trỏ chuột. Tuy nhiên, các input tiến/lùi vẫn giữ nguyên.
 
 .. video:: video/movement_rotate_mouse.webm
     :alt: Rotation + movement (mouse)
@@ -217,9 +199,7 @@ is set by the mouse position instead of the keyboard. The character will always
         }
     }
 
-Here we're using the :ref:`Node2D <class_Node2D>` ``look_at()`` method to
-point the player towards the mouse's position. Without this function, you
-could get the same effect by setting the angle like this:
+Ở đây, chúng ta sử dụng phương thức :ref:`Node2D <class_Node2D>` ``look_at()`` để hướng người chơi về phía vị trí của chuột. Nếu không có hàm này, bạn có thể đạt được hiệu ứng tương tự bằng cách thiết lập angle như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -231,11 +211,10 @@ could get the same effect by setting the angle like this:
     var rotation = GetGlobalMousePosition().AngleToPoint(Position);
 
 
-Click-and-move
---------------
+Di chuyển bằng cách nhấp chuột
+------------------------------
 
-This last example uses only the mouse to control the character. Clicking
-on the screen will cause the player to move to the target location.
+Ví dụ cuối cùng này chỉ sử dụng chuột để điều khiển nhân vật. Nhấp vào màn hình sẽ khiến người chơi di chuyển đến vị trí đích.
 
 .. video:: video/movement_click.webm
     :alt: Click-and-move
@@ -255,7 +234,7 @@ on the screen will cause the player to move to the target location.
     var target = position
 
     func _input(event):
-        # Use is_action_pressed to only accept single taps as input instead of mouse drags.
+        # Chỉ sử dụng is_action_pressed để chấp nhận thao tác nhấn đơn thay vì kéo chuột.
         if event.is_action_pressed(&"click"):
             target = get_global_mouse_position()
 
@@ -278,7 +257,7 @@ on the screen will cause the player to move to the target location.
 
         public override void _Input(InputEvent @event)
         {
-            // Use IsActionPressed to only accept single taps as input instead of mouse drags.
+            // Chỉ sử dụng IsActionPressed để chấp nhận thao tác nhấn đơn thay vì kéo chuột.
             if (@event.IsActionPressed("click"))
             {
                 _target = GetGlobalMousePosition();
@@ -297,22 +276,17 @@ on the screen will cause the player to move to the target location.
     }
 
 
-Note the ``distance_to()`` check we make prior to movement. Without this test,
-the body would "jitter" upon reaching the target position, as it moves
-slightly past the position and tries to move back, only to move too far and
-repeat.
+Lưu ý việc kiểm tra ``distance_to()`` mà chúng ta thực hiện trước khi di chuyển. Nếu không có kiểm tra này, body sẽ "rung" khi đến vị trí đích, vì nó di chuyển hơi vượt quá vị trí đó rồi cố gắng quay lại, nhưng lại di chuyển quá xa và lặp lại quá trình này.
 
-Uncommenting the ``look_at()`` line will also turn the body to point in its
-direction of motion if you prefer.
+Bỏ chú thích dòng ``look_at()`` cũng sẽ khiến body xoay theo hướng chuyển động nếu bạn muốn.
 
-.. tip:: This technique can also be used as the basis of a "following" character.
-         The ``target`` position can be that of any object you want to move to.
+.. tip:: Kỹ thuật này cũng có thể được dùng làm cơ sở cho một nhân vật "đi theo". Vị trí ``target`` có thể là vị trí của bất kỳ đối tượng nào mà bạn muốn di chuyển đến.
 
-Summary
+Tóm tắt
 -------
 
-You may find these code samples useful as starting points for your own projects.
-Feel free to use them and experiment with them to see what you can make.
+Bạn có thể thấy các mẫu mã này hữu ích làm điểm khởi đầu cho những dự án của riêng mình. Hãy thoải mái sử dụng và thử nghiệm với chúng để xem bạn có thể tạo ra điều gì.
 
-You can download this sample project here:
-`2d_movement_starter.zip <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/2d_movement_starter.zip>`_
+Bạn có thể tải xuống dự án mẫu tại đây: `2d_movement_starter.zip <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/2d_movement_starter.zip>`_
+
+.. _`2d_movement_starter.zip`: https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/2d_movement_starter.zip

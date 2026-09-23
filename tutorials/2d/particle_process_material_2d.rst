@@ -1,40 +1,29 @@
 .. _doc_particle_process_material_2d:
 
-ParticleProcessMaterial 2D Usage
-================================
+Cách sử dụng ParticleProcessMaterial 2D
+=======================================
 
-Process material properties
----------------------------
+Các thuộc tính của process material
+-----------------------------------
 
 .. figure:: img/particle_minmaxcurve.webp
-   :alt: ParticleProcessMaterial properties
+   :alt: Các thuộc tính của ParticleProcessMaterial
    :align: right
 
-   Min, max, and curve properties
+   Các thuộc tính min, max và curve
 
-The properties in this material control how particles behave and change over their lifetime.
-A lot of them have ``Min``, ``Max``, and ``Curve`` values that allow you to fine-tune
-their behavior. The relationship between these values is this: When a particle is spawned,
-the property is set with a random value between ``Min`` and ``Max``. If ``Min`` and ``Max`` are
-the same, the value will always be the same for every particle. If the ``Curve`` is also set,
-the value of the property will be multiplied by the value of the curve at the current point
-in a particle's lifetime. Use the curve to change a property over the particle lifetime. Very
-complex behavior can be expressed this way.
+Các thuộc tính trong material này kiểm soát cách các particle hoạt động và thay đổi trong suốt vòng đời của chúng. Nhiều thuộc tính có các giá trị ``Min``, ``Max`` và ``Curve`` cho phép bạn tinh chỉnh hành vi của chúng. Mối quan hệ giữa các giá trị này như sau: Khi một particle được spawn, thuộc tính sẽ được đặt thành một giá trị ngẫu nhiên nằm giữa ``Min`` và ``Max``. Nếu ``Min`` và ``Max`` giống nhau, giá trị sẽ luôn giống nhau đối với mọi particle. Nếu ``Curve`` cũng được đặt, giá trị của thuộc tính sẽ được nhân với giá trị của curve tại điểm hiện tại trong vòng đời của particle. Sử dụng curve để thay đổi một thuộc tính trong suốt vòng đời của particle. Bằng cách này, bạn có thể biểu diễn những hành vi rất phức tạp.
 
 .. note::
-  This page covers how to use ParticleProcessMaterial for 2D scenes specifically.
-  For information on how to use it in a 3D scene see :ref:`doc_process_material_properties`.
+  Trang này trình bày cách sử dụng ParticleProcessMaterial dành riêng cho các scene 2D. Để biết thông tin về cách sử dụng nó trong scene 3D, hãy xem :ref:`doc_process_material_properties`.
 
-Lifetime Randomness
-~~~~~~~~~~~~~~~~~~~
+Độ ngẫu nhiên của vòng đời
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ``Lifetime Randomness`` property controls how much randomness to apply to each particle's
-lifetime. A value of ``0`` means there is no randomness at all and all particles live for
-the same amount of time, set by the :ref:`Lifetime <doc_3d_particles_properties_time>` property. A value of ``1`` means
-that a particle's lifetime is completely random within the range of [0.0, ``Lifetime``].
+Thuộc tính ``Lifetime Randomness`` kiểm soát mức độ ngẫu nhiên áp dụng cho vòng đời của mỗi particle. Giá trị ``0`` có nghĩa là hoàn toàn không có tính ngẫu nhiên và mọi particle sống trong cùng một khoảng thời gian, được thiết lập bởi thuộc tính :ref:`Lifetime <doc_3d_particles_properties_time>`. Giá trị ``1`` có nghĩa là vòng đời của particle hoàn toàn ngẫu nhiên trong phạm vi [0.0, ``Lifetime``].
 
-Particle Flags
---------------
+Các cờ của particle
+-------------------
 
 Spawn
 -----
@@ -42,8 +31,7 @@ Spawn
 Angle
 ~~~~~
 
-Determines the initial angle of the particle (in degrees). This parameter
-is mostly useful randomized.
+Xác định góc ban đầu của particle (tính theo độ). Tham số này chủ yếu hữu ích khi được random.
 
 .. image:: img/paranim11.gif
 
@@ -53,39 +41,30 @@ Velocity
 Direction
 ^^^^^^^^^
 
-This is the base direction at which particles emit. The default is
-``Vector3(1, 0, 0)`` which makes particles emit to the right. However,
-with the default gravity settings, particles will go straight down.
+Đây là hướng cơ sở mà các particle phát ra. Giá trị mặc định là ``Vector3(1, 0, 0)``, khiến các particle phát ra về bên phải. Tuy nhiên, với thiết lập gravity mặc định, các particle sẽ đi thẳng xuống dưới.
 
 .. image:: img/direction1.png
 
-For this property to be noticeable, you need an *initial velocity* greater
-than 0. Here, we set the initial velocity to 40. You'll notice that
-particles emit toward the right, then go down because of gravity.
+Để có thể nhận thấy tác động của thuộc tính này, bạn cần một *initial velocity* lớn hơn 0. Ở đây, chúng ta đặt initial velocity là 40. Bạn sẽ nhận thấy các particle phát ra về bên phải, sau đó đi xuống do gravity.
 
 .. image:: img/direction2.png
 
 Spread
 ^^^^^^
 
-This parameter is the angle in degrees which will be randomly added in
-either direction to the base ``Direction``. A spread of ``180`` will emit
-in all directions (+/- 180). For spread to do anything the "Initial Velocity"
-parameter must be greater than 0.
+Tham số này là góc tính theo độ, được cộng ngẫu nhiên theo một trong hai hướng vào ``Direction`` cơ sở. Spread bằng ``180`` sẽ khiến particle phát ra theo mọi hướng (+/- 180). Để spread có tác dụng, tham số "Initial Velocity" phải lớn hơn 0.
 
 .. image:: img/paranim3.gif
 
 Flatness
 ^^^^^^^^
 
-This property is only useful for 3D particles.
+Thuộc tính này chỉ hữu ích đối với particle 3D.
 
 Initial Velocity
 ^^^^^^^^^^^^^^^^
 
-Initial velocity is the speed at which particles will be emitted (in
-pixels/sec). Speed might later be modified by gravity or other
-accelerations (as described further below).
+Initial velocity là tốc độ mà các particle được phát ra (tính bằng pixel/giây). Tốc độ sau đó có thể bị gravity hoặc các gia tốc khác thay đổi (như mô tả bên dưới).
 
 .. image:: img/paranim4.gif
 
@@ -95,65 +74,60 @@ Animated Velocity
 Angular Velocity
 ~~~~~~~~~~~~~~~~
 
-Angular velocity is the speed at which particles rotate around their center
-(in degrees/sec).
+Angular velocity là tốc độ mà các particle xoay quanh tâm của chúng (tính bằng độ/giây).
 
 .. image:: img/paranim5.gif
 
 Orbit Velocity
 ~~~~~~~~~~~~~~
 
-Orbit velocity is used to make particles turn around their center.
+Orbit velocity được sử dụng để khiến các particle quay quanh tâm của chúng.
 
 .. image:: img/paranim6.gif
 
-Accelerations
--------------
+Các gia tốc
+-----------
 
 Gravity
 ~~~~~~~
 
-The gravity applied to every particle.
+Gravity được áp dụng cho mọi particle.
 
 .. image:: img/paranim7.gif
 
 Linear Acceleration
 ~~~~~~~~~~~~~~~~~~~
 
-The linear acceleration applied to each particle.
+Linear acceleration được áp dụng cho từng particle.
 
 Radial Acceleration
 ~~~~~~~~~~~~~~~~~~~
 
-If this acceleration is positive, particles are accelerated away from
-the center. If negative, they are absorbed towards it.
+Nếu gia tốc này dương, các particle sẽ được gia tốc ra xa tâm. Nếu âm, chúng sẽ bị hút về phía tâm.
 
 .. image:: img/paranim8.gif
 
 Tangential Acceleration
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-This acceleration will use the tangent vector to the center. Combining
-with radial acceleration can do nice effects.
+Gia tốc này sẽ sử dụng vector tiếp tuyến với tâm. Kết hợp với radial acceleration có thể tạo ra các hiệu ứng đẹp mắt.
 
 .. image:: img/paranim9.gif
 
 Damping
 ~~~~~~~
 
-Damping applies friction to the particles, forcing them to stop. It is
-especially useful for sparks or explosions, which usually begin with a
-high linear velocity and then stop as they fade.
+Damping áp dụng lực ma sát lên các particle, buộc chúng dừng lại. Nó đặc biệt hữu ích cho tia lửa hoặc vụ nổ, vốn thường bắt đầu với linear velocity cao rồi dừng lại khi mờ dần.
 
 .. image:: img/paranim10.gif
 
-Display
--------
+Hiển thị
+--------
 
 Scale
 ~~~~~
 
-Determines the initial scale of the particles.
+Xác định scale ban đầu của các particle.
 
 .. image:: img/paranim12.gif
 
@@ -163,14 +137,12 @@ Color Curves
 Color
 ^^^^^
 
-Used to change the color of the particles being emitted.
+Được sử dụng để thay đổi màu của các particle đang được phát ra.
 
 Hue Variation
 ~~~~~~~~~~~~~
 
-The ``Variation`` value sets the initial hue variation applied to each
-particle. The ``Variation Random`` value controls the hue variation
-randomness ratio.
+Giá trị ``Variation`` đặt độ biến thiên hue ban đầu áp dụng cho mỗi particle. Giá trị ``Variation Random`` kiểm soát tỷ lệ ngẫu nhiên của độ biến thiên hue.
 
 .. _doc_particle_systems_2d_animation:
 
@@ -179,120 +151,90 @@ Animation
 
 .. note::
 
-    Particle flipbook animation is only effective if the CanvasItemMaterial used
-    on the GPUParticles2D or CPUParticles2D node has been
-    :ref:`configured accordingly <doc_particle_systems_2d_using_flipbook>`.
+    Animation flipbook của particle chỉ có hiệu lực nếu CanvasItemMaterial được sử dụng trên node GPUParticles2D hoặc CPUParticles2D đã được
+    :ref:`cấu hình tương ứng <doc_particle_systems_2d_using_flipbook>`.
 
-To set up the particle flipbook for linear playback, set the **Speed Min** and **Speed Max** values to 1:
+Để thiết lập flipbook của particle phát theo thứ tự, hãy đặt các giá trị **Speed Min** và **Speed Max** thành 1:
 
 .. figure:: img/particles_flipbook_configure_animation_speed.webp
    :align: center
-   :alt: Setting up particle animation for playback during the particle's lifetime
+   :alt: Thiết lập animation của particle để phát trong suốt vòng đời của particle
 
-   Setting up particle animation for playback during the particle's lifetime
+   Thiết lập animation của particle để phát trong suốt vòng đời của particle
 
-By default, looping is disabled. If the particle is done playing before its
-lifetime ends, the particle will keep using the flipbook's last frame (which may
-be fully transparent depending on how the flipbook texture is designed). If
-looping is enabled, the animation will loop back to the first frame and resume
-playing.
+Theo mặc định, việc lặp lại bị tắt. Nếu particle phát xong trước khi vòng đời kết thúc, particle sẽ tiếp tục sử dụng frame cuối cùng của flipbook (frame này có thể hoàn toàn trong suốt tùy vào cách thiết kế texture flipbook). Nếu bật lặp, animation sẽ quay lại frame đầu tiên và tiếp tục phát.
 
-Depending on how many images your sprite sheet contains and for how long your
-particle is alive, the animation might not look smooth. The relationship between
-particle lifetime, animation speed, and number of images in the sprite sheet is
-this:
+Tùy thuộc vào số lượng hình ảnh trong sprite sheet và thời gian particle tồn tại, animation có thể trông không mượt. Mối quan hệ giữa vòng đời particle, tốc độ animation và số lượng hình ảnh trong sprite sheet như sau:
 
 .. note::
 
-   At an animation speed of ``1.0``, the animation will reach the last image
-   in the sequence just as the particle's lifetime ends.
+   Ở tốc độ animation ``1.0``, animation sẽ đến hình ảnh cuối cùng trong chuỗi đúng lúc vòng đời của particle kết thúc.
 
    .. math::
       Animation\ FPS = \frac{Number\ of\ images}{Lifetime}
 
-If you wish the particle flipbook to be used as a source of random particle
-textures for every particle, keep the speed values at 0 and set **Offset Max**
-to 1 instead:
+Nếu muốn sử dụng flipbook của particle làm nguồn texture particle ngẫu nhiên cho từng particle, hãy giữ các giá trị speed ở 0 và thay vào đó đặt **Offset Max** thành 1:
 
 .. figure:: img/particles_flipbook_configure_animation_offset.webp
    :align: center
-   :alt: Setting up particle animation for random offset on emission
+   :alt: Thiết lập animation của particle để có offset ngẫu nhiên khi phát sinh
 
-   Setting up particle animation for random offset on emission
+   Thiết lập animation của particle để có offset ngẫu nhiên khi phát sinh
 
-Note that the GPUParticles2D node's **Fixed FPS** also affects animation
-playback. For smooth animation playback, it's recommended to set it to 0 so that
-the particle is simulated on every rendered frame. If this is not an option for
-your use case, set **Fixed FPS** to be equal to the effective framerate used by
-the flipbook animation (see above for the formula).
+Lưu ý rằng **Fixed FPS** của nút GPUParticles2D cũng ảnh hưởng đến việc phát animation. Để animation phát mượt mà, bạn nên đặt giá trị này thành 0 để hạt được mô phỏng trên mọi khung hình được render. Nếu trường hợp sử dụng của bạn không cho phép điều này, hãy đặt **Fixed FPS** bằng với tốc độ khung hình hiệu dụng được animation flipbook sử dụng (xem công thức ở trên).
 
-Emission Shapes
----------------
+Hình dạng phát sinh
+-------------------
 
-ParticleProcessMaterials allow you to set an Emission Mask, which dictates
-the area and direction in which particles are emitted.
-These can be generated from textures in your project.
+ParticleProcessMaterial cho phép bạn thiết lập Emission Mask, xác định khu vực và hướng mà các hạt được phát sinh. Bạn có thể tạo các mask này từ những texture trong project của mình.
 
-Ensure that a ParticleProcessMaterial is set, and the GPUParticles2D node is selected.
-A "Particles" menu should appear in the Toolbar:
+Đảm bảo đã thiết lập một ParticleProcessMaterial và đã chọn nút GPUParticles2D. Menu "Particles" sẽ xuất hiện trên Toolbar:
 
 .. image:: img/emission_shapes1.webp
 
-Open it and select "Load Emission Mask":
+Mở menu đó và chọn "Load Emission Mask":
 
 .. image:: img/emission_shapes2.webp
 
-Then select which texture you want to use as your mask:
+Sau đó chọn texture mà bạn muốn dùng làm mask:
 
 .. image:: img/emission_shapes3.webp
 
-A dialog box with several settings will appear.
+Một hộp thoại với một số thiết lập sẽ xuất hiện.
 
 Emission Mask
 ~~~~~~~~~~~~~
 
-Three types of emission masks can be generated from a texture:
+Có thể tạo ba loại emission mask từ một texture:
 
--  Solid Pixels: Particles will spawn from any area of the texture,
-   excluding transparent areas.
+-  Pixel đặc: Hạt sẽ được phát sinh từ mọi khu vực của texture, ngoại trừ các khu vực trong suốt.
 
 .. image:: img/emission_mask_solid.gif
 
--  Border Pixels: Particles will spawn from the outer edges of the texture.
+-  Pixel viền: Hạt sẽ được phát sinh từ các cạnh ngoài của texture.
 
 .. image:: img/emission_mask_border.gif
 
--  Directed Border Pixels: Similar to Border Pixels, but adds extra
-   information to the mask to give particles the ability to emit away
-   from the borders. Note that an ``Initial Velocity`` will need to
-   be set in order to utilize this.
+-  Pixel viền có hướng: Tương tự như Pixel viền, nhưng bổ sung thông tin cho mask để hạt có khả năng phát ra xa khỏi các đường viền. Lưu ý rằng cần thiết lập một ``Initial Velocity`` để sử dụng tính năng này.
 
 .. image:: img/emission_mask_directed_border.gif
 
 Emission Colors
 ~~~~~~~~~~~~~~~
 
-``Capture from Pixel`` will cause the particles to inherit the color of the mask at their spawn points.
+``Capture from Pixel`` sẽ khiến các hạt kế thừa màu của mask tại các điểm phát sinh.
 
-Once you click "OK", the mask will be generated and set to the
-ParticleProcessMaterial, under ``Spawn`` and  then ``Position``
+Sau khi bạn nhấp vào "OK", mask sẽ được tạo và thiết lập cho ParticleProcessMaterial, trong ``Spawn`` rồi đến ``Position``
 
 .. image:: img/emission_shapes4.webp
 
-All of the values within this section have been automatically generated by the
-"Load Emission Mask" menu, so they should generally be left alone.
+Tất cả giá trị trong phần này đã được menu "Load Emission Mask" tự động tạo, vì vậy nhìn chung bạn nên giữ nguyên chúng.
 
-.. note:: An image should not be added to ``Point Texture`` or ``Color Texture`` directly.
-          The "Load Emission Mask" menu should always be used instead.
+.. note:: Không nên thêm trực tiếp một hình ảnh vào ``Point Texture`` hoặc ``Color Texture``. Luôn sử dụng menu "Load Emission Mask" thay thế.
 
-Customizing the process material
---------------------------------
+Tùy chỉnh process material
+--------------------------
 
-If you need to change or implement new behaviors in shader code, you can do so by converting
-the current ParticleProcessMaterial to a :ref:`class_ShaderMaterial`. Existing properties
-are preserved by the conversion process. Features that are enabled will also affect
-what's present in the converted shader code.
+Nếu cần thay đổi hoặc triển khai các hành vi mới trong mã shader, bạn có thể thực hiện bằng cách chuyển đổi ParticleProcessMaterial hiện tại thành một :ref:`class_ShaderMaterial`. Quá trình chuyển đổi sẽ giữ lại các thuộc tính hiện có. Những tính năng được bật cũng sẽ ảnh hưởng đến nội dung có trong mã shader sau khi chuyển đổi.
 
-To do so, right-click on the material in the FileSystem dock and choose
-**Convert to ShaderMaterial**. You can also do so by right-clicking on any
-property holding a reference to the material in the inspector.
+Để thực hiện việc này, hãy nhấp chuột phải vào material trong dock FileSystem và chọn **Convert to ShaderMaterial**. Bạn cũng có thể thực hiện bằng cách nhấp chuột phải vào bất kỳ thuộc tính nào trong inspector đang giữ tham chiếu đến material.

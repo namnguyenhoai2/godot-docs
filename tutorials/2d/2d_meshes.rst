@@ -1,54 +1,49 @@
-:article_outdated: True
+:article_outdated: Đúng
 
 .. _doc_2d_meshes:
 
-2D meshes
-=========
+Lưới 2D
+=======
 
-Introduction
-------------
+Giới thiệu
+----------
 
-In 3D, meshes are used to display the world. In 2D, they are rare as images are used more often.
-Godot's 2D engine is a pure two-dimensional engine, so it can't really display 3D meshes directly (although it can be done
-via ``Viewport`` and ``ViewportTexture``).
+Trong 3D, các mesh được dùng để hiển thị thế giới. Trong 2D, chúng hiếm khi được sử dụng vì hình ảnh thường được dùng nhiều hơn. Engine 2D của Godot là một engine thuần hai chiều, nên về cơ bản không thể hiển thị trực tiếp các mesh 3D (mặc dù có thể thực hiện thông qua ``Viewport`` và ``ViewportTexture``).
 
-.. seealso:: If you are interested in displaying 3D meshes on a 2D viewport, see the :ref:`doc_viewport_as_texture` tutorial.
+.. seealso:: Nếu bạn muốn hiển thị các mesh 3D trên viewport 2D, hãy xem tutorial :ref:`doc_viewport_as_texture`.
 
-2D meshes are meshes that contain two-dimensional geometry (Z can be omitted or ignored) instead of 3D.
-You can experiment creating them yourself using ``SurfaceTool`` from code and displaying them in a ``MeshInstance2D`` node.
+Mesh 2D là các mesh chứa hình học hai chiều (có thể lược bỏ hoặc bỏ qua Z) thay vì 3D. Bạn có thể tự thử tạo chúng bằng ``SurfaceTool`` từ code và hiển thị chúng trong node ``MeshInstance2D``.
 
-Currently, the only way to generate a 2D mesh within the editor is by either importing an OBJ file as a mesh, or converting it from a Sprite2D.
+Hiện tại, cách duy nhất để tạo mesh 2D trong editor là nhập tệp OBJ dưới dạng mesh hoặc chuyển đổi từ Sprite2D.
 
-Optimizing pixels drawn
------------------------
+Tối ưu hóa số pixel được vẽ
+---------------------------
 
-This workflow is useful for optimizing 2D drawing in some situations. When drawing large images with transparency, Godot will draw the whole quad to the screen. The large transparent areas will still be drawn.
+Quy trình này hữu ích để tối ưu hóa việc vẽ 2D trong một số trường hợp. Khi vẽ các hình ảnh lớn có độ trong suốt, Godot sẽ vẽ toàn bộ quad lên màn hình. Các vùng trong suốt lớn vẫn sẽ được vẽ.
 
-This can affect performance, especially on mobile devices, when drawing very large images (generally screen sized),
-or layering multiple images on top of each other with large transparent areas (for example, when using ``ParallaxBackground``).
+Điều này có thể ảnh hưởng đến hiệu năng, đặc biệt trên các thiết bị di động, khi vẽ những hình ảnh rất lớn (thường có kích thước bằng màn hình) hoặc xếp chồng nhiều hình ảnh lên nhau với các vùng trong suốt lớn (ví dụ khi sử dụng ``ParallaxBackground``).
 
-Converting to a mesh will ensure that only the opaque parts will be drawn and the rest will be ignored.
+Việc chuyển đổi sang mesh sẽ đảm bảo chỉ các phần không trong suốt được vẽ, còn phần còn lại sẽ bị bỏ qua.
 
-Converting Sprite2Ds to 2D meshes
+Chuyển đổi Sprite2D thành mesh 2D
 ---------------------------------
 
-You can take advantage of this optimization by converting a ``Sprite2D`` to a ``MeshInstance2D``.
-Start with an image that contains large amounts of transparency on the edges, like this tree:
+Bạn có thể tận dụng việc tối ưu hóa này bằng cách chuyển đổi một ``Sprite2D`` thành một ``MeshInstance2D``. Hãy bắt đầu với một hình ảnh có nhiều vùng trong suốt ở các cạnh, như cây này:
 
 .. image:: img/mesh2d1.png
 
-Put it in a ``Sprite2D`` and select "Convert to MeshInstance2D" from the menu:
+Đặt nó vào một ``Sprite2D`` và chọn "Convert to MeshInstance2D" từ menu:
 
 .. image:: img/mesh2d2.webp
 
-A dialog will appear, showing a preview of how the 2D mesh will be created:
+Một hộp thoại sẽ xuất hiện, hiển thị bản xem trước cách mesh 2D sẽ được tạo:
 
 .. image:: img/mesh2d3.webp
 
-The default values are good enough for many cases, but you can change growth and simplification according to your needs:
+Các giá trị mặc định phù hợp với nhiều trường hợp, nhưng bạn có thể thay đổi growth và simplification theo nhu cầu:
 
 .. image:: img/mesh2d4.webp
 
-Finally, push the :button:`Convert 2D Mesh` button and your Sprite2D will be replaced:
+Cuối cùng, nhấn nút :button:`Convert 2D Mesh` và Sprite2D của bạn sẽ được thay thế:
 
 .. image:: img/mesh2d5.webp

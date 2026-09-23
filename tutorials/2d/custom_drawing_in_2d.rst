@@ -1,35 +1,26 @@
 .. _doc_custom_drawing_in_2d:
 
-Custom drawing in 2D
-====================
+Vẽ tùy chỉnh trong 2D
+=====================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Godot has nodes to draw sprites, polygons, particles, text, and many other
-common game development needs. However, if you need something specific
-not covered with the standard nodes you can make any 2D node (for example,
-:ref:`Control <class_Control>` or :ref:`Node2D <class_Node2D>`-based)
-draw on screen using custom commands.
+Godot có các node để vẽ sprite, polygon, hạt, văn bản và nhiều nhu cầu phát triển game phổ biến khác. Tuy nhiên, nếu bạn cần một thứ cụ thể không được các node tiêu chuẩn hỗ trợ, bạn có thể khiến bất kỳ node 2D nào (ví dụ như
+:ref:`Control <class_Control>` hoặc dựa trên :ref:`Node2D <class_Node2D>`) vẽ lên màn hình bằng các lệnh tùy chỉnh.
 
-Custom drawing in a 2D node is *really* useful. Here are some use cases:
+Vẽ tùy chỉnh trong node 2D *thực sự* hữu ích. Sau đây là một số trường hợp sử dụng:
 
--  Drawing shapes or logic that existing nodes can't do, such as an image
-   with trails or a special animated polygon.
--  Drawing a large number of simple objects, such as a grid or a board
-   for a 2d game. Custom drawing avoids the overhead of using a large number
-   of nodes, possibly lowering memory usage and improving performance.
--  Making a custom UI control. There are plenty of controls available,
-   but when you have unusual needs, you will likely need a custom
-   control.
+-  Vẽ các hình dạng hoặc logic mà những node hiện có không thể thực hiện, chẳng hạn như một hình ảnh có vệt kéo dài hoặc một polygon chuyển động đặc biệt.
+-  Vẽ một số lượng lớn đối tượng đơn giản, chẳng hạn như lưới hoặc bàn cờ cho game 2D. Vẽ tùy chỉnh tránh chi phí sử dụng một số lượng lớn node, có thể giảm mức sử dụng bộ nhớ và cải thiện hiệu năng.
+-  Tạo một UI control tùy chỉnh. Có rất nhiều control sẵn có, nhưng khi bạn có nhu cầu khác thường, có thể bạn sẽ cần một control tùy chỉnh.
 
-Drawing
--------
+Vẽ
+--
 
-Add a script to any :ref:`CanvasItem <class_CanvasItem>`
-derived node, like :ref:`Control <class_Control>` or
-:ref:`Node2D <class_Node2D>`. Then override the
-:ref:`_draw()<class_CanvasItem_private_method__draw>` function.
+Thêm một script vào bất kỳ node dẫn xuất từ :ref:`CanvasItem <class_CanvasItem>` nào, chẳng hạn như :ref:`Control <class_Control>` hoặc
+:ref:`Node2D <class_Node2D>`. Sau đó override
+hàm :ref:`_draw()<class_CanvasItem_private_method__draw>`.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -37,7 +28,7 @@ derived node, like :ref:`Control <class_Control>` or
     extends Node2D
 
     func _draw():
-        pass  # Your draw commands here.
+        pass  # Các lệnh vẽ của bạn đặt ở đây.
 
  .. code-tab:: csharp
 
@@ -47,29 +38,21 @@ derived node, like :ref:`Control <class_Control>` or
     {
         public override void _Draw()
         {
-            // Your draw commands here.
+            // Các lệnh vẽ của bạn đặt ở đây.
         }
     }
 
-Draw commands are described in the :ref:`CanvasItem <class_CanvasItem>`
-class reference. There are plenty of them and we will see some of them
-in the examples below.
+Các lệnh vẽ được mô tả trong tài liệu tham chiếu lớp :ref:`CanvasItem <class_CanvasItem>`. Có rất nhiều lệnh và chúng ta sẽ xem một số lệnh trong các ví dụ bên dưới.
 
-Updating
+Cập nhật
 --------
 
-The :ref:`_draw <class_CanvasItem_private_method__draw>` function is only called
-once, and then the draw commands are cached and remembered, so further calls
-are unnecessary.
+Hàm :ref:`_draw <class_CanvasItem_private_method__draw>` chỉ được gọi một lần, sau đó các lệnh vẽ được lưu vào bộ nhớ đệm và ghi nhớ, vì vậy không cần gọi thêm.
 
-If re-drawing is required because a variable or something else changed,
-call :ref:`CanvasItem.queue_redraw <class_CanvasItem_method_queue_redraw>`
-in that same node and a new ``_draw()`` call will happen.
+Nếu cần vẽ lại vì một biến hoặc thứ gì khác đã thay đổi, hãy gọi :ref:`CanvasItem.queue_redraw <class_CanvasItem_method_queue_redraw>` trong chính node đó và một lần gọi ``_draw()`` mới sẽ được thực hiện.
 
-Here is a little more complex example, where we have a texture variable
-that can be modified at any time, and using a
-:ref:`setter<doc_gdscript_basics_setters_getters>`, it forces a redraw
-of the texture when modified:
+Sau đây là một ví dụ phức tạp hơn một chút, trong đó chúng ta có một biến texture có thể được sửa đổi bất kỳ lúc nào, và bằng cách sử dụng
+:ref:`setter <doc_gdscript_basics_setters_getters>`, texture sẽ được vẽ lại khi bị thay đổi:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -113,15 +96,9 @@ of the texture when modified:
         }
     }
 
-To see it in action, you can set the texture to be the Godot icon on the
-editor by dragging and dropping the default ``icon.svg`` from the
-``FileSystem`` tab to the Texture property on the ``Inspector`` tab.
-When changing the ``Texture`` property value while the previous script is
-running, the texture will also change automatically.
+Để xem hoạt động thực tế, bạn có thể đặt texture thành biểu tượng Godot trong editor bằng cách kéo và thả ``icon.svg`` mặc định từ tab ``FileSystem`` vào thuộc tính Texture trong tab ``Inspector``. Khi thay đổi giá trị thuộc tính ``Texture`` trong lúc script trước đó đang chạy, texture cũng sẽ tự động thay đổi.
 
-In some cases, we may need to redraw every frame. For this,
-call :ref:`queue_redraw <class_CanvasItem_method_queue_redraw>`
-from the :ref:`_process <class_Node_private_method__process>` method, like this:
+Trong một số trường hợp, chúng ta có thể cần vẽ lại ở mỗi frame. Để làm vậy, hãy gọi :ref:`queue_redraw <class_CanvasItem_method_queue_redraw>` từ phương thức :ref:`_process <class_Node_private_method__process>`, như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -129,7 +106,7 @@ from the :ref:`_process <class_Node_private_method__process>` method, like this:
     extends Node2D
 
     func _draw():
-        pass  # Your draw commands here.
+        pass  # Các lệnh vẽ của bạn đặt ở đây.
 
     func _process(_delta):
         queue_redraw()
@@ -142,7 +119,7 @@ from the :ref:`_process <class_Node_private_method__process>` method, like this:
     {
         public override void _Draw()
         {
-            // Your draw commands here.
+            // Các lệnh vẽ của bạn đặt ở đây.
         }
 
         public override void _Process(double delta)
@@ -151,20 +128,14 @@ from the :ref:`_process <class_Node_private_method__process>` method, like this:
         }
     }
 
-Coordinates and line width alignment
-------------------------------------
+Căn chỉnh tọa độ và độ rộng đường
+---------------------------------
 
-The drawing API uses the CanvasItem's coordinate system, not necessarily pixel
-coordinates. This means ``_draw()`` uses the coordinate space created after
-applying the CanvasItem's transform. Additionally, you can apply a custom
-transform on top of it by using
-:ref:`draw_set_transform<class_CanvasItem_method_draw_set_transform>` or
+Drawing API sử dụng hệ tọa độ của CanvasItem, không nhất thiết là tọa độ pixel. Điều này có nghĩa là ``_draw()`` sử dụng không gian tọa độ được tạo sau khi áp dụng phép biến đổi của CanvasItem. Ngoài ra, bạn có thể áp dụng một phép biến đổi tùy chỉnh lên trên nó bằng cách sử dụng
+:ref:`draw_set_transform<class_CanvasItem_method_draw_set_transform>` hoặc
 :ref:`draw_set_transform_matrix<class_CanvasItem_method_draw_set_transform_matrix>`.
 
-When using :ref:`draw_line <class_CanvasItem_method_draw_line>`, you should
-consider the width of the line. When using a width that is an odd size, the
-position of the start and end points should be shifted by ``0.5`` to keep the
-line centered, as shown below.
+Khi sử dụng :ref:`draw_line <class_CanvasItem_method_draw_line>`, bạn nên cân nhắc độ rộng của đường. Khi sử dụng độ rộng là số lẻ, vị trí của các điểm đầu và cuối nên được dịch chuyển ``0.5`` để giữ cho đường nằm ở giữa, như minh họa bên dưới.
 
 .. image:: img/draw_line.png
 
@@ -185,8 +156,7 @@ line centered, as shown below.
         DrawLine(new Vector2(7.5f, 1.0f), new Vector2(7.5f, 4.0f), Colors.Green, 3.0f);
     }
 
-The same applies to the :ref:`draw_rect <class_CanvasItem_method_draw_rect>`
-method with ``filled = false``.
+Điều tương tự cũng áp dụng cho phương thức :ref:`draw_rect <class_CanvasItem_method_draw_rect>` với ``filled = false``.
 
 .. image:: img/draw_rect.png
 
@@ -209,65 +179,47 @@ method with ``filled = false``.
         DrawRect(new Rect2(16.0f, 2.0f, 3.0f, 3.0f), Colors.Green, false, 2.0f);
     }
 
-Antialiased drawing
--------------------
+Vẽ khử răng cưa
+---------------
 
-Godot offers method parameters in :ref:`draw_line<class_CanvasItem_method_draw_line>`
-to enable antialiasing, but not all custom drawing methods offer this ``antialiased``
-parameter.
+Godot cung cấp các tham số phương thức trong :ref:`draw_line<class_CanvasItem_method_draw_line>` để bật khử răng cưa, nhưng không phải tất cả phương thức vẽ tùy chỉnh đều cung cấp tham số ``antialiased`` này.
 
-For custom drawing methods that don't provide an ``antialiased`` parameter,
-you can enable 2D MSAA instead, which affects rendering in the entire viewport.
-This provides high-quality antialiasing, but a higher performance cost and only
-on specific elements. See :ref:`doc_2d_antialiasing` for more information.
+Đối với các phương thức vẽ tùy chỉnh không cung cấp tham số ``antialiased``, thay vào đó bạn có thể bật 2D MSAA, tính năng này ảnh hưởng đến việc render trong toàn bộ viewport. Cách này cung cấp khả năng khử răng cưa chất lượng cao, nhưng tốn hiệu năng hơn và chỉ áp dụng cho các phần tử cụ thể. Xem :ref:`doc_2d_antialiasing` để biết thêm thông tin.
 
-Here is a comparison of a line of minimal width (``width=-1``) drawn with
-``antialiased=false``, ``antialiased=true``, and ``antialiased=false`` with
-2D MSAA 2x, 4x, and 8x enabled.
+Sau đây là so sánh một đường có độ rộng tối thiểu (``width=-1``) được vẽ bằng ``antialiased=false``, ``antialiased=true`` và ``antialiased=false`` khi bật 2D MSAA 2x, 4x và 8x.
 
 .. image:: img/draw_antialiasing_options.webp
 
-Tools
------
+Công cụ
+-------
 
-Drawing your own nodes might also be desired while running them in the
-editor. This can be used as a preview or visualization of some feature or
-behavior.
+Bạn cũng có thể muốn vẽ các node của riêng mình khi chạy chúng trong editor. Việc này có thể được dùng để xem trước hoặc trực quan hóa một tính năng hay hành vi nào đó.
 
-To do this, you can use the :ref:`tool annotation<doc_gdscript_tool_mode>`
-on both GDScript and C#. See
-:ref:`the example below<doc_draw_show_drawing_while_editing_example>` and
-:ref:`doc_running_code_in_the_editor` for more information.
+Để làm vậy, bạn có thể sử dụng :ref:`chú thích tool <doc_gdscript_tool_mode>` trên cả GDScript và C#. Xem
+:ref:`ví dụ bên dưới <doc_draw_show_drawing_while_editing_example>` và
+:ref:`doc_running_code_in_the_editor` để biết thêm thông tin.
 
 .. _doc_draw_custom_example_1:
 
-Example 1: drawing a custom shape
----------------------------------
+Ví dụ 1: vẽ một hình dạng tùy chỉnh
+-----------------------------------
 
-We will now use the custom drawing functionality of the Godot Engine to draw
-something that Godot doesn't provide functions for. We will recreate the Godot
-logo but with code- only using drawing functions.
+Bây giờ chúng ta sẽ sử dụng chức năng vẽ tùy chỉnh của Godot Engine để vẽ một thứ mà Godot không cung cấp hàm hỗ trợ. Chúng ta sẽ tái tạo logo Godot nhưng chỉ bằng code, sử dụng các hàm vẽ.
 
-You will have to code a function to perform this and draw it yourself.
+Bạn sẽ phải viết code cho một hàm để thực hiện việc này và tự vẽ nó.
 
 .. note::
 
-    The following instructions use a fixed set of coordinates that could be too small
-    for high resolution screens (larger than 1080p). If that is your case, and the
-    drawing is too small consider increasing your window scale in the project setting
-    :ref:`Display > Window > Stretch > Scale<class_ProjectSettings_property_display/window/stretch/scale>`
-    to adjust the project to a higher resolution (a 2 or 4 scale tends to work well).
+    Các hướng dẫn sau sử dụng một tập tọa độ cố định có thể quá nhỏ đối với màn hình độ phân giải cao (lớn hơn 1080p). Nếu đúng như vậy và hình vẽ quá nhỏ, hãy cân nhắc tăng tỷ lệ cửa sổ trong project setting
+    :ref:`Display > Window > Stretch > Scale <class_ProjectSettings_property_display/window/stretch/scale>` để điều chỉnh project sang độ phân giải cao hơn (tỷ lệ 2 hoặc 4 thường hoạt động tốt).
 
-Drawing a custom polygon shape
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Vẽ một hình polygon tùy chỉnh
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-While there is a dedicated node to draw custom polygons (
-:ref:`Polygon2D <class_Polygon2D>`), we will use in this case exclusively lower
-level drawing functions to combine them on the same node and be able to create
-more complex shapes later on.
+Mặc dù có một node chuyên dụng để vẽ polygon tùy chỉnh (
+:ref:`Polygon2D <class_Polygon2D>`), trong trường hợp này chúng ta sẽ chỉ sử dụng các hàm vẽ cấp thấp hơn để kết hợp chúng trên cùng một node và có thể tạo ra các hình dạng phức tạp hơn về sau.
 
-First, we will define a set of points -or X and Y coordinates- that will form
-the base of our shape:
+Trước tiên, chúng ta sẽ định nghĩa một tập các điểm -hoặc tọa độ X và Y- tạo thành phần nền của hình dạng:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -310,15 +262,9 @@ the base of our shape:
         };
     }
 
-This format, while compact, is not the one that Godot understands to
-draw a polygon. In a different scenario we could have to load
-these coordinates from a file or calculate the positions while the
-application is running, so some transformation may be needed.
+Định dạng này tuy gọn nhưng không phải định dạng mà Godot hiểu để vẽ polygon. Trong một tình huống khác, chúng ta có thể phải tải các tọa độ này từ một file hoặc tính toán vị trí trong khi ứng dụng đang chạy, vì vậy có thể cần thực hiện một số phép biến đổi.
 
-To transform these coordinates into the right format, we will create a new
-method ``float_array_to_Vector2Array()``. Then we will override the ``_ready()``
-function, which Godot will call only once -at the start of the execution-
-to load those coordinates into a variable:
+Để chuyển đổi các tọa độ này sang đúng định dạng, chúng ta sẽ tạo một phương thức mới ``float_array_to_Vector2Array()``. Sau đó, chúng ta sẽ override hàm ``_ready()``, hàm này chỉ được Godot gọi một lần -khi bắt đầu thực thi- để nạp các tọa độ đó vào một biến:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -326,7 +272,7 @@ to load those coordinates into a variable:
     var head : PackedVector2Array
 
     func float_array_to_Vector2Array(coords : Array) -> PackedVector2Array:
-        # Convert the array of floats into a PackedVector2Array.
+        # Chuyển đổi mảng số thực thành PackedVector2Array.
         var array : PackedVector2Array = []
         for coord in coords:
             array.append(Vector2(coord[0], coord[1]))
@@ -341,7 +287,7 @@ to load those coordinates into a variable:
 
     private Vector2[] FloatArrayToVector2Array(float[,] coords)
     {
-        // Convert the array of floats into an array of Vector2.
+        // Chuyển đổi mảng số thực thành một mảng Vector2.
         int size = coords.GetUpperBound(0);
         Vector2[] array = new Vector2[size + 1];
         for (int i = 0; i <= size; i++)
@@ -356,51 +302,43 @@ to load those coordinates into a variable:
         _head = FloatArrayToVector2Array(_coordsHead);
     }
 
-To finally draw our first shape, we will use the method
-:ref:`draw_polygon <class_CanvasItem_method_draw_polygon>`
-and pass the points (as an array of Vector2 coordinates) and its color,
-like this:
+Để cuối cùng vẽ hình đầu tiên, chúng ta sẽ sử dụng phương thức
+:ref:`draw_polygon <class_CanvasItem_method_draw_polygon>` và truyền các điểm (dưới dạng một mảng tọa độ Vector2) cùng màu của hình, như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     func _draw():
-        # We are going to paint with this color.
+        # Chúng ta sẽ tô bằng màu này.
         var godot_blue : Color = Color("478cbf")
-        # We pass the PackedVector2Array to draw the shape.
+        # Chúng ta truyền PackedVector2Array để vẽ hình.
         draw_polygon(head, [ godot_blue ])
 
  .. code-tab:: csharp
 
     public override void _Draw()
     {
-        // We are going to paint with this color.
+        // Chúng ta sẽ tô bằng màu này.
         Color godotBlue = new Color("478cbf");
-        // We pass the array of Vector2 to draw the shape.
+        // Chúng ta truyền mảng Vector2 để vẽ hình.
         DrawPolygon(_head, [godotBlue]);
     }
 
-When running it you should see something like this:
+Khi chạy, bạn sẽ thấy hình tương tự như sau:
 
 .. image:: img/draw_godot_logo_polygon.webp
 
-Note the lower part of the logo looks segmented- this is because a low
-amount of points were used to define that part. To simulate a smooth curve,
-we could add more points to our array, or maybe use a mathematical function to
-interpolate a curve and create a smooth shape from code (see
-:ref:`example 2<doc_draw_custom_example_2>`).
+Lưu ý rằng phần dưới của logo trông như bị phân đoạn—đó là vì chúng ta đã sử dụng ít điểm để định nghĩa phần đó. Để mô phỏng một đường cong mượt, chúng ta có thể thêm nhiều điểm hơn vào mảng, hoặc có thể sử dụng một hàm toán học để nội suy đường cong và tạo hình mượt bằng code (xem
+:ref:`ví dụ 2 <doc_draw_custom_example_2>`).
 
-Polygons will always **connect its last defined point to its first
-one** in order to have a closed shape.
+Các đa giác sẽ luôn **nối điểm cuối cùng được định nghĩa với điểm đầu tiên** để tạo thành một hình khép kín.
 
-Drawing connected lines
-~~~~~~~~~~~~~~~~~~~~~~~
+Vẽ các đường nối
+~~~~~~~~~~~~~~~~
 
-Drawing a sequence of connected lines that don't close down to form a polygon
-is very similar to the previous method. We will use a connected set of lines to
-draw Godot's logo mouth.
+Việc vẽ một chuỗi các đường nối không khép kín để tạo thành đa giác rất giống với phương thức trước đó. Chúng ta sẽ sử dụng một tập hợp các đường nối để vẽ miệng logo Godot.
 
-First, we will define the list of coordinates that form the mouth shape, like this:
+Trước tiên, chúng ta sẽ định nghĩa danh sách các tọa độ tạo thành hình miệng, như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -424,8 +362,7 @@ First, we will define the list of coordinates that form the mouth shape, like th
         { 89.556f, 82.673f }, { 105.005f, 81.100f }
     };
 
-We will load these coordinates into a variable and define an additional
-variable with the configurable line thickness:
+Chúng ta sẽ nạp các tọa độ này vào một biến và định nghĩa thêm một biến chứa độ dày đường có thể cấu hình:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -448,21 +385,20 @@ variable with the configurable line thickness:
         _mouth = FloatArrayToVector2Array(_coordsMouth);
     }
 
-And finally we will use the method
-:ref:`draw_polyline <class_CanvasItem_method_draw_polyline>` to actually
-draw the line, like this:
+Và cuối cùng, chúng ta sẽ sử dụng phương thức
+:ref:`draw_polyline <class_CanvasItem_method_draw_polyline>` để thực sự vẽ đường này, như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     func _draw():
-        # We will use white to draw the line.
+        # Chúng ta sẽ dùng màu trắng để vẽ đường.
         var white : Color = Color.WHITE
         var godot_blue : Color = Color("478cbf")
 
         draw_polygon(head, [ godot_blue ])
 
-        # We draw the while line on top of the previous shape.
+        # Chúng ta vẽ đường màu trắng lên trên hình trước đó.
         draw_polyline(mouth, white, _mouth_width)
 
 
@@ -470,44 +406,33 @@ draw the line, like this:
 
     public override void _Draw()
     {
-        // We will use white to draw the line.
+        // Chúng ta sẽ dùng màu trắng để vẽ đường.
         Color white = Colors.White;
         Color godotBlue = new Color("478cbf");
 
         DrawPolygon(_head, [godotBlue]);
 
-        // We draw the while line on top of the previous shape.
+        // Chúng ta vẽ đường màu trắng lên trên hình trước đó.
         DrawPolyline(_mouth, white, _mouthWidth);
     }
 
-You should get the following output:
+Bạn sẽ nhận được kết quả sau:
 
 .. image:: img/draw_godot_logo_polyline.webp
 
-Unlike ``draw_polygon()``, polylines can only have a single unique color
-for all its points (the second argument). This method has 2 additional
-arguments: the width of the line (which is as small as possible by default)
-and enabling or disabling the antialiasing (it is disabled by default).
+Không giống như ``draw_polygon()``, polyline chỉ có thể có một màu duy nhất cho tất cả các điểm của nó (đối số thứ hai). Phương thức này có thêm 2 đối số: độ rộng của đường (theo mặc định là nhỏ nhất có thể) và tùy chọn bật hoặc tắt antialiasing (mặc định là tắt).
 
-The order of the ``_draw`` calls is important- like with the Node positions on
-the tree hierarchy, the different shapes will be drawn from top to bottom,
-resulting in the latest shapes hiding earlier ones if they overlap. In this
-case we want the mouth drawn over the head, so we put it afterwards.
+Thứ tự của các lệnh gọi ``_draw`` rất quan trọng—tương tự như vị trí của các Node trong hệ phân cấp cây, các hình khác nhau sẽ được vẽ từ trên xuống dưới, khiến các hình được vẽ sau che khuất những hình trước đó nếu chúng chồng lên nhau. Trong trường hợp này, chúng ta muốn vẽ miệng lên trên đầu, nên đặt nó sau đó.
 
-Notice how we can define colors in different ways, either with a hexadecimal
-code or a predefined color name. Check the class :ref:`Color <class_Color>` for other
-constants and ways to define Colors.
+Lưu ý rằng chúng ta có thể định nghĩa màu theo nhiều cách khác nhau, bằng mã thập lục phân hoặc tên màu được định nghĩa sẵn. Hãy xem class :ref:`Color <class_Color>` để biết các hằng số và cách định nghĩa Color khác.
 
-Drawing circles
-~~~~~~~~~~~~~~~
+Vẽ hình tròn
+~~~~~~~~~~~~
 
-To create the eyes, we are going to add 4 additional calls to draw the eye
-shapes, in different sizes, colors and positions.
+Để tạo mắt, chúng ta sẽ thêm 4 lệnh gọi vẽ hình mắt, với các kích thước, màu sắc và vị trí khác nhau.
 
-To draw a circle, you position it based on its center using the
-:ref:`draw_circle <class_CanvasItem_method_draw_circle>` method. The first
-parameter is a :ref:`Vector2<class_Vector2>` with the coordinates of its center, the second is
-its radius, and the third is its color:
+Để vẽ hình tròn, bạn định vị nó dựa trên tâm bằng phương thức
+:ref:`draw_circle <class_CanvasItem_method_draw_circle>`. Tham số đầu tiên là một :ref:`Vector2<class_Vector2>` chứa tọa độ tâm, tham số thứ hai là bán kính và tham số thứ ba là màu:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -520,7 +445,7 @@ its radius, and the third is its color:
         draw_polygon(head, [ godot_blue ])
         draw_polyline(mouth, white, _mouth_width)
 
-        # Four circles for the 2 eyes: 2 white, 2 grey.
+        # Bốn hình tròn cho 2 mắt: 2 màu trắng, 2 màu xám.
         draw_circle(Vector2(42.479, 65.4825), 9.3905, white)
         draw_circle(Vector2(85.524, 65.4825), 9.3905, white)
         draw_circle(Vector2(43.423, 65.92), 6.246, grey)
@@ -538,30 +463,27 @@ its radius, and the third is its color:
         DrawPolygon(_head, [godotBlue]);
         DrawPolyline(_mouth, white, _mouthWidth);
 
-        // Four circles for the 2 eyes: 2 white, 2 grey.
+        // Bốn hình tròn cho 2 mắt: 2 màu trắng, 2 màu xám.
         DrawCircle(new Vector2(42.479f, 65.4825f), 9.3905f, white);
         DrawCircle(new Vector2(85.524f, 65.4825f), 9.3905f, white);
         DrawCircle(new Vector2(43.423f, 65.92f), 6.246f, grey);
         DrawCircle(new Vector2(84.626f, 66.008f), 6.246f, grey);
     }
 
-When executing it, you should have something like this:
+Khi thực thi, bạn sẽ thấy hình tương tự như sau:
 
 .. image:: img/draw_godot_logo_circle.webp
 
 
-For partial, unfilled arcs (portions of a circle shape between certain
-arbitrary angles), you can use the method
+Đối với các cung một phần, không tô (các phần của một hình tròn nằm giữa những góc tùy ý nhất định), bạn có thể sử dụng phương thức
 :ref:`draw_arc <class_CanvasItem_method_draw_arc>`.
 
-Drawing lines
-~~~~~~~~~~~~~
+Vẽ các đường thẳng
+~~~~~~~~~~~~~~~~~~
 
-To draw the final shape (the nose) we will use a line to approximate it.
+Để vẽ hình cuối cùng (mũi), chúng ta sẽ sử dụng một đường thẳng để mô phỏng nó.
 
-:ref:`draw_line <class_CanvasItem_method_draw_line>` can be used to draw
-a single segment by providing its start and end coordinates as arguments,
-like this:
+:ref:`draw_line <class_CanvasItem_method_draw_line>` có thể được sử dụng để vẽ một đoạn đơn bằng cách cung cấp tọa độ điểm đầu và điểm cuối làm các đối số, như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -578,7 +500,7 @@ like this:
         draw_circle(Vector2(43.423, 65.92), 6.246, grey)
         draw_circle(Vector2(84.626, 66.008), 6.246, grey)
 
-        # Draw a short but thick white vertical line for the nose.
+        # Vẽ một đường thẳng đứng màu trắng, ngắn nhưng dày, làm mũi.
         draw_line(Vector2(64.273, 60.564), Vector2(64.273, 74.349), white, 5.8)
 
  .. code-tab:: csharp
@@ -596,29 +518,23 @@ like this:
         DrawCircle(new Vector2(43.423f, 65.92f), 6.246f, grey);
         DrawCircle(new Vector2(84.626f, 66.008f), 6.246f, grey);
 
-        // Draw a short but thick white vertical line for the nose.
+        // Vẽ một đường thẳng đứng màu trắng, ngắn nhưng dày, làm mũi.
         DrawLine(new Vector2(64.273f, 60.564f), new Vector2(64.273f, 74.349f),
                  white, 5.8f);
     }
 
-You should now be able to see the following shape on screen:
+Bây giờ bạn sẽ thấy hình sau trên màn hình:
 
 .. image:: img/draw_godot_logo_line.webp
 
-Note that if multiple unconnected lines are going to be drawn at the same time,
-you may get additional performance by drawing all of them in a single call, using
-the :ref:`draw_multiline <class_CanvasItem_method_draw_multiline>` method.
+Lưu ý rằng nếu cần vẽ nhiều đường không nối nhau cùng lúc, bạn có thể đạt hiệu năng cao hơn bằng cách vẽ tất cả chúng trong một lần gọi, sử dụng phương thức :ref:`draw_multiline <class_CanvasItem_method_draw_multiline>`.
 
-Drawing text
-~~~~~~~~~~~~
+Vẽ văn bản
+~~~~~~~~~~
 
-While using the :ref:`Label <class_Label>` Node is the most common way to add
-text to your application, the low-level `_draw` function includes functionality
-to add text to your custom Node drawing. We will use it to add the name "GODOT"
-under the robot head.
+Mặc dù sử dụng Node :ref:`Label <class_Label>` là cách phổ biến nhất để thêm văn bản vào ứng dụng, hàm `_draw` cấp thấp cung cấp chức năng thêm văn bản vào phần vẽ tùy chỉnh của Node. Chúng ta sẽ sử dụng nó để thêm tên "GODOT" bên dưới đầu robot.
 
-We will use the :ref:`draw_string <class_CanvasItem_method_draw_string>` method
-to do it, like this:
+Chúng ta sẽ sử dụng phương thức :ref:`draw_string <class_CanvasItem_method_draw_string>` để thực hiện việc này, như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -638,7 +554,7 @@ to do it, like this:
         draw_circle(Vector2(84.626, 66.008), 6.246, grey)
         draw_line(Vector2(64.273, 60.564), Vector2(64.273, 74.349), white, 5.8)
 
-        # Draw GODOT text below the logo with the default font, size 22.
+        # Vẽ văn bản GODOT bên dưới logo bằng font mặc định, kích thước 22.
         draw_string(default_font, Vector2(20, 130), "GODOT",
                     HORIZONTAL_ALIGNMENT_CENTER, 90, 22)
 
@@ -661,35 +577,28 @@ to do it, like this:
         DrawLine(new Vector2(64.273f, 60.564f), new Vector2(64.273f, 74.349f),
                  white, 5.8f);
 
-        // Draw GODOT text below the logo with the default font, size 22.
+        // Vẽ văn bản GODOT bên dưới logo bằng font mặc định, kích thước 22.
         DrawString(_defaultFont, new Vector2(20f, 130f), "GODOT",
                    HorizontalAlignment.Center, 90, 22);
     }
 
-Here we first load into the defaultFont variable the configured default theme
-font (a custom one can be set instead) and then we pass the following
-parameters: font, position, text, horizontal alignment, width, and font size.
+Ở đây, trước tiên chúng ta nạp font theme mặc định đã cấu hình vào biến defaultFont (có thể đặt một font tùy chỉnh thay thế), sau đó truyền các tham số sau: font, vị trí, văn bản, căn chỉnh ngang, độ rộng và kích thước font.
 
-You should see the following on your screen:
+Bạn sẽ thấy kết quả sau trên màn hình:
 
 .. image:: img/draw_godot_logo_text.webp
 
-Additional parameters as well as other methods related to text and characters
-can be found on the :ref:`CanvasItem <class_CanvasItem>` class reference.
+Bạn có thể tìm thấy các tham số bổ sung cũng như những phương thức khác liên quan đến văn bản và ký tự trong tài liệu tham chiếu class :ref:`CanvasItem <class_CanvasItem>`.
 
 .. _doc_draw_show_drawing_while_editing_example:
 
-Show the drawing while editing
+Hiển thị hình vẽ khi chỉnh sửa
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-While the code so far is able to draw the logo on a running window, it will
-not show up on the ``2D view`` on the editor. In certain cases you would
-also like to show your custom Node2D or control on the editor, to position
-and scale it appropriately, like most other nodes do.
+Mặc dù code hiện tại có thể vẽ logo trong cửa sổ đang chạy, nó sẽ không hiển thị trên ``2D view`` trong editor. Trong một số trường hợp, bạn cũng muốn hiển thị Node2D hoặc control tùy chỉnh trên editor để định vị và điều chỉnh tỷ lệ của nó cho phù hợp, giống như hầu hết các node khác.
 
-To show the logo directly on the editor (without running it), you can use the
-:ref:`@tool<doc_gdscript_tool_mode>` annotation to request the custom drawing
-of the node to also appear while editing, like this:
+Để hiển thị logo trực tiếp trong editor (không cần chạy), bạn có thể sử dụng
+:ref:`@tool <doc_gdscript_tool_mode>` annotation để yêu cầu phần vẽ tùy chỉnh của node cũng xuất hiện khi chỉnh sửa, như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -704,26 +613,21 @@ of the node to also appear while editing, like this:
     [Tool]
     public partial class MyNode2D : Node2D
 
-You will need to save your scene, rebuild your project (for C# only) and reload
-the current scene manually at the menu option ``Scene > Reload Saved Scene``
-to refresh the current node in the ``2D`` view the first time you add or remove
-the ``@tool`` annotation.
+Bạn sẽ cần lưu scene, build lại project (chỉ dành cho C#) và tự tải lại scene hiện tại tại tùy chọn menu ``Scene > Reload Saved Scene`` để làm mới node hiện tại trong chế độ xem ``2D`` lần đầu tiên bạn thêm hoặc xóa annotation ``@tool``.
 
-Animation
-~~~~~~~~~
+Hoạt ảnh
+~~~~~~~~
 
-If we wanted to make the custom shape change at runtime, we could modify the
-methods called or its arguments at execution time, or apply a transform.
+Nếu muốn làm cho hình dạng tùy chỉnh thay đổi trong runtime, chúng ta có thể sửa đổi các phương thức được gọi hoặc đối số của chúng trong thời gian thực thi, hoặc áp dụng một phép biến đổi.
 
-For example, if we want the custom shape we just designed to rotate, we could add
-the following variable and code to the ``_ready`` and ``_process`` methods:
+Ví dụ, nếu muốn hình dạng tùy chỉnh vừa thiết kế xoay, chúng ta có thể thêm biến và đoạn mã sau vào các phương thức ``_ready`` và ``_process``:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     extends Node2D
 
-    @export var rotation_speed : float = 1  # In radians per second.
+    @export var rotation_speed : float = 1  # Tính bằng radian mỗi giây.
 
     func _ready():
         rotation = 0
@@ -735,7 +639,7 @@ the following variable and code to the ``_ready`` and ``_process`` methods:
  .. code-tab:: csharp
 
     [Export]
-    public float RotationSpeed { get; set; } = 1.0f;  // In radians per second.
+    public float RotationSpeed { get; set; } = 1.0f;  // Tính bằng radian mỗi giây.
 
     public override void _Ready()
     {
@@ -748,20 +652,12 @@ the following variable and code to the ``_ready`` and ``_process`` methods:
         Rotation -= RotationSpeed * (float)delta;
     }
 
-The problem with the above code is that because we have created the points
-approximately on a rectangle starting from the upper left corner, the ``(0, 0)``
-coordinate and extending to the right and down, we see that the rotation is done
-using the top left corner as pivot. A position transform change on the node
-won't help us here, as the rotation transform is applied first.
+Vấn đề với đoạn mã trên là vì chúng ta đã tạo các điểm gần đúng trên một hình chữ nhật bắt đầu từ góc trên bên trái, với tọa độ ``(0, 0)`` và mở rộng sang phải rồi xuống dưới, nên ta thấy phép xoay được thực hiện với góc trên bên trái làm tâm xoay. Thay đổi phép biến đổi vị trí trên node sẽ không giúp ích trong trường hợp này, vì phép biến đổi xoay được áp dụng trước.
 
-While we could rewrite all of the points' coordinates to be centered around
-``(0, 0)``, including negative coordinates, that would be a lot of work.
+Mặc dù có thể viết lại tọa độ của tất cả các điểm để chúng được căn giữa quanh ``(0, 0)``, bao gồm cả các tọa độ âm, nhưng việc đó sẽ tốn rất nhiều công sức.
 
-One possible way to work around this is to use the lower level
-:ref:`draw_set_transform<class_CanvasItem_method_draw_set_transform>`
-method to fix this issue, translating all points in the CanvasItem's own space,
-and then moving it back to its original place with a regular node transform,
-either in the editor or in code, like this:
+Một cách khả thi để khắc phục vấn đề này là sử dụng cấp thấp hơn
+phương thức :ref:`draw_set_transform<class_CanvasItem_method_draw_set_transform>` để khắc phục vấn đề này, dịch chuyển tất cả các điểm trong không gian riêng của CanvasItem, sau đó đưa nó trở lại vị trí ban đầu bằng một phép biến đổi node thông thường, trong editor hoặc trong code, như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -791,15 +687,13 @@ either in the editor or in code, like this:
         ...
     }
 
-This is the result, rotating around a pivot now on ``(60, 60)``:
+Kết quả là hình xoay quanh một tâm xoay hiện nằm tại ``(60, 60)``:
 
 .. image:: img/draw_godot_rotation.webp
 
-If what we wanted to animate was a property inside the ``_draw()`` call, we must remember to
-call ``queue_redraw()`` to force a refresh, as otherwise it would not be updated on screen.
+Nếu thứ chúng ta muốn tạo hoạt ảnh là một thuộc tính bên trong lời gọi ``_draw()``, chúng ta phải nhớ gọi ``queue_redraw()`` để buộc làm mới, nếu không thuộc tính đó sẽ không được cập nhật trên màn hình.
 
-For example, this is how we can make the robot appear to open and close its mouth, by
-changing the width of its mouth line follow a sinusoidal (:ref:`sin<class_@globalscope_method_sin>`) curve:
+Ví dụ, đây là cách chúng ta có thể làm cho robot trông như đang mở và đóng miệng bằng cách thay đổi độ rộng đường miệng theo một đường cong hình sin (:ref:`sin<class_@globalscope_method_sin>`):
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -838,45 +732,31 @@ changing the width of its mouth line follow a sinusoidal (:ref:`sin<class_@globa
         ...
     }
 
-It will look somewhat like this when run:
+Khi chạy, kết quả sẽ trông gần như thế này:
 
 .. image:: img/draw_godot_mouth_animation.webp
 
-Please note that ``_mouth_width`` is a user defined property like any other
-and it or any other used as a drawing argument can be animated using more
-standard and high-level methods such as a :ref:`Tween<class_Tween>` or an
-:ref:`AnimationPlayer<class_AnimationPlayer>` Node. The only difference is
-that a ``queue_redraw()`` call is needed to apply those changes so they get
-shown on screen.
+Lưu ý rằng ``_mouth_width`` là một thuộc tính do người dùng định nghĩa giống như mọi thuộc tính khác, và nó hoặc bất kỳ thuộc tính nào khác được dùng làm đối số vẽ đều có thể được tạo hoạt ảnh bằng các phương thức tiêu chuẩn, cấp cao hơn như :ref:`Tween<class_Tween>` hoặc một
+Node :ref:`AnimationPlayer<class_AnimationPlayer>`. Điểm khác biệt duy nhất là cần có lời gọi ``queue_redraw()`` để áp dụng những thay đổi đó, nhờ vậy chúng mới được hiển thị trên màn hình.
 
 .. _doc_draw_custom_example_2:
 
-Example 2: drawing a dynamic line
----------------------------------
+Ví dụ 2: vẽ một đường động
+--------------------------
 
-The previous example was useful to learn how to draw and modify nodes with
-custom shapes and animations. This could have some advantages, such as using
-exact coordinates and vectors for drawing, rather than bitmaps -which means
-they will scale well when transformed on screen. In some cases, similar results
-could be achieved composing higher level functionality with nodes such as
-:ref:`sprites<class_Sprite2D>` or
-:ref:`AnimatedSprites<class_AnimatedSprite2D>` loading SVG resources (which are
-also images defined with vectors) and the
-:ref:`AnimationPlayer<class_AnimationPlayer>` node.
+Ví dụ trước hữu ích để tìm hiểu cách vẽ và sửa đổi các node bằng hình dạng tùy chỉnh và hoạt ảnh. Cách này có một số ưu điểm, chẳng hạn như sử dụng tọa độ và vector chính xác để vẽ thay vì bitmap—điều đó có nghĩa là chúng sẽ co giãn tốt khi được biến đổi trên màn hình. Trong một số trường hợp, có thể đạt được kết quả tương tự bằng cách kết hợp các chức năng cấp cao hơn với những node như
+:ref:`sprites<class_Sprite2D>` hoặc
+:ref:`AnimatedSprites<class_AnimatedSprite2D>` để tải các tài nguyên SVG (cũng là những hình ảnh được định nghĩa bằng vector) và
+node :ref:`AnimationPlayer<class_AnimationPlayer>`.
 
-In other cases that will not be possible because we will not know what the
-resulting graphical representation will be before running the code. Here we
-will see how to draw a dynamic line whose coordinates are not known beforehand,
-and are affected by the user's input.
+Trong những trường hợp khác, điều đó sẽ không thể thực hiện được vì trước khi chạy code, chúng ta sẽ không biết biểu diễn đồ họa tạo ra sẽ như thế nào. Ở đây, chúng ta sẽ xem cách vẽ một đường động có tọa độ chưa biết trước và chịu ảnh hưởng bởi đầu vào của người dùng.
 
-Drawing a straight line between 2 points
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Vẽ một đường thẳng giữa 2 điểm
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Let's assume we want to draw a straight line between 2 points, the first one
-will be fixed on the upper left corner ``(0, 0)`` and the second will be defined
-by the cursor position on screen.
+Giả sử chúng ta muốn vẽ một đường thẳng giữa 2 điểm, điểm đầu tiên sẽ cố định tại góc trên bên trái ``(0, 0)`` và điểm thứ hai sẽ được xác định bởi vị trí con trỏ trên màn hình.
 
-We could draw a dynamic line between those 2 points like this:
+Chúng ta có thể vẽ một đường động giữa 2 điểm đó như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -927,33 +807,23 @@ We could draw a dynamic line between those 2 points like this:
         }
     }
 
-In this example we obtain the position of the mouse in the default viewport
-every frame with the method
-:ref:`get_mouse_position <class_Viewport_method_get_mouse_position>`. If the
-position has changed since the last draw request (a small optimization to
-avoid redrawing on every frame)- we will schedule a redraw. Our ``_draw()``
-method only has one line: requesting the drawing of a green line of
-width 10 pixels between the top left corner and that obtained position.
+Trong ví dụ này, mỗi frame chúng ta lấy vị trí chuột trong viewport mặc định bằng phương thức
+:ref:`get_mouse_position <class_Viewport_method_get_mouse_position>`. Nếu vị trí đã thay đổi kể từ yêu cầu vẽ lần trước (một tối ưu hóa nhỏ để tránh vẽ lại ở mọi frame), chúng ta sẽ lên lịch vẽ lại. Phương thức ``_draw()`` của chúng ta chỉ có một dòng: yêu cầu vẽ một đường màu xanh lá rộng 10 pixel giữa góc trên bên trái và vị trí vừa lấy được.
 
-The width, color, and position of the starting point can be configured with
-with the corresponding properties.
+Độ rộng, màu sắc và vị trí của điểm bắt đầu có thể được cấu hình bằng các thuộc tính tương ứng.
 
-It should look like this when run:
+Khi chạy, kết quả sẽ trông như thế này:
 
 .. image:: img/draw_line_between_2_points.webp
 
-Drawing an arc between 2 points
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Vẽ một cung giữa 2 điểm
+~~~~~~~~~~~~~~~~~~~~~~~
 
-The above example works, but we may want to join those 2 points with a
-different shape or function, other than a straight line.
+Ví dụ trên hoạt động, nhưng có thể chúng ta muốn nối 2 điểm đó bằng một hình dạng hoặc chức năng khác thay vì một đường thẳng.
 
-Let's try now creating an arc (a portion of a circumference) between
-both points.
+Bây giờ hãy thử tạo một cung (một phần của đường tròn) giữa hai điểm.
 
-Exporting the line starting point, segments, width, color, and antialiasing will
-allow us to modify those properties very easily directly from the editor
-inspector panel:
+Việc export điểm bắt đầu, số đoạn, độ rộng, màu sắc và khử răng cưa của đường sẽ cho phép chúng ta dễ dàng sửa đổi các thuộc tính đó trực tiếp từ bảng inspector của editor:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -993,29 +863,26 @@ inspector panel:
 
 .. image:: img/draw_dynamic_exported_properties.webp
 
-To draw the arc, we can use the method
-:ref:`draw_arc<class_CanvasItem_method_draw_arc>`. There are many
-arcs that pass through 2 points, so we will chose for this example
-the semicircle that has its center in the middle point between the 2 initial
-points.
+Để vẽ cung, chúng ta có thể sử dụng phương thức
+:ref:`draw_arc<class_CanvasItem_method_draw_arc>`. Có rất nhiều cung đi qua 2 điểm, vì vậy trong ví dụ này, chúng ta sẽ chọn nửa đường tròn có tâm nằm tại điểm giữa của 2 điểm ban đầu.
 
-Calculating this arc will be more complex than in the case of the line:
+Việc tính toán cung này sẽ phức tạp hơn trường hợp đường thẳng:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     func _draw():
-        # Average points to get center.
+        # Lấy trung bình các điểm để tìm tâm.
         var center : Vector2 = Vector2((_point2.x + point1.x) / 2,
                                        (_point2.y + point1.y) / 2)
-        # Calculate the rest of the arc parameters.
+        # Tính các tham số còn lại của cung.
         var radius : float = point1.distance_to(_point2) / 2
         var start_angle : float = (_point2 - point1).angle()
         var end_angle : float = (point1 - _point2).angle()
-        if end_angle < 0:  # end_angle is likely negative, normalize it.
+        if end_angle < 0:  # end_angle có khả năng là số âm, hãy chuẩn hóa nó.
             end_angle += TAU
 
-        # Finally, draw the arc.
+        # Cuối cùng, vẽ cung.
         draw_arc(center, radius, start_angle, end_angle, segments, color,
                  width, antialiasing)
 
@@ -1023,38 +890,27 @@ Calculating this arc will be more complex than in the case of the line:
 
     public override void _Draw()
     {
-        // Average points to get center.
+        // Lấy trung bình các điểm để tìm tâm.
         Vector2 center = new Vector2((_point2.X + Point1.X) / 2.0f,
                                         (_point2.Y + Point1.Y) / 2.0f);
-        // Calculate the rest of the arc parameters.
+        // Tính các tham số còn lại của cung.
         float radius = Point1.DistanceTo(_point2) / 2.0f;
         float startAngle = (_point2 - Point1).Angle();
         float endAngle = (Point1 - _point2).Angle();
-        if (endAngle < 0.0f)  // endAngle is likely negative, normalize it.
+        if (endAngle < 0.0f)  // endAngle có khả năng là số âm, hãy chuẩn hóa nó.
         {
             endAngle += Mathf.Tau;
         }
 
-        // Finally, draw the arc.
+        // Cuối cùng, vẽ cung.
         DrawArc(center, radius, startAngle, endAngle, Segments, Color,
                 Width, AntiAliasing);
     }
 
-The center of the semicircle will be the middle point between both points.
-The radius will be half the distance between both points.
-The start and end angles will be the angles of the vector from point1
-to point2 and vice-versa.
-Note we had to normalize the ``end_angle`` in positive values because if
-``end_angle`` is less than ``start_angle``, the arc will be drawn
-counter-clockwise, which we don't want in this case (the arc would be
-upside-down).
+Tâm của nửa đường tròn sẽ là điểm giữa của hai điểm. Bán kính sẽ bằng một nửa khoảng cách giữa hai điểm. Góc bắt đầu và góc kết thúc sẽ là các góc của vector từ point1 đến point2 và ngược lại. Lưu ý rằng chúng ta phải chuẩn hóa ``end_angle`` thành các giá trị dương, vì nếu ``end_angle`` nhỏ hơn ``start_angle``, cung sẽ được vẽ ngược chiều kim đồng hồ, điều mà chúng ta không muốn trong trường hợp này (cung sẽ bị lộn ngược).
 
-The result should be something like this, with the arc going down and
-between the points:
+Kết quả sẽ trông như sau, với cung tròn đi xuống và nằm giữa hai điểm:
 
 .. image:: img/draw_arc_between_2_points.webp
 
-Feel free to play with the parameters in the inspector to obtain different
-results: change the color, the width, the antialiasing, and increase the
-number of segments to increase the curve smoothness, at the cost of extra
-performance.
+Bạn có thể thoải mái thử các tham số trong inspector để có được những kết quả khác nhau: thay đổi màu sắc, độ rộng, antialiasing và tăng số lượng đoạn để đường cong mượt hơn, nhưng sẽ tốn thêm hiệu năng.

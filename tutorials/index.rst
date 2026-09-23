@@ -7,15 +7,15 @@
 
 .. _doc_tutorials:
 
-Tutorials
+Hướng dẫn
 =========
 
 .. Sections below are split into two groups. First come meta sections, covering
    general matters. Below that different areas of the engine are listed.
    These sections are sorted alphabetically. Please keep them that way.
 
-General
--------
+Chung
+-----
 
 .. toctree::
     :maxdepth: 1
@@ -26,7 +26,7 @@ General
     migrating/index
     troubleshooting
 
-Topics
+Chủ đề
 ------
 
 .. toctree::
