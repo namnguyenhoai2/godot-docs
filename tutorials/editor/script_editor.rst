@@ -1,103 +1,63 @@
 .. _doc_script_editor:
 
-Script Editor
-=============
+Trình chỉnh sửa Script
+======================
 
 .. _doc_script_editor_introduction:
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Godot Engine's script editor is a powerful and fully-integrated text editor
-that not only streamlines the process of writing and debugging code written in
-GDScript but also allows for working with plain text files, providing
-developers with a seamless environment for scripting game logic and behaviors.
-It can highlight your code, automatically indent it, perform syntax checks,
-and much more.
-You can also create breakpoints to debug your project without switching to
-another window.
-The text editor also serves as an offline class reference viewer, which can
-be accessed in several ways as described in the
+Trình chỉnh sửa script của Godot Engine là một trình soạn thảo văn bản mạnh mẽ và được tích hợp hoàn toàn, không chỉ giúp đơn giản hóa quá trình viết và gỡ lỗi mã được viết bằng GDScript mà còn cho phép làm việc với các tệp văn bản thuần túy, mang đến cho nhà phát triển một môi trường liền mạch để viết script cho logic và hành vi của trò chơi. Trình chỉnh sửa có thể tô sáng mã, tự động thụt lề, kiểm tra cú pháp và nhiều tính năng khác. Bạn cũng có thể tạo breakpoint để gỡ lỗi dự án mà không cần chuyển sang cửa sổ khác. Trình soạn thảo văn bản cũng đóng vai trò là trình xem tài liệu tham khảo class ngoại tuyến, có thể được truy cập bằng một số cách như mô tả trong
 :ref:`doc_intro_to_the_editor_interface_integrated_class_reference`.
 
 .. image:: img/script_editor_icons/text_editor.webp
 
 .. _doc_script_editor_features:
 
-Features
---------
+Tính năng
+---------
 
-Some of the key features of the text editor are listed below:
+Dưới đây là một số tính năng chính của trình soạn thảo văn bản:
 
-- Fully-integrated code editor for GDScript.
-- Syntax highlighting support for GDScript and JSON files.
-- Syntax checking for GDScript and JSON files.
-- Bookmark and breakpoint support.
-- Automatic indentation.
-- Code folding.
-- Customizable theme.
-- Multiple carets, which can be enabled using :kbd:`Alt + Left Click`.
-- Auto-completion of variables, functions, constants, etc.
-- Inline refactoring of symbols by selecting them and using :kbd:`Ctrl + D`.
-- Mass find and replace across project files.
+- Trình chỉnh sửa mã được tích hợp hoàn toàn cho GDScript.
+- Hỗ trợ tô sáng cú pháp cho các tệp GDScript và JSON.
+- Kiểm tra cú pháp cho các tệp GDScript và JSON.
+- Hỗ trợ bookmark và breakpoint.
+- Tự động thụt lề.
+- Thu gọn mã.
+- Theme có thể tùy chỉnh.
+- Nhiều caret, có thể được bật bằng :kbd:`Alt + Left Click`.
+- Tự động hoàn thành biến, hàm, hằng số, v.v.
+- Refactor symbol ngay trong dòng bằng cách chọn chúng và sử dụng :kbd:`Ctrl + D`.
+- Tìm và thay thế hàng loạt trong các tệp của dự án.
 
 .. _doc_script_editor_usage:
 
-Usage
------
+Cách sử dụng
+------------
 
-If you are using GDScript in your project, the built-in text editor in
-Godot provides everything you need, serving as a one-stop location to
-fully utilize the Godot Engine. Nearly all parameters that can be adjusted via
-the user interface can also be modified directly through code.
+Nếu bạn đang sử dụng GDScript trong dự án, trình soạn thảo văn bản tích hợp sẵn trong Godot cung cấp mọi thứ bạn cần, đóng vai trò là nơi duy nhất để tận dụng đầy đủ Godot Engine. Gần như mọi tham số có thể điều chỉnh thông qua giao diện người dùng cũng có thể được sửa đổi trực tiếp bằng mã.
 
-.. note:: If you would like to use an external text editor or prefer to use C#
-  in your project, see :ref:`doc_external_editor` and
+.. note:: Nếu bạn muốn sử dụng trình soạn thảo văn bản bên ngoài hoặc thích sử dụng C# trong dự án, hãy xem :ref:`doc_external_editor` và
   :ref:`doc_c_sharp_setup_external_editor`.
 
-.. tip:: Similar to many parts of the Godot's interface, the text editor can
-  also be customized by changing its settings to your liking. You can access
-  these settings by opening **Editor > Editor Settings** and going to the **Text Editor**
-  group.
+.. tip:: Tương tự như nhiều phần khác trong giao diện của Godot, trình soạn thảo văn bản cũng có thể được tùy chỉnh bằng cách thay đổi các thiết lập theo ý muốn. Bạn có thể truy cập các thiết lập này bằng cách mở **Editor > Editor Settings** rồi đi đến nhóm **Text Editor**.
 
 .. image:: img/editor_ui_script_editor_open.webp
 
-You can open the Script Editor using the **Script** button in the workspace selector,
-located at the top center of Godot's interface.
-Alternatively, you can use the **Open Script** button next to a node in the
-Scene Tree dock, or double-click on a ``.gd`` file or a recognized text file in
-the FileSystem dock to open it directly in the Script Editor.
+Bạn có thể mở Trình chỉnh sửa Script bằng nút **Script** trong bộ chọn workspace, nằm ở chính giữa phía trên giao diện của Godot. Ngoài ra, bạn có thể sử dụng nút **Open Script** bên cạnh một node trong dock Scene Tree, hoặc nhấp đúp vào tệp ``.gd`` hoặc một tệp văn bản được nhận diện trong dock FileSystem để mở trực tiếp trong Trình chỉnh sửa Script.
 
 .. image:: img/editor_ui_script_editor_menu.webp
 
-Once it is open, you will see the text editor menus at the top, below the scene
-switcher. Next to the menus, you'll find buttons to open the online documentation
-or search within the built-in class reference. To the right of these buttons are
-two navigation arrows that allow you to navigate through your viewing history.
-Finally, you can use the float button to
-separate the text editor from Godot's window, which is useful if you are working
-with multiple monitors.
+Sau khi mở, bạn sẽ thấy các menu của trình soạn thảo văn bản ở phía trên, bên dưới bộ chuyển scene. Bên cạnh các menu là các nút để mở tài liệu trực tuyến hoặc tìm kiếm trong tài liệu tham khảo class tích hợp sẵn. Ở bên phải các nút này là hai mũi tên điều hướng, cho phép bạn di chuyển qua lịch sử xem. Cuối cùng, bạn có thể sử dụng nút float để tách trình soạn thảo văn bản khỏi cửa sổ của Godot, rất hữu ích khi bạn làm việc với nhiều màn hình.
 
-Underneath the menus on the left, you will see the script panel. In the center,
-adjacent to the script panel, is the coding area. Beneath the coding area is the
-status bar, which displays the error and warning count in the code.
-Clicking on the error or warning icons will show the list of errors with
-the line numbers. Clicking on one will jump to that line.
-You can also choose to ignore warnings by opening the list and
-clicking ``Ignore``.
-The status bar also lets you change the zoom level of the code by clicking
-the percentage value. You can also use :kbd:`Ctrl + Mouse Wheel`
-(:kbd:`Cmd + Mouse Wheel` on Mac) to achieve the same effect.
-The status bar also shows the current position of the caret in terms of line and
-column, and whether the indentation is done using tabs, or spaces.
+Bên dưới các menu ở bên trái, bạn sẽ thấy bảng script. Ở giữa, cạnh bảng script, là khu vực viết mã. Bên dưới khu vực viết mã là thanh trạng thái, hiển thị số lỗi và cảnh báo trong mã. Nhấp vào biểu tượng lỗi hoặc cảnh báo sẽ hiển thị danh sách lỗi cùng số dòng. Nhấp vào một lỗi sẽ chuyển đến dòng đó. Bạn cũng có thể bỏ qua cảnh báo bằng cách mở danh sách và nhấp vào ``Ignore``. Thanh trạng thái cũng cho phép bạn thay đổi mức thu phóng của mã bằng cách nhấp vào giá trị phần trăm. Bạn cũng có thể sử dụng :kbd:`Ctrl + Mouse Wheel` (:kbd:`Cmd + Mouse Wheel` trên Mac) để đạt được hiệu quả tương tự. Thanh trạng thái cũng hiển thị vị trí hiện tại của caret theo dòng và cột, cũng như cho biết thụt lề được thực hiện bằng tab hay dấu cách.
 
-Many of the actions performed in the text editor can also be executed using
-shortcuts. The actions show their corresponding shortcuts next to them.
-Within Godot itself, you can find and rebind all shortcuts by going to
+Nhiều thao tác được thực hiện trong trình soạn thảo văn bản cũng có thể được thực hiện bằng shortcut. Các thao tác hiển thị shortcut tương ứng bên cạnh chúng. Ngay trong Godot, bạn có thể tìm và gán lại tất cả shortcut bằng cách đi đến
 :menu:`Editor > Editor Settings... > Shortcuts`.
 
-In the next sections, we will go through different aspects of the text editor.
-You can also select a section below to jump to a specific topic:
+Trong các phần tiếp theo, chúng ta sẽ tìm hiểu các khía cạnh khác nhau của trình soạn thảo văn bản. Bạn cũng có thể chọn một phần bên dưới để chuyển đến chủ đề cụ thể:
 
 .. contents::
    :local:
@@ -106,8 +66,8 @@ You can also select a section below to jump to a specific topic:
 
 .. _doc_script_editor_script_panel:
 
-Script Panel
-~~~~~~~~~~~~
+Bảng Script
+~~~~~~~~~~~
 
 .. |script| image:: img/script_editor_icons/Script.webp
 .. |scriptcsharp| image:: img/script_editor_icons/ScriptCSharp.webp
@@ -116,296 +76,175 @@ Script Panel
 
 .. image:: img/editor_ui_script_editor_script_panel.webp
 
-Below the menus, on the left panel, you will see a list of opened files and documentation
-pages. Depending on the file type, this list will have an icon next
-to the file name. For example, the |script| icon means that it is a GDScript.
-the |scriptcsharp| means it is a C# script. The |documentation| means that this is a
-built-in class reference. Finally, the |toolscript| means it is a currently running
-script (See :ref:`tool annotation <doc_running_code_in_the_editor>` for more on this).
-Hovering a file will show a tooltip with its relative location in the project folder.
+Bên dưới các menu, ở bảng bên trái, bạn sẽ thấy danh sách các tệp và trang tài liệu đã mở. Tùy thuộc vào loại tệp, danh sách này sẽ có một biểu tượng bên cạnh tên tệp. Ví dụ, biểu tượng |script| có nghĩa đây là một GDScript. |scriptcsharp| có nghĩa đây là một script C#. |documentation| có nghĩa đây là tài liệu tham khảo class tích hợp sẵn. Cuối cùng, |toolscript| có nghĩa đây là một script đang chạy (xem :ref:`tool annotation <doc_running_code_in_the_editor>` để biết thêm). Di chuột lên một tệp sẽ hiển thị tooltip với vị trí tương đối của tệp trong thư mục dự án.
 
-On the status bar, clicking the left arrow hides the script panel, clicking
-on the right arrow shows it.
+Trên thanh trạng thái, nhấp vào mũi tên trái sẽ ẩn bảng script, còn nhấp vào mũi tên phải sẽ hiển thị bảng này.
 
-If you did not change any settings, the file names may also have a different coloring.
-This helps you identify the recently edited files by highlighting them. This behavior
-can be changed in the **Editor > Editor Settings** by adjusting the **Script Temperature**
-properties in the **Text Editor** section.
+Nếu bạn chưa thay đổi thiết lập nào, tên tệp cũng có thể có màu khác nhau. Điều này giúp bạn xác định các tệp vừa được chỉnh sửa bằng cách làm nổi bật chúng. Bạn có thể thay đổi hành vi này trong **Editor > Editor Settings** bằng cách điều chỉnh các thuộc tính **Script Temperature** trong phần **Text Editor**.
 
-The filter bar above the file names introduces a handy case-insensitive search to
-find a specific file. Even if you just type the letters of a file name into the
-bar, files containing these letters in order will also appear. Assume that there
-is a file named ``button.gd`` in the list. If you type ``btn`` into the filter bar,
-this file will appear in the results. To reset the filter, clear the filter bar.
+Thanh bộ lọc phía trên tên tệp cung cấp tính năng tìm kiếm không phân biệt chữ hoa chữ thường tiện lợi để tìm một tệp cụ thể. Ngay cả khi bạn chỉ nhập các chữ cái trong tên tệp vào thanh này, những tệp chứa các chữ cái đó theo đúng thứ tự cũng sẽ xuất hiện. Giả sử danh sách có một tệp tên là ``button.gd``. Nếu bạn nhập ``btn`` vào thanh bộ lọc, tệp này sẽ xuất hiện trong kết quả. Để đặt lại bộ lọc, hãy xóa nội dung trong thanh bộ lọc.
 
-An asterisk (*) next to a file name indicates that the file has unsaved changes.
+Dấu hoa thị (*) bên cạnh tên tệp cho biết tệp có các thay đổi chưa được lưu.
 
-.. tip:: If you just enter "*" in the filter bar, you can display all unsaved files.
+.. tip:: Nếu chỉ nhập "*" vào thanh bộ lọc, bạn có thể hiển thị tất cả các tệp chưa được lưu.
 
-You can drag a file to change the ordering. Middle-clicking on a file closes it.
-Right-clicking on a file provides several options to save or close files, or to
-copy the relative path of the file. On this menu:
+Bạn có thể kéo một tệp để thay đổi thứ tự. Nhấp chuột giữa vào một tệp sẽ đóng tệp đó. Nhấp chuột phải vào một tệp sẽ cung cấp một số tùy chọn để lưu hoặc đóng tệp, hoặc sao chép đường dẫn tương đối của tệp. Trong menu này:
 
-You can also use **Move Up** and **Move Down** to change the order of the file, or use **Sort**
-to sort all files alphabetically. **Toggle Files Panel** hides the panel, which
-can be displayed again using the right arrow on the status bar.
-**Close Docs** closes all opened in-class reference documents leaving only
-script files open. **Show in FileSystem** finds and highlights the file in the
-FileSystem dock.
+Bạn cũng có thể sử dụng **Move Up** và **Move Down** để thay đổi thứ tự tệp, hoặc sử dụng **Sort** để sắp xếp tất cả tệp theo thứ tự bảng chữ cái. **Toggle Files Panel** ẩn bảng này; bạn có thể hiển thị lại bằng mũi tên phải trên thanh trạng thái. **Close Docs** đóng tất cả tài liệu tham khảo class đang mở, chỉ để lại các tệp script. **Show in FileSystem** tìm và làm nổi bật tệp trong dock FileSystem.
 
-Below the file list, you'll see the name of the currently open file. The button
-next to this switches the ordering of the methods defined in this file between
-alphabetical and as they appear. Under this is the outline of the file. If this
-is a script file, it will contain the list of defined methods. If, however, a
-class reference page is open, this area will show the table of contents of this
-document. Clicking on an item in this list will jump to the respective function
-or section in the file. Similarly, the **Filter Methods** bar lets you search
-for a specific function or section within the selected document with the same
-behavior as filtering scripts.
+Bên dưới danh sách tệp, bạn sẽ thấy tên của tệp hiện đang mở. Nút bên cạnh tên này chuyển đổi thứ tự các method được định nghĩa trong tệp giữa thứ tự bảng chữ cái và thứ tự xuất hiện. Bên dưới là dàn ý của tệp. Nếu đây là một tệp script, dàn ý sẽ chứa danh sách các method đã định nghĩa. Tuy nhiên, nếu một trang tài liệu tham khảo class đang mở, khu vực này sẽ hiển thị mục lục của tài liệu. Nhấp vào một mục trong danh sách sẽ chuyển đến hàm hoặc phần tương ứng trong tệp. Tương tự, thanh **Filter Methods** cho phép bạn tìm kiếm một hàm hoặc phần cụ thể trong tài liệu đã chọn, với cách hoạt động giống như khi lọc script.
 
 .. _doc_script_editor_menus:
 
-Menus
-~~~~~
+Menu
+~~~~
 
-The text editor's menus lie below the scene switcher and allow you to access a
-variety of tools and options, such as file management, search and replace, debugging
-controls, and code formatting features.
+Các menu của trình soạn thảo văn bản nằm bên dưới bộ chuyển scene và cho phép bạn truy cập nhiều công cụ cũng như tùy chọn, chẳng hạn như quản lý tệp, tìm kiếm và thay thế, các điều khiển gỡ lỗi và các tính năng định dạng mã.
 
-.. tip:: An asterisk (*) next to an action means that this operation is also available
-  in the context menu, which can be opened by right-clicking in the code editor.
+.. tip:: Dấu hoa thị (*) bên cạnh một thao tác cho biết thao tác này cũng có trong menu ngữ cảnh, có thể mở bằng cách nhấp chuột phải trong trình soạn thảo mã.
 
 .. image:: img/script_editor_icons/text_editor_menu.webp
 
-The **File** menu provides the following options:
+Menu **File** cung cấp các tùy chọn sau:
 
 .. image:: img/script_editor_icons/text_editor_file_menu.webp
 
-- **New Script...**: Opens the new script dialog to create and add the script to
-  the project. If creation is successful, it will directly open it in the
-  text editor. Depending on the version of Godot (with C# support or not), you
-  can choose ``.gd`` or ``.cs`` as the extension.
-- **New Text File...**: Opens the file dialog to create a plain text file with
-  one of the recognized formats. Godot can also highlight ``json`` files.
-- **Open...**: Opens the file dialog to let you browse inside your computer and
-  choose any recognized text file to open it.
-- **Reopen Closed Script**: Reopens the last closed scripts. You can use this
-  option multiple times to reopen other closed scripts if you closed more than one.
-- **Open Recent**: Provides a list of last opened scripts. You can also clear the
-  list using the provided option at the bottom of the list.
-- **Save**: Saves the currently selected script.
-- **Save As...**: Opens the file dialog to save the currently open script
-  with a different name.
-- **Save All**: Saves all unsaved open scripts in the text editor. Scripts with
-  unsaved changes will have an asterisk (*) next to their names in the script list.
-- **Soft Reload Tool Script**: If the selected script is a
-  :ref:`tool <doc_running_code_in_the_editor>`, reloads the script to execute it again.
-- **Copy Script Path**: Copies the currently selected script's relative path in
-  the project using the ``res://`` prefix.
-- **Show in FileSystem**: Finds and highlights the selected file in the FileSystem
-  dock.
-- **History Previous**: Changes the active script to the one that was previously
-  opened. This is useful when you have multiple scripts open and want to quickly navigate
-  back to the last script you were editing. If you also changed the caret position more than
-  10 lines, you will first move it to its previous location in the same file.
-- **History Next**: After using `History Previous` to go back to an earlier script,
-  this feature allows you to move forward through the script history, switching to
-  scripts that were previously accessed. Similar to above, if you also changed the
-  caret position more than 10 lines, you will first move it to its next location in
-  the same file.
-- **Theme**: Provides options to import an existing theme, save, or reload it. Changing
-  theme settings is performed via `Editor Settings`.
-- **Close**: Closes the active script.
-- **Close All**: Closes all open scripts and prompts to save if there are unsaved changes.
-- **Close Other Tabs**: Closes all open scripts except the selected one.
-- **Close Docs**: Closes the class reference documentation pages, leaving only the
-  scripts.
-- **Run**: If the script extends :ref:`EditorScript <class_EditorScript>` and
-  intended to be executed without running the project, this option runs the script.
-  See :ref:`doc_running_code_in_the_editor_editorscript` for more.
-- **Toggle Files Panel**: Shows or hides the script panel located on the left side
-  of the text editor, allowing you to expand the available coding area. More on the
-  `Scripts Panel` is explained :ref:`above <doc_script_editor_script_panel>`.
+- **New Script...**: Mở hộp thoại tạo script mới để tạo và thêm script vào project. Nếu tạo thành công, script sẽ được mở trực tiếp trong trình soạn thảo văn bản. Tùy thuộc vào phiên bản Godot (có hỗ trợ C# hay không), bạn có thể chọn ``.gd`` hoặc ``.cs`` làm phần mở rộng.
+- **New Text File...**: Mở hộp thoại tệp để tạo một tệp văn bản thuần túy với một trong các định dạng được nhận diện. Godot cũng có thể tô sáng các tệp ``json``.
+- **Open...**: Mở hộp thoại tệp để bạn duyệt bên trong máy tính và chọn bất kỳ tệp văn bản được nhận diện nào để mở.
+- **Reopen Closed Script**: Mở lại các script vừa đóng gần đây. Bạn có thể sử dụng tùy chọn này nhiều lần để mở lại các script khác đã đóng nếu bạn đóng nhiều hơn một script.
+- **Open Recent**: Cung cấp danh sách các script được mở gần đây. Bạn cũng có thể xóa danh sách bằng tùy chọn được cung cấp ở cuối danh sách.
+- **Save**: Lưu script hiện đang được chọn.
+- **Save As...**: Mở hộp thoại tệp để lưu script đang mở với tên khác.
+- **Save All**: Lưu tất cả script đang mở và chưa được lưu trong trình soạn thảo văn bản. Các script có thay đổi chưa được lưu sẽ có dấu hoa thị (*) bên cạnh tên trong danh sách script.
+- **Soft Reload Tool Script**: Nếu script được chọn là một
+  :ref:`tool <doc_running_code_in_the_editor>`, tải lại script để thực thi nó lần nữa.
+- **Copy Script Path**: Sao chép đường dẫn tương đối của script đang được chọn trong project bằng tiền tố ``res://``.
+- **Show in FileSystem**: Tìm và tô sáng tệp được chọn trong dock FileSystem.
+- **History Previous**: Chuyển script hiện hoạt sang script đã được mở trước đó. Tùy chọn này hữu ích khi bạn mở nhiều script và muốn nhanh chóng quay lại script vừa chỉnh sửa. Nếu bạn cũng đã thay đổi vị trí caret hơn 10 dòng, trước tiên caret sẽ được chuyển về vị trí trước đó trong cùng tệp.
+- **History Next**: Sau khi sử dụng `History Previous` để quay lại một script trước đó, tính năng này cho phép bạn tiến về phía trước trong lịch sử script, chuyển sang các script đã được truy cập trước đó. Tương tự như trên, nếu bạn cũng đã thay đổi vị trí caret hơn 10 dòng, trước tiên caret sẽ được chuyển đến vị trí tiếp theo trong cùng tệp.
+- **Theme**: Cung cấp các tùy chọn để nhập theme hiện có, lưu hoặc tải lại theme. Việc thay đổi cài đặt theme được thực hiện qua `Editor Settings`.
+- **Close**: Đóng script hiện hoạt.
+- **Close All**: Đóng tất cả script đang mở và yêu cầu lưu nếu có thay đổi chưa được lưu.
+- **Close Other Tabs**: Đóng tất cả script đang mở ngoại trừ script được chọn.
+- **Close Docs**: Đóng các trang tài liệu tham chiếu lớp, chỉ giữ lại các script.
+- **Run**: Nếu script kế thừa :ref:`EditorScript <class_EditorScript>` và được dự định thực thi mà không chạy project, tùy chọn này sẽ chạy script. Xem :ref:`doc_running_code_in_the_editor_editorscript` để biết thêm.
+- **Toggle Files Panel**: Hiển thị hoặc ẩn bảng script ở bên trái trình soạn thảo văn bản, cho phép bạn mở rộng khu vực viết mã. Thông tin thêm về `Scripts Panel` được giải thích :ref:`ở trên <doc_script_editor_script_panel>`.
 
-The **Edit** menu provides several options for line operations:
+Menu **Edit** cung cấp một số tùy chọn cho các thao tác trên dòng:
 
 .. image:: img/script_editor_icons/text_editor_edit_menu.webp
 
-- **Undo***: Allows you to reverse the most recent action or series of actions, restoring
-  document or code to its previous state before the changes were made.
-- **Redo***: Allows you to reapply an action that was previously undone, effectively
-  redoing the last action that was reversed by the Undo function.
-- **Cut***: Cuts the selection to the clipboard.
-- **Copy***: Copies the selection to the clipboard.
-- **Paste***: Pastes the content of the clipboard if it contains text.
-- **Select All***: Selects all code in the text editor.
-- **Duplicate Selection**: Copies the selection and appends it next to the selection.
-- **Duplicate Lines**: Duplicates the current line and adds it as a new line below the
-  current line.
-- **Evaluate Selection***: Computes the values of the selected text if it contains `only`
-  a mathematical expression, such as ``83 * 3`` or ``pow(2,3)``.
-- **Toggle Word Wrap**: Disables the horizontal scrollbar by wrapping the long lines to
-  the next line. Note that this is just a visual change and no new linebreaks are added.
-- **Line**: Provides a set of line operations. Depending on the opened file, the options
-  might also be directly in the Edit menu, instead of a submenu.
+- **Undo***: Cho phép hoàn tác thao tác hoặc chuỗi thao tác gần đây nhất, khôi phục tài liệu hoặc mã về trạng thái trước khi thay đổi.
+- **Redo***: Cho phép áp dụng lại một thao tác đã được hoàn tác trước đó, thực hiện lại thao tác cuối cùng đã bị hàm Undo hoàn tác.
+- **Cut***: Cắt phần lựa chọn vào clipboard.
+- **Copy***: Sao chép phần lựa chọn vào clipboard.
+- **Paste***: Dán nội dung của clipboard nếu nội dung đó chứa văn bản.
+- **Select All***: Chọn toàn bộ mã trong trình soạn thảo văn bản.
+- **Duplicate Selection**: Sao chép phần lựa chọn và thêm bản sao ngay bên cạnh phần lựa chọn.
+- **Duplicate Lines**: Nhân bản dòng hiện tại và thêm dòng đó làm một dòng mới bên dưới dòng hiện tại.
+- **Evaluate Selection***: Tính các giá trị của phần văn bản được chọn nếu phần đó chứa `only` một biểu thức toán học, chẳng hạn như ``83 * 3`` hoặc ``pow(2,3)``.
+- **Toggle Word Wrap**: Tắt thanh cuộn ngang bằng cách ngắt các dòng dài sang dòng tiếp theo. Lưu ý rằng đây chỉ là thay đổi hiển thị và không thêm dấu ngắt dòng mới.
+- **Line**: Cung cấp một nhóm thao tác trên dòng. Tùy thuộc vào tệp đang mở, các tùy chọn này cũng có thể nằm trực tiếp trong menu Edit thay vì trong menu con.
 
-  - **Move Up**: Moves the current line or the selected line(s) one line up.
-  - **Move Down**: Moves the current line or the selected line(s) one line down.
-  - **Indent***: Indents the text from the caret or the selected line(s), following the
-    indentation setting.
-  - **Unindent***: Unindents the text from the caret or the selected line(s), following the
-    indentation setting.
-  - **Delete Line**: Deletes the current line or the selected line(s).
-  - **Toggle Comment***: Comments and uncomments the current line or the selected line(s).
-    You can perform the same action by selecting line(s) and choosing the same action
-    after right-clicking on the selected text.
+  - **Move Up**: Di chuyển dòng hiện tại hoặc (các) dòng được chọn lên một dòng.
+  - **Move Down**: Di chuyển dòng hiện tại hoặc (các) dòng được chọn xuống một dòng.
+  - **Indent***: Thụt lề văn bản từ caret hoặc (các) dòng được chọn, theo cài đặt thụt lề.
+  - **Unindent***: Bỏ thụt lề văn bản từ caret hoặc (các) dòng được chọn, theo cài đặt thụt lề.
+  - **Delete Line**: Xóa dòng hiện tại hoặc (các) dòng được chọn.
+  - **Toggle Comment***: Bật hoặc tắt comment cho dòng hiện tại hoặc (các) dòng được chọn. Bạn cũng có thể thực hiện thao tác tương tự bằng cách chọn (các) dòng rồi chọn cùng thao tác sau khi nhấp chuột phải vào phần văn bản đã chọn.
 
-- **Folding**: Provides a set of folding options for the selected text. Depending on the
-  opened file, the options might also be directly in the Edit menu, instead of a submenu.
+- **Folding**: Cung cấp một nhóm tùy chọn thu gọn cho phần văn bản được chọn. Tùy thuộc vào tệp đang mở, các tùy chọn này cũng có thể nằm trực tiếp trong menu Edit thay vì trong menu con.
 
-  - **Fold/Unfold Line***: If the code in the current line has a code block or code region
-    beneath it, it hides this block by collapsing the lines. You can then unfold it using
-    this option again, using the ">" arrow next to the line number in the coding area,
-    or clicking on the ellipsis "..." icon at the end of the folded line.
-  - **Fold All Lines**: Folds all code blocks or code regions in the open document.
-  - **Unfold All Lines**: Unfolds all code blocks and code regions in the open document.
-  - **Create Code Region***: Wraps the selected text in a foldable code region to improve
-    the readability of larger scripts. See :ref:`doc_gdscript_code_regions` for more.
+  - **Fold/Unfold Line***: Nếu mã trong dòng hiện tại có một khối mã hoặc vùng mã bên dưới, tùy chọn này sẽ ẩn khối đó bằng cách thu gọn các dòng. Sau đó, bạn có thể mở rộng khối bằng cách sử dụng lại tùy chọn này, sử dụng mũi tên ">" bên cạnh số dòng trong khu vực viết mã hoặc nhấp vào biểu tượng dấu ba chấm "..." ở cuối dòng đã thu gọn.
+  - **Fold All Lines**: Thu gọn tất cả khối mã hoặc vùng mã trong tài liệu đang mở.
+  - **Unfold All Lines**: Mở rộng tất cả các khối mã và vùng mã trong tài liệu đang mở.
+  - **Create Code Region***: Đặt văn bản đã chọn vào một vùng mã có thể thu gọn để cải thiện khả năng đọc các script lớn hơn. Xem :ref:`doc_gdscript_code_regions` để biết thêm.
 
-- **Completion Query**: Suggests from built-in or user created symbols to auto-complete the
-  partially written code. :kbd:`Up` and :kbd:`Down` arrows navigate up and down, pressing
-  :kbd:`Enter` or :kbd:`Tab` accepts and adds the highlighted symbol to the code. :kbd:`Tab` will also replace existing text to the right of the caret.
-- **Trim Trailing Whitespaces**: Removes extra spacing at the end of each line in the file.
-- **Trim Final Newlines**: Removes the extra new lines at the end of the file.
-- **Indentation**: Provides options for the indentation of the open file. Depending
-  on the opened file, the options might also be directly in the Edit menu, instead of a
-  submenu.
+- **Completion Query**: Đề xuất các symbol tích hợp sẵn hoặc do người dùng tạo để tự động hoàn thành đoạn mã đang viết dở. Các mũi tên :kbd:`Up` và :kbd:`Down` dùng để di chuyển lên và xuống, nhấn
+  :kbd:`Enter` hoặc :kbd:`Tab` để chấp nhận và thêm symbol được tô sáng vào mã. :kbd:`Tab` cũng sẽ thay thế văn bản hiện có ở bên phải con trỏ.
+- **Trim Trailing Whitespaces**: Xóa khoảng trắng thừa ở cuối mỗi dòng trong tệp.
+- **Trim Final Newlines**: Xóa các dòng mới thừa ở cuối tệp.
+- **Indentation**: Cung cấp các tùy chọn thụt lề cho tệp đang mở. Tùy thuộc vào tệp đã mở, các tùy chọn này cũng có thể nằm trực tiếp trong menu Edit thay vì một submenu.
 
-  - **Convert Indent to Spaces**: Converts all indentation in the file to spaces.
-  - **Convert Indent to Tabs**: Converts all indentation in the file to tabs.
-  - **Auto Indent**: Converts the indentation of the selected lines (or the entire file) following the
-    indentation setting.
+  - **Convert Indent to Spaces**: Chuyển toàn bộ thụt lề trong tệp thành dấu cách.
+  - **Convert Indent to Tabs**: Chuyển toàn bộ thụt lề trong tệp thành tab.
+  - **Auto Indent**: Chuyển thụt lề của các dòng đã chọn (hoặc toàn bộ tệp) theo thiết lập thụt lề.
 
-- **Convert Case**: Changes the case of the selected text to `Upper Case*`, `Lower Case*`, or
-  capitalizes each initial letter of the words.
-- **Syntax Highlighter**: Allows you to choose the syntax highlighter.
+- **Convert Case**: Thay đổi kiểu chữ của văn bản đã chọn thành `Upper Case*`, `Lower Case*`, hoặc viết hoa chữ cái đầu tiên của mỗi từ.
+- **Syntax Highlighter**: Cho phép bạn chọn trình tô sáng cú pháp.
 
-  - **Plain Text**: Disables highlighting.
-  - **Standard**: Default highlighting for C# scripts.
-  - **JSON**: Syntax highlighting for JSON files.
-  - **GDScript**: Syntax highlighting for GDScript files.
+  - **Plain Text**: Tắt tính năng tô sáng.
+  - **Standard**: Tính năng tô sáng mặc định cho các script C#.
+  - **JSON**: Tô sáng cú pháp cho các tệp JSON.
+  - **GDScript**: Tô sáng cú pháp cho các tệp GDScript.
 
-The **Search** menu provides the following options:
+Menu **Search** cung cấp các tùy chọn sau:
 
 .. image:: img/script_editor_icons/text_editor_search_menu.webp
 
-- **Find...**: Opens the quick-find bar under the status bar to search for text in the open
-  file. You can navigate to the next match and previous match using the up and down arrows, respectively. Checking **Match Case** makes the search case-sensitive. Checking **Whole Words** means that the text must not have any letters or numbers next to it, only symbols and whitespace.
-- **Find Next**: Similar to the down arrow, shows the next occurrence.
-- **Find Previous**: Similar to the up arrow, shows the previous occurrence.
+- **Find...**: Mở thanh tìm nhanh bên dưới thanh trạng thái để tìm văn bản trong tệp đang mở. Bạn có thể dùng các mũi tên lên và xuống để lần lượt chuyển đến kết quả khớp tiếp theo và trước đó. Chọn **Match Case** để tìm kiếm phân biệt chữ hoa chữ thường. Chọn **Whole Words** nghĩa là văn bản không được có bất kỳ chữ cái hoặc chữ số nào ngay bên cạnh, chỉ được có ký hiệu và khoảng trắng.
+- **Find Next**: Tương tự mũi tên xuống, hiển thị lần xuất hiện tiếp theo.
+- **Find Previous**: Tương tự mũi tên lên, hiển thị lần xuất hiện trước đó.
 
 
-- **Replace...**: Opens the find and replace bar under the status bar to find text and replace it in the open file.  You can choose to replace them one
-  at a time or all at once. Additionally, you can limit the replacement to the selected
-  text by checking the **Selection Only** checkbox in the find and replace bar. You can also use :kbd:`Ctrl + D` to
-  additionally select the next instance of the currently selected text, allowing you to perform an in-line replacement on multiple occurrences.
-- **Find in Files...**: Opens a window to search for text within the files in the project
-  folder. Selecting "Find..." starts with the chosen folder, and includes the file extensions
-  checked in the filters. The results are shown in the bottom panel with the number of matches
-  and total number of files found, in the **Search Results** tab. Clicking on a result opens
-  the file and jumps to the respective line.
-- **Replace in Files...**: Opens a window to search and replace text with different text within the
-  found files in the project folder. After clicking **Replace...**, you can select in which files to
-  replace using the **Search Results** tab in the bottom panel by (un)checking them and using
-  **Replace All** button.
+- **Replace...**: Mở thanh tìm và thay thế bên dưới thanh trạng thái để tìm văn bản và thay thế văn bản đó trong tệp đang mở. Bạn có thể chọn thay thế từng mục một hoặc tất cả cùng lúc. Ngoài ra, bạn có thể giới hạn việc thay thế trong văn bản đã chọn bằng cách chọn hộp kiểm **Selection Only** trên thanh tìm và thay thế. Bạn cũng có thể dùng :kbd:`Ctrl + D` để chọn thêm phiên bản tiếp theo của văn bản hiện đang được chọn, cho phép bạn thực hiện thay thế trực tiếp trên nhiều lần xuất hiện.
+- **Find in Files...**: Mở một cửa sổ để tìm văn bản trong các tệp thuộc thư mục dự án. Việc chọn "Find..." sẽ bắt đầu với thư mục đã chọn và bao gồm các phần mở rộng tệp được đánh dấu trong bộ lọc. Kết quả được hiển thị trong panel phía dưới cùng với số kết quả khớp và tổng số tệp được tìm thấy, trong tab **Search Results**. Nhấp vào một kết quả sẽ mở tệp và chuyển đến dòng tương ứng.
+- **Replace in Files...**: Mở một cửa sổ để tìm và thay thế văn bản bằng văn bản khác trong các tệp được tìm thấy thuộc thư mục dự án. Sau khi nhấp vào **Replace...**, bạn có thể chọn các tệp cần thay thế trong tab **Search Results** ở panel phía dưới bằng cách đánh dấu (hoặc bỏ đánh dấu) chúng và sử dụng nút **Replace All**.
 
 .. image:: img/editor_ui_script_editor_replaceinfiles.webp
 
-.. warning:: Note that "Replace in Files" operation cannot be undone!
+.. warning:: Lưu ý rằng thao tác "Replace in Files" không thể hoàn tác!
 
-.. tip:: Both the **Find in Files** and **Replace in Files** windows share the **Search...**
-  and **Replace...** buttons. The only difference in the latter window is an additional text
-  field that automatically fills in the search results panel when the **Replace...** button
-  is clicked. The replacement operation is only executed if you click the **Replace All**
-  button in this bottom panel, allowing you to also edit the word to replace later within
-  this panel.
+.. tip:: Cả hai cửa sổ **Find in Files** và **Replace in Files** đều dùng chung các nút **Search...** và **Replace...**. Điểm khác biệt duy nhất ở cửa sổ sau là có thêm một trường văn bản tự động điền vào panel kết quả tìm kiếm khi nhấp vào nút **Replace...**. Thao tác thay thế chỉ được thực hiện khi bạn nhấp vào nút **Replace All** trong panel phía dưới này, cho phép bạn cũng chỉnh sửa từ cần thay thế sau đó ngay trong panel.
 
 .. image:: img/editor_ui_script_editor_replace_all.webp
 
-- **Contextual Help***: Opens the list of built-in class reference similar to pressing :kbd:`F1`
-  on a symbol, or choosing **Lookup Symbol** from the context menu.
+- **Contextual Help***: Mở danh sách tham chiếu lớp tích hợp sẵn, tương tự như khi nhấn :kbd:`F1` trên một symbol hoặc chọn **Lookup Symbol** từ menu ngữ cảnh.
 
-The **Go To** menu lets you navigate within the code at ease with these options:
+Menu **Go To** cho phép bạn dễ dàng di chuyển trong mã bằng các tùy chọn sau:
 
 .. image:: img/script_editor_icons/text_editor_goto_menu.webp
 
-- **Go to Function...**: Opens the function list to jump to. You can achieve the same result
-  by typing in the filter methods bar in the script panel.
-- **Go to Line...**: Jumps to the entered line number in the code editor.
-- **Bookmarks**: Contains actions for the bookmark functionality, which you can use to find
-  your way through your code easier, such as an incomplete section. Bookmarked lines will
-  have a blue bookmark symbol left of the line number.
+- **Go to Function...**: Mở danh sách hàm để chuyển đến một hàm. Bạn cũng có thể đạt được kết quả tương tự bằng cách nhập vào thanh lọc phương thức trong panel script.
+- **Go to Line...**: Chuyển đến số dòng đã nhập trong trình soạn thảo mã.
+- **Bookmarks**: Chứa các thao tác dành cho chức năng bookmark, giúp bạn dễ dàng tìm đường trong mã, chẳng hạn như đến một phần chưa hoàn thiện. Các dòng được đánh dấu bookmark sẽ có biểu tượng bookmark màu xanh lam ở bên trái số dòng.
 
-  - **Toggle Bookmark***: Adds or removes the bookmark on the line where the caret is. You can
-    also right click on a line to achieve this.
-  - **Remove All Bookmarks**: Removes all bookmarks in the open document.
-  - **Go to Next Bookmark**: Jumps to the next bookmark in the open document.
-  - **Go to Previous Bookmark**: Jumps to the previous bookmark in the open document.
-  - **Bookmarks** menu will also contain the list of bookmarked lines, including their line
-    number and displaying the partial content in that line.
+  - **Toggle Bookmark***: Thêm hoặc xóa bookmark trên dòng có con trỏ. Bạn cũng có thể nhấp chuột phải vào một dòng để thực hiện việc này.
+  - **Remove All Bookmarks**: Xóa tất cả bookmark trong tài liệu đang mở.
+  - **Go to Next Bookmark**: Chuyển đến bookmark tiếp theo trong tài liệu đang mở.
+  - **Go to Previous Bookmark**: Chuyển đến bookmark trước đó trong tài liệu đang mở.
+  - Menu **Bookmarks** cũng sẽ chứa danh sách các dòng được đánh dấu bookmark, bao gồm số dòng và nội dung rút gọn của dòng đó.
 
-- **Breakpoints**: Breakpoints are helpful while debugging your code. Similar to **Bookmarks**
-  menu, this menu lets you add or remove breakpoints, navigate between them and directly
-  jump to a specific breakpoint. An easy way to add a breakpoint is hovering over the blank area
-  left of a line number. It will show a faded red circle. Clicking it will add a
-  breakpoint and the circle will stay there. Clicking on a circle removes the breakpoint.
+- **Breakpoints**: Breakpoint rất hữu ích khi debug mã. Tương tự menu **Bookmarks**, menu này cho phép bạn thêm hoặc xóa breakpoint, di chuyển giữa chúng và chuyển trực tiếp đến một breakpoint cụ thể. Một cách dễ dàng để thêm breakpoint là di chuột qua vùng trống bên trái số dòng. Một vòng tròn đỏ mờ sẽ xuất hiện. Nhấp vào đó sẽ thêm breakpoint và vòng tròn sẽ giữ nguyên tại vị trí đó. Nhấp vào vòng tròn sẽ xóa breakpoint.
 
-**Debug** menu offers actions which can be used while debugging. See
-:ref:`doc_debugger_tools_and_options` for more.
+Menu **Debug** cung cấp các thao tác có thể dùng khi debug. Xem
+:ref:`doc_debugger_tools_and_options` để biết thêm.
 
 .. _doc_script_editor_coding_area:
 
-Coding area
-~~~~~~~~~~~
+Khu vực viết mã
+~~~~~~~~~~~~~~~
 
-.. note:: This section will only cover the basics of the coding area in terms of the user
-  interface. To learn more about scripting in Godot, refer to the :ref:`doc_gdscript` or
+.. note:: Phần này chỉ trình bày những kiến thức cơ bản về khu vực viết mã xét trên phương diện giao diện người dùng. Để tìm hiểu thêm về scripting trong Godot, hãy tham khảo :ref:`doc_gdscript` hoặc
   :ref:`Scripting <toc-learn-scripting>` documentation.
 
 .. image:: img/editor_ui_script_editor_coding_area.webp
 
-The coding area is where you will type your scripts if you are using the built-in text editor.
-It offers highlighting and auto-completion features to help you while you code.
+Khu vực viết mã là nơi bạn sẽ nhập các script nếu đang sử dụng trình soạn thảo văn bản tích hợp. Khu vực này cung cấp các tính năng tô sáng và tự động hoàn thành để hỗ trợ bạn khi viết mã.
 
-The coding area shows line numbers on the left side. Below the navigation arrows on the
-right side, there is a clickable minimap that provides an overview of the entire script,
-allowing you to scroll through it.
+Khu vực viết mã hiển thị số dòng ở bên trái. Bên dưới các mũi tên điều hướng ở bên phải là một minimap có thể nhấp vào, cung cấp cái nhìn tổng quan về toàn bộ script và cho phép bạn cuộn qua script.
 
-If a line of code is long enough (more than 80 characters, by default), the text editor
-will display a vertical line that can be used as a soft guideline. For a hard guideline,
-this value is set to 100 characters, by default. Both values can be changed, or the
-display of the line can be toggled in the "Appearance" settings of the text editor.
+Nếu một dòng mã đủ dài (theo mặc định là hơn 80 ký tự), trình soạn thảo văn bản sẽ hiển thị một đường dọc có thể được dùng làm đường hướng dẫn mềm. Đối với đường hướng dẫn cứng, giá trị này mặc định là 100 ký tự. Bạn có thể thay đổi cả hai giá trị hoặc bật tắt hiển thị đường này trong phần "Appearance" của trình soạn thảo văn bản.
 
 .. |override| image:: img/script_editor_icons/override.webp
 .. |receiver| image:: img/script_editor_icons/receiver.webp
 .. |foldable| image:: img/script_editor_icons/Foldable.webp
 
-In the script, to the left of function definitions, you might see additional icons. The |override|
-icon indicates that this function is an :ref:`override <doc_overridable_functions>` of an existing
-function. Clicking it opens the documentation of the original function. The |receiver| icon means
-that it is a receiving method of a signal. Clicking it shows where the signal is coming
-from. A |foldable| icon to the left of the line denotes a foldable block. You can
-click to collapse or expand it.
-Alternatively, the ellipsis (...) icon can also be clicked to expand a folded block.
+Trong script, ở bên trái phần định nghĩa hàm, bạn có thể thấy các biểu tượng bổ sung. Biểu tượng |override| cho biết hàm này là một hàm :ref:`ghi đè <doc_overridable_functions>` lên một hàm hiện có. Nhấp vào biểu tượng này sẽ mở tài liệu của hàm gốc. Biểu tượng |receiver| cho biết đây là phương thức nhận của một signal. Nhấp vào biểu tượng này sẽ hiển thị nơi signal phát ra. Biểu tượng |foldable| ở bên trái dòng cho biết một khối có thể thu gọn. Bạn có thể nhấp vào đó để thu gọn hoặc mở rộng khối. Ngoài ra, cũng có thể nhấp vào biểu tượng dấu ba chấm (...) để mở rộng một khối đang được thu gọn.
 
-The example below summarizes the paragraph above. Lines 52, 56, and 58 are foldable blocks,
-line 57 is a code region with the name "New Code Region," which you can also fold, and line
-62 is a folded block.
-Line 53 is a bookmark, which can quickly be jumped to using the **Go To > Bookmarks** menu.
-Line 55 is a breakpoint that can be used in :ref:`debugging <doc_overview_of_debugging_tools>`.
+Ví dụ bên dưới tóm tắt đoạn văn trên. Các dòng 52, 56 và 58 là những khối có thể thu gọn; dòng 57 là một vùng mã có tên "New Code Region", cũng có thể được thu gọn; còn dòng 62 là một khối đang được thu gọn. Dòng 53 là một bookmark, có thể nhanh chóng chuyển đến bằng menu **Go To > Bookmarks**. Dòng 55 là một breakpoint có thể được sử dụng trong :ref:`debugging <doc_overview_of_debugging_tools>`.
 
 .. image:: img/script_editor_icons/text_editor_coding_area_indicators.webp
 
-Many of the colors of the text editor such as highlighting colors, or even breakpoint or
-bookmark icon colors can be customized. You can experiment with them by opening the text editor
-settings and navigating to the **Editor > Editor Settings > Text Editor** section.
+Bạn có thể tùy chỉnh nhiều màu của trình soạn thảo văn bản, chẳng hạn như màu tô sáng, hoặc thậm chí màu biểu tượng breakpoint hay bookmark. Bạn có thể thử nghiệm với các màu này bằng cách mở phần cài đặt của trình soạn thảo văn bản và chuyển đến mục **Editor > Editor Settings > Text Editor**.

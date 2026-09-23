@@ -1,126 +1,81 @@
 .. _doc_editor_inspector_dock:
 
-Inspector Dock
-===============
+Dock Inspector
+==============
 
-The Inspector dock lists all properties of an object, resource, or node.
-It will update the list of the properties as you select a different node from the
-Scene Tree dock, or if you use **Open** command from the FileSystem's context menu.
+Dock Inspector liệt kê tất cả thuộc tính của một đối tượng, resource hoặc node. Danh sách thuộc tính sẽ được cập nhật khi bạn chọn một node khác trong dock Scene Tree hoặc sử dụng lệnh **Open** từ menu ngữ cảnh của FileSystem.
 
 .. image:: img/inspector_overview.webp
 
-This page explains how the Inspector dock works in-depth. You will learn how to edit
-properties, fold and unfold areas, use the search bar, and more.
+Trang này giải thích chi tiết cách dock Inspector hoạt động. Bạn sẽ học cách chỉnh sửa thuộc tính, mở rộng và thu gọn các khu vực, sử dụng thanh tìm kiếm và nhiều thao tác khác.
 
-Usage
------
+Cách sử dụng
+------------
 
-If the inspector dock is visible, clicking on a node in the scene tree will automatically
-display its properties.
-If it is not visible, you can show it by navigating to
-**Editor > Editor Docks > Inspector**.
+Nếu dock Inspector đang hiển thị, việc nhấp vào một node trong scene tree sẽ tự động hiển thị các thuộc tính của node đó. Nếu dock không hiển thị, bạn có thể mở nó bằng cách đi tới **Editor > Editor Docks > Inspector**.
 
-At the top of the dock are the file and navigation buttons.
+Ở đầu dock là các nút tệp và điều hướng.
 
 .. image:: img/inspector_top_buttons.webp
 
-From left to right:
+Từ trái sang phải:
 
-- Opens a new window to select and create a resource in the memory and edit it.
-- Opens a resource from the FileSystem to edit.
-- Saves the currently edited resource to disk.
-- Provides options to:
+- Mở một cửa sổ mới để chọn và tạo một resource trong bộ nhớ, rồi chỉnh sửa resource đó.
+- Mở một resource từ FileSystem để chỉnh sửa.
+- Lưu resource đang được chỉnh sửa vào ổ đĩa.
+- Cung cấp các tùy chọn để:
 
-  - **Edit Resource from Clipboard** by pasting the copied resource.
-  - **Copy Resource** to clipboard.
-  - **Show in FileSystem** if the resource is already saved.
-  - **Make Resource Built-In** to work in a built-in resource, not the one from the disk.
+  - **Edit Resource from Clipboard** bằng cách dán resource đã sao chép.
+  - **Copy Resource** vào clipboard.
+  - **Show in FileSystem** nếu resource đã được lưu.
+  - **Make Resource Built-In** để làm việc với một resource tích hợp sẵn thay vì resource trên ổ đĩa.
 
-- The "<" and ">" arrows let you navigate through your edited object history.
-- The button next to them opens the history list for a quicker navigation. If you created multiple
-  resources in the memory, you will also see them here.
+- Các mũi tên "<" và ">" cho phép bạn điều hướng qua lịch sử các đối tượng đã chỉnh sửa.
+- Nút bên cạnh chúng mở danh sách lịch sử để điều hướng nhanh hơn. Nếu bạn đã tạo nhiều resource trong bộ nhớ, chúng cũng sẽ xuất hiện ở đây.
 
-Below, you can find the selected node's icon, its name, and the quick button to open
-its documentation on the right side.
-Clicking on the node's name itself will list the sub-resources of this node if there are any.
+Bên dưới, bạn sẽ thấy biểu tượng của node đã chọn, tên node và nút nhanh để mở tài liệu của node ở phía bên phải. Nhấp vào chính tên node sẽ liệt kê các sub-resource của node nếu có.
 
-Then comes the search bar. Type anything in it to filter displayed properties.
-Delete the text to clear the search.
-This search is case insensitive and also searches letter by letter as you type.
-For instance, if you type ``vsb``, one of the results you see will be
-Visibility property as this property contains all of these letters.
+Tiếp theo là thanh tìm kiếm. Nhập bất kỳ nội dung nào vào đó để lọc các thuộc tính được hiển thị. Xóa văn bản để xóa tìm kiếm. Tìm kiếm này không phân biệt chữ hoa chữ thường và cũng tìm kiếm theo từng chữ cái khi bạn nhập. Chẳng hạn, nếu bạn nhập ``vsb``, một trong các kết quả bạn thấy sẽ là thuộc tính Visibility vì thuộc tính này chứa tất cả các chữ cái đó.
 
-Before discussing the tool button next to the filter bar, it is worth mentioning
-what you actually see below it and how it is structured.
+Trước khi thảo luận về nút công cụ bên cạnh thanh bộ lọc, cần đề cập đến những gì bạn thực sự thấy bên dưới thanh này và cách chúng được sắp xếp.
 
 .. image:: img/inspector_dock_overlay.webp
 
-Properties are grouped inside their respective *classes* as *sections*.
-You can expand each section to view the related properties.
+Các thuộc tính được nhóm trong các *classes* tương ứng dưới dạng *sections*. Bạn có thể mở rộng từng section để xem các thuộc tính liên quan.
 
-You can also open the documentation of each class by right-clicking on a class
-and selecting **Open Documentation**.
-Similarly, you can right click on a property and copy or paste its value,
-copy the property path, favorite it to be shown on the top of the inspector, or open its
-documentation page.
+Bạn cũng có thể mở tài liệu của từng class bằng cách nhấp chuột phải vào class rồi chọn **Open Documentation**. Tương tự, bạn có thể nhấp chuột phải vào một thuộc tính để sao chép hoặc dán giá trị của nó, sao chép đường dẫn thuộc tính, đánh dấu yêu thích để thuộc tính được hiển thị ở đầu Inspector hoặc mở trang tài liệu của thuộc tính.
 
-If you hover your mouse over a property, you will see the description of what
-it does as well as how it can be called inside the script.
+Nếu di chuột qua một thuộc tính, bạn sẽ thấy mô tả về chức năng của thuộc tính cũng như cách gọi thuộc tính đó trong script.
 
-You can directly change the values by clicking, typing, or selecting from the menu.
-If the property is a number or a slider, you can keep your left mouse button
-pressed and drag to change the values.
+Bạn có thể trực tiếp thay đổi các giá trị bằng cách nhấp, nhập hoặc chọn từ menu. Nếu thuộc tính là một số hoặc thanh trượt, bạn có thể giữ nút chuột trái và kéo để thay đổi giá trị.
 
 .. image:: img/inspector_dock_subresource.webp
 
-If a node's property is a sub-resource, you can click on the down arrow to pick a
-resource type, or load one using the **Quick Load** or **Load** options.
-Alternatively, a supported resource can be dragged from the FileSystem.
-Once you start dragging, the compatible property will be highlighted.
-Simply drop it on the appropriate property's value.
+Nếu thuộc tính của một node là sub-resource, bạn có thể nhấp vào mũi tên xuống để chọn một loại resource hoặc tải resource bằng các tùy chọn **Quick Load** hoặc **Load**. Ngoài ra, bạn có thể kéo một resource được hỗ trợ từ FileSystem. Khi bắt đầu kéo, thuộc tính tương thích sẽ được làm nổi bật. Chỉ cần thả resource vào giá trị của thuộc tính tương ứng.
 
-After loading a sub-resource, you can click on it to see its properties or adjust them.
+Sau khi tải một sub-resource, bạn có thể nhấp vào resource đó để xem hoặc điều chỉnh các thuộc tính của nó.
 
 .. |undo| image:: img/inspector_dock_revert.webp
 
-The values with different values than their original values will have a revert icon (|undo|).
-Clicking on this icon reverts the value to its original state.
-If the values are linked with each other, they will have a chain icon and changing one
-will change others as well. You can unchain them by clicking on this icon.
+Các giá trị khác với giá trị ban đầu sẽ có biểu tượng hoàn nguyên (|undo|). Nhấp vào biểu tượng này sẽ hoàn nguyên giá trị về trạng thái ban đầu. Nếu các giá trị được liên kết với nhau, chúng sẽ có biểu tượng chuỗi và việc thay đổi một giá trị sẽ thay đổi các giá trị khác. Bạn có thể bỏ liên kết giữa chúng bằng cách nhấp vào biểu tượng này.
 
-If you are changing a property a lot, you may consider favoriting it by right-clicking and
-choosing **Favorite Property**. This will show it at the top of the inspector for all objects
-of this class.
+Nếu bạn thường xuyên thay đổi một thuộc tính, bạn có thể đánh dấu thuộc tính đó là yêu thích bằng cách nhấp chuột phải và chọn **Favorite Property**. Thao tác này sẽ hiển thị thuộc tính ở đầu Inspector cho tất cả đối tượng thuộc class này.
 
-Now that we have a better understanding of the terms, we can proceed with the tool menu.
-If you click the tool menu icon next to the filter bar, a drop-down menu will offer
-various view and edit options.
+Sau khi đã hiểu rõ hơn về các thuật ngữ, chúng ta có thể tiếp tục với menu công cụ. Nếu nhấp vào biểu tượng menu công cụ bên cạnh thanh bộ lọc, một menu thả xuống sẽ cung cấp nhiều tùy chọn xem và chỉnh sửa.
 
 .. image:: img/inspector_tools_menu.webp
 
-- **Expand All**: Expands all sections showing all available properties.
-- **Collapse All**: Collapses all properties showing only classes and the sections.
-- **Expand Non-Default**: Only expands the sections where the original value is different
-  than the current value (the properties with a revert icon (|undo|)).
-- **Property Name Style**: This section determines how the properties' text is displayed in
-  the inspector. ``Raw`` uses the property's own naming, ``Capitalized`` uses title
-  case by changing the initial letters of each word to uppercase and removing underscores,
-  ``Localized`` displays the translation of the properties if you are using the Editor
-  in a language other than English.
-- **Copy Properties**: Copies all properties of the current node with their current values.
-- **Paste Properties**: Pastes the copied properties from the clipboard. Useful to apply
-  the common properties of one node to another.
-- **Make Sub-Resources Unique**: By default, a duplicated node shares the sub-resources of
-  the original node. Changing one parameter of the sub-resource in one node, affects
-  the other one.
-  Clicking this option makes each sub-resource used in this node unique, separated from
-  other nodes.
+- **Expand All**: Mở rộng tất cả section để hiển thị mọi thuộc tính hiện có.
+- **Collapse All**: Thu gọn tất cả thuộc tính, chỉ hiển thị các class và section.
+- **Expand Non-Default**: Chỉ mở rộng các section mà giá trị ban đầu khác với giá trị hiện tại (các thuộc tính có biểu tượng hoàn nguyên (|undo|)).
+- **Property Name Style**: Section này xác định cách hiển thị văn bản thuộc tính trong Inspector. ``Raw`` sử dụng cách đặt tên riêng của thuộc tính, ``Capitalized`` sử dụng kiểu chữ tiêu đề bằng cách viết hoa chữ cái đầu của mỗi từ và loại bỏ dấu gạch dưới, còn ``Localized`` hiển thị bản dịch của các thuộc tính nếu bạn sử dụng Editor bằng ngôn ngữ khác tiếng Anh.
+- **Copy Properties**: Sao chép tất cả thuộc tính của node hiện tại cùng các giá trị hiện tại của chúng.
+- **Paste Properties**: Dán các thuộc tính đã sao chép từ clipboard. Hữu ích khi áp dụng các thuộc tính chung của một node cho node khác.
+- **Make Sub-Resources Unique**: Theo mặc định, một node được nhân bản sẽ dùng chung các sub-resource của node ban đầu. Việc thay đổi một tham số của sub-resource trong một node sẽ ảnh hưởng đến node còn lại. Nhấp vào tùy chọn này sẽ làm cho mỗi sub-resource được node này sử dụng trở nên duy nhất và tách biệt với các node khác.
 
-.. tip:: If a node has exported variables in its attached script, you will also see these
-  in the inspector. The first image in this section has one for the Player node:
-  `Action Suffix`. See :ref:`doc_gdscript_exports` for more on this topic.
+.. tip:: Nếu một node có các biến được export trong script đính kèm, bạn cũng sẽ thấy chúng trong Inspector. Hình ảnh đầu tiên trong section này có một biến cho node Player: `Action Suffix`. Xem :ref:`doc_gdscript_exports` để biết thêm về chủ đề này.
 
-.. seealso:: Refer to :ref:`doc_customizing_editor` for dock customization options.
+.. seealso:: Tham khảo :ref:`doc_customizing_editor` để biết các tùy chọn tùy chỉnh dock.
 
 
 .. break down inspector content in class name, property categories that are foldable, and individual properties.

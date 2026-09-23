@@ -1,123 +1,84 @@
-:article_outdated: True
+:article_outdated: Đúng
 
 .. _doc_using_the_web_editor:
 
-Using the Web editor
-====================
+Sử dụng trình chỉnh sửa web
+===========================
 
-There is a `Web editor <https://editor.godotengine.org/>`__ you can use to work
-on new or existing projects.
-
-.. note::
-
-    The web editor is in a preliminary stage. While its feature set may be
-    sufficient for educational purposes, it is currently **not recommended for
-    production work**. See :ref:`doc_using_the_web_editor_limitations` below.
-
-Browser support
----------------
-
-The Web editor requires support for WebAssembly's SharedArrayBuffer. This
-is in turn required to support threading in the browser.
-
-See :ref:`doc_system_requirements` for a list of supported web browsers.
-Mobile browsers are supported, but won't provide an ideal experience
-due to performance and input limitations.
-
-The web editor only supports the Compatibility renderer, as there is no
-stable way to run Vulkan applications on the web yet.
+Có một `trình chỉnh sửa web <https://editor.godotengine.org/>`__ mà bạn có thể sử dụng để làm việc với các dự án mới hoặc hiện có.
 
 .. note::
 
-    If you run into performance issues on Firefox, try using a Chromium-based
-    browser as these may perform better in WebGL applications.
+    Trình chỉnh sửa web hiện đang ở giai đoạn sơ khai. Mặc dù bộ tính năng của nó có thể đủ cho mục đích giáo dục, hiện tại **không được khuyến nghị sử dụng cho công việc production**. Xem :ref:`doc_using_the_web_editor_limitations` bên dưới.
+
+Hỗ trợ trình duyệt
+------------------
+
+Trình chỉnh sửa web yêu cầu WebAssembly hỗ trợ SharedArrayBuffer. Đổi lại, điều này là cần thiết để hỗ trợ threading trong trình duyệt.
+
+Xem :ref:`doc_system_requirements` để biết danh sách các trình duyệt web được hỗ trợ. Trình duyệt trên thiết bị di động được hỗ trợ, nhưng sẽ không mang lại trải nghiệm tối ưu do những hạn chế về hiệu năng và phương thức nhập liệu.
+
+Trình chỉnh sửa web chỉ hỗ trợ renderer Compatibility, vì hiện vẫn chưa có cách ổn định để chạy các ứng dụng Vulkan trên web.
+
+.. note::
+
+    Nếu gặp vấn đề về hiệu năng trên Firefox, hãy thử sử dụng trình duyệt dựa trên Chromium vì chúng có thể hoạt động tốt hơn với các ứng dụng WebGL.
 
 .. _doc_using_the_web_editor_limitations:
 
-Limitations
+Các hạn chế
 -----------
 
-Due to limitations on the Godot or Web platform side, the following features
-are currently missing:
+Do những hạn chế ở phía Godot hoặc nền tảng Web, các tính năng sau hiện chưa có:
 
-- No C#/Mono support.
-- No GDExtension support.
-- No debugging support. This means GDScript debugging/profiling, live scene
-  editing, the Remote Scene tree dock and other features that rely on the debugger
-  protocol will not work.
-- No project exporting. As a workaround, you can download the project source
-  using **Project > Tools > Download Project Source** and export it using a
-  `native version of the Godot editor <https://godotengine.org/download>`__.
-- The editor won't warn you when closing the tab with unsaved changes.
-- No lightmap baking support. You can still use existing lightmaps if they were
-  baked with a native version of the Godot editor
-  (e.g. by importing an existing project).
+- Không hỗ trợ C#/Mono.
+- Không hỗ trợ GDExtension.
+- Không hỗ trợ debugging. Điều này có nghĩa là debugging/profiling GDScript, chỉnh sửa scene trực tiếp, dock Remote Scene tree và các tính năng khác phụ thuộc vào giao thức debugger sẽ không hoạt động.
+- Không hỗ trợ export dự án. Cách khắc phục là bạn có thể tải mã nguồn dự án xuống bằng **Project > Tools > Download Project Source** rồi export bằng `phiên bản native của trình chỉnh sửa Godot <https://godotengine.org/download>`__.
+- Trình chỉnh sửa sẽ không cảnh báo bạn khi đóng tab có các thay đổi chưa được lưu.
+- Không hỗ trợ baking lightmap. Bạn vẫn có thể sử dụng các lightmap hiện có nếu chúng được bake bằng phiên bản native của trình chỉnh sửa Godot (ví dụ: bằng cách import một dự án hiện có).
 
-The following features are unlikely to be supported due to inherent limitations
-of the Web platform:
+Các tính năng sau đây khó có khả năng được hỗ trợ do những hạn chế vốn có của nền tảng Web:
 
-- No support for external script editors.
-- No support for Android one-click deploy.
+- Không hỗ trợ các trình chỉnh sửa script bên ngoài.
+- Không hỗ trợ deploy Android bằng một cú nhấp chuột.
 
 .. seealso::
 
-    See the
-    `list of open issues on GitHub related to the web editor <https://github.com/godotengine/godot/issues?q=is%3Aopen+is%3Aissue+label%3Aplatform%3Aweb+label%3Atopic%3Aeditor>`__
-    for a list of known bugs.
+    Xem `danh sách các issue đang mở trên GitHub liên quan đến trình chỉnh sửa web <https://github.com/godotengine/godot/issues?q=is%3Aopen+is%3Aissue+label%3Aplatform%3Aweb+label%3Atopic%3Aeditor>`__ để biết danh sách các bug đã biết.
 
-Importing a project
--------------------
+Import một dự án
+----------------
 
-To import an existing project, the current process is as follows:
+Để import một dự án hiện có, quy trình hiện tại như sau:
 
-- Specify a ZIP file to preload on the HTML5 filesystem using the
-  **Preload project ZIP** input.
-- Run the editor by clicking **Start Godot editor**.
-  The Godot Project Manager should appear after 10-20 seconds.
-  On slower machines or connections, loading may take up to a minute.
-- In the dialog that appears at the middle of the window, specify a name for
-  the folder to create then click the **Create Folder** button
-  (it doesn't have to match the ZIP archive's name).
-- Click **Install & Edit** and the project will open in the editor.
+- Chỉ định một tệp ZIP để preload vào hệ thống tệp HTML5 bằng input **Preload project ZIP**.
+- Chạy trình chỉnh sửa bằng cách nhấp vào **Start Godot editor**. Godot Project Manager sẽ xuất hiện sau 10-20 giây. Trên các máy hoặc kết nối chậm hơn, quá trình tải có thể mất tối đa một phút.
+- Trong hộp thoại xuất hiện ở giữa cửa sổ, chỉ định tên cho thư mục cần tạo rồi nhấp vào nút **Create Folder** (tên này không nhất thiết phải trùng với tên của tệp lưu trữ ZIP).
+- Nhấp vào **Install & Edit** và dự án sẽ mở trong trình chỉnh sửa.
 
 .. attention::
 
-    It's important to place the project folder somewhere in ``/home/web_user/``.
-    If your project folder is placed outside ``/home/web_user/``, you will
-    lose your project when closing the editor!
+    Điều quan trọng là đặt thư mục dự án ở đâu đó trong ``/home/web_user/``. Nếu thư mục dự án được đặt bên ngoài ``/home/web_user/``, bạn sẽ mất dự án khi đóng trình chỉnh sửa!
 
-    When you follow the steps described above, the project folder will always be
-    located in ``/home/web_user/projects``, keeping it safe.
+    Khi làm theo các bước được mô tả ở trên, thư mục dự án sẽ luôn nằm trong ``/home/web_user/projects``, nhờ đó được an toàn.
 
-Editing and running a project
------------------------------
-
-Unlike the native version of Godot, the web editor is constrained to a single
-window. Therefore, it cannot open a new window when running the project.
-Instead, when you run the project by clicking the Run button or pressing
-:kbd:`F5`, it will appear to "replace" the editor window.
-
-The web editor offers an alternative way to deal with the editor and game
-windows (which are now "tabs"). You can switch between the **Editor** and
-**Game** tabs using the buttons on the top. You can also close the running game
-or editor by clicking the **×** button next to those tabs.
-
-Where are my project files?
+Chỉnh sửa và chạy một dự án
 ---------------------------
 
-Due to browser security limitations, the editor will save the project files to
-the browser's IndexedDB storage. This storage isn't accessible as a regular folder
-on your machine, but is abstracted away in a database.
+Không giống phiên bản native của Godot, trình chỉnh sửa web bị giới hạn trong một cửa sổ duy nhất. Vì vậy, nó không thể mở một cửa sổ mới khi chạy dự án. Thay vào đó, khi bạn chạy dự án bằng cách nhấp vào nút Run hoặc nhấn
+:kbd:`F5`, nó sẽ xuất hiện để "thay thế" cửa sổ trình chỉnh sửa.
+
+Trình chỉnh sửa web cung cấp một cách khác để xử lý các cửa sổ trình chỉnh sửa và game (hiện là các "tab"). Bạn có thể chuyển đổi giữa các tab **Editor** và **Game** bằng các nút ở phía trên. Bạn cũng có thể đóng game hoặc trình chỉnh sửa đang chạy bằng cách nhấp vào nút **×** bên cạnh các tab đó.
+
+Các tệp dự án của tôi ở đâu?
+----------------------------
+
+Do các hạn chế về bảo mật của trình duyệt, trình chỉnh sửa sẽ lưu các tệp dự án vào bộ nhớ IndexedDB của trình duyệt. Bộ nhớ này không thể truy cập như một thư mục thông thường trên máy của bạn mà được trừu tượng hóa trong một cơ sở dữ liệu.
 
 .. UPDATE: Not supported yet. When exporting from the web editor is supported,
 .. update this paragraph.
 
-You can download the project files as a ZIP archive by using
-**Project > Tools > Download Project Source**. This can be used to export the
-project using a `native Godot editor <https://godotengine.org/download>`__,
-since exporting from the web editor isn't supported yet.
+Bạn có thể tải các tệp dự án xuống dưới dạng một tệp lưu trữ ZIP bằng cách sử dụng **Project > Tools > Download Project Source**. Bạn có thể dùng cách này để export dự án bằng `trình chỉnh sửa Godot native <https://godotengine.org/download>`__, vì hiện chưa hỗ trợ export từ trình chỉnh sửa web.
 
-In the future, it may be possible to use the
-`HTML5 FileSystem API <https://developer.mozilla.org/en-US/docs/Web/API/FileSystem>`__
-to store the project files on the user's filesystem as the native editor would do.
-However, this isn't implemented yet.
+Trong tương lai, có thể sẽ sử dụng `HTML5 FileSystem API <https://developer.mozilla.org/en-US/docs/Web/API/FileSystem>`__ để lưu các tệp dự án trên hệ thống tệp của người dùng như trình chỉnh sửa native vẫn làm. Tuy nhiên, tính năng này vẫn chưa được triển khai.
