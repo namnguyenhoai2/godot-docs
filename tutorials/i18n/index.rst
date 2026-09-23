@@ -1,7 +1,7 @@
 :allow_comments: False
 
-Internationalization
-====================
+Bản địa hóa quốc tế
+===================
 
 .. toctree::
    :maxdepth: 1

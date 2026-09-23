@@ -1,48 +1,34 @@
 .. _doc_localization_using_spreadsheets:
 
-Localization using spreadsheets
-===============================
+Bản địa hóa bằng bảng tính
+==========================
 
-Spreadsheets are one of the most common formats for localizing games.
-In Godot, spreadsheets are supported through the CSV format. This
-guide explains how to work with CSVs.
+Bảng tính là một trong những định dạng phổ biến nhất để bản địa hóa game. Trong Godot, bảng tính được hỗ trợ thông qua định dạng CSV. Hướng dẫn này giải thích cách làm việc với các tệp CSV.
 
-The CSV files **must** be saved with UTF-8 encoding
-without a `byte order mark <https://en.wikipedia.org/wiki/Byte_order_mark>`__.
+Các tệp CSV **must** được lưu với mã hóa UTF-8 mà không có `byte order mark <https://en.wikipedia.org/wiki/Byte_order_mark>`__.
 
 .. warning::
 
-    By default, Microsoft Excel will always save CSV files with ANSI encoding
-    rather than UTF-8. There is no built-in way to do this, but there are
-    workarounds as described
-    `here <https://stackoverflow.com/questions/4221176/excel-to-csv-with-utf8-encoding>`__.
+    Theo mặc định, Microsoft Excel luôn lưu các tệp CSV bằng mã hóa ANSI thay vì UTF-8. Không có cách tích hợp sẵn nào để thực hiện việc này, nhưng có các giải pháp thay thế như được mô tả `here <https://stackoverflow.com/questions/4221176/excel-to-csv-with-utf8-encoding>`__.
 
-    We recommend using `LibreOffice <https://www.libreoffice.org/>`__ or Google Sheets instead.
+    Chúng tôi khuyến nghị sử dụng `LibreOffice <https://www.libreoffice.org/>`__ hoặc Google Sheets thay thế.
 
-Formatting
-----------
+Định dạng
+---------
 
-CSV files must be formatted as follows:
+Các tệp CSV phải được định dạng như sau:
 
-+--------+----------+----------+----------+
-| keys   | <lang1>  | <lang2>  | <langN>  |
-+========+==========+==========+==========+
-| KEY1   | string   | string   | string   |
-+--------+----------+----------+----------+
-| KEY2   | string   | string   | string   |
-+--------+----------+----------+----------+
-| KEYN   | string   | string   | string   |
-+--------+----------+----------+----------+
++------+---------+---------+---------+
+| keys | <lang1> | <lang2> | <langN> |
++======+=========+=========+=========+
+| KEY1 | string  | string  | string  |
++------+---------+---------+---------+
+| KEY2 | string  | string  | string  |
++------+---------+---------+---------+
+| KEYN | string  | string  | string  |
++------+---------+---------+---------+
 
-The "lang" tags must represent a language, which must be one of the :ref:`valid
-locales <doc_locales>` supported by the engine, or they must start with an underscore (``_``),
-which means the related column is served as comment and won't be imported.
-The ``KEY`` tags must be unique and represent a string universally. By convention, these are
-usually in uppercase to differentiate them from other strings. These keys will be replaced at
-runtime by the matching translated string. Note that the case is important:
-``KEY1`` and ``Key1`` will be different keys.
-The top-left cell is ignored and can be left empty or having any content.
-Here's an example:
+Các thẻ "lang" phải đại diện cho một ngôn ngữ, và ngôn ngữ đó phải là một trong các :ref:`valid locales <doc_locales>` được engine hỗ trợ, hoặc phải bắt đầu bằng dấu gạch dưới (``_``), nghĩa là cột tương ứng được dùng làm chú thích và sẽ không được nhập. Các thẻ ``KEY`` phải là duy nhất và đại diện cho một chuỗi có ý nghĩa trên toàn hệ thống. Theo quy ước, chúng thường được viết in hoa để phân biệt với các chuỗi khác. Các key này sẽ được thay thế trong runtime bằng chuỗi đã dịch tương ứng. Lưu ý rằng kiểu chữ rất quan trọng: ``KEY1`` và ``Key1`` sẽ là các key khác nhau. Ô phía trên cùng bên trái sẽ bị bỏ qua và có thể để trống hoặc chứa bất kỳ nội dung nào. Đây là một ví dụ:
 
 +-------+-----------------------+------------------------+------------------------------+
 | keys  | en                    | es                     | ja                           |
@@ -56,15 +42,7 @@ Here's an example:
 | QUOTE | "Hello" said the man. | "Hola" dijo el hombre. | 「こんにちは」男は言いました |
 +-------+-----------------------+------------------------+------------------------------+
 
-The same example is shown below as a comma-separated plain text file,
-which should be the result of editing the above in a spreadsheet.
-When editing the plain text version, be sure to enclose with double
-quotes any message that contains commas, line breaks or double quotes,
-so that commas are not parsed as delimiters, line breaks don't create new
-entries and double quotes are not parsed as enclosing characters. Be sure
-to escape any double quotes a message may contain by preceding them with
-another double quote. Alternatively, you can select another delimiter than
-comma in the import options.
+Ví dụ tương tự được hiển thị bên dưới dưới dạng tệp văn bản thuần được phân tách bằng dấu phẩy; đây sẽ là kết quả của việc chỉnh sửa ví dụ trên trong bảng tính. Khi chỉnh sửa phiên bản văn bản thuần, hãy chắc chắn đặt trong dấu ngoặc kép mọi thông báo chứa dấu phẩy, dấu ngắt dòng hoặc dấu ngoặc kép, để dấu phẩy không bị phân tích như dấu phân cách, dấu ngắt dòng không tạo các mục mới và dấu ngoặc kép không bị phân tích như ký tự bao quanh. Hãy chắc chắn escape mọi dấu ngoặc kép mà thông báo có thể chứa bằng cách thêm một dấu ngoặc kép khác ngay trước đó. Ngoài ra, bạn có thể chọn một dấu phân cách khác dấu phẩy trong các tùy chọn nhập.
 
 .. code-block:: none
 
@@ -74,17 +52,13 @@ comma in the import options.
     BYE,Goodbye,Adiós,さようなら
     QUOTE,"""Hello"" said the man.","""Hola"" dijo el hombre.",「こんにちは」男は言いました
 
-Specifying plural forms
-~~~~~~~~~~~~~~~~~~~~~~~
+Chỉ định dạng số nhiều
+~~~~~~~~~~~~~~~~~~~~~~
 
-Since Godot 4.6, it is possible to specify
-:ref:`plural forms <doc_internationalizing_games_pluralization>` in CSV files.
+Kể từ Godot 4.6, bạn có thể chỉ định
+:ref:`plural forms <doc_internationalizing_games_pluralization>` trong các tệp CSV.
 
-This is done by adding a column named ``?plural`` anywhere in the table
-(except on the first column, which is reserved for translation keys).
-By convention, it's recommended to place it on the second column.
-Note that in the example below, the key column is the one that contains English
-localization.
+Việc này được thực hiện bằng cách thêm một cột có tên ``?plural`` vào bất kỳ vị trí nào trong bảng (ngoại trừ cột đầu tiên, vốn được dành cho các key dịch). Theo quy ước, bạn nên đặt cột này ở vị trí thứ hai. Lưu ý rằng trong ví dụ dưới đây, cột key là cột chứa bản địa hóa tiếng Anh.
 
 .. code-block:: none
 
@@ -96,23 +70,15 @@ localization.
 
 .. note::
 
-    Automatic Control translation is not supported when using plural forms. You must
-    translate the string manually using :ref:`tr_n() <class_Object_method_tr_n>`.
+    Bản dịch Control tự động không được hỗ trợ khi sử dụng dạng số nhiều. Bạn phải dịch chuỗi theo cách thủ công bằng :ref:`tr_n() <class_Object_method_tr_n>`.
 
-Specifying translation contexts
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Chỉ định ngữ cảnh bản dịch
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Since Godot 4.6, it is possible to specify
-:ref:`translation contexts <doc_internationalizing_games_translation_contexts>`
-in CSV files. This can be used to disambiguate identical source strings that
-have different meanings. While this is generally not needed when using translation
-keys ``LIKE_THIS``, it's useful when using plain English text as translation keys.
+Kể từ Godot 4.6, bạn có thể chỉ định
+:ref:`translation contexts <doc_internationalizing_games_translation_contexts>` trong các tệp CSV. Tính năng này có thể được dùng để phân biệt các chuỗi nguồn giống hệt nhau nhưng có ý nghĩa khác nhau. Mặc dù thông thường không cần thiết khi sử dụng translation keys ``LIKE_THIS``, tính năng này hữu ích khi dùng văn bản tiếng Anh thuần làm translation keys.
 
-This is done by adding a column named ``?context`` column anywhere in the table
-(except on the first column, which is reserved for translation keys).
-By convention, it's recommended to place it on the second column, or after
-``?plural`` if it's also used. Note that in the example below, the key column
-is the one that contains English localization.
+Việc này được thực hiện bằng cách thêm một cột có tên ``?context`` vào bất kỳ vị trí nào trong bảng (ngoại trừ cột đầu tiên, vốn được dành cho các key dịch). Theo quy ước, bạn nên đặt cột này ở vị trí thứ hai hoặc sau ``?plural`` nếu tùy chọn đó cũng được sử dụng. Lưu ý rằng trong ví dụ dưới đây, cột key là cột chứa bản địa hóa tiếng Anh.
 
 .. code-block:: none
 
@@ -122,33 +88,23 @@ is the one that contains English localization.
 
 .. note::
 
-    Automatic Control translation is not supported when using context. You must
-    translate the string manually using :ref:`tr() <class_Object_method_tr>`
-    or :ref:`tr_n() <class_Object_method_tr_n>`.
+    Tính năng dịch Automatic Control không được hỗ trợ khi sử dụng context. Bạn phải dịch chuỗi theo cách thủ công bằng :ref:`tr() <class_Object_method_tr>` hoặc :ref:`tr_n() <class_Object_method_tr_n>`.
 
-CSV importer
-------------
+Trình nhập CSV
+--------------
 
-Godot will treat CSV files as translations by default. It will import them
-and generate one or more compressed translation resource files next to it.
+Theo mặc định, Godot sẽ coi các tệp CSV là bản dịch. Godot sẽ nhập các tệp này và tạo một hoặc nhiều tệp tài nguyên bản dịch được nén bên cạnh chúng.
 
-Importing will also add the translation to the list of
-translations to load when the game runs, specified in project.godot (or the
-project settings). Godot allows loading and removing translations at
-runtime as well.
+Thao tác nhập cũng sẽ thêm bản dịch vào danh sách các bản dịch cần tải khi trò chơi chạy, được chỉ định trong project.godot (hoặc phần cài đặt dự án). Godot cũng cho phép tải và xóa các bản dịch trong runtime.
 
-Select the ``.csv`` file and access the :ui:`Import` dock to define import
-options. You can toggle the compression of the imported translations, and
-select the delimiter to use when parsing the CSV file.
+Chọn tệp ``.csv`` và mở dock :ui:`Import` để xác định các tùy chọn nhập. Bạn có thể bật hoặc tắt tính năng nén các bản dịch đã nhập, đồng thời chọn dấu phân cách sẽ dùng khi phân tích tệp CSV.
 
 .. image:: img/import_csv.webp
 
-Be sure to click :button:`Reimport` after any change to these options.
+Hãy nhớ nhấp vào :button:`Reimport` sau bất kỳ thay đổi nào đối với các tùy chọn này.
 
-Loading the CSV file as a translation
--------------------------------------
+Tải tệp CSV dưới dạng bản dịch
+------------------------------
 
-Once a CSV file is imported, it is **not** automatically registered as a translation
-source for the project. Remember to follow the steps described in
-:ref:`doc_internationalizing_games_configuring_imported_translation` so that the
-translation is actually used when running the project.
+Sau khi tệp CSV được nhập, tệp này **không** được tự động đăng ký làm nguồn bản dịch cho dự án. Hãy nhớ làm theo các bước được mô tả trong
+:ref:`doc_internationalizing_games_configuring_imported_translation`
