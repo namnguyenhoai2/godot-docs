@@ -1,279 +1,161 @@
 .. _doc_physical_light_and_camera_units:
 
-Physical light and camera units
+Đơn vị vật lý của đèn và camera
 ===============================
 
-Why use physical light and camera units?
-----------------------------------------
+Tại sao nên sử dụng đơn vị vật lý của đèn và camera?
+----------------------------------------------------
 
-Godot uses arbitrary units for many physical properties that apply to light like
-color, energy, camera field of view, and exposure. By default, these properties
-use arbitrary units, because using accurate physical units comes with a few
-tradeoffs that aren't worth it for many games. As Godot favors ease of use by
-default, physical light units are disabled by default.
+Godot sử dụng các đơn vị tùy ý cho nhiều thuộc tính vật lý áp dụng cho đèn, chẳng hạn như màu sắc, năng lượng, trường nhìn của camera và độ phơi sáng. Theo mặc định, các thuộc tính này sử dụng đơn vị tùy ý, vì việc sử dụng đơn vị vật lý chính xác đi kèm một số đánh đổi không đáng kể đối với nhiều game. Vì Godot ưu tiên tính dễ sử dụng theo mặc định, đơn vị vật lý của đèn bị tắt theo mặc định.
 
-Advantages of physical units
+Ưu điểm của đơn vị vật lý
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Nếu hướng đến tính chân thực như ảnh trong dự án, việc sử dụng đơn vị thế giới thực làm cơ sở có thể giúp bạn dễ dàng điều chỉnh hơn. Các tài liệu tham khảo về vật liệu, đèn và độ sáng của cảnh trong thế giới thực có rất nhiều trên các trang web như `Physically Based <https://physicallybased.info/>`__.
+
+Việc sử dụng đơn vị thế giới thực trong Godot cũng hữu ích khi chuyển một cảnh từ phần mềm 3D khác có sử dụng đơn vị vật lý của đèn, chẳng hạn như Blender.
+
+Nhược điểm của đơn vị vật lý
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you aim for photorealism in your project, using real world units as a basis
-can help make things easier to adjust. References for real world materials,
-lights and scene brightness are wildly available on websites such as
-`Physically Based <https://physicallybased.info/>`__.
+Nhược điểm lớn nhất của việc sử dụng đơn vị vật lý của đèn là bạn sẽ phải chú ý sát sao đến dải động đang được sử dụng tại một thời điểm cụ thể. Bạn có thể gặp lỗi độ chính xác dấu phẩy động khi kết hợp cường độ đèn rất cao với cường độ đèn rất thấp.
 
-Using real world units in Godot can also be useful when porting a scene from
-other 3D software that uses physical light units (such as Blender).
+Trên thực tế, điều này có nghĩa là bạn sẽ phải quản lý thủ công các thiết lập độ phơi sáng để bảo đảm cảnh không bị phơi sáng quá mức hoặc thiếu sáng quá nhiều. Tự động phơi sáng có thể giúp bạn cân bằng ánh sáng trong cảnh để đưa ánh sáng về phạm vi bình thường, nhưng không thể khôi phục độ chính xác đã mất do dải động quá cao.
 
-Disadvantages of physical units
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The biggest disadvantage of using physical light units is you will have to pay
-close attention to the dynamic range in use at a given time. You can run into
-floating point precision errors when mixing very high light intensities with
-very low light intensities.
-
-In practice, this means that you will have to manually manage your exposure
-settings to ensure that you aren't over-exposing or under-exposing your scene
-too much. Auto-exposure can help you balance the light in a scene to bring it
-into a normal range, but it can't recover lost precision from a dynamic range
-that is too high.
-
-Using physical light and camera units will not automatically make your project
-look *better*. Sometimes, moving away from realism can actually make a scene
-look better to the human eye. Also, using physical units requires a greater
-amount of rigor compared to non-physical units. Most benefits of physical units
-can only be obtained if the units are correctly set to match real world
-reference.
+Việc sử dụng đơn vị vật lý của đèn và camera sẽ không tự động khiến dự án của bạn trông *better*. Đôi khi, việc rời xa tính chân thực thực sự có thể khiến cảnh trông đẹp hơn đối với mắt người. Ngoài ra, việc sử dụng đơn vị vật lý đòi hỏi mức độ nghiêm ngặt cao hơn so với đơn vị phi vật lý. Hầu hết lợi ích của đơn vị vật lý chỉ có thể đạt được nếu các đơn vị được thiết lập chính xác để khớp với tài liệu tham khảo trong thế giới thực.
 
 .. note::
 
-    Physical light units are only available in 3D rendering, not 2D.
+    Đơn vị vật lý của đèn chỉ khả dụng trong kết xuất 3D, không khả dụng trong 2D.
 
-Setting up physical light units
+Thiết lập đơn vị vật lý của đèn
 -------------------------------
 
-Physical light units can be enabled separately from physical camera units.
+Có thể bật riêng đơn vị vật lý của đèn và đơn vị vật lý của camera.
 
-To enable physical light units correctly, there are 4 steps required:
+Để bật chính xác đơn vị vật lý của đèn, cần thực hiện 4 bước:
 
-1. Enable the project setting.
-2. Configure the camera.
-3. Configure the environment.
-4. Configure Light3D nodes.
+1. Bật thiết lập dự án.
+2. Cấu hình camera.
+3. Cấu hình môi trường.
+4. Cấu hình các node Light3D.
 
-Since physical light and camera units only require a handful of calculations to
-handle unit conversion, enabling them doesn't have any noticeable performance
-impact on the CPU. However, on the GPU side, physical camera units currently
-enforce depth of field. This has a moderate performance impact. To alleviate
-this performance impact, depth of field quality can be decreased in the advanced
-Project Settings.
+Vì đơn vị vật lý của đèn và camera chỉ yêu cầu một vài phép tính để xử lý việc chuyển đổi đơn vị, việc bật chúng không gây ảnh hưởng hiệu suất đáng kể nào trên CPU. Tuy nhiên, ở phía GPU, đơn vị vật lý của camera hiện buộc phải sử dụng độ sâu trường ảnh. Điều này gây ảnh hưởng hiệu suất ở mức vừa phải. Để giảm ảnh hưởng hiệu suất này, có thể giảm chất lượng độ sâu trường ảnh trong Project Settings nâng cao.
 
-Enable the project setting
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Bật thiết lập dự án
+~~~~~~~~~~~~~~~~~~~
 
-Open the Project Settings, enable the **Advanced** toggle then enable
-**Rendering > Lights And Shadows > Use Physical Light Units**. Restart the editor.
+Mở Project Settings, bật nút chuyển **Advanced**, sau đó bật **Rendering > Lights And Shadows > Use Physical Light Units**. Khởi động lại editor.
 
-Configure the camera
-~~~~~~~~~~~~~~~~~~~~
+Cấu hình camera
+~~~~~~~~~~~~~~~
 
 .. warning::
 
-    When physical light units are enabled and if you have a WorldEnvironment
-    node in your scene (i.e. the editor Environment is disabled), you **must**
-    have a :ref:`class_CameraAttributes` resource assigned to the
-    WorldEnvironment node. Otherwise, the 3D editor viewport will appear
-    extremely bright if you have a visible DirectionalLight3D node.
+    Khi đơn vị vật lý của đèn được bật và cảnh của bạn có một node WorldEnvironment (tức là Environment của editor bị tắt), bạn **must** gán một tài nguyên :ref:`class_CameraAttributes` cho node WorldEnvironment. Nếu không, viewport của trình chỉnh sửa 3D sẽ trông cực kỳ sáng nếu bạn có một node DirectionalLight3D hiển thị.
 
-On the Camera3D node, you can add a :ref:`class_CameraAttributes`
-resource to its **Attributes** property. This resource is used to control the
-camera's depth of field and exposure. When using
-:ref:`class_CameraAttributesPhysical`, its focal length property is also used to
-adjust the camera's field of view.
+Trên node Camera3D, bạn có thể thêm một tài nguyên :ref:`class_CameraAttributes` vào thuộc tính **Attributes** của node. Tài nguyên này được dùng để điều khiển độ sâu trường ảnh và độ phơi sáng của camera. Khi sử dụng
+:ref:`class_CameraAttributesPhysical`, thuộc tính tiêu cự của nó cũng được dùng để điều chỉnh trường nhìn của camera.
 
-When physical light units are enabled, the following additional properties
-become available in CameraAttributesPhysical's **Exposure** section:
+Khi đơn vị vật lý của đèn được bật, các thuộc tính bổ sung sau đây sẽ khả dụng trong phần **Exposure** của CameraAttributesPhysical:
 
-- **Aperture:** The size of the aperture of the camera, measured in f-stops. An
-  f-stop is a unitless ratio between the focal length of the camera and the
-  diameter of the aperture. A high aperture setting will result in a smaller
-  aperture which leads to a dimmer image and sharper focus. A low aperture
-  results in a wide aperture which lets in more light resulting in a brighter,
-  less-focused image.
-- **Shutter Speed:** The time for shutter to open and close, measured in
-  *inverse seconds* (``1/N``). A lower value will let in more light leading to a
-  brighter image, while a higher value will let in less light leading to a
-  darker image. *When getting or setting this property with a script, the unit
-  is in seconds instead of inverse seconds.*
-- **Sensitivity:** The sensitivity of camera sensors, measured in ISO. A higher
-  sensitivity results in a brighter image. When auto exposure is enabled, this
-  can be used as a method of exposure compensation. Doubling the value will
-  increase the exposure value (measured in EV100) by 1 stop.
-- **Multiplier:** A *non-physical* exposure multiplier. Higher values will
-  increase the scene's brightness. This can be used for post-processing
-  adjustments or for animation purposes.
+- **Aperture:** Kích thước khẩu độ của camera, được đo bằng f-stop. F-stop là một tỷ lệ không có đơn vị giữa tiêu cự của camera và đường kính khẩu độ. Thiết lập khẩu độ cao sẽ tạo ra khẩu độ nhỏ hơn, dẫn đến hình ảnh tối hơn và lấy nét sắc nét hơn. Khẩu độ thấp tạo ra khẩu độ rộng, cho nhiều ánh sáng đi vào hơn, dẫn đến hình ảnh sáng hơn và kém nét hơn.
+- **Shutter Speed:** Thời gian màn trập mở và đóng, được đo bằng *inverse seconds* (``1/N``). Giá trị thấp hơn sẽ cho nhiều ánh sáng đi vào hơn, dẫn đến hình ảnh sáng hơn, trong khi giá trị cao hơn sẽ cho ít ánh sáng đi vào hơn, dẫn đến hình ảnh tối hơn. *Khi lấy hoặc thiết lập thuộc tính này bằng script, đơn vị là giây thay vì giây nghịch đảo.*
+- **Sensitivity:** Độ nhạy của cảm biến camera, được đo bằng ISO. Độ nhạy cao hơn tạo ra hình ảnh sáng hơn. Khi bật tự động phơi sáng, thuộc tính này có thể được dùng như một phương pháp bù phơi sáng. Tăng gấp đôi giá trị sẽ tăng giá trị phơi sáng (được đo bằng EV100) thêm 1 stop.
+- **Multiplier:** Hệ số nhân phơi sáng *non-physical*. Giá trị cao hơn sẽ tăng độ sáng của cảnh. Có thể dùng thuộc tính này để điều chỉnh hậu kỳ hoặc phục vụ mục đích animation.
 
-The default **Aperture** value of 16 f-stops is appropriate for outdoors at
-daytime (i.e. for use with a default DirectionalLight3D). For indoor lighting, a
-value between 2 and 4 is more appropriate.
+Giá trị **Aperture** mặc định là 16 f-stop, phù hợp với môi trường ngoài trời vào ban ngày (tức là khi sử dụng DirectionalLight3D mặc định). Đối với ánh sáng trong nhà, giá trị từ 2 đến 4 phù hợp hơn.
 
-Typical shutter speed used in photography and movie production is 1/50 (0.02
-seconds). Night-time photography generally uses a shutter around 1/10 (0.1
-seconds), while sports photography uses a shutter speed between 1/250 (0.004
-seconds) and 1/1000 (0.001 seconds) to reduce motion blur.
+Tốc độ màn trập thường được sử dụng trong nhiếp ảnh và sản xuất phim là 1/50 (0.02 giây). Nhiếp ảnh ban đêm thường sử dụng màn trập khoảng 1/10 (0.1 giây), trong khi nhiếp ảnh thể thao sử dụng tốc độ màn trập từ 1/250 (0.004 giây) đến 1/1000 (0.001 giây) để giảm nhòe chuyển động.
 
-In real life, sensitivity is usually set between 50 ISO and 400 ISO for daytime
-outdoor photography depending on weather conditions. Higher values are used for
-indoor or night-time photography.
+Trong đời thực, độ nhạy thường được đặt trong khoảng từ 50 ISO đến 400 ISO khi chụp ảnh ngoài trời ban ngày, tùy thuộc vào điều kiện thời tiết. Các giá trị cao hơn được sử dụng khi chụp ảnh trong nhà hoặc vào ban đêm.
 
 .. note::
 
-    Unlike real life cameras, the adverse effects of increasing ISO sensitivity
-    or decreasing shutter speed (such as visible grain or light trails) are not
-    simulated in Godot.
+    Không giống camera đời thực, Godot không mô phỏng các hiệu ứng bất lợi của việc tăng độ nhạy ISO hoặc giảm tốc độ màn trập, chẳng hạn như nhiễu hạt nhìn thấy được hoặc vệt sáng.
 
-See :ref:`doc_physical_light_and_camera_units_setting_up_physical_camera_units`
-for a description of CameraAttributesPhysical properties that are also available when
-**not** using physical light units.
+Xem :ref:`doc_physical_light_and_camera_units_setting_up_physical_camera_units` để biết mô tả về các thuộc tính CameraAttributesPhysical cũng khả dụng khi **not** sử dụng đơn vị vật lý của đèn.
 
-Configure the environment
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Cấu hình môi trường
+~~~~~~~~~~~~~~~~~~~
 
 .. warning::
 
-    The default configuration is designed for daytime outdoor scenes. Night-time
-    and indoor scenes will need adjustments to the DirectionalLight3D and
-    WorldEnvironment background intensity to look correct. Otherwise, positional
-    lights will be barely visible at their default intensity.
+    Cấu hình mặc định được thiết kế cho các cảnh ngoài trời vào ban ngày. Cảnh ban đêm và trong nhà sẽ cần điều chỉnh cường độ nền của DirectionalLight3D và WorldEnvironment để hiển thị chính xác. Nếu không, các đèn vị trí sẽ gần như không nhìn thấy ở cường độ mặc định.
 
-If you haven't added a :ref:`class_WorldEnvironment` and :ref:`class_Camera3D`
-node to the current scene yet, do so now by clicking the 3 vertical dots at the
-top of the 3D editor viewport. Click **Add Sun to Scene**, open the dialog again
-then click **Add Environment to Scene**.
+Nếu bạn vẫn chưa thêm một node :ref:`class_WorldEnvironment` và một node :ref:`class_Camera3D` vào scene hiện tại, hãy thực hiện ngay bằng cách nhấp vào 3 dấu chấm dọc ở đầu khung nhìn của trình chỉnh sửa 3D. Nhấp vào **Add Sun to Scene**, mở lại hộp thoại rồi nhấp vào **Add Environment to Scene**.
 
-After enabling physical light units, a new property becomes available to edit in
-the :ref:`class_Environment` resource:
+Sau khi bật đơn vị ánh sáng vật lý, một thuộc tính mới sẽ có thể chỉnh sửa trong resource :ref:`class_Environment`:
 
-- **Background Intensity:** The background sky's intensity in
-  `nits <https://en.wikipedia.org/wiki/Candela_per_square_metre>`__
-  (candelas per square meter). This also affects ambient and reflected light if
-  their respective modes are set to **Background**. If a custom **Background Energy**
-  is set, this energy is multiplied by the intensity.
+- **Background Intensity:** Cường độ của bầu trời nền, tính bằng `nits <https://en.wikipedia.org/wiki/Candela_per_square_metre>`__ (candela trên mét vuông). Giá trị này cũng ảnh hưởng đến ánh sáng môi trường và ánh sáng phản chiếu nếu các mode tương ứng được đặt thành **Background**. Nếu đặt **Background Energy** tùy chỉnh, năng lượng này sẽ được nhân với cường độ.
 
-Configure the light nodes
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Cấu hình các node ánh sáng
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-After enabling physical light units, 2 new properties become available in Light3D nodes:
+Sau khi bật đơn vị ánh sáng vật lý, 2 thuộc tính mới sẽ có trong các node Light3D:
 
-- **Intensity:** The light's intensity in `lux
-  <https://en.wikipedia.org/wiki/Lux>`__ (DirectionalLight3D) or
-  `lumens <https://en.wikipedia.org/wiki/Lumen_(unit)>`__ (OmniLight3D/SpotLight3D/AreaLight3D).
-  If a custom **Energy** is set, this energy is multiplied by the intensity.
-- **Temperature:** The light's *color temperature* defined in Kelvin.
-  If a custom **Color** is set, this color is multiplied by the color temperature.
+- **Intensity:** Cường độ ánh sáng, tính bằng `lux <https://en.wikipedia.org/wiki/Lux>`__ (DirectionalLight3D) hoặc `lumens <https://en.wikipedia.org/wiki/Lumen_(unit)>`__ (OmniLight3D/SpotLight3D/AreaLight3D). Nếu đặt **Energy** tùy chỉnh, năng lượng này sẽ được nhân với cường độ.
+- **Temperature:** *color temperature* của ánh sáng, được xác định theo Kelvin. Nếu đặt **Color** tùy chỉnh, màu này sẽ được nhân với nhiệt độ màu.
 
-**OmniLight3D/SpotLight3D/AreaLight3D intensity**
+**Cường độ OmniLight3D/SpotLight3D/AreaLight3D**
 
-Lumens are a measure of luminous flux, which is the total amount of visible
-light emitted by a light source per unit of time.
+Lumen là đơn vị đo quang thông, tức tổng lượng ánh sáng nhìn thấy được phát ra từ một nguồn sáng trong một đơn vị thời gian.
 
-For SpotLight3Ds, we assume that the area outside the visible cone is surrounded
-by a perfect light absorbing material. Accordingly, the apparent brightness of
-the cone area does *not* change as the cone increases and decreases in size.
+Đối với SpotLight3D, chúng tôi giả định rằng khu vực bên ngoài hình nón nhìn thấy được bao quanh bởi một vật liệu hấp thụ ánh sáng hoàn hảo. Vì vậy, độ sáng biểu kiến của vùng hình nón *không* thay đổi khi kích thước hình nón tăng hoặc giảm.
 
-A typical household lightbulb can range from around 600 lumens to 1200 lumens.
-A candle is about 13 lumens, while a streetlight can be approximately 60000 lumens.
+Một bóng đèn gia dụng thông thường có thể có cường độ từ khoảng 600 đến 1200 lumen. Một ngọn nến có khoảng 13 lumen, trong khi đèn đường có thể đạt khoảng 60000 lumen.
 
-**DirectionalLight3D intensity**
+**Cường độ DirectionalLight3D**
 
-Lux is a measure pf luminous flux per unit area, it is equal to one lumen per
-square metre. Lux is the measure of how much light hits a surface at a given
-time.
+Lux là đơn vị đo quang thông trên một đơn vị diện tích, bằng một lumen trên một mét vuông. Lux đo lượng ánh sáng chiếu tới một bề mặt tại một thời điểm nhất định.
 
-With DirectionalLight3D, on a clear sunny day, a surface in direct sunlight may
-receive approximately 100000 lux. A typical room in a home may receive
-approximately 50 lux, while the moonlit ground may receive approximately 0.1
-lux.
+Với DirectionalLight3D, vào một ngày nắng quang mây, một bề mặt dưới ánh nắng trực tiếp có thể nhận khoảng 100000 lux. Một căn phòng thông thường trong nhà có thể nhận khoảng 50 lux, trong khi mặt đất dưới ánh trăng có thể nhận khoảng 0.1 lux.
 
-**Color temperature**
+**Nhiệt độ màu**
 
-6500 Kelvin is white. Higher values result in colder (bluer) colors, while lower
-values result in warmer (more orange) colors.
+6500 Kelvin là màu trắng. Giá trị cao hơn tạo ra màu lạnh hơn (xanh hơn), trong khi giá trị thấp hơn tạo ra màu ấm hơn (cam hơn).
 
-The sun on a cloudy day is approximately 6500 Kelvin. On a clear day, the sun is
-between 5500 to 6000 Kelvin. On a clear day at sunrise or sunset, the sun ranges
-to around 1850 Kelvin.
+Mặt trời vào ngày nhiều mây có nhiệt độ khoảng 6500 Kelvin. Vào ngày quang mây, nhiệt độ của mặt trời nằm trong khoảng 5500 đến 6000 Kelvin. Vào lúc bình minh hoặc hoàng hôn trong ngày quang mây, nhiệt độ của mặt trời có thể giảm xuống khoảng 1850 Kelvin.
 
 .. figure:: img/physical_light_units_color_temperature_chart.webp
    :align: center
-   :alt: Color temperature chart from 1,000 Kelvin (left) to 12,500 Kelvin (right)
+   :alt: Biểu đồ nhiệt độ màu từ 1,000 Kelvin (bên trái) đến 12,500 Kelvin (bên phải)
 
-   Color temperature chart from 1,000 Kelvin (left) to 12,500 Kelvin (right)
+   Biểu đồ nhiệt độ màu từ 1,000 Kelvin (bên trái) đến 12,500 Kelvin (bên phải)
 
-Other Light3D properties such as **Energy** and **Color** remain editable for
-animation purposes, and when you occasionally need to create lights with
-non-realistic properties.
+Các thuộc tính Light3D khác như **Energy** và **Color** vẫn có thể chỉnh sửa cho mục đích animation, cũng như khi thỉnh thoảng bạn cần tạo ánh sáng với các thuộc tính không thực tế.
 
 .. _doc_physical_light_and_camera_units_setting_up_physical_camera_units:
 
-Setting up physical camera units
---------------------------------
+Thiết lập đơn vị camera vật lý
+------------------------------
 
-Physical camera units can be enabled separately from physical light units.
+Có thể bật đơn vị camera vật lý độc lập với đơn vị ánh sáng vật lý.
 
-After adding a :ref:`class_CameraAttributesPhysical` resource to the **Camera
-Attributes** property of a Camera3D node, some properties such as **FOV** will
-no longer be editable. Instead, these properties are now controlled by the
-CameraAttributesPhysical's properties, such as focal length and aperture.
+Sau khi thêm một resource :ref:`class_CameraAttributesPhysical` vào thuộc tính **Camera Attributes** của node Camera3D, một số thuộc tính như **FOV** sẽ không còn có thể chỉnh sửa. Thay vào đó, các thuộc tính này giờ được điều khiển bởi các thuộc tính của CameraAttributesPhysical, chẳng hạn như tiêu cự và khẩu độ.
 
-CameraAttributesPhysical offers the following properties in its **Frustum** section:
+CameraAttributesPhysical cung cấp các thuộc tính sau trong phần **Frustum**:
 
-- **Focus Distance:** Distance from camera of object that will be in focus,
-  measured in meters. Internally, this will be clamped to be at least 1
-  millimeter larger than the **Focal Length**.
-- **Focal Length:** Distance between camera lens and camera aperture, measured
-  in millimeters. Controls field of view and depth of field. A larger focal
-  length will result in a smaller field of view and a narrower depth of field
-  meaning fewer objects will be in focus. A smaller focal length will result in
-  a wider field of view and a larger depth of field, which means more objects will be
-  in focus. This property overrides the Camera3D's **FOV** and **Keep Aspect**
-  properties, making them read-only in the inspector.
-- **Near/Far:** The near and far clip distances in meters. These behave the same
-  as the Camera3D properties of the same name. Lower **Near** values allow the
-  camera to display objects that are very close, at the cost of potential
-  precision (Z-fighting) issues in the distance. Higher **Far** values allow the
-  camera to see further away, also at the cost of potential precision
-  (Z-fighting) issues in the distance.
+- **Focus Distance:** Khoảng cách từ camera đến đối tượng sẽ được lấy nét, tính bằng mét. Về mặt nội bộ, giá trị này sẽ được giới hạn để luôn lớn hơn **Focal Length** ít nhất 1 milimét.
+- **Focal Length:** Khoảng cách giữa ống kính camera và khẩu độ camera, tính bằng milimét. Điều khiển trường nhìn và độ sâu trường ảnh. Tiêu cự lớn hơn sẽ tạo ra trường nhìn nhỏ hơn và độ sâu trường ảnh hẹp hơn, nghĩa là sẽ có ít đối tượng được lấy nét hơn. Tiêu cự nhỏ hơn sẽ tạo ra trường nhìn rộng hơn và độ sâu trường ảnh lớn hơn, nghĩa là sẽ có nhiều đối tượng được lấy nét hơn. Thuộc tính này ghi đè các thuộc tính **FOV** và **Keep Aspect** của Camera3D, khiến chúng ở trạng thái chỉ đọc trong inspector.
+- **Near/Far:** Khoảng cách cắt gần và xa, tính bằng mét. Các giá trị này hoạt động giống như các thuộc tính cùng tên của Camera3D. Giá trị **Near** thấp hơn cho phép camera hiển thị các đối tượng ở rất gần, nhưng có thể gây ra các vấn đề về độ chính xác (Z-fighting) ở khoảng cách xa. Giá trị **Far** cao hơn cho phép camera nhìn xa hơn, nhưng cũng có thể gây ra các vấn đề về độ chính xác (Z-fighting) ở khoảng cách xa.
 
-The default focal length of 35 mm corresponds to a wide angle lens. It still
-results in a field of view that is noticeably narrower compared to the default
-"practical" vertical FOV of 75 degrees. This is because non-gaming use cases
-such as filmmaking and photography favor using a narrower field of view for a
-more cinematic appearance.
+Tiêu cự mặc định 35 mm tương ứng với một ống kính góc rộng. Tuy nhiên, nó vẫn tạo ra trường nhìn hẹp hơn đáng kể so với FOV dọc "thực dụng" mặc định là 75 độ. Điều này là do các trường hợp sử dụng không liên quan đến game, chẳng hạn như làm phim và nhiếp ảnh, thường ưu tiên trường nhìn hẹp hơn để tạo vẻ điện ảnh.
 
-Common focal length values used in filmmaking and photography are:
+Các giá trị tiêu cự phổ biến được sử dụng trong làm phim và nhiếp ảnh là:
 
-- **Fisheye (ultrawide angle):** Below 15 mm. Nearly no depth of field visible.
-- **Wide angle:** Between 15 mm and 50 mm. Reduced depth of field.
-- **Standard:** Between 50 mm and 100 mm. Standard depth of field.
-- **Telephoto:** Greater than 100 mm. Increased depth of field.
+- **Fisheye (ultrawide angle):** Dưới 15 mm. Hầu như không nhìn thấy độ sâu trường ảnh.
+- **Wide angle:** Từ 15 mm đến 50 mm. Độ sâu trường ảnh giảm.
+- **Standard:** Từ 50 mm đến 100 mm. Độ sâu trường ảnh tiêu chuẩn.
+- **Telephoto:** Lớn hơn 100 mm. Độ sâu trường ảnh tăng.
 
-Like when using the **Keep Height** aspect mode, the effective field of view
-depends on the viewport's aspect ratio, with wider aspect ratios automatically
-resulting in a wider *horizontal* field of view.
+Tương tự khi sử dụng mode tỷ lệ **Keep Height**, trường nhìn hiệu dụng phụ thuộc vào tỷ lệ khung hình của viewport; tỷ lệ khung hình rộng hơn sẽ tự động tạo ra trường nhìn *ngang* rộng hơn.
 
-Automatic exposure adjustment based on the camera's average brightness level can
-also be enabled in the **Auto Exposure** section, with the following properties:
+Bạn cũng có thể bật điều chỉnh phơi sáng tự động dựa trên mức độ sáng trung bình của camera trong phần **Auto Exposure**, với các thuộc tính sau:
 
-- **Min Sensitivity:** The darkest brightness the camera is allowed to get to,
-  measured in EV100.
-- **Max Sensitivity:** The brightest the camera is allowed to get to, measured in EV100.
-- **Speed:** The speed of the auto exposure effect. Affects the time needed for
-  the camera to perform auto exposure. Higher values allow for faster
-  transitions, but the resulting adjustments may look distracting depending on
-  the scene.
-- **Scale:** The scale of the auto exposure effect. Affects the intensity of
-  auto exposure.
+- **Min Sensitivity:** Mức độ sáng tối thiểu mà camera được phép đạt tới, tính bằng EV100.
+- **Max Sensitivity:** Độ sáng tối đa mà camera được phép đạt tới, được đo bằng EV100.
+- **Speed:** Tốc độ của hiệu ứng auto exposure. Ảnh hưởng đến thời gian camera cần để thực hiện auto exposure. Giá trị cao hơn cho phép chuyển tiếp nhanh hơn, nhưng các điều chỉnh tạo ra có thể trông gây mất tập trung tùy thuộc vào cảnh.
+- **Scale:** Tỷ lệ của hiệu ứng auto exposure. Ảnh hưởng đến cường độ của auto exposure.
 
-EV100 is an exposure value (EV) measured at an ISO sensitivity of 100. See
-`this table <https://en.wikipedia.org/wiki/Exposure_value#Tabulated_exposure_values>`__
-for common EV100 values found in real life.
+EV100 là một giá trị phơi sáng (EV) được đo ở độ nhạy ISO 100. Xem `bảng này <https://en.wikipedia.org/wiki/Exposure_value#Tabulated_exposure_values>`__ để biết các giá trị EV100 phổ biến trong thực tế.

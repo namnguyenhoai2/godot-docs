@@ -2,7 +2,7 @@
 
 .. _doc_global_illumination:
 
-Global illumination
+Chiếu sáng toàn cục
 -------------------
 
 .. toctree::

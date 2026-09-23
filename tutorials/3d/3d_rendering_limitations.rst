@@ -1,157 +1,87 @@
 .. _doc_3d_rendering_limitations:
 
-3D rendering limitations
-========================
+Các giới hạn của rendering 3D
+=============================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Due to their focus on performance, real-time rendering engines have many
-limitations. Godot's renderer is no exception. To work effectively with those
-limitations, you need to understand them.
+Do tập trung vào hiệu năng, các rendering engine thời gian thực có nhiều giới hạn. Renderer của Godot cũng không ngoại lệ. Để làm việc hiệu quả với những giới hạn đó, bạn cần hiểu rõ chúng.
 
-Texture size limits
--------------------
+Giới hạn kích thước texture
+---------------------------
 
-On desktops and laptops, textures larger than 8192×8192 may not be supported on
-older devices. You can check your target GPU's limitations on
-`GPUinfo.org <https://www.gpuinfo.org/>`__.
+Trên máy tính để bàn và máy tính xách tay, các texture lớn hơn 8192×8192 có thể không được hỗ trợ trên những thiết bị cũ. Bạn có thể kiểm tra các giới hạn của GPU mục tiêu trên `GPUinfo.org <https://www.gpuinfo.org/>`__.
 
-Mobile GPUs are typically limited to 4096×4096 textures. Also, some mobile GPUs
-don't support repeating non-power-of-two-sized textures. Therefore, if you want
-your texture to display correctly on all platforms, you should avoid using
-textures larger than 4096×4096 and use a power of two size if the texture needs
-to repeat.
+GPU di động thường bị giới hạn ở texture 4096×4096. Ngoài ra, một số GPU di động không hỗ trợ lặp các texture có kích thước không phải lũy thừa của hai. Vì vậy, nếu muốn texture hiển thị chính xác trên mọi nền tảng, bạn nên tránh sử dụng texture lớn hơn 4096×4096 và sử dụng kích thước là lũy thừa của hai nếu texture cần được lặp.
 
-To limit the size of a specific texture that may be too large to render, you can
-set the **Process > Size Limit** import option to a value greater than ``0``.
-This will reduce the texture's dimensions on import (preserving aspect ratio)
-without affecting the source file.
+Để giới hạn kích thước của một texture cụ thể có thể quá lớn để render, bạn có thể đặt tùy chọn import **Process > Size Limit** thành một giá trị lớn hơn ``0``. Điều này sẽ giảm kích thước của texture khi import (giữ nguyên tỷ lệ khung hình) mà không ảnh hưởng đến tệp nguồn.
 
 .. _doc_3d_rendering_limitations_color_banding:
 
-Color banding
--------------
+Dải màu
+-------
 
-When using the Forward+ or Mobile rendering methods, Godot's 3D engine
-renders internally in HDR. However, the rendering output will typically be
-written to a lower precision buffer. This can result in
-visible banding, especially when using untextured materials. For performance
-reasons, color precision is also lower when using the Mobile rendering method
-compared to Forward+.
+Khi sử dụng các phương thức rendering Forward+ hoặc Mobile, engine 3D của Godot render nội bộ ở HDR. Tuy nhiên, đầu ra rendering thường được ghi vào một buffer có độ chính xác thấp hơn. Điều này có thể gây ra các dải màu nhìn thấy được, đặc biệt khi sử dụng material không có texture. Vì lý do hiệu năng, độ chính xác màu cũng thấp hơn khi sử dụng phương thức rendering Mobile so với Forward+.
 
-When using the Compatibility rendering method, internal HDR rendering is not
-used and the color precision is the lowest of all rendering methods. This also applies to 2D
-rendering, where banding may be visible when using smooth gradient textures.
+Khi sử dụng phương thức rendering Compatibility, rendering HDR nội bộ không được sử dụng và độ chính xác màu là thấp nhất trong tất cả các phương thức rendering. Điều này cũng áp dụng cho rendering 2D, trong đó các dải màu có thể nhìn thấy khi sử dụng texture gradient mượt.
 
-There are two main ways to alleviate banding:
+Có hai cách chính để giảm dải màu:
 
-- If using the Forward+ or Forward Mobile rendering methods, enable
-  :ref:`Use Debanding<class_ProjectSettings_property_rendering/anti_aliasing/quality/use_debanding>`
-  in **Project Settings > Rendering > Anti Aliasing**. This applies a fullscreen debanding
-  shader as a post-processing effect and is very cheap.
-- Alternatively, bake some noise into your textures. This is mainly effective in
-  2D, e.g. for vignetting effects. In 3D, you can also use a `custom debanding
-  shader <https://github.com/fractilegames/godot-gles2-debanding-material>`__ to
-  be applied on your *materials*. This technique works even if your project is
-  rendered with low color precision, which means it will work when using the
-  Mobile and Compatibility rendering methods.
+- Nếu sử dụng các phương thức rendering Forward+ hoặc Forward Mobile, hãy bật
+  :ref:`Use Debanding <class_ProjectSettings_property_rendering/anti_aliasing/quality/use_debanding>` trong **Project Settings > Rendering > Anti Aliasing**. Tùy chọn này áp dụng một shader debanding toàn màn hình dưới dạng hiệu ứng hậu kỳ và có chi phí rất thấp.
+- Ngoài ra, hãy bake một ít noise vào các texture. Cách này chủ yếu hiệu quả trong 2D, chẳng hạn như với các hiệu ứng vignette. Trong 3D, bạn cũng có thể sử dụng một `custom debanding shader <https://github.com/fractilegames/godot-gles2-debanding-material>`__ để áp dụng lên *materials*. Kỹ thuật này vẫn hoạt động ngay cả khi project của bạn được render với độ chính xác màu thấp, nghĩa là nó sẽ hoạt động khi sử dụng các phương thức rendering Mobile và Compatibility.
 
 .. figure:: img/3d_rendering_limitations_banding.webp
    :align: center
-   :alt: Color banding comparison (contrast increased for more visibility)
+   :alt: So sánh dải màu (đã tăng độ tương phản để dễ nhìn hơn)
 
-   Color banding comparison (contrast increased for more visibility)
+   So sánh dải màu (đã tăng độ tương phản để dễ nhìn hơn)
 
 .. seealso::
 
-    See `Banding in Games: A Noisy Rant (PDF) <https://loopit.dk/banding_in_games.pdf>`__
-    for more details about banding and ways to combat it.
+    Xem `Banding in Games: A Noisy Rant (PDF) <https://loopit.dk/banding_in_games.pdf>`__ để biết thêm chi tiết về dải màu và các cách khắc phục.
 
-Depth buffer precision
-----------------------
+Độ chính xác của depth buffer
+-----------------------------
 
-To sort objects in 3D space, rendering engines rely on a *depth buffer* (also
-called *Z-buffer*). This buffer has a finite precision: 32-bit on desktop
-platforms, 24-bit on mobile platforms (for performance reasons). If two
-different objects end up on the same buffer value, then Z-fighting will occur.
-This will materialize as textures flickering back and forth as the camera moves
-or rotates.
+Để sắp xếp các đối tượng trong không gian 3D, các rendering engine dựa vào một *depth buffer* (còn gọi là *Z-buffer*). Buffer này có độ chính xác hữu hạn: 32-bit trên các nền tảng desktop, 24-bit trên các nền tảng di động (vì lý do hiệu năng). Nếu hai đối tượng khác nhau rơi vào cùng một giá trị trong buffer, hiện tượng Z-fighting sẽ xảy ra. Hiện tượng này biểu hiện dưới dạng các texture nhấp nháy qua lại khi camera di chuyển hoặc xoay.
 
-To make the depth buffer more precise over the rendered area, you should
-*increase* the Camera node's **Near** property. However, be careful: if you set
-it too high, players will be able to see through nearby geometry. You should
-also *decrease* the Camera node's **Far** property to the lowest permissible value
-for your use case, though keep in mind it won't impact precision as much as the
-**Near** property.
+Để làm depth buffer chính xác hơn trên vùng được render, bạn nên *increase* thuộc tính **Near** của node Camera. Tuy nhiên, hãy cẩn thận: nếu đặt giá trị này quá cao, người chơi sẽ có thể nhìn xuyên qua các hình học ở gần. Bạn cũng nên *decrease* thuộc tính **Far** của node Camera xuống giá trị thấp nhất cho phép trong trường hợp sử dụng của mình, nhưng hãy nhớ rằng nó sẽ không ảnh hưởng đến độ chính xác nhiều bằng thuộc tính **Near**.
 
-If you only need high precision when the player can see far away, you could
-change it dynamically based on the game conditions. For instance, if the player
-enters an airplane, the **Near** property can be temporarily increased to avoid
-Z-fighting in the distance. It can then be decreased once the player leaves the
-airplane.
+Nếu chỉ cần độ chính xác cao khi người chơi có thể nhìn xa, bạn có thể thay đổi giá trị này một cách động dựa trên các điều kiện trong game. Chẳng hạn, nếu người chơi bước vào máy bay, thuộc tính **Near** có thể được tăng tạm thời để tránh Z-fighting ở khoảng cách xa. Sau đó, có thể giảm giá trị này khi người chơi rời khỏi máy bay.
 
-Depending on the scene and viewing conditions, you may also be able to move the
-Z-fighting objects further apart without the difference being visible to the
-player.
+Tùy thuộc vào scene và điều kiện quan sát, bạn cũng có thể di chuyển các đối tượng bị Z-fighting ra xa nhau hơn mà người chơi vẫn không nhận thấy sự khác biệt.
 
 .. figure:: img/3d_rendering_limitations_z_fighting.webp
    :align: center
-   :alt: Z-fighting comparison (before and after tweaking the scene by offsetting the Label3D away from the floor)
+   :alt: So sánh Z-fighting (trước và sau khi tinh chỉnh scene bằng cách dịch Label3D ra xa sàn)
 
-   Z-fighting comparison (before and after tweaking the scene by offsetting the Label3D away from the floor)
+   So sánh Z-fighting (trước và sau khi tinh chỉnh scene bằng cách dịch Label3D ra xa sàn)
 
 .. _doc_3d_rendering_limitations_transparency_sorting:
 
-Transparency sorting
---------------------
+Sắp xếp độ trong suốt
+---------------------
 
-In Godot, transparent materials are drawn after opaque materials. Transparent
-objects are sorted back to front before being drawn based on the Node3D's
-position, not the vertex position in world space. Due to this, overlapping
-objects may often be sorted out of order. To fix improperly sorted objects,
-tweak the material's
-:ref:`Render Priority <class_Material_property_render_priority>`
-property or the node's
-:ref:`Sorting Offset <class_VisualInstance3D_property_sorting_offset>`.
-Render Priority will force specific materials to appear in front of or behind
-other transparent materials, while Sorting Offset will move the object
-forward or backward for the purpose of sorting. Even then, these may not
-always be sufficient.
+Trong Godot, các material trong suốt được vẽ sau các material không trong suốt. Các đối tượng trong suốt được sắp xếp từ phía sau ra phía trước trước khi vẽ, dựa trên vị trí của Node3D chứ không phải vị trí của vertex trong không gian thế giới. Vì vậy, các đối tượng chồng lấp thường có thể bị sắp xếp sai thứ tự. Để sửa các đối tượng được sắp xếp không đúng, hãy điều chỉnh
+thuộc tính :ref:`Render Priority <class_Material_property_render_priority>` của material hoặc
+:ref:`Sorting Offset <class_VisualInstance3D_property_sorting_offset>` của node. Render Priority sẽ buộc các material cụ thể xuất hiện phía trước hoặc phía sau các material trong suốt khác, còn Sorting Offset sẽ di chuyển đối tượng về phía trước hoặc phía sau nhằm mục đích sắp xếp. Tuy vậy, ngay cả những tùy chọn này cũng không phải lúc nào cũng đủ.
 
-Transparent objects are not rendered to the normal-roughness buffer, as they are
-drawn after opaque geometry. As a result, features that rely on the normal-roughness
-buffer will not affect transparent materials.
+Các đối tượng trong suốt không được render vào buffer normal-roughness vì chúng được vẽ sau hình học không trong suốt. Do đó, các tính năng phụ thuộc vào buffer normal-roughness sẽ không ảnh hưởng đến các material trong suốt.
 
-Some rendering engines feature *order-independent transparency* techniques to
-alleviate this, but this is costly on the GPU. Godot currently doesn't provide
-this feature. There are still several ways to avoid this problem:
+Một số rendering engine có các kỹ thuật *order-independent transparency* để giảm vấn đề này, nhưng chúng gây tốn kém cho GPU. Hiện tại Godot chưa cung cấp tính năng này. Vẫn có một số cách để tránh vấn đề này:
 
-- Only make materials transparent if you actually need it. If a material only
-  has a small transparent part, consider splitting it into a separate material.
-  This will allow the opaque part to cast shadows and will also improve performance.
+- Chỉ làm cho material trong suốt khi thực sự cần. Nếu material chỉ có một phần nhỏ trong suốt, hãy cân nhắc tách phần đó thành một material riêng. Điều này cho phép phần không trong suốt đổ bóng và cũng cải thiện hiệu năng.
 
-- If your texture mostly has fully opaque and fully transparent areas, you can
-  use alpha testing instead of alpha blending. This transparency mode is faster
-  to render and doesn't suffer from transparency issues. Enable **Transparency >
-  Transparency** to **Alpha Scissor** in StandardMaterial3D, and adjust
-  **Transparency > Alpha Scissor Threshold** accordingly if needed. Note that
-  MSAA will not antialias the texture's edges unless alpha antialiasing is
-  enabled in the material's properties. However, FXAA, TAA and supersampling
-  will be able to antialias the texture's edges regardless of whether alpha
-  antialiasing is enabled on the material.
+- Nếu texture của bạn chủ yếu gồm các vùng hoàn toàn không trong suốt và hoàn toàn trong suốt, bạn có thể sử dụng alpha testing thay cho alpha blending. Chế độ trong suốt này render nhanh hơn và không gặp các vấn đề về độ trong suốt. Trong StandardMaterial3D, hãy bật **Transparency > Transparency** thành **Alpha Scissor**, và điều chỉnh **Transparency > Alpha Scissor Threshold** tương ứng nếu cần. Lưu ý rằng MSAA sẽ không khử răng cưa các cạnh của texture trừ khi alpha antialiasing được bật trong các thuộc tính của material. Tuy nhiên, FXAA, TAA và supersampling vẫn có thể khử răng cưa các cạnh của texture bất kể alpha antialiasing có được bật trên material hay không.
 
-- If you need to render semi-transparent areas of the texture, alpha scissor
-  isn't suitable. Instead, setting the StandardMaterial3D's
-  **Transparency > Transparency** property to **Depth Pre-Pass** can sometimes
-  work (at a performance cost). You can also try the **Alpha Hash** mode.
+- Nếu cần render các vùng bán trong suốt của texture, alpha scissor không phù hợp. Thay vào đó, đôi khi có thể đặt thuộc tính **Transparency > Transparency** của StandardMaterial3D thành **Depth Pre-Pass** (đánh đổi bằng hiệu năng). Bạn cũng có thể thử chế độ **Alpha Hash**.
 
-- If you want a material to fade with distance, use the StandardMaterial3D
-  distance fade mode **Pixel Dither** or **Object Dither** instead of
-  **Pixel Alpha**. This will make the material opaque, which also speeds up rendering.
+- Nếu muốn một material mờ dần theo khoảng cách, hãy sử dụng chế độ distance fade **Pixel Dither** hoặc **Object Dither** của StandardMaterial3D thay cho **Pixel Alpha**. Điều này sẽ làm material trở nên không trong suốt, đồng thời tăng tốc quá trình rendering.
 
 .. figure:: img/3d_rendering_limitations_transparency_sorting.webp
    :align: center
-   :alt: Transparency sorting comparison (alpha-blended materials on the left, alpha scissor materials on the right)
+   :alt: So sánh việc sắp xếp độ trong suốt (vật liệu alpha-blended ở bên trái, vật liệu alpha scissor ở bên phải)
 
-   Transparency sorting comparison (alpha-blended materials on the left, alpha scissor materials on the right)
+   So sánh việc sắp xếp độ trong suốt (vật liệu alpha-blended ở bên trái, vật liệu alpha scissor ở bên phải)

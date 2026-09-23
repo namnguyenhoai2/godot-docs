@@ -1,402 +1,265 @@
 .. _doc_process_material_properties:
 
-Process material properties
----------------------------
+Xử lý các thuộc tính vật liệu
+-----------------------------
 
 .. figure:: img/particle_minmaxcurve.webp
-   :alt: ParticleProcessMaterial properties
+   :alt: Các thuộc tính của ParticleProcessMaterial
    :align: right
 
-   Min, max, and curve properties
+   Các thuộc tính min, max và đường cong
 
-The properties in this material control how particles behave and change over their lifetime.
-A lot of them have ``Min``, ``Max``, and ``Curve`` values that allow you to fine-tune
-their behavior. The relationship between these values is this: When a particle is spawned,
-the property is set with a random value between ``Min`` and ``Max``. If ``Min`` and ``Max`` are
-the same, the value will always be the same for every particle. If the ``Curve`` is also set,
-the value of the property will be multiplied by the value of the curve at the current point
-in a particle's lifetime. Use the curve to change a property over the particle lifetime. Very
-complex behavior can be expressed this way.
+Các thuộc tính trong vật liệu này kiểm soát cách các particle hoạt động và thay đổi trong suốt vòng đời của chúng. Nhiều thuộc tính có các giá trị ``Min``, ``Max`` và ``Curve``, cho phép bạn tinh chỉnh hành vi của chúng. Mối quan hệ giữa các giá trị này như sau: Khi một particle được sinh ra, thuộc tính sẽ được đặt thành một giá trị ngẫu nhiên nằm giữa ``Min`` và ``Max``. Nếu ``Min`` và ``Max`` giống nhau, giá trị sẽ luôn giống nhau đối với mọi particle. Nếu ``Curve`` cũng được đặt, giá trị của thuộc tính sẽ được nhân với giá trị của đường cong tại điểm hiện tại trong vòng đời của particle. Sử dụng đường cong để thay đổi một thuộc tính trong suốt vòng đời của particle. Bằng cách này, bạn có thể biểu diễn những hành vi rất phức tạp.
 
 .. note::
-  This page covers how to use ParticleProcessMaterial for 3D scenes specifically.
-  For information on how to use it in a 2D Scene see :ref:`doc_particle_process_material_2d`.
+  Trang này trình bày cụ thể cách sử dụng ParticleProcessMaterial cho các cảnh 3D. Để biết thông tin về cách sử dụng nó trong một Scene 2D, hãy xem :ref:`doc_particle_process_material_2d`.
 
-Time
-~~~~
+Thời gian
+~~~~~~~~~
 
-The ``Lifetime Randomness`` property controls how much randomness to apply to each particle's
-lifetime. A value of ``0`` means there is no randomness at all and all particles live for
-the same amount of time, set by the :ref:`Lifetime <doc_3d_particles_properties_time>` property. A value of ``1`` means
-that a particle's lifetime is completely random within the range of [0.0, ``Lifetime``].
+Thuộc tính ``Lifetime Randomness`` kiểm soát mức độ ngẫu nhiên được áp dụng cho vòng đời của từng particle. Giá trị ``0`` nghĩa là hoàn toàn không có tính ngẫu nhiên và mọi particle sống trong cùng một khoảng thời gian, được đặt bởi thuộc tính :ref:`Lifetime <doc_3d_particles_properties_time>`. Giá trị ``1`` nghĩa là vòng đời của particle hoàn toàn ngẫu nhiên trong phạm vi [0.0, ``Lifetime``].
 
-Particle flags
---------------
+Cờ particle
+-----------
 
-The ``Align Y`` property aligns each particle's Y-axis with its velocity. Enabling this
-property is the same as setting the :ref:`Transform Align <doc_3d_particles_properties_draw>` property to
-``Y to Velocity``.
+Thuộc tính ``Align Y`` căn trục Y của mỗi particle theo vận tốc của nó. Bật thuộc tính này tương đương với việc đặt thuộc tính :ref:`Transform Align <doc_3d_particles_properties_draw>` thành ``Y to Velocity``.
 
-The ``Rotate Y`` property works with the properties in the `Angle <#angle>`__ and
-`Angular Velocity <#angular-velocity>`__ groups to control particle rotation. ``Rotate Y``
-has to be enabled if you want to apply any rotation to particles. The exception to this
-is any particle that uses the :ref:`Standard Material <doc_standard_material_3d>`
-where the ``Billboard`` property is set to ``Particle Billboard``. In that case, particles
-rotate even without ``Rotate Y`` enabled.
+Thuộc tính ``Rotate Y`` hoạt động cùng với các thuộc tính trong các nhóm `Angle <#angle>`__ và `Angular Velocity <#angular-velocity>`__ để kiểm soát việc xoay particle. Phải bật ``Rotate Y`` nếu bạn muốn áp dụng bất kỳ phép xoay nào cho particle. Ngoại lệ là các particle sử dụng :ref:`Standard Material <doc_standard_material_3d>` trong đó thuộc tính ``Billboard`` được đặt thành ``Particle Billboard``. Trong trường hợp đó, particle vẫn xoay ngay cả khi chưa bật ``Rotate Y``.
 
-When the ``Disable Z`` property is enabled, particles will not move along the Z-axis.
-Whether that is going to be the particle system's local Z-axis or the world Z-axis is
-determined by the :ref:`Local Coords <doc_3d_particles_properties_draw>` property.
+Khi thuộc tính ``Disable Z`` được bật, particle sẽ không di chuyển dọc theo trục Z. Việc đó là trục Z cục bộ của hệ thống particle hay trục Z của thế giới được xác định bởi thuộc tính :ref:`Local Coords <doc_3d_particles_properties_draw>`.
 
-The ``Damping as Friction`` property changes the behavior of damping from a constant
-deceleration to a deceleration based on speed.
+Thuộc tính ``Damping as Friction`` thay đổi hành vi của damping từ giảm tốc không đổi thành giảm tốc dựa trên tốc độ.
 
-Spawn
------
+Sinh particle
+-------------
 
 .. _doc_process_material_properties_shapes:
 
-Emission shape
-~~~~~~~~~~~~~~
+Hình dạng phát xạ
+~~~~~~~~~~~~~~~~~
 
-Particles can emit from a single point in space or in a way that they fill out a shape.
-The ``Shape`` property controls that shape. ``Point`` is the default value. All
-particles emit from a single point in the center of the particle system. When set to ``Sphere``
-or ``Box``, particles emit in a way that they fill out a sphere or a box shape evenly.
-You have full control over the size of these shapes. ``Sphere Surface`` works like ``Sphere``,
-but instead of filling it out, all particles spawn on the sphere's surface.
+Particle có thể phát ra từ một điểm duy nhất trong không gian hoặc theo cách lấp đầy một hình dạng. Thuộc tính ``Shape`` kiểm soát hình dạng đó. ``Point`` là giá trị mặc định. Mọi particle đều phát ra từ một điểm duy nhất ở giữa hệ thống particle. Khi được đặt thành ``Sphere`` hoặc ``Box``, particle sẽ phát ra theo cách lấp đầy đều một hình cầu hoặc hình hộp. Bạn có toàn quyền kiểm soát kích thước của các hình dạng này. ``Sphere Surface`` hoạt động giống ``Sphere``, nhưng thay vì lấp đầy hình dạng, mọi particle sẽ sinh ra trên bề mặt hình cầu.
 
 .. figure:: img/particle_shapes_simple.webp
-   :alt: Simple particle emission shapes
+   :alt: Các hình dạng phát xạ particle đơn giản
 
-   Particles emitting from a point (left), in a sphere (middle), and in a box (right)
+   Particle phát ra từ một điểm (bên trái), trong một hình cầu (ở giữa) và trong một hình hộp (bên phải)
 
 .. figure:: img/particle_ring.webp
-   :alt: Ring-shaped particle system
+   :alt: Hệ thống particle hình vòng
    :align: right
 
-   A ring-shaped particle system
+   Một hệ thống particle hình vòng
 
-The ``Ring`` emission shape makes particles emit in the shape of a ring. You can control the ring's
-direction by changing the ``Ring Axis`` property. ``Ring Height`` controls the thickness
-of the ring along its axis. ``Ring Radius`` and ``Ring Inner Radius`` control how wide
-the ring is and how large the hole in the middle should be. The image shows a particle
-system with a radius of ``2`` and an inner radius of ``1.5``, the axis points along the
-global Z-axis.
+Hình dạng phát xạ ``Ring`` khiến particle phát ra theo hình vòng. Bạn có thể kiểm soát hướng của vòng bằng cách thay đổi thuộc tính ``Ring Axis``. ``Ring Height`` kiểm soát độ dày của vòng dọc theo trục của nó. ``Ring Radius`` và ``Ring Inner Radius`` kiểm soát độ rộng của vòng và kích thước của lỗ ở giữa. Hình ảnh cho thấy một hệ thống particle có bán kính ``2`` và bán kính trong ``1.5``, với trục hướng theo trục Z toàn cục.
 
-In addition to these relatively simple shapes, you can select the ``Points`` or
-``Directed Points`` option to create highly complex emission shapes. See the
-:ref:`Complex emission shapes <doc_3d_particles_complex_shapes>` section for a detailed
-explanation of how to set these up.
+Ngoài các hình dạng tương đối đơn giản này, bạn có thể chọn tùy chọn ``Points`` hoặc ``Directed Points`` để tạo các hình dạng phát xạ rất phức tạp. Xem
+phần :ref:`Complex emission shapes <doc_3d_particles_complex_shapes>` để biết giải thích chi tiết về cách thiết lập chúng.
 
-Angle
+Góc
+~~~
+
+Thuộc tính ``Angle`` kiểm soát góc xoay ban đầu của particle `như đã mô tả ở trên <#process-material-properties>`__. Để thuộc tính này thực sự ảnh hưởng đến particle, bạn phải bật một trong hai thuộc tính: `Rotate Y <#particle-flags>`__ xoay particle quanh trục Y của hệ thống particle. Thuộc tính ``Billboard`` trong :ref:`Standard Material <doc_standard_material_3d>`, nếu được đặt thành ``Particle Billboard``, sẽ xoay particle quanh trục hướng từ particle đến camera.
+
+Hướng
 ~~~~~
 
-The ``Angle`` property controls a particle's starting rotation `as described above <#process-material-properties>`__.
-In order to have an actual effect on the particle, you have to enable one of two properties: `Rotate Y <#particle-flags>`__
-rotates the particle around the particle system's Y-axis. The ``Billboard`` property in
-the :ref:`Standard Material <doc_standard_material_3d>`, if it is set to ``Particle Billboard``, rotates
-the particle around the axis that points from the particle to the camera.
-
-Direction
-~~~~~~~~~
-
 .. note::
 
-   The ``Direction`` property alone is not enough to see any particle movement. Whatever
-   values you set here only take effect once velocity or acceleration properties are set, too.
+   Chỉ riêng thuộc tính ``Direction`` thì chưa đủ để thấy particle di chuyển. Bất kỳ giá trị nào bạn đặt ở đây chỉ có hiệu lực khi các thuộc tính velocity hoặc acceleration cũng được đặt.
 
-The ``Direction`` property is a vector that controls each particle's direction of movement
-at the moment it is spawned. A value of ``(X=1,Y=0,Z=0)`` would make all particles move
-sideways along the X-axis. For something like a fountain where particles shoot out up in the
-air, a value of ``(X=0,Y=1,Z=0)`` would be a good starting point.
+Thuộc tính ``Direction`` là một vector kiểm soát hướng di chuyển của từng particle tại thời điểm nó được sinh ra. Giá trị ``(X=1,Y=0,Z=0)`` sẽ khiến mọi particle di chuyển ngang dọc theo trục X. Với một thứ như vòi phun nước, nơi particle bắn lên không trung, giá trị ``(X=0,Y=1,Z=0)`` sẽ là điểm khởi đầu phù hợp.
 
 .. figure:: img/particle_direction.webp
-   :alt: Different values for particle direction
+   :alt: Các giá trị hướng particle khác nhau
 
-   Different direction values: Y-axis only (left), equal values for X and Y (middle), X and Y with gravity enabled (right)
+   Các giá trị hướng khác nhau: chỉ trục Y (bên trái), các giá trị X và Y bằng nhau (ở giữa), X và Y khi bật gravity (bên phải)
 
-After setting a direction, you will notice that all particles move in the same direction in
-a straight line. The ``Spread`` property adds some variation and randomness to each particle's
-direction. The higher the value, the stronger the deviation from the original path. A value
-of ``0`` means there is no spread at all while a value of ``180`` makes particles shoot out in
-every direction. You could use this for something like pieces of debris during an explosion effect.
+Sau khi đặt hướng, bạn sẽ nhận thấy mọi particle di chuyển cùng hướng theo một đường thẳng. Thuộc tính ``Spread`` thêm sự biến thiên và tính ngẫu nhiên vào hướng của từng particle. Giá trị càng cao thì độ lệch khỏi đường đi ban đầu càng lớn. Giá trị ``0`` nghĩa là hoàn toàn không có độ phân tán, trong khi giá trị ``180`` khiến particle bắn ra theo mọi hướng. Bạn có thể dùng thuộc tính này cho những thứ như các mảnh vỡ trong hiệu ứng vụ nổ.
 
 .. figure:: img/particle_spread.webp
-   :alt: Different values for particle spread
+   :alt: Các giá trị độ phân tán particle khác nhau
 
-   No spread (left), 45 degree angle (middle), full 180 degrees (right)
+   Không phân tán (bên trái), góc 45 độ (ở giữa), toàn bộ 180 độ (bên phải)
 
-The ``Flatness`` property limits the spread along the Y-axis. A value of ``0`` means there
-is no limit and a value of ``1`` will eliminate all particle movement along the Y-axis. The
-particles will spread out completely "flat".
+Thuộc tính ``Flatness`` giới hạn độ phân tán dọc theo trục Y. Giá trị ``0`` nghĩa là không có giới hạn, còn giá trị ``1`` sẽ loại bỏ mọi chuyển động của particle dọc theo trục Y. Particle sẽ phân tán hoàn toàn theo dạng "phẳng".
 
-You won't see any actual movement until you also set some values for the velocity and
-acceleration properties below, so let's take a look at those next.
+Bạn sẽ không thấy chuyển động thực sự nào cho đến khi cũng đặt một số giá trị cho các thuộc tính velocity và acceleration bên dưới, vì vậy hãy cùng xem xét chúng tiếp theo.
 
-Initial velocity
-~~~~~~~~~~~~~~~~
+Vận tốc ban đầu
+~~~~~~~~~~~~~~~
 
-While the ``Direction`` property controls a particle's movement direction, the ``Initial Velocity``
-controls how fast it goes. It's separated into ``Velocity Min`` and ``Velocity Max``, both
-set to ``0`` by default, which is why you don't see any movement initially. As soon as you set
-values for either of these properties `as described above <#process-material-properties>`__, the
-particles begin to move. The direction is multiplied by these values, so you can make particles
-move in the opposite direction by setting a negative velocity.
+Trong khi thuộc tính ``Direction`` kiểm soát hướng di chuyển của particle, ``Initial Velocity`` kiểm soát tốc độ di chuyển. Thuộc tính này được tách thành ``Velocity Min`` và ``Velocity Max``, cả hai đều được đặt thành ``0`` theo mặc định, đó là lý do ban đầu bạn không thấy chuyển động nào. Ngay khi bạn đặt giá trị cho một trong hai thuộc tính này `như đã mô tả ở trên <#process-material-properties>`__, particle sẽ bắt đầu di chuyển. Hướng được nhân với các giá trị này, vì vậy bạn có thể khiến particle di chuyển theo hướng ngược lại bằng cách đặt vận tốc âm.
 
-Accelerations
--------------
+Gia tốc
+-------
 
-Gravity
-~~~~~~~
+Trọng lực
+~~~~~~~~~
 
-The next few property groups work closely together to control particle movement and rotation.
-``Gravity`` drags particles in the direction it points at, which is straight down at the strength
-of Earth's gravity by default. Gravity affects all particle movement.
-If your game uses physics and the world's gravity can change at runtime, you can use this property
-to keep the game's gravity in sync with particle gravity. A ``Gravity`` value of ``(X=0,Y=0,Z=0)`` means
-no particle will ever move at all if none of the other movement properties are set.
+Một vài nhóm thuộc tính tiếp theo phối hợp chặt chẽ với nhau để điều khiển chuyển động và phép xoay của particle. ``Gravity`` kéo particle theo hướng mà nó chỉ tới, mặc định là thẳng xuống với cường độ bằng trọng lực của Trái Đất. Trọng lực ảnh hưởng đến mọi chuyển động của particle. Nếu game của bạn sử dụng physics và trọng lực của thế giới có thể thay đổi trong runtime, bạn có thể dùng thuộc tính này để giữ trọng lực của game đồng bộ với trọng lực của particle. Giá trị ``Gravity`` bằng ``(X=0,Y=0,Z=0)`` có nghĩa là particle sẽ không bao giờ di chuyển nếu không đặt các thuộc tính chuyển động khác.
 
 .. figure:: img/particle_gravity.webp
-   :alt: Different values for particle gravity
+   :alt: Các giá trị khác nhau của trọng lực particle
 
-   Left\: (X=0,Y=-9.8,Z=0), middle\: (X=0,Y=9.8,Z=0), right\: (X=4,Y=2,Z=0).
+   Bên trái\: (X=0,Y=-9.8,Z=0), ở giữa\: (X=0,Y=9.8,Z=0), bên phải\: (X=4,Y=2,Z=0).
 
-Angular velocity
-~~~~~~~~~~~~~~~~
+Vận tốc góc
+~~~~~~~~~~~
 
-``Angular Velocity`` controls a particle's speed of rotation `as described above <#process-material-properties>`__.
-You can reverse the direction by using negative numbers for ``Velocity Min`` or ``Velocity Max``. Like the
-`Angle <#angle>`__ property, the rotation will only be visible if the `Rotate Y <#particle-flags>`__ flag is set
-or the ``Particle Billboard`` mode is selected in the :ref:`Standard Material <doc_standard_material_3d>`.
+``Angular Velocity`` điều khiển tốc độ xoay của particle `như đã mô tả ở trên <#process-material-properties>`__. Bạn có thể đảo hướng bằng cách sử dụng các số âm cho ``Velocity Min`` hoặc ``Velocity Max``. Giống như thuộc tính `Angle <#angle>`__, phép xoay chỉ hiển thị nếu cờ `Rotate Y <#particle-flags>`__ được bật hoặc chế độ ``Particle Billboard`` được chọn trong :ref:`Standard Material <doc_standard_material_3d>`.
 
 .. note::
 
-   The `Damping <#damping>`__ property has no effect on the angular velocity.
+   Thuộc tính `Damping <#damping>`__ không ảnh hưởng đến vận tốc góc.
 
-Linear acceleration
-~~~~~~~~~~~~~~~~~~~
+Gia tốc tuyến tính
+~~~~~~~~~~~~~~~~~~
 
-A particle's velocity is a constant value: once it's set, it doesn't change and the particle will
-always move at the same speed. You can use the ``Linear Accel`` property to
-change the speed of movement over a particle's lifetime `as described above <#process-material-properties>`__.
-Positive values will speed up the particle and make it move faster. Negative values will slow it
-down until it stops and starts moving in the other direction.
+Vận tốc của particle là một giá trị không đổi: sau khi được thiết lập, nó không thay đổi và particle luôn di chuyển với cùng một tốc độ. Bạn có thể sử dụng thuộc tính ``Linear Accel`` để thay đổi tốc độ chuyển động trong suốt vòng đời của particle `như đã mô tả ở trên <#process-material-properties>`__. Các giá trị dương sẽ tăng tốc particle và khiến nó di chuyển nhanh hơn. Các giá trị âm sẽ làm particle chậm lại cho đến khi dừng và bắt đầu di chuyển theo hướng ngược lại.
 
 .. figure:: img/particle_accel_linear.webp
-   :alt: Different values for particle linear acceleration
+   :alt: Các giá trị khác nhau của gia tốc tuyến tính particle
 
-   Negative (top) and positive (bottom) linear acceleration
+   Gia tốc tuyến tính âm (trên) và dương (dưới)
 
-It's important to keep in mind that when we change acceleration, we're not changing the velocity
-directly, we're changing the *change* in velocity. A value of ``0`` on the acceleration curve
-does not stop the particle's movement, it stops the change in the particle's movement. Whatever
-its velocity was at that moment, it will keep moving at that velocity until the acceleration is
-changed again.
+Điều quan trọng cần nhớ là khi thay đổi gia tốc, chúng ta không trực tiếp thay đổi vận tốc mà thay đổi *change* của vận tốc. Giá trị ``0`` trên đường cong gia tốc không dừng chuyển động của particle mà dừng sự thay đổi trong chuyển động của particle. Dù vận tốc của particle tại thời điểm đó là bao nhiêu, nó sẽ tiếp tục di chuyển với vận tốc đó cho đến khi gia tốc lại thay đổi.
 
-Radial acceleration
-~~~~~~~~~~~~~~~~~~~
+Gia tốc hướng tâm
+~~~~~~~~~~~~~~~~~
 
-The ``Radial Accel`` property adds a gravity-like force to all particles, with the origin
-of that force at the particle system's current location. Negative values make particles move
-towards the center, like the force of gravity from a planet on objects in its orbit. Positive
-values make particles move away from the center.
+Thuộc tính ``Radial Accel`` thêm một lực giống trọng lực vào tất cả particle, với điểm gốc của lực nằm tại vị trí hiện tại của particle system. Các giá trị âm khiến particle di chuyển về phía tâm, giống như lực hấp dẫn của một hành tinh tác động lên các vật thể trên quỹ đạo của nó. Các giá trị dương khiến particle di chuyển ra xa tâm.
 
 .. figure:: img/particle_accel_radial.webp
-   :alt: Different values for particle radial acceleration
+   :alt: Các giá trị khác nhau của gia tốc hướng tâm particle
 
-   Negative (left) and positive (right) radial acceleration
+   Gia tốc hướng tâm âm (trái) và dương (phải)
 
-Tangential acceleration
-~~~~~~~~~~~~~~~~~~~~~~~
+Gia tốc tiếp tuyến
+~~~~~~~~~~~~~~~~~~
 
 .. figure:: img/particle_tangent.webp
-   :alt: Tangents on a circle
+   :alt: Các tiếp tuyến trên một đường tròn
    :align: right
 
-   Tangents on a circle
+   Các tiếp tuyến trên một đường tròn
 
-This property adds particle acceleration in the direction of the tangent to a circle on the particle
-system's XZ-plane with the origin at the system's center and a radius the distance between each
-particle's current location and the system's center projected onto that plane.
+Thuộc tính này thêm gia tốc cho particle theo hướng tiếp tuyến của một đường tròn trên mặt phẳng XZ của particle system, với tâm tại tâm của system và bán kính là khoảng cách giữa vị trí hiện tại của từng particle với tâm của system, được chiếu lên mặt phẳng đó.
 
-Let's unpack that.
+Hãy phân tích từng phần.
 
-A tangent to a circle is a straight line that "touches" the circle in a right angle to the circle's
-radius at the touch point. A circle on the particle system's XZ-plane is the circle that you see
-when you look straight down at the particle system from above.
+Tiếp tuyến của một đường tròn là một đường thẳng "tiếp xúc" với đường tròn tại một góc vuông so với bán kính của đường tròn ở điểm tiếp xúc. Đường tròn trên mặt phẳng XZ của particle system là đường tròn bạn nhìn thấy khi nhìn thẳng xuống particle system từ phía trên.
 
 .. figure:: img/particle_accel_tangent.webp
-   :alt: Tangential acceleration from above
+   :alt: Gia tốc tiếp tuyến nhìn từ phía trên
    :align: right
 
-   Tangential acceleration from above
+   Gia tốc tiếp tuyến nhìn từ phía trên
 
-``Tangential Accel`` is always limited to that plane and never move particles along the system's Y-axis.
-A particle's location is enough to define such a circle where the distance to the system's center is
-the radius if we ignore the vector's Y component.
+``Tangential Accel`` luôn bị giới hạn trong mặt phẳng đó và không bao giờ di chuyển particle dọc theo trục Y của system. Chỉ cần vị trí của một particle là đủ để xác định một đường tròn như vậy, trong đó khoảng cách đến tâm của system là bán kính nếu bỏ qua thành phần Y của vector.
 
-The ``Tangential Accel`` property will make particles orbit the particle system's center, but the
-radius will increase constantly. Viewed from above, particles will move away from the center
-in a spiral. Negative values reverse the direction.
+Thuộc tính ``Tangential Accel`` sẽ khiến particle quay quanh tâm của particle system, nhưng bán kính sẽ liên tục tăng. Khi nhìn từ phía trên, particle sẽ di chuyển ra xa tâm theo hình xoắn ốc. Các giá trị âm sẽ đảo ngược hướng.
 
 Damping
 ~~~~~~~
 
-The ``Damping`` property gradually stops all movement. Each frame, a particle's movement
-is slowed down a little unless the total acceleration is greater than the damping effect. If
-it isn't, the particle will keep slowing down until it doesn't move at all. The greater the value, the less
-time it takes to bring particles to a complete halt.
+Thuộc tính ``Damping`` dần dần dừng mọi chuyển động. Ở mỗi frame, chuyển động của particle chậm lại một chút, trừ khi tổng gia tốc lớn hơn hiệu ứng damping. Nếu không, particle sẽ tiếp tục chậm lại cho đến khi hoàn toàn không di chuyển. Giá trị càng lớn thì thời gian đưa particle về trạng thái dừng hoàn toàn càng ngắn.
 
-Attractor interaction
-~~~~~~~~~~~~~~~~~~~~~
+Tương tác với attractor
+~~~~~~~~~~~~~~~~~~~~~~~
 
-If you want the particle system to interact with :ref:`particle attractors <doc_3d_particles_attractors>`,
-you have to check the ``Enabled`` property. When it is disabled, the particle system
-ignores all particle attractors.
+Nếu muốn particle system tương tác với :ref:`particle attractors <doc_3d_particles_attractors>`, bạn phải đánh dấu thuộc tính ``Enabled``. Khi bị tắt, particle system sẽ bỏ qua mọi particle attractor.
 
-Display
--------
+Hiển thị
+--------
 
-Scale
+Tỷ lệ
 ~~~~~
 
-``Scale`` controls a particle's size `as described above <#process-material-properties>`__. You can set
-different values for ``Scale Min`` and ``Scale Max`` to randomize each particle's size. Negative values
-are not allowed, so you won't be able to flip particles with this property. If you emit particles as
-billboards, the ``Keep Size`` property on the :ref:`Standard Material <doc_standard_material_3d>`
-in your draw passes has to be enabled for any scaling to have an effect.
+``Scale`` điều khiển kích thước của particle `như đã mô tả ở trên <#process-material-properties>`__. Bạn có thể đặt các giá trị khác nhau cho ``Scale Min`` và ``Scale Max`` để tạo kích thước ngẫu nhiên cho từng particle. Không được phép sử dụng các giá trị âm, vì vậy bạn không thể lật particle bằng thuộc tính này. Nếu phát particle dưới dạng billboard, thuộc tính ``Keep Size`` trên :ref:`Standard Material <doc_standard_material_3d>` trong các draw pass phải được bật thì việc scale mới có hiệu lực.
 
-Color
-~~~~~
+Màu
+~~~
 
-The ``Color`` property controls a particle's initial color. It will have an effect only after the
-``Use As Albedo`` property in the ``Vertex Color`` group of the :ref:`Standard Material <doc_standard_material_3d>`
-is enabled. This property is multiplied with color coming from the particle material's
-own ``Color`` or ``Texture`` property.
+Thuộc tính ``Color`` điều khiển màu ban đầu của particle. Nó chỉ có hiệu lực sau khi thuộc tính ``Use As Albedo`` trong nhóm ``Vertex Color`` của :ref:`Standard Material <doc_standard_material_3d>` được bật. Thuộc tính này được nhân với màu lấy từ thuộc tính ``Color`` hoặc ``Texture`` của material riêng của particle.
 
 .. figure:: img/particle_ramp.webp
-   :alt: Particle color ramp
+   :alt: Dải màu của particle
    :align: right
 
-   Setting up a color ramp
+   Thiết lập dải màu
 
-There are two ``Ramp`` properties in the ``Color`` group. These allow you to define a range of colors
-that are used to set the particle's color. The ``Color Ramp`` property changes a particle's color
-over the course of its lifetime. It moves through the entire range of colors you defined.
-The ``Color Initial Ramp`` property selects the particle's initial color from a random
-position on the color ramp.
+Có hai thuộc tính ``Ramp`` trong nhóm ``Color``. Các thuộc tính này cho phép bạn xác định một dải màu dùng để đặt màu cho particle. Thuộc tính ``Color Ramp`` thay đổi màu của particle trong suốt vòng đời của nó. Nó đi qua toàn bộ dải màu bạn đã xác định. Thuộc tính ``Color Initial Ramp`` chọn màu ban đầu của particle từ một vị trí ngẫu nhiên trên dải màu.
 
-To set up a color ramp, click on the box next to the property name and from the dropdown menu
-select ``New GradientTexture1D``. Click on the box again to open the texture's details.
-Find the ``Gradient`` property, click on the box next to it and select ``New Gradient``.
-Click on that box again and you will see a color range. Click anywhere on that range
-to insert a new marker. You can move the marker with the mouse and delete it by clicking
-the right mouse button. When a marker is selected, you can use the color picker next to
-the range to change its color.
+Để thiết lập dải màu, hãy nhấp vào ô bên cạnh tên thuộc tính và chọn ``New GradientTexture1D`` từ menu thả xuống. Nhấp lại vào ô để mở thông tin chi tiết của texture. Tìm thuộc tính ``Gradient``, nhấp vào ô bên cạnh thuộc tính đó và chọn ``New Gradient``. Nhấp lại vào ô đó để xem một dải màu. Nhấp vào bất kỳ vị trí nào trên dải màu để chèn marker mới. Bạn có thể di chuyển marker bằng chuột và xóa marker bằng cách nhấp chuột phải. Khi một marker được chọn, bạn có thể dùng bộ chọn màu bên cạnh dải màu để thay đổi màu của marker.
 
-Hue variation
-~~~~~~~~~~~~~
+Biến thiên sắc độ
+~~~~~~~~~~~~~~~~~
 
-Like the ``Color`` property, ``Hue Variation`` controls a particle's color, but in a
-different way. It does so not by setting color values directly, but by
-*shifting the color's hue*.
+Giống như thuộc tính ``Color``, ``Hue Variation`` điều khiển màu của particle, nhưng theo một cách khác. Nó không thực hiện bằng cách đặt trực tiếp các giá trị màu mà bằng cách *dịch chuyển sắc độ của màu*.
 
-Hue describes a color's pigment: red, orange, yellow, green and so on. It does not
-tell you anything about how bright or how saturated the color is. The ``Hue Variation``
-property controls the range of available hues `as described above <#process-material-properties>`__.
+Hue mô tả sắc tố của một màu: đỏ, cam, vàng, xanh lá cây, v.v. Nó không cho biết gì về độ sáng hoặc độ bão hòa của màu. Thuộc tính ``Hue Variation`` kiểm soát phạm vi các sắc độ khả dụng `như đã mô tả ở trên <#process-material-properties>`__.
 
-It works on top of the particle's current color. The values you set for
-``Variation Min`` and ``Variation Max`` control how far the hue is allowed to shift
-in either direction. A higher value leads to more color variation while a low value
-limits the available colors to the closest neighbors of the original color.
+Thuộc tính này hoạt động dựa trên màu hiện tại của particle. Các giá trị bạn đặt cho ``Variation Min`` và ``Variation Max`` kiểm soát mức độ hue được phép dịch chuyển theo mỗi hướng. Giá trị cao hơn tạo ra nhiều biến thể màu hơn, trong khi giá trị thấp giới hạn các màu khả dụng ở những màu gần nhất với màu gốc.
 
 .. figure:: img/particle_hue.webp
-   :alt: Different values for hue variation
+   :alt: Các giá trị khác nhau của biến thiên hue
 
-   Different values for hue variation, both times with blue as base color: 0.6 (left) and 0.1 (right)
+   Các giá trị khác nhau của biến thiên hue, cả hai lần đều sử dụng màu xanh dương làm màu cơ sở: 0.6 (bên trái) và 0.1 (bên phải)
 
 .. _doc_process_material_properties_animation:
 
 Animation
 ~~~~~~~~~
 
-The ``Animation`` property group controls the behavior of sprite
-sheet animations in the particle's :ref:`Standard Material <doc_standard_material_3d>`.
-The ``Min``, ``Max``, and ``Curve`` values work `as described above <#process-material-properties>`__.
+Nhóm thuộc tính ``Animation`` kiểm soát hoạt động của các animation sprite sheet trong :ref:`Standard Material <doc_standard_material_3d>` của particle. Các giá trị ``Min``, ``Max`` và ``Curve`` hoạt động `như đã mô tả ở trên <#process-material-properties>`__.
 
-An animated sprite sheet is a texture that contains several smaller images aligned on a grid.
-The images are shown one after the other so fast that they combine to play a short
-animation, like a flipbook. You can use them for animated particles like smoke or fire.
-These are the steps to create an animated particle system:
+Sprite sheet được animate là một texture chứa nhiều hình ảnh nhỏ hơn được sắp xếp trên một lưới. Các hình ảnh được hiển thị lần lượt nhanh đến mức kết hợp lại thành một animation ngắn, giống như sách lật. Bạn có thể dùng chúng cho các particle được animate như khói hoặc lửa. Sau đây là các bước để tạo một hệ thống particle được animate:
 
 .. figure:: img/particle_sprite.webp
-   :alt: A sprite sheet
+   :alt: Một sprite sheet
    :align: right
 
-   An 8x8 animated smoke sprite sheet
+   Một sprite sheet khói được animate 8x8
 
-#. Import a sprite sheet texture into the engine. If you don't have one at hand, you can download the :download:`high-res version of the example image <img/particle_sprite_smoke.webp>`.
-#. Set up a particle system with at least one draw pass and assign a ``Standard Material`` to the mesh in that draw pass.
-#. Assign the sprite sheet to the ``Texture`` property in the ``Albedo`` group
-#. Set the material's ``Billboard`` property to ``Particle Billboard``. Doing so makes the ``Particles Anim`` group available in the material.
-#. Set ``H Frames`` to the number of columns and ``V Frames`` to the number of rows in the sprite sheet.
-#. Check ``Loop`` if you want the animation to keep repeating.
+#. Import texture sprite sheet vào engine. Nếu bạn không có sẵn, bạn có thể tải xuống :download:`phiên bản độ phân giải cao của hình ảnh mẫu <img/particle_sprite_smoke.webp>`.
+#. Thiết lập một hệ thống particle với ít nhất một draw pass và gán một ``Standard Material`` cho mesh trong draw pass đó.
+#. Gán sprite sheet cho thuộc tính ``Texture`` trong nhóm ``Albedo``
+#. Đặt thuộc tính ``Billboard`` của material thành ``Particle Billboard``. Khi đó, nhóm ``Particles Anim`` sẽ khả dụng trong material.
+#. Đặt ``H Frames`` thành số cột và ``V Frames`` thành số hàng trong sprite sheet.
+#. Chọn ``Loop`` nếu bạn muốn animation tiếp tục lặp lại.
 
-That's it for the Standard Material. You won't see any animation right away. This is
-where the ``Animation`` properties come in. The ``Speed`` properties control how fast
-the sprite sheet animates. Set ``Speed Min`` and ``Speed Max`` to ``1`` and you should see the
-animation playing. The ``Offset`` properties control where the animation starts on a
-newly spawned particle. By default, it will always be the first image in the sequence.
-You can add some variety by changing ``Offset Min`` and ``Offset Max`` to randomize
-the starting position.
+Vậy là xong phần Standard Material. Bạn sẽ chưa thấy animation ngay lập tức. Đây là lúc các thuộc tính ``Animation`` phát huy tác dụng. Các thuộc tính ``Speed`` kiểm soát tốc độ animate của sprite sheet. Đặt ``Speed Min`` và ``Speed Max`` thành ``1`` thì bạn sẽ thấy animation đang phát. Các thuộc tính ``Offset`` kiểm soát vị trí bắt đầu của animation trên một particle mới được spawn. Theo mặc định, nó luôn là hình ảnh đầu tiên trong chuỗi. Bạn có thể tạo thêm sự đa dạng bằng cách thay đổi ``Offset Min`` và ``Offset Max`` để ngẫu nhiên hóa vị trí bắt đầu.
 
 .. figure:: img/particle_animate.webp
-   :alt: Animated particles
+   :alt: Các particle được animate
 
-   Three different particle systems using the same smoke sprite sheet
+   Ba hệ thống particle khác nhau sử dụng cùng một sprite sheet khói
 
-Depending on how many images your sprite sheet contains and for how long your
-particle is alive, the animation might not look smooth. The relationship between
-particle lifetime, animation speed, and number of images in the sprite sheet is
-this:
+Tùy thuộc vào số lượng hình ảnh trong sprite sheet và thời gian particle tồn tại, animation có thể trông không mượt. Mối quan hệ giữa thời gian tồn tại của particle, tốc độ animation và số lượng hình ảnh trong sprite sheet như sau:
 
 .. note::
 
-   At an animation speed of ``1.0``, the animation will reach the last image
-   in the sequence just as the particle's lifetime ends.
+   Ở tốc độ animation ``1.0``, animation sẽ đến hình ảnh cuối cùng trong chuỗi đúng lúc thời gian tồn tại của particle kết thúc.
 
    .. math::
       Animation\ FPS = \frac{Number\ of\ images}{Lifetime}
 
-If your sprite sheet contains
-64 (8x8) images and the particle's lifetime is set to ``1 second``, the animation
-will be very smooth at **64 FPS** (1 second / 64 images). if the lifetime is set to ``2 seconds``, it
-will still be fairly smooth at **32 FPS**. But if the particle is alive for
-``8 seconds``, the animation will be visibly choppy at **8 FPS**. In order to make the
-animation smooth again, you need to increase the animation speed to something like ``3``
-to reach an acceptable framerate.
+Nếu sprite sheet của bạn chứa 64 hình ảnh (8x8) và thời gian tồn tại của particle được đặt thành ``1 second``, animation sẽ rất mượt ở **64 FPS** (1 giây / 64 hình ảnh). Nếu thời gian tồn tại được đặt thành ``2 seconds``, animation vẫn khá mượt ở **32 FPS**. Nhưng nếu particle tồn tại trong ``8 seconds``, animation sẽ giật thấy rõ ở **8 FPS**. Để animation mượt trở lại, bạn cần tăng tốc độ animation lên khoảng ``3`` để đạt tốc độ khung hình chấp nhận được.
 
 .. figure:: img/particle_animate_lifetime.webp
-   :alt: Animated particles lifetimes
+   :alt: Thời gian tồn tại của các particle được animate
 
-   The same particle system at different lifetimes: 1 second (left), 2 seconds (middle), 8 seconds (right)
+   Cùng một hệ thống particle với các thời gian tồn tại khác nhau: 1 giây (bên trái), 2 giây (ở giữa), 8 giây (bên phải)
 
-Note that the GPUParticles3D node's **Fixed FPS** also affects animation
-playback. For smooth animation playback, it's recommended to set it to 0 so that
-the particle is simulated on every rendered frame. If this is not an option for
-your use case, set **Fixed FPS** to be equal to the effective framerate used by
-the flipbook animation (see above for the formula).
+Lưu ý rằng **Fixed FPS** của node GPUParticles3D cũng ảnh hưởng đến việc phát animation. Để animation phát mượt, bạn nên đặt giá trị này thành 0 để particle được mô phỏng ở mọi frame được render. Nếu đây không phải là lựa chọn phù hợp với trường hợp sử dụng của bạn, hãy đặt **Fixed FPS** bằng tốc độ khung hình hiệu dụng được animation flipbook sử dụng (xem công thức ở trên).
 
 .. _doc_process_material_properties_turbulence:
 
 Turbulence
 ~~~~~~~~~~
 
-Turbulence adds noise to particle movement, creating interesting and lively patterns.
-Check the box next to the ``Enabled`` property to activate it. A number
-of new properties show up that control the movement speed, noise pattern and overall influence
-on the particle system. You can find a detailed explanation of these in the section on
+Turbulence thêm noise vào chuyển động của particle, tạo ra các mẫu thú vị và sống động. Chọn ô bên cạnh thuộc tính ``Enabled`` để kích hoạt. Một số thuộc tính mới sẽ xuất hiện, dùng để kiểm soát tốc độ chuyển động, mẫu noise và mức độ ảnh hưởng tổng thể lên hệ thống particle. Bạn có thể tìm thấy phần giải thích chi tiết về các thuộc tính này trong phần
 :ref:`particle turbulence <doc_3d_particles_turbulence>`.
 
 .. _doc_process_material_properties_subemitter:
@@ -404,58 +267,32 @@ on the particle system. You can find a detailed explanation of these in the sect
 Collision
 ---------
 
-The ``Mode`` property controls how and if emitters collide with particle collision nodes. Set it
-to ``Disabled`` to disable any collision for this particle system. Set it to ``Hide On Contact``
-if you want particles to disappear as soon as they collide. Set it to ``Constant`` to make
-particles collide and bounce around. You will see two new properties appear in the inspector.
-They control how particles behave during collision events.
+Thuộc tính ``Mode`` kiểm soát cách thức và việc các emitter có va chạm với các node particle collision hay không. Đặt thành ``Disabled`` để tắt mọi va chạm cho hệ thống particle này. Đặt thành ``Hide On Contact`` nếu bạn muốn particle biến mất ngay khi va chạm. Đặt thành ``Constant`` để particle va chạm và nảy xung quanh. Bạn sẽ thấy hai thuộc tính mới xuất hiện trong inspector. Chúng kiểm soát cách particle hoạt động trong các sự kiện va chạm.
 
-A high ``Friction`` value will reduce sliding along surfaces. This is especially
-helpful if particles collide with sloped surfaces and you want them to stay in
-place instead of sliding all the way to the bottom, like snow falling on a mountain.
-A high ``Bounce`` value will make particles bounce off surfaces they collide with,
-like rubber balls on a solid floor.
+Giá trị ``Friction`` cao sẽ giảm hiện tượng trượt dọc theo các bề mặt. Điều này đặc biệt hữu ích nếu particle va chạm với các bề mặt dốc và bạn muốn chúng đứng yên thay vì trượt xuống tận đáy, chẳng hạn như tuyết rơi trên núi. Giá trị ``Bounce`` cao sẽ khiến particle nảy khỏi các bề mặt mà chúng va chạm, giống như những quả bóng cao su trên sàn cứng.
 
-If the ``Use Scale`` property is enabled, the :ref:`collision base size <doc_3d_particles_properties_collision>`
-is multiplied by the particle's `current scale <#scale>`__. You can use this to
-make sure that the rendered size and the collision size match for particles
-with random scale or scale that varies over time.
+Nếu thuộc tính ``Use Scale`` được bật, :ref:`kích thước cơ sở va chạm <doc_3d_particles_properties_collision>` sẽ được nhân với `tỷ lệ hiện tại <#scale>`__ của particle. Bạn có thể dùng cách này để đảm bảo kích thước được render và kích thước va chạm khớp nhau đối với các particle có tỷ lệ ngẫu nhiên hoặc tỷ lệ thay đổi theo thời gian.
 
-You can learn more about particle collisions in the :ref:`Collisions <doc_3d_particles_collision>`
-section in this manual.
+Bạn có thể tìm hiểu thêm về va chạm của particle trong phần :ref:`Collisions <doc_3d_particles_collision>` của tài liệu hướng dẫn này.
 
 Sub-emitter
 -----------
 
 .. figure:: img/particle_sub_mode.webp
-   :alt: Sub-emitter modes
+   :alt: Các chế độ sub-emitter
    :align: right
 
-   The available sub-emitter modes
+   Các chế độ sub-emitter khả dụng
 
-The ``Mode`` property controls how and when sub-emitters are spawned. Set it to ``Disabled``
-and no sub-emitters will ever be spawned. Set it to ``Constant`` to make sub-emitters
-spawn continuously at a constant rate. The ``Frequency`` property controls how often
-that happens within the span of one second. Set the mode to ``At End`` to make the sub-emitter
-spawn at the end of the parent particle's lifetime, right before it is destroyed. The
-``Amount At End`` property controls how many sub-emitters will be spawned. Set the
-mode to ``At Collision`` to make sub-emitters spawn when a particle collides with the
-environment. The ``Amount At Collision`` property controls how many sub-emitters will be spawned.
+Thuộc tính ``Mode`` kiểm soát cách thức và thời điểm sub-emitter được spawn. Đặt thành ``Disabled`` thì sẽ không có sub-emitter nào được spawn. Đặt thành ``Constant`` để sub-emitter được spawn liên tục với tốc độ không đổi. Thuộc tính ``Frequency`` kiểm soát tần suất việc đó xảy ra trong khoảng thời gian một giây. Đặt chế độ thành ``At End`` để sub-emitter được spawn khi thời gian tồn tại của particle cha kết thúc, ngay trước khi particle đó bị hủy. Thuộc tính ``Amount At End`` kiểm soát số lượng sub-emitter sẽ được spawn. Đặt chế độ thành ``At Collision`` để sub-emitter được spawn khi particle va chạm với môi trường. Thuộc tính ``Amount At Collision`` kiểm soát số lượng sub-emitter sẽ được spawn.
 
-When the ``Keep Velocity`` property is enabled, the newly spawned sub-emitter starts off
-with the parent particle's velocity at the time the sub-emitter is created.
+Khi thuộc tính ``Keep Velocity`` được bật, sub-emitter mới được spawn sẽ bắt đầu với vận tốc của particle cha tại thời điểm sub-emitter được tạo.
 
-See the :ref:`Sub-emitters <doc_3d_particles_subemitters>` section in this manual for a detailed explanation of how
-to add a sub-emitter to a particle system.
+Xem phần :ref:`Sub-emitters <doc_3d_particles_subemitters>` trong tài liệu hướng dẫn này để biết giải thích chi tiết về cách thêm sub-emitter vào một hệ thống particle.
 
-Customizing the process material
---------------------------------
+Tùy chỉnh process material
+--------------------------
 
-If you need to change or implement new behaviors in shader code, you can do so by converting
-the current ParticleProcessMaterial to a :ref:`class_ShaderMaterial`. Existing properties
-are preserved by the conversion process. Features that are enabled will also affect
-what's present in the converted shader code.
+Nếu cần thay đổi hoặc triển khai hành vi mới trong mã shader, bạn có thể thực hiện việc đó bằng cách chuyển đổi ParticleProcessMaterial hiện tại thành một :ref:`class_ShaderMaterial`. Các thuộc tính hiện có sẽ được giữ nguyên trong quá trình chuyển đổi. Những tính năng được bật cũng sẽ ảnh hưởng đến nội dung có trong mã shader đã chuyển đổi.
 
-To do so, right-click on the material in the FileSystem dock and choose
-**Convert to ShaderMaterial**. You can also do so by right-clicking on any
-property holding a reference to the material in the inspector.
+Để thực hiện việc này, hãy nhấp chuột phải vào material trong dock FileSystem rồi chọn **Convert to ShaderMaterial**. Bạn cũng có thể thực hiện việc này bằng cách nhấp chuột phải vào bất kỳ thuộc tính nào đang tham chiếu đến material trong inspector.

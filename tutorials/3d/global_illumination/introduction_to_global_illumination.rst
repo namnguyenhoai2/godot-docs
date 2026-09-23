@@ -1,322 +1,199 @@
 .. _doc_introduction_to_global_illumination:
 
-Introduction to global illumination
-===================================
+Giới thiệu về chiếu sáng toàn cục
+=================================
 
-What is global illumination?
-----------------------------
+Chiếu sáng toàn cục là gì?
+--------------------------
 
-*Global illumination* is a catch-all term used to describe a system of lighting
-that uses both direct light (light that comes directly from a light source) and
-indirect light (light that bounces from a surface). In a 3D rendering engine,
-global illumination is one of the most important elements to achieving
-realistic lighting. Global illumination aims to mimic how light behaves
-in real life, such as light bouncing on surfaces and light being emitted
-from emissive materials.
+*Chiếu sáng toàn cục* là thuật ngữ chung dùng để mô tả một hệ thống chiếu sáng sử dụng cả ánh sáng trực tiếp (ánh sáng đi thẳng từ nguồn sáng) và ánh sáng gián tiếp (ánh sáng dội lại từ một bề mặt). Trong một công cụ kết xuất 3D, chiếu sáng toàn cục là một trong những yếu tố quan trọng nhất để đạt được ánh sáng chân thực. Chiếu sáng toàn cục nhằm mô phỏng cách ánh sáng hoạt động trong đời thực, chẳng hạn như ánh sáng dội trên các bề mặt và ánh sáng phát ra từ các vật liệu phát sáng.
 
-In the example below, the entire scene is illuminated by an emissive material
-(the white square at the top). The white wall and ceiling on the back is tinted
-red and green close to the walls, as the light bouncing on the colored walls is
-being reflected back onto the rest of the scene.
+Trong ví dụ bên dưới, toàn bộ cảnh được chiếu sáng bởi một vật liệu phát sáng (hình vuông màu trắng ở phía trên). Bức tường trắng và trần nhà ở phía sau được nhuộm màu đỏ và xanh lục khi ở gần các bức tường, vì ánh sáng dội trên những bức tường có màu được phản xạ trở lại phần còn lại của cảnh.
 
 .. image:: img/global_illumination_example.webp
 
-Global illumination is composed of several key concepts:
+Chiếu sáng toàn cục bao gồm một số khái niệm chính:
 
-Indirect diffuse lighting
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Chiếu sáng khuếch tán gián tiếp
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This is the lighting that does not change depending on the camera's angle.
-There are two main sources of indirect diffuse lighting:
+Đây là loại ánh sáng không thay đổi tùy theo góc nhìn của camera. Có hai nguồn chính của chiếu sáng khuếch tán gián tiếp:
 
-- Light *bouncing* on surfaces. This bounced lighting is multiplied with the
-  material's albedo color. The bounced lighting can then be reflected by other
-  surfaces, with decreasing impact due to light attenuation. In real life,
-  light bounces an infinite number of times. However, for performance
-  reasons, this can't be simulated in a game engine. Instead, the number of
-  bounces is typically limited to 1 or 2 (or up to 16 when baking lightmaps). A
-  greater number of bounces will lead to more realistic light falloff in shaded
-  areas, at the cost of lower performance or greater bake times.
-- Emissive materials can also emit light that can be bounced on surfaces.
-  This acts as a form of *area lighting*. Instead of having an infinitely
-  small point emit light using an OmniLight3D or SpotLight3D node,
-  an area of a determined size will emit light using its own surface.
+- Ánh sáng *dội* trên các bề mặt. Ánh sáng dội này được nhân với màu albedo của vật liệu. Sau đó, ánh sáng dội có thể được các bề mặt khác phản xạ, với mức ảnh hưởng giảm dần do sự suy hao ánh sáng. Trong đời thực, ánh sáng dội lại vô số lần. Tuy nhiên, vì lý do hiệu năng, điều này không thể được mô phỏng trong game engine. Thay vào đó, số lần dội thường được giới hạn ở 1 hoặc 2 lần (hoặc tối đa 16 lần khi baking lightmap). Số lần dội lớn hơn sẽ tạo ra sự suy giảm ánh sáng chân thực hơn trong các vùng đổ bóng, nhưng phải đánh đổi bằng hiệu năng thấp hơn hoặc thời gian baking lâu hơn.
+- Vật liệu phát sáng cũng có thể phát ra ánh sáng và ánh sáng đó có thể dội trên các bề mặt. Đây là một dạng *area lighting*. Thay vì để một điểm có kích thước vô hạn nhỏ phát ra ánh sáng bằng node OmniLight3D hoặc SpotLight3D, một vùng có kích thước xác định sẽ phát ra ánh sáng bằng chính bề mặt của nó.
 
-Direct diffuse lighting is already handled by the light nodes themselves, which
-means that global illumination algorithms only try to represent indirect
-lighting.
+Chiếu sáng khuếch tán trực tiếp đã được chính các node ánh sáng xử lý, nghĩa là các thuật toán chiếu sáng toàn cục chỉ cố gắng mô phỏng ánh sáng gián tiếp.
 
-Different global illumination techniques offer varying levels of accuracy
-to represent indirect diffuse lighting. See the comparison table at the bottom
-of this page for more information.
+Các kỹ thuật chiếu sáng toàn cục khác nhau cung cấp mức độ chính xác khác nhau để mô phỏng chiếu sáng khuếch tán gián tiếp. Xem bảng so sánh ở cuối trang này để biết thêm thông tin.
 
-To provide more accurate ambient occlusion for small objects, screen-space ambient occlusion
-(SSAO) can be enabled in the :ref:`environment <doc_environment_and_post_processing>`
-settings. SSAO has a significant performance cost, so make sure to disable
-it when targeting low-end hardware.
+Để cung cấp ambient occlusion chính xác hơn cho các vật thể nhỏ, có thể bật screen-space ambient occlusion (SSAO) trong phần cài đặt :ref:`environment <doc_environment_and_post_processing>`. SSAO gây tốn hiệu năng đáng kể, vì vậy hãy nhớ tắt nó khi nhắm đến phần cứng cấp thấp.
 
 .. note::
 
-    Indirect diffuse lighting may be a source of color banding in scenes with no
-    detailed textures. This results in light gradients not being smooth, but
-    having a visible "stepping" effect instead. See the
-    :ref:`doc_3d_rendering_limitations_color_banding` section in the 3D rendering
-    limitations documentation for ways to reduce this effect.
+    Chiếu sáng khuếch tán gián tiếp có thể là nguồn gây ra hiện tượng color banding trong các cảnh không có texture chi tiết. Điều này khiến các dải chuyển màu của ánh sáng không mượt mà mà xuất hiện hiệu ứng "bậc thang" rõ rệt. Xem
+    :ref:`doc_3d_rendering_limitations_color_banding` phần trong tài liệu về các giới hạn của kết xuất 3D để biết cách giảm hiệu ứng này.
 
-Specular lighting
-~~~~~~~~~~~~~~~~~
+Chiếu sáng specular
+~~~~~~~~~~~~~~~~~~~
 
-Specular lighting is also referred to as *reflections*.
-This is the lighting that changes in intensity depending on the camera's angle.
-This specular lighting can be *direct* or *indirect*.
+Chiếu sáng specular còn được gọi là *phản xạ*. Đây là loại ánh sáng thay đổi cường độ tùy theo góc nhìn của camera. Chiếu sáng specular này có thể là *trực tiếp* hoặc *gián tiếp*.
 
-Most global illumination techniques offer a way to render specular lighting.
-However, the degree of accuracy at which specular lighting is rendered varies
-greatly from technique to technique. See the comparison table at the bottom
-of this page for more information.
+Hầu hết các kỹ thuật chiếu sáng toàn cục đều cung cấp cách kết xuất chiếu sáng specular. Tuy nhiên, mức độ chính xác khi kết xuất chiếu sáng specular thay đổi rất lớn giữa các kỹ thuật. Xem bảng so sánh ở cuối trang này để biết thêm thông tin.
 
-To provide more accurate reflections for small objects, screen-space reflections (SSR)
-can be enabled in the :ref:`environment <doc_environment_and_post_processing>` settings.
-SSR has a significant performance cost (even more so than SSAO), so make sure to disable
-it when targeting low-end hardware.
+Để cung cấp phản xạ chính xác hơn cho các vật thể nhỏ, có thể bật screen-space reflections (SSR) trong phần cài đặt :ref:`environment <doc_environment_and_post_processing>`. SSR gây tốn hiệu năng đáng kể (thậm chí còn nhiều hơn SSAO), vì vậy hãy nhớ tắt nó khi nhắm đến phần cứng cấp thấp.
 
 .. _doc_introduction_to_global_illumination_comparison:
 
-Which global illumination technique should I use?
--------------------------------------------------
+Nên sử dụng kỹ thuật chiếu sáng toàn cục nào?
+---------------------------------------------
 
-When determining a global illumination (GI) technique to use,
-there are several criteria to keep in mind:
+Khi xác định kỹ thuật chiếu sáng toàn cục (GI) cần sử dụng, có một số tiêu chí cần lưu ý:
 
-- **Performance.** Real-time GI techniques are usually more expensive
-  compared to semi-real-time or baked techniques. Note that most of the cost in
-  GI rendering is spent on the GPU, rather than the CPU.
-- **Visuals.** On top of not performing the best, real-time GI techniques
-  generally don't provide the best visual output. This is especially the case in
-  a mostly static scene where the dynamic nature of real-time GI is not easily
-  noticeable. If maximizing visual quality is your goal, baked techniques will
-  often look better and will result in fewer light leaks.
-- **Real-time ability.** Some GI techniques are fully real-time,
-  whereas others are only semi-real-time or aren't real-time at all.
-  Semi-real-time techniques have restrictions that fully real-time techniques don't.
-  For instance, dynamic objects may not contribute emissive lighting to the scene.
-  Non-real-time techniques do not support *any* form of dynamic GI,
-  so it must be faked using other techniques if needed (such as placing positional lights
-  near emissive surfaces).
-  Real-time ability also affects the GI technique's viability in procedurally
-  generated levels.
-- **User work needed.** Some GI techniques are fully automatic, whereas others
-  require careful planning and manual work on the user's side. Depending on your
-  time budget, some GI techniques may be preferable to others.
+- **Hiệu năng.** Các kỹ thuật GI theo thời gian thực thường tốn kém hơn so với các kỹ thuật bán thời gian thực hoặc đã baking. Lưu ý rằng phần lớn chi phí kết xuất GI nằm ở GPU thay vì CPU.
+- **Hình ảnh.** Ngoài việc không có hiệu năng tốt nhất, các kỹ thuật GI theo thời gian thực thường cũng không cung cấp đầu ra hình ảnh tốt nhất. Điều này đặc biệt đúng với các cảnh phần lớn tĩnh, trong đó tính động của GI theo thời gian thực khó nhận thấy. Nếu mục tiêu của bạn là tối đa hóa chất lượng hình ảnh, các kỹ thuật đã baking thường sẽ trông đẹp hơn và tạo ra ít light leak hơn.
+- **Khả năng theo thời gian thực.** Một số kỹ thuật GI hoàn toàn theo thời gian thực, trong khi các kỹ thuật khác chỉ bán thời gian thực hoặc hoàn toàn không theo thời gian thực. Các kỹ thuật bán thời gian thực có những hạn chế mà các kỹ thuật hoàn toàn theo thời gian thực không có. Chẳng hạn, các vật thể động có thể không đóng góp ánh sáng phát ra cho cảnh. Các kỹ thuật không theo thời gian thực không hỗ trợ bất kỳ dạng GI động *nào*, vì vậy nếu cần, phải giả lập bằng các kỹ thuật khác (chẳng hạn như đặt các đèn định vị gần các bề mặt phát sáng). Khả năng theo thời gian thực cũng ảnh hưởng đến tính khả thi của kỹ thuật GI trong các level được tạo theo thủ tục.
+- **Công việc người dùng cần thực hiện.** Một số kỹ thuật GI hoàn toàn tự động, trong khi các kỹ thuật khác yêu cầu người dùng lên kế hoạch cẩn thận và thực hiện thủ công. Tùy thuộc vào quỹ thời gian của bạn, một số kỹ thuật GI có thể phù hợp hơn các kỹ thuật khác.
 
-Here's a comparison of all the global illumination techniques available in Godot:
+Dưới đây là phần so sánh tất cả các kỹ thuật chiếu sáng toàn cục có trong Godot:
 
-Performance
-~~~~~~~~~~~
+Hiệu năng
+~~~~~~~~~
 
-In order of performance from fastest to slowest:
+Theo thứ tự hiệu năng từ nhanh nhất đến chậm nhất:
 
 - **ReflectionProbe:**
 
-  - ReflectionProbes with their update mode set to **Always** are much more
-    expensive than probes with their update mode set to **Once** (the default).
-    Suited for integrated graphics when using the **Once** update mode.
-    *Available in all renderers.*
+  - ReflectionProbes có chế độ cập nhật được đặt thành **Always** tốn kém hơn nhiều so với các probe có chế độ cập nhật được đặt thành **Once** (mặc định). Phù hợp với đồ họa tích hợp khi sử dụng chế độ cập nhật **Once**. *Có trong tất cả các renderer.*
 
 - **LightmapGI:**
 
-  - Lights can be baked with indirect lighting only, or fully baked on a
-    per-light basis to further improve performance. Hybrid setups can be used
-    (such as having a real-time directional light and fully baked positional lights).
-    Directional information can be enabled before baking to improve visuals at
-    a small performance cost (and at the cost of larger file sizes).
-    Suited for integrated graphics.
-    *Available in all renderers. However, baking lightmaps requires hardware
-    with RenderingDevice support.*
+  - Có thể baking ánh sáng chỉ với ánh sáng gián tiếp, hoặc baking hoàn toàn theo từng đèn để cải thiện hiệu năng hơn nữa. Có thể sử dụng các thiết lập kết hợp (chẳng hạn như một đèn directional theo thời gian thực và các đèn positional được baking hoàn toàn). Có thể bật thông tin directional trước khi baking để cải thiện hình ảnh với một mức đánh đổi nhỏ về hiệu năng (và làm tăng kích thước tệp). Phù hợp với đồ họa tích hợp. *Có trong tất cả các renderer. Tuy nhiên, việc baking lightmap yêu cầu phần cứng hỗ trợ RenderingDevice.*
 
 - **VoxelGI:**
 
-  - The bake's number of subdivisions can be adjusted to balance between performance and quality.
-    The VoxelGI rendering quality can be adjusted in the Project Settings.
-    The rendering can optionally be performed at half resolution
-    (and then linearly scaled) to improve performance significantly.
-    **Not available** *when using the Mobile or Compatibility renderers.*
+  - Có thể điều chỉnh số lần subdivision khi baking để cân bằng giữa hiệu năng và chất lượng. Có thể điều chỉnh chất lượng kết xuất VoxelGI trong Project Settings. Có thể tùy chọn thực hiện kết xuất ở một nửa độ phân giải (sau đó scale tuyến tính) để cải thiện đáng kể hiệu năng. **Không khả dụng** *khi sử dụng renderer Mobile hoặc Compatibility.*
 
-- **Screen-space indirect lighting (SSIL):**
+- **Chiếu sáng gián tiếp trong không gian màn hình (SSIL):**
 
-  - The SSIL quality and number of blur passes can be adjusted in the Project Settings.
-    By default, SSIL rendering is performed at half resolution (and then linearly scaled)
-    to ensure a reasonable performance level.
-    **Not available** *when using the Mobile or Compatibility renderers.*
+  - Có thể điều chỉnh chất lượng SSIL và số lượt làm mờ trong Project Settings. Theo mặc định, việc kết xuất SSIL được thực hiện ở một nửa độ phân giải (sau đó được thu phóng tuyến tính) để đảm bảo hiệu năng ở mức hợp lý. **Không khả dụng** *khi sử dụng các renderer Mobile hoặc Compatibility.*
 
 - **SDFGI:**
 
-  - The number of cascades can be adjusted to balance performance and quality.
-    The number of rays thrown per frame can be adjusted in the Project Settings.
-    The rendering can optionally be performed at half resolution
-    (and then linearly scaled) to improve performance significantly.
-    **Not available** *when using the Mobile or Compatibility renderers.*
+  - Có thể điều chỉnh số cascade để cân bằng hiệu năng và chất lượng. Có thể điều chỉnh số tia được phát trong mỗi khung hình trong Project Settings. Có thể tùy chọn thực hiện việc kết xuất ở một nửa độ phân giải (sau đó được thu phóng tuyến tính) để cải thiện đáng kể hiệu năng. **Không khả dụng** *khi sử dụng các renderer Mobile hoặc Compatibility.*
 
-Visuals
-~~~~~~~
+Hình ảnh
+~~~~~~~~
 
-For comparison, here's a 3D scene with no global illumination options used:
+Để so sánh, dưới đây là một cảnh 3D không sử dụng tùy chọn global illumination nào:
 
 .. figure:: img/gi_none.webp
-   :alt: A 3D scene without any form of global illumination (only constant environment lighting). The box and sphere near the camera are both dynamic objects.
+   :alt: Một cảnh 3D không có bất kỳ dạng global illumination nào (chỉ có ánh sáng môi trường cố định). Hộp và hình cầu gần camera đều là các đối tượng động.
 
-   A 3D scene without any form of global illumination (only constant environment lighting). The box and sphere near the camera are both dynamic objects.
+   Một cảnh 3D không có bất kỳ dạng global illumination nào (chỉ có ánh sáng môi trường cố định). Hộp và hình cầu gần camera đều là các đối tượng động.
 
-Here's how Godot's various global illumination techniques compare:
+Dưới đây là so sánh giữa các kỹ thuật global illumination khác nhau của Godot:
 
-- **VoxelGI:** |average| Good reflections and indirect lighting, but beware of leaks.
+- **VoxelGI:** |average| Phản xạ và ánh sáng gián tiếp tốt, nhưng cần đề phòng hiện tượng rò sáng.
 
-  - Due to its voxel-based nature, VoxelGI will exhibit light leaks if walls and floors are too thin.
-    It's recommended to make sure all solid surfaces are at least as thick as one voxel.
+  - Do bản chất dựa trên voxel, VoxelGI sẽ xuất hiện hiện tượng rò rỉ ánh sáng nếu tường và sàn quá mỏng. Bạn nên đảm bảo tất cả các bề mặt đặc có độ dày ít nhất bằng một voxel.
 
-    Streaking artifacts may also be visible on sloped surfaces. In this case,
-    tweaking the bias properties or rotating the VoxelGI node can help combat
-    this.
+    Các hiện tượng nhiễu dạng vệt cũng có thể nhìn thấy trên các bề mặt nghiêng. Trong trường hợp này, điều chỉnh các thuộc tính bias hoặc xoay node VoxelGI có thể giúp khắc phục hiện tượng này.
 
     .. figure:: img/gi_voxel_gi.webp
-       :alt: VoxelGI in action.
+       :alt: VoxelGI đang hoạt động.
 
-       VoxelGI in action.
+       VoxelGI đang hoạt động.
 
-- **SDFGI:** |average| Good reflections and indirect lighting, but beware of leaks and visible cascade shifts.
+- **SDFGI:** |average| Phản xạ và ánh sáng gián tiếp tốt, nhưng cần đề phòng hiện tượng rò sáng và dịch chuyển cascade dễ thấy.
 
-  - GI level of detail varies depending on the distance
-    between the camera and surface.
+  - Mức độ chi tiết của GI thay đổi tùy theo khoảng cách giữa camera và bề mặt.
 
-    Leaks can be reduced significantly by enabling the **Use Occlusion**
-    property. This has a small performance cost, but it often results in fewer
-    leaks compared to VoxelGI.
+    Có thể giảm đáng kể hiện tượng rò rỉ bằng cách bật thuộc tính **Use Occlusion**. Tính năng này làm giảm nhẹ hiệu năng, nhưng thường cho ít rò rỉ hơn so với VoxelGI.
 
-    Cascade shifts may be visible when the camera moves fast. This can be made
-    less noticeable by adjusting the cascade sizes or using fog.
+    Có thể nhìn thấy hiện tượng dịch chuyển cascade khi camera di chuyển nhanh. Có thể làm cho hiện tượng này khó nhận thấy hơn bằng cách điều chỉnh kích thước cascade hoặc sử dụng sương mù.
 
     .. figure:: img/gi_sdfgi.webp
-       :alt: SDFGI in action.
+       :alt: SDFGI đang hoạt động.
 
-       SDFGI in action.
+       SDFGI đang hoạt động.
 
-- **Screen-space indirect lighting (SSIL):** |average| Good *secondary* source of indirect lighting, but no reflections.
+- **Chiếu sáng gián tiếp trong không gian màn hình (SSIL):** |average| Nguồn *thứ cấp* tốt cho ánh sáng gián tiếp, nhưng không có phản xạ.
 
-  - SSIL is designed to be used as a complement to another GI technique such as
-    VoxelGI, SDFGI or LightmapGI. SSIL works best for small-scale details, as it
-    cannot provide accurate indirect lighting for large structures on its own.
-    SSIL can provide real-time indirect lighting in situations where other GI
-    techniques fail to capture small-scale details or dynamic objects. Its
-    screen-space nature will result in some artifacts, especially when objects
-    enter and leave the screen. SSIL works using the last frame's color (before
-    post-processing) which means that emissive decals and custom shaders are
-    included (as long as they're present on screen).
+  - SSIL được thiết kế để sử dụng bổ trợ cho một kỹ thuật GI khác như VoxelGI, SDFGI hoặc LightmapGI. SSIL hoạt động tốt nhất với các chi tiết quy mô nhỏ, vì tự nó không thể cung cấp chiếu sáng gián tiếp chính xác cho các cấu trúc lớn. SSIL có thể cung cấp chiếu sáng gián tiếp theo thời gian thực trong những tình huống các kỹ thuật GI khác không thể thu nhận các chi tiết quy mô nhỏ hoặc các đối tượng động. Bản chất trong không gian màn hình của SSIL sẽ tạo ra một số hiện tượng nhiễu, đặc biệt khi các đối tượng đi vào hoặc rời khỏi màn hình. SSIL sử dụng màu của khung hình trước (trước bước hậu kỳ), điều đó có nghĩa là các decal phát sáng và shader tùy chỉnh cũng được tính đến (miễn là chúng xuất hiện trên màn hình).
 
     .. figure:: img/gi_ssil_only.webp
-       :alt: SSIL in action (without any other GI technique). Notice the emissive lighting around the yellow box.
+       :alt: SSIL đang hoạt động (không sử dụng kỹ thuật GI nào khác). Hãy chú ý đến ánh sáng phát ra xung quanh chiếc hộp màu vàng.
 
-       SSIL in action (without any other GI technique). Notice the emissive lighting around the yellow box.
+       SSIL đang hoạt động (không sử dụng kỹ thuật GI nào khác). Hãy chú ý đến ánh sáng phát ra xung quanh chiếc hộp màu vàng.
 
-- **LightmapGI:** |good| Excellent indirect lighting, decent reflections (optional).
+- **LightmapGI:** |good| Ánh sáng gián tiếp xuất sắc, phản xạ khá tốt (tùy chọn).
 
-  - This is the only technique where the number of light bounces
-    can be pushed above 2 (up to 16). When directional information
-    is enabled, spherical harmonics (SH) are used
-    to provide blurry reflections.
+  - Đây là kỹ thuật duy nhất cho phép tăng số lần ánh sáng dội lên trên 2 (tối đa 16). Khi bật thông tin định hướng, spherical harmonics (SH) được sử dụng để tạo ra phản chiếu mờ.
 
     .. figure:: img/gi_lightmap_gi_indirect_only.webp
-       :alt: LightmapGI in action. Only indirect lighting is baked here, but direct light can also be baked.
+       :alt: LightmapGI đang hoạt động. Ở đây chỉ có chiếu sáng gián tiếp được bake, nhưng ánh sáng trực tiếp cũng có thể được bake.
 
-       LightmapGI in action. Only indirect lighting is baked here, but direct light can also be baked.
+       LightmapGI đang hoạt động. Ở đây chỉ có chiếu sáng gián tiếp được bake, nhưng ánh sáng trực tiếp cũng có thể được bake.
 
-- **ReflectionProbe:** |average| Good reflections, but poor indirect lighting.
+- **ReflectionProbe:** |average| Phản xạ tốt, nhưng ánh sáng gián tiếp kém.
 
-  - Indirect lighting can be disabled, set to a constant color spread throughout
-    the probe, or automatically read from the probe's environment (and applied
-    as a cubemap). This essentially acts as local ambient lighting. Reflections
-    and indirect lighting are blended with other nearby probes.
+  - Có thể tắt chiếu sáng gián tiếp, đặt thành một màu cố định trải đều trong probe hoặc tự động đọc từ môi trường của probe (và áp dụng dưới dạng cubemap). Về cơ bản, tính năng này hoạt động như ánh sáng môi trường cục bộ. Phản chiếu và chiếu sáng gián tiếp được hòa trộn với các probe lân cận khác.
 
     .. figure:: img/gi_none_reflection_probe.webp
-       :alt: ReflectionProbe in action (without any other GI technique). Notice the reflective sphere.
+       :alt: ReflectionProbe đang hoạt động (không sử dụng kỹ thuật GI nào khác). Hãy chú ý đến hình cầu phản chiếu.
 
-       ReflectionProbe in action (without any other GI technique). Notice the reflective sphere.
+       ReflectionProbe đang hoạt động (không sử dụng kỹ thuật GI nào khác). Hãy chú ý đến hình cầu phản chiếu.
 
-Real-time ability
-~~~~~~~~~~~~~~~~~
+Khả năng hoạt động theo thời gian thực
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **VoxelGI:** |good| Fully real-time.
+- **VoxelGI:** |good| Hoàn toàn theo thời gian thực.
 
-  - Indirect lighting and reflections are fully real-time. Dynamic objects can
-    receive GI *and* contribute to it with their emissive surfaces. Custom
-    shaders can also emit their own light, which will be emitted accurately.
+  - Chiếu sáng gián tiếp và phản chiếu hoàn toàn theo thời gian thực. Các đối tượng động có thể nhận GI *và* đóng góp vào GI đó thông qua các bề mặt phát sáng của chúng. Shader tùy chỉnh cũng có thể phát ra ánh sáng riêng, và ánh sáng đó sẽ được phát ra một cách chính xác.
 
-    Viable for procedurally generated levels *if they are generated in advance*
-    (and not during gameplay). Baking requires several seconds or more to complete,
-    but it can be done from both the editor and an exported project.
+    Phù hợp với các level được tạo bằng quy trình *nếu chúng được tạo trước* (không phải trong khi chơi). Quá trình baking cần vài giây hoặc lâu hơn để hoàn tất, nhưng có thể được thực hiện từ cả editor lẫn project đã export.
 
-- **SDFGI:** |average| Semi-real-time.
+- **SDFGI:** |average| Bán thời gian thực.
 
-  - Cascades are generated in real-time, making SDFGI
-    viable for procedurally generated levels (including when structures are generated
-    during gameplay).
+  - Các cascade được tạo theo thời gian thực, khiến SDFGI phù hợp với các level được tạo bằng quy trình (bao gồm cả khi các cấu trúc được tạo trong khi chơi).
 
-    Dynamic objects can *receive* GI, but not *contribute* to it. Emissive lighting
-    will only update when an object enters a cascade, so it may still work for
-    slow-moving objects.
+    Các đối tượng động có thể *nhận* GI, nhưng không thể *đóng góp* vào GI đó. Ánh sáng phát ra chỉ được cập nhật khi một đối tượng đi vào cascade, vì vậy tính năng này vẫn có thể hoạt động với các đối tượng di chuyển chậm.
 
-- **Screen-space indirect lighting (SSIL):** |good| Fully real-time.
+- **Chiếu sáng gián tiếp trong không gian màn hình (SSIL):** |good| Hoàn toàn theo thời gian thực.
 
-  - SSIL works with both static and dynamic lights. It also works with both
-    static and dynamic occluders (including emissive materials).
+  - SSIL hoạt động với cả ánh sáng tĩnh và động. Tính năng này cũng hoạt động với cả các vật cản tĩnh và động (bao gồm vật liệu phát sáng).
 
-- **LightmapGI:** |bad| Baked, and therefore not real-time.
+- **LightmapGI:** |bad| Được bake, vì vậy không theo thời gian thực.
 
-  - Both indirect lighting and SH reflections are baked and can't be changed at
-    runtime. Real-time GI must be
-    :ref:`simulated via other means <doc_faking_global_illumination>`,
-    such as real-time positional lights. Dynamic objects receive indirect lighting
-    via light probes, which can be placed automatically or manually by the user
-    (LightmapProbe node). Not viable for procedurally generated levels,
-    as baking lightmaps is only possible from the editor.
+  - Cả chiếu sáng gián tiếp và phản chiếu SH đều được bake và không thể thay đổi trong runtime. GI theo thời gian thực phải được
+    :ref:`mô phỏng bằng các phương tiện khác <doc_faking_global_illumination>`, chẳng hạn như các đèn vị trí theo thời gian thực. Các đối tượng động nhận chiếu sáng gián tiếp thông qua light probe, có thể được người dùng đặt tự động hoặc thủ công (node LightmapProbe). Không phù hợp với các level được tạo bằng quy trình, vì lightmap chỉ có thể được bake từ editor.
 
-- **ReflectionProbe:** |average| Optionally real-time.
+- **ReflectionProbe:** |average| Có thể hoạt động theo thời gian thực tùy chọn.
 
-  - By default, reflections update when the probe is moved.
-    They update as often as possible if the update mode
-    is set to **Always** (which is expensive).
+  - Theo mặc định, phản chiếu được cập nhật khi probe được di chuyển. Phản chiếu được cập nhật thường xuyên nhất có thể nếu chế độ cập nhật được đặt thành **Always** (tốn nhiều tài nguyên).
 
-  - Indirect lighting must be configured manually by the user, but can be changed
-    at runtime without causing an expensive computation to happen behind the scenes.
-    This makes ReflectionProbes viable for procedurally generated levels.
+  - Chiếu sáng gián tiếp phải được người dùng cấu hình thủ công, nhưng có thể thay đổi trong runtime mà không gây ra phép tính tốn kém nào diễn ra ngầm. Điều này khiến ReflectionProbes phù hợp với các level được tạo theo thủ tục.
 
-User work needed
-~~~~~~~~~~~~~~~~
+Công việc cần thực hiện
+~~~~~~~~~~~~~~~~~~~~~~~
 
-- **VoxelGI:** One or more VoxelGI nodes need to be created and baked.
+- **VoxelGI:** Cần tạo và bake một hoặc nhiều node VoxelGI.
 
-  - Adjusting extents correctly is required to get good results. Additionally
-    rotating the node and baking again can help combat leaks or streaking
-    artifacts in certain situations. Bake times are fast – usually below
-    10 seconds for a scene of medium complexity.
+  - Cần điều chỉnh đúng phạm vi để đạt kết quả tốt. Ngoài ra, xoay node rồi bake lại có thể giúp khắc phục hiện tượng rò rỉ hoặc các lỗi sọc trong một số trường hợp. Thời gian bake nhanh – thường dưới 10 giây đối với một scene có độ phức tạp trung bình.
 
-- **SDFGI:** Very little.
+- **SDFGI:** Rất ít.
 
-  - SDFGI is fully automatic; it only needs to be enabled in the Environment resource.
-    The only manual work required is to set MeshInstances' bake mode property correctly.
-    No node needs to be created, and no baking is required.
+  - SDFGI hoàn toàn tự động; chỉ cần bật trong resource Environment. Công việc thủ công duy nhất cần thực hiện là đặt đúng thuộc tính bake mode của MeshInstances. Không cần tạo node và cũng không cần bake.
 
-- **Screen-space indirect lighting (SSIL):** Very little.
+- **Chiếu sáng gián tiếp trong không gian màn hình (SSIL):** Rất ít.
 
-  - SSIL is fully automatic; it only needs to be enabled in the Environment resource.
-    No node needs to be created, and no baking is required.
+  - SSIL hoàn toàn tự động; chỉ cần bật trong resource Environment. Không cần tạo node và cũng không cần bake.
 
-- **LightmapGI:** Requires UV2 setup and baking.
+- **LightmapGI:** Yêu cầu thiết lập UV2 và bake.
 
-  - Static meshes must be reimported with UV2 and lightmap generation enabled.
-    On a dedicated GPU, bake times are relatively fast thanks to the GPU-based
-    lightmap baking – usually below 1 minute for a scene of medium complexity.
+  - Các mesh tĩnh phải được reimport với UV2 và bật tính năng tạo lightmap. Trên GPU chuyên dụng, thời gian bake tương đối nhanh nhờ quá trình bake lightmap dựa trên GPU – thường dưới 1 phút đối với một scene có độ phức tạp trung bình.
 
-- **ReflectionProbe:** Placed manually by the user.
+- **ReflectionProbe:** Được người dùng đặt thủ công.
 
 .. |good| image:: img/score_good.webp
 
@@ -324,73 +201,42 @@ User work needed
 
 .. |bad| image:: img/score_bad.webp
 
-Summary
+Tóm tắt
 ~~~~~~~
 
-If you are unsure about which GI technique to use:
+Nếu bạn không chắc nên sử dụng kỹ thuật GI nào:
 
-- For desktop games, it's a good idea to start with :ref:`SDFGI <doc_using_sdfgi>`
-  first as it requires the least amount of setup. Move to other GI techniques
-  later if needed. To improve performance on low-end GPUs and integrated
-  graphics, consider adding an option to disable SDFGI or :ref:`VoxelGI
-  <doc_using_voxel_gi>` in your game's settings. SDFGI can be disabled in the
-  Environment resource, and VoxelGI can be disabled by hiding the VoxelGI
-  node(s). To further improve visuals on high-end setups, add an option to
-  enable SSIL in your game's settings.
-- For mobile games, :ref:`LightmapGI <doc_using_lightmap_gi>` and
-  :ref:`ReflectionProbes <doc_reflection_probes>` are the only supported options.
-  See also :ref:`doc_introduction_to_global_illumination_alternatives`.
+- Đối với game trên desktop, bạn nên bắt đầu với :ref:`SDFGI <doc_using_sdfgi>` vì kỹ thuật này yêu cầu ít thiết lập nhất. Sau đó, nếu cần, hãy chuyển sang các kỹ thuật GI khác. Để cải thiện hiệu năng trên GPU cấp thấp và đồ họa tích hợp, hãy cân nhắc thêm tùy chọn tắt SDFGI hoặc :ref:`VoxelGI <doc_using_voxel_gi>` trong phần cài đặt game. Có thể tắt SDFGI trong resource Environment, còn VoxelGI có thể được tắt bằng cách ẩn các node VoxelGI. Để tiếp tục cải thiện hình ảnh trên các hệ thống cao cấp, hãy thêm tùy chọn bật SSIL trong phần cài đặt game.
+- Đối với game trên thiết bị di động, :ref:`LightmapGI <doc_using_lightmap_gi>` và
+  :ref:`ReflectionProbes <doc_reflection_probes>` là những tùy chọn duy nhất được hỗ trợ. Xem thêm :ref:`doc_introduction_to_global_illumination_alternatives`.
 
 .. seealso::
 
-    You can compare global illumination techniques in action using the
-    `Global Illumination demo project <https://github.com/godotengine/godot-demo-projects/tree/master/3d/global_illumination>`__.
+    Bạn có thể so sánh các kỹ thuật chiếu sáng toàn cục đang hoạt động bằng cách sử dụng `dự án demo Global Illumination <https://github.com/godotengine/godot-demo-projects/tree/master/3d/global_illumination>`__.
 
 .. _doc_introduction_to_global_illumination_gi_mode_recommendations:
 
-Which global illumination mode should I use on meshes and lights?
+Tôi nên sử dụng chế độ chiếu sáng toàn cục nào cho mesh và light?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Regardless of which global illumination technique you use, there is no
-universally "better" global illumination mode. Still, here are some
-recommendations for meshes:
+Bất kể bạn sử dụng kỹ thuật chiếu sáng toàn cục nào, không có chế độ chiếu sáng toàn cục nào "tốt hơn" một cách tuyệt đối. Tuy vậy, sau đây là một số khuyến nghị cho mesh:
 
-- For static level geometry, use the **Static** global illumination mode *(default)*.
-- For small dynamic geometry and players/enemies, use the **Disabled** global
-  illumination mode. Small dynamic geometry will not be able to contribute a significant
-  amount of indirect lighting, due to the geometry being smaller than a voxel.
-  If you need indirect lighting for small dynamic objects, it can be simulated
-  using an OmniLight3D or SpotLight3D node parented to the object.
-- For *large* dynamic level geometry (such as a moving train), use the
-  **Dynamic** global illumination mode. Note that this only has an effect with
-  VoxelGI, as SDFGI and LightmapGI do not support global illumination with
-  dynamic objects.
+- Đối với hình học tĩnh của level, hãy sử dụng chế độ chiếu sáng toàn cục **Static** *(mặc định)*.
+- Đối với hình học động nhỏ và player/enemy, hãy sử dụng chế độ chiếu sáng toàn cục **Disabled**. Hình học động nhỏ sẽ không thể đóng góp một lượng chiếu sáng gián tiếp đáng kể vì hình học này nhỏ hơn một voxel. Nếu cần chiếu sáng gián tiếp cho các đối tượng động nhỏ, bạn có thể mô phỏng bằng node OmniLight3D hoặc SpotLight3D được làm node cha của đối tượng.
+- Đối với hình học động *lớn* của level (chẳng hạn như một đoàn tàu đang di chuyển), hãy sử dụng chế độ chiếu sáng toàn cục **Dynamic**. Lưu ý rằng chế độ này chỉ có tác dụng với VoxelGI, vì SDFGI và LightmapGI không hỗ trợ chiếu sáng toàn cục với các đối tượng động.
 
-Here are some recommendations for light bake modes:
+Sau đây là một số khuyến nghị cho các chế độ light bake:
 
-- For static level lighting, use the **Static** bake mode.
-  The **Static** mode is also suitable for dynamic lights that don't change
-  much during gameplay, such as a flickering torch.
-- For short-lived dynamic effects (such as a weapon), use the **Disabled**
-  bake mode to improve performance.
-- For long-lived dynamic effects (such as a rotating alarm light), use the
-  **Dynamic** bake mode to improve quality *(default)*. Note that this only has
-  an effect with VoxelGI and SDFGI, as LightmapGI does not support global
-  illumination with dynamic lights.
+- Đối với lighting tĩnh của level, hãy sử dụng bake mode **Static**. Chế độ **Static** cũng phù hợp với các light động không thay đổi nhiều trong quá trình chơi, chẳng hạn như một ngọn đuốc chập chờn.
+- Đối với các hiệu ứng động tồn tại trong thời gian ngắn (chẳng hạn như vũ khí), hãy sử dụng bake mode **Disabled** để cải thiện hiệu năng.
+- Đối với các hiệu ứng động tồn tại trong thời gian dài (chẳng hạn như đèn báo động xoay), hãy sử dụng bake mode **Dynamic** để cải thiện chất lượng *(mặc định)*. Lưu ý rằng chế độ này chỉ có tác dụng với VoxelGI và SDFGI, vì LightmapGI không hỗ trợ chiếu sáng toàn cục với các light động.
 
 .. _doc_introduction_to_global_illumination_alternatives:
 
-Alternatives to GI techniques
------------------------------
+Các phương án thay thế cho kỹ thuật GI
+--------------------------------------
 
-If none of the GI techniques mentioned above fits, it's still possible to
-:ref:`simulate GI by placing additional lights manually <doc_faking_global_illumination>`.
-This requires more manual work, but it can offer good performance *and* good
-visuals if done right. This approach is still used in many modern games to this
-day.
+Nếu không kỹ thuật GI nào được đề cập ở trên phù hợp, bạn vẫn có thể
+:ref:`mô phỏng GI bằng cách đặt thêm các light thủ công <doc_faking_global_illumination>`. Cách này đòi hỏi nhiều công việc thủ công hơn, nhưng có thể mang lại hiệu năng tốt *và* hình ảnh đẹp nếu được thực hiện đúng cách. Phương pháp này vẫn được sử dụng trong nhiều game hiện đại cho đến ngày nay.
 
-When targeting low-end hardware in situations where using LightmapGI is not
-viable (such as procedurally generated levels), relying on environment lighting
-alone or a constant ambient light factor may be a necessity. This may result in
-flatter visuals, but adjusting the ambient light color and sky contribution
-still makes it possible to achieve acceptable results in most cases.
+Khi nhắm đến phần cứng cấp thấp trong các trường hợp không thể sử dụng LightmapGI (chẳng hạn như các level được tạo theo thủ tục), việc chỉ dựa vào lighting của môi trường hoặc một hệ số light môi trường cố định có thể là điều cần thiết. Điều này có thể khiến hình ảnh phẳng hơn, nhưng việc điều chỉnh màu light môi trường và mức đóng góp của bầu trời vẫn giúp đạt được kết quả chấp nhận được trong hầu hết trường hợp.

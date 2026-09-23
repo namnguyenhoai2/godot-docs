@@ -1,103 +1,101 @@
 .. _doc_spring_arm:
 
-Third-person camera with spring arm
-===================================
+Camera góc nhìn người thứ ba với spring arm
+===========================================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-3D games will often have a third-person camera that follows and
-rotates around something such as a player character or a vehicle.
+Các game 3D thường có camera góc nhìn người thứ ba theo sau và xoay quanh một đối tượng như nhân vật người chơi hoặc phương tiện.
 
-In Godot, this can be done by setting a :ref:`Camera3D <class_Camera3D>` as a child of a node.
-However, if you try this without any extra steps, you'll notice that the camera clips through geometry and hides the scene.
+Trong Godot, bạn có thể thực hiện việc này bằng cách đặt một :ref:`Camera3D <class_Camera3D>` làm node con của một node. Tuy nhiên, nếu thử làm vậy mà không thực hiện thêm bước nào, bạn sẽ nhận thấy camera xuyên qua hình học và che khuất scene.
 
-This is where the :ref:`SpringArm3D <class_SpringArm3D>` node comes in.
+Đây là lúc node :ref:`SpringArm3D <class_SpringArm3D>` phát huy tác dụng.
 
-What is a spring arm?
----------------------
+Spring arm là gì?
+-----------------
 
-A spring arm has two main components that affect its behavior.
+Spring arm có hai thành phần chính ảnh hưởng đến hành vi của nó.
 
-The "length" of the spring arm is how far from its global position to check for collisions:
+"length" của spring arm là khoảng cách từ vị trí global của nó mà nó sẽ kiểm tra va chạm:
 
 .. image:: img/spring_arm_position_length.webp
 
-The "shape" of the spring arm is what it uses to check for collisions. The spring arm will "sweep" this shape from its origin out towards its length.
+"shape" của spring arm là hình dạng mà nó dùng để kiểm tra va chạm. Spring arm sẽ "quét" hình dạng này từ điểm gốc ra phía ngoài theo chiều dài của nó.
 
 .. image:: img/spring_arm_shape.webp
 
-The spring arm tries to keep all of its children at the end of its length. When the shape collides with something, the children are instead placed at or near that collision point:
+Spring arm cố gắng giữ tất cả node con của nó ở cuối chiều dài. Khi shape va chạm với một vật thể, các node con thay vào đó sẽ được đặt tại hoặc gần điểm va chạm đó:
 
 .. image:: img/spring_arm_children.webp
 
-Spring arm with a camera
-------------------------
+Spring arm với camera
+---------------------
 
-When a camera is placed as a child of a spring arm, a pyramid representing the camera will be used as the shape.
+Khi camera được đặt làm node con của spring arm, một hình chóp đại diện cho camera sẽ được dùng làm shape.
 
-This pyramid represents the **near plane** of the camera:
+Hình chóp này đại diện cho **mặt phẳng gần** của camera:
 
 .. image:: img/spring_arm_camera_shape.webp
 
-.. note:: If the spring arm is given a specific shape, then that shape will **always** be used.
+.. note:: Nếu spring arm được gán một shape cụ thể, shape đó sẽ **luôn luôn** được sử dụng.
 
-    The camera's shape is only used if the camera is a **direct child** of the spring arm.
+    Shape của camera chỉ được sử dụng nếu camera là **node con trực tiếp** của spring arm.
 
-    If no shape is provided and the camera is not a direct child, the spring arm will fall back to using a ray cast which is inaccurate for camera collisions and not recommended.
+    Nếu không cung cấp shape và camera không phải là node con trực tiếp, spring arm sẽ chuyển sang dùng ray cast, vốn không chính xác cho các va chạm với camera và không được khuyến nghị.
 
-Every physics process frame, the spring arm will perform a motion cast to check if anything is collided with:
+Trong mỗi frame của quy trình vật lý, spring arm sẽ thực hiện một motion cast để kiểm tra xem có vật thể nào bị va chạm hay không:
 
 .. image:: img/spring_arm_camera_motion_cast.webp
 
-When the shape hits something, the camera will be placed at or near the collision point:
+Khi shape va chạm với một vật thể, camera sẽ được đặt tại hoặc gần điểm va chạm đó:
 
 .. image:: img/spring_arm_camera_collision.webp
 
-Setting up the spring arm and camera
-------------------------------------
+Thiết lập spring arm và camera
+------------------------------
 
-Let's add a spring arm camera setup to the platformer demo.
+Hãy thêm thiết lập camera với spring arm vào bản demo platformer.
 
-.. note:: You can download the Platformer 3D demo on `GitHub <https://github.com/godotengine/godot-demo-projects/tree/master/3d/platformer>`_ or using the `Asset Library <https://godotengine.org/asset-library/asset/2748>`_.
+.. note:: Bạn có thể tải bản demo Platformer 3D trên `GitHub <https://github.com/godotengine/godot-demo-projects/tree/master/3d/platformer>`_ hoặc dùng `Asset Library <https://godotengine.org/asset-library/asset/2748>`_.
 
-In general, for a third-person camera setup, you will have three nodes as children of the node that you're following:
+Nhìn chung, đối với thiết lập camera góc nhìn người thứ ba, bạn sẽ có ba node là node con của node mà camera đang theo dõi:
 
-- `Node3D` (the "pivot point" for the camera)
+- `Node3D` ("điểm xoay" của camera)
 
     - `SpringArm3D`
 
         - `Camera3D`
 
-Open the ``player/player.tscn`` scene. Set these up as children of our player and give them unique names so we can find them in our script. **Make sure to delete the existing camera node!**
+Mở scene ``player/player.tscn``. Thiết lập chúng làm node con của player và đặt tên riêng cho chúng để chúng ta có thể tìm thấy chúng trong script. **Hãy nhớ xóa node camera hiện có!**
 
 .. image:: img/spring_arm_editor_setup.webp
 
-Let's move the pivot point up by ``2`` on the Y-axis so that it's not on the ground:
+Hãy di chuyển điểm xoay lên ``2`` trên trục Y để nó không nằm trên mặt đất:
 
 .. image:: img/spring_arm_pivot_setup.webp
 
 
-Give the spring arm a length of ``3`` so that it is placed behind the character:
+Đặt chiều dài của spring arm là ``3`` để nó được đặt phía sau nhân vật:
 
 .. image:: img/spring_arm_length_setup.webp
 
-.. note:: Leave the **Shape** of the spring arm as ``<empty>``. This way, it will use the camera's pyramid shape.
+.. note:: Để **Shape** của spring arm ở trạng thái ``<empty>``. Nhờ vậy, nó sẽ sử dụng hình chóp của camera.
 
-    If you want, you can also try other shapes - a sphere is a common choice since it slides smoothly along edges.
+    Nếu muốn, bạn cũng có thể thử các shape khác - sphere là lựa chọn phổ biến vì nó trượt mượt dọc theo các cạnh.
 
-Update the top of ``player/player.gd`` to grab the camera and the pivot points by their unique names:
+Cập nhật phần đầu của ``player/player.gd`` để lấy camera và các điểm xoay theo tên riêng của chúng:
 
 .. code-block:: gdscript
     :caption: player/player.gd
 
-    # Comment out this existing camera line.
+    # Vô hiệu hóa dòng camera hiện có này bằng cách thêm dấu chú thích.
     # @onready var _camera := $Target/Camera3D as Camera3D
 
     @onready var _camera := %Camera3D as Camera3D
     @onready var _camera_pivot := %CameraPivot as Node3D
 
-Add an ``_unhandled_input`` function to check for camera movement and then rotate the pivot point accordingly:
+Thêm một hàm ``_unhandled_input`` để kiểm tra chuyển động của camera, sau đó xoay điểm xoay tương ứng:
 
 .. code-block:: gdscript
     :caption: player/player.gd
@@ -107,15 +105,14 @@ Add an ``_unhandled_input`` function to check for camera movement and then rotat
 
 
     func _unhandled_input(event: InputEvent) -> void:
-        # Mouselook implemented using `screen_relative` for resolution-independent sensitivity.
+        # Triển khai Mouselook bằng `screen_relative` để có độ nhạy độc lập với độ phân giải.
         if event is InputEventMouseMotion:
             _camera_pivot.rotation.x -= event.screen_relative.y * mouse_sensitivity
-            # Prevent the camera from rotating too far up or down.
+            # Ngăn camera xoay quá xa lên trên hoặc xuống dưới.
             _camera_pivot.rotation.x = clampf(_camera_pivot.rotation.x, -tilt_limit, tilt_limit)
             _camera_pivot.rotation.y += -event.screen_relative.x * mouse_sensitivity
 
-By rotating the pivot point, the spring arm will also be rotated and it will change where the camera is positioned.
-Run the game and notice that mouse movement now rotates the camera around the character. If the camera moves into a wall, it collides with it.
+Bằng cách xoay điểm xoay, spring arm cũng sẽ được xoay và vị trí của camera sẽ thay đổi. Chạy game và nhận thấy rằng chuyển động của chuột giờ đây xoay camera quanh nhân vật. Nếu camera di chuyển vào tường, nó sẽ va chạm với tường.
 
 .. video:: video/spring_arm_camera.webm
    :alt: Camera attached to a spring arm colliding with walls
@@ -123,3 +120,6 @@ Run the game and notice that mouse movement now rotates the camera around the ch
    :loop:
    :muted:
    :align: default
+
+.. _`GitHub`: https://github.com/godotengine/godot-demo-projects/tree/master/3d/platformer
+.. _`Asset Library`: https://godotengine.org/asset-library/asset/2748

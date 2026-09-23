@@ -1,216 +1,209 @@
 .. _doc_using_transforms:
 
-Using 3D transforms
-~~~~~~~~~~~~~~~~~~~
+Sử dụng phép biến đổi 3D
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-Introduction
-------------
+Giới thiệu
+----------
 
-If you have never made 3D games before, working with rotations in three dimensions can be confusing at first.
-Coming from 2D, the natural way of thinking is along the lines of *"Oh, it's just like rotating in 2D, except now rotations happen in X, Y and Z"*.
+Nếu bạn chưa từng làm game 3D, việc xử lý phép quay trong không gian ba chiều lúc đầu có thể khá khó hiểu. Nếu xuất phát từ 2D, cách suy nghĩ tự nhiên sẽ là *"Ồ, nó cũng giống như xoay trong 2D thôi, chỉ khác là giờ phép quay diễn ra trên các trục X, Y và Z"*.
 
-At first, this seems easy. For simple games, this way of thinking may even be enough. Unfortunately, it's often incorrect.
+Thoạt đầu, cách này có vẻ dễ hiểu. Với các game đơn giản, cách suy nghĩ này thậm chí có thể là đủ. Đáng tiếc là nó thường không đúng.
 
-Angles in three dimensions are most commonly referred to as "Euler Angles".
+Góc trong không gian ba chiều thường được gọi là "Euler Angles".
 
 .. image:: img/transforms_euler.webp
 
-Euler angles were introduced by mathematician Leonhard Euler in the early 1700s.
+Euler angles được nhà toán học Leonhard Euler giới thiệu vào đầu những năm 1700.
 
 .. image:: img/transforms_euler_himself.png
 
-This way of representing 3D rotations was groundbreaking at the time, but it has several shortcomings when used in game development (which is to be expected from a guy with a funny
-hat).
-The idea of this document is to explain why, as well as outlining best practices for dealing with transforms when programming 3D games.
+Cách biểu diễn phép quay 3D này từng mang tính đột phá vào thời điểm đó, nhưng có một số hạn chế khi được sử dụng trong phát triển game (điều này cũng dễ hiểu ở một người đội chiếc mũ ngộ nghĩnh). Tài liệu này nhằm giải thích lý do, đồng thời trình bày các phương pháp tốt nhất để xử lý các phép biến đổi khi lập trình game 3D.
 
 
-Problems of Euler angles
-------------------------
+Các vấn đề của Euler angles
+---------------------------
 
-While it may seem intuitive that each axis has a rotation, the truth is that it's just not practical.
+Mặc dù việc mỗi trục có một phép quay riêng có vẻ trực quan, sự thật là cách này không thực tế.
 
-Axis order
-==========
+Thứ tự trục
+===========
 
-The main reason for this is that there isn't a *unique* way to construct an orientation from the angles. There isn't a standard mathematical function that
-takes all the angles together and produces an actual 3D rotation. The only way an orientation can be produced from angles is to rotate the object angle
-by angle, in an *arbitrary order*.
+Lý do chính là không có một cách *duy nhất* để xây dựng một hướng từ các góc. Không có hàm toán học tiêu chuẩn nào nhận tất cả các góc cùng lúc và tạo ra một phép quay 3D thực sự. Cách duy nhất để tạo ra một hướng từ các góc là xoay đối tượng theo từng góc, theo một *thứ tự tùy ý*.
 
-This could be done by first rotating in *X*, then *Y* and then in *Z*. Alternatively, you could first rotate in *Y*, then in *Z* and finally in *X*. Anything works,
-but depending on the order, the final orientation of the object will *not necessarily be the same*. Indeed, this means that there are several ways to construct an orientation
-from 3 different angles, depending on *the order of the rotations*.
+Có thể thực hiện việc này bằng cách xoay trước theo *X*, sau đó theo *Y* và cuối cùng theo *Z*. Ngoài ra, bạn có thể xoay trước theo *Y*, sau đó theo *Z* và cuối cùng theo *X*. Cách nào cũng được, nhưng tùy theo thứ tự, hướng cuối cùng của đối tượng *không nhất thiết giống nhau*. Điều này có nghĩa là có nhiều cách để xây dựng một hướng từ 3 góc khác nhau, tùy thuộc vào *thứ tự các phép quay*.
 
-Following is a visualization of rotation axes (in X, Y, Z order) in a gimbal (from Wikipedia). As you can see, the orientation of each axis depends on the rotation of the previous one:
+Dưới đây là hình minh họa các trục quay (theo thứ tự X, Y, Z) trong một gimbal (từ Wikipedia). Như bạn có thể thấy, hướng của mỗi trục phụ thuộc vào phép quay của trục trước đó:
 
 .. image:: img/transforms_gimbal.gif
 
-You may be wondering how this affects you. Let's look at a practical example:
+Bạn có thể đang thắc mắc điều này ảnh hưởng đến mình như thế nào. Hãy xem một ví dụ thực tế:
 
-Imagine you are working on a first-person controller (e.g. an FPS game). Moving the mouse left and right controls your view angle parallel to the ground, while moving it up and down moves the player's view up and down.
+Hãy tưởng tượng bạn đang làm một first-person controller (ví dụ: game FPS). Di chuyển chuột sang trái và phải sẽ điều khiển góc nhìn song song với mặt đất, còn di chuyển chuột lên và xuống sẽ di chuyển góc nhìn của người chơi lên và xuống.
 
-In this case to achieve the desired effect, rotation must be applied first in the *Y* axis ("up" in this case, since Godot uses a "Y-Up" orientation), followed by rotation in the *X* axis.
+Trong trường hợp này, để đạt được hiệu ứng mong muốn, trước tiên phải áp dụng phép quay trên trục *Y* (trong trường hợp này là "lên", vì Godot sử dụng hướng "Y-Up"), sau đó áp dụng phép quay trên trục *X*.
 
 .. image:: img/transforms_rotate1.gif
 
-If we were to apply rotation in the *X* axis first, and then in *Y*, the effect would be undesired:
+Nếu áp dụng phép quay trên trục *X* trước, rồi trên *Y*, hiệu ứng sẽ không như mong muốn:
 
 .. image:: img/transforms_rotate2.gif
 
-Depending on the type of game or effect desired, the order in which you want axis rotations to be applied may differ. Therefore, applying rotations in X, Y, and Z is not enough: you also need a *rotation order*.
+Tùy thuộc vào loại game hoặc hiệu ứng mong muốn, thứ tự áp dụng các phép quay theo trục có thể khác nhau. Vì vậy, chỉ áp dụng phép quay theo X, Y và Z là chưa đủ: bạn còn cần một *thứ tự quay*.
 
-Interpolation
-=============
+Nội suy
+=======
 
-Another problem with using Euler angles is interpolation. Imagine you want to transition between two different camera or enemy positions (including rotations). One logical way to approach this is to interpolate the angles from one position to the next. One would expect it to look like this:
+Một vấn đề khác khi sử dụng Euler angles là nội suy. Hãy tưởng tượng bạn muốn chuyển đổi giữa hai vị trí khác nhau của camera hoặc kẻ địch (bao gồm cả phép quay). Một cách tiếp cận hợp lý là nội suy các góc từ vị trí này sang vị trí kia. Ta sẽ mong đợi kết quả trông như sau:
 
 .. image:: img/transforms_interpolate1.gif
 
-But this does not always have the expected effect when using angles:
+Nhưng khi sử dụng các góc, kết quả không phải lúc nào cũng như mong đợi:
 
 .. image:: img/transforms_interpolate2.gif
 
-The camera actually rotated the opposite direction!
+Thực tế camera đã xoay theo hướng ngược lại!
 
-There are a few reasons this may happen:
+Có một vài lý do khiến điều này xảy ra:
 
-* Rotations don't map linearly to orientation, so interpolating them does not always result in the shortest path (i.e., to go from ``270`` to ``0`` degrees is not the same as going from ``270`` to ``360``, even though the angles are equivalent).
-* Gimbal lock is at play (first and last rotated axis align, so a degree of freedom is lost). See `Wikipedia's page on Gimbal Lock <https://en.wikipedia.org/wiki/Gimbal_lock>`_ for a detailed explanation of this problem.
+* Các phép quay không ánh xạ tuyến tính với hướng, vì vậy nội suy chúng không phải lúc nào cũng tạo ra đường đi ngắn nhất (tức là đi từ ``270`` đến ``0`` độ không giống với đi từ ``270`` đến ``360``, mặc dù các góc là tương đương).
+* Gimbal lock đang xảy ra (trục được xoay đầu tiên và cuối cùng thẳng hàng, khiến mất một bậc tự do). Xem `trang Wikipedia về Gimbal Lock <https://en.wikipedia.org/wiki/Gimbal_lock>`_ để biết giải thích chi tiết về vấn đề này.
 
-Say no to Euler angles
-======================
+Nói không với Euler angles
+==========================
 
-The result of all this is that you should **not use** the ``rotation`` property of :ref:`class_Node3D` nodes in Godot for games. It's there to be used mainly in the editor, for coherence with the 2D engine, and for simple rotations (generally just one axis, or even two in limited cases). As much as you may be tempted, don't use it.
+Kết luận là bạn **không nên sử dụng** thuộc tính ``rotation`` của các node :ref:`class_Node3D` trong Godot cho game. Thuộc tính này chủ yếu được dùng trong editor, để nhất quán với engine 2D, và cho các phép quay đơn giản (thường chỉ trên một trục, hoặc trong một số trường hợp hạn chế là hai trục). Dù có thể bạn rất muốn sử dụng, đừng dùng nó.
 
-Instead, there is a better way to solve your rotation problems.
+Thay vào đó, có một cách tốt hơn để giải quyết các vấn đề về phép quay.
 
-Introducing transforms
-----------------------
+Giới thiệu về các phép biến đổi
+-------------------------------
 
-Godot uses the :ref:`class_Transform3D` datatype for orientations. Each :ref:`class_Node3D` node contains a ``transform`` property which is relative to the parent's transform, if the parent is a Node3D-derived type.
+Godot sử dụng kiểu dữ liệu :ref:`class_Transform3D` cho các hướng. Mỗi node :ref:`class_Node3D` chứa một thuộc tính ``transform`` tương đối so với phép biến đổi của node cha, nếu node cha thuộc kiểu dẫn xuất từ Node3D.
 
-It is also possible to access the world coordinate transform via the ``global_transform`` property.
+Bạn cũng có thể truy cập phép biến đổi tọa độ thế giới thông qua thuộc tính ``global_transform``.
 
-A transform has a :ref:`class_Basis` (transform.basis sub-property), which consists of three :ref:`class_Vector3` vectors. These are accessed via the ``transform.basis`` property and can be accessed directly by ``transform.basis.x``, ``transform.basis.y``, and ``transform.basis.z``. Each vector points in the direction its axis has been rotated, so they effectively describe the node's total rotation. The scale (as long as it's uniform) can also be inferred from the length of the axes. A *basis* can also be interpreted as a 3x3 matrix and used as ``transform.basis[x][y]``.
+Một phép biến đổi có một :ref:`class_Basis` (thuộc tính con transform.basis), bao gồm ba vector :ref:`class_Vector3`. Bạn truy cập các vector này thông qua thuộc tính ``transform.basis`` và có thể truy cập trực tiếp bằng ``transform.basis.x``, ``transform.basis.y`` và ``transform.basis.z``. Mỗi vector chỉ theo hướng mà trục tương ứng đã xoay, vì vậy chúng mô tả hiệu quả toàn bộ phép quay của node. Scale (miễn là đồng nhất) cũng có thể được suy ra từ độ dài của các trục. Một *basis* cũng có thể được diễn giải như một ma trận 3x3 và được sử dụng như ``transform.basis[x][y]``.
 
-A default basis (unmodified) is akin to:
+Một basis mặc định (chưa chỉnh sửa) tương đương với:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     var basis = Basis()
-    # Contains the following default values:
-    basis.x = Vector3(1, 0, 0) # Vector pointing along the X axis
-    basis.y = Vector3(0, 1, 0) # Vector pointing along the Y axis
-    basis.z = Vector3(0, 0, 1) # Vector pointing along the Z axis
+    # Chứa các giá trị mặc định sau:
+    basis.x = Vector3(1, 0, 0) # Vector hướng dọc theo trục X
+    basis.y = Vector3(0, 1, 0) # Vector hướng dọc theo trục Y
+    basis.z = Vector3(0, 0, 1) # Vector hướng dọc theo trục Z
 
  .. code-tab:: csharp
 
-    // Due to technical limitations on structs in C# the default
-    // constructor will contain zero values for all fields.
+    // Do các giới hạn kỹ thuật đối với struct trong C#, constructor mặc định
+    // sẽ chứa giá trị 0 cho tất cả các trường.
     var defaultBasis = new Basis();
-    GD.Print(defaultBasis); // prints: ((0, 0, 0), (0, 0, 0), (0, 0, 0))
+    GD.Print(defaultBasis); // in ra: ((0, 0, 0), (0, 0, 0), (0, 0, 0))
 
-    // Instead we can use the Identity property.
+    // Thay vào đó, chúng ta có thể sử dụng thuộc tính Identity.
     var identityBasis = Basis.Identity;
-    GD.Print(identityBasis.X); // prints: (1, 0, 0)
-    GD.Print(identityBasis.Y); // prints: (0, 1, 0)
-    GD.Print(identityBasis.Z); // prints: (0, 0, 1)
+    GD.Print(identityBasis.X); // in ra: (1, 0, 0)
+    GD.Print(identityBasis.Y); // in ra: (0, 1, 0)
+    GD.Print(identityBasis.Z); // in ra: (0, 0, 1)
 
-    // The Identity basis is equivalent to:
+    // Cơ sở Identity tương đương với:
     var basis = new Basis(Vector3.Right, Vector3.Up, Vector3.Back);
-    GD.Print(basis); // prints: ((1, 0, 0), (0, 1, 0), (0, 0, 1))
+    GD.Print(basis); // in ra: ((1, 0, 0), (0, 1, 0), (0, 0, 1))
 
-This is also an analog of a 3x3 identity matrix.
+Đây cũng là một dạng tương tự của ma trận identity 3x3.
 
-Following the OpenGL convention, ``X`` is the *Right* axis, ``Y`` is the *Up* axis and ``Z`` is the *Forward* axis.
+Theo quy ước của OpenGL, ``X`` là trục *Right*, ``Y`` là trục *Up* và ``Z`` là trục *Forward*.
 
-Together with the *basis*, a transform also has an *origin*. This is a *Vector3* specifying how far away from the actual origin ``(0, 0, 0)`` this transform is. Combining the *basis* with the *origin*, a *transform* efficiently represents a unique translation, rotation, and scale in space.
+Cùng với *basis*, một transform cũng có *origin*. Đây là một *Vector3* xác định khoảng cách từ origin thực tế ``(0, 0, 0)`` đến transform này. Kết hợp *basis* với *origin*, một *transform* biểu diễn hiệu quả một phép tịnh tiến, xoay và scale duy nhất trong không gian.
 
 .. image:: img/transforms_camera.png
 
 
-One way to visualize a transform is to look at an object's 3D gizmo while in "local space" mode.
+Một cách để hình dung transform là xem gizmo 3D của một đối tượng khi đang ở chế độ "local space".
 
 .. image:: img/transforms_local_space.png
 
-The gizmo's arrows show the ``X``, ``Y``, and ``Z`` axes (in red, green, and blue respectively) of the basis, while the gizmo's center is at the object's origin.
+Các mũi tên của gizmo hiển thị các trục ``X``, ``Y`` và ``Z`` (lần lượt có màu đỏ, xanh lá và xanh dương) của basis, còn tâm của gizmo nằm tại origin của đối tượng.
 
 .. image:: img/transforms_gizmo.png
 
-For more information on the mathematics of vectors and transforms, please read the :ref:`doc_vector_math` tutorials.
+Để biết thêm thông tin về toán học của vector và transform, hãy đọc các :ref:`doc_vector_math` tutorial.
 
-Manipulating transforms
-=======================
+Thao tác với transform
+======================
 
-Of course, transforms are not as straightforward to manipulate as angles and have problems of their own.
+Tất nhiên, transform không dễ thao tác như angle và cũng có những vấn đề riêng.
 
-It is possible to rotate a transform, either by multiplying its basis by another (this is called accumulation), or by using the rotation methods.
+Có thể xoay một transform bằng cách nhân basis của nó với một basis khác (gọi là tích lũy), hoặc bằng cách sử dụng các phương thức xoay.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    var axis = Vector3(1, 0, 0) # Or Vector3.RIGHT
+    var axis = Vector3(1, 0, 0) # Hoặc Vector3.RIGHT
     var rotation_amount = 0.1
-    # Rotate the transform around the X axis by 0.1 radians.
+    # Xoay transform quanh trục X một góc 0.1 radian.
     transform.basis = Basis(axis, rotation_amount) * transform.basis
-    # shortened
+    # đã rút gọn
     transform.basis = transform.basis.rotated(axis, rotation_amount)
 
  .. code-tab:: csharp
 
     Transform3D transform = Transform;
-    Vector3 axis = new Vector3(1, 0, 0); // Or Vector3.Right
+    Vector3 axis = new Vector3(1, 0, 0); // Hoặc Vector3.Right
     float rotationAmount = 0.1f;
 
-    // Rotate the transform around the X axis by 0.1 radians.
+    // Xoay transform quanh trục X một góc 0.1 radian.
     transform.Basis = new Basis(axis, rotationAmount) * transform.Basis;
-    // shortened
+    // đã rút gọn
     transform.Basis = transform.Basis.Rotated(axis, rotationAmount);
 
     Transform = transform;
 
-A method in Node3D simplifies this:
+Một phương thức trong Node3D giúp đơn giản hóa việc này:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Rotate the transform around the X axis by 0.1 radians.
+    # Xoay transform quanh trục X một góc 0.1 radian.
     rotate(Vector3(1, 0, 0), 0.1)
-    # shortened
+    # đã rút gọn
     rotate_x(0.1)
 
  .. code-tab:: csharp
 
-    // Rotate the transform around the X axis by 0.1 radians.
+    // Xoay transform quanh trục X một góc 0.1 radian.
     Rotate(new Vector3(1, 0, 0), 0.1f);
-    // shortened
+    // đã rút gọn
     RotateX(0.1f);
 
-This rotates the node relative to the parent node.
+Thao tác này xoay node tương đối so với node cha.
 
-To rotate relative to object space (the node's own transform), use the following:
+Để xoay tương đối so với object space (transform riêng của node), hãy sử dụng như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Rotate around the object's local X axis by 0.1 radians.
+    # Xoay quanh trục X cục bộ của đối tượng một góc 0.1 radian.
     rotate_object_local(Vector3(1, 0, 0), 0.1)
 
  .. code-tab:: csharp
 
-    // Rotate around the object's local X axis by 0.1 radians.
+    // Xoay quanh trục X cục bộ của đối tượng một góc 0.1 radian.
     RotateObjectLocal(new Vector3(1, 0, 0), 0.1f);
 
-The axis should be defined in the local coordinate system of the object. For example, to rotate around the object's local X, Y, or Z axes, use ``Vector3.RIGHT`` for the X-axis, ``Vector3.UP`` for the Y-axis, and ``Vector3.FORWARD`` for the Z-axis.
+Trục phải được xác định trong hệ tọa độ cục bộ của đối tượng. Ví dụ, để xoay quanh trục X, Y hoặc Z cục bộ của đối tượng, hãy sử dụng ``Vector3.RIGHT`` cho trục X, ``Vector3.UP`` cho trục Y và ``Vector3.FORWARD`` cho trục Z.
 
-Precision errors
+Lỗi độ chính xác
 ================
 
-Doing successive operations on transforms will result in a loss of precision due to floating-point error. This means the scale of each axis may no longer be exactly ``1.0``, and they may not be exactly ``90`` degrees from each other.
+Thực hiện các thao tác liên tiếp trên transform sẽ làm giảm độ chính xác do lỗi số thực dấu phẩy động. Điều này có nghĩa là scale của mỗi trục có thể không còn chính xác là ``1.0``, và chúng có thể không còn cách nhau chính xác ``90`` độ.
 
-If a transform is rotated every frame, it will eventually start deforming over time. This is unavoidable.
+Nếu một transform được xoay ở mỗi frame, theo thời gian nó sẽ dần bị biến dạng. Điều này không thể tránh khỏi.
 
-There are two different ways to handle this. The first is to *orthonormalize* the transform after some time (maybe once per frame if you modify it every frame):
+Có hai cách khác nhau để xử lý việc này. Cách đầu tiên là *orthonormalize* transform sau một khoảng thời gian (có thể là một lần mỗi frame nếu bạn sửa đổi nó ở mỗi frame):
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -221,9 +214,9 @@ There are two different ways to handle this. The first is to *orthonormalize* th
 
     transform = transform.Orthonormalized();
 
-This will make all axes have ``1.0`` length again and be ``90`` degrees from each other. However, any scale applied to the transform will be lost.
+Thao tác này sẽ đưa tất cả các trục về độ dài ``1.0`` và cách nhau ``90`` độ. Tuy nhiên, mọi scale được áp dụng cho transform sẽ bị mất.
 
-It is recommended you not scale nodes that are going to be manipulated; scale their children nodes instead (such as MeshInstance3D). If you absolutely must scale the node, then re-apply it at the end:
+Bạn nên tránh scale các node sẽ được thao tác; thay vào đó, hãy scale các node con của chúng (chẳng hạn như MeshInstance3D). Nếu nhất thiết phải scale node, hãy áp dụng lại scale đó ở cuối:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -236,57 +229,57 @@ It is recommended you not scale nodes that are going to be manipulated; scale th
     transform = transform.Orthonormalized();
     transform = transform.Scaled(scale);
 
-Obtaining information
-=====================
+Lấy thông tin
+=============
 
-You might be thinking at this point: **"Ok, but how do I get angles from a transform?"**. The answer again is: you don't. You must do your best to stop thinking in angles.
+Có thể lúc này bạn đang nghĩ: **"Được rồi, nhưng làm thế nào để lấy angle từ một transform?"**. Câu trả lời một lần nữa là: không thể. Bạn phải cố gắng không suy nghĩ theo angle nữa.
 
-Imagine you need to shoot a bullet in the direction your player is facing. Just use the forward axis.
+Hãy tưởng tượng bạn cần bắn một viên đạn theo hướng mà người chơi đang nhìn. Chỉ cần sử dụng trục forward.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # On RigidBody3D.
+    # Trên RigidBody3D.
 
-    # Keep in mind that -Z is forward.
+    # Hãy nhớ rằng -Z là hướng forward.
     bullet.transform = transform
     bullet.linear_velocity = -transform.basis.z * BULLET_SPEED
 
  .. code-tab:: csharp
 
-    // On RigidBody3D.
+    // Trên RigidBody3D.
 
-    // Keep in mind that -Z is forward.
+    // Hãy nhớ rằng -Z là hướng forward.
     bullet.Transform = Transform;
     bullet.LinearVelocity = -Transform.Basis.Z * BulletSpeed;
 
-Is the enemy looking at the player? Use the dot product for this (see the :ref:`doc_vector_math` tutorial for an explanation of the dot product):
+Kẻ địch có đang nhìn người chơi không? Hãy sử dụng tích vô hướng cho việc này (xem :ref:`doc_vector_math` tutorial để biết giải thích về tích vô hướng):
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Get the direction vector from player to enemy
+    # Lấy vector hướng từ người chơi đến kẻ địch
     var direction = enemy.transform.origin - player.transform.origin
     if direction.dot(enemy.transform.basis.z) > 0:
         enemy.im_watching_you(player)
 
  .. code-tab:: csharp
 
-    // Get the direction vector from player to enemy
+    // Lấy vector hướng từ người chơi đến kẻ địch
     Vector3 direction = enemy.Transform.Origin - player.Transform.Origin;
     if (direction.Dot(enemy.Transform.Basis.Z) > 0)
     {
         enemy.ImWatchingYou(player);
     }
 
-Strafe left:
+Di chuyển ngang sang trái:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # On CharacterBody3D.
+    # Trên CharacterBody3D.
 
-    # Keep in mind that -X is left.
+    # Hãy nhớ rằng -X là bên trái.
     if Input.is_action_pressed("strafe_left"):
         velocity = -transform.basis.x * MOVE_SPEED
 
@@ -294,9 +287,9 @@ Strafe left:
 
  .. code-tab:: csharp
 
-    // On CharacterBody3D.
+    // Trên CharacterBody3D.
 
-    // Keep in mind that -X is left.
+    // Hãy nhớ rằng -X là bên trái.
     if (Input.IsActionPressed("strafe_left"))
     {
         Velocity = -Transform.Basis.X * MoveSpeed;
@@ -304,14 +297,14 @@ Strafe left:
 
     MoveAndSlide();
 
-Jump:
+Nhảy:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # On CharacterBody3D.
+    # Trên CharacterBody3D.
 
-    # Keep in mind that +Y is up.
+    # Hãy nhớ rằng +Y là hướng lên.
     if Input.is_action_just_pressed("jump"):
         velocity.y = JUMP_SPEED
 
@@ -319,9 +312,9 @@ Jump:
 
  .. code-tab:: csharp
 
-    // On CharacterBody3D.
+    // Trên CharacterBody3D.
 
-    // Keep in mind that +Y is up.
+    // Hãy nhớ rằng +Y là hướng lên.
     if (Input.IsActionJustPressed("jump"))
     {
         Velocity = Vector3.Up * JumpSpeed;
@@ -329,36 +322,36 @@ Jump:
 
     MoveAndSlide();
 
-All common behaviors and logic can be done with just vectors.
+Mọi hành vi và logic phổ biến đều có thể được thực hiện chỉ bằng vector.
 
-Setting information
+Thiết lập thông tin
 ===================
 
-There are, of course, cases where you want to set information to a transform. Imagine a first person controller or orbiting camera. Those are definitely done using angles, because you *do want* the transforms to happen in a specific order.
+Tất nhiên, có những trường hợp bạn muốn thiết lập thông tin cho một transform. Hãy hình dung một bộ điều khiển góc nhìn thứ nhất hoặc camera orbit. Những trường hợp này chắc chắn được thực hiện bằng các góc, vì bạn *thực sự muốn* các transform diễn ra theo một thứ tự cụ thể.
 
-For such cases, keep the angles and rotations *outside* the transform and set them every frame. Don't try to retrieve and reuse them because the transform is not meant to be used this way.
+Trong những trường hợp như vậy, hãy giữ các góc và rotation *bên ngoài* transform rồi thiết lập chúng ở mỗi frame. Đừng cố lấy lại và tái sử dụng chúng, vì transform không được thiết kế để dùng theo cách này.
 
-Example of looking around, FPS style:
+Ví dụ về việc nhìn xung quanh theo kiểu FPS:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # accumulators
+    # các biến tích lũy
     var rot_x = 0
     var rot_y = 0
 
     func _input(event):
         if event is InputEventMouseMotion and event.button_mask & 1:
-            # modify accumulated mouse rotation
+            # thay đổi rotation của chuột đã tích lũy
             rot_x -= event.screen_relative.x * LOOKAROUND_SPEED
             rot_y -= event.screen_relative.y * LOOKAROUND_SPEED
-            transform.basis = Basis() # reset rotation
-            rotate_object_local(Vector3(0, 1, 0), rot_x) # first rotate in Y
-            rotate_object_local(Vector3(1, 0, 0), rot_y) # then rotate in X
+            transform.basis = Basis() # đặt lại rotation
+            rotate_object_local(Vector3(0, 1, 0), rot_x) # xoay theo Y trước
+            rotate_object_local(Vector3(1, 0, 0), rot_y) # sau đó xoay theo X
 
  .. code-tab:: csharp
 
-    // accumulators
+    // các biến tích lũy
     private float _rotationX = 0f;
     private float _rotationY = 0f;
 
@@ -366,61 +359,60 @@ Example of looking around, FPS style:
     {
         if (@event is InputEventMouseMotion mouseMotion)
         {
-            // modify accumulated mouse rotation
+            // thay đổi rotation của chuột đã tích lũy
             _rotationX -= mouseMotion.ScreenRelative.X * LookAroundSpeed;
             _rotationY -= mouseMotion.ScreenRelative.Y * LookAroundSpeed;
 
-            // reset rotation
+            // đặt lại rotation
             Transform3D transform = Transform;
             transform.Basis = Basis.Identity;
             Transform = transform;
 
-            RotateObjectLocal(Vector3.Up, _rotationX); // first rotate about Y
-            RotateObjectLocal(Vector3.Right, _rotationY); // then rotate about X
+            RotateObjectLocal(Vector3.Up, _rotationX); // xoay quanh Y trước
+            RotateObjectLocal(Vector3.Right, _rotationY); // sau đó xoay quanh X
         }
     }
 
-As you can see, in such cases it's even simpler to keep the rotation outside, then use the transform as the *final* orientation.
+Như bạn có thể thấy, trong những trường hợp như vậy, việc giữ rotation ở bên ngoài rồi dùng transform làm hướng *cuối cùng* thậm chí còn đơn giản hơn.
 
-Interpolating with quaternions
-==============================
+Nội suy bằng quaternion
+=======================
 
-Interpolating between two transforms can efficiently be done with quaternions. More information about how quaternions work can be found in other places around the Internet. For practical use, it's enough to understand that pretty much their main use is doing a closest path interpolation. As in, if you have two rotations, a quaternion will smoothly allow interpolation between them using the closest axis.
+Có thể nội suy hiệu quả giữa hai transform bằng quaternion. Bạn có thể tìm thêm thông tin về cách quaternion hoạt động ở những nơi khác trên Internet. Để sử dụng trong thực tế, chỉ cần hiểu rằng công dụng chính của chúng là thực hiện nội suy theo đường đi gần nhất. Nghĩa là, nếu bạn có hai rotation, quaternion sẽ cho phép nội suy mượt mà giữa chúng bằng cách sử dụng trục gần nhất.
 
-Converting a rotation to quaternion is straightforward.
+Việc chuyển một rotation sang quaternion rất đơn giản.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Convert basis to quaternion, keep in mind scale is lost
+    # Chuyển basis sang quaternion, lưu ý rằng scale sẽ bị mất
     var a = Quaternion(transform.basis)
     var b = Quaternion(transform2.basis)
-    # Interpolate using spherical-linear interpolation (SLERP).
-    var c = a.slerp(b,0.5) # find halfway point between a and b
-    # Apply back
+    # Nội suy bằng spherical-linear interpolation (SLERP).
+    var c = a.slerp(b,0.5) # tìm điểm giữa a và b
+    # Áp dụng ngược lại
     transform.basis = Basis(c)
 
  .. code-tab:: csharp
 
-    // Convert basis to quaternion, keep in mind scale is lost
+    // Chuyển basis sang quaternion, lưu ý rằng scale sẽ bị mất
     var a = new Quaternion(transform.Basis);
     var b = new Quaternion(transform2.Basis);
-    // Interpolate using spherical-linear interpolation (SLERP).
-    var c = a.Slerp(b, 0.5f); // find halfway point between a and b
-    // Apply back
+    // Nội suy bằng spherical-linear interpolation (SLERP).
+    var c = a.Slerp(b, 0.5f); // tìm điểm giữa a và b
+    // Áp dụng ngược lại
     transform.Basis = new Basis(c);
 
-The :ref:`class_Quaternion` type reference has more information on the datatype (it
-can also do transform accumulation, transform points, etc., though this is used
-less often). If you interpolate or apply operations to quaternions many times,
-keep in mind they need to be eventually normalized. Otherwise, they will also
-suffer from numerical precision errors.
+Tham chiếu kiểu :ref:`class_Quaternion` cung cấp thêm thông tin về kiểu dữ liệu này (nó cũng có thể thực hiện tích lũy transform, biến đổi các điểm, v.v., mặc dù việc này ít được dùng hơn). Nếu bạn nội suy hoặc áp dụng các phép toán cho quaternion nhiều lần, hãy nhớ rằng cuối cùng chúng cần được chuẩn hóa. Nếu không, chúng cũng sẽ gặp lỗi độ chính xác số.
 
-Quaternions are useful when doing camera/path/etc. interpolations, as the result will always be correct and smooth.
+Quaternion rất hữu ích khi thực hiện nội suy camera/path/v.v., vì kết quả sẽ luôn chính xác và mượt mà.
 
-Transforms are your friend
---------------------------
+Transform là người bạn của bạn
+------------------------------
 
-For most beginners, getting used to working with transforms can take some time. However, once you get used to them, you will appreciate their simplicity and power.
+Với hầu hết người mới bắt đầu, việc làm quen với cách làm việc cùng transform có thể mất một khoảng thời gian. Tuy nhiên, một khi đã quen, bạn sẽ đánh giá cao sự đơn giản và mạnh mẽ của chúng.
 
-Don't hesitate to ask for help on this topic in any of Godot's `online communities <https://godotengine.org/community>`_ and, once you become confident enough, please help others!
+Đừng ngần ngại yêu cầu trợ giúp về chủ đề này trong bất kỳ `cộng đồng trực tuyến <https://godotengine.org/community>`_ nào của Godot và khi đã đủ tự tin, hãy giúp đỡ những người khác!
+
+.. _`Wikipedia's page on Gimbal Lock`: https://en.wikipedia.org/wiki/Gimbal_lock
+.. _`online communities`: https://godotengine.org/community

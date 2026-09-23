@@ -1,204 +1,132 @@
 .. _doc_occlusion_culling:
 
-Occlusion culling
-=================
+Loại bỏ đối tượng bị che khuất
+==============================
 
-In a 3D rendering engine, **occlusion culling** is the process of performing
-hidden geometry removal.
+Trong một engine kết xuất 3D, **occlusion culling** là quá trình loại bỏ hình học bị ẩn.
 
-On this page, you'll learn:
+Trong trang này, bạn sẽ tìm hiểu:
 
-- What are the advantages and pitfalls of occlusion culling.
-- How to set up occlusion culling in Godot.
-- Troubleshooting common issues with occlusion culling.
+- Ưu điểm và hạn chế của occlusion culling.
+- Cách thiết lập occlusion culling trong Godot.
+- Khắc phục các vấn đề thường gặp với occlusion culling.
 
 .. seealso::
 
-    You can see how occlusion culling works in action using the
-    `Occlusion Culling and Mesh LOD demo project <https://github.com/godotengine/godot-demo-projects/tree/master/3d/occlusion_culling_mesh_lod>`__.
+    Bạn có thể xem occlusion culling hoạt động trong thực tế thông qua `Occlusion Culling and Mesh LOD demo project <https://github.com/godotengine/godot-demo-projects/tree/master/3d/occlusion_culling_mesh_lod>`__.
 
-Why use occlusion culling
--------------------------
+Tại sao nên sử dụng occlusion culling
+-------------------------------------
 
-In this example scene with hundreds of rooms stacked next to each other, a
-dynamic object (red sphere) is hidden behind the wall in the lit room (on the
-left of the door):
+Trong cảnh ví dụ này với hàng trăm căn phòng xếp cạnh nhau, một đối tượng động (hình cầu màu đỏ) bị bức tường che khuất trong căn phòng được chiếu sáng (ở bên trái cửa):
 
 .. figure:: img/occlusion_culling_scene_example.png
    :align: center
-   :alt: Example scene with an occlusion culling-friendly layout
+   :alt: Cảnh ví dụ với bố cục phù hợp cho occlusion culling
 
-   Example scene with an occlusion culling-friendly layout
+   Cảnh ví dụ với bố cục phù hợp cho occlusion culling
 
-With occlusion culling disabled, all the rooms behind the lit room have to be
-rendered. The dynamic object also has to be rendered:
+Khi tắt occlusion culling, tất cả các căn phòng phía sau căn phòng được chiếu sáng đều phải được kết xuất. Đối tượng động cũng phải được kết xuất:
 
 .. figure:: img/occlusion_culling_disabled.png
    :align: center
-   :alt: Example scene with occlusion culling disabled (wireframe)
+   :alt: Cảnh ví dụ khi tắt occlusion culling (wireframe)
 
-   Example scene with occlusion culling **disabled** (wireframe)
+   Cảnh ví dụ khi **tắt** occlusion culling (wireframe)
 
-With occlusion culling enabled, only the rooms that are actually visible have to
-be rendered. The dynamic object is also occluded by the wall, and therefore no
-longer has to be rendered:
+Khi bật occlusion culling, chỉ những căn phòng thực sự nhìn thấy mới phải được kết xuất. Đối tượng động cũng bị bức tường che khuất, vì vậy không còn phải được kết xuất:
 
 .. figure:: img/occlusion_culling_enabled.png
    :align: center
-   :alt: Example scene with occlusion culling enabled (wireframe)
+   :alt: Cảnh ví dụ khi bật occlusion culling (wireframe)
 
-   Example scene with occlusion culling **enabled** (wireframe)
+   Cảnh ví dụ khi **bật** occlusion culling (wireframe)
 
-Since the engine has less work to do (fewer vertices to render and fewer draw calls),
-performance will increase as long as there are enough occlusion culling opportunities
-in the scene. This means occlusion culling is most effective in indoor scenes,
-preferably with many smaller rooms instead of fewer larger rooms. Combine
-this with :ref:`doc_mesh_lod` and :ref:`doc_visibility_ranges` to further improve
-performance gains.
+Vì engine phải thực hiện ít công việc hơn (ít vertex cần kết xuất hơn và ít draw call hơn), hiệu năng sẽ tăng miễn là cảnh có đủ cơ hội để thực hiện occlusion culling. Điều này có nghĩa là occlusion culling hiệu quả nhất trong các cảnh trong nhà, tốt nhất là có nhiều căn phòng nhỏ thay vì ít căn phòng lớn. Kết hợp tính năng này với :ref:`doc_mesh_lod` và :ref:`doc_visibility_ranges` để cải thiện thêm mức tăng hiệu năng.
 
 .. note::
 
-    When using the Forward+ renderer, the engine already
-    performs a *depth prepass*. This consists in rendering a depth-only version
-    of the scene before rendering the scene's actual materials. This is used to
-    ensure each opaque pixel is only shaded once, reducing the cost of overdraw
-    significantly.
+    Khi sử dụng renderer Forward+, engine đã thực hiện *depth prepass*. Quy trình này kết xuất một phiên bản chỉ có depth của cảnh trước khi kết xuất các material thực tế của cảnh. Việc này đảm bảo mỗi pixel opaque chỉ được shade một lần, giúp giảm đáng kể chi phí overdraw.
 
-    The greatest performance benefits can be observed when using the Mobile
-    renderer, as it does not feature a depth prepass for performance reasons. As
-    a result, occlusion culling will actively decrease shading overdraw with
-    that renderer.
+    Có thể quan sát lợi ích hiệu năng lớn nhất khi sử dụng renderer Mobile, vì renderer này không có depth prepass vì lý do hiệu năng. Do đó, occlusion culling sẽ chủ động giảm shading overdraw với renderer này.
 
-    Nonetheless, even when using a depth prepass, there is still a noticeable
-    benefit to occlusion culling in complex 3D scenes. However, in scenes with
-    few occlusion culling opportunities, occlusion culling may not be worth the
-    added setup and CPU usage.
+    Tuy nhiên, ngay cả khi sử dụng depth prepass, occlusion culling vẫn mang lại lợi ích đáng kể trong các cảnh 3D phức tạp. Mặt khác, trong các cảnh có ít cơ hội để thực hiện occlusion culling, lợi ích của occlusion culling có thể không tương xứng với công sức thiết lập và mức sử dụng CPU tăng thêm.
 
-How occlusion culling works in Godot
-------------------------------------
+Cách occlusion culling hoạt động trong Godot
+--------------------------------------------
 
 .. note::
 
-    "occluder" refers to the shape blocking the view, while "occludee" refers to
-    the object being hidden.
+    "occluder" là hình dạng chặn tầm nhìn, còn "occludee" là đối tượng bị che khuất.
 
-In Godot, occlusion culling works by rasterizing the scene's occluder geometry
-to a low-resolution buffer on the CPU. This is done using
-the software raytracing library `Embree <https://github.com/embree/embree>`__.
+Trong Godot, occlusion culling hoạt động bằng cách rasterize hình học occluder của cảnh vào một buffer độ phân giải thấp trên CPU. Việc này sử dụng thư viện raytracing bằng phần mềm `Embree <https://github.com/embree/embree>`__.
 
-The engine then uses this low-resolution buffer to test the occludee's
-:abbr:`AABB (Axis-Aligned Bounding Box)` against the occluder shapes.
-The occludee's :abbr:`AABB (Axis-Aligned Bounding Box)` must be *fully occluded*
-by the occluder shape to be culled.
+Sau đó, engine sử dụng buffer độ phân giải thấp này để kiểm tra
+:abbr:`AABB (Axis-Aligned Bounding Box)` của occludee với các hình dạng occluder. :abbr:`AABB (Axis-Aligned Bounding Box)` của occludee phải bị hình dạng occluder *che khuất hoàn toàn* thì mới được loại bỏ.
 
-As a result, smaller objects are more likely to be effectively culled than
-larger objects. Larger occluders (such as walls) also tend to be much more
-effective than smaller ones (such as decoration props).
+Do đó, các đối tượng nhỏ có nhiều khả năng được loại bỏ hiệu quả hơn các đối tượng lớn. Các occluder lớn hơn (chẳng hạn như tường) cũng thường hiệu quả hơn nhiều so với các occluder nhỏ hơn (chẳng hạn như vật trang trí).
 
-Setting up occlusion culling
-----------------------------
+Thiết lập occlusion culling
+---------------------------
 
-The first step to using occlusion culling is to enable the
-**Rendering > Occlusion Culling > Use Occlusion Culling** project setting.
-(Make sure the **Advanced** toggle is enabled in the Project Settings dialog to
-be able to see it.)
+Bước đầu tiên để sử dụng occlusion culling là bật cài đặt project **Rendering > Occlusion Culling > Use Occlusion Culling**. (Hãy đảm bảo bật nút chuyển **Advanced** trong hộp thoại Project Settings để có thể thấy cài đặt này.)
 
-This project setting applies immediately, so you don't need to restart the editor.
+Cài đặt project này được áp dụng ngay lập tức, vì vậy bạn không cần khởi động lại editor.
 
-After enabling the project setting, you still need to create some occluders. For
-performance reasons, the engine doesn't automatically use all visible geometry
-as a basis for occlusion culling. Instead, the engine requires a simplified
-representation of the scene with only static objects to be baked.
+Sau khi bật cài đặt project, bạn vẫn cần tạo một số occluder. Vì lý do hiệu năng, engine không tự động sử dụng toàn bộ hình học có thể nhìn thấy làm cơ sở cho occlusion culling. Thay vào đó, engine yêu cầu một biểu diễn đơn giản hóa của cảnh, trong đó chỉ các đối tượng tĩnh được bake.
 
-There are two ways to set up occluders in a scene:
+Có hai cách để thiết lập occluder trong một cảnh:
 
 .. _doc_occlusion_culling_baking:
 
-Automatically baking occluders (recommended)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tự động bake occluder (khuyến nghị)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
 
-    Only MeshInstance3D nodes are currently taken into account in the *occluder*
-    baking process. MultiMeshInstance3D, GPUParticles3D, CPUParticles3D and CSG
-    nodes are **not** taken into account when baking occluders. If you wish
-    those to be treated as occluders, you have to manually create occluder
-    shapes that (roughly) match their geometry.
+    Hiện tại, chỉ các node MeshInstance3D được xét đến trong quá trình bake *occluder*. Các node MultiMeshInstance3D, GPUParticles3D, CPUParticles3D và CSG **không** được xét đến khi bake occluder. Nếu muốn chúng được xử lý như occluder, bạn phải tự tạo các hình dạng occluder khớp gần đúng với hình học của chúng.
 
-    Since Godot 4.4, CSG nodes can be taken into account in the baking process if they are
-    :ref:`converted to a MeshInstance3D <doc_csg_tools_converting_to_mesh_instance_3d>`
-    before baking occluders.
+    Kể từ Godot 4.4, các node CSG có thể được xét đến trong quá trình bake nếu chúng được
+    :ref:`chuyển đổi thành MeshInstance3D <doc_csg_tools_converting_to_mesh_instance_3d>` trước khi bake occluder.
 
-    This restriction does not apply to *occludees*. Any node type that inherits
-    from GeometryInstance3D can be occluded.
+    Hạn chế này không áp dụng cho *occludee*. Bất kỳ loại node nào kế thừa từ GeometryInstance3D đều có thể bị che khuất.
 
-After enabling the occlusion culling project setting mentioned above, add an
-OccluderInstance3D node to the scene containing your 3D level.
+Sau khi bật cài đặt project occlusion culling được đề cập ở trên, hãy thêm một node OccluderInstance3D vào cảnh chứa level 3D của bạn.
 
-Select the OccluderInstance3D node, then click **Bake Occluders** at the top of
-the 3D editor viewport. After baking, the OccluderInstance3D node will contain
-an Occluder3D resource that stores a simplified version of your level's
-geometry. This occluder geometry appears as purple wireframe lines in the 3D view
-(as long as **View Gizmos** is enabled in the **Perspective** menu).
-This geometry is then used to provide occlusion culling for both static and
-dynamic occludees.
+Chọn node OccluderInstance3D, sau đó nhấp vào **Bake Occluders** ở đầu viewport của 3D editor. Sau khi bake, node OccluderInstance3D sẽ chứa một resource Occluder3D lưu trữ phiên bản đơn giản hóa của hình học level. Hình học occluder này xuất hiện dưới dạng các đường wireframe màu tím trong chế độ xem 3D (miễn là **View Gizmos** được bật trong menu **Perspective**). Hình học này sau đó được sử dụng để cung cấp occlusion culling cho cả occludee tĩnh và động.
 
-After baking, you may notice that your dynamic objects (such as the player,
-enemies, etc…) are included in the baked mesh. To prevent this, set the
-**Bake > Cull Mask** property on the OccluderInstance3D to exclude certain visual
-layers from being baked.
+Sau khi bake, bạn có thể nhận thấy các đối tượng động (chẳng hạn như người chơi, kẻ địch, v.v…) được đưa vào mesh đã bake. Để ngăn điều này, hãy đặt thuộc tính **Bake > Cull Mask** trên OccluderInstance3D để loại trừ một số visual layer khỏi quá trình bake.
 
-For example, you can disable layer 2 on the cull mask, then configure your
-dynamic objects' MeshInstance3D nodes to be located on the visual layer 2
-(instead of layer 1). To do so, select the MeshInstance3D node in question, then
-on the **VisualInstance3D > Layers** property, uncheck layer 1 then check layer
-2. After configuring both cull mask and layers, bake occluders again by
-following the above process.
+Ví dụ, bạn có thể vô hiệu hóa layer 2 trên cull mask, sau đó cấu hình các node MeshInstance3D của những đối tượng động để nằm trên visual layer 2 (thay vì layer 1). Để thực hiện việc này, hãy chọn node MeshInstance3D tương ứng, rồi trong thuộc tính **VisualInstance3D > Layers**, bỏ chọn layer 1 rồi chọn layer
+2. Sau khi cấu hình cả cull mask và các layer, hãy bake occluder lại bằng cách
+làm theo quy trình trên.
 
-Manually placing occluders
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Đặt occluder thủ công
+~~~~~~~~~~~~~~~~~~~~~
 
-This approach is more suited for specialized use cases, such as creating occlusion
-for MultiMeshInstance3D setups or CSG nodes (due to the aforementioned limitation).
+Cách tiếp cận này phù hợp hơn với các trường hợp sử dụng chuyên biệt, chẳng hạn như tạo occlusion cho các thiết lập MultiMeshInstance3D hoặc các node CSG (do hạn chế đã đề cập ở trên).
 
-After enabling the occlusion culling project setting mentioned above, add an
-OccluderInstance3D node to the scene containing your 3D level. Select the
-OccluderInstance3D node, then choose an occluder type to add in the **Occluder**
-property:
+Sau khi bật project setting về occlusion culling đã đề cập ở trên, hãy thêm một node OccluderInstance3D vào scene chứa level 3D của bạn. Chọn node OccluderInstance3D, rồi chọn loại occluder cần thêm trong thuộc tính **Occluder**:
 
-- QuadOccluder3D (a single plane)
-- BoxOccluder3D (a cuboid)
-- SphereOccluder3D (a sphere-shaped occluder)
-- PolygonOccluder3D (a 2D polygon with as many points as you want)
+- QuadOccluder3D (một mặt phẳng đơn)
+- BoxOccluder3D (một khối hộp)
+- SphereOccluder3D (một occluder hình cầu)
+- PolygonOccluder3D (một đa giác 2D có số điểm tùy ý)
 
-There is also ArrayOccluder3D, whose points can't be modified in the editor but
-can be useful for procedural generation from a script.
+Ngoài ra còn có ArrayOccluder3D, có các điểm không thể chỉnh sửa trong editor nhưng có thể hữu ích cho việc sinh hình theo thủ tục từ một script.
 
 .. _doc_occlusion_culling_preview:
 
-Previewing occlusion culling
-----------------------------
+Xem trước occlusion culling
+---------------------------
 
-You can enable a debug draw mode to preview what the occlusion culling is
-actually "seeing". In the top-left corner of the 3D editor viewport, click the
-**Perspective** button (or **Orthogonal** depending on your current camera
-mode), then choose **Display Advanced… > Occlusion Culling Buffer**. This will
-display the low-resolution buffer that is used by the engine for occlusion
-culling.
+Bạn có thể bật chế độ debug draw để xem trước những gì occlusion culling thực sự "nhìn thấy". Ở góc trên bên trái của viewport trình chỉnh sửa 3D, hãy nhấp vào nút **Perspective** (hoặc **Orthogonal** tùy thuộc vào chế độ camera hiện tại), rồi chọn **Display Advanced… > Occlusion Culling Buffer**. Thao tác này sẽ hiển thị buffer có độ phân giải thấp được engine sử dụng cho occlusion culling.
 
-In the same menu, you can also enable **View Information** and **View Frame
-Time** to view the number of draw calls and rendered primitives (vertices +
-indices) in the bottom-right corner, along with the number of frames per second
-rendered in the top-right corner.
+Trong cùng menu đó, bạn cũng có thể bật **View Information** và **View Frame Time** để xem số lượng draw call và primitive được render (vertex + index) ở góc dưới bên phải, cùng với số frame mỗi giây được render ở góc trên bên phải.
 
-If you toggle occlusion culling in the project settings while this information
-is displayed, you can see how much occlusion culling improves performance in
-your scene. Note that the performance benefit highly depends on the 3D editor
-camera's view angle, as occlusion culling is only effective if there are
-occluders in front of the camera.
+Nếu bật hoặc tắt occlusion culling trong project settings khi thông tin này đang được hiển thị, bạn có thể thấy occlusion culling cải thiện hiệu năng trong scene của mình đến mức nào. Lưu ý rằng lợi ích về hiệu năng phụ thuộc rất nhiều vào góc nhìn của camera trong trình chỉnh sửa 3D, vì occlusion culling chỉ hiệu quả khi có occluder ở phía trước camera.
 
-To toggle occlusion culling at runtime, set ``use_occlusion_culling`` on the
-root viewport as follows:
+Để bật hoặc tắt occlusion culling trong runtime, hãy đặt ``use_occlusion_culling`` trên root viewport như sau:
 
 .. tabs::
  .. code-tab:: gdscript
@@ -210,116 +138,72 @@ root viewport as follows:
     GetTree().Root.UseOcclusionCulling = true;
 
 
-Toggling occlusion culling at runtime is useful to compare performance on a
-running project.
+Bật hoặc tắt occlusion culling trong runtime hữu ích để so sánh hiệu năng khi project đang chạy.
 
-Performance considerations
---------------------------
+Các cân nhắc về hiệu năng
+-------------------------
 
-Design your levels to take advantage of occlusion culling
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Thiết kế level để tận dụng occlusion culling
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**This is the most important guideline.** A good level design is not just about
-what the gameplay demands; it should also be built with occlusion in mind.
+**Đây là hướng dẫn quan trọng nhất.** Một thiết kế level tốt không chỉ xoay quanh yêu cầu của gameplay; level cũng nên được xây dựng có tính đến occlusion.
 
-For indoor environments, add opaque walls to "break" the line of sight at
-regular intervals and ensure not too much of the scene can be seen at once.
+Đối với môi trường trong nhà, hãy thêm các bức tường đục để "ngắt" tầm nhìn ở những khoảng cách đều đặn và đảm bảo không thể nhìn thấy quá nhiều phần của scene cùng một lúc.
 
-For large open scenes, use a pyramid-like structure for the terrain's elevation
-when possible. This provides the greatest culling opportunities compared to any
-other terrain shape.
+Đối với các scene mở rộng lớn, hãy sử dụng cấu trúc giống kim tự tháp cho độ cao của địa hình khi có thể. So với mọi hình dạng địa hình khác, cách này tạo ra nhiều cơ hội culling nhất.
 
-Avoid moving OccluderInstance3D nodes during gameplay
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tránh di chuyển các node OccluderInstance3D trong gameplay
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This includes moving the parents of OccluderInstance3D nodes, as this will cause
-the nodes themselves to move in global space, therefore requiring the :abbr:`BVH
-(Bounding Volume Hierarchy)` to be rebuilt.
+Điều này bao gồm cả việc di chuyển các node cha của node OccluderInstance3D, vì việc đó sẽ khiến bản thân các node di chuyển trong không gian toàn cục, từ đó yêu cầu xây dựng lại :abbr:`BVH (Bounding Volume Hierarchy)`.
 
-Toggling an OccluderInstance3D's visibility (or one of its parents' visibility)
-is not as expensive, as the update only needs to happen once (rather than
-continuously).
+Việc bật hoặc tắt visibility của một OccluderInstance3D (hoặc visibility của một trong các node cha của nó) không tốn kém bằng, vì quá trình cập nhật chỉ cần diễn ra một lần (thay vì liên tục).
 
-For example, if you have a sliding or rotating door, you can make the
-OccluderInstance3D node not be a child of the door itself (so that the occluder
-never moves), but you can hide the OccluderInstance3D visibility once the door
-starts opening. You can then reshow the OccluderInstance3D once the door is
-fully closed.
+Ví dụ, nếu bạn có một cánh cửa trượt hoặc xoay, bạn có thể để node OccluderInstance3D không phải là node con của chính cánh cửa đó (để occluder không bao giờ di chuyển), nhưng có thể ẩn visibility của OccluderInstance3D khi cánh cửa bắt đầu mở. Sau đó, bạn có thể hiện lại OccluderInstance3D khi cánh cửa đóng hoàn toàn.
 
-If you absolutely have to move an OccluderInstance3D node during gameplay, use a
-primitive Occluder3D shape for it instead of a complex baked shape.
+Nếu bắt buộc phải di chuyển một node OccluderInstance3D trong gameplay, hãy sử dụng một hình dạng Occluder3D nguyên thủy cho nó thay vì một hình dạng phức tạp được bake.
 
-Use the simplest possible occluder shapes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sử dụng hình dạng occluder đơn giản nhất có thể
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you notice low performance or stuttering in complex 3D scenes, it may mean
-that the CPU is overloaded as a result of rendering detailed occluders.
-Select the OccluderInstance3D node,
-increase the **Bake > Simplification** property then bake occluders again.
+Nếu nhận thấy hiệu năng thấp hoặc hiện tượng giật trong các scene 3D phức tạp, có thể CPU đang quá tải do render các occluder có nhiều chi tiết. Hãy chọn node OccluderInstance3D, tăng giá trị thuộc tính **Bake > Simplification**, rồi bake occluder lại.
 
-Remember to keep the simplification value reasonable. Values that are too high
-for the level's geometry may cause incorrect occlusion culling to occur, as in
+Hãy nhớ giữ giá trị simplification ở mức hợp lý. Các giá trị quá cao so với hình học của level có thể khiến occlusion culling diễn ra không chính xác, như trong
 :ref:`doc_occlusion_culling_troubleshooting_false_negative`.
 
-If this still doesn't lead to low enough CPU usage,
-you can try adjusting the **Rendering > Occlusion Culling > BVH Build Quality**
-project setting and/or decreasing
-**Rendering > Occlusion Culling > Occlusion Rays Per Thread**.
-You'll need to enable the **Advanced** toggle in the Project Settings dialog to
-see those settings.
+Nếu cách này vẫn chưa giúp giảm mức sử dụng CPU đủ thấp, bạn có thể thử điều chỉnh project setting **Rendering > Occlusion Culling > BVH Build Quality** và/hoặc giảm **Rendering > Occlusion Culling > Occlusion Rays Per Thread**. Bạn cần bật tùy chọn **Advanced** trong hộp thoại Project Settings để thấy các setting này.
 
-Troubleshooting
+Khắc phục sự cố
 ---------------
 
-My occludee isn't being culled when it should be
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Occludee của tôi không bị culling khi đáng lẽ phải bị culling
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**On the occluder side:**
+**Về phía occluder:**
 
-First, double-check that the **Bake > Cull Mask** property in the
-OccluderInstance3D is set to allow baking the meshes you'd like. The visibility
-layer of the MeshInstance3D nodes must be present within the cull mask for the
-mesh to be included in the bake.
+Trước tiên, hãy kiểm tra lại để đảm bảo thuộc tính **Bake > Cull Mask** trong OccluderInstance3D được đặt cho phép bake các mesh bạn muốn. Visibility layer của các node MeshInstance3D phải nằm trong cull mask để mesh được đưa vào quá trình bake.
 
-Also note that occluder baking only takes meshes with *opaque* materials into
-account. Surfaces will *transparent* materials will **not** be included in the
-bake, even if the texture applied on them is fully opaque.
+Ngoài ra, lưu ý rằng quá trình bake occluder chỉ tính đến các mesh có vật liệu *opaque*. Các bề mặt có vật liệu *transparent* sẽ **not** được đưa vào quá trình bake, ngay cả khi texture áp dụng trên chúng hoàn toàn opaque.
 
-Lastly, remember that MultiMeshInstance3D, GPUParticles3D, CPUParticles3D and CSG
-nodes are **not** taken into account when baking occluders. As a workaround, you
-can add OccluderInstance3D nodes for those manually.
+Cuối cùng, hãy nhớ rằng các node MultiMeshInstance3D, GPUParticles3D, CPUParticles3D và CSG **not** được tính đến khi bake occluder. Để khắc phục, bạn có thể tự thêm các node OccluderInstance3D cho chúng.
 
-**On the occludee side:**
+**Về phía occludee:**
 
-Make sure **Extra Cull Margin** is set as low as possible (it should usually be
-``0.0``), and that **Ignore Occlusion Culling** is disabled in the object's
-GeometryInstance3D section.
+Đảm bảo **Extra Cull Margin** được đặt ở mức thấp nhất có thể (thông thường nên là ``0.0``), đồng thời **Ignore Occlusion Culling** đã được tắt trong phần GeometryInstance3D của đối tượng.
 
-Also, check the AABB's size (which is represented by an orange box when
-selecting the node). This axis-aligned bounding box must be *fully* occluded by
-the occluder shapes for the occludee to be hidden.
+Ngoài ra, hãy kiểm tra kích thước của AABB (được biểu thị bằng một hình hộp màu cam khi chọn node). Để đối tượng bị che khuất bị ẩn, bounding box căn chỉnh theo trục này phải bị các hình dạng occluder che khuất *hoàn toàn*.
 
 .. _doc_occlusion_culling_troubleshooting_false_negative:
 
-My occludee is being culled when it shouldn't be
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Đối tượng bị che khuất của tôi bị loại bỏ khi không nên bị loại bỏ
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The most likely cause for this is that objects that were included in the
-occluder bake have been moved after baking occluders. For instance, this can
-occur when moving your level geometry around or rearranging its layout. To fix
-this, select the OccluderInstance3D node and bake occluders again.
+Nguyên nhân có khả năng nhất là các đối tượng được đưa vào quá trình bake occluder đã bị di chuyển sau khi bake. Chẳng hạn, điều này có thể xảy ra khi di chuyển hình học của level hoặc sắp xếp lại bố cục của nó. Để khắc phục, hãy chọn node OccluderInstance3D và bake occluder lại.
 
-This can also happen because dynamic objects were included in the bake, even
-though they shouldn't be. Use the
-:ref:`occlusion culling debug draw mode <doc_occlusion_culling_preview>` to look
-for occluder shapes that shouldn't be present, then
-:ref:`adjust the bake cull mask accordingly <doc_occlusion_culling_baking>`.
+Điều này cũng có thể xảy ra vì các đối tượng động đã được đưa vào quá trình bake, dù không nên được đưa vào. Hãy sử dụng
+:ref:`occlusion culling debug draw mode <doc_occlusion_culling_preview>` để tìm các hình dạng occluder không nên xuất hiện, sau đó
+:ref:`điều chỉnh bake cull mask cho phù hợp <doc_occlusion_culling_baking>`.
 
-The last possible cause for this is overly aggressive mesh simplification during
-the occluder baking process. Select the OccluderInstance3D node,
-decrease the **Bake > Simplification** property then bake occluders again.
+Nguyên nhân có thể xảy ra cuối cùng là quá trình đơn giản hóa mesh quá mạnh trong khi bake occluder. Hãy chọn node OccluderInstance3D, giảm thuộc tính **Bake > Simplification**, sau đó bake occluder lại.
 
-As a last resort, you can enable the **Ignore Occlusion Culling** property on
-the occludee. This will negate the performance improvements of occlusion culling
-for that object, but it makes sense to do this for objects that will never be
-culled (such as a first-person view model).
+Trong trường hợp cuối cùng, bạn có thể bật thuộc tính **Ignore Occlusion Culling** trên đối tượng bị che khuất. Điều này sẽ làm mất các cải thiện hiệu năng của occlusion culling đối với đối tượng đó, nhưng hợp lý khi thực hiện với những đối tượng sẽ không bao giờ bị loại bỏ (chẳng hạn như model góc nhìn thứ nhất).

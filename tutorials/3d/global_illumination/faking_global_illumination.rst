@@ -1,100 +1,59 @@
 .. _doc_faking_global_illumination:
 
-Faking global illumination
-==========================
+Giả lập chiếu sáng toàn cục
+===========================
 
-Why fake global illumination?
------------------------------
+Tại sao phải giả lập chiếu sáng toàn cục?
+-----------------------------------------
 
-Godot provides several global illumination (GI) techniques, all with their advantages
-and drawbacks. Nonetheless, it remains possible to avoid using any GI technique
-and use a handmade approach instead. There are a few reasons for using a
-"handmade" approach to global illumination instead of VoxelGI, SDFGI or
-baked lightmaps:
+Godot cung cấp một số kỹ thuật chiếu sáng toàn cục (GI), mỗi kỹ thuật đều có ưu điểm và nhược điểm riêng. Tuy vậy, bạn vẫn có thể tránh sử dụng bất kỳ kỹ thuật GI nào và thay vào đó dùng một phương pháp thủ công. Có một vài lý do để sử dụng phương pháp "thủ công" cho chiếu sáng toàn cục thay vì VoxelGI, SDFGI hoặc lightmap được bake:
 
-- You need to have good rendering performance, but can't afford going through
-  a potentially cumbersome lightmap baking process.
-- You need an approach to GI that is fully real-time *and* works in procedurally
-  generated levels.
-- You need an approach to GI that is fully real-time *and* does not suffer from
-  significant light leaks.
+- Bạn cần hiệu năng rendering tốt nhưng không thể thực hiện quy trình bake lightmap có thể khá phức tạp.
+- Bạn cần một phương pháp GI hoàn toàn theo thời gian thực *and* hoạt động với các level được tạo theo quy trình.
+- Bạn cần một phương pháp GI hoàn toàn theo thời gian thực *and* không gặp phải hiện tượng rò rỉ ánh sáng đáng kể.
 
-The approaches described below only cover indirect diffuse lighting, not
-specular lighting. For specular lighting, consider using ReflectionProbes which
-are usually cheap enough to be used in conjunction with this fake GI approach.
+Các phương pháp được mô tả dưới đây chỉ xử lý ánh sáng khuếch tán gián tiếp, không xử lý ánh sáng specular. Đối với ánh sáng specular, hãy cân nhắc sử dụng ReflectionProbes, vốn thường đủ nhẹ để dùng kết hợp với phương pháp GI giả lập này.
 
 .. seealso::
 
-    Not sure if faking global illumination with lights is suited to your needs?
-    See :ref:`doc_introduction_to_global_illumination_comparison` for a
-    comparison of GI techniques available in Godot 4.
+    Không chắc việc giả lập chiếu sáng toàn cục bằng các nguồn sáng có phù hợp với nhu cầu của bạn không? Xem :ref:`doc_introduction_to_global_illumination_comparison` để so sánh các kỹ thuật GI hiện có trong Godot 4.
 
-Faking DirectionalLight3D global illumination
----------------------------------------------
+Giả lập chiếu sáng toàn cục của DirectionalLight3D
+--------------------------------------------------
 
-While the sky provides its own directional lighting, the scene's main DirectionalLight3D
-node typically emits a large amount of light. When using a GI technique, this light
-would be reflected on solid surfaces and would bounce back on most outdoors shaded surfaces.
+Mặc dù bầu trời cung cấp ánh sáng định hướng riêng, node DirectionalLight3D chính của scene thường phát ra một lượng ánh sáng lớn. Khi sử dụng kỹ thuật GI, ánh sáng này sẽ phản xạ trên các bề mặt rắn và dội lại trên hầu hết các bề mặt ngoài trời đang trong vùng bóng.
 
-We can fake this by adding a second DirectionalLight3D node with the following changes:
+Ta có thể giả lập điều này bằng cách thêm một node DirectionalLight3D thứ hai với các thay đổi sau:
 
-- Rotate the light by 180 degrees. This allows it to represent lighting bounced
-  by the main DirectionalLight3D node.
-- Set **Shadows** to **Off**. This reduces the secondary light's performance burden
-  while also allowing shaded areas to receive *some* lighting (which is what we want here).
-- Set **Energy** to 10-40% of the original value. There is no "perfect" value,
-  so experiment with various energy values depending on the light and your typical
-  material colors.
-- Set **Specular** to ``0.0``. Indirect lighting shouldn't emit visible specular
-  lobes, so we need to disable specular lighting entirely for the secondary light.
+- Xoay nguồn sáng 180 độ. Điều này cho phép nó biểu diễn ánh sáng dội lại từ node DirectionalLight3D chính.
+- Đặt **Shadows** thành **Off**. Điều này làm giảm tải hiệu năng của nguồn sáng phụ, đồng thời cho phép các khu vực trong bóng nhận được *some* ánh sáng (đúng với mục đích của chúng ta ở đây).
+- Đặt **Energy** bằng 10-40% giá trị ban đầu. Không có giá trị "hoàn hảo", vì vậy hãy thử nghiệm với nhiều giá trị energy khác nhau tùy theo nguồn sáng và màu vật liệu thường dùng của bạn.
+- Đặt **Specular** thành ``0.0``. Ánh sáng gián tiếp không nên tạo ra các vùng specular có thể nhìn thấy, vì vậy chúng ta cần tắt hoàn toàn ánh sáng specular cho nguồn sáng phụ.
 
 .. note::
 
-    This approach works best in scenes that are mostly outdoors. When going indoors,
-    the secondary DirectionalLight3D's light will still be visible as this light
-    has shadows disabled.
+    Phương pháp này hiệu quả nhất trong các scene chủ yếu ở ngoài trời. Khi đi vào trong nhà, ánh sáng của DirectionalLight3D phụ vẫn sẽ nhìn thấy vì nguồn sáng này đã tắt bóng.
 
-    This can be worked around by smoothly decreasing the secondary DirectionalLight3D's
-    energy when entering an indoor area (and doing the opposite when leaving the indoor area).
-    For instance, this can be achieved using an Area3D node and AnimationPlayer.
+    Có thể khắc phục điều này bằng cách giảm dần energy của DirectionalLight3D phụ khi đi vào khu vực trong nhà (và thực hiện ngược lại khi rời khỏi khu vực trong nhà). Chẳng hạn, bạn có thể đạt được điều này bằng node Area3D và AnimationPlayer.
 
-Faking positional light global illumination
--------------------------------------------
+Giả lập chiếu sáng toàn cục của nguồn sáng theo vị trí
+------------------------------------------------------
 
-It's possible to follow the same approach as DirectionalLight3D for positional
-lights (OmniLight3D and SpotLight3D). However, this will require more manual
-work as this operation needs to be repeated for every positional light node in
-the scene to look good.
+Có thể áp dụng cùng phương pháp như với DirectionalLight3D cho các nguồn sáng theo vị trí (OmniLight3D và SpotLight3D). Tuy nhiên, việc này đòi hỏi nhiều thao tác thủ công hơn vì cần lặp lại cho từng node nguồn sáng theo vị trí trong scene để có kết quả tốt.
 
-In an ideal scenario, additional OmniLight3Ds should be added at every location
-where a significant amount of light hits a bright enough surface. However, due
-to time constraints, this isn't always easily feasible (especially when
-performing procedural level generation).
+Trong trường hợp lý tưởng, nên thêm các OmniLight3D bổ sung tại mọi vị trí mà một lượng ánh sáng đáng kể chiếu vào một bề mặt đủ sáng. Tuy nhiên, do giới hạn thời gian, điều này không phải lúc nào cũng khả thi một cách dễ dàng (đặc biệt khi tạo level theo quy trình).
 
-If you're in a hurry, you can place a secondary OmniLight3D node at the same position
-as the main OmniLight3D node.
-You can add this node as a child of the main OmniLight3D node to make it easy to
-move and hide both nodes at the same time.
+Nếu đang vội, bạn có thể đặt một node OmniLight3D phụ tại cùng vị trí với node OmniLight3D chính. Bạn có thể thêm node này làm node con của OmniLight3D chính để dễ dàng di chuyển và ẩn cả hai node cùng lúc.
 
-In the secondary OmniLight3D node, perform the following changes:
+Trong node OmniLight3D phụ, hãy thực hiện các thay đổi sau:
 
-- Increase the light's **Range** by 25-50%. This allows the secondary light to lighten
-  what was previously not lit by the original light.
-- Set **Shadows** to **Off**. This reduces the secondary light's performance burden
-  while also allowing shaded areas to receive *some* lighting (which is what we want here).
-- Set **Energy** to 10-40% of the original value. There is no "perfect" value,
-  so experiment with various energy values depending on the light and its surroundings.
-- Set **Specular** to 0. Indirect lighting shouldn't emit visible specular lobes,
-  so we need to disable specular lighting entirely for the secondary light.
+- Tăng **Range** của nguồn sáng lên 25-50%. Điều này cho phép nguồn sáng phụ làm sáng những khu vực trước đó không được nguồn sáng ban đầu chiếu tới.
+- Đặt **Shadows** thành **Off**. Điều này làm giảm tải hiệu năng của nguồn sáng phụ, đồng thời cho phép các khu vực trong bóng nhận được *some* ánh sáng (đúng với mục đích của chúng ta ở đây).
+- Đặt **Energy** bằng 10-40% giá trị ban đầu. Không có giá trị "hoàn hảo", vì vậy hãy thử nghiệm với nhiều giá trị energy khác nhau tùy theo nguồn sáng và môi trường xung quanh.
+- Đặt **Specular** thành 0. Ánh sáng gián tiếp không nên tạo ra các vùng specular có thể nhìn thấy, vì vậy chúng ta cần tắt hoàn toàn ánh sáng specular cho nguồn sáng phụ.
 
-For SpotLight3D, the same trick can be used. In this case, the secondary OmniLight3D
-should be placed in a way that reflects where *most* light will be bounced.
-This is usually close to the SpotLight3D's primary impact location.
+Đối với SpotLight3D, có thể sử dụng cùng mẹo này. Trong trường hợp này, OmniLight3D phụ nên được đặt sao cho phản ánh vị trí mà *most* ánh sáng sẽ dội tới. Vị trí này thường gần với vị trí tác động chính của SpotLight3D.
 
-In the example below, a SpotLight3D node is used to light up the room's floor.
-However, since there is no indirect lighting, the rest of the room remains
-entirely dark. In real life, the room's walls and ceiling would be lit up by
-light bouncing around. Using an OmniLight3D node positioned between the
-SpotLight3D's origin and the floor allows simulating this effect:
+Trong ví dụ bên dưới, một node SpotLight3D được dùng để chiếu sáng sàn phòng. Tuy nhiên, vì không có ánh sáng gián tiếp nên phần còn lại của căn phòng hoàn toàn tối. Trong thực tế, tường và trần phòng sẽ được chiếu sáng bởi ánh sáng dội qua lại. Sử dụng một node OmniLight3D được đặt giữa gốc của SpotLight3D và sàn nhà cho phép mô phỏng hiệu ứng này:
 
 .. image:: img/faking_global_illumination_comparison.webp

@@ -1,76 +1,49 @@
 .. _doc_3d_particles_subemitters:
 
-Particle sub-emitters
----------------------
+Các sub-emitter của particle
+----------------------------
 
 .. figure:: img/particle_sub_chain.webp
-   :alt: Chained sub-emitters
+   :alt: Sub-emitter liên kết
 
-Sometimes a visual effect cannot be created with a single particle system alone.
-Sometimes a particle system needs to be spawned as a response to something that happens in
-another particle system. Fireworks are a good example of that. They usually consist of
-several stages of explosions that happen in sequence. Sub-emitters are a good way to achieve
-this kind of effect.
+Đôi khi không thể tạo hiệu ứng hình ảnh chỉ bằng một particle system. Đôi khi một particle system cần được khởi tạo để phản hồi một sự kiện xảy ra trong particle system khác. Pháo hoa là một ví dụ điển hình. Chúng thường gồm nhiều giai đoạn phát nổ diễn ra tuần tự. Sub-emitter là một cách hiệu quả để tạo loại hiệu ứng này.
 
 .. figure:: img/particle_sub_assign.webp
-   :alt: Assign sub-emitter
+   :alt: Gán sub-emitter
    :align: right
 
-   Click to assign a sub-emitter...
+   Nhấp để gán một sub-emitter...
 
 .. figure:: img/particle_sub_list.webp
-   :alt: List particle systems
+   :alt: Liệt kê particle system
    :align: right
 
-   \...and select one from the scene
+   \...và chọn một particle system trong scene
 
-A sub-emitter is a particle system that spawns as a child of another particle system.
-You can add sub-emitters to sub-emitters, chaining particle effects as deep as you like.
+Sub-emitter là một particle system được khởi tạo dưới dạng con của particle system khác. Bạn có thể thêm sub-emitter vào các sub-emitter, liên kết các hiệu ứng particle với độ sâu tùy ý.
 
-To create a sub-emitter, you need at least two particle systems in the same scene. One of them will be the
-parent and one will be set as the child. Find the ``Sub Emitter`` property on the parent
-and click the box next to it to assign the sub-emitter. You will see a list of available particle
-systems in the scene. Select one and click the confirmation button.
+Để tạo một sub-emitter, bạn cần ít nhất hai particle system trong cùng một scene. Một particle system sẽ là parent và một particle system sẽ được đặt làm child. Tìm thuộc tính ``Sub Emitter`` trên parent rồi nhấp vào ô bên cạnh để gán sub-emitter. Bạn sẽ thấy danh sách các particle system hiện có trong scene. Chọn một particle system rồi nhấp vào nút xác nhận.
 
-Particle systems from instanced scenes can be set as sub-emitters too, as long as the
-``Editable Children`` property is enabled on the instanced scene. This also works the other
-way around: You can assign a sub-emitter to a particle system in an instanced scene,
-even one coming from a different instanced scene.
+Particle system từ các scene được instanced cũng có thể được đặt làm sub-emitter, miễn là thuộc tính ``Editable Children`` được bật trên scene được instanced. Điều này cũng hoạt động theo chiều ngược lại: Bạn có thể gán một sub-emitter cho particle system trong scene được instanced, kể cả particle system đến từ một scene được instanced khác.
 
 .. note::
 
-   When you set a particle system as the sub-emitter of another, the system stops
-   emitting, even if the ``Emitting`` property was checked. Don't worry, it didn't break. This happens
-   to every particle system as soon as it becomes a sub-emitter. You also won't be able to
-   re-enable the property as long as the particle system is used as a sub-emitter.
+   Khi bạn đặt một particle system làm sub-emitter của particle system khác, hệ thống sẽ ngừng phát, ngay cả khi thuộc tính ``Emitting`` đã được bật. Đừng lo, hệ thống không bị hỏng. Điều này xảy ra với mọi particle system ngay khi nó trở thành sub-emitter. Bạn cũng sẽ không thể bật lại thuộc tính này chừng nào particle system còn được sử dụng làm sub-emitter.
 
 .. warning::
 
-   Even though the parent particle system can be selected from the list of available particle
-   systems, a particle system which is its own sub-emitter does not work in Godot. It will
-   simply not spawn. The same is true for any other kind of recursive or self-referential
-   sub-emitter setup.
+   Mặc dù parent particle system có thể được chọn từ danh sách các particle system hiện có, một particle system là sub-emitter của chính nó sẽ không hoạt động trong Godot. Nó đơn giản là sẽ không được khởi tạo. Điều tương tự cũng đúng với mọi kiểu thiết lập sub-emitter đệ quy hoặc tự tham chiếu khác.
 
-Emitter mode
-~~~~~~~~~~~~
+Chế độ emitter
+~~~~~~~~~~~~~~
 
-When you assign a sub-emitter, you don't see it spawn right away. Emitting is disabled
-by default and needs to be enabled first. Set the ``Mode`` property in the ``Sub Emitter`` group
-of the :ref:`ParticleProcessMaterial <doc_process_material_properties_subemitter>` to something other than ``Disabled``.
+Khi gán một sub-emitter, bạn sẽ không thấy nó được khởi tạo ngay. Tính năng phát bị tắt theo mặc định và cần được bật trước. Đặt thuộc tính ``Mode`` trong nhóm ``Sub Emitter`` của :ref:`ParticleProcessMaterial <doc_process_material_properties_subemitter>` thành một giá trị khác ``Disabled``.
 
-The emitter mode also determines how many sub-emitter particles are spawned. ``Constant``
-spawns a single particle at a frequency set by the ``Frequency`` property. For ``At End``
-and ``At Collision`` you can set the amount directly with the ``Amount At End`` and the
-``Amount At Collision`` properties.
+Chế độ emitter cũng quyết định số lượng particle của sub-emitter được khởi tạo. ``Constant`` khởi tạo một particle duy nhất theo tần suất được đặt bởi thuộc tính ``Frequency``. Với ``At End`` và ``At Collision``, bạn có thể đặt trực tiếp số lượng bằng các thuộc tính ``Amount At End`` và ``Amount At Collision``.
 
-Limitations
-~~~~~~~~~~~
+Giới hạn
+~~~~~~~~
 
-One thing to keep in mind is that the total number of active particles from the sub-emitter
-is always capped by the ``Amount`` property on the sub-emitter particle system. If you find
-that there are not enough particles spawned from the sub-emitter, you might have to increase
-the amount in the particle system.
+Một điều cần lưu ý là tổng số particle đang hoạt động từ sub-emitter luôn bị giới hạn bởi thuộc tính ``Amount`` trên particle system của sub-emitter. Nếu nhận thấy sub-emitter khởi tạo không đủ particle, bạn có thể cần tăng số lượng trong particle system.
 
-Some emitter properties are ignored when a particle system is spawned as a sub-emitter.
-The ``Explosiveness`` property, for example, has no effect. Depending on the emitter mode,
-the particles are either spawned sequentially at fixed intervals or explosively all at once.
+Một số thuộc tính emitter bị bỏ qua khi particle system được khởi tạo dưới dạng sub-emitter. Ví dụ, thuộc tính ``Explosiveness`` không có tác dụng. Tùy thuộc vào chế độ emitter, các particle sẽ được khởi tạo tuần tự theo những khoảng thời gian cố định hoặc phát nổ và khởi tạo tất cả cùng lúc.

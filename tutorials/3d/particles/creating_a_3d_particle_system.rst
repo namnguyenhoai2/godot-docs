@@ -1,90 +1,70 @@
 .. _doc_creating_3d_particle_system:
 
-Creating a 3D particle system
------------------------------
+Tạo hệ thống hạt 3D
+-------------------
 
 .. figure:: img/particle_node_new.webp
    :align: right
 
-   Required particle node properties
+   Các thuộc tính bắt buộc của node hạt
 
-To get started with particles, the first thing we need to do is add a ``GPUParticles3D``
-node to the scene. Before we can actually see any particles, we have to set up two parameters on the node:
-the ``Process Material`` and at least one ``Draw Pass``.
+Để bắt đầu sử dụng hạt, việc đầu tiên chúng ta cần làm là thêm một node ``GPUParticles3D`` vào scene. Trước khi thực sự có thể nhìn thấy hạt, chúng ta phải thiết lập hai tham số trên node: ``Process Material`` và ít nhất một ``Draw Pass``.
 
-The process material
-~~~~~~~~~~~~~~~~~~~~
+Vật liệu xử lý
+~~~~~~~~~~~~~~
 
-To add a process material to your particles node, go to ``Process Material`` in the inspector panel.
-Click on the box next to ``Process Material`` and from the dropdown menu select ``New ParticleProcessMaterial``.
+Để thêm vật liệu xử lý vào node hạt, hãy đi đến ``Process Material`` trong bảng inspector. Nhấp vào ô bên cạnh ``Process Material`` và chọn ``New ParticleProcessMaterial`` từ menu thả xuống.
 
 .. figure:: img/particle_new_process_material.webp
    :align: right
 
-   Creating a process material
+   Tạo vật liệu xử lý
 
-:ref:`class_ParticleProcessMaterial` is a special kind of material. We don't use it to draw any objects.
-We use it to update particle data and behavior on the GPU instead of the CPU, which comes with a massive performance
-boost. A click on the newly added material displays a long list of properties that you can set to
-control each particle's behavior.
+:ref:`class_ParticleProcessMaterial` là một loại vật liệu đặc biệt. Chúng ta không dùng nó để vẽ bất kỳ đối tượng nào. Thay vào đó, chúng ta dùng nó để cập nhật dữ liệu và hành vi của hạt trên GPU thay vì CPU, nhờ đó hiệu năng được cải thiện đáng kể. Nhấp vào vật liệu vừa thêm sẽ hiển thị một danh sách dài các thuộc tính mà bạn có thể thiết lập để điều khiển hành vi của từng hạt.
 
-Draw passes
+Các lượt vẽ
 ~~~~~~~~~~~
 
 .. figure:: img/particle_first_draw_pass.webp
    :align: right
 
-   At least one draw pass is required
+   Cần ít nhất một lượt vẽ
 
-In order to render any particles, at least one draw pass needs to be defined. To do that, go to
-``Draw Passes`` in the inspector panel. Click on the box next to ``Pass 1`` and select ``New QuadMesh``
-from the dropdown menu. After that, click on the mesh and set its ``Size`` to 0.1 for both ``x``
-and ``y``. Reducing the mesh's size makes it a little easier to tell the individual particle
-meshes apart at this stage.
+Để render bất kỳ hạt nào, cần xác định ít nhất một lượt vẽ. Để thực hiện việc đó, hãy đi đến ``Draw Passes`` trong bảng inspector. Nhấp vào ô bên cạnh ``Pass 1`` và chọn ``New QuadMesh`` từ menu thả xuống. Sau đó, nhấp vào mesh và đặt ``Size`` của nó thành 0.1 cho cả ``x`` và ``y``. Việc giảm kích thước của mesh giúp phân biệt các mesh hạt riêng lẻ dễ hơn một chút ở giai đoạn này.
 
-You can use up to 4 draw passes per particle system. Each pass can render a different
-mesh with its own unique material. All draw passes use the data that is computed by the process material,
-which is an efficient method for composing complex effects: Compute particle
-behavior once and feed it to multiple render passes.
+Bạn có thể sử dụng tối đa 4 lượt vẽ cho mỗi hệ thống hạt. Mỗi lượt có thể render một mesh khác với material riêng. Tất cả các lượt vẽ đều sử dụng dữ liệu được tính toán bởi vật liệu xử lý, đây là một phương pháp hiệu quả để tạo các hiệu ứng phức tạp: Tính toán hành vi của hạt một lần rồi cung cấp dữ liệu đó cho nhiều lượt render.
 
 .. figure:: img/particle_two_draw_passes.webp
 
-   Using multiple draw passes: yellow rectangles (pass1) and blue spheres (pass 2)
+   Sử dụng nhiều lượt vẽ: các hình chữ nhật màu vàng (lượt 1) và các hình cầu màu xanh dương (lượt 2)
 
-If you followed the steps above, your particle system should now be emitting particles in a waterfall-like fashion,
-making them move downwards and disappear after a few seconds. This is the foundation for all
-particle effects. Take a look at the documentation for :ref:`particle <doc_3d_particles_properties>` and
-:ref:`particle material <doc_process_material_properties>` properties to
-learn how to make particle effects more interesting.
+Nếu đã làm theo các bước trên, hệ thống hạt của bạn lúc này sẽ phát ra các hạt theo kiểu giống như thác nước, khiến chúng di chuyển xuống dưới và biến mất sau vài giây. Đây là nền tảng cho mọi hiệu ứng hạt. Hãy xem tài liệu về :ref:`particle <doc_3d_particles_properties>` và
+các thuộc tính của :ref:`particle material <doc_process_material_properties>` để tìm hiểu cách làm cho hiệu ứng hạt thú vị hơn.
 
 .. figure:: img/particle_basic_system.webp
 
-Particle conversion
-~~~~~~~~~~~~~~~~~~~
+Chuyển đổi hạt
+~~~~~~~~~~~~~~
 
 .. figure:: img/particle_convert_cpu.webp
    :align: right
 
-   Turning GPU into CPU particles
+   Chuyển hạt GPU thành hạt CPU
 
-You can convert GPU particles to CPU particles at any time using the entry in the viewport
-menu. When you do so, keep in mind that not every feature of GPU particles is available for
-CPU particles, so the resulting particle system will look and behave differently from the
-original.
+Bạn có thể chuyển đổi hạt GPU thành hạt CPU bất kỳ lúc nào bằng mục tương ứng trong menu viewport. Khi thực hiện việc này, hãy lưu ý rằng không phải mọi tính năng của hạt GPU đều có sẵn cho hạt CPU, vì vậy hệ thống hạt kết quả sẽ có hình thức và hành vi khác với hệ thống ban đầu.
 
-You can also convert CPU particles to GPU particles if you no longer need to use CPU particles.
-This is also done from the viewport menu.
+Bạn cũng có thể chuyển đổi hạt CPU thành hạt GPU nếu không còn cần sử dụng hạt CPU. Việc này cũng được thực hiện từ menu viewport.
 
-Some of the most notable features that are lost during the conversion include:
+Một số tính năng đáng chú ý nhất bị mất trong quá trình chuyển đổi gồm có:
 
-- multiple draw passes
+- nhiều lượt vẽ
 - turbulence
 - sub-emitters
 - trails
 - attractors
 - collision
 
-You also lose the following properties:
+Bạn cũng sẽ mất các thuộc tính sau:
 
 - ``Amount Ratio``
 - ``Interp to End``
@@ -98,5 +78,4 @@ You also lose the following properties:
 - ``Velocity Limit``
 - ``Scale Over Velocity``
 
-Converting GPU particles to CPU particles can become necessary when you want to release a game
-on older devices that don't support modern graphics APIs.
+Việc chuyển đổi hạt GPU thành hạt CPU có thể trở nên cần thiết khi bạn muốn phát hành game trên các thiết bị cũ không hỗ trợ các graphics API hiện đại.

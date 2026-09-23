@@ -1,93 +1,56 @@
 .. _doc_3d_particles_complex_shapes:
 
-Complex emission shapes
------------------------
+Hình dạng phát xạ phức tạp
+--------------------------
 
 .. figure:: img/particle_complex_emission.webp
-   :alt: Complex emission shapes
+   :alt: Hình dạng phát xạ phức tạp
 
-When it is not enough to emit particles from one of the simple shapes available
-in the :ref:`process material <doc_process_material_properties_shapes>`, Godot provides
-a way to emit particles from arbitrary, complex shapes. The shapes are generated from
-meshes in the scene and stored as textures in the particle process material. This is a
-very versatile workflow that has allowed users to use particle systems for things that
-go beyond traditional use cases, like foliage, leaves on a tree, or complex
-holographic effects.
+Khi việc phát các hạt từ một trong những hình dạng đơn giản có sẵn trong :ref:`process material <doc_process_material_properties_shapes>` là chưa đủ, Godot cung cấp một cách để phát các hạt từ những hình dạng phức tạp, tùy ý. Các hình dạng này được tạo từ các mesh trong scene và được lưu dưới dạng texture trong particle process material. Đây là một quy trình rất linh hoạt, cho phép người dùng sử dụng particle system cho những mục đích vượt ra ngoài các trường hợp sử dụng truyền thống, chẳng hạn như tán lá, lá trên cây hoặc các hiệu ứng holographic phức tạp.
 
 .. note::
 
-    When you create emission points from meshes, you can only select a single node as
-    emission source. If you want particles to emit from multiple shapes, you either
-    have to create several particle systems or combine the meshes into one in an
-    external DCC software.
+    Khi tạo các điểm phát xạ từ mesh, bạn chỉ có thể chọn một node duy nhất làm nguồn phát xạ. Nếu muốn các hạt phát ra từ nhiều hình dạng, bạn phải tạo nhiều particle system hoặc kết hợp các mesh thành một mesh trong phần mềm DCC bên ngoài.
 
 .. figure:: img/particle_create_emission_points.webp
-   :alt: Creating emission points
+   :alt: Tạo các điểm phát xạ
    :align: right
 
-   Create particle emission points...
+   Tạo các điểm phát xạ cho hạt...
 
 .. figure:: img/particle_select_emission_mesh.webp
-   :alt: Select mesh for emission
+   :alt: Chọn mesh để phát xạ
    :align: right
 
-   \...from a mesh instance as the source
+   \...từ một mesh instance làm nguồn
 
 .. figure:: img/particle_emission_density.webp
-   :alt: Set emission density
+   :alt: Đặt mật độ phát xạ
    :align: right
 
-   More points = higher particle density
+   Nhiều điểm hơn = mật độ hạt cao hơn
 
-To make use of this feature, start by creating a particle system in the current scene.
-Add a mesh instance that serves as the source of the particle emission points. With the
-particle system selected, navigate to the viewport menu and select the *GPUParticles3D*
-entry. From there, select ``Create Emission Points From Node``.
+Để sử dụng tính năng này, trước tiên hãy tạo một particle system trong scene hiện tại. Thêm một mesh instance làm nguồn cho các điểm phát xạ của hạt. Khi đã chọn particle system, hãy đi đến menu viewport và chọn mục *GPUParticles3D*. Từ đó, chọn ``Create Emission Points From Node``.
 
-A dialog window will pop up and ask you to select a node as the emission source.
-Choose one of the mesh instances in the scene and confirm your selection. The next
-dialog window deals with the amount of points and how to generate them.
+Một cửa sổ hộp thoại sẽ xuất hiện và yêu cầu bạn chọn một node làm nguồn phát xạ. Hãy chọn một trong các mesh instance trong scene và xác nhận lựa chọn. Cửa sổ hộp thoại tiếp theo liên quan đến số lượng điểm và cách tạo chúng.
 
-``Emission Points`` controls the total number of points that you are about to generate.
-Particles will spawn from these points, so what to enter here depends on the
-size of the source mesh (how much area you have to cover) and the desired density of
-the particles.
+``Emission Points`` kiểm soát tổng số điểm mà bạn sắp tạo. Các hạt sẽ xuất hiện từ những điểm này, vì vậy giá trị cần nhập phụ thuộc vào kích thước của mesh nguồn (diện tích cần bao phủ) và mật độ hạt mong muốn.
 
-``Emission Source`` offers 3 different options for how the points are generated.
-Select ``Surface Points`` if all you want to do is distribute the emission points across the
-surface of the mesh. Select ``Surface Points + Normal (Directed)`` if you also want to
-generate information about the surface normals and make particles move in the direction
-that the normals point at. The last option, ``Volume``, creates emission points everywhere
-inside the mesh, not just across its surface.
+``Emission Source`` cung cấp 3 tùy chọn khác nhau về cách tạo các điểm. Chọn ``Surface Points`` nếu bạn chỉ muốn phân bố các điểm phát xạ trên bề mặt mesh. Chọn ``Surface Points + Normal (Directed)`` nếu bạn cũng muốn tạo thông tin về các pháp tuyến bề mặt và khiến các hạt chuyển động theo hướng mà các pháp tuyến đó chỉ đến. Tùy chọn cuối cùng, ``Volume``, tạo các điểm phát xạ ở mọi vị trí bên trong mesh, không chỉ trên bề mặt.
 
-The emission points are stored in the particle system's local coordinate system, so
-you can move the particle node around and the emission points will follow. This might be
-useful when you want to use the same particle system in several different places. On the
-other hand, you might have to regenerate the emission points when you move either
-the particle system or the source mesh.
+Các điểm phát xạ được lưu trong hệ tọa độ cục bộ của particle system, vì vậy bạn có thể di chuyển particle node và các điểm phát xạ sẽ di chuyển theo. Điều này có thể hữu ích khi bạn muốn sử dụng cùng một particle system ở nhiều vị trí khác nhau. Mặt khác, bạn có thể phải tạo lại các điểm phát xạ khi di chuyển particle system hoặc mesh nguồn.
 
-Emission shape textures
-~~~~~~~~~~~~~~~~~~~~~~~
+Texture hình dạng phát xạ
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. figure:: img/particle_emission_textures.webp
-   :alt: Emission textures
+   :alt: Texture phát xạ
    :align: right
 
-   The available emission shape textures
+   Các texture hình dạng phát xạ có sẵn
 
-All the data for complex particle emission shapes is stored in a set of textures. How
-many, depends on the type of emission shape you use. If you set the ``Shape`` property
-in the ``Emission Shape`` group on the particle process material to ``Points``, you
-have access to 2 texture properties, the ``Point Texture`` and the ``Color Texture``.
-Set it to ``Directed Points`` and there is a third property called ``Normal Texture``.
+Toàn bộ dữ liệu cho các hình dạng phát xạ hạt phức tạp được lưu trong một tập hợp texture. Số lượng texture phụ thuộc vào loại hình dạng phát xạ bạn sử dụng. Nếu đặt thuộc tính ``Shape`` trong nhóm ``Emission Shape`` của particle process material thành ``Points``, bạn sẽ có quyền truy cập vào 2 thuộc tính texture là ``Point Texture`` và ``Color Texture``. Đặt thành ``Directed Points`` thì sẽ có thêm thuộc tính thứ ba là ``Normal Texture``.
 
-``Point Texture`` contains all possible emission points that were generated in the
-previous step. A point is randomly selected for every particle when it spawns.
-``Normal Texture``, if it exists, provides a direction vector at that same location.
-If the ``Color Texture`` property is also set, it provides color for the particle,
-sampled at the same location as the other two textures and modulating any other color
-that was set up on the process material.
+``Point Texture`` chứa tất cả các điểm phát xạ có thể có được tạo ở bước trước. Một điểm sẽ được chọn ngẫu nhiên cho mỗi hạt khi hạt xuất hiện. ``Normal Texture``, nếu tồn tại, cung cấp một vector hướng tại cùng vị trí đó. Nếu thuộc tính ``Color Texture`` cũng được đặt, thuộc tính này cung cấp màu cho hạt, được lấy mẫu tại cùng vị trí với hai texture còn lại và điều chỉnh mọi màu khác đã được thiết lập trên process material.
 
-There is also the ``Point Count`` property that you can use to change the number of
-emission points at any time after creating the emission shape. This includes dynamically
-at runtime while the playing the game.
+Ngoài ra còn có thuộc tính ``Point Count``, cho phép bạn thay đổi số lượng điểm phát xạ bất kỳ lúc nào sau khi tạo hình dạng phát xạ. Việc này cũng có thể được thực hiện động trong runtime khi game đang chạy.

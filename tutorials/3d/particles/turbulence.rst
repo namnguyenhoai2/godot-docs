@@ -1,116 +1,80 @@
 .. _doc_3d_particles_turbulence:
 
-Particle turbulence
--------------------
+Nhiễu loạn hạt
+--------------
 
 .. figure:: img/particle_turbulence.webp
-   :alt: Particle turbulence
+   :alt: Nhiễu loạn hạt
 
-Turbulence uses a noise texture to add variation and interesting patterns to particle movement.
-It can be combined with :ref:`particle attractors <doc_3d_particles_attractors>` and
-:ref:`collision <doc_3d_particles_collision>` nodes to create even more complex looking behavior.
+Nhiễu loạn sử dụng texture nhiễu để thêm biến thiên và các mẫu thú vị vào chuyển động của hạt. Nó có thể được kết hợp với :ref:`particle attractors <doc_3d_particles_attractors>` và
+các node :ref:`collision <doc_3d_particles_collision>` để tạo ra hành vi có vẻ phức tạp hơn nữa.
 
 .. figure:: img/particle_turbulence_properties.webp
-   :alt: Turbulence properties
+   :alt: Các thuộc tính nhiễu loạn
    :align: right
 
-   Particle turbulence properties
+   Các thuộc tính nhiễu loạn hạt
 
-There are two things you have to do before turbulence has any effect on a particle system. First you must
-add movement to the particle system. Turbulence modifies a particle's movement
-direction and speed, but it doesn't create any. It is enough to give the particle system some
-gravity, but you can just as well create a number of attractors if you want the particles
-to follow a more complex movement path. Second, you need to :ref:`enable turbulence in the particle process material <doc_process_material_properties_turbulence>`.
-Once enabled, you have access to all the turbulence properties.
+Có hai việc bạn phải làm trước khi nhiễu loạn có bất kỳ tác động nào lên một hệ thống hạt. Trước tiên, bạn phải thêm chuyển động cho hệ thống hạt. Nhiễu loạn thay đổi hướng và tốc độ chuyển động của hạt, nhưng không tự tạo ra chuyển động. Chỉ cần cung cấp cho hệ thống hạt một chút trọng lực là đủ, nhưng bạn cũng có thể tạo một số attractor nếu muốn các hạt đi theo một đường chuyển động phức tạp hơn. Thứ hai, bạn cần :ref:`bật nhiễu loạn trong particle process material <doc_process_material_properties_turbulence>`. Sau khi được bật, bạn có thể truy cập tất cả các thuộc tính nhiễu loạn.
 
 .. warning::
 
-    Turbulence makes use of 3D noise, which has a high performance cost on the GPU.
-    Only enable turbulence on a few particle systems on screen at most.
-    Using turbulence is not recommended when targeting mobile/web platforms.
+    Nhiễu loạn sử dụng nhiễu 3D, vốn có chi phí hiệu năng cao trên GPU. Tối đa chỉ nên bật nhiễu loạn cho một vài hệ thống hạt trên màn hình. Không nên sử dụng nhiễu loạn khi nhắm đến các nền tảng mobile/web.
 
-Noise properties
-~~~~~~~~~~~~~~~~
-
-The basis for particle turbulence is a noise pattern. There are several
-properties that allow you to manipulate different attributes of this pattern.
-
-The ``Noise Strength`` property controls the pattern's contrast, which affects the overall turbulence
-sharpness. A lower value creates a softer pattern where individual movement paths are
-not as sharply separated from another. Set this to a higher number to make the pattern more
-distinct.
-
-.. figure:: img/particle_turbulence_strength.webp
-   :alt: Turbulence noise strength
-
-   At a value of 1 (left), the noise strength produces softer turbulence patterns than at 20 (right)
-
-The ``Noise Scale`` property controls the pattern's frequency. It basically changes the noise texture's UV scale
-where a smaller value produces finer detail, but repeating patterns become noticeable faster. A larger value
-results in a weaker turbulence pattern overall, but the particle system can cover a larger area before repetition
-starts to become an issue.
-
-.. figure:: img/particle_turbulence_scale.webp
-   :alt: Turbulence noise scale
-
-   Turbulence noise scale produces finer details at a value of 1.5 (left) than at 6 (right)
-
-The ``Noise Speed`` property takes a vector and controls the noise panning speed and direction.
-This allows you to move the noise pattern over time, which adds another layer of movement
-variation to the particle system.
-
-.. warning::
-
-   Don't mix up particle movement speed and noise panning speed! They are two different things.
-   Particle movement is determined by a number of properties, including the turbulence noise.
-   The ``Noise Speed`` property moves the pattern itself, which in turn changes where the
-   noise affects the particles.
-
-At a value of ``(X=0,Y=0,Z=0)``, the noise pattern doesn't move at all. The influence on particle
-movement stays the same at any given point. Set the speed to ``(X=1,Y=0,Z=0)`` instead, and the
-noise pattern moves along the X-axis.
-
-.. figure:: img/particle_turbulence_speed.webp
-   :alt: Turbulence noise speed
-
-   Different noise speed values. Left\: (X=0,Y=0,Z=0), middle\: (X=0.5,Y=0.5,Z=0.5), right\: (X=0,Y=-2,Z=0).
-
-The ``Noise Speed Random`` property adds some randomness to the noise panning speed. This helps
-with breaking up visible patterns, especially at higher panning speeds when repetition becomes
-noticeable faster.
-
-Influence properties
+Các thuộc tính nhiễu
 ~~~~~~~~~~~~~~~~~~~~
 
-The influence properties determine how much each particle is affected by turbulence. Use
-``Influence Min`` to set a minimum value and ``Influence Max`` to set a maximum value. When a
-particle spawns, the influence is randomly chosen from within this range. You can
-also set up a curve with the ``Influence Over Life`` property that modifies that value
-over each particle's lifetime. These three properties together control the strength of
-the turbulence's effect on the particle system :ref:`as described before <doc_process_material_properties>`.
+Nền tảng của nhiễu loạn hạt là một mẫu nhiễu. Có một số thuộc tính cho phép bạn điều chỉnh các thuộc tính khác nhau của mẫu này.
 
-Since these properties affect the overall influence of the turbulence over a particle system,
-both movement direction and speed change as you set different values. A stronger influence causes
-a particle to move faster and all particles to follow along narrower paths as a result of that.
+Thuộc tính ``Noise Strength`` điều khiển độ tương phản của mẫu, yếu tố ảnh hưởng đến độ sắc nét tổng thể của nhiễu loạn. Giá trị thấp hơn tạo ra một mẫu mềm hơn, trong đó các đường chuyển động riêng lẻ không được phân tách rõ ràng khỏi nhau. Đặt giá trị này cao hơn để làm cho mẫu rõ rệt hơn.
+
+.. figure:: img/particle_turbulence_strength.webp
+   :alt: Độ mạnh nhiễu loạn của nhiễu
+
+   Ở giá trị 1 (bên trái), độ mạnh của nhiễu tạo ra các mẫu nhiễu loạn mềm hơn so với giá trị 20 (bên phải)
+
+Thuộc tính ``Noise Scale`` điều khiển tần số của mẫu. Về cơ bản, nó thay đổi tỷ lệ UV của texture nhiễu, trong đó giá trị nhỏ hơn tạo ra chi tiết mịn hơn, nhưng các mẫu lặp lại sẽ dễ nhận thấy hơn. Giá trị lớn hơn tạo ra mẫu nhiễu loạn yếu hơn về tổng thể, nhưng hệ thống hạt có thể bao phủ một khu vực lớn hơn trước khi việc lặp lại trở thành vấn đề.
+
+.. figure:: img/particle_turbulence_scale.webp
+   :alt: Tỷ lệ nhiễu loạn của nhiễu
+
+   Tỷ lệ nhiễu loạn của nhiễu tạo ra chi tiết mịn hơn ở giá trị 1.5 (bên trái) so với giá trị 6 (bên phải)
+
+Thuộc tính ``Noise Speed`` nhận một vector và điều khiển tốc độ cũng như hướng pan của nhiễu. Điều này cho phép bạn di chuyển mẫu nhiễu theo thời gian, tạo thêm một lớp biến thiên chuyển động cho hệ thống hạt.
+
+.. warning::
+
+   Đừng nhầm lẫn tốc độ chuyển động của hạt với tốc độ pan của nhiễu! Đây là hai yếu tố khác nhau. Chuyển động của hạt được xác định bởi một số thuộc tính, bao gồm cả nhiễu loạn. Thuộc tính ``Noise Speed`` di chuyển chính mẫu nhiễu, từ đó thay đổi vị trí mà nhiễu tác động lên các hạt.
+
+Ở giá trị ``(X=0,Y=0,Z=0)``, mẫu nhiễu hoàn toàn không di chuyển. Ảnh hưởng lên chuyển động của hạt vẫn giữ nguyên tại mọi điểm đã cho. Thay vào đó, đặt tốc độ thành ``(X=1,Y=0,Z=0)``, và mẫu nhiễu sẽ di chuyển dọc theo trục X.
+
+.. figure:: img/particle_turbulence_speed.webp
+   :alt: Tốc độ nhiễu loạn của nhiễu
+
+   Các giá trị tốc độ nhiễu khác nhau. Bên trái\: (X=0,Y=0,Z=0), ở giữa\: (X=0.5,Y=0.5,Z=0.5), bên phải\: (X=0,Y=-2,Z=0).
+
+Thuộc tính ``Noise Speed Random`` thêm một mức ngẫu nhiên vào tốc độ pan của nhiễu. Điều này giúp phá vỡ các mẫu dễ nhìn thấy, đặc biệt là ở tốc độ pan cao, khi sự lặp lại dễ nhận thấy hơn.
+
+Các thuộc tính ảnh hưởng
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Các thuộc tính ảnh hưởng xác định mức độ mỗi hạt bị tác động bởi nhiễu loạn. Sử dụng ``Influence Min`` để đặt giá trị tối thiểu và ``Influence Max`` để đặt giá trị tối đa. Khi một hạt xuất hiện, ảnh hưởng được chọn ngẫu nhiên trong phạm vi này. Bạn cũng có thể thiết lập một đường cong bằng thuộc tính ``Influence Over Life`` để điều chỉnh giá trị đó trong suốt vòng đời của mỗi hạt. Ba thuộc tính này cùng nhau điều khiển cường độ tác động của nhiễu loạn lên hệ thống hạt :ref:`như đã mô tả ở trên <doc_process_material_properties>`.
+
+Vì các thuộc tính này ảnh hưởng đến tác động tổng thể của nhiễu loạn lên một hệ thống hạt, cả hướng và tốc độ chuyển động đều thay đổi khi bạn đặt các giá trị khác nhau. Ảnh hưởng mạnh hơn khiến hạt di chuyển nhanh hơn và do đó tất cả các hạt đi theo những đường hẹp hơn.
 
 .. figure:: img/particle_turbulence_influence.webp
-   :alt: Turbulence influence
+   :alt: Ảnh hưởng của nhiễu loạn
 
-   Notice how the particle paths are more narrow and less spread out at high influence values (right)
+   Hãy chú ý rằng các đường đi của hạt hẹp hơn và ít phân tán hơn ở các giá trị ảnh hưởng cao (bên phải)
 
-Displacement properties
-~~~~~~~~~~~~~~~~~~~~~~~
+Các thuộc tính dịch chuyển
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Displacement changes a particle's starting position. Use ``Initial Displacement Min`` to set a
-lower limit and ``Initial Displacement Max`` to set an upper limit. When a particle spawns, the
-amount of displacement is randomly chosen from within this range and multiplied by a random
-direction.
+Dịch chuyển thay đổi vị trí bắt đầu của một hạt. Sử dụng ``Initial Displacement Min`` để đặt giới hạn dưới và ``Initial Displacement Max`` để đặt giới hạn trên. Khi một hạt xuất hiện, mức dịch chuyển được chọn ngẫu nhiên trong phạm vi này và nhân với một hướng ngẫu nhiên.
 
-Displacement is very useful to break up regular shapes or to create complex shapes from simpler
-ones. The only difference between the particle systems in the screenshot below is the value
-given to the displacement properties.
+Dịch chuyển rất hữu ích để phá vỡ các hình dạng đều đặn hoặc tạo ra các hình dạng phức tạp từ những hình dạng đơn giản hơn. Điểm khác biệt duy nhất giữa các hệ thống hạt trong ảnh chụp màn hình bên dưới là giá trị được cung cấp cho các thuộc tính dịch chuyển.
 
 .. figure:: img/particle_turbulence_displacement.webp
-   :alt: Turbulence displacement
+   :alt: Dịch chuyển nhiễu loạn
 
-   No displacement (left), displacement value of 5 (middle), displacement range [-20, 20] (right)
+   Không dịch chuyển (bên trái), giá trị dịch chuyển là 5 (ở giữa), phạm vi dịch chuyển [-20, 20] (bên phải)

@@ -1,233 +1,120 @@
 .. _doc_using_sdfgi:
 
-Signed distance field global illumination (SDFGI)
-=================================================
+Global illumination bằng trường khoảng cách có dấu (SDFGI)
+==========================================================
 
-Signed distance field global illumination (SDFGI) is a novel technique available
-in Godot. It provides semi-real-time global illumination that scales to any
-world size and works with procedurally generated levels.
+Global illumination bằng trường khoảng cách có dấu (SDFGI) là một kỹ thuật mới có trong Godot. Kỹ thuật này cung cấp global illumination gần thời gian thực, có thể mở rộng đến mọi kích thước thế giới và hoạt động với các level được tạo theo quy trình.
 
-SDFGI supports dynamic lights, but *not* dynamic occluders or dynamic emissive surfaces.
-Therefore, SDFGI provides better real-time ability than
-:ref:`baked lightmaps <doc_using_lightmap_gi>`, but worse real-time ability than
+SDFGI hỗ trợ đèn động, nhưng *not* các vật cản động hoặc bề mặt phát sáng động. Vì vậy, SDFGI có khả năng xử lý theo thời gian thực tốt hơn
+:ref:`baked lightmaps <doc_using_lightmap_gi>`, nhưng khả năng xử lý theo thời gian thực kém hơn
 :ref:`VoxelGI <doc_using_voxel_gi>`.
 
-From a performance standpoint, SDFGI is one of the most demanding global illumination
-techniques in Godot. Like with VoxelGI, there are still many settings available to tweak
-its performance requirements at the cost of quality.
+Xét về hiệu năng, SDFGI là một trong những kỹ thuật global illumination đòi hỏi nhiều tài nguyên nhất trong Godot. Giống như với VoxelGI, vẫn có nhiều thiết lập cho phép điều chỉnh yêu cầu hiệu năng để đánh đổi chất lượng.
 
 .. important::
 
-    SDFGI is only supported when using the Forward+ renderer, not the Mobile or
-    Compatibility renderers.
+    SDFGI chỉ được hỗ trợ khi sử dụng Forward+, không được hỗ trợ với các renderer Mobile hoặc Compatibility.
 
 .. seealso::
 
-    Not sure if SDFGI is suited to your needs?
-    See :ref:`doc_introduction_to_global_illumination_comparison`
-    for a comparison of GI techniques available in Godot 4.
+    Không chắc SDFGI có phù hợp với nhu cầu của bạn không? Xem :ref:`doc_introduction_to_global_illumination_comparison` để so sánh các kỹ thuật GI có trong Godot 4.
 
-Visual comparison
+So sánh trực quan
 -----------------
 
 .. figure:: img/gi_none.webp
-   :alt: SDFGI disabled.
+   :alt: Đã tắt SDFGI.
 
-   SDFGI disabled.
+   Đã tắt SDFGI.
 
 .. figure:: img/gi_sdfgi.webp
-   :alt: SDFGI enabled.
+   :alt: Đã bật SDFGI.
 
-   SDFGI enabled.
+   Đã bật SDFGI.
 
-Setting up SDFGI
-----------------
+Thiết lập SDFGI
+---------------
 
-In Godot, SDFGI is the global illumination technique with the fewest required
-steps to enable:
+Trong Godot, SDFGI là kỹ thuật global illumination cần ít bước nhất để bật:
 
-1. Make sure your MeshInstance nodes have their **Global Illumination > Mode**
-   property set to **Static** in the inspector.
+1. Đảm bảo thuộc tính **Global Illumination > Mode** của các node MeshInstance được đặt thành **Static** trong inspector.
 
-  - For imported 3D scenes, the bake mode can be configured in the Import dock
-    after selecting the 3D scene file in the FileSystem dock.
+  - Đối với các scene 3D đã import, có thể cấu hình chế độ bake trong dock Import sau khi chọn tệp scene 3D trong dock FileSystem.
 
-2. Add a WorldEnvironment node and create an Environment resource for it.
-3. Edit the Environment resource, scroll down to the **SDFGI** section and unfold it.
-4. Enable **SDFGI > Enabled**. SDFGI will automatically follow the camera when it
-   moves, so you do not need to configure extents (unlike VoxelGI).
+2. Thêm một node WorldEnvironment và tạo một resource Environment cho node đó.
+3. Chỉnh sửa resource Environment, cuộn xuống phần **SDFGI** rồi mở rộng phần này.
+4. Bật **SDFGI > Enabled**. SDFGI sẽ tự động đi theo camera khi camera di chuyển, vì vậy bạn không cần cấu hình phạm vi (khác với VoxelGI).
 
-Environment SDFGI properties
-----------------------------
+Các thuộc tính SDFGI của Environment
+------------------------------------
 
-In the Environment resource, there are several properties available to adjust
-SDFGI appearance and quality:
+Trong resource Environment, có một số thuộc tính cho phép điều chỉnh diện mạo và chất lượng của SDFGI:
 
-- **Use Occlusion:** If enabled, SDFGI will throw additional rays to find and
-  reduce light leaks. This has a performance cost, so only enable this property
-  if you actually need it.
-- **Read Sky Light:** If enabled, the environment lighting is represented in the
-  global illumination. This should be enabled in outdoor scenes and disabled in
-  fully indoor scenes.
-- **Bounce Feedback:** By default, indirect lighting only bounces once when
-  using SDFGI. Setting this value above ``0.0`` will cause SDFGI to bounce more
-  than once, which provides more realistic indirect lighting at a small
-  performance cost. Sensible values are usually between ``0.3`` and ``1.0``
-  depending on the scene. Note that in some scenes, values above ``0.5`` can
-  cause infinite feedback loops to happen, causing the scene to become extremely
-  bright in a few seconds' time.
-  If your indirect lighting looks "splotchy", consider increasing this value above
-  ``0.0`` to get more uniform-looking lighting. If your lighting ends up looking
-  too bright as a result, decrease **Energy** to compensate.
-- **Cascades:** Higher values result in more detailed GI information
-  (and/or greater maximum distance), but are significantly more expensive on the
-  CPU and GPU. The performance cost of having more cascades especially increases
-  when the camera moves fast, so consider decreasing this to ``4`` or lower
-  if your camera moves fast.
-- **Min Cell Size:** The minimum SDFGI cell size to use for the nearest, most detailed
-  cascade. Lower values result in more accurate indirect lighting and reflection
-  at the cost of lower performance.
-  Adjusting this setting also affects **Cascade 0 Distance** and **Max Distance** automatically.
-- **Cascade 0 Distance:** The distance at which the nearest, most detailed
-  cascade ends. Greater values make the nearest cascade transition less noticeable,
-  at the cost of reducing the level of detail in the nearest cascade.
-  Adjusting this setting also affects **Min Cell Size** and **Max Distance** automatically.
-- **Max Distance:** Controls how far away the signed distance field will be computed
-  (for the least detailed cascade). SDFGI will not have any effect past this distance.
-  This value should always be set below the Camera's Far value, as there is no benefit
-  in computing SDFGI past the viewing distance.
-  Adjusting this setting also affects **Min Cell Size** and **Cascade 0 Distance** automatically.
-- **Y Scale:** Controls how far apart SDFGI probes are spread *vertically*.
-  By default, vertical spread is the same as horizontal. However, since most
-  game scenes aren't highly vertical, setting the Y Scale to
-  ``75%`` or even ``50%`` can provide better quality and reduce light leaks
-  without impacting performance.
-- **Energy:** The brightness multiplier for SDFGI's indirect lighting.
-- **Normal Bias:** The normal bias to use for SDFGI's probe ray bounces.
-  Unlike **Probe Bias**, this only increases the value in relation to the
-  mesh's normals. This makes the bias adjustment more nuanced and avoids
-  increasing the bias too much for no reason. Increase this
-  value if you notice striping artifacts in indirect lighting or reflections.
-- **Probe Bias:** The bias to use for SDFGI's probe ray bounces. Increase this
-  value if you notice striping artifacts in indirect lighting or reflections.
+- **Use Occlusion:** Nếu bật, SDFGI sẽ phát thêm các tia để tìm và giảm hiện tượng rò rỉ ánh sáng. Việc này làm giảm hiệu năng, vì vậy chỉ bật thuộc tính này khi thực sự cần.
+- **Read Sky Light:** Nếu bật, ánh sáng môi trường sẽ được thể hiện trong global illumination. Nên bật tùy chọn này trong các scene ngoài trời và tắt trong các scene hoàn toàn trong nhà.
+- **Bounce Feedback:** Theo mặc định, ánh sáng gián tiếp chỉ dội một lần khi sử dụng SDFGI. Đặt giá trị này cao hơn ``0.0`` sẽ khiến SDFGI dội nhiều hơn một lần, cung cấp ánh sáng gián tiếp chân thực hơn với một chi phí hiệu năng nhỏ. Các giá trị hợp lý thường nằm giữa ``0.3`` và ``1.0`` tùy theo scene. Lưu ý rằng trong một số scene, các giá trị cao hơn ``0.5`` có thể gây ra vòng lặp feedback vô hạn, khiến scene trở nên cực kỳ sáng chỉ trong vài giây. Nếu ánh sáng gián tiếp trông "lốm đốm", hãy cân nhắc tăng giá trị này cao hơn ``0.0`` để ánh sáng trông đồng đều hơn. Nếu kết quả là ánh sáng trở nên quá sáng, hãy giảm **Energy** để bù lại.
+- **Cascades:** Giá trị cao hơn tạo ra thông tin GI chi tiết hơn (và/hoặc khoảng cách tối đa lớn hơn), nhưng tiêu tốn CPU và GPU nhiều hơn đáng kể. Chi phí hiệu năng do có nhiều cascade hơn đặc biệt tăng khi camera di chuyển nhanh, vì vậy hãy cân nhắc giảm giá trị này xuống ``4`` hoặc thấp hơn nếu camera của bạn di chuyển nhanh.
+- **Min Cell Size:** Kích thước ô SDFGI tối thiểu được sử dụng cho cascade gần nhất và chi tiết nhất. Giá trị thấp hơn cho ánh sáng gián tiếp và phản chiếu chính xác hơn, nhưng làm giảm hiệu năng. Điều chỉnh thiết lập này cũng tự động ảnh hưởng đến **Cascade 0 Distance** và **Max Distance**.
+- **Cascade 0 Distance:** Khoảng cách tại đó cascade gần nhất và chi tiết nhất kết thúc. Giá trị lớn hơn khiến quá trình chuyển tiếp của cascade gần nhất ít nhận thấy hơn, nhưng làm giảm mức độ chi tiết trong cascade gần nhất. Điều chỉnh thiết lập này cũng tự động ảnh hưởng đến **Min Cell Size** và **Max Distance**.
+- **Max Distance:** Kiểm soát khoảng cách tính toán trường khoảng cách có dấu (đối với cascade ít chi tiết nhất). SDFGI sẽ không có tác dụng ngoài khoảng cách này. Giá trị này luôn phải được đặt thấp hơn giá trị Far của Camera, vì không có lợi ích nào khi tính SDFGI vượt quá khoảng cách quan sát. Điều chỉnh thiết lập này cũng tự động ảnh hưởng đến **Min Cell Size** và **Cascade 0 Distance**.
+- **Y Scale:** Kiểm soát khoảng cách phân bố các probe SDFGI *vertically*. Theo mặc định, khoảng phân bố theo chiều dọc giống với chiều ngang. Tuy nhiên, vì hầu hết scene game không có độ cao lớn, đặt Y Scale thành ``75%`` hoặc thậm chí ``50%`` có thể mang lại chất lượng tốt hơn và giảm rò rỉ ánh sáng mà không ảnh hưởng đến hiệu năng.
+- **Energy:** Hệ số độ sáng cho ánh sáng gián tiếp của SDFGI.
+- **Normal Bias:** Độ lệch pháp tuyến được sử dụng cho các lần dội tia probe của SDFGI. Khác với **Probe Bias**, thuộc tính này chỉ tăng giá trị theo pháp tuyến của mesh. Điều này giúp việc điều chỉnh độ lệch tinh tế hơn và tránh tăng độ lệch quá mức mà không có lý do. Hãy tăng giá trị này nếu bạn nhận thấy các nhiễu dạng sọc trong ánh sáng gián tiếp hoặc phản chiếu.
+- **Probe Bias:** Độ lệch được sử dụng cho các lần dội tia probe của SDFGI. Hãy tăng giá trị này nếu bạn nhận thấy các nhiễu dạng sọc trong ánh sáng gián tiếp hoặc phản chiếu.
 
-SDFGI interaction with lights and objects
------------------------------------------
+Tương tác của SDFGI với đèn và vật thể
+--------------------------------------
 
-The amount of indirect energy emitted by a light is defined by its color,
-energy *and* indirect energy properties. To make a specific light emit more
-or less indirect energy without affecting the amount of direct light emitted
-by the light, adjust the **Indirect Energy** property in the Light3D inspector.
+Lượng năng lượng gián tiếp do một đèn phát ra được xác định bởi màu sắc, năng lượng *and* các thuộc tính năng lượng gián tiếp của đèn. Để khiến một đèn cụ thể phát ra nhiều hoặc ít năng lượng gián tiếp hơn mà không ảnh hưởng đến lượng ánh sáng trực tiếp do đèn phát ra, hãy điều chỉnh thuộc tính **Indirect Energy** trong inspector của Light3D.
 
-To ensure correct visuals when using SDFGI, you must configure your meshes
-and lights' global illumination properties according to their *purpose* in the
-scene (static or dynamic).
+Để đảm bảo hình ảnh chính xác khi sử dụng SDFGI, bạn phải cấu hình các thuộc tính global illumination của mesh và đèn theo *purpose* của chúng trong scene (tĩnh hoặc động).
 
-There are 3 global illumination modes available for meshes:
+Có 3 chế độ global illumination dành cho mesh:
 
-- **Disabled:** The mesh won't be taken into account in SDFGI generation.
-  The mesh will receive indirect lighting from the scene, but it will not
-  contribute indirect lighting to the scene.
-- **Static (default):** The mesh will be taken into account in SDFGI generation.
-  The mesh will both receive *and* contribute indirect lighting to the scene. If
-  the mesh is changed in any way after SDFGI is generated, the camera must move
-  away from the object then move back close to it for SDFGI to regenerate.
-  Alternatively, SDFGI can be toggled off and back on. If neither is done,
-  indirect lighting will look incorrect.
-- **Dynamic (not supported with SDFGI):** The mesh won't be taken into account in SDFGI generation.
-  The mesh will receive indirect lighting from the scene, but it will not
-  contribute indirect lighting to the scene.
-  This acts identical to the **Disabled** bake mode when using SDFGI.
+- **Đã tắt:** Mesh sẽ không được tính đến khi tạo SDFGI. Mesh sẽ nhận ánh sáng gián tiếp từ cảnh, nhưng sẽ không đóng góp ánh sáng gián tiếp cho cảnh.
+- **Tĩnh (mặc định):** Mesh sẽ được tính đến khi tạo SDFGI. Mesh sẽ vừa nhận *vừa* đóng góp ánh sáng gián tiếp cho cảnh. Nếu mesh bị thay đổi theo bất kỳ cách nào sau khi SDFGI được tạo, camera phải di chuyển ra xa đối tượng rồi di chuyển lại gần để SDFGI được tạo lại. Ngoài ra, có thể tắt rồi bật lại SDFGI. Nếu không thực hiện một trong hai cách này, ánh sáng gián tiếp sẽ hiển thị không chính xác.
+- **Động (không được SDFGI hỗ trợ):** Mesh sẽ không được tính đến khi tạo SDFGI. Mesh sẽ nhận ánh sáng gián tiếp từ cảnh, nhưng sẽ không đóng góp ánh sáng gián tiếp cho cảnh. Chế độ này hoạt động giống hệt chế độ bake **Đã tắt** khi sử dụng SDFGI.
 
-Additionally, there are 3 bake modes available for lights
-(DirectionalLight3D, OmniLight3D, SpotLight3D, and AreaLight3D):
+Ngoài ra, có 3 chế độ bake khả dụng cho các đèn (DirectionalLight3D, OmniLight3D, SpotLight3D và AreaLight3D):
 
-- **Disabled:** The light won't be taken into account for SDFGI baking.
-  The light won't contribute indirect lighting to the scene.
-- **Static:** The light will be taken into account for SDFGI baking. The light
-  will contribute indirect lighting to the scene. If the light is changed in any
-  way after baking, indirect lighting will look incorrect until the camera moves
-  away from the light and back (which causes SDFGI to be baked again).
-  If in doubt, use this mode for level lighting.
-- **Dynamic (default):** The light won't be taken into account for SDFGI baking,
-  but it will still contribute indirect lighting to the scene in real-time.
-  This option is slower compared to **Static**. Only use the **Dynamic** global
-  illumination mode on lights that will change significantly during gameplay.
+- **Đã tắt:** Đèn sẽ không được tính đến khi bake SDFGI. Đèn sẽ không đóng góp ánh sáng gián tiếp cho cảnh.
+- **Tĩnh:** Đèn sẽ được tính đến khi bake SDFGI. Đèn sẽ đóng góp ánh sáng gián tiếp cho cảnh. Nếu đèn bị thay đổi theo bất kỳ cách nào sau khi bake, ánh sáng gián tiếp sẽ hiển thị không chính xác cho đến khi camera di chuyển ra xa đèn rồi quay lại (việc này khiến SDFGI được bake lại). Nếu không chắc chắn, hãy sử dụng chế độ này cho ánh sáng của level.
+- **Động (mặc định):** Đèn sẽ không được tính đến khi bake SDFGI, nhưng vẫn đóng góp ánh sáng gián tiếp cho cảnh theo thời gian thực. Tùy chọn này chậm hơn so với **Tĩnh**. Chỉ sử dụng chế độ global illumination **Động** trên những đèn sẽ thay đổi đáng kể trong khi chơi.
 
 .. note::
 
-    The amount of indirect energy emitted by a light depends on its color,
-    energy *and* indirect energy properties. To make a specific light emit more
-    or less indirect energy without affecting the amount of direct light emitted
-    by the light, adjust the **Indirect Energy** property in the Light3D inspector.
+    Lượng năng lượng gián tiếp do đèn phát ra phụ thuộc vào màu sắc, năng lượng *và* các thuộc tính năng lượng gián tiếp của đèn. Để khiến một đèn cụ thể phát ra nhiều hơn hoặc ít hơn năng lượng gián tiếp mà không ảnh hưởng đến lượng ánh sáng trực tiếp do đèn phát ra, hãy điều chỉnh thuộc tính **Năng lượng gián tiếp** trong inspector của Light3D.
 
 .. seealso::
 
-    See :ref:`doc_introduction_to_global_illumination_gi_mode_recommendations`
-    for general usage recommendations.
+    Xem :ref:`doc_introduction_to_global_illumination_gi_mode_recommendations` để biết các khuyến nghị sử dụng chung.
 
-Adjusting SDFGI performance and quality
----------------------------------------
+Điều chỉnh hiệu năng và chất lượng SDFGI
+----------------------------------------
 
-Since SDFGI is relatively demanding, it will perform best on systems with recent
-dedicated GPUs. On older dedicated GPUs and integrated graphics,
-tweaking the settings is necessary to achieve reasonable performance.
+Vì SDFGI tương đối nặng, tính năng này sẽ hoạt động tốt nhất trên các hệ thống có GPU chuyên dụng đời mới. Trên các GPU chuyên dụng đời cũ và đồ họa tích hợp, cần tinh chỉnh các thiết lập để đạt hiệu năng hợp lý.
 
-In the Project Settings' **Rendering > Global Illumination** section,
-SDFGI quality can also be adjusted in several ways:
+Trong phần **Rendering > Global Illumination** của Project Settings, chất lượng SDFGI cũng có thể được điều chỉnh theo một số cách:
 
-- **Sdfgi > Probe Ray Count:** Higher values result in better quality,
-  at the cost of higher GPU usage. If this value is set too low,
-  this can cause surfaces to have visible "splotches" of indirect lighting on
-  them due to the number of rays thrown being very low.
-- **Sdfgi > Frames To Converge:** Higher values result in better quality, but GI will take
-  more time to fully converge. The effect of this setting is especially noticeable when first
-  loading a scene, or when lights with a bake mode other than **Disabled** are moving fast.
-  If this value is set too low, this can cause surfaces to have visible "splotches"
-  of indirect lighting on them due to the number of rays thrown being very low.
-  If your scene's lighting doesn't have fast-moving lights that contribute to GI,
-  consider setting this to ``30`` to improve quality without impacting performance.
-- **Sdfgi > Frames To Update Light:** Lower values result in moving lights being
-  reflected faster, at the cost of higher GPU usage. If your scene's lighting
-  doesn't have fast-moving lights that contribute to GI, consider setting this
-  to ``16`` to improve performance.
-- **Gi > Use Half Resolution:** If enabled, both SDFGI and VoxelGI will have
-  their GI buffer rendering at halved resolution. For instance, when rendering
-  in 3840×2160, the GI buffer will be computed at a 1920×1080 resolution.
-  Enabling this option saves a lot of GPU time, but it can introduce visible
-  aliasing around thin details.
+- **Sdfgi > Probe Ray Count:** Giá trị cao hơn cho chất lượng tốt hơn, nhưng sử dụng GPU nhiều hơn. Nếu đặt giá trị này quá thấp, các bề mặt có thể xuất hiện những "đốm" ánh sáng gián tiếp rõ rệt do số lượng tia được phóng ra quá ít.
+- **Sdfgi > Frames To Converge:** Giá trị cao hơn cho chất lượng tốt hơn, nhưng GI sẽ mất nhiều thời gian hơn để hội tụ hoàn toàn. Tác động của thiết lập này đặc biệt dễ nhận thấy khi lần đầu tải một cảnh hoặc khi các đèn có chế độ bake khác **Đã tắt** di chuyển nhanh. Nếu đặt giá trị này quá thấp, các bề mặt có thể xuất hiện những "đốm" ánh sáng gián tiếp rõ rệt do số lượng tia được phóng ra quá ít. Nếu ánh sáng trong cảnh của bạn không có các đèn di chuyển nhanh và đóng góp vào GI, hãy cân nhắc đặt giá trị này thành ``30`` để cải thiện chất lượng mà không ảnh hưởng đến hiệu năng.
+- **Sdfgi > Frames To Update Light:** Giá trị thấp hơn giúp phản ánh các đèn đang di chuyển nhanh hơn, nhưng sử dụng GPU nhiều hơn. Nếu ánh sáng trong cảnh của bạn không có các đèn di chuyển nhanh và đóng góp vào GI, hãy cân nhắc đặt giá trị này thành ``16`` để cải thiện hiệu năng.
+- **Gi > Use Half Resolution:** Nếu bật, cả SDFGI và VoxelGI sẽ kết xuất bộ đệm GI ở độ phân giải giảm một nửa. Ví dụ, khi kết xuất ở 3840×2160, bộ đệm GI sẽ được tính toán ở độ phân giải 1920×1080. Bật tùy chọn này giúp tiết kiệm đáng kể thời gian GPU, nhưng có thể tạo ra hiện tượng aliasing rõ rệt xung quanh các chi tiết mảnh.
 
-SDFGI rendering performance also depends on the number of cascades and
-the cell size chosen in the Environment resource (see above).
+Hiệu năng kết xuất SDFGI cũng phụ thuộc vào số lượng cascade và kích thước ô được chọn trong tài nguyên Environment (xem phần trên).
 
-SDFGI caveats
--------------
+Các hạn chế của SDFGI
+---------------------
 
-SDFGI has some downsides due to its cascaded nature. When the camera moves,
-cascade shifts may be visible in indirect lighting. This can be alleviated
-by adjusting the cascade size, but also by adding fog (which will make distant
-cascade shifts less noticeable).
+SDFGI có một số nhược điểm do bản chất phân tầng của nó. Khi camera di chuyển, có thể nhìn thấy sự dịch chuyển của cascade trong ánh sáng gián tiếp. Có thể giảm hiện tượng này bằng cách điều chỉnh kích thước cascade, cũng như thêm sương mù (giúp các dịch chuyển của cascade ở xa khó nhận thấy hơn).
 
-Additionally, performance will suffer if the camera moves too fast.
-This can be fixed in two ways:
+Ngoài ra, hiệu năng sẽ giảm nếu camera di chuyển quá nhanh. Có thể khắc phục điều này bằng hai cách:
 
-- Ensuring the camera doesn't move too fast in any given situation.
-- Temporarily disabling SDFGI in the Environment resource if the camera needs
-  to be moved at a high speed, then enabling SDFGI once the camera speed slows down.
+- Đảm bảo camera không di chuyển quá nhanh trong bất kỳ tình huống nào.
+- Tạm thời tắt SDFGI trong tài nguyên Environment nếu cần di chuyển camera với tốc độ cao, sau đó bật lại SDFGI khi tốc độ camera chậm xuống.
 
-When SDFGI is enabled, it will also take some time for global illumination
-to be fully converged (30 frames by default). This can create a noticeable transition
-effect while GI is still converging. To hide this, you can use a ColorRect node
-that spans the whole viewport and fade it out when switching scenes using an
-AnimationPlayer node.
+Khi SDFGI được bật, global illumination cũng cần một khoảng thời gian để hội tụ hoàn toàn (mặc định là 30 khung hình). Điều này có thể tạo ra hiệu ứng chuyển tiếp dễ nhận thấy trong khi GI vẫn đang hội tụ. Để ẩn hiệu ứng này, bạn có thể sử dụng một node ColorRect phủ toàn bộ viewport và làm mờ nó khi chuyển cảnh bằng node AnimationPlayer.
 
-The signed distance field is only updated when the camera moves in and out of a
-cascade. This means that if geometry is modified in the distance, the global
-illumination appearance will be correct once the camera gets closer. However, if
-a nearby object with a bake mode set to **Static** or **Dynamic** is moved (such
-as a door), the global illumination will appear incorrect until the camera moves
-away from the object.
+Signed distance field chỉ được cập nhật khi camera di chuyển vào hoặc ra khỏi một cascade. Điều này có nghĩa là nếu hình học bị thay đổi ở xa, hình thức của global illumination sẽ chính xác khi camera đến gần hơn. Tuy nhiên, nếu một đối tượng ở gần có chế độ bake được đặt thành **Tĩnh** hoặc **Động** bị di chuyển (chẳng hạn như một cánh cửa), global illumination sẽ hiển thị không chính xác cho đến khi camera di chuyển ra xa đối tượng.
 
-SDFGI's sharp reflections are only visible on opaque materials. Transparent
-materials will only use rough reflections, even if the material's roughness is
-lower than 0.2.
+Các phản xạ sắc nét của SDFGI chỉ hiển thị trên vật liệu opaque. Vật liệu trong suốt sẽ chỉ sử dụng phản xạ thô, ngay cả khi roughness của vật liệu thấp hơn 0.2.

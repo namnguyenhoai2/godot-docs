@@ -1,195 +1,108 @@
 .. _doc_reflection_probes:
 
-Reflection probes
-=================
+Probe phản chiếu
+================
 
-As stated in the :ref:`doc_standard_material_3d`, objects can show reflected and/or
-diffuse light. Reflection probes are used as a source of reflected *and* ambient
-light for objects inside their area of influence. They can be used to provide
-more accurate reflections than :ref:`VoxelGI <doc_using_voxel_gi>` and
-:ref:`SDFGI <doc_using_sdfgi>` while being fairly cheap on system resources.
+Như đã nêu trong :ref:`doc_standard_material_3d`, các đối tượng có thể hiển thị ánh sáng phản xạ và/hoặc ánh sáng khuếch tán. Probe phản chiếu được dùng làm nguồn ánh sáng môi trường phản xạ *và* cho các đối tượng nằm trong vùng ảnh hưởng của chúng. Chúng có thể cung cấp phản xạ chính xác hơn :ref:`VoxelGI <doc_using_voxel_gi>` và
+:ref:`SDFGI <doc_using_sdfgi>` trong khi tiêu tốn tương đối ít tài nguyên hệ thống.
 
-Since reflection probes can also store ambient light, they can be used as a
-low-end alternative to VoxelGI and SDFGI when :ref:`baked lightmaps
-<doc_using_lightmap_gi>` aren't viable (e.g. in procedurally generated levels).
+Vì probe phản chiếu cũng có thể lưu trữ ánh sáng môi trường, chúng có thể được dùng làm giải pháp thay thế ở cấp thấp cho VoxelGI và SDFGI khi :ref:`lightmap được bake <doc_using_lightmap_gi>` không khả thi (ví dụ: trong các level được tạo theo quy trình).
 
-Reflection probes can also be used at the same time as screen-space reflections
-to provide reflections for off-screen objects. In this case, Godot will blend
-together the screen-space reflections and reflections from reflection probes.
+Probe phản chiếu cũng có thể được dùng đồng thời với phản xạ không gian màn hình để cung cấp phản xạ cho các đối tượng ngoài màn hình. Trong trường hợp này, Godot sẽ hòa trộn các phản xạ không gian màn hình với các phản xạ từ probe phản chiếu.
 
 .. seealso::
 
-    Not sure if ReflectionProbe is suited to your needs?
-    See :ref:`doc_introduction_to_global_illumination_comparison`
-    for a comparison of GI techniques available in Godot 4.
+    Không chắc ReflectionProbe có phù hợp với nhu cầu của bạn không? Xem :ref:`doc_introduction_to_global_illumination_comparison` để so sánh các kỹ thuật GI hiện có trong Godot 4.
 
-Visual comparison
+So sánh trực quan
 -----------------
 
 .. figure:: img/gi_none.webp
    :align: center
-   :alt: Reflection probe disabled. Environment sky is used as a fallback.
+   :alt: Đã tắt probe phản chiếu. Bầu trời của môi trường được dùng làm phương án dự phòng.
 
-   Reflection probe disabled. Environment sky is used as a fallback.
+   Đã tắt probe phản chiếu. Bầu trời của môi trường được dùng làm phương án dự phòng.
 
 .. figure:: img/gi_none_reflection_probe.webp
    :align: center
-   :alt: Reflection probe enabled.
+   :alt: Đã bật probe phản chiếu.
 
-   Reflection probe enabled.
+   Đã bật probe phản chiếu.
 
 
 .. figure:: img/gi_lightmap_gi_indirect_only_reflection_probe.webp
    :align: center
-   :alt: Reflection probe enabled.
+   :alt: Đã bật probe phản chiếu.
 
-   Reflection probe enabled with LightmapGI used at the same time. The lightmap appears in the reflection.
+   Đã bật probe phản chiếu cùng lúc với LightmapGI. Lightmap xuất hiện trong phản xạ.
 
-By combining reflection probes with screen-space reflections, you can get the
-best of both worlds: high-quality reflections for general room structure (that
-remain present when off-screen), while also having real-time reflections for
-small details.
+Bằng cách kết hợp probe phản chiếu với phản xạ không gian màn hình, bạn có thể tận dụng ưu điểm của cả hai: phản xạ chất lượng cao cho cấu trúc phòng nói chung (vẫn hiện diện khi nằm ngoài màn hình), đồng thời có phản xạ theo thời gian thực cho các chi tiết nhỏ.
 
 .. figure:: img/reflection_probes_reflection_probe.webp
    :align: center
-   :alt: Reflections in a room using ReflectionProbe only.
+   :alt: Phản xạ trong một căn phòng chỉ sử dụng ReflectionProbe.
 
-   Reflections in a room using ReflectionProbe only. Notice how small details
-   don't have any reflections.
+   Phản xạ trong một căn phòng chỉ sử dụng ReflectionProbe. Lưu ý rằng các chi tiết nhỏ không có phản xạ.
 
 .. figure:: img/reflection_probes_ssr.webp
    :align: center
-   :alt: Reflections in a room using screen-space reflections only.
+   :alt: Phản xạ trong một căn phòng chỉ sử dụng phản xạ không gian màn hình.
 
-   Reflections in a room using screen-space reflections only. Notice how the
-   reflection on the sides of the room's walls is partly missing due to being
-   off-screen.
+   Phản xạ trong một căn phòng chỉ sử dụng phản xạ không gian màn hình. Lưu ý rằng phản xạ ở hai bên tường phòng bị thiếu một phần vì nằm ngoài màn hình.
 
 .. figure:: img/reflection_probes_reflection_probe_ssr.webp
    :align: center
-   :alt: Reflections in a room using ReflectionProbe and screen-space reflections together.
+   :alt: Phản xạ trong một căn phòng sử dụng đồng thời ReflectionProbe và phản xạ không gian màn hình.
 
-   Reflections in a room using ReflectionProbe and screen-space reflections together.
-   The screen-space reflections are blended with the reflection probe,
-   acting as a fallback in situations where the reflection probe fails to display
-   any reflection.
+   Phản xạ trong một căn phòng sử dụng đồng thời ReflectionProbe và phản xạ không gian màn hình. Các phản xạ không gian màn hình được hòa trộn với probe phản chiếu, đóng vai trò phương án dự phòng trong những tình huống probe phản chiếu không hiển thị được phản xạ.
 
-Setting up a ReflectionProbe
-----------------------------
+Thiết lập ReflectionProbe
+-------------------------
 
-- Add a :ref:`class_ReflectionProbe` node.
-- Configure the ReflectionProbe's extents in the inspector to fit your scene. To
-  get reasonably accurate reflections, you should generally have one
-  ReflectionProbe node per room (sometimes more for large rooms).
+- Thêm một node :ref:`class_ReflectionProbe`.
+- Cấu hình phạm vi của ReflectionProbe trong inspector để phù hợp với cảnh của bạn. Để có phản xạ tương đối chính xác, thông thường bạn nên có một node ReflectionProbe cho mỗi phòng (đôi khi cần nhiều hơn đối với phòng lớn).
 
 .. tip::
 
-    Remember that ReflectionProbe extents don't have to be square, and you can
-    even rotate the ReflectionProbe node to fit rooms that aren't aligned with
-    the X/Z grid. Use this to your advantage to better cover rooms without
-    having to place too many ReflectionProbe nodes.
+    Hãy nhớ rằng phạm vi của ReflectionProbe không nhất thiết phải là hình vuông, và bạn thậm chí có thể xoay node ReflectionProbe để phù hợp với các phòng không thẳng hàng với lưới X/Z. Hãy tận dụng điều này để bao phủ các phòng tốt hơn mà không phải đặt quá nhiều node ReflectionProbe.
 
-ReflectionProbe properties
---------------------------
+Các thuộc tính của ReflectionProbe
+----------------------------------
 
-- **Update Mode:** Controls when the reflection probe updates.
-  **Once** only renders the scene once every time the ReflectionProbe is moved.
-  This makes it much faster to render compared to the **Always** update mode,
-  which forces the probe to re-render everything around it every frame.
-  Leave this property on **Once** (default) unless you need the reflection probe
-  to update every frame.
-- **Intensity:** The brightness of the reflections and ambient lighting. This
-  usually doesn't need to be changed from its default value of ``1.0``, but you
-  can decrease it ``1.0`` if you find that reflections look too strong.
-- **Max Distance:** Controls the maximum distance used by the ReflectionProbe's
-  internal camera. The distance is always at least equal to the **Extents**, but
-  this can be increased to make objects located outside the extents visible in
-  reflections. *This property does not affect the maximum distance at which the
-  ReflectionProbe itself is visible.*
-- **Extents:** The area that will be affected by the ReflectionProbe's lighting
-  and reflections.
-- **Origin Offset:** The origin to use for the internal camera used for
-  reflection probe rendering. This must always be constrained within the
-  **Extents**. If needed, adjust this to prevent the reflection from being
-  obstructed by a solid object located exactly at the center of the
-  ReflectionProbe.
-- **Box Projection:** Controls whether parallax correction should be used when
-  rendering the reflection probe. This adjusts the reflection's appearance
-  depending on the camera's position (relative to the reflection probe). This
-  has a small performance cost, but the quality increase is often worth it in
-  box-shaped rooms. Note that this effect doesn't work quite as well in rooms
-  with less regular shapes (such as ellipse-shaped rooms).
-- **Interior:** If enabled, ambient lighting will not be sourced from the
-  environment sky, and the background sky won't be rendered onto the reflection
-  probe.
-- **Enable Shadows:** Controls whether real-time light shadows should be
-  rendered within the reflection probe. Enable this to improve reflection
-  quality at the cost of performance. This should be left disabled for
-  reflection probes with the **Always** mode, as it's very expensive to render
-  reflections with shadows every frame. Fully :ref:`baked light <doc_using_lightmap_gi>`
-  shadows are not affected by this setting and will be rendered in the
-  reflection probe regardless.
-- **Cull Mask:** Controls which objects are visible in the reflection. This can
-  be used to improve performance by excluding small objects from the reflection.
-  This can also be used to prevent an object from having self-reflection
-  artifacts in situations where **Origin Offset** can't be used.
-- **Mesh LOD Threshold:** The automatic level of detail threshold to use for
-  rendering meshes within the reflection. This only affects meshes that have
-  automatic LODs generated for them. Higher values can improve performance by
-  using less detailed geometry, especially for objects that are far away from
-  the reflection's origin. The visual difference of using less detailed objects
-  is usually not very noticeable during gameplay, especially in rough
-  reflections.
+- **Update Mode:** Kiểm soát thời điểm probe phản chiếu cập nhật. **Once** chỉ render cảnh một lần mỗi khi ReflectionProbe được di chuyển. Điều này giúp render nhanh hơn nhiều so với chế độ cập nhật **Always**, chế độ buộc probe render lại mọi thứ xung quanh nó ở mỗi frame. Giữ thuộc tính này ở **Once** (mặc định), trừ khi bạn cần probe phản chiếu cập nhật ở mỗi frame.
+- **Intensity:** Độ sáng của phản xạ và ánh sáng môi trường. Thông thường không cần thay đổi giá trị mặc định là ``1.0``, nhưng bạn có thể giảm giá trị này ``1.0`` nếu thấy phản xạ quá mạnh.
+- **Max Distance:** Kiểm soát khoảng cách tối đa được camera bên trong của ReflectionProbe sử dụng. Khoảng cách này luôn ít nhất bằng **Extents**, nhưng có thể tăng lên để hiển thị trong phản xạ các đối tượng nằm ngoài phạm vi. *Thuộc tính này không ảnh hưởng đến khoảng cách tối đa mà bản thân ReflectionProbe có thể được nhìn thấy.*
+- **Extents:** Vùng chịu ảnh hưởng của ánh sáng và phản xạ từ ReflectionProbe.
+- **Origin Offset:** Gốc tọa độ được dùng cho camera bên trong khi render probe phản chiếu. Gốc này luôn phải nằm trong **Extents**. Nếu cần, hãy điều chỉnh để ngăn phản xạ bị che khuất bởi một vật thể rắn nằm chính xác ở tâm của ReflectionProbe.
+- **Box Projection:** Kiểm soát việc có sử dụng hiệu chỉnh parallax khi render probe phản chiếu hay không. Tùy chọn này điều chỉnh diện mạo của phản xạ dựa trên vị trí camera (so với probe phản chiếu). Tùy chọn này làm giảm hiệu năng một chút, nhưng mức tăng chất lượng thường rất đáng giá trong các phòng hình hộp. Lưu ý rằng hiệu ứng này không hoạt động tốt bằng trong các phòng có hình dạng kém đều đặn (chẳng hạn như phòng hình elip).
+- **Interior:** Nếu bật, ánh sáng môi trường sẽ không lấy từ bầu trời của môi trường, và bầu trời nền sẽ không được render lên probe phản chiếu.
+- **Enable Shadows:** Kiểm soát việc có render bóng đổ ánh sáng theo thời gian thực bên trong probe phản chiếu hay không. Bật tùy chọn này để cải thiện chất lượng phản xạ nhưng phải đánh đổi bằng hiệu năng. Nên tắt tùy chọn này đối với các probe phản chiếu ở chế độ **Always**, vì render phản xạ có bóng đổ ở mỗi frame rất tốn tài nguyên. Bóng của :ref:`ánh sáng được bake hoàn toàn <doc_using_lightmap_gi>` không bị ảnh hưởng bởi thiết lập này và sẽ được render trong probe phản chiếu bất kể thiết lập.
+- **Cull Mask:** Kiểm soát những đối tượng nào hiển thị trong phản xạ. Có thể dùng tùy chọn này để cải thiện hiệu năng bằng cách loại trừ các đối tượng nhỏ khỏi phản xạ. Tùy chọn này cũng có thể được dùng để ngăn đối tượng xuất hiện lỗi tự phản xạ trong những tình huống không thể sử dụng **Origin Offset**.
+- **Mesh LOD Threshold:** Ngưỡng level of detail tự động được dùng để render mesh bên trong phản xạ. Tùy chọn này chỉ ảnh hưởng đến các mesh đã được tạo LOD tự động. Giá trị cao hơn có thể cải thiện hiệu năng bằng cách sử dụng hình học ít chi tiết hơn, đặc biệt đối với các đối tượng ở xa gốc của phản xạ. Khác biệt hình ảnh khi sử dụng các đối tượng ít chi tiết hơn thường không dễ nhận thấy trong lúc chơi, đặc biệt ở các phản xạ thô.
 
-The Ambient category features several properties to adjust ambient lighting
-rendered by the ReflectionProbe:
+Danh mục Ambient có một số thuộc tính để điều chỉnh ánh sáng môi trường được render bởi ReflectionProbe:
 
-- **Mode:** If set to **Disabled**, no ambient light is added by the probe. If
-  set to **Environment**, the ambient light color is automatically sampled from
-  the environment sky (if **Interior** is disabled) and the reflection's average
-  color. If set to **Constant Color**, the color specified in the **Color**
-  property is used instead. The **Constant Color** mode can be used as an
-  approximation of area lighting.
-- **Color:** The color to use when the ambient light mode is set to **Constant Mode**.
-- **Color Energy:** The multiplier to use for the ambient light custom
-  **Color**. This only has an effect when the ambient light mode is **Custom
-  Color**.
+- **Chế độ:** Nếu đặt thành **Disabled**, probe sẽ không thêm ánh sáng môi trường. Nếu đặt thành **Environment**, màu ánh sáng môi trường sẽ được tự động lấy mẫu từ bầu trời môi trường (nếu **Interior** bị tắt) và màu trung bình của reflection. Nếu đặt thành **Constant Color**, màu được chỉ định trong thuộc tính **Color** sẽ được sử dụng thay thế. Có thể sử dụng chế độ **Constant Color** để xấp xỉ ánh sáng vùng.
+- **Màu:** Màu được sử dụng khi chế độ ánh sáng môi trường được đặt thành **Constant Mode**.
+- **Năng lượng màu:** Hệ số nhân được sử dụng cho **Color** tùy chỉnh của ánh sáng môi trường. Thuộc tính này chỉ có tác dụng khi chế độ ánh sáng môi trường là **Custom Color**.
 
-ReflectionProbe blending
+Blending ReflectionProbe
 ------------------------
 
-To make transitions between reflection sources smoother, Godot supports automatic
-probe blending:
+Để làm cho quá trình chuyển tiếp giữa các nguồn reflection mượt mà hơn, Godot hỗ trợ blending probe tự động:
 
-- Up to 4 ReflectionProbes can be blended together at a given location.
-  A ReflectionProbe will also fade out smoothly back to environment lighting
-  when it isn't touching any other ReflectionProbe node.
-- SDFGI and VoxelGI will blend in smoothly with ReflectionProbes if used.
-  This allows placing ReflectionProbes strategically to get more accurate (or fully real-time)
-  reflections where needed, while still having rough reflections available in the
-  VoxelGI or SDFGI's area of influence.
+- Có thể blend tối đa 4 ReflectionProbe với nhau tại một vị trí nhất định. ReflectionProbe cũng sẽ mờ dần một cách mượt mà về ánh sáng môi trường khi không chạm vào bất kỳ node ReflectionProbe nào khác.
+- SDFGI và VoxelGI sẽ blend mượt mà với ReflectionProbe nếu được sử dụng. Điều này cho phép đặt ReflectionProbe một cách chiến lược để có được reflection chính xác hơn (hoặc hoàn toàn theo thời gian thực) ở những nơi cần thiết, đồng thời vẫn có reflection thô trong vùng ảnh hưởng của VoxelGI hoặc SDFGI.
 
-To make several ReflectionProbes blend with each other, you need to have part of
-each ReflectionProbe overlap each other's area. The extents should only overlap
-as little possible with other reflection probes to improve rendering performance
-(typically a few units in 3D space).
+Để nhiều ReflectionProbe blend với nhau, bạn cần để một phần của mỗi ReflectionProbe chồng lấn lên vùng của các probe còn lại. Các phạm vi mở rộng chỉ nên chồng lấn ít nhất có thể với những reflection probe khác để cải thiện hiệu năng rendering (thường là vài đơn vị trong không gian 3D).
 
-Limitations
------------
+Hạn chế
+-------
 
-When using the Forward+ renderer, Godot uses a *clustering* approach for
-reflection probe rendering. As many reflection probes as desired can be added (as long as
-performance allows). However, there's still a default limit of 512 *clustered
-elements* that can be present in the current camera view. A clustered element is
-an omni light, a spot light, an area light, a :ref:`decal <doc_using_decals>`, or a
-:ref:`reflection probe <doc_reflection_probes>`. This limit can be increased by adjusting
-:ref:`Max Clustered Elements<class_ProjectSettings_property_rendering/limits/cluster_builder/max_clustered_elements>`
-in **Project Settings > Rendering > Limits > Cluster Builder**.
+Khi sử dụng renderer Forward+, Godot dùng phương pháp *clustering* để rendering reflection probe. Có thể thêm bao nhiêu reflection probe tùy ý (miễn là hiệu năng cho phép). Tuy nhiên, vẫn có giới hạn mặc định là 512 *clustered elements* có thể xuất hiện trong khung nhìn hiện tại của camera. Clustered element là omni light, spot light, area light, :ref:`decal <doc_using_decals>`, hoặc một
+:ref:`reflection probe <doc_reflection_probes>`. Giới hạn này có thể được tăng lên bằng cách điều chỉnh
+:ref:`Max Clustered Elements <class_ProjectSettings_property_rendering/limits/cluster_builder/max_clustered_elements>` trong **Project Settings > Rendering > Limits > Cluster Builder**.
 
-When using the Mobile renderer, only 8 reflection probes can be applied on each
-individual Mesh *resource*. If there are more reflection probes affecting a single mesh,
-not all of them will be rendered on the mesh.
+Khi sử dụng renderer Mobile, chỉ có thể áp dụng 8 reflection probe cho từng *resource* Mesh riêng lẻ. Nếu có nhiều reflection probe ảnh hưởng đến một mesh, không phải tất cả chúng đều được rendering trên mesh đó.
 
-Similarly, when using the Compatibility renderer, up to 2 reflection probes can
-be applied per mesh. If more than 2 reflection probes affect a single mesh,
-additional probes will not be rendered.
+Tương tự, khi sử dụng renderer Compatibility, có thể áp dụng tối đa 2 reflection probe cho mỗi mesh. Nếu có hơn 2 reflection probe ảnh hưởng đến một mesh, các probe bổ sung sẽ không được rendering.

@@ -1,63 +1,41 @@
 .. _doc_resolution_scaling:
 
-Resolution scaling
+Tỷ lệ độ phân giải
 ==================
 
 .. Images on this page were generated using the project below:
 .. https://github.com/Calinou/godot-antialiasing-comparison
 
-Why use resolution scaling?
----------------------------
+Tại sao nên sử dụng tỷ lệ độ phân giải?
+---------------------------------------
 
-With the ever-increasing rendering complexity of modern games, rendering at
-native resolution isn't always viable anymore, especially on lower-end GPUs.
+Với độ phức tạp kết xuất ngày càng tăng của các trò chơi hiện đại, việc kết xuất ở độ phân giải gốc không còn luôn khả thi, đặc biệt trên các GPU cấp thấp.
 
-Resolution scaling is one of the most direct ways to influence the GPU
-requirements of a scene. In scenes that are bottlenecked by the GPU (rather than
-by the CPU), decreasing the resolution scale can improve performance
-significantly. Resolution scaling is particularly important on mobile GPUs where
-performance and power budgets are limited.
+Tỷ lệ độ phân giải là một trong những cách trực tiếp nhất để tác động đến yêu cầu GPU của một cảnh. Trong những cảnh bị giới hạn bởi GPU (thay vì CPU), việc giảm tỷ lệ độ phân giải có thể cải thiện hiệu năng đáng kể. Tỷ lệ độ phân giải đặc biệt quan trọng trên GPU di động, nơi ngân sách hiệu năng và năng lượng bị giới hạn.
 
-While resolution scaling is an important tool to have, remember that resolution
-scaling is not intended to be a replacement for decreasing graphics settings on
-lower-end hardware. Consider exposing both resolution scale and graphics
-settings in your in-game menus.
+Mặc dù tỷ lệ độ phân giải là một công cụ quan trọng, hãy nhớ rằng tỷ lệ độ phân giải không nhằm thay thế cho việc giảm các thiết lập đồ họa trên phần cứng cấp thấp. Hãy cân nhắc cho phép người dùng điều chỉnh cả tỷ lệ độ phân giải và các thiết lập đồ họa trong menu trong trò chơi.
 
 .. seealso::
 
-    You can compare resolution scaling modes and factors in action using the
-    `3D Antialiasing demo project <https://github.com/godotengine/godot-demo-projects/tree/master/3d/antialiasing>`__.
+    Bạn có thể so sánh các chế độ và hệ số tỷ lệ độ phân giải trong thực tế bằng `dự án demo Khử răng cưa 3D <https://github.com/godotengine/godot-demo-projects/tree/master/3d/antialiasing>`__.
 
 .. note::
 
-    Resolution scaling is currently not available for 2D rendering, but it can be
-    simulated using the ``viewport`` stretch mode. See :ref:`doc_multiple_resolutions`
-    for more information.
+    Hiện tại, việc thay đổi tỷ lệ độ phân giải không khả dụng cho kết xuất 2D, nhưng bạn có thể mô phỏng bằng chế độ kéo giãn ``viewport``. Xem :ref:`doc_multiple_resolutions` để biết thêm thông tin.
 
-Resolution scaling options
---------------------------
+Các tùy chọn tỷ lệ độ phân giải
+-------------------------------
 
-In the advanced Project Settings' **Rendering > Scaling 3D** section, you can
-find several options for 3D resolution scaling:
+Trong phần **Rendering > Scaling 3D** của Project Settings nâng cao, bạn có thể tìm thấy một số tùy chọn tỷ lệ độ phân giải 3D:
 
-Scaling mode
+Chế độ tỷ lệ
 ~~~~~~~~~~~~
 
-- **Bilinear:** Standard bilinear filtering (default). This is used as a fallback
-  when the current renderer doesn't support FSR 1.0 or FSR 2.2. *Available in
-  all renderers.*
-- **FSR 1.0:** `AMD FidelityFX Super Resolution 1.0 <https://gpuopen.com/fidelityfx-superresolution/>`__.
-  Slower, but higher quality compared to bilinear scaling. On very slow GPUs,
-  the cost of FSR1 may be too expensive to be worth using it over bilinear
-  scaling. *Only available when using the Forward+ renderer.*
-- **FSR 2.2:** AMD FidelityFX Super Resolution 2.2 (since Godot 4.2). Slowest,
-  but even higher quality compared to FSR1 and bilinear scaling. On slow GPUs,
-  the cost of FSR2 may be too expensive to be worth using it over bilinear
-  scaling or FSR1. To match FSR2 performance with FSR1, you need to use a lower
-  resolution scale factor. *Only available when using the Forward+ renderer.*
+- **Bilinear:** Bộ lọc bilinear tiêu chuẩn (mặc định). Bộ lọc này được sử dụng dự phòng khi renderer hiện tại không hỗ trợ FSR 1.0 hoặc FSR 2.2. *Có sẵn trong tất cả renderer.*
+- **FSR 1.0:** `AMD FidelityFX Super Resolution 1.0 <https://gpuopen.com/fidelityfx-superresolution/>`__. Chậm hơn nhưng chất lượng cao hơn so với tỷ lệ bilinear. Trên các GPU rất chậm, chi phí của FSR1 có thể quá cao, khiến việc sử dụng nó không đáng so với tỷ lệ bilinear. *Chỉ khả dụng khi sử dụng Forward+ renderer.*
+- **FSR 2.2:** AMD FidelityFX Super Resolution 2.2 (từ Godot 4.2). Chậm nhất nhưng chất lượng còn cao hơn so với FSR1 và tỷ lệ bilinear. Trên các GPU chậm, chi phí của FSR2 có thể quá cao, khiến việc sử dụng nó không đáng so với tỷ lệ bilinear hoặc FSR1. Để đạt hiệu năng tương đương với FSR2 bằng FSR1, bạn cần sử dụng hệ số tỷ lệ độ phân giải thấp hơn. *Chỉ khả dụng khi sử dụng Forward+ renderer.*
 
-Here are comparison images between native resolution, bilinear scaling with 50%
-resolution scale, FSR1, and FSR2 scaling with 50% resolution scale:
+Dưới đây là các hình ảnh so sánh giữa độ phân giải gốc, tỷ lệ bilinear với tỷ lệ độ phân giải 50%, FSR1 và tỷ lệ FSR2 với tỷ lệ độ phân giải 50%:
 
 .. image:: img/resolution_scaling_bilinear_0.5.png
 
@@ -65,17 +43,11 @@ resolution scale, FSR1, and FSR2 scaling with 50% resolution scale:
 
 .. image:: img/resolution_scaling_fsr2_0.5.webp
 
-FSR1 upscaling works best when coupled with another form of antialiasing.
-Temporal antialiasing (TAA) or multisample antialiasing (MSAA) should preferably
-be used in this case, as FXAA does not add temporal information and introduces
-more blurring to the image.
+Tỷ lệ nâng độ phân giải FSR1 hoạt động tốt nhất khi kết hợp với một dạng khử răng cưa khác. Trong trường hợp này, nên sử dụng khử răng cưa tạm thời (TAA) hoặc khử răng cưa đa mẫu (MSAA), vì FXAA không bổ sung thông tin tạm thời và làm hình ảnh bị mờ hơn.
 
-On the other hand, FSR2 provides its own temporal antialiasing. This means you
-don't need to enable other antialiasing methods for the resulting image to look
-smooth. The **Use TAA** project setting is ignored when FSR2 is used as the 3D
-scaling method, since FSR2's temporal antialiasing takes priority.
+Mặt khác, FSR2 cung cấp khử răng cưa tạm thời riêng. Điều này có nghĩa là bạn không cần bật các phương pháp khử răng cưa khác để hình ảnh đầu ra trông mượt mà. Thiết lập project **Use TAA** sẽ bị bỏ qua khi FSR2 được sử dụng làm phương pháp tỷ lệ 3D, vì khử răng cưa tạm thời của FSR2 được ưu tiên.
 
-Here's the same comparison, but with 4× MSAA enabled on all images:
+Đây là cùng một phép so sánh, nhưng với 4× MSAA được bật trên tất cả hình ảnh:
 
 .. image:: img/resolution_scaling_bilinear_msaa_4x_0.5.png
 
@@ -83,198 +55,141 @@ Here's the same comparison, but with 4× MSAA enabled on all images:
 
 .. image:: img/resolution_scaling_fsr2_msaa_4x_0.5.webp
 
-Notice how the edge upscaling of FSR1 becomes much more convincing once 4×
-MSAA is enabled. However, FSR2 doesn't benefit much from enabling MSAA since it
-already performs temporal antialiasing.
+Hãy chú ý cách việc nâng độ phân giải các cạnh của FSR1 trở nên thuyết phục hơn nhiều sau khi bật 4× MSAA. Tuy nhiên, FSR2 không được hưởng lợi nhiều từ việc bật MSAA vì bản thân nó đã thực hiện khử răng cưa tạm thời.
 
-Rendering scale
-~~~~~~~~~~~~~~~
+Tỷ lệ kết xuất
+~~~~~~~~~~~~~~
 
-The **Rendering > Scaling 3D > Scale** setting adjusts the resolution scale.
-``1.0`` represents the full resolution scale, with the 3D rendering resolution
-matching the 2D rendering resolution. Resolution scales *below* ``1.0`` can be
-used to speed up rendering, at the cost of a blurrier final image and more aliasing.
+Thiết lập **Rendering > Scaling 3D > Scale** điều chỉnh tỷ lệ độ phân giải. ``1.0`` biểu thị tỷ lệ độ phân giải đầy đủ, trong đó độ phân giải kết xuất 3D khớp với độ phân giải kết xuất 2D. Có thể sử dụng các tỷ lệ độ phân giải *thấp hơn* ``1.0`` để tăng tốc kết xuất, đổi lại hình ảnh cuối cùng sẽ mờ hơn và có nhiều răng cưa hơn.
 
-The rendering scale can be adjusted at runtime by changing the ``scaling_3d_scale``
-property on a :ref:`class_Viewport` node.
+Có thể điều chỉnh tỷ lệ kết xuất trong runtime bằng cách thay đổi thuộc tính ``scaling_3d_scale`` trên một node :ref:`class_Viewport`.
 
-Resolution scales *above* ``1.0`` can be used for supersample antialiasing
-(SSAA). This will provide antialiasing at a *very* high performance cost, and is
-**not recommended** for most use cases. See :ref:`doc_3d_antialiasing` for more
-information.
+Có thể sử dụng các tỷ lệ độ phân giải *cao hơn* ``1.0`` để khử răng cưa bằng supersampling (SSAA). Cách này cung cấp khả năng khử răng cưa với chi phí hiệu năng *rất* cao và **không được khuyến nghị** cho hầu hết trường hợp sử dụng. Xem :ref:`doc_3d_antialiasing` để biết thêm thông tin.
 
-The tables below list common screen resolutions, the resulting 3D rendering
-resolution and the number of megapixels that need to be rendered each frame
-depending on the rendering scale option. Rows are sorted from fastest to slowest
-in each table.
+Các bảng bên dưới liệt kê những độ phân giải màn hình phổ biến, độ phân giải kết xuất 3D tương ứng và số megapixel cần được kết xuất trong mỗi frame tùy theo tùy chọn tỷ lệ kết xuất. Các hàng trong mỗi bảng được sắp xếp từ nhanh nhất đến chậm nhất.
 
 .. note::
 
-    The resolution scale is defined on a **per-axis** basis. For example, this
-    means that halving the resolution scale factor will reduce the number of
-    rendered megapixels per frame by a factor of 4, not 2. Therefore, very low
-    or very high resolution scale factors can have a greater performance impact
-    than expected.
+    Tỷ lệ độ phân giải được xác định theo cơ sở **trên từng trục**. Ví dụ, điều này có nghĩa là giảm một nửa hệ số tỷ lệ độ phân giải sẽ giảm số megapixel được kết xuất mỗi frame theo hệ số 4, không phải 2. Vì vậy, các hệ số tỷ lệ độ phân giải rất thấp hoặc rất cao có thể tác động đến hiệu năng nhiều hơn dự kiến.
 
 **1920×1080 (Full HD)**
 
-+--------------------------+-------------------------+-------------------------------+
-| Resolution scale factor  | 3D rendering resolution | Megapixels rendered per frame |
-+==========================+=========================+===============================+
-| ``0.50``                 | 960×540                 | 0.52 MPix                     |
-+--------------------------+-------------------------+-------------------------------+
-| ``0.67``                 | 1286×723                | 0.93 MPix                     |
-+--------------------------+-------------------------+-------------------------------+
-| ``0.75``                 | 1440×810                | 1.17 MPix                     |
-+--------------------------+-------------------------+-------------------------------+
-| ``0.85``                 | 1632×918                | 1.50 MPix                     |
-+--------------------------+-------------------------+-------------------------------+
-| ``1.00`` **(native)**    | **1920×1080**           | **2.07 MPix**                 |
-+--------------------------+-------------------------+-------------------------------+
-| ``1.33`` (supersampling) | 2553×1436               | 3.67 MPix                     |
-+--------------------------+-------------------------+-------------------------------+
-| ``1.50`` (supersampling) | 2880×1620               | 4.67 MPix                     |
-+--------------------------+-------------------------+-------------------------------+
-| ``2.00`` (supersampling) | 3840×2160               | 8.29 MPix                     |
-+--------------------------+-------------------------+-------------------------------+
++--------------------------+--------------------------+-----------------------------------+
+| Hệ số tỷ lệ độ phân giải | Độ phân giải kết xuất 3D | Megapixel được kết xuất mỗi frame |
++==========================+==========================+===================================+
+| ``0.50``                 | 960×540                  | 0.52 MPix                         |
++--------------------------+--------------------------+-----------------------------------+
+| ``0.67``                 | 1286×723                 | 0.93 MPix                         |
++--------------------------+--------------------------+-----------------------------------+
+| ``0.75``                 | 1440×810                 | 1.17 MPix                         |
++--------------------------+--------------------------+-----------------------------------+
+| ``0.85``                 | 1632×918                 | 1.50 MPix                         |
++--------------------------+--------------------------+-----------------------------------+
+| ``1.00`` **(gốc)**       | **1920×1080**            | **2.07 MPix**                     |
++--------------------------+--------------------------+-----------------------------------+
+| ``1.33`` (siêu lấy mẫu)  | 2553×1436                | 3.67 MPix                         |
++--------------------------+--------------------------+-----------------------------------+
+| ``1.50`` (siêu lấy mẫu)  | 2880×1620                | 4.67 MPix                         |
++--------------------------+--------------------------+-----------------------------------+
+| ``2.00`` (siêu lấy mẫu)  | 3840×2160                | 8.29 MPix                         |
++--------------------------+--------------------------+-----------------------------------+
 
 **2560×1440 (QHD)**
 
-+--------------------------+-------------------------+-------------------------------+
-| Resolution scale factor  | 3D rendering resolution | Megapixels rendered per frame |
-+==========================+=========================+===============================+
-| ``0.50``                 | 1280×720                | 0.92 MPix                     |
-+--------------------------+-------------------------+-------------------------------+
-| ``0.67``                 | 1715×964                | 1.65 MPix                     |
-+--------------------------+-------------------------+-------------------------------+
-| ``0.75``                 | 1920×1080               | 2.07 MPix                     |
-+--------------------------+-------------------------+-------------------------------+
-| ``0.85``                 | 2176×1224               | 2.66 MPix                     |
-+--------------------------+-------------------------+-------------------------------+
-| ``1.00`` **(native)**    | **2560×1440**           | **3.69 MPix**                 |
-+--------------------------+-------------------------+-------------------------------+
-| ``1.33`` (supersampling) | 3404×1915               | 6.52 MPix                     |
-+--------------------------+-------------------------+-------------------------------+
-| ``1.50`` (supersampling) | 3840×2160               | 8.29 MPix                     |
-+--------------------------+-------------------------+-------------------------------+
-| ``2.00`` (supersampling) | 5120×2880               | 14.75 MPix                    |
-+--------------------------+-------------------------+-------------------------------+
++--------------------------+--------------------------+-----------------------------------+
+| Hệ số tỷ lệ độ phân giải | Độ phân giải kết xuất 3D | Megapixel được kết xuất mỗi frame |
++==========================+==========================+===================================+
+| ``0.50``                 | 1280×720                 | 0.92 MPix                         |
++--------------------------+--------------------------+-----------------------------------+
+| ``0.67``                 | 1715×964                 | 1.65 MPix                         |
++--------------------------+--------------------------+-----------------------------------+
+| ``0.75``                 | 1920×1080                | 2.07 MPix                         |
++--------------------------+--------------------------+-----------------------------------+
+| ``0.85``                 | 2176×1224                | 2.66 MPix                         |
++--------------------------+--------------------------+-----------------------------------+
+| ``1.00`` **(gốc)**       | **2560×1440**            | **3.69 MPix**                     |
++--------------------------+--------------------------+-----------------------------------+
+| ``1.33`` (siêu lấy mẫu)  | 3404×1915                | 6.52 MPix                         |
++--------------------------+--------------------------+-----------------------------------+
+| ``1.50`` (siêu lấy mẫu)  | 3840×2160                | 8.29 MPix                         |
++--------------------------+--------------------------+-----------------------------------+
+| ``2.00`` (siêu lấy mẫu)  | 5120×2880                | 14.75 MPix                        |
++--------------------------+--------------------------+-----------------------------------+
 
 **3840×2160 (Ultra HD "4K")**
 
-+--------------------------+-------------------------+-------------------------------+
-| Resolution scale factor  | 3D rendering resolution | Megapixels rendered per frame |
-+==========================+=========================+===============================+
-| ``0.50``                 | 1920×1080               | 2.07 MPix                     |
-+--------------------------+-------------------------+-------------------------------+
-| ``0.67``                 | 2572×1447               | 3.72 MPix                     |
-+--------------------------+-------------------------+-------------------------------+
-| ``0.75``                 | 2880×1620               | 4.67 MPix                     |
-+--------------------------+-------------------------+-------------------------------+
-| ``0.85``                 | 3264×1836               | 5.99 MPix                     |
-+--------------------------+-------------------------+-------------------------------+
-| ``1.00`` **(native)**    | **3840×2160**           | **8.29 MPix**                 |
-+--------------------------+-------------------------+-------------------------------+
-| ``1.33`` (supersampling) | 5107×2872               | 14.67 MPix                    |
-+--------------------------+-------------------------+-------------------------------+
-| ``1.50`` (supersampling) | 5760×3240               | 18.66 MPix                    |
-+--------------------------+-------------------------+-------------------------------+
-| ``2.00`` (supersampling) | 7680×4320               | 33.18 MPix                    |
-+--------------------------+-------------------------+-------------------------------+
++--------------------------+--------------------------+-----------------------------------+
+| Hệ số tỷ lệ độ phân giải | Độ phân giải kết xuất 3D | Megapixel được kết xuất mỗi frame |
++==========================+==========================+===================================+
+| ``0.50``                 | 1920×1080                | 2.07 MPix                         |
++--------------------------+--------------------------+-----------------------------------+
+| ``0.67``                 | 2572×1447                | 3.72 MPix                         |
++--------------------------+--------------------------+-----------------------------------+
+| ``0.75``                 | 2880×1620                | 4.67 MPix                         |
++--------------------------+--------------------------+-----------------------------------+
+| ``0.85``                 | 3264×1836                | 5.99 MPix                         |
++--------------------------+--------------------------+-----------------------------------+
+| ``1.00`` **(gốc)**       | **3840×2160**            | **8.29 MPix**                     |
++--------------------------+--------------------------+-----------------------------------+
+| ``1.33`` (siêu lấy mẫu)  | 5107×2872                | 14.67 MPix                        |
++--------------------------+--------------------------+-----------------------------------+
+| ``1.50`` (siêu lấy mẫu)  | 5760×3240                | 18.66 MPix                        |
++--------------------------+--------------------------+-----------------------------------+
+| ``2.00`` (siêu lấy mẫu)  | 7680×4320                | 33.18 MPix                        |
++--------------------------+--------------------------+-----------------------------------+
 
-FSR Sharpness
-~~~~~~~~~~~~~
+Độ sắc nét FSR
+~~~~~~~~~~~~~~
 
-*This is only available in the Forward+ renderer, not the Mobile or Compatibility
-renderers.*
+*Tính năng này chỉ khả dụng trong trình kết xuất Forward+, không khả dụng trong trình kết xuất Mobile hoặc Compatibility.*
 
-When using the FSR1 or FSR2 scaling modes, the sharpness can be controlled using the
-**Rendering > Scaling 3D > FSR Sharpness** advanced project setting.
+Khi sử dụng chế độ масштаб FSR1 hoặc FSR2, bạn có thể điều khiển độ sắc nét bằng thiết lập dự án nâng cao **Rendering > Scaling 3D > FSR Sharpness**.
 
-The intensity is inverted compared to most other sharpness sliders: *lower*
-values will result in a sharper final image, while *higher* values will *reduce*
-the impact of the sharpening filter. ``0.0`` is the sharpest, while ``2.0`` is
-the least sharp. The default value of ``0.2`` provides a balance between
-preserving the original image's sharpness and avoiding additional aliasing due
-to oversharpening.
+Cường độ được đảo ngược so với hầu hết các thanh trượt độ sắc nét khác: các giá trị *thấp hơn* sẽ tạo ra hình ảnh cuối sắc nét hơn, trong khi các giá trị *cao hơn* sẽ *giảm* tác động của bộ lọc tăng độ sắc nét. ``0.0`` là mức sắc nét nhất, còn ``2.0`` là mức ít sắc nét nhất. Giá trị mặc định ``0.2`` tạo sự cân bằng giữa việc giữ lại độ sắc nét của hình ảnh gốc và tránh hiện tượng răng cưa bổ sung do tăng độ sắc nét quá mức.
 
 .. note::
 
-    If you wish to use sharpening when rendering at native resolution, Godot
-    currently doesn't allow using the sharpening component of FSR1 (RCAS)
-    independently from the upscaling component (EASU).
+    Nếu muốn sử dụng tính năng tăng độ sắc nét khi kết xuất ở độ phân giải gốc, hiện tại Godot không cho phép sử dụng riêng thành phần tăng độ sắc nét của FSR1 (RCAS) khỏi thành phần nâng cấp (EASU).
 
-    As a workaround, you can set the 3D rendering scale to ``0.99``, set the
-    scaling mode to **FSR 1.0** then adjust FSR sharpness as needed. This allows
-    using FSR1 while rendering at a near-native resolution.
+    Để khắc phục, bạn có thể đặt tỷ lệ kết xuất 3D thành ``0.99``, đặt chế độ scaling thành **FSR 1.0**, rồi điều chỉnh độ sắc nét FSR theo nhu cầu. Cách này cho phép sử dụng FSR1 trong khi kết xuất ở độ phân giải gần với độ phân giải gốc.
 
-    Alternatively, you can set the scaling mode to **FSR 2.2** with the 3D
-    rendering scale set to ``1.0`` if you have enough GPU headroom. This also
-    provides high-quality temporal antialiasing. The **FSR Sharpness** setting
-    remains functional in this case.
+    Ngoài ra, bạn có thể đặt chế độ scaling thành **FSR 2.2**, với tỷ lệ kết xuất 3D được đặt thành ``1.0`` nếu GPU còn đủ công suất. Cách này cũng cung cấp tính năng khử răng cưa theo thời gian chất lượng cao. Thiết lập **FSR Sharpness** vẫn hoạt động trong trường hợp này.
 
 .. _doc_resolution_scaling_mipmap_bias:
 
-Mipmap bias
-~~~~~~~~~~~
+Độ lệch Mipmap
+~~~~~~~~~~~~~~
 
-*This is only available in the Forward+ and Mobile renderers, not the Compatibility
-renderer.*
+*Tính năng này chỉ khả dụng trong trình kết xuất Forward+ và Mobile, không khả dụng trong trình kết xuất Compatibility.*
 
-Godot automatically uses a negative texture mipmap bias when the 3D resolution
-scale is set below ``1.0``. This allows for better preservation of texture
-detail at the cost of a grainy appearance on detailed textures.
+Godot tự động sử dụng độ lệch mipmap âm cho texture khi tỷ lệ độ phân giải 3D được đặt thấp hơn ``1.0``. Điều này giúp giữ lại chi tiết của texture tốt hơn, đổi lại các texture có nhiều chi tiết sẽ có vẻ nhiễu hạt.
 
-The texture LOD bias currently affects both 2D and 3D rendering in the same way.
-However, keep in mind it only has an effect on textures with mipmaps enabled.
-Textures used in 2D don't have mipmaps enabled by default, which means only 3D
-rendering is affected unless you enabled mipmaps on 2D textures in the Import
-dock.
+Độ lệch LOD của texture hiện ảnh hưởng đến cả kết xuất 2D và 3D theo cùng một cách. Tuy nhiên, hãy lưu ý rằng nó chỉ có tác dụng với các texture đã bật mipmap. Texture được sử dụng trong 2D không bật mipmap theo mặc định, nghĩa là chỉ kết xuất 3D bị ảnh hưởng, trừ khi bạn đã bật mipmap cho texture 2D trong dock Import.
 
-The formula used to determine the texture mipmap bias is:
-``log2f(min(scaling_3d_scale, 1.0)) + custom_texture_mipmap_bias``
+Công thức dùng để xác định độ lệch mipmap của texture là: ``log2f(min(scaling_3d_scale, 1.0)) + custom_texture_mipmap_bias``
 
-To counteract the blurriness added by some antialiasing methods, Godot also adds
-a ``-0.25`` offset when FXAA is enabled, and a ``-0.5`` offset when TAA is
-enabled. If both are enabled at the same time, a ``-0.75`` offset is used. This
-mipmap bias offset is applied *before* the resolution scaling offset, so it does
-not change depending on resolution scale.
+Để bù lại hiện tượng mờ do một số phương pháp khử răng cưa gây ra, Godot cũng thêm độ lệch ``-0.25`` khi FXAA được bật và độ lệch ``-0.5`` khi TAA được bật. Nếu cả hai được bật cùng lúc, độ lệch ``-0.75`` sẽ được sử dụng. Độ lệch mipmap này được áp dụng *trước* độ lệch do scaling độ phân giải, vì vậy nó không thay đổi theo tỷ lệ độ phân giải.
 
-The texture LOD bias can manually be changed by adjusting the **Rendering >
-Textures > Default Filters > Texture Mipmap Bias** advanced project setting. It
-can also be changed at runtime on :ref:`Viewports <class_Viewport>` by
-adjusting the ``texture_mipmap_bias`` property.
+Có thể thay đổi thủ công độ lệch LOD của texture bằng cách điều chỉnh thiết lập dự án nâng cao **Rendering > Textures > Default Filters > Texture Mipmap Bias**. Bạn cũng có thể thay đổi nó trong runtime trên :ref:`Viewports <class_Viewport>` bằng cách điều chỉnh thuộc tính ``texture_mipmap_bias``.
 
 .. warning::
 
-    Adjusting the mipmap LOD bias manually can be useful in certain scenarios,
-    but this should be done carefully to prevent the final image from looking
-    grainy in motion.
+    Việc điều chỉnh thủ công độ lệch LOD của mipmap có thể hữu ích trong một số trường hợp, nhưng cần thực hiện cẩn thận để tránh khiến hình ảnh cuối bị nhiễu hạt khi chuyển động.
 
-    *Negative* mipmap LOD bias can also decrease performance due to
-    higher-resolution mips having to be sampled further away. Recommended values
-    for a manual offset are between ``-0.5`` and ``0.0``.
+    Độ lệch LOD mipmap *âm* cũng có thể làm giảm hiệu năng do phải lấy mẫu các mip có độ phân giải cao hơn ở khoảng cách xa hơn. Giá trị khuyến nghị cho một offset thủ công nằm trong khoảng từ ``-0.5`` đến ``0.0``.
 
-    *Positive* mipmap LOD bias will make mipmapped textures appear blurrier than
-    intended. This may improve performance slightly, but is otherwise not
-    recommended as the loss in visual quality is usually not worth the
-    performance gain.
+    Độ lệch LOD mipmap *dương* sẽ khiến các texture được mipmap trông mờ hơn mức mong muốn. Điều này có thể cải thiện hiệu năng đôi chút, nhưng nhìn chung không được khuyến nghị vì mức suy giảm chất lượng hình ảnh thường không đáng để đổi lấy phần hiệu năng tăng thêm.
 
-The example below shows an extreme case, with a mipmap LOD bias of ``-1.0`` and
-anisotropic filtering disabled to make the difference more noticeable:
+Ví dụ dưới đây cho thấy một trường hợp cực đoan, với độ lệch LOD mipmap là ``-1.0`` và anisotropic filtering bị vô hiệu hóa để sự khác biệt dễ nhận thấy hơn:
 
 .. image:: img/resolution_scaling_texture_mipmap_bias_comparison.png
 
-Troubleshooting
+Khắc phục sự cố
 ---------------
 
-Performance does not increase much when decreasing resolution scale
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Hiệu năng không tăng nhiều khi giảm tỷ lệ độ phân giải
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If performance doesn't increase much when decreasing resolution scale to a value
-like ``0.5``, it likely means the performance bottleneck is elsewhere in your
-scene. For example, your scene could have too many draw calls, causing a CPU
-bottleneck to occur. Likewise, you may have too many graphics effects enabled
-for your GPU to handle (such as SDFGI, SSAO or SSR).
+Nếu hiệu năng không tăng nhiều khi giảm tỷ lệ độ phân giải xuống một giá trị như ``0.5``, có thể nút thắt hiệu năng nằm ở nơi khác trong scene của bạn. Ví dụ, scene của bạn có thể có quá nhiều draw call, dẫn đến nút thắt CPU. Tương tự, có thể bạn đã bật quá nhiều hiệu ứng đồ họa khiến GPU không thể xử lý (chẳng hạn như SDFGI, SSAO hoặc SSR).
 
-See the :ref:`doc_performance` tutorials for more information.
+Xem các hướng dẫn :ref:`doc_performance` để biết thêm thông tin.

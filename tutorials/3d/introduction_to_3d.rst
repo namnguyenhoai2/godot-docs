@@ -1,446 +1,279 @@
 .. _doc_introduction_to_3d:
 
-Introduction to 3D
-==================
+Giới thiệu về 3D
+================
 
-Creating a 3D game can be challenging. That extra Z coordinate makes
-many of the common techniques that helped to make 2D games simpler no
-longer work. To aid in this transition, it is worth mentioning that
-Godot uses similar APIs for 2D and 3D. Most nodes are the same and
-are present in both 2D and 3D versions. In fact, it is worth checking
-the 3D platformer tutorial, or the 3D kinematic character tutorials,
-which are almost identical to their 2D counterparts.
+Tạo một game 3D có thể là một thử thách. Tọa độ Z bổ sung khiến nhiều kỹ thuật phổ biến từng giúp việc tạo game 2D trở nên đơn giản không còn hoạt động. Để hỗ trợ quá trình chuyển đổi này, cần lưu ý rằng Godot sử dụng các API tương tự cho 2D và 3D. Hầu hết các node đều giống nhau và có mặt ở cả phiên bản 2D lẫn 3D. Trên thực tế, bạn nên xem qua hướng dẫn về platformer 3D hoặc các hướng dẫn về nhân vật động học 3D, vì chúng gần như giống hệt các phiên bản tương ứng trong 2D.
 
 .. figure:: img/godot-tps-demo.webp
    :align: center
-   :alt: An example 3D game demo created using Godot
+   :alt: Một bản demo game 3D mẫu được tạo bằng Godot
 
-   Godot Third Person Shooter (TPS) Demo, available on the
-   `Github repository <https://github.com/godotengine/tps-demo>`__ or the
+   Bản demo Godot Third Person Shooter (TPS), có trên `Github repository <https://github.com/godotengine/tps-demo>`__ hoặc
    :ref:`Asset Library <doc_project_manager_downloading_demos>`.
 
-In 3D, math is a little more complex than in 2D. For an introduction to the
-relevant math written for game developers, not mathematicians or engineers,
-check out :ref:`doc_vector_math` and :ref:`doc_using_transforms`.
+Trong 3D, toán học phức tạp hơn một chút so với 2D. Để tìm hiểu phần toán liên quan dành cho các nhà phát triển game, không phải nhà toán học hay kỹ sư, hãy xem :ref:`doc_vector_math` và :ref:`doc_using_transforms`.
 
-3D workspace
+workspace 3D
 ------------
 
-Editing 3D scenes is done in the 3D workspace. This workspace can be selected
-manually, but it will be automatically selected when a Node3D node is
-selected.
+Việc chỉnh sửa các scene 3D được thực hiện trong workspace 3D. Bạn có thể chọn workspace này theo cách thủ công, nhưng nó sẽ được tự động chọn khi một node Node3D được chọn.
 
 .. image:: img/tuto_3d3.webp
 
-Similar to 2D, the tabs below the workspace selector are used to change between
-currently opened scenes or create a new one using the plus (+) button. The left and
-right docks should be familiar from :ref:`editor introduction <doc_editor_introduction>`.
+Tương tự 2D, các tab bên dưới bộ chọn workspace được dùng để chuyển đổi giữa các scene đang mở hoặc tạo scene mới bằng nút dấu cộng (+). Các dock bên trái và bên phải hẳn đã quen thuộc từ :ref:`phần giới thiệu editor <doc_editor_introduction>`.
 
-Below the scene selector, the main toolbar is visible, and beneath the main toolbar
-is the 3D viewport.
+Bên dưới bộ chọn scene là main toolbar, và bên dưới main toolbar là viewport 3D.
 
 Main toolbar
 ~~~~~~~~~~~~
 
-Some buttons in the main toolbar are the same as those in the 2D workspace. A brief explanation
-is given with the shortcut if the mouse cursor is hovered over a button for one second.
-Some buttons may have additional functionality if another keypress is performed. A recap
-of main functionality of each button with its default shortcut is provided below from
-left to right:
+Một số nút trong main toolbar giống với các nút trong workspace 2D. Khi di con trỏ chuột lên một nút trong một giây, một phần giải thích ngắn cùng phím tắt sẽ được hiển thị. Một số nút có thể có chức năng bổ sung nếu nhấn thêm một phím khác. Dưới đây là phần tóm tắt chức năng chính của từng nút cùng phím tắt mặc định, theo thứ tự từ trái sang phải:
 
 .. image:: img/3d_toolbar.webp
 
-- **Transform Mode** (:kbd:`Q`): Enables a combined move + rotation mode for the selected nodes.
-- **Move Mode** (:kbd:`W`): Enables move (or translate) mode for the selected nodes.
-  See :ref:`doc_introduction_to_3d_space_and_manipulation` for more details.
-- **Rotate Mode** (:kbd:`E`): Enables rotation mode for the selected nodes. See
-  :ref:`doc_introduction_to_3d_space_and_manipulation` for more details.
-- **Scale Mode** (:kbd:`R`): Enables scaling and displays scaling gizmos in different
-  axes for the selected nodes. See :ref:`doc_introduction_to_3d_space_and_manipulation`
-  for more details.
-- **Select Mode** (:kbd:`V`): Allows selection of nodes in the viewport. Left clicking
-  on a node to select one. Left clicking and dragging a rectangle selects all
-  nodes within the rectangle's boundaries, once released.
-  Holding :kbd:`Shift` while selecting adds more nodes to the selection.
-  Clicking on a selected node while holding :kbd:`Shift` deselects the node.
-  In this mode, you can use the gizmos to perform movement or rotation.
-- **Show the list of selectable nodes at the clicked position**: As the description suggests,
-  this provides a list of selectable nodes at the clicked position as a context menu,
-  if there is more than one node in the clicked area.
-- **Lock** (:kbd:`Ctrl + L`) the selected nodes, preventing selection and movement in the viewport.
-  Clicking the button again (or using :kbd:`Ctrl + Shift + L`) unlocks the selected nodes.
-  Locked nodes can only be selected in the scene tree.
-  They can easily be identified with a padlock next to their node names in the scene tree.
-  Clicking on this padlock also unlocks the nodes.
-- **Group selected nodes** (:kbd:`Ctrl + G`). This allows selection of the root node if
-  any of the children are selected.
-  Using :kbd:`Ctrl + G` ungroups them. Additionally, clicking the ungroup button in
-  the scene tree performs the same action.
-- **Ruler Mode** (:kbd:`M`): When enabled you can click and drag to measure distance in the scene
-  in meters.
-- **Use Local Space** (:kbd:`T`): If enabled, gizmos of a node are drawn using the current node's
-  rotation angle instead of the :ref:`global viewport axes <doc_introduction_to_3d_coordinate_system>`.
-- **Use Snap** (:kbd:`Y`): If enabled, movement, and rotation snap to grid. Snapping can also
-  temporarily be activated using :kbd:`Ctrl` while performing the action.
-  The settings for changing snap options are explained below.
-- **Use Trackball** (:kbd:`U`): When enabled, dragging the center of a node (represented by a
-  subtle ray disc highlight) will rotate the node like a physical trackball.
-- **Preserve Children Transform** (:kbd:`P`): When enabled, transforming a node will preserve the
-  global transform of its children.
-- **Toggle preview sunlight**: If no DirectionalLight3D exist in the scene, a preview
-  of sunlight can be used as a light source. See
-  :ref:`doc_introduction_to_3d_preview_environment_light` for more details.
-- **Toggle preview environment**: If no WorldEnvironment exists in the scene, a preview of the
-  environment can be used as a placeholder. See
-  :ref:`doc_introduction_to_3d_preview_environment_light` for more details.
-- **Edit Sun and Environment Settings (three dots)**: Opens the menu to configure preview
-  sunlight and environment settings. See :ref:`doc_introduction_to_3d_preview_environment_light`
-  for more details.
+- **Transform Mode** (:kbd:`Q`): Bật chế độ di chuyển + xoay kết hợp cho các node đã chọn.
+- **Move Mode** (:kbd:`W`): Bật chế độ di chuyển (hoặc tịnh tiến) cho các node đã chọn. Xem :ref:`doc_introduction_to_3d_space_and_manipulation` để biết thêm chi tiết.
+- **Rotate Mode** (:kbd:`E`): Bật chế độ xoay cho các node đã chọn. Xem
+  :ref:`doc_introduction_to_3d_space_and_manipulation` để biết thêm chi tiết.
+- **Scale Mode** (:kbd:`R`): Bật chức năng scale và hiển thị các gizmo scale trên những trục khác nhau cho các node đã chọn. Xem :ref:`doc_introduction_to_3d_space_and_manipulation` để biết thêm chi tiết.
+- **Select Mode** (:kbd:`V`): Cho phép chọn các node trong viewport. Nhấp chuột trái vào một node để chọn node đó. Nhấp chuột trái và kéo một hình chữ nhật sẽ chọn tất cả các node nằm trong ranh giới của hình chữ nhật khi thả chuột. Giữ :kbd:`Shift` trong khi chọn sẽ thêm các node vào vùng chọn. Nhấp vào một node đã chọn trong khi giữ :kbd:`Shift` sẽ bỏ chọn node đó. Trong chế độ này, bạn có thể dùng các gizmo để di chuyển hoặc xoay.
+- **Show the list of selectable nodes at the clicked position**: Như mô tả cho thấy, tùy chọn này hiển thị danh sách các node có thể chọn tại vị trí được nhấp dưới dạng context menu, nếu có nhiều hơn một node trong khu vực được nhấp.
+- **Lock** (:kbd:`Ctrl + L`) các node đã chọn, ngăn việc chọn và di chuyển chúng trong viewport. Nhấp lại vào nút này (hoặc sử dụng :kbd:`Ctrl + Shift + L`) để mở khóa các node đã chọn. Các node bị khóa chỉ có thể được chọn trong scene tree. Bạn có thể dễ dàng nhận biết chúng qua biểu tượng ổ khóa bên cạnh tên node trong scene tree. Nhấp vào biểu tượng ổ khóa này cũng sẽ mở khóa các node.
+- **Group selected nodes** (:kbd:`Ctrl + G`). Tùy chọn này cho phép chọn node gốc nếu bất kỳ node con nào được chọn. Sử dụng :kbd:`Ctrl + G` để bỏ nhóm chúng. Ngoài ra, nhấp vào nút bỏ nhóm trong scene tree cũng thực hiện thao tác tương tự.
+- **Ruler Mode** (:kbd:`M`): Khi được bật, bạn có thể nhấp và kéo để đo khoảng cách trong scene theo đơn vị mét.
+- **Use Local Space** (:kbd:`T`): Khi được bật, các gizmo của một node được vẽ theo góc xoay của node hiện tại thay vì :ref:`global viewport axes <doc_introduction_to_3d_coordinate_system>`.
+- **Use Snap** (:kbd:`Y`): Khi được bật, thao tác di chuyển và xoay sẽ snap theo lưới. Bạn cũng có thể tạm thời bật snap bằng :kbd:`Ctrl` trong khi thực hiện thao tác. Các thiết lập để thay đổi tùy chọn snap được giải thích bên dưới.
+- **Use Trackball** (:kbd:`U`): Khi được bật, kéo phần trung tâm của một node (được biểu thị bằng vùng sáng đĩa tia tinh tế) sẽ xoay node giống như một trackball vật lý.
+- **Preserve Children Transform** (:kbd:`P`): Khi được bật, việc transform một node sẽ giữ nguyên transform toàn cục của các node con.
+- **Toggle preview sunlight**: Nếu scene không có DirectionalLight3D, bạn có thể dùng bản xem trước ánh sáng mặt trời làm nguồn sáng. Xem
+  :ref:`doc_introduction_to_3d_preview_environment_light` để biết thêm chi tiết.
+- **Toggle preview environment**: Nếu scene không có WorldEnvironment, bạn có thể dùng bản xem trước môi trường làm phần giữ chỗ. Xem
+  :ref:`doc_introduction_to_3d_preview_environment_light` để biết thêm chi tiết.
+- **Edit Sun and Environment Settings (three dots)**: Mở menu để cấu hình các thiết lập ánh sáng mặt trời và môi trường xem trước. Xem :ref:`doc_introduction_to_3d_preview_environment_light` để biết thêm chi tiết.
 
-- **Transform menu**: It has three options:
+- **Transform menu**: Menu này có ba tùy chọn:
 
-   - *Snap Object to Floor*: Snaps an object to a solid floor.
-   - *Transform Dialog*: Opens a dialog to adjust transform parameters (translate, rotate, scale,
-     and transform) manually.
-   - *Snap Settings*: Allows you to change transform, rotate snap (in degrees), and scale snap
-     (in percent) settings.
+   - *Snap Object to Floor*: Snap một đối tượng vào một mặt sàn chắc chắn.
+   - *Transform Dialog*: Mở hộp thoại để điều chỉnh thủ công các tham số transform (translate, rotate, scale và transform).
+   - *Snap Settings*: Cho phép thay đổi các thiết lập snap của transform, rotate (theo độ) và scale (theo phần trăm).
 
-- **View menu**: Controls the view options and enables additional viewports:
+- **View menu**: Điều khiển các tùy chọn chế độ xem và bật thêm các viewport:
 
 .. image:: img/tuto_3d6.webp
 
-In this menu, you can also show/hide grids, which are set to 1x1 meter by default,
-and the origin, where the blue, green, and red axis lines intersect.
-Moreover, specific types of gizmos can be toggled in this menu.
+Trong menu này, bạn cũng có thể hiển thị/ẩn các lưới, mặc định được đặt ở kích thước 1x1 mét, và gốc tọa độ, nơi các đường trục màu xanh dương, xanh lá cây và đỏ giao nhau. Ngoài ra, bạn có thể bật/tắt các loại gizmo cụ thể trong menu này.
 
 .. image:: img/tuto_3d6_2.webp
 
-An open eye means that the gizmo is visible, a closed eye means it is hidden.
-A half-open eye means that it is also visible through opaque surfaces.
+Biểu tượng mắt mở nghĩa là gizmo đang hiển thị, mắt nhắm nghĩa là gizmo đang bị ẩn. Mắt mở một nửa nghĩa là gizmo cũng hiển thị xuyên qua các bề mặt đục.
 
-Clicking on *Settings* in this view menu opens a window to change the
-*Vertical Field of View (VFOV)* parameter
-(in degrees), *Z-Near*, and *Z-Far* values.
+Nhấp vào *Settings* trong menu view này sẽ mở một cửa sổ để thay đổi tham số *Vertical Field of View (VFOV)* (theo độ), các giá trị *Z-Near* và *Z-Far*.
 
-Next to the View menu, additional buttons may be visible. In the toolbar image
-at the beginning of this chapter, an additional *Mesh* button appears because a
-MeshInstance3D is selected. This menu provides some quick actions or tools to
-work on a specific node or selection.
+Bên cạnh menu View, có thể sẽ hiển thị thêm các nút. Trong hình ảnh toolbar ở đầu chương này, một nút *Mesh* bổ sung xuất hiện vì một MeshInstance3D đang được chọn. Menu này cung cấp một số thao tác nhanh hoặc công cụ để làm việc trên một node hoặc vùng chọn cụ thể.
 
-View menu of viewport
-~~~~~~~~~~~~~~~~~~~~~
+Menu View của viewport
+~~~~~~~~~~~~~~~~~~~~~~
 
-Below the *Select* tool, in the 3D viewport, clicking on the three dots opens the
-**View menu** for the viewport.
-Hiding all shown gizmos in the editor's 3D view can also be performed through
-this menu:
+Bên dưới công cụ *Select*, trong viewport 3D, nhấp vào ba dấu chấm sẽ mở **View menu** của viewport. Bạn cũng có thể ẩn tất cả gizmo đang hiển thị trong chế độ xem 3D của trình chỉnh sửa thông qua menu này:
 
 .. image:: img/tuto_3d6_1.webp
 
-This menu also displays the current view type and enables quick adjustment of the
-viewport's viewing angle. Additionally, it offers options to modify the appearance of
-nodes within the viewport.
+Menu này cũng hiển thị loại chế độ xem hiện tại và cho phép nhanh chóng điều chỉnh góc nhìn của viewport. Ngoài ra, menu còn cung cấp các tùy chọn để thay đổi diện mạo của các node trong viewport.
 
 .. _doc_introduction_to_3d_coordinate_system:
 
-Coordinate system
-~~~~~~~~~~~~~~~~~
+Hệ tọa độ
+~~~~~~~~~
 
-Godot uses the `metric <https://en.wikipedia.org/wiki/Metric_system>`__
-system for everything in 3D, with 1 unit being equal to 1 meter.
-Physics and other areas are tuned for this scale. Therefore, attempting to use a
-different scale is usually a bad idea (unless you know what you are doing).
+Godot sử dụng hệ `metric <https://en.wikipedia.org/wiki/Metric_system>`__ cho mọi thứ trong 3D, trong đó 1 unit tương đương 1 mét. Vật lý và các lĩnh vực khác được tinh chỉnh theo tỷ lệ này. Vì vậy, cố gắng sử dụng một tỷ lệ khác thường là ý tưởng tồi (trừ khi bạn biết mình đang làm gì).
 
-When working with 3D assets, it's always best to work in the correct scale (set
-the unit to metric in your 3D modeling software). Godot allows scaling
-post-import and, while this works in most cases, in rare situations it may
-introduce floating-point precision issues (and thus, glitches or artifacts) in
-delicate areas such as rendering or physics. Make sure your artists always work
-in the right scale!
+Khi làm việc với các asset 3D, tốt nhất là luôn làm việc theo đúng tỷ lệ (đặt unit thành metric trong phần mềm modeling 3D của bạn). Godot cho phép scale sau khi import và mặc dù điều này hoạt động trong hầu hết trường hợp, trong một số tình huống hiếm gặp, nó có thể gây ra các vấn đề về độ chính xác số thực (và do đó gây ra lỗi hoặc hiện tượng bất thường) ở các khu vực nhạy cảm như rendering hoặc physics. Hãy đảm bảo các artist của bạn luôn làm việc đúng tỷ lệ!
 
-The Y coordinate is used for "up". As for the horizontal X/Z axes, Godot uses a
-**right-handed** coordinate system. This means that for most objects that need
-alignment (such as lights or cameras), the Z axis is used as a "pointing
-towards" direction. This convention roughly means that:
+Tọa độ Y được dùng cho hướng "lên". Đối với các trục ngang X/Z, Godot sử dụng hệ tọa độ **right-handed**. Điều này có nghĩa là đối với hầu hết các object cần căn chỉnh (chẳng hạn như light hoặc camera), trục Z được dùng làm hướng "chỉ về phía trước". Quy ước này có nghĩa gần đúng rằng:
 
--  **X** is sides
--  **Y** is up/down
--  **Z** is front/back
+-  **X** là hai bên
+-  **Y** là lên/xuống
+-  **Z** là trước/sau
 
-See this chart for comparison with other 3D software:
+Xem biểu đồ này để so sánh với các phần mềm 3D khác:
 
 .. figure:: img/introduction_to_3d_coordinate_systems.webp
    :align: center
-   :alt: 3D coordinate systems comparison chart
+   :alt: Biểu đồ so sánh các hệ tọa độ 3D
 
-   Image by `Freya Holmér <https://twitter.com/FreyaHolmer>`__
+   Hình ảnh của `Freya Holmér <https://twitter.com/FreyaHolmer>`__
 
 
 .. _doc_introduction_to_3d_space_and_manipulation:
 
-Space and manipulation gizmos
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Gizmo không gian và thao tác
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Moving, rotating, and scaling objects in the 3D view is done through the
-manipulator gizmos.
-Each axis is represented by a color: Red, Green, Blue represent X, Y, Z
-respectively. This convention applies to the grid and other gizmos too
-(and also to the shader language, ordering of components for
-Vector3, Color, etc.).
+Việc di chuyển, xoay và scale các object trong chế độ xem 3D được thực hiện thông qua các gizmo thao tác. Mỗi trục được biểu thị bằng một màu: Đỏ, Xanh lá, Xanh dương lần lượt đại diện cho X, Y, Z. Quy ước này cũng áp dụng cho grid và các gizmo khác (đồng thời áp dụng cho shader language, thứ tự các component của Vector3, Color, v.v.).
 
 .. image:: img/tuto_3d5.webp
 
-Some useful keybindings:
+Một số keybinding hữu ích:
 
--  To snap placement or rotation, press :kbd:`Ctrl` while moving, scaling,
-   or rotating.
--  To center the view on the selected object, press :kbd:`F`.
+-  Để snap vị trí hoặc góc xoay, hãy nhấn :kbd:`Ctrl` trong khi di chuyển, scale hoặc xoay.
+-  Để căn giữa chế độ xem vào object đã chọn, hãy nhấn :kbd:`F`.
 
-In the viewport, the arrows can be clicked and held to move the object on an axis.
-The arcs can be clicked and held to rotate the object.
-To lock one axis and move the object freely in the other two axes, the colored rectangles
-can be clicked, held, and dragged.
+Trong viewport, bạn có thể nhấp và giữ các mũi tên để di chuyển object theo một trục. Bạn có thể nhấp và giữ các cung để xoay object. Để khóa một trục và tự do di chuyển object theo hai trục còn lại, bạn có thể nhấp, giữ và kéo các hình chữ nhật màu.
 
-If the transform mode is changed from *Select Mode* to *Scale Mode*, the arrows will be
-replaced by cubes, which can be dragged to scale an object as if the object is being moved.
+Nếu chế độ transform được đổi từ *Select Mode* thành *Scale Mode*, các mũi tên sẽ được thay thế bằng các khối lập phương, có thể được kéo để scale một object như thể object đang được di chuyển.
 
-Navigating the 3D environment
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Điều hướng trong môi trường 3D
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In 3D environments, it is often important to adjust the viewpoint or angle
-from which you are viewing the scene.
-In Godot, navigating the 3D environment in the viewport (or spatial editor)
-can be done in multiple ways.
+Trong môi trường 3D, việc điều chỉnh góc nhìn hoặc góc mà bạn dùng để quan sát scene thường rất quan trọng. Trong Godot, có nhiều cách để điều hướng trong môi trường 3D ở viewport (hoặc spatial editor).
 
-The default 3D scene navigation controls are similar to Blender (aiming to
-have some sort of consistency in the free software pipeline), but
-options are included to customize mouse buttons and behavior to be
-similar to other tools in the Editor Settings. To change the controls
-to Maya or Modo controls, you can navigate to **Editor Settings > Editors > 3D**.
-Then, under *Navigation*, search for *Navigation Scheme*.
+Các điều khiển điều hướng scene 3D mặc định tương tự Blender (nhằm duy trì một mức nhất quán nào đó trong quy trình phần mềm tự do), nhưng Editor Settings có các tùy chọn để tùy chỉnh nút chuột và hành vi sao cho tương tự các công cụ khác. Để đổi điều khiển thành điều khiển của Maya hoặc Modo, bạn có thể đi đến **Editor Settings > Editors > 3D**. Sau đó, trong *Navigation*, hãy tìm *Navigation Scheme*.
 
 .. image:: img/tuto_3d4.webp
 
-Using the default settings, the following shortcuts control how one can
-navigate in the viewport:
+Với các thiết lập mặc định, các phím tắt sau đây điều khiển cách bạn điều hướng trong viewport:
 
-Pressing the middle mouse button and dragging the mouse allows you to orbit around
-the center of what is on the screen.
+Nhấn nút chuột giữa và kéo chuột cho phép bạn xoay quanh tâm của nội dung đang hiển thị trên màn hình.
 
-It is also possible to left-click and hold the manipulator gizmo located
-on the top right of the viewport to orbit around the center:
+Bạn cũng có thể nhấp chuột trái và giữ gizmo thao tác ở góc trên bên phải của viewport để xoay quanh tâm:
 
 .. image:: img/tuto_3d_gizmo.webp
 
-Left-clicking on one of the colored circles will set the view to the chosen
-orthogonal and the viewport's view menu will be updated accordingly.
+Nhấp chuột trái vào một trong các vòng tròn màu sẽ đặt chế độ xem thành chế độ trực giao đã chọn và menu chế độ xem của viewport sẽ được cập nhật tương ứng.
 
 .. image:: img/tuto_3d_updated_view_menu.webp
 
-If the *Perspective* view is enabled on the viewport (can be seen on the viewport's View menu,
-not the View menu on the main toolbar), holding down the right mouse button on the viewport
-or pressing :kbd:`Shift + F` switches to "free-look" mode.
-In this mode you can move the mouse to look around, use the :kbd:`W` :kbd:`A`
-:kbd:`S` :kbd:`D` keys to fly around the view, :kbd:`E` to go up, and :kbd:`Q` to
-go down. To disable this mode, release the right mouse button or press
-:kbd:`Shift + F` again.
+Nếu chế độ xem *Perspective* được bật trên viewport (có thể thấy trong View menu của viewport, không phải View menu trên thanh công cụ chính), việc giữ nút chuột phải trên viewport hoặc nhấn :kbd:`Shift + F` sẽ chuyển sang chế độ "free-look". Trong chế độ này, bạn có thể di chuyển chuột để quan sát xung quanh, sử dụng :kbd:`W` :kbd:`A`
+:kbd:`S` :kbd:`D` để bay quanh chế độ xem, :kbd:`E` để đi lên và :kbd:`Q` để đi xuống. Để tắt chế độ này, hãy thả nút chuột phải hoặc nhấn
+:kbd:`Shift + F` lần nữa.
 
-In the free-look mode, you can temporarily increase the flying
-speed using :kbd:`Shift` or decrease it using :kbd:`Alt`. To change and keep the
-speed modifier use :kbd:`mouse wheel up` or :kbd:`mouse wheel down`, to increase or
-decrease it, respectively.
+Trong chế độ free-look, bạn có thể tạm thời tăng tốc độ bay bằng :kbd:`Shift` hoặc giảm tốc độ bằng :kbd:`Alt`. Để thay đổi và duy trì bộ điều chỉnh tốc độ, hãy sử dụng :kbd:`mouse wheel up` hoặc :kbd:`mouse wheel down` tương ứng để tăng hoặc giảm tốc độ.
 
-In orthogonal mode, holding the right mouse button will pan the view instead.
-Use :kbd:`Keypad 5` to toggle between perspective and orthogonal view.
+Trong chế độ trực giao, giữ nút chuột phải sẽ thay vào đó di chuyển chế độ xem. Sử dụng :kbd:`Keypad 5` để chuyển đổi giữa chế độ xem phối cảnh và trực giao.
 
-Using Blender-style transform shortcuts
+Sử dụng phím tắt transform kiểu Blender
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Since Godot 4.2, you can enable Blender-style shortcuts for translating,
-rotating and scaling nodes. In Blender, these shortcuts are:
+Kể từ Godot 4.2, bạn có thể bật các phím tắt kiểu Blender để translate, rotate và scale các node. Trong Blender, các phím tắt này là:
 
-- :kbd:`G` for translating
-- :kbd:`R` for rotating
-- :kbd:`S` for scaling
+- :kbd:`G` để translate
+- :kbd:`R` để rotate
+- :kbd:`S` để scale
 
-After pressing a shortcut key while focusing on the 3D editor viewport,
-move the mouse or enter a number to move the selected node(s) by the
-specified amount in 3D units. You can constrain movement to a specific
-axis by specifying the axis as a letter, then the distance (if entering a
-value with the keyboard).
+Sau khi nhấn phím tắt trong khi viewport của 3D editor đang được focus, hãy di chuyển chuột hoặc nhập một số để di chuyển các node đã chọn theo lượng chỉ định trong các unit 3D. Bạn có thể giới hạn chuyển động vào một trục cụ thể bằng cách chỉ định trục bằng một chữ cái, sau đó nhập khoảng cách (nếu nhập giá trị bằng bàn phím).
 
-For instance, to move the selection upwards by 2.5 units, enter the
-following sequence in order (Y+ is upwards in Godot):
+Ví dụ, để di chuyển vùng chọn lên trên 2.5 unit, hãy nhập lần lượt chuỗi sau (Y+ là hướng lên trong Godot):
 
 :kbd:`G`-:kbd:`Y`-:kbd:`2`-:kbd:`.`-:kbd:`5`-:kbd:`Enter`
 
-To use Blender-style transform shortcuts in Godot, go to the Editor Settings'
-**Shortcuts** tab, then in the Spatial Editor section:
+Để sử dụng các phím tắt transform kiểu Blender trong Godot, hãy đi đến tab **Shortcuts** của Editor Settings, sau đó trong phần Spatial Editor:
 
-- Bind **Begin Translate Transformation** to :kbd:`G`.
-- Bind **Begin Rotate Transformation** to :kbd:`R`.
-- Bind **Begin Scale Transformation** to :kbd:`S`.
-- Finally, unbind **Scale Mode** so that its shortcut won't conflict with
-  **Begin Rotate Transformation**.
+- Gán **Begin Translate Transformation** cho :kbd:`G`.
+- Gán **Begin Rotate Transformation** cho :kbd:`R`.
+- Gán **Begin Scale Transformation** cho :kbd:`S`.
+- Cuối cùng, hãy hủy gán **Scale Mode** để phím tắt của nó không xung đột với **Begin Rotate Transformation**.
 
-Node3D node
------------
+nút Node3D
+----------
 
-:ref:`Node2D <class_Node2D>` is the base node for 2D.
-:ref:`Control <class_Control>` is the base node for everything GUI.
-Following this reasoning, the 3D engine uses the :ref:`Node3D <class_Node3D>`
-node for everything 3D.
+:ref:`Node2D <class_Node2D>` là nút cơ sở cho 2D.
+:ref:`Control <class_Control>` là nút cơ sở cho mọi thứ trong GUI. Theo lập luận này, engine 3D sử dụng nút :ref:`Node3D <class_Node3D>` cho mọi thứ 3D.
 
 .. image:: img/tuto_3d1.webp
 
-Node3Ds have a local transform, which is relative to the parent
-node (as long as the parent node is also of **or inherits from** the type
-Node3D). This transform can be accessed as a 3×4
-:ref:`Transform3D <class_Transform3D>`, or as 3 :ref:`Vector3 <class_Vector3>`
-members representing location, Euler rotation (X, Y and Z angles) and
-scale.
+Node3D có một phép biến đổi cục bộ, tương đối so với nút cha (miễn là nút cha cũng thuộc loại **or inherits from** Node3D). Có thể truy cập phép biến đổi này dưới dạng ma trận 3×4
+:ref:`Transform3D <class_Transform3D>`, hoặc dưới dạng 3 thành viên :ref:`Vector3 <class_Vector3>` biểu diễn vị trí, phép xoay Euler (các góc X, Y và Z) và tỷ lệ.
 
 .. image:: img/tuto_3d2.webp
 
-3D content
-----------
+nội dung 3D
+-----------
 
-Unlike 2D, where loading image content and drawing is straightforward, 3D is a
-little more difficult. The content needs to be created with special 3D tools
-(also called Digital Content Creation tools, or DCCs) and exported to an
-exchange file format to be imported in Godot. This is required since 3D formats
-are not as standardized as images.
+Không giống 2D, nơi việc tải nội dung hình ảnh và vẽ khá đơn giản, 3D phức tạp hơn một chút. Nội dung cần được tạo bằng các công cụ 3D chuyên dụng (còn gọi là công cụ Digital Content Creation, hay DCC) và xuất ra một định dạng tệp trao đổi để nhập vào Godot. Điều này là cần thiết vì các định dạng 3D không được chuẩn hóa như hình ảnh.
 
-Manually authored models (using 3D modeling software)
+Mô hình được tạo thủ công (bằng phần mềm modeling 3D)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. FIXME: Needs update to properly description Godot 3.x workflow
    (used to reference a non existing doc_importing_3d_meshes importer).
 
-It is possible to import 3D models in Godot created in external tools.
-Depending on the format, you can import entire scenes (exactly as they look in
-the 3D modeling software), including animation, skeletal rigs, blend shapes, or
-as simple resources.
+Bạn có thể nhập vào Godot các mô hình 3D được tạo bằng những công cụ bên ngoài. Tùy thuộc vào định dạng, bạn có thể nhập toàn bộ scene (chính xác như trong phần mềm modeling 3D), bao gồm animation, skeletal rig, blend shape, hoặc nhập dưới dạng các resource đơn giản.
 
-.. seealso:: See :ref:`doc_importing_3d_scenes` for more on importing.
+.. seealso:: Xem :ref:`doc_importing_3d_scenes` để biết thêm về việc nhập.
 
-Generated geometry
-~~~~~~~~~~~~~~~~~~
+Hình học được tạo
+~~~~~~~~~~~~~~~~~
 
-It is possible to create custom geometry by using the
-:ref:`ArrayMesh <class_ArrayMesh>` resource directly. Simply create your arrays
-and use the :ref:`ArrayMesh.add_surface_from_arrays() <class_ArrayMesh_method_add_surface_from_arrays>`
-function. A helper class is also available, :ref:`SurfaceTool <class_SurfaceTool>`,
-which provides a more straightforward API and helpers for indexing,
-generating normals, tangents, etc.
+Bạn có thể tạo hình học tùy chỉnh bằng cách sử dụng
+resource :ref:`ArrayMesh <class_ArrayMesh>` trực tiếp. Chỉ cần tạo các mảng của bạn và sử dụng hàm :ref:`ArrayMesh.add_surface_from_arrays() <class_ArrayMesh_method_add_surface_from_arrays>`. Ngoài ra còn có lớp hỗ trợ :ref:`SurfaceTool <class_SurfaceTool>`, cung cấp API và các hàm hỗ trợ đơn giản hơn để lập chỉ mục, tạo normal, tangent, v.v.
 
-In any case, this method is meant for generating static geometry (models
-that will not be updated often), as creating vertex arrays and
-submitting them to the 3D API has a significant performance cost.
+Dù trong trường hợp nào, phương pháp này предназначено cho việc tạo hình học tĩnh (các mô hình không được cập nhật thường xuyên), vì việc tạo các mảng vertex và gửi chúng đến API 3D có chi phí hiệu năng đáng kể.
 
-.. note:: To learn about prototyping inside Godot or using external tools, see
+.. note:: Để tìm hiểu về việc tạo prototype bên trong Godot hoặc sử dụng các công cụ bên ngoài, hãy xem
    :ref:`doc_csg_tools`.
 
 
-Immediate geometry
-~~~~~~~~~~~~~~~~~~
+Hình học tức thời
+~~~~~~~~~~~~~~~~~
 
-If, instead, you need to generate simple geometry that will be updated often,
-Godot provides a special :ref:`ImmediateMesh <class_ImmediateMesh>` resource
-that can be used in a :ref:`MeshInstance3D <class_MeshInstance3D>` node.
-This provides an OpenGL 1.x-style immediate-mode API to create points, lines,
-triangles, etc.
+Ngược lại, nếu bạn cần tạo hình học đơn giản được cập nhật thường xuyên, Godot cung cấp một resource :ref:`ImmediateMesh <class_ImmediateMesh>` đặc biệt có thể được sử dụng trong một nút :ref:`MeshInstance3D <class_MeshInstance3D>`. Resource này cung cấp API immediate mode theo phong cách OpenGL 1.x để tạo điểm, đường, tam giác, v.v.
 
-2D in 3D
-~~~~~~~~
+2D trong 3D
+~~~~~~~~~~~
 
-While Godot packs a powerful 2D engine, many types of games use 2D in a
-3D environment. By using a fixed camera (either orthogonal or
-perspective) that does not rotate, nodes such as
-:ref:`Sprite3D <class_Sprite3D>` and
-:ref:`AnimatedSprite3D <class_AnimatedSprite3D>`
-can be used to create 2D games that take advantage of mixing with 3D
-backgrounds, more realistic parallax, lighting/shadow effects, etc.
+Mặc dù Godot có một engine 2D mạnh mẽ, nhiều loại game sử dụng 2D trong môi trường 3D. Bằng cách sử dụng một camera cố định (trực giao hoặc phối cảnh) không xoay, các nút như
+:ref:`Sprite3D <class_Sprite3D>` và
+:ref:`AnimatedSprite3D <class_AnimatedSprite3D>` có thể được sử dụng để tạo các game 2D tận dụng sự kết hợp với nền 3D, hiệu ứng parallax chân thực hơn, hiệu ứng ánh sáng/bóng, v.v.
 
-The disadvantage is, of course, that added complexity and reduced
-performance in comparison to plain 2D, as well as the lack of reference
-of working in pixels.
+Tất nhiên, nhược điểm là độ phức tạp tăng lên và hiệu năng giảm so với 2D thuần túy, cũng như không còn quy chiếu làm việc theo pixel.
 
-Environment
------------
+Môi trường
+----------
 
-Besides editing a scene, it is often common to edit the environment.
-Godot provides a :ref:`WorldEnvironment <class_WorldEnvironment>`
-node that allows changing the background color, mode (as in, put a
-skybox), and applying several types of built-in post-processing effects.
-Environments can also be overridden in the Camera.
+Ngoài việc chỉnh sửa scene, việc chỉnh sửa môi trường cũng khá phổ biến. Godot cung cấp một nút :ref:`WorldEnvironment <class_WorldEnvironment>` cho phép thay đổi màu nền, chế độ (chẳng hạn như đặt skybox) và áp dụng một số loại hiệu ứng post-processing tích hợp sẵn. Bạn cũng có thể ghi đè môi trường trong Camera.
 
 .. _doc_introduction_to_3d_preview_environment_light:
 
-Preview environment and light
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Môi trường và ánh sáng xem trước
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-By default, any 3D scene that doesn't have a :ref:`WorldEnvironment <class_WorldEnvironment>`
-node, or a :ref:`DirectionalLight3D <class_DirectionalLight3D>`, will have
-a preview turned on for what it's missing to light the scene.
+Theo mặc định, mọi scene 3D không có nút :ref:`WorldEnvironment <class_WorldEnvironment>` hoặc :ref:`DirectionalLight3D <class_DirectionalLight3D>` sẽ được bật chế độ xem trước cho thành phần còn thiếu để chiếu sáng scene.
 
-The preview light and environment will only be visible in the scene while
-in the editor. If you run the scene or export the project they will not
-affect the scene.
+Ánh sáng và môi trường xem trước chỉ hiển thị trong scene khi đang ở editor. Nếu bạn chạy scene hoặc export project, chúng sẽ không ảnh hưởng đến scene.
 
-The preview light and environment can be turned on or off from the top menu
-by clicking on their respective icon.
+Có thể bật hoặc tắt ánh sáng và môi trường xem trước từ menu trên cùng bằng cách nhấp vào biểu tượng tương ứng.
 
 .. image:: img/tuto_3d8.webp
 
 
-The three dots dropdown menu next to those icons can be used to adjust the properties
-of the preview environment and light if they are enabled.
+Menu thả xuống có ba dấu chấm bên cạnh các biểu tượng đó có thể được sử dụng để điều chỉnh các thuộc tính của môi trường và ánh sáng xem trước khi chúng được bật.
 
 .. image:: img/tuto_3d9.webp
 
 
-The same preview sun and environment is used for every scene in the same project,
-So only make adjustments that would apply to all of the scenes you will need a preview
-light and environment for.
+Cùng một mặt trời và môi trường xem trước được sử dụng cho mọi scene trong cùng một project, vì vậy chỉ điều chỉnh những thiết lập áp dụng cho tất cả các scene mà bạn cần ánh sáng và môi trường xem trước.
 
-Cameras
-~~~~~~~
+Camera
+~~~~~~
 
-No matter how many objects are placed in the 3D space, nothing will be
-displayed unless a :ref:`Camera3D <class_Camera3D>` is
-also added to the scene. Cameras can work in either orthogonal or
-perspective projections:
+Dù có bao nhiêu đối tượng được đặt trong không gian 3D, sẽ không có gì được hiển thị nếu scene không có thêm một :ref:`Camera3D <class_Camera3D>`. Camera có thể hoạt động với phép chiếu trực giao hoặc phối cảnh:
 
 .. image:: img/tuto_3d10.webp
 
-Cameras are associated with (and only display to) a parent or grandparent
-viewport. Since the root of the scene tree is a viewport, cameras will
-display on it by default, but if sub-viewports (either as render target
-or picture-in-picture) are desired, they need their own children cameras
-to display.
+Camera được liên kết với viewport cha hoặc ông (và chỉ hiển thị trong viewport đó). Vì gốc của cây scene là một viewport, camera sẽ hiển thị trong đó theo mặc định; nhưng nếu muốn dùng các sub-viewport (dưới dạng render target hoặc picture-in-picture), chúng cần có các camera con riêng để hiển thị.
 
 .. image:: img/tuto_3d11.png
 
-When dealing with multiple cameras, the following rules are enforced for
-each viewport:
+Khi làm việc với nhiều camera, các quy tắc sau được áp dụng cho từng viewport:
 
--  If no cameras are present in the scene tree, the first one that
-   enters it will become the active camera. Further cameras entering the
-   scene will be ignored (unless they are set as *current*).
--  If a camera has the "*current*" property set, it will be used
-   regardless of any other camera in the scene. If the property is set,
-   it will become active, replacing the previous camera.
--  If an active camera leaves the scene tree, the first camera in
-   tree-order will take its place.
+-  Nếu trong cây scene không có camera nào, camera đầu tiên được thêm vào sẽ trở thành camera hiện hành. Các camera được thêm vào scene sau đó sẽ bị bỏ qua (trừ khi chúng được đặt là *current*).
+-  Nếu một camera có thuộc tính "*current*", camera đó sẽ được sử dụng bất kể các camera khác trong scene. Khi thuộc tính này được đặt, camera đó sẽ trở thành camera hiện hành và thay thế camera trước đó.
+-  Nếu một camera hiện hành rời khỏi cây scene, camera đầu tiên theo thứ tự trong cây sẽ thay thế nó.
 
-Lights
-~~~~~~
+Ánh sáng
+~~~~~~~~
 
-The background environment emits some ambient light which appears on surfaces.
-Still, without any light sources placed in the scene, the scene will appear
-quite dark unless the background environment is very bright.
+Môi trường nền phát ra một phần ánh sáng môi trường, ánh sáng này xuất hiện trên các bề mặt. Tuy nhiên, nếu không có nguồn sáng nào được đặt trong scene, scene sẽ khá tối, trừ khi môi trường nền rất sáng.
 
-Most outdoor scenes have a directional light (the sun or moon), while indoor
-scenes typically have several positional lights (lamps, torches, …).
-See :ref:`doc_lights_and_shadows` for more information on setting up lights in Godot.
+Hầu hết các scene ngoài trời có một directional light (mặt trời hoặc mặt trăng), trong khi scene trong nhà thường có một số positional light (đèn, đuốc, …). Xem :ref:`doc_lights_and_shadows` để biết thêm thông tin về cách thiết lập ánh sáng trong Godot.
