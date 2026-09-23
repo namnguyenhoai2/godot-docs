@@ -2,19 +2,12 @@
 
 .. _doc_step_by_step:
 
-Step by step
-============
+Từng bước một
+=============
 
-This series builds upon the :ref:`Introduction to Godot
-<toc-learn-introduction>` and will get you started with the editor and the
-engine. You will learn more about nodes and scenes, code your first classes with
-GDScript, use signals to make nodes communicate with one another, and more.
+Loạt bài này được xây dựng dựa trên :ref:`Giới thiệu về Godot <toc-learn-introduction>` và sẽ giúp bạn bắt đầu làm quen với editor và engine. Bạn sẽ tìm hiểu thêm về các node và scene, viết các class đầu tiên bằng GDScript, sử dụng signal để các node giao tiếp với nhau, cùng nhiều nội dung khác.
 
-The following lessons are here to prepare you for :ref:`doc_your_first_2d_game`, a
-step-by-step tutorial where you will code a game from scratch. By the end of it,
-you will have the necessary foundations to explore more features in other
-sections. We also included links to pages that cover a given topic in-depth
-where appropriate.
+Các bài học sau đây sẽ giúp bạn chuẩn bị cho :ref:`doc_your_first_2d_game`, một tutorial từng bước, trong đó bạn sẽ lập trình một game từ đầu. Khi hoàn thành, bạn sẽ có những nền tảng cần thiết để khám phá thêm các tính năng trong những phần khác. Chúng tôi cũng đã thêm các liên kết đến những trang trình bày chuyên sâu về từng chủ đề khi phù hợp.
 
 .. toctree::
    :maxdepth: 1

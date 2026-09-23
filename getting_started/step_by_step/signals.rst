@@ -8,169 +8,119 @@
 
 .. _doc_signals:
 
-Using signals
-=============
+Sử dụng signal
+==============
 
-In this lesson, we will look at signals. They are messages that nodes emit when
-something specific happens to them, like a button being pressed. Other nodes can
-connect to that signal and call a function when the event occurs.
+Trong bài học này, chúng ta sẽ tìm hiểu về signal. Đây là các thông báo mà node phát ra khi một điều cụ thể xảy ra với chúng, chẳng hạn như khi một nút được nhấn. Các node khác có thể kết nối với signal đó và gọi một hàm khi sự kiện xảy ra.
 
-Signals are a delegation mechanism built into Godot that allows one game object to
-react to a change in another without them referencing one another. Using signals
-limits `coupling
-<https://en.wikipedia.org/wiki/Coupling_(computer_programming)>`_ and keeps your
-code flexible.
+Signal là một cơ chế ủy quyền được tích hợp trong Godot, cho phép một đối tượng game phản ứng với thay đổi ở đối tượng khác mà không cần tham chiếu đến nhau. Việc sử dụng signal giúp hạn chế `coupling <https://en.wikipedia.org/wiki/Coupling_(computer_programming)>`_ và giữ cho code của bạn linh hoạt.
 
-For example, you might have a life bar on the screen that represents the
-player's health. When the player takes damage or uses a healing potion, you want
-the bar to reflect the change. To do so, in Godot, you would use signals.
+Ví dụ, bạn có thể có một thanh sinh lực trên màn hình biểu thị máu của người chơi. Khi người chơi nhận sát thương hoặc sử dụng bình hồi máu, bạn muốn thanh này phản ánh thay đổi đó. Để thực hiện việc này trong Godot, bạn sẽ sử dụng signal.
 
-Like methods (:ref:`class_callable`), signals are a first-class type since Godot
-4.0. This means you can pass them around as method arguments directly without
-having to pass them as strings, which allows for better autocompletion and is
-less error-prone. See the :ref:`class_signal` class reference for a list of
-what you can do with the Signal type directly.
+Giống như method (:ref:`class_callable`), signal là một kiểu hạng nhất kể từ Godot 4.0. Điều này nghĩa là bạn có thể truyền chúng trực tiếp dưới dạng đối số của method mà không cần truyền dưới dạng chuỗi, nhờ đó có tính năng tự động hoàn thành tốt hơn và ít dễ xảy ra lỗi hơn. Xem tài liệu tham khảo lớp :ref:`class_signal` để biết danh sách những việc bạn có thể làm trực tiếp với kiểu Signal.
 
 .. seealso::
 
-    As mentioned in the introduction, signals are Godot's version of the
-    observer pattern. You can learn more about it in
-    `Game Programming Patterns <https://gameprogrammingpatterns.com/observer.html>`__.
+    Như đã đề cập trong phần giới thiệu, signal là phiên bản của Godot về mẫu observer. Bạn có thể tìm hiểu thêm về mẫu này trong `Game Programming Patterns <https://gameprogrammingpatterns.com/observer.html>`__.
 
-We will now use a signal to make our Godot icon from the previous lesson
-(:ref:`doc_scripting_player_input`) move and stop by pressing a button.
+Bây giờ chúng ta sẽ sử dụng signal để làm cho biểu tượng Godot từ bài học trước (:ref:`doc_scripting_player_input`) di chuyển và dừng lại khi nhấn một nút.
 
-.. note:: For this project, we will be following the Godot naming conventions.
+.. note:: Trong dự án này, chúng ta sẽ tuân theo các quy ước đặt tên của Godot.
 
-          - **GDScript**: Classes (nodes) use PascalCase, variables and
-            functions use snake_case, and constants use ALL_CAPS (See
+          - **GDScript**: Class (node) sử dụng PascalCase, biến và function sử dụng snake_case, còn hằng số sử dụng ALL_CAPS (Xem
             :ref:`doc_gdscript_styleguide`).
 
-          - **C#**: Classes, export variables and methods use PascalCase,
-            private fields use _camelCase, local variables and parameters use
-            camelCase (See :ref:`doc_c_sharp_styleguide`). Be careful to type
-            the method names precisely when connecting signals.
+          - **C#**: Class, biến export và method sử dụng PascalCase, field private sử dụng _camelCase, biến cục bộ và tham số sử dụng camelCase (Xem :ref:`doc_c_sharp_styleguide`). Hãy cẩn thận nhập chính xác tên method khi kết nối signal.
 
-Scene setup
------------
+Thiết lập scene
+---------------
 
-To add a button to our game, we will create a new scene which will include
-both a :ref:`Button <class_button>` and the ``sprite_2d.tscn`` scene we created in
-the :ref:`doc_scripting_first_script` lesson.
+Để thêm một nút vào game, chúng ta sẽ tạo một scene mới, bao gồm cả :ref:`Button <class_button>` và scene ``sprite_2d.tscn`` mà chúng ta đã tạo trong bài học :ref:`doc_scripting_first_script`.
 
-Create a new scene by going to the menu :menu:`Scene > New Scene`.
+Tạo một scene mới bằng cách mở menu :menu:`Scene > New Scene`.
 
 .. image:: img/signals_01_new_scene.webp
 
-In the Scene dock, click the :button:`2D Scene` button. This will add
-a :ref:`Node2D <class_Node2D>` as our root.
+Trong dock Scene, nhấp vào nút :button:`2D Scene`. Thao tác này sẽ thêm một :ref:`Node2D <class_Node2D>` làm node gốc.
 
 .. image:: img/signals_02_2d_scene.webp
 
-In the FileSystem dock, click and drag the ``sprite_2d.tscn`` file you saved
-previously onto the Node2D to instantiate it.
+Trong dock FileSystem, nhấp và kéo file ``sprite_2d.tscn`` mà bạn đã lưu trước đó vào Node2D để instantiate nó.
 
 .. image:: img/signals_03_dragging_scene.webp
 
-We want to add another node as a sibling of the Sprite2D. To do so, right-click
-on Node2D and select :button:`Add Child Node`.
+Chúng ta muốn thêm một node khác làm node cùng cấp với Sprite2D. Để thực hiện việc này, nhấp chuột phải vào Node2D và chọn :button:`Add Child Node`.
 
 .. image:: img/signals_04_add_child_node.webp
 
-Search for the :ref:`Button <class_button>` node and add it.
+Tìm node :ref:`Button <class_button>` và thêm node đó.
 
 .. image:: img/signals_05_add_button.webp
 
-The node is small by default. Click and drag on the bottom-right handle of the
-Button in the viewport to resize it.
+Theo mặc định, node này có kích thước nhỏ. Nhấp và kéo nút điều khiển ở góc dưới bên phải của Button trong viewport để thay đổi kích thước.
 
 .. image:: img/signals_06_drag_button.png
 
-If you don't see the handles, ensure the select tool is active in the toolbar.
+Nếu không thấy các nút điều khiển, hãy đảm bảo công cụ chọn đang hoạt động trên thanh công cụ.
 
 .. image:: img/signals_07_select_tool.webp
 
-Click and drag on the button itself to move it closer to the sprite.
+Nhấp và kéo chính nút đó để di chuyển nó lại gần sprite hơn.
 
-You can also write a label on the Button by editing its :inspector:`Text` property
-in the :ui:`Inspector`. Enter ``Toggle motion``.
+Bạn cũng có thể viết nhãn trên Button bằng cách chỉnh sửa thuộc tính :inspector:`Text` trong :ui:`Inspector`. Nhập ``Toggle motion``.
 
 .. image:: img/signals_08_toggle_motion_text.webp
 
-Your scene tree and viewport should look like this.
+Cây scene và viewport của bạn sẽ trông như thế này.
 
 .. image:: img/signals_09_scene_setup.webp
 
-Save your newly created scene as ``node_2d.tscn``, if you haven't already.
-You can then run it with :kbd:`F6` (:kbd:`Cmd + R` on macOS).
-At the moment, the button will be visible, but nothing will happen if you
-press it.
+Lưu scene mới tạo dưới tên ``node_2d.tscn``, nếu bạn chưa làm vậy. Sau đó, bạn có thể chạy scene bằng :kbd:`F6` (:kbd:`Cmd + R` trên macOS). Hiện tại, nút sẽ hiển thị, nhưng sẽ không có gì xảy ra khi bạn nhấn nút.
 
-Connecting a signal in the editor
----------------------------------
+Kết nối signal trong editor
+---------------------------
 
-Here, we want to connect the Button's "pressed" signal to our Sprite2D, and we
-want to call a new function that will toggle its motion on and off. We need to
-have a script attached to the Sprite2D node, which we do from the previous
-lesson.
+Ở đây, chúng ta muốn kết nối signal "pressed" của Button với Sprite2D và gọi một function mới để bật hoặc tắt chuyển động của nó. Chúng ta cần gắn một script vào node Sprite2D, việc này đã được thực hiện trong bài học trước.
 
-You can connect signals in the :ui:`Signals` dock. Select the Button node and, on the
-right side of the editor, click on the tab named :ui:`Signals` next to the
+Bạn có thể kết nối signal trong dock :ui:`Signals`. Chọn node Button, sau đó ở phía bên phải của editor, nhấp vào tab có tên :ui:`Signals` bên cạnh
 :ui:`Inspector`.
 
 .. image:: img/signals_10_node_dock.webp
 
-The dock displays a list of signals available on the selected node.
+Dock này hiển thị danh sách các signal có sẵn trên node đã chọn.
 
 .. image:: img/signals_11_pressed_signals.webp
 
-Double-click the "pressed" signal to open the node connection window.
+Nhấp đúp vào signal "pressed" để mở cửa sổ kết nối node.
 
 .. image:: img/signals_12_node_connection.webp
 
-There, you can connect the signal to the Sprite2D node. The node needs a
-receiver method, a function that Godot will call when the Button emits the
-signal. The editor generates one for you. By convention, we name these callback
-methods "_on_node_name_signal_name". Here, it'll be "_on_button_pressed".
+Tại đó, bạn có thể kết nối signal với node Sprite2D. Node này cần một method nhận, tức là một function mà Godot sẽ gọi khi Button phát signal. Editor sẽ tạo method đó cho bạn. Theo quy ước, chúng ta đặt tên cho các method callback này là "_on_node_name_signal_name". Trong trường hợp này, tên sẽ là "_on_button_pressed".
 
 .. note::
 
-   When connecting signals via the editor's Signals dock, you can use two
-   modes. The simple one only allows you to connect to nodes that have a
-   script attached to them and creates a new callback function on them.
+   Khi kết nối signal thông qua dock Signals của editor, bạn có thể sử dụng hai chế độ. Chế độ đơn giản chỉ cho phép bạn kết nối với các node đã được gắn script và tạo một function callback mới trên các node đó.
 
    .. image:: img/signals_advanced_connection_window.webp
 
-   The advanced view lets you connect to any node and any built-in
-   function, add arguments to the callback, and set options. You can
-   toggle the mode in the window's bottom-left by clicking the :button:`Advanced`
-   button.
+   Chế độ xem nâng cao cho phép bạn kết nối với bất kỳ node và function tích hợp nào, thêm đối số vào callback và thiết lập các tùy chọn. Bạn có thể chuyển đổi chế độ ở góc dưới bên trái của cửa sổ bằng cách nhấp vào nút :button:`Advanced`.
 
 .. note::
 
-    If you are using an external editor (such as VS Code), this
-    automatic code generation might not work. In this case, you need to connect
-    the signal via code as explained in the next section.
+    Nếu đang sử dụng editor bên ngoài (chẳng hạn như VS Code), tính năng tự động tạo code này có thể không hoạt động. Trong trường hợp đó, bạn cần kết nối signal thông qua code như được giải thích trong phần tiếp theo.
 
-Click the :button:`Connect` button to complete the signal connection and jump to the
-:ui:`Script` workspace. You should see the new method with a connection icon in the
-left margin.
+Nhấp vào nút :button:`Connect` để hoàn tất việc kết nối signal và chuyển đến
+workspace :ui:`Script`. Bạn sẽ thấy method mới cùng biểu tượng kết nối ở lề trái.
 
 .. image:: img/signals_13_signals_connection_icon.webp
 
-If you click the icon, a window pops up and displays information about the
-connection. This feature is only available when connecting nodes in the editor.
+Nếu nhấp vào biểu tượng đó, một cửa sổ sẽ bật lên và hiển thị thông tin về kết nối. Tính năng này chỉ khả dụng khi kết nối các node trong editor.
 
 .. image:: img/signals_14_signals_connection_info.webp
 
-Let's replace the line with the ``pass`` keyword with code that'll toggle the
-node's motion.
+Hãy thay dòng chứa keyword ``pass`` bằng code để bật hoặc tắt chuyển động của node.
 
-Our Sprite2D moves thanks to code in the ``_process()`` function. Godot provides
-a method to toggle processing on and off: :ref:`Node.set_process()
-<class_Node_method_set_process>`. Another method of the Node class,
-``is_processing()``, returns ``true`` if idle processing is active. We can use
-the ``not`` keyword to invert the value.
+Sprite2D của chúng ta di chuyển nhờ code trong function ``_process()``. Godot cung cấp một method để bật hoặc tắt việc xử lý: :ref:`Node.set_process() <class_Node_method_set_process>`. Một method khác của class Node, ``is_processing()``, trả về ``true`` nếu xử lý idle đang hoạt động. Chúng ta có thể sử dụng keyword ``not`` để đảo ngược giá trị này.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -180,18 +130,15 @@ the ``not`` keyword to invert the value.
 
  .. code-tab:: csharp C#
 
-    // We also specified this function name in PascalCase in the editor's connection window.
+    // Chúng ta cũng đã chỉ định tên function này theo PascalCase trong cửa sổ kết nối của editor.
     private void OnButtonPressed()
     {
         SetProcess(!IsProcessing());
     }
 
-This function will toggle processing and, in turn, the icon's motion on and off
-upon pressing the button.
+Function này sẽ bật hoặc tắt việc xử lý, từ đó bật hoặc tắt chuyển động của biểu tượng khi nhấn nút.
 
-Before trying the game, we need to simplify our ``_process()`` function to move
-the node automatically and not wait for user input. Replace it with the
-following code, which we saw two lessons ago:
+Trước khi thử game, chúng ta cần đơn giản hóa function ``_process()`` để node tự động di chuyển thay vì chờ input của người dùng. Hãy thay function này bằng code sau, mà chúng ta đã thấy từ hai bài học trước:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -210,7 +157,7 @@ following code, which we saw two lessons ago:
         Position += velocity * (float)delta;
     }
 
-Your complete ``sprite_2d.gd`` code should look like the following.
+Code ``sprite_2d.gd`` hoàn chỉnh của bạn sẽ trông như sau.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -246,59 +193,47 @@ Your complete ``sprite_2d.gd`` code should look like the following.
             Position += velocity * (float)delta;
         }
 
-        // We also specified this function name in PascalCase in the editor's connection window.
+        // Chúng ta cũng đã chỉ định tên function này theo PascalCase trong cửa sổ kết nối của editor.
         private void OnButtonPressed()
         {
             SetProcess(!IsProcessing());
         }
     }
 
-Run the current scene by pressing :kbd:`F6` (:kbd:`Cmd + R` on macOS),
-and click the button to see the sprite start and stop.
+Chạy scene hiện tại bằng cách nhấn :kbd:`F6` (:kbd:`Cmd + R` trên macOS), rồi nhấp vào nút để thấy sprite bắt đầu và dừng lại.
 
-Connecting a signal via code
-----------------------------
+Kết nối signal thông qua code
+-----------------------------
 
-You can connect signals via code instead of using the editor. This is necessary
-when you create nodes or instantiate scenes inside of a script.
+Bạn có thể kết nối các signal bằng code thay vì sử dụng editor. Điều này cần thiết khi bạn tạo node hoặc instantiate scene bên trong một script.
 
-Let's use a different node here. Godot has a :ref:`Timer <class_Timer>` node
-that's useful to implement skill cooldown times, weapon reloading, and more.
+Hãy sử dụng một node khác ở đây. Godot có node :ref:`Timer <class_Timer>` hữu ích để triển khai thời gian cooldown của kỹ năng, nạp lại vũ khí và nhiều mục đích khác.
 
-Head back to the 2D workspace. You can either click the "2D" text at the top of
-the window or press :kbd:`Ctrl + F1` (:kbd:`Ctrl + Cmd + 1` on macOS).
+Quay lại workspace 2D. Bạn có thể nhấp vào dòng chữ "2D" ở đầu cửa sổ hoặc nhấn :kbd:`Ctrl + F1` (:kbd:`Ctrl + Cmd + 1` trên macOS).
 
-In the Scene dock, right-click on the Sprite2D node and add a new child node.
-Search for Timer and add the corresponding node. Your scene should now look like
-this.
+Trong Scene dock, nhấp chuột phải vào node Sprite2D và thêm một node con mới. Tìm Timer rồi thêm node tương ứng. Scene của bạn lúc này sẽ trông như sau.
 
 .. image:: img/signals_15_scene_tree.webp
 
-With the Timer node selected, go to the :ui:`Inspector` and enable the :inspector:`Autostart`
-property.
+Khi đã chọn node Timer, hãy đi đến :ui:`Inspector` và bật thuộc tính :inspector:`Autostart`.
 
 .. image:: img/signals_18_timer_autostart.webp
 
-Click the script icon next to Sprite2D to jump back to the scripting workspace.
+Nhấp vào biểu tượng script bên cạnh Sprite2D để quay lại scripting workspace.
 
 .. image:: img/signals_16_click_script.webp
 
-We need to do two operations to connect the nodes via code:
+Chúng ta cần thực hiện hai thao tác để kết nối các node bằng code:
 
-1. Get a reference to the Timer from the Sprite2D.
-2. Call the ``connect()`` method on the Timer's "timeout" signal.
+1. Lấy tham chiếu đến Timer từ Sprite2D.
+2. Gọi phương thức ``connect()`` trên signal "timeout" của Timer.
 
-.. note:: To connect to a signal via code, you need to call the ``connect()``
-          method of the signal you want to listen to. In this case, we want to
-          listen to the Timer's "timeout" signal.
+.. note:: Để kết nối với một signal bằng code, bạn cần gọi phương thức ``connect()`` của signal mà bạn muốn lắng nghe. Trong trường hợp này, chúng ta muốn lắng nghe signal "timeout" của Timer.
 
-We want to connect the signal when the scene is instantiated, and we can do that
-using the :ref:`Node._ready() <class_Node_private_method__ready>` built-in function,
-which is called automatically by the engine when a node is fully instantiated.
+Chúng ta muốn kết nối signal khi scene được instantiate, và có thể thực hiện việc đó bằng hàm tích hợp :ref:`Node._ready() <class_Node_private_method__ready>`, được engine tự động gọi khi một node đã được instantiate hoàn tất.
 
-To get a reference to a node relative to the current one, we use the method
-:ref:`Node.get_node() <class_Node_method_get_node>`. We can store the reference
-in a variable.
+Để lấy tham chiếu đến một node tương đối với node hiện tại, chúng ta sử dụng phương thức
+:ref:`Node.get_node() <class_Node_method_get_node>`. Chúng ta có thể lưu tham chiếu đó vào một biến.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -313,13 +248,11 @@ in a variable.
         var timer = GetNode<Timer>("Timer");
     }
 
-The function ``get_node()`` looks at the Sprite2D's children and gets nodes by
-their name. For example, if you renamed the Timer node to "BlinkingTimer" in the
-editor, you would have to change the call to ``get_node("BlinkingTimer")``.
+Hàm ``get_node()`` tìm trong các node con của Sprite2D và lấy node theo tên của chúng. Ví dụ, nếu bạn đổi tên node Timer thành "BlinkingTimer" trong editor, bạn sẽ phải đổi lời gọi thành ``get_node("BlinkingTimer")``.
 
 .. add seealso to a page that explains node features.
 
-We can now connect the Timer to the Sprite2D in the ``_ready()`` function.
+Bây giờ chúng ta có thể kết nối Timer với Sprite2D trong hàm ``_ready()``.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -336,14 +269,9 @@ We can now connect the Timer to the Sprite2D in the ``_ready()`` function.
         timer.Timeout += OnTimerTimeout;
     }
 
-The line reads like so: we connect the Timer's "timeout" signal to the node to
-which the script is attached. When the Timer emits ``timeout``, we want to call
-the function ``_on_timer_timeout()``, that we need to define. Let's add it at the
-bottom of our script and use it to toggle our sprite's visibility.
+Dòng này có thể hiểu như sau: chúng ta kết nối signal "timeout" của Timer với node mà script được gắn vào. Khi Timer phát ``timeout``, chúng ta muốn gọi hàm ``_on_timer_timeout()``, và cần định nghĩa hàm này. Hãy thêm hàm đó vào cuối script và dùng nó để bật tắt khả năng hiển thị của sprite.
 
-.. note:: By convention, we name these callback methods in GDScript as
-          "_on_node_name_signal_name" and in C# as "OnNodeNameSignalName".
-          Here, it'll be "_on_timer_timeout" for GDScript and OnTimerTimeout() for C#.
+.. note:: Theo quy ước, chúng ta đặt tên các phương thức callback trong GDScript là "_on_node_name_signal_name" và trong C# là "OnNodeNameSignalName". Ở đây, tên sẽ là "_on_timer_timeout" đối với GDScript và OnTimerTimeout() đối với C#.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -358,18 +286,14 @@ bottom of our script and use it to toggle our sprite's visibility.
         Visible = !Visible;
     }
 
-The ``visible`` property is a boolean that controls the visibility of our node.
-The line ``visible = not visible`` toggles the value. If ``visible`` is
-``true``, it becomes ``false``, and vice-versa.
+Thuộc tính ``visible`` là một boolean điều khiển khả năng hiển thị của node. Dòng ``visible = not visible`` bật tắt giá trị này. Nếu ``visible`` là ``true``, nó sẽ trở thành ``false``, và ngược lại.
 
-If you run the Node2D scene now, you will see that the sprite blinks on and off, at one
-second intervals.
+Nếu bây giờ bạn chạy scene Node2D, bạn sẽ thấy sprite nhấp nháy bật tắt theo các khoảng thời gian một giây.
 
-Complete script
----------------
+Script hoàn chỉnh
+-----------------
 
-That's it for our little moving and blinking Godot icon demo!
-Here is the complete ``sprite_2d.gd`` file for reference.
+Vậy là xong phần demo biểu tượng Godot vừa di chuyển vừa nhấp nháy của chúng ta! Dưới đây là file ``sprite_2d.gd`` hoàn chỉnh để bạn tham khảo.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -420,7 +344,7 @@ Here is the complete ``sprite_2d.gd`` file for reference.
             Position += velocity * (float)delta;
         }
 
-        // We also specified this function name in PascalCase in the editor's connection window.
+        // Chúng ta cũng đã chỉ định tên hàm này theo PascalCase trong cửa sổ kết nối của editor.
         private void OnButtonPressed()
         {
             SetProcess(!IsProcessing());
@@ -432,16 +356,12 @@ Here is the complete ``sprite_2d.gd`` file for reference.
         }
     }
 
-Custom signals
---------------
+Signal tùy chỉnh
+----------------
 
-.. note:: This section is a reference on how to define and use your own signals,
-          and does not build upon the project created in previous lessons.
+.. note:: Phần này là tài liệu tham khảo về cách định nghĩa và sử dụng signal của riêng bạn, không xây dựng dựa trên project được tạo trong các bài học trước.
 
-You can define custom signals in a script. Say, for example, that you want to
-show a game over screen when the player's health reaches zero. To do so, you
-could define a signal named "died" or "health_depleted" when their health
-reaches 0.
+Bạn có thể định nghĩa signal tùy chỉnh trong script. Ví dụ, giả sử bạn muốn hiển thị màn hình game over khi máu của người chơi giảm xuống 0. Để làm vậy, bạn có thể định nghĩa một signal có tên là "died" hoặc "health_depleted" khi máu của họ đạt 0.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -464,15 +384,13 @@ reaches 0.
         private int _health = 10;
     }
 
-.. note:: As signals represent events that just occurred, we generally use an
-          action verb in the past tense in their names.
+.. note:: Vì signal đại diện cho các sự kiện vừa xảy ra, chúng ta thường sử dụng một động từ chỉ hành động ở thì quá khứ trong tên của chúng.
 
-Your signals work the same way as built-in ones: they appear in the :ui:`Signals` tab and
-you can connect to them like any other.
+Các signal của bạn hoạt động giống như signal tích hợp: chúng xuất hiện trong tab :ui:`Signals` và bạn có thể kết nối với chúng như với bất kỳ signal nào khác.
 
 .. image:: img/signals_17_custom_signal.webp
 
-To emit a signal in your scripts, call ``emit()`` on the signal.
+Để phát một signal trong script, hãy gọi ``emit()`` trên signal đó.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -494,8 +412,7 @@ To emit a signal in your scripts, call ``emit()`` on the signal.
         }
     }
 
-A signal can optionally declare one or more arguments. Specify the argument
-names between parentheses:
+Một signal có thể tùy chọn khai báo một hoặc nhiều đối số. Hãy chỉ định tên các đối số trong dấu ngoặc đơn:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -520,13 +437,9 @@ names between parentheses:
 
 .. note::
 
-    The signal arguments show up in the editor's Signals dock, and Godot can use
-    them to generate callback functions for you. However, you can still emit any
-    number of arguments when you emit signals. So it's up to you to emit the
-    correct values.
+    Các đối số của signal xuất hiện trong Signals dock của editor và Godot có thể dùng chúng để tạo các hàm callback cho bạn. Tuy nhiên, bạn vẫn có thể phát bất kỳ số lượng đối số nào khi phát signal. Vì vậy, bạn phải tự đảm bảo phát đúng các giá trị.
 
-To emit values along with the signal, add them as extra arguments to the
-``emit()`` function:
+Để phát các giá trị cùng với signal, hãy thêm chúng làm các đối số bổ sung vào hàm ``emit()``:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -545,20 +458,15 @@ To emit values along with the signal, add them as extra arguments to the
         EmitSignal(SignalName.HealthChanged, oldHealth, _health);
     }
 
-Summary
+Tóm tắt
 -------
 
-Any node in Godot emits signals when something specific happens to them, like a
-button being pressed. Other nodes can connect to individual signals and react to
-selected events.
+Mọi node trong Godot đều phát signal khi có điều gì đó cụ thể xảy ra với chúng, chẳng hạn như khi một nút được nhấn. Các node khác có thể kết nối với từng signal riêng lẻ và phản ứng với những sự kiện được chọn.
 
-Signals have many uses. With them, you can react to a node entering or exiting
-the game world, to a collision, to a character entering or leaving an area, to
-an element of the interface changing size, and much more.
+Signal có rất nhiều cách sử dụng. Với chúng, bạn có thể phản ứng khi một node đi vào hoặc rời khỏi thế giới game, khi xảy ra va chạm, khi một nhân vật đi vào hoặc rời khỏi một khu vực, khi một phần tử giao diện thay đổi kích thước và nhiều trường hợp khác.
 
-For example, an :ref:`Area2D <class_Area2D>` representing a coin emits a
-``body_entered`` signal whenever the player's physics body enters its collision
-shape, allowing you to know when the player collected it.
+Ví dụ, một :ref:`Area2D <class_Area2D>` đại diện cho một đồng xu sẽ phát signal ``body_entered`` mỗi khi physics body của người chơi đi vào collision shape của nó, nhờ đó bạn biết khi nào người chơi đã nhặt được đồng xu.
 
-In the next section, :ref:`doc_your_first_2d_game`, you'll create a complete 2D
-game and put everything you learned so far into practice.
+Trong phần tiếp theo, :ref:`doc_your_first_2d_game`, bạn sẽ tạo một game 2D hoàn chỉnh và áp dụng mọi điều đã học được cho đến nay vào thực tế.
+
+.. _`coupling`: https://en.wikipedia.org/wiki/Coupling_(computer_programming)
