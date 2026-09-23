@@ -2,16 +2,10 @@
 
 .. _doc_importing_3d_scenes:
 
-Importing 3D scenes
-===================
+Nhập scene 3D
+=============
 
-Godot supports importing 3D scenes from various file formats.
-This documentation section describes what those formats are, and how to use
-them, including exporting with the correct conventions and best practices,
-and how to customize the node type using a suffix in the node name.
-The import configuration article describes how to customize the
-imported data using the import dock, the advanced import settings
-dialog, and inherited scenes.
+Godot hỗ trợ nhập scene 3D từ nhiều định dạng tệp khác nhau. Phần tài liệu này mô tả những định dạng đó là gì và cách sử dụng chúng, bao gồm cách export với các quy ước và phương pháp hay nhất phù hợp, cũng như cách tùy chỉnh loại node bằng hậu tố trong tên node. Bài viết về cấu hình nhập mô tả cách tùy chỉnh dữ liệu đã nhập bằng import dock, hộp thoại cài đặt nhập nâng cao và các scene kế thừa.
 
 .. toctree::
    :maxdepth: 1
@@ -25,6 +19,5 @@ dialog, and inherited scenes.
 
 .. seealso::
 
-    3D scenes can be loaded at runtime using
-    :ref:`runtime file loading and saving <doc_runtime_file_loading_and_saving_3d_scenes>`,
-    including from an exported project.
+    Có thể tải scene 3D trong runtime bằng
+    :ref:`tải và lưu tệp trong runtime <doc_runtime_file_loading_and_saving_3d_scenes>`, kể cả từ một project đã export.
