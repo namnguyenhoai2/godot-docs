@@ -2,12 +2,10 @@
 
 .. _doc_procedural_geometry:
 
-Procedural geometry
-===================
+Hình học thủ tục
+================
 
-There are many ways to procedurally generate geometry in Godot. In this tutorial series,
-we will explore a few of them. Each technique has its own benefits and drawbacks, so
-it is best to understand each one and how it can be useful in a given situation.
+Có nhiều cách để tạo hình học theo thủ tục trong Godot. Trong loạt hướng dẫn này, chúng ta sẽ khám phá một vài cách trong số đó. Mỗi kỹ thuật đều có ưu điểm và nhược điểm riêng, vì vậy tốt nhất là hiểu từng kỹ thuật và cách nó có thể hữu ích trong một tình huống cụ thể.
 
 .. toctree::
    :maxdepth: 1
@@ -20,128 +18,85 @@ it is best to understand each one and how it can be useful in a given situation.
 
 .. note::
 
-      All the procedural geometry generation methods described here run on the
-      CPU. Godot doesn't support generating geometry on the GPU yet.
+      Tất cả các phương pháp tạo hình học theo thủ tục được mô tả ở đây đều chạy trên CPU. Godot hiện chưa hỗ trợ tạo hình học trên GPU.
 
-What is geometry?
------------------
-
-Geometry is a fancy way of saying shape. In computer graphics, geometry is typically represented
-by an array of positions called "vertices". In Godot, geometry is represented by Meshes.
-
-What is a Mesh?
+Hình học là gì?
 ---------------
 
-Many things in Godot have mesh in their name: the :ref:`Mesh <class_Mesh>`, the
-:ref:`ArrayMesh <class_ArrayMesh>`, the :ref:`ImmediateMesh
-<class_ImmediateMesh>`, the :ref:`MeshInstance3D <class_MeshInstance3D>`, the
-:ref:`MultiMesh <class_MultiMesh>`, and the :ref:`MultiMeshInstance3D
-<class_MultiMeshInstance3D>`. While they are all related, they have slightly
-different uses.
+Geometry là một cách nói hoa mỹ về hình dạng. Trong đồ họa máy tính, geometry thường được biểu diễn bằng một mảng các vị trí gọi là "vertices". Trong Godot, geometry được biểu diễn bằng Mesh.
 
-Meshes and ArrayMeshes are resources that are drawn using a MeshInstance3D node. Resources like
-Meshes and ArrayMeshes cannot be added to the scene directly. A MeshInstance3D represents one
-instance of a mesh in your scene. You can reuse a single mesh in multiple MeshInstance3Ds
-to draw it in different parts of your scene with different materials or transformations (scale,
-rotation, position etc.).
+Mesh là gì?
+-----------
 
-If you are going to draw the same object many times, it can be helpful to use a MultiMesh with
-a MultiMeshInstance3D. MultiMeshInstance3Ds draw meshes thousands of times very
-cheaply by taking advantage of hardware instancing. The drawback with
-using a MultiMeshInstance3D is that each of your mesh's surfaces are limited to one material for
-all instances. It uses an instance array to store different colors and transformations for each
-instance, but all the instances of each surface use the same material.
+Có nhiều thành phần trong Godot có từ mesh trong tên: :ref:`Mesh <class_Mesh>`,
+:ref:`ArrayMesh <class_ArrayMesh>`, :ref:`ImmediateMesh <class_ImmediateMesh>`, :ref:`MeshInstance3D <class_MeshInstance3D>`,
+:ref:`MultiMesh <class_MultiMesh>` và :ref:`MultiMeshInstance3D <class_MultiMeshInstance3D>`. Mặc dù đều có liên quan với nhau, chúng có công dụng hơi khác nhau.
 
-What a Mesh is
---------------
+Meshes và ArrayMeshes là các resource được vẽ bằng node MeshInstance3D. Các resource như Meshes và ArrayMeshes không thể được thêm trực tiếp vào scene. Một MeshInstance3D đại diện cho một instance của mesh trong scene. Bạn có thể tái sử dụng một mesh duy nhất trong nhiều MeshInstance3D để vẽ nó ở các phần khác nhau của scene với các material hoặc phép biến đổi khác nhau (scale, rotation, position, v.v.).
 
-A Mesh is composed of one or more surfaces. A surface is an array composed of multiple sub-arrays
-containing vertices, normals, UVs, etc. Normally the process of constructing surfaces and meshes is
-hidden from the user in the :ref:`RenderingServer <class_RenderingServer>`, but with ArrayMeshes, the user can construct a Mesh
-manually by passing in an array containing the surface information.
+Nếu bạn định vẽ cùng một đối tượng nhiều lần, việc sử dụng MultiMesh cùng với MultiMeshInstance3D có thể hữu ích. MultiMeshInstance3Ds vẽ mesh hàng nghìn lần với chi phí rất thấp bằng cách tận dụng hardware instancing. Nhược điểm khi sử dụng MultiMeshInstance3D là mỗi surface của mesh chỉ được giới hạn ở một material cho tất cả các instance. Nó sử dụng một instance array để lưu trữ các màu sắc và phép biến đổi khác nhau cho từng instance, nhưng tất cả instance của mỗi surface đều sử dụng cùng một material.
+
+Mesh là gì
+----------
+
+Một Mesh được cấu thành từ một hoặc nhiều surface. Một surface là một mảng gồm nhiều mảng con chứa vertices, normals, UVs, v.v. Thông thường, quá trình tạo surface và mesh được ẩn khỏi người dùng trong :ref:`RenderingServer <class_RenderingServer>`, nhưng với ArrayMeshes, người dùng có thể tự tạo một Mesh bằng cách truyền vào một mảng chứa thông tin về surface.
 
 Surfaces
 ~~~~~~~~
 
-Each surface has its own material. Alternatively, you can override the material for all surfaces
-in the Mesh when you use a MeshInstance3D using the :ref:`material_override <class_GeometryInstance3D_property_material_override>` property.
+Mỗi surface có material riêng. Ngoài ra, bạn có thể ghi đè material cho tất cả surface trong Mesh khi sử dụng MeshInstance3D bằng thuộc tính :ref:`material_override <class_GeometryInstance3D_property_material_override>`.
 
-Surface array
-~~~~~~~~~~~~~
+Mảng surface
+~~~~~~~~~~~~
 
-The surface array is an array of length ``ArrayMesh.ARRAY_MAX``. Each position in the array is
-filled with a sub-array containing per-vertex information. For example, the array located at
-``ArrayMesh.ARRAY_NORMAL`` is a :ref:`PackedVector3Array <class_PackedVector3Array>` of vertex normals.
-See :ref:`Mesh.ArrayType <enum_Mesh_ArrayType>` for more information.
+Mảng surface là một mảng có độ dài ``ArrayMesh.ARRAY_MAX``. Mỗi vị trí trong mảng được điền bằng một mảng con chứa thông tin trên từng vertex. Ví dụ, mảng nằm tại ``ArrayMesh.ARRAY_NORMAL`` là một :ref:`PackedVector3Array <class_PackedVector3Array>` của các vertex normal. Xem :ref:`Mesh.ArrayType <enum_Mesh_ArrayType>` để biết thêm thông tin.
 
-The surface array can be indexed or non-indexed. Creating a non-indexed array is as easy as not assigning
-an array at the index ``ArrayMesh.ARRAY_INDEX``. A non-indexed array stores unique vertex information for
-every triangle, meaning that when two triangles share a vertex, the vertex is duplicated in the array. An
-indexed surface array only stores vertex information for each unique vertex and then also stores an array
-of indices which maps out how to construct the triangles from the vertex array. In general, using an indexed
-array is faster, but it means you have to share vertex data between triangles, which is not always desired
-(e.g. when you want per-face normals).
+Mảng surface có thể được đánh index hoặc không đánh index. Việc tạo một mảng không đánh index đơn giản như không gán một mảng tại index ``ArrayMesh.ARRAY_INDEX``. Mảng không đánh index lưu thông tin vertex riêng biệt cho mỗi triangle, nghĩa là khi hai triangle dùng chung một vertex, vertex đó sẽ được nhân bản trong mảng. Mảng surface được đánh index chỉ lưu thông tin vertex cho mỗi vertex duy nhất, sau đó cũng lưu một mảng index ánh xạ cách tạo các triangle từ mảng vertex. Nhìn chung, sử dụng mảng được đánh index sẽ nhanh hơn, nhưng điều đó có nghĩa là bạn phải chia sẻ dữ liệu vertex giữa các triangle, điều này không phải lúc nào cũng mong muốn (ví dụ: khi bạn muốn có normal riêng cho từng mặt).
 
-Tools
------
+Công cụ
+-------
 
-Godot provides different ways of accessing and working with geometry. More information on each will
-be provided in the following tutorials.
+Godot cung cấp nhiều cách khác nhau để truy cập và làm việc với geometry. Thông tin chi tiết hơn về từng cách sẽ được cung cấp trong các hướng dẫn tiếp theo.
 
 ArrayMesh
 ~~~~~~~~~
 
-The ArrayMesh resource extends Mesh to add a few different quality of life functions and, most
-importantly, the ability to construct a Mesh surface through scripting.
+Resource ArrayMesh mở rộng Mesh để bổ sung một số hàm cải thiện trải nghiệm sử dụng và, quan trọng nhất, khả năng tạo surface của Mesh thông qua scripting.
 
-For more information about the ArrayMesh, please see the :ref:`ArrayMesh tutorial <doc_arraymesh>`.
+Để biết thêm thông tin về ArrayMesh, vui lòng xem :ref:`hướng dẫn ArrayMesh <doc_arraymesh>`.
 
 MeshDataTool
 ~~~~~~~~~~~~
 
-The MeshDataTool is a resource that converts Mesh data into arrays of vertices, faces, and edges that can
-be modified at runtime.
+MeshDataTool là một resource chuyển đổi dữ liệu Mesh thành các mảng vertices, faces và edges có thể được chỉnh sửa tại runtime.
 
-For more information about the MeshDataTool, please see the :ref:`MeshDataTool tutorial <doc_meshdatatool>`.
+Để biết thêm thông tin về MeshDataTool, vui lòng xem :ref:`hướng dẫn MeshDataTool <doc_meshdatatool>`.
 
 SurfaceTool
 ~~~~~~~~~~~
 
-The SurfaceTool allows the creation of Meshes using an OpenGL 1.x immediate mode style interface.
+SurfaceTool cho phép tạo Mesh bằng interface theo phong cách immediate mode của OpenGL 1.x.
 
-For more information about the SurfaceTool, please see the :ref:`SurfaceTool tutorial <doc_surfacetool>`.
+Để biết thêm thông tin về SurfaceTool, vui lòng xem :ref:`hướng dẫn SurfaceTool <doc_surfacetool>`.
 
 ImmediateMesh
 ~~~~~~~~~~~~~
 
-ImmediateMesh is a mesh that uses an immediate mode style interface (like
-SurfaceTool) to draw objects. The difference between ImmediateMesh and the
-SurfaceTool is that ImmediateMesh is drawn directly with code dynamically, while
-the SurfaceTool is used to generate a Mesh that you can do whatever you want
-with.
+ImmediateMesh là một mesh sử dụng interface theo phong cách immediate mode (giống SurfaceTool) để vẽ các đối tượng. Điểm khác biệt giữa ImmediateMesh và SurfaceTool là ImmediateMesh được vẽ trực tiếp bằng code một cách dynamic, trong khi SurfaceTool được dùng để tạo một Mesh mà bạn có thể tùy ý sử dụng.
 
-ImmediateMesh is useful for prototyping because of its straightforward API, but
-it is slow because the geometry is rebuilt each time you make a change. It is
-most useful for adding simple geometry for visual debugging (e.g. by drawing
-lines to visualize physics raycasts etc.).
+ImmediateMesh hữu ích cho việc tạo prototype nhờ API đơn giản, nhưng chậm vì geometry được xây dựng lại mỗi khi bạn thay đổi. Nó hữu ích nhất khi thêm geometry đơn giản để debug trực quan (ví dụ: vẽ các đường để trực quan hóa physics raycast, v.v.).
 
-For more information about ImmediateMesh, please see the :ref:`ImmediateMesh tutorial <doc_immediatemesh>`.
+Để biết thêm thông tin về ImmediateMesh, vui lòng xem :ref:`hướng dẫn ImmediateMesh <doc_immediatemesh>`.
 
-Which one should I use?
------------------------
+Tôi nên sử dụng cái nào?
+------------------------
 
-Which approach you use depends on what you are trying to do and what kind of procedure you are comfortable with.
+Cách tiếp cận bạn sử dụng phụ thuộc vào việc bạn đang cố gắng thực hiện điều gì và bạn cảm thấy thoải mái với loại quy trình nào.
 
-Both SurfaceTool and ArrayMesh are excellent for generating static geometry (meshes) that don't change over time.
+Cả SurfaceTool và ArrayMesh đều rất phù hợp để tạo geometry tĩnh (mesh) không thay đổi theo thời gian.
 
-Using an ArrayMesh is slightly faster than using a SurfaceTool, but the API is a little more challenging.
-Additionally, SurfaceTool has a few quality of life methods such as ``generate_normals()`` and ``index()``.
+Sử dụng ArrayMesh nhanh hơn một chút so với SurfaceTool, nhưng API khó hơn đôi chút. Ngoài ra, SurfaceTool có một số method cải thiện trải nghiệm sử dụng như ``generate_normals()`` và ``index()``.
 
-ImmediateMesh is more limited than both ArrayMesh and SurfaceTool. However, if
-you need the geometry to change every frame anyway, it provides a much easier
-interface that can be slightly faster than generating an ArrayMesh every frame.
+ImmediateMesh có nhiều giới hạn hơn cả ArrayMesh lẫn SurfaceTool. Tuy nhiên, nếu geometry của bạn vốn cần thay đổi sau mỗi frame, nó cung cấp một interface dễ sử dụng hơn nhiều và có thể nhanh hơn một chút so với việc tạo ArrayMesh ở mỗi frame.
 
-The MeshDataTool is not fast, but it gives you access to all kinds of properties of the mesh that you don't get with the others
-(edges, faces, etc.). It is incredibly useful when you need that sort of data to transform the mesh, but it is not a good idea
-to use it if that extra information is not needed. The MeshDataTool is best used if you are going to be using an algorithm that requires
-access to the face or edge array.
+MeshDataTool không nhanh, nhưng cho phép bạn truy cập mọi loại thuộc tính của mesh mà các công cụ khác không cung cấp (edges, faces, v.v.). Nó cực kỳ hữu ích khi bạn cần loại dữ liệu đó để biến đổi mesh, nhưng không nên sử dụng nếu không cần thông tin bổ sung này. MeshDataTool phù hợp nhất khi bạn định sử dụng một algorithm yêu cầu quyền truy cập vào mảng face hoặc edge.
