@@ -4,148 +4,95 @@
 
 .. _doc_learning_new_features:
 
-Learning new features
-=====================
+Tìm hiểu các tính năng mới
+==========================
 
-Godot is a feature-rich game engine. There is a lot to learn about it. This page
-explains how you can use the online manual, built-in code reference, and join
-online communities to learn new features and techniques.
+Godot là một game engine giàu tính năng. Có rất nhiều điều cần tìm hiểu về nó. Trang này giải thích cách bạn có thể sử dụng tài liệu hướng dẫn trực tuyến, tài liệu tham chiếu code tích hợp sẵn và tham gia các cộng đồng trực tuyến để tìm hiểu các tính năng và kỹ thuật mới.
 
-Making the most of this manual
-------------------------------
+Tận dụng tối đa tài liệu hướng dẫn này
+--------------------------------------
 
-What you are reading now is the user manual. It documents each of the engine's
-concepts and available features. When learning a new topic, you can start by
-browsing the corresponding section of this website. The left menu allows you to
-explore broad topics while the search bar will help you find more specific
-pages. If a page exists for a given theme, it will often link to more related
-content.
+Nội dung bạn đang đọc là tài liệu hướng dẫn sử dụng. Tài liệu này ghi lại từng khái niệm và tính năng hiện có của engine. Khi tìm hiểu một chủ đề mới, bạn có thể bắt đầu bằng cách duyệt qua phần tương ứng trên trang web này. Menu bên trái cho phép bạn khám phá các chủ đề tổng quát, còn thanh tìm kiếm sẽ giúp bạn tìm các trang cụ thể hơn. Nếu có trang dành cho một chủ đề nhất định, trang đó thường sẽ liên kết đến nhiều nội dung liên quan hơn.
 
 .. image:: img/manual_search.png
 
-The manual has a companion class reference that explains each Godot class's
-available functions and properties when programming. While the manual covers
-general features, concepts, and how to use the editor, the reference is all
-about using Godot's scripting API (Application Programming Interface). You can
-access it both online and offline. We recommend browsing the reference offline,
-from within the Godot editor. To do so, go to Help -> Search Help or press
+Tài liệu hướng dẫn có một tài liệu tham chiếu class đi kèm, giải thích các function và property có sẵn của từng class trong Godot khi lập trình. Trong khi tài liệu hướng dẫn trình bày các tính năng, khái niệm chung và cách sử dụng editor, tài liệu tham chiếu tập trung hoàn toàn vào việc sử dụng scripting API (Application Programming Interface) của Godot. Bạn có thể truy cập tài liệu này cả trực tuyến lẫn ngoại tuyến. Chúng tôi khuyến nghị bạn duyệt tài liệu tham chiếu ngoại tuyến, từ bên trong Godot editor. Để làm vậy, hãy vào Help -> Search Help hoặc nhấn
 :kbd:`F1`.
 
 .. image:: img/manual_class_reference_search.webp
 
-To browse it online, head to the manual's :ref:`Class Reference <doc_class_reference>`
-section.
+Để duyệt trực tuyến, hãy truy cập phần :ref:`Class Reference <doc_class_reference>` của tài liệu hướng dẫn.
 
-A class reference's page tells you:
+Trang tài liệu tham chiếu class cho bạn biết:
 
-1. Where the class exists in the inheritance hierarchy. You can click the top
-   links to jump to parent classes and see the properties and methods a type
-   inherits.
+1. Class nằm ở đâu trong hệ thống phân cấp inheritance. Bạn có thể nhấp vào các liên kết ở trên cùng để chuyển đến các class cha và xem các property cũng như method mà một kiểu kế thừa.
 
    .. image:: img/manual_class_reference_inheritance.webp
 
-2. A summary of the class's role and use cases.
+2. Tóm tắt về vai trò và các trường hợp sử dụng của class.
 
-3. An explanation of the class's properties, methods, signals, enums, and
-   constants.
+3. Giải thích về các property, method, signal, enum và constant của class.
 
-4. Links to manual pages further detailing the class.
+4. Các liên kết đến những trang tài liệu hướng dẫn trình bày chi tiết hơn về class.
 
-.. note:: If the manual or class reference is missing or has insufficient
-          information, please open an Issue in the official `godot-docs
-          <https://github.com/godotengine/godot-docs/issues>`_ GitHub repository
-          to report it.
+.. note:: Nếu tài liệu hướng dẫn hoặc tài liệu tham chiếu class còn thiếu hoặc không có đủ thông tin, vui lòng mở một Issue trong GitHub repository chính thức `godot-docs <https://github.com/godotengine/godot-docs/issues>`_ để báo cáo.
 
-You can hold :kbd:`Ctrl` (macOS :kbd:`Cmd`) and then mouseover text like the name of a class, property,
-method, signal, or constant to underline it, then :kbd:`Ctrl + Click` (macOS :kbd:`Cmd + Click`) it to jump to it.
+Bạn có thể giữ :kbd:`Ctrl` (macOS :kbd:`Cmd`) rồi di chuột qua văn bản như tên của một class, property, method, signal hoặc constant để gạch chân văn bản đó, sau đó :kbd:`Ctrl + Click` (macOS :kbd:`Cmd + Click`) vào đó để chuyển đến mục tương ứng.
 
-Learning to think like a programmer
------------------------------------
+Học cách tư duy như một programmer
+----------------------------------
 
-Teaching programming foundations and how to think like a game developer is
-beyond the scope of Godot's documentation. If you're new to programming, we
-recommend two excellent free resources to get you started:
+Việc giảng dạy nền tảng lập trình và cách tư duy như một game developer nằm ngoài phạm vi của tài liệu Godot. Nếu bạn mới học lập trình, chúng tôi khuyến nghị hai tài nguyên miễn phí tuyệt vời sau đây để giúp bạn bắt đầu:
 
-1. GDQuest's *Learn GDScript From Zero* is a free and open source
-   interactive tutorial for absolute beginners to learn to program
-   with Godot's GDScript language. It is available as a
-   `desktop application <https://gdquest.itch.io/learn-godot-gdscript>`__
-   or `in the browser <https://gdquest.github.io/learn-gdscript>`__.
+1. *Learn GDScript From Zero* của GDQuest là một tutorial tương tác miễn phí và mã nguồn mở dành cho người hoàn toàn mới bắt đầu học lập trình bằng ngôn ngữ GDScript của Godot. Tutorial này có sẵn dưới dạng `desktop application <https://gdquest.itch.io/learn-godot-gdscript>`__ hoặc `in the browser <https://gdquest.github.io/learn-gdscript>`__.
 
-2. If you prefer books, check out the free ebook `Automate The Boring Stuff With
-   Python <https://automatetheboringstuff.com/>`_ by Al Sweigart.
+2. Nếu bạn thích sách hơn, hãy xem ebook miễn phí `Automate The Boring Stuff With Python <https://automatetheboringstuff.com/>`_ của Al Sweigart.
 
-Learning with the community
----------------------------
+Học hỏi cùng cộng đồng
+----------------------
 
-Godot has a growing community of users. If you're stuck on a problem or need
-help to better understand how to achieve something, you can ask other users for
-help on one of the many `active
-communities <https://godotengine.org/community>`_.
+Godot có một cộng đồng người dùng đang phát triển. Nếu bạn gặp khó khăn với một vấn đề hoặc cần trợ giúp để hiểu rõ hơn cách thực hiện điều gì đó, bạn có thể nhờ những người dùng khác giúp đỡ trong một trong nhiều `active communities <https://godotengine.org/community>`_.
 
-The best place to ask questions and find already answered ones is the
-official `Godot Forum <https://forum.godotengine.org/>`_. These
-responses show up in search engine results and get saved, allowing other users
-to benefit from discussions on the platform. Once you have asked a question there,
-you can share its link on other social platforms. Before asking a question, be
-sure to look for existing answers that might solve your problem on this website
-or using your preferred search engine.
+Nơi tốt nhất để đặt câu hỏi và tìm các câu hỏi đã được giải đáp là `Godot Forum <https://forum.godotengine.org/>`_ chính thức. Những câu trả lời này xuất hiện trong kết quả của các công cụ tìm kiếm và được lưu lại, giúp những người dùng khác hưởng lợi từ các cuộc thảo luận trên nền tảng này. Sau khi đặt câu hỏi ở đó, bạn có thể chia sẻ liên kết của câu hỏi trên các nền tảng mạng xã hội khác. Trước khi đặt câu hỏi, hãy nhớ tìm các câu trả lời hiện có có thể giải quyết vấn đề của bạn trên trang web này hoặc bằng công cụ tìm kiếm bạn предпоч thích.
 
-Asking questions well and providing details will help others answer you faster
-and better. When asking questions, we recommend including the following
-information:
+Đặt câu hỏi đúng cách và cung cấp đầy đủ thông tin sẽ giúp người khác trả lời bạn nhanh hơn và tốt hơn. Khi đặt câu hỏi, chúng tôi khuyến nghị bạn đưa vào những thông tin sau:
 
-1. **Describe your goal**. You want to explain what you are trying to achieve
-   design-wise. If you are having trouble figuring out how to make a solution
-   work, there may be a different, easier solution that accomplishes the same
-   goal.
+1. **Mô tả mục tiêu của bạn**. Bạn cần giải thích điều mình đang cố gắng đạt được về mặt thiết kế. Nếu bạn gặp khó khăn trong việc tìm cách làm cho một giải pháp hoạt động, có thể tồn tại một giải pháp khác, dễ hơn nhưng vẫn đạt được cùng mục tiêu.
 
-2. If there is an error involved, **share the exact error message**. You
-   can copy the exact error message in the editor's Debugger bottom panel by
-   clicking the Copy Error icon. Knowing what it says can help community members
-   better identify how you triggered the error.
+2. Nếu có liên quan đến lỗi, **hãy chia sẻ chính xác thông báo lỗi**. Bạn có thể sao chép chính xác thông báo lỗi trong bảng điều khiển Debugger ở dưới cùng của editor bằng cách nhấp vào biểu tượng Copy Error. Biết được nội dung thông báo sẽ giúp các thành viên cộng đồng xác định rõ hơn cách bạn đã kích hoạt lỗi.
 
-3. If there is code involved, **share a code sample**. Other users won't be able
-   to help you fix a problem without seeing your code. Share the code as text
-   directly. To do so, you can copy and paste a short code snippet in a chat
-   box, or use a website like `Pastebin <https://pastebin.com/>`_ to share long
-   files.
+3. Nếu có liên quan đến code, **hãy chia sẻ một đoạn code mẫu**. Những người dùng khác sẽ không thể giúp bạn khắc phục vấn đề nếu không thấy code của bạn. Hãy chia sẻ code trực tiếp dưới dạng văn bản. Để làm vậy, bạn có thể sao chép và dán một đoạn code ngắn vào hộp chat, hoặc sử dụng một website như `Pastebin <https://pastebin.com/>`_ để chia sẻ các file dài.
 
-4. **Share a screenshot** of your *Scene* dock along with your written code. Most of
-   the code you write affects nodes in your scenes. As a result, you should
-   think of those scenes as part of your source code.
+4. **Chia sẻ ảnh chụp màn hình** của dock *Scene* cùng với code bạn đã viết. Hầu hết code bạn viết đều tác động đến các node trong scene. Vì vậy, bạn nên coi những scene đó là một phần của source code.
 
    .. image:: img/key_concepts_scene_tree.webp
 
-   Also, please don't take a picture with your phone, the low quality and screen
-   reflections can make it hard to understand the image. Your operating system
-   should have a built-in tool to take screenshots with the :kbd:`PrtSc` (Print
-   Screen) key (macOS: use :kbd:`Cmd + Shift + 3` for a full screen shot,
-   `more information here <https://support.apple.com/guide/mac-help/take-a-screenshot-mh26782/mac>`_).
+   Ngoài ra, vui lòng không chụp ảnh bằng điện thoại, vì chất lượng thấp và hình ảnh phản chiếu trên màn hình có thể khiến ảnh khó hiểu. Hệ điều hành của bạn phải có công cụ tích hợp sẵn để chụp ảnh màn hình bằng phím :kbd:`PrtSc` (Print Screen) (macOS: dùng :kbd:`Cmd + Shift + 3` để chụp toàn màn hình, `more information here <https://support.apple.com/guide/mac-help/take-a-screenshot-mh26782/mac>`_).
 
-   Alternatively, you can use a program like `ShareX <https://getsharex.com/>`_
-   on Windows, or `Flameshot <https://flameshot.org/>`_ on Windows/macOS/Linux.
+   Ngoài ra, bạn có thể sử dụng một chương trình như `ShareX <https://getsharex.com/>`_ trên Windows hoặc `Flameshot <https://flameshot.org/>`_ trên Windows/macOS/Linux.
 
-5. Sharing a video of your running game can also be really **useful to
-   troubleshoot your game**. You can use programs like `OBS Studio
-   <https://obsproject.com/>`_ and `Screen to GIF
-   <https://www.screentogif.com/>`_ to capture your screen.
+5. Chia sẻ video game đang chạy cũng có thể thực sự **hữu ích trong việc khắc phục sự cố cho game của bạn**. Bạn có thể sử dụng các chương trình như `OBS Studio <https://obsproject.com/>`_ và `Screen to GIF <https://www.screentogif.com/>`_ để quay màn hình.
 
-   You can then use a service like `streamable <https://streamable.com/>`_ or a
-   cloud provider to upload and share your videos for free.
+   Sau đó, bạn có thể sử dụng một dịch vụ như `streamable <https://streamable.com/>`_ hoặc một nhà cung cấp cloud để tải lên và chia sẻ video miễn phí.
 
-6. If you're not using the stable version of Godot, please mention the version
-   you're using. The answer can be different as available features and the
-   interface evolve rapidly.
+6. Nếu bạn không sử dụng phiên bản ổn định của Godot, vui lòng cho biết phiên bản bạn đang sử dụng. Câu trả lời có thể khác nhau vì các tính năng hiện có và giao diện đang phát triển nhanh chóng.
 
-Following these guidelines will maximize your chances of getting the answer
-you're looking for. They will save time both for you and the persons helping you.
+Làm theo những hướng dẫn này sẽ tối đa hóa cơ hội nhận được câu trả lời mà bạn đang tìm kiếm. Chúng sẽ giúp tiết kiệm thời gian cho cả bạn và những người hỗ trợ bạn.
 
-Community tutorials
--------------------
+Tutorial từ cộng đồng
+---------------------
 
-This manual aims to provide a comprehensive reference of Godot's features. Aside
-from the 2D and 3D getting started series, it does not contain tutorials to
-implement specific game genres. If you're looking for a tutorial about creating
-a role-playing game, a platformer, or other, please see
-:ref:`doc_community_tutorials`, which lists content made by the Godot community.
+Tài liệu hướng dẫn này nhằm cung cấp tài liệu tham chiếu toàn diện về các tính năng của Godot. Ngoài loạt bài hướng dẫn bắt đầu với 2D và 3D, tài liệu không chứa tutorial để triển khai các thể loại game cụ thể. Nếu bạn đang tìm tutorial về cách tạo game nhập vai, game platformer hoặc thể loại khác, vui lòng xem
+:ref:`doc_community_tutorials`, nơi liệt kê các nội dung do cộng đồng Godot tạo ra.
+
+.. _`godot-docs`: https://github.com/godotengine/godot-docs/issues
+.. _`Automate The Boring Stuff With Python`: https://automatetheboringstuff.com/
+.. _`active communities`: https://godotengine.org/community
+.. _`Godot Forum`: https://forum.godotengine.org/
+.. _`Pastebin`: https://pastebin.com/
+.. _`more information here`: https://support.apple.com/guide/mac-help/take-a-screenshot-mh26782/mac
+.. _`ShareX`: https://getsharex.com/
+.. _`Flameshot`: https://flameshot.org/
+.. _`OBS Studio`: https://obsproject.com/
+.. _`Screen to GIF`: https://www.screentogif.com/
+.. _`streamable`: https://streamable.com/

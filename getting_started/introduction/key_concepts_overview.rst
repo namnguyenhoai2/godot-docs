@@ -4,103 +4,70 @@
 
 .. _doc_key_concepts_overview:
 
-Overview of Godot's key concepts
-================================
+Tổng quan về các khái niệm cốt lõi của Godot
+============================================
 
-Every game engine revolves around abstractions you use to build your
-applications. In Godot, a game is a **tree** of **nodes** that you group
-together into **scenes**. You can then wire these nodes so they can communicate
-using **signals**.
+Mọi game engine đều xoay quanh những abstraction mà bạn sử dụng để xây dựng ứng dụng. Trong Godot, một game là một **cây** gồm các **node** được bạn nhóm lại thành các **scene**. Sau đó, bạn có thể kết nối các node này để chúng giao tiếp với nhau bằng **signal**.
 
-These are the four concepts you will learn here. We're going to look at them
-briefly to give you a sense of how the engine works. In the getting started
-series, you will get to use them in practice.
+Đây là bốn khái niệm bạn sẽ học ở đây. Chúng ta sẽ xem qua chúng để giúp bạn hình dung cách engine hoạt động. Trong chuỗi bài hướng dẫn bắt đầu, bạn sẽ được thực hành sử dụng chúng.
 
 .. _doc_key_concepts_overview_scenes:
 
-Scenes
-------
+Scene
+-----
 
-In Godot, you break down your game into reusable scenes. A scene can be a character,
-a weapon, a menu in the user interface, a single house, an entire level, or
-anything you can think of. Godot's scenes are flexible; they fill the role of
-both prefabs and scenes in some other game engines.
+Trong Godot, bạn chia game của mình thành các scene có thể tái sử dụng. Một scene có thể là một nhân vật, một vũ khí, một menu trong giao diện người dùng, một ngôi nhà riêng lẻ, toàn bộ một level hoặc bất cứ thứ gì bạn có thể nghĩ ra. Các scene của Godot rất linh hoạt; chúng đảm nhiệm vai trò của cả prefab và scene trong một số game engine khác.
 
 .. image:: img/key_concepts_main_menu.webp
 
-You can also nest scenes. For example, you can put your character in a level,
-and drag and drop a scene as a child of it.
+Bạn cũng có thể lồng các scene vào nhau. Ví dụ, bạn có thể đặt nhân vật của mình vào một level và kéo thả một scene làm scene con của nhân vật đó.
 
 .. image:: img/key_concepts_scene_example.webp
 
-Nodes
------
+Node
+----
 
-A scene is composed of one or more **nodes**. Nodes are your game's smallest
-building blocks that you arrange into trees. Here's an example of a character's
-nodes.
+Một scene được tạo thành từ một hoặc nhiều **node**. Node là những khối xây dựng nhỏ nhất của game mà bạn sắp xếp thành các cây. Sau đây là một ví dụ về các node của một nhân vật.
 
 .. image:: img/key_concepts_character_nodes.webp
 
-It is made of a ``CharacterBody2D`` node named "Player", a ``Camera2D``, a
-``Sprite2D``, and a ``CollisionShape2D``.
+Nó gồm một node ``CharacterBody2D`` có tên là "Player", một ``Camera2D``, một ``Sprite2D`` và một ``CollisionShape2D``.
 
-.. note:: The node names end with "2D" because this is a 2D scene. Their 3D
-          counterparts have names that end with "3D". Be aware that "Spatial"
-          Nodes are now called "Node3D" starting with Godot 4.
+.. note:: Tên các node kết thúc bằng "2D" vì đây là một scene 2D. Các đối tượng tương ứng trong 3D có tên kết thúc bằng "3D". Lưu ý rằng các Node "Spatial" hiện được gọi là "Node3D" начиная từ Godot 4.
 
-Notice how nodes and scenes look the same in the editor. When you save a tree of
-nodes as a scene, it then shows as a single node, with its internal structure
-hidden in the editor.
+Hãy chú ý rằng node và scene trông giống nhau trong editor. Khi bạn lưu một cây node thành một scene, nó sẽ hiển thị dưới dạng một node duy nhất, với cấu trúc bên trong bị ẩn trong editor.
 
-Godot provides an extensive library of base node types you can combine and
-extend to build more powerful ones. 2D, 3D, or user interface, you will do most
-things with these nodes.
+Godot cung cấp một thư viện phong phú gồm các loại node cơ sở mà bạn có thể kết hợp và mở rộng để xây dựng những node mạnh mẽ hơn. Dù là 2D, 3D hay giao diện người dùng, bạn sẽ thực hiện hầu hết mọi việc bằng các node này.
 
 .. image:: img/key_concepts_node_menu.webp
 
-The scene tree
---------------
+Cây scene
+---------
 
-All your game's scenes come together in the **scene tree**, literally a tree of
-scenes. And as scenes are trees of nodes, the scene tree also is a tree of
-nodes. But it's easier to think of your game in terms of scenes as they can
-represent characters, weapons, doors, or your user interface.
+Tất cả scene trong game của bạn tập hợp lại trong **cây scene**, đúng nghĩa là một cây gồm các scene. Và vì scene là những cây gồm các node, cây scene cũng là một cây gồm các node. Tuy nhiên, sẽ dễ hình dung game của bạn hơn theo các scene, vì chúng có thể đại diện cho nhân vật, vũ khí, cánh cửa hoặc giao diện người dùng.
 
 .. image:: img/key_concepts_scene_tree.webp
 
 .. _doc_key_concepts_signals:
 
-Signals
--------
+Signal
+------
 
-Nodes emit signals when some event occurs. This feature allows you to make
-nodes communicate without hard-wiring them in code. It gives you a lot of
-flexibility in how you structure your scenes.
+Node phát signal khi một sự kiện nào đó xảy ra. Tính năng này cho phép bạn khiến các node giao tiếp với nhau mà không cần liên kết cứng chúng trong code. Điều này mang lại cho bạn nhiều sự linh hoạt trong cách cấu trúc các scene.
 
 .. image:: img/key_concepts_signals.webp
 
-.. note:: Signals are Godot's version of the *observer* pattern. You can read
-          more about it here:
-          https://gameprogrammingpatterns.com/observer.html
+.. note:: Signal là phiên bản của Godot về mẫu *observer*. Bạn có thể đọc thêm về mẫu này tại đây: https://gameprogrammingpatterns.com/observer.html
 
-For example, buttons emit a signal when pressed. You can connect a piece of code
-to this signal which will run in reaction to this event, like starting the game
-or opening a menu.
+Ví dụ, button phát signal khi được nhấn. Bạn có thể kết nối một đoạn code với signal này; đoạn code sẽ chạy để phản hồi sự kiện đó, chẳng hạn như bắt đầu game hoặc mở menu.
 
-Other built-in signals can tell you when two objects collided, when a character
-or monster entered a given area, and much more. You can also define new signals
-tailored to your game.
+Các signal tích hợp khác có thể cho bạn biết khi hai đối tượng va chạm, khi một nhân vật hoặc quái vật đi vào một khu vực nhất định và nhiều sự kiện khác. Bạn cũng có thể định nghĩa các signal mới phù hợp với game của mình.
 
-Summary
+Tóm tắt
 -------
 
-Nodes, scenes, the scene tree, and signals are four core concepts in Godot that
-you will manipulate all the time.
+Node, scene, cây scene và signal là bốn khái niệm cốt lõi trong Godot mà bạn sẽ thường xuyên thao tác.
 
-Nodes are your game's smallest building blocks. You combine them to create scenes
-that you then combine and nest into the scene tree. You can then use signals to
-make nodes react to events in other nodes or different scene tree branches.
+Node là những khối xây dựng nhỏ nhất của game. Bạn kết hợp chúng để tạo ra các scene, sau đó tiếp tục kết hợp và lồng chúng vào cây scene. Bạn có thể dùng signal để khiến các node phản ứng với những sự kiện trong các node khác hoặc trong các nhánh khác của cây scene.
 
-After this short breakdown, you probably have many questions. Bear with us as
-you will get many answers throughout the Getting Started series.
+Sau phần phân tích ngắn này, có lẽ bạn có rất nhiều câu hỏi. Hãy kiên nhẫn với chúng tôi, vì bạn sẽ nhận được nhiều câu trả lời trong suốt chuỗi bài hướng dẫn Bắt đầu.

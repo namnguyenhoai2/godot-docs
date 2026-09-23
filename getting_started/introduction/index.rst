@@ -6,16 +6,12 @@
 
 .. _doc_getting_started_intro:
 
-Introduction
-============
+Giới thiệu
+==========
 
-This series will introduce you to Godot and give you an overview of its
-features.
+Loạt bài này sẽ giới thiệu Godot và cung cấp cho bạn cái nhìn tổng quan về các tính năng của nó.
 
-In the following pages, you will get answers to questions such as "Is Godot for
-me?" or "What can I do with Godot?". We will then introduce the engine's most
-essential concepts, run you through the editor's interface, and give you tips to
-make the most of your time learning it.
+Trong các trang tiếp theo, bạn sẽ nhận được câu trả lời cho những câu hỏi như "Godot có phù hợp với tôi không?" hoặc "Tôi có thể làm gì với Godot?". Sau đó, chúng tôi sẽ giới thiệu những khái niệm thiết yếu nhất của engine, hướng dẫn bạn làm quen với giao diện của editor và cung cấp các mẹo để bạn tận dụng tối đa thời gian học Godot.
 
 .. toctree::
    :maxdepth: 1

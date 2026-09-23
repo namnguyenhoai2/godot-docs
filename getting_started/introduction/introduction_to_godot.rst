@@ -1,40 +1,27 @@
 .. _doc_introduction_to_godot:
 
-Introduction to Godot
-=====================
+Giới thiệu về Godot
+===================
 
-This article is here to help you figure out whether Godot might be a good fit
-for you. We will introduce some broad features of the engine to give you a feel
-for what you can achieve with it and answer questions such as "what do I need to
-know to get started?".
+Bài viết này sẽ giúp bạn xác định liệu Godot có phù hợp với mình hay không. Chúng tôi sẽ giới thiệu một số tính năng tổng quan của engine để giúp bạn hình dung những gì có thể đạt được với Godot, đồng thời trả lời các câu hỏi như "tôi cần biết gì để bắt đầu?".
 
-This is by no means an exhaustive overview. We will introduce many more features
-in this getting started series.
+Đây hoàn toàn không phải là phần tổng quan đầy đủ. Chúng tôi sẽ giới thiệu thêm nhiều tính năng trong loạt bài hướng dẫn bắt đầu này.
 
-What is Godot?
---------------
+Godot là gì?
+------------
 
-Godot is a general-purpose 2D and 3D game engine designed to support all sorts
-of projects. You can use it to create games or applications you can then release
-on desktop or mobile, as well as on the web.
+Godot là một game engine 2D và 3D đa dụng, được thiết kế để hỗ trợ mọi loại dự án. Bạn có thể dùng nó để tạo game hoặc ứng dụng, sau đó phát hành trên máy tính để bàn, thiết bị di động cũng như trên web.
 
-You can also create console games with it, although you either need strong
-programming skills or a developer to port the game for you.
+Bạn cũng có thể tạo game cho console bằng Godot, mặc dù bạn cần có kỹ năng lập trình vững hoặc cần một developer port game giúp mình.
 
-.. note:: For information about console support, see the `Godot website <https://godotengine.org/consoles/>`_.
+.. note:: Để biết thông tin về việc hỗ trợ console, hãy xem `website Godot <https://godotengine.org/consoles/>`_.
 
-What can the engine do?
------------------------
+Engine có thể làm được gì?
+--------------------------
 
-Godot was initially developed in-house by an Argentinian game studio. Its
-development started in 2001, and the engine was rewritten and improved
-tremendously since its open source release in 2014.
+Godot ban đầu được một studio game Argentina phát triển nội bộ. Quá trình phát triển bắt đầu vào năm 2001, và engine đã được viết lại cũng như cải tiến đáng kể kể từ khi được phát hành dưới dạng mã nguồn mở vào năm 2014.
 
-Some examples of games created with Godot include Cassette Beasts, PVKK, and
-Usagi Shima. As for applications, the open source pixel art drawing program
-Pixelorama is powered by Godot, and so is the voxel RPG creator RPG in a Box.
-You can find many more examples in the `Official Showcase
-<https://godotengine.org/showcase/>`_.
+Một số game được tạo bằng Godot gồm Cassette Beasts, PVKK và Usagi Shima. Về ứng dụng, chương trình vẽ pixel art mã nguồn mở Pixelorama được xây dựng trên Godot, cũng như công cụ tạo RPG voxel RPG in a Box. Bạn có thể tìm thêm nhiều ví dụ trong `Showcase chính thức <https://godotengine.org/showcase/>`_.
 
 .. figure:: img/introduction_usagi_shima.webp
    :align: center
@@ -56,70 +43,52 @@ You can find many more examples in the `Official Showcase
 
    RPG in a Box
 
-How does it work and look?
---------------------------
+Godot hoạt động và có giao diện như thế nào?
+--------------------------------------------
 
-Godot comes with a fully-fledged game editor with integrated tools to answer the
-most common needs. It includes a code editor, an animation editor, a tilemap
-editor, a shader editor, a debugger, a profiler, and more.
+Godot đi kèm một game editor hoàn chỉnh với các công cụ tích hợp nhằm đáp ứng những nhu cầu phổ biến nhất. Editor bao gồm code editor, animation editor, tilemap editor, shader editor, debugger, profiler và nhiều công cụ khác.
 
 .. image:: img/introduction_editor.webp
 
-The team strives to offer a feature-rich game editor with a consistent user
-experience. While there is always room for improvement, the user interface keeps
-getting refined.
+Đội ngũ phát triển nỗ lực cung cấp một game editor giàu tính năng với trải nghiệm người dùng nhất quán. Mặc dù luôn còn chỗ để cải thiện, giao diện người dùng vẫn không ngừng được tinh chỉnh.
 
-Of course, if you prefer, you can work with external programs. We officially
-support importing 3D scenes designed in Blender_ and maintain plugins to code in
-VSCode_ and Emacs_ for GDScript and C#. We also support Visual Studio for C# on
-Windows.
+Tất nhiên, nếu muốn, bạn có thể làm việc với các chương trình bên ngoài. Chúng tôi chính thức hỗ trợ nhập các scene 3D được thiết kế trong Blender_ và duy trì các plugin để viết code bằng VSCode_ và Emacs_ cho GDScript và C#. Chúng tôi cũng hỗ trợ Visual Studio cho C# trên Windows.
 
 .. image:: img/introduction_vscode.png
 
-Programming languages
----------------------
+Ngôn ngữ lập trình
+------------------
 
-Let's talk about the available programming languages.
+Hãy cùng tìm hiểu các ngôn ngữ lập trình hiện có.
 
-You can code your games using :ref:`GDScript <doc_gdscript>`, a
-Godot-specific and tightly integrated language with a lightweight syntax, or
-:ref:`C# <doc_c_sharp>`, which is popular in the games industry.
-These are the two main scripting languages we support.
+Bạn có thể lập trình game bằng :ref:`GDScript <doc_gdscript>`, một ngôn ngữ riêng của Godot được tích hợp chặt chẽ với cú pháp nhẹ nhàng, hoặc
+:ref:`C# <doc_c_sharp>`, ngôn ngữ phổ biến trong ngành game. Đây là hai ngôn ngữ scripting chính được chúng tôi hỗ trợ.
 
-With the :ref:`GDExtension <doc_what_is_gdextension>` technology, you can also
-write gameplay or high-performance algorithms in :ref:`C++ <doc_godot_cpp>` or
-:ref:`other languages <doc_scripting_languages>` without recompiling the engine.
-You can use this technology to integrate third-party libraries and other
-Software Development Kits (SDK) in the engine.
+Với công nghệ :ref:`GDExtension <doc_what_is_gdextension>`, bạn cũng có thể viết gameplay hoặc các thuật toán hiệu năng cao bằng :ref:`C++ <doc_godot_cpp>` hoặc
+:ref:`các ngôn ngữ khác <doc_scripting_languages>` mà không cần biên dịch lại engine. Bạn có thể sử dụng công nghệ này để tích hợp các thư viện bên thứ ba và những Software Development Kit (SDK) khác vào engine.
 
-Of course, you can also directly add modules and features to the engine, as it's
-completely free and open source.
+Tất nhiên, bạn cũng có thể trực tiếp thêm các module và tính năng vào engine, vì engine hoàn toàn miễn phí và mã nguồn mở.
 
 .. _doc_introduction_learning_programming:
 
-What do I need to know to use Godot?
-------------------------------------
+Tôi cần biết gì để sử dụng Godot?
+---------------------------------
 
-Godot is a feature-packed game engine. With its thousands of features, there is
-a lot to learn. To make the most of it, you need good programming foundations.
-While we try to make the engine accessible, you will benefit a lot from knowing
-how to think like a programmer first.
+Godot là một game engine đầy đủ tính năng. Với hàng nghìn tính năng, có rất nhiều điều cần học. Để tận dụng tối đa engine, bạn cần có nền tảng lập trình tốt. Mặc dù chúng tôi cố gắng làm cho engine dễ tiếp cận, bạn sẽ nhận được nhiều lợi ích nếu trước tiên biết cách tư duy như một programmer.
 
-Godot relies on the object-oriented programming paradigm. Being comfortable with
-concepts such as classes and objects will help you code efficiently in it.
+Godot dựa trên mô hình lập trình hướng đối tượng. Nắm vững các khái niệm như class và object sẽ giúp bạn viết code hiệu quả trong Godot.
 
-If you are entirely new to programming, GDQuest's *Learn GDScript From Zero*
-is a free and open source interactive tutorial for absolute beginners to
-learn to program with Godot's GDScript language. It is available as a
-`desktop application <https://gdquest.itch.io/learn-godot-gdscript>`__
-or `in the browser <https://gdquest.github.io/learn-gdscript>`__.
+Nếu hoàn toàn mới với lập trình, *Learn GDScript From Zero* của GDQuest là một tutorial tương tác miễn phí và mã nguồn mở dành cho người mới bắt đầu, giúp học lập trình bằng ngôn ngữ GDScript của Godot. Tutorial này có sẵn dưới dạng `ứng dụng máy tính để bàn <https://gdquest.itch.io/learn-godot-gdscript>`__ hoặc `trên trình duyệt <https://gdquest.github.io/learn-gdscript>`__.
 
-We will provide you with more Godot-specific learning resources in
+Chúng tôi sẽ cung cấp thêm cho bạn các tài nguyên học Godot chuyên biệt trong
 :ref:`doc_learning_new_features`.
 
-In the next part, you will get an overview of the engine's essential concepts.
+Trong phần tiếp theo, bạn sẽ được tìm hiểu tổng quan về các khái niệm cốt lõi của engine.
 
 .. _Blender: https://www.blender.org/
 .. _VSCode: https://github.com/godotengine/godot-vscode-plugin
 .. _Emacs: https://github.com/godotengine/emacs-gdscript-mode
 .. _official showcase videos: https://www.youtube.com/playlist?list=PLeG_dAglpVo6EpaO9A1nkwJZOwrfiLdQ8
+
+.. _`Godot website`: https://godotengine.org/consoles/
+.. _`Official Showcase`: https://godotengine.org/showcase/

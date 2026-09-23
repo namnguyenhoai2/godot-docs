@@ -1,176 +1,105 @@
 .. _doc_godot_design_philosophy:
 
-Godot's design philosophy
-=========================
+Triết lý thiết kế của Godot
+===========================
 
-Now that you've gotten your feet wet, let's talk about Godot's design.
+Bây giờ bạn đã bắt đầu làm quen, hãy cùng tìm hiểu về thiết kế của Godot.
 
-**Every game engine is different and fits different needs.**
-Not only do they offer a range of features, but the design of each engine
-is unique. This leads to different workflows and different ways to form
-your games' structures. This all stems from their respective design philosophies.
+**Mỗi game engine đều khác nhau và phù hợp với những nhu cầu khác nhau.** Không chỉ cung cấp nhiều tính năng, thiết kế của mỗi engine cũng độc đáo. Điều này dẫn đến các quy trình làm việc khác nhau và những cách khác nhau để xây dựng cấu trúc game của bạn. Tất cả đều bắt nguồn từ triết lý thiết kế tương ứng của chúng.
 
-This page is here to help you understand how Godot works, starting
-with some of its core pillars. It is not a list of available features, nor
-is it an engine comparison. To know if any engine can be a good fit for
-your project, you need to try it out for yourself and
-understand its design and limitations.
+Trang này giúp bạn hiểu cách Godot hoạt động, bắt đầu với một số nền tảng cốt lõi. Đây không phải là danh sách các tính năng hiện có, cũng không phải bài so sánh các engine. Để biết engine nào có phù hợp với dự án của bạn hay không, bạn cần tự mình dùng thử và hiểu thiết kế cũng như những giới hạn của nó.
 
-Please watch
-`Godot explained in 7 minutes <https://www.youtube.com/watch?v=yS9cuu5o5Ug>`_
-if you're looking for an overview of the engine's features.
+Hãy xem `Godot explained in 7 minutes <https://www.youtube.com/watch?v=yS9cuu5o5Ug>`_ nếu bạn muốn có cái nhìn tổng quan về các tính năng của engine.
 
-Object-oriented design and composition
---------------------------------------
+Thiết kế hướng đối tượng và composition
+---------------------------------------
 
-Godot embraces object-oriented design at its core with its flexible
-scene system and Node hierarchy. It tries to stay away from strict
-programming patterns to offer an intuitive way to structure your game.
+Godot lấy thiết kế hướng đối tượng làm nền tảng cốt lõi với hệ thống scene linh hoạt và hệ thống phân cấp Node. Godot cố gắng tránh các mẫu lập trình cứng nhắc để cung cấp một cách trực quan nhằm xây dựng cấu trúc game của bạn.
 
-For one, Godot lets you **compose or aggregate** scenes.
-It's like nested prefabs: you can create a BlinkingLight scene and
-a BrokenLantern scene that uses the BlinkingLight.
-Then, create a city filled with BrokenLanterns.
-Change the BlinkingLight's color, save, and all the
-BrokenLanterns in the city will update instantly.
+Trước hết, Godot cho phép bạn **compose hoặc aggregate** các scene. Nó giống như các prefab lồng nhau: bạn có thể tạo một scene BlinkingLight và một scene BrokenLantern sử dụng BlinkingLight. Sau đó, hãy tạo một thành phố chứa đầy các BrokenLantern. Thay đổi màu của BlinkingLight, lưu lại, và tất cả BrokenLantern trong thành phố sẽ được cập nhật ngay lập tức.
 
-On top of that, you can **inherit** from any scene.
+Ngoài ra, bạn có thể **inherit** từ bất kỳ scene nào.
 
-A Godot scene could be a Weapon, a Character, an Item, a Door, a Level,
-part of a level… anything you'd like. It works like a class in pure code,
-except you're free to design it by using the editor, using only the
-code, or mixing and matching the two.
+Một scene Godot có thể là một Weapon, một Character, một Item, một Door, một Level, một phần của level… bất cứ thứ gì bạn muốn. Nó hoạt động như một class trong code thuần túy, ngoại trừ việc bạn được tự do thiết kế bằng editor, chỉ dùng code, hoặc kết hợp cả hai.
 
-It's different from prefabs you find in several 3D engines, as you can
-then inherit from and extend those scenes. You may create a Magician
-that extends your Character. Modify the Character in the editor and the Magician
-will update as well. It helps you build your projects so that their
-structure matches the game's design.
+Điều này khác với các prefab bạn thấy trong một số 3D engine, vì sau đó bạn có thể kế thừa và mở rộng các scene đó. Bạn có thể tạo một Magician mở rộng Character. Hãy chỉnh sửa Character trong editor và Magician cũng sẽ được cập nhật. Điều này giúp bạn xây dựng dự án sao cho cấu trúc của chúng phù hợp với thiết kế game.
 
 |image0|
 
-Also note that Godot offers many different types of objects called
-nodes, each with a specific purpose. Nodes are part of a tree and always
-inherit from their parents up to the Node class. Although the engine
-does feature some nodes like collision shapes that a parent physics
-body will use, most nodes work independently from one another.
+Cũng cần lưu ý rằng Godot cung cấp nhiều loại đối tượng khác nhau được gọi là node, mỗi loại có một mục đích cụ thể. Node là một phần của cây và luôn kế thừa từ các node cha của chúng cho đến class Node. Mặc dù engine có một số node như các hình dạng collision mà một physics body cha sẽ sử dụng, phần lớn node hoạt động độc lập với nhau.
 
-In other words, Godot's nodes do not work like components in some
-other game engines.
+Nói cách khác, các node của Godot không hoạt động giống như component trong một số game engine khác.
 
 |image1|
 
-Sprite2D is a Node2D, a CanvasItem and a Node. It has all the properties
-and features of its three parent classes, like transforms or the ability
-to draw custom shapes and render with a custom shader.
+Sprite2D là một Node2D, một CanvasItem và một Node. Nó có tất cả thuộc tính và tính năng của ba class cha, chẳng hạn như transform hoặc khả năng vẽ các hình dạng tùy chỉnh và render bằng custom shader.
 
-All-inclusive package
----------------------
+Gói tích hợp đầy đủ
+-------------------
 
-Godot tries to provide its own tools to answer most common
-needs. It has a dedicated scripting workspace, an animation editor, a
-tilemap editor, a shader editor, a debugger, a profiler,
-the ability to hot-reload locally and on remote devices, etc.
+Godot cố gắng cung cấp các công cụ riêng để đáp ứng hầu hết nhu cầu phổ biến. Godot có workspace scripting chuyên dụng, animation editor, tilemap editor, shader editor, debugger, profiler, khả năng hot-reload cục bộ và trên các thiết bị từ xa, v.v.
 
 |image2|
 
-The goal is to offer a full package to create games and a continuous
-user experience. You can still work with external programs as long as
-there is an import plugin available in Godot for it.
+Mục tiêu là cung cấp một gói hoàn chỉnh để tạo game cùng trải nghiệm người dùng liền mạch. Bạn vẫn có thể làm việc với các chương trình bên ngoài, miễn là Godot có import plugin cho chương trình đó.
 
-That is also partly why Godot offers its own programming language
-GDScript along with C#. GDScript is designed for the needs
-of game developers and game designers, and is tightly integrated in
-the engine and the editor.
+Đó cũng là một phần lý do Godot cung cấp ngôn ngữ lập trình riêng GDScript cùng với C#. GDScript được thiết kế cho nhu cầu của game developer và game designer, đồng thời được tích hợp chặt chẽ vào engine và editor.
 
-GDScript lets you write code using an indentation-based syntax,
-yet it detects types and offers a static language's quality of auto-completion.
-It is also optimized for gameplay code with built-in types like Vectors and Colors.
+GDScript cho phép bạn viết code bằng cú pháp dựa trên thụt lề, đồng thời nhận diện type và cung cấp chất lượng auto-completion của một ngôn ngữ tĩnh. GDScript cũng được tối ưu cho gameplay code với các type tích hợp như Vector và Color.
 
-Note that with GDExtension, you can write high-performance code using compiled
-languages like C, C++, Rust, D, Haxe, or Swift without recompiling the engine.
+Lưu ý rằng với GDExtension, bạn có thể viết code hiệu năng cao bằng các ngôn ngữ biên dịch như C, C++, Rust, D, Haxe hoặc Swift mà không cần biên dịch lại engine.
 
-Note that the 3D workspace doesn't feature as many tools as the 2D workspace.
-You'll need external programs or add-ons to edit terrains, animate complex characters, and so on.
-Godot provides a complete API to extend the editor's functionality using
-game code. See `The Godot editor is a Godot game`_ below.
+Lưu ý rằng workspace 3D không có nhiều công cụ như workspace 2D. Bạn sẽ cần các chương trình bên ngoài hoặc add-on để chỉnh sửa địa hình, tạo animation cho các character phức tạp, v.v. Godot cung cấp một API hoàn chỉnh để mở rộng chức năng của editor bằng game code. Xem `The Godot editor is a Godot game <The Godot editor is a Godot game_>`_ bên dưới.
 
-Open source
+Mã nguồn mở
 -----------
 
-Godot offers a fully open source codebase under the **MIT license**.
-This means that the codebase is free for anyone to download, use,
-modify, or share, as long as its license file is kept intact.
+Godot cung cấp toàn bộ codebase mã nguồn mở theo **MIT license**. Điều này có nghĩa là bất kỳ ai cũng được tự do tải xuống, sử dụng, chỉnh sửa hoặc chia sẻ codebase, miễn là giữ nguyên file license của nó.
 
-All technologies that ship with Godot, including third-party libraries, must
-be legally compatible with this open source license. Therefore, most parts
-of Godot are developed from the ground up by community contributors.
+Tất cả công nghệ được cung cấp cùng Godot, bao gồm các thư viện bên thứ ba, phải tương thích hợp pháp với license mã nguồn mở này. Vì vậy, phần lớn Godot được các contributor trong cộng đồng phát triển từ đầu.
 
-Anyone can plug in proprietary tools for the needs of their projects —
-they just won't ship with the engine. This may include Google AdMob,
-or FMOD. Any of these can come as
-third-party plugins instead.
+Bất kỳ ai cũng có thể tích hợp các công cụ độc quyền cho nhu cầu của dự án — chỉ là chúng sẽ không được cung cấp cùng engine. Có thể kể đến Google AdMob hoặc FMOD. Thay vào đó, bất kỳ công cụ nào trong số này đều có thể được cung cấp dưới dạng plugin bên thứ ba.
 
-On the other hand, an open codebase means you can **learn from and extend
-the engine** to your heart's content. You can also debug games easily,
-as Godot will print errors with a stack trace, even if they come from the engine itself.
+Mặt khác, codebase mở có nghĩa là bạn có thể **học hỏi từ và mở rộng engine** tùy thích. Bạn cũng có thể debug game dễ dàng, vì Godot sẽ in lỗi kèm stack trace, ngay cả khi lỗi xuất phát từ chính engine.
 
 .. note::
 
-   This **does not affect the work you do with Godot** in any way: there's
-   no strings attached to the engine or anything you make with it.
+   Điều này **không ảnh hưởng đến công việc bạn thực hiện với Godot** theo bất kỳ cách nào: engine và bất cứ thứ gì bạn tạo bằng nó đều không có ràng buộc nào.
 
-Community-driven
-----------------
+Do cộng đồng phát triển
+-----------------------
 
-**Godot is made by its community, for the community, and for all game
-creators out there.** It's the needs of the users and open discussions
-that drive the core updates. New features from the core developers often
-focus on what will benefit the most users first.
+**Godot được cộng đồng tạo ra, vì cộng đồng và vì tất cả game creator trên thế giới.** Chính nhu cầu của người dùng và các cuộc thảo luận mở thúc đẩy những cập nhật cốt lõi. Các tính năng mới từ core developer thường tập trung trước tiên vào những gì mang lại lợi ích cho nhiều người dùng nhất.
 
-That said, although a handful of core developers work on it full-time,
-the project has thousands of contributors at the time of writing. Benevolent
-programmers work on features they may need themselves, so you'll see
-improvements in all corners of the engine at the same time in every
-major release.
+Dù vậy, mặc dù chỉ có một nhóm nhỏ core developer làm việc toàn thời gian, tại thời điểm viết bài, dự án có hàng nghìn contributor. Những lập trình viên tâm huyết phát triển các tính năng mà chính họ có thể cần, vì vậy bạn sẽ thấy các cải tiến xuất hiện đồng thời ở mọi khía cạnh của engine trong mỗi bản phát hành lớn.
 
-The Godot editor is a Godot game
---------------------------------
+.. _`The Godot editor is a Godot game`:
 
-The Godot editor runs on the game engine. It uses the engine's own UI
-system, it can hot-reload code and scenes when you test your projects,
-or run game code in the editor. This means you can **use the same code**
-and scenes for your games, or **build plugins and extend the editor.**
+Editor Godot là một game Godot
+------------------------------
 
-This leads to a reliable and flexible UI system, as it powers the editor
-itself. With the ``@tool`` annotation, you can run any game code in the editor.
+Editor Godot chạy trên game engine. Nó sử dụng hệ thống UI của chính engine, có thể hot-reload code và scene khi bạn kiểm thử dự án, hoặc chạy game code trong editor. Điều này có nghĩa là bạn có thể **sử dụng cùng một code** và scene cho game của mình, hoặc **xây dựng plugin và mở rộng editor.**
+
+Điều này tạo ra một hệ thống UI đáng tin cậy và linh hoạt, vì chính nó cung cấp năng lượng cho editor. Với annotation ``@tool``, bạn có thể chạy bất kỳ game code nào trong editor.
 
 .. figure:: img/introduction_rpg_in_a_box.webp
    :align: center
 
-   RPG in a Box is a voxel RPG editor made with Godot. It uses Godot's
-   UI tools for its node-based programming system and for the rest of the
-   interface.
+   RPG in a Box là một editor RPG voxel được tạo bằng Godot. Nó sử dụng các công cụ UI của Godot cho hệ thống lập trình dựa trên node và cho phần còn lại của giao diện.
 
-Put the ``@tool`` annotation at the top of any GDScript file and it will run
-in the editor. This lets you import and export plugins, create plugins
-like custom level editors, or create scripts with the same nodes and API
-you use in your projects.
+Đặt annotation ``@tool`` ở đầu bất kỳ file GDScript nào và file đó sẽ chạy trong editor. Điều này cho phép bạn import và export plugin, tạo plugin như các level editor tùy chỉnh, hoặc tạo script với cùng các node và API mà bạn sử dụng trong dự án.
 
 .. note::
 
-   The editor is fully written in C++ and is statically compiled into the
-   binary. This means you can't import it as a typical project that would have a
-   ``project.godot`` file.
+   Trình chỉnh sửa được viết hoàn toàn bằng C++ và được biên dịch tĩnh vào binary. Điều này có nghĩa là bạn không thể import nó như một project thông thường có tệp ``project.godot``.
 
-Separate 2D and 3D engines
---------------------------
+Các engine 2D và 3D riêng biệt
+------------------------------
 
-Godot offers dedicated 2D and 3D rendering engines. As a result, **the
-base unit for 2D scenes is pixels.** Even though the engines are
-separate, you can render 2D in 3D, 3D in 2D, and overlay 2D sprites and
-interfaces over your 3D world.
+Godot cung cấp các engine rendering 2D và 3D chuyên dụng. Do đó, **đơn vị cơ bản cho các scene 2D là pixel.** Mặc dù các engine tách biệt, bạn vẫn có thể render 2D trong 3D, 3D trong 2D và phủ các sprite cùng interface 2D lên thế giới 3D của mình.
 
 .. |image0| image:: img/engine_design_01.png
 .. |image1| image:: img/engine_design_02.png
 .. |image2| image:: img/engine_design_03.png
+
+.. _`Godot explained in 7 minutes`: https://www.youtube.com/watch?v=yS9cuu5o5Ug
