@@ -1,131 +1,117 @@
 .. _doc_animation_track_types:
 
-Animation Track types
-=====================
+Các loại Animation Track
+========================
 
-This page gives an overview of the track types available for Godot's animation
-player node on top of the default property tracks.
+Trang này tổng quan về các loại track có sẵn cho node animation player của Godot, bên cạnh các property track mặc định.
 
 .. seealso::
 
-   We assume you already read :ref:`doc_introduction_animation`, which covers
-   the basics, including property tracks.
+   Chúng tôi giả định rằng bạn đã đọc :ref:`doc_introduction_animation`, trong đó trình bày các kiến thức cơ bản, bao gồm cả property track.
 
 .. image:: img/track_types.webp
 
 Property Track
 --------------
 
-The most basic track type. See :ref:`doc_introduction_animation`.
+Đây là loại track cơ bản nhất. Xem :ref:`doc_introduction_animation`.
 
 Position 3D / Rotation 3D / Scale 3D Track
 ------------------------------------------
 
-These 3D transform tracks control the location, rotation, and scale of a 3D object.
-They make it easier to animate a 3D object's transform compared to using regular
-property tracks.
+Các track biến đổi 3D này điều khiển vị trí, phép xoay và tỷ lệ của một đối tượng 3D. Chúng giúp việc tạo animation cho phép biến đổi của đối tượng 3D dễ dàng hơn so với việc sử dụng các property track thông thường.
 
-It is designed for animations imported from external 3D models and can reduce resource capacity through compression.
+Loại track này được thiết kế cho các animation được nhập từ model 3D bên ngoài và có thể giảm dung lượng tài nguyên nhờ compression.
 
 Blend Shape Track
 -----------------
 
-A blend shape track is optimized for animating blend shape in :ref:`MeshInstance3D <class_MeshInstance3D>`.
+Blend shape track được tối ưu hóa để tạo animation cho blend shape trong :ref:`MeshInstance3D <class_MeshInstance3D>`.
 
-It is designed for animations imported from external 3D models and can reduce resource capacity through compression.
+Loại track này được thiết kế cho các animation được nhập từ model 3D bên ngoài và có thể giảm dung lượng tài nguyên nhờ compression.
 
 Call Method Track
-------------------
+-----------------
 
-A call method track allow you to call a function at a precise time from within an
-animation. For example, you can call ``queue_free()`` to delete a node at the
-end of a death animation.
+Call method track cho phép bạn gọi một function tại một thời điểm chính xác trong animation. Ví dụ, bạn có thể gọi ``queue_free()`` để xóa một node khi animation chết kết thúc.
 
-.. note:: The events placed on the call method track are not executed when the animation is previewed in the editor for safety.
+.. note:: Các event được đặt trên call method track sẽ không được thực thi khi animation được xem trước trong editor vì lý do an toàn.
 
-To create such a track in the editor, click "Add Track -> Call Method Track." Then, a window
-opens and lets you select the node to associate with the track. To call one of
-the node's methods, right-click the timeline and select "Insert Key". A window
-opens with a list of available methods. Double-click one to finish creating the
-keyframe.
+Để tạo track như vậy trong editor, hãy nhấp vào "Add Track -> Call Method Track." Sau đó, một cửa sổ sẽ mở ra và cho phép bạn chọn node liên kết với track. Để gọi một trong các method của node, hãy nhấp chuột phải vào timeline và chọn "Insert Key". Một cửa sổ sẽ mở ra với danh sách các method có sẵn. Nhấp đúp vào một method để hoàn tất việc tạo keyframe.
 
 .. image:: img/node_methods.webp
 
-To change the method call or its arguments, click on the key and head to the
-inspector dock. There, you can change the method to call. If you expand the
-"Args" section, you will see a list of arguments you can edit.
+Để thay đổi lời gọi method hoặc các đối số của nó, hãy nhấp vào key rồi chuyển đến inspector dock. Tại đó, bạn có thể thay đổi method cần gọi. Nếu mở rộng phần "Args", bạn sẽ thấy danh sách các đối số có thể chỉnh sửa.
 
 .. image:: img/node_method_args.webp
 
-To create such a track through code, pass a dictionary that contains the target method's name
-and parameters as the Variant for ``key`` in ``Animation.track_insert_key()``. The keys and
-their expected values are as follows:
+Để tạo track như vậy bằng code, hãy truyền một dictionary chứa tên và các tham số của method đích dưới dạng Variant cho ``key`` trong ``Animation.track_insert_key()``. Các key và giá trị tương ứng được yêu cầu như sau:
 
-+---------------------------------------+-----------------------------------------------------------------------------+
-| **Key**                               | **Value**                                                                   |
-+=======================================+=============================================================================+
-| ``"method"``                          | The name of the method as a ``String``                                      |
-+---------------------------------------+-----------------------------------------------------------------------------+
-| ``"args"``                            | The arguments to pass to the function as an ``Array``                       |
-+---------------------------------------+-----------------------------------------------------------------------------+
++--------------+----------------------------------------------------+
+| **Key**      | **Value**                                          |
++==============+====================================================+
+| ``"method"`` | Tên của method dưới dạng ``String``                |
++--------------+----------------------------------------------------+
+| ``"args"``   | Các đối số truyền cho function dưới dạng ``Array`` |
++--------------+----------------------------------------------------+
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Create a call method track.
+    # Tạo call method track.
     func create_method_animation_track():
-        # Get or create the animation the target method will be called from.
+        # Lấy hoặc tạo animation mà từ đó method đích sẽ được gọi.
         var animation = $AnimationPlayer.get_animation("idle")
-        # Get or create the target method's animation track.
+        # Lấy hoặc tạo animation track của method đích.
         var track_index = animation.add_track(Animation.TYPE_METHOD)
-        # Make the arguments for the target method jump().
+        # Tạo các đối số cho method đích jump().
         var jump_velocity = -400.0
         var multiplier = randf_range(.8, 1.2)
-        # Get or create a dictionary with the target method's name and arguments.
+        # Lấy hoặc tạo một dictionary chứa tên và các đối số của method đích.
         var method_dictionary = {
             "method": "jump",
             "args": [jump_velocity, multiplier],
         }
 
-        # Set scene-tree path to node with target method.
+        # Đặt scene-tree path đến node chứa method đích.
         animation.track_set_path(track_index, ".")
-        # Add the dictionary as the animation method track's key.
+        # Thêm dictionary làm key cho animation method track.
         animation.track_insert_key(track_index, 0.6, method_dictionary, 0)
 
 
-    # The target method that will be called from the animation.
+    # Method đích sẽ được gọi từ animation.
     func jump(jump_velocity, multiplier):
         velocity.y = jump_velocity * multiplier
 
  .. code-tab:: csharp
 
-    // Create a call method track.
+    // Tạo call method track.
     public void CreateAnimationTrack()
     {
-        // Get reference to the AnimationPlayer.
+        // Lấy reference đến AnimationPlayer.
         var animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-        // Get or create the animation the target method will be called from.
+        // Lấy hoặc tạo animation mà từ đó method đích sẽ được gọi.
         var animation = animationPlayer.GetAnimation("idle");
-        // Get or create the target method's animation track.
+        // Lấy hoặc tạo animation track của method đích.
         var trackIndex = animation.AddTrack(Animation.TrackType.Method);
-        // Make the arguments for the target method Jump().
+        // Tạo các đối số cho method đích Jump().
         var jumpVelocity = -400.0;
         var multiplier = GD.RandRange(.8, 1.2);
-        // Get or create a dictionary with the target method's name and arguments.
+        // Lấy hoặc tạo một dictionary chứa tên và các đối số của method đích.
         var methodDictionary = new Godot.Collections.Dictionary
         {
             { "method", MethodName.Jump },
             { "args", new Godot.Collections.Array { jumpVelocity, multiplier } }
         };
 
-        // Set scene-tree path to node with target method.
+        // Đặt scene-tree path đến node chứa method đích.
         animation.TrackSetPath(trackIndex, ".");
-        // Add the dictionary as the animation method track's key.
+        // Thêm dictionary làm key cho animation method track.
         animation.TrackInsertKey(trackIndex, 0.6, methodDictionary, 0);
     }
 
 
-    // The target method that will be called from the animation.
+    // Method đích sẽ được gọi từ animation.
     private void Jump(float jumpVelocity, float multiplier)
     {
         Velocity = new Vector2(Velocity.X, jumpVelocity * multiplier);
@@ -134,86 +120,61 @@ their expected values are as follows:
 Bezier Curve Track
 ------------------
 
-A bezier curve track is similar to a property track, except it allows you to
-animate a property's value using a bezier curve.
+Bezier curve track tương tự property track, nhưng cho phép bạn tạo animation cho giá trị của một property bằng bezier curve.
 
 .. note::
 
-    Bezier curve tracks and property tracks cannot be blended in :ref:`AnimationPlayer <class_AnimationPlayer>` and :ref:`AnimationTree <class_AnimationTree>`.
+    Bezier curve track và property track không thể được blend trong :ref:`AnimationPlayer <class_AnimationPlayer>` và :ref:`AnimationTree <class_AnimationTree>`.
 
-To create one, click "Add Track -> Bezier Curve Track". As with property tracks,
-you need to select a node and a property to animate. To open the bezier curve
-editor, click the curve icon to the right of the animation track.
+Để tạo một track, hãy nhấp vào "Add Track -> Bezier Curve Track". Giống như với property track, bạn cần chọn một node và một property để tạo animation. Để mở trình chỉnh sửa bezier curve, hãy nhấp vào biểu tượng curve ở bên phải animation track.
 
 .. image:: img/bezier_curve_icon.webp
 
-In the editor, keys are represented by filled diamonds and the outlined
-diamonds connected to them by a line control curve's shape.
+Trong editor, các key được biểu thị bằng những hình thoi đặc và các hình thoi viền nối với chúng bằng một đường thẳng sẽ điều khiển hình dạng của curve.
 
 .. tip::
 
-    For better precision while manually working with curves, you might want to alter
-    the zoom levels of the editor. The slider on the bottom right of the editor can be used to
-    zoom in and out on the time axis, you can also do that with :kbd:`Ctrl + Shift + Mouse wheel`.
-    Using :kbd:`Ctrl + Alt + Mouse wheel` will zoom in and out on the Y axis
+    Để có độ chính xác cao hơn khi thao tác thủ công với các curve, bạn có thể muốn thay đổi mức zoom của editor. Thanh trượt ở góc dưới bên phải editor có thể được dùng để phóng to và thu nhỏ theo trục thời gian; bạn cũng có thể làm vậy bằng :kbd:`Ctrl + Shift + Mouse wheel`. Sử dụng :kbd:`Ctrl + Alt + Mouse wheel` sẽ phóng to và thu nhỏ theo trục Y
 
 .. image:: img/bezier_curves.webp
 
-While a keyframe is selected (not the handle), in the right click panel of the
-editor, you can select the handle mode:
+Khi một keyframe được chọn (không phải handle), bạn có thể chọn chế độ handle trong bảng mở bằng cách nhấp chuột phải của editor:
 
-- Free: Allows you to orient a manipulator in any direction without affecting the
-  other's position.
-- Linear: Does not allow rotation of the manipulator and draws a linear graph.
-- Balanced: Makes it so manipulators rotate together, but the distance between
-  the key and a manipulator is not mirrored.
-- Mirrored: Makes the position of one manipulator perfectly mirror the other,
-  including their distance to the key.
+- Free: Cho phép bạn định hướng một manipulator theo bất kỳ hướng nào mà không ảnh hưởng đến vị trí của manipulator còn lại.
+- Linear: Không cho phép xoay manipulator và vẽ một đồ thị tuyến tính.
+- Balanced: Khiến các manipulator xoay cùng nhau, nhưng khoảng cách giữa key và một manipulator không được đối xứng.
+- Mirrored: Khiến vị trí của một manipulator đối xứng hoàn hảo với manipulator còn lại, bao gồm cả khoảng cách của chúng đến key.
 
 .. image:: img/manipulator_modes.webp
 
 Audio Playback Track
 --------------------
 
-If you want to create an animation with audio, you need to create an audio
-playback track. To create one, your scene must have either an AudioStreamPlayer,
-AudioStreamPlayer2D, or AudioStreamPlayer3D node. When creating the track, you
-must select one of those nodes.
+Nếu muốn tạo animation có âm thanh, bạn cần tạo một audio playback track. Để tạo track này, scene của bạn phải có một trong các node AudioStreamPlayer, AudioStreamPlayer2D hoặc AudioStreamPlayer3D. Khi tạo track, bạn phải chọn một trong các node đó.
 
-To play a sound in your animation, drag and drop an audio file from the file
-system dock onto the animation track. You should see the waveform of your audio
-file in the track.
+Để phát âm thanh trong animation, hãy kéo và thả một tệp âm thanh từ dock hệ thống tệp vào track animation. Bạn sẽ thấy dạng sóng của tệp âm thanh trong track.
 
 .. image:: img/audio_track.webp
 
-To remove a sound from the animation, you can right-click it and select "Delete
-Key(s)" or click on it and press the :kbd:`Del` key.
+Để xóa âm thanh khỏi animation, bạn có thể nhấp chuột phải vào âm thanh đó rồi chọn "Delete Key(s)", hoặc nhấp vào âm thanh đó và nhấn phím :kbd:`Del`.
 
-The blend mode allows you to choose whether or not to adjust the audio volume when blending in the :ref:`AnimationTree <class_AnimationTree>`.
+Chế độ hòa trộn cho phép bạn chọn có điều chỉnh âm lượng âm thanh khi hòa trộn trong :ref:`AnimationTree <class_AnimationTree>` hay không.
 
 .. image:: img/blend_mode.webp
 
-Animation Playback Track
-------------------------
+Track phát animation
+--------------------
 
-Animation playback tracks allow you to sequence the animations of other
-animation player nodes in a scene. For example, you can use it to animate
-several characters in a cut-scene.
+Các track phát animation cho phép bạn sắp xếp trình tự animation của những node animation player khác trong một scene. Ví dụ, bạn có thể dùng chúng để tạo animation cho nhiều nhân vật trong một cut-scene.
 
-To create an animation playback track, select "New Track -> Animation Playback
-Track."
+Để tạo track phát animation, hãy chọn "New Track -> Animation Playback Track."
 
-Then, select the animation player you want to associate with the track.
+Sau đó, chọn animation player mà bạn muốn liên kết với track.
 
-To add an animation to the track, right-click on it and insert a key. Select the
-key you just created to select an animation in the inspector dock.
+Để thêm một animation vào track, hãy nhấp chuột phải vào track và chèn một key. Chọn key vừa tạo để chọn một animation trong dock inspector.
 
 .. image:: img/animation_player_animation.webp
 
-If an animation is already playing and you want to stop it early, you can create
-a key and have it set to `[STOP]` in the inspector.
+Nếu một animation đang phát và bạn muốn dừng animation đó sớm, bạn có thể tạo một key và đặt key đó thành `[STOP]` trong inspector.
 
-.. note:: If you instanced a scene that contains an animation player into your
-          scene, you need to enable "Editable Children" in the scene tree to
-          access its animation player. Also, an animation player cannot
-          reference itself.
+.. note:: Nếu bạn instance một scene chứa animation player vào scene của mình, bạn cần bật "Editable Children" trong scene tree để truy cập animation player của scene đó. Ngoài ra, một animation player không thể tham chiếu chính nó.

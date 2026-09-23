@@ -1,10 +1,9 @@
 :allow_comments: False
 
-Animation
-=========
+Hoạt ảnh
+========
 
-This section of the tutorial covers using the two animation nodes in Godot
-and the animation editor.
+Phần này của hướng dẫn trình bày cách sử dụng hai node animation trong Godot và trình chỉnh sửa animation.
 
 .. toctree::
    :maxdepth: 1
@@ -18,4 +17,4 @@ and the animation editor.
    playing_videos
    creating_movies
 
-See :ref:`doc_importing_3d_scenes` for information on importing animations from a 3D model.
+Xem :ref:`doc_importing_3d_scenes` để biết thông tin về cách import animation từ một model 3D.

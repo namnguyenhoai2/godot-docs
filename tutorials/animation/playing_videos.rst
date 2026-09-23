@@ -1,262 +1,155 @@
 .. _doc_playing_videos:
 
-Playing videos
-==============
+Phát video
+==========
 
-Godot supports video playback with the :ref:`class_VideoStreamPlayer` node.
+Godot hỗ trợ phát video bằng node :ref:`class_VideoStreamPlayer`.
 
-Supported playback formats
---------------------------
+Các định dạng phát được hỗ trợ
+------------------------------
 
-The only supported format in core is **Ogg Theora** (not to be confused with
-Ogg Vorbis audio) with optional Ogg Vorbis audio tracks. It's possible for
-extensions to bring support for additional formats.
+Định dạng duy nhất được hỗ trợ trong core là **Ogg Theora** (không nên nhầm với âm thanh Ogg Vorbis), cùng với các track âm thanh Ogg Vorbis tùy chọn. Các extension có thể bổ sung hỗ trợ cho những định dạng khác.
 
-H.264 and H.265 cannot be supported in core Godot, as they are both encumbered
-by software patents. AV1 is royalty-free, but it remains slow to decode on the
-CPU and hardware decoding support isn't readily available on all GPUs in use
-yet.
+H.264 và H.265 không thể được hỗ trợ trong core Godot vì cả hai đều bị ràng buộc bởi các bằng sáng chế phần mềm. AV1 không yêu cầu phí bản quyền, nhưng vẫn mất nhiều thời gian để giải mã trên CPU và hỗ trợ giải mã bằng phần cứng hiện chưa sẵn có trên tất cả GPU đang được sử dụng.
 
-WebM was supported in core in Godot 3.x, but support for it was removed in 4.0
-as it was too buggy and difficult to maintain.
+WebM từng được hỗ trợ trong core ở Godot 3.x, nhưng đã bị loại bỏ trong 4.0 vì có quá nhiều lỗi và khó bảo trì.
 
 .. note::
 
-    You may find videos with a ``.ogg`` or ``.ogx`` extensions, which are generic
-    extensions for data within an Ogg container.
+    Bạn có thể bắt gặp các video có phần mở rộng ``.ogg`` hoặc ``.ogx``, đây là các phần mở rộng chung cho dữ liệu bên trong một container Ogg.
 
-    Renaming these file extensions to ``.ogv`` *may* allow the videos to be
-    imported in Godot. However, not all files with ``.ogg`` or ``.ogx``
-    extensions are videos - some of them may only contain audio.
+    Đổi tên các phần mở rộng tệp này thành ``.ogv`` *có thể* cho phép nhập video vào Godot. Tuy nhiên, không phải mọi tệp có phần mở rộng ``.ogg`` hoặc ``.ogx`` đều là video - một số tệp có thể chỉ chứa âm thanh.
 
-Setting up VideoStreamPlayer
-----------------------------
+Thiết lập VideoStreamPlayer
+---------------------------
 
-1. Create a VideoStreamPlayer node using the Create New Node dialog.
-2. Select the VideoStreamPlayer node in the scene tree dock, go to the inspector
-   and load a ``.ogv`` file in the Stream property.
+1. Tạo một node VideoStreamPlayer bằng hộp thoại Create New Node.
+2. Chọn node VideoStreamPlayer trong scene tree dock, đi đến inspector và tải một tệp ``.ogv`` vào thuộc tính Stream.
 
-   - If you don't have your video in Ogg Theora format yet, jump to
+   - Nếu video của bạn chưa ở định dạng Ogg Theora, hãy chuyển đến
      :ref:`doc_playing_videos_recommended_theora_encoding_settings`.
 
-3. If you want the video to play as soon as the scene is loaded, check
-   **Autoplay** in the inspector. If not, leave **Autoplay** disabled and call
-   ``play()`` on the VideoStreamPlayer node in a script to start playback when
-   desired.
+3. Nếu muốn video phát ngay khi scene được tải, hãy chọn **Autoplay** trong inspector. Nếu không, để **Autoplay** bị tắt và gọi ``play()`` trên node VideoStreamPlayer trong script để bắt đầu phát khi muốn.
 
-Handling resizing and different aspect ratios
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Xử lý việc thay đổi kích thước và các tỷ lệ khung hình khác nhau
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-By default, the VideoStreamPlayer will automatically be resized to match
-the video's resolution. You can make it follow usual :ref:`class_Control` sizing
-by enabling **Expand** on the VideoStreamPlayer node.
+Theo mặc định, VideoStreamPlayer sẽ tự động được thay đổi kích thước để khớp với độ phân giải của video. Bạn có thể khiến nó tuân theo cách :ref:`class_Control` định kích thước thông thường bằng cách bật **Expand** trên node VideoStreamPlayer.
 
-To adjust how the VideoStreamPlayer node resizes depending on window size,
-adjust the anchors using the **Layout** menu at the top of the 2D editor
-viewport. However, this setup may not be powerful enough to handle all use
-cases, such as playing fullscreen videos without distorting the video (but with
-empty space on the edges instead). For more control, you can use an
-:ref:`class_AspectRatioContainer` node, which is designed to handle this kind of
-use case:
+Để điều chỉnh cách node VideoStreamPlayer thay đổi kích thước tùy theo kích thước cửa sổ, hãy điều chỉnh các anchor bằng menu **Layout** ở đầu viewport của trình chỉnh sửa 2D. Tuy nhiên, thiết lập này có thể không đủ mạnh để xử lý mọi trường hợp sử dụng, chẳng hạn như phát video toàn màn hình mà không làm biến dạng video (thay vào đó để lại khoảng trống ở các cạnh). Để kiểm soát tốt hơn, bạn có thể sử dụng một
+node :ref:`class_AspectRatioContainer`, được thiết kế để xử lý loại trường hợp sử dụng này:
 
-Add an AspectRatioContainer node. Make sure it is not a child of any other
-container node. Select the AspectRatioContainer node, then set its **Layout** at
-the top of the 2D editor to **Full Rect**. Set **Ratio** in the
-AspectRatioContainer node to match your video's aspect ratio. You can use math
-formulas in the inspector to help yourself. Remember to make one of the operands
-a float. Otherwise, the division's result will always be an integer.
+Thêm một node AspectRatioContainer. Đảm bảo node này không phải là node con của bất kỳ node container nào khác. Chọn node AspectRatioContainer, sau đó đặt **Layout** của nó ở đầu trình chỉnh sửa 2D thành **Full Rect**. Đặt **Ratio** trong node AspectRatioContainer để khớp với tỷ lệ khung hình của video. Bạn có thể sử dụng các công thức toán học trong inspector để hỗ trợ. Hãy nhớ đặt một trong các toán hạng là số thực. Nếu không, kết quả phép chia sẽ luôn là số nguyên.
 
 .. figure:: img/playing_videos_aspect_ratio_container.png
    :figclass: figure-w480
    :align: center
-   :alt: AspectRatioContainer's Ratio property being modified in the editor inspector
+   :alt: Thuộc tính Ratio của AspectRatioContainer đang được chỉnh sửa trong inspector của trình chỉnh sửa
 
-   This will evaluate to (approximately) 1.777778
+   Giá trị này sẽ được tính thành (xấp xỉ) 1.777778
 
 
-Once you've configured the AspectRatioContainer, reparent your VideoStreamPlayer
-node to be a child of the AspectRatioContainer node. Make sure **Expand** is
-enabled on the VideoStreamPlayer. Your video should now scale automatically
-to fit the whole screen while avoiding distortion.
+Sau khi cấu hình AspectRatioContainer, hãy chuyển node VideoStreamPlayer thành node con của node AspectRatioContainer. Đảm bảo **Expand** được bật trên VideoStreamPlayer. Video của bạn giờ sẽ tự động co giãn để vừa toàn bộ màn hình mà không bị biến dạng.
 
 .. seealso::
 
-    See :ref:`doc_multiple_resolutions` for more tips on supporting multiple
-    aspect ratios in your project.
+    Xem :ref:`doc_multiple_resolutions` để biết thêm mẹo hỗ trợ nhiều tỷ lệ khung hình trong dự án của bạn.
 
-Displaying a video on a 3D surface
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Hiển thị video trên bề mặt 3D
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Using a VideoStreamPlayer node as a child of a :ref:`class_SubViewport` node,
-it's possible to display any 2D node on a 3D surface. For example, this can be
-used to display animated billboards when frame-by-frame animation would require
-too much memory.
+Bằng cách sử dụng node VideoStreamPlayer làm node con của node :ref:`class_SubViewport`, bạn có thể hiển thị bất kỳ node 2D nào trên bề mặt 3D. Ví dụ, cách này có thể được dùng để hiển thị billboard động khi hoạt ảnh theo từng khung hình sẽ yêu cầu quá nhiều bộ nhớ.
 
-This can be done with the following steps:
+Bạn có thể thực hiện việc này theo các bước sau:
 
-1. Create a :ref:`class_SubViewport` node. Set its size to match your video's size
-   in pixels.
-2. Create a VideoStreamPlayer node *as a child of the SubViewport node* and specify
-   a video path in it. Make sure **Expand** is disabled, and enable **Autoplay** if needed.
-3. Create a MeshInstance3D node with a PlaneMesh or QuadMesh resource in its Mesh property.
-   Resize the mesh to match the video's aspect ratio (otherwise, it will appear distorted).
-4. Create a new StandardMaterial3D resource in the **Material Override** property
-   in the GeometryInstance3D section.
-5. Enable **Local To Scene** in the StandardMaterial3D's Resource section (at the bottom).
-   This is *required* before you can use a ViewportTexture in its Albedo Texture property.
-6. In the StandardMaterial3D, set the **Albedo > Texture** property to **New ViewportTexture**.
-   Edit the new resource by clicking it, then specify the path to the SubViewport node
-   in the **Viewport Path** property.
-7. Enable **Albedo Texture Force sRGB** in the StandardMaterial3D to prevent colors
-   from being washed out.
-8. If the billboard is supposed to emit its own light,
-   set **Shading Mode** to **Unshaded** to improve rendering performance.
+1. Tạo một node :ref:`class_SubViewport`. Đặt kích thước của nó khớp với kích thước video tính bằng pixel.
+2. Tạo một node VideoStreamPlayer *làm node con của node SubViewport* và chỉ định đường dẫn video cho nó. Đảm bảo **Expand** bị tắt, và bật **Autoplay** nếu cần.
+3. Tạo một node MeshInstance3D với tài nguyên PlaneMesh hoặc QuadMesh trong thuộc tính Mesh của nó. Thay đổi kích thước mesh để khớp với tỷ lệ khung hình của video (nếu không, video sẽ bị biến dạng).
+4. Tạo một tài nguyên StandardMaterial3D mới trong thuộc tính **Material Override** ở phần GeometryInstance3D.
+5. Bật **Local To Scene** trong phần Resource của StandardMaterial3D (ở dưới cùng). Điều này *bắt buộc* trước khi bạn có thể sử dụng ViewportTexture trong thuộc tính Albedo Texture của nó.
+6. Trong StandardMaterial3D, đặt thuộc tính **Albedo > Texture** thành **New ViewportTexture**. Chỉnh sửa tài nguyên mới bằng cách nhấp vào nó, sau đó chỉ định đường dẫn đến node SubViewport trong thuộc tính **Viewport Path**.
+7. Bật **Albedo Texture Force sRGB** trong StandardMaterial3D để ngăn màu sắc bị nhạt đi.
+8. Nếu billboard được cho là sẽ tự phát sáng, hãy đặt **Shading Mode** thành **Unshaded** để cải thiện hiệu năng kết xuất.
 
-See :ref:`doc_viewports` and the
-`GUI in 3D demo <https://github.com/godotengine/godot-demo-projects/tree/master/viewport/gui_in_3d>`__
-for more information on setting this up.
+Xem :ref:`doc_viewports` và `GUI in 3D demo <https://github.com/godotengine/godot-demo-projects/tree/master/viewport/gui_in_3d>`__ để biết thêm thông tin về cách thiết lập này.
 
-Looping a video
-~~~~~~~~~~~~~~~
+Lặp video
+~~~~~~~~~
 
-For looping a video, the **Loop** property can be enabled. This will seamlessly
-restart the video when it reaches its end.
+Để lặp video, bạn có thể bật thuộc tính **Loop**. Thuộc tính này sẽ khởi động lại video một cách liền mạch khi video phát đến cuối.
 
-Note that setting the project setting **Video Delay Compensation** to a non-zero
-value might cause your loop to not be seamless, because the synchronization of
-audio and video takes place at the start of each loop causing occasional missed
-frames. Set **Video Delay Compensation** in your project settings to **0** to
-avoid frame drop issues.
+Lưu ý rằng việc đặt thiết lập dự án **Video Delay Compensation** thành một giá trị khác không có thể khiến vòng lặp của bạn không còn liền mạch, vì quá trình đồng bộ hóa âm thanh và video diễn ra ở đầu mỗi vòng lặp, gây ra việc bỏ lỡ một số khung hình. Đặt **Video Delay Compensation** trong thiết lập dự án thành **0** để tránh các vấn đề rớt khung hình.
 
-Video decoding conditions and recommended resolutions
------------------------------------------------------
+Điều kiện giải mã video và độ phân giải được khuyến nghị
+--------------------------------------------------------
 
-Video decoding is performed on the CPU, as GPUs don't have hardware acceleration
-for decoding Theora videos. Modern desktop CPUs can decode Ogg Theora videos at
-1440p @ 60 FPS or more, but low-end mobile CPUs will likely struggle with
-high-resolution videos.
+Việc giải mã video được thực hiện trên CPU, vì GPU không có khả năng tăng tốc phần cứng để giải mã video Ogg Theora. CPU máy tính để bàn hiện đại có thể giải mã video Ogg Theora ở 1440p @ 60 FPS hoặc cao hơn, nhưng CPU di động cấp thấp có thể sẽ gặp khó khăn với video độ phân giải cao.
 
-To ensure your videos decode smoothly on varied hardware:
+Để đảm bảo video được giải mã mượt mà trên nhiều loại phần cứng:
 
-- When developing games for desktop platforms, it's recommended to encode in
-  1080p at most (preferably at 30 FPS). Most people are still using 1080p or
-  lower resolution displays, so encoding higher-resolution videos may not be
-  worth the increased file size and CPU requirements.
-- When developing games for mobile or web platforms, it's recommended to encode
-  in 720p at most (preferably at 30 FPS or even lower). The visual difference
-  between 720p and 1080p videos on a mobile device is usually not that
-  noticeable.
+- Khi phát triển game cho nền tảng máy tính để bàn, bạn nên mã hóa ở độ phân giải tối đa 1080p (tốt nhất là 30 FPS). Hầu hết mọi người vẫn đang sử dụng màn hình có độ phân giải 1080p hoặc thấp hơn, vì vậy việc mã hóa video ở độ phân giải cao hơn có thể không đáng với kích thước tệp và yêu cầu CPU tăng lên.
+- Khi phát triển game cho nền tảng di động hoặc web, bạn nên mã hóa ở độ phân giải tối đa 720p (tốt nhất là 30 FPS hoặc thậm chí thấp hơn). Khác biệt về hình ảnh giữa video 720p và 1080p trên thiết bị di động thường không quá rõ rệt.
 
-Playback limitations
---------------------
+Các giới hạn phát lại
+---------------------
 
-There are some limitations with the current implementation of video playback in Godot:
+Việc triển khai phát lại video hiện tại trong Godot có một số giới hạn:
 
-- Streaming a video from a URL is not supported.
-- Only mono and stereo audio output is supported. Videos with 4, 5.1 and 7.1
-  audio channels are supported but down-mixed to stereo.
+- Không hỗ trợ stream video từ URL.
+- Chỉ hỗ trợ đầu ra âm thanh mono và stereo. Video có 4, 5.1 và 7.1 kênh âm thanh vẫn được hỗ trợ, nhưng sẽ được down-mix xuống stereo.
 
 .. _doc_playing_videos_recommended_theora_encoding_settings:
 
-Recommended Theora encoding settings
-------------------------------------
+Thiết lập mã hóa Theora được khuyến nghị
+----------------------------------------
 
-A word of advice is to **avoid relying on built-in Ogg Theora exporters** (most of the time).
-There are 2 reasons you may want to favor using an external program to encode your video:
+Một lời khuyên là **tránh phụ thuộc vào các trình xuất Ogg Theora tích hợp sẵn** (trong hầu hết trường hợp). Có 2 lý do khiến bạn nên ưu tiên sử dụng chương trình bên ngoài để mã hóa video:
 
-- Some programs such as Blender can render to Ogg Theora. However, the default
-  quality presets are usually very low by today's standards. You may be able to
-  increase the quality options in the software you're using, but you may find
-  the output quality to remain less than ideal (given the increased file size).
-  This usually means that the software only supports encoding to constant bit
-  rate (CBR), instead of variable bit rate (VBR). VBR encoding should be
-  preferred in most scenarios as it provides a better quality to file size
-  ratio.
-- Some other programs can't render to Ogg Theora at all.
+- Một số chương trình như Blender có thể render sang Ogg Theora. Tuy nhiên, các preset chất lượng mặc định thường rất thấp theo tiêu chuẩn hiện nay. Bạn có thể tăng các tùy chọn chất lượng trong phần mềm đang sử dụng, nhưng có thể nhận thấy chất lượng đầu ra vẫn chưa lý tưởng (dù kích thước tệp đã tăng). Điều này thường có nghĩa là phần mềm chỉ hỗ trợ mã hóa với bitrate không đổi (CBR), thay vì bitrate biến đổi (VBR). Trong hầu hết trường hợp, nên ưu tiên mã hóa VBR vì nó mang lại tỷ lệ chất lượng trên kích thước tệp tốt hơn.
+- Một số chương trình khác hoàn toàn không thể render sang Ogg Theora.
 
-In this case, you can **render the video to an intermediate high-quality format**
-(such as a high-bitrate H.264 video) then re-encode it to Ogg Theora. Ideally,
-you should use a lossless or uncompressed format as an intermediate format to
-maximize the quality of the output Ogg Theora video, but this can require a lot
-of disk space.
+Trong trường hợp này, bạn có thể **render video sang một định dạng trung gian có chất lượng cao** (chẳng hạn video H.264 có bitrate cao), sau đó mã hóa lại sang Ogg Theora. Lý tưởng nhất là sử dụng định dạng không mất dữ liệu hoặc không nén làm định dạng trung gian để tối đa hóa chất lượng của video Ogg Theora đầu ra, nhưng cách này có thể yêu cầu rất nhiều dung lượng đĩa.
 
-`FFmpeg <https://ffmpeg.org/>`__ (CLI) is a popular open source tool
-for this purpose. FFmpeg has a steep learning curve, but it's a powerful tool.
+`FFmpeg <https://ffmpeg.org/>`__ (CLI) là một công cụ mã nguồn mở phổ biến cho mục đích này. FFmpeg có đường cong học tập khá dốc, nhưng đây là một công cụ mạnh mẽ.
 
-Here are example FFmpeg commands to convert an MP4 video to Ogg Theora. Since
-FFmpeg supports a lot of input formats, you should be able to use the commands
-below with almost any input video format (AVI, MOV, WebM, …).
+Sau đây là các lệnh FFmpeg mẫu để chuyển đổi video MP4 sang Ogg Theora. Vì FFmpeg hỗ trợ rất nhiều định dạng đầu vào, bạn có thể sử dụng các lệnh dưới đây với hầu hết mọi định dạng video đầu vào (AVI, MOV, WebM, …).
 
 .. note::
 
-   Make sure your copy of FFmpeg is compiled with libtheora and libvorbis support.
-   You can check this by running ``ffmpeg`` without any arguments, then looking
-   at the ``configuration:`` line in the command output.
+   Hãy đảm bảo bản FFmpeg của bạn được biên dịch với hỗ trợ libtheora và libvorbis. Bạn có thể kiểm tra bằng cách chạy ``ffmpeg`` mà không có đối số nào, sau đó tìm dòng ``configuration:`` trong đầu ra của lệnh.
 
 .. warning::
 
-   Current official FFmpeg releases have some bugs in their Ogg/Theora
-   multiplexer. It's highly recommended to use one of the latest static daily
-   builds, or build from their master branch to get the latest fixes.
+   Các bản phát hành FFmpeg chính thức hiện tại có một số lỗi trong bộ ghép kênh Ogg/Theora. Bạn nên sử dụng một trong các bản build tĩnh hằng ngày mới nhất hoặc build từ nhánh master của họ để nhận các bản sửa lỗi mới nhất.
 
-   On Windows, make sure to use 32-bit builds of FFmpeg. Windows 64-bit builds
-   have known issues with Theora encoding, which result in artifacts in the
-   output file.
+   Trên Windows, hãy đảm bảo sử dụng các bản build 32-bit của FFmpeg. Các bản build 64-bit của Windows có những vấn đề đã biết với việc mã hóa Theora, dẫn đến hiện tượng nhiễu trong tệp đầu ra.
 
-Balancing quality and file size
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Cân bằng chất lượng và kích thước tệp
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The **video quality** level (``-q:v``) must be between ``1`` and ``10``. Quality
-``6`` is a good compromise between quality and file size. If encoding at a high
-resolution (such as 1440p or 4K), you will probably want to decrease ``-q:v`` to
-``5`` to keep file sizes reasonable. Since pixel density is higher on a 1440p or
-4K video, lower quality presets at higher resolutions will look as good or
-better compared to low-resolution videos.
+Mức **chất lượng video** (``-q:v``) phải nằm trong khoảng từ ``1`` đến ``10``. Chất lượng ``6`` là một sự cân bằng tốt giữa chất lượng và kích thước tệp. Nếu mã hóa ở độ phân giải cao (chẳng hạn 1440p hoặc 4K), có lẽ bạn sẽ muốn giảm ``-q:v`` xuống ``5`` để giữ kích thước tệp ở mức hợp lý. Vì mật độ điểm ảnh cao hơn trên video 1440p hoặc 4K, các preset chất lượng thấp hơn ở độ phân giải cao sẽ cho hình ảnh đẹp tương đương hoặc tốt hơn so với video độ phân giải thấp.
 
-The **audio quality** level (``-q:a``) must be between ``-1`` and ``10``. Quality
-``6`` provides a good compromise between quality and file size. In contrast to
-video quality, increasing audio quality doesn't increase the output file size
-nearly as much. Therefore, if you want the cleanest audio possible, you can
-increase this to ``9`` to get *perceptually lossless* audio. This is especially
-valuable if your input file already uses lossy audio compression. Higher quality
-audio does increase the CPU usage of the decoder, so it might lead to audio
-dropouts in case of high system load. See
-`this page <https://wiki.hydrogenaud.io/index.php?title=Recommended_Ogg_Vorbis#Recommended_Encoder_Settings>`__
-for a table listing Ogg Vorbis audio quality presets and their respective
-variable bitrates.
+Mức **chất lượng âm thanh** (``-q:a``) phải nằm trong khoảng từ ``-1`` đến ``10``. Chất lượng ``6`` mang lại sự cân bằng tốt giữa chất lượng và kích thước tệp. Trái với chất lượng video, việc tăng chất lượng âm thanh không làm tăng kích thước tệp đầu ra nhiều như vậy. Vì thế, nếu muốn âm thanh trong trẻo nhất có thể, bạn có thể tăng mức này lên ``9`` để có âm thanh *gần như không mất dữ liệu*. Điều này đặc biệt có giá trị nếu tệp đầu vào vốn đã sử dụng tính năng nén âm thanh có mất dữ liệu. Âm thanh chất lượng cao hơn làm tăng mức sử dụng CPU của bộ giải mã, vì vậy có thể dẫn đến hiện tượng mất tiếng khi hệ thống chịu tải cao. Xem `trang này <https://wiki.hydrogenaud.io/index.php?title=Recommended_Ogg_Vorbis#Recommended_Encoder_Settings>`__ để biết bảng liệt kê các preset chất lượng âm thanh Ogg Vorbis và bitrate biến đổi tương ứng của chúng.
 
-The **GOP (Group of Pictures) size** (``-g:v``) is the max interval between
-keyframes. Increasing this value can improve compression with almost no impact
-on quality. The default size (``12``) is too low for most types of content,
-it's therefore recommended using higher GOP values before reducing video
-quality. Compression benefits will fade away as the GOP size increases though.
-Values between ``64`` and ``512`` usually give the best compression.
+**Kích thước GOP (Group of Pictures)** (``-g:v``) là khoảng thời gian tối đa giữa các keyframe. Việc tăng giá trị này có thể cải thiện khả năng nén mà hầu như không ảnh hưởng đến chất lượng. Kích thước mặc định (``12``) quá thấp đối với hầu hết loại nội dung, do đó bạn nên sử dụng các giá trị GOP cao hơn trước khi giảm chất lượng video. Tuy nhiên, lợi ích nén sẽ giảm dần khi kích thước GOP tăng. Các giá trị từ ``64`` đến ``512`` thường cho khả năng nén tốt nhất.
 
 .. note::
 
-   Higher GOP sizes will increase max seek times with a sudden increase when
-   going beyond powers of two starting at ``64``. Max seek times with GOP size
-   ``65`` can be almost twice as long as with GOP size ``64``, depending on
-   decoding speed.
+   Kích thước GOP lớn hơn sẽ làm tăng thời gian seek tối đa, với mức tăng đột ngột khi vượt qua các lũy thừa của hai bắt đầu từ ``64``. Thời gian seek tối đa với kích thước GOP ``65`` có thể dài gần gấp đôi so với kích thước GOP ``64``, tùy thuộc vào tốc độ giải mã.
 
-FFmpeg: Convert while preserving original video resolution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+FFmpeg: Chuyển đổi và giữ nguyên độ phân giải video ban đầu
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following command converts the video while keeping its original resolution.
-The video and audio's bitrate will be variable to maximize quality while saving
-space in parts of the video/audio that don't require a high bitrate (such as
-static scenes).
+Lệnh sau chuyển đổi video trong khi giữ nguyên độ phân giải ban đầu. Bitrate của video và âm thanh sẽ biến đổi để tối đa hóa chất lượng, đồng thời tiết kiệm dung lượng ở những phần video/âm thanh không cần bitrate cao (chẳng hạn các cảnh tĩnh).
 
 ::
 
     ffmpeg -i input.mp4 -q:v 6 -q:a 6 -g:v 64 output.ogv
 
-FFmpeg: Resize the video then convert it
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+FFmpeg: Thay đổi kích thước video rồi chuyển đổi
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following command resizes a video to be 720 pixels tall (720p), while
-preserving its existing aspect ratio. This helps decrease the file size
-significantly if the source is recorded at a higher resolution than 720p:
+Lệnh sau thay đổi kích thước video để có chiều cao 720 pixel (720p), đồng thời giữ nguyên tỷ lệ khung hình hiện có. Điều này giúp giảm đáng kể kích thước tệp nếu nguồn được ghi ở độ phân giải cao hơn 720p:
 
 ::
 
@@ -265,73 +158,68 @@ significantly if the source is recorded at a higher resolution than 720p:
 
 .. Chroma Key Functionality Documentation
 
-Chroma Key Videos
------------------
+Video Chroma Key
+----------------
 
-Chroma key, commonly known as the "green screen" or "blue screen" effect, allows you to remove a specific color from an image or video and replace it with another background. This effect is widely used in video production to composite different elements together seamlessly.
+Chroma key, thường được gọi là hiệu ứng "màn hình xanh" hoặc "màn hình xanh dương", cho phép bạn loại bỏ một màu cụ thể khỏi hình ảnh hoặc video và thay thế bằng nền khác. Hiệu ứng này được sử dụng rộng rãi trong sản xuất video để ghép liền mạch các thành phần khác nhau.
 
    .. image:: img/chroma_key_video.webp
 
-We will achieve the chroma key effect by writing a custom shader in GDScript and using a `VideoStreamPlayer` node to display the video content.
+Chúng ta sẽ tạo hiệu ứng chroma key bằng cách viết một shader tùy chỉnh trong GDScript và sử dụng node `VideoStreamPlayer` để hiển thị nội dung video.
 
-Scene Setup
-~~~~~~~~~~~
+Thiết lập cảnh
+~~~~~~~~~~~~~~
 
-Ensure that the scene contains a `VideoStreamPlayer` node to play the video and a `Control` node to hold the UI elements for controlling the chroma key effect.
+Đảm bảo cảnh chứa một node `VideoStreamPlayer` để phát video và một node `Control` để chứa các phần tử UI điều khiển hiệu ứng chroma key.
 
    .. image:: img/chroma_key_scene.webp
 
-Writing the Custom Shader
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Viết shader tùy chỉnh
+~~~~~~~~~~~~~~~~~~~~~
 
-To implement the chroma key effect, follow these steps:
+Để triển khai hiệu ứng chroma key, hãy làm theo các bước sau:
 
-1. Select the `VideoStreamPlayer` node in the scene and go to its properties. Under `CanvasItem > Material`, create a new shader named "ChromaKeyShader.gdshader."
+1. Chọn node `VideoStreamPlayer` trong scene và đi tới phần thuộc tính của node. Trong `CanvasItem > Material`, tạo một shader mới có tên "ChromaKeyShader.gdshader."
 
-2. In the "ChromaKeyShader.gdshader" file, write the custom shader code as shown below:
+2. Trong tệp "ChromaKeyShader.gdshader", viết mã shader tùy chỉnh như bên dưới:
 
 .. code-block:: glsl
 
    shader_type canvas_item;
 
-   // Uniform variables for chroma key effect
+   // Các biến uniform cho hiệu ứng chroma key
    uniform vec3 chroma_key_color : source_color = vec3(0.0, 1.0, 0.0);
    uniform float pickup_range : hint_range(0.0, 1.0) = 0.1;
    uniform float fade_amount : hint_range(0.0, 1.0) = 0.1;
 
    void fragment() {
-       // Get the color from the texture at the given UV coordinates
+       // Lấy màu từ texture tại các tọa độ UV đã cho
        vec4 color = texture(TEXTURE, UV);
 
-       // Calculate the distance between the current color and the chroma key color
+       // Tính khoảng cách giữa màu hiện tại và màu chroma key
        float distance = length(color.rgb - chroma_key_color);
 
-       // If the distance is within the pickup range, discard the pixel
-       // the lesser the distance more likely the colors are
+       // Nếu khoảng cách nằm trong phạm vi chọn, loại bỏ pixel
+       // khoảng cách càng nhỏ thì màu càng có khả năng giống nhau
        if (distance <= pickup_range) {
            discard;
        }
 
-       // Calculate the fade factor based on the pickup range and fade amount
+       // Tính hệ số mờ dựa trên phạm vi chọn và mức độ mờ
        float fade_factor = smoothstep(pickup_range, pickup_range + fade_amount, distance);
 
-       // Set the output color with the original RGB values and the calculated fade factor
+       // Thiết lập màu đầu ra bằng các giá trị RGB ban đầu và hệ số mờ đã tính
        COLOR = vec4(color.rgb, fade_factor);
    }
 
-The shader uses the distance calculation to identify pixels close to the chroma key color and discards them,
-effectively removing the selected color. Pixels that are slightly further away from the chroma key color are
-faded based on the fade_factor, blending them smoothly with the surrounding colors.
-This process creates the desired chroma key effect, making it appear as if the background has been replaced with
-another image or video.
+Shader sử dụng phép tính khoảng cách để xác định các pixel gần với màu chroma key và loại bỏ chúng, qua đó xóa màu đã chọn một cách hiệu quả. Các pixel cách màu chroma key xa hơn một chút sẽ được làm mờ dựa trên fade_factor, hòa trộn mượt mà với các màu xung quanh. Quá trình này tạo ra hiệu ứng chroma key mong muốn, khiến hình ảnh giống như phần nền đã được thay thế bằng một hình ảnh hoặc video khác.
 
-The code above represents a simple demonstration of the Chroma Key shader,
-and users can customize it according to their specific requirements.
+Đoạn mã trên là một minh họa đơn giản về shader Chroma Key và người dùng có thể tùy chỉnh theo yêu cầu cụ thể của mình.
 
-UI Controls
-~~~~~~~~~~~
+Điều khiển giao diện
+~~~~~~~~~~~~~~~~~~~~
 
-To allow users to manipulate the chroma key effect in real-time, we created sliders in the `Control` node. The `Control` node's script contains the following functions:
+Để cho phép người dùng điều chỉnh hiệu ứng chroma key theo thời gian thực, chúng ta đã tạo các thanh trượt trong node `Control`. Script của node `Control` chứa các hàm sau:
 
 .. tabs::
  .. code-tab:: gdscript
@@ -339,19 +227,19 @@ To allow users to manipulate the chroma key effect in real-time, we created slid
     extends Control
 
     func _on_color_picker_button_color_changed(color):
-        # Update the "chroma_key_color" shader parameter of the VideoStreamPlayer's material.
+        # Cập nhật tham số shader "chroma_key_color" của material của VideoStreamPlayer.
         $VideoStreamPlayer.material.set("shader_parameter/chroma_key_color", color)
 
     func _on_h_slider_value_changed(value):
-        # Update the "pickup_range" shader parameter of the VideoStreamPlayer's material.
+        # Cập nhật tham số shader "pickup_range" của material của VideoStreamPlayer.
         $VideoStreamPlayer.material.set("shader_parameter/pickup_range", value)
 
     func _on_h_slider_2_value_changed(value):
-        # Update the "fade_amount" shader parameter of the VideoStreamPlayer's material.
+        # Cập nhật tham số shader "fade_amount" của material của VideoStreamPlayer.
         $VideoStreamPlayer.material.set("shader_parameter/fade_amount", value)
 
    func _on_video_stream_player_finished():
-        # Restart the video playback when it's finished.
+        # Khởi động lại video khi video phát xong.
         $VideoStreamPlayer.play()
 
  .. code-tab:: csharp
@@ -369,41 +257,36 @@ To allow users to manipulate the chroma key effect in real-time, we created slid
 
         private void OnColorPickerButtonColorChanged(Color color)
         {
-            // Update the "chroma_key_color" shader parameter of the VideoStreamPlayer's material.
+            // Cập nhật tham số shader "chroma_key_color" của material của VideoStreamPlayer.
             _videoStreamPlayer.Material.Set("shader_parameter/chroma_key_color", color);
         }
 
         private void OnHSliderValueChanged(double value)
         {
-            // Update the "pickup_range" shader parameter of the VideoStreamPlayer's material.
+            // Cập nhật tham số shader "pickup_range" của material của VideoStreamPlayer.
             _videoStreamPlayer.Material.Set("shader_parameter/pickup_range", value);
         }
 
         private void OnHSlider2ValueChanged(double value)
         {
-            // Update the "fade_amount" shader parameter of the VideoStreamPlayer's material.
+            // Cập nhật tham số shader "fade_amount" của material của VideoStreamPlayer.
             _videoStreamPlayer.Material.Set("shader_parameter/fade_amount", value);
         }
 
         private void OnVideoStreamPlayerFinished()
         {
-            // Restart the video playback when it's finished.
+            // Khởi động lại video khi video phát xong.
             _videoStreamPlayer.Play();
         }
     }
 
-also make sure that the range of the sliders are appropriate, our settings are :
+đồng thời hãy đảm bảo rằng phạm vi của các thanh trượt là phù hợp, các thiết lập của chúng ta là:
 
    .. image:: img/slider_range.webp
 
-Signal Handling
-~~~~~~~~~~~~~~~
+Xử lý signal
+~~~~~~~~~~~~
 
-Connect the appropriate signal from the UI elements to the `Control` node's script.
-you created in the `Control` node's script to control the chroma key effect.
-These signal handlers will update the shader's uniform variables
-in response to user input.
+Kết nối signal thích hợp từ các phần tử UI với script của node `Control`. Bạn đã tạo signal này trong script của node `Control` để điều khiển hiệu ứng chroma key. Các signal handler này sẽ cập nhật các biến uniform của shader để phản hồi thao tác nhập của người dùng.
 
-Save and run the scene to see the chroma key effect in action! With the provided UI controls,
-you can now adjust the chroma key color, pickup range, and fade amount in real-time, achieving the desired
-chroma key functionality for your video content.
+Lưu và chạy scene để xem hiệu ứng chroma key hoạt động! Với các điều khiển UI được cung cấp, giờ đây bạn có thể điều chỉnh màu chroma key, phạm vi chọn và mức độ mờ theo thời gian thực, đạt được chức năng chroma key mong muốn cho nội dung video của mình.
