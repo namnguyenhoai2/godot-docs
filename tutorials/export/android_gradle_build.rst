@@ -1,84 +1,62 @@
 .. _doc_android_gradle_build:
 
-Gradle builds for Android
-=========================
+Các bản build Gradle cho Android
+================================
 
-Godot provides the option to build using the `Gradle <https://gradle.org/>`__ build system.
-Instead of using the already pre-built template that ships with Godot, an Android
-Java project gets installed into your project folder. Godot will then build it
-and use it as an export template every time you export the project.
+Godot cung cấp tùy chọn build bằng hệ thống build `Gradle <https://gradle.org/>`__. Thay vì sử dụng template đã được build sẵn đi kèm Godot, một project Android Java sẽ được cài đặt vào thư mục project của bạn. Sau đó, Godot sẽ build project này và sử dụng nó làm export template mỗi khi bạn export project.
 
-There are some reasons why you may want to do this:
+Có một số lý do khiến bạn có thể muốn làm việc này:
 
-- Export an AAB file for Google Play.
-- Modify the project before it's built.
-- Add external SDKs that build with your project.
+- Export tệp AAB cho Google Play.
+- Sửa đổi project trước khi build.
+- Thêm các SDK bên ngoài được build cùng project.
 
-The native portion of the template (the ``.so`` library included in the APK)
-remains precompiled. This means that unlike
-:ref:`compiling a custom Android export template <doc_compiling_for_android>`,
-you don't need to install a C++ toolchain or clone the Godot source code.
+Phần native của template (thư viện ``.so`` được tích hợp trong APK) vẫn được biên dịch trước. Điều này có nghĩa là, không giống như
+:ref:`biên dịch export template Android tùy chỉnh <doc_compiling_for_android>`, bạn không cần cài đặt bộ công cụ C++ hoặc clone mã nguồn Godot.
 
-Configuring the Gradle build is a fairly straightforward process. But first,
-you need to follow the steps in :ref:`exporting for android <doc_exporting_for_android>`
-up to **Setting it up in Godot**. After doing that, follow the steps below.
+Việc cấu hình Gradle build khá đơn giản. Nhưng trước tiên, bạn cần thực hiện các bước trong :ref:`export cho Android <doc_exporting_for_android>` cho đến **Thiết lập trong Godot**. Sau đó, hãy thực hiện các bước bên dưới.
 
-Set up the Gradle build environment
------------------------------------
+Thiết lập môi trường Gradle build
+---------------------------------
 
-Go to the Project menu, and install the *Gradle Build* template:
+Mở menu Project và cài đặt template *Gradle Build*:
 
 .. image:: img/gradle_build_install_template.webp
 
-Make sure export templates are downloaded. If not, this menu will help you
-download them.
+Hãy đảm bảo các export template đã được tải xuống. Nếu chưa, menu này sẽ giúp bạn tải chúng xuống.
 
-A Gradle-based Android project will be created under ``res://android/build``.
-Editing these files is not needed unless you really need to modify the project.
+Một project Android dựa trên Gradle sẽ được tạo trong ``res://android/build``. Bạn không cần chỉnh sửa các tệp này trừ khi thực sự cần sửa đổi project.
 
-Performing Gradle builds from the Android editor
-------------------------------------------------
+Thực hiện Gradle build từ Android editor
+----------------------------------------
 
-Since Godot 4.6, it is possible to perform Gradle builds from the Android editor.
-This requires installing the
-`Godot Android Build Environment (GABE) <https://godotengine.org/download/android/#gabe>`__
-application on the same device the editor is running on.
+Kể từ Godot 4.6, bạn có thể thực hiện Gradle build từ Android editor. Việc này yêu cầu cài đặt ứng dụng `Godot Android Build Environment (GABE) <https://godotengine.org/download/android/#gabe>`__ trên cùng thiết bị đang chạy editor.
 
 .. note::
 
-    This application is *not* required when exporting from the Android editor with
-    pre-built APK templates, or when exporting to other platforms.
+    Ứng dụng này *không* bắt buộc khi export từ Android editor bằng các APK template được build sẵn hoặc khi export sang các nền tảng khác.
 
-This application lets you install everything required to build Android projects with Gradle.
-It is called by the editor to perform Gradle builds when exporting to Android.
+Ứng dụng này cho phép bạn cài đặt mọi thứ cần thiết để build các project Android bằng Gradle. Editor sẽ gọi ứng dụng này để thực hiện Gradle build khi export sang Android.
 
-To set up the build environment, open the app and follow these instructions:
+Để thiết lập môi trường build, hãy mở ứng dụng và làm theo các hướng dẫn sau:
 
-- Ensure you have an active Internet connection.
-- Open the :menu:`Rootfs` tab from the bottom navigation bar.
-- Click :button:`Install Rootfs`.
+- Đảm bảo bạn có kết nối Internet đang hoạt động.
+- Mở tab :menu:`Rootfs` từ thanh điều hướng phía dưới.
+- Nhấp vào :button:`Install Rootfs`.
 
-After the installation completes, you can export projects using Gradle builds
-from the Godot editor.
+Sau khi cài đặt hoàn tất, bạn có thể export các project bằng Gradle build từ Godot editor.
 
-Enabling the Gradle build and exporting
----------------------------------------
+Bật Gradle build và export
+--------------------------
 
-When setting up the Android project in the **Project > Export** dialog,
-**Gradle Build** needs to be enabled:
+Khi thiết lập project Android trong hộp thoại **Project > Export**, cần bật **Gradle Build**:
 
 .. image:: img/gradle_build_enable.webp
 
-From now on, attempting to export the project or one-click deploy will call the
-Gradle build system to generate fresh templates. The templates built will be
-used automatically afterwards, so no further configuration is needed.
+Từ giờ, khi bạn cố gắng export project hoặc deploy bằng một cú nhấp, hệ thống build Gradle sẽ được gọi để tạo các template mới. Các template đã build sẽ tự động được sử dụng sau đó, vì vậy không cần cấu hình thêm.
 
 .. note::
 
-    When using the Gradle Android build system, assets that are placed within a
-    folder whose name begins with an underscore will not be included in the
-    generated APK. This does not apply to assets whose *file* name begins with
-    an underscore.
+    Khi sử dụng hệ thống build Gradle cho Android, các asset được đặt trong một thư mục có tên bắt đầu bằng dấu gạch dưới sẽ không được đưa vào APK được tạo. Điều này không áp dụng cho các asset có tên *file* bắt đầu bằng dấu gạch dưới.
 
-    For example, ``_example/image.png`` will **not** be included as an asset,
-    but ``_image.png`` will.
+    Ví dụ, ``_example/image.png`` sẽ **không** được đưa vào dưới dạng asset, nhưng ``_image.png`` thì có.

@@ -1,23 +1,22 @@
 .. _doc_feature_tags:
 
-Feature tags
-============
+Thẻ tính năng
+=============
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Godot has a special system to tag availability of features.
-Each *feature* is represented as a string, which can refer to many of the following:
+Godot có một hệ thống đặc biệt để gắn thẻ cho tính khả dụng của các tính năng. Mỗi *tính năng* được biểu diễn dưới dạng một chuỗi, có thể đề cập đến nhiều yếu tố sau:
 
-* Platform name.
-* Platform architecture (64-bit or 32-bit, x86 or ARM).
-* Platform type (desktop, mobile, Web).
-* Supported texture compression algorithms on the platform.
-* Whether a build is ``debug`` or ``release`` (``debug`` includes the editor).
-* Whether the project is running from the editor or a "standalone" binary.
-* Many more things.
+* Tên nền tảng.
+* Kiến trúc nền tảng (64-bit hoặc 32-bit, x86 hoặc ARM).
+* Loại nền tảng (desktop, mobile, Web).
+* Các thuật toán nén texture được nền tảng hỗ trợ.
+* Liệu bản build có phải là ``debug`` hay ``release`` hay không (``debug`` bao gồm editor).
+* Liệu project đang chạy từ editor hay một binary "standalone".
+* Nhiều yếu tố khác.
 
-Features can be queried at runtime from the singleton API by calling:
+Có thể truy vấn các tính năng trong runtime từ singleton API bằng cách gọi:
 
 .. tabs::
  .. code-tab:: gdscript
@@ -28,191 +27,166 @@ Features can be queried at runtime from the singleton API by calling:
 
     OS.HasFeature(name);
 
-OS feature tags are used by GDExtension to determine which libraries to load.
-For example, a library for ``linux.debug.editor.x86_64`` will be
-loaded only on a debug editor build for Linux x86_64.
+Các thẻ tính năng của OS được GDExtension sử dụng để xác định những library nào cần tải. Ví dụ: một library dành cho ``linux.debug.editor.x86_64`` sẽ chỉ được tải trong bản build editor debug cho Linux x86_64.
 
-Default features
-----------------
+Các tính năng mặc định
+----------------------
 
-Here is a list of most feature tags in Godot. Keep in mind they are **case-sensitive**:
+Sau đây là danh sách hầu hết các thẻ tính năng trong Godot. Lưu ý rằng chúng **phân biệt chữ hoa chữ thường**:
 
-+----------------------+-----------------------------------------------------------------------------------------+
-| **Feature tag**      | **Description**                                                                         |
-+======================+=========================================================================================+
-| **android**          | Running on Android (but not within a Web browser)                                       |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **bsd**              | Running on \*BSD (but not within a Web browser)                                         |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **linux**            | Running on Linux (but not within a Web browser)                                         |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **macos**            | Running on macOS (but not within a Web browser)                                         |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **ios**              | Running on iOS (but not within a Web browser)                                           |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **visionos**         | Running on visionOS (but not within a Web browser)                                      |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **windows**          | Running on Windows                                                                      |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **linuxbsd**         | Running on Linux or \*BSD                                                               |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **debug**            | Running on a debug build (including the editor)                                         |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **release**          | Running on a release build                                                              |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **editor**           | Running on an editor build                                                              |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **editor_hint**      | Running on an editor build, and inside the editor                                       |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **editor_runtime**   | Running on an editor build, and running the project                                     |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **template**         | Running on a non-editor (export template) build                                         |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **double**           | Running on a double-precision build                                                     |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **single**           | Running on a single-precision build                                                     |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **64**               | Running on a 64-bit build (any architecture)                                            |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **32**               | Running on a 32-bit build (any architecture)                                            |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **x86_64**           | Running on a 64-bit x86 build                                                           |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **x86_32**           | Running on a 32-bit x86 build                                                           |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **x86**              | Running on an x86 build (any bitness)                                                   |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **arm64**            | Running on a 64-bit ARM build                                                           |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **arm32**            | Running on a 32-bit ARM build                                                           |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **arm**              | Running on an ARM build (any bitness)                                                   |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **rv64**             | Running on a 64-bit RISC-V build                                                        |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **riscv**            | Running on a RISC-V build (any bitness)                                                 |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **ppc64**            | Running on a 64-bit PowerPC build                                                       |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **ppc32**            | Running on a 32-bit PowerPC build                                                       |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **ppc**              | Running on a PowerPC build (any bitness)                                                |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **wasm64**           | Running on a 64-bit WebAssembly build (not yet possible)                                |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **wasm32**           | Running on a 32-bit WebAssembly build                                                   |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **wasm**             | Running on a WebAssembly build (any bitness)                                            |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **mobile**           | Host OS is a mobile platform                                                            |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **pc**               | Host OS is a PC platform (desktop/laptop)                                               |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **web**              | Host OS is a Web browser                                                                |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **nothreads**        | Running without threading support                                                       |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **threads**          | Running with threading support                                                          |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **web_android**      | Host OS is a Web browser running on Android                                             |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **web_ios**          | Host OS is a Web browser running on iOS                                                 |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **web_linuxbsd**     | Host OS is a Web browser running on Linux or \*BSD                                      |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **web_macos**        | Host OS is a Web browser running on macOS                                               |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **web_windows**      | Host OS is a Web browser running on Windows                                             |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **etc**              | Textures using ETC1 compression are supported                                           |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **etc2**             | Textures using ETC2 compression are supported                                           |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **s3tc**             | Textures using S3TC (DXT/BC) compression are supported                                  |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **movie**            | :ref:`Movie Maker mode <doc_creating_movies>` is active                                 |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **shader_baker**     | Project was exported with :ref:`shader baking <doc_pipeline_compilations_shader_baker>` |
-|                      | enabled (only applies to the exported project, not when running in the editor)          |
-+----------------------+-----------------------------------------------------------------------------------------+
-| **dedicated_server** | Project was exported as a :ref:`dedicated server <doc_exporting_for_dedicated_servers>` |
-|                      | (only applies to the exported project, not when running in the editor)                  |
-+----------------------+-----------------------------------------------------------------------------------------+
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **Thẻ tính năng**    | **Mô tả**                                                                                                                                                                |
++======================+==========================================================================================================================================================================+
+| **android**          | Đang chạy trên Android (nhưng không chạy trong trình duyệt Web)                                                                                                          |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **bsd**              | Đang chạy trên \*BSD (nhưng không chạy trong trình duyệt Web)                                                                                                            |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **linux**            | Đang chạy trên Linux (nhưng không chạy trong trình duyệt Web)                                                                                                            |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **macos**            | Đang chạy trên macOS (nhưng không chạy trong trình duyệt Web)                                                                                                            |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **ios**              | Đang chạy trên iOS (nhưng không chạy trong trình duyệt Web)                                                                                                              |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **visionos**         | Đang chạy trên visionOS (nhưng không chạy trong trình duyệt Web)                                                                                                         |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **windows**          | Đang chạy trên Windows                                                                                                                                                   |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **linuxbsd**         | Đang chạy trên Linux hoặc \*BSD                                                                                                                                          |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **debug**            | Đang chạy trên bản build debug (bao gồm editor)                                                                                                                          |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **release**          | Đang chạy trên bản build release                                                                                                                                         |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **editor**           | Đang chạy trên bản build editor                                                                                                                                          |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **editor_hint**      | Đang chạy trên bản build editor và bên trong editor                                                                                                                      |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **editor_runtime**   | Đang chạy trên bản build editor và đang chạy project                                                                                                                     |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **template**         | Đang chạy trên bản build không phải editor (export template)                                                                                                             |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **double**           | Đang chạy trên bản build độ chính xác kép                                                                                                                                |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **single**           | Đang chạy trên bản build độ chính xác đơn                                                                                                                                |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **64**               | Đang chạy trên bản build 64-bit (bất kỳ kiến trúc nào)                                                                                                                   |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **32**               | Đang chạy trên bản build 32-bit (bất kỳ kiến trúc nào)                                                                                                                   |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **x86_64**           | Đang chạy trên bản build x86 64-bit                                                                                                                                      |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **x86_32**           | Đang chạy trên bản build x86 32-bit                                                                                                                                      |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **x86**              | Đang chạy trên bản build x86 (bất kỳ số bit nào)                                                                                                                         |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **arm64**            | Đang chạy trên bản build ARM 64-bit                                                                                                                                      |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **arm32**            | Đang chạy trên bản build ARM 32-bit                                                                                                                                      |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **arm**              | Đang chạy trên bản build ARM (bất kỳ độ rộng bit nào)                                                                                                                    |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **rv64**             | Đang chạy trên bản build RISC-V 64-bit                                                                                                                                   |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **riscv**            | Đang chạy trên bản build RISC-V (bất kỳ độ rộng bit nào)                                                                                                                 |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **ppc64**            | Đang chạy trên bản build PowerPC 64-bit                                                                                                                                  |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **ppc32**            | Đang chạy trên bản build PowerPC 32-bit                                                                                                                                  |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **ppc**              | Đang chạy trên bản build PowerPC (bất kỳ độ rộng bit nào)                                                                                                                |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **wasm64**           | Đang chạy trên bản build WebAssembly 64-bit (hiện chưa thể thực hiện)                                                                                                    |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **wasm32**           | Đang chạy trên bản build WebAssembly 32-bit                                                                                                                              |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **wasm**             | Đang chạy trên bản build WebAssembly (bất kỳ độ rộng bit nào)                                                                                                            |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **mobile**           | Hệ điều hành máy chủ là nền tảng di động                                                                                                                                 |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **pc**               | Hệ điều hành máy chủ là nền tảng PC (máy tính để bàn/máy tính xách tay)                                                                                                  |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **web**              | Hệ điều hành máy chủ là trình duyệt Web                                                                                                                                  |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **nothreads**        | Đang chạy mà không có hỗ trợ đa luồng                                                                                                                                    |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **threads**          | Đang chạy với hỗ trợ đa luồng                                                                                                                                            |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **web_android**      | Hệ điều hành máy chủ là trình duyệt Web chạy trên Android                                                                                                                |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **web_ios**          | Hệ điều hành máy chủ là trình duyệt Web chạy trên iOS                                                                                                                    |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **web_linuxbsd**     | Hệ điều hành máy chủ là trình duyệt Web chạy trên Linux hoặc \*BSD                                                                                                       |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **web_macos**        | Hệ điều hành máy chủ là trình duyệt Web chạy trên macOS                                                                                                                  |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **web_windows**      | Hệ điều hành máy chủ là trình duyệt Web chạy trên Windows                                                                                                                |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **etc**              | Các texture sử dụng tính năng nén ETC1 được hỗ trợ                                                                                                                       |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **etc2**             | Các texture sử dụng tính năng nén ETC2 được hỗ trợ                                                                                                                       |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **s3tc**             | Các texture sử dụng tính năng nén S3TC (DXT/BC) được hỗ trợ                                                                                                              |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **movie**            | :ref:`Movie Maker mode <doc_creating_movies>` đang hoạt động                                                                                                             |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **shader_baker**     | Dự án đã được export với :ref:`shader baking <doc_pipeline_compilations_shader_baker>` được bật (chỉ áp dụng cho dự án đã export, không áp dụng khi chạy trong editor)   |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **dedicated_server** | Dự án đã được xuất dưới dạng :ref:`dedicated server <doc_exporting_for_dedicated_servers>` (chỉ áp dụng cho dự án đã xuất, không áp dụng khi chạy trong trình chỉnh sửa) |
++----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. warning::
 
-    With the exception of texture compression, ``web_<platform>`` and
-    ``movie`` feature tags, default feature tags are **immutable**.
-    This means that they will *not* change depending on runtime conditions.
-    For example, ``OS.has_feature("mobile")`` will return ``false``
-    when running a project exported to Web on a mobile device.
+    Ngoại trừ tính năng nén texture, các thẻ tính năng ``web_<platform>`` và ``movie``, các thẻ tính năng mặc định đều **immutable**. Điều này có nghĩa là chúng sẽ *not* thay đổi tùy theo điều kiện runtime. Ví dụ: ``OS.has_feature("mobile")`` sẽ trả về ``false`` khi chạy một dự án đã xuất sang Web trên thiết bị di động.
 
-    To check whether a project exported to Web is running on a mobile device,
-    use ``OS.has_feature("web_android") or OS.has_feature("web_ios")``.
+    Để kiểm tra xem một dự án đã xuất sang Web có đang chạy trên thiết bị di động hay không, hãy sử dụng ``OS.has_feature("web_android") or OS.has_feature("web_ios")``.
 
-Custom features
----------------
+Thẻ tính năng tùy chỉnh
+-----------------------
 
-It is possible to add custom features to a build; use the relevant
-field in the *export preset* used to generate it:
+Bạn có thể thêm các tính năng tùy chỉnh vào bản build; hãy sử dụng trường tương ứng trong *export preset* dùng để tạo bản build đó:
 
 .. image:: img/feature_tags1.webp
 
 .. note::
 
-    Custom feature tags are only used when running the exported project
-    (including with :ref:`doc_one-click_deploy`). They are **not used** when
-    running the project from the editor, even if the export preset marked as
-    **Runnable** for your current platform has custom feature tags defined.
+    Các thẻ tính năng tùy chỉnh chỉ được sử dụng khi chạy dự án đã xuất (bao gồm cả khi dùng :ref:`doc_one-click_deploy`). Chúng **not used** khi chạy dự án từ trình chỉnh sửa, ngay cả khi export preset được đánh dấu là **Runnable** cho nền tảng hiện tại của bạn có các thẻ tính năng tùy chỉnh được định nghĩa.
 
-    Custom feature tags are also not used in :ref:`class_EditorExportPlugin`
-    scripts. Instead, feature tags in :ref:`class_EditorExportPlugin`
-    will reflect the device the editor is currently running on.
+    Các thẻ tính năng tùy chỉnh cũng không được sử dụng trong các script :ref:`class_EditorExportPlugin`. Thay vào đó, các thẻ tính năng trong :ref:`class_EditorExportPlugin` sẽ phản ánh thiết bị mà trình chỉnh sửa hiện đang chạy trên đó.
 
-Overriding project settings
----------------------------
+Ghi đè cài đặt dự án
+--------------------
 
-Features can be used to override specific configuration values in the *Project Settings*.
-This allows you to better customize any configuration when doing a build.
+Các tính năng có thể được dùng để ghi đè những giá trị cấu hình cụ thể trong *Project Settings*. Điều này cho phép bạn tùy chỉnh tốt hơn mọi cấu hình khi thực hiện build.
 
-In the following example, a different icon is added for the demo build of the game (which was
-customized in a special export preset, which, in turn, includes only demo levels).
+Trong ví dụ sau, một biểu tượng khác được thêm vào bản build demo của trò chơi (được tùy chỉnh trong một export preset đặc biệt, đến lượt nó chỉ bao gồm các màn chơi demo).
 
 .. figure:: img/feature_tags2.webp
-    :alt: The Project Settings panel
+    :alt: Bảng Project Settings
 
-    The desired configuration is selected, which effectively copies its properties to the panel above (1). The "demo_build" feature tag is selected (2). The configuration is added to the project settings (3).
+    Cấu hình mong muốn được chọn, thao tác này thực chất sao chép các thuộc tính của cấu hình đó vào bảng phía trên (1). Thẻ tính năng "demo_build" được chọn (2). Cấu hình được thêm vào cài đặt dự án (3).
 
-After overriding, a new field is added for this specific configuration.
+Sau khi ghi đè, một trường mới được thêm vào cho cấu hình cụ thể này.
 
 .. image:: img/feature_tags3.webp
 
 .. note::
 
-    When using the
-    :ref:`project settings "override.cfg" functionality <class_ProjectSettings>`
-    (which is unrelated to feature tags), remember that feature tags still apply.
-    Therefore, make sure to *also* override the setting with the desired feature
-    tag(s) if you want them to override base project settings on all platforms
-    and configurations.
+    Khi sử dụng
+    :ref:`chức năng "override.cfg" của cài đặt dự án <class_ProjectSettings>` (không liên quan đến các thẻ tính năng), hãy nhớ rằng các thẻ tính năng vẫn được áp dụng. Vì vậy, hãy đảm bảo *also* ghi đè cài đặt bằng (các) thẻ tính năng mong muốn nếu bạn muốn chúng ghi đè cài đặt dự án cơ sở trên tất cả nền tảng và cấu hình.
 
-Default overrides
------------------
+Ghi đè mặc định
+---------------
 
-There are already a lot of settings that come with overrides by default; they can be found
-in many sections of the project settings.
+Đã có rất nhiều cài đặt đi kèm với các giá trị ghi đè theo mặc định; bạn có thể tìm thấy chúng trong nhiều mục của cài đặt dự án.
 
 .. image:: img/feature_tags4.webp
 
-Taking feature tags into account when reading project settings
---------------------------------------------------------------
+Tính đến các thẻ tính năng khi đọc cài đặt dự án
+------------------------------------------------
 
-By default, feature tags are **not** taken into account when reading project settings
-using the typical approaches (:ref:`ProjectSettings.get_setting<class_ProjectSettings_method_get_setting>`
-or :ref:`ProjectSettings.get <class_Object_private_method__get>`).
-Instead, you must use :ref:`ProjectSettings.get_setting_with_override <class_ProjectSettings_method_get_setting>`.
+Theo mặc định, các thẻ tính năng **not** được tính đến khi đọc cài đặt dự án bằng các cách tiếp cận thông thường (:ref:`ProjectSettings.get_setting<class_ProjectSettings_method_get_setting>` hoặc :ref:`ProjectSettings.get <class_Object_private_method__get>`). Thay vào đó, bạn phải sử dụng :ref:`ProjectSettings.get_setting_with_override <class_ProjectSettings_method_get_setting>`.
 
-For example, with the following project settings:
+Ví dụ, với các cài đặt dự án sau:
 
 ::
 
@@ -221,13 +195,9 @@ For example, with the following project settings:
     subsection/example = "Release"
     subsection/example.debug = "Debug"
 
-Using ``ProjectSettings.get_setting("section/subsection/example")`` will return
-``"Release"`` regardless of whether a debug build is currently running. On the
-other hand, ``ProjectSettings.get_setting_with_override("section/subsection/example")``
-will obey feature tags and will return ``"Debug"`` if using a debug build.
+Việc sử dụng ``ProjectSettings.get_setting("section/subsection/example")`` sẽ trả về ``"Release"`` bất kể hiện tại có đang chạy bản build debug hay không. Mặt khác, ``ProjectSettings.get_setting_with_override("section/subsection/example")`` sẽ tuân theo các thẻ tính năng và trả về ``"Debug"`` nếu đang sử dụng bản build debug.
 
-Customizing the build
----------------------
+Tùy chỉnh bản build
+-------------------
 
-Feature tags can be used to customize a build process too, by writing a custom **ExportPlugin**.
-They are also used to specify which shared library is loaded and exported in **GDExtension**.
+Các thẻ tính năng cũng có thể được dùng để tùy chỉnh quy trình build bằng cách viết một **ExportPlugin** tùy chỉnh. Chúng cũng được dùng để chỉ định thư viện dùng chung nào được tải và xuất trong **GDExtension**.

@@ -2,13 +2,12 @@
 
 .. _doc_export_index:
 
-Export
-======
+Xuất
+====
 
 .. seealso::
 
-   This section is about exporting a build of your project. If you're trying
-   to export properties from a script, see :ref:`doc_gdscript_exports` or
+   Phần này hướng dẫn cách xuất bản build của dự án. Nếu bạn đang cố xuất các thuộc tính từ một script, hãy xem :ref:`doc_gdscript_exports` hoặc
    :ref:`doc_c_sharp_exports`.
 
 .. toctree::

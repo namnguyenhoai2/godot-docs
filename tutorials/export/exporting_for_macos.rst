@@ -1,152 +1,138 @@
 .. _doc_exporting_for_macos:
 
-Exporting for macOS
-===================
+Xuất cho macOS
+==============
 
 .. seealso::
 
-    This page describes how to export a Godot project to macOS.
-    If you're looking to compile editor or export template binaries from source instead,
-    read :ref:`doc_compiling_for_macos`.
+    Trang này mô tả cách xuất một dự án Godot sang macOS. Nếu bạn muốn biên dịch editor hoặc các binary export template từ mã nguồn thay vào đó, hãy đọc :ref:`doc_compiling_for_macos`.
 
-macOS apps exported with the official export templates are exported as a single "Universal 2" binary ``.app`` bundle, a folder with a specific structure which stores the executable, libraries and all the project files.
-This bundle can be exported as is, packed in a ZIP archive, or packed in a DMG disk image (only supported when exporting from macOS).
-`Universal binaries for macOS support both Intel x86_64 and ARM64 (Apple Silicon) architectures <https://developer.apple.com/documentation/apple-silicon/building-a-universal-macos-binary>`__.
+Các ứng dụng macOS được xuất bằng export template chính thức sẽ được xuất dưới dạng một bundle binary "Universal 2" duy nhất ``.app``, một thư mục có cấu trúc cụ thể dùng để lưu executable, libraries và toàn bộ tệp dự án. Bundle này có thể được xuất nguyên trạng, đóng gói trong một kho lưu trữ ZIP hoặc đóng gói trong ảnh đĩa DMG (chỉ được hỗ trợ khi xuất từ macOS). `Universal binary cho macOS hỗ trợ cả hai kiến trúc Intel x86_64 và ARM64 (Apple Silicon) <https://developer.apple.com/documentation/apple-silicon/building-a-universal-macos-binary>`__.
 
 .. warning::
-    Due to file system limitations, ``.app`` bundles exported from Windows lack the
-    ``executable`` flag and won't run on macOS. Projects exported as ``.zip`` are not
-    affected by this issue. To run ``.app`` bundles exported from Windows on macOS,
-    transfer the ``.app`` to a device running macOS or Linux and use the
-    ``chmod +x {executable_name}`` terminal command to add the ``executable`` permission.
-    The main executable located in the ``Contents/MacOS/`` subfolder, as well
-    as optional helper executables in the ``Contents/Helpers/`` subfolder, should have
-    the ``executable`` permission for the ``.app`` bundle to be valid.
+    Do các hạn chế của hệ thống tệp, các bundle ``.app`` được xuất từ Windows không có cờ ``executable`` và sẽ không chạy trên macOS. Các dự án được xuất dưới dạng ``.zip`` không bị ảnh hưởng bởi vấn đề này. Để chạy các bundle ``.app`` được xuất từ Windows trên macOS, hãy chuyển ``.app`` sang một thiết bị chạy macOS hoặc Linux và dùng lệnh terminal ``chmod +x {executable_name}`` để thêm quyền ``executable``. Executable chính nằm trong thư mục con ``Contents/MacOS/``, cũng như các executable trợ giúp tùy chọn trong thư mục con ``Contents/Helpers/``, phải có quyền ``executable`` để bundle ``.app`` hợp lệ.
 
-Requirements
-------------
+Yêu cầu
+-------
 
--  Download the Godot export templates. Use the Godot menu: ``Editor > Manage Export Templates``.
--  A valid and unique ``Bundle identifier`` should be set in the ``Application`` section of the export options.
+-  Tải các export template của Godot. Sử dụng menu Godot: ``Editor > Manage Export Templates``.
+-  Phải đặt một ``Bundle identifier`` hợp lệ và duy nhất trong phần ``Application`` của các tùy chọn export.
 
 .. note::
 
-    A valid bundle ID can only contain alphanumeric characters, hyphens, and periods (``A-Z``, ``a-z``, ``0-9``, ``-``, and ``.``).
-    Apple recommends using reverse-DNS format (e.g. ``com.example.your-game``) of a domain you own, so that your bundle ID is guaranteed to be unique.
-    Bundle IDs are case-insensitive. See `CFBundleIdentifier <https://developer.apple.com/documentation/bundleresources/information-property-list/cfbundleidentifier>`__.
+    Một bundle ID hợp lệ chỉ có thể chứa các ký tự chữ và số, dấu gạch nối và dấu chấm (``A-Z``, ``a-z``, ``0-9``, ``-`` và ``.``). Apple khuyến nghị sử dụng định dạng reverse-DNS (ví dụ: ``com.example.your-game``) của một domain do bạn sở hữu, để đảm bảo bundle ID của bạn là duy nhất. Bundle ID không phân biệt chữ hoa chữ thường. Xem `CFBundleIdentifier <https://developer.apple.com/documentation/bundleresources/information-property-list/cfbundleidentifier>`__.
 
 .. warning::
 
-    Projects exported without code signing and notarization will be blocked by Gatekeeper if they are downloaded from unknown sources, see the :ref:`Running Godot apps on macOS <doc_running_on_macos>` page for more information.
+    Các dự án được xuất mà không có code signing và notarization sẽ bị Gatekeeper chặn nếu được tải xuống từ các nguồn không xác định; xem trang :ref:`Running Godot apps on macOS <doc_running_on_macos>` để biết thêm thông tin.
 
-Code signing and notarization
------------------------------
+Code signing và notarization
+----------------------------
 
-By default, macOS will run only applications that are signed and notarized. If you use any other signing configuration, see :ref:`Running Godot apps on macOS <doc_running_on_macos>` for workarounds.
+Theo mặc định, macOS chỉ chạy các ứng dụng đã được ký và notarized. Nếu bạn sử dụng cấu hình signing khác, hãy xem :ref:`Running Godot apps on macOS <doc_running_on_macos>` để biết các cách khắc phục.
 
-To notarize an app, you **must** have a valid `Apple Developer ID Certificate <https://developer.apple.com/>`__.
+Để notarize một ứng dụng, bạn **phải** có một `Apple Developer ID Certificate <https://developer.apple.com/>`__ hợp lệ.
 
-If you have an Apple Developer ID Certificate and exporting from macOS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Nếu bạn có Apple Developer ID Certificate và xuất từ macOS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Install `Xcode <https://developer.apple.com/xcode/>`__ command line tools and open Xcode at least once or run the ``sudo xcodebuild -license accept`` command to accept license agreement.
+Cài đặt công cụ dòng lệnh `Xcode <https://developer.apple.com/xcode/>`__ và mở Xcode ít nhất một lần hoặc chạy lệnh ``sudo xcodebuild -license accept`` để chấp nhận thỏa thuận cấp phép.
 
-To sign exported app
-^^^^^^^^^^^^^^^^^^^^
+Để ký ứng dụng đã xuất
+^^^^^^^^^^^^^^^^^^^^^^
 
-- Select ``Xcode codesign`` in the ``Code Signing > Codesign`` option.
-- Set valid Apple ID certificate identity (certificate "Common Name") in the ``Code Signing > Identity`` section.
+- Chọn ``Xcode codesign`` trong tùy chọn ``Code Signing > Codesign``.
+- Đặt danh tính certificate Apple ID hợp lệ ("Common Name" của certificate) trong phần ``Code Signing > Identity``.
 
-To notarize exported app
-^^^^^^^^^^^^^^^^^^^^^^^^
+Để notarize ứng dụng đã xuất
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- Select ``Xcode notarytool`` in the ``Notarization > Notarization`` option.
-- Disable the ``Debugging`` entitlement.
-- Set valid Apple ID login / app. specific password or `App Store Connect <https://developer.apple.com/documentation/appstoreconnectapi>`__ API UUID / Key in the ``Notarization`` section.
+- Chọn ``Xcode notarytool`` trong tùy chọn ``Notarization > Notarization``.
+- Tắt entitlement ``Debugging``.
+- Đặt thông tin đăng nhập Apple ID / mật khẩu dành riêng cho ứng dụng hợp lệ hoặc UUID / Key API của `App Store Connect <https://developer.apple.com/documentation/appstoreconnectapi>`__ trong phần ``Notarization``.
 
-You can use the ``xcrun notarytool history`` command to check notarization status and use the ``xcrun notarytool log {ID}`` command to download the notarization log.
+Bạn có thể sử dụng lệnh ``xcrun notarytool history`` để kiểm tra trạng thái notarization và lệnh ``xcrun notarytool log {ID}`` để tải nhật ký notarization xuống.
 
-If you encounter notarization issues, see `Resolving common notarization issues <https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution/resolving_common_notarization_issues>`__ for more info.
+Nếu gặp vấn đề về notarization, hãy xem `Resolving common notarization issues <https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution/resolving_common_notarization_issues>`__ để biết thêm thông tin.
 
-After notarization is completed, `staple the ticket <https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution/customizing_the_notarization_workflow>`__ to the exported project.
+Sau khi hoàn tất notarization, `gắn ticket <https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution/customizing_the_notarization_workflow>`__ vào dự án đã xuất.
 
-If you have an Apple Developer ID Certificate and exporting from Linux or Windows
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Nếu bạn có Apple Developer ID Certificate và xuất từ Linux hoặc Windows
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Install `rcodesign <https://github.com/indygreg/apple-platform-rs/tree/main/apple-codesign>`__, and configure the path to ``rcodesign`` in the ``Editor Settings > Export > macOS > rcodesign`` option.
+Cài đặt `rcodesign <https://github.com/indygreg/apple-platform-rs/tree/main/apple-codesign>`__ và cấu hình đường dẫn đến ``rcodesign`` trong tùy chọn ``Editor Settings > Export > macOS > rcodesign``.
 
-To sign exported app
-^^^^^^^^^^^^^^^^^^^^
+Để ký ứng dụng đã xuất
+^^^^^^^^^^^^^^^^^^^^^^
 
-- Select ``rcodesign`` in the ``Code Signing > Codesign`` option.
-- Set valid Apple ID PKCS #12 certificate file and password in the ``Code Signing`` section.
+- Chọn ``rcodesign`` trong tùy chọn ``Code Signing > Codesign``.
+- Đặt tệp certificate PKCS #12 và mật khẩu Apple ID hợp lệ trong phần ``Code Signing``.
 
-To notarize exported app
-^^^^^^^^^^^^^^^^^^^^^^^^
+Để notarize ứng dụng đã xuất
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- Select ``rcodesign`` in the ``Notarization > Notarization`` option.
-- Disable the ``Debugging`` entitlement.
-- Set valid `App Store Connect <https://developer.apple.com/documentation/appstoreconnectapi>`__ API UUID / Key in the ``Notarization`` section.
+- Chọn ``rcodesign`` trong tùy chọn ``Notarization > Notarization``.
+- Tắt entitlement ``Debugging``.
+- Đặt UUID / Key API `App Store Connect <https://developer.apple.com/documentation/appstoreconnectapi>`__ hợp lệ trong phần ``Notarization``.
 
-You can use the ``rcodesign notary-log`` command to check notarization status.
+Bạn có thể sử dụng lệnh ``rcodesign notary-log`` để kiểm tra trạng thái notarization.
 
-After notarization is completed, use the ``rcodesign staple`` command to staple the ticket to the exported project.
+Sau khi hoàn tất notarization, sử dụng lệnh ``rcodesign staple`` để gắn ticket vào dự án đã xuất.
 
-If you do not have an Apple Developer ID Certificate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Nếu bạn không có Apple Developer ID Certificate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Select ``Built-in (ad-hoc only)`` in the ``Code Signing > Codesign`` option.
-- Select ``Disabled`` in the ``Notarization > Notarization`` option.
+- Chọn ``Built-in (ad-hoc only)`` trong tùy chọn ``Code Signing > Codesign``.
+- Chọn ``Disabled`` trong tùy chọn ``Notarization > Notarization``.
 
-In this case Godot will use an ad-hoc signature, which will make running an exported app easier for the end users,
-see the :ref:`Running Godot apps on macOS <doc_running_on_macos>` page for more information.
+Trong trường hợp này, Godot sẽ sử dụng chữ ký ad-hoc, giúp người dùng cuối dễ chạy ứng dụng đã xuất hơn; xem trang :ref:`Running Godot apps on macOS <doc_running_on_macos>` để biết thêm thông tin.
 
-Signing Options
-~~~~~~~~~~~~~~~
+Tùy chọn signing
+~~~~~~~~~~~~~~~~
 
-+------------------------------+---------------------------------------------------------------------------------------------------+
-| Option                       | Description                                                                                       |
-+==============================+===================================================================================================+
-| Codesign                     | Tool to use for code signing.                                                                     |
-+------------------------------+---------------------------------------------------------------------------------------------------+
-| Identity                     | The "Full Name" or "Common Name" of the signing identity, store in the macOS keychain. [1]_       |
-+------------------------------+---------------------------------------------------------------------------------------------------+
-| Certificate File             | The PKCS #12 certificate file. [2]_                                                               |
-+------------------------------+---------------------------------------------------------------------------------------------------+
-| Certificate Password         | Password for the certificate file. [2]_                                                           |
-+------------------------------+---------------------------------------------------------------------------------------------------+
-| Custom Options               | Array of command line arguments passed to the code signing tool.                                  |
-+------------------------------+---------------------------------------------------------------------------------------------------+
++----------------------+-----------------------------------------------------------------------------------------+
+| Tùy chọn             | Mô tả                                                                                   |
++======================+=========================================================================================+
+| Codesign             | Công cụ được sử dụng cho code signing.                                                  |
++----------------------+-----------------------------------------------------------------------------------------+
+| Identity             | "Full Name" hoặc "Common Name" của signing identity được lưu trong macOS keychain. [1]_ |
++----------------------+-----------------------------------------------------------------------------------------+
+| Tệp certificate      | Tệp certificate PKCS #12. [2]_                                                          |
++----------------------+-----------------------------------------------------------------------------------------+
+| Mật khẩu certificate | Mật khẩu cho tệp chứng chỉ. [2]_                                                        |
++----------------------+-----------------------------------------------------------------------------------------+
+| Custom Options       | Mảng các đối số dòng lệnh được truyền cho công cụ ký mã.                                |
++----------------------+-----------------------------------------------------------------------------------------+
 
-.. [1] This option is visible only when signing with Xcode codesign.
-.. [2] These options are visible only when signing with rcodesign.
+.. [1] Tùy chọn này chỉ hiển thị khi ký bằng Xcode codesign.
+.. [2] Các tùy chọn này chỉ hiển thị khi ký bằng rcodesign.
 
-Notarization Options
-~~~~~~~~~~~~~~~~~~~~
+Tùy chọn notarization
+~~~~~~~~~~~~~~~~~~~~~
 
-+--------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Option             | Description                                                                                                                                                                       |
-+====================+===================================================================================================================================================================================+
-| Notarization       | Tool to use for notarization.                                                                                                                                                     |
-+--------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Apple ID Name      | Apple ID account name (email address). [3]_                                                                                                                                       |
-+--------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Apple ID Password  | Apple ID app-specific password. See `Using app-specific passwords <https://support.apple.com/en-us/HT204397>`__ to enable two-factor authentication and create app password. [3]_ |
-+--------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Apple Team ID      | Team ID ("Organization Unit"), if your Apple ID belongs to multiple teams (optional). [3]_                                                                                        |
-+--------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| API UUID           | Apple `App Store Connect <https://developer.apple.com/documentation/appstoreconnectapi>`__ API issuer UUID.                                                                       |
-+--------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| API Key            | Apple `App Store Connect <https://developer.apple.com/documentation/appstoreconnectapi>`__ API key.                                                                               |
-+--------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Option            | Description                                                                                                                                                                              |
++===================+==========================================================================================================================================================================================+
+| Notarization      | Công cụ dùng cho notarization.                                                                                                                                                           |
++-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Apple ID Name     | Tên tài khoản Apple ID (địa chỉ email). [3]_                                                                                                                                             |
++-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Apple ID Password | Mật khẩu dành riêng cho ứng dụng của Apple ID. Xem `Using app-specific passwords <https://support.apple.com/en-us/HT204397>`__ để bật xác thực hai yếu tố và tạo mật khẩu ứng dụng. [3]_ |
++-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Apple Team ID     | Team ID ("Organization Unit"), nếu Apple ID của bạn thuộc nhiều team (tùy chọn). [3]_                                                                                                    |
++-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| API UUID          | UUID của nhà phát hành API `App Store Connect <https://developer.apple.com/documentation/appstoreconnectapi>`__ của Apple.                                                               |
++-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| API Key           | API key `App Store Connect <https://developer.apple.com/documentation/appstoreconnectapi>`__ của Apple.                                                                                  |
++-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. note::
 
-    You should set either Apple ID Name/Password or App Store Connect API UUID/Key.
+    Bạn nên đặt Apple ID Name/Password hoặc App Store Connect API UUID/Key.
 
-.. [3] These options are visible only when notarizing with Xcode notarytool.
+.. [3] Các tùy chọn này chỉ hiển thị khi thực hiện notarization bằng Xcode notarytool.
 
-See `Notarizing macOS Software Before Distribution <https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution?language=objc>`__ for more info.
+Xem `Notarizing macOS Software Before Distribution <https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution?language=objc>`__ để biết thêm thông tin.
 
 Entitlements
 ------------
@@ -154,92 +140,87 @@ Entitlements
 Hardened Runtime Entitlements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Hardened Runtime entitlements manage security options and resource access policy.
-See `Hardened Runtime <https://developer.apple.com/documentation/security/hardened_runtime?language=objc>`__ for more info.
+Hardened Runtime entitlements quản lý các tùy chọn bảo mật và chính sách truy cập tài nguyên. Xem `Hardened Runtime <https://developer.apple.com/documentation/security/hardened_runtime?language=objc>`__ để biết thêm thông tin.
 
-+---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Entitlement                           | Description                                                                                                                                                                                      |
-+=======================================+==================================================================================================================================================================================================+
-| Allow JIT Code Execution [4]_         | Allows creating writable and executable memory for JIT code. If you are using add-ons with dynamic or self-modifying native code, enable them according to the add-on documentation.             |
-+---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Allow Unsigned Executable Memory [4]_ | Allows creating writable and executable memory without JIT restrictions. If you are using add-ons with dynamic or self-modifying native code, enable them according to the add-on documentation. |
-+---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Allow DYLD Environment Variables [4]_ | Allows app to use dynamic linker environment variables to inject code. If you are using add-ons with dynamic or self-modifying native code, enable them according to the add-on documentation.   |
-+---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Disable Library Validation            | Allows app to load arbitrary libraries and frameworks. Enable it if you are using GDExtension add-ons or ad-hoc signing, or want to support user-provided external add-ons.                      |
-+---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Audio Input                           | Enable if you need to use the microphone or other audio input sources, if it's enabled you should also provide usage message in the `privacy/microphone_usage_description` option.               |
-+---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Camera                                | Enable if you need to use the camera, if it's enabled you should also provide usage message in the `privacy/camera_usage_description` option.                                                    |
-+---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Location                              | Enable if you need to use location information from Location Services, if it's enabled you should also provide usage message in the `privacy/location_usage_description` option.                 |
-+---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Address Book                          | [5]_ Enable to allow access contacts in the user's address book, if it's enabled you should also provide usage message in the `privacy/address_book_usage_description` option.                   |
-+---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Calendars                             | [5]_ Enable to allow access to the user's calendar, if it's enabled you should also provide usage message in the `privacy/calendar_usage_description` option.                                    |
-+---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Photo Library                         | [5]_ Enable to allow access to the user's Photos library, if it's enabled you should also provide usage message in the `privacy/photos_library_usage_description` option.                        |
-+---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Apple Events                          | [5]_ Enable to allow app to send Apple events to other apps.                                                                                                                                     |
-+---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Debugging                             | [6]_ You can temporarily enable this entitlement to use native debugger (GDB, LLDB) with the exported app. This entitlement should be disabled for production export.                            |
-+---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Entitlement                           | Description                                                                                                                                                                                           |
++=======================================+=======================================================================================================================================================================================================+
+| Allow JIT Code Execution [4]_         | Cho phép tạo bộ nhớ có thể ghi và thực thi cho mã JIT. Nếu bạn sử dụng các add-on có mã native động hoặc tự sửa đổi, hãy bật chúng theo tài liệu của add-on.                                          |
++---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Allow Unsigned Executable Memory [4]_ | Cho phép tạo bộ nhớ có thể ghi và thực thi mà không bị giới hạn JIT. Nếu bạn sử dụng các add-on có mã native động hoặc tự sửa đổi, hãy bật chúng theo tài liệu của add-on.                            |
++---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Allow DYLD Environment Variables [4]_ | Cho phép ứng dụng sử dụng các biến môi trường của dynamic linker để chèn mã. Nếu bạn sử dụng các add-on có mã native động hoặc tự sửa đổi, hãy bật chúng theo tài liệu của add-on.                    |
++---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Disable Library Validation            | Cho phép ứng dụng tải các thư viện và framework tùy ý. Hãy bật tùy chọn này nếu bạn sử dụng các add-on GDExtension hoặc ad-hoc signing, hoặc muốn hỗ trợ các add-on bên ngoài do người dùng cung cấp. |
++---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Audio Input                           | Bật nếu bạn cần sử dụng microphone hoặc các nguồn đầu vào âm thanh khác; nếu được bật, bạn cũng nên cung cấp thông báo sử dụng trong tùy chọn `privacy/microphone_usage_description`.                 |
++---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Camera                                | Bật nếu bạn cần sử dụng camera; nếu được bật, bạn cũng nên cung cấp thông báo sử dụng trong tùy chọn `privacy/camera_usage_description`.                                                              |
++---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Location                              | Bật nếu bạn cần sử dụng thông tin vị trí từ Location Services; nếu được bật, bạn cũng nên cung cấp thông báo sử dụng trong tùy chọn `privacy/location_usage_description`.                             |
++---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Address Book                          | [5]_ Bật để cho phép truy cập danh bạ trong address book của người dùng; nếu được bật, bạn cũng nên cung cấp thông báo sử dụng trong tùy chọn `privacy/address_book_usage_description`.               |
++---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Calendars                             | [5]_ Bật để cho phép truy cập lịch của người dùng; nếu được bật, bạn cũng nên cung cấp thông báo sử dụng trong tùy chọn `privacy/calendar_usage_description`.                                         |
++---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Photo Library                         | [5]_ Bật để cho phép truy cập thư viện Photos của người dùng; nếu được bật, bạn cũng nên cung cấp thông báo sử dụng trong tùy chọn `privacy/photos_library_usage_description`.                        |
++---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Apple Events                          | [5]_ Bật để cho phép ứng dụng gửi Apple events đến các ứng dụng khác.                                                                                                                                 |
++---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Debugging                             | [6]_ Bạn có thể tạm thời bật entitlement này để sử dụng native debugger (GDB, LLDB) với ứng dụng đã export. Entitlement này nên được tắt khi export cho môi trường production.                        |
++---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-.. [4] The ``Allow JIT Code Execution``, ``Allow Unsigned Executable Memory`` and ``Allow DYLD Environment Variables`` entitlements are always enabled for the Godot Mono exports, and are not visible in the export options.
-.. [5] These features aren't supported by Godot out of the box, enable them only if you are using add-ons which require them.
-.. [6] To notarize an app, you must disable the ``Debugging`` entitlement.
+.. [4] Các entitlement ``Allow JIT Code Execution``, ``Allow Unsigned Executable Memory`` và ``Allow DYLD Environment Variables`` luôn được bật cho các bản export Godot Mono và không hiển thị trong các tùy chọn export.
+.. [5] Godot không hỗ trợ sẵn các tính năng này; chỉ bật chúng nếu bạn đang sử dụng các add-on yêu cầu chúng.
+.. [6] Để notarize một ứng dụng, bạn phải tắt entitlement ``Debugging``.
 
 App Sandbox Entitlement
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-The App Sandbox restricts access to user data, networking and devices.
-Sandboxed apps can't access most of the file system, can't use custom file dialogs and execute binaries (using ``OS.execute`` and ``OS.create_process``) outside the ``.app`` bundle.
-See `App Sandbox <https://developer.apple.com/documentation/security/app_sandbox?language=objc>`__ for more info.
+App Sandbox hạn chế quyền truy cập vào dữ liệu người dùng, mạng và thiết bị. Các ứng dụng trong sandbox không thể truy cập hầu hết hệ thống tệp, không thể sử dụng hộp thoại tệp tùy chỉnh và thực thi binary (bằng ``OS.execute`` và ``OS.create_process``) bên ngoài bundle ``.app``. Xem `App Sandbox <https://developer.apple.com/documentation/security/app_sandbox?language=objc>`__ để biết thêm thông tin.
 
 .. note::
 
-    To distribute an app through the App Store, you must enable the App Sandbox.
+    Để phân phối ứng dụng thông qua App Store, bạn phải bật App Sandbox.
 
-+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Entitlement                       | Description                                                                                                                          |
-+===================================+======================================================================================================================================+
-| Enabled                           | Enables App Sandbox.                                                                                                                 |
-+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Network Server                    | Enable to allow app to listen for incoming network connections.                                                                      |
-+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Network Client                    | Enable to allow app to establish outgoing network connections.                                                                       |
-+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Device USB                        | Enable to allow app to interact with USB devices. This entitlement is required to use wired controllers.                             |
-+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Device Bluetooth                  | Enable to allow app to interact with Bluetooth devices. This entitlement is required to use wireless controllers.                    |
-+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Files Downloads [7]_              | Allows read or write access to the user's "Downloads" folder.                                                                        |
-+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Files Pictures [7]_               | Allows read or write access to the user's "Pictures" folder.                                                                         |
-+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Files Music [7]_                  | Allows read or write access to the user's "Music" folder.                                                                            |
-+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Files Movies [7]_                 | Allows read or write access to the user's "Movies" folder.                                                                           |
-+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Files User Selected [7]_          | Allows read or write access to arbitrary folder. To gain access, a folder must be selected from the native file dialog by the user.  |
-+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Helper Executable                 | List of helper executables to embedded to the app bundle. Sandboxed app are limited to execute only these executable.                |
-+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------+
+| Entitlement              | Description                                                                                                                   |
++==========================+===============================================================================================================================+
+| Enabled                  | Bật App Sandbox.                                                                                                              |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------+
+| Network Server           | Bật để cho phép ứng dụng lắng nghe các kết nối mạng đến.                                                                      |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------+
+| Network Client           | Bật để cho phép ứng dụng thiết lập các kết nối mạng đi.                                                                       |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------+
+| Device USB               | Bật để cho phép ứng dụng tương tác với các thiết bị USB. Entitlement này là bắt buộc để sử dụng tay cầm có dây.               |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------+
+| Device Bluetooth         | Bật để cho phép ứng dụng tương tác với các thiết bị Bluetooth. Entitlement này là bắt buộc để sử dụng tay cầm không dây.      |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------+
+| Files Downloads [7]_     | Cho phép quyền đọc hoặc ghi vào thư mục "Downloads" của người dùng.                                                           |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------+
+| Files Pictures [7]_      | Cho phép quyền đọc hoặc ghi vào thư mục "Pictures" của người dùng.                                                            |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------+
+| Files Music [7]_         | Cho phép quyền đọc hoặc ghi vào thư mục "Music" của người dùng.                                                               |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------+
+| Files Movies [7]_        | Cho phép quyền đọc hoặc ghi vào thư mục "Movies" của người dùng.                                                              |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------+
+| Files User Selected [7]_ | Cho phép quyền đọc hoặc ghi vào một thư mục bất kỳ. Để cấp quyền truy cập, người dùng phải chọn thư mục từ hộp thoại tệp gốc. |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------+
+| Helper Executable        | Danh sách các helper executable được nhúng vào app bundle. Ứng dụng trong sandbox chỉ được phép thực thi các executable này.  |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------+
 
-.. [7] You can optionally provide usage messages for various folders in the `privacy/*_folder_usage_description` options.
+.. [7] Bạn có thể tùy chọn cung cấp thông báo sử dụng cho nhiều thư mục khác nhau trong các tùy chọn `privacy/*_folder_usage_description`.
 
 .. note::
 
-    You can override default entitlements by selecting custom entitlements file, in this case all other entitlement are ignored.
+    Bạn có thể ghi đè các entitlement mặc định bằng cách chọn tệp entitlement tùy chỉnh; trong trường hợp này, mọi entitlement khác sẽ bị bỏ qua.
 
 Environment variables
 ---------------------
 
-You can use the following environment variables to set export options outside of
-the editor. During the export process, these override the values that you set in
-the export menu.
+Bạn có thể sử dụng các environment variable sau để thiết lập tùy chọn export bên ngoài editor. Trong quá trình export, các biến này sẽ ghi đè những giá trị bạn đã đặt trong menu export.
 
-.. list-table:: macOS export environment variables
+.. list-table:: Environment variable cho bản export macOS
    :header-rows: 1
 
    * - Export option
@@ -266,5 +247,5 @@ the export menu.
 Export options
 --------------
 
-You can find a full list of export options available in the
+Bạn có thể tìm thấy danh sách đầy đủ các tùy chọn export có trong
 :ref:`class_EditorExportPlatformMacOS` class reference.

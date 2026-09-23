@@ -1,500 +1,327 @@
 .. _doc_exporting_for_web:
 
-Exporting for the Web
-=====================
+Xuất bản cho Web
+================
 
 .. seealso::
 
-    This page describes how to export a Godot project to HTML5.
-    If you're looking to compile editor or export template binaries from source instead,
-    read :ref:`doc_compiling_for_web`.
+    Trang này mô tả cách xuất một dự án Godot sang HTML5. Nếu bạn muốn biên dịch editor hoặc các binary export template từ mã nguồn thay vào đó, hãy đọc :ref:`doc_compiling_for_web`.
 
-HTML5 export allows publishing games made in Godot Engine to the browser.
-This requires support for `WebAssembly
-<https://webassembly.org/>`__ and `WebGL 2.0 <https://www.khronos.org/webgl/>`__
-in the user's browser.
+Tính năng xuất HTML5 cho phép đưa các game được tạo bằng Godot Engine lên trình duyệt. Điều này yêu cầu trình duyệt của người dùng hỗ trợ `WebAssembly <https://webassembly.org/>`__ và `WebGL 2.0 <https://www.khronos.org/webgl/>`__.
 
 .. attention::
 
-    Projects written in C# using Godot 4 currently cannot be exported to the
-    web. See `this blog post <https://godotengine.org/article/platform-state-in-csharp-for-godot-4-2/#web>`__
-    for more information.
+    Các dự án viết bằng C# sử dụng Godot 4 hiện chưa thể xuất lên web. Xem `bài blog này <https://godotengine.org/article/platform-state-in-csharp-for-godot-4-2/#web>`__ để biết thêm thông tin.
 
-    To use C# on web platforms, use Godot 3 instead.
+    Để sử dụng C# trên các nền tảng web, hãy dùng Godot 3.
 
 .. tip::
 
-    Use the browser-integrated developer console, usually opened
-    with :kbd:`F12` or :kbd:`Ctrl + Shift + I` (:kbd:`Cmd + Option + I` on macOS), to view
-    **debug information** like JavaScript, engine, and WebGL errors.
+    Hãy sử dụng console dành cho nhà phát triển được tích hợp trong trình duyệt, thường mở bằng :kbd:`F12` hoặc :kbd:`Ctrl + Shift + I` (:kbd:`Cmd + Option + I` trên macOS), để xem **thông tin debug** như các lỗi JavaScript, engine và WebGL.
 
-    If the shortcut doesn't work, it's because Godot actually captures the input.
-    You can still open the developer console by accessing the browser's menu.
+    Nếu phím tắt không hoạt động, đó là vì Godot thực sự đang bắt thao tác nhập. Bạn vẫn có thể mở console dành cho nhà phát triển bằng cách truy cập menu của trình duyệt.
 
 .. note::
 
-    Due to security concerns with ``SharedArrayBuffer`` due to various exploits,
-    the use of multiple threads for the Web platform has multiple drawbacks,
-    including requiring specific server-side headers and complete cross-origin isolation
-    (meaning no ads, nor third-party integrations on the website hosting your game).
+    Do các vấn đề bảo mật với ``SharedArrayBuffer`` do nhiều lỗ hổng khác nhau, việc sử dụng nhiều thread cho nền tảng Web có một số nhược điểm, bao gồm yêu cầu các header cụ thể ở phía server và cách ly hoàn toàn giữa các origin (nghĩa là không có quảng cáo hoặc tích hợp bên thứ ba nào trên website lưu trữ game của bạn).
 
-    Since Godot 4.3, Godot supports exporting your game on a single thread, which
-    solves this issue. While it has some drawbacks on its own (it cannot use threads, and is
-    not as performant as the multi-threaded export), it doesn't require as much overhead to install.
-    It is also more compatible overall with stores like `itch.io <https://itch.io/>`__ or Web publishers like
-    `Poki <https://poki.com/>`__ or `CrazyGames <https://crazygames.com/>`__. The single-threaded export
-    works very well on macOS and iOS too, where it always had compatibility issues with multiple threads
-    exports.
+    Kể từ Godot 4.3, Godot hỗ trợ xuất game trên một thread duy nhất, giúp giải quyết vấn đề này. Mặc dù bản thân cách này có một số nhược điểm (không thể sử dụng thread và không có hiệu năng tốt bằng bản xuất đa thread), nó không yêu cầu nhiều overhead để cài đặt. Cách này cũng tương thích tổng thể tốt hơn với các store như `itch.io <https://itch.io/>`__ hoặc các nhà phát hành Web như `Poki <https://poki.com/>`__ hay `CrazyGames <https://crazygames.com/>`__. Bản xuất một thread hoạt động rất tốt trên macOS và iOS, nơi bản xuất đa thread vốn luôn gặp vấn đề về khả năng tương thích.
 
-    For these reasons, it is the preferred and now default way to export your games on the Web.
+    Vì những lý do này, đây là cách được ưu tiên và hiện là cách mặc định để xuất game lên Web.
 
-    For more information, see `this blog post about single-threaded Web export
-    <https://godotengine.org/article/progress-report-web-export-in-4-3/#single-threaded-web-export>`__.
+    Để biết thêm thông tin, hãy xem `bài blog này về tính năng xuất Web một thread <https://godotengine.org/article/progress-report-web-export-in-4-3/#single-threaded-web-export>`__.
 
 .. seealso::
 
-    See the
-    `list of open issues on GitHub related to the web export <https://github.com/godotengine/godot/issues?q=is%3Aopen+is%3Aissue+label%3Aplatform%3Aweb>`__
-    for a list of known bugs.
+    Xem `danh sách các issue đang mở trên GitHub liên quan đến tính năng xuất web <https://github.com/godotengine/godot/issues?q=is%3Aopen+is%3Aissue+label%3Aplatform%3Aweb>`__ để biết danh sách các lỗi đã biết.
 
-Export file name
-----------------
+Tên file export
+---------------
 
-We suggest users to export their Web projects with ``index.html`` as the file name.
-``index.html`` is usually the default file loaded by web servers when accessing the
-parent directory, usually hiding the name of that file.
+Chúng tôi khuyên bạn nên xuất các dự án Web với ``index.html`` làm tên file. ``index.html`` thường là file mặc định được web server tải khi truy cập thư mục cha, thường khiến tên của file đó bị ẩn.
 
 .. attention::
 
-    The Godot 4 Web export expects some files to be named the same name as the one set in the
-    initial export. Some issues could occur if some exported files are renamed, including the
-    main HTML file.
+    Bản xuất Web của Godot 4 yêu cầu một số file được đặt cùng tên với tên đã thiết lập trong lần xuất ban đầu. Một số vấn đề có thể xảy ra nếu các file đã xuất bị đổi tên, bao gồm cả file HTML chính.
 
-WebGL version
--------------
+Phiên bản WebGL
+---------------
 
-Godot 4 can only target WebGL 2.0 (using the Compatibility rendering
-method). Forward+/Mobile are not supported on the web platform, as these
-rendering methods are designed around modern low-level graphics APIs. Godot
-currently does not support WebGPU, which is a prerequisite for allowing
-Forward+/Mobile to run on the web platform.
+Godot 4 chỉ có thể nhắm đến WebGL 2.0 (sử dụng phương thức render Compatibility). Forward+/Mobile không được hỗ trợ trên nền tảng web, vì các phương thức render này được thiết kế dựa trên các graphics API cấp thấp hiện đại. Godot hiện chưa hỗ trợ WebGPU, vốn là điều kiện tiên quyết để cho phép Forward+/Mobile chạy trên nền tảng web.
 
-See `Can I use WebGL 2.0 <https://caniuse.com/webgl2>`__ for a list of browser
-versions supporting WebGL 2.0. Note that Safari has several issues with WebGL
-2.0 support that other browsers don't have, so we recommend using a
-Chromium-based browser or Firefox if possible.
+Xem `Tôi có thể sử dụng WebGL 2.0 không <https://caniuse.com/webgl2>`__ để biết danh sách các phiên bản trình duyệt hỗ trợ WebGL 2.0. Lưu ý rằng Safari có một số vấn đề với khả năng hỗ trợ WebGL 2.0 mà các trình duyệt khác không gặp phải, vì vậy nếu có thể, chúng tôi khuyên bạn nên sử dụng trình duyệt dựa trên Chromium hoặc Firefox.
 
-Mobile considerations
----------------------
+Các lưu ý trên thiết bị di động
+-------------------------------
 
-The Web export can run on mobile platforms with some caveats. While native
-:ref:`Android <doc_exporting_for_android>` and :ref:`iOS <doc_exporting_for_ios>`
-exports will always perform better by a significant margin, the Web export
-allows people to run your project without going through app stores.
+Bản xuất Web có thể chạy trên các nền tảng di động với một số điểm cần lưu ý. Mặc dù bản native
+:ref:`Android <doc_exporting_for_android>` và :ref:`iOS <doc_exporting_for_ios>` luôn có hiệu năng tốt hơn đáng kể, bản xuất Web cho phép mọi người chạy dự án của bạn mà không cần thông qua các app store.
 
-Remember that CPU and GPU performance is at a premium when running on mobile devices.
-This is even more the case when running a project exported to Web (as it's
-WebAssembly instead of native code). See :ref:`doc_performance` section of the
-documentation for advice on optimizing your project. If your project runs on
-platforms other than Web, you can use :ref:`doc_feature_tags` to apply
-low-end-oriented settings when running the project exported to Web.
+Hãy nhớ rằng hiệu năng CPU và GPU rất quan trọng khi chạy trên thiết bị di động. Điều này càng rõ rệt hơn khi chạy một dự án được xuất sang Web (vì đó là WebAssembly thay vì mã native). Xem :ref:`doc_performance` phần tài liệu để biết các hướng dẫn tối ưu hóa dự án. Nếu dự án của bạn chạy trên các nền tảng khác ngoài Web, bạn có thể sử dụng :ref:`doc_feature_tags` để áp dụng các thiết lập hướng đến thiết bị cấu hình thấp khi chạy dự án đã xuất sang Web.
 
-To speed up loading times on mobile devices, you should also
-:ref:`compile an optimized export template <doc_optimizing_for_size>`
-with unused features disabled. Depending on the features used by your project,
-this can reduce the size of the WebAssembly payload significantly,
-making it faster to download and initialize (even when cached).
+Để tăng tốc thời gian tải trên thiết bị di động, bạn cũng nên
+:ref:`biên dịch một export template đã tối ưu <doc_optimizing_for_size>` với các tính năng không sử dụng được tắt. Tùy thuộc vào các tính năng mà dự án sử dụng, cách này có thể giảm đáng kể kích thước payload WebAssembly, giúp tải xuống và khởi tạo nhanh hơn (ngay cả khi đã được cache).
 
 .. _doc_exporting_for_web_audio_playback:
 
-Audio playback
---------------
+Phát âm thanh
+-------------
 
-Since Godot 4.3, audio playback is done using the Web Audio API on the web
-platform. This **Sample** playback mode allows for low latency even when the
-project is exported without thread support, but it has several limitations:
+Kể từ Godot 4.3, việc phát âm thanh trên nền tảng web được thực hiện bằng Web Audio API. Chế độ phát **Sample** này cho phép đạt độ trễ thấp ngay cả khi dự án được xuất mà không hỗ trợ thread, nhưng có một số hạn chế:
 
-- AudioEffects are not supported.
-- :ref:`Reverberation and doppler <doc_audio_streams_reverb_buses>` effects are not supported.
-- Procedural audio generation is not supported.
-- Positional audio may not always work correctly depending on the node's properties.
+- AudioEffects không được hỗ trợ.
+- Các hiệu ứng :ref:`Reverberation and doppler <doc_audio_streams_reverb_buses>` không được hỗ trợ.
+- Tính năng tạo âm thanh procedural không được hỗ trợ.
+- Âm thanh định vị có thể không phải lúc nào cũng hoạt động chính xác, tùy thuộc vào các thuộc tính của node.
 
-To use Godot's own audio playback system on the web platform, you can change the
-default playback mode using the **Audio > General > Default Playback Type.web**
-project setting, or change the **Playback Type** property to **Stream** on an
-:ref:`class_AudioStreamPlayer`, :ref:`class_AudioStreamPlayer2D` or
-:ref:`class_AudioStreamPlayer3D` node. This leads to increased latency
-(especially when thread support is disabled), but it allows the full suite
-of Godot's audio features to work.
+Để sử dụng hệ thống phát âm thanh riêng của Godot trên nền tảng web, bạn có thể thay đổi chế độ phát mặc định bằng thiết lập project **Audio > General > Default Playback Type.web**, hoặc thay đổi thuộc tính **Playback Type** thành **Stream** trên một
+:ref:`class_AudioStreamPlayer`, :ref:`class_AudioStreamPlayer2D` hoặc
+:ref:`class_AudioStreamPlayer3D` node. Điều này làm tăng độ trễ (đặc biệt khi tắt hỗ trợ thread), nhưng cho phép toàn bộ các tính năng âm thanh của Godot hoạt động.
 
 .. _doc_javascript_export_options:
 
-Export options
---------------
+Tùy chọn export
+---------------
 
-If a runnable web export template is available, a button appears between the
-*Stop scene* and *Play edited Scene* buttons in the editor to quickly open the
-game in the default browser for testing.
+Nếu có export template web có thể chạy, một nút sẽ xuất hiện giữa các nút *Stop scene* và *Play edited Scene* trong editor để nhanh chóng mở game bằng trình duyệt mặc định nhằm kiểm thử.
 
-If your project uses GDExtension, **Extension Support** needs to be enabled.
+Nếu dự án của bạn sử dụng GDExtension, cần bật **Extension Support**.
 
-If you plan to use :ref:`VRAM compression <doc_importing_images>` make sure that
-**VRAM Texture Compression** is enabled for the targeted platforms (enabling
-both **For Desktop** and **For Mobile** will result in a bigger, but more
-compatible export).
+Nếu bạn dự định sử dụng :ref:`VRAM compression <doc_importing_images>`, hãy đảm bảo **VRAM Texture Compression** được bật cho các nền tảng mục tiêu (bật cả **For Desktop** và **For Mobile** sẽ tạo ra bản export lớn hơn nhưng tương thích hơn).
 
-If a path to a **Custom HTML shell** file is given, it will be used instead of
-the default HTML page. See :ref:`doc_customizing_html5_shell`.
+Nếu cung cấp đường dẫn đến file **Custom HTML shell**, file đó sẽ được sử dụng thay cho trang HTML mặc định. Xem :ref:`doc_customizing_html5_shell`.
 
-**Head Include** is appended into the ``<head>`` element of the generated
-HTML page. This allows to, for example, load webfonts and third-party
-JavaScript APIs, include CSS, or run JavaScript code.
+**Head Include** được thêm vào phần tử ``<head>`` của trang HTML được tạo. Điều này cho phép, chẳng hạn, tải webfont và JavaScript API của bên thứ ba, thêm CSS hoặc chạy mã JavaScript.
 
-The window size will automatically match the browser window size by default.
-If you want to use a fixed size instead regardless of the browser window size,
-change **Canvas Resize Policy** to **None**. This allows controlling the window
-size with custom JavaScript code in the HTML shell. You can also set it to
-**Project** to make it behave closer to a native export, according to the
-:ref:`project settings <doc_multiple_resolutions>`.
+Theo mặc định, kích thước cửa sổ sẽ tự động khớp với kích thước cửa sổ trình duyệt. Nếu muốn sử dụng kích thước cố định bất kể kích thước cửa sổ trình duyệt, hãy đổi **Canvas Resize Policy** thành **None**. Điều này cho phép kiểm soát kích thước cửa sổ bằng mã JavaScript tùy chỉnh trong HTML shell. Bạn cũng có thể đặt thành **Project** để hoạt động gần giống hơn với bản export native, theo
+:ref:`cài đặt dự án <doc_multiple_resolutions>`.
 
-.. important:: Each project must generate their own HTML file. On export,
-               several text placeholders are replaced in the generated HTML
-               file specifically for the given export options. Any direct
-               modifications to that HTML file will be lost in future exports.
-               To customize the generated file, use the **Custom HTML shell**
-               option.
+.. important:: Mỗi dự án phải tạo tệp HTML riêng. Khi export, một số placeholder văn bản sẽ được thay thế trong tệp HTML được tạo, cụ thể theo các tùy chọn export đã cho. Mọi chỉnh sửa trực tiếp đối với tệp HTML đó sẽ bị mất trong các lần export sau. Để tùy chỉnh tệp được tạo, hãy sử dụng tùy chọn **Custom HTML shell**.
 
 .. _doc_exporting_for_web_thread_extension_support:
 
-Thread and extension support
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Hỗ trợ thread và extension
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If **Thread Support** is enabled, the exported project will be able to
-:ref:`make use of multithreading <doc_using_multiple_threads>` to improve
-performance. This also allows for low-latency audio playback
-when the playback type is set to **Stream** (instead of the default **Sample**
-that is used in web exports). Enabling this feature requires the use of
-cross-origin isolation headers, which are described in the
-:ref:`doc_exporting_for_web_serving_the_files` section below.
+Nếu bật **Thread Support**, dự án được export sẽ có thể
+:ref:`sử dụng đa luồng <doc_using_multiple_threads>` để cải thiện hiệu suất. Điều này cũng cho phép phát âm thanh có độ trễ thấp khi kiểu phát được đặt thành **Stream** (thay vì **Sample** mặc định được sử dụng trong các bản export web). Việc bật tính năng này yêu cầu sử dụng các header cross-origin isolation, được mô tả trong
+:ref:`doc_exporting_for_web_serving_the_files` phần bên dưới.
 
-If **Extensions Support** is enabled, :ref:`GDExtensions <doc_what_is_gdextension>`
-will be able to be loaded. Note that GDExtensions still need to be specifically
-compiled for the web platform to work. Like thread support, enabling this feature
-requires the use of cross-origin isolation headers.
+Nếu bật **Extensions Support**, các :ref:`GDExtensions <doc_what_is_gdextension>` sẽ có thể được tải. Lưu ý rằng GDExtensions vẫn cần được biên dịch riêng cho nền tảng web thì mới hoạt động. Giống như hỗ trợ thread, việc bật tính năng này yêu cầu sử dụng các header cross-origin isolation.
 
-Exporting as a Progressive Web App (PWA)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Export dưới dạng Progressive Web App (PWA)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If **Progressive Web App > Enable** is enabled, it will have several effects:
+Nếu bật **Progressive Web App > Enable**, tùy chọn này sẽ có một số tác động:
 
-- Configure high-resolution icons, a display mode and screen orientation. These
-  are configured at the end of the Progressive Web App section in the export
-  options. These options are used if the user adds the project to their device's
-  homescreen, which is common on mobile platforms. This is also supported on
-  desktop platforms, albeit in a more limited capacity.
+- Cấu hình các biểu tượng độ phân giải cao, chế độ hiển thị và hướng màn hình. Các tùy chọn này được cấu hình ở cuối phần Progressive Web App trong các tùy chọn export. Chúng được sử dụng khi người dùng thêm dự án vào màn hình chính của thiết bị, điều thường thấy trên các nền tảng di động. Tính năng này cũng được hỗ trợ trên các nền tảng máy tính để bàn, dù với khả năng hạn chế hơn.
 
-- Allow the project to be loaded without an Internet connection if it has been
-  loaded at least once beforehand. This works thanks to the *service worker*
-  that is installed when the project is first loaded in the user's browser. This
-  service worker provides a local fallback when no Internet connection is
-  available.
+- Cho phép tải dự án mà không cần kết nối Internet nếu dự án đã được tải ít nhất một lần trước đó. Điều này hoạt động nhờ *service worker* được cài đặt khi dự án được tải lần đầu trong trình duyệt của người dùng. Service worker này cung cấp phương án dự phòng cục bộ khi không có kết nối Internet.
 
-  - Note that web browsers can choose to evict the cached data if the user runs
-    low on disk space, or if the user hasn't opened the project for a while.
-    To ensure data is cached for a longer duration, the user can bookmark the page,
-    or ideally add it to their device's home screen.
+  - Lưu ý rằng trình duyệt web có thể chọn xóa dữ liệu đã lưu trong bộ nhớ đệm nếu người dùng sắp hết dung lượng ổ đĩa hoặc nếu người dùng không mở dự án trong một thời gian. Để đảm bảo dữ liệu được lưu trong bộ nhớ đệm lâu hơn, người dùng có thể đánh dấu trang hoặc tốt nhất là thêm trang vào màn hình chính của thiết bị.
 
-  - If the offline data is not available because it was evicted from the cache,
-    you can configure an **Offline Page** that will be displayed in this case.
-    The page must be in HTML format and will be saved on the client's machine
-    the first time the project is loaded.
+  - Nếu dữ liệu ngoại tuyến không khả dụng vì đã bị xóa khỏi bộ nhớ đệm, bạn có thể cấu hình **Offline Page** để hiển thị trong trường hợp này. Trang này phải ở định dạng HTML và sẽ được lưu trên máy của client vào lần đầu tiên dự án được tải.
 
-- Ensure cross-origin isolation headers are always present, even if the web
-  server hasn't been configured to send them. This allows exports with threads
-  enabled to work when hosted on any website, even if there is no way for you to
-  control the headers it sends.
+- Đảm bảo các header cross-origin isolation luôn hiện diện, ngay cả khi máy chủ web chưa được cấu hình để gửi chúng. Điều này cho phép các bản export bật thread hoạt động khi được lưu trữ trên bất kỳ website nào, ngay cả khi bạn không có cách kiểm soát các header mà website đó gửi.
 
-  - This behavior can be disabled by unchecking **Enable Cross Origin Isolation Headers**
-    in the Progressive Web App section.
+  - Có thể tắt hành vi này bằng cách bỏ chọn **Enable Cross Origin Isolation Headers** trong phần Progressive Web App.
 
-Limitations
------------
+Hạn chế
+-------
 
-For security and privacy reasons, many features that work effortlessly on
-native platforms are more complicated on the web platform. Following is a list
-of limitations you should be aware of when porting a Godot game to the web.
+Vì lý do bảo mật và quyền riêng tư, nhiều tính năng hoạt động dễ dàng trên các nền tảng native lại phức tạp hơn trên nền tảng web. Sau đây là danh sách các hạn chế bạn cần biết khi chuyển một game Godot sang web.
 
 .. _doc_javascript_secure_contexts:
 
-.. important:: Browser vendors are making more and more functionalities only
-               available in `secure contexts <https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts>`_,
-               this means that such features are only be available if the web
-               page is served via a secure HTTPS connection (localhost is
-               usually exempt from such requirement).
+.. important:: Các nhà cung cấp trình duyệt đang ngày càng chỉ cung cấp nhiều chức năng hơn trong `secure contexts <https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts>`_, nghĩa là những tính năng đó chỉ khả dụng nếu trang web được phân phối qua kết nối HTTPS an toàn (localhost thường được miễn yêu cầu này).
 
-Using cookies for data persistence
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sử dụng cookie để lưu trữ dữ liệu
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Users must **allow cookies** (specifically IndexedDB) if persistence of the
-``user://`` file system is desired. When playing a game presented in an
-``iframe``, **third-party** cookies must also be enabled. Incognito/private
-browsing mode also prevents persistence.
+Người dùng phải **cho phép cookie** (cụ thể là IndexedDB) nếu muốn duy trì ``user://`` file system. Khi chơi một game được cung cấp trong ``iframe``, cookie **bên thứ ba** cũng phải được bật. Chế độ ẩn danh/duyệt web riêng tư cũng ngăn việc duy trì dữ liệu.
 
-The method ``OS.is_userfs_persistent()`` can be used to check if the
-``user://`` file system is persistent, but can give false positives in some
-cases.
+Có thể sử dụng phương thức ``OS.is_userfs_persistent()`` để kiểm tra xem ``user://`` file system có được duy trì hay không, nhưng trong một số trường hợp có thể cho kết quả dương tính giả.
 
-Background processing
-~~~~~~~~~~~~~~~~~~~~~
+Xử lý nền
+~~~~~~~~~
 
-The project will be paused by the browser when the tab is no longer the active
-tab in the user's browser. This means functions such as ``_process()`` and
-``_physics_process()`` will no longer run until the tab is made active again by
-the user (by switching back to the tab). This can cause networked games to
-disconnect if the user switches tabs for a long duration.
+Trình duyệt sẽ tạm dừng dự án khi tab không còn là tab đang hoạt động trong trình duyệt của người dùng. Điều này có nghĩa là các hàm như ``_process()`` và ``_physics_process()`` sẽ không còn chạy cho đến khi người dùng kích hoạt lại tab (bằng cách chuyển về tab đó). Điều này có thể khiến các game mạng bị ngắt kết nối nếu người dùng chuyển tab trong thời gian dài.
 
-This limitation does not apply to unfocused browser *windows*. Therefore, on the
-user's side, this can be worked around by running the project in a separate
-*window* instead of a separate tab.
+Hạn chế này không áp dụng cho các *cửa sổ* trình duyệt không được focus. Do đó, ở phía người dùng, có thể khắc phục bằng cách chạy dự án trong một *cửa sổ* riêng thay vì một tab riêng.
 
-Full screen and mouse capture
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Toàn màn hình và bắt chuột
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Browsers do not allow arbitrarily **entering full screen**. The same goes for
-**capturing the cursor**. Instead, these actions have to occur as a response to
-a JavaScript input event. In Godot, this means entering full screen from within
-a pressed input event callback such as ``_input`` or ``_unhandled_input``.
-Querying the :ref:`class_Input` singleton is not sufficient, the relevant
-input event must currently be active.
+Trình duyệt không cho phép **vào chế độ toàn màn hình** tùy ý. Điều tương tự cũng áp dụng cho **bắt con trỏ**. Thay vào đó, các thao tác này phải xảy ra để phản hồi một sự kiện input JavaScript. Trong Godot, điều này có nghĩa là vào chế độ toàn màn hình từ bên trong callback của một sự kiện input được nhấn, chẳng hạn như ``_input`` hoặc ``_unhandled_input``. Việc truy vấn singleton :ref:`class_Input` là chưa đủ; sự kiện input liên quan hiện phải đang hoạt động.
 
-For the same reason, the full screen project setting doesn't work unless the
-engine is started from within a valid input event handler. This requires
-:ref:`customization of the HTML page <doc_customizing_html5_shell>`.
+Vì cùng lý do đó, cài đặt dự án về chế độ toàn màn hình sẽ không hoạt động trừ khi engine được khởi động từ bên trong một trình xử lý sự kiện input hợp lệ. Điều này yêu cầu
+:ref:`tùy chỉnh trang HTML <doc_customizing_html5_shell>`.
 
-Audio
-~~~~~
+Âm thanh
+~~~~~~~~
 
-Some browsers restrict autoplay for audio on websites. The easiest way around this limitation is to request the
-player to click, tap or press a key/button to enable audio, for instance when displaying a splash screen at the start of your game.
+Một số trình duyệt hạn chế việc tự động phát âm thanh trên website. Cách dễ nhất để khắc phục hạn chế này là yêu cầu người chơi nhấp chuột, chạm hoặc nhấn một phím/nút để bật âm thanh, chẳng hạn khi hiển thị màn hình splash lúc bắt đầu game.
 
-.. seealso:: Google offers additional information about their `Web Audio autoplay
-             policies <https://www.chromium.org/audio-video/autoplay/>`__.
+.. seealso:: Google cung cấp thêm thông tin về `các chính sách tự động phát Web Audio <https://www.chromium.org/audio-video/autoplay/>`__.
 
-             Apple's Safari team also posted additional information about their `Auto-Play Policy Changes for macOS
-             <https://webkit.org/blog/7734/auto-play-policy-changes-for-macos/>`__.
+             Nhóm Safari của Apple cũng đã đăng thêm thông tin về `các thay đổi trong Chính sách tự động phát cho macOS <https://webkit.org/blog/7734/auto-play-policy-changes-for-macos/>`__.
 
-.. warning:: Access to microphone requires a
+.. warning:: Việc truy cập microphone yêu cầu một
              :ref:`secure context <doc_javascript_secure_contexts>`.
 
 .. warning::
 
-        Since Godot 4.3, by default Web exports will use samples instead of streams
-        to play audio.
+        Kể từ Godot 4.3, theo mặc định, các bản export Web sẽ sử dụng sample thay vì stream để phát âm thanh.
 
-        This is due to the way browsers prefer to play audio and the lack of processing power
-        available when exporting Web games with the **Use Threads** export option off.
+        Điều này là do cách trình duyệt ưu tiên phát âm thanh và năng lực xử lý hạn chế khi export game Web với tùy chọn export **Use Threads** bị tắt.
 
-        Please note that audio effects aren't yet implemented for samples.
+        Lưu ý rằng các hiệu ứng âm thanh vẫn chưa được triển khai cho sample.
 
 
-Networking
-~~~~~~~~~~
+Mạng
+~~~~
 
 .. UPDATE: Not implemented. When low-level networking is implemented, remove
 .. this paragraph.
 
-Low-level networking is not implemented due to lacking support in browsers.
+Mạng cấp thấp chưa được triển khai do trình duyệt không hỗ trợ.
 
-Currently, only :ref:`HTTP client <doc_http_client_class>`,
+Hiện tại, chỉ :ref:`HTTP client <doc_http_client_class>`,
 :ref:`HTTP requests <doc_http_request_class>`,
-:ref:`WebSocket (client) <doc_websocket>` and :ref:`WebRTC <doc_webrtc>` are
-supported.
+:ref:`WebSocket (client) <doc_websocket>` và :ref:`WebRTC <doc_webrtc>` được hỗ trợ.
 
-The HTTP classes also have several restrictions on the HTML5 platform:
+Các lớp HTTP cũng có một số hạn chế trên nền tảng HTML5:
 
- -  Accessing or changing the ``StreamPeer`` is not possible
- -  Threaded/Blocking mode is not available
- -  Cannot progress more than once per frame, so polling in a loop will freeze
- -  No chunked responses
- -  Host verification cannot be disabled
- -  Subject to `same-origin policy <https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy>`__
+ -  Không thể truy cập hoặc thay đổi ``StreamPeer``
+ -  Chế độ Threaded/Blocking không khả dụng
+ -  Không thể tiến triển nhiều hơn một lần mỗi frame, vì vậy việc polling trong vòng lặp sẽ làm đóng băng chương trình
+ -  Không có response dạng chunked
+ -  Không thể tắt tính năng xác minh host
+ -  Tuân theo `same-origin policy <https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy>`__
 
 Clipboard
 ~~~~~~~~~
 
-Clipboard synchronization between engine and the operating system requires a
-browser supporting the `Clipboard API <https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API>`__,
-additionally, due to the API asynchronous nature might not be reliable when
-accessed from GDScript.
+Việc đồng bộ clipboard giữa engine và hệ điều hành yêu cầu trình duyệt hỗ trợ `Clipboard API <https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API>`__; ngoài ra, do API này có tính bất đồng bộ nên việc truy cập từ GDScript có thể không đáng tin cậy.
 
-.. warning:: Requires a :ref:`secure context <doc_javascript_secure_contexts>`.
+.. warning:: Yêu cầu :ref:`secure context <doc_javascript_secure_contexts>`.
 
-Gamepads
-~~~~~~~~
+Gamepad
+~~~~~~~
 
-Gamepads will not be detected until one of their button is pressed. Gamepads
-might have the wrong mapping depending on the browser/OS/gamepad combination,
-sadly the `Gamepad API <https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API/Using_the_Gamepad_API>`__
-does not provide a reliable way to detect the gamepad information necessary
-to remap them based on model/vendor/OS due to privacy considerations.
+Gamepad sẽ không được phát hiện cho đến khi một trong các nút của nó được nhấn. Gamepad có thể có mapping không chính xác tùy thuộc vào tổ hợp trình duyệt/OS/gamepad; đáng tiếc là `Gamepad API <https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API/Using_the_Gamepad_API>`__ không cung cấp cách đáng tin cậy để phát hiện thông tin gamepad cần thiết nhằm remap chúng dựa trên model/vendor/OS do các cân nhắc về quyền riêng tư.
 
-.. warning:: Requires a :ref:`secure context <doc_javascript_secure_contexts>`.
+.. warning:: Yêu cầu :ref:`secure context <doc_javascript_secure_contexts>`.
 
 .. _doc_exporting_for_web_serving_the_files:
 
-Serving the files
------------------
+Cung cấp các tệp
+----------------
 
-Exporting for the web generates several files to be served from a web server,
-including a default HTML page for presentation. A custom HTML file can be
-used, see :ref:`doc_customizing_html5_shell`.
+Việc export cho web sẽ tạo ra một số tệp để được cung cấp từ web server, bao gồm một trang HTML mặc định để trình bày. Có thể sử dụng tệp HTML tùy chỉnh, xem :ref:`doc_customizing_html5_shell`.
 
 .. warning::
 
-    Only when exporting with **Use Threads**, to ensure low audio latency and the
-    ability to use :ref:`class_Thread` in web exports, Godot 4 web exports use
-    `SharedArrayBuffer <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer>`__.
-    This requires a :ref:`secure context <doc_javascript_secure_contexts>`,
-    while also requiring the following CORS headers to be set when serving the files:
+    Chỉ khi export với **Use Threads**, để đảm bảo độ trễ âm thanh thấp và khả năng sử dụng :ref:`class_Thread` trong các bản export web, các bản export web của Godot 4 sử dụng `SharedArrayBuffer <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer>`__. Điều này yêu cầu :ref:`secure context <doc_javascript_secure_contexts>`, đồng thời yêu cầu thiết lập các header CORS sau khi cung cấp các tệp:
 
     ::
 
         Cross-Origin-Opener-Policy: same-origin
         Cross-Origin-Embedder-Policy: require-corp
 
-    If you don't control the web server or are unable to add response headers,
-    check **Progressive Web App > Enable** in the export options. This applies
-    a service worker-based workaround that allows the project to run by
-    simulating the presence of these response headers. A secure context
-    is still required in this case.
+    Nếu bạn không kiểm soát web server hoặc không thể thêm response header, hãy kiểm tra **Progressive Web App > Enable** trong các tùy chọn export. Tùy chọn này áp dụng một giải pháp dựa trên service worker, cho phép project chạy bằng cách mô phỏng sự hiện diện của các response header này. Trong trường hợp này vẫn yêu cầu secure context.
 
-    If the client doesn't receive the required response headers or the service
-    worker-based workaround is not applied, **the project will not run**.
+    Nếu client không nhận được các response header bắt buộc hoặc giải pháp dựa trên service worker chưa được áp dụng, **project sẽ không chạy**.
 
-The generated ``.html`` file can be used as ``DirectoryIndex`` in Apache
-servers and can be renamed to e.g. ``index.html`` at any time. Its name is
-never depended on by default.
+Tệp ``.html`` được tạo ra có thể được sử dụng làm ``DirectoryIndex`` trên các Apache server và có thể được đổi tên thành ví dụ như ``index.html`` bất kỳ lúc nào. Theo mặc định, tên của tệp này không bao giờ được dùng làm tham chiếu.
 
-The HTML page draws the game at maximum size within the browser window.
-This way, it can be inserted into an ``<iframe>`` with the game's size, as is
-common on most web game hosting sites.
+Trang HTML hiển thị game ở kích thước tối đa trong cửa sổ trình duyệt. Nhờ đó, game có thể được chèn vào một ``<iframe>`` với kích thước của game, như thường thấy trên hầu hết các trang hosting web game.
 
-The other exported files are served as they are, next to the ``.html`` file,
-names unchanged. The ``.wasm`` file is a binary WebAssembly module implementing
-the engine. The ``.pck`` file is the Godot main pack containing your game. The
-``.js`` file contains start-up code and is used by the ``.html`` file to access
-the engine. The ``.png`` file contains the boot splash image.
+Các tệp export khác được cung cấp nguyên trạng, nằm cạnh tệp ``.html``, với tên không thay đổi. Tệp ``.wasm`` là một module WebAssembly nhị phân triển khai engine. Tệp ``.pck`` là main pack của Godot chứa game của bạn. Tệp ``.js`` chứa mã khởi động và được tệp ``.html`` sử dụng để truy cập engine. Tệp ``.png`` chứa ảnh splash khi khởi động.
 
-The ``.pck`` file is binary, usually delivered with the MIME-type
-:mimetype:`application/octet-stream`. The ``.wasm`` file is delivered as
+Tệp ``.pck`` là tệp nhị phân, thường được cung cấp với MIME-type
+:mimetype:`application/octet-stream`. Tệp ``.wasm`` được cung cấp dưới dạng
 :mimetype:`application/wasm`.
 
 .. warning::
 
-    Delivering the WebAssembly module (``.wasm``) with a MIME-type
-    other than :mimetype:`application/wasm` can prevent some start-up
-    optimizations.
+    Việc cung cấp module WebAssembly (``.wasm``) với MIME-type khác :mimetype:`application/wasm` có thể ngăn một số tối ưu hóa khởi động.
 
-Delivering the files with server-side compression is recommended especially for
-the ``.pck`` and ``.wasm`` files, which are usually large in size. The
-WebAssembly module compresses particularly well, down to around a quarter of its
-original size with gzip compression. Consider using Brotli precompression if
-supported on your web server for further file size savings.
+Khuyến nghị sử dụng tính năng nén phía server khi cung cấp các tệp, đặc biệt là các tệp ``.pck`` và ``.wasm``, vốn thường có kích thước lớn. Module WebAssembly nén đặc biệt hiệu quả, giảm xuống khoảng một phần tư kích thước ban đầu khi nén bằng gzip. Hãy cân nhắc sử dụng tính năng nén trước bằng Brotli nếu web server của bạn hỗ trợ, để tiếp tục giảm kích thước tệp.
 
-**Hosts that provide on-the-fly compression:** GitHub Pages (gzip)
+**Các host cung cấp tính năng nén on-the-fly:** GitHub Pages (gzip)
 
-**Hosts that don't provide on-the-fly compression:** itch.io, GitLab Pages
-(`supports manual gzip precompression <https://docs.gitlab.com/user/project/pages/introduction/#serving-compressed-assets>`__)
+**Các host không cung cấp tính năng nén on-the-fly:** itch.io, GitLab Pages (`hỗ trợ nén trước thủ công bằng gzip <https://docs.gitlab.com/user/project/pages/introduction/#serving-compressed-assets>`__)
 
 .. tip::
 
-    The Godot repository includes a
-    `Python script to host a local web server <https://raw.githubusercontent.com/godotengine/godot/master/platform/web/serve.py>`__.
-    This script is intended for testing the web editor, but it can also be used to test exported projects.
+    Repository Godot có một `Python script để host web server cục bộ <https://raw.githubusercontent.com/godotengine/godot/master/platform/web/serve.py>`__. Script này предназначен cho việc kiểm thử web editor, nhưng cũng có thể được dùng để kiểm thử các project đã export.
 
-    Save the linked script to a file called ``serve.py``, move this file to the
-    folder containing the exported project's ``index.html``, then run the
-    following command in a command prompt within the same folder:
+    Lưu script được liên kết vào một tệp có tên ``serve.py``, di chuyển tệp này vào thư mục chứa ``index.html`` của project đã export, sau đó chạy lệnh sau trong command prompt tại cùng thư mục:
 
     ::
 
         # You may need to replace `python` with `python3` on some platforms.
         python serve.py --root .
 
-    On Windows, you can open a command prompt in the current folder by holding
-    :kbd:`Shift` and right-clicking on empty space in Windows Explorer, then
-    choosing **Open PowerShell window here**.
+    Trên Windows, bạn có thể mở command prompt tại thư mục hiện tại bằng cách giữ
+    :kbd:`Shift` rồi nhấp chuột phải vào khoảng trống trong Windows Explorer, sau đó chọn **Open PowerShell window here**.
 
-    This will serve the contents of the current folder and open the default web
-    browser automatically.
+    Thao tác này sẽ cung cấp nội dung của thư mục hiện tại và tự động mở trình duyệt web mặc định.
 
-    Note that for production use cases, this Python-based web server should not
-    be used. Instead, you should use an established web server such as Apache or
-    nginx.
+    Lưu ý rằng không nên sử dụng web server dựa trên Python này cho các trường hợp sử dụng trong môi trường production. Thay vào đó, bạn nên sử dụng một web server phổ biến như Apache hoặc nginx.
 
-Interacting with the browser and JavaScript
--------------------------------------------
+Tương tác với trình duyệt và JavaScript
+---------------------------------------
 
-See the :ref:`dedicated page <doc_web_javascript_bridge>` on how to interact
-with JavaScript and access some unique Web browser features.
+Xem :ref:`trang chuyên dụng <doc_web_javascript_bridge>` để biết cách tương tác với JavaScript và truy cập một số tính năng độc đáo của trình duyệt web.
 
-Environment variables
----------------------
+Các biến môi trường
+-------------------
 
-You can use the following environment variables to set export options outside of
-the editor. During the export process, these override the values that you set in
-the export menu.
+Bạn có thể sử dụng các biến môi trường sau để thiết lập tùy chọn export bên ngoài editor. Trong quá trình export, các biến này sẽ ghi đè các giá trị bạn đã đặt trong menu export.
 
-.. list-table:: HTML5 export environment variables
+.. list-table:: Các biến môi trường export HTML5
    :header-rows: 1
 
-   * - Export option
-     - Environment variable
-   * - Encryption / Encryption Key
+   * - Tùy chọn export
+     - Biến môi trường
+   * - Mã hóa / Khóa mã hóa
      - ``GODOT_SCRIPT_ENCRYPTION_KEY``
 
 .. _doc_exporting_for_web_troubleshooting:
 
-Troubleshooting
+Khắc phục sự cố
 ---------------
 
-Running the export locally shows another project instead
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Chạy bản export cục bộ lại hiển thị một project khác
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you use one-click deploy in multiple projects, you may notice that one
-of the projects you've previously deployed is shown instead of the project
-you're currently working on. This is due to service worker caching which
-currently lacks an automated cache busting mechanism.
+Nếu bạn sử dụng one-click deploy trong nhiều project, bạn có thể nhận thấy một trong các project đã deploy trước đó được hiển thị thay vì project bạn đang làm việc. Nguyên nhân là do bộ nhớ đệm của service worker hiện chưa có cơ chế tự động bust cache.
 
-As a workaround, you can manually unregister the current service worker
-so that the cache is reset. This also allows a new service worker to be registered.
-In Chromium-based browsers, open the Developer Tools by pressing
-:kbd:`F12` or :kbd:`Ctrl + Shift + I` (:kbd:`Cmd + Option + I` on macOS),
-then click on the Application tab in DevTools (it may be hidden behind a chevron
-icon if the devtools pane is narrow). You can either check
-:button:`Update on reload` and reload the page, or click :button:`Unregister`
-next to the service worker that is currently registered, then reload the page.
+Để khắc phục tạm thời, bạn có thể hủy đăng ký service worker hiện tại theo cách thủ công để đặt lại cache. Việc này cũng cho phép đăng ký một service worker mới. Trong các trình duyệt dựa trên Chromium, hãy mở Developer Tools bằng cách nhấn
+:kbd:`F12` hoặc :kbd:`Ctrl + Shift + I` (:kbd:`Cmd + Option + I` trên macOS), sau đó nhấp vào tab Application trong DevTools (tab này có thể bị ẩn sau biểu tượng dấu ngoặc nhọn nếu khung devtools hẹp). Bạn có thể chọn
+:button:`Update on reload` rồi tải lại trang hoặc nhấp vào :button:`Unregister` bên cạnh service worker hiện đang được đăng ký, sau đó tải lại trang.
 
 .. figure:: img/exporting_for_web_reset_unregister_service_worker_chromium.webp
    :align: center
-   :alt: Unregistering the service worker in Chromium-based browsers' DevTools
+   :alt: Hủy đăng ký service worker trong DevTools của các trình duyệt dựa trên Chromium
 
-   Unregistering the service worker in Chromium-based browsers' DevTools
+   Hủy đăng ký service worker trong DevTools của các trình duyệt dựa trên Chromium
 
-The procedure is similar in Firefox. Open developer tools by pressing
-:kbd:`F12` or :kbd:`Ctrl + Shift + I` (:kbd:`Cmd + Option + I` on macOS),
-click on the Application tab in DevTools (it may be hidden behind a chevron
-icon if the devtools pane is narrow). Click :button:`Unregister` next to the
-service worker that is currently registered, then reload the page.
+Quy trình này tương tự trong Firefox. Mở công cụ dành cho nhà phát triển bằng cách nhấn
+:kbd:`F12` hoặc :kbd:`Ctrl + Shift + I` (:kbd:`Cmd + Option + I` trên macOS), nhấp vào tab Application trong DevTools (tab này có thể bị ẩn sau biểu tượng dấu ngoặc nhọn nếu khung devtools hẹp). Nhấp vào :button:`Unregister` bên cạnh service worker hiện đang được đăng ký, sau đó tải lại trang.
 
 .. figure:: img/exporting_for_web_reset_unregister_service_worker_firefox.webp
    :align: center
-   :alt: Unregistering the service worker in Firefox's DevTools
+   :alt: Hủy đăng ký service worker trong DevTools của Firefox
 
-   Unregistering the service worker in Firefox's DevTools
+   Hủy đăng ký service worker trong DevTools của Firefox
 
-Export options
---------------
+Tùy chọn export
+---------------
 
-You can find a full list of export options available in the
-:ref:`class_EditorExportPlatformWeb` class reference.
+Bạn có thể tìm thấy danh sách đầy đủ các tùy chọn export hiện có trong tài liệu tham chiếu lớp
+:ref:`class_EditorExportPlatformWeb`.
+
+.. _`secure contexts`: https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts
