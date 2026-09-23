@@ -1,72 +1,53 @@
 .. _doc_what_are_godot_classes:
 
-Applying object-oriented principles in Godot
-============================================
+Áp dụng các nguyên tắc lập trình hướng đối tượng trong Godot
+============================================================
 
-The engine offers two main ways to create reusable objects: scripts and scenes. Neither of these
-technically define classes under the hood.
+Engine cung cấp hai cách chính để tạo các object có thể tái sử dụng: script và scene. Về mặt kỹ thuật, không cách nào trong số này thực sự định nghĩa class ở bên dưới.
 
-Still, many best practices using Godot involve applying object-oriented programming principles to
-the scripts and scenes that compose your game. That is why it's useful to understand how we can
-think of them as classes.
+Tuy vậy, nhiều best practice khi sử dụng Godot liên quan đến việc áp dụng các nguyên tắc lập trình hướng đối tượng cho các script và scene cấu thành game của bạn. Vì vậy, việc hiểu cách chúng ta có thể xem chúng như các class là rất hữu ích.
 
-This guide briefly explains how scripts and scenes work in the engine's core to help you understand
-how they work under the hood.
+Hướng dẫn này giải thích ngắn gọn cách script và scene hoạt động trong phần lõi của engine, giúp bạn hiểu cách chúng hoạt động ở bên dưới.
 
-How scripts work in the engine
-------------------------------
+Cách script hoạt động trong engine
+----------------------------------
 
-The engine provides built-in classes like :ref:`Node <class_Node>`. You can extend those to create
-derived types using a script.
+Engine cung cấp các class tích hợp sẵn như :ref:`Node <class_Node>`. Bạn có thể mở rộng chúng để tạo các kiểu dẫn xuất bằng script.
 
-These scripts are not technically classes. Instead, they are resources that tell the engine a
-sequence of initializations to perform on one of the engine's built-in classes.
+Về mặt kỹ thuật, các script này không phải là class. Thay vào đó, chúng là các resource cho engine biết chuỗi thao tác khởi tạo cần thực hiện trên một trong các class tích hợp sẵn của engine.
 
-Godot's internal classes have methods that register a class's data with a :ref:`ClassDB
-<class_ClassDB>`. This database provides runtime access to class information. ``ClassDB`` contains
-information about classes like:
+Các class nội bộ của Godot có các method đăng ký dữ liệu của một class với :ref:`ClassDB <class_ClassDB>`. Cơ sở dữ liệu này cung cấp quyền truy cập thông tin về class trong runtime. ``ClassDB`` chứa thông tin về các class như:
 
-- Properties.
-- Methods.
-- Constants.
-- Signals.
+- Property.
+- Method.
+- Hằng số.
+- Signal.
 
-This ``ClassDB`` is what objects check against when performing an operation like accessing a
-property or calling a method. It checks the database's records and the object's base types' records
-to see if the object supports the operation.
+``ClassDB`` này là thứ mà các object kiểm tra khi thực hiện một thao tác như truy cập property hoặc gọi method. Nó kiểm tra các bản ghi trong cơ sở dữ liệu và bản ghi của các kiểu cơ sở của object để xem object có hỗ trợ thao tác đó hay không.
 
-Attaching a :ref:`Script <class_Script>` to your object extends the methods, properties, and signals
-available from the ``ClassDB``.
+Gắn một :ref:`Script <class_Script>` vào object của bạn sẽ mở rộng các method, property và signal có sẵn từ ``ClassDB``.
 
 .. note::
 
-    Even scripts that don't use the ``extends`` keyword implicitly inherit from the engine's base
-    :ref:`RefCounted <class_RefCounted>` class. As a result, you can instantiate scripts without the
-    ``extends`` keyword from code. Since they extend ``RefCounted`` though, you cannot attach them to
-    a :ref:`Node <class_Node>`.
+    Ngay cả những script không sử dụng từ khóa ``extends`` cũng ngầm kế thừa từ lớp cơ sở của engine
+    :ref:`RefCounted <class_RefCounted>`. Do đó, bạn có thể khởi tạo các script không có từ khóa ``extends`` từ code. Tuy nhiên, vì chúng mở rộng ``RefCounted``, bạn không thể gắn chúng vào một :ref:`Node <class_Node>`.
 
-Scenes
-------
+Scene
+-----
 
-The behavior of scenes has many similarities to classes, so it can make sense to think of a scene as
-a class. Scenes are reusable, instantiable, and inheritable groups of nodes. Creating a scene is
-similar to having a script that creates nodes and adds them as children using ``add_child()``.
+Cách scene hoạt động có nhiều điểm tương đồng với class, vì vậy việc xem scene như một class là hợp lý. Scene là các nhóm node có thể tái sử dụng, khởi tạo và kế thừa. Việc tạo một scene tương tự như có một script tạo các node rồi thêm chúng làm node con bằng ``add_child()``.
 
-We often pair a scene with a scripted root node that makes use of the scene's nodes. As such,
-the script extends the scene by adding behavior through imperative code.
+Chúng ta thường ghép một scene với một node gốc có script sử dụng các node của scene. Vì vậy, script mở rộng scene bằng cách thêm behavior thông qua code mệnh lệnh.
 
-The content of a scene helps to define:
+Nội dung của một scene giúp xác định:
 
-- What nodes are available to the script.
-- How they are organized.
-- How they are initialized.
-- What signal connections they have with each other.
+- Những node nào có sẵn cho script.
+- Cách chúng được tổ chức.
+- Cách chúng được khởi tạo.
+- Các kết nối signal giữa chúng.
 
-Why is any of this important to scene organization? Because instances of scenes *are* objects. As a
-result, many object-oriented principles that apply to written code also apply to scenes: single
-responsibility, encapsulation, and others.
+Tại sao tất cả những điều này lại quan trọng đối với việc tổ chức scene? Vì các instance của scene *là* object. Do đó, nhiều nguyên tắc hướng đối tượng áp dụng cho code viết cũng áp dụng cho scene: single responsibility, encapsulation và các nguyên tắc khác.
 
-The scene is *always an extension of the script attached to its root node*, so you can interpret it
-as part of a class.
+Scene *luôn là phần mở rộng của script được gắn vào node gốc của nó*, vì vậy bạn có thể xem nó là một phần của class.
 
-Most of the techniques explained in this best practices series build on this point.
+Phần lớn các kỹ thuật được giải thích trong loạt bài best practice này đều dựa trên điểm này.

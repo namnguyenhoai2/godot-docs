@@ -1,27 +1,18 @@
 .. _doc_scenes_versus_scripts:
 
-When to use scenes versus scripts
-=================================
+Khi nào nên dùng scene thay vì script
+=====================================
 
-We've already covered how scenes and scripts are different. Scripts
-define an engine class extension with imperative code, scenes with
-declarative code.
+Chúng ta đã tìm hiểu sự khác biệt giữa scene và script. Script định nghĩa phần mở rộng của một engine class bằng mã mệnh lệnh, còn scene dùng mã khai báo.
 
-Each system's capabilities are different as a result.
-Scenes can define how an extended class initializes, but not what its
-behavior actually is. Scenes are often used in conjunction with a script,
-the scene declaring a composition of nodes, and the script adding behavior with imperative code.
+Do đó, khả năng của mỗi hệ thống cũng khác nhau. Scene có thể định nghĩa cách một class mở rộng được khởi tạo, nhưng không định nghĩa hành vi thực sự của nó. Scene thường được dùng kết hợp với script: scene khai báo một cấu trúc gồm các node, còn script bổ sung hành vi bằng mã mệnh lệnh.
 
-Anonymous types
----------------
+Kiểu vô danh
+------------
 
-It *is* possible to completely define a scenes' contents using a script alone.
-This is, in essence, what the Godot Editor does, only in the C++ constructor
-of its objects.
+Hoàn toàn *có thể* định nghĩa nội dung của một scene chỉ bằng script. Về bản chất, đây là điều Godot Editor thực hiện, chỉ khác là trong constructor C++ của các object của nó.
 
-But, choosing which one to use can be a dilemma. Creating script instances
-is identical to creating in-engine classes whereas handling scenes requires
-a change in API:
+Tuy nhiên, việc chọn loại nào để sử dụng có thể là một vấn đề khó. Việc tạo các instance của script giống hệt việc tạo các class trong engine, trong khi xử lý scene yêu cầu thay đổi API:
 
 .. tabs::
   .. code-tab:: gdscript GDScript
@@ -29,9 +20,9 @@ a change in API:
     const MyNode = preload("my_node.gd")
     const MyScene = preload("my_scene.tscn")
     var node = Node.new()
-    var my_node = MyNode.new() # Same method call.
-    var my_scene = MyScene.instantiate() # Different method call.
-    var my_inherited_scene = MyScene.instantiate(PackedScene.GEN_EDIT_STATE_MAIN) # Create scene inheriting from MyScene.
+    var my_node = MyNode.new() # Lời gọi method giống nhau.
+    var my_scene = MyScene.instantiate() # Lời gọi method khác nhau.
+    var my_inherited_scene = MyScene.instantiate(PackedScene.GEN_EDIT_STATE_MAIN) # Tạo scene kế thừa từ MyScene.
 
   .. code-tab:: csharp
 
@@ -52,100 +43,76 @@ a change in API:
         {
             _node = new Node();
             _myNode = MyNode.New().As<Node>();
-            // Different than calling new() or MyNode.New(). Instantiated from a PackedScene.
+            // Khác với việc gọi new() hoặc MyNode.New(). Được khởi tạo từ một PackedScene.
             _myScene = MyScene.Instantiate();
-            // Create scene inheriting from MyScene.
+            // Tạo scene kế thừa từ MyScene.
             _myInheritedScene = MyScene.Instantiate(PackedScene.GenEditState.Main);
         }
     }
 
-Also, scripts will operate a little slower than scenes due to the
-speed differences between engine and script code. The larger and more complex
-the node, the more reason there is to build it as a scene.
+Ngoài ra, script sẽ hoạt động chậm hơn một chút so với scene do sự khác biệt về tốc độ giữa mã engine và mã script. Node càng lớn và phức tạp thì càng có nhiều lý do để xây dựng nó dưới dạng scene.
 
-Named types
+Kiểu có tên
 -----------
 
-Scripts can be registered as a new type within the editor
-itself. This displays it as a new type in the node or resource creation dialog
-with an optional icon. This way, the user's ability to use the script
-is much more streamlined. Rather than having to...
+Script có thể được đăng ký thành một kiểu mới ngay trong editor. Kiểu này sẽ xuất hiện dưới dạng một kiểu mới trong hộp thoại tạo node hoặc resource, cùng với một icon tùy chọn. Nhờ vậy, người dùng có thể sử dụng script thuận tiện hơn nhiều. Thay vì phải...
 
-1. Know the base type of the script they would like to use.
+1. Biết kiểu cơ sở của script mà họ muốn sử dụng.
 
-2. Create an instance of that base type.
+2. Tạo một instance của kiểu cơ sở đó.
 
-3. Add the script to the node.
+3. Thêm script vào node.
 
-With a registered script, the scripted type instead becomes a creation option
-like the other nodes and resources in the system.
-The creation dialog even has a search bar to look up the type by
-name.
+Khi script đã được đăng ký, kiểu có script sẽ trở thành một tùy chọn tạo giống như các node và resource khác trong hệ thống. Hộp thoại tạo thậm chí còn có thanh tìm kiếm để tra cứu kiểu theo tên.
 
-There are two systems for registering types:
+Có hai hệ thống để đăng ký kiểu:
 
 - :ref:`Custom Types <doc_making_plugins>`
 
-   - Editor-only. Typenames are not accessible at runtime.
+   - Chỉ dành cho editor. Tên kiểu không thể truy cập lúc runtime.
 
-   - Does not support inherited custom types.
+   - Không hỗ trợ các kiểu tùy chỉnh kế thừa.
 
-   - An initializer tool. Creates the node with the script. Nothing more.
+   - Một công cụ khởi tạo. Tạo node cùng với script. Không làm gì thêm.
 
-   - Editor has no type-awareness of the script or its relationship
-     to other engine types or scripts.
+   - Editor không nhận biết kiểu của script hoặc mối quan hệ của nó với các kiểu engine hay script khác.
 
-   - Allows users to define an icon.
+   - Cho phép người dùng xác định một icon.
 
-   - Works for all scripting languages because it deals with Script resources in abstract.
+   - Hoạt động với mọi ngôn ngữ scripting vì xử lý các Script resource ở dạng trừu tượng.
 
-   - Set up using :ref:`EditorPlugin.add_custom_type <class_EditorPlugin_method_add_custom_type>`.
+   - Thiết lập bằng :ref:`EditorPlugin.add_custom_type <class_EditorPlugin_method_add_custom_type>`.
 
 - :ref:`Script Classes <doc_gdscript_basics_class_name>`
 
-   - Editor and runtime accessible.
+   - Có thể truy cập từ editor và runtime.
 
-   - Displays inheritance relationships in full.
+   - Hiển thị đầy đủ các mối quan hệ kế thừa.
 
-   - Creates the node with the script, but can also change types
-     or extend the type from the editor.
+   - Tạo node cùng với script, nhưng cũng có thể thay đổi kiểu hoặc mở rộng kiểu từ editor.
 
-   - Editor is aware of inheritance relationships between scripts,
-     script classes, and engine C++ classes.
+   - Editor nhận biết các mối quan hệ kế thừa giữa script, script class và các class C++ của engine.
 
-   - Allows users to define an icon.
+   - Cho phép người dùng xác định một icon.
 
-   - Engine developers must add support for languages manually (both name exposure and
-     runtime accessibility).
+   - Nhà phát triển engine phải tự thêm hỗ trợ cho các ngôn ngữ (cả việc hiển thị tên và khả năng truy cập lúc runtime).
 
-   - The Editor scans project folders and registers any exposed names for all
-     scripting languages. Each scripting language must implement its own
-     support for exposing this information.
+   - Editor quét các thư mục project và đăng ký mọi tên được công khai cho tất cả ngôn ngữ scripting. Mỗi ngôn ngữ scripting phải tự triển khai khả năng hiển thị thông tin này.
 
-Both methodologies add names to the creation dialog, but script classes, in
-particular, also allow for users to access the typename without loading the
-script resource. Creating instances and accessing constants or static methods
-is viable from anywhere.
+Cả hai phương pháp đều thêm tên vào hộp thoại tạo, nhưng đặc biệt là script class còn cho phép người dùng truy cập tên kiểu mà không cần tải script resource. Có thể tạo instance và truy cập constant hoặc static method từ bất kỳ đâu.
 
-With features like these, one may wish their type to be a script without a
-scene due to the ease of use it grants users. Those developing plugins or
-creating in-house tools for designers to use will find an easier time of things
-this way.
+Với những tính năng như vậy, người ta có thể muốn kiểu của mình là một script không kèm scene vì sự tiện dụng mà nó mang lại cho người dùng. Những người phát triển plugin hoặc tạo các công cụ nội bộ cho designer sử dụng sẽ thấy cách này dễ dàng hơn.
 
-On the downside, it also means having to use largely imperative programming.
+Mặt hạn chế là bạn cũng phải sử dụng phần lớn phương pháp lập trình mệnh lệnh.
 
-Performance of Script vs PackedScene
-------------------------------------
+Hiệu năng của Script so với PackedScene
+---------------------------------------
 
-One last aspect to consider when choosing scenes and scripts is execution speed.
+Một khía cạnh cuối cùng cần cân nhắc khi lựa chọn scene và script là tốc độ thực thi.
 
-As the size of objects increases, the scripts' necessary size to create and
-initialize them grows much larger. Creating node hierarchies demonstrates this.
-Each Node's logic could be several hundred lines of code in length.
+Khi kích thước object tăng, lượng mã cần thiết trong script để tạo và khởi tạo chúng cũng tăng lên đáng kể. Việc tạo các hệ thống phân cấp node minh họa rõ điều này. Logic của mỗi Node có thể dài đến vài trăm dòng mã.
 
-The code example below creates a new ``Node``, changes its name, assigns a
-script to it, sets its future parent as its owner so it gets saved to disk along
-with it, and finally adds it as a child of the ``Main`` node:
+Ví dụ mã dưới đây tạo một ``Node``, thay đổi tên của nó, gán một script cho nó, đặt parent tương lai của nó làm owner để nó được lưu vào đĩa cùng với parent, rồi cuối cùng thêm nó làm node con của node ``Main``:
 
 .. tabs::
   .. code-tab:: gdscript GDScript
@@ -174,46 +141,34 @@ with it, and finally adds it as a child of the ``Main`` node:
             Child.Name = "Child";
             var childID = Child.GetInstanceId();
             Child.SetScript(GD.Load<Script>("res://Path/To/Child.cs"));
-            // SetScript() causes the C# wrapper object to be disposed, so obtain a new
-            // wrapper for the Child node using its instance ID before proceeding.
+            // SetScript() khiến đối tượng wrapper C# bị giải phóng, vì vậy hãy lấy một
+            // wrapper mới cho node Child bằng instance ID của nó trước khi tiếp tục.
             Child = (Node)GodotObject.InstanceFromId(childID);
             AddChild(Child);
             Child.Owner = this;
         }
     }
 
-Script code like this is much slower than engine-side C++ code. Each instruction
-makes a call to the scripting API which leads to many "lookups" on the back-end
-to find the logic to execute.
+Mã script như thế này chậm hơn nhiều so với mã C++ phía engine. Mỗi instruction tạo một lời gọi đến scripting API, dẫn đến nhiều "tra cứu" ở back-end để tìm logic cần thực thi.
 
-Scenes help to avoid this performance issue. :ref:`PackedScene
-<class_PackedScene>`, the base type that scenes inherit from, defines resources
-that use serialized data to create objects. The engine can process scenes in
-batches on the back-end and provide much better performance than scripts.
+Scene giúp tránh vấn đề hiệu năng này. :ref:`PackedScene <class_PackedScene>`, kiểu cơ sở mà scene kế thừa, định nghĩa các resource sử dụng dữ liệu đã được tuần tự hóa để tạo object. Engine có thể xử lý scene theo lô ở back-end và mang lại hiệu năng tốt hơn nhiều so với script.
 
-Conclusion
-----------
+Kết luận
+--------
 
-In the end, the best approach is to consider the following:
+Tóm lại, cách tiếp cận tốt nhất là cân nhắc những điều sau:
 
-- If one wishes to create a basic tool that is going to be reused in several
-  different projects and which people of all skill levels will likely use
-  (including those who don't label themselves as "programmers"), then chances
-  are that it should probably be a script, likely one with a custom name/icon.
+- Nếu muốn tạo một công cụ cơ bản để tái sử dụng trong nhiều project khác nhau và có khả năng được mọi người ở mọi trình độ sử dụng (bao gồm cả những người không tự nhận mình là "programmer"), thì nhiều khả năng công cụ đó nên là một script, có thể là script với tên/icon tùy chỉnh.
 
-- If one wishes to create a concept that is particular to their game, then it
-  should always be a scene. Scenes are easier to track/edit and provide more
-  security than scripts.
+- Nếu muốn tạo một khái niệm đặc thù cho game của mình, thì luôn nên dùng scene. Scene dễ theo dõi/chỉnh sửa hơn và an toàn hơn script.
 
-- If one would like to give a name to a scene, then they can still sort of do
-  this by declaring a script class and giving it a scene as a constant.
-  The script becomes, in effect, a namespace:
+- Nếu muốn đặt tên cho một scene, bạn vẫn có thể thực hiện việc này bằng cách khai báo một script class và gán một scene cho nó dưới dạng constant. Về bản chất, script sẽ trở thành một namespace:
 
   .. tabs::
     .. code-tab:: gdscript GDScript
 
       # game.gd
-      class_name Game # extends RefCounted, so it won't show up in the node creation dialog.
+      class_name Game # extends RefCounted, vì vậy nó sẽ không xuất hiện trong hộp thoại tạo node.
       extends RefCounted
 
       const MyScene = preload("my_scene.tscn")

@@ -1,30 +1,24 @@
-:article_outdated: True
+:article_outdated: Đúng
 
 .. _doc_recording_with_microphone:
 
-Recording with microphone
-=========================
+Ghi âm bằng microphone
+======================
 
-Godot supports in-game audio recording for Windows, macOS, Linux, Android and
-iOS.
+Godot hỗ trợ ghi âm trong game trên Windows, macOS, Linux, Android và iOS.
 
-A simple demo is included in the official demo projects and will be used as
-support for this tutorial:
-`<https://github.com/godotengine/godot-demo-projects/tree/master/audio/mic_record>`_.
+Một bản demo đơn giản được cung cấp trong các dự án demo chính thức và sẽ được dùng để minh họa cho tutorial này: ` <https://github.com/godotengine/godot-demo-projects/tree/master/audio/mic_record>`_.
 
-You will need to enable audio input in the :ref:`Audio > Driver > Enable Input<class_ProjectSettings_property_audio/driver/enable_input>` project setting, or you'll just get empty audio files.
+Bạn cần bật tính năng nhập âm thanh trong thiết lập project :ref:`Audio > Driver > Enable Input <class_ProjectSettings_property_audio/driver/enable_input>`, nếu không bạn sẽ chỉ nhận được các tệp âm thanh rỗng.
 
-On iOS and iPadOS, it is also important to set the advanced **Audio > General > iOS > Session Category** setting to include **Record** or **Play and Record**.
+Trên iOS và iPadOS, bạn cũng cần đặt thiết lập nâng cao **Audio > General > iOS > Session Category** để bao gồm **Record** hoặc **Play and Record**.
 
-The structure of the demo
--------------------------
+Cấu trúc của bản demo
+---------------------
 
-The demo consists of a single scene. This scene includes two major parts: the
-GUI and the audio.
+Bản demo bao gồm một scene duy nhất. Scene này có hai phần chính: GUI và âm thanh.
 
-We will focus on the audio part. In this demo, a bus named ``Record`` with the
-effect ``Record`` is created to handle the audio recording.
-An ``AudioStreamPlayer`` named ``AudioStreamRecord`` is used for recording.
+Chúng ta sẽ tập trung vào phần âm thanh. Trong bản demo này, một bus có tên ``Record`` với effect ``Record`` được tạo để xử lý việc ghi âm. Một ``AudioStreamPlayer`` có tên ``AudioStreamRecord`` được dùng để ghi âm.
 
 .. image:: img/record_bus.png
 
@@ -38,10 +32,10 @@ An ``AudioStreamPlayer`` named ``AudioStreamRecord`` is used for recording.
 
 
     func _ready():
-        # We get the index of the "Record" bus.
+        # Lấy chỉ mục của bus "Record".
         var idx = AudioServer.get_bus_index("Record")
-        # And use it to retrieve its first effect, which has been defined
-        # as an "AudioEffectRecord" resource.
+        # Và dùng nó để lấy effect đầu tiên của bus, được định nghĩa
+        # dưới dạng resource "AudioEffectRecord".
         effect = AudioServer.get_bus_effect(idx, 0)
 
  .. code-tab:: csharp
@@ -51,18 +45,16 @@ An ``AudioStreamPlayer`` named ``AudioStreamRecord`` is used for recording.
 
     public override void _Ready()
     {
-        // We get the index of the "Record" bus.
+        // Lấy chỉ mục của bus "Record".
         int idx = AudioServer.GetBusIndex("Record");
-        // And use it to retrieve its first effect, which has been defined
-        // as an "AudioEffectRecord" resource.
+        // Và dùng nó để lấy effect đầu tiên của bus, được định nghĩa
+        // dưới dạng resource "AudioEffectRecord".
         _effect = (AudioEffectRecord)AudioServer.GetBusEffect(idx, 0);
     }
 
-The audio recording is handled by the :ref:`class_AudioEffectRecord` resource
-which has three methods:
+Việc ghi âm được xử lý bởi resource :ref:`class_AudioEffectRecord`, resource này có ba method:
 :ref:`get_recording() <class_AudioEffectRecord_method_get_recording>`,
-:ref:`is_recording_active() <class_AudioEffectRecord_method_is_recording_active>`,
-and :ref:`set_recording_active() <class_AudioEffectRecord_method_set_recording_active>`.
+:ref:`is_recording_active() <class_AudioEffectRecord_method_is_recording_active>`, và :ref:`set_recording_active() <class_AudioEffectRecord_method_set_recording_active>`.
 
 .. tabs::
   .. code-tab:: gdscript GDScript
@@ -105,13 +97,9 @@ and :ref:`set_recording_active() <class_AudioEffectRecord_method_set_recording_a
         }
     }
 
-At the start of the demo, the recording effect is not active. When the user
-presses the ``RecordButton``, the effect is enabled with
-``set_recording_active(true)``.
+Khi bắt đầu bản demo, effect ghi âm chưa hoạt động. Khi người dùng nhấn ``RecordButton``, effect được bật bằng ``set_recording_active(true)``.
 
-On the next button press, as ``effect.is_recording_active()`` is ``true``,
-the recorded stream can be stored into the ``recording`` variable by calling
-``effect.get_recording()``.
+Ở lần nhấn nút tiếp theo, vì ``effect.is_recording_active()`` là ``true``, stream đã ghi có thể được lưu vào biến ``recording`` bằng cách gọi ``effect.get_recording()``.
 
 .. tabs::
   .. code-tab:: gdscript GDScript
@@ -141,8 +129,7 @@ the recorded stream can be stored into the ``recording`` variable by calling
         audioStreamPlayer.Play();
     }
 
-To playback the recording, you assign the recording as the stream of the
-``AudioStreamPlayer`` and call ``play()``.
+Để phát lại bản ghi, bạn gán bản ghi làm stream của ``AudioStreamPlayer`` rồi gọi ``play()``.
 
 .. tabs::
   .. code-tab:: gdscript GDScript
@@ -161,5 +148,4 @@ To playback the recording, you assign the recording as the stream of the
         GetNode<Label>("Status").Text = string.Format("Saved WAV file to: {0}\n({1})", savePath, ProjectSettings.GlobalizePath(savePath));
     }
 
-To save the recording, you call ``save_to_wav()`` with the path to a file.
-In this demo, the path is defined by the user via a ``LineEdit`` input box.
+Để lưu bản ghi, bạn gọi ``save_to_wav()`` với đường dẫn đến một tệp. Trong bản demo này, đường dẫn được người dùng xác định thông qua ô nhập liệu ``LineEdit``.

@@ -1,115 +1,115 @@
 .. _doc_text_to_speech:
 
-Text to speech
-==============
+Chuyển văn bản thành giọng nói
+==============================
 
-Basic Usage
------------
+Cách sử dụng cơ bản
+-------------------
 
-Basic usage of text-to-speech involves the following one-time steps:
+Việc sử dụng tính năng chuyển văn bản thành giọng nói cơ bản gồm các bước thực hiện một lần sau:
 
-- Enable TTS in the Godot editor for your project
-- Query the system for a list of usable voices
-- Store the ID of the voice you want to use
+- Bật TTS trong trình chỉnh sửa Godot cho dự án của bạn
+- Truy vấn hệ thống để lấy danh sách các voice có thể sử dụng
+- Lưu ID của voice bạn muốn sử dụng
 
-By default, the Godot project-level setting for text-to-speech is disabled, to avoid unnecessary overhead. To enable it:
+Theo mặc định, cài đặt cấp dự án Godot cho tính năng chuyển văn bản thành giọng nói bị tắt để tránh chi phí xử lý không cần thiết. Để bật tính năng này:
 
-- Go to **Project > Project Settings**
-- Make sure the **Advanced Settings** toggle is enabled
-- Click on **Audio > General**
-- Ensure the **Text to Speech** option is checked
-- Restart Godot if prompted to do so.
+- Đi tới **Project > Project Settings**
+- Đảm bảo nút chuyển đổi **Advanced Settings** được bật
+- Nhấp vào **Audio > General**
+- Đảm bảo tùy chọn **Text to Speech** được chọn
+- Khởi động lại Godot nếu được yêu cầu.
 
-Text-to-speech uses a specific voice. Depending on the user's system, they might have multiple voices installed. Once you have the voice ID, you can use it to speak some text:
+Tính năng chuyển văn bản thành giọng nói sử dụng một voice cụ thể. Tùy thuộc vào hệ thống của người dùng, họ có thể đã cài đặt nhiều voice. Khi đã có voice ID, bạn có thể dùng nó để đọc một đoạn văn bản:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # One-time steps.
-    # Pick a voice. Here, we arbitrarily pick the first English voice.
+    # Các bước thực hiện một lần.
+    # Chọn một voice. Ở đây, chúng ta tùy ý chọn voice tiếng Anh đầu tiên.
     var voices = DisplayServer.tts_get_voices_for_language("en")
     var voice_id = voices[0]
 
-    # Say "Hello, world!".
+    # Đọc "Hello, world!".
     DisplayServer.tts_speak("Hello, world!", voice_id)
 
-    # Say a longer sentence, and then interrupt it.
-    # Note that this method is asynchronous: execution proceeds to the next line immediately,
-    # before the voice finishes speaking.
+    # Đọc một câu dài hơn, rồi ngắt câu đó.
+    # Lưu ý rằng phương thức này là asynchronous: quá trình thực thi ngay lập tức chuyển sang dòng tiếp theo,
+    # trước khi voice đọc xong.
     var long_message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur"
     DisplayServer.tts_speak(long_message, voice_id)
 
-    # Immediately stop the current text mid-sentence and say goodbye instead.
+    # Ngay lập tức dừng văn bản hiện tại giữa câu và thay vào đó nói lời tạm biệt.
     DisplayServer.tts_stop()
     DisplayServer.tts_speak("Goodbye!", voice_id)
 
  .. code-tab:: csharp
 
-    // One-time steps.
-    // Pick a voice. Here, we arbitrarily pick the first English voice.
+    // Các bước thực hiện một lần.
+    // Chọn một voice. Ở đây, chúng ta tùy ý chọn voice tiếng Anh đầu tiên.
     string[] voices = DisplayServer.TtsGetVoicesForLanguage("en");
     string voiceId = voices[0];
 
-    // Say "Hello, world!".
+    // Đọc "Hello, world!".
     DisplayServer.TtsSpeak("Hello, world!", voiceId);
 
-    // Say a longer sentence, and then interrupt it.
-    // Note that this method is asynchronous: execution proceeds to the next line immediately,
-    // before the voice finishes speaking.
+    // Đọc một câu dài hơn, rồi ngắt câu đó.
+    // Lưu ý rằng phương thức này là asynchronous: quá trình thực thi ngay lập tức chuyển sang dòng tiếp theo,
+    // trước khi voice đọc xong.
     string longMessage = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur";
     DisplayServer.TtsSpeak(longMessage, voiceId);
 
-    // Immediately stop the current text mid-sentence and say goodbye instead.
+    // Ngay lập tức dừng văn bản hiện tại giữa câu và thay vào đó nói lời tạm biệt.
     DisplayServer.TtsStop();
     DisplayServer.TtsSpeak("Goodbye!", voiceId);
 
 
-Requirements for functionality
+Yêu cầu để tính năng hoạt động
 ------------------------------
 
-Godot includes text-to-speech functionality. You can find these under the :ref:`DisplayServer class <class_DisplayServer>`.
+Godot cung cấp chức năng chuyển văn bản thành giọng nói. Bạn có thể tìm thấy các chức năng này trong :ref:`DisplayServer class <class_DisplayServer>`.
 
-Godot depends on system libraries for text-to-speech functionality. These libraries are installed by default on Windows, macOS, Web, Android and iOS, but not on all Linux distributions. If they are not present, text-to-speech functionality will not work. Specifically, the ``tts_get_voices()`` method will return an empty list, indicating that there are no usable voices.
+Godot phụ thuộc vào các thư viện hệ thống để cung cấp chức năng chuyển văn bản thành giọng nói. Các thư viện này được cài đặt mặc định trên Windows, macOS, Web, Android và iOS, nhưng không có trên mọi bản phân phối Linux. Nếu không có chúng, chức năng chuyển văn bản thành giọng nói sẽ không hoạt động. Cụ thể, ``tts_get_voices()`` method sẽ trả về một danh sách rỗng, cho biết không có voice nào có thể sử dụng.
 
-Both Godot users on Linux and end-users on Linux running Godot games need to ensure that their system includes the system libraries for text-to-speech to work. Please consult the table below or your own distribution's documentation to determine what libraries you need to install.
+Cả người dùng Godot trên Linux và người dùng cuối trên Linux chạy game Godot đều cần đảm bảo hệ thống của họ có các thư viện hệ thống cần thiết để tính năng chuyển văn bản thành giọng nói hoạt động. Hãy tham khảo bảng bên dưới hoặc tài liệu của bản phân phối bạn đang dùng để xác định các thư viện cần cài đặt.
 
-Distro-specific one-liners
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Các lệnh một dòng dành riêng cho từng bản phân phối
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-+------------------+-----------------------------------------------------------------------------------------------------------+
-| **Arch Linux**   | ::                                                                                                        |
-|                  |                                                                                                           |
-|                  |     pacman -S speech-dispatcher festival espeakup                                                         |
-+------------------+-----------------------------------------------------------------------------------------------------------+
++----------------+---------------------------------------------------+
+| **Arch Linux** | ::                                                |
+|                |                                                   |
+|                |     pacman -S speech-dispatcher festival espeakup |
++----------------+---------------------------------------------------+
 
-Troubleshooting
+Khắc phục sự cố
 ---------------
 
-If you get the error `Invalid get index '0' (on base: 'PackedStringArray').` for the line `var voice_id = voices[0]`, check if there are any items in `voices`. If not:
+Nếu bạn gặp lỗi `Invalid get index '0' (on base: 'PackedStringArray').` ở dòng `var voice_id = voices[0]`, hãy kiểm tra xem `voices` có mục nào không. Nếu không:
 
-- All users: make sure you enabled **Text to Speech** in project settings
-- Linux users: ensure you installed the system-specific libraries for text to speech
+- Tất cả người dùng: đảm bảo bạn đã bật **Text to Speech** trong cài đặt dự án
+- Người dùng Linux: đảm bảo bạn đã cài đặt các thư viện dành riêng cho hệ thống để chuyển văn bản thành giọng nói
 
-Best practices
---------------
+Các phương pháp hay nhất
+------------------------
 
-The best practices for text-to-speech, in terms of the ideal player experience for blind players, is to send output to the player's screen reader. This preserves the choice of language, speed, pitch, etc. that the user set, as well as allows advanced features like allowing players to scroll backward and forward through text. As of now, Godot doesn't provide this level of integration.
+Xét về trải nghiệm lý tưởng của người chơi khiếm thị, phương pháp tốt nhất cho tính năng chuyển văn bản thành giọng nói là gửi đầu ra đến trình đọc màn hình của người chơi. Cách này giữ nguyên lựa chọn về ngôn ngữ, tốc độ, cao độ, v.v. mà người dùng đã thiết lập, đồng thời cho phép các tính năng nâng cao như cuộn lùi và tiến qua văn bản. Hiện tại, Godot chưa cung cấp mức độ tích hợp này.
 
-With the current state of the Godot text-to-speech APIs, best practices include:
+Với trạng thái hiện tại của các API chuyển văn bản thành giọng nói trong Godot, các phương pháp hay nhất bao gồm:
 
-- Develop the game with text-to-speech enabled, and ensure that everything sounds correct
-- Allow players to control which voice to use, and save/persist that selection across game sessions
-- Allow players to control the speech rate, and save/persist that selection across game sessions
+- Phát triển game khi đã bật tính năng chuyển văn bản thành giọng nói và đảm bảo mọi thứ đều nghe chính xác
+- Cho phép người chơi chọn voice muốn sử dụng và lưu/duy trì lựa chọn đó qua các phiên chơi
+- Cho phép người chơi điều chỉnh tốc độ đọc và lưu/duy trì lựa chọn đó qua các phiên chơi
 
-This provides your blind players with the most flexibility and comfort available when not using a screen reader, and minimizes the chance of frustrating and alienating them.
+Điều này mang lại cho người chơi khiếm thị sự linh hoạt và thoải mái tối đa khi không sử dụng trình đọc màn hình, đồng thời giảm thiểu khả năng khiến họ thất vọng và cảm thấy bị gạt ra ngoài.
 
-Caveats and Other Information
------------------------------
+Lưu ý và thông tin khác
+-----------------------
 
-- Expect delays when you call `tts_speak` and `tts_stop`. The actual delay time varies depending on both the OS and on your machine's specifications. This is especially critical on Android and Web, where some of the voices depend on web services, and the actual time to playback depends on server load, network latency, and other factors.
-- Non-English text works if the correct voices are installed and used. On Windows, you can consult the instructions in `this article`_ to enable additional language voices on Windows.
-- Non-ASCII characters, such as umlaut, are pronounced correctly if you select the correct voice.
-- Blind players use a number of screen readers, including JAWS, NVDA, VoiceOver, Narrator, and more.
-- Windows text-to-speech APIs generally perform better than their equivalents on other systems (e.g. `tts_stop` followed by `tts_speak` immediately speaks the new message).
+- Hãy dự kiến có độ trễ khi gọi `tts_speak` và `tts_stop`. Thời gian trễ thực tế thay đổi tùy thuộc vào cả hệ điều hành lẫn thông số máy của bạn. Điều này đặc biệt quan trọng trên Android và Web, nơi một số voice phụ thuộc vào các dịch vụ web, còn thời gian phát lại thực tế phụ thuộc vào tải máy chủ, độ trễ mạng và các yếu tố khác.
+- Văn bản không phải tiếng Anh sẽ hoạt động nếu các voice phù hợp được cài đặt và sử dụng. Trên Windows, bạn có thể tham khảo hướng dẫn trong `this article <this article_>`_ để bật thêm các voice ngôn ngữ trên Windows.
+- Các ký tự không phải ASCII, chẳng hạn như ký tự umlaut, sẽ được phát âm chính xác nếu bạn chọn đúng voice.
+- Người chơi khiếm thị sử dụng nhiều trình đọc màn hình, bao gồm JAWS, NVDA, VoiceOver, Narrator và các trình đọc khác.
+- Các API chuyển văn bản thành giọng nói trên Windows nhìn chung hoạt động tốt hơn các API tương đương trên những hệ thống khác (ví dụ: `tts_stop` theo sau bởi `tts_speak` sẽ đọc ngay thông báo mới).
 
 .. _this article: https://www.ghacks.net/2018/08/11/unlock-all-windows-10-tts-voices-system-wide-to-get-more-of-them/

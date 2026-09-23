@@ -1,334 +1,217 @@
 .. _doc_audio_effects:
 
-Audio effects
-=============
+Hiệu ứng âm thanh
+=================
 
-Godot includes several audio effects that can be added to an audio bus to alter
-every sound that goes through that bus.
+Godot bao gồm một số hiệu ứng âm thanh có thể được thêm vào một audio bus để thay đổi mọi âm thanh đi qua bus đó.
 
 .. image:: img/audio_buses4.webp
 
-Understanding how each effect works can be difficult, so don't feel discouraged
-if you have to look things up! If you are new to audio, an understanding of the
-essential effects can help you in most cases! Those are:
+Hiểu cách hoạt động của từng hiệu ứng có thể khó, vì vậy đừng nản lòng nếu bạn phải tra cứu! Nếu bạn mới làm quen với âm thanh, hiểu các hiệu ứng thiết yếu có thể giúp ích trong hầu hết trường hợp! Đó là:
 
 - Equalizer & Filter
 - Limiter
 - Delay & Reverb
 
-Try every effect out to get a sense of how they alter sound.
+Hãy thử từng hiệu ứng để cảm nhận cách chúng thay đổi âm thanh.
 
 .. note::
 
-  :ref:`AudioSample <class_AudioSample>` does not support these effects.
+  :ref:`AudioSample <class_AudioSample>` không hỗ trợ các hiệu ứng này.
 
-Here follows short descriptions of the available effects:
+Sau đây là mô tả ngắn về các hiệu ứng hiện có:
 
 Amplify
 ~~~~~~~
 
-Changes the volume of the sound. Some care needs to be taken, though: setting
-the volume level too high can digitally clip the sound, which can produce
-unpleasant crackles and pops. Consider using a
-:ref:`hard limiter <doc_hard_limiter>` or a :ref:`compressor <doc_compressor>`
-to prevent clipping, or :ref:`distortion <doc_distortion>` on clip mode if
-clipping at or below 0 dB is desired.
+Thay đổi âm lượng của âm thanh. Tuy nhiên, cần thận trọng: đặt mức âm lượng quá cao có thể khiến âm thanh bị clip kỹ thuật số, tạo ra những tiếng lách tách và bụp khó chịu. Hãy cân nhắc sử dụng một
+:ref:`hard limiter <doc_hard_limiter>` hoặc :ref:`compressor <doc_compressor>` để ngăn clipping, hoặc :ref:`distortion <doc_distortion>` ở chế độ clip nếu muốn clipping ở mức 0 dB hoặc thấp hơn.
 
 .. _doc_band_limit_filter:
 
 BandLimitFilter
 ~~~~~~~~~~~~~~~
 
-A "band-limit" filter attenuates the frequencies at the *cutoff* point, and
-allows frequencies outside of that point to pass unchanged. It is similar to
-the :ref:`notch filter <doc_notch_filter>`, but weaker. It is the opposite of
-the :ref:`band-pass filter <doc_band_pass_filter>`. This filter can be used to
-give more room for other sounds to play at the cutoff point.
+Bộ lọc "band-limit" làm suy giảm các tần số tại điểm *cutoff*, đồng thời cho phép các tần số bên ngoài điểm đó đi qua không thay đổi. Nó tương tự :ref:`notch filter <doc_notch_filter>`, nhưng yếu hơn. Đây là đối lập của :ref:`band-pass filter <doc_band_pass_filter>`. Bộ lọc này có thể được dùng để tạo thêm không gian cho các âm thanh khác phát ở điểm cutoff.
 
 .. _doc_band_pass_filter:
 
 BandPassFilter
 ~~~~~~~~~~~~~~
 
-A "band-pass" filter allow frequencies at the *cutoff* point to pass unchanged,
-and attenuates frequencies outside of that point. It is the opposite of the
-:ref:`band-limit filter <doc_band_limit_filter>` and
-:ref:`notch filter <doc_notch_filter>`. This filter can be used to simulate
-sounds passing through an old telephone line or megaphone. Modulating the
-cutoff point can simulate the sound of a wah-wah guitar pedal, think of the
-guitar in Jimi Hendrix's *Voodoo Child (Slight Return)*.
+Bộ lọc "band-pass" cho phép các tần số tại điểm *cutoff* đi qua không thay đổi, đồng thời làm suy giảm các tần số bên ngoài điểm đó. Đây là đối lập của
+:ref:`band-limit filter <doc_band_limit_filter>` và
+:ref:`notch filter <doc_notch_filter>`. Bộ lọc này có thể được dùng để mô phỏng âm thanh truyền qua đường dây điện thoại cũ hoặc loa phóng thanh. Điều biến điểm cutoff có thể mô phỏng âm thanh của bàn đạp wah-wah cho guitar, chẳng hạn tiếng guitar trong *Voodoo Child (Slight Return)* của Jimi Hendrix.
 
 Capture
 ~~~~~~~
 
-Copies the audio samples of the audio bus that this effect is attached to
-into an internal ring buffer. This can be used to capture data from the
-microphone or to transmit audio over the network in real-time. In general, it
-can be used to store real-time audio data for playback, and even to create
-real-time audio visualization, like an oscilloscope. This effect does not alter
-the audio.
+Sao chép các mẫu âm thanh của audio bus mà hiệu ứng này được gắn vào một ring buffer nội bộ. Tính năng này có thể được dùng để thu thập dữ liệu từ microphone hoặc truyền âm thanh qua mạng theo thời gian thực. Nhìn chung, nó có thể được dùng để lưu trữ dữ liệu âm thanh theo thời gian thực nhằm phát lại, thậm chí tạo hình ảnh trực quan hóa âm thanh theo thời gian thực, chẳng hạn như một oscilloscope. Hiệu ứng này không thay đổi âm thanh.
 
 Chorus
 ~~~~~~
 
-A "chorus" effect duplicates a signal and very slightly alters the timing and
-pitch of each duplicate, and modulates them over time via an LFO
-(low-frequency oscillator). The duplicates (also called "voices") are then
-mixed back together with the original signal, giving the impression that the
-sound comes from multiple sources. In the real world, this kind of effect is
-found in pianos, choirs, and instrument ensembles. This effect can also be used
-to widen mono audio and make digital sounds have a more natural or analog
-quality.
+Hiệu ứng "chorus" nhân đôi một tín hiệu rồi thay đổi rất nhẹ thời điểm và cao độ của từng bản sao, đồng thời điều biến chúng theo thời gian thông qua một LFO (low-frequency oscillator). Các bản sao (còn gọi là "voice") sau đó được trộn lại với tín hiệu gốc, tạo cảm giác âm thanh phát ra từ nhiều nguồn. Trong thực tế, loại hiệu ứng này có trong piano, hợp xướng và các nhóm nhạc cụ. Hiệu ứng này cũng có thể được dùng để mở rộng âm thanh mono và khiến âm thanh kỹ thuật số có chất lượng tự nhiên hoặc analog hơn.
 
 .. _doc_compressor:
 
 Compressor
 ~~~~~~~~~~
 
-A "compressor" automatically attenuates (or "ducks") the volume of the input
-signal when its amplitude exceeds a certain volume threshold. The amount of
-attenuation applied is proportional to how far the input audio exceeds the
-threshold. The compressor's Ratio parameter controls the degree of attenuation.
-One of the main uses of a compressor is to reduce the dynamic range of signals
-with very loud and quiet parts. Reducing the dynamic range of a signal can make
-it fit more comfortably in a mix.
+Một "compressor" tự động làm suy giảm (hoặc "duck") âm lượng của tín hiệu đầu vào khi biên độ của nó vượt quá một ngưỡng âm lượng nhất định. Mức suy giảm được áp dụng tỷ lệ thuận với mức độ âm thanh đầu vào vượt ngưỡng. Tham số Ratio của compressor điều khiển mức độ suy giảm. Một trong những công dụng chính của compressor là giảm dải động của các tín hiệu có những phần rất to và rất nhỏ. Giảm dải động của tín hiệu có thể giúp tín hiệu hòa trộn dễ dàng hơn trong một bản mix.
 
-The compressor has many uses. For example:
+Compressor có nhiều công dụng. Ví dụ:
 
-- It can be used in the Master bus to compress the whole output before it hits
-  a limiter's ceiling, which makes the effect of the limiter much more subtle.
-- It can be used in voice clips to ensure they sound as even as possible.
-- It can be *sidechained* by another sound source. This means it can reduce the
-  volume of one signal by using the volume of another audio bus for threshold
-  detection. This technique is very common in video game mixing to "duck" the
-  volume of music or sound effects when in-game or multiplayer voices need to
-  be fully audible.
-- It can accentuate *transients* by using a slower attack, which lets louder
-  parts go through before they are compressed. This can emphasize the
-  "punchiness" of sound effects.
+- Có thể dùng trong Master bus để nén toàn bộ đầu ra trước khi tín hiệu chạm đến ngưỡng trần của limiter, giúp hiệu ứng của limiter tinh tế hơn nhiều.
+- Có thể dùng cho các voice clip để đảm bảo chúng có âm lượng đồng đều nhất có thể.
+- Có thể được *sidechained* bởi một nguồn âm thanh khác. Điều này có nghĩa là nó có thể giảm âm lượng của một tín hiệu bằng cách sử dụng âm lượng của một audio bus khác để phát hiện ngưỡng. Kỹ thuật này rất phổ biến trong việc mixing game để "duck" âm lượng của nhạc hoặc hiệu ứng âm thanh khi giọng nói trong game hoặc multiplayer cần được nghe rõ hoàn toàn.
+- Có thể làm nổi bật *transients* bằng cách sử dụng attack chậm hơn, cho phép các phần lớn hơn đi qua trước khi bị nén. Điều này có thể nhấn mạnh độ "punchy" của các hiệu ứng âm thanh.
 
 .. note::
 
-  If your goal is solely to prevent a signal from exceeding a given amplitude
-  altogether, a :ref:`hard limiter <doc_hard_limiter>` is likely a better
-  choice than a compressor for this purpose. However, applying compression
-  before a limiter is still good practice.
+  Nếu mục tiêu duy nhất của bạn là ngăn tín hiệu vượt quá một biên độ nhất định, :ref:`hard limiter <doc_hard_limiter>` có thể là lựa chọn phù hợp hơn compressor cho mục đích này. Tuy nhiên, áp dụng compression trước limiter vẫn là một cách làm tốt.
 
 .. _doc_delay:
 
 Delay
 ~~~~~
 
-A "delay" effect duplicates a signal and repeats it multiple times, with a
-short period of time between each repetition (also called "tap"). Taps decay
-in volume over time. All of this creates an echo effect. Delay is great to
-simulate the acoustic space of a canyon or large room, where sound bounces off
-of surfaces and arrives at the listener after some *delay*. This is similar to
-:ref:`reverb <doc_reverb>`, which has a more natural and blurred sound to it.
-Using delay in conjunction with reverb can create very natural sounding
-environments.
+Hiệu ứng "delay" nhân đôi một tín hiệu và lặp lại nhiều lần, với một khoảng thời gian ngắn giữa mỗi lần lặp (còn gọi là "tap"). Âm lượng của các tap giảm dần theo thời gian. Tất cả tạo ra hiệu ứng tiếng vang. Delay rất phù hợp để mô phỏng không gian âm học của hẻm núi hoặc căn phòng lớn, nơi âm thanh dội lại từ các bề mặt và đến tai người nghe sau một khoảng *delay*. Điều này tương tự
+:ref:`reverb <doc_reverb>`, vốn có âm thanh tự nhiên và mờ hơn. Sử dụng delay kết hợp với reverb có thể tạo ra môi trường âm thanh rất tự nhiên.
 
 .. _doc_distortion:
 
 Distortion
 ~~~~~~~~~~
 
-A "distortion" effect modifies the volume of the sound in a way that changes
-its waveform, which can result in a "harsh" and "bright" sound.
+Hiệu ứng "distortion" thay đổi âm lượng của âm thanh theo cách làm biến đổi waveform, có thể tạo ra âm thanh "gắt" và "sáng".
 
-Here are some of the distortion types that Godot offers:
+Sau đây là một số loại distortion mà Godot cung cấp:
 
-- *Clip*: clamps the volume of the sound, which makes it sound harsh.
-- *Overdrive*: sounds like a guitar distortion pedal or megaphone.
-- *Lo-fi*: reduces the *bit depth* of the signal, emulating old speakers.
+- *Clip*: giới hạn âm lượng của âm thanh, khiến âm thanh trở nên gắt.
+- *Overdrive*: tạo âm thanh giống bàn đạp distortion cho guitar hoặc loa phóng thanh.
+- *Lo-fi*: giảm *bit depth* của tín hiệu, mô phỏng loa cũ.
 
-All types of distortion can add higher frequencies to the original sound, which
-helps it stand out better in a mix.
+Mọi loại distortion đều có thể thêm các tần số cao hơn vào âm thanh gốc, giúp âm thanh nổi bật hơn trong một bản mix.
 
 .. warning::
 
-  Be careful with the amount of distortion added, as it can create very harsh
-  and loud sounds.
+  Hãy thận trọng với lượng distortion được thêm vào, vì nó có thể tạo ra âm thanh rất gắt và lớn.
 
 EQ
 ~~
 
-An "equalizer" gives you control over the gain of frequencies in the entire
-spectrum, through the use of "bands" which represent different regions of the
-spectrum. Equalizers can be essential to achieve a cleaner mix, allowing
-multiple sounds to play together without frequencies competing with each other.
-An equalizer on the Master bus can be useful to attenuate low and high
-frequencies that the device's speakers can't reproduce well. For example,
-phone and tablet speakers usually don't reproduce low frequency sounds well,
-and could make a limiter or compressor attenuate the Master volume more than
-necessary. This effect can be disabled when headphones are plugged in, which
-gives the user the best of both worlds.
+Một "equalizer" cho phép bạn kiểm soát gain của các tần số trong toàn bộ phổ âm, thông qua việc sử dụng các "band" đại diện cho những vùng khác nhau của phổ. Equalizer có thể rất cần thiết để tạo ra một bản mix sạch hơn, cho phép nhiều âm thanh phát cùng nhau mà không cạnh tranh tần số. Equalizer trên Master bus có thể hữu ích để làm suy giảm các tần số thấp và cao mà loa của thiết bị không thể tái tạo tốt. Ví dụ, loa điện thoại và máy tính bảng thường không tái tạo tốt các âm thanh tần số thấp, đồng thời có thể khiến limiter hoặc compressor làm suy giảm âm lượng Master nhiều hơn mức cần thiết. Có thể tắt hiệu ứng này khi cắm tai nghe, nhờ đó người dùng có được lợi ích tốt nhất trong cả hai trường hợp.
 
 .. note::
 
-  This audio effect is what all other equalizers inherit from. It can be
-  extended with custom scripts to create an equalizer with a custom number of
-  bands.
+  Hiệu ứng âm thanh này là lớp cơ sở mà mọi equalizer khác kế thừa. Có thể mở rộng nó bằng các script tùy chỉnh để tạo một equalizer với số lượng band tùy chỉnh.
 
 EQ6, EQ10, EQ21
 ~~~~~~~~~~~~~~~
 
-Godot provides three equalizers with different numbers of bands, which are
-represented in the title (6, 10, and 21 bands, respectively).
+Godot cung cấp ba bộ equalizer với số lượng dải tần khác nhau, được thể hiện trong tiêu đề (lần lượt là 6, 10 và 21 dải).
 
 Filter
 ~~~~~~
 
-A "filter" controls the gain of frequencies, through the use of a *cutoff* as a
-frequency threshold. It differs from an equalizer in that it uses different
-"shapes" to control frequencies; meaning frequencies will have their gain
-adjusted whether they are lower, higher, at, or outside the cutoff point,
-depending on the filter type. Filters can help give room to each sound and
-create interesting effects.
+Một "filter" điều khiển gain của các tần số bằng cách sử dụng *cutoff* làm ngưỡng tần số. Filter khác với equalizer ở chỗ nó sử dụng các "hình dạng" khác nhau để điều khiển tần số; nghĩa là gain của các tần số sẽ được điều chỉnh tùy thuộc vào việc chúng thấp hơn, cao hơn, nằm tại hoặc nằm ngoài điểm cutoff, tùy theo loại filter. Filter có thể giúp tạo không gian cho từng âm thanh và tạo ra các hiệu ứng thú vị.
 
 .. note::
 
-  This audio effect is what all other filters inherit from. It should not be
-  used directly.
+  Hiệu ứng âm thanh này là lớp mà tất cả các filter khác kế thừa. Không nên sử dụng trực tiếp hiệu ứng này.
 
 .. _doc_hard_limiter:
 
 HardLimiter
 ~~~~~~~~~~~
 
-A "limiter" disallows audio signals from exceeding a given volume threshold
-level. Hard limiters predict volume peaks, and will smoothly apply gain
-reduction when the volume crosses the ceiling threshold level. It works
-similarly to a compressor, but is designed to not let the volume cross a
-certain volume level at all. Adding a limiter as the last effect of the Master
-bus is good practice, as it offers an easy safeguard against clipping.
-If clipping is desired, consider using the :ref:`distortion <doc_distortion>`
-effect on clip mode.
+Một "limiter" ngăn tín hiệu âm thanh vượt quá mức ngưỡng âm lượng đã cho. Hard limiter dự đoán các đỉnh âm lượng và áp dụng giảm gain một cách mượt mà khi âm lượng vượt qua mức ngưỡng trần. Nó hoạt động tương tự compressor, nhưng được thiết kế để hoàn toàn không cho âm lượng vượt qua một mức nhất định. Thêm limiter làm hiệu ứng cuối cùng của bus Master là một thực hành tốt, vì nó cung cấp một biện pháp bảo vệ đơn giản chống clipping. Nếu muốn clipping, hãy cân nhắc sử dụng hiệu ứng :ref:`distortion <doc_distortion>` ở chế độ clip.
 
 HighPassFilter
 ~~~~~~~~~~~~~~
 
-A "high-pass" filter attenuates frequencies lower than the *cutoff* point and
-allows higher frequencies to pass unchanged. This filter can be used to remove
-the bass content of a signal, making it sound "thinner".
+Filter "high-pass" làm suy giảm các tần số thấp hơn điểm *cutoff* và cho phép các tần số cao hơn đi qua mà không thay đổi. Có thể sử dụng filter này để loại bỏ thành phần bass của tín hiệu, khiến âm thanh trở nên "mỏng" hơn.
 
 HighShelfFilter
 ~~~~~~~~~~~~~~~
 
-A "high-shelf" filter controls the gain of all frequencies above the *cutoff*
-point. This filter can be used to increase or decrease clarity of a sound.
+Filter "high-shelf" điều khiển gain của tất cả các tần số cao hơn điểm *cutoff*. Có thể sử dụng filter này để tăng hoặc giảm độ rõ của âm thanh.
 
 Limiter
 ~~~~~~~
 
 .. note::
 
-  This is the old limiter effect, and it is recommended to use the new
-  :ref:`hard limiter <doc_hard_limiter>` effect instead. This effect is kept to
-  preserve compatibility, however it should be considered deprecated.
+  Đây là hiệu ứng limiter cũ và nên sử dụng hiệu ứng mới
+  :ref:`hard limiter <doc_hard_limiter>` thay thế. Hiệu ứng này được giữ lại để duy trì khả năng tương thích, tuy nhiên nên xem là đã deprecated.
 
-Here is an example of how this effect works: if the ceiling is set to -12 dB,
-and the threshold is 0 dB, all samples going through get reduced by 12 dB.
-This changes the waveform of the sound and introduces distortion.
+Ví dụ về cách hiệu ứng này hoạt động: nếu mức trần được đặt thành -12 dB và ngưỡng là 0 dB, tất cả sample đi qua sẽ bị giảm 12 dB. Điều này làm thay đổi waveform của âm thanh và tạo ra distortion.
 
 LowPassFilter
 ~~~~~~~~~~~~~
 
-A "low-pass" filter attenuates frequencies higher than the *cutoff* point and
-allows lower frequencies to pass unchanged. Low pass filters can be used to
-simulate "muffled" sounds. For instance, underwater sounds, sounds blocked by
-walls, or distant sounds.
+Filter "low-pass" làm suy giảm các tần số cao hơn điểm *cutoff* và cho phép các tần số thấp hơn đi qua mà không thay đổi. Có thể sử dụng filter low-pass để mô phỏng âm thanh "bị nghẹt". Ví dụ: âm thanh dưới nước, âm thanh bị tường chắn hoặc âm thanh từ xa.
 
 LowShelfFilter
 ~~~~~~~~~~~~~~
 
-A "low-shelf" filter controls the gain of all frequencies below the *cutoff*
-point. This filter can be used to adjust the "strength" of a sound, by
-increasing or decreasing the gain of the bass range.
+Filter "low-shelf" điều khiển gain của tất cả các tần số thấp hơn điểm *cutoff*. Có thể sử dụng filter này để điều chỉnh "độ mạnh" của âm thanh bằng cách tăng hoặc giảm gain của dải bass.
 
 .. _doc_notch_filter:
 
 NotchFilter
 ~~~~~~~~~~~
 
-A "notch" filter attenuates the frequencies at the *cutoff* point, and allows
-frequencies outside of that point to pass unchanged. It is the opposite of the
-:ref:`band-pass filter <doc_band_pass_filter>`. This filter can be used to give
-more room for other sounds to play at the cutoff point. Because of how much it
-attenuates frequencies, it can also be used to completely remove very specific
-and undesired frequencies.
+Filter "notch" làm suy giảm các tần số tại điểm *cutoff* và cho phép các tần số nằm ngoài điểm đó đi qua mà không thay đổi. Đây là điều ngược lại với
+:ref:`band-pass filter <doc_band_pass_filter>`. Có thể sử dụng filter này để tạo thêm không gian cho các âm thanh khác phát tại điểm cutoff. Do làm suy giảm tần số mạnh, filter này cũng có thể được sử dụng để loại bỏ hoàn toàn các tần số rất cụ thể và không mong muốn.
 
 Panner
 ~~~~~~
 
-Moves the sound to the left or right. Headphones are recommended when
-configuring this effect.
+Di chuyển âm thanh sang trái hoặc phải. Nên sử dụng tai nghe khi cấu hình hiệu ứng này.
 
 .. note::
 
-  This effect may not be necessary with
-  :ref:`AudioStreamPlayer2D <class_AudioStreamPlayer2D>` and
-  :ref:`AudioStreamPlayer3D <class_AudioStreamPlayer3D>`, since they handle
-  panning automatically.
+  Hiệu ứng này có thể không cần thiết với
+  :ref:`AudioStreamPlayer2D <class_AudioStreamPlayer2D>` và
+  :ref:`AudioStreamPlayer3D <class_AudioStreamPlayer3D>`, vì chúng tự động xử lý việc panning.
 
 Phaser
 ~~~~~~
 
-A "phaser" effect creates a copy that is out-of-phase and mixes back together
-with the original. The copy is then modulated by an LFO
-(low-frequency oscillator), which makes some frequencies cancel each other out
-in interesting ways. The result of that is a series of peaks and troughs that
-sweep across the spectrum. This effect can be used to create sci-fi effects or
-Darth Vader-like voices.
+Hiệu ứng "phaser" tạo ra một bản sao lệch pha rồi trộn lại với bản gốc. Sau đó, bản sao được điều biến bởi một LFO (bộ dao động tần số thấp), khiến một số tần số triệt tiêu lẫn nhau theo những cách thú vị. Kết quả là một chuỗi các đỉnh và đáy quét qua phổ tần. Có thể sử dụng hiệu ứng này để tạo các hiệu ứng khoa học viễn tưởng hoặc giọng nói giống Darth Vader.
 
 PitchShift
 ~~~~~~~~~~
 
-Allows the adjustment of the signal's pitch independently of its speed. All
-frequencies can be raised or lowered with minimal effect on *transients*. This
-effect can be useful to create unusually high or deep voices. Do note that
-altering pitch can sound unnatural when pushed outside of a narrow window.
+Cho phép điều chỉnh cao độ của tín hiệu độc lập với tốc độ của tín hiệu. Có thể tăng hoặc giảm tất cả các tần số với ảnh hưởng tối thiểu đến *transients*. Hiệu ứng này hữu ích để tạo ra giọng nói cao bất thường hoặc trầm sâu. Lưu ý rằng việc thay đổi cao độ có thể tạo âm thanh không tự nhiên khi bị đẩy ra ngoài một khoảng hẹp.
 
 Record
 ~~~~~~
 
-Stores audio data into an :ref:`AudioStreamWAV <class_AudioStreamWAV>`.
-One usage example of this effect is to record microphone input and save as a
-WAV file.
+Lưu dữ liệu âm thanh vào một :ref:`AudioStreamWAV <class_AudioStreamWAV>`. Một ví dụ sử dụng hiệu ứng này là ghi đầu vào từ microphone và lưu dưới dạng tệp WAV.
 
 .. _doc_reverb:
 
 Reverb
 ~~~~~~
 
-A "reverb" effect plays a copy of the input audio back continuously, which
-decays over a period of time, and creates a blurry echo effect
-(or "reverberation"). Reverb is great to simulate sounds in different
-kinds of spaces, which can range from small rooms to big caverns. This is
-similar to :ref:`delay <doc_delay>`, which has a less blurry sound to it. Using
-reverb in conjunction with delay can create very natural sounding environments.
+Hiệu ứng "reverb" liên tục phát lại một bản sao của âm thanh đầu vào, bản sao này suy giảm theo thời gian và tạo ra hiệu ứng tiếng vọng mờ (hay "reverberation"). Reverb rất phù hợp để mô phỏng âm thanh trong nhiều loại không gian khác nhau, từ các căn phòng nhỏ đến những hang động lớn. Hiệu ứng này tương tự :ref:`delay <doc_delay>`, nhưng có âm thanh ít mờ hơn. Sử dụng reverb cùng với delay có thể tạo ra môi trường âm thanh rất tự nhiên.
 
-Reverb is commonly outputted from :ref:`Area3Ds <class_Area3D>`
-(see :ref:`Reverb buses <doc_audio_streams_reverb_buses>`).
+Reverb thường được xuất ra từ :ref:`Area3Ds <class_Area3D>` (xem :ref:`Reverb buses <doc_audio_streams_reverb_buses>`).
 
 SpectrumAnalyzer
 ~~~~~~~~~~~~~~~~
 
-Plots the amplitude of the audio signal within specified frequency ranges. This
-would typically be used for real-time audio visualization, like a spectrogram.
-Visualizing voices can be a great way to draw attention to them without
-increasing their volume. This effect does not alter audio.
+Vẽ biên độ của tín hiệu âm thanh trong các khoảng tần số được chỉ định. Thông thường, hiệu ứng này được dùng để trực quan hóa âm thanh theo thời gian thực, chẳng hạn như spectrogram. Trực quan hóa giọng nói có thể là một cách hiệu quả để thu hút sự chú ý đến giọng nói mà không cần tăng âm lượng. Hiệu ứng này không làm thay đổi âm thanh.
 
 .. note::
 
   Accessing
-  :ref:`AudioEffectSpectrumAnalyzerInstance <class_AudioEffectSpectrumAnalyzerInstance>`
-  is necessary to make use of this effect. A demo project using this can be found
-  `here <https://github.com/godotengine/godot-demo-projects/tree/master/audio/spectrum>`__.
+  Cần có :ref:`AudioEffectSpectrumAnalyzerInstance <class_AudioEffectSpectrumAnalyzerInstance>` để sử dụng hiệu ứng này. Bạn có thể tìm thấy một dự án demo sử dụng hiệu ứng này `here <https://github.com/godotengine/godot-demo-projects/tree/master/audio/spectrum>`__.
 
 StereoEnhance
 ~~~~~~~~~~~~~
 
-Adjusts the gain of the left and right channels, and makes mono sounds stereo
-through phase shift. This can be used to widen or narrow a sound. Headphones
-are recommended when configuring this effect.
+Điều chỉnh gain của các kênh trái và phải, đồng thời biến âm thanh mono thành stereo thông qua dịch pha. Có thể sử dụng hiệu ứng này để mở rộng hoặc thu hẹp âm thanh. Nên sử dụng tai nghe khi cấu hình hiệu ứng này.
