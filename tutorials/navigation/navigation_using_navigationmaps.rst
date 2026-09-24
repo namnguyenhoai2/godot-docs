@@ -1,29 +1,28 @@
 .. _doc_navigation_using_navigationmaps:
 
-Using NavigationMaps
-====================
+Sử dụng NavigationMaps
+======================
 
 .. image:: img/nav_maps.png
 
-A NavigationMap is an abstract navigation world on the NavigationServer identified by a NavigationServer :ref:`RID<class_RID>`.
+NavigationMap là một thế giới điều hướng trừu tượng trên NavigationServer, được xác định bằng :ref:`RID<class_RID>` của NavigationServer.
 
-A map can hold and connect a near infinite number of navigation regions with navigation meshes to build the traversable areas of a game world for pathfinding.
+Một map có thể chứa và kết nối gần như vô hạn navigation region với navigation mesh để xây dựng các khu vực có thể di chuyển trong thế giới game cho việc tìm đường.
 
-A map can contain avoidance agents. Collision avoidance will be calculated based on the agents present in the map.
+Một map có thể chứa các avoidance agent. Việc tránh va chạm sẽ được tính toán dựa trên các agent hiện diện trong map.
 
 .. note::
 
-    Different NavigationMaps are completely isolated from each other but navigation regions
-    and avoidance agents can switch between different maps. Switches will become effective on NavigationServer synchronization.
+    Các NavigationMap khác nhau hoàn toàn tách biệt với nhau, nhưng navigation region và avoidance agent có thể chuyển đổi giữa các map khác nhau. Việc chuyển đổi sẽ có hiệu lực khi NavigationServer đồng bộ hóa.
 
-Default navigation maps
-~~~~~~~~~~~~~~~~~~~~~~~
+Các navigation map mặc định
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-By default Godot creates a navigation map for each :ref:`World2D<class_World2D>` and :ref:`World3D<class_World3D>` of the root viewport.
+Theo mặc định, Godot tạo một navigation map cho mỗi :ref:`World2D<class_World2D>` và :ref:`World3D<class_World3D>` của root viewport.
 
-The 2D default navigation map RID can be obtained with ``get_world_2d().get_navigation_map()`` from any :ref:`Node2D<class_Node2D>` inheriting Node.
+Có thể lấy RID của navigation map mặc định 2D bằng ``get_world_2d().get_navigation_map()`` từ bất kỳ :ref:`Node2D<class_Node2D>` nào kế thừa Node.
 
-The 3D default navigation map RID can be obtained with ``get_world_3d().get_navigation_map()`` from any :ref:`Node3D<class_Node3D>` inheriting Node.
+Có thể lấy RID của navigation map mặc định 3D bằng ``get_world_3d().get_navigation_map()`` từ bất kỳ :ref:`Node3D<class_Node3D>` nào kế thừa Node.
 
 .. tabs::
  .. code-tab:: gdscript 2D GDScript
@@ -60,22 +59,18 @@ The 3D default navigation map RID can be obtained with ``get_world_3d().get_navi
         }
     }
 
-Creating new navigation maps
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tạo navigation map mới
+~~~~~~~~~~~~~~~~~~~~~~
 
-The NavigationServer can create and support as many navigation maps as required for specific gameplay.
-Additional navigation maps are created and handled by using the NavigationServer API
-directly e.g. to support different avoidance agent or actor locomotion types.
+NavigationServer có thể tạo và hỗ trợ số lượng navigation map cần thiết cho gameplay cụ thể. Các navigation map bổ sung được tạo và xử lý bằng cách sử dụng trực tiếp API của NavigationServer, chẳng hạn để hỗ trợ các loại locomotion khác nhau của avoidance agent hoặc actor.
 
-For example uses of different navigation maps see :ref:`doc_navigation_different_actor_types` and :ref:`doc_navigation_different_actor_locomotion`.
+Để xem các ví dụ sử dụng những navigation map khác nhau, hãy xem :ref:`doc_navigation_different_actor_types` và :ref:`doc_navigation_different_actor_locomotion`.
 
-Each navigation map individually synchronizes queued changes to its navigation regions and avoidance agents.
-A navigation map that has not received changes will consume little to no processing time.
-Navigation regions and avoidance agents can only be part of a single navigation map but they can switch map at any time.
+Mỗi navigation map sẽ đồng bộ độc lập các thay đổi đang chờ đối với navigation region và avoidance agent của map đó. Một navigation map chưa nhận thay đổi sẽ tiêu tốn rất ít hoặc không tiêu tốn thời gian xử lý. Navigation region và avoidance agent chỉ có thể thuộc về một navigation map duy nhất, nhưng có thể chuyển map bất kỳ lúc nào.
 
 .. note::
 
-    A navigation map switch will take effect only after the next NavigationServer synchronization.
+    Việc chuyển navigation map sẽ chỉ có hiệu lực sau lần đồng bộ NavigationServer tiếp theo.
 
 .. tabs::
  .. code-tab:: gdscript 2D GDScript
@@ -118,4 +113,4 @@ Navigation regions and avoidance agents can only be part of a single navigation 
 
 .. note::
 
-    There is no difference between navigation maps created with the NavigationServer2D API or the NavigationServer3D API.
+    Không có sự khác biệt giữa các navigation map được tạo bằng API NavigationServer2D và API NavigationServer3D.

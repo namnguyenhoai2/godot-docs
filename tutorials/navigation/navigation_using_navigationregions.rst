@@ -1,42 +1,34 @@
 .. _doc_navigation_using_navigationregions:
 
-Using NavigationRegions
-=======================
+Sử dụng NavigationRegions
+=========================
 
-NavigationRegions are the visual Node representation of a **region** of the navigation **map** on the NavigationServer.
-Each NavigationRegion node holds a resource for the navigation mesh data.
+NavigationRegions là biểu diễn Node trực quan của một **region** thuộc **map** điều hướng trên NavigationServer. Mỗi node NavigationRegion chứa một resource cho dữ liệu navigation mesh.
 
-Both 2D and 3D version are available as :ref:`NavigationRegion2D<class_NavigationRegion2D>`
-and :ref:`NavigationRegion3D<class_NavigationRegion3D>` respectively.
+Có sẵn cả phiên bản 2D và 3D, lần lượt là :ref:`NavigationRegion2D<class_NavigationRegion2D>` và :ref:`NavigationRegion3D<class_NavigationRegion3D>`.
 
-Individual NavigationRegions upload their 2D NavigationPolygon or 3D NavigationMesh resource data to the NavigationServer.
-The NavigationServer map turns this information into a combined navigation map for pathfinding.
+Các NavigationRegion riêng lẻ tải dữ liệu resource NavigationPolygon 2D hoặc NavigationMesh 3D lên NavigationServer. Map của NavigationServer chuyển thông tin này thành một navigation map kết hợp để pathfinding.
 
-To create a navigation region using the scene tree add a ``NavigationRegion2D`` or ``NavigationRegion3D`` node to the scene.
-All regions require a navigation mesh resource to function. See :ref:`doc_navigation_using_navigationmeshes` to learn how to create and apply navigation meshes.
+Để tạo một navigation region bằng scene tree, hãy thêm node ``NavigationRegion2D`` hoặc ``NavigationRegion3D`` vào scene. Tất cả region đều cần một navigation mesh resource để hoạt động. Xem :ref:`doc_navigation_using_navigationmeshes` để tìm hiểu cách tạo và áp dụng navigation mesh.
 
-NavigationRegions will automatically push ``global_transform`` changes to the region on the NavigationServer which makes them suitable for moving platforms.
-The NavigationServer will attempt to connect the navigation meshes of individual regions when they are close enough. For more details see :ref:`doc_navigation_connecting_navmesh`.
-To connect NavigationRegions over arbitrary distances see :ref:`doc_navigation_using_navigationlinks` to learn how to create and use ``NavigationLinks``.
+NavigationRegions sẽ tự động đẩy các thay đổi ``global_transform`` đến region trên NavigationServer, nhờ đó phù hợp với các nền tảng di động. NavigationServer sẽ cố gắng kết nối navigation mesh của các region riêng lẻ khi chúng đủ gần nhau. Để biết thêm chi tiết, hãy xem :ref:`doc_navigation_connecting_navmesh`. Để kết nối các NavigationRegion qua những khoảng cách bất kỳ, hãy xem :ref:`doc_navigation_using_navigationlinks` để tìm hiểu cách tạo và sử dụng ``NavigationLinks``.
 
 .. warning::
 
-    While changing the transform of a NavigationRegion node does update the region position on the
-    NavigationServer, changing the scale does not. A navigation mesh resource has no scale and needs
-    to be fully updated when source geometry changes scale.
+    Mặc dù thay đổi transform của node NavigationRegion sẽ cập nhật vị trí region trên NavigationServer, thay đổi scale thì không. Navigation mesh resource không có scale và cần được cập nhật hoàn toàn khi hình học nguồn thay đổi scale.
 
-Regions can be enabled / disabled and if disabled will not contribute to future pathfinding queries.
+Có thể bật / tắt các region; nếu bị tắt, chúng sẽ không đóng góp vào các truy vấn pathfinding trong tương lai.
 
 .. note::
 
-    Existing paths will not be automatically updated when a region gets enabled / disabled.
+    Các path hiện có sẽ không được tự động cập nhật khi một region được bật / tắt.
 
-Creating new navigation regions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tạo navigation region mới
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-New NavigationRegion nodes will automatically register to the default world navigation map for their 2D/3D dimension.
+Các node NavigationRegion mới sẽ tự động đăng ký với navigation map mặc định của world cho dimension 2D/3D tương ứng.
 
-The region RID can then be obtained from NavigationRegion Nodes with ``get_rid()``.
+Sau đó có thể lấy RID của region từ các Node NavigationRegion bằng ``get_rid()``.
 
 .. tabs::
  .. code-tab:: gdscript 2D GDScript
@@ -71,9 +63,9 @@ The region RID can then be obtained from NavigationRegion Nodes with ``get_rid()
         }
     }
 
-New regions can also be created with the NavigationServer API and added to any existing map.
+Các region mới cũng có thể được tạo bằng NavigationServer API và thêm vào bất kỳ map hiện có nào.
 
-If regions are created with the NavigationServer API directly they need to be assigned a navigation map manually.
+Nếu region được tạo trực tiếp bằng NavigationServer API, chúng cần được gán navigation map theo cách thủ công.
 
 .. tabs::
  .. code-tab:: gdscript 2D GDScript
@@ -120,5 +112,4 @@ If regions are created with the NavigationServer API directly they need to be as
 
 .. note::
 
-    Navigation regions can only be assigned to a single navigation map.
-    If an existing region is assigned to a new navigation map it will leave the old map.
+    Navigation region chỉ có thể được gán cho một navigation map duy nhất. Nếu một region hiện có được gán cho navigation map mới, nó sẽ rời khỏi map cũ.

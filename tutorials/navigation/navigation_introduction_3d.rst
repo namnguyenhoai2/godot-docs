@@ -1,119 +1,103 @@
 .. _doc_navigation_overview_3d:
 
-3D navigation overview
-======================
+Tổng quan về điều hướng 3D
+==========================
 
-Godot provides multiple objects, classes and servers to facilitate grid-based or mesh-based navigation and pathfinding for 2D and 3D games.
-The following section provides a quick overview over all available navigation related objects in Godot for 3D scenes and their primary use.
+Godot cung cấp nhiều đối tượng, class và server để hỗ trợ điều hướng và tìm đường dựa trên grid hoặc mesh cho game 2D và 3D. Phần sau đây cung cấp tổng quan nhanh về tất cả các đối tượng liên quan đến điều hướng hiện có trong Godot dành cho các scene 3D và công dụng chính của chúng.
 
-Godot provides the following objects and classes for 3D navigation:
+Godot cung cấp các đối tượng và class sau cho điều hướng 3D:
 
 - :ref:`Astar3D<class_Astar3D>`
-    ``Astar3D`` objects provide an option to find the shortest path in a graph of weighted **points**.
+    Các đối tượng ``Astar3D`` cung cấp tùy chọn tìm đường đi ngắn nhất trong một graph gồm các **điểm** có trọng số.
 
-    The AStar3D class is best suited for cell-based 3D gameplay that does not require actors to reach any possible position within an area but only predefined, distinct positions.
+    Class AStar3D phù hợp nhất cho gameplay 3D dựa trên cell, không yêu cầu actor tiếp cận mọi vị trí có thể trong một khu vực mà chỉ cần tiếp cận các vị trí riêng biệt được định trước.
 
 - :ref:`NavigationServer3D<class_NavigationServer3D>`
-    ``NavigationServer3D`` provides a powerful server API to find the shortest path between two positions on an area defined by a navigation mesh.
+    ``NavigationServer3D`` cung cấp một server API mạnh mẽ để tìm đường đi ngắn nhất giữa hai vị trí trong một khu vực được xác định bởi navigation mesh.
 
-    The NavigationServer is best suited for 3D realtime gameplay that does require actors to reach any possible position within a navigation mesh defined area.
-    Mesh-based navigation scales well with large game worlds as a large area can often be defined with a single polygon when it would require many, many grid cells.
+    NavigationServer phù hợp nhất cho gameplay 3D realtime, trong đó actor cần tiếp cận mọi vị trí có thể trong một khu vực được xác định bởi navigation mesh. Điều hướng dựa trên mesh có khả năng mở rộng tốt với các thế giới game lớn, vì một khu vực rộng thường có thể được xác định bằng một polygon duy nhất, trong khi sẽ cần rất nhiều grid cell.
 
-    The NavigationServer holds different navigation maps that each consist of regions that hold navigation mesh data.
-    Agents can be placed on a map for avoidance calculation.
-    RIDs are used to reference internal maps, regions, and agents when communicating with the server.
+    NavigationServer lưu giữ các navigation map khác nhau, mỗi map gồm các region chứa dữ liệu navigation mesh. Có thể đặt agent trên một map để tính toán tránh né. RID được dùng để tham chiếu các map, region và agent nội bộ khi giao tiếp với server.
 
-    The following NavigationServer RID types are available.
+    Có các loại NavigationServer RID sau.
         - NavMap RID
-            Reference to a specific navigation map that holds regions and agents.
-            The map will attempt to join the navigation meshes of the regions by proximity.
-            The map will synchronize regions and agents each physics frame.
+            Tham chiếu đến một navigation map cụ thể chứa các region và agent. Map sẽ cố gắng nối các navigation mesh của các region dựa trên khoảng cách gần nhau. Map sẽ đồng bộ các region và agent trong mỗi frame vật lý.
         - NavRegion RID
-            Reference to a specific navigation region that can hold navigation mesh data.
-            The region can be enabled / disabled or the use restricted with a navigation layer bitmask.
+            Tham chiếu đến một navigation region cụ thể có thể chứa dữ liệu navigation mesh. Region có thể được bật / tắt hoặc giới hạn việc sử dụng bằng navigation layer bitmask.
         - NavLink RID
-            Reference to a specific navigation link that connects two navigation mesh positions over arbitrary distances.
+            Tham chiếu đến một navigation link cụ thể, kết nối hai vị trí trên navigation mesh qua khoảng cách tùy ý.
         - NavAgent RID
-            Reference to a specific avoidance agent.
-            The avoidance is defined by a radius value.
+            Tham chiếu đến một avoidance agent cụ thể. Việc tránh né được xác định bằng một giá trị bán kính.
         - NavObstacle RID
-            Reference to a specific avoidance obstacle used to affect and constrain the avoidance velocity of agents.
+            Tham chiếu đến một avoidance obstacle cụ thể, được dùng để tác động và giới hạn vận tốc tránh né của các agent.
 
-The following scene tree nodes are available as helpers to work with the NavigationServer3D API.
+Các node trong scene tree sau đây có sẵn dưới dạng helper để làm việc với NavigationServer3D API.
 
-- :ref:`NavigationRegion3D<class_NavigationRegion3D>` Node
-    A Node that holds a Navigation Mesh resource that defines a navigation mesh for the NavigationServer3D.
+- Node :ref:`NavigationRegion3D<class_NavigationRegion3D>`
+    Một Node chứa tài nguyên Navigation Mesh xác định navigation mesh cho NavigationServer3D.
 
-    - The region can be enabled / disabled.
-    - The use in pathfinding can be further restricted through the ``navigation_layers`` bitmask.
-    - The NavigationServer3D will join the navigation meshes of regions by proximity for a combined navigation mesh.
+    - Region có thể được bật / tắt.
+    - Việc sử dụng trong quá trình tìm đường có thể được giới hạn thêm thông qua bitmask ``navigation_layers``.
+    - NavigationServer3D sẽ nối các navigation mesh của các region dựa trên khoảng cách gần nhau để tạo thành một navigation mesh kết hợp.
 
-- :ref:`NavigationLink3D<class_NavigationLink3D>` Node
-    A Node that connects two positions on navigation meshes over arbitrary distances for pathfinding.
+- Node :ref:`NavigationLink3D<class_NavigationLink3D>`
+    Một Node kết nối hai vị trí trên navigation mesh qua khoảng cách tùy ý để tìm đường.
 
-    - The link can be enabled / disabled.
-    - The link can be made one-way or bidirectional.
-    - The use in pathfinding can be further restricted through the ``navigation_layers`` bitmask.
+    - Link có thể được bật / tắt.
+    - Link có thể được thiết lập một chiều hoặc hai chiều.
+    - Việc sử dụng trong quá trình tìm đường có thể được giới hạn thêm thông qua bitmask ``navigation_layers``.
 
-    Links tell the pathfinding that a connection exists and at what cost. The actual agent handling and movement needs to happen in custom scripts.
+    Link cho quá trình tìm đường biết rằng có một kết nối tồn tại và chi phí của kết nối đó. Việc xử lý và di chuyển agent thực tế cần được thực hiện trong các script tùy chỉnh.
 
--  :ref:`NavigationAgent3D<class_NavigationAgent3D>` Node
-    A helper Node used to facilitate common NavigationServer3D API calls for pathfinding and avoidance.
-    Use this Node with a Node3D inheriting parent Node.
+-  Node :ref:`NavigationAgent3D<class_NavigationAgent3D>`
+    Một Node helper được dùng để hỗ trợ các lệnh gọi NavigationServer3D API phổ biến cho việc tìm đường và tránh né. Sử dụng Node này với một Node cha kế thừa từ Node3D.
 
--  :ref:`NavigationObstacle3D<class_NavigationObstacle3D>` Node
-    A Node that can be used to affect and constrain the avoidance velocity of avoidance enabled agents.
-    This Node does NOT affect the pathfinding of agents. You need to change the navigation meshes for that instead.
+-  Node :ref:`NavigationObstacle3D<class_NavigationObstacle3D>`
+    Một Node có thể được dùng để tác động và giới hạn vận tốc tránh né của các agent đã bật tính năng tránh né. Node này KHÔNG tác động đến việc tìm đường của agent. Thay vào đó, bạn cần thay đổi các navigation mesh.
 
-The 3D navigation meshes are defined with the following resources:
+Navigation mesh 3D được xác định bằng các resource sau:
 
-- :ref:`NavigationMesh<class_NavigationMesh>` Resource
-    A resource that holds 3D navigation mesh data.
-    It provides 3D geometry baking options to define navigation areas inside the Editor as well as at runtime.
+- Resource :ref:`NavigationMesh<class_NavigationMesh>`
+    Một resource chứa dữ liệu navigation mesh 3D. Resource này cung cấp các tùy chọn baking hình học 3D để xác định các khu vực điều hướng trong Editor cũng như trong runtime.
 
-    - The NavigationRegion3D Node uses this resource to define its navigation area.
-    - The NavigationServer3D uses this resource to update the navigation mesh of individual regions.
-    - The GridMap Editor uses this resource when specific navigation meshes are defined for each grid cell.
+    - Node NavigationRegion3D sử dụng resource này để xác định khu vực điều hướng của nó.
+    - NavigationServer3D sử dụng resource này để cập nhật navigation mesh của từng region.
+    - GridMap Editor sử dụng resource này khi các navigation mesh cụ thể được xác định cho từng grid cell.
 
 .. seealso::
 
-    You can see how 3D navigation works in action using the
-    `3D Navigation demo project <https://github.com/godotengine/godot-demo-projects/tree/master/3d/navigation>`__.
+    Bạn có thể xem cách điều hướng 3D hoạt động thực tế trong project demo `3D Navigation demo project <https://github.com/godotengine/godot-demo-projects/tree/master/3d/navigation>`__.
 
-Setup for 3D scene
-------------------
+Thiết lập cho scene 3D
+----------------------
 
-The following steps show a basic setup for minimal viable navigation in 3D.
-It uses the NavigationServer3D and a NavigationAgent3D for path movement.
+Các bước sau đây trình bày cách thiết lập cơ bản để có điều hướng tối thiểu khả dụng trong 3D. Thiết lập này sử dụng NavigationServer3D và NavigationAgent3D để di chuyển theo đường đi.
 
-#. Add a NavigationRegion3D Node to the scene.
+#. Thêm một Node NavigationRegion3D vào scene.
 
-#. Click on the region node and add a new :ref:`NavigationMesh<class_NavigationMesh>` Resource to
-   the region node.
+#. Nhấp vào region node và thêm một :ref:`NavigationMesh<class_NavigationMesh>` Resource mới vào region node.
 
    .. image:: img/nav_3d_min_setup_step1.png
 
-#. Add a new MeshInstance3D node as a child of the region node.
+#. Thêm một node MeshInstance3D mới làm node con của region node.
 
-#. Select the MeshInstance3D node and add a new PlaneMesh and increase the xy size to 10.
+#. Chọn node MeshInstance3D, thêm một PlaneMesh mới và tăng kích thước xy lên 10.
 
-#. Select the region node again and press the "Bake Navmesh" button on the top bar.
+#. Chọn lại region node và nhấn nút "Bake Navmesh" trên thanh trên cùng.
 
    .. image:: img/nav_3d_min_setup_step2.png
 
-#. Now a transparent navigation mesh appears that hovers some distance on top of the PlaneMesh.
+#. Lúc này, một navigation mesh trong suốt xuất hiện, nằm lơ lửng cách một khoảng phía trên PlaneMesh.
 
    .. image:: img/nav_3d_min_setup_step3.png
 
-#. Add a CharacterBody3D node in the scene with a basic collision shape and some mesh for visuals.
+#. Thêm một node CharacterBody3D vào scene với một collision shape cơ bản và một mesh để hiển thị.
 
-#. Add a NavigationAgent3D node below the character node.
+#. Thêm một node NavigationAgent3D bên dưới node character.
 
    .. image:: img/nav_3d_min_setup_step4.webp
 
-#. Add a script to the CharacterBody3D node with the following content. We make sure to set a
-   movement target after the scene has fully loaded and the NavigationServer had time to sync.
-   Also, add a Camera3D and some light and environment to see something.
+#. Thêm một script vào node CharacterBody3D với nội dung sau. Chúng ta đảm bảo đặt movement target sau khi scene đã tải hoàn toàn và NavigationServer đã có thời gian đồng bộ. Ngoài ra, thêm một Camera3D cùng một số ánh sáng và environment để có thể quan sát được.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -126,19 +110,19 @@ It uses the NavigationServer3D and a NavigationAgent3D for path movement.
     @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 
     func _ready():
-        # These values need to be adjusted for the actor's speed
-        # and the navigation layout.
+        # Các giá trị này cần được điều chỉnh theo tốc độ của actor
+        # và bố cục điều hướng.
         navigation_agent.path_desired_distance = 0.5
         navigation_agent.target_desired_distance = 0.5
 
-        # Make sure to not await during _ready.
+        # Đảm bảo không await trong _ready.
         actor_setup.call_deferred()
 
     func actor_setup():
-        # Wait for the first physics frame so the NavigationServer can sync.
+        # Chờ khung hình vật lý đầu tiên để NavigationServer có thể đồng bộ.
         await get_tree().physics_frame
 
-        # Now that the navigation map is no longer empty, set the movement target.
+        # Giờ bản đồ điều hướng không còn trống, hãy đặt mục tiêu di chuyển.
         set_movement_target(movement_target_position)
 
     func set_movement_target(movement_target: Vector3):
@@ -177,12 +161,12 @@ It uses the NavigationServer3D and a NavigationAgent3D for path movement.
 
             _navigationAgent = GetNode<NavigationAgent3D>("NavigationAgent3D");
 
-            // These values need to be adjusted for the actor's speed
-            // and the navigation layout.
+            // Các giá trị này cần được điều chỉnh theo tốc độ của actor
+            // và bố cục điều hướng.
             _navigationAgent.PathDesiredDistance = 0.5f;
             _navigationAgent.TargetDesiredDistance = 0.5f;
 
-            // Make sure to not await during _Ready.
+            // Đảm bảo không await trong _Ready.
             Callable.From(ActorSetup).CallDeferred();
         }
 
@@ -204,14 +188,14 @@ It uses the NavigationServer3D and a NavigationAgent3D for path movement.
 
         private async void ActorSetup()
         {
-            // Wait for the first physics frame so the NavigationServer can sync.
+            // Chờ khung hình vật lý đầu tiên để NavigationServer có thể đồng bộ.
             await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
 
-            // Now that the navigation map is no longer empty, set the movement target.
+            // Giờ bản đồ điều hướng không còn trống, hãy đặt mục tiêu di chuyển.
             MovementTarget = _movementTargetPosition;
         }
     }
 
 .. note::
 
-    On the first frame the NavigationServer map has not synchronized region data and any path query will return empty. Wait for the NavigationServer synchronization by awaiting one frame in the script.
+    Ở khung hình đầu tiên, bản đồ NavigationServer chưa đồng bộ dữ liệu vùng, vì vậy mọi truy vấn đường đi sẽ trả về kết quả trống. Hãy chờ NavigationServer đồng bộ bằng cách await một khung hình trong script.

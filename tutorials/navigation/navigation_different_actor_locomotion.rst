@@ -1,21 +1,17 @@
 .. _doc_navigation_different_actor_locomotion:
 
-Support different actor locomotion
-==================================
+Hỗ trợ các kiểu di chuyển khác nhau của actor
+=============================================
 
 .. image:: img/nav_actor_locomotion.png
 
-To support different actor locomotion like crouching and crawling, a similar
-map setup as supporting :ref:`doc_navigation_different_actor_types` is required.
+Để hỗ trợ các kiểu di chuyển khác nhau của actor như cúi người và bò, cần có thiết lập bản đồ tương tự như khi hỗ trợ :ref:`doc_navigation_different_actor_types`.
 
-Bake different navigation meshes with an appropriate height for crouched
-or crawling actors so they can find paths through those narrow sections in your game world.
+Bake các navigation mesh khác nhau với chiều cao phù hợp cho actor đang cúi người hoặc bò, để chúng có thể tìm đường đi qua những khu vực hẹp đó trong thế giới game của bạn.
 
-When an actor changes locomotion state, e.g. stands up, starts
-crouching or crawling, query the appropriate map for a path.
+Khi actor thay đổi trạng thái di chuyển, chẳng hạn như đứng lên, bắt đầu cúi người hoặc bò, hãy truy vấn bản đồ thích hợp để tìm đường đi.
 
-If the avoidance behavior should also change with the locomotion e.g. only avoid while standing or only avoid
-other agents in the same locomotion state, switch the actor's avoidance agent to another avoidance map with each locomotion change.
+Nếu hành vi tránh né cũng cần thay đổi theo trạng thái di chuyển, chẳng hạn như chỉ tránh khi đang đứng hoặc chỉ tránh các agent khác ở cùng trạng thái di chuyển, hãy chuyển avoidance agent của actor sang một avoidance map khác sau mỗi lần thay đổi trạng thái di chuyển.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -74,4 +70,4 @@ other agents in the same locomotion state, switch the actor's avoidance agent to
 
 .. note::
 
-    While a path query can be execute immediately for multiple maps, the avoidance agent map switch will only take effect after the next server synchronization.
+    Mặc dù có thể thực hiện truy vấn đường đi ngay lập tức cho nhiều map, việc chuyển map của avoidance agent sẽ chỉ có hiệu lực sau lần đồng bộ hóa máy chủ tiếp theo.

@@ -1,22 +1,20 @@
 .. _doc_navigation_debug_tools:
 
-Navigation debug tools
-======================
+Công cụ gỡ lỗi điều hướng
+=========================
 
 .. note::
 
-    The debug tools, properties and functions are only available in Godot debug builds.
-    Do not use any of them in code that will be part of a release build.
+    Các công cụ, thuộc tính và hàm gỡ lỗi chỉ khả dụng trong các bản build debug của Godot. Không sử dụng bất kỳ thành phần nào trong số đó trong mã sẽ thuộc về bản build phát hành.
 
-Enabling navigation debug
--------------------------
+Bật gỡ lỗi điều hướng
+---------------------
 
-The navigation debug visualizations are enabled by default inside the editor.
-To visualize navigation meshes and connections at runtime too, enable the option **Visible Navigation** in the editor **Debug** menu.
+Các hình ảnh trực quan hóa gỡ lỗi điều hướng được bật theo mặc định trong editor. Để cũng trực quan hóa navigation mesh và các kết nối khi chạy runtime, hãy bật tùy chọn **Visible Navigation** trong menu **Debug** của editor.
 
 .. image:: img/navigation_debug_toggle.png
 
-In Godot debug builds the navigation debug can also be toggled through the NavigationServer singletons from scripts.
+Trong các bản build debug của Godot, bạn cũng có thể bật hoặc tắt gỡ lỗi điều hướng thông qua các singleton NavigationServer từ script.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -29,33 +27,28 @@ In Godot debug builds the navigation debug can also be toggled through the Navig
     NavigationServer2D.SetDebugEnabled(false);
     NavigationServer3D.SetDebugEnabled(true);
 
-Debug visualizations are currently based on Nodes in the SceneTree. If the :ref:`NavigationServer2D<class_NavigationServer2D>` or :ref:`NavigationServer3D<class_NavigationServer3D>`
-APIs are used exclusively then changes will not be reflected by the debug navigation tools.
+Các hình ảnh trực quan hóa gỡ lỗi hiện dựa trên các Node trong SceneTree. Nếu chỉ sử dụng các API :ref:`NavigationServer2D<class_NavigationServer2D>` hoặc :ref:`NavigationServer3D<class_NavigationServer3D>` thì các thay đổi sẽ không được phản ánh trong các công cụ gỡ lỗi điều hướng.
 
-Navigation debug settings
+Cài đặt gỡ lỗi điều hướng
 -------------------------
 
-The appearance of navigation debug can be changed in the ProjectSettings under ``debug/shapes/navigation``.
-Certain debug features can also be enabled or disabled at will but may require a scene restart to take effect.
+Có thể thay đổi giao diện gỡ lỗi điều hướng trong ProjectSettings tại ``debug/shapes/navigation``. Một số tính năng gỡ lỗi cũng có thể được bật hoặc tắt tùy ý, nhưng có thể yêu cầu khởi động lại scene để có hiệu lực.
 
 .. image:: img/nav_debug_settings.png
 
-Debug navigation mesh polygons
-------------------------------
+Các polygon navigation mesh khi gỡ lỗi
+--------------------------------------
 
-If ``enable_edge_lines`` is enabled, the edges of navigation mesh polygons will be highlighted.
-If ``enable_edge_lines_xray`` is also enabled, the edges of navigation meshes will be visible through geometry.
+Nếu bật ``enable_edge_lines``, các cạnh của polygon navigation mesh sẽ được làm nổi bật. Nếu cũng bật ``enable_edge_lines_xray``, các cạnh của navigation mesh sẽ hiển thị xuyên qua hình học.
 
-If ``enable_geometry_face_random_color`` is enabled, the color of each navigation mesh face will be mixed with a random color that is itself mixed with the color specified in ``geometry_face_color``.
+Nếu bật ``enable_geometry_face_random_color``, màu của mỗi mặt navigation mesh sẽ được pha trộn với một màu ngẫu nhiên, màu này lại được pha trộn với màu được chỉ định trong ``geometry_face_color``.
 
 .. image:: img/nav_debug_xray_edge_lines.png
 
-Debug edge connections
-----------------------
+Các kết nối cạnh khi gỡ lỗi
+---------------------------
 
-When two navigation meshes are connected within ``edge_connection_margin`` distance, the connection is overlaid.
-The color of the overlay is controlled by ``edge_connection_color``.
-The connections can be made visible through geometry with ``enable_edge_connections_xray``.
+Khi hai navigation mesh được kết nối trong phạm vi khoảng cách ``edge_connection_margin``, kết nối sẽ được phủ lớp hiển thị. Màu của lớp phủ được điều khiển bởi ``edge_connection_color``. Có thể làm cho các kết nối hiển thị xuyên qua hình học bằng ``enable_edge_connections_xray``.
 
 .. image:: img/nav_edge_connection2d.gif
 
@@ -63,32 +56,29 @@ The connections can be made visible through geometry with ``enable_edge_connecti
 
 .. note::
 
-    Edge connections are only visible when the NavigationServer is active.
+    Các kết nối cạnh chỉ hiển thị khi NavigationServer đang hoạt động.
 
-Debug performance
------------------
+Hiệu năng khi gỡ lỗi
+--------------------
 
-To measure NavigationServer performance a dedicated monitor exists that can be found within the Editor Debugger under *Debugger->Monitors->Navigation Process*.
+Để đo hiệu năng của NavigationServer, có một monitor chuyên dụng nằm trong Editor Debugger tại *Debugger->Monitors->Navigation Process*.
 
 .. image:: img/navigation_debug_performance1.webp
 
-Navigation Process shows how long the NavigationServer spends updating its internals this update frame in milliseconds.
-Navigation Process works similar to Process for visual frame rendering and Physics Process for collision and fixed updates.
+Navigation Process cho biết thời gian NavigationServer dành để cập nhật các thành phần nội bộ trong frame cập nhật này, tính bằng mili giây. Navigation Process hoạt động tương tự Process đối với việc render frame hình ảnh và Physics Process đối với các cập nhật va chạm và cập nhật cố định.
 
-Navigation Process accounts for all updates to **navigation maps**, **navigation regions** and **navigation agents** as well as all the **avoidance calculations** for the update frame.
+Navigation Process tính cả mọi cập nhật đối với **navigation maps**, **navigation regions** và **navigation agents**, cũng như tất cả **avoidance calculations** cho frame cập nhật.
 
 .. note::
 
-    Navigation Process does NOT include pathfinding performance cause pathfinding operates on the navigation map data independently from the server process update.
+    Navigation Process KHÔNG bao gồm hiệu năng tìm đường, vì việc tìm đường hoạt động độc lập trên dữ liệu navigation map với quá trình cập nhật của server.
 
-Navigation Process should be in general kept as low and as stable as possible for runtime performance to avoid frame rate issues.
-Note that since the NavigationServer process update happens in the middle of the physics update an increase in Navigation Process will automatically increase Physics Process by the same amount.
+Nhìn chung, Navigation Process nên được giữ ở mức thấp và ổn định nhất có thể để bảo đảm hiệu năng runtime và tránh các vấn đề về tốc độ khung hình. Lưu ý rằng vì quá trình cập nhật của NavigationServer diễn ra ở giữa quá trình cập nhật vật lý, việc Navigation Process tăng sẽ tự động làm Physics Process tăng cùng một lượng.
 
-Navigation also provides more detailed statistics about the current navigation related objects and navigation map composition on the NavigationServer.
+Navigation cũng cung cấp các thống kê chi tiết hơn về những đối tượng liên quan đến navigation hiện tại và cấu trúc của navigation map trên NavigationServer.
 
 .. image:: img/navigation_debug_performance2.webp
 
-Navigation statistics shown here can not be judged as good or bad for performance as it depends entirely on the project what can be considered as reasonable or horribly excessive.
+Không thể đánh giá các thống kê navigation hiển thị ở đây là tốt hay xấu đối với hiệu năng, vì điều đó hoàn toàn phụ thuộc vào dự án và những gì được xem là hợp lý hoặc quá mức nghiêm trọng.
 
-Navigation statistics help with identifying performance bottlenecks that are less obvious because the source might not always have a visible representation.
-E.g. pathfinding performance issues created by overly detailed navigation meshes with thousand of edges / polygons or problems caused by procedural navigation gone wrong.
+Các thống kê navigation giúp xác định những điểm nghẽn hiệu năng ít rõ ràng hơn, vì nguồn gây ra chúng có thể không phải lúc nào cũng có biểu diễn trực quan. Ví dụ: các vấn đề về hiệu năng tìm đường do navigation mesh quá chi tiết với hàng nghìn cạnh / polygon, hoặc các vấn đề do navigation procedural hoạt động không đúng.

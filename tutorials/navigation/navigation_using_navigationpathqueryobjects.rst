@@ -1,54 +1,49 @@
 .. _doc_navigation_using_navigationpathqueryobjects:
 
-Using NavigationPathQueryObjects
-================================
+Sử dụng NavigationPathQueryObjects
+==================================
 
 .. tip::
 
-    Path query parameters expose various options to improve pathfinding performance or lower memory consumption.
+    Các tham số truy vấn đường đi cung cấp nhiều tùy chọn để cải thiện hiệu năng tìm đường hoặc giảm mức tiêu thụ bộ nhớ.
 
-    They cater to more advanced pathfinding needs that the high-level nodes can not always cover.
+    Chúng phục vụ các nhu cầu tìm đường nâng cao mà các node cấp cao không phải lúc nào cũng đáp ứng được.
 
-    See the respective option sections below.
+    Xem các phần tùy chọn tương ứng bên dưới.
 
-``NavigationPathQueryObjects`` can be used together with ``NavigationServer.query_path()``
-to obtain a heavily **customized** navigation path including optional **metadata** about the path.
+``NavigationPathQueryObjects`` có thể được sử dụng cùng với ``NavigationServer.query_path()`` để nhận một đường đi điều hướng được **tùy chỉnh** ở mức cao, bao gồm **siêu dữ liệu** tùy chọn về đường đi.
 
-This requires more setup compared to obtaining a normal NavigationPath but lets you tailor
-the pathfinding and provided path data to the different needs of a project.
+Cách này yêu cầu thiết lập nhiều hơn so với việc nhận một NavigationPath thông thường, nhưng cho phép bạn điều chỉnh việc tìm đường và dữ liệu đường đi được cung cấp theo các nhu cầu khác nhau của dự án.
 
-NavigationPathQueryObjects consist of a pair of objects, a ``NavigationPathQueryParameters`` object holding the customization options
-for the query and a ``NavigationPathQueryResult`` that receives (regular) updates with the resulting path and metadata from the query.
+NavigationPathQueryObjects bao gồm một cặp object: một object ``NavigationPathQueryParameters`` chứa các tùy chọn tùy chỉnh cho truy vấn và một ``NavigationPathQueryResult`` nhận các cập nhật (thông thường) về đường đi kết quả cùng siêu dữ liệu từ truy vấn.
 
-2D and 3D versions of ``NavigationPathQueryParameters`` are available as
-:ref:`NavigationPathQueryParameters2D<class_NavigationPathQueryParameters2D>` and
-:ref:`NavigationPathQueryParameters3D<class_NavigationPathQueryParameters3D>` respectively.
+Các phiên bản 2D và 3D của ``NavigationPathQueryParameters`` có sẵn dưới dạng
+:ref:`NavigationPathQueryParameters2D<class_NavigationPathQueryParameters2D>` và
+:ref:`NavigationPathQueryParameters3D<class_NavigationPathQueryParameters3D>` tương ứng.
 
-2D and 3D versions of ``NavigationPathQueryResult`` are available as
-:ref:`NavigationPathQueryResult2D<class_NavigationPathQueryResult2D>` and
-:ref:`NavigationPathQueryResult3D<class_NavigationPathQueryResult3D>` respectively.
+Các phiên bản 2D và 3D của ``NavigationPathQueryResult`` có sẵn dưới dạng
+:ref:`NavigationPathQueryResult2D<class_NavigationPathQueryResult2D>` và
+:ref:`NavigationPathQueryResult3D<class_NavigationPathQueryResult3D>` tương ứng.
 
-Creating a basic path query
----------------------------
+Tạo một truy vấn đường đi cơ bản
+--------------------------------
 
-Both parameters and result are used as a pair with the ``NavigationServer.query_path()`` function.
+Cả tham số và kết quả đều được sử dụng theo cặp với hàm ``NavigationServer.query_path()``.
 
-For the available customization options, see further below. See also the descriptions for each parameter in the class reference.
+Để xem các tùy chọn tùy chỉnh hiện có, hãy xem phần bên dưới. Đồng thời xem phần mô tả cho từng tham số trong tài liệu tham chiếu lớp.
 
-While not a strict requirement, both objects are intended to be created once in advance, stored in a
-persistent variable for the agent and reused for every followup path query with updated parameters.
+Mặc dù không bắt buộc nghiêm ngặt, hai object này được thiết kế để tạo một lần từ trước, lưu trong một biến persistent cho agent và tái sử dụng cho mỗi truy vấn đường đi tiếp theo với các tham số được cập nhật.
 
-Reusing the same objects improves performance when frequently creating objects or allocating memory.
+Việc tái sử dụng cùng các object sẽ cải thiện hiệu năng khi thường xuyên tạo object hoặc cấp phát bộ nhớ.
 
-The following script creates the objects and provides a ``query_path()`` function to create new navigation paths.
-The resulting path is identical to using ``NavigationServer.map_get_path()`` while reusing the objects.
+Script sau đây tạo các object và cung cấp một hàm ``query_path()`` để tạo các đường đi điều hướng mới. Đường đi kết quả giống hệt như khi sử dụng ``NavigationServer.map_get_path()``, đồng thời tái sử dụng các object.
 
 .. tabs::
  .. code-tab:: gdscript 2D GDScript
 
     extends Node2D
 
-    # Prepare query objects.
+    # Chuẩn bị các object truy vấn.
     var query_parameters := NavigationPathQueryParameters2D.new()
     var query_result := NavigationPathQueryResult2D.new()
 
@@ -59,7 +54,7 @@ The resulting path is identical to using ``NavigationServer.map_get_path()`` whi
         var map: RID = get_world_2d().get_navigation_map()
 
         if NavigationServer2D.map_get_iteration_id(map) == 0:
-            # This map has never synced and is empty, no point in querying it.
+            # Bản đồ này chưa bao giờ được đồng bộ hóa và đang trống, không có lý do gì để truy vấn nó.
             return PackedVector2Array()
 
         query_parameters.map = map
@@ -76,7 +71,7 @@ The resulting path is identical to using ``NavigationServer.map_get_path()`` whi
 
     extends Node3D
 
-    # Prepare query objects.
+    # Chuẩn bị các object truy vấn.
     var query_parameters := NavigationPathQueryParameters3D.new()
     var query_result := NavigationPathQueryResult3D.new()
 
@@ -87,7 +82,7 @@ The resulting path is identical to using ``NavigationServer.map_get_path()`` whi
         var map: RID = get_world_3d().get_navigation_map()
 
         if NavigationServer3D.map_get_iteration_id(map) == 0:
-            # This map has never synced and is empty, no point in querying it.
+            # Bản đồ này chưa bao giờ được đồng bộ hóa và đang trống, không có lý do gì để truy vấn nó.
             return PackedVector3Array()
 
         query_parameters.map = map
@@ -100,116 +95,99 @@ The resulting path is identical to using ``NavigationServer.map_get_path()`` whi
 
         return path
 
-Path postprocessing options
----------------------------
+Các tùy chọn hậu xử lý đường đi
+-------------------------------
 
 .. figure:: img/path_postprocess_diff.webp
    :align: center
-   :alt: Path post-processing differences depending on navigation mesh polygon layout
+   :alt: Sự khác biệt trong hậu xử lý đường đi tùy thuộc vào bố cục đa giác của lưới điều hướng
 
-   Path post-processing differences depending on navigation mesh polygon layout.
+   Sự khác biệt trong hậu xử lý đường đi tùy thuộc vào bố cục đa giác của lưới điều hướng.
 
-A path query search travels from the closest navigation mesh polygon edge to the closest edge along the available polygons.
-If possible it builds a polygon corridor towards the target position polygon.
+Một tìm kiếm truy vấn đường đi di chuyển từ cạnh đa giác lưới điều hướng gần nhất đến cạnh gần nhất dọc theo các đa giác hiện có. Nếu có thể, nó sẽ xây dựng một hành lang đa giác hướng đến đa giác chứa vị trí đích.
 
-This raw "search" polygon corridor path is not very optimized and usually a bad fit for agents to travel along.
-E.g. the closest edge point on a navigation mesh polygon might cause a huge detour for agents on larger polygons.
-In order to improve the quality of paths returned by the query various ``path_postprocessing`` options exist.
+Đường đi hành lang đa giác "tìm kiếm" thô này chưa được tối ưu nhiều và thường không phù hợp để agent di chuyển theo. Ví dụ, điểm cạnh gần nhất trên một đa giác lưới điều hướng có thể khiến agent phải đi vòng rất xa trên các đa giác lớn. Để cải thiện chất lượng đường đi do truy vấn trả về, có nhiều tùy chọn ``path_postprocessing``.
 
-- The ``PATH_POSTPROCESSING_CORRIDORFUNNEL`` post-processing shortens paths by funneling paths around corners **inside the available polygon corridor**.
+- Hậu xử lý ``PATH_POSTPROCESSING_CORRIDORFUNNEL`` rút ngắn đường đi bằng cách dẫn đường đi vòng qua các góc **bên trong hành lang đa giác hiện có**.
 
-  This is the default post-processing and usually also the most useful as it gives the shortest path result **inside the available polygon corridor**.
-  If the polygon corridor is already suboptimal, e.g. due to a suboptimal navigation mesh layout,
-  the funnel can snap to unexpected polygon corners causing detours.
+  Đây là hậu xử lý mặc định và thường cũng hữu ích nhất vì tạo ra kết quả đường đi ngắn nhất **bên trong hành lang đa giác hiện có**. Nếu hành lang đa giác vốn đã không tối ưu, chẳng hạn do bố cục lưới điều hướng không tối ưu, funnel có thể bám vào các góc đa giác không mong đợi và gây ra đường vòng.
 
-- The ``PATH_POSTPROCESSING_EDGECENTERED`` post-processing forces all path points to be placed in the middle of the crossed polygon edges  **inside the available polygon corridor**.
+- Hậu xử lý ``PATH_POSTPROCESSING_EDGECENTERED`` buộc tất cả các điểm trên đường đi được đặt ở giữa các cạnh đa giác đã đi qua **bên trong hành lang đa giác hiện có**.
 
-  This post-processing is usually only useful when used with strictly tile-like navigation mesh polygons that are all
-  evenly sized and where the expected path following is also constrained to cell centers,
-  e.g. typical grid game with movement constrained to grid cell centers.
+  Hậu xử lý này thường chỉ hữu ích khi được sử dụng với các đa giác lưới điều hướng có dạng ô một cách nghiêm ngặt, tất cả có kích thước đồng đều, và việc đi theo đường dự kiến cũng bị giới hạn ở tâm các ô, chẳng hạn như trong game dạng lưới điển hình với chuyển động bị giới hạn ở tâm các ô lưới.
 
-- The ``PATH_POSTPROCESSING_NONE`` post-processing returns the path as is how the pathfinding traveled **inside the available polygon corridor**.
+- Hậu xử lý ``PATH_POSTPROCESSING_NONE`` trả về đường đi đúng như cách hệ thống tìm đường đã di chuyển **bên trong hành lang đa giác hiện có**.
 
-  This post-processing is very useful for debug as it shows how the path search traveled from closest edge point to closet edge point and what polygons it picked.
-  A lot of unexpected or suboptimal path results can be immediately explained by looking at this raw path and polygon corridor.
+  Hậu xử lý này rất hữu ích cho việc debug vì nó cho thấy quá trình tìm kiếm đường đi đã di chuyển như thế nào từ điểm cạnh gần nhất đến điểm cạnh gần nhất và đã chọn những đa giác nào. Nhiều kết quả đường đi bất ngờ hoặc không tối ưu có thể được giải thích ngay bằng cách xem đường đi thô và hành lang đa giác này.
 
-Path simplification
--------------------
+Đơn giản hóa đường đi
+---------------------
 
 .. tip::
 
-    Path simplification can help steering agents or agents that jitter on thin polygon edges.
+    Đơn giản hóa đường đi có thể giúp điều khiển agent hoặc xử lý các agent bị rung trên những cạnh đa giác hẹp.
 
 .. figure:: img/path_simplification_diff.webp
    :align: center
-   :alt: Path point difference with or without path simplification
+   :alt: Sự khác biệt giữa các điểm trên đường đi khi có và không có đơn giản hóa đường đi
 
-   Path point difference with or without path simplification.
+   Sự khác biệt giữa các điểm trên đường đi khi có và không có đơn giản hóa đường đi.
 
-If ``simplify_path`` is enabled a variant of the Ramer-Douglas-Peucker path simplification algorithm is applied to the path.
-This algorithm straightens paths by removing less relevant path points depending on the ``simplify_epsilon`` used.
+Nếu ``simplify_path`` được bật, một biến thể của thuật toán đơn giản hóa đường đi Ramer-Douglas-Peucker sẽ được áp dụng cho đường đi. Thuật toán này làm thẳng đường đi bằng cách loại bỏ các điểm trên đường đi ít quan trọng hơn, tùy thuộc vào ``simplify_epsilon`` được sử dụng.
 
-Path simplification helps with all kinds of agent movement problems in "open fields" that are caused by having many unnecessary polygon edges.
-E.g. a terrain mesh when baked to a navigation mesh can cause an excessive polygon count due to all the small (but for pathfinding almost meaningless) height variations in the terrain.
+Đơn giản hóa đường đi giúp xử lý mọi loại vấn đề chuyển động của agent trong "cánh đồng trống", vốn phát sinh do có quá nhiều cạnh đa giác không cần thiết. Ví dụ, một mesh địa hình khi được bake thành lưới điều hướng có thể tạo ra số lượng đa giác quá lớn do có nhiều biến thiên độ cao nhỏ (nhưng hầu như không có ý nghĩa đối với việc tìm đường) trên địa hình.
 
-Path simplification also helps with "steering" agents because they only have more critical corner path points to aim for.
+Đơn giản hóa đường đi cũng giúp ích cho các agent cần "steering" vì chúng chỉ cần hướng đến các điểm góc quan trọng hơn trên đường đi.
 
 .. Warning::
 
-    Path simplification is an additional final post-processing of the path. It adds extra performance costs to the query so only enable when actually needed.
+    Đơn giản hóa đường đi là một bước hậu xử lý cuối bổ sung cho đường đi. Nó làm tăng chi phí hiệu năng của truy vấn, vì vậy chỉ nên bật khi thực sự cần thiết.
 
 .. note::
 
-    Path simplification is exposed on the NavigationServer as a generic function. It can be used outside of navigation queries for all kinds of position arrays as well.
+    Đơn giản hóa đường đi được cung cấp trên NavigationServer dưới dạng một hàm dùng chung. Bạn cũng có thể sử dụng hàm này bên ngoài các truy vấn điều hướng cho mọi loại mảng vị trí.
 
-Path metadata
--------------
-
-.. tip::
-
-    Disabling unneeded path metadata options can improve performance and lower memory consumption.
-
-A path query can return additional metadata for every path point.
-
-- The ``PATH_METADATA_INCLUDE_TYPES`` flag collects an array with the primitive information about the point owners, e.g. if a point belongs to a region or link.
-- The ``PATH_METADATA_INCLUDE_RIDS`` flag collects an array with the :ref:`RIDs<class_RID>` of the point owners. Depending on point owner primitive, these RIDs can be used with the various NavigationServer functions related to regions or links.
-- The ``PATH_METADATA_INCLUDE_OWNERS`` flag collects an array with the ``ObjectIDs`` of the point owners. These object IDs can be used with :ref:`@GlobalScope.instance_from_id()<class_@GlobalScope_method_instance_from_id>` to retrieve the node behind that object instance, e.g. a NavigationRegion or NavigationLink node.
-
-By default all path metadata is collected as this metadata can be essential for more advanced navigation gameplay.
-
-- E.g. to know what path point maps to what object or node owner inside the SceneTree.
-- E.g. to know if a path point is the start or end of a navigation link that requires scripted takeover.
-
-For the most basic path uses metadata is not always needed.
-Path metadata collection can be selectively disabled to gain some performance and reduce memory consumption.
-
-Excluding or including regions
-------------------------------
+Siêu dữ liệu đường đi
+---------------------
 
 .. tip::
 
-    Region filters can greatly help with performance on large navigation maps that are region partitioned.
+    Tắt các tùy chọn siêu dữ liệu đường đi không cần thiết có thể cải thiện hiệu năng và giảm mức tiêu thụ bộ nhớ.
 
-Query parameters allow limiting the pathfinding to specific region navigation meshes.
+Một truy vấn đường đi có thể trả về siêu dữ liệu bổ sung cho mỗi điểm trên đường đi.
 
-If a large navigation map is well partitioned into smaller regions this can greatly help with performance as the
-query can skip a large number of polygons at one of the earliest checks in the path search.
+- Cờ ``PATH_METADATA_INCLUDE_TYPES`` thu thập một mảng chứa thông tin primitive về các đối tượng sở hữu điểm, chẳng hạn như điểm đó thuộc về một region hay link.
+- Cờ ``PATH_METADATA_INCLUDE_RIDS`` thu thập một mảng chứa :ref:`RIDs<class_RID>` của các đối tượng sở hữu điểm. Tùy thuộc vào primitive của đối tượng sở hữu điểm, các RID này có thể được sử dụng với nhiều hàm NavigationServer liên quan đến region hoặc link.
+- Cờ ``PATH_METADATA_INCLUDE_OWNERS`` thu thập một mảng chứa ``ObjectIDs`` của các đối tượng sở hữu điểm. Các object ID này có thể được sử dụng với :ref:`@GlobalScope.instance_from_id() <class_@GlobalScope_method_instance_from_id>` để lấy node đứng sau instance đối tượng đó, chẳng hạn như node NavigationRegion hoặc NavigationLink.
 
-- By default and if left empty all regions of the queried navigation map are included.
-- If a region :ref:`RID<class_RID>` is added to the ``excluded_regions`` array the region's navigation mesh will be ignored in the path search.
-- If a region :ref:`RID<class_RID>` is added to the ``included_regions`` array the region's navigation mesh will be considered in the path search and also all other regions not included will be ignored as well.
-- If a region ends up both included and excluded it is considered excluded.
+Theo mặc định, toàn bộ path metadata đều được thu thập vì metadata này có thể rất cần thiết cho gameplay điều hướng nâng cao hơn.
 
-Region filters are very effective for performance when paired with navigation region chunks that are aligned on a grid.
-This way the filter can be set to only include the start position chunk and surrounding chunks instead of the entire navigation map.
+- Ví dụ, để biết point nào trong path tương ứng với đối tượng hoặc node owner nào trong SceneTree.
+- Ví dụ, để biết một point trong path là điểm bắt đầu hay điểm kết thúc của một navigation link cần được tiếp quản bằng script.
 
-Even if the target might be outside these surrounding chunks (can always add more "rings") the pathfinding will
-try to create a path to the polygon closest to the target.
-This usually creates half-paths heading in the general direction that are good enough,
-all for a fraction of the performance cost of a full map search.
+Đối với những cách sử dụng path cơ bản nhất, metadata không phải lúc nào cũng cần thiết. Có thể tắt chọn lọc việc thu thập path metadata để cải thiện hiệu năng và giảm mức tiêu thụ bộ nhớ.
 
-The following addition to the basic path query script showcases the idea how to integrate a region chunk mapping with the region filters.
-This is not a full working example.
+Loại trừ hoặc bao gồm các region
+--------------------------------
+
+.. tip::
+
+    Các bộ lọc region có thể cải thiện đáng kể hiệu năng trên những navigation map lớn được phân vùng thành các region.
+
+Các tham số truy vấn cho phép giới hạn việc tìm path vào những navigation mesh cụ thể của region.
+
+Nếu một navigation map lớn được phân vùng hợp lý thành các region nhỏ hơn, điều này có thể cải thiện đáng kể hiệu năng vì truy vấn có thể bỏ qua một số lượng lớn polygon ngay từ một trong những bước kiểm tra đầu tiên của quá trình tìm path.
+
+- Theo mặc định, nếu để trống, tất cả region của navigation map được truy vấn đều được bao gồm.
+- Nếu một region :ref:`RID<class_RID>` được thêm vào mảng ``excluded_regions``, navigation mesh của region đó sẽ bị bỏ qua trong quá trình tìm path.
+- Nếu một region :ref:`RID<class_RID>` được thêm vào mảng ``included_regions``, navigation mesh của region đó sẽ được xem xét trong quá trình tìm path, đồng thời tất cả các region khác không được đưa vào cũng sẽ bị bỏ qua.
+- Nếu một region đồng thời nằm trong danh sách bao gồm và loại trừ, region đó được xem là bị loại trừ.
+
+Các bộ lọc region rất hiệu quả về mặt hiệu năng khi được kết hợp với các chunk navigation region được căn chỉnh theo một grid. Nhờ đó, bộ lọc có thể chỉ bao gồm chunk chứa vị trí bắt đầu và các chunk xung quanh thay vì toàn bộ navigation map.
+
+Ngay cả khi target nằm ngoài các chunk xung quanh này (luôn có thể thêm các "vòng"), quá trình tìm path vẫn sẽ cố tạo path đến polygon gần target nhất. Điều này thường tạo ra các half-path đi theo hướng tổng quát phù hợp, với chỉ một phần nhỏ chi phí hiệu năng so với việc tìm trên toàn bộ map.
+
+Phần bổ sung sau đây vào script truy vấn path cơ bản minh họa cách tích hợp ánh xạ region chunk với các bộ lọc region. Đây không phải là một ví dụ hoàn chỉnh có thể chạy.
 
 .. tabs::
  .. code-tab:: gdscript 2D GDScript
@@ -226,7 +204,7 @@ This is not a full working example.
 
         var regions_around_start_position: Array[RID] = []
 
-        var chunk_rings: int = 1 # Increase for very small regions or more quality.
+        var chunk_rings: int = 1 # Tăng giá trị cho các region rất nhỏ hoặc để có chất lượng cao hơn.
         var start_chunk_id: Vector2i = floor(p_start_position / float(chunk_size))
 
         for y: int in range(start_chunk_id.y - chunk_rings, start_chunk_id.y + chunk_rings):
@@ -254,9 +232,9 @@ This is not a full working example.
 
         var regions_around_start_position: Array[RID] = []
 
-        var chunk_rings: int = 1 # Increase for very small regions or more quality.
+        var chunk_rings: int = 1 # Tăng giá trị cho các region rất nhỏ hoặc để có chất lượng cao hơn.
         var start_chunk_id: Vector3i = floor(p_start_position / float(chunk_size))
-        var y: int = 0 # Assume a planar navigation map for simplicity.
+        var y: int = 0 # Giả định navigation map dạng phẳng để đơn giản hóa.
 
         for z: int in range(start_chunk_id.z - chunk_rings, start_chunk_id.z + chunk_rings):
             for x: int in range(start_chunk_id.x - chunk_rings, start_chunk_id.x + chunk_rings):
@@ -269,37 +247,31 @@ This is not a full working example.
 
         # ...
 
-Path clipping and limits
+Cắt path và các giới hạn
 ------------------------
 
 .. tip::
 
-    Sensibly set limits can greatly help with performance on large navigation maps, especially when targets end up being unreachable.
+    Việc thiết lập các giới hạn hợp lý có thể cải thiện đáng kể hiệu năng trên những navigation map lớn, đặc biệt khi target không thể tiếp cận.
 
 .. figure:: img/path_clip_and_limits.gif
    :align: center
-   :alt: Clipping returned paths to specific distances
+   :alt: Cắt các path trả về theo khoảng cách cụ thể
 
-   Clipping returned paths to specific distances.
+   Cắt các path trả về theo khoảng cách cụ thể.
 
-Query parameters allow clipping returned paths to specific lengths.
-These options clip the path as a part of post-processing. The path is still searched as if at full length,
-so it will have the same quality.
-Path length clipping can be helpful in creating paths that better fit constrained gameplay, e.g. tactical games with limited movement ranges.
+Các tham số truy vấn cho phép cắt các path trả về theo độ dài cụ thể. Các tùy chọn này cắt path trong bước hậu xử lý. Path vẫn được tìm như thể có độ dài đầy đủ, vì vậy chất lượng path vẫn giữ nguyên. Việc cắt độ dài path có thể hữu ích khi tạo các path phù hợp hơn với gameplay bị giới hạn, chẳng hạn như trong các game chiến thuật có phạm vi di chuyển hạn chế.
 
-- The ``path_return_max_length`` property can be used to clip the returned path to a specific max length.
-- The ``path_return_max_radius`` property can be used to clip the returned path inside a circle (2D) or sphere (3D) radius around the start position.
+- Có thể sử dụng thuộc tính ``path_return_max_length`` để cắt path trả về theo một độ dài tối đa cụ thể.
+- Có thể sử dụng thuộc tính ``path_return_max_radius`` để cắt path trả về nằm bên trong bán kính hình tròn (2D) hoặc hình cầu (3D) quanh vị trí bắt đầu.
 
-Query parameters allow limiting the path search to only search up to a specific distance or a specific number of searched polygons.
-These options are for performance and affect the path search directly.
+Các tham số truy vấn cho phép giới hạn quá trình tìm path để chỉ tìm đến một khoảng cách cụ thể hoặc một số lượng polygon được tìm cụ thể. Các tùy chọn này phục vụ hiệu năng và tác động trực tiếp đến quá trình tìm path.
 
-- The ``path_search_max_distance`` property can be used to stop the path search when going over this distance from the start position.
-- The ``path_search_max_polygons`` property can be used to stop the path search when going over this searched polygon number.
+- Có thể sử dụng thuộc tính ``path_search_max_distance`` để dừng quá trình tìm path khi vượt quá khoảng cách này tính từ vị trí bắt đầu.
+- Có thể sử dụng thuộc tính ``path_search_max_polygons`` để dừng quá trình tìm path khi vượt quá số polygon đã tìm này.
 
-When the path search is stopped by reaching a limit the path resets and creates a path from the start position polygon
-to the polygon found so far that is closest to the target position.
+Khi quá trình tìm path bị dừng do đạt đến một giới hạn, path sẽ được đặt lại và tạo từ polygon tại vị trí bắt đầu đến polygon được tìm thấy cho đến thời điểm đó và gần vị trí target nhất.
 
 .. warning::
 
-    While good for performance, if path search limit values are set too low they can affect the path quality very negatively.
-    Depending on polygon layout and search pattern the returned paths might go into completely wrong directions instead of the direction of the target.
+    Mặc dù có lợi cho hiệu năng, nếu đặt các giá trị giới hạn tìm path quá thấp, chất lượng path có thể bị ảnh hưởng rất tiêu cực. Tùy thuộc vào cách bố trí polygon và mẫu tìm kiếm, các path trả về có thể đi hoàn toàn sai hướng thay vì hướng về target.

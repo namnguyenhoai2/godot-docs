@@ -1,42 +1,37 @@
 .. _doc_navigation_advanced_using_navigationlayers:
 
-Using NavigationLayers
-======================
+Sử dụng NavigationLayers
+========================
 
-NavigationLayers are an optional feature to further control which navigation meshes are considered in a path query.
-They work similar to how physics layers control collision between collision objects or how visual layers control what is rendered to the Viewport.
+NavigationLayers là một tính năng tùy chọn để kiểm soát thêm những navigation mesh nào được xem xét trong một truy vấn đường đi. Chúng hoạt động tương tự như cách các physics layer kiểm soát va chạm giữa các đối tượng va chạm, hoặc cách các visual layer kiểm soát nội dung được render lên Viewport.
 
-NavigationLayers can be named in the **ProjectSettings** the same as physics layers or visual layers.
+NavigationLayers có thể được đặt tên trong **ProjectSettings** giống như physics layer hoặc visual layer.
 
 .. image:: img/navigationlayers_naming.png
 
-If a region has not a single compatible navigation layer with the ``navigation_layers`` parameter of a path query this regions navigation mesh will be skipped in pathfinding.
-See :ref:`doc_navigation_using_navigationpaths` for more information on querying the NavigationServer for paths.
+Nếu một region không có bất kỳ navigation layer tương thích nào với tham số ``navigation_layers`` của truy vấn đường đi, navigation mesh của region đó sẽ bị bỏ qua trong quá trình tìm đường. Xem :ref:`doc_navigation_using_navigationpaths` để biết thêm thông tin về cách truy vấn các đường đi từ NavigationServer.
 
-NavigationLayers are a single ``int`` value that is used as a **bitmask**.
-Many navigation related nodes have ``set_navigation_layer_value()`` and
-``get_navigation_layer_value()`` functions to set and get a layer number directly
-without the need for more complex bitwise operations.
+NavigationLayers là một giá trị ``int`` duy nhất được sử dụng làm **bitmask**. Nhiều node liên quan đến navigation có các hàm ``set_navigation_layer_value()`` và ``get_navigation_layer_value()`` để đặt và lấy trực tiếp số lớp mà không cần các phép toán bitwise phức tạp hơn.
 
-In scripts the following helper functions can be used to work with the ``navigation_layers`` bitmask.
+Trong các script, có thể sử dụng các hàm trợ giúp sau để làm việc với bitmask ``navigation_layers``.
 
 .. tabs::
  .. code-tab:: gdscript 2D GDScript
 
     func change_layers():
         var region: NavigationRegion2D = get_node("NavigationRegion2D")
-        # enables 4-th layer for this region
+        # bật layer thứ 4 cho region này
         region.navigation_layers = enable_bitmask_inx(region.navigation_layers, 4)
-        # disables 1-rst layer for this region
+        # tắt layer thứ 1 cho region này
         region.navigation_layers = disable_bitmask_inx(region.navigation_layers, 1)
 
         var agent: NavigationAgent2D = get_node("NavigationAgent2D")
-        # make future path queries of this agent ignore regions with 4-th layer
+        # khiến các truy vấn đường đi sau này của agent này bỏ qua các region có layer thứ 4
         agent.navigation_layers = disable_bitmask_inx(agent.navigation_layers, 4)
 
         var path_query_navigation_layers: int = 0
         path_query_navigation_layers = enable_bitmask_inx(path_query_navigation_layers, 2)
-        # get a path that only considers 2-nd layer regions
+        # lấy một đường đi chỉ xét các region thuộc layer thứ 2
         var path: PackedVector2Array = NavigationServer2D.map_get_path(
             map,
             start_position,
@@ -67,18 +62,18 @@ In scripts the following helper functions can be used to work with the ``navigat
         private void ChangeLayers()
         {
             NavigationRegion2D region = GetNode<NavigationRegion2D>("NavigationRegion2D");
-            // Enables the 4th layer for this region.
+            // Bật layer thứ 4 cho region này.
             region.NavigationLayers = EnableBitmaskInx(region.NavigationLayers, 4);
-            // Disables the 1st layer for this region.
+            // Tắt layer thứ 1 cho region này.
             region.NavigationLayers = DisableBitmaskInx(region.NavigationLayers, 1);
 
             NavigationAgent2D agent = GetNode<NavigationAgent2D>("NavigationAgent2D");
-            // Make future path queries of this agent ignore regions with the 4th layer.
+            // Khiến các truy vấn đường đi sau này của agent này bỏ qua các region có layer thứ 4.
             agent.NavigationLayers = DisableBitmaskInx(agent.NavigationLayers, 4);
 
             uint pathQueryNavigationLayers = 0;
             pathQueryNavigationLayers = EnableBitmaskInx(pathQueryNavigationLayers, 2);
-            // Get a path that only considers 2nd layer regions.
+            // Lấy một đường đi chỉ xét các region thuộc layer thứ 2.
             Vector2[] path = NavigationServer2D.MapGetPath(
                 _map,
                 _startPosition,
@@ -108,18 +103,18 @@ In scripts the following helper functions can be used to work with the ``navigat
 
     func change_layers():
         var region: NavigationRegion3D = get_node("NavigationRegion3D")
-        # enables 4-th layer for this region
+        # bật layer thứ 4 cho region này
         region.navigation_layers = enable_bitmask_inx(region.navigation_layers, 4)
-        # disables 1-rst layer for this region
+        # tắt layer thứ 1 cho region này
         region.navigation_layers = disable_bitmask_inx(region.navigation_layers, 1)
 
         var agent: NavigationAgent3D = get_node("NavigationAgent3D")
-        # make future path queries of this agent ignore regions with 4-th layer
+        # khiến các truy vấn đường đi sau này của agent này bỏ qua các region có layer thứ 4
         agent.navigation_layers = disable_bitmask_inx(agent.navigation_layers, 4)
 
         var path_query_navigation_layers: int = 0
         path_query_navigation_layers = enable_bitmask_inx(path_query_navigation_layers, 2)
-        # get a path that only considers 2-nd layer regions
+        # lấy một đường đi chỉ xét các region thuộc layer thứ 2
         var path: PackedVector3Array = NavigationServer3D.map_get_path(
             map,
             start_position,
@@ -150,18 +145,18 @@ In scripts the following helper functions can be used to work with the ``navigat
         private void ChangeLayers()
         {
             NavigationRegion3D region = GetNode<NavigationRegion3D>("NavigationRegion3D");
-            // Enables the 4th layer for this region.
+            // Bật layer thứ 4 cho region này.
             region.NavigationLayers = EnableBitmaskInx(region.NavigationLayers, 4);
-            // Disables the 1st layer for this region.
+            // Tắt layer thứ 1 cho region này.
             region.NavigationLayers = DisableBitmaskInx(region.NavigationLayers, 1);
 
             NavigationAgent3D agent = GetNode<NavigationAgent3D>("NavigationAgent2D");
-            // Make future path queries of this agent ignore regions with the 4th layer.
+            // Khiến các truy vấn đường đi sau này của agent này bỏ qua các region có layer thứ 4.
             agent.NavigationLayers = DisableBitmaskInx(agent.NavigationLayers, 4);
 
             uint pathQueryNavigationLayers = 0;
             pathQueryNavigationLayers = EnableBitmaskInx(pathQueryNavigationLayers, 2);
-            // Get a path that only considers 2nd layer regions.
+            // Lấy một đường đi chỉ xét các region thuộc layer thứ 2.
             Vector3[] path = NavigationServer3D.MapGetPath(
                 _map,
                 _startPosition,
@@ -187,11 +182,6 @@ In scripts the following helper functions can be used to work with the ``navigat
         }
     }
 
-Changing navigation layers for path queries is a performance friendly alternative to
-enabling / disabling entire navigation regions. Compared to region changes a
-navigation path query with different navigation layers does not
-trigger large scale updates on the NavigationServer.
+Thay đổi navigation layer cho các truy vấn đường đi là một giải pháp thay thế tiết kiệm hiệu năng so với việc bật hoặc tắt toàn bộ navigation region. So với việc thay đổi region, một truy vấn navigation path với các navigation layer khác nhau không kích hoạt các bản cập nhật quy mô lớn trên NavigationServer.
 
-Changing the navigation layers of NavigationAgent nodes will have an immediate
-effect on the next path query. Changing the navigation layers of
-regions will have an effect after the next NavigationServer sync.
+Việc thay đổi navigation layer của các node NavigationAgent sẽ có hiệu lực ngay lập tức đối với truy vấn đường đi tiếp theo. Việc thay đổi navigation layer của các region sẽ có hiệu lực sau lần đồng bộ NavigationServer tiếp theo.
