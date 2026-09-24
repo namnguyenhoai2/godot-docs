@@ -1,143 +1,89 @@
 .. _doc_upgrading_to_godot_4:
 
-Upgrading from Godot 3 to Godot 4
-=================================
+Nâng cấp từ Godot 3 lên Godot 4
+===============================
 
-Should I upgrade to Godot 4?
-----------------------------
+Tôi có nên nâng cấp lên Godot 4 không?
+--------------------------------------
 
-Before beginning the upgrade process, it's worth thinking about the advantages
-and disadvantages that upgrading would bring to your project.
+Trước khi bắt đầu quá trình nâng cấp, bạn nên cân nhắc những ưu điểm và nhược điểm mà việc nâng cấp sẽ mang lại cho dự án của mình.
 
-Advantages of upgrading
-~~~~~~~~~~~~~~~~~~~~~~~
+Ưu điểm của việc nâng cấp
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Along with the
-`new features present in 4.0 <https://godotengine.org/article/godot-4-0-sets-sail>`__,
-upgrading gives the following advantages:
+Cùng với `các tính năng mới có trong 4.0 <https://godotengine.org/article/godot-4-0-sets-sail>`__, việc nâng cấp mang lại những ưu điểm sau:
 
-- Many bugs are fixed in 4.0, but cannot be resolved in 3.x for various reasons
-  (such as graphics API differences or backwards compatibility).
-- 4.x will enjoy a longer :ref:`support period <doc_release_policy>`. Godot 3.x
-  will continue to be supported for some time after 4.0 is released, but it will
-  eventually stop receiving support.
+- Nhiều lỗi được sửa trong 4.0 nhưng không thể được khắc phục trong 3.x vì nhiều lý do khác nhau (chẳng hạn như sự khác biệt giữa các graphics API hoặc khả năng tương thích ngược).
+- 4.x sẽ có :ref:`thời gian hỗ trợ dài hơn <doc_release_policy>`. Godot 3.x sẽ tiếp tục được hỗ trợ trong một thời gian sau khi 4.0 được phát hành, nhưng cuối cùng sẽ ngừng nhận hỗ trợ.
 
-See :ref:`doc_docs_changelog` for a list of pages documenting new features in
-Godot 4.0, and :ref:`doc_list_of_features` for a list of all features in Godot.
+Xem :ref:`doc_docs_changelog` để biết danh sách các trang mô tả những tính năng mới trong Godot 4.0, và :ref:`doc_list_of_features` để xem danh sách tất cả tính năng trong Godot.
 
-Disadvantages of upgrading
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Nhược điểm của việc nâng cấp
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you don't *need* any features present in Godot 4.x, you may want to stay on
-Godot 3.x for the following reasons:
+Nếu bạn không *cần* bất kỳ tính năng nào có trong Godot 4.x, bạn có thể muốn tiếp tục dùng Godot 3.x vì những lý do sau:
 
-- Godot 4's baseline hardware requirements (such as memory usage) are slightly
-  higher, both for the editor and exported projects. This was required for the
-  implementation of some core optimizations.
-- Since Godot 4 includes more features than Godot 3, Godot 4's binary size for
-  exported projects is larger. While this can be mitigated by
-  :ref:`optimizing a build for size <doc_optimizing_for_size>`, a 4.0 build with
-  a given set of enabled modules will remain larger compared to a 3.x build with
-  the same modules. This can be an issue for
-  :ref:`exporting to the Web <doc_exporting_for_web>`, as binary size directly
-  influences how fast the engine can initialize (regardless of download speed).
-- Godot 4 does not and will not have support for GLES2 rendering.
-  (There is still support for GLES3 rendering using the new Compatibility renderer,
-  which means that devices without Vulkan support can still run Godot 4.)
+- Yêu cầu phần cứng cơ bản của Godot 4 (chẳng hạn như mức sử dụng bộ nhớ) cao hơn một chút, cả đối với editor lẫn các project đã export. Điều này là cần thiết để triển khai một số tối ưu hóa cốt lõi.
+- Vì Godot 4 có nhiều tính năng hơn Godot 3 nên kích thước binary của các project đã export trong Godot 4 lớn hơn. Mặc dù điều này có thể được giảm thiểu bằng cách
+  :ref:`tối ưu hóa bản build để giảm kích thước <doc_optimizing_for_size>`, một bản build 4.0 với cùng một tập module được bật vẫn sẽ lớn hơn bản build 3.x có cùng các module. Đây có thể là vấn đề khi
+  :ref:`export lên Web <doc_exporting_for_web>`, vì kích thước binary ảnh hưởng trực tiếp đến tốc độ engine khởi tạo (bất kể tốc độ tải xuống).
+- Godot 4 không hỗ trợ và sẽ không hỗ trợ rendering GLES2. (GLES3 vẫn được hỗ trợ thông qua Compatibility renderer mới, nghĩa là các thiết bị không hỗ trợ Vulkan vẫn có thể chạy Godot 4.)
 
-  - If you are targeting **very** old hardware such as Intel Sandy Bridge (2nd
-    generation) integrated graphics, this will prevent the project from running
-    on such hardware after upgrading.
-    `Software OpenGL implementations <https://github.com/pal1000/mesa-dist-win>`__
-    can be used to bypass this limitation, but they're too slow for gaming.
+  - Nếu bạn nhắm đến phần cứng **rất** cũ, chẳng hạn như đồ họa tích hợp Intel Sandy Bridge (thế hệ thứ 2), việc này sẽ khiến project không thể chạy trên phần cứng đó sau khi nâng cấp. `Các triển khai OpenGL bằng phần mềm <https://github.com/pal1000/mesa-dist-win>`__ có thể được dùng để vượt qua giới hạn này, nhưng chúng quá chậm để chơi game.
 
-Caveats of upgrading
-~~~~~~~~~~~~~~~~~~~~
+Những điểm cần lưu ý khi nâng cấp
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. UPDATE: Planned feature. There are several planned or missing features that
 .. may be added back in the future. Check this section for accuracy and update
 .. it if things have changed!
 
-**Since Godot 4 is a complete rewrite in many aspects, some features have
-unfortunately been lost in the process.** Some of these features may be restored
-in future Godot releases:
+**Vì Godot 4 được viết lại hoàn toàn ở nhiều khía cạnh nên đáng tiếc là một số tính năng đã bị mất trong quá trình này.** Một số tính năng trong đó có thể được khôi phục trong các bản phát hành Godot tương lai:
 
-- Bullet physics was removed in favor of GodotPhysics. This only affects 3D
-  projects that used the default physics engine (which was Bullet) and didn't
-  manually change it to GodotPhysics. There are no plans to re-add Bullet physics
-  in core, but a third-party add-on could be created for it thanks to
-  GDExtension.
-- By default, rendering in 2D is no longer performed in HDR, which means
-  "overbright" modulate values have no visible effect. Since Godot 4.2, you can
-  enable the project setting :ref:`HDR 2D<class_ProjectSettings_property_rendering/viewport/hdr_2d>`
-  to perform 2D rendering in HDR. See also :ref:`doc_environment_and_post_processing_using_glow_in_2d`.
-- While rendering still happens in HDR in 3D when using the Forward+ or Mobile
-  renderers, Viewports cannot return HDR data anymore. This is planned to be
-  restored at some point in the future.
-- Mono was replaced by .NET 6. This means exporting C# projects to Android, iOS
-  and HTML5 is no longer supported for now. Exporting C# projects to desktop
-  platforms is still supported, and as of 4.2 there's experimental support for
-  exporting to mobile platforms. Support for exporting C# projects to more
-  platforms will be restored in future 4.x releases as upstream support
-  improves.
+- Bullet physics đã bị loại bỏ để chuyển sang GodotPhysics. Điều này chỉ ảnh hưởng đến các project 3D sử dụng physics engine mặc định (là Bullet) và không thay đổi thủ công sang GodotPhysics. Không có kế hoạch thêm lại Bullet physics vào core, nhưng có thể tạo add-on của bên thứ ba cho tính năng này nhờ GDExtension.
+- Theo mặc định, rendering trong 2D không còn được thực hiện ở HDR, nghĩa là các giá trị modulate "overbright" không tạo ra hiệu ứng hiển thị nào. Kể từ Godot 4.2, bạn có thể bật project setting :ref:`HDR 2D <class_ProjectSettings_property_rendering/viewport/hdr_2d>` để thực hiện rendering 2D ở HDR. Xem thêm :ref:`doc_environment_and_post_processing_using_glow_in_2d`.
+- Mặc dù rendering trong 3D vẫn diễn ra ở HDR khi sử dụng Forward+ hoặc Mobile renderer, Viewport không còn có thể trả về dữ liệu HDR. Dự kiến tính năng này sẽ được khôi phục vào một thời điểm nào đó trong tương lai.
+- Mono đã được thay thế bằng .NET 6. Điều này có nghĩa là hiện tại không còn hỗ trợ export các project C# sang Android, iOS và HTML5. Việc export các project C# sang các nền tảng desktop vẫn được hỗ trợ, và kể từ 4.2 đã có hỗ trợ thử nghiệm cho việc export sang các nền tảng mobile. Hỗ trợ export các project C# sang nhiều nền tảng hơn sẽ được khôi phục trong các bản phát hành 4.x tương lai khi hỗ trợ từ upstream được cải thiện.
 
-You can find a more complete list of functional regressions by searching for
-`issues labeled "regression" but not "bug" on GitHub <https://github.com/godotengine/godot/issues?q=is%3Aissue+is%3Aopen+label%3Aregression+-label%3Abug>`__.
+Bạn có thể tìm danh sách đầy đủ hơn về các hồi quy chức năng bằng cách tìm kiếm `các issue được gắn nhãn "regression" nhưng không có nhãn "bug" trên GitHub <https://github.com/godotengine/godot/issues?q=is%3Aissue+is%3Aopen+label%3Aregression+-label%3Abug>`__.
 
-Preparing before the upgrade (optional)
----------------------------------------
+Chuẩn bị trước khi nâng cấp (tùy chọn)
+--------------------------------------
 
-If you want to be ready to upgrade to Godot 4 in the future, consider using
-:ref:`class_Tweener` and the :ref:`class_Time` singleton in your project. These
-classes are both available in Godot 3.5 and later.
+Nếu muốn sẵn sàng nâng cấp lên Godot 4 trong tương lai, hãy cân nhắc sử dụng
+:ref:`class_Tweener` và singleton :ref:`class_Time` trong project của bạn. Cả hai class này đều có trong Godot 3.5 trở lên.
 
-This way, you won't be relying on the deprecated Tween node and OS time
-functions, both of which are removed in Godot 4.0.
+Nhờ vậy, bạn sẽ không phụ thuộc vào Tween node và các hàm thời gian của OS đã bị deprecated, cả hai đều bị loại bỏ trong Godot 4.0.
 
-It's also a good idea to rename external shaders so that their extension is
-``.gdshader`` instead of ``.shader``. Godot 3.x supports both extensions, but
-only ``.gdshader`` is supported in Godot 4.0.
+Bạn cũng nên đổi tên các shader bên ngoài để phần mở rộng của chúng là ``.gdshader`` thay vì ``.shader``. Godot 3.x hỗ trợ cả hai phần mở rộng, nhưng chỉ ``.gdshader`` được hỗ trợ trong Godot 4.0.
 
-Running the project upgrade tool
---------------------------------
+Chạy công cụ nâng cấp project
+-----------------------------
 
 .. danger::
 
-    **Make a full backup of your project** before upgrading! The project upgrade
-    tool will *not* perform any backups of the project that is being upgraded.
+    **Hãy tạo một bản sao lưu đầy đủ cho project của bạn** trước khi nâng cấp! Công cụ nâng cấp project *không* thực hiện bất kỳ thao tác sao lưu nào đối với project đang được nâng cấp.
 
-    You can backup a project by using version control, or by copying the project
-    folder to another location.
+    Bạn có thể sao lưu project bằng cách sử dụng version control hoặc sao chép thư mục project sang một vị trí khác.
 
-Using the Project Manager
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Sử dụng Project Manager
+~~~~~~~~~~~~~~~~~~~~~~~
 
-To use the project upgrade tool:
+Để sử dụng công cụ nâng cấp project:
 
-1. Open the Godot 4 Project Manager.
-2. Import the Godot 3.x project using the **Import** button, or use the **Scan**
-   button to find the project within a folder.
-3. Double-click the imported project (or select the project then choose **Edit**).
-4. You will see a dialog appearing with two options: **Convert project.godot
-   Only** and **Convert Full Project**. After ensuring your project is backed up
-   (see the above warning), choose **Convert Full Project**. **Convert
-   project.godot Only** is intended to be used for advanced use cases *only*, in
-   case the conversion tool fails.
-5. Wait until the project conversion process finishes. This can take up to a few
-   minutes for large projects with lots of scenes.
-6. When the Project Manager interface becomes available again, double-click the
-   project (or select the project then choose **Edit**) to open it in the
-   editor.
+1. Mở Godot 4 Project Manager.
+2. Import project Godot 3.x bằng nút **Import**, hoặc dùng nút **Scan** để tìm project trong một thư mục.
+3. Nhấp đúp vào project đã import (hoặc chọn project rồi chọn **Edit**).
+4. Bạn sẽ thấy một hộp thoại xuất hiện với hai tùy chọn: **Convert project.godot Only** và **Convert Full Project**. Sau khi đảm bảo project của bạn đã được sao lưu (xem cảnh báo ở trên), hãy chọn **Convert Full Project**. **Convert project.godot Only** chỉ dành cho các trường hợp sử dụng nâng cao *only*, phòng khi công cụ chuyển đổi gặp lỗi.
+5. Chờ cho đến khi quá trình chuyển đổi project hoàn tất. Với các project lớn có nhiều scene, quá trình này có thể mất vài phút.
+6. Khi giao diện Project Manager xuất hiện trở lại, hãy nhấp đúp vào project (hoặc chọn project rồi chọn **Edit**) để mở project trong editor.
 
-If you hit conversion issues due to some project files being too large or long,
-you can use the command line to upgrade the project (see below). This will allow
-you to override the converter's size limits.
+Nếu gặp vấn đề chuyển đổi do một số file project quá lớn hoặc quá dài, bạn có thể dùng command line để nâng cấp project (xem bên dưới). Cách này cho phép bạn ghi đè các giới hạn kích thước của trình chuyển đổi.
 
-Using the command line
-~~~~~~~~~~~~~~~~~~~~~~
+Sử dụng command line
+~~~~~~~~~~~~~~~~~~~~
 
-To use the project upgrade tool from the :ref:`command line <doc_command_line_tutorial>`,
-it's recommended to validate the project conversion by running the Godot editor binary with the following arguments:
+Để sử dụng công cụ nâng cấp dự án từ :ref:`dòng lệnh <doc_command_line_tutorial>`, bạn nên xác thực quá trình chuyển đổi dự án bằng cách chạy tệp nhị phân của trình chỉnh sửa Godot với các đối số sau:
 
 ::
 
@@ -145,8 +91,7 @@ it's recommended to validate the project conversion by running the Godot editor 
     # Remove them if you aren't changing their values.
     path/to/godot.binary --path /path/to/project/folder --validate-conversion-3to4 [<max_file_kb>] [<max_line_size>]
 
-If the list of planned upgrades looks good to you, run the following command on
-the Godot editor binary to upgrade project files:
+Nếu danh sách các nâng cấp dự kiến trông ổn, hãy chạy lệnh sau trên tệp nhị phân của trình chỉnh sửa Godot để nâng cấp các tệp dự án:
 
 ::
 
@@ -154,16 +99,9 @@ the Godot editor binary to upgrade project files:
     # Remove them if you aren't changing their values.
     path/to/godot.binary --path /path/to/project/folder --convert-3to4 [<max_file_kb>] [<max_line_size>]
 
-``[<max_file_kb>]`` and ``[<max_line_size>]`` are *optional* arguments to specify
-the maximum size of files to be converted (in kilobytes and lines). The default
-limits are 4 MB and 100,000 lines respectively. If a file hits either of those
-limits, it will not be upgraded by the project converter. This is useful to
-prevent large resources from slowing down the upgrade to a crawl.
+``[<max_file_kb>]`` và ``[<max_line_size>]`` là các đối số *tùy chọn* dùng để chỉ định kích thước tối đa của các tệp cần chuyển đổi (tính bằng kilobyte và số dòng). Giới hạn mặc định lần lượt là 4 MB và 100.000 dòng. Nếu một tệp đạt một trong hai giới hạn này, tệp đó sẽ không được trình chuyển đổi dự án nâng cấp. Điều này hữu ích để ngăn các tài nguyên lớn làm quá trình nâng cấp chậm đến mức gần như dừng lại.
 
-If you still want large files to be converted by the project upgrade tool,
-increase the size limits when running the project upgrade tool. For example,
-running the Godot editor binary with those arguments increases both limits by a
-10× factor:
+Nếu vẫn muốn công cụ nâng cấp dự án chuyển đổi các tệp lớn, hãy tăng giới hạn kích thước khi chạy công cụ nâng cấp dự án. Ví dụ: chạy tệp nhị phân của trình chỉnh sửa Godot với các đối số đó sẽ tăng cả hai giới hạn lên 10 lần:
 
 ::
 
@@ -171,37 +109,26 @@ running the Godot editor binary with those arguments increases both limits by a
 
 .. note::
 
-    Only Godot 3.0 and later projects can be upgraded using the project
-    conversion tool found in the Godot 4 editor.
+    Chỉ các dự án Godot 3.0 trở lên mới có thể được nâng cấp bằng công cụ chuyển đổi dự án có trong trình chỉnh sửa Godot 4.
 
-    It's recommended to ensure that your project is up-to-date with the latest
-    3.x stable release before running the project upgrade tool.
+    Bạn nên đảm bảo dự án của mình đã được cập nhật lên bản phát hành ổn định 3.x mới nhất trước khi chạy công cụ nâng cấp dự án.
 
-Fixing the project after running the project upgrade tool
----------------------------------------------------------
+Sửa dự án sau khi chạy công cụ nâng cấp dự án
+---------------------------------------------
 
-After upgrading the project, you may notice that certain things don't look as
-they should. Scripts will likely contain various errors as well (possibly
-hundreds in large projects). This is because the project upgrade tool cannot
-cater to all situations. Therefore, a large part of the upgrade process remains
-manual.
+Sau khi nâng cấp dự án, bạn có thể nhận thấy một số thành phần không hiển thị như mong đợi. Các script cũng có thể chứa nhiều lỗi khác nhau (có thể lên đến hàng trăm lỗi trong các dự án lớn). Nguyên nhân là công cụ nâng cấp dự án không thể xử lý mọi tình huống. Do đó, phần lớn quá trình nâng cấp vẫn phải thực hiện thủ công.
 
-Automatically renamed nodes and resources
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Các node và tài nguyên được tự động đổi tên
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The list below refers to nodes which were simply renamed for consistency or
-clarity in Godot 4.0. The project upgrade tool renames them automatically in
-your scripts.
+Danh sách dưới đây đề cập đến các node chỉ được đổi tên để bảo đảm tính nhất quán hoặc rõ ràng trong Godot 4.0. Công cụ nâng cấp dự án sẽ tự động đổi tên chúng trong các script của bạn.
 
-One noteworthy set of renames is 3D nodes, which all got a ``3D`` suffix added for
-consistency with their 2D counterparts. For example, ``Area`` is now ``Area3D``.
+Một nhóm tên đáng chú ý là các node 3D, tất cả đều được thêm hậu tố ``3D`` để nhất quán với các node 2D tương ứng. Ví dụ: ``Area`` hiện đã trở thành ``Area3D``.
 
-For ease of searching, this table lists all nodes and resources that were renamed
-and are automatically converted, excluding the ones which only involved adding
-a ``3D`` suffix to the old name:
+Để dễ tìm kiếm, bảng này liệt kê tất cả các node và tài nguyên đã được đổi tên và tự động chuyển đổi, không bao gồm những mục chỉ được thêm hậu tố ``3D`` vào tên cũ:
 
 +-----------------------------------------+-------------------------------------------+
-| Old name (Godot 3.x)                    | New name (Godot 4)                        |
+| Tên cũ (Godot 3.x)                      | Tên mới (Godot 4)                         |
 +=========================================+===========================================+
 | AnimatedSprite                          | AnimatedSprite2D                          |
 +-----------------------------------------+-------------------------------------------+
@@ -366,318 +293,205 @@ a ``3D`` suffix to the old name:
 
 .. _doc_upgrading_to_godot_4_manual_rename:
 
-Manually renaming methods, properties, signals and constants
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Đổi tên thủ công các phương thức, thuộc tính, signal và hằng số
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Due to how the project upgrade tool works, not all
-:abbr:`API (Application Programming Interface)` renames can be performed automatically.
-The list below contains all renames that must be performed manually using the script editor.
+Do cách hoạt động của công cụ nâng cấp dự án, không phải tất cả
+các lần đổi tên :abbr:`API (Application Programming Interface)` đều có thể được thực hiện tự động. Danh sách dưới đây bao gồm tất cả các lần đổi tên phải được thực hiện thủ công bằng script editor.
 
-If you cannot find a node or resource in the list below, refer to the above
-table to find its new name.
+Nếu bạn không tìm thấy node hoặc resource trong danh sách dưới đây, hãy tham khảo bảng trên để tìm tên mới của chúng.
 
 .. tip::
 
-    You can use the **Replace in Files** dialog to speed up replacement by pressing
-    :kbd:`Ctrl + Shift + R` while the script editor is open. However, be careful
-    as the Replace in Files dialog doesn't offer any way to undo a replacement.
-    Use version control to commit your upgrade work regularly.
-    Command line tools such as `sd <https://github.com/chmln/sd>`__ can also be used
-    if you need something more flexible than the editor's Replace in Files dialog.
+    Bạn có thể sử dụng hộp thoại **Replace in Files** để tăng tốc việc thay thế bằng cách nhấn
+    :kbd:`Ctrl + Shift + R` khi script editor đang mở. Tuy nhiên, hãy cẩn thận vì hộp thoại Replace in Files không cung cấp cách nào để hoàn tác thao tác thay thế. Hãy sử dụng version control để thường xuyên commit công việc nâng cấp của bạn. Bạn cũng có thể sử dụng các công cụ dòng lệnh như `sd <https://github.com/chmln/sd>`__ nếu cần một công cụ linh hoạt hơn hộp thoại Replace in Files của editor.
 
-    If using C#, remember to search for outdated API usage with PascalCase
-    notation in the project (and perform the replacement with PascalCase
-    notation).
+    Nếu sử dụng C#, hãy nhớ tìm các cách sử dụng API lỗi thời với ký hiệu PascalCase trong dự án (và thực hiện việc thay thế cũng bằng ký hiệu PascalCase).
 
-**Methods**
+**Các phương thức**
 
-- File and Directory classes were replaced by :ref:`class_FileAccess` and
-  :ref:`class_DirAccess`, which have an entirely different API. Several methods
-  are now static, which means you can call them directly on FileAccess or
-  DirAccess without having to create an instance of that class.
-- Screen and window-related methods from the :ref:`class_OS` singleton (such as
-  ``OS.get_screen_size()``) were moved to the :ref:`class_DisplayServer` singleton.
-  Method naming was also changed to use the
-  ``DisplayServer.<object>_<get/set>_property()`` form instead. For example,
-  ``OS.get_screen_size()`` becomes ``DisplayServer.screen_get_size()``.
-- Time and date methods from the :ref:`class_OS` singleton were moved to the
-  :ref:`class_Time` singleton.
-  (The Time singleton is also available in Godot 3.5 and later.)
-- You may have to replace some ``instance()`` calls with ``instantiate()``. The
-  converter *should* handle this automatically, but this relies on custom code that
-  may not work in 100% of situations.
-- AcceptDialog's ``set_autowrap()`` is now ``set_autowrap_mode()``.
-- AnimationNode's ``process()`` is now ``_process()``
-  (note the leading underscore, which denotes a virtual method).
-- AnimationPlayer's ``add_animation()`` is now ``add_animation_library()`` and now uses an :ref:`class_AnimationLibrary`.
-- AnimationTree's ``set_process_mode()`` is now ``set_process_callback()``.
-- Array's ``empty()`` is now ``is_empty()``.
-- Array's ``invert()`` is now ``reverse()``.
-- Array's ``remove()`` is now ``remove_at()``.
-- AStar2D and AStar3D's ``get_points()`` is now ``get_points_id()``.
-- BaseButton's ``set_event()`` is now ``set_shortcut()``.
-- Camera2D's ``get_h_offset()`` is now ``get_drag_horizontal_offset()``.
-- Camera2D's ``get_v_offset()`` is now ``get_drag_vertical_offset()``.
-- Camera2D's ``set_h_offset()`` is now ``set_drag_horizontal_offset()``.
-- Camera2D's ``set_v_offset()`` is now ``set_drag_vertical_offset()``.
-- CanvasItem's ``raise()`` is now ``move_to_front()``.
-- CanvasItem's ``update()`` is now ``queue_redraw()``.
-- Control's ``get_stylebox()`` is now ``get_theme_stylebox()``.
-- Control's ``set_tooltip()`` is now ``set_tooltip_text()``.
-- EditorNode3DGizmoPlugin's ``create_gizmo()`` is now ``_create_gizmo()``
-  (note the leading underscore, which denotes a virtual method).
-- ENetMultiplayerPeer's ``get_peer_port()`` is now ``get_peer()``.
-- FileDialog's ``get_mode()`` is now ``get_file_mode()``.
-- FileDialog's ``set_mode()`` is now ``set_file_mode()``.
-- GraphNode's ``get_offset()`` is now ``get_position_offset()``.
-- GridMap's ``map_to_world()`` is now ``map_to_local()``.
-- GridMap's ``world_to_map()`` is now ``local_to_map()``.
-- Image's ``get_rect()`` is now ``get_region()``.
-- ImmediateGeometry's ``set_normal()`` is now ``surface_set_normal()``.
-- ImmediateMesh's ``set_color()`` is now ``surface_set_color()``.
-- ImmediateMesh's ``set_uv()`` is now ``surface_set_uv()``.
-- ItemList's ``get_v_scroll()`` is now ``get_v_scroll_bar()``.
-- MultiPlayerAPI's ``get_network_connected_peers()`` is now ``get_peers()``.
-- MultiPlayerAPI's ``get_network_peer()`` is now ``get_peer()``.
-- MultiPlayerAPI's ``get_network_unique_id()`` is now ``get_unique_id()``.
-- MultiPlayerAPI's ``has_network_peer()`` is now ``has_multiplayer_peer()``.
-- MultiplayerAPI's ``is_refusing_new_network_connections()`` is now ``is_refusing_new_connections()``.
-- PacketPeerUDP's ``is_listening()`` is now ``is_bound()``.
-- PacketPeerUDP's ``listen()`` is now ``bind()``.
-- ParticleProcessMaterial's ``set_flag()`` is now ``set_particle_flag()``.
-- PhysicsTestMotionResult2D's ``get_motion()`` is now ``get_travel()``.
-- RenderingServer's ``get_render_info()`` is now ``get_rendering_info()``.
-- ResourceFormatLoader's ``get_dependencies()`` is now ``_get_dependencies()``
-  (note the leading underscore, which denotes a virtual method).
-- ResourceFormatLoader's ``load()`` is now ``_load()``.
-- SceneTree's ``change_scene()`` is now ``change_scene_to_file()``.
-- Shortcut's ``is_valid()`` is now ``has_valid_event()``.
-- TileMap's ``map_to_world()`` is now ``map_to_local()``.
-- TileMap's ``world_to_map()`` is now ``local_to_map()``.
-- Transform2D's ``xform()`` is ``mat * vec`` and ``xform_inv()`` is ``vec * mat``.
-- XRPositionalTracker's ``get_name()`` is now ``get_tracker_name()``.
-- XRPositionalTracker's ``get_type()`` is now ``get_tracker_type()``.
-- XRPositionalTracker's ``_set_name()`` is now ``get_tracker_name()``.
+- Các lớp File và Directory đã được thay thế bằng :ref:`class_FileAccess` và
+  :ref:`class_DirAccess`, vốn có API hoàn toàn khác. Một số phương thức hiện là static, nghĩa là bạn có thể gọi trực tiếp chúng trên FileAccess hoặc DirAccess mà không cần tạo một instance của lớp đó.
+- Các phương thức liên quan đến màn hình và cửa sổ từ singleton :ref:`class_OS` (chẳng hạn như ``OS.get_screen_size()``) đã được chuyển sang singleton :ref:`class_DisplayServer`. Cách đặt tên phương thức cũng được thay đổi để sử dụng dạng ``DisplayServer.<object>_<get/set>_property()``. Ví dụ, ``OS.get_screen_size()`` trở thành ``DisplayServer.screen_get_size()``.
+- Các phương thức về thời gian và ngày tháng từ singleton :ref:`class_OS` đã được chuyển sang
+  singleton :ref:`class_Time`. (Singleton Time cũng có sẵn trong Godot 3.5 trở lên.)
+- Bạn có thể phải thay thế một số lệnh gọi ``instance()`` bằng ``instantiate()``. Bộ chuyển đổi *should* sẽ tự động xử lý việc này, nhưng điều này phụ thuộc vào mã tùy chỉnh và có thể không hoạt động trong 100% trường hợp.
+- ``set_autowrap()`` của AcceptDialog hiện là ``set_autowrap_mode()``.
+- ``process()`` của AnimationNode hiện được đổi tên thành ``_process()`` (lưu ý dấu gạch dưới ở đầu, biểu thị một virtual method).
+- ``add_animation()`` của AnimationPlayer hiện được đổi tên thành ``add_animation_library()`` và hiện sử dụng một :ref:`class_AnimationLibrary`.
+- ``set_process_mode()`` của AnimationTree hiện được đổi tên thành ``set_process_callback()``.
+- ``empty()`` của Array hiện được đổi tên thành ``is_empty()``.
+- ``invert()`` của Array hiện được đổi tên thành ``reverse()``.
+- ``remove()`` của Array hiện được đổi tên thành ``remove_at()``.
+- ``get_points()`` của AStar2D và AStar3D hiện được đổi tên thành ``get_points_id()``.
+- ``set_event()`` của BaseButton hiện được đổi tên thành ``set_shortcut()``.
+- ``get_h_offset()`` của Camera2D hiện được đổi tên thành ``get_drag_horizontal_offset()``.
+- ``get_v_offset()`` của Camera2D hiện được đổi tên thành ``get_drag_vertical_offset()``.
+- ``set_h_offset()`` của Camera2D hiện được đổi tên thành ``set_drag_horizontal_offset()``.
+- ``set_v_offset()`` của Camera2D hiện được đổi tên thành ``set_drag_vertical_offset()``.
+- ``raise()`` của CanvasItem hiện được đổi tên thành ``move_to_front()``.
+- ``update()`` của CanvasItem hiện được đổi tên thành ``queue_redraw()``.
+- ``get_stylebox()`` của Control hiện được đổi tên thành ``get_theme_stylebox()``.
+- ``set_tooltip()`` của Control hiện được đổi tên thành ``set_tooltip_text()``.
+- ``create_gizmo()`` của EditorNode3DGizmoPlugin hiện được đổi tên thành ``_create_gizmo()`` (lưu ý dấu gạch dưới ở đầu, biểu thị một virtual method).
+- ``get_peer_port()`` của ENetMultiplayerPeer hiện được đổi tên thành ``get_peer()``.
+- ``get_mode()`` của FileDialog hiện được đổi tên thành ``get_file_mode()``.
+- ``set_mode()`` của FileDialog hiện được đổi tên thành ``set_file_mode()``.
+- ``get_offset()`` của GraphNode hiện được đổi tên thành ``get_position_offset()``.
+- ``map_to_world()`` của GridMap hiện được đổi tên thành ``map_to_local()``.
+- ``world_to_map()`` của GridMap hiện được đổi tên thành ``local_to_map()``.
+- ``get_rect()`` của Image hiện được đổi tên thành ``get_region()``.
+- ``set_normal()`` của ImmediateGeometry hiện được đổi tên thành ``surface_set_normal()``.
+- ``set_color()`` của ImmediateMesh hiện được đổi tên thành ``surface_set_color()``.
+- ``set_uv()`` của ImmediateMesh hiện được đổi tên thành ``surface_set_uv()``.
+- ``get_v_scroll()`` của ItemList hiện được đổi tên thành ``get_v_scroll_bar()``.
+- ``get_network_connected_peers()`` của MultiPlayerAPI hiện được đổi tên thành ``get_peers()``.
+- ``get_network_peer()`` của MultiPlayerAPI hiện được đổi tên thành ``get_peer()``.
+- ``get_network_unique_id()`` của MultiPlayerAPI hiện được đổi tên thành ``get_unique_id()``.
+- ``has_network_peer()`` của MultiPlayerAPI hiện được đổi tên thành ``has_multiplayer_peer()``.
+- ``is_refusing_new_network_connections()`` của MultiplayerAPI hiện được đổi tên thành ``is_refusing_new_connections()``.
+- ``is_listening()`` của PacketPeerUDP hiện được đổi tên thành ``is_bound()``.
+- ``listen()`` của PacketPeerUDP hiện được đổi tên thành ``bind()``.
+- ``set_flag()`` của ParticleProcessMaterial hiện được đổi tên thành ``set_particle_flag()``.
+- ``get_motion()`` của PhysicsTestMotionResult2D hiện được đổi tên thành ``get_travel()``.
+- ``get_render_info()`` của RenderingServer hiện được đổi tên thành ``get_rendering_info()``.
+- ``get_dependencies()`` của ResourceFormatLoader hiện được đổi tên thành ``_get_dependencies()`` (lưu ý dấu gạch dưới ở đầu, biểu thị một virtual method).
+- ``load()`` của ResourceFormatLoader hiện được đổi tên thành ``_load()``.
+- ``change_scene()`` của SceneTree hiện được đổi tên thành ``change_scene_to_file()``.
+- ``is_valid()`` của Shortcut hiện được đổi tên thành ``has_valid_event()``.
+- ``map_to_world()`` của TileMap hiện được đổi tên thành ``map_to_local()``.
+- ``world_to_map()`` của TileMap hiện được đổi tên thành ``local_to_map()``.
+- ``xform()`` của Transform2D là ``mat * vec`` và ``xform_inv()`` là ``vec * mat``.
+- ``get_name()`` của XRPositionalTracker hiện được đổi tên thành ``get_tracker_name()``.
+- ``get_type()`` của XRPositionalTracker hiện được đổi tên thành ``get_tracker_type()``.
+- ``_set_name()`` của XRPositionalTracker hiện được đổi tên thành ``get_tracker_name()``.
 
 
-**Properties**
+**Các thuộc tính**
 
 .. note::
 
-    If a property is listed here, its associated getter and setter methods must
-    also be renamed manually if used in the project. For example, PathFollow2D
-    and PathFollow3D's ``set_offset()`` and ``get_offset()`` must be renamed to
-    ``set_progress()`` and ``get_progress()`` respectively.
+    Nếu một thuộc tính được liệt kê ở đây, các phương thức getter và setter liên kết với thuộc tính đó cũng phải được đổi tên thủ công nếu được sử dụng trong project. Ví dụ, ``set_offset()`` và ``get_offset()`` của PathFollow2D và PathFollow3D lần lượt phải được đổi tên thành ``set_progress()`` và ``get_progress()``.
 
-- AudioServer's ``device`` is now ``output_device``.
-- BaseButton's ``group`` is now ``button_group``.
-- Camera3D's ``zfar`` is now ``far``.
-- Camera3D's ``znear`` is now ``near``
-- Control's ``margin`` is now ``offset``.
-- InputEventMouseButton's ``doubleclick`` is now ``double_click``.
-- InputEventWithModifiers's ``alt`` is now ``alt_pressed``.
-- InputEventWithModifiers's ``command`` is now ``command_pressed``.
-- InputEventWithModifiers's ``control`` is now ``ctrl_pressed``.
-- InputEventWithModifiers's ``meta`` is now ``meta_pressed``.
-- InputEventWithModifiers's ``shift`` is now ``shift_pressed``.
-- Label's ``percent_visible`` is now ``visible_ratio``.
-- MultiPlayerAPI's ``refuse_new_network_connections`` is now ``refuse_new_connections``.
-- Node's ``filename`` is now ``scene_file_path``.
-- PathFollow2D's ``rotate`` is now ``rotates``.
-- PathFollow2D and PathFollow3D's ``offset`` is now ``progress``.
-- RectangleShape2D's ``extents`` is now ``size``
-- TextureProgressBar's ``percent_visible`` is now ``show_percentage``.
-- Theme's ``off`` is now ``unchecked``.
-- Theme's ``ofs`` is now ``offset``.
-- Theme's ``on`` is now ``checked``.
-- Window's ``window_title`` is now ``title``.
-- WorldMarginShape2D's ``d`` is now ``distance``.
-- The ``extents`` property on CSG nodes and VoxelGI will have to be replaced
-  with ``size``, with the set value halved (as they're no longer half-extents).
-  This also affects its setter/getter methods ``set_extents()`` and
-  ``get_extents()``.
-- The ``Engine.editor_hint`` property was removed in favor of the
-  ``Engine.is_editor_hint()`` *method*. This is because it's read-only, and
-  properties in Godot are not used for read-only values.
+- ``device`` của AudioServer hiện được đổi tên thành ``output_device``.
+- ``group`` của BaseButton hiện được đổi tên thành ``button_group``.
+- ``zfar`` của Camera3D hiện được đổi tên thành ``far``.
+- ``znear`` của Camera3D hiện là ``near``
+- ``margin`` của Control hiện là ``offset``.
+- ``doubleclick`` của InputEventMouseButton hiện là ``double_click``.
+- ``alt`` của InputEventWithModifiers hiện là ``alt_pressed``.
+- ``command`` của InputEventWithModifiers hiện là ``command_pressed``.
+- ``control`` của InputEventWithModifiers hiện là ``ctrl_pressed``.
+- ``meta`` của InputEventWithModifiers hiện là ``meta_pressed``.
+- ``shift`` của InputEventWithModifiers hiện là ``shift_pressed``.
+- ``percent_visible`` của Label hiện là ``visible_ratio``.
+- ``refuse_new_network_connections`` của MultiPlayerAPI hiện là ``refuse_new_connections``.
+- ``filename`` của Node hiện là ``scene_file_path``.
+- ``rotate`` của PathFollow2D hiện là ``rotates``.
+- ``offset`` của PathFollow2D và PathFollow3D hiện là ``progress``.
+- ``extents`` của RectangleShape2D hiện là ``size``
+- ``percent_visible`` của TextureProgressBar hiện là ``show_percentage``.
+- ``off`` của Theme hiện là ``unchecked``.
+- ``ofs`` của Theme hiện là ``offset``.
+- ``on`` của Theme hiện là ``checked``.
+- ``window_title`` của Window hiện là ``title``.
+- ``d`` của WorldMarginShape2D hiện là ``distance``.
+- Thuộc tính ``extents`` trên các node CSG và VoxelGI sẽ phải được thay thế bằng ``size``, với giá trị được đặt giảm một nửa (vì chúng không còn là half-extents). Điều này cũng ảnh hưởng đến các phương thức setter/getter ``set_extents()`` và ``get_extents()`` của thuộc tính này.
+- Thuộc tính ``Engine.editor_hint`` đã bị loại bỏ để dùng phương thức ``Engine.is_editor_hint()`` *method* thay thế. Lý do là thuộc tính này chỉ có thể đọc, trong khi các thuộc tính trong Godot không được dùng cho các giá trị chỉ đọc.
 
 
 **Enums**
 
-- CPUParticles2D's ``FLAG_MAX`` is now ``PARTICLE_FLAG_MAX``.
+- ``FLAG_MAX`` của CPUParticles2D hiện là ``PARTICLE_FLAG_MAX``.
 
 **Signals**
 
-- FileSystemDock's ``instantiate`` is now ``instance``.
-- CanvasItem's ``hide`` is now ``hidden``. This rename does **not** apply to the
-  ``hide()`` method, only the signal.
-- Tween's ``tween_all_completed`` is now ``loop_finished``.
-- EditorSettings' ``changed`` is now ``settings_changed``.
+- ``instantiate`` của FileSystemDock hiện là ``instance``.
+- ``hide`` của CanvasItem hiện là ``hidden``. Việc đổi tên này **không** áp dụng cho phương thức ``hide()``, mà chỉ áp dụng cho signal.
+- ``tween_all_completed`` của Tween hiện là ``loop_finished``.
+- ``changed`` của EditorSettings hiện là ``settings_changed``.
 
 **Constants**
 
-- Color names are now uppercase and use underscores between words.
-  For example, ``Color.palegreen`` is now ``Color.PALE_GREEN``.
-- MainLoop's ``NOTIFICATION_`` constants were duplicated to ``Node`` which means
-  you can remove the ``MainLoop.`` prefix when referencing them.
-- MainLoop's ``NOTIFICATION_WM_QUIT_REQUEST`` is now ``NOTIFICATION_WM_CLOSE_REQUEST``.
+- Tên màu hiện được viết hoa và sử dụng dấu gạch dưới giữa các từ. Ví dụ: ``Color.palegreen`` hiện là ``Color.PALE_GREEN``.
+- Các hằng số ``NOTIFICATION_`` của MainLoop đã được sao chép sang ``Node``, nghĩa là bạn có thể xóa tiền tố ``MainLoop.`` khi tham chiếu đến chúng.
+- ``NOTIFICATION_WM_QUIT_REQUEST`` của MainLoop hiện là ``NOTIFICATION_WM_CLOSE_REQUEST``.
 
-Checking project settings
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Kiểm tra cài đặt dự án
+~~~~~~~~~~~~~~~~~~~~~~
 
-Several project settings were renamed, and some of them had their enums changed
-in incompatible ways (such as shadow filter quality). This means you may need to
-set some project settings' values again. Make sure the **Advanced** toggle is
-enabled in the project settings dialog so you can see all project settings.
+Một số cài đặt dự án đã được đổi tên, và một số trong đó có enum được thay đổi theo cách không tương thích (chẳng hạn như chất lượng bộ lọc bóng đổ). Điều này có nghĩa là bạn có thể cần đặt lại giá trị của một số cài đặt dự án. Hãy đảm bảo bật nút chuyển **Advanced** trong hộp thoại cài đặt dự án để có thể xem tất cả cài đặt dự án.
 
-Checking Environment settings
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Kiểm tra cài đặt Environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Graphics quality settings were moved from Environment properties to project
-settings. This was done to make runtime quality adjustments easier, without
-having to access the currently active Environment resource then modify its
-properties.
+Các cài đặt chất lượng đồ họa đã được chuyển từ thuộc tính Environment sang cài đặt dự án. Việc này giúp điều chỉnh chất lượng trong runtime dễ dàng hơn mà không cần truy cập tài nguyên Environment hiện đang hoạt động rồi sửa đổi các thuộc tính của nó.
 
-As a result, you will have to configure Environment quality settings in the
-project settings as old Environment quality settings aren't converted
-automatically to project settings.
+Do đó, bạn sẽ phải cấu hình các cài đặt chất lượng Environment trong cài đặt dự án, vì các cài đặt chất lượng Environment cũ không được tự động chuyển đổi sang cài đặt dự án.
 
-If you have a graphics settings menu that changed environment properties in
-Godot 3.x, you will have to change its code to call :ref:`class_RenderingServer`
-methods that affect environment effects' quality. Only the "base" toggle of each
-environment effect and its visual knobs remain within the Environment resource.
+Nếu bạn có menu cài đặt đồ họa đã thay đổi các thuộc tính environment trong Godot 3.x, bạn sẽ phải thay đổi code của menu này để gọi các phương thức :ref:`class_RenderingServer` tác động đến chất lượng của các hiệu ứng environment. Chỉ nút chuyển "base" của mỗi hiệu ứng environment và các điều khiển trực quan của hiệu ứng đó vẫn nằm trong tài nguyên Environment.
 
-Updating shaders
-~~~~~~~~~~~~~~~~
+Cập nhật shader
+~~~~~~~~~~~~~~~
 
-There have been some changes to shaders that aren't covered by the upgrade tool.
-You will need to make some manual changes, especially if your shader uses coordinate
-space transformations or a custom ``light()`` function.
+Shader đã có một số thay đổi không được công cụ nâng cấp xử lý. Bạn sẽ cần thực hiện một số thay đổi thủ công, đặc biệt nếu shader của bạn sử dụng các phép biến đổi không gian tọa độ hoặc một hàm ``light()`` tùy chỉnh.
 
-The ``.shader`` file extension is no longer supported, which means you must
-rename ``.shader`` files to ``.gdshader`` and update references accordingly in
-scene/resource files using an external text editor.
+Phần mở rộng tệp ``.shader`` không còn được hỗ trợ, nghĩa là bạn phải đổi tên các tệp ``.shader`` thành ``.gdshader`` và cập nhật các tham chiếu tương ứng trong các tệp scene/resource bằng trình soạn thảo văn bản bên ngoài.
 
-Some notable changes you will need to perform in shaders are:
+Một số thay đổi đáng chú ý bạn cần thực hiện trong shader là:
 
-- Texture filter and repeat modes are now set on individual uniforms, rather
-  than the texture files themselves.
-- ``hint_albedo`` is now ``source_color``.
-- ``hint_color`` is now ``source_color``.
+- Các chế độ lọc và lặp texture hiện được đặt trên từng uniform riêng lẻ, thay vì trên chính các tệp texture.
+- ``hint_albedo`` hiện là ``source_color``.
+- ``hint_color`` hiện là ``source_color``.
 - :ref:`Built in matrix variables were renamed. <doc_spatial_shader>`
-- Particles shaders no longer use the ``vertex()`` processor function. Instead
-  they use ``start()`` and ``process()``.
-- In the Forward+ and Mobile renderers, normalized device coordinates now have a Z-range of ``[0.0,1.0]``
-  instead of ``[-1.0,1.0]``. When reconstructing NDC from ``SCREEN_UV`` and depth, use
-  ``vec3 ndc = vec3(SCREEN_UV * 2.0 - 1.0, depth);`` instead of
-  ``vec3 ndc = vec3(SCREEN_UV, depth) * 2.0 - 1.0;``. The Compatibility renderer is unchanged,
-  using the same NDC Z-range as 3.x.
-- The lighting model changed. If your shader has a custom ``light()`` function,
-  you may need to make changes to get the same visual result.
-- In 4.3 and up, the reverse Z depth buffer technique is now implemented, which
-  may break advanced shaders. See
-  `Introducing Reverse Z (AKA I'm sorry for breaking your shader) <https://godotengine.org/article/introducing-reverse-z/>`__.
+- Shader particle không còn sử dụng hàm xử lý ``vertex()``. Thay vào đó, chúng sử dụng ``start()`` và ``process()``.
+- Trong các renderer Forward+ và Mobile, tọa độ thiết bị chuẩn hóa hiện có phạm vi Z là ``[0.0,1.0]`` thay vì ``[-1.0,1.0]``. Khi tái tạo NDC từ ``SCREEN_UV`` và độ sâu, hãy dùng ``vec3 ndc = vec3(SCREEN_UV * 2.0 - 1.0, depth);`` thay vì ``vec3 ndc = vec3(SCREEN_UV, depth) * 2.0 - 1.0;``. Renderer Compatibility không thay đổi, vẫn sử dụng phạm vi Z của NDC như trong 3.x.
+- Mô hình chiếu sáng đã thay đổi. Nếu shader của bạn có hàm ``light()`` tùy chỉnh, bạn có thể cần thay đổi để đạt được kết quả hiển thị tương tự.
+- Trong phiên bản 4.3 trở lên, kỹ thuật bộ đệm độ sâu Z đảo ngược hiện đã được triển khai, điều này có thể làm hỏng các shader nâng cao. Hãy xem `Giới thiệu về Z đảo ngược (CÒN GỌI LÀ Xin lỗi vì đã làm hỏng shader của bạn) <https://godotengine.org/article/introducing-reverse-z/>`__.
 
-See :ref:`doc_shading_language` for more information.
+Xem :ref:`doc_shading_language` để biết thêm thông tin.
 
-This list is not exhaustive. If you made all the changes mentioned here and your
-shader still doesn't work, try asking for help in one of the `community channels <https://godotengine.org/community/>`__.
+Danh sách này không đầy đủ. Nếu bạn đã thực hiện tất cả thay đổi được đề cập ở đây mà shader vẫn không hoạt động, hãy thử yêu cầu trợ giúp trong một trong các `kênh cộng đồng <https://godotengine.org/community/>`__.
 
-Updating scripts to take backwards-incompatible changes into account
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Cập nhật script để tính đến các thay đổi không tương thích ngược
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Some changes performed between Godot 3.x and 4 are not renames, but they still
-break backwards compatibility due to different default behavior.
+Một số thay đổi được thực hiện giữa Godot 3.x và 4 không phải là đổi tên, nhưng vẫn phá vỡ khả năng tương thích ngược do hành vi mặc định khác nhau.
 
-The most notable examples of this are:
+Các ví dụ đáng chú ý nhất là:
 
-- Lifecycle functions such as ``_ready()`` and ``_process()`` no longer
-  implicitly call parent classes' functions that have the same name. Instead,
-  you must use ``super()`` at the top of a lifecycle function in the child class
-  so that the parent class function is called first.
-- Both :ref:`class_String` and :ref:`class_StringName` are now exposed to
-  GDScript. This allows for greater optimization, as StringName is specifically
-  designed to be used for "constant" strings that are created once and reused
-  many times. These types are not strictly equivalent to each other, which means
-  ``is_same("example", &"example")`` returns ``false``. Although in most cases
-  they are interchangeable (``"example" == &"example"`` returns ``true``),
-  sometimes you may have to replace ``"example"`` with ``&"example"``.
-- :ref:`GDScript setter and getter syntax <doc_gdscript_basics_setters_getters>`
-  was changed, but it's only partially converted by the conversion tool. In most
-  cases, manual changes are required to make setters and getters working again.
-- :ref:`GDScript signal connection syntax <doc_gdscript_signals>` was changed.
-  The conversion tool will use the string-based syntax which is still present in
-  Godot 4, but it's recommended to switch to the :ref:`class_Signal`-based syntax
-  described on the linked page. This way, strings are no longer involved,
-  which avoids issues with signal name errors that can only be discovered at runtime.
-- Built-in scripts that are :ref:`tool scripts <doc_running_code_in_the_editor>`
-  do not get the ``tool`` keyword converted to the ``@tool`` annotation.
-- The Tween node was removed in favor of Tweeners, which are also available in
-  Godot 3.5 and later. See the
-  `original pull request <https://github.com/godotengine/godot/pull/41794>`__
-  for details.
-- ``randomize()`` is now automatically called on project load, so deterministic
-  randomness with the global RandomNumberGenerator instance requires manually
-  setting a seed in a script's ``_ready()`` function.
-- ``call_group()``, ``set_group()`` and ``notify_group()`` are now immediate by
-  default. If calling an expensive function, this may result in stuttering when
-  used on a group containing a large number of nodes. To use deferred calls like
-  before, replace ``call_group(...)`` with
-  ``call_group_flags(SceneTree.GROUP_CALL_DEFERRED, ...)`` (and do the same with
-  ``set_group()`` and ``notify_group()`` respectively).
-- Instead of ``rotation_degrees``, the ``rotation`` property is exposed to the
-  editor, which is automatically displayed as degrees in the Inspector
-  dock. This may break animations, as the conversion is not handled automatically by the
-  conversion tool.
-- :ref:`class_AABB`'s ``has_no_surface()`` was inverted and renamed to ``has_surface()``.
-- :ref:`class_AABB` and :ref:`class_Rect2`'s ``has_no_area()`` was inverted and
-  renamed to ``has_area()``.
-- :ref:`class_AnimatedTexture`'s ``fps`` property was replaced by ``speed_scale``,
-  which works the same as AnimationPlayer's ``playback_speed`` property.
-- :ref:`class_AnimatedSprite2D` and :ref:`class_AnimatedSprite3D` now allow
-  negative ``speed_scale`` values. This may break animations if you relied on
-  ``speed_scale`` being internally clamped to ``0.0``.
-- :ref:`class_AnimatedSprite2D` and :ref:`class_AnimatedSprite3D`'s ``playing``
-  property was removed. Use ``play()``/``stop()`` method instead OR configure
-  ``autoplay`` animation via the SpriteFrames bottom panel (but not both at once).
-- :ref:`class_Array`'s ``slice()`` second parameter (``end``) is now *exclusive*,
-  instead of being inclusive. For example, this means that
-  ``[1, 2, 3].slice(0, 1)`` now returns ``[1]`` instead of ``[1, 2]``.
-- :ref:`class_BaseButton`'s signals are now ``button_up`` and ``button_down``.
-  The ``pressed`` property is now ``button_pressed``.
-- :ref:`class_Camera2D`'s ``rotating`` property was replaced by
-  ``ignore_rotation``, which has inverted behavior.
-- Camera2D's ``zoom`` property was inverted: higher values are now more zoomed
-  in, instead of less.
-- :ref:`class_Node`'s ``remove_and_skip()`` method was removed.
-  If you need to reimplement it in a script, you can use the
-  `old C++ implementation <https://github.com/godotengine/godot/blob/7936b3cc4c657e4b273b376068f095e1e0e4d82a/scene/main/node.cpp#L1910-L1945>`__
-  as a reference.
-- ``OS.get_system_time_secs()`` should be converted to
-  ``Time.get_time_dict_from_system()["second"]``.
-- :ref:`class_ResourceSaver`'s ``save()`` method now has its arguments swapped around
-  (``resource: Resource, path: String``). This also applies to
-  :ref:`class_ResourceFormatSaver`'s ``_save()`` method.
-- A :ref:`class_StreamPeerTCP` must have ``poll()`` called on it to update its
-  state, instead of relying on ``get_status()`` automatically polling:
-  `GH-59582 <https://github.com/godotengine/godot/pull/59582>`__
-- :ref:`class_String`'s ``right()`` method `has changed behavior <https://github.com/godotengine/godot/pull/36180>`__:
-  it now returns a number of characters from the right of the string, rather than
-  the right side of the string from a given position. If you need the old behavior,
-  you can use ``substr()`` instead.
-- ``is_connected_to_host()`` was removed from StreamPeerTCP and PacketPeerUDP as
-  per `GH-59582 <https://github.com/godotengine/godot/pull/59582>`__.
-  ``get_status()`` can be used in StreamPeerTCP instead.
-  ``is_socket_connected()`` can be used in :ref:`class_PacketPeerUDP` instead.
-- In ``_get_property_list()``, the ``or_lesser`` property hint string is now ``or_less``.
-- In ``_get_property_list()``, the ``noslider`` property hint string is now ``no_slider``.
-- VisualShaderNodeVec4Parameter now takes a :ref:`class_Vector4` as parameter
-  instead of a :ref:`class_Quaternion`.
+- Các hàm vòng đời như ``_ready()`` và ``_process()`` không còn ngầm gọi các hàm của lớp cha có cùng tên. Thay vào đó, bạn phải sử dụng ``super()`` ở đầu hàm vòng đời trong lớp con để hàm của lớp cha được gọi trước.
+- Cả :ref:`class_String` và :ref:`class_StringName` hiện đã được cung cấp cho GDScript. Điều này cho phép tối ưu hóa tốt hơn, vì StringName được thiết kế riêng để dùng cho các chuỗi "hằng" được tạo một lần và tái sử dụng nhiều lần. Các kiểu này không hoàn toàn tương đương nhau, có nghĩa là ``is_same("example", &"example")`` trả về ``false``. Mặc dù trong hầu hết trường hợp chúng có thể thay thế cho nhau (``"example" == &"example"`` trả về ``true``), đôi khi bạn có thể phải thay ``"example"`` bằng ``&"example"``.
+- :ref:`Cú pháp setter và getter của GDScript <doc_gdscript_basics_setters_getters>` đã thay đổi, nhưng công cụ chuyển đổi chỉ chuyển đổi một phần cú pháp này. Trong hầu hết trường hợp, cần thực hiện thay đổi thủ công để setter và getter hoạt động trở lại.
+- :ref:`Cú pháp kết nối signal của GDScript <doc_gdscript_signals>` đã thay đổi. Công cụ chuyển đổi sẽ sử dụng cú pháp dựa trên chuỗi, vẫn còn được hỗ trợ trong Godot 4, nhưng bạn nên chuyển sang cú pháp dựa trên :ref:`class_Signal` được mô tả ở trang liên kết. Nhờ đó, chuỗi không còn được sử dụng, tránh các vấn đề về lỗi tên signal mà chỉ có thể phát hiện trong runtime.
+- Các script tích hợp là :ref:`tool script <doc_running_code_in_the_editor>` không được chuyển đổi từ từ khóa ``tool`` sang annotation ``@tool``.
+- Node Tween đã bị loại bỏ để thay thế bằng Tweeners, vốn cũng có trong Godot 3.5 trở lên. Xem `pull request ban đầu <https://github.com/godotengine/godot/pull/41794>`__ để biết chi tiết.
+- ``randomize()`` hiện được tự động gọi khi tải project, vì vậy để có tính ngẫu nhiên xác định được với instance RandomNumberGenerator toàn cục, bạn phải tự đặt seed trong hàm ``_ready()`` của script.
+- ``call_group()``, ``set_group()`` và ``notify_group()`` hiện mặc định được thực thi ngay lập tức. Nếu gọi một hàm tốn nhiều chi phí, điều này có thể gây giật khi sử dụng trên một group chứa số lượng lớn node. Để sử dụng các lời gọi deferred như trước, hãy thay ``call_group(...)`` bằng ``call_group_flags(SceneTree.GROUP_CALL_DEFERRED, ...)`` (và thực hiện tương tự với ``set_group()`` và ``notify_group()``).
+- Thay vì ``rotation_degrees``, thuộc tính ``rotation`` được hiển thị trong editor và tự động hiển thị dưới dạng độ trong dock Inspector. Điều này có thể làm hỏng animation, vì công cụ chuyển đổi không tự động xử lý việc chuyển đổi.
+- :ref:`class_AABB`'s ``has_no_surface()`` đã được đảo ngược và đổi tên thành ``has_surface()``.
+- :ref:`class_AABB` và :ref:`class_Rect2`'s ``has_no_area()`` đã được đảo ngược và đổi tên thành ``has_area()``.
+- Thuộc tính ``fps`` của :ref:`class_AnimatedTexture` đã được thay thế bằng ``speed_scale``, hoạt động giống như thuộc tính ``playback_speed`` của AnimationPlayer.
+- :ref:`class_AnimatedSprite2D` và :ref:`class_AnimatedSprite3D` hiện cho phép các giá trị ``speed_scale`` âm. Điều này có thể làm hỏng animation nếu bạn dựa vào việc ``speed_scale`` được ngầm giới hạn trong ``0.0``.
+- Thuộc tính ``playing`` của :ref:`class_AnimatedSprite2D` và :ref:`class_AnimatedSprite3D` đã bị loại bỏ. Thay vào đó, hãy sử dụng phương thức ``play()``/``stop()`` HOẶC cấu hình animation ``autoplay`` thông qua panel SpriteFrames ở dưới cùng (nhưng không sử dụng cả hai cùng lúc).
+- Tham số thứ hai (``end``) của :ref:`class_Array`'s ``slice()`` hiện là *exclusive*, thay vì inclusive. Ví dụ, điều này có nghĩa là ``[1, 2, 3].slice(0, 1)`` hiện trả về ``[1]`` thay vì ``[1, 2]``.
+- Các signal của :ref:`class_BaseButton` hiện là ``button_up`` và ``button_down``. Thuộc tính ``pressed`` hiện là ``button_pressed``.
+- Thuộc tính ``rotating`` của :ref:`class_Camera2D` đã được thay thế bằng ``ignore_rotation``, có hành vi đảo ngược.
+- Thuộc tính ``zoom`` của Camera2D đã được đảo ngược: các giá trị cao hơn hiện phóng to hơn thay vì thu nhỏ hơn.
+- Phương thức ``remove_and_skip()`` của :ref:`class_Node` đã bị loại bỏ. Nếu cần triển khai lại phương thức này trong script, bạn có thể dùng `triển khai C++ cũ <https://github.com/godotengine/godot/blob/7936b3cc4c657e4b273b376068f095e1e0e4d82a/scene/main/node.cpp#L1910-L1945>`__ làm tài liệu tham khảo.
+- ``OS.get_system_time_secs()`` nên được chuyển đổi thành ``Time.get_time_dict_from_system()["second"]``.
+- Phương thức ``save()`` của :ref:`class_ResourceSaver` hiện đã hoán đổi thứ tự các đối số (``resource: Resource, path: String``). Điều này cũng áp dụng cho
+  phương thức ``_save()`` của :ref:`class_ResourceFormatSaver`.
+- Một :ref:`class_StreamPeerTCP` phải được gọi ``poll()`` để cập nhật trạng thái, thay vì dựa vào việc ``get_status()`` tự động polling: `GH-59582 <https://github.com/godotengine/godot/pull/59582>`__
+- Phương thức ``right()`` của :ref:`class_String` `đã thay đổi hành vi <https://github.com/godotengine/godot/pull/36180>`__: hiện trả về số ký tự tính từ bên phải của chuỗi, thay vì phần bên phải của chuỗi tính từ một vị trí cho trước. Nếu cần hành vi cũ, bạn có thể sử dụng ``substr()`` thay thế.
+- ``is_connected_to_host()`` đã bị loại bỏ khỏi StreamPeerTCP và PacketPeerUDP theo `GH-59582 <https://github.com/godotengine/godot/pull/59582>`__. Có thể sử dụng ``get_status()`` thay thế trong StreamPeerTCP. Có thể sử dụng ``is_socket_connected()`` thay thế trong :ref:`class_PacketPeerUDP`.
+- Trong ``_get_property_list()``, chuỗi gợi ý thuộc tính ``or_lesser`` hiện là ``or_less``.
+- Trong ``_get_property_list()``, chuỗi gợi ý thuộc tính ``noslider`` hiện là ``no_slider``.
+- VisualShaderNodeVec4Parameter hiện nhận :ref:`class_Vector4` làm tham số thay vì :ref:`class_Quaternion`.
 
-**Removed or replaced nodes/resources**
+**Các node/resource đã bị loại bỏ hoặc thay thế**
 
-This lists all nodes that were replaced by another node requiring different
-configuration. The setup must be done from scratch again, as the project
-converter doesn't support updating existing setups:
+Danh sách này bao gồm tất cả các node đã được thay thế bằng một node khác yêu cầu cấu hình khác. Bạn phải thiết lập lại từ đầu, vì công cụ chuyển đổi dự án không hỗ trợ cập nhật các thiết lập hiện có:
 
 +---------------------+-----------------------+----------------------------------------------------------------------------+
 | Removed node        | Closest approximation | Comment                                                                    |
@@ -728,13 +542,11 @@ converter doesn't support updating existing setups:
 | OccluderShapeSphere | Resource              |                                                                            |
 +---------------------+-----------------------+----------------------------------------------------------------------------+
 
-If loading an old project, the node will be replaced with its
-*Closest approximation* automatically (even if not using the project upgrade tool).
+Khi tải một dự án cũ, node sẽ tự động được thay thế bằng *phương án gần đúng nhất* (ngay cả khi không sử dụng công cụ nâng cấp dự án).
 
-**Threading changes**
+**Các thay đổi về threading**
 
-:ref:`Threading <doc_using_multiple_threads>` APIs have changed in 4.0. For
-example, the following code snippet in Godot 3.x must be modified to work in 4.0:
+Các API :ref:`threading <doc_using_multiple_threads>` đã thay đổi trong 4.0. Ví dụ: đoạn mã sau trong Godot 3.x phải được sửa đổi để hoạt động trong 4.0:
 
 ::
 
@@ -746,48 +558,36 @@ example, the following code snippet in Godot 3.x must be modified to work in 4.0
     # 4.0
     var start_success = new_thread.start(__threaded_background_loader.bind(resource_path, thread_num))
 
-``Thread.is_active()`` is no longer used and should be converted to ``Thread.is_alive()``.
+``Thread.is_active()`` không còn được sử dụng và nên được chuyển đổi thành ``Thread.is_alive()``.
 
 .. seealso::
 
-    See the `changelog <https://github.com/godotengine/godot/blob/master/CHANGELOG.md>`__
-    for a full list of changes between Godot 3.x and 4.
+    Xem `changelog <https://github.com/godotengine/godot/blob/master/CHANGELOG.md>`__ để biết danh sách đầy đủ các thay đổi giữa Godot 3.x và 4.
 
-ArrayMesh resource compatibility breakage
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sự cố phá vỡ khả năng tương thích của resource ArrayMesh
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you've saved an ArrayMesh resource to a ``.res`` or ``.tres`` file, the
-format used in 4.0 is not compatible with the one used in 3.x. You will need to
-go through the process of importing the source mesh file and saving it as an
-ArrayMesh resource again.
+Nếu bạn đã lưu một resource ArrayMesh vào tệp ``.res`` hoặc ``.tres``, định dạng được sử dụng trong 4.0 không tương thích với định dạng được sử dụng trong 3.x. Bạn sẽ cần thực hiện lại quy trình import tệp mesh nguồn và lưu lại dưới dạng resource ArrayMesh.
 
-List of automatically renamed methods, properties, signals and constants
-------------------------------------------------------------------------
+Danh sách các method, property, signal và constant được tự động đổi tên
+-----------------------------------------------------------------------
 
-The `editor/project_upgrade/renames_map_3_to_4.cpp <https://github.com/godotengine/godot/blob/master/editor/project_upgrade/renames_map_3_to_4.cpp>`__
-source file lists all automatic renames performed by the project upgrade tool.
-Lines that are commented out refer to API renames that :ref:`cannot be performed automatically <doc_upgrading_to_godot_4_manual_rename>`.
+Tệp mã nguồn `editor/project_upgrade/renames_map_3_to_4.cpp <https://github.com/godotengine/godot/blob/master/editor/project_upgrade/renames_map_3_to_4.cpp>`__ liệt kê tất cả các tên được tự động đổi bởi công cụ nâng cấp dự án. Các dòng được chú thích đề cập đến những lần đổi tên API mà :ref:`không thể thực hiện tự động <doc_upgrading_to_godot_4_manual_rename>`.
 
-Porting editor settings
------------------------
+Chuyển các thiết lập editor
+---------------------------
 
-Godot 3.x and 4.0 use different editor settings files. This means their settings
-can be changed independently from each other.
+Godot 3.x và 4.0 sử dụng các tệp thiết lập editor khác nhau. Điều này có nghĩa là bạn có thể thay đổi các thiết lập của chúng độc lập với nhau.
 
-If you wish to port over your Godot 3.x settings to Godot 4, open the
-:ref:`editor settings folder <doc_data_paths_editor_data_paths>` and copy
-``editor_settings-3.tres`` to ``editor_settings-4.tres`` while the Godot 4
-editor is closed.
+Nếu muốn chuyển các thiết lập Godot 3.x sang Godot 4, hãy mở
+:ref:`thư mục thiết lập editor <doc_data_paths_editor_data_paths>` và sao chép ``editor_settings-3.tres`` vào ``editor_settings-4.tres`` khi editor Godot 4 đã đóng.
 
 .. note::
 
-    Many settings' names and categories have changed since Godot 3.x. Editor settings
-    whose name or category has changed won't carry over to Godot 4.0; you will
-    have to set their values again.
+    Tên và danh mục của nhiều thiết lập đã thay đổi kể từ Godot 3.x. Các thiết lập editor có tên hoặc danh mục đã thay đổi sẽ không được chuyển sang Godot 4.0; bạn sẽ phải đặt lại các giá trị của chúng.
 
 
-Updating version control settings
----------------------------------
+Cập nhật các thiết lập kiểm soát phiên bản
+------------------------------------------
 
-Godot 3.x and 4.x have entirely different lists of files and folders that should
-be ignored by your :ref:`version control system<doc_version_control_systems>`.
+Godot 3.x và 4.x có các danh sách tệp và thư mục hoàn toàn khác nhau cần được bỏ qua bởi :ref:`hệ thống kiểm soát phiên bản <doc_version_control_systems>` của bạn.

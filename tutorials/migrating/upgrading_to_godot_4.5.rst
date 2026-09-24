@@ -1,215 +1,270 @@
 .. _doc_upgrading_to_godot_4.5:
 
-Upgrading from Godot 4.4 to Godot 4.5
-=====================================
+Nâng cấp từ Godot 4.4 lên Godot 4.5
+===================================
 
-For most games and apps made with 4.4 it should be relatively safe to migrate to 4.5.
-This page intends to cover everything you need to pay attention to when migrating
-your project.
+Đối với hầu hết game và ứng dụng được tạo bằng 4.4, việc chuyển sang 4.5 tương đối an toàn. Trang này nhằm bao quát mọi điều bạn cần lưu ý khi chuyển đổi dự án.
 
-Breaking changes
-----------------
+Các thay đổi phá vỡ tương thích
+-------------------------------
 
-If you are migrating from 4.4 to 4.5, the breaking changes listed here might
-affect you. Changes are grouped by areas/systems.
+Nếu bạn đang chuyển từ 4.4 sang 4.5, các thay đổi phá vỡ tương thích được liệt kê ở đây có thể ảnh hưởng đến bạn. Các thay đổi được nhóm theo khu vực/hệ thống.
 
 .. warning::
 
-    In order to support `new Google Play requirements`_ Android now requires
-    targeting .NET 9 when exporting C# projects to Android, other platforms
-    continue to use .NET 8 as the minimum required version but newer versions
-    are supported and encouraged.
+    Để hỗ trợ `các yêu cầu mới của Google Play <new Google Play requirements_>`_, Android hiện yêu cầu nhắm đến .NET 9 khi xuất các dự án C# sang Android; các nền tảng khác tiếp tục sử dụng .NET 8 làm phiên bản tối thiểu bắt buộc, nhưng các phiên bản mới hơn vẫn được hỗ trợ và khuyến khích sử dụng.
 
-    If you are using C# in your project and want to export to Android, you will
-    need to upgrade your project to .NET 9 (see `Upgrading to a new .NET version`_
-    for instructions).
+    Nếu bạn đang sử dụng C# trong dự án và muốn xuất sang Android, bạn sẽ cần nâng cấp dự án lên .NET 9 (xem `Nâng cấp lên phiên bản .NET mới <Upgrading to a new .NET version_>`_ để biết hướng dẫn).
 
-This article indicates whether each breaking change affects GDScript and whether
-the C# breaking change is *binary compatible* or *source compatible*:
+Bài viết này cho biết mỗi thay đổi phá vỡ tương thích có ảnh hưởng đến GDScript hay không, và thay đổi phá vỡ tương thích của C# là *tương thích nhị phân* hay *tương thích mã nguồn*:
 
-- **Binary compatible** - Existing binaries will load and execute successfully without
-  recompilation, and the run-time behavior won't change.
-- **Source compatible** - Source code will compile successfully without changes when
-  upgrading Godot.
+- **Tương thích nhị phân** - Các binary hiện có sẽ tải và thực thi thành công mà không cần biên dịch lại, đồng thời hành vi khi chạy sẽ không thay đổi.
+- **Tương thích mã nguồn** - Mã nguồn sẽ biên dịch thành công mà không cần thay đổi khi nâng cấp Godot.
 
 Core
 ~~~~
 
-========================================================================================================================  ===================  ====================  ====================  ============
-Change                                                                                                                    GDScript Compatible  C# Binary Compatible  C# Source Compatible  Introduced
-========================================================================================================================  ===================  ====================  ====================  ============
-**JSONRPC**
-Method ``set_scope`` replaced by ``set_method``                                                                           |❌|                 |❌ with stub|        |❌ with stub|        `GH-104890`_
-**Node**
-Method ``get_rpc_config`` renamed to ``get_node_rpc_config``                                                              |❌|                 |✔️ with compat|      |✔️ with compat|      `GH-106848`_
-Method ``set_name`` changes ``name`` parameter type from ``String`` to ``StringName``                                     |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-76560`_
-========================================================================================================================  ===================  ====================  ====================  ============
++--------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Thay đổi                                                                                   | Tương thích với GDScript | Tương thích nhị phân với C# | Tương thích mã nguồn với C# | Được giới thiệu |
++============================================================================================+==========================+=============================+=============================+=================+
+| **JSONRPC**                                                                                |                          |                             |                             |                 |
++--------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``set_scope`` được thay thế bằng ``set_method``                                | |❌|                     | |❌ with stub|              | |❌ with stub|              | `GH-104890`_    |
++--------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| **Node**                                                                                   |                          |                             |                             |                 |
++--------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``get_rpc_config`` được đổi tên thành ``get_node_rpc_config``                  | |❌|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-106848`_    |
++--------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``set_name`` thay đổi kiểu tham số ``name`` từ ``String`` thành ``StringName`` | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-76560`_     |
++--------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
 
 Rendering
 ~~~~~~~~~
 
-========================================================================================================================  ===================  ====================  ====================  ============
-Change                                                                                                                    GDScript Compatible  C# Binary Compatible  C# Source Compatible  Introduced
-========================================================================================================================  ===================  ====================  ====================  ============
-**DisplayServer**
-Method ``file_dialog_show`` adds a new ``parent_window_id`` optional parameter                                            |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-98194`_
-Method ``file_dialog_with_options_show`` adds a new ``parent_window_id`` optional parameter                               |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-98194`_
-**RenderingDevice**
-Method ``texture_create_from_extension`` adds a new ``mipmaps`` optional parameter                                        |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-105570`_
-**RenderingServer**
-Method ``instance_reset_physics_interpolation`` removed                                                                   |❌|                 |✔️ with compat|      |✔️ with compat|      `GH-104269`_
-Method ``instance_set_interpolated`` removed                                                                              |❌|                 |✔️ with compat|      |✔️ with compat|      `GH-104269`_
-========================================================================================================================  ===================  ====================  ====================  ============
++--------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Thay đổi                                                                                         | Tương thích với GDScript | Tương thích nhị phân với C# | Tương thích mã nguồn với C# | Được giới thiệu |
++==================================================================================================+==========================+=============================+=============================+=================+
+| **DisplayServer**                                                                                |                          |                             |                             |                 |
++--------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``file_dialog_show`` thêm một tham số tùy chọn ``parent_window_id`` mới              | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-98194`_     |
++--------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``file_dialog_with_options_show`` thêm một tham số tùy chọn ``parent_window_id`` mới | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-98194`_     |
++--------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| **RenderingDevice**                                                                              |                          |                             |                             |                 |
++--------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``texture_create_from_extension`` thêm một tham số tùy chọn ``mipmaps`` mới          | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-105570`_    |
++--------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| **RenderingServer**                                                                              |                          |                             |                             |                 |
++--------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``instance_reset_physics_interpolation`` đã bị xóa                                   | |❌|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104269`_    |
++--------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``instance_set_interpolated`` đã bị xóa                                              | |❌|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104269`_    |
++--------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
 
 .. note::
 
-    In C#, the enum ``RenderingDevice.Features`` breaks compatibility because of the way the bindings generator
-    detects the enum prefix. New members were added to the enum in `GH-103941`_ that caused the enum member
-    ``Address`` to be renamed to ``BufferDeviceAddress``.
+    Trong C#, enum ``RenderingDevice.Features`` phá vỡ tính tương thích do cách trình tạo bindings phát hiện tiền tố của enum. Các thành viên mới được thêm vào enum trong `GH-103941`_, khiến thành viên enum ``Address`` được đổi tên thành ``BufferDeviceAddress``.
 
 GLTF
 ~~~~
 
-========================================================================================================================  ===================  ====================  ====================  ============
-Change                                                                                                                    GDScript Compatible  C# Binary Compatible  C# Source Compatible  Introduced
-========================================================================================================================  ===================  ====================  ====================  ============
-**GLTFAccessor**
-Property ``byte_offset`` changes type metadata from ``int32`` to ``int64``                                                |✔️|                 |❌|                  |❌|                  `GH-106220`_
-Property ``component_type`` changes type from ``int`` to ``GLTFAccessor::GLTFComponentType``                              |✔️|                 |❌|                  |❌|                  `GH-106220`_
-Property ``count`` changes type metadata from ``int32`` to ``int64``                                                      |✔️|                 |❌|                  |❌|                  `GH-106220`_
-Property ``sparse_count`` changes type metadata from ``int32`` to ``int64``                                               |✔️|                 |❌|                  |❌|                  `GH-106220`_
-Property ``sparse_indices_byte_offset`` changes type metadata from ``int32`` to ``int64``                                 |✔️|                 |❌|                  |❌|                  `GH-106220`_
-Property ``sparse_indices_component_type`` changes type from ``int`` to ``GLTFAccessor::GLTFComponentType``               |✔️|                 |❌|                  |❌|                  `GH-106220`_
-Property ``sparse_values_byte_offset`` changes type metadata from ``int32`` to ``int64``                                  |✔️|                 |❌|                  |❌|                  `GH-106220`_
-**GLTFBufferView**
-Property ``byte_length`` changes type metadata from ``int32`` to ``int64``                                                |✔️|                 |❌|                  |❌|                  `GH-106220`_
-Property ``byte_offset`` changes type metadata from ``int32`` to ``int64``                                                |✔️|                 |❌|                  |❌|                  `GH-106220`_
-Property ``byte_stride`` changes type metadata from ``int32`` to ``int64``                                                |✔️|                 |❌|                  |❌|                  `GH-106220`_
-========================================================================================================================  ===================  ====================  ====================  ============
++-----------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Thay đổi                                                                                                        | Tương thích với GDScript | Tương thích nhị phân với C# | Tương thích mã nguồn với C# | Được giới thiệu |
++=================================================================================================================+==========================+=============================+=============================+=================+
+| **GLTFAccessor**                                                                                                |                          |                             |                             |                 |
++-----------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Thuộc tính ``byte_offset`` thay đổi metadata kiểu từ ``int32`` thành ``int64``                                  | |✔️|                     | |❌|                        | |❌|                        | `GH-106220`_    |
++-----------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Thuộc tính ``component_type`` thay đổi kiểu từ ``int`` thành ``GLTFAccessor::GLTFComponentType``                | |✔️|                     | |❌|                        | |❌|                        | `GH-106220`_    |
++-----------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Thuộc tính ``count`` thay đổi metadata kiểu từ ``int32`` thành ``int64``                                        | |✔️|                     | |❌|                        | |❌|                        | `GH-106220`_    |
++-----------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Thuộc tính ``sparse_count`` thay đổi metadata kiểu từ ``int32`` thành ``int64``                                 | |✔️|                     | |❌|                        | |❌|                        | `GH-106220`_    |
++-----------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Thuộc tính ``sparse_indices_byte_offset`` thay đổi metadata kiểu từ ``int32`` thành ``int64``                   | |✔️|                     | |❌|                        | |❌|                        | `GH-106220`_    |
++-----------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Thuộc tính ``sparse_indices_component_type`` thay đổi kiểu từ ``int`` thành ``GLTFAccessor::GLTFComponentType`` | |✔️|                     | |❌|                        | |❌|                        | `GH-106220`_    |
++-----------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Thuộc tính ``sparse_values_byte_offset`` thay đổi metadata kiểu từ ``int32`` thành ``int64``                    | |✔️|                     | |❌|                        | |❌|                        | `GH-106220`_    |
++-----------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| **GLTFBufferView**                                                                                              |                          |                             |                             |                 |
++-----------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Thuộc tính ``byte_length`` thay đổi metadata kiểu từ ``int32`` thành ``int64``                                  | |✔️|                     | |❌|                        | |❌|                        | `GH-106220`_    |
++-----------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Thuộc tính ``byte_offset`` thay đổi metadata kiểu từ ``int32`` thành ``int64``                                  | |✔️|                     | |❌|                        | |❌|                        | `GH-106220`_    |
++-----------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Thuộc tính ``byte_stride`` thay đổi metadata kiểu từ ``int32`` thành ``int64``                                  | |✔️|                     | |❌|                        | |❌|                        | `GH-106220`_    |
++-----------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
 
 .. note::
 
-    As a result of changing the type metadata, the C# bindings changed the type from ``int`` (32-bytes) to ``long`` (64-bytes).
+    Do metadata kiểu thay đổi, các C# bindings đã thay đổi kiểu từ ``int`` (32 byte) thành ``long`` (64 byte).
 
 Text
 ~~~~
 
-========================================================================================================================  ===================  ====================  ====================  ============
-Change                                                                                                                    GDScript Compatible  C# Binary Compatible  C# Source Compatible  Introduced
-========================================================================================================================  ===================  ====================  ====================  ============
-**CanvasItem**
-Method ``draw_char`` adds a new ``oversampling`` optional parameter                                                       |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104872`_
-Method ``draw_char_outline`` adds a new ``oversampling`` optional parameter                                               |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104872`_
-Method ``draw_multiline_string`` adds a new ``oversampling`` optional parameter                                           |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104872`_
-Method ``draw_multiline_string_outline`` adds a new ``oversampling`` optional parameter                                   |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104872`_
-Method ``draw_string`` adds a new ``oversampling`` optional parameter                                                     |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104872`_
-Method ``draw_string_outline`` adds a new ``oversampling`` optional parameter                                             |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104872`_
-**Font**
-Method ``draw_char`` adds a new ``oversampling`` optional parameter                                                       |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104872`_
-Method ``draw_char_outline`` adds a new ``oversampling`` optional parameter                                               |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104872`_
-Method ``draw_multiline_string`` adds a new ``oversampling`` optional parameter                                           |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104872`_
-Method ``draw_multiline_string_outline`` adds a new ``oversampling`` optional parameter                                   |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104872`_
-Method ``draw_string`` adds a new ``oversampling`` optional parameter                                                     |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104872`_
-Method ``draw_string_outline`` adds a new ``oversampling`` optional parameter                                             |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104872`_
-**RichTextLabel**
-Method ``add_image`` adds a new ``alt_text`` optional parameter                                                           |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-76829`_
-Method ``add_image`` replaced ``size_in_percent`` parameter by ``width_in_percent`` and ``height_in_percent``             |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-107347`_
-Method ``push_strikethrough`` adds optional ``color`` parameter                                                           |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-106300`_
-Method ``push_table`` adds a new ``name`` optional parameter                                                              |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-76829`_
-Method ``push_underline`` adds optional ``color`` parameter                                                               |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-106300`_
-Method ``update_image`` replaced ``size_in_percent`` parameter by ``width_in_percent`` and ``height_in_percent``          |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-107347`_
-**TextLine**
-Method ``draw`` adds a new ``oversampling`` optional parameter                                                            |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104872`_
-Method ``draw_outline`` adds a new ``oversampling`` optional parameter                                                    |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104872`_
-**TextParagraph**
-Method ``draw`` adds a new ``oversampling`` optional parameter                                                            |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104872`_
-Method ``draw_dropcap`` adds a new ``oversampling`` optional parameter                                                    |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104872`_
-Method ``draw_dropcap_outline`` adds a new ``oversampling`` optional parameter                                            |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104872`_
-Method ``draw_line`` adds a new ``oversampling`` optional parameter                                                       |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104872`_
-Method ``draw_line_outline`` adds a new ``oversampling`` optional parameter                                               |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104872`_
-Method ``draw_outline`` adds a new ``oversampling`` optional parameter                                                    |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104872`_
-**TextServer**
-Method ``font_draw_glyph`` adds a new ``oversampling`` optional parameter                                                 |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104872`_
-Method ``font_draw_glyph_outline`` adds a new ``oversampling`` optional parameter                                         |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104872`_
-Method ``shaped_text_draw`` adds a new ``oversampling`` optional parameter                                                |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104872`_
-Method ``shaped_text_draw_outline`` adds a new ``oversampling`` optional parameter                                        |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104872`_
-**TreeItem**
-Method ``add_button`` adds a new ``alt_text`` optional parameter                                                          |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-76829`_
-**TextServerExtension**
-Method ``_font_draw_glyph`` adds a new ``oversampling`` optional parameter                                                |❌|                 |❌|                  |❌|                  `GH-104872`_
-Method ``_font_draw_glyph_outline`` adds a new ``oversampling`` optional parameter                                        |❌|                 |❌|                  |❌|                  `GH-104872`_
-Method ``_shaped_text_draw`` adds a new ``oversampling`` optional parameter                                               |❌|                 |❌|                  |❌|                  `GH-104872`_
-Method ``_shaped_text_draw_outline`` adds a new ``oversampling`` optional parameter                                       |❌|                 |❌|                  |❌|                  `GH-104872`_
-========================================================================================================================  ===================  ====================  ====================  ============
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Thay đổi                                                                                                             | Tương thích với GDScript | Tương thích nhị phân với C# | Tương thích mã nguồn với C# | Được giới thiệu |
++======================================================================================================================+==========================+=============================+=============================+=================+
+| **CanvasItem**                                                                                                       |                          |                             |                             |                 |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``draw_char`` thêm một tham số tùy chọn ``oversampling`` mới                                             | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``draw_char_outline`` thêm tham số tùy chọn ``oversampling`` mới                                         | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``draw_multiline_string`` thêm tham số tùy chọn ``oversampling`` mới                                     | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``draw_multiline_string_outline`` thêm tham số tùy chọn ``oversampling`` mới                             | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``draw_string`` thêm tham số tùy chọn ``oversampling`` mới                                               | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``draw_string_outline`` thêm tham số tùy chọn ``oversampling`` mới                                       | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| **Font**                                                                                                             |                          |                             |                             |                 |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``draw_char`` thêm tham số tùy chọn ``oversampling`` mới                                                 | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``draw_char_outline`` thêm tham số tùy chọn ``oversampling`` mới                                         | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``draw_multiline_string`` thêm tham số tùy chọn ``oversampling`` mới                                     | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``draw_multiline_string_outline`` thêm tham số tùy chọn ``oversampling`` mới                             | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``draw_string`` thêm tham số tùy chọn ``oversampling`` mới                                               | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``draw_string_outline`` thêm tham số tùy chọn ``oversampling`` mới                                       | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| **RichTextLabel**                                                                                                    |                          |                             |                             |                 |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``add_image`` thêm tham số tùy chọn ``alt_text`` mới                                                     | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-76829`_     |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``add_image`` thay thế tham số ``size_in_percent`` bằng ``width_in_percent`` và ``height_in_percent``    | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-107347`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``push_strikethrough`` thêm tham số tùy chọn ``color``                                                   | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-106300`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``push_table`` thêm tham số tùy chọn ``name`` mới                                                        | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-76829`_     |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``push_underline`` thêm tham số tùy chọn ``color``                                                       | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-106300`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``update_image`` thay thế tham số ``size_in_percent`` bằng ``width_in_percent`` và ``height_in_percent`` | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-107347`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| **TextLine**                                                                                                         |                          |                             |                             |                 |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``draw`` thêm tham số tùy chọn ``oversampling`` mới                                                      | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``draw_outline`` thêm tham số tùy chọn ``oversampling`` mới                                              | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| **TextParagraph**                                                                                                    |                          |                             |                             |                 |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``draw`` thêm tham số tùy chọn ``oversampling`` mới                                                      | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``draw_dropcap`` thêm tham số tùy chọn ``oversampling`` mới                                              | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``draw_dropcap_outline`` thêm tham số tùy chọn ``oversampling`` mới                                      | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``draw_line`` thêm tham số tùy chọn ``oversampling`` mới                                                 | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``draw_line_outline`` thêm tham số tùy chọn ``oversampling`` mới                                         | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``draw_outline`` thêm tham số tùy chọn ``oversampling`` mới                                              | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| **TextServer**                                                                                                       |                          |                             |                             |                 |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``font_draw_glyph`` thêm tham số tùy chọn ``oversampling`` mới                                           | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``font_draw_glyph_outline`` thêm tham số tùy chọn ``oversampling`` mới                                   | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``shaped_text_draw`` thêm tham số tùy chọn ``oversampling`` mới                                          | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``shaped_text_draw_outline`` thêm tham số tùy chọn ``oversampling`` mới                                  | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| **TreeItem**                                                                                                         |                          |                             |                             |                 |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``add_button`` thêm tham số tùy chọn ``alt_text`` mới                                                    | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-76829`_     |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| **TextServerExtension**                                                                                              |                          |                             |                             |                 |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``_font_draw_glyph`` thêm tham số tùy chọn ``oversampling`` mới                                          | |❌|                     | |❌|                        | |❌|                        | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``_font_draw_glyph_outline`` thêm tham số tùy chọn ``oversampling`` mới                                  | |❌|                     | |❌|                        | |❌|                        | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``_shaped_text_draw`` thêm tham số tùy chọn ``oversampling`` mới                                         | |❌|                     | |❌|                        | |❌|                        | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``_shaped_text_draw_outline`` thêm tham số tùy chọn ``oversampling`` mới                                 | |❌|                     | |❌|                        | |❌|                        | `GH-104872`_    |
++----------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
 
 XR
 ~~
 
-============================================================================================================================================================  ===================  ====================  ====================  ============
-Change                                                                                                                                                        GDScript Compatible  C# Binary Compatible  C# Source Compatible  Introduced
-============================================================================================================================================================  ===================  ====================  ====================  ============
-**OpenXRAPIExtension**
-Method ``register_composition_layer_provider`` changes ``extension`` parameter type from ``OpenXRExtensionWrapperExtension`` to ``OpenXRExtensionWrapper``    |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104087`_
-Method ``register_projection_views_extension`` changes ``extension`` parameter type from ``OpenXRExtensionWrapperExtension`` to ``OpenXRExtensionWrapper``    |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104087`_
-Method ``unregister_composition_layer_provider`` changes ``extension`` parameter type from ``OpenXRExtensionWrapperExtension`` to ``OpenXRExtensionWrapper``  |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104087`_
-Method ``unregister_projection_views_extension`` changes ``extension`` parameter type from ``OpenXRExtensionWrapperExtension`` to ``OpenXRExtensionWrapper``  |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-104087`_
-**OpenXRBindingModifierEditor**
-Type ``OpenXRBindingModifierEditor`` changed API type from Core to Editor                                                                                     |❌|                 |❌|                  |❌|                  `GH-103869`_
-**OpenXRInteractionProfileEditor**
-Type ``OpenXRInteractionProfileEditor`` changed API type from Core to Editor                                                                                  |❌|                 |❌|                  |❌|                  `GH-103869`_
-**OpenXRInteractionProfileEditorBase**
-Type ``OpenXRInteractionProfileEditorBase`` changed API type from Core to Editor                                                                              |❌|                 |❌|                  |❌|                  `GH-103869`_
-============================================================================================================================================================  ===================  ====================  ====================  ============
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Thay đổi                                                                                                                                                              | Tương thích với GDScript | Tương thích nhị phân với C# | Tương thích mã nguồn với C# | Được giới thiệu |
++=======================================================================================================================================================================+==========================+=============================+=============================+=================+
+| **OpenXRAPIExtension**                                                                                                                                                |                          |                             |                             |                 |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``register_composition_layer_provider`` thay đổi kiểu của tham số ``extension`` từ ``OpenXRExtensionWrapperExtension`` thành ``OpenXRExtensionWrapper``   | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104087`_    |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``register_projection_views_extension`` thay đổi kiểu của tham số ``extension`` từ ``OpenXRExtensionWrapperExtension`` thành ``OpenXRExtensionWrapper``   | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104087`_    |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``unregister_composition_layer_provider`` thay đổi kiểu của tham số ``extension`` từ ``OpenXRExtensionWrapperExtension`` thành ``OpenXRExtensionWrapper`` | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104087`_    |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``unregister_projection_views_extension`` thay đổi kiểu của tham số ``extension`` từ ``OpenXRExtensionWrapperExtension`` thành ``OpenXRExtensionWrapper`` | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-104087`_    |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| **OpenXRBindingModifierEditor**                                                                                                                                       |                          |                             |                             |                 |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Kiểu ``OpenXRBindingModifierEditor`` đã thay đổi kiểu API từ Core thành Editor                                                                                        | |❌|                     | |❌|                        | |❌|                        | `GH-103869`_    |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| **OpenXRInteractionProfileEditor**                                                                                                                                    |                          |                             |                             |                 |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Kiểu ``OpenXRInteractionProfileEditor`` đã thay đổi kiểu API từ Core thành Editor                                                                                     | |❌|                     | |❌|                        | |❌|                        | `GH-103869`_    |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| **OpenXRInteractionProfileEditorBase**                                                                                                                                |                          |                             |                             |                 |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Kiểu ``OpenXRInteractionProfileEditorBase`` đã thay đổi kiểu API từ Core thành Editor                                                                                 | |❌|                     | |❌|                        | |❌|                        | `GH-103869`_    |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
 
 .. note::
 
-    Classes ``OpenXRBindingModifierEditor``, ``OpenXRInteractionProfileEditor``, and ``OpenXRInteractionProfileEditorBase``
-    are only available in the editor. Using them outside of the editor will result in a compilation error.
+    Các lớp ``OpenXRBindingModifierEditor``, ``OpenXRInteractionProfileEditor`` và ``OpenXRInteractionProfileEditorBase`` chỉ khả dụng trong editor. Việc sử dụng chúng bên ngoài editor sẽ gây ra lỗi biên dịch.
 
-    In C#, this means the types are moved from the ``GodotSharp`` assembly to the ``GodotSharpEditor`` assembly.
-    Make sure to wrap code that uses these types in a ``#if TOOLS`` block to ensure they are not included in an exported game.
+    Trong C#, điều này có nghĩa là các kiểu được chuyển từ assembly ``GodotSharp`` sang assembly ``GodotSharpEditor``. Hãy đảm bảo bọc mã sử dụng các kiểu này trong một khối ``#if TOOLS`` để đảm bảo chúng không được đưa vào game đã export.
 
-    **This change was also backported to 4.4.1.**
+    **Thay đổi này cũng đã được backport vào 4.4.1.**
 
-Editor plugins
-~~~~~~~~~~~~~~
+Plugin editor
+~~~~~~~~~~~~~
 
-========================================================================================================================  ===================  ====================  ====================  ============
-Change                                                                                                                    GDScript Compatible  C# Binary Compatible  C# Source Compatible  Introduced
-========================================================================================================================  ===================  ====================  ====================  ============
-**EditorExportPlatform**
-Method ``get_forced_export_files`` adds a new ``preset`` optional parameter                                               |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-71542`_
-**EditorUndoRedoManager**
-Method ``create_action`` adds a new ``mark_unsaved`` optional parameter                                                   |✔️|                 |✔️ with compat|      |✔️ with compat|      `GH-106121`_
-**EditorExportPlatformExtension**
-Method ``_get_option_icon`` changes return type from ``ImageTexture`` to ``Texture2D``                                    |✔️|                 |❌|                  |❌|                  `GH-108825`_
-========================================================================================================================  ===================  ====================  ====================  ============
++-----------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Thay đổi                                                                                      | Tương thích với GDScript | Tương thích nhị phân với C# | Tương thích mã nguồn với C# | Được giới thiệu |
++===============================================================================================+==========================+=============================+=============================+=================+
+| **EditorExportPlatform**                                                                      |                          |                             |                             |                 |
++-----------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``get_forced_export_files`` thêm một tham số tùy chọn ``preset`` mới              | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-71542`_     |
++-----------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| **EditorUndoRedoManager**                                                                     |                          |                             |                             |                 |
++-----------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``create_action`` thêm một tham số tùy chọn ``mark_unsaved`` mới                  | |✔️|                     | |✔️ with compat|            | |✔️ with compat|            | `GH-106121`_    |
++-----------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| **EditorExportPlatformExtension**                                                             |                          |                             |                             |                 |
++-----------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
+| Phương thức ``_get_option_icon`` thay đổi kiểu trả về từ ``ImageTexture`` thành ``Texture2D`` | |✔️|                     | |❌|                        | |❌|                        | `GH-108825`_    |
++-----------------------------------------------------------------------------------------------+--------------------------+-----------------------------+-----------------------------+-----------------+
 
-Behavior changes
-----------------
+Các thay đổi về hành vi
+-----------------------
 
-In 4.5, some behavior changes have been introduced, which might require you to adjust your project.
+Trong 4.5, một số thay đổi về hành vi đã được đưa vào, có thể yêu cầu bạn điều chỉnh project của mình.
 
 TileMapLayer
 ~~~~~~~~~~~~
 
-:ref:`TileMapLayer.get_coords_for_body_rid() <class_TileMapLayer_method_get_coords_for_body_rid>`
-will return different values in 4.5 compared to 4.4,
-as TileMapLayer physics chunking is enabled by default. Higher values of
-:ref:`TileMapLayer.physics_quadrant_size <class_TileMapLayer_property_physics_quadrant_size>`
-will make this function less precise. To get the exact cell coordinates like in 4.4 and prior
-versions, you need to set
-:ref:`TileMapLayer.physics_quadrant_size <class_TileMapLayer_property_physics_quadrant_size>`
-to ``1``, which disables physics chunking.
+:ref:`TileMapLayer.get_coords_for_body_rid() <class_TileMapLayer_method_get_coords_for_body_rid>` sẽ trả về các giá trị khác trong 4.5 so với 4.4, vì tính năng chia khối vật lý của TileMapLayer được bật theo mặc định. Các giá trị cao hơn của
+:ref:`TileMapLayer.physics_quadrant_size <class_TileMapLayer_property_physics_quadrant_size>` sẽ khiến hàm này kém chính xác hơn. Để lấy tọa độ ô chính xác như trong 4.4 và các phiên bản trước, bạn cần đặt
+:ref:`TileMapLayer.physics_quadrant_size <class_TileMapLayer_property_physics_quadrant_size>` thành ``1``, thao tác này sẽ tắt tính năng chia khối vật lý.
 
-3D Model Import
-~~~~~~~~~~~~~~~
+Nhập model 3D
+~~~~~~~~~~~~~
 
-A fix has been made to the 3D model importers to correctly handle non-joint nodes within a skeleton hierarchy (`GH-104184`_).
-To preserve compatibility, the default behavior is to import existing files with the same behavior as before (`GH-107352`_).
-New ``.gltf``, ``.glb``, ``.blend``, and ``.fbx`` files (without a corresponding ``.import`` file)
-will be imported with the new behavior. However, for existing files, if you want to use the
-new behavior, you must change the "Naming Version" option at the bottom of the Import dock:
+Đã có một bản sửa lỗi cho các trình nhập model 3D để xử lý chính xác các node không phải joint trong hệ thống phân cấp skeleton (`GH-104184`_). Để duy trì tính tương thích, hành vi mặc định là nhập các file hiện có với hành vi như trước (`GH-107352`_). Các file ``.gltf``, ``.glb``, ``.blend`` và ``.fbx`` mới (không có file ``.import`` tương ứng) sẽ được nhập bằng hành vi mới. Tuy nhiên, đối với các file hiện có, nếu muốn sử dụng hành vi mới, bạn phải thay đổi tùy chọn "Naming Version" ở cuối dock Import:
 
 .. image:: img/gltf_naming_version.webp
 
@@ -218,84 +273,55 @@ Core
 
 .. note::
 
-    :ref:`Resource.duplicate(true) <class_Resource_method_duplicate>` (which performs
-    deep duplication) now only duplicates resources internal to the resource file
-    it's called on. In 4.4, this duplicated everything instead, including external resources.
-    If you were deep-duplicating a resource that contained references to other
-    external resources, those external resources aren't duplicated anymore. You must call
-    :ref:`Resource.duplicate_deep(DEEP_DUPLICATE_ALL) <class_Resource_method_duplicate_deep>`
-    instead to keep the old behavior.
+    :ref:`Resource.duplicate(true) <class_Resource_method_duplicate>` (thực hiện sao chép sâu) hiện chỉ sao chép các resource nội bộ của file resource mà nó được gọi trên đó. Trong 4.4, thao tác này thay vào đó sao chép mọi thứ, bao gồm cả resource bên ngoài. Nếu bạn đã sao chép sâu một resource chứa tham chiếu đến các resource bên ngoài khác, những resource bên ngoài đó sẽ không còn được sao chép nữa. Bạn phải gọi
+    :ref:`Resource.duplicate_deep(DEEP_DUPLICATE_ALL) <class_Resource_method_duplicate_deep>` thay thế để giữ lại hành vi cũ.
 
 .. note::
 
-    :ref:`ProjectSettings.add_property_info() <class_ProjectSettings_method_add_property_info>`
-    now prints a warning when the dictionary parameter has missing keys or invalid keys.
-    Most importantly, it will now warn when a ``usage`` key is passed, as this key is not used.
-    This was also the case before 4.5, but it was silently ignored instead.
-    As a reminder, to set property usage information correctly, you must use
+    :ref:`ProjectSettings.add_property_info() <class_ProjectSettings_method_add_property_info>` hiện in cảnh báo khi tham số dictionary có các key bị thiếu hoặc không hợp lệ. Quan trọng nhất, giờ đây nó sẽ cảnh báo khi một key ``usage`` được truyền vào, vì key này không được sử dụng. Trước 4.5 cũng đã như vậy, nhưng khi đó key này chỉ bị bỏ qua mà không có thông báo. Xin nhắc lại, để đặt thông tin sử dụng property một cách chính xác, bạn phải sử dụng
     :ref:`ProjectSettings.set_as_basic() <class_ProjectSettings_method_set_as_basic>`,
-    :ref:`ProjectSettings.set_restart_if_changed() <class_ProjectSettings_method_set_restart_if_changed>`,
-    or :ref:`ProjectSettings.set_as_internal() <class_ProjectSettings_method_set_as_internal>` instead.
+    :ref:`ProjectSettings.set_restart_if_changed() <class_ProjectSettings_method_set_restart_if_changed>`, hoặc thay vào đó dùng :ref:`ProjectSettings.set_as_internal() <class_ProjectSettings_method_set_as_internal>`.
 
 .. note::
 
-    In C#, ``StringExtensions.PathJoin`` now avoids adding an extra path separator when the original string is empty,
-    or when the appended path starts with a path separator (`GH-105281`_).
+    Trong C#, ``StringExtensions.PathJoin`` hiện tránh thêm dấu phân tách path thừa khi chuỗi ban đầu rỗng hoặc khi path được nối bắt đầu bằng dấu phân tách path (`GH-105281`_).
 
 .. note::
 
-    In C#, ``StringExtensions.GetExtension`` now returns an empty string instead of the original string
-    when the original string does not contain an extension (`GH-108041`_).
+    Trong C#, ``StringExtensions.GetExtension`` hiện trả về chuỗi rỗng thay vì chuỗi ban đầu khi chuỗi ban đầu không chứa phần mở rộng (`GH-108041`_).
 
 .. note::
 
-    In C#, the ``Quaternion(Vector3, Vector3)`` constructor now correctly creates a quaternion representing
-    the shortest arc between the two input vectors. Previously, it would return incorrect values for certain inputs
-    (`GH-107618`_).
+    Trong C#, constructor ``Quaternion(Vector3, Vector3)`` hiện tạo chính xác một quaternion biểu diễn cung ngắn nhất giữa hai vector đầu vào. Trước đây, nó trả về các giá trị không chính xác đối với một số đầu vào (`GH-107618`_).
 
 Navigation
 ~~~~~~~~~~
 
 .. note::
 
-    By default, the regions in a NavigationServer map now update asynchronously using threads to improve performance.
-    This can cause additional delay in the update due to thread synchronisation.
-    The asynchronous region update can be toggled with the ``navigation/world/region_use_async_iterations`` project setting.
+    Theo mặc định, các region trong map của NavigationServer hiện được cập nhật bất đồng bộ bằng thread để cải thiện hiệu năng. Điều này có thể gây thêm độ trễ trong quá trình cập nhật do việc đồng bộ hóa thread. Có thể bật hoặc tắt cập nhật region bất đồng bộ bằng thiết lập project ``navigation/world/region_use_async_iterations``.
 
 .. note::
-    The merging of navmeshes in the NavigationServer has changed processing order. Regions now merge and cache
-    internal navmeshes first, then the remaining free edges are merged by the navigation map.
-    If a project had navigation map synchronisation errors before, it might now have shifted
-    affected edges, making already existing errors in a layout more noticeable in the pathfinding.
-    The ``navigation/2d_or_3d/merge_rasterizer_cell_scale`` project setting can be set to a lower value
-    to increase the detail of the rasterization grid (with `0.01` being the smallest cell size possible).
-    If edge merge errors still persist with the lowest possible rasterization scale value,
-    the error may be caused by overlap: two navmeshes are stacked on top of each other, causing geometry conflict.
+    Việc hợp nhất navmesh trong NavigationServer đã thay đổi thứ tự xử lý. Các region hiện trước tiên hợp nhất và lưu cache các navmesh nội bộ, sau đó các cạnh tự do còn lại được navigation map hợp nhất. Nếu trước đây project từng có lỗi đồng bộ hóa navigation map, giờ đây các cạnh bị ảnh hưởng có thể bị dịch chuyển, khiến những lỗi vốn đã tồn tại trong bố cục trở nên dễ nhận thấy hơn trong quá trình tìm đường. Có thể đặt thiết lập project ``navigation/2d_or_3d/merge_rasterizer_cell_scale`` thành giá trị thấp hơn để tăng độ chi tiết của lưới rasterization (trong đó `0.01` là kích thước ô nhỏ nhất có thể). Nếu lỗi hợp nhất cạnh vẫn tiếp diễn với giá trị tỷ lệ rasterization thấp nhất có thể, lỗi có thể do chồng lấn: hai navmesh được xếp chồng lên nhau, gây xung đột hình học.
 
-Physics
-~~~~~~~
+Vật lý
+~~~~~~
 
 .. note::
 
-    When the 3D physics engine is set to Jolt Physics, you will now always have overlaps between ``Area3D`` and static
-    bodies reported by default, as the ``physics/jolt_physics_3d/simulation/areas_detect_static_bodies`` project setting
-    has been removed (`GH-105746`_). If you still want such overlaps to be ignored, you will need to change the collision mask
-    or layer of either the ``Area3D`` or the static body instead.
+    Khi physics engine 3D được đặt thành Jolt Physics, giờ đây mặc định bạn sẽ luôn nhận được báo cáo về các vùng chồng lấn giữa ``Area3D`` và các body tĩnh, vì thiết lập project ``physics/jolt_physics_3d/simulation/areas_detect_static_bodies`` đã bị xóa (`GH-105746`_). Nếu vẫn muốn bỏ qua các vùng chồng lấn như vậy, bạn sẽ cần thay đổi collision mask hoặc layer của ``Area3D`` hoặc body tĩnh.
 
 Text
 ~~~~
 
 .. note::
 
-    In GDScript, calls to functions ``RichTextLabel::add_image`` and ``RichTextLabel::update_image`` will continue to work,
-    but the ``size_in_percent`` argument will now be used as the value for ``width_in_percent`` and ``height_in_percent``
-    will default to ``false`` (`GH-107347`_). To restore the previous behavior, you can explicitly set ``height_in_percent``
-    to the same value you were passing as ``size_in_percent``.
+    Trong GDScript, các lệnh gọi đến các hàm ``RichTextLabel::add_image`` và ``RichTextLabel::update_image`` vẫn sẽ hoạt động, nhưng đối số ``size_in_percent`` giờ đây sẽ được sử dụng làm giá trị cho ``width_in_percent`` và ``height_in_percent`` sẽ mặc định là ``false`` (`GH-107347`_). Để khôi phục hành vi trước đây, bạn có thể đặt ``height_in_percent`` một cách rõ ràng thành cùng giá trị mà bạn đã truyền cho ``size_in_percent``.
 
-.. |❌| replace:: :abbr:`❌ (This API breaks compatibility.)`
-.. |❌ with stub| replace:: :abbr:`❌ (Stub compatibility methods were added to prevent crashes. However, this API is not functional anymore.)`
-.. |✔️| replace:: :abbr:`✔️ (This API does not break compatibility.)`
-.. |✔️ with compat| replace:: :abbr:`✔️ (This API does not break compatibility. A compatibility method was added.)`
+.. |❌| replace:: :abbr:`❌ (API này phá vỡ tính tương thích.)`
+.. |❌ with stub| replace:: :abbr:`❌ (Các phương thức tương thích dạng stub đã được thêm để ngăn sự cố. Tuy nhiên, API này không còn hoạt động nữa.)`
+.. |✔️| replace:: :abbr:`✔️ (API này không phá vỡ tính tương thích.)`
+.. |✔️ with compat| replace:: :abbr:`✔️ (API này không phá vỡ tính tương thích. Một phương thức tương thích đã được thêm.)`
 
 .. _GH-71542: https://github.com/godotengine/godot/pull/71542
 .. _GH-76560: https://github.com/godotengine/godot/pull/76560

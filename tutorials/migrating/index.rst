@@ -1,19 +1,11 @@
 :allow_comments: False
 
-Migrating to a new version
-==========================
+Chuyển sang phiên bản mới
+=========================
 
-Godot :ref:`loosely follows <doc_release_policy>` a semantic versioning system,
-where compatibility is assumed between minor and patch releases, while major
-releases can break it. As such, it is generally not recommended to move projects
-between major versions during their development, especially if you've been
-working on them for a significant amount of time.
+Godot :ref:`tuân theo tương đối <doc_release_policy>` một hệ thống semantic versioning, trong đó khả năng tương thích được đảm bảo giữa các bản phát hành minor và patch, còn các bản phát hành major có thể phá vỡ khả năng tương thích. Vì vậy, nhìn chung bạn không nên chuyển dự án giữa các phiên bản major trong quá trình phát triển, đặc biệt nếu bạn đã làm việc với chúng trong một thời gian đáng kể.
 
-Still, new features, usability improvements, or paradigm shifts in engine's
-internals may incentivize you to upgrade. Below is a list of articles that should
-assist you when upgrading your project between versions. Each article would try
-its best to document every important difference and provide you with a migration
-path.
+Tuy vậy, các tính năng mới, cải tiến khả năng sử dụng hoặc những thay đổi mô hình trong phần internals của engine có thể khiến bạn muốn nâng cấp. Dưới đây là danh sách các bài viết có thể hỗ trợ bạn khi nâng cấp dự án giữa các phiên bản. Mỗi bài viết sẽ cố gắng ghi lại mọi khác biệt quan trọng và cung cấp cho bạn lộ trình migration.
 
 .. toctree::
    :maxdepth: 1
