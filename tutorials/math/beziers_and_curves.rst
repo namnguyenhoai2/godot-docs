@@ -1,31 +1,22 @@
 .. _doc_beziers_and_curves:
 
-Beziers, curves and paths
-=========================
+Bezier, đường cong và đường dẫn
+===============================
 
-Bezier curves are a mathematical approximation of natural geometric shapes. We
-use them to represent a curve with as little information as possible and with a
-high level of flexibility.
+Đường cong Bezier là một phép xấp xỉ toán học của các hình dạng hình học tự nhiên. Chúng ta sử dụng chúng để biểu diễn một đường cong với lượng thông tin ít nhất có thể và mức độ linh hoạt cao.
 
-Unlike more abstract mathematical concepts, Bezier curves were created for
-industrial design. They are a popular tool in the graphics software industry.
+Không giống các khái niệm toán học trừu tượng hơn, đường cong Bezier được tạo ra cho thiết kế công nghiệp. Đây là một công cụ phổ biến trong ngành phần mềm đồ họa.
 
-They rely on :ref:`interpolation<doc_interpolation>`, which we saw in the
-previous article, combining multiple steps to create smooth curves. To better
-understand how Bezier curves work, let's start from its simplest form: Quadratic
-Bezier.
+Chúng dựa trên :ref:`nội suy <doc_interpolation>`, mà chúng ta đã tìm hiểu trong bài viết trước, kết hợp nhiều bước để tạo ra các đường cong mượt mà. Để hiểu rõ hơn cách đường cong Bezier hoạt động, hãy bắt đầu với dạng đơn giản nhất: Bezier bậc hai.
 
-Quadratic Bezier
-----------------
+Bezier bậc hai
+--------------
 
-Take three points, the minimum required for Quadratic Bezier to work:
+Lấy ba điểm, số điểm tối thiểu cần thiết để Bezier bậc hai hoạt động:
 
 .. image:: img/bezier_quadratic_points.png
 
-To draw a curve between them, we first interpolate gradually over the two
-vertices of each of the two segments formed by the three points, using values
-ranging from 0 to 1. This gives us two points that move along the segments as we
-change the value of ``t`` from 0 to 1.
+Để vẽ một đường cong giữa chúng, trước tiên chúng ta nội suy dần trên hai đỉnh của mỗi trong hai đoạn được tạo bởi ba điểm, sử dụng các giá trị từ 0 đến 1. Kết quả là hai điểm di chuyển dọc theo các đoạn khi chúng ta thay đổi giá trị của ``t`` từ 0 đến 1.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -42,8 +33,7 @@ change the value of ``t`` from 0 to 1.
         Vector2 q1 = p1.Lerp(p2, t);
     }
 
-We then interpolate ``q0`` and ``q1`` to obtain a single point ``r`` that moves
-along a curve.
+Sau đó, chúng ta nội suy ``q0`` và ``q1`` để thu được một điểm duy nhất ``r`` di chuyển dọc theo một đường cong.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -56,22 +46,20 @@ along a curve.
         Vector2 r = q0.Lerp(q1, t);
         return r;
 
-This type of curve is called a *Quadratic Bezier* curve.
+Loại đường cong này được gọi là đường cong *Bezier bậc hai*.
 
 .. image:: img/bezier_quadratic_points2.gif
 
-*(Image credit: Wikipedia)*
+*(Nguồn ảnh: Wikipedia)*
 
-Cubic Bezier
-------------
+Bezier bậc ba
+-------------
 
-Building upon the previous example, we can get more control by interpolating
-between four points.
+Dựa trên ví dụ trước, chúng ta có thể kiểm soát nhiều hơn bằng cách nội suy giữa bốn điểm.
 
 .. image:: img/bezier_cubic_points.png
 
-We first use a function with four parameters to take four points as an input,
-``p0``, ``p1``, ``p2`` and ``p3``:
+Trước tiên, chúng ta sử dụng một hàm có bốn tham số để nhận bốn điểm làm đầu vào, ``p0``, ``p1``, ``p2`` và ``p3``:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -85,8 +73,7 @@ We first use a function with four parameters to take four points as an input,
 
     }
 
-We apply a linear interpolation to each couple of points to reduce them to
-three:
+Chúng ta áp dụng nội suy tuyến tính cho từng cặp điểm để giảm chúng còn ba điểm:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -101,7 +88,7 @@ three:
         Vector2 q1 = p1.Lerp(p2, t);
         Vector2 q2 = p2.Lerp(p3, t);
 
-We then take our three points and reduce them to two:
+Sau đó, chúng ta lấy ba điểm và giảm chúng còn hai điểm:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -114,7 +101,7 @@ We then take our three points and reduce them to two:
         Vector2 r0 = q0.Lerp(q1, t);
         Vector2 r1 = q1.Lerp(q2, t);
 
-And to one:
+Và còn một điểm:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -127,7 +114,7 @@ And to one:
         Vector2 s = r0.Lerp(r1, t);
         return s;
 
-Here is the full function:
+Đây là hàm đầy đủ:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -158,53 +145,47 @@ Here is the full function:
         return s;
     }
 
-The result will be a smooth curve interpolating between all four points:
+Kết quả sẽ là một đường cong mượt mà nội suy giữa cả bốn điểm:
 
 .. image:: img/bezier_cubic_points.gif
 
-*(Image credit: Wikipedia)*
+*(Nguồn ảnh: Wikipedia)*
 
-.. note:: Cubic Bezier interpolation works the same in 3D, just use ``Vector3``
-          instead of ``Vector2``.
+.. note:: Nội suy Bezier bậc ba hoạt động tương tự trong 3D, chỉ cần sử dụng ``Vector3`` thay cho ``Vector2``.
 
-Adding control points
----------------------
+Thêm các điểm điều khiển
+------------------------
 
-Building upon Cubic Bezier, we can change the way two of the points work to
-control the shape of our curve freely. Instead of having ``p0``, ``p1``, ``p2``
-and ``p3``, we will store them as:
+Dựa trên Bezier bậc ba, chúng ta có thể thay đổi cách hai điểm hoạt động để tự do kiểm soát hình dạng của đường cong. Thay vì có ``p0``, ``p1``, ``p2`` và ``p3``, chúng ta sẽ lưu trữ chúng như sau:
 
-* ``point0 = p0``: Is the first point, the source
-* ``control0 = p1 - p0``: Is a vector relative to the first control point
-* ``control1 = p3 - p2``: Is a vector relative to the second control point
-* ``point1 = p3``: Is the second point, the destination
+* ``point0 = p0``: Là điểm đầu tiên, điểm nguồn
+* ``control0 = p1 - p0``: Là một vector tương đối với điểm điều khiển thứ nhất
+* ``control1 = p3 - p2``: Là một vector tương đối với điểm điều khiển thứ hai
+* ``point1 = p3``: Là điểm thứ hai, điểm đích
 
-This way, we have two points and two control points which are relative vectors
-to the respective points. If you've used graphics or animation software before,
-this might look familiar:
+Theo cách này, chúng ta có hai điểm và hai điểm điều khiển là các vector tương đối với những điểm tương ứng. Nếu trước đây bạn từng sử dụng phần mềm đồ họa hoặc hoạt họa, điều này có thể trông quen thuộc:
 
 .. image:: img/bezier_cubic_handles.png
 
-This is how graphics software presents Bezier curves to the users, and how they
-work and look in Godot.
+Đây là cách phần mềm đồ họa trình bày các đường cong Bezier cho người dùng, cũng như cách chúng hoạt động và hiển thị trong Godot.
 
-Curve2D, Curve3D, Path and Path2D
----------------------------------
+Curve2D, Curve3D, Path và Path2D
+--------------------------------
 
-There are two objects that contain curves: :ref:`Curve3D <class_Curve3D>` and :ref:`Curve2D <class_Curve2D>` (for 3D and 2D respectively).
+Có hai đối tượng chứa các đường cong: :ref:`Curve3D <class_Curve3D>` và :ref:`Curve2D <class_Curve2D>` (tương ứng cho 3D và 2D).
 
-They can contain several points, allowing for longer paths. It is also possible to set them to nodes: :ref:`Path3D <class_Path3D>` and :ref:`Path2D <class_Path2D>` (also for 3D and 2D respectively):
+Chúng có thể chứa nhiều điểm, cho phép tạo các đường dẫn dài hơn. Cũng có thể đặt chúng làm các node: :ref:`Path3D <class_Path3D>` và :ref:`Path2D <class_Path2D>` (cũng tương ứng cho 3D và 2D):
 
 .. image:: img/bezier_path_2d.png
 
-Using them, however, may not be completely obvious, so following is a description of the most common use cases for Bezier curves.
+Tuy nhiên, cách sử dụng chúng có thể không hoàn toàn rõ ràng, vì vậy sau đây là mô tả về những trường hợp sử dụng phổ biến nhất của đường cong Bezier.
 
-Evaluating
-----------
+Đánh giá
+--------
 
-Only evaluating them may be an option, but in most cases it's not very useful. The big drawback with Bezier curves is that if you traverse them at constant speed, from ``t = 0`` to ``t = 1``, the actual interpolation will *not* move at constant speed. The speed is also an interpolation between the distances between points ``p0``, ``p1``, ``p2`` and ``p3`` and there is not a mathematically simple way to traverse the curve at constant speed.
+Chỉ đánh giá chúng cũng có thể là một lựa chọn, nhưng trong hầu hết trường hợp thì không hữu ích lắm. Nhược điểm lớn của đường cong Bezier là nếu bạn duyệt qua chúng với tốc độ không đổi, từ ``t = 0`` đến ``t = 1``, thì phép nội suy thực tế sẽ *không* di chuyển với tốc độ không đổi. Tốc độ cũng là một phép nội suy giữa khoảng cách giữa các điểm ``p0``, ``p1``, ``p2`` và ``p3``, và không có cách đơn giản về mặt toán học nào để duyệt qua đường cong với tốc độ không đổi.
 
-Let's do an example with the following pseudocode:
+Hãy xem một ví dụ với đoạn mã giả sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -227,33 +208,33 @@ Let's do an example with the following pseudocode:
 
 .. image:: img/bezier_interpolation_speed.gif
 
-As you can see, the speed (in pixels per second) of the circle varies, even though ``t`` is increased at constant speed. This makes beziers difficult to use for anything practical out of the box.
+Như bạn có thể thấy, tốc độ (tính bằng pixel mỗi giây) của hình tròn thay đổi, dù ``t`` được tăng với tốc độ không đổi. Điều này khiến beziers khó sử dụng cho bất kỳ mục đích thực tế nào ngay khi chưa qua xử lý.
 
-Drawing
--------
+Vẽ
+--
 
-Drawing beziers (or objects based on the curve) is a very common use case, but it's also not easy. For pretty much any case, Bezier curves need to be converted to some sort of segments. This is normally difficult, however, without creating a very high amount of them.
+Vẽ beziers (hoặc các đối tượng dựa trên đường cong) là một trường hợp sử dụng rất phổ biến, nhưng cũng không dễ thực hiện. Trong gần như mọi trường hợp, đường cong Bezier cần được chuyển đổi thành một dạng đoạn nào đó. Tuy nhiên, việc này thường khó thực hiện nếu không tạo ra một số lượng đoạn rất lớn.
 
-The reason is that some sections of a curve (specifically, corners) may require considerable amounts of points, while other sections may not:
+Lý do là một số phần của đường cong (cụ thể là các góc) có thể cần một số lượng điểm đáng kể, trong khi những phần khác có thể không cần:
 
 .. image:: img/bezier_point_amount.png
 
-Additionally, if both control points were ``0, 0`` (remember they are relative vectors), the Bezier curve would just be a straight line (so drawing a high amount of points would be wasteful).
+Ngoài ra, nếu cả hai điểm điều khiển đều là ``0, 0`` (hãy nhớ rằng chúng là các vector tương đối), đường cong Bezier sẽ chỉ là một đường thẳng (vì vậy việc vẽ một số lượng lớn điểm sẽ rất lãng phí).
 
-Before drawing Bezier curves, *tessellation* is required. This is often done with a recursive or divide and conquer function that splits the curve until the curvature amount becomes less than a certain threshold.
+Trước khi vẽ các đường cong Bezier, cần thực hiện *tessellation*. Việc này thường được thực hiện bằng một hàm đệ quy hoặc chia để trị, hàm này chia đường cong cho đến khi độ cong nhỏ hơn một ngưỡng nhất định.
 
-The *Curve* classes provide this via the
-:ref:`Curve2D.tessellate() <class_Curve2D_method_tessellate>` function (which receives optional ``stages`` of recursion and angle ``tolerance`` arguments). This way, drawing something based on a curve is easier.
+Các lớp *Curve* cung cấp chức năng này thông qua
+:ref:`Curve2D.tessellate() <class_Curve2D_method_tessellate>` (hàm nhận các đối số tùy chọn về ``stages`` của đệ quy và ``tolerance`` góc). Nhờ đó, việc vẽ một thứ gì đó dựa trên đường cong trở nên dễ dàng hơn.
 
-Traversal
----------
+Duyệt
+-----
 
-The last common use case for the curves is to traverse them. Because of what was mentioned before regarding constant speed, this is also difficult.
+Trường hợp sử dụng phổ biến cuối cùng của các đường cong là duyệt qua chúng. Vì lý do đã đề cập trước đó liên quan đến tốc độ không đổi, việc này cũng khó thực hiện.
 
-To make this easier, the curves need to be *baked* into equidistant points. This way, they can be approximated with regular interpolation (which can be improved further with a cubic option). To do this, just use the :ref:`Curve3D.sample_baked()<class_Curve3D_method_sample_baked>` method together with
-:ref:`Curve2D.get_baked_length()<class_Curve2D_method_get_baked_length>`. The first call to either of them will bake the curve internally.
+Để việc này dễ dàng hơn, các đường cong cần được *baked* thành các điểm cách đều nhau. Nhờ đó, chúng có thể được xấp xỉ bằng phép nội suy thông thường (có thể cải thiện thêm bằng tùy chọn cubic). Để thực hiện việc này, chỉ cần sử dụng phương thức :ref:`Curve3D.sample_baked()<class_Curve3D_method_sample_baked>` cùng với
+:ref:`Curve2D.get_baked_length()<class_Curve2D_method_get_baked_length>`. Lần gọi đầu tiên đến một trong hai phương thức này sẽ bake đường cong vào bên trong.
 
-Traversal at constant speed, then, can be done with the following pseudo-code:
+Sau đó, có thể duyệt với tốc độ không đổi bằng đoạn mã giả sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -274,6 +255,6 @@ Traversal at constant speed, then, can be done with the following pseudo-code:
         Position = curve.SampleBaked(_t * curve.GetBakedLength(), true);
     }
 
-And the output will, then, move at constant speed:
+Khi đó, kết quả sẽ di chuyển với tốc độ không đổi:
 
 .. image:: img/bezier_interpolation_baked.gif

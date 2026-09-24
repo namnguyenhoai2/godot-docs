@@ -1,41 +1,23 @@
 .. _doc_vectors_advanced:
 
-Advanced vector math
+Toán vector nâng cao
 ====================
 
-Planes
-~~~~~~
+Mặt phẳng
+~~~~~~~~~
 
-The dot product has another interesting property with unit vectors.
-Imagine that perpendicular to that vector (and through the origin)
-passes a plane. Planes divide the entire space into positive
-(over the plane) and negative (under the plane), and (contrary to
-popular belief) you can also use their math in 2D:
+Tích vô hướng có một thuộc tính thú vị khác với các vector đơn vị. Hãy tưởng tượng một mặt phẳng vuông góc với vector đó (và đi qua gốc tọa độ). Các mặt phẳng chia toàn bộ không gian thành phần dương (phía trên mặt phẳng) và phần âm (phía dưới mặt phẳng), và (trái với quan niệm phổ biến) bạn cũng có thể sử dụng toán học của chúng trong 2D:
 
 .. image:: img/tutovec10.png
 
-Unit vectors that are perpendicular to a surface (so, they describe the
-orientation of the surface) are called **unit normal vectors**. Though,
-usually they are just abbreviated as *normals*. Normals appear in
-planes, 3D geometry (to determine where each face or vertex is siding),
-etc. A **normal** *is* a **unit vector**, but it's called *normal*
-because of its usage. (Just like we call (0,0) the Origin!).
+Các vector đơn vị vuông góc với một bề mặt (do đó mô tả hướng của bề mặt) được gọi là **vector pháp tuyến đơn vị**. Tuy nhiên, chúng thường được viết tắt đơn giản là *pháp tuyến*. Pháp tuyến xuất hiện trong các mặt phẳng, hình học 3D (để xác định mỗi mặt hoặc đỉnh hướng về đâu), v.v. Một **pháp tuyến** *là* một **vector đơn vị**, nhưng được gọi là *pháp tuyến* vì cách sử dụng của nó. (Cũng giống như việc chúng ta gọi (0,0) là Gốc tọa độ!).
 
-The plane passes by the origin and the
-surface of it is perpendicular to the unit vector (or *normal*). The
-side the vector points to is the positive half-space, while the
-other side is the negative half-space. In 3D this is exactly the same,
-except that the plane is an infinite surface (imagine an infinite, flat
-sheet of paper that you can orient and is pinned to the origin) instead
-of a line.
+Mặt phẳng đi qua gốc tọa độ và bề mặt của nó vuông góc với vector đơn vị (hay *pháp tuyến*). Phía mà vector hướng tới là nửa không gian dương, còn phía kia là nửa không gian âm. Trong 3D, điều này hoàn toàn tương tự, ngoại trừ việc mặt phẳng là một bề mặt vô hạn (hãy tưởng tượng một tờ giấy phẳng vô hạn mà bạn có thể xoay theo hướng tùy ý và được ghim vào gốc tọa độ) thay vì một đường thẳng.
 
-Distance to plane
------------------
+Khoảng cách đến mặt phẳng
+-------------------------
 
-Now that it's clear what a plane is, let's go back to the dot product.
-The dot product between a **unit vector** and any **point in space**
-(yes, this time we do dot product between vector and position), returns
-the **distance from the point to the plane**:
+Bây giờ khi đã hiểu mặt phẳng là gì, hãy quay lại với tích vô hướng. Tích vô hướng giữa một **vector đơn vị** và bất kỳ **điểm nào trong không gian** (đúng vậy, lần này chúng ta lấy tích vô hướng giữa vector và vị trí) trả về **khoảng cách từ điểm đến mặt phẳng**:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -46,38 +28,26 @@ the **distance from the point to the plane**:
 
     var distance = normal.Dot(point);
 
-But not just the absolute distance, if the point is in the negative half
-space the distance will be negative, too:
+Nhưng không chỉ là khoảng cách tuyệt đối; nếu điểm nằm trong nửa không gian âm thì khoảng cách cũng sẽ là số âm:
 
 .. image:: img/tutovec11.png
 
-This allows us to tell which side of the plane a point is.
+Điều này cho phép chúng ta biết một điểm nằm ở phía nào của mặt phẳng.
 
-Away from the origin
---------------------
+Xa gốc tọa độ
+-------------
 
-I know what you are thinking! So far this is nice, but *real* planes are
-everywhere in space, not only passing through the origin. You want real
-*plane* action and you want it *now*.
+Tôi biết bạn đang nghĩ gì! Cho đến nay mọi thứ đều khá ổn, nhưng các mặt phẳng *thực sự* hiện diện ở khắp nơi trong không gian, chứ không chỉ đi qua gốc tọa độ. Bạn muốn thấy *mặt phẳng* hoạt động thực sự và muốn điều đó *ngay bây giờ*.
 
-Remember that planes not only split space in two, but they also have
-*polarity*. This means that it is possible to have perfectly overlapping
-planes, but their negative and positive half-spaces are swapped.
+Hãy nhớ rằng các mặt phẳng không chỉ chia không gian thành hai phần, mà còn có *tính phân cực*. Điều này có nghĩa là có thể có các mặt phẳng chồng khít hoàn toàn, nhưng nửa không gian âm và dương của chúng bị hoán đổi.
 
-With this in mind, let's describe a full plane as a **normal** *N* and a
-**distance from the origin** scalar *D*. Thus, our plane is represented
-by N and D. For example:
+Dựa trên điều này, hãy mô tả một mặt phẳng đầy đủ bằng một **pháp tuyến** *N* và một giá trị vô hướng **khoảng cách từ gốc tọa độ** *D*. Vì vậy, mặt phẳng của chúng ta được biểu diễn bằng N và D. Ví dụ:
 
 .. image:: img/tutovec12.png
 
-For 3D math, Godot provides a :ref:`Plane <class_Plane>`
-built-in type that handles this.
+Đối với toán học 3D, Godot cung cấp một :ref:`Plane <class_Plane>` kiểu tích hợp sẵn để xử lý việc này.
 
-Basically, N and D can represent any plane in space, be it for 2D or 3D
-(depending on the amount of dimensions of N) and the math is the same
-for both. It's the same as before, but D is the distance from the origin
-to the plane, travelling in N direction. As an example, imagine you want
-to reach a point in the plane, you will just do:
+Về cơ bản, N và D có thể biểu diễn bất kỳ mặt phẳng nào trong không gian, dù là 2D hay 3D (tùy thuộc vào số chiều của N), và phép toán đều giống nhau trong cả hai trường hợp. Nó giống như trước đây, nhưng D là khoảng cách từ gốc tọa độ đến mặt phẳng, di chuyển theo hướng N. Ví dụ, hãy tưởng tượng bạn muốn đi tới một điểm trên mặt phẳng; bạn chỉ cần thực hiện:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -88,10 +58,7 @@ to reach a point in the plane, you will just do:
 
     var pointInPlane = N * D;
 
-This will stretch (resize) the normal vector and make it touch the
-plane. This math might seem confusing, but it's actually much simpler
-than it seems. If we want to tell, again, the distance from the point to
-the plane, we do the same but adjusting for distance:
+Thao tác này sẽ kéo giãn (thay đổi kích thước) vector pháp tuyến và khiến nó chạm vào mặt phẳng. Phép toán này có vẻ khó hiểu, nhưng thực ra đơn giản hơn nhiều so với vẻ ngoài. Nếu muốn xác định lại khoảng cách từ điểm đến mặt phẳng, chúng ta thực hiện tương tự nhưng điều chỉnh theo khoảng cách:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -102,7 +69,7 @@ the plane, we do the same but adjusting for distance:
 
     var distance = N.Dot(point) - D;
 
-The same thing, using a built-in function:
+Cùng một việc, sử dụng hàm tích hợp sẵn:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -113,11 +80,9 @@ The same thing, using a built-in function:
 
     var distance = plane.DistanceTo(point);
 
-This will, again, return either a positive or negative distance.
+Một lần nữa, thao tác này sẽ trả về khoảng cách dương hoặc âm.
 
-Flipping the polarity of the plane can be done by negating both
-N and D. This will result in a plane in the same position, but with
-inverted negative and positive half spaces:
+Có thể đảo tính phân cực của mặt phẳng bằng cách lấy phủ định cả N và D. Kết quả sẽ là một mặt phẳng ở cùng vị trí, nhưng các nửa không gian âm và dương bị đảo ngược:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -130,8 +95,7 @@ inverted negative and positive half spaces:
     N = -N;
     D = -D;
 
-Godot also implements this operator in :ref:`Plane <class_Plane>`.
-So, using the format below will work as expected:
+Godot cũng triển khai toán tử này trong :ref:`Plane <class_Plane>`. Vì vậy, sử dụng định dạng dưới đây sẽ cho kết quả như mong đợi:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -142,20 +106,14 @@ So, using the format below will work as expected:
 
     var invertedPlane = -plane;
 
-So, remember, the plane's main practical use is that we can
-calculate the distance to it. So, when is it useful to calculate the
-distance from a point to a plane? Let's see some examples.
+Vậy hãy nhớ rằng, công dụng thực tế chính của mặt phẳng là chúng ta có thể tính khoảng cách đến nó. Vậy khi nào việc tính khoảng cách từ một điểm đến một mặt phẳng trở nên hữu ích? Hãy cùng xem một số ví dụ.
 
-Constructing a plane in 2D
---------------------------
+Tạo mặt phẳng trong 2D
+----------------------
 
-Planes clearly don't come out of nowhere, so they must be built.
-Constructing them in 2D is easy, this can be done from either a normal
-(unit vector) and a point, or from two points in space.
+Các mặt phẳng rõ ràng không tự nhiên xuất hiện, vì vậy chúng phải được xây dựng. Việc tạo chúng trong 2D khá dễ; có thể thực hiện từ một pháp tuyến (vector đơn vị) và một điểm, hoặc từ hai điểm trong không gian.
 
-In the case of a normal and a point, most of the work is done, as the
-normal is already computed, so calculate D from the dot product of
-the normal and the point.
+Trong trường hợp có một pháp tuyến và một điểm, phần lớn công việc đã hoàn tất vì pháp tuyến đã được tính sẵn; do đó, hãy tính D từ tích vô hướng của pháp tuyến và điểm.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -168,110 +126,89 @@ the normal and the point.
     var N = normal;
     var D = normal.Dot(point);
 
-For two points in space, there are actually two planes that pass through
-them, sharing the same space but with normal pointing to the opposite
-directions. To compute the normal from the two points, the direction
-vector must be obtained first, and then it needs to be rotated 90
-degrees to either side:
+Với hai điểm trong không gian, thực tế có hai mặt phẳng đi qua chúng, cùng chia sẻ một không gian nhưng có pháp tuyến hướng theo hai hướng ngược nhau. Để tính pháp tuyến từ hai điểm, trước tiên phải lấy vector hướng, sau đó xoay nó 90 độ sang một trong hai phía:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Calculate vector from `a` to `b`.
+    # Tính vector từ `a` đến `b`.
     var dvec = point_a.direction_to(point_b)
-    # Rotate 90 degrees.
+    # Xoay 90 độ.
     var normal = Vector2(dvec.y, -dvec.x)
-    # Alternatively (depending the desired side of the normal):
+    # Hoặc (tùy thuộc vào phía mong muốn của pháp tuyến):
     # var normal = Vector2(-dvec.y, dvec.x)
 
  .. code-tab:: csharp
 
-    // Calculate vector from `a` to `b`.
+    // Tính vector từ `a` đến `b`.
     var dvec = pointA.DirectionTo(pointB);
-    // Rotate 90 degrees.
+    // Xoay 90 độ.
     var normal = new Vector2(dvec.Y, -dvec.X);
-    // Alternatively (depending the desired side of the normal):
+    // Hoặc (tùy thuộc vào phía mong muốn của pháp tuyến):
     // var normal = new Vector2(-dvec.Y, dvec.X);
 
-The rest is the same as the previous example. Either point_a or
-point_b will work, as they are in the same plane:
+Phần còn lại giống như ví dụ trước. point_a hoặc point_b đều được, vì chúng nằm trên cùng một mặt phẳng:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     var N = normal
     var D = normal.dot(point_a)
-    # this works the same
+    # cách này cũng hoạt động tương tự
     # var D = normal.dot(point_b)
 
  .. code-tab:: csharp
 
     var N = normal;
     var D = normal.Dot(pointA);
-    // this works the same
+    // cách này cũng hoạt động tương tự
     // var D = normal.Dot(pointB);
 
-Doing the same in 3D is a little more complex and is explained
-further down.
+Thực hiện tương tự trong 3D phức tạp hơn một chút và sẽ được giải thích ở phần bên dưới.
 
-Some examples of planes
------------------------
+Một số ví dụ về mặt phẳng
+-------------------------
 
-Here is an example of what planes are useful for. Imagine you have
-a `convex <https://www.mathsisfun.com/definitions/convex.html>`__
-polygon. For example, a rectangle, a trapezoid, a triangle, or just any
-polygon where no faces bend inwards.
+Sau đây là một ví dụ về công dụng của các mặt phẳng. Hãy tưởng tượng bạn có một đa giác `lồi <https://www.mathsisfun.com/definitions/convex.html>`__. Ví dụ như hình chữ nhật, hình thang, hình tam giác hoặc bất kỳ đa giác nào không có mặt bị lõm vào trong.
 
-For every segment of the polygon, we compute the plane that passes by
-that segment. Once we have the list of planes, we can do neat things,
-for example checking if a point is inside the polygon.
+Với mỗi đoạn của đa giác, chúng ta tính mặt phẳng đi qua đoạn đó. Khi đã có danh sách các mặt phẳng, chúng ta có thể thực hiện những việc hữu ích, chẳng hạn như kiểm tra xem một điểm có nằm bên trong đa giác hay không.
 
-We go through all planes, if we can find a plane where the distance to
-the point is positive, then the point is outside the polygon. If we
-can't, then the point is inside.
+Chúng ta đi qua tất cả các mặt phẳng. Nếu tìm được một mặt phẳng mà khoảng cách đến điểm là số dương thì điểm nằm ngoài đa giác. Nếu không tìm được thì điểm nằm bên trong.
 
 .. image:: img/tutovec13.png
 
-Code should be something like this:
+Code sẽ tương tự như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     var inside = true
     for p in planes:
-        # check if distance to plane is positive
+        # kiểm tra xem khoảng cách đến mặt phẳng có dương không
         if (p.distance_to(point) > 0):
             inside = false
-            break # with one that fails, it's enough
+            break # chỉ cần một mặt phẳng không thỏa mãn là đủ
 
  .. code-tab:: csharp
 
     var inside = true;
     foreach (var p in planes)
     {
-        // check if distance to plane is positive
+        // kiểm tra xem khoảng cách đến mặt phẳng có dương không
         if (p.DistanceTo(point) > 0)
         {
             inside = false;
-            break; // with one that fails, it's enough
+            break; // chỉ cần một mặt phẳng không thỏa mãn là đủ
         }
     }
 
-Pretty cool, huh? But this gets much better! With a little more effort,
-similar logic will let us know when two convex polygons are overlapping
-too. This is called the Separating Axis Theorem (or SAT) and most
-physics engines use this to detect collision.
+Khá thú vị, phải không? Nhưng mọi thứ còn tuyệt vời hơn nhiều! Chỉ cần thêm một chút công sức, logic tương tự cũng sẽ cho chúng ta biết khi nào hai đa giác lồi chồng lấp lên nhau. Đây được gọi là Định lý Trục Phân tách (Separating Axis Theorem, hay SAT), và hầu hết physics engine đều dùng nó để phát hiện va chạm.
 
-With a point, just checking if a plane
-returns a positive distance is enough to tell if the point is outside.
-With another polygon, we must find a plane where *all* *the* *other*
-*polygon* *points* return a positive distance to it. This check is
-performed with the planes of A against the points of B, and then with
-the planes of B against the points of A:
+Với một điểm, chỉ cần kiểm tra xem một mặt phẳng có trả về khoảng cách dương hay không là đủ để biết điểm có nằm bên ngoài hay không. Với một đa giác khác, chúng ta phải tìm một mặt phẳng mà *tất cả* *các* *điểm* *của đa giác* *kia* trả về khoảng cách dương đến nó. Việc kiểm tra này được thực hiện với các mặt phẳng của A đối chiếu với các điểm của B, sau đó với các mặt phẳng của B đối chiếu với các điểm của A:
 
 .. image:: img/tutovec14.png
 
-Code should be something like this:
+Code sẽ tương tự như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -286,14 +223,14 @@ Code should be something like this:
                 break
 
         if (all_out):
-            # a separating plane was found
-            # do not continue testing
+            # đã tìm thấy một mặt phẳng phân tách
+            # không tiếp tục kiểm tra
             overlapping = false
             break
 
     if (overlapping):
-        # only do this check if no separating plane
-        # was found in planes of A
+        # chỉ thực hiện kiểm tra này nếu chưa có mặt phẳng phân tách nào
+        # được tìm thấy trong các mặt phẳng của A
         for p in planes_of_B:
             var all_out = true
             for v in points_of_A:
@@ -326,8 +263,8 @@ Code should be something like this:
 
             if (allOut)
             {
-                // a separating plane was found
-                // do not continue testing
+                // đã tìm thấy một mặt phẳng phân tách
+                // không tiếp tục kiểm tra
                 overlapping = false;
                 break;
             }
@@ -335,8 +272,8 @@ Code should be something like this:
 
         if (overlapping)
         {
-            // only do this check if no separating plane
-            // was found in planes of A
+            // chỉ thực hiện kiểm tra này nếu chưa có mặt phẳng phân tách nào
+            // được tìm thấy trong các mặt phẳng của A
             foreach (Plane plane in planesOfB)
             {
                 var allOut = true;
@@ -362,47 +299,28 @@ Code should be something like this:
             GD.Print("Polygons Collided!");
         }
 
-As you can see, planes are quite useful, and this is the tip of the
-iceberg. You might be wondering what happens with non-convex polygons.
-This is usually just handled by splitting the concave polygon into
-smaller convex polygons, or using a technique such as BSP (which is not
-used much nowadays).
+Như bạn có thể thấy, các mặt phẳng khá hữu ích, và đây mới chỉ là phần nổi của tảng băng. Có thể bạn đang thắc mắc điều gì xảy ra với các đa giác không lồi. Thông thường, ta chỉ cần chia đa giác lõm thành các đa giác lồi nhỏ hơn, hoặc sử dụng một kỹ thuật như BSP (ngày nay không còn được dùng nhiều).
 
-Collision detection in 3D
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Phát hiện va chạm trong 3D
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This is another bonus bit, a reward for being patient and keeping up
-with this long tutorial. Here is another piece of wisdom. This might
-not be something with a direct use case (Godot already does collision
-detection pretty well) but it's used by almost all physics engines and collision
-detection libraries :)
+Đây là một phần thưởng khác, dành cho việc bạn đã kiên nhẫn và theo kịp tutorial dài này. Sau đây là một kiến thức hữu ích khác. Điều này có thể không có trường hợp sử dụng trực tiếp (Godot vốn đã xử lý việc phát hiện va chạm khá tốt), nhưng nó được hầu hết physics engine và thư viện phát hiện va chạm sử dụng :)
 
-Remember that converting a convex shape in 2D to an array of 2D planes
-was useful for collision detection? You could detect if a point was
-inside any convex shape, or if two 2D convex shapes were overlapping.
+Bạn còn nhớ việc chuyển một hình lồi trong 2D thành một mảng các mặt phẳng 2D hữu ích cho việc phát hiện va chạm không? Bạn có thể phát hiện một điểm nằm bên trong bất kỳ hình lồi nào, hoặc hai hình lồi 2D có chồng lấp lên nhau hay không.
 
-Well, this works in 3D too, if two 3D polyhedral shapes are colliding,
-you won't be able to find a separating plane. If a separating plane is
-found, then the shapes are definitely not colliding.
+Điều này cũng đúng trong 3D. Nếu hai hình đa diện 3D đang va chạm, bạn sẽ không thể tìm được mặt phẳng phân tách. Nếu tìm được một mặt phẳng phân tách thì chắc chắn các hình đó không va chạm.
 
-To refresh a bit a separating plane means that all vertices of polygon A
-are in one side of the plane, and all vertices of polygon B are in the
-other side. This plane is always one of the face-planes of either
-polygon A or polygon B.
+Nhắc lại một chút: mặt phẳng phân tách có nghĩa là tất cả các đỉnh của đa giác A nằm về một phía của mặt phẳng, còn tất cả các đỉnh của đa giác B nằm ở phía bên kia. Mặt phẳng này luôn là một trong các mặt phẳng-mặt của đa giác A hoặc đa giác B.
 
-In 3D though, there is a problem to this approach, because it is
-possible that, in some cases a separating plane can't be found. This is
-an example of such situation:
+Tuy nhiên, trong 3D, cách tiếp cận này có một vấn đề, vì trong một số trường hợp có thể không tìm được mặt phẳng phân tách. Đây là một ví dụ về tình huống như vậy:
 
 .. image:: img/tutovec22.png
 
-To avoid it, some extra planes need to be tested as separators, these
-planes are the cross product between the edges of polygon A and the
-edges of polygon B
+Để tránh điều này, cần kiểm tra thêm một số mặt phẳng để làm mặt phẳng phân tách. Các mặt phẳng này là tích có hướng giữa các cạnh của đa giác A và các cạnh của đa giác B.
 
 .. image:: img/tutovec23.png
 
-So the final algorithm is something like:
+Vậy thuật toán cuối cùng sẽ tương tự như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -417,14 +335,14 @@ So the final algorithm is something like:
                 break
 
         if (all_out):
-            # a separating plane was found
-            # do not continue testing
+            # đã tìm thấy một mặt phẳng phân tách
+            # không tiếp tục kiểm tra
             overlapping = false
             break
 
     if (overlapping):
-        # only do this check if no separating plane
-        # was found in planes of A
+        # chỉ thực hiện kiểm tra này nếu chưa có mặt phẳng phân tách nào
+        # được tìm thấy trong các mặt phẳng của A
         for p in planes_of_B:
             var all_out = true
             for v in points_of_A:
@@ -443,21 +361,21 @@ So the final algorithm is something like:
                 if (n.length() == 0):
                     continue
 
-                var max_A = -1e20 # tiny number
-                var min_A = 1e20 # huge number
+                var max_A = -1e20 # số rất nhỏ
+                var min_A = 1e20 # số rất lớn
 
-                # we are using the dot product directly
-                # so we can map a maximum and minimum range
-                # for each polygon, then check if they
-                # overlap.
+                # chúng ta đang sử dụng trực tiếp tích vô hướng
+                # để có thể xác định khoảng giá trị lớn nhất và nhỏ nhất
+                # cho mỗi đa giác, sau đó kiểm tra xem chúng có
+                # chồng lấp lên nhau không.
 
                 for v in points_of_A:
                     var d = n.dot(v)
                     max_A = max(max_A, d)
                     min_A = min(min_A, d)
 
-                var max_B = -1e20 # tiny number
-                var min_B = 1e20 # huge number
+                var max_B = -1e20 # số rất nhỏ
+                var min_B = 1e20 # số rất lớn
 
                 for v in points_of_B:
                     var d = n.dot(v)
@@ -465,7 +383,7 @@ So the final algorithm is something like:
                     min_B = min(min_B, d)
 
                 if (min_A > max_B or min_B > max_A):
-                    # not overlapping!
+                    # không chồng lấp!
                     overlapping = false
                     break
 
@@ -493,8 +411,8 @@ So the final algorithm is something like:
 
         if (allOut)
         {
-            // a separating plane was found
-            // do not continue testing
+            // đã tìm thấy một mặt phẳng phân tách
+            // không tiếp tục kiểm tra
             overlapping = false;
             break;
         }
@@ -502,8 +420,8 @@ So the final algorithm is something like:
 
     if (overlapping)
     {
-        // only do this check if no separating plane
-        // was found in planes of A
+        // chỉ thực hiện kiểm tra này nếu chưa có mặt phẳng phân tách nào
+        // được tìm thấy trong các mặt phẳng của A
         foreach (Plane plane in planesOfB)
         {
             var allOut = true;
@@ -536,13 +454,13 @@ So the final algorithm is something like:
                     continue;
                 }
 
-                var maxA = float.MinValue; // tiny number
-                var minA = float.MaxValue; // huge number
+                var maxA = float.MinValue; // số rất nhỏ
+                var minA = float.MaxValue; // số rất lớn
 
-                // we are using the dot product directly
-                // so we can map a maximum and minimum range
-                // for each polygon, then check if they
-                // overlap.
+                // chúng ta đang sử dụng trực tiếp tích vô hướng
+                // để có thể xác định khoảng giá trị lớn nhất và nhỏ nhất
+                // cho mỗi đa giác, sau đó kiểm tra xem chúng có
+                // chồng lấp lên nhau không.
 
                 foreach (Vector3 point in pointsOfA)
                 {
@@ -551,8 +469,8 @@ So the final algorithm is something like:
                     minA = Mathf.Min(minA, distance);
                 }
 
-                var maxB = float.MinValue; // tiny number
-                var minB = float.MaxValue; // huge number
+                var maxB = float.MinValue; // số rất nhỏ
+                var minB = float.MaxValue; // số rất lớn
 
                 foreach (Vector3 point in pointsOfB)
                 {
@@ -563,7 +481,7 @@ So the final algorithm is something like:
 
                 if (minA > maxB || minB > maxA)
                 {
-                    // not overlapping!
+                    // không chồng lấp!
                     overlapping = false;
                     break;
                 }
@@ -582,13 +500,13 @@ So the final algorithm is something like:
         GD.Print("Polygons Collided!");
     }
 
-More information
-~~~~~~~~~~~~~~~~
+Thông tin thêm
+~~~~~~~~~~~~~~
 
-For more information on using vector math in Godot, see the following article:
+Để biết thêm thông tin về cách sử dụng phép toán vector trong Godot, hãy xem bài viết sau:
 
 - :ref:`doc_matrices_and_transforms`
 
-If you would like additional explanation, you should check out
-3Blue1Brown's excellent video series
-`Essence of Linear Algebra <https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab>`_.
+Nếu bạn muốn có thêm phần giải thích, hãy xem loạt video xuất sắc `Essence of Linear Algebra <https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab>`_ của 3Blue1Brown.
+
+.. _`Essence of Linear Algebra`: https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab

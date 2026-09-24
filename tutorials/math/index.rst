@@ -1,7 +1,7 @@
 :allow_comments: False
 
-Math
-====
+Toán học
+========
 
 .. toctree::
    :maxdepth: 1

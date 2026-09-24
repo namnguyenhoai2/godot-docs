@@ -1,7 +1,7 @@
 :allow_comments: False
 
-Input handling
-==============
+Xử lý đầu vào
+=============
 
 .. toctree::
    :maxdepth: 1

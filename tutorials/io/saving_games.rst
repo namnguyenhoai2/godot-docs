@@ -1,69 +1,53 @@
 .. _doc_saving_games:
 
-Saving games
-============
+Lưu game
+========
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Save games can be complicated. For example, it may be desirable
-to store information from multiple objects across multiple levels.
-Advanced save game systems should allow for additional information about
-an arbitrary number of objects. This will allow the save function to
-scale as the game grows more complex.
+Việc lưu game có thể phức tạp. Ví dụ: có thể cần lưu thông tin từ nhiều đối tượng trên nhiều level. Các hệ thống lưu game nâng cao nên cho phép lưu thêm thông tin về số lượng đối tượng tùy ý. Điều này giúp hàm lưu có thể mở rộng khi game trở nên phức tạp hơn.
 
 .. note::
 
-    If you're looking to save user configuration, you can use the
-    :ref:`class_ConfigFile` class for this purpose.
+    Nếu bạn muốn lưu cấu hình người dùng, bạn có thể sử dụng
+    :ref:`class_ConfigFile` class cho mục đích này.
 
 .. seealso::
 
-    You can see how saving and loading works in action using the
-    `Saving and Loading (Serialization) demo project <https://github.com/godotengine/godot-demo-projects/blob/master/loading/serialization>`__.
+    Bạn có thể xem cách lưu và tải hoạt động trên thực tế trong dự án demo `Saving and Loading (Serialization) demo project <https://github.com/godotengine/godot-demo-projects/blob/master/loading/serialization>`__.
 
-Identify persistent objects
----------------------------
+Xác định các đối tượng persistent
+---------------------------------
 
-Firstly, we should identify what objects we want to keep between game
-sessions and what information we want to keep from those objects. For
-this tutorial, we will use groups to mark and handle objects to be saved,
-but other methods are certainly possible.
+Trước tiên, chúng ta cần xác định những đối tượng nào muốn giữ lại giữa các phiên chơi và muốn giữ lại thông tin nào từ những đối tượng đó. Trong tutorial này, chúng ta sẽ sử dụng groups để đánh dấu và xử lý các đối tượng cần lưu, nhưng chắc chắn vẫn có thể sử dụng các phương pháp khác.
 
-We will start by adding objects we wish to save to the "Persist" group. We can
-do this through either the GUI or script. Let's add the relevant nodes using the
-GUI:
+Chúng ta sẽ bắt đầu bằng cách thêm các đối tượng muốn lưu vào group "Persist". Có thể thực hiện việc này thông qua GUI hoặc script. Hãy thêm các node liên quan bằng GUI:
 
 .. image:: img/groups.webp
 
-Once this is done, when we need to save the game, we can get all objects
-to save them and then tell them all to save with this script:
+Sau khi hoàn tất, khi cần lưu game, chúng ta có thể lấy tất cả đối tượng cần lưu rồi yêu cầu tất cả chúng lưu bằng script này:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     var save_nodes = get_tree().get_nodes_in_group("Persist")
     for node in save_nodes:
-        # Now, we can call our save function on each node.
+        # Bây giờ, chúng ta có thể gọi hàm lưu trên từng node.
 
  .. code-tab:: csharp
 
     var saveNodes = GetTree().GetNodesInGroup("Persist");
     foreach (Node saveNode in saveNodes)
     {
-        // Now, we can call our save function on each node.
+        // Bây giờ, chúng ta có thể gọi hàm lưu trên từng node.
     }
 
 
-Serializing
+Tuần tự hóa
 -----------
 
-The next step is to serialize the data. This makes it much easier to
-read from and store to disk. In this case, we're assuming each member of
-group Persist is an instanced node and thus has a path. GDScript
-has the helper class :ref:`JSON<class_json>` to convert between dictionary and string.
-Our node needs to contain a save function that returns this data.
-The save function will look like this:
+Bước tiếp theo là tuần tự hóa dữ liệu. Điều này giúp việc đọc dữ liệu và lưu dữ liệu vào đĩa dễ dàng hơn nhiều. Trong trường hợp này, chúng ta giả định mỗi thành viên của group Persist là một node được instance và do đó có một path. GDScript có helper class :ref:`JSON<class_json>` để chuyển đổi giữa dictionary và string. Node của chúng ta cần chứa một hàm save trả về dữ liệu này. Hàm save sẽ như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -72,7 +56,7 @@ The save function will look like this:
         var save_dict = {
             "filename" : get_scene_file_path(),
             "parent" : get_parent().get_path(),
-            "pos_x" : position.x, # Vector2 is not supported by JSON
+            "pos_x" : position.x, # Vector2 không được JSON hỗ trợ
             "pos_y" : position.y,
             "attack" : attack,
             "defense" : defense,
@@ -99,7 +83,7 @@ The save function will look like this:
         {
             { "Filename", SceneFilePath },
             { "Parent", GetParent().GetPath() },
-            { "PosX", Position.X }, // Vector2 is not supported by JSON
+            { "PosX", Position.X }, // Vector2 không được JSON hỗ trợ
             { "PosY", Position.Y },
             { "Attack", Attack },
             { "Defense", Defense },
@@ -119,56 +103,49 @@ The save function will look like this:
     }
 
 
-This gives us a dictionary with the style
-``{ "variable_name":value_of_variable }``, which will be useful when
-loading.
+Điều này cho chúng ta một dictionary có dạng ``{ "variable_name":value_of_variable }``, sẽ hữu ích khi tải.
 
-Saving and reading data
------------------------
+Lưu và đọc dữ liệu
+------------------
 
-As covered in the :ref:`doc_filesystem` tutorial, we'll need to open a file
-so we can write to it or read from it. Now that we have a way to
-call our groups and get their relevant data, let's use the class :ref:`JSON<class_json>` to
-convert it into an easily stored string and store them in a file. Doing
-it this way ensures that each line is its own object, so we have an easy
-way to pull the data out of the file as well.
+Như đã trình bày trong tutorial :ref:`doc_filesystem`, chúng ta cần mở một file để có thể ghi vào hoặc đọc từ đó. Giờ đã có cách gọi các group và lấy dữ liệu liên quan của chúng, hãy sử dụng class :ref:`JSON<class_json>` để chuyển dữ liệu thành một string dễ lưu trữ và lưu chúng vào một file. Làm theo cách này đảm bảo mỗi dòng là một đối tượng riêng, nhờ đó chúng ta cũng dễ dàng lấy dữ liệu từ file.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Note: This can be called from anywhere inside the tree. This function is
-    # path independent.
-    # Go through everything in the persist category and ask them to return a
-    # dict of relevant variables.
+    # Lưu ý: Có thể gọi hàm này từ bất kỳ đâu bên trong tree. Hàm này
+    # không phụ thuộc vào path.
+    # Duyệt qua mọi thứ trong category persist và yêu cầu chúng trả về một
+    # dict chứa các biến liên quan.
     func save_game():
         var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
         var save_nodes = get_tree().get_nodes_in_group("Persist")
         for node in save_nodes:
-            # Check the node is an instanced scene so it can be instanced again during load.
+            # Kiểm tra node có phải là một scene được instance để có thể instance lại trong quá trình tải.
             if node.scene_file_path.is_empty():
                 print("persistent node '%s' is not an instanced scene, skipped" % node.name)
                 continue
 
-            # Check the node has a save function.
+            # Kiểm tra node có hàm save.
             if !node.has_method("save"):
                 print("persistent node '%s' is missing a save() function, skipped" % node.name)
                 continue
 
-            # Call the node's save function.
+            # Gọi hàm save của node.
             var node_data = node.call("save")
 
-            # JSON provides a static method to serialized JSON string.
+            # JSON cung cấp một static method để tuần tự hóa thành JSON string.
             var json_string = JSON.stringify(node_data)
 
-            # Store the save dictionary as a new line in the save file.
+            # Lưu dictionary cần lưu thành một dòng mới trong save file.
             save_file.store_line(json_string)
 
  .. code-tab:: csharp
 
-    // Note: This can be called from anywhere inside the tree. This function is
-    // path independent.
-    // Go through everything in the persist category and ask them to return a
-    // dict of relevant variables.
+    // Lưu ý: Có thể gọi hàm này từ bất kỳ đâu bên trong tree. Hàm này
+    // không phụ thuộc vào path.
+    // Duyệt qua mọi thứ trong category persist và yêu cầu chúng trả về một
+    // dict chứa các biến liên quan.
     public void SaveGame()
     {
         using var saveFile = FileAccess.Open("user://savegame.save", FileAccess.ModeFlags.Write);
@@ -176,80 +153,75 @@ way to pull the data out of the file as well.
         var saveNodes = GetTree().GetNodesInGroup("Persist");
         foreach (Node saveNode in saveNodes)
         {
-            // Check the node is an instanced scene so it can be instanced again during load.
+            // Kiểm tra node có phải là một scene được instance để có thể instance lại trong quá trình tải.
             if (string.IsNullOrEmpty(saveNode.SceneFilePath))
             {
                 GD.Print($"persistent node '{saveNode.Name}' is not an instanced scene, skipped");
                 continue;
             }
 
-            // Check the node has a save function.
+            // Kiểm tra node có hàm save.
             if (!saveNode.HasMethod("Save"))
             {
                 GD.Print($"persistent node '{saveNode.Name}' is missing a Save() function, skipped");
                 continue;
             }
 
-            // Call the node's save function.
+            // Gọi hàm save của node.
             var nodeData = saveNode.Call("Save");
 
-            // Json provides a static method to serialized JSON string.
+            // Json cung cấp một static method để tuần tự hóa thành JSON string.
             var jsonString = Json.Stringify(nodeData);
 
-            // Store the save dictionary as a new line in the save file.
+            // Lưu dictionary cần lưu thành một dòng mới trong save file.
             saveFile.StoreLine(jsonString);
         }
     }
 
 
-Game saved! Now, to load, we'll read each
-line. Use the :ref:`parse<class_JSON_method_parse>` method to read the
-JSON string back to a dictionary, and then iterate over
-the dict to read our values. But we'll need to first create the object
-and we can use the filename and parent values to achieve that. Here is our
-load function:
+Đã lưu game! Bây giờ, để tải, chúng ta sẽ đọc từng dòng. Sử dụng method :ref:`parse<class_JSON_method_parse>` để đọc JSON string trở lại thành dictionary, sau đó lặp qua dict để đọc các giá trị. Tuy nhiên, trước tiên chúng ta cần tạo đối tượng và có thể sử dụng các giá trị filename và parent để thực hiện việc đó. Đây là hàm load của chúng ta:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Note: This can be called from anywhere inside the tree. This function
-    # is path independent.
+    # Lưu ý: Có thể gọi hàm này từ bất kỳ đâu bên trong tree. Hàm này
+    # không phụ thuộc vào path.
     func load_game():
         if not FileAccess.file_exists("user://savegame.save"):
-            return # Error! We don't have a save to load.
+            return # Lỗi! Không có save để tải.
 
-        # We need to revert the game state so we're not cloning objects
-        # during loading. This will vary wildly depending on the needs of a
-        # project, so take care with this step.
-        # For our example, we will accomplish this by deleting saveable objects.
+        # Chúng ta cần hoàn nguyên trạng thái game để không clone các đối tượng
+        # trong quá trình tải. Việc này sẽ thay đổi rất nhiều tùy theo nhu cầu của một
+        # project, vì vậy hãy cẩn thận ở bước này.
+        # Trong ví dụ này, chúng ta sẽ thực hiện bằng cách xóa các đối tượng có thể lưu.
         var save_nodes = get_tree().get_nodes_in_group("Persist")
         for i in save_nodes:
             i.queue_free()
 
-        # Load the file line by line and process that dictionary to restore
-        # the object it represents.
+        # Tải file từng dòng và xử lý dictionary đó để khôi phục
+        # đối tượng mà nó biểu diễn.
         var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
         while save_file.get_position() < save_file.get_length():
             var json_string = save_file.get_line()
 
-            # Creates the helper class to interact with JSON.
+            # Tạo helper class để tương tác với JSON.
             var json = JSON.new()
 
-            # Check if there is any error while parsing the JSON string, skip in case of failure.
+            # Kiểm tra xem có lỗi nào khi parse JSON string không; bỏ qua nếu thất bại.
             var parse_result = json.parse(json_string)
             if not parse_result == OK:
                 print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
                 continue
 
-            # Get the data from the JSON object.
+            # Lấy dữ liệu từ JSON object.
             var node_data = json.data
 
-            # Firstly, we need to create the object and add it to the tree and set its position.
+            # Trước tiên, chúng ta cần tạo đối tượng, thêm đối tượng vào cây và đặt vị trí cho đối tượng.
             var new_object = load(node_data["filename"]).instantiate()
             get_node(node_data["parent"]).add_child(new_object)
             new_object.position = Vector2(node_data["pos_x"], node_data["pos_y"])
 
-            # Now we set the remaining variables.
+            # Bây giờ, chúng ta thiết lập các biến còn lại.
             for i in node_data.keys():
                 if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
                     continue
@@ -257,34 +229,34 @@ load function:
 
  .. code-tab:: csharp
 
-    // Note: This can be called from anywhere inside the tree. This function is
-    // path independent.
+    // Lưu ý: Có thể gọi hàm này từ bất kỳ đâu bên trong tree. Hàm này
+    // không phụ thuộc vào path.
     public void LoadGame()
     {
         if (!FileAccess.FileExists("user://savegame.save"))
         {
-            return; // Error! We don't have a save to load.
+            return; // Lỗi! Chúng ta không có bản lưu nào để tải.
         }
 
-        // We need to revert the game state so we're not cloning objects during loading.
-        // This will vary wildly depending on the needs of a project, so take care with
-        // this step.
-        // For our example, we will accomplish this by deleting saveable objects.
+        // Chúng ta cần khôi phục trạng thái trò chơi để không nhân bản các đối tượng trong khi tải.
+        // Điều này sẽ thay đổi rất nhiều tùy thuộc vào nhu cầu của dự án, vì vậy hãy cẩn thận với
+        // bước này.
+        // Trong ví dụ này, chúng ta sẽ thực hiện việc đó bằng cách xóa các đối tượng có thể lưu.
         var saveNodes = GetTree().GetNodesInGroup("Persist");
         foreach (Node saveNode in saveNodes)
         {
             saveNode.QueueFree();
         }
 
-        // Load the file line by line and process that dictionary to restore the object
-        // it represents.
+        // Tải tệp theo từng dòng và xử lý dictionary đó để khôi phục đối tượng
+        // mà nó biểu diễn.
         using var saveFile = FileAccess.Open("user://savegame.save", FileAccess.ModeFlags.Read);
 
         while (saveFile.GetPosition() < saveFile.GetLength())
         {
             var jsonString = saveFile.GetLine();
 
-            // Creates the helper class to interact with JSON.
+            // Tạo lớp trợ giúp để tương tác với JSON.
             var json = new Json();
             var parseResult = json.Parse(jsonString);
             if (parseResult != Error.Ok)
@@ -293,16 +265,16 @@ load function:
                 continue;
             }
 
-            // Get the data from the JSON object.
+            // Lấy dữ liệu từ đối tượng JSON.
             var nodeData = new Godot.Collections.Dictionary<string, Variant>((Godot.Collections.Dictionary)json.Data);
 
-            // Firstly, we need to create the object and add it to the tree and set its position.
+            // Trước tiên, chúng ta cần tạo đối tượng, thêm đối tượng vào cây và đặt vị trí cho đối tượng.
             var newObjectScene = GD.Load<PackedScene>(nodeData["Filename"].ToString());
             var newObject = newObjectScene.Instantiate<Node>();
             GetNode(nodeData["Parent"].ToString()).AddChild(newObject);
             newObject.Set(Node2D.PropertyName.Position, new Vector2((float)nodeData["PosX"], (float)nodeData["PosY"]));
 
-            // Now we set the remaining variables.
+            // Bây giờ, chúng ta thiết lập các biến còn lại.
             foreach (var (key, value) in nodeData)
             {
                 if (key == "Filename" || key == "Parent" || key == "PosX" || key == "PosY")
@@ -315,69 +287,39 @@ load function:
     }
 
 
-Now we can save and load an arbitrary number of objects laid out
-almost anywhere across the scene tree! Each object can store different
-data depending on what it needs to save.
+Giờ đây, chúng ta có thể lưu và tải một số lượng tùy ý các đối tượng được bố trí gần như ở bất kỳ đâu trong cây cảnh! Mỗi đối tượng có thể lưu dữ liệu khác nhau tùy theo những gì nó cần lưu.
 
-Some notes
-----------
+Một số lưu ý
+------------
 
-We have glossed over setting up the game state for loading. It's ultimately up
-to the project creator where much of this logic goes.
-This is often complicated and will need to be heavily
-customized based on the needs of the individual project.
+Chúng ta đã lướt qua việc thiết lập trạng thái trò chơi để tải. Cuối cùng, vị trí của phần lớn logic này hoàn toàn tùy thuộc vào người tạo dự án. Việc này thường phức tạp và sẽ cần được tùy chỉnh đáng kể dựa trên nhu cầu của từng dự án.
 
-Additionally, our implementation assumes no Persist objects are children of other
-Persist objects. Otherwise, invalid paths would be created. To
-accommodate nested Persist objects, consider saving objects in stages.
-Load parent objects first so they are available for the :ref:`add_child()
-<class_node_method_add_child>`
-call when child objects are loaded. You will also need a way to link
-children to parents as the :ref:`NodePath
-<class_nodepath>` will likely be invalid.
+Ngoài ra, phần triển khai của chúng ta giả định rằng không có đối tượng Persist nào là con của một đối tượng Persist khác. Nếu không, các đường dẫn không hợp lệ sẽ được tạo. Để hỗ trợ các đối tượng Persist lồng nhau, hãy cân nhắc việc lưu các đối tượng theo từng giai đoạn. Trước tiên, hãy tải các đối tượng cha để chúng khả dụng cho lệnh gọi :ref:`add_child() <class_node_method_add_child>` khi tải các đối tượng con. Bạn cũng sẽ cần một cách để liên kết các đối tượng con với đối tượng cha, vì :ref:`NodePath <class_nodepath>` nhiều khả năng sẽ không hợp lệ.
 
-JSON vs binary serialization
-----------------------------
+JSON so với serialization nhị phân
+----------------------------------
 
-For simple game state, JSON may work and it generates human-readable files that are easy to debug.
+Đối với trạng thái trò chơi đơn giản, JSON có thể phù hợp và tạo ra các tệp mà con người có thể đọc, đồng thời dễ debug.
 
-But JSON has many limitations. If you need to store more complex game state or
-a lot of it, :ref:`binary serialization<doc_binary_serialization_api>`
-may be a better approach.
+Tuy nhiên, JSON có nhiều hạn chế. Nếu cần lưu trữ trạng thái trò chơi phức tạp hơn hoặc một lượng lớn dữ liệu, :ref:`binary serialization <doc_binary_serialization_api>` có thể là lựa chọn tốt hơn.
 
-JSON limitations
-~~~~~~~~~~~~~~~~
-
-Here are some important gotchas to know about when using JSON.
-
-* **Filesize:**
-  JSON stores data in text format, which is much larger than binary formats.
-* **Data types:**
-  JSON only offers a limited set of data types. If you have data types
-  that JSON doesn't have, you will need to translate your data to and
-  from types that JSON can handle. For example, some important types that JSON
-  can't parse are: ``Vector2``, ``Vector3``, ``Color``, ``Rect2``, and ``Quaternion``.
-* **Custom logic needed for encoding/decoding:**
-  If you have any custom classes that you want to store with JSON, you will
-  need to write your own logic for encoding and decoding those classes.
-
-Binary serialization
+Các hạn chế của JSON
 ~~~~~~~~~~~~~~~~~~~~
 
-:ref:`Binary serialization<doc_binary_serialization_api>` is an alternative
-approach for storing game state, and you can use it with the functions
-``get_var`` and ``store_var`` of :ref:`class_FileAccess`.
+Dưới đây là một số vấn đề quan trọng cần biết khi sử dụng JSON.
 
-* Binary serialization should produce smaller files than JSON.
-* Binary serialization can handle most common data types.
-* Binary serialization requires less custom logic for encoding and decoding
-  custom classes.
+* **Kích thước tệp:** JSON lưu trữ dữ liệu ở định dạng văn bản, lớn hơn nhiều so với các định dạng nhị phân.
+* **Kiểu dữ liệu:** JSON chỉ cung cấp một tập hợp kiểu dữ liệu giới hạn. Nếu có các kiểu dữ liệu mà JSON không hỗ trợ, bạn sẽ cần chuyển đổi dữ liệu của mình sang và từ các kiểu mà JSON có thể xử lý. Ví dụ, một số kiểu quan trọng mà JSON không thể phân tích cú pháp là: ``Vector2``, ``Vector3``, ``Color``, ``Rect2`` và ``Quaternion``.
+* **Cần logic tùy chỉnh để mã hóa/giải mã:** Nếu có bất kỳ lớp tùy chỉnh nào muốn lưu trữ bằng JSON, bạn sẽ cần tự viết logic để mã hóa và giải mã các lớp đó.
 
-Note that not all properties are included. Only properties that are configured
-with the :ref:`PROPERTY_USAGE_STORAGE<class_@GlobalScope_constant_PROPERTY_USAGE_STORAGE>`
-flag set will be serialized. You can add a new usage flag to a property by overriding the
-:ref:`_get_property_list<class_Object_private_method__get_property_list>`
-method in your class. You can also check how property usage is configured by
-calling ``Object._get_property_list``.
-See :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` for the
-possible usage flags.
+Serialization nhị phân
+~~~~~~~~~~~~~~~~~~~~~~
+
+:ref:`Binary serialization <doc_binary_serialization_api>` là một phương pháp thay thế để lưu trữ trạng thái trò chơi, và bạn có thể sử dụng nó với các hàm ``get_var`` và ``store_var`` của :ref:`class_FileAccess`.
+
+* Binary serialization sẽ tạo ra các tệp nhỏ hơn JSON.
+* Binary serialization có thể xử lý hầu hết các kiểu dữ liệu phổ biến.
+* Binary serialization cần ít logic tùy chỉnh hơn để mã hóa và giải mã các lớp tùy chỉnh.
+
+Lưu ý rằng không phải tất cả thuộc tính đều được đưa vào. Chỉ các thuộc tính được cấu hình với cờ :ref:`PROPERTY_USAGE_STORAGE<class_@GlobalScope_constant_PROPERTY_USAGE_STORAGE>` được bật mới được serialize. Bạn có thể thêm cờ usage mới cho một thuộc tính bằng cách override
+:ref:`_get_property_list<class_Object_private_method__get_property_list>` method trong lớp của bạn. Bạn cũng có thể kiểm tra cách cấu hình usage của thuộc tính bằng cách gọi ``Object._get_property_list``. Xem :ref:`PropertyUsageFlags <enum_@GlobalScope_PropertyUsageFlags>` để biết các cờ usage khả dụng.

@@ -1,18 +1,14 @@
 .. _doc_inputevent:
 
-Using InputEvent
-================
+Sử dụng InputEvent
+==================
 
-What is it?
------------
+Nó là gì?
+---------
 
-Managing input is usually complex, no matter the OS or platform. To ease
-this a little, a special built-in type is provided, :ref:`InputEvent <class_InputEvent>`.
-This datatype can be configured to contain several types of input
-events. Input events travel through the engine and can be received in
-multiple locations, depending on the purpose.
+Việc quản lý input thường phức tạp, bất kể hệ điều hành hay nền tảng nào. Để đơn giản hóa phần nào, một kiểu tích hợp đặc biệt được cung cấp là :ref:`InputEvent <class_InputEvent>`. Kiểu dữ liệu này có thể được cấu hình để chứa nhiều kiểu sự kiện input. Các sự kiện input đi qua engine và có thể được nhận tại nhiều vị trí, tùy theo mục đích.
 
-Here is a quick example, closing your game if the escape key is hit:
+Sau đây là một ví dụ nhanh, đóng game nếu nhấn phím escape:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -35,20 +31,16 @@ Here is a quick example, closing your game if the escape key is hit:
         }
     }
 
-However, it is cleaner and more flexible to use the provided :ref:`InputMap <class_InputMap>` feature,
-which allows you to define input actions and assign them different keys. This way,
-you can define multiple keys for the same action (e.g. the keyboard escape key and the start button on a gamepad).
-You can then more easily change this mapping in the project settings without updating your code,
-and even build a key mapping feature on top of it to allow your game to change the key mapping at runtime!
+Tuy nhiên, sử dụng tính năng :ref:`InputMap <class_InputMap>` được cung cấp sẽ gọn gàng và linh hoạt hơn. Tính năng này cho phép bạn định nghĩa các input action và gán cho chúng những phím khác nhau. Nhờ đó, bạn có thể định nghĩa nhiều phím cho cùng một action (ví dụ: phím escape trên bàn phím và nút start trên gamepad). Sau đó, bạn có thể dễ dàng thay đổi ánh xạ này trong phần cài đặt project mà không cần cập nhật code, thậm chí còn có thể xây dựng một tính năng ánh xạ phím dựa trên đó để cho phép game thay đổi ánh xạ phím trong runtime!
 
-You can set up your InputMap under **Project > Project Settings > Input Map** and then use those actions like this:
+Bạn có thể thiết lập InputMap tại **Project > Project Settings > Input Map** rồi sử dụng các action đó như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     func _process(delta):
         if Input.is_action_pressed("ui_right"):
-            # Move right.
+            # Di chuyển sang phải.
 
  .. code-tab:: csharp
 
@@ -56,209 +48,129 @@ You can set up your InputMap under **Project > Project Settings > Input Map** an
     {
         if (Input.IsActionPressed("ui_right"))
         {
-            // Move right.
+            // Di chuyển sang phải.
         }
     }
 
-How does it work?
------------------
+Nó hoạt động như thế nào?
+-------------------------
 
-Every input event is originated from the user/player (though it's
-possible to generate an InputEvent and feed them back to the engine,
-which is useful for gestures). The DisplayServer for each platform will read
-events from the operating system, then feed them to the root :ref:`Window <class_Window>`.
+Mọi sự kiện input đều bắt nguồn từ người dùng/người chơi (mặc dù bạn có thể tạo một InputEvent rồi gửi lại cho engine, điều này hữu ích cho gesture). DisplayServer của mỗi nền tảng sẽ đọc các sự kiện từ hệ điều hành, sau đó gửi chúng đến :ref:`Window <class_Window>` gốc.
 
-The window's :ref:`Viewport <class_Viewport>` does quite a lot of stuff with the
-received input, in order:
+:ref:`Viewport <class_Viewport>` của cửa sổ xử lý input nhận được qua khá nhiều bước, theo thứ tự:
 
 .. image:: img/input_event_flow.webp
 
-1. If the Viewport is embedding Windows, the Viewport tries to interpret the event in its
-   capability as a Window-Manager (e.g. for resizing or moving Windows).
-2. Next if an embedded Window is focused, the event is sent to that Window and processed in
-   the Window's Viewport and afterwards treated as handled. If no embedded Window is focused,
-   the event is sent to the nodes of the current viewport in the following order.
-3. First of all, the standard :ref:`Node._input() <class_Node_private_method__input>` function
-   will be called in any node that overrides it (and hasn't disabled input processing with :ref:`Node.set_process_input() <class_Node_method_set_process_input>`).
-   If any function consumes the event, it can call :ref:`Viewport.set_input_as_handled() <class_Viewport_method_set_input_as_handled>`, and the event will
-   not spread any more. This ensures that you can filter all events of interest, even before the GUI.
-   For gameplay input, :ref:`Node._unhandled_input() <class_Node_private_method__unhandled_input>` is generally a better fit, because it allows the GUI to intercept the events.
-4. Second, it will try to feed the input to the GUI, and see if any
-   control can receive it. If so, the :ref:`Control <class_Control>` will be called via the
-   virtual function :ref:`Control._gui_input() <class_Control_private_method__gui_input>` and the signal
-   "gui_input" will be emitted (this function is re-implementable by
-   script by inheriting from it). If the control wants to "consume" the
-   event, it will call :ref:`Control.accept_event() <class_Control_method_accept_event>` and the event will
-   not spread any more. Use the :ref:`Control.mouse_filter <class_Control_property_mouse_filter>`
-   property to control whether a :ref:`Control <class_Control>` is notified
-   of mouse events via :ref:`Control._gui_input() <class_Control_private_method__gui_input>`
-   callback, and whether these events are propagated further.
-5. If so far no one consumed the event, the :ref:`Node._shortcut_input() <class_Node_private_method__shortcut_input>` callback
-   will be called if overridden (and not disabled with
-   :ref:`Node.set_process_shortcut_input() <class_Node_method_set_process_shortcut_input>`).
-   This happens only for :ref:`InputEventKey <class_InputEventKey>`,
-   :ref:`InputEventShortcut <class_InputEventShortcut>` and :ref:`InputEventJoypadButton <class_InputEventJoypadButton>`.
-   If any function consumes the event, it can call :ref:`Viewport.set_input_as_handled() <class_Viewport_method_set_input_as_handled>`, and the
-   event will not spread any more. The shortcut input callback is ideal for treating events that are intended as shortcuts.
-6. If so far no one consumed the event, the :ref:`Node._unhandled_key_input() <class_Node_private_method__unhandled_key_input>` callback
-   will be called if overridden (and not disabled with
-   :ref:`Node.set_process_unhandled_key_input() <class_Node_method_set_process_unhandled_key_input>`).
-   This happens only if the event is an :ref:`InputEventKey <class_InputEventKey>`.
-   If any function consumes the event, it can call :ref:`Viewport.set_input_as_handled() <class_Viewport_method_set_input_as_handled>`, and the
-   event will not spread any more. The unhandled key input callback is ideal for key events.
-7. If so far no one consumed the event, the :ref:`Node._unhandled_input() <class_Node_private_method__unhandled_input>` callback
-   will be called if overridden (and not disabled with
-   :ref:`Node.set_process_unhandled_input() <class_Node_method_set_process_unhandled_input>`).
-   If any function consumes the event, it can call :ref:`Viewport.set_input_as_handled() <class_Viewport_method_set_input_as_handled>`, and the
-   event will not spread any more. The unhandled input callback is ideal for full-screen gameplay events, so they are not received when a GUI is active.
-8. If no one wanted the event so far, and :ref:`Object Picking <class_viewport_property_physics_object_picking>`
-   is turned on, the event is used for object picking. For the root viewport, this can also be
-   enabled in :ref:`Project Settings <class_ProjectSettings_property_physics/common/enable_object_picking>`.
-   In the case of a 3D scene if a :ref:`Camera3D <class_Camera3D>` is assigned to the Viewport, a ray
-   to the physics world (in the ray direction from the click) will be cast. If this ray hits an object,
-   it will call the :ref:`CollisionObject3D._input_event() <class_CollisionObject3D_private_method__input_event>`
-   function in the relevant physics object.
-   In the case of a 2D scene, conceptually the same happens with :ref:`CollisionObject2D._input_event() <class_CollisionObject2D_private_method__input_event>`.
+1. Nếu Viewport đang nhúng các Windows, Viewport sẽ cố gắng diễn giải sự kiện trong khả năng của nó với tư cách Window-Manager (ví dụ: để thay đổi kích thước hoặc di chuyển các Windows).
+2. Tiếp theo, nếu một Window được nhúng đang được focus, sự kiện sẽ được gửi đến Window đó và được xử lý trong Viewport của Window, sau đó được xem là đã xử lý. Nếu không có Window được nhúng nào đang được focus, sự kiện sẽ được gửi đến các node của viewport hiện tại theo thứ tự sau.
+3. Trước hết, hàm :ref:`Node._input() <class_Node_private_method__input>` tiêu chuẩn sẽ được gọi trong mọi node override hàm này (và chưa tắt xử lý input bằng :ref:`Node.set_process_input() <class_Node_method_set_process_input>`). Nếu một hàm tiêu thụ sự kiện, hàm đó có thể gọi :ref:`Viewport.set_input_as_handled() <class_Viewport_method_set_input_as_handled>`, và sự kiện sẽ không lan truyền thêm. Điều này đảm bảo bạn có thể lọc tất cả sự kiện cần quan tâm, ngay cả trước GUI. Đối với input gameplay, :ref:`Node._unhandled_input() <class_Node_private_method__unhandled_input>` thường phù hợp hơn, vì nó cho phép GUI chặn các sự kiện.
+4. Thứ hai, engine sẽ cố gắng gửi input đến GUI và kiểm tra xem có control nào có thể nhận nó hay không. Nếu có, :ref:`Control <class_Control>` sẽ được gọi thông qua hàm ảo :ref:`Control._gui_input() <class_Control_private_method__gui_input>` và signal "gui_input" sẽ được phát (hàm này có thể được triển khai lại bằng script thông qua việc kế thừa từ nó). Nếu control muốn "tiêu thụ" sự kiện, nó sẽ gọi :ref:`Control.accept_event() <class_Control_method_accept_event>` và sự kiện sẽ không lan truyền thêm. Sử dụng thuộc tính :ref:`Control.mouse_filter <class_Control_property_mouse_filter>` để kiểm soát việc :ref:`Control <class_Control>` có được thông báo về các sự kiện chuột thông qua callback :ref:`Control._gui_input() <class_Control_private_method__gui_input>` hay không, cũng như việc các sự kiện này có được truyền tiếp hay không.
+5. Nếu đến thời điểm này vẫn chưa có đối tượng nào tiêu thụ sự kiện, callback :ref:`Node._shortcut_input() <class_Node_private_method__shortcut_input>` sẽ được gọi nếu đã override (và không bị tắt bằng
+   :ref:`Node.set_process_shortcut_input() <class_Node_method_set_process_shortcut_input>`). Điều này chỉ xảy ra đối với :ref:`InputEventKey <class_InputEventKey>`,
+   :ref:`InputEventShortcut <class_InputEventShortcut>` và :ref:`InputEventJoypadButton <class_InputEventJoypadButton>`. Nếu một hàm tiêu thụ sự kiện, hàm đó có thể gọi :ref:`Viewport.set_input_as_handled() <class_Viewport_method_set_input_as_handled>`, và sự kiện sẽ không lan truyền thêm. Callback shortcut input phù hợp nhất để xử lý các sự kiện được dùng làm shortcut.
+6. Nếu đến thời điểm này vẫn chưa có đối tượng nào tiêu thụ sự kiện, callback :ref:`Node._unhandled_key_input() <class_Node_private_method__unhandled_key_input>` sẽ được gọi nếu đã override (và không bị tắt bằng
+   :ref:`Node.set_process_unhandled_key_input() <class_Node_method_set_process_unhandled_key_input>`). Điều này chỉ xảy ra nếu sự kiện là :ref:`InputEventKey <class_InputEventKey>`. Nếu một hàm tiêu thụ sự kiện, hàm đó có thể gọi :ref:`Viewport.set_input_as_handled() <class_Viewport_method_set_input_as_handled>`, và sự kiện sẽ không lan truyền thêm. Callback unhandled key input phù hợp nhất cho các sự kiện phím.
+7. Nếu đến thời điểm này vẫn chưa có đối tượng nào tiêu thụ sự kiện, callback :ref:`Node._unhandled_input() <class_Node_private_method__unhandled_input>` sẽ được gọi nếu đã override (và không bị tắt bằng
+   :ref:`Node.set_process_unhandled_input() <class_Node_method_set_process_unhandled_input>`). Nếu một hàm tiêu thụ sự kiện, hàm đó có thể gọi :ref:`Viewport.set_input_as_handled() <class_Viewport_method_set_input_as_handled>`, và sự kiện sẽ không lan truyền thêm. Callback unhandled input phù hợp nhất cho các sự kiện gameplay toàn màn hình, để chúng không được nhận khi GUI đang hoạt động.
+8. Nếu đến thời điểm này vẫn chưa có đối tượng nào muốn xử lý sự kiện và :ref:`Object Picking <class_viewport_property_physics_object_picking>` được bật, sự kiện sẽ được dùng để picking object. Đối với root viewport, tính năng này cũng có thể được bật trong :ref:`Project Settings <class_ProjectSettings_property_physics/common/enable_object_picking>`. Trong scene 3D, nếu một :ref:`Camera3D <class_Camera3D>` được gán cho Viewport, một tia đến physics world (theo hướng tia từ vị trí click) sẽ được chiếu. Nếu tia này va vào một object, hàm :ref:`CollisionObject3D._input_event() <class_CollisionObject3D_private_method__input_event>` sẽ được gọi trong physics object tương ứng. Trong scene 2D, về mặt khái niệm, điều tương tự sẽ xảy ra với :ref:`CollisionObject2D._input_event() <class_CollisionObject2D_private_method__input_event>`.
 
-When sending events to its child and descendant nodes, the viewport will do so, as depicted in
-the following graphic, in a reverse depth-first order, starting with the node at the bottom of
-the scene tree, and ending at the root node. Excluded from this process are Windows
-and SubViewports.
+Khi gửi sự kiện đến các node con và hậu duệ của nó, viewport sẽ thực hiện theo như hình minh họa bên dưới, theo thứ tự duyệt depth-first ngược, bắt đầu từ node ở cuối scene tree và kết thúc tại node gốc. Các Windows và SubViewports không thuộc quy trình này.
 
 .. image:: img/input_event_scene_flow.webp
 
 .. note::
 
-   This order doesn't apply to :ref:`Control._gui_input() <class_Control_private_method__gui_input>`, which uses
-   a different method based on event location or focused Control. GUI **mouse** events also travel
-   up the scene tree, subject to the :ref:`Control.mouse_filter <class_Control_property_mouse_filter>`
-   restrictions described above. However, since these events target specific Controls, only direct ancestors of
-   the targeted Control node receive the event. GUI **keyboard and joypad** events *do not* travel
-   up the scene tree, and can only be handled by the Control that received them. Otherwise, they will be
-   propagated as non-GUI events through :ref:`Node._unhandled_input() <class_Node_private_method__unhandled_input>`.
+   Thứ tự này không áp dụng cho :ref:`Control._gui_input() <class_Control_private_method__gui_input>`, vì nó sử dụng một phương thức khác dựa trên vị trí sự kiện hoặc Control đang được focus. Các sự kiện GUI **mouse** cũng đi lên scene tree, tuân theo các giới hạn :ref:`Control.mouse_filter <class_Control_property_mouse_filter>` được mô tả ở trên. Tuy nhiên, vì các sự kiện này nhắm đến những Control cụ thể, chỉ các ancestor trực tiếp của node Control đích mới nhận được sự kiện. Các sự kiện GUI **keyboard and joypad** *do not* đi lên scene tree và chỉ có thể được xử lý bởi Control đã nhận chúng. Nếu không, chúng sẽ được truyền tiếp dưới dạng các sự kiện không thuộc GUI thông qua :ref:`Node._unhandled_input() <class_Node_private_method__unhandled_input>`.
 
-Since Viewports don't send events to other :ref:`SubViewports <class_SubViewport>`, one of the following
-methods has to be used:
+Vì Viewport không gửi sự kiện đến các :ref:`SubViewports <class_SubViewport>` khác, phải sử dụng một trong các phương thức sau:
 
-1. Use a :ref:`SubViewportContainer <class_SubViewportContainer>`, which automatically
-   sends events to its child :ref:`SubViewports <class_SubViewport>` after
-   :ref:`Node._input() <class_Node_private_method__input>` or :ref:`Control._gui_input() <class_Control_private_method__gui_input>`.
-2. Implement event propagation based on the individual requirements.
+1. Sử dụng :ref:`SubViewportContainer <class_SubViewportContainer>`, tự động gửi sự kiện đến :ref:`SubViewports <class_SubViewport>` con của nó sau
+   :ref:`Node._input() <class_Node_private_method__input>` hoặc :ref:`Control._gui_input() <class_Control_private_method__gui_input>`.
+2. Triển khai việc truyền sự kiện dựa trên các yêu cầu riêng.
 
-In accordance with Godot's node-based design, this enables
-specialized child nodes to handle and consume particular events, while
-their ancestors, and ultimately the scene root, can provide more
-generalized behavior if needed.
+Phù hợp với thiết kế dựa trên node của Godot, điều này cho phép các node con chuyên biệt xử lý và tiêu thụ những sự kiện cụ thể, trong khi các ancestor của chúng và cuối cùng là scene root có thể cung cấp hành vi tổng quát hơn khi cần.
 
-Anatomy of an InputEvent
-------------------------
+Cấu tạo của InputEvent
+----------------------
 
-:ref:`InputEvent <class_InputEvent>` is just a base built-in type, it does not represent
-anything and only contains some basic information, such as event ID
-(which is increased for each event), device index, etc.
+:ref:`InputEvent <class_InputEvent>` chỉ là một kiểu tích hợp cơ sở, không đại diện cho bất cứ thứ gì và chỉ chứa một số thông tin cơ bản, chẳng hạn như ID sự kiện (được tăng lên sau mỗi sự kiện), chỉ mục thiết bị, v.v.
 
-There are several specialized types of InputEvent, described in the table below:
+Có một số kiểu InputEvent chuyên biệt, được mô tả trong bảng dưới đây:
 
-+-------------------------------------------------------------------+-----------------------------------------+
-| Event                                                             | Description                             |
-+-------------------------------------------------------------------+-----------------------------------------+
-| :ref:`InputEvent <class_InputEvent>`                              | Empty Input Event.                      |
-+-------------------------------------------------------------------+-----------------------------------------+
-| :ref:`InputEventKey <class_InputEventKey>`                        | Contains a keycode and Unicode value,   |
-|                                                                   | as well as modifiers.                   |
-+-------------------------------------------------------------------+-----------------------------------------+
-| :ref:`InputEventMouseButton <class_InputEventMouseButton>`        | Contains click information, such as     |
-|                                                                   | button, modifiers, etc.                 |
-+-------------------------------------------------------------------+-----------------------------------------+
-| :ref:`InputEventMouseMotion <class_InputEventMouseMotion>`        | Contains motion information, such as    |
-|                                                                   | relative and absolute positions and     |
-|                                                                   | speed.                                  |
-+-------------------------------------------------------------------+-----------------------------------------+
-| :ref:`InputEventJoypadMotion <class_InputEventJoypadMotion>`      | Contains Joystick/Joypad analog axis    |
-|                                                                   | information.                            |
-+-------------------------------------------------------------------+-----------------------------------------+
-| :ref:`InputEventJoypadButton <class_InputEventJoypadButton>`      | Contains Joystick/Joypad button         |
-|                                                                   | information.                            |
-+-------------------------------------------------------------------+-----------------------------------------+
-| :ref:`InputEventScreenTouch <class_InputEventScreenTouch>`        | Contains multi-touch press/release      |
-|                                                                   | information. (only available on mobile  |
-|                                                                   | devices)                                |
-+-------------------------------------------------------------------+-----------------------------------------+
-| :ref:`InputEventScreenDrag <class_InputEventScreenDrag>`          | Contains multi-touch drag information.  |
-|                                                                   | (only available on mobile devices)      |
-+-------------------------------------------------------------------+-----------------------------------------+
-| :ref:`InputEventMagnifyGesture <class_InputEventMagnifyGesture>`  | Contains a position, a factor as well   |
-|                                                                   | as modifiers.                           |
-+-------------------------------------------------------------------+-----------------------------------------+
-| :ref:`InputEventPanGesture <class_InputEventPanGesture>`          | Contains a position, a delta as well as |
-|                                                                   | modifiers.                              |
-+-------------------------------------------------------------------+-----------------------------------------+
-| :ref:`InputEventMIDI <class_InputEventMIDI>`                      | Contains MIDI-related information.      |
-+-------------------------------------------------------------------+-----------------------------------------+
-| :ref:`InputEventShortcut <class_InputEventShortcut>`              | Contains a shortcut.                    |
-+-------------------------------------------------------------------+-----------------------------------------+
-| :ref:`InputEventAction <class_InputEventAction>`                  | Contains a generic action. These events |
-|                                                                   | are often generated by the programmer   |
-|                                                                   | as feedback. (more on this below)       |
-+-------------------------------------------------------------------+-----------------------------------------+
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| Sự kiện                                                          | Mô tả                                                                                                      |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| :ref:`InputEvent <class_InputEvent>`                             | Input Event trống.                                                                                         |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| :ref:`InputEventKey <class_InputEventKey>`                       | Chứa keycode và giá trị Unicode, cùng với các modifier.                                                    |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| :ref:`InputEventMouseButton <class_InputEventMouseButton>`       | Chứa thông tin click, chẳng hạn như button, modifier, v.v.                                                 |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| :ref:`InputEventMouseMotion <class_InputEventMouseMotion>`       | Chứa thông tin về chuyển động, chẳng hạn như vị trí tương đối và tuyệt đối cùng tốc độ.                    |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| :ref:`InputEventJoypadMotion <class_InputEventJoypadMotion>`     | Chứa thông tin về trục analog của Joystick/Joypad.                                                         |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| :ref:`InputEventJoypadButton <class_InputEventJoypadButton>`     | Chứa thông tin về nút của Joystick/Joypad.                                                                 |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| :ref:`InputEventScreenTouch <class_InputEventScreenTouch>`       | Chứa thông tin nhấn/thả đa điểm. (chỉ khả dụng trên thiết bị di động)                                      |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| :ref:`InputEventScreenDrag <class_InputEventScreenDrag>`         | Chứa thông tin kéo đa điểm. (chỉ khả dụng trên thiết bị di động)                                           |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| :ref:`InputEventMagnifyGesture <class_InputEventMagnifyGesture>` | Chứa một vị trí, một hệ số và các modifier.                                                                |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| :ref:`InputEventPanGesture <class_InputEventPanGesture>`         | Chứa một vị trí, một delta và các modifier.                                                                |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| :ref:`InputEventMIDI <class_InputEventMIDI>`                     | Chứa thông tin liên quan đến MIDI.                                                                         |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| :ref:`InputEventShortcut <class_InputEventShortcut>`             | Chứa một shortcut.                                                                                         |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| :ref:`InputEventAction <class_InputEventAction>`                 | Chứa một action chung. Những event này thường được lập trình viên tạo ra làm phản hồi. (xem thêm bên dưới) |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
 
-Input actions
--------------
+Các action đầu vào
+------------------
 
-Input actions are a grouping of zero or more InputEvents into a commonly
-understood title (for example, the default "ui_left" action grouping both joypad-left input and a keyboard's left arrow key). They are not required to represent an
-InputEvent but are useful because they abstract various inputs when
-programming the game logic.
+Các action đầu vào là việc nhóm không hoặc nhiều InputEvent vào một tên gọi thường được hiểu (ví dụ: action mặc định "ui_left" nhóm cả input joypad-left và phím mũi tên trái trên bàn phím). Chúng không bắt buộc phải đại diện cho một InputEvent, nhưng hữu ích vì trừu tượng hóa nhiều input khác nhau khi lập trình logic của game.
 
-This allows for:
+Điều này cho phép:
 
--  The same code to work on different devices with different inputs (e.g.,
-   keyboard on PC, Joypad on console).
--  Input to be reconfigured at runtime.
--  Actions to be triggered programmatically at runtime.
+-  Cùng một đoạn code hoạt động trên các thiết bị khác nhau với các input khác nhau (ví dụ: bàn phím trên PC, Joypad trên console).
+-  Có thể cấu hình lại input trong runtime.
+-  Có thể kích hoạt các action bằng code trong runtime.
 
-Actions can be created from the Project Settings menu in the **Input Map**
-tab and assigned input events.
+Có thể tạo các action từ menu Project Settings trong thẻ **Input Map** và gán các input event cho chúng.
 
-Any event has the methods :ref:`InputEvent.is_action() <class_InputEvent_method_is_action>`,
-:ref:`InputEvent.is_pressed() <class_InputEvent_method_is_pressed>` and :ref:`InputEvent.is_echo() <class_InputEvent_method_is_echo>`.
+Mọi event đều có các method :ref:`InputEvent.is_action() <class_InputEvent_method_is_action>`,
+:ref:`InputEvent.is_pressed() <class_InputEvent_method_is_pressed>` và :ref:`InputEvent.is_echo() <class_InputEvent_method_is_echo>`.
 
-Alternatively, it may be desired to supply the game back with an action
-from the game code (a good example of this is detecting gestures).
-The Input singleton has a method for this:
-:ref:`Input.parse_input_event() <class_input_method_parse_input_event>`. You would normally use it like this:
+Ngoài ra, bạn có thể muốn gửi một action trở lại game từ code của game (một ví dụ điển hình là phát hiện gesture). Singleton Input có một method dành cho việc này:
+:ref:`Input.parse_input_event() <class_input_method_parse_input_event>`. Thông thường, bạn sẽ sử dụng nó như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     var ev = InputEventAction.new()
-    # Set as ui_left, pressed.
+    # Đặt thành ui_left, đã nhấn.
     ev.action = "ui_left"
     ev.pressed = true
-    # Feedback.
+    # Phản hồi.
     Input.parse_input_event(ev)
 
  .. code-tab:: csharp
 
     var ev = new InputEventAction();
-    // Set as ui_left, pressed.
+    // Đặt thành ui_left, đã nhấn.
     ev.Action = "ui_left";
     ev.Pressed = true;
-    // Feedback.
+    // Phản hồi.
     Input.ParseInputEvent(ev);
 
 
 .. seealso::
 
-   See :ref:`doc_first_3d_game_input_actions` for a tutorial on adding input
-   actions in the project settings.
+   Xem :ref:`doc_first_3d_game_input_actions` để tìm hướng dẫn thêm action đầu vào trong phần cài đặt project.
 
 InputMap
 --------
 
-Customizing and re-mapping input from code is often desired. If your
-whole workflow depends on actions, the :ref:`InputMap <class_InputMap>` singleton is
-ideal for reassigning or creating different actions at runtime. This
-singleton is not saved (must be modified manually) and its state is run
-from the project settings (project.godot). So any dynamic system of this
-type needs to store settings in the way the programmer best sees fit.
+Việc tùy chỉnh và ánh xạ lại input từ code thường là điều cần thiết. Nếu toàn bộ quy trình làm việc của bạn phụ thuộc vào các action, singleton :ref:`InputMap <class_InputMap>` là lựa chọn lý tưởng để gán lại hoặc tạo các action khác nhau trong runtime. Singleton này không được lưu (phải được sửa đổi thủ công) và trạng thái của nó được chạy từ phần cài đặt project (project.godot). Vì vậy, mọi hệ thống động thuộc loại này cần lưu trữ các cài đặt theo cách mà lập trình viên thấy phù hợp nhất.

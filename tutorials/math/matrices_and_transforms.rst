@@ -1,76 +1,49 @@
 .. _doc_matrices_and_transforms:
 
-Matrices and transforms
-=======================
+Ma trận và phép biến đổi
+========================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Before reading this tutorial, we recommend that you thoroughly read
-and understand the :ref:`doc_vector_math` tutorial, as this tutorial
-requires a knowledge of vectors.
+Trước khi đọc tutorial này, chúng tôi khuyến nghị bạn đọc kỹ và hiểu rõ tutorial :ref:`doc_vector_math`, vì tutorial này yêu cầu kiến thức về vector.
 
-This tutorial is about *transformations* and how we represent them
-in Godot using matrices. It is not a full in-depth guide to matrices.
-Transformations are most of the time applied as translation, rotation,
-and scale, so we will focus on how to represent those with matrices.
+Tutorial này nói về *các phép biến đổi* và cách biểu diễn chúng trong Godot bằng ma trận. Đây không phải là hướng dẫn chuyên sâu đầy đủ về ma trận. Các phép biến đổi thường được áp dụng dưới dạng tịnh tiến, xoay và scale, vì vậy chúng ta sẽ tập trung vào cách biểu diễn những phép biến đổi đó bằng ma trận.
 
-Most of this guide focuses on 2D, using :ref:`class_Transform2D` and
-:ref:`class_Vector2`, but the way things work in 3D is very similar.
+Phần lớn hướng dẫn này tập trung vào 2D, sử dụng :ref:`class_Transform2D` và
+:ref:`class_Vector2`, nhưng cách mọi thứ hoạt động trong 3D cũng rất tương tự.
 
-.. note:: As mentioned in the previous tutorial, it is important to
-          remember that in Godot, the Y axis points *down* in 2D.
-          This is the opposite of how most schools teach linear
-          algebra, with the Y axis pointing up.
+.. note:: Như đã đề cập trong tutorial trước, điều quan trọng cần nhớ là trong Godot, trục Y hướng *xuống* trong 2D. Điều này ngược với cách hầu hết các trường học dạy đại số tuyến tính, trong đó trục Y hướng lên.
 
-.. note:: The convention is that the X axis is red, the Y axis is
-          green, and the Z axis is blue. This tutorial is color-coded
-          to match these conventions, but we will also represent
-          the origin vector with a blue color.
+.. note:: Quy ước là trục X có màu đỏ, trục Y có màu xanh lá và trục Z có màu xanh dương. Tutorial này được tô màu theo các quy ước đó, nhưng chúng ta cũng sẽ biểu diễn vector gốc bằng màu xanh dương.
 
-Matrix components and the Identity matrix
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Các thành phần của ma trận và ma trận Identity
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The identity matrix represents a transform with no translation,
-no rotation, and no scale. Let's start by looking at the identity
-matrix and how its components relate to how it visually appears.
+Ma trận Identity biểu diễn một phép biến đổi không có tịnh tiến, không có xoay và không có scale. Hãy bắt đầu bằng cách xem ma trận Identity và mối quan hệ giữa các thành phần của nó với hình dạng trực quan của ma trận.
 
 .. image:: img/matrices_and_transforms/identity.png
 
-Matrices have rows and columns, and a transformation matrix has
-specific conventions on what each does.
+Ma trận có các hàng và cột, đồng thời ma trận biến đổi có những quy ước cụ thể về chức năng của từng thành phần.
 
-In the image above, we can see that the red X vector is represented
-by the first column of the matrix, and the green Y vector is
-likewise represented by the second column. A change to the columns
-will change these vectors. We will see how they can be manipulated
-in the next few examples.
+Trong hình trên, chúng ta có thể thấy vector X màu đỏ được biểu diễn bởi cột đầu tiên của ma trận, còn vector Y màu xanh lá tương tự được biểu diễn bởi cột thứ hai. Thay đổi các cột sẽ làm thay đổi những vector này. Chúng ta sẽ xem cách thao tác với chúng trong một vài ví dụ tiếp theo.
 
-You should not worry about manipulating rows directly, as we usually
-work with columns. However, you can think of the rows of the matrix
-as showing which vectors contribute to moving in a given direction.
+Bạn không cần lo lắng về việc thao tác trực tiếp với các hàng, vì chúng ta thường làm việc với các cột. Tuy nhiên, bạn có thể hình dung các hàng của ma trận cho biết những vector nào góp phần di chuyển theo một hướng nhất định.
 
-When we refer to a value such as ``t.x.y``, that's the Y component of
-the X column vector. In other words, the bottom-left of the matrix.
-Similarly, ``t.x.x`` is top-left, ``t.y.x`` is top-right, and ``t.y.y``
-is bottom-right, where ``t`` is the Transform2D.
+Khi đề cập đến một giá trị như ``t.x.y``, đó là thành phần Y của vector cột X. Nói cách khác, đó là vị trí dưới cùng bên trái của ma trận. Tương tự, ``t.x.x`` là trên cùng bên trái, ``t.y.x`` là trên cùng bên phải và ``t.y.y`` là dưới cùng bên phải, trong đó ``t`` là Transform2D.
 
-Scaling the transformation matrix
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Scale ma trận biến đổi
+~~~~~~~~~~~~~~~~~~~~~~
 
-Applying a scale is one of the easiest operations to understand.
-Let's start by placing the Godot logo underneath our vectors
-so that we can visually see the effects on an object:
+Áp dụng scale là một trong những thao tác dễ hiểu nhất. Hãy bắt đầu bằng cách đặt logo Godot bên dưới các vector để có thể nhìn thấy trực quan các hiệu ứng trên một đối tượng:
 
 .. image:: img/matrices_and_transforms/identity-godot.png
 
-Now, to scale the matrix, all we need to do is multiply each
-component by the scale we want. Let's scale it up by 2. 1 times 2
-becomes 2, and 0 times 2 becomes 0, so we end up with this:
+Để scale ma trận, tất cả những gì chúng ta cần làm là nhân từng thành phần với giá trị scale mong muốn. Hãy scale nó lên 2 lần. 1 nhân 2 bằng 2, còn 0 nhân 2 bằng 0, vì vậy chúng ta có kết quả sau:
 
 .. image:: img/matrices_and_transforms/scale.png
 
-To do this in code, we multiply each of the vectors:
+Để thực hiện việc này trong code, chúng ta nhân từng vector:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -79,7 +52,7 @@ To do this in code, we multiply each of the vectors:
     # Scale
     t.x *= 2
     t.y *= 2
-    transform = t # Change the node's transform to what we calculated.
+    transform = t # Thay đổi transform của node thành giá trị chúng ta đã tính.
 
  .. code-tab:: csharp
 
@@ -87,161 +60,104 @@ To do this in code, we multiply each of the vectors:
     // Scale
     t.X *= 2;
     t.Y *= 2;
-    Transform = t; // Change the node's transform to what we calculated.
+    Transform = t; // Thay đổi transform của node thành giá trị chúng ta đã tính.
 
-If we wanted to return it to its original scale, we can multiply
-each component by 0.5. That's pretty much all there is to scaling
-a transformation matrix.
+Nếu muốn đưa nó về scale ban đầu, chúng ta có thể nhân từng thành phần với 0.5. Về cơ bản, đó là tất cả những gì cần biết về việc scale một ma trận biến đổi.
 
-To calculate the object's scale from an existing transformation
-matrix, you can use ``length()`` on each of the column vectors.
+Để tính scale của đối tượng từ một ma trận biến đổi hiện có, bạn có thể sử dụng ``length()`` trên từng vector cột.
 
-.. note:: In actual projects, you can use the ``scaled()``
-          method to perform scaling.
+.. note:: Trong các dự án thực tế, bạn có thể sử dụng phương thức ``scaled()`` để thực hiện scale.
 
-Rotating the transformation matrix
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Xoay ma trận biến đổi
+~~~~~~~~~~~~~~~~~~~~~
 
-We'll start the same way as earlier, with the Godot logo underneath
-the identity matrix:
+Chúng ta sẽ bắt đầu giống như phần trước, với logo Godot bên dưới ma trận Identity:
 
 .. image:: img/matrices_and_transforms/identity-godot.png
 
-As an example, let's say we want to rotate our Godot logo clockwise
-by 90 degrees. Right now the X axis points right and the Y axis
-points down. If we rotate these in our head, we would logically
-see that the new X axis should point down and the new Y axis
-should point left.
+Ví dụ, giả sử chúng ta muốn xoay logo Godot 90 độ theo chiều kim đồng hồ. Hiện tại, trục X hướng sang phải và trục Y hướng xuống. Nếu xoay chúng trong đầu, chúng ta sẽ thấy một cách logic rằng trục X mới phải hướng xuống còn trục Y mới phải hướng sang trái.
 
-You can imagine that you grab both the Godot logo and its vectors,
-and then spin it around the center. Wherever you finish spinning,
-the orientation of the vectors determines what the matrix is.
+Bạn có thể hình dung mình nắm cả logo Godot và các vector của nó, sau đó xoay chúng quanh tâm. Vị trí cuối cùng sau khi xoay sẽ xác định hướng của các vector, từ đó xác định ma trận.
 
-We need to represent "down" and "left" in normal coordinates,
-so means we'll set X to (0, 1) and Y to (-1, 0). These are
-also the values of ``Vector2.DOWN`` and ``Vector2.LEFT``.
-When we do this, we get the desired result of rotating the object:
+Chúng ta cần biểu diễn "xuống" và "trái" trong hệ tọa độ thông thường, vì vậy chúng ta sẽ đặt X thành (0, 1) và Y thành (-1, 0). Đây cũng là các giá trị của ``Vector2.DOWN`` và ``Vector2.LEFT``. Khi làm vậy, chúng ta nhận được kết quả mong muốn là xoay đối tượng:
 
 .. image:: img/matrices_and_transforms/rotate1.png
 
-If you have trouble understanding the above, try this exercise:
-Cut a square of paper, draw X and Y vectors on top of it, place
-it on graph paper, then rotate it and note the endpoints.
+Nếu gặp khó khăn khi hiểu phần trên, hãy thử bài tập này: Cắt một hình vuông bằng giấy, vẽ các vector X và Y lên đó, đặt nó lên giấy kẻ ô, sau đó xoay nó và ghi lại các điểm cuối.
 
-To perform rotation in code, we need to be able to calculate
-the values programmatically. This image shows the formulas needed
-to calculate the transformation matrix from a rotation angle.
-Don't worry if this part seems complicated, I promise it's the
-hardest thing you need to know.
+Để thực hiện phép xoay trong code, chúng ta cần có khả năng tính toán các giá trị bằng chương trình. Hình này cho thấy các công thức cần thiết để tính ma trận biến đổi từ một góc xoay. Đừng lo nếu phần này có vẻ phức tạp, tôi hứa đây là phần khó nhất mà bạn cần biết.
 
 .. image:: img/matrices_and_transforms/rotate2.png
 
-.. note:: Godot represents all rotations with radians, not degrees.
-          A full turn is `TAU` or `PI*2` radians, and a quarter
-          turn of 90 degrees is `TAU/4` or `PI/2` radians. Working
-          with `TAU` usually results in more readable code.
+.. note::
 
-.. note:: Fun fact: In addition to Y being *down* in Godot, rotation
-          is represented clockwise. This means that all the math and
-          trig functions behave the same as a Y-is-up CCW system,
-          since these differences "cancel out". You can think of
-          rotations in both systems being "from X to Y".
+   Godot biểu diễn mọi phép xoay bằng radian, không phải độ. Một vòng xoay đầy đủ là ``TAU`` hoặc ``PI*2`` radian, còn một phần tư vòng xoay 90 độ là ``TAU/4`` hoặc ``PI/2`` radian. Sử dụng ``TAU`` thường giúp code dễ đọc hơn.
 
-In order to perform a rotation of 0.5 radians (about 28.65 degrees),
-we plug in a value of 0.5 to the formula above and evaluate
-to find what the actual values should be:
+.. note:: Thông tin thú vị: Ngoài việc trục Y hướng *xuống* trong Godot, phép xoay cũng được biểu diễn theo chiều kim đồng hồ. Điều này có nghĩa là tất cả các hàm toán học và lượng giác hoạt động giống như trong hệ thống Y hướng lên và CCW, vì những khác biệt này "triệt tiêu" lẫn nhau. Bạn có thể hình dung phép xoay trong cả hai hệ thống là "từ X đến Y".
+
+Để thực hiện phép xoay 0.5 radian (khoảng 28.65 độ), chúng ta đưa giá trị 0.5 vào công thức trên và tính toán để tìm ra các giá trị thực tế cần có:
 
 .. image:: img/matrices_and_transforms/rotate3.png
 
-Here's how that would be done in code (attach the script to a Node2D):
+Sau đây là cách thực hiện việc đó trong code (gắn script vào một Node2D):
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    var rot = 0.5 # The rotation to apply.
+    var rot = 0.5 # Phép xoay cần áp dụng.
     var t = Transform2D()
     t.x.x = cos(rot)
     t.y.y = cos(rot)
     t.x.y = sin(rot)
     t.y.x = -sin(rot)
-    transform = t # Change the node's transform to what we calculated.
+    transform = t # Thay đổi transform của node thành giá trị chúng ta đã tính.
 
  .. code-tab:: csharp
 
-    float rot = 0.5f; // The rotation to apply.
+    float rot = 0.5f; // Phép xoay cần áp dụng.
     Transform2D t = Transform2D.Identity;
     t.X.X = t.Y.Y = Mathf.Cos(rot);
     t.X.Y = t.Y.X = Mathf.Sin(rot);
     t.Y.X *= -1;
-    Transform = t; // Change the node's transform to what we calculated.
+    Transform = t; // Thay đổi transform của node thành giá trị chúng ta đã tính.
 
-To calculate the object's rotation from an existing transformation
-matrix, you can use ``atan2(t.x.y, t.x.x)``, where t is the Transform2D.
+Để tính phép xoay của đối tượng từ một ma trận biến đổi hiện có, bạn có thể sử dụng ``atan2(t.x.y, t.x.x)``, trong đó t là Transform2D.
 
-.. note:: In actual projects, you can use the ``rotated()``
-          method to perform rotations.
+.. note:: Trong các dự án thực tế, bạn có thể sử dụng phương thức ``rotated()`` để thực hiện phép xoay.
 
-Basis of the transformation matrix
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Cơ sở của ma trận biến đổi
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-So far we have only been working with the ``x`` and ``y``, vectors, which
-are in charge of representing rotation, scale, and/or shearing
-(advanced, covered at the end). The X and Y vectors are together
-called the *basis* of the transformation matrix. The terms "basis"
-and "basis vectors" are important to know.
+Cho đến nay, chúng ta mới chỉ làm việc với các ``x`` và ``y``, các vector chịu trách nhiệm biểu diễn phép xoay, co giãn và/hoặc shear (nâng cao, được đề cập ở cuối). Hai vector X và Y hợp lại được gọi là *cơ sở* của ma trận biến đổi. Các thuật ngữ "cơ sở" và "vector cơ sở" rất quan trọng cần biết.
 
-You might have noticed that :ref:`class_Transform2D` actually
-has three :ref:`class_Vector2` values: ``x``, ``y``, and ``origin``.
-The ``origin`` value is not part of the basis, but it is part of the
-transform, and we need it to represent position. From now on we'll
-keep track of the origin vector in all examples. You can think of
-``origin`` as another column, but it's often better to think of it as
-completely separate.
+Bạn có thể đã nhận thấy rằng :ref:`class_Transform2D` thực tế có ba giá trị :ref:`class_Vector2`: ``x``, ``y`` và ``origin``. Giá trị ``origin`` không thuộc cơ sở, nhưng là một phần của transform và cần thiết để biểu diễn vị trí. Từ giờ, chúng ta sẽ theo dõi vector gốc trong tất cả các ví dụ. Bạn có thể xem ``origin`` như một cột khác, nhưng thường sẽ tốt hơn nếu xem nó hoàn toàn tách biệt.
 
-Note that in 3D, Godot has a separate :ref:`class_Basis` structure
-for holding the three :ref:`class_Vector3` values of the basis,
-since the code can get complex and it makes sense to separate
-it from :ref:`class_Transform3D` (which is composed of one
-:ref:`class_Basis` and one extra :ref:`class_Vector3` for the origin).
+Lưu ý rằng trong 3D, Godot có một cấu trúc :ref:`class_Basis` riêng để chứa ba giá trị :ref:`class_Vector3` của cơ sở, vì code có thể trở nên phức tạp và việc tách nó khỏi :ref:`class_Transform3D` (được tạo thành từ một
+:ref:`class_Basis` và một :ref:`class_Vector3` bổ sung cho gốc) là hợp lý.
 
-Translating the transformation matrix
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Dịch chuyển ma trận biến đổi
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Changing the origin vector is called *translating* the transformation
-matrix. Translating is basically a technical term for "moving" the
-object, but it explicitly does not involve any rotation.
+Thay đổi vector gốc được gọi là *dịch chuyển* ma trận biến đổi. Dịch chuyển về cơ bản là một thuật ngữ kỹ thuật cho việc "di chuyển" đối tượng, nhưng rõ ràng không bao gồm bất kỳ phép xoay nào.
 
-Let's work through an example to help understand this. We will start
-with the identity transform like last time, except we will keep track
-of the origin vector this time.
+Hãy cùng xem qua một ví dụ để hiểu rõ hơn. Chúng ta sẽ bắt đầu với identity transform như lần trước, nhưng lần này sẽ theo dõi vector gốc.
 
 .. image:: img/matrices_and_transforms/identity-origin.png
 
-If we want to move the object to a position of (1, 2), we need
-to set its origin vector to (1, 2):
+Nếu muốn di chuyển đối tượng đến vị trí (1, 2), chúng ta cần đặt vector gốc của nó thành (1, 2):
 
 .. image:: img/matrices_and_transforms/translate.png
 
-There is also a ``translated_local()`` method, which performs a different
-operation to adding or changing ``origin`` directly. The ``translated_local()``
-method will translate the object *relative to its own rotation*.
-For example, an object rotated 90 degrees clockwise will move to
-the right when ``translated_local()`` is called with ``Vector2.UP``. To translate
-*relative to the global/parent frame* use ``translated()`` instead.
+Ngoài ra còn có một phương thức ``translated_local()``, thực hiện thao tác khác với việc thêm hoặc thay đổi trực tiếp ``origin``. Phương thức ``translated_local()`` sẽ dịch chuyển đối tượng *tương đối theo phép xoay của chính nó*. Ví dụ, một đối tượng được xoay 90 độ theo chiều kim đồng hồ sẽ di chuyển sang phải khi gọi ``translated_local()`` với ``Vector2.UP``. Để dịch chuyển *tương đối theo frame toàn cục/cha*, hãy sử dụng ``translated()`` thay thế.
 
-.. note:: Godot's 2D uses coordinates based on pixels, so in actual
-          projects you will want to translate by hundreds of units.
+.. note:: 2D của Godot sử dụng tọa độ dựa trên pixel, vì vậy trong các project thực tế, bạn sẽ muốn dịch chuyển hàng trăm đơn vị.
 
-Putting it all together
-~~~~~~~~~~~~~~~~~~~~~~~
+Kết hợp mọi thứ
+~~~~~~~~~~~~~~~
 
-We're going to apply everything we mentioned so far onto one transform.
-To follow along, create a project with a Sprite2D node and use the
-Godot logo for the texture resource.
+Chúng ta sẽ áp dụng mọi thứ đã đề cập cho đến nay vào một transform. Để làm theo, hãy tạo một project với node Sprite2D và sử dụng logo Godot làm texture resource.
 
-Let's set the translation to (350, 150), rotate by -0.5 rad, and scale by 3.
-I've posted a screenshot, and the code to reproduce it, but I encourage
-you to try and reproduce the screenshot without looking at the code!
+Hãy đặt phép dịch chuyển thành (350, 150), xoay -0.5 rad và co giãn lên 3 lần. Tôi đã đăng ảnh chụp màn hình cùng code để tạo lại ảnh đó, nhưng khuyến khích bạn thử tự tạo lại ảnh chụp màn hình mà không xem code!
 
 .. image:: img/matrices_and_transforms/putting-all-together.png
 
@@ -249,67 +165,52 @@ you to try and reproduce the screenshot without looking at the code!
  .. code-tab:: gdscript GDScript
 
     var t = Transform2D()
-    # Translation
+    # Dịch chuyển
     t.origin = Vector2(350, 150)
-    # Rotation
-    var rot = -0.5 # The rotation to apply.
+    # Phép xoay
+    var rot = -0.5 # Phép xoay cần áp dụng.
     t.x.x = cos(rot)
     t.y.y = cos(rot)
     t.x.y = sin(rot)
     t.y.x = -sin(rot)
-    # Scale
+    # Co giãn
     t.x *= 3
     t.y *= 3
-    transform = t # Change the node's transform to what we calculated.
+    transform = t # Thay đổi transform của node thành giá trị chúng ta đã tính.
 
  .. code-tab:: csharp
 
     Transform2D t = Transform2D.Identity;
-    // Translation
+    // Dịch chuyển
     t.Origin = new Vector2(350, 150);
-    // Rotation
-    float rot = -0.5f; // The rotation to apply.
+    // Phép xoay
+    float rot = -0.5f; // Phép xoay cần áp dụng.
     t.X.X = t.Y.Y = Mathf.Cos(rot);
     t.X.Y = t.Y.X = Mathf.Sin(rot);
     t.Y.X *= -1;
-    // Scale
+    // Co giãn
     t.X *= 3;
     t.Y *= 3;
-    Transform = t; // Change the node's transform to what we calculated.
+    Transform = t; // Thay đổi transform của node thành giá trị chúng ta đã tính.
 
-Shearing the transformation matrix (advanced)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Shear ma trận biến đổi (nâng cao)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. note:: If you are only looking for how to *use* transformation matrices,
-          feel free to skip this section of the tutorial. This section
-          explores an uncommonly used aspect of transformation matrices
-          for the purpose of building an understanding of them.
+.. note:: Nếu bạn chỉ muốn tìm hiểu cách *sử dụng* các ma trận biến đổi, bạn có thể bỏ qua phần này của tutorial. Phần này tìm hiểu một khía cạnh ít được sử dụng của ma trận biến đổi nhằm xây dựng hiểu biết về chúng.
 
-          Node2D provides a shearing property out of the box.
+          Node2D cung cấp sẵn thuộc tính shear.
 
-You may have noticed that a transform has more degrees of freedom than
-the combination of the above actions. The basis of a 2D transformation
-matrix has four total numbers in two :ref:`class_Vector2` values, while
-a rotation value and a Vector2 for scale only has 3 numbers. The high-level
-concept for the missing degree of freedom is called *shearing*.
+Bạn có thể đã nhận thấy rằng một transform có nhiều bậc tự do hơn tổ hợp các thao tác trên. Cơ sở của ma trận biến đổi 2D có tổng cộng bốn số trong hai giá trị :ref:`class_Vector2`, trong khi một giá trị xoay và một Vector2 cho scale chỉ có 3 số. Khái niệm cấp cao về bậc tự do còn thiếu này được gọi là *shear*.
 
-Normally, you will always have the basis vectors perpendicular to each
-other. However, shearing can be useful in some situations, and
-understanding shearing helps you understand how transforms work.
+Thông thường, các vector cơ sở luôn vuông góc với nhau. Tuy nhiên, shear có thể hữu ích trong một số tình huống, và việc hiểu shear giúp bạn hiểu cách các transform hoạt động.
 
-To show you visually how it will look, let's overlay a grid onto the Godot
-logo:
+Để cho bạn thấy trực quan kết quả sẽ trông như thế nào, hãy phủ một lưới lên logo Godot:
 
 .. image:: img/matrices_and_transforms/identity-grid.png
 
-Each point on this grid is obtained by adding the basis vectors together.
-The bottom-right corner is X + Y, while the top-right corner is X - Y.
-If we change the basis vectors, the entire grid moves with it, as the
-grid is composed of the basis vectors. All lines on the grid that are
-currently parallel will remain parallel no matter what changes we make to
-the basis vectors.
+Mỗi điểm trên lưới này được tạo ra bằng cách cộng các vector cơ sở với nhau. Góc dưới bên phải là X + Y, còn góc trên bên phải là X - Y. Nếu thay đổi các vector cơ sở, toàn bộ lưới sẽ di chuyển theo, vì lưới được tạo thành từ các vector cơ sở. Tất cả các đường trên lưới hiện đang song song sẽ vẫn song song bất kể chúng ta thay đổi các vector cơ sở như thế nào.
 
-As an example, let's set Y to (1, 1):
+Ví dụ, hãy đặt Y thành (1, 1):
 
 .. image:: img/matrices_and_transforms/shear.png
 
@@ -317,116 +218,82 @@ As an example, let's set Y to (1, 1):
  .. code-tab:: gdscript GDScript
 
     var t = Transform2D()
-    # Shear by setting Y to (1, 1)
+    # Shear bằng cách đặt Y thành (1, 1)
     t.y = Vector2.ONE
-    transform = t # Change the node's transform to what we calculated.
+    transform = t # Thay đổi transform của node thành giá trị chúng ta đã tính.
 
  .. code-tab:: csharp
 
     Transform2D t = Transform2D.Identity;
-    // Shear by setting Y to (1, 1)
+    // Shear bằng cách đặt Y thành (1, 1)
     t.Y = Vector2.One;
-    Transform = t; // Change the node's transform to what we calculated.
+    Transform = t; // Thay đổi transform của node thành giá trị chúng ta đã tính.
 
-.. note:: You can't set the raw values of a Transform2D in the editor,
-          so you *must* use code if you want to shear the object.
+.. note:: Bạn không thể đặt các giá trị thô của Transform2D trong editor, vì vậy bạn *phải* sử dụng code nếu muốn shear đối tượng.
 
-Due to the vectors no longer being perpendicular, the object has been
-sheared. The bottom-center of the grid, which is (0, 1) relative
-to itself, is now located at a world position of (1, 1).
+Do các vector không còn vuông góc với nhau, đối tượng đã bị shear. Điểm giữa phía dưới của lưới, vốn là (0, 1) tính tương đối so với chính nó, giờ nằm tại vị trí thế giới (1, 1).
 
-The intra-object coordinates are called UV coordinates in textures,
-so let's borrow that terminology for here. To find the world position
-from a relative position, the formula is U * X + V * Y, where U and V
-are numbers and X and Y are the basis vectors.
+Các tọa độ bên trong đối tượng được gọi là tọa độ UV trong texture, vì vậy hãy mượn thuật ngữ đó để dùng ở đây. Để tìm vị trí thế giới từ một vị trí tương đối, công thức là U * X + V * Y, trong đó U và V là các số, còn X và Y là các vector cơ sở.
 
-The bottom-right corner of the grid, which is always at the UV position
-of (1, 1), is at the world position of (2, 1), which is calculated from
-X*1 + Y*1, which is (1, 0) + (1, 1), or (1 + 1, 0 + 1), or (2, 1).
-This matches up with our observation of where the bottom-right corner
-of the image is.
+Góc dưới bên phải của lưới, luôn có vị trí UV là (1, 1), nằm tại vị trí thế giới (2, 1), được tính từ X*1 + Y*1, tức (1, 0) + (1, 1), hay (1 + 1, 0 + 1), hay (2, 1). Điều này khớp với quan sát của chúng ta về vị trí góc dưới bên phải của hình ảnh.
 
-Similarly, the top-right corner of the grid, which is always at the UV
-position of (1, -1), is at the world position of (0, -1), which is calculated
-from X*1 + Y*-1, which is (1, 0) - (1, 1), or (1 - 1, 0 - 1), or (0, -1).
-This matches up with our observation of where the top-right corner
-of the image is.
+Tương tự, góc trên bên phải của lưới, luôn ở vị trí UV là (1, -1), nằm ở vị trí trong world là (0, -1), được tính từ X*1 + Y*-1, tức là (1, 0) - (1, 1), hay (1 - 1, 0 - 1), hoặc (0, -1). Điều này khớp với quan sát của chúng ta về vị trí góc trên bên phải của hình ảnh.
 
-Hopefully you now fully understand how a transformation matrix affects
-the object, and the relationship between the basis vectors and how the
-object's "UV" or "intra-coordinates" have their world position changed.
+Hy vọng giờ đây bạn đã hoàn toàn hiểu cách một transformation matrix tác động đến object, cũng như mối quan hệ giữa các basis vector và cách "UV" hay "intra-coordinates" của object thay đổi vị trí trong world.
 
-.. note:: In Godot, all transform math is done relative to the parent node.
-          When we refer to "world position", that would be relative to the
-          node's parent instead, if the node had a parent.
+.. note:: Trong Godot, mọi phép tính transform đều được thực hiện tương đối với parent node. Khi chúng ta nói đến "world position", nếu node có parent thì vị trí đó sẽ là tương đối với parent của node.
 
-If you would like additional explanation, you should check out
-3Blue1Brown's excellent video about linear transformations:
-https://www.youtube.com/watch?v=kYB8IZa5AuE
+Nếu muốn có thêm lời giải thích, bạn nên xem video xuất sắc của 3Blue1Brown về linear transformations: https://www.youtube.com/watch?v=kYB8IZa5AuE
 
-Practical applications of transforms
-------------------------------------
+Ứng dụng thực tế của transform
+------------------------------
 
-In actual projects, you will usually be working with transforms inside
-transforms by having multiple :ref:`class_Node2D` or :ref:`class_Node3D`
-nodes parented to each other.
+Trong các project thực tế, bạn thường sẽ làm việc với các transform nằm trong những transform khác bằng cách cho nhiều node :ref:`class_Node2D` hoặc :ref:`class_Node3D` làm parent của nhau.
 
-However, it's useful to understand how to manually calculate the values we
-need. We will go over how you could use :ref:`class_Transform2D` or
-:ref:`class_Transform3D` to manually calculate transforms of nodes.
+Tuy nhiên, việc hiểu cách tính thủ công các giá trị cần thiết vẫn rất hữu ích. Chúng ta sẽ xem qua cách bạn có thể sử dụng :ref:`class_Transform2D` hoặc
+:ref:`class_Transform3D` để tính thủ công các transform của node.
 
-Converting positions between transforms
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Chuyển đổi vị trí giữa các transform
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-There are many cases where you'd want to convert a position in and out of
-a transform. For example, if you have a position relative to the player
-and would like to find the world (parent-relative) position, or if you
-have a world position and want to know where it is relative to the player.
+Có nhiều trường hợp bạn muốn chuyển đổi một vị trí vào hoặc ra khỏi một transform. Ví dụ, nếu bạn có một vị trí tương đối với player và muốn tìm vị trí trong world (tương đối với parent), hoặc nếu bạn có một vị trí trong world và muốn biết nó nằm ở đâu tương đối với player.
 
-We can find what a vector relative to the player would be defined in
-world space as using the ``*`` operator:
+Chúng ta có thể xác định một vector tương đối với player sẽ được biểu diễn như thế nào trong world space bằng toán tử ``*``:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # World space vector 100 units below the player.
+    # Vector trong world space nằm dưới player 100 đơn vị.
     print(transform * Vector2(0, 100))
 
  .. code-tab:: csharp
 
-    // World space vector 100 units below the player.
+    // Vector trong world space nằm dưới player 100 đơn vị.
     GD.Print(Transform * new Vector2(0, 100));
 
-And we can use the ``*`` operator in the opposite order to find a what world
-space position would be if it was defined relative to the player:
+Và chúng ta có thể sử dụng toán tử ``*`` theo thứ tự ngược lại để xác định một vị trí trong world space sẽ là gì nếu nó được định nghĩa tương đối với player:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Where is (0, 100) relative to the player?
+    # (0, 100) nằm ở đâu tương đối với player?
     print(Vector2(0, 100) * transform)
 
  .. code-tab:: csharp
 
-    // Where is (0, 100) relative to the player?
+    // (0, 100) nằm ở đâu tương đối với player?
     GD.Print(new Vector2(0, 100) * Transform);
 
-.. note:: If you know in advance that the transform is positioned at
-          (0, 0), you can use the "basis_xform" or "basis_xform_inv"
-          methods instead, which skip dealing with translation.
+.. note:: Nếu biết trước rằng transform được đặt tại (0, 0), bạn có thể sử dụng các method "basis_xform" hoặc "basis_xform_inv" thay thế; các method này bỏ qua việc xử lý translation.
 
-Moving an object relative to itself
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Di chuyển một object tương đối với chính nó
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A common operation, especially in 3D games, is to move an object relative
-to itself. For example, in first-person shooter games, you would want the
-character to move forward (-Z axis) when you press :kbd:`W`.
+Một thao tác phổ biến, đặc biệt trong game 3D, là di chuyển một object tương đối với chính nó. Ví dụ, trong các game bắn súng góc nhìn thứ nhất, bạn muốn character di chuyển về phía trước (trục -Z) khi nhấn :kbd:`W`.
 
-Since the basis vectors are the orientation relative to the parent,
-and the origin vector is the position relative to the parent, we can
-add multiples of the basis vectors to move an object relative to itself.
+Vì các basis vector là hướng tương đối với parent, còn origin vector là vị trí tương đối với parent, chúng ta có thể cộng các bội số của basis vector để di chuyển một object tương đối với chính nó.
 
-This code moves an object 100 units to its own right:
+Đoạn code này di chuyển một object 100 đơn vị sang bên phải của chính nó:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -439,50 +306,33 @@ This code moves an object 100 units to its own right:
     t.Origin += t.X * 100;
     Transform = t;
 
-For moving in 3D, you would need to replace "x" with "basis.x".
+Để di chuyển trong 3D, bạn cần thay "x" bằng "basis.x".
 
-.. note:: In actual projects, you can use ``translate_object_local`` in 3D
-          or ``move_local_x`` and ``move_local_y`` in 2D to do this.
+.. note:: Trong các project thực tế, bạn có thể sử dụng ``translate_object_local`` trong 3D hoặc ``move_local_x`` và ``move_local_y`` trong 2D để thực hiện việc này.
 
-Applying transforms onto transforms
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Áp dụng các transform lên nhau
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-One of the most important things to know about transforms is how you
-can use several of them together. A parent node's transform affects
-all of its children. Let's dissect an example.
+Một trong những điều quan trọng nhất cần biết về transform là cách sử dụng nhiều transform cùng nhau. Transform của parent node tác động đến tất cả child node của nó. Hãy cùng phân tích một ví dụ.
 
-In this image, the child node has a "2" after the component names
-to distinguish them from the parent node. It might look a bit
-overwhelming with so many numbers, but remember that each number
-is displayed twice (next to the arrows and also in the matrices),
-and that almost half of the numbers are zero.
+Trong hình ảnh này, child node có số "2" sau tên các component để phân biệt chúng với parent node. Có thể trông hơi choáng ngợp vì có quá nhiều con số, nhưng hãy nhớ rằng mỗi con số được hiển thị hai lần (bên cạnh các mũi tên và trong các matrix), và gần một nửa số đó là số 0.
 
 .. image:: img/matrices_and_transforms/apply.png
 
-The only transformations going on here are that the parent node has
-been given a scale of (2, 1), the child has been given a scale of
-(0.5, 0.5), and both nodes have been given positions.
+Các transformation duy nhất diễn ra ở đây là parent node được đặt scale là (2, 1), child được đặt scale là (0.5, 0.5), và cả hai node đều được đặt position.
 
-All child transformations are affected by the parent transformations.
-The child has a scale of (0.5, 0.5), so you would expect it to be
-a 1:1 ratio square, and it is, but only relative to the parent.
-The child's X vector ends up being (1, 0) in world space, because
-it is scaled by the parent's basis vectors.
-Similarly, the child node's ``origin`` vector is set to (1, 1), but this
-actually moves it (2, 1) in world space, due to the parent node's
-basis vectors.
+Mọi transformation của child đều bị ảnh hưởng bởi transformation của parent. Child có scale là (0.5, 0.5), vì vậy bạn sẽ mong đợi nó là một hình vuông có tỷ lệ 1:1, và đúng là như vậy, nhưng chỉ tương đối với parent. Vector X của child cuối cùng là (1, 0) trong world space, vì nó được scale theo các basis vector của parent. Tương tự, vector ``origin`` của child node được đặt là (1, 1), nhưng thực tế nó di chuyển (2, 1) trong world space do các basis vector của parent node.
 
-To calculate a child transform's world space transform manually, this is
-the code we would use:
+Để tính thủ công transform trong world space của child transform, chúng ta sẽ sử dụng đoạn code sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Set up transforms like in the image, except make positions be 100 times bigger.
+    # Thiết lập các transform như trong hình, nhưng tăng các position lên 100 lần.
     var parent = Transform2D(Vector2(2, 0), Vector2(0, 1), Vector2(100, 200))
     var child = Transform2D(Vector2(0.5, 0), Vector2(0, 0.5), Vector2(100, 100))
 
-    # Calculate the child's world space transform
+    # Tính transform trong world space của child
     # origin = (2, 0) * 100 + (0, 1) * 100 + (100, 200)
     var origin = parent.x * child.origin.x + parent.y * child.origin.y + parent.origin
     # basis_x = (2, 0) * 0.5 + (0, 1) * 0
@@ -490,16 +340,16 @@ the code we would use:
     # basis_y = (2, 0) * 0 + (0, 1) * 0.5
     var basis_y = parent.x * child.y.x + parent.y * child.y.y
 
-    # Change the node's transform to what we calculated.
+    # Thay đổi transform của node thành giá trị chúng ta đã tính.
     transform = Transform2D(basis_x, basis_y, origin)
 
  .. code-tab:: csharp
 
-    // Set up transforms like in the image, except make positions be 100 times bigger.
+    // Thiết lập các transform như trong hình, nhưng tăng các position lên 100 lần.
     Transform2D parent = new Transform2D(2, 0, 0, 1, 100, 200);
     Transform2D child = new Transform2D(0.5f, 0, 0, 0.5f, 100, 100);
 
-    // Calculate the child's world space transform
+    // Tính transform trong world space của child
     // origin = (2, 0) * 100 + (0, 1) * 100 + (100, 200)
     Vector2 origin = parent.X * child.Origin.X + parent.Y * child.Origin.Y + parent.Origin;
     // basisX = (2, 0) * 0.5 + (0, 1) * 0 = (0.5, 0)
@@ -507,64 +357,57 @@ the code we would use:
     // basisY = (2, 0) * 0 + (0, 1) * 0.5 = (0.5, 0)
     Vector2 basisY = parent.X * child.Y.X + parent.Y * child.Y.Y;
 
-    // Change the node's transform to what we calculated.
+    // Thay đổi transform của node thành giá trị chúng ta đã tính.
     Transform = new Transform2D(basisX, basisY, origin);
 
-In actual projects, we can find the world transform of the child by
-applying one transform onto another using the ``*`` operator:
+Trong các project thực tế, chúng ta có thể tìm transform trong world của child bằng cách áp dụng transform này lên transform khác thông qua toán tử ``*``:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Set up transforms like in the image, except make positions be 100 times bigger.
+    # Thiết lập các transform như trong hình, nhưng tăng các position lên 100 lần.
     var parent = Transform2D(Vector2(2, 0), Vector2(0, 1), Vector2(100, 200))
     var child = Transform2D(Vector2(0.5, 0), Vector2(0, 0.5), Vector2(100, 100))
 
-    # Change the node's transform to what would be the child's world transform.
+    # Thay đổi phép biến đổi của node thành phép biến đổi trong world của node con.
     transform = parent * child
 
  .. code-tab:: csharp
 
-    // Set up transforms like in the image, except make positions be 100 times bigger.
+    // Thiết lập các transform như trong hình, nhưng tăng các position lên 100 lần.
     Transform2D parent = new Transform2D(2, 0, 0, 1, 100, 200);
     Transform2D child = new Transform2D(0.5f, 0, 0, 0.5f, 100, 100);
 
-    // Change the node's transform to what would be the child's world transform.
+    // Thay đổi phép biến đổi của node thành phép biến đổi trong world của node con.
     Transform = parent * child;
 
-.. note:: When multiplying matrices, order matters! Don't mix them up.
+.. note:: Khi nhân các ma trận, thứ tự rất quan trọng! Đừng nhầm lẫn chúng.
 
-Lastly, applying the identity transform will always do nothing.
+Cuối cùng, áp dụng phép biến đổi đơn vị sẽ luôn không làm gì cả.
 
-If you would like additional explanation, you should check out
-3Blue1Brown's excellent video about matrix composition:
-https://www.youtube.com/watch?v=XkY2DOUCWMU
+Nếu muốn có thêm lời giải thích, bạn nên xem video xuất sắc của 3Blue1Brown về phép hợp thành ma trận: https://www.youtube.com/watch?v=XkY2DOUCWMU
 
-Inverting a transformation matrix
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Đảo ma trận biến đổi
+~~~~~~~~~~~~~~~~~~~~
 
-The ``affine_inverse`` function returns a transform that "undoes" the
-previous transform. This can be useful in some situations.
-Let's take a look at a few examples.
+Hàm ``affine_inverse`` trả về một phép biến đổi có tác dụng "hoàn tác" phép biến đổi trước đó. Điều này có thể hữu ích trong một số tình huống. Hãy cùng xem một vài ví dụ.
 
-Multiplying an inverse transform by the normal transform undoes all
-transformations:
+Nhân phép biến đổi nghịch đảo với phép biến đổi thông thường sẽ hoàn tác mọi phép biến đổi:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     var ti = transform.affine_inverse()
     var t = ti * transform
-    # The transform is the identity transform.
+    # Phép biến đổi là phép biến đổi đơn vị.
 
  .. code-tab:: csharp
 
     Transform2D ti = Transform.AffineInverse();
     Transform2D t = ti * Transform;
-    // The transform is the identity transform.
+    // Phép biến đổi là phép biến đổi đơn vị.
 
-Transforming a position by a transform and its inverse results in the
-same position:
+Biến đổi một vị trí bằng một phép biến đổi và phép biến đổi nghịch đảo của nó sẽ cho ra cùng vị trí đó:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -572,71 +415,44 @@ same position:
     var ti = transform.affine_inverse()
     position = transform * position
     position = ti * position
-    # The position is the same as before.
+    # Vị trí này giống như trước.
 
  .. code-tab:: csharp
 
     Transform2D ti = Transform.AffineInverse();
     Position = Transform * Position;
     Position = ti * Position;
-    // The position is the same as before.
+    // Vị trí này giống như trước.
 
-How does it all work in 3D?
----------------------------
+Tất cả hoạt động như thế nào trong 3D?
+--------------------------------------
 
-One of the great things about transformation matrices is that they
-work very similarly between 2D and 3D transformations.
-All the code and formulas used above for 2D work the same in 3D,
-with 3 exceptions: the addition of a third axis, that each
-axis is of type :ref:`class_Vector3`, and also that Godot stores
-the :ref:`class_Basis` separately from the :ref:`class_Transform3D`,
-since the math can get complex and it makes sense to separate it.
+Một trong những điều tuyệt vời về các ma trận biến đổi là chúng hoạt động rất tương tự nhau giữa các phép biến đổi 2D và 3D. Tất cả code và công thức được sử dụng ở trên cho 2D đều hoạt động tương tự trong 3D, với 3 ngoại lệ: bổ sung trục thứ ba, mỗi trục có kiểu :ref:`class_Vector3`, và Godot lưu trữ riêng :ref:`class_Basis` với :ref:`class_Transform3D`, vì phép toán có thể trở nên phức tạp và việc tách chúng ra là hợp lý.
 
-All of the concepts for how translation, rotation, scale, and shearing
-work in 3D are all the same compared to 2D. To scale, we take each
-component and multiply it; to rotate, we change where each basis vector
-is pointing; to translate, we manipulate the origin; and to shear, we
-change the basis vectors to be non-perpendicular.
+Tất cả các khái niệm về cách translation, rotation, scale và shearing hoạt động trong 3D đều giống như trong 2D. Để scale, ta lấy từng component và nhân chúng; để rotate, ta thay đổi hướng của từng vector cơ sở; để translate, ta điều chỉnh gốc tọa độ; và để shear, ta thay đổi các vector cơ sở để chúng không vuông góc.
 
 .. image:: img/matrices_and_transforms/3d-identity.png
 
-If you would like, it's a good idea to play around with transforms
-to get an understanding of how they work. Godot allows you to edit
-3D transform matrices directly from the inspector. You can download
-this project which has colored lines and cubes to help visualize the
-:ref:`class_Basis` vectors and the origin in both 2D and 3D:
-https://github.com/godotengine/godot-demo-projects/tree/master/misc/matrix_transform
+Nếu muốn, bạn nên thử thao tác với các phép biến đổi để hiểu cách chúng hoạt động. Godot cho phép bạn chỉnh sửa trực tiếp các ma trận biến đổi 3D từ inspector. Bạn có thể tải project này, trong đó có các đường thẳng và khối lập phương có màu để giúp trực quan hóa các
+:ref:`class_Basis` vector và gốc tọa độ trong cả 2D lẫn 3D: https://github.com/godotengine/godot-demo-projects/tree/master/misc/matrix_transform
 
 .. UPDATE: May change in future. When you can edit a Node2D's transform matrix
 .. directly, remove or update this note.
 
-.. note:: You cannot edit Node2D's transform matrix directly in Godot 4.0's
-          inspector. This may be changed in a future release of Godot.
+.. note:: Bạn không thể chỉnh sửa trực tiếp ma trận biến đổi của Node2D trong inspector của Godot 4.0. Điều này có thể được thay đổi trong một bản phát hành Godot trong tương lai.
 
-If you would like additional explanation, you should check out
-3Blue1Brown's excellent video about 3D linear transformations:
-https://www.youtube.com/watch?v=rHLEWRxRGiM
+Nếu muốn có thêm lời giải thích, bạn nên xem video xuất sắc của 3Blue1Brown về các phép biến đổi tuyến tính 3D: https://www.youtube.com/watch?v=rHLEWRxRGiM
 
-Representing rotation in 3D (advanced)
+Biểu diễn rotation trong 3D (nâng cao)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The biggest difference between 2D and 3D transformation matrices is
-how you represent rotation by itself without the basis vectors.
+Điểm khác biệt lớn nhất giữa các ma trận biến đổi 2D và 3D là cách biểu diễn riêng rotation mà không cần các vector cơ sở.
 
-With 2D, we have an easy way (atan2) to switch between a transformation
-matrix and an angle. In 3D, rotation is too complex to represent as one
-number. There is something called Euler angles, which can represent
-rotations as a set of 3 numbers, however, they are limited and not very
-useful, except for trivial cases.
+Với 2D, chúng ta có một cách đơn giản (atan2) để chuyển đổi giữa một ma trận biến đổi và một góc. Trong 3D, rotation quá phức tạp để biểu diễn bằng một con số. Có một khái niệm gọi là các góc Euler, có thể biểu diễn rotation dưới dạng một tập hợp gồm 3 số; tuy nhiên, chúng bị giới hạn và không hữu ích lắm, ngoại trừ các trường hợp đơn giản.
 
-In 3D we do not typically use angles, we either use a transformation basis
-(used pretty much everywhere in Godot), or we use quaternions. Godot can
-represent quaternions using the :ref:`class_Quaternion` struct. My suggestion
-to you is to completely ignore how they work under-the-hood, because
-they are very complicated and unintuitive.
+Trong 3D, chúng ta thường không sử dụng các góc; thay vào đó, chúng ta dùng basis của phép biến đổi (được sử dụng gần như ở mọi nơi trong Godot), hoặc dùng quaternion. Godot có thể biểu diễn quaternion bằng struct :ref:`class_Quaternion`. Tôi khuyên bạn nên hoàn toàn bỏ qua cách chúng hoạt động bên trong, vì chúng rất phức tạp và không trực quan.
 
-However, if you really must know how it works, here are some great
-resources, which you can follow in order:
+Tuy nhiên, nếu bạn thực sự muốn biết cách chúng hoạt động, dưới đây là một số tài nguyên tuyệt vời mà bạn có thể xem theo thứ tự:
 
 https://www.youtube.com/watch?v=mvmuCPvRoWQ
 

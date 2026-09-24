@@ -1,31 +1,26 @@
 .. _doc_handling_quit_requests:
 
-Handling quit requests
-======================
+Xử lý yêu cầu thoát
+===================
 
-Quitting
---------
+Thoát
+-----
 
-Most platforms have the option to request the application to quit. On
-desktops, this is usually done with the "x" icon on the window title bar.
-On mobile devices, the app can quit at any time while it is suspended
-to the background.
+Hầu hết các nền tảng đều có tùy chọn yêu cầu ứng dụng thoát. Trên máy tính để bàn, thao tác này thường được thực hiện bằng biểu tượng "x" trên thanh tiêu đề của cửa sổ. Trên thiết bị di động, ứng dụng có thể thoát bất kỳ lúc nào khi bị tạm dừng và chuyển xuống nền.
 
-Handling the notification
--------------------------
+Xử lý thông báo
+---------------
 
-On desktop and web platforms, :ref:`Node <class_Node>` receives a special
-``NOTIFICATION_WM_CLOSE_REQUEST`` notification when quitting is requested from
-the window manager.
+Trên các nền tảng máy tính để bàn và web, :ref:`Node <class_Node>` sẽ nhận được một thông báo ``NOTIFICATION_WM_CLOSE_REQUEST`` đặc biệt khi trình quản lý cửa sổ yêu cầu thoát.
 
-Handling the notification is done as follows (on any node):
+Việc xử lý thông báo được thực hiện như sau (trên bất kỳ node nào):
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     func _notification(what):
         if what == NOTIFICATION_WM_CLOSE_REQUEST:
-            get_tree().quit() # default behavior
+            get_tree().quit() # hành vi mặc định
 
  .. code-tab:: csharp
 
@@ -33,14 +28,11 @@ Handling the notification is done as follows (on any node):
     {
         if (what == NotificationWMCloseRequest)
         {
-            GetTree().Quit(); // default behavior
+            GetTree().Quit(); // hành vi mặc định
         }
     }
 
-It is important to note that by default, Godot apps have the built-in
-behavior to quit when quit is requested from the window manager. This
-can be changed, so that the user can take care of the complete quitting
-procedure:
+Điều quan trọng cần lưu ý là theo mặc định, các ứng dụng Godot có hành vi tích hợp là thoát khi trình quản lý cửa sổ yêu cầu thoát. Bạn có thể thay đổi điều này để người dùng tự xử lý toàn bộ quy trình thoát:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -51,36 +43,23 @@ procedure:
 
     GetTree().AutoAcceptQuit = false;
 
-On mobile devices
------------------
+Trên thiết bị di động
+---------------------
 
-There is no direct equivalent to ``NOTIFICATION_WM_CLOSE_REQUEST`` on mobile
-platforms. Due to the nature of mobile operating systems, the only place
-that you can run code prior to quitting is when the app is being suspended to
-the background. On both Android and iOS, the app can be killed while suspended
-at any time by either the user or the OS. A way to plan ahead for this
-possibility is to utilize ``NOTIFICATION_APPLICATION_PAUSED`` in order to
-perform any needed actions as the app is being suspended.
+Trên các nền tảng di động không có tương đương trực tiếp với ``NOTIFICATION_WM_CLOSE_REQUEST``. Do đặc điểm của các hệ điều hành di động, nơi duy nhất bạn có thể chạy mã trước khi thoát là khi ứng dụng được tạm dừng và chuyển xuống nền. Trên cả Android và iOS, ứng dụng có thể bị người dùng hoặc hệ điều hành kết thúc bất kỳ lúc nào trong khi đang tạm dừng. Một cách chuẩn bị trước cho khả năng này là sử dụng ``NOTIFICATION_APPLICATION_PAUSED`` để thực hiện mọi hành động cần thiết khi ứng dụng đang được tạm dừng.
 
-.. note:: On iOS, you only have approximately 5 seconds to finish a task started by this signal. If you go over this allotment, iOS will kill the app instead of pausing it.
+.. note:: Trên iOS, bạn chỉ có khoảng 5 giây để hoàn tất một tác vụ được bắt đầu bởi signal này. Nếu vượt quá khoảng thời gian đó, iOS sẽ kết thúc ứng dụng thay vì tạm dừng ứng dụng.
 
-On Android, pressing the Back button will exit the application if
-**Application > Config > Quit On Go Back** is checked in the Project Settings
-(which is the default). This will fire ``NOTIFICATION_WM_GO_BACK_REQUEST``.
+Trên Android, nhấn nút Back sẽ thoát ứng dụng nếu **Application > Config > Quit On Go Back** được chọn trong Project Settings (đây là thiết lập mặc định). Thao tác này sẽ kích hoạt ``NOTIFICATION_WM_GO_BACK_REQUEST``.
 
 
-Sending your own quit notification
-----------------------------------
+Gửi thông báo thoát của riêng bạn
+---------------------------------
 
-While forcing the application to close can be done by calling
-:ref:`SceneTree.quit <class_SceneTree_method_quit>`, doing so will not send
-the ``NOTIFICATION_WM_CLOSE_REQUEST`` to the nodes in the scene tree.
-Quitting by calling :ref:`SceneTree.quit <class_SceneTree_method_quit>` will
-not allow custom actions to complete (such as saving, confirming the quit,
-or debugging), even if you try to delay the line that forces the quit.
+Bạn có thể buộc ứng dụng đóng bằng cách gọi
+:ref:`SceneTree.quit <class_SceneTree_method_quit>`, nhưng thao tác này sẽ không gửi ``NOTIFICATION_WM_CLOSE_REQUEST`` đến các node trong scene tree. Việc thoát bằng cách gọi :ref:`SceneTree.quit <class_SceneTree_method_quit>` sẽ không cho phép các hành động tùy chỉnh hoàn tất (chẳng hạn như lưu, xác nhận thoát hoặc debug), ngay cả khi bạn cố trì hoãn dòng lệnh buộc thoát.
 
-Instead, if you want to notify the nodes in the scene tree about the upcoming
-program termination, you should send the notification yourself:
+Thay vào đó, nếu muốn thông báo cho các node trong scene tree về việc chương trình sắp kết thúc, bạn nên tự gửi thông báo:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -91,7 +70,4 @@ program termination, you should send the notification yourself:
 
     GetTree().Root.PropagateNotification((int)NotificationWMCloseRequest);
 
-Sending this notification will inform all nodes about the program termination,
-but will not terminate the program itself *unlike in 3.X*. In order to achieve
-the previous behavior, :ref:`SceneTree.quit <class_SceneTree_method_quit>` should
-be called after the notification.
+Việc gửi thông báo này sẽ thông báo cho tất cả các node về việc chương trình kết thúc, nhưng sẽ không tự kết thúc chương trình *không giống như trong 3.X*. Để đạt được hành vi trước đây, cần gọi :ref:`SceneTree.quit <class_SceneTree_method_quit>` sau thông báo.

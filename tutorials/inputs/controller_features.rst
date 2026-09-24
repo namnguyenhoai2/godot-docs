@@ -1,47 +1,37 @@
 .. _doc_controller_features:
 
-Controller features
-===================
+Các tính năng của tay cầm
+=========================
 
-Godot supports controller-specific features that can further enhance the gameplay
-experience. This page describes these features, how existing games have used them,
-and how you can get started with them in Godot.
+Godot hỗ trợ các tính năng dành riêng cho tay cầm, có thể giúp nâng cao hơn nữa trải nghiệm chơi game. Trang này mô tả các tính năng đó, cách những game hiện có đã sử dụng chúng và cách bạn có thể bắt đầu sử dụng chúng trong Godot.
 
 .. warning::
 
-    These controller features are currently only supported on Windows, macOS, iOS, and Linux.
+    Các tính năng của tay cầm này hiện chỉ được hỗ trợ trên Windows, macOS, iOS và Linux.
 
 
 .. warning::
 
-    Unless you specifically advertise your game as requiring specific controllers,
-    remember that there is no guarantee that players will have a controller with
-    any given features.
+    Trừ khi bạn quảng cáo cụ thể rằng game của mình yêu cầu những tay cầm nhất định, hãy nhớ rằng không có gì đảm bảo người chơi sẽ có tay cầm sở hữu bất kỳ tính năng cụ thể nào.
 
-    As a result, we suggest using these features to enhance the gameplay experience
-    for players whose controllers support them, without detracting from those who
-    don't have controllers.
+    Do đó, chúng tôi khuyên bạn nên sử dụng các tính năng này để nâng cao trải nghiệm chơi game cho những người chơi có tay cầm hỗ trợ chúng, mà không làm giảm trải nghiệm của những người không có tay cầm.
 
 .. _doc_controller_features_led_color:
 
-LED color
----------
+Màu đèn LED
+-----------
 
-Games can use the LED lights on certain controllers to subtly complement the on-screen gameplay by
-providing some matching visuals in the player's hands. Here are some notable examples:
+Game có thể sử dụng đèn LED trên một số tay cầm để bổ trợ một cách tinh tế cho diễn biến trên màn hình bằng cách cung cấp một số hình ảnh tương ứng trong tay người chơi. Dưới đây là một số ví dụ đáng chú ý:
 
-- In *Hades*, the color of the light matches the god you're receiving a boon from.
-- In *Resident Evil 2*, the color of the light indicates your health (green for full, yellow for medium, red for low).
-- In *Star Wars Jedi: Fallen Order*, the color of the light matches your lightsaber's color.
+- Trong *Hades*, màu của đèn khớp với vị thần mà bạn nhận phước lành từ đó.
+- Trong *Resident Evil 2*, màu của đèn cho biết lượng máu của bạn (xanh lá khi đầy, vàng khi ở mức trung bình, đỏ khi thấp).
+- Trong *Star Wars Jedi: Fallen Order*, màu của đèn khớp với màu thanh kiếm ánh sáng của bạn.
 
-Use the method :ref:`Input.set_joy_light()<class_Input_method_set_joy_light>` to set the color
-of a given controller's LEDs.
+Sử dụng phương thức :ref:`Input.set_joy_light()<class_Input_method_set_joy_light>` để đặt màu đèn LED của một tay cầm cụ thể.
 
-To determine if a given controller supports setting LED lights, use the :ref:`Input.has_joy_light()<class_Input_method_has_joy_light>`
-method. The PlayStation DualShock and DualSense controllers are known to support LED lights.
+Để xác định một tay cầm cụ thể có hỗ trợ cài đặt đèn LED hay không, hãy sử dụng phương thức :ref:`Input.has_joy_light()<class_Input_method_has_joy_light>`. Tay cầm PlayStation DualShock và DualSense được biết là có hỗ trợ đèn LED.
 
-The following ``_process()`` method sets the LED color according to the currently pressed button,
-and turns it off if no button is being pressed:
+Phương thức ``_process()`` sau đây đặt màu đèn LED dựa trên nút hiện đang được nhấn và tắt đèn nếu không có nút nào được nhấn:
 
 .. code-block::
 
@@ -60,7 +50,7 @@ and turns it off if no button is being pressed:
         Input.set_joy_light(0, color)
 
 
-The following example smoothly fades the LED through hues in a loop:
+Ví dụ sau đây làm đèn LED chuyển mượt qua các sắc độ màu trong một vòng lặp:
 
 .. code-block::
 
@@ -71,7 +61,7 @@ The following example smoothly fades the LED through hues in a loop:
         Input.set_joy_light(0, col)
         hue += delta * 0.1
 
-The following example makes the LED blink red three times when the south button (Cross/X on PlayStation controllers) is pressed:
+Ví dụ sau đây khiến đèn LED nhấp nháy màu đỏ ba lần khi nhấn nút south (Cross/X trên tay cầm PlayStation):
 
 .. code-block::
 
@@ -95,153 +85,128 @@ The following example makes the LED blink red three times when the south button 
 
 .. _doc_controller_features_motion_sensors:
 
-Motion sensors (gyroscope and accelerometer)
---------------------------------------------
+Cảm biến chuyển động (con quay hồi chuyển và gia tốc kế)
+--------------------------------------------------------
 
-With motion controls, games can track the controller's physical rotation and movement.
-This can be used to let the player turn the in-game camera by moving their controller, or shaking their controller to perform a special action.
+Với điều khiển chuyển động, game có thể theo dõi chuyển động và góc xoay vật lý của tay cầm. Tính năng này có thể cho phép người chơi xoay camera trong game bằng cách di chuyển tay cầm hoặc lắc tay cầm để thực hiện một hành động đặc biệt.
 
-There are several controller brands that have implemented gyroscope and accelerometer sensors
-into their modern controllers, the biggest two being PlayStation and Nintendo.
-Note that the Xbox controllers don't have motion sensors inside of them.
+Một số thương hiệu tay cầm đã tích hợp cảm biến con quay hồi chuyển và gia tốc kế vào các tay cầm hiện đại của họ, trong đó hai thương hiệu lớn nhất là PlayStation và Nintendo. Lưu ý rằng tay cầm Xbox không có cảm biến chuyển động bên trong.
 
-To check if a connected controller has motion sensors, use :ref:`Input.has_joy_motion_sensors()<class_Input_method_has_joy_motion_sensors>`.
+Để kiểm tra xem một tay cầm đã kết nối có cảm biến chuyển động hay không, hãy sử dụng :ref:`Input.has_joy_motion_sensors()<class_Input_method_has_joy_motion_sensors>`.
 
-Motion sensors are disabled by default to avoid draining the controller battery when games don't use those features.
-To enable them, call :ref:`Input.set_joy_motion_sensors_enabled()<class_Input_method_set_joy_motion_sensors_enabled>`.
+Cảm biến chuyển động được tắt theo mặc định để tránh làm hao pin tay cầm khi game không sử dụng các tính năng đó. Để bật chúng, hãy gọi :ref:`Input.set_joy_motion_sensors_enabled()<class_Input_method_set_joy_motion_sensors_enabled>`.
 
-Note that the axes of the values that controller's motion sensors report are always relative to the controller's natural orientation.
-Here's an image of the axes mapping for more clarity:
+Lưu ý rằng các trục của những giá trị do cảm biến chuyển động của tay cầm báo cáo luôn tương ứng với hướng tự nhiên của tay cầm. Dưới đây là hình ảnh ánh xạ các trục để giúp bạn hiểu rõ hơn:
 
 .. image:: img/controller_axes.webp
 
-The controller's gyroscope values show rotation around their respective axes:
+Các giá trị con quay hồi chuyển của tay cầm biểu thị chuyển động xoay quanh các trục tương ứng:
 
-- the X value of the gyroscope data shows the rotation around the X axis (pitch).
-- the Y value of the gyroscope data shows the rotation around the Y axis (yaw).
-- the Z value of the gyroscope data shows the rotation around the Z axis (roll).
+- giá trị X của dữ liệu con quay hồi chuyển biểu thị chuyển động xoay quanh trục X (pitch).
+- giá trị Y của dữ liệu con quay hồi chuyển biểu thị chuyển động xoay quanh trục Y (yaw).
+- giá trị Z của dữ liệu con quay hồi chuyển biểu thị chuyển động xoay quanh trục Z (roll).
 
-The controller's accelerometer will provide values in the following ways, respectively:
+Gia tốc kế của tay cầm sẽ cung cấp các giá trị theo những cách sau, tương ứng:
 
-- Movement left and right are reported as **+X** and **-X**.
-- Movement down and up are reported as **+Y** and **-Y**.
-- Movement away from and towards the user are reported as **+Z** and **-Z**.
+- Chuyển động sang trái và phải được báo cáo lần lượt là **+X** và **-X**.
+- Chuyển động xuống và lên được báo cáo lần lượt là **+Y** và **-Y**.
+- Chuyển động ra xa và hướng về phía người dùng được báo cáo lần lượt là **+Z** và **-Z**.
 
-Gyroscope
-~~~~~~~~~
+Con quay hồi chuyển
+~~~~~~~~~~~~~~~~~~~
 
-A **gyroscope** is a type of sensor that detects the controller's rotation.
-Here are some notable examples of gyroscope use in games:
+**Con quay hồi chuyển** là một loại cảm biến phát hiện chuyển động xoay của tay cầm. Dưới đây là một số ví dụ đáng chú ý về việc sử dụng con quay hồi chuyển trong game:
 
-- In *Helldivers 2*, *Horizon Forbidden West*, *Star Wars: Dark Forces Remaster*, and *Fortnite*,
-  tilting the controller causes the camera to rotate accordingly ("gyro aiming").
-  `This video by *Daven On The Moon* <https://www.youtube.com/watch?v=Vlfg9yku2hY>`_ demonstrates and discusses gyro aiming in more detail.
-- In *Death Stranding*, BB can be soothed by rotating the controller softly.
+- Trong *Helldivers 2*, *Horizon Forbidden West*, *Star Wars: Dark Forces Remaster* và *Fortnite*, việc nghiêng tay cầm sẽ khiến camera xoay tương ứng ("gyro aiming"). `Video này của *Daven On The Moon* <https://www.youtube.com/watch?v=Vlfg9yku2hY>`_ trình bày và thảo luận chi tiết hơn về gyro aiming.
+- Trong *Death Stranding*, BB có thể được xoa dịu bằng cách nhẹ nhàng xoay tay cầm.
 
-The following example rotates an object using a controller's gyroscope sensor.
-You can also access this example by taking a look at the
-:ref:`Input.start_joy_motion_sensors_calibration()<class_Input_method_start_joy_motion_sensors_calibration>` documentation.
+Ví dụ sau đây xoay một đối tượng bằng cảm biến con quay hồi chuyển của tay cầm. Bạn cũng có thể truy cập ví dụ này bằng cách xem
+:ref:`Input.start_joy_motion_sensors_calibration()<class_Input_method_start_joy_motion_sensors_calibration>` tài liệu.
 
 .. code-block::
 
     const GYRO_SENSITIVITY = 10.0
 
     func _ready():
-        # In this example we only use the first connected joypad (id 0).
+        # Trong ví dụ này, chúng ta chỉ sử dụng joypad đầu tiên được kết nối (id 0).
         if 0 not in Input.get_connected_joypads():
             return
 
         if not Input.has_joy_motion_sensors(0):
             return
 
-        # We must enable the motion sensors before using them.
+        # Chúng ta phải bật các cảm biến chuyển động trước khi sử dụng chúng.
         Input.set_joy_motion_sensors_enabled(0, true)
 
-        # (Tell the users here that they need to put their joypads on a flat surface and wait for confirmation.)
+        # (Hãy cho người dùng biết ở đây rằng họ cần đặt joypad trên một bề mặt phẳng và chờ xác nhận.)
 
-        # Start the calibration process.
+        # Bắt đầu quá trình hiệu chỉnh.
         calibrate_motion()
 
     func _process(delta):
-        # Only move the object if the joypad motion sensors are calibrated.
+        # Chỉ di chuyển đối tượng khi các cảm biến chuyển động của joypad đã được hiệu chỉnh.
         if Input.is_joy_motion_sensors_calibrated(0):
             move_object(delta)
 
     func calibrate_motion():
         Input.start_joy_motion_sensors_calibration(0)
 
-        # Wait for some time.
+        # Chờ một lúc.
         await get_tree().create_timer(1.0).timeout
 
         Input.stop_joy_motion_sensors_calibration(0)
-        # The joypad is now calibrated.
+        # Joypad hiện đã được hiệu chỉnh.
 
     func move_object(delta):
-        var node: Node3D = ... # Put your object here.
+        var node: Node3D = ... # Đặt đối tượng của bạn ở đây.
 
         var gyro := Input.get_joy_gyroscope(0)
-        node.rotation.x -= -gyro.y * GYRO_SENSITIVITY * delta  # Use rotation around the Y axis (yaw) here.
-        node.rotation.y += -gyro.x * GYRO_SENSITIVITY * delta  # Use rotation around the X axis (pitch) here.
+        node.rotation.x -= -gyro.y * GYRO_SENSITIVITY * delta  # Sử dụng chuyển động xoay quanh trục Y (yaw) ở đây.
+        node.rotation.y += -gyro.x * GYRO_SENSITIVITY * delta  # Sử dụng chuyển động xoay quanh trục X (pitch) ở đây.
 
-Note that before using the gyroscope's data, we must first calibrate it by calling :ref:`Input.start_joy_motion_sensors_calibration()<class_Input_method_start_joy_motion_sensors_calibration>`
-and :ref:`Input.stop_joy_motion_sensors_calibration()<class_Input_method_stop_joy_motion_sensors_calibration>`.
-That's because modern gyroscopes often need calibration. This is like how a weighing scale can need calibration to tell it what "zero" is.
-Like a weighing scale, only a correctly calibrated gyroscope will give an accurate reading.
-During calibration, the user sets the controller down on a flat surface.
-The controller then determines what values its gyroscope reports when it is actually not moving at all (its "bias"),
-and uses this information to make its rotation data more accurate.
+Lưu ý rằng trước khi sử dụng dữ liệu của con quay hồi chuyển, trước tiên chúng ta phải hiệu chỉnh nó bằng cách gọi :ref:`Input.start_joy_motion_sensors_calibration()<class_Input_method_start_joy_motion_sensors_calibration>` và :ref:`Input.stop_joy_motion_sensors_calibration()<class_Input_method_stop_joy_motion_sensors_calibration>`. Đó là vì các con quay hồi chuyển hiện đại thường cần được hiệu chỉnh. Điều này cũng giống như việc một chiếc cân có thể cần được hiệu chỉnh để xác định giá trị "0". Cũng như một chiếc cân, chỉ con quay hồi chuyển được hiệu chỉnh chính xác mới cho kết quả đo chính xác. Trong quá trình hiệu chỉnh, người dùng đặt tay cầm xuống một bề mặt phẳng. Sau đó, tay cầm xác định những giá trị mà con quay hồi chuyển báo cáo khi nó thực sự hoàn toàn không chuyển động ("bias"), rồi dùng thông tin này để làm cho dữ liệu chuyển động xoay chính xác hơn.
 
-See `the article on GyroWiki <http://gyrowiki.jibbsmart.com/blog:good-gyro-controls-part-1:the-gyro-is-a-mouse>`__
-for information on how to use gyroscope input as a mouse.
+Xem `bài viết về GyroWiki <http://gyrowiki.jibbsmart.com/blog:good-gyro-controls-part-1:the-gyro-is-a-mouse>`__ để biết cách sử dụng dữ liệu đầu vào từ con quay hồi chuyển như một con chuột.
 
-After the controller's gyroscope has been enabled and correctly calibrated,
-you can read its reported values by using :ref:`Input.get_joy_gyroscope()<class_Input_method_get_joy_gyroscope>`.
+Sau khi con quay hồi chuyển của controller được bật và hiệu chỉnh chính xác, bạn có thể đọc các giá trị mà nó báo cáo bằng cách sử dụng :ref:`Input.get_joy_gyroscope()<class_Input_method_get_joy_gyroscope>`.
 
 Accelerometer
 ~~~~~~~~~~~~~
 
 .. warning::
 
-    Do not use accelerometer data to find the controller's position in 3D space;
-    the accelerometers in general are not precise enough for this.
+    Không sử dụng dữ liệu từ cảm biến gia tốc để xác định vị trí của controller trong không gian 3D; nhìn chung, các cảm biến gia tốc không đủ chính xác cho việc này.
 
-An **accelerometer** is a type of sensor that detects a controller's acceleration in m/s².
-For example, it can detect if the player quickly raises their controller, moves it to the side, or shakes it.
+**Cảm biến gia tốc** là một loại cảm biến phát hiện gia tốc của controller theo đơn vị m/s². Ví dụ, cảm biến có thể phát hiện khi người chơi nhanh chóng nâng controller lên, di chuyển controller sang một bên hoặc lắc controller.
 
-The acceleration that an accelerometer detects includes gravity by default.
-To get *only* the acceleration imparted by the user, subtract gravity from the detected acceleration:
+Theo mặc định, gia tốc mà cảm biến gia tốc phát hiện bao gồm cả trọng lực. Để chỉ lấy *gia tốc* do người dùng tác động, hãy trừ trọng lực khỏi gia tốc được phát hiện:
 
 .. code-block::
 
     Input.get_joy_accelerometer(device) - Input.get_joy_gravity(device)
 
-Due to how accelerometers work physically, after movement in one direction stops
-they almost immediately report movement in the opposite direction.
-After detecting movement in one direction, you may want to ignore further readings
-for a small period of time to avoid detecting this opposite movement.
+Do nguyên lý hoạt động vật lý của cảm biến gia tốc, sau khi chuyển động theo một hướng dừng lại, cảm biến gần như ngay lập tức báo cáo chuyển động theo hướng ngược lại. Sau khi phát hiện chuyển động theo một hướng, bạn có thể muốn bỏ qua các kết quả đọc tiếp theo trong một khoảng thời gian ngắn để tránh phát hiện chuyển động ngược này.
 
-The following example prints the controller movement when it's being quickly moved by using its accelerometer.
-If the sensitivity doesn't feel right for you,
-you can tweak the ``THRESHOLD`` constant or you can replace it by using a different value in the code below.
+Ví dụ sau in ra chuyển động của controller khi controller được di chuyển nhanh bằng cảm biến gia tốc. Nếu độ nhạy không phù hợp với bạn, bạn có thể điều chỉnh hằng số ``THRESHOLD`` hoặc thay thế nó bằng một giá trị khác trong đoạn mã bên dưới.
 
 .. code-block::
 
     var detect_accelerometer = true
 
-    # Change to make the game detect movement at different thresholds.
-    # With a lower value, smaller movements will be detected, and with a
-    # larger value, only big movements will be detected.
+    # Thay đổi để game phát hiện chuyển động ở các ngưỡng khác nhau.
+    # Với giá trị nhỏ hơn, các chuyển động nhỏ hơn sẽ được phát hiện, còn với
+    # giá trị lớn hơn, chỉ các chuyển động lớn mới được phát hiện.
     const THRESHOLD = 10.0
 
     func _ready():
-        # In this example, we only use the first connected joypad (ID 0).
+        # Trong ví dụ này, chúng ta chỉ sử dụng joypad đầu tiên được kết nối (ID 0).
         if 0 not in Input.get_connected_joypads():
             return
 
         if not Input.has_joy_motion_sensors(0):
             return
 
-        # We must enable the motion sensors before using them.
+        # Chúng ta phải bật các cảm biến chuyển động trước khi sử dụng chúng.
         Input.set_joy_motion_sensors_enabled(0, true)
 
     func _process(delta):
@@ -267,9 +232,11 @@ you can tweak the ``THRESHOLD`` constant or you can replace it by using a differ
             elif acceleration.z > THRESHOLD:
                 print("Moved away from the player")
 
-            # After detecting movement in one direction, the accelerometer sensor
-            # will briefly report movement in the opposite direction, even though the controller only moved once.
-            # So we need to ignore these reported values for a short amount of time.
+            # Sau khi phát hiện chuyển động theo một hướng, cảm biến gia tốc
+            # sẽ báo cáo ngắn gọn chuyển động theo hướng ngược lại, dù controller chỉ di chuyển một lần.
+            # Vì vậy, chúng ta cần bỏ qua các giá trị được báo cáo này trong một khoảng thời gian ngắn.
             detect_accelerometer = false
             await get_tree().create_timer(0.5, false).timeout
             detect_accelerometer = true
+
+.. _`This video by *Daven On The Moon*`: https://www.youtube.com/watch?v=Vlfg9yku2hY

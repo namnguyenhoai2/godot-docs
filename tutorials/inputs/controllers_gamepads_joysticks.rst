@@ -1,73 +1,53 @@
 .. _doc_controllers_gamepads_joysticks:
 
-Controllers, gamepads, and joysticks
-====================================
+Bộ điều khiển, gamepad và cần điều khiển
+========================================
 
-Godot supports hundreds of controller models out of the box.
-Controllers are supported on Windows, macOS, Linux, Android, iOS, and Web.
-
-.. note::
-
-    Since Godot 4.5, the engine relies on `SDL 3 <https://www.libsdl.org/index.php>`__
-    for controller support on Windows, macOS, and Linux. This means the list of
-    supported controllers and their behavior should closely match what is available
-    in other games and engines using SDL 3. Note that SDL is only used for input,
-    not for windowing or sound.
-
-    Prior to Godot 4.5, the engine used its own controller support code.
-    This can cause certain controllers to behave incorrectly.
-    This custom code is still used to support controllers on Android and Web,
-    so it may result in issues appearing only on those platforms.
-
-Note that more specialized devices such as steering wheels, rudder pedals and
-`HOTAS <https://en.wikipedia.org/wiki/HOTAS>`__ are less tested and may not
-always work as expected. Overriding force feedback for those devices is also not
-implemented yet. If you have access to one of those devices, don't hesitate to
-`report bugs on GitHub
-<https://github.com/godotengine/godot/blob/master/CONTRIBUTING.md#reporting-bugs>`__.
-
-In this guide, you will learn:
-
-- **How to write your input logic to support both keyboard and controller inputs.**
-- **How controllers can behave differently from keyboard/mouse input.**
-- **Troubleshooting issues with controllers in Godot.**
-
-Supporting universal input
---------------------------
-
-Thanks to Godot's input action system, Godot makes it possible to support both
-keyboard and controller input without having to write separate code paths.
-Instead of hardcoding keys or controller buttons in your scripts, you should
-create *input actions* in the Project Settings which will then refer to
-specified key and controller inputs.
-
-Input actions are explained in detail on the :ref:`doc_inputevent` page.
+Godot hỗ trợ sẵn hàng trăm mẫu bộ điều khiển. Bộ điều khiển được hỗ trợ trên Windows, macOS, Linux, Android, iOS và Web.
 
 .. note::
 
-    Unlike keyboard input, supporting both mouse and controller input for an
-    action (such as looking around in a first-person game) will require
-    different code paths since these have to be handled separately.
+    Kể từ Godot 4.5, engine dựa vào `SDL 3 <https://www.libsdl.org/index.php>`__ để hỗ trợ bộ điều khiển trên Windows, macOS và Linux. Điều này có nghĩa là danh sách các bộ điều khiển được hỗ trợ và cách chúng hoạt động sẽ gần như khớp với những gì có trong các game và engine khác sử dụng SDL 3. Lưu ý rằng SDL chỉ được dùng cho input, không dùng cho cửa sổ hoặc âm thanh.
 
-Which Input singleton method should I use?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Trước Godot 4.5, engine sử dụng mã hỗ trợ bộ điều khiển riêng. Điều này có thể khiến một số bộ điều khiển hoạt động không chính xác. Mã tùy chỉnh này vẫn được dùng để hỗ trợ bộ điều khiển trên Android và Web, vì vậy có thể gây ra các vấn đề chỉ xuất hiện trên những nền tảng đó.
 
-There are 3 ways to get input in an analog-aware way:
+Lưu ý rằng các thiết bị chuyên dụng hơn như vô lăng, bàn đạp bánh lái và `HOTAS <https://en.wikipedia.org/wiki/HOTAS>`__ ít được kiểm thử hơn và có thể không phải lúc nào cũng hoạt động như mong đợi. Việc ghi đè force feedback cho những thiết bị đó cũng chưa được triển khai. Nếu bạn có một trong những thiết bị này, đừng ngần ngại `báo lỗi trên GitHub <https://github.com/godotengine/godot/blob/master/CONTRIBUTING.md#reporting-bugs>`__.
 
-- When you have two axes (such as joystick or WASD movement) and want both
-  axes to behave as a single input, use ``Input.get_vector()``:
+Trong hướng dẫn này, bạn sẽ học:
+
+- **Cách viết logic input để hỗ trợ cả input từ bàn phím và bộ điều khiển.**
+- **Bộ điều khiển có thể hoạt động khác với input từ bàn phím/chuột như thế nào.**
+- **Cách khắc phục sự cố với bộ điều khiển trong Godot.**
+
+Hỗ trợ input đa dạng
+--------------------
+
+Nhờ hệ thống input action của Godot, bạn có thể hỗ trợ cả input từ bàn phím và bộ điều khiển mà không cần viết các nhánh mã riêng biệt. Thay vì hardcode phím hoặc nút bộ điều khiển trong các script, bạn nên tạo *input actions* trong Project Settings; các action này sẽ tham chiếu đến những input phím và bộ điều khiển được chỉ định.
+
+Input actions được giải thích chi tiết trên :ref:`doc_inputevent`.
+
+.. note::
+
+    Không giống input từ bàn phím, việc hỗ trợ cả input từ chuột và bộ điều khiển cho một action (chẳng hạn như quan sát xung quanh trong game góc nhìn thứ nhất) sẽ yêu cầu các nhánh mã khác nhau vì chúng phải được xử lý riêng biệt.
+
+Tôi nên sử dụng phương thức singleton Input nào?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Có 3 cách để nhận input theo cách có nhận biết analog:
+
+- Khi bạn có hai trục (chẳng hạn như chuyển động bằng joystick hoặc WASD) và muốn cả hai trục hoạt động như một input duy nhất, hãy sử dụng ``Input.get_vector()``:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # `velocity` will be a Vector2 between `Vector2(-1.0, -1.0)` and `Vector2(1.0, 1.0)`.
-    # This handles deadzone in a correct way for most use cases.
-    # The resulting deadzone will have a circular shape as it generally should.
+    # `velocity` sẽ là một Vector2 nằm giữa `Vector2(-1.0, -1.0)` và `Vector2(1.0, 1.0)`.
+    # Cách này xử lý deadzone đúng đắn trong hầu hết trường hợp sử dụng.
+    # Deadzone kết quả sẽ có dạng hình tròn, như thông thường nên có.
     var velocity = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 
-    # The line below is similar to `get_vector()`, except that it handles
-    # the deadzone in a less optimal way. The resulting deadzone will have
-    # a square-ish shape when it should ideally have a circular shape.
+    # Dòng bên dưới tương tự như `get_vector()`, ngoại trừ việc nó xử lý
+    # deadzone theo cách kém tối ưu hơn. Deadzone kết quả sẽ có
+    # dạng gần giống hình vuông trong khi lý tưởng nhất là có dạng hình tròn.
     var velocity = Vector2(
             Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
             Input.get_action_strength("move_back") - Input.get_action_strength("move_forward")
@@ -75,213 +55,143 @@ There are 3 ways to get input in an analog-aware way:
 
  .. code-tab:: csharp
 
-    // `velocity` will be a Vector2 between `Vector2(-1.0, -1.0)` and `Vector2(1.0, 1.0)`.
-    // This handles deadzone in a correct way for most use cases.
-    // The resulting deadzone will have a circular shape as it generally should.
+    // `velocity` sẽ là một Vector2 nằm giữa `Vector2(-1.0, -1.0)` và `Vector2(1.0, 1.0)`.
+    // Cách này xử lý deadzone đúng đắn trong hầu hết trường hợp sử dụng.
+    // Deadzone kết quả sẽ có dạng hình tròn, như thông thường nên có.
     Vector2 velocity = Input.GetVector("move_left", "move_right", "move_forward", "move_back");
 
-    // The line below is similar to `get_vector()`, except that it handles
-    // the deadzone in a less optimal way. The resulting deadzone will have
-    // a square-ish shape when it should ideally have a circular shape.
+    // Dòng bên dưới tương tự như `get_vector()`, ngoại trừ việc nó xử lý
+    // deadzone theo cách kém tối ưu hơn. Deadzone kết quả sẽ có
+    // dạng gần giống hình vuông trong khi lý tưởng nhất là có dạng hình tròn.
     Vector2 velocity = new Vector2(
             Input.GetActionStrength("move_right") - Input.GetActionStrength("move_left"),
             Input.GetActionStrength("move_back") - Input.GetActionStrength("move_forward")
     ).LimitLength(1.0);
 
-- When you have one axis that can go both ways (such as a throttle on a
-  flight stick), or when you want to handle separate axes individually,
-  use ``Input.get_axis()``:
+- Khi bạn có một trục có thể di chuyển theo cả hai hướng (chẳng hạn như cần ga trên cần điều khiển bay), hoặc khi muốn xử lý riêng từng trục, hãy sử dụng ``Input.get_axis()``:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # `walk` will be a floating-point number between `-1.0` and `1.0`.
+    # `walk` sẽ là một số dấu phẩy động nằm giữa `-1.0` và `1.0`.
     var walk = Input.get_axis("move_left", "move_right")
 
-    # The line above is a shorter form of:
+    # Dòng bên trên là dạng viết ngắn hơn của:
     var walk = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 
  .. code-tab:: csharp
 
-    // `walk` will be a floating-point number between `-1.0` and `1.0`.
+    // `walk` sẽ là một số dấu phẩy động nằm giữa `-1.0` và `1.0`.
     float walk = Input.GetAxis("move_left", "move_right");
 
-    // The line above is a shorter form of:
+    // Dòng bên trên là dạng viết ngắn hơn của:
     float walk = Input.GetActionStrength("move_right") - Input.GetActionStrength("move_left");
 
-- For other types of analog input, such as handling a trigger or handling
-  one direction at a time, use ``Input.get_action_strength()``:
+- Đối với các loại input analog khác, chẳng hạn như xử lý cò hoặc xử lý từng hướng một, hãy sử dụng ``Input.get_action_strength()``:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # `strength` will be a floating-point number between `0.0` and `1.0`.
+    # `strength` sẽ là một số dấu phẩy động nằm giữa `0.0` và `1.0`.
     var strength = Input.get_action_strength("accelerate")
 
  .. code-tab:: csharp
 
-    // `strength` will be a floating-point number between `0.0` and `1.0`.
+    // `strength` sẽ là một số dấu phẩy động nằm giữa `0.0` và `1.0`.
     float strength = Input.GetActionStrength("accelerate");
 
-For non-analog digital/boolean input (only "pressed" or "not pressed" values),
-such as controller buttons, mouse buttons or keyboard keys,
-use ``Input.is_action_pressed()``:
+Đối với input digital/boolean không phải analog (chỉ có các giá trị "được nhấn" hoặc "không được nhấn"), chẳng hạn như nút bộ điều khiển, nút chuột hoặc phím bàn phím, hãy sử dụng ``Input.is_action_pressed()``:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # `jumping` will be a boolean with a value of `true` or `false`.
+    # `jumping` sẽ là một boolean có giá trị `true` hoặc `false`.
     var jumping = Input.is_action_pressed("jump")
 
  .. code-tab:: csharp
 
-    // `jumping` will be a boolean with a value of `true` or `false`.
+    // `jumping` sẽ là một boolean có giá trị `true` hoặc `false`.
     bool jumping = Input.IsActionPressed("jump");
 
 .. note::
 
-    If you need to know whether an input was *just* pressed in the previous
-    frame, use ``Input.is_action_just_pressed()`` instead of
-    ``Input.is_action_pressed()``. Unlike ``Input.is_action_pressed()`` which
-    returns ``true`` as long as the input is
-    held, ``Input.is_action_just_pressed()`` will only return ``true`` for one
-    frame after the button has been pressed.
+    Nếu bạn cần biết liệu input có *vừa mới* được nhấn trong frame trước hay không, hãy sử dụng ``Input.is_action_just_pressed()`` thay vì ``Input.is_action_pressed()``. Không giống ``Input.is_action_pressed()``, vốn trả về ``true`` trong suốt thời gian input được giữ, ``Input.is_action_just_pressed()`` chỉ trả về ``true`` trong một frame sau khi nút được nhấn.
 
-Vibration
----------
+Rung
+----
 
-Vibration (also called *haptic feedback*) can be used to enhance the feel of a
-game. For instance, in a racing game, you can convey the surface the car is
-currently driving on through vibration, or create a sudden vibration on a crash.
+Rung (còn gọi là *phản hồi xúc giác*) có thể được dùng để tăng cảm giác chân thực cho game. Ví dụ, trong game đua xe, bạn có thể truyền đạt bề mặt mà xe đang chạy qua bằng rung, hoặc tạo rung đột ngột khi xảy ra va chạm.
 
-Use the Input singleton's
-:ref:`start_joy_vibration<class_Input_method_start_joy_vibration>` method to
-start vibrating a gamepad. Use
-:ref:`stop_joy_vibration<class_Input_method_stop_joy_vibration>` to stop
-vibration early (useful if no duration was specified when starting).
+Sử dụng phương thức của singleton Input để
+:ref:`start_joy_vibration<class_Input_method_start_joy_vibration>` bắt đầu rung gamepad. Sử dụng
+:ref:`stop_joy_vibration<class_Input_method_stop_joy_vibration>` để dừng rung sớm (hữu ích nếu không chỉ định thời lượng khi bắt đầu).
 
-On mobile devices, you can also use
-:ref:`vibrate_handheld<class_Input_method_vibrate_handheld>` to vibrate the
-device itself (independently from the gamepad). On Android, this requires the
-``VIBRATE`` permission to be enabled in the Android export preset before
-exporting the project.
+Trên các thiết bị di động, bạn cũng có thể sử dụng
+:ref:`vibrate_handheld<class_Input_method_vibrate_handheld>` để làm rung chính thiết bị (độc lập với gamepad). Trên Android, bạn cần bật quyền ``VIBRATE`` trong preset xuất Android trước khi xuất project.
 
 .. note::
 
-   Vibration can be uncomfortable for certain players. Make sure to provide an
-   in-game slider to disable vibration or reduce its intensity.
+   Rung có thể gây khó chịu cho một số người chơi. Hãy đảm bảo cung cấp một thanh trượt trong game để tắt rung hoặc giảm cường độ rung.
 
-Differences between keyboard/mouse and controller input
+Sự khác biệt giữa input từ bàn phím/chuột và controller
 -------------------------------------------------------
 
-If you're used to handling keyboard and mouse input, you may be surprised by how
-controllers handle specific situations.
+Nếu đã quen xử lý input từ bàn phím và chuột, bạn có thể ngạc nhiên trước cách controller xử lý các tình huống cụ thể.
 
-Dead zone
+Vùng chết
 ~~~~~~~~~
 
-Unlike keyboards and mice, controllers offer axes with *analog* inputs. The
-upside of analog inputs is that they offer additional flexibility for actions.
-Unlike digital inputs which can only provide strengths of ``0.0`` and ``1.0``,
-an analog input can provide *any* strength between ``0.0`` and ``1.0``. The
-downside is that without a deadzone system, an analog axis' strength will never
-be equal to ``0.0`` due to how the controller is physically built. Instead, it
-will linger at a low value such as ``0.062``. This phenomenon is known as
-*drifting* and can be more noticeable on old or faulty controllers.
+Không giống bàn phím và chuột, controller cung cấp các trục với input *analog*. Ưu điểm của input analog là chúng mang lại thêm tính linh hoạt cho các action. Không giống input digital, vốn chỉ có thể cung cấp cường độ ``0.0`` và ``1.0``, input analog có thể cung cấp *bất kỳ* cường độ nào giữa ``0.0`` và ``1.0``. Nhược điểm là nếu không có hệ thống vùng chết, cường độ của một trục analog sẽ không bao giờ bằng ``0.0`` do cách controller được cấu tạo về mặt vật lý. Thay vào đó, nó sẽ duy trì ở một giá trị thấp chẳng hạn như ``0.062``. Hiện tượng này được gọi là *drifting* và có thể dễ nhận thấy hơn trên các controller cũ hoặc bị lỗi.
 
-Let's take a racing game as a real-world example. Thanks to analog inputs, we
-can steer the car slowly in one direction or another. However, without a
-deadzone system, the car would slowly steer by itself even if the player isn't
-touching the joystick. This is because the directional axis strength won't be
-equal to ``0.0`` when we expect it to. Since we don't want our car to steer by
-itself in this case, we define a "dead zone" value of ``0.2`` which will ignore
-all input whose strength is lower than ``0.2``. An ideal dead zone value is high
-enough to ignore the input caused by joystick drifting, but is low enough to not
-ignore actual input from the player.
+Hãy lấy một game đua xe làm ví dụ thực tế. Nhờ input analog, chúng ta có thể điều khiển xe rẽ chậm theo hướng này hoặc hướng kia. Tuy nhiên, nếu không có hệ thống vùng chết, xe sẽ từ từ tự rẽ ngay cả khi người chơi không chạm vào joystick. Điều này là do cường độ của trục định hướng sẽ không bằng ``0.0`` khi chúng ta mong đợi. Vì không muốn xe tự rẽ trong trường hợp này, chúng ta xác định giá trị "vùng chết" là ``0.2``, giá trị này sẽ bỏ qua mọi input có cường độ thấp hơn ``0.2``. Giá trị vùng chết lý tưởng đủ cao để bỏ qua input do joystick drifting gây ra, nhưng đủ thấp để không bỏ qua input thực tế từ người chơi.
 
-Godot features a built-in deadzone system to tackle this problem. The default
-value is ``0.5``, but you can adjust it on a per-action basis in the Project
-Settings' Input Map tab. For ``Input.get_vector()``, the deadzone can be
-specified as an optional 5th parameter. If not specified, it will calculate the
-average deadzone value from all of the actions in the vector.
+Godot có hệ thống vùng chết tích hợp để xử lý vấn đề này. Giá trị mặc định là ``0.5``, nhưng bạn có thể điều chỉnh giá trị này cho từng action trong tab Input Map của Project Settings. Đối với ``Input.get_vector()``, vùng chết có thể được chỉ định dưới dạng tham số thứ 5 tùy chọn. Nếu không được chỉ định, nó sẽ tính giá trị vùng chết trung bình từ tất cả action trong vector.
 
-"Echo" events
-~~~~~~~~~~~~~
+Các event "Echo"
+~~~~~~~~~~~~~~~~
 
-Unlike keyboard input, holding down a controller button such as a D-pad
-direction will **not** generate repeated input events at fixed intervals (also
-known as "echo" events). This is because the operating system never sends "echo"
-events for controller input in the first place.
+Không giống input từ bàn phím, việc giữ một nút controller, chẳng hạn như hướng trên D-pad, **không** tạo ra các event input lặp lại theo những khoảng thời gian cố định (còn gọi là event "echo"). Điều này là do ngay từ đầu, hệ điều hành không bao giờ gửi event "echo" cho input từ controller.
 
-If you want controller buttons to send echo events, you will have to generate
-:ref:`class_InputEvent` objects by code and parse them using
-:ref:`Input.parse_input_event() <class_Input_method_parse_input_event>`
-at regular intervals. This can be accomplished
-with the help of a :ref:`class_Timer` node.
+Nếu muốn các nút controller gửi event echo, bạn sẽ phải tạo
+:ref:`class_InputEvent` object bằng code và phân tích chúng bằng
+:ref:`Input.parse_input_event() <class_Input_method_parse_input_event>` theo các khoảng thời gian đều đặn. Bạn có thể thực hiện việc này với sự trợ giúp của node :ref:`class_Timer`.
 
-Window focus
-~~~~~~~~~~~~
+Tiêu điểm cửa sổ
+~~~~~~~~~~~~~~~~
 
-Unlike keyboard input, controller inputs can by default be seen by **all** windows on the
-operating system, including unfocused windows.
+Không giống input từ bàn phím, theo mặc định input từ controller có thể được **tất cả** cửa sổ trên hệ điều hành nhận biết, bao gồm cả các cửa sổ không có tiêu điểm.
 
-While this is useful for
-`third-party split screen functionality <https://nucleus-coop.github.io/>`__,
-it can also have adverse effects. Players may accidentally send controller inputs
-to the running project while interacting with another window.
+Mặc dù điều này hữu ích cho `chức năng chia màn hình của bên thứ ba <https://nucleus-coop.github.io/>`__, nó cũng có thể gây ra tác động không mong muốn. Người chơi có thể vô tình gửi input từ controller đến project đang chạy trong khi tương tác với một cửa sổ khác.
 
-If you wish to ignore controller input events when the project isn't focused,
-set :ref:`ProjectSettings.input_devices/joypads/ignore_joypad_on_unfocused_application<class_ProjectSettings_property_input_devices/joypads/ignore_joypad_on_unfocused_application>` to ``true``.
-Alternatively, you can also set :ref:`Input.ignore_joypad_on_unfocused_application <class_Input_property_ignore_joypad_on_unfocused_application>` to ``true``.
+Nếu muốn bỏ qua các event input từ controller khi project không có tiêu điểm, hãy đặt :ref:`ProjectSettings.input_devices/joypads/ignore_joypad_on_unfocused_application <class_ProjectSettings_property_input_devices/joypads/ignore_joypad_on_unfocused_application>` thành ``true``. Ngoài ra, bạn cũng có thể đặt :ref:`Input.ignore_joypad_on_unfocused_application <class_Input_property_ignore_joypad_on_unfocused_application>` thành ``true``.
 
-Power saving prevention
-~~~~~~~~~~~~~~~~~~~~~~~
+Ngăn tiết kiệm năng lượng
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Unlike keyboard and mouse input, controller inputs do **not** inhibit sleep and
-power saving measures (such as turning off the screen after a certain amount of
-time has passed).
+Không giống input từ bàn phím và chuột, input từ controller **không** ngăn chế độ ngủ và các biện pháp tiết kiệm năng lượng (chẳng hạn như tắt màn hình sau khi một khoảng thời gian nhất định đã trôi qua).
 
-To combat this, Godot enables power saving prevention by default when a project
-is running. If you notice the system is turning off its display when playing
-with a gamepad, check the value of **Display > Window > Energy Saving > Keep Screen On**
-in the Project Settings.
+Để khắc phục điều này, Godot bật tính năng ngăn tiết kiệm năng lượng theo mặc định khi project đang chạy. Nếu nhận thấy hệ thống tắt màn hình khi chơi bằng gamepad, hãy kiểm tra giá trị của **Display > Window > Energy Saving > Keep Screen On** trong Project Settings.
 
-Troubleshooting
----------------
+Xử lý sự cố
+-----------
 
 .. seealso::
 
-    You can view a list of
-    `known issues with controller support <https://github.com/godotengine/godot/issues?q=is%3Aopen+is%3Aissue+label%3Atopic%3Ainput+gamepad>`__
-    on GitHub.
+    Bạn có thể xem danh sách `các vấn đề đã biết về hỗ trợ controller <https://github.com/godotengine/godot/issues?q=is%3Aopen+is%3Aissue+label%3Atopic%3Ainput+gamepad>`__ trên GitHub.
 
-My controller isn't recognized by Godot.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Controller của tôi không được Godot nhận diện.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-First, check that your controller is recognized by other applications. You can
-use the `Gamepad Tester <https://hardwaretester.com/gamepad>`__ website to confirm
-that your controller is recognized.
+Trước tiên, hãy kiểm tra xem controller của bạn có được các ứng dụng khác nhận diện hay không. Bạn có thể sử dụng website `Gamepad Tester <https://hardwaretester.com/gamepad>`__ để xác nhận controller của mình được nhận diện.
 
-On Windows Godot only supports up to 4 controllers at a time. This is
-because Godot uses the XInput API, which is limited to supporting 4 controllers
-at once. Additional controllers above this limit are ignored by Godot.
+Trên Windows, Godot chỉ hỗ trợ tối đa 4 controller cùng lúc. Điều này là do Godot sử dụng API XInput, vốn bị giới hạn ở việc hỗ trợ 4 controller cùng lúc. Các controller vượt quá giới hạn này sẽ bị Godot bỏ qua.
 
-My controller has incorrectly mapped buttons or axes.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Controller của tôi có các nút hoặc trục được ánh xạ không chính xác.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-First, if your controller provides some kind of firmware update utility,
-make sure to run it to get the latest fixes from the manufacturer. For instance,
-Xbox One and Xbox Series controllers can have their firmware updated using the
-`Xbox Accessories app <https://www.microsoft.com/en-us/p/xbox-accessories/9nblggh30xj3>`__.
-(This application only runs on Windows, so you have to use a Windows machine
-or a Windows virtual machine with USB support to update the controller's firmware.)
-After updating the controller's firmware, unpair the controller and pair it again
-with your PC if you are using the controller in wireless mode.
+Trước tiên, nếu controller của bạn cung cấp một tiện ích cập nhật firmware, hãy đảm bảo chạy tiện ích đó để nhận các bản sửa lỗi mới nhất từ nhà sản xuất. Chẳng hạn, firmware của controller Xbox One và Xbox Series có thể được cập nhật bằng `Xbox Accessories app <https://www.microsoft.com/en-us/p/xbox-accessories/9nblggh30xj3>`__. (Ứng dụng này chỉ chạy trên Windows, vì vậy bạn phải sử dụng máy Windows hoặc máy ảo Windows có hỗ trợ USB để cập nhật firmware của controller.) Sau khi cập nhật firmware của controller, hãy hủy ghép đôi controller rồi ghép đôi lại với PC nếu bạn đang sử dụng controller ở chế độ không dây.
 
-If buttons are incorrectly mapped, this may be due to an erroneous mapping from
-the SDL game controller database used by Godot or the
-`Godot game controller database <https://github.com/godotengine/godot/blob/master/core/input/godotcontrollerdb.txt>`__.
-In this case, you will need to create a custom mapping for your controller.
+Nếu các nút được ánh xạ không chính xác, nguyên nhân có thể là mapping sai từ cơ sở dữ liệu SDL game controller được Godot sử dụng hoặc từ `cơ sở dữ liệu game controller của Godot <https://github.com/godotengine/godot/blob/master/core/input/godotcontrollerdb.txt>`__. Trong trường hợp này, bạn sẽ cần tạo mapping tùy chỉnh cho controller của mình.
 
 .. Nintorch: Currently Godot's Input.add_joy_mapping() is broken, it will add a new mapping
    on top of an already existing mapping from SDL (if it exists), so I'm not sure it
@@ -291,13 +201,7 @@ In this case, you will need to create a custom mapping for your controller.
    One option is to use the mapping wizard
    in the `official Joypads demo <https://godotengine.org/asset-library/asset/2785>`__.
 
-There are many ways to create mappings.
-One option is to start Steam in Big Picture mode, configure the controller and then look in ``config/config.vdf``
-in the Steam installation directory for the ``SDL_GamepadBind`` entry.
-Another option is to use `SDL's testcontroller application <https://www.libsdl.org/tmp/testcontroller.zip>`__
-(the link only provides a Windows executable).
-Once you have a working mapping for your controller, you can test it by defining
-the ``SDL_GAMECONTROLLERCONFIG`` environment variable before running Godot:
+Có nhiều cách để tạo mapping. Một lựa chọn là khởi động Steam ở chế độ Big Picture, cấu hình controller rồi tìm trong ``config/config.vdf`` trong thư mục cài đặt Steam mục ``SDL_GamepadBind``. Một lựa chọn khác là sử dụng `ứng dụng testcontroller của SDL <https://www.libsdl.org/tmp/testcontroller.zip>`__ (liên kết này chỉ cung cấp tệp thực thi Windows). Sau khi có mapping hoạt động cho controller, bạn có thể kiểm tra mapping bằng cách định nghĩa biến môi trường ``SDL_GAMECONTROLLERCONFIG`` trước khi chạy Godot:
 
 .. tabs::
  .. code-tab:: bash Linux/macOS
@@ -321,57 +225,34 @@ the ``SDL_GAMECONTROLLERCONFIG`` environment variable before running Godot:
    :ref:`Input.add_joy_mapping() <class_Input_method_add_joy_mapping>`
    as early as possible in a script's ``_ready()`` function.
 
-Once you are satisfied with the custom mapping, you can contribute it for
-the next Godot version by opening a pull request on the
-`Godot game controller database <https://github.com/godotengine/godot/blob/master/core/input/godotcontrollerdb.txt>`__,
-or creating an issue in the `Godot repository <https://github.com/godotengine/godot/issues>`__.
+Khi đã hài lòng với mapping tùy chỉnh, bạn có thể đóng góp mapping đó cho phiên bản Godot tiếp theo bằng cách mở pull request trên `cơ sở dữ liệu game controller của Godot <https://github.com/godotengine/godot/blob/master/core/input/godotcontrollerdb.txt>`__, hoặc tạo issue trong `repository Godot <https://github.com/godotengine/godot/issues>`__.
 
-Since Godot uses SDL 3 for controller input, please consider contributing
-the mapping for the SDL library as well by opening a pull request on the
-`official SDL gamepad database <https://github.com/libsdl-org/SDL/blob/main/src/joystick/SDL_gamepad_db.h>`__,
-or creating an issue in the `SDL repository <https://github.com/libsdl-org/SDL/issues>`__.
+Vì Godot sử dụng SDL 3 cho input từ controller, bạn cũng nên đóng góp mapping cho thư viện SDL bằng cách mở pull request trên `cơ sở dữ liệu gamepad chính thức của SDL <https://github.com/libsdl-org/SDL/blob/main/src/joystick/SDL_gamepad_db.h>`__, hoặc tạo issue trong `repository SDL <https://github.com/libsdl-org/SDL/issues>`__.
 
 .. note::
 
-    Note that there are "generic" controllers on the market (usually their
-    ``Input.get_joy_info(device)["raw_name"]`` property contains ``"USB Gamepad"`` string),
-    and different generic controllers may use the same chipset, but they would have a different button placement,
-    so creating a mapping for one of those controllers will most likely conflict with other ones,
-    because the engine has no way of differentiating between controllers with the same chipset.
+    Lưu ý rằng trên thị trường có các controller "generic" (thường thuộc tính ``Input.get_joy_info(device)["raw_name"]`` của chúng chứa chuỗi ``"USB Gamepad"``), và các controller generic khác nhau có thể sử dụng cùng một chipset, nhưng chúng có thể có cách bố trí nút khác nhau. Vì vậy, việc tạo mapping cho một trong các controller đó rất có thể sẽ xung đột với những controller khác, bởi engine không có cách nào phân biệt các controller sử dụng cùng chipset.
 
-My controller works on a given platform, but not on another platform.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Controller của tôi hoạt động trên một nền tảng nhất định nhưng không hoạt động trên nền tảng khác.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Linux
 ^^^^^
 
-If you're using a self-compiled engine binary, make sure it was compiled with
-udev support. This is enabled by default, but it is possible to disable udev
-support by specifying ``udev=no`` on the SCons command line. If you're using an
-engine binary supplied by a Linux distribution, double-check whether it was
-compiled with udev support.
+Nếu bạn đang sử dụng binary engine tự biên dịch, hãy đảm bảo binary đó được biên dịch với hỗ trợ udev. Tính năng này được bật theo mặc định, nhưng bạn có thể tắt hỗ trợ udev bằng cách chỉ định ``udev=no`` trên dòng lệnh SCons. Nếu bạn đang sử dụng binary engine do một bản phân phối Linux cung cấp, hãy kiểm tra lại xem binary đó có được biên dịch với hỗ trợ udev hay không.
 
-Controllers can still work without udev support, but it is less reliable as
-regular polling must be used to check for controllers being connected or
-disconnected during gameplay (hotplugging).
+Controller vẫn có thể hoạt động mà không cần hỗ trợ udev, nhưng độ tin cậy sẽ thấp hơn vì phải sử dụng polling thông thường để kiểm tra xem controller có được kết nối hoặc ngắt kết nối trong khi chơi hay không (hotplugging).
 
 Android
 ^^^^^^^
 
-As described at the top of the page, controller support on mobile platforms relies
-on a custom implementation instead of using SDL for input. This means controller
-support may be less reliable than on desktop platforms.
+Như đã mô tả ở đầu trang, hỗ trợ controller trên các nền tảng di động dựa vào một implementation tùy chỉnh thay vì sử dụng SDL cho input. Điều này có nghĩa là hỗ trợ controller có thể kém tin cậy hơn so với trên các nền tảng desktop.
 
-Support for SDL-based controller input on mobile platforms is
-planned in a future release.
+Hỗ trợ input từ controller dựa trên SDL trên các nền tảng di động được dự kiến sẽ có trong một bản phát hành tương lai.
 
 Web
 ^^^
 
-Web controller support is often less reliable compared to "native" platforms.
-The quality of controller support tends to vary wildly across browsers. As a
-result, you may have to instruct your players to use a different browser if they
-can't get their controller to work.
+Hỗ trợ controller trên Web thường kém tin cậy hơn so với các nền tảng "native". Chất lượng hỗ trợ controller có xu hướng khác biệt rất lớn giữa các trình duyệt. Do đó, bạn có thể phải hướng dẫn người chơi sử dụng một trình duyệt khác nếu họ không thể làm cho controller hoạt động.
 
-Like for mobile platforms, support for SDL-based controller input on the web platform
-is planned in a future release.
+Tương tự như trên các nền tảng di động, hỗ trợ input từ controller dựa trên SDL trên nền tảng web được dự kiến sẽ có trong một bản phát hành tương lai.

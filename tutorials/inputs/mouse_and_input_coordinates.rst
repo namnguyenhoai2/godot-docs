@@ -1,48 +1,41 @@
 .. _doc_mouse_and_input_coordinates:
 
-Mouse and input coordinates
-===========================
+Tọa độ chuột và tọa độ đầu vào
+==============================
 
-About
------
+Giới thiệu
+----------
 
-The reason for this small tutorial is to clear up many common mistakes
-about input coordinates, obtaining mouse position and screen resolution,
-etc.
+Mục đích của hướng dẫn ngắn này là làm rõ nhiều lỗi phổ biến về tọa độ đầu vào, cách lấy vị trí chuột và độ phân giải màn hình, v.v.
 
-Hardware display coordinates
-----------------------------
+Tọa độ hiển thị phần cứng
+-------------------------
 
-Using hardware coordinates makes sense in the case of writing complex
-UIs meant to run on PC, such as editors, MMOs, tools, etc. However, it does
-not make as much sense outside of that scope.
+Việc sử dụng tọa độ phần cứng phù hợp khi viết các UI phức tạp предназнач cho PC, chẳng hạn như trình chỉnh sửa, MMO, công cụ, v.v. Tuy nhiên, cách này không phù hợp bằng khi nằm ngoài phạm vi đó.
 
-Viewport display coordinates
-----------------------------
+Tọa độ hiển thị viewport
+------------------------
 
-Godot uses viewports to display content, and viewports can be scaled by
-several options (see :ref:`doc_multiple_resolutions` tutorial). Use, then, the
-functions in nodes to obtain the mouse coordinates and viewport size,
-for example:
+Godot sử dụng viewport để hiển thị nội dung và viewport có thể được scale bằng một số tùy chọn (xem hướng dẫn :ref:`doc_multiple_resolutions`). Vì vậy, hãy sử dụng các hàm trong node để lấy tọa độ chuột và kích thước viewport, ví dụ:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     func _input(event):
-        # Mouse in viewport coordinates.
+        # Chuột trong tọa độ viewport.
         if event is InputEventMouseButton:
             print("Mouse Click/Unclick at: ", event.position)
         elif event is InputEventMouseMotion:
             print("Mouse Motion at: ", event.position)
 
-        # Print the size of the viewport.
+        # In kích thước của viewport.
         print("Viewport Resolution is: ", get_viewport().get_visible_rect().size)
 
  .. code-tab:: csharp
 
     public override void _Input(InputEvent @event)
     {
-        // Mouse in viewport coordinates.
+        // Chuột trong tọa độ viewport.
         if (@event is InputEventMouseButton eventMouseButton)
         {
             GD.Print("Mouse Click/Unclick at: ", eventMouseButton.Position);
@@ -52,11 +45,11 @@ for example:
             GD.Print("Mouse Motion at: ", eventMouseMotion.Position);
         }
 
-        // Print the size of the viewport.
+        // In kích thước của viewport.
         GD.Print("Viewport Resolution is: ", GetViewport().GetVisibleRect().Size);
     }
 
-Alternatively, it's possible to ask the viewport for the mouse position:
+Ngoài ra, bạn có thể yêu cầu viewport cung cấp vị trí chuột:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -69,12 +62,7 @@ Alternatively, it's possible to ask the viewport for the mouse position:
 
 .. note::
 
-    When the mouse mode is set to ``Input.MOUSE_MODE_CAPTURED``, the ``event.position``
-    value from ``InputEventMouseMotion`` is the center of the screen.
-    Use ``event.relative`` instead of ``event.position`` and ``event.velocity``
-    to process mouse movement and position changes.
+    Khi mouse mode được đặt thành ``Input.MOUSE_MODE_CAPTURED``, giá trị ``event.position`` từ ``InputEventMouseMotion`` là tâm màn hình. Hãy sử dụng ``event.relative`` thay vì ``event.position`` và ``event.velocity`` để xử lý chuyển động chuột và các thay đổi vị trí.
 
-    When implementing features such as mouselook, it's recommended to use
-    ``event.screen_relative`` and ``event.screen_velocity`` instead of ``event.relative``
-    and ``event.velocity`` so that mouse movement behaves the same across
-    :ref:`multiple resolutions <doc_multiple_resolutions>`.
+    Khi triển khai các tính năng như mouselook, bạn nên sử dụng ``event.screen_relative`` và ``event.screen_velocity`` thay vì ``event.relative`` và ``event.velocity`` để chuyển động chuột hoạt động giống nhau trên
+    :ref:`nhiều độ phân giải <doc_multiple_resolutions>`.

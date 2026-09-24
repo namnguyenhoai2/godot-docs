@@ -1,32 +1,21 @@
 .. _doc_input_examples:
 
-Input examples
-==============
+Ví dụ đầu vào
+=============
 
-Introduction
-------------
+Giới thiệu
+----------
 
-In this tutorial, you'll learn how to use Godot's :ref:`InputEvent <class_InputEvent>`
-system to capture player input. There are many different types of input your
-game may use - keyboard, gamepad, mouse, etc. - and many different ways to
-turn those inputs into actions in your game. This document will show you some
-of the most common scenarios, which you can use as starting points for your
-own projects.
+Trong hướng dẫn này, bạn sẽ học cách sử dụng hệ thống :ref:`InputEvent <class_InputEvent>` của Godot để thu nhận đầu vào từ người chơi. Trò chơi của bạn có thể sử dụng nhiều loại đầu vào khác nhau - bàn phím, gamepad, chuột, v.v. - và có nhiều cách khác nhau để chuyển những đầu vào đó thành các hành động trong trò chơi. Tài liệu này sẽ trình bày một số tình huống phổ biến nhất, mà bạn có thể dùng làm điểm khởi đầu cho các dự án của riêng mình.
 
-.. note:: For a detailed overview of how Godot's input event system works,
-          see :ref:`doc_inputevent`.
+.. note:: Để xem tổng quan chi tiết về cách hệ thống sự kiện đầu vào của Godot hoạt động, hãy xem :ref:`doc_inputevent`.
 
-Events versus polling
----------------------
+Sự kiện và thăm dò trạng thái
+-----------------------------
 
-Sometimes you want your game to respond to a certain input event - pressing
-the "jump" button, for example. For other situations, you might want something
-to happen as long as a key is pressed, such as movement. In the first case,
-you can use the ``_input()`` function, which will be called whenever an input
-event occurs. In the second case, Godot provides the :ref:`Input <class_Input>`
-singleton, which you can use to query the state of an input.
+Đôi khi bạn muốn trò chơi phản hồi một sự kiện đầu vào cụ thể - chẳng hạn như nhấn nút "nhảy". Trong những tình huống khác, bạn có thể muốn một việc xảy ra miễn là một phím đang được nhấn, chẳng hạn như di chuyển. Trong trường hợp đầu tiên, bạn có thể sử dụng hàm ``_input()``, hàm này sẽ được gọi bất cứ khi nào một sự kiện đầu vào xảy ra. Trong trường hợp thứ hai, Godot cung cấp singleton :ref:`Input <class_Input>`, mà bạn có thể dùng để truy vấn trạng thái của một đầu vào.
 
-Examples:
+Ví dụ:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -38,7 +27,7 @@ Examples:
 
     func _physics_process(delta):
         if Input.is_action_pressed("move_right"):
-            # Move as long as the key/button is pressed.
+            # Di chuyển miễn là phím/nút đang được nhấn.
             position.x += speed * delta
 
  .. code-tab:: csharp
@@ -55,24 +44,19 @@ Examples:
     {
         if (Input.IsActionPressed("move_right"))
         {
-            // Move as long as the key/button is pressed.
+            // Di chuyển miễn là phím/nút đang được nhấn.
             position.X += speed * (float)delta;
         }
     }
 
-This gives you the flexibility to mix-and-match the type of input processing
-you do.
+Điều này giúp bạn linh hoạt kết hợp các kiểu xử lý đầu vào khác nhau.
 
-For the remainder of this tutorial, we'll focus on capturing individual
-events in ``_input()``.
+Trong phần còn lại của hướng dẫn này, chúng ta sẽ tập trung vào việc thu nhận từng sự kiện riêng lẻ trong ``_input()``.
 
-Input events
-------------
+Sự kiện đầu vào
+---------------
 
-Input events are objects that inherit from :ref:`InputEvent <class_InputEvent>`.
-Depending on the event type, the object will contain specific properties
-related to that event. To see what events actually look like, add a Node and
-attach the following script:
+Sự kiện đầu vào là các đối tượng kế thừa từ :ref:`InputEvent <class_InputEvent>`. Tùy thuộc vào loại sự kiện, đối tượng sẽ chứa các thuộc tính cụ thể liên quan đến sự kiện đó. Để xem các sự kiện thực sự trông như thế nào, hãy thêm một Node và gắn script sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -95,8 +79,7 @@ attach the following script:
         }
     }
 
-As you press keys, move the mouse, and perform other inputs, you'll see each
-event scroll by in the output window. Here's an example of the output:
+Khi bạn nhấn phím, di chuyển chuột và thực hiện các thao tác đầu vào khác, bạn sẽ thấy từng sự kiện lần lượt xuất hiện trong cửa sổ output. Dưới đây là một ví dụ về output:
 
 ::
 
@@ -114,23 +97,16 @@ event scroll by in the output window. Here's an example of the output:
     Shift+T
     Mouse motion at position ((868, 242)) with velocity ((-2.134768, 2.134768))
 
-As you can see, the results are very different for the different types of
-input. Key events are even printed as their key symbols. For example, let's
-consider :ref:`InputEventMouseButton <class_InputEventMouseButton>`.
-It inherits from the following classes:
+Như bạn có thể thấy, kết quả rất khác nhau đối với các loại đầu vào khác nhau. Các sự kiện phím thậm chí còn được in dưới dạng ký hiệu phím tương ứng. Ví dụ, hãy xét :ref:`InputEventMouseButton <class_InputEventMouseButton>`. Nó kế thừa từ các lớp sau:
 
-- :ref:`InputEvent <class_InputEvent>` - the base class for all input events
-- :ref:`InputEventWithModifiers <class_InputEventWithModifiers>` - adds the ability to check if modifiers are pressed, such as :kbd:`Shift` or :kbd:`Alt`.
-- :ref:`InputEventMouse <class_InputEventMouse>` - adds mouse event properties, such as ``position``
-- :ref:`InputEventMouseButton <class_InputEventMouseButton>` - contains the index of the button that was pressed, whether it was a double-click, etc.
+- :ref:`InputEvent <class_InputEvent>` - lớp cơ sở cho mọi sự kiện đầu vào
+- :ref:`InputEventWithModifiers <class_InputEventWithModifiers>` - bổ sung khả năng kiểm tra xem các phím bổ trợ có đang được nhấn hay không, chẳng hạn như :kbd:`Shift` hoặc :kbd:`Alt`.
+- :ref:`InputEventMouse <class_InputEventMouse>` - bổ sung các thuộc tính sự kiện chuột, chẳng hạn như ``position``
+- :ref:`InputEventMouseButton <class_InputEventMouseButton>` - chứa chỉ mục của nút đã được nhấn, cho biết đó có phải là thao tác nhấp đúp hay không, v.v.
 
-.. tip:: It's a good idea to keep the class reference open while you're working
-        with events so you can check the event type's available properties and
-        methods.
+.. tip:: Bạn nên mở phần tham chiếu lớp trong khi làm việc với các sự kiện để có thể kiểm tra những thuộc tính và phương thức khả dụng của loại sự kiện.
 
-You can encounter errors if you try to access a property on an input type that
-doesn't contain it - calling ``position`` on ``InputEventKey`` for example. To
-avoid this, make sure to test the event type first:
+Bạn có thể gặp lỗi nếu cố truy cập một thuộc tính trên một kiểu đầu vào không chứa thuộc tính đó - chẳng hạn như gọi ``position`` trên ``InputEventKey``. Để tránh điều này, trước tiên hãy kiểm tra loại sự kiện:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -154,28 +130,20 @@ avoid this, make sure to test the event type first:
 InputMap
 --------
 
-The :ref:`InputMap <class_InputMap>` is the most flexible way to handle a
-variety of inputs. You use this by creating named input *actions*, to which
-you can assign any number of input events, such as keypresses or mouse clicks.
-To see them, and to add your own, open Project -> Project Settings and select
-the InputMap tab:
+:ref:`InputMap <class_InputMap>` là cách linh hoạt nhất để xử lý nhiều loại đầu vào. Bạn sử dụng nó bằng cách tạo các *action* đầu vào có tên, sau đó có thể gán cho chúng bất kỳ số lượng sự kiện đầu vào nào, chẳng hạn như thao tác nhấn phím hoặc nhấp chuột. Để xem các action đó và thêm action của riêng bạn, hãy mở Project -> Project Settings rồi chọn tab InputMap:
 
 .. image:: img/inputs_inputmap.webp
 
 .. tip::
 
-    A new Godot project includes a number of default actions already defined.
-    To see them, turn on :button:`Show Built-in Actions` in the InputMap dialog.
+    Một dự án Godot mới đã có sẵn một số action mặc định được định nghĩa. Để xem chúng, hãy bật :button:`Show Built-in Actions` trong hộp thoại InputMap.
 
-    While not strictly required, it's recommended to use the ``snake_case`` naming
-    convention for input action names.
+    Mặc dù không bắt buộc nghiêm ngặt, bạn nên sử dụng quy ước đặt tên ``snake_case`` cho tên các action đầu vào.
 
-Capturing actions
-~~~~~~~~~~~~~~~~~
+Thu nhận action
+~~~~~~~~~~~~~~~
 
-Once you've defined your actions, you can process them in your scripts using
-``is_action_pressed()`` and ``is_action_released()`` by passing the name of
-the action you're looking for:
+Sau khi định nghĩa các action, bạn có thể xử lý chúng trong script bằng ``is_action_pressed()`` và ``is_action_released()`` bằng cách truyền vào tên của action mà bạn đang tìm kiếm:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -194,13 +162,10 @@ the action you're looking for:
         }
     }
 
-Keyboard events
----------------
+Sự kiện bàn phím
+----------------
 
-Keyboard events are captured in :ref:`InputEventKey <class_InputEventKey>`.
-While it's recommended to use input actions instead, there may be cases where
-you want to specifically look at key events. For this example, let's check for
-the :kbd:`T`:
+Sự kiện bàn phím được thu nhận trong :ref:`InputEventKey <class_InputEventKey>`. Mặc dù nên sử dụng input action, có thể có những trường hợp bạn muốn kiểm tra cụ thể các sự kiện phím. Trong ví dụ này, hãy kiểm tra :kbd:`T`:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -223,30 +188,19 @@ the :kbd:`T`:
         }
     }
 
-.. tip:: See :ref:`@GlobalScope_Key <enum_@GlobalScope_Key>` for a list of keycode
-        constants.
+.. tip:: Xem :ref:`@GlobalScope_Key <enum_@GlobalScope_Key>` để biết danh sách các hằng số keycode.
 
 .. warning::
 
-    Due to *keyboard ghosting*, not all key inputs may be registered at a given time
-    if you press too many keys at once. Due to their location on the keyboard,
-    certain keys are more prone to ghosting than others. Some keyboards feature
-    antighosting at a hardware level, but this feature is generally
-    not present on low-end keyboards and laptop keyboards.
+    Do *keyboard ghosting*, không phải mọi đầu vào phím đều có thể được ghi nhận tại một thời điểm nhất định nếu bạn nhấn quá nhiều phím cùng lúc. Do vị trí của chúng trên bàn phím, một số phím dễ bị ghosting hơn những phím khác. Một số bàn phím có tính năng antighosting ở cấp phần cứng, nhưng tính năng này thường không có trên bàn phím giá rẻ và bàn phím máy tính xách tay.
 
-    As a result, it's recommended to use a default keyboard layout that is designed to work well
-    on a keyboard without antighosting. See
-    `this Gamedev Stack Exchange question <https://gamedev.stackexchange.com/a/109002>`__
-    for more information.
+    Do đó, bạn nên sử dụng bố cục bàn phím mặc định được thiết kế để hoạt động tốt trên bàn phím không có antighosting. Xem `this Gamedev Stack Exchange question <https://gamedev.stackexchange.com/a/109002>`__ để biết thêm thông tin.
 
-Keyboard modifiers
-~~~~~~~~~~~~~~~~~~
+Phím bổ trợ trên bàn phím
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Modifier properties are inherited from
-:ref:`InputEventWithModifiers <class_InputEventWithModifiers>`. This allows
-you to check for modifier combinations using boolean properties. Let's imagine
-you want one thing to happen when the :kbd:`T` is pressed, but something
-different when it's :kbd:`Shift + T`:
+Các thuộc tính phím bổ trợ được kế thừa từ
+:ref:`InputEventWithModifiers <class_InputEventWithModifiers>`. Điều này cho phép bạn kiểm tra các tổ hợp phím bổ trợ bằng các thuộc tính boolean. Hãy tưởng tượng bạn muốn một việc xảy ra khi nhấn :kbd:`T`, nhưng một việc khác xảy ra khi phím đó :kbd:`Shift + T`:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -274,25 +228,17 @@ different when it's :kbd:`Shift + T`:
         }
     }
 
-.. tip:: See :ref:`@GlobalScope_Key <enum_@GlobalScope_Key>` for a list of keycode
-        constants.
+.. tip:: Xem :ref:`@GlobalScope_Key <enum_@GlobalScope_Key>` để biết danh sách các hằng số keycode.
 
-Mouse events
-------------
+Sự kiện chuột
+-------------
 
-Mouse events stem from the :ref:`InputEventMouse <class_InputEventMouse>` class, and
-are separated into two types: :ref:`InputEventMouseButton <class_InputEventMouseButton>`
-and :ref:`InputEventMouseMotion <class_InputEventMouseMotion>`. Note that this
-means that all mouse events will contain a ``position`` property.
+Các sự kiện chuột bắt nguồn từ lớp :ref:`InputEventMouse <class_InputEventMouse>` và được chia thành hai loại: :ref:`InputEventMouseButton <class_InputEventMouseButton>` và :ref:`InputEventMouseMotion <class_InputEventMouseMotion>`. Lưu ý rằng điều này có nghĩa là mọi sự kiện chuột đều chứa thuộc tính ``position``.
 
-Mouse buttons
-~~~~~~~~~~~~~
+Nút chuột
+~~~~~~~~~
 
-Capturing mouse buttons is very similar to handling key events. :ref:`@GlobalScope_MouseButton <enum_@GlobalScope_MouseButton>`
-contains a list of ``MOUSE_BUTTON_*`` constants for each possible button, which will
-be reported in the event's ``button_index`` property. Note that the scrollwheel
-also counts as a button - two buttons, to be precise, with both
-``MOUSE_BUTTON_WHEEL_UP`` and ``MOUSE_BUTTON_WHEEL_DOWN`` being separate events.
+Việc thu nhận các nút chuột rất giống với việc xử lý các sự kiện phím. :ref:`@GlobalScope_MouseButton <enum_@GlobalScope_MouseButton>` chứa danh sách các hằng số ``MOUSE_BUTTON_*`` cho từng nút có thể có, và các hằng số này sẽ được báo cáo trong thuộc tính ``button_index`` của sự kiện. Lưu ý rằng con lăn chuột cũng được tính là một nút - chính xác là hai nút, với ``MOUSE_BUTTON_WHEEL_UP`` và ``MOUSE_BUTTON_WHEEL_DOWN`` là các sự kiện riêng biệt.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -322,15 +268,12 @@ also counts as a button - two buttons, to be precise, with both
         }
     }
 
-Mouse motion
-~~~~~~~~~~~~
+Chuyển động chuột
+~~~~~~~~~~~~~~~~~
 
-:ref:`InputEventMouseMotion <class_InputEventMouseMotion>` events occur whenever
-the mouse moves. You can find the move's distance with the ``relative``
-property.
+Các sự kiện :ref:`InputEventMouseMotion <class_InputEventMouseMotion>` xảy ra mỗi khi chuột di chuyển. Bạn có thể tìm khoảng cách di chuyển bằng thuộc tính ``relative``.
 
-Here's an example using mouse events to drag-and-drop a :ref:`Sprite2D <class_Sprite2D>`
-node:
+Dưới đây là một ví dụ sử dụng các sự kiện chuột để kéo và thả một node :ref:`Sprite2D <class_Sprite2D>`:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -339,21 +282,21 @@ node:
 
 
     var dragging = false
-    var click_radius = 32 # Size of the sprite.
+    var click_radius = 32 # Kích thước của sprite.
 
 
     func _input(event):
         if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
             if (event.position - $Sprite2D.position).length() < click_radius:
-                # Start dragging if the click is on the sprite.
+                # Bắt đầu kéo nếu thao tác nhấp nằm trên sprite.
                 if not dragging and event.pressed:
                     dragging = true
-            # Stop dragging if the button is released.
+            # Dừng kéo nếu nút được thả ra.
             if dragging and not event.pressed:
                 dragging = false
 
         if event is InputEventMouseMotion and dragging:
-            # While dragging, move the sprite with the mouse.
+            # Trong khi kéo, di chuyển sprite bằng chuột.
             $Sprite2D.position = event.position
 
  .. code-tab:: csharp
@@ -363,27 +306,27 @@ node:
     public partial class MyNode2D : Node2D
     {
         private bool _dragging = false;
-        private int _clickRadius = 32; // Size of the sprite.
+        private int _clickRadius = 32; // Kích thước của sprite.
 
         public override void _Input(InputEvent @event)
         {
             Sprite2D sprite = GetNodeOrNull<Sprite2D>("Sprite2D");
             if (sprite == null)
             {
-                return; // No suitable node was found.
+                return; // Không tìm thấy node phù hợp.
             }
 
             if (@event is InputEventMouseButton mouseEvent && mouseEvent.ButtonIndex == MouseButton.Left)
             {
                 if ((mouseEvent.Position - sprite.Position).Length() < _clickRadius)
                 {
-                    // Start dragging if the click is on the sprite.
+                    // Bắt đầu kéo nếu thao tác nhấp nằm trên sprite.
                     if (!_dragging && mouseEvent.Pressed)
                     {
                         _dragging = true;
                     }
                 }
-                // Stop dragging if the button is released.
+                // Dừng kéo khi nhả nút chuột.
                 if (_dragging && !mouseEvent.Pressed)
                 {
                     _dragging = false;
@@ -393,22 +336,17 @@ node:
             {
                 if (@event is InputEventMouseMotion motionEvent && _dragging)
                 {
-                    // While dragging, move the sprite with the mouse.
+                    // Trong khi kéo, di chuyển sprite bằng chuột.
                     sprite.Position = motionEvent.Position;
                 }
             }
         }
     }
 
-Touch events
-------------
+Sự kiện cảm ứng
+---------------
 
-If you are using a touchscreen device, you can generate touch events.
-:ref:`InputEventScreenTouch <class_InputEventScreenTouch>` is equivalent to
-a mouse click event, and :ref:`InputEventScreenDrag <class_InputEventScreenDrag>`
-works much the same as mouse motion.
+Nếu bạn đang sử dụng thiết bị màn hình cảm ứng, bạn có thể tạo các sự kiện cảm ứng.
+:ref:`InputEventScreenTouch <class_InputEventScreenTouch>` tương đương với sự kiện nhấp chuột và :ref:`InputEventScreenDrag <class_InputEventScreenDrag>` hoạt động gần giống như chuyển động chuột.
 
-.. tip:: To test your touch events on a non-touchscreen device, open Project
-        Settings and go to the "Input Devices/Pointing" section. Enable "Emulate
-        Touch From Mouse" and your project will interpret mouse clicks and
-        motion as touch events.
+.. tip:: Để kiểm thử các sự kiện cảm ứng trên thiết bị không có màn hình cảm ứng, hãy mở Project Settings và đi đến phần "Input Devices/Pointing". Bật "Emulate Touch From Mouse" để dự án của bạn diễn giải các thao tác nhấp và di chuyển chuột thành các sự kiện cảm ứng.

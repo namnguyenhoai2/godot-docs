@@ -1,50 +1,40 @@
 .. _doc_custom_mouse_cursor:
 
-Customizing the mouse cursor
-============================
+Tùy chỉnh con trỏ chuột
+=======================
 
-You might want to change the appearance of the mouse cursor in your game in
-order to suit the overall design. There are two ways to customize the mouse
-cursor:
+Bạn có thể muốn thay đổi giao diện của con trỏ chuột trong game để phù hợp với thiết kế tổng thể. Có hai cách để tùy chỉnh con trỏ chuột:
 
-1. Using project settings. This is simpler, but more limited.
-2. Using a script. This is more customizable, but involves scripting.
+1. Sử dụng cài đặt dự án. Cách này đơn giản hơn nhưng bị giới hạn hơn.
+2. Sử dụng script. Cách này tùy biến hơn nhưng cần viết script.
 
 .. note::
 
-    You could display a "software" mouse cursor by hiding the mouse cursor and
-    moving a Sprite2D to the cursor position in a ``_process()`` method, but
-    this will add at least one frame of latency compared to a "hardware" mouse
-    cursor. Therefore, it's recommended to use the approach described here
-    whenever possible.
+    Bạn có thể hiển thị con trỏ chuột "software" bằng cách ẩn con trỏ chuột và di chuyển một Sprite2D đến vị trí con trỏ trong phương thức ``_process()``, nhưng cách này sẽ tạo thêm ít nhất một frame độ trễ so với con trỏ chuột "hardware". Vì vậy, bạn nên sử dụng phương pháp được mô tả ở đây whenever possible.
 
-    If you have to use the "software" approach, consider adding an extrapolation step
-    to better display the actual mouse input.
+    Nếu phải sử dụng phương pháp "software", hãy cân nhắc thêm một bước ngoại suy để hiển thị tốt hơn dữ liệu đầu vào thực tế từ chuột.
 
-Using project settings
-----------------------
+Sử dụng cài đặt dự án
+---------------------
 
-Open the **Project Settings** and go to **Display > Mouse Cursor**. You will see the settings
+Mở **Project Settings** và đi đến **Display > Mouse Cursor**. Bạn sẽ thấy các cài đặt
 :ref:`Custom Image <class_ProjectSettings_property_display/mouse_cursor/custom_image>`,
-:ref:`Custom Image Hotspot <class_ProjectSettings_property_display/mouse_cursor/custom_image_hotspot>`,
-and :ref:`Tooltip Position Offset <class_ProjectSettings_property_display/mouse_cursor/tooltip_position_offset>`.
+:ref:`Custom Image Hotspot <class_ProjectSettings_property_display/mouse_cursor/custom_image_hotspot>`, và :ref:`Tooltip Position Offset <class_ProjectSettings_property_display/mouse_cursor/tooltip_position_offset>`.
 
 .. image:: img/cursor_project_settings.webp
 
-**Custom Image** is the desired image that you would like to set as the mouse cursor.
-**Custom Hotspot** is the point in the image that you would like to use as the cursor's detection point.
+**Custom Image** là hình ảnh bạn muốn đặt làm con trỏ chuột. **Custom Hotspot** là điểm trong hình ảnh mà bạn muốn sử dụng làm điểm phát hiện của con trỏ.
 
 .. warning::
 
-    The custom image **must** be 256×256 pixels at most. To avoid rendering
-    issues, sizes of 128×128 or smaller are recommended.
+    Hình ảnh tùy chỉnh **must** có kích thước tối đa 256×256 pixel. Để tránh các vấn đề khi render, nên sử dụng kích thước 128×128 hoặc nhỏ hơn.
 
-    On the web platform, the maximum allowed cursor image size is 128×128.
+    Trên nền tảng web, kích thước hình ảnh con trỏ tối đa được phép là 128×128.
 
-Using a script
+Sử dụng script
 --------------
 
-Create a Node and attach the following script.
+Tạo một Node và gắn script sau vào đó.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -52,17 +42,17 @@ Create a Node and attach the following script.
     extends Node
 
 
-    # Load the custom images for the mouse cursor.
+    # Tải các hình ảnh tùy chỉnh cho con trỏ chuột.
     var arrow = load("res://arrow.png")
     var beam = load("res://beam.png")
 
 
     func _ready():
-        # Changes only the arrow shape of the cursor.
-        # This is similar to changing it in the project settings.
+        # Chỉ thay đổi hình dạng mũi tên của con trỏ.
+        # Tương tự như thay đổi hình dạng này trong cài đặt dự án.
         Input.set_custom_mouse_cursor(arrow)
 
-        # Changes a specific shape of the cursor (here, the I-beam shape).
+        # Thay đổi một hình dạng cụ thể của con trỏ (ở đây là hình dạng I-beam).
         Input.set_custom_mouse_cursor(beam, Input.CURSOR_IBEAM)
 
  .. code-tab:: csharp
@@ -73,27 +63,25 @@ Create a Node and attach the following script.
     {
         public override void _Ready()
         {
-            // Load the custom images for the mouse cursor.
+            // Tải các hình ảnh tùy chỉnh cho con trỏ chuột.
             var arrow = ResourceLoader.Load("res://arrow.png");
             var beam = ResourceLoader.Load("res://beam.png");
 
-            // Changes only the arrow shape of the cursor.
-            // This is similar to changing it in the project settings.
+            // Chỉ thay đổi hình dạng mũi tên của con trỏ.
+            // Tương tự như thay đổi hình dạng này trong cài đặt dự án.
             Input.SetCustomMouseCursor(arrow);
 
-            // Changes a specific shape of the cursor (here, the I-beam shape).
+            // Thay đổi một hình dạng cụ thể của con trỏ (ở đây là hình dạng I-beam).
             Input.SetCustomMouseCursor(beam, Input.CursorShape.Ibeam);
         }
     }
 
 .. seealso::
 
-    Check :ref:`Input.set_custom_mouse_cursor() <class_Input_method_set_custom_mouse_cursor>`'s
-    documentation for more information on usage and platform-specific caveats.
+    Xem tài liệu của :ref:`Input.set_custom_mouse_cursor() <class_Input_method_set_custom_mouse_cursor>` để biết thêm thông tin về cách sử dụng và các lưu ý riêng theo từng nền tảng.
 
-Cursor list
------------
+Danh sách con trỏ
+-----------------
 
-There are multiple mouse cursors you can define, documented in the
-:ref:`Input.CursorShape <enum_Input_CursorShape>` enum. Which ones you want to use
-depends on your use case.
+Bạn có thể định nghĩa nhiều con trỏ chuột, được mô tả trong
+enum :ref:`Input.CursorShape <enum_Input_CursorShape>`. Việc bạn muốn sử dụng con trỏ nào phụ thuộc vào trường hợp sử dụng.
