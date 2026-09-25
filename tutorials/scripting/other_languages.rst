@@ -1,22 +1,21 @@
 .. _doc_scripting_languages:
 
-Other languages
----------------
+Các ngôn ngữ khác
+-----------------
 
-The Godot developers officially support the following languages for Godot:
+Các nhà phát triển Godot chính thức hỗ trợ những ngôn ngữ sau cho Godot:
 
-- :ref:`GDScript (all versions)<doc_gdscript>`
-- :ref:`C# (.NET version)<doc_c_sharp>`
-- :ref:`C++ (via GDExtension) <doc_godot_cpp>`
+- :ref:`GDScript (tất cả các phiên bản) <doc_gdscript>`
+- :ref:`C# (phiên bản .NET) <doc_c_sharp>`
+- :ref:`C++ (thông qua GDExtension) <doc_godot_cpp>`
 
 .. note::
 
-    There are no plans to support additional languages officially.
-    That said, the community offers several bindings for other languages (see below).
+    Hiện chưa có kế hoạch chính thức hỗ trợ thêm ngôn ngữ nào. Tuy vậy, cộng đồng cung cấp một số binding cho các ngôn ngữ khác (xem bên dưới).
 
 .. _doc_what_is_gdnative_third_party_bindings:
 
-The bindings below are developed and maintained by the community:
+Các binding bên dưới được cộng đồng phát triển và duy trì:
 
 .. Binding developers: Feel free to open a pull request to add your binding if it's well-developed enough to be used in a project.
 .. Please keep languages sorted in alphabetical order.
@@ -31,7 +30,4 @@ The bindings below are developed and maintained by the community:
 
 .. note::
 
-    Not all bindings mentioned here may be production-ready. Make sure to
-    research options thoroughly before starting a project with one of those.
-    Also, double-check whether the binding is compatible with the Godot version
-    you're using.
+    Không phải tất cả binding được đề cập ở đây đều có thể sẵn sàng cho môi trường production. Hãy nghiên cứu kỹ các lựa chọn trước khi bắt đầu một dự án với một trong số chúng. Ngoài ra, hãy kiểm tra lại xem binding có tương thích với phiên bản Godot bạn đang sử dụng hay không.

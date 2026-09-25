@@ -1,12 +1,9 @@
 .. _doc_c_sharp_exports:
 
-C# exported properties
-======================
+Các thuộc tính C# được export
+=============================
 
-In Godot, class members can be exported. This means their value gets saved along
-with the resource (such as the :ref:`scene <class_PackedScene>`) they're
-attached to. They will also be available for editing in the property editor.
-Exporting is done by using the ``[Export]`` attribute.
+Trong Godot, các thành viên của lớp có thể được export. Điều này có nghĩa là giá trị của chúng sẽ được lưu cùng với resource (chẳng hạn như :ref:`scene <class_PackedScene>`) mà chúng được gắn vào. Chúng cũng sẽ có sẵn để chỉnh sửa trong trình chỉnh sửa thuộc tính. Việc export được thực hiện bằng cách sử dụng attribute ``[Export]``.
 
 .. code-block:: csharp
 
@@ -18,25 +15,20 @@ Exporting is done by using the ``[Export]`` attribute.
         public int Number { get; set; } = 5;
     }
 
-In that example the value ``5`` will be saved, and after building the current project
-it will be visible in the property editor.
+Trong ví dụ đó, giá trị ``5`` sẽ được lưu và sau khi build project hiện tại, nó sẽ hiển thị trong trình chỉnh sửa thuộc tính.
 
-One of the fundamental benefits of exporting member variables is to have
-them visible and editable in the editor. This way, artists and game designers
-can modify values that later influence how the program runs. For this, a
-special export syntax is provided.
+Một trong những lợi ích nền tảng của việc export các biến thành viên là giúp chúng hiển thị và có thể chỉnh sửa trong editor. Nhờ đó, artist và game designer có thể sửa đổi các giá trị, những giá trị này về sau sẽ ảnh hưởng đến cách chương trình chạy. Để thực hiện việc này, có một cú pháp export đặc biệt.
 
-Exporting can only be done with :ref:`c_sharp_variant_compatible_types`.
+Chỉ có thể export bằng :ref:`c_sharp_variant_compatible_types`.
 
 .. note::
 
-    Exporting properties can also be done in GDScript, for information on that
-    see :ref:`doc_gdscript_exports`.
+    Bạn cũng có thể export các thuộc tính trong GDScript; để biết thông tin về việc này, hãy xem :ref:`doc_gdscript_exports`.
 
-Basic use
----------
+Cách sử dụng cơ bản
+-------------------
 
-Exporting works with fields and properties. They can have any access modifier.
+Export hoạt động với các field và property. Chúng có thể sử dụng bất kỳ access modifier nào.
 
 .. code-block:: csharp
 
@@ -46,10 +38,9 @@ Exporting works with fields and properties. They can have any access modifier.
     [Export]
     public int Number { get; set; }
 
-Exported members can specify a default value; otherwise, the `default value of the type <https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/default-values>`_ is used instead.
+Các thành viên được export có thể chỉ định giá trị mặc định; nếu không, `giá trị mặc định của kiểu <https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/default-values>`_ sẽ được sử dụng thay thế.
 
-An ``int`` like ``Number`` defaults to ``0``. ``Text`` defaults to null because
-``string`` is a reference type.
+Một ``int`` như ``Number`` mặc định có giá trị ``0``. ``Text`` mặc định là null vì ``string`` là một reference type.
 
 .. code-block:: csharp
 
@@ -59,7 +50,7 @@ An ``int`` like ``Number`` defaults to ``0``. ``Text`` defaults to null because
     [Export]
     public string Text { get; set; }
 
-Default values can be specified for fields and properties.
+Có thể chỉ định giá trị mặc định cho các field và property.
 
 .. code-block:: csharp
 
@@ -69,7 +60,7 @@ Default values can be specified for fields and properties.
     [Export]
     public string Greeting { get; set; } = "Hello World";
 
-Properties with a backing field use the default value of the backing field.
+Các property có backing field sẽ sử dụng giá trị mặc định của backing field.
 
 .. code-block:: csharp
 
@@ -84,13 +75,9 @@ Properties with a backing field use the default value of the backing field.
 
 .. note::
 
-    A property's ``get`` is not actually executed to determine the default
-    value. Instead, Godot analyzes the C# source code. This works fine for most
-    cases, such as the examples on this page. However, some properties are too
-    complex for the analyzer to understand.
+    ``get`` của một property không thực sự được thực thi để xác định giá trị mặc định. Thay vào đó, Godot phân tích mã nguồn C#. Cách này hoạt động tốt trong hầu hết trường hợp, chẳng hạn như các ví dụ trên trang này. Tuy nhiên, một số property quá phức tạp để analyzer hiểu được.
 
-    For example, the following property attempts to use math to display the
-    default value as ``5`` in the property editor, but it doesn't work:
+    Ví dụ, property sau đây cố gắng sử dụng phép tính để hiển thị giá trị mặc định là ``5`` trong trình chỉnh sửa thuộc tính, nhưng không hoạt động:
 
     .. code-block:: csharp
 
@@ -103,18 +90,11 @@ Properties with a backing field use the default value of the backing field.
 
         private int _number = 2;
 
-    The analyzer doesn't understand this code and falls back to the default
-    value for ``int``, ``0``. However, when running the scene or inspecting a
-    node with an attached tool script, ``_number`` will be ``2``, and
-    ``NumberWithBackingField`` will return ``5``. This difference may cause
-    confusing behavior. To avoid this, don't use complex properties. Alternatively,
-    if the default value can be explicitly specified, it can be overridden with the
-    :ref:`_PropertyCanRevert() <class_Object_private_method__property_can_revert>` and
-    :ref:`_PropertyGetRevert() <class_Object_private_method__property_get_revert>` methods.
+    Analyzer không hiểu mã này và quay về giá trị mặc định của ``int``, ``0``. Tuy nhiên, khi chạy scene hoặc kiểm tra một node có gắn tool script, ``_number`` sẽ là ``2``, còn ``NumberWithBackingField`` sẽ trả về ``5``. Sự khác biệt này có thể gây ra hành vi khó hiểu. Để tránh điều này, không sử dụng các property phức tạp. Ngoài ra, nếu có thể chỉ định rõ ràng giá trị mặc định, bạn có thể ghi đè giá trị đó bằng
+    :ref:`_PropertyCanRevert() <class_Object_private_method__property_can_revert>` và
+    các phương thức :ref:`_PropertyGetRevert() <class_Object_private_method__property_get_revert>`.
 
-Any type of ``Resource`` or ``Node`` can be exported. The property editor shows
-a user-friendly assignment dialog for these types. This can be used instead of
-``GD.Load`` and ``GetNode``. See :ref:`Nodes and Resources <doc_c_sharp_exports_nodes>`.
+Có thể export bất kỳ kiểu ``Resource`` hoặc ``Node`` nào. Trình chỉnh sửa thuộc tính sẽ hiển thị hộp thoại gán thân thiện với người dùng cho các kiểu này. Có thể sử dụng cách này thay cho ``GD.Load`` và ``GetNode``. Xem :ref:`Nodes and Resources <doc_c_sharp_exports_nodes>`.
 
 .. code-block:: csharp
 
@@ -124,12 +104,10 @@ a user-friendly assignment dialog for these types. This can be used instead of
     [Export]
     public RigidBody2D RigidBody2D { get; set; }
 
-Grouping exports
-----------------
+Nhóm các export
+---------------
 
-It is possible to group your exported properties inside the Inspector with the ``[ExportGroup]``
-attribute. Every exported property after this attribute will be added to the group. Start a new
-group or use ``[ExportGroup("")]`` to break out.
+Bạn có thể nhóm các thuộc tính được export trong Inspector bằng attribute ``[ExportGroup]``. Mọi thuộc tính được export sau attribute này sẽ được thêm vào nhóm. Hãy bắt đầu một nhóm mới hoặc sử dụng ``[ExportGroup("")]`` để thoát khỏi nhóm.
 
 .. code-block:: csharp
 
@@ -137,9 +115,9 @@ group or use ``[ExportGroup("")]`` to break out.
     [Export]
     public int Number { get; set; } = 3;
 
-The second argument of the attribute can be used to only group properties with the specified prefix.
+Đối số thứ hai của attribute có thể được sử dụng để chỉ nhóm các thuộc tính có prefix được chỉ định.
 
-Groups cannot be nested, use ``[ExportSubgroup]`` to create subgroups within a group.
+Không thể lồng các nhóm; hãy sử dụng ``[ExportSubgroup]`` để tạo các nhóm con bên trong một nhóm.
 
 .. code-block:: csharp
 
@@ -149,8 +127,7 @@ Groups cannot be nested, use ``[ExportSubgroup]`` to create subgroups within a g
     [Export]
     public bool Flag { get; set; } = false;
 
-You can also change the name of your main category, or create additional categories in the property
-list with the ``[ExportCategory]`` attribute.
+Bạn cũng có thể đổi tên category chính hoặc tạo thêm các category trong danh sách thuộc tính bằng attribute ``[ExportCategory]``.
 
 .. code-block:: csharp
 
@@ -166,112 +143,104 @@ list with the ``[ExportCategory]`` attribute.
 
 .. note::
 
-    The list of properties is organized based on the class inheritance, and new categories break
-    that expectation. Use them carefully, especially when creating projects for public use.
+    Danh sách thuộc tính được sắp xếp dựa trên tính kế thừa của lớp, và các category mới sẽ phá vỡ quy tắc đó. Hãy sử dụng chúng cẩn thận, đặc biệt khi tạo project để sử dụng công khai.
 
-Strings as paths
-----------------
+Chuỗi làm đường dẫn
+-------------------
 
-Property hints can be used to export strings as paths
+Có thể sử dụng property hint để export các chuỗi làm đường dẫn
 
-String as a path to a file.
+Chuỗi làm đường dẫn đến một file.
 
 .. code-block:: csharp
 
     [Export(PropertyHint.File)]
     public string GameFile { get; set; }
 
-String as a path to a directory.
+Chuỗi làm đường dẫn đến một thư mục.
 
 .. code-block:: csharp
 
     [Export(PropertyHint.Dir)]
     public string GameDirectory { get; set; }
 
-String as a path to a file, custom filter provided as hint.
+Chuỗi làm đường dẫn đến một file, với bộ lọc tùy chỉnh được cung cấp dưới dạng hint.
 
 .. code-block:: csharp
 
     [Export(PropertyHint.File, "*.txt,")]
     public string GameFile { get; set; }
 
-Using paths in the global filesystem is also possible,
-but only in scripts in tool mode.
+Cũng có thể sử dụng các đường dẫn trong global filesystem, nhưng chỉ trong các script ở tool mode.
 
-String as a path to a PNG file in the global filesystem.
+Chuỗi làm đường dẫn đến một file PNG trong global filesystem.
 
 .. code-block:: csharp
 
     [Export(PropertyHint.GlobalFile, "*.png")]
     public string ToolImage { get; set; }
 
-String as a path to a directory in the global filesystem.
+Chuỗi làm đường dẫn đến một thư mục trong global filesystem.
 
 .. code-block:: csharp
 
     [Export(PropertyHint.GlobalDir)]
     public string ToolDir { get; set; }
 
-The multiline annotation tells the editor to show a large input
-field for editing over multiple lines.
+Annotation multiline yêu cầu editor hiển thị một trường nhập lớn để chỉnh sửa trên nhiều dòng.
 
 .. code-block:: csharp
 
     [Export(PropertyHint.MultilineText)]
     public string Text { get; set; }
 
-Limiting editor input ranges
-----------------------------
+Giới hạn phạm vi nhập trong editor
+----------------------------------
 
-Using the range property hint allows you to limit what can be
-input as a value using the editor.
+Sử dụng property hint range cho phép bạn giới hạn giá trị có thể được nhập bằng editor.
 
-Allow integer values from 0 to 20.
+Cho phép các giá trị integer từ 0 đến 20.
 
 .. code-block:: csharp
 
     [Export(PropertyHint.Range, "0,20,")]
     public int Number { get; set; }
 
-Allow integer values from -10 to 20.
+Cho phép các giá trị integer từ -10 đến 20.
 
 .. code-block:: csharp
 
     [Export(PropertyHint.Range, "-10,20,")]
     public int Number { get; set; }
 
-Allow floats from -10 to 20 and snap the value to multiples of 0.2.
+Cho phép các giá trị float từ -10 đến 20 và snap giá trị theo các bội số của 0.2.
 
 .. code-block:: csharp
 
     [Export(PropertyHint.Range, "-10,20,0.2")]
     public float Number { get; set; }
 
-If you add the hints "or_greater" and/or "or_less" you can go above
-or below the limits when adjusting the value by typing it instead of using
-the slider.
+Nếu thêm các hint "or_greater" và/hoặc "or_less", bạn có thể vượt quá hoặc thấp hơn các giới hạn khi điều chỉnh giá trị bằng cách nhập trực tiếp thay vì sử dụng thanh trượt.
 
 .. code-block:: csharp
 
     [Export(PropertyHint.Range, "0,100,1,or_greater,or_less")]
     public int Number { get; set; }
 
-Floats with easing hint
------------------------
+Float với hint easing
+---------------------
 
-Display a visual representation of the :ref:`ease<class_@GlobalScope_method_ease>`
-function when editing.
+Hiển thị biểu diễn trực quan của hàm :ref:`ease<class_@GlobalScope_method_ease>` khi chỉnh sửa.
 
 .. code-block:: csharp
 
     [Export(PropertyHint.ExpEasing)]
     public float TransitionSpeed { get; set; }
 
-Export with suffix hint
------------------------
+Export với hint hậu tố
+----------------------
 
-Display a unit hint suffix for exported variables. Works with numeric types,
-such as floats or vectors:
+Hiển thị hậu tố hint đơn vị cho các biến được export. Hoạt động với các kiểu số, chẳng hạn như float hoặc vector:
 
 .. code-block:: csharp
 
@@ -280,20 +249,19 @@ such as floats or vectors:
     [Export(PropertyHint.None, "suffix:m/s")]
     public Vector3 Velocity { get; set; }
 
-In the above example, ``\u00b2`` is used to write the "squared" character
-(``²``).
+Trong ví dụ trên, ``\u00b2`` được sử dụng để viết ký tự "bình phương" (``²``).
 
-Colors
-------
+Màu sắc
+-------
 
-Regular color given as red-green-blue-alpha value.
+Màu thông thường được cung cấp dưới dạng giá trị red-green-blue-alpha.
 
 .. code-block:: csharp
 
     [Export]
     public Color Color { get; set; }
 
-Color given as red-green-blue value (alpha will always be 1).
+Màu được cung cấp dưới dạng giá trị red-green-blue (alpha sẽ luôn là 1).
 
 .. code-block:: csharp
 
@@ -302,30 +270,27 @@ Color given as red-green-blue value (alpha will always be 1).
 
 .. _doc_c_sharp_exports_nodes:
 
-Nodes
------
+Node
+----
 
-Nodes can also be directly exported without having to use NodePaths.
+Node cũng có thể được export trực tiếp mà không cần sử dụng NodePath.
 
 .. code-block:: csharp
 
     [Export]
     public Node Node { get; set; }
 
-A specific type of node can also be directly exported. The list of nodes shown
-after pressing "Assign" in the inspector is filtered to the specified type, and
-only a correct node can be assigned.
+Bạn cũng có thể export trực tiếp một kiểu node cụ thể. Danh sách node hiển thị sau khi nhấn "Assign" trong Inspector sẽ được lọc theo kiểu đã chỉ định và chỉ node chính xác mới có thể được gán.
 
 .. code-block:: csharp
 
     [Export]
     public Sprite2D Sprite2D { get; set; }
 
-Custom node classes can also be exported directly. The filtering behavior
-depends on whether the custom class is a
+Các custom node class cũng có thể được export trực tiếp. Hành vi lọc phụ thuộc vào việc custom class có phải là
 :ref:`global class <doc_c_sharp_global_classes>`.
 
-Exporting NodePaths like in Godot 3.x is still possible, in case you need it:
+Vẫn có thể export NodePath như trong Godot 3.x nếu bạn cần:
 
 .. code-block:: csharp
 
@@ -337,44 +302,33 @@ Exporting NodePaths like in Godot 3.x is still possible, in case you need it:
         var node = GetNode(NodePath);
     }
 
-Resources
----------
+Resource
+--------
 
 .. code-block:: csharp
 
     [Export]
     public Resource Resource { get; set; }
 
-In the Inspector, you can then drag and drop a resource file
-from the FileSystem dock into the variable slot.
+Sau đó, trong Inspector, bạn có thể kéo và thả một resource file từ dock FileSystem vào ô biến.
 
-Opening the inspector dropdown may result in an
-extremely long list of possible classes to create, however.
-Therefore, if you specify a type derived from Resource such as:
+Tuy nhiên, việc mở dropdown của Inspector có thể dẫn đến một danh sách cực kỳ dài các class có thể tạo. Vì vậy, nếu bạn chỉ định một kiểu dẫn xuất từ Resource, chẳng hạn như:
 
 .. code-block:: csharp
 
     [Export]
     public AnimationNode AnimationNode { get; set; }
 
-The drop-down menu will be limited to AnimationNode and all
-its derived classes. Custom resource classes can also be used,
-see :ref:`doc_c_sharp_global_classes`.
+Menu thả xuống sẽ chỉ giới hạn ở AnimationNode và tất cả các lớp dẫn xuất của nó. Các lớp resource tùy chỉnh cũng có thể được sử dụng, xem :ref:`doc_c_sharp_global_classes`.
 
-It must be noted that even if the script is not being run while in the
-editor, the exported properties are still editable. This can be used
-in conjunction with a :ref:`script in "tool" mode <doc_gdscript_tool_mode>`.
+Cần lưu ý rằng ngay cả khi script không chạy trong editor, các thuộc tính đã export vẫn có thể chỉnh sửa. Bạn có thể sử dụng điều này cùng với một :ref:`script ở chế độ "tool" <doc_gdscript_tool_mode>`.
 
-Exporting bit flags
--------------------
+Export các cờ bit
+-----------------
 
-Members whose type is an enum with the ``[Flags]`` attribute can be exported and
-their values are limited to the members of the enum type.
-The editor will create a widget in the Inspector, allowing to select none, one,
-or multiple of the enum members. The value will be stored as an integer.
+Các member có kiểu là enum với thuộc tính ``[Flags]`` có thể được export và giá trị của chúng bị giới hạn trong các member của kiểu enum. Editor sẽ tạo một widget trong Inspector, cho phép chọn không, một hoặc nhiều member của enum. Giá trị sẽ được lưu dưới dạng số nguyên.
 
-A flags enum uses powers of 2 for the values of the enum members. Members that
-combine multiple flags using logical OR (``|``) are also possible.
+Một enum cờ sử dụng lũy thừa của 2 làm giá trị cho các member của enum. Các member kết hợp nhiều cờ bằng phép OR logic (``|``) cũng được hỗ trợ.
 
 .. code-block:: csharp
 
@@ -392,37 +346,30 @@ combine multiple flags using logical OR (``|``) are also possible.
     [Export]
     public SpellElements MySpellElements { get; set; }
 
-Integers used as bit flags can store multiple ``true``/``false`` (boolean)
-values in one property. By using the ``Flags`` property hint, any of the given
-flags can be set from the editor.
+Các số nguyên được sử dụng làm cờ bit có thể lưu trữ nhiều giá trị ``true``/``false`` (boolean) trong một thuộc tính. Bằng cách sử dụng gợi ý thuộc tính ``Flags``, mọi cờ đã cho đều có thể được thiết lập từ editor.
 
 .. code-block:: csharp
 
     [Export(PropertyHint.Flags, "Fire,Water,Earth,Wind")]
     public int SpellElements { get; set; } = 0;
 
-You must provide a string description for each flag. In this example, ``Fire``
-has value 1, ``Water`` has value 2, ``Earth`` has value 4 and ``Wind``
-corresponds to value 8. Usually, constants should be defined accordingly (e.g.
-``private const int ElementWind = 8`` and so on).
+Bạn phải cung cấp mô tả dạng chuỗi cho mỗi cờ. Trong ví dụ này, ``Fire`` có giá trị 1, ``Water`` có giá trị 2, ``Earth`` có giá trị 4 và ``Wind`` tương ứng với giá trị 8. Thông thường, các hằng số nên được định nghĩa tương ứng (ví dụ: ``private const int ElementWind = 8`` và vân vân).
 
-You can add explicit values using a colon:
+Bạn có thể thêm các giá trị tường minh bằng dấu hai chấm:
 
 .. code-block:: csharp
 
     [Export(PropertyHint.Flags, "Self:4,Allies:8,Foes:16")]
     public int SpellTargets { get; set; } = 0;
 
-Only power of 2 values are valid as bit flags options. The lowest allowed value
-is 1, as 0 means that nothing is selected. You can also add options that are a
-combination of other flags:
+Chỉ các giá trị là lũy thừa của 2 mới hợp lệ làm tùy chọn cờ bit. Giá trị nhỏ nhất được phép là 1, vì 0 có nghĩa là không có gì được chọn. Bạn cũng có thể thêm các tùy chọn là tổ hợp của những cờ khác:
 
 .. code-block:: csharp
 
     [Export(PropertyHint.Flags, "Self:4,Allies:8,Self and Allies:12,Foes:16")]
     public int SpellTargets { get; set; } = 0;
 
-Export annotations are also provided for the physics and render layers defined in the project settings.
+Các annotation export cũng được cung cấp cho các layer physics và render được định nghĩa trong project settings.
 
 .. code-block:: csharp
 
@@ -435,15 +382,12 @@ Export annotations are also provided for the physics and render layers defined i
     [Export(PropertyHint.Layers3DRender)]
     public uint Layers3DRender { get; set; }
 
-Using bit flags requires some understanding of bitwise operations.
-If in doubt, use boolean variables instead.
+Việc sử dụng cờ bit đòi hỏi một số hiểu biết về các phép toán bit. Nếu không chắc chắn, hãy sử dụng các biến boolean thay thế.
 
-Exporting enums
----------------
+Export enum
+-----------
 
-Members whose type is an enum can be exported and their values are limited to the members
-of the enum type. The editor will create a widget in the Inspector, enumerating the
-following as "Thing 1", "Thing 2", "Another Thing". The value will be stored as an integer.
+Các member có kiểu là enum có thể được export và giá trị của chúng bị giới hạn trong các member của kiểu enum. Editor sẽ tạo một widget trong Inspector, liệt kê các mục sau dưới dạng "Thing 1", "Thing 2", "Another Thing". Giá trị sẽ được lưu dưới dạng số nguyên.
 
 .. code-block:: csharp
 
@@ -457,32 +401,28 @@ following as "Thing 1", "Thing 2", "Another Thing". The value will be stored as 
     [Export]
     public MyEnum MyEnumCurrent { get; set; }
 
-Integer and string members can also be limited to a specific list of values using the
-``[Export]`` annotation with the ``PropertyHint.Enum`` hint.
-The editor will create a widget in the Inspector, enumerating the following as Warrior,
-Magician, Thief. The value will be stored as an integer, corresponding to the index
-of the selected option (i.e. ``0``, ``1``, or ``2``).
+Các member kiểu số nguyên và chuỗi cũng có thể bị giới hạn trong một danh sách giá trị cụ thể bằng annotation ``[Export]`` với gợi ý ``PropertyHint.Enum``. Editor sẽ tạo một widget trong Inspector, liệt kê các mục sau: Warrior, Magician, Thief. Giá trị sẽ được lưu dưới dạng số nguyên, tương ứng với chỉ mục của tùy chọn được chọn (tức là ``0``, ``1`` hoặc ``2``).
 
 .. code-block:: csharp
 
     [Export(PropertyHint.Enum, "Warrior,Magician,Thief")]
     public int CharacterClass { get; set; }
 
-You can add explicit values using a colon:
+Bạn có thể thêm các giá trị tường minh bằng dấu hai chấm:
 
 .. code-block:: csharp
 
     [Export(PropertyHint.Enum, "Slow:30,Average:60,Very Fast:200")]
     public int CharacterSpeed { get; set; }
 
-If the type is ``string``, the value will be stored as a string.
+Nếu kiểu là ``string``, giá trị sẽ được lưu dưới dạng chuỗi.
 
 .. code-block:: csharp
 
     [Export(PropertyHint.Enum, "Rebecca,Mary,Leah")]
     public string CharacterName { get; set; }
 
-If you want to set an initial value, you must specify it explicitly:
+Nếu muốn đặt giá trị ban đầu, bạn phải chỉ định giá trị đó một cách tường minh:
 
 .. code-block:: csharp
 
@@ -490,14 +430,10 @@ If you want to set an initial value, you must specify it explicitly:
     public string CharacterName { get; set; } = "Rebecca";
 
 
-Exporting inspector buttons with ``[ExportToolButton]``
--------------------------------------------------------
+Export các nút Inspector bằng ``[ExportToolButton]``
+----------------------------------------------------
 
-If you want to create a clickable button in the inspector, you can use the
-``[ExportToolButton]`` attribute.  This exports a Callable property or field as
-a clickable button. Since this runs in the editor, usage of the :ref:`[Tool]
-<doc_running_code_in_the_editor>` attribute is required. When the button is
-pressed, the callable is called:
+Nếu muốn tạo một nút có thể nhấp trong inspector, bạn có thể sử dụng thuộc tính ``[ExportToolButton]``. Thuộc tính hoặc field Callable này sẽ được export dưới dạng một nút có thể nhấp. Vì thao tác này chạy trong editor, bắt buộc phải sử dụng thuộc tính :ref:`[Tool] <doc_running_code_in_the_editor>`. Khi nhấn nút, callable sẽ được gọi:
 
 .. code-block:: csharp
 
@@ -513,40 +449,34 @@ pressed, the callable is called:
         }
     }
 
-You can also set an icon for the button with a second argument. If specified, an
-icon will be fetched via :ref:`GetThemeIcon() <class_Control_method_get_theme_icon>`,
-from the ``"EditorIcons"`` theme type.
+Bạn cũng có thể đặt biểu tượng cho nút bằng đối số thứ hai. Nếu được chỉ định, một biểu tượng sẽ được lấy thông qua :ref:`GetThemeIcon() <class_Control_method_get_theme_icon>`, từ loại theme ``"EditorIcons"``.
 
 .. code-block:: csharp
 
     [ExportToolButton("Click me!", Icon = "CharacterBody2D")]
     public Callable ClickMeButton => Callable.From(ClickMe);
 
-Exporting collections
----------------------
+Export collection
+-----------------
 
-As explained in the :ref:`C# Variant <doc_c_sharp_variant>` documentation, only
-certain C# arrays and the collection types defined in the ``Godot.Collections``
-namespace are Variant-compatible, therefore, only those types can be exported.
+Như đã giải thích trong tài liệu :ref:`C# Variant <doc_c_sharp_variant>`, chỉ một số mảng C# nhất định và các kiểu collection được định nghĩa trong namespace ``Godot.Collections`` tương thích với Variant, vì vậy chỉ những kiểu đó mới có thể được export.
 
-Exporting Godot arrays
-~~~~~~~~~~~~~~~~~~~~~~
+Export mảng Godot
+~~~~~~~~~~~~~~~~~
 
 .. code-block:: csharp
 
     [Export]
     public Godot.Collections.Array Array { get; set; }
 
-Using the generic ``Godot.Collections.Array<T>`` allows specifying the type of the
-array elements, which will be used as a hint for the editor. The Inspector will
-restrict the elements to the specified type.
+Việc sử dụng ``Godot.Collections.Array<T>`` generic cho phép chỉ định kiểu của các phần tử mảng, kiểu này sẽ được dùng làm gợi ý cho editor. Inspector sẽ giới hạn các phần tử ở kiểu đã chỉ định.
 
 .. code-block:: csharp
 
     [Export]
     public Godot.Collections.Array<string> Array { get; set; }
 
-The default value of Godot arrays is null. A different default can be specified:
+Giá trị mặc định của các mảng Godot là null. Có thể chỉ định một giá trị mặc định khác:
 
 .. code-block:: csharp
 
@@ -558,8 +488,7 @@ The default value of Godot arrays is null. A different default can be specified:
         "Leah",
     ];
 
-Arrays with specified types which inherit from resource can be set by
-drag-and-dropping multiple files from the FileSystem dock.
+Các mảng có kiểu được chỉ định, trong đó kiểu này kế thừa từ resource, có thể được thiết lập bằng cách kéo và thả nhiều tệp từ dock FileSystem.
 
 .. code-block:: csharp
 
@@ -569,23 +498,22 @@ drag-and-dropping multiple files from the FileSystem dock.
     [Export]
     public Godot.Collections.Array<PackedScene> Scenes { get; set; }
 
-Exporting Godot dictionaries
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Export dictionary Godot
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: csharp
 
     [Export]
     public Godot.Collections.Dictionary Dictionary { get; set; }
 
-Using the generic ``Godot.Collections.Dictionary<TKey, TValue>`` allows specifying
-the types of the key and value elements of the dictionary.
+Việc sử dụng ``Godot.Collections.Dictionary<TKey, TValue>`` generic cho phép chỉ định kiểu của các phần tử key và value của dictionary.
 
 .. code-block:: csharp
 
     [Export]
     public Godot.Collections.Dictionary<string, int> Dictionary { get; set; }
 
-The default value of Godot dictionaries is null. A different default can be specified:
+Giá trị mặc định của các dictionary Godot là null. Có thể chỉ định một giá trị mặc định khác:
 
 .. code-block:: csharp
 
@@ -597,10 +525,10 @@ The default value of Godot dictionaries is null. A different default can be spec
         ["Leah"] = 0,
     };
 
-Exporting C# arrays
-~~~~~~~~~~~~~~~~~~~
+Export mảng C#
+~~~~~~~~~~~~~~
 
-C# arrays can exported as long as the element type is a :ref:`Variant-compatible type <c_sharp_variant_compatible_types>`.
+Các mảng C# có thể được export miễn là kiểu phần tử là kiểu :ref:`Variant-compatible type <c_sharp_variant_compatible_types>`.
 
 .. code-block:: csharp
 
@@ -610,7 +538,7 @@ C# arrays can exported as long as the element type is a :ref:`Variant-compatible
     [Export]
     public NodePath[] NodePaths { get; set; }
 
-The default value of C# arrays is null. A different default can be specified:
+Giá trị mặc định của các mảng C# là null. Có thể chỉ định một giá trị mặc định khác:
 
 .. code-block:: csharp
 
@@ -621,31 +549,26 @@ The default value of C# arrays is null. A different default can be specified:
         new Vector3(3, 2, 1),
     ];
 
-Setting exported variables from a tool script
----------------------------------------------
+Thiết lập các biến đã export từ tool script
+-------------------------------------------
 
-When changing an exported variable's value from a script in
-:ref:`doc_gdscript_tool_mode`, the value in the inspector won't be updated
-automatically. To update it, call
-:ref:`NotifyPropertyListChanged() <class_Object_method_notify_property_list_changed>`
-after setting the exported variable's value.
+Khi thay đổi giá trị của một biến đã export từ một script trong
+:ref:`doc_gdscript_tool_mode`, giá trị trong inspector sẽ không được cập nhật tự động. Để cập nhật, hãy gọi
+:ref:`NotifyPropertyListChanged() <class_Object_method_notify_property_list_changed>` sau khi thiết lập giá trị của biến đã export.
 
-Advanced exports
-----------------
+Export nâng cao
+---------------
 
-Not every type of export can be provided on the level of the language itself to
-avoid unnecessary design complexity. The following describes some more or less
-common exporting features which can be implemented with a low-level API.
+Không phải mọi kiểu export đều có thể được cung cấp ở cấp độ ngôn ngữ để tránh sự phức tạp không cần thiết trong thiết kế. Phần sau mô tả một số tính năng export ít hoặc nhiều phổ biến có thể được triển khai bằng API cấp thấp.
 
-Before reading further, you should get familiar with the way properties are
-handled and how they can be customized with
+Trước khi đọc tiếp, bạn nên làm quen với cách các thuộc tính được xử lý và cách chúng có thể được tùy chỉnh bằng
 :ref:`_Set() <class_Object_private_method__set>`,
-:ref:`_Get() <class_Object_private_method__get>`, and
-:ref:`_GetPropertyList() <class_Object_private_method__get_property_list>` methods as
-described in :ref:`doc_accessing_data_or_logic_from_object`.
+:ref:`_Get() <class_Object_private_method__get>`, và
+các phương thức :ref:`_GetPropertyList() <class_Object_private_method__get_property_list>` như được mô tả trong :ref:`doc_accessing_data_or_logic_from_object`.
 
-.. seealso:: For binding properties using the above methods in C++, see
+.. seealso:: Để binding các thuộc tính bằng những phương thức trên trong C++, hãy xem
              :ref:`doc_binding_properties_using_set_get_property_list`.
 
-.. warning:: The script must operate in the ``tool`` mode so the above methods
-             can work from within the editor.
+.. warning:: Script phải hoạt động ở chế độ ``tool`` để các phương thức trên có thể hoạt động từ bên trong editor.
+
+.. _`default value of the type`: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/default-values

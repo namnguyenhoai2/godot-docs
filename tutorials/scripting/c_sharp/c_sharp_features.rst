@@ -1,125 +1,116 @@
 .. _doc_c_sharp_features:
 
-C# language features
-====================
+Các tính năng của ngôn ngữ C#
+=============================
 
-This page provides an overview of the commonly used features of both C# and Godot
-and how they are used together.
+Trang này cung cấp tổng quan về các tính năng thường dùng của cả C# và Godot, cũng như cách sử dụng chúng cùng nhau.
 
 .. _doc_c_sharp_features_type_conversion_and_casting:
 
-Type conversion and casting
----------------------------
+Chuyển đổi và ép kiểu
+---------------------
 
-C# is a statically typed language. Therefore, you can't do the following:
+C# là một ngôn ngữ có kiểu tĩnh. Vì vậy, bạn không thể thực hiện thao tác sau:
 
 .. code-block:: csharp
 
     var mySprite = GetNode("MySprite");
     mySprite.SetFrame(0);
 
-The method ``GetNode()`` returns a ``Node`` instance.
-You must explicitly convert it to the desired derived type, ``Sprite2D`` in this case.
+Phương thức ``GetNode()`` trả về một thực thể ``Node``. Bạn phải chuyển đổi rõ ràng thực thể đó sang kiểu dẫn xuất mong muốn, trong trường hợp này là ``Sprite2D``.
 
-For this, you have various options in C#.
+Để thực hiện việc này, bạn có nhiều lựa chọn trong C#.
 
-**Casting and Type Checking**
+**Ép kiểu và kiểm tra kiểu**
 
-Throws ``InvalidCastException`` if the returned node cannot be cast to Sprite2D.
-You would use it instead of the ``as`` operator if you are pretty sure it won't fail.
+Ném ``InvalidCastException`` nếu node được trả về không thể ép kiểu thành Sprite2D. Bạn sẽ sử dụng cách này thay cho toán tử ``as`` nếu khá chắc chắn rằng thao tác sẽ không thất bại.
 
 .. code-block:: csharp
 
     Sprite2D mySprite = (Sprite2D)GetNode("MySprite");
     mySprite.SetFrame(0);
 
-**Using the AS operator**
+**Sử dụng toán tử AS**
 
-The ``as`` operator returns ``null`` if the node cannot be cast to Sprite2D,
-and for that reason, it cannot be used with value types.
+Toán tử ``as`` trả về ``null`` nếu node không thể ép kiểu thành Sprite2D, và vì lý do đó, không thể sử dụng toán tử này với các kiểu giá trị.
 
 .. code-block:: csharp
 
     Sprite2D mySprite = GetNode("MySprite") as Sprite2D;
-    // Only call SetFrame() if mySprite is not null
+    // Chỉ gọi SetFrame() nếu mySprite không phải là null
     mySprite?.SetFrame(0);
 
-**Using the generic methods**
+**Sử dụng các phương thức generic**
 
-Generic methods are also provided to make this type conversion transparent.
+Các phương thức generic cũng được cung cấp để việc chuyển đổi kiểu này trở nên trong suốt.
 
-``GetNode<T>()`` casts the node before returning it. It will throw an ``InvalidCastException`` if the node cannot be cast to the desired type.
+``GetNode<T>()`` ép kiểu node trước khi trả về node đó. Phương thức này sẽ ném một ``InvalidCastException`` nếu node không thể được ép kiểu thành kiểu mong muốn.
 
 .. code-block:: csharp
 
     Sprite2D mySprite = GetNode<Sprite2D>("MySprite");
     mySprite.SetFrame(0);
 
-``GetNodeOrNull<T>()`` uses the ``as`` operator and will return ``null`` if the node cannot be cast to the desired type.
+``GetNodeOrNull<T>()`` sử dụng toán tử ``as`` và sẽ trả về ``null`` nếu node không thể được ép kiểu thành kiểu mong muốn.
 
 .. code-block:: csharp
 
     Sprite2D mySprite = GetNodeOrNull<Sprite2D>("MySprite");
-    // Only call SetFrame() if mySprite is not null
+    // Chỉ gọi SetFrame() nếu mySprite không phải là null
     mySprite?.SetFrame(0);
 
-**Type checking using the IS operator**
+**Kiểm tra kiểu bằng toán tử IS**
 
-To check if the node can be cast to Sprite2D, you can use the ``is`` operator.
-The ``is`` operator returns ``false`` if the node cannot be cast to Sprite2D,
-otherwise it returns ``true``. Note that when the ``is`` operator is used against ``null``
-the result is always going to be ``false``.
+Để kiểm tra xem node có thể được ép kiểu thành Sprite2D hay không, bạn có thể sử dụng toán tử ``is``. Toán tử ``is`` trả về ``false`` nếu node không thể được ép kiểu thành Sprite2D, nếu không thì trả về ``true``. Lưu ý rằng khi toán tử ``is`` được sử dụng với ``null``, kết quả luôn là ``false``.
 
 .. code-block:: csharp
 
     if (GetNode("MySprite") is Sprite2D)
     {
-        // Yup, it's a Sprite2D!
+        // Đúng rồi, đây là một Sprite2D!
     }
 
     if (null is Sprite2D)
     {
-        // This block can never happen.
+        // Khối lệnh này không thể nào được thực thi.
     }
 
-You can also declare a new variable to conditionally store the result of the cast
-if the ``is`` operator returns ``true``.
+Bạn cũng có thể khai báo một biến mới để lưu trữ có điều kiện kết quả của phép ép kiểu nếu toán tử ``is`` trả về ``true``.
 
 .. code-block:: csharp
 
     if (GetNode("MySprite") is Sprite2D mySprite)
     {
-        // The mySprite variable only exists inside this block, and it's never null.
+        // Biến mySprite chỉ tồn tại bên trong khối lệnh này và không bao giờ là null.
         mySprite.SetFrame(0);
     }
 
-For more advanced type checking, you can look into `Pattern Matching <https://docs.microsoft.com/en-us/dotnet/csharp/pattern-matching>`_.
+Để kiểm tra kiểu nâng cao hơn, bạn có thể tìm hiểu về `Đối sánh mẫu <https://docs.microsoft.com/en-us/dotnet/csharp/pattern-matching>`_.
 
 
-Preprocessor defines
---------------------
+Các định nghĩa tiền xử lý
+-------------------------
 
-Godot has a set of defines that allow you to change your C# code
-depending on the environment you are compiling to.
+Godot có một tập hợp các định nghĩa cho phép bạn thay đổi mã C# tùy theo môi trường mà bạn biên dịch.
 
-Examples
-~~~~~~~~
+Ví dụ
+~~~~~
 
-For example, you can change code based on the platform:
+Ví dụ: bạn có thể thay đổi mã dựa trên nền tảng:
 
 .. code-block:: csharp
 
         public override void _Ready()
         {
     #if (GODOT_MOBILE || GODOT_WEB)
-            // Use simple objects when running on less powerful systems.
+            // Sử dụng các đối tượng đơn giản khi chạy trên những hệ thống kém mạnh hơn.
             SpawnSimpleObjects();
     #else
             SpawnComplexObjects();
     #endif
         }
 
-Or you can detect which engine your code is in, useful for making cross-engine libraries:
+Hoặc bạn có thể phát hiện mã của mình đang chạy trong engine nào, rất hữu ích khi tạo các thư viện đa engine:
 
 .. code-block:: csharp
 
@@ -134,60 +125,45 @@ Or you can detect which engine your code is in, useful for making cross-engine l
     #endif
         }
 
-Or you can write scripts that target multiple Godot versions and take
-advantage of features that are only available on some of those versions:
+Hoặc bạn có thể viết các script nhắm đến nhiều phiên bản Godot và tận dụng những tính năng chỉ có trong một số phiên bản đó:
 
 .. code-block:: csharp
 
         public void UseCoolFeature()
         {
     #if GODOT4_3_OR_GREATER || GODOT4_2_2_OR_GREATER
-            // Use CoolFeature, that was added to Godot in 4.3 and cherry-picked into 4.2.2, here.
+            // Sử dụng CoolFeature ở đây; tính năng này được thêm vào Godot trong phiên bản 4.3 và được cherry-pick vào phiên bản 4.2.2.
     #else
-            // Use a workaround for the absence of CoolFeature here.
+            // Sử dụng giải pháp thay thế cho việc thiếu CoolFeature ở đây.
     #endif
         }
 
-Full list of defines
-~~~~~~~~~~~~~~~~~~~~
+Danh sách đầy đủ các định nghĩa
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* ``GODOT`` is always defined for Godot projects.
+* ``GODOT`` luôn được định nghĩa cho các dự án Godot.
 
-* ``TOOLS`` is defined when building with the Debug configuration (editor and editor player).
+* ``TOOLS`` được định nghĩa khi build với cấu hình Debug (editor và editor player).
 
-* ``GODOT_REAL_T_IS_DOUBLE`` is defined when the ``GodotFloat64`` property is set to ``true``.
+* ``GODOT_REAL_T_IS_DOUBLE`` được định nghĩa khi thuộc tính ``GodotFloat64`` được đặt thành ``true``.
 
-* One of ``GODOT_LINUXBSD``, ``GODOT_WINDOWS``, ``GODOT_OSX``,
-  ``GODOT_ANDROID``, ``GODOT_IOS``, ``GODOT_WEB``
-  depending on the OS. These names may change in the future.
-  These are created from the ``get_name()`` method of the
-  :ref:`OS <class_OS>` singleton, but not every possible OS
-  the method returns is an OS that Godot with .NET runs on.
+* Một trong các giá trị ``GODOT_LINUXBSD``, ``GODOT_WINDOWS``, ``GODOT_OSX``, ``GODOT_ANDROID``, ``GODOT_IOS``, ``GODOT_WEB`` tùy thuộc vào hệ điều hành. Các tên này có thể thay đổi trong tương lai. Chúng được tạo từ phương thức ``get_name()`` của
+  singleton :ref:`OS <class_OS>`, nhưng không phải mọi hệ điều hành mà phương thức này trả về đều là hệ điều hành mà Godot with .NET có thể chạy trên đó.
 
-* ``GODOTX``, ``GODOTX_Y``, ``GODOTX_Y_Z``, ``GODOTx_OR_GREATER``,
-  ``GODOTX_y_OR_GREATER``, and ``GODOTX_Y_z_OR_GREATER``, where ``X``, ``Y``,
-  and ``Z`` are replaced by the current major, minor and patch version of Godot.
-  ``x``, ``y``, and ``z`` are replaced by all values from 0 to the current version number for that
-  component.
+* ``GODOTX``, ``GODOTX_Y``, ``GODOTX_Y_Z``, ``GODOTx_OR_GREATER``, ``GODOTX_y_OR_GREATER``, và ``GODOTX_Y_z_OR_GREATER``, trong đó ``X``, ``Y``, và ``Z`` được thay thế bằng phiên bản major, minor và patch hiện tại của Godot. ``x``, ``y``, và ``z`` được thay thế bằng tất cả các giá trị từ 0 đến số phiên bản hiện tại của thành phần tương ứng.
 
   .. note::
 
-    These defines were first added in Godot 4.0.4 and 4.1. Version defines for
-    prior versions do not exist, regardless of the current Godot version.
+    Các định nghĩa này lần đầu được thêm vào Godot 4.0.4 và 4.1. Các định nghĩa phiên bản cho những phiên bản trước đó không tồn tại, bất kể phiên bản Godot hiện tại là phiên bản nào.
 
-  For example: Godot 4.0.5 defines ``GODOT4``, ``GODOT4_OR_GREATER``,
-  ``GODOT4_0``, ``GODOT4_0_OR_GREATER``, ``GODOT4_0_5``,
-  ``GODOT4_0_4_OR_GREATER``, and ``GODOT4_0_5_OR_GREATER``. Godot 4.3.2 defines
-  ``GODOT4``, ``GODOT4_OR_GREATER``, ``GODOT4_3``, ``GODOT4_0_OR_GREATER``,
-  ``GODOT4_1_OR_GREATER``, ``GODOT4_2_OR_GREATER``, ``GODOT4_3_OR_GREATER``,
-  ``GODOT4_3_2``, ``GODOT4_3_0_OR_GREATER``, ``GODOT4_3_1_OR_GREATER``, and
-  ``GODOT4_3_2_OR_GREATER``.
+  Ví dụ: Godot 4.0.5 định nghĩa ``GODOT4``, ``GODOT4_OR_GREATER``, ``GODOT4_0``, ``GODOT4_0_OR_GREATER``, ``GODOT4_0_5``, ``GODOT4_0_4_OR_GREATER``, và ``GODOT4_0_5_OR_GREATER``. Godot 4.3.2 định nghĩa ``GODOT4``, ``GODOT4_OR_GREATER``, ``GODOT4_3``, ``GODOT4_0_OR_GREATER``, ``GODOT4_1_OR_GREATER``, ``GODOT4_2_OR_GREATER``, ``GODOT4_3_OR_GREATER``, ``GODOT4_3_2``, ``GODOT4_3_0_OR_GREATER``, ``GODOT4_3_1_OR_GREATER``, và ``GODOT4_3_2_OR_GREATER``.
 
-When **exporting**, the following may also be defined depending on the export features:
+Khi **exporting**, các định nghĩa sau cũng có thể được tạo tùy thuộc vào các export feature:
 
-* One of ``GODOT_PC``, ``GODOT_MOBILE``, or ``GODOT_WEB`` depending on the platform type.
+* Một trong các giá trị ``GODOT_PC``, ``GODOT_MOBILE``, hoặc ``GODOT_WEB`` tùy thuộc vào loại nền tảng.
 
-* One of ``GODOT_WINDOWS``, ``GODOT_LINUXBSD``, ``GODOT_MACOS``, ``GODOT_ANDROID``, ``GODOT_IOS``, or ``GODOT_WEB`` depending on the platform.
+* Một trong các giá trị ``GODOT_WINDOWS``, ``GODOT_LINUXBSD``, ``GODOT_MACOS``, ``GODOT_ANDROID``, ``GODOT_IOS``, hoặc ``GODOT_WEB`` tùy thuộc vào nền tảng.
 
-To see an example project, see the OS testing demo:
-https://github.com/godotengine/godot-demo-projects/tree/master/misc/os_test
+Để xem một dự án mẫu, hãy xem bản demo kiểm thử hệ điều hành: https://github.com/godotengine/godot-demo-projects/tree/master/misc/os_test
+
+.. _`Pattern Matching`: https://docs.microsoft.com/en-us/dotnet/csharp/pattern-matching

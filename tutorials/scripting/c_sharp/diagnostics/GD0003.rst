@@ -1,5 +1,5 @@
-GD0003: Found multiple classes with the same name in the same script file
-=========================================================================
+GD0003: Tìm thấy nhiều class có cùng tên trong cùng một tệp script
+==================================================================
 
 ====================================  ======================================
                                       Value
@@ -10,18 +10,15 @@ GD0003: Found multiple classes with the same name in the same script file
 **Enabled by default**                Yes
 ====================================  ======================================
 
-Cause
------
+Nguyên nhân
+-----------
 
-A script file contains multiple types that derives from ``GodotObject`` with
-a name that matches the script file. Only one type in the script file should
-match the file name.
+Một tệp script chứa nhiều kiểu dẫn xuất từ ``GodotObject`` có tên trùng với tệp script. Chỉ một kiểu trong tệp script được trùng với tên tệp.
 
-Rule description
-----------------
+Mô tả quy tắc
+-------------
 
-Godot requires scripts to have a unique path so every type must be defined on its
-own file and the type name must match the file name.
+Godot yêu cầu các script có đường dẫn duy nhất, vì vậy mỗi kiểu phải được định nghĩa trong tệp riêng và tên kiểu phải khớp với tên tệp.
 
 .. code-block:: csharp
 
@@ -29,21 +26,19 @@ own file and the type name must match the file name.
 
     namespace DifferentNamespace
     {
-        // Invalid because there's already a type with the name MyNode in this file.
+        // Không hợp lệ vì trong tệp này đã có một kiểu mang tên MyNode.
         public partial class MyNode : Node { }
     }
 
-    // Invalid because there's already a type with the name MyNode in this file.
+    // Không hợp lệ vì trong tệp này đã có một kiểu mang tên MyNode.
     public partial class MyNode<T> : Node { }
 
-How to fix violations
----------------------
+Cách khắc phục vi phạm
+----------------------
 
-To fix a violation of this rule, move each type declaration to a different file.
+Để khắc phục vi phạm quy tắc này, hãy chuyển từng khai báo kiểu sang một tệp khác nhau.
 
-When to suppress warnings
--------------------------
+Khi nào nên tắt cảnh báo
+------------------------
 
-Do not suppress a warning from this rule. Types that derive from ``GodotObject``
-must have a unique path otherwise the engine can't load the script by path,
-resulting in unexpected runtime errors.
+Không tắt cảnh báo từ quy tắc này. Các kiểu dẫn xuất từ ``GodotObject`` phải có đường dẫn duy nhất; nếu không, engine không thể tải script theo đường dẫn, dẫn đến các lỗi runtime ngoài dự kiến.

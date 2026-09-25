@@ -1,5 +1,5 @@
-GD0111: The exported tool button must be an expression-bodied property
-======================================================================
+GD0111: Nút công cụ được export phải là property dạng expression-bodied
+=======================================================================
 
 ====================================  ======================================
                                       Value
@@ -10,42 +10,35 @@ GD0111: The exported tool button must be an expression-bodied property
 **Enabled by default**                Yes
 ====================================  ======================================
 
-Cause
------
+Nguyên nhân
+-----------
 
-A property is annotated with the ``[ExportToolButton]`` attribute but it's not
-an `expression-bodied property`_.
+Một property được chú thích bằng attribute ``[ExportToolButton]`` nhưng không phải là `expression-bodied property <expression-bodied property_>`_.
 
-Rule description
-----------------
+Mô tả quy tắc
+-------------
 
-When reloading the .NET assembly, Godot will attempt to serialize exported
-members to preserve their values. A field or a property with a backing field
-that stores a ``Callable`` may prevent the unloading of the assembly.
+Khi tải lại assembly .NET, Godot sẽ cố gắng serialize các member được export để bảo toàn giá trị của chúng. Một field hoặc property có backing field lưu trữ ``Callable`` có thể ngăn assembly được unload.
 
-An expression-bodied property doesn't have a backing field and won't store
-the ``Callable``, so Godot won't attempt to serialize it, which should result
-in the successful reloading of the .NET assembly.
+Property dạng expression-bodied không có backing field và sẽ không lưu trữ ``Callable``, vì vậy Godot sẽ không cố gắng serialize nó, điều này sẽ giúp tải lại assembly .NET thành công.
 
 .. code-block:: csharp
 
     [ExportToolButton("Click me!")]
     public Callable ValidClickMeButton => Callable.From(ClickMe);
 
-    // Invalid because the Callable will be stored in the property's backing field.
+    // Không hợp lệ vì Callable sẽ được lưu trong backing field của property.
     [ExportToolButton("Click me!")]
     public Callable InvalidClickMeButton { get; } = Callable.From(ClickMe);
 
-How to fix violations
----------------------
+Cách khắc phục các vi phạm
+--------------------------
 
-To fix a violation of this rule, replace the property implementation with an
-`expression-bodied property`_.
+Để khắc phục vi phạm quy tắc này, hãy thay thế phần triển khai property bằng một `expression-bodied property <expression-bodied property_>`_.
 
-When to suppress warnings
--------------------------
+Khi nào cần tắt cảnh báo
+------------------------
 
-Do not suppress a warning from this rule. ``Callable`` instances may prevent
-the .NET assembly from unloading.
+Không tắt cảnh báo từ quy tắc này. Các instance ``Callable`` có thể ngăn assembly .NET được unload.
 
 .. _expression-bodied property: https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/expression-bodied-members#properties

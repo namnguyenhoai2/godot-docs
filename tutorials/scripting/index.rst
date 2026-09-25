@@ -1,19 +1,17 @@
 :allow_comments: False
 
-Scripting
-=========
+Lập trình bằng script
+=====================
 
-This section covers programming languages and core features to code your games
-in Godot.
+Phần này trình bày các ngôn ngữ lập trình và những tính năng cốt lõi để bạn lập trình game trong Godot.
 
-Here, you will find information that is not already covered in more specific
-sections. For instance, to learn about inputs, we recommend you to read
+Tại đây, bạn sẽ tìm thấy thông tin chưa được đề cập trong các phần cụ thể hơn. Ví dụ: để tìm hiểu về đầu vào, chúng tôi khuyên bạn nên đọc
 :ref:`Inputs <toc-learn-features-inputs>`.
 
-.. rubric:: Programming languages
+.. rubric:: Ngôn ngữ lập trình
    :heading-level: 2
 
-The sections below each focus on a given programming language.
+Mỗi phần dưới đây tập trung vào một ngôn ngữ lập trình cụ thể.
 
 .. toctree::
    :maxdepth: 1
@@ -26,12 +24,10 @@ The sections below each focus on a given programming language.
 
 .. _doc_scripting_core_features:
 
-Core features
--------------
+Tính năng cốt lõi
+-----------------
 
-Some features are specific to the engine and are available in all supported
-languages. Whether you code in GDScript, C#, or another language, the pages
-below will help you make the most of Godot.
+Một số tính năng dành riêng cho engine và có sẵn trong tất cả các ngôn ngữ được hỗ trợ. Dù bạn lập trình bằng GDScript, C# hay một ngôn ngữ khác, các trang dưới đây sẽ giúp bạn tận dụng tối đa Godot.
 
 .. To split and organize better, into some related toctrees?
 

@@ -1,5 +1,5 @@
-GD0402: The class must not be generic
-=====================================
+GD0402: Lớp không được là generic
+=================================
 
 ====================================  ======================================
                                       Value
@@ -10,37 +10,32 @@ GD0402: The class must not be generic
 **Enabled by default**                Yes
 ====================================  ======================================
 
-Cause
------
+Nguyên nhân
+-----------
 
-A generic type is annotated with the ``[GlobalClass]`` attribute.
+Một kiểu generic được chú thích bằng thuộc tính ``[GlobalClass]``.
 
-Rule description
-----------------
+Mô tả quy tắc
+-------------
 
-The Godot editor assumes every :ref:`global class <doc_c_sharp_global_classes>`
-is instantiable, but generic types can't be instantiated because the type
-parameters are unbound.
+Trình chỉnh sửa Godot giả định rằng mọi :ref:`global class <doc_c_sharp_global_classes>` đều có thể được khởi tạo, nhưng các kiểu generic không thể được khởi tạo vì các tham số kiểu chưa được liên kết.
 
 .. code-block:: csharp
 
-    // This type is a valid global class because it's not generic.
+    // Kiểu này là global class hợp lệ vì nó không phải generic.
     [GlobalClass]
     class SomeType : Node { }
 
-    // This type is not a valid global class because it's generic.
+    // Kiểu này không phải là global class hợp lệ vì nó là generic.
     [GlobalClass]
     class SomeGenericType<T> { }
 
-How to fix violations
----------------------
+Cách khắc phục các vi phạm
+--------------------------
 
-To fix a violation of this rule, change the type to remove the generic type parameters
-or remove the ``[GlobalClass]`` attribute.
+Để khắc phục vi phạm quy tắc này, hãy thay đổi kiểu để loại bỏ các tham số kiểu generic hoặc xóa thuộc tính ``[GlobalClass]``.
 
-When to suppress warnings
--------------------------
+Khi nào nên bỏ qua cảnh báo
+---------------------------
 
-Do not suppress a warning from this rule. Adding the ``[GlobalClass]`` to a
-generic type is an easy mistake to make and this warning helps users realize
-that it may result in unexpected errors.
+Không nên bỏ qua cảnh báo từ quy tắc này. Việc thêm ``[GlobalClass]`` vào một kiểu generic là một lỗi dễ mắc phải và cảnh báo này giúp người dùng nhận ra rằng điều đó có thể dẫn đến các lỗi không mong muốn.

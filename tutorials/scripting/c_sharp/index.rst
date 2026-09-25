@@ -5,13 +5,10 @@
 C#/.NET
 =======
 
-C# is a high-level programming language developed by Microsoft. Godot supports
-C# as an option for a scripting language, alongside Godot's own
+C# là một ngôn ngữ lập trình cấp cao do Microsoft phát triển. Godot hỗ trợ C# như một lựa chọn ngôn ngữ scripting, bên cạnh
 :ref:`GDScript <doc_gdscript>`.
 
-The standard Godot executable does not contain C# support out of the box. Instead,
-to enable C# support for your project you need to `download a .NET version <https://godotengine.org/download/>`_
-of the editor from the Godot website.
+Tệp thực thi Godot tiêu chuẩn không tích hợp sẵn hỗ trợ C#. Thay vào đó, để bật hỗ trợ C# cho dự án, bạn cần `tải xuống phiên bản .NET <https://godotengine.org/download/>`_ của trình chỉnh sửa từ trang web Godot.
 
 .. toctree::
    :maxdepth: 1
@@ -22,12 +19,10 @@ of the editor from the Godot website.
    c_sharp_style_guide
    diagnostics/index
 
-Godot API for C#
+API Godot cho C#
 ----------------
 
-As a general purpose game engine Godot offers some high-level features as a part
-of its API. Articles below explain how these features integrate into C# and how
-C# API may be different from GDScript.
+Là một game engine đa dụng, Godot cung cấp một số tính năng cấp cao như một phần của API. Các bài viết dưới đây giải thích cách những tính năng này tích hợp với C# và API C# có thể khác GDScript như thế nào.
 
 .. toctree::
    :maxdepth: 1
@@ -42,30 +37,28 @@ C# API may be different from GDScript.
 
 .. _doc_c_sharp_platforms:
 
-C# platform support
--------------------
+Hỗ trợ nền tảng C#
+------------------
 
 .. seealso::
 
-    See :ref:`doc_system_requirements` for hardware and software version
-    requirements for the Godot engine.
+    Xem :ref:`doc_system_requirements` để biết các yêu cầu về phiên bản phần cứng và phần mềm đối với game engine Godot.
 
 .. note::
 
-    Since C# projects use the .NET runtime, also check the system requirements
-    for the version of .NET that you'll be using.
-    See `supported OS <https://github.com/dotnet/core/tree/main/release-notes#supported-os>`_.
+    Vì các dự án C# sử dụng runtime .NET, bạn cũng cần kiểm tra yêu cầu hệ thống đối với phiên bản .NET mà bạn sẽ sử dụng. Xem `hệ điều hành được hỗ trợ <https://github.com/dotnet/core/tree/main/release-notes#supported-os>`_.
 
-Since Godot 4.2, projects written in C# support all desktop platforms (Windows, Linux,
-and macOS), as well as Android and iOS.
+Kể từ Godot 4.2, các dự án viết bằng C# hỗ trợ tất cả nền tảng máy tính để bàn (Windows, Linux và macOS), cũng như Android và iOS.
 
-Android support is currently experimental.
+Hiện tại, hỗ trợ Android vẫn đang ở trạng thái thử nghiệm.
 
-iOS support is currently experimental and has a few limitations.
+Hiện tại, hỗ trợ iOS vẫn đang ở trạng thái thử nghiệm và có một số hạn chế.
 
-- The official export templates for the iOS simulator only supports the ``x64`` architecture.
+- Các export template chính thức cho trình mô phỏng iOS chỉ hỗ trợ kiến trúc ``x64``.
 
-- Exporting to iOS can only be done from a macOS device.
+- Chỉ có thể export sang iOS từ thiết bị macOS.
 
-Currently, projects written in C# cannot be exported to the web platform. To use C#
-on that platform, consider Godot 3 instead.
+Hiện tại, các dự án viết bằng C# không thể được export sang nền tảng web. Để sử dụng C# trên nền tảng đó, hãy cân nhắc sử dụng Godot 3.
+
+.. _`download a .NET version`: https://godotengine.org/download/
+.. _`supported OS`: https://github.com/dotnet/core/tree/main/release-notes#supported-os

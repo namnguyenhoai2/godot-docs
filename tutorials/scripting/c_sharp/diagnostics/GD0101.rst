@@ -1,5 +1,5 @@
-GD0101: The exported member is static
-=====================================
+GD0101: Thành viên được export là static
+========================================
 
 ====================================  ======================================
                                       Value
@@ -12,35 +12,32 @@ GD0101: The exported member is static
 **Enabled by default**                Yes
 ====================================  ======================================
 
-Cause
------
+Nguyên nhân
+-----------
 
-A static member is annotated with the ``[Export]`` attribute. Static members
-can't be exported.
+Một thành viên static được chú thích bằng thuộc tính ``[Export]``. Không thể export các thành viên static.
 
-Rule description
-----------------
+Mô tả quy tắc
+-------------
 
-Godot doesn't allow exporting static members.
+Godot không cho phép export các thành viên static.
 
 .. code-block:: csharp
 
-    // Static members can't be exported.
+    // Không thể export các thành viên static.
     [Export]
     public static int InvalidProperty { get; set; }
 
-    // Instance members can be exported.
+    // Có thể export các thành viên của instance.
     [Export]
     public int ValidProperty { get; set; }
 
-How to fix violations
----------------------
+Cách khắc phục vi phạm
+----------------------
 
-To fix a violation of this rule, remove the ``[Export]`` attribute or remove the
-``static`` keyword.
+Để khắc phục vi phạm quy tắc này, hãy xóa thuộc tính ``[Export]`` hoặc xóa từ khóa ``static``.
 
-When to suppress warnings
--------------------------
+Khi nào cần bỏ qua cảnh báo
+---------------------------
 
-Do not suppress a warning from this rule. Static members can't be exported so
-they will be ignored by Godot, resulting in runtime errors.
+Không nên bỏ qua cảnh báo của quy tắc này. Không thể export các thành viên static, vì vậy Godot sẽ bỏ qua chúng, dẫn đến lỗi runtime.

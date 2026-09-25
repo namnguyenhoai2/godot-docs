@@ -1,5 +1,5 @@
-GD0301: The generic type argument must be a Variant compatible type
-===================================================================
+GD0301: Đối số kiểu generic phải là kiểu tương thích với Variant
+================================================================
 
 ====================================  ======================================
                                       Value
@@ -10,42 +10,34 @@ GD0301: The generic type argument must be a Variant compatible type
 **Enabled by default**                Yes
 ====================================  ======================================
 
-Cause
------
+Nguyên nhân
+-----------
 
-An unsupported type is specified for a generic type argument when a
-:ref:`Variant-compatible type <c_sharp_variant_compatible_types>` is expected.
+Một kiểu không được hỗ trợ được chỉ định cho đối số kiểu generic trong khi cần một
+:ref:`kiểu tương thích với Variant <c_sharp_variant_compatible_types>`.
 
-Rule description
-----------------
+Mô tả quy tắc
+-------------
 
-When a generic type parameter is annotated with the ``[MustBeVariant]`` attribute,
-the generic type is required to be a Variant-compatible type. For example,
-the generic ``Godot.Collections.Array<T>`` type only supports items of a type
-that can be converted to Variant.
+Khi một tham số kiểu generic được chú thích bằng thuộc tính ``[MustBeVariant]``, kiểu generic phải là kiểu tương thích với Variant. Ví dụ: kiểu generic ``Godot.Collections.Array<T>`` chỉ hỗ trợ các phần tử có kiểu có thể được chuyển đổi thành Variant.
 
 .. code-block:: csharp
 
     class SomeType { }
 
-    // SomeType is not a valid type because it doesn't derive from GodotObject,
-    // so it's not compatible with Variant.
+    // SomeType không phải là kiểu hợp lệ vì nó không kế thừa từ GodotObject,
+    // nên không tương thích với Variant.
     var invalidArray = new Godot.Collections.Array<SomeType>();
 
-    // System.Int32 is a valid type because it's compatible with Variant.
+    // System.Int32 là kiểu hợp lệ vì nó tương thích với Variant.
     var validArray = new Godot.Collections.Array<int>();
 
-How to fix violations
----------------------
+Cách khắc phục vi phạm
+----------------------
 
-To fix a violation of this rule, change the generic type argument to be a
-Variant-compatible type or use a different API that doesn't require the generic
-type argument to be a Variant-compatible type.
+Để khắc phục vi phạm quy tắc này, hãy đổi đối số kiểu generic thành một kiểu tương thích với Variant hoặc sử dụng API khác không yêu cầu đối số kiểu generic phải là kiểu tương thích với Variant.
 
-When to suppress warnings
--------------------------
+Khi nào cần bỏ qua cảnh báo
+---------------------------
 
-Do not suppress a warning from this rule. API that contains generic type arguments
-annotated with the ``[MustBeVariant]`` attribute usually has this requirement
-because the values will be passed to the engine, if the type can't be marshalled
-it will result in runtime errors.
+Không bỏ qua cảnh báo từ quy tắc này. API chứa các đối số kiểu generic được chú thích bằng thuộc tính ``[MustBeVariant]`` thường có yêu cầu này vì các giá trị sẽ được truyền vào engine; nếu không thể marshal kiểu đó, sẽ xảy ra lỗi runtime.

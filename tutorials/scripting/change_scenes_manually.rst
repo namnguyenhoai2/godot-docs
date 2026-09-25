@@ -1,13 +1,9 @@
 .. _doc_change_scenes_manually:
 
-Change scenes manually
-======================
+Thay đổi scene theo cách thủ công
+=================================
 
-Sometimes it helps to have more control over how you swap scenes around.
-A :ref:`Viewport <class_Viewport>`'s child nodes will render to the image
-it generates. This holds true even for nodes outside of the "current"
-scene. Autoloads fall into this category, and also scenes which you
-instantiate and add to the tree at runtime:
+Đôi khi, việc kiểm soát nhiều hơn cách bạn chuyển đổi giữa các scene sẽ rất hữu ích. Các nút con của :ref:`Viewport <class_Viewport>` sẽ được render thành hình ảnh mà nó tạo ra. Điều này vẫn đúng ngay cả với các nút nằm ngoài scene "hiện tại". Autoload thuộc trường hợp này, cũng như các scene mà bạn khởi tạo và thêm vào tree trong runtime:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -15,8 +11,8 @@ instantiate and add to the tree at runtime:
     var simultaneous_scene = preload("res://levels/level2.tscn").instantiate()
 
     func _add_a_scene_manually():
-        # This is like autoloading the scene, only
-        # it happens after already loading the main scene.
+        # Điều này giống như autoload scene, chỉ là
+        # nó diễn ra sau khi scene chính đã được load.
         get_tree().root.add_child(simultaneous_scene)
 
  .. code-tab:: csharp
@@ -30,99 +26,67 @@ instantiate and add to the tree at runtime:
 
     public void _AddASceneManually()
     {
-        // This is like autoloading the scene, only
-        // it happens after already loading the main scene.
+        // Điều này giống như autoload scene, chỉ là
+        // nó diễn ra sau khi scene chính đã được load.
         GetTree().Root.AddChild(simultaneousScene);
     }
 
-To complete the cycle and swap out the new scene with the old one,
-you have a choice to make. Many strategies exist for removing a scene
-from view of the :ref:`Viewport <class_Viewport>`. The tradeoffs involve
-balancing operation speed and memory consumption, as well as balancing data
-access and integrity.
+Để hoàn tất chu trình và thay scene mới cho scene cũ, bạn cần đưa ra một lựa chọn. Có nhiều chiến lược để loại bỏ một scene khỏi tầm nhìn của :ref:`Viewport <class_Viewport>`. Những đánh đổi liên quan đến việc cân bằng tốc độ hoạt động và mức tiêu thụ bộ nhớ, cũng như cân bằng khả năng truy cập và tính toàn vẹn của dữ liệu.
 
-1. **Delete the existing scene.**
-   :ref:`SceneTree.change_scene_to_file() <class_SceneTree_method_change_scene_to_file>` and
-   :ref:`SceneTree.change_scene_to_packed() <class_SceneTree_method_change_scene_to_packed>`
-   will delete the current scene immediately. You can also delete the
-   main scene. Assuming the root node's name is "Main", you could do
-   ``get_node("/root/Main").free()`` to delete the whole scene.
+1. **Xóa scene hiện có.**
+   :ref:`SceneTree.change_scene_to_file() <class_SceneTree_method_change_scene_to_file>` và
+   :ref:`SceneTree.change_scene_to_packed() <class_SceneTree_method_change_scene_to_packed>` sẽ xóa scene hiện tại ngay lập tức. Bạn cũng có thể xóa scene chính. Giả sử tên của nút gốc là "Main", bạn có thể dùng ``get_node("/root/Main").free()`` để xóa toàn bộ scene.
 
-    - Unloads memory.
+    - Giải phóng bộ nhớ.
 
-        - Pro: RAM is no longer dragging the dead weight.
+        - Ưu điểm: RAM không còn phải giữ phần dữ liệu thừa không cần thiết.
 
-        - Con: Returning to that scene is now more expensive since it must be
-          loaded back into memory again (takes time AND memory). Not a problem
-          if returning soon is unnecessary.
+        - Nhược điểm: Việc quay lại scene đó giờ sẽ tốn kém hơn vì scene phải được load lại vào bộ nhớ (tốn cả thời gian VÀ bộ nhớ). Đây không phải vấn đề nếu bạn không cần sớm quay lại scene đó.
 
-        - Con: No longer have access to that scene's data. Not a problem if
-          using that data soon is unnecessary.
+        - Nhược điểm: Không còn quyền truy cập vào dữ liệu của scene đó. Đây không phải vấn đề nếu bạn không cần sớm sử dụng dữ liệu đó.
 
-        - Note: It can be useful to preserve the data in a soon-to-be-deleted
-          scene by re-attaching one or more of its nodes to a different scene,
-          or even directly to the :ref:`SceneTree <class_SceneTree>`.
+        - Lưu ý: Bạn có thể muốn bảo toàn dữ liệu trong một scene sắp bị xóa bằng cách gắn lại một hoặc nhiều nút của scene đó vào một scene khác, hoặc thậm chí trực tiếp vào :ref:`SceneTree <class_SceneTree>`.
 
-    - Processing stops.
+    - Dừng xử lý.
 
-        - Pro: No nodes means no processing, physics processing, or input
-          handling. The CPU is available to work on the new scene's contents.
+        - Ưu điểm: Không có nút nghĩa là không có xử lý, xử lý vật lý hoặc xử lý input. CPU có thể dành để làm việc với nội dung của scene mới.
 
-        - Con: Those nodes' processing and input handling no longer operate.
-          Not a problem if using the updated data is unnecessary.
+        - Nhược điểm: Việc xử lý và xử lý input của các nút đó sẽ không còn hoạt động. Đây không phải vấn đề nếu bạn không cần sử dụng dữ liệu đã cập nhật.
 
-2. **Hide the existing scene.** By changing the visibility or collision
-   detection of the nodes, you can hide the entire node sub-tree from the
-   player's perspective. Use
-   :ref:`CanvasItem.hide() <class_CanvasItem_method_hide>` to hide a scene and
-   :ref:`CanvasItem.show() <class_CanvasItem_method_show>` to show it again.
+2. **Ẩn scene hiện có.** Bằng cách thay đổi khả năng hiển thị hoặc phát hiện va chạm của các nút, bạn có thể ẩn toàn bộ cây con của nút khỏi góc nhìn của người chơi. Dùng
+   :ref:`CanvasItem.hide() <class_CanvasItem_method_hide>` để ẩn một scene và
+   :ref:`CanvasItem.show() <class_CanvasItem_method_show>` để hiển thị lại scene đó.
 
-    - Memory still exists.
+    - Bộ nhớ vẫn được giữ lại.
 
-        - Pro: You can still access the data if needed.
+        - Ưu điểm: Bạn vẫn có thể truy cập dữ liệu khi cần.
 
-        - Pro: There's no need to move any more nodes around to save data.
+        - Ưu điểm: Không cần di chuyển thêm bất kỳ nút nào để lưu dữ liệu.
 
-        - Con: More data is being kept in memory, which will be become a problem
-          on memory-sensitive platforms like web or mobile.
+        - Nhược điểm: Nhiều dữ liệu hơn được giữ trong bộ nhớ, điều này sẽ trở thành vấn đề trên các nền tảng nhạy cảm với bộ nhớ như web hoặc mobile.
 
-    - Processing continues.
+    - Tiếp tục xử lý.
 
-        - Pro: Data continues to receive processing updates, so the scene will
-          keep any data within it that relies on delta time or frame data
-          updated.
+        - Ưu điểm: Dữ liệu tiếp tục nhận được các bản cập nhật xử lý, vì vậy scene sẽ tiếp tục cập nhật mọi dữ liệu bên trong phụ thuộc vào delta time hoặc dữ liệu frame.
 
-        - Pro: Nodes are still members of groups (since groups belong to the
+        - Ưu điểm: Các nút vẫn là thành viên của các nhóm (vì các nhóm thuộc về
           :ref:`SceneTree <class_SceneTree>`).
 
-        - Con: The CPU's attention is now divided between both scenes. Too much
-          load could result in low frame rates. You should be sure to test
-          performance as you go to ensure the target platform can support the
-          load from this approach.
+        - Nhược điểm: Sự chú ý của CPU giờ bị chia cho cả hai scene. Tải quá lớn có thể khiến frame rate thấp. Bạn nên kiểm tra hiệu năng trong quá trình phát triển để đảm bảo nền tảng mục tiêu có thể đáp ứng tải từ cách tiếp cận này.
 
-3. **Remove the existing scene from the tree.** Assign a variable
-   to the existing scene's root node. Then use
-   :ref:`Node.remove_child(Node) <class_Node_method_remove_child>` to detach the entire
-   scene from the tree. To attach it later, use
+3. **Xóa scene hiện có khỏi tree.** Gán một biến cho nút gốc của scene hiện có. Sau đó dùng
+   :ref:`Node.remove_child(Node) <class_Node_method_remove_child>` để tách toàn bộ scene khỏi tree. Để gắn scene lại sau đó, hãy dùng
    :ref:`Node.add_child(Node) <class_Node_method_add_child>`.
 
-    - Memory still exists (similar pros/cons as hiding it from view).
+    - Bộ nhớ vẫn được giữ lại (các ưu và nhược điểm tương tự như khi ẩn scene khỏi tầm nhìn).
 
-    - Processing stops (similar pros/cons as deleting it completely).
+    - Dừng xử lý (các ưu và nhược điểm tương tự như khi xóa hoàn toàn scene).
 
-    - Pro: This variation of "hiding" it is much easier to show/hide. Rather
-      than potentially keeping track of multiple changes to the scene, you
-      only need to call the add/remove_child methods. This is similar to
-      disabling game objects in other engines.
+    - Ưu điểm: Biến thể "ẩn" này dễ hiển thị/ẩn hơn nhiều. Thay vì có thể phải theo dõi nhiều thay đổi đối với scene, bạn chỉ cần gọi các phương thức add/remove_child. Cách này tương tự việc vô hiệu hóa các game object trong những engine khác.
 
-    - Con: Unlike with hiding it from view only, the data contained within
-      the scene will become stale if it relies on delta time, input, groups,
-      or other data that is derived from :ref:`SceneTree <class_SceneTree>`
-      access.
+    - Nhược điểm: Không giống như chỉ ẩn scene khỏi tầm nhìn, dữ liệu chứa trong scene sẽ trở nên lỗi thời nếu phụ thuộc vào delta time, input, groups hoặc dữ liệu khác được lấy từ quyền truy cập :ref:`SceneTree <class_SceneTree>`.
 
-There are also cases where you may wish to have many scenes present at the same
-time, such as adding your own singleton at runtime, or preserving
-a scene's data between scene changes (adding the scene to the root node).
+Cũng có những trường hợp bạn muốn nhiều scene hiện diện cùng lúc, chẳng hạn như thêm singleton của riêng bạn trong runtime hoặc bảo toàn dữ liệu của một scene giữa các lần thay đổi scene (thêm scene vào nút gốc).
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -133,11 +97,7 @@ a scene's data between scene changes (adding the scene to the root node).
 
         GetTree().Root.AddChild(scene);
 
-Another case may be displaying multiple scenes at the same time using
-:ref:`SubViewportContainers <class_SubViewportContainer>`. This is optimal for
-rendering different content in different parts of the screen (e.g. minimaps,
-split-screen multiplayer).
+Một trường hợp khác là hiển thị nhiều scene cùng lúc bằng
+:ref:`SubViewportContainers <class_SubViewportContainer>`. Cách này tối ưu để render nội dung khác nhau ở các phần khác nhau trên màn hình (ví dụ: minimap, multiplayer chia đôi màn hình).
 
-Each option will have cases where it is best appropriate, so you must examine
-the effects of each approach, and determine what path best fits your unique
-situation.
+Mỗi tùy chọn sẽ phù hợp nhất với những trường hợp khác nhau, vì vậy bạn phải xem xét tác động của từng cách tiếp cận và xác định hướng đi phù hợp nhất với tình huống cụ thể của mình.

@@ -1,5 +1,5 @@
-GD0102: The type of the exported member is not supported
-========================================================
+GD0102: Kiểu của member được export không được hỗ trợ
+=====================================================
 
 ====================================  ======================================
                                       Value
@@ -12,40 +12,36 @@ GD0102: The type of the exported member is not supported
 **Enabled by default**                Yes
 ====================================  ======================================
 
-Cause
------
+Nguyên nhân
+-----------
 
-An unsupported type is specified for a member annotated with the ``[Export]``
-attribute when a
-:ref:`Variant-compatible type <c_sharp_variant_compatible_types>` is expected.
+Một kiểu không được hỗ trợ được chỉ định cho member có chú thích bằng thuộc tính ``[Export]`` trong khi cần một
+:ref:`kiểu tương thích với Variant <c_sharp_variant_compatible_types>`.
 
-Rule description
-----------------
+Mô tả quy tắc
+-------------
 
-Every exported member must be Variant-compatible so it can be marshalled by
-the engine.
+Mọi member được export phải tương thích với Variant để engine có thể marshal member đó.
 
 .. code-block:: csharp
 
     class SomeType { }
 
-    // SomeType is not a valid member type because it doesn't derive from GodotObject,
-    // so it's not compatible with Variant.
+    // SomeType không phải là kiểu member hợp lệ vì nó không kế thừa từ GodotObject,
+    // do đó nó không tương thích với Variant.
     [Export]
     public SomeType InvalidProperty { get; set; }
 
-    // System.Int32 is a valid type because it's compatible with Variant.
+    // System.Int32 là một kiểu hợp lệ vì nó tương thích với Variant.
     [Export]
     public int ValidProperty { get; set; }
 
-How to fix violations
----------------------
+Cách khắc phục vi phạm
+----------------------
 
-To fix a violation of this rule, change the member's type to be Variant-compatible
-or remove the ``[Export]`` attribute.
+Để khắc phục vi phạm quy tắc này, hãy đổi kiểu của member thành kiểu tương thích với Variant hoặc xóa thuộc tính ``[Export]``.
 
-When to suppress warnings
--------------------------
+Khi nào cần bỏ qua cảnh báo
+---------------------------
 
-Do not suppress a warning from this rule. Members with types that can't be marshalled
-will result in runtime errors.
+Không nên bỏ qua cảnh báo từ quy tắc này. Các member có kiểu không thể marshal sẽ gây ra lỗi runtime.

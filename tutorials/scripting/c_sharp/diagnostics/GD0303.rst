@@ -1,5 +1,5 @@
-GD0303: The parent symbol of a type argument that must be Variant compatible was not handled
-============================================================================================
+GD0303: Ký hiệu cha của một đối số kiểu phải tương thích với Variant nhưng chưa được xử lý
+==========================================================================================
 
 ====================================  ======================================
                                       Value
@@ -10,28 +10,25 @@ GD0303: The parent symbol of a type argument that must be Variant compatible was
 **Enabled by default**                Yes
 ====================================  ======================================
 
-Cause
------
+Nguyên nhân
+-----------
 
-This is a bug in the engine and must be reported.
+Đây là một lỗi trong engine và phải được báo cáo.
 
-Rule description
-----------------
+Mô tả quy tắc
+-------------
 
-The ``MustBeVariantAnalyzer`` has found an unhandled case in the user source
-code. Please, open an `issue <https://github.com/godotengine/godot/issues>`_
-and attach a minimal reproduction project so it can be fixed.
+``MustBeVariantAnalyzer`` đã phát hiện một trường hợp chưa được xử lý trong mã nguồn của người dùng. Vui lòng mở một `sự cố <https://github.com/godotengine/godot/issues>`_ và đính kèm một project tái hiện tối giản để có thể khắc phục lỗi này.
 
 
-How to fix violations
----------------------
+Cách khắc phục các vi phạm
+--------------------------
 
-Violations of this rule can't be fixed.
+Không thể khắc phục các vi phạm quy tắc này.
 
-When to suppress warnings
--------------------------
+Khi nào nên tắt cảnh báo
+------------------------
 
-Suppressing a warning from this rule may result in unexpected errors, since the
-case found by the analyzer may need to be handled by the user to prevent
-types that are not Variant-compatible from reaching the engine. Attempting to
-marshal incompatible types will result in runtime errors.
+Việc tắt cảnh báo từ quy tắc này có thể dẫn đến các lỗi không mong muốn, vì trường hợp được analyzer phát hiện có thể cần được người dùng xử lý để ngăn các kiểu không tương thích với Variant đi vào engine. Việc cố gắng marshal các kiểu không tương thích sẽ dẫn đến lỗi runtime.
+
+.. _`issue`: https://github.com/godotengine/godot/issues

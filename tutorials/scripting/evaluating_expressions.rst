@@ -1,119 +1,106 @@
 .. _doc_evaluating_expressions:
 
-Evaluating expressions
-======================
+Đánh giá biểu thức
+==================
 
-Godot provides an :ref:`class_Expression` class you can use to evaluate expressions.
+Godot cung cấp một lớp :ref:`class_Expression` mà bạn có thể dùng để đánh giá các biểu thức.
 
-An expression can be:
+Một biểu thức có thể là:
 
-- A mathematical expression such as ``(2 + 4) * 16/4.0``.
-- A boolean expression such as ``true && false``.
-- A built-in method call like ``deg_to_rad(90)``.
-- A method call on a user-provided script like ``update_health()``,
-  if ``base_instance`` is set to a value other than ``null`` when calling
+- Một biểu thức toán học, chẳng hạn như ``(2 + 4) * 16/4.0``.
+- Một biểu thức boolean, chẳng hạn như ``true && false``.
+- Một lệnh gọi phương thức tích hợp như ``deg_to_rad(90)``.
+- Một lệnh gọi phương thức trên script do người dùng cung cấp như ``update_health()``, nếu ``base_instance`` được đặt thành một giá trị khác ``null`` khi gọi
   :ref:`Expression.execute() <class_Expression_method_execute>`.
 
 .. note::
 
-    The Expression class is independent from GDScript.
-    It's available even if you compile Godot with the GDScript module disabled.
+    Lớp Expression độc lập với GDScript. Lớp này vẫn khả dụng ngay cả khi bạn biên dịch Godot với module GDScript bị tắt.
 
-Basic usage
------------
+Cách sử dụng cơ bản
+-------------------
 
-To evaluate a mathematical expression, use:
+Để đánh giá một biểu thức toán học, hãy sử dụng:
 
-::
+.. code-block::
 
     var expression = Expression.new()
     expression.parse("20 + 10*2 - 5/2.0")
     var result = expression.execute()
     print(result)  # 37.5
 
-The following operators are available:
+Các toán tử sau khả dụng:
 
-+------------------------+-------------------------------------------------------------------------------------+
-| Operator               | Notes                                                                               |
-+========================+=====================================================================================+
-| Addition (``+``)       | Can also be used to concatenate strings and arrays:                                 |
-|                        | - ``"hello" + " world"`` = ``hello world``                                          |
-|                        | - ``[1, 2] + [3, 4]`` = ``[1, 2, 3, 4]``                                            |
-+------------------------+-------------------------------------------------------------------------------------+
-| Subtraction (``-``)    |                                                                                     |
-+------------------------+-------------------------------------------------------------------------------------+
-| Multiplication (``*``) |                                                                                     |
-+------------------------+-------------------------------------------------------------------------------------+
-| Division (``/``)       | Performs and integer division if both operands are integers.                        |
-|                        | If at least one of them is a floating-point number, returns a floating-point value. |
-+------------------------+-------------------------------------------------------------------------------------+
-| Remainder (``%``)      | Returns the remainder of an integer division (modulo).                              |
-|                        | The result will always have the sign of the dividend.                               |
-+------------------------+-------------------------------------------------------------------------------------+
-| Conjunction (``&&``)   | Returns the result of a boolean AND.                                                |
-+------------------------+-------------------------------------------------------------------------------------+
-| Disjunction (``||``)   | Returns the result of a boolean OR.                                                 |
-+------------------------+-------------------------------------------------------------------------------------+
-| Negation (``!``)       | Returns the result of a boolean NOT.                                                |
-+------------------------+-------------------------------------------------------------------------------------+
++-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Toán tử               | Ghi chú                                                                                                                                            |
++=======================+====================================================================================================================================================+
+| Phép cộng (``+``)     | Cũng có thể được dùng để nối các chuỗi và mảng:                                                                                                    |
+|                       | - ``"hello" + " world"`` = ``hello world``                                                                                                         |
+|                       | - ``[1, 2] + [3, 4]`` = ``[1, 2, 3, 4]``                                                                                                           |
++-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Phép trừ (``-``)      |                                                                                                                                                    |
++-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Phép nhân (``*``)     |                                                                                                                                                    |
++-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Phép chia (``/``)     | Thực hiện phép chia nguyên nếu cả hai toán hạng đều là số nguyên. Nếu ít nhất một toán hạng là số dấu phẩy động, trả về một giá trị dấu phẩy động. |
++-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Phần dư (``%``)       | Trả về phần dư của phép chia nguyên (modulo). Kết quả luôn có cùng dấu với số bị chia.                                                             |
++-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Phép hội (``&&``)     | Trả về kết quả của phép AND boolean.                                                                                                               |
++-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Phép tuyển (``||``)   | Trả về kết quả của phép OR boolean.                                                                                                                |
++-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Phép phủ định (``!``) | Trả về kết quả của phép NOT boolean.                                                                                                               |
++-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Spaces around operators are optional. Also, keep in mind the usual
-`order of operations <https://en.wikipedia.org/wiki/Order_of_operations>`__
-applies. Use parentheses to override the order of operations if needed.
+Khoảng trắng xung quanh các toán tử là không bắt buộc. Ngoài ra, hãy lưu ý rằng `thứ tự thực hiện <https://en.wikipedia.org/wiki/Order_of_operations>`__ thông thường vẫn được áp dụng. Sử dụng dấu ngoặc đơn để ghi đè thứ tự thực hiện nếu cần.
 
-All the Variant types supported in Godot can be used: integers, floating-point
-numbers, strings, arrays, dictionaries, colors, vectors, …
+Có thể sử dụng tất cả các kiểu Variant được Godot hỗ trợ: số nguyên, số dấu phẩy động, chuỗi, mảng, từ điển, màu, vector, …
 
-Arrays and dictionaries can be indexed like in GDScript:
+Có thể lập chỉ mục mảng và từ điển như trong GDScript:
 
-::
+.. code-block::
 
-    # Returns 1.
+    # Trả về 1.
     [1, 2][0]
 
-    # Returns 3. Negative indices can be used to count from the end of the array.
+    # Trả về 3. Có thể dùng chỉ mục âm để đếm từ cuối mảng.
     [1, 3][-1]
 
-    # Returns "green".
+    # Trả về "green".
     {"favorite_color": "green"}["favorite_color"]
 
-    # All 3 lines below return 7.0 (Vector3 is floating-point).
+    # Cả 3 dòng bên dưới đều trả về 7.0 (Vector3 là kiểu dấu phẩy động).
     Vector3(5, 6, 7)[2]
     Vector3(5, 6, 7)["z"]
     Vector3(5, 6, 7).z
 
-Passing variables to an expression
-----------------------------------
+Truyền biến vào biểu thức
+-------------------------
 
-You can pass variables to an expression. These variables will then
-become available in the expression's "context" and will be substituted when used
-in the expression:
+Bạn có thể truyền các biến vào một biểu thức. Sau đó, các biến này sẽ khả dụng trong "context" của biểu thức và sẽ được thay thế khi được sử dụng trong biểu thức:
 
-::
+.. code-block::
 
     var expression = Expression.new()
     # Define the variable names first in the second parameter of `parse()`.
-    # In this example, we use `x` for the variable name.
+    # Trong ví dụ này, chúng ta sử dụng `x` làm tên biến.
     expression.parse("20 + 2 * x", ["x"])
-    # Then define the variable values in the first parameter of `execute()`.
-    # Here, `x` is assigned the integer value 5.
+    # Sau đó, xác định các giá trị biến trong tham số đầu tiên của `execute()`.
+    # Ở đây, `x` được gán giá trị số nguyên 5.
     var result = expression.execute([5])
     print(result)  # 30
 
-Both the variable names and variable values **must** be specified as an array,
-even if you only define one variable. Also, variable names are **case-sensitive**.
+Cả tên biến và giá trị biến **bắt buộc** phải được chỉ định dưới dạng một mảng, ngay cả khi bạn chỉ định nghĩa một biến. Ngoài ra, tên biến **phân biệt chữ hoa chữ thường**.
 
-Setting a base instance for the expression
-------------------------------------------
+Đặt instance cơ sở cho biểu thức
+--------------------------------
 
-By default, an expression has a base instance of ``null``. This means the
-expression has no base instance associated to it.
+Theo mặc định, một biểu thức có instance cơ sở là ``null``. Điều này có nghĩa là biểu thức không liên kết với instance cơ sở nào.
 
-When calling :ref:`Expression.execute() <class_Expression_method_execute>`,
-you can set the value of the ``base_instance`` parameter to a specific object
-instance such as ``self``, another script instance or even a singleton:
+Khi gọi :ref:`Expression.execute() <class_Expression_method_execute>`, bạn có thể đặt giá trị của tham số ``base_instance`` thành một instance đối tượng cụ thể như ``self``, một instance script khác hoặc thậm chí là một singleton:
 
-::
+.. code-block::
 
     func double(number):
         return number * 2
@@ -123,58 +110,54 @@ instance such as ``self``, another script instance or even a singleton:
         var expression = Expression.new()
         expression.parse("double(10)")
 
-        # This won't work since we're not passing the current script as the base instance.
+        # Điều này sẽ không hoạt động vì chúng ta không truyền script hiện tại làm instance cơ sở.
         var result = expression.execute([], null)
         print(result)  # null
 
-        # This will work since we're passing the current script (i.e. self)
-        # as the base instance.
+        # Điều này sẽ hoạt động vì chúng ta truyền script hiện tại (tức là self)
+        # làm instance cơ sở.
         result = expression.execute([], self)
         print(result)  # 20
 
-Associating a base instance allows doing the following:
+Việc liên kết một instance cơ sở cho phép thực hiện những việc sau:
 
-- Reference the instance's constants (``const``) in the expression.
-- Reference the instance's member variables (``var``) in the expression.
-- Call methods defined in the instance and use their return values in the expression.
+- Tham chiếu các hằng số của instance (``const``) trong biểu thức.
+- Tham chiếu các biến thành viên của instance (``var``) trong biểu thức.
+- Gọi các phương thức được định nghĩa trong instance và sử dụng giá trị trả về của chúng trong biểu thức.
 
 .. warning::
 
-    Setting a base instance to a value other than ``null`` allows referencing
-    constants, member variables, and calling all methods defined in the script
-    attached to the instance. Allowing users to enter expressions may allow
-    cheating in your game, or may even introduce security vulnerabilities if you
-    allow arbitrary clients to run expressions on other players' devices.
+    Đặt instance cơ sở thành một giá trị khác ``null`` cho phép tham chiếu các hằng số, biến thành viên và gọi mọi phương thức được định nghĩa trong script gắn với instance. Cho phép người dùng nhập biểu thức có thể tạo điều kiện gian lận trong trò chơi của bạn, hoặc thậm chí tạo ra các lỗ hổng bảo mật nếu bạn cho phép các client tùy ý chạy biểu thức trên thiết bị của người chơi khác.
 
-Example script
---------------
+Script ví dụ
+------------
 
-The script below demonstrates what the Expression class is capable of:
+Script dưới đây minh họa những gì lớp Expression có thể thực hiện:
 
-::
+.. code-block::
 
     const DAYS_IN_YEAR = 365
     var script_member_variable = 1000
 
 
     func _ready():
-        # Constant boolean expression.
+        # Biểu thức boolean hằng.
         evaluate("true && false")
-        # Boolean expression with variables.
+        # Biểu thức boolean với các biến.
         evaluate("!(a && b)", ["a", "b"], [true, false])
 
-        # Constant mathexpression.
+        # Biểu thức toán học hằng.
         evaluate("2 + 2")
-        # Math expression with variables.
+        # Biểu thức toán học với các biến.
         evaluate("x + y", ["x", "y"], [60, 100])
 
-        # Call built-in method (built-in math function call).
+        # Gọi phương thức tích hợp (lời gọi hàm toán học tích hợp).
         evaluate("deg_to_rad(90)")
 
-        # Call user method (defined in the script).
-        # We can do this because the expression execution is bound to `self`
-        # in the `evaluate()` method.
-        # Since this user method returns a value, we can use it in math expressions.
+        # Gọi phương thức do người dùng định nghĩa (được định nghĩa trong script).
+        # Chúng ta có thể làm vậy vì việc thực thi biểu thức được liên kết với `self`
+        # trong phương thức `evaluate()`.
+        # Vì phương thức do người dùng định nghĩa này trả về một giá trị, chúng ta có thể sử dụng nó trong các biểu thức toán học.
         evaluate("call_me() + DAYS_IN_YEAR + script_member_variable")
         evaluate("call_me(42)")
         evaluate("call_me('some string')")
@@ -198,10 +181,10 @@ The script below demonstrates what the Expression class is capable of:
         if argument:
             print("Argument passed: %s" % argument)
 
-        # The method's return value is also the expression's return value.
+        # Giá trị trả về của phương thức cũng là giá trị trả về của biểu thức.
         return 0
 
-The output from the script will be:
+Đầu ra từ script sẽ là:
 
 ::
 
@@ -222,14 +205,9 @@ The output from the script will be:
     Argument passed: some string
     0
 
-Built-in functions
-------------------
+Các hàm tích hợp
+----------------
 
-All methods in the :ref:`Global Scope<class_@GlobalScope>` are available in the
-Expression class, even if no base instance is bound to the expression.
-The same parameters and return types are available.
+Tất cả các phương thức trong :ref:`Global Scope <class_@GlobalScope>` đều khả dụng trong lớp Expression, ngay cả khi không có instance cơ sở nào được liên kết với biểu thức. Các tham số và kiểu trả về tương ứng cũng khả dụng.
 
-However, unlike GDScript, parameters are **always required** even if they're
-specified as being optional in the class reference. In contrast, this
-restriction on arguments doesn't apply to user-made functions when you bind a
-base instance to the expression.
+Tuy nhiên, không giống như GDScript, các tham số **always required** ngay cả khi chúng được chỉ định là tùy chọn trong tài liệu tham chiếu lớp. Ngược lại, hạn chế này đối với các đối số không áp dụng cho các hàm do người dùng tạo khi bạn liên kết một instance cơ sở với biểu thức.

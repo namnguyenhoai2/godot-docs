@@ -1,89 +1,66 @@
 .. _doc_singletons_autoload:
 
-Singletons (Autoload)
-=====================
+Singleton (Autoload)
+====================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Godot's scene system, while powerful and flexible, has a drawback: there is no
-method for storing information (e.g. a player's score or inventory) that is
-needed by more than one scene.
+Hệ thống scene của Godot tuy mạnh mẽ và linh hoạt nhưng có một hạn chế: không có phương thức nào để lưu trữ thông tin (ví dụ: điểm số hoặc vật phẩm của người chơi) cần dùng trong nhiều scene.
 
-It's possible to address this with some workarounds, but they come with their
-own limitations:
+Có thể giải quyết vấn đề này bằng một số cách khắc phục, nhưng chúng cũng có những hạn chế riêng:
 
--  You can use a "master" scene that loads and unloads other scenes as
-   its children. However, this means you can no longer run those scenes
-   individually and expect them to work correctly.
--  Information can be stored to disk in ``user://`` and then loaded by scenes
-   that require it, but frequently saving and loading data is cumbersome and
-   may be slow.
+-  Bạn có thể sử dụng một scene "chính" để tải và dỡ các scene khác dưới dạng các scene con. Tuy nhiên, điều này có nghĩa là bạn không thể chạy riêng các scene đó và mong chúng hoạt động chính xác.
+-  Thông tin có thể được lưu vào đĩa trong ``user://`` rồi được các scene cần thông tin đó tải lên, nhưng việc thường xuyên lưu và tải dữ liệu khá bất tiện và có thể chậm.
 
-The `Singleton pattern <https://en.wikipedia.org/wiki/Singleton_pattern>`_ is
-a useful tool for solving the common use case where you need to store
-persistent information between scenes. In our case, it's possible to reuse the
-same scene or class for multiple singletons as long as they have different
-names.
+Mẫu `Singleton <https://en.wikipedia.org/wiki/Singleton_pattern>`_ là một công cụ hữu ích để giải quyết trường hợp phổ biến khi bạn cần lưu trữ thông tin bền vững giữa các scene. Trong trường hợp của chúng ta, có thể tái sử dụng cùng một scene hoặc class cho nhiều singleton, miễn là chúng có tên khác nhau.
 
-Using this concept, you can create objects that:
+Dựa trên khái niệm này, bạn có thể tạo các đối tượng:
 
-- Are always loaded, no matter which scene is currently running.
-- Can store global variables such as player information.
-- Can handle switching scenes and between-scene transitions.
-- *Act* like a singleton, since GDScript does not support global variables by design.
+- Luôn được tải, bất kể scene nào hiện đang chạy.
+- Có thể lưu trữ các biến toàn cục như thông tin người chơi.
+- Có thể xử lý việc chuyển scene và các quá trình chuyển tiếp giữa các scene.
+- *Hoạt động* như một singleton, vì GDScript không hỗ trợ biến toàn cục theo thiết kế.
 
-Autoloading nodes and scripts can give us these characteristics.
+Việc autoload node và script có thể cung cấp cho chúng ta những đặc điểm này.
 
 .. note::
 
-    Godot won't make an Autoload a "true" singleton as per the singleton design
-    pattern. It may still be instanced more than once by the user if desired.
+    Godot sẽ không biến một Autoload thành singleton "thực sự" theo mẫu thiết kế singleton. Người dùng vẫn có thể tạo nhiều instance của nó nếu muốn.
 
 .. tip::
 
-    If you're creating an autoload as part of an editor plugin, consider
-    :ref:`registering it automatically in the Project Settings <doc_making_plugins_autoload>`
-    when the plugin is enabled.
+    Nếu bạn tạo một autoload trong một editor plugin, hãy cân nhắc
+    :ref:`tự động đăng ký nó trong Project Settings <doc_making_plugins_autoload>` khi plugin được bật.
 
 Autoload
 --------
 
-You can create an Autoload to load a scene or a script that inherits from
+Bạn có thể tạo một Autoload để tải một scene hoặc một script kế thừa từ
 :ref:`class_Node`.
 
 .. note::
 
-    When autoloading a script, a :ref:`class_Node` will be created and the script will be
-    attached to it. This node will be added to the root viewport before any
-    other scenes are loaded.
+    Khi autoload một script, một :ref:`class_Node` sẽ được tạo và script sẽ được gắn vào đó. Node này sẽ được thêm vào viewport gốc trước khi bất kỳ scene nào khác được tải.
 
 .. image:: img/singleton.webp
 
-To autoload a scene or script, start from the menu and navigate to
-**Project > Project Settings > Globals > Autoload**.
+Để autoload một scene hoặc script, bắt đầu từ menu và điều hướng đến **Project > Project Settings > Globals > Autoload**.
 
 .. image:: img/autoload_tab.webp
 
-Here you can add any number of scenes or scripts. Each entry in the list
-requires a name, which is assigned as the node's ``name`` property. The order of
-the entries as they are added to the global scene tree can be manipulated using
-the up/down arrow keys. Like regular scenes, the engine will read these nodes
-in top-to-bottom order.
+Tại đây, bạn có thể thêm bất kỳ số lượng scene hoặc script nào. Mỗi mục trong danh sách yêu cầu một tên, được gán làm thuộc tính ``name`` của node. Có thể điều chỉnh thứ tự các mục khi chúng được thêm vào scene tree toàn cục bằng các phím mũi tên lên/xuống. Giống như các scene thông thường, engine sẽ đọc các node này theo thứ tự từ trên xuống dưới.
 
 .. image:: img/autoload_example.webp
 
-If the **Enable** column is checked (which is the default), then the singleton can
-be accessed directly in GDScript:
+Nếu cột **Enable** được chọn (mặc định là vậy), singleton có thể được truy cập trực tiếp trong GDScript:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
    PlayerVariables.health -= 10
 
-The **Enable** column has no effect in C# code. However, if the singleton is a
-C# script, a similar effect can be achieved by including a static property
-called ``Instance`` and assigning it in ``_Ready()``:
+Cột **Enable** không có tác dụng trong mã C#. Tuy nhiên, nếu singleton là một C# script, có thể đạt được hiệu ứng tương tự bằng cách thêm một static property có tên ``Instance`` và gán giá trị cho nó trong ``_Ready()``:
 
 .. tabs::
  .. code-tab:: csharp
@@ -100,70 +77,47 @@ called ``Instance`` and assigning it in ``_Ready()``:
         }
     }
 
-This allows the singleton to be accessed from C# code without ``GetNode()`` and
-without a typecast:
+Điều này cho phép truy cập singleton từ mã C# mà không cần ``GetNode()`` và không cần typecast:
 
 .. tabs::
  .. code-tab:: csharp
 
     PlayerVariables.Instance.Health -= 10;
 
-Note that autoload objects (scripts and/or scenes) are accessed just like any
-other node in the scene tree. In fact, if you look at the running scene tree,
-you'll see the autoloaded nodes appear:
+Lưu ý rằng các đối tượng autoload (script và/hoặc scene) được truy cập giống như bất kỳ node nào khác trong scene tree. Thực tế, nếu xem scene tree đang chạy, bạn sẽ thấy các node đã được autoload xuất hiện:
 
 .. image:: img/autoload_runtime.webp
 
 .. warning::
 
-    Autoloads must **not** be removed using ``free()`` or ``queue_free()`` at
-    runtime, or the engine will crash.
+    Tuyệt đối **không** được xóa các đối tượng autoload bằng ``free()`` hoặc ``queue_free()`` trong runtime, nếu không engine sẽ bị crash.
 
-Custom scene switcher
----------------------
+Scene switcher tùy chỉnh
+------------------------
 
-This tutorial will demonstrate building a scene switcher using autoloads.
-For basic scene switching, you can use the
-:ref:`SceneTree.change_scene_to_file() <class_SceneTree_method_change_scene_to_file>`
-method (see :ref:`doc_scene_tree` for details). However, if you need more
-complex behavior when changing scenes, this method provides more functionality.
+Tutorial này sẽ hướng dẫn xây dựng một scene switcher bằng autoload. Để chuyển scene cơ bản, bạn có thể sử dụng
+phương thức :ref:`SceneTree.change_scene_to_file() <class_SceneTree_method_change_scene_to_file>` (xem :ref:`doc_scene_tree` để biết chi tiết). Tuy nhiên, nếu cần hành vi phức tạp hơn khi thay đổi scene, phương thức này cung cấp nhiều chức năng hơn.
 
-To begin, download the template from here:
-`singleton_autoload_starter.zip <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/singleton_autoload_starter.zip>`_
-and open it in Godot.
+Để bắt đầu, hãy tải template từ đây: `singleton_autoload_starter.zip <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/singleton_autoload_starter.zip>`_ và mở nó trong Godot.
 
-A window notifying you that the project was last opened in an older Godot version
-may appear, that's not an issue. Click *Ok* to open the project.
+Một cửa sổ thông báo rằng project được mở lần cuối bằng phiên bản Godot cũ hơn có thể xuất hiện; điều đó không thành vấn đề. Nhấp vào *Ok* để mở project.
 
-The project contains two scenes: ``scene_1.tscn`` and ``scene_2.tscn``. Each
-scene contains a label displaying the scene name and a button with its
-``pressed()`` signal connected. When you run the project, it starts in
-``scene_1.tscn``. However, pressing the button does nothing.
+Project chứa hai scene: ``scene_1.tscn`` và ``scene_2.tscn``. Mỗi scene chứa một label hiển thị tên scene và một button đã kết nối signal ``pressed()`` của nó. Khi chạy project, project bắt đầu trong ``scene_1.tscn``. Tuy nhiên, nhấn button không thực hiện điều gì.
 
-Creating the script
-~~~~~~~~~~~~~~~~~~~~~
+Tạo script
+~~~~~~~~~~
 
-Open the **Script** window and create a new script called ``global.gd``.
-Make sure it inherits from ``Node``:
+Mở cửa sổ **Script** và tạo một script mới có tên ``global.gd``. Đảm bảo script kế thừa từ ``Node``:
 
 .. image:: img/autoload_script.webp
 
-The next step is to add this script to the autoload list.
-Starting from the menu, open
-**Project > Project Settings > Globals > Autoload** and
-select the script by clicking the browse button or typing its path:
-``res://global.gd``. Press **Add** to add it to the autoload list
-and name it "Global", which is required for scripts to access it
-by the name "Global":
+Bước tiếp theo là thêm script này vào danh sách autoload. Từ menu, mở **Project > Project Settings > Globals > Autoload** và chọn script bằng cách nhấp vào nút browse hoặc nhập đường dẫn của nó: ``res://global.gd``. Nhấn **Add** để thêm script vào danh sách autoload và đặt tên là "Global", tên bắt buộc để các script có thể truy cập nó bằng tên "Global":
 
 .. image:: img/autoload_tutorial1.webp
 
-Now whenever we run any scene in the project, this script will always be loaded.
+Bây giờ, bất cứ khi nào chạy một scene trong project, script này sẽ luôn được tải.
 
-Returning to the script, it needs to fetch the current scene in the
-`_ready()` function. Both the current scene (the one with the button) and
-``global.gd`` are children of root, but autoloaded nodes are always first. This
-means that the last child of root is always the loaded scene.
+Quay lại script, script cần lấy scene hiện tại trong hàm `_ready()`. Cả scene hiện tại (scene có button) và ``global.gd`` đều là các node con của root, nhưng các node autoload luôn đứng trước. Điều này có nghĩa là node con cuối cùng của root luôn là scene đã được tải.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -174,7 +128,7 @@ means that the last child of root is always the loaded scene.
 
     func _ready():
         var root = get_tree().root
-        # Using a negative index counts from the end, so this gets the last child node of `root`.
+        # Dùng index âm sẽ đếm từ cuối, vì vậy câu lệnh này lấy node con cuối cùng của `root`.
         current_scene = root.get_child(-1)
 
  .. code-tab:: csharp
@@ -188,98 +142,94 @@ means that the last child of root is always the loaded scene.
         public override void _Ready()
         {
             Viewport root = GetTree().Root;
-            // Using a negative index counts from the end, so this gets the last child node of `root`.
+            // Dùng index âm sẽ đếm từ cuối, vì vậy câu lệnh này lấy node con cuối cùng của `root`.
             CurrentScene = root.GetChild(-1);
         }
     }
 
-Now we need a function for changing the scene. This function needs to free the
-current scene and replace it with the requested one.
+Bây giờ chúng ta cần một hàm để thay đổi scene. Hàm này cần giải phóng scene hiện tại và thay thế nó bằng scene được yêu cầu.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     func goto_scene(path):
-        # This function will usually be called from a signal callback,
-        # or some other function in the current scene.
-        # Deleting the current scene at this point is
-        # a bad idea, because it may still be executing code.
-        # This will result in a crash or unexpected behavior.
+        # Hàm này thường được gọi từ một signal callback,
+        # hoặc một hàm khác trong scene hiện tại.
+        # Xóa scene hiện tại tại thời điểm này là
+        # một ý tưởng tồi, vì scene đó có thể vẫn đang thực thi mã.
+        # Điều này sẽ gây ra crash hoặc hành vi không mong muốn.
 
-        # The solution is to defer the load to a later time, when
-        # we can be sure that no code from the current scene is running:
+        # Giải pháp là trì hoãn việc tải đến một thời điểm muộn hơn, khi
+        # chúng ta có thể chắc chắn rằng không có mã nào từ scene hiện tại đang chạy:
 
         _deferred_goto_scene.call_deferred(path)
 
 
     func _deferred_goto_scene(path):
-        # It is now safe to remove the current scene.
+        # Bây giờ có thể an toàn xóa scene hiện tại.
         current_scene.free()
 
-        # Load the new scene.
+        # Tải scene mới.
         var s = ResourceLoader.load(path)
 
-        # Instance the new scene.
+        # Tạo instance của scene mới.
         current_scene = s.instantiate()
 
-        # Add it to the active scene, as child of root.
+        # Thêm scene đó vào scene đang hoạt động, làm node con của root.
         get_tree().root.add_child(current_scene)
 
-        # Optionally, to make it compatible with the SceneTree.change_scene_to_file() API.
+        # Tùy chọn, để tương thích với API SceneTree.change_scene_to_file().
         get_tree().current_scene = current_scene
 
  .. code-tab:: csharp
 
     public void GotoScene(string path)
     {
-        // This function will usually be called from a signal callback,
-        // or some other function from the current scene.
-        // Deleting the current scene at this point is
-        // a bad idea, because it may still be executing code.
-        // This will result in a crash or unexpected behavior.
+        // Hàm này thường được gọi từ một signal callback,
+        // hoặc một hàm khác trong scene hiện tại.
+        // Xóa scene hiện tại tại thời điểm này là
+        // một ý tưởng tồi, vì scene đó có thể vẫn đang thực thi code.
+        // Điều này sẽ gây ra crash hoặc hành vi không mong muốn.
 
-        // The solution is to defer the load to a later time, when
-        // we can be sure that no code from the current scene is running:
+        // Giải pháp là trì hoãn việc tải đến thời điểm sau, khi
+        // ta có thể chắc chắn rằng không có code nào từ scene hiện tại đang chạy:
 
         CallDeferred(MethodName.DeferredGotoScene, path);
     }
 
     public void DeferredGotoScene(string path)
     {
-        // It is now safe to remove the current scene.
+        // Bây giờ có thể an toàn xóa scene hiện tại.
         CurrentScene.Free();
 
-        // Load a new scene.
+        // Tải scene mới.
         var nextScene = GD.Load<PackedScene>(path);
 
-        // Instance the new scene.
+        // Tạo instance của scene mới.
         CurrentScene = nextScene.Instantiate();
 
-        // Add it to the active scene, as child of root.
+        // Thêm scene đó vào scene đang hoạt động, làm node con của root.
         GetTree().Root.AddChild(CurrentScene);
 
-        // Optionally, to make it compatible with the SceneTree.change_scene_to_file() API.
+        // Tùy chọn, để tương thích với API SceneTree.change_scene_to_file().
         GetTree().CurrentScene = CurrentScene;
     }
 
-Using :ref:`Object.call_deferred() <class_Object_method_call_deferred>`,
-the second function will only run once all code from the current scene has
-completed. Thus, the current scene will not be removed while it is
-still being used (i.e. its code is still running).
+Với :ref:`Object.call_deferred() <class_Object_method_call_deferred>`, hàm thứ hai sẽ chỉ chạy sau khi toàn bộ code từ scene hiện tại đã hoàn tất. Do đó, scene hiện tại sẽ không bị xóa trong khi vẫn đang được sử dụng (tức là code của scene đó vẫn đang chạy).
 
-Finally, we need to fill the empty callback functions in the two scenes:
+Cuối cùng, chúng ta cần điền các hàm callback còn trống trong hai scene:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Add to 'scene_1.gd'.
+    # Thêm vào 'scene_1.gd'.
 
     func _on_button_pressed():
         Global.goto_scene("res://scene_2.tscn")
 
  .. code-tab:: csharp
 
-    // Add to 'Scene1.cs'.
+    // Thêm vào 'Scene1.cs'.
 
     private void OnButtonPressed()
     {
@@ -287,19 +237,19 @@ Finally, we need to fill the empty callback functions in the two scenes:
         global.GotoScene("res://Scene2.tscn");
     }
 
-and
+và
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Add to 'scene_2.gd'.
+    # Thêm vào 'scene_2.gd'.
 
     func _on_button_pressed():
         Global.goto_scene("res://scene_1.tscn")
 
  .. code-tab:: csharp
 
-    // Add to 'Scene2.cs'.
+    // Thêm vào 'Scene2.cs'.
 
     private void OnButtonPressed()
     {
@@ -307,16 +257,13 @@ and
         global.GotoScene("res://Scene1.tscn");
     }
 
-Run the project and test that you can switch between scenes by pressing
-the button.
+Chạy project và kiểm tra rằng bạn có thể chuyển đổi giữa các scene bằng cách nhấn nút.
 
 .. note::
 
-    When scenes are small, the transition is instantaneous. However, if your
-    scenes are more complex, they may take a noticeable amount of time to appear.
-    To learn how to handle this, see the next tutorial: :ref:`doc_background_loading`.
+    Khi các scene nhỏ, quá trình chuyển đổi diễn ra tức thì. Tuy nhiên, nếu scene của bạn phức tạp hơn, chúng có thể mất một khoảng thời gian đáng kể mới xuất hiện. Để tìm hiểu cách xử lý trường hợp này, hãy xem tutorial tiếp theo: :ref:`doc_background_loading`.
 
-    Alternatively, if the loading time is relatively short (less than 3 seconds or so),
-    you can display a "loading plaque" by showing some kind of 2D element just before
-    changing the scene. You can then hide it just after the scene is changed. This can
-    be used to indicate to the player that a scene is being loaded.
+    Ngoài ra, nếu thời gian tải tương đối ngắn (khoảng dưới 3 giây), bạn có thể hiển thị "loading plaque" bằng cách hiển thị một dạng phần tử 2D nào đó ngay trước khi thay đổi scene. Sau đó, bạn có thể ẩn phần tử này ngay sau khi scene được thay đổi. Cách này có thể được dùng để cho người chơi biết rằng một scene đang được tải.
+
+.. _`Singleton pattern`: https://en.wikipedia.org/wiki/Singleton_pattern
+.. _`singleton_autoload_starter.zip`: https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/singleton_autoload_starter.zip

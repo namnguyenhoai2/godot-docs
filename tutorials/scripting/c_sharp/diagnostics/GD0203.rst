@@ -1,5 +1,5 @@
-GD0203: The delegate signature of the signal must return void
-=============================================================
+GD0203: Chữ ký delegate của signal phải trả về void
+===================================================
 
 ====================================  ======================================
                                       Value
@@ -12,45 +12,38 @@ GD0203: The delegate signature of the signal must return void
 **Enabled by default**                Yes
 ====================================  ======================================
 
-Cause
------
+Nguyên nhân
+-----------
 
-A delegate annotated with the ``[Signal]`` attribute has a return type when
-``void`` was expected.
+Một delegate có chú thích bằng thuộc tính ``[Signal]`` có kiểu trả về, trong khi đáng lẽ phải là ``void``.
 
-Rule description
-----------------
+Mô tả quy tắc
+-------------
 
-Every signal must return ``void``. There can be multiple callbacks registered
-for each signal, if signal callbacks could return something it wouldn't be
-possible to determine which of the returned values to use.
+Mọi signal phải trả về ``void``. Mỗi signal có thể đăng ký nhiều callback; nếu callback của signal có thể trả về một giá trị nào đó thì sẽ không thể xác định nên sử dụng giá trị nào trong các giá trị được trả về.
 
 .. code-block:: csharp
 
-    // This signal delegate is invalid because it doesn't return void.
+    // Delegate của signal này không hợp lệ vì không trả về void.
     public int InvalidSignalEventHandler();
 
-    // This signal delegate is valid because it returns void.
+    // Delegate của signal này hợp lệ vì trả về void.
     public void ValidSignalEventHandler();
 
-Take a look at the :ref:`C# signals <doc_c_sharp_signals>` documentation for more
-information about how to declare and use signals.
+Hãy xem tài liệu về :ref:`tín hiệu C# <doc_c_sharp_signals>` để biết thêm thông tin về cách khai báo và sử dụng signal.
 
-How to fix violations
----------------------
+Cách khắc phục vi phạm
+----------------------
 
-To fix a violation of this rule, change the delegate to return ``void`` or
-remove the ``[Signal]`` attribute from the delegate. Note that removing the
-attribute will mean the signal is not registered.
+Để khắc phục vi phạm quy tắc này, hãy thay đổi delegate để trả về ``void`` hoặc xóa thuộc tính ``[Signal]`` khỏi delegate. Lưu ý rằng việc xóa thuộc tính sẽ khiến signal không được đăng ký.
 
 .. tip::
 
-    If the signal doesn't need to interact with Godot, consider using
-    `C# events <https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/events/>`_
-    directly. Pure C# events allow you to use any C# type for its parameters.
+    Nếu signal không cần tương tác với Godot, hãy cân nhắc sử dụng trực tiếp `sự kiện C# <https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/events/>`_. Sự kiện C# thuần túy cho phép bạn sử dụng bất kỳ kiểu C# nào cho các tham số của nó.
 
-When to suppress warnings
--------------------------
+Khi nào cần bỏ qua cảnh báo
+---------------------------
 
-Do not suppress a warning from this rule. Signal delegates that return something
-will result in unexpected runtime errors.
+Không bỏ qua cảnh báo từ quy tắc này. Các delegate của signal trả về một giá trị sẽ dẫn đến lỗi runtime ngoài dự kiến.
+
+.. _`C# events`: https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/events/

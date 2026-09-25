@@ -1,5 +1,5 @@
-GD0109: The '[ExportToolButton]' attribute cannot be used with another '[Export]' attribute
-===========================================================================================
+GD0109: Không thể sử dụng thuộc tính '[ExportToolButton]' cùng với một thuộc tính '[Export]' khác
+=================================================================================================
 
 ====================================  ======================================
                                       Value
@@ -10,25 +10,22 @@ GD0109: The '[ExportToolButton]' attribute cannot be used with another '[Export]
 **Enabled by default**                Yes
 ====================================  ======================================
 
-Cause
------
+Nguyên nhân
+-----------
 
-A property is annotated with both the ``[ExportToolButton]`` and the ``[Export]``
-attributes.
+Một property được chú thích bằng cả thuộc tính ``[ExportToolButton]`` và ``[Export]``.
 
-Rule description
-----------------
+Mô tả quy tắc
+-------------
 
-The ``[ExportToolButton]`` attribute already implies exporting the member, so
-the ``[Export]`` is unnecessary.
+Thuộc tính ``[ExportToolButton]`` đã bao hàm việc export member, vì vậy ``[Export]`` là không cần thiết.
 
-How to fix violations
----------------------
+Cách khắc phục vi phạm
+----------------------
 
-To fix a violation of this rule, remove the ``[Export]`` attribute.
+Để khắc phục vi phạm quy tắc này, hãy xóa thuộc tính ``[Export]``.
 
-When to suppress warnings
--------------------------
+Khi nào cần bỏ qua cảnh báo
+---------------------------
 
-Do not suppress a warning from this rule. Multiple export attributes may lead
-to duplicated members, resulting in unexpected runtime errors.
+Không bỏ qua cảnh báo từ quy tắc này. Nhiều thuộc tính export có thể dẫn đến các member bị trùng lặp, gây ra lỗi runtime ngoài dự kiến.

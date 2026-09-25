@@ -1,4 +1,4 @@
-GD0106: The exported property is an explicit interface implementation
+GD0106: Thuộc tính được export là một triển khai interface tường minh
 =====================================================================
 
 ====================================  ======================================
@@ -10,20 +10,15 @@ GD0106: The exported property is an explicit interface implementation
 **Enabled by default**                Yes
 ====================================  ======================================
 
-Cause
------
+Nguyên nhân
+-----------
 
-An explicit interface property implementation is annotated with the ``[Export]``
-attribute. Properties that implement an interface explicitly can't be exported.
+Một triển khai thuộc tính interface tường minh được chú thích bằng thuộc tính ``[Export]``. Không thể export các thuộc tính triển khai interface tường minh.
 
-Rule description
-----------------
+Mô tả quy tắc
+-------------
 
-Godot doesn't allow exporting explicit interface property implementations.
-When an interface member is implemented explicitly, the member is hidden and
-consumers can't access them unless the type is converted to the interface first.
-Explicitly implemented members can also share the same name of other members in
-the type, so it could create naming conflicts with other exported members.
+Godot không cho phép export các triển khai thuộc tính interface tường minh. Khi một thành viên interface được triển khai tường minh, thành viên đó sẽ bị ẩn và các consumer không thể truy cập thành viên đó trừ khi kiểu được chuyển đổi thành interface trước. Các thành viên được triển khai tường minh cũng có thể trùng tên với các thành viên khác trong kiểu, nên điều này có thể tạo ra xung đột tên với các thành viên được export khác.
 
 .. code-block:: csharp
 
@@ -34,26 +29,24 @@ the type, so it could create naming conflicts with other exported members.
 
     public class MyNode1 : Node, MyInterface
     {
-        // The property can be exported because it implements the interface implicitly.
+        // Có thể export thuộc tính này vì nó triển khai interface ngầm định.
         [Export]
         public int MyProperty { get; set; }
     }
 
     public class MyNode2 : Node, MyInterface
     {
-        // The property can't be exported because it implements the interface explicitly.
+        // Không thể export thuộc tính này vì nó triển khai interface tường minh.
         [Export]
         int MyInterface.MyProperty { get; set; }
     }
 
-How to fix violations
----------------------
+Cách khắc phục vi phạm
+----------------------
 
-To fix a violation of this rule, implement the interface implicitly or remove
-the ``[Export]`` attribute.
+Để khắc phục vi phạm quy tắc này, hãy triển khai interface ngầm định hoặc xóa thuộc tính ``[Export]``.
 
-When to suppress warnings
--------------------------
+Khi nào cần suppress cảnh báo
+-----------------------------
 
-Do not suppress a warning from this rule. Explicit interface property implementations
-can't be exported so they will be ignored by Godot, resulting in runtime errors.
+Không suppress cảnh báo từ quy tắc này. Không thể export các triển khai thuộc tính interface tường minh, vì vậy Godot sẽ bỏ qua chúng và dẫn đến lỗi runtime.

@@ -1,5 +1,5 @@
-GD0002: Missing partial modifier on declaration of type which contains nested classes that derive from GodotObject
-==================================================================================================================
+GD0002: Thiếu bổ từ partial trong khai báo kiểu chứa các lớp lồng nhau kế thừa từ GodotObject
+=============================================================================================
 
 ====================================  ======================================
                                       Value
@@ -10,43 +10,38 @@ GD0002: Missing partial modifier on declaration of type which contains nested cl
 **Enabled by default**                Yes
 ====================================  ======================================
 
-Cause
------
+Nguyên nhân
+-----------
 
-A type that derives from ``GodotObject`` is contained in a non-partial type declaration.
+Một kiểu kế thừa từ ``GodotObject`` được chứa trong một khai báo kiểu không phải partial.
 
-Rule description
-----------------
+Mô tả quy tắc
+-------------
 
-Godot source generators add generated code to user-defined types to implement
-the integration with the engine. Source generators can't add generated code to
-types that aren't declared partial.
+Các trình tạo mã nguồn của Godot thêm mã được tạo vào các kiểu do người dùng định nghĩa để triển khai tích hợp với engine. Trình tạo mã nguồn không thể thêm mã được tạo vào các kiểu không được khai báo là partial.
 
 .. code-block:: csharp
 
     public class InvalidParentType
     {
-        // MyNode is contained in a non-partial type so the source generators
-        // can't enhance this type to work with Godot.
+        // MyNode nằm trong một kiểu không phải partial nên các trình tạo mã nguồn
+        // không thể nâng cấp kiểu này để hoạt động với Godot.
         public partial class MyNode : Node { }
     }
 
     public partial class ValidParentType
     {
-        // MyNode is contained in a partial type so the source generators
-        // can enhance this type to work with Godot.
+        // MyNode nằm trong một kiểu partial nên các trình tạo mã nguồn
+        // có thể nâng cấp kiểu này để hoạt động với Godot.
         public partial class MyNode : Node { }
     }
 
-How to fix violations
----------------------
+Cách khắc phục vi phạm
+----------------------
 
-To fix a violation of this rule, add the ``partial`` keyword to the type
-declaration.
+Để khắc phục vi phạm quy tắc này, hãy thêm từ khóa ``partial`` vào khai báo kiểu.
 
-When to suppress warnings
--------------------------
+Khi nào nên loại bỏ cảnh báo
+----------------------------
 
-Do not suppress a warning from this rule. Types that derive from ``GodotObject``
-but aren't partial can't be enhanced by the source generators, resulting in
-unexpected runtime errors.
+Không nên loại bỏ cảnh báo từ quy tắc này. Các kiểu kế thừa từ ``GodotObject`` nhưng không phải partial không thể được trình tạo mã nguồn nâng cấp, dẫn đến các lỗi runtime không mong muốn.

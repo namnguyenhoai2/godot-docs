@@ -1,5 +1,5 @@
-GD0103: The exported member is read-only
-========================================
+GD0103: Thành viên được export là chỉ đọc
+=========================================
 
 ====================================  ======================================
                                       Value
@@ -10,46 +10,42 @@ GD0103: The exported member is read-only
 **Enabled by default**                Yes
 ====================================  ======================================
 
-Cause
------
+Nguyên nhân
+-----------
 
-A read-only member is annotated with the ``[Export]`` attribute. Read-only members
-can't be exported.
+Một thành viên chỉ đọc được chú thích bằng thuộc tính ``[Export]``. Không thể export các thành viên chỉ đọc.
 
-Rule description
-----------------
+Mô tả quy tắc
+-------------
 
-Godot doesn't allow exporting read-only members.
+Godot không cho phép export các thành viên chỉ đọc.
 
 .. code-block:: csharp
 
-    // Read-only fields can't be exported.
+    // Không thể export các trường chỉ đọc.
     [Export]
     public readonly int invalidField;
 
-    // This field can be exported because it's not declared 'readonly'.
+    // Có thể export trường này vì nó không được khai báo là 'readonly'.
     [Export]
     public int validField;
 
-    // Read-only properties can't be exported.
+    // Không thể export các thuộc tính chỉ đọc.
     [Export]
     public int InvalidProperty { get; }
 
-    // This property can be exported because it has both a getter and a setter.
+    // Có thể export thuộc tính này vì nó có cả getter và setter.
     [Export]
     public int ValidProperty { get; set; }
 
-How to fix violations
----------------------
+Cách khắc phục vi phạm
+----------------------
 
-To fix a violation of this rule for fields, remove the ``readonly`` keyword or
-remove the ``[Export]`` attribute.
+Để khắc phục vi phạm quy tắc này đối với các trường, hãy xóa từ khóa ``readonly`` hoặc xóa thuộc tính ``[Export]``.
 
-To fix a violation of this rule for properties, make sure the property declares
-both a getter and a setter, or remove the ``[Export]`` attribute.
+Để khắc phục vi phạm quy tắc này đối với các thuộc tính, hãy đảm bảo thuộc tính khai báo cả getter và setter, hoặc xóa thuộc tính ``[Export]``.
 
-When to suppress warnings
--------------------------
+Khi nào cần tắt cảnh báo
+------------------------
 
-Do not suppress a warning from this rule. Read-only members can't be exported so
-they will be ignored by Godot, resulting in runtime errors.
+Không tắt cảnh báo từ quy tắc này. Không thể export các thành viên chỉ đọc, vì vậy Godot sẽ bỏ qua chúng, dẫn đến lỗi runtime.

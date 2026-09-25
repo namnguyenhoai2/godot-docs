@@ -1,31 +1,21 @@
 .. _doc_filesystem:
 
-File system
-===========
+Hệ thống tệp
+============
 
-Introduction
-------------
+Giới thiệu
+----------
 
-A file system manages how assets are stored and how they are accessed.
-A well-designed file system also allows multiple developers to edit the
-same source files and assets while collaborating. Godot stores
-all assets as files in its file system.
+Hệ thống tệp quản lý cách các tài nguyên được lưu trữ và cách chúng được truy cập. Một hệ thống tệp được thiết kế tốt cũng cho phép nhiều developer chỉnh sửa cùng các tệp nguồn và tài nguyên trong khi cộng tác. Godot lưu trữ tất cả tài nguyên dưới dạng tệp trong hệ thống tệp của mình.
 
-Implementation
---------------
+Triển khai
+----------
 
-The file system stores resources on disk. Anything, from a script, to a scene or a
-PNG image is a resource to the engine. If a resource contains properties
-that reference other resources on disk, the paths to those resources are also
-included. If a resource has sub-resources that are built-in, the resource is
-saved in a single file together with all the bundled sub-resources. For
-example, a font resource is often bundled together with the font textures.
+Hệ thống tệp lưu trữ các resource trên ổ đĩa. Mọi thứ, từ script, scene đến ảnh PNG, đều là một resource đối với engine. Nếu một resource chứa các thuộc tính tham chiếu đến những resource khác trên ổ đĩa, các đường dẫn đến những resource đó cũng được bao gồm. Nếu một resource có các sub-resource tích hợp sẵn, resource đó sẽ được lưu trong một tệp duy nhất cùng với tất cả sub-resource đi kèm. Ví dụ: một resource phông chữ thường được đóng gói cùng với các texture phông chữ.
 
-The Godot file system avoids using metadata files. Existing asset managers and VCSs
-are better than anything we can implement, so Godot tries its best to play along
-with Subversion, Git, Mercurial, etc.
+Hệ thống tệp của Godot tránh sử dụng các tệp siêu dữ liệu. Các trình quản lý tài nguyên và VCS hiện có tốt hơn bất kỳ thứ gì chúng ta có thể triển khai, vì vậy Godot cố gắng phối hợp tốt nhất với Subversion, Git, Mercurial, v.v.
 
-Example of file system contents:
+Ví dụ về nội dung hệ thống tệp:
 
 .. code-block:: none
 
@@ -38,76 +28,41 @@ Example of file system contents:
 project.godot
 -------------
 
-The ``project.godot`` file is the project description file, and it is always found
-at the root of the project. In fact, its location defines where the root is. This
-is the first file that Godot looks for when opening a project.
+Tệp ``project.godot`` là tệp mô tả project và luôn nằm ở thư mục gốc của project. Thực tế, vị trí của tệp này xác định thư mục gốc. Đây là tệp đầu tiên Godot tìm khi mở một project.
 
-This file contains the project configuration in plain text, using the win.ini
-format. Even an empty ``project.godot`` can function as a basic definition of
-a blank project.
+Tệp này chứa cấu hình project ở dạng văn bản thuần túy, sử dụng định dạng win.ini. Ngay cả một ``project.godot`` trống cũng có thể hoạt động như định nghĩa cơ bản cho một project trống.
 
-Path delimiter
---------------
+Dấu phân cách đường dẫn
+-----------------------
 
-Godot only supports ``/`` as a path delimiter. This is done for
-portability reasons. All operating systems support this, even Windows,
-so a path such as ``C:\project\project.godot`` needs to be typed as
-``C:/project/project.godot``.
+Godot chỉ hỗ trợ ``/`` làm dấu phân cách đường dẫn. Điều này được thực hiện vì lý do tính di động. Tất cả hệ điều hành đều hỗ trợ cách này, kể cả Windows, vì vậy một đường dẫn như ``C:\project\project.godot`` cần được nhập là ``C:/project/project.godot``.
 
-Resource path
--------------
+Đường dẫn resource
+------------------
 
-When accessing resources, using the host OS file system layout can be
-cumbersome and non-portable. To solve this problem, the special path
-``res://`` was created.
+Khi truy cập các resource, việc sử dụng bố cục hệ thống tệp của hệ điều hành máy chủ có thể rườm rà và không portable. Để giải quyết vấn đề này, đường dẫn đặc biệt ``res://`` đã được tạo.
 
-The path ``res://`` will always point at the project root (where
-``project.godot`` is located, so ``res://project.godot`` is always
-valid).
+Đường dẫn ``res://`` sẽ luôn trỏ đến thư mục gốc của project (nơi ``project.godot`` nằm, vì vậy ``res://project.godot`` luôn hợp lệ).
 
-This file system is read-write only when running the project locally from
-the editor. When exported or when running on different devices (such as
-phones or consoles, or running from DVD), the file system will become
-read-only and writing will no longer be permitted.
+Hệ thống tệp này chỉ có quyền đọc-ghi khi chạy project cục bộ từ editor. Khi export hoặc khi chạy trên các thiết bị khác (chẳng hạn như điện thoại hay console, hoặc chạy từ DVD), hệ thống tệp sẽ chuyển thành chỉ đọc và không còn cho phép ghi.
 
-User path
----------
+Đường dẫn người dùng
+--------------------
 
-Writing to disk is still needed for tasks such as saving game state or
-downloading content packs. To this end, the engine ensures that there is a
-special path ``user://`` that is always writable. This path resolves
-differently depending on the OS the project is running on. Local path
-resolution is further explained in :ref:`doc_data_paths`.
+Việc ghi vào ổ đĩa vẫn cần thiết cho các tác vụ như lưu trạng thái game hoặc tải xuống các content pack. Vì mục đích này, engine đảm bảo có một đường dẫn đặc biệt ``user://`` luôn cho phép ghi. Đường dẫn này được phân giải khác nhau tùy thuộc vào hệ điều hành mà project đang chạy. Việc phân giải đường dẫn cục bộ được giải thích thêm trong :ref:`doc_data_paths`.
 
-Host file system
-----------------
+Hệ thống tệp máy chủ
+--------------------
 
-Alternatively host file system paths can also be used, but this is not recommended
-for a released product as these paths are not guaranteed to work on all platforms.
-However, using host file system paths can be useful when writing development
-tools in Godot.
+Ngoài ra, cũng có thể sử dụng các đường dẫn hệ thống tệp máy chủ, nhưng không nên làm vậy cho sản phẩm đã phát hành vì các đường dẫn này không được đảm bảo hoạt động trên mọi nền tảng. Tuy nhiên, việc sử dụng các đường dẫn hệ thống tệp máy chủ có thể hữu ích khi viết các công cụ phát triển trong Godot.
 
-Drawbacks
----------
+Nhược điểm
+----------
 
-There are some drawbacks to this file system design. The first issue is that
-moving assets around (renaming them or moving them from one path to another inside
-the project) will break existing references to these assets. These references will
-have to be re-defined to point at the new asset location.
+Thiết kế hệ thống tệp này có một số nhược điểm. Vấn đề đầu tiên là việc di chuyển tài nguyên (đổi tên hoặc di chuyển chúng từ đường dẫn này sang đường dẫn khác trong project) sẽ làm hỏng các tham chiếu hiện có đến những tài nguyên đó. Các tham chiếu này sẽ phải được định nghĩa lại để trỏ đến vị trí mới của tài nguyên.
 
-To avoid this, do all your move, delete and rename operations from within Godot, on
-the FileSystem dock. When you delete files in Godot, it will prompt you with a confirmation dialog
-listing all selected files and any scenes that depend on those files.
-Never move assets from outside Godot, or dependencies will have
-to be fixed manually (Godot detects this and helps you fix them anyway, but why
-go the hard route?).
+Để tránh điều này, hãy thực hiện mọi thao tác di chuyển, xóa và đổi tên từ bên trong Godot, trên dock FileSystem. Khi bạn xóa tệp trong Godot, Godot sẽ hiển thị hộp thoại xác nhận liệt kê tất cả tệp đã chọn và mọi scene phụ thuộc vào các tệp đó. Không bao giờ di chuyển tài nguyên từ bên ngoài Godot, nếu không các dependency sẽ phải được sửa thủ công (Godot phát hiện điều này và vẫn giúp bạn sửa chúng, nhưng tại sao phải chọn cách khó?).
 
-The second is that, under Windows and macOS, file and path names are case insensitive.
-If a developer working in a case insensitive host file system saves an asset as ``myfile.PNG``,
-but then references it as ``myfile.png``, it will work fine on their platform, but not
-on other platforms, such as Linux, Android, etc. This may also apply to exported binaries,
-which use a compressed package to store all files.
+Vấn đề thứ hai là trên Windows và macOS, tên tệp và đường dẫn không phân biệt chữ hoa chữ thường. Nếu một developer làm việc trên hệ thống tệp máy chủ không phân biệt chữ hoa chữ thường lưu một tài nguyên là ``myfile.PNG``, nhưng sau đó tham chiếu đến nó là ``myfile.png``, tài nguyên sẽ hoạt động bình thường trên nền tảng của họ nhưng không hoạt động trên các nền tảng khác như Linux, Android, v.v. Điều này cũng có thể áp dụng cho các binary đã export, vốn sử dụng một gói nén để lưu trữ tất cả tệp.
 
-It is recommended that your team clearly define a naming convention for files when
-working with Godot. One fool-proof convention is to only allow lowercase
-file and path names.
+Bạn nên thống nhất rõ ràng quy ước đặt tên tệp trong nhóm khi làm việc với Godot. Một quy ước chắc chắn không gây lỗi là chỉ cho phép tên tệp và đường dẫn viết bằng chữ thường.

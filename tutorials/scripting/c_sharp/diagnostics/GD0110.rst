@@ -1,5 +1,5 @@
-GD0110: The exported tool button is not a Callable
-==================================================
+GD0110: Nút công cụ được export không phải là Callable
+======================================================
 
 ====================================  ======================================
                                       Value
@@ -12,27 +12,22 @@ GD0110: The exported tool button is not a Callable
 **Enabled by default**                Yes
 ====================================  ======================================
 
-Cause
------
+Nguyên nhân
+-----------
 
-A property of a type different from ``Callable`` is annotated with the
-``[ExportToolButton]`` attribute.
+Một thuộc tính của kiểu khác với ``Callable`` được chú thích bằng thuộc tính ``[ExportToolButton]``.
 
-Rule description
-----------------
+Mô tả quy tắc
+-------------
 
-The ``[ExportToolButton]`` attribute is used to create clickable buttons in the inspector, so
-the property must be a ``Callable`` that will be executed when clicking the button.
+Thuộc tính ``[ExportToolButton]`` được dùng để tạo các nút có thể nhấp trong inspector, vì vậy thuộc tính này phải là một ``Callable`` được thực thi khi nhấp vào nút.
 
-How to fix violations
----------------------
+Cách khắc phục vi phạm
+----------------------
 
-To fix a violation of this rule, change the type of the property to ``Callable``.
-Alternatively, if you intended to export a normal property, replace the
-``[ExportToolButton]`` attribute with ``[Export]``.
+Để khắc phục vi phạm quy tắc này, hãy đổi kiểu của thuộc tính thành ``Callable``. Ngoài ra, nếu bạn định export một thuộc tính thông thường, hãy thay thuộc tính ``[ExportToolButton]`` bằng ``[Export]``.
 
-When to suppress warnings
--------------------------
+Khi nào nên bỏ qua cảnh báo
+---------------------------
 
-Do not suppress a warning from this rule. The exported property must be a ``Callable``
-so it can executed in the editor when clicking the button in the inspector.
+Không nên bỏ qua cảnh báo từ quy tắc này. Thuộc tính được export phải là một ``Callable`` để có thể được thực thi trong editor khi nhấp vào nút trong inspector.

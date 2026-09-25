@@ -1,5 +1,5 @@
-GD0302: The generic type parameter must be annotated with the '[MustBeVariant]' attribute
-=========================================================================================
+GD0302: Tham số kiểu generic phải được chú thích bằng thuộc tính '[MustBeVariant]'
+==================================================================================
 
 ====================================  ======================================
                                       Value
@@ -10,49 +10,38 @@ GD0302: The generic type parameter must be annotated with the '[MustBeVariant]' 
 **Enabled by default**                Yes
 ====================================  ======================================
 
-Cause
------
+Nguyên nhân
+-----------
 
-A generic type is specified for a generic type argument when a
-:ref:`Variant-compatible type <c_sharp_variant_compatible_types>` is expected,
-but the specified generic type is not annotated with the ``[MustBeVariant]``
-attribute.
+Một kiểu generic được chỉ định cho một đối số kiểu generic trong khi một
+:ref:`kiểu tương thích với Variant <c_sharp_variant_compatible_types>` được mong đợi, nhưng kiểu generic được chỉ định không được chú thích bằng thuộc tính ``[MustBeVariant]``.
 
-Rule description
-----------------
+Mô tả quy tắc
+-------------
 
-When a generic type parameter is annotated with the ``[MustBeVariant]`` attribute,
-the generic type is required to be a Variant-compatible type. When the type used
-is also a generic type, this generic type must be annotated with the ``[MustBeVariant]``
-attribute as well. For example, the generic ``Godot.Collections.Array<T>`` type
-only supports items of a type that can be converted to Variant, a generic type
-can be specified if it's properly annotated.
+Khi một tham số kiểu generic được chú thích bằng thuộc tính ``[MustBeVariant]``, kiểu generic đó bắt buộc phải là kiểu tương thích với Variant. Khi kiểu được sử dụng cũng là một kiểu generic, kiểu generic này cũng phải được chú thích bằng thuộc tính ``[MustBeVariant]``. Ví dụ: kiểu generic ``Godot.Collections.Array<T>`` chỉ hỗ trợ các phần tử có kiểu có thể chuyển đổi thành Variant; có thể chỉ định một kiểu generic nếu kiểu đó được chú thích đúng cách.
 
 .. code-block:: csharp
 
     public void Method1<T>()
     {
-        // T is not valid here because it may not a Variant-compatible type.
+        // T không hợp lệ ở đây vì nó có thể không phải là kiểu tương thích với Variant.
         var invalidArray = new Godot.Collections.Array<T>();
     }
 
     public void Method2<[MustBeVariant] T>()
     {
-        // T is guaranteed to be a Variant-compatible type because it's annotated
-        // with the [MustBeVariant] attribute, so it can be used here.
+        // T được đảm bảo là kiểu tương thích với Variant vì nó được chú thích
+        // bằng thuộc tính [MustBeVariant], nên có thể được sử dụng ở đây.
         var validArray = new Godot.Collections.Array<T>();
     }
 
-How to fix violations
----------------------
+Cách khắc phục vi phạm
+----------------------
 
-To fix a violation of this rule, add the ``[MustBeVariant]`` attribute to the
-generic type that is used as a generic type argument that must be Variant-compatible.
+Để khắc phục vi phạm quy tắc này, hãy thêm thuộc tính ``[MustBeVariant]`` vào kiểu generic được sử dụng làm đối số kiểu generic, đối số này phải tương thích với Variant.
 
-When to suppress warnings
--------------------------
+Khi nào cần bỏ qua cảnh báo
+---------------------------
 
-Do not suppress a warning from this rule. API that contains generic type arguments
-annotated with the ``[MustBeVariant]`` attribute usually has this requirement
-because the values will be passed to the engine, if the type can't be marshalled
-it will result in runtime errors.
+Không bỏ qua cảnh báo từ quy tắc này. API chứa các đối số kiểu generic được chú thích bằng thuộc tính ``[MustBeVariant]`` thường có yêu cầu này vì các giá trị sẽ được truyền vào engine; nếu kiểu đó không thể được marshal, lỗi runtime sẽ xảy ra.

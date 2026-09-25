@@ -1,20 +1,15 @@
 .. _doc_c_sharp_global_classes:
 
-C# global classes
-=================
+Các lớp global của C#
+=====================
 
-Global classes (also known as named scripts) are types registered in Godot's
-editor so they can be used more conveniently.
-:ref:`In GDScript <doc_gdscript_basics_class_name>`, this is achieved
-using the ``class_name`` keyword at the top of a script. This page describes how
-to achieve the same effect in C#.
+Các lớp global (còn được gọi là named script) là những type được đăng ký trong editor của Godot để có thể sử dụng thuận tiện hơn.
+:ref:`Trong GDScript <doc_gdscript_basics_class_name>`, bạn thực hiện việc này bằng cách sử dụng từ khóa ``class_name`` ở đầu script. Trang này mô tả cách đạt được hiệu ứng tương tự trong C#.
 
-- Global classes show up in the *Add Node* and *Create Resource* dialogs.
-- If an :ref:`exported property <doc_c_sharp_exports>` is a global class, the
-  inspector restricts assignment, allowing only instances of that global class
-  or any derived classes.
+- Các lớp global xuất hiện trong hộp thoại *Add Node* và *Create Resource*.
+- Nếu một :ref:`exported property <doc_c_sharp_exports>` là một lớp global, inspector sẽ hạn chế việc gán, chỉ cho phép các instance của lớp global đó hoặc bất kỳ lớp dẫn xuất nào.
 
-Global classes are registered with the ``[GlobalClass]`` attribute.
+Các lớp global được đăng ký bằng ``[GlobalClass]`` attribute.
 
 .. code-block:: csharp
 
@@ -27,16 +22,13 @@ Global classes are registered with the ``[GlobalClass]`` attribute.
 
 .. warning::
 
-    The file name must match the class name in **case-sensitive** fashion.
-    For example, a global class named "MyNode" must have a file name of
-    ``MyNode.cs``, not ``myNode.cs``.
+    Tên tệp phải khớp với tên lớp theo cách **phân biệt chữ hoa chữ thường**. Ví dụ: một lớp global có tên "MyNode" phải có tên tệp là ``MyNode.cs``, không phải ``myNode.cs``.
 
-The ``MyNode`` type will be registered as a global class with the same name as the type's name.
+``MyNode`` type sẽ được đăng ký thành một lớp global với cùng tên với tên của type.
 
 .. image:: img/globalclasses_addnode.webp
 
-The *Select a Node* window for the ``MyNode`` exported property filters the list
-of nodes in the scene to match the assignment restriction.
+Cửa sổ *Select a Node* cho ``MyNode`` exported property sẽ lọc danh sách node trong scene để phù hợp với giới hạn gán.
 
 .. code-block:: csharp
 
@@ -48,10 +40,7 @@ of nodes in the scene to match the assignment restriction.
 
 .. image:: img/globalclasses_exportednode.webp
 
-If a custom type isn't registered as a global class, the assignment is
-restricted to the Godot type the custom type is based on. For example, inspector
-assignments to an export of the type ``MySimpleSprite2D`` are restricted to
-``Sprite2D`` and derived types.
+Nếu một custom type chưa được đăng ký thành lớp global, việc gán sẽ bị giới hạn ở Godot type mà custom type đó dựa trên. Ví dụ: các phép gán trong inspector cho một export thuộc type ``MySimpleSprite2D`` sẽ bị giới hạn ở ``Sprite2D`` và các type dẫn xuất.
 
 .. code-block:: csharp
 
@@ -59,9 +48,7 @@ assignments to an export of the type ``MySimpleSprite2D`` are restricted to
     {
     }
 
-When combined with the ``[GlobalClass]`` attribute, the ``[Icon]`` attribute
-allows providing a path to an icon to show when the class is displayed in the
-editor.
+Khi được kết hợp với ``[GlobalClass]`` attribute, ``[Icon]`` attribute cho phép cung cấp đường dẫn đến một icon để hiển thị khi lớp được hiển thị trong editor.
 
 .. code-block:: csharp
 
@@ -82,9 +69,7 @@ editor.
 
 .. image:: img/globalclasses_createresource.webp
 
-The ``Stats`` class is a custom resource registered as a global class. :ref:`Exporting properties <doc_c_sharp_exports>` of the
-type ``Stats`` will only allow instances of this resource type to be assigned, and the inspector
-will let you create and load instances of this type easily.
+Lớp ``Stats`` là một custom resource được đăng ký thành lớp global. :ref:`Việc export các property <doc_c_sharp_exports>` thuộc type ``Stats`` sẽ chỉ cho phép gán các instance của resource type này, đồng thời inspector sẽ cho phép bạn dễ dàng tạo và tải các instance của type này.
 
 .. image:: img/globalclasses_exportedproperty1.webp
 
@@ -92,8 +77,4 @@ will let you create and load instances of this type easily.
 
 .. warning::
 
-    The Godot editor will hide these custom classes with names that begin with the prefix
-    "Editor" in the "Create New Node" or "Create New Scene" dialog windows. The classes
-    are available for instantiation at runtime via their class names, but are
-    automatically hidden by the editor windows along with the built-in editor nodes used
-    by the Godot editor.
+    Editor của Godot sẽ ẩn các custom class có tên bắt đầu bằng tiền tố "Editor" trong các cửa sổ hộp thoại "Create New Node" hoặc "Create New Scene". Các class này vẫn có thể được khởi tạo tại runtime thông qua tên class, nhưng sẽ được các cửa sổ editor tự động ẩn đi cùng với các editor node tích hợp được editor của Godot sử dụng.

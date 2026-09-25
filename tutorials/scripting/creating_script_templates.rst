@@ -1,240 +1,199 @@
 .. _doc_creating_script_templates:
 
-Creating script templates
-=========================
+Tạo các template script
+=======================
 
-Godot provides a way to use script templates as seen in the
-``Script Create Dialog`` while creating a new script:
+Godot cung cấp cách sử dụng các template script như minh họa trong ``Script Create Dialog`` khi tạo script mới:
 
 .. image:: img/script_create_dialog_templates.webp
 
-A set of built-in script templates are provided with the editor, but it is
-also possible to create new ones and set them by default, both per project
-and at editor scope.
+Trình editor cung cấp một tập hợp các template script dựng sẵn, nhưng bạn cũng có thể tạo template mới và đặt chúng làm mặc định, theo từng project cũng như ở cấp editor.
 
-Templates are linked to a specific node type, so when you create a script
-you will only see the templates corresponding to that particular node, or
-one of its parent types.
-For example, if you are creating a script for a CharacterBody3D, you will
-only see templates defined for CharacterBody3Ds, Node3Ds or Nodes.
+Các template được liên kết với một kiểu node cụ thể, vì vậy khi tạo script, bạn chỉ thấy các template tương ứng với node đó hoặc một trong các kiểu cha của nó. Ví dụ: nếu đang tạo script cho CharacterBody3D, bạn chỉ thấy các template được định nghĩa cho CharacterBody3D, Node3D hoặc Node.
 
-Locating the templates
-----------------------
+Định vị các template
+--------------------
 
-There are two places where templates can be managed.
+Có hai vị trí có thể quản lý template.
 
-Editor-defined templates
-~~~~~~~~~~~~~~~~~~~~~~~~
+Template do editor định nghĩa
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-These are available globally throughout any project. The location of these
-templates are determined per each OS:
+Các template này khả dụng trên toàn cục trong mọi project. Vị trí của các template này được xác định theo từng hệ điều hành:
 
 -  Windows: ``%APPDATA%\Godot\script_templates\``
 -  Linux: ``$HOME/.config/godot/script_templates/``
 -  macOS: ``$HOME/Library/Application Support/Godot/script_templates/``
 
-If you're getting Godot from somewhere other than the official website, such
-as Steam, the folder might be in a different location. You can find it using
-the Godot editor. Go to ``Editor > Open Editor Data/Settings Folder`` and it
-will open a folder in your file browser, inside that folder is the
-``script_templates`` folder.
+Nếu bạn tải Godot từ nơi khác ngoài website chính thức, chẳng hạn như Steam, thư mục này có thể nằm ở vị trí khác. Bạn có thể tìm thư mục bằng Godot editor. Đi tới ``Editor > Open Editor Data/Settings Folder`` và một thư mục sẽ được mở trong trình duyệt file; bên trong thư mục đó là thư mục ``script_templates``.
 
-Project-defined templates
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Template do project định nghĩa
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The default path to search for templates is the
-``res://script_templates/`` directory. The path can be changed by configuring the project setting
-:ref:`Editor > Script > Templates Search Path<class_ProjectSettings_property_editor/script/templates_search_path>`,
-both via code and the editor.
+Đường dẫn mặc định để tìm template là thư mục ``res://script_templates/``. Bạn có thể thay đổi đường dẫn bằng cách cấu hình project setting
+:ref:`Editor > Script > Templates Search Path <class_ProjectSettings_property_editor/script/templates_search_path>`, thông qua cả code lẫn editor.
 
-If no ``script_templates`` directory is found within a project, it is simply
-ignored.
+Nếu không tìm thấy thư mục ``script_templates`` trong project, thư mục đó sẽ bị bỏ qua.
 
-Template organization and naming
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tổ chức và đặt tên template
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Both editor and project defined templates are organized in the following way:
+Cả template do editor định nghĩa và template do project định nghĩa đều được tổ chức như sau:
 
 ::
 
   template_path/node_type/file.extension
 
-where:
+trong đó:
 
-* ``template_path`` is one of the 2 locations discussed in the previous two sections.
+* ``template_path`` là một trong 2 vị trí được đề cập trong hai phần trước.
 
-* ``node_type`` is the node it will apply to (for example, :ref:`Node <class_Node>`, or :ref:`CharacterBody3D <class_CharacterBody3D>`),
-  This is **case-sensitive**. If a script isn't in the proper ``node_type`` folder, it won't be detected.
+* ``node_type`` là node mà template sẽ áp dụng (ví dụ: :ref:`Node <class_Node>` hoặc :ref:`CharacterBody3D <class_CharacterBody3D>`). Thành phần này **phân biệt chữ hoa chữ thường**. Nếu script không nằm trong thư mục ``node_type`` phù hợp, script sẽ không được phát hiện.
 
-* ``file`` is the custom name you can choose for the template (for example, ``platformer_movement`` or ``smooth_camera``).
+* ``file`` là tên tùy chỉnh bạn có thể chọn cho template (ví dụ: ``platformer_movement`` hoặc ``smooth_camera``).
 
-* ``extension`` indicates which language the template will apply to (it should be ``gd`` for GDScript or ``cs`` for C#).
+* ``extension`` cho biết template sẽ áp dụng cho ngôn ngữ nào (phải là ``gd`` đối với GDScript hoặc ``cs`` đối với C#).
 
-For example:
+Ví dụ:
 
 -  ``script_templates/Node/smooth_camera.gd``
 -  ``script_templates/CharacterBody3D/platformer_movement.gd``
 
-Default behavior and overriding it
-----------------------------------
+Hành vi mặc định và cách ghi đè
+-------------------------------
 
-By default:
+Theo mặc định:
 
-* the template's name is the same as the file name (minus the extension, prettyfied)
+* tên của template giống với tên file (bỏ phần mở rộng và được định dạng lại)ด้วย
 
-* the description is empty
+* mô tả để trống
 
-* the space indent is set to 4
+* thụt lề bằng khoảng trắng được đặt là 4
 
-* the template will not be set as the default for the given node
+* template sẽ không được đặt làm mặc định cho node tương ứng
 
 
-It is possible to customize this behavior by adding meta headers at the start
-of your file, like this:
+Bạn có thể tùy chỉnh hành vi này bằng cách thêm các header meta ở đầu file, như sau:
 
 .. tabs::
 
  .. code-tab:: gdscript GDScript
 
-  # meta-name: Platformer movement
-  # meta-description: Predefined movement for classical platformers
+  # meta-name: Di chuyển kiểu Platformer
+  # meta-description: Chuyển động được định nghĩa sẵn cho các platformer cổ điển
   # meta-default: true
   # meta-space-indent: 4
 
  .. code-tab:: csharp
 
-  // meta-name: Platformer movement
-  // meta-description: Predefined movement for classical platformers
+  // meta-name: Di chuyển kiểu Platformer
+  // meta-description: Chuyển động được định nghĩa sẵn cho các platformer cổ điển
   // meta-default: true
   // meta-space-indent: 4
 
 
-In this case, the name will be set to "Platformer movement", with the given custom description, and
-it will be set as the default template for the node in which directory it has been saved.
+Trong trường hợp này, tên sẽ được đặt thành "Di chuyển kiểu Platformer", kèm theo mô tả tùy chỉnh đã cho, và template sẽ được đặt làm template mặc định cho node trong thư mục nơi template được lưu.
 
-This is an example of utilizing custom templates at editor and project level:
+Đây là một ví dụ về việc sử dụng template tùy chỉnh ở cấp editor và project:
 
 .. image:: img/script_create_dialog_custom_templates.webp
 
-.. note:: The script templates have the same extension as the regular script
-          files. This may lead to an issue of a script parser treating those templates as
-          actual scripts within a project. To avoid this, make sure to ignore the
-          directory containing them by creating an empty ``.gdignore`` file. The directory won't be
-          visible throughout the project's filesystem anymore, yet the templates can be
-          modified by an external text editor anytime.
+.. note:: Các template script có cùng phần mở rộng với các file script thông thường. Điều này có thể khiến trình phân tích script coi các template đó là script thực tế trong một project. Để tránh điều này, hãy đảm bảo bỏ qua thư mục chứa chúng bằng cách tạo một file ``.gdignore`` trống. Thư mục sẽ không còn hiển thị trong hệ thống file của project, nhưng bạn vẫn có thể chỉnh sửa các template bằng trình soạn thảo văn bản bên ngoài bất cứ lúc nào.
 
 .. tip::
 
-    By default, every C# file inside the project directory is included in the compilation.
-    Script templates must be manually excluded from the C# project to avoid build errors.
-    See `Exclude files from the build <https://learn.microsoft.com/en-us/visualstudio/msbuild/how-to-exclude-files-from-the-build>`_ in the Microsoft documentation.
+    Theo mặc định, mọi file C# bên trong thư mục project đều được đưa vào quá trình biên dịch. Bạn phải loại trừ thủ công các template script khỏi project C# để tránh lỗi build. Xem `Exclude files from the build <https://learn.microsoft.com/en-us/visualstudio/msbuild/how-to-exclude-files-from-the-build>`_ trong tài liệu Microsoft.
 
-It is possible to create editor-level templates that have the same level as a project-specific
-templates, and also that have the same name as a built-in one, all will be shown on the new script
-dialog.
+Bạn có thể tạo các template ở cấp editor có cùng cấp độ với template dành riêng cho project, cũng như có cùng tên với template dựng sẵn; tất cả chúng sẽ được hiển thị trong hộp thoại tạo script mới.
 
-Default template
-----------------
+Template mặc định
+-----------------
 
-To override the default template, create a custom template at editor or project level inside a
-``Node`` directory (or a more specific type, if only a subtype wants to be overridden) and start
-the file with the ``meta-default: true`` header.
+Để ghi đè template mặc định, hãy tạo một template tùy chỉnh ở cấp editor hoặc project bên trong thư mục ``Node`` (hoặc một kiểu cụ thể hơn nếu chỉ muốn ghi đè một kiểu con), rồi bắt đầu file bằng header ``meta-default: true``.
 
-Only one template can be set as default at the same time for the same node type.
+Tại một thời điểm, chỉ có thể đặt một template làm mặc định cho cùng một kiểu node.
 
-The ``Default`` templates for basic Nodes, for both GDScript and C#, are shown here so you can
-use these as the base for creating other templates:
+Các template ``Default`` cho Node cơ bản, dành cho cả GDScript và C#, được hiển thị ở đây để bạn có thể dùng chúng làm cơ sở tạo các template khác:
 
 .. tabs::
 
  .. code-tab:: gdscript GDScript
 
-    # meta-description: Base template for Node with default Godot cycle methods
+    # meta-description: Template cơ sở cho Node với các phương thức chu kỳ Godot mặc định
 
     extends _BASE_
 
 
-    # Called when the node enters the scene tree for the first time.
+    # Được gọi khi node lần đầu tiên đi vào scene tree.
     func _ready() -> void:
-        pass # Replace with function body.
+        pass # Thay thế bằng phần thân hàm.
 
 
-    # Called every frame. 'delta' is the elapsed time since the previous frame.
+    # Được gọi ở mỗi frame. 'delta' là thời gian đã trôi qua kể từ frame trước đó.
     func _process(delta: float) -> void:
         pass
 
 
  .. code-tab:: csharp
 
-    // meta-description: Base template for Node with default Godot cycle methods
+    // meta-description: Template cơ sở cho Node với các phương thức chu kỳ mặc định của Godot
 
     using _BINDINGS_NAMESPACE_;
     using System;
 
     public partial class _CLASS_ : _BASE_
     {
-        // Called when the node enters the scene tree for the first time.
+        // Được gọi khi node đi vào scene tree lần đầu tiên.
         public override void _Ready()
         {
         }
 
-        // Called every frame. 'delta' is the elapsed time since the previous frame.
+        // Được gọi ở mỗi frame. 'delta' là thời gian đã trôi qua kể từ frame trước đó.
         public override void _Process(double delta)
         {
         }
     }
 
-The Godot editor provides a set of useful built-in node-specific templates, such as
-``basic_movement`` for both :ref:`CharacterBody2D <class_CharacterBody2D>` and
-:ref:`CharacterBody3D <class_CharacterBody3D>` and ``plugin`` for
+Trình chỉnh sửa Godot cung cấp một tập hợp các template tích hợp hữu ích dành riêng cho từng node, chẳng hạn như ``basic_movement`` cho cả :ref:`CharacterBody2D <class_CharacterBody2D>` và
+:ref:`CharacterBody3D <class_CharacterBody3D>` và ``plugin`` cho
 :ref:`EditorPlugin <class_EditorPlugin>`.
 
-List of template placeholders
------------------------------
+Danh sách placeholder của template
+----------------------------------
 
-The following describes the complete list of built-in template placeholders
-which are currently implemented.
+Phần sau mô tả danh sách đầy đủ các placeholder của template tích hợp hiện đang được triển khai.
 
-Base placeholders
+Placeholder cơ sở
 ~~~~~~~~~~~~~~~~~
 
-+--------------------------+----------------------------------------------------+
-| Placeholder              | Description                                        |
-+==========================+====================================================+
-| ``_BINDINGS_NAMESPACE_`` | The name of the Godot namespace (used in C# only). |
-+--------------------------+----------------------------------------------------+
-| ``_CLASS_``              | The name of the new class.                         |
-+--------------------------+----------------------------------------------------+
-| ``_CLASS_SNAKE_CASE_``   | The name of the new class as ``snake_case``        |
-|                          | (used in GDScript only).                           |
-+--------------------------+----------------------------------------------------+
-| ``_BASE_``               | The base type a new script inherits from.          |
-+--------------------------+----------------------------------------------------+
-| ``_TS_``                 | Indentation placeholder. The exact type and number |
-|                          | of whitespace characters used for indentation is   |
-|                          | determined by the ``text_editor/indent/type`` and  |
-|                          | ``text_editor/indent/size`` settings in the        |
-|                          | :ref:`EditorSettings <class_EditorSettings>`       |
-|                          | respectively. Can be overridden by the             |
-|                          | ``meta-space-indent`` header on the template.      |
-+--------------------------+----------------------------------------------------+
++--------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Placeholder              | Mô tả                                                                                                                                                                                       |
++==========================+=============================================================================================================================================================================================+
+| ``_BINDINGS_NAMESPACE_`` | Tên của namespace Godot (chỉ được sử dụng trong C#).                                                                                                                                        |
++--------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``_CLASS_``              | Tên của class mới.                                                                                                                                                                          |
++--------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``_CLASS_SNAKE_CASE_``   | Tên của class mới dưới dạng ``snake_case`` (chỉ được sử dụng trong GDScript).                                                                                                               |
++--------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``_BASE_``               | Kiểu cơ sở mà script mới kế thừa.                                                                                                                                                           |
++--------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``_TS_``                 | Placeholder thụt lề. Kiểu và số lượng ký tự khoảng trắng chính xác được sử dụng để thụt lề được xác định bởi các thiết lập ``text_editor/indent/type`` và ``text_editor/indent/size`` trong |
+|                          | :ref:`EditorSettings <class_EditorSettings>` tương ứng. Có thể ghi đè bằng header ``meta-space-indent`` trong template.                                                                     |
++--------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Type placeholders
-~~~~~~~~~~~~~~~~~
+Placeholder kiểu
+~~~~~~~~~~~~~~~~
 
-There used to be, in Godot 3.x, placeholders for GDScript type hints that
-would get replaced whenever a template was used to create a new script, such as:
-``%INT_TYPE%``, ``%STRING_TYPE%``, ``%FLOAT_TYPE%`` or ``%VOID_RETURN%``.
+Trong Godot 3.x từng có các placeholder cho type hint của GDScript, được thay thế mỗi khi template được dùng để tạo script mới, chẳng hạn như: ``%INT_TYPE%``, ``%STRING_TYPE%``, ``%FLOAT_TYPE%`` hoặc ``%VOID_RETURN%``.
 
-The placeholders no longer work for Godot 4.x, but if the setting
-``text_editor/completion/add_type_hints`` from
-:ref:`EditorSettings <class_EditorSettings>` is disabled, type hints
-for parameters and return types will be automatically removed for a few
-base types:
+Các placeholder này không còn hoạt động trong Godot 4.x, nhưng nếu thiết lập ``text_editor/completion/add_type_hints`` trong
+:ref:`EditorSettings <class_EditorSettings>` bị tắt, type hint cho các tham số và kiểu trả về sẽ tự động bị xóa đối với một số kiểu cơ sở:
 
 * ``int``
 * ``String``
 * ``Array[String]``
 * ``float``
 * ``void``
-* ``:=`` will be transformed into ``=``
+* ``:=`` sẽ được chuyển đổi thành ``=``
+
+.. _`Exclude files from the build`: https://learn.microsoft.com/en-us/visualstudio/msbuild/how-to-exclude-files-from-the-build
