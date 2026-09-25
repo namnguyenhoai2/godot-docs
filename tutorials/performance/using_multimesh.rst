@@ -1,55 +1,35 @@
-:article_outdated: True
+:article_outdated: Đúng
 
 .. _doc_using_multimesh:
 
-Optimization using MultiMeshes
-==============================
+Tối ưu hóa bằng MultiMesh
+=========================
 
-For large amount of instances (in the thousands), that need to be constantly processed
-(and certain amount of control needs to be retained),
-:ref:`using servers directly <doc_using_servers>` is the recommended optimization.
+Đối với số lượng lớn instance (hàng nghìn) cần được xử lý liên tục (và vẫn cần duy trì một mức độ kiểm soát nhất định),
+:ref:`sử dụng trực tiếp các server <doc_using_servers>` là phương án tối ưu hóa được khuyến nghị.
 
-When the amount of objects reach the hundreds of thousands or millions,
-none of these approaches are efficient anymore. Still, depending on the requirements, there
-is one more optimization possible.
+Khi số lượng đối tượng lên đến hàng trăm nghìn hoặc hàng triệu, không phương pháp nào trong số này còn hiệu quả. Tuy vậy, tùy thuộc vào yêu cầu, vẫn còn một phương án tối ưu hóa khác.
 
-MultiMeshes
------------
+MultiMesh
+---------
 
-A :ref:`MultiMesh<class_MultiMesh>` is a single draw primitive that can draw up to millions
-of objects in one go. It's extremely efficient because it uses the GPU hardware to do this.
+Một :ref:`MultiMesh<class_MultiMesh>` là một primitive vẽ duy nhất có thể vẽ tới hàng triệu đối tượng trong một lần. Nó cực kỳ hiệu quả vì sử dụng phần cứng GPU để thực hiện việc này.
 
-The only drawback is that there is no *screen* or *frustum* culling possible for individual instances.
-This means, that millions of objects will be *always* or *never* drawn, depending on the visibility
-of the whole MultiMesh. It is possible to provide a custom visibility rect for them, but it will always
-be *all-or-none* visibility.
+Nhược điểm duy nhất là không thể thực hiện culling *màn hình* hoặc *frustum* cho từng instance riêng lẻ. Điều này có nghĩa là hàng triệu đối tượng sẽ *luôn được* hoặc *không bao giờ được* vẽ, tùy thuộc vào khả năng hiển thị của toàn bộ MultiMesh. Có thể cung cấp một hình chữ nhật khả năng hiển thị tùy chỉnh cho chúng, nhưng việc hiển thị sẽ luôn là kiểu *toàn bộ hoặc không gì cả*.
 
-If the objects are simple enough (just a couple of vertices), this is generally not much of a problem
-as most modern GPUs are optimized for this use case. A workaround is to create several MultiMeshes
-for different areas of the world.
+Nếu các đối tượng đủ đơn giản (chỉ có vài đỉnh), nhìn chung đây không phải là vấn đề lớn, vì hầu hết GPU hiện đại đều được tối ưu cho trường hợp sử dụng này. Một cách khắc phục là tạo nhiều MultiMesh cho các khu vực khác nhau trong thế giới.
 
-It is also possible to execute some logic inside the vertex shader (using the ``INSTANCE_ID`` or
-``INSTANCE_CUSTOM`` built-in constants). For an example of animating thousands of objects in a MultiMesh,
-see the :ref:`Animating thousands of fish <doc_animating_thousands_of_fish>` tutorial. Information
-to the shader can be provided via textures (there are floating-point :ref:`Image<class_Image>` formats
-which are ideal for this).
+Cũng có thể thực thi một số logic bên trong vertex shader (sử dụng các hằng số dựng sẵn ``INSTANCE_ID`` hoặc ``INSTANCE_CUSTOM``). Để xem ví dụ về cách tạo hoạt ảnh cho hàng nghìn đối tượng trong một MultiMesh, hãy xem tutorial :ref:`Animating thousands of fish <doc_animating_thousands_of_fish>`. Có thể cung cấp thông tin cho shader thông qua các texture (có các :ref:`Image<class_Image>` format số thực, rất phù hợp cho việc này).
 
-Another alternative is to use a GDExtension and C++, which should be extremely efficient (it's possible
-to set the entire state for all objects using linear memory via the
-:ref:`RenderingServer.multimesh_set_buffer() <class_RenderingServer_method_multimesh_set_buffer>`
-function). This way, the array can be created with multiple threads, then set in one call, providing
-high cache efficiency.
+Một phương án khác là sử dụng GDExtension và C++, vốn sẽ cực kỳ hiệu quả (có thể thiết lập toàn bộ trạng thái cho tất cả đối tượng bằng bộ nhớ tuyến tính thông qua
+:ref:`RenderingServer.multimesh_set_buffer() <class_RenderingServer_method_multimesh_set_buffer>` function). Theo cách này, mảng có thể được tạo bằng nhiều thread, sau đó được thiết lập trong một lần gọi, mang lại hiệu quả cao cho bộ nhớ đệm.
 
-Finally, it's not required to have all MultiMesh instances visible. The amount of visible ones can be
-controlled with the :ref:`MultiMesh.visible_instance_count <class_MultiMesh_property_visible_instance_count>`
-property. The typical workflow is to allocate the maximum amount of instances that will be used,
-then change the amount visible depending on how many are currently needed.
+Cuối cùng, không bắt buộc tất cả instance MultiMesh đều phải hiển thị. Có thể kiểm soát số lượng instance hiển thị bằng thuộc tính :ref:`MultiMesh.visible_instance_count <class_MultiMesh_property_visible_instance_count>`. Quy trình thông thường là cấp phát số lượng instance tối đa sẽ được sử dụng, sau đó thay đổi số lượng hiển thị tùy theo số lượng hiện cần thiết.
 
-Multimesh example
------------------
+Ví dụ về MultiMesh
+------------------
 
-Here is an example of using a MultiMesh from code. Languages other than GDScript may be more
-efficient for millions of objects, but for a few thousands, GDScript should be fine.
+Dưới đây là ví dụ về cách sử dụng MultiMesh từ code. Các ngôn ngữ khác ngoài GDScript có thể hiệu quả hơn khi xử lý hàng triệu đối tượng, nhưng với vài nghìn đối tượng thì GDScript là đủ.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -58,18 +38,18 @@ efficient for millions of objects, but for a few thousands, GDScript should be f
 
 
     func _ready():
-        # Create the multimesh.
+        # Tạo multimesh.
         multimesh = MultiMesh.new()
-        # Set the format first.
+        # Trước tiên, thiết lập format.
         multimesh.transform_format = MultiMesh.TRANSFORM_3D
-        # Set the mesh that will be duplicated.
+        # Thiết lập mesh sẽ được nhân bản.
         multimesh.mesh = BoxMesh.new()
-        # Then resize (otherwise, changing the format is not allowed).
+        # Sau đó thay đổi kích thước (nếu không, sẽ không được phép thay đổi format).
         multimesh.instance_count = 10000
-        # Maybe not all of them should be visible at first.
+        # Có thể ban đầu không nên hiển thị tất cả chúng.
         multimesh.visible_instance_count = 1000
 
-        # Set the transform of the instances.
+        # Thiết lập transform của các instance.
         for i in multimesh.visible_instance_count:
             multimesh.set_instance_transform(i, Transform3D(Basis(), Vector3(i * 20, 0, 0)))
 
@@ -81,16 +61,16 @@ efficient for millions of objects, but for a few thousands, GDScript should be f
     {
         public override void _Ready()
         {
-            // Create the multimesh.
+            // Tạo multimesh.
             Multimesh = new MultiMesh();
-            // Set the format first.
+            // Trước tiên, thiết lập format.
             Multimesh.TransformFormat = MultiMesh.TransformFormatEnum.Transform3D;
-            // Then resize (otherwise, changing the format is not allowed)
+            // Sau đó thay đổi kích thước (nếu không, sẽ không được phép thay đổi format)
             Multimesh.InstanceCount = 1000;
-            // Maybe not all of them should be visible at first.
+            // Có thể ban đầu không nên hiển thị tất cả chúng.
             Multimesh.VisibleInstanceCount = 1000;
 
-            // Set the transform of the instances.
+            // Thiết lập transform của các instance.
             for (int i = 0; i < Multimesh.VisibleInstanceCount; i++)
             {
                 Multimesh.SetInstanceTransform(i, new Transform3D(Basis.Identity, new Vector3(i * 20, 0, 0)));

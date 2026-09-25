@@ -1,289 +1,144 @@
 .. _doc_gpu_optimization:
 
-GPU optimization
-================
+Tối ưu hóa GPU
+==============
 
-Introduction
-------------
+Giới thiệu
+----------
 
-The demand for new graphics features and progress almost guarantees that you
-will encounter graphics bottlenecks. Some of these can be on the CPU side, for
-instance in calculations inside the Godot engine to prepare objects for
-rendering. Bottlenecks can also occur on the CPU in the graphics driver, which
-sorts instructions to pass to the GPU, and in the transfer of these
-instructions. And finally, bottlenecks also occur on the GPU itself.
+Nhu cầu về các tính năng đồ họa mới và sự tiến bộ gần như chắc chắn sẽ khiến bạn gặp phải các nút thắt đồ họa. Một số nút thắt có thể nằm ở phía CPU, chẳng hạn như trong các phép tính bên trong Godot engine để chuẩn bị các đối tượng cho việc kết xuất. Nút thắt cũng có thể xảy ra ở CPU trong graphics driver, nơi sắp xếp các chỉ dẫn để chuyển cho GPU, cũng như trong quá trình truyền các chỉ dẫn này. Cuối cùng, nút thắt cũng có thể xảy ra ngay trên GPU.
 
-Where bottlenecks occur in rendering is highly hardware-specific.
-Mobile GPUs in particular may struggle with scenes that run easily on desktop.
+Vị trí xảy ra nút thắt trong quá trình kết xuất phụ thuộc rất nhiều vào phần cứng. Đặc biệt, GPU trên thiết bị di động có thể gặp khó khăn với những scene chạy dễ dàng trên máy tính để bàn.
 
-Understanding and investigating GPU bottlenecks is slightly different to the
-situation on the CPU. This is because, often, you can only change performance
-indirectly by changing the instructions you give to the GPU. Also, it may be
-more difficult to take measurements. In many cases, the only way of measuring
-performance is by examining changes in the time spent rendering each frame.
+Việc hiểu và điều tra các nút thắt GPU hơi khác so với tình huống trên CPU. Đó là vì thường thì bạn chỉ có thể thay đổi hiệu năng một cách gián tiếp bằng cách thay đổi các chỉ dẫn gửi cho GPU. Ngoài ra, việc đo lường cũng có thể khó khăn hơn. Trong nhiều trường hợp, cách duy nhất để đo hiệu năng là kiểm tra những thay đổi trong thời gian dành cho việc kết xuất từng frame.
 
-Draw calls, state changes, and APIs
------------------------------------
+Draw call, thay đổi trạng thái và API
+-------------------------------------
 
-.. note:: The following section is not relevant to end-users, but is useful to
-          provide background information that is relevant in later sections.
+.. note:: Phần sau đây không liên quan đến người dùng cuối, nhưng hữu ích để cung cấp thông tin nền tảng liên quan đến các phần sau.
 
-Godot sends instructions to the GPU via a graphics API (Vulkan, OpenGL, OpenGL
-ES or WebGL). The communication and driver activity involved can be quite
-costly, especially in OpenGL, OpenGL ES and WebGL. If we can provide these
-instructions in a way that is preferred by the driver and GPU, we can greatly
-increase performance.
+Godot gửi các chỉ dẫn đến GPU thông qua graphics API (Vulkan, OpenGL, OpenGL ES hoặc WebGL). Hoạt động giao tiếp và driver liên quan có thể khá tốn kém, đặc biệt là trong OpenGL, OpenGL ES và WebGL. Nếu có thể cung cấp các chỉ dẫn này theo cách được driver và GPU ưu tiên, chúng ta có thể tăng hiệu năng đáng kể.
 
-Nearly every API command in OpenGL requires a certain amount of validation to
-make sure the GPU is in the correct state. Even seemingly simple commands can
-lead to a flurry of behind-the-scenes housekeeping. Therefore, the goal is to
-reduce these instructions to a bare minimum and group together similar objects
-as much as possible so they can be rendered together, or with the minimum number
-of these expensive state changes.
+Gần như mọi lệnh API trong OpenGL đều yêu cầu một mức độ xác thực nhất định để đảm bảo GPU đang ở đúng trạng thái. Ngay cả những lệnh có vẻ đơn giản cũng có thể dẫn đến hàng loạt hoạt động dọn dẹp phía sau. Vì vậy, mục tiêu là giảm các chỉ dẫn này xuống mức tối thiểu và nhóm các đối tượng tương tự lại với nhau nhiều nhất có thể để chúng có thể được kết xuất cùng nhau, hoặc với số lần thay đổi trạng thái tốn kém này ở mức tối thiểu.
 
-2D batching
+Batching 2D
 ~~~~~~~~~~~
 
-In 2D, the costs of treating each item individually can be prohibitively high -
-there can easily be thousands of them on the screen. This is why 2D *batching*
-is used. Multiple similar items are grouped
-together and rendered in a batch, via a single draw call, rather than making a
-separate draw call for each item. In addition, this means state changes,
-material and texture changes can be kept to a minimum.
+Trong 2D, chi phí xử lý từng item riêng lẻ có thể cao đến mức không thể chấp nhận được - trên màn hình dễ dàng có đến hàng nghìn item. Đây là lý do *batching* 2D được sử dụng. Nhiều item tương tự được nhóm lại và kết xuất theo batch thông qua một draw call duy nhất, thay vì thực hiện một draw call riêng cho từng item. Ngoài ra, điều này giúp giảm thiểu các thay đổi trạng thái, thay đổi material và texture.
 
-3D batching
+Batching 3D
 ~~~~~~~~~~~
 
-In 3D, we still aim to minimize draw calls and state changes. However, it can be
-more difficult to batch together several objects into a single draw call. 3D
-meshes tend to comprise hundreds or thousands of triangles, and combining large
-meshes in real-time is prohibitively expensive. The costs of joining them quickly
-exceeds any benefits as the number of triangles grows per mesh. A much better
-alternative is to **join meshes ahead of time** (static meshes in relation to each
-other). This can be done by artists, or programmatically within Godot using an add-on.
+Trong 3D, chúng ta vẫn hướng đến việc giảm thiểu draw call và thay đổi trạng thái. Tuy nhiên, việc gộp nhiều đối tượng vào một draw call duy nhất có thể khó khăn hơn. Mesh 3D thường bao gồm hàng trăm hoặc hàng nghìn tam giác, và việc kết hợp các mesh lớn theo thời gian thực có chi phí quá cao. Khi số lượng tam giác trên mỗi mesh tăng lên, chi phí nối chúng nhanh chóng vượt xa mọi lợi ích. Một giải pháp thay thế tốt hơn nhiều là **nối các mesh từ trước** (các mesh tĩnh tương quan với nhau). Việc này có thể do artist thực hiện hoặc được lập trình trong Godot bằng một add-on.
 
-There is also a cost to batching together objects in 3D. Several objects
-rendered as one cannot be individually culled. An entire city that is off-screen
-will still be rendered if it is joined to a single blade of grass that is on
-screen. Thus, you should always take objects' locations and culling into account
-when attempting to batch 3D objects together. Despite this, the benefits of
-joining static objects often outweigh other considerations, especially for large
-numbers of distant or low-poly objects.
+Việc batching các đối tượng trong 3D cũng có chi phí. Một số đối tượng được kết xuất như một đối tượng duy nhất không thể được culling riêng lẻ. Toàn bộ một thành phố nằm ngoài màn hình vẫn sẽ được kết xuất nếu nó được nối với một ngọn cỏ duy nhất đang ở trên màn hình. Vì vậy, khi cố gắng batching các đối tượng 3D với nhau, bạn luôn phải tính đến vị trí và việc culling các đối tượng. Mặc dù vậy, lợi ích của việc nối các đối tượng tĩnh thường lớn hơn những cân nhắc khác, đặc biệt là với số lượng lớn các đối tượng ở xa hoặc có ít polygon.
 
-For more information on 3D specific optimizations, see
+Để biết thêm thông tin về các tối ưu hóa dành riêng cho 3D, hãy xem
 :ref:`doc_optimizing_3d_performance`.
 
-Reuse shaders and materials
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tái sử dụng shader và material
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Godot renderer is a little different to what is out there. It's designed to
-minimize GPU state changes as much as possible. :ref:`StandardMaterial3D
-<class_StandardMaterial3D>` does a good job at reusing materials that need similar
-shaders. If custom shaders are used, make sure to reuse them as much as
-possible. Godot's priorities are:
+Godot renderer hơi khác so với những gì hiện có. Nó được thiết kế để giảm thiểu tối đa các thay đổi trạng thái GPU. :ref:`StandardMaterial3D <class_StandardMaterial3D>` thực hiện tốt việc tái sử dụng các material cần những shader tương tự. Nếu sử dụng custom shader, hãy đảm bảo tái sử dụng chúng nhiều nhất có thể. Các ưu tiên của Godot là:
 
--  **Reusing Materials:** The fewer different materials in the
-   scene, the faster the rendering will be. If a scene has a huge amount
-   of objects (in the hundreds or thousands), try reusing the materials.
-   In the worst case, use atlases to decrease the amount of texture changes.
--  **Reusing Shaders:** If materials can't be reused, at least try to reuse
-   shaders. Note: shaders are automatically reused between
-   StandardMaterial3Ds that share the same configuration (features
-   that are enabled or disabled with a check box) even if they have different
-   parameters.
+-  **Tái sử dụng Material:** Càng có ít material khác nhau trong scene thì việc kết xuất càng nhanh. Nếu scene có số lượng đối tượng rất lớn (hàng trăm hoặc hàng nghìn), hãy cố gắng tái sử dụng material. Trong trường hợp xấu nhất, hãy sử dụng atlas để giảm số lần thay đổi texture.
+-  **Tái sử dụng Shader:** Nếu không thể tái sử dụng material, ít nhất hãy cố gắng tái sử dụng shader. Lưu ý: shader được tự động tái sử dụng giữa các StandardMaterial3D có cùng cấu hình (các tính năng được bật hoặc tắt bằng hộp kiểm), ngay cả khi chúng có các tham số khác nhau.
 
-If a scene has, for example, 20,000 objects with 20,000 different
-materials each, rendering will be slow. If the same scene has 20,000
-objects, but only uses 100 materials, rendering will be much faster.
+Ví dụ, nếu một scene có 20.000 đối tượng với 20.000 material khác nhau, việc kết xuất sẽ chậm. Nếu cùng scene đó có 20.000 đối tượng nhưng chỉ sử dụng 100 material, việc kết xuất sẽ nhanh hơn nhiều.
 
-Pixel cost versus vertex cost
------------------------------
+Chi phí pixel so với chi phí vertex
+-----------------------------------
 
-You may have heard that the lower the number of polygons in a model, the faster
-it will be rendered. This is *really* relative and depends on many factors.
+Có thể bạn đã nghe nói rằng số polygon trong model càng thấp thì model sẽ được kết xuất càng nhanh. Điều này *thực sự* mang tính tương đối và phụ thuộc vào nhiều yếu tố.
 
-On a modern PC and console, vertex cost is low. GPUs originally only rendered
-triangles. This meant that every frame:
+Trên máy tính và console hiện đại, chi phí vertex thấp. Ban đầu, GPU chỉ kết xuất các tam giác. Điều này có nghĩa là trong mỗi frame:
 
-1. All vertices had to be transformed by the CPU (including clipping).
-2. All vertices had to be sent to the GPU memory from the main RAM.
+1. Tất cả vertex phải được CPU biến đổi (bao gồm cả clipping).
+2. Tất cả vertex phải được gửi từ RAM chính đến bộ nhớ GPU.
 
-Nowadays, all this is handled inside the GPU, greatly increasing performance. 3D
-artists usually have the wrong feeling about polycount performance because 3D
-modeling software (such as Blender, 3ds Max, etc.) need to keep geometry in CPU
-memory for it to be edited, reducing actual performance. Game engines rely on
-the GPU more, so they can render many triangles much more efficiently.
+Ngày nay, tất cả những việc này được xử lý bên trong GPU, giúp tăng hiệu năng đáng kể. Các artist 3D thường có nhận định sai về hiệu năng của polycount vì phần mềm modeling 3D (chẳng hạn như Blender, 3ds Max, v.v.) cần giữ geometry trong bộ nhớ CPU để có thể chỉnh sửa, làm giảm hiệu năng thực tế. Game engine phụ thuộc vào GPU nhiều hơn, nên có thể kết xuất nhiều tam giác hiệu quả hơn nhiều.
 
-On mobile devices, the story is different. PC and console GPUs are
-brute-force monsters that can pull as much electricity as they need from
-the power grid. Mobile GPUs are limited to a tiny battery, so they need
-to be a lot more power efficient.
+Trên thiết bị di động, tình hình lại khác. GPU của máy tính và console là những cỗ máy brute-force có thể lấy lượng điện cần thiết từ lưới điện. GPU di động bị giới hạn bởi một viên pin nhỏ, nên cần tiết kiệm điện hơn nhiều.
 
-To be more efficient, mobile GPUs attempt to avoid *overdraw*. Overdraw occurs
-when the same pixel on the screen is being rendered more than once. Imagine a
-town with several buildings. GPUs don't know what is visible and what is hidden
-until they draw it. For example, a house might be drawn and then another house
-in front of it (which means rendering happened twice for the same pixel). PC
-GPUs normally don't care much about this and just throw more pixel processors to
-the hardware to increase performance (which also increases power consumption).
+Để hiệu quả hơn, GPU di động cố gắng tránh *overdraw*. Overdraw xảy ra khi cùng một pixel trên màn hình được kết xuất nhiều hơn một lần. Hãy hình dung một thị trấn có nhiều tòa nhà. GPU không biết phần nào hiển thị và phần nào bị che khuất cho đến khi chúng được vẽ. Ví dụ, một ngôi nhà có thể được vẽ rồi sau đó một ngôi nhà khác ở phía trước nó được vẽ (có nghĩa là cùng một pixel đã được kết xuất hai lần). GPU của máy tính thường không quá quan tâm đến điều này mà chỉ bổ sung thêm nhiều bộ xử lý pixel vào phần cứng để tăng hiệu năng (điều này cũng làm tăng mức tiêu thụ điện).
 
-Using more power is not an option on mobile so mobile devices use a technique
-called *tile-based rendering* which divides the screen into a grid. Each cell
-keeps the list of triangles drawn to it and sorts them by depth to minimize
-*overdraw*. This technique improves performance and reduces power consumption,
-but takes a toll on vertex performance. As a result, fewer vertices and
-triangles can be processed for drawing.
+Việc sử dụng nhiều điện hơn không phải là một lựa chọn trên thiết bị di động, vì vậy thiết bị di động sử dụng một kỹ thuật gọi là *tile-based rendering*, chia màn hình thành một lưới. Mỗi ô lưu danh sách các tam giác được vẽ trên đó và sắp xếp chúng theo độ sâu để giảm thiểu *overdraw*. Kỹ thuật này cải thiện hiệu năng và giảm mức tiêu thụ điện, nhưng phải đánh đổi bằng hiệu năng vertex. Do đó, có thể xử lý ít vertex và tam giác hơn để vẽ.
 
-Additionally, tile-based rendering struggles when there are small objects with a
-lot of geometry within a small portion of the screen. This forces mobile GPUs to
-put a lot of strain on a single screen tile, which considerably decreases
-performance as all the other cells must wait for it to complete before
-displaying the frame.
+Ngoài ra, tile-based rendering gặp khó khăn khi có các đối tượng nhỏ với nhiều geometry nằm trong một phần nhỏ của màn hình. Điều này buộc GPU di động phải chịu nhiều tải trên một tile màn hình duy nhất, làm giảm hiệu năng đáng kể vì tất cả các ô khác phải chờ tile đó hoàn tất trước khi hiển thị frame.
 
-To summarize, don't worry about vertex count on mobile, but
-**avoid concentration of vertices in small parts of the screen**.
-If a character, NPC, vehicle, etc. is far away (which means it looks tiny), use
-a smaller level of detail (LOD) model. Even on desktop GPUs, it's preferable to
-avoid having triangles smaller than the size of a pixel on screen.
+Tóm lại, đừng lo về số lượng đỉnh trên thiết bị di động, nhưng **hãy tránh tập trung các đỉnh vào những phần nhỏ của màn hình**. Nếu một nhân vật, NPC, phương tiện, v.v. ở xa (nghĩa là trông rất nhỏ), hãy sử dụng mô hình có mức độ chi tiết (LOD) thấp hơn. Ngay cả trên GPU máy tính để bàn, tốt hơn hết là tránh có các tam giác nhỏ hơn kích thước một pixel trên màn hình.
 
-Pay attention to the additional vertex processing required when using:
+Hãy chú ý đến phần xử lý đỉnh bổ sung cần thiết khi sử dụng:
 
--  Skinning (skeletal animation)
+-  Skinning (hoạt ảnh khung xương)
 -  Morphs (shape keys)
--  Vertex-lit objects (common on mobile)
+-  Đối tượng được chiếu sáng theo đỉnh (phổ biến trên thiết bị di động)
 
-Pixel/fragment shaders and fill rate
-------------------------------------
+Pixel/fragment shader và fill rate
+----------------------------------
 
-In contrast to vertex processing, the costs of fragment (per-pixel) shading have
-increased dramatically over the years. Screen resolutions have increased: the
-area of a 4K screen is 8,294,400 pixels, versus 307,200 for an old 640×480 VGA
-screen. That is 27 times the area! Also, the complexity of fragment shaders has
-exploded. Physically-based rendering requires complex calculations for each
-fragment.
+Trái ngược với việc xử lý đỉnh, chi phí shading fragment (theo từng pixel) đã tăng đáng kể qua nhiều năm. Độ phân giải màn hình đã tăng: diện tích của màn hình 4K là 8.294.400 pixel, so với 307.200 pixel của màn hình VGA 640×480 cũ. Diện tích lớn hơn 27 lần! Ngoài ra, độ phức tạp của fragment shader cũng tăng vọt. Việc render dựa trên vật lý đòi hỏi các phép tính phức tạp cho từng fragment.
 
-You can test whether a project is fill rate-limited quite easily. Turn off
-V-Sync to prevent capping the frames per second, then compare the frames per
-second when running with a large window, to running with a very small window.
-You may also benefit from similarly reducing your shadow map size if using
-shadows. Usually, you will find the FPS increases quite a bit using a small
-window, which indicates you are to some extent fill rate-limited. On the other
-hand, if there is little to no increase in FPS, then your bottleneck lies
-elsewhere.
+Bạn có thể khá dễ dàng kiểm tra xem một project có bị giới hạn bởi fill rate hay không. Tắt V-Sync để tránh giới hạn số khung hình mỗi giây, sau đó so sánh số khung hình mỗi giây khi chạy với cửa sổ lớn và khi chạy với cửa sổ rất nhỏ. Nếu sử dụng shadow, bạn cũng có thể giảm kích thước shadow map tương tự. Thông thường, bạn sẽ thấy FPS tăng khá nhiều khi sử dụng cửa sổ nhỏ, cho biết bạn đang bị giới hạn bởi fill rate ở một mức độ nào đó. Ngược lại, nếu FPS tăng rất ít hoặc không tăng, thì nút thắt cổ chai của bạn nằm ở nơi khác.
 
-You can increase performance in a fill rate-limited project by reducing the
-amount of work the GPU has to do. You can do this by simplifying the shader
-(perhaps turn off expensive options if you are using a :ref:`StandardMaterial3D
-<class_StandardMaterial3D>`), or reducing the number and size of textures used.
-Also, when using shaded particles, consider forcing vertex shading in
-their material to decrease the shading cost.
+Bạn có thể tăng hiệu năng trong một project bị giới hạn bởi fill rate bằng cách giảm lượng công việc GPU phải thực hiện. Bạn có thể làm điều này bằng cách đơn giản hóa shader (có thể tắt các tùy chọn tốn kém nếu bạn đang sử dụng :ref:`StandardMaterial3D <class_StandardMaterial3D>`), hoặc giảm số lượng và kích thước texture được sử dụng. Ngoài ra, khi sử dụng particle có shading, hãy cân nhắc buộc material của chúng sử dụng vertex shading để giảm chi phí shading.
 
 .. seealso::
 
-    On supported hardware, :ref:`doc_variable_rate_shading` can be used to
-    reduce shading processing costs without impacting the sharpness of edges on
-    the final image.
+    Trên phần cứng được hỗ trợ, :ref:`doc_variable_rate_shading` có thể được sử dụng để giảm chi phí xử lý shading mà không ảnh hưởng đến độ sắc nét của các cạnh trong hình ảnh cuối cùng.
 
-**When targeting mobile devices, consider using the simplest possible shaders
-you can reasonably afford to use.**
+**Khi nhắm đến các thiết bị di động, hãy cân nhắc sử dụng những shader đơn giản nhất có thể mà bạn vẫn có thể chấp nhận được.**
 
-Reading textures
-~~~~~~~~~~~~~~~~
+Đọc texture
+~~~~~~~~~~~
 
-The other factor in fragment shaders is the cost of reading textures. Reading
-textures is an expensive operation, especially when reading from several
-textures in a single fragment shader. Also, consider that filtering may slow it
-down further (trilinear filtering between mipmaps, and averaging). Reading
-textures is also expensive in terms of power usage, which is a big issue on
-mobiles.
+Yếu tố khác trong fragment shader là chi phí đọc texture. Đọc texture là một thao tác tốn kém, đặc biệt khi đọc từ nhiều texture trong cùng một fragment shader. Ngoài ra, hãy lưu ý rằng việc filtering có thể khiến thao tác này chậm hơn nữa (trilinear filtering giữa các mipmap và tính trung bình). Đọc texture cũng tốn năng lượng, đây là một vấn đề lớn trên thiết bị di động.
 
-**If you use third-party shaders or write your own shaders, try to use
-algorithms that require as few texture reads as possible.**
+**Nếu bạn sử dụng shader của bên thứ ba hoặc tự viết shader, hãy cố gắng sử dụng các thuật toán yêu cầu ít thao tác đọc texture nhất có thể.**
 
-Texture compression
-~~~~~~~~~~~~~~~~~~~
+Nén texture
+~~~~~~~~~~~
 
-By default, Godot compresses textures of 3D models when imported using video RAM
-(VRAM) compression. Video RAM compression isn't as efficient in size as PNG or
-JPG when stored, but increases performance enormously when drawing large enough
-textures.
+Theo mặc định, Godot nén texture của các model 3D khi import bằng phương pháp nén video RAM (VRAM). Nén video RAM không hiệu quả về kích thước như PNG hoặc JPG khi lưu trữ, nhưng giúp tăng hiệu năng đáng kể khi vẽ các texture đủ lớn.
 
-This is because the main goal of texture compression is bandwidth reduction
-between memory and the GPU.
+Đó là vì mục tiêu chính của việc nén texture là giảm băng thông giữa bộ nhớ và GPU.
 
-In 3D, the shapes of objects depend more on the geometry than the texture, so
-compression is generally not noticeable. In 2D, compression depends more on
-shapes inside the textures, so the artifacts resulting from 2D compression are
-more noticeable.
+Trong 3D, hình dạng của các đối tượng phụ thuộc vào hình học nhiều hơn texture, vì vậy việc nén thường không dễ nhận thấy. Trong 2D, việc nén phụ thuộc nhiều hơn vào các hình dạng bên trong texture, nên các hiện tượng nhiễu do nén 2D tạo ra dễ nhận thấy hơn.
 
-As a warning, most Android devices do not support texture compression of
-textures with transparency (only opaque), so keep this in mind.
+Xin lưu ý rằng hầu hết thiết bị Android không hỗ trợ nén texture có độ trong suốt (chỉ hỗ trợ texture opaque), vì vậy hãy ghi nhớ điều này.
 
 .. note::
 
-   Even in 3D, "pixel art" textures should have VRAM compression disabled as it
-   will negatively affect their appearance, without improving performance
-   significantly due to their low resolution.
+   Ngay cả trong 3D, texture "pixel art" cũng nên tắt nén VRAM, vì việc này sẽ ảnh hưởng tiêu cực đến hình thức của texture mà không cải thiện đáng kể hiệu năng do chúng có độ phân giải thấp.
 
-Post-processing and shadows
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Hậu xử lý và shadow
+~~~~~~~~~~~~~~~~~~~
 
-Post-processing effects and shadows can also be expensive in terms of fragment
-shading activity. Always test the impact of these on different hardware.
+Các hiệu ứng hậu xử lý và shadow cũng có thể tốn kém về hoạt động shading fragment. Hãy luôn kiểm tra tác động của chúng trên nhiều loại phần cứng khác nhau.
 
-**Reducing the size of shadowmaps can increase performance**, both in terms of
-writing and reading the shadowmaps. On top of that, the best way to improve
-performance of shadows is to turn shadows off for as many lights and objects as
-possible. Smaller or distant OmniLights/SpotLights can often have their shadows
-disabled with only a small visual impact.
+**Giảm kích thước shadowmap có thể tăng hiệu năng**, cả khi ghi lẫn khi đọc shadowmap. Ngoài ra, cách tốt nhất để cải thiện hiệu năng của shadow là tắt shadow cho càng nhiều light và object càng tốt. Có thể thường tắt shadow của các OmniLight/SpotLight nhỏ hơn hoặc ở xa mà chỉ gây ảnh hưởng nhỏ đến hình ảnh.
 
-Transparency and blending
+Độ trong suốt và blending
 -------------------------
 
-Transparent objects present particular problems for rendering efficiency. Opaque
-objects (especially in 3D) can be essentially rendered in any order and the
-Z-buffer will ensure that only the front most objects get shaded. Transparent or
-blended objects are different. In most cases, they cannot rely on the Z-buffer
-and must be rendered in "painter's order" (i.e. from back to front) to look
-correct.
+Các đối tượng trong suốt gây ra những vấn đề đặc biệt đối với hiệu quả render. Các đối tượng opaque (đặc biệt trong 3D) về cơ bản có thể được render theo bất kỳ thứ tự nào, và Z-buffer sẽ đảm bảo chỉ các đối tượng ở phía trước được shading. Các đối tượng trong suốt hoặc được blend thì khác. Trong hầu hết trường hợp, chúng không thể dựa vào Z-buffer và phải được render theo "thứ tự họa sĩ" (tức là từ sau ra trước) để hiển thị chính xác.
 
-Transparent objects are also particularly bad for fill rate, because every item
-has to be drawn even if other transparent objects will be drawn on top
-later on.
+Các đối tượng trong suốt cũng đặc biệt gây bất lợi cho fill rate, vì mọi đối tượng đều phải được vẽ ngay cả khi các đối tượng trong suốt khác sẽ được vẽ chồng lên sau đó.
 
-Opaque objects don't have to do this. They can usually take advantage of the
-Z-buffer by writing to the Z-buffer only first, then only performing the
-fragment shader on the "winning" fragment, the object that is at the front at a
-particular pixel.
+Các đối tượng opaque không cần làm vậy. Thông thường, chúng có thể tận dụng Z-buffer bằng cách trước tiên chỉ ghi vào Z-buffer, sau đó chỉ thực hiện fragment shader trên fragment "chiến thắng", tức là đối tượng nằm ở phía trước tại một pixel cụ thể.
 
-Transparency is particularly expensive where multiple transparent objects
-overlap. It is usually better to use transparent areas as small as possible to
-minimize these fill rate requirements, especially on mobile, where fill rate is
-very expensive. Indeed, in many situations, rendering more complex opaque
-geometry can end up being faster than using transparency to "cheat".
+Độ trong suốt đặc biệt tốn kém khi nhiều đối tượng trong suốt chồng lên nhau. Thông thường, nên sử dụng các vùng trong suốt nhỏ nhất có thể để giảm thiểu yêu cầu về fill rate, đặc biệt trên thiết bị di động, nơi fill rate rất tốn kém. Thực tế, trong nhiều trường hợp, render hình học opaque phức tạp hơn có thể nhanh hơn việc sử dụng độ trong suốt để "đánh lừa".
 
-Multi-platform advice
----------------------
+Lời khuyên cho nhiều nền tảng
+-----------------------------
 
-If you are aiming to release on multiple platforms, test *early* and test
-*often* on all your platforms, especially mobile. Developing a game on desktop
-but attempting to port it to mobile at the last minute is a recipe for disaster.
+Nếu bạn dự định phát hành trên nhiều nền tảng, hãy kiểm thử *sớm* và kiểm thử *thường xuyên* trên tất cả nền tảng, đặc biệt là thiết bị di động. Phát triển game trên máy tính để bàn nhưng đến phút cuối mới cố gắng chuyển sang thiết bị di động là công thức dẫn đến thảm họa.
 
-In general, you should design your game for the lowest common denominator, then
-add optional enhancements for more powerful platforms. For example, you may want
-to use the Compatibility rendering method for both desktop and mobile platforms
-where you target both.
+Nhìn chung, bạn nên thiết kế game cho mẫu số chung thấp nhất, sau đó thêm các cải tiến tùy chọn cho những nền tảng mạnh hơn. Ví dụ: bạn có thể muốn sử dụng phương thức render Compatibility cho cả nền tảng máy tính để bàn và thiết bị di động nếu nhắm đến cả hai.
 
-Mobile/tiled renderers
-----------------------
+Trình render di động/tiled
+--------------------------
 
-As described above, GPUs on mobile devices work in dramatically different ways
-from GPUs on desktop. Most mobile devices use tile renderers. Tile renderers
-split up the screen into regular-sized tiles that fit into super fast cache
-memory, which reduces the number of read/write operations to the main memory.
+Như đã mô tả ở trên, GPU trên thiết bị di động hoạt động khác biệt đáng kể so với GPU trên máy tính để bàn. Hầu hết thiết bị di động sử dụng tile renderer. Tile renderer chia màn hình thành các tile có kích thước cố định, vừa với bộ nhớ cache siêu nhanh, qua đó giảm số thao tác đọc/ghi vào bộ nhớ chính.
 
-There are some downsides though. Tiled rendering can make certain techniques
-much more complicated and expensive to perform. Tiles that rely on the results
-of rendering in different tiles or on the results of earlier operations being
-preserved can be very slow. Be very careful to test the performance of shaders,
-viewport textures and post processing.
+Tuy nhiên, cách này cũng có một số nhược điểm. Tiled rendering có thể khiến một số kỹ thuật trở nên phức tạp và tốn kém hơn nhiều khi thực hiện. Các tile phụ thuộc vào kết quả render ở những tile khác hoặc vào việc bảo toàn kết quả của các thao tác trước đó có thể rất chậm. Hãy hết sức cẩn thận khi kiểm tra hiệu năng của shader, texture viewport và hậu xử lý.

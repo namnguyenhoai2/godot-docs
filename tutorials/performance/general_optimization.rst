@@ -1,256 +1,159 @@
 .. _doc_general_optimization:
 
-General optimization tips
-=========================
+Mẹo tối ưu hóa chung
+====================
 
-Introduction
-------------
-
-In an ideal world, computers would run at infinite speed. The only limit to
-what we could achieve would be our imagination. However, in the real world, it's
-all too easy to produce software that will bring even the fastest computer to
-its knees.
-
-Thus, designing games and other software is a compromise between what we would
-like to be possible, and what we can realistically achieve while maintaining
-good performance.
-
-To achieve the best results, we have two approaches:
-
-- Work faster.
-- Work smarter.
-
-And preferably, we will use a blend of the two.
-
-Smoke and mirrors
-~~~~~~~~~~~~~~~~~
-
-Part of working smarter is recognizing that, in games, we can often get the
-player to believe they're in a world that is far more complex, interactive, and
-graphically exciting than it really is. A good programmer is a magician, and
-should strive to learn the tricks of the trade while trying to invent new ones.
-
-The nature of slowness
-~~~~~~~~~~~~~~~~~~~~~~
-
-To the outside observer, performance problems are often lumped together.
-But in reality, there are several different kinds of performance problems:
-
-- A slow process that occurs every frame, leading to a continuously low frame
-  rate.
-- An intermittent process that causes "spikes" of slowness, leading to
-  stalls.
-- A slow process that occurs outside of normal gameplay, for instance,
-  when loading a level.
-
-Each of these are annoying to the user, but in different ways.
-
-Measuring performance
----------------------
-
-Probably the most important tool for optimization is the ability to measure
-performance - to identify where bottlenecks are, and to measure the success of
-our attempts to speed them up.
-
-There are several methods of measuring performance, including:
-
-- Putting a start/stop timer around code of interest.
-- Using the :ref:`Godot profiler <doc_the_profiler>`.
-- Using :ref:`external CPU profilers <doc_using_cpp_profilers>`.
-- Using external GPU profilers/debuggers such as
-  `NVIDIA Nsight Graphics <https://developer.nvidia.com/nsight-graphics>`__,
-  `Radeon GPU Profiler <https://gpuopen.com/rgp/>`__,
-  `PIX <https://devblogs.microsoft.com/pix/download/>`__ (Direct3D 12 only),
-  `Xcode <https://developer.apple.com/documentation/xcode/optimizing-gpu-performance>`__ (Metal only), or
-  `Arm Performance Studio <https://developer.arm.com/Tools%20and%20Software/Arm%20Performance%20Studio>`__.
-- Checking the frame rate (with V-Sync disabled). Third-party utilities such as
-  `RivaTuner Statistics Server <https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html>`__ (Windows),
-  `Special K <https://www.special-k.info/>`__ (Windows),
-  or `MangoHud <https://github.com/flightlessmango/MangoHud>`__
-  (Linux) can also be useful here.
-- Using an unofficial `debug menu add-on <https://github.com/godot-extended-libraries/godot-debug-menu>`__.
-
-Be very aware that the relative performance of different areas can vary on
-different hardware. It's often a good idea to measure timings on more than one
-device. This is especially the case if you're targeting mobile devices.
-
-Limitations
-~~~~~~~~~~~
-
-CPU profilers are often the go-to method for measuring performance. However,
-they don't always tell the whole story.
-
-- Bottlenecks are often on the GPU, "as a result" of instructions given by the
-  CPU.
-- Spikes can occur in the operating system processes (outside of Godot) "as a
-  result" of instructions used in Godot (for example, dynamic memory allocation).
-- You may not always be able to profile specific devices like a mobile phone
-  due to the initial setup required.
-- You may have to solve performance problems that occur on hardware you don't
-  have access to.
-
-As a result of these limitations, you often need to use detective work to find
-out where bottlenecks are.
-
-Detective work
---------------
-
-Detective work is a crucial skill for developers (both in terms of performance,
-and also in terms of bug fixing). This can include hypothesis testing, and
-binary search.
-
-Hypothesis testing
-~~~~~~~~~~~~~~~~~~
-
-Say, for example, that you believe sprites are slowing down your game.
-You can test this hypothesis by:
-
-- Measuring the performance when you add more sprites, or take some away.
-
-This may lead to a further hypothesis: does the size of the sprite determine
-the performance drop?
-
-- You can test this by keeping everything the same, but changing the sprite
-  size, and measuring performance.
-
-Binary search
-~~~~~~~~~~~~~
-
-If you know that frames are taking much longer than they should, but you're
-not sure where the bottleneck lies. You could begin by commenting out
-approximately half the routines that occur on a normal frame. Has the
-performance improved more or less than expected?
-
-Once you know which of the two halves contains the bottleneck, you can
-repeat this process until you've pinned down the problematic area.
-
-Profilers
----------
-
-Profilers allow you to time your program while running it. Profilers then
-provide results telling you what percentage of time was spent in different
-functions and areas, and how often functions were called.
-
-This can be very useful both to identify bottlenecks and to measure the results
-of your improvements. Sometimes, attempts to improve performance can backfire
-and lead to slower performance.
-**Always use profiling and timing to guide your efforts.**
-
-For more info about using Godot's built-in profiler, see :ref:`doc_the_profiler`.
-
-Principles
+Giới thiệu
 ----------
 
-`Donald Knuth <https://en.wikipedia.org/wiki/Donald_Knuth>`__ said:
+Trong một thế giới lý tưởng, máy tính sẽ chạy với tốc độ vô hạn. Giới hạn duy nhất đối với những gì chúng ta có thể đạt được sẽ là trí tưởng tượng của mình. Tuy nhiên, trong thế giới thực, việc tạo ra phần mềm khiến ngay cả chiếc máy tính nhanh nhất cũng phải hoạt động hết công suất là điều quá dễ dàng.
 
-    *Programmers waste enormous amounts of time thinking about, or worrying
-    about, the speed of noncritical parts of their programs, and these attempts
-    at efficiency actually have a strong negative impact when debugging and
-    maintenance are considered. We should forget about small efficiencies, say
-    about 97% of the time: premature optimization is the root of all evil. Yet
-    we should not pass up our opportunities in that critical 3%.*
+Vì vậy, việc thiết kế game và các phần mềm khác là sự thỏa hiệp giữa những gì chúng ta muốn có thể thực hiện được và những gì chúng ta có thể đạt được một cách thực tế mà vẫn duy trì hiệu năng tốt.
 
-The messages are very important:
+Để đạt được kết quả tốt nhất, chúng ta có hai cách tiếp cận:
 
-- Developer time is limited. Instead of blindly trying to speed up
-  all aspects of a program, we should concentrate our efforts on the aspects
-  that really matter.
-- Efforts at optimization often end up with code that is harder to read and
-  debug than non-optimized code. It is in our interests to limit this to areas
-  that will really benefit.
+- Làm việc nhanh hơn.
+- Làm việc thông minh hơn.
 
-Just because we *can* optimize a particular bit of code, it doesn't necessarily
-mean that we *should*. Knowing when and when not to optimize is a great skill to
-develop.
+Và tốt nhất là chúng ta sẽ kết hợp cả hai cách.
 
-One misleading aspect of the quote is that people tend to focus on the subquote
-*"premature optimization is the root of all evil"*. While *premature*
-optimization is (by definition) undesirable, performant software is the result
-of performant design.
+Màn khói và đánh lạc hướng
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Performant design
+Một phần của việc làm việc thông minh hơn là nhận ra rằng trong game, chúng ta thường có thể khiến người chơi tin rằng họ đang ở trong một thế giới phức tạp, tương tác và hấp dẫn về mặt đồ họa hơn rất nhiều so với thực tế. Một lập trình viên giỏi giống như một ảo thuật gia, và nên cố gắng học các mánh khóe trong nghề đồng thời tìm cách sáng tạo ra những mánh khóe mới.
+
+Bản chất của sự chậm chạp
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Đối với người quan sát bên ngoài, các vấn đề về hiệu năng thường bị gộp chung với nhau. Nhưng trên thực tế, có một số loại vấn đề hiệu năng khác nhau:
+
+- Một tiến trình chậm diễn ra ở mỗi frame, dẫn đến frame rate luôn thấp.
+- Một tiến trình diễn ra không liên tục, gây ra các "đợt tăng vọt" về độ chậm, dẫn đến tình trạng đình trệ.
+- Một tiến trình chậm diễn ra bên ngoài gameplay thông thường, chẳng hạn như khi tải một level.
+
+Mỗi vấn đề trong số này đều gây khó chịu cho người dùng, nhưng theo những cách khác nhau.
+
+Đo hiệu năng
+------------
+
+Có lẽ công cụ quan trọng nhất để tối ưu hóa là khả năng đo hiệu năng — xác định các điểm nghẽn và đo lường mức độ thành công của những nỗ lực tăng tốc chúng ta thực hiện.
+
+Có một số phương pháp đo hiệu năng, bao gồm:
+
+- Đặt một bộ hẹn giờ bắt đầu/dừng xung quanh đoạn code cần quan tâm.
+- Sử dụng :ref:`Godot profiler <doc_the_profiler>`.
+- Sử dụng :ref:`external CPU profilers <doc_using_cpp_profilers>`.
+- Sử dụng các profiler/debugger GPU bên ngoài như `NVIDIA Nsight Graphics <https://developer.nvidia.com/nsight-graphics>`__, `Radeon GPU Profiler <https://gpuopen.com/rgp/>`__, `PIX <https://devblogs.microsoft.com/pix/download/>`__ (chỉ Direct3D 12), `Xcode <https://developer.apple.com/documentation/xcode/optimizing-gpu-performance>`__ (chỉ Metal) hoặc `Arm Performance Studio <https://developer.arm.com/Tools%20and%20Software/Arm%20Performance%20Studio>`__.
+- Kiểm tra frame rate (khi tắt V-Sync). Các tiện ích của bên thứ ba như `RivaTuner Statistics Server <https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html>`__ (Windows), `Special K <https://www.special-k.info/>`__ (Windows) hoặc `MangoHud <https://github.com/flightlessmango/MangoHud>`__ (Linux) cũng có thể hữu ích trong trường hợp này.
+- Sử dụng `debug menu add-on <https://github.com/godot-extended-libraries/godot-debug-menu>`__ không chính thức.
+
+Hãy lưu ý rằng hiệu năng tương đối của các khu vực khác nhau có thể thay đổi tùy theo phần cứng. Thường thì nên đo thời gian trên nhiều thiết bị. Điều này đặc biệt đúng nếu bạn nhắm đến các thiết bị di động.
+
+Giới hạn
+~~~~~~~~
+
+CPU profiler thường là phương pháp được sử dụng đầu tiên để đo hiệu năng. Tuy nhiên, chúng không phải lúc nào cũng cho thấy toàn bộ vấn đề.
+
+- Các điểm nghẽn thường nằm trên GPU, "do" các instruction do CPU cung cấp.
+- Các đợt tăng vọt có thể xảy ra trong các tiến trình của hệ điều hành (bên ngoài Godot) "do" các instruction được sử dụng trong Godot (ví dụ: cấp phát bộ nhớ động).
+- Bạn có thể không phải lúc nào cũng profile được các thiết bị cụ thể như điện thoại di động do cần thực hiện bước thiết lập ban đầu.
+- Bạn có thể phải giải quyết các vấn đề hiệu năng xảy ra trên phần cứng mà bạn không có quyền truy cập.
+
+Do những giới hạn này, bạn thường cần điều tra như một thám tử để tìm ra các điểm nghẽn.
+
+Điều tra như một thám tử
+------------------------
+
+Điều tra như một thám tử là một kỹ năng quan trọng đối với các nhà phát triển (cả về hiệu năng lẫn việc sửa lỗi). Việc này có thể bao gồm kiểm thử giả thuyết và tìm kiếm nhị phân.
+
+Kiểm thử giả thuyết
+~~~~~~~~~~~~~~~~~~~
+
+Ví dụ, giả sử bạn cho rằng sprite đang làm game chậm đi. Bạn có thể kiểm tra giả thuyết này bằng cách:
+
+- Đo hiệu năng khi thêm hoặc bớt một số sprite.
+
+Điều này có thể dẫn đến một giả thuyết tiếp theo: kích thước của sprite có quyết định mức giảm hiệu năng hay không?
+
+- Bạn có thể kiểm tra điều này bằng cách giữ nguyên mọi thứ, chỉ thay đổi kích thước sprite rồi đo hiệu năng.
+
+Tìm kiếm nhị phân
 ~~~~~~~~~~~~~~~~~
 
-The danger with encouraging people to ignore optimization until necessary, is
-that it conveniently ignores that the most important time to consider
-performance is at the design stage, before a key has even hit a keyboard. If the
-design or algorithms of a program are inefficient, then no amount of polishing
-the details later will make it run fast. It may run *faster*, but it will never
-run as fast as a program designed for performance.
+Nếu bạn biết rằng các frame mất nhiều thời gian hơn đáng lẽ, nhưng không chắc điểm nghẽn nằm ở đâu, bạn có thể bắt đầu bằng cách comment khoảng một nửa số routine diễn ra trong một frame thông thường. Hiệu năng đã cải thiện nhiều hơn hay ít hơn so với dự kiến?
 
-This tends to be far more important in game or graphics programming than in
-general programming. A performant design, even without low-level optimization,
-will often run many times faster than a mediocre design with low-level
-optimization.
+Khi biết nửa nào trong hai nửa chứa điểm nghẽn, bạn có thể lặp lại quy trình này cho đến khi xác định chính xác khu vực có vấn đề.
 
-Incremental design
-~~~~~~~~~~~~~~~~~~
-
-Of course, in practice, unless you have prior knowledge, you are unlikely to
-come up with the best design the first time. Instead, you'll often make a series
-of versions of a particular area of code, each taking a different approach to
-the problem, until you come to a satisfactory solution. It's important not to
-spend too much time on the details at this stage until you have finalized the
-overall design. Otherwise, much of your work will be thrown out.
-
-It's difficult to give general guidelines for performant design because this is
-so dependent on the problem. One point worth mentioning though, on the CPU side,
-is that modern CPUs are nearly always limited by memory bandwidth. This has led
-to a resurgence in data-oriented design, which involves designing data
-structures and algorithms for *cache locality* of data and linear access, rather
-than jumping around in memory.
-
-The optimization process
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-Assuming we have a reasonable design, and taking our lessons from Knuth, our
-first step in optimization should be to identify the biggest bottlenecks - the
-slowest functions, the low-hanging fruit.
-
-Once we've successfully improved the speed of the slowest area, it may no
-longer be the bottleneck. So we should test/profile again and find the next
-bottleneck on which to focus.
-
-The process is thus:
-
-1. Profile / Identify bottleneck.
-2. Optimize bottleneck.
-3. Return to step 1.
-
-Optimizing bottlenecks
-~~~~~~~~~~~~~~~~~~~~~~
-
-Some profilers will even tell you which part of a function (which data accesses,
-calculations) are slowing things down.
-
-As with design, you should concentrate your efforts first on making sure the
-algorithms and data structures are the best they can be. Data access should be
-local (to make best use of CPU cache), and it can often be better to use compact
-storage of data (again, always profile to test results). Often, you precalculate
-heavy computations ahead of time. This can be done by performing the computation
-when loading a level, by loading a file containing precalculated data, or
-by storing the results of complex calculations into a script constant and
-reading its value.
-
-Once algorithms and data are good, you can often make small changes in routines
-which improve performance. For instance, you can move some calculations outside
-of loops or transform nested ``for`` loops into non-nested loops.
-(This should be feasible if you know a 2D array's width or height in advance.)
-
-Always retest your timing/bottlenecks after making each change. Some changes
-will increase speed, others may have a negative effect. Sometimes, a small
-positive effect will be outweighed by the negatives of more complex code, and
-you may choose to leave out that optimization.
-
-Appendix
+Profiler
 --------
 
-Bottleneck math
-~~~~~~~~~~~~~~~
+Profiler cho phép bạn tính thời gian chạy của chương trình. Sau đó, profiler cung cấp kết quả cho biết bao nhiêu phần trăm thời gian được dành cho các function và khu vực khác nhau, cũng như tần suất các function được gọi.
 
-The proverb *"a chain is only as strong as its weakest link"* applies directly to
-performance optimization. If your project is spending 90% of the time in
-function ``A``, then optimizing ``A`` can have a massive effect on performance.
+Điều này có thể rất hữu ích cả để xác định các điểm nghẽn lẫn đo lường kết quả của những cải tiến. Đôi khi, các nỗ lực cải thiện hiệu năng có thể phản tác dụng và khiến hiệu năng chậm hơn. **Luôn sử dụng profiling và đo thời gian để định hướng nỗ lực của bạn.**
+
+Để biết thêm thông tin về cách sử dụng profiler tích hợp sẵn của Godot, hãy xem :ref:`doc_the_profiler`.
+
+Nguyên tắc
+----------
+
+`Donald Knuth <https://en.wikipedia.org/wiki/Donald_Knuth>`__ từng nói:
+
+    *Lập trình viên lãng phí một lượng thời gian khổng lồ để suy nghĩ hoặc lo lắng về tốc độ của những phần không quan trọng trong chương trình, và những nỗ lực nhằm đạt hiệu năng này thực sự gây ảnh hưởng tiêu cực nghiêm trọng khi xét đến việc debug và bảo trì. Chúng ta nên quên đi những tối ưu nhỏ, chẳng hạn trong khoảng 97% thời gian: tối ưu hóa sớm là cội rễ của mọi điều xấu. Tuy vậy, chúng ta không nên bỏ qua cơ hội trong 3% quan trọng đó.*
+
+Những thông điệp này rất quan trọng:
+
+- Thời gian của nhà phát triển là hữu hạn. Thay vì cố gắng một cách mù quáng để tăng tốc mọi khía cạnh của chương trình, chúng ta nên tập trung nỗ lực vào những khía cạnh thực sự quan trọng.
+- Các nỗ lực tối ưu hóa thường dẫn đến code khó đọc và debug hơn code chưa được tối ưu. Vì lợi ích của chính mình, chúng ta nên giới hạn việc này ở những khu vực thực sự được hưởng lợi.
+
+Chỉ vì chúng ta *có thể* tối ưu hóa một phần mã cụ thể không có nghĩa là chúng ta *nên* làm vậy. Biết khi nào nên và không nên tối ưu hóa là một kỹ năng tuyệt vời cần phát triển.
+
+Một khía cạnh dễ gây hiểu lầm của câu trích dẫn này là mọi người có xu hướng tập trung vào câu trích dẫn phụ *"tối ưu hóa quá sớm là nguồn gốc của mọi điều xấu"*. Mặc dù việc tối ưu hóa *quá sớm* (theo định nghĩa) là không mong muốn, phần mềm có hiệu năng tốt là kết quả của một thiết kế có hiệu năng tốt.
+
+Thiết kế có hiệu năng tốt
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Mối nguy hiểm khi khuyến khích mọi người bỏ qua việc tối ưu hóa cho đến khi cần thiết là cách làm này thuận tiện bỏ qua thực tế rằng thời điểm quan trọng nhất để cân nhắc hiệu năng là ở giai đoạn thiết kế, trước cả khi một phím được nhấn trên bàn phím. Nếu thiết kế hoặc các thuật toán của một chương trình không hiệu quả, thì dù có trau chuốt các chi tiết về sau đến đâu cũng không khiến chương trình chạy nhanh. Chương trình có thể chạy *nhanh hơn*, nhưng sẽ không bao giờ chạy nhanh bằng một chương trình được thiết kế để có hiệu năng cao.
+
+Điều này thường quan trọng hơn nhiều trong lập trình game hoặc đồ họa so với lập trình nói chung. Một thiết kế có hiệu năng tốt, ngay cả khi không được tối ưu hóa ở mức thấp, thường sẽ chạy nhanh hơn nhiều lần so với một thiết kế tầm thường có tối ưu hóa ở mức thấp.
+
+Thiết kế tăng dần
+~~~~~~~~~~~~~~~~~
+
+Tất nhiên, trong thực tế, trừ khi đã có kiến thức từ trước, bạn khó có thể nghĩ ra thiết kế tốt nhất ngay lần đầu. Thay vào đó, bạn thường sẽ tạo ra một loạt phiên bản cho một khu vực mã cụ thể, mỗi phiên bản tiếp cận vấn đề theo một cách khác nhau, cho đến khi tìm được giải pháp thỏa đáng. Ở giai đoạn này, điều quan trọng là không dành quá nhiều thời gian cho các chi tiết trước khi hoàn thiện thiết kế tổng thể. Nếu không, phần lớn công sức của bạn sẽ bị loại bỏ.
+
+Khó đưa ra các hướng dẫn chung cho một thiết kế có hiệu năng tốt vì điều này phụ thuộc rất nhiều vào vấn đề cần giải quyết. Tuy nhiên, có một điểm đáng đề cập ở phía CPU: các CPU hiện đại gần như luôn bị giới hạn bởi băng thông bộ nhớ. Điều này đã dẫn đến sự hồi sinh của thiết kế hướng dữ liệu, trong đó các cấu trúc dữ liệu và thuật toán được thiết kế để *tận dụng tính cục bộ của cache* dữ liệu và truy cập tuyến tính, thay vì nhảy qua lại trong bộ nhớ.
+
+Quy trình tối ưu hóa
+~~~~~~~~~~~~~~~~~~~~
+
+Giả sử chúng ta có một thiết kế hợp lý và rút ra bài học từ Knuth, bước đầu tiên trong quá trình tối ưu hóa nên là xác định các nút thắt lớn nhất - những hàm chậm nhất, những điểm dễ cải thiện nhất.
+
+Sau khi cải thiện thành công tốc độ của khu vực chậm nhất, khu vực đó có thể không còn là nút thắt nữa. Vì vậy, chúng ta nên kiểm tra/profile lại và tìm nút thắt tiếp theo để tập trung vào.
+
+Do đó, quy trình là:
+
+1. Profile / Xác định nút thắt.
+2. Tối ưu hóa nút thắt.
+3. Quay lại bước 1.
+
+Tối ưu hóa các nút thắt
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Một số profiler thậm chí còn cho bạn biết phần nào của một hàm (những lần truy cập dữ liệu, phép tính nào) đang làm chậm chương trình.
+
+Cũng như với thiết kế, trước tiên bạn nên tập trung nỗ lực để đảm bảo các thuật toán và cấu trúc dữ liệu đạt mức tốt nhất có thể. Việc truy cập dữ liệu nên mang tính cục bộ (để tận dụng tốt nhất cache của CPU), và thường nên sử dụng cách lưu trữ dữ liệu nhỏ gọn (một lần nữa, luôn profile để kiểm tra kết quả). Bạn thường tính toán trước các phép tính nặng. Việc này có thể được thực hiện bằng cách tiến hành tính toán khi tải một level, tải một tệp chứa dữ liệu đã được tính toán trước, hoặc lưu kết quả của các phép tính phức tạp vào một hằng số script rồi đọc giá trị của nó.
+
+Khi các thuật toán và dữ liệu đã tốt, bạn thường có thể thực hiện những thay đổi nhỏ trong các routine để cải thiện hiệu năng. Chẳng hạn, bạn có thể đưa một số phép tính ra ngoài các vòng lặp hoặc chuyển đổi các ``for`` vòng lặp lồng nhau thành các vòng lặp không lồng nhau. (Điều này có thể thực hiện được nếu bạn biết trước chiều rộng hoặc chiều cao của một mảng 2D.)
+
+Luôn kiểm tra lại thời gian/nút thắt sau mỗi thay đổi. Một số thay đổi sẽ tăng tốc độ, trong khi những thay đổi khác có thể gây tác động tiêu cực. Đôi khi, tác động tích cực nhỏ sẽ bị lấn át bởi tác động tiêu cực của mã phức tạp hơn, và bạn có thể chọn không đưa tối ưu hóa đó vào.
+
+Phụ lục
+-------
+
+Tính toán nút thắt
+~~~~~~~~~~~~~~~~~~
+
+Câu tục ngữ *"một sợi xích chỉ mạnh bằng mắt xích yếu nhất"* áp dụng trực tiếp cho việc tối ưu hóa hiệu năng. Nếu dự án của bạn dành 90% thời gian trong hàm ``A``, thì việc tối ưu hóa ``A`` có thể tạo ra tác động rất lớn đến hiệu năng.
 
 .. code-block:: none
 
@@ -264,11 +167,9 @@ function ``A``, then optimizing ``A`` can have a massive effect on performance.
     Everything else: 1ms
     Total frame time: 2 ms
 
-In this example, improving this bottleneck ``A`` by a factor of 9× decreases
-overall frame time by 5× while increasing frames per second by 5×.
+Trong ví dụ này, việc cải thiện nút thắt này ``A`` lên 9 lần làm giảm 5 lần tổng thời gian của mỗi khung hình, đồng thời tăng 5 lần số khung hình trên giây.
 
-However, if something else is running slowly and also bottlenecking your
-project, then the same improvement can lead to less dramatic gains:
+Tuy nhiên, nếu có một thành phần khác cũng chạy chậm và đồng thời tạo thành nút thắt cho dự án của bạn, thì cùng một mức cải thiện có thể chỉ mang lại mức tăng ít đáng kể hơn:
 
 .. code-block:: none
 
@@ -282,12 +183,9 @@ project, then the same improvement can lead to less dramatic gains:
     Everything else: 50 ms
     Total frame time: 51 ms
 
-In this example, even though we have hugely optimized function ``A``,
-the actual gain in terms of frame rate is quite small.
+Trong ví dụ này, mặc dù chúng ta đã tối ưu hóa rất nhiều cho hàm ``A``, mức tăng thực tế xét về tốc độ khung hình lại khá nhỏ.
 
-In games, things become even more complicated because the CPU and GPU run
-independently of one another. Your total frame time is determined by the slower
-of the two.
+Trong game, mọi thứ còn phức tạp hơn vì CPU và GPU chạy độc lập với nhau. Tổng thời gian mỗi khung hình được quyết định bởi thành phần chậm hơn trong hai thành phần này.
 
 .. code-block:: none
 
@@ -301,5 +199,4 @@ of the two.
     GPU: 50 ms
     Total frame time: 50 ms
 
-In this example, we optimized the CPU hugely again, but the frame time didn't
-improve because we are GPU-bottlenecked.
+Trong ví dụ này, chúng ta lại tối ưu hóa CPU rất nhiều, nhưng thời gian khung hình không được cải thiện vì chúng ta bị giới hạn bởi GPU.

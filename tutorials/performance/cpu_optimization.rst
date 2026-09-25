@@ -1,103 +1,68 @@
 .. _doc_cpu_optimization:
 
-CPU optimization
-================
+Tối ưu hóa CPU
+==============
 
-Measuring performance
----------------------
+Đo hiệu năng
+------------
 
-We have to know where the "bottlenecks" are to know how to speed up our program.
-Bottlenecks are the slowest parts of the program that limit the rate that
-everything can progress. Focusing on bottlenecks allows us to concentrate our
-efforts on optimizing the areas which will give us the greatest speed
-improvement, instead of spending a lot of time optimizing functions that will
-lead to small performance improvements.
+Chúng ta cần biết các "nút thắt cổ chai" nằm ở đâu để biết cách tăng tốc chương trình. Nút thắt cổ chai là những phần chậm nhất của chương trình, giới hạn tốc độ tiến triển của mọi thứ. Tập trung vào các nút thắt cổ chai giúp chúng ta dồn nỗ lực vào việc tối ưu hóa những khu vực mang lại mức cải thiện tốc độ lớn nhất, thay vì dành nhiều thời gian tối ưu hóa các hàm chỉ đem lại cải thiện hiệu năng nhỏ.
 
-For the CPU, the easiest way to identify bottlenecks is to use a profiler.
+Đối với CPU, cách dễ nhất để xác định các nút thắt cổ chai là sử dụng profiler.
 
-CPU profilers
--------------
+CPU profiler
+------------
 
-Profilers run alongside your program and take timing measurements to work out
-what proportion of time is spent in each function.
+Profiler chạy song song với chương trình và thực hiện các phép đo thời gian để xác định tỷ lệ thời gian được dành cho từng hàm.
 
-The Godot IDE conveniently has a built-in profiler. It does not run every time
-you start your project: it must be manually started and stopped. This is
-because, like most profilers, recording these timing measurements can
-slow down your project significantly.
+Godot IDE có sẵn profiler tích hợp rất tiện lợi. Profiler không chạy mỗi khi bạn khởi động project: bạn phải tự khởi động và dừng nó. Lý do là, giống như hầu hết profiler, việc ghi lại các phép đo thời gian này có thể làm project chậm đi đáng kể.
 
-After profiling, you can look back at the results for a frame.
+Sau khi profiling, bạn có thể xem lại kết quả của một frame.
 
 .. figure:: img/godot_profiler.png
    :align: center
-   :alt: Screenshot of the Godot profiler
+   :alt: Ảnh chụp màn hình profiler của Godot
 
-   Results of a profile of one of the demo projects.
+   Kết quả profile của một trong các project demo.
 
-.. note:: We can see the cost of built-in processes such as physics and audio,
-          as well as seeing the cost of our own scripting functions at the
-          bottom.
+.. note:: Chúng ta có thể thấy chi phí của các process tích hợp như physics và audio, đồng thời thấy chi phí của các hàm scripting do chúng ta viết ở bên dưới.
 
-          Time spent waiting for various built-in servers may not be counted in
-          the profilers. This is a known bug.
+          Thời gian chờ các server tích hợp khác nhau có thể không được tính trong profiler. Đây là một lỗi đã được biết đến.
 
-When a project is running slowly, you will often see an obvious function or
-process taking a lot more time than others. This is your primary bottleneck, and
-you can usually increase speed by optimizing this area.
+Khi project chạy chậm, bạn thường sẽ thấy một hàm hoặc process rõ ràng nào đó tốn nhiều thời gian hơn những phần khác. Đây là nút thắt cổ chai chính, và bạn thường có thể tăng tốc bằng cách tối ưu hóa khu vực này.
 
-For more info about using Godot's built-in profiler, see
+Để biết thêm thông tin về cách sử dụng profiler tích hợp của Godot, hãy xem
 :ref:`doc_debugger_panel`.
 
-External profilers
+Profiler bên ngoài
 ------------------
 
-Although the Godot IDE profiler is very convenient and useful, sometimes you
-need more power, and the ability to profile the Godot engine source code itself.
+Mặc dù profiler của Godot IDE rất tiện lợi và hữu ích, đôi khi bạn cần nhiều khả năng hơn, cùng với khả năng profile chính mã nguồn của Godot engine.
 
-You can :ref:`use a number of third-party C++ profilers <doc_using_cpp_profilers>`
-to do this.
+Bạn có thể :ref:`sử dụng một số profiler C++ của bên thứ ba <doc_using_cpp_profilers>` để thực hiện việc này.
 
 .. figure:: img/valgrind.png
-   :alt: Screenshot of Callgrind
+   :alt: Ảnh chụp màn hình Callgrind
 
-   Example results from Callgrind, which is part of Valgrind.
+   Ví dụ về kết quả từ Callgrind, một phần của Valgrind.
 
-From the left, Callgrind is listing the percentage of time within a function and
-its children (Inclusive), the percentage of time spent within the function
-itself, excluding child functions (Self), the number of times the function is
-called, the function name, and the file or module.
+Từ trái sang phải, Callgrind liệt kê phần trăm thời gian bên trong một hàm và các hàm con của hàm đó (Inclusive), phần trăm thời gian dành cho chính hàm đó, không bao gồm các hàm con (Self), số lần hàm được gọi, tên hàm và file hoặc module.
 
-In this example, we can see nearly all time is spent under the
-``Main::iteration()`` function. This is the master function in the Godot source
-code that is called repeatedly. It causes frames to be drawn, physics ticks to
-be simulated, and nodes and scripts to be updated. A large proportion of the
-time is spent in the functions to render a canvas (66%), because this example
-uses a 2D benchmark. Below this, we see that almost 50% of the time is spent
-outside Godot code in ``libglapi`` and ``i965_dri`` (the graphics driver).
-This tells us the a large proportion of CPU time is being spent in the
-graphics driver.
+Trong ví dụ này, chúng ta có thể thấy gần như toàn bộ thời gian được dành cho hàm ``Main::iteration()``. Đây là hàm chính trong mã nguồn Godot, được gọi lặp đi lặp lại. Hàm này khiến các frame được vẽ, các tick physics được mô phỏng, đồng thời các node và script được cập nhật. Một phần lớn thời gian được dành cho các hàm render canvas (66%), vì ví dụ này sử dụng benchmark 2D. Bên dưới, chúng ta thấy gần 50% thời gian được dành bên ngoài mã Godot cho ``libglapi`` và ``i965_dri`` (graphics driver). Điều này cho chúng ta biết rằng một phần lớn thời gian CPU đang được dành cho graphics driver.
 
-This is actually an excellent example because, in an ideal world, only a very
-small proportion of time would be spent in the graphics driver. This is an
-indication that there is a problem with too much communication and work being
-done in the graphics API. This specific profiling led to the development of 2D
-batching, which greatly speeds up 2D rendering by reducing bottlenecks in this
-area.
+Đây thực sự là một ví dụ tuyệt vời vì trong một thế giới lý tưởng, chỉ một phần rất nhỏ thời gian được dành cho graphics driver. Đây là dấu hiệu cho thấy có vấn đề do quá nhiều hoạt động giao tiếp và xử lý được thực hiện trong graphics API. Hoạt động profiling cụ thể này đã dẫn đến việc phát triển 2D batching, giúp tăng tốc đáng kể quá trình render 2D bằng cách giảm các nút thắt cổ chai trong khu vực này.
 
-Manually timing functions
+Đo thời gian hàm thủ công
 -------------------------
 
-Another handy technique, especially once you have identified the bottleneck
-using a profiler, is to manually time the function or area under test.
-The specifics vary depending on the language, but in GDScript, you would do
-the following:
+Một kỹ thuật hữu ích khác, đặc biệt sau khi bạn đã xác định được nút thắt cổ chai bằng profiler, là tự đo thời gian của hàm hoặc khu vực đang được kiểm tra. Chi tiết cụ thể phụ thuộc vào ngôn ngữ, nhưng trong GDScript, bạn sẽ thực hiện như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     var time_start = Time.get_ticks_usec()
 
-    # Your function you want to time
+    # Hàm bạn muốn đo thời gian
     update_enemies()
 
     var time_end = Time.get_ticks_usec()
@@ -107,171 +72,91 @@ the following:
 
     var timeStart = Time.GetTicksUsec();
 
-    // Your function you want to time.
+    // Hàm bạn muốn đo thời gian.
     UpdateEnemies();
 
     var timeEnd = Time.GetTicksUsec();
     GD.Print($"UpdateEnemies() took {timeEnd - timeStart} microseconds");
 
-When manually timing functions, it is usually a good idea to run the function
-many times (1,000 or more times), instead of just once (unless it is a very slow
-function). The reason for doing this is that timers often have limited accuracy.
-Moreover, CPUs will schedule processes in a haphazard manner. Therefore, an
-average over a series of runs is more accurate than a single measurement.
+Khi tự đo thời gian hàm, thông thường bạn nên chạy hàm nhiều lần (1.000 lần trở lên), thay vì chỉ chạy một lần (trừ khi đó là một hàm rất chậm). Lý do là các bộ hẹn giờ thường có độ chính xác hạn chế. Hơn nữa, CPU sẽ lên lịch cho các process theo cách không cố định. Vì vậy, giá trị trung bình qua một loạt lần chạy chính xác hơn một phép đo đơn lẻ.
 
-As you attempt to optimize functions, be sure to either repeatedly profile or
-time them as you go. This will give you crucial feedback as to whether the
-optimization is working (or not).
+Khi cố gắng tối ưu hóa các hàm, hãy đảm bảo bạn liên tục profile hoặc đo thời gian của chúng trong quá trình thực hiện. Việc này sẽ cung cấp phản hồi quan trọng cho biết quá trình tối ưu hóa có hiệu quả hay không.
 
-Caches
-------
+Cache
+-----
 
-CPU caches are something else to be particularly aware of, especially when
-comparing timing results of two different versions of a function. The results
-can be highly dependent on whether the data is in the CPU cache or not. CPUs
-don't load data directly from the system RAM, even though it's huge in
-comparison to the CPU cache (several gigabytes instead of a few megabytes). This
-is because system RAM is very slow to access. Instead, CPUs load data from a
-smaller, faster bank of memory called cache. Loading data from cache is very
-fast, but every time you try and load a memory address that is not stored in
-cache, the cache must make a trip to main memory and slowly load in some data.
-This delay can result in the CPU sitting around idle for a long time, and is
-referred to as a "cache miss".
+CPU cache là một yếu tố khác cần đặc biệt lưu ý, nhất là khi so sánh kết quả đo thời gian của hai phiên bản khác nhau của một hàm. Kết quả có thể phụ thuộc rất nhiều vào việc dữ liệu có nằm trong CPU cache hay không. CPU không tải dữ liệu trực tiếp từ system RAM, mặc dù system RAM lớn hơn rất nhiều so với CPU cache (vài gigabyte thay vì vài megabyte). Đó là vì system RAM truy cập rất chậm. Thay vào đó, CPU tải dữ liệu từ một vùng bộ nhớ nhỏ hơn và nhanh hơn gọi là cache. Việc tải dữ liệu từ cache rất nhanh, nhưng mỗi khi bạn cố tải một địa chỉ bộ nhớ không được lưu trong cache, cache phải truy cập bộ nhớ chính và tải dữ liệu vào một cách chậm chạp. Độ trễ này có thể khiến CPU nhàn rỗi trong thời gian dài, và được gọi là "cache miss".
 
-This means that the first time you run a function, it may run slowly because the
-data is not in the CPU cache. The second and later times, it may run much faster
-because the data is in the cache. Due to this, always use averages when timing,
-and be aware of the effects of cache.
+Điều này có nghĩa là lần đầu tiên bạn chạy một hàm, hàm có thể chạy chậm vì dữ liệu chưa nằm trong CPU cache. Từ lần thứ hai trở đi, hàm có thể chạy nhanh hơn nhiều vì dữ liệu đã nằm trong cache. Vì vậy, hãy luôn sử dụng giá trị trung bình khi đo thời gian và lưu ý đến ảnh hưởng của cache.
 
-Understanding caching is also crucial to CPU optimization. If you have an
-algorithm (routine) that loads small bits of data from randomly spread out areas
-of main memory, this can result in a lot of cache misses, a lot of the time, the
-CPU will be waiting around for data instead of doing any work. Instead, if you
-can make your data accesses localised, or even better, access memory in a linear
-fashion (like a continuous list), then the cache will work optimally and the CPU
-will be able to work as fast as possible.
+Hiểu về caching cũng rất quan trọng đối với việc tối ưu hóa CPU. Nếu bạn có một thuật toán (routine) tải các mẩu dữ liệu nhỏ từ những khu vực phân tán ngẫu nhiên trong bộ nhớ chính, điều này có thể gây ra rất nhiều cache miss; phần lớn thời gian CPU sẽ phải chờ dữ liệu thay vì thực hiện công việc. Ngược lại, nếu bạn có thể thực hiện việc truy cập dữ liệu cục bộ hơn, hoặc tốt hơn nữa là truy cập bộ nhớ theo cách tuyến tính (như một danh sách liên tục), cache sẽ hoạt động tối ưu và CPU có thể làm việc nhanh nhất có thể.
 
-Godot usually takes care of such low-level details for you. For example, the
-Server APIs make sure data is optimized for caching already for things like
-rendering and physics. Still, you should be especially aware of caching when
-writing GDExtensions.
+Godot thường xử lý các chi tiết cấp thấp như vậy cho bạn. Ví dụ, các Server API đảm bảo dữ liệu đã được tối ưu cho caching đối với những tác vụ như rendering và physics. Tuy nhiên, bạn vẫn nên đặc biệt lưu ý đến caching khi viết GDExtensions.
 
-Languages
----------
+Ngôn ngữ
+--------
 
-Godot supports a number of different languages, and it is worth bearing in mind
-that there are trade-offs involved. Some languages are designed for ease of use
-at the cost of speed, and others are faster but more difficult to work with.
+Godot hỗ trợ nhiều ngôn ngữ khác nhau, và bạn nên ghi nhớ rằng chúng có những sự đánh đổi nhất định. Một số ngôn ngữ được thiết kế để dễ sử dụng với cái giá là tốc độ, trong khi những ngôn ngữ khác nhanh hơn nhưng khó làm việc hơn.
 
-Built-in engine functions run at the same speed regardless of the scripting
-language you choose. If your project is making a lot of calculations in its own
-code, consider moving those calculations to a faster language.
+Các hàm engine tích hợp chạy ở cùng một tốc độ bất kể bạn chọn ngôn ngữ scripting nào. Nếu project của bạn thực hiện nhiều phép tính trong code riêng, hãy cân nhắc chuyển các phép tính đó sang một ngôn ngữ nhanh hơn.
 
 GDScript
 ~~~~~~~~
 
-:ref:`GDScript <doc_gdscript>` is designed to be easy to use and iterate,
-and is ideal for making many types of games. However, in this language, ease of
-use is considered more important than performance. If you need to make heavy
-calculations, consider moving some of your project to one of the other
-languages.
+:ref:`GDScript <doc_gdscript>` được thiết kế để dễ sử dụng và lặp lại, đồng thời rất phù hợp để tạo nhiều loại game. Tuy nhiên, trong ngôn ngữ này, tính dễ sử dụng được xem là quan trọng hơn hiệu năng. Nếu cần thực hiện các phép tính nặng, hãy cân nhắc chuyển một phần project sang một trong các ngôn ngữ khác.
 
 C#
 ~~
 
-:ref:`C# <doc_c_sharp>` is popular and has first-class support in Godot. It
-offers a good compromise between speed and ease of use. Beware of possible
-garbage collection pauses and leaks that can occur during gameplay, though. A
-common approach to workaround issues with garbage collection is to use *object
-pooling*, which is outside the scope of this guide.
+:ref:`C# <doc_c_sharp>` rất phổ biến và được Godot hỗ trợ đầy đủ. Ngôn ngữ này mang lại sự cân bằng tốt giữa tốc độ và tính dễ sử dụng. Tuy nhiên, hãy lưu ý về các lần tạm dừng và rò rỉ bộ nhớ có thể xảy ra trong quá trình chơi. Một cách phổ biến để khắc phục các vấn đề với garbage collection là sử dụng *object pooling*, nội dung này nằm ngoài phạm vi của hướng dẫn.
 
-Other languages
-~~~~~~~~~~~~~~~
+Các ngôn ngữ khác
+~~~~~~~~~~~~~~~~~
 
-Third parties provide support for several other languages, including `Rust
-<https://github.com/godot-rust/gdext>`_.
+Bên thứ ba cung cấp hỗ trợ cho một số ngôn ngữ khác, bao gồm `Rust <https://github.com/godot-rust/gdext>`_.
 
 C++
 ~~~
 
-Godot is written in C++. Using C++ will usually result in the fastest code.
-However, on a practical level, it is the most difficult to deploy to end users'
-machines on different platforms. Options for using C++ include
-GDExtensions and
+Godot được viết bằng C++. Việc sử dụng C++ thường sẽ cho ra code nhanh nhất. Tuy nhiên, trên phương diện thực tế, đây là ngôn ngữ khó triển khai nhất lên máy của người dùng cuối trên các nền tảng khác nhau. Các tùy chọn để sử dụng C++ bao gồm GDExtensions và
 :ref:`custom modules <doc_custom_modules_in_cpp>`.
 
 Threads
 -------
 
-Consider using threads when making a lot of calculations that can run in
-parallel to each other. Modern CPUs have multiple cores, each one capable of
-doing a limited amount of work. By spreading work over multiple threads, you can
-move further towards peak CPU efficiency.
+Hãy cân nhắc sử dụng threads khi thực hiện nhiều phép tính có thể chạy song song với nhau. Các CPU hiện đại có nhiều lõi, mỗi lõi có khả năng thực hiện một lượng công việc giới hạn. Bằng cách phân chia công việc cho nhiều threads, bạn có thể tiến gần hơn đến hiệu suất CPU tối đa.
 
-The disadvantage of threads is that you have to be incredibly careful. As each
-CPU core operates independently, they can end up trying to access the same
-memory at the same time. One thread can be reading to a variable while another
-is writing: this is called a *race condition*. Before you use threads, make sure
-you understand the dangers and how to try and prevent these race conditions.
-Threads can make debugging considerably more difficult.
+Nhược điểm của threads là bạn phải cực kỳ cẩn thận. Vì mỗi lõi CPU hoạt động độc lập, chúng có thể cố truy cập cùng một vùng nhớ tại cùng một thời điểm. Một thread có thể đang đọc một biến trong khi thread khác đang ghi vào biến đó: đây được gọi là *race condition*. Trước khi sử dụng threads, hãy đảm bảo bạn hiểu rõ các nguy hiểm và cách ngăn chặn những race condition này. Threads có thể khiến việc debug khó khăn hơn đáng kể.
 
-For more information on threads, see :ref:`doc_using_multiple_threads`.
+Để biết thêm thông tin về threads, hãy xem :ref:`doc_using_multiple_threads`.
 
 SceneTree
 ---------
 
-Although Nodes are an incredibly powerful and versatile concept, be aware that
-every node has a cost. Built-in functions such as ``_process()`` and
-``_physics_process()`` propagate through the tree. This housekeeping can reduce
-performance when you have a very large numbers of nodes (how many exactly
-depends on the target platform and can range from thousands to tens of
-thousands so ensure that you profile performance on all target platforms
-during development).
+Mặc dù Nodes là một khái niệm cực kỳ mạnh mẽ và linh hoạt, hãy lưu ý rằng mỗi node đều có chi phí. Các hàm tích hợp như ``_process()`` và ``_physics_process()`` được lan truyền trong cây. Công việc quản lý này có thể làm giảm hiệu suất khi bạn có số lượng node rất lớn (con số chính xác phụ thuộc vào nền tảng đích và có thể dao động từ hàng nghìn đến hàng chục nghìn, vì vậy hãy đảm bảo bạn lập profile hiệu suất trên tất cả nền tảng đích trong quá trình phát triển).
 
-Each node is handled individually in the Godot renderer. Therefore, a smaller
-number of nodes with more in each can lead to better performance.
+Mỗi node được Godot renderer xử lý riêng lẻ. Vì vậy, số lượng node ít hơn nhưng mỗi node chứa nhiều thành phần hơn có thể mang lại hiệu suất tốt hơn.
 
-One quirk of the :ref:`SceneTree <class_SceneTree>` is that you can sometimes
-get much better performance by removing nodes from the SceneTree, rather than by
-pausing or hiding them. You don't have to delete a detached node. You can for
-example, keep a reference to a node, detach it from the scene tree using
-:ref:`Node.remove_child(node) <class_Node_method_remove_child>`, then reattach
-it later using :ref:`Node.add_child(node) <class_Node_method_add_child>`.
-This can be very useful for adding and removing areas from a game, for example.
+Một điểm đặc biệt của :ref:`SceneTree <class_SceneTree>` là đôi khi bạn có thể đạt hiệu suất tốt hơn nhiều bằng cách xóa các node khỏi SceneTree, thay vì tạm dừng hoặc ẩn chúng. Bạn không cần xóa một node đã tách khỏi cây. Chẳng hạn, bạn có thể giữ một tham chiếu đến node, tách node đó khỏi scene tree bằng
+:ref:`Node.remove_child(node) <class_Node_method_remove_child>`, sau đó gắn lại node bằng :ref:`Node.add_child(node) <class_Node_method_add_child>`. Điều này có thể rất hữu ích, chẳng hạn khi thêm và xóa các khu vực khỏi game.
 
-You can avoid the SceneTree altogether by using Server APIs. For more
-information, see :ref:`doc_using_servers`.
+Bạn có thể hoàn toàn không sử dụng SceneTree bằng cách dùng Server APIs. Để biết thêm thông tin, hãy xem :ref:`doc_using_servers`.
 
 Physics
 -------
 
-In some situations, physics can end up becoming a bottleneck. This is
-particularly the case with complex worlds and large numbers of physics objects.
+Trong một số trường hợp, physics có thể trở thành một nút thắt cổ chai. Điều này đặc biệt xảy ra với các thế giới phức tạp và số lượng lớn physics object.
 
-Here are some techniques to speed up physics:
+Dưới đây là một số kỹ thuật để tăng tốc physics:
 
-- Try using simplified versions of your rendered geometry for collision shapes.
-  Often, this won't be noticeable for end users, but can greatly increase
-  performance.
-- Try removing objects from physics when they are out of view / outside the
-  current area, or reusing physics objects (maybe you allow 8 monsters per area,
-  for example, and reuse these).
+- Hãy thử sử dụng các phiên bản đơn giản hóa của geometry được render để làm collision shape. Thông thường, người dùng cuối sẽ không nhận thấy điều này, nhưng hiệu suất có thể tăng đáng kể.
+- Hãy thử xóa các object khỏi physics khi chúng nằm ngoài tầm nhìn hoặc bên ngoài khu vực hiện tại, hoặc tái sử dụng các physics object (chẳng hạn, bạn cho phép 8 quái vật trong mỗi khu vực và tái sử dụng các object này).
 
-Another crucial aspect to physics is the physics tick rate. In some games, you
-can greatly reduce the tick rate, and instead of for example, updating physics
-60 times per second, you may update them only 30 or even 20 times per second.
-This can greatly reduce the CPU load.
+Một khía cạnh quan trọng khác của physics là tick rate. Trong một số game, bạn có thể giảm đáng kể tick rate; thay vì cập nhật physics 60 lần mỗi giây, bạn có thể chỉ cập nhật 30 hoặc thậm chí 20 lần mỗi giây. Điều này có thể giảm đáng kể tải CPU.
 
-The downside of changing physics tick rate is you can get jerky movement or
-jitter when the physics update rate does not match the frames per second
-rendered. Also, decreasing the physics tick rate will increase input lag.
-It's recommended to stick to the default physics tick rate (60 Hz) in most games
-that feature real-time player movement.
+Nhược điểm của việc thay đổi tick rate của physics là chuyển động có thể bị giật hoặc jitter khi tốc độ cập nhật physics không khớp với số frame được render mỗi giây. Ngoài ra, việc giảm tick rate của physics sẽ làm tăng input lag. Trong hầu hết các game có chuyển động của người chơi theo thời gian thực, bạn nên giữ tick rate mặc định của physics (60 Hz).
 
-The solution to jitter is to use *fixed timestep interpolation*, which involves
-smoothing the rendered positions and rotations over multiple frames to match the
-physics. Godot has built-in physics interpolation which you can read about
-:ref:`here<doc_physics_interpolation>`.
-Performance-wise, interpolation is a very cheap operation compared to running a
-physics tick. It's orders of magnitude faster, so this can be a significant
-performance win while also reducing jitter.
+Giải pháp cho jitter là sử dụng *fixed timestep interpolation*, trong đó các vị trí và góc xoay được render sẽ được làm mượt qua nhiều frame để khớp với physics. Godot có interpolation cho physics tích hợp sẵn, bạn có thể đọc thêm
+:ref:`tại đây <doc_physics_interpolation>`. Về mặt hiệu suất, interpolation là một thao tác rất nhẹ so với việc chạy một physics tick. Nó nhanh hơn nhiều bậc độ lớn, vì vậy đây có thể là một cải thiện hiệu suất đáng kể đồng thời giảm jitter.
+
+.. _`Rust`: https://github.com/godot-rust/gdext

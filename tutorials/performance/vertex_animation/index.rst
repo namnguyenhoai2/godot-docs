@@ -1,7 +1,7 @@
 :allow_comments: False
 
-Animating thousands of objects
-==============================
+Tạo hiệu ứng cho hàng nghìn đối tượng
+=====================================
 
 .. toctree::
    :maxdepth: 1
