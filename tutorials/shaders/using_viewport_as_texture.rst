@@ -1,67 +1,55 @@
 .. _doc_viewport_as_texture:
 
-Using a SubViewport as a texture
-================================
+Sử dụng SubViewport làm texture
+===============================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-This tutorial will introduce you to using the :ref:`SubViewport <class_SubViewport>` as a
-texture that can be applied to 3D objects. In order to do so, it will walk you through the process
-of making a procedural planet like the one below:
+Tutorial này sẽ giới thiệu cách sử dụng :ref:`SubViewport <class_SubViewport>` làm texture có thể áp dụng cho các đối tượng 3D. Để thực hiện điều đó, tutorial sẽ hướng dẫn bạn quy trình tạo một hành tinh procedural như bên dưới:
 
 .. image:: img/planet_example.png
 
-.. note:: This tutorial does not cover how to code a dynamic atmosphere like the one this planet has.
+.. note:: Tutorial này không hướng dẫn cách lập trình atmosphere động như của hành tinh này.
 
-This tutorial assumes you are familiar with how to set up a basic scene including:
-a :ref:`Camera3D <class_Camera3D>`, a :ref:`light source <class_OmniLight3D>`, a
-:ref:`MeshInstance3D <class_MeshInstance3D>` with a :ref:`Primitive Mesh <class_PrimitiveMesh>`,
-and applying a :ref:`StandardMaterial3D <class_StandardMaterial3D>` to the mesh. The focus will be on using
-the :ref:`SubViewport <class_SubViewport>` to dynamically create textures that can be applied to the mesh.
+Tutorial này giả định bạn đã quen với cách thiết lập một scene cơ bản, bao gồm: một :ref:`Camera3D <class_Camera3D>`, một :ref:`light source <class_OmniLight3D>`, một
+:ref:`MeshInstance3D <class_MeshInstance3D>` có :ref:`Primitive Mesh <class_PrimitiveMesh>`, và áp dụng một :ref:`StandardMaterial3D <class_StandardMaterial3D>` cho mesh. Trọng tâm sẽ là sử dụng :ref:`SubViewport <class_SubViewport>` để tạo động các texture có thể áp dụng cho mesh.
 
-In this tutorial, we'll cover the following topics:
+Trong tutorial này, chúng ta sẽ tìm hiểu các chủ đề sau:
 
-- How to use a :ref:`SubViewport <class_SubViewport>` as a render texture
-- Mapping a texture to a sphere with equirectangular mapping
-- Fragment shader techniques for procedural planets
-- Setting a Roughness map from a :ref:`Viewport Texture <class_ViewportTexture>`
+- Cách sử dụng :ref:`SubViewport <class_SubViewport>` làm render texture
+- Ánh xạ texture lên hình cầu bằng phép ánh xạ equirectangular
+- Các kỹ thuật fragment shader cho hành tinh procedural
+- Thiết lập bản đồ Roughness từ :ref:`Viewport Texture <class_ViewportTexture>`
 
-Setting up the scene
---------------------
+Thiết lập scene
+---------------
 
-Create a new scene and add the following nodes exactly as shown below.
+Tạo một scene mới và thêm chính xác các node sau như minh họa bên dưới.
 
 .. image:: img/viewport_texture_node_tree.webp
 
-Go into the the MeshInstance3D and make the mesh a SphereMesh
+Mở MeshInstance3D và đặt mesh thành SphereMesh
 
-Setting up the SubViewport
---------------------------
+Thiết lập SubViewport
+---------------------
 
-Click on the :ref:`SubViewport <class_SubViewport>` node and set its size to ``(1024, 512)``. The
-:ref:`SubViewport <class_SubViewport>` can actually be any size so long as the width is double the
-height. The width needs to be double the height so that the image will accurately map onto the
-sphere, as we will be using equirectangular projection, but more on that later.
+Nhấp vào node :ref:`SubViewport <class_SubViewport>` và đặt kích thước thành ``(1024, 512)``.
+:ref:`SubViewport <class_SubViewport>` thực tế có thể có kích thước bất kỳ, miễn là chiều rộng gấp đôi chiều cao. Chiều rộng cần gấp đôi chiều cao để hình ảnh được ánh xạ chính xác lên hình cầu, vì chúng ta sẽ sử dụng phép chiếu equirectangular, nhưng sẽ nói thêm về điều đó sau.
 
-Next disable 3D. We will be using a :ref:`ColorRect <class_ColorRect>` to render the surface, so
-we don't need 3D either.
+Tiếp theo, tắt 3D. Chúng ta sẽ sử dụng một :ref:`ColorRect <class_ColorRect>` để render bề mặt, vì vậy cũng không cần 3D.
 
 .. image:: img/planet_new_viewport.webp
 
-Select the :ref:`ColorRect <class_ColorRect>` and in the inspector set the anchors preset to ``Full Rect``.
-This will ensure that the :ref:`ColorRect <class_ColorRect>` takes up the entire :ref:`SubViewport <class_SubViewport>`.
+Chọn :ref:`ColorRect <class_ColorRect>` và trong inspector, đặt anchors preset thành ``Full Rect``. Điều này sẽ đảm bảo :ref:`ColorRect <class_ColorRect>` chiếm toàn bộ :ref:`SubViewport <class_SubViewport>`.
 
 .. image:: img/planet_new_colorrect.webp
 
-Next, we add a :ref:`Shader Material <class_ShaderMaterial>` to the :ref:`ColorRect <class_ColorRect>` (ColorRect > CanvasItem > Material > Material > ``New ShaderMaterial``).
+Tiếp theo, chúng ta thêm một :ref:`Shader Material <class_ShaderMaterial>` vào :ref:`ColorRect <class_ColorRect>` (ColorRect > CanvasItem > Material > Material > ``New ShaderMaterial``).
 
-.. note:: Basic familiarity with shading is recommended for this tutorial. However, even if you are new
-          to shaders, all the code will be provided, so you should have no problem following along.
+.. note:: Bạn nên có kiến thức cơ bản về shading để thực hiện tutorial này. Tuy nhiên, ngay cả khi bạn mới làm quen với shader, toàn bộ code sẽ được cung cấp, nên bạn sẽ không gặp vấn đề gì khi làm theo.
 
-Click the dropdown menu button for the shader material and click / Edit. From here go to Shader > ``New Shader``.
-give it a name and click "Create". click the shader in the inspector to open the shader editor. Delete the default code
-and add the following:
+Nhấp vào nút menu thả xuống của shader material và nhấp / Edit. Từ đây, đi đến Shader > ``New Shader``. đặt tên cho nó và nhấp vào "Create". nhấp vào shader trong inspector để mở shader editor. Xóa code mặc định và thêm đoạn sau:
 
 .. code-block:: glsl
 
@@ -71,53 +59,39 @@ and add the following:
         COLOR = vec4(UV.x, UV.y, 0.5, 1.0);
     }
 
-save the shader code, you'll see in the inspector that the above code renders a gradient like the one below.
+Lưu shader code, bạn sẽ thấy trong inspector rằng đoạn code trên render một gradient như bên dưới.
 
 .. image:: img/planet_gradient.png
 
-Now we have the basics of a :ref:`SubViewport <class_SubViewport>` that we render to and we have a unique image that we can
-apply to the sphere.
+Giờ chúng ta đã có những thành phần cơ bản của một :ref:`SubViewport <class_SubViewport>` để render và có một hình ảnh riêng có thể áp dụng cho hình cầu.
 
-Applying the texture
---------------------
+Áp dụng texture
+---------------
 
-Now go into the :ref:`MeshInstance3D <class_MeshInstance3D>` and add a :ref:`StandardMaterial3D <class_StandardMaterial3D>`
-to it. No need for a special :ref:`Shader Material <class_ShaderMaterial>` (although that would be a good idea
-for more advanced effects, like the atmosphere in the example above).
+Bây giờ mở :ref:`MeshInstance3D <class_MeshInstance3D>` và thêm một :ref:`StandardMaterial3D <class_StandardMaterial3D>` vào đó. Không cần :ref:`Shader Material <class_ShaderMaterial>` đặc biệt nào (mặc dù đó sẽ là ý tưởng hay cho các hiệu ứng nâng cao hơn, chẳng hạn như atmosphere trong ví dụ trên).
 
 MeshInstance3D > GeometryInstance > Geometry > Material Override > ``New StandardMaterial3D``
 
-Then click the dropdown for the StandardMaterial3D and click "Edit"
+Sau đó nhấp vào menu thả xuống của StandardMaterial3D và nhấp vào "Edit"
 
-Go to the "Resource" section and check the ``Local to scene`` box. Then, go to the "Albedo" section
-and click beside the "Texture" property to add an Albedo Texture. Here we will apply the texture we made.
-Choose "New ViewportTexture"
+Đi đến phần "Resource" và đánh dấu vào ô ``Local to scene``. Sau đó, đi đến phần "Albedo" và nhấp bên cạnh thuộc tính "Texture" để thêm Albedo Texture. Tại đây, chúng ta sẽ áp dụng texture đã tạo. Chọn "New ViewportTexture"
 
 .. image:: img/planet_new_viewport_texture.webp
 
-Click on the ViewportTexture you just created in the inspector, then click "Assign".
-Then, from the menu that pops up, select the Viewport that we rendered to earlier.
+Nhấp vào ViewportTexture vừa tạo trong inspector, sau đó nhấp vào "Assign". Tiếp theo, từ menu bật lên, chọn Viewport mà chúng ta đã render trước đó.
 
 .. image:: img/planet_pick_viewport_texture.webp
 
-Your sphere should now be colored in with the colors we rendered to the Viewport.
+Hình cầu của bạn giờ sẽ được tô màu bằng các màu đã render vào Viewport.
 
 .. image:: img/planet_seam.webp
 
-Notice the ugly seam that forms where the texture wraps around? This is because we are picking
-a color based on UV coordinates and UV coordinates do not wrap around the texture. This is a classic
-problem in 2D map projection. Game developers often have a 2-dimensional map they want to project
-onto a sphere, but when it wraps around, it has large seams. There is an elegant workaround for this
-problem that we will illustrate in the next section.
+Bạn có thấy đường nối xấu xí hình thành tại nơi texture quấn quanh không? Điều này xảy ra vì chúng ta chọn màu dựa trên tọa độ UV, mà tọa độ UV không quấn quanh texture. Đây là một vấn đề kinh điển trong phép chiếu bản đồ 2D. Các nhà phát triển game thường có một bản đồ 2 chiều muốn chiếu lên hình cầu, nhưng khi quấn quanh, bản đồ sẽ có các đường nối lớn. Có một cách giải quyết tao nhã cho vấn đề này, và chúng ta sẽ minh họa trong phần tiếp theo.
 
-Making the planet texture
+Tạo texture cho hành tinh
 -------------------------
 
-So now, when we render to our :ref:`SubViewport <class_SubViewport>`, it appears magically on the sphere. But there is an ugly
-seam created by our texture coordinates. So how do we get a range of coordinates that wrap around
-the sphere in a nice way? One solution is to use a function that repeats on the domain of our texture.
-``sin`` and ``cos`` are two such functions. Let's apply them to the texture and see what happens. Replace the
-existing color code in the shader with the following:
+Vậy là giờ đây, khi render vào :ref:`SubViewport <class_SubViewport>`, nó sẽ xuất hiện kỳ diệu trên hình cầu. Nhưng các tọa độ texture đã tạo ra một đường nối xấu xí. Vậy làm thế nào để có được một dải tọa độ quấn quanh hình cầu theo cách đẹp mắt? Một giải pháp là sử dụng một hàm lặp lại trên miền của texture. ``sin`` và ``cos`` là hai hàm như vậy. Hãy áp dụng chúng vào texture và xem điều gì xảy ra. Thay thế đoạn code màu hiện có trong shader bằng đoạn sau:
 
 .. code-block:: glsl
 
@@ -125,23 +99,12 @@ existing color code in the shader with the following:
 
 .. image:: img/planet_sincos.webp
 
-Not too bad. If you look around, you can see that the seam has now disappeared, but in its place, we
-have pinching at the poles. This pinching is due to the way Godot maps textures to spheres in its
-:ref:`StandardMaterial3D <class_StandardMaterial3D>`. It uses a projection technique called equirectangular
-projection, which translates a spherical map onto a 2D plane.
+Không tệ. Nếu quan sát xung quanh, bạn sẽ thấy đường nối đã biến mất, nhưng thay vào đó, các cực bị co kéo. Hiện tượng co kéo này là do cách Godot ánh xạ texture lên hình cầu trong
+:ref:`StandardMaterial3D <class_StandardMaterial3D>`. Godot sử dụng một kỹ thuật chiếu gọi là phép chiếu equirectangular, chuyển bản đồ hình cầu lên một mặt phẳng 2D.
 
-.. note:: If you are interested in a little extra information on the technique, we will be converting from
-          spherical coordinates into Cartesian coordinates. Spherical coordinates map the longitude and
-          latitude of the sphere, while Cartesian coordinates are, for all intents and purposes, a
-          vector from the center of the sphere to the point.
+.. note:: Nếu bạn muốn biết thêm một chút thông tin về kỹ thuật này, chúng ta sẽ chuyển đổi từ tọa độ cầu sang tọa độ Cartesian. Tọa độ cầu ánh xạ kinh độ và vĩ độ của hình cầu, trong khi tọa độ Cartesian, xét về mọi mặt, là một vector từ tâm hình cầu đến điểm đó.
 
-For each pixel, we will calculate its 3D position on the sphere. From that, we will use
-3D noise to determine a color value. By calculating the noise in 3D, we solve the problem
-of the pinching at the poles. To understand why, picture the noise being calculated across the
-surface of the sphere instead of across the 2D plane. When you calculate across the
-surface of the sphere, you never hit an edge, and hence you never create a seam or
-a pinch point on the pole. The following code converts the ``UVs`` into Cartesian
-coordinates.
+Với mỗi pixel, chúng ta sẽ tính vị trí 3D của nó trên hình cầu. Từ đó, chúng ta sẽ sử dụng noise 3D để xác định giá trị màu. Bằng cách tính noise trong không gian 3D, chúng ta giải quyết được vấn đề co kéo ở các cực. Để hiểu lý do, hãy hình dung noise được tính trên bề mặt hình cầu thay vì trên mặt phẳng 2D. Khi tính trên bề mặt hình cầu, bạn không bao giờ chạm đến một cạnh, do đó không bao giờ tạo ra đường nối hoặc điểm co kéo ở cực. Đoạn code sau chuyển đổi ``UVs`` thành tọa độ Cartesian.
 
 .. code-block:: glsl
 
@@ -154,12 +117,11 @@ coordinates.
     unit.z = cos(phi) * sin(theta);
     unit = normalize(unit);
 
-And if we use ``unit`` as an output ``COLOR`` value, we get:
+Và nếu sử dụng ``unit`` làm giá trị ``COLOR`` đầu ra, chúng ta sẽ có:
 
 .. image:: img/planet_normals.webp
 
-Now that we can calculate the 3D position of the surface of the sphere, we can use 3D noise
-to make the planet. We will be using this noise function directly from a `Shadertoy <https://www.shadertoy.com/view/Xsl3Dl>`_:
+Giờ chúng ta có thể tính vị trí 3D của bề mặt hình cầu, nên có thể sử dụng noise 3D để tạo hành tinh. Chúng ta sẽ sử dụng trực tiếp hàm noise này từ `Shadertoy <https://www.shadertoy.com/view/Xsl3Dl>`_:
 
 .. code-block:: glsl
 
@@ -186,9 +148,9 @@ to make the planet. We will be using this noise function directly from a `Shader
                          dot(hash(i + vec3(1.0, 1.0, 1.0)), f - vec3(1.0, 1.0, 1.0)), u.x), u.y), u.z );
     }
 
-.. note:: All credit goes to the author, Inigo Quilez. It is published under the ``MIT`` licence.
+.. note:: Mọi công lao đều thuộc về tác giả, Inigo Quilez. Hàm này được phát hành theo giấy phép ``MIT``.
 
-Now to use ``noise``, add the following to the    ``fragment`` function:
+Để sử dụng ``noise``, hãy thêm đoạn sau vào hàm ``fragment``:
 
 .. code-block:: glsl
 
@@ -197,55 +159,36 @@ Now to use ``noise``, add the following to the    ``fragment`` function:
 
 .. image:: img/planet_noise.webp
 
-.. note:: In order to highlight the texture, we set the material to unshaded.
+.. note:: Để làm nổi bật texture, chúng ta đặt material thành unshaded.
 
-You can see now that the noise indeed wraps seamlessly around the sphere. Although this
-looks nothing like the planet you were promised. So let's move onto something more colorful.
+Bây giờ bạn có thể thấy rằng nhiễu thực sự bao quanh quả cầu một cách liền mạch. Mặc dù nó trông chẳng giống hành tinh mà bạn đã được hứa hẹn chút nào. Vì vậy, hãy chuyển sang thứ gì đó nhiều màu sắc hơn.
 
-Coloring the planet
--------------------
+Tô màu cho hành tinh
+--------------------
 
-Now to make the planet colors. While there are many ways to do this, for now, we will stick
-with a gradient between water and land.
+Bây giờ hãy tạo màu cho hành tinh. Có nhiều cách để làm việc này, nhưng hiện tại, chúng ta sẽ dùng một gradient giữa nước và đất liền.
 
-To make a gradient in GLSL, we use the ``mix`` function. ``mix`` takes two values to interpolate
-between and a third argument to choose how much to interpolate between them; in essence,
-it *mixes* the two values together. In other APIs, this function is often called ``lerp``.
-However, ``lerp`` is typically reserved for mixing two floats together; ``mix`` can take any
-values whether it be floats or vector types.
+Để tạo gradient trong GLSL, chúng ta sử dụng hàm ``mix``. ``mix`` nhận hai giá trị để nội suy giữa chúng và một đối số thứ ba để chọn mức độ nội suy; về bản chất, nó *mixes* hai giá trị với nhau. Trong các API khác, hàm này thường được gọi là ``lerp``. Tuy nhiên, ``lerp`` thường được dành riêng cho việc trộn hai số thực; ``mix`` có thể nhận bất kỳ giá trị nào, dù đó là số thực hay kiểu vector.
 
 .. code-block:: glsl
 
     COLOR.xyz = mix(vec3(0.05, 0.3, 0.5), vec3(0.9, 0.4, 0.1), n * 0.5 + 0.5);
 
-The first color is blue for the ocean. The second color is a kind of reddish color (because
-all alien planets need red terrain). And finally, they are mixed together by ``n * 0.5 + 0.5``.
-``n`` smoothly varies between ``-1`` and ``1``. So we map it into the ``0-1`` range that ``mix`` expects.
-Now you can see that the colors change between blue and red.
+Màu đầu tiên là màu xanh dương cho đại dương. Màu thứ hai là một màu hơi đỏ (vì mọi hành tinh ngoài hành tinh đều cần địa hình màu đỏ). Cuối cùng, chúng được trộn với nhau bằng ``n * 0.5 + 0.5``. ``n`` biến đổi mượt mà giữa ``-1`` và ``1``. Vì vậy, chúng ta ánh xạ nó vào miền ``0-1`` mà ``mix`` yêu cầu. Bây giờ bạn có thể thấy màu sắc thay đổi giữa xanh dương và đỏ.
 
 .. image:: img/planet_noise_color.webp
 
-That is a little more blurry than we want. Planets typically have a relatively clear separation between
-land and sea. In order to do that, we will change the last term to ``smoothstep(-0.1, 0.0, n)``.
-And thus the whole line becomes:
+Cách đó hơi mờ hơn mức chúng ta muốn. Các hành tinh thường có ranh giới tương đối rõ ràng giữa đất liền và biển. Để làm vậy, chúng ta sẽ đổi hạng tử cuối thành ``smoothstep(-0.1, 0.0, n)``. Và do đó, toàn bộ dòng lệnh trở thành:
 
 .. code-block:: glsl
 
     COLOR.xyz = mix(vec3(0.05, 0.3, 0.5), vec3(0.9, 0.4, 0.1), smoothstep(-0.1, 0.0, n));
 
-What ``smoothstep`` does is return ``0`` if the third argument is below the first and ``1`` if the
-third argument is larger than the second and smoothly blends between ``0`` and ``1`` if the third number
-is between the first and the second. So in this line, ``smoothstep`` returns ``0`` whenever ``n`` is less than ``-0.1``
-and it returns ``1`` whenever ``n`` is above ``0``.
+``smoothstep`` trả về ``0`` nếu đối số thứ ba nhỏ hơn đối số thứ nhất, trả về ``1`` nếu đối số thứ ba lớn hơn đối số thứ hai, và trộn mượt mà giữa ``0`` và ``1`` nếu số thứ ba nằm giữa số thứ nhất và số thứ hai. Vì vậy, trong dòng này, ``smoothstep`` trả về ``0`` bất cứ khi nào ``n`` nhỏ hơn ``-0.1``, và trả về ``1`` bất cứ khi nào ``n`` lớn hơn ``0``.
 
 .. image:: img/planet_noise_smooth.webp
 
-One more thing to make this a little more planet-y. The land shouldn't be so blobby; let's make the edges
-a little rougher. A trick that is often used in shaders to make rough looking terrain with noise is
-to layer levels of noise over one another at various frequencies. We use one layer to make the
-overall blobby structure of the continents. Then another layer breaks up the edges a bit, and then
-another, and so on. What we will do is calculate ``n`` with four lines of shader code
-instead of just one. ``n`` becomes:
+Thêm một điều nữa để hành tinh trông giống hành tinh hơn một chút. Đất liền không nên có dạng quá nhão; hãy làm cho các cạnh gồ ghề hơn một chút. Một thủ thuật thường được dùng trong shader để tạo địa hình trông gồ ghề bằng nhiễu là xếp chồng các mức nhiễu lên nhau ở nhiều tần số khác nhau. Chúng ta dùng một lớp để tạo cấu trúc tổng thể nhão của các lục địa. Sau đó, một lớp khác phá vỡ các cạnh đôi chút, rồi thêm một lớp nữa, và cứ tiếp tục như vậy. Chúng ta sẽ tính ``n`` bằng bốn dòng mã shader thay vì chỉ một dòng. ``n`` trở thành:
 
 .. code-block:: glsl
 
@@ -254,55 +197,41 @@ instead of just one. ``n`` becomes:
     n += noise(unit * 20.0) * 0.125;
     n += noise(unit * 40.0) * 0.0625;
 
-And now the planet looks like:
+Và bây giờ hành tinh trông như sau:
 
 .. image:: img/planet_noise_fbm.webp
 
-Making an ocean
----------------
+Tạo đại dương
+-------------
 
-One final thing to make this look more like a planet. The ocean and the land reflect light differently.
-So we want the ocean to shine a little more than the land. We can do this by passing a fourth value
-into the ``alpha`` channel of our output ``COLOR`` and using it as a Roughness map.
+Một điều cuối cùng để hình ảnh này trông giống một hành tinh hơn. Đại dương và đất liền phản xạ ánh sáng khác nhau. Vì vậy, chúng ta muốn đại dương sáng bóng hơn đất liền một chút. Có thể thực hiện điều này bằng cách truyền một giá trị thứ tư vào kênh ``alpha`` của ``COLOR`` đầu ra và sử dụng nó làm bản đồ Roughness.
 
 .. code-block:: glsl
 
     COLOR.a = 0.3 + 0.7 * smoothstep(-0.1, 0.0, n);
 
-This line returns ``0.3`` for water and ``1.0`` for land. This means that the land is going to be quite
-rough, while the water will be quite smooth.
+Dòng này trả về ``0.3`` cho nước và ``1.0`` cho đất liền. Điều đó có nghĩa là đất liền sẽ khá gồ ghề, trong khi nước sẽ khá trơn.
 
-And then, in the material, under the "Metallic" section, make sure ``Metallic`` is set to ``0`` and
-``Specular`` is set to ``1``. The reason for this is the water reflects light really well, but
-isn't metallic. These values are not physically accurate, but they are good enough for this demo.
+Sau đó, trong material, bên dưới phần "Metallic", hãy đảm bảo ``Metallic`` được đặt thành ``0`` và ``Specular`` được đặt thành ``1``. Lý do là nước phản xạ ánh sáng rất tốt nhưng không mang tính kim loại. Các giá trị này không chính xác về mặt vật lý, nhưng đủ tốt cho bản demo này.
 
-Next, under the "Roughness" section set the roughness texture to a
-:ref:`Viewport Texture <class_ViewportTexture>` pointing to our planet texture :ref:`SubViewport <class_SubViewport>`.
-Finally, set the ``Texture Channel`` to ``Alpha``. This instructs the renderer to use the ``alpha``
-channel of our output ``COLOR`` as the ``Roughness`` value.
+Tiếp theo, bên dưới phần "Roughness", hãy đặt texture roughness thành một
+:ref:`Viewport Texture <class_ViewportTexture>` trỏ đến texture hành tinh :ref:`SubViewport <class_SubViewport>` của chúng ta. Cuối cùng, đặt ``Texture Channel`` thành ``Alpha``. Điều này hướng dẫn renderer sử dụng kênh ``alpha`` của ``COLOR`` đầu ra làm giá trị ``Roughness``.
 
 .. image:: img/planet_ocean.webp
 
-You'll notice that very little changes except that the planet is no longer reflecting the sky.
-This is happening because, by default, when something is rendered with an
-alpha value, it gets drawn as a transparent object over the background. And since the default background
-of the :ref:`SubViewport <class_SubViewport>` is opaque, the ``alpha`` channel of the
-:ref:`Viewport Texture <class_ViewportTexture>` is ``1``, resulting in the planet texture being
-drawn with slightly fainter colors and a ``Roughness`` value of ``1`` everywhere. To correct this, we
-go into the :ref:`SubViewport <class_SubViewport>` and enable the "Transparent Bg" property. Since we are now
-rendering one transparent object on top of another, we want to enable ``blend_premul_alpha``:
+Bạn sẽ nhận thấy rằng hầu như không có gì thay đổi, ngoại trừ việc hành tinh không còn phản chiếu bầu trời nữa. Điều này xảy ra vì theo mặc định, khi một vật thể được render với giá trị alpha, nó được vẽ dưới dạng một vật thể trong suốt phủ lên nền. Và vì nền mặc định của :ref:`SubViewport <class_SubViewport>` là đục, kênh ``alpha`` của
+:ref:`Viewport Texture <class_ViewportTexture>` là ``1``, khiến texture hành tinh được vẽ với màu nhạt hơn một chút và giá trị ``Roughness`` bằng ``1`` ở mọi nơi. Để khắc phục, chúng ta mở :ref:`SubViewport <class_SubViewport>` và bật thuộc tính "Transparent Bg". Vì hiện tại chúng ta đang render một vật thể trong suốt nằm trên một vật thể trong suốt khác, chúng ta muốn bật ``blend_premul_alpha``:
 
 .. code-block:: glsl
 
     render_mode blend_premul_alpha;
 
-This pre-multiplies the colors by the ``alpha`` value and then blends them correctly together. Typically,
-when blending one transparent color on top of another, even if the background has an ``alpha`` of ``0`` (as it
-does in this case), you end up with weird color bleed issues. Setting ``blend_premul_alpha`` fixes that.
+Thao tác này nhân trước các màu với giá trị ``alpha``, sau đó trộn chúng với nhau một cách chính xác. Thông thường, khi trộn một màu trong suốt lên trên một màu trong suốt khác, ngay cả khi nền có ``alpha`` bằng ``0`` (như trong trường hợp này), bạn vẫn gặp phải các vấn đề loang màu kỳ lạ. Đặt ``blend_premul_alpha`` sẽ khắc phục điều đó.
 
-Now the planet should look like it is reflecting light on the ocean but not the land. move around the :ref:`OmniLight3D <class_OmniLight3D>`
-in the scene so you can see the effect of the reflections on the ocean.
+Bây giờ, hành tinh sẽ trông như đang phản xạ ánh sáng trên đại dương nhưng không phản xạ trên đất liền. Di chuyển quanh :ref:`OmniLight3D <class_OmniLight3D>` trong scene để thấy hiệu ứng phản xạ trên đại dương.
 
 .. image:: img/planet_ocean_reflect.webp
 
-And there you have it. A procedural planet generated using a :ref:`SubViewport <class_SubViewport>`.
+Vậy là xong. Một hành tinh được tạo theo quy trình bằng cách sử dụng :ref:`SubViewport <class_SubViewport>`.
+
+.. _`Shadertoy`: https://www.shadertoy.com/view/Xsl3Dl

@@ -1,7 +1,7 @@
 :allow_comments: False
 
-Shaders
-=======
+Shader
+======
 
 .. toctree::
    :maxdepth: 1

@@ -1,91 +1,61 @@
 .. _doc_converting_glsl_to_godot_shaders:
 
-Converting GLSL to Godot shaders
-================================
+Chuyển đổi GLSL sang shader Godot
+=================================
 
-This document explains the differences between Godot's shading language and GLSL
-and gives practical advice on how to migrate shaders from other sources, such as
-Shadertoy and The Book of Shaders, into Godot shaders.
+Tài liệu này giải thích những khác biệt giữa ngôn ngữ shading của Godot và GLSL, đồng thời đưa ra lời khuyên thực tế về cách chuyển shader từ các nguồn khác, chẳng hạn như Shadertoy và The Book of Shaders, sang shader Godot.
 
-For detailed information on Godot's shading language, please refer to the
-:ref:`Shading Language <doc_shading_language>` reference.
+Để biết thông tin chi tiết về ngôn ngữ shading của Godot, vui lòng tham khảo
+:ref:`tài liệu tham chiếu Ngôn ngữ Shading <doc_shading_language>`.
 
 GLSL
 ----
 
-Godot uses a shading language based on GLSL with the addition of a few
-quality-of-life features. Accordingly, most features available in GLSL are
-available in Godot's shading language.
+Godot sử dụng một ngôn ngữ shading dựa trên GLSL, bổ sung thêm một số tính năng cải thiện trải nghiệm sử dụng. Do đó, hầu hết các tính năng có trong GLSL đều có trong ngôn ngữ shading của Godot.
 
-Shader programs
-~~~~~~~~~~~~~~~
+Các chương trình shader
+~~~~~~~~~~~~~~~~~~~~~~~
 
-In GLSL, each shader uses a separate program. You have one program for the
-vertex shader and one for the fragment shader. In Godot, you have a single
-shader that contains a ``vertex`` and/or a ``fragment`` function. If you only
-choose to write one, Godot will supply the other.
+Trong GLSL, mỗi shader sử dụng một program riêng. Bạn có một program cho vertex shader và một program cho fragment shader. Trong Godot, bạn có một shader duy nhất chứa hàm ``vertex`` và/hoặc hàm ``fragment``. Nếu bạn chỉ chọn viết một hàm, Godot sẽ cung cấp hàm còn lại.
 
-Godot allows uniform variables and functions to be shared by defining the
-fragment and vertex shaders in one file. In GLSL, the vertex and fragment
-programs cannot share variables except when varyings are used.
+Godot cho phép chia sẻ các biến uniform và hàm bằng cách định nghĩa fragment shader và vertex shader trong cùng một tệp. Trong GLSL, các program vertex và fragment không thể chia sẻ biến, trừ khi sử dụng varying.
 
-Vertex attributes
-~~~~~~~~~~~~~~~~~
+Các thuộc tính vertex
+~~~~~~~~~~~~~~~~~~~~~
 
-In GLSL, you can pass in per-vertex information using attributes and have the
-flexibility to pass in as much or as little as you want. In Godot, you have a
-set number of input attributes, including ``VERTEX`` (position), ``COLOR``,
-``UV``, ``UV2``, ``NORMAL``. Each shaders' page in the shader reference section
-of the documentation comes with a complete list of its vertex attributes.
+Trong GLSL, bạn có thể truyền thông tin theo từng vertex bằng attributes và linh hoạt truyền vào nhiều hay ít thông tin tùy ý. Trong Godot, bạn có một số lượng thuộc tính đầu vào cố định, bao gồm ``VERTEX`` (vị trí), ``COLOR``, ``UV``, ``UV2``, ``NORMAL``. Trang của mỗi shader trong phần tham chiếu shader của tài liệu đều có danh sách đầy đủ các thuộc tính vertex của shader đó.
 
 gl_Position
 ~~~~~~~~~~~
 
-``gl_Position`` receives the final position of a vertex specified in the vertex
-shader. It is specified by the user in clip space. Typically, in GLSL, the model
-space vertex position is passed in using a vertex attribute called ``position``
-and you handle the conversion from model space to clip space manually.
+``gl_Position`` nhận vị trí cuối cùng của một vertex được chỉ định trong vertex shader. Vị trí này được người dùng chỉ định trong clip space. Thông thường, trong GLSL, vị trí vertex trong model space được truyền vào bằng một thuộc tính vertex có tên ``position``, và bạn tự xử lý việc chuyển đổi từ model space sang clip space.
 
-In Godot, ``VERTEX`` specifies the vertex position in model space at the
-beginning of the ``vertex`` function. Godot also handles the final conversion to
-clip space after the user-defined ``vertex`` function is run. If you want to
-skip the conversion from model to view space, you can set the ``render_mode`` to
-``skip_vertex_transform``. If you want to skip all transforms, set
-``render_mode`` to ``skip_vertex_transform`` and set the ``PROJECTION_MATRIX``
-to ``mat4(1.0)`` in order to nullify the final transform from view space to clip
-space.
+Trong Godot, ``VERTEX`` chỉ định vị trí vertex trong model space ở đầu hàm ``vertex``. Godot cũng xử lý việc chuyển đổi cuối cùng sang clip space sau khi chạy hàm ``vertex`` do người dùng định nghĩa. Nếu muốn bỏ qua quá trình chuyển đổi từ model space sang view space, bạn có thể đặt ``render_mode`` thành ``skip_vertex_transform``. Nếu muốn bỏ qua tất cả các phép biến đổi, hãy đặt ``render_mode`` thành ``skip_vertex_transform`` và đặt ``PROJECTION_MATRIX`` thành ``mat4(1.0)`` để vô hiệu hóa phép biến đổi cuối cùng từ view space sang clip space.
 
-Varyings
-~~~~~~~~
+Varying
+~~~~~~~
 
-Varyings are a type of variable that can be passed from the vertex shader to the
-fragment shader. In modern GLSL (3.0 and up), varyings are defined with the
-``in`` and ``out`` keywords. A variable going out of the vertex shader is
-defined with ``out`` in the vertex shader and ``in`` inside the fragment shader.
+Varying là một kiểu biến có thể được truyền từ vertex shader sang fragment shader. Trong GLSL hiện đại (3.0 trở lên), varying được định nghĩa bằng các từ khóa ``in`` và ``out``. Một biến đi ra từ vertex shader được định nghĩa bằng ``out`` trong vertex shader và bằng ``in`` bên trong fragment shader.
 
 Main
 ~~~~
 
-In GLSL, each shader program looks like a self-contained C-style program.
-Accordingly, the main entry point is ``main``. If you are copying a vertex
-shader, rename ``main`` to ``vertex`` and if you are copying a fragment shader,
-rename ``main`` to ``fragment``.
+Trong GLSL, mỗi shader program trông như một program độc lập theo kiểu C. Do đó, điểm vào chính là ``main``. Nếu bạn sao chép một vertex shader, hãy đổi tên ``main`` thành ``vertex``; còn nếu bạn sao chép một fragment shader, hãy đổi tên ``main`` thành ``fragment``.
 
-Macros
-~~~~~~
+Macro
+~~~~~
 
-The :ref:`Godot shader preprocessor<doc_shader_preprocessor>` supports the following macros:
+:ref:`Bộ tiền xử lý shader của Godot <doc_shader_preprocessor>` hỗ trợ các macro sau:
 
 * ``#define`` / ``#undef``
 * ``#if``, ``#elif``, ``#else``, ``#endif``, ``defined()``, ``#ifdef``, ``#ifndef``
-* ``#include`` (only ``.gdshaderinc`` files and with a maximum depth of 25)
-* ``#pragma disable_preprocessor``, which disables preprocessing for the rest of the file
+* ``#include`` (chỉ dành cho các tệp ``.gdshaderinc`` và có độ sâu tối đa là 25)
+* ``#pragma disable_preprocessor``, vô hiệu hóa tiền xử lý cho phần còn lại của tệp
 
-Variables
-~~~~~~~~~
+Biến
+~~~~
 
-GLSL has many built-in variables that are hard-coded. These variables are not
-uniforms, so they are not editable from the main program.
+GLSL có nhiều biến dựng sẵn được hard-code. Những biến này không phải là uniform, vì vậy không thể chỉnh sửa chúng từ program chính.
 
 +---------------------+---------+------------------------+-----------------------------------------------------+
 |Variable             |Type     |Equivalent              |Description                                          |
@@ -105,60 +75,37 @@ uniforms, so they are not editable from the main program.
 
 .. _glsl_coordinates:
 
-Coordinates
-~~~~~~~~~~~
+Tọa độ
+~~~~~~
 
-``gl_FragCoord`` in GLSL and ``FRAGCOORD`` in the Godot shading language use the
-same coordinate system. If using UV in Godot, the y-coordinate will be flipped
-upside down.
+``gl_FragCoord`` trong GLSL và ``FRAGCOORD`` trong ngôn ngữ shading của Godot sử dụng cùng một hệ tọa độ. Khi sử dụng UV trong Godot, tọa độ y sẽ bị lật ngược.
 
-Precision
-~~~~~~~~~
+Độ chính xác
+~~~~~~~~~~~~
 
-In GLSL, you can define the precision of a given type (float or int) at the top
-of the shader with the ``precision`` keyword. In Godot, you can set the
-precision of individual variables as you need by placing precision qualifiers
-``lowp``, ``mediump``, and ``highp`` before the type when defining the variable.
-For more information, see the :ref:`Shading Language <doc_shading_language>`
-reference.
+Trong GLSL, bạn có thể định nghĩa độ chính xác của một kiểu nhất định (float hoặc int) ở đầu shader bằng từ khóa ``precision``. Trong Godot, bạn có thể đặt độ chính xác cho từng biến khi cần bằng cách đặt các bộ chỉ định độ chính xác ``lowp``, ``mediump`` và ``highp`` trước kiểu khi định nghĩa biến. Để biết thêm thông tin, hãy xem tài liệu tham chiếu :ref:`Ngôn ngữ Shading <doc_shading_language>`.
 
 Shadertoy
 ---------
 
-`Shadertoy <https://www.shadertoy.com/results?query=&sort=popular&from=10&num=4>`_
-is a website that makes it easy to write fragment shaders and
-create `pure magic <https://www.shadertoy.com/view/4tjGRh>`_.
+`Shadertoy <https://www.shadertoy.com/results?query=&sort=popular&from=10&num=4>`_ là một website giúp dễ dàng viết fragment shader và tạo ra `phép màu thuần túy <https://www.shadertoy.com/view/4tjGRh>`_.
 
-Shadertoy does not give the user full control over the shader. It handles all
-the input and uniforms and only lets the user write the fragment shader.
+Shadertoy không cho người dùng toàn quyền kiểm soát shader. Nó xử lý mọi input và uniform, đồng thời chỉ cho phép người dùng viết fragment shader.
 
-Types
-~~~~~
+Kiểu
+~~~~
 
-Shadertoy uses the webgl spec, so it runs a slightly different version of GLSL.
-However, it still has the regular types, including constants and macros.
+Shadertoy sử dụng đặc tả webgl, nên chạy một phiên bản GLSL hơi khác. Tuy nhiên, nó vẫn có các kiểu thông thường, bao gồm constant và macro.
 
 mainImage
 ~~~~~~~~~
 
-The main point of entry to a Shadertoy shader is the ``mainImage`` function.
-``mainImage`` has two parameters, ``fragColor`` and ``fragCoord``, which
-correspond to ``COLOR`` and ``FRAGCOORD`` in Godot, respectively. These
-parameters are handled automatically in Godot, so you do not need to include
-them as parameters yourself. Anything in the ``mainImage`` function should be
-copied into the ``fragment`` function when porting to Godot.
+Điểm vào chính của shader Shadertoy là hàm ``mainImage``. ``mainImage`` có hai tham số là ``fragColor`` và ``fragCoord``, lần lượt tương ứng với ``COLOR`` và ``FRAGCOORD`` trong Godot. Các tham số này được Godot tự động xử lý, vì vậy bạn không cần tự đưa chúng vào danh sách tham số. Mọi nội dung trong hàm ``mainImage`` cần được sao chép vào hàm ``fragment`` khi chuyển sang Godot.
 
-Variables
-~~~~~~~~~
+Biến
+~~~~
 
-In order to make writing fragment shaders straightforward and easy, Shadertoy
-handles passing a lot of helpful information from the main program into the
-fragment shader for you. A few of these have no equivalents in Godot because
-Godot has chosen not to make them available by default. This is okay because
-Godot gives you the ability to make your own uniforms. For variables whose
-equivalents are listed as "Provide with Uniform", users are responsible for
-creating that uniform themselves. The description gives the reader a hint about
-what they can pass in as a substitute.
+Để việc viết fragment shader trở nên đơn giản và dễ dàng, Shadertoy xử lý việc truyền nhiều thông tin hữu ích từ program chính vào fragment shader cho bạn. Một số thông tin trong đó không có tương đương trong Godot vì Godot đã chọn không cung cấp chúng theo mặc định. Điều này không sao, vì Godot cho phép bạn tự tạo uniform. Đối với những biến có phần tương đương được liệt kê là "Cung cấp bằng Uniform", người dùng chịu trách nhiệm tự tạo uniform đó. Phần mô tả sẽ gợi ý cho người đọc về thông tin có thể truyền vào để thay thế.
 
 +---------------------+---------+------------------------+-----------------------------------------------------+
 |Variable             |Type     |Equivalent              |Description                                          |
@@ -186,44 +133,33 @@ what they can pass in as a substitute.
 |iChanneli            |Sampler2D|TEXTURE                 |Godot provides only one built-in; user can make more.|
 +---------------------+---------+------------------------+-----------------------------------------------------+
 
-Coordinates
-~~~~~~~~~~~
+Tọa độ
+~~~~~~
 
-``fragCoord`` behaves the same as ``gl_FragCoord`` in :ref:`GLSL
-<glsl_coordinates>` and ``FRAGCOORD`` in Godot.
+``fragCoord`` hoạt động giống như ``gl_FragCoord`` trong :ref:`GLSL <glsl_coordinates>` và ``FRAGCOORD`` trong Godot.
 
 
 The Book of Shaders
 -------------------
 
-Similar to Shadertoy, `The Book of Shaders <https://thebookofshaders.com>`_
-provides access to a fragment shader in the web browser, with which the user may
-interact. The user is restricted to writing fragment shader code with a set list
-of uniforms passed in and with no ability to add additional uniforms.
+Tương tự như Shadertoy, `The Book of Shaders <https://thebookofshaders.com>`_ cung cấp quyền truy cập vào một fragment shader trong trình duyệt web để người dùng tương tác. Người dùng chỉ được viết mã fragment shader với một danh sách uniform được truyền vào cố định và không thể thêm uniform khác.
 
-For further help on porting shaders to various frameworks generally, The Book of
-Shaders provides a `page <https://thebookofshaders.com/04>`_ on running shaders
-in various frameworks.
+Để được trợ giúp thêm về việc chuyển shader sang các framework nói chung, The Book of Shaders cung cấp một `trang <https://thebookofshaders.com/04>`_ về cách chạy shader trong nhiều framework khác nhau.
 
-Types
-~~~~~
+Kiểu
+~~~~
 
-The Book of Shaders uses the webgl spec, so it runs a slightly different version
-of GLSL. However, it still has the regular types, including constants and
-macros.
+The Book of Shaders sử dụng đặc tả webgl, nên chạy một phiên bản GLSL hơi khác. Tuy nhiên, nó vẫn có các kiểu thông thường, bao gồm constant và macro.
 
 Main
 ~~~~
 
-The entry point for a Book of Shaders fragment shader is ``main``, just like in
-GLSL. Everything written in a Book of Shaders ``main`` function should be copied
-into Godot's ``fragment`` function.
+Điểm vào của fragment shader trong The Book of Shaders là ``main``, giống như trong GLSL. Mọi nội dung được viết trong hàm ``main`` của The Book of Shaders cần được sao chép vào hàm ``fragment`` của Godot.
 
-Variables
-~~~~~~~~~
+Biến
+~~~~
 
-The Book of Shaders sticks closer to plain GLSL than Shadertoy does. It also
-implements fewer uniforms than Shadertoy.
+The Book of Shaders gần với GLSL thuần hơn Shadertoy. Nó cũng triển khai ít uniform hơn Shadertoy.
 
 +---------------------+---------+------------------------+-----------------------------------------------------+
 |Variable             |Type     |Equivalent              |Description                                          |
@@ -239,8 +175,13 @@ implements fewer uniforms than Shadertoy.
 |u_mouse              |vec2     |Provide with Uniform    |Mouse position in pixel coordinates.                 |
 +---------------------+---------+------------------------+-----------------------------------------------------+
 
-Coordinates
-~~~~~~~~~~~
+Tọa độ
+~~~~~~
 
-The Book of Shaders uses the same coordinate system as
+The Book of Shaders sử dụng cùng hệ tọa độ với
 :ref:`GLSL <glsl_coordinates>`.
+
+.. _`Shadertoy`: https://www.shadertoy.com/results?query=&sort=popular&from=10&num=4
+.. _`pure magic`: https://www.shadertoy.com/view/4tjGRh
+.. _`The Book of Shaders`: https://thebookofshaders.com
+.. _`page`: https://thebookofshaders.com/04

@@ -1,74 +1,54 @@
 .. _doc_custom_postprocessing:
 
-Custom post-processing
-======================
+Hậu xử lý tùy chỉnh
+===================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Godot provides many post-processing effects out of the box, including Bloom,
-DOF, and SSAO, which are described in :ref:`doc_environment_and_post_processing`.
-However, advanced use cases may require custom effects. This article explains how
-to write your own custom effects.
+Godot cung cấp sẵn nhiều hiệu ứng hậu xử lý, bao gồm Bloom, DOF và SSAO, được mô tả trong :ref:`doc_environment_and_post_processing`. Tuy nhiên, một số trường hợp sử dụng nâng cao có thể yêu cầu các hiệu ứng tùy chỉnh. Bài viết này giải thích cách tự viết các hiệu ứng tùy chỉnh.
 
-The easiest way to implement a custom post-processing shader is to use Godot's
-built-in ability to read from the screen texture. If you're not familiar with
-this, you should read the
-:ref:`Screen Reading Shaders Tutorial <doc_screen-reading_shaders>` first.
+Cách dễ nhất để triển khai shader hậu xử lý tùy chỉnh là sử dụng khả năng tích hợp sẵn của Godot để đọc từ screen texture. Nếu bạn chưa quen với việc này, trước tiên bạn nên đọc
+:ref:`Hướng dẫn về Screen Reading Shaders <doc_screen-reading_shaders>`.
 
-Single pass post-processing
----------------------------
+Hậu xử lý một lượt
+------------------
 
-Post-processing effects are shaders applied to a frame after Godot has rendered
-it. To apply a shader to a frame, create a :ref:`CanvasLayer
-<class_CanvasLayer>`, and give it a :ref:`ColorRect <class_ColorRect>`. Assign a
-new :ref:`ShaderMaterial <class_ShaderMaterial>` to the newly created
-``ColorRect``, and set the ``ColorRect``'s anchor preset to Full Rect:
+Hiệu ứng hậu xử lý là các shader được áp dụng cho một khung hình sau khi Godot kết xuất khung hình đó. Để áp dụng shader cho một khung hình, hãy tạo một :ref:`CanvasLayer <class_CanvasLayer>`, rồi cung cấp cho nó một :ref:`ColorRect <class_ColorRect>`. Gán một :ref:`ShaderMaterial <class_ShaderMaterial>` mới cho ``ColorRect`` vừa tạo, rồi đặt anchor preset của ``ColorRect`` thành Full Rect:
 
 .. figure:: img/custom_postprocessing_anchors_preset_full_rect.webp
    :align: center
-   :alt: Setting the anchor preset to Full Rect on the ColorRect node
+   :alt: Đặt anchor preset thành Full Rect trên node ColorRect
 
-   Setting the anchor preset to Full Rect on the ColorRect node
+   Đặt anchor preset thành Full Rect trên node ColorRect
 
-Your scene tree will look something like this:
+Cây scene của bạn sẽ có dạng tương tự như sau:
 
 .. image:: img/post_tree1.png
 
 .. note::
 
-   Another more efficient method is to use a :ref:`BackBufferCopy
-   <class_BackBufferCopy>` to copy a region of the screen to a buffer and to
-   access it in a shader script through a ``sampler2D`` using
-   ``hint_screen_texture``.
+   Một phương pháp khác hiệu quả hơn là sử dụng :ref:`BackBufferCopy <class_BackBufferCopy>` để sao chép một vùng trên màn hình vào buffer và truy cập vùng đó trong shader script thông qua ``sampler2D`` bằng ``hint_screen_texture``.
 
 .. note::
 
-    As of the time of writing, Godot does not support rendering to multiple
-    buffers at the same time. Your post-processing shader will not have access
-    to other render passes and buffers not exposed by Godot (such as depth or
-    normal/roughness). You only have access to the rendered frame and buffers
-    exposed by Godot as samplers.
+    Tại thời điểm viết bài, Godot chưa hỗ trợ kết xuất đồng thời vào nhiều buffer. Shader hậu xử lý của bạn sẽ không thể truy cập các render pass và buffer khác không được Godot cung cấp (chẳng hạn như depth hoặc normal/roughness). Bạn chỉ có thể truy cập khung hình đã kết xuất và các buffer được Godot cung cấp dưới dạng sampler.
 
-For this demo, we will use this :ref:`Sprite <class_Sprite2D>` of a sheep.
+Trong ví dụ này, chúng ta sẽ sử dụng :ref:`Sprite <class_Sprite2D>` này của một con cừu.
 
 .. image:: img/post_example1.png
 
-Assign a new :ref:`Shader <class_Shader>` to the ``ColorRect``'s
-``ShaderMaterial``. You can access the frame's texture and UV with a
-``sampler2D`` using ``hint_screen_texture`` and the built-in ``SCREEN_UV``
-uniforms.
+Gán một :ref:`Shader <class_Shader>` mới cho ``ColorRect``'s ``ShaderMaterial``. Bạn có thể truy cập texture và UV của khung hình bằng ``sampler2D`` sử dụng ``hint_screen_texture`` và các uniform tích hợp sẵn ``SCREEN_UV``.
 
-Copy the following code to your shader. The code below is a hex pixelization
-shader by `arlez80 <https://bitbucket.org/arlez80/hex-mosaic/src/master/>`_,
+Sao chép đoạn mã sau vào shader của bạn. Đoạn mã dưới đây là shader pixelization dạng hex do `arlez80 <https://bitbucket.org/arlez80/hex-mosaic/src/master/>`_ viết,
 
 .. code-block:: glsl
 
     shader_type canvas_item;
 
     uniform vec2 size = vec2(32.0, 28.0);
-    // If you intend to read from mipmaps with `textureLod()` LOD values greater than `0.0`,
-    // use `filter_nearest_mipmap` instead. This shader doesn't require it.
+    // Nếu bạn định đọc từ mipmap với các giá trị LOD của `textureLod()` lớn hơn `0.0`,
+    // hãy dùng `filter_nearest_mipmap` thay thế. Shader này không yêu cầu nó.
     uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
 
     void fragment() {
@@ -90,33 +70,22 @@ shader by `arlez80 <https://bitbucket.org/arlez80/hex-mosaic/src/master/>`_,
             COLOR = textureLod(screen_texture, center_uv, 0.0);
     }
 
-The sheep will look something like this:
+Con cừu sẽ có dạng tương tự như sau:
 
 .. image:: img/post_example2.png
 
-Multi-pass post-processing
---------------------------
+Hậu xử lý nhiều lượt
+--------------------
 
-Some post-processing effects like blurs are resource intensive. You can make
-them run a lot faster if you break them down in multiple passes. In a multipass
-material, each pass takes the result from the previous pass as an input and
-processes it.
+Một số hiệu ứng hậu xử lý như làm mờ tiêu tốn nhiều tài nguyên. Bạn có thể làm cho chúng chạy nhanh hơn đáng kể nếu chia chúng thành nhiều lượt. Trong material multipass, mỗi lượt lấy kết quả từ lượt trước làm đầu vào rồi xử lý kết quả đó.
 
-To produce a multi-pass post-processing shader, you stack ``CanvasLayer`` and
-``ColorRect`` nodes. In the example above, you use a ``CanvasLayer`` object to
-render a shader using the frame on the layer below. Apart from the node
-structure, the steps are the same as with the single-pass post-processing
-shader.
+Để tạo shader hậu xử lý nhiều lượt, bạn xếp chồng các node ``CanvasLayer`` và ``ColorRect``. Trong ví dụ trên, bạn sử dụng một đối tượng ``CanvasLayer`` để kết xuất shader bằng khung hình trên layer bên dưới. Ngoài cấu trúc node, các bước thực hiện cũng giống như với shader hậu xử lý một lượt.
 
-Your scene tree will look something like this:
+Cây scene của bạn sẽ có dạng tương tự như sau:
 
 .. image:: img/post_tree2.png
 
-As an example, you could write a full screen Gaussian blur effect by attaching
-the following pieces of code to each of the ``ColorRect`` nodes. The order in
-which you apply the shaders depends on the position of the ``CanvasLayer`` in
-the scene tree, higher means sooner. For this blur shader, the order does not
-matter.
+Ví dụ, bạn có thể viết hiệu ứng làm mờ Gaussian toàn màn hình bằng cách gắn các đoạn mã sau vào từng node ``ColorRect``. Thứ tự áp dụng shader phụ thuộc vào vị trí của ``CanvasLayer`` trong cây scene; vị trí cao hơn nghĩa là được áp dụng sớm hơn. Với shader làm mờ này, thứ tự không quan trọng.
 
 .. code-block:: glsl
 
@@ -124,7 +93,7 @@ matter.
 
     uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
 
-    // Blurs the screen in the X-direction.
+    // Làm mờ màn hình theo hướng X.
     void fragment() {
         vec3 col = texture(screen_texture, SCREEN_UV).xyz * 0.16;
         col += texture(screen_texture, SCREEN_UV + vec2(SCREEN_PIXEL_SIZE.x, 0.0)).xyz * 0.15;
@@ -144,7 +113,7 @@ matter.
 
     uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
 
-    // Blurs the screen in the Y-direction.
+    // Làm mờ màn hình theo hướng Y.
     void fragment() {
         vec3 col = texture(screen_texture, SCREEN_UV).xyz * 0.16;
         col += texture(screen_texture, SCREEN_UV + vec2(0.0, SCREEN_PIXEL_SIZE.y)).xyz * 0.15;
@@ -158,7 +127,8 @@ matter.
         COLOR.xyz = col;
     }
 
-Using the above code, you should end up with a full screen blur effect like
-below.
+Với đoạn mã trên, bạn sẽ có hiệu ứng làm mờ toàn màn hình như bên dưới.
 
 .. image:: img/post_example3.png
+
+.. _`arlez80`: https://bitbucket.org/arlez80/hex-mosaic/src/master/
