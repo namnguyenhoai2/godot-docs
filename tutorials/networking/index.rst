@@ -1,7 +1,7 @@
 :allow_comments: False
 
-Networking
-==========
+Kết nối mạng
+============
 
 .. toctree::
    :maxdepth: 1
