@@ -1,72 +1,41 @@
 
 .. _doc_size_and_anchors:
 
-Size and anchors
-================
+Kích thước và điểm neo
+======================
 
-If a game was always going to be run on the same device and at the same
-resolution, positioning controls would be a simple matter of setting the
-position and size of each one of them. Unfortunately, that is rarely the
-case.
+Nếu một game luôn được chạy trên cùng một thiết bị và ở cùng một độ phân giải, việc định vị các control sẽ chỉ đơn giản là đặt vị trí và kích thước cho từng control. Tuy nhiên, trường hợp đó hiếm khi xảy ra.
 
-While some configurations may be more common than others, devices like
-phones, tablets and portable gaming consoles can vary greatly. Therefore,
-we often have to account for different aspect ratios, resolutions and user
-scaling.
+Mặc dù một số cấu hình có thể phổ biến hơn các cấu hình khác, những thiết bị như điện thoại, máy tính bảng và máy chơi game cầm tay có thể rất khác nhau. Vì vậy, chúng ta thường phải tính đến các tỷ lệ khung hình, độ phân giải và mức scaling khác nhau của người dùng.
 
-There are several ways to account for this, but for now, let's just imagine
-that the screen resolution has changed and the controls need to be
-re-positioned. Some will need to follow the bottom of the screen, others
-the top of the screen, or maybe the right or left margins.
+Có một số cách để xử lý việc này, nhưng trước mắt hãy hình dung rằng độ phân giải màn hình đã thay đổi và các control cần được định vị lại. Một số control cần bám theo cạnh dưới màn hình, số khác bám theo cạnh trên, hoặc có thể là lề phải hay lề trái.
 
 .. image:: img/anchors.png
 
-This is done by editing the *anchor offsets* of controls, which behave similarly
-to a margin. To access these settings, you will first need to select the *Custom*
-anchor preset.
+Việc này được thực hiện bằng cách chỉnh sửa *độ lệch điểm neo* của các control, hoạt động tương tự như margin. Để truy cập các thiết lập này, trước tiên bạn cần chọn preset điểm neo *Custom*.
 
-Each control has four anchor offsets: left, right, bottom, and top, which correspond
-to the respective edges of the control. By default, all of
-them represent a distance in pixels relative to the top-left corner of
-the parent control or (in case there is no parent control) the viewport.
+Mỗi control có bốn độ lệch điểm neo: trái, phải, dưới và trên, tương ứng với các cạnh tương ứng của control. Theo mặc định, tất cả đều biểu thị khoảng cách tính bằng pixel so với góc trên bên trái của control cha hoặc (nếu không có control cha) viewport.
 
 .. image:: img/offset.webp
 
-So to make the control wider you can make the right offset larger and/or
-make the left offset smaller. This lets you set the exact placement
-and shape of the control.
+Vì vậy, để làm control rộng hơn, bạn có thể tăng độ lệch phải và/hoặc giảm độ lệch trái. Cách này cho phép bạn đặt chính xác vị trí và hình dạng của control.
 
-The *anchor* properties adjust where the offsets are relative *to*.
-Each offset has an individual anchor that can be adjusted from the
-beginning to the end of the parent. So the vertical (top, bottom) anchors
-adjust from ``0.0`` (top of parent) to ``1.0`` (bottom of parent) with ``0.5`` being
-the center, and the control offsets will be placed relative to that
-point. The horizontal (left, right) anchors similarly adjust from left to
-right of the parent.
+Các thuộc tính *điểm neo* điều chỉnh vị trí mà các độ lệch được tính tương đối *so với*. Mỗi độ lệch có một điểm neo riêng, có thể được điều chỉnh từ đầu đến cuối control cha. Vì vậy, các điểm neo theo chiều dọc (trên, dưới) được điều chỉnh từ ``0.0`` (đầu control cha) đến ``1.0`` (cuối control cha), trong đó ``0.5`` là tâm, và các độ lệch của control sẽ được đặt tương đối so với điểm đó. Tương tự, các điểm neo theo chiều ngang (trái, phải) được điều chỉnh từ trái sang phải của control cha.
 
-Note that when you wish the edge of a control to be above or left of the
-anchor point, you must change the offset value to be negative.
+Lưu ý rằng khi muốn cạnh của một control nằm phía trên hoặc bên trái điểm neo, bạn phải đặt giá trị độ lệch thành số âm.
 
-For example: when horizontal anchors are changed to ``1.0``, the offset values
-become relative to the top-right corner of the parent control or viewport.
+Ví dụ: khi các điểm neo theo chiều ngang được đổi thành ``1.0``, các giá trị độ lệch sẽ được tính tương đối so với góc trên bên phải của control cha hoặc viewport.
 
 .. image:: img/offset_end.webp
 
-Adjusting the two horizontal or the two vertical anchors to different
-values will make the control change size when the parent control does.
-Here, the control is set to anchor its bottom-right corner to the
-parent's bottom-right, while the top-left control offsets are still
-anchored to the top-left of the parent, so when re-sizing the parent,
-the control will always cover it, leaving a 20 pixel offset:
+Việc đặt hai điểm neo theo chiều ngang hoặc hai điểm neo theo chiều dọc thành các giá trị khác nhau sẽ khiến kích thước của control thay đổi khi control cha thay đổi. Ở đây, control được đặt để neo góc dưới bên phải vào góc dưới bên phải của control cha, trong khi các độ lệch của góc trên bên trái của control vẫn được neo vào góc trên bên trái của control cha, vì vậy khi thay đổi kích thước control cha, control sẽ luôn phủ kín control cha và chừa ra một độ lệch 20 pixel:
 
 .. image:: img/offset_around.webp
 
-Centering a control
--------------------
+Căn giữa một control
+--------------------
 
-To center a control in its parent, set its anchors to ``0.5`` and each offset
-to half of its relevant dimension. For example, the code below shows how
-a TextureRect can be centered in its parent:
+Để căn giữa một control trong control cha, đặt các điểm neo của nó thành ``0.5`` và đặt mỗi độ lệch bằng một nửa kích thước tương ứng. Ví dụ, đoạn mã dưới đây cho biết cách căn giữa một TextureRect trong control cha:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -102,15 +71,11 @@ a TextureRect can be centered in its parent:
     rect.OffsetBottom = textureSize.Y / 2;
     AddChild(rect);
 
-Setting each anchor to ``0.5`` moves the reference point for the offsets to
-the center of its parent. From there, we set negative offsets so that
-the control gets its natural size.
+Đặt mỗi điểm neo thành ``0.5`` sẽ di chuyển điểm tham chiếu của các độ lệch đến tâm của control cha. Từ đó, chúng ta đặt các độ lệch âm để control có được kích thước tự nhiên.
 
-Anchor Presets
---------------
+Preset điểm neo
+---------------
 
-Instead of manually adjusting the offset and anchor values, you can use the
-toolbar's Anchor menu, above the viewport. Besides centering, it gives you many
-options to align and resize control nodes.
+Thay vì điều chỉnh thủ công các giá trị độ lệch và điểm neo, bạn có thể sử dụng menu Anchor trên thanh công cụ, phía trên viewport. Ngoài chức năng căn giữa, menu này còn cung cấp nhiều tùy chọn để căn chỉnh và thay đổi kích thước các control node.
 
 .. image:: img/anchor_presets.webp

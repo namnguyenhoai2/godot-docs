@@ -2,8 +2,8 @@
 
 .. _doc_shading_reference:
 
-Shading reference
-=================
+Tài liệu tham khảo về tô bóng
+=============================
 
 .. toctree::
    :maxdepth: 1

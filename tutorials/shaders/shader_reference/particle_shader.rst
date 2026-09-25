@@ -1,180 +1,153 @@
 .. _doc_particle_shader:
 
-Particle shaders
-================
+Particle shader
+===============
 
-Particle shaders are a special type of shader that runs before the object is
-drawn. They are used for calculating material properties such as color,
-position, and rotation. They can be drawn with any regular material for CanvasItem
-or Spatial, depending on whether they are 2D or 3D.
+Particle shader là một loại shader đặc biệt chạy trước khi đối tượng được vẽ. Chúng được dùng để tính toán các thuộc tính của material như màu sắc, vị trí và phép xoay. Chúng có thể được vẽ bằng bất kỳ material thông thường nào cho CanvasItem hoặc Spatial, tùy thuộc vào việc chúng là 2D hay 3D.
 
-Particle shaders are unique because they are not used to draw the object itself;
-they are used to calculate particle properties, which are then used by a
-:ref:`CanvasItem<doc_canvas_item_shader>` or :ref:`Spatial<doc_spatial_shader>`
-shader. They contain two processor functions: ``start()`` and ``process()``.
+Particle shader là loại shader đặc biệt vì chúng không được dùng để vẽ chính đối tượng; chúng được dùng để tính toán các thuộc tính của particle, sau đó được dùng bởi một
+:ref:`CanvasItem <doc_canvas_item_shader>` hoặc shader :ref:`Spatial <doc_spatial_shader>`. Chúng chứa hai hàm xử lý: ``start()`` và ``process()``.
 
-Unlike other shader types, particle shaders keep the data that was output the
-previous frame. Therefore, particle shaders can be used for complex effects that
-take place over multiple frames.
+Không giống các loại shader khác, particle shader giữ lại dữ liệu đã xuất ra ở frame trước đó. Do đó, particle shader có thể được dùng cho các hiệu ứng phức tạp diễn ra trong nhiều frame.
 
 .. note::
 
-    Particle shaders are only available with GPU-based particle nodes
-    (:ref:`class_GPUParticles2D` and :ref:`class_GPUParticles3D`).
+    Particle shader chỉ khả dụng với các node particle dựa trên GPU (:ref:`class_GPUParticles2D` và :ref:`class_GPUParticles3D`).
 
-    CPU-based particle nodes (:ref:`class_CPUParticles2D` and
-    :ref:`class_CPUParticles3D`) are *rendered* on the GPU (which means they can
-    use custom CanvasItem or Spatial shaders), but their motion is *simulated*
-    on the CPU.
+    Các node particle dựa trên CPU (:ref:`class_CPUParticles2D` và
+    :ref:`class_CPUParticles3D`) được *render* trên GPU (nghĩa là chúng có thể sử dụng shader CanvasItem hoặc Spatial tùy chỉnh), nhưng chuyển động của chúng được *mô phỏng* trên CPU.
 
-Render modes
-------------
+Chế độ render
+-------------
 
-+--------------------------+-------------------------------------------+
-| Render mode              | Description                               |
-+==========================+===========================================+
-| **keep_data**            | Do not clear previous data on restart.    |
-+--------------------------+-------------------------------------------+
-| **disable_force**        | Disable attractor force.                  |
-+--------------------------+-------------------------------------------+
-| **disable_velocity**     | Ignore ``VELOCITY`` value.                |
-+--------------------------+-------------------------------------------+
-| **collision_use_scale**  | Scale the particle's size for collisions. |
-+--------------------------+-------------------------------------------+
++-------------------------+-------------------------------------------------+
+| Chế độ render           | Mô tả                                           |
++=========================+=================================================+
+| **keep_data**           | Không xóa dữ liệu trước đó khi khởi động lại.   |
++-------------------------+-------------------------------------------------+
+| **disable_force**       | Tắt lực attractor.                              |
++-------------------------+-------------------------------------------------+
+| **disable_velocity**    | Bỏ qua giá trị ``VELOCITY``.                    |
++-------------------------+-------------------------------------------------+
+| **collision_use_scale** | Điều chỉnh kích thước của particle khi va chạm. |
++-------------------------+-------------------------------------------------+
 
-Built-ins
----------
+Các giá trị dựng sẵn
+--------------------
 
-Values marked as ``in`` are read-only. Values marked as ``out`` can optionally be written to and will
-not necessarily contain sensible values. Values marked as ``inout`` provide a sensible default
-value, and can optionally be written to. Samplers cannot be written to so they are not marked.
+Các giá trị được đánh dấu ``in`` là chỉ đọc. Các giá trị được đánh dấu ``out`` có thể được ghi tùy chọn và không nhất thiết chứa các giá trị hợp lý. Các giá trị được đánh dấu ``inout`` cung cấp giá trị mặc định hợp lý và có thể được ghi tùy chọn. Không thể ghi vào sampler nên chúng không được đánh dấu.
 
-Global built-ins
-----------------
+Các giá trị dựng sẵn toàn cục
+-----------------------------
 
-Global built-ins are available everywhere, including custom functions.
+Các giá trị dựng sẵn toàn cục khả dụng ở mọi nơi, bao gồm cả các hàm tùy chỉnh.
 
-+-------------------+-------------------------------------------------------------------------------------------------+
-| Built-in          | Description                                                                                     |
-+===================+=================================================================================================+
-| in float **TIME** | Global time since the engine has started, in seconds. It repeats after every ``3,600``          |
-|                   | seconds (which can be changed with the                                                          |
-|                   | :ref:`rollover<class_ProjectSettings_property_rendering/limits/time/time_rollover_secs>`        |
-|                   | setting). It's affected by                                                                      |
-|                   | :ref:`time_scale<class_Engine_property_time_scale>` but not by pausing. If you need a           |
-|                   | ``TIME`` variable that is not affected by time scale, add your own                              |
-|                   | :ref:`global shader uniform<doc_shading_language_global_uniforms>` and update it each           |
-|                   | frame.                                                                                          |
-+-------------------+-------------------------------------------------------------------------------------------------+
-| in float **PI**   | A ``PI`` constant (``3.141592``).                                                               |
-|                   | The ratio of a circle's circumference to its diameter and the number of radians in a half turn. |
-+-------------------+-------------------------------------------------------------------------------------------------+
-| in float **TAU**  | A ``TAU`` constant (``6.283185``).                                                              |
-|                   | Equivalent to ``PI * 2`` and the number of radians in a full turn.                              |
-+-------------------+-------------------------------------------------------------------------------------------------+
-| in float **E**    | An ``E`` constant (``2.718281``). Euler's number, the base of the natural logarithm.            |
-+-------------------+-------------------------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Giá trị dựng sẵn  | Mô tả                                                                                                                                                                |
++===================+======================================================================================================================================================================+
+| in float **TIME** | Thời gian toàn cục tính từ khi engine khởi động, tính bằng giây. Thời gian này lặp lại sau mỗi ``3,600`` giây (có thể thay đổi bằng                                  |
+|                   | :ref:`rollover<class_ProjectSettings_property_rendering/limits/time/time_rollover_secs>`). Thời gian này bị ảnh hưởng bởi                                            |
+|                   | :ref:`time_scale<class_Engine_property_time_scale>` nhưng không bị ảnh hưởng khi tạm dừng. Nếu cần một biến ``TIME`` không bị ảnh hưởng bởi time scale, hãy thêm một |
+|                   | :ref:`global shader uniform <doc_shading_language_global_uniforms>` của riêng bạn và cập nhật nó ở mỗi frame.                                                        |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in float **PI**   | Một hằng số ``PI`` (``3.141592``). Tỷ số giữa chu vi và đường kính của đường tròn, đồng thời là số radian trong nửa vòng quay.                                       |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in float **TAU**  | Một hằng số ``TAU`` (``6.283185``). Tương đương với ``PI * 2`` và là số radian trong một vòng quay đầy đủ.                                                           |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in float **E**    | Một hằng số ``E`` (``2.718281``). Số Euler, cơ số của logarit tự nhiên.                                                                                              |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Start and Process built-ins
----------------------------
+Các giá trị dựng sẵn của Start và Process
+-----------------------------------------
 
-These properties can be accessed from both the ``start()`` and ``process()`` functions.
+Có thể truy cập các thuộc tính này từ cả hai hàm ``start()`` và ``process()``.
 
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-| Function                           | Description                                                                                                                             |
-+====================================+=========================================================================================================================================+
-| in float **LIFETIME**              | Particle lifetime.                                                                                                                      |
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-| in float **DELTA**                 | Delta process time.                                                                                                                     |
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-| in uint **NUMBER**                 | Unique number since emission start.                                                                                                     |
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-| in uint **INDEX**                  | Particle index (from total particles).                                                                                                  |
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-| in mat4 **EMISSION_TRANSFORM**     | Emitter transform (used for non-local systems).                                                                                         |
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-| in uint **RANDOM_SEED**            | Random seed used as base for random.                                                                                                    |
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-| inout bool **ACTIVE**              | ``true`` when the particle is active, can be set to ``false``.                                                                          |
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-| inout vec4 **COLOR**               | Particle color, can be written to and accessed in the mesh's vertex function.                                                           |
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-| inout vec3 **VELOCITY**            | Particle velocity, can be modified.                                                                                                     |
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-| inout mat4 **TRANSFORM**           | Particle transform.                                                                                                                     |
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-| inout vec4 **CUSTOM**              | Custom particle data. Accessible from the mesh's shader as ``INSTANCE_CUSTOM``.                                                         |
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-| inout float **MASS**               | Particle mass, intended to be used with attractors. ``1.0`` by default.                                                                 |
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-| in vec4 **USERDATAX**              | Vector that enables the integration of supplementary user-defined data into the particle process shader.                                |
-|                                    | ``USERDATAX`` are six built-ins identified by number, ``X`` can be numbers between 1 and 6, for example ``USERDATA3``.                  |
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-| in uint **FLAG_EMIT_POSITION**     | A flag for the last argument of the ``emit_subparticle()`` function to assign a position to a new particle's transform.                 |
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-| in uint **FLAG_EMIT_ROT_SCALE**    | A flag for the last argument of the ``emit_subparticle()`` function to assign a rotation and scale to a new particle's transform.       |
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-| in uint **FLAG_EMIT_VELOCITY**     | A flag for the last argument of the ``emit_subparticle()`` function to assign a velocity to a new particle.                             |
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-| in uint **FLAG_EMIT_COLOR**        | A flag for the last argument of the ``emit_subparticle()`` function to assign a color to a new particle.                                |
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-| in uint **FLAG_EMIT_CUSTOM**       | A flag for the last argument of the ``emit_subparticle()`` function to assign a custom data vector to a new particle.                   |
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-| in vec3 **EMITTER_VELOCITY**       | Velocity of the :ref:`Particles2D<class_GPUParticles2D>` (:ref:`3D<class_GPUParticles3D>`) node.                                        |
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-| in float **INTERPOLATE_TO_END**    | Value of the :ref:`interp_to_end<class_GPUParticles2D_property_interp_to_end>`                                                          |
-|                                    | (:ref:`3D<class_GPUParticles3D_property_interp_to_end>`) property of the Particles node.                                                |
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-| in uint **AMOUNT_RATIO**           | Value of the :ref:`amount_ratio<class_GPUParticles2D_property_amount_ratio>`                                                            |
-|                                    | (:ref:`3D<class_GPUParticles3D_property_amount_ratio>`) property of the Particles node.                                                 |
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Hàm                             | Mô tả                                                                                                                                                                                                               |
++=================================+=====================================================================================================================================================================================================================+
+| in float **LIFETIME**           | Vòng đời của particle.                                                                                                                                                                                              |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in float **DELTA**              | Thời gian xử lý delta.                                                                                                                                                                                              |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in uint **NUMBER**              | Số duy nhất kể từ khi bắt đầu phát.                                                                                                                                                                                 |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in uint **INDEX**               | Chỉ mục của particle (trong tổng số particle).                                                                                                                                                                      |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in mat4 **EMISSION_TRANSFORM**  | Phép biến đổi của emitter (được dùng cho các hệ thống không cục bộ).                                                                                                                                                |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in uint **RANDOM_SEED**         | Seed ngẫu nhiên được dùng làm cơ sở cho số ngẫu nhiên.                                                                                                                                                              |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| inout bool **ACTIVE**           | ``true`` khi particle đang hoạt động, có thể đặt thành ``false``.                                                                                                                                                   |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| inout vec4 **COLOR**            | Màu của particle, có thể được ghi và truy cập trong vertex function của mesh.                                                                                                                                       |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| inout vec3 **VELOCITY**         | Vận tốc của particle, có thể được sửa đổi.                                                                                                                                                                          |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| inout mat4 **TRANSFORM**        | Transform của particle.                                                                                                                                                                                             |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| inout vec4 **CUSTOM**           | Dữ liệu tùy chỉnh của particle. Có thể truy cập từ shader của mesh dưới dạng ``INSTANCE_CUSTOM``.                                                                                                                   |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| inout float **MASS**            | Khối lượng của particle, предназнач để dùng với các attractor. ``1.0`` theo mặc định.                                                                                                                               |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec4 **USERDATAX**           | Vector cho phép tích hợp dữ liệu bổ sung do người dùng định nghĩa vào particle process shader. ``USERDATAX`` là sáu built-in được xác định bằng số; ``X`` có thể là các số từ 1 đến 6, chẳng hạn như ``USERDATA3``. |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in uint **FLAG_EMIT_POSITION**  | Một flag cho tham số cuối của function ``emit_subparticle()`` để gán vị trí cho transform của particle mới.                                                                                                         |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in uint **FLAG_EMIT_ROT_SCALE** | Một flag cho tham số cuối của function ``emit_subparticle()`` để gán rotation và scale cho transform của particle mới.                                                                                              |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in uint **FLAG_EMIT_VELOCITY**  | Một flag cho tham số cuối của function ``emit_subparticle()`` để gán vận tốc cho particle mới.                                                                                                                      |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in uint **FLAG_EMIT_COLOR**     | Một flag cho tham số cuối của function ``emit_subparticle()`` để gán màu cho particle mới.                                                                                                                          |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in uint **FLAG_EMIT_CUSTOM**    | Một flag cho tham số cuối của function ``emit_subparticle()`` để gán vector dữ liệu tùy chỉnh cho particle mới.                                                                                                     |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec3 **EMITTER_VELOCITY**    | Vận tốc của node :ref:`Particles2D<class_GPUParticles2D>` (:ref:`3D<class_GPUParticles3D>`).                                                                                                                        |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in float **INTERPOLATE_TO_END** | Giá trị của thuộc tính :ref:`interp_to_end<class_GPUParticles2D_property_interp_to_end>` (:ref:`3D<class_GPUParticles3D_property_interp_to_end>`) của node Particles.                                               |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in uint **AMOUNT_RATIO**        | Giá trị của thuộc tính :ref:`amount_ratio<class_GPUParticles2D_property_amount_ratio>` (:ref:`3D<class_GPUParticles3D_property_amount_ratio>`) của node Particles.                                                  |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-.. note:: In order to use the ``COLOR`` variable in a StandardMaterial3D, set ``vertex_color_use_as_albedo``
-          to ``true``. In a ShaderMaterial, access it with the ``COLOR`` variable.
+.. note:: Để sử dụng biến ``COLOR`` trong StandardMaterial3D, hãy đặt ``vertex_color_use_as_albedo`` thành ``true``. Trong ShaderMaterial, hãy truy cập biến này bằng biến ``COLOR``.
 
-Start built-ins
+Các built-in của Start
+----------------------
+
++-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Built-in                      | Mô tả                                                                                                                                                                                                    |
++===============================+==========================================================================================================================================================================================================+
+| in bool **RESTART_POSITION**  | ``true`` nếu particle được khởi động lại hoặc được phát ra mà không có vị trí tùy chỉnh (tức là particle này được tạo bởi ``emit_subparticle()`` mà không có flag ``FLAG_EMIT_POSITION``).               |
++-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in bool **RESTART_ROT_SCALE** | ``true`` nếu particle được khởi động lại hoặc được phát ra mà không có rotation hoặc scale tùy chỉnh (tức là particle này được tạo bởi ``emit_subparticle()`` mà không có flag ``FLAG_EMIT_ROT_SCALE``). |
++-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in bool **RESTART_VELOCITY**  | ``true`` nếu particle được khởi động lại hoặc được phát ra mà không có vận tốc tùy chỉnh (tức là particle này được tạo bởi ``emit_subparticle()`` mà không có flag ``FLAG_EMIT_VELOCITY``).              |
++-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in bool **RESTART_COLOR**     | ``true`` nếu particle được khởi động lại hoặc được phát ra mà không có màu tùy chỉnh (tức là particle này được tạo bởi ``emit_subparticle()`` mà không có flag ``FLAG_EMIT_COLOR``).                     |
++-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in bool **RESTART_CUSTOM**    | ``true`` nếu particle được khởi động lại hoặc được phát ra mà không có thuộc tính tùy chỉnh (tức là particle này được tạo bởi ``emit_subparticle()`` mà không có cờ ``FLAG_EMIT_CUSTOM``).               |
++-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Các built-in của Process
+------------------------
+
++------------------------------+--------------------------------------------------------------------------------------------------------------+
+| Built-in                     | Mô tả                                                                                                        |
++==============================+==============================================================================================================+
+| in bool **RESTART**          | ``true`` nếu frame Process hiện tại là frame đầu tiên của particle.                                          |
++------------------------------+--------------------------------------------------------------------------------------------------------------+
+| in bool **COLLIDED**         | ``true`` khi particle đã va chạm với particle collider.                                                      |
++------------------------------+--------------------------------------------------------------------------------------------------------------+
+| in vec3 **COLLISION_NORMAL** | Pháp tuyến của lần va chạm gần nhất. Nếu không phát hiện va chạm nào, giá trị này bằng ``(0.0, 0.0, 0.0)``.  |
++------------------------------+--------------------------------------------------------------------------------------------------------------+
+| in float **COLLISION_DEPTH** | Độ dài của pháp tuyến trong lần va chạm gần nhất. Nếu không phát hiện va chạm nào, giá trị này bằng ``0.0``. |
++------------------------------+--------------------------------------------------------------------------------------------------------------+
+| in vec3 **ATTRACTOR_FORCE**  | Tổng hợp lực của các attractor tác dụng lên particle tại thời điểm hiện tại.                                 |
++------------------------------+--------------------------------------------------------------------------------------------------------------+
+
+Các hàm Process
 ---------------
 
-+---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Built-in                        | Description                                                                                                                                                                           |
-+=================================+=======================================================================================================================================================================================+
-| in bool **RESTART_POSITION**    | ``true`` if particle is restarted, or emitted without a custom position (i.e. this particle was created by ``emit_subparticle()`` without the ``FLAG_EMIT_POSITION`` flag).           |
-+---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| in bool **RESTART_ROT_SCALE**   | ``true`` if particle is restarted, or emitted without a custom rotation or scale (i.e. this particle was created by ``emit_subparticle()`` without the ``FLAG_EMIT_ROT_SCALE`` flag). |
-+---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| in bool **RESTART_VELOCITY**    | ``true`` if particle is restarted, or emitted without a custom velocity (i.e. this particle was created by ``emit_subparticle()`` without the ``FLAG_EMIT_VELOCITY`` flag).           |
-+---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| in bool **RESTART_COLOR**       | ``true`` if particle is restarted, or emitted without a custom color (i.e. this particle was created by ``emit_subparticle()`` without the ``FLAG_EMIT_COLOR`` flag).                 |
-+---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| in bool **RESTART_CUSTOM**      | ``true`` if particle is restarted, or emitted without a custom property (i.e. this particle was created by ``emit_subparticle()`` without the ``FLAG_EMIT_CUSTOM`` flag).             |
-+---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-Process built-ins
------------------
-
-+------------------------------------+---------------------------------------------------------------------------------------------------------+
-| Built-in                           | Description                                                                                             |
-+====================================+=========================================================================================================+
-| in bool **RESTART**                | ``true`` if the current process frame is the first for the particle.                                    |
-+------------------------------------+---------------------------------------------------------------------------------------------------------+
-| in bool **COLLIDED**               | ``true`` when the particle has collided with a particle collider.                                       |
-+------------------------------------+---------------------------------------------------------------------------------------------------------+
-| in vec3 **COLLISION_NORMAL**       | A normal of the last collision. If there is no collision detected it is equal to ``(0.0, 0.0, 0.0)``.   |
-+------------------------------------+---------------------------------------------------------------------------------------------------------+
-| in float **COLLISION_DEPTH**       | A length of the normal of the last collision. If there is no collision detected it is equal to ``0.0``. |
-+------------------------------------+---------------------------------------------------------------------------------------------------------+
-| in vec3 **ATTRACTOR_FORCE**        | A combined force of the attractors at the moment on that particle.                                      |
-+------------------------------------+---------------------------------------------------------------------------------------------------------+
-
-Process functions
------------------
-
-``emit_subparticle()`` is currently the only custom function supported by
-particle shaders. It allows users to add a new particle with specified
-parameters from a sub-emitter. The newly created particle will only use the
-properties that match the ``flags`` parameter. For example, the
-following code will emit a particle with a specified position, velocity, and
-color, but unspecified rotation, scale, and custom value:
+``emit_subparticle()`` hiện là hàm tùy chỉnh duy nhất được particle shader hỗ trợ. Hàm này cho phép người dùng thêm một particle mới với các tham số được chỉ định từ một sub-emitter. Particle mới tạo sẽ chỉ sử dụng những thuộc tính khớp với tham số ``flags``. Ví dụ: đoạn mã sau sẽ phát ra một particle với vị trí, vận tốc và màu được chỉ định, nhưng không chỉ định rotation, scale và giá trị tùy chỉnh:
 
 .. code-block:: glsl
 
@@ -183,7 +156,7 @@ color, but unspecified rotation, scale, and custom value:
     emit_subparticle(custom_transform, vec3(1.0, 0.5, 1.0), vec4(1.0, 0.0, 0.0, 1.0), vec4(1.0), FLAG_EMIT_POSITION | FLAG_EMIT_VELOCITY | FLAG_EMIT_COLOR);
 
 +--------------------------------------------------------------------------------------------+--------------------------------------+
-| Function                                                                                   | Description                          |
+| Hàm                                                                                        | Mô tả                                |
 +============================================================================================+======================================+
-| bool **emit_subparticle** (mat4 xform, vec3 velocity, vec4 color, vec4 custom, uint flags) | Emits a particle from a sub-emitter. |
+| bool **emit_subparticle** (mat4 xform, vec3 velocity, vec4 color, vec4 custom, uint flags) | Phát ra một particle từ sub-emitter. |
 +--------------------------------------------------------------------------------------------+--------------------------------------+

@@ -2,27 +2,24 @@
 
 .. _doc_user_interface:
 
-User interface (UI)
-===================
+Giao diện người dùng (UI)
+=========================
 
-In this section of the tutorial, we explain the basics of creating a graphical
-user interface (GUI) in Godot.
+Trong phần này của hướng dẫn, chúng ta sẽ giải thích những kiến thức cơ bản về cách tạo giao diện người dùng đồ họa (GUI) trong Godot.
 
-UI building blocks
-------------------
+Các khối xây dựng UI
+--------------------
 
-Like everything else in Godot, the user interface is built using nodes, specifically
-:ref:`Control <class_Control>` nodes. There are many different types of controls
-which are useful for creating specific types of GUIs. For simplicity, we can
-separate them into two groups: content and layout.
+Giống như mọi thứ khác trong Godot, giao diện người dùng được xây dựng bằng các node, cụ thể là
+:ref:`Control <class_Control>` nodes. Có nhiều loại control khác nhau hữu ích để tạo các kiểu GUI cụ thể. Để đơn giản, chúng ta có thể chia chúng thành hai nhóm: nội dung và bố cục.
 
-Typical content controls include:
+Các control nội dung điển hình gồm:
 
 * :ref:`Buttons <class_Button>`
 * :ref:`Labels <class_Label>`
-* :ref:`LineEdits <class_LineEdit>` and :ref:`TextEdits <class_TextEdit>`
+* :ref:`LineEdits <class_LineEdit>` và :ref:`TextEdits <class_TextEdit>`
 
-Typical layout controls include:
+Các control bố cục điển hình gồm:
 
 * :ref:`BoxContainers <class_BoxContainer>`
 * :ref:`MarginContainers <class_MarginContainer>`
@@ -30,7 +27,7 @@ Typical layout controls include:
 * :ref:`TabContainers <class_TabContainer>`
 * :ref:`Popups <class_Popup>`
 
-The following pages explain the basics of using such controls.
+Các trang sau đây giải thích những kiến thức cơ bản về cách sử dụng các control như vậy.
 
 .. toctree::
    :maxdepth: 1
@@ -42,11 +39,10 @@ The following pages explain the basics of using such controls.
    gui_navigation
    control_node_gallery
 
-GUI skinning and themes
------------------------
+Tạo skin và theme cho GUI
+-------------------------
 
-Godot features an in-depth skinning/theming system for control nodes. The pages in this section
-explain the benefits of that system and how to set it up in your projects.
+Godot cung cấp một hệ thống tạo skin/theme chuyên sâu cho các control node. Các trang trong phần này giải thích những lợi ích của hệ thống đó và cách thiết lập hệ thống trong các dự án của bạn.
 
 .. toctree::
    :maxdepth: 1
@@ -57,10 +53,10 @@ explain the benefits of that system and how to set it up in your projects.
    gui_theme_type_variations
    gui_using_fonts
 
-Control node tutorials
-----------------------
+Hướng dẫn về control node
+-------------------------
 
-The following articles cover specific details of using particular control nodes.
+Các bài viết sau đây trình bày những chi tiết cụ thể về cách sử dụng từng control node.
 
 .. toctree::
    :maxdepth: 1
@@ -68,10 +64,10 @@ The following articles cover specific details of using particular control nodes.
 
    bbcode_in_richtextlabel
 
-Creating applications
----------------------
+Tạo ứng dụng
+------------
 
-Godot can also be used to create applications (rather than games).
+Godot cũng có thể được sử dụng để tạo ứng dụng (thay vì game).
 
 .. toctree::
    :maxdepth: 1

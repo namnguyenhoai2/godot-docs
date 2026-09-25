@@ -1,89 +1,73 @@
 .. _doc_canvas_item_shader:
 
-CanvasItem shaders
-==================
+Shader CanvasItem
+=================
 
-CanvasItem shaders are used to draw all 2D elements in Godot. These include
-all nodes that inherit from CanvasItems, and all GUI elements.
+Shader CanvasItem được dùng để vẽ tất cả các phần tử 2D trong Godot. Chúng bao gồm tất cả các node kế thừa từ CanvasItem và tất cả các phần tử GUI.
 
-CanvasItem shaders contain fewer built-in variables and functionality than
-:ref:`Spatial shaders<doc_spatial_shader>`, but they maintain the same basic structure
-with vertex, fragment, and light processor functions.
+Shader CanvasItem chứa ít biến tích hợp sẵn và chức năng hơn
+:ref:`Spatial shaders <doc_spatial_shader>`, nhưng vẫn duy trì cùng cấu trúc cơ bản với các hàm xử lý vertex, fragment và light.
 
-Render modes
-------------
+Chế độ render
+-------------
 
-+---------------------------------+----------------------------------------------------------------------+
-| Render mode                     | Description                                                          |
-+=================================+======================================================================+
-| **blend_mix**                   | Mix blend mode (alpha is transparency), default.                     |
-+---------------------------------+----------------------------------------------------------------------+
-| **blend_add**                   | Additive blend mode.                                                 |
-+---------------------------------+----------------------------------------------------------------------+
-| **blend_sub**                   | Subtractive blend mode.                                              |
-+---------------------------------+----------------------------------------------------------------------+
-| **blend_mul**                   | Multiplicative blend mode.                                           |
-+---------------------------------+----------------------------------------------------------------------+
-| **blend_premul_alpha**          | Pre-multiplied alpha blend mode.                                     |
-+---------------------------------+----------------------------------------------------------------------+
-| **blend_disabled**              | Disable blending, values (including alpha) are written as-is.        |
-+---------------------------------+----------------------------------------------------------------------+
-| **unshaded**                    | Result is just albedo. No lighting/shading happens in material.      |
-+---------------------------------+----------------------------------------------------------------------+
-| **light_only**                  | Only draw in the light pass.                                         |
-+---------------------------------+----------------------------------------------------------------------+
-| **skip_vertex_transform**       | ``VERTEX`` needs to be transformed manually in the ``vertex()``      |
-|                                 | function.                                                            |
-+---------------------------------+----------------------------------------------------------------------+
-| **world_vertex_coords**         | ``VERTEX`` is modified in world coordinates instead of local.        |
-+---------------------------------+----------------------------------------------------------------------+
++---------------------------+------------------------------------------------------------------------------+
+| Chế độ render             | Mô tả                                                                        |
++===========================+==============================================================================+
+| **blend_mix**             | Chế độ blend mix (alpha là độ trong suốt), mặc định.                         |
++---------------------------+------------------------------------------------------------------------------+
+| **blend_add**             | Chế độ blend cộng.                                                           |
++---------------------------+------------------------------------------------------------------------------+
+| **blend_sub**             | Chế độ blend trừ.                                                            |
++---------------------------+------------------------------------------------------------------------------+
+| **blend_mul**             | Chế độ blend nhân.                                                           |
++---------------------------+------------------------------------------------------------------------------+
+| **blend_premul_alpha**    | Chế độ blend alpha tiền nhân.                                                |
++---------------------------+------------------------------------------------------------------------------+
+| **blend_disabled**        | Tắt blending; các giá trị (bao gồm alpha) được ghi nguyên trạng.             |
++---------------------------+------------------------------------------------------------------------------+
+| **unshaded**              | Kết quả chỉ là albedo. Không có lighting/shading nào diễn ra trong material. |
++---------------------------+------------------------------------------------------------------------------+
+| **light_only**            | Chỉ vẽ trong light pass.                                                     |
++---------------------------+------------------------------------------------------------------------------+
+| **skip_vertex_transform** | ``VERTEX`` phải được biến đổi thủ công trong hàm ``vertex()``.               |
++---------------------------+------------------------------------------------------------------------------+
+| **world_vertex_coords**   | ``VERTEX`` được sửa đổi trong tọa độ world thay vì tọa độ local.             |
++---------------------------+------------------------------------------------------------------------------+
 
-Built-ins
----------
+Các biến tích hợp sẵn
+---------------------
 
-Values marked as ``in`` are read-only. Values marked as ``out`` can optionally be written to and will
-not necessarily contain sensible values. Values marked as ``inout`` provide a sensible default
-value, and can optionally be written to. Samplers cannot be written to so they are not marked.
+Các giá trị được đánh dấu ``in`` là chỉ đọc. Các giá trị được đánh dấu ``out`` có thể được ghi tùy chọn và không nhất thiết chứa các giá trị hợp lý. Các giá trị được đánh dấu ``inout`` cung cấp giá trị mặc định hợp lý và có thể được ghi tùy chọn. Sampler không thể được ghi nên không được đánh dấu.
 
-Not all built-ins are available in all processing functions. To access a vertex
-built-in from the ``fragment()`` function, you can use a :ref:`varying <doc_shading_language_varyings>`.
-The same applies for accessing fragment built-ins from the ``light()`` function.
+Không phải tất cả các biến tích hợp sẵn đều khả dụng trong mọi hàm xử lý. Để truy cập một biến tích hợp sẵn của vertex từ hàm ``fragment()``, bạn có thể dùng một :ref:`varying <doc_shading_language_varyings>`. Điều tương tự cũng áp dụng khi truy cập các biến tích hợp sẵn của fragment từ hàm ``light()``.
 
-Global built-ins
-----------------
+Các biến tích hợp sẵn toàn cục
+------------------------------
 
-Global built-ins are available everywhere, including custom functions.
+Các biến tích hợp sẵn toàn cục khả dụng ở mọi nơi, bao gồm cả các hàm tùy chỉnh.
 
-+-------------------+-------------------------------------------------------------------------------------------------+
-| Built-in          | Description                                                                                     |
-+===================+=================================================================================================+
-| in float **TIME** | Global time since the engine has started, in seconds. It repeats after every ``3,600``          |
-|                   | seconds (which can be changed with the                                                          |
-|                   | :ref:`rollover<class_ProjectSettings_property_rendering/limits/time/time_rollover_secs>`        |
-|                   | setting). It's affected by                                                                      |
-|                   | :ref:`time_scale<class_Engine_property_time_scale>` but not by pausing. If you need a           |
-|                   | ``TIME`` variable that is not affected by time scale, add your own                              |
-|                   | :ref:`global shader uniform<doc_shading_language_global_uniforms>` and update it each           |
-|                   | frame.                                                                                          |
-+-------------------+-------------------------------------------------------------------------------------------------+
-| in float **PI**   | A ``PI`` constant (``3.141592``).                                                               |
-|                   | The ratio of a circle's circumference to its diameter and the number of radians in a half turn. |
-+-------------------+-------------------------------------------------------------------------------------------------+
-| in float **TAU**  | A ``TAU`` constant (``6.283185``).                                                              |
-|                   | Equivalent to ``PI * 2`` and the number of radians in a full turn.                              |
-+-------------------+-------------------------------------------------------------------------------------------------+
-| in float **E**    | An ``E`` constant (``2.718281``).                                                               |
-|                   | Euler's number, the base of the natural logarithm.                                              |
-+-------------------+-------------------------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Biến tích hợp sẵn | Mô tả                                                                                                                                                                |
++===================+======================================================================================================================================================================+
+| in float **TIME** | Thời gian toàn cục kể từ khi engine khởi động, tính bằng giây. Thời gian lặp lại sau mỗi ``3,600`` giây (có thể thay đổi bằng thiết lập                              |
+|                   | :ref:`rollover<class_ProjectSettings_property_rendering/limits/time/time_rollover_secs>`). Thời gian này bị ảnh hưởng bởi                                            |
+|                   | :ref:`time_scale<class_Engine_property_time_scale>` nhưng không bị ảnh hưởng khi tạm dừng. Nếu bạn cần một biến ``TIME`` không bị ảnh hưởng bởi time scale, hãy thêm |
+|                   | :ref:`global shader uniform <doc_shading_language_global_uniforms>` của riêng bạn và cập nhật nó mỗi frame.                                                          |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in float **PI**   | Một hằng số ``PI`` (``3.141592``). Tỷ số giữa chu vi và đường kính của một đường tròn, đồng thời là số radian trong nửa vòng quay.                                   |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in float **TAU**  | Một hằng số ``TAU`` (``6.283185``). Tương đương với ``PI * 2`` và là số radian trong một vòng quay đầy đủ.                                                           |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in float **E**    | Một hằng số ``E`` (``2.718281``). Số Euler, cơ số của logarithm tự nhiên.                                                                                            |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Vertex built-ins
-----------------
+Các biến tích hợp sẵn của vertex
+--------------------------------
 
-Vertex data (``VERTEX``) is presented in local space (pixel coordinates, relative to the Node2D's origin).
-If not written to, these values will not be modified and be passed through as they came.
+Dữ liệu vertex (``VERTEX``) được cung cấp trong local space (tọa độ pixel, tương đối với gốc của Node2D). Nếu không được ghi, các giá trị này sẽ không bị sửa đổi và được truyền tiếp như ban đầu.
 
-The user can disable the built-in model to world transform (world to screen and projection will still
-happen later) and do it manually with the following code:
+Người dùng có thể tắt phép biến đổi tích hợp sẵn từ model sang world (phép biến đổi từ world sang screen và phép chiếu vẫn sẽ diễn ra sau đó) và thực hiện thủ công bằng đoạn mã sau:
 
 .. code-block:: glsl
 
@@ -95,84 +79,66 @@ happen later) and do it manually with the following code:
         VERTEX = (MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy;
     }
 
-Other built-ins, such as ``UV`` and ``COLOR``, are also passed through to the ``fragment()`` function if not modified.
+Các biến tích hợp sẵn khác, chẳng hạn như ``UV`` và ``COLOR``, cũng được truyền tiếp đến hàm ``fragment()`` nếu không bị sửa đổi.
 
-For instancing, the ``INSTANCE_CUSTOM`` variable contains the instance custom data. When using particles, this information
-is usually:
+Đối với instancing, biến ``INSTANCE_CUSTOM`` chứa dữ liệu tùy chỉnh của instance. Khi sử dụng particle, thông tin này thường là:
 
-* **x**: Rotation angle in radians.
-* **y**: Phase during lifetime (``0.0`` to ``1.0``).
-* **z**: Animation frame.
+* **x**: Góc xoay tính bằng radian.
+* **y**: Pha trong suốt vòng đời (``0.0`` đến ``1.0``).
+* **z**: Khung hình animation.
 
-+--------------------------------+----------------------------------------------------------------+
-| Built-in                       | Description                                                    |
-+================================+================================================================+
-| in mat4 **MODEL_MATRIX**       | Local space to world space transform. World space              |
-|                                | is the coordinates you normally use in the editor.             |
-+--------------------------------+----------------------------------------------------------------+
-| in mat4 **CANVAS_MATRIX**      | World space to canvas space transform. In canvas               |
-|                                | space the origin is the upper-left corner of the               |
-|                                | screen and coordinates range from ``(0.0, 0.0)``               |
-|                                | to viewport size.                                              |
-+--------------------------------+----------------------------------------------------------------+
-| in mat4 **SCREEN_MATRIX**      | Canvas space to clip space transform. In clip space            |
-|                                | coordinates range from ``(-1.0, -1.0)`` to                     |
-|                                | ``(1.0, 1.0).``                                                |
-+--------------------------------+----------------------------------------------------------------+
-| in int **INSTANCE_ID**         | Instance ID for instancing.                                    |
-+--------------------------------+----------------------------------------------------------------+
-| in vec4 **INSTANCE_CUSTOM**    | Instance custom data.                                          |
-+--------------------------------+----------------------------------------------------------------+
-| in bool **AT_LIGHT_PASS**      | Always ``false``.                                              |
-+--------------------------------+----------------------------------------------------------------+
-| in vec2 **TEXTURE_PIXEL_SIZE** | Normalized pixel size of the default 2D texture.               |
-|                                | For a Sprite2D with a texture of size 64×32 pixels,            |
-|                                | ``TEXTURE_PIXEL_SIZE`` = ``vec2(1.0 / 64.0, 1.0 / 32.0)``.     |
-+--------------------------------+----------------------------------------------------------------+
-| inout vec2 **VERTEX**          | Vertex position, in local space.                               |
-+--------------------------------+----------------------------------------------------------------+
-| in int **VERTEX_ID**           | The index of the current vertex in the vertex                  |
-|                                | buffer.                                                        |
-+--------------------------------+----------------------------------------------------------------+
-| inout vec2 **UV**              | Normalized texture coordinates. Range from ``0.0``             |
-|                                | to ``1.0``.                                                    |
-+--------------------------------+----------------------------------------------------------------+
-| inout vec4 **COLOR**           | Color from vertex primitive multiplied by the CanvasItem's     |
-|                                | :ref:`modulate<class_CanvasItem_property_modulate>`            |
-|                                | multiplied by CanvasItem's                                     |
-|                                | :ref:`self_modulate<class_CanvasItem_property_self_modulate>`. |
-+--------------------------------+----------------------------------------------------------------+
-| inout float **POINT_SIZE**     | Point size for point drawing.                                  |
-+--------------------------------+----------------------------------------------------------------+
-| in vec4 **CUSTOM0**            | Custom value from vertex primitive.                            |
-+--------------------------------+----------------------------------------------------------------+
-| in vec4 **CUSTOM1**            | Custom value from vertex primitive.                            |
-+--------------------------------+----------------------------------------------------------------+
++--------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Tích hợp sẵn                   | Mô tả                                                                                                                                                                                                    |
++================================+==========================================================================================================================================================================================================+
+| in mat4 **MODEL_MATRIX**       | Phép biến đổi từ không gian cục bộ sang không gian thế giới. Không gian thế giới là hệ tọa độ bạn thường sử dụng trong editor.                                                                           |
++--------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in mat4 **CANVAS_MATRIX**      | Phép biến đổi từ không gian thế giới sang không gian canvas. Trong không gian canvas, gốc tọa độ là góc trên bên trái của màn hình và tọa độ nằm trong khoảng từ ``(0.0, 0.0)`` đến kích thước viewport. |
++--------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in mat4 **SCREEN_MATRIX**      | Phép biến đổi từ không gian canvas sang không gian clip. Trong không gian clip, tọa độ nằm trong khoảng từ ``(-1.0, -1.0)`` đến ``(1.0, 1.0).``                                                          |
++--------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in int **INSTANCE_ID**         | ID của instance dùng cho instancing.                                                                                                                                                                     |
++--------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec4 **INSTANCE_CUSTOM**    | Dữ liệu tùy chỉnh của instance.                                                                                                                                                                          |
++--------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in bool **AT_LIGHT_PASS**      | Luôn ``false``.                                                                                                                                                                                          |
++--------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec2 **TEXTURE_PIXEL_SIZE** | Kích thước pixel chuẩn hóa của texture 2D mặc định. Với một Sprite2D có texture kích thước 64×32 pixel, ``TEXTURE_PIXEL_SIZE`` = ``vec2(1.0 / 64.0, 1.0 / 32.0)``.                                       |
++--------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| inout vec2 **VERTEX**          | Vị trí vertex trong không gian cục bộ.                                                                                                                                                                   |
++--------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in int **VERTEX_ID**           | Chỉ mục của vertex hiện tại trong vertex buffer.                                                                                                                                                         |
++--------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| inout vec2 **UV**              | Tọa độ texture chuẩn hóa. Nằm trong khoảng từ ``0.0`` đến ``1.0``.                                                                                                                                       |
++--------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| inout vec4 **COLOR**           | Màu từ primitive của vertex được nhân với                                                                                                                                                                |
+|                                | :ref:`modulate<class_CanvasItem_property_modulate>` được nhân với CanvasItem's                                                                                                                           |
+|                                | :ref:`self_modulate<class_CanvasItem_property_self_modulate>`.                                                                                                                                           |
++--------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| inout float **POINT_SIZE**     | Kích thước điểm khi vẽ điểm.                                                                                                                                                                             |
++--------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec4 **CUSTOM0**            | Giá trị tùy chỉnh từ primitive của vertex.                                                                                                                                                               |
++--------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec4 **CUSTOM1**            | Giá trị tùy chỉnh từ primitive của vertex.                                                                                                                                                               |
++--------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 
-Fragment built-ins
-------------------
+Các biến tích hợp sẵn của fragment
+----------------------------------
 
-COLOR and TEXTURE
-~~~~~~~~~~~~~~~~~
+COLOR và TEXTURE
+~~~~~~~~~~~~~~~~
 
-The built-in variable ``COLOR`` is used for a few things:
+Biến tích hợp sẵn ``COLOR`` được dùng cho một số mục đích:
 
-  - In the ``vertex()`` function, ``COLOR`` contains the color from the vertex
-    primitive multiplied by the CanvasItem's
-    :ref:`modulate<class_CanvasItem_property_modulate>` multiplied by the
-    CanvasItem's :ref:`self_modulate<class_CanvasItem_property_self_modulate>`.
-  - In the ``fragment()`` function, the input value ``COLOR`` is that same value
-    multiplied by the color from the default ``TEXTURE`` (if present).
-  - In the ``fragment()`` function, ``COLOR`` is also the final output.
+  - Trong hàm ``vertex()``, ``COLOR`` chứa màu từ primitive của vertex được nhân với CanvasItem's
+    :ref:`modulate<class_CanvasItem_property_modulate>` được nhân với :ref:`self_modulate<class_CanvasItem_property_self_modulate>` của CanvasItem.
+  - Trong hàm ``fragment()``, giá trị đầu vào ``COLOR`` là giá trị đó được nhân với màu từ ``TEXTURE`` mặc định (nếu có).
+  - Trong hàm ``fragment()``, ``COLOR`` cũng là đầu ra cuối cùng.
 
-Certain nodes (for example, :ref:`Sprite2D <class_Sprite2D>`) display a texture
-by default, for example :ref:`texture <class_Sprite2D_property_texture>`. When
-using a custom ``fragment()`` function, you have a few options on how to sample
-this texture.
+Một số node (ví dụ :ref:`Sprite2D <class_Sprite2D>`) hiển thị texture theo mặc định, chẳng hạn :ref:`texture <class_Sprite2D_property_texture>`. Khi sử dụng hàm ``fragment()`` tùy chỉnh, bạn có một vài lựa chọn về cách sample texture này.
 
-To read only the contents of the default texture, ignoring the vertex ``COLOR``:
+Để chỉ đọc nội dung của texture mặc định, bỏ qua ``COLOR`` của vertex:
 
 .. code-block:: glsl
 
@@ -180,17 +146,16 @@ To read only the contents of the default texture, ignoring the vertex ``COLOR``:
     COLOR = texture(TEXTURE, UV);
   }
 
-To read the contents of the default texture multiplied by vertex ``COLOR``:
+Để đọc nội dung của texture mặc định được nhân với ``COLOR`` của vertex:
 
 .. code-block:: glsl
 
   void fragment() {
-    // Equivalent to an empty fragment() function, since COLOR is also the output variable.
+    // Tương đương với một hàm fragment() rỗng, vì COLOR cũng là biến đầu ra.
     COLOR = COLOR;
   }
 
-To read only the vertex ``COLOR`` in ``fragment()``, ignoring the main texture,
-you must pass ``COLOR`` as a varying, then read it in ``fragment()``:
+Để chỉ đọc ``COLOR`` của vertex trong ``fragment()``, bỏ qua texture chính, bạn phải truyền ``COLOR`` dưới dạng varying, sau đó đọc nó trong ``fragment()``:
 
 .. code-block:: glsl
 
@@ -205,94 +170,66 @@ you must pass ``COLOR`` as a varying, then read it in ``fragment()``:
 NORMAL
 ~~~~~~
 
-Similarly, if a normal map is used in the :ref:`CanvasTexture <class_CanvasTexture>`, Godot uses
-it by default and assigns its value to the built-in ``NORMAL`` variable. If you are using a normal
-map meant for use in 3D, it will appear inverted. In order to use it in your shader, you must assign
-it to the ``NORMAL_MAP`` property. Godot will handle converting it for use in 2D and overwriting ``NORMAL``.
+Tương tự, nếu một normal map được sử dụng trong :ref:`CanvasTexture <class_CanvasTexture>`, Godot sẽ sử dụng nó theo mặc định và gán giá trị của nó cho biến tích hợp sẵn ``NORMAL``. Nếu bạn đang sử dụng normal map dành cho 3D, nó sẽ hiển thị bị đảo ngược. Để sử dụng nó trong shader, bạn phải gán nó cho thuộc tính ``NORMAL_MAP``. Godot sẽ xử lý việc chuyển đổi để dùng trong 2D và ghi đè ``NORMAL``.
 
 .. code-block:: glsl
 
   NORMAL_MAP = texture(NORMAL_TEXTURE, UV).rgb;
 
-+---------------------------------------------+---------------------------------------------------------------+
-| Built-in                                    | Description                                                   |
-+=============================================+===============================================================+
-| in vec4 **FRAGCOORD**                       | Coordinate of pixel center. In screen space. ``xy`` specifies |
-|                                             | position in viewport. Upper-left of the viewport is the       |
-|                                             | origin, ``(0.0, 0.0)``. Bottom-right of the viewport is       |
-|                                             | ``(1.0, 1.0)``.                                               |
-+---------------------------------------------+---------------------------------------------------------------+
-| in vec2 **SCREEN_PIXEL_SIZE**               | Size of individual pixels. Equal to the inverse of resolution.|
-+---------------------------------------------+---------------------------------------------------------------+
-| in vec4 **REGION_RECT**                     | Visible area of the sprite region in format                   |
-|                                             | ``(x, y, width, height)``. Varies according to                |
-|                                             | Sprite2D's ``region_enabled`` property. Values are            |
-|                                             | normalized; for example, a 600×400 region on a 1000×800       |
-|                                             | texture with a 100×100 offset would be                        |
-|                                             | ``vec4(0.1, 0.125, 0.6, 0.5)``. Values may exceed the 0.0 to  |
-|                                             | 1.0 range if the X/Y offset is negative, or if the size       |
-|                                             | exceeds the texture's size.                                   |
-+---------------------------------------------+---------------------------------------------------------------+
-| in vec2 **POINT_COORD**                     | Coordinate for drawing points in the 0.0 to 1.0 range.        |
-+---------------------------------------------+---------------------------------------------------------------+
-| sampler2D **TEXTURE**                       | Default 2D texture.                                           |
-+---------------------------------------------+---------------------------------------------------------------+
-| in vec2 **TEXTURE_PIXEL_SIZE**              | Normalized pixel size of the default 2D texture.              |
-|                                             | For a Sprite2D with a texture of size 64×32 pixels,           |
-|                                             | ``TEXTURE_PIXEL_SIZE`` = ``vec2(1.0 / 64.0, 1.0 / 32.0)``.    |
-+---------------------------------------------+---------------------------------------------------------------+
-| in bool **AT_LIGHT_PASS**                   | Always ``false``.                                             |
-+---------------------------------------------+---------------------------------------------------------------+
-| sampler2D **SPECULAR_SHININESS_TEXTURE**    | Specular shininess texture of this object.                    |
-+---------------------------------------------+---------------------------------------------------------------+
-| in vec4 **SPECULAR_SHININESS**              | Specular shininess color, as sampled from the texture.        |
-+---------------------------------------------+---------------------------------------------------------------+
-| in vec2 **UV**                              | UV from the ``vertex()`` function.                            |
-|                                             | For a Sprite2D with region enabled, this will sample the      |
-|                                             | entire texture. Use ``REGION_RECT`` instead to sample only    |
-|                                             | the region defined in the Sprite2D's properties.              |
-+---------------------------------------------+---------------------------------------------------------------+
-| in vec2 **SCREEN_UV**                       | Screen UV coordinate for the current pixel.                   |
-+---------------------------------------------+---------------------------------------------------------------+
-| sampler2D **SCREEN_TEXTURE**                | Removed in Godot 4. Use a ``sampler2D`` with                  |
-|                                             | ``hint_screen_texture`` instead.                              |
-+---------------------------------------------+---------------------------------------------------------------+
-| inout vec3 **NORMAL**                       | Normal read from ``NORMAL_TEXTURE``. Writable.                |
-+---------------------------------------------+---------------------------------------------------------------+
-| sampler2D **NORMAL_TEXTURE**                | Default 2D normal texture.                                    |
-+---------------------------------------------+---------------------------------------------------------------+
-| out vec3 **NORMAL_MAP**                     | Configures normal maps meant for 3D for use in 2D. If used,   |
-|                                             | overrides ``NORMAL``.                                         |
-+---------------------------------------------+---------------------------------------------------------------+
-| out float **NORMAL_MAP_DEPTH**              | Normal map depth for scaling.                                 |
-+---------------------------------------------+---------------------------------------------------------------+
-| inout vec2 **VERTEX**                       | Pixel position in screen space.                               |
-+---------------------------------------------+---------------------------------------------------------------+
-| inout vec2 **SHADOW_VERTEX**                | Same as ``VERTEX`` but can be written to alter shadows.       |
-+---------------------------------------------+---------------------------------------------------------------+
-| inout vec3 **LIGHT_VERTEX**                 | Same as ``VERTEX`` but can be written to alter lighting.      |
-|                                             | Z component represents height.                                |
-+---------------------------------------------+---------------------------------------------------------------+
-| inout vec4 **COLOR**                        | ``COLOR`` from the ``vertex()`` function multiplied by the    |
-|                                             | ``TEXTURE`` color. Also output color value.                   |
-+---------------------------------------------+---------------------------------------------------------------+
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Tích hợp sẵn                             | Mô tả                                                                                                                                                                                                                                                                                                                                                                                            |
++==========================================+==================================================================================================================================================================================================================================================================================================================================================================================================+
+| in vec4 **FRAGCOORD**                    | Tọa độ tâm của pixel. Trong không gian màn hình. ``xy`` chỉ định vị trí trong viewport. Góc trên bên trái của viewport là gốc tọa độ, ``(0.0, 0.0)``. Góc dưới bên phải của viewport là ``(1.0, 1.0)``.                                                                                                                                                                                          |
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec2 **SCREEN_PIXEL_SIZE**            | Kích thước của từng pixel. Bằng nghịch đảo của độ phân giải.                                                                                                                                                                                                                                                                                                                                     |
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec4 **REGION_RECT**                  | Vùng hiển thị của sprite ở định dạng ``(x, y, width, height)``. Thay đổi tùy theo thuộc tính ``region_enabled`` của Sprite2D. Các giá trị được chuẩn hóa; ví dụ, vùng 600×400 trên texture 1000×800 với độ lệch 100×100 sẽ là ``vec4(0.1, 0.125, 0.6, 0.5)``. Các giá trị có thể vượt ngoài phạm vi từ 0.0 đến 1.0 nếu độ lệch X/Y là số âm hoặc nếu kích thước vượt quá kích thước của texture. |
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec2 **POINT_COORD**                  | Tọa độ dùng để vẽ các điểm trong phạm vi từ 0.0 đến 1.0.                                                                                                                                                                                                                                                                                                                                         |
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| sampler2D **TEXTURE**                    | Texture 2D mặc định.                                                                                                                                                                                                                                                                                                                                                                             |
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec2 **TEXTURE_PIXEL_SIZE**           | Kích thước pixel đã chuẩn hóa của texture 2D mặc định. Với Sprite2D có texture kích thước 64×32 pixel, ``TEXTURE_PIXEL_SIZE`` = ``vec2(1.0 / 64.0, 1.0 / 32.0)``.                                                                                                                                                                                                                                |
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in bool **AT_LIGHT_PASS**                | Luôn là ``false``.                                                                                                                                                                                                                                                                                                                                                                               |
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| sampler2D **SPECULAR_SHININESS_TEXTURE** | Texture độ bóng specular của đối tượng này.                                                                                                                                                                                                                                                                                                                                                      |
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec4 **SPECULAR_SHININESS**           | Màu độ bóng specular, được lấy mẫu từ texture.                                                                                                                                                                                                                                                                                                                                                   |
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec2 **UV**                           | UV từ hàm ``vertex()``. Với Sprite2D bật region, giá trị này sẽ lấy mẫu toàn bộ texture. Thay vào đó, hãy dùng ``REGION_RECT`` để chỉ lấy mẫu region được xác định trong các thuộc tính của Sprite2D.                                                                                                                                                                                            |
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec2 **SCREEN_UV**                    | Tọa độ UV trên màn hình của pixel hiện tại.                                                                                                                                                                                                                                                                                                                                                      |
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| sampler2D **SCREEN_TEXTURE**             | Đã bị xóa trong Godot 4. Thay vào đó, hãy dùng ``sampler2D`` với ``hint_screen_texture``.                                                                                                                                                                                                                                                                                                        |
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| inout vec3 **NORMAL**                    | Normal được đọc từ ``NORMAL_TEXTURE``. Có thể ghi.                                                                                                                                                                                                                                                                                                                                               |
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| sampler2D **NORMAL_TEXTURE**             | Texture normal 2D mặc định.                                                                                                                                                                                                                                                                                                                                                                      |
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| out vec3 **NORMAL_MAP**                  | Cấu hình normal map dành cho 3D để sử dụng trong 2D. Nếu được sử dụng, giá trị này sẽ ghi đè ``NORMAL``.                                                                                                                                                                                                                                                                                         |
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| out float **NORMAL_MAP_DEPTH**           | Độ sâu của normal map để scale.                                                                                                                                                                                                                                                                                                                                                                  |
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| inout vec2 **VERTEX**                    | Vị trí pixel trong không gian màn hình.                                                                                                                                                                                                                                                                                                                                                          |
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| inout vec2 **SHADOW_VERTEX**             | Giống ``VERTEX``, nhưng có thể ghi để thay đổi bóng.                                                                                                                                                                                                                                                                                                                                             |
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| inout vec3 **LIGHT_VERTEX**              | Giống ``VERTEX``, nhưng có thể ghi để thay đổi ánh sáng. Thành phần Z biểu thị độ cao.                                                                                                                                                                                                                                                                                                           |
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| inout vec4 **COLOR**                     | ``COLOR`` từ hàm ``vertex()`` được nhân với màu ``TEXTURE``. Đồng thời là giá trị màu đầu ra.                                                                                                                                                                                                                                                                                                    |
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Light built-ins
----------------
+Các biến dựng sẵn của ánh sáng
+------------------------------
 
-Light processor functions work differently in Godot 4.x than they did in Godot
-3.x. In Godot 4.x all lighting is done during the regular draw pass. In other
-words, Godot no longer draws the object again for each light.
+Các hàm xử lý ánh sáng hoạt động khác trong Godot 4.x so với Godot 3.x. Trong Godot 4.x, tất cả ánh sáng đều được xử lý trong lượt vẽ thông thường. Nói cách khác, Godot không còn vẽ lại đối tượng cho từng nguồn sáng.
 
-Use the ``unshaded`` render mode if you do not want the ``light()`` function to
-run. Use the ``light_only`` render mode if you only want to see the impact of
-lighting on an object; this can be useful when you only want the object visible
-where it is covered by light.
+Sử dụng render mode ``unshaded`` nếu bạn không muốn hàm ``light()`` chạy. Sử dụng render mode ``light_only`` nếu bạn chỉ muốn xem tác động của ánh sáng lên một đối tượng; điều này hữu ích khi bạn chỉ muốn đối tượng hiển thị ở nơi nó được ánh sáng phủ lên.
 
-If you define a ``light()`` function it will replace the built-in light function,
-even if your light function is empty.
+Nếu bạn định nghĩa hàm ``light()``, hàm đó sẽ thay thế hàm ánh sáng dựng sẵn, ngay cả khi hàm ánh sáng của bạn để trống.
 
-Below is an example of a light shader that takes a CanvasItem's normal map into account:
+Dưới đây là ví dụ về một light shader có tính đến normal map của CanvasItem:
 
 .. code-block:: glsl
 
@@ -301,74 +238,62 @@ Below is an example of a light shader that takes a CanvasItem's normal map into 
     LIGHT = vec4(LIGHT_COLOR.rgb * COLOR.rgb * LIGHT_ENERGY * cNdotL, LIGHT_COLOR.a);
   }
 
-+----------------------------------+------------------------------------------------------------------------------+
-| Built-in                         | Description                                                                  |
-+==================================+==============================================================================+
-| in vec4 **FRAGCOORD**            | Coordinate of pixel center. In screen space. ``xy`` specifies                |
-|                                  | position in viewport. Upper-left of the viewport is the origin,              |
-|                                  | ``(0.0, 0.0)``. Bottom-right of the viewport is ``(1.0, 1.0)``.              |
-+----------------------------------+------------------------------------------------------------------------------+
-| in vec3 **NORMAL**               | Input normal.                                                                |
-+----------------------------------+------------------------------------------------------------------------------+
-| in vec4 **COLOR**                | Input color. This is the output of the ``fragment()`` function.              |
-+----------------------------------+------------------------------------------------------------------------------+
-| in vec2 **UV**                   | UV from the ``vertex()`` function, equivalent to the UV in the               |
-|                                  | ``fragment()`` function.                                                     |
-+----------------------------------+------------------------------------------------------------------------------+
-| sampler2D **TEXTURE**            | Current texture in use for the CanvasItem.                                   |
-+----------------------------------+------------------------------------------------------------------------------+
-| in vec2 **TEXTURE_PIXEL_SIZE**   | Normalized pixel size of ``TEXTURE``.                                        |
-|                                  | For a Sprite2D with a ``TEXTURE`` of size 64×32 pixels,                      |
-|                                  | ``TEXTURE_PIXEL_SIZE`` = ``vec2(1.0 / 64.0, 1.0 / 32.0)``.                   |
-+----------------------------------+------------------------------------------------------------------------------+
-| in vec2 **SCREEN_UV**            | Screen UV coordinate for the current pixel.                                  |
-+----------------------------------+------------------------------------------------------------------------------+
-| in vec2 **POINT_COORD**          | UV for Point Sprite.                                                         |
-+----------------------------------+------------------------------------------------------------------------------+
-| in vec4 **LIGHT_COLOR**          | :ref:`Color<class_Light2D_property_color>` of the :ref:`class_Light2D`.      |
-|                                  | If the light is a :ref:`class_PointLight2D`, multiplied by the light's       |
-|                                  | :ref:`texture<class_PointLight2D_property_texture>`.                         |
-+----------------------------------+------------------------------------------------------------------------------+
-| in float **LIGHT_ENERGY**        | :ref:`Energy multiplier<class_Light2D_property_energy>` of the               |
-|                                  | :ref:`class_Light2D`.                                                        |
-+----------------------------------+------------------------------------------------------------------------------+
-| in vec3 **LIGHT_POSITION**       | Position of the :ref:`class_Light2D` in screen space. If using a             |
-|                                  | :ref:`class_DirectionalLight2D` this is always ``(0.0, 0.0, 0.0)``.          |
-+----------------------------------+------------------------------------------------------------------------------+
-| in vec3 **LIGHT_DIRECTION**      | Direction of the :ref:`class_Light2D` in screen space.                       |
-+----------------------------------+------------------------------------------------------------------------------+
-| in bool **LIGHT_IS_DIRECTIONAL** | ``true`` if this pass is a :ref:`class_DirectionalLight2D`.                  |
-+----------------------------------+------------------------------------------------------------------------------+
-| in vec3 **LIGHT_VERTEX**         | Pixel position, in screen space as modified in the ``fragment()`` function.  |
-+----------------------------------+------------------------------------------------------------------------------+
-| inout vec4 **LIGHT**             | Output color for this :ref:`class_Light2D`.                                  |
-+----------------------------------+------------------------------------------------------------------------------+
-| in vec4 **SPECULAR_SHININESS**   | Specular shininess, as set in the object's texture.                          |
-+----------------------------------+------------------------------------------------------------------------------+
-| out vec4 **SHADOW_MODULATE**     | Multiply shadows cast at this point by this color.                           |
-+----------------------------------+------------------------------------------------------------------------------+
++----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Built-in                         | Mô tả                                                                                                                                                                                                   |
++==================================+=========================================================================================================================================================================================================+
+| in vec4 **FRAGCOORD**            | Tọa độ tâm của pixel. Trong không gian màn hình. ``xy`` chỉ định vị trí trong viewport. Góc trên bên trái của viewport là gốc tọa độ, ``(0.0, 0.0)``. Góc dưới bên phải của viewport là ``(1.0, 1.0)``. |
++----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec3 **NORMAL**               | Normal đầu vào.                                                                                                                                                                                         |
++----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec4 **COLOR**                | Màu đầu vào. Đây là đầu ra của hàm ``fragment()``.                                                                                                                                                      |
++----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec2 **UV**                   | UV từ hàm ``vertex()``, tương đương với UV trong hàm ``fragment()``.                                                                                                                                    |
++----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| sampler2D **TEXTURE**            | Texture hiện đang được sử dụng cho CanvasItem.                                                                                                                                                          |
++----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec2 **TEXTURE_PIXEL_SIZE**   | Kích thước pixel chuẩn hóa của ``TEXTURE``. Đối với một Sprite2D có ``TEXTURE`` kích thước 64×32 pixel, ``TEXTURE_PIXEL_SIZE`` = ``vec2(1.0 / 64.0, 1.0 / 32.0)``.                                      |
++----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec2 **SCREEN_UV**            | Tọa độ UV trên màn hình của pixel hiện tại.                                                                                                                                                             |
++----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec2 **POINT_COORD**          | UV của Point Sprite.                                                                                                                                                                                    |
++----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec4 **LIGHT_COLOR**          | :ref:`Color<class_Light2D_property_color>` của :ref:`class_Light2D`. Nếu ánh sáng là một :ref:`class_PointLight2D`, được nhân với màu của ánh sáng                                                      |
+|                                  | :ref:`texture<class_PointLight2D_property_texture>`.                                                                                                                                                    |
++----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in float **LIGHT_ENERGY**        | :ref:`Hệ số năng lượng <class_Light2D_property_energy>` của                                                                                                                                             |
+|                                  | :ref:`class_Light2D`.                                                                                                                                                                                   |
++----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec3 **LIGHT_POSITION**       | Vị trí của :ref:`class_Light2D` trong không gian màn hình. Nếu sử dụng một                                                                                                                              |
+|                                  | :ref:`class_DirectionalLight2D` thì giá trị này luôn là ``(0.0, 0.0, 0.0)``.                                                                                                                            |
++----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec3 **LIGHT_DIRECTION**      | Hướng của :ref:`class_Light2D` trong không gian màn hình.                                                                                                                                               |
++----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in bool **LIGHT_IS_DIRECTIONAL** | ``true`` nếu pass này là một :ref:`class_DirectionalLight2D`.                                                                                                                                           |
++----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec3 **LIGHT_VERTEX**         | Vị trí pixel trong không gian màn hình, đã được sửa đổi trong hàm ``fragment()``.                                                                                                                       |
++----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| inout vec4 **LIGHT**             | Màu đầu ra cho :ref:`class_Light2D` này.                                                                                                                                                                |
++----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec4 **SPECULAR_SHININESS**   | Độ bóng specular, được thiết lập trong texture của đối tượng.                                                                                                                                           |
++----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| out vec4 **SHADOW_MODULATE**     | Nhân các bóng đổ tại điểm này với màu này.                                                                                                                                                              |
++----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-SDF functions
--------------
+Các hàm SDF
+-----------
 
-There are a few additional functions implemented to sample an automatically
-generated Signed Distance Field texture. These functions are available in the ``fragment()``
-and ``light()`` functions of CanvasItem shaders. Custom functions may also use them as long
-as they are called from supported functions.
+Có một số hàm bổ sung được triển khai để lấy mẫu texture Signed Distance Field được tự động tạo. Các hàm này khả dụng trong các hàm ``fragment()`` và ``light()`` của shader CanvasItem. Các hàm tùy chỉnh cũng có thể sử dụng chúng, miễn là được gọi từ các hàm được hỗ trợ.
 
-The signed distance field is generated from :ref:`class_LightOccluder2D` nodes
-present in the scene with the **SDF Collision** property enabled (which is the
-default). See the :ref:`2D lights and shadows <doc_2d_lights_and_shadows_setting_up_shadows>`
-documentation for more information.
+Signed distance field được tạo từ các node :ref:`class_LightOccluder2D` có trong cảnh với thuộc tính **SDF Collision** được bật (đây là mặc định). Hãy xem tài liệu :ref:`2D lights and shadows <doc_2d_lights_and_shadows_setting_up_shadows>` để biết thêm thông tin.
 
-+-----------------------------------------------+-------------------------------------------+
-| Function                                      | Description                               |
-+===============================================+===========================================+
-| float **texture_sdf** (vec2 sdf_pos)          | Performs an SDF texture lookup.           |
-+-----------------------------------------------+-------------------------------------------+
-| vec2 **texture_sdf_normal** (vec2 sdf_pos)    | Calculates a normal from the SDF texture. |
-+-----------------------------------------------+-------------------------------------------+
-| vec2 **sdf_to_screen_uv** (vec2 sdf_pos)      | Converts an SDF to screen UV.             |
-+-----------------------------------------------+-------------------------------------------+
-| vec2 **screen_uv_to_sdf** (vec2 uv)           | Converts screen UV to an SDF.             |
-+-----------------------------------------------+-------------------------------------------+
++--------------------------------------------+--------------------------------------+
+| Hàm                                        | Mô tả                                |
++============================================+======================================+
+| float **texture_sdf** (vec2 sdf_pos)       | Thực hiện tra cứu texture SDF.       |
++--------------------------------------------+--------------------------------------+
+| vec2 **texture_sdf_normal** (vec2 sdf_pos) | Tính toán pháp tuyến từ texture SDF. |
++--------------------------------------------+--------------------------------------+
+| vec2 **sdf_to_screen_uv** (vec2 sdf_pos)   | Chuyển đổi SDF sang UV màn hình.     |
++--------------------------------------------+--------------------------------------+
+| vec2 **screen_uv_to_sdf** (vec2 uv)        | Chuyển đổi UV màn hình sang SDF.     |
++--------------------------------------------+--------------------------------------+

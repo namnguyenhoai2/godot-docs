@@ -1,48 +1,31 @@
-:article_outdated: True
+:article_outdated: Đúng
 
 .. _doc_custom_gui_controls:
 
-Custom GUI controls
-===================
+Các control GUI tùy chỉnh
+=========================
 
-So many controls...
--------------------
+Có quá nhiều control...
+-----------------------
 
-Yet there are never enough. Creating your own custom controls that act
-just the way you want them to is an obsession of almost every GUI
-programmer. Godot provides plenty of them, but they may not work exactly
-the way you want. Before contacting the developers with a pull-request
-to support diagonal scrollbars, at least it will be good to know how to
-create these controls easily from script.
+Thế nhưng chẳng bao giờ là đủ. Tạo các control tùy chỉnh của riêng bạn, hoạt động chính xác theo cách bạn muốn, là niềm say mê của hầu hết mọi lập trình viên GUI. Godot cung cấp rất nhiều control, nhưng chúng có thể không hoạt động chính xác theo cách bạn muốn. Trước khi liên hệ với các nhà phát triển bằng một pull request để hỗ trợ thanh cuộn chéo, ít nhất bạn cũng nên biết cách dễ dàng tạo các control này bằng script.
 
-Drawing
--------
+Vẽ
+--
 
-For drawing, it is recommended to check the :ref:`doc_custom_drawing_in_2d` tutorial.
-The same applies. Some functions are worth mentioning due to their
-usefulness when drawing, so they will be detailed next:
+Để vẽ, bạn nên xem tutorial :ref:`doc_custom_drawing_in_2d`. Điều tương tự cũng được áp dụng ở đây. Một số hàm đáng được đề cập do tính hữu ích khi vẽ, vì vậy chúng sẽ được trình bày chi tiết tiếp theo:
 
-Checking control size
-~~~~~~~~~~~~~~~~~~~~~
+Kiểm tra kích thước control
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Unlike 2D nodes, "size" is important with controls, as it helps to
-organize them in proper layouts. For this, the
-:ref:`Control.size <class_Control_property_size>`
-property is provided. Checking it during ``_draw()`` is vital to ensure
-everything is kept in-bounds.
+Không giống các node 2D, "kích thước" rất quan trọng đối với control, vì nó giúp sắp xếp chúng trong các layout phù hợp. Để làm vậy,
+thuộc tính :ref:`Control.size <class_Control_property_size>` được cung cấp. Việc kiểm tra thuộc tính này trong ``_draw()`` là rất quan trọng để đảm bảo mọi thứ luôn nằm trong phạm vi.
 
-Checking focus
+Kiểm tra focus
 ~~~~~~~~~~~~~~
 
-Some controls (such as buttons or text editors) might provide input
-focus for keyboard or joypad input. Examples of this are entering text
-or pressing a button. This is controlled with the
-:ref:`Control.focus_mode <class_Control_property_focus_mode>`
-property. When drawing, and if the control supports input focus, it is
-always desired to show some sort of indicator (highlight, box, etc.) to
-indicate that this is the currently focused control. To check for this
-status, the :ref:`Control.has_focus() <class_Control_method_has_focus>` method
-exists. Example
+Một số control (chẳng hạn như button hoặc trình soạn thảo văn bản) có thể cung cấp input focus cho input từ bàn phím hoặc joypad. Ví dụ như nhập văn bản hoặc nhấn button. Điều này được điều khiển bằng thuộc tính
+:ref:`Control.focus_mode <class_Control_property_focus_mode>`. Khi vẽ, nếu control hỗ trợ input focus, bạn luôn nên hiển thị một dạng chỉ báo nào đó (vùng đánh dấu, khung, v.v.) để cho biết đây là control hiện đang được focus. Để kiểm tra trạng thái này, có phương thức :ref:`Control.has_focus() <class_Control_method_has_focus>`. Ví dụ
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -67,20 +50,13 @@ exists. Example
         }
     }
 
-Sizing
-------
+Định cỡ
+-------
 
-As mentioned before, size is important to controls. This allows
-them to lay out properly, when set into grids, containers, or anchored.
-Controls, most of the time, provide a *minimum size* to help properly
-lay them out. For example, if controls are placed vertically on top of
-each other using a :ref:`VBoxContainer <class_VBoxContainer>`,
-the minimum size will make sure your custom control is not squished by
-the other controls in the container.
+Như đã đề cập trước đó, kích thước rất quan trọng đối với control. Điều này cho phép chúng được bố trí đúng cách khi đặt vào grid, container hoặc neo. Hầu hết thời gian, control cung cấp *minimum size* để giúp bố trí chúng đúng cách. Ví dụ, nếu các control được xếp dọc chồng lên nhau bằng :ref:`VBoxContainer <class_VBoxContainer>`, minimum size sẽ đảm bảo custom control của bạn không bị các control khác trong container ép quá nhỏ.
 
-To provide this callback, just override
-:ref:`Control._get_minimum_size() <class_Control_private_method__get_minimum_size>`,
-for example:
+Để cung cấp callback này, chỉ cần override
+:ref:`Control._get_minimum_size() <class_Control_private_method__get_minimum_size>`, ví dụ:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -95,7 +71,7 @@ for example:
         return new Vector2(20, 20);
     }
 
-Alternatively, set it using a function:
+Ngoài ra, bạn có thể đặt nó bằng một function:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -113,25 +89,20 @@ Alternatively, set it using a function:
 Input
 -----
 
-Controls provide a few helpers to make managing input events much easier
-than regular nodes.
+Control cung cấp một số helper giúp việc quản lý các sự kiện input dễ dàng hơn nhiều so với các node thông thường.
 
-Input events
-~~~~~~~~~~~~
+Sự kiện input
+~~~~~~~~~~~~~
 
-There are a few tutorials about input before this one, but it's worth
-mentioning that controls have a special input method that only works
-when:
+Có một số tutorial về input trước tutorial này, nhưng đáng lưu ý rằng control có một phương thức input đặc biệt, chỉ hoạt động khi:
 
--  The mouse pointer is over the control.
--  The button was pressed over this control (control always
-   captures input until button is released)
--  Control provides keyboard/joypad focus via
+-  Con trỏ chuột nằm trên control.
+-  Button được nhấn trên control này (control luôn bắt input cho đến khi button được thả)
+-  Control cung cấp focus từ bàn phím/joypad thông qua
    :ref:`Control.focus_mode <class_Control_property_focus_mode>`.
 
-This function is
-:ref:`Control._gui_input() <class_Control_private_method__gui_input>`.
-To use it, override it in your control. No processing needs to be set.
+Hàm này là
+:ref:`Control._gui_input() <class_Control_private_method__gui_input>`. Để sử dụng, hãy override nó trong control của bạn. Không cần thiết lập processing.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -152,14 +123,12 @@ To use it, override it in your control. No processing needs to be set.
         }
     }
 
-For more information about events themselves, check the :ref:`doc_inputevent`
-tutorial.
+Để biết thêm thông tin về bản thân các event, hãy xem tutorial :ref:`doc_inputevent`.
 
 Notifications
 ~~~~~~~~~~~~~
 
-Controls also have many useful notifications for which no dedicated callback
-exists, but which can be checked with the _notification callback:
+Control cũng có nhiều notification hữu ích không có callback chuyên dụng, nhưng bạn có thể kiểm tra chúng bằng callback _notification:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -167,25 +136,25 @@ exists, but which can be checked with the _notification callback:
     func _notification(what):
         match what:
             NOTIFICATION_MOUSE_ENTER:
-                pass # Mouse entered the area of this control.
+                pass # Chuột đi vào vùng của control này.
             NOTIFICATION_MOUSE_EXIT:
-                pass # Mouse exited the area of this control.
+                pass # Chuột rời khỏi vùng của control này.
             NOTIFICATION_FOCUS_ENTER:
-                pass # Control gained focus.
+                pass # Control nhận được focus.
             NOTIFICATION_FOCUS_EXIT:
-                pass # Control lost focus.
+                pass # Control mất focus.
             NOTIFICATION_THEME_CHANGED:
-                pass # Theme used to draw the control changed;
-                # update and redraw is recommended if using a theme.
+                pass # Theme dùng để vẽ control đã thay đổi;
+                # nên update và vẽ lại nếu đang sử dụng theme.
             NOTIFICATION_VISIBILITY_CHANGED:
-                pass # Control became visible/invisible;
-                # check new status with is_visible().
+                pass # Control trở nên hiển thị/ẩn;
+                # kiểm tra trạng thái mới bằng is_visible().
             NOTIFICATION_RESIZED:
-                pass # Control changed size; check new size
-                # with get_size().
+                pass # Kích thước control đã thay đổi; kiểm tra kích thước mới
+                # bằng get_size().
             NOTIFICATION_MODAL_CLOSE:
-                pass # For modal pop-ups, notification
-                # that the pop-up was closed.
+                pass # Đối với các cửa sổ bật lên dạng modal, notification
+                # cho biết cửa sổ bật lên đã được đóng.
 
  .. code-tab:: csharp
 
@@ -194,37 +163,37 @@ exists, but which can be checked with the _notification callback:
         switch (what)
         {
             case NotificationMouseEnter:
-                // Mouse entered the area of this control.
+                // Chuột đi vào vùng của control này.
                 break;
 
             case NotificationMouseExit:
-                // Mouse exited the area of this control.
+                // Chuột rời khỏi vùng của control này.
                 break;
 
             case NotificationFocusEnter:
-                // Control gained focus.
+                // Control nhận được focus.
                 break;
 
             case NotificationFocusExit:
-                // Control lost focus.
+                // Control mất focus.
                 break;
 
             case NotificationThemeChanged:
-                // Theme used to draw the control changed;
-                // update and redraw is recommended if using a theme.
+                // Theme dùng để vẽ control đã thay đổi;
+                // nên update và vẽ lại nếu đang sử dụng theme.
                 break;
 
             case NotificationVisibilityChanged:
-                // Control became visible/invisible;
-                // check new status with is_visible().
+                // Control trở nên hiển thị/ẩn;
+                // kiểm tra trạng thái mới bằng is_visible().
                 break;
 
             case NotificationResized:
-                // Control changed size; check new size with get_size().
+                // Kích thước control đã thay đổi; kiểm tra kích thước mới bằng get_size().
                 break;
 
             case NotificationModalClose:
-                // For modal pop-ups, notification that the pop-up was closed.
+                // Đối với các cửa sổ bật lên dạng modal, notification cho biết cửa sổ bật lên đã được đóng.
                 break;
         }
     }

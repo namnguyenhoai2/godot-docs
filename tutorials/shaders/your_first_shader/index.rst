@@ -1,19 +1,14 @@
 :allow_comments: False
 
-Your first shader
-=================
+Shader đầu tiên của bạn
+=======================
 
-This tutorial series will walk you through writing your first shader. It is intended
-for people who have very little prior experience with shaders and want to get started
-with the basics. This tutorial will not cover advanced topics and it is not
-comprehensive. For a comprehensive and detailed overview of shaders in Godot see the
-:ref:`Shading Reference Page <toc-shading-reference>`.
+Loạt hướng dẫn này sẽ hướng dẫn bạn viết shader đầu tiên. Loạt bài dành cho những người có rất ít kinh nghiệm trước đây về shader và muốn bắt đầu với những kiến thức cơ bản. Hướng dẫn này không đề cập đến các chủ đề nâng cao và không mang tính toàn diện. Để xem tổng quan toàn diện và chi tiết về shader trong Godot, hãy xem
+:ref:`Trang tham khảo về Shading <toc-shading-reference>`.
 
-The "your first shader" tutorials walk you through the process of writing a shader
-step-by-step.
+Các hướng dẫn "shader đầu tiên của bạn" sẽ hướng dẫn bạn từng bước trong quá trình viết shader.
 
-For a more general introduction into shaders and the OpenGL Shading Language, use
-`The Book of Shaders <https://thebookofshaders.com>`_.
+Để có phần giới thiệu tổng quát hơn về shader và Ngôn ngữ Shading của OpenGL, hãy sử dụng `The Book of Shaders <https://thebookofshaders.com>`_.
 
 .. toctree::
    :maxdepth: 1
@@ -22,3 +17,5 @@ For a more general introduction into shaders and the OpenGL Shading Language, us
    your_first_2d_shader
    your_first_3d_shader
    your_second_3d_shader
+
+.. _`The Book of Shaders`: https://thebookofshaders.com

@@ -1,11 +1,11 @@
 .. _doc_gdscript_reference:
 
-Tham chiếu GDScript
-===================
+GDScript cơ bản
+================
 
-:ref:`GDScript <doc_gdscript>` là một ngôn ngữ lập trình cấp cao, `hướng đối tượng <https://en.wikipedia.org/wiki/Object-oriented_programming>`_, `mệnh lệnh <https://en.wikipedia.org/wiki/Imperative_programming>`_ và `kiểu dữ liệu dần dần <https://en.wikipedia.org/wiki/Gradual_typing>`_, được xây dựng cho Godot. Ngôn ngữ này sử dụng cú pháp dựa trên thụt lề tương tự các ngôn ngữ như `Python <https://en.wikipedia.org/wiki/Python_%28programming_language%29>`_. Mục tiêu của nó là được tối ưu hóa và tích hợp chặt chẽ với Godot Engine, cho phép linh hoạt tối đa trong việc tạo và tích hợp nội dung.
+:ref:`GDScript <doc_gdscript>` là một ngôn ngữ lập trình cấp cao, `hướng đối tượng <https://en.wikipedia.org/wiki/Object-oriented_programming>`_, `mệnh lệnh <https://en.wikipedia.org/wiki/Imperative_programming>`_ và `định kiểu dần <https://en.wikipedia.org/wiki/Gradual_typing>`_, được xây dựng cho Godot. Ngôn ngữ này sử dụng cú pháp dựa trên thụt lề, tương tự các ngôn ngữ như `Python <https://en.wikipedia.org/wiki/Python_%28programming_language%29>`_. Mục tiêu của nó là được tối ưu hóa cho Godot Engine và tích hợp chặt chẽ với Godot Engine, cho phép linh hoạt cao trong việc tạo nội dung và tích hợp.
 
-GDScript hoàn toàn độc lập với Python và không dựa trên nó.
+GDScript hoàn toàn độc lập với Python và không dựa trên Python.
 
 Lịch sử
 -------
@@ -13,29 +13,29 @@ Lịch sử
 .. note::
 
     Tài liệu về lịch sử của GDScript đã được chuyển đến
-    :ref:`Frequently Asked Questions <doc_faq_what_is_gdscript>`.
+    :ref:`Các câu hỏi thường gặp <doc_faq_what_is_gdscript>`.
 
 Ví dụ về GDScript
 -----------------
 
-Một số người có thể học tốt hơn khi xem cú pháp, vì vậy dưới đây là ví dụ về diện mạo của GDScript.
+Một số người học tốt hơn khi xem qua cú pháp, vì vậy sau đây là một ví dụ về diện mạo của GDScript.
 
-::
+.. code-block::
 
-    # Everything after "#" is a comment.
-    # A file is a class!
+    # Mọi thứ sau "#" đều là chú thích.
+    # Một tệp là một class!
 
-    # (optional) icon to show in the editor dialogs:
+    # (tùy chọn) biểu tượng hiển thị trong các hộp thoại của trình chỉnh sửa:
     @icon("res://path/to/optional/icon.svg")
 
-    # (optional) class definition:
+    # (tùy chọn) định nghĩa class:
     class_name MyClass
 
-    # Inheritance:
+    # Kế thừa:
     extends BaseClass
 
 
-    # Member variables.
+    # Các biến thành viên.
     var a = 5
     var s = "Hello"
     var arr = [1, 2, 3]
@@ -44,20 +44,20 @@ Một số người có thể học tốt hơn khi xem cú pháp, vì vậy dư�
     var typed_var: int
     var inferred_type := "String"
 
-    # Constants.
+    # Các hằng số.
     const ANSWER = 42
     const THE_NAME = "Charly"
 
-    # Enums.
+    # Các enum.
     enum {UNIT_NEUTRAL, UNIT_ENEMY, UNIT_ALLY}
     enum Named {THING_1, THING_2, ANOTHER_THING = -1}
 
-    # Built-in vector types.
+    # Các kiểu vector tích hợp sẵn.
     var v2 = Vector2(1, 2)
     var v3 = Vector3(1, 2, 3)
 
 
-    # Function, with a default value for the last parameter.
+    # Hàm, với giá trị mặc định cho tham số cuối cùng.
     func some_function(param1, param2, param3 = 123):
         const local_const = 5
 
@@ -84,43 +84,43 @@ Một số người có thể học tốt hơn khi xem cú pháp, vì vậy dư�
         return local_var
 
 
-    # Functions override functions with the same name on the base/super class.
+    # Các hàm ghi đè những hàm có cùng tên trong class cơ sở/super.
     # If you still want to call them, use "super":
     func something(p1, p2):
         super(p1, p2)
 
 
-    # It's also possible to call another function in the super class:
+    # Bạn cũng có thể gọi một hàm khác trong class super:
     func other_something(p1, p2):
         super.something(p1, p2)
 
 
-    # Inner class
+    # Class bên trong
     class Something:
         var a = 10
 
 
-    # Constructor
+    # Hàm dựng
     func _init():
         print("Constructed!")
         var lv = Something.new()
         print(lv.a)
 
-Nếu bạn đã có kinh nghiệm với các ngôn ngữ kiểu tĩnh như C, C++ hoặc C# nhưng chưa từng sử dụng ngôn ngữ kiểu động, bạn nên đọc hướng dẫn này: :ref:`doc_gdscript_more_efficiently`.
+Nếu bạn đã có kinh nghiệm với các ngôn ngữ định kiểu tĩnh như C, C++ hoặc C# nhưng chưa từng sử dụng ngôn ngữ định kiểu động, bạn nên đọc tutorial này: :ref:`doc_gdscript_more_efficiently`.
 
 Định danh
 ---------
 
-Bất kỳ chuỗi nào chỉ gồm các ký tự chữ cái (``a`` đến ``z`` và ``A`` đến ``Z``), chữ số (``0`` đến ``9``) và ``_`` đều đủ điều kiện làm định danh. Ngoài ra, định danh không được bắt đầu bằng chữ số. Định danh phân biệt chữ hoa chữ thường (``foo`` khác với ``FOO``).
+Bất kỳ chuỗi nào chỉ bao gồm các ký tự chữ cái (``a`` đến ``z`` và ``A`` đến ``Z``), chữ số (``0`` đến ``9``) và ``_`` đều đủ điều kiện làm định danh. Ngoài ra, định danh không được bắt đầu bằng chữ số. Định danh phân biệt chữ hoa chữ thường (``foo`` khác với ``FOO``).
 
-Định danh cũng có thể chứa hầu hết các ký tự Unicode thuộc `UAX#31 <https://www.unicode.org/reports/tr31/>`__. Điều này cho phép bạn sử dụng tên định danh được viết bằng các ngôn ngữ ngoài tiếng Anh. Các ký tự Unicode được xem là "dễ nhầm lẫn" với ký tự ASCII và emoji không được phép dùng trong định danh.
+Định danh cũng có thể chứa hầu hết các ký tự Unicode thuộc `UAX#31 <https://www.unicode.org/reports/tr31/>`__. Điều này cho phép bạn sử dụng tên định danh được viết bằng các ngôn ngữ khác ngoài tiếng Anh. Các ký tự Unicode được xem là "dễ gây nhầm lẫn" với ký tự ASCII và emoji không được phép dùng trong định danh.
 
 Từ khóa
 -------
 
-Sau đây là danh sách các từ khóa được ngôn ngữ hỗ trợ. Vì từ khóa là các từ dành riêng (token), chúng không thể được sử dụng làm định danh. Toán tử (như ``in``, ``not``, ``and`` hoặc ``or``) và tên các kiểu dựng sẵn được liệt kê trong các phần sau cũng được dành riêng.
+Sau đây là danh sách các từ khóa được ngôn ngữ hỗ trợ. Vì từ khóa là các từ dành riêng (token), chúng không thể được dùng làm định danh. Các toán tử (như ``in``, ``not``, ``and`` hoặc ``or``) và tên của các kiểu tích hợp sẵn được liệt kê trong các phần sau cũng là từ dành riêng.
 
-Các từ khóa được định nghĩa trong `GDScript tokenizer <https://github.com/godotengine/godot/blob/master/modules/gdscript/gdscript_tokenizer.cpp>`_ nếu bạn muốn xem chi tiết bên trong.
+Các từ khóa được định nghĩa trong `trình tokenizer GDScript <https://github.com/godotengine/godot/blob/master/modules/gdscript/gdscript_tokenizer.cpp>`_ nếu bạn muốn tìm hiểu chi tiết bên trong.
 
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Từ khóa    | Mô tả                                                                                                                                                                                                                                              |
@@ -137,39 +137,39 @@ Các từ khóa được định nghĩa trong `GDScript tokenizer <https://githu
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | match      | Xem match_.                                                                                                                                                                                                                                        |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| when       | Được `pattern guards <Pattern guards_>`_ sử dụng trong các câu lệnh ``match``.                                                                                                                                                                     |
+| when       | Được sử dụng bởi `các guard của pattern <Pattern guards_>`_ trong các câu lệnh ``match``.                                                                                                                                                          |
 |            |                                                                                                                                                                                                                                                    |
 |            | .. _`pattern guards`: Pattern guards_                                                                                                                                                                                                              |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| break      | Thoát khỏi việc thực thi vòng lặp ``for`` hoặc ``while`` hiện tại.                                                                                                                                                                                 |
+| break      | Thoát khỏi quá trình thực thi vòng lặp ``for`` hoặc ``while`` hiện tại.                                                                                                                                                                            |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| continue   | Ngay lập tức chuyển sang lần lặp tiếp theo của vòng lặp ``for`` hoặc ``while``.                                                                                                                                                                    |
+| continue   | Ngay lập tức chuyển đến lần lặp tiếp theo của vòng lặp ``for`` hoặc ``while``.                                                                                                                                                                     |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| pass       | Được sử dụng ở nơi cú pháp yêu cầu một câu lệnh nhưng không muốn thực thi mã, ví dụ trong các hàm rỗng.                                                                                                                                            |
+| pass       | Được sử dụng khi cú pháp yêu cầu một câu lệnh nhưng không mong muốn thực thi mã, chẳng hạn trong các hàm rỗng.                                                                                                                                     |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| return     | Trả về một giá trị từ hàm.                                                                                                                                                                                                                         |
+| return     | Trả về một giá trị từ một hàm.                                                                                                                                                                                                                     |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| class      | Định nghĩa một lớp bên trong. Xem `Inner classes <Inner classes_>`_.                                                                                                                                                                               |
+| class      | Định nghĩa một class bên trong. Xem `Các class bên trong <Inner classes_>`_.                                                                                                                                                                       |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| class_name | Định nghĩa script là một lớp có thể truy cập toàn cục với tên được chỉ định. Xem `Registering named classes <Registering named classes_>`_.                                                                                                        |
+| class_name | Định nghĩa script dưới dạng một class có thể truy cập trên toàn cục với tên được chỉ định. Xem `Registering named classes <Registering named classes_>`_.                                                                                          |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| extends    | Định nghĩa lớp mà lớp hiện tại sẽ kế thừa.                                                                                                                                                                                                         |
+| extends    | Xác định class mà class hiện tại sẽ kế thừa.                                                                                                                                                                                                       |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| is         | Kiểm tra xem một biến có kế thừa một lớp nhất định hoặc thuộc một kiểu dựng sẵn nhất định hay không.                                                                                                                                               |
+| is         | Kiểm tra xem một biến có kế thừa một class nhất định hay thuộc một kiểu dựng sẵn nhất định hay không.                                                                                                                                              |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| in         | Kiểm tra xem một giá trị có nằm trong chuỗi, mảng, phạm vi, dictionary hoặc node hay không. Khi dùng với ``for``, nó sẽ lặp qua chúng thay vì kiểm tra.                                                                                            |
+| in         | Kiểm tra xem một giá trị có nằm trong chuỗi, mảng, range, dictionary hoặc node hay không. Khi được dùng với ``for``, nó sẽ lặp qua chúng thay vì kiểm tra.                                                                                         |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| as         | Ép kiểu giá trị sang một kiểu nhất định nếu có thể.                                                                                                                                                                                                |
+| as         | Chuyển giá trị sang một kiểu nhất định nếu có thể.                                                                                                                                                                                                 |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| self       | Tham chiếu đến instance lớp hiện tại. Xem `self`_.                                                                                                                                                                                                 |
+| self       | Tham chiếu đến instance của class hiện tại. Xem `self`_.                                                                                                                                                                                           |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| super      | Phân giải phạm vi của phương thức cha. Xem `Inheritance`_.                                                                                                                                                                                         |
+| super      | Phân giải phạm vi của method thuộc class cha. Xem `Inheritance`_.                                                                                                                                                                                  |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | signal     | Định nghĩa một signal. Xem `Signals`_.                                                                                                                                                                                                             |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| func       | Định nghĩa một hàm. Xem `Functions`_.                                                                                                                                                                                                              |
+| func       | Định nghĩa một function.  Xem `Functions`_.                                                                                                                                                                                                        |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| static     | Định nghĩa một hàm tĩnh hoặc một biến thành viên tĩnh.                                                                                                                                                                                             |
+| static     | Định nghĩa một function static hoặc một biến thành viên static.                                                                                                                                                                                    |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | const      | Định nghĩa một hằng số. Xem `Constants`_.                                                                                                                                                                                                          |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -177,31 +177,31 @@ Các từ khóa được định nghĩa trong `GDScript tokenizer <https://githu
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | var        | Định nghĩa một biến. Xem `Variables`_.                                                                                                                                                                                                             |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| breakpoint | Trợ giúp của trình soạn thảo cho các breakpoint của debugger. Không giống các breakpoint được tạo bằng cách nhấp vào lề, ``breakpoint`` được lưu ngay trong script. Điều này giúp nó được giữ lại trên các máy khác nhau khi dùng version control. |
+| breakpoint | Trợ giúp cho debugger breakpoint trong editor. Không giống các breakpoint được tạo bằng cách nhấp vào gutter, ``breakpoint`` được lưu ngay trong script. Điều này giúp breakpoint được duy trì trên các máy khác nhau khi sử dụng version control. |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | preload    | Tải trước một class hoặc biến. Xem `Classes as resources <Classes as resources_>`_.                                                                                                                                                                |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | await      | Chờ một signal hoặc coroutine hoàn tất. Xem `Awaiting signals or coroutines <Awaiting signals or coroutines_>`_.                                                                                                                                   |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| yield      | Trước đây được dùng cho coroutine. Được giữ lại làm keyword để chuyển đổi.                                                                                                                                                                         |
+| yield      | Trước đây được dùng cho coroutine. Được giữ lại dưới dạng keyword để chuyển tiếp.                                                                                                                                                                  |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| assert     | Khẳng định một điều kiện, ghi log lỗi nếu thất bại. Bị bỏ qua trong các bản build không debug. Xem `Assert keyword <Assert keyword_>`_.                                                                                                            |
+| assert     | Khẳng định một điều kiện và ghi log lỗi khi thất bại. Bị bỏ qua trong các bản build không debug. Xem `Assert keyword <Assert keyword_>`_.                                                                                                          |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| void       | Dùng để biểu thị rằng một hàm không trả về giá trị nào.                                                                                                                                                                                            |
+| void       | Được dùng để biểu thị rằng một function không trả về giá trị nào.                                                                                                                                                                                  |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | PI         | Hằng số PI.                                                                                                                                                                                                                                        |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | TAU        | Hằng số TAU.                                                                                                                                                                                                                                       |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| INF        | Hằng số vô cực. Dùng để so sánh và làm kết quả của các phép tính.                                                                                                                                                                                  |
+| INF        | Hằng số vô cực. Được dùng để so sánh và làm kết quả của các phép tính.                                                                                                                                                                             |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| NAN        | Hằng số NAN (không phải số). Được dùng làm kết quả không thể xảy ra từ các phép tính.                                                                                                                                                              |
+| NAN        | Hằng số NAN (không phải số). Được dùng làm kết quả không thể có của các phép tính.                                                                                                                                                                 |
 +------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Toán tử
--------
+Các toán tử
+-----------
 
-Sau đây là danh sách các toán tử được hỗ trợ và thứ tự ưu tiên của chúng. Tất cả toán tử nhị phân đều `kết hợp trái <https://en.wikipedia.org/wiki/Operator_associativity>`_, bao gồm cả toán tử ``**``. Điều này nghĩa là ``2 ** 2 ** 3`` tương đương với ``(2 ** 2) ** 3``. Dùng dấu ngoặc đơn để chỉ định rõ thứ tự ưu tiên bạn cần, ví dụ ``2 ** (2 ** 3)``. Toán tử ba ngôi ``if/else`` kết hợp phải.
+Sau đây là danh sách các toán tử được hỗ trợ và thứ tự ưu tiên của chúng. Tất cả toán tử nhị phân đều `liên kết trái <https://en.wikipedia.org/wiki/Operator_associativity>`_, bao gồm cả toán tử ``**``. Điều này có nghĩa là ``2 ** 2 ** 3`` tương đương với ``(2 ** 2) ** 3``. Hãy dùng dấu ngoặc để chỉ định rõ thứ tự ưu tiên cần dùng, ví dụ ``2 ** (2 ** 3)``. Toán tử ba ngôi ``if/else`` liên kết phải.
 
 +---------------------------------------+-----------------------------------------------------------------------------+
 | **Operator**                          | **Description**                                                             |
@@ -293,198 +293,106 @@ Sau đây là danh sách các toán tử được hỗ trợ và thứ tự ưu 
 | | ``x >>= y``                         |                                                                             |
 +---------------------------------------+-----------------------------------------------------------------------------+
 
-
-+---------------------------------------+-----------------------------------------------------------------------------+
-| **Operator**                          | **Description**                                                             |
-+=======================================+=============================================================================+
-| ``(`` ``)``                           | Nhóm (độ ưu tiên cao nhất)                                                   |
-|                                       |                                                                             |
-|                                       | Dấu ngoặc đơn không thực sự là toán tử, nhưng cho phép bạn chỉ định rõ      |
-|                                       | độ ưu tiên của một phép toán.                                               |
-+---------------------------------------+-----------------------------------------------------------------------------+
-| ``x[index]``                          | Truy cập phần tử                                                            |
-+---------------------------------------+-----------------------------------------------------------------------------+
-| ``x.attribute``                       | Tham chiếu thuộc tính                                                        |
-+---------------------------------------+-----------------------------------------------------------------------------+
-| ``foo()``                             | Lời gọi hàm                                                                 |
-+---------------------------------------+-----------------------------------------------------------------------------+
-| ``await x``                           | `Chờ tín hiệu hoặc coroutine`_                                              |
-+---------------------------------------+-----------------------------------------------------------------------------+
-| | ``x is Node``                       | Kiểm tra kiểu                                                               |
-| | ``x is not Node``                   |                                                                             |
-|                                       | Xem thêm hàm :ref:`is_instance_of() <class_@GDScript_method_is_instance_of>`|
-|                                       |                                                                             |
-+---------------------------------------+-----------------------------------------------------------------------------+
-| ``x ** y``                            | Lũy thừa                                                                     |
-|                                       |                                                                             |
-|                                       | Nhân ``x`` với chính nó ``y`` lần, tương tự như khi gọi hàm                 |
-|                                       | :ref:`pow() <class_@GlobalScope_method_pow>`.                               |
-+---------------------------------------+-----------------------------------------------------------------------------+
-| ``~x``                                | NOT trên bit                                                                |
-+---------------------------------------+-----------------------------------------------------------------------------+
-| | ``+x``                              | Giữ nguyên dấu / Đổi dấu                                                    |
-| | ``-x``                              |                                                                             |
-+---------------------------------------+-----------------------------------------------------------------------------+
-| | ``x * y``                           | Nhân / Chia / Phần dư                                                       |
-| | ``x / y``                           |                                                                             |
-| | ``x % y``                           | Toán tử ``%`` còn được dùng trong                                           |
-|                                       | :ref:`chuỗi định dạng <doc_gdscript_printf>`.                               |
-|                                       |                                                                             |
-|                                       | **Lưu ý:** Các toán tử này hoạt động giống như trong C++, điều này có thể   |
-|                                       | khiến người dùng chuyển từ Python, JavaScript, v.v. cảm thấy bất ngờ. Xem  |
-|                                       | ghi chú chi tiết bên dưới bảng.                                             |
-+---------------------------------------+-----------------------------------------------------------------------------+
-| | ``x + y``                           | Cộng (hoặc nối chuỗi) / Trừ                                                 |
-| | ``x - y``                           |                                                                             |
-+---------------------------------------+-----------------------------------------------------------------------------+
-| | ``x << y``                          | Dịch bit                                                                    |
-| | ``x >> y``                          |                                                                             |
-+---------------------------------------+-----------------------------------------------------------------------------+
-| ``x & y``                             | AND trên bit                                                                |
-+---------------------------------------+-----------------------------------------------------------------------------+
-| ``x ^ y``                             | XOR trên bit                                                                |
-+---------------------------------------+-----------------------------------------------------------------------------+
-| ``x | y``                             | OR trên bit                                                                 |
-+---------------------------------------+-----------------------------------------------------------------------------+
-| | ``x == y``                          | So sánh                                                                     |
-| | ``x != y``                          |                                                                             |
-| | ``x < y``                           | Xem ghi chú chi tiết bên dưới bảng.                                         |
-| | ``x > y``                           |                                                                             |
-| | ``x <= y``                          |                                                                             |
-| | ``x >= y``                          |                                                                             |
-+---------------------------------------+-----------------------------------------------------------------------------+
-| | ``x in y``                          | Kiểm tra phần tử có thuộc ``y`` hay không                                   |
-| | ``x not in y``                      |                                                                             |
-|                                       | ``in`` cũng được dùng với từ khóa for_ trong cú pháp.                       |
-+---------------------------------------+-----------------------------------------------------------------------------+
-| | ``not x``                           | NOT logic và bí danh :ref:`không được khuyến nghị <boolean_operators>`      |
-| | ``!x``                              |                                                                             |
-+---------------------------------------+-----------------------------------------------------------------------------+
-| | ``x and y``                         | AND logic và bí danh :ref:`không được khuyến nghị <boolean_operators>`      |
-| | ``x && y``                          |                                                                             |
-+---------------------------------------+-----------------------------------------------------------------------------+
-| | ``x or y``                          | OR logic và bí danh :ref:`không được khuyến nghị <boolean_operators>`       |
-| | ``x || y``                          |                                                                             |
-+---------------------------------------+-----------------------------------------------------------------------------+
-| ``true_expr if cond else false_expr`` | Biểu thức điều kiện ba ngôi if/else                                         |
-+---------------------------------------+-----------------------------------------------------------------------------+
-| ``x as Node``                         | `Chuyển đổi kiểu <casting_>`_                                               |
-+---------------------------------------+-----------------------------------------------------------------------------+
-| | ``x = y``                           | Phép gán (độ ưu tiên thấp nhất)                                             |
-| | ``x += y``                          |                                                                             |
-| | ``x -= y``                          | Không thể dùng toán tử gán bên trong một biểu thức.                         |
-| | ``x *= y``                          |                                                                             |
-| | ``x /= y``                          |                                                                             |
-| | ``x **= y``                         |                                                                             |
-| | ``x %= y``                          |                                                                             |
-| | ``x &= y``                          |                                                                             |
-| | ``x |= y``                          |                                                                             |
-| | ``x ^= y``                          |                                                                             |
-| | ``x <<= y``                         |                                                                             |
-| | ``x >>= y``                         |                                                                             |
-+---------------------------------------+-----------------------------------------------------------------------------+
-
-
 .. note::
 
     Hành vi của một số toán tử có thể khác với điều bạn mong đợi:
 
-    1. Nếu cả hai toán hạng của toán tử ``/`` đều là :ref:`int <class_int>`, phép chia số nguyên sẽ được thực hiện thay vì phép chia có phần thập phân. Ví dụ ``5 / 2 == 2``, không phải ``2.5``. Nếu không muốn điều này, hãy dùng ít nhất một literal :ref:`float <class_float>` (``x / 2.0``), ép kiểu (``float(x) / y``), hoặc nhân với ``1.0`` (``x * 1.0 / y``).
-    2. Toán tử ``%`` chỉ khả dụng cho int; với float, hãy dùng hàm :ref:`fmod() <class_@GlobalScope_method_fmod>`.
-    3. Với các giá trị âm, toán tử ``%`` và ``fmod()`` sử dụng `cắt ngắn <https://en.wikipedia.org/wiki/Truncation>`_ thay vì làm tròn về âm vô cực. Điều này nghĩa là số dư có dấu. Nếu cần số dư theo nghĩa toán học, hãy dùng :ref:`posmod() <class_@GlobalScope_method_posmod>` và
-       các hàm :ref:`fposmod() <class_@GlobalScope_method_fposmod>` thay thế.
-    4. Các toán tử ``==`` và ``!=`` đôi khi cho phép bạn so sánh các giá trị thuộc kiểu khác nhau (ví dụ, ``1 == 1.0`` là true), nhưng trong những trường hợp khác, điều này có thể gây ra lỗi runtime. Nếu không chắc chắn về kiểu của các toán hạng, bạn có thể dùng an toàn hàm :ref:`is_same() <class_@GlobalScope_method_is_same>` (nhưng lưu ý rằng hàm này nghiêm ngặt hơn về kiểu và tham chiếu). Để so sánh float, hãy dùng các hàm :ref:`is_equal_approx() <class_@GlobalScope_method_is_equal_approx>` và :ref:`is_zero_approx() <class_@GlobalScope_method_is_zero_approx>` thay thế.
+    1. Nếu cả hai toán hạng của toán tử ``/`` đều là :ref:`int <class_int>`, phép chia số nguyên sẽ được thực hiện thay vì phép chia phân số. Ví dụ ``5 / 2 == 2``, không phải ``2.5``. Nếu đây không phải điều bạn muốn, hãy dùng ít nhất một literal :ref:`float <class_float>` (``x / 2.0``), phép chuyển kiểu (``float(x) / y``), hoặc nhân với ``1.0`` (``x * 1.0 / y``).
+    2. Toán tử ``%`` chỉ khả dụng cho int; với float, hãy dùng function :ref:`fmod() <class_@GlobalScope_method_fmod>`.
+    3. Với các giá trị âm, toán tử ``%`` và ``fmod()`` sử dụng `phép cắt bỏ <https://en.wikipedia.org/wiki/Truncation>`_ thay vì làm tròn về âm vô cùng. Điều này có nghĩa là phần dư có dấu. Nếu cần phần dư theo nghĩa toán học, hãy dùng :ref:`posmod() <class_@GlobalScope_method_posmod>` và
+       thay vào đó dùng các function :ref:`fposmod() <class_@GlobalScope_method_fposmod>`.
+    4. Các toán tử ``==`` và ``!=`` đôi khi cho phép bạn so sánh các giá trị thuộc các kiểu khác nhau (ví dụ, ``1 == 1.0`` là true), nhưng trong những trường hợp khác, chúng có thể gây ra lỗi runtime. Nếu không chắc chắn về kiểu của các toán hạng, bạn có thể sử dụng an toàn hàm :ref:`is_same() <class_@GlobalScope_method_is_same>` (nhưng lưu ý rằng hàm này nghiêm ngặt hơn về kiểu và tham chiếu). Để so sánh các số thực, hãy dùng các hàm :ref:`is_equal_approx() <class_@GlobalScope_method_is_equal_approx>` và :ref:`is_zero_approx() <class_@GlobalScope_method_is_zero_approx>` thay thế.
 
 Literal
 -------
 
-+---------------------------------+--------------------------------------------------+
-| **Ví dụ**                       | **Mô tả**                                        |
-+---------------------------------+--------------------------------------------------+
-| ``null``                        | Giá trị null                                     |
-+---------------------------------+--------------------------------------------------+
-| ``false``, ``true``             | Giá trị boolean                                  |
-+---------------------------------+--------------------------------------------------+
-| ``45``                          | Số nguyên hệ cơ số 10                            |
-+---------------------------------+--------------------------------------------------+
-| ``0x8f51``                      | Số nguyên hệ cơ số 16 (thập lục phân)            |
-+---------------------------------+--------------------------------------------------+
-| ``0b101010``                    | Số nguyên hệ cơ số 2 (nhị phân)                  |
-+---------------------------------+--------------------------------------------------+
-| ``3.14``, ``58.1e-10``          | Số dấu phẩy động (số thực)                       |
-+---------------------------------+--------------------------------------------------+
-| ``"Hello"``, ``'Hi'``           | Chuỗi thông thường                               |
-+---------------------------------+--------------------------------------------------+
-| ``"""Hello"""``, ``'''Hi'''``   | Chuỗi thông thường đặt trong dấu nháy kép ba lần |
-+---------------------------------+--------------------------------------------------+
-| ``r"Hello"``, ``r'Hi'``         | Chuỗi raw                                        |
-+---------------------------------+--------------------------------------------------+
-| ``r"""Hello"""``, ``r'''Hi'''`` | Chuỗi raw đặt trong dấu nháy kép ba lần          |
-+---------------------------------+--------------------------------------------------+
-| ``&"name"``                     | :ref:`StringName <class_StringName>`             |
-+---------------------------------+--------------------------------------------------+
-| ``^"Node/Label"``               | :ref:`NodePath <class_NodePath>`                 |
-+---------------------------------+--------------------------------------------------+
++---------------------------------+-----------------------------------------------+
+| **Ví dụ**                       | **Mô tả**                                     |
++---------------------------------+-----------------------------------------------+
+| ``null``                        | Giá trị null                                  |
++---------------------------------+-----------------------------------------------+
+| ``false``, ``true``             | Các giá trị Boolean                           |
++---------------------------------+-----------------------------------------------+
+| ``45``                          | Số nguyên cơ số 10                            |
++---------------------------------+-----------------------------------------------+
+| ``0x8f51``                      | Số nguyên cơ số 16 (thập lục phân)            |
++---------------------------------+-----------------------------------------------+
+| ``0b101010``                    | Số nguyên cơ số 2 (nhị phân)                  |
++---------------------------------+-----------------------------------------------+
+| ``3.14``, ``58.1e-10``          | Số dấu phẩy động (số thực)                    |
++---------------------------------+-----------------------------------------------+
+| ``"Hello"``, ``'Hi'``           | Chuỗi thông thường                            |
++---------------------------------+-----------------------------------------------+
+| ``"""Hello"""``, ``'''Hi'''``   | Chuỗi thông thường được đặt trong ba dấu nháy |
++---------------------------------+-----------------------------------------------+
+| ``r"Hello"``, ``r'Hi'``         | Chuỗi raw                                     |
++---------------------------------+-----------------------------------------------+
+| ``r"""Hello"""``, ``r'''Hi'''`` | Chuỗi raw được đặt trong ba dấu nháy          |
++---------------------------------+-----------------------------------------------+
+| ``&"name"``                     | :ref:`StringName <class_StringName>`          |
++---------------------------------+-----------------------------------------------+
+| ``^"Node/Label"``               | :ref:`NodePath <class_NodePath>`              |
++---------------------------------+-----------------------------------------------+
 
-Cũng có hai cấu trúc trông giống literal nhưng thực ra không phải:
+Ngoài ra còn có hai cấu trúc trông giống literal nhưng thực ra không phải là literal:
 
-+-----------------+-----------------------------------------------+
-| **Ví dụ**       | **Mô tả**                                     |
-+-----------------+-----------------------------------------------+
-| ``$NodePath``   | Dạng viết tắt của ``get_node("NodePath")``    |
-+-----------------+-----------------------------------------------+
-| ``%UniqueNode`` | Dạng viết tắt của ``get_node("%UniqueNode")`` |
-+-----------------+-----------------------------------------------+
++-----------------+------------------------------------------+
+| **Ví dụ**       | **Mô tả**                                |
++-----------------+------------------------------------------+
+| ``$NodePath``   | Viết tắt của ``get_node("NodePath")``    |
++-----------------+------------------------------------------+
+| ``%UniqueNode`` | Viết tắt của ``get_node("%UniqueNode")`` |
++-----------------+------------------------------------------+
 
-Số nguyên và số thực có thể được phân tách các chữ số bằng ``_`` để dễ đọc hơn. Tất cả các cách viết số sau đây đều hợp lệ:
+Các số nguyên và số thực có thể được viết với các chữ số được phân tách bằng ``_`` để dễ đọc hơn. Các cách viết số sau đây đều hợp lệ:
 
-::
+.. code-block::
 
-    12_345_678  # Equal to 12345678.
-    3.141_592_7  # Equal to 3.1415927.
-    0x8080_0000_ffff  # Equal to 0x80800000ffff.
-    0b11_00_11_00  # Equal to 0b11001100.
+    12_345_678  # Bằng 12345678.
+    3.141_592_7  # Bằng 3.1415927.
+    0x8080_0000_ffff  # Bằng 0x80800000ffff.
+    0b11_00_11_00  # Bằng 0b11001100.
 
-**String literal thông thường** có thể chứa các escape sequence sau:
+**Literal chuỗi thông thường** có thể chứa các escape sequence sau:
 
-+---------------------+------------------------------------------------------------------------------------+
-| **Escape sequence** | **Mở rộng thành**                                                                  |
-+---------------------+------------------------------------------------------------------------------------+
-| ``\n``              | Dòng mới (line feed)                                                               |
-+---------------------+------------------------------------------------------------------------------------+
-| ``\t``              | Ký tự tab ngang                                                                    |
-+---------------------+------------------------------------------------------------------------------------+
-| ``\r``              | Carriage return                                                                    |
-+---------------------+------------------------------------------------------------------------------------+
-| ``\a``              | Cảnh báo (bíp/chuông)                                                              |
-+---------------------+------------------------------------------------------------------------------------+
-| ``\b``              | Backspace                                                                          |
-+---------------------+------------------------------------------------------------------------------------+
-| ``\f``              | Ngắt trang formfeed                                                                |
-+---------------------+------------------------------------------------------------------------------------+
-| ``\v``              | Ký tự tab dọc                                                                      |
-+---------------------+------------------------------------------------------------------------------------+
-| ``\"``              | Dấu ngoặc kép                                                                      |
-+---------------------+------------------------------------------------------------------------------------+
-| ``\'``              | Dấu ngoặc đơn                                                                      |
-+---------------------+------------------------------------------------------------------------------------+
-| ``\\``              | Dấu gạch chéo ngược                                                                |
-+---------------------+------------------------------------------------------------------------------------+
-| ``\uXXXX``          | Codepoint Unicode UTF-16 ``XXXX`` (hệ thập lục phân, không phân biệt hoa thường)   |
-+---------------------+------------------------------------------------------------------------------------+
-| ``\UXXXXXX``        | Codepoint Unicode UTF-32 ``XXXXXX`` (hệ thập lục phân, không phân biệt hoa thường) |
-+---------------------+------------------------------------------------------------------------------------+
++---------------------+-----------------------------------------------------------------------------------------+
+| **Escape sequence** | **Mở rộng thành**                                                                       |
++---------------------+-----------------------------------------------------------------------------------------+
+| ``\n``              | Xuống dòng (line feed)                                                                  |
++---------------------+-----------------------------------------------------------------------------------------+
+| ``\t``              | Ký tự tab ngang                                                                         |
++---------------------+-----------------------------------------------------------------------------------------+
+| ``\r``              | Về đầu dòng (carriage return)                                                           |
++---------------------+-----------------------------------------------------------------------------------------+
+| ``\a``              | Cảnh báo (tiếng bíp/chuông)                                                             |
++---------------------+-----------------------------------------------------------------------------------------+
+| ``\b``              | Xóa lùi (backspace)                                                                     |
++---------------------+-----------------------------------------------------------------------------------------+
+| ``\f``              | Ngắt trang (form feed)                                                                  |
++---------------------+-----------------------------------------------------------------------------------------+
+| ``\v``              | Ký tự tab dọc                                                                           |
++---------------------+-----------------------------------------------------------------------------------------+
+| ``\"``              | Dấu nháy kép                                                                            |
++---------------------+-----------------------------------------------------------------------------------------+
+| ``\'``              | Dấu nháy đơn                                                                            |
++---------------------+-----------------------------------------------------------------------------------------+
+| ``\\``              | Dấu gạch chéo ngược                                                                     |
++---------------------+-----------------------------------------------------------------------------------------+
+| ``\uXXXX``          | Codepoint Unicode UTF-16 ``XXXX`` (thập lục phân, không phân biệt chữ hoa chữ thường)   |
++---------------------+-----------------------------------------------------------------------------------------+
+| ``\UXXXXXX``        | Codepoint Unicode UTF-32 ``XXXXXX`` (thập lục phân, không phân biệt chữ hoa chữ thường) |
++---------------------+-----------------------------------------------------------------------------------------+
 
-Có hai cách để biểu diễn một ký tự Unicode được escape lớn hơn ``0xFFFF``:
+Có hai cách biểu diễn một ký tự Unicode được escape bên trên ``0xFFFF``:
 
-- dưới dạng `cặp surrogate UTF-16 <https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF>`_ ``\uXXXX\uXXXX``.
+- dưới dạng `cặp thay thế UTF-16 <https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF>`_ ``\uXXXX\uXXXX``.
 - dưới dạng một codepoint UTF-32 duy nhất ``\UXXXXXX``.
 
-Ngoài ra, việc dùng ``\`` theo sau bởi một dòng mới bên trong string sẽ cho phép bạn tiếp tục string đó ở dòng kế tiếp mà không chèn ký tự dòng mới vào chính string.
+Ngoài ra, sử dụng ``\`` theo sau bởi một ký tự xuống dòng bên trong chuỗi sẽ cho phép bạn tiếp tục chuỗi ở dòng kế tiếp mà không chèn ký tự xuống dòng vào chính chuỗi đó.
 
-Một string được bao bởi một loại dấu ngoặc kép (ví dụ: ``"``) có thể chứa dấu ngoặc kép thuộc loại khác (ví dụ: ``'``) mà không cần escape. String dùng ba dấu ngoặc kép cho phép bạn tránh escape tối đa hai dấu ngoặc kép liên tiếp cùng loại (trừ khi chúng nằm sát mép string).
+Một chuỗi được đặt trong dấu nháy thuộc một loại (ví dụ ``"``) có thể chứa dấu nháy thuộc loại khác (ví dụ ``'``) mà không cần escape. Chuỗi được đặt trong ba dấu nháy cho phép bạn không cần escape tối đa hai dấu nháy liên tiếp cùng loại (trừ khi chúng nằm sát mép chuỗi).
 
-**Raw string literal** luôn mã hóa string đúng như nó xuất hiện trong mã nguồn. Điều này đặc biệt hữu ích cho regular expression. Raw string literal không xử lý escape sequence, tuy nhiên nó nhận diện ``\\`` và ``\"`` (``\'``) rồi thay thế chúng bằng chính chúng. Do đó, một string có thể chứa dấu ngoặc kép trùng với dấu mở đầu, nhưng chỉ khi nó đứng sau dấu gạch chéo ngược.
+**Literal chuỗi raw** luôn mã hóa chuỗi đúng như cách nó xuất hiện trong mã nguồn. Điều này đặc biệt hữu ích cho regular expression. Tuy nhiên, literal chuỗi raw không xử lý các escape sequence; nó chỉ nhận diện ``\\`` và ``\"`` (``\'``) rồi thay thế chúng bằng chính chúng. Vì vậy, một chuỗi có thể chứa dấu nháy trùng với dấu nháy mở, nhưng chỉ khi dấu nháy đó đứng sau một dấu gạch chéo ngược.
 
 ::
 
@@ -493,28 +401,28 @@ Một string được bao bởi một loại dấu ngoặc kép (ví dụ: ``"``
 
 .. note::
 
-    Một số string không thể được biểu diễn bằng raw string literal: bạn không thể có số lượng dấu gạch chéo ngược lẻ ở cuối string hoặc có dấu ngoặc kép mở đầu chưa escape bên trong string. Tuy nhiên, trên thực tế điều này không quan trọng vì bạn có thể dùng loại dấu ngoặc kép khác hoặc dùng phép nối với string literal thông thường.
+    Một số chuỗi không thể được biểu diễn bằng literal chuỗi raw: bạn không thể có số lẻ dấu gạch chéo ngược ở cuối chuỗi hoặc có dấu nháy mở chưa được escape bên trong chuỗi. Tuy nhiên, trên thực tế điều này không quan trọng vì bạn có thể dùng loại dấu nháy khác hoặc dùng phép nối với một literal chuỗi thông thường.
 
-GDScript cũng hỗ trợ :ref:`format string <doc_gdscript_printf>`.
+GDScript cũng hỗ trợ :ref:`chuỗi format <doc_gdscript_printf>`.
 
 Annotation
 ----------
 
-Annotation là các token đặc biệt trong GDScript, hoạt động như modifier cho toàn bộ script, một declaration, một statement hoặc một vị trí trong mã nguồn. Annotation có thể ảnh hưởng đến cách script được Godot editor và GDScript compiler xử lý.
+Annotation là các token đặc biệt trong GDScript, đóng vai trò là modifier cho toàn bộ script, một khai báo, một câu lệnh hoặc một vị trí trong mã nguồn. Annotation có thể ảnh hưởng đến cách script được trình soạn thảo Godot và trình biên dịch GDScript xử lý.
 
-Mọi annotation đều bắt đầu bằng ký tự ``@`` và được chỉ định bằng một tên. Bạn có thể tìm thấy mô tả chi tiết cùng ví dụ cho từng annotation trong
+Mỗi annotation bắt đầu bằng ký tự ``@`` và được xác định bằng một tên. Bạn có thể tìm thấy mô tả chi tiết và ví dụ cho từng annotation trong
 :ref:`tài liệu tham chiếu lớp GDScript <class_@GDScript>`.
 
-Ví dụ, bạn có thể dùng nó để export một giá trị sang editor:
+Ví dụ, bạn có thể dùng nó để export một giá trị ra trình soạn thảo:
 
 ::
 
     @export_range(1, 100, 1, "or_greater")
     var ranged_var: int = 50
 
-Để biết thêm thông tin về việc export property, hãy đọc bài viết :ref:`GDScript exports <doc_gdscript_exports>`.
+Để biết thêm thông tin về việc xuất các thuộc tính, hãy đọc bài viết :ref:`GDScript exports <doc_gdscript_exports>`.
 
-Bất kỳ constant expression nào tương thích với kiểu đối số bắt buộc đều có thể được truyền làm giá trị đối số annotation:
+Có thể truyền bất kỳ biểu thức hằng nào tương thích với kiểu đối số bắt buộc làm giá trị đối số của annotation:
 
 ::
 
@@ -523,7 +431,7 @@ Bất kỳ constant expression nào tương thích với kiểu đối số bắ
     @export_range(0.0, 0.5 * MAX_SPEED)
     var initial_speed: float = 0.25 * MAX_SPEED
 
-Annotation có thể được chỉ định mỗi dòng một annotation hoặc tất cả trên cùng một dòng. Chúng ảnh hưởng đến statement tiếp theo không phải là annotation. Annotation có thể nhận các đối số được đặt trong dấu ngoặc đơn và phân tách bằng dấu phẩy.
+Có thể chỉ định các annotation trên từng dòng hoặc tất cả trên cùng một dòng. Chúng ảnh hưởng đến câu lệnh tiếp theo không phải là annotation. Annotation có thể nhận các đối số được đặt trong dấu ngoặc đơn và phân tách bằng dấu phẩy.
 
 Cả hai cách này đều giống nhau:
 
@@ -537,10 +445,10 @@ Cả hai cách này đều giống nhau:
 
 .. _doc_gdscript_onready_annotation:
 
-Annotation ``@onready``
+``@onready`` annotation
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Khi sử dụng node, thường bạn sẽ muốn lưu tham chiếu đến các phần của scene trong một biến. Vì scene chỉ được đảm bảo đã cấu hình khi đi vào active scene tree, các node con chỉ có thể được lấy khi có lời gọi đến ``Node._ready()``.
+Khi làm việc với node, việc muốn giữ các tham chiếu đến các phần của scene trong một biến là điều phổ biến. Vì scene chỉ được bảo đảm đã được cấu hình khi đi vào scene tree đang hoạt động, chỉ có thể lấy các sub-node khi thực hiện lệnh gọi đến ``Node._ready()``.
 
 ::
 
@@ -550,7 +458,7 @@ Khi sử dụng node, thường bạn sẽ muốn lưu tham chiếu đến các 
     func _ready():
         my_label = get_node("MyLabel")
 
-Việc này có thể trở nên hơi rườm rà, đặc biệt khi node và tham chiếu bên ngoài ngày càng nhiều. Vì thế, GDScript có annotation ``@onready``, giúp trì hoãn việc khởi tạo biến thành viên cho đến khi ``_ready()`` được gọi. Nó có thể thay thế đoạn mã trên bằng một dòng duy nhất:
+Điều này có thể hơi rườm rà, đặc biệt khi có nhiều node và tham chiếu bên ngoài. Để giải quyết việc này, GDScript có annotation ``@onready``, trì hoãn việc khởi tạo một member variable cho đến khi ``_ready()`` được gọi. Annotation này có thể thay thế đoạn code trên bằng một dòng duy nhất:
 
 ::
 
@@ -558,7 +466,7 @@ Việc này có thể trở nên hơi rườm rà, đặc biệt khi node và th
 
 .. warning::
 
-    Áp dụng ``@onready`` và bất kỳ annotation ``@export`` nào cho cùng một biến sẽ không hoạt động như bạn mong đợi. Annotation ``@onready`` sẽ khiến giá trị mặc định được thiết lập sau khi ``@export`` có hiệu lực và sẽ ghi đè nó:
+    Việc áp dụng ``@onready`` và bất kỳ annotation ``@export`` nào cho cùng một biến sẽ không hoạt động như bạn có thể mong đợi. Annotation ``@onready`` sẽ khiến giá trị mặc định được thiết lập sau khi ``@export`` có hiệu lực và ghi đè lên giá trị đó:
 
     ::
 
@@ -575,24 +483,24 @@ Việc này có thể trở nên hơi rườm rà, đặc biệt khi node và th
         func _ready():
             prints(a, b) # exported_value_a init_value_b
 
-    Do đó, cảnh báo ``ONREADY_WITH_EXPORT`` được tạo ra và mặc định được xử lý như một lỗi. Chúng tôi không khuyến nghị tắt hoặc bỏ qua cảnh báo này.
+    Do đó, cảnh báo ``ONREADY_WITH_EXPORT`` được tạo ra và mặc định được xem là lỗi. Chúng tôi không khuyến nghị tắt hoặc bỏ qua cảnh báo này.
 
-Comment
--------
+Chú thích
+---------
 
-Mọi thứ từ ``#`` đến cuối dòng đều bị bỏ qua và được xem là comment.
+Mọi nội dung từ ``#`` đến cuối dòng đều bị bỏ qua và được xem là chú thích.
 
-::
+.. code-block::
 
-    # This is a comment.
+    # Đây là một chú thích.
 
 .. tip::
 
-    Trong Godot script editor, các từ khóa đặc biệt được làm nổi bật bên trong comment để thu hút sự chú ý của người dùng đến các comment cụ thể:
+    Trong trình chỉnh sửa script của Godot, các từ khóa đặc biệt được tô sáng trong chú thích để thu hút sự chú ý của người dùng đến các chú thích cụ thể:
 
-    - **Nghiêm trọng** *(hiển thị màu đỏ)*: ``ALERT``, ``ATTENTION``, ``CAUTION``, ``CRITICAL``, ``DANGER``, ``SECURITY``
-    - **Cảnh báo** *(hiển thị màu vàng)*: ``BUG``, ``DEPRECATED``, ``FIXME``, ``HACK``, ``TASK``, ``TBD``, ``TODO``, ``WARNING``
-    - **Lưu ý** *(hiển thị màu xanh lá)*: ``INFO``, ``NOTE``, ``NOTICE``, ``TEST``, ``TESTING``
+    - **Critical** *(hiển thị màu đỏ)*: ``ALERT``, ``ATTENTION``, ``CAUTION``, ``CRITICAL``, ``DANGER``, ``SECURITY``
+    - **Warning** *(hiển thị màu vàng)*: ``BUG``, ``DEPRECATED``, ``FIXME``, ``HACK``, ``TASK``, ``TBD``, ``TODO``, ``WARNING``
+    - **Notice** *(hiển thị màu xanh lá)*: ``INFO``, ``NOTE``, ``NOTICE``, ``TEST``, ``TESTING``
 
     Các từ khóa này phân biệt chữ hoa chữ thường, vì vậy chúng phải được viết bằng chữ hoa để được nhận diện:
 
@@ -603,31 +511,31 @@ Mọi thứ từ ``#`` đến cuối dòng đều bị bỏ qua và được xem
 
         # TODO: Add more items for the player to choose from.
 
-    Danh sách các từ khóa được tô sáng và màu sắc của chúng có thể được thay đổi trong phần **Text Editor > Theme > Comment Markers** của Editor Settings.
+    Có thể thay đổi danh sách các từ khóa được tô sáng và màu của chúng trong mục **Text Editor > Theme > Comment Markers** của Editor Settings.
 
-Dùng hai ký hiệu hash (``##``) thay vì một (``#``) để thêm *comment tài liệu*, sẽ xuất hiện trong tài liệu script và trong phần mô tả inspector của một biến được export. Comment tài liệu phải được đặt ngay *phía trên* một mục có thể lập tài liệu (chẳng hạn như biến thành viên), hoặc ở đầu tệp. Các tùy chọn định dạng chuyên dụng cũng có sẵn. Xem
+Sử dụng hai ký hiệu thăng (``##``) thay vì một ký hiệu (``#``) để thêm *documentation comment*, nội dung này sẽ xuất hiện trong tài liệu script và phần mô tả trong inspector của một biến được xuất. Documentation comment phải được đặt trực tiếp *bên trên* một mục có thể lập tài liệu (chẳng hạn như member variable), hoặc ở đầu tệp. Ngoài ra còn có các tùy chọn định dạng chuyên dụng. Xem
 :ref:`doc_gdscript_documentation_comments` để biết chi tiết.
 
-::
+.. code-block::
 
-    ## This comment will appear in the script documentation.
+    ## Chú thích này sẽ xuất hiện trong tài liệu script.
     var value
 
-    ## This comment will appear in the inspector tooltip, and in the documentation.
+    ## Chú thích này sẽ xuất hiện trong chú giải công cụ của inspector và trong tài liệu.
     @export var exported_value
 
 .. _doc_gdscript_code_regions:
 
-Vùng mã
--------
+Vùng code
+---------
 
-Vùng mã là loại comment đặc biệt mà trình chỉnh sửa script hiểu là *vùng có thể thu gọn*. Điều này có nghĩa là sau khi viết các comment vùng mã, bạn có thể thu gọn và mở rộng vùng đó bằng cách nhấp vào mũi tên xuất hiện bên trái comment. Mũi tên này xuất hiện trong một ô vuông màu tím để dễ phân biệt với chức năng gập mã tiêu chuẩn.
+Vùng code là các loại chú thích đặc biệt mà trình chỉnh sửa script hiểu là *vùng có thể thu gọn*. Điều này có nghĩa là sau khi viết chú thích vùng code, bạn có thể thu gọn và mở rộng vùng bằng cách nhấp vào mũi tên xuất hiện ở bên trái chú thích. Mũi tên này xuất hiện trong một hình vuông màu tím để có thể phân biệt với thao tác thu gọn code thông thường.
 
 Cú pháp như sau:
 
-::
+.. code-block::
 
-    # Important: There must be *no* space between the `#` and `region` or `endregion`.
+    # Quan trọng: Phải *không có* khoảng trắng giữa `#` và `region` hoặc `endregion`.
 
     # Region without a description:
     #region
@@ -641,17 +549,17 @@ Cú pháp như sau:
 
 .. tip::
 
-    Để nhanh chóng tạo một vùng mã, hãy chọn nhiều dòng trong trình chỉnh sửa script, nhấp chuột phải vào vùng chọn rồi chọn **Create Code Region**. Mô tả vùng sẽ tự động được chọn để chỉnh sửa.
+    Để nhanh chóng tạo một vùng code, hãy chọn vài dòng trong trình chỉnh sửa script, nhấp chuột phải vào vùng chọn rồi chọn **Create Code Region**. Mô tả vùng sẽ tự động được chọn để chỉnh sửa.
 
-    Bạn có thể lồng các vùng mã bên trong những vùng mã khác.
+    Có thể lồng các vùng code bên trong những vùng code khác.
 
-Dưới đây là một ví dụ cụ thể về cách sử dụng vùng mã:
+Sau đây là một ví dụ cụ thể về cách sử dụng vùng code:
 
-::
+.. code-block::
 
-    # This comment is outside the code region. It will be visible when collapsed.
+    # Chú thích này nằm bên ngoài vùng code. Nó sẽ hiển thị khi vùng được thu gọn.
     #region Terrain generation
-    # This comment is inside the code region. It won't be visible when collapsed.
+    # Chú thích này nằm bên trong vùng code. Nó sẽ không hiển thị khi vùng được thu gọn.
     func generate_lakes():
         pass
 
@@ -667,16 +575,16 @@ Dưới đây là một ví dụ cụ thể về cách sử dụng vùng mã:
         pass
     #endregion
 
-Điều này có thể hữu ích để sắp xếp các khối mã lớn thành những phần dễ hiểu hơn. Tuy nhiên, hãy nhớ rằng các trình chỉnh sửa bên ngoài thường không hỗ trợ tính năng này, vì vậy hãy đảm bảo mã của bạn vẫn dễ theo dõi ngay cả khi không dựa vào việc gập vùng mã.
+Điều này có thể hữu ích để sắp xếp các khối code lớn thành những phần dễ hiểu hơn. Tuy nhiên, hãy nhớ rằng các trình chỉnh sửa bên ngoài nhìn chung không hỗ trợ tính năng này, vì vậy hãy đảm bảo code của bạn vẫn dễ theo dõi ngay cả khi không dựa vào việc thu gọn các vùng code.
 
 .. note::
 
-    Các hàm riêng lẻ và các phần thụt lề (chẳng hạn như ``if`` và ``for``) *luôn* có thể được thu gọn trong trình chỉnh sửa script. Điều này có nghĩa là bạn nên tránh dùng một vùng mã để chứa chỉ một hàm hoặc phần thụt lề, vì nó không mang lại nhiều lợi ích. Vùng mã hoạt động hiệu quả nhất khi được dùng để nhóm nhiều phần tử lại với nhau.
+    Các hàm riêng lẻ và các phần được thụt lề (chẳng hạn như ``if`` và ``for``) *luôn* có thể được thu gọn trong trình chỉnh sửa script. Điều này có nghĩa là bạn nên tránh sử dụng vùng code để chứa một hàm hoặc một phần được thụt lề duy nhất, vì cách này không mang lại nhiều lợi ích. Vùng code hoạt động tốt nhất khi được dùng để nhóm nhiều thành phần lại với nhau.
 
-Tiếp dòng
----------
+Tiếp tục dòng
+-------------
 
-Một dòng mã trong GDScript có thể được tiếp tục ở dòng kế tiếp bằng dấu gạch chéo ngược (``\``). Thêm một dấu ở cuối dòng và mã ở dòng tiếp theo sẽ hoạt động như thể nó nằm tại vị trí của dấu gạch chéo ngược. Đây là một ví dụ:
+Một dòng code trong GDScript có thể được tiếp tục ở dòng kế tiếp bằng cách sử dụng dấu gạch chéo ngược (``\``). Thêm một dấu ở cuối dòng, và code ở dòng kế tiếp sẽ hoạt động như thể nó nằm ngay tại vị trí của dấu gạch chéo ngược. Đây là một ví dụ:
 
 ::
 
@@ -694,15 +602,15 @@ Một dòng có thể được tiếp tục nhiều lần như sau:
 
 .. _doc_gdscript_builtin_types:
 
-Kiểu tích hợp sẵn
+Các kiểu dựng sẵn
 -----------------
 
-Các kiểu tích hợp sẵn được cấp phát trên stack. Chúng được truyền theo giá trị. Điều này có nghĩa là một bản sao được tạo ở mỗi lần gán hoặc khi truyền chúng làm đối số cho hàm. Ngoại lệ là ``Object``, ``Array``, ``Dictionary``, và các packed array (chẳng hạn như ``PackedByteArray``), được truyền theo tham chiếu nên được dùng chung. Mọi array, ``Dictionary``, và một số object (``Node``, ``Resource``) đều có phương thức ``duplicate()`` cho phép bạn tạo một bản sao.
+Các kiểu dựng sẵn được cấp phát trên stack. Chúng được truyền theo giá trị. Điều này có nghĩa là một bản sao được tạo ra sau mỗi phép gán hoặc khi truyền chúng làm đối số cho các hàm. Ngoại lệ là ``Object``, ``Array``, ``Dictionary`` và các mảng packed (chẳng hạn như ``PackedByteArray``), được truyền theo tham chiếu nên chúng được dùng chung. Tất cả mảng, ``Dictionary`` và một số object (``Node``, ``Resource``) đều có phương thức ``duplicate()`` cho phép bạn tạo một bản sao.
 
-Các kiểu tích hợp sẵn cơ bản
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Các kiểu dựng sẵn cơ bản
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-Một biến trong GDScript có thể được gán cho một trong nhiều kiểu tích hợp sẵn.
+Một biến trong GDScript có thể được gán cho một số kiểu dựng sẵn.
 
 null
 ^^^^
@@ -710,50 +618,50 @@ null
 ``null`` là một kiểu dữ liệu rỗng, không chứa thông tin và không thể được gán bất kỳ giá trị nào khác.
 
 Chỉ các kiểu kế thừa từ Object mới có thể có giá trị ``null`` (do đó Object được gọi là kiểu "nullable").
-Các :ref:`kiểu Variant <doc_variant_class>` phải luôn có một giá trị hợp lệ, do đó không thể có giá trị ``null``.
+Các kiểu :ref:`Variant types <doc_variant_class>` luôn phải có một giá trị hợp lệ, vì vậy không thể có giá trị ``null``.
 
 :ref:`bool <class_bool>`
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Viết tắt của "boolean", chỉ có thể chứa ``true`` hoặc ``false``.
+Viết tắt của "boolean", kiểu này chỉ có thể chứa ``true`` hoặc ``false``.
 
 :ref:`int <class_int>`
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Viết tắt của "integer", lưu trữ các số nguyên (dương và âm). Nó được lưu trữ dưới dạng giá trị 64-bit, tương đương với ``int64_t`` trong C++.
+Viết tắt của "integer", kiểu này lưu các số nguyên (dương và âm). Giá trị được lưu dưới dạng 64-bit, tương đương với ``int64_t`` trong C++.
 
 :ref:`float <class_float>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Lưu trữ số thực, bao gồm phần thập phân, bằng giá trị dấu phẩy động. Nó được lưu trữ dưới dạng giá trị 64-bit, tương đương với ``double`` trong C++. Lưu ý: Hiện tại, các cấu trúc dữ liệu như ``Vector2``, ``Vector3``, và ``PackedFloat32Array`` lưu trữ các giá trị ``float`` đơn chính xác 32-bit.
+Lưu các số thực, bao gồm cả số thập phân, bằng các giá trị dấu phẩy động. Giá trị được lưu dưới dạng 64-bit, tương đương với ``double`` trong C++. Lưu ý: Hiện tại, các cấu trúc dữ liệu như ``Vector2``, ``Vector3`` và ``PackedFloat32Array`` lưu các giá trị ``float`` đơn chính xác 32-bit.
 
 :ref:`String <class_String>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Một chuỗi ký tự ở `định dạng Unicode <https://en.wikipedia.org/wiki/Unicode>`_.
+Một chuỗi ký tự ở định dạng `Unicode <https://en.wikipedia.org/wiki/Unicode>`_.
 
 :ref:`StringName <class_StringName>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Một chuỗi bất biến chỉ cho phép một instance của mỗi tên. Chúng tạo chậm hơn và có thể phải chờ lock khi đa luồng. Đổi lại, chúng được so sánh rất nhanh, phù hợp để làm khóa dictionary.
+Một chuỗi bất biến chỉ cho phép một thể hiện của mỗi tên. Chúng tạo chậm hơn và có thể khiến phải chờ khóa khi đa luồng. Đổi lại, chúng được so sánh rất nhanh, nên phù hợp làm khóa dictionary.
 
 :ref:`NodePath <class_NodePath>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Một đường dẫn đã được phân tích trước đến một node hoặc thuộc tính node. Nó có thể dễ dàng được gán từ và sang một String. Chúng hữu ích để tương tác với cây nhằm lấy một node, hoặc tác động đến các thuộc tính như với :ref:`Tweens <class_Tween>`.
+Một đường dẫn được phân tích cú pháp trước đến một node hoặc thuộc tính của node. Có thể dễ dàng gán nó cho và chuyển đổi nó từ một String. Chúng hữu ích khi tương tác với cây để lấy một node hoặc tác động đến các thuộc tính, chẳng hạn như :ref:`Tweens <class_Tween>`.
 
-Các kiểu vector tích hợp sẵn
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Các kiểu dựng sẵn Vector
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 :ref:`Vector2 <class_Vector2>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Kiểu vector 2D chứa các trường ``x`` và ``y``. Cũng có thể được truy cập như một array.
+Kiểu vector 2D chứa các trường ``x`` và ``y``. Cũng có thể truy cập dưới dạng một mảng.
 
 :ref:`Vector2i <class_Vector2i>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Giống Vector2 nhưng các thành phần là số nguyên. Hữu ích để biểu diễn các phần tử trong lưới 2D.
+Giống Vector2 nhưng các thành phần là số nguyên. Hữu ích để biểu diễn các phần tử trong một lưới 2D.
 
 :ref:`Rect2 <class_Rect2>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -763,12 +671,12 @@ Kiểu hình chữ nhật 2D chứa hai trường vector: ``position`` và ``siz
 :ref:`Vector3 <class_Vector3>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Kiểu vector 3D chứa các trường ``x``, ``y`` và ``z``. Cũng có thể được truy cập như một array.
+Kiểu vector 3D chứa các trường ``x``, ``y`` và ``z``. Cũng có thể truy cập kiểu này dưới dạng một mảng.
 
 :ref:`Vector3i <class_Vector3i>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Giống Vector3 nhưng các thành phần là số nguyên. Có thể dùng để lập chỉ mục các phần tử trong lưới 3D.
+Giống Vector3 nhưng các thành phần là số nguyên. Có thể dùng để lập chỉ mục các phần tử trong một lưới 3D.
 
 :ref:`Transform2D <class_Transform2D>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -778,70 +686,70 @@ Ma trận 3×2 dùng cho các phép biến đổi 2D.
 :ref:`Plane <class_Plane>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Kiểu Plane 3D ở dạng chuẩn hóa, chứa một trường vector ``normal`` và một khoảng cách vô hướng ``d``.
+Kiểu mặt phẳng 3D ở dạng chuẩn hóa, chứa một trường vector ``normal`` và một khoảng cách vô hướng ``d``.
 
 :ref:`Quaternion <class_Quaternion>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Quaternion là kiểu dữ liệu dùng để biểu diễn phép xoay 3D. Nó hữu ích để nội suy phép xoay.
+Quaternion là một kiểu dữ liệu dùng để biểu diễn phép xoay 3D. Nó hữu ích khi nội suy các phép xoay.
 
 :ref:`AABB <class_AABB>`
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Hộp bao quanh thẳng hàng theo trục (hoặc hộp 3D) chứa 2 trường vector: ``position`` và ``size``. Cũng chứa một trường ``end`` là ``position + size``.
+Hộp giới hạn căn chỉnh theo trục (hay hộp 3D) chứa 2 trường vector: ``position`` và ``size``. Nó cũng chứa một trường ``end`` là ``position + size``.
 
 :ref:`Basis <class_Basis>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ma trận 3x3 dùng cho phép xoay và tỷ lệ 3D. Nó chứa 3 trường vector (``x``, ``y`` và ``z``) và cũng có thể được truy cập như một array các vector 3D.
+Ma trận 3x3 dùng cho phép xoay và co giãn 3D. Nó chứa 3 trường vector (``x``, ``y`` và ``z``) và cũng có thể được truy cập dưới dạng một mảng các vector 3D.
 
 :ref:`Transform3D <class_Transform3D>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Transform 3D chứa trường Basis ``basis`` và trường Vector3 ``origin``.
+Transform 3D chứa một trường Basis ``basis`` và một trường Vector3 ``origin``.
 
-Các kiểu tích hợp sẵn của engine
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Các kiểu dựng sẵn của Engine
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :ref:`Color <class_Color>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Kiểu dữ liệu Color chứa các trường ``r``, ``g``, ``b``, và ``a``. Nó cũng có thể được truy cập dưới dạng ``h``, ``s``, và ``v`` cho sắc độ/độ bão hòa/giá trị.
+Kiểu dữ liệu Color chứa các trường ``r``, ``g``, ``b`` và ``a``. Cũng có thể truy cập nó dưới dạng ``h``, ``s`` và ``v`` để biểu diễn hue/saturation/value.
 
 :ref:`RID <class_RID>`
 ^^^^^^^^^^^^^^^^^^^^^^
 
-ID tài nguyên (RID). Server dùng RID chung để tham chiếu dữ liệu opaque.
+ID tài nguyên (RID). Các server sử dụng RID chung để tham chiếu đến dữ liệu không trong suốt.
 
 :ref:`Object <class_Object>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Lớp cơ sở cho mọi thứ không phải là kiểu dựng sẵn.
 
-Các kiểu dựng sẵn vùng chứa
+Các kiểu dựng sẵn Container
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :ref:`Array <class_Array>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Chuỗi tổng quát gồm các kiểu đối tượng tùy ý, bao gồm cả các mảng hoặc từ điển khác (xem bên dưới). Mảng có thể thay đổi kích thước linh hoạt. Mảng được lập chỉ mục bắt đầu từ chỉ mục ``0``. Chỉ mục âm đếm từ cuối.
+Một chuỗi tổng quát gồm các kiểu đối tượng tùy ý, bao gồm các array hoặc dictionary khác (xem bên dưới). Array có thể thay đổi kích thước động. Array được lập chỉ mục bắt đầu từ chỉ mục ``0``. Chỉ mục âm được tính từ cuối.
 
-::
+.. code-block::
 
     var arr = []
     arr = [1, 2, 3]
-    var b = arr[1] # This is 2.
-    var c = arr[arr.size() - 1] # This is 3.
-    var d = arr[-1] # Same as the previous line, but shorter.
-    arr[0] = "Hi!" # Replacing value 1 with "Hi!".
-    arr.append(4) # Array is now ["Hi!", 2, 3, 4].
+    var b = arr[1] # Đây là 2.
+    var c = arr[arr.size() - 1] # Đây là 3.
+    var d = arr[-1] # Giống dòng trước, nhưng ngắn hơn.
+    arr[0] = "Hi!" # Thay giá trị 1 bằng "Hi!".
+    arr.append(4) # Array hiện là ["Hi!", 2, 3, 4].
 
-Mảng có kiểu
-^^^^^^^^^^^^
+Array có kiểu
+^^^^^^^^^^^^^
 
-Godot cũng hỗ trợ mảng có kiểu. Trong các thao tác ghi, Godot kiểm tra xem giá trị phần tử có khớp với kiểu đã chỉ định hay không, nên mảng không thể chứa các giá trị không hợp lệ. Trình phân tích tĩnh GDScript có tính đến mảng có kiểu, tuy nhiên các phương thức mảng như ``front()`` và ``back()`` vẫn có kiểu trả về là ``Variant``.
+Godot cũng hỗ trợ typed array. Khi ghi, Godot kiểm tra xem các giá trị phần tử có khớp với kiểu được chỉ định hay không, vì vậy array không thể chứa các giá trị không hợp lệ. Trình phân tích tĩnh GDScript có tính đến typed array, tuy nhiên các phương thức array như ``front()`` và ``back()`` vẫn có kiểu trả về ``Variant``.
 
-Mảng có kiểu có cú pháp ``Array[Type]``, trong đó ``Type`` có thể là bất kỳ kiểu ``Variant`` nào, lớp native hoặc lớp người dùng, hoặc enum. Các kiểu mảng lồng nhau (như ``Array[Array[int]]``) không được hỗ trợ.
+Typed array có cú pháp ``Array[Type]``, trong đó ``Type`` có thể là bất kỳ kiểu ``Variant`` nào, lớp native hoặc lớp do người dùng định nghĩa, hay enum. Các kiểu array lồng nhau (như ``Array[Array[int]]``) không được hỗ trợ.
 
 ::
 
@@ -855,51 +763,51 @@ Mảng có kiểu có cú pháp ``Array[Type]``, trong đó ``Type`` có thể l
 
 .. note::
 
-    Mảng được truyền bằng tham chiếu, do đó kiểu phần tử của mảng cũng là một thuộc tính của cấu trúc trong bộ nhớ mà một biến tham chiếu đến trong runtime. Kiểu tĩnh của một biến giới hạn các cấu trúc mà biến đó có thể tham chiếu. Vì vậy, bạn **không thể** gán một mảng có kiểu phần tử khác, ngay cả khi kiểu đó là kiểu con của kiểu được yêu cầu.
+    Array được truyền bằng tham chiếu, vì vậy kiểu phần tử của array cũng là một thuộc tính của cấu trúc trong bộ nhớ được một biến tham chiếu đến trong runtime. Kiểu tĩnh của biến giới hạn các cấu trúc mà nó có thể tham chiếu. Do đó, bạn **không thể** gán một array có kiểu phần tử khác, ngay cả khi kiểu đó là kiểu con của kiểu được yêu cầu.
 
-    Nếu bạn muốn *chuyển đổi* một mảng có kiểu, bạn có thể tạo một mảng mới và sử dụng
+    Nếu muốn *chuyển đổi* một typed array, bạn có thể tạo một array mới và sử dụng
     phương thức :ref:`Array.assign() <class_Array_method_assign>`:
 
-    ::
+    .. code-block::
 
         var a: Array[Node2D] = [Node2D.new()]
 
-        # (OK) You can add the value to the array because `Node2D` extends `Node`.
+        # (OK) Bạn có thể thêm giá trị vào array vì `Node2D` mở rộng `Node`.
         var b: Array[Node] = [a[0]]
 
-        # (Error) You cannot assign an `Array[Node2D]` to an `Array[Node]` variable.
+        # (Lỗi) Bạn không thể gán một `Array[Node2D]` cho một biến `Array[Node]`.
         b = a
 
-        # (OK) But you can use the `assign()` method instead. Unlike the `=` operator,
-        # the `assign()` method copies the contents of the array, not the reference.
+        # (OK) Nhưng thay vào đó, bạn có thể sử dụng phương thức `assign()`. Không giống toán tử `=`,
+        # phương thức `assign()` sao chép nội dung của array, chứ không sao chép tham chiếu.
         b.assign(a)
 
-    Ngoại lệ duy nhất được tạo ra cho kiểu ``Array`` (``Array[Variant]``) nhằm thuận tiện cho người dùng và tương thích với mã cũ. Tuy nhiên, các thao tác trên mảng không có kiểu được xem là không an toàn.
+    Ngoại lệ duy nhất được áp dụng cho kiểu ``Array`` (``Array[Variant]``), nhằm thuận tiện cho người dùng và tương thích với mã cũ. Tuy nhiên, các thao tác trên array không có kiểu được xem là không an toàn.
 
 .. _doc_gdscript_packed_arrays:
 
-Mảng đóng gói
-^^^^^^^^^^^^^
+Packed array
+^^^^^^^^^^^^
 
-PackedArrays thường lặp và chỉnh sửa nhanh hơn so với Array có kiểu cùng loại (ví dụ: PackedInt64Array so với Array[int]) và dùng ít bộ nhớ hơn. Trong trường hợp xấu nhất, chúng được kỳ vọng nhanh bằng một Array không có kiểu. Ngược lại, các Array không phải Packed (có kiểu hoặc không) có thêm các phương thức tiện dụng như :ref:`Array.map <class_Array_method_map>` mà PackedArrays không có. Xem :ref:`tham chiếu lớp <class_PackedFloat32Array>` để biết chi tiết về các phương thức hiện có. Typed Arrays thường lặp và chỉnh sửa nhanh hơn Arrays không có kiểu.
+PackedArrays thường lặp và chỉnh sửa nhanh hơn so với một Array có kiểu cùng loại (ví dụ: PackedInt64Array so với Array[int]) và tiêu tốn ít bộ nhớ hơn. Trong trường hợp xấu nhất, chúng được kỳ vọng có tốc độ tương đương Array không có kiểu. Ngược lại, các Array không phải Packed (có kiểu hoặc không) có thêm các phương thức tiện lợi như :ref:`Array.map <class_Array_method_map>` mà PackedArrays không có. Tham khảo :ref:`tài liệu tham chiếu lớp <class_PackedFloat32Array>` để biết chi tiết về các phương thức có sẵn. Typed Array thường lặp và chỉnh sửa nhanh hơn Array không có kiểu.
 
-Mặc dù mọi Array đều có thể gây phân mảnh bộ nhớ khi đủ lớn, nếu mức sử dụng bộ nhớ và hiệu năng (tốc độ lặp và chỉnh sửa) là vấn đề đáng quan tâm, đồng thời kiểu dữ liệu bạn lưu trữ tương thích với một trong các kiểu Array ``Packed``, thì việc dùng chúng có thể cải thiện hiệu năng. Tuy nhiên, nếu bạn không có những mối quan ngại đó (ví dụ: kích thước mảng không đạt đến hàng chục nghìn phần tử), thì có lẽ sử dụng Array thông thường hoặc có kiểu sẽ hữu ích hơn, vì chúng cung cấp các phương thức tiện dụng giúp mã của bạn dễ viết và bảo trì hơn (và có khả năng nhanh hơn nếu dữ liệu của bạn thường cần các thao tác như vậy). Nếu dữ liệu bạn sẽ lưu có kiểu đã biết (bao gồm các lớp do bạn tự định nghĩa), hãy ưu tiên dùng Array có kiểu vì nó có thể cho hiệu năng lặp và chỉnh sửa tốt hơn so với Array không có kiểu.
+Mặc dù mọi Array đều có thể gây phân mảnh bộ nhớ khi đủ lớn, nếu việc sử dụng bộ nhớ và hiệu năng (tốc độ lặp và sửa đổi) là mối quan tâm, đồng thời kiểu dữ liệu bạn lưu trữ tương thích với một trong các kiểu Array ``Packed``, thì việc sử dụng chúng có thể đem lại cải thiện. Tuy nhiên, nếu bạn không gặp những mối quan tâm như vậy (ví dụ: kích thước array không đạt đến hàng chục nghìn phần tử), có lẽ sẽ hữu ích hơn nếu sử dụng Array thông thường hoặc typed Array, vì chúng cung cấp các phương thức tiện lợi giúp code dễ viết và bảo trì hơn (và có thể nhanh hơn nếu dữ liệu của bạn thường xuyên yêu cầu các thao tác như vậy). Nếu dữ liệu bạn sẽ lưu trữ thuộc một kiểu đã biết (bao gồm cả các class do bạn tự định nghĩa), hãy ưu tiên sử dụng typed Array vì nó có thể mang lại hiệu năng lặp và sửa đổi tốt hơn so với Array không định kiểu.
 
-- :ref:`PackedByteArray <class_PackedByteArray>`: Một mảng byte (các số nguyên từ 0 đến 255).
-- :ref:`PackedInt32Array <class_PackedInt32Array>`: Một mảng số nguyên 32-bit.
-- :ref:`PackedInt64Array <class_PackedInt64Array>`: Một mảng số nguyên 64-bit.
-- :ref:`PackedFloat32Array <class_PackedFloat32Array>`: Một mảng số thực dấu chấm động 32-bit.
-- :ref:`PackedFloat64Array <class_PackedFloat64Array>`: Một mảng số thực dấu chấm động 64-bit.
-- :ref:`PackedStringArray <class_PackedStringArray>`: Một mảng chuỗi.
-- :ref:`PackedVector2Array <class_PackedVector2Array>`: Một mảng các giá trị :ref:`Vector2 <class_Vector2>`.
-- :ref:`PackedVector3Array <class_PackedVector3Array>`: Một mảng các giá trị :ref:`Vector3 <class_Vector3>`.
-- :ref:`PackedVector4Array <class_PackedVector4Array>`: Một mảng các giá trị :ref:`Vector4 <class_Vector4>`.
-- :ref:`PackedColorArray <class_PackedColorArray>`: Một mảng các giá trị :ref:`Color <class_Color>`.
+- :ref:`PackedByteArray <class_PackedByteArray>`: Một array gồm các byte (số nguyên từ 0 đến 255).
+- :ref:`PackedInt32Array <class_PackedInt32Array>`: Một array gồm các số nguyên 32-bit.
+- :ref:`PackedInt64Array <class_PackedInt64Array>`: Một array gồm các số nguyên 64-bit.
+- :ref:`PackedFloat32Array <class_PackedFloat32Array>`: Một array gồm các số thực 32-bit.
+- :ref:`PackedFloat64Array <class_PackedFloat64Array>`: Một array gồm các số thực 64-bit.
+- :ref:`PackedStringArray <class_PackedStringArray>`: Một array gồm các chuỗi.
+- :ref:`PackedVector2Array <class_PackedVector2Array>`: Một array gồm các giá trị :ref:`Vector2 <class_Vector2>`.
+- :ref:`PackedVector3Array <class_PackedVector3Array>`: Một array gồm các giá trị :ref:`Vector3 <class_Vector3>`.
+- :ref:`PackedVector4Array <class_PackedVector4Array>`: Một array gồm các giá trị :ref:`Vector4 <class_Vector4>`.
+- :ref:`PackedColorArray <class_PackedColorArray>`: Một array gồm các giá trị :ref:`Color <class_Color>`.
 
 :ref:`Dictionary <class_Dictionary>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Vùng chứa liên kết chứa các giá trị được tham chiếu bởi các khóa duy nhất.
+Container kết hợp chứa các giá trị được tham chiếu bằng những key duy nhất.
 
 ::
 
@@ -912,7 +820,7 @@ Vùng chứa liên kết chứa các giá trị được tham chiếu bởi các
         "more_key": "Hello"
     }
 
-Cú pháp bảng kiểu Lua cũng được hỗ trợ. Kiểu Lua sử dụng ``=`` thay vì ``:`` và không dùng dấu ngoặc kép để đánh dấu khóa chuỗi (nên cần viết ít hơn một chút). Tuy nhiên, các khóa được viết theo dạng này không thể bắt đầu bằng chữ số (như mọi định danh GDScript) và phải là chuỗi ký tự literal.
+Cú pháp table kiểu Lua cũng được hỗ trợ. Cú pháp kiểu Lua sử dụng ``=`` thay vì ``:`` và không dùng dấu ngoặc kép để đánh dấu các key chuỗi (nên cần viết ít hơn một chút). Tuy nhiên, các key được viết theo dạng này không thể bắt đầu bằng một chữ số (giống như mọi identifier GDScript), và phải là các string literal.
 
 ::
 
@@ -923,43 +831,43 @@ Cú pháp bảng kiểu Lua cũng được hỗ trợ. Kiểu Lua sử dụng ``
         more_key = "Hello"
     }
 
-Để thêm một khóa vào từ điển hiện có, hãy truy cập nó như một khóa đã tồn tại rồi gán giá trị cho nó:
+Để thêm một key vào dictionary hiện có, hãy truy cập nó như một key hiện có rồi gán giá trị cho nó:
 
-::
+.. code-block::
 
-    var d = {} # Create an empty Dictionary.
-    d.waiting = 14 # Add String "waiting" as a key and assign the value 14 to it.
-    d[4] = "hello" # Add integer 4 as a key and assign the String "hello" as its value.
-    d["Godot"] = 3.01 # Add String "Godot" as a key and assign the value 3.01 to it.
+    var d = {} # Tạo một Dictionary trống.
+    d.waiting = 14 # Thêm String "waiting" làm key và gán giá trị 14 cho nó.
+    d[4] = "hello" # Thêm số nguyên 4 làm key và gán String "hello" làm giá trị của nó.
+    d["Godot"] = 3.01 # Thêm String "Godot" làm key và gán giá trị 3.01 cho nó.
 
     var test = 4
-    # Prints "hello" by indexing the dictionary with a dynamic key.
-    # This is not the same as `d.test`. The bracket syntax equivalent to
-    # `d.test` is `d["test"]`.
+    # In ra "hello" bằng cách index dictionary với một key động.
+    # Điều này không giống với `d.test`. Cú pháp dấu ngoặc tương đương với
+    # `d.test` là `d["test"]`.
     print(d[test])
 
 .. note::
 
-    Cú pháp ngoặc vuông có thể được dùng để truy cập các thuộc tính của bất kỳ
-    :ref:`class_Object` nào, không chỉ Dictionaries. Hãy lưu ý rằng điều này sẽ gây lỗi script khi cố lập chỉ mục một thuộc tính không tồn tại. Để tránh điều này, hãy dùng các phương thức :ref:`Object.get() <class_Object_method_get>` và
-    :ref:`Object.set() <class_Object_method_set>` để thay thế.
+    Cú pháp dấu ngoặc có thể được dùng để truy cập các thuộc tính của bất kỳ
+    :ref:`class_Object`, không chỉ Dictionaries. Hãy lưu ý rằng thao tác này sẽ gây ra lỗi script khi cố index một thuộc tính không tồn tại. Để tránh điều này, hãy sử dụng các phương thức :ref:`Object.get() <class_Object_method_get>` và
+    :ref:`Object.set() <class_Object_method_set>` thay vào đó.
 
-Từ điển có kiểu
-^^^^^^^^^^^^^^^
+Dictionary có kiểu
+^^^^^^^^^^^^^^^^^^
 
-Godot 4.4 đã bổ sung hỗ trợ cho từ điển có kiểu. Trong các thao tác ghi, Godot kiểm tra xem khóa và giá trị phần tử có khớp với kiểu đã chỉ định hay không, nên từ điển không thể chứa khóa hoặc giá trị không hợp lệ. Trình phân tích tĩnh GDScript có tính đến từ điển có kiểu. Tuy nhiên, các phương thức từ điển trả về giá trị vẫn có kiểu trả về là ``Variant``.
+Godot 4.4 đã thêm hỗ trợ cho dictionary có kiểu. Trong các thao tác ghi, Godot kiểm tra xem key và value của phần tử có khớp với kiểu đã chỉ định hay không, vì vậy dictionary không thể chứa key hoặc value không hợp lệ. Trình phân tích tĩnh GDScript có tính đến dictionary có kiểu. Tuy nhiên, các phương thức dictionary trả về giá trị vẫn có kiểu trả về ``Variant``.
 
-Từ điển có kiểu có cú pháp ``Dictionary[KeyType, ValueType]``, trong đó ``KeyType`` và ``ValueType`` có thể là bất kỳ kiểu ``Variant`` nào, lớp native hoặc lớp người dùng, hoặc enum. Cả kiểu khóa lẫn kiểu giá trị **phải** được chỉ định, nhưng bạn có thể dùng ``Variant`` để khiến một trong hai không có kiểu. Các collection có kiểu lồng nhau (như ``Dictionary[String, Dictionary[String, int]]``) không được hỗ trợ.
+Dictionary có kiểu có cú pháp ``Dictionary[KeyType, ValueType]``, trong đó ``KeyType`` và ``ValueType`` có thể là bất kỳ kiểu ``Variant`` nào, class native, class do người dùng định nghĩa hoặc enum. Cả kiểu key và value **phải** được chỉ định, nhưng bạn có thể sử dụng ``Variant`` để làm cho một trong hai kiểu không định kiểu. Các collection có kiểu lồng nhau (chẳng hạn như ``Dictionary[String, Dictionary[String, int]]``) không được hỗ trợ.
 
-::
+.. code-block::
 
     var a: Dictionary[String, int]
     var b: Dictionary[String, Node]
     var c: Dictionary[Vector2i, MyClass]
     var d: Dictionary[MyEnum, float]
-    # String keys, values can be any type.
+    # Key là String, value có thể thuộc bất kỳ kiểu nào.
     var e: Dictionary[String, Variant]
-    # Keys can be any type, boolean values.
+    # Key có thể thuộc bất kỳ kiểu nào, value là boolean.
     var f: Dictionary[Variant, bool]
 
 ``Dictionary`` và ``Dictionary[Variant, Variant]`` là cùng một thứ.
@@ -967,82 +875,82 @@ Từ điển có kiểu có cú pháp ``Dictionary[KeyType, ValueType]``, trong 
 :ref:`Signal <class_Signal>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Signal là một thông điệp có thể được một đối tượng phát ra cho những ai muốn lắng nghe nó. Kiểu Signal có thể được dùng để truyền đối tượng phát signal đi.
+Signal là một thông báo có thể được một object phát ra cho những đối tượng muốn lắng nghe nó. Kiểu Signal có thể được dùng để truyền emitter.
 
-Nên sử dụng signal bằng cách lấy chúng từ các đối tượng thực tế, ví dụ: ``$Button.button_up``.
+Signals được sử dụng tốt hơn khi lấy chúng từ các object thực tế, ví dụ: ``$Button.button_up``.
 
 :ref:`Callable <class_Callable>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Chứa một đối tượng và một hàm, hữu ích để truyền hàm dưới dạng giá trị (ví dụ: khi kết nối với signal).
+Chứa một object và một function, hữu ích để truyền các function dưới dạng value (ví dụ: khi kết nối với signals).
 
-Lấy một phương thức dưới dạng thành viên sẽ trả về một callable. ``var x = $Sprite2D.rotate`` sẽ đặt giá trị của ``x`` thành một callable có ``$Sprite2D`` là đối tượng và ``rotate`` là phương thức.
+Việc lấy một method dưới dạng member sẽ trả về một callable. ``var x = $Sprite2D.rotate`` sẽ đặt giá trị của ``x`` thành một callable với ``$Sprite2D`` là object và ``rotate`` là method.
 
 Bạn có thể gọi nó bằng phương thức ``call``: ``x.call(PI)``.
 
 Biến
 ----
 
-Biến có thể tồn tại dưới dạng thành viên của lớp hoặc cục bộ trong các hàm. Chúng được tạo bằng từ khóa ``var`` và có thể, tùy chọn, được gán giá trị khi khởi tạo.
+Biến có thể tồn tại dưới dạng member của class hoặc là biến cục bộ trong các function. Chúng được tạo bằng keyword ``var`` và có thể được gán giá trị khi khởi tạo, nhưng không bắt buộc.
 
-::
+.. code-block::
 
-    var a # Data type is 'null' by default.
+    var a # Kiểu dữ liệu mặc định là 'null'.
     var b = 5
     var c = 3.8
-    var d = b + c # Variables are always initialized in direct order (see below).
+    var d = b + c # Các biến luôn được khởi tạo theo thứ tự trực tiếp (xem bên dưới).
 
-Biến có thể có đặc tả kiểu. Khi một kiểu được chỉ định, biến sẽ luôn bị buộc phải có cùng kiểu đó, và việc cố gán một giá trị không tương thích sẽ phát sinh lỗi.
+Biến có thể tùy chọn có đặc tả kiểu. Khi một kiểu được chỉ định, biến sẽ luôn bị buộc phải có cùng kiểu đó, và việc cố gán một giá trị không tương thích sẽ gây ra lỗi.
 
-Kiểu được chỉ định trong khai báo biến bằng ký hiệu ``:`` (dấu hai chấm) sau tên biến, theo sau là kiểu.
+Các kiểu được chỉ định trong khai báo biến bằng ký hiệu ``:`` (dấu hai chấm) sau tên biến, theo sau là kiểu.
 
 ::
 
     var my_vector2: Vector2
     var my_node: Node = Sprite2D.new()
 
-Nếu biến được khởi tạo ngay trong phần khai báo, kiểu có thể được suy luận, vì vậy có thể bỏ tên kiểu:
+Nếu biến được khởi tạo ngay trong khai báo, kiểu có thể được suy luận, vì vậy có thể bỏ qua tên kiểu:
 
-::
+.. code-block::
 
-    var my_vector2 := Vector2() # 'my_vector2' is of type 'Vector2'.
-    var my_node := Sprite2D.new() # 'my_node' is of type 'Sprite2D'.
+    var my_vector2 := Vector2() # 'my_vector2' có kiểu 'Vector2'.
+    var my_node := Sprite2D.new() # 'my_node' có kiểu 'Sprite2D'.
 
-Suy luận kiểu chỉ có thể thực hiện nếu giá trị được gán có kiểu đã xác định, nếu không sẽ phát sinh lỗi.
+Suy luận kiểu chỉ có thể thực hiện nếu giá trị được gán có kiểu đã xác định; nếu không, thao tác này sẽ gây ra lỗi.
 
 Các kiểu hợp lệ gồm:
 
-- Các kiểu tích hợp sẵn (Array, Vector2, int, String, v.v.).
-- Các lớp engine (Node, Resource, RefCounted, v.v.).
+- Các kiểu dựng sẵn (Array, Vector2, int, String, v.v.).
+- Các class của engine (Node, Resource, RefCounted, v.v.).
 - Tên hằng số nếu chúng chứa một script resource (``MyScript`` nếu bạn đã khai báo ``const MyScript = preload("res://my_script.gd")``).
-- Các lớp khác trong cùng script, tuân theo phạm vi (``InnerClass.NestedClass`` nếu bạn đã khai báo ``class NestedClass`` bên trong ``class InnerClass`` trong cùng phạm vi).
-- Các lớp script được khai báo bằng từ khóa ``class_name``.
-- Các Autoload được đăng ký dưới dạng singleton.
+- Các lớp khác trong cùng script, tuân theo phạm vi (``InnerClass.NestedClass`` nếu bạn khai báo ``class NestedClass`` bên trong ``class InnerClass`` trong cùng phạm vi).
+- Các lớp của script được khai báo bằng từ khóa ``class_name``.
+- Các autoload được đăng ký dưới dạng singleton.
 
 .. note::
 
-    Mặc dù ``Variant`` là một chỉ định kiểu hợp lệ, nó không phải là kiểu thực tế. Nó chỉ có nghĩa là không có kiểu được thiết lập và tương đương với việc hoàn toàn không có kiểu tĩnh. Do đó, theo mặc định không cho phép suy luận đối với ``Variant``, vì đây có thể là một lỗi.
+    Mặc dù ``Variant`` là một đặc tả kiểu hợp lệ, nó không phải là một kiểu thực sự. Nó chỉ có nghĩa là không có kiểu được thiết lập và tương đương với việc hoàn toàn không có kiểu tĩnh. Do đó, mặc định không cho phép suy luận kiểu cho ``Variant``, vì đây có thể là một lỗi.
 
-    Bạn có thể tắt kiểm tra này hoặc chỉ biến nó thành cảnh báo bằng cách thay đổi trong phần cài đặt project. Xem :ref:`doc_gdscript_warning_system` để biết chi tiết.
+    Bạn có thể tắt kiểm tra này hoặc chỉ coi nó là cảnh báo bằng cách thay đổi thiết lập trong project settings. Xem :ref:`doc_gdscript_warning_system` để biết chi tiết.
 
 Thứ tự khởi tạo
 ~~~~~~~~~~~~~~~
 
 Các biến thành viên được khởi tạo theo thứ tự sau:
 
-1. Tùy thuộc vào kiểu tĩnh của biến, biến sẽ là ``null`` (biến không có kiểu và object) hoặc có giá trị mặc định của kiểu đó (``0`` cho ``int``, ``false`` cho ``bool``, v.v.).
-2. Các giá trị được chỉ định được gán theo thứ tự các biến trong script, từ trên xuống dưới.
+1. Tùy thuộc vào kiểu tĩnh của biến, biến sẽ được ``null`` (các biến và đối tượng không định kiểu) hoặc có giá trị mặc định của kiểu đó (``0`` cho ``int``, ``false`` cho ``bool``, v.v.).
+2. Các giá trị được chỉ định sẽ được gán theo thứ tự của các biến trong script, từ trên xuống dưới.
 
-   - (Chỉ dành cho các lớp dẫn xuất từ ``Node``) Nếu annotation ``@onready`` được áp dụng cho một biến, việc khởi tạo biến đó được hoãn đến bước 5.
+   - (Chỉ dành cho các lớp bắt nguồn từ ``Node``) Nếu chú thích ``@onready`` được áp dụng cho một biến, việc khởi tạo biến đó sẽ được trì hoãn đến bước 5.
 
 3. Nếu được định nghĩa, phương thức ``_init()`` sẽ được gọi.
-4. Khi khởi tạo các scene và resource, các giá trị được export sẽ được gán.
-5. (Chỉ dành cho các lớp dẫn xuất từ ``Node``) Các biến ``@onready`` được khởi tạo.
-6. (Chỉ dành cho các lớp dẫn xuất từ ``Node``) Nếu được định nghĩa, phương thức ``_ready()`` sẽ được gọi.
+4. Khi khởi tạo các scene và resource, các giá trị đã export sẽ được gán.
+5. (Chỉ dành cho các lớp bắt nguồn từ ``Node``) Các biến ``@onready`` sẽ được khởi tạo.
+6. (Chỉ dành cho các lớp bắt nguồn từ ``Node``) Nếu được định nghĩa, phương thức ``_ready()`` sẽ được gọi.
 
 .. warning::
 
-    Bạn có thể chỉ định một biểu thức phức tạp làm bộ khởi tạo biến, bao gồm cả lệnh gọi hàm. Hãy đảm bảo các biến được khởi tạo theo đúng thứ tự, nếu không các giá trị của bạn có thể bị ghi đè. Ví dụ:
+    Bạn có thể chỉ định một biểu thức phức tạp làm trình khởi tạo biến, bao gồm cả các lệnh gọi hàm. Hãy đảm bảo các biến được khởi tạo đúng thứ tự, nếu không các giá trị của bạn có thể bị ghi đè. Ví dụ:
 
     ::
 
@@ -1058,7 +966,7 @@ Các biến thành viên được khởi tạo theo thứ tự sau:
         func _init() -> void:
             print(_data)
 
-    Sẽ in ra:
+    Sẽ in:
 
     ::
 
@@ -1066,7 +974,7 @@ Các biến thành viên được khởi tạo theo thứ tự sau:
         { "a": 1, "b": 2 }
         {  }
 
-    Để khắc phục điều này, hãy di chuyển định nghĩa biến ``_data`` lên trên định nghĩa ``a`` hoặc xóa phép gán dictionary rỗng (``= {}``).
+    Để khắc phục, hãy chuyển định nghĩa biến ``_data`` lên trên định nghĩa ``a`` hoặc xóa phép gán từ điển rỗng (``= {}``).
 
 .. _doc_gdscript_basics_static_variables:
 
@@ -1081,15 +989,15 @@ Một biến thành viên của lớp có thể được khai báo là static:
 
     static var a
 
-Biến tĩnh thuộc về lớp, không thuộc về các instance. Điều này có nghĩa là các biến tĩnh chia sẻ giá trị giữa nhiều instance, không giống các biến thành viên thông thường.
+Các biến static thuộc về lớp, không phải các instance. Điều này có nghĩa là các biến static chia sẻ giá trị giữa nhiều instance, không giống các biến thành viên thông thường.
 
-Từ bên trong một lớp, bạn có thể truy cập các biến tĩnh từ bất kỳ hàm nào, cả static lẫn không static. Từ bên ngoài lớp, bạn có thể truy cập các biến tĩnh bằng lớp hoặc một instance (cách thứ hai không được khuyến nghị vì khó đọc hơn).
+Bên trong một lớp, bạn có thể truy cập các biến static từ bất kỳ hàm nào, cả static và non-static. Bên ngoài lớp, bạn có thể truy cập các biến static bằng lớp hoặc một instance (cách thứ hai không được khuyến nghị vì khó đọc hơn).
 
 .. note::
 
-    Không thể áp dụng các annotation ``@export`` và ``@onready`` cho một biến tĩnh. Biến cục bộ không thể là static.
+    Không thể áp dụng các chú thích ``@export`` và ``@onready`` cho biến static. Các biến cục bộ không thể là static.
 
-Ví dụ sau định nghĩa một lớp ``Person`` với biến tĩnh tên là ``max_id``. Chúng ta tăng ``max_id`` trong hàm ``_init()``. Điều này giúp dễ dàng theo dõi số lượng instance ``Person`` trong game của chúng ta.
+Ví dụ sau định nghĩa một lớp ``Person`` với một biến static có tên ``max_id``. Chúng ta tăng ``max_id`` trong hàm ``_init()``. Điều này giúp dễ dàng theo dõi số lượng instance ``Person`` trong game.
 
 ::
 
@@ -1106,7 +1014,7 @@ Ví dụ sau định nghĩa một lớp ``Person`` với biến tĩnh tên là `
         id = max_id
         name = p_name
 
-Trong đoạn mã này, chúng ta tạo hai instance của lớp ``Person`` và kiểm tra rằng lớp cùng mọi instance đều có cùng giá trị ``max_id``, vì biến này là static và mọi instance đều có thể truy cập.
+Trong đoạn mã này, chúng ta tạo hai instance của lớp ``Person`` và kiểm tra để đảm bảo rằng lớp cũng như mọi instance đều có cùng giá trị ``max_id``, vì biến này là static và mọi instance đều có thể truy cập.
 
 ::
 
@@ -1124,7 +1032,7 @@ Trong đoạn mã này, chúng ta tạo hai instance của lớp ``Person`` và 
         print(person1.max_id) # 2
         print(person2.max_id) # 2
 
-Biến tĩnh có thể có type hint, setter và getter:
+Các biến static có thể có type hints, setter và getter:
 
 ::
 
@@ -1136,7 +1044,7 @@ Biến tĩnh có thể có type hint, setter và getter:
         set(value):
             balance = -value
 
-Một biến tĩnh của lớp cơ sở cũng có thể được truy cập qua một lớp con:
+Một biến static của lớp cơ sở cũng có thể được truy cập thông qua lớp con:
 
 ::
 
@@ -1155,16 +1063,16 @@ Một biến tĩnh của lớp cơ sở cũng có thể được truy cập qua 
 
 .. note::
 
-    Khi tham chiếu một biến tĩnh từ một tool script, script khác chứa biến tĩnh đó **must** cũng phải là một tool script. Xem :ref:`Running code in the editor <doc_running_code_in_the_editor_important_information>` để biết chi tiết.
+    Khi tham chiếu đến một biến static từ tool script, script khác chứa biến static **must** cũng phải là tool script. Xem :ref:`Chạy mã trong editor <doc_running_code_in_the_editor_important_information>` để biết chi tiết.
 
-Annotation ``@static_unload``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Chú thích ``@static_unload``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Vì các lớp GDScript là resource, việc có biến tĩnh trong một script sẽ ngăn script đó được unload ngay cả khi không còn instance nào của lớp đó và không còn tham chiếu nào khác. Điều này có thể quan trọng nếu biến tĩnh lưu trữ lượng dữ liệu lớn hoặc giữ tham chiếu đến các resource khác của project, chẳng hạn như scene. Bạn nên tự dọn dẹp dữ liệu này hoặc sử dụng annotation :ref:`@static_unload <class_@GDScript_annotation_@static_unload>` nếu biến tĩnh không lưu trữ dữ liệu quan trọng và có thể được reset.
+Vì các lớp GDScript là resource, việc có các biến static trong một script sẽ ngăn script đó được unload ngay cả khi không còn instance nào của lớp đó và không còn tham chiếu nào khác. Điều này có thể quan trọng nếu các biến static lưu trữ lượng lớn dữ liệu hoặc giữ tham chiếu đến các resource khác của project, chẳng hạn như scene. Bạn nên tự dọn dẹp dữ liệu này hoặc sử dụng chú thích :ref:`@static_unload <class_@GDScript_annotation_@static_unload>` nếu các biến static không lưu trữ dữ liệu quan trọng và có thể được reset.
 
 .. warning::
 
-    Hiện tại, do một bug, script không bao giờ được giải phóng, ngay cả khi annotation ``@static_unload`` được sử dụng.
+    Hiện tại, do một lỗi, các script không bao giờ được giải phóng, ngay cả khi sử dụng chú thích ``@static_unload``.
 
 Lưu ý rằng ``@static_unload`` áp dụng cho toàn bộ script (bao gồm cả các lớp bên trong) và phải được đặt ở đầu script, trước ``class_name`` và ``extends``:
 
@@ -1174,136 +1082,136 @@ Lưu ý rằng ``@static_unload`` áp dụng cho toàn bộ script (bao gồm c�
     class_name MyNode
     extends Node
 
-Xem thêm `Static functions <Static functions_>`_ và `Static constructor <Static constructor_>`_.
+Xem thêm `Hàm static <Static functions_>`_ và `Constructor static <Static constructor_>`_.
 
 Ép kiểu
 ~~~~~~~
 
-Các giá trị được gán cho biến có kiểu phải có kiểu tương thích. Nếu cần ép một giá trị thành một kiểu nhất định, đặc biệt là đối với kiểu object, bạn có thể dùng toán tử ép kiểu ``as``.
+Các giá trị được gán cho biến đã định kiểu phải có kiểu tương thích. Nếu cần ép một giá trị thành một kiểu nhất định, đặc biệt là với các kiểu đối tượng, bạn có thể sử dụng toán tử ép kiểu ``as``.
 
-Ép kiểu giữa các kiểu object sẽ cho kết quả là cùng object nếu giá trị có cùng kiểu hoặc là kiểu con của kiểu được ép.
+Ép kiểu giữa các kiểu đối tượng cho kết quả là cùng một đối tượng nếu giá trị có cùng kiểu hoặc là kiểu con của kiểu được ép.
 
-::
-
-    var my_node2D: Node2D
-    my_node2D = $Sprite2D as Node2D # Works since Sprite2D is a subtype of Node2D.
-
-Nếu giá trị không phải là kiểu con, thao tác ép kiểu sẽ cho kết quả là giá trị ``null``.
-
-::
+.. code-block::
 
     var my_node2D: Node2D
-    my_node2D = $Button as Node2D # Results in 'null' since a Button is not a subtype of Node2D.
+    my_node2D = $Sprite2D as Node2D # Hoạt động vì Sprite2D là kiểu con của Node2D.
 
-Đối với các kiểu tích hợp sẵn, chúng sẽ bị chuyển đổi bắt buộc nếu có thể; nếu không, engine sẽ phát sinh lỗi.
+Nếu giá trị không phải là kiểu con, phép ép kiểu sẽ cho kết quả là giá trị ``null``.
 
-::
+.. code-block::
+
+    var my_node2D: Node2D
+    my_node2D = $Button as Node2D # Cho kết quả là 'null' vì Button không phải là kiểu con của Node2D.
+
+Đối với các kiểu dựng sẵn, chúng sẽ được chuyển đổi bắt buộc nếu có thể; nếu không, engine sẽ phát sinh lỗi.
+
+.. code-block::
 
     var my_int: int
-    my_int = "123" as int # The string can be converted to int.
-    my_int = Vector2() as int # A Vector2 can't be converted to int, this will cause an error.
+    my_int = "123" as int # Chuỗi có thể được chuyển đổi thành int.
+    my_int = Vector2() as int # Vector2 không thể được chuyển đổi thành int, điều này sẽ gây ra lỗi.
 
 Ép kiểu cũng hữu ích để có các biến an toàn kiểu tốt hơn khi tương tác với scene tree:
 
-::
+.. code-block::
 
-    # Will infer the variable to be of type Sprite2D.
+    # Sẽ suy luận biến có kiểu Sprite2D.
     var my_sprite := $Character as Sprite2D
 
-    # Will fail if $AnimPlayer is not an AnimationPlayer, even if it has the method 'play()'.
+    # Sẽ thất bại nếu $AnimPlayer không phải là AnimationPlayer, ngay cả khi nó có phương thức 'play()'.
     ($AnimPlayer as AnimationPlayer).play("walk")
 
 Hằng số
 -------
 
-Hằng số là những giá trị bạn không thể thay đổi khi game đang chạy. Giá trị của chúng phải được biết tại compile-time. Việc dùng từ khóa ``const`` cho phép bạn đặt tên cho một giá trị hằng. Cố gắng gán giá trị cho một hằng sau khi nó đã được khai báo sẽ gây ra lỗi.
+Hằng số là các giá trị bạn không thể thay đổi khi game đang chạy. Giá trị của chúng phải được biết tại thời điểm biên dịch. Sử dụng từ khóa ``const`` cho phép bạn đặt tên cho một giá trị hằng số. Việc cố gắng gán giá trị cho một hằng số sau khi khai báo sẽ gây ra lỗi.
 
-Chúng tôi khuyến nghị dùng hằng số bất cứ khi nào một giá trị không được dự định sẽ thay đổi.
+Chúng tôi khuyến nghị sử dụng hằng số bất cứ khi nào một giá trị không được thay đổi.
 
-::
+.. code-block::
 
     const A = 5
     const B = Vector2(20, 20)
-    const C = 10 + 20 # Constant expression.
-    const D = Vector2(20, 30).x # Constant expression: 20.
-    const E = [1, 2, 3, 4][0] # Constant expression: 1.
-    const F = sin(20) # 'sin()' can be used in constant expressions.
-    const G = x + 20 # Invalid; this is not a constant expression!
-    const H = A + 20 # Constant expression: 25 (`A` is a constant).
+    const C = 10 + 20 # Biểu thức hằng số.
+    const D = Vector2(20, 30).x # Biểu thức hằng số: 20.
+    const E = [1, 2, 3, 4][0] # Biểu thức hằng: 1.
+    const F = sin(20) # Có thể sử dụng 'sin()' trong các biểu thức hằng.
+    const G = x + 20 # Không hợp lệ; đây không phải là một biểu thức hằng!
+    const H = A + 20 # Biểu thức hằng: 25 (`A` là một hằng số).
 
-Mặc dù kiểu của hằng số được suy luận từ giá trị được gán, bạn cũng có thể thêm chỉ định kiểu tường minh:
+Mặc dù kiểu của hằng số được suy luận từ giá trị được gán, bạn cũng có thể thêm đặc tả kiểu tường minh:
 
 ::
 
     const A: int = 5
     const B: Vector2 = Vector2()
 
-Gán một giá trị có kiểu không tương thích sẽ phát sinh lỗi.
+Việc gán một giá trị có kiểu không tương thích sẽ gây ra lỗi.
 
-Bạn cũng có thể tạo hằng số bên trong một hàm, điều này hữu ích để đặt tên cho các magic value cục bộ.
+Bạn cũng có thể tạo hằng số bên trong một hàm, hữu ích để đặt tên cho các giá trị magic cục bộ.
 
 Enum
 ~~~~
 
-Enum về cơ bản là cú pháp viết tắt cho hằng số và khá hữu ích nếu bạn muốn gán các số nguyên liên tiếp cho một số hằng số.
+Enum về cơ bản là cách viết tắt cho các hằng số, và khá hữu ích nếu bạn muốn gán các số nguyên liên tiếp cho một số hằng số.
 
-::
+.. code-block::
 
     enum {TILE_BRICK, TILE_FLOOR, TILE_SPIKE, TILE_TELEPORT}
 
-    # Is the same as:
+    # Tương đương với:
     const TILE_BRICK = 0
     const TILE_FLOOR = 1
     const TILE_SPIKE = 2
     const TILE_TELEPORT = 3
 
 
-Nếu bạn truyền một tên cho enum, nó sẽ đặt tất cả các key vào trong một hằng số
-:ref:`Dictionary <class_Dictionary>` có tên đó. Điều này có nghĩa là mọi method hằng số của dictionary cũng có thể được dùng với enum có tên. Điều này chỉ hoạt động với enum GDScript, không áp dụng cho enum từ các lớp tích hợp sẵn.
+Nếu truyền một tên cho enum, tất cả các key sẽ được đặt bên trong một hằng số
+:ref:`Dictionary <class_Dictionary>` có tên đó. Điều này nghĩa là mọi phương thức hằng số của một dictionary cũng có thể được sử dụng với enum có tên. Điều này chỉ áp dụng cho enum GDScript, không áp dụng cho enum từ các lớp dựng sẵn.
 
-.. important:: Các key trong enum có tên không được đăng ký làm hằng số toàn cục. Chúng nên được truy cập với tiền tố là tên của enum (``Name.KEY``).
+.. important:: Các key trong enum có tên không được đăng ký dưới dạng hằng số toàn cục. Chúng phải được truy cập bằng tiền tố là tên của enum (``Name.KEY``).
 
-::
+.. code-block::
 
     enum State {STATE_IDLE, STATE_JUMP = 5, STATE_SHOOT}
 
-    # Is the same as:
+    # Tương đương với:
     const State = {STATE_IDLE = 0, STATE_JUMP = 5, STATE_SHOOT = 6}
-    # Access values with State.STATE_IDLE, etc.
+    # Truy cập các giá trị bằng State.STATE_IDLE, v.v.
 
     func _ready():
-        # Access values with Name.KEY, prints '5'
+        # Truy cập các giá trị bằng Name.KEY, in ra '5'
         print(State.STATE_JUMP)
-        # Use dictionary methods:
-        # prints '["STATE_IDLE", "STATE_JUMP", "STATE_SHOOT"]'
+        # Sử dụng các phương thức của dictionary:
+        # in ra '["STATE_IDLE", "STATE_JUMP", "STATE_SHOOT"]'
         print(State.keys())
-        # prints '{ "STATE_IDLE": 0, "STATE_JUMP": 5, "STATE_SHOOT": 6 }'
+        # in ra '{ "STATE_IDLE": 0, "STATE_JUMP": 5, "STATE_SHOOT": 6 }'
         print(State)
-        # prints '[0, 5, 6]'
+        # in ra '[0, 5, 6]'
         print(State.values())
 
-Nếu không gán giá trị cho một key của enum, key đó sẽ được gán giá trị trước đó cộng một, hoặc ``0`` nếu đây là mục đầu tiên trong enum. Cho phép nhiều key có cùng giá trị.
+Nếu không gán giá trị cho một key của enum, key đó sẽ được gán giá trị trước đó cộng một, hoặc ``0`` nếu là mục đầu tiên trong enum. Cho phép nhiều key có cùng giá trị.
 
 
 Hàm
 ---
 
-Hàm luôn thuộc về một `class <Classes_>`_. Thứ tự ưu tiên phạm vi khi tra cứu biến là: cục bộ → thành viên lớp → toàn cục. Biến ``self`` luôn sẵn dùng và được cung cấp như một tùy chọn để truy cập các thành viên của lớp (xem `self`_), nhưng không phải lúc nào cũng cần thiết (và *không* nên được truyền làm đối số đầu tiên của hàm, không giống Python).
+Các hàm luôn thuộc về một `class <Classes_>`_. Thứ tự ưu tiên phạm vi khi tra cứu biến là: cục bộ → thành viên class → toàn cục. Biến ``self`` luôn khả dụng và được cung cấp như một tùy chọn để truy cập các thành viên của class (xem `self`_), nhưng không phải lúc nào cũng cần dùng (và *not* được truyền làm đối số đầu tiên của hàm, không giống Python).
 
-::
+.. code-block::
 
     func my_function(a, b):
         print(a)
         print(b)
-        return a + b  # Return is optional; without it 'null' is returned.
+        return a + b  # Return là tùy chọn; nếu không có, 'null' sẽ được trả về.
 
 Một hàm có thể ``return`` tại bất kỳ thời điểm nào. Giá trị trả về mặc định là ``null``.
 
-Theo mặc định, tất cả tham số của hàm đều là bắt buộc. Bạn có thể làm cho một hoặc nhiều tham số ở cuối trở thành tùy chọn bằng cách gán giá trị mặc định cho chúng:
+Theo mặc định, tất cả tham số của hàm đều bắt buộc. Bạn có thể làm cho một hoặc nhiều tham số ở cuối trở thành tùy chọn bằng cách gán giá trị mặc định cho chúng:
 
-::
+.. code-block::
 
-    # Since the last two parameters are optional, all these calls are valid:
+    # Vì hai tham số cuối là tùy chọn, tất cả các lệnh gọi sau đều hợp lệ:
     # - my_function(1)
     # - my_function(1, 20)
     # - my_function(1, 20, 100)
@@ -1312,7 +1220,7 @@ Theo mặc định, tất cả tham số của hàm đều là bắt buộc. B�
         print(b_optional)
         print(c_optional)
 
-Nếu một hàm chỉ chứa một dòng code, nó có thể được viết trên một dòng:
+Nếu một hàm chỉ chứa một dòng mã, bạn có thể viết nó trên một dòng:
 
 ::
 
@@ -1322,40 +1230,40 @@ Nếu một hàm chỉ chứa một dòng code, nó có thể được viết tr
 
     func empty_function(): pass
 
-Hàm cũng có thể có chỉ định kiểu cho các đối số và giá trị trả về. Có thể thêm kiểu cho đối số tương tự như biến:
+Hàm cũng có thể có đặc tả kiểu cho các đối số và giá trị trả về. Có thể thêm kiểu cho các đối số tương tự như với biến:
 
 ::
 
     func my_function(a: int, b: String):
         pass
 
-Nếu một đối số hàm có giá trị mặc định, có thể suy luận kiểu:
+Nếu một đối số của hàm có giá trị mặc định, bạn có thể suy luận kiểu:
 
 ::
 
     func my_function(int_arg := 42, String_arg := "string"):
         pass
 
-Kiểu trả về của hàm có thể được chỉ định sau danh sách đối số bằng token mũi tên (``->``):
+Có thể chỉ định kiểu trả về của hàm sau danh sách đối số bằng arrow token (``->``):
 
 ::
 
     func my_int_function() -> int:
         return 0
 
-Các hàm có kiểu trả về **phải** trả về một giá trị phù hợp. Đặt kiểu là ``void`` nghĩa là hàm không trả về gì. Hàm void có thể kết thúc sớm bằng từ khóa ``return``, nhưng không thể trả về bất kỳ giá trị nào.
+Các hàm có kiểu trả về **must** trả về một giá trị hợp lệ. Đặt kiểu là ``void`` nghĩa là hàm không trả về gì. Các hàm Void có thể kết thúc sớm bằng từ khóa ``return``, nhưng không thể trả về bất kỳ giá trị nào.
 
-::
+.. code-block::
 
     func void_function() -> void:
-        return # Can't return a value.
+        return # Không thể trả về một giá trị.
 
-.. note:: Các hàm không phải void **luôn** phải trả về một giá trị, vì vậy nếu code của bạn có các câu lệnh rẽ nhánh (chẳng hạn cấu trúc ``if``/``else``), mọi đường đi có thể đều phải có return. Ví dụ, nếu bạn có một ``return`` bên trong khối ``if`` nhưng không có sau khối đó, editor sẽ báo lỗi vì nếu khối không được thực thi, hàm sẽ không có giá trị hợp lệ để trả về.
+.. note:: Các hàm không phải Void **always** phải trả về một giá trị, vì vậy nếu mã của bạn có các câu lệnh rẽ nhánh (chẳng hạn cấu trúc ``if``/``else``), mọi nhánh có thể xảy ra đều phải có return. Ví dụ, nếu bạn có một ``return`` bên trong khối ``if`` nhưng không có sau khối đó, trình soạn thảo sẽ báo lỗi vì nếu khối không được thực thi, hàm sẽ không có giá trị hợp lệ để trả về.
 
-Tham chiếu hàm
-~~~~~~~~~~~~~~
+Tham chiếu đến hàm
+~~~~~~~~~~~~~~~~~~
 
-Hàm là các giá trị hạng nhất xét theo đối tượng :ref:`Callable <class_Callable>`. Việc tham chiếu một hàm bằng tên mà không gọi nó sẽ tự động tạo callable phù hợp. Điều này có thể được dùng để truyền hàm làm đối số.
+Các hàm là các giá trị hạng nhất trong phạm vi đối tượng :ref:`Callable <class_Callable>`. Việc tham chiếu đến một hàm bằng tên mà không gọi hàm sẽ tự động tạo ra callable thích hợp. Bạn có thể dùng cách này để truyền các hàm làm đối số.
 
 ::
 
@@ -1375,33 +1283,33 @@ Hàm là các giá trị hạng nhất xét theo đối tượng :ref:`Callable 
 
 .. note::
 
-    Callable **phải** được gọi bằng method :ref:`call() <class_Callable_method_call>`. Bạn không thể dùng trực tiếp toán tử ``()``. Hành vi này được triển khai để tránh các vấn đề về hiệu năng khi gọi hàm trực tiếp.
+    Callable **must** được gọi bằng phương thức :ref:`call() <class_Callable_method_call>`. Bạn không thể sử dụng trực tiếp toán tử ``()``. Hành vi này được triển khai để tránh các vấn đề về hiệu năng khi gọi hàm trực tiếp.
 
 Hàm lambda
 ~~~~~~~~~~
 
-Hàm lambda cho phép bạn khai báo các hàm không thuộc về một lớp. Thay vào đó, một
-đối tượng :ref:`Callable <class_Callable>` được tạo và gán trực tiếp cho một biến. Điều này có thể hữu ích để tạo các callable có thể truyền đi mà không làm ô nhiễm phạm vi lớp.
+Hàm lambda cho phép bạn khai báo các hàm không thuộc về một class. Thay vào đó, một
+đối tượng :ref:`Callable <class_Callable>` được tạo và gán trực tiếp cho một biến. Điều này hữu ích để tạo các callable có thể truyền đi mà không làm ô nhiễm phạm vi của class.
 
 ::
 
     var lambda = func (x):
         print(x)
 
-Để gọi lambda đã tạo, bạn có thể dùng method :ref:`call() <class_Callable_method_call>`:
+Để gọi lambda đã tạo, bạn có thể sử dụng phương thức :ref:`call() <class_Callable_method_call>`:
 
-::
+.. code-block::
 
-    lambda.call(42) # Prints `42`.
+    lambda.call(42) # In ra `42`.
 
-Hàm lambda có thể được đặt tên để phục vụ debug (tên được hiển thị trong Debugger):
+Bạn có thể đặt tên cho các hàm lambda nhằm mục đích gỡ lỗi (tên sẽ được hiển thị trong Debugger):
 
 ::
 
     var lambda = func my_lambda(x):
         print(x)
 
-Bạn có thể chỉ định type hint cho hàm lambda theo cùng cách như với hàm thông thường:
+Bạn có thể chỉ định gợi ý kiểu cho các hàm lambda giống như với các hàm thông thường:
 
 ::
 
@@ -1410,23 +1318,23 @@ Bạn có thể chỉ định type hint cho hàm lambda theo cùng cách như v�
 
 Lưu ý rằng nếu muốn trả về một giá trị từ hàm lambda, cần có ``return`` tường minh (bạn không thể bỏ qua ``return``):
 
-::
+.. code-block::
 
     var lambda = func (x): return x ** 2
-    print(lambda.call(2)) # Prints `4`.
+    print(lambda.call(2)) # In ra `4`.
 
-Hàm lambda capture môi trường cục bộ:
+Các hàm lambda nắm bắt môi trường cục bộ:
 
-::
+.. code-block::
 
     var x = 42
     var lambda = func ():
-        print(x) # Prints `42`.
+        print(x) # In ra `42`.
     lambda.call()
 
 .. warning::
 
-    Biến cục bộ được capture theo giá trị một lần khi lambda được tạo. Vì vậy, chúng sẽ không được cập nhật trong lambda nếu được gán lại trong hàm bên ngoài:
+    Các biến cục bộ được nắm bắt theo giá trị một lần, tại thời điểm tạo lambda. Vì vậy, chúng sẽ không được cập nhật trong lambda nếu được gán lại ở hàm bên ngoài:
 
     ::
 
@@ -1436,7 +1344,7 @@ Hàm lambda capture môi trường cục bộ:
         x = "Hello"
         lambda.call() # Prints `42`.
 
-    Ngoài ra, lambda không thể gán lại một biến cục bộ bên ngoài. Sau khi thoát khỏi lambda, biến sẽ không thay đổi, vì lambda capture ngầm che khuất nó:
+    Ngoài ra, lambda không thể gán lại một biến cục bộ bên ngoài. Sau khi thoát khỏi lambda, biến sẽ không thay đổi, vì việc capture lambda ngầm che khuất biến đó:
 
     ::
 
@@ -1448,7 +1356,7 @@ Hàm lambda capture môi trường cục bộ:
         lambda.call()
         print(x) # Prints `42`.
 
-    Tuy nhiên, nếu bạn sử dụng các kiểu dữ liệu truyền theo tham chiếu (array, dictionary và object), thì các thay đổi nội dung sẽ được chia sẻ cho đến khi bạn gán lại biến:
+    Tuy nhiên, nếu bạn sử dụng các kiểu dữ liệu truyền theo tham chiếu (mảng, từ điển và đối tượng), thì các thay đổi về nội dung sẽ được chia sẻ cho đến khi bạn gán lại biến:
 
     ::
 
@@ -1466,21 +1374,21 @@ Hàm lambda capture môi trường cục bộ:
 Hàm static
 ~~~~~~~~~~
 
-Một hàm có thể được khai báo là static. Khi một hàm là static, nó không có quyền truy cập vào các biến thành viên của instance hoặc ``self``. Một hàm static có quyền truy cập vào các biến static. Hàm static cũng hữu ích để tạo thư viện các hàm trợ giúp:
+Một hàm có thể được khai báo là static. Khi một hàm là static, nó không thể truy cập các biến thành viên của instance hoặc ``self``. Một hàm static có thể truy cập các biến static. Ngoài ra, các hàm static rất hữu ích để tạo các thư viện hàm hỗ trợ:
 
 ::
 
     static func sum2(a, b):
         return a + b
 
-Hàm lambda không thể được khai báo là static.
+Không thể khai báo các hàm lambda là static.
 
-Xem thêm `Biến static <Static variables_>`_ và `Constructor static <Static constructor_>`_.
+Xem thêm `Static variables <Static variables_>`_ và `Static constructor <Static constructor_>`_.
 
 Hàm variadic
 ~~~~~~~~~~~~
 
-Hàm variadic là hàm có thể nhận số lượng đối số thay đổi. Kể từ Godot 4.5, GDScript hỗ trợ hàm variadic. Để khai báo một hàm variadic, bạn cần dùng *tham số rest*, tham số này thu thập mọi đối số dư thừa vào một array.
+Hàm variadic là hàm có thể nhận số lượng đối số thay đổi. Kể từ Godot 4.5, GDScript hỗ trợ các hàm variadic. Để khai báo một hàm variadic, bạn cần sử dụng *rest parameter*, tham số này thu thập tất cả các đối số dư vào một mảng.
 
 ::
 
@@ -1494,13 +1402,13 @@ Hàm variadic là hàm có thể nhận số lượng đối số thay đổi. K
         my_func(1, 2, 3, 4)    # 1 2 [3, 4]
         my_func(1, 2, 3, 4, 5) # 1 2 [3, 4, 5]
 
-Một hàm chỉ có thể có tối đa một tham số rest và nó phải là tham số cuối cùng trong danh sách tham số. Tham số rest không thể có giá trị mặc định. Hàm static và lambda cũng có thể là variadic.
+Một hàm có nhiều nhất một rest parameter, và tham số này phải là tham số cuối cùng trong danh sách tham số. Rest parameter không thể có giá trị mặc định. Các hàm static và lambda cũng có thể là variadic.
 
-Static typing cũng hoạt động với hàm variadic. Tuy nhiên, array có kiểu hiện chưa được hỗ trợ làm kiểu static của tham số rest:
+Kiểu tĩnh cũng hoạt động với các hàm variadic. Tuy nhiên, hiện tại các mảng có kiểu chưa được hỗ trợ làm kiểu tĩnh của rest parameter:
 
-::
+.. code-block::
 
-    # You cannot specify `...values: Array[int]`.
+    # Bạn không thể chỉ định `...values: Array[int]`.
     func sum(...values: Array) -> int:
         var result := 0
         for value in values:
@@ -1510,19 +1418,19 @@ Static typing cũng hoạt động với hàm variadic. Tuy nhiên, array có ki
 
 .. note::
 
-    Mặc dù bạn có thể khai báo hàm là variadic bằng tham số rest, GDScript hiện không hỗ trợ giải nén tham số khi gọi hàm bằng *cú pháp spread* vốn có trong một số ngôn ngữ (JavaScript, PHP). Tuy nhiên, bạn có thể dùng ``callv()`` để gọi một hàm với một array đối số:
+    Mặc dù bạn có thể khai báo các hàm là variadic bằng rest parameter, việc giải nén tham số khi gọi một hàm bằng *spread syntax* có trong một số ngôn ngữ (JavaScript, PHP) hiện chưa được hỗ trợ trong GDScript. Tuy nhiên, bạn có thể sử dụng ``callv()`` để gọi một hàm với một mảng các đối số:
 
-    ::
+    .. code-block::
 
         func test_func(...args):
-            #log_data(...args) # This won't work.
-            log_data.callv(args) # This will work.
+            #log_data(...args) # Việc này sẽ không hoạt động.
+            log_data.callv(args) # Việc này sẽ hoạt động.
 
         func log_data(...values):
-            # You should use `callv()` if you want to pass `values` as the argument list,
-            # rather than passing the array as the first argument.
+            # Bạn nên sử dụng `callv()` nếu muốn truyền `values` làm danh sách đối số,
+            # thay vì truyền mảng làm đối số đầu tiên.
             prints.callv(values)
-            # You can use array concatenation to prepend/append the argument list.
+            # Bạn có thể sử dụng phép nối mảng để thêm danh sách đối số vào đầu/cuối.
             write_data.callv(["user://log.txt"] + values)
 
         func write_data(path, ...values):
@@ -1531,71 +1439,71 @@ Static typing cũng hoạt động với hàm variadic. Tuy nhiên, array có ki
 Hàm abstract
 ~~~~~~~~~~~~
 
-Xem `Lớp và method abstract <Abstract classes and methods_>`_.
+Xem `Abstract classes and methods <Abstract classes and methods_>`_.
 
 Câu lệnh và luồng điều khiển
 ----------------------------
 
-Câu lệnh là tiêu chuẩn và có thể là phép gán, lời gọi hàm, cấu trúc luồng điều khiển, v.v. (xem bên dưới). ``;`` với vai trò dấu phân cách câu lệnh hoàn toàn là tùy chọn.
+Các câu lệnh là những thành phần tiêu chuẩn và có thể là phép gán, lệnh gọi hàm, cấu trúc luồng điều khiển, v.v. (xem bên dưới). ``;`` làm dấu phân cách câu lệnh là hoàn toàn tùy chọn.
 
 Biểu thức
 ~~~~~~~~~
 
-Biểu thức là chuỗi các toán tử và toán hạng của chúng được sắp xếp có trật tự. Bản thân một biểu thức cũng có thể là một câu lệnh, dù chỉ các lời gọi mới hợp lý để dùng làm câu lệnh vì các biểu thức khác không có side effect.
+Biểu thức là các chuỗi toán tử và toán hạng của chúng được sắp xếp theo trật tự. Bản thân một biểu thức cũng có thể là một câu lệnh, mặc dù chỉ các lệnh gọi là hợp lý để sử dụng làm câu lệnh vì các biểu thức khác không có side effect.
 
-Biểu thức trả về các giá trị có thể được gán cho các đích hợp lệ. Toán hạng của một số toán tử có thể là một biểu thức khác. Phép gán không phải là biểu thức và do đó không trả về bất kỳ giá trị nào.
+Biểu thức trả về các giá trị có thể được gán cho các đích hợp lệ. Toán hạng của một số toán tử có thể là một biểu thức khác. Phép gán không phải là một biểu thức và do đó không trả về giá trị nào.
 
-Sau đây là một số ví dụ về biểu thức:
+Dưới đây là một số ví dụ về biểu thức:
 
-::
+.. code-block::
 
-    2 + 2 # Binary operation.
-    -5 # Unary operation.
-    "okay" if x > 4 else "not okay" # Ternary operation.
-    x # Identifier representing variable or constant.
-    x.a # Attribute access.
-    x[4] # Subscript access.
-    x > 2 or x < 5 # Comparisons and logic operators.
-    x == y + 2 # Equality test.
-    do_something() # Function call.
-    [1, 2, 3] # Array definition.
-    {A = 1, B = 2} # Dictionary definition.
-    preload("res://icon.svg") # Preload builtin function.
-    self # Reference to current instance.
+    2 + 2 # Phép toán nhị phân.
+    -5 # Phép toán một ngôi.
+    "okay" if x > 4 else "not okay" # Phép toán ba ngôi.
+    x # Identifier biểu thị biến hoặc hằng số.
+    x.a # Truy cập thuộc tính.
+    x[4] # Truy cập chỉ số.
+    x > 2 or x < 5 # Các toán tử so sánh và logic.
+    x == y + 2 # Kiểm tra bằng nhau.
+    do_something() # Lệnh gọi hàm.
+    [1, 2, 3] # Định nghĩa mảng.
+    {A = 1, B = 2} # Định nghĩa từ điển.
+    preload("res://icon.svg") # Hàm builtin preload.
+    self # Tham chiếu đến instance hiện tại.
 
-Identifier, attribute và subscript là các đích gán hợp lệ. Các biểu thức khác không thể nằm ở vế trái của phép gán.
+Identifier, thuộc tính và chỉ số là các đích gán hợp lệ. Các biểu thức khác không thể nằm ở vế trái của phép gán.
 
 .. _`self`:
 
 self
 ^^^^
 
-``self`` có thể được dùng để tham chiếu đến instance hiện tại và thường tương đương với việc trực tiếp tham chiếu đến các symbol có sẵn trong script hiện tại. Tuy nhiên, ``self`` cũng cho phép bạn truy cập các property, method và tên khác được định nghĩa động (tức là dự kiến tồn tại trong các subtype của class hiện tại, hoặc được cung cấp bằng :ref:`_set() <class_Object_private_method__set>` và/hoặc
+``self`` có thể được sử dụng để tham chiếu đến instance hiện tại và thường tương đương với việc tham chiếu trực tiếp đến các symbol có sẵn trong script hiện tại. Tuy nhiên, ``self`` cũng cho phép bạn truy cập các thuộc tính, phương thức và tên khác được định nghĩa động (tức là được kỳ vọng tồn tại trong các subtype của class hiện tại, hoặc được cung cấp bằng :ref:`_set() <class_Object_private_method__set>` và/hoặc
 :ref:`_get() <class_Object_private_method__get>`).
 
-::
+.. code-block::
 
     extends Node
 
     func _ready():
-        # Compile time error, as `my_var` is not defined in the current class or its ancestors.
+        # Lỗi lúc biên dịch vì `my_var` không được định nghĩa trong class hiện tại hoặc các class tổ tiên của nó.
         print(my_var)
-        # Checked at runtime, thus may work for dynamic properties or descendant classes.
+        # Được kiểm tra lúc runtime, vì vậy có thể hoạt động với các thuộc tính động hoặc các class hậu duệ.
         print(self.my_var)
 
-        # Compile time error, as `my_func()` is not defined in the current class or its ancestors.
+        # Lỗi lúc biên dịch vì `my_func()` không được định nghĩa trong class hiện tại hoặc các class tổ tiên của nó.
         my_func()
-        # Checked at runtime, thus may work for descendant classes.
+        # Được kiểm tra lúc runtime, vì vậy có thể hoạt động với các class hậu duệ.
         self.my_func()
 
 .. warning::
 
-    Hãy lưu ý rằng việc truy cập các member của class con trong class cơ sở thường được xem là một thực hành không tốt, vì điều này làm mờ phạm vi trách nhiệm của từng đoạn code, khiến mối quan hệ tổng thể giữa các phần trong game của bạn khó suy luận hơn. Ngoài ra, người ta có thể đơn giản quên rằng class cha có một số kỳ vọng đối với các class con của nó.
+    Hãy lưu ý rằng việc truy cập các thành viên của class con trong class cơ sở thường bị xem là một thực hành không tốt, vì điều này làm mờ phạm vi trách nhiệm của từng phần mã, khiến mối quan hệ tổng thể giữa các phần trong trò chơi của bạn khó suy luận hơn. Ngoài ra, người ta có thể dễ dàng quên rằng class cha có một số kỳ vọng đối với các class hậu duệ của nó.
 
 if/else/elif
 ~~~~~~~~~~~~
 
-Các điều kiện đơn giản được tạo bằng cú pháp ``if``/``else``/``elif``. Dấu ngoặc đơn quanh điều kiện được cho phép nhưng không bắt buộc. Do đặc điểm thụt lề dựa trên tab, ``elif`` có thể được dùng thay cho ``else``/``if`` để duy trì một cấp thụt lề.
+Các điều kiện đơn giản được tạo bằng cú pháp ``if``/``else``/``elif``. Dấu ngoặc đơn quanh điều kiện được cho phép nhưng không bắt buộc. Do đặc điểm của việc thụt lề dựa trên tab, ``elif`` có thể được sử dụng thay cho ``else``/``if`` để duy trì một cấp thụt lề.
 
 ::
 
@@ -1615,16 +1523,16 @@ Các câu lệnh ngắn có thể được viết trên cùng dòng với điề
         var x = 3 + 3
         return x
 
-Đôi khi, bạn có thể muốn gán một giá trị khởi tạo khác dựa trên một biểu thức boolean. Trong trường hợp này, các biểu thức ternary-if rất hữu ích:
+Đôi khi, bạn có thể muốn gán một giá trị ban đầu khác nhau dựa trên một biểu thức boolean. Trong trường hợp này, các biểu thức ternary-if sẽ rất hữu ích:
 
 ::
 
     var x = (value) if (expression) else (value)
     y += 3 if y < 10 else -1
 
-Các biểu thức ternary-if có thể được lồng nhau để xử lý nhiều hơn 2 trường hợp. Khi lồng các biểu thức ternary-if, bạn nên xuống dòng toàn bộ biểu thức thành nhiều dòng để giữ khả năng đọc:
+Các biểu thức ternary-if có thể được lồng nhau để xử lý nhiều hơn 2 trường hợp. Khi lồng các biểu thức ternary-if, bạn nên đặt toàn bộ biểu thức trên nhiều dòng để dễ đọc hơn:
 
-::
+.. code-block::
 
     var count = 0
 
@@ -1634,32 +1542,32 @@ Các biểu thức ternary-if có thể được lồng nhau để xử lý nhi�
             else "banana" if count == 0
             else "orange"
     )
-    print(fruit)  # banana
+    print(fruit)  # chuối
 
-    # Alternative syntax with backslashes instead of parentheses (for multi-line expressions).
-    # Less lines required, but harder to refactor.
+    # Cú pháp thay thế sử dụng dấu gạch chéo ngược thay vì dấu ngoặc đơn (cho các biểu thức nhiều dòng).
+    # Cần ít dòng hơn, nhưng khó refactor hơn.
     var fruit_alt = \
             "apple" if count == 2 \
             else "pear" if count == 1 \
             else "banana" if count == 0 \
             else "orange"
-    print(fruit_alt)  # banana
+    print(fruit_alt)  # chuối
 
-Bạn cũng có thể muốn kiểm tra xem một giá trị có nằm trong một thứ gì đó hay không. Bạn có thể dùng câu lệnh ``if`` kết hợp với toán tử ``in`` để thực hiện việc này:
+Bạn cũng có thể muốn kiểm tra xem một giá trị có nằm trong một đối tượng nào đó hay không. Bạn có thể sử dụng câu lệnh ``if`` kết hợp với toán tử ``in`` để thực hiện việc này:
 
-::
+.. code-block::
 
-    # Check if a letter is in a string.
+    # Kiểm tra xem một chữ cái có nằm trong một chuỗi hay không.
     var text = "abc"
     if 'b' in text: print("The string contains b")
 
-    # Check if a variable is contained within a node.
+    # Kiểm tra xem một biến có nằm trong một node hay không.
     if "varName" in get_parent(): print("varName is defined in parent!")
 
 while
 ~~~~~
 
-Các vòng lặp đơn giản được tạo bằng cú pháp ``while``. Có thể thoát vòng lặp bằng ``break`` hoặc tiếp tục bằng ``continue`` (bỏ qua đến lần lặp tiếp theo của vòng lặp mà không thực thi thêm code nào trong lần lặp hiện tại):
+Các vòng lặp đơn giản được tạo bằng cú pháp ``while``. Có thể thoát khỏi vòng lặp bằng ``break`` hoặc tiếp tục bằng ``continue`` (bỏ qua đến lần lặp tiếp theo của vòng lặp mà không thực thi thêm bất kỳ mã nào trong lần lặp hiện tại):
 
 ::
 
@@ -1669,43 +1577,43 @@ Các vòng lặp đơn giản được tạo bằng cú pháp ``while``. Có th�
 for
 ~~~
 
-Để lặp qua một phạm vi, chẳng hạn như array hoặc table, vòng lặp *for* được sử dụng. Khi lặp qua một array, phần tử array hiện tại được lưu trong biến vòng lặp. Khi lặp qua một dictionary, *key* được lưu trong biến vòng lặp.
+Để lặp qua một phạm vi, chẳng hạn như một mảng hoặc bảng, ta sử dụng vòng lặp *for*. Khi lặp qua một mảng, phần tử hiện tại của mảng được lưu trong biến vòng lặp. Khi lặp qua một dictionary, *key* được lưu trong biến vòng lặp.
 
-::
+.. code-block::
 
     for x in [5, 7, 11]:
-        statement # Loop iterates 3 times with 'x' as 5, then 7 and finally 11.
+        statement # Vòng lặp lặp 3 lần với 'x' lần lượt là 5, 7 và cuối cùng là 11.
 
     var names = ["John", "Marta", "Samantha", "Jimmy"]
-    for name: String in names: # Typed loop variable.
-        print(name) # Prints name's content.
+    for name: String in names: # Biến vòng lặp có kiểu.
+        print(name) # In nội dung của name.
 
     var dict = {"a": 0, "b": 1, "c": 2}
     for i in dict:
-        print(dict[i]) # Prints 0, then 1, then 2.
+        print(dict[i]) # In lần lượt 0, 1 rồi 2.
 
     for i in range(3):
-        statement # Similar to [0, 1, 2] but does not allocate an array.
+        statement # Tương tự [0, 1, 2] nhưng không cấp phát một mảng.
 
     for i in range(1, 3):
-        statement # Similar to [1, 2] but does not allocate an array.
+        statement # Tương tự [1, 2] nhưng không cấp phát một mảng.
 
     for i in range(2, 8, 2):
-        statement # Similar to [2, 4, 6] but does not allocate an array.
+        statement # Tương tự [2, 4, 6] nhưng không cấp phát một mảng.
 
     for i in range(8, 2, -2):
-        statement # Similar to [8, 6, 4] but does not allocate an array.
+        statement # Tương tự [8, 6, 4] nhưng không cấp phát một mảng.
 
     for c in "Hello":
-        print(c) # Iterate through all characters in a String, print every letter on new line.
+        print(c) # Lặp qua tất cả ký tự trong một String, in mỗi chữ cái trên một dòng mới.
 
     for i in 3:
-        statement # Similar to range(3).
+        statement # Tương tự range(3).
 
     for i in 2.2:
-        statement # Similar to range(ceil(2.2)).
+        statement # Tương tự range(ceil(2.2)).
 
-Nếu bạn muốn gán giá trị trên một array trong khi đang lặp qua nó, tốt nhất nên dùng ``for i in array.size()``.
+Nếu bạn muốn gán các giá trị cho một mảng trong khi lặp qua mảng đó, tốt nhất nên sử dụng ``for i in array.size()``.
 
 ::
 
@@ -1713,24 +1621,24 @@ Nếu bạn muốn gán giá trị trên một array trong khi đang lặp qua n
         array[i] = "Hello World"
 
 
-Biến vòng lặp là cục bộ đối với vòng lặp for và việc gán cho nó sẽ không thay đổi giá trị trong array. Các object được truyền bằng tham chiếu (chẳng hạn như node) vẫn có thể được thao tác bằng cách gọi method trên biến vòng lặp.
+Biến vòng lặp là biến cục bộ của vòng lặp for, và việc gán cho biến này sẽ không thay đổi giá trị trong mảng. Các đối tượng được truyền bằng tham chiếu (chẳng hạn như các node) vẫn có thể được thao tác bằng cách gọi các phương thức trên biến vòng lặp.
 
-::
+.. code-block::
 
     for string in string_array:
-        string = "Hello World" # This has no effect
+        string = "Hello World" # Việc này không có tác dụng
 
     for node in node_array:
-        node.add_to_group("Cool_Group") # This has an effect
+        node.add_to_group("Cool_Group") # Việc này có tác dụng
 
 match
 ~~~~~
 
-Câu lệnh ``match`` được dùng để phân nhánh việc thực thi một chương trình. Nó tương đương với câu lệnh ``switch`` có trong nhiều ngôn ngữ khác, nhưng cung cấp một số tính năng bổ sung.
+Câu lệnh ``match`` được dùng để phân nhánh quá trình thực thi của chương trình. Nó tương đương với câu lệnh ``switch`` có trong nhiều ngôn ngữ khác, nhưng cung cấp thêm một số tính năng.
 
 .. warning::
 
-    ``match`` kiểm tra kiểu nghiêm ngặt hơn toán tử ``==``. Ví dụ, ``1`` sẽ **không** khớp với ``1.0``. Ngoại lệ duy nhất là việc khớp ``String`` với ``StringName``: ví dụ, String ``"hello"`` được xem là bằng với StringName ``&"hello"``.
+    ``match`` nghiêm ngặt về kiểu hơn toán tử ``==``. Ví dụ, ``1`` sẽ **không** khớp với ``1.0``. Ngoại lệ duy nhất là khi so khớp ``String`` với ``StringName``: chẳng hạn, String ``"hello"`` được xem là bằng StringName ``&"hello"``.
 
 Cú pháp cơ bản
 ^^^^^^^^^^^^^^
@@ -1744,26 +1652,26 @@ Cú pháp cơ bản
             <block>
         <...>
 
-Hướng dẫn nhanh dành cho những người đã quen với câu lệnh switch
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Khóa học cấp tốc dành cho những người đã quen với các câu lệnh switch
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Thay ``switch`` bằng ``match``.
 2. Xóa ``case``.
-3. Xóa mọi ``break``\ .
-4. Đổi ``default`` thành một dấu gạch dưới đơn.
+3. Xóa mọi ``break``\ s.
+4. Đổi ``default`` thành một dấu gạch dưới duy nhất.
 
 Luồng điều khiển
 ^^^^^^^^^^^^^^^^
 
-Các pattern được khớp từ trên xuống dưới. Nếu một pattern khớp, block tương ứng đầu tiên sẽ được thực thi. Sau đó, việc thực thi tiếp tục bên dưới câu lệnh ``match``.
+Các pattern được so khớp từ trên xuống dưới. Nếu một pattern khớp, block tương ứng đầu tiên sẽ được thực thi. Sau đó, quá trình thực thi tiếp tục bên dưới câu lệnh ``match``.
 
 .. note::
 
-    Hành vi ``continue`` đặc biệt trong ``match`` được hỗ trợ ở 3.x đã bị loại bỏ trong Godot 4.0.
+    Hành vi ``continue`` đặc biệt trong ``match`` được hỗ trợ ở phiên bản 3.x đã bị loại bỏ trong Godot 4.0.
 
-Có các loại pattern sau:
+Các loại pattern sau đây khả dụng:
 
-- Literal pattern
+- Pattern literal
     Khớp với một `literal <Literals_>`_:
 
     ::
@@ -1776,8 +1684,8 @@ Có các loại pattern sau:
             "test":
                 print("Oh snap! It's a string!")
 
-- Expression pattern
-    Khớp với một biểu thức hằng, một identifier hoặc một lượt truy cập attribute (``A.B``):
+- Pattern biểu thức
+    Khớp với một biểu thức hằng, một identifier hoặc một thuộc tính được truy cập (``A.B``):
 
     ::
 
@@ -1789,10 +1697,10 @@ Có các loại pattern sau:
             TYPE_ARRAY:
                 print("array")
 
-- Wildcard pattern
-    Pattern này khớp với mọi thứ. Nó được viết bằng một dấu gạch dưới đơn.
+- Pattern wildcard
+    Pattern này khớp với mọi thứ. Nó được viết bằng một dấu gạch dưới duy nhất.
 
-    Nó có thể được dùng tương đương với ``default`` trong câu lệnh ``switch`` ở các ngôn ngữ khác:
+    Có thể sử dụng nó tương đương với ``default`` trong câu lệnh ``switch`` ở các ngôn ngữ khác:
 
     ::
 
@@ -1804,8 +1712,8 @@ Có các loại pattern sau:
             _:
                 print("It's not 1 or 2. I don't care to be honest.")
 
-- Binding pattern
-    Binding pattern tạo ra một biến mới. Giống như wildcard pattern, nó khớp với mọi thứ - đồng thời đặt tên cho giá trị đó. Nó đặc biệt hữu ích trong array pattern và dictionary pattern:
+- Pattern binding
+    Một pattern binding tạo ra một biến mới. Giống như pattern wildcard, nó khớp với mọi thứ — đồng thời đặt tên cho giá trị đó. Pattern này đặc biệt hữu ích trong các pattern mảng và dictionary:
 
     ::
 
@@ -1817,12 +1725,12 @@ Có các loại pattern sau:
             var new_var:
                 print("It's not 1 or 2, it's ", new_var)
 
-- Array pattern
-    Khớp với một array. Mỗi phần tử riêng lẻ của array pattern tự nó là một pattern, vì vậy bạn có thể lồng chúng.
+- Pattern mảng
+    Khớp với một mảng. Mỗi phần tử của pattern mảng cũng là một pattern, vì vậy bạn có thể lồng chúng vào nhau.
 
-    Độ dài của array được kiểm tra trước; nó phải có cùng kích thước với pattern, nếu không pattern sẽ không khớp.
+    Độ dài của mảng được kiểm tra trước; nó phải có cùng kích thước với pattern, nếu không pattern sẽ không khớp.
 
-    **Array mở**: Một array có thể lớn hơn pattern bằng cách đặt subpattern cuối cùng là ``..``.
+    **Mảng không giới hạn**: Một mảng có thể lớn hơn pattern bằng cách đặt subpattern cuối cùng thành ``..``.
 
     Mỗi subpattern phải được phân tách bằng dấu phẩy.
 
@@ -1838,18 +1746,18 @@ Có các loại pattern sau:
             [42, ..]:
                 print("Open ended array")
 
-- Dictionary pattern
-    Hoạt động tương tự như array pattern. Mỗi key phải là một constant pattern.
+- Pattern dictionary
+    Hoạt động giống như pattern mảng. Mỗi key phải là một pattern hằng.
 
-    Kích thước của dictionary được kiểm tra trước; nó phải có cùng kích thước với pattern, nếu không pattern sẽ không khớp.
+    Trước tiên, kích thước của dictionary được kiểm tra; nó phải bằng kích thước của pattern, nếu không pattern sẽ không khớp.
 
-    **Dictionary mở**: Một dictionary có thể lớn hơn pattern bằng cách đặt subpattern cuối cùng là ``..``.
+    **Dictionary không giới hạn**: Một dictionary có thể lớn hơn pattern bằng cách đặt subpattern cuối cùng là ``..``.
 
     Mỗi subpattern phải được phân tách bằng dấu phẩy.
 
-    Nếu bạn không chỉ định một giá trị, thì chỉ sự tồn tại của key được kiểm tra.
+    Nếu bạn không chỉ định giá trị, chỉ sự tồn tại của key được kiểm tra.
 
-    Value pattern được phân tách khỏi key pattern bằng một ``:``.
+    Pattern giá trị được phân tách khỏi pattern key bằng ``:``.
 
     ::
 
@@ -1866,7 +1774,7 @@ Có các loại pattern sau:
                 print("I only checked for one entry and ignored the rest")
 
 - Nhiều pattern
-    Bạn cũng có thể chỉ định nhiều pattern được phân tách bằng dấu phẩy. Các pattern này không được phép chứa bất kỳ binding nào.
+    Bạn cũng có thể chỉ định nhiều pattern được phân tách bằng dấu phẩy. Các pattern này không được phép chứa binding.
 
     ::
 
@@ -1879,9 +1787,9 @@ Có các loại pattern sau:
 Pattern guard
 ^^^^^^^^^^^^^
 
-*Pattern guard* là một điều kiện tùy chọn theo sau danh sách pattern và cho phép bạn thực hiện các kiểm tra bổ sung trước khi chọn một nhánh ``match``. Không giống pattern, pattern guard có thể là một biểu thức bất kỳ.
+*Pattern guard* là một điều kiện tùy chọn đi sau danh sách pattern, cho phép bạn thực hiện các kiểm tra bổ sung trước khi chọn một nhánh ``match``. Không giống pattern, pattern guard có thể là một biểu thức tùy ý.
 
-Chỉ một nhánh có thể được thực thi cho mỗi ``match``. Sau khi một nhánh được chọn, các nhánh còn lại sẽ không được kiểm tra. Nếu muốn sử dụng cùng một mẫu cho nhiều nhánh hoặc ngăn việc chọn một nhánh có mẫu quá tổng quát, bạn có thể chỉ định một pattern guard sau danh sách mẫu bằng từ khóa ``when``:
+Mỗi ``match`` chỉ có thể thực thi một nhánh. Sau khi một nhánh được chọn, các nhánh còn lại sẽ không được kiểm tra. Nếu bạn muốn sử dụng cùng một pattern cho nhiều nhánh hoặc ngăn việc chọn một nhánh có pattern quá tổng quát, bạn có thể chỉ định pattern guard sau danh sách pattern bằng từ khóa ``when``:
 
 ::
 
@@ -1899,34 +1807,34 @@ Chỉ một nhánh có thể được thực thi cho mỗi ``match``. Sau khi m�
         [var x, var y]:
             print("Point (%s, %s)" % [x, y])
 
-- Nếu không có mẫu nào khớp với nhánh hiện tại, pattern guard sẽ **không** được đánh giá và các mẫu của nhánh tiếp theo sẽ được kiểm tra.
-- Nếu tìm thấy một mẫu khớp, pattern guard sẽ được đánh giá.
+- Nếu không có pattern nào khớp với nhánh hiện tại, pattern guard sẽ **không** được đánh giá và các pattern của nhánh tiếp theo sẽ được kiểm tra.
+- Nếu tìm thấy pattern khớp, pattern guard sẽ được đánh giá.
 
-  - Nếu nó là true, phần thân của nhánh sẽ được thực thi và ``match`` kết thúc.
-  - Nếu nó là false, các mẫu của nhánh tiếp theo sẽ được kiểm tra.
+  - Nếu kết quả là true, phần thân của nhánh sẽ được thực thi và ``match`` kết thúc.
+  - Nếu kết quả là false, các pattern của nhánh tiếp theo sẽ được kiểm tra.
 
-Lớp
----
+Class
+-----
 
-Theo mặc định, mọi tệp script đều là các lớp không tên. Trong trường hợp này, bạn chỉ có thể tham chiếu chúng bằng đường dẫn của tệp, sử dụng đường dẫn tương đối hoặc tuyệt đối. Ví dụ, nếu bạn đặt tên cho một tệp script là ``character.gd``:
+Theo mặc định, tất cả tệp script đều là class không có tên. Trong trường hợp này, bạn chỉ có thể tham chiếu đến chúng bằng đường dẫn của tệp, sử dụng đường dẫn tương đối hoặc tuyệt đối. Ví dụ, nếu bạn đặt tên cho một tệp script là ``character.gd``:
 
-::
+.. code-block::
 
-   # Inherit from 'character.gd'.
+   # Kế thừa từ 'character.gd'.
 
    extends "res://path/to/character.gd"
 
-   # Load character.gd and create a new node instance from it.
+   # Tải character.gd và tạo một instance node mới từ đó.
 
    var Character = load("res://path/to/character.gd")
    var character_node = Character.new()
 
 .. _doc_gdscript_basics_class_name:
 
-Đăng ký các lớp có tên
-~~~~~~~~~~~~~~~~~~~~~~
+Đăng ký class có tên
+~~~~~~~~~~~~~~~~~~~~
 
-Bạn có thể đặt tên cho lớp của mình để đăng ký nó làm một kiểu mới trong editor của Godot. Để làm vậy, hãy sử dụng từ khóa ``class_name``. Bạn có thể tùy chọn sử dụng annotation ``@icon`` với đường dẫn đến một hình ảnh để dùng làm biểu tượng. Khi đó, lớp của bạn sẽ xuất hiện với biểu tượng mới trong editor:
+Bạn có thể đặt tên cho class để đăng ký nó thành một type mới trong editor của Godot. Để làm vậy, bạn sử dụng từ khóa ``class_name``. Bạn cũng có thể sử dụng annotation ``@icon`` cùng với đường dẫn đến một hình ảnh để dùng hình ảnh đó làm icon. Sau đó, class của bạn sẽ xuất hiện cùng icon mới trong editor:
 
 ::
 
@@ -1940,14 +1848,14 @@ Bạn có thể đặt tên cho lớp của mình để đăng ký nó làm mộ
 
 .. tip::
 
-    Các hình ảnh SVG được dùng làm biểu tượng node tùy chỉnh phải bật **Editor > Scale With Editor Scale** và **Editor > Convert Icons With Editor Theme**
-    :ref:`import options <doc_importing_images_editor_import_options>`. Điều này cho phép các biểu tượng tuân theo cài đặt tỷ lệ và giao diện của editor nếu chúng được thiết kế với cùng bảng màu như các biểu tượng của Godot.
+    Hình ảnh SVG được sử dụng làm icon node tùy chỉnh nên có các **Editor > Scale With Editor Scale** và **Editor > Convert Icons With Editor Theme**
+    :ref:`import options <doc_importing_images_editor_import_options>` được bật. Điều này cho phép icon tuân theo các thiết lập về tỷ lệ và theme của editor nếu icon được thiết kế với cùng bảng màu như các icon của chính Godot.
 
-Đây là một ví dụ về tệp lớp:
+Dưới đây là một ví dụ về tệp class:
 
-::
+.. code-block::
 
-    # Saved as a file named 'character.gd'.
+    # Được lưu dưới dạng tệp có tên 'character.gd'.
 
     class_name Character
 
@@ -1964,13 +1872,13 @@ Bạn có thể đặt tên cho lớp của mình để đăng ký nó làm mộ
         print(ResourceLoader.load("res://character.gd"))
         print(Character)
 
-Nếu bạn cũng muốn dùng ``extends``, bạn có thể giữ cả hai trên cùng một dòng:
+Nếu bạn cũng muốn sử dụng ``extends``, bạn có thể giữ cả hai trên cùng một dòng:
 
 ::
 
     class_name MyNode extends Node
 
-Các lớp có tên được đăng ký toàn cục, nghĩa là chúng có thể được sử dụng trong các script khác mà không cần ``load`` hoặc ``preload`` chúng:
+Các class có tên được đăng ký trên toàn cục, nghĩa là chúng có thể được sử dụng trong các script khác mà không cần ``load`` hoặc ``preload`` chúng:
 
 ::
 
@@ -1981,40 +1889,40 @@ Các lớp có tên được đăng ký toàn cục, nghĩa là chúng có thể
 
 .. note::
 
-    Godot khởi tạo các biến không tĩnh mỗi khi bạn tạo một instance, bao gồm cả mảng và dictionary. Điều này phù hợp với tinh thần an toàn luồng (thread safety), vì các script có thể được khởi tạo trong các luồng riêng biệt mà người dùng không hề biết.
+    Godot khởi tạo các biến không static mỗi khi bạn tạo một instance, bao gồm cả array và dictionary. Điều này phù hợp với mục tiêu đảm bảo thread safety, vì các script có thể được khởi tạo trong các thread riêng biệt mà người dùng không biết.
 
 .. warning::
 
-    Godot editor sẽ ẩn các lớp tùy chỉnh có tên bắt đầu bằng tiền tố "Editor" trong các cửa sổ hộp thoại 'Create New Node' hoặc 'Create New Scene'. Các lớp này vẫn có thể được khởi tạo tại runtime thông qua tên lớp của chúng, nhưng sẽ tự động bị các cửa sổ editor ẩn đi cùng với các node editor tích hợp mà Godot editor sử dụng.
+    Editor Godot sẽ ẩn các class tùy chỉnh có tên bắt đầu bằng tiền tố "Editor" trong các cửa sổ hộp thoại 'Create New Node' hoặc 'Create New Scene'. Các class này vẫn có thể được khởi tạo trong runtime thông qua tên class, nhưng sẽ tự động bị các cửa sổ editor ẩn đi cùng với các node editor dựng sẵn được editor Godot sử dụng.
 
 .. _doc_gdscript_basics_abstract_class:
 
 .. _`Abstract classes and methods`:
 
-Lớp và phương thức abstract
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Class và method abstract
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-Kể từ Godot 4.5, bạn có thể định nghĩa các lớp và phương thức abstract bằng annotation ``@abstract``.
+Kể từ Godot 4.5, bạn có thể định nghĩa class và method abstract bằng annotation ``@abstract``.
 
-Lớp abstract là lớp không thể được khởi tạo trực tiếp. Thay vào đó, nó được dùng để các lớp khác kế thừa. Việc cố gắng khởi tạo một lớp abstract sẽ dẫn đến lỗi.
+Class abstract là một class không thể được khởi tạo trực tiếp. Thay vào đó, nó được thiết kế để các class khác kế thừa. Việc cố gắng khởi tạo một class abstract sẽ gây ra lỗi.
 
-Phương thức abstract là phương thức không có phần triển khai. Do đó, sau phần đầu hàm cần có một dòng mới hoặc dấu chấm phẩy. Điều này xác định một hợp đồng mà các lớp kế thừa phải tuân thủ, vì chữ ký phương thức phải tương thích khi override.
+Method abstract là một method không có phần triển khai. Do đó, sau phần header của function phải có một dòng mới hoặc dấu chấm phẩy. Điều này định nghĩa một contract mà các class kế thừa phải tuân theo, vì method signature phải tương thích khi override.
 
-Các lớp kế thừa phải cung cấp phần triển khai cho mọi phương thức abstract, hoặc bản thân lớp kế thừa phải được đánh dấu là abstract. Nếu một lớp có ít nhất một phương thức abstract (của chính nó hoặc được kế thừa nhưng chưa triển khai), thì lớp đó cũng phải được đánh dấu là abstract. Tuy nhiên, điều ngược lại không đúng: một lớp abstract được phép không có phương thức abstract nào.
+Các class kế thừa phải cung cấp phần triển khai cho tất cả method abstract, hoặc class kế thừa phải được đánh dấu là abstract. Nếu một class có ít nhất một method abstract, dù là method của chính nó hay method kế thừa chưa được triển khai, thì class đó cũng phải được đánh dấu là abstract. Tuy nhiên, điều ngược lại không đúng: một class abstract được phép không có method abstract nào.
 
 .. tip::
 
-    Nếu muốn khai báo một phương thức là tùy chọn để override, bạn nên dùng một phương thức không phải abstract và cung cấp phần triển khai mặc định.
+    Nếu bạn muốn khai báo một method là tùy chọn để override, hãy sử dụng method không abstract và cung cấp phần triển khai mặc định.
 
-Ví dụ, bạn có thể có một lớp abstract tên là ``Shape`` định nghĩa một phương thức abstract tên là ``draw()``. Sau đó, bạn có thể tạo các lớp con như ``Circle`` và ``Square`` để triển khai phương thức ``draw()`` theo cách riêng. Điều này cho phép bạn định nghĩa một *interface* chung cho mọi hình dạng mà không cần triển khai mọi chi tiết trong chính lớp abstract:
+Ví dụ, bạn có thể có một class abstract tên là ``Shape`` định nghĩa một method abstract tên là ``draw()``. Sau đó, bạn có thể tạo các subclass như ``Circle`` và ``Square`` để triển khai method ``draw()`` theo cách riêng của chúng. Điều này cho phép bạn định nghĩa một *interface* chung cho mọi shape mà không cần triển khai tất cả chi tiết ngay trong class abstract:
 
-::
+.. code-block::
 
     @abstract class Shape:
         @abstract func draw()
 
-    # This is a concrete (non-abstract) subclass of Shape.
-    # You **must** implement all abstract methods in concrete classes.
+    # Đây là một subclass cụ thể (không abstract) của Shape.
+    # Bạn **phải** triển khai tất cả method abstract trong các class cụ thể.
     class Circle extends Shape:
         func draw():
             print("Drawing a circle.")
@@ -2023,9 +1931,9 @@ Ví dụ, bạn có thể có một lớp abstract tên là ``Shape`` định ng
         func draw():
             print("Drawing a square.")
 
-Cả lớp inner và các lớp được tạo bằng ``class_name`` đều có thể là abstract. Ví dụ này tạo hai lớp abstract, trong đó một lớp là lớp con của lớp abstract khác:
+Cả inner class và class được tạo bằng ``class_name`` đều có thể là abstract. Ví dụ này tạo hai class abstract, trong đó một class là subclass của class abstract còn lại:
 
-::
+.. code-block::
 
     @abstract
     class_name AbstractClass
@@ -2035,22 +1943,22 @@ Cả lớp inner và các lớp được tạo bằng ``class_name`` đều có 
         func _ready():
             pass
 
-    # This is an example of a concrete subclass of `AbstractInnerClass`.
-    # This class can be instantiated using `AbstractClass.ConcreteInnerClass.new()`
-    # in other scripts, even though it's part of an abstract `class_name` script.
+    # Đây là một ví dụ về subclass cụ thể của `AbstractInnerClass`.
+    # Class này có thể được khởi tạo bằng `AbstractClass.ConcreteInnerClass.new()`
+    # trong các script khác, dù nó là một phần của script `class_name` abstract.
     class ConcreteInnerClass extends AbstractInnerClass:
         func _ready():
             print("Concrete class ready.")
 
 .. warning::
 
-    Vì một lớp abstract không thể được khởi tạo, bạn không thể gắn một lớp abstract vào node. Nếu cố làm vậy, engine sẽ in ra lỗi khi chạy scene:
+    Vì không thể khởi tạo một class abstract, bạn không thể gắn class abstract vào một node. Nếu cố gắng thực hiện việc đó, engine sẽ in lỗi khi chạy scene:
 
     .. code-block:: none
 
         Cannot set object script. Script '<path to script>' should not be abstract.
 
-Các lớp không tên cũng có thể được định nghĩa là abstract; annotation ``@abstract`` phải đứng trước ``extends``:
+Các class không có tên cũng có thể được định nghĩa là abstract; annotation ``@abstract`` phải đứng trước ``extends``:
 
 ::
 
@@ -2062,91 +1970,91 @@ Kế thừa
 
 Một lớp (được lưu dưới dạng tệp) có thể kế thừa từ:
 
-- Một lớp toàn cục.
+- Một lớp global.
 - Một tệp lớp khác.
-- Một lớp inner bên trong một tệp lớp khác.
+- Một lớp bên trong nằm trong một tệp lớp khác.
 
 Không cho phép đa kế thừa.
 
 Kế thừa sử dụng từ khóa ``extends``:
 
-::
+.. code-block::
 
-    # Inherit/extend a globally available class.
+    # Kế thừa/mở rộng một lớp có sẵn trên toàn cục.
     extends SomeClass
 
-    # Inherit/extend a named class file.
+    # Kế thừa/mở rộng một tệp lớp được đặt tên.
     extends "somefile.gd"
 
-    # Inherit/extend an inner class in another file.
+    # Kế thừa/mở rộng một lớp bên trong ở tệp khác.
     extends "somefile.gd".SomeInnerClass
 
 .. note::
 
-    Nếu không xác định rõ việc kế thừa, lớp sẽ mặc định kế thừa
+    Nếu không định nghĩa kế thừa một cách rõ ràng, lớp sẽ mặc định kế thừa
     :ref:`class_RefCounted`.
 
-Để kiểm tra xem một instance nhất định có kế thừa từ một lớp nhất định hay không, có thể dùng từ khóa ``is``:
+Để kiểm tra một instance nhất định có kế thừa từ một lớp nhất định hay không, có thể sử dụng từ khóa ``is``:
 
-::
+.. code-block::
 
-    # Cache the enemy class.
+    # Lưu lớp enemy vào cache.
     const Enemy = preload("enemy.gd")
 
     # [...]
 
-    # Use 'is' to check inheritance.
+    # Sử dụng 'is' để kiểm tra kế thừa.
     if entity is Enemy:
         entity.apply_damage()
 
-Để gọi một hàm trong *lớp cha* (tức là lớp được ``extend`` trong lớp hiện tại), hãy sử dụng từ khóa ``super``:
+Để gọi một hàm trong *lớp super* (tức là lớp được ``extend``-ed trong lớp hiện tại của bạn), hãy sử dụng từ khóa ``super``:
 
 ::
 
     super(args)
 
-Điều này đặc biệt hữu ích vì các hàm trong lớp mở rộng sẽ thay thế các hàm cùng tên trong lớp cha của chúng. Nếu vẫn muốn gọi chúng, bạn có thể dùng ``super``:
+Điều này đặc biệt hữu ích vì các hàm trong lớp mở rộng sẽ thay thế các hàm có cùng tên trong lớp super. Nếu vẫn muốn gọi chúng, bạn có thể sử dụng ``super``:
 
-::
+.. code-block::
 
     func some_func(x):
-        super(x) # Calls the same function on the super class.
+        super(x) # Gọi cùng hàm trên lớp super.
 
-Nếu cần gọi một hàm khác từ lớp cha, bạn có thể chỉ định tên hàm bằng toán tử thuộc tính:
+Nếu cần gọi một hàm khác từ lớp super, bạn có thể chỉ định tên hàm bằng toán tử thuộc tính:
 
-::
+.. code-block::
 
     func overriding():
-        return 0 # This overrides the method in the base class.
+        return 0 # Ghi đè phương thức trong lớp cơ sở.
 
     func dont_override():
-        return super.overriding() # This calls the method as defined in the base class.
+        return super.overriding() # Gọi phương thức như được định nghĩa trong lớp cơ sở.
 
 .. warning::
 
-    Một quan niệm sai phổ biến là cố override các phương thức engine *không phải virtual* như ``get_class()``, ``queue_free()``, v.v. Điều này không được hỗ trợ vì các lý do kỹ thuật.
+    Một trong những hiểu lầm phổ biến là cố gắng ghi đè các phương thức engine *không ảo* như ``get_class()``, ``queue_free()``, v.v. Điều này không được hỗ trợ vì lý do kỹ thuật.
 
-    Trong Godot 3, bạn có thể *che khuất* các phương thức engine trong GDScript và điều này sẽ hoạt động nếu bạn gọi phương thức này trong GDScript. Tuy nhiên, engine sẽ **không** thực thi mã của bạn nếu phương thức được gọi bên trong engine theo một sự kiện nào đó.
+    Trong Godot 3, bạn có thể *che khuất* các phương thức engine trong GDScript và việc này sẽ hoạt động nếu bạn gọi phương thức đó trong GDScript. Tuy nhiên, engine sẽ **không** thực thi mã của bạn nếu phương thức được gọi bên trong engine khi một số sự kiện xảy ra.
 
-    Trong Godot 4, ngay cả việc che khuất cũng không phải lúc nào cũng hoạt động, vì GDScript tối ưu hóa các lệnh gọi phương thức native. Vì vậy, chúng tôi đã thêm cảnh báo ``NATIVE_METHOD_OVERRIDE``, vốn được mặc định coi là lỗi. Chúng tôi đặc biệt khuyên bạn không nên tắt hoặc bỏ qua cảnh báo này.
+    Trong Godot 4, ngay cả việc che khuất cũng có thể không phải lúc nào cũng hoạt động, vì GDScript tối ưu hóa các lệnh gọi phương thức native. Do đó, chúng tôi đã thêm cảnh báo ``NATIVE_METHOD_OVERRIDE``, mặc định được xem như một lỗi. Chúng tôi đặc biệt khuyến cáo không tắt hoặc bỏ qua cảnh báo này.
 
-    Lưu ý rằng điều này không áp dụng cho các phương thức virtual như ``_ready()``, ``_process()`` và các phương thức khác (được đánh dấu bằng qualifier ``virtual`` trong tài liệu và tên bắt đầu bằng dấu gạch dưới). Các phương thức này được thiết kế riêng để tùy chỉnh hành vi engine và có thể được override trong GDScript. Signal và notification cũng có thể hữu ích cho các mục đích này.
+    Lưu ý rằng điều này không áp dụng cho các phương thức virtual như ``_ready()``, ``_process()`` và các phương thức khác (được đánh dấu bằng bộ định tính ``virtual`` trong tài liệu và tên bắt đầu bằng dấu gạch dưới). Các phương thức này được thiết kế riêng để tùy chỉnh hành vi của engine và có thể được ghi đè trong GDScript. Signals và notifications cũng có thể hữu ích cho những mục đích này.
 
-Constructor của lớp
-~~~~~~~~~~~~~~~~~~~
+Hàm khởi tạo lớp
+~~~~~~~~~~~~~~~~
 
-Hàm tạo lớp, được gọi khi khởi tạo instance của lớp, có tên là ``_init``. Nếu muốn gọi hàm tạo của lớp cơ sở, bạn cũng có thể dùng cú pháp ``super``. Lưu ý rằng mọi lớp đều có một hàm tạo ngầm luôn được gọi (xác định các giá trị mặc định của biến lớp). ``super`` được dùng để gọi hàm tạo tường minh:
+Hàm khởi tạo lớp, được gọi khi khởi tạo lớp, có tên là ``_init``. Nếu muốn gọi hàm khởi tạo của lớp cơ sở, bạn cũng có thể sử dụng cú pháp ``super``. Lưu ý rằng mọi lớp đều có một hàm khởi tạo ngầm định luôn được gọi (để xác định các giá trị mặc định của biến lớp). ``super`` được sử dụng để gọi hàm khởi tạo tường minh:
 
-::
+.. code-block::
 
     func _init(arg):
-       super("some_default", arg) # Call the custom base constructor.
+       super("some_default", arg) # Gọi hàm khởi tạo cơ sở tùy chỉnh.
 
-Điều này được giải thích rõ hơn qua các ví dụ. Hãy xét tình huống sau:
+Các ví dụ sẽ giúp giải thích điều này rõ hơn. Hãy xem xét tình huống sau:
 
-::
+.. code-block::
 
-    # state.gd (inherited class).
+    # state.gd (lớp được kế thừa).
     var entity = null
     var message = null
 
@@ -2159,21 +2067,21 @@ Hàm tạo lớp, được gọi khi khởi tạo instance của lớp, có tên
         message = m
 
 
-    # idle.gd (inheriting class).
+    # idle.gd (lớp kế thừa).
     extends "state.gd"
 
 
     func _init(e = null, m = null):
         super(e)
-        # Do something with 'e'.
+        # Thực hiện một việc gì đó với 'e'.
         message = m
 
-Có một số điều cần lưu ý ở đây:
+Có một vài điều cần ghi nhớ ở đây:
 
-1. Nếu lớp được kế thừa (``state.gd``) định nghĩa một hàm tạo ``_init`` nhận đối số (``e`` trong trường hợp này), thì lớp kế thừa (``idle.gd``) *phải* cũng định nghĩa ``_init`` và truyền các tham số phù hợp đến ``_init`` từ ``state.gd``.
+1. Nếu lớp được kế thừa (``state.gd``) định nghĩa một hàm khởi tạo ``_init`` nhận các đối số (``e`` trong trường hợp này), thì lớp kế thừa (``idle.gd``) *phải* định nghĩa ``_init`` đồng thời truyền các tham số phù hợp cho ``_init`` từ ``state.gd``.
 2. ``idle.gd`` có thể có số lượng đối số khác với lớp cơ sở ``state.gd``.
-3. Trong ví dụ trên, ``e`` được truyền đến hàm tạo ``state.gd`` cũng chính là ``e`` được truyền vào ``idle.gd``.
-4. Nếu hàm tạo ``_init`` của ``idle.gd`` nhận 0 đối số, nó vẫn cần truyền một giá trị nào đó đến lớp cơ sở ``state.gd``, ngay cả khi giá trị đó không làm gì. Điều này cho thấy bạn cũng có thể truyền biểu thức đến hàm tạo cơ sở, không chỉ biến, ví dụ:
+3. Trong ví dụ trên, ``e`` được truyền cho hàm khởi tạo ``state.gd`` chính là ``e`` được truyền vào ``idle.gd``.
+4. Nếu hàm khởi tạo ``_init`` của ``idle.gd`` nhận 0 đối số, nó vẫn cần truyền một giá trị nào đó cho lớp cơ sở ``state.gd``, ngay cả khi giá trị đó không thực hiện gì. Điều này dẫn đến việc bạn cũng có thể truyền các biểu thức cho hàm khởi tạo cơ sở, không chỉ các biến, ví dụ:
 
 ::
 
@@ -2184,10 +2092,10 @@ Có một số điều cần lưu ý ở đây:
 
 .. _`Static constructor`:
 
-Hàm tạo tĩnh
-~~~~~~~~~~~~
+Hàm khởi tạo static
+~~~~~~~~~~~~~~~~~~~
 
-Hàm tạo tĩnh là một hàm tĩnh ``_static_init`` được gọi tự động khi lớp được tải, sau khi các biến tĩnh đã được khởi tạo:
+Hàm khởi tạo static là một hàm static ``_static_init`` được tự động gọi khi lớp được tải, sau khi các biến static đã được khởi tạo:
 
 ::
 
@@ -2196,20 +2104,20 @@ Hàm tạo tĩnh là một hàm tĩnh ``_static_init`` được gọi tự độ
     static func _static_init():
         my_static_var = 2
 
-Hàm tạo tĩnh không thể nhận đối số và không được trả về bất kỳ giá trị nào.
+Hàm khởi tạo static không thể nhận đối số và không được trả về bất kỳ giá trị nào.
 
 .. _doc_gdscript_basics_inner_classes:
 
-Lớp bên trong
-~~~~~~~~~~~~~
+Các lớp bên trong
+~~~~~~~~~~~~~~~~~
 
 Một tệp lớp có thể chứa các lớp bên trong. Các lớp bên trong được định nghĩa bằng từ khóa ``class``. Chúng được tạo instance bằng hàm ``ClassName.new()``.
 
-::
+.. code-block::
 
-    # Inside a class file.
+    # Bên trong một tệp lớp.
 
-    # An inner class in this class file.
+    # Một lớp bên trong tệp lớp này.
     class SomeInnerClass:
         var a = 5
 
@@ -2218,7 +2126,7 @@ Một tệp lớp có thể chứa các lớp bên trong. Các lớp bên trong 
             print(a)
 
 
-    # This is the constructor of the class file's main class.
+    # Đây là hàm khởi tạo của lớp chính trong tệp lớp.
     func _init():
         var c = SomeInnerClass.new()
         c.print_value_of_a()
@@ -2228,14 +2136,14 @@ Một tệp lớp có thể chứa các lớp bên trong. Các lớp bên trong 
 Lớp dưới dạng resource
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Các lớp được lưu dưới dạng tệp được xử lý như :ref:`GDScripts <class_GDScript>`. Chúng phải được tải từ ổ đĩa để có thể truy cập trong các lớp khác. Việc này được thực hiện bằng một trong hai hàm ``load`` hoặc ``preload`` (xem bên dưới). Việc tạo instance của một resource lớp đã tải được thực hiện bằng cách gọi hàm ``new`` trên đối tượng lớp:
+Các lớp được lưu dưới dạng tệp được xem là :ref:`GDScripts <class_GDScript>`. Chúng phải được tải từ đĩa để có thể truy cập trong các lớp khác. Việc này được thực hiện bằng một trong các hàm ``load`` hoặc ``preload`` (xem bên dưới). Việc tạo instance của một class resource đã tải được thực hiện bằng cách gọi hàm ``new`` trên đối tượng lớp:
 
-::
+.. code-block::
 
-    # Load the class resource when calling load().
+    # Tải class resource khi gọi load().
     var MyClass = load("myclass.gd")
 
-    # Preload the class only once at compile time.
+    # Preload lớp chỉ một lần tại thời điểm biên dịch.
     const MyClass = preload("myclass.gd")
 
 
@@ -2253,12 +2161,12 @@ Exports
 
 .. _doc_gdscript_basics_setters_getters:
 
-Properties (setter và getter)
------------------------------
+Các thuộc tính (setter và getter)
+---------------------------------
 
-Đôi khi, bạn muốn biến thành viên của một lớp không chỉ lưu trữ dữ liệu mà còn thực hiện việc kiểm tra hoặc tính toán mỗi khi giá trị của nó thay đổi. Bạn cũng có thể muốn đóng gói việc truy cập biến này theo một cách nào đó.
+Đôi khi, bạn muốn biến thành viên của một class không chỉ lưu trữ dữ liệu mà còn thực hiện một số thao tác xác thực hoặc tính toán mỗi khi giá trị của nó thay đổi. Bạn cũng có thể muốn đóng gói cách truy cập biến này theo một cách nào đó.
 
-Để làm điều này, GDScript cung cấp một cú pháp đặc biệt để định nghĩa property bằng các từ khóa ``set`` và ``get`` sau phần khai báo biến. Sau đó, bạn có thể định nghĩa một khối mã sẽ được thực thi khi biến được truy cập hoặc gán giá trị.
+Để làm điều này, GDScript cung cấp cú pháp đặc biệt để định nghĩa properties bằng cách sử dụng các từ khóa ``set`` và ``get`` sau khai báo biến. Sau đó, bạn có thể định nghĩa một khối mã sẽ được thực thi khi biến được truy cập hoặc gán giá trị.
 
 Ví dụ:
 
@@ -2273,36 +2181,36 @@ Ví dụ:
 
 .. note::
 
-    Không giống ``setget`` trong các phiên bản Godot trước, các phương thức ``set`` và ``get`` **luôn** được gọi (trừ các trường hợp nêu bên dưới), ngay cả khi được truy cập bên trong cùng một lớp (có hoặc không có tiền tố ``self.``). Điều này giúp hành vi nhất quán. Nếu cần truy cập trực tiếp giá trị, hãy dùng một biến khác để truy cập trực tiếp và để mã property sử dụng tên đó.
+    Không giống ``setget`` trong các phiên bản Godot trước đây, các phương thức ``set`` và ``get`` **luôn** được gọi (ngoại trừ các trường hợp nêu dưới đây), ngay cả khi được truy cập bên trong cùng một class (có hoặc không có tiền tố ``self.``). Điều này giúp hành vi trở nên nhất quán. Nếu cần truy cập trực tiếp vào giá trị, hãy sử dụng một biến khác để truy cập trực tiếp và để mã property sử dụng tên đó.
 
 Cú pháp thay thế
 ~~~~~~~~~~~~~~~~
 
-Ngoài ra còn có một ký pháp khác để sử dụng các hàm lớp hiện có nếu bạn muốn tách mã khỏi phần khai báo biến hoặc cần tái sử dụng mã cho nhiều property (nhưng bạn không thể phân biệt setter/getter đang được gọi cho property nào):
+Ngoài ra còn có một cách ghi khác để sử dụng các hàm hiện có của class nếu bạn muốn tách mã khỏi khai báo biến hoặc cần tái sử dụng mã trên nhiều property (nhưng bạn không thể phân biệt setter/getter đang được gọi cho property nào):
 
 ::
 
     var my_prop:
         get = get_my_prop, set = set_my_prop
 
-Việc này cũng có thể được thực hiện trên cùng một dòng:
+Bạn cũng có thể viết như sau trên cùng một dòng:
 
 ::
 
     var my_prop: get = get_my_prop, set = set_my_prop
 
-Setter và getter phải dùng cùng một ký pháp; không được phép trộn các kiểu cho cùng một biến.
+Setter và getter phải sử dụng cùng một cách ghi; không được phép trộn lẫn các kiểu cho cùng một biến.
 
 .. note::
 
-    Bạn không thể chỉ định type hint cho setter và getter *inline*. Điều này được chủ ý thực hiện để giảm boilerplate. Nếu biến có kiểu, thì đối số của setter tự động có cùng kiểu và giá trị trả về của getter phải khớp với kiểu đó. Các hàm setter/getter tách riêng có thể có type hint, và kiểu phải khớp với kiểu của biến hoặc là một kiểu rộng hơn.
+    Bạn không thể chỉ định type hint cho setter và getter *inline*. Đây là chủ ý nhằm giảm phần mã rườm rà. Nếu biến được định kiểu, đối số của setter sẽ tự động có cùng kiểu, còn giá trị trả về của getter phải khớp với kiểu đó. Các hàm setter/getter tách rời có thể có type hint, và kiểu đó phải khớp với kiểu của biến hoặc là một kiểu rộng hơn.
 
 Khi setter/getter không được gọi
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Khi một biến được khởi tạo, giá trị của biểu thức khởi tạo sẽ được ghi trực tiếp vào biến. Điều này vẫn xảy ra ngay cả khi annotation ``@onready`` hoặc ``@export`` được áp dụng cho biến.
+Khi một biến được khởi tạo, giá trị của trình khởi tạo sẽ được ghi trực tiếp vào biến. Điều này xảy ra ngay cả khi chú thích ``@onready`` hoặc ``@export`` được áp dụng cho biến.
 
-Dùng tên của biến để thiết lập nó bên trong setter của chính nó hoặc lấy nó bên trong getter của chính nó sẽ truy cập trực tiếp thành viên nền. Điều này ngăn đệ quy vô hạn và giúp bạn không cần khai báo tường minh một biến khác:
+Việc sử dụng tên của biến để gán giá trị cho nó bên trong setter của chính nó hoặc để lấy giá trị bên trong getter của chính nó sẽ truy cập trực tiếp vào thành viên bên dưới. Điều này ngăn đệ quy vô hạn và giúp bạn không phải khai báo một biến khác một cách tường minh:
 
 ::
 
@@ -2316,32 +2224,32 @@ Dùng tên của biến để thiết lập nó bên trong setter của chính n
 
 Điều này cũng áp dụng cho cú pháp thay thế:
 
-::
+.. code-block::
 
     var my_prop: set = set_my_prop
 
     func set_my_prop(value):
-        my_prop = value # No infinite recursion.
+        my_prop = value # Không có đệ quy vô hạn.
 
 .. warning::
 
-    Ngoại lệ này **không** lan truyền sang các hàm khác được gọi trong setter/getter. Ví dụ, đoạn mã sau **sẽ** gây ra đệ quy vô hạn:
+    Ngoại lệ **không** lan truyền đến các hàm khác được gọi trong setter/getter. Ví dụ, đoạn mã sau **sẽ** gây ra đệ quy vô hạn:
 
-::
+.. code-block::
 
         var my_prop:
             set(value):
                 set_my_prop(value)
 
         func set_my_prop(value):
-            my_prop = value # Infinite recursion, since `set_my_prop()` is not the setter.
+            my_prop = value # Đệ quy vô hạn vì `set_my_prop()` không phải là setter.
 
 .. _doc_gdscript_tool_mode:
 
-Chế độ tool
+Chế độ Tool
 -----------
 
-Theo mặc định, script không chạy bên trong editor và chỉ các property đã export mới có thể thay đổi. Trong một số trường hợp, bạn muốn chúng chạy bên trong editor (miễn là chúng không thực thi mã game hoặc chủ động tránh làm như vậy). Để làm điều này, annotation ``@tool`` tồn tại và phải được đặt ở đầu tệp:
+Theo mặc định, các script không chạy bên trong editor và chỉ các property đã export mới có thể được thay đổi. Trong một số trường hợp, bạn muốn chúng chạy bên trong editor (miễn là chúng không thực thi mã game hoặc chủ động tránh việc đó). Vì vậy, chú thích ``@tool`` tồn tại và phải được đặt ở đầu tệp:
 
 ::
 
@@ -2354,25 +2262,25 @@ Theo mặc định, script không chạy bên trong editor và chỉ các proper
 
 Xem :ref:`doc_running_code_in_the_editor` để biết thêm thông tin.
 
-.. warning:: Hãy thận trọng khi giải phóng node bằng ``queue_free()`` hoặc ``free()`` trong tool script (đặc biệt là owner của chính script). Vì tool script chạy mã của chúng trong editor, việc sử dụng sai có thể khiến editor bị crash.
+.. warning:: Hãy thận trọng khi giải phóng các node bằng ``queue_free()`` hoặc ``free()`` trong một tool script (đặc biệt là chính owner của script). Vì tool script chạy mã của chúng trong editor, việc sử dụng sai có thể khiến editor bị crash.
 
 .. _doc_gdscript_basics_memory_management:
 
 Quản lý bộ nhớ
 --------------
 
-Godot triển khai cơ chế đếm tham chiếu để giải phóng một số instance không còn được sử dụng, thay vì dùng garbage collector hoặc yêu cầu quản lý hoàn toàn thủ công. Mọi instance của lớp :ref:`class_RefCounted` (hoặc bất kỳ lớp nào kế thừa nó, chẳng hạn :ref:`class_Resource`) sẽ được giải phóng tự động khi không còn được sử dụng. Đối với instance của bất kỳ lớp nào không phải :ref:`class_RefCounted` (chẳng hạn :ref:`class_Node` hoặc kiểu cơ sở :ref:`class_Object`), nó sẽ vẫn ở trong bộ nhớ cho đến khi bị xóa bằng ``free()`` (hoặc ``queue_free()`` đối với Node).
+Godot triển khai cơ chế đếm tham chiếu để giải phóng một số instance không còn được sử dụng, thay vì dùng garbage collector hoặc yêu cầu quản lý hoàn toàn thủ công. Mọi instance của class :ref:`class_RefCounted` (hoặc bất kỳ class nào kế thừa nó, chẳng hạn như :ref:`class_Resource`) sẽ được tự động giải phóng khi không còn được sử dụng. Đối với instance của bất kỳ class nào không phải là :ref:`class_RefCounted` (chẳng hạn như :ref:`class_Node` hoặc kiểu :ref:`class_Object` cơ sở), instance đó sẽ vẫn nằm trong bộ nhớ cho đến khi được xóa bằng ``free()`` (hoặc ``queue_free()`` đối với Node).
 
 .. note::
 
-    Nếu một :ref:`class_Node` bị xóa thông qua ``free()`` hoặc ``queue_free()``, toàn bộ node con của nó cũng sẽ bị xóa đệ quy.
+    Nếu một :ref:`class_Node` bị xóa thông qua ``free()`` hoặc ``queue_free()``, tất cả các node con của nó cũng sẽ bị xóa đệ quy.
 
-Để tránh các chu trình tham chiếu không thể giải phóng, một
-hàm :ref:`weakref() <class_@GlobalScope_method_weakref>` được cung cấp để tạo tham chiếu yếu, cho phép truy cập đối tượng mà không ngăn một
-:ref:`class_RefCounted` được giải phóng. Đây là một ví dụ:
+Để tránh các chu kỳ tham chiếu không thể được giải phóng, một
+hàm :ref:`weakref() <class_@GlobalScope_method_weakref>` được cung cấp để tạo các tham chiếu yếu, cho phép truy cập vào đối tượng mà không ngăn một
+:ref:`class_RefCounted` giải phóng. Đây là một ví dụ:
 
 
-::
+.. code-block::
 
     extends Node
 
@@ -2381,9 +2289,9 @@ hàm :ref:`weakref() <class_@GlobalScope_method_weakref>` được cung cấp đ
     func _ready():
         var f = FileAccess.open("user://example_file.json", FileAccess.READ)
         my_file_ref = weakref(f)
-        # the FileAccess class inherits RefCounted, so it will be freed when not in use
+        # class FileAccess kế thừa RefCounted, vì vậy nó sẽ được giải phóng khi không được sử dụng
 
-        # the WeakRef will not prevent f from being freed when other_node is finished
+        # WeakRef sẽ không ngăn f được giải phóng khi other_node hoàn tất
         other_node.use_file(f)
 
     func _this_is_called_later():
@@ -2391,30 +2299,30 @@ hàm :ref:`weakref() <class_@GlobalScope_method_weakref>` được cung cấp đ
         if my_file:
             my_file.close()
 
-Ngoài ra, khi không sử dụng tham chiếu, có thể dùng ``is_instance_valid(instance)`` để kiểm tra xem một đối tượng đã được giải phóng chưa.
+Ngoài ra, khi không sử dụng các tham chiếu, có thể dùng ``is_instance_valid(instance)`` để kiểm tra xem một đối tượng đã được giải phóng hay chưa.
 
 .. _doc_gdscript_signals:
 
 Signal
 ------
 
-Signal là một công cụ để phát thông điệp từ một đối tượng mà các đối tượng khác có thể phản ứng. Để tạo signal tùy chỉnh cho một lớp, hãy sử dụng từ khóa ``signal``.
+Signal là một công cụ để phát thông báo từ một đối tượng mà các đối tượng khác có thể phản hồi. Để tạo signal tùy chỉnh cho một class, hãy sử dụng từ khóa ``signal``.
 
-::
+.. code-block::
 
    extends Node
 
 
-   # A signal named health_depleted.
+   # Một signal có tên là health_depleted.
    signal health_depleted
 
 .. note::
 
    Signal là một cơ chế `Callback <https://en.wikipedia.org/wiki/Callback_(computer_programming)>`_. Chúng cũng đảm nhiệm vai trò của Observer, một mẫu lập trình phổ biến. Để biết thêm thông tin, hãy đọc `hướng dẫn về Observer <https://gameprogrammingpatterns.com/observer.html>`_ trong ebook Game Programming Patterns.
 
-Bạn có thể kết nối các signal này với các method giống như cách kết nối signal tích hợp của các node như :ref:`class_Button` hoặc :ref:`class_RigidBody3D`.
+Bạn có thể kết nối các signal này với các method giống như khi kết nối signal tích hợp sẵn của các node như :ref:`class_Button` hoặc :ref:`class_RigidBody3D`.
 
-Trong ví dụ bên dưới, chúng ta kết nối signal ``health_depleted`` từ một node ``Character`` với một node ``Game``. Khi node ``Character`` phát signal, ``_on_character_health_depleted`` của node game sẽ được gọi:
+Trong ví dụ dưới đây, chúng ta kết nối signal ``health_depleted`` từ một node ``Character`` với một node ``Game``. Khi node ``Character`` phát signal, ``_on_character_health_depleted`` của node game sẽ được gọi:
 
 ::
 
@@ -2430,11 +2338,11 @@ Trong ví dụ bên dưới, chúng ta kết nối signal ``health_depleted`` t�
 
 Bạn có thể phát bao nhiêu đối số tùy ý cùng với một signal.
 
-Sau đây là một ví dụ mà điều này hữu ích. Giả sử chúng ta muốn một thanh máu trên màn hình phản ứng với các thay đổi về máu bằng hoạt ảnh, nhưng muốn giữ giao diện người dùng tách biệt với người chơi trong scene tree.
+Dưới đây là một ví dụ cho thấy điều này hữu ích như thế nào. Giả sử chúng ta muốn một thanh máu trên màn hình phản ứng với các thay đổi về máu bằng một animation, nhưng muốn tách giao diện người dùng khỏi player trong scene tree.
 
-Trong script ``character.gd`` của chúng ta, chúng ta định nghĩa một signal ``health_changed`` và phát nó bằng :ref:`Signal.emit() <class_Signal_method_emit>`; từ một node ``Game`` ở cấp cao hơn trong scene tree, chúng ta kết nối nó với ``Lifebar`` bằng method :ref:`Signal.connect() <class_Signal_method_connect>`:
+Trong script ``character.gd``, chúng ta định nghĩa signal ``health_changed`` và phát nó bằng :ref:`Signal.emit() <class_Signal_method_emit>`, sau đó từ một node ``Game`` nằm cao hơn trong scene tree, chúng ta kết nối nó với ``Lifebar`` bằng phương thức :ref:`Signal.connect() <class_Signal_method_connect>`:
 
-::
+.. code-block::
 
     # character.gd
 
@@ -2446,17 +2354,17 @@ Trong script ``character.gd`` của chúng ta, chúng ta định nghĩa một si
         var old_health = health
         health -= amount
 
-        # We emit the health_changed signal every time the
-        # character takes damage.
+        # Chúng ta phát signal health_changed mỗi khi
+        # character bị sát thương.
         health_changed.emit(old_health, health)
     ...
 
-::
+.. code-block::
 
     # lifebar.gd
 
-    # Here, we define a function to use as a callback when the
-    # character's health_changed signal is emitted.
+    # Ở đây, chúng ta định nghĩa một hàm để sử dụng làm callback khi
+    # signal health_changed của character được phát.
 
     ...
     func _on_Character_health_changed(old_value, new_value):
@@ -2465,12 +2373,12 @@ Trong script ``character.gd`` của chúng ta, chúng ta định nghĩa một si
         else:
             progress_bar.modulate = Color.GREEN
 
-        # Imagine that `animate` is a user-defined function that animates the
-        # bar filling up or emptying itself.
+        # Hãy hình dung `animate` là một hàm do người dùng định nghĩa, dùng để tạo hiệu ứng cho thanh
+        # được lấp đầy hoặc rỗng đi.
         progress_bar.animate(old_value, new_value)
     ...
 
-Trong node ``Game``, chúng ta lấy cả hai node ``Character`` và ``Lifebar``, rồi kết nối nhân vật phát signal với bên nhận, trong trường hợp này là node ``Lifebar``.
+Trong node ``Game``, chúng ta lấy cả node ``Character`` và ``Lifebar``, sau đó kết nối character phát ra signal với receiver, trong trường hợp này là node ``Lifebar``.
 
 ::
 
@@ -2482,24 +2390,24 @@ Trong node ``Game``, chúng ta lấy cả hai node ``Character`` và ``Lifebar``
 
         character_node.health_changed.connect(lifebar_node._on_Character_health_changed)
 
-Điều này cho phép ``Lifebar`` phản ứng với các thay đổi về máu mà không ghép nối nó với node ``Character``.
+Điều này cho phép ``Lifebar`` phản ứng với các thay đổi về máu mà không liên kết chặt với node ``Character``.
 
-Bạn có thể viết tên đối số tùy chọn trong dấu ngoặc đơn sau phần định nghĩa của signal:
+Bạn có thể viết tên các tham số tùy chọn trong dấu ngoặc đơn sau phần định nghĩa signal:
 
-::
+.. code-block::
 
-    # Defining a signal that forwards two arguments.
+    # Định nghĩa một signal chuyển tiếp hai tham số.
     signal health_changed(old_value, new_value)
 
-Các đối số này xuất hiện trong dock Signals của editor, và Godot có thể dùng chúng để tạo các hàm callback cho bạn. Tuy nhiên, bạn vẫn có thể phát bất kỳ số lượng đối số nào khi phát signal; bạn có trách nhiệm phát đúng các giá trị.
+Các tham số này xuất hiện trong Signals dock của editor, và Godot có thể dùng chúng để tự tạo các hàm callback cho bạn. Tuy nhiên, bạn vẫn có thể phát ra số lượng tham số bất kỳ khi phát signal; bạn phải tự đảm bảo phát đúng các giá trị.
 
 .. image:: img/gdscript_basics_signals_node_tab_1.png
 
-Bạn cũng có thể tạo các bản sao của đối tượng Callable trong GDScript, chấp nhận các đối số bổ sung bằng :ref:`Callable.bind() <class_Callable_method_bind>`. Điều này cho phép bạn thêm thông tin bổ sung vào kết nối nếu signal được phát không cung cấp cho bạn quyền truy cập vào toàn bộ dữ liệu cần thiết.
+Bạn cũng có thể tạo các bản sao của đối tượng GDScript Callable chấp nhận thêm tham số bằng cách sử dụng :ref:`Callable.bind() <class_Callable_method_bind>`. Điều này cho phép bạn thêm thông tin bổ sung vào connection nếu bản thân signal được phát ra không cung cấp quyền truy cập vào tất cả dữ liệu bạn cần.
 
-Khi signal được phát, method callback nhận các giá trị đã bind, ngoài các giá trị do signal cung cấp.
+Khi signal được phát ra, phương thức callback sẽ nhận các giá trị được bind, ngoài những giá trị do signal cung cấp.
 
-Dựa trên ví dụ ở trên, giả sử chúng ta muốn hiển thị trên màn hình nhật ký sát thương mà mỗi nhân vật nhận phải, chẳng hạn như ``Player1 took 22 damage.``. Signal ``health_changed`` không cung cấp cho chúng ta tên của nhân vật đã nhận sát thương. Vì vậy, khi kết nối signal với console trong game, chúng ta có thể thêm tên nhân vật bằng method bind:
+Dựa trên ví dụ trên, giả sử chúng ta muốn hiển thị nhật ký sát thương mà mỗi character phải chịu trên màn hình, như ``Player1 took 22 damage.``. Signal ``health_changed`` không cung cấp tên của character đã nhận sát thương. Vì vậy, khi kết nối signal với console trong game, chúng ta có thể thêm tên của character bằng phương thức bind:
 
 ::
 
@@ -2511,7 +2419,7 @@ Dựa trên ví dụ ở trên, giả sử chúng ta muốn hiển thị trên m
 
         character_node.health_changed.connect(battle_log_node._on_Character_health_changed.bind(character_node.name))
 
-Node ``BattleLog`` của chúng ta nhận từng phần tử đã bind dưới dạng một đối số bổ sung:
+Node ``BattleLog`` của chúng ta nhận mỗi phần tử được bind như một tham số bổ sung:
 
 ::
 
@@ -2528,19 +2436,19 @@ Node ``BattleLog`` của chúng ta nhận từng phần tử đã bind dưới d
 Chờ signal hoặc coroutine
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Từ khóa ``await`` có thể được dùng để tạo các `coroutine <https://en.wikipedia.org/wiki/Coroutine>`_ chờ cho đến khi một signal được phát rồi mới tiếp tục thực thi. Dùng từ khóa ``await`` với một signal hoặc lời gọi đến một hàm cũng là coroutine sẽ ngay lập tức trả quyền điều khiển về cho bên gọi. Khi signal được phát (hoặc coroutine được gọi hoàn tất), nó sẽ tiếp tục thực thi từ điểm đã dừng.
+Từ khóa ``await`` có thể được dùng để tạo các `coroutine <https://en.wikipedia.org/wiki/Coroutine>`_ chờ cho đến khi một signal được phát ra rồi mới tiếp tục thực thi. Khi dùng từ khóa ``await`` với một signal hoặc lời gọi đến một hàm cũng là coroutine, quyền điều khiển sẽ ngay lập tức được trả về cho caller. Khi signal được phát ra (hoặc coroutine được gọi hoàn tất), quá trình thực thi sẽ tiếp tục từ đúng vị trí đã dừng.
 
 Ví dụ, để dừng thực thi cho đến khi người dùng nhấn một nút, bạn có thể làm như sau:
 
-::
+.. code-block::
 
     func wait_confirmation():
         print("Prompting user")
-        await $Button.button_up # Waits for the button_up signal from Button node.
+        await $Button.button_up # Chờ signal button_up từ node Button.
         print("User confirmed")
         return true
 
-Trong trường hợp này, ``wait_confirmation`` trở thành một coroutine, nghĩa là bên gọi cũng cần await nó:
+Trong trường hợp này, ``wait_confirmation`` trở thành một coroutine, nghĩa là caller cũng cần await nó:
 
 ::
 
@@ -2554,12 +2462,12 @@ Trong trường hợp này, ``wait_confirmation`` trở thành một coroutine, 
 
 Lưu ý rằng việc yêu cầu giá trị trả về của một coroutine mà không có ``await`` sẽ gây ra lỗi:
 
-::
+.. code-block::
 
     func wrong():
-        var confirmed = wait_confirmation() # Will give an error.
+        var confirmed = wait_confirmation() # Sẽ gây ra lỗi.
 
-Tuy nhiên, nếu không phụ thuộc vào kết quả, bạn chỉ cần gọi nó bất đồng bộ; việc này sẽ không dừng thực thi và không biến hàm hiện tại thành coroutine:
+Tuy nhiên, nếu bạn không phụ thuộc vào kết quả, bạn chỉ cần gọi nó một cách bất đồng bộ; việc này sẽ không dừng thực thi và cũng không biến hàm hiện tại thành một coroutine:
 
 ::
 
@@ -2567,7 +2475,7 @@ Tuy nhiên, nếu không phụ thuộc vào kết quả, bạn chỉ cần gọi
         wait_confirmation()
         print("This will be printed immediately, before the user press the button.")
 
-Nếu bạn dùng ``await`` với một biểu thức không phải là signal cũng không phải coroutine, giá trị sẽ được trả về ngay lập tức và hàm sẽ không trả quyền điều khiển lại cho bên gọi:
+Nếu bạn sử dụng ``await`` với một biểu thức không phải signal cũng không phải coroutine, giá trị sẽ được trả về ngay lập tức và hàm sẽ không trả quyền điều khiển cho caller:
 
 ::
 
@@ -2578,7 +2486,7 @@ Nếu bạn dùng ``await`` với một biểu thức không phải là signal c
     func get_five():
         return 5
 
-Điều này cũng có nghĩa là việc trả về một signal từ hàm không phải coroutine sẽ khiến bên gọi await signal đó:
+Điều này cũng có nghĩa là việc trả về một signal từ một hàm không phải coroutine sẽ khiến caller await signal đó:
 
 ::
 
@@ -2589,9 +2497,9 @@ Nếu bạn dùng ``await`` với một biểu thức không phải là signal c
         await get_signal()
         print("Button was pressed")
 
-.. note:: Không giống ``yield`` trong các phiên bản Godot trước, bạn không thể lấy đối tượng trạng thái hàm. Điều này được thực hiện để đảm bảo type safety. Với type safety này, một hàm không thể khai báo rằng nó trả về một ``int`` trong khi thực tế lại trả về một đối tượng trạng thái hàm trong runtime.
+.. note:: Không giống như ``yield`` trong các phiên bản Godot trước đây, bạn không thể lấy đối tượng trạng thái của hàm. Điều này nhằm đảm bảo type safety. Khi có type safety, một hàm không thể khai báo rằng nó trả về ``int`` trong khi trên thực tế lại trả về một đối tượng trạng thái hàm trong runtime.
 
-Bạn có thể lưu trữ các đối số được truyền vào tham số của signal. Nếu chỉ có một tham số, giá trị được await sẽ có cùng kiểu với đối số:
+Bạn có thể lưu các tham số được truyền vào các tham số của signal. Nếu chỉ có một tham số, giá trị được await sẽ có cùng kiểu với tham số đó:
 
 ::
 
@@ -2615,19 +2523,19 @@ Nếu không, giá trị được await sẽ là ``null``:
         var signal_args = await $Button.button_up
         assert(signal_args == null)
 
-Từ khóa Assert
+Từ khóa assert
 --------------
 
-Từ khóa ``assert`` có thể được dùng để kiểm tra điều kiện trong các bản build debug. Các assertion này bị bỏ qua trong các bản build không phải debug. Điều này có nghĩa là biểu thức được truyền làm đối số sẽ không được đánh giá trong một project được export ở chế độ release. Vì vậy, assertion **không** được chứa các biểu thức có side effect. Nếu không, hành vi của script sẽ khác nhau tùy theo project có chạy trong bản build debug hay không.
+Từ khóa ``assert`` có thể được dùng để kiểm tra các điều kiện trong debug build. Các assertion này bị bỏ qua trong non-debug build. Điều này có nghĩa là biểu thức được truyền làm tham số sẽ không được đánh giá trong project được export ở release mode. Vì vậy, các assertion **not** được chứa những biểu thức có side effect. Nếu không, hành vi của script sẽ thay đổi tùy thuộc vào việc project có được chạy trong debug build hay không.
 
-::
+.. code-block::
 
-    # Check that 'i' is 0. If 'i' is not 0, an assertion error will occur.
+    # Kiểm tra rằng 'i' bằng 0. Nếu 'i' không bằng 0, lỗi assertion sẽ xảy ra.
     assert(i == 0)
 
-Khi chạy một project từ editor, project sẽ bị tạm dừng nếu xảy ra lỗi assertion.
+Khi chạy project từ editor, project sẽ bị tạm dừng nếu xảy ra lỗi assertion.
 
-Bạn có thể tùy chọn truyền một thông báo lỗi tùy chỉnh để hiển thị nếu assertion thất bại:
+Bạn có thể tùy chọn truyền một thông báo lỗi tùy chỉnh để hiển thị khi assertion thất bại:
 
 ::
 

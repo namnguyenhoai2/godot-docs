@@ -1,108 +1,86 @@
 .. _doc_texture_blit_shader:
 
-Texture blit shaders
-====================
+Shader blit texture
+===================
 
-Texture blit shaders are used to define the behavior of blit calls on a
+Shader blit texture được dùng để xác định hành vi của các lệnh blit trên một
 :ref:`DrawableTexture2D <doc_drawable_textures>`.
 
-Texture blit shaders only have one processing function, the ``blit()`` function,
-which runs for every pixel of the source texture inside the rect given to
-``blit_rect()``.
+Shader blit texture chỉ có một hàm xử lý, hàm ``blit()``, hàm này chạy cho mỗi pixel của texture nguồn bên trong hình chữ nhật được truyền cho ``blit_rect()``.
 
 .. seealso::
 
-    See :ref:`doc_drawable_textures` for more information on how to use texture
-    blit shaders as part of a DrawableTexture.
+    Xem :ref:`doc_drawable_textures` để biết thêm thông tin về cách sử dụng shader blit texture như một phần của DrawableTexture.
 
-Render modes
-------------
+Chế độ kết xuất
+---------------
 
-+---------------------------------+-------------------------------------------------------------------------+
-| Render mode                     | Description                                                             |
-+=================================+=========================================================================+
-| **blend_disabled**              | Disable blending, values (including alpha) are written as-is. Default.  |
-+---------------------------------+-------------------------------------------------------------------------+
-| **blend_mix**                   | Mix blend mode (alpha is transparency).                                 |
-+---------------------------------+-------------------------------------------------------------------------+
-| **blend_add**                   | Additive blend mode.                                                    |
-+---------------------------------+-------------------------------------------------------------------------+
-| **blend_sub**                   | Subtractive blend mode.                                                 |
-+---------------------------------+-------------------------------------------------------------------------+
-| **blend_mul**                   | Multiplicative blend mode.                                              |
-+---------------------------------+-------------------------------------------------------------------------+
++--------------------+----------------------------------------------------------------------------+
+| Chế độ kết xuất    | Mô tả                                                                      |
++====================+============================================================================+
+| **blend_disabled** | Tắt blending, các giá trị (bao gồm alpha) được ghi nguyên trạng. Mặc định. |
++--------------------+----------------------------------------------------------------------------+
+| **blend_mix**      | Chế độ blend Mix (alpha là độ trong suốt).                                 |
++--------------------+----------------------------------------------------------------------------+
+| **blend_add**      | Chế độ blend cộng.                                                         |
++--------------------+----------------------------------------------------------------------------+
+| **blend_sub**      | Chế độ blend trừ.                                                          |
++--------------------+----------------------------------------------------------------------------+
+| **blend_mul**      | Chế độ blend nhân.                                                         |
++--------------------+----------------------------------------------------------------------------+
 
 .. note::
 
-    There is no premultiplied alpha blend mode for Texture blit shaders.
+    Không có chế độ blend alpha premultiplied cho shader blit texture.
 
-Built-ins
----------
+Các giá trị dựng sẵn
+--------------------
 
-Values marked as ``in`` are read-only. Values marked as ``out`` can optionally be written to and will
-not necessarily contain sensible values. Values marked as ``inout`` provide a sensible default
-value, and can optionally be written to. Samplers cannot be written to so they are not marked.
+Các giá trị được đánh dấu là ``in`` là chỉ đọc. Các giá trị được đánh dấu là ``out`` có thể được ghi tùy chọn và không nhất thiết chứa các giá trị hợp lý. Các giá trị được đánh dấu là ``inout`` cung cấp giá trị mặc định hợp lý và có thể được ghi tùy chọn. Không thể ghi vào sampler nên chúng không được đánh dấu.
 
-Global built-ins
-----------------
+Các giá trị dựng sẵn toàn cục
+-----------------------------
 
-Global built-ins are available everywhere, including custom functions.
+Các giá trị dựng sẵn toàn cục có sẵn ở mọi nơi, bao gồm cả các hàm tùy chỉnh.
 
-+-------------------+------------------------------------------------------------------------------------------+
-| Built-in          | Description                                                                              |
-+===================+==========================================================================================+
-| in float **TIME** | Global time since the engine has started, in seconds. It repeats after every ``3,600``   |
-|                   | seconds (which can be changed with the                                                   |
-|                   | :ref:`rollover<class_ProjectSettings_property_rendering/limits/time/time_rollover_secs>` |
-|                   | setting). It's affected by                                                               |
-|                   | :ref:`time_scale<class_Engine_property_time_scale>` but not by pausing. If you need a    |
-|                   | ``TIME`` variable that is not affected by time scale, add your own                       |
-|                   | :ref:`global shader uniform<doc_shading_language_global_uniforms>` and update it each    |
-|                   | frame.                                                                                   |
-+-------------------+------------------------------------------------------------------------------------------+
-| in float **PI**   | A ``PI`` constant (``3.141592``).                                                        |
-|                   | The ratio of a circle's circumference to its diameter and the number of radians in a     |
-|                   | half turn.                                                                               |
-+-------------------+------------------------------------------------------------------------------------------+
-| in float **TAU**  | A ``TAU`` constant (``6.283185``).                                                       |
-|                   | An equivalent of ``PI * 2`` and amount of radians in full turn.                          |
-+-------------------+------------------------------------------------------------------------------------------+
-| in float **E**    | An ``E`` constant (``2.718281``).                                                        |
-|                   | Euler's number and a base of the natural logarithm.                                      |
-+-------------------+------------------------------------------------------------------------------------------+
++-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Giá trị dựng sẵn  | Mô tả                                                                                                                                                                     |
++===================+===========================================================================================================================================================================+
+| in float **TIME** | Thời gian toàn cục kể từ khi engine khởi động, tính bằng giây. Thời gian lặp lại sau mỗi ``3,600`` giây (có thể thay đổi bằng                                             |
+|                   | :ref:`rollover<class_ProjectSettings_property_rendering/limits/time/time_rollover_secs>` setting). Thời gian này bị ảnh hưởng bởi                                         |
+|                   | :ref:`time_scale<class_Engine_property_time_scale>` nhưng không bị ảnh hưởng bởi việc tạm dừng. Nếu bạn cần một biến ``TIME`` không bị ảnh hưởng bởi time scale, hãy thêm |
+|                   | :ref:`global shader uniform <doc_shading_language_global_uniforms>` của riêng bạn và cập nhật nó trong mỗi frame.                                                         |
++-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in float **PI**   | Một hằng số ``PI`` (``3.141592``). Tỷ lệ giữa chu vi và đường kính của một đường tròn, đồng thời là số radian trong nửa vòng tròn.                                        |
++-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in float **TAU**  | Một hằng số ``TAU`` (``6.283185``). Tương đương với ``PI * 2`` và là số radian trong một vòng tròn đầy đủ.                                                                |
++-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in float **E**    | Một hằng số ``E`` (``2.718281``). Số Euler và cơ số của logarithm tự nhiên.                                                                                               |
++-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-Blit built-ins
---------------
+Các giá trị dựng sẵn của blit
+-----------------------------
 
-Source textures
-~~~~~~~~~~~~~~~
+Texture nguồn
+~~~~~~~~~~~~~
 
-Texture blit shaders have up to 4 source textures bound as inputs. These can be
-accessed with a ``sampler2D`` using ``hint_blit_source0``,
-``hint_blit_source1``, ``hint_blit_source2``, and ``hint_blit_source3``.
+Shader blit texture có tối đa 4 texture nguồn được liên kết làm đầu vào. Có thể truy cập chúng bằng một ``sampler2D`` sử dụng ``hint_blit_source0``, ``hint_blit_source1``, ``hint_blit_source2`` và ``hint_blit_source3``.
 
-+---------------------------------------------+---------------------------------------------------------------+
-| Built-in                                    | Description                                                   |
-+=============================================+===============================================================+
-| in vec4 **FRAGCOORD**                       | Coordinate of pixel center. In screen space. ``xy`` specifies |
-|                                             | position in viewport. Upper-left of the viewport is the       |
-|                                             | origin, ``(0.0, 0.0)``.                                       |
-+---------------------------------------------+---------------------------------------------------------------+
-| in vec2 **UV**                              | UV from the ``vertex()`` function.                            |
-|                                             | This is set to sample all of a source texture.                |
-+---------------------------------------------+---------------------------------------------------------------+
-| in vec4 **MODULATE**                        | ``MODULATE`` color passed in by RenderingServer API.          |
-+---------------------------------------------+---------------------------------------------------------------+
-| out vec4 **COLOR0**                         | Output color to blended with the DrawableTexture target.      |
-|                                             | Initialized to ``(0.0, 0.0, 0.0, 0.0)``.                      |
-+---------------------------------------------+---------------------------------------------------------------+
-| out vec4 **COLOR1**                         | Output color to blended with an extra DrawableTexture target. |
-|                                             | Initialized to ``(0.0, 0.0, 0.0, 0.0)``.                      |
-+---------------------------------------------+---------------------------------------------------------------+
-| out vec4 **COLOR2**                         | Output color to blended with an extra DrawableTexture target. |
-|                                             | Initialized to ``(0.0, 0.0, 0.0, 0.0)``.                      |
-+---------------------------------------------+---------------------------------------------------------------+
-| out vec4 **COLOR3**                         | Output color to blended with an extra DrawableTexture target. |
-|                                             | Initialized to ``(0.0, 0.0, 0.0, 0.0)``.                      |
-+---------------------------------------------+---------------------------------------------------------------+
++-----------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| Giá trị dựng sẵn      | Mô tả                                                                                                                                      |
++=======================+============================================================================================================================================+
+| in vec4 **FRAGCOORD** | Tọa độ tâm pixel. Trong không gian màn hình. ``xy`` xác định vị trí trong viewport. Góc trên bên trái của viewport là gốc, ``(0.0, 0.0)``. |
++-----------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec2 **UV**        | UV từ hàm ``vertex()``. Giá trị này được thiết lập để lấy mẫu toàn bộ texture nguồn.                                                       |
++-----------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec4 **MODULATE**  | Màu ``MODULATE`` được truyền vào bởi RenderingServer API.                                                                                  |
++-----------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| out vec4 **COLOR0**   | Màu đầu ra được blend với đích DrawableTexture. Được khởi tạo thành ``(0.0, 0.0, 0.0, 0.0)``.                                              |
++-----------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| out vec4 **COLOR1**   | Màu đầu ra được blend với một đích DrawableTexture bổ sung. Được khởi tạo thành ``(0.0, 0.0, 0.0, 0.0)``.                                  |
++-----------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| out vec4 **COLOR2**   | Màu đầu ra được blend với một đích DrawableTexture bổ sung. Được khởi tạo thành ``(0.0, 0.0, 0.0, 0.0)``.                                  |
++-----------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| out vec4 **COLOR3**   | Màu đầu ra được blend với một target DrawableTexture bổ sung. Được khởi tạo thành ``(0.0, 0.0, 0.0, 0.0)``.                                |
++-----------------------+--------------------------------------------------------------------------------------------------------------------------------------------+

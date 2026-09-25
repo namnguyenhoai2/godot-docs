@@ -1,64 +1,42 @@
 .. _doc_your_second_spatial_shader:
 
-Your second 3D shader
-=====================
+Shader 3D thứ hai của bạn
+=========================
 
-From a high-level, what Godot does is give the user a bunch of parameters that
-can be optionally set (``AO``, ``SSS_Strength``, ``RIM``, etc.). These
-parameters correspond to different complex effects (Ambient Occlusion,
-SubSurface Scattering, Rim Lighting, etc.). When not written to, the code is
-thrown out before it is compiled and so the shader does not incur the cost of
-the extra feature. This makes it easy for users to have complex PBR-correct
-shading, without writing complex shaders. Of course, Godot also allows you to
-ignore all these parameters and write a fully customized shader.
+Ở cấp độ tổng quát, Godot cung cấp cho người dùng một loạt tham số có thể được tùy chọn thiết lập (``AO``, ``SSS_Strength``, ``RIM``, v.v.). Các tham số này tương ứng với những hiệu ứng phức tạp khác nhau (Ambient Occlusion, SubSurface Scattering, Rim Lighting, v.v.). Khi không được ghi giá trị, đoạn mã sẽ bị loại bỏ trước khi biên dịch, vì vậy shader không phải chịu chi phí của tính năng bổ sung đó. Điều này giúp người dùng dễ dàng có được shading đúng theo PBR phức tạp mà không cần viết các shader phức tạp. Tất nhiên, Godot cũng cho phép bạn bỏ qua tất cả các tham số này và viết một shader được tùy chỉnh hoàn toàn.
 
-For a full list of these parameters see the :ref:`spatial shader
-<doc_spatial_shader>` reference doc.
+Để xem danh sách đầy đủ các tham số này, hãy xem tài liệu tham chiếu :ref:`spatial shader <doc_spatial_shader>`.
 
-A difference between the vertex function and a fragment function is that the
-vertex function runs per vertex and sets properties such as ``VERTEX``
-(position) and ``NORMAL``, while the fragment shader runs per pixel and, most
-importantly, sets the ``ALBEDO`` color of the :ref:`MeshInstance3D<class_MeshInstance3D>`.
+Một điểm khác biệt giữa hàm vertex và hàm fragment là hàm vertex chạy trên từng vertex và thiết lập các thuộc tính như ``VERTEX`` (vị trí) và ``NORMAL``, trong khi fragment shader chạy trên từng pixel và quan trọng nhất là thiết lập màu ``ALBEDO`` của :ref:`MeshInstance3D<class_MeshInstance3D>`.
 
-Your first spatial fragment function
-------------------------------------
+Hàm fragment spatial đầu tiên của bạn
+-------------------------------------
 
-As mentioned in the previous part of this tutorial. The standard use of the
-fragment function in Godot is to set up different material properties and let
-Godot handle the rest. In order to provide even more flexibility, Godot also
-provides things called render modes. Render modes are set at the top of the
-shader, directly below ``shader_type``, and they specify what sort of
-functionality you want the built-in aspects of the shader to have.
+Như đã đề cập trong phần trước của tutorial này, cách sử dụng tiêu chuẩn của hàm fragment trong Godot là thiết lập các thuộc tính vật liệu khác nhau và để Godot xử lý phần còn lại. Để mang lại nhiều tính linh hoạt hơn nữa, Godot cũng cung cấp các tùy chọn gọi là render mode. Render mode được thiết lập ở đầu shader, ngay bên dưới ``shader_type``, và chúng chỉ định loại chức năng mà bạn muốn các khía cạnh tích hợp sẵn của shader có.
 
-For example, if you do not want to have lights affect an object, set the render
-mode to ``unshaded``:
+Ví dụ, nếu bạn không muốn ánh sáng ảnh hưởng đến một đối tượng, hãy đặt render mode thành ``unshaded``:
 
 .. code-block:: glsl
 
   render_mode unshaded;
 
-You can also stack multiple render modes together. For example, if you want to
-use toon shading instead of more-realistic PBR shading, set the diffuse mode and
-specular mode to toon:
+Bạn cũng có thể kết hợp nhiều render mode với nhau. Ví dụ, nếu muốn sử dụng toon shading thay vì PBR shading chân thực hơn, hãy đặt diffuse mode và specular mode thành toon:
 
 .. code-block:: glsl
 
   render_mode diffuse_toon, specular_toon;
 
-This model of built-in functionality allows you to write complex custom shaders
-by changing only a few parameters.
+Mô hình chức năng tích hợp sẵn này cho phép bạn viết các shader tùy chỉnh phức tạp chỉ bằng cách thay đổi một vài tham số.
 
-For a full list of render modes see the :ref:`Spatial shader reference
-<doc_spatial_shader>`.
+Để xem danh sách đầy đủ các render mode, hãy xem tài liệu tham chiếu :ref:`Spatial shader reference <doc_spatial_shader>`.
 
-In this part of the tutorial, we will walk through how to take the bumpy terrain
-from the previous part and turn it into an ocean.
+Trong phần này của tutorial, chúng ta sẽ tìm hiểu cách biến địa hình gồ ghề từ phần trước thành một đại dương.
 
-First let's set the color of the water. We do that by setting ``ALBEDO``.
+Trước tiên, hãy thiết lập màu của nước. Chúng ta thực hiện điều đó bằng cách thiết lập ``ALBEDO``.
 
-``ALBEDO`` is a ``vec3`` that contains the color of the object.
+``ALBEDO`` là một ``vec3`` chứa màu của đối tượng.
 
-Let's set it to a nice shade of blue.
+Hãy đặt nó thành một sắc xanh lam đẹp mắt.
 
 .. code-block:: glsl
 
@@ -68,33 +46,21 @@ Let's set it to a nice shade of blue.
 
 .. image:: img/albedo.png
 
-We set it to a very dark shade of blue because most of the blueness of the water
-will come from reflections from the sky.
+Chúng ta đặt nó thành một sắc xanh lam rất tối vì phần lớn sắc xanh của nước sẽ đến từ các phản chiếu của bầu trời.
 
-The PBR model that Godot uses relies on two main parameters: ``METALLIC`` and
-``ROUGHNESS``.
+Mô hình PBR mà Godot sử dụng dựa trên hai tham số chính: ``METALLIC`` và ``ROUGHNESS``.
 
-``ROUGHNESS`` specifies how smooth/rough the surface of a material is. A low
-``ROUGHNESS`` will make a material appear like a shiny plastic, while a high
-roughness makes the material appear more solid in color.
+``ROUGHNESS`` chỉ định bề mặt của vật liệu mịn hay thô đến mức nào. ``ROUGHNESS`` thấp sẽ khiến vật liệu trông giống nhựa bóng, trong khi độ roughness cao khiến vật liệu có màu sắc đồng nhất hơn.
 
-``METALLIC`` specifies how much like a metal the object is. It is better set
-close to ``0`` or ``1``. Think of ``METALLIC`` as changing the balance between
-the reflection and the ``ALBEDO`` color. A high ``METALLIC`` almost ignores
-``ALBEDO`` altogether, and looks like a mirror of the sky. While a low
-``METALLIC`` has a more equal representation of sky color and ``ALBEDO`` color.
+``METALLIC`` chỉ định đối tượng giống kim loại đến mức nào. Tốt nhất nên đặt nó gần ``0`` hoặc ``1``. Hãy xem ``METALLIC`` như việc thay đổi sự cân bằng giữa màu phản chiếu và màu ``ALBEDO``. ``METALLIC`` cao gần như hoàn toàn bỏ qua ``ALBEDO``, và trông giống như một tấm gương phản chiếu bầu trời. Trong khi đó, ``METALLIC`` thấp thể hiện màu bầu trời và màu ``ALBEDO`` cân bằng hơn.
 
-``ROUGHNESS`` increases from ``0`` to ``1`` from left to right while
-``METALLIC`` increase from ``0`` to ``1`` from top to bottom.
+``ROUGHNESS`` tăng từ ``0`` đến ``1`` từ trái sang phải, trong khi ``METALLIC`` tăng từ ``0`` đến ``1`` từ trên xuống dưới.
 
 .. image:: img/PBR.png
 
-.. note:: ``METALLIC`` should be close to ``0`` or ``1`` for proper PBR shading.
-          Only set it between them for blending between materials.
+.. note:: ``METALLIC`` nên gần với ``0`` hoặc ``1`` để có shading PBR phù hợp. Chỉ đặt nó nằm giữa hai giá trị này khi chuyển đổi giữa các vật liệu.
 
-Water is not a metal, so we will set its ``METALLIC`` property to ``0.0``. Water
-is also highly reflective, so we will set its ``ROUGHNESS`` property to be quite
-low as well.
+Nước không phải kim loại, vì vậy chúng ta sẽ đặt thuộc tính ``METALLIC`` của nó thành ``0.0``. Nước cũng có độ phản chiếu cao, vì vậy chúng ta cũng sẽ đặt thuộc tính ``ROUGHNESS`` của nó ở mức khá thấp.
 
 .. code-block:: glsl
 
@@ -106,18 +72,9 @@ low as well.
 
 .. image:: img/plastic.png
 
-Now we have a smooth plastic looking surface. It is time to think about some
-particular properties of water that we want to emulate. There are two main ones
-that will take this from a weird plastic surface to nice stylized water. The
-first is specular reflections. Specular reflections are those bright spots you
-see from where the sun reflects directly into your eye. The second is fresnel
-reflectance. Fresnel reflectance is the property of objects to become more
-reflective at shallow angles. It is the reason why you can see into water below
-you, but farther away it reflects the sky.
+Bây giờ chúng ta có một bề mặt trông như nhựa mịn. Đã đến lúc nghĩ về một số thuộc tính cụ thể của nước mà chúng ta muốn mô phỏng. Có hai thuộc tính chính sẽ biến bề mặt nhựa kỳ quặc này thành mặt nước cách điệu đẹp mắt. Đầu tiên là specular reflections. Specular reflections là những điểm sáng bạn thấy ở nơi ánh nắng phản chiếu trực tiếp vào mắt. Thứ hai là fresnel reflectance. Fresnel reflectance là thuộc tính khiến các đối tượng phản chiếu nhiều hơn ở những góc nhìn nông. Đây là lý do bạn có thể nhìn thấy phần nước bên dưới mình, nhưng ở xa hơn, nước lại phản chiếu bầu trời.
 
-In order to increase the specular reflections, we will do two things. First, we
-will change the render mode for specular to toon because the toon render mode
-has larger specular highlights.
+Để tăng specular reflections, chúng ta sẽ làm hai việc. Trước tiên, chúng ta sẽ thay đổi render mode cho specular thành toon vì toon render mode có các điểm nổi bật specular lớn hơn.
 
 .. code-block:: glsl
 
@@ -125,10 +82,7 @@ has larger specular highlights.
 
 .. image:: img/specular-toon.png
 
-Second we will add rim lighting. Rim lighting increases the effect of light at
-glancing angles. Usually it is used to emulate the way light passes through
-fabric on the edges of an object, but we will use it here to help achieve a nice
-watery effect.
+Thứ hai, chúng ta sẽ thêm rim lighting. Rim lighting tăng hiệu ứng của ánh sáng ở các góc nhìn lướt. Thông thường, nó được dùng để mô phỏng cách ánh sáng xuyên qua vải ở các cạnh của một đối tượng, nhưng ở đây chúng ta sẽ dùng nó để tạo hiệu ứng mặt nước đẹp mắt.
 
 .. code-block:: glsl
 
@@ -141,22 +95,13 @@ watery effect.
 
 .. image:: img/rim.png
 
-In order to add fresnel reflectance, we will compute a fresnel term in our
-fragment shader. Here, we aren't going to use a real fresnel term for
-performance reasons. Instead, we'll approximate it using the dot product of the
-``NORMAL`` and ``VIEW`` vectors. The ``NORMAL`` vector points away from the
-mesh's surface, while the ``VIEW`` vector is the direction between your eye and
-that point on the surface. The dot product between them is a handy way to tell
-when you are looking at the surface head-on or at a glancing angle.
+Để thêm fresnel reflectance, chúng ta sẽ tính một fresnel term trong fragment shader. Ở đây, vì lý do hiệu năng, chúng ta sẽ không sử dụng fresnel term thực. Thay vào đó, chúng ta sẽ xấp xỉ nó bằng dot product của các vector ``NORMAL`` và ``VIEW``. Vector ``NORMAL`` hướng ra khỏi bề mặt của mesh, trong khi vector ``VIEW`` là hướng từ mắt bạn đến điểm đó trên bề mặt. Dot product giữa chúng là một cách thuận tiện để xác định khi bạn nhìn thẳng vào bề mặt hay nhìn ở một góc lướt.
 
 .. code-block:: glsl
 
   float fresnel = sqrt(1.0 - dot(NORMAL, VIEW));
 
-And mix it into both ``ROUGHNESS`` and ``ALBEDO``. This is the benefit of
-ShaderMaterials over StandardMaterial3Ds. With StandardMaterial3D, we could set
-these properties with a texture, or to a flat number. But with shaders we can
-set them based on any mathematical function that we can dream up.
+Và trộn nó vào cả ``ROUGHNESS`` lẫn ``ALBEDO``. Đây là lợi ích của ShaderMaterials so với StandardMaterial3Ds. Với StandardMaterial3D, chúng ta có thể thiết lập các thuộc tính này bằng texture hoặc một số cố định. Nhưng với shader, chúng ta có thể thiết lập chúng dựa trên bất kỳ hàm toán học nào mà mình nghĩ ra.
 
 
 .. code-block:: glsl
@@ -171,41 +116,34 @@ set them based on any mathematical function that we can dream up.
 
 .. image:: img/fresnel.png
 
-And now, with only 5 lines of code, you can have complex looking water. Now that
-we have lighting, this water is looking too bright. Let's darken it. This is
-done easily by decreasing the values of the ``vec3`` we pass into ``ALBEDO``.
-Let's set them to ``vec3(0.01, 0.03, 0.05)``.
+Và giờ đây, chỉ với 5 dòng mã, bạn đã có thể tạo ra mặt nước trông phức tạp. Bây giờ chúng ta đã có ánh sáng, mặt nước này trông quá sáng. Hãy làm nó tối hơn. Việc này rất dễ thực hiện bằng cách giảm các giá trị của ``vec3`` mà chúng ta truyền vào ``ALBEDO``. Hãy đặt chúng thành ``vec3(0.01, 0.03, 0.05)``.
 
 .. image:: img/dark-water.png
 
-Animating with ``TIME``
------------------------
+Tạo hoạt ảnh với ``TIME``
+-------------------------
 
-Going back to the vertex function, we can animate the waves using the built-in
-variable ``TIME``.
+Quay lại hàm vertex, chúng ta có thể tạo hoạt ảnh cho các con sóng bằng biến tích hợp sẵn ``TIME``.
 
-``TIME`` is a built-in variable that is accessible from the vertex and fragment
-functions.
+``TIME`` là một biến tích hợp sẵn, có thể được truy cập từ các hàm vertex và fragment.
 
 
-In the last tutorial we calculated height by reading from a heightmap. For this
-tutorial, we will do the same. Put the heightmap code in a function called
-``height()``.
+Trong tutorial trước, chúng ta đã tính chiều cao bằng cách đọc từ heightmap. Trong tutorial này, chúng ta cũng sẽ làm tương tự. Đặt mã heightmap vào một hàm có tên ``height()``.
 
 .. code-block:: glsl
 
   float height(vec2 position) {
-    return texture(noise, position / 10.0).x; // Scaling factor is based on mesh size (this PlaneMesh is 10×10).
+    return texture(noise, position / 10.0).x; // Hệ số tỷ lệ dựa trên kích thước mesh (PlaneMesh này có kích thước 10×10).
   }
 
-In order to use ``TIME`` in the ``height()`` function, we need to pass it in.
+Để sử dụng ``TIME`` trong hàm ``height()``, chúng ta cần truyền nó vào.
 
 .. code-block:: glsl
 
   float height(vec2 position, float time) {
   }
 
-And make sure to correctly pass it in inside the vertex function.
+Và hãy đảm bảo truyền nó vào đúng cách bên trong hàm vertex.
 
 .. code-block:: glsl
 
@@ -215,18 +153,15 @@ And make sure to correctly pass it in inside the vertex function.
     VERTEX.y = k;
   }
 
-Instead of using a normalmap to calculate normals. We are going to compute them
-manually in the ``vertex()`` function. To do so use the following line of code.
+Thay vì sử dụng normal map để tính các normal, chúng ta sẽ tự tính chúng trong hàm ``vertex()``. Để làm vậy, hãy sử dụng dòng mã sau.
 
 .. code-block:: glsl
 
   NORMAL = normalize(vec3(k - height(pos + vec2(0.1, 0.0), TIME), 0.1, k - height(pos + vec2(0.0, 0.1), TIME)));
 
-We need to compute ``NORMAL`` manually because in the next section we will be
-using math to create complex-looking waves.
+Chúng ta cần tự tính ``NORMAL`` vì trong phần tiếp theo, chúng ta sẽ sử dụng toán học để tạo ra những con sóng trông phức tạp.
 
-Now, we are going to make the ``height()`` function a little more complicated by
-offsetting ``position`` by the cosine of ``TIME``.
+Bây giờ, chúng ta sẽ làm cho hàm ``height()`` phức tạp hơn một chút bằng cách offset ``position`` theo cosine của ``TIME``.
 
 .. code-block:: glsl
 
@@ -235,23 +170,16 @@ offsetting ``position`` by the cosine of ``TIME``.
     return texture(noise, (position / 10.0) - offset).x;
   }
 
-This results in waves that move slowly, but not in a very natural way. The next
-section will dig deeper into using shaders to create more complex effects, in
-this case realistic waves, by adding a few more mathematical functions.
+Kết quả là những con sóng chuyển động chậm, nhưng không thật tự nhiên. Phần tiếp theo sẽ tìm hiểu sâu hơn về việc sử dụng shader để tạo ra các hiệu ứng phức tạp hơn, trong trường hợp này là những con sóng chân thực, bằng cách thêm một vài hàm toán học.
 
-Advanced effects: waves
------------------------
+Các hiệu ứng nâng cao: sóng
+---------------------------
 
-What makes shaders so powerful is that you can achieve complex effects by using
-math. To illustrate this, we are going to take our waves to the next level by
-modifying the ``height()`` function and by introducing a new function called
-``wave()``.
+Điều làm cho shader trở nên mạnh mẽ là bạn có thể đạt được các hiệu ứng phức tạp bằng cách sử dụng toán học. Để minh họa điều này, chúng ta sẽ đưa những con sóng lên một cấp độ mới bằng cách sửa đổi hàm ``height()`` và giới thiệu một hàm mới có tên là ``wave()``.
 
-``wave()`` has one parameter, ``position``, which is the same as it is in
-``height()``.
+``wave()`` có một tham số là ``position``, giống với tham số trong ``height()``.
 
-We are going to call ``wave()`` multiple times in ``height()`` in order to fake
-the way waves look.
+Chúng ta sẽ gọi ``wave()`` nhiều lần trong ``height()`` để mô phỏng hình dạng của những con sóng.
 
 .. code-block:: glsl
 
@@ -261,33 +189,27 @@ the way waves look.
     return pow(1.0 - pow(wv.x * wv.y, 0.65), 4.0);
   }
 
-At first this looks complicated. So let's go through it line-by-line.
+Thoạt nhìn, đoạn này có vẻ phức tạp. Vì vậy, hãy cùng xem qua từng dòng.
 
 .. code-block:: glsl
 
     position += texture(noise, position / 10.0).x * 2.0 - 1.0;
 
-Offset the position by the ``noise`` texture. This will make the waves curve, so
-they won't be straight lines completely aligned with the grid.
+Offset vị trí theo texture ``noise``. Điều này sẽ làm cho các con sóng uốn cong, để chúng không còn là những đường thẳng hoàn toàn thẳng hàng với lưới.
 
 .. code-block:: glsl
 
     vec2 wv = 1.0 - abs(sin(position));
 
-Define a wave-like function using ``sin()`` and ``position``. Normally ``sin()``
-waves are very round. We use ``abs()`` to absolute to give them a sharp ridge
-and constrain them to the 0-1 range. And then we subtract it from ``1.0`` to put
-the peak on top.
+Định nghĩa một hàm có dạng sóng bằng cách sử dụng ``sin()`` và ``position``. Thông thường, các sóng ``sin()`` rất tròn. Chúng ta sử dụng ``abs()`` để lấy giá trị tuyệt đối, tạo cho chúng một gờ sắc nét và giới hạn chúng trong khoảng 0-1. Sau đó, chúng ta trừ nó khỏi ``1.0`` để đưa đỉnh lên trên.
 
 .. code-block:: glsl
 
     return pow(1.0 - pow(wv.x * wv.y, 0.65), 4.0);
 
-Multiply the x-directional wave by the y-directional wave and raise it to a
-power to sharpen the peaks. Then subtract that from ``1.0`` so that the ridges
-become peaks and raise that to a power to sharpen the ridges.
+Nhân sóng theo hướng x với sóng theo hướng y rồi nâng lên một lũy thừa để làm các đỉnh sắc nét hơn. Sau đó, trừ kết quả đó khỏi ``1.0`` để các gờ trở thành đỉnh, rồi nâng lên một lũy thừa để làm các gờ sắc nét hơn.
 
-We can now replace the contents of our ``height()`` function with ``wave()``.
+Bây giờ chúng ta có thể thay thế nội dung của hàm ``height()`` bằng ``wave()``.
 
 .. code-block:: glsl
 
@@ -296,12 +218,11 @@ We can now replace the contents of our ``height()`` function with ``wave()``.
     return h;
   }
 
-Using this, you get:
+Với cách này, bạn sẽ có:
 
 .. image:: img/wave1.png
 
-The shape of the sin wave is too obvious. So let's spread the waves out a bit.
-We do this by scaling ``position``.
+Hình dạng của sóng sin quá rõ ràng. Vì vậy, hãy làm các con sóng giãn ra một chút. Chúng ta thực hiện điều này bằng cách scale ``position``.
 
 .. code-block:: glsl
 
@@ -310,18 +231,13 @@ We do this by scaling ``position``.
     return h;
   }
 
-Now it looks much better.
+Bây giờ trông đẹp hơn nhiều.
 
 .. image:: img/wave2.png
 
-We can do even better if we layer multiple waves on top of each other at varying
-frequencies and amplitudes. What this means is that we are going to scale
-position for each one to make the waves thinner or wider (frequency). And we are
-going to multiply the output of the wave to make them shorter or taller
-(amplitude).
+Chúng ta còn có thể làm tốt hơn nữa nếu xếp chồng nhiều con sóng lên nhau với các tần số và biên độ khác nhau. Điều này có nghĩa là chúng ta sẽ scale vị trí của từng con sóng để làm chúng mảnh hơn hoặc rộng hơn (tần số). Đồng thời, chúng ta sẽ nhân đầu ra của sóng để làm chúng thấp hơn hoặc cao hơn (biên độ).
 
-Here is an example for how you could layer the four waves to achieve nicer
-looking waves.
+Dưới đây là một ví dụ về cách bạn có thể xếp chồng bốn con sóng để tạo ra những con sóng trông đẹp hơn.
 
 .. code-block:: glsl
 
@@ -333,18 +249,10 @@ looking waves.
     return d;
   }
 
-Note that we add time to two and subtract it from the other two. This makes the
-waves move in different directions creating a complex effect. Also note that the
-amplitudes (the number the result is multiplied by) all add up to ``1.0``. This
-keeps the wave in the 0-1 range.
+Lưu ý rằng chúng ta cộng thời gian vào hai con sóng và trừ nó khỏi hai con sóng còn lại. Điều này làm cho các con sóng chuyển động theo những hướng khác nhau, tạo ra một hiệu ứng phức tạp. Cũng lưu ý rằng tổng các biên độ (giá trị mà kết quả được nhân với) đều bằng ``1.0``. Điều này giữ cho sóng nằm trong khoảng 0-1.
 
-With this code you should end up with more complex looking waves and all you had
-to do was add a bit of math!
+Với đoạn mã này, bạn sẽ có được những con sóng trông phức tạp hơn, và tất cả những gì bạn cần làm là thêm một chút toán học!
 
 .. image:: img/wave3.png
 
-For more information about Spatial shaders read the :ref:`Shading Language
-<doc_shading_language>` doc and the :ref:`Spatial Shaders <doc_spatial_shader>`
-doc. Also look at more advanced tutorials in the :ref:`Shading section
-<toc-learn-features-shading>` and the :ref:`3D <toc-learn-features-3d>`
-sections.
+Để biết thêm thông tin về Spatial shader, hãy đọc tài liệu :ref:`Shading Language <doc_shading_language>` và tài liệu :ref:`Spatial Shaders <doc_spatial_shader>`. Ngoài ra, hãy xem các hướng dẫn nâng cao hơn trong các phần :ref:`Shading section <toc-learn-features-shading>` và :ref:`3D <toc-learn-features-3d>`.

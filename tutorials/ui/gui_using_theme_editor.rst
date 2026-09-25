@@ -1,162 +1,98 @@
 .. _doc_gui_using_theme_editor:
 
-Using the theme editor
-======================
+Sử dụng trình chỉnh sửa theme
+=============================
 
-This article explains how to create and manage UI themes using the Godot
-editor and its theme editor tool. We recommend getting familiar with the
-basics behind GUI skinning/theming by reading :ref:`doc_gui_skinning` before starting.
+Bài viết này giải thích cách tạo và quản lý UI theme bằng trình chỉnh sửa Godot và công cụ chỉnh sửa theme. Trước khi bắt đầu, chúng tôi khuyên bạn nên làm quen với những kiến thức cơ bản về GUI skinning/theming bằng cách đọc :ref:`doc_gui_skinning`.
 
-The theme editor is a bottom panel tool that activates automatically, when
-a :ref:`Theme <class_Theme>` resource is selected for editing. It contains
-the necessary UI for adding, removing, and adjusting theme types and theme
-items. It features a preview section for testing your changes live, as well
-as a window dialog for doing bulk operations of the theme items.
+Trình chỉnh sửa theme là một công cụ trong bảng điều khiển phía dưới, tự động kích hoạt khi tài nguyên :ref:`Theme <class_Theme>` được chọn để chỉnh sửa. Công cụ này chứa UI cần thiết để thêm, xóa và điều chỉnh các theme type và theme item. Công cụ có một phần xem trước để kiểm thử trực tiếp các thay đổi, cũng như một cửa sổ dialog để thực hiện các thao tác hàng loạt với theme item.
 
-Creating a theme
-----------------
+Tạo theme
+---------
 
-Like any other resources, themes can be created directly in the file system dock
-by right-clicking and selecting **New Resource...**, then selecting **Theme**
-and clicking **Create**. This is especially useful for creating project-wide
-themes.
+Giống như mọi resource khác, bạn có thể tạo theme trực tiếp trong dock hệ thống tệp bằng cách nhấp chuột phải và chọn **New Resource...**, sau đó chọn **Theme** rồi nhấp vào **Create**. Cách này đặc biệt hữu ích để tạo theme dùng cho toàn project.
 
-Themes also can be created from any control node. Select a control node in the scene
-hierarchy, then in the inspector go to the ``theme`` property. From there you can
-select **New Theme**.
+Bạn cũng có thể tạo theme từ bất kỳ control node nào. Chọn một control node trong hệ thống phân cấp của scene, sau đó trong Inspector đi đến thuộc tính ``theme``. Tại đó, bạn có thể chọn **New Theme**.
 
 .. figure:: img/new_theme.webp
    :align: center
 
-This will create an empty theme and open up the theme editor. Keep in mind that
-resources created this way are bundled with the scene by default. Use the context
-menu to save the new theme to a file instead.
+Thao tác này sẽ tạo một theme trống và mở trình chỉnh sửa theme. Hãy nhớ rằng các resource được tạo theo cách này mặc định sẽ được đóng gói cùng scene. Hãy sử dụng context menu để thay vào đó lưu theme mới vào một tệp.
 
-While the theme editor provides the tools to manage theme types and items, themes also
-include the default, fallback font that you can edit only using the Inspector dock.
-Same applies to the contents of complex resource types, such as :ref:`StyleBoxes <class_StyleBox>`
-and icons — they open for editing in the Inspector.
+Mặc dù trình chỉnh sửa theme cung cấp các công cụ để quản lý theme type và item, theme cũng bao gồm font mặc định dùng làm fallback mà bạn chỉ có thể chỉnh sửa bằng dock Inspector. Điều tương tự cũng áp dụng cho nội dung của các loại resource phức tạp, chẳng hạn như :ref:`StyleBoxes <class_StyleBox>` và icon — chúng sẽ được mở để chỉnh sửa trong Inspector.
 
 .. figure:: img/default_font.webp
    :align: center
 
-Theme editor overview
----------------------
+Tổng quan về trình chỉnh sửa theme
+----------------------------------
 
 .. figure:: img/theme_editor.webp
    :align: center
 
-The theme editor has two main parts. The main theme editor, located at the bottom of
-the Godot editor, aims to provide users with tools to quickly create, edit, and delete
-theme items and types. It gives visual tools for picking and changing controls, abstracting
-the underlying theme concepts. The **Manage Theme Items** dialog, on the other hand,
-tries to address the needs of those who want to change themes manually. It's also
-useful for creating a new editor theme.
+Trình chỉnh sửa theme có hai phần chính. Trình chỉnh sửa theme chính, nằm ở phía dưới trình chỉnh sửa Godot, nhằm cung cấp cho người dùng các công cụ để nhanh chóng tạo, chỉnh sửa và xóa theme item và type. Công cụ này cung cấp các công cụ trực quan để chọn và thay đổi control, giúp trừu tượng hóa các khái niệm theme bên dưới. Mặt khác, dialog **Manage Theme Items** hướng đến nhu cầu của những người muốn thay đổi theme theo cách thủ công. Dialog này cũng hữu ích để tạo theme editor mới.
 
-Theme previews
-~~~~~~~~~~~~~~
+Xem trước theme
+~~~~~~~~~~~~~~~
 
-The left-hand side of the main editor has a set of preview tabs. The **Default Preview**
-tab is visible out of the box and contains most of the frequently used controls in various
-states. Previews are interactive, so intermediate states (e.g. hover) can be previewed as well.
+Phía bên trái của trình chỉnh sửa chính có một tập hợp các tab xem trước. Tab **Default Preview** hiển thị ngay từ đầu và chứa hầu hết các control thường dùng ở nhiều trạng thái khác nhau. Các bản xem trước có tính tương tác, vì vậy bạn cũng có thể xem trước các trạng thái trung gian (ví dụ: hover).
 
 .. figure:: img/default_preview.webp
    :align: center
 
-Additional tabs can be created from arbitrary scenes in your project. The scene
-must have a control node as its root to function as a preview. To add a new tab
-click the **Add Preview** button and select the saved scene from your file system.
+Bạn có thể tạo thêm các tab từ những scene tùy ý trong project. Scene phải có một control node làm node gốc thì mới hoạt động như bản xem trước. Để thêm tab mới, hãy nhấp vào nút **Add Preview** và chọn scene đã lưu từ hệ thống tệp.
 
 .. figure:: img/scene_preview.webp
    :align: center
 
-If you make changes to the scene, they will not be reflected in the preview
-automatically. To update the preview click the reload button on the toolbar.
+Nếu bạn thay đổi scene, các thay đổi đó sẽ không tự động được phản ánh trong bản xem trước. Để cập nhật bản xem trước, hãy nhấp vào nút reload trên thanh công cụ.
 
-Previews can also be used to quickly select the theme type to edit. Select the
-picker tool from the toolbar and hover over the preview area to highlight control
-nodes. Highlighted control nodes display their class name, or type variation if available.
-Clicking on the highlighted control opens it for editing on the right-hand side.
+Bạn cũng có thể dùng các bản xem trước để nhanh chóng chọn theme type cần chỉnh sửa. Chọn công cụ picker trên thanh công cụ rồi di chuột qua khu vực xem trước để làm nổi bật các control node. Các control node được làm nổi bật sẽ hiển thị tên class hoặc type variation nếu có. Nhấp vào control đang được làm nổi bật để mở control đó và chỉnh sửa ở phía bên phải.
 
 .. figure:: img/theme_preview_picker.webp
    :align: center
 
-Theme types and items
-~~~~~~~~~~~~~~~~~~~~~
+Theme type và item
+~~~~~~~~~~~~~~~~~~
 
-The right-hand side of the theme editor provides a list of theme types available
-in the edited theme resource, and the contents of the selected type. The list of
-type's items is divided into several tabs, corresponding to each data type available
-in the theme (colors, constants, styles, etc.). If the **Show Default** option is
-enabled, then for each built-in type its default theme values are displayed, greyed
-out. If the option is disabled, only the items available in the edited theme itself
-are displayed.
+Phía bên phải của trình chỉnh sửa theme cung cấp danh sách các theme type có trong theme resource đang chỉnh sửa và nội dung của type được chọn. Danh sách item của type được chia thành một số tab, tương ứng với từng loại dữ liệu có trong theme (color, constant, style, v.v.). Nếu tùy chọn **Show Default** được bật, các giá trị theme mặc định của từng type tích hợp sẵn sẽ được hiển thị dưới dạng bị làm mờ. Nếu tắt tùy chọn này, chỉ các item có trong chính theme đang chỉnh sửa mới được hiển thị.
 
 .. figure:: img/theme_type_editor.webp
    :align: center
 
-Individual items from the default theme can be added to the current theme by
-clicking on the **Override** button next to the item. You can also override all
-the default items of the selected theme type by clicking on the **Override All**
-button. Overridden properties can then be removed with the **Remove Item** button.
-Properties can also be renamed using the **Rename Item** button, and completely
-custom properties can be added to the list using the text field below it.
+Bạn có thể thêm từng item từ theme mặc định vào theme hiện tại bằng cách nhấp vào nút **Override** bên cạnh item đó. Bạn cũng có thể override tất cả item mặc định của theme type đã chọn bằng cách nhấp vào nút **Override All**. Sau đó, có thể xóa các thuộc tính đã override bằng nút **Remove Item**. Bạn cũng có thể đổi tên thuộc tính bằng nút **Rename Item** và thêm các thuộc tính tùy chỉnh hoàn toàn vào danh sách bằng trường văn bản bên dưới.
 
-Overridden theme items can be edited directly in the right-hand panel, unless they
-are resources. Resources have rudimentary controls available for them, but must be
-edited in the Inspector dock instead.
+Bạn có thể chỉnh sửa trực tiếp các theme item đã override trong panel bên phải, trừ khi chúng là resource. Resource có các control cơ bản, nhưng phải được chỉnh sửa trong dock Inspector.
 
 .. figure:: img/theme_item_inspector.webp
    :align: center
 
-Styleboxes have a unique feature available, where you can pin an individual
-stylebox from the list. Pinned stylebox acts like the leader of the pack, and
-all styleboxes of the same type are updated alongside it when you change its
-properties. This allows you to edit properties of several styleboxes at the
-same time.
+Stylebox có một tính năng riêng: bạn có thể ghim một stylebox trong danh sách. Stylebox được ghim sẽ đóng vai trò là stylebox dẫn đầu, và tất cả stylebox cùng type sẽ được cập nhật theo khi bạn thay đổi thuộc tính của nó. Điều này cho phép bạn chỉnh sửa thuộc tính của nhiều stylebox cùng lúc.
 
 .. figure:: img/theme_pin_the_stylebox.webp
    :align: center
 
-While theme types can be picked from a preview, they can also be added manually.
-Clicking the plus button next to the type list opens the **Add item Type** menu.
-In that menu you can either select a type from the list, or you can enter an
-arbitrary name to create a custom type. Text field also filters the list of control
-nodes.
+Mặc dù có thể chọn theme type từ bản xem trước, bạn cũng có thể thêm chúng theo cách thủ công. Nhấp vào nút dấu cộng bên cạnh danh sách type sẽ mở menu **Add item Type**. Trong menu đó, bạn có thể chọn một type từ danh sách hoặc nhập một tên tùy ý để tạo type tùy chỉnh. Trường văn bản cũng lọc danh sách các control node.
 
 .. figure:: img/add_item_type.webp
    :align: center
 
-Manage and import items
------------------------
+Quản lý và nhập item
+--------------------
 
-Clicking the **Manage Items** button brings up the **Manage Theme Items** dialog.
+Nhấp vào nút **Manage Items** sẽ mở dialog **Manage Theme Items**.
 
 .. figure:: img/manage_items_button.webp
    :align: center
 
-In the **Edit Items** tab you can view and add theme types, as well as view and edit
-the theme items of the selected type.
+Trong tab **Edit Items**, bạn có thể xem và thêm theme type, cũng như xem và chỉnh sửa theme item của type đã chọn.
 
 .. figure:: img/manage_items.webp
    :align: center
 
-You can create, rename and remove individual theme items here by clicking the
-corresponding **Add X Item** and specifying their name. You can also mass delete
-theme items either by their data type (using the brush icon in the list) or by
-their quality. **Remove Class Items** will remove all built-in theme items you
-have customized for a control node type. **Remove Custom Items** will remove all
-the custom theme items for the selected type. Finally, **Remove All Items** will
-remove everything from the type.
+Tại đây, bạn có thể tạo, đổi tên và xóa từng theme item bằng cách nhấp vào **Add X Item** tương ứng rồi chỉ định tên của chúng. Bạn cũng có thể xóa hàng loạt theme item theo data type (bằng biểu tượng cọ trong danh sách) hoặc theo quality. **Remove Class Items** sẽ xóa tất cả theme item tích hợp sẵn mà bạn đã tùy chỉnh cho một loại control node. **Remove Custom Items** sẽ xóa tất cả theme item tùy chỉnh của type đã chọn. Cuối cùng, **Remove All Items** sẽ xóa mọi thứ khỏi type.
 
-From the **Import Items** tab you can import theme items from other themes. You can
-import items from the default Godot theme, the Godot editor theme, or another custom
-theme. You can import individual or multiple items, and you can decide whether to
-copy or omit their data as well. There are several ways you can select and deselect the
-items, including by hand, by hierarchy, by data type, and everything. Opting to
-include the data will copy all theme items as they are to your theme. Omitting the data
-will create the items of the corresponding data type and name, but will leave them empty,
-creating a template of a theme in a way.
+Trong tab **Import Items**, bạn có thể nhập theme item từ các theme khác. Bạn có thể nhập item từ theme Godot mặc định, theme trình chỉnh sửa Godot hoặc một theme tùy chỉnh khác. Bạn có thể nhập từng item hoặc nhiều item, đồng thời quyết định có sao chép hay bỏ qua dữ liệu của chúng. Có nhiều cách để chọn và bỏ chọn item, bao gồm chọn thủ công, theo hệ thống phân cấp, theo data type hoặc chọn tất cả. Nếu chọn bao gồm dữ liệu, tất cả theme item sẽ được sao chép nguyên trạng vào theme của bạn. Nếu bỏ qua dữ liệu, các item có data type và tên tương ứng sẽ được tạo nhưng để trống, qua đó tạo ra một template theme.
 
 .. figure:: img/import_items.webp
    :align: center

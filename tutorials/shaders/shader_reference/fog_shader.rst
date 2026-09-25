@@ -1,85 +1,64 @@
 .. _doc_fog_shader:
 
-Fog shaders
-===========
+Shader sương mù
+===============
 
-Fog shaders are used to define how fog is added to (or subtracted from) a scene in
-a given area. Fog shaders are always used together with
-:ref:`FogVolumes <class_FogVolume>` and volumetric fog. Fog shaders only have
-one processing function, the ``fog()`` function.
+Shader sương mù được dùng để xác định cách sương mù được thêm vào (hoặc loại bỏ khỏi) một cảnh trong một khu vực nhất định. Shader sương mù luôn được sử dụng cùng với
+:ref:`FogVolumes <class_FogVolume>` và sương mù thể tích. Shader sương mù chỉ có một hàm xử lý, hàm ``fog()``.
 
-The resolution of the fog shaders depends on the resolution of the
-volumetric fog froxel grid. Accordingly, the level of detail that a fog shader
-can add depends on how close the :ref:`FogVolume <class_FogVolume>` is to the
-camera.
+Độ phân giải của shader sương mù phụ thuộc vào độ phân giải của lưới froxel của sương mù thể tích. Do đó, mức độ chi tiết mà shader sương mù có thể thêm vào phụ thuộc vào khoảng cách từ :ref:`FogVolume <class_FogVolume>` đến camera.
 
-Fog shaders are a special form of compute shader that is called once for
-every froxel that is touched by an axis-aligned bounding box of the associated
-:ref:`FogVolume <class_FogVolume>`. This means that froxels that just barely
-touch a given :ref:`FogVolume <class_FogVolume>` will still be used.
+Shader sương mù là một dạng đặc biệt của compute shader, được gọi một lần cho mỗi froxel bị chạm bởi hộp giới hạn căn chỉnh theo trục của
+:ref:`FogVolume <class_FogVolume>`. Điều này có nghĩa là các froxel chỉ vừa chạm vào một :ref:`FogVolume <class_FogVolume>` nhất định vẫn sẽ được sử dụng.
 
-Built-ins
----------
+Các biến dựng sẵn
+-----------------
 
-Values marked as ``in`` are read-only. Values marked as ``out`` can optionally
-be written to and will not necessarily contain sensible values. Samplers cannot
-be written to so they are not marked.
+Các giá trị được đánh dấu là ``in`` chỉ được đọc. Các giá trị được đánh dấu là ``out`` có thể được ghi tùy chọn và không nhất thiết chứa các giá trị hợp lệ. Không thể ghi vào sampler nên chúng không được đánh dấu.
 
-Global built-ins
-----------------
+Các biến dựng sẵn toàn cục
+--------------------------
 
-Global built-ins are available everywhere, including in custom functions.
+Các biến dựng sẵn toàn cục khả dụng ở mọi nơi, kể cả trong các hàm tùy chỉnh.
 
-+-----------------------------------+-------------------------------------------------------------------------------------------------+
-| Built-in                          | Description                                                                                     |
-+===================================+=================================================================================================+
-| in float **TIME**                 | Global time since the engine has started, in seconds. It repeats after every ``3,600``          |
-|                                   | seconds (which can be changed with the                                                          |
-|                                   | :ref:`rollover<class_ProjectSettings_property_rendering/limits/time/time_rollover_secs>`        |
-|                                   | setting). It's affected by                                                                      |
-|                                   | :ref:`time_scale<class_Engine_property_time_scale>` but not by pausing. If you need a           |
-|                                   | ``TIME`` variable that is not affected by time scale, add your own                              |
-|                                   | :ref:`global shader uniform<doc_shading_language_global_uniforms>` and update it each           |
-|                                   | frame.                                                                                          |
-+-----------------------------------+-------------------------------------------------------------------------------------------------+
-| in float **PI**                   | A ``PI`` constant (``3.141592``).                                                               |
-|                                   | The ratio of a circle's circumference to its diameter and the number of radians in a half turn. |
-+-----------------------------------+-------------------------------------------------------------------------------------------------+
-| in float **TAU**                  | A ``TAU`` constant (``6.283185``).                                                              |
-|                                   | Equivalent to ``PI * 2`` and the number of radians in a full turn.                              |
-+-----------------------------------+-------------------------------------------------------------------------------------------------+
-| in float **E**                    | An ``E`` constant (``2.718281``).                                                               |
-|                                   | Euler's number, the base of the natural logarithm.                                              |
-+-----------------------------------+-------------------------------------------------------------------------------------------------+
++-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Biến dựng sẵn     | Mô tả                                                                                                                                                            |
++===================+==================================================================================================================================================================+
+| in float **TIME** | Thời gian toàn cục tính từ khi engine khởi động, tính bằng giây. Giá trị này lặp lại sau mỗi ``3,600`` giây (có thể thay đổi bằng thiết lập                      |
+|                   | :ref:`rollover<class_ProjectSettings_property_rendering/limits/time/time_rollover_secs>`). Giá trị này bị ảnh hưởng bởi                                          |
+|                   | :ref:`time_scale<class_Engine_property_time_scale>` nhưng không bị ảnh hưởng khi tạm dừng. Nếu cần một biến ``TIME`` không bị ảnh hưởng bởi time scale, hãy thêm |
+|                   | :ref:`global shader uniform <doc_shading_language_global_uniforms>` của riêng bạn và cập nhật biến đó trong mỗi frame.                                           |
++-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in float **PI**   | Một hằng số ``PI`` (``3.141592``). Tỷ lệ giữa chu vi và đường kính của một đường tròn, đồng thời là số radian trong nửa vòng tròn.                               |
++-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in float **TAU**  | Một hằng số ``TAU`` (``6.283185``). Tương đương với ``PI * 2`` và là số radian trong một vòng tròn đầy đủ.                                                       |
++-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in float **E**    | Một hằng số ``E`` (``2.718281``). Số Euler, cơ số của logarit tự nhiên.                                                                                          |
++-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Fog built-ins
--------------
+Các biến dựng sẵn của sương mù
+------------------------------
 
-All of the output values of fog volumes overlap one another. This allows
-:ref:`FogVolumes <class_FogVolume>` to be rendered efficiently as they can all
-be drawn at once.
+Tất cả các giá trị đầu ra của các thể tích sương mù đều chồng lấp lên nhau. Điều này cho phép
+:ref:`FogVolumes <class_FogVolume>` được kết xuất hiệu quả vì tất cả chúng có thể được vẽ cùng lúc.
 
-+-------------------------------+-------------------------------------------------------------------------------------------------+
-| Built-in                      | Description                                                                                     |
-+===============================+=================================================================================================+
-| in vec3 **WORLD_POSITION**    | Position of current froxel cell in world space.                                                 |
-+-------------------------------+-------------------------------------------------------------------------------------------------+
-| in vec3 **OBJECT_POSITION**   | Position of the center of the current :ref:`FogVolume <class_FogVolume>` in world space.        |
-+-------------------------------+-------------------------------------------------------------------------------------------------+
-| in vec3 **UVW**               | 3-dimensional UV, used to map a 3D texture to the current :ref:`FogVolume <class_FogVolume>`.   |
-+-------------------------------+-------------------------------------------------------------------------------------------------+
-| in vec3 **SIZE**              | Size of the current :ref:`FogVolume <class_FogVolume>` when its                                 |
-|                               | :ref:`shape<class_FogVolume_property_shape>` has a size.                                        |
-+-------------------------------+-------------------------------------------------------------------------------------------------+
-| in vec3 **SDF**               | Signed distance field to the surface of the :ref:`FogVolume <class_FogVolume>`. Negative if     |
-|                               | inside volume, positive otherwise.                                                              |
-+-------------------------------+-------------------------------------------------------------------------------------------------+
-| out vec3 **ALBEDO**           | Output base color value, interacts with light to produce final color. Only written to fog       |
-|                               | volume if used.                                                                                 |
-+-------------------------------+-------------------------------------------------------------------------------------------------+
-| out float **DENSITY**         | Output density value. Can be negative to allow subtracting one volume from another. Density     |
-|                               | must be used for fog shader to write anything at all.                                           |
-+-------------------------------+-------------------------------------------------------------------------------------------------+
-| out vec3 **EMISSION**         | Output emission color value, added to color during light pass to produce final color. Only      |
-|                               | written to fog volume if used.                                                                  |
-+-------------------------------+-------------------------------------------------------------------------------------------------+
++-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Biến dựng sẵn               | Mô tả                                                                                                                                                             |
++=============================+===================================================================================================================================================================+
+| in vec3 **WORLD_POSITION**  | Vị trí của ô froxel hiện tại trong không gian thế giới.                                                                                                           |
++-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec3 **OBJECT_POSITION** | Vị trí tâm của :ref:`FogVolume <class_FogVolume>` hiện tại trong không gian thế giới.                                                                             |
++-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec3 **UVW**             | UV ba chiều, được dùng để ánh xạ texture 3D vào :ref:`FogVolume <class_FogVolume>` hiện tại.                                                                      |
++-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec3 **SIZE**            | Kích thước của :ref:`FogVolume <class_FogVolume>` hiện tại khi                                                                                                    |
+|                             | :ref:`shape<class_FogVolume_property_shape>` có kích thước.                                                                                                       |
++-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| in vec3 **SDF**             | Trường khoảng cách có dấu đến bề mặt của :ref:`FogVolume <class_FogVolume>`. Âm nếu nằm bên trong thể tích, dương trong các trường hợp khác.                      |
++-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| out vec3 **ALBEDO**         | Giá trị màu cơ sở đầu ra, tương tác với ánh sáng để tạo ra màu cuối cùng. Chỉ được ghi vào thể tích sương mù nếu được sử dụng.                                    |
++-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| out float **DENSITY**       | Giá trị mật độ đầu ra. Có thể là số âm để cho phép trừ một thể tích khỏi thể tích khác. Phải sử dụng Density thì shader sương mù mới ghi được bất kỳ dữ liệu nào. |
++-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| out vec3 **EMISSION**       | Giá trị màu phát xạ đầu ra, được thêm vào màu trong lượt truyền ánh sáng để tạo ra màu cuối cùng. Chỉ được ghi vào thể tích sương mù nếu được sử dụng.            |
++-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+

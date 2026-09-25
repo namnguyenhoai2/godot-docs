@@ -1,78 +1,65 @@
 .. _doc_shader_functions:
 
-Built-in shader functions
-=========================
+Các hàm shader tích hợp sẵn
+===========================
 
-Godot supports a large number of built-in shader functions, conforming roughly to the
-GLSL ES 3.0 specification.
+Godot hỗ trợ một số lượng lớn các hàm shader tích hợp sẵn, gần như tuân theo đặc tả GLSL ES 3.0.
 
 .. note::
-    The following type aliases only used in documentation to reduce repetitive function declarations.
-    They can each refer to any of several actual types.
+    Các bí danh kiểu (type alias) sau đây chỉ được sử dụng trong tài liệu để giảm việc khai báo hàm lặp lại. Mỗi bí danh có thể tham chiếu đến một trong nhiều kiểu thực tế.
 
-    +-----------------+-----------------------------------------------------+--------------------------+
-    | alias           | actual types                                        | glsl documentation alias |
-    +=================+=====================================================+==========================+
-    | vec_type        | float, vec2, vec3, or vec4                          | genType                  |
-    +-----------------+-----------------------------------------------------+--------------------------+
-    | vec_int_type    | int, ivec2, ivec3, or ivec4                         | genIType                 |
-    +-----------------+-----------------------------------------------------+--------------------------+
-    | vec_uint_type   | uint, uvec2, uvec3, or uvec4                        | genUType                 |
-    +-----------------+-----------------------------------------------------+--------------------------+
-    | vec_bool_type   | bool, bvec2, bvec3, or bvec4                        | genBType                 |
-    +-----------------+-----------------------------------------------------+--------------------------+
-    | mat_type        | mat2, mat3, or mat4                                 | mat                      |
-    +-----------------+-----------------------------------------------------+--------------------------+
-    | gvec4_type      | vec4, ivec4, or uvec4                               | gvec4                    |
-    +-----------------+-----------------------------------------------------+--------------------------+
-    | gsampler2D      | sampler2D, isampler2D, or uSampler2D                | gsampler2D               |
-    +-----------------+-----------------------------------------------------+--------------------------+
-    | gsampler2DArray | sampler2DArray, isampler2DArray, or uSampler2DArray | gsampler2DArray          |
-    +-----------------+-----------------------------------------------------+--------------------------+
-    | gsampler3D      | sampler3D, isampler3D, or uSampler3D                | gsampler3D               |
-    +-----------------+-----------------------------------------------------+--------------------------+
+    +-----------------+-------------------------------------------------------+-----------------------------+
+    | bí danh         | các kiểu thực tế                                      | bí danh trong tài liệu GLSL |
+    +=================+=======================================================+=============================+
+    | vec_type        | float, vec2, vec3, hoặc vec4                          | genType                     |
+    +-----------------+-------------------------------------------------------+-----------------------------+
+    | vec_int_type    | int, ivec2, ivec3, hoặc ivec4                         | genIType                    |
+    +-----------------+-------------------------------------------------------+-----------------------------+
+    | vec_uint_type   | uint, uvec2, uvec3, hoặc uvec4                        | genUType                    |
+    +-----------------+-------------------------------------------------------+-----------------------------+
+    | vec_bool_type   | bool, bvec2, bvec3, hoặc bvec4                        | genBType                    |
+    +-----------------+-------------------------------------------------------+-----------------------------+
+    | mat_type        | mat2, mat3, hoặc mat4                                 | mat                         |
+    +-----------------+-------------------------------------------------------+-----------------------------+
+    | gvec4_type      | vec4, ivec4, hoặc uvec4                               | gvec4                       |
+    +-----------------+-------------------------------------------------------+-----------------------------+
+    | gsampler2D      | sampler2D, isampler2D, hoặc uSampler2D                | gsampler2D                  |
+    +-----------------+-------------------------------------------------------+-----------------------------+
+    | gsampler2DArray | sampler2DArray, isampler2DArray, hoặc uSampler2DArray | gsampler2DArray             |
+    +-----------------+-------------------------------------------------------+-----------------------------+
+    | gsampler3D      | sampler3D, isampler3D, hoặc uSampler3D                | gsampler3D                  |
+    +-----------------+-------------------------------------------------------+-----------------------------+
 
-    If any of these are specified for multiple parameters, they must all be the same type unless otherwise noted.
+    Nếu bất kỳ kiểu nào trong số này được chỉ định cho nhiều tham số, tất cả chúng phải cùng một kiểu trừ khi có ghi chú khác.
 
 .. _shading_componentwise:
 
 .. note::
-    Many functions that accept one or more vectors or matrices perform the described function on each component of the vector/matrix.
-    Some examples:
+    Nhiều hàm nhận một hoặc nhiều vector hoặc ma trận sẽ thực hiện hàm được mô tả trên từng thành phần của vector/ma trận. Một số ví dụ:
 
     .. table::
         :class: nowrap-col2 nowrap-col1
         :widths: auto
 
-        +---------------------------------------+-----------------------------------------------------+
-        | Operation                             | Equivalent Scalar Operation                         |
-        +=======================================+=====================================================+
-        | ``sqrt(vec2(4, 64))``                 | ``vec2(sqrt(4), sqrt(64))``                         |
-        +---------------------------------------+-----------------------------------------------------+
-        | ``min(vec2(3, 4), 1)``                | ``vec2(min(3, 1), min(4, 1))``                      |
-        +---------------------------------------+-----------------------------------------------------+
-        | ``min(vec3(1, 2, 3),vec3(5, 1, 3))``  | ``vec3(min(1, 5), min(2, 1), min(3, 3))``           |
-        +---------------------------------------+-----------------------------------------------------+
-        | ``pow(vec3(3, 8, 5 ), 2)``            | ``vec3(pow(3, 2), pow(8, 2), pow(5, 2))``           |
-        +---------------------------------------+-----------------------------------------------------+
-        | ``pow(vec3(3, 8, 5), vec3(1, 2, 4))`` | ``vec3(pow(3, 1), pow(8, 2), pow(5, 4))``           |
-        +---------------------------------------+-----------------------------------------------------+
+        +---------------------------------------+-------------------------------------------+
+        | Phép toán                             | Phép toán vô hướng tương đương            |
+        +=======================================+===========================================+
+        | ``sqrt(vec2(4, 64))``                 | ``vec2(sqrt(4), sqrt(64))``               |
+        +---------------------------------------+-------------------------------------------+
+        | ``min(vec2(3, 4), 1)``                | ``vec2(min(3, 1), min(4, 1))``            |
+        +---------------------------------------+-------------------------------------------+
+        | ``min(vec3(1, 2, 3),vec3(5, 1, 3))``  | ``vec3(min(1, 5), min(2, 1), min(3, 3))`` |
+        +---------------------------------------+-------------------------------------------+
+        | ``pow(vec3(3, 8, 5 ), 2)``            | ``vec3(pow(3, 2), pow(8, 2), pow(5, 2))`` |
+        +---------------------------------------+-------------------------------------------+
+        | ``pow(vec3(3, 8, 5), vec3(1, 2, 4))`` | ``vec3(pow(3, 1), pow(8, 2), pow(5, 4))`` |
+        +---------------------------------------+-------------------------------------------+
 
-    The `GLSL Language Specification <http://www.opengl.org/registry/doc/GLSLangSpec.4.30.6.pdf>`_ says under section 5.10 Vector and Matrix Operations:
+    `Đặc tả Ngôn ngữ GLSL <http://www.opengl.org/registry/doc/GLSLangSpec.4.30.6.pdf>`_ nêu trong mục 5.10 Phép toán Vector và Ma trận:
 
-        With a few exceptions, operations are component-wise. Usually, when an operator operates on a
-        vector or matrix, it is operating independently on each component of the vector or matrix,
-        in a component-wise fashion. [...] The exceptions are matrix multiplied by vector,
-        vector multiplied by matrix, and matrix multiplied by matrix. These do not operate component-wise,
-        but rather perform the correct linear algebraic multiply.
+        Với một vài ngoại lệ, các phép toán được thực hiện theo từng thành phần. Thông thường, khi một toán tử tác động lên một vector hoặc ma trận, nó sẽ tác động độc lập lên từng thành phần của vector hoặc ma trận theo cách thức từng thành phần. [...] Các ngoại lệ là ma trận nhân với vector, vector nhân với ma trận và ma trận nhân với ma trận. Các phép toán này không được thực hiện theo từng thành phần, mà thực hiện phép nhân đại số tuyến tính chính xác.
 
-These function descriptions are adapted and modified from
-`official OpenGL documentation <https://registry.khronos.org/OpenGL-Refpages/gl4/>`__
-originally published by Khronos Group under the
-`Open Publication License <https://opencontent.org/openpub>`__.
-Each function description links to the corresponding official OpenGL
-documentation. Modification history for this page can be found on
-`GitHub <https://github.com/godotengine/godot-docs/blob/master/tutorials/shaders/shader_reference/shader_functions.rst>`__.
+Các mô tả hàm này được điều chỉnh và sửa đổi từ `tài liệu OpenGL chính thức <https://registry.khronos.org/OpenGL-Refpages/gl4/>`__, ban đầu do Khronos Group phát hành theo `Open Publication License <https://opencontent.org/openpub>`__. Mỗi mô tả hàm liên kết đến tài liệu OpenGL chính thức tương ứng. Lịch sử sửa đổi của trang này có thể được xem trên `GitHub <https://github.com/godotengine/godot-docs/blob/master/tutorials/shaders/shader_reference/shader_functions.rst>`__.
 
 .. rst-class:: classref-section-separator
 
@@ -82,8 +69,8 @@ documentation. Modification history for this page can be found on
 
 .. rst-class:: classref-reftable-group
 
-Trigonometric functions
------------------------
+Các hàm lượng giác
+------------------
 
 .. table::
     :class: nowrap-col2
@@ -125,8 +112,8 @@ Trigonometric functions
 
 .. rst-class:: classref-descriptions-group
 
-Trigonometric function descriptions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Mô tả các hàm lượng giác
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. _shader_func_radians:
 
@@ -136,14 +123,11 @@ Trigonometric function descriptions
 
     |componentwise|
 
-    Converts a quantity specified in degrees into radians, with the formula
-    ``degrees * (PI / 180)``.
+    Chuyển đổi một đại lượng được chỉ định theo độ sang radian, theo công thức ``degrees * (PI / 180)``.
 
-    :param degrees:
-        The quantity, in degrees, to be converted to radians.
+    :param degrees:Đại lượng, tính theo độ, cần được chuyển đổi sang radian.
 
-    :return:
-        The input ``degrees`` converted to radians.
+    :return:Đầu vào ``degrees`` được chuyển đổi sang radian.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/radians.xhtml
 
@@ -160,14 +144,11 @@ Trigonometric function descriptions
 
     |componentwise|
 
-    Converts a quantity specified in radians into degrees, with the formula
-    ``radians * (180 / PI)``
+    Chuyển đổi một đại lượng được chỉ định theo radian sang độ, theo công thức ``radians * (180 / PI)``
 
-    :param radians:
-        The quantity, in radians, to be converted to degrees.
+    :param radians:Đại lượng, tính theo radian, cần được chuyển đổi sang độ.
 
-    :return:
-        The input ``radians`` converted to degrees.
+    :return:Đầu vào ``radians`` được chuyển đổi sang độ.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/degrees.xhtml
 
@@ -184,13 +165,11 @@ Trigonometric function descriptions
 
     |componentwise|
 
-    Returns the trigonometric sine of ``angle``.
+    Trả về sin lượng giác của ``angle``.
 
-    :param angle:
-        The quantity, in radians, of which to return the sine.
+    :param angle:Đại lượng, tính theo radian, cần trả về sin.
 
-    :return:
-        The sine of ``angle``.
+    :return:Sin của ``angle``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/sin.xhtml
 
@@ -207,13 +186,11 @@ Trigonometric function descriptions
 
     |componentwise|
 
-    Returns the trigonometric cosine of ``angle``.
+    Trả về cosin lượng giác của ``angle``.
 
-    :param angle:
-        The quantity, in radians, of which to return the cosine.
+    :param angle:Đại lượng, tính theo radian, cần trả về cosin.
 
-    :return:
-        The cosine of ``angle``.
+    :return:Cosin của ``angle``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/cos.xhtml
 
@@ -230,13 +207,11 @@ Trigonometric function descriptions
 
     |componentwise|
 
-    Returns the trigonometric tangent of ``angle``.
+    Trả về tang lượng giác của ``angle``.
 
-    :param angle:
-        The quantity, in radians, of which to return the tangent.
+    :param angle:Giá trị, tính bằng radian, cần trả về tiếp tuyến.
 
-    :return:
-        The tangent of ``angle``.
+    :return:Tiếp tuyến của ``angle``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/tan.xhtml
 
@@ -253,14 +228,10 @@ Trigonometric function descriptions
 
     |componentwise|
 
-    Arc sine, or inverse sine.
-    Calculates the angle whose sine is ``x`` and is in the range ``[-PI/2, PI/2]``.
-    The result is undefined if ``x < -1`` or ``x > 1``.
+    Sin cung, hay sin nghịch đảo. Tính góc có sin bằng ``x`` và nằm trong khoảng ``[-PI/2, PI/2]``. Kết quả không xác định nếu ``x < -1`` hoặc ``x > 1``.
 
-    :param x:
-        The value whose arc sine to return.
-    :return:
-        The angle whose trigonometric sine is ``x``.
+    :param x:Giá trị cần trả về sin cung.
+    :return:Góc có sin lượng giác bằng ``x``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/asin.xhtml
 
@@ -277,16 +248,13 @@ Trigonometric function descriptions
 
     |componentwise|
 
-    Arc cosine, or inverse cosine.
-    Calculates the angle whose cosine is ``x`` and is in the range ``[0, PI]``.
+    Cos cung, hay cos nghịch đảo. Tính góc có cos bằng ``x`` và nằm trong khoảng ``[0, PI]``.
 
-    The result is undefined if ``x < -1`` or ``x > 1``.
+    Kết quả không xác định nếu ``x < -1`` hoặc ``x > 1``.
 
-    :param x:
-        The value whose arc cosine to return.
+    :param x:Giá trị cần trả về cos cung.
 
-    :return:
-        The angle whose trigonometric cosine is ``x``.
+    :return:Góc có cos lượng giác bằng ``x``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/acos.xhtml
 
@@ -303,19 +271,14 @@ Trigonometric function descriptions
 
     |componentwise|
 
-    Calculates the arc tangent given a tangent value of ``y/x``.
+    Tính tan cung với giá trị tiếp tuyến là ``y/x``.
 
     .. Note::
-        Because of the sign ambiguity, the function cannot determine with certainty in
-        which quadrant the angle falls only by its tangent value. If you need to know the
-        quadrant, use :ref:`atan(vec_type y, vec_type x)<shader_func_atan2>`.
+        Do sự mơ hồ về dấu, hàm không thể xác định chắc chắn góc nằm ở góc phần tư nào chỉ dựa trên giá trị tiếp tuyến. Nếu cần biết góc phần tư, hãy sử dụng :ref:`atan(vec_type y, vec_type x) <shader_func_atan2>`.
 
-    :param y_over_x:
-        The fraction whose arc tangent to return.
+    :param y_over_x:Phân số cần trả về tan cung.
 
-    :return:
-        The trigonometric arc-tangent of ``y_over_x`` and is
-        in the range ``[-PI/2, PI/2]``.
+    :return:Tan cung lượng giác của ``y_over_x`` và nằm trong khoảng ``[-PI/2, PI/2]``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/atan.xhtml
 
@@ -332,21 +295,15 @@ Trigonometric function descriptions
 
     |componentwise|
 
-    Calculates the arc tangent given a numerator and denominator. The signs of
-    ``y`` and ``x`` are used to determine the quadrant that the angle lies in.
-    The result is undefined if ``x == 0``.
+    Tính tan cung với tử số và mẫu số. Dấu của ``y`` và ``x`` được dùng để xác định góc nằm ở góc phần tư nào. Kết quả không xác định nếu ``x == 0``.
 
-    Equivalent to :ref:`atan2() <class_@GlobalScope_method_atan2>` in GDScript.
+    Tương đương với :ref:`atan2() <class_@GlobalScope_method_atan2>` trong GDScript.
 
-    :param y:
-        The numerator of the fraction whose arc tangent to return.
+    :param y:Tử số của phân số cần trả về tan cung.
 
-    :param x:
-        The denominator of the fraction whose arc tangent to return.
+    :param x:Mẫu số của phân số cần trả về tan cung.
 
-    :return:
-        The trigonometric arc tangent of ``y/x`` and is in
-        the range ``[-PI, PI]``.
+    :return:Tan cung lượng giác của ``y/x`` và nằm trong khoảng ``[-PI, PI]``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/atan.xhtml
 
@@ -363,13 +320,11 @@ Trigonometric function descriptions
 
     |componentwise|
 
-    Calculates the hyperbolic sine using ``(e^x - e^-x)/2``.
+    Tính sin hyperbolic bằng ``(e^x - e^-x)/2``.
 
-    :param x:
-        The value whose hyperbolic sine to return.
+    :param x:Giá trị cần trả về sin hyperbolic.
 
-    :return:
-        The hyperbolic sine of ``x``.
+    :return:Sin hyperbolic của ``x``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/sinh.xhtml
 
@@ -386,13 +341,11 @@ Trigonometric function descriptions
 
     |componentwise|
 
-    Calculates the hyperbolic cosine using ``(e^x + e^-x)/2``.
+    Tính cos hyperbolic bằng ``(e^x + e^-x)/2``.
 
-    :param x:
-        The value whose hyperbolic cosine to return.
+    :param x:Giá trị cần trả về cos hyperbolic.
 
-    :return:
-        The hyperbolic cosine of ``x``.
+    :return:Cos hyperbolic của ``x``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/cosh.xhtml
 
@@ -409,13 +362,11 @@ Trigonometric function descriptions
 
     |componentwise|
 
-    Calculates the hyperbolic tangent using ``sinh(x)/cosh(x)``.
+    Tính tan hyperbolic bằng ``sinh(x)/cosh(x)``.
 
-    :param x:
-        The value whose hyperbolic tangent to return.
+    :param x:Giá trị cần trả về tan hyperbolic.
 
-    :return:
-        The hyperbolic tangent of ``x``.
+    :return:Tan hyperbolic của ``x``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/tanh.xhtml
 
@@ -432,13 +383,11 @@ Trigonometric function descriptions
 
     |componentwise|
 
-    Calculates the arc hyperbolic sine of ``x``, or the inverse of ``sinh``.
+    Tính sin hyperbolic cung của ``x``, hay nghịch đảo của ``sinh``.
 
-    :param x:
-        The value whose arc hyperbolic sine to return.
+    :param x:Giá trị cần trả về sin hyperbolic cung.
 
-    :return:
-        The arc hyperbolic sine of ``x``.
+    :return:Sin hyperbolic cung của ``x``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/asinh.xhtml
 
@@ -455,14 +404,11 @@ Trigonometric function descriptions
 
     |componentwise|
 
-    Calculates the arc hyperbolic cosine of ``x``, or the non-negative inverse of ``cosh``.
-    The result is undefined if ``x < 1``.
+    Tính cos hyperbolic cung của ``x``, hay nghịch đảo không âm của ``cosh``. Kết quả không xác định nếu ``x < 1``.
 
-    :param x:
-        The value whose arc hyperbolic cosine to return.
+    :param x:Giá trị cần trả về cos hyperbolic cung.
 
-    :return:
-        The arc hyperbolic cosine of ``x``.
+    :return:Cos hyperbolic cung của ``x``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/acosh.xhtml
 
@@ -479,14 +425,11 @@ Trigonometric function descriptions
 
     |componentwise|
 
-    Calculates the arc hyperbolic tangent of ``x``, or the inverse of ``tanh``.
-    The result is undefined if ``abs(x) > 1``.
+    Tính tan hyperbolic cung của ``x``, hay nghịch đảo của ``tanh``. Kết quả không xác định nếu ``abs(x) > 1``.
 
-    :param x:
-        The value whose arc hyperbolic tangent to return.
+    :param x:Giá trị cần trả về tan hyperbolic cung.
 
-    :return:
-        The arc hyperbolic tangent of ``x``.
+    :return:Tan hyperbolic cung của ``x``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/atanh.xhtml
 
@@ -504,8 +447,8 @@ Trigonometric function descriptions
 
 .. rst-class:: classref-reftable-group
 
-Exponential and math functions
-------------------------------
+Các hàm mũ và toán học
+----------------------
 
 .. table::
     :class: nowrap-col2
@@ -603,8 +546,8 @@ Exponential and math functions
 
 .. rst-class:: classref-descriptions-group
 
-Exponential and math function descriptions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Mô tả các hàm mũ và toán học
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. _shader_func_pow:
@@ -615,18 +558,15 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Raises ``x`` to the power of ``y``.
+    Nâng ``x`` lên lũy thừa ``y``.
 
-    The result is undefined if ``x < 0`` or  if ``x == 0`` and ``y <= 0``.
+    Kết quả không xác định nếu ``x < 0`` hoặc nếu ``x == 0`` và ``y <= 0``.
 
-    :param x:
-        The value to be raised to the power ``y``.
+    :param x:Giá trị được nâng lên lũy thừa ``y``.
 
-    :param y:
-        The power to which ``x`` will be raised.
+    :param y:Lũy thừa mà ``x`` sẽ được nâng lên.
 
-    :return:
-        The value of ``x`` raised to the ``y`` power.
+    :return:Giá trị của ``x`` được nâng lên lũy thừa ``y``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/pow.xhtml
 
@@ -643,15 +583,13 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Raises ``e`` to the power of ``x``, or the the natural exponentiation.
+    Nâng ``e`` lên lũy thừa ``x``, hay phép lũy thừa tự nhiên.
 
-    Equivalent to ``pow(e, x)``.
+    Tương đương với ``pow(e, x)``.
 
-    :param x:
-        The value to exponentiate.
+    :param x:Giá trị cần lũy thừa hóa.
 
-    :return:
-        The natural exponentiation of ``x``.
+    :return:Phép lũy thừa tự nhiên của ``x``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/exp.xhtml
 
@@ -668,16 +606,14 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Raises ``2`` to the power of ``x``.
+    Nâng ``2`` lên lũy thừa ``x``.
 
-    Equivalent to ``pow(2.0, x)``.
+    Tương đương với ``pow(2.0, x)``.
 
 
-    :param x:
-        The value of the power to which ``2`` will be raised.
+    :param x:Giá trị của lũy thừa mà ``2`` sẽ được nâng lên.
 
-    :return:
-        ``2`` raised to the power of ``x``.
+    :return:``2`` được nâng lên lũy thừa ``x``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/exp2.xhtml
 
@@ -694,14 +630,11 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Returns the natural logarithm of ``x``, i.e. the value ``y`` which satisfies ``x == pow(e, y)``.
-    The result is undefined if ``x <= 0``.
+    Trả về logarit tự nhiên của ``x``, tức là giá trị ``y`` thỏa mãn ``x == pow(e, y)``. Kết quả không xác định nếu ``x <= 0``.
 
-    :param x:
-        The value of which to take the natural logarithm.
+    :param x:Giá trị cần lấy logarit tự nhiên.
 
-    :return:
-        The natural logarithm of ``x``.
+    :return:Logarit tự nhiên của ``x``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/log.xhtml
 
@@ -718,14 +651,11 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Returns the base-2 logarithm of ``x``, i.e. the value ``y`` which satisfies ``x == pow(2, y)``.
-    The result is undefined if ``x <= 0``.
+    Trả về logarit cơ số 2 của ``x``, tức là giá trị ``y`` thỏa mãn ``x == pow(2, y)``. Kết quả không xác định nếu ``x <= 0``.
 
-    :param x:
-        The value of which to take the base-2 logarithm.
+    :param x:Giá trị cần lấy logarit cơ số 2.
 
-    :return:
-        The base-2 logarithm of ``x``.
+    :return:Logarit cơ số 2 của ``x``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/log2.xhtml
 
@@ -742,14 +672,11 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Returns the square root of ``x``.
-    The result is undefined if ``x < 0``.
+    Trả về căn bậc hai của ``x``. Kết quả không xác định nếu ``x < 0``.
 
-    :param x:
-        The value of which to take the square root.
+    :param x:Giá trị cần lấy căn bậc hai.
 
-    :return:
-        The square root of ``x``.
+    :return:Căn bậc hai của ``x``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/sqrt.xhtml
 
@@ -766,14 +693,11 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Returns the inverse of the square root of ``x``, or ``1.0 / sqrt(x)``.
-    The result is undefined if ``x <= 0``.
+    Trả về nghịch đảo của căn bậc hai của ``x``, hoặc ``1.0 / sqrt(x)``. Kết quả không xác định nếu ``x <= 0``.
 
-    :param x:
-        The value of which to take the inverse of the square root.
+    :param x:Giá trị cần lấy nghịch đảo căn bậc hai.
 
-    :return:
-        The inverse of the square root of ``x``.
+    :return:Nghịch đảo của căn bậc hai của ``x``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/inversesqrt.xhtml
 
@@ -794,13 +718,11 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Returns the absolute value of ``x``. Returns ``x`` if ``x`` is positive, otherwise returns ``-1 * x``.
+    Trả về giá trị tuyệt đối của ``x``. Trả về ``x`` nếu ``x`` dương, nếu không thì trả về ``-1 * x``.
 
-    :param x:
-        The value of which to return the absolute.
+    :param x:Giá trị cần trả về giá trị tuyệt đối.
 
-    :return:
-        The absolute value of ``x``.
+    :return:Giá trị tuyệt đối của ``x``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/abs.xhtml
 
@@ -821,13 +743,11 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Returns ``-1`` if ``x < 0``, ``0`` if ``x == 0``, and ``1`` if ``x > 0``.
+    Trả về ``-1`` nếu ``x < 0``, ``0`` nếu ``x == 0``, và ``1`` nếu ``x > 0``.
 
-    :param x:
-        The value from which to extract the sign.
+    :param x:Giá trị cần lấy dấu.
 
-    :return:
-        The sign of ``x``.
+    :return:Dấu của ``x``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/sign.xhtml
 
@@ -844,13 +764,11 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Returns a value equal to the nearest integer that is less than or equal to ``x``.
+    Trả về một giá trị bằng số nguyên gần nhất nhỏ hơn hoặc bằng ``x``.
 
-    :param x:
-        The value to floor.
+    :param x:Giá trị cần làm tròn xuống.
 
-    :return:
-        The nearest integer that is less than or equal to ``x``.
+    :return:Số nguyên gần nhất nhỏ hơn hoặc bằng ``x``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/floor.xhtml
 
@@ -867,18 +785,14 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Rounds ``x`` to the nearest integer.
+    Làm tròn ``x`` đến số nguyên gần nhất.
 
     .. note::
-        Rounding of values with a fractional part of ``0.5`` is implementation-dependent.
-        This includes the possibility that ``round(x)`` returns the same value as
-        ``roundEven(x)`` for all values of ``x``.
+        Việc làm tròn các giá trị có phần thập phân là ``0.5`` phụ thuộc vào cách triển khai. Điều này bao gồm khả năng ``round(x)`` trả về cùng giá trị với ``roundEven(x)`` cho mọi giá trị của ``x``.
 
-    :param x:
-        The value to round.
+    :param x:Giá trị cần làm tròn.
 
-    :return:
-        The rounded value.
+    :return:Giá trị đã làm tròn.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/round.xhtml
 
@@ -895,15 +809,11 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Rounds ``x`` to the nearest integer. A value with a fractional part of ``0.5``
-    will always round toward the nearest even integer.
-    For example, both ``3.5`` and ``4.5`` will round to ``4.0``.
+    Làm tròn ``x`` đến số nguyên gần nhất. Một giá trị có phần thập phân là ``0.5`` sẽ luôn được làm tròn về số nguyên chẵn gần nhất. Ví dụ, cả ``3.5`` và ``4.5`` đều được làm tròn thành ``4.0``.
 
-    :param x:
-        The value to round.
+    :param x:Giá trị cần làm tròn.
 
-    :return:
-        The rounded value.
+    :return:Giá trị đã làm tròn.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/roundEven.xhtml
 
@@ -920,14 +830,11 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Truncates ``x``. Returns a value equal to the nearest integer to ``x`` whose
-    absolute value is not larger than the absolute value of ``x``.
+    Cắt bỏ phần thập phân của ``x``. Trả về một giá trị bằng số nguyên gần nhất với ``x`` có giá trị tuyệt đối không lớn hơn giá trị tuyệt đối của ``x``.
 
-    :param x:
-        The value to evaluate.
+    :param x:Giá trị cần đánh giá.
 
-    :return:
-        The truncated value.
+    :return:Giá trị sau khi cắt bỏ phần thập phân.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/trunc.xhtml
 
@@ -944,13 +851,11 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Returns a value equal to the nearest integer that is greater than or equal to ``x``.
+    Trả về một giá trị bằng số nguyên gần nhất lớn hơn hoặc bằng ``x``.
 
-    :param x:
-        The value to evaluate.
+    :param x:Giá trị cần đánh giá.
 
-    :return:
-        The ceiling-ed value.
+    :return:Giá trị làm tròn lên.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/ceil.xhtml
 
@@ -967,15 +872,13 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Returns the fractional part of ``x``.
+    Trả về phần thập phân của ``x``.
 
-    This is calculated as ``x - floor(x)``.
+    Giá trị này được tính là ``x - floor(x)``.
 
-    :param x:
-        The value to evaluate.
+    :param x:Giá trị cần đánh giá.
 
-    :return:
-        The fractional part of ``x``.
+    :return:Phần thập phân của ``x``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/fract.xhtml
 
@@ -996,16 +899,13 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Returns the value of ``x modulo y``.
-    This is also sometimes called the remainder.
+    Trả về giá trị của ``x modulo y``. Giá trị này đôi khi còn được gọi là phần dư.
 
-    This is computed as ``x - y * floor(x/y)``.
+    Giá trị này được tính là ``x - y * floor(x/y)``.
 
-    :param x:
-        The value to evaluate.
+    :param x:Giá trị cần đánh giá.
 
-    :return:
-        The value of ``x modulo y``.
+    :return:Giá trị của ``x modulo y``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/mod.xhtml
 
@@ -1022,19 +922,15 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Separates a floating-point value ``x`` into its integer and fractional parts.
+    Tách giá trị dấu phẩy động ``x`` thành phần nguyên và phần thập phân.
 
-    The fractional part of the number is returned from the function.
-    The integer part (as a floating-point quantity) is returned in the output parameter ``i``.
+    Phần thập phân của số được hàm trả về. Phần nguyên (dưới dạng giá trị dấu phẩy động) được trả về trong tham số đầu ra ``i``.
 
-    :param x:
-        The value to separate.
+    :param x:Giá trị cần tách.
 
-    :param out i:
-        A variable that receives the integer part of ``x``.
+    :param out i:Biến nhận phần nguyên của ``x``.
 
-    :return:
-        The fractional part of the number.
+    :return:Phần thập phân của số.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/modf.xhtml
 
@@ -1071,18 +967,15 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Returns the minimum of two values ``a`` and ``b``.
+    Trả về giá trị nhỏ nhất trong hai giá trị ``a`` và ``b``.
 
-    Returns ``b`` if ``b < a``, otherwise returns ``a``.
+    Trả về ``b`` nếu ``b < a``, nếu không thì trả về ``a``.
 
-    :param a:
-        The first value to compare.
+    :param a:Giá trị đầu tiên cần so sánh.
 
-    :param b:
-        The second value to compare.
+    :param b:Giá trị thứ hai cần so sánh.
 
-    :return:
-        The minimum value.
+    :return:Giá trị nhỏ nhất.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/min.xhtml
 
@@ -1119,18 +1012,15 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Returns the maximum of two values ``a`` and ``b``.
+    Trả về giá trị lớn nhất trong hai giá trị ``a`` và ``b``.
 
-    It returns ``b`` if ``b > a``, otherwise it returns ``a``.
+    Trả về ``b`` nếu ``b > a``, nếu không thì trả về ``a``.
 
-    :param a:
-        The first value to compare.
+    :param a:Giá trị đầu tiên cần so sánh.
 
-    :param b:
-        The second value to compare.
+    :param b:Giá trị thứ hai cần so sánh.
 
-    :return:
-        The maximum value.
+    :return:Giá trị lớn nhất.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/max.xhtml
 
@@ -1167,21 +1057,17 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Returns the value of ``x`` constrained to the range ``minVal`` to ``maxVal``.
+    Trả về giá trị của ``x`` bị giới hạn trong khoảng từ ``minVal`` đến ``maxVal``.
 
-    The returned value is computed as ``min(max(x, minVal), maxVal)``.
+    Giá trị trả về được tính là ``min(max(x, minVal), maxVal)``.
 
-    :param x:
-        The value to constrain.
+    :param x:Giá trị cần giới hạn.
 
-    :param minVal:
-        The lower end of the range into which to constrain ``x``.
+    :param minVal:Đầu dưới của khoảng dùng để giới hạn ``x``.
 
-    :param maxVal:
-        The upper end of the range into which to constrain ``x``.
+    :param maxVal:Đầu trên của khoảng dùng để giới hạn ``x``.
 
-    :return:
-        The clamped value.
+    :return:Giá trị đã được giới hạn.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/clamp.xhtml
 
@@ -1202,23 +1088,19 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Performs a linear interpolation between ``a`` and ``b`` using ``c`` to weight between them.
+    Thực hiện nội suy tuyến tính giữa ``a`` và ``b``, sử dụng ``c`` để xác định trọng số giữa chúng.
 
-    Computed as ``a * (1 - c) + b * c``.
+    Được tính là ``a * (1 - c) + b * c``.
 
-    Equivalent to :ref:`lerp() <class_@GlobalScope_method_lerp>` in GDScript.
+    Tương đương với :ref:`lerp() <class_@GlobalScope_method_lerp>` trong GDScript.
 
-    :param a:
-        The start of the range in which to interpolate.
+    :param a:Điểm bắt đầu của khoảng cần nội suy.
 
-    :param b:
-        The end of the range in which to interpolate.
+    :param b:Điểm kết thúc của khoảng cần nội suy.
 
-    :param c:
-        The value to use to interpolate between ``a`` and ``b``.
+    :param c:Giá trị dùng để nội suy giữa ``a`` và ``b``.
 
-    :return:
-        The interpolated value.
+    :return:Giá trị đã nội suy.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/mix.xhtml
 
@@ -1231,25 +1113,17 @@ Exponential and math function descriptions
 
 |vec_type| **mix**\ (\ |vec_type| a, |vec_type| b, |vec_bool_type| c) :ref:`🔗<shader_func_mix>`
 
-    Selects either value ``a`` or value ``b`` based on the value of ``c``.
-    For a component of ``c`` that is false, the corresponding component of ``a`` is returned.
-    For a component of ``c`` that is true, the corresponding component of ``b`` is returned.
-    Components of ``a`` and ``b`` that are not selected are allowed to be invalid floating-point values and will have no effect on the results.
+    Chọn giá trị ``a`` hoặc giá trị ``b`` dựa trên giá trị của ``c``. Đối với một thành phần của ``c`` có giá trị false, thành phần tương ứng của ``a`` được trả về. Đối với một thành phần của ``c`` có giá trị true, thành phần tương ứng của ``b`` được trả về. Các thành phần của ``a`` và ``b`` không được chọn có thể là các giá trị dấu phẩy động không hợp lệ và sẽ không ảnh hưởng đến kết quả.
 
-    If ``a``, ``b``, and ``c`` are vector types the operation is performed :ref:`component-wise <shading_componentwise>`.
-    For example, ``mix(vec2(42, 314), vec2(9.8, 6e23), bvec2(true, false)))`` will return ``vec2(9.8, 314)``.
+    Nếu ``a``, ``b`` và ``c`` là các kiểu vector, phép toán được thực hiện :ref:`theo từng thành phần <shading_componentwise>`. Ví dụ, ``mix(vec2(42, 314), vec2(9.8, 6e23), bvec2(true, false)))`` sẽ trả về ``vec2(9.8, 314)``.
 
-    :param a:
-        Value returned when ``c`` is false.
+    :param a:Giá trị được trả về khi ``c`` là false.
 
-    :param b:
-        Value returned when ``c`` is true.
+    :param b:Giá trị được trả về khi ``c`` là true.
 
-    :param c:
-        The value used to select between ``a`` and ``b``.
+    :param c:Giá trị được dùng để chọn giữa ``a`` và ``b``.
 
-    :return:
-        The interpolated value.
+    :return:Giá trị đã nội suy.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/mix.xhtml
 
@@ -1266,30 +1140,23 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Performs, where possible, a fused multiply-add operation, returning ``a * b + c``. In use cases where the
-    return value is eventually consumed by a variable declared as precise:
+    Thực hiện phép toán fused multiply-add nếu có thể, trả về ``a * b + c``. Trong các trường hợp sử dụng mà giá trị trả về cuối cùng được một biến khai báo là precise sử dụng:
 
-     - ``fma()`` is considered a single operation, whereas the expression ``a * b + c`` consumed by a variable declared as precise is considered two operations.
+     - ``fma()`` được xem là một phép toán đơn, trong khi biểu thức ``a * b + c`` được một biến khai báo là precise sử dụng được xem là hai phép toán.
 
-     - The precision of ``fma()`` can differ from the precision of the expression ``a * b + c``.
+     - Độ chính xác của ``fma()`` có thể khác với độ chính xác của biểu thức ``a * b + c``.
 
-     - ``fma()`` will be computed with the same precision as any other ``fma()`` consumed by a precise variable,
-       giving invariant results for the same input values of a, b and c.
+     - ``fma()`` sẽ được tính với cùng độ chính xác như bất kỳ ``fma()`` nào khác được một biến precise sử dụng, cho kết quả bất biến với cùng các giá trị đầu vào của a, b và c.
 
-    Otherwise, in the absence of precise consumption, there are no special constraints on the number of operations
-    or difference in precision between ``fma()`` and the expression ``a * b + c``.
+    Nếu không có việc sử dụng bởi precise, sẽ không có ràng buộc đặc biệt nào về số lượng phép toán hoặc sự khác biệt về độ chính xác giữa ``fma()`` và biểu thức ``a * b + c``.
 
-    :param a:
-        The first value to be multiplied.
+    :param a:Giá trị đầu tiên được nhân.
 
-    :param b:
-        The second value to be multiplied.
+    :param b:Giá trị thứ hai được nhân.
 
-    :param c:
-        The value to be added to the result.
+    :param c:Giá trị được cộng vào kết quả.
 
-    :return:
-        The value of ``a * b + c``.
+    :return:Giá trị của ``a * b + c``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/fma.xhtml
 
@@ -1310,19 +1177,15 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Generates a step function by comparing b to a.
+    Tạo một hàm step bằng cách so sánh b với a.
 
-    Equivalent to ``if (b < a) { return 0.0; } else { return 1.0; }``.
-    For element i of the return value, 0.0 is returned if b[i] < a[i], and 1.0 is returned otherwise.
+    Tương đương với ``if (b < a) { return 0.0; } else { return 1.0; }``. Đối với phần tử i của giá trị trả về, 0.0 được trả về nếu b[i] < a[i], và 1.0 được trả về trong các trường hợp khác.
 
-    :param a:
-        The location of the edge of the step function.
+    :param a:Vị trí của cạnh của hàm step.
 
-    :param b:
-        The value to be used to generate the step function.
+    :param b:Giá trị được dùng để tạo hàm step.
 
-    :return:
-        ``0.0`` or ``1.0``.
+    :return:``0.0`` hoặc ``1.0``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/step.xhtml
 
@@ -1343,10 +1206,9 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Performs smooth Hermite interpolation between ``0`` and ``1`` when a < c < b.
-    This is useful in cases where a threshold function with a smooth transition is desired.
+    Thực hiện phép nội suy Hermite mượt giữa ``0`` và ``1`` khi a < c < b. Điều này hữu ích trong các trường hợp cần một hàm ngưỡng có chuyển tiếp mượt.
 
-    Smoothstep is equivalent to:
+    Smoothstep tương đương với:
 
     ::
 
@@ -1354,19 +1216,15 @@ Exponential and math function descriptions
         t = clamp((c - a) / (b - a), 0.0, 1.0);
         return t * t * (3.0 - 2.0 * t);
 
-    Results are undefined if ``a >= b``.
+    Kết quả không được xác định nếu ``a >= b``.
 
-    :param a:
-        The value of the lower edge of the Hermite function.
+    :param a:Giá trị của cạnh dưới của hàm Hermite.
 
-    :param b:
-        The value of the upper edge of the Hermite function.
+    :param b:Giá trị của cạnh trên của hàm Hermite.
 
-    :param c:
-        The source value for interpolation.
+    :param c:Giá trị nguồn dùng cho phép nội suy.
 
-    :return:
-        The interpolated value.
+    :return:Giá trị đã nội suy.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/smoothstep.xhtml
 
@@ -1383,14 +1241,11 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    For each element i of the result, returns ``true`` if x[i] is positive
-    or negative floating-point NaN (Not a Number) and false otherwise.
+    Đối với mỗi phần tử i của kết quả, trả về ``true`` nếu x[i] là NaN dấu phẩy động dương hoặc âm (Not a Number), và false trong các trường hợp khác.
 
-    :param x:
-        The value to test for NaN.
+    :param x:Giá trị cần kiểm tra NaN.
 
-    :return:
-        ``true`` or ``false``.
+    :return:``true`` hoặc ``false``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/isnan.xhtml
 
@@ -1407,14 +1262,11 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    For each element i of the result, returns ``true`` if x[i] is positive or negative
-    floating-point infinity and false otherwise.
+    Đối với mỗi phần tử i của kết quả, trả về ``true`` nếu x[i] là vô cực dấu phẩy động dương hoặc âm, và false trong các trường hợp khác.
 
-    :param x:
-        The value to test for infinity.
+    :param x:Giá trị cần kiểm tra vô cực.
 
-    :return:
-        ``true`` or ``false``.
+    :return:``true`` hoặc ``false``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/isinf.xhtml
 
@@ -1431,15 +1283,13 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Returns the encoding of the floating-point parameters as ``int``.
+    Trả về phần mã hóa của các tham số dấu phẩy động dưới dạng ``int``.
 
-    The floating-point bit-level representation is preserved.
+    Biểu diễn cấp bit dấu phẩy động được bảo toàn.
 
-    :param x:
-        The value whose floating-point encoding to return.
+    :param x:Giá trị có phần mã hóa dấu phẩy động cần được trả về.
 
-    :return:
-        The floating-point encoding of ``x``.
+    :return:Phần mã hóa dấu phẩy động của ``x``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/floatBitsToInt.xhtml
 
@@ -1456,15 +1306,13 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Returns the encoding of the floating-point parameters as ``uint``.
+    Trả về phần mã hóa của các tham số dấu phẩy động dưới dạng ``uint``.
 
-    The floating-point bit-level representation is preserved.
+    Biểu diễn cấp bit dấu phẩy động được bảo toàn.
 
-    :param x:
-        The value whose floating-point encoding to return.
+    :param x:Giá trị có phần mã hóa dấu phẩy động cần được trả về.
 
-    :return:
-        The floating-point encoding of ``x``.
+    :return:Phần mã hóa dấu phẩy động của ``x``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/floatBitsToInt.xhtml
 
@@ -1481,18 +1329,15 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Converts a bit encoding to a floating-point value. Opposite of `floatBitsToInt<shader_func_floatBitsToInt>`
+    Chuyển đổi một phần mã hóa bit thành giá trị dấu phẩy động. Ngược lại với `floatBitsToInt<shader_func_floatBitsToInt>`
 
-    If the encoding of a ``NaN`` is passed in ``x``, it will not signal and the resulting value will be undefined.
+    Nếu phần mã hóa của một ``NaN`` được truyền vào ``x``, nó sẽ không phát tín hiệu và giá trị kết quả sẽ không được xác định.
 
-    If the encoding of a floating-point infinity is passed in parameter ``x``, the resulting floating-point value is
-    the corresponding (positive or negative) floating-point infinity.
+    Nếu phần mã hóa của một vô cực dấu phẩy động được truyền vào tham số ``x``, giá trị dấu phẩy động kết quả là vô cực dấu phẩy động tương ứng (dương hoặc âm).
 
-    :param x:
-        The bit encoding to return as a floating-point value.
+    :param x:Phần mã hóa bit cần được trả về dưới dạng giá trị dấu phẩy động.
 
-    :return:
-        A floating-point value.
+    :return:Một giá trị dấu phẩy động.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/intBitsToFloat.xhtml
 
@@ -1509,18 +1354,15 @@ Exponential and math function descriptions
 
     |componentwise|
 
-    Converts a bit encoding to a floating-point value. Opposite of `floatBitsToUint<shader_func_floatBitsToUint>`
+    Chuyển đổi một phần mã hóa bit thành giá trị dấu phẩy động. Ngược lại với `floatBitsToUint<shader_func_floatBitsToUint>`
 
-    If the encoding of a ``NaN`` is passed in ``x``, it will not signal and the resulting value will be undefined.
+    Nếu phần mã hóa của một ``NaN`` được truyền vào ``x``, nó sẽ không phát tín hiệu và giá trị kết quả sẽ không được xác định.
 
-    If the encoding of a floating-point infinity is passed in parameter ``x``, the resulting floating-point value is
-    the corresponding (positive or negative) floating-point infinity.
+    Nếu phần mã hóa của một vô cực dấu phẩy động được truyền vào tham số ``x``, giá trị dấu phẩy động kết quả là vô cực dấu phẩy động tương ứng (dương hoặc âm).
 
-    :param x:
-        The bit encoding to return as a floating-point value.
+    :param x:Phần mã hóa bit cần được trả về dưới dạng giá trị dấu phẩy động.
 
-    :return:
-        A floating-point value.
+    :return:Một giá trị dấu phẩy động.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/intBitsToFloat.xhtml
 
@@ -1549,46 +1391,46 @@ Exponential and math function descriptions
 
 .. rst-class:: classref-reftable-group
 
-Geometric functions
--------------------
+Các hàm hình học
+----------------
 
 .. table::
     :class: nowrap-col2
     :widths: auto
 
-    +------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------+
-    | float      | :ref:`length<shader_func_length>`\ (\ |vec_type| x)                                           | Vector length.                                            |
-    +------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------+
-    | float      | :ref:`distance<shader_func_distance>`\ (\ |vec_type| a, |vec_type| b)                         | Distance between vectors i.e ``length(a - b)``.           |
-    +------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------+
-    | float      | :ref:`dot<shader_func_dot>`\ (\ |vec_type| a, |vec_type| b)                                   | Dot product.                                              |
-    +------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------+
-    | vec3       | :ref:`cross<shader_func_cross>`\ (\ vec3 a, vec3 b)                                           | Cross product.                                            |
-    +------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------+
-    | |vec_type| | :ref:`normalize<shader_func_normalize>`\ (\ |vec_type| x)                                     | Normalize to unit length.                                 |
-    +------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------+
-    | vec3       | :ref:`reflect<shader_func_reflect>`\ (\ vec3 I, vec3 N)                                       | Reflect.                                                  |
-    +------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------+
-    | vec3       | :ref:`refract<shader_func_refract>`\ (\ vec3 I, vec3 N, float eta)                            | Refract.                                                  |
-    +------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------+
-    | |vec_type| | :ref:`faceforward<shader_func_faceforward>`\ (\ |vec_type| N, |vec_type| I, |vec_type| Nref)  | If ``dot(Nref, I) < 0``, returns ``N``, otherwise ``-N``. |
-    +------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------+
-    | |mat_type| | :ref:`matrixCompMult<shader_func_matrixCompMult>`\ (\ |mat_type| x, |mat_type| y)             | Matrix component multiplication.                          |
-    +------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------+
-    | |mat_type| | :ref:`outerProduct<shader_func_outerProduct>`\ (\ |vec_type| column, |vec_type| row)          | Matrix outer product.                                     |
-    +------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------+
-    | |mat_type| | :ref:`transpose<shader_func_transpose>`\ (\ |mat_type| m)                                     | Transpose matrix.                                         |
-    +------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------+
-    | float      | :ref:`determinant<shader_func_determinant>`\ (\ |mat_type| m)                                 | Matrix determinant.                                       |
-    +------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------+
-    | |mat_type| | :ref:`inverse<shader_func_inverse>`\ (\ |mat_type| m)                                         | Inverse matrix.                                           |
-    +------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------+
+    +------------+-----------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
+    | float      | :ref:`length <shader_func_length>`\ (\ |vec_type| x)                                          | Độ dài vector.                                                       |
+    +------------+-----------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
+    | float      | :ref:`distance <shader_func_distance>`\ (\ |vec_type| a, |vec_type| b)                        | Khoảng cách giữa các vector, tức là ``length(a - b)``.               |
+    +------------+-----------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
+    | float      | :ref:`dot <shader_func_dot>`\ (\ |vec_type| a, |vec_type| b)                                  | Tích vô hướng.                                                       |
+    +------------+-----------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
+    | vec3       | :ref:`cross <shader_func_cross>`\ (\ vec3 a, vec3 b)                                          | Tích có hướng.                                                       |
+    +------------+-----------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
+    | |vec_type| | :ref:`normalize <shader_func_normalize>`\ (\ |vec_type| x)                                    | Chuẩn hóa về độ dài đơn vị.                                          |
+    +------------+-----------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
+    | vec3       | :ref:`reflect <shader_func_reflect>`\ (\ vec3 I, vec3 N)                                      | Phản xạ.                                                             |
+    +------------+-----------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
+    | vec3       | :ref:`refract <shader_func_refract>`\ (\ vec3 I, vec3 N, float eta)                           | Khúc xạ.                                                             |
+    +------------+-----------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
+    | |vec_type| | :ref:`faceforward <shader_func_faceforward>`\ (\ |vec_type| N, |vec_type| I, |vec_type| Nref) | Nếu ``dot(Nref, I) < 0``, trả về ``N``; nếu không thì trả về ``-N``. |
+    +------------+-----------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
+    | |mat_type| | :ref:`matrixCompMult <shader_func_matrixCompMult>`\ (\ |mat_type| x, |mat_type| y)            | Phép nhân từng thành phần của ma trận.                               |
+    +------------+-----------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
+    | |mat_type| | :ref:`outerProduct <shader_func_outerProduct>`\ (\ |vec_type| column, |vec_type| row)         | Tích ngoài của ma trận.                                              |
+    +------------+-----------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
+    | |mat_type| | :ref:`transpose <shader_func_transpose>`\ (\ |mat_type| m)                                    | Ma trận chuyển vị.                                                   |
+    +------------+-----------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
+    | float      | :ref:`determinant <shader_func_determinant>`\ (\ |mat_type| m)                                | Định thức ma trận.                                                   |
+    +------------+-----------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
+    | |mat_type| | :ref:`inverse <shader_func_inverse>`\ (\ |mat_type| m)                                        | Ma trận nghịch đảo.                                                  |
+    +------------+-----------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
 
 
 .. rst-class:: classref-descriptions-group
 
-Geometric function descriptions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Mô tả các hàm hình học
+~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. _shader_func_length:
@@ -1597,14 +1439,11 @@ Geometric function descriptions
 
 float **length**\ (\ |vec_type| x) :ref:`🔗<shader_func_length>`
 
-    Returns the length of the vector, i.e.,
-    ``sqrt(x[0] * x[0] + x[1] * x[1] + ... + x[n] * x[n])``
+    Trả về độ dài của vector, tức là ``sqrt(x[0] * x[0] + x[1] * x[1] + ... + x[n] * x[n])``
 
-    :param x:
-        The vector
+    :param x:Vector
 
-    :return:
-        The length of the vector.
+    :return:Độ dài của vector.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/length.xhtml
 
@@ -1619,17 +1458,13 @@ float **length**\ (\ |vec_type| x) :ref:`🔗<shader_func_length>`
 
 float **distance**\ (\ |vec_type| a, |vec_type| b) :ref:`🔗<shader_func_distance>`
 
-    Returns the distance between the two points ``a`` and ``b``, i.e.,
-    ``length(b - a);``
+    Trả về khoảng cách giữa hai điểm ``a`` và ``b``, tức là ``length(b - a);``
 
-    :param a:
-        The first point.
+    :param a:Điểm thứ nhất.
 
-    :param b:
-        The second point.
+    :param b:Điểm thứ hai.
 
-    :return:
-        The scalar distance between the points
+    :return:Khoảng cách vô hướng giữa các điểm
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/distance.xhtml
 
@@ -1644,17 +1479,13 @@ float **distance**\ (\ |vec_type| a, |vec_type| b) :ref:`🔗<shader_func_distan
 
 float **dot**\ (\ |vec_type| a, |vec_type| b) :ref:`🔗<shader_func_dot>`
 
-    Returns the dot product of two vectors, ``a`` and ``b``, i.e.,
-    ``a.x * b.x + a.y * b.y + ...``
+    Trả về tích vô hướng của hai vector, ``a`` và ``b``, tức là ``a.x * b.x + a.y * b.y + ...``
 
-    :param a:
-        The first vector.
+    :param a:Vector thứ nhất.
 
-    :param b:
-        The second vector.
+    :param b:Vector thứ hai.
 
-    :return:
-        The dot product.
+    :return:Tích vô hướng.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/dot.xhtml
 
@@ -1669,7 +1500,7 @@ float **dot**\ (\ |vec_type| a, |vec_type| b) :ref:`🔗<shader_func_dot>`
 
 vec3 **cross**\ (\ vec3 a, vec3 b) :ref:`🔗<shader_func_cross>`
 
-    Returns the cross product of two vectors, i.e.:
+    Trả về tích có hướng của hai vector, tức là:
 
     .. code-block:: glsl
 
@@ -1677,14 +1508,11 @@ vec3 **cross**\ (\ vec3 a, vec3 b) :ref:`🔗<shader_func_cross>`
               a.z * b.x - b.z * a.x,
               a.x * b.y - b.x * a.y)
 
-    :param a:
-        The first vector.
+    :param a:Vector thứ nhất.
 
-    :param b:
-        The second vector.
+    :param b:Vector thứ hai.
 
-    :return:
-        The cross product of ``a`` and ``b``.
+    :return:Tích có hướng của ``a`` và ``b``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/cross.xhtml
 
@@ -1699,13 +1527,11 @@ vec3 **cross**\ (\ vec3 a, vec3 b) :ref:`🔗<shader_func_cross>`
 
 |vec_type| **normalize**\ (\ |vec_type| x) :ref:`🔗<shader_func_normalize>`
 
-    Returns a vector with the same direction as ``x`` but with length ``1.0``.
+    Trả về một vector có cùng hướng với ``x`` nhưng có độ dài ``1.0``.
 
-    :param x:
-        The vector to normalize.
+    :param x:Vector cần chuẩn hóa.
 
-    :return:
-        The normalized vector.
+    :return:Vector đã chuẩn hóa.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/normalize.xhtml
 
@@ -1720,21 +1546,18 @@ vec3 **cross**\ (\ vec3 a, vec3 b) :ref:`🔗<shader_func_cross>`
 
 vec3 **reflect**\ (\ vec3 I, vec3 N) :ref:`🔗<shader_func_reflect>`
 
-    Calculate the reflection direction for an incident vector.
+    Tính hướng phản xạ của một vector tới.
 
-    For a given incident vector ``I`` and surface normal ``N`` reflect returns the reflection direction calculated as ``I - 2.0 * dot(N, I) * N``.
+    Với vector tới ``I`` và pháp tuyến bề mặt ``N`` đã cho, reflect trả về hướng phản xạ được tính bằng ``I - 2.0 * dot(N, I) * N``.
 
     .. Note::
-        ``N`` should be normalized in order to achieve the desired result.
+        ``N`` phải được chuẩn hóa để đạt được kết quả mong muốn.
 
-    :param I:
-        The incident vector.
+    :param I:Vector tới.
 
-    :param N:
-        The normal vector.
+    :param N:Vector pháp tuyến.
 
-    :return:
-        The reflection vector.
+    :return:Vector phản xạ.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/reflect.xhtml
 
@@ -1749,34 +1572,30 @@ vec3 **reflect**\ (\ vec3 I, vec3 N) :ref:`🔗<shader_func_reflect>`
 
 vec3 **refract**\ (\ vec3 I, vec3 N, float eta) :ref:`🔗<shader_func_refract>`
 
-    Calculate the refraction direction for an incident vector.
+    Tính hướng khúc xạ cho một vector tới.
 
-    For a given incident vector ``I``, surface normal ``N`` and ratio of indices of refraction, ``eta``, refract returns the refraction vector, ``R``.
+    Với một vector tới ``I``, pháp tuyến bề mặt ``N`` và tỷ số chiết suất ``eta``, refract trả về vector khúc xạ ``R``.
 
-    ``R`` is calculated as:
+    ``R`` được tính như sau:
 
     .. code-block:: glsl
 
         k = 1.0 - eta * eta * (1.0 - dot(N, I) * dot(N, I));
         if (k < 0.0)
-            R = genType(0.0);       // or genDType(0.0)
+            R = genType(0.0);       // hoặc genDType(0.0)
         else
             R = eta * I - (eta * dot(N, I) + sqrt(k)) * N;
 
     .. Note::
-        The input parameters I and N should be normalized in order to achieve the desired result.
+        Các tham số đầu vào I và N phải được chuẩn hóa để đạt được kết quả mong muốn.
 
-    :param I:
-        The incident vector.
+    :param I:Vector tới.
 
-    :param N:
-        The normal vector.
+    :param N:Vector pháp tuyến.
 
-    :param eta:
-        The ratio of indices of refraction.
+    :param eta:Tỷ số chiết suất.
 
-    :return:
-        The refraction vector.
+    :return:Vector khúc xạ.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/refract.xhtml
 
@@ -1791,22 +1610,17 @@ vec3 **refract**\ (\ vec3 I, vec3 N, float eta) :ref:`🔗<shader_func_refract>`
 
 |vec_type| **faceforward**\ (\ |vec_type| N, |vec_type| I, |vec_type| Nref) :ref:`🔗<shader_func_faceforward>`
 
-    Returns a vector pointing in the same direction as another.
+    Trả về một vector hướng cùng hướng với một vector khác.
 
-    Orients a vector to point away from a surface as defined by its normal.
-    If ``dot(Nref, I) < 0`` faceforward returns ``N``, otherwise it returns ``-N``.
+    Định hướng một vector để hướng ra xa bề mặt theo định nghĩa của pháp tuyến bề mặt. Nếu ``dot(Nref, I) < 0`` faceforward trả về ``N``, nếu không, hàm trả về ``-N``.
 
-    :param N:
-        The vector to orient.
+    :param N:Vector cần định hướng.
 
-    :param I:
-        The incident vector.
+    :param I:Vector tới.
 
-    :param Nref:
-        The reference vector.
+    :param Nref:Vector tham chiếu.
 
-    :return:
-        The oriented vector.
+    :return:Vector đã định hướng.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/faceforward.xhtml
 
@@ -1821,20 +1635,15 @@ vec3 **refract**\ (\ vec3 I, vec3 N, float eta) :ref:`🔗<shader_func_refract>`
 
 |mat_type| **matrixCompMult**\ (\ |mat_type| x, |mat_type| y) :ref:`🔗<shader_func_matrixCompMult>`
 
-    Perform a :ref:`component-wise <shading_componentwise>` multiplication of two matrices.
+    Thực hiện phép nhân :ref:`theo từng thành phần <shading_componentwise>` của hai ma trận.
 
-    Performs a component-wise multiplication of two matrices, yielding a result
-    matrix where each component, ``result[i][j]`` is computed as the scalar
-    product of ``x[i][j]`` and ``y[i][j]``.
+    Thực hiện phép nhân hai ma trận theo từng thành phần, tạo ra một ma trận kết quả trong đó mỗi thành phần, ``result[i][j]``, được tính là tích vô hướng của ``x[i][j]`` và ``y[i][j]``.
 
-    :param x:
-        The first matrix multiplicand.
+    :param x:Toán hạng ma trận thứ nhất.
 
-    :param y:
-        The second matrix multiplicand.
+    :param y:Toán hạng ma trận thứ hai.
 
-    :return:
-        The resultant matrix.
+    :return:Ma trận kết quả.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/matrixCompMult.xhtml
 
@@ -1849,20 +1658,15 @@ vec3 **refract**\ (\ vec3 I, vec3 N, float eta) :ref:`🔗<shader_func_refract>`
 
 |mat_type| **outerProduct**\ (\ |vec_type| column, |vec_type| row) :ref:`🔗<shader_func_outerProduct>`
 
-    Calculate the outer product of a pair of vectors.
+    Tính tích ngoài của một cặp vector.
 
-    Does a linear algebraic matrix multiply ``column * row``, yielding a matrix whose number of
-    rows is the number of components in ``column`` and whose number of columns is the number of
-    components in ``row``.
+    Thực hiện phép nhân ma trận đại số tuyến tính ``column * row``, tạo ra một ma trận có số hàng bằng số thành phần trong ``column`` và số cột bằng số thành phần trong ``row``.
 
-    :param column:
-        The column vector for multiplication.
+    :param column:Vector cột dùng cho phép nhân.
 
-    :param row:
-        The row vector for multiplication.
+    :param row:Vector hàng dùng cho phép nhân.
 
-    :return:
-        The outer product matrix.
+    :return:Ma trận tích ngoài.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/outerProduct.xhtml
 
@@ -1877,13 +1681,11 @@ vec3 **refract**\ (\ vec3 I, vec3 N, float eta) :ref:`🔗<shader_func_refract>`
 
 |mat_type| **transpose**\ (\ |mat_type| m) :ref:`🔗<shader_func_transpose>`
 
-    Calculate the transpose of a matrix.
+    Tính ma trận chuyển vị.
 
-    :param m:
-        The matrix to transpose.
+    :param m:Ma trận cần chuyển vị.
 
-    :return:
-        A new matrix that is the transpose of the input matrix ``m``.
+    :return:Một ma trận mới là ma trận chuyển vị của ma trận đầu vào ``m``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/transpose.xhtml
 
@@ -1898,13 +1700,11 @@ vec3 **refract**\ (\ vec3 I, vec3 N, float eta) :ref:`🔗<shader_func_refract>`
 
 float **determinant**\ (\ |mat_type| m) :ref:`🔗<shader_func_determinant>`
 
-    Calculate the determinant of a matrix.
+    Tính định thức của một ma trận.
 
-    :param m:
-        The matrix.
+    :param m:Ma trận.
 
-    :return:
-        The determinant of the input matrix ``m``.
+    :return:Định thức của ma trận đầu vào ``m``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/determinant.xhtml
 
@@ -1919,15 +1719,13 @@ float **determinant**\ (\ |mat_type| m) :ref:`🔗<shader_func_determinant>`
 
 |mat_type| **inverse**\ (\ |mat_type| m) :ref:`🔗<shader_func_inverse>`
 
-    Calculate the inverse of a matrix.
+    Tính ma trận nghịch đảo.
 
-    The values in the returned matrix are undefined if ``m`` is singular or poorly-conditioned (nearly singular).
+    Các giá trị trong ma trận trả về không được xác định nếu ``m`` là ma trận suy biến hoặc điều kiện kém (gần suy biến).
 
-    :param m:
-        The matrix of which to take the inverse.
+    :param m:Ma trận cần lấy nghịch đảo.
 
-    :return:
-        A new matrix which is the inverse of the input matrix ``m``.
+    :return:Một ma trận mới là ma trận nghịch đảo của ma trận đầu vào ``m``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/inverse.xhtml
 
@@ -1949,38 +1747,38 @@ float **determinant**\ (\ |mat_type| m) :ref:`🔗<shader_func_determinant>`
 
 .. rst-class:: classref-reftable-group
 
-Comparison functions
---------------------
+Các hàm so sánh
+---------------
 
 .. table::
     :class: nowrap-col2
     :widths: auto
 
-    +-----------------+-----------------------------------------------------------------------------------------+---------------------------------------------------------------+
-    | |vec_bool_type| | :ref:`lessThan<shader_func_lessThan>`\ (\ |vec_type| x, |vec_type| y)                   | Bool vector comparison on < int/uint/float vectors.           |
-    +-----------------+-----------------------------------------------------------------------------------------+---------------------------------------------------------------+
-    | |vec_bool_type| | :ref:`greaterThan<shader_func_greaterThan>`\ (\ |vec_type| x, |vec_type| y)             | Bool vector comparison on > int/uint/float vectors.           |
-    +-----------------+-----------------------------------------------------------------------------------------+---------------------------------------------------------------+
-    | |vec_bool_type| | :ref:`lessThanEqual<shader_func_lessThanEqual>`\ (\ |vec_type| x, |vec_type| y)         | Bool vector comparison on <= int/uint/float vectors.          |
-    +-----------------+-----------------------------------------------------------------------------------------+---------------------------------------------------------------+
-    | |vec_bool_type| | :ref:`greaterThanEqual<shader_func_greaterThanEqual>`\ (\  |vec_type| x, |vec_type| y)  | Bool vector comparison on >= int/uint/float vectors.          |
-    +-----------------+-----------------------------------------------------------------------------------------+---------------------------------------------------------------+
-    | |vec_bool_type| | :ref:`equal<shader_func_equal>`\ (\ |vec_type| x, |vec_type| y)                         | Bool vector comparison on == int/uint/float vectors.          |
-    +-----------------+-----------------------------------------------------------------------------------------+---------------------------------------------------------------+
-    | |vec_bool_type| | :ref:`notEqual<shader_func_notEqual>`\ (\ |vec_type| x, |vec_type| y)                   | Bool vector comparison on != int/uint/float vectors.          |
-    +-----------------+-----------------------------------------------------------------------------------------+---------------------------------------------------------------+
-    | bool            | :ref:`any<shader_func_any>`\ (\ |vec_bool_type| x)                                      | ``true`` if any component is ``true``, ``false`` otherwise.   |
-    +-----------------+-----------------------------------------------------------------------------------------+---------------------------------------------------------------+
-    | bool            | :ref:`all<shader_func_all>`\ (\ |vec_bool_type| x)                                      | ``true`` if all components are ``true``, ``false`` otherwise. |
-    +-----------------+-----------------------------------------------------------------------------------------+---------------------------------------------------------------+
-    | |vec_bool_type| | :ref:`not<shader_func_not>`\ (\ |vec_bool_type| x)                                      | Invert boolean vector.                                        |
-    +-----------------+-----------------------------------------------------------------------------------------+---------------------------------------------------------------+
+    +-----------------+-----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+    | |vec_bool_type| | :ref:`lessThan <shader_func_lessThan>`\ (\ |vec_type| x, |vec_type| y)                  | So sánh vector Bool trên các vector int/uint/float với <.                   |
+    +-----------------+-----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+    | |vec_bool_type| | :ref:`greaterThan <shader_func_greaterThan>`\ (\ |vec_type| x, |vec_type| y)            | So sánh vector Bool trên các vector int/uint/float với >.                   |
+    +-----------------+-----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+    | |vec_bool_type| | :ref:`lessThanEqual <shader_func_lessThanEqual>`\ (\ |vec_type| x, |vec_type| y)        | So sánh vector Bool trên các vector int/uint/float với <=.                  |
+    +-----------------+-----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+    | |vec_bool_type| | :ref:`greaterThanEqual <shader_func_greaterThanEqual>`\ (\  |vec_type| x, |vec_type| y) | So sánh vector Bool trên các vector int/uint/float với >=.                  |
+    +-----------------+-----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+    | |vec_bool_type| | :ref:`equal <shader_func_equal>`\ (\ |vec_type| x, |vec_type| y)                        | So sánh vector Bool trên các vector int/uint/float với ==.                  |
+    +-----------------+-----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+    | |vec_bool_type| | :ref:`notEqual <shader_func_notEqual>`\ (\ |vec_type| x, |vec_type| y)                  | So sánh vector Bool trên các vector int/uint/float với !=.                  |
+    +-----------------+-----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+    | bool            | :ref:`any <shader_func_any>`\ (\ |vec_bool_type| x)                                     | ``true`` nếu bất kỳ thành phần nào là ``true``, ngược lại là ``false``.     |
+    +-----------------+-----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+    | bool            | :ref:`all <shader_func_all>`\ (\ |vec_bool_type| x)                                     | ``true`` nếu tất cả các thành phần đều là ``true``, ngược lại là ``false``. |
+    +-----------------+-----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+    | |vec_bool_type| | :ref:`not <shader_func_not>`\ (\ |vec_bool_type| x)                                     | Đảo ngược vector boolean.                                                   |
+    +-----------------+-----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
 
 
 .. rst-class:: classref-descriptions-group
 
-Comparison function descriptions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Mô tả các hàm so sánh
+~~~~~~~~~~~~~~~~~~~~~
 
 
 .. _shader_func_lessThan:
@@ -1989,16 +1787,13 @@ Comparison function descriptions
 
 |vec_bool_type| **lessThan**\ (\ |vec_type| x, |vec_type| y) :ref:`🔗<shader_func_lessThan>`
 
-    Performs a :ref:`component-wise<shading_componentwise>` less-than comparison of two vectors.
+    Thực hiện phép so sánh nhỏ hơn :ref:`theo từng thành phần <shading_componentwise>` giữa hai vector.
 
-    :param x:
-        The first vector to compare.
+    :param x:Vector đầu tiên cần so sánh.
 
-    :param y:
-        The second vector to compare.
+    :param y:Vector thứ hai cần so sánh.
 
-    :return:
-        A boolean vector in which each element ``i`` is computed as ``x[i] < y[i]``.
+    :return:Một vector boolean trong đó mỗi phần tử ``i`` được tính là ``x[i] < y[i]``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/lessThan.xhtml
 
@@ -2015,16 +1810,13 @@ Comparison function descriptions
 
 |vec_bool_type| **greaterThan**\ (\ |vec_type| x, |vec_type| y) :ref:`🔗<shader_func_greaterThan>`
 
-    Performs a :ref:`component-wise<shading_componentwise>` greater-than comparison of two vectors.
+    Thực hiện phép so sánh lớn hơn :ref:`theo từng thành phần <shading_componentwise>` giữa hai vector.
 
-    :param x:
-        The first vector to compare.
+    :param x:Vector đầu tiên cần so sánh.
 
-    :param y:
-        The second vector to compare.
+    :param y:Vector thứ hai cần so sánh.
 
-    :return:
-        A boolean vector in which each element ``i`` is computed as ``x[i] > y[i]``.
+    :return:Một vector boolean trong đó mỗi phần tử ``i`` được tính là ``x[i] > y[i]``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/greaterThan.xhtml
 
@@ -2041,16 +1833,13 @@ Comparison function descriptions
 
 |vec_bool_type| **lessThanEqual**\ (\ |vec_type| x, |vec_type| y) :ref:`🔗<shader_func_lessThanEqual>`
 
-    Performs a :ref:`component-wise<shading_componentwise>` less-than-or-equal comparison of two vectors.
+    Thực hiện phép so sánh nhỏ hơn hoặc bằng :ref:`theo từng thành phần <shading_componentwise>` giữa hai vector.
 
-    :param x:
-        The first vector to compare.
+    :param x:Vector đầu tiên cần so sánh.
 
-    :param y:
-        The second vector to compare.
+    :param y:Vector thứ hai cần so sánh.
 
-    :return:
-        A boolean vector in which each element ``i`` is computed as ``x[i] <= y[i]``.
+    :return:Một vector boolean trong đó mỗi phần tử ``i`` được tính là ``x[i] <= y[i]``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/lessThanEqual.xhtml
 
@@ -2067,16 +1856,13 @@ Comparison function descriptions
 
 |vec_bool_type| **greaterThanEqual**\ (\ |vec_type| x, |vec_type| y) :ref:`🔗<shader_func_greaterThanEqual>`
 
-    Performs a :ref:`component-wise<shading_componentwise>` greater-than-or-equal comparison of two vectors.
+    Thực hiện phép so sánh lớn hơn hoặc bằng :ref:`theo từng thành phần <shading_componentwise>` giữa hai vector.
 
-    :param x:
-        The first vector to compare.
+    :param x:Vector đầu tiên cần so sánh.
 
-    :param y:
-        The second vector to compare.
+    :param y:Vector thứ hai cần so sánh.
 
-    :return:
-        A boolean vector in which each element ``i`` is computed as ``x[i] >= y[i]``.
+    :return:Một vector boolean trong đó mỗi phần tử ``i`` được tính là ``x[i] >= y[i]``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/greaterThanEqual.xhtml
 
@@ -2093,16 +1879,13 @@ Comparison function descriptions
 
 |vec_bool_type| **equal**\ (\ |vec_type| x, |vec_type| y) :ref:`🔗<shader_func_equal>`
 
-    Performs a :ref:`component-wise<shading_componentwise>` equal-to comparison of two vectors.
+    Thực hiện phép so sánh bằng :ref:`theo từng thành phần <shading_componentwise>` giữa hai vector.
 
-    :param x:
-        The first vector to compare.
+    :param x:Vector đầu tiên cần so sánh.
 
-    :param y:
-        The second vector to compare.
+    :param y:Vector thứ hai cần so sánh.
 
-    :return:
-        A boolean vector in which each element ``i`` is computed as ``x[i] == y[i]``.
+    :return:Một vector boolean trong đó mỗi phần tử ``i`` được tính là ``x[i] == y[i]``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/equal.xhtml
 
@@ -2119,16 +1902,13 @@ Comparison function descriptions
 
 |vec_bool_type| **notEqual**\ (\ |vec_type| x, |vec_type| y) :ref:`🔗<shader_func_notEqual>`
 
-    Performs a :ref:`component-wise<shading_componentwise>` not-equal-to comparison of two vectors.
+    Thực hiện phép so sánh khác :ref:`theo từng thành phần <shading_componentwise>` giữa hai vector.
 
-    :param x:
-        The first vector for comparison.
+    :param x:Vector đầu tiên dùng để so sánh.
 
-    :param y:
-        The second vector for comparison.
+    :param y:Vector thứ hai dùng để so sánh.
 
-    :return:
-        A boolean vector in which each element ``i`` is computed as ``x[i] != y[i]``.
+    :return:Một vector boolean trong đó mỗi phần tử ``i`` được tính là ``x[i] != y[i]``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/notEqual.xhtml
 
@@ -2145,9 +1925,9 @@ Comparison function descriptions
 
 bool **any**\ (\ |vec_bool_type| x) :ref:`🔗<shader_func_any>`
 
-    Returns ``true`` if any element of a boolean vector is ``true``, ``false`` otherwise.
+    Trả về ``true`` nếu bất kỳ phần tử nào của vector boolean là ``true``, ngược lại là ``false``.
 
-    Functionally equivalent to:
+    Tương đương về chức năng với:
 
     ::
 
@@ -2160,11 +1940,9 @@ bool **any**\ (\ |vec_bool_type| x) :ref:`🔗<shader_func_any>`
             return result;
         }
 
-    :param x:
-        The vector to be tested for truth.
+    :param x:Vector cần được kiểm tra giá trị đúng.
 
-    :return:
-        ``true`` if any element of ``x`` is ``true`` and ``false`` otherwise.
+    :return:``true`` nếu bất kỳ phần tử nào của ``x`` là ``true`` và ``false`` nếu không.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/any.xhtml
 
@@ -2181,9 +1959,9 @@ bool **any**\ (\ |vec_bool_type| x) :ref:`🔗<shader_func_any>`
 
 bool **all**\ (\ |vec_bool_type| x) :ref:`🔗<shader_func_all>`
 
-    Returns ``true`` if all elements of a boolean vector are ``true``, ``false`` otherwise.
+    Trả về ``true`` nếu tất cả phần tử của vector boolean đều là ``true``, ngược lại là ``false``.
 
-    Functionally equivalent to:
+    Tương đương về chức năng với:
 
     ::
 
@@ -2198,11 +1976,9 @@ bool **all**\ (\ |vec_bool_type| x) :ref:`🔗<shader_func_all>`
             return result;
         }
 
-    :param x:
-        The vector to be tested for truth.
+    :param x:Vector cần được kiểm tra giá trị đúng.
 
-    :return:
-        ``true`` if all elements of ``x`` are ``true`` and ``false`` otherwise.
+    :return:``true`` nếu tất cả phần tử của ``x`` đều là ``true`` và ``false`` nếu không.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/all.xhtml
 
@@ -2217,13 +1993,11 @@ bool **all**\ (\ |vec_bool_type| x) :ref:`🔗<shader_func_all>`
 
 |vec_bool_type| **not**\ (\ |vec_bool_type| x) :ref:`🔗<shader_func_not>`
 
-    Logically invert a boolean vector.
+    Đảo ngược logic một vector boolean.
 
-    :param x:
-        The vector to be inverted.
+    :param x:Vector cần được đảo ngược.
 
-    :return:
-        A new boolean vector for which each element i is computed as !x[i].
+    :return:Một vector boolean mới trong đó mỗi phần tử i được tính là !x[i].
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/not.xhtml
 
@@ -2243,8 +2017,8 @@ bool **all**\ (\ |vec_bool_type| x) :ref:`🔗<shader_func_all>`
 
 .. rst-class:: classref-reftable-group
 
-Texture functions
------------------
+Các hàm texture
+---------------
 
 .. table::
     :class: nowrap-col2
@@ -2346,8 +2120,8 @@ Texture functions
 
 .. rst-class:: classref-descriptions-group
 
-Texture function descriptions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Mô tả các hàm texture
+~~~~~~~~~~~~~~~~~~~~~
 
 .. _shader_func_textureSize:
 
@@ -2371,22 +2145,17 @@ ivec3 **textureSize**\ (\ |gsampler2DArray| s, int lod) :ref:`🔗<shader_func_t
 
 ivec3 **textureSize**\ (\ |gsampler3D| s, int lod) :ref:`🔗<shader_func_textureSize>`
 
-    Retrieves the dimensions of a level of a texture.
+    Lấy kích thước của một level của texture.
 
-    Returns the dimensions of level ``lod`` (if present) of the texture bound to sampler.
+    Trả về kích thước của level ``lod`` (nếu có) của texture được liên kết với sampler.
 
-    The components in the return value are filled in, in order, with the width, height and depth
-    of the texture. For the array forms, the last component of the return value is
-    the number of layers in the texture array.
+    Các thành phần trong giá trị trả về lần lượt được điền bằng chiều rộng, chiều cao và độ sâu của texture. Đối với các dạng mảng, thành phần cuối cùng của giá trị trả về là số layer trong mảng texture.
 
-    :param s:
-        The sampler to which the texture whose dimensions to retrieve is bound.
+    :param s:Sampler mà texture cần lấy kích thước được liên kết với.
 
-    :param lod:
-        The level of the texture for which to retrieve the dimensions.
+    :param lod:Level của texture cần lấy kích thước.
 
-    :return:
-        The dimensions of level ``lod`` (if present) of the texture bound to sampler.
+    :return:Kích thước của level ``lod`` (nếu có) của texture được liên kết với sampler.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/textureSize.xhtml
 
@@ -2415,24 +2184,19 @@ vec2 **textureQueryLod**\ (\ |gsampler3D| s, vec3 p) :ref:`🔗<shader_func_text
 
 vec2 **textureQueryLod**\ (\ samplerCube s, vec3 p) :ref:`🔗<shader_func_textureQueryLod>`
 
-    .. note:: Available only in the fragment shader.
+    .. note:: Chỉ khả dụng trong fragment shader.
 
-    Compute the level-of-detail that would be used to sample from a texture.
+    Tính level-of-detail sẽ được dùng để lấy mẫu từ một texture.
 
-    The mipmap array(s) that would be accessed is returned in the x component of
-    the return value. The computed level-of-detail relative to the base level is
-    returned in the y component of the return value.
+    Mipmap array sẽ được truy cập được trả về trong thành phần x của giá trị trả về. Level-of-detail được tính toán so với base level được trả về trong thành phần y của giá trị trả về.
 
-    If called on an incomplete texture, the result of the operation is undefined.
+    Nếu được gọi trên một texture chưa hoàn chỉnh, kết quả của thao tác là không xác định.
 
-    :param s:
-        The sampler to which the texture whose level-of-detail will be queried is bound.
+    :param s:Sampler mà texture cần truy vấn level-of-detail được liên kết với.
 
-    :param p:
-        The texture coordinates at which the level-of-detail will be queried.
+    :param p:Tọa độ texture tại đó level-of-detail sẽ được truy vấn.
 
-    :return:
-        See description.
+    :return:Xem mô tả.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/textureQueryLod.xhtml
 
@@ -2461,15 +2225,13 @@ int **textureQueryLevels**\ (\ |gsampler3D| s) :ref:`🔗<shader_func_textureQue
 
 int **textureQueryLevels**\ (\ samplerCube s) :ref:`🔗<shader_func_textureQueryLevels>`
 
-    Compute the number of accessible mipmap levels of a texture.
+    Tính số level mipmap có thể truy cập của một texture.
 
-    If called on an incomplete texture, or if no texture is associated with sampler, ``0`` is returned.
+    Nếu được gọi trên một texture chưa hoàn chỉnh hoặc không có texture nào được liên kết với sampler, ``0`` sẽ được trả về.
 
-    :param s:
-        The sampler to which the texture whose mipmap level count will be queried is bound.
+    :param s:Sampler mà texture có số lượng mức mipmap cần truy vấn được liên kết với.
 
-    :return:
-        The number of accessible mipmap levels in the texture, or ``0``.
+    :return:Số mức mipmap có thể truy cập trong texture, hoặc ``0``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/textureQueryLevels.xhtml
 
@@ -2506,27 +2268,21 @@ vec4 **texture**\ (\ samplerCubeArray s, vec4 p [, float bias] ) :ref:`🔗<shad
 
 vec4 **texture**\ (\ samplerExternalOES s, vec2 p [, float bias] ) :ref:`🔗<shader_func_texture>`
 
-    Retrieves texels from a texture.
+    Truy xuất các texel từ một texture.
 
-    Samples texels from the texture bound to ``s`` at texture coordinate ``p``. An optional bias, specified in ``bias`` is
-    included in the level-of-detail computation that is used to choose mipmap(s) from which to sample.
+    Lấy mẫu các texel từ texture được liên kết với ``s`` tại tọa độ texture ``p``. Một bias tùy chọn, được chỉ định trong ``bias``, được đưa vào phép tính level-of-detail dùng để chọn (các) mipmap lấy mẫu.
 
-    For shadow forms, the last component of ``p`` is used as Dsub and the array layer is specified in the second to last
-    component of ``p``. (The second component of ``p`` is unused for 1D shadow lookups.)
+    Đối với các dạng shadow, component cuối cùng của ``p`` được dùng làm Dsub và layer của mảng được chỉ định trong component áp chót của ``p``. (Component thứ hai của ``p`` không được sử dụng cho các phép tra cứu shadow 1D.)
 
-    For non-shadow variants, the array layer comes from the last component of P.
+    Đối với các biến thể không phải shadow, layer của mảng được lấy từ component cuối cùng của P.
 
-    :param s:
-        The sampler to which the texture from which texels will be retrieved is bound.
+    :param s:Sampler mà texture cần truy xuất texel được liên kết với.
 
-    :param p:
-        The texture coordinates at which texture will be sampled.
+    :param p:Các tọa độ texture tại đó texture sẽ được lấy mẫu.
 
-    :param bias:
-        An optional bias to be applied during level-of-detail computation.
+    :param bias:Bias tùy chọn được áp dụng trong quá trình tính level-of-detail.
 
-    :return:
-        A texel.
+    :return:Một texel.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/texture.xhtml
 
@@ -2551,23 +2307,17 @@ vec4 **texture**\ (\ samplerExternalOES s, vec2 p [, float bias] ) :ref:`🔗<sh
 
 |gvec4_type| **textureProj**\ (\ |gsampler3D| s, vec4 p [, float bias] ) :ref:`🔗<shader_func_textureProj>`
 
-    Perform a texture lookup with projection.
+    Thực hiện phép tra cứu texture có phép chiếu.
 
-    The texture coordinates consumed from ``p``, not including the last component of ``p``, are
-    divided by the last component of ``p``. The resulting 3rd component of ``p`` in the shadow
-    forms is used as Dref. After these values are computed, the texture lookup proceeds as in texture.
+    Các tọa độ texture lấy từ ``p``, không bao gồm component cuối cùng của ``p``, được chia cho component cuối cùng của ``p``. Component thứ 3 thu được của ``p`` trong các dạng shadow được dùng làm Dref. Sau khi tính các giá trị này, phép tra cứu texture tiếp tục như trong texture.
 
-    :param s:
-        The sampler to which the texture from which texels will be retrieved is bound.
+    :param s:Sampler mà texture cần truy xuất texel được liên kết với.
 
-    :param p:
-        The texture coordinates at which texture will be sampled.
+    :param p:Các tọa độ texture tại đó texture sẽ được lấy mẫu.
 
-    :param bias:
-        Optional bias to be applied during level-of-detail computation.
+    :param bias:Bias tùy chọn được áp dụng trong quá trình tính level-of-detail.
 
-    :return:
-        A texel.
+    :return:Một texel.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/textureProj.xhtml
 
@@ -2600,26 +2350,20 @@ vec4 **textureLod**\ (\ samplerCube s, vec3 p, float lod) :ref:`🔗<shader_func
 
 vec4 **textureLod**\ (\ samplerCubeArray s, vec4 p, float lod) :ref:`🔗<shader_func_textureLod>`
 
-    Performs a texture lookup at coordinate ``p`` from the texture bound to sampler with
-    an explicit level-of-detail as specified in ``lod``. ``lod`` specifies λbase and sets the
-    partial derivatives as follows:
+    Thực hiện phép tra cứu texture tại tọa độ ``p`` từ texture được liên kết với sampler, với level-of-detail tường minh như được chỉ định trong ``lod``. ``lod`` chỉ định λbase và thiết lập các đạo hàm riêng như sau:
 
     ::
 
         δu/δx=0, δv/δx=0, δw/δx=0
         δu/δy=0, δv/δy=0, δw/δy=0
 
-    :param s:
-        The sampler to which the texture from which texels will be retrieved is bound.
+    :param s:Sampler mà texture cần truy xuất texel được liên kết với.
 
-    :param p:
-        The texture coordinates at which texture will be sampled.
+    :param p:Các tọa độ texture tại đó texture sẽ được lấy mẫu.
 
-    :param lod:
-        The explicit level-of-detail.
+    :param lod:Level-of-detail tường minh.
 
-    :return:
-        A texel.
+    :return:Một texel.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/textureLod.xhtml
 
@@ -2644,25 +2388,17 @@ vec4 **textureLod**\ (\ samplerCubeArray s, vec4 p, float lod) :ref:`🔗<shader
 
 |gvec4_type| **textureProjLod**\ (\ |gsampler3D| s, vec4 p, float lod) :ref:`🔗<shader_func_textureProjLod>`
 
-    Performs a texture lookup with projection from an explicitly specified level-of-detail.
+    Thực hiện phép tra cứu texture có phép chiếu từ một level-of-detail được chỉ định tường minh.
 
-    The texture coordinates consumed from P, not including the last component of ``p``, are
-    divided by the last component of ``p``. The resulting 3rd component of ``p`` in the shadow
-    forms is used as Dref. After these values are computed, the texture lookup proceeds as in
-    `textureLod<shader_func_textureLod>`, with ``lod`` used to specify the level-of-detail from
-    which the texture will be sampled.
+    Các tọa độ texture lấy từ P, không bao gồm component cuối cùng của ``p``, được chia cho component cuối cùng của ``p``. Component thứ 3 thu được của ``p`` trong các dạng shadow được dùng làm Dref. Sau khi tính các giá trị này, phép tra cứu texture tiếp tục như trong `textureLod<shader_func_textureLod>`, với ``lod`` được dùng để chỉ định level-of-detail mà texture sẽ được lấy mẫu từ đó.
 
-    :param s:
-        The sampler to which the texture from which texels will be retrieved is bound.
+    :param s:Sampler mà texture cần truy xuất texel được liên kết với.
 
-    :param p:
-        The texture coordinates at which texture will be sampled.
+    :param p:Các tọa độ texture tại đó texture sẽ được lấy mẫu.
 
-    :param lod:
-        The explicit level-of-detail from which to fetch texels.
+    :param lod:Level-of-detail tường minh mà từ đó các texel được truy xuất.
 
-    :return:
-       a texel
+    :return:một texel
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/textureProjLod.xhtml
 
@@ -2695,30 +2431,25 @@ vec4 **textureGrad**\ (\ samplerCube s, vec3 p, vec3 dPdx, vec3 dPdy) :ref:`🔗
 
 vec4 **textureGrad**\ (\ samplerCubeArray s, vec3 p, vec3 dPdx, vec3 dPdy) :ref:`🔗<shader_func_textureGrad>`
 
-    Performs a texture lookup at coordinate ``p`` from the texture bound to sampler with explicit texture coordinate gradients as specified in ``dPdx`` and ``dPdy``. Set:
-     - ``δs/δx=δp/δx`` for a 1D texture, ``δp.s/δx`` otherwise
-     - ``δs/δy=δp/δy`` for a 1D texture, ``δp.s/δy`` otherwise
-     - ``δt/δx=0.0`` for a 1D texture, ``δp.t/δx`` otherwise
-     - ``δt/δy=0.0`` for a 1D texture, ``δp.t/δy`` otherwise
-     - ``δr/δx=0.0`` for a 1D or 2D texture, ``δp.p/δx`` otherwise
-     - ``δr/δy=0.0`` for a 1D or 2D texture, ``δp.p/δy`` otherwise
+    Thực hiện phép tra cứu texture tại tọa độ ``p`` từ texture được liên kết với sampler, với các gradient tọa độ texture tường minh như được chỉ định trong ``dPdx`` và ``dPdy``. Thiết lập:
+     - ``δs/δx=δp/δx`` cho texture 1D, nếu không thì ``δp.s/δx``
+     - ``δs/δy=δp/δy`` cho texture 1D, nếu không thì ``δp.s/δy``
+     - ``δt/δx=0.0`` cho texture 1D, nếu không thì ``δp.t/δx``
+     - ``δt/δy=0.0`` cho texture 1D, nếu không thì ``δp.t/δy``
+     - ``δr/δx=0.0`` cho texture 1D hoặc 2D, nếu không thì ``δp.p/δx``
+     - ``δr/δy=0.0`` cho texture 1D hoặc 2D, nếu không thì ``δp.p/δy``
 
-    For the cube version, the partial derivatives of ``p`` are assumed to be in the coordinate system used before texture coordinates are projected onto the appropriate cube face.
+    Đối với phiên bản cube, các đạo hàm riêng của ``p`` được giả định là nằm trong hệ tọa độ được sử dụng trước khi các tọa độ texture được chiếu lên mặt cube thích hợp.
 
-    :param s:
-        The sampler to which the texture from which texels will be retrieved is bound.
+    :param s:Sampler mà texture cần truy xuất texel được liên kết với.
 
-    :param p:
-        The texture coordinates at which texture will be sampled.
+    :param p:Các tọa độ texture tại đó texture sẽ được lấy mẫu.
 
-    :param dPdx:
-        The partial derivative of P with respect to window x.
+    :param dPdx:Đạo hàm riêng của P theo window x.
 
-    :param dPdy:
-        The partial derivative of P with respect to window y.
+    :param dPdy:Đạo hàm riêng của P theo window y.
 
-    :return:
-        A texel.
+    :return:Một texel.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/textureGrad.xhtml
 
@@ -2743,25 +2474,19 @@ vec4 **textureGrad**\ (\ samplerCubeArray s, vec3 p, vec3 dPdx, vec3 dPdy) :ref:
 
 |gvec4_type| **textureProjGrad**\ (\ |gsampler3D| s, vec4 p, vec3 dPdx, vec3 dPdy) :ref:`🔗<shader_func_textureProjGrad>`
 
-    Perform a texture lookup with projection and explicit gradients.
+    Thực hiện phép tra cứu texture có phép chiếu và các gradient tường minh.
 
-    The texture coordinates consumed from ``p``, not including the last component of ``p``, are divided by the last component of ``p``.
-    After these values are computed, the texture lookup proceeds as in `textureGrad<shader_func_textureGrad>`, passing ``dPdx`` and ``dPdy`` as gradients.
+    Các tọa độ texture lấy từ ``p``, không bao gồm component cuối cùng của ``p``, được chia cho component cuối cùng của ``p``. Sau khi tính các giá trị này, phép tra cứu texture tiếp tục như trong `textureGrad<shader_func_textureGrad>`, truyền ``dPdx`` và ``dPdy`` làm các gradient.
 
-    :param s:
-        The sampler to which the texture from which texels will be retrieved is bound.
+    :param s:Sampler mà texture cần truy xuất texel được liên kết với.
 
-    :param p:
-        The texture coordinates at which texture will be sampled.
+    :param p:Các tọa độ texture tại đó texture sẽ được lấy mẫu.
 
-    :param dPdx:
-        The partial derivative of ``p`` with respect to window x.
+    :param dPdx:Đạo hàm riêng của ``p`` theo window x.
 
-    :param dPdy:
-        The partial derivative of ``p`` with respect to window y.
+    :param dPdy:Đạo hàm riêng của ``p`` theo window y.
 
-    :return:
-        A texel.
+    :return:Một texel.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/textureProjGrad.xhtml
 
@@ -2786,19 +2511,15 @@ vec4 **textureGrad**\ (\ samplerCubeArray s, vec3 p, vec3 dPdx, vec3 dPdy) :ref:
 
 |gvec4_type| **texelFetch**\ (\ |gsampler3D| s, ivec3 p, int lod) :ref:`🔗<shader_func_texelFetch>`
 
-    Performs a lookup of a single texel from texture coordinate ``p`` in the texture bound to sampler.
+    Thực hiện tra cứu một texel duy nhất từ tọa độ texture ``p`` trong texture được liên kết với sampler.
 
-    :param s:
-        The sampler to which the texture from which texels will be retrieved is bound.
+    :param s:Sampler mà texture cần truy xuất texel được liên kết với.
 
-    :param p:
-        The texture coordinates at which texture will be sampled.
+    :param p:Các tọa độ texture tại đó texture sẽ được lấy mẫu.
 
-    :param lod:
-        Specifies the level-of-detail within the texture from which the texel will be fetched.
+    :param lod:Chỉ định level-of-detail trong texture mà từ đó texel sẽ được truy xuất.
 
-    :return:
-        A texel.
+    :return:Một texel.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/texelFetch.xhtml
 
@@ -2823,9 +2544,9 @@ vec4 **textureGrad**\ (\ samplerCubeArray s, vec3 p, vec3 dPdx, vec3 dPdy) :ref:
 
 vec4 **textureGather**\ (\ samplerCube s, vec3 p [, int comps] ) :ref:`🔗<shader_func_textureGather>`
 
-    Gathers four texels from a texture.
+    Tập hợp bốn texel từ một texture.
 
-    Returns the value:
+    Trả về giá trị:
 
     ::
 
@@ -2834,17 +2555,13 @@ vec4 **textureGather**\ (\ samplerCube s, vec3 p [, int comps] ) :ref:`🔗<shad
              Sample_i1_j0(p, base).comps,
              Sample_i0_j0(p, base).comps);
 
-    :param s:
-        The sampler to which the texture from which texels will be retrieved is bound.
+    :param s:Sampler mà texture cần truy xuất texel được liên kết với.
 
-    :param p:
-        The texture coordinates at which texture will be sampled.
+    :param p:Các tọa độ texture tại đó texture sẽ được lấy mẫu.
 
-    :param comps:
-        *optional* the component of the source texture (0 -> x, 1 -> y, 2 -> z, 3 -> w) that will be used to generate the resulting vector. Zero if not specified.
+    :param comps:*optional* thành phần của texture nguồn (0 -> x, 1 -> y, 2 -> z, 3 -> w) sẽ được dùng để tạo vector kết quả. Bằng không nếu không được chỉ định.
 
-    :return:
-        The gathered texel.
+    :return:Texel đã lấy.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/textureGather.xhtml
 
@@ -2861,26 +2578,21 @@ vec4 **textureGather**\ (\ samplerCube s, vec3 p [, int comps] ) :ref:`🔗<shad
 
 |vec_type| **dFdx**\ (\ |vec_type| p) :ref:`🔗<shader_func_dFdx>`
 
-    .. note:: Available only in the fragment shader.
+    .. note:: Chỉ khả dụng trong fragment shader.
 
-    Returns the partial derivative of ``p`` with respect to the window x coordinate using local differencing.
+    Trả về đạo hàm riêng của ``p`` theo tọa độ x của cửa sổ bằng cách lấy sai phân cục bộ.
 
-    Returns either :ref:`dFdxCoarse<shader_func_dFdxCoarse>` or :ref:`dFdxFine<shader_func_dfdxFine>`.
-    The implementation may choose which calculation to perform based upon factors
-    such as performance or the value of the API ``GL_FRAGMENT_SHADER_DERIVATIVE_HINT`` hint.
+    Trả về :ref:`dFdxCoarse <shader_func_dFdxCoarse>` hoặc :ref:`dFdxFine <shader_func_dfdxFine>`. Việc triển khai có thể chọn phép tính nào để thực hiện dựa trên các yếu tố như hiệu năng hoặc giá trị của gợi ý ``GL_FRAGMENT_SHADER_DERIVATIVE_HINT`` của API.
 
 
     .. warning::
-        Expressions that imply higher order derivatives such as ``dFdx(dFdx(n))``
-        have undefined results, as do mixed-order derivatives such as ``dFdx(dFdy(n))``.
+        Các biểu thức ngụ ý đạo hàm bậc cao hơn như ``dFdx(dFdx(n))`` có kết quả không xác định, cũng như các đạo hàm có bậc hỗn hợp như ``dFdx(dFdy(n))``.
 
-    :param p:
-        The expression of which to take the partial derivative.
+    :param p:Biểu thức cần lấy đạo hàm riêng.
 
-        .. note:: It is assumed that the expression ``p`` is continuous and therefore expressions evaluated via non-uniform control flow may be undefined.
+        .. note:: Giả định rằng biểu thức ``p`` là liên tục, do đó các biểu thức được đánh giá thông qua luồng điều khiển không đồng nhất có thể không xác định.
 
-    :return:
-        The partial derivative of ``p``.
+    :return:Đạo hàm riêng của ``p``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/dFdx.xhtml
 
@@ -2898,29 +2610,20 @@ vec4 **textureGather**\ (\ samplerCube s, vec3 p [, int comps] ) :ref:`🔗<shad
 |vec_type| **dFdxCoarse**\ (\ |vec_type| p) :ref:`🔗<shader_func_dFdxCoarse>`
 
     .. note::
-        Available only in the fragment shader.
-        Not available when using the Compatibility renderer.
+        Chỉ khả dụng trong fragment shader. Không khả dụng khi sử dụng Compatibility renderer.
 
-    Returns the partial derivative of ``p`` with respect to the window x coordinate.
+    Trả về đạo hàm riêng của ``p`` theo tọa độ x của cửa sổ.
 
-    Calculates derivatives using local differencing based on the value of ``p``
-    for the current fragment's neighbors, and will possibly, but not necessarily,
-    include the value for the current fragment. That is, over a given area, the
-    implementation can compute derivatives in fewer unique locations than would
-    be allowed for the corresponding :ref:`dFdxFine<shader_func_dFdxFine>` function.
+    Tính các đạo hàm bằng cách lấy sai phân cục bộ dựa trên giá trị của ``p`` tại các fragment lân cận của fragment hiện tại, và có thể, nhưng không nhất thiết, bao gồm giá trị của fragment hiện tại. Nghĩa là, trong một vùng cho trước, việc triển khai có thể tính các đạo hàm tại ít vị trí duy nhất hơn số vị trí được phép đối với hàm :ref:`dFdxFine <shader_func_dFdxFine>` tương ứng.
 
     .. warning::
-        Expressions that imply higher order derivatives such as ``dFdx(dFdx(n))``
-        have undefined results, as do mixed-order derivatives such as ``dFdx(dFdy(n))``.
+        Các biểu thức ngụ ý đạo hàm bậc cao hơn như ``dFdx(dFdx(n))`` có kết quả không xác định, cũng như các đạo hàm có bậc hỗn hợp như ``dFdx(dFdy(n))``.
 
-    :param p:
-        The expression of which to take the partial derivative.
+    :param p:Biểu thức cần lấy đạo hàm riêng.
 
-        .. note:: It is assumed that the expression ``p`` is continuous and therefore
-            expressions evaluated via non-uniform control flow may be undefined.
+        .. note:: Giả định rằng biểu thức ``p`` là liên tục, do đó các biểu thức được đánh giá thông qua luồng điều khiển không đồng nhất có thể không xác định.
 
-    :return:
-        The partial derivative of ``p``.
+    :return:Đạo hàm riêng của ``p``.
 
     https://registry.khronos.org/OpenGL-Refpages/gl4/html/dFdx.xhtml
 
@@ -2938,24 +2641,20 @@ vec4 **textureGather**\ (\ samplerCube s, vec3 p [, int comps] ) :ref:`🔗<shad
 |vec_type| **dFdxFine**\ (\ |vec_type| p) :ref:`🔗<shader_func_dFdxFine>`
 
     .. note::
-        Available only in the fragment shader.
-        Not available when using the Compatibility renderer.
+        Chỉ khả dụng trong fragment shader. Không khả dụng khi sử dụng Compatibility renderer.
 
-    Returns the partial derivative of ``p`` with respect to the window x coordinate.
+    Trả về đạo hàm riêng của ``p`` theo tọa độ x của cửa sổ.
 
-    Calculates derivatives using local differencing based on the value of ``p`` for the current fragment and its immediate neighbor(s).
+    Tính các đạo hàm bằng cách lấy sai phân cục bộ dựa trên giá trị của ``p`` tại fragment hiện tại và (các) fragment lân cận trực tiếp của nó.
 
     .. warning::
-        Expressions that imply higher order derivatives such as ``dFdx(dFdx(n))``
-        have undefined results, as do mixed-order derivatives such as ``dFdx(dFdy(n))``.
+        Các biểu thức ngụ ý đạo hàm bậc cao hơn như ``dFdx(dFdx(n))`` có kết quả không xác định, cũng như các đạo hàm có bậc hỗn hợp như ``dFdx(dFdy(n))``.
 
-    :param p:
-        The expression of which to take the partial derivative.
+    :param p:Biểu thức cần lấy đạo hàm riêng.
 
-        .. note:: It is assumed that the expression ``p`` is continuous and therefore expressions evaluated via non-uniform control flow may be undefined.
+        .. note:: Giả định rằng biểu thức ``p`` là liên tục, do đó các biểu thức được đánh giá thông qua luồng điều khiển không đồng nhất có thể không xác định.
 
-    :return:
-        The partial derivative of ``p``.
+    :return:Đạo hàm riêng của ``p``.
 
     https://registry.khronos.org/OpenGL-Refpages/gl4/html/dFdx.xhtml
 
@@ -2972,25 +2671,20 @@ vec4 **textureGather**\ (\ samplerCube s, vec3 p [, int comps] ) :ref:`🔗<shad
 
 |vec_type| **dFdy**\ (\ |vec_type| p) :ref:`🔗<shader_func_dFdy>`
 
-    .. note:: Available only in the fragment shader.
+    .. note:: Chỉ khả dụng trong fragment shader.
 
-    Returns the partial derivative of ``p`` with respect to the window y coordinate using local differencing.
+    Trả về đạo hàm riêng của ``p`` theo tọa độ y của cửa sổ bằng cách lấy sai phân cục bộ.
 
-    Returns either :ref:`dFdyCoarse<shader_func_dFdyCoarse>` or :ref:`dFdyFine<shader_func_dfdyFine>`.
-    The implementation may choose which calculation to perform based upon factors
-    such as performance or the value of the API ``GL_FRAGMENT_SHADER_DERIVATIVE_HINT`` hint.
+    Trả về :ref:`dFdyCoarse <shader_func_dFdyCoarse>` hoặc :ref:`dFdyFine <shader_func_dfdyFine>`. Việc triển khai có thể chọn phép tính nào để thực hiện dựa trên các yếu tố như hiệu năng hoặc giá trị của gợi ý ``GL_FRAGMENT_SHADER_DERIVATIVE_HINT`` của API.
 
     .. warning::
-        Expressions that imply higher order derivatives such as ``dFdx(dFdx(n))``
-        have undefined results, as do mixed-order derivatives such as ``dFdx(dFdy(n))``.
+        Các biểu thức ngụ ý đạo hàm bậc cao hơn như ``dFdx(dFdx(n))`` có kết quả không xác định, cũng như các đạo hàm có bậc hỗn hợp như ``dFdx(dFdy(n))``.
 
-    :param p:
-        The expression of which to take the partial derivative.
+    :param p:Biểu thức cần lấy đạo hàm riêng.
 
-        .. note:: It is assumed that the expression ``p`` is continuous and therefore expressions evaluated via non-uniform control flow may be undefined.
+        .. note:: Giả định rằng biểu thức ``p`` là liên tục, do đó các biểu thức được đánh giá thông qua luồng điều khiển không đồng nhất có thể không xác định.
 
-    :return:
-        The partial derivative of ``p``.
+    :return:Đạo hàm riêng của ``p``.
 
     https://registry.khronos.org/OpenGL-Refpages/gl4/html/dFdx.xhtml
 
@@ -3008,24 +2702,19 @@ vec4 **textureGather**\ (\ samplerCube s, vec3 p [, int comps] ) :ref:`🔗<shad
 |vec_type| **dFdyCoarse**\ (\ |vec_type| p) :ref:`🔗<shader_func_dFdyCoarse>`
 
     .. note::
-        Available only in the fragment shader.
-        Not available when using the Compatibility renderer.
+        Chỉ khả dụng trong fragment shader. Không khả dụng khi sử dụng Compatibility renderer.
 
-    Returns the partial derivative of ``p`` with respect to the window y coordinate.
+    Trả về đạo hàm riêng của ``p`` theo tọa độ y của cửa sổ.
 
-    Calculates derivatives using local differencing based on the value of ``p`` for the current fragment's neighbors, and will possibly,
-    but not necessarily, include the value for the current fragment. That is, over a given area, the implementation can compute derivatives in fewer unique locations than
-    would be allowed for the corresponding dFdyFine and dFdyFine functions.
+    Tính các đạo hàm bằng cách lấy sai phân cục bộ dựa trên giá trị của ``p`` tại các fragment lân cận của fragment hiện tại, và có thể, nhưng không nhất thiết, bao gồm giá trị của fragment hiện tại. Nghĩa là, trong một vùng cho trước, việc triển khai có thể tính các đạo hàm tại ít vị trí duy nhất hơn số vị trí được phép đối với các hàm dFdyFine và dFdyFine tương ứng.
 
-    .. warning:: Expressions that imply higher order derivatives such as ``dFdx(dFdx(n))`` have undefined results, as do mixed-order derivatives such as ``dFdx(dFdy(n))``.
+    .. warning:: Các biểu thức ngụ ý đạo hàm bậc cao hơn như ``dFdx(dFdx(n))`` có kết quả không xác định, cũng như các đạo hàm có bậc hỗn hợp như ``dFdx(dFdy(n))``.
 
-    :param p:
-        The expression of which to take the partial derivative.
+    :param p:Biểu thức cần lấy đạo hàm riêng.
 
-        .. note:: It is assumed that the expression ``p`` is continuous and therefore expressions evaluated via non-uniform control flow may be undefined.
+        .. note:: Giả định rằng biểu thức ``p`` là liên tục, do đó các biểu thức được đánh giá thông qua luồng điều khiển không đồng nhất có thể không xác định.
 
-    :return:
-        The partial derivative of ``p``.
+    :return:Đạo hàm riêng của ``p``.
 
     https://registry.khronos.org/OpenGL-Refpages/gl4/html/dFdx.xhtml
 
@@ -3043,22 +2732,19 @@ vec4 **textureGather**\ (\ samplerCube s, vec3 p [, int comps] ) :ref:`🔗<shad
 |vec_type| **dFdyFine**\ (\ |vec_type| p) :ref:`🔗<shader_func_dFdyFine>`
 
     .. note::
-        Available only in the fragment shader.
-        Not available when using the Compatibility renderer.
+        Chỉ khả dụng trong fragment shader. Không khả dụng khi sử dụng Compatibility renderer.
 
-    Returns the partial derivative of ``p`` with respect to the window y coordinate.
+    Trả về đạo hàm riêng của ``p`` theo tọa độ y của cửa sổ.
 
-    Calculates derivatives using local differencing based on the value of ``p`` for the current fragment and its immediate neighbor(s).
+    Tính các đạo hàm bằng cách lấy sai phân cục bộ dựa trên giá trị của ``p`` tại fragment hiện tại và (các) fragment lân cận trực tiếp của nó.
 
-    .. warning:: Expressions that imply higher order derivatives such as ``dFdx(dFdx(n))`` have undefined results, as do mixed-order derivatives such as ``dFdx(dFdy(n))``.
+    .. warning:: Các biểu thức ngụ ý đạo hàm bậc cao hơn như ``dFdx(dFdx(n))`` có kết quả không xác định, cũng như các đạo hàm có bậc hỗn hợp như ``dFdx(dFdy(n))``.
 
-    :param p:
-        The expression of which to take the partial derivative.
+    :param p:Biểu thức cần lấy đạo hàm riêng.
 
-        .. note:: It is assumed that the expression ``p`` is continuous and therefore expressions evaluated via non-uniform control flow may be undefined.
+        .. note:: Giả định rằng biểu thức ``p`` là liên tục, do đó các biểu thức được đánh giá thông qua luồng điều khiển không đồng nhất có thể không xác định.
 
-    :return:
-        The partial derivative of ``p``.
+    :return:Đạo hàm riêng của ``p``.
 
     https://registry.khronos.org/OpenGL-Refpages/gl4/html/dFdx.xhtml
 
@@ -3075,17 +2761,15 @@ vec4 **textureGather**\ (\ samplerCube s, vec3 p [, int comps] ) :ref:`🔗<shad
 
 |vec_type| **fwidth**\ (\ |vec_type| p) :ref:`🔗<shader_func_fwidth>`
 
-    Returns the sum of the absolute value of derivatives in x and y.
+    Trả về tổng các giá trị tuyệt đối của các đạo hàm theo x và y.
 
-    Uses local differencing for the input argument ``p``.
+    Sử dụng sai phân cục bộ cho đối số đầu vào ``p``.
 
-    Equivalent to ``abs(dFdx(p)) + abs(dFdy(p))``.
+    Tương đương với ``abs(dFdx(p)) + abs(dFdy(p))``.
 
-    :param p:
-        The expression of which to take the partial derivative.
+    :param p:Biểu thức cần lấy đạo hàm riêng.
 
-    :return:
-        The partial derivative.
+    :return:Đạo hàm riêng.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/fwidth.xhtml
 
@@ -3103,20 +2787,17 @@ vec4 **textureGather**\ (\ samplerCube s, vec3 p [, int comps] ) :ref:`🔗<shad
 |vec_type| **fwidthCoarse**\ (\ |vec_type| p) :ref:`🔗<shader_func_fwidthCoarse>`
 
     .. note::
-        Available only in the fragment shader.
-        Not available when using the Compatibility renderer.
+        Chỉ khả dụng trong fragment shader. Không khả dụng khi sử dụng Compatibility renderer.
 
-    Returns the sum of the absolute value of derivatives in x and y.
+    Trả về tổng các giá trị tuyệt đối của các đạo hàm theo x và y.
 
-    Uses local differencing for the input argument p.
+    Sử dụng phép sai phân cục bộ cho đối số đầu vào p.
 
-    Equivalent to ``abs(dFdxCoarse(p)) + abs(dFdyCoarse(p))``.
+    Tương đương với ``abs(dFdxCoarse(p)) + abs(dFdyCoarse(p))``.
 
-    :param p:
-        The expression of which to take the partial derivative.
+    :param p:Biểu thức cần lấy đạo hàm riêng.
 
-    :return:
-        The partial derivative.
+    :return:Đạo hàm riêng.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/fwidth.xhtml
 
@@ -3134,20 +2815,17 @@ vec4 **textureGather**\ (\ samplerCube s, vec3 p [, int comps] ) :ref:`🔗<shad
 |vec_type| **fwidthFine**\ (\ |vec_type| p) :ref:`🔗<shader_func_fwidthFine>`
 
     .. note::
-        Available only in the fragment shader.
-        Not available when using the Compatibility renderer.
+        Chỉ khả dụng trong fragment shader. Không khả dụng khi sử dụng Compatibility renderer.
 
-    Returns the sum of the absolute value of derivatives in x and y.
+    Trả về tổng các giá trị tuyệt đối của các đạo hàm theo x và y.
 
-    Uses local differencing for the input argument p.
+    Sử dụng phép sai phân cục bộ cho đối số đầu vào p.
 
-    Equivalent to ``abs(dFdxFine(p)) + abs(dFdyFine(p))``.
+    Tương đương với ``abs(dFdxFine(p)) + abs(dFdyFine(p))``.
 
-    :param p:
-        The expression of which to take the partial derivative.
+    :param p:Biểu thức cần lấy đạo hàm riêng.
 
-    :return:
-        The partial derivative.
+    :return:Đạo hàm riêng.
 
     https://registry.khronos.org/OpenGL-Refpages/gl4/html/fwidth.xhtml
 
@@ -3170,13 +2848,10 @@ vec4 **textureGather**\ (\ samplerCube s, vec3 p [, int comps] ) :ref:`🔗<shad
 
 .. rst-class:: classref-reftable-group
 
-Packing and unpacking functions
--------------------------------
+Các hàm đóng gói và giải đóng gói
+---------------------------------
 
-These functions convert floating-point numbers into various sized integers and
-then pack those integers into a single 32bit unsigned integer. The 'unpack'
-functions perform the opposite operation, returning the original
-floating-point numbers.
+Các hàm này chuyển đổi các số dấu phẩy động thành các số nguyên có nhiều kích thước khác nhau, sau đó đóng gói các số nguyên đó vào một số nguyên không dấu 32 bit duy nhất. Các hàm 'unpack' thực hiện thao tác ngược lại, trả về các số dấu phẩy động ban đầu.
 
 .. table::
     :class: nowrap-col2
@@ -3201,8 +2876,8 @@ floating-point numbers.
 
 .. rst-class:: classref-descriptions-group
 
-Packing and unpacking function descriptions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Mô tả các hàm đóng gói và giải đóng gói
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. _shader_func_packHalf2x16:
 
@@ -3210,19 +2885,13 @@ Packing and unpacking function descriptions
 
 uint **packHalf2x16**\ (\ vec2 v) :ref:`🔗<shader_func_packHalf2x16>`
 
-    Converts two 32-bit floating-point quantities to 16-bit floating-point
-    quantities and packs them into a single 32-bit integer.
+    Chuyển đổi hai giá trị dấu phẩy động 32 bit thành các giá trị dấu phẩy động 16 bit và đóng gói chúng vào một số nguyên 32 bit duy nhất.
 
-    Returns an unsigned integer obtained by converting the components of a two-component floating-point vector to
-    the 16-bit floating-point representation found in the OpenGL Specification, and then packing these two
-    16-bit integers into a 32-bit unsigned integer. The first vector component specifies the 16 least-significant
-    bits of the result; the second component specifies the 16 most-significant bits.
+    Trả về một số nguyên không dấu thu được bằng cách chuyển đổi các thành phần của một vector dấu phẩy động hai thành phần sang biểu diễn dấu phẩy động 16 bit được nêu trong OpenGL Specification, sau đó đóng gói hai số nguyên 16 bit này vào một số nguyên không dấu 32 bit. Thành phần vector thứ nhất chỉ định 16 bit ít quan trọng nhất của kết quả; thành phần thứ hai chỉ định 16 bit quan trọng nhất.
 
-    :param v:
-        A vector of two 32-bit floating-point values that are to be converted to 16-bit representation and packed into the result.
+    :param v:Một vector gồm hai giá trị dấu phẩy động 32 bit cần được chuyển đổi sang biểu diễn 16 bit và đóng gói vào kết quả.
 
-    :return:
-        The packed value.
+    :return:Giá trị đã đóng gói.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/packHalf2x16.xhtml
 
@@ -3239,17 +2908,13 @@ uint **packHalf2x16**\ (\ vec2 v) :ref:`🔗<shader_func_packHalf2x16>`
 
 vec2 **unpackHalf2x16**\ (\ uint v) :ref:`🔗<shader_func_unpackHalf2x16>`
 
-    Inverse of :ref:`packHalf2x16<shader_func_packHalf2x16>`.
+    Phép đảo của :ref:`packHalf2x16 <shader_func_packHalf2x16>`.
 
-    Unpacks a 32-bit integer into two 16-bit floating-point values, converts them to 32-bit floating-point values, and puts them into a vector.
-    The first component of the vector is obtained from the 16 least-significant bits of ``v``; the second component is obtained from the
-    16 most-significant bits of ``v``.
+    Giải đóng gói một số nguyên 32 bit thành hai giá trị dấu phẩy động 16 bit, chuyển đổi chúng thành các giá trị dấu phẩy động 32 bit và đưa chúng vào một vector. Thành phần thứ nhất của vector được lấy từ 16 bit ít quan trọng nhất của ``v``; thành phần thứ hai được lấy từ 16 bit quan trọng nhất của ``v``.
 
-    :param v:
-        A single 32-bit unsigned integer containing 2 packed 16-bit floating-point values.
+    :param v:Một số nguyên không dấu 32 bit duy nhất chứa 2 giá trị dấu phẩy động 16 bit đã đóng gói.
 
-    :return:
-        Two unpacked floating-point values.
+    :return:Hai giá trị dấu phẩy động đã giải đóng gói.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/unpackHalf2x16.xhtml
 
@@ -3266,24 +2931,22 @@ vec2 **unpackHalf2x16**\ (\ uint v) :ref:`🔗<shader_func_unpackHalf2x16>`
 
 uint **packUnorm2x16**\ (\ vec2 v) :ref:`🔗<shader_func_packUnorm2x16>`
 
-    Pack floating-point values into an unsigned integer.
+    Đóng gói các giá trị dấu phẩy động vào một số nguyên không dấu.
 
-    Converts each component of the normalized floating-point value v into 16-bit integer values and then packs the results into a 32-bit unsigned integer.
+    Chuyển đổi từng thành phần của giá trị dấu phẩy động đã chuẩn hóa v thành các giá trị số nguyên 16 bit, sau đó đóng gói các kết quả vào một số nguyên không dấu 32 bit.
 
-    The conversion for component c of ``v`` to fixed-point is performed as follows:
+    Phép chuyển đổi thành phần c của ``v`` sang dạng dấu phẩy tĩnh được thực hiện như sau:
 
     ::
 
         round(clamp(c, 0.0, 1.0) * 65535.0)
 
-    The first component of the vector will be written to the least significant bits of the output; the last component will be written to the most significant bits.
+    Thành phần thứ nhất của vector sẽ được ghi vào các bit ít quan trọng nhất của đầu ra; thành phần cuối cùng sẽ được ghi vào các bit quan trọng nhất.
 
 
-    :param v:
-        A vector of values to be packed into an unsigned integer.
+    :param v:Một vector các giá trị cần được đóng gói vào một số nguyên không dấu.
 
-    :return:
-        Unsigned 32 bit integer containing the packed encoding of the vector.
+    :return:Số nguyên không dấu 32 bit chứa mã hóa đã đóng gói của vector.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/packUnorm.xhtml
 
@@ -3300,19 +2963,17 @@ uint **packUnorm2x16**\ (\ vec2 v) :ref:`🔗<shader_func_packUnorm2x16>`
 
 vec2 **unpackUnorm2x16**\ (\ uint v) :ref:`🔗<shader_func_unpackUnorm2x16>`
 
-    Unpack floating-point values from an unsigned integer.
+    Giải đóng gói các giá trị dấu phẩy động từ một số nguyên không dấu.
 
-    Unpack single 32-bit unsigned integers into a pair of 16-bit unsigned integers.
-    Then, each component is converted to a normalized floating-point value to generate the returned two-component vector.
+    Giải đóng gói các số nguyên không dấu 32 bit đơn thành một cặp số nguyên không dấu 16 bit. Sau đó, mỗi thành phần được chuyển đổi thành một giá trị dấu phẩy động đã chuẩn hóa để tạo ra vector hai thành phần được trả về.
 
-    The conversion for unpacked fixed point value f to floating-point is performed as follows:
+    Phép chuyển đổi giá trị dấu phẩy tĩnh f đã giải đóng gói sang dấu phẩy động được thực hiện như sau:
 
         f / 65535.0
 
-    The first component of the returned vector will be extracted from the least significant bits of the input; the last component will be extracted from the most significant bits.
+    Thành phần thứ nhất của vector được trả về sẽ được trích xuất từ các bit ít quan trọng nhất của đầu vào; thành phần cuối cùng sẽ được trích xuất từ các bit quan trọng nhất.
 
-    :param v:
-        An unsigned integer containing packed floating-point values.
+    :param v:Một số nguyên không dấu chứa các giá trị dấu phẩy động đã đóng gói.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/unpackUnorm.xhtml
 
@@ -3329,23 +2990,21 @@ vec2 **unpackUnorm2x16**\ (\ uint v) :ref:`🔗<shader_func_unpackUnorm2x16>`
 
 uint **packSnorm2x16**\ (\ vec2 v) :ref:`🔗<shader_func_packSnorm2x16>`
 
-    Packs floating-point values into an unsigned integer.
+    Đóng gói các giá trị dấu phẩy động vào một số nguyên không dấu.
 
-    Convert each component of the normalized floating-point value ``v`` into 16-bit integer values and then packs the results into a 32-bit unsigned integer.
+    Chuyển đổi từng thành phần của giá trị dấu phẩy động đã chuẩn hóa ``v`` thành các giá trị số nguyên 16 bit, sau đó đóng gói các kết quả vào một số nguyên không dấu 32 bit.
 
-    The conversion for component c of ``v`` to fixed-point is performed as follows:
+    Phép chuyển đổi thành phần c của ``v`` sang dạng dấu phẩy tĩnh được thực hiện như sau:
 
     ::
 
         round(clamp(c, -1.0, 1.0) * 32767.0)
 
-    The first component of the vector will be written to the least significant bits of the output; the last component will be written to the most significant bits.
+    Thành phần thứ nhất của vector sẽ được ghi vào các bit ít quan trọng nhất của đầu ra; thành phần cuối cùng sẽ được ghi vào các bit quan trọng nhất.
 
-    :param v:
-        A vector of values to be packed into an unsigned integer.
+    :param v:Một vector các giá trị cần được đóng gói vào một số nguyên không dấu.
 
-    :return:
-        Unsigned 32 bit integer containing the packed encoding of the vector.
+    :return:Số nguyên không dấu 32 bit chứa mã hóa đã đóng gói của vector.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/packUnorm.xhtml
 
@@ -3362,19 +3021,17 @@ uint **packSnorm2x16**\ (\ vec2 v) :ref:`🔗<shader_func_packSnorm2x16>`
 
 vec2 **unpackSnorm2x16**\ (\ uint v) :ref:`🔗<shader_func_unpackSnorm2x16>`
 
-    Unpacks floating-point values from an unsigned integer.
+    Giải đóng gói các giá trị dấu phẩy động từ một số nguyên không dấu.
 
-    Unpacks single 32-bit unsigned integers into a pair of 16-bit signed integers.
-    Then, each component is converted to a normalized floating-point value to generate the returned two-component vector.
+    Giải đóng gói các số nguyên không dấu 32 bit đơn thành một cặp số nguyên có dấu 16 bit. Sau đó, mỗi thành phần được chuyển đổi thành một giá trị dấu phẩy động đã chuẩn hóa để tạo ra vector hai thành phần được trả về.
 
-    The conversion for unpacked fixed point value f to floating-point is performed as follows:
+    Phép chuyển đổi giá trị dấu phẩy tĩnh f đã giải đóng gói sang dấu phẩy động được thực hiện như sau:
 
         clamp(f / 32727.0, -1.0, 1.0)
 
-    The first component of the returned vector will be extracted from the least significant bits of the input; the last component will be extracted from the most significant bits.
+    Thành phần thứ nhất của vector được trả về sẽ được trích xuất từ các bit ít quan trọng nhất của đầu vào; thành phần cuối cùng sẽ được trích xuất từ các bit quan trọng nhất.
 
-    :param v:
-        An unsigned integer containing packed floating-point values.
+    :param v:Một số nguyên không dấu chứa các giá trị dấu phẩy động đã đóng gói.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/unpackUnorm.xhtml
 
@@ -3391,24 +3048,22 @@ vec2 **unpackSnorm2x16**\ (\ uint v) :ref:`🔗<shader_func_unpackSnorm2x16>`
 
 uint **packUnorm4x8**\ (\ vec4 v) :ref:`🔗<shader_func_packUnorm4x8>`
 
-    Packs floating-point values into an unsigned integer.
+    Đóng gói các giá trị dấu phẩy động vào một số nguyên không dấu.
 
-    Converts each component of the normalized floating-point value ``v`` into 16-bit integer values and then packs the results into a 32-bit unsigned integer.
+    Chuyển đổi từng thành phần của giá trị dấu phẩy động đã chuẩn hóa ``v`` thành các giá trị số nguyên 16 bit, sau đó đóng gói các kết quả vào một số nguyên không dấu 32 bit.
 
-    The conversion for component c of ``v`` to fixed-point is performed as follows:
+    Phép chuyển đổi thành phần c của ``v`` sang dạng dấu phẩy tĩnh được thực hiện như sau:
 
     ::
 
         round(clamp(c, 0.0, 1.0) * 255.0)
 
-    The first component of the vector will be written to the least significant bits of the output; the last component will be written to the most significant bits.
+    Thành phần thứ nhất của vector sẽ được ghi vào các bit ít quan trọng nhất của đầu ra; thành phần cuối cùng sẽ được ghi vào các bit quan trọng nhất.
 
 
-    :param v:
-        A vector of values to be packed into an unsigned integer.
+    :param v:Một vector các giá trị cần được đóng gói vào một số nguyên không dấu.
 
-    :return:
-        Unsigned 32 bit integer containing the packed encoding of the vector.
+    :return:Số nguyên không dấu 32 bit chứa mã hóa đã đóng gói của vector.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/packUnorm.xhtml
 
@@ -3425,19 +3080,17 @@ uint **packUnorm4x8**\ (\ vec4 v) :ref:`🔗<shader_func_packUnorm4x8>`
 
 vec4 **unpackUnorm4x8**\ (\ uint v) :ref:`🔗<shader_func_unpackUnorm4x8>`
 
-    Unpacks floating-point values from an unsigned integer.
+    Giải đóng gói các giá trị dấu phẩy động từ một số nguyên không dấu.
 
-    Unpacks single 32-bit unsigned integers into four 8-bit unsigned integers.
-    Then, each component is converted to a normalized floating-point value to generate the returned four-component vector.
+    Giải nén các số nguyên không dấu 32-bit đơn lẻ thành bốn số nguyên không dấu 8-bit. Sau đó, mỗi thành phần được chuyển đổi thành giá trị dấu phẩy động chuẩn hóa để tạo ra vector bốn thành phần được trả về.
 
-    The conversion for unpacked fixed point value f to floating-point is performed as follows:
+    Phép chuyển đổi giá trị dấu phẩy tĩnh f đã giải đóng gói sang dấu phẩy động được thực hiện như sau:
 
         f / 255.0
 
-    The first component of the returned vector will be extracted from the least significant bits of the input; the last component will be extracted from the most significant bits.
+    Thành phần thứ nhất của vector được trả về sẽ được trích xuất từ các bit ít quan trọng nhất của đầu vào; thành phần cuối cùng sẽ được trích xuất từ các bit quan trọng nhất.
 
-    :param v:
-        An unsigned integer containing packed floating-point values.
+    :param v:Một số nguyên không dấu chứa các giá trị dấu phẩy động đã đóng gói.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/unpackUnorm.xhtml
 
@@ -3454,24 +3107,22 @@ vec4 **unpackUnorm4x8**\ (\ uint v) :ref:`🔗<shader_func_unpackUnorm4x8>`
 
 uint **packSnorm4x8**\ (\ vec4 v) :ref:`🔗<shader_func_packSnorm4x8>`
 
-    Packs floating-point values into an unsigned integer.
+    Đóng gói các giá trị dấu phẩy động vào một số nguyên không dấu.
 
-    Convert each component of the normalized floating-point value ``v`` into 16-bit integer values and then packs the results into a 32-bit unsigned integer.
+    Chuyển đổi từng thành phần của giá trị dấu phẩy động đã chuẩn hóa ``v`` thành các giá trị số nguyên 16 bit, sau đó đóng gói các kết quả vào một số nguyên không dấu 32 bit.
 
-    The conversion for component c of ``v`` to fixed-point is performed as follows:
+    Phép chuyển đổi thành phần c của ``v`` sang dạng dấu phẩy tĩnh được thực hiện như sau:
 
     ::
 
         round(clamp(c, -1.0, 1.0) * 127.0)
 
-    The first component of the vector will be written to the least significant bits of the output; the last component will be written to the most significant bits.
+    Thành phần thứ nhất của vector sẽ được ghi vào các bit ít quan trọng nhất của đầu ra; thành phần cuối cùng sẽ được ghi vào các bit quan trọng nhất.
 
 
-    :param v:
-        A vector of values to be packed into an unsigned integer.
+    :param v:Một vector các giá trị cần được đóng gói vào một số nguyên không dấu.
 
-    :return:
-        Unsigned 32 bit integer containing the packed encoding of the vector.
+    :return:Số nguyên không dấu 32 bit chứa mã hóa đã đóng gói của vector.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/packUnorm.xhtml
 
@@ -3488,19 +3139,17 @@ uint **packSnorm4x8**\ (\ vec4 v) :ref:`🔗<shader_func_packSnorm4x8>`
 
 vec4 **unpackSnorm4x8**\ (\ uint v) :ref:`🔗<shader_func_unpackSnorm4x8>`
 
-    Unpack floating-point values from an unsigned integer.
+    Giải đóng gói các giá trị dấu phẩy động từ một số nguyên không dấu.
 
-    Unpack single 32-bit unsigned integers into four 8-bit signed integers.
-    Then, each component is converted to a normalized floating-point value to generate the returned four-component vector.
+    Giải nén các số nguyên không dấu 32-bit đơn lẻ thành bốn số nguyên có dấu 8-bit. Sau đó, mỗi thành phần được chuyển đổi thành giá trị dấu phẩy động chuẩn hóa để tạo ra vector bốn thành phần được trả về.
 
-    The conversion for unpacked fixed point value f to floating-point is performed as follows:
+    Phép chuyển đổi giá trị dấu phẩy tĩnh f đã giải đóng gói sang dấu phẩy động được thực hiện như sau:
 
         clamp(f / 127.0, -1.0, 1.0)
 
-    The first component of the returned vector will be extracted from the least significant bits of the input; the last component will be extracted from the most significant bits.
+    Thành phần thứ nhất của vector được trả về sẽ được trích xuất từ các bit ít quan trọng nhất của đầu vào; thành phần cuối cùng sẽ được trích xuất từ các bit quan trọng nhất.
 
-    :param v:
-        An unsigned integer containing packed floating-point values.
+    :param v:Một số nguyên không dấu chứa các giá trị dấu phẩy động đã đóng gói.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/unpackUnorm.xhtml
 
@@ -3524,8 +3173,8 @@ vec4 **unpackSnorm4x8**\ (\ uint v) :ref:`🔗<shader_func_unpackSnorm4x8>`
 
 .. rst-class:: classref-reftable-group
 
-Bitwise functions
--------------------
+Các hàm thao tác bit
+--------------------
 
 .. table::
     :class: nowrap-col2
@@ -3566,8 +3215,8 @@ Bitwise functions
 
 .. rst-class:: classref-descriptions-group
 
-Bitwise function descriptions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Mô tả các hàm thao tác bit
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. _shader_func_bitfieldExtract:
 
@@ -3575,31 +3224,26 @@ Bitwise function descriptions
 
 |vec_int_type| **bitfieldExtract**\ (\ |vec_int_type| value, int offset, int bits) :ref:`🔗<shader_func_bitfieldExtract>`
 
-    Extracts a subset of the bits of ``value`` and returns it in the least significant bits of the result.
-    The range of bits extracted is ``[offset, offset + bits - 1]``.
+    Trích xuất một tập hợp con các bit của ``value`` và trả về tập hợp đó trong các bit ít quan trọng nhất của kết quả. Phạm vi các bit được trích xuất là ``[offset, offset + bits - 1]``.
 
-    The most significant bits of the result will be set to zero.
+    Các bit quan trọng nhất của kết quả sẽ được đặt thành zero.
 
     .. note::
-        If bits is zero, the result will be zero.
+        Nếu bits bằng zero, kết quả sẽ là zero.
 
     .. warning::
-        The result will be undefined if:
+        Kết quả sẽ không xác định nếu:
 
-        - offset or bits is negative.
-        - if the sum of offset and bits is greater than the number of bits used to store the operand.
+        - offset hoặc bits là số âm.
+        - nếu tổng của offset và bits lớn hơn số bit được dùng để lưu toán hạng.
 
-    :param value:
-        The integer from which to extract bits.
+    :param value:Số nguyên mà từ đó các bit được trích xuất.
 
-    :param offset:
-        The index of the first bit to extract.
+    :param offset:Chỉ số của bit đầu tiên cần trích xuất.
 
-    :param bits:
-        The number of bits to extract.
+    :param bits:Số bit cần trích xuất.
 
-    :return:
-        Integer with the requested bits.
+    :return:Số nguyên chứa các bit được yêu cầu.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/bitfieldExtract.xhtml
 
@@ -3614,31 +3258,26 @@ Bitwise function descriptions
 
     |componentwise|
 
-    Extracts a subset of the bits of ``value`` and returns it in the least significant bits of the result.
-    The range of bits extracted is ``[offset, offset + bits - 1]``.
+    Trích xuất một tập hợp con các bit của ``value`` và trả về tập hợp đó trong các bit ít quan trọng nhất của kết quả. Phạm vi các bit được trích xuất là ``[offset, offset + bits - 1]``.
 
-    The most significant bits will be set to the value of ``offset + base - 1`` (i.e., it is sign extended to the width of the return type).
+    Các bit quan trọng nhất sẽ được đặt thành giá trị của ``offset + base - 1`` (tức là được sign extend đến độ rộng của kiểu trả về).
 
     .. note::
-        If bits is zero, the result will be zero.
+        Nếu bits bằng zero, kết quả sẽ là zero.
 
     .. warning::
-        The result will be undefined if:
+        Kết quả sẽ không xác định nếu:
 
-        - offset or bits is negative.
-        - if the sum of offset and bits is greater than the number of bits used to store the operand.
+        - offset hoặc bits là số âm.
+        - nếu tổng của offset và bits lớn hơn số bit được dùng để lưu toán hạng.
 
-    :param value:
-        The integer from which to extract bits.
+    :param value:Số nguyên mà từ đó các bit được trích xuất.
 
-    :param offset:
-        The index of the first bit to extract.
+    :param offset:Chỉ số của bit đầu tiên cần trích xuất.
 
-    :param bits:
-        The number of bits to extract.
+    :param bits:Số bit cần trích xuất.
 
-    :return:
-        Integer with the requested bits.
+    :return:Số nguyên chứa các bit được yêu cầu.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/bitfieldExtract.xhtml
 
@@ -3659,33 +3298,27 @@ Bitwise function descriptions
 
     |componentwise|
 
-    Inserts the ``bits`` least significant bits of ``insert`` into ``base`` at offset ``offset``.
+    Chèn ``bits`` bit ít quan trọng nhất của ``insert`` vào ``base`` tại offset ``offset``.
 
-    The returned value will have bits [offset, offset + bits + 1] taken from [0, bits - 1] of ``insert`` and
-    all other bits taken directly from the corresponding bits of base.
+    Giá trị được trả về sẽ có các bit [offset, offset + bits + 1] được lấy từ [0, bits - 1] của ``insert``, còn tất cả các bit khác được lấy trực tiếp từ các bit tương ứng của base.
 
-    .. note:: If bits is zero, the result will be the original value of base.
+    .. note:: Nếu bits bằng zero, kết quả sẽ là giá trị ban đầu của base.
 
     .. warning::
-        The result will be undefined if:
+        Kết quả sẽ không xác định nếu:
 
-        - offset or bits is negative.
-        - if the sum of offset and bits is greater than the number of bits used to store the operand.
+        - offset hoặc bits là số âm.
+        - nếu tổng của offset và bits lớn hơn số bit được dùng để lưu toán hạng.
 
-    :param base:
-        The integer into which to insert ``insert``.
+    :param base:Số nguyên mà ``insert`` được chèn vào.
 
-    :param insert:
-        The value of the bits to insert.
+    :param insert:Giá trị của các bit cần chèn.
 
-    :param offset:
-        The index of the first bit to insert.
+    :param offset:Chỉ số của bit đầu tiên cần chèn.
 
-    :param bits:
-        The number of bits to insert.
+    :param bits:Số bit cần chèn.
 
-    :return:
-        ``base`` with inserted bits.
+    :return:``base`` với các bit đã chèn.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/bitfieldInsert.xhtml
 
@@ -3706,15 +3339,13 @@ Bitwise function descriptions
 
     |componentwise|
 
-    Reverse the order of bits in an integer.
+    Đảo ngược thứ tự các bit trong một số nguyên.
 
-    The bit numbered ``n`` will be taken from bit ``(bits - 1) - n`` of ``value``, where bits is the total number of bits used to represent ``value``.
+    Bit có số ``n`` sẽ được lấy từ bit ``(bits - 1) - n`` của ``value``, trong đó bits là tổng số bit được dùng để biểu diễn ``value``.
 
-    :param value:
-        The value whose bits to reverse.
+    :param value:Giá trị có các bit cần đảo ngược.
 
-    :return:
-        ``value`` but with its bits reversed.
+    :return:``value`` nhưng với các bit đã được đảo ngược.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/bitfieldReverse.xhtml
 
@@ -3735,13 +3366,11 @@ Bitwise function descriptions
 
     |componentwise|
 
-    Counts the number of 1 bits in an integer.
+    Đếm số bit 1 trong một số nguyên.
 
-    :param value:
-        The value whose bits to count.
+    :param value:Giá trị có các bit cần đếm.
 
-    :return:
-        The number of bits that are set to 1 in the binary representation of ``value``.
+    :return:Số bit được đặt thành 1 trong biểu diễn nhị phân của ``value``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/bitCount.xhtml
 
@@ -3762,15 +3391,13 @@ Bitwise function descriptions
 
     |componentwise|
 
-    Find the index of the least significant bit set to ``1``.
+    Tìm chỉ số của bit ít quan trọng nhất được đặt thành ``1``.
 
-    .. note:: If ``value`` is zero, ``-1`` will be returned.
+    .. note:: Nếu ``value`` bằng không, ``-1`` sẽ được trả về.
 
-    :param value:
-        The value whose bits to scan.
+    :param value:Giá trị có các bit cần quét.
 
-    :return:
-        The bit number of the least significant bit that is set to 1 in the binary representation of value.
+    :return:Số bit của bit ít quan trọng nhất được đặt thành 1 trong biểu diễn nhị phân của value.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/findLSB.xhtml
 
@@ -3791,20 +3418,18 @@ Bitwise function descriptions
 
     |componentwise|
 
-    Find the index of the most significant bit set to 1.
+    Tìm chỉ số của bit quan trọng nhất được đặt thành 1.
 
     .. note::
-        For signed integer types, the sign bit is checked first and then:
-         - For positive integers, the result will be the bit number of the most significant bit that is set to 1.
-         - For negative integers, the result will be the bit number of the most significant bit set to 0.
+        Đối với các kiểu số nguyên có dấu, bit dấu được kiểm tra trước, sau đó:
+         - Đối với số nguyên dương, kết quả sẽ là số bit của bit quan trọng nhất được đặt thành 1.
+         - Đối với số nguyên âm, kết quả sẽ là số bit của bit quan trọng nhất được đặt thành 0.
 
-    .. note:: For a value of zero or negative 1, -1 will be returned.
+    .. note:: Đối với giá trị bằng không hoặc âm 1, -1 sẽ được trả về.
 
-    :param value:
-        The value whose bits to scan.
+    :param value:Giá trị có các bit cần quét.
 
-    :return:
-        The bit number of the most significant bit that is set to 1 in the binary representation of value.
+    :return:Số bit của bit quan trọng nhất được đặt thành 1 trong biểu diễn nhị phân của value.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/findMSB.xhtml
 
@@ -3821,21 +3446,17 @@ Bitwise function descriptions
 
     |componentwise|
 
-    Perform 32-bit by 32-bit signed multiplication to produce a 64-bit result.
+    Thực hiện phép nhân có dấu 32 bit với 32 bit để tạo ra kết quả 64 bit.
 
-    The 32 least significant bits of this product are returned in ``lsb`` and the 32 most significant bits are returned in ``msb``.
+    32 bit ít quan trọng nhất của tích này được trả về trong ``lsb`` và 32 bit quan trọng nhất được trả về trong ``msb``.
 
-    :param x:
-        The first multiplicand.
+    :param x:Thừa số thứ nhất.
 
-    :param y:
-        The second multiplicand.
+    :param y:Thừa số thứ hai.
 
-    :param msb:
-        The variable to receive the most significant word of the product.
+    :param msb:Biến nhận word quan trọng nhất của tích.
 
-    :param lsb:
-        The variable to receive the least significant word of the product.
+    :param lsb:Biến nhận word ít quan trọng nhất của tích.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/umulExtended.xhtml
 
@@ -3852,21 +3473,17 @@ Bitwise function descriptions
 
     |componentwise|
 
-    Perform 32-bit by 32-bit unsigned multiplication to produce a 64-bit result.
+    Thực hiện phép nhân không dấu 32 bit với 32 bit để tạo ra kết quả 64 bit.
 
-    The 32 least significant bits of this product are returned in ``lsb`` and the 32 most significant bits are returned in ``msb``.
+    32 bit ít quan trọng nhất của tích này được trả về trong ``lsb`` và 32 bit quan trọng nhất được trả về trong ``msb``.
 
-    :param x:
-        The first multiplicand.
+    :param x:Thừa số thứ nhất.
 
-    :param y:
-        The second multiplicand.
+    :param y:Thừa số thứ hai.
 
-    :param msb:
-        The variable to receive the most significant word of the product.
+    :param msb:Biến nhận word quan trọng nhất của tích.
 
-    :param lsb:
-        The variable to receive the least significant word of the product.
+    :param lsb:Biến nhận word ít quan trọng nhất của tích.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/umulExtended.xhtml
 
@@ -3883,19 +3500,15 @@ Bitwise function descriptions
 
     |componentwise|
 
-    Add unsigned integers and generate carry.
+    Cộng các số nguyên không dấu và tạo carry.
 
-    adds two 32-bit unsigned integer variables (scalars or vectors) and generates a 32-bit unsigned integer result, along with a carry output.
-    The value carry is .
+    cộng hai biến số nguyên không dấu 32 bit (scalar hoặc vector) và tạo ra một kết quả số nguyên không dấu 32 bit cùng với một đầu ra carry. Giá trị carry là .
 
-    :param x:
-        The first operand.
+    :param x:Toán hạng thứ nhất.
 
-    :param y:
-        The second operand.
+    :param y:Toán hạng thứ hai.
 
-    :param carry:
-        0 if the sum is less than 2\ :sup:`32`, otherwise 1.
+    :param carry:0 nếu tổng nhỏ hơn 2\ :sup:`32`, nếu không thì là 1.
 
     :return:
         ``(x + y) % 2^32``.
@@ -3915,19 +3528,15 @@ Bitwise function descriptions
 
     |componentwise|
 
-    Subtract unsigned integers and generate borrow.
+    Trừ các số nguyên không dấu và tạo borrow.
 
-    :param x:
-        The first operand.
+    :param x:Toán hạng thứ nhất.
 
-    :param y:
-        The second operand.
+    :param y:Toán hạng thứ hai.
 
-    :param borrow:
-        ``0`` if ``x >= y``, otherwise ``1``.
+    :param borrow:``0`` nếu ``x >= y``, nếu không thì ``1``.
 
-    :return:
-        The difference of ``x`` and ``y`` if non-negative, or 2\ :sup:`32` plus that difference otherwise.
+    :return:Hiệu của ``x`` và ``y`` nếu không âm, hoặc 2\ :sup:`32` cộng với hiệu đó trong trường hợp ngược lại.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/usubBorrow.xhtml
 
@@ -3944,17 +3553,14 @@ Bitwise function descriptions
 
     |componentwise|
 
-    Assembles a floating-point number from a value and exponent.
+    Tạo một số dấu phẩy động từ một giá trị và số mũ.
 
     .. warning::
-        If this product is too large to be represented in the floating-point
-        type, the result is undefined.
+        Nếu tích này quá lớn để biểu diễn trong kiểu dấu phẩy động, kết quả là không xác định.
 
-    :param x:
-        The value to be used as a source of significand.
+    :param x:Giá trị được dùng làm nguồn của significand.
 
-    :param exp:
-        The value to be used as a source of exponent.
+    :param exp:Giá trị được dùng làm nguồn của số mũ.
 
     :return:
         ``x * 2^exp``
@@ -3974,24 +3580,21 @@ Bitwise function descriptions
 
     |componentwise|
 
-    Extracts ``x`` into a floating-point significand in the range ``[0.5, 1.0)`` and in integral exponent of two, such that:
+    Trích xuất ``x`` thành một significand dấu phẩy động trong phạm vi ``[0.5, 1.0)`` và một số mũ nguyên của hai, sao cho:
 
     ::
 
         x = significand * 2 ^ exponent
 
-    For a floating-point value of zero, the significand and exponent are both zero.
+    Đối với giá trị dấu phẩy động bằng không, significand và số mũ đều bằng không.
 
-    .. warning:: For a floating-point value that is an infinity or a floating-point NaN, the results are undefined.
+    .. warning:: Đối với giá trị dấu phẩy động là vô cực hoặc NaN dấu phẩy động, kết quả là không xác định.
 
-    :param x:
-        The value from which significand and exponent are to be extracted.
+    :param x:Giá trị từ đó significand và số mũ sẽ được trích xuất.
 
-    :param exp:
-        The variable into which to place the exponent of ``x``.
+    :param exp:Biến dùng để chứa số mũ của ``x``.
 
-    :return:
-        The significand of ``x``.
+    :return:Significand của ``x``.
 
     https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/frexp.xhtml
 
@@ -4003,14 +3606,16 @@ Bitwise function descriptions
 
 
 
-.. |void| replace:: :abbr:`void (No return value.)`
-.. |vec_type| replace:: :abbr:`vec_type (Any of: float, vec2, vec3, vec4)`
-.. |vec_int_type| replace:: :abbr:`vec_int_type (Any of: int, ivec2, ivec3, ivec4)`
-.. |vec_uint_type| replace:: :abbr:`vec_uint_type (Any of: uint, uvec2, uvec3, uvec4)`
-.. |vec_bool_type| replace:: :abbr:`vec_bool_type (Any of: bool, bvec2, bvec3, bvec4)`
-.. |gsampler2D| replace:: :abbr:`gsampler2D (Any of: sampler2D, isampler2D, uSampler2D)`
-.. |gsampler2DArray| replace:: :abbr:`gsampler2DArray (Any of: sampler2DArray, isampler2DArray, uSampler2DArray)`
-.. |gsampler3D| replace:: :abbr:`gsampler3D (Any of: sampler3D, isampler3D, uSampler3D)`
-.. |mat_type| replace:: :abbr:`mat_type (Any of: mat2, mat3, mat4)`
-.. |gvec4_type| replace:: :abbr:`gvec4_type (Any of: vec4, ivec4, uvec4)`
-.. |componentwise| replace:: :ref:`Component-wise Function<shading_componentwise>`.
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`
+.. |vec_type| replace:: :abbr:`vec_type (Một trong các kiểu: float, vec2, vec3, vec4)`
+.. |vec_int_type| replace:: :abbr:`vec_int_type (Một trong các kiểu: int, ivec2, ivec3, ivec4)`
+.. |vec_uint_type| replace:: :abbr:`vec_uint_type (Một trong các kiểu: uint, uvec2, uvec3, uvec4)`
+.. |vec_bool_type| replace:: :abbr:`vec_bool_type (Một trong các kiểu: bool, bvec2, bvec3, bvec4)`
+.. |gsampler2D| replace:: :abbr:`gsampler2D (Một trong các kiểu: sampler2D, isampler2D, uSampler2D)`
+.. |gsampler2DArray| replace:: :abbr:`gsampler2DArray (Một trong các kiểu: sampler2DArray, isampler2DArray, uSampler2DArray)`
+.. |gsampler3D| replace:: :abbr:`gsampler3D (Một trong các kiểu: sampler3D, isampler3D, uSampler3D)`
+.. |mat_type| replace:: :abbr:`mat_type (Một trong các kiểu: mat2, mat3, mat4)`
+.. |gvec4_type| replace:: :abbr:`gvec4_type (Một trong các kiểu: vec4, ivec4, uvec4)`
+.. |componentwise| replace:: :ref:`Hàm theo từng thành phần <shading_componentwise>`.
+
+.. _`GLSL Language Specification`: http://www.opengl.org/registry/doc/GLSLangSpec.4.30.6.pdf
