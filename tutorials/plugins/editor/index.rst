@@ -1,7 +1,7 @@
 :allow_comments: False
 
-Editor plugins
-==============
+Plugin cho trình soạn thảo
+==========================
 
 .. toctree::
    :maxdepth: 1

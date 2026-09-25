@@ -1,330 +1,176 @@
 .. _doc_jitter_stutter:
 
-Fixing jitter, stutter and input lag
-====================================
+Khắc phục hiện tượng giật, khựng hình và độ trễ đầu vào
+=======================================================
 
-What is jitter, stutter and input lag?
---------------------------------------
-
-*Jitter* and *stutter* are two different alterations to visible motion of
-objects on screen that may affect a game, even when running at full speed. These
-effects are mostly visible in games where the world moves at a constant speed in
-a fixed direction, like runners or platformers.
-
-*Input lag* is unrelated to jitter and stutter, but is sometimes discussed
-alongside. Input lag refers to visible on-screen delay when performing actions
-with the mouse, keyboard, controller or touchscreen. It can be related to game
-code, engine code or external factors (such as hardware). Input lag is most
-noticeable in games that use the mouse to aim, such as first-person games.
-Input lag can't be completely eliminated, but it can be reduced in several ways.
-
-Distinguishing between jitter and stutter
+Giật, khựng hình và độ trễ đầu vào là gì?
 -----------------------------------------
 
-A game running at a normal framerate without exhibiting any effect will appear smooth:
+*Giật* và *khựng hình* là hai dạng biến đổi khác nhau của chuyển động hiển thị của các đối tượng trên màn hình, có thể ảnh hưởng đến trò chơi ngay cả khi trò chơi đang chạy ở tốc độ tối đa. Những hiệu ứng này dễ thấy nhất trong các trò chơi mà thế giới di chuyển với tốc độ không đổi theo một hướng cố định, chẳng hạn như game chạy vô tận hoặc game platformer.
+
+*Độ trễ đầu vào* không liên quan đến hiện tượng giật và khựng hình, nhưng đôi khi được thảo luận cùng với chúng. Độ trễ đầu vào là độ trễ có thể nhìn thấy trên màn hình khi thực hiện thao tác bằng chuột, bàn phím, tay cầm hoặc màn hình cảm ứng. Hiện tượng này có thể liên quan đến mã trò chơi, mã engine hoặc các yếu tố bên ngoài (chẳng hạn như phần cứng). Độ trễ đầu vào dễ nhận thấy nhất trong các trò chơi dùng chuột để ngắm, chẳng hạn như game góc nhìn thứ nhất. Không thể loại bỏ hoàn toàn độ trễ đầu vào, nhưng có thể giảm độ trễ theo nhiều cách.
+
+Phân biệt hiện tượng giật và khựng hình
+---------------------------------------
+
+Một trò chơi chạy ở tốc độ khung hình bình thường mà không có bất kỳ hiệu ứng nào sẽ trông mượt mà:
 
 .. image:: img/motion_normal.gif
 
-A game exhibiting *jitter* will shake constantly in a very subtle way:
+Một trò chơi có hiện tượng *giật* sẽ rung liên tục theo một cách rất nhẹ:
 
 .. image:: img/motion_jitter.gif
 
-Finally, a game exhibiting *stutter* will appear smooth, but appear to *stop* or
-*roll back a frame* every few seconds:
+Cuối cùng, một trò chơi có hiện tượng *khựng hình* sẽ trông mượt mà, nhưng có vẻ như *dừng lại* hoặc *quay lui một khung hình* sau mỗi vài giây:
 
 .. image:: img/motion_stutter.gif
 
-Jitter
-------
+Giật
+----
 
-There can be many causes of jitter. The most typical one happens when the game
-*physics frequency* (usually 60 Hz) runs at a different resolution than the
-monitor refresh rate. Check whether your monitor refresh rate is different from
-60 Hz.
+Có thể có nhiều nguyên nhân gây ra hiện tượng giật. Nguyên nhân thường gặp nhất xảy ra khi *tần số vật lý* của trò chơi (thường là 60 Hz) chạy ở độ phân giải khác với tần số quét của màn hình. Hãy kiểm tra xem tần số quét của màn hình có khác 60 Hz hay không.
 
-Sometimes, only some objects appear to jitter (character or background). This
-happens when they are processed in different time sources (one is processed in
-the physics step while another is processed in the idle step).
+Đôi khi, chỉ một số đối tượng có vẻ bị giật (nhân vật hoặc nền). Điều này xảy ra khi chúng được xử lý ở các nguồn thời gian khác nhau (một đối tượng được xử lý trong bước vật lý, còn đối tượng kia được xử lý trong bước idle).
 
-This cause of jitter can be alleviated by enabling
-:ref:`physics interpolation <doc_physics_interpolation_quick_start_guide>`
-in the Project Settings. Physics interpolation will smooth out physics updates by
-interpolating the transforms of physics objects between physics frames.
-This way, the visual representation of physics objects will always look
-smooth no matter the framerate and physics tick rate.
+Có thể giảm bớt nguyên nhân gây giật này bằng cách bật
+:ref:`nội suy vật lý <doc_physics_interpolation_quick_start_guide>` trong Project Settings. Nội suy vật lý sẽ làm mượt các cập nhật vật lý bằng cách nội suy các phép biến đổi của những đối tượng vật lý giữa các khung hình vật lý. Nhờ đó, biểu diễn trực quan của các đối tượng vật lý sẽ luôn trông mượt mà, bất kể tốc độ khung hình và tốc độ tick vật lý.
 
-Enabling physics interpolation has some caveats you should be aware of.
-For example, care should be taken when teleporting objects so that they
-don't visibly interpolate between the old position and new position
-when it's not intended. See the
-:ref:`doc_physics_interpolation` documentation for details.
+Việc bật nội suy vật lý có một số điểm cần lưu ý. Ví dụ, cần cẩn thận khi dịch chuyển tức thời các đối tượng để chúng không bị nội suy một cách dễ thấy giữa vị trí cũ và vị trí mới khi đó không phải là chủ ý. Xem
+:ref:`doc_physics_interpolation` tài liệu để biết thêm chi tiết.
 
 .. note::
 
-    Enabling physics interpolation will increase input lag for behavior
-    that depends on the physics tick, such as player movement.
-    In most games, this is generally preferable to jitter, but consider this carefully
-    for games that operate on a fixed framerate (like fighting or rhythm games).
-    This increase in input lag can be compensated by increasing the physics
-    tick rate as described in the :ref:`doc_jitter_stutter_input_lag` section.
+    Việc bật nội suy vật lý sẽ làm tăng độ trễ đầu vào đối với các hành vi phụ thuộc vào tick vật lý, chẳng hạn như chuyển động của người chơi. Trong hầu hết trò chơi, điều này thường tốt hơn so với hiện tượng giật, nhưng hãy cân nhắc kỹ đối với các trò chơi hoạt động ở tốc độ khung hình cố định (chẳng hạn như game đối kháng hoặc game nhịp điệu). Có thể bù đắp phần độ trễ đầu vào tăng thêm này bằng cách tăng tốc độ tick vật lý như mô tả trong phần :ref:`doc_jitter_stutter_input_lag`.
 
-Stutter
--------
+Khựng hình
+----------
 
-Stutter may happen due to several different reasons. One reason is the game
-not being able to keep full framerate performance due to a CPU or GPU bottleneck.
-Solving this is game-specific and will require
-:ref:`optimization <doc_general_optimization>`.
+Khựng hình có thể xảy ra vì nhiều nguyên nhân khác nhau. Một nguyên nhân là trò chơi không thể duy trì hiệu suất ở tốc độ khung hình tối đa do CPU hoặc GPU bị nghẽn. Cách khắc phục tùy thuộc vào từng trò chơi và sẽ cần đến
+:ref:`tối ưu hóa <doc_general_optimization>`.
 
-Another common reason for stuttering is *shader compilation stutter*. This occurs
-when a shader needs to be compiled when a new material or particle effect is spawned
-for the first time in a game. This kind of stuttering generally only happens on the first
-playthrough, or after a graphics driver update when the shader cache is invalidated.
+Một nguyên nhân phổ biến khác gây khựng hình là *khựng hình do biên dịch shader*. Hiện tượng này xảy ra khi một shader cần được biên dịch vào lần đầu tiên một material hoặc hiệu ứng particle mới được tạo ra trong trò chơi. Kiểu khựng hình này thường chỉ xảy ra trong lần chơi đầu tiên hoặc sau khi cập nhật driver đồ họa, khi bộ nhớ đệm shader bị vô hiệu hóa.
 
-Since Godot 4.4, when using the Forward+ or Mobile renderers, the engine tries to
-avoid shader compilation stutter using an ubershader approach.
-For this approach to be most effective, care must be taken
-when designing scenes and resources so that Godot can gather as much information as
-possible when the scene/resource is loaded, as opposed as to when it's being drawn
-for the first time. See :ref:`doc_pipeline_compilations` for more information.
+Kể từ Godot 4.4, khi sử dụng renderer Forward+ hoặc Mobile, engine cố gắng tránh hiện tượng khựng hình do biên dịch shader bằng cách tiếp cận ubershader. Để cách tiếp cận này đạt hiệu quả cao nhất, cần cẩn thận khi thiết kế các scene và resource để Godot có thể thu thập nhiều thông tin nhất có thể khi scene/resource được tải, thay vì khi chúng được vẽ lần đầu. Xem :ref:`doc_pipeline_compilations` để biết thêm thông tin.
 
-However, when using the Compatibility renderer, it is not possible to use this
-ubershader approach due to technical limitations in OpenGL. Therefore, to avoid
-shader compilation stutter in the Compatibility renderer, you need to spawn every
-mesh and visual effect in front of the camera for a single frame when the level is loading.
-This will ensure the shader is compiled when the level is loaded, as opposed to
-occurring during gameplay. This can be done behind solid 2D UI (such as a fullscreen
-:ref:`class_ColorRect` node) so that it's not visible to the player.
+Tuy nhiên, khi sử dụng renderer Compatibility, không thể dùng cách tiếp cận ubershader này do các hạn chế kỹ thuật trong OpenGL. Vì vậy, để tránh hiện tượng khựng hình do biên dịch shader trong renderer Compatibility, bạn cần tạo mọi mesh và hiệu ứng hình ảnh ở phía trước camera trong một khung hình duy nhất khi level đang tải. Điều này đảm bảo shader được biên dịch khi level được tải, thay vì được biên dịch trong lúc chơi. Bạn có thể thực hiện việc này phía sau UI 2D đặc (chẳng hạn như một
+:ref:`class_ColorRect` node) để người chơi không nhìn thấy.
 
 .. note::
 
-    On platforms that support disabling V-Sync, stuttering can be made less
-    noticeable by disabling V-Sync in the project settings. This will however cause
-    tearing to appear, especially on monitors with low refresh rates. If your
-    monitor supports it, consider enabling variable refresh rate (G-Sync/FreeSync)
-    while leaving V-Sync enabled. This allows mitigating some forms of stuttering
-    without introducing tearing. However, it will not help with large stutters,
-    such as the ones caused by shader compilation stutter.
+    Trên các nền tảng hỗ trợ tắt V-Sync, có thể làm hiện tượng khựng hình khó nhận thấy hơn bằng cách tắt V-Sync trong phần cài đặt dự án. Tuy nhiên, thao tác này sẽ gây ra hiện tượng xé hình, đặc biệt trên các màn hình có tần số quét thấp. Nếu màn hình hỗ trợ, hãy cân nhắc bật tốc độ làm mới biến đổi (G-Sync/FreeSync) đồng thời vẫn bật V-Sync. Cách này giúp giảm một số dạng khựng hình mà không gây xé hình. Tuy nhiên, nó không giúp ích đối với các hiện tượng khựng hình lớn, chẳng hạn như hiện tượng khựng hình do biên dịch shader gây ra.
 
-    Forcing your graphics card to use the maximum performance profile can also help
-    reduce stuttering, at the cost of increased GPU power draw.
+    Buộc card đồ họa sử dụng cấu hình hiệu suất tối đa cũng có thể giúp giảm hiện tượng khựng hình, đổi lại GPU sẽ tiêu thụ nhiều điện hơn.
 
-Additionally, stutter may be induced by the underlying operating system.
-Here is some information regarding stutter on different OSes:
+Ngoài ra, khựng hình có thể do hệ điều hành bên dưới gây ra. Dưới đây là một số thông tin về hiện tượng khựng hình trên các hệ điều hành khác nhau:
 
 Windows
 ~~~~~~~
 
-Windows is known to cause stutter in windowed games. This mostly depends on the
-hardware installed, drivers version and processes running in parallel (e.g.
-having many browser tabs open may cause stutter in a running game). To avoid
-this, Godot raises the game priority to "Above Normal". This helps considerably,
-but may not completely eliminate stutter.
+Windows được biết là có thể gây khựng hình trong các trò chơi chạy ở chế độ cửa sổ. Điều này chủ yếu phụ thuộc vào phần cứng được cài đặt, phiên bản driver và các tiến trình chạy song song (ví dụ: mở nhiều tab trình duyệt có thể gây khựng hình trong trò chơi đang chạy). Để tránh điều này, Godot nâng mức ưu tiên của trò chơi lên "Above Normal". Cách này giúp cải thiện đáng kể, nhưng có thể không loại bỏ hoàn toàn hiện tượng khựng hình.
 
-Eliminating this completely requires giving your game full privileges to become
-"Time Critical", which is not advised. Some games may do it, but it is advised
-to learn to live with this problem, as it is common for Windows games and most
-users won't play games windowed (games that are played in a window, e.g. puzzle
-games, will usually not exhibit this problem anyway).
+Để loại bỏ hoàn toàn hiện tượng này, cần cấp cho trò chơi đầy đủ đặc quyền để trở thành "Time Critical", nhưng không nên làm vậy. Một số trò chơi có thể thực hiện điều đó, nhưng bạn nên học cách chấp nhận vấn đề này, vì đây là hiện tượng phổ biến đối với trò chơi Windows và hầu hết người dùng sẽ không chơi game ở chế độ cửa sổ (các trò chơi được chơi trong cửa sổ, chẳng hạn như game giải đố, thường vốn không gặp vấn đề này).
 
-For fullscreen, Windows gives special priority to the game so stutter is no
-longer visible and very rare. This is how most games are played.
+Ở chế độ toàn màn hình, Windows dành mức ưu tiên đặc biệt cho trò chơi, vì vậy hiện tượng khựng hình sẽ không còn nhìn thấy và rất hiếm xảy ra. Đây là cách hầu hết trò chơi được chơi.
 
-When using a mouse with a polling rate of 1,000 Hz or more, consider using a
-fully up-to-date Windows 11 installation which comes with fixes related to high
-CPU utilization with high polling rate mice. These fixes are not available in
-Windows 10 and older versions.
+Khi sử dụng chuột có polling rate từ 1.000 Hz trở lên, hãy cân nhắc dùng bản cài đặt Windows 11 hoàn toàn cập nhật, vốn có các bản sửa lỗi liên quan đến mức sử dụng CPU cao với chuột có polling rate cao. Các bản sửa lỗi này không có trong Windows 10 và các phiên bản cũ hơn.
 
 .. tip::
 
-    Games should use the **Exclusive Fullscreen** window mode, as opposed to
-    **Fullscreen** which is designed to prevent Windows from automatically
-    treating the window as if it was exclusive fullscreen.
+    Trò chơi nên sử dụng chế độ cửa sổ **Exclusive Fullscreen**, thay vì **Fullscreen**, vốn được thiết kế để ngăn Windows tự động xử lý cửa sổ như thể đó là chế độ toàn màn hình độc quyền.
 
-    **Fullscreen** is meant to be used by GUI applications that want to use
-    per-pixel transparency without a risk of having it disabled by the OS. It
-    achieves this by leaving a 1-pixel line at the bottom of the screen. By
-    contrast, **Exclusive Fullscreen** uses the actual screen size and allows
-    Windows to reduce jitter and input lag for fullscreen games.
+    **Fullscreen** được dùng cho các ứng dụng GUI muốn sử dụng độ trong suốt theo từng pixel mà không có nguy cơ bị hệ điều hành vô hiệu hóa. Chế độ này đạt được điều đó bằng cách chừa lại một dòng 1 pixel ở cuối màn hình. Ngược lại, **Exclusive Fullscreen** sử dụng kích thước màn hình thực tế và cho phép Windows giảm hiện tượng giật cũng như độ trễ đầu vào đối với các trò chơi toàn màn hình.
 
 Linux
 ~~~~~
 
-Stutter may be visible on desktop Linux, but this is usually associated with
-different video drivers and compositors. Some compositors may also trigger this
-problem (e.g. KWin), so it is advised to try using a different one to rule it
-out as the cause. Some window managers such as KWin and Xfwm allow you to
-manually disable compositing, which can improve performance (at the cost of
-tearing).
+Hiện tượng giật hình có thể xuất hiện trên Linux dành cho máy tính để bàn, nhưng thường liên quan đến các driver video và compositor khác nhau. Một số compositor cũng có thể gây ra vấn đề này (ví dụ: KWin), vì vậy bạn nên thử dùng một compositor khác để loại trừ nguyên nhân này. Một số window manager như KWin và Xfwm cho phép bạn tắt compositing theo cách thủ công, việc này có thể cải thiện hiệu năng (đổi lại sẽ xuất hiện hiện tượng xé hình).
 
-There is no workaround for driver or compositor stuttering, other than reporting
-it as an issue to the driver or compositor developers. Stutter may be more
-present when playing in windowed mode as opposed to fullscreen, even with
-compositing disabled.
+Không có cách khắc phục hiện tượng giật hình do driver hoặc compositor, ngoài việc báo cáo vấn đề cho các nhà phát triển driver hoặc compositor. Hiện tượng giật hình có thể rõ rệt hơn khi chạy ở chế độ cửa sổ thay vì toàn màn hình, ngay cả khi đã tắt compositing.
 
-`Feral GameMode <https://github.com/FeralInteractive/gamemode>`__ can be used
-to automatically apply optimizations (such as forcing the GPU performance profile)
-when running specific processes.
+`Feral GameMode <https://github.com/FeralInteractive/gamemode>`__ có thể được dùng để tự động áp dụng các tối ưu hóa (chẳng hạn như buộc GPU sử dụng cấu hình hiệu năng) khi chạy các process cụ thể.
 
 macOS
 ~~~~~
 
-Generally, macOS is stutter-free, although recently some bugs were reported when
-running on fullscreen (this is a macOS bug). If you have a machine exhibiting
-this behavior, please let us know.
+Nhìn chung, macOS không bị giật hình, mặc dù gần đây đã có một số lỗi được báo cáo khi chạy ở chế độ toàn màn hình (đây là lỗi của macOS). Nếu bạn có một máy gặp phải hiện tượng này, vui lòng cho chúng tôi biết.
 
 Android
 ~~~~~~~
 
-Generally, Android is stutter and jitter-free because the running activity gets
-all the priority. That said, there may be problematic devices (older Kindle Fire
-is known to be one). If you see this problem on Android, please let us know.
+Nhìn chung, Android không bị giật hình hoặc rung hình vì activity đang chạy được ưu tiên toàn bộ. Tuy vậy, một số thiết bị có thể gặp vấn đề (Kindle Fire đời cũ là một thiết bị được biết đến với vấn đề này). Nếu bạn gặp vấn đề này trên Android, vui lòng cho chúng tôi biết.
 
 iOS
 ~~~
 
-iOS devices are generally stutter-free, but older devices running newer versions
-of the operating system may exhibit problems. This is generally unavoidable.
+Các thiết bị iOS nhìn chung không bị giật hình, nhưng những thiết bị cũ chạy phiên bản mới hơn của hệ điều hành có thể gặp vấn đề. Nhìn chung, điều này không thể tránh khỏi.
 
 .. _doc_jitter_stutter_input_lag:
 
-Input lag
----------
+Độ trễ đầu vào
+--------------
 
-Project configuration
-~~~~~~~~~~~~~~~~~~~~~
+Cấu hình project
+~~~~~~~~~~~~~~~~
 
-On platforms that support disabling V-Sync, input lag can be made less
-noticeable by disabling V-Sync in the project settings. This will however cause
-tearing to appear, especially on monitors with low refresh rates. It's suggested
-to make V-Sync available as an option for players to toggle.
+Trên các nền tảng hỗ trợ tắt V-Sync, bạn có thể làm cho độ trễ đầu vào ít đáng chú ý hơn bằng cách tắt V-Sync trong cài đặt project. Tuy nhiên, việc này sẽ khiến hiện tượng xé hình xuất hiện, đặc biệt trên các màn hình có tần số quét thấp. Bạn nên cung cấp V-Sync dưới dạng một tùy chọn để người chơi bật hoặc tắt.
 
-When using the Forward+ or Mobile rendering methods, another way to reduce
-visual latency when V-Sync is enabled is to use double-buffered V-Sync instead
-of the default triple-buffered V-Sync. Since Godot 4.3, this can be achieved by
-reducing the **Display > Window > V-Sync > Swapchain Image Count** project
-setting to ``2``.  The downside of using double buffering is that framerate will
-be less stable if the display refresh rate can't be reached due to a CPU or GPU
-bottleneck. For instance, on a 60 Hz display, if the framerate would normally
-drop to 55 FPS during gameplay with triple buffering, it will have to drop down
-to 30 FPS momentarily with double buffering (and then go back to 60 FPS when
-possible). As a result, double-buffered V-Sync is only recommended if you can
-*consistently* reach the display refresh rate on the target hardware.
+Khi sử dụng phương thức render Forward+ hoặc Mobile, một cách khác để giảm độ trễ hình ảnh khi V-Sync được bật là sử dụng V-Sync với bộ đệm kép thay vì V-Sync với bộ đệm ba mặc định. Kể từ Godot 4.3, bạn có thể thực hiện việc này bằng cách giảm cài đặt project **Display > Window > V-Sync > Swapchain Image Count** xuống ``2``. Nhược điểm của bộ đệm kép là tốc độ khung hình sẽ kém ổn định hơn nếu không thể đạt được tần số quét của màn hình do nút thắt cổ chai ở CPU hoặc GPU. Ví dụ, trên màn hình 60 Hz, nếu tốc độ khung hình thường giảm xuống 55 FPS khi chơi game với bộ đệm ba, thì với bộ đệm kép, tốc độ này sẽ phải tạm thời giảm xuống 30 FPS (sau đó trở lại 60 FPS khi có thể). Vì vậy, V-Sync với bộ đệm kép chỉ được khuyến nghị nếu bạn có thể đạt *ổn định* tần số quét của màn hình trên phần cứng mục tiêu.
 
-Increasing the number of physics iterations per second can also reduce
-physics-induced input latency. This is especially noticeable when using physics
-interpolation (which improves smoothness but increases latency). To do so, set
-**Physics > Common > Physics Ticks Per Second** to a value higher than the
-default ``60``, or set ``Engine.physics_ticks_per_second`` at runtime in a
-script. Values that are a multiple of the monitor refresh rate (typically
-``60``) work best when physics interpolation is disabled, as they will avoid
-jitter. This means values such as ``120``, ``180`` and ``240`` are good starting
-points. As a bonus, higher physics FPSes make tunneling and physics instability
-issues less likely to occur.
+Tăng số lần lặp vật lý mỗi giây cũng có thể giảm độ trễ đầu vào do vật lý gây ra. Điều này đặc biệt dễ nhận thấy khi sử dụng nội suy vật lý (giúp chuyển động mượt hơn nhưng làm tăng độ trễ). Để thực hiện việc này, hãy đặt **Physics > Common > Physics Ticks Per Second** thành một giá trị cao hơn mặc định là ``60``, hoặc đặt ``Engine.physics_ticks_per_second`` trong script khi runtime. Các giá trị là bội số của tần số quét màn hình (thường là ``60``) hoạt động tốt nhất khi tắt nội suy vật lý, vì chúng sẽ tránh được hiện tượng rung hình. Điều này có nghĩa là các giá trị như ``120``, ``180`` và ``240`` là những điểm bắt đầu tốt. Ngoài ra, FPS vật lý cao hơn cũng làm giảm khả năng xảy ra các vấn đề xuyên vật thể và mất ổn định vật lý.
 
-The downside of increasing physics FPS is that CPU usage will increase, which
-can lead to performance bottlenecks in games that have heavy physics simulation
-code. This can be alleviated by increasing physics FPS only in situations where
-low latency is critical, or by letting players adjust physics FPS to match their
-hardware. However, different physics FPS will lead to different outcomes in
-physics simulation, even when ``delta`` is consistently used in your game logic.
-This can give certain players an advantage over others. Therefore, allowing the
-player to change the physics FPS themselves should be avoided for competitive
-multiplayer games.
+Nhược điểm của việc tăng FPS vật lý là mức sử dụng CPU sẽ tăng, điều này có thể dẫn đến các nút thắt cổ chai về hiệu năng trong những game có mã mô phỏng vật lý nặng. Bạn có thể giảm tác động này bằng cách chỉ tăng FPS vật lý trong những tình huống mà độ trễ thấp là yếu tố quan trọng, hoặc cho phép người chơi điều chỉnh FPS vật lý để phù hợp với phần cứng của họ. Tuy nhiên, FPS vật lý khác nhau sẽ dẫn đến các kết quả khác nhau trong mô phỏng vật lý, ngay cả khi ``delta`` được sử dụng nhất quán trong logic game. Điều này có thể mang lại lợi thế cho một số người chơi so với những người khác. Vì vậy, không nên cho phép người chơi tự thay đổi FPS vật lý trong các game multiplayer cạnh tranh.
 
-Lastly, you can disable input buffering on a per-rendered frame basis by calling
-``Input.set_use_accumulated_input(false)`` in a script. This will make it so the
-``_input()`` and ``_unhandled_input()`` functions in your scripts are called on
-every input, rather than accumulating inputs and waiting for a frame to be
-rendered. Disabling input accumulation will increase CPU usage, so it should be
-done with caution.
+Cuối cùng, bạn có thể tắt bộ đệm đầu vào trên cơ sở mỗi frame được render bằng cách gọi ``Input.set_use_accumulated_input(false)`` trong một script. Khi đó, các hàm ``_input()`` và ``_unhandled_input()`` trong script của bạn sẽ được gọi cho mỗi input, thay vì tích lũy input và chờ một frame được render. Việc tắt tích lũy input sẽ làm tăng mức sử dụng CPU, vì vậy cần thực hiện một cách thận trọng.
 
 .. tip::
 
-    On any Godot project, you can use the ``--disable-vsync``
-    :ref:`command line argument <doc_command_line_tutorial>` to forcibly disable V-Sync.
-    Since Godot 4.2, ``--max-fps <fps>`` can also be used to set an FPS limit
-    (``0`` is unlimited). These arguments can be used at the same time.
+    Trên bất kỳ project Godot nào, bạn có thể sử dụng ``--disable-vsync``
+    :ref:`command line argument <doc_command_line_tutorial>` để buộc tắt V-Sync. Kể từ Godot 4.2, ``--max-fps <fps>`` cũng có thể được dùng để đặt giới hạn FPS (``0`` là không giới hạn). Bạn có thể sử dụng đồng thời các đối số này.
 
-Hardware/OS-specific
-~~~~~~~~~~~~~~~~~~~~
+Theo phần cứng/hệ điều hành
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If your monitor supports it, consider enabling variable refresh rate
-(G-Sync/FreeSync) while leaving V-Sync enabled, then cap the framerate in the
-project settings to a slightly lower value than your monitor's maximum refresh
-rate as per `this page <https://blurbusters.com/howto-low-lag-vsync-on/>`__.
+Nếu màn hình của bạn hỗ trợ, hãy cân nhắc bật variable refresh rate (G-Sync/FreeSync) trong khi vẫn bật V-Sync, sau đó giới hạn tốc độ khung hình trong cài đặt project ở một giá trị thấp hơn một chút so với tần số quét tối đa của màn hình, như mô tả trên `trang này <https://blurbusters.com/howto-low-lag-vsync-on/>`__.
 
-This may be counterintuitive at first, but capping the FPS below the
-maximum refresh rate range ensures that the OS never has to wait for vertical
-blanking to finish. This leads to *similar* input lag as V-Sync disabled with
-the same framerate cap (usually less than 1 ms greater), but without any
-tearing.
+Điều này thoạt đầu có thể trái với trực giác, nhưng giới hạn FPS thấp hơn phạm vi tần số quét tối đa sẽ đảm bảo hệ điều hành không bao giờ phải chờ quá trình blanking dọc hoàn tất. Nhờ đó, độ trễ đầu vào sẽ *tương tự* như khi tắt V-Sync với cùng giới hạn tốc độ khung hình (thường chỉ cao hơn dưới 1 ms), nhưng không xảy ra hiện tượng xé hình.
 
-The formula used to determine the framerate cap is ``refresh - (refresh * refresh / 3600.0)``
-where ``refresh`` is the monitor's refresh rate in Hz.
-This table shows the framerate cap to use for common refresh rates
-(the cap is rounded down to the nearest integer):
+Công thức được sử dụng để xác định giới hạn tốc độ khung hình là ``refresh - (refresh * refresh / 3600.0)`` trong đó ``refresh`` là tần số quét của màn hình tính bằng Hz. Bảng này cho biết giới hạn tốc độ khung hình cần dùng cho các tần số quét phổ biến (giới hạn được làm tròn xuống số nguyên gần nhất):
 
-+--------------+---------------+
-| Refresh rate | Framerate cap |
-+==============+===============+
-| 60 Hz        | 58 FPS        |
-+--------------+---------------+
-| 75 Hz        | 73 FPS        |
-+--------------+---------------+
-| 120 Hz       | 115 FPS       |
-+--------------+---------------+
-| 144 Hz       | 138 FPS       |
-+--------------+---------------+
-| 165 Hz       | 157 FPS       |
-+--------------+---------------+
-| 240 Hz       | 224 FPS       |
-+--------------+---------------+
-| 360 Hz       | 324 FPS       |
-+--------------+---------------+
-| 480 Hz       | 416 FPS       |
-+--------------+---------------+
++-------------+----------------------------+
+| Tần số quét | Giới hạn tốc độ khung hình |
++=============+============================+
+| 60 Hz       | 58 FPS                     |
++-------------+----------------------------+
+| 75 Hz       | 73 FPS                     |
++-------------+----------------------------+
+| 120 Hz      | 115 FPS                    |
++-------------+----------------------------+
+| 144 Hz      | 138 FPS                    |
++-------------+----------------------------+
+| 165 Hz      | 157 FPS                    |
++-------------+----------------------------+
+| 240 Hz      | 224 FPS                    |
++-------------+----------------------------+
+| 360 Hz      | 324 FPS                    |
++-------------+----------------------------+
+| 480 Hz      | 416 FPS                    |
++-------------+----------------------------+
 
-This framerate cap can be set by changing the **Application > Run > Max FPS**
-project setting or assigning ``Engine.max_fps`` at runtime in a script. At
-higher refresh rates, a lower cap is needed to ensure timing inaccuracies don't
-cause the display to engage V-Sync (which would increase input lag).
+Giới hạn framerate này có thể được thiết lập bằng cách thay đổi cài đặt project **Application > Run > Max FPS** hoặc gán ``Engine.max_fps`` tại runtime trong một script. Ở tần số quét cao hơn, cần giới hạn thấp hơn để đảm bảo các sai số về thời gian không khiến màn hình bật V-Sync (điều này sẽ làm tăng input lag).
 
-On some platforms, you can also opt into a low-latency mode in the graphics
-driver options (such as the NVIDIA Control Panel on Windows). The **Ultra**
-setting will give you the lowest possible latency, at the cost of slightly lower
-average framerates. Forcing the GPU to use the maximum performance profile
-can also further reduce input lag, at the cost of higher power consumption
-(and resulting heat/fan noise).
+Trên một số nền tảng, bạn cũng có thể bật chế độ độ trễ thấp trong các tùy chọn driver đồ họa (chẳng hạn NVIDIA Control Panel trên Windows). Cài đặt **Ultra** sẽ mang lại độ trễ thấp nhất có thể, đổi lại framerate trung bình sẽ thấp hơn một chút. Buộc GPU sử dụng profile hiệu năng tối đa cũng có thể tiếp tục giảm input lag, nhưng sẽ làm tăng mức tiêu thụ điện (và kéo theo nhiệt độ/tiếng ồn quạt cao hơn).
 
-Finally, make sure your monitor is running at its highest possible refresh rate
-in the OS' display settings.
+Cuối cùng, hãy đảm bảo màn hình đang chạy ở tần số quét cao nhất có thể trong cài đặt hiển thị của hệ điều hành.
 
-Also, ensure that your mouse is configured to use its highest polling rate
-(typically 1,000 Hz for gaming mice, sometimes more). High USB polling rates can
-however result in high CPU usage, so 500 Hz may be a safer bet on low-end CPUs.
-If your mouse offers multiple :abbr:`DPI (Dots Per Inch)` settings, consider also
-`using the highest possible setting and reducing in-game sensitivity to reduce mouse latency <https://www.youtube.com/watch?v=6AoRfv9W110>`__.
+Ngoài ra, hãy đảm bảo chuột được cấu hình để sử dụng polling rate cao nhất (thường là 1.000 Hz đối với chuột gaming, đôi khi cao hơn). Tuy nhiên, polling rate USB cao có thể dẫn đến mức sử dụng CPU cao, vì vậy 500 Hz có thể là lựa chọn an toàn hơn trên các CPU cấp thấp. Nếu chuột của bạn cung cấp nhiều cài đặt :abbr:`DPI (Dots Per Inch)`, hãy cân nhắc `using the highest possible setting and reducing in-game sensitivity to reduce mouse latency <https://www.youtube.com/watch?v=6AoRfv9W110>`__.
 
-On Linux when using X11, disabling compositing in window managers that allow it
-(such as KWin or Xfwm) can reduce input lag significantly.
+Trên Linux khi sử dụng X11, việc tắt compositing trong các window manager cho phép thực hiện điều này (chẳng hạn KWin hoặc Xfwm) có thể giảm đáng kể input lag.
 
-Reporting jitter, stutter or input lag problems
------------------------------------------------
+Báo cáo các vấn đề về jitter, stutter hoặc input lag
+----------------------------------------------------
 
-If you are reporting a stutter or jitter problem (opening an issue) not caused
-by any of the above reasons, please specify very clearly all the information
-possible about device, operating system, driver versions, etc. This may help to
-better troubleshoot it.
+Nếu bạn đang báo cáo vấn đề stutter hoặc jitter (mở issue) không do bất kỳ nguyên nhân nào nêu trên gây ra, vui lòng nêu thật rõ tất cả thông tin có thể về thiết bị, hệ điều hành, phiên bản driver, v.v. Điều này có thể giúp việc khắc phục sự cố hiệu quả hơn.
 
-If you are reporting input lag problems, please include a capture made with a
-high speed camera (such as your phone's slow motion video mode). The capture
-**must** have both the screen and the input device visible so that the number of
-frames between an input and the on-screen result can be counted. Also, make
-sure to mention your monitor's refresh rate and your input device's polling rate
-(especially for mice).
+Nếu bạn đang báo cáo vấn đề input lag, vui lòng kèm theo bản ghi được thực hiện bằng camera tốc độ cao (chẳng hạn chế độ quay slow motion trên điện thoại). Bản ghi **must** phải hiển thị cả màn hình và thiết bị nhập để có thể đếm số khung hình giữa một thao tác nhập và kết quả trên màn hình. Ngoài ra, hãy nhớ đề cập tần số quét của màn hình và polling rate của thiết bị nhập (đặc biệt là chuột).
 
-Also, make sure to use the correct term (jitter, stutter, input lag) based on the
-exhibited behavior. This will help understand your issue much faster. Provide a
-project that can be used to reproduce the issue, and if possible, include a
-screen capture demonstrating the bug.
+Ngoài ra, hãy đảm bảo sử dụng đúng thuật ngữ (jitter, stutter, input lag) dựa trên hành vi quan sát được. Điều này sẽ giúp hiểu vấn đề của bạn nhanh hơn nhiều. Hãy cung cấp một project có thể dùng để tái hiện vấn đề và nếu có thể, kèm theo bản ghi màn hình minh họa lỗi.

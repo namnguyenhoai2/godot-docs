@@ -1,17 +1,13 @@
 .. _doc_internationalizing_plugins:
 
-Internationalizing plugins
-==========================
+Quốc tế hóa plugin
+==================
 
-In the same way :ref:`doc_internationalizing_games` works, you can create translations
-for editor plugins. Everything that applies to games also applies to plugins,
-but the process of enabling translations for plugins is slightly different.
+Tương tự như cách :ref:`doc_internationalizing_games` hoạt động, bạn có thể tạo bản dịch cho các editor plugin. Mọi điều áp dụng cho game cũng áp dụng cho plugin, nhưng quy trình bật bản dịch cho plugin hơi khác một chút.
 
-After generating your CSV or POT file and creating translations, you cannot simply
-load the translations in the project settings; instead, you must go through
-the :ref:`class_TranslationServer` to add a new :ref:`class_TranslationDomain`.
+Sau khi tạo tệp CSV hoặc POT và tạo các bản dịch, bạn không thể chỉ cần tải các bản dịch trong phần cài đặt dự án; thay vào đó, bạn phải thông qua :ref:`class_TranslationServer` để thêm một :ref:`class_TranslationDomain` mới.
 
-::
+.. code-block::
 
     func _enter_tree():
         var domain = TranslationServer.get_or_add_domain("addons/my_plugin")
@@ -21,31 +17,27 @@ the :ref:`class_TranslationServer` to add a new :ref:`class_TranslationDomain`.
             if translation:
                 domain.add_translation(translation)
 
-        # Existing plugin initialization...
+        # Đang khởi tạo plugin hiện có...
 
-The above code will load all available translations for your plugin, assuming the translations
-are located in the ``addons/my_plugin/locale`` directory. You should also choose a unique
-translation domain name to avoid collisions with other domains; using your plugin's path
-as the domain name ensures this.
+Đoạn mã trên sẽ tải tất cả bản dịch hiện có cho plugin của bạn, với điều kiện các bản dịch nằm trong thư mục ``addons/my_plugin/locale``. Bạn cũng nên chọn một tên miền bản dịch duy nhất để tránh xung đột với các tên miền khác; sử dụng đường dẫn của plugin làm tên miền sẽ đảm bảo điều này.
 
-If we consider the dock from :ref:`doc_making_plugins_custom_dock`, you now need to tell the dock
-to use this translation domain:
+Nếu xét dock từ :ref:`doc_making_plugins_custom_dock`, giờ bạn cần cho dock biết sử dụng tên miền bản dịch này:
 
-::
+.. code-block::
 
     dock.set_translation_domain("addons/my_plugin")
 
-The last thing you need to do is remove the translation domain when the plugin is disabled:
+Điều cuối cùng bạn cần làm là xóa tên miền bản dịch khi plugin bị vô hiệu hóa:
 
-::
+.. code-block::
 
     func _exit_tree():
-        # Existing plugin cleanup...
+        # Đang dọn dẹp plugin hiện có...
         TranslationServer.remove_domain("addons/my_plugin")
 
-With all of this done, you can change the editor's language to check your translations.
+Sau khi hoàn tất mọi việc, bạn có thể thay đổi ngôn ngữ của editor để kiểm tra các bản dịch.
 
 .. note::
 
-    You will need to disable and re-enable your plugin once, as it needs to call
-    :ref:`_enter_tree() <class_Node_private_method__enter_tree>` in order to load translations.
+    Bạn sẽ cần vô hiệu hóa rồi bật lại plugin một lần, vì plugin cần gọi
+    :ref:`_enter_tree() <class_Node_private_method__enter_tree>` để tải các bản dịch.

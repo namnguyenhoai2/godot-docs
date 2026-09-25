@@ -1,304 +1,202 @@
 .. _doc_hdr_output:
 
-HDR output
+Đầu ra HDR
 ==========
 
-HDR output is a feature that enables presentation of High Dynamic Range (HDR) visuals on
-HDR-capable screens. HDR **output** is not to be confused with the internal HDR rendering that is
-used by Godot for both Standard Dynamic Range (SDR) output and HDR output modes.
+Đầu ra HDR là một tính năng cho phép hiển thị hình ảnh High Dynamic Range (HDR) trên các màn hình hỗ trợ HDR. **Đầu ra HDR** không nên bị nhầm lẫn với quá trình render HDR nội bộ được Godot sử dụng cho cả chế độ đầu ra Standard Dynamic Range (SDR) và HDR.
 
-HDR output is supported on iOS, Linux (Wayland), macOS, visionOS, and Windows. It is not supported
-on Android, Linux (X11), or web.
+Đầu ra HDR được hỗ trợ trên iOS, Linux (Wayland), macOS, visionOS và Windows. Tính năng này không được hỗ trợ trên Android, Linux (X11) hoặc web.
 
 .. note::
 
-    Both Windows 10 and 11 support HDR output, but only Windows 11
-    provides an app that can be used to configure the screen’s maximum
-    luminance that is used by the Godot editor.
+    Cả Windows 10 và 11 đều hỗ trợ đầu ra HDR, nhưng chỉ Windows 11 cung cấp một ứng dụng có thể dùng để cấu hình độ sáng tối đa của màn hình được Godot editor sử dụng.
 
-    On Linux, GNOME versions prior to 50 have a bug that prevents HDR output from working
-    on Wayland. If you are using an older version of GNOME, you will need to
-    upgrade to version 50 or later to use HDR output on Wayland.
+    Trên Linux, các phiên bản GNOME trước 50 có một lỗi khiến đầu ra HDR không hoạt động trên Wayland. Nếu bạn đang sử dụng phiên bản GNOME cũ hơn, bạn sẽ cần nâng cấp lên phiên bản 50 hoặc mới hơn để sử dụng đầu ra HDR trên Wayland.
 
-Enabling HDR output in your project
------------------------------------
+Bật đầu ra HDR trong project của bạn
+------------------------------------
 
-You can enable HDR output in any new or existing project using these steps:
+Bạn có thể bật đầu ra HDR trong bất kỳ project mới hoặc hiện có nào bằng các bước sau:
 
-1. Ensure *no* :ref:`Environment<class_environment>` resources use SDR-only features:
+1. Đảm bảo *không* :ref:`Environment<class_environment>` tài nguyên nào sử dụng các tính năng chỉ dành cho SDR:
 
-- Tonemap Mode: Filmic or ACES
+- Tonemap Mode: Filmic hoặc ACES
 - Glow Blend Mode: Soft Light
 - Adjustments: Color Correction
 
-2. Configure the :ref:`Renderer<class_ProjectSettings_property_rendering/renderer/rendering_method>`
-   project setting to ``mobile`` or ``forward_plus``.
-3. Configure the :ref:`Rendering Device Driver<class_ProjectSettings_property_rendering/rendering_device/driver>`
-   advanced project setting to ``metal`` for iOS and ``d3d12`` for Windows.
-4. Configure the :ref:`Display Server Driver.linuxbsd<class_ProjectSettings_property_display/display_server/driver.linuxbsd>`
-   advanced project setting to ``wayland`` and enable the :ref:`Prefer Wayland<class_EditorSettings_property_run/platforms/linuxbsd/prefer_wayland>`
-   editor setting.
-5. Turn on the :ref:`HDR 2D<class_ProjectSettings_property_rendering/viewport/hdr_2d>` project
-   setting and enable :ref:`use_hdr_2d<class_Viewport_property_use_hdr_2d>` for all
-   :ref:`SubViewports <class_SubViewport>` and :ref:`Windows <class_Window>` that should support
-   HDR output.
-6. Turn on the :ref:`Request HDR Output <class_ProjectSettings_property_display/window/hdr/request_hdr_output>`
-   project setting and enable :ref:`hdr_output_requested<class_Window_property_hdr_output_requested>`
-   for all other :ref:`Windows <class_Window>` that should support HDR output.
-7. *[Optional]* Provide in-game HDR settings by copying the example from the
-   `HDR output demo project <https://github.com/godotengine/godot-demo-projects/tree/master/misc/hdr_output>`__
-   to your project.
+2. Cấu hình thiết lập project :ref:`Renderer<class_ProjectSettings_property_rendering/renderer/rendering_method>` thành ``mobile`` hoặc ``forward_plus``.
+3. Cấu hình thiết lập project nâng cao :ref:`Rendering Device Driver <class_ProjectSettings_property_rendering/rendering_device/driver>` thành ``metal`` cho iOS và ``d3d12`` cho Windows.
+4. Cấu hình thiết lập project nâng cao :ref:`Display Server Driver.linuxbsd <class_ProjectSettings_property_display/display_server/driver.linuxbsd>` thành ``wayland`` và bật thiết lập editor :ref:`Prefer Wayland <class_EditorSettings_property_run/platforms/linuxbsd/prefer_wayland>`.
+5. Bật thiết lập project :ref:`HDR 2D <class_ProjectSettings_property_rendering/viewport/hdr_2d>` và bật :ref:`use_hdr_2d<class_Viewport_property_use_hdr_2d>` cho tất cả
+   :ref:`SubViewports <class_SubViewport>` và :ref:`Windows <class_Window>` cần hỗ trợ đầu ra HDR.
+6. Bật thiết lập project :ref:`Request HDR Output <class_ProjectSettings_property_display/window/hdr/request_hdr_output>` và bật :ref:`hdr_output_requested<class_Window_property_hdr_output_requested>` cho tất cả :ref:`Windows <class_Window>` khác cần hỗ trợ đầu ra HDR.
+7. *[Tùy chọn]* Cung cấp các thiết lập HDR trong game bằng cách sao chép ví dụ từ `HDR output demo project <https://github.com/godotengine/godot-demo-projects/tree/master/misc/hdr_output>`__ vào project của bạn.
 
 .. note::
 
-   Some of these settings may already be configured correctly for HDR output in your project. For
-   example, the Windows Rendering Device Driver is set to ``d3d12`` in projects created in Godot
-   4.6 onwards, but will need to be changed if the project was created with an older version of
-   Godot.
+   Một số thiết lập này có thể đã được cấu hình chính xác cho đầu ra HDR trong project của bạn. Ví dụ: Windows Rendering Device Driver được đặt thành ``d3d12`` trong các project được tạo bằng Godot 4.6 trở lên, nhưng sẽ cần được thay đổi nếu project được tạo bằng phiên bản Godot cũ hơn.
 
-Using HDR output in Godot
--------------------------
+Sử dụng đầu ra HDR trong Godot
+------------------------------
 
-Try out the `HDR output demo project <https://github.com/godotengine/godot-demo-projects/tree/master/misc/hdr_output>`__
-as a first step to using HDR output in Godot. This demo contains examples of the concepts
-described on this page and will help you ensure that your development environment is correctly
-configured for HDR output.
+Hãy thử `HDR output demo project <https://github.com/godotengine/godot-demo-projects/tree/master/misc/hdr_output>`__ như bước đầu tiên để sử dụng đầu ra HDR trong Godot. Demo này chứa các ví dụ về những khái niệm được mô tả trên trang này và sẽ giúp bạn đảm bảo rằng môi trường phát triển của mình được cấu hình chính xác cho đầu ra HDR.
 
-HDR output in the Godot editor
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Đầu ra HDR trong Godot editor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Godot editor will use HDR output for its main window when the :ref:`Request HDR Output <class_ProjectSettings_property_display/window/hdr/request_hdr_output>`
-project setting has been
-enabled. You can tell if your game is running in SDR or HDR output mode based on the text on the
-right side of game view toolbar: Your game is running in HDR mode when the text "HDR" appears next
-to the window size.
+Godot editor sẽ sử dụng đầu ra HDR cho cửa sổ chính khi thiết lập project :ref:`Request HDR Output <class_ProjectSettings_property_display/window/hdr/request_hdr_output>` đã được bật. Bạn có thể biết game của mình đang chạy ở chế độ đầu ra SDR hay HDR dựa trên dòng chữ ở bên phải thanh công cụ game view: Game của bạn đang chạy ở chế độ HDR khi dòng chữ "HDR" xuất hiện bên cạnh kích thước cửa sổ.
 
 .. image:: img/rendering_hdr_output_game_view.webp
 
-The number in parentheses next to the "HDR" text is the current :ref:`output max linear value<class_Window_method_get_output_max_linear_value>`
-which is described in the following sections. You can toggle the game's
-:ref:`Window.hdr_output_requested<class_Window_property_hdr_output_requested>` property in the game
-window options menu:
+Con số trong ngoặc đơn bên cạnh dòng chữ "HDR" là :ref:`giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>` hiện tại, được mô tả trong các phần sau. Bạn có thể bật hoặc tắt
+:ref:`Window.hdr_output_requested<class_Window_property_hdr_output_requested>` trong menu tùy chọn cửa sổ game:
 
 .. image:: img/rendering_hdr_output_game_window_options.webp
 
-HDR output fundamentals
------------------------
+Kiến thức cơ bản về đầu ra HDR
+------------------------------
 
-Godot uses the `Extended Dynamic Range (EDR) <https://developer.apple.com/videos/play/wwdc2021/10161/>`__
-paradigm for HDR output. While SDR
-output allows color component values between ``0.0`` and ``1.0`` to be displayed, HDR output
-allows values higher than ``1.0``. The maximum value that can be displayed is provided by
-:ref:`Window.get_output_max_linear_value()<class_Window_method_get_output_max_linear_value>` and
-this method is valid when using SDR or HDR.
+Godot sử dụng mô hình `Extended Dynamic Range (EDR) <https://developer.apple.com/videos/play/wwdc2021/10161/>`__ cho đầu ra HDR. Trong khi đầu ra SDR cho phép hiển thị các giá trị thành phần màu từ ``0.0`` đến ``1.0``, đầu ra HDR cho phép hiển thị các giá trị lớn hơn ``1.0``. Giá trị tối đa có thể hiển thị được cung cấp bởi
+:ref:`Window.get_output_max_linear_value()<class_Window_method_get_output_max_linear_value>` và phương thức này hợp lệ khi sử dụng SDR hoặc HDR.
 
 .. image:: img/rendering_hdr_output_fundamentals.webp
 
 .. note::
 
-   These graphs are presented as SDR images that do not contain any HDR color. To compensate for
-   this limitation, the grayscale bars along each axis have a glow effect applied to represent
-   values that are outside of the SDR range. The "output max value" in this graph represents the
-   maximum linear color component value returned by
+   Các biểu đồ này được trình bày dưới dạng hình ảnh SDR không chứa bất kỳ màu HDR nào. Để bù đắp cho hạn chế này, các thanh thang độ xám dọc theo mỗi trục được áp dụng hiệu ứng phát sáng nhằm biểu thị các giá trị nằm ngoài phạm vi SDR. "Giá trị tối đa của đầu ra" trong biểu đồ này biểu thị giá trị thành phần màu tuyến tính tối đa được trả về bởi
    :ref:`Window.get_output_max_linear_value()<class_Window_method_get_output_max_linear_value>`.
 
-Designing for HDR output
-------------------------
+Thiết kế cho đầu ra HDR
+-----------------------
 
-There are two primary approaches to make the most of HDR output: using the
-:ref:`output max linear value<class_Window_method_get_output_max_linear_value>` and using
-tonemapping.
+Có hai phương pháp chính để tận dụng tối đa đầu ra HDR: sử dụng
+:ref:`giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>` và sử dụng tonemapping.
 
-While both approaches can be used in the same project, tonemapping should be used to produce HDR
-output from a :ref:`Viewport<class_Viewport>` that uses lighting that exceeds the capabilities of an
-SDR screen, indirect lighting, global illumination, emissive materials, post-processing effects, or
-any other techniques that make use of the colors values in the scene.
+Mặc dù cả hai phương pháp có thể được sử dụng trong cùng một project, tonemapping nên được dùng để tạo đầu ra HDR từ một :ref:`Viewport<class_Viewport>` sử dụng ánh sáng vượt quá khả năng của màn hình SDR, ánh sáng gián tiếp, global illumination, vật liệu phát sáng, hiệu ứng hậu kỳ hoặc bất kỳ kỹ thuật nào khác tận dụng các giá trị màu trong cảnh.
 
-The :ref:`output max linear value<class_Window_method_get_output_max_linear_value>` should only be
-used to present colors directly to the screen without tonemapping and without influencing lighting,
-post-processing effects, or surrounding color. This makes the
-:ref:`output max linear value<class_Window_method_get_output_max_linear_value>` well suited for
-:ref:`CanvasItems<class_CanvasItem>` or unshaded materials in a scene that has no lighting or basic
-lighting that otherwise does not exceed the capabilities of an SDR screen.
+:ref:`Giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>` chỉ nên được sử dụng để hiển thị màu trực tiếp lên màn hình mà không sử dụng tonemapping và không ảnh hưởng đến ánh sáng, hiệu ứng hậu kỳ hoặc màu xung quanh. Điều này khiến
+:ref:`giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>` rất phù hợp cho
+:ref:`CanvasItems<class_CanvasItem>` hoặc các vật liệu không đổ bóng trong một cảnh không có ánh sáng hoặc có ánh sáng cơ bản nhưng không vượt quá khả năng của màn hình SDR.
 
-The :ref:`Viewport.own_world_3d<class_Viewport_property_own_world_3d>` property can be used to
-separate which :ref:`Viewports<class_Viewport>` are affected by tonemapping and other
-:ref:`class_WorldEnvironment` effects.
+Thuộc tính :ref:`Viewport.own_world_3d<class_Viewport_property_own_world_3d>` có thể được sử dụng để phân tách các :ref:`Viewports<class_Viewport>` chịu ảnh hưởng của tonemapping và các
+:ref:`class_WorldEnvironment` hiệu ứng khác.
 
-Using output max linear value
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Sử dụng giá trị tuyến tính tối đa của đầu ra
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In a traditional SDR-only game, the brightest presentation of a color is limited by either the
-red, green, or blue component of the color reaching a maximum of ``1.0``. When using a modern HDR
-screen this limitation no longer applies and color components above ``1.0`` can be accurately
-presented. Godot provides the maximum color component value that can be presented by the screen
-through the :ref:`output max linear value<class_Window_method_get_output_max_linear_value>`. This
-value can be used in both SDR and HDR, which makes it easy to build your game for both output
-modes without needing to change behavior based on whether or not HDR output is enabled.
+Trong một game truyền thống chỉ sử dụng SDR, khả năng hiển thị màu sáng nhất bị giới hạn bởi việc một trong các thành phần đỏ, xanh lá hoặc xanh dương của màu đạt tối đa ``1.0``. Khi sử dụng màn hình HDR hiện đại, giới hạn này không còn áp dụng và các thành phần màu lớn hơn ``1.0`` có thể được hiển thị chính xác. Godot cung cấp giá trị thành phần màu tối đa mà màn hình có thể hiển thị thông qua :ref:`giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>`. Giá trị này có thể được sử dụng trong cả SDR và HDR, nhờ đó bạn có thể dễ dàng xây dựng game cho cả hai chế độ đầu ra mà không cần thay đổi hành vi dựa trên việc đầu ra HDR có được bật hay không.
 
-The :ref:`output max linear value<class_Window_method_get_output_max_linear_value>` may change
-often as the player adjusts their device brightness, enables or disables HDR output on their
-device, or moves the game window between screens, so it's important to retrieve this value every
-frame or use the :ref:`output max linear value changed<class_Window_signal_output_max_linear_value_changed>`
-signal. The value will always equal ``1.0`` in SDR mode and may also equal ``1.0`` when HDR output
-is enabled and the player has adjusted their screen to its maximum brightness.
+:ref:`giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>` có thể thay đổi thường xuyên khi người chơi điều chỉnh độ sáng thiết bị, bật hoặc tắt đầu ra HDR trên thiết bị, hoặc di chuyển cửa sổ trò chơi giữa các màn hình, vì vậy điều quan trọng là phải lấy giá trị này ở mỗi frame hoặc sử dụng tín hiệu :ref:`giá trị tuyến tính tối đa của đầu ra đã thay đổi <class_Window_signal_output_max_linear_value_changed>`. Giá trị này luôn bằng ``1.0`` ở chế độ SDR và cũng có thể bằng ``1.0`` khi đầu ra HDR được bật và người chơi đã điều chỉnh màn hình đến độ sáng tối đa.
 
-It is best to use this :ref:`output max linear value<class_Window_method_get_output_max_linear_value>`
-with "highlights" and special effects that
-are either brief or involve a small portion of the screen; if the majority of the screen is
-presented at this maximum brightness for more than a short time, it will cause the game to appear
-uncomfortably bright, as if the game is ignoring the device brightness setting. You may also find
-that some effects look best when limited to a maximum linear value that is greater than ``1.0``,
-but less than the :ref:`output max linear value<class_Window_method_get_output_max_linear_value>`.
-You can read more about how it is sometimes desirable to limit the maximum HDR value in the
-`HDR and User Interfaces <https://android-developers.googleblog.com/2025/09/hdr-and-user-interfaces.html>`__
-post of the Android Developers Blog.
+Tốt nhất nên sử dụng :ref:`giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>` này với các "điểm sáng" và hiệu ứng đặc biệt có thời lượng ngắn hoặc chỉ chiếm một phần nhỏ màn hình; nếu phần lớn màn hình được hiển thị ở độ sáng tối đa này trong thời gian dài hơn một khoảng ngắn, trò chơi sẽ trông sáng đến mức khó chịu, như thể trò chơi đang bỏ qua cài đặt độ sáng của thiết bị. Bạn cũng có thể thấy một số hiệu ứng trông đẹp nhất khi bị giới hạn ở một giá trị tuyến tính tối đa lớn hơn ``1.0``, nhưng nhỏ hơn :ref:`giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>`. Bạn có thể đọc thêm về việc đôi khi nên giới hạn giá trị HDR tối đa trong bài đăng `HDR và Giao diện người dùng <https://android-developers.googleblog.com/2025/09/hdr-and-user-interfaces.html>`__ trên Android Developers Blog.
 
-Transforming a color to be the brightest the screen can present can be done with a script. When
-working with :ref:`class_CanvasItem`, it may be convenient to apply the resulting modified color
-to the :ref:`modulate<class_canvasitem_property_modulate>` or
-:ref:`self_modulate<class_canvasitem_property_self_modulate>` property with the base color of the
-:ref:`class_CanvasItem` set to :ref:`white<class_color_constant_white>`. The following script
-demonstrates this:
+Có thể dùng một script để biến đổi màu thành màu sáng nhất mà màn hình có thể hiển thị. Khi làm việc với :ref:`class_CanvasItem`, việc áp dụng màu đã chỉnh sửa thu được cho :ref:`modulate<class_canvasitem_property_modulate>` có thể thuận tiện, hoặc
+:ref:`self_modulate<class_canvasitem_property_self_modulate>` thuộc tính với màu cơ sở của
+:ref:`class_CanvasItem` được đặt thành :ref:`white<class_color_constant_white>`. Script sau đây minh họa cách thực hiện:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-	extends CanvasItem
+    extends CanvasItem
 
-	# Set this to your desired color when the CanvasItem's base color is white.
-	@export var sdr_self_modulate: Color = Color.WHITE
+    # Đặt giá trị này thành màu mong muốn khi màu cơ sở của CanvasItem là màu trắng.
+    @export var sdr_self_modulate: Color = Color.WHITE
 
-	# Set this to -1.0 to disable limiting the maximum color value.
-	@export_range(0, 20, 0.1, "or_less", "or_greater") var max_linear_value_limit: float = -1.0
-
-
-	func _enter_tree() -> void:
-		var window: Window = get_window()
-		window.output_max_linear_value_changed.connect(_on_output_max_linear_value_changed)
-		_on_output_max_linear_value_changed(window.get_output_max_linear_value())
+    # Đặt giá trị này thành -1.0 để tắt giới hạn giá trị màu tối đa.
+    @export_range(0, 20, 0.1, "or_less", "or_greater") var max_linear_value_limit: float = -1.0
 
 
-	func _exit_tree() -> void:
-		get_window().output_max_linear_value_changed.disconnect(_on_output_max_linear_value_changed)
+    func _enter_tree() -> void:
+        var window: Window = get_window()
+        window.output_max_linear_value_changed.connect(_on_output_max_linear_value_changed)
+        _on_output_max_linear_value_changed(window.get_output_max_linear_value())
 
 
-	func _on_output_max_linear_value_changed(output_max_linear_value: float) -> void:
-		# Adjust the brightness of color to be the brightest possible, regardless
-		# of SDR or HDR output, but no brighter than max_linear_value_limit.
-		if max_linear_value_limit >= 0.0:
-			output_max_linear_value = minf(output_max_linear_value, max_linear_value_limit)
-		self_modulate = normalize_color(sdr_self_modulate, output_max_linear_value)
+    func _exit_tree() -> void:
+        get_window().output_max_linear_value_changed.disconnect(_on_output_max_linear_value_changed)
 
 
-	func normalize_color(srgb_color, output_max_linear_value = 1.0):
-		# Color must be linear-encoded to use math operations.
-		var linear_color = srgb_color.srgb_to_linear()
-		var max_rgb_value = maxf(linear_color.r, maxf(linear_color.g, linear_color.b))
-		var brightness_scale = output_max_linear_value / max_rgb_value
-		linear_color *= brightness_scale
-		# Undo changes to the alpha channel, which should not be modified.
-		linear_color.a = srgb_color.a
-		# Convert back to nonlinear sRGB encoding, which is required for Color in
-		# Godot unless stated otherwise.
-		return linear_color.linear_to_srgb()
+    func _on_output_max_linear_value_changed(output_max_linear_value: float) -> void:
+        # Điều chỉnh độ sáng của màu để đạt mức sáng nhất có thể, bất kể
+        # đầu ra SDR hay HDR, nhưng không sáng hơn max_linear_value_limit.
+        if max_linear_value_limit >= 0.0:
+            output_max_linear_value = minf(output_max_linear_value, max_linear_value_limit)
+        self_modulate = normalize_color(sdr_self_modulate, output_max_linear_value)
 
-The `HDR output demo project <https://github.com/godotengine/godot-demo-projects/tree/master/misc/hdr_output>`__
-includes more advanced versions of this script and examples of how this approach can be used in your project.
 
-Using Tonemapping
-^^^^^^^^^^^^^^^^^
+    func normalize_color(srgb_color, output_max_linear_value = 1.0):
+        # Màu phải được mã hóa tuyến tính để sử dụng các phép toán.
+        var linear_color = srgb_color.srgb_to_linear()
+        var max_rgb_value = maxf(linear_color.r, maxf(linear_color.g, linear_color.b))
+        var brightness_scale = output_max_linear_value / max_rgb_value
+        linear_color *= brightness_scale
+        # Hoàn tác các thay đổi đối với kênh alpha, vốn không được sửa đổi.
+        linear_color.a = srgb_color.a
+        # Chuyển đổi lại sang mã hóa sRGB phi tuyến, vốn được yêu cầu đối với Color trong
+        # Godot trừ khi có quy định khác.
+        return linear_color.linear_to_srgb()
 
-To produce HDR output without using the :ref:`output max linear value<class_Window_method_get_output_max_linear_value>`
-your scenes will need color values
-that exceed what an SDR screen can present, so it is important to use a tonemapper like
-:ref:`Reinhard<class_Environment_constant_tone_mapper_reinhardt>` or
-:ref:`AgX<class_Environment_constant_tone_mapper_agx>` to handle display of these bright scene
-values on both SDR and HDR screens.
+Dự án `demo đầu ra HDR <https://github.com/godotengine/godot-demo-projects/tree/master/misc/hdr_output>`__ có các phiên bản nâng cao hơn của script này cùng các ví dụ về cách sử dụng phương pháp này trong dự án của bạn.
 
-**Tonemapping and HDR**
+Sử dụng Tonemapping
+^^^^^^^^^^^^^^^^^^^
 
-The primary role of a tonemapper is to reduce the dynamic range of a natural scene with a very
-high dynamic range of brightness to a smaller dynamic range that can be presented on a screen.
-Tonemappers in Godot use the :ref:`output max linear value<class_Window_method_get_output_max_linear_value>`
-to determine the output range that the screen is capable of presenting. For example, with the
-:ref:`Reinhard<class_Environment_constant_tone_mapper_reinhardt>` tonemapper in Godot, linear
-scene values in the range of ``0.0`` to :ref:`tonemap white<class_Environment_property_tonemap_white>`
-are mapped to an output range of ``0.0`` to
-:ref:`output max linear value<class_Window_method_get_output_max_linear_value>`.
+Để tạo đầu ra HDR mà không sử dụng :ref:`giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>`, các scene của bạn sẽ cần những giá trị màu vượt quá khả năng hiển thị của màn hình SDR, vì vậy điều quan trọng là sử dụng một tonemapper như
+:ref:`Reinhard<class_Environment_constant_tone_mapper_reinhardt>` hoặc
+:ref:`AgX<class_Environment_constant_tone_mapper_agx>` để xử lý việc hiển thị các giá trị sáng này của scene trên cả màn hình SDR và HDR.
+
+**Tonemapping và HDR**
+
+Vai trò chính của tonemapper là giảm dải động của một scene tự nhiên có dải động độ sáng rất cao xuống một dải động nhỏ hơn có thể hiển thị trên màn hình. Tonemapper trong Godot sử dụng :ref:`giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>` để xác định dải đầu ra mà màn hình có khả năng hiển thị. Ví dụ, với tonemapper
+:ref:`Reinhard<class_Environment_constant_tone_mapper_reinhardt>` trong Godot, các giá trị tuyến tính của scene trong phạm vi từ ``0.0`` đến :ref:`trắng của tonemap <class_Environment_property_tonemap_white>` được ánh xạ vào một dải đầu ra từ ``0.0`` đến
+:ref:`giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>`.
 
 .. image:: img/rendering_hdr_output_sdr_tonemap.webp
 
-With this approach, you can adjust :ref:`tonemap white<class_Environment_property_tonemap_white>`
-to be sure that any linear scene value below :ref:`tonemap white<class_Environment_property_tonemap_white>`
-will be shown without clipping. This ensures that details are not lost when presenting the image
-on a screen with a lower dynamic range than the original scene.
+Với phương pháp này, bạn có thể điều chỉnh :ref:`trắng của tonemap <class_Environment_property_tonemap_white>` để đảm bảo rằng mọi giá trị tuyến tính của scene nhỏ hơn :ref:`trắng của tonemap <class_Environment_property_tonemap_white>` sẽ được hiển thị mà không bị cắt ngưỡng. Điều này đảm bảo các chi tiết không bị mất khi hiển thị hình ảnh trên màn hình có dải động thấp hơn scene gốc.
 
 .. image:: img/rendering_hdr_output_tonemap_white.jpg
 
-While this behavior is perfectly stable in SDR, where the :ref:`output max linear value<class_Window_method_get_output_max_linear_value>`
-is fixed at ``1.0``, this behavior is dynamic with HDR based on the capabilities of the screen:
+Trong SDR, hành vi này hoàn toàn ổn định vì :ref:`giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>` được cố định ở ``1.0``, nhưng trong HDR, hành vi này thay đổi tùy theo khả năng của màn hình:
 
 .. image:: img/rendering_hdr_output_hdr_tonemap.webp
 
-As shown in the graphs above, the
-:ref:`Reinhard<class_Environment_constant_tone_mapper_reinhardt>` tonemapper will behave the same
-as the :ref:`Linear<class_Environment_constant_tone_mapper_linear>` tonemapper when
-:ref:`output max linear value<class_Window_method_get_output_max_linear_value>` is equal to or higher than
-:ref:`tonemap white<class_Environment_property_tonemap_white>`. This allows for accurate color
-reproduction on HDR screens that are capable of reproducing the original brighter scene values.
-When :ref:`output max linear value<class_Window_method_get_output_max_linear_value>` has increased
-to be higher than :ref:`tonemap white<class_Environment_property_tonemap_white>`, tonemap white
-will be adjusted to match this output max linear value.
+Như được thể hiện trong các biểu đồ ở trên,
+:ref:`Reinhard<class_Environment_constant_tone_mapper_reinhardt>` tonemapper sẽ hoạt động giống như :ref:`Linear<class_Environment_constant_tone_mapper_linear>` tonemapper khi
+:ref:`giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>` bằng hoặc cao hơn
+:ref:`trắng của tonemap <class_Environment_property_tonemap_white>`. Điều này cho phép tái tạo màu chính xác trên các màn hình HDR có khả năng tái tạo những giá trị sáng hơn ban đầu của scene. Khi :ref:`giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>` tăng lên cao hơn :ref:`trắng của tonemap <class_Environment_property_tonemap_white>`, trắng của tonemap sẽ được điều chỉnh để khớp với giá trị tuyến tính tối đa của đầu ra này.
 
-The :ref:`AgX<class_Environment_constant_tone_mapper_agx>` tonemapper behaves similar to
-:ref:`Reinhard<class_Environment_constant_tone_mapper_reinhardt>` in this way, but its
-:ref:`tonemap white<class_Environment_property_tonemap_agx_white>` is always multiplied by
-:ref:`output max linear value<class_Window_method_get_output_max_linear_value>`. The
-:ref:`Linear<class_Environment_constant_tone_mapper_linear>` tonemapper applies no tonemapping at
-all; its :ref:`tonemap white<class_Environment_property_tonemap_white>` equals
-:ref:`output max linear value<class_Window_method_get_output_max_linear_value>` in all scenarios. The
-:ref:`Filmic<class_Environment_constant_tone_mapper_filmic>` and
-:ref:`ACES<class_Environment_constant_tone_mapper_aces>` tonemappers ignore
-:ref:`output max linear value<class_Window_method_get_output_max_linear_value>` entirely and always produce an
-image in the SDR range.
+Tonemapper :ref:`AgX<class_Environment_constant_tone_mapper_agx>` hoạt động tương tự như
+:ref:`Reinhard<class_Environment_constant_tone_mapper_reinhardt>` theo cách này, nhưng
+:ref:`trắng của tonemap <class_Environment_property_tonemap_agx_white>` luôn được nhân với
+:ref:`giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>`. Tonemapper
+:ref:`Linear<class_Environment_constant_tone_mapper_linear>` không áp dụng tonemapping; :ref:`trắng của tonemap <class_Environment_property_tonemap_white>` của nó bằng
+:ref:`giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>` trong mọi trường hợp. Các
+:ref:`Filmic<class_Environment_constant_tone_mapper_filmic>` và
+:ref:`ACES<class_Environment_constant_tone_mapper_aces>` tonemapper bỏ qua hoàn toàn
+:ref:`giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>` và luôn tạo ra hình ảnh trong phạm vi SDR.
 
-Why not mix output max linear value with other techniques?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Tại sao không kết hợp giá trị tuyến tính tối đa của đầu ra với các kỹ thuật khác?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Tonemapping, indirect lighting, global illumination, and post-processing effects all depend on
-stable scene color values to produce consistent and predictable results in both SDR and HDR modes.
-If a developer uses these types of techniques with a scene that has color values that change based
-on :ref:`output max linear value<class_Window_method_get_output_max_linear_value>`, the results will
-no longer be similar for screens with different capabilities.
+Tonemapping, chiếu sáng gián tiếp, global illumination và các hiệu ứng hậu kỳ đều phụ thuộc vào các giá trị màu ổn định của scene để tạo ra kết quả nhất quán và có thể dự đoán trong cả chế độ SDR và HDR. Nếu nhà phát triển sử dụng những kỹ thuật này với một scene có các giá trị màu thay đổi dựa trên :ref:`giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>`, kết quả sẽ không còn tương tự trên các màn hình có khả năng khác nhau.
 
-For example, the strength of the glow effect
-is directly influenced by the brightness of the scene. If the scene brightness changes based on
-:ref:`output max linear value<class_Window_method_get_output_max_linear_value>`, then the glow
-strength will change as well: a larger
-:ref:`output max linear value<class_Window_method_get_output_max_linear_value>` will produce a
-stronger glow effect, which is generally an undesirable behavior.
+Ví dụ, cường độ của hiệu ứng glow chịu ảnh hưởng trực tiếp bởi độ sáng của scene. Nếu độ sáng của scene thay đổi dựa trên
+:ref:`giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>`, cường độ glow cũng sẽ thay đổi: một
+:ref:`giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>` sẽ tạo ra hiệu ứng phát sáng mạnh hơn, đây thường là hành vi không mong muốn.
 
-Absolute luminance values
--------------------------
+Độ chói tuyệt đối
+-----------------
 
-When using HDR output, :ref:`output max linear value<class_Window_method_get_output_max_linear_value>`
-is calculated based on the reference white luminance and the maximum luminance of the screen.
+Khi sử dụng đầu ra HDR, :ref:`giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>` được tính dựa trên độ chói trắng tham chiếu và độ chói tối đa của màn hình.
 
-Reference white luminance
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Độ chói trắng tham chiếu
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-The reference white luminance, or reference luminance for short, represents the brightest possible
-SDR white value. When a user changes the brightness setting of the device that is producing the
-video signal, such as a desktop computer, laptop, or smartphone, they are simply adjusting their
-reference luminance. On a smartphone this change may happen automatically via the smartphone's
-automatic screen brightness feature and also happens when the user manually adjusts their screen
-brightness. On desktop or laptop computers, there are different ways to adjust this reference
-luminance depending on the operating system.
+Độ chói trắng tham chiếu, hay gọi ngắn gọn là độ chói tham chiếu, biểu thị giá trị trắng SDR sáng nhất có thể. Khi người dùng thay đổi cài đặt độ sáng của thiết bị tạo tín hiệu video, chẳng hạn như máy tính để bàn, máy tính xách tay hoặc điện thoại thông minh, họ chỉ đơn giản là đang điều chỉnh độ chói tham chiếu. Trên điện thoại thông minh, thay đổi này có thể diễn ra tự động thông qua tính năng tự động điều chỉnh độ sáng màn hình của điện thoại, đồng thời cũng xảy ra khi người dùng tự điều chỉnh độ sáng màn hình. Trên máy tính để bàn hoặc máy tính xách tay, có nhiều cách khác nhau để điều chỉnh độ chói tham chiếu này tùy theo hệ điều hành.
 
-This value is typically around 100 to 300 nits and is always represented by an
-:ref:`output max linear value<class_Window_method_get_output_max_linear_value>` of exactly ``1.0``.
-This value may also be referred to as "paper white" or the "SDR white level".
+Giá trị này thường nằm trong khoảng từ 100 đến 300 nit và luôn được biểu thị bằng một
+:ref:`giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>` chính xác là ``1.0``. Giá trị này cũng có thể được gọi là "trắng giấy" hoặc "mức trắng SDR".
 
 .. note::
 
@@ -309,14 +207,10 @@ This value may also be referred to as "paper white" or the "SDR white level".
 	brightness of the Windows desktop or Godot because a separate brightness implementation negates
 	any effect of changes to the reference luminance.
 
-Maximum luminance
-^^^^^^^^^^^^^^^^^
+Độ chói tối đa
+^^^^^^^^^^^^^^
 
-The maximum luminance is a property of an HDR screen. This value may be anywhere from 250 to 2,000
-nits or beyond. It is common for external screens to report a maximum luminance value that is higher
-than the physical capabilities of the screen that results in visible tonemapping applied by the screen.
-Some desktop or laptop operating systems provide a way to calibrate the maximum luminance value that
-is used for each external screen.
+Độ chói tối đa là một thuộc tính của màn hình HDR. Giá trị này có thể nằm trong khoảng từ 250 đến 2.000 nit hoặc cao hơn. Các màn hình ngoài thường báo cáo giá trị độ chói tối đa cao hơn khả năng vật lý của màn hình, dẫn đến việc màn hình áp dụng tonemapping có thể nhìn thấy. Một số hệ điều hành máy tính để bàn hoặc máy tính xách tay cung cấp cách hiệu chỉnh giá trị độ chói tối đa được sử dụng cho từng màn hình ngoài.
 
 .. note::
 
@@ -325,32 +219,16 @@ is used for each external screen.
 	This behavior is opposite from using an external display on Windows and adjusting the *SDR content
 	brightness* HDR display setting and also opposite of other platforms.
 
-Output max linear value in practice
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Giá trị tuyến tính tối đa của đầu ra trong thực tế
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When in HDR mode, the :ref:`output max linear value<class_Window_method_get_output_max_linear_value>`
-will increase as the user decreases their
-reference luminance because more HDR headroom becomes available. Similarly, as the user increases
-their reference luminance, they will have less HDR headroom available and
-:ref:`output max linear value<class_Window_method_get_output_max_linear_value>` will decrease. In some cases when using
-HDR mode with the highest reference luminance,
-:ref:`output max linear value<class_Window_method_get_output_max_linear_value>` will equal ``1.0``, matching SDR behavior,
-because no HDR headroom is available.
+Khi ở chế độ HDR, :ref:`giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>` sẽ tăng khi người dùng giảm độ chói tham chiếu, vì có thêm khoảng dự trữ HDR. Tương tự, khi người dùng tăng độ chói tham chiếu, họ sẽ có ít khoảng dự trữ HDR hơn và
+:ref:`giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>` sẽ giảm. Trong một số trường hợp, khi sử dụng chế độ HDR với độ chói tham chiếu cao nhất,
+:ref:`giá trị tuyến tính tối đa của đầu ra <class_Window_method_get_output_max_linear_value>` sẽ bằng ``1.0``, tương ứng với hành vi SDR, vì không còn khoảng dự trữ HDR.
 
-Not all screens are equal
--------------------------
+Không phải màn hình nào cũng giống nhau
+---------------------------------------
 
-SDR standards were designed to match the capabilities of existing screens that were commonly used
-around the world. HDR standards have been intentionally written with the opposite approach: they
-are designed to utilize the capabilities of an ideal screen that is not yet widely available.
+Các tiêu chuẩn SDR được thiết kế để phù hợp với khả năng của những màn hình hiện có được sử dụng phổ biến trên toàn thế giới. Các tiêu chuẩn HDR được xây dựng theo hướng ngược lại một cách có chủ đích: chúng được thiết kế để tận dụng khả năng của một màn hình lý tưởng hiện chưa được cung cấp rộng rãi.
 
-In practice, this means that common HDR screens may perform their own internal tonemapping, gamut
-mapping, or dynamic tonemapping (DTM) to support content that extends to a wider gamut and
-luminance range than what the physical hardware can achieve. Some screens are not capable of
-presenting very bright color values that fill more than a small (1% to 10%) portion of the
-screen and will dim the entire image or part of the image temporarily when this happens. These
-features may produce colors that are not representative of other screens so it's best to disable
-them, if possible, when developing your HDR game. You may be able to disable some or all of these
-features by enabling the HGiG mode on your screen or setting the screen's mode to "clip" and/or
-"stable". Some HDR screens may present dark or saturated colors differently than others; this
-difference in appearance is often the result of the screen technologies.
+Trên thực tế, điều này có nghĩa là các màn hình HDR phổ biến có thể tự thực hiện tonemapping, gamut mapping hoặc dynamic tonemapping (DTM) nội bộ để hỗ trợ nội dung mở rộng đến gamut và dải độ chói rộng hơn khả năng mà phần cứng vật lý có thể đạt được. Một số màn hình không thể hiển thị các giá trị màu rất sáng chiếm hơn một phần nhỏ (từ 1% đến 10%) của màn hình và sẽ tạm thời làm tối toàn bộ hình ảnh hoặc một phần hình ảnh khi điều này xảy ra. Những tính năng này có thể tạo ra màu sắc không đại diện cho các màn hình khác, vì vậy tốt nhất là tắt chúng nếu có thể khi phát triển game HDR. Bạn có thể tắt một phần hoặc toàn bộ các tính năng này bằng cách bật chế độ HGiG trên màn hình hoặc đặt chế độ của màn hình thành "clip" và/hoặc "stable". Một số màn hình HDR có thể hiển thị màu tối hoặc màu bão hòa khác với các màn hình khác; sự khác biệt về hình thức này thường là kết quả của công nghệ màn hình.

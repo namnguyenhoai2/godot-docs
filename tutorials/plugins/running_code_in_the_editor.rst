@@ -1,92 +1,76 @@
 .. _doc_running_code_in_the_editor:
 
-Running code in the editor
-==========================
+Chạy mã trong editor
+====================
 
-What is ``@tool``?
-------------------
+``@tool`` là gì?
+----------------
 
-``@tool`` is a powerful line of code that, when added at the top of your script,
-makes it execute in the editor. You can also decide which parts of the script
-execute in the editor, which in game, and which in both.
+``@tool`` là một dòng mã mạnh mẽ; khi được thêm vào đầu script, nó khiến script được thực thi trong editor. Bạn cũng có thể quyết định phần nào của script được thực thi trong editor, phần nào trong game và phần nào trong cả hai.
 
-You can use it for doing many things, but it is mostly useful in level design
-for visually presenting things that are hard to predict ourselves. Here are some
-use cases:
+Bạn có thể dùng nó để thực hiện nhiều việc, nhưng nó chủ yếu hữu ích trong thiết kế level để trực quan hóa những thứ khó tự dự đoán. Sau đây là một số trường hợp sử dụng:
 
-- If you have a cannon that shoots cannonballs affected by physics (gravity),
-  you can draw the cannonball's trajectory in the editor, making level design a
-  lot easier.
-- If you have jumppads with varying jump heights, you can draw the maximum jump
-  height a player would reach if it jumped on one, also making level design
-  easier.
-- If your player doesn't use a sprite, but draws itself using code, you can make
-  that drawing code execute in the editor to see your player.
+- Nếu bạn có một khẩu pháo bắn ra các viên đạn chịu tác động của vật lý (trọng lực), bạn có thể vẽ quỹ đạo của viên đạn trong editor, giúp việc thiết kế level dễ dàng hơn nhiều.
+- Nếu bạn có các jumppad với độ cao nhảy khác nhau, bạn có thể vẽ độ cao tối đa mà người chơi sẽ đạt được khi nhảy lên một jumppad, qua đó cũng giúp việc thiết kế level dễ dàng hơn.
+- Nếu người chơi của bạn không sử dụng sprite mà tự vẽ bằng mã, bạn có thể cho mã vẽ đó thực thi trong editor để xem người chơi của mình.
 
 .. danger::
 
-    ``@tool`` scripts run inside the editor, and let you access the scene tree
-    of the currently edited scene. This is a powerful feature which also comes
-    with caveats, as the editor does not include protections for potential
-    misuse of ``@tool`` scripts.
-    Be **extremely** cautious when manipulating the scene tree, especially via
-    :ref:`Node.queue_free<class_Node_method_queue_free>`, as it can cause
-    crashes if you free a node while the editor runs logic involving it.
+    Các script ``@tool`` chạy bên trong editor và cho phép bạn truy cập scene tree của scene hiện đang được chỉnh sửa. Đây là một tính năng mạnh mẽ nhưng cũng có những hạn chế cần lưu ý, vì editor không có cơ chế bảo vệ khỏi việc sử dụng sai các script ``@tool``. Hãy **cực kỳ** thận trọng khi thao tác với scene tree, đặc biệt là thông qua
+    :ref:`Node.queue_free<class_Node_method_queue_free>`, vì việc giải phóng một node trong khi editor đang chạy logic liên quan đến node đó có thể gây crash.
 
-How to use ``@tool``
---------------------
+Cách sử dụng ``@tool``
+----------------------
 
-To turn a script into a tool, add the ``@tool`` annotation at the top of your code.
+Để biến một script thành tool, hãy thêm annotation ``@tool`` ở đầu mã.
 
-To check if you are currently in the editor, use: ``Engine.is_editor_hint()``.
+Để kiểm tra xem hiện tại bạn có đang ở trong editor hay không, hãy sử dụng: ``Engine.is_editor_hint()``.
 
-For example, if you want to execute some code only in the editor, use:
+Ví dụ, nếu bạn muốn chỉ thực thi một đoạn mã trong editor, hãy sử dụng:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     if Engine.is_editor_hint():
-        # Code to execute when in editor.
+        # Mã sẽ được thực thi khi ở trong editor.
 
  .. code-tab:: csharp
 
     if (Engine.IsEditorHint())
     {
-        // Code to execute when in editor.
+        // Mã sẽ được thực thi khi ở trong editor.
     }
 
-On the other hand, if you want to execute code only in game, simply negate the
-same statement:
+Ngược lại, nếu bạn muốn chỉ thực thi mã trong game, chỉ cần phủ định cùng biểu thức đó:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     if not Engine.is_editor_hint():
-        # Code to execute when in game.
+        # Mã sẽ được thực thi khi ở trong game.
 
  .. code-tab:: csharp
 
     if (!Engine.IsEditorHint())
     {
-        // Code to execute when in game.
+        // Mã sẽ được thực thi khi ở trong game.
     }
 
-Pieces of code that do not have either of the 2 conditions above will run both
-in-editor and in-game.
+Các đoạn mã không có một trong 2 điều kiện trên sẽ chạy cả trong editor lẫn trong game.
 
-Here is how a ``_process()`` function might look for you:
+Sau đây là cách một hàm ``_process()`` có thể trông như thế nào:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     func _process(delta):
         if Engine.is_editor_hint():
-            # Code to execute in editor.
+            # Mã sẽ được thực thi trong editor.
 
         if not Engine.is_editor_hint():
-            # Code to execute in game.
+            # Mã sẽ được thực thi trong game.
 
-        # Code to execute both in editor and in game.
+        # Mã sẽ được thực thi cả trong editor và trong game.
 
  .. code-tab:: csharp
 
@@ -94,62 +78,43 @@ Here is how a ``_process()`` function might look for you:
     {
         if (Engine.IsEditorHint())
         {
-            // Code to execute in editor.
+            // Mã sẽ được thực thi trong editor.
         }
 
         if (!Engine.IsEditorHint())
         {
-            // Code to execute in game.
+            // Mã sẽ được thực thi trong game.
         }
 
-        // Code to execute both in editor and in game.
+        // Mã sẽ được thực thi cả trong editor và trong game.
     }
 
 .. _doc_running_code_in_the_editor_important_information:
 
-Important information
----------------------
+Thông tin quan trọng
+--------------------
 
-The general rule is that **any other GDScript that your tool script uses must
-*also* be a tool**. The editor is not able to construct instances from GDScript
-files without ``@tool``, which means you cannot call methods or reference member
-variables from them otherwise. However, since static methods, constants and
-enums can be used without creating an instance, it is possible to call them or
-reference them from a ``@tool`` script onto other non-tool scripts. One exception to
-this are :ref:`static variables <doc_gdscript_basics_static_variables>`.
-If you try to read a static variable's value in a script that does not have
-``@tool``, it will always return ``null`` but won't print a warning or error
-when doing so. This restriction does not apply to static methods, which can be
-called regardless of whether the target script is in tool mode.
+Quy tắc chung là **mọi GDScript khác mà tool script của bạn sử dụng cũng phải *là* một tool**. Editor không thể tạo các instance từ những tệp GDScript không có ``@tool``, nghĩa là nếu không có điều này, bạn không thể gọi các method hoặc tham chiếu đến các biến thành viên từ chúng. Tuy nhiên, vì có thể sử dụng các static method, hằng số và enum mà không cần tạo instance, nên bạn có thể gọi hoặc tham chiếu đến chúng từ một script ``@tool`` tới các script không phải tool khác. Một ngoại lệ là :ref:`các biến static <doc_gdscript_basics_static_variables>`. Nếu bạn cố đọc giá trị của một biến static trong một script không có ``@tool``, nó sẽ luôn trả về ``null`` nhưng sẽ không in cảnh báo hay lỗi khi thực hiện việc đó. Hạn chế này không áp dụng cho các static method, vốn có thể được gọi bất kể script đích có ở chế độ tool hay không.
 
-Extending a ``@tool`` script does not automatically make the extending script
-a ``@tool``. Omitting ``@tool`` from the extending script will disable tool
-behavior from the super class. Therefore, the extending script should also
-specify the ``@tool`` annotation.
+Việc mở rộng một script ``@tool`` không tự động biến script mở rộng thành một ``@tool``. Bỏ qua ``@tool`` trong script mở rộng sẽ vô hiệu hóa hành vi tool từ super class. Vì vậy, script mở rộng cũng nên chỉ định annotation ``@tool``.
 
-Modifications in the editor are permanent, with no undo/redo possible. For
-example, in the next section when we remove the script, the node will keep its
-rotation. Be careful to avoid making unwanted modifications. Consider setting up
-:ref:`version control <doc_version_control_systems>` to avoid losing work in
-case you make a mistake.
+Các thay đổi trong editor là vĩnh viễn, không thể undo/redo. Ví dụ, trong phần tiếp theo, khi chúng ta xóa script, node sẽ vẫn giữ nguyên góc xoay. Hãy cẩn thận để tránh tạo ra các thay đổi không mong muốn. Hãy cân nhắc thiết lập
+:ref:`hệ thống kiểm soát phiên bản <doc_version_control_systems>` để tránh mất công việc trong trường hợp bạn mắc lỗi.
 
-Debugging
----------
+Gỡ lỗi
+------
 
-While the debugger and breakpoints cannot be used directly with tool scripts, it is possible
-to launch a new instance of the editor and debug from there. To do this, navigate to
-**Debug > Customize Run Instances...** and specify `--editor` in **Main Run Args**.
+Mặc dù không thể sử dụng trực tiếp debugger và breakpoint với các tool script, bạn vẫn có thể khởi chạy một instance editor mới và gỡ lỗi từ đó. Để thực hiện việc này, hãy đi tới **Debug > Customize Run Instances...** và chỉ định `--editor` trong **Main Run Args**.
 
-See :ref:`doc_overview_of_debugging_tools` for more information.
+Xem :ref:`doc_overview_of_debugging_tools` để biết thêm thông tin.
 
-Additionally, you can use print statements to display the contents of variables instead.
+Ngoài ra, bạn có thể sử dụng các câu lệnh print để hiển thị nội dung của các biến thay thế.
 
 
-Try ``@tool`` out
------------------
+Dùng thử ``@tool``
+------------------
 
-Add a ``Sprite2D`` node to your scene and set the texture to Godot icon. Attach
-and open a script, and change it to this:
+Thêm một node ``Sprite2D`` vào scene của bạn và đặt texture thành biểu tượng Godot. Gắn và mở một script, rồi thay đổi script thành như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -173,21 +138,18 @@ and open a script, and change it to this:
         }
     }
 
-Save the script and return to the editor. You should now see your object rotate.
-If you run the game, it will also rotate.
+Lưu script và quay lại editor. Bây giờ bạn sẽ thấy đối tượng của mình xoay. Nếu chạy game, nó cũng sẽ xoay.
 
 .. warning::
-    You may need to restart the editor. This is a known bug found in all Godot 4 versions:
-    `GH-66381 <https://github.com/godotengine/godot/issues/66381>`_.
+    Bạn có thể cần khởi động lại editor. Đây là một bug đã biết xuất hiện trong mọi phiên bản Godot 4: `GH-66381 <https://github.com/godotengine/godot/issues/66381>`_.
 
 .. image:: img/rotating_in_editor.gif
 
 .. note::
 
-    If you don't see the changes, reload the scene (close it and open it again).
+    Nếu không thấy các thay đổi, hãy tải lại scene (đóng scene rồi mở lại).
 
-Now let's choose which code runs when. Modify your ``_process()`` function to
-look like this:
+Bây giờ hãy chọn đoạn mã nào sẽ chạy và chạy khi nào. Sửa đổi hàm ``_process()`` để có dạng như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -212,15 +174,12 @@ look like this:
         }
     }
 
-Save the script. Now the object will spin clockwise in the editor, but if you
-run the game, it will spin counter-clockwise.
+Lưu script. Bây giờ đối tượng sẽ xoay theo chiều kim đồng hồ trong editor, nhưng nếu chạy game, nó sẽ xoay ngược chiều kim đồng hồ.
 
-Editing variables
------------------
+Chỉnh sửa biến
+--------------
 
-Add and export a variable speed to the script. To update the speed and also reset the rotation
-angle add a setter ``set(new_speed)`` which is executed with the input from the inspector. Modify
-``_process()`` to include the rotation speed.
+Thêm và export một biến speed vào script. Để cập nhật speed và đồng thời đặt lại góc xoay, hãy thêm một setter ``set(new_speed)`` được thực thi với đầu vào từ inspector. Sửa đổi ``_process()`` để bao gồm tốc độ xoay.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -230,7 +189,7 @@ angle add a setter ``set(new_speed)`` which is executed with the input from the 
 
 
     @export var speed = 1:
-        # Update speed and reset the rotation.
+        # Cập nhật speed và đặt lại góc xoay.
         set(new_speed):
             speed = new_speed
             rotation = 0
@@ -254,7 +213,7 @@ angle add a setter ``set(new_speed)`` which is executed with the input from the 
             get => _speed;
             set
             {
-                // Update speed and reset the rotation.
+                // Cập nhật speed và đặt lại góc xoay.
                 _speed = value;
                 Rotation = 0;
             }
@@ -268,19 +227,12 @@ angle add a setter ``set(new_speed)`` which is executed with the input from the 
 
 .. note::
 
-    Code from other nodes doesn't run in the editor. Your access to other nodes
-    is limited. You can access the tree and nodes, and their default properties,
-    but you can't access user variables. If you want to do so, other nodes have
-    to run in the editor too.
+    Mã từ các node khác không chạy trong editor. Quyền truy cập của bạn vào các node khác bị giới hạn. Bạn có thể truy cập tree và các node cùng các thuộc tính mặc định của chúng, nhưng không thể truy cập các biến do người dùng định nghĩa. Nếu muốn làm vậy, các node khác cũng phải chạy trong editor.
 
-Getting notified when arrays or dictionaries change
+Nhận thông báo khi các mảng hoặc dictionary thay đổi
 ----------------------------------------------------
 
-You can use an Array or Dictionary as an ``@export`` variable. In a ``@tool``
-script, you can react to any changes to that collection by using a setter.
-Normally, at runtime, such a setter is only called when you assign to the
-variable, but when you modify an Array or Dictionary in the inspector, the
-setter will also be called.
+Bạn có thể sử dụng Array hoặc Dictionary làm biến ``@export``. Trong script ``@tool``, bạn có thể phản hồi mọi thay đổi đối với collection đó bằng setter. Thông thường, trong runtime, setter như vậy chỉ được gọi khi bạn gán giá trị cho biến, nhưng khi bạn chỉnh sửa Array hoặc Dictionary trong inspector, setter cũng sẽ được gọi.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -333,12 +285,10 @@ setter will also be called.
     }
 
 
-Getting notified when resources change
---------------------------------------
+Nhận thông báo khi resource thay đổi
+------------------------------------
 
-Sometimes you want your tool to use a resource. However, when you change a
-property of that resource in the editor, the ``set()`` method of your tool will
-not be called.
+Đôi khi bạn muốn tool của mình sử dụng một resource. Tuy nhiên, khi bạn thay đổi một property của resource đó trong editor, phương thức ``set()`` của tool sẽ không được gọi.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -352,8 +302,8 @@ not be called.
             resource = new_resource
             _on_resource_set()
 
-    # This will only be called when you create, delete, or paste a resource.
-    # You will not get an update when tweaking properties of it.
+    # Chỉ được gọi khi bạn tạo, xóa hoặc dán một resource.
+    # Bạn sẽ không nhận được cập nhật khi điều chỉnh các property của resource đó.
     func _on_resource_set():
         print("My resource was set!")
 
@@ -377,21 +327,20 @@ not be called.
             }
         }
 
-        // This will only be called when you create, delete, or paste a resource.
-        // You will not get an update when tweaking properties of it.
+        // Chỉ được gọi khi bạn tạo, xóa hoặc dán một resource.
+        // Bạn sẽ không nhận được cập nhật khi điều chỉnh các property của resource đó.
         private void OnResourceSet()
         {
             GD.Print("My resource was set!");
         }
     }
 
-To get around this problem you first have to make your resource a tool and make it
-emit the ``changed`` signal whenever a property is set:
+Để khắc phục vấn đề này, trước tiên bạn phải biến resource của mình thành một tool và khiến nó phát signal ``changed`` mỗi khi một property được thiết lập:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Make Your Resource a tool.
+    # Biến Resource của bạn thành một tool.
     @tool
     class_name MyResource
     extends Resource
@@ -399,7 +348,7 @@ emit the ``changed`` signal whenever a property is set:
     @export var property = 1:
         set(new_setting):
             property = new_setting
-            # Emit a signal when the property is changed.
+            # Phát một signal khi property được thay đổi.
             changed.emit()
 
  .. code-tab:: csharp
@@ -418,13 +367,13 @@ emit the ``changed`` signal whenever a property is set:
             set
             {
                 _property = value;
-                // Emit a signal when the property is changed.
+                // Phát một signal khi property được thay đổi.
                 EmitChanged();
             }
         }
     }
 
-You then want to connect the signal when a new resource is set:
+Sau đó, bạn cần kết nối signal khi một resource mới được thiết lập:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -436,7 +385,7 @@ You then want to connect the signal when a new resource is set:
     @export var resource: MyResource:
         set(new_resource):
             resource = new_resource
-            # Connect the changed signal as soon as a new resource is being added.
+            # Kết nối signal changed ngay khi một resource mới được thêm vào.
             if resource != null:
                 resource.changed.connect(_on_resource_changed)
 
@@ -459,7 +408,7 @@ You then want to connect the signal when a new resource is set:
             set
             {
                 _resource = value;
-                // Connect the changed signal as soon as a new resource is being added.
+                // Kết nối signal changed ngay khi một resource mới được thêm vào.
                 if (_resource != null)
                 {
                     _resource.Changed += OnResourceChanged;
@@ -473,15 +422,14 @@ You then want to connect the signal when a new resource is set:
         }
     }
 
-Lastly, remember to disconnect the signal as the old resource being used and changed somewhere else
-would cause unneeded updates.
+Cuối cùng, hãy nhớ ngắt kết nối signal, vì resource cũ đang được sử dụng và bị thay đổi ở nơi khác sẽ gây ra các cập nhật không cần thiết.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     @export var resource: MyResource:
         set(new_resource):
-            # Disconnect the signal if the previous resource was not null.
+            # Ngắt kết nối signal nếu resource trước đó không phải là null.
             if resource != null:
                 resource.changed.disconnect(_on_resource_changed)
             resource = new_resource
@@ -496,7 +444,7 @@ would cause unneeded updates.
         get => _resource;
         set
         {
-            // Disconnect the signal if the previous resource was not null.
+            // Ngắt kết nối signal nếu resource trước đó không phải là null.
             if (_resource != null)
             {
                 _resource.Changed -= OnResourceChanged;
@@ -509,24 +457,18 @@ would cause unneeded updates.
         }
     }
 
-Reporting node configuration warnings
--------------------------------------
+Báo cáo cảnh báo cấu hình node
+------------------------------
 
-Godot uses a *node configuration warning* system to warn users about incorrectly
-configured nodes. When a node isn't configured correctly, a yellow warning sign
-appears next to the node's name in the Scene dock. When you hover or click on
-the icon, a warning message pops up. You can use this feature in your scripts to
-help you and your team avoid mistakes when setting up scenes.
+Godot sử dụng hệ thống *cảnh báo cấu hình node* để cảnh báo người dùng về các node được cấu hình không đúng. Khi một node chưa được cấu hình chính xác, biểu tượng cảnh báo màu vàng sẽ xuất hiện bên cạnh tên node trong Scene dock. Khi bạn di chuột qua hoặc nhấp vào biểu tượng, một thông báo cảnh báo sẽ bật lên. Bạn có thể sử dụng tính năng này trong script để giúp bạn và nhóm của mình tránh sai sót khi thiết lập scene.
 
-When using node configuration warnings, when any value that should affect or
-remove the warning changes, you need to call
-:ref:`update_configuration_warnings<class_Node_method_update_configuration_warnings>` .
-By default, the warning only updates when closing and reopening the scene.
+Khi sử dụng cảnh báo cấu hình node, nếu bất kỳ giá trị nào có thể ảnh hưởng đến hoặc loại bỏ cảnh báo thay đổi, bạn cần gọi
+:ref:`update_configuration_warnings<class_Node_method_update_configuration_warnings>` . Theo mặc định, cảnh báo chỉ được cập nhật khi đóng rồi mở lại scene.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Use setters to update the configuration warning automatically.
+    # Dùng setter để tự động cập nhật cảnh báo cấu hình.
     @export var title = "":
         set(p_title):
             if p_title != title:
@@ -549,41 +491,31 @@ By default, the warning only updates when closing and reopening the scene.
         if description.length() >= 100:
             warnings.append("`description` should be less than 100 characters long.")
 
-        # Returning an empty array means "no warning".
+        # Trả về một mảng rỗng nghĩa là "không có cảnh báo".
         return warnings
 
 .. _doc_running_code_in_the_editor_editorscript:
 
-Running one-off scripts using EditorScript
-------------------------------------------
+Chạy các script một lần bằng EditorScript
+-----------------------------------------
 
-Sometimes, you need to run code just one time to automate a certain task that is
-not available in the editor out of the box. Some examples might be:
+Đôi khi, bạn cần chạy code chỉ một lần để tự động hóa một tác vụ cụ thể không có sẵn trong editor. Một số ví dụ có thể là:
 
-- Use as a playground for GDScript or C# scripting without having to run a project.
-  ``print()`` output is displayed in the editor Output panel.
-- Scale all light nodes in the currently edited scene, as you noticed your level
-  ends up looking too dark or too bright after placing lights where desired.
-- Replace nodes that were copy-pasted with scene instances to make them easier
-  to modify later.
+- Dùng làm playground cho việc scripting bằng GDScript hoặc C# mà không cần chạy project. Kết quả ``print()`` được hiển thị trong bảng Output của editor.
+- Scale tất cả light node trong scene hiện đang được chỉnh sửa, khi bạn nhận thấy level trở nên quá tối hoặc quá sáng sau khi đặt các light ở vị trí mong muốn.
+- Thay thế các node đã được copy-paste bằng các scene instance để sau này dễ sửa đổi hơn.
 
-This is available in Godot by extending :ref:`class_EditorScript` in a script.
-This provides a way to run individual scripts in the editor without having to
-create an editor plugin.
+Tính năng này có sẵn trong Godot bằng cách kế thừa :ref:`class_EditorScript` trong một script. Cách này cho phép chạy từng script riêng lẻ trong editor mà không cần tạo editor plugin.
 
-To create an EditorScript, right-click a folder or empty space in the FileSystem
-dock then choose **New > Script...**. In the script creation dialog, click the
-tree icon to choose an object to extend from (or enter ``EditorScript`` directly
-in the field on the left, though note this is case-sensitive):
+Để tạo một EditorScript, nhấp chuột phải vào một thư mục hoặc khoảng trống trong FileSystem dock, sau đó chọn **New > Script...**. Trong hộp thoại tạo script, nhấp vào biểu tượng cây để chọn object cần kế thừa (hoặc nhập trực tiếp ``EditorScript`` vào trường bên trái, nhưng lưu ý rằng trường này phân biệt chữ hoa chữ thường):
 
 .. figure:: img/running_code_in_the_editor_creating_editor_script.webp
    :align: center
-   :alt: Creating an editor script in the script editor creation dialog
+   :alt: Tạo editor script trong hộp thoại tạo script của script editor
 
-   Creating an editor script in the script editor creation dialog
+   Tạo editor script trong hộp thoại tạo script của script editor
 
-This will automatically select a script template that is suited for
-EditorScripts, with a ``_run()`` method already inserted:
+Thao tác này sẽ tự động chọn một script template phù hợp với EditorScript, trong đó đã chèn sẵn phương thức ``_run()``:
 
 .. tabs::
     .. code-tab:: gdscript GDScript
@@ -591,7 +523,7 @@ EditorScripts, with a ``_run()`` method already inserted:
         @tool
         extends EditorScript
 
-        # Called when the script is executed (using File -> Run in Script Editor).
+        # Được gọi khi script được thực thi (bằng cách chọn File -> Run trong Script Editor).
         func _run():
             pass
 
@@ -602,69 +534,53 @@ EditorScripts, with a ``_run()`` method already inserted:
         [Tool]
         public partial class MyEditorScript : EditorScript
         {
-            // Called when the script is executed (right-click on Script -> Run in FileSystem dock).
+            // Được gọi khi script được thực thi (nhấp chuột phải vào Script -> Run trong FileSystem dock).
             public override void _Run()
             {
                 // ...
             }
         }
 
-This ``_run()`` method is executed when you use any of the 4 approaches that can be
-used to run an EditorScript:
+Phương thức ``_run()`` này được thực thi khi bạn sử dụng bất kỳ cách nào trong 4 cách chạy EditorScript:
 
-- Use :menu:`File > Run` at the top of the script editor with the EditorScript
-  being the current tab.
-- Press the keyboard shortcut :kbd:`Ctrl + Shift + X` while the EditorScript is
-  the current tab. This keyboard shortcut is only effective when focused on the
-  script editor.
-- Right-click the script in the FileSystem dock and choose :menu:`Run`.
-- Add a ``class_name <name>`` at the top of the script, bring up the command
-  palette by pressing :kbd:`Ctrl + Shift + P`, and enter the class name to run
-  it. The entry will be named according to the class name, with automatic
-  capitalization applied.
+- Sử dụng :menu:`File > Run` ở đầu script editor khi EditorScript đang là tab hiện tại.
+- Nhấn phím tắt :kbd:`Ctrl + Shift + X` khi EditorScript đang là tab hiện tại. Phím tắt này chỉ có hiệu lực khi script editor đang được focus.
+- Nhấp chuột phải vào script trong FileSystem dock và chọn :menu:`Run`.
+- Thêm ``class_name <name>`` ở đầu script, mở command palette bằng cách nhấn :kbd:`Ctrl + Shift + P`, rồi nhập tên class để chạy class đó. Mục nhập sẽ được đặt tên theo tên class, với việc tự động viết hoa.
 
-Scripts that extend EditorScript **must** be ``@tool`` scripts to function.
+Các script kế thừa EditorScript **phải** là các script ``@tool`` thì mới hoạt động.
 
 .. note::
 
-    EditorScripts can only be run from the Godot script editor. If you are using
-    an external editor, use one of the last two approaches to run the script.
+    EditorScript chỉ có thể được chạy từ Godot script editor. Nếu bạn đang sử dụng editor bên ngoài, hãy dùng một trong hai cách cuối để chạy script.
 
 .. note::
 
-    C# EditorScripts cannot be run from the script editor as it only supports
-    GDScript. Please refer to the above alternative approaches to run custom C#
-    EditorScripts.
+    Không thể chạy C# EditorScripts từ trình chỉnh sửa script vì trình này chỉ hỗ trợ GDScript. Vui lòng tham khảo các phương pháp thay thế ở trên để chạy C# EditorScripts tùy chỉnh.
 
-    Keep in mind C# tool scripts will only appear in the command palette when
-    denoted by the :ref:`GlobalClass <doc_c_sharp_global_classes>`
-    attribute.
+    Lưu ý rằng các tool script C# chỉ xuất hiện trong command palette khi được đánh dấu bằng thuộc tính :ref:`GlobalClass <doc_c_sharp_global_classes>`.
 
 .. danger::
 
-    EditorScripts have no undo/redo functionality, so **make sure to save your
-    scene before running one** if the script is designed to modify any data.
+    EditorScripts không có chức năng undo/redo, vì vậy **hãy nhớ lưu scene trước khi chạy một script** nếu script đó được thiết kế để sửa đổi dữ liệu.
 
-To access nodes in the currently edited scene, use the
-:ref:`EditorInterface.get_edited_scene_root() <class_EditorInterface_method_get_edited_scene_root>`
-method which returns the root Node of the currently edited scene. Here's an
-example that recursively gets all nodes in the currently edited scene and
-doubles the range of all OmniLight3D nodes:
+Để truy cập các node trong scene hiện đang được chỉnh sửa, hãy sử dụng
+:ref:`EditorInterface.get_edited_scene_root() <class_EditorInterface_method_get_edited_scene_root>` method, phương thức này trả về Node gốc của scene hiện đang được chỉnh sửa. Dưới đây là một ví dụ đệ quy lấy tất cả node trong scene hiện đang được chỉnh sửa và tăng gấp đôi phạm vi của tất cả node OmniLight3D:
 
 .. tabs::
     .. code-tab:: gdscript GDScript
 
         @tool
-        # Thanks to the class name, we can run this script by bringing up
-        # the command palette and searching "Scale Omni Lights".
+        # Nhờ tên class, chúng ta có thể chạy script này bằng cách mở
+        # command palette và tìm kiếm "Scale Omni Lights".
         class_name ScaleOmniLights
         extends EditorScript
 
         func _run():
             for node in EditorInterface.get_edited_scene_root().find_children("", "OmniLight3D"):
-                # Don't operate on instanced subscene children, as changes are lost
-                # when reloading the scene.
-                # See the "Instancing scenes" section below for a description of `owner`.
+                # Không thao tác trên các node con của subscene được instance, vì các thay đổi sẽ bị mất
+                # khi tải lại scene.
+                # Xem phần "Instancing scenes" bên dưới để biết mô tả về `owner`.
                 var is_instanced_subscene_child = node != get_scene() and node.owner != get_scene()
                 if not is_instanced_subscene_child:
                     node.omni_range *= 2.0
@@ -675,8 +591,8 @@ doubles the range of all OmniLight3D nodes:
         using Godot;
 
         [GlobalClass, Tool]
-        // Thanks to the GlobalClass attribute, we can run this script by bringing up
-        // the command palette and searching "Scale Omni Lights".
+        // Nhờ thuộc tính GlobalClass, chúng ta có thể chạy script này bằng cách mở
+        // command palette và tìm kiếm "Scale Omni Lights".
         public partial class ScaleOmniLights : EditorScript
         {
             public override void _Run()
@@ -685,9 +601,9 @@ doubles the range of all OmniLight3D nodes:
 
                 foreach (OmniLight3D node in sceneNode.FindChildren("", "OmniLight3D"))
                 {
-                    // Don't operate on instanced subscene children, as changes are lost
-                    // when reloading the scene.
-                    // See the "Instancing scenes" section below for a description of `owner`.
+                    // Không thao tác trên các node con của subscene được instance, vì các thay đổi sẽ bị mất
+                    // khi tải lại scene.
+                    // Xem phần "Instancing scenes" bên dưới để biết mô tả về `owner`.
                     var isInstancedSubsceneChild = node != sceneNode && node.Owner != sceneNode;
                     if (!isInstancedSubsceneChild)
                     {
@@ -698,42 +614,31 @@ doubles the range of all OmniLight3D nodes:
             }
         }
 
-In the above example, we also call
-:ref:`EditorScript.mark_scene_as_unsaved() <class_EditorInterface_method_mark_scene_as_unsaved>`
-after any modification that affects the scene's state. This allows the editor to
-display the scene as "unsaved" (i.e. with an asterisk next to the name). This way,
-you also get a confirmation when trying to close the scene with unsaved changes.
+Trong ví dụ trên, chúng ta cũng gọi
+:ref:`EditorScript.mark_scene_as_unsaved() <class_EditorInterface_method_mark_scene_as_unsaved>` sau mọi sửa đổi ảnh hưởng đến trạng thái của scene. Điều này cho phép editor hiển thị scene là "chưa lưu" (tức là có dấu hoa thị bên cạnh tên). Nhờ đó, bạn cũng nhận được thông báo xác nhận khi cố đóng scene có các thay đổi chưa lưu.
 
 .. tip::
 
-    You can change the currently edited scene at the top of the editor even
-    while the Script view is open. This will affect the return value of
-    :ref:`EditorInterface.get_edited_scene_root <class_EditorInterface_method_get_edited_scene_root>`,
-    so make sure you've selected the scene you intend to iterate upon before
-    running the script.
+    Bạn có thể thay đổi scene hiện đang được chỉnh sửa ở đầu editor ngay cả khi chế độ xem Script đang mở. Điều này sẽ ảnh hưởng đến giá trị trả về của
+    :ref:`EditorInterface.get_edited_scene_root <class_EditorInterface_method_get_edited_scene_root>`, vì vậy hãy đảm bảo đã chọn scene mà bạn định duyệt qua trước khi chạy script.
 
 Instancing scenes
 -----------------
 
-You can instantiate packed scenes normally and add them to the scene currently
-opened in the editor. By default, nodes or scenes added with
-:ref:`Node.add_child(node) <class_Node_method_add_child>` are **not** visible
-in the Scene tree dock and are **not** persisted to disk. If you wish the node
-or scene to be visible in the scene tree dock and persisted to disk when saving
-the scene, you need to set the child node's :ref:`owner <class_Node_property_owner>`
-property to the currently edited scene root.
+Bạn có thể khởi tạo các scene đã đóng gói như bình thường và thêm chúng vào scene hiện đang mở trong editor. Theo mặc định, các node hoặc scene được thêm bằng
+:ref:`Node.add_child(node) <class_Node_method_add_child>` sẽ **không** hiển thị trong dock Scene và **không** được lưu vào đĩa. Nếu muốn node hoặc scene hiển thị trong dock Scene và được lưu vào đĩa khi lưu scene, bạn cần đặt thuộc tính :ref:`owner <class_Node_property_owner>` của node con thành root của scene hiện đang được chỉnh sửa.
 
-If you are using ``@tool``:
+Nếu bạn đang sử dụng ``@tool``:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     func _ready():
         var node = Node3D.new()
-        add_child(node) # Parent could be any node in the scene
+        add_child(node) # Parent có thể là bất kỳ node nào trong scene
 
-        # The line below is required to make the node visible in the Scene tree dock
-        # and persist changes made by the tool script to the saved scene file.
+        # Dòng bên dưới là bắt buộc để node hiển thị trong dock Scene
+        # và lưu các thay đổi do tool script thực hiện vào file scene đã lưu.
         node.owner = get_tree().edited_scene_root
 
  .. code-tab:: csharp
@@ -741,53 +646,49 @@ If you are using ``@tool``:
     public override void _Ready()
     {
         var node = new Node3D();
-        AddChild(node); // Parent could be any node in the scene
+        AddChild(node); // Parent có thể là bất kỳ node nào trong scene
 
-        // The line below is required to make the node visible in the Scene tree dock
-        // and persist changes made by the tool script to the saved scene file.
+        // Dòng bên dưới là bắt buộc để node hiển thị trong dock Scene
+        // và lưu các thay đổi do tool script thực hiện vào file scene đã lưu.
         node.Owner = GetTree().EditedSceneRoot;
     }
 
-If you are using :ref:`EditorScript <class_EditorScript>`:
+Nếu bạn đang sử dụng :ref:`EditorScript <class_EditorScript>`:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
     func _run():
-        # `parent` could be any node in the scene.
+        # `parent` có thể là bất kỳ node nào trong scene.
         var parent = get_scene().get_node("Parent")
         var node = Node3D.new()
         parent.add_child(node)
 
-        # The line below is required to make the node visible in the Scene tree dock
-        # and persist changes made by the tool script to the saved scene file.
+        # Dòng bên dưới là bắt buộc để node hiển thị trong dock Scene
+        # và lưu các thay đổi do tool script thực hiện vào file scene đã lưu.
         node.owner = get_scene()
 
  .. code-tab:: csharp
 
     public override void _Run()
     {
-        // `parent` could be any node in the scene.
+        // `parent` có thể là bất kỳ node nào trong scene.
         var parent = GetScene().GetNode("Parent");
         var node = new Node3D();
         parent.AddChild(node);
 
-        // The line below is required to make the node visible in the Scene tree dock
-        // and persist changes made by the tool script to the saved scene file.
+        // Dòng bên dưới là bắt buộc để node hiển thị trong dock Scene
+        // và lưu các thay đổi do tool script thực hiện vào file scene đã lưu.
         node.Owner = GetScene();
     }
 
 .. note::
 
-    Changes made by tool scripts and EditorScript (such as adding nodes or modifying properties)
-    do **not** automatically mark the scene as unsaved. To show the asterisk ``(*)``
-    and prevent accidental data loss, call
-    :ref:`EditorInterface.mark_scene_as_unsaved() <class_EditorInterface_method_mark_scene_as_unsaved>`
-    after modifications, or use :ref:`EditorUndoRedoManager <class_EditorUndoRedoManager>` for undo support.
+    Các thay đổi do tool script và EditorScript thực hiện (chẳng hạn như thêm node hoặc sửa đổi thuộc tính) **không** tự động đánh dấu scene là chưa lưu. Để hiển thị dấu hoa thị ``(*)`` và ngăn mất dữ liệu do thao tác nhầm, hãy gọi
+    :ref:`EditorInterface.mark_scene_as_unsaved() <class_EditorInterface_method_mark_scene_as_unsaved>` sau khi sửa đổi hoặc sử dụng :ref:`EditorUndoRedoManager <class_EditorUndoRedoManager>` để hỗ trợ undo.
 
 .. warning::
 
-    Using ``@tool`` improperly can yield many errors. It is advised to first
-    write the code how you want it, and only then add the ``@tool`` annotation to
-    the top. Also, make sure to separate code that runs in-editor from code that
-    runs in-game. This way, you can find bugs more easily.
+    Sử dụng ``@tool`` không đúng cách có thể gây ra nhiều lỗi. Bạn nên viết code theo ý muốn trước, rồi mới thêm annotation ``@tool`` vào đầu. Ngoài ra, hãy đảm bảo tách riêng code chạy trong editor khỏi code chạy trong game. Nhờ vậy, bạn có thể tìm lỗi dễ dàng hơn.
+
+.. _`GH-66381`: https://github.com/godotengine/godot/issues/66381

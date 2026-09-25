@@ -1,29 +1,21 @@
 .. _doc_making_main_screen_plugins:
 
-Making main screen plugins
-==========================
+Tạo plugin cho màn hình chính
+=============================
 
-What this tutorial covers
--------------------------
+Nội dung của hướng dẫn này
+--------------------------
 
-Main screen plugins allow you to create
-new UIs in the central part of the editor, which appear next to the
-"2D", "3D", "Script", "Game", and "AssetLib" buttons. Such editor plugins are
-referred as "Main screen plugins".
+Plugin cho màn hình chính cho phép bạn tạo UI mới ở phần trung tâm của trình chỉnh sửa, xuất hiện bên cạnh các nút "2D", "3D", "Script", "Game" và "AssetLib". Các plugin trình chỉnh sửa như vậy được gọi là "plugin cho màn hình chính".
 
-This tutorial leads you through the creation of a basic main screen plugin.
-For the sake of simplicity, our main screen plugin will contain a single
-button that prints text to the console.
+Hướng dẫn này sẽ đưa bạn qua các bước tạo một plugin cơ bản cho màn hình chính. Để đơn giản, plugin cho màn hình chính của chúng ta sẽ chứa một nút duy nhất in văn bản ra console.
 
-Initializing the plugin
------------------------
+Khởi tạo plugin
+---------------
 
-First create a new plugin from the Plugins menu. For this tutorial, we'll put
-it in a folder called ``main_screen``, but you can use any name you'd like.
+Trước tiên, hãy tạo một plugin mới từ menu Plugins. Trong hướng dẫn này, chúng ta sẽ đặt plugin vào thư mục có tên ``main_screen``, nhưng bạn có thể sử dụng bất kỳ tên nào mình muốn.
 
-The plugin script will come with ``_enter_tree()`` and ``_exit_tree()``
-methods, but for a main screen plugin we need to add a few extra methods.
-Add four extra methods such that the script looks like this:
+Script của plugin sẽ có sẵn các phương thức ``_enter_tree()`` và ``_exit_tree()``, nhưng đối với plugin cho màn hình chính, chúng ta cần thêm một vài phương thức khác. Thêm bốn phương thức bổ sung để script trông như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -95,25 +87,14 @@ Add four extra methods such that the script looks like this:
     }
     #endif
 
-The important part in this script is the ``_has_main_screen()`` function,
-which is overridden to return ``true``. This function is automatically
-called by the editor on plugin activation, to tell it that this plugin
-adds a new center view to the editor. For now, we'll leave this script
-as-is and we'll come back to it later.
+Phần quan trọng trong script này là hàm ``_has_main_screen()``, được ghi đè để trả về ``true``. Trình chỉnh sửa sẽ tự động gọi hàm này khi kích hoạt plugin, để biết rằng plugin này thêm một khung nhìn trung tâm mới vào trình chỉnh sửa. Hiện tại, chúng ta sẽ giữ nguyên script này và quay lại với nó sau.
 
-Main screen scene
------------------
+Scene màn hình chính
+--------------------
 
-Create a new scene with a root node derived from ``Control`` (for this
-example plugin, we'll make the root node a ``CenterContainer``).
-Select this root node, and in the viewport, click the ``Layout`` menu
-and select ``Full Rect``. You also need to enable the ``Expand``
-vertical size flag in the inspector.
-The panel now uses all the space available in the main viewport.
+Tạo một scene mới với node gốc kế thừa từ ``Control`` (đối với plugin ví dụ này, chúng ta sẽ tạo node gốc là một ``CenterContainer``). Chọn node gốc này, rồi trong viewport, nhấp vào menu ``Layout`` và chọn ``Full Rect``. Bạn cũng cần bật cờ kích thước dọc ``Expand`` trong inspector. Panel hiện sử dụng toàn bộ không gian có sẵn trong viewport chính.
 
-Next, let's add a button to our example main screen plugin.
-Add a ``Button`` node, and set the text to "Print Hello" or similar.
-Add a script to the button like this:
+Tiếp theo, hãy thêm một nút vào plugin cho màn hình chính ví dụ của chúng ta. Thêm một node ``Button`` và đặt văn bản là "Print Hello" hoặc nội dung tương tự. Thêm một script vào nút như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -139,17 +120,14 @@ Add a script to the button like this:
     }
 
 
-Then connect the "pressed" signal to itself. If you need help with signals,
-see the :ref:`doc_signals` article.
+Sau đó, kết nối signal "pressed" với chính nó. Nếu cần trợ giúp về signal, hãy xem bài viết :ref:`doc_signals`.
 
-We are done with the main screen panel. Save the scene as ``main_panel.tscn``.
+Chúng ta đã hoàn tất panel màn hình chính. Lưu scene dưới tên ``main_panel.tscn``.
 
-Update the plugin script
-------------------------
+Cập nhật script của plugin
+--------------------------
 
-We need to update the ``main_screen_plugin.gd`` script so the plugin
-instances our main panel scene and places it where it needs to be.
-Here is the full plugin script:
+Chúng ta cần cập nhật script ``main_screen_plugin.gd`` để plugin tạo instance từ scene panel chính và đặt nó vào vị trí cần thiết. Đây là toàn bộ script của plugin:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -165,9 +143,9 @@ Here is the full plugin script:
 
     func _enter_tree():
         main_panel_instance = MainPanel.instantiate()
-        # Add the main panel to the editor's main viewport.
+        # Thêm panel chính vào viewport chính của trình chỉnh sửa.
         EditorInterface.get_editor_main_screen().add_child(main_panel_instance)
-        # Hide the main panel. Very much required.
+        # Ẩn panel chính. Bắt buộc phải làm vậy.
         _make_visible(false)
 
 
@@ -190,7 +168,7 @@ Here is the full plugin script:
 
 
     func _get_plugin_icon():
-        # Must return some kind of Texture for the icon.
+        # Phải trả về một dạng Texture nào đó cho icon.
         return EditorInterface.get_editor_theme().get_icon("Node", "EditorIcons")
 
  .. code-tab:: csharp
@@ -207,9 +185,9 @@ Here is the full plugin script:
         public override void _EnterTree()
         {
             MainPanelInstance = (Control)MainPanel.Instantiate();
-            // Add the main panel to the editor's main viewport.
+            // Thêm panel chính vào viewport chính của trình chỉnh sửa.
             EditorInterface.Singleton.GetEditorMainScreen().AddChild(MainPanelInstance);
-            // Hide the main panel. Very much required.
+            // Ẩn panel chính. Bắt buộc phải làm vậy.
             _MakeVisible(false);
         }
 
@@ -241,68 +219,38 @@ Here is the full plugin script:
 
         public override Texture2D _GetPluginIcon()
         {
-            // Must return some kind of Texture for the icon.
+            // Phải trả về một dạng Texture nào đó cho icon.
             return EditorInterface.Singleton.GetEditorTheme().GetIcon("Node", "EditorIcons");
         }
     }
     #endif
 
-A couple of specific lines were added. ``MainPanel`` is a constant that holds
-a reference to the scene, and we instance it into `main_panel_instance`.
+Một vài dòng cụ thể đã được thêm vào. ``MainPanel`` là một hằng số chứa tham chiếu đến scene, và chúng ta tạo instance của scene đó vào `main_panel_instance`.
 
-The ``_enter_tree()`` function is called before ``_ready()``. This is where
-we instance the main panel scene, and add them as children of specific parts
-of the editor. We use ``EditorInterface.get_editor_main_screen()`` to
-obtain the main editor screen and add our main panel instance as a child to it.
-We call the ``_make_visible(false)`` function to hide the main panel so
-it doesn't compete for space when first activating the plugin.
+Hàm ``_enter_tree()`` được gọi trước ``_ready()``. Đây là nơi chúng ta tạo instance từ scene panel chính và thêm chúng làm node con vào các phần cụ thể của trình chỉnh sửa. Chúng ta sử dụng ``EditorInterface.get_editor_main_screen()`` để lấy màn hình chính của trình chỉnh sửa, rồi thêm instance panel chính làm node con của nó. Chúng ta gọi hàm ``_make_visible(false)`` để ẩn panel chính, ώστε nó không chiếm không gian khi plugin được kích hoạt lần đầu.
 
-The ``_exit_tree()`` function is called when the plugin is deactivated.
-If the main screen still exists, we call ``queue_free()`` to free the
-instance and remove it from memory.
+Hàm ``_exit_tree()`` được gọi khi plugin bị vô hiệu hóa. Nếu màn hình chính vẫn tồn tại, chúng ta gọi ``queue_free()`` để giải phóng instance và xóa nó khỏi bộ nhớ.
 
-The ``_make_visible()`` function is overridden to hide or show the main
-panel as needed. This function is automatically called by the editor when the
-user clicks on the main viewport buttons at the top of the editor.
+Hàm ``_make_visible()`` được ghi đè để ẩn hoặc hiển thị panel chính khi cần. Trình chỉnh sửa sẽ tự động gọi hàm này khi người dùng nhấp vào các nút viewport chính ở phía trên trình chỉnh sửa.
 
-The ``_get_plugin_name()`` and ``_get_plugin_icon()`` functions control
-the displayed name and icon for the plugin's main viewport button.
+Các hàm ``_get_plugin_name()`` và ``_get_plugin_icon()`` điều khiển tên và icon được hiển thị cho nút viewport chính của plugin.
 
-Another function you can add is the ``_handles()`` function, which
-allows you to handle a node type, automatically focusing the main
-screen when the type is selected. This is similar to how clicking
-on a 3D node will automatically switch to the 3D viewport.
+Một hàm khác bạn có thể thêm là hàm ``_handles()``, cho phép bạn xử lý một loại node và tự động chuyển tiêu điểm sang màn hình chính khi loại node đó được chọn. Điều này tương tự như cách nhấp vào một node 3D sẽ tự động chuyển sang viewport 3D.
 
-Main screen icons
------------------
+Icon màn hình chính
+-------------------
 
-You can either use one of the built-in icons from the editor, or provide your
-own icon for the main screen plugin. In both cases, this is done by overriding the
-``_get_plugin_icon()`` method in the plugin script.
+Bạn có thể sử dụng một trong các icon dựng sẵn của trình chỉnh sửa hoặc cung cấp icon riêng cho plugin màn hình chính. Trong cả hai trường hợp, bạn thực hiện việc này bằng cách ghi đè phương thức ``_get_plugin_icon()`` trong script của plugin.
 
-To use a built-in icon, copy an icon name from the
-`Godot editor icons <https://godotengine.github.io/editor-icons/>`__ website.
-Use the name copied from the website as the *first* parameter of
-``EditorInterface.get_editor_theme().get_icon()`` (the second parameter should
-remain ``"EditorIcons"``).
+Để sử dụng icon dựng sẵn, hãy sao chép tên icon từ trang web `Godot editor icons <https://godotengine.github.io/editor-icons/>`__. Sử dụng tên đã sao chép từ trang web làm tham số *đầu tiên* của ``EditorInterface.get_editor_theme().get_icon()`` (tham số thứ hai phải giữ nguyên là ``"EditorIcons"``).
 
-You can use a custom icon by returning something such as
-``preload("res://addons/main_screen/icon.svg")``. When designing your own icon,
-you should follow the same guidelines as for node icons (SVG format recommended,
-16×16 size). See :ref:`doc_editor_icons` for information on how to create icons
-for your plugin.
+Bạn có thể sử dụng icon tùy chỉnh bằng cách trả về một giá trị như ``preload("res://addons/main_screen/icon.svg")``. Khi thiết kế icon riêng, bạn nên tuân theo các hướng dẫn tương tự như đối với icon của node (khuyến nghị định dạng SVG, kích thước 16×16). Xem :ref:`doc_editor_icons` để biết cách tạo icon cho plugin của bạn.
 
-Try the plugin
---------------
+Dùng thử plugin
+---------------
 
-Activate the plugin in the Project Settings. You'll observe a new button next
-to 2D, 3D, Script above the main viewport. Clicking it will take you to your
-new main screen plugin, and the button in the middle will print text.
+Kích hoạt plugin trong Project Settings. Bạn sẽ thấy một nút mới bên cạnh 2D, 3D, Script ở phía trên viewport chính. Nhấp vào đó sẽ đưa bạn đến plugin màn hình chính mới, và nút ở giữa sẽ in văn bản.
 
-If you would like to try a finished version of this plugin,
-check out the plugin demos here:
-https://github.com/godotengine/godot-demo-projects/tree/master/plugins
+Nếu muốn dùng thử phiên bản hoàn chỉnh của plugin này, hãy xem các bản demo plugin tại đây: https://github.com/godotengine/godot-demo-projects/tree/master/plugins
 
-If you would like to see a more complete example of what main screen plugins
-are capable of, check out the 2.5D demo projects here:
-https://github.com/godotengine/godot-demo-projects/tree/master/misc/2.5d
+Nếu muốn xem một ví dụ đầy đủ hơn về khả năng của plugin màn hình chính, hãy xem các dự án demo 2.5D tại đây: https://github.com/godotengine/godot-demo-projects/tree/master/misc/2.5d

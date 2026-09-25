@@ -1,18 +1,15 @@
 .. _doc_drawable_textures:
 
-Using DrawableTextures
-======================
+Sử dụng DrawableTextures
+========================
 
-DrawableTextures are a type of Texture2D with additional functions for modifying
-the texture via the GPU. This can be used for procedural texturing, real-time effects,
-and much more.
+DrawableTextures là một loại Texture2D có thêm các hàm để sửa đổi texture thông qua GPU. Tính năng này có thể được dùng để tạo texture theo thủ tục, tạo hiệu ứng theo thời gian thực và nhiều mục đích khác.
 
-Basic rectangle blitting
-------------------------
+Blit hình chữ nhật cơ bản
+-------------------------
 
-The most basic operation on a drawable texture is
-:ref:`blit_rect() <class_DrawableTexture2D_method_blit_rect>`.
-Blitting (copying) the whole of one texture into the given rectangle on the ``DrawableTexture``.
+Thao tác cơ bản nhất trên một drawable texture là
+:ref:`blit_rect() <class_DrawableTexture2D_method_blit_rect>`. Blit (sao chép) toàn bộ một texture vào hình chữ nhật đã cho trên ``DrawableTexture``.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -26,35 +23,21 @@ Blitting (copying) the whole of one texture into the given rectangle on the ``Dr
     texture.BlitRect(new Rect2I(20, 50, 60, 60), GD.Load<Texture2D>("res://circle.svg"), Colors.White, 0);
 
 
-The code above blits the circle texture into the rectangle ``(20, 50, 60, 60)``
-on the ``DrawableTexture``. ``(20, 50)`` is the top left corner of the rectangle
-being drawn to, and ``(60, 60)`` is its size. If you wanted to draw over the
-whole texture, simply match the ``rect`` parameter to the ``DrawableTexture``'s
-size.
+Đoạn mã trên blit texture hình tròn vào hình chữ nhật ``(20, 50, 60, 60)`` trên ``DrawableTexture``. ``(20, 50)`` là góc trên bên trái của hình chữ nhật đích, còn ``(60, 60)`` là kích thước của nó. Nếu muốn vẽ lên toàn bộ texture, chỉ cần đặt tham số ``rect`` bằng kích thước của ``DrawableTexture``.
 
-The third parameter in ``blit_rect()`` is an optional parameter, ``modulate``.
-This is a color that the output is multiplied by (in the default behavior). This
-can be used to recolor, or even mask the drawn output of ``blit_rect()``. For
-example, using a modulate of ``Color(0, 0, 1, 0)`` will only draw to and update
-the blue values of each pixel on the ``DrawableTexture``.
+Tham số thứ ba trong ``blit_rect()`` là tham số tùy chọn ``modulate``. Đây là một màu mà đầu ra được nhân với nó (theo hành vi mặc định). Tham số này có thể được dùng để đổi màu hoặc thậm chí tạo mặt nạ cho đầu ra đã vẽ của ``blit_rect()``. Ví dụ, sử dụng modulate bằng ``Color(0, 0, 1, 0)`` sẽ chỉ vẽ và cập nhật các giá trị màu xanh dương của từng pixel trên ``DrawableTexture``.
 
-``blit_rect()``'s fourth parameter, ``mipmap``, can specify a mipmap level to
-draw to. You only need to use this if you want fine control over each mipmap
-layer. Keep in mind, you do not need to adjust the rectangle size; it is
-converted to a portion of the texture's whole size. If you just want to update
-all the mipmap layers, you should draw to the texture, then call
-``generate_mipmaps()`` on it.
+Tham số thứ tư của ``blit_rect()``, ``mipmap``, có thể chỉ định một mức mipmap để vẽ vào. Bạn chỉ cần dùng tham số này nếu muốn kiểm soát chi tiết từng lớp mipmap. Lưu ý rằng bạn không cần điều chỉnh kích thước hình chữ nhật; kích thước đó được chuyển đổi thành một phần của kích thước tổng thể của texture. Nếu chỉ muốn cập nhật tất cả các lớp mipmap, hãy vẽ lên texture rồi gọi ``generate_mipmaps()`` trên texture đó.
 
-Blend modes and texture blit shaders
-------------------------------------
+Blend mode và shader blit texture
+---------------------------------
 
-The drawing process for ``blit_rect()`` and DrawableTextures is controlled by a
-:ref:`texture blit shader <doc_texture_blit_shader>`. Even when the user does
-not supply one, the engine has a default texture blit shader it uses.
+Quy trình vẽ cho ``blit_rect()`` và DrawableTextures được điều khiển bởi một
+:ref:`shader blit texture <doc_texture_blit_shader>`. Ngay cả khi người dùng không cung cấp shader, engine vẫn có một shader blit texture mặc định để sử dụng.
 
 .. code-block:: glsl
 
-    // Default texture blit shader.
+    // Shader blit texture mặc định.
 
     shader_type texture_blit;
     render_mode blend_mix;
@@ -65,24 +48,16 @@ not supply one, the engine has a default texture blit shader it uses.
     uniform sampler2D source_texture3 : hint_blit_source3;
 
     void blit() {
-        // Copies from each whole source texture to a rect on each output texture.
+        // Sao chép từ toàn bộ từng texture nguồn vào một hình chữ nhật trên từng texture đầu ra.
         COLOR0 = texture(source_texture0, UV) * MODULATE;
         COLOR1 = texture(source_texture1, UV) * MODULATE;
         COLOR2 = texture(source_texture2, UV) * MODULATE;
         COLOR3 = texture(source_texture3, UV) * MODULATE;
     }
 
-The blend mode specified in ``render_mode`` defines how the output color value
-is blended with the current color of the pixel on the DrawableTexture. The
-engine defaults to ``blend_mix`` if no blend mode is specified in
-``render_mode``. Texture blit shaders also support ``blend_add`` (additive),
-``blend_sub`` (subtractive), ``blend_mul`` (multiply), and ``blend_disabled``
-(alpha does not act as transparency and is written as-is).
-The premultiplied alpha blend mode is *not* supported here.
+Blend mode được chỉ định trong ``render_mode`` xác định cách giá trị màu đầu ra được trộn với màu hiện tại của pixel trên DrawableTexture. Engine mặc định dùng ``blend_mix`` nếu không chỉ định blend mode trong ``render_mode``. Shader blit texture cũng hỗ trợ ``blend_add`` (cộng), ``blend_sub`` (trừ), ``blend_mul`` (nhân) và ``blend_disabled`` (alpha không hoạt động như độ trong suốt mà được ghi nguyên trạng). Blend mode alpha premultiplied *không* được hỗ trợ ở đây.
 
-It is also possible to use a different blend mode than the one specified in the shader.
-To do so, you can instantiate and pass in a new :ref:`class_BlitMaterial`
-in the script.
+Bạn cũng có thể sử dụng blend mode khác với blend mode được chỉ định trong shader. Để làm vậy, bạn có thể khởi tạo và truyền vào một :ref:`class_BlitMaterial` mới trong script.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -100,21 +75,16 @@ in the script.
     texture.BlitRect(new Rect2I(0, 0, 200, 200), GD.Load<Texture2D>("res://icon.svg"), Colors.White, 0, blitMaterial);
 
 
-If you want more complex behavior, you can write your own texture blit shader.
-Create a new shader with the ``texture_blit`` shader type, write your shader
-code, and load it into a material to pass to the function.
+Nếu muốn có hành vi phức tạp hơn, bạn có thể tự viết shader blit texture. Tạo shader mới với loại shader ``texture_blit``, viết mã shader rồi nạp shader đó vào một material để truyền vào hàm.
 
 .. note::
 
-    The material is passed as a function parameter, rather than bound to the
-    resource. This makes it easier to perform multiple types of draws to the
-    same texture.
+    Material được truyền vào dưới dạng tham số của hàm thay vì được gắn với resource. Điều này giúp thực hiện nhiều kiểu vẽ trên cùng một texture dễ dàng hơn.
 
-Using multiple blits in a single texture
+Sử dụng nhiều lần blit trong một texture
 ----------------------------------------
 
-DrawableTextures also have a :ref:`blit_rect_multi() <class_DrawableTexture2D_method_blit_rect_multi>`
-method, which allows for up to 4 inputs and outputs in the same step.
+DrawableTextures cũng có phương thức :ref:`blit_rect_multi() <class_DrawableTexture2D_method_blit_rect_multi>`, cho phép sử dụng tối đa 4 đầu vào và đầu ra trong cùng một bước.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -133,29 +103,18 @@ method, which allows for up to 4 inputs and outputs in the same step.
         GD.Load<Texture2D>("res://circle.svg")],
         [otherDrawableTexture]);
 
-The default behavior of this is to just match each input and output in order.
-For example, this can be useful for drawing to an albedo, normal, and height
-texture simultaneously.
+Theo mặc định, phương thức này chỉ ghép từng đầu vào với đầu ra tương ứng theo thứ tự. Ví dụ, tính năng này hữu ích khi vẽ đồng thời lên texture albedo, normal và height.
 
-Of course, this behavior can also be customized via the texture blit shader.
-In the shader, the extra outputs are written to via ``COLOR1``, ``COLOR2``,
-and ``COLOR3`` (with ``COLOR0`` being the primary output). The extra inputs
-can be read as uniforms with ``hint_blit_source1``, ``hint_blit_source2``,
-and ``hint_blit_source3``.
+Tất nhiên, bạn cũng có thể tùy chỉnh hành vi này thông qua shader blit texture. Trong shader, các đầu ra bổ sung được ghi thông qua ``COLOR1``, ``COLOR2`` và ``COLOR3`` (trong đó ``COLOR0`` là đầu ra chính). Các đầu vào bổ sung có thể được đọc dưới dạng uniform bằng ``hint_blit_source1``, ``hint_blit_source2`` và ``hint_blit_source3``.
 
 .. _doc_drawable_textures_example_1:
 
-Example 1: Simple painting
---------------------------
+Ví dụ 1: Vẽ đơn giản
+--------------------
 
-One of the most intuitive uses for DrawableTextures is for, well, drawing!
-For this example, we're going to start a new project, and create
-a new UI scene with a Control node at its root.
+Một trong những cách sử dụng trực quan nhất của DrawableTextures là, đúng như tên gọi, để vẽ! Trong ví dụ này, chúng ta sẽ bắt đầu một project mới và tạo một UI scene mới với một node Control ở gốc.
 
-Next, you'll need to create a :ref:`class_TextureRect` node, which is going to
-be our user's canvas. Size it appropriately for your screen, and then attach a
-new script to it. The start of this script should initialize the TextureRect's
-texture to a new DrawableTexture.
+Tiếp theo, bạn cần tạo một node :ref:`class_TextureRect`, node này sẽ là canvas của người dùng. Đặt kích thước phù hợp với màn hình của bạn, rồi gắn một script mới vào node đó. Phần đầu của script này phải khởi tạo texture của TextureRect thành một DrawableTexture mới.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -164,8 +123,8 @@ texture to a new DrawableTexture.
 
     func _ready():
         texture = DrawableTexture2D.new()
-        # Be careful; if the dimensions of the node are not equal to the size set here,
-        # our draw call later will seem to happen at the wrong spot.
+        # Cẩn thận; nếu kích thước của node không bằng kích thước được đặt ở đây,
+        # lệnh vẽ sau đó của chúng ta có vẻ sẽ xảy ra không đúng vị trí.
         texture.setup(500, 500, DrawableTexture2D.DRAWABLE_FORMAT_RGBA8, false)
 
  .. code-tab:: csharp
@@ -174,16 +133,13 @@ texture to a new DrawableTexture.
 
     public override void _Ready()
     {
-        // Be careful; if the dimensions of the node are not equal to the size set here,
-        // our draw call later will seem to happen at the wrong spot.
+        // Cẩn thận; nếu kích thước của node không bằng kích thước được đặt ở đây,
+        // lệnh vẽ sau đó của chúng ta có vẻ sẽ xảy ra không đúng vị trí.
         _texture.Setup(500, 500, DrawableTexture2D.DrawableFormat.Rgba8, null, false);
         Texture = _texture;
     }
 
-Next, we need the TextureRect to respond to the player clicking and dragging as
-if they are painting. To do this, we can override the ``_gui_input()`` method
-from the TextureRect in our script, and parse InputMouseButton and
-InputMouseMotion events:
+Tiếp theo, chúng ta cần TextureRect phản hồi thao tác nhấp và kéo của người chơi như thể họ đang vẽ. Để làm vậy, chúng ta có thể ghi đè phương thức ``_gui_input()`` của TextureRect trong script và phân tích các sự kiện InputMouseButton và InputMouseMotion:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -192,11 +148,11 @@ InputMouseMotion events:
 
     func _gui_input(event):
         if event is InputEventMouseButton:
-            # Mouse click/unclick - start/stop drawing.
+            # Nhấp/bỏ nhấp chuột - bắt đầu/dừng vẽ.
             drawing = not drawing
         if event is InputEventMouseMotion and drawing:
-            # Calculate rect to center our drawn rectangle on mouse position
-            # instead of mouse at top left.
+            # Tính toán hình chữ nhật để căn giữa hình chữ nhật được vẽ theo vị trí chuột
+            # thay vì đặt chuột ở góc trên bên trái.
             var rect = Rect2(event.position.x - 10, event.position.y - 10, 20, 20)
             texture.blit_rect(rect, null)
 
@@ -208,13 +164,13 @@ InputMouseMotion events:
     {
         if (@event is InputEventMouseButton)
         {
-            // Mouse click/unclick - start/stop drawing.
+            // Nhấp/bỏ nhấp chuột - bắt đầu/dừng vẽ.
             drawing = !drawing;
         }
         if (@event is InputEventMouseMotion eventMouseMotion && drawing)
         {
-            // Calculate rect to center our drawn rectangle on mouse position
-            // instead of mouse at top left.
+            // Tính toán hình chữ nhật để căn giữa hình chữ nhật được vẽ theo vị trí chuột
+            // thay vì đặt chuột ở góc trên bên trái.
             var rect = new Rect2I(
                 (int)(eventMouseMotion.Position.X - 10),
                 (int)(eventMouseMotion.Position.Y - 10),
@@ -223,21 +179,16 @@ InputMouseMotion events:
         }
     }
 
-This should now draw black squares as you click and drag around the TextureRect.
-For more natural drawing, we probably want to be drawing a circle shape, and
-actually coloring it.
+Bây giờ thao tác này sẽ vẽ các hình vuông màu đen khi bạn nhấp và kéo quanh TextureRect. Để việc vẽ tự nhiên hơn, có lẽ chúng ta nên vẽ một hình tròn và thực sự tô màu cho nó.
 
-We can adjust what's being drawn by using a Texture to copy from, and the
-modulate parameter. We will use this :download:`plain white circle texture <img/circle.svg>`,
-which we load as the ``texture`` parameter in ``blit_rect()``,
-and use a red color as the ``modulate`` parameter.
+Chúng ta có thể điều chỉnh nội dung được vẽ bằng cách sử dụng một Texture để sao chép và tham số modulate. Chúng ta sẽ sử dụng :download:`texture hình tròn màu trắng đơn giản <img/circle.svg>`, nạp nó làm tham số ``texture`` trong ``blit_rect()`` và sử dụng màu đỏ làm tham số ``modulate``.
 
 .. tabs::
  .. code-tab:: gdscript
 
     if event is InputEventMouseMotion and drawing:
-        # Calculate rect to center our drawn rectangle on mouse position
-        # instead of mouse at top left.
+        # Tính toán hình chữ nhật để căn giữa hình chữ nhật được vẽ theo vị trí chuột
+        # thay vì đặt chuột ở góc trên bên trái.
         var rect = Rect2(event.position.x - 10, event.position.y - 10, 20, 20)
         texture.blit_rect(rect, preload("res://circle.svg"), Color.RED)
 
@@ -245,8 +196,8 @@ and use a red color as the ``modulate`` parameter.
 
     if (@event is InputEventMouseMotion eventMouseMotion && drawing)
     {
-        // Calculate rect to center our drawn rectangle on mouse position
-        // instead of mouse at top left.
+        // Tính toán hình chữ nhật để căn giữa hình chữ nhật được vẽ theo vị trí chuột
+        // thay vì đặt chuột ở góc trên bên trái.
         var rect = new Rect2I(
             (int)(eventMouseMotion.Position.X - 10),
             (int)(eventMouseMotion.Position.Y - 10),
@@ -254,12 +205,7 @@ and use a red color as the ``modulate`` parameter.
         _texture.BlitRect(rect, GD.Load<Texture2D>("res://circle.svg"), Colors.Red);
     }
 
-The drawing now looks much more natural and colorful. To further customize this,
-you could connect a :ref:`class_ColorPickerButton` node to the script to store
-the user's color choice for the ``modulate`` parameter of ``blit_rect()``. You
-could also store a brush size variable, give the user a way to adjust it, and
-incorporate it into the rectangle calculation so the user can draw larger or
-smaller strokes.
+Bản vẽ giờ đây trông tự nhiên và nhiều màu sắc hơn đáng kể. Để tùy chỉnh thêm, bạn có thể kết nối một node :ref:`class_ColorPickerButton` với script để lưu lựa chọn màu của người dùng cho tham số ``modulate`` của ``blit_rect()``. Bạn cũng có thể lưu một biến kích thước cọ, cung cấp cho người dùng cách điều chỉnh biến này và đưa nó vào phép tính hình chữ nhật để người dùng có thể vẽ các nét lớn hơn hoặc nhỏ hơn.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -270,11 +216,11 @@ smaller strokes.
 
     func _gui_input(event):
         if event is InputEventMouseButton:
-            # Mouse click/unclick - start/stop drawing.
+            # Nhấp/bỏ nhấp chuột - bắt đầu/dừng vẽ.
             drawing = not drawing
         if event is InputEventMouseMotion and drawing:
-            # Calculate rect to center our drawn rectangle on mouse position
-            # instead of mouse at top left.
+            # Tính toán hình chữ nhật để căn giữa hình chữ nhật được vẽ theo vị trí chuột
+            # thay vì đặt chuột ở góc trên bên trái.
             var rect = Rect2(event.position.x - my_size / 2, event.position.y - my_size / 2, my_size, my_size)
             texture.blit_rect(rect, preload("res://circle.svg"), my_color)
 
@@ -294,13 +240,13 @@ smaller strokes.
     {
         if (@event is InputEventMouseButton)
         {
-            // Mouse click/unclick - start/stop drawing.
+            // Nhấp/bỏ nhấp chuột - bắt đầu/dừng vẽ.
             _drawing = !_drawing;
         }
         if (@event is InputEventMouseMotion eventMouseMotion && _drawing)
         {
-            // Calculate rect to center our drawn rectangle on mouse position
-            // instead of mouse at top left.
+            // Tính toán hình chữ nhật để căn giữa hình chữ nhật được vẽ theo vị trí chuột
+            // thay vì đặt chuột ở góc trên bên trái.
             var rect = new Rect2I(
                 (int)(eventMouseMotion.Position.X - _mySize / 2),
                 (int)(eventMouseMotion.Position.Y - _mySize / 2),

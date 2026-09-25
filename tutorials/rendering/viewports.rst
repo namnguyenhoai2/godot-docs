@@ -1,80 +1,56 @@
 .. _doc_viewports:
 
-Using Viewports
-===============
+Sử dụng Viewport
+================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Think of a :ref:`Viewport <class_Viewport>` as a screen onto which the game is projected. In order
-to see the game, we need to have a surface on which to draw it. That surface is
-the Root Viewport.
+Hãy hình dung một :ref:`Viewport <class_Viewport>` như một màn hình mà trò chơi được chiếu lên đó. Để nhìn thấy trò chơi, chúng ta cần có một bề mặt để vẽ trò chơi lên. Bề mặt đó là Root Viewport.
 
 .. image:: img/subviewportnode.webp
 
-:ref:`SubViewports <class_SubViewport>` are a kind of Viewport that can be added to the scene so that there
-are multiple surfaces to draw on. When we are drawing to a SubViewport, we call it a render target. We can access the contents
-of a render target by accessing its corresponding :ref:`texture <class_Viewport_method_get_texture>`.
-By using a SubViewport as render target, we can either render multiple scenes simultaneously or we can render to
-a :ref:`ViewportTexture <class_ViewportTexture>` which is applied to an object in the scene, for example a dynamic
-skybox.
+:ref:`SubViewports <class_SubViewport>` là một loại Viewport có thể được thêm vào scene để có nhiều bề mặt vẽ. Khi vẽ lên một SubViewport, chúng ta gọi nó là render target. Chúng ta có thể truy cập nội dung của render target bằng cách truy cập :ref:`texture <class_Viewport_method_get_texture>` tương ứng. Bằng cách sử dụng SubViewport làm render target, chúng ta có thể render nhiều scene đồng thời hoặc render lên một :ref:`ViewportTexture <class_ViewportTexture>` được áp dụng cho một đối tượng trong scene, chẳng hạn như một skybox động.
 
-:ref:`SubViewports <class_SubViewport>` have a variety of use cases, including:
+:ref:`SubViewports <class_SubViewport>` có nhiều trường hợp sử dụng, bao gồm:
 
-- Rendering 3D objects within a 2D game
-- Rendering 2D elements in a 3D game
-- Rendering dynamic textures
-- Generating procedural textures at runtime
-- Rendering multiple cameras in the same scene
+- Render các đối tượng 3D trong một game 2D
+- Render các thành phần 2D trong một game 3D
+- Render các texture động
+- Tạo texture theo quy trình trong runtime
+- Render nhiều camera trong cùng một scene
 
-What all these use cases have in common is that you are given the ability to
-draw objects to a texture as if it were another screen and can then choose
-what to do with the resulting texture.
+Điểm chung của tất cả các trường hợp sử dụng này là bạn có khả năng vẽ các đối tượng lên một texture như thể đó là một màn hình khác, sau đó có thể chọn cách xử lý texture thu được.
 
-Another kind of Viewports in Godot are :ref:`Windows <class_Window>`. They allow their content to be projected onto a window. While the Root Viewport is a Window, they are less
-flexible. If you want to use the texture of a Viewport, you'll be working with :ref:`SubViewports <class_SubViewport>` most of the time.
+Một loại Viewport khác trong Godot là :ref:`Windows <class_Window>`. Chúng cho phép chiếu nội dung lên một cửa sổ. Root Viewport là một Window, còn chúng thì kém linh hoạt hơn. Nếu muốn sử dụng texture của một Viewport, phần lớn thời gian bạn sẽ làm việc với :ref:`SubViewports <class_SubViewport>`.
 
 Input
 -----
 
-:ref:`Viewports <class_Viewport>` are also responsible for delivering properly adjusted and
-scaled input events to their children nodes. By default :ref:`SubViewports <class_SubViewport>` don't
-automatically receive input, unless they receive it from their direct
-:ref:`SubViewportContainer <class_SubViewportContainer>` parent node. In this case, input can be
-disabled with the :ref:`Disable Input <class_Viewport_property_gui_disable_input>` property.
+:ref:`Viewports <class_Viewport>` cũng chịu trách nhiệm chuyển các input event đã được điều chỉnh và scale phù hợp đến các node con của chúng. Theo mặc định, :ref:`SubViewports <class_SubViewport>` không tự động nhận input, trừ khi nhận input từ node cha trực tiếp của chúng
+:ref:`SubViewportContainer <class_SubViewportContainer>`. Trong trường hợp này, có thể tắt input bằng thuộc tính :ref:`Disable Input <class_Viewport_property_gui_disable_input>`.
 
 .. image:: img/input.webp
 
-For more information on how Godot handles input, please read the :ref:`Input Event Tutorial <doc_inputevent>`.
+Để biết thêm thông tin về cách Godot xử lý input, hãy đọc :ref:`Input Event Tutorial <doc_inputevent>`.
 
 Listener
 --------
 
-Godot supports 3D sound (in both 2D and 3D nodes). More on this can be
-found in the :ref:`Audio Streams Tutorial <doc_audio_streams>`. For this type of sound to be
-audible, the :ref:`Viewport <class_Viewport>` needs to be enabled as a listener (for 2D or 3D).
-If you are using a :ref:`SubViewport <class_SubViewport>` to display your :ref:`World3D <class_World3D>` or
-:ref:`World2D <class_World2D>`, don't forget to enable this!
+Godot hỗ trợ âm thanh 3D (trong cả node 2D và 3D). Bạn có thể tìm thêm thông tin về vấn đề này trong :ref:`Audio Streams Tutorial <doc_audio_streams>`. Để có thể nghe được loại âm thanh này, cần bật :ref:`Viewport <class_Viewport>` làm listener (cho 2D hoặc 3D). Nếu bạn đang sử dụng một :ref:`SubViewport <class_SubViewport>` để hiển thị :ref:`World3D <class_World3D>` hoặc
+:ref:`World2D <class_World2D>`, đừng quên bật tùy chọn này!
 
-Cameras (2D & 3D)
------------------
+Camera (2D & 3D)
+----------------
 
-When using a :ref:`Camera3D <class_Camera3D>` or
-:ref:`Camera2D <class_Camera2D>`, it will always display on the
-closest parent :ref:`Viewport <class_Viewport>` (going towards the root). For example, in the
-following hierarchy:
+Khi sử dụng một :ref:`Camera3D <class_Camera3D>` hoặc
+:ref:`Camera2D <class_Camera2D>`, nó sẽ luôn hiển thị trên :ref:`Viewport <class_Viewport>` cha gần nhất (theo hướng về root). Ví dụ, trong hệ phân cấp sau:
 
 .. image:: img/cameras.webp
 
-``CameraA`` will display on the Root :ref:`Viewport <class_Viewport>` and it will draw ``MeshA``. ``CameraB``
-will be captured by the :ref:`SubViewport <class_SubViewport>` along with ``MeshB``. Even though ``MeshB`` is in the scene
-hierarchy, it will still not be drawn to the Root Viewport. Similarly, ``MeshA`` will not
-be visible from the SubViewport because SubViewports only
-capture nodes below them in the hierarchy.
+``CameraA`` sẽ hiển thị trên Root :ref:`Viewport <class_Viewport>` và sẽ vẽ ``MeshA``. ``CameraB`` sẽ được :ref:`SubViewport <class_SubViewport>` cùng với ``MeshB``. Mặc dù ``MeshB`` nằm trong hệ phân cấp của scene, nó vẫn không được vẽ lên Root Viewport. Tương tự, ``MeshA`` sẽ không hiển thị từ SubViewport vì SubViewport chỉ bắt các node nằm bên dưới chúng trong hệ phân cấp.
 
-There can only be one active camera per :ref:`Viewport <class_Viewport>`, so if there is more
-than one, make sure that the desired one has the :ref:`current <class_Camera3D_property_current>` property set,
-or make it the current camera by calling:
+Mỗi :ref:`Viewport <class_Viewport>` chỉ có thể có một camera đang hoạt động, vì vậy nếu có nhiều hơn một camera, hãy đảm bảo camera mong muốn có thuộc tính :ref:`current <class_Camera3D_property_current>` được thiết lập hoặc đặt nó làm camera hiện tại bằng cách gọi:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -85,201 +61,161 @@ or make it the current camera by calling:
 
     camera.MakeCurrent();
 
-By default, cameras will render all objects in their world. In 3D, cameras can use their
-:ref:`cull_mask <class_Camera3D_property_cull_mask>` property combined with the
-:ref:`VisualInstance3D's <class_VisualInstance3D>` :ref:`layer <class_VisualInstance3D_property_layers>`
-property to restrict which objects are rendered.
+Theo mặc định, camera sẽ render tất cả đối tượng trong world của chúng. Trong 3D, camera có thể sử dụng thuộc tính
+:ref:`cull_mask <class_Camera3D_property_cull_mask>` kết hợp với thuộc tính
+:ref:`VisualInstance3D's <class_VisualInstance3D>` :ref:`layer <class_VisualInstance3D_property_layers>` để giới hạn các đối tượng được render.
 
 Scale & stretching
 ------------------
 
-:ref:`SubViewports <class_SubViewport>` have a :ref:`size<class_SubViewport_property_size>` property, which represents the size of the SubViewport
-in pixels. For SubViewports which are children of :ref:`SubViewportContainers <class_SubViewportContainer>`,
-these values are overridden, but for all others, this sets their resolution.
+:ref:`SubViewports <class_SubViewport>` có thuộc tính :ref:`size<class_SubViewport_property_size>`, biểu thị kích thước của SubViewport tính bằng pixel. Đối với các SubViewport là node con của :ref:`SubViewportContainers <class_SubViewportContainer>`, những giá trị này sẽ bị ghi đè, nhưng đối với tất cả các SubViewport khác, thuộc tính này sẽ thiết lập độ phân giải của chúng.
 
-It is also possible to scale the 2D content and make the :ref:`SubViewport <class_SubViewport>` resolution
-different from the one specified in size, by calling:
+Bạn cũng có thể scale nội dung 2D và làm cho độ phân giải của :ref:`SubViewport <class_SubViewport>` khác với độ phân giải được chỉ định trong size bằng cách gọi:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    sub_viewport.set_size_2d_override(Vector2i(width, height)) # Custom size for 2D.
-    sub_viewport.set_size_2d_override_stretch(true) # Enable stretch for custom size.
+    sub_viewport.set_size_2d_override(Vector2i(width, height)) # Kích thước tùy chỉnh cho 2D.
+    sub_viewport.set_size_2d_override_stretch(true) # Bật stretch cho kích thước tùy chỉnh.
 
  .. code-tab:: csharp
 
-    subViewport.Size2DOverride = new Vector2I(width, height); // Custom size for 2D.
-    subViewport.Size2DOverrideStretch = true; // Enable stretch for custom size.
+    subViewport.Size2DOverride = new Vector2I(width, height); // Kích thước tùy chỉnh cho 2D.
+    subViewport.Size2DOverrideStretch = true; // Bật stretch cho kích thước tùy chỉnh.
 
-For information on scaling and stretching with the Root Viewport visit the :ref:`Multiple Resolutions Tutorial <doc_multiple_resolutions>`
+Để biết thông tin về việc scale và stretch với Root Viewport, hãy truy cập :ref:`Multiple Resolutions Tutorial <doc_multiple_resolutions>`
 
-Worlds
-------
+World
+-----
 
-For 3D, a :ref:`Viewport <class_Viewport>` will contain a :ref:`World3D <class_World3D>`. This
-is basically the universe that links physics and rendering together.
-Node3D-based nodes will register using the World3D of the closest Viewport.
-By default, newly created Viewports do not contain a World3D but
-use the same as their parent Viewport. The Root Viewport always contains a
-World3D, which is the one objects are rendered to by default.
+Đối với 3D, một :ref:`Viewport <class_Viewport>` sẽ chứa một :ref:`World3D <class_World3D>`. Về cơ bản, đây là vũ trụ liên kết physics và rendering với nhau. Các node dựa trên Node3D sẽ đăng ký bằng World3D của Viewport gần nhất. Theo mặc định, Viewport mới được tạo không chứa World3D mà sử dụng World3D của Viewport cha. Root Viewport luôn chứa một World3D, và theo mặc định các đối tượng được render vào World3D này.
 
-A :ref:`World3D <class_World3D>` can
-be set in a :ref:`Viewport <class_Viewport>` using the :ref:`World 3D<class_Viewport_property_world_3d>` property, that will separate
-all children nodes of this :ref:`Viewport <class_Viewport>` and will prevent them from interacting with the parent
-Viewport's World3D. This is especially useful in scenarios where, for
-example, you might want to show a separate character in 3D imposed over
-the game (like in StarCraft).
+Có thể thiết lập một :ref:`World3D <class_World3D>` trong một :ref:`Viewport <class_Viewport>` bằng thuộc tính :ref:`World 3D <class_Viewport_property_world_3d>`, thuộc tính này sẽ tách tất cả node con của :ref:`Viewport <class_Viewport>` này và ngăn chúng tương tác với World3D của Viewport cha. Điều này đặc biệt hữu ích trong những tình huống mà bạn muốn hiển thị, chẳng hạn, một nhân vật 3D riêng biệt chồng lên game (như trong StarCraft).
 
-As a helper for situations where you want to create :ref:`Viewports <class_Viewport>` that
-display single objects and don't want to create a :ref:`World3D <class_World3D>`, Viewport has
-the option to use its :ref:`Own World3D <class_Viewport_property_own_world_3d>`. This is useful when you want to
-instance 3D characters or objects in :ref:`World2D <class_World2D>`.
+Để hỗ trợ các tình huống bạn muốn tạo :ref:`Viewports <class_Viewport>` chỉ hiển thị từng đối tượng riêng lẻ mà không muốn tạo một :ref:`World3D <class_World3D>`, Viewport có tùy chọn sử dụng :ref:`Own World3D <class_Viewport_property_own_world_3d>` của nó. Điều này hữu ích khi bạn muốn instance các nhân vật hoặc đối tượng 3D trong :ref:`World2D <class_World2D>`.
 
-For 2D, each :ref:`Viewport <class_Viewport>` always contains its own :ref:`World2D <class_World2D>`.
-This suffices in most cases, but in case sharing them may be desired, it
-is possible to do so by setting :ref:`world_2d<class_Viewport_property_world_2d>` on the Viewport through code.
+Đối với 2D, mỗi :ref:`Viewport <class_Viewport>` luôn chứa :ref:`World2D <class_World2D>` riêng của nó. Điều này đáp ứng hầu hết trường hợp, nhưng nếu muốn chia sẻ chúng, bạn có thể thực hiện bằng cách thiết lập :ref:`world_2d<class_Viewport_property_world_2d>` trên Viewport thông qua code.
 
-For an example of how this works, see the demo projects `3D in 2D <https://github.com/godotengine/godot-demo-projects/tree/master/viewport/3d_in_2d>`_ and `2D in 3D <https://github.com/godotengine/godot-demo-projects/tree/master/viewport/2d_in_3d>`_ respectively.
+Để xem ví dụ về cách thức hoạt động, hãy xem lần lượt các project demo `3D in 2D <https://github.com/godotengine/godot-demo-projects/tree/master/viewport/3d_in_2d>`_ và `2D in 3D <https://github.com/godotengine/godot-demo-projects/tree/master/viewport/2d_in_3d>`_.
 
 Capture
 -------
 
-It is possible to query a capture of the :ref:`Viewport <class_Viewport>` contents. For the Root
-Viewport, this is effectively a screen capture. This is done with the
-following code:
+Bạn có thể truy vấn ảnh chụp nội dung của :ref:`Viewport <class_Viewport>`. Đối với Root Viewport, đây thực chất là ảnh chụp màn hình. Việc này được thực hiện bằng code sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-   # Retrieve the captured Image using get_image().
+   # Lấy Image đã capture bằng get_image().
    var img = get_viewport().get_texture().get_image()
-   # Convert Image to ImageTexture.
+   # Chuyển Image thành ImageTexture.
    var tex = ImageTexture.create_from_image(img)
-   # Set sprite texture.
+   # Thiết lập texture cho sprite.
    sprite.texture = tex
 
  .. code-tab:: csharp
 
-    // Retrieve the captured Image using get_image().
+    // Lấy Image đã capture bằng get_image().
     var img = GetViewport().GetTexture().GetImage();
-    // Convert Image to ImageTexture.
+    // Chuyển Image thành ImageTexture.
     var tex = ImageTexture.CreateFromImage(img);
-    // Set sprite texture.
+    // Thiết lập texture cho sprite.
     sprite.Texture = tex;
 
-But if you use this in ``_ready()`` or from the first frame of the :ref:`Viewport's <class_Viewport>` initialization,
-you will get an empty texture because there is nothing to get as texture. You can deal with
-it using (for example):
+Nhưng nếu bạn sử dụng điều này trong ``_ready()`` hoặc từ khung hình đầu tiên của quá trình khởi tạo :ref:`Viewport <class_Viewport>`, bạn sẽ nhận được một texture trống vì không có gì để lấy làm texture. Bạn có thể xử lý việc này, chẳng hạn như sau:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-   # Wait until the frame has finished before getting the texture.
+   # Chờ cho đến khi khung hình hoàn tất trước khi lấy texture.
    await RenderingServer.frame_post_draw
-   # You can get the image after this.
+   # Sau đó, bạn có thể lấy image.
 
  .. code-tab:: csharp
 
-    // Wait until the frame has finished before getting the texture.
+    // Chờ cho đến khi khung hình hoàn tất trước khi lấy texture.
     await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
-    // You can get the image after this.
+    // Sau đó, bạn có thể lấy image.
 
 Viewport Container
 ------------------
 
-If the :ref:`SubViewport <class_SubViewport>` is a child of a :ref:`SubViewportContainer <class_SubViewportContainer>`, it will become active and display anything it has inside. The layout looks like this:
+Nếu :ref:`SubViewport <class_SubViewport>` là một nút con của :ref:`SubViewportContainer <class_SubViewportContainer>`, nó sẽ trở nên hoạt động và hiển thị mọi thứ bên trong. Bố cục sẽ như sau:
 
 .. image:: img/container.webp
 
-The :ref:`SubViewport <class_SubViewport>` will cover the area of its parent :ref:`SubViewportContainer <class_SubViewportContainer>` completely
-if :ref:`Stretch<class_SubViewportContainer_property_stretch>` is set to ``true`` in the SubViewportContainer.
+:ref:`SubViewport <class_SubViewport>` sẽ phủ hoàn toàn vùng của :ref:`SubViewportContainer <class_SubViewportContainer>` cha nếu :ref:`Stretch<class_SubViewportContainer_property_stretch>` được đặt thành ``true`` trong SubViewportContainer.
 
 .. note::
 
-    The size of the :ref:`SubViewportContainer <class_SubViewportContainer>` cannot be smaller than the size of the :ref:`SubViewport <class_SubViewport>`.
+    Kích thước của :ref:`SubViewportContainer <class_SubViewportContainer>` không thể nhỏ hơn kích thước của :ref:`SubViewport <class_SubViewport>`.
 
-Rendering
----------
+Kết xuất
+--------
 
-Due to the fact that the :ref:`Viewport <class_Viewport>` is an entryway into another rendering surface, it exposes a few
-rendering properties that can be different from the project settings. You can
-choose to use a different level of :ref:`MSAA <class_Viewport_property_msaa_2d>` for each Viewport. The default behavior is ``Disabled``.
+Vì :ref:`Viewport <class_Viewport>` là một lối vào một bề mặt kết xuất khác, nó cung cấp một số thuộc tính kết xuất có thể khác với các thiết lập của project. Bạn có thể chọn sử dụng một mức :ref:`MSAA <class_Viewport_property_msaa_2d>` khác cho mỗi Viewport. Hành vi mặc định là ``Disabled``.
 
-If you know that the :ref:`Viewport <class_Viewport>` is only going to be used for 2D, you can :ref:`Disable 3D<class_Viewport_property_disable_3d>`. Godot will then
-restrict how the Viewport is drawn.
-Disabling 3D is slightly faster and uses less memory compared to enabled 3D. It's a good idea to disable 3D if your viewport doesn't render anything in 3D.
+Nếu biết rằng :ref:`Viewport <class_Viewport>` chỉ được sử dụng cho 2D, bạn có thể :ref:`Disable 3D <class_Viewport_property_disable_3d>`. Khi đó, Godot sẽ giới hạn cách Viewport được vẽ. Việc tắt 3D nhanh hơn một chút và sử dụng ít bộ nhớ hơn so với khi bật 3D. Bạn nên tắt 3D nếu viewport của mình không kết xuất bất kỳ nội dung 3D nào.
 
 .. note::
 
-    If you need to render 3D shadows in the viewport, make sure to set the viewport's :ref:`positional_shadow_atlas_size<class_Viewport_property_positional_shadow_atlas_size>` property to a value higher than ``0``.
-    Otherwise, shadows won't be rendered. By default, the equivalent project setting is set to ``4096`` on desktop platforms and ``2048`` on mobile platforms.
+    Nếu cần kết xuất bóng 3D trong viewport, hãy đảm bảo đặt thuộc tính :ref:`positional_shadow_atlas_size<class_Viewport_property_positional_shadow_atlas_size>` của viewport thành giá trị cao hơn ``0``. Nếu không, bóng sẽ không được kết xuất. Theo mặc định, thiết lập tương đương của project được đặt thành ``4096`` trên các nền tảng desktop và ``2048`` trên các nền tảng mobile.
 
-Godot also provides a way of customizing how everything is drawn inside :ref:`Viewports <class_Viewport>` using :ref:`Debug Draw<class_Viewport_property_debug_draw>`.
-Debug Draw allows you to specify a mode which determines how the Viewport will display things drawn
-inside it. Debug Draw is ``Disabled`` by default. Some other options are ``Unshaded``, ``Overdraw``, and ``Wireframe``. For a full list, refer to the :ref:`Viewport Documentation<class_Viewport_property_debug_draw>`.
+Godot cũng cung cấp cách tùy chỉnh cách mọi thứ được vẽ bên trong :ref:`Viewports <class_Viewport>` bằng :ref:`Debug Draw <class_Viewport_property_debug_draw>`. Debug Draw cho phép bạn chỉ định một chế độ xác định cách Viewport hiển thị những nội dung được vẽ bên trong nó. Theo mặc định, Debug Draw là ``Disabled``. Một số tùy chọn khác là ``Unshaded``, ``Overdraw`` và ``Wireframe``. Để xem danh sách đầy đủ, hãy tham khảo :ref:`Viewport Documentation <class_Viewport_property_debug_draw>`.
 
--  **Debug Draw = Disabled** (default): The scene is drawn normally.
+-  **Debug Draw = Disabled** (mặc định): Cảnh được vẽ bình thường.
 
   .. image:: img/default_scene.webp
 
--  **Debug Draw = Unshaded**: Unshaded draws the scene without using lighting information so all the objects appear flatly colored in their albedo color.
+-  **Debug Draw = Unshaded**: Unshaded vẽ cảnh mà không sử dụng thông tin chiếu sáng, vì vậy tất cả đối tượng đều có màu phẳng theo màu albedo của chúng.
 
   .. image:: img/unshaded.webp
 
--  **Debug Draw = Overdraw**: Overdraw draws the meshes semi-transparent with an additive blend so you can see how the meshes overlap.
+-  **Debug Draw = Overdraw**: Overdraw vẽ các mesh bán trong suốt với phép trộn cộng, nhờ đó bạn có thể thấy các mesh chồng lên nhau như thế nào.
 
   .. image:: img/overdraw.webp
 
--  **Debug Draw = Wireframe**: Wireframe draws the scene using only the edges of triangles in the meshes.
+-  **Debug Draw = Wireframe**: Wireframe vẽ cảnh chỉ bằng các cạnh của tam giác trong các mesh.
 
   .. image:: img/wireframe.webp
 
 .. note::
 
-    Debug Draw modes are currently **not** supported when using the
-    Compatibility rendering method. They will appear as regular draw modes.
+    Các chế độ Debug Draw hiện **chưa** được hỗ trợ khi sử dụng phương thức kết xuất Compatibility. Chúng sẽ xuất hiện như các chế độ vẽ thông thường.
 
-Render target
--------------
+Mục tiêu kết xuất
+-----------------
 
-When rendering to a :ref:`SubViewport <class_SubViewport>`, whatever is inside will not be
-visible in the scene editor. To display the contents, you have to draw the SubViewport's :ref:`ViewportTexture <class_ViewportTexture>` somewhere.
-This can be requested via code using (for example):
+Khi kết xuất vào một :ref:`SubViewport <class_SubViewport>`, mọi thứ bên trong sẽ không hiển thị trong trình chỉnh sửa cảnh. Để hiển thị nội dung, bạn phải vẽ :ref:`ViewportTexture <class_ViewportTexture>` của SubViewport ở đâu đó. Có thể yêu cầu việc này bằng code, chẳng hạn như:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # This gives us the ViewportTexture.
+    # Thao tác này cung cấp cho chúng ta ViewportTexture.
     var tex = viewport.get_texture()
     sprite.texture = tex
 
  .. code-tab:: csharp
 
-    // This gives us the ViewportTexture.
+    // Thao tác này cung cấp cho chúng ta ViewportTexture.
     var tex = viewport.GetTexture();
     sprite.Texture = tex;
 
-Or it can be assigned in the editor by selecting "New ViewportTexture"
+Hoặc có thể gán nó trong trình chỉnh sửa bằng cách chọn "New ViewportTexture"
 
 .. image:: img/texturemenu.webp
 
-and then selecting the :ref:`Viewport <class_Viewport>` you want to use.
+rồi chọn :ref:`Viewport <class_Viewport>` mà bạn muốn sử dụng.
 
 .. image:: img/texturepath.webp
 
-Every frame, the :ref:`Viewport's <class_Viewport>` texture is cleared away with the default clear color (or a transparent
-color if :ref:`Transparent BG<class_Viewport_property_transparent_bg>` is set to ``true``). This can be changed by setting :ref:`Clear Mode<class_SubViewport_property_render_target_clear_mode>` to ``Never`` or ``Next Frame``.
-As the name implies, Never means the texture will never be cleared, while next frame will
-clear the texture on the next frame and then set itself to Never.
+Mỗi khung hình, texture của :ref:`Viewport <class_Viewport>` sẽ được xóa bằng màu xóa mặc định (hoặc màu trong suốt nếu :ref:`Transparent BG <class_Viewport_property_transparent_bg>` được đặt thành ``true``). Bạn có thể thay đổi điều này bằng cách đặt :ref:`Clear Mode <class_SubViewport_property_render_target_clear_mode>` thành ``Never`` hoặc ``Next Frame``. Như tên gọi cho thấy, Never nghĩa là texture sẽ không bao giờ bị xóa, còn next frame sẽ xóa texture ở khung hình tiếp theo rồi tự đặt lại thành Never.
 
-By default, re-rendering of the :ref:`SubViewport <class_SubViewport>` happens when
-its :ref:`ViewportTexture <class_ViewportTexture>` has been drawn in a frame. If visible, it will be
-rendered, otherwise, it will not. This behavior can be changed by setting :ref:`Update Mode<class_SubViewport_property_render_target_update_mode>` to ``Never``, ``Once``, ``Always``, or ``When Parent Visible``.
-Never and Always will never or always re-render respectively. Once will re-render the next frame and change to Never afterwards. This can be used to manually update the Viewport.
-This flexibility allows users to render an image once and then use the texture without incurring the cost of rendering every frame.
+Theo mặc định, :ref:`SubViewport <class_SubViewport>` sẽ được kết xuất lại khi :ref:`ViewportTexture <class_ViewportTexture>` của nó đã được vẽ trong một khung hình. Nếu hiển thị, nó sẽ được kết xuất; nếu không, nó sẽ không được kết xuất. Có thể thay đổi hành vi này bằng cách đặt :ref:`Update Mode <class_SubViewport_property_render_target_update_mode>` thành ``Never``, ``Once``, ``Always`` hoặc ``When Parent Visible``. Never và Always lần lượt sẽ không bao giờ hoặc luôn luôn kết xuất lại. Once sẽ kết xuất lại ở khung hình tiếp theo rồi chuyển thành Never. Bạn có thể dùng cách này để cập nhật Viewport thủ công. Tính linh hoạt này cho phép người dùng kết xuất một image một lần rồi sử dụng texture mà không phải chịu chi phí kết xuất ở mỗi khung hình.
 
 .. note::
 
-    Make sure to check the Viewport demos. They are available in the
-    viewport folder of the demos archive, or at
-    https://github.com/godotengine/godot-demo-projects/tree/master/viewport.
+    Hãy nhớ kiểm tra các bản demo Viewport. Chúng có trong thư mục viewport của kho lưu trữ demo hoặc tại https://github.com/godotengine/godot-demo-projects/tree/master/viewport.
+
+.. _`3D in 2D`: https://github.com/godotengine/godot-demo-projects/tree/master/viewport/3d_in_2d
+.. _`2D in 3D`: https://github.com/godotengine/godot-demo-projects/tree/master/viewport/2d_in_3d

@@ -1,38 +1,27 @@
-:article_outdated: True
+:article_outdated: Đúng
 
 .. _doc_import_plugins:
 
-Import plugins
-==============
+Import plugin
+=============
 
-.. note:: This tutorial assumes you already know how to make generic plugins. If
-          in doubt, refer to the :ref:`doc_making_plugins` page. This also
-          assumes you are acquainted with Godot's import system.
+.. note:: Hướng dẫn này giả định rằng bạn đã biết cách tạo generic plugin. Nếu chưa chắc, hãy tham khảo trang :ref:`doc_making_plugins`. Hướng dẫn này cũng giả định rằng bạn đã quen với hệ thống import của Godot.
 
-Introduction
-------------
+Giới thiệu
+----------
 
-An import plugin is a special type of editor tool that allows custom resources
-to be imported by Godot and be treated as first-class resources. The editor
-itself comes bundled with a lot of import plugins to handle the common resources
-like PNG images, Collada and glTF models, Ogg Vorbis sounds, and many more.
+Import plugin là một loại editor tool đặc biệt, cho phép Godot import các resource tùy chỉnh và xử lý chúng như các resource hạng nhất. Bản thân editor đi kèm rất nhiều import plugin để xử lý các resource phổ biến như ảnh PNG, model Collada và glTF, âm thanh Ogg Vorbis cùng nhiều loại khác.
 
-This tutorial shows how to create an import plugin to load a
-custom text file as a material resource. This text file will contain three
-numeric values separated by comma, which represents the three channels of a
-color, and the resulting color will be used as the albedo (main color) of the
-imported material. In this example it contains the pure blue color
-(zero red, zero green, and full blue):
+Hướng dẫn này chỉ cách tạo một import plugin để tải một tệp văn bản tùy chỉnh dưới dạng material resource. Tệp văn bản này sẽ chứa ba giá trị số được phân tách bằng dấu phẩy, biểu thị ba kênh của một màu; màu kết quả sẽ được dùng làm albedo (màu chính) của material đã import. Trong ví dụ này, tệp chứa màu xanh dương thuần (đỏ bằng không, xanh lá bằng không và xanh dương tối đa):
 
 .. code-block:: none
 
     0,0,255
 
-Configuration
--------------
+Cấu hình
+--------
 
-First we need a generic plugin that will handle the initialization and
-destruction of our import plugin. Let's add the ``plugin.cfg`` file first:
+Trước tiên, chúng ta cần một generic plugin để xử lý việc khởi tạo và hủy import plugin. Trước hết, hãy thêm tệp ``plugin.cfg``:
 
 .. code-block:: ini
 
@@ -44,8 +33,7 @@ destruction of our import plugin. Let's add the ``plugin.cfg`` file first:
     version="1.0"
     script="material_import.gd"
 
-Then we need the ``material_import.gd`` file to add and remove the import plugin
-when needed:
+Tiếp theo, chúng ta cần tệp ``material_import.gd`` để thêm và xóa import plugin khi cần:
 
 ::
 
@@ -66,28 +54,19 @@ when needed:
         remove_import_plugin(import_plugin)
         import_plugin = null
 
-When this plugin is activated, it will create a new instance of the import
-plugin (which we'll soon make) and add it to the editor using the
-:ref:`add_import_plugin() <class_EditorPlugin_method_add_import_plugin>` method. We store
-a reference to it in a class member ``import_plugin`` so we can refer to it
-later when removing it. The
-:ref:`remove_import_plugin() <class_EditorPlugin_method_remove_import_plugin>` method is
-called when the plugin is deactivated to clean up the memory and let the editor
-know the import plugin isn't available anymore.
+Khi plugin này được kích hoạt, nó sẽ tạo một instance mới của import plugin (chúng ta sẽ sớm tạo plugin này) và thêm nó vào editor bằng cách sử dụng
+phương thức :ref:`add_import_plugin() <class_EditorPlugin_method_add_import_plugin>`. Chúng ta lưu một tham chiếu đến nó trong thành viên lớp ``import_plugin`` để có thể dùng tham chiếu này sau đó khi xóa nó. Phương thức
+:ref:`remove_import_plugin() <class_EditorPlugin_method_remove_import_plugin>` được gọi khi plugin bị tắt để dọn dẹp bộ nhớ và cho editor biết rằng import plugin không còn khả dụng.
 
-Note that the import plugin is a reference type, so it doesn't need to be
-explicitly released from memory with the ``free()`` function. It will be
-released automatically by the engine when it goes out of scope.
+Lưu ý rằng import plugin là một reference type, vì vậy không cần giải phóng nó khỏi bộ nhớ một cách rõ ràng bằng hàm ``free()``. Engine sẽ tự động giải phóng nó khi nó ra khỏi scope.
 
-The EditorImportPlugin class
-----------------------------
+Lớp EditorImportPlugin
+----------------------
 
-The main character of the show is the
-:ref:`EditorImportPlugin class <class_EditorImportPlugin>`. It is responsible for
-implementing the methods that are called by Godot when it needs to know how to deal
-with files.
+Nhân vật chính ở đây là
+:ref:`lớp EditorImportPlugin <class_EditorImportPlugin>`. Lớp này chịu trách nhiệm triển khai các phương thức được Godot gọi khi cần biết cách xử lý tệp.
 
-Let's begin to code our plugin, one method at time:
+Hãy bắt đầu viết plugin của chúng ta, từng phương thức một:
 
 ::
 
@@ -99,85 +78,56 @@ Let's begin to code our plugin, one method at time:
     func _get_importer_name():
         return "demos.sillymaterial"
 
-The first method is the
-:ref:`_get_importer_name()<class_EditorImportPlugin_private_method__get_importer_name>`. This is a
-unique name for your plugin that is used by Godot to know which import was used
-in a certain file. When the files needs to be reimported, the editor will know
-which plugin to call.
+Phương thức đầu tiên là
+:ref:`_get_importer_name()<class_EditorImportPlugin_private_method__get_importer_name>`. Đây là tên duy nhất cho plugin của bạn, được Godot sử dụng để biết import nào đã được dùng cho một tệp cụ thể. Khi tệp cần được import lại, editor sẽ biết cần gọi plugin nào.
 
 ::
 
     func _get_visible_name():
         return "Silly Material"
 
-The :ref:`_get_visible_name()<class_EditorImportPlugin_private_method__get_visible_name>` method is
-responsible for returning the name of the type it imports and it will be shown to the
-user in the Import dock.
+Phương thức :ref:`_get_visible_name()<class_EditorImportPlugin_private_method__get_visible_name>` chịu trách nhiệm trả về tên của loại mà plugin import và tên này sẽ được hiển thị cho người dùng trong Import dock.
 
-You should choose this name as a continuation to "Import as", e.g. *"Import as
-Silly Material"*. You can name it whatever you want but we recommend a
-descriptive name for your plugin.
+Bạn nên chọn tên này như phần tiếp nối của "Import as", ví dụ *"Import as Silly Material"*. Bạn có thể đặt tên tùy ý, nhưng chúng tôi khuyến nghị dùng tên mô tả rõ plugin của bạn.
 
 ::
 
     func _get_recognized_extensions():
         return ["mtxt"]
 
-Godot's import system detects file types by their extension. In the
-:ref:`_get_recognized_extensions()<class_EditorImportPlugin_private_method__get_recognized_extensions>`
-method you return an array of strings to represent each extension that this
-plugin can understand. If an extension is recognized by more than one plugin,
-the user can select which one to use when importing the files.
+Hệ thống import của Godot nhận diện loại tệp dựa trên phần mở rộng. Trong phương thức
+:ref:`_get_recognized_extensions()<class_EditorImportPlugin_private_method__get_recognized_extensions>`, bạn trả về một mảng các chuỗi để biểu thị từng phần mở rộng mà plugin này có thể hiểu. Nếu một phần mở rộng được nhiều plugin nhận diện, người dùng có thể chọn plugin sẽ dùng khi import tệp.
 
-.. tip:: Common extensions like ``.json`` and ``.txt`` might be used by many
-         plugins. Also, there could be files in the project that are just data
-         for the game and should not be imported. You have to be careful when
-         importing to validate the data. Never expect the file to be well-formed.
+.. tip:: Các phần mở rộng phổ biến như ``.json`` và ``.txt`` có thể được nhiều plugin sử dụng. Ngoài ra, trong project có thể có những tệp chỉ chứa dữ liệu cho game và không nên được import. Bạn phải cẩn thận khi import và xác thực dữ liệu. Đừng bao giờ giả định tệp có định dạng hợp lệ.
 
 ::
 
     func _get_save_extension():
         return "material"
 
-The imported files are saved in the ``.import`` folder at the project's root.
-Their extension should match the type of resource you are importing, but since
-Godot can't tell what you'll use (because there might be multiple valid
-extensions for the same resource), you need to declare what will be used in
-the import.
+Các tệp đã import được lưu trong thư mục ``.import`` ở thư mục gốc của project. Phần mở rộng của chúng phải khớp với loại resource bạn đang import, nhưng vì Godot không thể biết bạn sẽ sử dụng loại nào (do cùng một resource có thể có nhiều phần mở rộng hợp lệ), bạn cần khai báo phần mở rộng sẽ được dùng trong quá trình import.
 
-Since we're importing a Material, we'll use the special extension for such
-resource types. If you are importing a scene, you can use ``scn``. Generic
-resources can use the ``res`` extension. However, this is not enforced in any
-way by the engine.
+Vì chúng ta đang import một Material, chúng ta sẽ dùng phần mở rộng đặc biệt dành cho loại resource này. Nếu đang import một scene, bạn có thể dùng phần mở rộng ``scn``. Generic resource có thể dùng phần mở rộng ``res``. Tuy nhiên, engine không bắt buộc điều này theo bất kỳ cách nào.
 
 ::
 
     func _get_resource_type():
         return "StandardMaterial3D"
 
-The imported resource has a specific type, so the editor can know which property
-slot it belongs to. This allows drag and drop from the FileSystem dock to a
-property in the Inspector.
+Resource đã import có một loại cụ thể, vì vậy editor có thể biết nó thuộc về property slot nào. Điều này cho phép kéo và thả từ FileSystem dock vào một property trong Inspector.
 
-In our case it's a :ref:`class_StandardMaterial3D`, which can be applied to 3D
-objects.
+Trong trường hợp của chúng ta, đó là một :ref:`class_StandardMaterial3D`, có thể được áp dụng cho các đối tượng 3D.
 
-.. note:: If you need to import different types from the same extension, you
-          have to create multiple import plugins. You can abstract the import
-          code on another file to avoid duplication in this regard.
+.. note:: Nếu cần import các loại khác nhau từ cùng một phần mở rộng, bạn phải tạo nhiều import plugin. Bạn có thể tách code import sang một tệp khác để tránh trùng lặp trong trường hợp này.
 
-Options and presets
--------------------
+Tùy chọn và preset
+------------------
 
-Your plugin can provide different options to allow the user to control how the
-resource will be imported. If a set of selected options is common, you can also
-create different presets to make it easier for the user. The following image
-shows how the options will appear in the editor:
+Plugin của bạn có thể cung cấp nhiều tùy chọn khác nhau để người dùng kiểm soát cách resource được import. Nếu một tập hợp tùy chọn được chọn thường xuyên, bạn cũng có thể tạo các preset khác nhau để người dùng thao tác dễ hơn. Hình ảnh sau cho thấy các tùy chọn sẽ xuất hiện trong editor như thế nào:
 
 .. image:: img/import_plugin_options.png
 
-Since there might be many presets and they are identified with a number, it's a
-good practice to use an enum so you can refer to them using names.
+Vì có thể có nhiều preset và chúng được xác định bằng một số, nên sử dụng enum là một cách tốt để bạn có thể tham chiếu đến chúng bằng tên.
 
 ::
 
@@ -190,18 +140,14 @@ good practice to use an enum so you can refer to them using names.
 
     ...
 
-Now that the enum is defined, let's keep looking at the methods of an import
-plugin:
+Sau khi đã định nghĩa enum, hãy tiếp tục xem xét các phương thức của một import plugin:
 
 ::
 
     func _get_preset_count():
         return Presets.size()
 
-The :ref:`_get_preset_count() <class_EditorImportPlugin_private_method__get_preset_count>` method
-returns the amount of presets that this plugins defines. We only have one preset
-now, but we can make this method future-proof by returning the size of our
-``Presets`` enumeration.
+Phương thức :ref:`_get_preset_count() <class_EditorImportPlugin_private_method__get_preset_count>` trả về số lượng preset mà plugin này định nghĩa. Hiện tại chúng ta chỉ có một preset, nhưng có thể làm cho phương thức này có khả năng mở rộng trong tương lai bằng cách trả về kích thước của enum ``Presets``.
 
 ::
 
@@ -213,18 +159,12 @@ now, but we can make this method future-proof by returning the size of our
                 return "Unknown"
 
 
-Here we have the
-:ref:`_get_preset_name() <class_EditorImportPlugin_private_method__get_preset_name>` method, which
-gives names to the presets as they will be presented to the user, so be sure to
-use short and clear names.
+Ở đây chúng ta có phương thức
+:ref:`_get_preset_name() <class_EditorImportPlugin_private_method__get_preset_name>`, dùng để đặt tên cho các preset khi chúng được hiển thị cho người dùng, vì vậy hãy đảm bảo dùng tên ngắn gọn và rõ ràng.
 
-We can use the ``match`` statement here to make the code more structured. This
-way it's easy to add new presets in the future. We use the catch all pattern to
-return something too. Although Godot won't ask for presets beyond the preset
-count you defined, it's always better to be on the safe side.
+Ở đây, chúng ta có thể sử dụng câu lệnh ``match`` để làm cho code có cấu trúc hơn. Nhờ vậy, việc thêm preset mới trong tương lai sẽ dễ dàng. Chúng ta cũng dùng mẫu catch all để trả về một giá trị. Mặc dù Godot sẽ không yêu cầu các preset vượt quá số lượng preset bạn đã định nghĩa, luôn thận trọng vẫn tốt hơn.
 
-If you have only one preset you could simply return its name directly, but if
-you do this you have to be careful when you add more presets.
+Nếu chỉ có một preset, bạn có thể trả về trực tiếp tên của preset đó, nhưng nếu làm vậy, bạn phải cẩn thận khi thêm các preset khác.
 
 ::
 
@@ -238,58 +178,43 @@ you do this you have to be careful when you add more presets.
             _:
                 return []
 
-This is the method which defines the available options.
-:ref:`_get_import_options() <class_EditorImportPlugin_private_method__get_import_options>` returns
-an array of dictionaries, and each dictionary contains a few keys that are
-checked to customize the option as it's shown to the user. The following table
-shows the possible keys:
+Đây là phương thức định nghĩa các tùy chọn khả dụng.
+:ref:`_get_import_options() <class_EditorImportPlugin_private_method__get_import_options>` trả về một mảng các dictionary, trong đó mỗi dictionary chứa một số key được kiểm tra để tùy chỉnh tùy chọn khi hiển thị cho người dùng. Bảng sau đây liệt kê các key có thể dùng:
 
-+-------------------+------------+----------------------------------------------------------------------------------------------------------+
-| Key               | Type       | Description                                                                                              |
-+===================+============+==========================================================================================================+
-| ``name``          | String     | The name of the option. When showed, underscores become spaces and first letters are capitalized.        |
-+-------------------+------------+----------------------------------------------------------------------------------------------------------+
-| ``default_value`` | Any        | The default value of the option for this preset.                                                         |
-+-------------------+------------+----------------------------------------------------------------------------------------------------------+
-| ``property_hint`` | Enum value | One of the :ref:`PropertyHint <enum_@GlobalScope_PropertyHint>` values to use as hint.                   |
-+-------------------+------------+----------------------------------------------------------------------------------------------------------+
-| ``hint_string``   | String     | The hint text of the property. The same as you'd add in the ``export`` statement in GDScript.            |
-+-------------------+------------+----------------------------------------------------------------------------------------------------------+
-| ``usage``         | Enum value | One of the :ref:`PropertyUsageFlags <enum_@GlobalScope_PropertyUsageFlags>` values to define the usage.  |
-+-------------------+------------+----------------------------------------------------------------------------------------------------------+
++-------------------+------------+------------------------------------------------------------------------------------------------------------------+
+| Key               | Type       | Description                                                                                                      |
++===================+============+==================================================================================================================+
+| ``name``          | String     | Tên của tùy chọn. Khi hiển thị, dấu gạch dưới sẽ trở thành khoảng trắng và chữ cái đầu tiên được viết hoa.       |
++-------------------+------------+------------------------------------------------------------------------------------------------------------------+
+| ``default_value`` | Any        | Giá trị mặc định của tùy chọn cho preset này.                                                                    |
++-------------------+------------+------------------------------------------------------------------------------------------------------------------+
+| ``property_hint`` | Enum value | Một trong các giá trị :ref:`PropertyHint <enum_@GlobalScope_PropertyHint>` được dùng làm gợi ý.                  |
++-------------------+------------+------------------------------------------------------------------------------------------------------------------+
+| ``hint_string``   | String     | Văn bản gợi ý của property. Giống như phần bạn thêm vào câu lệnh ``export`` trong GDScript.                      |
++-------------------+------------+------------------------------------------------------------------------------------------------------------------+
+| ``usage``         | Enum value | Một trong các giá trị :ref:`PropertyUsageFlags <enum_@GlobalScope_PropertyUsageFlags>` để xác định cách sử dụng. |
++-------------------+------------+------------------------------------------------------------------------------------------------------------------+
 
-The ``name`` and ``default_value`` keys are **mandatory**, the rest are optional.
+Các khóa ``name`` và ``default_value`` là **mandatory**, những khóa còn lại là tùy chọn.
 
-Note that the ``_get_import_options`` method receives the preset number, so you
-can configure the options for each different preset (especially the default
-value). In this example we use the ``match`` statement, but if you have lots of
-options and the presets only change the value you may want to create the array
-of options first and then change it based on the preset.
+Lưu ý rằng phương thức ``_get_import_options`` nhận số preset, vì vậy bạn có thể cấu hình các tùy chọn cho từng preset khác nhau, đặc biệt là giá trị mặc định. Trong ví dụ này, chúng ta sử dụng câu lệnh ``match``, nhưng nếu có nhiều tùy chọn và các preset chỉ thay đổi giá trị, bạn có thể muốn tạo mảng tùy chọn trước rồi thay đổi mảng đó dựa trên preset.
 
-.. warning:: The ``_get_import_options`` method is called even if you don't
-             define presets (by making ``_get_preset_count`` return zero). You
-             have to return an array even it's empty, otherwise you can get
-             errors.
+.. warning:: Phương thức ``_get_import_options`` vẫn được gọi ngay cả khi bạn không định nghĩa preset (bằng cách để ``_get_preset_count`` trả về số 0). Bạn phải trả về một mảng, kể cả khi mảng đó rỗng, nếu không bạn có thể gặp lỗi.
 
 ::
 
     func _get_option_visibility(path, option_name, options):
         return true
 
-For the
-:ref:`_get_option_visibility() <class_EditorImportPlugin_private_method__get_option_visibility>`
-method, we simply return ``true`` because all of our options (i.e. the single
-one we defined) are visible all the time.
+Đối với
+phương thức :ref:`_get_option_visibility() <class_EditorImportPlugin_private_method__get_option_visibility>`, chúng ta chỉ cần trả về ``true`` vì tất cả tùy chọn của chúng ta (tức là tùy chọn duy nhất đã định nghĩa) luôn hiển thị.
 
-If you need to make certain option visible only if another is set with a certain
-value, you can add the logic in this method.
+Nếu cần chỉ hiển thị một tùy chọn nhất định khi một tùy chọn khác được đặt thành một giá trị cụ thể, bạn có thể thêm logic vào phương thức này.
 
-The ``import`` method
----------------------
+Phương thức ``import``
+----------------------
 
-The heavy part of the process, responsible for converting the files into
-resources, is covered by the :ref:`_import() <class_EditorImportPlugin_private_method__import>`
-method. Our sample code is a bit long, so let's split in a few parts:
+Phần chính của quy trình, chịu trách nhiệm chuyển đổi các tệp thành resource, được thực hiện bởi phương thức :ref:`_import() <class_EditorImportPlugin_private_method__import>`. Mã mẫu của chúng ta hơi dài, vì vậy hãy chia thành một vài phần:
 
 ::
 
@@ -300,12 +225,10 @@ method. Our sample code is a bit long, so let's split in a few parts:
 
         var line = file.get_line()
 
-The first part of our import method opens and reads the source file. We use the
-:ref:`FileAccess <class_FileAccess>` class to do that, passing the ``source_file``
-parameter which is provided by the editor.
+Phần đầu tiên của phương thức import mở và đọc tệp nguồn. Chúng ta sử dụng
+class :ref:`FileAccess <class_FileAccess>` để thực hiện việc đó, truyền tham số ``source_file`` do editor cung cấp.
 
-If there's an error when opening the file, we return it to let the editor know
-that the import wasn't successful.
+Nếu xảy ra lỗi khi mở tệp, chúng ta trả về lỗi đó để editor biết rằng quá trình import không thành công.
 
 ::
 
@@ -319,71 +242,45 @@ that the import wasn't successful.
     else:
         color = Color.from_rgba8(int(channels[0]), int(channels[1]), int(channels[2]))
 
-This code takes the line of the file it read before and splits it in pieces
-that are separated by a comma. If there are more or less than the three values,
-it considers the file invalid and reports an error.
+Đoạn mã này lấy dòng mà nó vừa đọc từ tệp và tách dòng đó thành các phần được phân cách bằng dấu phẩy. Nếu có nhiều hơn hoặc ít hơn ba giá trị, đoạn mã coi tệp là không hợp lệ và báo lỗi.
 
-Then it creates a new :ref:`Color <class_Color>` variable and sets its values
-according to the input file. If the ``use_red_anyway`` option is enabled, then
-it sets the color as a pure red instead.
+Sau đó, đoạn mã tạo một biến :ref:`Color <class_Color>` mới và đặt các giá trị của biến theo tệp đầu vào. Nếu tùy chọn ``use_red_anyway`` được bật, đoạn mã sẽ đặt màu thành đỏ hoàn toàn.
 
 ::
 
     var material = StandardMaterial3D.new()
     material.albedo_color = color
 
-This part makes a new :ref:`StandardMaterial3D <class_StandardMaterial3D>` that is the
-imported resource. We create a new instance of it and then set its albedo color
-as the value we got before.
+Phần này tạo một :ref:`StandardMaterial3D <class_StandardMaterial3D>` mới, chính là resource đã import. Chúng ta tạo một instance mới của nó rồi đặt màu albedo thành giá trị đã nhận được trước đó.
 
 ::
 
     return ResourceSaver.save(material, "%s.%s" % [save_path, _get_save_extension()])
 
-This is the last part and quite an important one, because here we save the made
-resource to the disk. The path of the saved file is generated and informed by
-the editor via the ``save_path`` parameter. Note that this comes **without** the
-extension, so we add it using :ref:`string formatting <doc_gdscript_printf>`. For
-this we call the ``_get_save_extension`` method that we defined earlier, so we
-can be sure that they won't get out of sync.
+Đây là phần cuối cùng và khá quan trọng, vì tại đây chúng ta lưu resource đã tạo vào ổ đĩa. Đường dẫn của tệp đã lưu được tạo và truyền cho editor thông qua tham số ``save_path``. Lưu ý rằng đường dẫn này không bao gồm phần mở rộng, tức là **without**, nên chúng ta thêm phần mở rộng bằng :ref:`string formatting <doc_gdscript_printf>`. Để thực hiện việc này, chúng ta gọi phương thức ``_get_save_extension`` đã định nghĩa trước đó, nhờ vậy có thể đảm bảo chúng không bị lệch nhau.
 
-We also return the result from the
-:ref:`ResourceSaver.save() <class_ResourceSaver_method_save>` method, so if there's an
-error in this step, the editor will know about it.
+Chúng ta cũng trả về kết quả từ
+phương thức :ref:`ResourceSaver.save() <class_ResourceSaver_method_save>`, vì vậy nếu xảy ra lỗi ở bước này, editor sẽ biết về lỗi đó.
 
-Platform variants and generated files
+Các biến thể nền tảng và tệp được tạo
 -------------------------------------
 
-You may have noticed that our plugin ignored two arguments of the ``import``
-method. Those are *return arguments* (hence the ``r`` at the beginning of their
-name), which means that the editor will read from them after calling your import
-method. Both of them are arrays that you can fill with information.
+Có thể bạn đã nhận thấy plugin của chúng ta bỏ qua hai đối số của phương thức ``import``. Đây là các *return arguments* (do đó có ``r`` ở đầu tên), nghĩa là editor sẽ đọc chúng sau khi gọi phương thức import của bạn. Cả hai đều là các mảng mà bạn có thể điền thông tin vào.
 
-The ``r_platform_variants`` argument is used if you need to import the resource
-differently depending on the target platform. While it's called *platform*
-variants, it is based on the presence of :ref:`feature tags <doc_feature_tags>`,
-so even the same platform can have multiple variants depending on the setup.
+Đối số ``r_platform_variants`` được dùng khi bạn cần import resource theo cách khác nhau tùy thuộc vào nền tảng đích. Mặc dù được gọi là các biến thể *platform*, chúng dựa trên sự hiện diện của :ref:`feature tags <doc_feature_tags>`, vì vậy ngay cả cùng một nền tảng cũng có thể có nhiều biến thể tùy theo thiết lập.
 
-To import a platform variant, you need to save it with the feature tag before
-the extension, and then push the tag to the ``r_platform_variants`` array so the
-editor can know that you did.
+Để import một biến thể nền tảng, bạn cần lưu biến thể đó với feature tag đặt trước phần mở rộng, sau đó đưa tag vào mảng ``r_platform_variants`` để editor biết rằng bạn đã thực hiện việc đó.
 
-For example, let's say we save a different material for a mobile platform. We
-would need to do something like the following:
+Ví dụ, giả sử chúng ta lưu một material khác cho nền tảng di động. Chúng ta cần làm như sau:
 
 ::
 
     r_platform_variants.push_back("mobile")
     return ResourceSaver.save(mobile_material, "%s.%s.%s" % [save_path, "mobile", _get_save_extension()])
 
-The ``r_gen_files`` argument is meant for extra files that are generated during
-your import process and need to be kept. The editor will look at it to
-understand the dependencies and make sure the extra file is not inadvertently
-deleted.
+Đối số ``r_gen_files`` được dùng cho các tệp bổ sung được tạo trong quá trình import và cần được giữ lại. Editor sẽ kiểm tra đối số này để hiểu các dependency và đảm bảo tệp bổ sung không bị xóa ngoài ý muốn.
 
-This is also an array and should be filled with full paths of the files you
-save. As an example, let's create another material for the next pass and save it
-in a different file:
+Đây cũng là một mảng và cần được điền bằng các đường dẫn đầy đủ của những tệp bạn lưu. Ví dụ, hãy tạo một material khác cho lần xử lý tiếp theo và lưu nó vào một tệp khác:
 
 ::
 
@@ -396,31 +293,17 @@ in a different file:
         return err
     r_gen_files.push_back(next_pass_path)
 
-Trying the plugin
------------------
+Thử plugin
+----------
 
-This has been theoretical, but now that the import plugin is done, let's
-test it. Make sure you created the sample file (with the contents described in
-the introduction section) and save it as ``test.mtxt``. Then activate the plugin
-in the Project Settings.
+Cho đến đây mọi thứ chỉ là lý thuyết, nhưng giờ plugin import đã hoàn tất, hãy thử nghiệm plugin. Hãy đảm bảo bạn đã tạo tệp mẫu (với nội dung được mô tả trong phần giới thiệu) và lưu tệp đó dưới dạng ``test.mtxt``. Sau đó, kích hoạt plugin trong Project Settings.
 
-If everything goes well, the import plugin is added to the editor and the file
-system is scanned, making the custom resource appear on the FileSystem dock. If
-you select it and focus the Import dock, you can see the only option to select
-there.
+Nếu mọi việc diễn ra suôn sẻ, plugin import sẽ được thêm vào editor và hệ thống tệp sẽ được quét, khiến resource tùy chỉnh xuất hiện trong dock FileSystem. Nếu chọn resource đó và chuyển đến dock Import, bạn sẽ thấy tùy chọn duy nhất có thể chọn ở đó.
 
-Create a MeshInstance3D node in the scene, and for its Mesh property set up a new
-SphereMesh. Unfold the Material section in the Inspector and then drag the file
-from the FileSystem dock to the material property. The object will update in the
-viewport with the blue color of the imported material.
+Tạo một node MeshInstance3D trong scene, rồi thiết lập một SphereMesh mới cho property Mesh của node đó. Mở rộng phần Material trong Inspector, sau đó kéo tệp từ dock FileSystem vào property material. Đối tượng sẽ được cập nhật trong viewport với màu xanh dương của material đã import.
 
 .. image:: img/import_plugin_trying.png
 
-Go to Import dock, enable the "Use Red Anyway" option, and click on "Reimport".
-This will update the imported material and should automatically update the view
-showing the red color instead.
+Đi đến dock Import, bật tùy chọn "Use Red Anyway", rồi nhấp vào "Reimport". Thao tác này sẽ cập nhật material đã import và tự động cập nhật chế độ xem để hiển thị màu đỏ.
 
-And that's it! Your first import plugin is done! Now get creative and make
-plugins for your own beloved formats. This can be quite useful to write your
-data in a custom format and then use it in Godot as if they were native
-resources. This shows how the import system is powerful and extendable.
+Vậy là xong! Plugin import đầu tiên của bạn đã hoàn thành! Bây giờ hãy thỏa sức sáng tạo và tạo plugin cho các định dạng yêu thích của riêng bạn. Đây có thể là cách rất hữu ích để ghi dữ liệu ở một định dạng tùy chỉnh rồi sử dụng dữ liệu đó trong Godot như thể chúng là resource gốc. Điều này cho thấy hệ thống import mạnh mẽ và có thể mở rộng đến mức nào.

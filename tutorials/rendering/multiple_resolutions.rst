@@ -1,640 +1,366 @@
 .. _doc_multiple_resolutions:
 
-Multiple resolutions
-====================
+Nhiều độ phân giải
+==================
 
-The problem of multiple resolutions
------------------------------------
+Vấn đề với nhiều độ phân giải
+-----------------------------
 
-Developers often have trouble understanding how to best support multiple
-resolutions in their games. For desktop and console games, this is more or less
-straightforward, as most screen aspect ratios are 16:9 and resolutions
-are standard (720p, 1080p, 1440p, 4K, …).
+Các nhà phát triển thường gặp khó khăn khi tìm hiểu cách hỗ trợ nhiều độ phân giải tốt nhất trong game của họ. Đối với game trên máy tính để bàn và console, việc này tương đối đơn giản, vì hầu hết tỷ lệ khung hình đều là 16:9 và độ phân giải đều theo các chuẩn phổ biến (720p, 1080p, 1440p, 4K, …).
 
-For mobile games, at first, it was easy. For many years, the iPhone and iPad
-used the same resolution. When *Retina* was implemented, they just doubled
-the pixel density; most developers had to supply assets in default and double
-resolutions.
+Đối với game di động, ban đầu việc này khá dễ dàng. Trong nhiều năm, iPhone và iPad sử dụng cùng một độ phân giải. Khi *Retina* được triển khai, mật độ pixel chỉ được tăng gấp đôi; hầu hết các nhà phát triển chỉ cần cung cấp asset ở độ phân giải mặc định và độ phân giải gấp đôi.
 
-Nowadays, this is no longer the case, as there are plenty of different screen
-sizes, densities, and aspect ratios. Non-conventional sizes are also becoming
-increasingly popular, such as ultrawide displays.
+Ngày nay, điều này không còn đúng nữa, vì có rất nhiều kích thước màn hình, mật độ pixel và tỷ lệ khung hình khác nhau. Các kích thước không theo chuẩn cũng ngày càng phổ biến, chẳng hạn như màn hình ultrawide.
 
-For 3D rendering, there is not much of a need to support multiple resolutions.
-Thanks to its vector-based nature, 3D geometry will just fill the screen based
-on the viewport size. For 2D and game UIs, this is a different matter,
-as art needs to be created using specific pixel sizes in software such
-as Photoshop, GIMP or Krita.
+Đối với việc render 3D, không cần quá nhiều đến việc hỗ trợ nhiều độ phân giải. Nhờ bản chất dựa trên vector, hình học 3D sẽ tự lấp đầy màn hình dựa trên kích thước viewport. Với 2D và UI của game thì lại khác, vì artwork cần được tạo bằng các kích thước pixel cụ thể trong những phần mềm như Photoshop, GIMP hoặc Krita.
 
-Since layouts, aspect ratios, resolutions, and pixel densities can change so
-much, it is no longer possible to design UIs for every specific screen.
-Another method must be used.
+Vì layout, tỷ lệ khung hình, độ phân giải và mật độ pixel có thể thay đổi rất nhiều, việc thiết kế UI cho từng màn hình cụ thể không còn khả thi. Cần sử dụng một phương pháp khác.
 
-One size fits all
------------------
+Một kích thước phù hợp cho tất cả
+---------------------------------
 
-The most common approach is to use a single *base* resolution and
-then fit it to everything else. This resolution is how most players are expected
-to play the game (given their hardware). For mobile, Google has useful `stats
-<https://developer.android.com/about/dashboards>`_ online, and for desktop,
-Steam `also does <https://store.steampowered.com/hwsurvey/>`_.
+Cách tiếp cận phổ biến nhất là sử dụng một độ phân giải *cơ sở* duy nhất, sau đó điều chỉnh nó cho tất cả các trường hợp khác. Đây là độ phân giải mà phần lớn người chơi được dự kiến sẽ sử dụng để chơi game (dựa trên phần cứng của họ). Đối với thiết bị di động, Google cung cấp `thống kê <https://developer.android.com/about/dashboards>`_ hữu ích trên mạng, còn đối với máy tính để bàn, Steam `cũng cung cấp <https://store.steampowered.com/hwsurvey/>`_ thông tin tương tự.
 
-As an example, Steam shows that the most common *primary display resolution* is
-1920×1080, so a sensible approach is to develop a game for this resolution, then
-handle scaling for different sizes and aspect ratios.
+Ví dụ, Steam cho thấy *độ phân giải màn hình chính* phổ biến nhất là 1920×1080, vì vậy một cách tiếp cận hợp lý là phát triển game ở độ phân giải này, sau đó xử lý việc scaling cho các kích thước và tỷ lệ khung hình khác nhau.
 
-Godot provides several useful tools to do this easily.
+Godot cung cấp một số công cụ hữu ích để thực hiện việc này dễ dàng.
 
 .. seealso::
 
-    You can see how Godot's support for multiple resolutions works in action using the
-    `Multiple Resolutions and Aspect Ratios demo project <https://github.com/godotengine/godot-demo-projects/tree/master/gui/multiple_resolutions>`__.
+    Bạn có thể xem cách Godot hỗ trợ nhiều độ phân giải hoạt động trên thực tế bằng cách sử dụng `project Multiple Resolutions and Aspect Ratios <https://github.com/godotengine/godot-demo-projects/tree/master/gui/multiple_resolutions>`__.
 
-Base size
----------
+Kích thước cơ sở
+----------------
 
-A base size for the window can be specified in the Project Settings under
-**Display → Window**.
+Có thể chỉ định kích thước cơ sở cho cửa sổ trong Project Settings tại **Display → Window**.
 
 .. image:: img/screenres.webp
 
-However, what it does is not completely obvious; the engine will *not*
-attempt to switch the monitor to this resolution. Rather, think of this
-setting as the "design size", i.e. the size of the area that you work
-with in the editor. This setting corresponds directly to the size of the
-blue rectangle in the 2D editor.
+Tuy nhiên, tác dụng của thiết lập này không hoàn toàn rõ ràng; engine *không* cố gắng chuyển màn hình sang độ phân giải này. Thay vào đó, hãy xem thiết lập này là "kích thước thiết kế", tức kích thước của khu vực mà bạn làm việc trong editor. Thiết lập này tương ứng trực tiếp với kích thước của hình chữ nhật màu xanh trong 2D editor.
 
-There is often a need to support devices with screen and window sizes
-that are different from this base size. Godot offers many ways to
-control how the viewport will be resized and stretched to different
-screen sizes.
+Thường cần hỗ trợ các thiết bị có kích thước màn hình và cửa sổ khác với kích thước cơ sở này. Godot cung cấp nhiều cách để kiểm soát cách viewport được thay đổi kích thước và stretch theo các kích thước màn hình khác nhau.
 
 .. note::
 
-   On this page, *window* refers to the screen area allotted to your game
-   by the system, while *viewport* refers to the root object (accessible
-   from ``get_tree().root``) which the game controls to fill this screen area.
-   This viewport is a :ref:`Window <class_Window>` instance. Recall from the
-   :ref:`introduction <doc_viewports>` that *all* Window objects are viewports.
+   Trong trang này, *window* đề cập đến khu vực màn hình được hệ thống phân bổ cho game của bạn, còn *viewport* đề cập đến object gốc (có thể truy cập từ ``get_tree().root``) mà game điều khiển để lấp đầy khu vực màn hình này. Viewport này là một instance :ref:`Window <class_Window>`. Hãy nhớ lại từ
+   :ref:`phần giới thiệu <doc_viewports>` rằng *tất cả* các object Window đều là viewport.
 
-To configure the stretch base size at runtime from a script, use the
-``get_tree().root.content_scale_size`` property (see
-:ref:`Window.content_scale_size <class_Window_property_content_scale_size>`).
-Changing this value can indirectly change the size of 2D elements. However, to
-provide a user-accessible scaling option, using
-:ref:`doc_multiple_resolutions_stretch_scale` is recommended as it's easier to
-adjust.
+Để cấu hình kích thước cơ sở của stretch trong runtime từ một script, hãy sử dụng ``get_tree().root.content_scale_size`` property (xem
+:ref:`Window.content_scale_size <class_Window_property_content_scale_size>`). Việc thay đổi giá trị này có thể gián tiếp thay đổi kích thước của các phần tử 2D. Tuy nhiên, để cung cấp tùy chọn scaling mà người dùng có thể truy cập, nên sử dụng
+:ref:`doc_multiple_resolutions_stretch_scale` vì việc điều chỉnh sẽ dễ dàng hơn.
 
 .. note::
 
-   Godot follows a modern approach to multiple resolutions. The engine will
-   never change the monitor's resolution on its own. While changing the
-   monitor's resolution is the most efficient approach, it's also the least
-   reliable approach as it can leave the monitor stuck on a low resolution if
-   the game crashes. This is especially common on macOS or Linux which don't
-   handle resolution changes as well as Windows.
+   Godot sử dụng cách tiếp cận hiện đại đối với nhiều độ phân giải. Engine sẽ không bao giờ tự thay đổi độ phân giải của màn hình. Mặc dù thay đổi độ phân giải màn hình là cách hiệu quả nhất, đây cũng là cách kém đáng tin cậy nhất vì có thể khiến màn hình bị kẹt ở độ phân giải thấp nếu game gặp sự cố. Điều này đặc biệt thường xảy ra trên macOS hoặc Linux, những hệ điều hành xử lý việc thay đổi độ phân giải không tốt bằng Windows.
 
-   Changing the monitor's resolution also removes any control from the game
-   developer over filtering and aspect ratio stretching, which can be important
-   to ensure correct display for pixel art games.
+   Việc thay đổi độ phân giải màn hình cũng làm mất quyền kiểm soát của nhà phát triển game đối với filtering và stretch tỷ lệ khung hình, những yếu tố có thể quan trọng để đảm bảo hiển thị chính xác cho các game pixel art.
 
-   On top of that, changing the monitor's resolution makes alt-tabbing in and
-   out of a game much slower since the monitor has to change resolutions every
-   time this is done.
+   Ngoài ra, việc thay đổi độ phân giải màn hình khiến thao tác alt-tab vào và ra khỏi game chậm hơn nhiều, vì màn hình phải thay đổi độ phân giải mỗi lần thực hiện thao tác này.
 
-Resizing
---------
+Thay đổi kích thước
+-------------------
 
-There are several types of devices, with several types of screens, which
-in turn have different pixel density and resolutions. Handling all of
-them can be a lot of work, so Godot tries to make the developer's life a
-little easier. The :ref:`Viewport <class_Viewport>`
-node has several functions to handle resizing, and the root node of the
-scene tree is always a viewport (scenes loaded are instanced as a child
-of it, and it can always be accessed by calling
-``get_tree().root`` or ``get_node("/root")``).
+Có nhiều loại thiết bị với nhiều loại màn hình khác nhau, và mỗi loại lại có mật độ pixel và độ phân giải khác nhau. Xử lý tất cả các trường hợp này có thể đòi hỏi rất nhiều công sức, vì vậy Godot cố gắng giúp cuộc sống của nhà phát triển dễ dàng hơn một chút. Node :ref:`Viewport <class_Viewport>` có một số chức năng để xử lý việc thay đổi kích thước, và node gốc của scene tree luôn là một viewport (các scene được load sẽ được instance làm node con của nó, và luôn có thể truy cập bằng cách gọi ``get_tree().root`` hoặc ``get_node("/root")``).
 
-In any case, while changing the root Viewport params is probably the
-most flexible way to deal with the problem, it can be a lot of work,
-code and guessing, so Godot provides a set of parameters in the
-project settings to handle multiple resolutions.
+Trong mọi trường hợp, mặc dù thay đổi các tham số của root Viewport có lẽ là cách linh hoạt nhất để xử lý vấn đề này, việc đó có thể đòi hỏi rất nhiều công sức, code và phỏng đoán, vì vậy Godot cung cấp một tập hợp các tham số trong project settings để xử lý nhiều độ phân giải.
 
 .. tip::
 
-    To render 3D at a lower resolution than 2D elements (without needing
-    separate viewports), you can use Godot's
-    :ref:`resolution scaling <doc_resolution_scaling>` support. This is a good way
-    to improve performance significantly in GPU-bottlenecked scenarios.
-    This works with any stretch mode and stretch aspect combination.
+    Để render 3D ở độ phân giải thấp hơn các phần tử 2D (mà không cần các viewport riêng), bạn có thể sử dụng
+    :ref:`hỗ trợ scaling độ phân giải <doc_resolution_scaling>` của Godot. Đây là một cách tốt để cải thiện đáng kể hiệu năng trong các trường hợp bị giới hạn bởi GPU. Cách này hoạt động với mọi tổ hợp stretch mode và stretch aspect.
 
-Stretch settings
-----------------
+Thiết lập stretch
+-----------------
 
 .. note::
 
-    When testing different stretch modes and stretch aspect settings, make sure
-    :ref:`game embedding <doc_game_embedding>` is configured to use the :ui:`Stretch to Fit`
-    scaling option:
+    Khi kiểm thử các stretch mode và stretch aspect khác nhau, hãy đảm bảo
+    :ref:`game embedding <doc_game_embedding>` được cấu hình để sử dụng :ui:`Stretch to Fit` tùy chọn scaling:
 
     .. figure:: img/multiple_resolutions_game_embedding_size_dropdown.webp
       :align: center
 
-    This ensures the viewport size always matches the window size, like when
-    game embedding is disabled.
+    Điều này đảm bảo kích thước viewport luôn khớp với kích thước cửa sổ, giống như khi game embedding bị tắt.
 
-Stretch settings are located in the project settings and provide several options:
+Các thiết lập stretch nằm trong project settings và cung cấp một số tùy chọn:
 
 .. image:: img/stretchsettings.webp
 
 Stretch Mode
 ~~~~~~~~~~~~
 
-The **Stretch Mode** setting defines how the base size is stretched to fit
-the resolution of the window or screen. The animations below use a "base
-size" of just 16×9 pixels to demonstrate the effect of different stretch
-modes. A single sprite, also 16×9 pixels in size, covers the entire viewport,
-and a diagonal :ref:`Line2D <class_Line2D>` is added on top of it:
+Thiết lập **Stretch Mode** xác định cách kích thước cơ sở được stretch để vừa với độ phân giải của cửa sổ hoặc màn hình. Các animation bên dưới sử dụng "kích thước cơ sở" chỉ 16×9 pixel để minh họa tác động của các stretch mode khác nhau. Một sprite duy nhất, cũng có kích thước 16×9 pixel, bao phủ toàn bộ viewport, và một :ref:`Line2D <class_Line2D>` đường chéo được thêm lên trên nó:
 
 .. image:: img/stretch_demo_scene.png
 
 .. Animated GIFs are generated from:
 .. https://github.com/ttencate/godot_scaling_mode
 
--  **Stretch Mode = Disabled** (default): No stretching happens. One
-   unit in the scene corresponds to one pixel on the screen. In this
-   mode, the **Stretch Aspect** setting has no effect.
+-  **Stretch Mode = Disabled** (mặc định): Không thực hiện stretch. Một unit trong scene tương ứng với một pixel trên màn hình. Ở mode này, thiết lập **Stretch Aspect** không có tác dụng.
 
    .. image:: img/stretch_disabled_expand.gif
 
--  **Stretch Mode = Canvas Items**: In this mode, the base size specified in
-   width and height in the project settings is
-   stretched to cover the whole screen (taking the **Stretch Aspect**
-   setting into account). This means that everything is rendered
-   directly at the target resolution. 3D is unaffected,
-   while in 2D, there is no longer a 1:1 correspondence between sprite
-   pixels and screen pixels, which may result in scaling artifacts.
+-  **Stretch Mode = Canvas Items**: Ở mode này, kích thước cơ sở được chỉ định bằng chiều rộng và chiều cao trong project settings sẽ được stretch để bao phủ toàn bộ màn hình (có tính đến thiết lập **Stretch Aspect**). Điều này có nghĩa là mọi thứ được render trực tiếp ở độ phân giải đích. 3D không bị ảnh hưởng, còn trong 2D, không còn sự tương ứng 1:1 giữa pixel của sprite và pixel trên màn hình, điều này có thể dẫn đến các lỗi hiển thị do scaling.
 
    .. image:: img/stretch_2d_expand.gif
 
--  **Stretch Mode = Viewport**: Viewport scaling means that the size of
-   the root :ref:`Viewport <class_Viewport>` is set precisely to the
-   base size specified in the Project Settings' **Display** section.
-   The scene is rendered to this viewport first. Finally, this viewport
-   is scaled to fit the screen (taking the **Stretch Aspect** setting into
-   account).
+-  **Chế độ co giãn = Viewport**: Co giãn viewport có nghĩa là kích thước của :ref:`Viewport <class_Viewport>` gốc được đặt chính xác theo kích thước cơ sở được chỉ định trong phần **Display** của Project Settings. Trước tiên, scene được render vào viewport này. Cuối cùng, viewport này được co giãn để vừa với màn hình (có tính đến thiết lập **Stretch Aspect**).
 
    .. image:: img/stretch_viewport_expand.gif
 
-To configure the stretch mode at runtime from a script, use the
-``get_tree().root.content_scale_mode`` property (see
-:ref:`Window.content_scale_mode <class_Window_property_content_scale_mode>`
-and the :ref:`ContentScaleMode <enum_Window_ContentScaleMode>` enum).
+Để cấu hình chế độ co giãn tại runtime từ một script, hãy sử dụng thuộc tính ``get_tree().root.content_scale_mode`` (xem
+:ref:`Window.content_scale_mode <class_Window_property_content_scale_mode>` và enum :ref:`ContentScaleMode <enum_Window_ContentScaleMode>`).
 
-Stretch Aspect
-~~~~~~~~~~~~~~
+Tỷ lệ co giãn
+~~~~~~~~~~~~~
 
-The second setting is the stretch aspect. Note that this only takes effect if
-**Stretch Mode** is set to something other than **Disabled**.
+Thiết lập thứ hai là tỷ lệ co giãn. Lưu ý rằng thiết lập này chỉ có hiệu lực nếu **Stretch Mode** được đặt thành giá trị khác **Disabled**.
 
-In the animations below, you will notice gray and black areas. The black
-areas are added by the engine and cannot be drawn into. The gray areas
-are part of your scene, and can be drawn to. The gray areas correspond
-to the region outside the blue frame you see in the 2D editor.
+Trong các animation bên dưới, bạn sẽ thấy các vùng màu xám và đen. Các vùng màu đen được engine thêm vào và không thể vẽ lên. Các vùng màu xám là một phần của scene và có thể vẽ lên. Các vùng màu xám tương ứng với khu vực bên ngoài khung màu xanh lam mà bạn thấy trong trình chỉnh sửa 2D.
 
--  **Stretch Aspect = Ignore**: Ignore the aspect ratio when stretching
-   the screen. This means that the original resolution will be stretched
-   to exactly fill the screen, even if it's wider or narrower. This may
-   result in nonuniform stretching: things looking wider or taller than
-   designed.
+-  **Tỷ lệ co giãn = Bỏ qua**: Bỏ qua tỷ lệ khung hình khi co giãn màn hình. Điều này có nghĩa là độ phân giải ban đầu sẽ được co giãn để lấp đầy chính xác màn hình, ngay cả khi màn hình rộng hơn hoặc hẹp hơn. Điều này có thể dẫn đến co giãn không đồng đều: các đối tượng trông rộng hơn hoặc cao hơn so với thiết kế.
 
    .. image:: img/stretch_viewport_ignore.gif
 
--  **Stretch Aspect = Keep**: Keep aspect ratio when stretching the
-   screen. This means that the viewport retains its original size
-   regardless of the screen resolution, and black bars will be added to
-   the top/bottom of the screen ("letterboxing") or the sides
-   ("pillarboxing").
+-  **Tỷ lệ co giãn = Giữ nguyên**: Giữ nguyên tỷ lệ khung hình khi co giãn màn hình. Điều này có nghĩa là viewport giữ nguyên kích thước ban đầu bất kể độ phân giải màn hình, và các dải màu đen sẽ được thêm vào phía trên/phía dưới màn hình ("letterboxing") hoặc hai bên ("pillarboxing").
 
-   This is a good option if you know the aspect ratio of your target
-   devices in advance, or if you don't want to handle different aspect
-   ratios.
+   Đây là lựa chọn phù hợp nếu bạn biết trước tỷ lệ khung hình của các thiết bị mục tiêu hoặc không muốn xử lý các tỷ lệ khung hình khác nhau.
 
    .. image:: img/stretch_viewport_keep.gif
 
--  **Stretch Aspect = Keep Width**: Keep aspect ratio when stretching the
-   screen. If the screen is wider than the base size, black bars are
-   added at the left and right (pillarboxing). But if the screen is
-   taller than the base resolution, the viewport will be grown in the
-   vertical direction (and more content will be visible to the bottom).
-   You can also think of this as "Expand Vertically".
+-  **Tỷ lệ co giãn = Giữ chiều rộng**: Giữ nguyên tỷ lệ khung hình khi co giãn màn hình. Nếu màn hình rộng hơn kích thước cơ sở, các dải màu đen sẽ được thêm vào bên trái và bên phải (pillarboxing). Nhưng nếu màn hình cao hơn độ phân giải cơ sở, viewport sẽ được mở rộng theo chiều dọc (và sẽ hiển thị thêm nội dung ở phía dưới). Bạn cũng có thể hiểu đây là "Mở rộng theo chiều dọc".
 
-   This is usually the best option for creating GUIs or HUDs that scale,
-   so some controls can be anchored to the bottom
-   (:ref:`doc_size_and_anchors`).
+   Đây thường là lựa chọn tốt nhất để tạo các GUI hoặc HUD có thể co giãn, nhờ đó một số control có thể được neo vào phía dưới (:ref:`doc_size_and_anchors`).
 
    .. image:: img/stretch_viewport_keep_width.gif
 
--  **Stretch Aspect = Keep Height**: Keep aspect ratio when stretching
-   the screen. If the screen is taller than the base size, black
-   bars are added at the top and bottom (letterboxing). But if the
-   screen is wider than the base resolution, the viewport will be grown
-   in the horizontal direction (and more content will be visible to the
-   right). You can also think of this as "Expand Horizontally".
+-  **Tỷ lệ co giãn = Giữ chiều cao**: Giữ nguyên tỷ lệ khung hình khi co giãn màn hình. Nếu màn hình cao hơn kích thước cơ sở, các dải màu đen sẽ được thêm vào phía trên và phía dưới (letterboxing). Nhưng nếu màn hình rộng hơn độ phân giải cơ sở, viewport sẽ được mở rộng theo chiều ngang (và sẽ hiển thị thêm nội dung ở bên phải). Bạn cũng có thể hiểu đây là "Mở rộng theo chiều ngang".
 
-   This is usually the best option for 2D games that scroll horizontally
-   (like runners or platformers).
+   Đây thường là lựa chọn tốt nhất cho các game 2D cuộn theo chiều ngang (chẳng hạn như game runner hoặc platformer).
 
    .. image:: img/stretch_viewport_keep_height.gif
 
--  **Stretch Aspect = Expand**: Keep aspect ratio when stretching the
-   screen, but keep neither the base width nor height. Depending on the
-   screen aspect ratio, the viewport will either be larger in the
-   horizontal direction (if the screen is wider than the base size) or
-   in the vertical direction (if the screen is taller than the original
-   size).
+-  **Tỷ lệ co giãn = Mở rộng**: Giữ nguyên tỷ lệ khung hình khi co giãn màn hình, nhưng không giữ nguyên chiều rộng hay chiều cao cơ sở. Tùy thuộc vào tỷ lệ khung hình của màn hình, viewport sẽ lớn hơn theo chiều ngang (nếu màn hình rộng hơn kích thước cơ sở) hoặc theo chiều dọc (nếu màn hình cao hơn kích thước ban đầu).
 
    .. image:: img/stretch_viewport_expand.gif
 
 .. tip::
 
-    To support both portrait and landscape mode with a similar automatically
-    determined scale factor, set your project's base resolution to be a *square*
-    (1:1 aspect ratio) instead of a rectangle. For instance, if you wish to design
-    for 1280×720 as the base resolution but wish to support both portrait and
-    landscape mode, use 720×720 as the project's base window size in the
-    Project Settings.
+    Để hỗ trợ cả chế độ dọc và ngang với hệ số co giãn được tự động xác định tương tự nhau, hãy đặt độ phân giải cơ sở của project thành một hình *vuông* (tỷ lệ khung hình 1:1) thay vì hình chữ nhật. Ví dụ, nếu bạn muốn thiết kế với độ phân giải cơ sở 1280×720 nhưng muốn hỗ trợ cả chế độ dọc và ngang, hãy sử dụng 720×720 làm kích thước cửa sổ cơ sở của project trong Project Settings.
 
-    To allow the user to choose their preferred screen orientation at runtime,
-    remember to set **Display > Window > Handheld > Orientation** to ``sensor``.
+    Để cho phép người dùng chọn hướng màn hình ưa thích của họ tại runtime, hãy nhớ đặt **Display > Window > Handheld > Orientation** thành ``sensor``.
 
-To configure the stretch aspect at runtime from a script, use the
-``get_tree().root.content_scale_aspect`` property (see
-:ref:`Window.content_scale_aspect <class_Window_property_content_scale_aspect>`
-and the :ref:`ContentScaleAspect <enum_Window_ContentScaleAspect>` enum).
+Để cấu hình tỷ lệ co giãn tại runtime từ một script, hãy sử dụng thuộc tính ``get_tree().root.content_scale_aspect`` (xem
+:ref:`Window.content_scale_aspect <class_Window_property_content_scale_aspect>` và enum :ref:`ContentScaleAspect <enum_Window_ContentScaleAspect>`).
 
 .. _doc_multiple_resolutions_stretch_scale:
 
-Stretch Scale
+Tỷ lệ co giãn
 ~~~~~~~~~~~~~
 
-The **Scale** setting allows you to add an extra scaling factor on top of
-what the **Stretch** options above already provide. The default value of ``1.0``
-means that no additional scaling occurs.
+Thiết lập **Scale** cho phép bạn thêm một hệ số co giãn bổ sung lên trên những gì các tùy chọn **Stretch** ở trên đã cung cấp. Giá trị mặc định của ``1.0`` có nghĩa là không áp dụng thêm co giãn.
 
-For example, if you set **Scale** to ``2.0`` and leave **Stretch Mode** on
-**Disabled**, each unit in your scene will correspond to 2×2 pixels on the
-screen. This is a good way to provide scaling options for non-game applications.
+Ví dụ, nếu bạn đặt **Scale** thành ``2.0`` và giữ **Stretch Mode** ở **Disabled**, mỗi đơn vị trong scene sẽ tương ứng với 2×2 pixel trên màn hình. Đây là cách tốt để cung cấp các tùy chọn co giãn cho những ứng dụng không phải game.
 
-If **Stretch Mode** is set to **canvas_items**, 2D elements will be scaled
-relative to the base window size, then multiplied by the **Scale** setting. This
-can be exposed to players to allow them to adjust the automatically determined
-scale to their liking, for better accessibility.
+Nếu **Stretch Mode** được đặt thành **canvas_items**, các phần tử 2D sẽ được co giãn tương đối so với kích thước cửa sổ cơ sở, sau đó được nhân với thiết lập **Scale**. Bạn có thể cung cấp tùy chọn này cho người chơi để họ điều chỉnh tỷ lệ được tự động xác định theo ý muốn, giúp cải thiện khả năng tiếp cận.
 
-If **Stretch Mode** is set to **viewport**, the viewport's resolution is divided
-by **Scale**. This makes pixels look larger and reduces rendering resolution
-(with a given window size), which can improve performance.
+Nếu **Stretch Mode** được đặt thành **viewport**, độ phân giải của viewport sẽ được chia cho **Scale**. Điều này làm cho pixel trông lớn hơn và giảm độ phân giải render (với một kích thước cửa sổ nhất định), từ đó có thể cải thiện hiệu năng.
 
-To configure the stretch scale at runtime from a script, use the
-``get_tree().root.content_scale_factor`` property (see
+Để cấu hình tỷ lệ co giãn tại runtime từ một script, hãy sử dụng thuộc tính ``get_tree().root.content_scale_factor`` (xem
 :ref:`Window.content_scale_factor <class_Window_property_content_scale_factor>`).
 
-You can also adjust the scale at which the default project theme is generated
-using the **GUI > Theme > Default Theme Scale** project setting. This can be
-used to create more logically-sized UIs at base resolutions that are
-significantly higher or lower than the default. However, this project setting
-cannot be changed at runtime, as its value is only read once when the project starts.
+Bạn cũng có thể điều chỉnh tỷ lệ mà theme mặc định của project được tạo bằng thiết lập project **GUI > Theme > Default Theme Scale**. Thiết lập này có thể được dùng để tạo các UI có kích thước hợp lý hơn ở những độ phân giải cơ sở cao hơn hoặc thấp hơn đáng kể so với mặc định. Tuy nhiên, không thể thay đổi thiết lập project này tại runtime, vì giá trị của nó chỉ được đọc một lần khi project khởi động.
 
 .. _doc_multiple_resolutions_stretch_scale_mode:
 
-Stretch Scale Mode
-~~~~~~~~~~~~~~~~~~
+Chế độ tỷ lệ co giãn
+~~~~~~~~~~~~~~~~~~~~
 
-Since Godot 4.2, the **Stretch Scale Mode** setting allows you to constrain the
-automatically determined scale factor (as well as the manually specified
-**Stretch Scale** setting) to integer values. By default, this setting is set to
-``fractional``, which allows any scale factor to be applied (including fractional
-values such as ``2.5``). When set to ``integer``, the value is rounded down to
-the nearest integer. For example, instead of using a scale factor of ``2.5``, it
-would be rounded down to ``2.0``. This is useful to prevent distortion when
-displaying pixel art.
+Kể từ Godot 4.2, thiết lập **Stretch Scale Mode** cho phép bạn giới hạn hệ số co giãn được tự động xác định (cũng như thiết lập **Stretch Scale** được chỉ định thủ công) ở các giá trị nguyên. Theo mặc định, thiết lập này được đặt thành ``fractional``, cho phép áp dụng bất kỳ hệ số co giãn nào (bao gồm các giá trị phân số như ``2.5``). Khi đặt thành ``integer``, giá trị sẽ được làm tròn xuống số nguyên gần nhất. Ví dụ, thay vì sử dụng hệ số co giãn ``2.5``, giá trị này sẽ được làm tròn xuống ``2.0``. Điều này hữu ích để tránh biến dạng khi hiển thị pixel art.
 
-Compare this pixel art which is displayed with the ``viewport`` stretch mode,
-with the stretch scale mode set to ``fractional``:
+Hãy so sánh pixel art này, được hiển thị với ``viewport`` chế độ co giãn, với chế độ tỷ lệ co giãn được đặt thành ``fractional``:
 
 .. figure:: img/multiple_resolutions_pixel_art_fractional_scaling.webp
    :align: center
-   :alt: Fractional scaling example (incorrect pixel art appearance)
+   :alt: Ví dụ co giãn phân số (hiển thị pixel art không chính xác)
 
-   Checkerboard doesn't look "even". Line widths in the logo and text varies wildly.
+   Bàn cờ trông không "đều". Độ rộng các đường trong logo và văn bản thay đổi rất nhiều.
 
-This pixel art is also displayed with the ``viewport`` stretch mode, but the
-stretch scale mode is set to ``integer`` this time:
+Pixel art này cũng được hiển thị với ``viewport`` chế độ co giãn, nhưng lần này chế độ tỷ lệ co giãn được đặt thành ``integer``:
 
 .. figure:: img/multiple_resolutions_pixel_art_integer_scaling.webp
    :align: center
-   :alt: Integer scaling example (correct pixel art appearance)
+   :alt: Ví dụ co giãn số nguyên (hiển thị pixel art chính xác)
 
-   Checkerboard looks perfectly even. Line widths are consistent.
+   Bàn cờ trông hoàn toàn đều. Độ rộng các đường nhất quán.
 
-For example, if your viewport base size is 640×360 and the window size is 1366×768:
+Ví dụ, nếu kích thước cơ sở của viewport là 640×360 và kích thước cửa sổ là 1366×768:
 
-- When using ``fractional``, the viewport is displayed at a resolution of
-  1366×768 (scale factor is roughly 2.133×). The entire window space is used.
-  Each pixel in the viewport corresponds to 2.133×2.133 pixels in the displayed
-  area. However, since displays can only display "whole" pixels, this will lead
-  to uneven pixel scaling which results in incorrect appearance of pixel art.
-- When using ``integer``, the viewport is displayed at a resolution of 1280×720
-  (scale factor is 2×). The remaining space is filled with black bars on all
-  four sides, so that each pixel in the viewport corresponds to 2×2 pixels in
-  the displayed area.
+- Khi sử dụng ``fractional``, viewport được hiển thị ở độ phân giải 1366×768 (hệ số масштаб xấp xỉ 2.133×). Toàn bộ không gian cửa sổ được sử dụng. Mỗi pixel trong viewport tương ứng với 2.133×2.133 pixel trong vùng hiển thị. Tuy nhiên, vì màn hình chỉ có thể hiển thị các pixel "nguyên", điều này sẽ dẫn đến việc scale pixel không đồng đều, khiến pixel art hiển thị không chính xác.
+- Khi sử dụng ``integer``, viewport được hiển thị ở độ phân giải 1280×720 (hệ số scale là 2×). Phần không gian còn lại được lấp đầy bằng các dải màu đen ở cả bốn phía, để mỗi pixel trong viewport tương ứng với 2×2 pixel trong vùng hiển thị.
 
-This setting is effective with any stretch mode. However, when using the
-``disabled`` stretch mode, it will only affect the **Stretch Scale** setting by
-rounding it *down* to the nearest integer value. This can be used for 3D games
-that have a pixel art UI, so that the visible area in the 3D viewport doesn't
-reduce in size (which occurs when using ``canvas_items`` or ``viewport`` stretch
-mode with the ``integer`` scale mode).
+Thiết lập này có hiệu lực với mọi stretch mode. Tuy nhiên, khi sử dụng stretch mode ``disabled``, thiết lập **Stretch Scale** sẽ chỉ bị ảnh hưởng theo cách làm tròn *xuống* đến giá trị nguyên gần nhất. Điều này có thể được sử dụng cho các game 3D có giao diện pixel art, để vùng hiển thị trong viewport 3D không bị giảm kích thước (điều xảy ra khi sử dụng stretch mode ``canvas_items`` hoặc ``viewport`` với scale mode ``integer``).
 
 .. tip::
 
-    Games should use the **Exclusive Fullscreen** window mode, as opposed to
-    **Fullscreen** which is designed to prevent Windows from automatically
-    treating the window as if it was exclusive fullscreen.
+    Game nên sử dụng window mode **Exclusive Fullscreen**, thay vì **Fullscreen**, vốn được thiết kế để ngăn Windows tự động xử lý cửa sổ như thể đó là exclusive fullscreen.
 
-    **Fullscreen** is meant to be used by GUI applications that want to use
-    per-pixel transparency without a risk of having it disabled by the OS. It
-    achieves this by leaving a 1-pixel line at the bottom of the screen. By
-    contrast, **Exclusive Fullscreen** uses the actual screen size and allows
-    Windows to reduce jitter and input lag for fullscreen games.
+    **Fullscreen** предназначено для các ứng dụng GUI muốn sử dụng độ trong suốt theo từng pixel mà không có nguy cơ bị hệ điều hành vô hiệu hóa. Cách này đạt được bằng việc chừa lại một dải cao 1 pixel ở cuối màn hình. Ngược lại, **Exclusive Fullscreen** sử dụng kích thước màn hình thực tế và cho phép Windows giảm hiện tượng rung hình cũng như độ trễ đầu vào cho các game fullscreen.
 
-    When using integer scaling, this is particularly important as the 1-pixel
-    height reduction from the **Fullscreen** mode can cause integer scaling to
-    use a smaller scale factor than expected.
+    Khi sử dụng integer scaling, điều này đặc biệt quan trọng vì việc giảm 1 pixel chiều cao từ mode **Fullscreen** có thể khiến integer scaling sử dụng hệ số scale nhỏ hơn dự kiến.
 
-Common use case scenarios
--------------------------
+Các trường hợp sử dụng phổ biến
+-------------------------------
 
-The following settings are recommended to support multiple resolutions and aspect
-ratios well.
+Các thiết lập sau được khuyến nghị để hỗ trợ tốt nhiều độ phân giải và tỷ lệ khung hình.
 
-Desktop game
+Game desktop
 ~~~~~~~~~~~~
 
-**Non-pixel art:**
+**Pixel art không dùng pixel:**
 
-- Set the base window width to ``1920`` and window height to ``1080``. If you have a
-  display smaller than 1920×1080, set **Window Width Override** and **Window Height Override** to
-  lower values to make the window smaller when the project starts.
-- Alternatively, if you're targeting high-end devices primarily, set the base
-  window width to ``3840`` and window height to ``2160``.
-  This allows you to provide higher resolution 2D assets, resulting in crisper
-  visuals at the cost of higher memory usage and file sizes. You'll also want
-  to increase **GUI > Theme > Default Theme Scale** to a value between ``2.0``
-  and ``3.0`` to ensure UI elements remain readable.
+- Đặt chiều rộng cửa sổ cơ sở là ``1920`` và chiều cao cửa sổ là ``1080``. Nếu bạn có màn hình nhỏ hơn 1920×1080, hãy đặt **Window Width Override** và **Window Height Override** thành các giá trị thấp hơn để cửa sổ nhỏ hơn khi project khởi chạy.
+- Ngoài ra, nếu chủ yếu nhắm đến các thiết bị cao cấp, hãy đặt chiều rộng cửa sổ cơ sở là ``3840`` và chiều cao cửa sổ là ``2160``. Điều này cho phép bạn cung cấp các asset 2D có độ phân giải cao hơn, mang lại hình ảnh sắc nét hơn nhưng làm tăng mức sử dụng bộ nhớ và kích thước tệp. Bạn cũng nên tăng **GUI > Theme > Default Theme Scale** lên một giá trị trong khoảng ``2.0`` đến ``3.0`` để đảm bảo các phần tử UI vẫn dễ đọc.
 
-  - Note that this will make non-mipmapped textures grainy on low resolution devices,
-    so make sure to follow the instructions described in
+  - Lưu ý rằng điều này sẽ khiến các texture không dùng mipmap bị hạt trên các thiết bị có độ phân giải thấp, vì vậy hãy đảm bảo làm theo hướng dẫn được mô tả trong
     :ref:`doc_multiple_resolutions_reducing_aliasing_on_downsampling`.
 
-- Set the stretch mode to ``canvas_items``.
-- Set the stretch aspect to ``expand``. This allows for supporting multiple aspect ratios
-  and makes better use of tall smartphone displays (such as 18:9 or 19:9 aspect ratios).
-- Configure Control nodes' anchors to snap to the correct corners using the **Layout** menu.
-- For 3D games, consider exposing :ref:`doc_resolution_scaling` in the game's options menu
-  to allow players to adjust the 3D rendering resolution separately from UI elements.
-  This is useful for performance tuning, especially on lower-end hardware.
+- Đặt stretch mode thành ``canvas_items``.
+- Đặt stretch aspect thành ``expand``. Điều này cho phép hỗ trợ nhiều tỷ lệ khung hình và tận dụng tốt hơn màn hình smartphone cao (chẳng hạn tỷ lệ khung hình 18:9 hoặc 19:9).
+- Cấu hình anchor của các node Control để chúng tự bắt dính vào đúng góc bằng menu **Layout**.
+- Đối với game 3D, hãy cân nhắc hiển thị :ref:`doc_resolution_scaling` trong menu tùy chọn của game để cho phép người chơi điều chỉnh riêng độ phân giải render 3D với các phần tử UI. Điều này hữu ích khi tinh chỉnh hiệu năng, đặc biệt trên phần cứng cấp thấp.
 
 **Pixel art:**
 
-- Set the base window size to the viewport size you intend to use. Most pixel
-  art games use viewport sizes between 256×224 and 640×480. 640×360 is a good
-  baseline, as it scales to 1280×720, 1920×1080, 2560×1440, and 3840×2160 without
-  any black bars when using integer scaling. Higher viewport sizes will require
-  using higher resolution artwork, unless you intend to show more of the game
-  world at a given time.
-- Set the stretch mode to ``viewport``.
-- Set the stretch aspect to ``keep`` to enforce a single aspect ratio (with
-  black bars). As an alternative, you can set the stretch aspect to ``expand`` to
-  support multiple aspect ratios.
-- If using the ``expand`` stretch aspect, Configure Control nodes' anchors to
-  snap to the correct corners using the **Layout** menu.
-- Set the stretch scale mode to ``integer``. This prevents uneven pixel scaling
-  from occurring, which makes pixel art not display as intended.
+- Đặt kích thước cửa sổ cơ sở bằng kích thước viewport bạn dự định sử dụng. Hầu hết game pixel art sử dụng viewport có kích thước từ 256×224 đến 640×480. 640×360 là một mức cơ sở tốt, vì nó scale lên 1280×720, 1920×1080, 2560×1440 và 3840×2160 mà không có dải màu đen khi sử dụng integer scaling. Viewport có kích thước lớn hơn sẽ yêu cầu artwork có độ phân giải cao hơn, trừ khi bạn dự định hiển thị nhiều hơn thế giới game tại một thời điểm.
+- Đặt stretch mode thành ``viewport``.
+- Đặt stretch aspect thành ``keep`` để cố định một tỷ lệ khung hình duy nhất (có dải màu đen). Ngoài ra, bạn có thể đặt stretch aspect thành ``expand`` để hỗ trợ nhiều tỷ lệ khung hình.
+- Nếu sử dụng stretch aspect ``expand``, hãy cấu hình anchor của các node Control để chúng tự bắt dính vào đúng góc bằng menu **Layout**.
+- Đặt stretch scale mode thành ``integer``. Điều này ngăn việc scale pixel không đồng đều xảy ra, nhờ đó pixel art được hiển thị đúng như dự định.
 
 .. note::
 
-    The ``viewport`` stretch mode provides low-resolution rendering that is then
-    stretched to the final window size. If you are OK with sprites being able to
-    move or rotate in "sub-pixel" positions or wish to have a high resolution 3D
-    viewport, you should use the ``canvas_items`` stretch mode instead of the ``viewport``
-    stretch mode.
+    Stretch mode ``viewport`` cung cấp việc render ở độ phân giải thấp, sau đó được scale lên kích thước cửa sổ cuối cùng. Nếu bạn chấp nhận việc sprite có thể di chuyển hoặc xoay tại các vị trí "sub-pixel", hoặc muốn có viewport 3D độ phân giải cao, hãy sử dụng stretch mode ``canvas_items`` thay cho stretch mode ``viewport``.
 
-Mobile game in landscape mode
+Game mobile ở chế độ landscape
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Godot được cấu hình sử dụng chế độ landscape theo mặc định. Điều này có nghĩa là bạn không cần thay đổi thiết lập hướng màn hình của project.
+
+- Đặt chiều rộng cửa sổ cơ sở là ``1280`` và chiều cao cửa sổ là ``720``.
+- Ngoài ra, nếu chủ yếu nhắm đến các thiết bị cao cấp, hãy đặt chiều rộng cửa sổ cơ sở là ``1920`` và chiều cao cửa sổ là ``1080``. Điều này cho phép bạn cung cấp các asset 2D có độ phân giải cao hơn, mang lại hình ảnh sắc nét hơn nhưng làm tăng mức sử dụng bộ nhớ và kích thước tệp. Nhiều thiết bị còn có màn hình độ phân giải cao hơn (1440p), nhưng sự khác biệt so với 1080p hầu như không đáng kể do kích thước màn hình smartphone nhỏ. Bạn cũng nên tăng **GUI > Theme > Default Theme Scale** lên một giá trị trong khoảng ``1.5`` đến ``2.0`` để đảm bảo các phần tử UI vẫn dễ đọc.
+
+  - Lưu ý rằng điều này sẽ khiến các texture không dùng mipmap bị hạt trên các thiết bị có độ phân giải thấp, vì vậy hãy đảm bảo làm theo hướng dẫn được mô tả trong
+    :ref:`doc_multiple_resolutions_reducing_aliasing_on_downsampling`.
+
+- Đặt stretch mode thành ``canvas_items``.
+- Đặt stretch aspect thành ``expand``. Điều này cho phép hỗ trợ nhiều tỷ lệ khung hình và tận dụng tốt hơn màn hình smartphone cao (chẳng hạn tỷ lệ khung hình 18:9 hoặc 19:9).
+- Cấu hình anchor của các node Control để chúng tự bắt dính vào đúng góc bằng menu **Layout**.
+
+.. tip::
+
+    Để hỗ trợ tốt hơn cho tablet và điện thoại gập (thường có màn hình với tỷ lệ khung hình gần 4:3), hãy cân nhắc sử dụng độ phân giải cơ sở có tỷ lệ khung hình 4:3, đồng thời làm theo các hướng dẫn còn lại ở đây. Ví dụ, bạn có thể đặt chiều rộng cửa sổ cơ sở là ``1280`` và chiều cao cửa sổ cơ sở là ``960``.
+
+Game mobile ở chế độ portrait
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Godot is configured to use landscape mode by default. This means you don't need
-to change the display orientation project setting.
+- Đặt chiều rộng cửa sổ cơ sở là ``720`` và chiều cao cửa sổ là ``1280``.
+- Ngoài ra, nếu chủ yếu nhắm đến các thiết bị cao cấp, hãy đặt chiều rộng cửa sổ cơ sở thành ``1080`` và chiều cao cửa sổ thành ``1920``. Điều này cho phép bạn cung cấp các tài nguyên 2D có độ phân giải cao hơn, tạo ra hình ảnh sắc nét hơn nhưng phải đánh đổi bằng mức sử dụng bộ nhớ và kích thước tệp lớn hơn. Nhiều thiết bị thậm chí có màn hình độ phân giải cao hơn (1440p), nhưng sự khác biệt so với 1080p hầu như không thể nhận thấy do màn hình smartphone có kích thước nhỏ. Bạn cũng nên tăng **GUI > Theme > Default Theme Scale** lên một giá trị từ ``1.5`` đến ``2.0`` để đảm bảo các thành phần UI vẫn dễ đọc.
 
-- Set the base window width to ``1280`` and window height to ``720``.
-- Alternatively, if you're targeting high-end devices primarily, set the base
-  window width to ``1920`` and window height to ``1080``.
-  This allows you to provide higher resolution 2D assets, resulting in crisper
-  visuals at the cost of higher memory usage and file sizes. Many devices have
-  even higher resolution displays (1440p), but the difference with 1080p is
-  barely visible given the small size of smartphone displays. You'll also want
-  to increase **GUI > Theme > Default Theme Scale** to a value between ``1.5``
-  and ``2.0`` to ensure UI elements remain readable.
-
-  - Note that this will make non-mipmapped textures grainy on low resolution devices,
-    so make sure to follow the instructions described in
+  - Lưu ý rằng điều này sẽ khiến các texture không có mipmap bị nhiễu hạt trên các thiết bị có độ phân giải thấp, vì vậy hãy đảm bảo làm theo hướng dẫn được mô tả trong
     :ref:`doc_multiple_resolutions_reducing_aliasing_on_downsampling`.
 
-- Set the stretch mode to ``canvas_items``.
-- Set the stretch aspect to ``expand``. This allows for supporting multiple aspect ratios
-  and makes better use of tall smartphone displays (such as 18:9 or 19:9 aspect ratios).
-- Configure Control nodes' anchors to snap to the correct corners using the **Layout** menu.
+- Đặt **Display > Window > Handheld > Orientation** thành ``portrait``.
+- Đặt chế độ stretch thành ``canvas_items``.
+- Đặt khía cạnh stretch thành ``expand``. Điều này cho phép hỗ trợ nhiều tỷ lệ khung hình và tận dụng tốt hơn màn hình smartphone cao (chẳng hạn tỷ lệ khung hình 18:9 hoặc 19:9).
+- Cấu hình anchor của các node Control để neo vào đúng các góc bằng menu **Layout**.
 
 .. tip::
 
-    To better support tablets and foldable phones (which frequently feature
-    displays with aspect ratios close to 4:3), consider using a base resolution
-    that has a 4:3 aspect ratio while following the rest of the instructions
-    here. For instance, you can set the base window width to ``1280`` and the
-    base window height to ``960``.
-
-Mobile game in portrait mode
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- Set the base window width to ``720`` and window height to ``1280``.
-- Alternatively, if you're targeting high-end devices primarily, set the base
-  window width to ``1080`` and window height to ``1920``.
-  This allows you to provide higher resolution 2D assets, resulting in crisper
-  visuals at the cost of higher memory usage and file sizes. Many devices have
-  even higher resolution displays (1440p), but the difference with 1080p is
-  barely visible given the small size of smartphone displays. You'll also want
-  to increase **GUI > Theme > Default Theme Scale** to a value between ``1.5``
-  and ``2.0`` to ensure UI elements remain readable.
-
-  - Note that this will make non-mipmapped textures grainy on low resolution devices,
-    so make sure to follow the instructions described in
-    :ref:`doc_multiple_resolutions_reducing_aliasing_on_downsampling`.
-
-- Set **Display > Window > Handheld > Orientation** to ``portrait``.
-- Set the stretch mode to ``canvas_items``.
-- Set the stretch aspect to ``expand``. This allows for supporting multiple aspect ratios
-  and makes better use of tall smartphone displays (such as 18:9 or 19:9 aspect ratios).
-- Configure Control nodes' anchors to snap to the correct corners using the **Layout** menu.
-
-.. tip::
-
-    To better support tablets and foldable phones (which frequently feature
-    displays with aspect ratios close to 4:3), consider using a base resolution
-    that has a 3:4 aspect ratio while following the rest of the instructions
-    here. For instance, you can set the base window width to ``960`` and the
-    base window height to ``1280``.
+    Để hỗ trợ tốt hơn cho máy tính bảng và điện thoại gập (thường có màn hình với tỷ lệ khung hình gần 4:3), hãy cân nhắc sử dụng độ phân giải cơ sở có tỷ lệ khung hình 3:4 và làm theo các hướng dẫn còn lại ở đây. Chẳng hạn, bạn có thể đặt chiều rộng cửa sổ cơ sở thành ``960`` và chiều cao cửa sổ cơ sở thành ``1280``.
 
 .. _doc_multiple_resolutions_non_game_application:
 
-Non-game application
-~~~~~~~~~~~~~~~~~~~~
+Ứng dụng không phải game
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Set the base window width and height to the smallest window size that you intend to target.
-  This is not required, but this ensures that you design your UI with small window sizes in mind.
-- Keep the stretch mode to its default value, ``disabled``.
-- Keep the stretch aspect to its default value, ``keep``
-  (its value won't be used since the stretch mode is ``disabled``).
-- You can define a minimum window size by setting ``get_window().min_size`` in a
-  script's ``_ready()`` function. This prevents the user from resizing the application
-  below a certain size, which could break the UI layout.
-- Add a setting in the application's settings to change the root viewport's
-  :ref:`stretch scale <doc_multiple_resolutions_stretch_scale>`,
-  so that the UI can be made larger to account for hiDPI displays.
-  See also the section on hiDPI support below.
+- Đặt chiều rộng và chiều cao cửa sổ cơ sở thành kích thước cửa sổ nhỏ nhất mà bạn dự định hỗ trợ. Điều này không bắt buộc, nhưng đảm bảo bạn thiết kế UI có tính đến các kích thước cửa sổ nhỏ.
+- Giữ chế độ stretch ở giá trị mặc định là ``disabled``.
+- Giữ khía cạnh stretch ở giá trị mặc định là ``keep`` (giá trị này sẽ không được sử dụng vì chế độ stretch là ``disabled``).
+- Bạn có thể xác định kích thước cửa sổ tối thiểu bằng cách đặt ``get_window().min_size`` trong hàm ``_ready()`` của một script. Điều này ngăn người dùng thu nhỏ ứng dụng dưới một kích thước nhất định, vốn có thể làm hỏng bố cục UI.
+- Thêm một thiết lập vào phần cài đặt của ứng dụng để thay đổi
+  :ref:`stretch scale <doc_multiple_resolutions_stretch_scale>` của root viewport, để UI có thể được phóng lớn nhằm phù hợp với màn hình hiDPI. Xem thêm phần hỗ trợ hiDPI bên dưới.
 
-hiDPI support
--------------
+Hỗ trợ hiDPI
+------------
 
-By default, Godot projects are considered DPI-aware by the operating system.
-This is controlled by the **Display > Window > DPI > Allow hiDPI** project setting,
-which should be left enabled whenever possible. Disabling DPI awareness can break
-fullscreen behavior on Windows.
+Theo mặc định, các project Godot được hệ điều hành xem là có nhận biết DPI. Điều này được kiểm soát bởi thiết lập project **Display > Window > DPI > Allow hiDPI**, và nên được bật bất cứ khi nào có thể. Việc tắt nhận biết DPI có thể làm hỏng hành vi toàn màn hình trên Windows.
 
-Since Godot projects are DPI-aware, they may appear at a very small window size
-when launching on an hiDPI display (proportionally to the screen resolution).
-For a game, the most common way to work around this issue is to make them
-fullscreen by default. Alternatively, you could set the window size in an
-:ref:`autoload <doc_singletons_autoload>`'s ``_ready()`` function according to
-the screen size.
+Vì các project Godot có nhận biết DPI, chúng có thể hiển thị ở kích thước cửa sổ rất nhỏ khi khởi chạy trên màn hình hiDPI (tỷ lệ theo độ phân giải màn hình). Đối với game, cách phổ biến nhất để khắc phục vấn đề này là bật chế độ toàn màn hình theo mặc định. Ngoài ra, bạn có thể đặt kích thước cửa sổ trong
+hàm ``_ready()`` của :ref:`autoload <doc_singletons_autoload>` theo kích thước màn hình.
 
-To ensure 2D elements don't appear too small on hiDPI displays:
+Để đảm bảo các phần tử 2D không hiển thị quá nhỏ trên màn hình hiDPI:
 
-- For games, use the ``canvas_items`` or ``viewport`` stretch modes so that 2D
-  elements are automatically resized according to the current window size.
-- For non-game applications, use the ``disabled`` stretch mode and set the
-  stretch scale to a value corresponding to the display scale factor in an
-  :ref:`autoload <doc_singletons_autoload>`'s ``_ready()`` function.
-  The display scale factor is set in the operating system's settings and can be queried
-  using :ref:`screen_get_scale <class_DisplayServer_method_screen_get_scale>`. This
-  method is currently implemented on Android, iOS, Linux (Wayland only), macOS and Web.
-  On other platforms, you'll have to implement a method to guess the display
-  scale factor based on the screen resolution (with a setting to let the
-  user override this if needed). This is the approach currently used by the Godot editor.
+- Đối với game, hãy sử dụng các chế độ stretch ``canvas_items`` hoặc ``viewport`` để các phần tử 2D được tự động thay đổi kích thước theo kích thước cửa sổ hiện tại.
+- Đối với ứng dụng không phải game, hãy sử dụng chế độ stretch ``disabled`` và đặt stretch scale thành giá trị tương ứng với hệ số tỷ lệ màn hình trong
+  hàm ``_ready()`` của :ref:`autoload <doc_singletons_autoload>`. Hệ số tỷ lệ màn hình được đặt trong phần cài đặt của hệ điều hành và có thể được truy vấn bằng :ref:`screen_get_scale <class_DisplayServer_method_screen_get_scale>`. Phương thức này hiện được triển khai trên Android, iOS, Linux (chỉ Wayland), macOS và Web. Trên các nền tảng khác, bạn sẽ phải triển khai một phương thức để ước tính hệ số tỷ lệ màn hình dựa trên độ phân giải màn hình (kèm một thiết lập cho phép người dùng ghi đè nếu cần). Đây là cách tiếp cận hiện đang được Godot editor sử dụng.
 
-The **Allow hiDPI** setting is only effective on Windows and macOS. It's ignored
-on all other platforms.
+Thiết lập **Allow hiDPI** chỉ có hiệu lực trên Windows và macOS. Thiết lập này bị bỏ qua trên tất cả các nền tảng khác.
 
 .. note::
 
-    The Godot editor itself is always marked as DPI-aware. Running the project
-    from the editor will only be DPI-aware if **Allow hiDPI** is enabled in the
-    Project Settings.
+    Bản thân Godot editor luôn được đánh dấu là có nhận biết DPI. Việc chạy project từ editor chỉ có nhận biết DPI nếu **Allow hiDPI** được bật trong Project Settings.
 
 .. _doc_multiple_resolutions_font_and_image_oversampling:
 
-Font and image oversampling
----------------------------
+Lấy mẫu vượt mức cho font và hình ảnh
+-------------------------------------
 
-Godot supports a process called *oversampling*, which refers to automatically
-re-rendering textures from their original vector source when the viewport scale
-factor changes. This ensures font and image textures remain crisp at any
-resolution.
+Godot hỗ trợ một quy trình gọi là *oversampling*, tức là tự động kết xuất lại các texture từ nguồn vector gốc khi hệ số tỷ lệ viewport thay đổi. Điều này đảm bảo texture font và hình ảnh luôn sắc nét ở mọi độ phân giải.
 
-Font oversampling is enabled by default, but it can be disabled by unchecking
-**GUI > Fonts > Dynamic Fonts > Use Oversampling** in the Project Settings.
+Oversampling cho font được bật theo mặc định, nhưng có thể tắt bằng cách bỏ chọn **GUI > Fonts > Dynamic Fonts > Use Oversampling** trong Project Settings.
 
-Image oversampling is disabled by default, and can be enabled for specific
-images in SVG format by changing their import type to :ref:`class_DPITexture` in
-the Import dock. Other image formats do not support oversampling, as they store
-bitmap data instead of vectors.
+Oversampling cho hình ảnh bị tắt theo mặc định và có thể được bật cho từng hình ảnh ở định dạng SVG bằng cách thay đổi kiểu import thành :ref:`class_DPITexture` trong Import dock. Các định dạng hình ảnh khác không hỗ trợ oversampling vì chúng lưu dữ liệu bitmap thay vì vector.
 
-The editor automatically performs oversampling when zooming in the 2D editor,
-which allows you to preview how oversampling will look at specific scale
-factors. This can be disabled by unchecking **View > Auto Resample CanvasItems**
-at the top of the 2D editor viewport.
+Editor tự động thực hiện oversampling khi phóng to trong 2D editor, cho phép bạn xem trước oversampling sẽ trông như thế nào ở các hệ số tỷ lệ cụ thể. Có thể tắt tính năng này bằng cách bỏ chọn **View > Auto Resample CanvasItems** ở đầu viewport của 2D editor.
 
-Oversampling can also be applied according to the Node2D or Control's Scale
-property. This *scale-based oversampling* behavior is disabled by default,
-but it can be enabled by setting **Oversampling with Scale** in the inspector
-to **Enabled** on the desired node. This is useful for nodes that may have
-their scale changed at runtime, such as custom scale factors for certain UI
-elements like crosshairs. However, keep in mind this can be demanding on the
-CPU if the scale changes frequently, as the texture has to be re-rendered each time.
+Oversampling cũng có thể được áp dụng theo thuộc tính Scale của Node2D hoặc Control. Hành vi *scale-based oversampling* này bị tắt theo mặc định, nhưng có thể bật bằng cách đặt **Oversampling with Scale** trong inspector thành **Enabled** trên node mong muốn. Điều này hữu ích cho các node có thể thay đổi scale trong runtime, chẳng hạn các hệ số scale tùy chỉnh cho một số thành phần UI như tâm ngắm. Tuy nhiên, hãy lưu ý rằng tính năng này có thể gây tải cho CPU nếu scale thay đổi thường xuyên, vì texture phải được kết xuất lại mỗi lần.
 
-For best results, the node should use uniform scaling. Non-uniform scaling will
-work, but may result in aliasing on the shorter axis as oversampling is always
-applied uniformly.
+Để đạt kết quả tốt nhất, node nên sử dụng scale đồng nhất. Scale không đồng nhất vẫn hoạt động, nhưng có thể gây aliasing trên trục ngắn hơn vì oversampling luôn được áp dụng đồng nhất.
 
 .. note::
 
-    Control's :ref:`offset_transform_enabled <class_Control_property_offset_transform_enabled>`
-    property is taken into account by scale-based oversampling, but only if
-    :ref:`offset_transform_visual_only <class_Control_property_offset_transform_visual_only>` is *disabled*.
-    When :ref:`offset_transform_visual_only <class_Control_property_offset_transform_visual_only>` is enabled,
-    it does not affect the node's actual scale (as used for input coordinates),
-    but only its visual representation. Therefore, it is ignored by oversampling.
+    Thuộc tính :ref:`offset_transform_enabled <class_Control_property_offset_transform_enabled>` của Control được tính đến bởi oversampling dựa trên scale, nhưng chỉ khi
+    :ref:`offset_transform_visual_only <class_Control_property_offset_transform_visual_only>` là *disabled*. Khi :ref:`offset_transform_visual_only <class_Control_property_offset_transform_visual_only>` được bật, nó không ảnh hưởng đến scale thực tế của node (được dùng cho tọa độ đầu vào), mà chỉ ảnh hưởng đến phần hiển thị trực quan. Vì vậy, oversampling sẽ bỏ qua thuộc tính này.
 
 .. _doc_multiple_resolutions_reducing_aliasing_on_downsampling:
 
-Reducing aliasing on downsampling
----------------------------------
+Giảm aliasing khi giảm mẫu
+--------------------------
 
-If the game has a very high base resolution (e.g. 3840×2160), aliasing might
-appear when downsampling to something considerably lower like 1280×720.
+Nếu game có độ phân giải cơ sở rất cao (ví dụ 3840×2160), aliasing có thể xuất hiện khi giảm mẫu xuống mức thấp hơn đáng kể như 1280×720.
 
-To resolve this, you can :ref:`enable mipmaps <doc_importing_images_mipmaps>` on
-all your 2D textures. However, enabling mipmaps will increase memory usage which
-can be an issue on low-end mobile devices.
+Để khắc phục, bạn có thể :ref:`enable mipmaps <doc_importing_images_mipmaps>` trên tất cả texture 2D. Tuy nhiên, việc bật mipmap sẽ làm tăng mức sử dụng bộ nhớ, điều này có thể gây vấn đề trên các thiết bị di động cấp thấp.
 
-For SVG images, you can also change their import type to :ref:`class_DPITexture` in the Import dock
-to benefit from automatic oversampling as described above. This avoids aliasing by re-rasterizing
-the texture when the scale factor changes.
+Đối với hình ảnh SVG, bạn cũng có thể thay đổi kiểu import của chúng thành :ref:`class_DPITexture` trong Import dock để tận dụng tính năng oversampling tự động như mô tả ở trên. Điều này tránh hiện tượng aliasing bằng cách rasterize lại texture khi hệ số scale thay đổi.
 
-Handling aspect ratios
+Xử lý tỷ lệ khung hình
 ----------------------
 
-Once scaling for different resolutions is accounted for, make sure that
-your *user interface* also scales for different aspect ratios. This can be
-done using :ref:`anchors <doc_size_and_anchors>` and/or :ref:`containers
-<doc_gui_containers>`.
+Sau khi đã tính đến việc scale cho các độ phân giải khác nhau, hãy đảm bảo rằng *user interface* của bạn cũng scale theo các tỷ lệ khung hình khác nhau. Bạn có thể thực hiện điều này bằng cách sử dụng :ref:`anchors <doc_size_and_anchors>` và/hoặc :ref:`containers <doc_gui_containers>`.
 
-Field of view scaling
----------------------
+Scale trường nhìn
+-----------------
 
-The 3D Camera node's **Keep Aspect** property defaults to the **Keep Height**
-scaling mode (also called *Hor+*). This is usually the best value for desktop
-games and mobile games in landscape mode, as widescreen displays will
-automatically use a wider field of view.
+Thuộc tính **Keep Aspect** của node 3D Camera mặc định sử dụng chế độ scale **Keep Height** (còn được gọi là *Hor+*). Đây thường là giá trị tốt nhất cho game desktop và game mobile ở chế độ ngang, vì màn hình widescreen sẽ tự động sử dụng trường nhìn rộng hơn.
 
-However, if your 3D game is intended to be played in portrait mode, it may make
-more sense to use **Keep Width** instead (also called *Vert-*). This way,
-smartphones with an aspect ratio taller than 16:9 (e.g. 19:9) will use a
-*taller* field of view, which is more logical here.
+Tuy nhiên, nếu game 3D của bạn được thiết kế để chơi ở chế độ dọc, việc sử dụng **Keep Width** thay thế (còn được gọi là *Vert-*) có thể hợp lý hơn. Nhờ đó, các smartphone có tỷ lệ khung hình cao hơn 16:9 (ví dụ: 19:9) sẽ sử dụng trường nhìn *taller*, điều này hợp lý hơn trong trường hợp này.
 
-Scaling 2D and 3D elements differently
---------------------------------------
+Scale các phần tử 2D và 3D theo cách khác nhau
+----------------------------------------------
 
-To render 3D at a different resolution from 2D elements (such as the UI), use Godot's
-:ref:`resolution scaling <doc_resolution_scaling>` functionality. This allows you to
-control the resolution scale factor used for 3D without needing to use a separate Viewport
-node. This can either be used to improve performance by rendering 3D at a lower resolution,
-or improve quality via supersampling.
+Để render 3D ở độ phân giải khác với các phần tử 2D (chẳng hạn như UI), hãy sử dụng
+tính năng :ref:`resolution scaling <doc_resolution_scaling>` của Godot. Tính năng này cho phép bạn kiểm soát hệ số scale độ phân giải được sử dụng cho 3D mà không cần dùng một node Viewport riêng. Bạn có thể sử dụng tính năng này để cải thiện hiệu năng bằng cách render 3D ở độ phân giải thấp hơn hoặc cải thiện chất lượng thông qua supersampling.
+
+.. _`stats`: https://developer.android.com/about/dashboards
+.. _`also does`: https://store.steampowered.com/hwsurvey/

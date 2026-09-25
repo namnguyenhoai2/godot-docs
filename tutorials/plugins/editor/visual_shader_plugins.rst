@@ -1,36 +1,29 @@
 .. _doc_visual_shader_plugins:
 
-Visual Shader plugins
-=====================
+Plugin Visual Shader
+====================
 
-Visual Shader plugins are used to create custom :ref:`class_VisualShader` nodes
-in GDScript.
+Các plugin Visual Shader được dùng để tạo các node :ref:`class_VisualShader` tùy chỉnh trong GDScript.
 
-The creation process is different from usual editor plugins. You do not need to
-create a ``plugin.cfg`` file to register it; instead, create and save a script
-file and it will be ready to use, provided the custom node is registered with
-``class_name``.
+Quy trình tạo khác với các plugin editor thông thường. Bạn không cần tạo tệp ``plugin.cfg`` để đăng ký plugin; thay vào đó, hãy tạo và lưu một tệp script, plugin sẽ sẵn sàng để sử dụng, miễn là node tùy chỉnh được đăng ký bằng ``class_name``.
 
-This short tutorial will explain how to make a Perlin-3D noise node (original
-code from this `GPU noise shaders plugin
-<https://github.com/curly-brace/Godot-3.0-Noise-Shaders/blob/master/assets/gpu_noise_shaders/classic_perlin3d.tres>`_.
+Hướng dẫn ngắn này sẽ giải thích cách tạo một node nhiễu Perlin-3D (mã nguồn gốc từ plugin `GPU noise shaders plugin <https://github.com/curly-brace/Godot-3.0-Noise-Shaders/blob/master/assets/gpu_noise_shaders/classic_perlin3d.tres>`_ này.
 
-Create a Sprite2D and assign a :ref:`class_ShaderMaterial` to its material slot:
+Tạo một Sprite2D và gán một :ref:`class_ShaderMaterial` vào ô material của nó:
 
 .. image:: img/visual_shader_plugins_start.png
 
-Assign :ref:`class_VisualShader` to the shader slot of the material:
+Gán :ref:`class_VisualShader` vào ô shader của material:
 
 .. image:: img/visual_shader_plugins_start2.png
 
-Don't forget to change its mode to "CanvasItem" (if you are using a Sprite2D):
+Đừng quên đổi mode của nó thành "CanvasItem" (nếu bạn đang sử dụng Sprite2D):
 
 .. image:: img/visual_shader_plugins_start3.png
 
-Create a script which derives from :ref:`class_VisualShaderNodeCustom`. This is
-all you need to initialize your plugin.
+Tạo một script kế thừa từ :ref:`class_VisualShaderNodeCustom`. Đây là tất cả những gì bạn cần để khởi tạo plugin.
 
-::
+.. code-block::
 
     # perlin_noise_3d.gd
     @tool
@@ -39,14 +32,14 @@ all you need to initialize your plugin.
 
 
     func _get_name():
-        # This must be a valid identifier and should follow PascalCase naming conventions.
-        # The name must start with a letter, and spaces in the name are *not* allowed.
+        # Đây phải là một identifier hợp lệ và nên tuân theo quy ước đặt tên PascalCase.
+        # Tên phải bắt đầu bằng một chữ cái và không được phép có khoảng trắng trong tên *not*.
         return "PerlinNoise3D"
 
 
     func _get_category():
-        # This must be a valid identifier and should follow PascalCase naming conventions.
-        # The category must start with a letter, and spaces in the category are *not* allowed.
+        # Đây phải là một identifier hợp lệ và nên tuân theo quy ước đặt tên PascalCase.
+        # Danh mục phải bắt đầu bằng một chữ cái và không được phép có khoảng trắng trong danh mục *not*.
         return "MyShaderNodes"
 
 
@@ -130,14 +123,14 @@ all you need to initialize your plugin.
                 return t * t * t * (t * (t * 6.0 - 15.0) + 10.0);
             }
 
-            // Classic Perlin noise.
+            // Nhiễu Perlin cổ điển.
             float cnoise(vec3 P) {
-                vec3 Pi0 = floor(P); // Integer part for indexing.
-                vec3 Pi1 = Pi0 + vec3(1.0); // Integer part + 1.
+                vec3 Pi0 = floor(P); // Phần nguyên để lập chỉ mục.
+                vec3 Pi1 = Pi0 + vec3(1.0); // Phần nguyên + 1.
                 Pi0 = mod289_3(Pi0);
                 Pi1 = mod289_3(Pi1);
-                vec3 Pf0 = fract(P); // Fractional part for interpolation.
-                vec3 Pf1 = Pf0 - vec3(1.0); // Fractional part - 1.0.
+                vec3 Pf0 = fract(P); // Phần thập phân để nội suy.
+                vec3 Pf1 = Pf0 - vec3(1.0); // Phần thập phân - 1.0.
                 vec4 ix = vec4(Pi0.x, Pi1.x, Pi0.x, Pi1.x);
                 vec4 iy = vec4(Pi0.yy, Pi1.yy);
                 vec4 iz0 = vec4(Pi0.z);
@@ -204,12 +197,14 @@ all you need to initialize your plugin.
     func _get_code(input_vars, output_vars, _mode, _type):
         return output_vars[0] + " = cnoise(vec3((%s.xy + %s.xy) * %s, %s)) * 0.5 + 0.5;" % [input_vars[0], input_vars[1], input_vars[2], input_vars[3]]
 
-Save it and open the Visual Shader. You should see your new node type within the member's dialog under the Addons category (if you can't see your new node, try restarting the editor):
+Lưu lại và mở Visual Shader. Bạn sẽ thấy loại node mới trong hộp thoại member, bên dưới danh mục Addons (nếu không thấy node mới, hãy thử khởi động lại editor):
 
 .. image:: img/visual_shader_plugins_result1.png
 
-Place it on a graph and connect the required ports:
+Đặt nó lên graph và kết nối các cổng bắt buộc:
 
 .. image:: img/visual_shader_plugins_result2.png
 
-That is everything you need to do, as you can see it is easy to create your own custom VisualShader nodes!
+Đó là tất cả những gì bạn cần làm; như bạn thấy, việc tạo các node VisualShader tùy chỉnh của riêng mình rất dễ dàng!
+
+.. _`GPU noise shaders plugin`: https://github.com/curly-brace/Godot-3.0-Noise-Shaders/blob/master/assets/gpu_noise_shaders/classic_perlin3d.tres

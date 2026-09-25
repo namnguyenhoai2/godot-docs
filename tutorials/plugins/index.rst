@@ -1,7 +1,7 @@
 :allow_comments: False
 
-Plugins
-=======
+Plugin
+======
 
 .. toctree::
    :maxdepth: 1

@@ -1,34 +1,28 @@
-:article_outdated: True
+:article_outdated: Đúng
 
 .. _doc_3d_gizmo_plugins:
 
-3D gizmo plugins
-================
+Plugin gizmo 3D
+===============
 
-Introduction
-------------
+Giới thiệu
+----------
 
-3D gizmo plugins are used by the editor and custom plugins to define the
-gizmos attached to any kind of Node3D node.
+Plugin gizmo 3D được editor và các plugin tùy chỉnh sử dụng để định nghĩa các gizmo gắn vào bất kỳ loại node Node3D nào.
 
-This tutorial shows the two main approaches to defining your own custom
-gizmos. The first option works well for simple gizmos and creates less clutter in
-your plugin structure, and the second one will let you store some per-gizmo data.
+Tutorial này trình bày hai cách tiếp cận chính để định nghĩa gizmo tùy chỉnh của riêng bạn. Tùy chọn đầu tiên phù hợp với các gizmo đơn giản và tạo ít sự lộn xộn hơn trong cấu trúc plugin, còn tùy chọn thứ hai cho phép bạn lưu trữ một số dữ liệu riêng cho từng gizmo.
 
-.. note:: This tutorial assumes you already know how to make generic plugins. If
-          in doubt, refer to the :ref:`doc_making_plugins` page.
+.. note:: Tutorial này giả định rằng bạn đã biết cách tạo các plugin tổng quát. Nếu không chắc chắn, hãy tham khảo trang :ref:`doc_making_plugins`.
 
-The EditorNode3DGizmoPlugin
----------------------------
+EditorNode3DGizmoPlugin
+-----------------------
 
-Regardless of the approach we choose, we will need to create a new
-:ref:`EditorNode3DGizmoPlugin <class_EditorNode3DGizmoPlugin>`. This will allow
-us to set a name for the new gizmo type and define other behaviors such as whether
-the gizmo can be hidden or not.
+Bất kể chọn cách tiếp cận nào, chúng ta sẽ cần tạo một
+:ref:`EditorNode3DGizmoPlugin <class_EditorNode3DGizmoPlugin>`. Điều này cho phép chúng ta đặt tên cho loại gizmo mới và định nghĩa các hành vi khác, chẳng hạn như gizmo có thể bị ẩn hay không.
 
-This would be a basic setup:
+Đây là thiết lập cơ bản:
 
-::
+.. code-block::
 
     # my_custom_gizmo_plugin.gd
     extends EditorNode3DGizmoPlugin
@@ -38,7 +32,7 @@ This would be a basic setup:
         return "CustomNode"
 
 
-::
+.. code-block::
 
     # MyCustomEditorPlugin.gd
     @tool
@@ -58,17 +52,15 @@ This would be a basic setup:
         remove_node_3d_gizmo_plugin(gizmo_plugin)
 
 
-For simple gizmos, inheriting :ref:`EditorNode3DGizmoPlugin <class_EditorNode3DGizmoPlugin>`
-is enough. If you want to store some per-gizmo data, you should go with the second approach.
+Đối với các gizmo đơn giản, kế thừa :ref:`EditorNode3DGizmoPlugin <class_EditorNode3DGizmoPlugin>` là đủ. Nếu muốn lưu trữ một số dữ liệu riêng cho từng gizmo, bạn nên chọn cách tiếp cận thứ hai.
 
 
-Simple approach
----------------
+Cách tiếp cận đơn giản
+----------------------
 
-The first step is to, in our custom gizmo plugin, override the :ref:`_has_gizmo()<class_EditorNode3DGizmoPlugin_private_method__has_gizmo>`
-method so that it returns ``true`` when the node parameter is of our target type.
+Bước đầu tiên là ghi đè phương thức :ref:`_has_gizmo()<class_EditorNode3DGizmoPlugin_private_method__has_gizmo>` trong plugin gizmo tùy chỉnh để phương thức này trả về ``true`` khi tham số node thuộc loại đích của chúng ta.
 
-::
+.. code-block::
 
     # ...
 
@@ -79,10 +71,9 @@ method so that it returns ``true`` when the node parameter is of our target type
 
     # ...
 
-Then we can override methods like :ref:`_redraw()<class_EditorNode3DGizmoPlugin_private_method__redraw>`
-or all the handle related ones.
+Sau đó, chúng ta có thể ghi đè các phương thức như :ref:`_redraw()<class_EditorNode3DGizmoPlugin_private_method__redraw>` hoặc tất cả các phương thức liên quan đến handle.
 
-::
+.. code-block::
 
     # ...
 
@@ -113,14 +104,11 @@ or all the handle related ones.
 
     # ...
 
-Note that we created a material in the `_init` method, and retrieved it in the `_redraw`
-method using :ref:`get_material()<class_EditorNode3DGizmoPlugin_method_get_material>`. This
-method retrieves one of the material's variants depending on the state of the gizmo
-(selected and/or editable).
+Lưu ý rằng chúng ta đã tạo một material trong phương thức ``_init``, rồi lấy material đó trong phương thức ``_redraw`` bằng :ref:`get_material() <class_EditorNode3DGizmoPlugin_method_get_material>`. Phương thức này lấy một trong các biến thể của material tùy thuộc vào trạng thái của gizmo (được chọn và/hoặc có thể chỉnh sửa).
 
-So the final plugin would look somewhat like this:
+Vì vậy, plugin hoàn chỉnh sẽ trông gần như sau:
 
-::
+.. code-block::
 
     extends EditorNode3DGizmoPlugin
 
@@ -156,25 +144,20 @@ So the final plugin would look somewhat like this:
         gizmo.add_handles(handles, get_material("handles", gizmo), [])
 
 
-    # You should implement the rest of handle-related callbacks
+    # Bạn nên triển khai các callback còn lại liên quan đến handle
     # (_get_handle_name(), _get_handle_value(), _commit_handle(), ...).
 
-Note that we just added some handles in the `_redraw` method, but we still need to implement
-the rest of handle-related callbacks in :ref:`EditorNode3DGizmoPlugin <class_EditorNode3DGizmoPlugin>`
-to get properly working handles.
+Lưu ý rằng chúng ta vừa thêm một số handle trong phương thức ``_redraw``, nhưng vẫn cần triển khai các callback còn lại liên quan đến handle trong :ref:`EditorNode3DGizmoPlugin <class_EditorNode3DGizmoPlugin>` để các handle hoạt động đúng cách.
 
-Alternative approach
---------------------
+Cách tiếp cận thay thế
+----------------------
 
-In some cases we want to provide our own implementation of :ref:`EditorNode3DGizmo<class_EditorNode3DGizmo>`,
-maybe because we want to have some state stored in each gizmo or because we are porting
-an old gizmo plugin and we don't want to go through the rewriting process.
+Trong một số trường hợp, chúng ta muốn cung cấp phần triển khai riêng cho :ref:`EditorNode3DGizmo<class_EditorNode3DGizmo>`, có thể vì muốn lưu một số trạng thái trong từng gizmo hoặc vì đang chuyển một plugin gizmo cũ sang và không muốn thực hiện quá trình viết lại.
 
-In these cases all we need to do is, in our new gizmo plugin, override
-:ref:`_create_gizmo()<class_EditorNode3DGizmoPlugin_private_method__create_gizmo>`, so it returns our custom gizmo implementation
-for the Node3D nodes we want to target.
+Trong những trường hợp này, tất cả những gì cần làm là ghi đè
+:ref:`_create_gizmo()<class_EditorNode3DGizmoPlugin_private_method__create_gizmo>`, để phương thức này trả về phần triển khai gizmo tùy chỉnh cho các node Node3D mà chúng ta muốn nhắm đến.
 
-::
+.. code-block::
 
     # my_custom_gizmo_plugin.gd
     extends EditorNode3DGizmoPlugin
@@ -195,16 +178,16 @@ for the Node3D nodes we want to target.
         else:
             return null
 
-This way all the gizmo logic and drawing methods can be implemented in a new class extending
-:ref:`EditorNode3DGizmo<class_EditorNode3DGizmo>`, like so:
+Bằng cách này, toàn bộ logic gizmo và các phương thức vẽ có thể được triển khai trong một class mới kế thừa
+:ref:`EditorNode3DGizmo<class_EditorNode3DGizmo>`, như sau:
 
-::
+.. code-block::
 
     # my_custom_gizmo.gd
     extends EditorNode3DGizmo
 
 
-    # You can store data in the gizmo itself (more useful when working with handles).
+    # Bạn có thể lưu trữ dữ liệu trong chính gizmo (hữu ích hơn khi làm việc với các handle).
     var gizmo_size = 3.0
 
 
@@ -230,9 +213,7 @@ This way all the gizmo logic and drawing methods can be implemented in a new cla
         add_handles(handles, handles_material, [])
 
 
-    # You should implement the rest of handle-related callbacks
+    # Bạn nên triển khai các callback còn lại liên quan đến handle
     # (_get_handle_name(), _get_handle_value(), _commit_handle(), ...).
 
-Note that we just added some handles in the `_redraw` method, but we still need to implement
-the rest of handle-related callbacks in :ref:`EditorNode3DGizmo<class_EditorNode3DGizmo>`
-to get properly working handles.
+Lưu ý rằng chúng ta vừa thêm một số handle trong phương thức ``_redraw``, nhưng vẫn cần triển khai các callback còn lại liên quan đến handle trong :ref:`EditorNode3DGizmo<class_EditorNode3DGizmo>` để các handle hoạt động đúng cách.
