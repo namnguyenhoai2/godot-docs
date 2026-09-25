@@ -2,8 +2,8 @@
 
 .. _doc_physics_interpolation:
 
-Physics Interpolation
-=====================
+Nội suy Vật lý
+==============
 
 .. toctree::
    :maxdepth: 1

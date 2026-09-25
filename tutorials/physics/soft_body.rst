@@ -1,70 +1,48 @@
 .. _doc_soft_body:
 
-Using SoftBody3D
-================
+Sử dụng SoftBody3D
+==================
 
-Soft bodies (or *soft-body dynamics*) simulate movement, changing shape and other
-physical properties of deformable objects. For example, this can be used to simulate
-cloth or to create more realistic characters.
+Soft body (hay *động lực học soft body*) mô phỏng chuyển động, sự thay đổi hình dạng và các thuộc tính vật lý khác của những vật thể có thể biến dạng. Ví dụ, bạn có thể dùng tính năng này để mô phỏng vải hoặc tạo ra các nhân vật chân thực hơn.
 
-Physics engine considerations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Các cân nhắc về physics engine
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Support for soft bodies is generally more robust in Jolt Physics compared to GodotPhysics3D.
-You can switch physics engines by changing **Physics > 3D > Physics Engine**
-in the Project Settings. Projects created in Godot 4.6 and later use Jolt Physics
-by default, but existing projects will have to be switched over manually.
+Hỗ trợ soft body nhìn chung ổn định hơn trong Jolt Physics so với GodotPhysics3D. Bạn có thể chuyển đổi physics engine bằng cách thay đổi **Physics > 3D > Physics Engine** trong Project Settings. Các project được tạo trong Godot 4.6 trở lên mặc định sử dụng Jolt Physics, nhưng các project hiện có sẽ phải được chuyển đổi thủ công.
 
-Additionally, :ref:`physics interpolation <doc_physics_interpolation>` currently
-does not affect soft bodies. If you want soft body simulation to look smoother at
-higher framerates, you'll have to increase the **Physics > Common > Physics Ticks per Second**
-project setting, which comes at a performance cost.
+Ngoài ra, :ref:`physics interpolation <doc_physics_interpolation>` hiện không ảnh hưởng đến soft body. Nếu muốn mô phỏng soft body trông mượt hơn ở framerate cao, bạn sẽ phải tăng thiết lập project **Physics > Common > Physics Ticks per Second**, nhưng điều này sẽ làm giảm hiệu năng.
 
-Basic setup
-~~~~~~~~~~~
+Thiết lập cơ bản
+~~~~~~~~~~~~~~~~
 
-A :ref:`SoftBody3D <class_SoftBody3D>` node is used for soft body simulations.
-Unlike other physics body nodes like :ref:`RigidBody3D <class_RigidBody3D>`
-or :ref:`StaticBody3D <class_StaticBody3D>`, it does **not** have a
-:ref:`CollisionShape3D <class_CollisionShape3D>` or a :ref:`MeshInstance3D <class_MeshInstance3D>`
-child node. Instead, the collision shape is derived from the mesh assigned to the node.
-This mesh is also directly used for rendering, which means you don't need to
-create any child nodes for a functional, visible setup.
+Một node :ref:`SoftBody3D <class_SoftBody3D>` được dùng cho mô phỏng soft body. Không giống các node physics body khác như :ref:`RigidBody3D <class_RigidBody3D>` hoặc :ref:`StaticBody3D <class_StaticBody3D>`, nó **không** có
+:ref:`CollisionShape3D <class_CollisionShape3D>` hoặc node con :ref:`MeshInstance3D <class_MeshInstance3D>`. Thay vào đó, collision shape được suy ra từ mesh được gán cho node. Mesh này cũng được dùng trực tiếp để render, nghĩa là bạn không cần tạo node con nào để có một thiết lập hoạt động và hiển thị được.
 
-We will create a bouncy cube to demonstrate the setup of a soft body.
+Chúng ta sẽ tạo một khối lập phương nảy để minh họa cách thiết lập soft body.
 
-Create a new scene with a Node3D node as root. Then, create a SoftBody3D node.
-Add a BoxMesh in the **Mesh** property of the node in the inspector
-and increase the subdivision of the mesh for simulation.
+Tạo một scene mới với node Node3D làm node gốc. Sau đó, tạo một node SoftBody3D. Thêm một BoxMesh vào thuộc tính **Mesh** của node trong inspector và tăng subdivision của mesh để mô phỏng.
 
-The subdivision level determines the precision level of the deformation,
-with higher values allowing for smaller and more detailed deformations,
-at the cost of performance. In this example, we'll set it to 3 on each axis:
+Mức subdivision quyết định độ chính xác của biến dạng; giá trị cao hơn cho phép tạo ra các biến dạng nhỏ hơn và chi tiết hơn, nhưng phải đánh đổi bằng hiệu năng. Trong ví dụ này, chúng ta sẽ đặt giá trị là 3 trên mỗi trục:
 
 .. figure:: img/soft_body_box_mesh.webp
    :align: center
-   :alt: Adjusting BoxMesh properties in the inspector
+   :alt: Điều chỉnh các thuộc tính BoxMesh trong inspector
 
-   Adjusting BoxMesh properties in the inspector
+   Điều chỉnh các thuộc tính BoxMesh trong inspector
 
-Now, set the parameters to obtain the type of soft body you aim for.
-Try to keep the **Simulation Precision** above 5; otherwise,
-the soft body may collapse.
+Bây giờ, hãy đặt các tham số để đạt được loại soft body bạn mong muốn. Hãy cố gắng giữ **Simulation Precision** trên 5; nếu không, soft body có thể bị sụp đổ.
 
 .. figure:: img/soft_body_inspector.webp
    :align: center
-   :alt: Adjusting SoftBody3D simulation properties in the inspector
+   :alt: Điều chỉnh các thuộc tính mô phỏng SoftBody3D trong inspector
 
-   Adjusting SoftBody3D simulation properties in the inspector
+   Điều chỉnh các thuộc tính mô phỏng SoftBody3D trong inspector
 
 .. note::
 
-    Handle some parameters with care, as some values can lead to strange results.
-    For example, if the shape is not completely closed and you set pressure
-    to a value greater than ``0.0``, the soft body will fly around like a plastic bag
-    under strong wind.
+    Hãy cẩn thận khi điều chỉnh một số tham số, vì một số giá trị có thể dẫn đến kết quả bất thường. Ví dụ, nếu hình dạng không hoàn toàn khép kín và bạn đặt pressure lớn hơn ``0.0``, soft body sẽ bay quanh như một túi nhựa dưới gió mạnh.
 
-Run the scene to view the simulation. Here's an example of what it should look like:
+Chạy scene để xem mô phỏng. Dưới đây là ví dụ về kết quả mong đợi:
 
 .. video:: video/soft_body_box_simulation.webm
     :alt: Soft body box simulation example
@@ -76,132 +54,99 @@ Run the scene to view the simulation. Here's an example of what it should look l
 
 .. tip::
 
-    To improve the simulation's result, increase the **Simulation Precision**.
-    This can give a significant improvement at the cost of performance.
+    Để cải thiện kết quả mô phỏng, hãy tăng **Simulation Precision**. Điều này có thể cải thiện đáng kể, nhưng phải đánh đổi bằng hiệu năng.
 
-    Alternatively, you can increase the **Physics > Common > Physics Ticks per Second**
-    project setting, which will also affect soft body simulation quality.
+    Ngoài ra, bạn có thể tăng thiết lập project **Physics > Common > Physics Ticks per Second**, thiết lập này cũng sẽ ảnh hưởng đến chất lượng mô phỏng soft body.
 
-Cloak simulation
-~~~~~~~~~~~~~~~~
+Mô phỏng áo choàng
+~~~~~~~~~~~~~~~~~~
 
-Let's make a cloak in the Platformer 3D demo.
+Hãy tạo một chiếc áo choàng trong bản demo Platformer 3D.
 
 .. note::
 
-    You can download the Platformer 3D demo on
-    `GitHub <https://github.com/godotengine/godot-demo-projects/tree/master/3d/platformer>`_
-    or `the Asset Library <https://godotengine.org/asset-library/asset/2748>`_.
+    Bạn có thể tải bản demo Platformer 3D từ `GitHub <https://github.com/godotengine/godot-demo-projects/tree/master/3d/platformer>`_ hoặc `Asset Library <https://godotengine.org/asset-library/asset/2748>`_.
 
-Open the ``player/player.tscn`` scene, add a ``SoftBody3D`` node below the root node,
-then assign a PlaneMesh resource to it in its **Mesh** property.
+Mở scene ``player/player.tscn``, thêm một node ``SoftBody3D`` bên dưới node gốc, sau đó gán một resource PlaneMesh cho node này trong thuộc tính **Mesh**.
 
-Open the PlaneMesh's properties and set the size to ``(0.5, 1.0)``,
-then set **Subdivide Width** and **Subdivide Depth** to ``5``. Adjust the
-SoftBody3D node's position and rotation so that the plane appears to be close to
-the character's back. You should end up with something like this:
+Mở các thuộc tính của PlaneMesh và đặt kích thước là ``(0.5, 1.0)``, sau đó đặt **Subdivide Width** và **Subdivide Depth** thành ``5``. Điều chỉnh vị trí và rotation của node SoftBody3D để mặt phẳng nằm gần lưng nhân vật. Kết quả sẽ tương tự như sau:
 
 .. figure:: img/soft_body_cloak_subdivide.webp
    :align: center
-   :alt: Subdividing the PlaneMesh and placing it on the character's back
+   :alt: Chia nhỏ PlaneMesh và đặt nó lên lưng nhân vật
 
-   Subdividing the PlaneMesh and placing it on the character's back
+   Chia nhỏ PlaneMesh và đặt nó lên lưng nhân vật
 
 .. tip::
 
-    Subdivision generates a more tessellated mesh for better simulations.
-    However, higher subdivision levels will impact performance. Try
-    to find a balance between performance and quality. This depends on the number
-    of soft body simulations that you expect to be active at a given time,
-    as well as the distance between the camera and the soft body.
+    Subdivision tạo ra một mesh có nhiều tessellation hơn để mô phỏng tốt hơn. Tuy nhiên, mức subdivision cao hơn sẽ ảnh hưởng đến hiệu năng. Hãy tìm sự cân bằng giữa hiệu năng và chất lượng. Điều này phụ thuộc vào số lượng mô phỏng soft body mà bạn dự kiến sẽ hoạt động cùng lúc, cũng như khoảng cách giữa camera và soft body.
 
-Add a :ref:`BoneAttachment3D <class_BoneAttachment3D>` node under the skeleton
-node and select the Neck bone to attach the cloak to the character skeleton.
+Thêm một node :ref:`BoneAttachment3D <class_BoneAttachment3D>` bên dưới node skeleton và chọn bone Neck để gắn áo choàng vào skeleton của nhân vật.
 
 .. note::
 
-    The BoneAttachment3D node is used to attach objects to a bone of an armature.
-    The attached object will follow the bone's movement. For example, a character's
-    held weapon can be attached this way.
+    Node BoneAttachment3D được dùng để gắn các object vào một bone của armature. Object được gắn sẽ đi theo chuyển động của bone. Ví dụ, vũ khí mà nhân vật cầm có thể được gắn theo cách này.
 
-    Do **not** move the SoftBody3D node under the BoneAttachment3D node as of now.
-    Instead, we'll configure its *pinned points* to follow the BoneAttachment3D node.
+    Hiện tại, **không** di chuyển node SoftBody3D vào bên dưới node BoneAttachment3D. Thay vào đó, chúng ta sẽ cấu hình *các điểm được ghim* để chúng đi theo node BoneAttachment3D.
 
 .. figure:: img/soft_body_cloak_bone_attach.webp
    :align: center
-   :alt: Configuring the BoneAttachment3D node in the inspector
+   :alt: Cấu hình node BoneAttachment3D trong inspector
 
-   Configuring the BoneAttachment3D node in the inspector
+   Cấu hình node BoneAttachment3D trong inspector
 
-To create pinned points, select the upper vertices in the SoftBody3D node. A pinned
-point appears blue in the 3D editor viewport:
+Để tạo các điểm được ghim, hãy chọn các đỉnh phía trên trong node SoftBody3D. Một điểm được ghim sẽ hiển thị màu xanh lam trong viewport của trình chỉnh sửa 3D:
 
 .. figure:: img/soft_body_cloak_pinned.webp
    :align: center
-   :alt: Pinning the SoftBody3D's points in the inspector
+   :alt: Ghim các điểm của SoftBody3D trong inspector
 
-   Pinning the SoftBody3D's points in the inspector
+   Ghim các điểm của SoftBody3D trong inspector
 
-The pinned joints can be found in SoftBody3D's **Attachments** section,
-which is under the **Collision** section that must be expanded first.
-Choose the BoneAttachment3D node as the **Spatial Attachment Path** for each
-pinned joint. The pinned joints are now attached to the neck.
+Các joint được ghim có thể được tìm thấy trong phần **Attachments** của SoftBody3D, nằm bên dưới phần **Collision**, phần này phải được mở rộng trước. Chọn node BoneAttachment3D làm **Spatial Attachment Path** cho từng joint được ghim. Các joint được ghim giờ đã được gắn vào cổ.
 
 .. tip::
 
-    To assign the properties faster, you can drag-and-drop the BoneAttachment3D node
-    from the scene tree dock to the **Spatial Attachment Path** property field.
+    Để gán các thuộc tính nhanh hơn, bạn có thể kéo và thả node BoneAttachment3D từ scene tree dock vào trường thuộc tính **Spatial Attachment Path**.
 
-Note that you may have to deselect then reselect the SoftBody3D node for the
-**Attachments** section to appear.
+Lưu ý rằng bạn có thể phải bỏ chọn rồi chọn lại node SoftBody3D để phần **Attachments** xuất hiện.
 
 .. figure:: img/soft_body_cloak_pinned_attach.webp
    :align: center
-   :alt: Configuring pinned points to be attached to the BoneAttachment3D node in the SoftBody3D inspector
+   :alt: Cấu hình các điểm được ghim để gắn vào node BoneAttachment3D trong inspector của SoftBody3D
 
-   Configuring pinned points to be attached to the BoneAttachment3D node in the SoftBody3D inspector
+   Cấu hình các điểm được ghim để gắn vào node BoneAttachment3D trong inspector của SoftBody3D
 
-The last step is to avoid clipping by adding the CharacterBody3D ``Player`` (the scene's root node)
-to the **Parent Collision Ignore** property of the SoftBody3D.
+Bước cuối cùng là tránh hiện tượng clipping bằng cách thêm CharacterBody3D ``Player`` (node gốc của scene) vào thuộc tính **Parent Collision Ignore** của SoftBody3D.
 
 .. figure:: img/soft_body_cloak_ignore.webp
    :align: center
-   :alt: Setting up the collision exception in the SoftBody3D inspector
+   :alt: Thiết lập ngoại lệ collision trong inspector của SoftBody3D
 
-   Setting up the collision exception in the SoftBody3D inspector
+   Thiết lập ngoại lệ collision trong inspector của SoftBody3D
 
-Play the scene and the cloak should simulate correctly.
+Chạy scene và áo choàng sẽ được mô phỏng chính xác.
 
 .. figure:: img/soft_body_cloak_finish.webp
    :align: center
-   :alt: Final result when running the project's main scene
+   :alt: Kết quả cuối cùng khi chạy scene chính của project
 
-   Final result when running the project's main scene
+   Kết quả cuối cùng khi chạy scene chính của dự án
 
-This covers the basic settings of a soft body simulation. Experiment with the parameters
-to achieve the effect you are aiming for when making your game.
+Phần này trình bày các thiết lập cơ bản của mô phỏng soft body. Hãy thử nghiệm với các tham số để đạt được hiệu ứng mong muốn khi tạo game.
 
 .. note::
 
-    The cloak will not appear when viewed from certain angles due to backface culling.
-    To resolve this, you can disable backface culling by assigning a new StandardMaterial3D,
-    then setting its cull mode to **Disabled**. This will make the material render
-    both sides of the plane.
+    Áo choàng sẽ không xuất hiện khi được nhìn từ một số góc nhất định do cơ chế loại bỏ mặt sau (backface culling). Để khắc phục, bạn có thể vô hiệu hóa cơ chế loại bỏ mặt sau bằng cách gán một StandardMaterial3D mới, sau đó đặt chế độ cull thành **Disabled**. Thao tác này sẽ khiến material hiển thị cả hai mặt của mặt phẳng.
 
-Using imported meshes
-~~~~~~~~~~~~~~~~~~~~~
+Sử dụng mesh đã import
+~~~~~~~~~~~~~~~~~~~~~~
 
-The **Save to File** option in the Advanced Import Settings dialog allows you
-to save a mesh to a standalone resource file that you can then attach to
-SoftBody3D nodes.
+Tùy chọn **Save to File** trong hộp thoại Advanced Import Settings cho phép bạn lưu một mesh vào tệp tài nguyên độc lập, sau đó có thể gắn tệp này vào các node SoftBody3D.
 
-You may also want to disable LOD generation or change the LOD generation options
-when importing a mesh for use with SoftBody3D. The default import settings
-will produce an LOD that merges adjacent faces that are nearly flat with
-respect to each other, even at very close render distances. This works well for
-static meshes, but is often undesirable for use with SoftBody3D if you want
-these faces to be able to bend and move with respect to each other, instead of
-being rendered as a single plane.
+Bạn cũng có thể muốn tắt việc tạo LOD hoặc thay đổi các tùy chọn tạo LOD khi import một mesh để sử dụng với SoftBody3D. Các thiết lập import mặc định sẽ tạo ra một LOD hợp nhất những mặt liền kề gần như phẳng so với nhau, ngay cả khi khoảng cách render rất gần. Điều này hoạt động tốt với các mesh tĩnh, nhưng thường không phù hợp khi sử dụng với SoftBody3D nếu bạn muốn các mặt này có thể uốn cong và di chuyển tương đối với nhau, thay vì được render dưới dạng một mặt phẳng duy nhất.
 
-See :ref:`doc_importing_3d_scenes_import_configuration` and :ref:`doc_mesh_lod`
-for more details.
+Xem :ref:`doc_importing_3d_scenes_import_configuration` và :ref:`doc_mesh_lod` để biết thêm chi tiết.
+
+.. _`GitHub`: https://github.com/godotengine/godot-demo-projects/tree/master/3d/platformer
+.. _`the Asset Library`: https://godotengine.org/asset-library/asset/2748

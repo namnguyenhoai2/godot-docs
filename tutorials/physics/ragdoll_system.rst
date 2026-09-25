@@ -1,185 +1,131 @@
 .. _doc_ragdoll_system:
 
-Ragdoll system
-==============
+Hệ thống ragdoll
+================
 
-Introduction
-------------
+Giới thiệu
+----------
 
-Godot supports ragdoll physics. Ragdolls rely on physics simulation to create
-realistic procedural animation. They are used for death animations in many games.
+Godot hỗ trợ vật lý ragdoll. Ragdoll dựa vào mô phỏng vật lý để tạo ra hoạt ảnh thủ tục chân thực. Chúng được sử dụng cho hoạt ảnh nhân vật chết trong nhiều trò chơi.
 
-In this tutorial, we will be using the Platformer 3D demo to set up a ragdoll.
+Trong hướng dẫn này, chúng ta sẽ sử dụng bản demo Platformer 3D để thiết lập một ragdoll.
 
 .. note::
 
-    You can download the Platformer 3D demo on
-    `GitHub <https://github.com/godotengine/godot-demo-projects/tree/master/3d/platformer>`_
-    or using the `Asset Library <https://godotengine.org/asset-library/asset/2748>`_.
+    Bạn có thể tải bản demo Platformer 3D xuống từ `GitHub <https://github.com/godotengine/godot-demo-projects/tree/master/3d/platformer>`_ hoặc sử dụng `Asset Library <https://godotengine.org/asset-library/asset/2748>`_.
 
-    You can also check out an example of a complete ragdoll setup in the
-    `Ragdoll Physics demo <https://github.com/godotengine/godot-demo-projects/tree/master/3d/ragdoll_physics>`_.
+    Bạn cũng có thể xem một ví dụ về thiết lập ragdoll hoàn chỉnh trong `Ragdoll Physics demo <https://github.com/godotengine/godot-demo-projects/tree/master/3d/ragdoll_physics>`_.
 
-Setting up the ragdoll
-----------------------
+Thiết lập ragdoll
+-----------------
 
-Creating physical bones
-~~~~~~~~~~~~~~~~~~~~~~~
+Tạo các xương vật lý
+~~~~~~~~~~~~~~~~~~~~
 
-Like many other features in the engine, there are two nodes which are used
-to set up a ragdoll:
+Giống như nhiều tính năng khác trong engine, có hai node được sử dụng để thiết lập ragdoll:
 
-- A :ref:`PhysicalBoneSimulator3D <class_PhysicalBoneSimulator3D>` node.
-  This node is the parent of all physical bones and is responsible
-  for controlling the simulation.
-- One or more :ref:`PhysicalBone3D <class_PhysicalBone3D>` children.
-  Each node represents a single bone in the ragdoll.
+- Một node :ref:`PhysicalBoneSimulator3D <class_PhysicalBoneSimulator3D>`. Node này là node cha của tất cả các xương vật lý và chịu trách nhiệm điều khiển mô phỏng.
+- Một hoặc nhiều node con :ref:`PhysicalBone3D <class_PhysicalBone3D>`. Mỗi node đại diện cho một xương riêng lẻ trong ragdoll.
 
-Open the platformer demo in Godot, and then the ``player/player.tscn`` scene.
-Select the ``Skeleton3D`` node. A skeleton button appears at the top of the
-3D editor viewport:
+Mở bản demo platformer trong Godot, sau đó mở scene ``player/player.tscn``. Chọn node ``Skeleton3D``. Một nút skeleton sẽ xuất hiện ở phía trên viewport của trình chỉnh sửa 3D:
 
 .. figure:: img/ragdoll_system_create_physical_skeleton.webp
    :align: center
-   :alt: Creating a physical skeleton in the editor
+   :alt: Tạo skeleton vật lý trong trình chỉnh sửa
 
-   Creating a physical skeleton in the editor
+   Tạo skeleton vật lý trong trình chỉnh sửa
 
-Click it and select the :menu:`Create Physical Skeleton` option. Godot will generate
-PhysicalBone3D nodes and collision shapes for each bone in the skeleton and
-pin joints to connect them together:
+Nhấp vào đó và chọn tùy chọn :menu:`Create Physical Skeleton`. Godot sẽ tạo các node PhysicalBone3D và các hình dạng va chạm cho từng xương trong skeleton, cùng các khớp pin để kết nối chúng với nhau:
 
 .. figure:: img/ragdoll_system_skeleton_scene_tree.webp
    :align: center
-   :alt: Scene tree of the player scene after creating a physical skeleton
+   :alt: Cây scene của scene người chơi sau khi tạo skeleton vật lý
 
-   Scene tree of the player scene after creating a physical skeleton
+   Cây scene của scene người chơi sau khi tạo skeleton vật lý
 
-Some of the generated bones aren't necessary, such as the ``MASTER`` bone in this scene.
-We're going to clean up the skeleton by removing them.
+Một số xương được tạo không cần thiết, chẳng hạn như xương ``MASTER`` trong scene này. Chúng ta sẽ dọn dẹp skeleton bằng cách xóa chúng.
 
-Clean up and optimize the skeleton
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Dọn dẹp và tối ưu skeleton
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For each PhysicalBone3D the engine needs to simulate, there is a performance cost.
-You'll want to remove every bone that is too small to make a difference in the simulation,
-as well as all utility bones.
+Mỗi PhysicalBone3D mà engine cần mô phỏng đều gây ra chi phí hiệu năng. Bạn nên xóa mọi xương quá nhỏ để tạo ra khác biệt trong mô phỏng, cũng như tất cả các xương tiện ích.
 
-For example, if we take a humanoid, you don't need to have physical bones for each finger.
-You can use a single bone for the entire hand instead, or one for the palm, one for the thumb,
-and a last one for the other four fingers.
+Ví dụ, nếu xét một nhân vật hình người, bạn không cần có xương vật lý cho từng ngón tay. Thay vào đó, bạn có thể dùng một xương duy nhất cho toàn bộ bàn tay, hoặc một xương cho lòng bàn tay, một xương cho ngón cái và một xương cuối cho bốn ngón còn lại.
 
-Remove these PhysicalBone3D nodes: ``MASTER``, ``waist``, ``neck``, ``headtracker``.
-This gives us an optimized skeleton and makes it easier to control the ragdoll.
+Xóa các node PhysicalBone3D này: ``MASTER``, ``waist``, ``neck``, ``headtracker``. Điều này giúp chúng ta có một skeleton được tối ưu và dễ điều khiển ragdoll hơn.
 
-Adjust joints and constraints
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Điều chỉnh các khớp và ràng buộc
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Once you adjusted the collision shapes, your ragdoll is almost ready. Now, you need
-to adjust the pin joints to get a better simulation. PhysicalBone3D nodes have an
-unconstrained pin joint assigned to them by default. To change the pin joint,
-select a PhysicalBone3D node and change the constraint type in the :menu:`Joint` section
-of the inspector. There, you can change the constraint's orientation and its limits.
+Sau khi điều chỉnh các hình dạng va chạm, ragdoll của bạn gần như đã sẵn sàng. Bây giờ, bạn cần điều chỉnh các khớp pin để có mô phỏng tốt hơn. Theo mặc định, các node PhysicalBone3D được gán một khớp pin không có ràng buộc. Để thay đổi khớp pin, hãy chọn một node PhysicalBone3D và thay đổi loại ràng buộc trong phần :menu:`Joint` của inspector. Tại đó, bạn có thể thay đổi hướng và giới hạn của ràng buộc.
 
-Joints have a gizmo visible in the 3D editor as well, so you can see their constraints
-in action.
+Các khớp cũng có gizmo hiển thị trong trình chỉnh sửa 3D, vì vậy bạn có thể thấy các ràng buộc của chúng hoạt động.
 
 .. figure:: img/ragdoll_system_adjust_joints_inspector.webp
    :align: center
-   :alt: Adjusting joints in the inspector after selecting a PhysicalBone3D node
+   :alt: Điều chỉnh các khớp trong inspector sau khi chọn một node PhysicalBone3D
 
-   Adjusting joints in the inspector after selecting a PhysicalBone3D node
-
-.. tip::
-
-    To get a better view when editing joints and collision shapes, you can do the following:
-
-    - Hide PhysicalBone3D nodes you aren't currently working on, so you can focus
-      on the ones you're adjusting.
-    - Hide the MeshInstance3D of the character by clicking the eye icon next to it
-      in the scene tree dock.
-    - Hide the Skeleton3D gizmos, so that the orange triangles that represent the skeleton
-      don't clutter the viewport while leaving the rest visible.
-      To do so, click :menu:`View > Gizmos > Skeleton3D` at the top of the 3D editor
-      viewport until the eye icon appears closed.
-    - Disable the preview environment by clicking the globe icon at the top of
-      the 3D editor viewport.
-    - Set the **Default Clear Color** project setting to pure black in the Project Settings.
-      This is only effective if the preview environment is disabled.
-    - Change the debug draw mode using the :menu:`Perspective` button
-      in the top-left corner of the 3D editor viewport. The :menu:`Display Wireframe`
-      and :menu:`Display Overdraw` options are particularly useful when adjusting
-      collision shapes, as they allow you to see through the original mesh.
-    - Use the orthographic camera by clicking the :button:`X`/:button:`Y`/:button:`Z`
-      buttons in the top-right corner of the 3D editor viewport.
-
-Here is the list of joints available:
-
-- **None:** Does not perform any constraint.
-- **ConeJoint:** Ball-and-socket. Useful for shoulders, hips, neck.
-- **HingeJoint:** Provides an angular constraint; think of it like a door hinge.
-  Useful for elbows and knees.
-- **PinJoint:** Keeps two bodies connected *(default)*.
-  Leads to "crumpling" of the bones, so it's recommended to use other joint types
-  for most characters instead.
-- **SliderJoint:** Slides one bone along another on a specific axis.
-- **6DOFJoint:** Most powerful joint, offering both linear and angular constraints,
-  but also the most complex to configure.
-
-If in doubt, start with HingeJoint and ConeJoint, as they cover most use cases:
-
-- For HingeJoint, make sure to enable **Angular Limit** in the
-  :menu:`Joint Constraints` section of the inspector. After enabling it,
-  you can see the angle that it's being constrained to in the viewport.
-  You can rotate the PhysicalBone3D to change the axis where the joint
-  is constrained, then adjust the angles.
-- For ConeJoint, it's usually best to limit **Swing Span** between 20 and
-  90 degrees, and the **Twist Span** between 20 and 45 degrees.
-
-Adjust collision shapes
-~~~~~~~~~~~~~~~~~~~~~~~
-
-The next task is adjusting the collision shape and the size of the physical bones
-to match the part of the body that each bone should simulate.
-
-It's recommended to adjust collision shapes *after* adjusting joints and constraints,
-as rotating a joint will also rotate the collision shape. To avoid having
-to adjust collision shapes twice, it's better to adjust joints first.
-
-Note that it's possible to have multiple collision shapes as a child of a
-PhysicalBone3D node. This can be useful to represent particularly complex
-shapes of limbs that are otherwise rigid.
+   Điều chỉnh các khớp trong inspector sau khi chọn một node PhysicalBone3D
 
 .. tip::
 
-    To pause animation playback while adjusting the ragdoll, select the
-    ``AnimationTree`` node and disable the **Active** property in the Inspector.
-    Remember to enable it again when you're done, as it controls animation playback
-    during gameplay.
+    Để có góc nhìn tốt hơn khi chỉnh sửa các khớp và hình dạng va chạm, bạn có thể làm như sau:
+
+    - Ẩn các node PhysicalBone3D mà bạn hiện không làm việc, để có thể tập trung vào những node đang điều chỉnh.
+    - Ẩn MeshInstance3D của nhân vật bằng cách nhấp vào biểu tượng con mắt bên cạnh nó trong dock cây scene.
+    - Ẩn các gizmo Skeleton3D để những hình tam giác màu cam đại diện cho skeleton không làm rối viewport, đồng thời vẫn giữ phần còn lại hiển thị. Để làm vậy, hãy nhấp vào :menu:`View > Gizmos > Skeleton3D` ở phía trên viewport của trình chỉnh sửa 3D cho đến khi biểu tượng con mắt hiển thị trạng thái đóng.
+    - Tắt môi trường xem trước bằng cách nhấp vào biểu tượng quả địa cầu ở phía trên viewport của trình chỉnh sửa 3D.
+    - Đặt thiết lập project **Default Clear Color** thành màu đen hoàn toàn trong Project Settings. Thiết lập này chỉ có hiệu lực khi môi trường xem trước bị tắt.
+    - Thay đổi chế độ vẽ gỡ lỗi bằng nút :menu:`Perspective` ở góc trên bên trái của viewport trình chỉnh sửa 3D. Các tùy chọn :menu:`Display Wireframe` và :menu:`Display Overdraw` đặc biệt hữu ích khi điều chỉnh hình dạng va chạm, vì chúng cho phép bạn nhìn xuyên qua mesh gốc.
+    - Sử dụng camera trực giao bằng cách nhấp vào các nút :button:`X`/:button:`Y`/:button:`Z` ở góc trên bên phải của viewport trình chỉnh sửa 3D.
+
+Dưới đây là danh sách các khớp hiện có:
+
+- **None:** Không áp dụng bất kỳ ràng buộc nào.
+- **ConeJoint:** Khớp cầu. Hữu ích cho vai, hông và cổ.
+- **HingeJoint:** Cung cấp ràng buộc góc; hãy hình dung nó giống như bản lề cửa. Hữu ích cho khuỷu tay và đầu gối.
+- **PinJoint:** Giữ hai vật thể được kết nối *(default)*. Điều này khiến các xương bị "nhũn xuống", vì vậy bạn nên sử dụng các loại khớp khác cho hầu hết nhân vật.
+- **SliderJoint:** Trượt một xương dọc theo xương khác trên một trục cụ thể.
+- **6DOFJoint:** Khớp mạnh mẽ nhất, cung cấp cả ràng buộc tuyến tính và góc, nhưng cũng là loại phức tạp nhất để cấu hình.
+
+Nếu không chắc chắn, hãy bắt đầu với HingeJoint và ConeJoint, vì chúng đáp ứng hầu hết các trường hợp sử dụng:
+
+- Đối với HingeJoint, hãy đảm bảo bật **Angular Limit** trong
+  phần :menu:`Joint Constraints` của inspector. Sau khi bật, bạn có thể thấy góc mà nó bị giới hạn trong viewport. Bạn có thể xoay PhysicalBone3D để thay đổi trục mà khớp bị giới hạn, sau đó điều chỉnh các góc.
+- Đối với ConeJoint, thông thường tốt nhất là giới hạn **Swing Span** trong khoảng từ 20 đến 90 độ, và **Twist Span** trong khoảng từ 20 đến 45 độ.
+
+Điều chỉnh các hình dạng va chạm
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Nhiệm vụ tiếp theo là điều chỉnh hình dạng va chạm và kích thước của các xương vật lý để khớp với phần cơ thể mà mỗi xương cần mô phỏng.
+
+Bạn nên điều chỉnh các hình dạng va chạm *sau khi* điều chỉnh các khớp và ràng buộc, vì việc xoay một khớp cũng sẽ xoay hình dạng va chạm. Để tránh phải điều chỉnh các hình dạng va chạm hai lần, tốt hơn hết là điều chỉnh các khớp trước.
+
+Lưu ý rằng một node PhysicalBone3D có thể có nhiều hình dạng va chạm làm node con. Điều này hữu ích để biểu diễn các hình dạng đặc biệt phức tạp của các chi vốn cứng.
+
+.. tip::
+
+    Để tạm dừng phát animation trong khi điều chỉnh ragdoll, hãy chọn node ``AnimationTree`` và tắt thuộc tính **Active** trong Inspector. Hãy nhớ bật lại thuộc tính này khi hoàn tất, vì nó điều khiển việc phát animation trong khi chơi.
 
 .. figure:: img/ragdoll_system_adjust_collision_shapes.webp
    :align: center
-   :alt: Adjusting collision shapes in the 3D editor
+   :alt: Điều chỉnh các hình dạng va chạm trong trình chỉnh sửa 3D
 
-   Adjusting collision shapes in the 3D editor
+   Điều chỉnh các hình dạng va chạm trong trình chỉnh sửa 3D
 
-This is the final result:
+Đây là kết quả cuối cùng:
 
 .. figure:: img/ragdoll_system_result.webp
    :align: center
-   :alt: Result after adjusting joints and collision shapes (player mesh is hidden for visibility)
+   :alt: Kết quả sau khi điều chỉnh các khớp và hình dạng va chạm (mesh của người chơi được ẩn để dễ quan sát)
 
-   Result after adjusting joints and collision shapes (player mesh is hidden for visibility)
+   Kết quả sau khi điều chỉnh các khớp và hình dạng va chạm (mesh của người chơi được ẩn để dễ quan sát)
 
-Simulate the ragdoll
---------------------
+Mô phỏng ragdoll
+----------------
 
-The ragdoll is now ready to use. To start the simulation and play the ragdoll animation,
-you need to call the
-:ref:`PhysicalBoneSimulator3D.physical_bones_start_simulation() <class_PhysicalBoneSimulator3D_method_physical_bones_start_simulation>`
-method. Attach a script to the :ref:`PhysicalBoneSimulator3D <class_PhysicalBoneSimulator3D>` node
-that is the parent of all the PhysicalBone3D nodes in our scene, then call it in the script's
-``_ready`` method:
+Ragdoll hiện đã sẵn sàng để sử dụng. Để bắt đầu mô phỏng và phát animation ragdoll, bạn cần gọi
+phương thức :ref:`PhysicalBoneSimulator3D.physical_bones_start_simulation() <class_PhysicalBoneSimulator3D_method_physical_bones_start_simulation>`. Gắn một script vào node :ref:`PhysicalBoneSimulator3D <class_PhysicalBoneSimulator3D>`, là node cha của tất cả các node PhysicalBone3D trong scene của chúng ta, sau đó gọi phương thức này trong phương thức ``_ready`` của script:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -194,9 +140,8 @@ that is the parent of all the PhysicalBone3D nodes in our scene, then call it in
         PhysicalBonesStartSimulation();
     }
 
-To stop the simulation, call the
-:ref:`PhysicalBoneSimulator3D.physical_bones_stop_simulation() <class_PhysicalBoneSimulator3D_method_physical_bones_stop_simulation>`
-method.
+Để dừng mô phỏng, hãy gọi
+phương thức :ref:`PhysicalBoneSimulator3D.physical_bones_stop_simulation() <class_PhysicalBoneSimulator3D_method_physical_bones_stop_simulation>`.
 
 .. video:: video/ragdoll_system_full_simulation.webm
     :alt: Full simulation of ragdoll system, with the player falling to the ground
@@ -206,17 +151,11 @@ method.
     :align: default
     :width: 100%
 
-You can also limit the simulation to only a few bones. This can be useful
-to create effects such as ragdoll limbs or attachments that can interact
-with the world. To do so, pass the bone names (*not* the PhysicalBone3D
-node names) as a parameter. To see the bone name, look at the
-**Bone Name** property in the inspector after selecting a PhysicalBone3D node.
+Bạn cũng có thể giới hạn mô phỏng chỉ cho một vài xương. Điều này hữu ích để tạo các hiệu ứng như chi ragdoll hoặc các phần gắn thêm có thể tương tác với thế giới. Để thực hiện, hãy truyền tên xương (*không phải* tên node PhysicalBone3D) làm tham số. Để xem tên xương, hãy xem thuộc tính **Bone Name** trong inspector sau khi chọn một node PhysicalBone3D.
 
 .. tip::
 
-    When using an automatically generated physical skeleton as shown in this tutorial,
-    the bone name is also contained in the node name. For example, in
-    ``Physical Bone l-arm``, ``l-arm`` is the bone name.
+    Khi sử dụng skeleton vật lý được tạo tự động như trong hướng dẫn này, tên xương cũng nằm trong tên node. Ví dụ, trong ``Physical Bone l-arm``, ``l-arm`` là tên xương.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -231,11 +170,9 @@ node names) as a parameter. To see the bone name, look at the
         PhysicalBonesStartSimulation(["l-arm", "r-arm"]);
     }
 
-Note that nonexistent bone names will not print any error or warning. If
-nothing happens when starting the simulation (or if the whole body is ragdolled
-instead of only specific bones), double-check the list of provided bones.
+Lưu ý rằng tên xương không tồn tại sẽ không in ra bất kỳ lỗi hoặc cảnh báo nào. Nếu không có gì xảy ra khi bắt đầu mô phỏng (hoặc nếu toàn bộ cơ thể bị ragdoll thay vì chỉ các xương cụ thể), hãy kiểm tra lại danh sách các xương đã cung cấp.
 
-Here's an example of partial ragdoll simulation:
+Sau đây là một ví dụ về mô phỏng ragdoll từng phần:
 
 .. video:: video/ragdoll_system_partial_simulation.webm
     :alt: Partial simulation of ragdoll system, with arms flailing while the player is walking
@@ -247,47 +184,34 @@ Here's an example of partial ragdoll simulation:
 
 .. tip::
 
-    To control how strongly the partial ragdoll simulation affects the overall animation,
-    you can adjust the **Influence** property in the
-    :ref:`PhysicalBoneSimulator3D <class_PhysicalBoneSimulator3D>` node that is the
-    parent of all PhysicalBone3D nodes. By default, it's set to ``1.0``, which means
-    the ragdoll simulation fully overrides the rest of the animation.
+    Để điều khiển mức độ ảnh hưởng của mô phỏng ragdoll từng phần lên animation tổng thể, bạn có thể điều chỉnh thuộc tính **Influence** trong
+    node :ref:`PhysicalBoneSimulator3D <class_PhysicalBoneSimulator3D>`, là node cha của tất cả các node PhysicalBone3D. Theo mặc định, thuộc tính này được đặt thành ``1.0``, nghĩa là mô phỏng ragdoll sẽ hoàn toàn ghi đè phần animation còn lại.
 
-Collision layer and mask
-~~~~~~~~~~~~~~~~~~~~~~~~
+Lớp và mặt nạ va chạm
+~~~~~~~~~~~~~~~~~~~~~
 
-Make sure to set up your collision layers and masks properly so the
-CharacterBody3D's capsule doesn't get in the way of the physics simulation.
-Remember to adjust the collision layer and mask in the coin scene
-as well, so that the player can still collect coins:
+Hãy đảm bảo thiết lập đúng các lớp và mặt nạ va chạm để capsule của CharacterBody3D không cản trở mô phỏng vật lý. Đồng thời, hãy nhớ điều chỉnh lớp và mặt nạ va chạm trong scene coin để người chơi vẫn có thể nhặt coin:
 
 .. figure:: img/ragdoll_system_collision_layers_masks.webp
    :align: center
-   :alt: Layers and masks must be adjusted to these values in the inspector for each node
+   :alt: Các lớp và mặt nạ phải được điều chỉnh thành những giá trị này trong inspector cho từng node
 
-   Layers and masks must be adjusted to these values in the inspector for each node
+   Các lớp và mặt nạ phải được điều chỉnh thành những giá trị này trong inspector cho từng node
 
-You can find the GridMap in the 3D platformer demo in ``stage/grid_map.scn``.
-The coin's Area3D node (on which the layers and masks must be adjusted)
-can be found at ``coin/coin.tscn``.
+Bạn có thể tìm thấy GridMap trong bản demo platformer 3D tại ``stage/grid_map.scn``. Node Area3D của coin (nơi cần điều chỉnh các lớp và mặt nạ) có thể được tìm thấy tại ``coin/coin.tscn``.
 
 .. tip::
 
-    To select all PhysicalBone3D nodes quickly, enter ``t:PhysicalBone3D`` in the
-    search bar at the top of the scene tree dock. This filters the scene tree
-    to only show PhysicalBone3D nodes, which allows you to select them all at once
-    using :kbd:`Shift + Left mouse button` on the first and last entries.
+    Để nhanh chóng chọn tất cả các node PhysicalBone3D, hãy nhập ``t:PhysicalBone3D`` vào thanh tìm kiếm ở đầu dock cây scene. Thao tác này sẽ lọc cây scene để chỉ hiển thị các node PhysicalBone3D, cho phép bạn chọn tất cả cùng lúc bằng :kbd:`Shift + Left mouse button` trên mục đầu tiên và mục cuối cùng.
 
-If this is not done, collision will behave incorrectly as the player will collide
-with its own (inactive) ragdoll. This can cause the player to wildly
-bounce around or get stuck.
+Nếu không thực hiện việc này, va chạm sẽ hoạt động không chính xác vì người chơi sẽ va chạm với ragdoll của chính mình (đang không hoạt động). Điều này có thể khiến người chơi nảy loạn xạ hoặc bị mắc kẹt.
 
-Like RigidBody3D, PhysicalBone3D supports collision exceptions through code
-using the :ref:`physical_bones_add_collision_exception() <class_PhysicalBoneSimulator3D_method_physical_bones_add_collision_exception>`
-and :ref:`physical_bones_remove_collision_exception() <class_PhysicalBoneSimulator3D_method_physical_bones_remove_collision_exception>`
-methods. This can be used to prevent collisions with a specific object
-without relying on layers and masks.
+Giống như RigidBody3D, PhysicalBone3D hỗ trợ các ngoại lệ va chạm thông qua code bằng các phương thức :ref:`physical_bones_add_collision_exception() <class_PhysicalBoneSimulator3D_method_physical_bones_add_collision_exception>` và :ref:`physical_bones_remove_collision_exception() <class_PhysicalBoneSimulator3D_method_physical_bones_remove_collision_exception>`. Bạn có thể dùng cách này để ngăn va chạm với một đối tượng cụ thể mà không cần dựa vào các lớp và mặt nạ.
 
 .. seealso::
 
-    For more information, see :ref:`doc_physics_introduction_collision_layers_and_masks`.
+    Để biết thêm thông tin, hãy xem :ref:`doc_physics_introduction_collision_layers_and_masks`.
+
+.. _`GitHub`: https://github.com/godotengine/godot-demo-projects/tree/master/3d/platformer
+.. _`Asset Library`: https://godotengine.org/asset-library/asset/2748
+.. _`Ragdoll Physics demo`: https://github.com/godotengine/godot-demo-projects/tree/master/3d/ragdoll_physics

@@ -1,133 +1,78 @@
 .. _doc_collision_shapes_3d:
 
-Collision shapes (3D)
-=====================
+Hình dạng va chạm (3D)
+======================
 
-This guide explains:
+Hướng dẫn này giải thích:
 
-- The types of collision shapes available in 3D in Godot.
-- Using a convex or a concave mesh as a collision shape.
-- Performance considerations regarding 3D collisions.
+- Các loại hình dạng va chạm có sẵn trong 3D ở Godot.
+- Sử dụng mesh lồi hoặc lõm làm hình dạng va chạm.
+- Các lưu ý về hiệu năng liên quan đến va chạm 3D.
 
-Godot provides many kinds of collision shapes, with different performance and
-accuracy tradeoffs.
+Godot cung cấp nhiều loại hình dạng va chạm, với những đánh đổi khác nhau về hiệu năng và độ chính xác.
 
-You can define the shape of a :ref:`class_PhysicsBody3D` by adding one or more
-:ref:`CollisionShape3Ds <class_CollisionShape3D>` as *direct* child nodes.
-Indirect child nodes (i.e. children of child nodes) will be ignored and won't be
-used as collision shapes. Also, note that you must add a :ref:`class_Shape3D`
-*resource* to collision shape nodes in the Inspector dock.
+Bạn có thể xác định hình dạng của một :ref:`class_PhysicsBody3D` bằng cách thêm một hoặc nhiều
+:ref:`CollisionShape3Ds <class_CollisionShape3D>` làm các node con *direct*. Các node con gián tiếp (tức là các node con của node con) sẽ bị bỏ qua và không được sử dụng làm hình dạng va chạm. Ngoài ra, hãy lưu ý rằng bạn phải thêm :ref:`class_Shape3D` *resource* vào các node hình dạng va chạm trong Inspector dock.
 
 .. note::
 
-    When you add multiple collision shapes to a single PhysicsBody, you don't
-    have to worry about them overlapping. They won't "collide" with each other.
+    Khi thêm nhiều hình dạng va chạm vào một PhysicsBody, bạn không cần lo lắng về việc chúng chồng lên nhau. Chúng sẽ không "va chạm" với nhau.
 
-Primitive collision shapes
---------------------------
+Hình dạng va chạm nguyên thủy
+-----------------------------
 
-Godot provides the following primitive collision shape types:
+Godot cung cấp các loại hình dạng va chạm nguyên thủy sau:
 
 - :ref:`class_BoxShape3D`
 - :ref:`class_SphereShape3D`
 - :ref:`class_CapsuleShape3D`
 - :ref:`class_CylinderShape3D`
 
-You can represent the collision of most smaller objects using one or more
-primitive shapes. However, for more complex objects, such as a large ship or a
-whole level, you may need convex or concave shapes instead. More on that below.
+Bạn có thể biểu diễn va chạm của hầu hết các vật thể nhỏ bằng một hoặc nhiều hình dạng nguyên thủy. Tuy nhiên, đối với các vật thể phức tạp hơn, chẳng hạn như một con tàu lớn hoặc toàn bộ một level, bạn có thể cần các hình dạng lồi hoặc lõm. Nội dung này sẽ được trình bày thêm bên dưới.
 
-We recommend favoring primitive shapes for dynamic objects such as RigidBodies
-and CharacterBodies as their behavior is the most reliable. They often provide
-better performance as well.
+Chúng tôi khuyến nghị ưu tiên các hình dạng nguyên thủy cho những object động như RigidBodies và CharacterBodies, vì hành vi của chúng đáng tin cậy nhất. Chúng cũng thường mang lại hiệu năng tốt hơn.
 
-Convex collision shapes
------------------------
+Hình dạng va chạm lồi
+---------------------
 
-:ref:`Convex collision shapes <class_ConvexPolygonShape3D>` are a compromise
-between primitive collision shapes and concave collision shapes. They can
-represent shapes of any complexity, but with an important caveat. As their name
-implies, an individual shape can only represent a *convex* shape. For instance,
-a pyramid is *convex*, but a hollow box is *concave*. To define a concave object
-with a single collision shape, you need to use a concave collision shape.
+:ref:`Hình dạng va chạm lồi <class_ConvexPolygonShape3D>` là sự thỏa hiệp giữa hình dạng va chạm nguyên thủy và hình dạng va chạm lõm. Chúng có thể biểu diễn các hình dạng với mọi độ phức tạp, nhưng có một điểm cần lưu ý quan trọng. Như tên gọi cho thấy, mỗi hình dạng riêng lẻ chỉ có thể biểu diễn một hình dạng *lồi*. Ví dụ, kim tự tháp là *lồi*, nhưng một chiếc hộp rỗng là *lõm*. Để xác định một vật thể lõm bằng một hình dạng va chạm duy nhất, bạn cần sử dụng hình dạng va chạm lõm.
 
-Depending on the object's complexity, you may get better performance by using
-multiple convex shapes instead of a concave collision shape. Godot lets you use
-*convex decomposition* to generate convex shapes that roughly match a hollow
-object. Note this performance advantage no longer applies after a certain amount
-of convex shapes. For large and complex objects such as a whole level, we
-recommend using concave shapes instead.
+Tùy thuộc vào độ phức tạp của vật thể, bạn có thể đạt hiệu năng tốt hơn bằng cách sử dụng nhiều hình dạng lồi thay vì một hình dạng va chạm lõm. Godot cho phép bạn sử dụng *phân rã lồi* để tạo các hình dạng lồi gần đúng với một vật thể rỗng. Lưu ý rằng lợi thế về hiệu năng này sẽ không còn áp dụng sau một số lượng hình dạng lồi nhất định. Đối với các vật thể lớn và phức tạp như toàn bộ một level, chúng tôi khuyến nghị sử dụng các hình dạng lõm.
 
-You can generate one or several convex collision shapes from the editor by
-selecting a MeshInstance3D and using the **Mesh** menu at the top of the 3D
-viewport. The editor exposes two generation modes:
+Bạn có thể tạo một hoặc nhiều hình dạng va chạm lồi từ editor bằng cách chọn một MeshInstance3D và sử dụng menu **Mesh** ở đầu viewport 3D. Editor cung cấp hai chế độ tạo:
 
-- **Create Single Convex Collision Sibling** uses the Quickhull algorithm. It
-  creates one CollisionShape node with an automatically generated convex
-  collision shape. Since it only generates a single shape, it provides good
-  performance and is ideal for small objects.
+- **Create Single Convex Collision Sibling** sử dụng thuật toán Quickhull. Tùy chọn này tạo một node CollisionShape với hình dạng va chạm lồi được tạo tự động. Vì chỉ tạo một hình dạng, tùy chọn này mang lại hiệu năng tốt và phù hợp với các vật thể nhỏ.
 
-- **Create Multiple Convex Collision Siblings** uses the V-HACD algorithm. It
-  creates several CollisionShape nodes, each with a convex shape. Since it
-  generates multiple shapes, it is more accurate for concave objects at the cost
-  of performance. For objects with medium complexity, it will likely be faster
-  than using a single concave collision shape.
+- **Create Multiple Convex Collision Siblings** sử dụng thuật toán V-HACD. Tùy chọn này tạo nhiều node CollisionShape, mỗi node có một hình dạng lồi. Vì tạo nhiều hình dạng, tùy chọn này chính xác hơn đối với các vật thể lõm nhưng phải đánh đổi bằng hiệu năng. Đối với các vật thể có độ phức tạp trung bình, tùy chọn này có thể sẽ nhanh hơn so với việc sử dụng một hình dạng va chạm lõm duy nhất.
 
-Concave or trimesh collision shapes
------------------------------------
+Hình dạng va chạm lõm hoặc trimesh
+----------------------------------
 
-:ref:`Concave collision shapes <class_ConcavePolygonShape3D>`, also called trimesh
-collision shapes, can take any form, from a few triangles to thousands of
-triangles. Concave shapes are the slowest option but are also the most accurate
-in Godot. **You can only use concave shapes within StaticBodies.** They will not
-work with CharacterBodies or RigidBodies unless the RigidBody's mode is Static.
+:ref:`Hình dạng va chạm lõm <class_ConcavePolygonShape3D>`, còn được gọi là hình dạng va chạm trimesh, có thể có bất kỳ hình dạng nào, từ vài tam giác đến hàng nghìn tam giác. Hình dạng lõm là tùy chọn chậm nhất nhưng cũng chính xác nhất trong Godot. **Bạn chỉ có thể sử dụng hình dạng lõm bên trong StaticBodies.** Chúng sẽ không hoạt động với CharacterBodies hoặc RigidBodies trừ khi mode của RigidBody là Static.
 
 .. note::
 
-    Even though concave shapes offer the most accurate *collision*, contact
-    reporting can be less precise than primitive shapes.
+    Mặc dù hình dạng lõm cung cấp *va chạm* chính xác nhất, việc báo cáo tiếp xúc có thể kém chính xác hơn so với hình dạng nguyên thủy.
 
-When not using GridMaps for level design, concave shapes are the best approach
-for a level's collision. That said, if your level has small details, you may
-want to exclude those from collision for performance and game feel. To do so,
-you can build a simplified collision mesh in a 3D modeler and have Godot
-generate a collision shape for it automatically. More on that below.
+Khi không sử dụng GridMaps để thiết kế level, hình dạng lõm là cách tiếp cận tốt nhất cho va chạm của level. Tuy vậy, nếu level của bạn có các chi tiết nhỏ, bạn có thể muốn loại chúng khỏi va chạm để cải thiện hiệu năng và cảm giác khi chơi. Để làm vậy, bạn có thể xây dựng một mesh va chạm được đơn giản hóa trong một trình tạo mô hình 3D và để Godot tự động tạo hình dạng va chạm cho mesh đó. Nội dung này sẽ được trình bày thêm bên dưới.
 
-Note that unlike primitive and convex shapes, a concave collision shape doesn't
-have an actual "volume". You can place objects both *outside* of the shape as
-well as *inside*.
+Lưu ý rằng không giống như hình dạng nguyên thủy và hình dạng lồi, hình dạng va chạm lõm không có "thể tích" thực tế. Bạn có thể đặt các object cả *bên ngoài* hình dạng lẫn *bên trong* hình dạng.
 
-You can generate a concave collision shape from the editor by selecting a
-MeshInstance3D and using the **Mesh** menu at the top of the 3D viewport. The
-editor exposes two options:
+Bạn có thể tạo hình dạng va chạm lõm từ editor bằng cách chọn một MeshInstance3D và sử dụng menu **Mesh** ở đầu viewport 3D. Editor cung cấp hai tùy chọn:
 
-- **Create Trimesh Static Body** is a convenient option. It creates a StaticBody
-  containing a concave shape matching the mesh's geometry.
+- **Create Trimesh Static Body** là một tùy chọn tiện lợi. Tùy chọn này tạo một StaticBody chứa hình dạng lõm khớp với hình học của mesh.
 
-- **Create Trimesh Collision Sibling** creates a CollisionShape node with a
-  concave shape matching the mesh's geometry.
+- **Create Trimesh Collision Sibling** tạo một node CollisionShape với hình dạng lõm khớp với hình học của mesh.
 
 .. seealso::
 
-    See :ref:`doc_importing_3d_scenes` for information on how to export models
-    for Godot and automatically generate collision shapes on import.
+    Xem :ref:`doc_importing_3d_scenes` để biết thông tin về cách export model cho Godot và tự động tạo hình dạng va chạm khi import.
 
-Performance caveats
--------------------
+Các lưu ý về hiệu năng
+----------------------
 
-You aren't limited to a single collision shape per PhysicsBody. Still, we
-recommend keeping the number of shapes as low as possible to improve
-performance, especially for dynamic objects like RigidBodies and
-CharacterBodies. On top of that, avoid translating, rotating, or scaling
-CollisionShapes to benefit from the physics engine's internal optimizations.
+Bạn không bị giới hạn ở một hình dạng va chạm duy nhất cho mỗi PhysicsBody. Tuy nhiên, chúng tôi khuyến nghị giữ số lượng hình dạng ở mức thấp nhất có thể để cải thiện hiệu năng, đặc biệt đối với các object động như RigidBodies và CharacterBodies. Ngoài ra, hãy tránh dịch chuyển, xoay hoặc thay đổi tỷ lệ của CollisionShapes để tận dụng các tối ưu hóa nội bộ của physics engine.
 
-When using a single non-transformed collision shape in a StaticBody, the
-engine's *broad phase* algorithm can discard inactive PhysicsBodies. The *narrow
-phase* will then only have to take into account the active bodies' shapes. If a
-StaticBody has many collision shapes, the broad phase will fail. The narrow
-phase, which is slower, must then perform a collision check against each shape.
+Khi sử dụng một hình dạng va chạm duy nhất không bị biến đổi trong một StaticBody, thuật toán *broad phase* của engine có thể loại bỏ các PhysicsBodies không hoạt động. Khi đó, *narrow phase* chỉ cần xem xét các hình dạng của những body đang hoạt động. Nếu một StaticBody có nhiều hình dạng va chạm, broad phase sẽ không hoạt động hiệu quả. Khi đó, narrow phase, vốn chậm hơn, phải thực hiện kiểm tra va chạm với từng hình dạng.
 
-If you run into performance issues, you may have to make tradeoffs in terms of
-accuracy. Most games out there don't have a 100% accurate collision. They find
-creative ways to hide it or otherwise make it unnoticeable during normal
-gameplay.
+Nếu gặp vấn đề về hiệu năng, bạn có thể phải đánh đổi về độ chính xác. Hầu hết các game hiện có đều không có va chạm chính xác 100%. Chúng tìm ra những cách sáng tạo để che giấu điều đó hoặc khiến nó không thể nhận thấy trong quá trình chơi bình thường.

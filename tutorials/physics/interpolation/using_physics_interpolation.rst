@@ -1,85 +1,50 @@
 .. _doc_using_physics_interpolation:
 
-Using physics interpolation
-===========================
+Sử dụng nội suy vật lý
+======================
 
-How do we incorporate physics interpolation into a Godot game? Are there any
-caveats?
+Làm thế nào để tích hợp nội suy vật lý vào một game Godot? Có điều gì cần lưu ý không?
 
-We have tried to make the system as easy to use as possible, and many existing
-games will work with few changes. That said there are some situations which require
-special treatment, and these will be described.
+Chúng tôi đã cố gắng làm cho hệ thống dễ sử dụng nhất có thể, và nhiều game hiện có sẽ hoạt động với rất ít thay đổi. Tuy vậy, có một số tình huống cần được xử lý đặc biệt, và chúng sẽ được mô tả dưới đây.
 
-Turn on the physics interpolation setting
------------------------------------------
+Bật thiết lập nội suy vật lý
+----------------------------
 
-The first step is to turn on physics interpolation in
-:ref:`Project Settings > Physics > Common > Physics Interpolation<class_ProjectSettings_property_physics/common/physics_interpolation>`
-You can now run your game.
+Bước đầu tiên là bật nội suy vật lý trong
+:ref:`Project Settings > Physics > Common > Physics Interpolation <class_ProjectSettings_property_physics/common/physics_interpolation>` Bây giờ bạn có thể chạy game.
 
-It is likely that nothing looks hugely different, particularly if you are running
-physics at 60 TPS or a multiple of it. However, quite a bit more is happening
-behind the scenes.
+Có khả năng là bạn sẽ không nhận thấy khác biệt quá lớn, đặc biệt nếu bạn chạy vật lý ở mức 60 TPS hoặc một bội số của mức này. Tuy nhiên, có khá nhiều hoạt động diễn ra phía sau.
 
 .. tip::
 
-    To convert an existing game to use interpolation, it is highly recommended that
-    you temporarily set
-    :ref:`Project Settings > Physics > Common > Physics Tick per Second<class_ProjectSettings_property_physics/common/physics_ticks_per_second>`
-    to a low value such as ``10``, which will make interpolation problems more obvious.
+    Để chuyển một game hiện có sang sử dụng nội suy, bạn rất nên tạm thời đặt
+    :ref:`Project Settings > Physics > Common > Physics Tick per Second <class_ProjectSettings_property_physics/common/physics_ticks_per_second>` thành một giá trị thấp như ``10``, để các vấn đề về nội suy trở nên dễ nhận thấy hơn.
 
-Move (almost) all game logic from _process to _physics_process
---------------------------------------------------------------
+Chuyển (gần như) toàn bộ logic game từ _process sang _physics_process
+---------------------------------------------------------------------
 
-The most fundamental requirement for physics interpolation (which you may be doing
-already) is that you should be moving and performing game logic on your objects
-within ``_physics_process`` (which runs at a physics tick) rather than ``_process``
-(which runs on a rendered frame). This means your scripts should typically be doing
-the bulk of their processing within ``_physics_process``, including responding to
-input and AI.
+Yêu cầu cơ bản nhất đối với nội suy vật lý (có thể bạn đã thực hiện điều này) là bạn nên di chuyển các đối tượng và thực hiện logic game trên chúng trong ``_physics_process`` (chạy theo mỗi physics tick), thay vì ``_process`` (chạy theo mỗi frame được render). Điều này có nghĩa là các script của bạn thường nên thực hiện phần lớn quá trình xử lý trong ``_physics_process``, bao gồm cả việc phản hồi input và AI.
 
-Setting the transform of objects only within physics ticks allows the automatic
-interpolation to deal with transforms *between* physics ticks, and ensures the game
-will run the same whatever machine it is run on. As a bonus, this also reduces CPU
-usage if the game is rendering at high FPS, since AI logic (for example) will no
-longer run on every rendered frame.
+Chỉ thiết lập transform của các đối tượng trong các physics tick cho phép cơ chế nội suy tự động xử lý các transform *between* physics tick, đồng thời đảm bảo game chạy giống nhau trên mọi máy. Ngoài ra, cách này còn giảm mức sử dụng CPU nếu game render ở FPS cao, vì logic AI (chẳng hạn) sẽ không còn chạy ở mỗi frame được render.
 
-.. note:: If you attempt to set the transform of interpolated objects *outside* the
-          physics tick, the calculations for the interpolated position will be
-          incorrect, and you will get jitter. This jitter may not be visible on
-          your machine, but it *will* occur for some players. For this reason,
-          setting the transform of interpolated objects should be avoided outside
-          of the physics tick. Godot will attempt to produce warnings in the editor
-          if this case is detected.
+.. note:: Nếu bạn cố gắng thiết lập transform của các đối tượng được nội suy *outside* physics tick, phép tính vị trí nội suy sẽ không chính xác và bạn sẽ thấy hiện tượng giật. Hiện tượng giật này có thể không nhìn thấy trên máy của bạn, nhưng *will* xảy ra với một số người chơi. Vì lý do này, nên tránh thiết lập transform của các đối tượng được nội suy bên ngoài physics tick. Godot sẽ cố gắng đưa ra cảnh báo trong editor nếu phát hiện trường hợp này.
 
-.. tip:: This is only a *soft rule*. There are some occasions where you might want
-         to teleport objects outside of the physics tick (for instance when
-         starting a level, or respawning objects). Still, in general, you should be
-         applying transforms from the physics tick.
+.. tip:: Đây chỉ là một *soft rule*. Có một số trường hợp bạn có thể muốn dịch chuyển đối tượng bên ngoài physics tick (chẳng hạn khi bắt đầu một level hoặc hồi sinh các đối tượng). Tuy nhiên, nhìn chung, bạn nên áp dụng các transform từ physics tick.
 
 
-Ensure that all indirect movement happens during physics ticks
---------------------------------------------------------------
+Đảm bảo mọi chuyển động gián tiếp diễn ra trong các physics tick
+----------------------------------------------------------------
 
-Consider that in Godot, nodes can be moved not just directly in your own scripts,
-but also by automatic methods such as tweening, animation, and navigation. All
-these methods should also have their timing set to operate on the physics tick
-rather than each frame ("idle"), **if** you are using them to move objects (*these
-methods can also be used to control properties that are not interpolated*).
+Hãy lưu ý rằng trong Godot, các node không chỉ có thể được di chuyển trực tiếp trong các script của bạn mà còn bằng những phương thức tự động như tweening, animation và navigation. Tất cả các phương thức này cũng nên được thiết lập thời gian hoạt động theo physics tick thay vì mỗi frame ("idle"), **if** bạn sử dụng chúng để di chuyển các đối tượng (*these methods can also be used to control properties that are not interpolated*).
 
-.. note:: Also consider that nodes can be moved not just by moving themselves, but
-          also by moving parent nodes in the :ref:`SceneTree<class_SceneTree>`. The
-          movement of parents should therefore also only occur during physics ticks.
+.. note:: Cũng cần lưu ý rằng các node không chỉ có thể được di chuyển bằng cách tự di chuyển chúng, mà còn bằng cách di chuyển các node cha trong :ref:`SceneTree<class_SceneTree>`. Vì vậy, chuyển động của các node cha cũng chỉ nên diễn ra trong các physics tick.
 
-Choose a physics tick rate
---------------------------
+Chọn tốc độ physics tick
+------------------------
 
-When using physics interpolation, the rendering is decoupled from physics, and you
-can choose any value that makes sense for your game. You are no longer limited to
-values that are multiples of the user's monitor refresh rate (for stutter-free
-gameplay if the target FPS is reached).
+Khi sử dụng nội suy vật lý, việc render được tách khỏi vật lý và bạn có thể chọn bất kỳ giá trị nào phù hợp với game của mình. Bạn không còn bị giới hạn ở các giá trị là bội số của tốc độ làm mới màn hình của người dùng (để gameplay không bị giật nếu đạt FPS mục tiêu).
 
-As a rough guide:
+Hướng dẫn chung:
 
 .. csv-table::
     :header: "Low tick rates (10-30)", "Medium tick rates (30-60)", "High tick rates (60+)"
@@ -89,80 +54,49 @@ As a rough guide:
     "Add some delay to input","Good for first person games","Good for racing games"
     "Simple physics behaviour"
 
-.. note:: You can always change the tick rate as you develop, it is as simple as
-          changing the project setting.
+.. note:: Bạn luôn có thể thay đổi tốc độ tick trong quá trình phát triển; việc này đơn giản như thay đổi thiết lập của project.
 
-Call ``reset_physics_interpolation()`` when teleporting objects
----------------------------------------------------------------
+Gọi ``reset_physics_interpolation()`` khi dịch chuyển các đối tượng
+-------------------------------------------------------------------
 
-Most of the time, interpolation is what you want between two physics ticks.
-However, there is one situation in which it may *not* be what you want. That is
-when you are initially placing objects, or moving them to a new location. Here, you
-don't want a smooth motion between where the object was (e.g. the origin) and the
-initial position - you want an instantaneous move.
+Trong hầu hết thời gian, nội suy là điều bạn muốn giữa hai physics tick. Tuy nhiên, có một tình huống mà nó *not* phải là điều bạn muốn. Đó là khi bạn đặt các đối tượng lần đầu hoặc di chuyển chúng đến một vị trí mới. Trong trường hợp này, bạn không muốn chuyển động mượt mà giữa vị trí đối tượng từng ở (ví dụ: origin) và vị trí ban đầu; bạn muốn di chuyển tức thời.
 
-The solution to this is to call the :ref:`Node.reset_physics_interpolation<class_Node_method_reset_physics_interpolation>`
-function. What this function does under the hood is set the internally stored
-*previous transform* of the object to be equal to the *current transform*. This
-ensures that when interpolating between these two equal transforms, there will be
-no movement.
+Giải pháp là gọi hàm :ref:`Node.reset_physics_interpolation<class_Node_method_reset_physics_interpolation>`. Về bản chất, hàm này thiết lập *previous transform* được lưu trữ nội bộ của đối tượng bằng với *current transform*. Điều này đảm bảo rằng khi nội suy giữa hai transform giống nhau này, sẽ không có chuyển động nào xảy ra.
 
-Even if you forget to call this, it will usually not be a problem in most
-situations (especially at high tick rates). This is something you can easily leave
-to the polishing phase of your game. The worst that will happen is seeing a
-streaking motion for a frame or so when you move them - you will know when you need
-it!
+Ngay cả khi bạn quên gọi hàm này, trong hầu hết tình huống thường cũng không có vấn đề gì (đặc biệt ở tốc độ tick cao). Đây là việc bạn có thể dễ dàng để dành cho giai đoạn hoàn thiện game. Điều tệ nhất có thể xảy ra là bạn thấy chuyển động kéo dài trong khoảng một frame khi di chuyển chúng; bạn sẽ biết khi nào mình cần hàm này!
 
-There are actually two ways to use ``reset_physics_interpolation()``:
+Thực tế có hai cách sử dụng ``reset_physics_interpolation()``:
 
-*Standing start (e.g. player)*
+*Bắt đầu đứng yên (ví dụ: người chơi)*
 
-1) Set the initial transform
-2) Call ``reset_physics_interpolation()``
+1) Thiết lập transform ban đầu
+2) Gọi ``reset_physics_interpolation()``
 
-The previous and current transforms will be identical, resulting in no initial
-movement.
+Transform trước đó và transform hiện tại sẽ giống hệt nhau, nên không có chuyển động ban đầu.
 
-*Moving start (e.g. bullet)*
+*Bắt đầu chuyển động (ví dụ: đạn)*
 
-1) Set the initial transform
-2) Call ``reset_physics_interpolation()``
-3) Immediately set the transform expected after the first tick of motion
+1) Thiết lập transform ban đầu
+2) Gọi ``reset_physics_interpolation()``
+3) Ngay lập tức thiết lập transform dự kiến sau tick chuyển động đầu tiên
 
-The previous transform will be the starting position, and the current transform
-will act as though a tick of simulation has already taken place. This will
-immediately start moving the object, instead of having a tick delay standing still.
+Transform trước đó sẽ là vị trí bắt đầu, còn transform hiện tại sẽ hoạt động như thể một tick mô phỏng đã diễn ra. Điều này sẽ khiến đối tượng bắt đầu chuyển động ngay lập tức, thay vì đứng yên trong một tick.
 
-.. important:: Make sure you set the transform and call
-               ``reset_physics_interpolation()`` in the correct order as shown
-               above, otherwise you will see unwanted "streaking".
+.. important:: Hãy đảm bảo bạn thiết lập transform và gọi ``reset_physics_interpolation()`` theo đúng thứ tự như trên, nếu không bạn sẽ thấy hiện tượng "kéo dài" không mong muốn.
 
-Testing and debugging tips
---------------------------
+Mẹo kiểm thử và gỡ lỗi
+----------------------
 
-Even if you intend to run physics at 60 TPS, in order to thoroughly test your
-interpolation and get the smoothest gameplay, it is highly recommended to
-temporarily set the physics tick rate to a low value such as 10 TPS.
+Ngay cả khi bạn dự định chạy physics ở 60 TPS, để kiểm thử kỹ lưỡng interpolation và có gameplay mượt mà nhất, bạn rất nên tạm thời đặt tần số tick của physics ở một giá trị thấp như 10 TPS.
 
-The gameplay may not work perfectly, but it should enable you to more easily see
-cases where you should be calling :ref:`Node.reset_physics_interpolation<class_Node_method_reset_physics_interpolation>`,
-or where you should be using your own custom interpolation on e.g. a
-:ref:`Camera3D<class_Camera3D>`. Once you have these cases fixed, you can set the
-physics tick rate back to the desired setting.
+Gameplay có thể không hoạt động hoàn hảo, nhưng điều này sẽ giúp bạn dễ nhận thấy hơn những trường hợp cần gọi :ref:`Node.reset_physics_interpolation<class_Node_method_reset_physics_interpolation>`, hoặc những trường hợp cần sử dụng interpolation tùy chỉnh của riêng bạn trên, chẳng hạn, một
+:ref:`Camera3D<class_Camera3D>`. Sau khi đã khắc phục những trường hợp này, bạn có thể đặt lại tần số tick của physics về mức mong muốn.
 
-The other great advantage to testing at a low tick rate is you can often notice
-other game systems that are synchronized to the physics tick and creating glitches
-which you may want to work around. Typical examples include setting animation blend
-values, which you may decide to set in ``_process()`` and interpolate manually.
+Một lợi ích lớn khác của việc kiểm thử ở tần số tick thấp là bạn thường có thể nhận ra các hệ thống khác của game được đồng bộ theo tick của physics và gây ra lỗi hiển thị mà bạn có thể muốn xử lý tránh. Các ví dụ điển hình bao gồm việc đặt các giá trị blend của animation, vốn có thể được bạn quyết định đặt trong ``_process()`` và tự thực hiện interpolation.
 
 .. note::
 
-    In 2D, the position of visible collision shapes shown by the
-    :menu:`Debug > Visible Collision Shapes`
-    option **will** take physics interpolation into account.
+    Trong 2D, vị trí của các hình dạng collision hiển thị được hiển thị bởi
+    tùy chọn :menu:`Debug > Visible Collision Shapes` **sẽ** tính đến physics interpolation.
 
-    By contrast, in 3D, the position of visible collision shapes **will not**
-    take physics interpolation into account. This means the visible collision
-    shapes can appear to move less smoothly and appear slightly in front of the
-    object's visual representation when the object is moving. This is not a bug,
-    but a consequence of how physics interpolation is implemented in 3D.
+    Ngược lại, trong 3D, vị trí của các hình dạng collision hiển thị **sẽ không** tính đến physics interpolation. Điều này có nghĩa là các hình dạng collision hiển thị có thể trông kém mượt hơn và hơi ở phía trước phần hiển thị của đối tượng khi đối tượng đang di chuyển. Đây không phải là lỗi, mà là hệ quả của cách physics interpolation được triển khai trong 3D.

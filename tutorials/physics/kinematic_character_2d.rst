@@ -1,58 +1,26 @@
 .. _doc_kinematic_character_2d:
 
-Kinematic character (2D)
-========================
+Nhân vật động học (2D)
+======================
 
-Introduction
-~~~~~~~~~~~~
+Giới thiệu
+~~~~~~~~~~
 
-Yes, the name sounds strange. "Kinematic Character". What is that?
-The reason for the name is that, when physics engines came out, they were called
-"Dynamics" engines (because they dealt mainly with collision
-responses). Many attempts were made to create a character controller
-using the dynamics engines, but it wasn't as easy as it seemed. Godot
-has one of the best implementations of dynamic character controller
-you can find (as it can be seen in the 2d/platformer demo), but using
-it requires a considerable level of skill and understanding of
-physics engines (or a lot of patience with trial and error).
+Đúng vậy, cái tên nghe khá lạ. "Nhân vật động học". Đó là gì? Lý do có cái tên này là khi các physics engine ra đời, chúng được gọi là các engine "Dynamics" (vì chủ yếu xử lý phản hồi va chạm). Đã có nhiều nỗ lực tạo character controller bằng các dynamics engine, nhưng việc đó không dễ như vẻ ngoài. Godot có một trong những triển khai dynamic character controller tốt nhất mà bạn có thể tìm thấy (như trong bản demo 2d/platformer), nhưng để sử dụng nó cần có trình độ đáng kể về physics engine và hiểu biết về vật lý (hoặc rất nhiều kiên nhẫn với việc thử và sai).
 
-Some physics engines, such as Havok seem to swear by dynamic character
-controllers as the best option, while others (PhysX) would rather
-promote the kinematic one.
+Một số physics engine, chẳng hạn như Havok, dường như tin chắc rằng dynamic character controller là lựa chọn tốt nhất, trong khi các engine khác (PhysX) lại muốn quảng bá kinematic controller hơn.
 
-So, what is the difference?:
+Vậy, sự khác biệt là gì?
 
--  A **dynamic character controller** uses a rigid body with an infinite
-   inertia tensor. It's a rigid body that can't rotate.
-   Physics engines always let objects move and collide, then solve their
-   collisions all together. This makes dynamic character controllers
-   able to interact with other physics objects seamlessly, as seen in
-   the platformer demo. However, these interactions are not always
-   predictable. Collisions can take more than one frame to be
-   solved, so a few collisions may seem to displace a tiny bit. Those
-   problems can be fixed, but require a certain amount of skill.
--  A **kinematic character controller** is assumed to always begin in a
-   non-colliding state, and will always move to a non-colliding state.
-   If it starts in a colliding state, it will try to free itself like
-   rigid bodies do, but this is the exception, not the rule. This makes
-   their control and motion a lot more predictable and easier to
-   program. However, as a downside, they can't directly interact with
-   other physics objects, unless done by hand in code.
+-  Một **dynamic character controller** sử dụng một rigid body với tensor quán tính vô hạn. Đây là một rigid body không thể xoay. Physics engine luôn cho phép các đối tượng di chuyển và va chạm, sau đó giải quyết tất cả các va chạm của chúng cùng nhau. Điều này giúp dynamic character controller có thể tương tác liền mạch với các đối tượng vật lý khác, như trong bản demo platformer. Tuy nhiên, những tương tác này không phải lúc nào cũng có thể dự đoán. Việc giải quyết va chạm có thể mất hơn một frame, vì vậy một vài va chạm có vẻ như làm đối tượng lệch đi một chút. Những vấn đề đó có thể được khắc phục, nhưng cần một mức độ kỹ năng nhất định.
+-  Một **kinematic character controller** được giả định là luôn bắt đầu ở trạng thái không va chạm và luôn di chuyển đến một trạng thái không va chạm. Nếu bắt đầu ở trạng thái đang va chạm, nó sẽ cố tự giải phóng như rigid body, nhưng đây là ngoại lệ chứ không phải quy tắc. Điều này khiến việc điều khiển và chuyển động của chúng dễ dự đoán hơn nhiều và dễ lập trình hơn. Tuy nhiên, nhược điểm là chúng không thể trực tiếp tương tác với các đối tượng vật lý khác, trừ khi được thực hiện thủ công trong code.
 
-This short tutorial focuses on the kinematic character controller.
-It uses the old-school way of handling collisions, which is not
-necessarily simpler under the hood, but well hidden and presented as an API.
+Bài hướng dẫn ngắn này tập trung vào kinematic character controller. Nó sử dụng cách xử lý va chạm kiểu cũ, không nhất thiết đơn giản hơn ở bên dưới, nhưng được che giấu kỹ và cung cấp dưới dạng API.
 
 Physics process
 ~~~~~~~~~~~~~~~
 
-To manage the logic of a kinematic body or character, it is always
-advised to use :ref:`physics process <doc_idle_and_physics_processing>`,
-because it's called before physics step and its execution is
-in sync with physics server, also it is called the same amount of times
-per second, always. This makes physics and motion calculation work in a
-more predictable way than using regular process, which might have spikes
-or lose precision if the frame rate is too high or too low.
+Để quản lý logic của một kinematic body hoặc character, bạn luôn nên sử dụng :ref:`physics process <doc_idle_and_physics_processing>`, vì nó được gọi trước physics step và quá trình thực thi của nó đồng bộ với physics server; ngoài ra, nó luôn được gọi với cùng số lần mỗi giây. Điều này giúp việc tính toán vật lý và chuyển động hoạt động dễ dự đoán hơn so với việc sử dụng regular process, vốn có thể xuất hiện các đợt tăng đột biến hoặc mất độ chính xác nếu frame rate quá cao hoặc quá thấp.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -74,49 +42,31 @@ or lose precision if the frame rate is too high or too low.
     }
 
 
-Scene setup
-~~~~~~~~~~~
+Thiết lập scene
+~~~~~~~~~~~~~~~
 
-To have something to test, here's the scene (from the tilemap tutorial):
-`kinematic_character_2d_starter.zip <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/kinematic_character_2d_starter.zip>`_.
-We'll be creating a new scene for the character. Use the robot sprite and
-create a scene like this:
+Để có thứ gì đó dùng thử, đây là scene (từ bài hướng dẫn tilemap): `kinematic_character_2d_starter.zip <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/kinematic_character_2d_starter.zip>`_. Chúng ta sẽ tạo một scene mới cho character. Sử dụng sprite robot và tạo một scene như sau:
 
 .. image:: img/kbscene.webp
 
-You'll notice that there's a warning icon next to our CollisionShape2D node;
-that's because we haven't defined a shape for it. Create a new CircleShape2D
-in the shape property of CollisionShape2D. Click on <CircleShape2D> to go to the
-options for it, and set the radius to 30:
+Bạn sẽ nhận thấy có một biểu tượng cảnh báo bên cạnh node CollisionShape2D; đó là vì chúng ta chưa xác định shape cho nó. Hãy tạo một CircleShape2D mới trong thuộc tính shape của CollisionShape2D. Nhấp vào <CircleShape2D> để chuyển đến các tùy chọn của nó, rồi đặt radius thành 30:
 
 .. image:: img/kbradius.webp
 
-**Note: As mentioned before in the physics tutorial, the physics engine
-can't handle scale on most types of shapes (only collision polygons,
-planes and segments work), so always change the parameters (such as
-radius) of the shape instead of scaling it. The same is also true for
-the kinematic/rigid/static bodies themselves, as their scale affects the
-shape scale.**
+**Lưu ý: Như đã đề cập trước đó trong bài hướng dẫn physics, physics engine không thể xử lý scale trên hầu hết các loại shape (chỉ collision polygon, plane và segment hoạt động được), vì vậy hãy luôn thay đổi các tham số (chẳng hạn như radius) của shape thay vì scale nó. Điều tương tự cũng đúng với bản thân kinematic/rigid/static body, vì scale của chúng ảnh hưởng đến scale của shape.**
 
-Now, create a script for the character, the one used as an example
-above should work as a base.
+Bây giờ, hãy tạo một script cho character; script được dùng làm ví dụ ở trên sẽ phù hợp để làm cơ sở.
 
-Finally, instance that character scene in the tilemap, and make the
-map scene the main one, so it runs when pressing play.
+Cuối cùng, hãy instance scene character đó trong tilemap và đặt map scene làm scene chính để nó chạy khi nhấn play.
 
 .. image:: img/kbinstance.webp
 
-Moving the kinematic character
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Di chuyển kinematic character
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Go back to the character scene, and open the script, the magic begins
-now! Kinematic body will do nothing by default, but it has a
-useful function called ``CharacterBody2D.move_and_collide()``.
-This function takes a :ref:`Vector2 <class_Vector2>` as
-an argument, and tries to apply that motion to the kinematic body. If a
-collision happens, it stops right at the moment of the collision.
+Quay lại scene character và mở script; điều kỳ diệu bắt đầu từ bây giờ! Kinematic body mặc định sẽ không làm gì, nhưng nó có một function hữu ích tên là ``CharacterBody2D.move_and_collide()``. Function này nhận một :ref:`Vector2 <class_Vector2>` làm đối số và cố áp dụng chuyển động đó lên kinematic body. Nếu xảy ra va chạm, nó dừng lại ngay tại thời điểm va chạm.
 
-So, let's move our sprite downwards until it hits the floor:
+Vậy hãy di chuyển sprite của chúng ta xuống dưới cho đến khi chạm sàn:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -124,7 +74,7 @@ So, let's move our sprite downwards until it hits the floor:
     extends CharacterBody2D
 
     func _physics_process(delta):
-        move_and_collide(Vector2(0, 1)) # Move down 1 pixel per physics frame
+        move_and_collide(Vector2(0, 1)) # Di chuyển xuống 1 pixel mỗi physics frame
 
  .. code-tab:: csharp
 
@@ -134,16 +84,14 @@ So, let's move our sprite downwards until it hits the floor:
     {
         public override void _PhysicsProcess(double delta)
         {
-            // Move down 1 pixel per physics frame
+            // Di chuyển xuống 1 pixel mỗi physics frame
             MoveAndCollide(new Vector2(0, 1));
         }
     }
 
-The result is that the character will move, but stop right when
-hitting the floor. Pretty cool, huh?
+Kết quả là character sẽ di chuyển, nhưng dừng lại ngay khi chạm sàn. Khá hay, phải không?
 
-The next step will be adding gravity to the mix, this way it behaves a
-little more like a regular game character:
+Bước tiếp theo là thêm gravity vào, để nó hoạt động giống character thông thường trong game hơn một chút:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -177,11 +125,9 @@ little more like a regular game character:
         }
     }
 
-Now the character falls smoothly. Let's make it walk to the sides, left
-and right when touching the directional keys. Remember that the values
-being used (for speed at least) are pixels/second.
+Bây giờ character rơi một cách mượt mà. Hãy cho nó đi sang hai bên, trái và phải khi nhấn các phím điều hướng. Hãy nhớ rằng các giá trị được sử dụng (ít nhất là đối với tốc độ) là pixel/giây.
 
-This adds basic support for walking when pressing left and right:
+Điều này bổ sung hỗ trợ cơ bản cho việc đi bộ khi nhấn trái và phải:
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -201,7 +147,7 @@ This adds basic support for walking when pressing left and right:
         else:
             velocity.x = 0
 
-        # "move_and_slide" already takes delta time into account.
+        # "move_and_slide" đã tính đến delta time.
         move_and_slide()
 
  .. code-tab:: csharp
@@ -234,13 +180,13 @@ This adds basic support for walking when pressing left and right:
 
             Velocity = velocity;
 
-            // "MoveAndSlide" already takes delta time into account.
+            // "MoveAndSlide" đã tính đến delta time.
             MoveAndSlide();
         }
     }
 
-And give it a try.
+Hãy thử xem.
 
-This is a good starting point for a platformer. A more complete demo can be found in the demo zip distributed with the
-engine, or in the
-https://github.com/godotengine/godot-demo-projects/tree/master/2d/kinematic_character.
+Đây là điểm khởi đầu tốt cho một platformer. Bạn có thể tìm thấy một bản demo hoàn chỉnh hơn trong file zip demo được phân phối cùng engine hoặc tại https://github.com/godotengine/godot-demo-projects/tree/master/2d/kinematic_character.
+
+.. _`kinematic_character_2d_starter.zip`: https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/kinematic_character_2d_starter.zip

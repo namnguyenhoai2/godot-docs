@@ -1,190 +1,129 @@
 .. _doc_advanced_physics_interpolation:
 
-Advanced physics interpolation
-==============================
+Nội suy vật lý nâng cao
+=======================
 
-Although the previous instructions will give satisfactory results in a lot of games,
-in some cases you will want to go a stage further to get the best possible results
-and the smoothest possible experience.
+Mặc dù các hướng dẫn trước đó sẽ cho kết quả đạt yêu cầu trong nhiều game, nhưng trong một số trường hợp, bạn sẽ muốn tiến thêm một bước để đạt được kết quả tốt nhất có thể và trải nghiệm mượt mà nhất có thể.
 
-Exceptions to automatic physics interpolation
----------------------------------------------
+Các ngoại lệ đối với nội suy vật lý tự động
+-------------------------------------------
 
-Even with physics interpolation active, there may be some local situations where
-you would benefit from disabling automatic interpolation for a
-:ref:`Node<class_Node>` (or branch of the :ref:`SceneTree<class_SceneTree>`), and
-have the finer control of performing interpolation manually.
+Ngay cả khi nội suy vật lý đang được bật, vẫn có thể có một số tình huống cục bộ mà bạn sẽ muốn tắt nội suy tự động cho một
+:ref:`Node<class_Node>` (hoặc một nhánh của :ref:`SceneTree<class_SceneTree>`), và có quyền kiểm soát chi tiết hơn bằng cách thực hiện nội suy thủ công.
 
-This is possible using the :ref:`Node.physics_interpolation_mode<class_Node_property_physics_interpolation_mode>`
-property which is present in all Nodes. If you for example, turn off interpolation
-for a Node, the children will recursively also be affected (as they default to
-inheriting the parent setting). This means you can easily disable interpolation for
-an entire subscene.
+Bạn có thể thực hiện việc này bằng thuộc tính :ref:`Node.physics_interpolation_mode<class_Node_property_physics_interpolation_mode>`, thuộc tính này có trong tất cả các Node. Ví dụ, nếu bạn tắt nội suy cho một Node, các node con cũng sẽ bị ảnh hưởng đệ quy (vì mặc định chúng kế thừa thiết lập của node cha). Điều này có nghĩa là bạn có thể dễ dàng tắt nội suy cho toàn bộ một subscene.
 
 .. figure:: img/physics_interpolation_mode.webp
 
-It is worth noting that, both in 2D and 3D, physics interpolation is performed
-on the **local transform** of each instance. During rendering, interpolated local
-transforms are passed down to children.
+Đáng lưu ý là, cả trong 2D và 3D, nội suy vật lý được thực hiện trên **biến đổi cục bộ** của mỗi instance. Trong quá trình render, các biến đổi cục bộ đã nội suy được truyền xuống các node con.
 
-This means that if a parent has ``physics_interpolation_mode`` set to ``On``,
-but the child is set to ``Off``, the child will still be interpolated if the parent
-is moving. *Only the child's local transform is uninterpolated.*
-Controlling the on / off behavior of nodes therefore requires some
-thought and planning.
+Điều này có nghĩa là nếu một node cha có ``physics_interpolation_mode`` được đặt thành ``On``, nhưng node con được đặt thành ``Off``, node con vẫn sẽ được nội suy nếu node cha đang di chuyển. *Chỉ biến đổi cục bộ của node con là không được nội suy.* Vì vậy, việc kiểm soát trạng thái bật / tắt của các node cần được cân nhắc và lên kế hoạch.
 
-The most common situation where you may want to perform your own interpolation is
-Cameras.
+Tình huống phổ biến nhất mà bạn có thể muốn tự thực hiện nội suy là với Cameras.
 
 Cameras
 ~~~~~~~
 
-In many cases, a :ref:`Camera3D<class_Camera3D>` can use automatic interpolation
-just like any other node. However, for best results, especially at low physics tick
-rates, it is recommended that you take a manual approach to camera interpolation.
+Trong nhiều trường hợp, một :ref:`Camera3D<class_Camera3D>` có thể sử dụng nội suy tự động giống như mọi node khác. Tuy nhiên, để đạt kết quả tốt nhất, đặc biệt ở tốc độ tick vật lý thấp, bạn nên áp dụng cách tiếp cận thủ công cho việc nội suy camera.
 
-This is because viewers are very sensitive to camera movement. For instance, a
-Camera3D that realigns slightly every 1/10th of a second (at 10tps tick rate) will
-often be noticeable. You can get a much smoother result by moving the camera each
-frame in ``_process``, and following an interpolated target manually.
+Điều này là vì người xem rất nhạy cảm với chuyển động của camera. Chẳng hạn, một Camera3D được căn chỉnh lại đôi chút sau mỗi 1/10 giây (ở tốc độ tick 10tps) thường sẽ dễ nhận thấy. Bạn có thể đạt được kết quả mượt mà hơn nhiều bằng cách di chuyển camera trong ``_process`` ở mỗi frame và tự theo dõi một target đã được nội suy.
 
-Manual camera interpolation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Nội suy camera thủ công
+~~~~~~~~~~~~~~~~~~~~~~~
 
-Ensure the camera is using global coordinate space
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Đảm bảo camera sử dụng không gian tọa độ toàn cục
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The very first step when performing manual camera interpolation is to make sure the
-Camera3D transform is specified in *global space* rather than inheriting the
-transform of a moving parent. This is because feedback can occur between the
-movement of a parent node of a Camera3D and the movement of the camera Node itself,
-which can mess up the interpolation.
+Bước đầu tiên khi thực hiện nội suy camera thủ công là đảm bảo transform của Camera3D được chỉ định trong *không gian toàn cục* thay vì kế thừa transform của một node cha đang di chuyển. Điều này là vì có thể xảy ra phản hồi giữa chuyển động của node cha của Camera3D và chuyển động của chính Node camera, làm hỏng việc nội suy.
 
-There are two ways of doing this:
+Có hai cách để thực hiện việc này:
 
-1) Move the Camera3D so it is independent on its own branch, rather than being a child of a moving object.
+1) Di chuyển Camera3D để nó độc lập trên nhánh riêng, thay vì là node con của một đối tượng đang di chuyển.
 
 .. image:: img/fti_camera_worldspace.webp
 
-2) Call :ref:`Node3D.top_level<class_Node3D_property_top_level>` and set this to ``true``, which will make the Camera ignore the transform of its parent.
+2) Gọi :ref:`Node3D.top_level<class_Node3D_property_top_level>` và đặt giá trị này thành ``true``, thao tác này sẽ khiến Camera bỏ qua transform của node cha.
 
-Typical example
+Ví dụ điển hình
 ^^^^^^^^^^^^^^^
 
-A typical example of a custom approach is to use the ``look_at`` function in the
-Camera3D every frame in ``_process()`` to look at a target node (such as the player).
+Một ví dụ điển hình về cách tiếp cận tùy chỉnh là sử dụng hàm ``look_at`` trong Camera3D ở mỗi frame trong ``_process()`` để hướng về một node target (chẳng hạn như người chơi).
 
-But there is a problem. If we use the traditional ``get_global_transform()`` on a
-Camera3D "target" node, this transform will only focus the Camera3D on the target *at
-the current physics tick*. This is *not* what we want, as the camera will jump
-about on each physics tick as the target moves. Even though the camera may be
-updated each frame, this does not help give smooth motion if the *target* is only
-changing each physics tick.
+Nhưng có một vấn đề. Nếu chúng ta sử dụng ``get_global_transform()`` truyền thống trên một node "target" của Camera3D, transform này sẽ chỉ hướng Camera3D vào target *tại tick vật lý hiện tại*. Đây *không* phải điều chúng ta muốn, vì camera sẽ giật theo mỗi tick vật lý khi target di chuyển. Mặc dù camera có thể được cập nhật ở mỗi frame, điều này không giúp chuyển động mượt mà nếu *target* chỉ thay đổi ở mỗi tick vật lý.
 
 get_global_transform_interpolated()
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-What we really want to focus the camera on, is not the position of the target on
-the physics tick, but the *interpolated* position, i.e. the position at which the
-target will be rendered.
+Điều chúng ta thực sự muốn camera hướng tới không phải là vị trí của target tại tick vật lý, mà là vị trí *đã nội suy*, tức vị trí mà target sẽ được render.
 
-We can do this using the :ref:`Node3D.get_global_transform_interpolated<class_Node3D_method_get_global_transform_interpolated>`
-function. This acts exactly like getting :ref:`Node3D.global_transform<class_Node3D_property_global_transform>`
-but it gives you the *interpolated* transform (during a ``_process()`` call).
+Chúng ta có thể thực hiện việc này bằng hàm :ref:`Node3D.get_global_transform_interpolated<class_Node3D_method_get_global_transform_interpolated>`. Hàm này hoạt động chính xác như khi lấy :ref:`Node3D.global_transform<class_Node3D_property_global_transform>`, nhưng cung cấp cho bạn transform *đã nội suy* (trong một lần gọi ``_process()``).
 
-.. important:: ``get_global_transform_interpolated()`` should only be used once or
-               twice for special cases such as cameras. It should **not** be used
-               all over the place in your code (both for performance reasons, and
-               to give correct gameplay).
+.. important:: ``get_global_transform_interpolated()`` chỉ nên được sử dụng một hoặc hai lần cho các trường hợp đặc biệt như camera. Bạn **không** nên sử dụng nó ở khắp nơi trong code (vì cả lý do hiệu năng lẫn để đảm bảo gameplay chính xác).
 
-.. note:: Aside from exceptions like the camera, in most cases, your game logic
-          should be in ``_physics_process()``. In game logic you should be calling
-          ``get_global_transform()`` or ``get_transform()``, which will give the
-          current physics transform (in global or local space respectively), which
-          is usually what you will want for gameplay code.
+.. note:: Ngoài các ngoại lệ như camera, trong hầu hết trường hợp, game logic của bạn nên nằm trong ``_physics_process()``. Trong game logic, bạn nên gọi ``get_global_transform()`` hoặc ``get_transform()``, các hàm này sẽ cung cấp transform vật lý hiện tại (lần lượt trong không gian toàn cục hoặc cục bộ), thường là điều bạn cần cho code gameplay.
 
-Example manual camera script
+Ví dụ script camera thủ công
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Here is an example of a simple fixed camera which follows an interpolated target:
+Dưới đây là ví dụ về một camera cố định đơn giản theo dõi một target đã được nội suy:
 
 .. code-block:: gdscript
 
     extends Camera3D
 
-    # Node that the camera will follow
+    # Node mà camera sẽ theo dõi
     var _target
 
-    # We will smoothly lerp to follow the target
-    # rather than follow exactly
+    # Chúng ta sẽ lerp mượt mà để theo dõi target
+    # thay vì theo dõi chính xác
     var _target_pos : Vector3 = Vector3()
 
     func _ready() -> void:
-        # Find the target node
+        # Tìm node target
         _target = get_node("../Player")
 
-        # Turn off automatic physics interpolation for the Camera3D,
-        # we will be doing this manually
+        # Tắt nội suy vật lý tự động cho Camera3D,
+        # chúng ta sẽ thực hiện việc này thủ công
         set_physics_interpolation_mode(Node.PHYSICS_INTERPOLATION_MODE_OFF)
 
     func _process(delta: float) -> void:
-        # Find the current interpolated transform of the target
+        # Tìm transform đã nội suy hiện tại của target
         var tr : Transform = _target.get_global_transform_interpolated()
 
-        # Provide some delayed smoothed lerping towards the target position
+        # Cung cấp thao tác lerp mượt mà có độ trễ hướng tới vị trí của target
         _target_pos = lerp(_target_pos, tr.origin, min(delta, 1.0))
 
-        # Fixed camera position, but it will follow the target
+        # Vị trí camera cố định, nhưng camera sẽ theo dõi target
         look_at(_target_pos, Vector3(0, 1, 0))
 
-Mouse look
-^^^^^^^^^^
+Điều khiển bằng chuột
+^^^^^^^^^^^^^^^^^^^^^
 
-Mouse look is a very common way of controlling cameras. But there is a problem.
-Unlike keyboard input which can be sampled periodically on the physics tick, mouse
-move events can come in continuously. The camera will be expected to react and
-follow these mouse movements on the next frame, rather than waiting until the next
-physics tick.
+Điều khiển bằng chuột là một cách rất phổ biến để điều khiển camera. Nhưng có một vấn đề. Không giống như input bàn phím, vốn có thể được lấy mẫu định kỳ ở tick vật lý, các sự kiện di chuyển chuột có thể đến liên tục. Camera được kỳ vọng sẽ phản ứng và theo dõi các chuyển động chuột này ở frame tiếp theo, thay vì chờ đến tick vật lý tiếp theo.
 
-In this situation, it can be better to disable physics interpolation for the camera
-node (using :ref:`Node.physics_interpolation_mode<class_Node_property_physics_interpolation_mode>`)
-and directly apply the mouse input to the camera rotation, rather than apply it in
-``_physics_process``.
+Trong tình huống này, tốt hơn hết là tắt nội suy vật lý cho node camera (bằng cách sử dụng :ref:`Node.physics_interpolation_mode<class_Node_property_physics_interpolation_mode>`) và áp dụng trực tiếp input chuột vào rotation của camera, thay vì áp dụng nó trong ``_physics_process``.
 
-Sometimes, especially with cameras, you will want to use a combination of
-interpolation and non-interpolation:
+Đôi khi, đặc biệt với camera, bạn sẽ muốn sử dụng kết hợp giữa nội suy và không nội suy:
 
-- A first person camera may position the camera at a player location (perhaps using
-  :ref:`Node3D.get_global_transform_interpolated<class_Node3D_method_get_global_transform_interpolated>`),
-  but control the Camera rotation from mouse look *without* interpolation.
-- A third person camera may similarly determine the look at (target location) of the camera using
-  :ref:`Node3D.get_global_transform_interpolated<class_Node3D_method_get_global_transform_interpolated>`,
-  but position the camera using mouse look *without* interpolation.
+- Camera góc nhìn thứ nhất có thể đặt camera tại vị trí của người chơi (có thể bằng cách sử dụng
+  :ref:`Node3D.get_global_transform_interpolated<class_Node3D_method_get_global_transform_interpolated>`), nhưng điều khiển phép xoay Camera từ mouse look *without* nội suy.
+- Camera góc nhìn thứ ba cũng có thể xác định điểm nhìn (vị trí mục tiêu) của camera bằng cách sử dụng
+  :ref:`Node3D.get_global_transform_interpolated<class_Node3D_method_get_global_transform_interpolated>`, nhưng đặt camera bằng mouse look *without* nội suy.
 
-There are many permutations and variations of camera types, but it should be clear
-that in many cases, disabling automatic physics interpolation and handling this
-yourself can give a better result.
+Có nhiều cách kết hợp và biến thể của các loại camera, nhưng cần hiểu rằng trong nhiều trường hợp, việc tắt nội suy vật lý tự động và tự xử lý nội suy có thể cho kết quả tốt hơn.
 
-Disabling interpolation on other nodes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tắt nội suy trên các node khác
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Although cameras are the most common example, there are a number of cases when you
-may wish other nodes to control their own interpolation, or be non-interpolated.
-Consider for example, a player in a top view game whose rotation is controlled by
-mouse look. Disabling physics rotation allows the player rotation to match the
-mouse in real-time.
+Mặc dù camera là ví dụ phổ biến nhất, có một số trường hợp bạn có thể muốn các node khác tự kiểm soát nội suy của chúng hoặc không được nội suy. Ví dụ, hãy xét một người chơi trong game góc nhìn từ trên xuống, với phép xoay được điều khiển bằng mouse look. Việc tắt phép xoay vật lý cho phép phép xoay của người chơi khớp với chuột theo thời gian thực.
 
 
 MultiMeshes
 ~~~~~~~~~~~
 
-Although most visual Nodes follow the single Node single visual instance paradigm,
-MultiMeshes can control several instances from the same Node. Therefore, they have
-some extra functions for controlling interpolation functionality on a
-*per-instance* basis. You should explore these functions if you are using
-interpolated MultiMeshes.
+Mặc dù hầu hết các Node trực quan tuân theo mô hình một Node, một phiên bản trực quan, MultiMeshes có thể điều khiển nhiều phiên bản từ cùng một Node. Do đó, chúng có thêm một số hàm để điều khiển chức năng nội suy theo cơ sở *per-instance*. Bạn nên tìm hiểu các hàm này nếu đang sử dụng MultiMeshes được nội suy.
 
 - :ref:`MultiMesh.reset_instance_physics_interpolation<class_MultiMesh_method_reset_instance_physics_interpolation>`
 - :ref:`MultiMesh.set_buffer_interpolated<class_MultiMesh_method_set_buffer_interpolated>`
 
-Full details are in the :ref:`MultiMesh<class_MultiMesh>` documentation.
+Thông tin đầy đủ có trong :ref:`MultiMesh<class_MultiMesh>` tài liệu.

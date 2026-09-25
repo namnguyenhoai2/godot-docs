@@ -1,8 +1,12 @@
 .. _doc_android_in_app_purchases:
 
-Android in-app purchases
-========================
+Giao dịch mua trong ứng dụng Android
+====================================
 
-Godot provides the first-party `GodotGooglePlayBilling <https://github.com/godotengine/godot-google-play-billing>`_ Android plugin for integrating the `Google Play Billing library <https://developer.android.com/google/play/billing>`_, enabling applications distributed through Google Play to offer one-time purchases and subscriptions.
+Godot cung cấp plugin Android chính chủ `GodotGooglePlayBilling <https://github.com/godotengine/godot-google-play-billing>`_ để tích hợp `Google Play Billing library <https://developer.android.com/google/play/billing>`_, cho phép các ứng dụng được phân phối qua Google Play cung cấp giao dịch mua một lần và gói đăng ký.
 
-For installation, setup instructions, and the API reference, see the `GodotGooglePlayBilling documentation <https://godot-sdk-integrations.github.io/godot-google-play-billing/>`_.
+Để xem hướng dẫn cài đặt, thiết lập và tài liệu tham khảo API, hãy xem `tài liệu GodotGooglePlayBilling <https://godot-sdk-integrations.github.io/godot-google-play-billing/>`_.
+
+.. _`GodotGooglePlayBilling`: https://github.com/godotengine/godot-google-play-billing
+.. _`Google Play Billing library`: https://developer.android.com/google/play/billing
+.. _`GodotGooglePlayBilling documentation`: https://godot-sdk-integrations.github.io/godot-google-play-billing/
