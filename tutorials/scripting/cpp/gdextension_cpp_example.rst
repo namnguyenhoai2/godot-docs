@@ -1,67 +1,49 @@
 .. _doc_godot_cpp_getting_started:
 
-Getting started
-===============
+Bắt đầu
+=======
 
-Workflow overview
------------------
+Tổng quan về quy trình làm việc
+-------------------------------
 
-As a GDExtension, godot-cpp is more complicated to use than :ref:`GDScript <doc_gdscript>` and :ref:`C# <doc_c_sharp>`.
-If you decide to work with it, here's what to expect your workflow to look like:
+Là một GDExtension, godot-cpp phức tạp hơn khi sử dụng so với :ref:`GDScript <doc_gdscript>` và :ref:`C# <doc_c_sharp>`. Nếu quyết định làm việc với nó, sau đây là quy trình làm việc bạn có thể mong đợi:
 
-* Create a new godot-cpp project (from the `template <https://github.com/godotengine/godot-cpp-template>`__, or from scratch, as explained below).
-* Develop your code with your :ref:`favorite IDE <toc-devel-configuring_an_ide>` locally.
-* Build and test your code with the earliest compatible Godot version.
-* Create builds for all platforms you want to support (e.g. using `GitHub Actions <https://github.com/godotengine/godot-cpp-template/blob/main/.github/workflows/make_build.yml>`__).
-* Optional: Publish on the `Godot Asset Store <https://store.godotengine.org/>`__.
+* Tạo một dự án godot-cpp mới (từ `template <https://github.com/godotengine/godot-cpp-template>`__ hoặc tự tạo từ đầu như giải thích bên dưới).
+* Phát triển code cục bộ bằng :ref:`favorite IDE <toc-devel-configuring_an_ide>` của bạn.
+* Build và kiểm thử code bằng phiên bản Godot tương thích sớm nhất.
+* Tạo bản build cho tất cả các nền tảng bạn muốn hỗ trợ (ví dụ: sử dụng `GitHub Actions <https://github.com/godotengine/godot-cpp-template/blob/main/.github/workflows/make_build.yml>`__).
+* Tùy chọn: Phát hành trên `Godot Asset Store <https://store.godotengine.org/>`__.
 
-Example project
+Dự án ví dụ
+-----------
+
+Đối với dự án godot-cpp đầu tiên, chúng tôi khuyến nghị bắt đầu với hướng dẫn này để hiểu công nghệ liên quan đến godot-cpp. Sau khi hoàn tất, bạn có thể sử dụng `godot-cpp template <https://github.com/godotengine/godot-cpp-template>`__, vốn hỗ trợ nhiều tính năng hơn, chẳng hạn như pipeline GitHub action và ``SConstruct`` boilerplate code hữu ích. Tuy nhiên, template không tự giải thích chi tiết, vì vậy chúng tôi khuyến nghị bạn hoàn thành hướng dẫn này trước.
+
+Thiết lập dự án
 ---------------
 
-For your first godot-cpp project, we recommend starting with this guide to understand the technology involved with
-godot-cpp. After you're done, you can use the `godot-cpp template <https://github.com/godotengine/godot-cpp-template>`__,
-which has better coverage of features, such as a GitHub action pipeline and useful ``SConstruct`` boilerplate code.
-However, the template does not explain itself to a high level of detail, which is why we recommend going through this
-guide first.
+Bạn sẽ cần một số điều kiện tiên quyết sau:
 
-Setting up the project
-----------------------
+- Một executable Godot 4.
+- Một trình biên dịch C++.
+- SCons làm công cụ build.
+- Một bản sao của `godot-cpp repository <https://github.com/godotengine/godot-cpp>`__.
 
-There are a few prerequisites you'll need:
+Xem thêm :ref:`Configuring an IDE <toc-devel-configuring_an_ide>` và :ref:`Compiling <toc-devel-compiling>`, vì các công cụ build này giống với những công cụ bạn cần để biên dịch Godot từ source.
 
-- A Godot 4 executable.
-- A C++ compiler.
-- SCons as a build tool.
-- A copy of the `godot-cpp repository <https://github.com/godotengine/godot-cpp>`__.
-
-See also :ref:`Configuring an IDE <toc-devel-configuring_an_ide>`
-and :ref:`Compiling <toc-devel-compiling>` as the build tools are identical
-to the ones you need to compile Godot from source.
-
-You can download the `godot-cpp repository <https://github.com/godotengine/godot-cpp>`__ from GitHub or let Git do the work for you.
-Note that this repository has different branches for different versions
-of Godot. GDExtensions will not work in older versions of Godot (only Godot 4 and up) and vice versa, so make sure you download the correct branch.
+Bạn có thể tải `godot-cpp repository <https://github.com/godotengine/godot-cpp>`__ từ GitHub hoặc để Git thực hiện việc đó. Lưu ý rằng repository này có các branch khác nhau cho những phiên bản Godot khác nhau. GDExtension sẽ không hoạt động trong các phiên bản Godot cũ hơn (chỉ Godot 4 trở lên) và ngược lại, vì vậy hãy đảm bảo tải đúng branch.
 
 .. note::
-    To use `GDExtension <https://godotengine.org/article/introducing-gd-extensions>`__
-    you need to use the godot-cpp branch that matches the version of Godot that you are
-    targeting. For example, if you're targeting Godot 4.1, use the ``4.1`` branch. Throughout
-    this tutorial we use ``4.x``, which will need to be replaced with the version of Godot you
-    are targeting.
+    Để sử dụng `GDExtension <https://godotengine.org/article/introducing-gd-extensions>`__, bạn cần sử dụng branch godot-cpp khớp với phiên bản Godot mà bạn nhắm đến. Ví dụ, nếu nhắm đến Godot 4.1, hãy sử dụng branch ``4.1``. Trong suốt hướng dẫn này, chúng tôi sử dụng ``4.x``, bạn cần thay thế bằng phiên bản Godot mà mình nhắm đến.
 
-    The ``master`` branch is the development branch which is updated regularly
-    to work with Godot's ``master`` branch.
+    Branch ``master`` là branch phát triển được cập nhật thường xuyên để hoạt động với branch ``master`` của Godot.
 
 .. warning::
-    GDExtensions targeting an earlier version of Godot should work in later
-    minor versions, but not vice-versa. For example, a GDExtension targeting Godot 4.2
-    should work just fine in Godot 4.3, but one targeting Godot 4.3 won't work in Godot 4.2.
+    Các GDExtension nhắm đến phiên bản Godot cũ hơn sẽ hoạt động trong các phiên bản minor mới hơn, nhưng không theo chiều ngược lại. Ví dụ, GDExtension nhắm đến Godot 4.2 sẽ hoạt động bình thường trong Godot 4.3, nhưng GDExtension nhắm đến Godot 4.3 sẽ không hoạt động trong Godot 4.2.
 
-    There is one exception to this: extensions targeting Godot 4.0 will **not** work with
-    Godot 4.1 and later (see :ref:`updating_your_gdextension_for_godot_4_1`).
+    Có một ngoại lệ: các extension nhắm đến Godot 4.0 sẽ **không** hoạt động với Godot 4.1 trở lên (xem :ref:`updating_your_gdextension_for_godot_4_1`).
 
-If you are versioning your project using Git, it is recommended to add it as
-a Git submodule:
+Nếu bạn quản lý version cho dự án bằng Git, bạn nên thêm nó dưới dạng Git submodule:
 
 .. code-block:: none
 
@@ -72,7 +54,7 @@ a Git submodule:
     cd godot-cpp
     git submodule update --init
 
-Alternatively, you can also clone it to the project folder:
+Ngoài ra, bạn cũng có thể clone nó vào thư mục dự án:
 
 .. code-block:: none
 
@@ -82,40 +64,31 @@ Alternatively, you can also clone it to the project folder:
 
 .. note::
 
-    If you decide to download the repository or clone it into your folder,
-    make sure to keep the folder layout the same as we've setup here. Much of
-    the code we'll be showcasing here assumes the project has this layout.
+    Nếu quyết định tải repository hoặc clone nó vào thư mục của mình, hãy đảm bảo giữ nguyên bố cục thư mục như chúng tôi đã thiết lập ở đây. Phần lớn code chúng tôi trình bày ở đây giả định rằng dự án có bố cục này.
 
-If you cloned the example from the link specified in the introduction, the
-submodules are not automatically initialized. You will need to execute the
-following commands:
+Nếu bạn clone ví dụ từ liên kết được nêu trong phần giới thiệu, các submodule sẽ không được tự động khởi tạo. Bạn sẽ cần thực thi các lệnh sau:
 
 .. code-block:: none
 
     cd gdextension_cpp_example
     git submodule update --init
 
-This will initialize the repository in your project folder.
+Thao tác này sẽ khởi tạo repository trong thư mục dự án của bạn.
 
-Creating a simple plugin
-------------------------
+Tạo một plugin đơn giản
+-----------------------
 
-Now it's time to build an actual plugin. We'll start by creating an empty Godot
-project in which we'll place a few files.
+Bây giờ là lúc xây dựng một plugin thực tế. Chúng ta sẽ bắt đầu bằng cách tạo một dự án Godot trống, trong đó sẽ đặt một vài tệp.
 
-Open Godot and create a new project. For this example, we will place it in a
-folder called ``project`` inside our GDExtension's folder structure.
+Mở Godot và tạo một dự án mới. Trong ví dụ này, chúng ta sẽ đặt dự án vào một thư mục có tên ``project`` bên trong cấu trúc thư mục GDExtension.
 
-In our project, we'll create a scene containing a Node called "Main" and
-we'll save it as ``main.tscn``. We'll come back to that later.
+Trong dự án, chúng ta sẽ tạo một scene chứa một Node có tên "Main" và lưu scene đó thành ``main.tscn``. Chúng ta sẽ quay lại phần này sau.
 
-Back in the top-level GDExtension module folder, we're also going to create a
-subfolder called ``src`` in which we'll place our source files.
+Quay lại thư mục module GDExtension cấp cao nhất, chúng ta cũng sẽ tạo một thư mục con có tên ``src`` để đặt các tệp source.
 
-You should now have ``project``, ``godot-cpp``, and ``src``
-directories in your GDExtension module.
+Bây giờ trong module GDExtension của bạn sẽ có các thư mục ``project``, ``godot-cpp`` và ``src``.
 
-Your folder structure should now look like this:
+Cấu trúc thư mục của bạn bây giờ sẽ như sau:
 
 .. code-block:: none
 
@@ -127,8 +100,7 @@ Your folder structure should now look like this:
     |
     +--src/                   # source code of the extension we are building
 
-In the ``src`` folder, we'll start with creating our header file for the
-GDExtension node we'll be creating. We will name it ``gdexample.h``:
+Trong thư mục ``src``, trước tiên chúng ta sẽ tạo tệp header cho node GDExtension sắp tạo. Chúng ta sẽ đặt tên là ``gdexample.h``:
 
 .. code-block:: cpp
     :caption: gdextension_cpp_example/src/gdexample.h
@@ -157,29 +129,19 @@ GDExtension node we'll be creating. We will name it ``gdexample.h``:
 
     } // namespace godot
 
-There are a few things of note to the above. We include ``sprite2d.hpp`` which
-contains bindings to the Sprite2D class. We'll be extending this class in our
-module.
+Có một số điểm cần lưu ý ở phần trên. Chúng ta include ``sprite2d.hpp``, nơi chứa các binding cho class Sprite2D. Chúng ta sẽ mở rộng class này trong module của mình.
 
-We're using the namespace ``godot``, since everything in GDExtension is defined
-within this namespace.
+Chúng ta sử dụng namespace ``godot``, vì mọi thứ trong GDExtension đều được định nghĩa bên trong namespace này.
 
-Then we have our class definition, which inherits from our Sprite2D through a
-container class. We'll see a few side effects of this later on. The
-``GDCLASS`` macro sets up a few internal things for us.
+Tiếp theo là định nghĩa class, kế thừa Sprite2D thông qua một container class. Sau này chúng ta sẽ thấy một số tác động phụ của việc này. Macro ``GDCLASS`` thiết lập một số thành phần nội bộ cho chúng ta.
 
-After that, we declare a single member variable called ``time_passed``.
+Sau đó, chúng ta khai báo một biến thành viên duy nhất có tên ``time_passed``.
 
-In the next block we're defining our methods, we have our constructor
-and destructor defined, but there are two other functions that will likely look
-familiar to some, and one new method.
+Trong block tiếp theo, nơi định nghĩa các method, chúng ta đã định nghĩa constructor và destructor, nhưng còn hai function khác có thể quen thuộc với một số bạn và một method mới.
 
-The first is ``_bind_methods``, which is a static function that Godot will
-call to find out which methods can be called and which properties it exposes.
-The second is our ``_process`` function, which will work exactly the same
-as the ``_process`` function you're used to in GDScript.
+Đầu tiên là ``_bind_methods``, một static function mà Godot sẽ gọi để xác định những method nào có thể được gọi và những property nào được expose. Thứ hai là function ``_process``, hoạt động chính xác như function ``_process`` mà bạn đã quen dùng trong GDScript.
 
-Let's implement our functions by creating our ``gdexample.cpp`` file:
+Hãy triển khai các function bằng cách tạo tệp ``gdexample.cpp``:
 
 .. code-block:: cpp
     :caption: gdextension_cpp_example/src/gdexample.cpp
@@ -193,12 +155,12 @@ Let's implement our functions by creating our ``gdexample.cpp`` file:
     }
 
     GDExample::GDExample() {
-        // Initialize any variables here.
+        // Khởi tạo mọi biến tại đây.
         time_passed = 0.0;
     }
 
     GDExample::~GDExample() {
-        // Add your cleanup here.
+        // Thêm phần cleanup tại đây.
     }
 
     void GDExample::_process(double delta) {
@@ -209,17 +171,11 @@ Let's implement our functions by creating our ``gdexample.cpp`` file:
         set_position(new_position);
     }
 
-This one should be straightforward. We're implementing each method of our class
-that we defined in our header file.
+Phần này khá đơn giản. Chúng ta đang triển khai từng method của class đã định nghĩa trong tệp header.
 
-Note our ``_process`` function, which keeps track of how much time has passed
-and calculates a new position for our sprite using a sine and cosine function.
+Hãy lưu ý hàm ``_process`` của chúng ta, hàm này theo dõi thời gian đã trôi qua và tính toán vị trí mới cho sprite bằng hàm sine và cosine.
 
-There is one more C++ file we need; we'll name it ``register_types.cpp``. Our
-GDExtension plugin can contain multiple classes, each with their own header
-and source file like we've implemented ``GDExample`` up above. What we need now
-is a small bit of code that tells Godot about all the classes in our
-GDExtension plugin.
+Chúng ta cần thêm một tệp C++ nữa; hãy đặt tên cho nó là ``register_types.cpp``. Plugin GDExtension của chúng ta có thể chứa nhiều class, mỗi class có tệp header và tệp source riêng như chúng ta đã triển khai ``GDExample`` ở trên. Bây giờ chúng ta cần một đoạn code nhỏ để cho Godot biết về tất cả các class trong plugin GDExtension của mình.
 
 .. code-block:: cpp
     :caption: gdextension_cpp_example/src/register_types.cpp
@@ -249,7 +205,7 @@ GDExtension plugin.
     }
 
     extern "C" {
-    // Initialization.
+    // Khởi tạo.
     GDExtensionBool GDE_EXPORT example_library_init(GDExtensionInterfaceGetProcAddress p_get_proc_address, const GDExtensionClassLibraryPtr p_library, GDExtensionInitialization *r_initialization) {
         godot::GDExtensionBinding::InitObject init_obj(p_get_proc_address, p_library, r_initialization);
 
@@ -261,23 +217,15 @@ GDExtension plugin.
     }
     }
 
-The ``initialize_example_module`` and ``uninitialize_example_module`` functions get
-called respectively when Godot loads our plugin and when it unloads it. All
-we're doing here is parse through the functions in our bindings module to
-initialize them, but you might have to set up more things depending on your
-needs. We call the ``GDREGISTER_CLASS`` macro for each of our classes in our library.
+Các hàm ``initialize_example_module`` và ``uninitialize_example_module`` lần lượt được gọi khi Godot tải plugin và khi gỡ tải plugin. Ở đây, chúng ta chỉ duyệt qua các hàm trong bindings module để khởi tạo chúng, nhưng tùy theo nhu cầu, bạn có thể phải thiết lập thêm nhiều thành phần khác. Chúng ta gọi macro ``GDREGISTER_CLASS`` cho mỗi class trong library của mình.
 
 .. note::
 
-    You can find information about ``GDREGISTER_CLASS`` (and alternatives) at :ref:`doc_object_class`.
+    Bạn có thể tìm thông tin về ``GDREGISTER_CLASS`` (và các lựa chọn thay thế) tại :ref:`doc_object_class`.
 
-The important function is the third function called ``example_library_init``.
-We first call a function in our bindings library that creates an initialization object.
-This object registers the initialization and termination functions of the GDExtension.
-Furthermore, it sets the level of initialization (core, servers, scene, editor, level).
+Hàm quan trọng là hàm thứ ba có tên ``example_library_init``. Trước tiên, chúng ta gọi một hàm trong bindings library để tạo một initialization object. Object này đăng ký các hàm initialization và termination của GDExtension. Ngoài ra, nó đặt mức initialization (core, servers, scene, editor, level).
 
-At last, we need the header file for the ``register_types.cpp`` named
-``register_types.h``.
+Cuối cùng, chúng ta cần tệp header cho ``register_types.cpp``, có tên là ``register_types.h``.
 
 .. code-block:: cpp
     :caption: gdextension_cpp_example/src/register_types.h
@@ -291,50 +239,36 @@ At last, we need the header file for the ``register_types.cpp`` named
     void initialize_example_module(ModuleInitializationLevel p_level);
     void uninitialize_example_module(ModuleInitializationLevel p_level);
 
-Compiling the plugin
---------------------
+Biên dịch plugin
+----------------
 
-To compile the project we need to define how SCons using should compile it
-using an ``SConstruct`` file which references the one in ``godot-cpp``.
-Writing it from scratch is outside the scope of this tutorial, but you can download
-:download:`the SConstruct file we prepared <files/cpp_example/SConstruct>`.
-We'll cover a more customizable, detailed example on how to use these
-build files in a subsequent tutorial.
+Để biên dịch project, chúng ta cần định nghĩa cách SCons biên dịch project bằng một tệp ``SConstruct`` tham chiếu đến tệp trong ``godot-cpp``. Việc viết tệp này từ đầu nằm ngoài phạm vi của tutorial, nhưng bạn có thể tải xuống
+:download:`tệp SConstruct mà chúng tôi đã chuẩn bị <files/cpp_example/SConstruct>`. Trong tutorial tiếp theo, chúng tôi sẽ trình bày một ví dụ chi tiết hơn và có thể tùy chỉnh về cách sử dụng các tệp build này.
 
 .. note::
 
-    This ``SConstruct`` file was written to be used with the latest ``godot-cpp``
-    master, you may need to make small changes using it with older versions or
-    refer to the ``SConstruct`` file in the Godot 4.x documentation.
+    Tệp ``SConstruct`` này được viết để sử dụng với ``godot-cpp`` master mới nhất; bạn có thể cần thực hiện một số thay đổi nhỏ khi sử dụng nó với các phiên bản cũ hơn hoặc tham khảo tệp ``SConstruct`` trong tài liệu Godot 4.x.
 
-Once you've downloaded the ``SConstruct`` file, place it in your GDExtension folder
-structure alongside ``godot-cpp``, ``src``, and ``project``, then run:
+Sau khi tải xuống tệp ``SConstruct``, hãy đặt tệp đó vào cấu trúc thư mục GDExtension cùng với ``godot-cpp``, ``src`` và ``project``, sau đó chạy:
 
 .. code-block:: bash
 
     scons platform=<platform>
 
-You can omit the ``platform`` option if you are compiling for the platform you
-are currently using. The list of available ``platform`` options depends on which
-platform dependencies are set up (use ``platform=list`` to see all available platforms).
-See :ref:`doc_introduction_to_the_buildsystem` for details.
+Bạn có thể bỏ tùy chọn ``platform`` nếu đang biên dịch cho platform hiện tại. Danh sách các tùy chọn ``platform`` khả dụng phụ thuộc vào những platform dependencies đã được thiết lập (sử dụng ``platform=list`` để xem tất cả platform khả dụng). Xem :ref:`doc_introduction_to_the_buildsystem` để biết chi tiết.
 
-You should now be able to find the compiled library in ``project/bin/``.
+Bây giờ bạn có thể tìm thấy library đã biên dịch trong ``project/bin/``.
 
 .. note::
 
-    Here, we've compiled both godot-cpp and our gdexample library as debug
-    builds, which is the default. For optimized builds, you should compile
-    them using the ``target=template_release`` option.
+    Ở đây, chúng ta đã biên dịch cả godot-cpp và library gdexample dưới dạng debug build, đây là thiết lập mặc định. Để tạo optimized build, bạn nên biên dịch chúng bằng tùy chọn ``target=template_release``.
 
-Using the GDExtension module
-----------------------------
+Sử dụng module GDExtension
+--------------------------
 
-Before we jump back into Godot, we need to create one more file in
-``project/bin/``.
+Trước khi quay lại Godot, chúng ta cần tạo thêm một tệp trong ``project/bin/``.
 
-This file lets Godot know what dynamic libraries should be
-loaded for each platform and the entry function for the module. It is called ``gdexample.gdextension``.
+Tệp này cho Godot biết cần tải dynamic library nào cho từng platform và entry function của module. Tệp này có tên là ``gdexample.gdextension``.
 
 .. code-block:: none
 
@@ -359,21 +293,13 @@ loaded for each platform and the entry function for the module. It is called ``g
     linux.debug.rv64 = "./libgdexample.linux.template_debug.rv64.so"
     linux.release.rv64 = "./libgdexample.linux.template_release.rv64.so"
 
-This file contains a ``configuration`` section that controls the entry function of the module.
-You should also set the minimum compatible Godot version with ``compatibility_minimum``,
-which prevents older version of Godot from trying to load your extension.
-The ``reloadable`` flag enables automatic reloading of your extension by the editor every time you recompile it,
-without needing to restart the editor. This only works if you compile your extension in debug mode (default).
+Tệp này chứa một section ``configuration`` điều khiển entry function của module. Bạn cũng nên đặt phiên bản Godot tương thích tối thiểu bằng ``compatibility_minimum``, nhờ đó các phiên bản Godot cũ hơn sẽ không cố tải extension của bạn. Flag ``reloadable`` cho phép editor tự động reload extension mỗi khi bạn biên dịch lại, mà không cần khởi động lại editor. Tính năng này chỉ hoạt động nếu bạn biên dịch extension ở debug mode (mặc định).
 
-The ``libraries`` section is the important bit: it tells Godot the location of the
-dynamic library in the project's filesystem for each supported platform. It will
-also result in *just* that file being exported when you export the project,
-which means the data pack won't contain libraries that are incompatible with the
-target platform.
+Section ``libraries`` là phần quan trọng: nó cho Godot biết vị trí của dynamic library trong filesystem của project đối với từng platform được hỗ trợ. Nó cũng khiến *chỉ* tệp đó được export khi bạn export project, nghĩa là data pack sẽ không chứa các library không tương thích với platform đích.
 
-You can learn more about ``.gdextension`` files at :ref:`doc_gdextension_file`.
+Bạn có thể tìm hiểu thêm về các tệp ``.gdextension`` tại :ref:`doc_gdextension_file`.
 
-Here is another overview to check the correct file structure:
+Dưới đây là một tổng quan khác để kiểm tra cấu trúc tệp chính xác:
 
 .. code-block:: none
 
@@ -396,17 +322,15 @@ Here is another overview to check the correct file structure:
     |   +--gdexample.cpp
     |   +--gdexample.h
 
-Time to jump back into Godot. We load up the main scene we created way back in
-the beginning and now add a newly available GDExample node to the scene:
+Đã đến lúc quay lại Godot. Chúng ta mở main scene đã tạo từ đầu tutorial, sau đó thêm node GDExample mới khả dụng vào scene:
 
 .. image:: img/gdextension_cpp_nodes.webp
 
-We're going to assign the Godot logo to this node as our texture, disable the
-``centered`` property:
+Chúng ta sẽ gán logo Godot làm texture cho node này và tắt property ``centered``:
 
 .. image:: img/gdextension_cpp_sprite.webp
 
-We're finally ready to run the project:
+Cuối cùng chúng ta đã sẵn sàng chạy project:
 
 .. video:: img/gdextension_cpp_animated.webm
    :alt: Screen recording of a game window, with Godot logo moving in the top-left corner
@@ -415,19 +339,14 @@ We're finally ready to run the project:
    :muted:
    :align: default
 
-Adding properties
------------------
+Thêm property
+-------------
 
-GDScript allows you to add properties to your script using the ``export``
-keyword. In GDExtension you have to register the properties with a getter and
-setter function or directly implement the ``_get_property_list``, ``_get`` and
-``_set`` methods of an object (but that goes far beyond the scope of this
-tutorial).
+GDScript cho phép bạn thêm property vào script bằng keyword ``export``. Trong GDExtension, bạn phải đăng ký các property bằng hàm getter và setter hoặc trực tiếp triển khai các method ``_get_property_list``, ``_get`` và ``_set`` của một object (nhưng việc đó vượt xa phạm vi của tutorial này).
 
-Lets add a property that allows us to control the amplitude of our wave.
+Hãy thêm một property cho phép chúng ta điều khiển amplitude của wave.
 
-In our ``gdexample.h`` file we need to add a member variable and getter and setter
-functions:
+Trong tệp ``gdexample.h``, chúng ta cần thêm một member variable cùng các hàm getter và setter:
 
 .. code-block:: cpp
 
@@ -441,8 +360,7 @@ functions:
         double get_amplitude() const;
     ...
 
-In our ``gdexample.cpp`` file we need to make a number of changes, we will only
-show the methods we end up changing, don't remove the lines we're omitting:
+Trong tệp ``gdexample.cpp``, chúng ta cần thực hiện một số thay đổi; chúng tôi chỉ hiển thị những method cuối cùng sẽ được thay đổi, vì vậy đừng xóa các dòng bị lược bỏ:
 
 .. code-block:: cpp
 
@@ -454,7 +372,7 @@ show the methods we end up changing, don't remove the lines we're omitting:
     }
 
     GDExample::GDExample() {
-        // Initialize any variables here.
+        // Khởi tạo mọi variable tại đây.
         time_passed = 0.0;
         amplitude = 10.0;
     }
@@ -478,14 +396,9 @@ show the methods we end up changing, don't remove the lines we're omitting:
         return amplitude;
     }
 
-Once you compile the module with these changes in place, you will see that a
-property has been added to our interface. You can now change this property and
-when you run your project, you will see that our Godot icon travels along a
-larger figure.
+Sau khi biên dịch module với những thay đổi này, bạn sẽ thấy một property đã được thêm vào interface của chúng ta. Bây giờ bạn có thể thay đổi property này; khi chạy project, bạn sẽ thấy biểu tượng Godot di chuyển theo một quỹ đạo lớn hơn.
 
-Let's do the same but for the speed of our animation and use a setter and getter
-function. Our ``gdexample.h`` header file again only needs a few more lines of
-code:
+Hãy làm tương tự với tốc độ animation và sử dụng hàm setter cùng getter. Tệp header ``gdexample.h`` của chúng ta chỉ cần thêm vài dòng code:
 
 .. code-block:: cpp
 
@@ -498,8 +411,7 @@ code:
         double get_speed() const;
     ...
 
-This requires a few more changes to our ``gdexample.cpp`` file, again we're only
-showing the methods that have changed so don't remove anything we're omitting:
+Việc này yêu cầu thêm một số thay đổi trong tệp ``gdexample.cpp``; một lần nữa, chúng tôi chỉ hiển thị các method đã thay đổi, vì vậy đừng xóa bất kỳ phần nào bị lược bỏ:
 
 .. code-block:: cpp
 
@@ -538,51 +450,32 @@ showing the methods that have changed so don't remove anything we're omitting:
         return speed;
     }
 
-Now when the project is compiled, we'll see another property called speed.
-Changing its value will make the animation go faster or slower.
-Furthermore, we added a property range which describes in which range the value can be.
-The first two arguments are the minimum and maximum value and the third is the step size.
+Bây giờ khi project được biên dịch, chúng ta sẽ thấy thêm một property có tên speed. Thay đổi giá trị của property này sẽ khiến animation chạy nhanh hơn hoặc chậm hơn. Ngoài ra, chúng ta đã thêm một property range mô tả khoảng giá trị mà property có thể nhận. Hai đối số đầu tiên là giá trị tối thiểu và tối đa, còn đối số thứ ba là bước nhảy.
 
 .. note::
 
-    For simplicity, we've only used the hint_range of the property method.
-    There are a lot more options to choose from. These can be used to
-    further configure how properties are displayed and set on the Godot side.
-    You can find more information on property hints here :ref:`@GlobalScope<enum_@GlobalScope_PropertyHint>`.
+    Để đơn giản, chúng ta chỉ sử dụng hint_range của property method. Còn nhiều tùy chọn khác để lựa chọn. Bạn có thể dùng chúng để cấu hình thêm cách các property được hiển thị và thiết lập ở phía Godot. Bạn có thể tìm thêm thông tin về property hints tại đây :ref:`@GlobalScope <enum_@GlobalScope_PropertyHint>`.
 
 Signals
 -------
 
-Last but not least, signals fully work in GDExtension as well. Having your extension
-react to a signal given out by another object requires you to call ``connect``
-on that object. We can't think of a good example for our wobbling Godot icon, we
-would need to showcase a far more complete example.
+Cuối cùng nhưng không kém phần quan trọng, signals cũng hoạt động đầy đủ trong GDExtension. Để extension của bạn phản hồi một signal do một object khác phát ra, bạn cần gọi ``connect`` trên object đó. Chúng tôi không nghĩ ra được ví dụ phù hợp cho biểu tượng Godot lắc lư của mình; chúng tôi sẽ cần trình bày một ví dụ hoàn chỉnh hơn nhiều.
 
-This is the required syntax:
+Cú pháp bắt buộc là:
 
 .. code-block:: cpp
 
     some_other_node->connect("the_signal", Callable(this, "my_method"));
 
-To connect our signal ``the_signal`` from some other node with our method
-``my_method``, we need to provide the ``connect`` method with the name of the signal
-and a ``Callable``. The ``Callable`` holds information about an object on which a method
-can be called. In our case, it associates our current object instance ``this`` with the
-method ``my_method`` of the object. Then the ``connect`` method will add this to the
-observers of ``the_signal``. Whenever ``the_signal`` is now emitted, Godot knows which
-method of which object it needs to call.
+Để kết nối signal ``the_signal`` từ một node khác với method ``my_method`` của chúng ta, chúng ta cần cung cấp cho method ``connect`` tên của signal và một ``Callable``. ``Callable`` chứa thông tin về một object mà trên đó có thể gọi một method. Trong trường hợp này, nó liên kết instance object hiện tại ``this`` của chúng ta với method ``my_method`` của object đó. Sau đó, method ``connect`` sẽ thêm nó vào danh sách các observer của ``the_signal``. Khi ``the_signal`` được phát ra, Godot sẽ biết cần gọi method nào của object nào.
 
-Note that you can only call ``my_method`` if you've previously registered it in
-your ``_bind_methods`` method. Otherwise Godot will not know about the existence
-of ``my_method``.
+Lưu ý rằng bạn chỉ có thể gọi ``my_method`` nếu trước đó đã đăng ký nó trong method ``_bind_methods`` của mình. Nếu không, Godot sẽ không biết sự tồn tại của ``my_method``.
 
-To learn more about ``Callable``, check out the class reference here: :ref:`Callable <class_Callable>`.
+Để tìm hiểu thêm về ``Callable``, hãy xem tài liệu tham chiếu class tại đây: :ref:`Callable <class_Callable>`.
 
-Having your object sending out signals is more common. For our wobbling
-Godot icon, we'll do something silly just to show how it works. We're going to
-emit a signal every time a second has passed and pass the new location along.
+Việc để object của bạn phát ra signals phổ biến hơn. Với biểu tượng Godot lắc lư, chúng ta sẽ làm một điều ngớ ngẩn chỉ để minh họa cách hoạt động. Chúng ta sẽ phát ra một signal mỗi khi một giây trôi qua và truyền vị trí mới cùng signal đó.
 
-In our ``gdexample.h`` header file, we need to define a new member ``time_emit``:
+Trong file header ``gdexample.h`` của mình, chúng ta cần định nghĩa một member mới ``time_emit``:
 
 .. code-block:: cpp
 
@@ -592,12 +485,9 @@ In our ``gdexample.h`` header file, we need to define a new member ``time_emit``
         double amplitude;
     ...
 
-This time, the changes in ``gdexample.cpp`` are more elaborate. First,
-you'll need to set ``time_emit = 0.0;`` in either our ``_init`` method or in our
-constructor. We'll look at the other 2 needed changes one by one.
+Lần này, các thay đổi trong ``gdexample.cpp`` phức tạp hơn. Trước tiên, bạn cần thiết lập ``time_emit = 0.0;`` trong method ``_init`` hoặc trong constructor. Chúng ta sẽ lần lượt xem xét 2 thay đổi cần thiết còn lại.
 
-In our ``_bind_methods`` method, we need to declare our signal. This is done
-as follows:
+Trong method ``_bind_methods``, chúng ta cần khai báo signal. Thực hiện như sau:
 
 .. code-block:: cpp
 
@@ -608,17 +498,11 @@ as follows:
         ADD_SIGNAL(MethodInfo("position_changed", PropertyInfo(Variant::OBJECT, "node"), PropertyInfo(Variant::VECTOR2, "new_pos")));
     }
 
-Here, our ``ADD_SIGNAL`` macro can be a single call with a ``MethodInfo`` argument.
-``MethodInfo``'s first parameter will be the signal's name, and its remaining parameters
-are ``PropertyInfo`` types which describe the essentials of each of the method's parameters.
-``PropertyInfo`` parameters are defined with the data type of the parameter, and then the name
-that the parameter will have by default.
+Ở đây, macro ``ADD_SIGNAL`` của chúng ta có thể là một lần gọi duy nhất với một đối số ``MethodInfo``. Tham số đầu tiên của ``MethodInfo`` sẽ là tên của signal, còn các tham số còn lại là các kiểu ``PropertyInfo`` mô tả những thông tin thiết yếu của từng tham số trong method. Các tham số ``PropertyInfo`` được định nghĩa bằng kiểu dữ liệu của tham số, sau đó là tên mà tham số đó sẽ có theo mặc định.
 
-So here, we add a signal, with a ``MethodInfo`` which names the signal "position_changed". The
-``PropertyInfo`` parameters describe two essential arguments, one of type ``Object``, the other
-of type ``Vector2``, respectively named "node" and "new_pos".
+Ở đây, chúng ta thêm một signal với ``MethodInfo`` đặt tên signal là "position_changed". Các tham số ``PropertyInfo`` mô tả hai đối số thiết yếu, lần lượt có kiểu ``Object`` và ``Vector2``, với tên tương ứng là "node" và "new_pos".
 
-Next, we'll need to change our ``_process`` method:
+Tiếp theo, chúng ta cần thay đổi method ``_process``:
 
 .. code-block:: cpp
 
@@ -640,13 +524,9 @@ Next, we'll need to change our ``_process`` method:
         }
     }
 
-After a second has passed, we emit our signal and reset our counter. We can add
-our parameter values directly to ``emit_signal``.
+Sau khi một giây trôi qua, chúng ta phát ra signal và đặt lại bộ đếm. Chúng ta có thể thêm trực tiếp các giá trị tham số vào ``emit_signal``.
 
-Once the GDExtension library is compiled, we can go into Godot and select our sprite
-node. In the **Node** dock, we can find our new signal and link it up by pressing
-the **Connect** button or double-clicking the signal. We've added a script on
-our main node and implemented our signal like this:
+Sau khi biên dịch thư viện GDExtension, chúng ta có thể vào Godot và chọn node sprite. Trong dock **Node**, chúng ta có thể tìm thấy signal mới và liên kết nó bằng cách nhấn nút **Connect** hoặc nhấp đúp vào signal. Chúng ta đã thêm một script vào node chính và triển khai signal như sau:
 
 .. code-block:: gdscript
 
@@ -655,14 +535,11 @@ our main node and implemented our signal like this:
     func _on_Sprite2D_position_changed(node, new_pos):
         print("The position of " + node.get_class() + " is now " + str(new_pos))
 
-Every second, we output our position to the console.
+Mỗi giây, chúng ta xuất vị trí của mình ra console.
 
-Next steps
-----------
+Các bước tiếp theo
+------------------
 
-We hope the above example showed you the basics. You can build upon this example to create full-fledged scripts
-to control nodes in Godot using C++!
+Chúng tôi hy vọng ví dụ trên đã giúp bạn nắm được những điều cơ bản. Bạn có thể phát triển ví dụ này để tạo các script đầy đủ chức năng nhằm điều khiển các node trong Godot bằng C++!
 
-Instead of basing your project off the above example setup, we recommend to restart now by cloning the
-`godot-cpp template <https://github.com/godotengine/godot-cpp-template>`__, and base your project off of that.
-It has better coverage of features, such as a GitHub build action and additional useful ``SConstruct`` boilerplate.
+Thay vì xây dựng dự án dựa trên thiết lập ví dụ ở trên, chúng tôi khuyên bạn nên bắt đầu lại ngay bây giờ bằng cách clone `godot-cpp template <https://github.com/godotengine/godot-cpp-template>`__, rồi xây dựng dự án của mình dựa trên đó. Template này hỗ trợ nhiều tính năng hơn, chẳng hạn như GitHub build action và thêm các đoạn ``SConstruct`` boilerplate hữu ích.

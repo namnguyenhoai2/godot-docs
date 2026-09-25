@@ -1,108 +1,89 @@
 .. _doc_godot_cpp_build_system:
 
-Main build system: Working with SCons
-=====================================
+Hệ thống build chính: Làm việc với SCons
+========================================
 
-.. seealso:: This page documents how to compile godot-cpp. If you're looking to compile Godot instead, see
+.. seealso:: Trang này hướng dẫn cách biên dịch godot-cpp. Nếu bạn muốn biên dịch Godot thay vì godot-cpp, hãy xem
              :ref:`doc_introduction_to_the_buildsystem`.
 
-`godot-cpp <https://github.com/godotengine/godot-cpp>`__ uses `SCons <https://scons.org>`__ as its main build system.
-It is modeled after :ref:`Godot's build system <doc_compiling_index>`, and some commands available there are also
-available in godot-cpp projects.
+`godot-cpp <https://github.com/godotengine/godot-cpp>`__ sử dụng `SCons <https://scons.org>`__ làm hệ thống build chính. Hệ thống này được mô phỏng theo :ref:`hệ thống build của Godot <doc_compiling_index>`, và một số lệnh có ở đó cũng có trong các dự án godot-cpp.
 
-Getting started
----------------
+Bắt đầu
+-------
 
-To build a godot-cpp project, it is generally sufficient to install `SCons <https://scons.org>`__, and simply run it
-in the project directory:
+Để build một dự án godot-cpp, thông thường bạn chỉ cần cài đặt `SCons <https://scons.org>`__, rồi chạy lệnh này trong thư mục dự án:
 
     scons
 
-You may want to learn about available options:
+Bạn có thể muốn tìm hiểu về các tùy chọn hiện có:
 
     scons --help
 
-To cleanly re-build your project, add ``--clean`` to your build command:
+Để build lại dự án một cách sạch sẽ, hãy thêm ``--clean`` vào lệnh build:
 
     scons --clean
 
-You can find more information about common SCons arguments and build patterns in the
-`SCons User Guide <https://scons.org/doc/latest/HTML/scons-user/index.html>`__. Additional commands may be added by
-individual godot-cpp projects, so consult their specific documentation for more information on those.
+Bạn có thể tìm thêm thông tin về các đối số SCons và mẫu build phổ biến trong `Hướng dẫn sử dụng SCons <https://scons.org/doc/latest/HTML/scons-user/index.html>`__. Các dự án godot-cpp riêng lẻ có thể bổ sung thêm lệnh, vì vậy hãy xem tài liệu cụ thể của từng dự án để biết thêm thông tin.
 
-Configuring an IDE
-------------------
+Cấu hình IDE
+------------
 
-Most IDEs can use a ``compile_commands.json`` file to understand a C++ project. You can generate it with godot-cpp using
-the following command:
+Hầu hết IDE có thể sử dụng tệp ``compile_commands.json`` để hiểu một dự án C++. Bạn có thể tạo tệp này bằng godot-cpp với lệnh sau:
 
 .. code-block:: shell
 
-   # Generate compile_commands.json while compiling.
+   # Tạo compile_commands.json trong khi biên dịch.
    scons compiledb=yes
 
-   # Generate compile_commands.json without compiling.
+   # Tạo compile_commands.json mà không biên dịch.
    scons compiledb=yes compile_commands.json
 
-For more information, please check out the :ref:`IDE configuration guides <doc_configuring_an_ide>`.
-Although written for Godot engine contributors, they are largely applicable to godot-cpp projects as well.
+Để biết thêm thông tin, hãy xem :ref:`các hướng dẫn cấu hình IDE <doc_configuring_an_ide>`. Mặc dù được viết cho những người đóng góp cho Godot engine, các hướng dẫn này phần lớn cũng áp dụng cho các dự án godot-cpp.
 
-Loading your GDExtension in Godot
+Tải GDExtension của bạn vào Godot
 ---------------------------------
 
-Godot loads GDExtensions by finding :ref:`.gdextension <doc_gdextension_file>` files in the project directory.
-``.gdextension`` files are used to select and load a binary compatible with the current computer / operating system.
+Godot tải các GDExtension bằng cách tìm các tệp :ref:`.gdextension <doc_gdextension_file>` trong thư mục dự án. Các tệp ``.gdextension`` được dùng để chọn và tải binary tương thích với máy tính / hệ điều hành hiện tại.
 
-The `godot-cpp-template <https://github.com/godotengine/godot-cpp-template>`__, as well as the
-:ref:`Getting Started section <doc_godot_cpp_getting_started>`, provide example ``.gdextension`` files for GDExtensions
-that are widely compatible to many different systems.
+`godot-cpp-template <https://github.com/godotengine/godot-cpp-template>`__, cũng như
+:ref:`phần Bắt đầu <doc_godot_cpp_getting_started>`, cung cấp các tệp ``.gdextension`` mẫu cho GDExtension có khả năng tương thích rộng rãi với nhiều hệ thống khác nhau.
 
-Building for multiple platforms
--------------------------------
+Build cho nhiều nền tảng
+------------------------
 
-GDExtensions are expected to run on many different systems, each with separate binaries and build configurations.
-If you are planning to publish your GDExtension, we recommend you provide binaries for all configurations that are
-mentioned in the `godot-cpp-template <https://github.com/godotengine/godot-cpp-template>`__
-`.gdextension file <https://github.com/godotengine/godot-cpp-template/blob/main/demo/bin/example.gdextension>`__.
+GDExtension được kỳ vọng sẽ chạy trên nhiều hệ thống khác nhau, mỗi hệ thống có binary và cấu hình build riêng. Nếu dự định phát hành GDExtension, chúng tôi khuyến nghị bạn cung cấp binary cho tất cả cấu hình được đề cập trong `godot-cpp-template <https://github.com/godotengine/godot-cpp-template>`__ `.gdextension <https://github.com/godotengine/godot-cpp-template/blob/main/demo/bin/example.gdextension>`__.
 
-There are two popular ways by which cross platform builds can be achieved:
+Có hai cách phổ biến để thực hiện build đa nền tảng:
 
-- Cross-platform build tools
+- Công cụ build đa nền tảng
 - Continuous Integration (CI)
 
-`godot-cpp-template <https://github.com/godotengine/godot-cpp-template>`__ contains an
-`example setup <https://github.com/godotengine/godot-cpp-template/tree/main/.github/workflows>`__
-for a GitHub based CI workflow.
+`godot-cpp-template <https://github.com/godotengine/godot-cpp-template>`__ chứa `thiết lập mẫu <https://github.com/godotengine/godot-cpp-template/tree/main/.github/workflows>`__ cho workflow CI dựa trên GitHub.
 
-Using a custom API file
------------------------
+Sử dụng tệp API tùy chỉnh
+-------------------------
 
-Every branch of godot-cpp comes with an API file (``extension_api.json``) appropriate for
-the respective Godot version (e.g. the ``4.3`` branch comes with the API file compatible
-with Godot version ``4.3`` and later).
+Mỗi branch của godot-cpp đi kèm một tệp API (``extension_api.json``) phù hợp với phiên bản Godot tương ứng (ví dụ: branch ``4.3`` đi kèm tệp API tương thích với Godot phiên bản ``4.3`` trở lên).
 
-However, you may want to use a custom ``extension_api.json``, for example:
+Tuy nhiên, bạn có thể muốn sử dụng ``extension_api.json`` tùy chỉnh, chẳng hạn như:
 
-* If you want to use the latest APIs from Godot ``master``.
-* If you :ref:`build Godot yourself <doc_compiling_index>` with different options than the official builds (e.g. ``disable_3d=yes`` or ``precision=double``).
-* If you want to use APIs exposed by custom modules.
+* Nếu bạn muốn sử dụng các API mới nhất từ Godot ``master``.
+* Nếu bạn :ref:`tự build Godot <doc_compiling_index>` với các tùy chọn khác với các bản build chính thức (ví dụ: ``disable_3d=yes`` hoặc ``precision=double``).
+* Nếu bạn muốn sử dụng các API được expose bởi các module tùy chỉnh.
 
-To use a custom API file, you first have to generate it from the appropriate Godot
-executable:
+Để sử dụng tệp API tùy chỉnh, trước tiên bạn phải tạo tệp này từ executable Godot thích hợp:
 
 .. code-block:: shell
 
     godot --dump-extension-api
 
-The resulting ``extension_api.json`` file will be created in the executable's
-directory. To use it, you can add ``custom_api_file`` to your build command:
+Tệp ``extension_api.json`` kết quả sẽ được tạo trong thư mục của executable. Để sử dụng tệp này, bạn có thể thêm ``custom_api_file`` vào lệnh build:
 
 .. code-block:: shell
 
     scons platform=<platform> custom_api_file=<PATH_TO_FILE>
 
-Alternatively, you can add it as the default API file to your project by adding
-the following line to your SConstruct file:
+Ngoài ra, bạn có thể thêm tệp này làm tệp API mặc định cho dự án bằng cách thêm dòng sau vào tệp SConstruct:
 
 .. code-block:: python
 

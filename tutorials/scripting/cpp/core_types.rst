@@ -1,100 +1,82 @@
 .. _doc_godot_cpp_core_types:
 
-Core functions and types
-========================
+Các hàm và kiểu cốt lõi
+=======================
 
-godot-cpp's API is designed to be as similar as possible to Godot's internal API.
+API của godot-cpp được thiết kế để giống với API nội bộ của Godot nhất có thể.
 
-This means that, in general, you can use the :ref:`Engine details <doc_engine_architecture>` section to learn how to
-work with godot-cpp. In addition, it can often be useful to browse the `engine's code <https://github.com/godotengine/godot>`__
-for examples for how to work with Godot's API.
+Điều này có nghĩa là nhìn chung, bạn có thể sử dụng phần :ref:`Chi tiết về Engine <doc_engine_architecture>` để tìm hiểu cách làm việc với godot-cpp. Ngoài ra, việc xem qua `mã nguồn của engine <https://github.com/godotengine/godot>`__ thường rất hữu ích để tìm các ví dụ về cách làm việc với API của Godot.
 
-That being said, there are some differences to be aware of, which are documented here.
+Tuy vậy, có một số khác biệt bạn cần lưu ý, được ghi lại ở đây.
 
-Common functions and macros
+Các hàm và macro thông dụng
 ---------------------------
 
-Please refer to :ref:`doc_common_engine_methods_and_macros` for information on this. The functions and macros documented
-there are also available in godot-cpp.
+Vui lòng tham khảo :ref:`doc_common_engine_methods_and_macros` để biết thông tin về vấn đề này. Các hàm và macro được ghi lại ở đó cũng có trong godot-cpp.
 
-Core types
-----------
+Các kiểu cốt lõi
+----------------
 
-Godot's :ref:`Core types <doc_core_types>` are also available in godot-cpp, and the same recommendations apply
-as described in that article. The types are regularly synchronized with the Godot codebase.
+:ref:`Các kiểu cốt lõi <doc_core_types>` của Godot cũng có trong godot-cpp và các khuyến nghị tương tự như được mô tả trong bài viết đó cũng được áp dụng. Các kiểu này được đồng bộ thường xuyên với codebase của Godot.
 
-In your own code, you can also use `C++ STL types <https://en.cppreference.com/w/cpp/container.html>`__, or types from
-any library you choose, but they won't be compatible with Godot's APIs.
+Trong code của riêng bạn, bạn cũng có thể sử dụng `các kiểu STL của C++ <https://en.cppreference.com/w/cpp/container.html>`__, hoặc các kiểu từ bất kỳ thư viện nào bạn chọn, nhưng chúng sẽ không tương thích với các API của Godot.
 
-Packed arrays
-~~~~~~~~~~~~~
+Mảng packed
+~~~~~~~~~~~
 
-While in Godot, the ``Packed*Array`` types are aliases of ``Vector``, in godot-cpp, they're their own types, using the
-Godot bindings. This is because ``Packed*Array`` are exposed to Godot and limited to only Godot types, whereas ``Vector``
-can hold any C++ type which Godot might not be able to understand.
+Trong Godot, các kiểu ``Packed*Array`` là bí danh của ``Vector``, còn trong godot-cpp, chúng là các kiểu riêng sử dụng các binding của Godot. Lý do là ``Packed*Array`` được expose cho Godot và chỉ giới hạn ở các kiểu của Godot, trong khi ``Vector`` có thể chứa bất kỳ kiểu C++ nào mà Godot có thể không hiểu được.
 
-In general, the ``Packed*Array`` types work the same way as their ``Vector`` aliases, however, there are some notable
-differences.
+Nhìn chung, các kiểu ``Packed*Array`` hoạt động giống như các bí danh ``Vector`` tương ứng, tuy nhiên có một số khác biệt đáng chú ý.
 
-Data access
-+++++++++++
+Truy cập dữ liệu
+++++++++++++++++
 
-``Vector`` keeps its data entirely within the GDExtension, whereas the ``Packed*Array`` types keep their data on the
-Godot side. This means that any time a ``Packed*Array`` is accessed, it needs to call into Godot.
+``Vector`` giữ dữ liệu hoàn toàn bên trong GDExtension, trong khi các kiểu ``Packed*Array`` giữ dữ liệu ở phía Godot. Điều này có nghĩa là mỗi khi truy cập một ``Packed*Array``, nó cần gọi vào Godot.
 
-To efficiently read or write a large amount of data into a ``Packed*Array``, you should call ``.ptr()`` (for reading)
-or ``.ptrw()`` (for writing) to get a pointer directly to the array's memory:
+Để đọc hoặc ghi hiệu quả một lượng lớn dữ liệu vào ``Packed*Array``, bạn nên gọi ``.ptr()`` (để đọc) hoặc ``.ptrw()`` (để ghi) nhằm lấy trực tiếp con trỏ đến vùng nhớ của mảng:
 
 .. code-block:: cpp
 
-    // BAD!
+    // TỆ!
     void my_bad_function(const PackedByteArray &p_array) {
         for (int i = 0; i < p_array.size(); i++) {
-            // Each time this runs it needs to call into Godot.
+            // Mỗi lần đoạn này chạy, nó cần gọi vào Godot.
             uint8_t byte = p_array[i];
 
-            // .. do something with the byte.
+            // .. thực hiện thao tác nào đó với byte.
         }
     }
 
-    // GOOD :-)
+    // TỐT :-)
     void my_good_function(const PackedByteArray &p_array) {
         const uint8_t *array_ptr = p_array.ptr();
         for (int i = 0; i < p_array.size(); i++) {
-            // This directly accesses the memory!
+            // Thao tác này truy cập trực tiếp vào vùng nhớ!
             uint8_t byte = array_ptr[i];
 
-            // .. do something with the byte.
+            // .. thực hiện thao tác nào đó với byte.
         }
     }
 
-Copying
-+++++++
+Sao chép
+++++++++
 
-``Variant`` wrappers for ``Packed*Array`` treat them as pass-by-reference, while the ``Packed*Array``
-types themselves are pass-by-value (implemented as copy-on-write).
+Các wrapper ``Variant`` cho ``Packed*Array`` xử lý chúng theo dạng truyền tham chiếu, trong khi bản thân các kiểu ``Packed*Array`` được truyền theo giá trị (được triển khai bằng copy-on-write).
 
-In addition, it may be of interest that GDScript calls use the ``Variant`` call interface: Any ``Packed*Array``
-arguments to your functions will be passed in a ``Variant``, and unpacked from there. This can create copies of the
-types, so the argument you receive may be a copy of the argument that the function was called with. In practice, this
-means you cannot rely on that the argument passed to you can be modified at the caller's site.
+Ngoài ra, bạn cũng nên biết rằng các lệnh gọi GDScript sử dụng interface gọi ``Variant``: mọi đối số ``Packed*Array`` truyền vào các hàm của bạn sẽ được truyền trong một ``Variant``, rồi được unpack từ đó. Việc này có thể tạo ra các bản sao của những kiểu này, vì vậy đối số bạn nhận được có thể là bản sao của đối số được dùng khi gọi hàm. Trên thực tế, điều này có nghĩa là bạn không thể dựa vào việc đối số được truyền cho mình có thể được sửa đổi tại vị trí của bên gọi.
 
-Variant class
--------------
+Lớp Variant
+-----------
 
-Please refer to :ref:`doc_variant_class` to learn about how to work with ``Variant``.
+Vui lòng tham khảo :ref:`doc_variant_class` để tìm hiểu cách làm việc với ``Variant``.
 
-Most importantly, you should be aware that all functions exposed through the GDExtension API must be compatible with
-``Variant``.
+Quan trọng nhất, bạn cần biết rằng mọi hàm được expose thông qua API GDExtension đều phải tương thích với ``Variant``.
 
-Object class
-------------
+Lớp Object
+----------
 
-Please refer to :ref:`doc_object_class` to learn how to register and work with your own ``Object`` types.
+Vui lòng tham khảo :ref:`doc_object_class` để tìm hiểu cách đăng ký và làm việc với các kiểu ``Object`` của riêng bạn.
 
-We are not aware of any major differences between the godot-cpp ``Object`` API and Godot's internal ``Object`` API,
-except that some methods are available in Godot's internal API that are not available in godot-cpp.
+Chúng tôi không biết có khác biệt lớn nào giữa API ``Object`` của godot-cpp và API ``Object`` nội bộ của Godot, ngoại trừ việc một số phương thức có trong API nội bộ của Godot nhưng không có trong godot-cpp.
 
-You should be aware that the pointer to your godot-cpp ``Object`` is different from the pointer that Godot uses
-internally. This is because the godot-cpp version is an extension instance, allocated separately from the original
-``Object``. However, in practice, this difference is usually not noticeable.
+Bạn cần biết rằng con trỏ đến ``Object`` godot-cpp của bạn khác với con trỏ mà Godot sử dụng nội bộ. Lý do là phiên bản godot-cpp là một instance mở rộng, được cấp phát riêng với ``Object`` ban đầu. Tuy nhiên, trên thực tế, sự khác biệt này thường không đáng kể.

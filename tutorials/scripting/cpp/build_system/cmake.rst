@@ -1,57 +1,46 @@
 .. _doc_godot_cpp_build_system_cmake:
 
-Secondary build system: Working with CMake
+Hệ thống build thứ cấp: Làm việc với CMake
 ==========================================
 
 .. seealso::
 
-    This page documents how to compile godot-cpp. If you're looking to compile
-    Godot instead, see :ref:`doc_introduction_to_the_buildsystem`.
+    Trang này trình bày cách biên dịch godot-cpp. Nếu bạn muốn biên dịch Godot thay vì godot-cpp, hãy xem :ref:`doc_introduction_to_the_buildsystem`.
 
-Beside the SCons_ based build system, godot-cpp also provides a CMakeLists.txt_
-file to support users that prefer using CMake_ over SCons for their build
-system.
+Bên cạnh hệ thống build dựa trên SCons_, godot-cpp cũng cung cấp tệp CMakeLists.txt_ để hỗ trợ người dùng muốn sử dụng CMake_ thay cho SCons làm hệ thống build.
 
-While actively supported, the CMake system is considered secondary to the
-SCons build system. This means it may lack some features that are available to
-projects using SCons.
+Mặc dù vẫn được hỗ trợ tích cực, hệ thống CMake được xem là thứ cấp so với hệ thống build SCons. Điều này có nghĩa là hệ thống này có thể thiếu một số tính năng hiện có trong các project sử dụng SCons.
 
 .. _CMakeLists.txt: https://github.com/godotengine/godot-cpp/blob/master/CMakeLists.txt
 .. _CMake: http://cmake.org
 .. _Scons: http://scons.org
 
-Introduction
-------------
+.. _`Introduction`:
 
-Compiling godot-cpp independently of an extension project is mainly for
-godot-cpp developers, package maintainers, and CI/CD.
+Giới thiệu
+----------
 
-Examples of how to use CMake to consume the godot-cpp library as part of an
-extension project:
+Việc biên dịch godot-cpp độc lập với một project extension chủ yếu dành cho các developer godot-cpp, người duy trì package và CI/CD.
+
+Các ví dụ về cách sử dụng CMake để dùng thư viện godot-cpp như một phần của project extension:
 
 * `godot-cpp-template <https://github.com/godotengine/godot-cpp-template/>`__
 * `godot_roguelite <https://github.com/vorlac/godot-roguelite/>`__
 * `godot-orchestrator <https://github.com/CraterCrash/godot-orchestrator/>`__
 
-Examples for configuring godot-cpp are listed at the bottom of the page, many
-of which may help with configuring your project.
+Các ví dụ về cách cấu hình godot-cpp được liệt kê ở cuối trang; nhiều ví dụ trong số đó có thể hữu ích khi cấu hình project của bạn.
 
-CMake's ``Debug`` vs Godot's ``template_debug``
------------------------------------------------
+``Debug`` của CMake so với ``template_debug`` của Godot
+-------------------------------------------------------
 
-Something that has come up during many discussions is the conflation of a
-compilation of C++ source code with debug symbols enabled, and compiling a
-Godot extension with debug features enabled. The two concepts are not mutually
-exclusive.
+Một vấn đề xuất hiện trong nhiều cuộc thảo luận là sự nhầm lẫn giữa việc biên dịch mã nguồn C++ với debug symbol được bật và việc biên dịch một Godot extension với các tính năng debug được bật. Hai khái niệm này không loại trừ lẫn nhau.
 
-Debug Features
-~~~~~~~~~~~~~~
+Tính năng debug
+~~~~~~~~~~~~~~~
 
-Enables a pre-processor definition to selectively compile code to help users of
-a Godot extension with their own project.
+Bật một định nghĩa tiền xử lý để biên dịch có chọn lọc mã giúp người dùng Godot extension làm việc với project của riêng họ.
 
-Debug features are enabled in ``editor`` and ``template_debug`` builds, which
-can be specified during the configure phase like so:
+Các tính năng debug được bật trong các bản build ``editor`` và ``template_debug``, có thể được chỉ định trong giai đoạn configure như sau:
 
 .. code-block:: shell
 
@@ -60,53 +49,41 @@ can be specified during the configure phase like so:
 Debug
 ~~~~~
 
-Sets compiler flags so that debug symbols are generated to help godot extension
-developers debug their extension.
+Thiết lập các compiler flag để tạo debug symbol, giúp developer Godot extension debug extension của họ.
 
-``Debug`` is the default build type for CMake projects, the way to select another
-depends on the generator used:
+``Debug`` là kiểu build mặc định cho các project CMake; cách chọn kiểu khác tùy thuộc vào generator được sử dụng:
 
-* For single configuration generators, add ``-DCMAKE_BUILD_TYPE=<type>`` to the
-  configure command.
-* For multi-config generators, add ``--config <type>`` to the build command.
+* Đối với generator cấu hình đơn, thêm ``-DCMAKE_BUILD_TYPE=<type>`` vào lệnh configure.
+* Đối với generator đa cấu hình, thêm ``--config <type>`` vào lệnh build.
 
-Where ``<type>`` is one of ``Debug``, ``Release``, ``RelWithDebInfo``, and
-``MinSizeRel``.
+Trong đó ``<type>`` là một trong ``Debug``, ``Release``, ``RelWithDebInfo`` và ``MinSizeRel``.
 
-SCons Deviations
-----------------
+Khác biệt so với SCons
+----------------------
 
-Not all code from the SCons system can be perfectly represented in CMake, here
-are the notable differences:
+Không phải mọi mã từ hệ thống SCons đều có thể được biểu diễn hoàn hảo trong CMake. Sau đây là những khác biệt đáng chú ý:
 
 - ``debug_symbols``
 
-    Is no longer an explicit option, and is enabled when using CMake build
-    configurations; ``Debug``, ``RelWithDebInfo``.
+    Không còn là một tùy chọn tường minh và được bật khi sử dụng các cấu hình build CMake; ``Debug``, ``RelWithDebInfo``.
 
 - ``dev_build``
 
-    Does not define ``NDEBUG`` when disabled, ``NDEBUG`` is set when using
-    CMake build configurations; ``Release``, ``MinSizeRel``.
+    Không định nghĩa ``NDEBUG`` khi bị tắt; ``NDEBUG`` được thiết lập khi sử dụng các cấu hình build CMake; ``Release``, ``MinSizeRel``.
 
 - ``arch``
 
-    CMake sets the architecture via the toolchain files, macOS universal is
-    controlled via the ``CMAKE_OSX_ARCHITECTURES`` property which is copied to
-    targets when they are defined.
+    CMake thiết lập architecture thông qua các toolchain file; macOS universal được điều khiển thông qua property ``CMAKE_OSX_ARCHITECTURES``, property này được sao chép sang các target khi chúng được định nghĩa.
 
 - ``debug_crt``
 
-    CMake controls linking to Windows runtime libraries by copying the value of
-    ``CMAKE_MSVC_RUNTIME_LIBRARIES`` to targets as they are defined. godot-cpp
-    will set this variable if it isn't already set. So, include it before other
-    dependencies to have the value propagate across the projects.
+    CMake kiểm soát việc liên kết với các thư viện runtime của Windows bằng cách sao chép giá trị của ``CMAKE_MSVC_RUNTIME_LIBRARIES`` sang các target khi chúng được định nghĩa. godot-cpp sẽ thiết lập biến này nếu biến chưa được thiết lập. Vì vậy, hãy include nó trước các dependency khác để giá trị được truyền qua các project.
 
-Basic Walk-Through
-------------------
+Hướng dẫn cơ bản
+----------------
 
-Clone the git repository
-~~~~~~~~~~~~~~~~~~~~~~~~
+Clone git repository
+~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: shell
 
@@ -114,56 +91,50 @@ Clone the git repository
     Cloning into 'godot-cpp'...
     ...
 
-Configure the build
-~~~~~~~~~~~~~~~~~~~
+Cấu hình build
+~~~~~~~~~~~~~~
 
 .. code-block:: shell
 
     cmake -S godot-cpp -B cmake-build -G Ninja
 
-- ``-S`` Specifies the source directory as ``godot-cpp``
-- ``-B`` Specifies the build directory as ``cmake-build``
-- ``-G`` Specifies the Generator as ``Ninja``
+- ``-S`` Chỉ định source directory là ``godot-cpp``
+- ``-B`` Chỉ định build directory là ``cmake-build``
+- ``-G`` Chỉ định Generator là ``Ninja``
 
-The source directory in this example is the source root for the freshly cloned
-godot-cpp. CMake will also interpret the first path in the command as the
-source path, or if an existing build path is specified it will deduce the
-source path from the build cache.
+Source directory trong ví dụ này là source root của godot-cpp vừa được clone. CMake cũng sẽ diễn giải path đầu tiên trong lệnh là source path hoặc, nếu một build path hiện có được chỉ định, sẽ suy ra source path từ build cache.
 
-The following three commands are equivalent:
+Ba lệnh sau đây tương đương:
 
 .. code-block:: shell
 
-    # Current working directory is the godot-cpp source root.
+    # Thư mục làm việc hiện tại là source root của godot-cpp.
     cmake . -B build-dir
 
-    # Current working directory is an empty godot-cpp/build-dir.
+    # Thư mục làm việc hiện tại là một godot-cpp/build-dir trống.
     cmake ../
 
-    # Current working directory is an existing build path.
+    # Thư mục làm việc hiện tại là một build path hiện có.
     cmake .
 
-The build directory is specified so that generated files do not clutter the
-source tree with build artifacts.
+Build directory được chỉ định để các file được tạo ra không làm lộn xộn source tree bằng các build artifact.
 
-CMake doesn't build the code, it generates the files that a build tool uses, in
-this case the ``Ninja`` generator creates Ninja_ build files.
+CMake không build code mà tạo ra các file được build tool sử dụng; trong trường hợp này, generator ``Ninja`` tạo các file build Ninja_.
 
-To see the list of generators run ``cmake --help``.
+Để xem danh sách generator, hãy chạy ``cmake --help``.
 
 .. _Ninja: https://ninja-build.org/
 
-Build Options
-~~~~~~~~~~~~~
+Tùy chọn build
+~~~~~~~~~~~~~~
 
-To list the available options use the ``-L[AH]`` command flags. ``A`` is for
-advanced, and ``H`` is for help strings:
+Để liệt kê các tùy chọn hiện có, hãy sử dụng các command flag ``-L[AH]``. ``A`` dành cho các tùy chọn nâng cao, còn ``H`` dành cho các chuỗi trợ giúp:
 
 .. code-block:: shell
 
     cmake -S godot-cpp -LH
 
-Options are specified on the command line when configuring, for example:
+Các tùy chọn được chỉ định trên command line khi cấu hình, ví dụ:
 
 .. code-block:: shell
 
@@ -171,13 +142,13 @@ Options are specified on the command line when configuring, for example:
         -DGODOTCPP_PRECISION:STRING=double \
         -DCMAKE_BUILD_TYPE:STRING=Debug
 
-See setting-build-variables_ and build-configurations_ for more information.
+Xem setting-build-variables_ và build-configurations_ để biết thêm thông tin.
 
 .. _setting-build-variables: https://cmake.org/cmake/help/latest/guide/user-interaction/index.html#setting-build-variables
 .. _build-configurations: https://cmake.org/cmake/help/latest/manual/cmake-buildsystem.7.html#build-configurations
 
-A non-exhaustive list of options:
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Danh sách tùy chọn không đầy đủ:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: text
 
@@ -199,49 +170,40 @@ A non-exhaustive list of options:
     // Enable the extra accounting required to support hot reload. (ON|OFF)
     GODOTCPP_USE_HOT_RELOAD:BOOL=
 
-Compiling
+Biên dịch
 ~~~~~~~~~
 
-Tell CMake to invoke the build system it generated in the specified directory.
-The default target is ``template_debug`` and the default build configuration is
-Debug.
+Yêu cầu CMake gọi hệ thống build mà nó đã tạo trong directory được chỉ định. Target mặc định là ``template_debug`` và cấu hình build mặc định là Debug.
 
 .. code-block:: shell
 
     cmake --build cmake-build
 
-Examples
---------
+Ví dụ
+-----
 
-These examples, while intended for godot-cpp developers, package maintainers,
-and CI/CD may help you configure your own extension project.
+Mặc dù dành cho các developer godot-cpp, người duy trì package và CI/CD, những ví dụ này có thể giúp bạn cấu hình project extension của riêng mình.
 
-Practical examples for how to consume the godot-cpp library as part of an
-extension project are listed in the `Introduction`_.
+Các ví dụ thực tế về cách dùng thư viện godot-cpp như một phần của project extension được liệt kê trong `Introduction`_.
 
-Enabling Integration Testing
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Bật kiểm thử integration
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-The testing target ``godot-cpp-test`` is guarded by ``GODOTCPP_ENABLE_TESTING``
-which is off by default.
+Testing target ``godot-cpp-test`` được bảo vệ bởi ``GODOTCPP_ENABLE_TESTING``, tùy chọn này mặc định được tắt.
 
-To configure and build the godot-cpp project to enable the integration
-testing targets the command will look something like:
+Để cấu hình và build project godot-cpp nhằm bật các testing target integration, lệnh sẽ có dạng như sau:
 
 .. code-block:: shell
 
     cmake -S godot-cpp -B cmake-build -DGODOTCPP_ENABLE_TESTING=YES
     cmake --build cmake-build --target godot-cpp-test
 
-Windows and MSVC - Release
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Windows và MSVC - Release
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-So long as CMake is installed from the `CMake Downloads`_ page and in the PATH,
-and Microsoft Visual Studio is installed with C++ support, CMake will detect
-the MSVC compiler.
+Miễn là CMake được cài đặt từ trang `CMake Downloads <CMake Downloads_>`_ và nằm trong PATH, đồng thời Microsoft Visual Studio được cài đặt với hỗ trợ C++, CMake sẽ phát hiện compiler MSVC.
 
-Note that Visual Studio is a Multi-Config Generator so the build configuration
-needs to be specified at build time, for example, ``--config Release``.
+Lưu ý rằng Visual Studio là một Multi-Config Generator, vì vậy cấu hình build cần được chỉ định tại thời điểm build, ví dụ: ``--config Release``.
 
 .. _CMake downloads: https://cmake.org/download/
 
@@ -253,12 +215,11 @@ needs to be specified at build time, for example, ``--config Release``.
 MSys2/clang64, "Ninja" - Debug
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Assumes the ``ming-w64-clang-x86_64``-toolchain is installed.
+Giả định rằng ``ming-w64-clang-x86_64``-toolchain đã được cài đặt.
 
-Note that Ninja is a Single-Config Generator so the build type needs to be
-specified at configuration time.
+Lưu ý rằng Ninja là một Single-Config Generator, vì vậy build type cần được chỉ định tại thời điểm cấu hình.
 
-Using the ``msys2/clang64`` shell:
+Sử dụng shell ``msys2/clang64``:
 
 .. code-block:: shell
 
@@ -269,12 +230,11 @@ Using the ``msys2/clang64`` shell:
 MSys2/clang64, "Ninja Multi-Config" - dev_build, Debug Symbols
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Assumes the ``ming-w64-clang-x86_64``-toolchain is installed.
+Giả định rằng ``ming-w64-clang-x86_64``-toolchain đã được cài đặt.
 
-This time we are choosing the 'Ninja Multi-Config' generator, so the build
-type is specified at build time.
+Lần này, chúng ta chọn generator 'Ninja Multi-Config', vì vậy build type được chỉ định tại thời điểm build.
 
-Using the ``msys2/clang64`` shell:
+Sử dụng shell ``msys2/clang64``:
 
 .. code-block:: shell
 
@@ -282,17 +242,14 @@ Using the ``msys2/clang64`` shell:
         -DGODOTCPP_ENABLE_TESTING=YES -DGODOTCPP_DEV_BUILD:BOOL=ON
     cmake --build cmake-build -t godot-cpp-test --config Debug
 
-Emscripten for web platform
+Emscripten cho nền tảng web
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This has only been tested on Windows so far. You can use this example workflow:
+Cho đến nay, quy trình này mới chỉ được kiểm thử trên Windows. Bạn có thể sử dụng quy trình mẫu sau:
 
-- Clone and install the latest Emscripten tools to ``c:\emsdk``.
-- Use ``C:\emsdk\emsdk.ps1 activate latest`` to enable the environment from
-  powershell in the current shell.
-- The ``emcmake.bat`` utility adds the emscripten toolchain to the CMake
-  command. It can also be added manually;
-  the location is listed inside the ``emcmake.bat`` file
+- Clone và cài đặt các công cụ Emscripten mới nhất vào ``c:\emsdk``.
+- Sử dụng ``C:\emsdk\emsdk.ps1 activate latest`` để bật môi trường từ powershell trong shell hiện tại.
+- Tiện ích ``emcmake.bat`` thêm emscripten toolchain vào lệnh CMake. Bạn cũng có thể thêm thủ công; vị trí được liệt kê trong tệp ``emcmake.bat``
 
 .. code-block:: powershell
 
@@ -300,40 +257,34 @@ This has only been tested on Windows so far. You can use this example workflow:
     emcmake.bat cmake -S godot-cpp -B cmake-build-web -DCMAKE_BUILD_TYPE=Release
     cmake --build cmake-build-web
 
-Android Cross Compile from Windows
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Cross Compile Android từ Windows
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-There are two separate paths you can choose when configuring for android.
+Có hai hướng riêng biệt mà bạn có thể chọn khi cấu hình cho android.
 
-Use the ``CMAKE_ANDROID_*`` variables specified on the command line or in your
-own toolchain file as listed in the cmake-toolchains_ documentation.
+Sử dụng các biến ``CMAKE_ANDROID_*`` được chỉ định trên command line hoặc trong toolchain file của riêng bạn, như được liệt kê trong tài liệu cmake-toolchains_.
 
 .. _cmake-toolchains: https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html#cross-compiling-for-android-with-the-ndk
 
-Or use the toolchain and scripts provided by the Android SDK and make changes
-using the ``ANDROID_*`` variables listed there. Where ``<version>`` is whatever
-NDK version you have installed (tested with `28.1.13356709`) and ``<platform>``
-is for the Android sdk platform, (tested with ``android-29``).
+Hoặc sử dụng toolchain và các script do Android SDK cung cấp, rồi thực hiện thay đổi bằng các biến ``ANDROID_*`` được liệt kê ở đó. Trong đó, ``<version>`` là phiên bản NDK bạn đã cài đặt (đã kiểm thử với `28.1.13356709`) và ``<platform>`` là phiên bản dành cho Android sdk platform (đã kiểm thử với ``android-29``).
 
 .. warning::
 
-    The Android SDK website_ explicitly states that they do not support using
-    the CMake built-in method, and recommends you stick with their toolchain
-    files.
+    website_ của Android SDK nêu rõ rằng họ không hỗ trợ sử dụng phương thức tích hợp sẵn của CMake và khuyến nghị bạn dùng các toolchain file của họ.
 
     .. _website: https://developer.android.com/ndk/guides/cmake
 
-Using your own toolchain file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Sử dụng toolchain file của riêng bạn
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-As described in the CMake documentation:
+Như được mô tả trong tài liệu CMake:
 
 .. code-block:: shell
 
     cmake -S godot-cpp -B cmake-build --toolchain my_toolchain.cmake
     cmake --build cmake-build -t template_release
 
-Doing the equivalent just using the command line:
+Thực hiện thao tác tương đương chỉ bằng command line:
 
 .. code-block:: shell
 
@@ -344,10 +295,10 @@ Doing the equivalent just using the command line:
         -DCMAKE_ANDROID_NDK=/path/to/android-ndk
     cmake --build cmake-build
 
-Using the Android SDK toolchain file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Sử dụng toolchain file của Android SDK
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This defaults to the minimum supported version and armv7-a:
+Theo mặc định, phiên bản tối thiểu được hỗ trợ và armv7-a sẽ được sử dụng:
 
 .. code-block:: shell
 
@@ -355,7 +306,7 @@ This defaults to the minimum supported version and armv7-a:
         --toolchain $ANDROID_HOME/ndk/<version>/build/cmake/android.toolchain.cmake
     cmake --build cmake-build
 
-Specifying the Android platform and ABI:
+Chỉ định Android platform và ABI:
 
 .. code-block:: shell
 
