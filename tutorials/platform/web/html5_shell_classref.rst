@@ -1,25 +1,21 @@
-:article_outdated: True
+:article_outdated: Đúng
 
 .. _doc_html5_shell_classref:
 
-HTML5 shell class reference
-===========================
+Tài liệu tham khảo về lớp HTML5 shell
+=====================================
 
-Projects exported for the Web expose the :js:class:`Engine` class to the JavaScript environment, that allows
-fine control over the engine's start-up process.
+Các project được export cho Web cung cấp lớp :js:class:`Engine` cho môi trường JavaScript, cho phép kiểm soát chính xác quá trình khởi động của engine.
 
-This API is built in an asynchronous manner and requires basic understanding
-of `Promises <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises>`__.
+API này được xây dựng theo cách bất đồng bộ và yêu cầu hiểu biết cơ bản về `Promises <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises>`__.
 
 Engine
 ------
 
-The ``Engine`` class provides methods for loading and starting exported projects on the Web. For default export
-settings, this is already part of the exported HTML page. To understand practical use of the ``Engine`` class,
-see :ref:`Custom HTML page for Web export <doc_customizing_html5_shell>`.
+Lớp ``Engine`` cung cấp các phương thức để tải và khởi động các project đã export trên Web. Với các thiết lập export mặc định, lớp này đã là một phần của trang HTML được export. Để hiểu cách sử dụng thực tế lớp ``Engine``, hãy xem :ref:`Custom HTML page for Web export <doc_customizing_html5_shell>`.
 
-Static Methods
-~~~~~~~~~~~~~~
+Phương thức static
+~~~~~~~~~~~~~~~~~~
 
 +---------+-----------------------------------------------------------------------------------------------+
 | Promise | :js:attr:`load <Engine.load>` **(** string basePath **)**                                     |
@@ -29,8 +25,8 @@ Static Methods
 | boolean | :js:attr:`isWebGLAvailable <Engine.isWebGLAvailable>` **(** *[ number majorVersion=1 ]* **)** |
 +---------+-----------------------------------------------------------------------------------------------+
 
-Instance Methods
-~~~~~~~~~~~~~~~~
+Phương thức instance
+~~~~~~~~~~~~~~~~~~~~
 
 +---------+---------------------------------------------------------------------------------------------------------------+
 | Promise | :js:attr:`init <Engine.prototype.init>` **(** *[ string basePath ]* **)**                                     |
@@ -176,14 +172,13 @@ Instance Methods
       This is akin the user pressing the close button in the window manager, and will
       have no effect if the engine has crashed, or is stuck in a loop.
 
-Engine configuration
---------------------
+Cấu hình Engine
+---------------
 
-An object used to configure the Engine instance based on godot export options, and to override those in custom HTML
-templates if needed.
+Một object dùng để cấu hình instance Engine dựa trên các tùy chọn export của godot và ghi đè các tùy chọn đó trong các template HTML tùy chỉnh nếu cần.
 
-Properties
-~~~~~~~~~~
+Các thuộc tính
+~~~~~~~~~~~~~~
 
 +-------------------+-------------------------------+
 | type              | name                          |
