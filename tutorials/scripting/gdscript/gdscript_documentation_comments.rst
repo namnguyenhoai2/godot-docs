@@ -1,20 +1,20 @@
 .. _doc_gdscript_documentation_comments:
 
-Các chú thích tài liệu GDScript
-===============================
+Chú thích tài liệu GDScript
+===========================
 
-Trong GDScript, bạn có thể sử dụng chú thích để ghi lại mã và thêm mô tả cho các thành viên của một script. Có hai điểm khác biệt giữa chú thích thông thường và chú thích tài liệu. Thứ nhất, chú thích tài liệu phải bắt đầu bằng hai ký hiệu thăng ``##``. Thứ hai, chú thích đó phải đứng ngay trước một thành viên của script hoặc, đối với phần mô tả script, phải được đặt ở đầu script. Nếu một biến được export có tài liệu, phần mô tả của biến sẽ được dùng làm tooltip trong trình chỉnh sửa. Trình chỉnh sửa có thể tạo tài liệu này dưới dạng các tệp XML.
+Trong GDScript, bạn có thể sử dụng chú thích để ghi lại tài liệu cho mã của mình và thêm mô tả cho các thành phần của script. Có hai điểm khác biệt giữa chú thích thông thường và chú thích tài liệu. Thứ nhất, chú thích tài liệu phải bắt đầu bằng ký hiệu dấu thăng kép ``##``. Thứ hai, chú thích này phải đứng ngay trước một thành phần của script hoặc, đối với mô tả script, phải được đặt ở đầu script. Nếu một biến được export có tài liệu, mô tả của biến sẽ được dùng làm tooltip trong trình biên tập. Trình biên tập có thể tạo tài liệu này dưới dạng các tệp XML.
 
-Ghi tài liệu cho một script
----------------------------
+Ghi tài liệu cho script
+-----------------------
 
-Các chú thích ghi tài liệu cho một script phải xuất hiện trước mọi tài liệu của thành viên. Định dạng được đề xuất cho tài liệu của script có thể được chia thành ba phần.
+Các chú thích ghi tài liệu cho một script phải xuất hiện trước mọi tài liệu của thành phần. Định dạng được đề xuất cho tài liệu script có thể được chia thành ba phần.
 
 - Mô tả ngắn gọn về script.
 - Mô tả chi tiết.
 - Tutorial và các đánh dấu deprecated/experimental.
 
-Để phân tách các phần này, chú thích tài liệu sử dụng các tag đặc biệt. Tag phải nằm ở đầu dòng (bỏ qua khoảng trắng đứng trước) và phải có định dạng ``@``, theo sau là từ khóa.
+Để phân tách các phần này, chú thích tài liệu sử dụng các tag đặc biệt. Tag phải ở đầu một dòng (bỏ qua khoảng trắng đứng trước) và phải có định dạng ``@``, theo sau là từ khóa.
 
 Tag
 ~~~
@@ -38,14 +38,14 @@ Tag
 
 Ví dụ:
 
-::
+.. code-block::
 
     class_name MyClass
     extends Node2D
-    ## A brief description of the class's role and functionality.
+    ## Mô tả ngắn gọn về vai trò và chức năng của class.
     ##
-    ## The description of the script, what it can do,
-    ## and any further detail.
+    ## Mô tả về script, những gì script có thể làm,
+    ## và mọi chi tiết bổ sung.
     ##
     ## @tutorial:             https://example.com/tutorial_1
     ## @tutorial(Tutorial 2): https://example.com/tutorial_2
@@ -53,26 +53,26 @@ Ví dụ:
 
 .. warning::
 
-    Nếu có khoảng trắng giữa tên tag và dấu hai chấm, chẳng hạn ``@tutorial  :``, tag đó sẽ không được xử lý như một tag hợp lệ và sẽ bị bỏ qua.
+    Nếu có khoảng trắng giữa tên tag và dấu hai chấm, chẳng hạn như ``@tutorial  :``, tag đó sẽ không được xem là tag hợp lệ và sẽ bị bỏ qua.
 
 .. note::
 
-    Khi phần mô tả trải dài trên nhiều dòng, khoảng trắng ở đầu và cuối sẽ bị loại bỏ rồi nối lại bằng một khoảng trắng đơn. Để giữ ngắt dòng, hãy sử dụng ``[br]``. Xem thêm `BBCode và tham chiếu class <BBCode and class reference_>`_ bên dưới.
+    Khi mô tả trải dài trên nhiều dòng, khoảng trắng ở đầu và cuối sẽ bị loại bỏ, rồi các dòng được nối lại bằng một khoảng trắng. Để giữ ngắt dòng, hãy sử dụng ``[br]``. Xem thêm `BBCode và tài liệu tham chiếu class <BBCode and class reference_>`_ bên dưới.
 
-Ghi tài liệu cho các thành viên của script
+Ghi tài liệu cho các thành phần của script
 ------------------------------------------
 
-Các thành viên có thể được ghi tài liệu:
+Các thành phần áp dụng cho việc ghi tài liệu:
 
 - Signal
 - Enum
 - Giá trị enum
-- Hằng số
-- Biến
-- Hàm
-- Class bên trong
+- Constant
+- Variable
+- Function
+- Inner class
 
-Tài liệu của một thành viên script phải đứng ngay trước thành viên đó hoặc các annotation của thành viên nếu có. Phần mô tả có thể gồm nhiều dòng, nhưng mỗi dòng phải bắt đầu bằng ký hiệu hai dấu thăng ``##`` để được xem là một phần của tài liệu.
+Tài liệu của một thành phần script phải đứng ngay trước thành phần đó hoặc trước các annotation của thành phần nếu có. Mô tả có thể trải dài trên nhiều dòng, nhưng mọi dòng phải bắt đầu bằng ký hiệu dấu thăng kép ``##`` để được xem là một phần của tài liệu.
 
 Tag
 ~~~
@@ -89,138 +89,138 @@ Tag
 
 Ví dụ:
 
-::
+.. code-block::
 
-    ## The description of the variable.
-    ## @deprecated: Use [member other_var] instead.
+    ## Mô tả về biến.
+    ## @deprecated: Thay vào đó, hãy sử dụng [member other_var].
     var my_var
 
-Ngoài ra, bạn có thể sử dụng chú thích tài liệu nội dòng:
+Ngoài ra, bạn có thể sử dụng chú thích tài liệu nội tuyến:
 
-::
+.. code-block::
 
-    signal my_signal ## My signal.
+    signal my_signal ## Signal của tôi.
 
-    enum MyEnum { ## My enum.
-        VALUE_A = 0, ## Value A.
-        VALUE_B = 1, ## Value B.
+    enum MyEnum { ## Enum của tôi.
+        VALUE_A = 0, ## Giá trị A.
+        VALUE_B = 1, ## Giá trị B.
     }
 
-    const MY_CONST = 1 ## My constant.
+    const MY_CONST = 1 ## Constant của tôi.
 
-    var my_var ## My variable.
+    var my_var ## Variable của tôi.
 
 
-    func my_func(): ## My func.
+    func my_func(): ## Func của tôi.
         pass
 
 
-    class MyClass: ## My class.
+    class MyClass: ## Class của tôi.
         pass
 
-Tài liệu của script sẽ được cập nhật trong cửa sổ trợ giúp của trình chỉnh sửa mỗi khi script được cập nhật. Nếu tên của bất kỳ biến thành viên hoặc hàm nào bắt đầu bằng dấu gạch dưới, tên đó sẽ được xem là private. Thành viên đó sẽ không xuất hiện trong tài liệu và sẽ bị bỏ qua trong cửa sổ trợ giúp.
+Tài liệu script sẽ được cập nhật trong cửa sổ trợ giúp của trình biên tập mỗi khi script được cập nhật. Nếu tên của bất kỳ biến thành phần hoặc function nào bắt đầu bằng dấu gạch dưới, tên đó sẽ được xem là private. Thành phần này sẽ không xuất hiện trong tài liệu và sẽ bị bỏ qua trong cửa sổ trợ giúp.
 
 Ví dụ script hoàn chỉnh
 -----------------------
 
-::
+.. code-block::
 
     class_name MyClass
     extends Node2D
-    ## A brief description of the class's role and functionality.
+    ## Mô tả ngắn gọn về vai trò và chức năng của class.
     ##
-    ## The description of the script, what it can do,
-    ## and any further detail.
+    ## Mô tả về script, những gì script có thể làm,
+    ## và mọi chi tiết bổ sung.
     ##
     ## @tutorial:             https://example.com/tutorial_1
     ## @tutorial(Tutorial 2): https://example.com/tutorial_2
     ## @experimental
 
-    ## The description of a signal.
+    ## Mô tả về một signal.
     signal my_signal
 
-    ## This is a description of the below enum.
+    ## Đây là mô tả về enum bên dưới.
     enum Direction {
-        ## Direction up.
+        ## Hướng lên.
         UP = 0,
-        ## Direction down.
+        ## Hướng xuống.
         DOWN = 1,
-        ## Direction left.
+        ## Hướng trái.
         LEFT = 2,
-        ## Direction right.
+        ## Hướng phải.
         RIGHT = 3,
     }
 
-    ## The description of a constant.
+    ## Mô tả về một constant.
     const GRAVITY = 9.8
 
-    ## The description of the variable v1.
+    ## Mô tả về biến v1.
     var v1
 
-    ## This is a multiline description of the variable v2.[br]
-    ## The type information below will be extracted for the documentation.
+    ## Đây là mô tả nhiều dòng về biến v2.[br]
+    ## Thông tin kiểu bên dưới sẽ được trích xuất cho tài liệu.
     var v2: int
 
-    ## If the member has any annotation, the annotation should
-    ## immediately precede it.
+    ## Nếu thành viên có annotation, annotation đó phải
+    ## nằm ngay trước nó.
     @export
     var v3 := some_func()
 
 
-    ## As the following function is documented, even though its name starts with
-    ## an underscore, it will appear in the help window.
+    ## Vì hàm sau đây được ghi tài liệu, dù tên hàm bắt đầu bằng
+    ## dấu gạch dưới, hàm vẫn sẽ xuất hiện trong cửa sổ trợ giúp.
     func _fn(p1: int, p2: String) -> int:
         return 0
 
 
-    # The below function isn't documented and its name starts with an underscore
-    # so it will treated as private and will not be shown in the help window.
+    # Hàm bên dưới không được ghi tài liệu và tên hàm bắt đầu bằng dấu gạch dưới
+    # nên được xem là private và sẽ không hiển thị trong cửa sổ trợ giúp.
     func _internal() -> void:
         pass
 
 
-    ## Documenting an inner class.
+    ## Ghi tài liệu cho một inner class.
     ##
-    ## The same rules apply here. The documentation must
-    ## immediately precede the class definition.
+    ## Các quy tắc tương tự cũng áp dụng ở đây. Tài liệu phải
+    ## nằm ngay trước phần định nghĩa class.
     ##
     ## @tutorial: https://example.com/tutorial
     ## @experimental
     class Inner:
 
-        ## Inner class variable v4.
+        ## Biến của inner class v4.
         var v4
 
 
-        ## Inner class function fn.
+        ## Hàm của inner class fn.
         func fn(): pass
 
-Các tag ``@deprecated`` và ``@experimental``
---------------------------------------------
+``@deprecated`` và ``@experimental`` tags
+-----------------------------------------
 
-Bạn có thể đánh dấu một class hoặc bất kỳ thành viên nào của class là deprecated hoặc experimental. Thao tác này sẽ thêm chỉ báo tương ứng trong trình xem tài liệu tích hợp sẵn. Bạn cũng có thể cung cấp một thông báo ngắn giải thích lý do API đó không được khuyến nghị. Điều này đặc biệt hữu ích cho những người tạo plugin và thư viện.
+Bạn có thể đánh dấu một class hoặc bất kỳ thành viên nào của nó là deprecated hoặc experimental. Thao tác này sẽ thêm chỉ báo tương ứng trong trình xem tài liệu tích hợp sẵn. Bạn cũng có thể cung cấp một thông báo ngắn giải thích lý do API không được khuyến nghị. Điều này đặc biệt hữu ích cho những người tạo plugin và library.
 
 .. image:: img/deprecated_and_experimental_tags.webp
 
-- **Không được khuyến nghị** đánh dấu một API không được khuyến nghị và có thể bị loại bỏ hoặc thay đổi không tương thích trong một bản phát hành major trong tương lai. Thông thường, API này vẫn được giữ lại để đảm bảo khả năng tương thích ngược.
-- **Experimental** đánh dấu một API mới, chưa ổn định và có thể bị thay đổi hoặc loại bỏ trong nhánh major hiện tại. Không khuyến nghị sử dụng API này trong mã production.
+- **Deprecated** đánh dấu một API không được khuyến nghị và có thể bị xóa hoặc thay đổi không tương thích trong một bản phát hành major trong tương lai. Thông thường, API này vẫn được giữ lại để đảm bảo khả năng tương thích ngược.
+- **Experimental** đánh dấu một API mới, chưa ổn định và có thể bị thay đổi hoặc xóa trong nhánh major hiện tại. Không khuyến nghị sử dụng API này trong code production.
 
 .. note::
 
-    Mặc dù về mặt kỹ thuật bạn có thể sử dụng cả hai tag ``@deprecated`` và ``@experimental`` trên cùng một class/thành viên, nhưng không nên làm vậy vì trái với các quy ước phổ biến.
+    Mặc dù về mặt kỹ thuật bạn có thể sử dụng cả thẻ ``@deprecated`` và ``@experimental`` trên cùng một class/member, nhưng không khuyến nghị làm vậy vì trái với các quy ước phổ biến.
 
 .. _doc_gdscript_documentation_comments_bbcode_and_class_reference:
 
 .. _`BBCode and class reference`:
 
-BBCode và tham chiếu class
---------------------------
+BBCode và class reference
+-------------------------
 
-Tham chiếu class của Godot hỗ trợ các tag giống BBCode. Chúng bổ sung định dạng đẹp cho văn bản và cũng có thể được sử dụng trong tài liệu. Xem thêm :ref:`BBCode tham chiếu class <doc_class_reference_bbcode>`. Lưu ý rằng cách này hơi khác với ``RichTextLabel`` :ref:`BBCode <doc_bbcode_in_richtextlabel>`.
+Class reference của Godot hỗ trợ các thẻ giống BBCode. Chúng thêm định dạng đẹp mắt cho văn bản, cũng có thể được sử dụng trong tài liệu. Xem thêm :ref:`class reference bbcode <doc_class_reference_bbcode>`. Lưu ý rằng cách này hơi khác so với ``RichTextLabel`` :ref:`BBCode <doc_bbcode_in_richtextlabel>`.
 
-Khi liên kết đến một thành viên của class khác, bạn cần chỉ định tên class. Đối với liên kết đến cùng một class, tên class là tùy chọn và có thể được bỏ qua.
+Khi liên kết đến một member của class khác, bạn cần chỉ định tên class. Với các liên kết đến cùng class, tên class là tùy chọn và có thể được bỏ qua.
 
-Sau đây là danh sách các tag khả dụng:
+Sau đây là danh sách các thẻ hiện có:
 
 +--------------------------------+----------------------------------------------+--------------------------------------------------------------+
 | Tag and Description            | Example                                      | Result                                                       |
@@ -310,20 +310,20 @@ Sau đây là danh sách các tag khả dụng:
 .. note::
 
     1. Hiện tại chỉ :ref:`class_@GDScript` có annotation.
-    2. ``[kbd]`` vô hiệu hóa BBCode cho đến khi parser gặp ``[/kbd]``.
-    3. ``[code]`` vô hiệu hóa BBCode cho đến khi parser gặp ``[/code]``.
-    4. ``[codeblock]`` vô hiệu hóa BBCode cho đến khi parser gặp ``[/codeblock]``.
+    2. ``[kbd]`` tắt BBCode cho đến khi parser gặp ``[/kbd]``.
+    3. ``[code]`` tắt BBCode cho đến khi parser gặp ``[/code]``.
+    4. ``[codeblock]`` tắt BBCode cho đến khi parser gặp ``[/codeblock]``.
 
 .. warning::
 
-    Sử dụng ``[codeblock]`` cho các khối mã được định dạng sẵn. Bên trong ``[codeblock]``, luôn sử dụng **bốn khoảng trắng** để thụt lề (parser sẽ xóa tab).
+    Sử dụng ``[codeblock]`` cho các khối code được định dạng sẵn. Bên trong ``[codeblock]``, luôn sử dụng **four spaces** để thụt lề (parser sẽ xóa các tab).
 
-::
+.. code-block::
 
-    ## Do something for this plugin. Before using the method
-    ## you first have to [method initialize] [MyPlugin].[br]
-    ## [color=yellow]Warning:[/color] Always [method clean] after use.[br]
-    ## Usage:
+    ## Thực hiện việc gì đó cho plugin này. Trước khi sử dụng method
+    ## trước tiên bạn phải [method initialize] [MyPlugin].[br]
+    ## [color=yellow]Cảnh báo:[/color] Luôn gọi [method clean] sau khi sử dụng.[br]
+    ## Cách sử dụng:
     ## [codeblock]
     ## func _ready():
     ##     the_plugin.initialize()
@@ -335,6 +335,6 @@ Sau đây là danh sách các tag khả dụng:
 
 Theo mặc định, ``[codeblock]`` làm nổi bật cú pháp GDScript. Bạn có thể thay đổi điều này bằng thuộc tính ``lang``. Các tùy chọn hiện được hỗ trợ là:
 
-- ``[codeblock lang=text]`` vô hiệu hóa tính năng làm nổi bật cú pháp;
+- ``[codeblock lang=text]`` tắt tính năng làm nổi bật cú pháp;
 - ``[codeblock lang=gdscript]`` làm nổi bật cú pháp GDScript;
-- ``[codeblock lang=csharp]`` làm nổi bật cú pháp C# (chỉ trong phiên bản .NET).
+- ``[codeblock lang=csharp]`` làm nổi bật cú pháp C# (chỉ có trong phiên bản .NET).

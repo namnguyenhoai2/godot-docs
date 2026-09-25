@@ -1,30 +1,30 @@
 .. _doc_gdscript_styleguide:
 
-Hướng dẫn phong cách GDScript
-=============================
+Hướng dẫn về phong cách GDScript
+================================
 
-Hướng dẫn phong cách này liệt kê các quy ước để viết GDScript thanh lịch. Mục tiêu là khuyến khích viết mã sạch, dễ đọc và thúc đẩy tính nhất quán giữa các dự án, cuộc thảo luận và hướng dẫn. Hy vọng rằng hướng dẫn này cũng hỗ trợ phát triển các công cụ tự động định dạng.
+Hướng dẫn về phong cách này liệt kê các quy ước để viết GDScript thanh lịch. Mục tiêu là khuyến khích viết mã sạch, dễ đọc và thúc đẩy tính nhất quán giữa các dự án, cuộc thảo luận và hướng dẫn. Hy vọng rằng tài liệu này cũng sẽ hỗ trợ phát triển các công cụ tự động định dạng.
 
-Vì GDScript gần giống Python, hướng dẫn này được lấy cảm hứng từ `PEP 8 <https://www.python.org/dev/peps/pep-0008/>`__, hướng dẫn phong cách lập trình của Python.
+Vì GDScript khá gần với Python, hướng dẫn này lấy cảm hứng từ `PEP 8 <https://www.python.org/dev/peps/pep-0008/>`__, hướng dẫn về phong cách lập trình của Python.
 
-Hướng dẫn phong cách không phải là những bộ quy tắc cứng nhắc. Đôi khi bạn không thể áp dụng một số nguyên tắc dưới đây. Khi đó, hãy sử dụng phán đoán tốt nhất của mình và hỏi các nhà phát triển khác để có thêm góc nhìn.
+Hướng dẫn về phong cách không nhằm trở thành những bộ quy tắc cứng nhắc. Đôi khi bạn không thể áp dụng một số hướng dẫn dưới đây. Khi đó, hãy tự 판단 bằng phán đoán tốt nhất của mình và hỏi các nhà phát triển khác để có thêm góc nhìn.
 
-Nhìn chung, việc giữ mã nhất quán trong các dự án và trong nhóm của bạn quan trọng hơn việc tuân thủ hoàn toàn hướng dẫn này.
+Nhìn chung, việc giữ cho mã nhất quán trong các dự án và trong nhóm của bạn quan trọng hơn việc tuân thủ tuyệt đối hướng dẫn này.
 
 .. note::
 
-    Trình chỉnh sửa script tích hợp của Godot mặc định đã sử dụng nhiều quy ước trong số này. Hãy để nó hỗ trợ bạn.
+    Trình soạn thảo script tích hợp sẵn của Godot mặc định đã sử dụng nhiều quy ước trong số này. Hãy để trình soạn thảo hỗ trợ bạn.
 
-Dưới đây là một ví dụ lớp hoàn chỉnh dựa trên các nguyên tắc này:
+Dưới đây là một ví dụ lớp hoàn chỉnh dựa trên các hướng dẫn này:
 
-::
+.. code-block::
 
     class_name StateMachine
     extends Node
-    ## Hierarchical State machine for the player.
+    ## Máy trạng thái phân cấp cho người chơi.
     ##
-    ## Initializes states and delegates engine callbacks ([method Node._physics_process],
-    ## [method Node._unhandled_input]) to the state.
+    ## Khởi tạo các trạng thái và chuyển các callback của engine ([method Node._physics_process],
+    ## [method Node._unhandled_input]) cho trạng thái.
 
     signal state_changed(previous, new)
 
@@ -102,17 +102,17 @@ Dưới đây là một ví dụ lớp hoàn chỉnh dựa trên các nguyên t�
 Mã hóa và ký tự đặc biệt
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Sử dụng ký tự xuống dòng (**LF**) để ngắt dòng, không dùng CRLF hoặc CR. *(mặc định của trình chỉnh sửa)*
-* Sử dụng một ký tự xuống dòng ở cuối mỗi tệp. *(mặc định của trình chỉnh sửa)*
-* Sử dụng mã hóa **UTF-8** mà không có `byte order mark <https://en.wikipedia.org/wiki/Byte_order_mark>`_. *(mặc định của trình chỉnh sửa)*
-* Sử dụng **Tabs** thay vì dấu cách để thụt lề. *(mặc định của trình chỉnh sửa)*
+* Sử dụng các ký tự xuống dòng (**LF**) để ngắt dòng, không dùng CRLF hoặc CR. *(mặc định của trình soạn thảo)*
+* Sử dụng một ký tự xuống dòng ở cuối mỗi tệp. *(mặc định của trình soạn thảo)*
+* Sử dụng mã hóa **UTF-8** không có `dấu thứ tự byte <https://en.wikipedia.org/wiki/Byte_order_mark>`_. *(mặc định của trình soạn thảo)*
+* Sử dụng **Tab** thay vì dấu cách để thụt lề. *(mặc định của trình soạn thảo)*
 
 Thụt lề
 ~~~~~~~
 
 Mỗi cấp thụt lề phải lớn hơn một cấp so với khối chứa nó.
 
-**Đúng**:
+**Tốt**:
 
 .. rst-class:: code-example-good
 
@@ -121,7 +121,7 @@ Mỗi cấp thụt lề phải lớn hơn một cấp so với khối chứa nó
     for i in range(10):
         print("hello")
 
-**Sai**:
+**Không tốt**:
 
 .. rst-class:: code-example-bad
 
@@ -135,7 +135,7 @@ Mỗi cấp thụt lề phải lớn hơn một cấp so với khối chứa nó
 
 Sử dụng 2 cấp thụt lề để phân biệt các dòng tiếp nối với các khối mã thông thường.
 
-**Đúng**:
+**Tốt**:
 
 .. rst-class:: code-example-good
 
@@ -145,7 +145,7 @@ Sử dụng 2 cấp thụt lề để phân biệt các dòng tiếp nối với
             sprite.get_scale(), Vector2(2.0, 2.0), 0.3,
             Tween.TRANS_QUAD, Tween.EASE_OUT)
 
-**Sai**:
+**Không tốt**:
 
 .. rst-class:: code-example-bad
 
@@ -155,9 +155,9 @@ Sử dụng 2 cấp thụt lề để phân biệt các dòng tiếp nối với
         sprite.get_scale(), Vector2(2.0, 2.0), 0.3,
         Tween.TRANS_QUAD, Tween.EASE_OUT)
 
-Ngoại lệ của quy tắc này là các mảng, dictionary và enum. Sử dụng một cấp thụt lề để phân biệt các dòng tiếp nối:
+Các ngoại lệ của quy tắc này là array, dictionary và enum. Sử dụng một cấp thụt lề để phân biệt các dòng tiếp nối:
 
-**Đúng**:
+**Tốt**:
 
 .. rst-class:: code-example-good
 
@@ -182,7 +182,7 @@ Ngoại lệ của quy tắc này là các mảng, dictionary và enum. Sử d�
         TELEPORT,
     }
 
-**Sai**:
+**Không tốt**:
 
 .. rst-class:: code-example-bad
 
@@ -207,12 +207,12 @@ Ngoại lệ của quy tắc này là các mảng, dictionary và enum. Sử d�
             TELEPORT,
     }
 
-Dấu phẩy ở cuối
-~~~~~~~~~~~~~~~
+Dấu phẩy cuối
+~~~~~~~~~~~~~
 
-Sử dụng dấu phẩy ở cuối dòng cuối cùng trong các mảng, dictionary và enum. Điều này giúp việc tái cấu trúc dễ dàng hơn và tạo ra các diff tốt hơn trong hệ thống kiểm soát phiên bản, vì không cần sửa dòng cuối khi thêm phần tử mới.
+Sử dụng dấu phẩy cuối ở dòng cuối cùng trong array, dictionary và enum. Điều này giúp việc tái cấu trúc dễ dàng hơn và tạo ra các diff tốt hơn trong hệ thống quản lý phiên bản, vì không cần sửa dòng cuối khi thêm phần tử mới.
 
-**Đúng**:
+**Tốt**:
 
 .. rst-class:: code-example-good
 
@@ -224,7 +224,7 @@ Sử dụng dấu phẩy ở cuối dòng cuối cùng trong các mảng, dictio
         3,
     ]
 
-**Sai**:
+**Không tốt**:
 
 .. rst-class:: code-example-bad
 
@@ -236,9 +236,9 @@ Sử dụng dấu phẩy ở cuối dòng cuối cùng trong các mảng, dictio
         3
     ]
 
-Dấu phẩy ở cuối là không cần thiết trong các danh sách một dòng, vì vậy không thêm chúng trong trường hợp này.
+Dấu phẩy cuối không cần thiết trong các danh sách một dòng, vì vậy không thêm chúng trong trường hợp này.
 
-**Đúng**:
+**Tốt**:
 
 .. rst-class:: code-example-good
 
@@ -246,7 +246,7 @@ Dấu phẩy ở cuối là không cần thiết trong các danh sách một dò
 
     var array = [1, 2, 3]
 
-**Sai**:
+**Không tốt**:
 
 .. rst-class:: code-example-bad
 
@@ -257,7 +257,7 @@ Dấu phẩy ở cuối là không cần thiết trong các danh sách một dò
 Dòng trống
 ~~~~~~~~~~
 
-Bao quanh các định nghĩa hàm và lớp bằng hai dòng trống:
+Bao quanh các hàm và định nghĩa lớp bằng hai dòng trống:
 
 ::
 
@@ -276,21 +276,21 @@ Sử dụng một dòng trống bên trong hàm để phân tách các phần lo
 
 .. note::
 
-    Chúng tôi sử dụng một dòng giữa các lớp và định nghĩa hàm trong tài liệu tham chiếu lớp cũng như trong các đoạn mã ngắn của tài liệu này.
+    Trong tài liệu tham chiếu lớp và các đoạn mã ngắn trong tài liệu này, chúng tôi sử dụng một dòng trống giữa các lớp và định nghĩa hàm.
 
 Độ dài dòng
 ~~~~~~~~~~~
 
 Giữ mỗi dòng mã dưới 100 ký tự.
 
-Nếu có thể, hãy cố gắng giữ các dòng dưới 80 ký tự. Điều này giúp đọc mã trên màn hình nhỏ và khi mở hai script cạnh nhau trong trình soạn thảo văn bản bên ngoài. Ví dụ, khi xem một bản sửa đổi khác biệt.
+Nếu có thể, hãy cố gắng giữ các dòng dưới 80 ký tự. Điều này giúp đọc mã trên màn hình nhỏ và khi mở hai script cạnh nhau trong trình soạn thảo văn bản bên ngoài. Ví dụ, khi xem một bản sửa đổi dạng diff.
 
 Mỗi dòng một câu lệnh
 ~~~~~~~~~~~~~~~~~~~~~
 
-Tránh kết hợp nhiều câu lệnh trên một dòng, bao gồm cả các câu lệnh điều kiện, để tuân thủ các nguyên tắc phong cách GDScript về khả năng đọc.
+Tránh gộp nhiều câu lệnh trên cùng một dòng, bao gồm cả câu lệnh điều kiện, để tuân thủ hướng dẫn về phong cách GDScript nhằm tăng khả năng đọc.
 
-**Đúng**:
+**Tốt**:
 
 .. rst-class:: code-example-good
 
@@ -302,7 +302,7 @@ Tránh kết hợp nhiều câu lệnh trên một dòng, bao gồm cả các c�
     if flag:
         print("flagged")
 
-**Sai**:
+**Không tốt**:
 
 .. rst-class:: code-example-bad
 
@@ -321,13 +321,13 @@ Ngoại lệ duy nhất của quy tắc này là toán tử ternary:
 Định dạng các câu lệnh nhiều dòng để dễ đọc
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Khi bạn có các ``if`` câu lệnh đặc biệt dài hoặc các biểu thức ternary lồng nhau, việc ngắt chúng thành nhiều dòng sẽ giúp dễ đọc hơn. Vì các dòng tiếp nối vẫn là một phần của cùng biểu thức, nên sử dụng 2 cấp thụt lề thay vì một cấp.
+Khi có các ``if`` câu lệnh đặc biệt dài hoặc các biểu thức ternary lồng nhau, việc ngắt chúng thành nhiều dòng sẽ giúp dễ đọc hơn. Vì các dòng tiếp nối vẫn là một phần của cùng biểu thức, nên sử dụng 2 cấp thụt lề thay vì một cấp.
 
-GDScript cho phép ngắt câu lệnh thành nhiều dòng bằng dấu ngoặc đơn hoặc dấu gạch chéo ngược. Hướng dẫn phong cách này ưu tiên dấu ngoặc đơn vì chúng giúp việc tái cấu trúc dễ dàng hơn. Với dấu gạch chéo ngược, bạn phải đảm bảo dòng cuối cùng không bao giờ chứa dấu gạch chéo ngược ở cuối. Với dấu ngoặc đơn, bạn không cần lo dòng cuối có dấu gạch chéo ngược ở cuối.
+GDScript cho phép ngắt câu lệnh thành nhiều dòng bằng dấu ngoặc đơn hoặc dấu gạch chéo ngược. Hướng dẫn về phong cách này ưu tiên dấu ngoặc đơn vì chúng giúp tái cấu trúc dễ dàng hơn. Khi dùng dấu gạch chéo ngược, bạn phải đảm bảo dòng cuối cùng không bao giờ chứa dấu gạch chéo ngược ở cuối. Với dấu ngoặc đơn, bạn không cần lo dòng cuối có dấu gạch chéo ngược ở cuối.
 
-Khi ngắt một biểu thức điều kiện thành nhiều dòng, các từ khóa ``and``/``or`` phải được đặt ở đầu phần tiếp nối của dòng, không đặt ở cuối dòng trước đó.
+Khi ngắt một biểu thức điều kiện thành nhiều dòng, các từ khóa ``and``/``or`` phải được đặt ở đầu dòng tiếp nối, không đặt ở cuối dòng trước đó.
 
-**Đúng**:
+**Tốt**:
 
 .. rst-class:: code-example-good
 
@@ -348,7 +348,7 @@ Khi ngắt một biểu thức điều kiện thành nhiều dòng, các từ kh
     ):
         pass
 
-**Sai**:
+**Không tốt**:
 
 .. rst-class:: code-example-bad
 
@@ -366,7 +366,7 @@ Tránh dùng dấu ngoặc đơn không cần thiết
 
 Tránh dùng dấu ngoặc đơn trong các biểu thức và câu lệnh điều kiện. Trừ khi cần thiết để xác định thứ tự thực hiện phép toán hoặc ngắt thành nhiều dòng, chúng chỉ làm giảm khả năng đọc.
 
-**Đúng**:
+**Tốt**:
 
 .. rst-class:: code-example-good
 
@@ -375,7 +375,7 @@ Tránh dùng dấu ngoặc đơn trong các biểu thức và câu lệnh điề
     if is_colliding():
         queue_free()
 
-**Sai**:
+**Không tốt**:
 
 .. rst-class:: code-example-bad
 
@@ -386,18 +386,18 @@ Tránh dùng dấu ngoặc đơn trong các biểu thức và câu lệnh điề
 
 .. _boolean_operators:
 
-Toán tử Boolean
+Toán tử boolean
 ~~~~~~~~~~~~~~~
 
-Ưu tiên các phiên bản bằng tiếng Anh tự nhiên của toán tử Boolean vì chúng dễ tiếp cận nhất:
+Ưu tiên các phiên bản bằng tiếng Anh thông thường của toán tử boolean vì chúng dễ tiếp cận nhất:
 
 - Sử dụng ``and`` thay vì ``&&``.
 - Sử dụng ``or`` thay vì ``||``.
 - Sử dụng ``not`` thay vì ``!``.
 
-Bạn cũng có thể sử dụng dấu ngoặc đơn quanh các toán tử Boolean để loại bỏ mọi sự mơ hồ. Điều này có thể giúp các biểu thức dài dễ đọc hơn.
+Bạn cũng có thể sử dụng dấu ngoặc đơn quanh các toán tử boolean để loại bỏ mọi sự mơ hồ. Điều này có thể giúp các biểu thức dài dễ đọc hơn.
 
-**Đúng**:
+**Tốt**:
 
 .. rst-class:: code-example-good
 
@@ -406,7 +406,7 @@ Bạn cũng có thể sử dụng dấu ngoặc đơn quanh các toán tử Bool
     if (foo and bar) or not baz:
         print("condition is true")
 
-**Sai**:
+**Không tốt**:
 
 .. rst-class:: code-example-bad
 
@@ -415,59 +415,59 @@ Bạn cũng có thể sử dụng dấu ngoặc đơn quanh các toán tử Bool
     if foo && bar || !baz:
         print("condition is true")
 
-Khoảng cách trong chú thích
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Khoảng cách trong comment
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Các comment thông thường (``#``) và comment tài liệu (``##``) nên bắt đầu bằng một dấu cách, nhưng code được comment out thì không. Ngoài ra, comment vùng code (``#region``/``#endregion``) phải tuân theo chính xác cú pháp đó, vì vậy chúng không nên bắt đầu bằng dấu cách.
+Các comment thông thường (``#``) và comment tài liệu (``##``) nên bắt đầu bằng một khoảng trắng, nhưng code được comment out thì không. Ngoài ra, comment vùng code (``#region``/``#endregion``) phải tuân theo chính xác cú pháp đó, vì vậy chúng không nên bắt đầu bằng khoảng trắng.
 
-Việc sử dụng một dấu cách cho comment thông thường và comment tài liệu giúp phân biệt comment văn bản với code bị vô hiệu hóa.
+Sử dụng khoảng trắng cho comment thông thường và comment tài liệu giúp phân biệt comment dạng văn bản với code bị vô hiệu hóa.
 
 **Tốt**:
 
 .. rst-class:: code-example-good
 
-::
+.. code-block::
 
-    # This is a comment.
+    # Đây là một comment.
     #print("This is disabled code")
 
 **Không tốt**:
 
 .. rst-class:: code-example-bad
 
-::
+.. code-block::
 
-    #This is a comment.
+    #Đây là một comment.
     # print("This is disabled code")
 
 .. note::
 
-    Trong trình soạn thảo script, để bật hoặc tắt comment cho code đã chọn, hãy nhấn
+    Trong script editor, để bật hoặc tắt comment cho code đã chọn, hãy nhấn
     :kbd:`Ctrl + K`. Phím tắt này thêm hoặc xóa một dấu ``#`` duy nhất trước mọi đoạn code trên các dòng đã chọn.
 
-Ưu tiên viết comment trên dòng riêng thay vì comment nội tuyến (comment được viết trên cùng dòng với code). Comment nội tuyến phù hợp nhất cho các comment ngắn, thường chỉ vài từ:
+Ưu tiên viết comment trên dòng riêng thay vì comment nội tuyến (comment được viết trên cùng dòng với code). Comment nội tuyến phù hợp nhất với các comment ngắn, thường chỉ vài từ:
 
 **Tốt**:
 
 .. rst-class:: code-example-good
 
-::
+.. code-block::
 
-    # This is a long comment that would make the line below too long if written inline.
-    print("Example") # Short comment.
+    # Đây là một comment dài, nếu viết nội tuyến thì sẽ khiến dòng bên dưới quá dài.
+    print("Example") # Comment ngắn.
 
 **Không tốt**:
 
 .. rst-class:: code-example-bad
 
-::
+.. code-block::
 
-    print("Example") # This is a long comment that would make this line too long if written inline.
+    print("Example") # Đây là một comment dài, nếu viết nội tuyến thì sẽ khiến dòng này quá dài.
 
 Khoảng trắng
 ~~~~~~~~~~~~
 
-Luôn sử dụng một dấu cách xung quanh các toán tử và sau dấu phẩy. Ngoài ra, tránh các dấu cách thừa trong các tham chiếu đến dictionary và các lệnh gọi hàm. Một ngoại lệ là khi khai báo dictionary trên một dòng, trong đó nên thêm một dấu cách sau dấu ngoặc nhọn mở và trước dấu ngoặc nhọn đóng. Điều này giúp phân biệt dictionary với array bằng mắt dễ dàng hơn, vì các ký tự ``[]`` trông gần giống ``{}`` trong hầu hết các font.
+Luôn sử dụng một khoảng trắng xung quanh các toán tử và sau dấu phẩy. Ngoài ra, tránh thêm khoảng trắng trong các tham chiếu đến dictionary và các lời gọi hàm. Một ngoại lệ là khai báo dictionary trên một dòng, trong đó nên thêm một khoảng trắng sau dấu ngoặc nhọn mở và trước dấu ngoặc nhọn đóng. Điều này giúp phân biệt dictionary với array bằng mắt dễ hơn, vì các ký tự ``[]`` trông gần giống ``{}`` trong hầu hết các font.
 
 **Tốt**:
 
@@ -495,7 +495,7 @@ Luôn sử dụng một dấu cách xung quanh các toán tử và sau dấu ph�
     my_dictionary = {key = "value"}
     print ("foo")
 
-Không sử dụng dấu cách để căn chỉnh các biểu thức theo chiều dọc:
+Không sử dụng khoảng trắng để căn chỉnh các biểu thức theo chiều dọc:
 
 ::
 
@@ -506,26 +506,26 @@ Không sử dụng dấu cách để căn chỉnh các biểu thức theo chiề
 Dấu ngoặc kép
 ~~~~~~~~~~~~~
 
-Sử dụng dấu ngoặc kép đôi, trừ khi dấu ngoặc kép đơn giúp bạn phải escape ít ký tự hơn trong một chuỗi cụ thể. Xem các ví dụ dưới đây:
+Sử dụng dấu ngoặc kép trừ khi dấu ngoặc đơn giúp giảm số ký tự cần escape trong một chuỗi cụ thể. Xem các ví dụ bên dưới:
 
-::
+.. code-block::
 
-    # Normal string.
+    # Chuỗi thông thường.
     print("hello world")
 
-    # Use double quotes as usual to avoid escapes.
+    # Sử dụng dấu ngoặc kép như thường lệ để tránh escape.
     print("hello 'world'")
 
-    # Use single quotes as an exception to the rule to avoid escapes.
+    # Sử dụng dấu ngoặc đơn như một ngoại lệ của quy tắc để tránh escape.
     print('hello "world"')
 
-    # Both quote styles would require 2 escapes; prefer double quotes if it's a tie.
+    # Cả hai kiểu dấu ngoặc đều cần 2 lần escape; nếu số lần bằng nhau, hãy ưu tiên dấu ngoặc kép.
     print("'hello' \"world\"")
 
 Số
 ~~
 
-Không bỏ qua số 0 ở đầu hoặc cuối trong các số dấu phẩy động. Nếu không, chúng sẽ khó đọc hơn và khó phân biệt với số nguyên khi nhìn thoáng qua.
+Không được bỏ qua số 0 ở đầu hoặc cuối trong các số dấu phẩy động. Nếu không, chúng sẽ khó đọc hơn và khó phân biệt với số nguyên khi nhìn thoáng qua.
 
 **Tốt**:
 
@@ -545,7 +545,7 @@ Không bỏ qua số 0 ở đầu hoặc cuối trong các số dấu phẩy đ�
     var float_number = .234
     var other_float_number = 13.
 
-Sử dụng chữ thường cho các chữ cái trong số thập lục phân, vì chiều cao thấp hơn của chúng giúp số dễ đọc hơn.
+Sử dụng chữ thường cho các chữ cái trong số hexadecimal, vì chiều cao thấp hơn của chúng giúp số dễ đọc hơn.
 
 **Tốt**:
 
@@ -563,30 +563,30 @@ Sử dụng chữ thường cho các chữ cái trong số thập lục phân, v
 
     var hex_number = 0xFB8C0B
 
-Hãy tận dụng dấu gạch dưới trong literal của GDScript để giúp các số lớn dễ đọc hơn.
+Tận dụng dấu gạch dưới của GDScript trong các literal để giúp các số lớn dễ đọc hơn.
 
 **Tốt**:
 
 .. rst-class:: code-example-good
 
-::
+.. code-block::
 
     var large_number = 1_234_567_890
     var large_hex_number = 0xffff_f8f8_0000
     var large_bin_number = 0b1101_0010_1010
-    # Numbers lower than 1000000 generally don't need separators.
+    # Các số nhỏ hơn 1000000 thường không cần dấu phân cách.
     var small_number = 12345
 
 **Không tốt**:
 
 .. rst-class:: code-example-bad
 
-::
+.. code-block::
 
     var large_number = 1234567890
     var large_hex_number = 0xfffff8f80000
     var large_bin_number = 0b110100101010
-    # Numbers lower than 1000000 generally don't need separators.
+    # Các số nhỏ hơn 1000000 thường không cần dấu phân cách.
     var small_number = 12_345
 
 .. _naming_conventions:
@@ -594,48 +594,48 @@ Hãy tận dụng dấu gạch dưới trong literal của GDScript để giúp 
 Quy ước đặt tên
 ---------------
 
-Các quy ước đặt tên này tuân theo phong cách của Godot Engine. Việc vi phạm các quy ước này sẽ khiến code của bạn xung đột với các quy ước đặt tên tích hợp sẵn, dẫn đến code không nhất quán. Bảng tóm tắt:
+Các quy ước đặt tên này tuân theo phong cách của Godot Engine. Việc không tuân thủ sẽ khiến code của bạn xung đột với các quy ước đặt tên tích hợp sẵn, dẫn đến code không nhất quán. Bảng tóm tắt:
 
-+-----------------+---------------+-------------------------------+
-| Loại            | Quy ước       | Ví dụ                         |
-+=================+===============+===============================+
-| Tên file        | snake_case    | ``yaml_parser.gd``            |
-+-----------------+---------------+-------------------------------+
-| Tên class       | PascalCase    | ``class_name YAMLParser``     |
-+-----------------+---------------+-------------------------------+
-| Tên node        | PascalCase    | ``Camera3D``, ``Player``      |
-+-----------------+---------------+-------------------------------+
-| Hàm             | snake_case    | ``func load_level():``        |
-+-----------------+---------------+-------------------------------+
-| Biến            | snake_case    | ``var particle_effect``       |
-+-----------------+---------------+-------------------------------+
-| Signal          | snake_case    | ``signal door_opened``        |
-+-----------------+---------------+-------------------------------+
-| Hằng số         | CONSTANT_CASE | ``const MAX_SPEED = 200``     |
-+-----------------+---------------+-------------------------------+
-| Tên enum        | PascalCase    | ``enum Element``              |
-+-----------------+---------------+-------------------------------+
-| Member của enum | CONSTANT_CASE | ``{EARTH, WATER, AIR, FIRE}`` |
-+-----------------+---------------+-------------------------------+
++---------------------+---------------+-------------------------------+
+| Loại                | Quy ước       | Ví dụ                         |
++=====================+===============+===============================+
+| Tên file            | snake_case    | ``yaml_parser.gd``            |
++---------------------+---------------+-------------------------------+
+| Tên class           | PascalCase    | ``class_name YAMLParser``     |
++---------------------+---------------+-------------------------------+
+| Tên node            | PascalCase    | ``Camera3D``, ``Player``      |
++---------------------+---------------+-------------------------------+
+| Hàm                 | snake_case    | ``func load_level():``        |
++---------------------+---------------+-------------------------------+
+| Biến                | snake_case    | ``var particle_effect``       |
++---------------------+---------------+-------------------------------+
+| Signal              | snake_case    | ``signal door_opened``        |
++---------------------+---------------+-------------------------------+
+| Hằng số             | CONSTANT_CASE | ``const MAX_SPEED = 200``     |
++---------------------+---------------+-------------------------------+
+| Tên enum            | PascalCase    | ``enum Element``              |
++---------------------+---------------+-------------------------------+
+| Các thành phần enum | CONSTANT_CASE | ``{EARTH, WATER, AIR, FIRE}`` |
++---------------------+---------------+-------------------------------+
 
-Tên file
-~~~~~~~~
+Tên tệp
+~~~~~~~
 
-Sử dụng snake_case cho tên file. Đối với các class có tên, hãy chuyển tên class PascalCase thành snake_case:
+Sử dụng snake_case cho tên tệp. Đối với các class được đặt tên, chuyển tên class PascalCase sang snake_case:
 
-::
+.. code-block::
 
-    # This file should be saved as `weapon.gd`.
+    # Tệp này phải được lưu dưới dạng `weapon.gd`.
     class_name Weapon
     extends Node
 
-::
+.. code-block::
 
-    # This file should be saved as `yaml_parser.gd`.
+    # Tệp này phải được lưu dưới dạng `yaml_parser.gd`.
     class_name YAMLParser
     extends Object
 
-Điều này nhất quán với cách đặt tên file C++ trong mã nguồn của Godot. Cách này cũng tránh các vấn đề phân biệt chữ hoa chữ thường có thể phát sinh khi export một project từ Windows sang các nền tảng khác.
+Điều này nhất quán với cách đặt tên tệp C++ trong mã nguồn của Godot. Cách này cũng tránh các vấn đề về phân biệt chữ hoa chữ thường có thể phát sinh khi xuất một project từ Windows sang các nền tảng khác.
 
 Class và node
 ~~~~~~~~~~~~~
@@ -662,7 +662,7 @@ Sử dụng snake\_case để đặt tên cho hàm và biến:
     var particle_effect
     func load_level():
 
-Thêm một dấu gạch dưới đơn (\_) vào đầu các hàm phương thức virtual mà người dùng phải override, các hàm private và các biến private:
+Thêm một dấu gạch dưới đơn (\_) vào trước các phương thức/hàm ảo mà người dùng phải override, các hàm private và các biến private:
 
 ::
 
@@ -682,13 +682,13 @@ Sử dụng thì quá khứ để đặt tên cho signal:
 Hằng số và enum
 ~~~~~~~~~~~~~~~
 
-Viết hằng số bằng CONSTANT\_CASE, nghĩa là viết toàn bộ bằng chữ hoa và dùng dấu gạch dưới (\_) để phân tách các từ:
+Viết hằng số bằng CONSTANT\_CASE, tức là viết hoa toàn bộ và dùng dấu gạch dưới (\_) để phân tách các từ:
 
 ::
 
     const MAX_SPEED = 200
 
-Sử dụng PascalCase cho *tên* enum và giữ chúng ở dạng số ít, vì chúng biểu diễn một kiểu. Sử dụng CONSTANT\_CASE cho các member của chúng, vì chúng là các hằng số:
+Sử dụng PascalCase cho *tên enum* và giữ chúng ở dạng số ít vì chúng đại diện cho một kiểu. Sử dụng CONSTANT\_CASE cho các thành phần của chúng vì đó là các hằng số:
 
 ::
 
@@ -699,7 +699,7 @@ Sử dụng PascalCase cho *tên* enum và giữ chúng ở dạng số ít, vì
         FIRE,
     }
 
-Viết mỗi mục enum trên một dòng riêng. Điều này giúp dễ dàng thêm chú thích tài liệu phía trên từng mục hơn, đồng thời tạo ra các diff rõ ràng hơn trong hệ thống quản lý phiên bản khi thêm hoặc xóa mục.
+Viết enum với mỗi mục trên một dòng riêng. Điều này giúp dễ dàng thêm các comment tài liệu phía trên từng mục hơn, đồng thời tạo ra các diff rõ ràng hơn trong hệ thống quản lý phiên bản khi thêm hoặc xóa mục.
 
 **Tốt**:
 
@@ -725,10 +725,10 @@ Viết mỗi mục enum trên một dòng riêng. Điều này giúp dễ dàng 
 Thứ tự mã
 ---------
 
-Phần này tập trung vào thứ tự mã. Để biết về định dạng, hãy xem
-:ref:`formatting`. Để biết về quy ước đặt tên, hãy xem :ref:`naming_conventions`.
+Phần này tập trung vào thứ tự mã. Để xem cách định dạng, hãy xem
+:ref:`formatting`. Để xem quy ước đặt tên, hãy xem :ref:`naming_conventions`.
 
-Chúng tôi đề xuất tổ chức mã GDScript theo cách sau:
+Chúng tôi đề xuất tổ chức mã GDScript như sau:
 
 ::
 
@@ -758,63 +758,63 @@ Chúng tôi đề xuất tổ chức mã GDScript theo cách sau:
     16. remaining methods
     17. inner classes
 
-Và đặt các phương thức cùng biến của lớp theo thứ tự sau, tùy thuộc vào các access modifier của chúng:
+Và đặt các phương thức cùng biến của class theo thứ tự sau, tùy thuộc vào các access modifier của chúng:
 
 ::
 
     1. public
     2. private
 
-Chúng tôi đã tối ưu hóa thứ tự này để dễ đọc mã từ trên xuống dưới, giúp các developer đọc mã lần đầu hiểu cách mã hoạt động, đồng thời tránh các lỗi liên quan đến thứ tự khai báo biến.
+Chúng tôi tối ưu thứ tự này để dễ đọc mã từ trên xuống dưới, giúp các developer đọc mã lần đầu hiểu cách mã hoạt động và tránh các lỗi liên quan đến thứ tự khai báo biến.
 
 Thứ tự mã này tuân theo bốn nguyên tắc chung:
 
-1. Properties và signals được đặt trước, tiếp theo là các phương thức.
+1. Các property và signal được đặt trước, sau đó là các phương thức.
 2. Public được đặt trước private.
-3. Các virtual callback được đặt trước interface của lớp.
+3. Các callback ảo được đặt trước interface của class.
 4. Các hàm khởi tạo và initialization của object, ``_init`` và ``_ready``, được đặt trước các hàm sửa đổi object trong runtime.
 
-Khai báo lớp
-~~~~~~~~~~~~
+Khai báo class
+~~~~~~~~~~~~~~
 
-Nếu mã được thiết kế để chạy trong editor, hãy đặt annotation ``@tool`` ở dòng đầu tiên của script.
+Nếu mã được dùng để chạy trong editor, đặt annotation ``@tool`` trên dòng đầu tiên của script.
 
-Tiếp theo là ``@icon`` không bắt buộc, rồi đến ``class_name`` nếu cần. Bạn có thể biến tệp GDScript thành một global type trong project bằng ``class_name``. Để biết thêm thông tin, hãy xem :ref:`doc_gdscript_basics_class_name`. Nếu lớp được thiết kế là một :ref:`lớp abstract <doc_gdscript_basics_abstract_class>`, hãy thêm ``@abstract`` *trước* từ khóa ``class_name``.
+Tiếp theo là ``@icon`` tùy chọn, rồi đến ``class_name`` nếu cần. Bạn có thể biến một tệp GDScript thành một global type trong project bằng ``class_name``. Để biết thêm thông tin, hãy xem :ref:`doc_gdscript_basics_class_name`. Nếu class được dùng làm một class :ref:`abstract class <doc_gdscript_basics_abstract_class>`, thêm ``@abstract`` *before* từ khóa ``class_name``.
 
-Sau đó, thêm từ khóa ``extends`` nếu lớp mở rộng một built-in type.
+Sau đó, thêm từ khóa ``extends`` nếu class kế thừa một kiểu dựng sẵn.
 
-Sau đó, bạn sẽ có phần tùy chọn của class
-:ref:`documentation comments <doc_gdscript_documentation_comments>`. Chẳng hạn, bạn có thể dùng phần này để giải thích vai trò của lớp cho các đồng đội, cách lớp hoạt động và cách các developer khác nên sử dụng lớp.
+Tiếp theo, bạn nên có phần tùy chọn của class
+:ref:`comment tài liệu <doc_gdscript_documentation_comments>`. Bạn có thể dùng phần này để giải thích cho đồng đội về vai trò và cách hoạt động của class, cũng như cách các developer khác nên sử dụng nó, chẳng hạn như:
 
-::
+.. code-block::
 
     @abstract
     class_name MyNode
     extends Node
-    ## A brief description of the class's role and functionality.
+    ## Mô tả ngắn gọn về vai trò và chức năng của class.
     ##
-    ## The description of the script, what it can do,
-    ## and any further detail.
+    ## Mô tả về script, những gì script có thể thực hiện,
+    ## và mọi chi tiết bổ sung.
 
-Đối với các lớp bên trong, hãy dùng khai báo một dòng:
+Đối với các class bên trong, sử dụng khai báo một dòng:
 
-::
+.. code-block::
 
-    ## A brief description of the class's role and functionality.
+    ## Mô tả ngắn gọn về vai trò và chức năng của class.
     ##
-    ## The description of the script, what it can do,
-    ## and any further detail.
+    ## Mô tả về script, những gì script có thể thực hiện,
+    ## và mọi chi tiết bổ sung.
     @abstract class MyNode extends Node:
         pass
 
-Signals và properties
-~~~~~~~~~~~~~~~~~~~~~
+Signal và property
+~~~~~~~~~~~~~~~~~~
 
-Sau docstring, hãy viết các khai báo signal, tiếp theo là properties, tức là các member variable.
+Viết các khai báo signal, tiếp theo là các property, tức là các biến thành viên, sau docstring.
 
-Enum nên được đặt sau signal, vì bạn có thể dùng chúng làm export hint cho các property khác.
+Enum nên được đặt sau signal vì bạn có thể sử dụng chúng làm export hint cho các property khác.
 
-Sau đó, hãy viết constants, exported variables, public, private và onready variables theo thứ tự đó.
+Sau đó, viết các hằng số, biến được export, biến public, private và onready theo thứ tự đó.
 
 ::
 
@@ -846,30 +846,30 @@ Sau đó, hãy viết constants, exported variables, public, private và onready
 
 .. note::
 
-    GDScript đánh giá các biến ``@onready`` ngay trước callback ``_ready``. Bạn có thể dùng điều này để cache các node dependency, tức là lấy các node con trong scene mà lớp của bạn phụ thuộc vào. Đây là điều ví dụ trên minh họa.
+    GDScript đánh giá các biến ``@onready`` ngay trước callback ``_ready``. Bạn có thể dùng điều này để cache các dependency của node, tức là lấy các node con trong scene mà class của bạn phụ thuộc vào. Đây chính là điều ví dụ ở trên minh họa.
 
-Member variable
+Biến thành viên
 ~~~~~~~~~~~~~~~
 
-Đừng khai báo member variable nếu chúng chỉ được sử dụng cục bộ trong một phương thức, vì điều đó khiến mã khó theo dõi hơn. Thay vào đó, hãy khai báo chúng dưới dạng local variable trong phần thân của phương thức.
+Không khai báo biến thành viên nếu chúng chỉ được sử dụng cục bộ trong một phương thức, vì điều đó khiến mã khó theo dõi hơn. Thay vào đó, hãy khai báo chúng dưới dạng biến cục bộ trong phần thân phương thức.
 
-Local variable
-~~~~~~~~~~~~~~
+Biến cục bộ
+~~~~~~~~~~~
 
-Khai báo local variable gần nhất có thể với lần sử dụng đầu tiên của chúng. Điều này giúp dễ theo dõi mã hơn mà không phải cuộn quá nhiều để tìm nơi biến được khai báo.
+Khai báo biến cục bộ gần với lần sử dụng đầu tiên của chúng nhất có thể. Điều này giúp dễ theo dõi mã hơn mà không phải cuộn quá nhiều để tìm nơi biến được khai báo.
 
 Phương thức và hàm static
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Sau properties của lớp là các phương thức.
+Sau các thuộc tính của class là các method.
 
-Bắt đầu bằng phương thức callback ``_init()``, được engine gọi khi tạo object trong bộ nhớ. Tiếp theo là callback ``_ready()``, được Godot gọi khi thêm một node vào scene tree.
+Bắt đầu bằng method callback ``_init()``, mà engine sẽ gọi khi tạo object trong bộ nhớ. Tiếp theo là callback ``_ready()``, mà Godot gọi khi thêm một node vào scene tree.
 
-Các hàm này nên được đặt trước vì chúng cho thấy cách object được khởi tạo.
+Các function này nên được đặt trước vì chúng cho thấy cách object được khởi tạo.
 
-Các virtual callback dựng sẵn khác, như ``_unhandled_input()`` và ``_physics_process``, nên được đặt tiếp theo. Chúng điều khiển main loop của object và các tương tác với game engine.
+Tiếp theo là các callback virtual tích hợp khác, như ``_unhandled_input()`` và ``_physics_process``. Chúng điều khiển vòng lặp chính của object và các tương tác với game engine.
 
-Phần còn lại của interface của lớp, gồm các phương thức public và private, được đặt sau đó theo thứ tự này.
+Phần còn lại của interface của class, gồm các method public và private, được đặt sau đó theo thứ tự này.
 
 ::
 
@@ -907,58 +907,58 @@ Phần còn lại của interface của lớp, gồm các phương thức public
 Static typing
 -------------
 
-GDScript hỗ trợ :ref:`static typing tùy chọn <doc_gdscript_static_typing>`.
+GDScript hỗ trợ :ref:`optional static typing <doc_gdscript_static_typing>`.
 
-Các kiểu được khai báo
+Các type được khai báo
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Để khai báo kiểu của một biến, hãy dùng ``<variable>: <type>``:
+Để khai báo type của một biến, hãy sử dụng ``<variable>: <type>``:
 
 ::
 
     var health: int = 0
 
-Để khai báo kiểu trả về của một hàm, hãy dùng ``-> <type>``:
+Để khai báo return type của một function, hãy sử dụng ``-> <type>``:
 
 ::
 
     func heal(amount: int) -> void:
 
-Các kiểu được suy luận
+Các type được suy luận
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Trong hầu hết trường hợp, bạn có thể để compiler suy luận kiểu bằng ``:=``. Ưu tiên ``:=`` khi kiểu được viết trên cùng dòng với phép gán; nếu không, hãy ưu tiên viết kiểu một cách rõ ràng.
+Trong hầu hết trường hợp, bạn có thể để compiler suy luận type bằng ``:=``. Ưu tiên ``:=`` khi type được viết trên cùng dòng với phép gán; nếu không, hãy ưu tiên viết type một cách tường minh.
 
 **Tốt**:
 
 .. rst-class:: code-example-good
 
-::
+.. code-block::
 
-    # The type can be int or float, and thus should be stated explicitly.
+    # Type có thể là int hoặc float, vì vậy nên được nêu tường minh.
     var health: int = 0
 
-    # The type is clearly inferred as Vector3.
+    # Type được suy luận rõ ràng là Vector3.
     var direction := Vector3(1, 2, 3)
 
-Hãy thêm type hint khi kiểu không rõ ràng, và bỏ qua type hint khi nó dư thừa.
+Hãy thêm type hint khi type không rõ ràng, và bỏ type hint khi nó dư thừa.
 
 **Không tốt**:
 
 .. rst-class:: code-example-bad
 
-::
+.. code-block::
 
-    # Typed as int, but it could be that float was intended.
+    # Được định kiểu là int, nhưng có thể float mới là type được dự định.
     var health := 0
 
-    # The type hint has redundant information.
+    # Type hint chứa thông tin dư thừa.
     var direction: Vector3 = Vector3(1, 2, 3)
 
-    # What type is this? It's not immediately clear to the reader, so it's bad.
+    # Đây là type gì? Người đọc không thể hiểu ngay, vì vậy cách viết này không tốt.
     var value := complex_function()
 
-Trong một số trường hợp, kiểu phải được nêu rõ; nếu không, hành vi sẽ không như mong đợi vì compiler chỉ có thể sử dụng kiểu trả về của hàm. Ví dụ, ``get_node()`` không thể suy luận kiểu trừ khi scene hoặc tệp của node được tải vào bộ nhớ. Trong trường hợp này, bạn nên đặt kiểu một cách rõ ràng.
+Trong một số trường hợp, type phải được nêu tường minh; nếu không, hành vi sẽ không như mong đợi vì compiler chỉ có thể sử dụng return type của function. Ví dụ, ``get_node()`` không thể suy luận type trừ khi scene hoặc file của node được tải vào bộ nhớ. Trong trường hợp này, bạn nên đặt type một cách tường minh.
 
 **Tốt**:
 
@@ -972,24 +972,24 @@ Trong một số trường hợp, kiểu phải được nêu rõ; nếu không,
 
 .. rst-class:: code-example-bad
 
-::
+.. code-block::
 
-    # The compiler can't infer the exact type and will use Node
-    # instead of ProgressBar.
+    # Compiler không thể suy luận type chính xác và sẽ sử dụng Node
+    # thay vì ProgressBar.
     @onready var health_bar := get_node("UI/LifeBar")
 
-Ngoài ra, bạn có thể dùng từ khóa ``as`` để ép kiểu trả về, và kiểu đó sẽ được dùng để suy luận kiểu của var.
+Ngoài ra, bạn có thể sử dụng từ khóa ``as`` để cast return type, và type đó sẽ được dùng để suy luận type của var.
 
 .. rst-class:: code-example-good
 
-::
+.. code-block::
 
     @onready var health_bar := get_node("UI/LifeBar") as ProgressBar
-    # health_bar will be typed as ProgressBar
+    # health_bar sẽ được định kiểu là ProgressBar
 
 
 .. note::
 
-    Tùy chọn này được xem là :ref:`an toàn kiểu <doc_gdscript_static_typing_safe_lines>` hơn so với type hint, nhưng cũng kém an toàn null hơn vì nó âm thầm ép biến thành ``null`` trong trường hợp không khớp kiểu tại runtime mà không đưa ra lỗi/cảnh báo.
+    Tùy chọn này được xem là :ref:`type-safe <doc_gdscript_static_typing_safe_lines>` hơn type hint, nhưng cũng kém null-safe hơn vì nó âm thầm cast biến thành ``null`` trong trường hợp không khớp type tại runtime, mà không có lỗi/cảnh báo.
 
 .. _`byte order mark`: https://en.wikipedia.org/wiki/Byte_order_mark
