@@ -1,156 +1,96 @@
 .. _doc_the_profiler:
 
-The Profiler
-============
+Profiler
+========
 
-You run your game from Godot and play around. It's fun, it's becoming feature
-complete, and you feel it's getting close to release.
+Bạn chạy game từ Godot và chơi thử. Game rất thú vị, ngày càng hoàn thiện về tính năng, và bạn cảm thấy nó sắp được phát hành.
 
-But then, you open the skill tree, and it grinds to a halt as something snags in
-your code. Watching the skill tree scroll by like it's a slide show is
-unacceptable. What went wrong? Is it positioning the skill tree elements, the
-UI, or rendering?
+Nhưng rồi bạn mở cây kỹ năng, và game lập tức chậm hẳn khi có thứ gì đó mắc kẹt trong code. Việc xem cây kỹ năng cuộn qua như một trình chiếu là không thể chấp nhận được. Điều gì đã xảy ra? Vấn đề nằm ở việc định vị các phần tử của cây kỹ năng, UI hay quá trình rendering?
 
-You could try to optimize everything and run the game repeatedly, but you can be
-smarter about this and narrow down the possibilities. Enter Godot's profiler.
+Bạn có thể thử tối ưu mọi thứ rồi chạy game nhiều lần, nhưng bạn có thể xử lý thông minh hơn bằng cách thu hẹp các khả năng. Đây là lúc profiler của Godot phát huy tác dụng.
 
-An overview of the profiler
----------------------------
+Tổng quan về profiler
+---------------------
 
-You can open the profiler by opening the **Debugger** panel and clicking on the
-**Profiler** tab.
+Bạn có thể mở profiler bằng cách mở panel **Debugger** rồi nhấp vào tab **Profiler**.
 
 .. image:: img/profiler.png
 
-Godot's profiler does not automatically run because profiling is
-performance-intensive. It has to continually measure everything happening in the
-game and report back to the debugger, so it's off by default.
+Profiler của Godot không tự động chạy vì profiling tiêu tốn nhiều hiệu năng. Nó phải liên tục đo lường mọi thứ đang diễn ra trong game và báo cáo lại cho debugger, nên mặc định profiler được tắt.
 
-To begin profiling, run your game then focus back on the editor. Click on the
-**Start** button in the top-left corner of the **Profiler** tab. You can also
-check **Autostart**, which will make the profiler automatically start when the
-project is run the next time. Note that the **Autostart** checkbox's state is not
-preserved across editor sessions.
+Để bắt đầu profiling, hãy chạy game rồi chuyển lại editor. Nhấp vào nút **Start** ở góc trên bên trái của tab **Profiler**. Bạn cũng có thể chọn **Autostart**, tùy chọn này sẽ khiến profiler tự động khởi động vào lần tiếp theo khi project được chạy. Lưu ý rằng trạng thái của ô chọn **Autostart** không được giữ lại giữa các phiên editor.
 
 .. note::
 
-    The profiler does not currently support C# scripts. C# scripts can be profiled
-    using JetBrains Rider and JetBrains dotTrace with the Godot support plugin.
+    Hiện tại profiler không hỗ trợ script C#. Bạn có thể profile script C# bằng JetBrains Rider và JetBrains dotTrace với plugin hỗ trợ Godot.
 
-You can clear the data by clicking the **Clear** button anytime. Use the
-**Measure** drop-down menu to change the type of data you measure. The
-measurements panel and the graph will update accordingly.
+Bạn có thể xóa dữ liệu bất cứ lúc nào bằng cách nhấp vào nút **Clear**. Sử dụng menu thả xuống **Measure** để thay đổi loại dữ liệu được đo. Panel đo lường và biểu đồ sẽ cập nhật tương ứng.
 
-The measured data
------------------
+Dữ liệu được đo
+---------------
 
-The profiler's interface is split into two. There is a list of functions on the
-left and the performance graph on the right.
+Giao diện profiler được chia thành hai phần. Bên trái là danh sách các function, còn bên phải là biểu đồ hiệu năng.
 
-The main measurements are frame time, physics frame, idle time, and physics time.
+Các phép đo chính là frame time, physics frame, idle time và physics time.
 
-- The **frame time** is the time it takes Godot to execute all the logic for an
-  entire image, from physics to rendering.
-- **Physics frame** is the time Godot has allocated between physics updates. In
-  an ideal scenario, the frame time is whatever you chose: 16.66 milliseconds by
-  default, which corresponds to 60FPS. It's a frame of reference you can use for
-  everything else around it.
-- **Idle time** is the time Godot took to update logic other than physics, such
-  as code that lives in `_process` or timers and cameras set to update on
-  **Idle**.
-- **Physics time** is the time Godot took to update physics tasks, like
-  `_physics_process` and built-in nodes set to **Physics** update.
+- **frame time** là khoảng thời gian Godot cần để thực thi toàn bộ logic cho một hình ảnh hoàn chỉnh, từ physics đến rendering.
+- **Physics frame** là khoảng thời gian Godot phân bổ giữa các lần cập nhật physics. Trong trường hợp lý tưởng, frame time là giá trị bạn chọn: mặc định là 16,66 mili giây, tương ứng với 60FPS. Đây là mốc tham chiếu bạn có thể dùng cho mọi thứ khác.
+- **Idle time** là khoảng thời gian Godot cần để cập nhật logic không liên quan đến physics, chẳng hạn như code nằm trong `_process` hoặc các timer và camera được thiết lập cập nhật theo **Idle**.
+- **Physics time** là khoảng thời gian Godot cần để cập nhật các tác vụ physics, chẳng hạn như `_physics_process` và các node tích hợp được thiết lập cập nhật theo **Physics**.
 
-.. note:: **Frame Time** includes rendering time. Say you find a mysterious
-          spike of lag in your game, but your physics and scripts are
-          all running fast. The delay could be due to the appearance of
-          particles or visual effects!
+.. note:: **Frame Time** bao gồm cả thời gian rendering. Giả sử bạn phát hiện một đợt lag bất thường trong game, nhưng physics và script đều chạy nhanh. Độ trễ có thể là do các particle hoặc hiệu ứng hình ảnh xuất hiện!
 
-By default, Godot ticks on Frame Time and Physics Time. This gives you an
-overview of how long each frame takes relative to the allocated desired physics
-FPS. You can toggle functions on and off by clicking the checkboxes on the left.
-Other facilities make appearances as you go down the list, like Physics 2D,
-Physics, and Audio, before reaching Script functions, where your code appears.
+Theo mặc định, Godot đánh dấu Frame Time và Physics Time. Điều này cho bạn cái nhìn tổng quan về thời gian mỗi frame cần so với FPS physics mong muốn đã phân bổ. Bạn có thể bật hoặc tắt các function bằng cách nhấp vào các ô chọn ở bên trái. Khi đi xuống danh sách, bạn sẽ thấy thêm các thành phần khác như Physics 2D, Physics và Audio, trước khi đến các function Script, nơi code của bạn xuất hiện.
 
-If you click on the graph, you change which frame's information appears on the
-left. In the top right, there is also a frame counter where you can manually
-adjust the frame you are looking at more granularly.
+Nếu nhấp vào biểu đồ, bạn sẽ thay đổi frame có thông tin hiển thị ở bên trái. Ở góc trên bên phải còn có bộ đếm frame, cho phép bạn điều chỉnh thủ công frame đang xem với độ chi tiết cao hơn.
 
-Scope of measurement and measurement windows
---------------------------------------------
+Phạm vi đo lường và các cửa sổ đo lường
+---------------------------------------
 
-You can change what measurement you are looking at using the **Measure**
-drop-down menu. By default, it starts with Frame Time and lists the time it
-takes to go through the frame in milliseconds. The average time is the average
-time any given function took when called more than once. For example, a function
-that took 0.05 milliseconds to run five times should give you an average of 0.01
-milliseconds.
+Bạn có thể thay đổi phép đo đang xem bằng menu thả xuống **Measure**. Theo mặc định, menu bắt đầu với Frame Time và liệt kê thời gian cần để đi qua frame, tính bằng mili giây. Thời gian trung bình là thời gian trung bình mà một function bất kỳ cần khi được gọi nhiều hơn một lần. Ví dụ, một function mất 0,05 mili giây để chạy năm lần sẽ có thời gian trung bình là 0,01 mili giây.
 
-If accurate milliseconds count is not important, and you want to see proportions
-of time relative to the rest of the frame, use percentage measurements. Frame %
-is relative to Frame Time, and Physics % is relative to Physics Time.
+Nếu việc đếm mili giây chính xác không quan trọng và bạn muốn xem tỷ lệ thời gian so với phần còn lại của frame, hãy dùng các phép đo phần trăm. Frame % là tương đối so với Frame Time, còn Physics % là tương đối so với Physics Time.
 
-The last option is the scope of the time. **Inclusive** measures the time a
-function took **with** any nested function calls. For example:
+Tùy chọn cuối cùng là phạm vi thời gian. **Inclusive** đo thời gian một function cần khi chạy **with** cả các lần gọi function lồng bên trong. Ví dụ:
 
 .. image:: img/split_curve.png
 
-`get_neighbors`, `find_nearest_neighbor` and `move_subject` all took a lot of
-time. You could be fooled into thinking that this is because all three of them
-are slow.
+`get_neighbors`, `find_nearest_neighbor` và `move_subject` đều mất rất nhiều thời gian. Bạn có thể lầm tưởng rằng nguyên nhân là cả ba function đều chậm.
 
-But when changed to **Self**, Godot measures the time spent in the function body
-without considering function calls it made itself.
+Nhưng khi chuyển sang **Self**, Godot sẽ đo thời gian dành cho phần thân function mà không tính các lần gọi function do chính function đó thực hiện.
 
 .. image:: img/self_curve.png
 
-You can see that `get_neighbors` and `move_subject` have lost a lot of their
-importance. In effect, that means that `get_neighbors` and `move_subject` have
-spent more time waiting for some other function call to finish than not, and
-`find_nearest_neighbor` is **actually** slow.
+Bạn có thể thấy `get_neighbors` và `move_subject` đã mất đi phần lớn mức độ quan trọng. Điều đó có nghĩa là `get_neighbors` và `move_subject` dành nhiều thời gian chờ một lần gọi function khác hoàn tất hơn là tự thực thi, còn `find_nearest_neighbor` thì **thực sự** chậm.
 
-Debugging slow code with the profiler
--------------------------------------
+Gỡ lỗi code chậm bằng profiler
+------------------------------
 
-Finding slow code with the profiler boils down to running your game and watching
-the performance graph as it draws. When an unacceptable spike occurs in the
-frame time, you can click on the graph to pause your game and narrow the _Frame
-#_ to the spike's start. You may need to jump back and forth between frames and
-functions to find the root cause.
+Việc tìm code chậm bằng profiler chủ yếu là chạy game và theo dõi biểu đồ hiệu năng khi biểu đồ được vẽ. Khi xuất hiện một đỉnh tăng không thể chấp nhận trong frame time, bạn có thể nhấp vào biểu đồ để tạm dừng game và thu hẹp _Frame #_ về thời điểm bắt đầu của đỉnh đó. Bạn có thể phải chuyển qua lại giữa các frame và function để tìm nguyên nhân gốc.
 
-Under the Script functions, turn on the checkboxes for some functions to find
-which take time. These are the functions you need to review and optimize.
+Trong phần Script functions, hãy bật các ô chọn của một số function để tìm ra function nào tốn thời gian. Đây là những function bạn cần xem xét và tối ưu.
 
-Measuring manually in microseconds
-----------------------------------
+Đo thủ công theo micro giây
+---------------------------
 
-If your function is complex, it could be challenging to figure out which part
-needs optimization. Is it your math or the way you access other pieces of data
-to do the math with? Is it the `for` loop? The `if` statements?
+Nếu function của bạn phức tạp, việc xác định phần nào cần tối ưu có thể rất khó. Vấn đề nằm ở phép tính hay cách bạn truy cập các phần dữ liệu khác để thực hiện phép tính? Có phải là `for` loop? Hay các câu lệnh `if`?
 
-You can narrow down the measurement by manually counting ticks as the code runs
-with some temporary functions. The two functions are part of the `Time` class
-object. They are `get_ticks_msec` and `get_ticks_usec`. The first measures in
-milliseconds (1,000 per second), and the second measures in microseconds
-(1,000,000 per second).
+Bạn có thể thu hẹp phép đo bằng cách đếm thủ công các tick khi code chạy với một số function tạm thời. Hai function này thuộc về đối tượng class `Time`. Chúng là `get_ticks_msec` và `get_ticks_usec`. Function đầu tiên đo bằng mili giây (1.000 mili giây mỗi giây), còn function thứ hai đo bằng micro giây (1.000.000 micro giây mỗi giây).
 
-Either one returns the amount of time since the game engine started in their respective
-time frame.
+Mỗi function đều trả về khoảng thời gian kể từ khi game engine khởi động, tính theo đơn vị thời gian tương ứng.
 
-If you wrap a piece of code with a start and end count of microseconds, the
-difference between the two is the amount of time it took to run that piece of
-code.
+Nếu bạn bao quanh một đoạn code bằng số đếm micro giây ở đầu và cuối, chênh lệch giữa hai số đó chính là khoảng thời gian cần để chạy đoạn code.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
 
-    # Measuring the time it takes for worker_function() to run
+    # Đo thời gian cần để chạy worker_function()
     var start = Time.get_ticks_usec()
     worker_function()
     var end = Time.get_ticks_usec()
     var worker_time = (end-start)/1000000.0
 
-    # Measuring the time spent running a calculation over each element of an array
+    # Đo thời gian chạy một phép tính trên từng phần tử của một mảng
     start = Time.get_ticks_usec()
     for calc in calculations:
         result = pow(2, calc.power) * calc.product
@@ -159,10 +99,6 @@ code.
 
     print("Worker time: %s\nLoop time: %s" % [worker_time, loop_time])
 
-As you become a more experienced programmer, this technique becomes less
-necessary. You begin to learn what parts of a running program are slow. Knowing
-that loops and branches can be slow comes from experience, and you gain
-experience by measuring and doing research.
+Khi trở thành một lập trình viên giàu kinh nghiệm hơn, bạn sẽ ít cần đến kỹ thuật này hơn. Bạn bắt đầu học cách nhận biết những phần nào của chương trình đang chạy bị chậm. Việc biết rằng các vòng lặp và nhánh có thể chạy chậm là nhờ kinh nghiệm, và bạn có được kinh nghiệm bằng cách đo lường và nghiên cứu.
 
-But between the profiler and the ticks functions, you should have enough to get
-started finding which parts of your code need optimization.
+Tuy nhiên, với profiler và các hàm ticks, bạn sẽ có đủ công cụ để bắt đầu tìm ra những phần nào trong mã của mình cần được tối ưu hóa.

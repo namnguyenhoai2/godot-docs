@@ -1,7 +1,7 @@
 :allow_comments: False
 
-Debug
-=====
+Gỡ lỗi
+======
 
 .. toctree::
    :maxdepth: 1

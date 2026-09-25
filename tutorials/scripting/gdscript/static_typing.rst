@@ -1,33 +1,24 @@
 .. _doc_gdscript_static_typing:
 
-Static typing in GDScript
-=========================
+Kiểu tĩnh trong GDScript
+========================
 
-In this guide, you will learn:
+Trong hướng dẫn này, bạn sẽ học:
 
-- how to use static typing in GDScript;
-- that static types can help you avoid bugs;
-- that static typing improves your experience with the editor.
+- cách sử dụng kiểu tĩnh trong GDScript;
+- kiểu tĩnh có thể giúp bạn tránh lỗi như thế nào;
+- kiểu tĩnh cải thiện trải nghiệm của bạn với trình soạn thảo như thế nào.
 
-Where and how you use this language feature is entirely up to you: you can use it
-only in some sensitive GDScript files, use it everywhere, or don't use it at all.
+Bạn hoàn toàn tự quyết định cách thức và nơi sử dụng tính năng ngôn ngữ này: bạn có thể chỉ sử dụng nó trong một số tệp GDScript quan trọng, sử dụng ở mọi nơi hoặc hoàn toàn không sử dụng.
 
-Static types can be used on variables, constants, functions, parameters,
-and return types.
+Bạn có thể sử dụng kiểu tĩnh cho biến, hằng số, hàm, tham số và kiểu trả về.
 
-A brief look at static typing
------------------------------
+Tổng quan ngắn gọn về kiểu tĩnh
+-------------------------------
 
-With static typing, GDScript can detect more errors without even running the code.
-Also type hints give you and your teammates more information as you're working,
-as the arguments' types show up when you call a method. Static typing improves
-editor autocompletion and :ref:`documentation <doc_gdscript_documentation_comments>`
-of your scripts.
+Với kiểu tĩnh, GDScript có thể phát hiện nhiều lỗi hơn mà thậm chí không cần chạy mã. Ngoài ra, các gợi ý kiểu cung cấp cho bạn và đồng đội nhiều thông tin hơn trong quá trình làm việc, vì kiểu của các đối số sẽ hiển thị khi bạn gọi một method. Kiểu tĩnh cải thiện tính năng tự động hoàn tất và :ref:`documentation <doc_gdscript_documentation_comments>` cho các script của bạn.
 
-Imagine you're programming an inventory system. You code an ``Item`` class,
-then an ``Inventory``. To add items to the inventory, the people who work with
-your code should always pass an ``Item`` to the ``Inventory.add()`` method.
-With types, you can enforce this:
+Hãy tưởng tượng bạn đang lập trình một hệ thống inventory. Bạn viết mã cho một ``Item`` class, sau đó là một ``Inventory``. Để thêm vật phẩm vào inventory, những người làm việc với mã của bạn luôn phải truyền một ``Item`` cho method ``Inventory.add()``. Với các kiểu, bạn có thể bắt buộc điều này:
 
 ::
 
@@ -40,47 +31,32 @@ With types, you can enforce this:
             item = _instance_item_from_db(reference)
         item.amount += amount
 
-Static types also give you better code completion options. Below, you can see
-the difference between a dynamic and a static typed completion options.
+Kiểu tĩnh cũng cung cấp cho bạn các tùy chọn hoàn tất mã tốt hơn. Bên dưới, bạn có thể thấy sự khác biệt giữa các tùy chọn hoàn tất mã có kiểu động và kiểu tĩnh.
 
-You've probably encountered a lack of autocomplete suggestions after a dot:
+Có lẽ bạn đã từng gặp trường hợp không có gợi ý tự động hoàn tất sau dấu chấm:
 
 .. figure:: img/typed_gdscript_code_completion_dynamic.webp
-    :alt: Completion options for dynamic typed code.
+    :alt: Các tùy chọn hoàn tất mã cho mã có kiểu động.
 
-This is due to dynamic code. Godot cannot know what value type you're passing
-to the function. If you write the type explicitly however, you will get all
-methods, properties, constants, etc. from the value:
+Điều này là do mã động. Godot không thể biết kiểu giá trị bạn truyền cho hàm. Tuy nhiên, nếu bạn ghi rõ kiểu, bạn sẽ nhận được tất cả method, property, constant, v.v. của giá trị đó:
 
 .. figure:: img/typed_gdscript_code_completion_typed.webp
-    :alt: Completion options for static typed code.
+    :alt: Các tùy chọn hoàn tất mã cho mã có kiểu tĩnh.
 
 .. tip::
 
-    If you prefer static typing, we recommend enabling the
-    **Text Editor > Completion > Add Type Hints** editor setting. Also consider
-    enabling `some warnings <Warning system_>`_ that are disabled by default.
+    Nếu thích kiểu tĩnh, chúng tôi khuyên bạn bật cài đặt trình soạn thảo **Text Editor > Completion > Add Type Hints**. Ngoài ra, hãy cân nhắc bật `some warnings <Warning system_>`_ vốn bị tắt theo mặc định.
 
 .. UPDATE: Planned feature. If JIT/AOT are implemented, update this paragraph.
 
-Also, typed GDScript improves performance by using optimized opcodes when operand/argument
-types are known at compile time. More GDScript optimizations are planned in the future,
-such as JIT/AOT compilation.
+Ngoài ra, GDScript có kiểu còn cải thiện hiệu năng bằng cách sử dụng opcode được tối ưu hóa khi kiểu của toán hạng/đối số đã được biết tại thời điểm biên dịch. Trong tương lai, nhiều tối ưu hóa GDScript hơn được lên kế hoạch, chẳng hạn như biên dịch JIT/AOT.
 
-Overall, typed programming gives you a more structured experience. It
-helps prevent errors and improves the self-documenting aspect of your
-scripts. This is especially helpful when you're working in a team or on
-a long-term project: studies have shown that developers spend most of
-their time reading other people's code, or scripts they wrote in the
-past and forgot about. The clearer and the more structured the code, the
-faster it is to understand, the faster you can move forward.
+Nhìn chung, lập trình có kiểu mang lại cho bạn trải nghiệm có cấu trúc hơn. Nó giúp ngăn ngừa lỗi và cải thiện khía cạnh tự mô tả của các script. Điều này đặc biệt hữu ích khi bạn làm việc trong một nhóm hoặc một dự án dài hạn: các nghiên cứu cho thấy nhà phát triển dành phần lớn thời gian để đọc mã của người khác hoặc các script họ đã viết trước đây rồi quên mất. Mã càng rõ ràng và có cấu trúc thì càng nhanh hiểu, từ đó bạn càng nhanh tiến lên.
 
-How to use static typing
-------------------------
+Cách sử dụng kiểu tĩnh
+----------------------
 
-To define the type of a variable, parameter, or constant, write a colon after the name,
-followed by its type. E.g. ``var health: int``. This forces the variable's type
-to always stay the same:
+Để định nghĩa kiểu của một biến, tham số hoặc hằng số, hãy viết dấu hai chấm sau tên, rồi đến kiểu của nó. Ví dụ: ``var health: int``. Điều này buộc kiểu của biến luôn giữ nguyên:
 
 ::
 
@@ -89,7 +65,7 @@ to always stay the same:
     func sum(a: float = 0.0, b: float = 0.0) -> float:
         return a + b
 
-Godot will try to infer types if you write a colon, but you omit the type:
+Godot sẽ cố gắng suy luận kiểu nếu bạn viết dấu hai chấm nhưng bỏ qua kiểu:
 
 ::
 
@@ -100,66 +76,54 @@ Godot will try to infer types if you write a colon, but you omit the type:
 
 .. note::
 
-    1. There is no difference between ``=`` and ``:=`` for constants.
-    2. You don't need to write type hints for constants, as Godot sets it automatically
-       from the assigned value. But you can still do so to make the intent of your code clearer.
-       Also, this is useful for typed arrays (like ``const A: Array[int] = [1, 2, 3]``),
-       since untyped arrays are used by default.
+    1. Đối với các hằng số, không có sự khác biệt giữa ``=`` và ``:=``.
+    2. Bạn không cần viết gợi ý kiểu cho các hằng số, vì Godot tự động thiết lập kiểu từ giá trị được gán. Tuy nhiên, bạn vẫn có thể làm vậy để ý định của mã rõ ràng hơn. Điều này cũng hữu ích cho các mảng có kiểu (chẳng hạn như ``const A: Array[int] = [1, 2, 3]``), vì các mảng không có kiểu được sử dụng theo mặc định.
 
-What can be a type hint
-~~~~~~~~~~~~~~~~~~~~~~~
+Những gì có thể dùng làm gợi ý kiểu
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Here is a complete list of what can be used as a type hint:
+Dưới đây là danh sách đầy đủ những gì có thể dùng làm gợi ý kiểu:
 
-1. ``Variant``. Any type. In most cases this is not much different from an untyped
-   declaration, but increases readability. As a return type, forces the function
-   to explicitly return some value.
-2. *(Only return type)* ``void``. Indicates that the function does not return any value.
+1. ``Variant``. Bất kỳ kiểu nào. Trong hầu hết trường hợp, điều này không khác nhiều so với khai báo không có kiểu, nhưng giúp mã dễ đọc hơn. Khi dùng làm kiểu trả về, nó buộc hàm phải trả về một giá trị cụ thể.
+2. *(Only return type)* ``void``. Cho biết hàm không trả về giá trị nào.
 3. :ref:`Built-in types <doc_gdscript_builtin_types>`.
-4. Native classes (``Object``, ``Node``, ``Area2D``, ``Camera2D``, etc.).
+4. Các class native (``Object``, ``Node``, ``Area2D``, ``Camera2D``, v.v.).
 5. :ref:`Global classes <doc_gdscript_basics_class_name>`.
 6. :ref:`Inner classes <doc_gdscript_basics_inner_classes>`.
-7. Global, native and custom named enums. Note that an enum type is just an ``int``,
-   there is no guarantee that the value belongs to the set of enum values.
-8. Constants (including local ones) if they contain a preloaded class or enum.
+7. Các enum global, native và tùy chỉnh có tên. Lưu ý rằng kiểu enum chỉ là một ``int``, không có gì đảm bảo giá trị thuộc tập hợp các giá trị enum.
+8. Các hằng số (bao gồm cả hằng số cục bộ) nếu chúng chứa một class hoặc enum được nạp trước.
 
-You can use any class, including your custom classes, as types. There are two ways
-to use them in scripts. The first method is to preload the script you want to use
-as a type in a constant:
+Bạn có thể sử dụng bất kỳ class nào, bao gồm cả class tùy chỉnh của mình, làm kiểu. Có hai cách để sử dụng chúng trong script. Cách đầu tiên là nạp trước script bạn muốn sử dụng làm kiểu vào một hằng số:
 
 ::
 
     const Rifle = preload("res://player/weapons/rifle.gd")
     var my_rifle: Rifle
 
-The second method is to use the ``class_name`` keyword when you create the script.
-For the example above, your ``rifle.gd`` would look like this:
+Cách thứ hai là sử dụng từ khóa ``class_name`` khi tạo script. Với ví dụ trên, ``rifle.gd`` của bạn sẽ có dạng như sau:
 
 ::
 
     class_name Rifle
     extends Node2D
 
-If you use ``class_name``, Godot registers the ``Rifle`` type globally in the editor,
-and you can use it anywhere, without having to preload it into a constant:
+Nếu sử dụng ``class_name``, Godot đăng ký kiểu ``Rifle`` trên toàn cục trong trình soạn thảo và bạn có thể sử dụng nó ở bất kỳ đâu mà không cần nạp trước vào một hằng số:
 
 ::
 
     var my_rifle: Rifle
 
-Specify the return type of a function with the arrow ``->``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Chỉ định kiểu trả về của một hàm bằng mũi tên ``->``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To define the return type of a function, write a dash and a right angle bracket ``->``
-after its declaration, followed by the return type:
+Để định nghĩa kiểu trả về của một hàm, hãy viết dấu gạch ngang và dấu ngoặc nhọn phải ``->`` sau khai báo của hàm, rồi đến kiểu trả về:
 
 ::
 
     func _process(delta: float) -> void:
         pass
 
-The type ``void`` means the function does not return anything. You can use any type,
-as with variables:
+Kiểu ``void`` có nghĩa là hàm không trả về gì. Bạn có thể sử dụng bất kỳ kiểu nào, tương tự như với biến:
 
 ::
 
@@ -167,7 +131,7 @@ as with variables:
         health_points -= damage
         return health_points <= 0
 
-You can also use your own classes as return types:
+Bạn cũng có thể sử dụng các class của riêng mình làm kiểu trả về:
 
 ::
 
@@ -180,19 +144,16 @@ You can also use your own classes as return types:
         item.amount += amount
         return item
 
-Covariance and contravariance
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tính đồng biến và phản biến
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When inheriting base class methods, you should follow the `Liskov substitution
-principle <https://en.wikipedia.org/wiki/Liskov_substitution_principle>`__.
+Khi kế thừa các method của class cơ sở, bạn nên tuân theo `Liskov substitution principle <https://en.wikipedia.org/wiki/Liskov_substitution_principle>`__.
 
-**Covariance:** When you inherit a method, you can specify a return type that is
-more specific (**subtype**) than the parent method.
+**Covariance:** Khi kế thừa một method, bạn có thể chỉ định kiểu trả về cụ thể hơn (**subtype**) so với method của class cha.
 
-**Contravariance:** When you inherit a method, you can specify a parameter type
-that is less specific (**supertype**) than the parent method.
+**Contravariance:** Khi kế thừa một method, bạn có thể chỉ định kiểu tham số ít cụ thể hơn (**supertype**) so với method của class cha.
 
-Example:
+Ví dụ:
 
 ::
 
@@ -212,17 +173,12 @@ Example:
     func get_property(param: Control) -> Node2D:
         # ...
 
-Specify the element type of an ``Array``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Chỉ định kiểu phần tử của một ``Array``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To define the type of an ``Array``, enclose the type name in ``[]``.
+Để định nghĩa kiểu của một ``Array``, hãy đặt tên kiểu trong ``[]``.
 
-An array's type applies to ``for`` loop variables, as well as some operators like
-``[]``, ``[...] =`` (assignment), and ``+``. Array methods
-(such as ``push_back``) and other operators (such as ``==``)
-are still untyped. Built-in types, native and custom classes,
-and enums may be used as element types. Nested array types (like ``Array[Array[int]]``)
-are not supported.
+Kiểu của một mảng áp dụng cho các biến vòng lặp ``for``, cũng như một số toán tử như ``[]``, ``[...] =`` (phép gán) và ``+``. Các phương thức của mảng (chẳng hạn như ``push_back``) và những toán tử khác (chẳng hạn như ``==``) vẫn chưa được định kiểu. Có thể sử dụng các kiểu dựng sẵn, các class native và custom, cũng như enum làm kiểu phần tử. Không hỗ trợ các kiểu mảng lồng nhau (chẳng hạn như ``Array[Array[int]]``).
 
 
 ::
@@ -241,8 +197,7 @@ are not supported.
     var s: String = scores[0]
     scores[0] = "lots"
 
-Since Godot 4.2, you can also specify a type for the loop variable in a ``for`` loop.
-For instance, you can write:
+Kể từ Godot 4.2, bạn cũng có thể chỉ định kiểu cho biến vòng lặp trong vòng lặp ``for``. Ví dụ, bạn có thể viết:
 
 ::
 
@@ -250,20 +205,14 @@ For instance, you can write:
     for name: String in names:
         pass
 
-The array will remain untyped, but the ``name`` variable within the ``for`` loop
-will always be of ``String`` type.
+Mảng vẫn không được định kiểu, nhưng biến ``name`` bên trong vòng lặp ``for`` sẽ luôn có kiểu ``String``.
 
-Specify the element type of a ``Dictionary``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Chỉ định kiểu phần tử của ``Dictionary``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To define the type of a ``Dictionary``'s keys and values, enclose the type name in ``[]``
-and separate the key and value type with a comma.
+Để định nghĩa kiểu của các khóa và giá trị trong ``Dictionary``, hãy đặt tên kiểu bên trong ``[]`` và phân tách kiểu khóa với kiểu giá trị bằng dấu phẩy.
 
-A dictionary's value type applies to ``for`` loop variables, as well as some operators like
-``[]`` and ``[...] =`` (assignment). Dictionary methods that return values
-and other operators (such as ``==``) are still untyped. Built-in types, native
-and custom classes, and enums may be used as element types. Nested typed collections
-(like ``Dictionary[String, Dictionary[String, int]]``) are not supported.
+Kiểu giá trị của một dictionary áp dụng cho các biến vòng lặp ``for``, cũng như một số toán tử như ``[]`` và ``[...] =`` (phép gán). Các phương thức của dictionary trả về giá trị và những toán tử khác (chẳng hạn như ``==``) vẫn chưa được định kiểu. Có thể sử dụng các kiểu dựng sẵn, các class native và custom, cũng như enum làm kiểu phần tử. Không hỗ trợ các collection được định kiểu lồng nhau (chẳng hạn như ``Dictionary[String, Dictionary[String, int]]``).
 
 
 ::
@@ -282,21 +231,14 @@ and custom classes, and enums may be used as element types. Nested typed collect
     var s: String = fruit_costs["apple"]
     fruit_costs["orange"] = "lots"
 
-Type casting
-~~~~~~~~~~~~
+Ép kiểu
+~~~~~~~
 
-Type casting is an important concept in typed languages.
-Casting is the conversion of a value from one type to another.
+Ép kiểu là một khái niệm quan trọng trong các ngôn ngữ có kiểu. Ép kiểu là việc chuyển đổi một giá trị từ kiểu này sang kiểu khác.
 
-Imagine an ``Enemy`` in your game, that ``extends Area2D``. You want it to collide
-with the ``Player``, a ``CharacterBody2D`` with a script called ``PlayerController``
-attached to it. You use the ``body_entered`` signal to detect the collision.
-With typed code, the body you detect is going to be a generic ``PhysicsBody2D``,
-and not your ``PlayerController`` on the ``_on_body_entered`` callback.
+Hãy tưởng tượng có một ``Enemy`` trong game của bạn, nó ``extends Area2D``. Bạn muốn nó va chạm với ``Player``, một ``CharacterBody2D`` được gắn script có tên ``PlayerController``. Bạn sử dụng signal ``body_entered`` để phát hiện va chạm. Với code có kiểu, đối tượng bạn phát hiện sẽ là một ``PhysicsBody2D`` chung, chứ không phải ``PlayerController`` của bạn trong callback ``_on_body_entered``.
 
-You can check if this ``PhysicsBody2D`` is your ``Player`` with the ``as`` keyword,
-and using the colon ``:`` again to force the variable to use this type.
-This forces the variable to stick to the ``PlayerController`` type:
+Bạn có thể kiểm tra xem ``PhysicsBody2D`` này có phải là ``Player`` của bạn hay không bằng keyword ``as``, rồi lại dùng dấu hai chấm ``:`` để buộc biến sử dụng kiểu này. Điều này buộc biến giữ kiểu ``PlayerController``:
 
 ::
 
@@ -307,17 +249,11 @@ This forces the variable to stick to the ``PlayerController`` type:
 
         player.damage()
 
-As we're dealing with a custom type, if the ``body`` doesn't extend
-``PlayerController``, the ``player`` variable will be set to ``null``.
-We can use this to check if the body is the player or not. We will also
-get full autocompletion on the player variable thanks to that cast.
+Vì chúng ta đang làm việc với một kiểu custom, nếu ``body`` không kế thừa ``PlayerController``, biến ``player`` sẽ được đặt thành ``null``. Ta có thể dùng điều này để kiểm tra xem đối tượng có phải là player hay không. Nhờ phép ép kiểu đó, ta cũng nhận được tính năng tự động hoàn thành đầy đủ cho biến player.
 
 .. note::
 
-    The ``as`` keyword silently casts the variable to ``null`` in case of a type
-    mismatch at runtime, without an error/warning. While this may be convenient
-    in some cases, it can also lead to bugs. Use the ``as`` keyword only if this
-    behavior is intended. A safer alternative is to use the ``is`` keyword:
+    Keyword ``as`` âm thầm ép biến thành ``null`` khi xảy ra không khớp kiểu lúc runtime, mà không tạo lỗi/cảnh báo. Mặc dù điều này có thể thuận tiện trong một số trường hợp, nó cũng có thể dẫn đến bug. Chỉ sử dụng keyword ``as`` nếu bạn thực sự muốn hành vi này. Một lựa chọn an toàn hơn là sử dụng keyword ``is``:
 
     ::
 
@@ -330,14 +266,14 @@ get full autocompletion on the player variable thanks to that cast.
 
         player.damage()
 
-    You can also simplify the code by using the ``is not`` operator:
+    Bạn cũng có thể đơn giản hóa code bằng cách sử dụng toán tử ``is not``:
 
     ::
 
         if body is not PlayerController:
             push_error("Bug: body is not PlayerController")
 
-    Alternatively, you can use the ``assert()`` statement:
+    Ngoài ra, bạn có thể sử dụng câu lệnh ``assert()``:
 
     ::
 
@@ -352,65 +288,45 @@ get full autocompletion on the player variable thanks to that cast.
 
 .. note::
 
-    If you try to cast with a built-in type and it fails, Godot will throw an error.
+    Nếu thử ép kiểu bằng một kiểu dựng sẵn và thất bại, Godot sẽ báo lỗi.
 
 .. _doc_gdscript_static_typing_safe_lines:
 
-Safe lines
-^^^^^^^^^^
+Các dòng an toàn
+^^^^^^^^^^^^^^^^
 
-You can also use casting to ensure safe lines. Safe lines are a tool to tell you
-when ambiguous lines of code are type-safe. As you can mix and match typed
-and dynamic code, at times, Godot doesn't have enough information to know if
-an instruction will trigger an error or not at runtime.
+Bạn cũng có thể sử dụng phép ép kiểu để bảo đảm các dòng an toàn. Các dòng an toàn là công cụ cho biết những dòng code không rõ ràng có an toàn về kiểu hay không. Vì bạn có thể kết hợp code có kiểu và code động, đôi khi Godot không có đủ thông tin để biết một chỉ thị có gây lỗi lúc runtime hay không.
 
-This happens when you get a child node. Let's take a timer for example:
-with dynamic code, you can get the node with ``$Timer``. GDScript supports
-`duck-typing <https://stackoverflow.com/a/4205163/8125343>`__,
-so even if your timer is of type ``Timer``, it is also a ``Node`` and
-an ``Object``, two classes it extends. With dynamic GDScript, you also don't
-care about the node's type as long as it has the methods you need to call.
+Điều này xảy ra khi bạn lấy một node con. Hãy lấy một timer làm ví dụ: với code động, bạn có thể lấy node bằng ``$Timer``. GDScript hỗ trợ `duck-typing <https://stackoverflow.com/a/4205163/8125343>`__, vì vậy ngay cả khi timer của bạn có kiểu ``Timer``, nó cũng là một ``Node`` và một ``Object``, tức hai class mà nó kế thừa. Với GDScript động, bạn cũng không cần quan tâm đến kiểu của node, miễn là nó có các phương thức bạn cần gọi.
 
-You can use casting to tell Godot the type you expect when you get a node:
-``($Timer as Timer)``, ``($Player as CharacterBody2D)``, etc.
-Godot will ensure the type works and if so, the line number will turn
-green at the left of the script editor.
+Bạn có thể sử dụng phép ép kiểu để cho Godot biết kiểu bạn mong đợi khi lấy một node: ``($Timer as Timer)``, ``($Player as CharacterBody2D)``, v.v. Godot sẽ bảo đảm kiểu đó hoạt động; nếu có, số dòng sẽ chuyển thành màu xanh lá ở bên trái trình soạn thảo script.
 
 .. figure:: img/typed_gdscript_safe_unsafe_line.webp
-   :alt: Unsafe vs Safe Line
+   :alt: Dòng không an toàn so với dòng an toàn
 
-   Unsafe line (line 7) vs Safe Lines (line 6 and 8)
+   Dòng không an toàn (dòng 7) so với các dòng an toàn (dòng 6 và 8)
 
 .. note::
 
-    Safe lines do not always mean better or more reliable code. See the note above
-    about the ``as`` keyword. For example:
+    Các dòng an toàn không phải lúc nào cũng có nghĩa là code tốt hơn hoặc đáng tin cậy hơn. Hãy xem lưu ý ở trên về keyword ``as``. Ví dụ:
 
     ::
 
         @onready var node_1 := $Node1 as Type1 # Safe line.
         @onready var node_2: Type2 = $Node2 # Unsafe line.
 
-    Even though ``node_2`` declaration is marked as an unsafe line, it is more
-    reliable than ``node_1`` declaration. Because if you change the node type
-    in the scene and accidentally forget to change it in the script, the error
-    will be detected immediately when the scene is loaded. Unlike ``node_1``,
-    which will be silently cast to ``null`` and the error will be detected later.
+    Mặc dù khai báo ``node_2`` được đánh dấu là một dòng không an toàn, nó đáng tin cậy hơn khai báo ``node_1``. Bởi vì nếu bạn thay đổi kiểu node trong scene nhưng vô tình quên thay đổi trong script, lỗi sẽ được phát hiện ngay khi scene được tải. Không giống như ``node_1``, vốn sẽ âm thầm được ép thành ``null`` và lỗi sẽ được phát hiện sau đó.
 
 .. note::
 
-    You can turn off safe lines or change their color in the editor settings.
+    Bạn có thể tắt các dòng an toàn hoặc thay đổi màu của chúng trong phần cài đặt trình soạn thảo.
 
-Typed or dynamic: stick to one style
-------------------------------------
+Có kiểu hay động: hãy nhất quán với một phong cách
+--------------------------------------------------
 
-Typed GDScript and dynamic GDScript can coexist in the same project. But
-it's recommended to stick to either style for consistency in your codebase,
-and for your peers. It's easier for everyone to work together if you follow
-the same guidelines, and faster to read and understand other people's code.
+GDScript có kiểu và GDScript động có thể cùng tồn tại trong một project. Tuy nhiên, bạn nên nhất quán với một trong hai phong cách để codebase của mình nhất quán và thuận tiện hơn cho đồng đội. Mọi người sẽ dễ dàng làm việc cùng nhau hơn nếu tuân theo cùng một bộ hướng dẫn, đồng thời đọc và hiểu code của người khác cũng nhanh hơn.
 
-Typed code takes a little more writing, but you get the benefits we discussed
-above. Here's an example of the same, empty script, in a dynamic style:
+Code có kiểu cần viết nhiều hơn một chút, nhưng bạn nhận được những lợi ích đã thảo luận ở trên. Đây là một ví dụ về cùng một script rỗng, được viết theo phong cách động:
 
 ::
 
@@ -424,7 +340,7 @@ above. Here's an example of the same, empty script, in a dynamic style:
     func _process(delta):
         pass
 
-And with static typing:
+Và với kiểu tĩnh:
 
 ::
 
@@ -438,53 +354,43 @@ And with static typing:
     func _process(delta: float) -> void:
         pass
 
-As you can see, you can also use types with the engine's virtual methods.
-Signal callbacks, like any methods, can also use types. Here's a ``body_entered``
-signal in a dynamic style:
+Như bạn có thể thấy, bạn cũng có thể sử dụng kiểu với các phương thức ảo của engine. Các callback của signal, cũng như mọi phương thức khác, cũng có thể sử dụng kiểu. Đây là một signal ``body_entered`` theo phong cách động:
 
 ::
 
     func _on_area_2d_body_entered(body):
         pass
 
-And the same callback, with type hints:
+Và cùng callback đó, với các gợi ý kiểu:
 
 ::
 
     func _on_area_2d_body_entered(body: PhysicsBody2D) -> void:
         pass
 
-Warning system
---------------
+Hệ thống cảnh báo
+-----------------
 
 .. note::
 
-    Detailed documentation about the GDScript warning system has been moved to
+    Tài liệu chi tiết về hệ thống cảnh báo của GDScript đã được chuyển đến
     :ref:`doc_gdscript_warning_system`.
 
-Godot gives you warnings about your code as you write it. The engine identifies
-sections of your code that may lead to issues at runtime, but lets you decide
-whether or not you want to leave the code as it is.
+Godot đưa ra cảnh báo về code của bạn trong khi bạn viết. Engine xác định những phần code có thể gây ra vấn đề lúc runtime, nhưng cho phép bạn quyết định có muốn giữ nguyên code đó hay không.
 
-We have a number of warnings aimed specifically at users of typed GDScript.
-By default, these warnings are disabled, you can enable them in Project Settings
-(**Debug > GDScript**, make sure **Advanced Settings** is enabled).
+Chúng tôi có một số cảnh báo dành riêng cho người dùng GDScript có kiểu. Theo mặc định, các cảnh báo này bị tắt; bạn có thể bật chúng trong Project Settings (**Debug > GDScript**, hãy bảo đảm **Advanced Settings** đã được bật).
 
-You can enable the ``UNTYPED_DECLARATION`` warning if you want to always use
-static types. Additionally, you can enable the ``INFERRED_DECLARATION`` warning
-if you prefer a more readable and reliable, but more verbose syntax.
+Bạn có thể bật cảnh báo ``UNTYPED_DECLARATION`` nếu muốn luôn sử dụng kiểu tĩnh. Ngoài ra, bạn có thể bật cảnh báo ``INFERRED_DECLARATION`` nếu thích cú pháp dễ đọc và đáng tin cậy hơn nhưng dài dòng hơn.
 
-``UNSAFE_*`` warnings make unsafe operations more noticeable, than unsafe lines.
-Currently, ``UNSAFE_*`` warnings do not cover all cases that unsafe lines cover.
+Các cảnh báo ``UNSAFE_*`` khiến những thao tác không an toàn dễ nhận thấy hơn so với các dòng không an toàn. Hiện tại, các cảnh báo ``UNSAFE_*`` không bao quát tất cả trường hợp mà các dòng không an toàn bao quát.
 
-Common unsafe operations and their safe counterparts
-----------------------------------------------------
+Các thao tác không an toàn thường gặp và các cách tương ứng an toàn
+-------------------------------------------------------------------
 
-Global scope methods
-~~~~~~~~~~~~~~~~~~~~
+Các phương thức trong global scope
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following global scope methods are not statically typed, but they have
-typed counterparts available. These methods return statically typed values:
+Các phương thức global scope sau đây chưa được định kiểu tĩnh, nhưng có các phương thức tương ứng đã được định kiểu. Những phương thức này trả về các giá trị được định kiểu tĩnh:
 
 +------------------------------------------------------+-------------------------------------------------------------------------------------+
 | Method                                               | Statically typed equivalents                                                        |
@@ -556,18 +462,12 @@ typed counterparts available. These methods return statically typed values:
 |                                                      |   :ref:`Vector4i.snapped() <class_Vector4i_method_snapped>`                         |
 +------------------------------------------------------+-------------------------------------------------------------------------------------+
 
-When using static typing, use the typed global scope methods whenever possible.
-This ensures you have safe lines and benefit from typed instructions for
-better performance.
+Khi sử dụng kiểu tĩnh, hãy sử dụng các phương thức global scope có kiểu bất cứ khi nào có thể. Điều này bảo đảm bạn có các dòng an toàn và được hưởng lợi từ các chỉ thị có kiểu để đạt hiệu năng tốt hơn.
 
-``UNSAFE_PROPERTY_ACCESS`` and ``UNSAFE_METHOD_ACCESS`` warnings
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cảnh báo ``UNSAFE_PROPERTY_ACCESS`` và ``UNSAFE_METHOD_ACCESS``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In this example, we aim to set a property and call a method on an object
-that has a script attached with ``class_name MyScript`` and that ``extends
-Node2D``. If we have a reference to the object as a ``Node2D`` (for instance,
-as it was passed to us by the physics system), we can first check if the
-property and method exist and then set and call them if they do:
+Trong ví dụ này, chúng ta muốn thiết lập một thuộc tính và gọi một phương thức trên một đối tượng có gắn script với ``class_name MyScript`` và ``extends Node2D``. Nếu có tham chiếu đến đối tượng dưới dạng ``Node2D`` (chẳng hạn như khi hệ thống vật lý truyền đối tượng đó cho chúng ta), trước tiên chúng ta có thể kiểm tra xem thuộc tính và phương thức có tồn tại hay không, rồi thiết lập và gọi chúng nếu có:
 
 ::
 
@@ -577,12 +477,7 @@ property and method exist and then set and call them if they do:
     if node_2d.has_method("some_function"):
         node_2d.some_function()  # Produces UNSAFE_METHOD_ACCESS warning.
 
-However, this code will produce ``UNSAFE_PROPERTY_ACCESS`` and
-``UNSAFE_METHOD_ACCESS`` warnings as the property and method are not present
-in the referenced type - in this case a ``Node2D``. To make these operations
-safe, you can first check if the object is of type ``MyScript`` using the
-``is`` keyword and then declare a variable with the type ``MyScript`` on
-which you can set its properties and call its methods:
+Tuy nhiên, đoạn mã này sẽ tạo ra các cảnh báo ``UNSAFE_PROPERTY_ACCESS`` và ``UNSAFE_METHOD_ACCESS`` vì thuộc tính và phương thức không có trong kiểu được tham chiếu — trong trường hợp này là ``Node2D``. Để làm cho các thao tác này an toàn, trước tiên bạn có thể kiểm tra xem đối tượng có kiểu ``MyScript`` hay không bằng từ khóa ``is``, sau đó khai báo một biến có kiểu ``MyScript`` để thiết lập các thuộc tính và gọi các phương thức của nó:
 
 ::
 
@@ -591,9 +486,7 @@ which you can set its properties and call its methods:
         my_script.some_property = 20
         my_script.some_function()
 
-Alternatively, you can declare a variable and use the ``as`` operator to try
-to cast the object. You'll then want to check whether the cast was successful
-by confirming that the variable was assigned:
+Ngoài ra, bạn có thể khai báo một biến và sử dụng toán tử ``as`` để thử ép kiểu đối tượng. Sau đó, bạn cần kiểm tra xem phép ép kiểu có thành công hay không bằng cách xác nhận rằng biến đã được gán giá trị:
 
 ::
 
@@ -602,24 +495,17 @@ by confirming that the variable was assigned:
         my_script.some_property = 20
         my_script.some_function()
 
-``UNSAFE_CAST`` warning
-~~~~~~~~~~~~~~~~~~~~~~~
+cảnh báo ``UNSAFE_CAST``
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-In this example, we would like the label connected to an object entering our
-collision area to show the area's name. Once the object enters the collision
-area, the physics system sends a signal with a ``Node2D`` object, and the most
-straightforward (but not statically typed) solution to do what we want could
-be achieved like this:
+Trong ví dụ này, chúng ta muốn nhãn được liên kết với một đối tượng đi vào vùng va chạm hiển thị tên của vùng. Khi đối tượng đi vào vùng va chạm, hệ thống vật lý gửi một tín hiệu kèm theo đối tượng ``Node2D``, và giải pháp đơn giản nhất (nhưng không có kiểu tĩnh) để thực hiện điều chúng ta muốn có thể được viết như sau:
 
 ::
 
     func _on_body_entered(body: Node2D) -> void:
         body.label.text = name  # Produces UNSAFE_PROPERTY_ACCESS warning.
 
-This piece of code produces an ``UNSAFE_PROPERTY_ACCESS`` warning because
-``label`` is not defined in ``Node2D``. To solve this, we could first check if the
-``label`` property exist and cast it to type ``Label`` before settings its text
-property like so:
+Đoạn mã này tạo ra cảnh báo ``UNSAFE_PROPERTY_ACCESS`` vì ``label`` chưa được định nghĩa trong ``Node2D``. Để giải quyết vấn đề này, trước tiên chúng ta có thể kiểm tra xem thuộc tính ``label`` có tồn tại hay không và ép kiểu nó thành kiểu ``Label`` trước khi thiết lập thuộc tính text của nó như sau:
 
 ::
 
@@ -627,12 +513,7 @@ property like so:
         if "label" in body:
             (body.label as Label).text = name  # Produces UNSAFE_CAST warning.
 
-However, this produces an ``UNSAFE_CAST`` warning because ``body.label`` is of a
-``Variant`` type. To safely get the property in the type you want, you can use the
-``Object.get()`` method which returns the object as a ``Variant`` value or returns
-``null`` if the property doesn't exist. You can then determine whether the
-property contains an object of the right type using the ``is`` keyword, and
-finally declare a statically typed variable with the object:
+Tuy nhiên, cách này tạo ra cảnh báo ``UNSAFE_CAST`` vì ``body.label`` có kiểu ``Variant``. Để lấy thuộc tính một cách an toàn với kiểu bạn muốn, bạn có thể sử dụng phương thức ``Object.get()``, phương thức này trả về đối tượng dưới dạng giá trị ``Variant`` hoặc trả về ``null`` nếu thuộc tính không tồn tại. Sau đó, bạn có thể xác định liệu thuộc tính có chứa một đối tượng đúng kiểu hay không bằng từ khóa ``is``, rồi khai báo một biến có kiểu tĩnh chứa đối tượng đó:
 
 ::
 
@@ -642,15 +523,14 @@ finally declare a statically typed variable with the object:
             var label: Label = label_variant
             label.text = name
 
-Cases where you can't specify types
------------------------------------
+Các trường hợp không thể chỉ định kiểu
+--------------------------------------
 
 .. UPDATE: Not supported. If nested types are supported, update this section.
 
-To wrap up this introduction, let's mention cases where you can't use type hints.
-This will trigger a **syntax error**.
+Để kết thúc phần giới thiệu này, hãy đề cập đến những trường hợp bạn không thể sử dụng type hint. Điều này sẽ kích hoạt **lỗi cú pháp**.
 
-1. You can't specify the type of individual elements in an array or a dictionary:
+1. Bạn không thể chỉ định kiểu của từng phần tử trong một mảng hoặc dictionary:
 
 ::
 
@@ -661,18 +541,18 @@ This will trigger a **syntax error**.
             inventory: Inventory = $Inventory,
         }
 
-2. Nested types are not currently supported:
+2. Hiện tại, các kiểu lồng nhau chưa được hỗ trợ:
 
 ::
 
         var teams: Array[Array[Character]] = []
 
-Summary
+Tóm tắt
 -------
 
 .. UPDATE: Planned feature. If more optimizations (possibly JIT/AOT?) are
 .. implemented, update this paragraph.
 
-Typed GDScript is a powerful tool. It helps you write more structured code,
-avoid common errors, and create scalable and reliable systems. Static types
-improve GDScript performance and more optimizations are planned for the future.
+GDScript có kiểu là một công cụ mạnh mẽ. Công cụ này giúp bạn viết mã có cấu trúc hơn, tránh các lỗi phổ biến và tạo ra những hệ thống có khả năng mở rộng và đáng tin cậy. Kiểu tĩnh cải thiện hiệu năng của GDScript và nhiều tối ưu hóa khác đang được lên kế hoạch cho tương lai.
+
+.. _`some warnings`: Warning system_

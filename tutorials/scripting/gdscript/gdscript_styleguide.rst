@@ -1,30 +1,21 @@
 .. _doc_gdscript_styleguide:
 
-GDScript style guide
-====================
+Hướng dẫn phong cách GDScript
+=============================
 
-This style guide lists conventions to write elegant GDScript. The goal is to
-encourage writing clean, readable code and promote consistency across projects,
-discussions, and tutorials. Hopefully, this will also support the development of
-auto-formatting tools.
+Hướng dẫn phong cách này liệt kê các quy ước để viết GDScript thanh lịch. Mục tiêu là khuyến khích viết mã sạch, dễ đọc và thúc đẩy tính nhất quán giữa các dự án, cuộc thảo luận và hướng dẫn. Hy vọng rằng hướng dẫn này cũng hỗ trợ phát triển các công cụ tự động định dạng.
 
-Since GDScript is close to Python, this guide is inspired by Python's
-`PEP 8 <https://www.python.org/dev/peps/pep-0008/>`__ programming
-style guide.
+Vì GDScript gần giống Python, hướng dẫn này được lấy cảm hứng từ `PEP 8 <https://www.python.org/dev/peps/pep-0008/>`__, hướng dẫn phong cách lập trình của Python.
 
-Style guides aren't meant as hard rulebooks. At times, you may not be able to
-apply some of the guidelines below. When that happens, use your best judgment,
-and ask fellow developers for insights.
+Hướng dẫn phong cách không phải là những bộ quy tắc cứng nhắc. Đôi khi bạn không thể áp dụng một số nguyên tắc dưới đây. Khi đó, hãy sử dụng phán đoán tốt nhất của mình và hỏi các nhà phát triển khác để có thêm góc nhìn.
 
-In general, keeping your code consistent in your projects and within your team is
-more important than following this guide to a tee.
+Nhìn chung, việc giữ mã nhất quán trong các dự án và trong nhóm của bạn quan trọng hơn việc tuân thủ hoàn toàn hướng dẫn này.
 
 .. note::
 
-    Godot's built-in script editor uses a lot of these conventions
-    by default. Let it help you.
+    Trình chỉnh sửa script tích hợp của Godot mặc định đã sử dụng nhiều quy ước trong số này. Hãy để nó hỗ trợ bạn.
 
-Here is a complete class example based on these guidelines:
+Dưới đây là một ví dụ lớp hoàn chỉnh dựa trên các nguyên tắc này:
 
 ::
 
@@ -105,23 +96,23 @@ Here is a complete class example based on these guidelines:
 
 .. _formatting:
 
-Formatting
-----------
+Định dạng
+---------
 
-Encoding and special characters
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Mã hóa và ký tự đặc biệt
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Use line feed (**LF**) characters to break lines, not CRLF or CR. *(editor default)*
-* Use one line feed character at the end of each file. *(editor default)*
-* Use **UTF-8** encoding without a `byte order mark <https://en.wikipedia.org/wiki/Byte_order_mark>`_. *(editor default)*
-* Use **Tabs** instead of spaces for indentation. *(editor default)*
+* Sử dụng ký tự xuống dòng (**LF**) để ngắt dòng, không dùng CRLF hoặc CR. *(mặc định của trình chỉnh sửa)*
+* Sử dụng một ký tự xuống dòng ở cuối mỗi tệp. *(mặc định của trình chỉnh sửa)*
+* Sử dụng mã hóa **UTF-8** mà không có `byte order mark <https://en.wikipedia.org/wiki/Byte_order_mark>`_. *(mặc định của trình chỉnh sửa)*
+* Sử dụng **Tabs** thay vì dấu cách để thụt lề. *(mặc định của trình chỉnh sửa)*
 
-Indentation
-~~~~~~~~~~~
+Thụt lề
+~~~~~~~
 
-Each indent level should be one greater than the block containing it.
+Mỗi cấp thụt lề phải lớn hơn một cấp so với khối chứa nó.
 
-**Good**:
+**Đúng**:
 
 .. rst-class:: code-example-good
 
@@ -130,7 +121,7 @@ Each indent level should be one greater than the block containing it.
     for i in range(10):
         print("hello")
 
-**Bad**:
+**Sai**:
 
 .. rst-class:: code-example-bad
 
@@ -142,10 +133,9 @@ Each indent level should be one greater than the block containing it.
     for i in range(10):
             print("hello")
 
-Use 2 indent levels to distinguish continuation lines from
-regular code blocks.
+Sử dụng 2 cấp thụt lề để phân biệt các dòng tiếp nối với các khối mã thông thường.
 
-**Good**:
+**Đúng**:
 
 .. rst-class:: code-example-good
 
@@ -155,7 +145,7 @@ regular code blocks.
             sprite.get_scale(), Vector2(2.0, 2.0), 0.3,
             Tween.TRANS_QUAD, Tween.EASE_OUT)
 
-**Bad**:
+**Sai**:
 
 .. rst-class:: code-example-bad
 
@@ -165,10 +155,9 @@ regular code blocks.
         sprite.get_scale(), Vector2(2.0, 2.0), 0.3,
         Tween.TRANS_QUAD, Tween.EASE_OUT)
 
-Exceptions to this rule are arrays, dictionaries, and enums. Use a single
-indentation level to distinguish continuation lines:
+Ngoại lệ của quy tắc này là các mảng, dictionary và enum. Sử dụng một cấp thụt lề để phân biệt các dòng tiếp nối:
 
-**Good**:
+**Đúng**:
 
 .. rst-class:: code-example-good
 
@@ -193,7 +182,7 @@ indentation level to distinguish continuation lines:
         TELEPORT,
     }
 
-**Bad**:
+**Sai**:
 
 .. rst-class:: code-example-bad
 
@@ -218,14 +207,12 @@ indentation level to distinguish continuation lines:
             TELEPORT,
     }
 
-Trailing comma
-~~~~~~~~~~~~~~
+Dấu phẩy ở cuối
+~~~~~~~~~~~~~~~
 
-Use a trailing comma on the last line in arrays, dictionaries, and enums. This
-results in easier refactoring and better diffs in version control as the last
-line doesn't need to be modified when adding new elements.
+Sử dụng dấu phẩy ở cuối dòng cuối cùng trong các mảng, dictionary và enum. Điều này giúp việc tái cấu trúc dễ dàng hơn và tạo ra các diff tốt hơn trong hệ thống kiểm soát phiên bản, vì không cần sửa dòng cuối khi thêm phần tử mới.
 
-**Good**:
+**Đúng**:
 
 .. rst-class:: code-example-good
 
@@ -237,7 +224,7 @@ line doesn't need to be modified when adding new elements.
         3,
     ]
 
-**Bad**:
+**Sai**:
 
 .. rst-class:: code-example-bad
 
@@ -249,9 +236,9 @@ line doesn't need to be modified when adding new elements.
         3
     ]
 
-Trailing commas are unnecessary in single-line lists, so don't add them in this case.
+Dấu phẩy ở cuối là không cần thiết trong các danh sách một dòng, vì vậy không thêm chúng trong trường hợp này.
 
-**Good**:
+**Đúng**:
 
 .. rst-class:: code-example-good
 
@@ -259,7 +246,7 @@ Trailing commas are unnecessary in single-line lists, so don't add them in this 
 
     var array = [1, 2, 3]
 
-**Bad**:
+**Sai**:
 
 .. rst-class:: code-example-bad
 
@@ -267,10 +254,10 @@ Trailing commas are unnecessary in single-line lists, so don't add them in this 
 
     var array = [1, 2, 3,]
 
-Blank lines
-~~~~~~~~~~~
+Dòng trống
+~~~~~~~~~~
 
-Surround functions and class definitions with two blank lines:
+Bao quanh các định nghĩa hàm và lớp bằng hai dòng trống:
 
 ::
 
@@ -285,29 +272,25 @@ Surround functions and class definitions with two blank lines:
         health = max(0, health)
         health_changed.emit(health)
 
-Use one blank line inside functions to separate logical sections.
+Sử dụng một dòng trống bên trong hàm để phân tách các phần logic.
 
 .. note::
 
-    We use a single line between classes and function definitions in the class reference and
-    in short code snippets in this documentation.
+    Chúng tôi sử dụng một dòng giữa các lớp và định nghĩa hàm trong tài liệu tham chiếu lớp cũng như trong các đoạn mã ngắn của tài liệu này.
 
-Line length
+Độ dài dòng
 ~~~~~~~~~~~
 
-Keep individual lines of code under 100 characters.
+Giữ mỗi dòng mã dưới 100 ký tự.
 
-If you can, try to keep lines under 80 characters. This helps to read the code
-on small displays and with two scripts opened side-by-side in an external text
-editor. For example, when looking at a differential revision.
+Nếu có thể, hãy cố gắng giữ các dòng dưới 80 ký tự. Điều này giúp đọc mã trên màn hình nhỏ và khi mở hai script cạnh nhau trong trình soạn thảo văn bản bên ngoài. Ví dụ, khi xem một bản sửa đổi khác biệt.
 
-One statement per line
-~~~~~~~~~~~~~~~~~~~~~~
+Mỗi dòng một câu lệnh
+~~~~~~~~~~~~~~~~~~~~~
 
-Avoid combining multiple statements on a single line, including conditional
-statements, to adhere to the GDScript style guidelines for readability.
+Tránh kết hợp nhiều câu lệnh trên một dòng, bao gồm cả các câu lệnh điều kiện, để tuân thủ các nguyên tắc phong cách GDScript về khả năng đọc.
 
-**Good**:
+**Đúng**:
 
 .. rst-class:: code-example-good
 
@@ -319,7 +302,7 @@ statements, to adhere to the GDScript style guidelines for readability.
     if flag:
         print("flagged")
 
-**Bad**:
+**Sai**:
 
 .. rst-class:: code-example-bad
 
@@ -329,30 +312,22 @@ statements, to adhere to the GDScript style guidelines for readability.
 
     if flag: print("flagged")
 
-The only exception to that rule is the ternary operator:
+Ngoại lệ duy nhất của quy tắc này là toán tử ternary:
 
 ::
 
     next_state = "idle" if is_on_floor() else "fall"
 
-Format multiline statements for readability
+Định dạng các câu lệnh nhiều dòng để dễ đọc
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When you have particularly long ``if`` statements or nested ternary expressions,
-wrapping them over multiple lines improves readability. Since continuation lines
-are still part of the same expression, 2 indent levels should be used instead of one.
+Khi bạn có các ``if`` câu lệnh đặc biệt dài hoặc các biểu thức ternary lồng nhau, việc ngắt chúng thành nhiều dòng sẽ giúp dễ đọc hơn. Vì các dòng tiếp nối vẫn là một phần của cùng biểu thức, nên sử dụng 2 cấp thụt lề thay vì một cấp.
 
-GDScript allows wrapping statements using multiple lines using parentheses or
-backslashes. Parentheses are favored in this style guide since they make for
-easier refactoring. With backslashes, you have to ensure that the last line
-never contains a backslash at the end. With parentheses, you don't have to
-worry about the last line having a backslash at the end.
+GDScript cho phép ngắt câu lệnh thành nhiều dòng bằng dấu ngoặc đơn hoặc dấu gạch chéo ngược. Hướng dẫn phong cách này ưu tiên dấu ngoặc đơn vì chúng giúp việc tái cấu trúc dễ dàng hơn. Với dấu gạch chéo ngược, bạn phải đảm bảo dòng cuối cùng không bao giờ chứa dấu gạch chéo ngược ở cuối. Với dấu ngoặc đơn, bạn không cần lo dòng cuối có dấu gạch chéo ngược ở cuối.
 
-When wrapping a conditional expression over multiple lines, the ``and``/``or``
-keywords should be placed at the beginning of the line continuation, not at the
-end of the previous line.
+Khi ngắt một biểu thức điều kiện thành nhiều dòng, các từ khóa ``and``/``or`` phải được đặt ở đầu phần tiếp nối của dòng, không đặt ở cuối dòng trước đó.
 
-**Good**:
+**Đúng**:
 
 .. rst-class:: code-example-good
 
@@ -373,7 +348,7 @@ end of the previous line.
     ):
         pass
 
-**Bad**:
+**Sai**:
 
 .. rst-class:: code-example-bad
 
@@ -386,14 +361,12 @@ end of the previous line.
     if position.x > 200 and position.x < 400 and position.y > 300 and position.y < 400:
         pass
 
-Avoid unnecessary parentheses
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tránh dùng dấu ngoặc đơn không cần thiết
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Avoid parentheses in expressions and conditional statements. Unless
-necessary for order of operations or wrapping over multiple lines,
-they only reduce readability.
+Tránh dùng dấu ngoặc đơn trong các biểu thức và câu lệnh điều kiện. Trừ khi cần thiết để xác định thứ tự thực hiện phép toán hoặc ngắt thành nhiều dòng, chúng chỉ làm giảm khả năng đọc.
 
-**Good**:
+**Đúng**:
 
 .. rst-class:: code-example-good
 
@@ -402,7 +375,7 @@ they only reduce readability.
     if is_colliding():
         queue_free()
 
-**Bad**:
+**Sai**:
 
 .. rst-class:: code-example-bad
 
@@ -413,19 +386,18 @@ they only reduce readability.
 
 .. _boolean_operators:
 
-Boolean operators
-~~~~~~~~~~~~~~~~~
+Toán tử Boolean
+~~~~~~~~~~~~~~~
 
-Prefer the plain English versions of boolean operators, as they are the most accessible:
+Ưu tiên các phiên bản bằng tiếng Anh tự nhiên của toán tử Boolean vì chúng dễ tiếp cận nhất:
 
-- Use ``and`` instead of ``&&``.
-- Use ``or`` instead of ``||``.
-- Use ``not`` instead of ``!``.
+- Sử dụng ``and`` thay vì ``&&``.
+- Sử dụng ``or`` thay vì ``||``.
+- Sử dụng ``not`` thay vì ``!``.
 
-You may also use parentheses around boolean operators to clear any ambiguity.
-This can make long expressions easier to read.
+Bạn cũng có thể sử dụng dấu ngoặc đơn quanh các toán tử Boolean để loại bỏ mọi sự mơ hồ. Điều này có thể giúp các biểu thức dài dễ đọc hơn.
 
-**Good**:
+**Đúng**:
 
 .. rst-class:: code-example-good
 
@@ -434,7 +406,7 @@ This can make long expressions easier to read.
     if (foo and bar) or not baz:
         print("condition is true")
 
-**Bad**:
+**Sai**:
 
 .. rst-class:: code-example-bad
 
@@ -443,18 +415,14 @@ This can make long expressions easier to read.
     if foo && bar || !baz:
         print("condition is true")
 
-Comment spacing
-~~~~~~~~~~~~~~~
+Khoảng cách trong chú thích
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Regular comments (``#``) and documentation comments (``##``) should start with a
-space, but not code that you comment out. Additionally, code region comments
-(``#region``/``#endregion``) must follow that precise syntax, so they should not
-start with a space.
+Các comment thông thường (``#``) và comment tài liệu (``##``) nên bắt đầu bằng một dấu cách, nhưng code được comment out thì không. Ngoài ra, comment vùng code (``#region``/``#endregion``) phải tuân theo chính xác cú pháp đó, vì vậy chúng không nên bắt đầu bằng dấu cách.
 
-Using a space for regular and documentation comments helps differentiate text
-comments from disabled code.
+Việc sử dụng một dấu cách cho comment thông thường và comment tài liệu giúp phân biệt comment văn bản với code bị vô hiệu hóa.
 
-**Good**:
+**Tốt**:
 
 .. rst-class:: code-example-good
 
@@ -463,7 +431,7 @@ comments from disabled code.
     # This is a comment.
     #print("This is disabled code")
 
-**Bad**:
+**Không tốt**:
 
 .. rst-class:: code-example-bad
 
@@ -474,15 +442,12 @@ comments from disabled code.
 
 .. note::
 
-    In the script editor, to toggle commenting of the selected code, press
-    :kbd:`Ctrl + K`. This shortcut adds/removes a single ``#`` sign before any
-    code on the selected lines.
+    Trong trình soạn thảo script, để bật hoặc tắt comment cho code đã chọn, hãy nhấn
+    :kbd:`Ctrl + K`. Phím tắt này thêm hoặc xóa một dấu ``#`` duy nhất trước mọi đoạn code trên các dòng đã chọn.
 
-Prefer writing comments on their own line as opposed to inline comments
-(comments written on the same line as code). Inline comments are best used for
-short comments, typically a few words at most:
+Ưu tiên viết comment trên dòng riêng thay vì comment nội tuyến (comment được viết trên cùng dòng với code). Comment nội tuyến phù hợp nhất cho các comment ngắn, thường chỉ vài từ:
 
-**Good**:
+**Tốt**:
 
 .. rst-class:: code-example-good
 
@@ -491,7 +456,7 @@ short comments, typically a few words at most:
     # This is a long comment that would make the line below too long if written inline.
     print("Example") # Short comment.
 
-**Bad**:
+**Không tốt**:
 
 .. rst-class:: code-example-bad
 
@@ -499,17 +464,12 @@ short comments, typically a few words at most:
 
     print("Example") # This is a long comment that would make this line too long if written inline.
 
-Whitespace
-~~~~~~~~~~
+Khoảng trắng
+~~~~~~~~~~~~
 
-Always use one space around operators and after commas. Also, avoid extra spaces
-in dictionary references and function calls. One exception to this is for
-single-line dictionary declarations, where a space should be added after the
-opening brace and before the closing brace. This makes the dictionary easier to
-visually distinguish from an array, as the ``[]`` characters look close to
-``{}`` with most fonts.
+Luôn sử dụng một dấu cách xung quanh các toán tử và sau dấu phẩy. Ngoài ra, tránh các dấu cách thừa trong các tham chiếu đến dictionary và các lệnh gọi hàm. Một ngoại lệ là khi khai báo dictionary trên một dòng, trong đó nên thêm một dấu cách sau dấu ngoặc nhọn mở và trước dấu ngoặc nhọn đóng. Điều này giúp phân biệt dictionary với array bằng mắt dễ dàng hơn, vì các ký tự ``[]`` trông gần giống ``{}`` trong hầu hết các font.
 
-**Good**:
+**Tốt**:
 
 .. rst-class:: code-example-good
 
@@ -522,7 +482,7 @@ visually distinguish from an array, as the ``[]`` characters look close to
     my_dictionary = { key = "value" }
     print("foo")
 
-**Bad**:
+**Không tốt**:
 
 .. rst-class:: code-example-bad
 
@@ -535,7 +495,7 @@ visually distinguish from an array, as the ``[]`` characters look close to
     my_dictionary = {key = "value"}
     print ("foo")
 
-Don't use spaces to align expressions vertically:
+Không sử dụng dấu cách để căn chỉnh các biểu thức theo chiều dọc:
 
 ::
 
@@ -543,11 +503,10 @@ Don't use spaces to align expressions vertically:
     y        = 100
     velocity = 500
 
-Quotes
-~~~~~~
+Dấu ngoặc kép
+~~~~~~~~~~~~~
 
-Use double quotes unless single quotes make it possible to escape fewer
-characters in a given string. See the examples below:
+Sử dụng dấu ngoặc kép đôi, trừ khi dấu ngoặc kép đơn giúp bạn phải escape ít ký tự hơn trong một chuỗi cụ thể. Xem các ví dụ dưới đây:
 
 ::
 
@@ -563,14 +522,12 @@ characters in a given string. See the examples below:
     # Both quote styles would require 2 escapes; prefer double quotes if it's a tie.
     print("'hello' \"world\"")
 
-Numbers
-~~~~~~~
+Số
+~~
 
-Don't omit the leading or trailing zero in floating-point numbers. Otherwise,
-this makes them less readable and harder to distinguish from integers at a
-glance.
+Không bỏ qua số 0 ở đầu hoặc cuối trong các số dấu phẩy động. Nếu không, chúng sẽ khó đọc hơn và khó phân biệt với số nguyên khi nhìn thoáng qua.
 
-**Good**:
+**Tốt**:
 
 .. rst-class:: code-example-good
 
@@ -579,7 +536,7 @@ glance.
     var float_number = 0.234
     var other_float_number = 13.0
 
-**Bad**:
+**Không tốt**:
 
 .. rst-class:: code-example-bad
 
@@ -588,10 +545,9 @@ glance.
     var float_number = .234
     var other_float_number = 13.
 
-Use lowercase for letters in hexadecimal numbers, as their lower height makes
-the number easier to read.
+Sử dụng chữ thường cho các chữ cái trong số thập lục phân, vì chiều cao thấp hơn của chúng giúp số dễ đọc hơn.
 
-**Good**:
+**Tốt**:
 
 .. rst-class:: code-example-good
 
@@ -599,7 +555,7 @@ the number easier to read.
 
     var hex_number = 0xfb8c0b
 
-**Bad**:
+**Không tốt**:
 
 .. rst-class:: code-example-bad
 
@@ -607,10 +563,9 @@ the number easier to read.
 
     var hex_number = 0xFB8C0B
 
-Take advantage of GDScript's underscores in literals to make large numbers more
-readable.
+Hãy tận dụng dấu gạch dưới trong literal của GDScript để giúp các số lớn dễ đọc hơn.
 
-**Good**:
+**Tốt**:
 
 .. rst-class:: code-example-good
 
@@ -622,7 +577,7 @@ readable.
     # Numbers lower than 1000000 generally don't need separators.
     var small_number = 12345
 
-**Bad**:
+**Không tốt**:
 
 .. rst-class:: code-example-bad
 
@@ -636,40 +591,37 @@ readable.
 
 .. _naming_conventions:
 
-Naming conventions
-------------------
+Quy ước đặt tên
+---------------
 
-These naming conventions follow the Godot Engine style. Breaking these will make
-your code clash with the built-in naming conventions, leading to inconsistent
-code. As a summary table:
+Các quy ước đặt tên này tuân theo phong cách của Godot Engine. Việc vi phạm các quy ước này sẽ khiến code của bạn xung đột với các quy ước đặt tên tích hợp sẵn, dẫn đến code không nhất quán. Bảng tóm tắt:
 
-+---------------+----------------+----------------------------------------------------+
-| Type          | Convention     | Example                                            |
-+===============+================+====================================================+
-| File names    | snake_case     | ``yaml_parser.gd``                                 |
-+---------------+----------------+----------------------------------------------------+
-| Class names   | PascalCase     | ``class_name YAMLParser``                          |
-+---------------+----------------+----------------------------------------------------+
-| Node names    | PascalCase     | ``Camera3D``, ``Player``                           |
-+---------------+----------------+----------------------------------------------------+
-| Functions     | snake_case     | ``func load_level():``                             |
-+---------------+----------------+----------------------------------------------------+
-| Variables     | snake_case     | ``var particle_effect``                            |
-+---------------+----------------+----------------------------------------------------+
-| Signals       | snake_case     | ``signal door_opened``                             |
-+---------------+----------------+----------------------------------------------------+
-| Constants     | CONSTANT_CASE  | ``const MAX_SPEED = 200``                          |
-+---------------+----------------+----------------------------------------------------+
-| Enum names    | PascalCase     | ``enum Element``                                   |
-+---------------+----------------+----------------------------------------------------+
-| Enum members  | CONSTANT_CASE  | ``{EARTH, WATER, AIR, FIRE}``                      |
-+---------------+----------------+----------------------------------------------------+
++-----------------+---------------+-------------------------------+
+| Loại            | Quy ước       | Ví dụ                         |
++=================+===============+===============================+
+| Tên file        | snake_case    | ``yaml_parser.gd``            |
++-----------------+---------------+-------------------------------+
+| Tên class       | PascalCase    | ``class_name YAMLParser``     |
++-----------------+---------------+-------------------------------+
+| Tên node        | PascalCase    | ``Camera3D``, ``Player``      |
++-----------------+---------------+-------------------------------+
+| Hàm             | snake_case    | ``func load_level():``        |
++-----------------+---------------+-------------------------------+
+| Biến            | snake_case    | ``var particle_effect``       |
++-----------------+---------------+-------------------------------+
+| Signal          | snake_case    | ``signal door_opened``        |
++-----------------+---------------+-------------------------------+
+| Hằng số         | CONSTANT_CASE | ``const MAX_SPEED = 200``     |
++-----------------+---------------+-------------------------------+
+| Tên enum        | PascalCase    | ``enum Element``              |
++-----------------+---------------+-------------------------------+
+| Member của enum | CONSTANT_CASE | ``{EARTH, WATER, AIR, FIRE}`` |
++-----------------+---------------+-------------------------------+
 
-File names
-~~~~~~~~~~
+Tên file
+~~~~~~~~
 
-Use snake_case for file names. For named classes, convert the PascalCase class
-name to snake_case:
+Sử dụng snake_case cho tên file. Đối với các class có tên, hãy chuyển tên class PascalCase thành snake_case:
 
 ::
 
@@ -683,65 +635,60 @@ name to snake_case:
     class_name YAMLParser
     extends Object
 
-This is consistent with how C++ files are named in Godot's source code. This
-also avoids case sensitivity issues that can crop up when exporting a project
-from Windows to other platforms.
+Điều này nhất quán với cách đặt tên file C++ trong mã nguồn của Godot. Cách này cũng tránh các vấn đề phân biệt chữ hoa chữ thường có thể phát sinh khi export một project từ Windows sang các nền tảng khác.
 
-Classes and nodes
-~~~~~~~~~~~~~~~~~
+Class và node
+~~~~~~~~~~~~~
 
-Use PascalCase for class and node names:
+Sử dụng PascalCase cho tên class và node:
 
 ::
 
     extends CharacterBody3D
 
-Also use PascalCase when loading a class into a constant or a variable:
+Cũng sử dụng PascalCase khi tải một class vào một hằng số hoặc biến:
 
 ::
 
     const Weapon = preload("res://weapon.gd")
 
-Functions and variables
-~~~~~~~~~~~~~~~~~~~~~~~
+Hàm và biến
+~~~~~~~~~~~
 
-Use snake\_case to name functions and variables:
+Sử dụng snake\_case để đặt tên cho hàm và biến:
 
 ::
 
     var particle_effect
     func load_level():
 
-Prepend a single underscore (\_) to virtual methods functions the user must
-override, private functions, and private variables:
+Thêm một dấu gạch dưới đơn (\_) vào đầu các hàm phương thức virtual mà người dùng phải override, các hàm private và các biến private:
 
 ::
 
     var _counter = 0
     func _recalculate_path():
 
-Signals
-~~~~~~~
+Signal
+~~~~~~
 
-Use the past tense to name signals:
+Sử dụng thì quá khứ để đặt tên cho signal:
 
 ::
 
     signal door_opened
     signal score_changed
 
-Constants and enums
-~~~~~~~~~~~~~~~~~~~
+Hằng số và enum
+~~~~~~~~~~~~~~~
 
-Write constants with CONSTANT\_CASE, that is to say in all caps with an
-underscore (\_) to separate words:
+Viết hằng số bằng CONSTANT\_CASE, nghĩa là viết toàn bộ bằng chữ hoa và dùng dấu gạch dưới (\_) để phân tách các từ:
 
 ::
 
     const MAX_SPEED = 200
 
-Use PascalCase for enum *names* and keep them singular, as they represent a type. Use CONSTANT\_CASE for their members, as they
-are constants:
+Sử dụng PascalCase cho *tên* enum và giữ chúng ở dạng số ít, vì chúng biểu diễn một kiểu. Sử dụng CONSTANT\_CASE cho các member của chúng, vì chúng là các hằng số:
 
 ::
 
@@ -752,10 +699,9 @@ are constants:
         FIRE,
     }
 
-Write enums with each item on its own line. This allows adding documentation comments above each item
-more easily, and also makes for cleaner diffs in version control when items are added or removed.
+Viết mỗi mục enum trên một dòng riêng. Điều này giúp dễ dàng thêm chú thích tài liệu phía trên từng mục hơn, đồng thời tạo ra các diff rõ ràng hơn trong hệ thống quản lý phiên bản khi thêm hoặc xóa mục.
 
-**Good**:
+**Tốt**:
 
 .. rst-class:: code-example-good
 
@@ -768,7 +714,7 @@ more easily, and also makes for cleaner diffs in version control when items are 
         FIRE,
     }
 
-**Bad**:
+**Không tốt**:
 
 .. rst-class:: code-example-bad
 
@@ -776,13 +722,13 @@ more easily, and also makes for cleaner diffs in version control when items are 
 
     enum Element { EARTH, WATER, AIR, FIRE }
 
-Code order
-----------
+Thứ tự mã
+---------
 
-This section focuses on code order. For formatting, see
-:ref:`formatting`. For naming conventions, see :ref:`naming_conventions`.
+Phần này tập trung vào thứ tự mã. Để biết về định dạng, hãy xem
+:ref:`formatting`. Để biết về quy ước đặt tên, hãy xem :ref:`naming_conventions`.
 
-We suggest to organize GDScript code this way:
+Chúng tôi đề xuất tổ chức mã GDScript theo cách sau:
 
 ::
 
@@ -812,43 +758,33 @@ We suggest to organize GDScript code this way:
     16. remaining methods
     17. inner classes
 
-And put the class methods and variables in the following order depending on their access modifiers:
+Và đặt các phương thức cùng biến của lớp theo thứ tự sau, tùy thuộc vào các access modifier của chúng:
 
 ::
 
     1. public
     2. private
 
-We optimized the order to make it easy to read the code from top to bottom, to
-help developers reading the code for the first time understand how it works, and
-to avoid errors linked to the order of variable declarations.
+Chúng tôi đã tối ưu hóa thứ tự này để dễ đọc mã từ trên xuống dưới, giúp các developer đọc mã lần đầu hiểu cách mã hoạt động, đồng thời tránh các lỗi liên quan đến thứ tự khai báo biến.
 
-This code order follows four rules of thumb:
+Thứ tự mã này tuân theo bốn nguyên tắc chung:
 
-1. Properties and signals come first, followed by methods.
-2. Public comes before private.
-3. Virtual callbacks come before the class's interface.
-4. The object's construction and initialization functions, ``_init`` and
-   ``_ready``, come before functions that modify the object at runtime.
+1. Properties và signals được đặt trước, tiếp theo là các phương thức.
+2. Public được đặt trước private.
+3. Các virtual callback được đặt trước interface của lớp.
+4. Các hàm khởi tạo và initialization của object, ``_init`` và ``_ready``, được đặt trước các hàm sửa đổi object trong runtime.
 
-Class declaration
-~~~~~~~~~~~~~~~~~
+Khai báo lớp
+~~~~~~~~~~~~
 
-If the code is meant to run in the editor, place the ``@tool`` annotation on the
-first line of the script.
+Nếu mã được thiết kế để chạy trong editor, hãy đặt annotation ``@tool`` ở dòng đầu tiên của script.
 
-Follow with the optional ``@icon`` then the ``class_name`` if necessary. You can turn a
-GDScript file into a global type in your project using ``class_name``. For more
-information, see :ref:`doc_gdscript_basics_class_name`. If the class is meant
-to be an :ref:`abstract class <doc_gdscript_basics_abstract_class>`,
-add ``@abstract`` *before* the ``class_name`` keyword.
+Tiếp theo là ``@icon`` không bắt buộc, rồi đến ``class_name`` nếu cần. Bạn có thể biến tệp GDScript thành một global type trong project bằng ``class_name``. Để biết thêm thông tin, hãy xem :ref:`doc_gdscript_basics_class_name`. Nếu lớp được thiết kế là một :ref:`lớp abstract <doc_gdscript_basics_abstract_class>`, hãy thêm ``@abstract`` *trước* từ khóa ``class_name``.
 
-Then, add the ``extends`` keyword if the class extends a built-in type.
+Sau đó, thêm từ khóa ``extends`` nếu lớp mở rộng một built-in type.
 
-Following that, you should have the class's optional
-:ref:`documentation comments <doc_gdscript_documentation_comments>`.
-You can use that to explain the role of your class to your teammates, how it works,
-and how other developers should use it, for example.
+Sau đó, bạn sẽ có phần tùy chọn của class
+:ref:`documentation comments <doc_gdscript_documentation_comments>`. Chẳng hạn, bạn có thể dùng phần này để giải thích vai trò của lớp cho các đồng đội, cách lớp hoạt động và cách các developer khác nên sử dụng lớp.
 
 ::
 
@@ -860,7 +796,7 @@ and how other developers should use it, for example.
     ## The description of the script, what it can do,
     ## and any further detail.
 
-For inner classes, use single-line declarations:
+Đối với các lớp bên trong, hãy dùng khai báo một dòng:
 
 ::
 
@@ -871,17 +807,14 @@ For inner classes, use single-line declarations:
     @abstract class MyNode extends Node:
         pass
 
-Signals and properties
-~~~~~~~~~~~~~~~~~~~~~~
+Signals và properties
+~~~~~~~~~~~~~~~~~~~~~
 
-Write signal declarations, followed by properties, that is to say, member
-variables, after the docstring.
+Sau docstring, hãy viết các khai báo signal, tiếp theo là properties, tức là các member variable.
 
-Enums should come after signals, as you can use them as export hints for other
-properties.
+Enum nên được đặt sau signal, vì bạn có thể dùng chúng làm export hint cho các property khác.
 
-Then, write constants, exported variables, public, private, and onready
-variables, in that order.
+Sau đó, hãy viết constants, exported variables, public, private và onready variables theo thứ tự đó.
 
 ::
 
@@ -913,43 +846,30 @@ variables, in that order.
 
 .. note::
 
-    GDScript evaluates ``@onready`` variables right before the ``_ready``
-    callback. You can use that to cache node dependencies, that is to say, to get
-    child nodes in the scene that your class relies on. This is what the example
-    above shows.
+    GDScript đánh giá các biến ``@onready`` ngay trước callback ``_ready``. Bạn có thể dùng điều này để cache các node dependency, tức là lấy các node con trong scene mà lớp của bạn phụ thuộc vào. Đây là điều ví dụ trên minh họa.
 
-Member variables
-~~~~~~~~~~~~~~~~
-
-Don't declare member variables if they are only used locally in a method, as it
-makes the code more difficult to follow. Instead, declare them as local
-variables in the method's body.
-
-Local variables
+Member variable
 ~~~~~~~~~~~~~~~
 
-Declare local variables as close as possible to their first use. This makes it
-easier to follow the code, without having to scroll too much to find where the
-variable was declared.
+Đừng khai báo member variable nếu chúng chỉ được sử dụng cục bộ trong một phương thức, vì điều đó khiến mã khó theo dõi hơn. Thay vào đó, hãy khai báo chúng dưới dạng local variable trong phần thân của phương thức.
 
-Methods and static functions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Local variable
+~~~~~~~~~~~~~~
 
-After the class's properties come the methods.
+Khai báo local variable gần nhất có thể với lần sử dụng đầu tiên của chúng. Điều này giúp dễ theo dõi mã hơn mà không phải cuộn quá nhiều để tìm nơi biến được khai báo.
 
-Start with the ``_init()`` callback method, that the engine will call upon
-creating the object in memory. Follow with the ``_ready()`` callback, that Godot
-calls when it adds a node to the scene tree.
+Phương thức và hàm static
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-These functions should come first because they show how the object is
-initialized.
+Sau properties của lớp là các phương thức.
 
-Other built-in virtual callbacks, like ``_unhandled_input()`` and
-``_physics_process``, should come next. These control the object's main loop and
-interactions with the game engine.
+Bắt đầu bằng phương thức callback ``_init()``, được engine gọi khi tạo object trong bộ nhớ. Tiếp theo là callback ``_ready()``, được Godot gọi khi thêm một node vào scene tree.
 
-The rest of the class's interface, public and private methods, come after that,
-in that order.
+Các hàm này nên được đặt trước vì chúng cho thấy cách object được khởi tạo.
+
+Các virtual callback dựng sẵn khác, như ``_unhandled_input()`` và ``_physics_process``, nên được đặt tiếp theo. Chúng điều khiển main loop của object và các tương tác với game engine.
+
+Phần còn lại của interface của lớp, gồm các phương thức public và private, được đặt sau đó theo thứ tự này.
 
 ::
 
@@ -987,31 +907,29 @@ in that order.
 Static typing
 -------------
 
-GDScript supports :ref:`optional static typing<doc_gdscript_static_typing>`.
+GDScript hỗ trợ :ref:`static typing tùy chọn <doc_gdscript_static_typing>`.
 
-Declared types
-~~~~~~~~~~~~~~
+Các kiểu được khai báo
+~~~~~~~~~~~~~~~~~~~~~~
 
-To declare a variable's type, use ``<variable>: <type>``:
+Để khai báo kiểu của một biến, hãy dùng ``<variable>: <type>``:
 
 ::
 
     var health: int = 0
 
-To declare the return type of a function, use ``-> <type>``:
+Để khai báo kiểu trả về của một hàm, hãy dùng ``-> <type>``:
 
 ::
 
     func heal(amount: int) -> void:
 
-Inferred types
-~~~~~~~~~~~~~~
+Các kiểu được suy luận
+~~~~~~~~~~~~~~~~~~~~~~
 
-In most cases, you can let the compiler infer the type using ``:=``.
-Prefer ``:=`` when the type is written on the same line as the assignment,
-otherwise prefer writing the type explicitly.
+Trong hầu hết trường hợp, bạn có thể để compiler suy luận kiểu bằng ``:=``. Ưu tiên ``:=`` khi kiểu được viết trên cùng dòng với phép gán; nếu không, hãy ưu tiên viết kiểu một cách rõ ràng.
 
-**Good**:
+**Tốt**:
 
 .. rst-class:: code-example-good
 
@@ -1023,10 +941,9 @@ otherwise prefer writing the type explicitly.
     # The type is clearly inferred as Vector3.
     var direction := Vector3(1, 2, 3)
 
-Include the type hint when the type is ambiguous, and
-omit the type hint when it's redundant.
+Hãy thêm type hint khi kiểu không rõ ràng, và bỏ qua type hint khi nó dư thừa.
 
-**Bad**:
+**Không tốt**:
 
 .. rst-class:: code-example-bad
 
@@ -1041,13 +958,9 @@ omit the type hint when it's redundant.
     # What type is this? It's not immediately clear to the reader, so it's bad.
     var value := complex_function()
 
-In some cases, the type must be stated explicitly, otherwise the behavior
-will not be as expected because the compiler will only be able to use
-the function's return type. For example, ``get_node()`` cannot infer a type
-unless the scene or file of the node is loaded in memory. In this case, you
-should set the type explicitly.
+Trong một số trường hợp, kiểu phải được nêu rõ; nếu không, hành vi sẽ không như mong đợi vì compiler chỉ có thể sử dụng kiểu trả về của hàm. Ví dụ, ``get_node()`` không thể suy luận kiểu trừ khi scene hoặc tệp của node được tải vào bộ nhớ. Trong trường hợp này, bạn nên đặt kiểu một cách rõ ràng.
 
-**Good**:
+**Tốt**:
 
 .. rst-class:: code-example-good
 
@@ -1055,7 +968,7 @@ should set the type explicitly.
 
     @onready var health_bar: ProgressBar = get_node("UI/LifeBar")
 
-**Bad**:
+**Không tốt**:
 
 .. rst-class:: code-example-bad
 
@@ -1065,8 +978,7 @@ should set the type explicitly.
     # instead of ProgressBar.
     @onready var health_bar := get_node("UI/LifeBar")
 
-Alternatively, you can use the ``as`` keyword to cast the return type, and
-that type will be used to infer the type of the var.
+Ngoài ra, bạn có thể dùng từ khóa ``as`` để ép kiểu trả về, và kiểu đó sẽ được dùng để suy luận kiểu của var.
 
 .. rst-class:: code-example-good
 
@@ -1078,6 +990,6 @@ that type will be used to infer the type of the var.
 
 .. note::
 
-    This option is considered more :ref:`type-safe<doc_gdscript_static_typing_safe_lines>` than type hints,
-    but also less null-safe as it silently casts the variable to ``null`` in case of a type mismatch at runtime,
-    without an error/warning.
+    Tùy chọn này được xem là :ref:`an toàn kiểu <doc_gdscript_static_typing_safe_lines>` hơn so với type hint, nhưng cũng kém an toàn null hơn vì nó âm thầm ép biến thành ``null`` trong trường hợp không khớp kiểu tại runtime mà không đưa ra lỗi/cảnh báo.
+
+.. _`byte order mark`: https://en.wikipedia.org/wiki/Byte_order_mark

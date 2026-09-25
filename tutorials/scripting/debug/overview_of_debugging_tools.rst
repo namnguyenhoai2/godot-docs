@@ -1,290 +1,217 @@
 .. _doc_overview_of_debugging_tools:
 
-Overview of debugging tools
-===========================
+Tổng quan về các công cụ gỡ lỗi
+===============================
 
-This guide will give you an overview of the available debugging tools in the
-engine.
+Hướng dẫn này sẽ cung cấp cho bạn tổng quan về các công cụ gỡ lỗi hiện có trong engine.
 
-Godot comes with a powerful debugger and profilers to track down bugs, inspect
-your game at runtime, monitor essential metrics, and measure performances.
-It also offers options to visualize collision boxes and navigation polygons
-in the running game.
+Godot đi kèm trình gỡ lỗi và các profiler mạnh mẽ để tìm và khắc phục lỗi, kiểm tra game trong runtime, theo dõi các chỉ số thiết yếu và đo hiệu năng. Godot cũng cung cấp các tùy chọn để trực quan hóa các hộp va chạm và polygon điều hướng trong game đang chạy.
 
-Finally, you have options to debug the game running on a remote device
-and to reload changes to your scenes or your code while the game is running.
+Cuối cùng, bạn có các tùy chọn để gỡ lỗi game đang chạy trên thiết bị từ xa và tải lại các thay đổi đối với scene hoặc code trong khi game đang chạy.
 
 Output Panel
---------------
+------------
 
-The output panel allows you to see text printed by the project, but also by the editor (e.g. from ``@tool`` scripts).
-You can find information about in :ref:`doc_output_panel`.
+Output panel cho phép bạn xem văn bản được project in ra, cũng như văn bản do editor in ra (ví dụ: từ các script ``@tool``). Bạn có thể tìm thông tin về nội dung này trong :ref:`doc_output_panel`.
 
 Debugger Panel
 --------------
 
-Many of Godot's debugging tools are part of the Debugger panel, which you can
-find information about in :ref:`doc_debugger_panel`.
+Nhiều công cụ gỡ lỗi của Godot nằm trong Debugger panel; bạn có thể tìm thông tin về panel này trong :ref:`doc_debugger_panel`.
 
-Debug menu options
-------------------
+Các tùy chọn trong menu Debug
+-----------------------------
 
-There are a few common debug options you can toggle on or off when running
-your game in the editor, which can help you in debugging your game.
+Có một số tùy chọn gỡ lỗi phổ biến mà bạn có thể bật hoặc tắt khi chạy game trong editor, giúp bạn gỡ lỗi game.
 
-You can find these options in the **Debug** editor menu.
+Bạn có thể tìm các tùy chọn này trong menu editor **Debug**.
 
 .. image:: img/overview_debug.webp
 
-Here are the descriptions of the options:
+Mô tả các tùy chọn như sau:
 
 Deploy with Remote Debug
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-When this option is enabled, using one-click deploy will make the executable
-attempt to connect to this computer's IP so the running project can be debugged.
-This option is intended to be used for remote debugging (typically with a mobile
-device).
-You don't need to enable it to use the GDScript debugger locally.
+Khi bật tùy chọn này, việc sử dụng one-click deploy sẽ khiến executable cố gắng kết nối đến IP của máy tính này để có thể gỡ lỗi project đang chạy. Tùy chọn này được dùng cho việc gỡ lỗi từ xa (thường là với thiết bị di động). Bạn không cần bật tùy chọn này để sử dụng trình gỡ lỗi GDScript cục bộ.
 
 Small Deploy with Network Filesystem
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This option speeds up testing for games with a large footprint on remote devices.
+Tùy chọn này tăng tốc việc kiểm thử các game có dung lượng lớn trên thiết bị từ xa.
 
-When **Small Deploy with Network Filesystem** is on, instead of exporting the
-full game, deploying the game builds a minimal executable. The editor then
-provides files from the project over the network.
+Khi **Small Deploy with Network Filesystem** được bật, thay vì export toàn bộ game, việc deploy game sẽ tạo một executable tối giản. Sau đó, editor cung cấp các file của project qua network.
 
-Also, on Android, the game is deployed using the USB cable to speed up
-deployment.
+Ngoài ra, trên Android, game được deploy bằng cáp USB để tăng tốc quá trình deploy.
 
 Visible Collision Shapes
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-When this option is enabled, collision shapes and raycast nodes (for 2D and 3D)
-will be visible in the running project.
+Khi bật tùy chọn này, các collision shape và node raycast (cho 2D và 3D) sẽ hiển thị trong project đang chạy.
 
 Visible Paths
 ~~~~~~~~~~~~~
 
-When this option is enabled, curve resources used by path nodes will be visible
-in the running project.
+Khi bật tùy chọn này, các curve resource được node path sử dụng sẽ hiển thị trong project đang chạy.
 
 Visible Navigation
 ~~~~~~~~~~~~~~~~~~
 
-When this option is enabled, navigation meshes, and polygons will be visible in
-the running project.
+Khi bật tùy chọn này, các navigation mesh và polygon sẽ hiển thị trong project đang chạy.
 
 Visible Avoidance
 ~~~~~~~~~~~~~~~~~
 
-When this option is enabled, avoidance object shapes, radiuses, and velocities
-will be visible in the running project.
+Khi bật tùy chọn này, shape, bán kính và vận tốc của các đối tượng avoidance sẽ hiển thị trong project đang chạy.
 
 Debug CanvasItem Redraws
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-When this option is enabled, redraw requests of 2D objects will become visible
-(as a short flash) in the running project.
-This is useful to troubleshoot low processor mode.
+Khi bật tùy chọn này, các yêu cầu redraw của đối tượng 2D sẽ hiển thị (dưới dạng một lần nhấp nháy ngắn) trong project đang chạy. Tùy chọn này hữu ích để khắc phục sự cố trong low processor mode.
 
 Synchronize Scene Changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When this option is enabled, any changes made to the scene in the editor will be
-replicated in the running project.
-When used remotely on a device, this is more efficient when the network
-filesystem option is enabled.
+Khi bật tùy chọn này, mọi thay đổi đối với scene trong editor sẽ được sao chép vào project đang chạy. Khi sử dụng từ xa trên thiết bị, tùy chọn này hiệu quả hơn khi bật network filesystem.
 
 Synchronize Script Changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When this option is enabled, any changes made to the script in the editor will
-be reloaded in the running project. When used
-remotely on a device, this is more efficient with the network filesystem.
+Khi bật tùy chọn này, mọi thay đổi đối với script trong editor sẽ được tải lại vào project đang chạy. Khi sử dụng từ xa trên thiết bị, tùy chọn này hiệu quả hơn khi dùng network filesystem.
 
 Keep Debug Server Open
 ~~~~~~~~~~~~~~~~~~~~~~
 
-When this option is enabled, the editor debug server will stay open and listen
-for new sessions started outside of the editor itself.
+Khi bật tùy chọn này, debug server của editor sẽ tiếp tục mở và lắng nghe các session mới được khởi chạy bên ngoài chính editor.
 
 Customize Run Instances...
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This opens a dialog allowing you to tell Godot to run multiple instances of the
-game at once, and to specify the command line arguments for each instance. This
-is especially useful when building and debugging multiplayer games.
+Tùy chọn này mở một hộp thoại cho phép bạn yêu cầu Godot chạy đồng thời nhiều instance của game và chỉ định các đối số dòng lệnh cho từng instance. Tùy chọn này đặc biệt hữu ích khi xây dựng và gỡ lỗi game multiplayer.
 
 .. image:: img/customize_run_instances.webp
 
 Enable Multiple Instances
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When this option is enabled, the editor will run multiple instances of the
-project at once when you Run Project.
+Khi bật tùy chọn này, editor sẽ chạy đồng thời nhiều instance của project khi bạn chọn Run Project.
 
-Below this checkbox is a selector to pick how many instances to run.
+Bên dưới checkbox này là một bộ chọn để chọn số lượng instance cần chạy.
 
-Checking the box and setting this to only 1 is the same as not checking this box
-at all.
+Việc đánh dấu checkbox và đặt giá trị này thành 1 cũng giống như không đánh dấu checkbox này.
 
 Main Run Args
 ^^^^^^^^^^^^^
 
-These are the arguments that will be passed to **every** instance of the project
-when you Run Project, unless you select "Enabled" under "Override Main Run Args"
-for a specific instance.
+Đây là các đối số sẽ được truyền cho **mọi** instance của project khi bạn chọn Run Project, trừ khi bạn chọn "Enabled" bên dưới "Override Main Run Args" cho một instance cụ thể.
 
-Note that these arguments are space-separated.
+Lưu ý rằng các đối số này được phân tách bằng khoảng trắng.
 
 .. tip::
 
-    These arguments can be accessed in your script by using
+    Bạn có thể truy cập các đối số này trong script bằng cách sử dụng
     :ref:`get_cmdline_args<class_OS_method_get_cmdline_args>`.
 
 .. warning::
 
-    Even if you uncheck "Enable Multiple Instances" these arguments will be
-    passed when you Run Project.
+    Ngay cả khi bỏ chọn "Enable Multiple Instances", các đối số này vẫn sẽ được truyền khi bạn chọn Run Project.
 
 Main Feature Tags
 ^^^^^^^^^^^^^^^^^
 
-These are the feature tags that will be passed to **every** instance of the
-project when you Run Project, unless you select "Enabled" under "Override Main
-Tags" for a specific instance.
+Đây là các feature tag sẽ được truyền cho **mọi** instance của project khi bạn chọn Run Project, trừ khi bạn chọn "Enabled" bên dưới "Override Main Tags" cho một instance cụ thể.
 
 Override Main Run Args
 ^^^^^^^^^^^^^^^^^^^^^^
 
-When this is enabled, the arguments in the "Main Run Args" field will **not be
-passed** to this specific instance of the project when you Run Project.
+Khi bật tùy chọn này, các đối số trong trường "Main Run Args" sẽ **không được truyền** cho instance cụ thể này của project khi bạn chọn Run Project.
 
 Launch Arguments
 ^^^^^^^^^^^^^^^^
 
-These are the arguments that will be passed to this specific instance of the
-project when you Run Project. They will be **combined with** the "Main Run Args"
-unless you select "Enabled" under "Override Main Run Args".
+Đây là các đối số sẽ được truyền cho instance cụ thể này của project khi bạn chọn Run Project. Chúng sẽ được **kết hợp với** "Main Run Args", trừ khi bạn chọn "Enabled" bên dưới "Override Main Run Args".
 
 Override Main Tags
 ^^^^^^^^^^^^^^^^^^
 
-When this is enabled, the tags in the "Main Feature Tags" field will **not be
-passed** to this specific instance of the project when you Run Project.
+Khi bật tùy chọn này, các tag trong trường "Main Feature Tags" sẽ **không được truyền** cho instance cụ thể này của project khi bạn chọn Run Project.
 
 Feature Tags
 ^^^^^^^^^^^^
 
-These are the feature tags that will be passed to this specific instance of the
-project when you Run Project. They will be **combined with** the "Main Feature
-Tags" unless you select "Enabled" under "Override Main Tags".
+Đây là các feature tag sẽ được truyền cho instance cụ thể này của project khi bạn chọn Run Project. Chúng sẽ được **kết hợp với** "Main Feature Tags", trừ khi bạn chọn "Enabled" bên dưới "Override Main Tags".
 
 .. warning::
-    If you want to pass "User" arguments, that can be accessed with
-    :ref:`get_cmdline_user_args<class_OS_method_get_cmdline_user_args>` then you
-    must prefix them with two dashes **and a space** like `-- one two three`.
+    Nếu bạn muốn truyền các đối số "User", có thể được truy cập bằng
+    :ref:`get_cmdline_user_args<class_OS_method_get_cmdline_user_args>` thì bạn phải thêm tiền tố gồm hai dấu gạch ngang **và một dấu cách** như `-- one two three`.
 
-    Be aware that these dashes will apply to arguments added later in the
-    "Launch Arguments" on a per instance basis, which can cause some confusion
-    when combining the `Main Run Args` and `Launch Arguments`.
+    Lưu ý rằng các dấu gạch ngang này sẽ áp dụng cho những đối số được thêm sau đó trong "Launch Arguments" theo từng instance, điều này có thể gây nhầm lẫn khi kết hợp `Main Run Args` và `Launch Arguments`.
 
-    If you place `-- one two three` in the "Main Run Args" and `-- four five
-    six` in the "Launch Arguments" then the final command line arguments will be
-    `one two three -- four five six`. This is because the `--` is repeated in
-    the "Launch Arguments".
+    Nếu bạn đặt `-- one two three` trong "Main Run Args" và `-- four five six` trong "Launch Arguments" thì các đối số dòng lệnh cuối cùng sẽ là `one two three -- four five six`. Điều này là do `--` được lặp lại trong "Launch Arguments".
 
 
 .. _doc_debugger_tools_and_options:
 
-Script editor debug tools and options
--------------------------------------
+Công cụ và tùy chọn debug của trình chỉnh sửa script
+----------------------------------------------------
 
-The script editor has its own set of debug tools for use with breakpoints and
-two options. The breakpoint tools can also be found in the **Debugger** tab
-of the debugger.
+Trình chỉnh sửa script có bộ công cụ debug riêng để sử dụng với breakpoint và hai tùy chọn. Các công cụ breakpoint cũng có trong tab **Debugger** của debugger.
 
 .. tip::
 
-    You can create a breakpoint by clicking the gutter in the left of the script
-    editor (on the left of the line numbers). When hovering this gutter, you
-    will see a transparent red dot appearing, which turns into an opaque red dot
-    after the breakpoint is placed by clicking. Click the red dot again to
-    remove the breakpoint. Breakpoints created this way persist across editor
-    restarts, even if the script wasn't saved when exiting the editor.
+    Bạn có thể tạo breakpoint bằng cách nhấp vào lề bên trái của trình chỉnh sửa script (bên trái số dòng). Khi di chuột lên lề này, bạn sẽ thấy một chấm đỏ trong suốt xuất hiện; chấm này sẽ chuyển thành chấm đỏ đậm sau khi bạn nhấp để đặt breakpoint. Nhấp lại vào chấm đỏ để xóa breakpoint. Các breakpoint được tạo theo cách này vẫn tồn tại qua những lần khởi động lại trình chỉnh sửa, ngay cả khi script chưa được lưu khi thoát trình chỉnh sửa.
 
-    You can also use the ``breakpoint`` keyword in GDScript to create a
-    breakpoint that is stored in the script itself. Unlike breakpoints created by
-    clicking in the gutter, this keyword-based breakpoint is persistent across
-    different machines when using version control.
+    Bạn cũng có thể sử dụng từ khóa ``breakpoint`` trong GDScript để tạo một breakpoint được lưu ngay trong script. Không giống các breakpoint được tạo bằng cách nhấp vào lề, breakpoint dựa trên từ khóa này vẫn tồn tại trên các máy khác nhau khi sử dụng version control.
 
 .. image:: img/overview_script_editor.webp
 
-The **Break** button causes a break in the script like a breakpoint would.
-**Continue** makes the game continue after pausing at a breakpoint.
-**Step Over** goes to the next line of code, and **Step Into** goes into
-a function if possible. Otherwise, it does the same thing as **Step Over**.
+Nút **Break** khiến script dừng lại giống như một breakpoint. **Continue** tiếp tục chạy game sau khi tạm dừng tại breakpoint. **Step Over** chuyển đến dòng code tiếp theo, còn **Step Into** đi vào một hàm nếu có thể. Nếu không, nó sẽ thực hiện giống như **Step Over**.
 
-The **Debug with External Editor** option lets you debug your game with an external editor.
-You can set a shortcut for it in **Editor Settings > Shortcuts > Debugger**.
+Tùy chọn **Debug with External Editor** cho phép bạn debug game bằng một trình chỉnh sửa bên ngoài. Bạn có thể đặt phím tắt cho tùy chọn này trong **Editor Settings > Shortcuts > Debugger**.
 
-When the debugger breaks on a breakpoint, a green triangle arrow is visible in
-the script editor's gutter. This arrow indicates the line of code the debugger
-broke on.
+Khi debugger dừng tại breakpoint, một mũi tên hình tam giác màu xanh lá sẽ hiển thị ở lề của trình chỉnh sửa script. Mũi tên này cho biết dòng code mà debugger đã dừng lại.
 
-Debug project settings
-----------------------
+Cài đặt project để debug
+------------------------
 
-In the project settings, there is a **Debug** category with subcategories which
-control different things. Enable **Advanced Settings** to change these settings.
+Trong phần cài đặt project, có một danh mục **Debug** với các danh mục con dùng để kiểm soát nhiều thành phần khác nhau. Bật **Advanced Settings** để thay đổi các cài đặt này.
 
-Settings
-~~~~~~~~
+Cài đặt
+~~~~~~~
 
-These are some general settings such as printing the current FPS
-to the **Output** panel, the maximum amount of functions when profiling
-and others.
+Đây là một số cài đặt chung, chẳng hạn như in FPS hiện tại vào panel **Output**, số lượng hàm tối đa khi profiling và các cài đặt khác.
 
-File Logging
-~~~~~~~~~~~~
+Ghi log vào file
+~~~~~~~~~~~~~~~~
 
-These settings allow you to log console output and error messages to files.
+Các cài đặt này cho phép bạn ghi đầu ra của console và các thông báo lỗi vào file.
 
 GDScript
 ~~~~~~~~
 
-These settings allow you to toggle specific GDScript warnings, such as for
-unused variables. You can also turn off warnings completely. See
-:ref:`doc_gdscript_warning_system` for more information.
+Các cài đặt này cho phép bạn bật hoặc tắt những cảnh báo GDScript cụ thể, chẳng hạn như cảnh báo về biến không được sử dụng. Bạn cũng có thể tắt hoàn toàn các cảnh báo. Xem
+:ref:`doc_gdscript_warning_system` để biết thêm thông tin.
 
-Shader Language
+Ngôn ngữ shader
 ~~~~~~~~~~~~~~~
 
-These settings allow you to toggle specific shader warnings, such as for
-unused variables. You can also turn off warnings completely.
+Các cài đặt này cho phép bạn bật hoặc tắt những cảnh báo shader cụ thể, chẳng hạn như cảnh báo về biến không được sử dụng. Bạn cũng có thể tắt hoàn toàn các cảnh báo.
 
 Canvas Items
 ~~~~~~~~~~~~
 
-These settings are for canvas item redraw debugging.
+Các cài đặt này dùng để debug việc vẽ lại canvas item.
 
-Shapes
-~~~~~~
+Hình dạng
+~~~~~~~~~
 
-Shapes are where you can adjust the color of shapes that only appear for
-debugging purposes, such as collision and navigation shapes.
+Hình dạng là nơi bạn có thể điều chỉnh màu của những hình dạng chỉ xuất hiện cho mục đích debug, chẳng hạn như hình dạng va chạm và điều hướng.
 
-Remote in scene dock
---------------------
+Remote trong dock scene
+-----------------------
 
-When running a game in the editor two options appear at the top of the **Scene**
-dock, **Remote** and **Local**. While using **Remote** you can inspect or change
-the nodes' parameters in the running project.
+Khi chạy game trong trình chỉnh sửa, hai tùy chọn sẽ xuất hiện ở đầu dock **Scene**: **Remote** và **Local**. Khi sử dụng **Remote**, bạn có thể kiểm tra hoặc thay đổi các tham số của node trong project đang chạy.
 
 .. image:: img/overview_remote.webp
 
-.. note:: Some editor settings related to debugging can be found inside
-          the **Editor Settings**, under the **Network > Debug** and **Debugger** sections.
+.. note:: Một số cài đặt trình chỉnh sửa liên quan đến việc debug nằm trong **Editor Settings**, tại các phần **Network > Debug** và **Debugger**.

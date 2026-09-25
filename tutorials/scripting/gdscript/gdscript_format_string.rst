@@ -1,28 +1,24 @@
 .. _doc_gdscript_printf:
 
-GDScript format strings
-=======================
+Chuỗi định dạng GDScript
+========================
 
-Godot offers multiple ways to dynamically change the contents of strings:
+Godot cung cấp nhiều cách để thay đổi nội dung của chuỗi một cách linh động:
 
-- Format strings: ``var string = "I have %s cats." % "3"``
-- The ``String.format()`` method: ``var string = "I have {0} cats.".format([3])``
-- String concatenation: ``var string = "I have " + str(3) + " cats."``
+- Chuỗi định dạng: ``var string = "I have %s cats." % "3"``
+- Phương thức ``String.format()``: ``var string = "I have {0} cats.".format([3])``
+- Nối chuỗi: ``var string = "I have " + str(3) + " cats."``
 
-This page explains how to use format strings, and briefly explains the ``format()``
-method and string concatenation.
+Trang này giải thích cách sử dụng chuỗi định dạng, đồng thời giải thích ngắn gọn về phương thức ``format()`` và phép nối chuỗi.
 
-Format strings
---------------
+Chuỗi định dạng
+---------------
 
-*Format strings* are a way to reuse text templates to succinctly create different
-but similar strings.
+*Chuỗi định dạng* là cách tái sử dụng các mẫu văn bản để ngắn gọn tạo ra những chuỗi khác nhau nhưng tương tự nhau.
 
-Format strings are just like normal strings, except they contain certain
-placeholder character sequences such as ``%s``. These placeholders can then
-be replaced by parameters handed to the format string.
+Chuỗi định dạng giống như chuỗi thông thường, ngoại trừ việc chúng chứa một số chuỗi ký tự giữ chỗ nhất định như ``%s``. Sau đó, các phần giữ chỗ này có thể được thay thế bằng các tham số được truyền cho chuỗi định dạng.
 
-Examine this concrete GDScript example:
+Hãy xem ví dụ GDScript cụ thể sau:
 
 ::
 
@@ -35,25 +31,16 @@ Examine this concrete GDScript example:
     print(actual_string)
     # Output: "We're waiting for Godot."
 
-Placeholders always start with a ``%``, but the next character or characters,
-the *format specifier*, determines how the given value is converted to a
-string.
+Các phần giữ chỗ luôn bắt đầu bằng ``%``, nhưng ký tự hoặc các ký tự tiếp theo, *bộ định dạng*, sẽ quyết định cách chuyển đổi giá trị được cung cấp thành chuỗi.
 
-The ``%s`` seen in the example above is the simplest placeholder and works for
-most use cases: it converts the value by the same method by which an implicit
-String conversion or :ref:`str() <class_@GlobalScope_method_str>` would convert
-it. Strings remain unchanged, booleans turn into either ``"true"`` or ``"false"``,
-``int`` and ``float`` types become decimals, and other types usually return their data
-in a human-readable string.
+``%s`` xuất hiện trong ví dụ trên là phần giữ chỗ đơn giản nhất và hoạt động trong hầu hết trường hợp sử dụng: nó chuyển đổi giá trị bằng cùng phương thức mà một phép chuyển đổi String ngầm định hoặc :ref:`str() <class_@GlobalScope_method_str>` sẽ sử dụng. Các chuỗi không thay đổi, boolean được chuyển thành ``"true"`` hoặc ``"false"``, các kiểu ``int`` và ``float`` trở thành số thập phân, còn các kiểu khác thường trả về dữ liệu dưới dạng chuỗi dễ đọc.
 
-There are other `format specifiers`_.
+Có các `bộ định dạng <format specifiers_>`_ khác.
 
-Multiple placeholders
----------------------
+Nhiều phần giữ chỗ
+------------------
 
-Format strings may contain multiple placeholders. In such a case, the values
-are handed in the form of an array, one value per placeholder (unless using a
-format specifier with ``*``, see `dynamic padding`_):
+Chuỗi định dạng có thể chứa nhiều phần giữ chỗ. Trong trường hợp đó, các giá trị được truyền dưới dạng một mảng, mỗi phần giữ chỗ tương ứng với một giá trị (trừ khi sử dụng bộ định dạng với ``*``, xem `đệm động <dynamic padding_>`_):
 
 ::
 
@@ -63,87 +50,65 @@ format specifier with ``*``, see `dynamic padding`_):
     print(actual_string)
     # Output: "Estragon was reluctant to learn GDScript, but now he enjoys it."
 
-Note the values are inserted in order. Remember all placeholders must be
-replaced at once, so there must be an appropriate number of values.
+Lưu ý rằng các giá trị được chèn theo thứ tự. Hãy nhớ rằng mọi phần giữ chỗ phải được thay thế cùng lúc, vì vậy phải có số lượng giá trị phù hợp.
 
 
-Format specifiers
------------------
+.. _`Format specifiers`:
 
-There are format specifiers other than ``s`` that can be used in placeholders.
-They consist of one or more characters. Some of them work by themselves like
-``s``, some appear before other characters, some only work with certain
-values or characters.
+Bộ định dạng
+------------
 
-
-Placeholder types
-~~~~~~~~~~~~~~~~~
-
-One and only one of these must always appear as the last character in a format
-specifier. Apart from ``s``, these require certain types of parameters.
-
-+-------+---------------------------------------------------------------------+
-| ``s`` | **Simple** conversion to String by the same method as implicit      |
-|       | String conversion.                                                  |
-+-------+---------------------------------------------------------------------+
-| ``c`` | A single **Unicode character**. Accepts a Unicode code point        |
-|       | (integer) or a single-character string. Supports values beyond 255. |
-+-------+---------------------------------------------------------------------+
-| ``d`` | A **decimal integer**. Expects an integer or a real number          |
-|       | (will be floored).                                                  |
-+-------+---------------------------------------------------------------------+
-| ``o`` | An **octal integer**. Expects an integer or a real number           |
-|       | (will be floored).                                                  |
-+-------+---------------------------------------------------------------------+
-| ``x`` | A **hexadecimal integer** with **lower-case** letters.              |
-|       | Expects an integer or a real number (will be floored).              |
-+-------+---------------------------------------------------------------------+
-| ``X`` | A **hexadecimal integer** with **upper-case** letters.              |
-|       | Expects an integer or a real number (will be floored).              |
-+-------+---------------------------------------------------------------------+
-| ``f`` | A **decimal real** number. Expects an integer or a real number.     |
-+-------+---------------------------------------------------------------------+
-| ``v`` | A **vector**. Expects any float or int-based vector object (        |
-|       | ``Vector2``, ``Vector3``, ``Vector4``, ``Vector2i``, ``Vector3i`` or|
-|       | ``Vector4i``). Will display the vector coordinates in parentheses,  |
-|       | formatting each coordinate as if it was an ``%f``, and using the    |
-|       | same modifiers.                                                     |
-+-------+---------------------------------------------------------------------+
+Ngoài ``s``, còn có các bộ định dạng khác có thể được sử dụng trong phần giữ chỗ. Chúng bao gồm một hoặc nhiều ký tự. Một số hoạt động độc lập như ``s``, một số xuất hiện trước các ký tự khác, còn một số chỉ hoạt động với những giá trị hoặc ký tự nhất định.
 
 
-Placeholder modifiers
+Các kiểu phần giữ chỗ
 ~~~~~~~~~~~~~~~~~~~~~
 
-These characters appear before the above. Some of them work only under certain
-conditions.
+Một và chỉ một trong các ký tự này luôn phải xuất hiện ở vị trí cuối cùng trong bộ định dạng. Ngoài ``s``, các ký tự này yêu cầu những kiểu tham số nhất định.
 
-+---------+-------------------------------------------------------------------+
-| ``+``   | In number specifiers, **show + sign** if positive.                |
-+---------+-------------------------------------------------------------------+
-| Integer | Set **padding**. Padded with spaces or with zeroes if integer     |
-|         | starts with ``0`` in an integer or real number placeholder.       |
-|         | The leading ``0`` is ignored if ``-`` is present.                 |
-|         | When used after ``.``, see ``.``.                                 |
-+---------+-------------------------------------------------------------------+
-| ``.``   | Before ``f`` or ``v``, set **precision** to 0 decimal places. Can |
-|         | be followed up with numbers to change. Padded with zeroes.        |
-+---------+-------------------------------------------------------------------+
-| ``-``   | **Pad to the right** rather than the left.                        |
-+---------+-------------------------------------------------------------------+
-| ``*``   | **Dynamic padding**, expects additional integer parameter to set  |
-|         | padding or precision after ``.``, see `dynamic padding`_.         |
-+---------+-------------------------------------------------------------------+
++-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``s`` | **Đơn giản** chuyển đổi thành String bằng cùng phương thức như phép chuyển đổi String ngầm định.                                                                                                                                                                                     |
++-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``c`` | Một **ký tự Unicode** đơn. Chấp nhận một mã điểm Unicode (số nguyên) hoặc một chuỗi gồm một ký tự. Hỗ trợ các giá trị lớn hơn 255.                                                                                                                                                   |
++-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``d`` | Một **số nguyên thập phân**. Yêu cầu một số nguyên hoặc số thực (sẽ được làm tròn xuống).                                                                                                                                                                                            |
++-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``o`` | Một **số nguyên bát phân**. Yêu cầu một số nguyên hoặc số thực (sẽ được làm tròn xuống).                                                                                                                                                                                             |
++-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``x`` | Một **số nguyên thập lục phân** với các chữ cái **chữ thường**. Yêu cầu một số nguyên hoặc số thực (sẽ được làm tròn xuống).                                                                                                                                                         |
++-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``X`` | Một **số nguyên thập lục phân** với các chữ cái **chữ hoa**. Yêu cầu một số nguyên hoặc số thực (sẽ được làm tròn xuống).                                                                                                                                                            |
++-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``f`` | Một **số thực thập phân**. Yêu cầu một số nguyên hoặc số thực.                                                                                                                                                                                                                       |
++-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``v`` | Một **vector**. Yêu cầu bất kỳ đối tượng vector dựa trên float hoặc int nào ( ``Vector2``, ``Vector3``, ``Vector4``, ``Vector2i``, ``Vector3i`` hoặc ``Vector4i``). Hiển thị các tọa độ vector trong dấu ngoặc đơn, định dạng từng tọa độ như một ``%f``, và sử dụng cùng các bổ từ. |
++-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-Padding
--------
+Bổ từ phần giữ chỗ
+~~~~~~~~~~~~~~~~~~
 
-The ``.`` (*dot*), ``*`` (*asterisk*), ``-`` (*minus sign*) and digit
-(``0``-``9``) characters are used for padding. This allows printing several
-values aligned vertically as if in a column, provided a fixed-width font is
-used.
+Các ký tự này xuất hiện trước những ký tự ở trên. Một số chỉ hoạt động trong những điều kiện nhất định.
 
-To pad a string to a minimum length, add an integer to the specifier:
++-----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``+``     | Trong các bộ định dạng số, **hiển thị dấu +** nếu là số dương.                                                                                                                                                         |
++-----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Số nguyên | Đặt **độ đệm**. Đệm bằng dấu cách hoặc bằng số 0 nếu số nguyên bắt đầu bằng ``0`` trong phần giữ chỗ cho số nguyên hoặc số thực. Dấu ``0`` ở đầu sẽ bị bỏ qua nếu có ``-``. Khi được sử dụng sau ``.``, hãy xem ``.``. |
++-----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``.``     | Trước ``f`` hoặc ``v``, đặt **độ chính xác** thành 0 chữ số thập phân. Có thể theo sau bằng các chữ số để thay đổi giá trị. Đệm bằng số 0.                                                                             |
++-----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``-``     | **Đệm sang phải** thay vì sang trái.                                                                                                                                                                                   |
++-----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``*``     | **Đệm động**, yêu cầu thêm một tham số số nguyên để đặt độ đệm hoặc độ chính xác sau ``.``, xem `đệm động <dynamic padding_>`_.                                                                                        |
++-----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
+Đệm
+---
+
+Các ký tự ``.`` (*dấu chấm*), ``*`` (*dấu hoa thị*), ``-`` (*dấu trừ*) và chữ số (``0``-``9``) được dùng để đệm. Điều này cho phép in nhiều giá trị được căn chỉnh theo chiều dọc như trong một cột, với điều kiện sử dụng phông chữ có chiều rộng cố định.
+
+Để đệm một chuỗi đến độ dài tối thiểu, hãy thêm một số nguyên vào bộ định dạng:
 
 ::
 
@@ -151,18 +116,14 @@ To pad a string to a minimum length, add an integer to the specifier:
     # output: "     12345"
     # 5 leading spaces for a total length of 10
 
-If the integer starts with ``0``, integer values are padded with zeroes
-instead of white space:
+Nếu số nguyên bắt đầu bằng ``0``, các giá trị số nguyên sẽ được đệm bằng số 0 thay vì khoảng trắng:
 
 ::
 
     print("%010d" % 12345)
     # output: "0000012345"
 
-Precision can be specified for real numbers by adding a ``.`` (*dot*) with an
-integer following it. With no integer after ``.``, a precision of 0 is used,
-rounding to integer values. The integer to use for padding must appear before
-the dot.
+Có thể chỉ định độ chính xác cho các số thực bằng cách thêm ``.`` (*dot*) rồi theo sau là một số nguyên. Nếu không có số nguyên sau ``.``, độ chính xác bằng 0 sẽ được sử dụng, làm tròn thành các giá trị nguyên. Số nguyên dùng để đệm phải xuất hiện trước dấu chấm.
 
 ::
 
@@ -171,8 +132,7 @@ the dot.
     # Output: " 10000.556"
     # 1 leading space
 
-The ``-`` character will cause padding to the right rather than the left,
-useful for right text alignment:
+Ký tự ``-`` sẽ khiến phần đệm nằm bên phải thay vì bên trái, hữu ích khi căn chỉnh văn bản sang phải:
 
 ::
 
@@ -181,13 +141,12 @@ useful for right text alignment:
     # 2 trailing spaces
 
 
-Dynamic padding
-~~~~~~~~~~~~~~~
+.. _`Dynamic padding`:
 
-By using the ``*`` (*asterisk*) character, the padding or precision can be set
-without modifying the format string. It is used in place of an integer in the
-format specifier. The values for padding and precision are then passed when
-formatting:
+Đệm động
+~~~~~~~~
+
+Bằng cách sử dụng ký tự ``*`` (*asterisk*), có thể đặt phần đệm hoặc độ chính xác mà không cần sửa chuỗi định dạng. Ký tự này được dùng thay cho một số nguyên trong bộ chỉ định định dạng. Sau đó, các giá trị cho phần đệm và độ chính xác được truyền vào khi định dạng:
 
 ::
 
@@ -197,8 +156,7 @@ formatting:
     # Output: "  8.889"
     # 2 leading spaces
 
-It is still possible to pad with zeroes in integer placeholders by adding ``0``
-before ``*``:
+Vẫn có thể đệm bằng các số 0 trong các placeholder số nguyên bằng cách thêm ``0`` trước ``*``:
 
 ::
 
@@ -206,11 +164,10 @@ before ``*``:
     # Output: "03"
 
 
-Escape sequence
----------------
+Chuỗi thoát
+-----------
 
-To insert a literal ``%`` character into a format string, it must be escaped to
-avoid reading it as a placeholder. This is done by doubling the character:
+Để chèn một ký tự ``%`` theo nghĩa đen vào chuỗi định dạng, ký tự đó phải được escape để tránh bị đọc như một placeholder. Việc này được thực hiện bằng cách nhân đôi ký tự:
 
 ::
 
@@ -219,18 +176,15 @@ avoid reading it as a placeholder. This is done by doubling the character:
     # Output: "Remaining health: 56%"
 
 
-String format method
---------------------
+Phương thức định dạng chuỗi
+---------------------------
 
-There is also another way to format text in GDScript, namely the
-:ref:`String.format() <class_String_method_format>`
-method. It replaces all occurrences of a key in the string with the corresponding
-value. The method can handle arrays or dictionaries for the key/value pairs.
+Ngoài ra, còn có một cách khác để định dạng văn bản trong GDScript, cụ thể là
+phương thức :ref:`String.format() <class_String_method_format>`. Phương thức này thay thế mọi lần xuất hiện của một khóa trong chuỗi bằng giá trị tương ứng. Phương thức này có thể xử lý các mảng hoặc dictionary cho các cặp khóa/giá trị.
 
-Arrays can be used as key, index, or mixed style (see below examples). Order only
-matters when the index or mixed style of Array is used.
+Có thể sử dụng mảng làm kiểu key, index hoặc mixed (xem các ví dụ bên dưới). Thứ tự chỉ quan trọng khi sử dụng kiểu index hoặc mixed của Array.
 
-A quick example in GDScript:
+Một ví dụ nhanh trong GDScript:
 
 ::
 
@@ -244,58 +198,54 @@ A quick example in GDScript:
     # Output: "We're waiting for Godot"
 
 
-Format method examples
-~~~~~~~~~~~~~~~~~~~~~~
+Ví dụ về phương thức định dạng
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following are some examples of how to use the various invocations of the
-``String.format()``  method.
+Sau đây là một số ví dụ về cách sử dụng các cách gọi khác nhau của phương thức ``String.format()``.
 
-+------------+-----------+------------------------------------------------------------------------------+-------------------+
-| **Type**   | **Style** | **Example**                                                                  | **Result**        |
-+------------+-----------+------------------------------------------------------------------------------+-------------------+
-| Dictionary | key       | ``"Hi, {name} v{version}!".format({"name":"Godette", "version":"3.0"})``     | Hi, Godette v3.0! |
-+------------+-----------+------------------------------------------------------------------------------+-------------------+
-| Dictionary | index     | ``"Hi, {0} v{1}!".format({"0":"Godette", "1":"3.0"})``                       | Hi, Godette v3.0! |
-+------------+-----------+------------------------------------------------------------------------------+-------------------+
-| Dictionary | mix       | ``"Hi, {0} v{version}!".format({"0":"Godette", "version":"3.0"})``           | Hi, Godette v3.0! |
-+------------+-----------+------------------------------------------------------------------------------+-------------------+
-| Array      | key       | ``"Hi, {name} v{version}!".format([["version","3.0"], ["name","Godette"]])`` | Hi, Godette v3.0! |
-+------------+-----------+------------------------------------------------------------------------------+-------------------+
-| Array      | index     | ``"Hi, {0} v{1}!".format(["Godette","3.0"])``                                | Hi, Godette v3.0! |
-+------------+-----------+------------------------------------------------------------------------------+-------------------+
-| Array      | mix       | ``"Hi, {name} v{0}!".format(["3.0", ["name","Godette"]])``                   | Hi, Godette v3.0! |
-+------------+-----------+------------------------------------------------------------------------------+-------------------+
-| Array      | no index  | ``"Hi, {} v{}!".format(["Godette", "3.0"], "{}")``                           | Hi, Godette v3.0! |
-+------------+-----------+------------------------------------------------------------------------------+-------------------+
++------------+----------------+------------------------------------------------------------------------------+-------------------+
+| **Loại**   | **Kiểu**       | **Ví dụ**                                                                    | **Kết quả**       |
++------------+----------------+------------------------------------------------------------------------------+-------------------+
+| Dictionary | key            | ``"Hi, {name} v{version}!".format({"name":"Godette", "version":"3.0"})``     | Hi, Godette v3.0! |
++------------+----------------+------------------------------------------------------------------------------+-------------------+
+| Dictionary | index          | ``"Hi, {0} v{1}!".format({"0":"Godette", "1":"3.0"})``                       | Hi, Godette v3.0! |
++------------+----------------+------------------------------------------------------------------------------+-------------------+
+| Dictionary | mix            | ``"Hi, {0} v{version}!".format({"0":"Godette", "version":"3.0"})``           | Hi, Godette v3.0! |
++------------+----------------+------------------------------------------------------------------------------+-------------------+
+| Array      | key            | ``"Hi, {name} v{version}!".format([["version","3.0"], ["name","Godette"]])`` | Hi, Godette v3.0! |
++------------+----------------+------------------------------------------------------------------------------+-------------------+
+| Array      | index          | ``"Hi, {0} v{1}!".format(["Godette","3.0"])``                                | Hi, Godette v3.0! |
++------------+----------------+------------------------------------------------------------------------------+-------------------+
+| Array      | mix            | ``"Hi, {name} v{0}!".format(["3.0", ["name","Godette"]])``                   | Hi, Godette v3.0! |
++------------+----------------+------------------------------------------------------------------------------+-------------------+
+| Array      | không có index | ``"Hi, {} v{}!".format(["Godette", "3.0"], "{}")``                           | Hi, Godette v3.0! |
++------------+----------------+------------------------------------------------------------------------------+-------------------+
 
-Placeholders can also be customized when using ``String.format``, here's some
-examples of that functionality.
+Có thể tùy chỉnh các placeholder khi sử dụng ``String.format``, sau đây là một số ví dụ về chức năng này.
 
 
-+-----------------+------------------------------------------------------+------------------+
-| **Type**        | **Example**                                          | **Result**       |
-+-----------------+------------------------------------------------------+------------------+
-| Infix (default) | ``"Hi, {0} v{1}".format(["Godette", "3.0"], "{_}")`` | Hi, Godette v3.0 |
-+-----------------+------------------------------------------------------+------------------+
-| Postfix         | ``"Hi, 0% v1%".format(["Godette", "3.0"], "_%")``    | Hi, Godette v3.0 |
-+-----------------+------------------------------------------------------+------------------+
-| Prefix          | ``"Hi, %0 v%1".format(["Godette", "3.0"], "%_")``    | Hi, Godette v3.0 |
-+-----------------+------------------------------------------------------+------------------+
++------------------+------------------------------------------------------+------------------+
+| **Loại**         | **Ví dụ**                                            | **Kết quả**      |
++------------------+------------------------------------------------------+------------------+
+| Infix (mặc định) | ``"Hi, {0} v{1}".format(["Godette", "3.0"], "{_}")`` | Hi, Godette v3.0 |
++------------------+------------------------------------------------------+------------------+
+| Postfix          | ``"Hi, 0% v1%".format(["Godette", "3.0"], "_%")``    | Hi, Godette v3.0 |
++------------------+------------------------------------------------------+------------------+
+| Prefix           | ``"Hi, %0 v%1".format(["Godette", "3.0"], "%_")``    | Hi, Godette v3.0 |
++------------------+------------------------------------------------------+------------------+
 
-Combining both the ``String.format`` method and the ``%`` operator could be useful, as
-``String.format`` does not have a way to manipulate the representation of numbers.
+Việc kết hợp cả phương thức ``String.format`` và toán tử ``%`` có thể hữu ích, vì ``String.format`` không có cách thao tác với biểu diễn của các số.
 
 +---------------------------------------------------------------------------+-------------------+
-| **Example**                                                               | **Result**        |
+| **Ví dụ**                                                                 | **Kết quả**       |
 +---------------------------------------------------------------------------+-------------------+
 | ``"Hi, {0} v{version}".format({0:"Godette", "version":"%0.2f" % 3.114})`` | Hi, Godette v3.11 |
 +---------------------------------------------------------------------------+-------------------+
 
-String concatenation
---------------------
+Nối chuỗi
+---------
 
-You can also combine strings by *concatenating* them together, using the ``+``
-operator.
+Bạn cũng có thể kết hợp các chuỗi bằng cách *nối* chúng lại với nhau, sử dụng toán tử ``+``.
 
 ::
 
@@ -308,9 +258,7 @@ operator.
     print(actual_string)
     # Output: "We're waiting for Godot"
 
-When using string concatenation, values that are not strings must be converted using
-the ``str()`` function. There is no way to specify the string format of converted
-values.
+Khi sử dụng phép nối chuỗi, các giá trị không phải chuỗi phải được chuyển đổi bằng hàm ``str()``. Không có cách nào chỉ định định dạng chuỗi của các giá trị đã chuyển đổi.
 
 ::
 
@@ -321,10 +269,8 @@ values.
     print(actual_string)
     # Output: "Hi, Godette v3!"
 
-Because of these limitations, format strings or the ``format()`` method are often
-a better choice. In many cases, string concatenation is also less readable.
+Do những hạn chế này, format string hoặc phương thức ``format()`` thường là lựa chọn tốt hơn. Trong nhiều trường hợp, phép nối chuỗi cũng kém dễ đọc hơn.
 
 .. note::
 
-    In Godot's C++ code, GDScript format strings can be accessed using the
-    ``vformat()`` helper function in the :ref:`Variant<class_Variant>` header.
+    Trong mã C++ của Godot, có thể truy cập format string của GDScript bằng hàm trợ giúp ``vformat()`` trong header :ref:`Variant<class_Variant>`.

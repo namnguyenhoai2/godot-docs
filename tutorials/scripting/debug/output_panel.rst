@@ -1,124 +1,79 @@
 .. _doc_output_panel:
 
-Output panel
-============
+Bảng đầu ra
+===========
 
-The output panel is found at the bottom of the screen. Click on **Output** to open it.
+Bảng đầu ra nằm ở cuối màn hình. Nhấp vào **Output** để mở bảng.
 
 .. image:: img/overview_output.webp
 
-The output panel provides several features to make viewing text printed by the
-project (and editor) easier.
+Bảng đầu ra cung cấp một số tính năng giúp bạn xem văn bản được in bởi project (và editor) dễ dàng hơn.
 
 .. note::
 
-    The output panel automatically opens when running a project by default.
-    You can control this behavior by changing the **Run > Bottom Panel > Action on Play**
-    editor setting.
+    Theo mặc định, bảng đầu ra sẽ tự động mở khi chạy project. Bạn có thể kiểm soát hành vi này bằng cách thay đổi cài đặt editor **Run > Bottom Panel > Action on Play**.
 
-Message categories
+Danh mục thông báo
 ------------------
 
-Four message categories are available:
+Có bốn danh mục thông báo:
 
-- **Log:** Standard messages printed by the project. Displayed in white or black
-  (depending on the editor theme).
-- **Error:** Messages printed by the project or editor that indicate a failure
-  of some kind. Displayed in red.
-- **Warning:** Messages printed by the project or editor that report important
-  information, but do not indicate a failure. Displayed in yellow.
-- **Editor:** Messages printed by the editor, typically intended to be traces of
-  undo/redo actions. Displayed in gray.
+- **Nhật ký:** Các thông báo tiêu chuẩn được project in ra. Hiển thị bằng màu trắng hoặc đen (tùy theo theme của editor).
+- **Lỗi:** Các thông báo do project hoặc editor in ra, cho biết đã xảy ra một dạng lỗi nào đó. Hiển thị bằng màu đỏ.
+- **Cảnh báo:** Các thông báo do project hoặc editor in ra, cung cấp thông tin quan trọng nhưng không cho biết đã xảy ra lỗi. Hiển thị bằng màu vàng.
+- **Editor:** Các thông báo do editor in ra, thường nhằm ghi lại các thao tác undo/redo. Hiển thị bằng màu xám.
 
-Filtering messages
-------------------
+Lọc thông báo
+-------------
 
-By clicking on the buttons on the right, you can hide certain message categories.
-This can make it easier to find specific messages you're looking for.
+Bằng cách nhấp vào các nút ở bên phải, bạn có thể ẩn một số danh mục thông báo. Điều này giúp bạn dễ dàng tìm thấy các thông báo cụ thể cần tìm hơn.
 
-You can also filter messages by their text content using the **Filter Messages** box
-at the bottom of the Output panel.
+Bạn cũng có thể lọc thông báo theo nội dung văn bản bằng hộp **Filter Messages** ở cuối bảng Output.
 
-Clearing messages
------------------
+Xóa thông báo
+-------------
 
-When running the project, existing messages are automatically cleared by default. This
-is controlled by the **Run > Output > Always Clear Output on Play** editor setting.
-Additionally, you can manually clear messages by clicking the "cleaning brush" icon
-in the top-right corner of the Output panel.
+Khi chạy project, theo mặc định các thông báo hiện có sẽ tự động bị xóa. Hành vi này được điều khiển bởi cài đặt editor **Run > Output > Always Clear Output on Play**. Ngoài ra, bạn có thể xóa thông báo theo cách thủ công bằng cách nhấp vào biểu tượng "chổi vệ sinh" ở góc trên bên phải của bảng Output.
 
 .. _doc_output_panel_printing_messages:
 
-Printing messages
------------------
+In thông báo
+------------
 
-Several methods are available to print messages:
+Có một số phương thức để in thông báo:
 
-- :ref:`print() <class_@GlobalScope_method_print>`: Prints a message.
-  This method accepts multiple arguments which are concatenated together upon printing.
-  This method has variants that separate arguments with tabs and spaces respectively:
-  :ref:`printt() <class_@GlobalScope_method_printt>` and :ref:`prints() <class_@GlobalScope_method_prints>`.
-- :ref:`print_rich() <class_@GlobalScope_method_print_rich>`: Same as ``print()``,
-  but BBCode can be used to format the text that is printed (see below).
-- :ref:`push_error() <class_@GlobalScope_method_push_error>`: Prints an error message.
-  When an error is printed in a running project, it's displayed in the **Debugger > Errors**
-  tab instead.
-- :ref:`push_warning() <class_@GlobalScope_method_push_warning>`: Prints a warning message.
-  When a warning is printed in a running project, it's displayed in the **Debugger > Errors**
-  tab instead.
+- :ref:`print() <class_@GlobalScope_method_print>`: In một thông báo. Phương thức này nhận nhiều đối số và nối chúng lại với nhau khi in. Phương thức này có các biến thể lần lượt phân tách các đối số bằng tab và khoảng trắng:
+  :ref:`printt() <class_@GlobalScope_method_printt>` và :ref:`prints() <class_@GlobalScope_method_prints>`.
+- :ref:`print_rich() <class_@GlobalScope_method_print_rich>`: Tương tự ``print()``, nhưng có thể sử dụng BBCode để định dạng văn bản được in (xem bên dưới).
+- :ref:`push_error() <class_@GlobalScope_method_push_error>`: In một thông báo lỗi. Khi một lỗi được in trong project đang chạy, thông báo sẽ được hiển thị trong tab **Debugger > Errors**.
+- :ref:`push_warning() <class_@GlobalScope_method_push_warning>`: In một thông báo cảnh báo. Khi một cảnh báo được in trong project đang chạy, thông báo sẽ được hiển thị trong tab **Debugger > Errors**.
 
-For more complex use cases, these can be used:
+Đối với các trường hợp sử dụng phức tạp hơn, có thể dùng các phương thức sau:
 
-- :ref:`print_verbose() <class_@GlobalScope_method_print_verbose>`: Same as ``print()``,
-  but only prints when verbose mode is enabled in the Project Settings
-  or the project is run with the ``--verbose`` command line argument.
-- :ref:`printerr() <class_@GlobalScope_method_printerr>`: Same as ``print()``,
-  but prints to the standard error stream instead of the standard output string.
-  ``push_error()`` should be preferred in most cases.
-- :ref:`printraw() <class_@GlobalScope_method_printraw>`: Same as ``print()``,
-  but prints without a blank line at the end. This is the only method
-  that does **not** print to the editor Output panel.
-  It prints to the standard output stream *only*, which means it's still included
-  in file logging.
-- :ref:`print_debug() <class_@GDScript_method_print_debug>`: Same as ``print()``,
-  but adds the current stack frame on a new line at the end. Only supported when
-  running from the editor, or when the project is exported in debug mode.
-- :ref:`print_stack() <class_@GDScript_method_print_stack>`: Print a stack trace
-  from the current location. Only supported when running from the editor,
-  or when the project is exported in debug mode.
-- :ref:`print_tree() <class_Node_method_print_tree>`: Prints the scene tree
-  relative to the current node. Useful for debugging node structures created at runtime.
-- :ref:`print_tree_pretty() <class_Node_method_print_tree_pretty>`: Same as
-  ``print_tree()``, but with Unicode characters for a more tree-like appearance. This relies on
-  `box-drawing characters <https://en.wikipedia.org/wiki/Box-drawing_characters>`__,
-  so it may not render correctly with all fonts.
+- :ref:`print_verbose() <class_@GlobalScope_method_print_verbose>`: Tương tự ``print()``, nhưng chỉ in khi chế độ verbose được bật trong Project Settings hoặc khi project được chạy với đối số dòng lệnh ``--verbose``.
+- :ref:`printerr() <class_@GlobalScope_method_printerr>`: Tương tự ``print()``, nhưng in vào luồng standard error thay vì chuỗi standard output. Trong hầu hết trường hợp, nên ưu tiên ``push_error()``.
+- :ref:`printraw() <class_@GlobalScope_method_printraw>`: Tương tự ``print()``, nhưng in mà không thêm dòng trống ở cuối. Đây là phương thức duy nhất **không** in vào bảng Output của editor. Phương thức này chỉ in vào luồng standard output *duy nhất*, nghĩa là nội dung vẫn được đưa vào việc ghi nhật ký tệp.
+- :ref:`print_debug() <class_@GDScript_method_print_debug>`: Tương tự ``print()``, nhưng thêm stack frame hiện tại vào một dòng mới ở cuối. Chỉ được hỗ trợ khi chạy từ editor hoặc khi project được export ở chế độ debug.
+- :ref:`print_stack() <class_@GDScript_method_print_stack>`: In stack trace từ vị trí hiện tại. Chỉ được hỗ trợ khi chạy từ editor hoặc khi project được export ở chế độ debug.
+- :ref:`print_tree() <class_Node_method_print_tree>`: In cây scene tương đối với node hiện tại. Hữu ích để debug các cấu trúc node được tạo trong runtime.
+- :ref:`print_tree_pretty() <class_Node_method_print_tree_pretty>`: Tương tự ``print_tree()``, nhưng sử dụng các ký tự Unicode để tạo giao diện giống cây hơn. Phương thức này dựa vào `các ký tự vẽ khung <https://en.wikipedia.org/wiki/Box-drawing_characters>`__, vì vậy có thể không hiển thị chính xác với mọi font.
 
-To get more advanced formatting capabilities, consider using
-:ref:`doc_gdscript_printf` along with the above printing functions.
+Để có các khả năng định dạng nâng cao hơn, hãy cân nhắc sử dụng
+:ref:`doc_gdscript_printf` cùng với các hàm in ở trên.
 
 .. seealso::
 
-    The engine's logging facilities are covered in the :ref:`logging <doc_logging>`
-    documentation.
+    Các tiện ích logging của engine được trình bày trong tài liệu :ref:`logging <doc_logging>`.
 
 .. _doc_output_panel_printing_rich_text:
 
-Printing rich text
-~~~~~~~~~~~~~~~~~~
+In văn bản rich text
+~~~~~~~~~~~~~~~~~~~~
 
-Using :ref:`print_rich() <class_@GlobalScope_method_print_rich>`, you can print
-rich text to the editor Output panel and standard output (visible when the user
-runs the project from a terminal). This works by converting the BBCode to
-`ANSI escape codes <https://en.wikipedia.org/wiki/ANSI_escape_code>`__ that the
-terminal understands.
+Bằng cách sử dụng :ref:`print_rich() <class_@GlobalScope_method_print_rich>`, bạn có thể in rich text vào bảng Output của editor và standard output (hiển thị khi người dùng chạy project từ terminal). Cách này hoạt động bằng cách chuyển đổi BBCode thành `mã thoát ANSI <https://en.wikipedia.org/wiki/ANSI_escape_code>`__ mà terminal có thể hiểu.
 
-In the editor output, all BBCode tags are recognized as usual. In the terminal
-output, only a subset of BBCode tags will work, as documented in the linked
-``print_rich()`` method description above. In the terminal, the colors will look
-different depending on the user's theme, while colors in the editor will use the
-same colors as they would in the project.
+Trong output của editor, tất cả thẻ BBCode đều được nhận diện như bình thường. Trong output của terminal, chỉ một phần các thẻ BBCode hoạt động, như được mô tả trong phần mô tả phương thức ``print_rich()`` được liên kết ở trên. Trong terminal, màu sắc sẽ trông khác nhau tùy theo theme của người dùng, còn màu sắc trong editor sẽ sử dụng cùng các màu như trong project.
 
 .. note::
 
-    ANSI escape code support varies across terminal emulators. The exact colors
-    displayed in terminal output also depend on the terminal theme chosen by the user.
+    Mức độ hỗ trợ mã thoát ANSI khác nhau tùy theo trình giả lập terminal. Màu sắc chính xác hiển thị trong output của terminal cũng phụ thuộc vào theme terminal do người dùng chọn.

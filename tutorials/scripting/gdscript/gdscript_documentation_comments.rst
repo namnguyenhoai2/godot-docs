@@ -1,32 +1,23 @@
 .. _doc_gdscript_documentation_comments:
 
-GDScript documentation comments
+Các chú thích tài liệu GDScript
 ===============================
 
-In GDScript, comments can be used to document your code and add descriptions to the
-members of a script. There are two differences between a normal comment and a documentation
-comment. Firstly, a documentation comment should start with double hash symbols
-``##``. Secondly, it must immediately precede a script member, or for script descriptions,
-be placed at the top of the script. If an exported variable is documented,
-its description is used as a tooltip in the editor. This documentation can be
-generated as XML files by the editor.
+Trong GDScript, bạn có thể sử dụng chú thích để ghi lại mã và thêm mô tả cho các thành viên của một script. Có hai điểm khác biệt giữa chú thích thông thường và chú thích tài liệu. Thứ nhất, chú thích tài liệu phải bắt đầu bằng hai ký hiệu thăng ``##``. Thứ hai, chú thích đó phải đứng ngay trước một thành viên của script hoặc, đối với phần mô tả script, phải được đặt ở đầu script. Nếu một biến được export có tài liệu, phần mô tả của biến sẽ được dùng làm tooltip trong trình chỉnh sửa. Trình chỉnh sửa có thể tạo tài liệu này dưới dạng các tệp XML.
 
-Documenting a script
---------------------
+Ghi tài liệu cho một script
+---------------------------
 
-Comments documenting a script must come before any member documentation. A
-suggested format for script documentation can be divided into three parts.
+Các chú thích ghi tài liệu cho một script phải xuất hiện trước mọi tài liệu của thành viên. Định dạng được đề xuất cho tài liệu của script có thể được chia thành ba phần.
 
-- A brief description of the script.
-- Detailed description.
-- Tutorials and deprecated/experimental marks.
+- Mô tả ngắn gọn về script.
+- Mô tả chi tiết.
+- Tutorial và các đánh dấu deprecated/experimental.
 
-To separate these from each other, the documentation comments use special tags.
-The tag must be at the beginning of a line (ignoring preceding white space)
-and must have the format ``@``, followed by the keyword.
+Để phân tách các phần này, chú thích tài liệu sử dụng các tag đặc biệt. Tag phải nằm ở đầu dòng (bỏ qua khoảng trắng đứng trước) và phải có định dạng ``@``, theo sau là từ khóa.
 
-Tags
-~~~~
+Tag
+~~~
 
 +-------------------+--------------------------------------------------------+
 | Brief description | No tag. Lives at the very beginning of                 |
@@ -45,7 +36,7 @@ Tags
 |                   | | ``@experimental: This class is unstable.``           |
 +-------------------+--------------------------------------------------------+
 
-For example:
+Ví dụ:
 
 ::
 
@@ -62,34 +53,29 @@ For example:
 
 .. warning::
 
-    If there is any space in between the tag name and colon, for example
-    ``@tutorial  :``, it won't be treated as a valid tag and will be ignored.
+    Nếu có khoảng trắng giữa tên tag và dấu hai chấm, chẳng hạn ``@tutorial  :``, tag đó sẽ không được xử lý như một tag hợp lệ và sẽ bị bỏ qua.
 
 .. note::
 
-    When the description spans multiple lines, the preceding and trailing white
-    spaces will be stripped and joined with a single space. To preserve the line
-    break use ``[br]``. See also `BBCode and class reference`_ below.
+    Khi phần mô tả trải dài trên nhiều dòng, khoảng trắng ở đầu và cuối sẽ bị loại bỏ rồi nối lại bằng một khoảng trắng đơn. Để giữ ngắt dòng, hãy sử dụng ``[br]``. Xem thêm `BBCode và tham chiếu class <BBCode and class reference_>`_ bên dưới.
 
-Documenting script members
---------------------------
+Ghi tài liệu cho các thành viên của script
+------------------------------------------
 
-Members that are applicable for documentation:
+Các thành viên có thể được ghi tài liệu:
 
 - Signal
 - Enum
-- Enum value
-- Constant
-- Variable
-- Function
-- Inner class
+- Giá trị enum
+- Hằng số
+- Biến
+- Hàm
+- Class bên trong
 
-Documentation of a script member must immediately precede the member or its annotations
-if it has any. The description can have more than one line but every line must start with
-the double hash symbol ``##`` to be considered as part of the documentation.
+Tài liệu của một thành viên script phải đứng ngay trước thành viên đó hoặc các annotation của thành viên nếu có. Phần mô tả có thể gồm nhiều dòng, nhưng mỗi dòng phải bắt đầu bằng ký hiệu hai dấu thăng ``##`` để được xem là một phần của tài liệu.
 
-Tags
-~~~~
+Tag
+~~~
 
 +--------------+--------------------------------------------------+
 | Description  | No tag.                                          |
@@ -101,7 +87,7 @@ Tags
 |              | | ``@experimental: This method is incomplete.``  |
 +--------------+--------------------------------------------------+
 
-For example:
+Ví dụ:
 
 ::
 
@@ -109,7 +95,7 @@ For example:
     ## @deprecated: Use [member other_var] instead.
     var my_var
 
-Alternatively, you can use inline documentation comments:
+Ngoài ra, bạn có thể sử dụng chú thích tài liệu nội dòng:
 
 ::
 
@@ -132,11 +118,9 @@ Alternatively, you can use inline documentation comments:
     class MyClass: ## My class.
         pass
 
-The script documentation will update in the editor help window every time the script is updated.
-If any member variable or function name starts with an underscore, it will be treated as private.
-It will not appear in the documentation and will be ignored in the help window.
+Tài liệu của script sẽ được cập nhật trong cửa sổ trợ giúp của trình chỉnh sửa mỗi khi script được cập nhật. Nếu tên của bất kỳ biến thành viên hoặc hàm nào bắt đầu bằng dấu gạch dưới, tên đó sẽ được xem là private. Thành viên đó sẽ không xuất hiện trong tài liệu và sẽ bị bỏ qua trong cửa sổ trợ giúp.
 
-Complete script example
+Ví dụ script hoàn chỉnh
 -----------------------
 
 ::
@@ -211,39 +195,32 @@ Complete script example
         ## Inner class function fn.
         func fn(): pass
 
-``@deprecated`` and ``@experimental`` tags
-------------------------------------------
+Các tag ``@deprecated`` và ``@experimental``
+--------------------------------------------
 
-You can mark a class or any of its members as deprecated or experimental.
-This will add the corresponding indicator in the built-in documentation viewer.
-Optionally, you can provide a short message explaining why the API is not recommended.
-This can be especially useful for plugin and library creators.
+Bạn có thể đánh dấu một class hoặc bất kỳ thành viên nào của class là deprecated hoặc experimental. Thao tác này sẽ thêm chỉ báo tương ứng trong trình xem tài liệu tích hợp sẵn. Bạn cũng có thể cung cấp một thông báo ngắn giải thích lý do API đó không được khuyến nghị. Điều này đặc biệt hữu ích cho những người tạo plugin và thư viện.
 
 .. image:: img/deprecated_and_experimental_tags.webp
 
-- **Deprecated** marks a non-recommended API that is subject to removal or incompatible change
-  in a future major release. Usually the API is kept for backwards compatibility.
-- **Experimental** marks a new unstable API that may be changed or removed in the current
-  major branch. Using this API is not recommended in production code.
+- **Không được khuyến nghị** đánh dấu một API không được khuyến nghị và có thể bị loại bỏ hoặc thay đổi không tương thích trong một bản phát hành major trong tương lai. Thông thường, API này vẫn được giữ lại để đảm bảo khả năng tương thích ngược.
+- **Experimental** đánh dấu một API mới, chưa ổn định và có thể bị thay đổi hoặc loại bỏ trong nhánh major hiện tại. Không khuyến nghị sử dụng API này trong mã production.
 
 .. note::
 
-    While technically you can use both ``@deprecated`` and ``@experimental`` tags on the same
-    class/member, this is not recommended as it is against common conventions.
+    Mặc dù về mặt kỹ thuật bạn có thể sử dụng cả hai tag ``@deprecated`` và ``@experimental`` trên cùng một class/thành viên, nhưng không nên làm vậy vì trái với các quy ước phổ biến.
 
 .. _doc_gdscript_documentation_comments_bbcode_and_class_reference:
 
-BBCode and class reference
+.. _`BBCode and class reference`:
+
+BBCode và tham chiếu class
 --------------------------
 
-Godot's class reference supports BBCode-like tags. They add nice formatting to the text which could also
-be used in the documentation. See also :ref:`class reference bbcode <doc_class_reference_bbcode>`.
-Note that this is slightly different from the ``RichTextLabel`` :ref:`BBCode <doc_bbcode_in_richtextlabel>`.
+Tham chiếu class của Godot hỗ trợ các tag giống BBCode. Chúng bổ sung định dạng đẹp cho văn bản và cũng có thể được sử dụng trong tài liệu. Xem thêm :ref:`BBCode tham chiếu class <doc_class_reference_bbcode>`. Lưu ý rằng cách này hơi khác với ``RichTextLabel`` :ref:`BBCode <doc_bbcode_in_richtextlabel>`.
 
-Whenever you link to a member of another class, you need to specify the class name.
-For links to the same class, the class name is optional and can be omitted.
+Khi liên kết đến một thành viên của class khác, bạn cần chỉ định tên class. Đối với liên kết đến cùng một class, tên class là tùy chọn và có thể được bỏ qua.
 
-Here's the list of available tags:
+Sau đây là danh sách các tag khả dụng:
 
 +--------------------------------+----------------------------------------------+--------------------------------------------------------------+
 | Tag and Description            | Example                                      | Result                                                       |
@@ -332,15 +309,14 @@ Here's the list of available tags:
 
 .. note::
 
-    1. Currently only :ref:`class_@GDScript` has annotations.
-    2. ``[kbd]`` disables BBCode until the parser encounters ``[/kbd]``.
-    3. ``[code]`` disables BBCode until the parser encounters ``[/code]``.
-    4. ``[codeblock]`` disables BBCode until the parser encounters ``[/codeblock]``.
+    1. Hiện tại chỉ :ref:`class_@GDScript` có annotation.
+    2. ``[kbd]`` vô hiệu hóa BBCode cho đến khi parser gặp ``[/kbd]``.
+    3. ``[code]`` vô hiệu hóa BBCode cho đến khi parser gặp ``[/code]``.
+    4. ``[codeblock]`` vô hiệu hóa BBCode cho đến khi parser gặp ``[/codeblock]``.
 
 .. warning::
 
-    Use ``[codeblock]`` for pre-formatted code blocks. Inside ``[codeblock]``,
-    always use **four spaces** for indentation (the parser will delete tabs).
+    Sử dụng ``[codeblock]`` cho các khối mã được định dạng sẵn. Bên trong ``[codeblock]``, luôn sử dụng **bốn khoảng trắng** để thụt lề (parser sẽ xóa tab).
 
 ::
 
@@ -357,9 +333,8 @@ Here's the list of available tags:
     func do_something():
         pass
 
-By default, ``[codeblock]`` highlights GDScript syntax. You can change it using
-the ``lang`` attribute. Currently supported options are:
+Theo mặc định, ``[codeblock]`` làm nổi bật cú pháp GDScript. Bạn có thể thay đổi điều này bằng thuộc tính ``lang``. Các tùy chọn hiện được hỗ trợ là:
 
-- ``[codeblock lang=text]`` disables syntax highlighting;
-- ``[codeblock lang=gdscript]`` highlights GDScript syntax;
-- ``[codeblock lang=csharp]`` highlights C# syntax (only in .NET version).
+- ``[codeblock lang=text]`` vô hiệu hóa tính năng làm nổi bật cú pháp;
+- ``[codeblock lang=gdscript]`` làm nổi bật cú pháp GDScript;
+- ``[codeblock lang=csharp]`` làm nổi bật cú pháp C# (chỉ trong phiên bản .NET).
