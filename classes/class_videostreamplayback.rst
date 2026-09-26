@@ -10,21 +10,21 @@
 VideoStreamPlayback
 ===================
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Internal class used by :ref:`VideoStream<class_VideoStream>` to manage playback state when played from a :ref:`VideoStreamPlayer<class_VideoStreamPlayer>`.
+Lớp nội bộ được :ref:`VideoStream<class_VideoStream>` sử dụng để quản lý trạng thái phát lại khi được phát từ một :ref:`VideoStreamPlayer<class_VideoStreamPlayer>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This class is intended to be overridden by video decoder extensions with custom implementations of :ref:`VideoStream<class_VideoStream>`.
+Lớp này được thiết kế để các extension giải mã video ghi đè bằng những triển khai tùy chỉnh của :ref:`VideoStream<class_VideoStream>`.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -65,8 +65,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_VideoStreamPlayback_private_method__get_channels:
 
@@ -74,7 +74,7 @@ Method Descriptions
 
 :ref:`int<class_int>` **_get_channels**\ (\ ) |virtual| |const| :ref:`🔗<class_VideoStreamPlayback_private_method__get_channels>`
 
-Returns the number of audio channels.
+Trả về số kênh âm thanh.
 
 .. rst-class:: classref-item-separator
 
@@ -86,7 +86,7 @@ Returns the number of audio channels.
 
 :ref:`float<class_float>` **_get_length**\ (\ ) |virtual| |const| :ref:`🔗<class_VideoStreamPlayback_private_method__get_length>`
 
-Returns the video duration in seconds, if known, or 0 if unknown.
+Trả về thời lượng video tính bằng giây nếu đã biết, hoặc 0 nếu chưa biết.
 
 .. rst-class:: classref-item-separator
 
@@ -98,7 +98,7 @@ Returns the video duration in seconds, if known, or 0 if unknown.
 
 :ref:`int<class_int>` **_get_mix_rate**\ (\ ) |virtual| |const| :ref:`🔗<class_VideoStreamPlayback_private_method__get_mix_rate>`
 
-Returns the audio sample rate used for mixing.
+Trả về sample rate âm thanh được sử dụng để mixing.
 
 .. rst-class:: classref-item-separator
 
@@ -110,7 +110,7 @@ Returns the audio sample rate used for mixing.
 
 :ref:`float<class_float>` **_get_playback_position**\ (\ ) |virtual| |const| :ref:`🔗<class_VideoStreamPlayback_private_method__get_playback_position>`
 
-Return the current playback timestamp. Called in response to the :ref:`VideoStreamPlayer.stream_position<class_VideoStreamPlayer_property_stream_position>` getter.
+Trả về dấu thời gian phát hiện tại. Được gọi để phản hồi getter :ref:`VideoStreamPlayer.stream_position<class_VideoStreamPlayer_property_stream_position>`.
 
 .. rst-class:: classref-item-separator
 
@@ -122,7 +122,7 @@ Return the current playback timestamp. Called in response to the :ref:`VideoStre
 
 :ref:`Texture2D<class_Texture2D>` **_get_texture**\ (\ ) |virtual| |const| :ref:`🔗<class_VideoStreamPlayback_private_method__get_texture>`
 
-Allocates a :ref:`Texture2D<class_Texture2D>` in which decoded video frames will be drawn.
+Cấp phát một :ref:`Texture2D<class_Texture2D>` để vẽ các khung hình video đã giải mã.
 
 .. rst-class:: classref-item-separator
 
@@ -134,7 +134,7 @@ Allocates a :ref:`Texture2D<class_Texture2D>` in which decoded video frames will
 
 :ref:`bool<class_bool>` **_is_paused**\ (\ ) |virtual| |const| :ref:`🔗<class_VideoStreamPlayback_private_method__is_paused>`
 
-Returns the paused status, as set by :ref:`_set_paused()<class_VideoStreamPlayback_private_method__set_paused>`.
+Trả về trạng thái tạm dừng, được thiết lập bởi :ref:`_set_paused()<class_VideoStreamPlayback_private_method__set_paused>`.
 
 .. rst-class:: classref-item-separator
 
@@ -146,7 +146,7 @@ Returns the paused status, as set by :ref:`_set_paused()<class_VideoStreamPlayba
 
 :ref:`bool<class_bool>` **_is_playing**\ (\ ) |virtual| |const| :ref:`🔗<class_VideoStreamPlayback_private_method__is_playing>`
 
-Returns the playback state, as determined by calls to :ref:`_play()<class_VideoStreamPlayback_private_method__play>` and :ref:`_stop()<class_VideoStreamPlayback_private_method__stop>`.
+Trả về trạng thái phát, được xác định bởi các lệnh gọi đến :ref:`_play()<class_VideoStreamPlayback_private_method__play>` và :ref:`_stop()<class_VideoStreamPlayback_private_method__stop>`.
 
 .. rst-class:: classref-item-separator
 
@@ -158,7 +158,7 @@ Returns the playback state, as determined by calls to :ref:`_play()<class_VideoS
 
 |void| **_play**\ (\ ) |virtual| :ref:`🔗<class_VideoStreamPlayback_private_method__play>`
 
-Called in response to :ref:`VideoStreamPlayer.autoplay<class_VideoStreamPlayer_property_autoplay>` or :ref:`VideoStreamPlayer.play()<class_VideoStreamPlayer_method_play>`. Note that manual playback may also invoke :ref:`_stop()<class_VideoStreamPlayback_private_method__stop>` multiple times before this method is called. :ref:`_is_playing()<class_VideoStreamPlayback_private_method__is_playing>` should return ``true`` once playing.
+Được gọi để phản hồi :ref:`VideoStreamPlayer.autoplay<class_VideoStreamPlayer_property_autoplay>` hoặc :ref:`VideoStreamPlayer.play()<class_VideoStreamPlayer_method_play>`. Lưu ý rằng việc phát thủ công cũng có thể gọi :ref:`_stop()<class_VideoStreamPlayback_private_method__stop>` nhiều lần trước khi phương thức này được gọi. :ref:`_is_playing()<class_VideoStreamPlayback_private_method__is_playing>` sẽ trả về ``true`` khi bắt đầu phát.
 
 .. rst-class:: classref-item-separator
 
@@ -170,7 +170,7 @@ Called in response to :ref:`VideoStreamPlayer.autoplay<class_VideoStreamPlayer_p
 
 |void| **_seek**\ (\ time\: :ref:`float<class_float>`\ ) |virtual| :ref:`🔗<class_VideoStreamPlayback_private_method__seek>`
 
-Seeks to ``time`` seconds. Called in response to the :ref:`VideoStreamPlayer.stream_position<class_VideoStreamPlayer_property_stream_position>` setter.
+Tua đến ``time`` giây. Được gọi để phản hồi setter :ref:`VideoStreamPlayer.stream_position<class_VideoStreamPlayer_property_stream_position>`.
 
 .. rst-class:: classref-item-separator
 
@@ -182,7 +182,7 @@ Seeks to ``time`` seconds. Called in response to the :ref:`VideoStreamPlayer.str
 
 |void| **_set_audio_track**\ (\ idx\: :ref:`int<class_int>`\ ) |virtual| :ref:`🔗<class_VideoStreamPlayback_private_method__set_audio_track>`
 
-Select the audio track ``idx``. Called when playback starts, and in response to the :ref:`VideoStreamPlayer.audio_track<class_VideoStreamPlayer_property_audio_track>` setter.
+Chọn track âm thanh ``idx``. Được gọi khi bắt đầu phát và để phản hồi setter :ref:`VideoStreamPlayer.audio_track<class_VideoStreamPlayer_property_audio_track>`.
 
 .. rst-class:: classref-item-separator
 
@@ -194,7 +194,7 @@ Select the audio track ``idx``. Called when playback starts, and in response to 
 
 |void| **_set_paused**\ (\ paused\: :ref:`bool<class_bool>`\ ) |virtual| :ref:`🔗<class_VideoStreamPlayback_private_method__set_paused>`
 
-Set the paused status of video playback. :ref:`_is_paused()<class_VideoStreamPlayback_private_method__is_paused>` must return ``paused``. Called in response to the :ref:`VideoStreamPlayer.paused<class_VideoStreamPlayer_property_paused>` setter.
+Đặt trạng thái tạm dừng của quá trình phát video. :ref:`_is_paused()<class_VideoStreamPlayback_private_method__is_paused>` phải trả về ``paused``. Được gọi để phản hồi setter :ref:`VideoStreamPlayer.paused<class_VideoStreamPlayer_property_paused>`.
 
 .. rst-class:: classref-item-separator
 
@@ -206,7 +206,7 @@ Set the paused status of video playback. :ref:`_is_paused()<class_VideoStreamPla
 
 |void| **_stop**\ (\ ) |virtual| :ref:`🔗<class_VideoStreamPlayback_private_method__stop>`
 
-Stops playback. May be called multiple times before :ref:`_play()<class_VideoStreamPlayback_private_method__play>`, or in response to :ref:`VideoStreamPlayer.stop()<class_VideoStreamPlayer_method_stop>`. :ref:`_is_playing()<class_VideoStreamPlayback_private_method__is_playing>` should return ``false`` once stopped.
+Dừng phát. Có thể được gọi nhiều lần trước :ref:`_play()<class_VideoStreamPlayback_private_method__play>`, hoặc để phản hồi :ref:`VideoStreamPlayer.stop()<class_VideoStreamPlayer_method_stop>`. :ref:`_is_playing()<class_VideoStreamPlayback_private_method__is_playing>` phải trả về ``false`` sau khi đã dừng.
 
 .. rst-class:: classref-item-separator
 
@@ -218,7 +218,7 @@ Stops playback. May be called multiple times before :ref:`_play()<class_VideoStr
 
 |void| **_update**\ (\ delta\: :ref:`float<class_float>`\ ) |virtual| |required| :ref:`🔗<class_VideoStreamPlayback_private_method__update>`
 
-Ticks video playback for ``delta`` seconds. Called every frame as long as both :ref:`_is_paused()<class_VideoStreamPlayback_private_method__is_paused>` and :ref:`_is_playing()<class_VideoStreamPlayback_private_method__is_playing>` return ``true``.
+Cập nhật quá trình phát video trong ``delta`` giây. Được gọi ở mỗi frame miễn là cả :ref:`_is_paused()<class_VideoStreamPlayback_private_method__is_paused>` và :ref:`_is_playing()<class_VideoStreamPlayback_private_method__is_playing>` đều trả về ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -230,14 +230,14 @@ Ticks video playback for ``delta`` seconds. Called every frame as long as both :
 
 :ref:`int<class_int>` **mix_audio**\ (\ num_frames\: :ref:`int<class_int>`, buffer\: :ref:`PackedFloat32Array<class_PackedFloat32Array>` = PackedFloat32Array(), offset\: :ref:`int<class_int>` = 0\ ) :ref:`🔗<class_VideoStreamPlayback_method_mix_audio>`
 
-Render ``num_frames`` audio frames (of :ref:`_get_channels()<class_VideoStreamPlayback_private_method__get_channels>` floats each) from ``buffer``, starting from index ``offset`` in the array. Returns the number of audio frames rendered, or -1 on error.
+Render ``num_frames`` frame âm thanh (mỗi frame gồm :ref:`_get_channels()<class_VideoStreamPlayback_private_method__get_channels>` số thực) từ ``buffer``, bắt đầu từ chỉ mục ``offset`` trong mảng. Trả về số frame âm thanh đã render hoặc -1 nếu xảy ra lỗi.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

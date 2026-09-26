@@ -10,23 +10,23 @@
 VisualShaderNodeGroupBase
 =========================
 
-**Inherits:** :ref:`VisualShaderNodeResizableBase<class_VisualShaderNodeResizableBase>` **<** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNodeResizableBase<class_VisualShaderNodeResizableBase>` **<** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`VisualShaderNodeExpression<class_VisualShaderNodeExpression>`
+**Được kế thừa bởi:** :ref:`VisualShaderNodeExpression<class_VisualShaderNodeExpression>`
 
-Base class for a family of nodes with variable number of input and output ports within the visual shader graph.
+Lớp cơ sở cho một nhóm các node có số lượng cổng đầu vào và đầu ra thay đổi trong đồ thị visual shader.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Currently, has no direct usage, use the derived classes instead.
+Hiện tại, lớp này không được sử dụng trực tiếp; hãy sử dụng các lớp dẫn xuất thay thế.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -81,8 +81,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_VisualShaderNodeGroupBase_method_add_input_port:
 
@@ -90,7 +90,7 @@ Method Descriptions
 
 |void| **add_input_port**\ (\ id\: :ref:`int<class_int>`, type\: :ref:`int<class_int>`, name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_VisualShaderNodeGroupBase_method_add_input_port>`
 
-Adds an input port with the specified ``type`` (see :ref:`PortType<enum_VisualShaderNode_PortType>`) and ``name``.
+Thêm một cổng đầu vào với ``type`` được chỉ định (xem :ref:`PortType <enum_VisualShaderNode_PortType>`) và ``name``.
 
 .. rst-class:: classref-item-separator
 
@@ -102,7 +102,7 @@ Adds an input port with the specified ``type`` (see :ref:`PortType<enum_VisualSh
 
 |void| **add_output_port**\ (\ id\: :ref:`int<class_int>`, type\: :ref:`int<class_int>`, name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_VisualShaderNodeGroupBase_method_add_output_port>`
 
-Adds an output port with the specified ``type`` (see :ref:`PortType<enum_VisualShaderNode_PortType>`) and ``name``.
+Thêm một cổng đầu ra với ``type`` được chỉ định (xem :ref:`PortType <enum_VisualShaderNode_PortType>`) và ``name``.
 
 .. rst-class:: classref-item-separator
 
@@ -114,7 +114,7 @@ Adds an output port with the specified ``type`` (see :ref:`PortType<enum_VisualS
 
 |void| **clear_input_ports**\ (\ ) :ref:`🔗<class_VisualShaderNodeGroupBase_method_clear_input_ports>`
 
-Removes all previously specified input ports.
+Xóa tất cả các cổng đầu vào đã được chỉ định trước đó.
 
 .. rst-class:: classref-item-separator
 
@@ -126,7 +126,7 @@ Removes all previously specified input ports.
 
 |void| **clear_output_ports**\ (\ ) :ref:`🔗<class_VisualShaderNodeGroupBase_method_clear_output_ports>`
 
-Removes all previously specified output ports.
+Xóa tất cả các cổng đầu ra đã được chỉ định trước đó.
 
 .. rst-class:: classref-item-separator
 
@@ -138,7 +138,7 @@ Removes all previously specified output ports.
 
 :ref:`int<class_int>` **get_free_input_port_id**\ (\ ) |const| :ref:`🔗<class_VisualShaderNodeGroupBase_method_get_free_input_port_id>`
 
-Returns a free input port ID which can be used in :ref:`add_input_port()<class_VisualShaderNodeGroupBase_method_add_input_port>`.
+Trả về ID của một cổng đầu vào còn trống, có thể được sử dụng trong :ref:`add_input_port()<class_VisualShaderNodeGroupBase_method_add_input_port>`.
 
 .. rst-class:: classref-item-separator
 
@@ -150,7 +150,7 @@ Returns a free input port ID which can be used in :ref:`add_input_port()<class_V
 
 :ref:`int<class_int>` **get_free_output_port_id**\ (\ ) |const| :ref:`🔗<class_VisualShaderNodeGroupBase_method_get_free_output_port_id>`
 
-Returns a free output port ID which can be used in :ref:`add_output_port()<class_VisualShaderNodeGroupBase_method_add_output_port>`.
+Trả về ID của một cổng đầu ra còn trống, có thể được sử dụng trong :ref:`add_output_port()<class_VisualShaderNodeGroupBase_method_add_output_port>`.
 
 .. rst-class:: classref-item-separator
 
@@ -162,7 +162,7 @@ Returns a free output port ID which can be used in :ref:`add_output_port()<class
 
 :ref:`int<class_int>` **get_input_port_count**\ (\ ) |const| :ref:`🔗<class_VisualShaderNodeGroupBase_method_get_input_port_count>`
 
-Returns the number of input ports in use. Alternative for :ref:`get_free_input_port_id()<class_VisualShaderNodeGroupBase_method_get_free_input_port_id>`.
+Trả về số lượng cổng đầu vào đang được sử dụng. Đây là lựa chọn thay thế cho :ref:`get_free_input_port_id()<class_VisualShaderNodeGroupBase_method_get_free_input_port_id>`.
 
 .. rst-class:: classref-item-separator
 
@@ -174,7 +174,7 @@ Returns the number of input ports in use. Alternative for :ref:`get_free_input_p
 
 :ref:`String<class_String>` **get_inputs**\ (\ ) |const| :ref:`🔗<class_VisualShaderNodeGroupBase_method_get_inputs>`
 
-Returns a :ref:`String<class_String>` description of the input ports as a colon-separated list using the format ``id,type,name;`` (see :ref:`add_input_port()<class_VisualShaderNodeGroupBase_method_add_input_port>`).
+Trả về mô tả :ref:`String<class_String>` của các cổng đầu vào dưới dạng danh sách phân tách bằng dấu hai chấm theo định dạng ``id,type,name;`` (xem :ref:`add_input_port()<class_VisualShaderNodeGroupBase_method_add_input_port>`).
 
 .. rst-class:: classref-item-separator
 
@@ -186,7 +186,7 @@ Returns a :ref:`String<class_String>` description of the input ports as a colon-
 
 :ref:`int<class_int>` **get_output_port_count**\ (\ ) |const| :ref:`🔗<class_VisualShaderNodeGroupBase_method_get_output_port_count>`
 
-Returns the number of output ports in use. Alternative for :ref:`get_free_output_port_id()<class_VisualShaderNodeGroupBase_method_get_free_output_port_id>`.
+Trả về số lượng cổng đầu ra đang được sử dụng. Đây là phương án thay thế cho :ref:`get_free_output_port_id()<class_VisualShaderNodeGroupBase_method_get_free_output_port_id>`.
 
 .. rst-class:: classref-item-separator
 
@@ -198,7 +198,7 @@ Returns the number of output ports in use. Alternative for :ref:`get_free_output
 
 :ref:`String<class_String>` **get_outputs**\ (\ ) |const| :ref:`🔗<class_VisualShaderNodeGroupBase_method_get_outputs>`
 
-Returns a :ref:`String<class_String>` description of the output ports as a colon-separated list using the format ``id,type,name;`` (see :ref:`add_output_port()<class_VisualShaderNodeGroupBase_method_add_output_port>`).
+Trả về mô tả :ref:`String<class_String>` của các cổng đầu ra dưới dạng danh sách phân tách bằng dấu hai chấm, sử dụng định dạng ``id,type,name;`` (xem :ref:`add_output_port()<class_VisualShaderNodeGroupBase_method_add_output_port>`).
 
 .. rst-class:: classref-item-separator
 
@@ -210,7 +210,7 @@ Returns a :ref:`String<class_String>` description of the output ports as a colon
 
 :ref:`bool<class_bool>` **has_input_port**\ (\ id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_VisualShaderNodeGroupBase_method_has_input_port>`
 
-Returns ``true`` if the specified input port exists.
+Trả về ``true`` nếu cổng đầu vào được chỉ định tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -222,7 +222,7 @@ Returns ``true`` if the specified input port exists.
 
 :ref:`bool<class_bool>` **has_output_port**\ (\ id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_VisualShaderNodeGroupBase_method_has_output_port>`
 
-Returns ``true`` if the specified output port exists.
+Trả về ``true`` nếu cổng đầu ra được chỉ định tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -234,7 +234,7 @@ Returns ``true`` if the specified output port exists.
 
 :ref:`bool<class_bool>` **is_valid_port_name**\ (\ name\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_VisualShaderNodeGroupBase_method_is_valid_port_name>`
 
-Returns ``true`` if the specified port name does not override an existed port name and is valid within the shader.
+Trả về ``true`` nếu tên cổng được chỉ định không ghi đè lên tên cổng hiện có và hợp lệ trong shader.
 
 .. rst-class:: classref-item-separator
 
@@ -246,7 +246,7 @@ Returns ``true`` if the specified port name does not override an existed port na
 
 |void| **remove_input_port**\ (\ id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_VisualShaderNodeGroupBase_method_remove_input_port>`
 
-Removes the specified input port.
+Xóa cổng đầu vào được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -258,7 +258,7 @@ Removes the specified input port.
 
 |void| **remove_output_port**\ (\ id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_VisualShaderNodeGroupBase_method_remove_output_port>`
 
-Removes the specified output port.
+Xóa cổng đầu ra được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -270,7 +270,7 @@ Removes the specified output port.
 
 |void| **set_input_port_name**\ (\ id\: :ref:`int<class_int>`, name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_VisualShaderNodeGroupBase_method_set_input_port_name>`
 
-Renames the specified input port.
+Đổi tên cổng đầu vào được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -282,7 +282,7 @@ Renames the specified input port.
 
 |void| **set_input_port_type**\ (\ id\: :ref:`int<class_int>`, type\: :ref:`int<class_int>`\ ) :ref:`🔗<class_VisualShaderNodeGroupBase_method_set_input_port_type>`
 
-Sets the specified input port's type (see :ref:`PortType<enum_VisualShaderNode_PortType>`).
+Đặt kiểu của cổng đầu vào được chỉ định (xem :ref:`PortType <enum_VisualShaderNode_PortType>`).
 
 .. rst-class:: classref-item-separator
 
@@ -294,7 +294,7 @@ Sets the specified input port's type (see :ref:`PortType<enum_VisualShaderNode_P
 
 |void| **set_inputs**\ (\ inputs\: :ref:`String<class_String>`\ ) :ref:`🔗<class_VisualShaderNodeGroupBase_method_set_inputs>`
 
-Defines all input ports using a :ref:`String<class_String>` formatted as a colon-separated list: ``id,type,name;`` (see :ref:`add_input_port()<class_VisualShaderNodeGroupBase_method_add_input_port>`).
+Định nghĩa tất cả cổng đầu vào bằng cách sử dụng một :ref:`String<class_String>` có định dạng là danh sách phân tách bằng dấu hai chấm: ``id,type,name;`` (xem :ref:`add_input_port()<class_VisualShaderNodeGroupBase_method_add_input_port>`).
 
 .. rst-class:: classref-item-separator
 
@@ -306,7 +306,7 @@ Defines all input ports using a :ref:`String<class_String>` formatted as a colon
 
 |void| **set_output_port_name**\ (\ id\: :ref:`int<class_int>`, name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_VisualShaderNodeGroupBase_method_set_output_port_name>`
 
-Renames the specified output port.
+Đổi tên cổng đầu ra được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -318,7 +318,7 @@ Renames the specified output port.
 
 |void| **set_output_port_type**\ (\ id\: :ref:`int<class_int>`, type\: :ref:`int<class_int>`\ ) :ref:`🔗<class_VisualShaderNodeGroupBase_method_set_output_port_type>`
 
-Sets the specified output port's type (see :ref:`PortType<enum_VisualShaderNode_PortType>`).
+Đặt kiểu của cổng đầu ra được chỉ định (xem :ref:`PortType <enum_VisualShaderNode_PortType>`).
 
 .. rst-class:: classref-item-separator
 
@@ -330,14 +330,14 @@ Sets the specified output port's type (see :ref:`PortType<enum_VisualShaderNode_
 
 |void| **set_outputs**\ (\ outputs\: :ref:`String<class_String>`\ ) :ref:`🔗<class_VisualShaderNodeGroupBase_method_set_outputs>`
 
-Defines all output ports using a :ref:`String<class_String>` formatted as a colon-separated list: ``id,type,name;`` (see :ref:`add_output_port()<class_VisualShaderNodeGroupBase_method_add_output_port>`).
+Định nghĩa tất cả cổng đầu ra bằng cách sử dụng một :ref:`String<class_String>` có định dạng là danh sách phân tách bằng dấu hai chấm: ``id,type,name;`` (xem :ref:`add_output_port()<class_VisualShaderNodeGroupBase_method_add_output_port>`).
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

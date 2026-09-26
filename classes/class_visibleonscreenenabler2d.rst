@@ -10,34 +10,34 @@
 VisibleOnScreenEnabler2D
 ========================
 
-**Inherits:** :ref:`VisibleOnScreenNotifier2D<class_VisibleOnScreenNotifier2D>` **<** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisibleOnScreenNotifier2D<class_VisibleOnScreenNotifier2D>` **<** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A rectangular region of 2D space that, when visible on screen, enables a target node.
+Một vùng hình chữ nhật trong không gian 2D, khi hiển thị trên màn hình, sẽ bật một node đích.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**VisibleOnScreenEnabler2D** contains a rectangular region of 2D space and a target node. The target node will be automatically enabled (via its :ref:`Node.process_mode<class_Node_property_process_mode>` property) when any part of this region becomes visible on the screen, and automatically disabled otherwise. This can for example be used to activate enemies only when the player approaches them.
+**VisibleOnScreenEnabler2D** chứa một vùng hình chữ nhật trong không gian 2D và một node đích. Node đích sẽ được tự động bật (thông qua thuộc tính :ref:`Node.process_mode<class_Node_property_process_mode>` của node) khi bất kỳ phần nào của vùng này hiển thị trên màn hình, và tự động tắt trong các trường hợp khác. Ví dụ, bạn có thể dùng tính năng này để chỉ kích hoạt kẻ địch khi người chơi tiến đến gần chúng.
 
-See :ref:`VisibleOnScreenNotifier2D<class_VisibleOnScreenNotifier2D>` if you only want to be notified when the region is visible on screen.
+Xem :ref:`VisibleOnScreenNotifier2D<class_VisibleOnScreenNotifier2D>` nếu bạn chỉ muốn được thông báo khi vùng này hiển thị trên màn hình.
 
-\ **Note:** **VisibleOnScreenEnabler2D** uses the render culling code to determine whether it's visible on screen, so it won't function unless :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` is set to ``true``.
+\ **Lưu ý:** **VisibleOnScreenEnabler2D** sử dụng mã loại bỏ đối tượng không hiển thị (render culling) để xác định xem nó có hiển thị trên màn hình hay không, vì vậy nó sẽ không hoạt động nếu :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` không được đặt thành ``true``.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
-   | :ref:`EnableMode<enum_VisibleOnScreenEnabler2D_EnableMode>` | :ref:`enable_mode<class_VisibleOnScreenEnabler2D_property_enable_mode>`           | ``0``              |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
-   | :ref:`NodePath<class_NodePath>`                             | :ref:`enable_node_path<class_VisibleOnScreenEnabler2D_property_enable_node_path>` | ``NodePath("..")`` |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+   | :ref:`EnableMode <enum_VisibleOnScreenEnabler2D_EnableMode>` | :ref:`enable_mode<class_VisibleOnScreenEnabler2D_property_enable_mode>`           | ``0``              |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
+   | :ref:`NodePath<class_NodePath>`                              | :ref:`enable_node_path<class_VisibleOnScreenEnabler2D_property_enable_node_path>` | ``NodePath("..")`` |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -45,14 +45,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_VisibleOnScreenEnabler2D_EnableMode:
 
 .. rst-class:: classref-enumeration
 
-enum **EnableMode**: :ref:`🔗<enum_VisibleOnScreenEnabler2D_EnableMode>`
+enum **EnableMode**: :ref:`🔗 <enum_VisibleOnScreenEnabler2D_EnableMode>`
 
 .. _class_VisibleOnScreenEnabler2D_constant_ENABLE_MODE_INHERIT:
 
@@ -60,7 +60,7 @@ enum **EnableMode**: :ref:`🔗<enum_VisibleOnScreenEnabler2D_EnableMode>`
 
 :ref:`EnableMode<enum_VisibleOnScreenEnabler2D_EnableMode>` **ENABLE_MODE_INHERIT** = ``0``
 
-Corresponds to :ref:`Node.PROCESS_MODE_INHERIT<class_Node_constant_PROCESS_MODE_INHERIT>`.
+Tương ứng với :ref:`Node.PROCESS_MODE_INHERIT<class_Node_constant_PROCESS_MODE_INHERIT>`.
 
 .. _class_VisibleOnScreenEnabler2D_constant_ENABLE_MODE_ALWAYS:
 
@@ -68,7 +68,7 @@ Corresponds to :ref:`Node.PROCESS_MODE_INHERIT<class_Node_constant_PROCESS_MODE_
 
 :ref:`EnableMode<enum_VisibleOnScreenEnabler2D_EnableMode>` **ENABLE_MODE_ALWAYS** = ``1``
 
-Corresponds to :ref:`Node.PROCESS_MODE_ALWAYS<class_Node_constant_PROCESS_MODE_ALWAYS>`.
+Tương ứng với :ref:`Node.PROCESS_MODE_ALWAYS<class_Node_constant_PROCESS_MODE_ALWAYS>`.
 
 .. _class_VisibleOnScreenEnabler2D_constant_ENABLE_MODE_WHEN_PAUSED:
 
@@ -76,7 +76,7 @@ Corresponds to :ref:`Node.PROCESS_MODE_ALWAYS<class_Node_constant_PROCESS_MODE_A
 
 :ref:`EnableMode<enum_VisibleOnScreenEnabler2D_EnableMode>` **ENABLE_MODE_WHEN_PAUSED** = ``2``
 
-Corresponds to :ref:`Node.PROCESS_MODE_WHEN_PAUSED<class_Node_constant_PROCESS_MODE_WHEN_PAUSED>`.
+Tương ứng với :ref:`Node.PROCESS_MODE_WHEN_PAUSED<class_Node_constant_PROCESS_MODE_WHEN_PAUSED>`.
 
 .. rst-class:: classref-section-separator
 
@@ -84,8 +84,8 @@ Corresponds to :ref:`Node.PROCESS_MODE_WHEN_PAUSED<class_Node_constant_PROCESS_M
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisibleOnScreenEnabler2D_property_enable_mode:
 
@@ -98,7 +98,7 @@ Property Descriptions
 - |void| **set_enable_mode**\ (\ value\: :ref:`EnableMode<enum_VisibleOnScreenEnabler2D_EnableMode>`\ )
 - :ref:`EnableMode<enum_VisibleOnScreenEnabler2D_EnableMode>` **get_enable_mode**\ (\ )
 
-Determines how the target node is enabled. Corresponds to :ref:`ProcessMode<enum_Node_ProcessMode>`. When the node is disabled, it always uses :ref:`Node.PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`.
+Xác định cách node đích được bật. Tương ứng với :ref:`ProcessMode <enum_Node_ProcessMode>`. Khi node bị tắt, node luôn sử dụng :ref:`Node.PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`.
 
 .. rst-class:: classref-item-separator
 
@@ -115,14 +115,14 @@ Determines how the target node is enabled. Corresponds to :ref:`ProcessMode<enum
 - |void| **set_enable_node_path**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_enable_node_path**\ (\ )
 
-The path to the target node, relative to the **VisibleOnScreenEnabler2D**. The target node is cached; it's only assigned when setting this property (if the **VisibleOnScreenEnabler2D** is inside the scene tree) and every time the **VisibleOnScreenEnabler2D** enters the scene tree. If the path is empty, no node will be affected. If the path is invalid, an error is also generated.
+Đường dẫn đến node đích, tương đối với **VisibleOnScreenEnabler2D**. Node đích được lưu vào bộ nhớ đệm; node chỉ được gán khi thiết lập thuộc tính này (nếu **VisibleOnScreenEnabler2D** nằm trong scene tree) và mỗi khi **VisibleOnScreenEnabler2D** đi vào scene tree. Nếu đường dẫn trống, không có node nào bị ảnh hưởng. Nếu đường dẫn không hợp lệ, một lỗi cũng được tạo ra.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Method này bắt buộc phải được ghi đè khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Method này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể được gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

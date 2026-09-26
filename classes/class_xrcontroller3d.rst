@@ -10,49 +10,49 @@
 XRController3D
 ==============
 
-**Inherits:** :ref:`XRNode3D<class_XRNode3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`XRNode3D<class_XRNode3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A 3D node representing a spatially-tracked controller.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-This is a helper 3D node that is linked to the tracking of controllers. It also offers several handy passthroughs to the state of buttons and such on the controllers.
-
-Controllers are linked by their ID. You can create controller nodes before the controllers are available. If your game always uses two controllers (one for each hand), you can predefine the controllers with ID 1 and 2; they will become active as soon as the controllers are identified. If you expect additional controllers to be used, you should react to the signals and add XRController3D nodes to your scene.
-
-The position of the controller node is automatically updated by the :ref:`XRServer<class_XRServer>`. This makes this node ideal to add child nodes to visualize the controller.
-
-The current :ref:`XRInterface<class_XRInterface>` defines the names of inputs. In the case of OpenXR, these are the names of actions in the current action set from the OpenXR action map.
+Một node 3D đại diện cho một controller được theo dõi theo không gian.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Đây là một node 3D tiện ích được liên kết với việc tracking các controller. Node này cũng cung cấp một số thuộc tính chuyển tiếp tiện dụng đến trạng thái của các nút bấm và những thành phần tương tự trên controller.
+
+Các controller được liên kết bằng ID của chúng. Bạn có thể tạo các node controller trước khi controller khả dụng. Nếu game của bạn luôn sử dụng hai controller (một cho mỗi tay), bạn có thể định nghĩa trước các controller với ID 1 và 2; chúng sẽ trở nên active ngay khi các controller được nhận diện. Nếu dự kiến sử dụng thêm controller, bạn nên phản hồi các signal và thêm các node XRController3D vào scene.
+
+Vị trí của node controller được tự động cập nhật bởi :ref:`XRServer<class_XRServer>`. Điều này khiến node này trở nên lý tưởng để thêm các node con nhằm trực quan hóa controller.
+
+:ref:`XRInterface<class_XRInterface>` hiện tại xác định tên của các input. Trong trường hợp của OpenXR, đây là tên của các action trong action set hiện tại từ action map của OpenXR.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`XR documentation index <../tutorials/xr/index>`
+- :doc:`mục lục tài liệu XR <../tutorials/xr/index>`
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                | :ref:`get_float<class_XRController3D_method_get_float>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const|                 |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`                            | :ref:`get_input<class_XRController3D_method_get_input>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const|                 |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`TrackerHand<enum_XRPositionalTracker_TrackerHand>` | :ref:`get_tracker_hand<class_XRController3D_method_get_tracker_hand>`\ (\ ) |const|                                               |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                            | :ref:`get_vector2<class_XRController3D_method_get_vector2>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const|             |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                  | :ref:`is_button_pressed<class_XRController3D_method_is_button_pressed>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+   +-----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                 | :ref:`get_float<class_XRController3D_method_get_float>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const|                 |
+   +-----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Variant<class_Variant>`                             | :ref:`get_input<class_XRController3D_method_get_input>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const|                 |
+   +-----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`TrackerHand <enum_XRPositionalTracker_TrackerHand>` | :ref:`get_tracker_hand<class_XRController3D_method_get_tracker_hand>`\ (\ ) |const|                                               |
+   +-----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                             | :ref:`get_vector2<class_XRController3D_method_get_vector2>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const|             |
+   +-----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                   | :ref:`is_button_pressed<class_XRController3D_method_is_button_pressed>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| |
+   +-----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -60,8 +60,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_XRController3D_signal_button_pressed:
 
@@ -69,7 +69,7 @@ Signals
 
 **button_pressed**\ (\ action_name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_XRController3D_signal_button_pressed>`
 
-Emitted when a button on this controller is pressed.
+Được phát ra khi một nút trên bộ điều khiển này được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -81,7 +81,7 @@ Emitted when a button on this controller is pressed.
 
 **button_released**\ (\ action_name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_XRController3D_signal_button_released>`
 
-Emitted when a button on this controller is released.
+Được phát ra khi một nút trên bộ điều khiển này được thả ra.
 
 .. rst-class:: classref-item-separator
 
@@ -93,7 +93,7 @@ Emitted when a button on this controller is released.
 
 **input_float_changed**\ (\ action_name\: :ref:`String<class_String>`, value\: :ref:`float<class_float>`\ ) :ref:`🔗<class_XRController3D_signal_input_float_changed>`
 
-Emitted when a trigger or similar input on this controller changes value.
+Được phát ra khi một trigger hoặc đầu vào tương tự trên bộ điều khiển này thay đổi giá trị.
 
 .. rst-class:: classref-item-separator
 
@@ -105,7 +105,7 @@ Emitted when a trigger or similar input on this controller changes value.
 
 **input_vector2_changed**\ (\ action_name\: :ref:`String<class_String>`, value\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_XRController3D_signal_input_vector2_changed>`
 
-Emitted when a thumbstick or thumbpad on this controller is moved.
+Được phát ra khi thumbstick hoặc thumbpad trên bộ điều khiển này được di chuyển.
 
 .. rst-class:: classref-item-separator
 
@@ -117,7 +117,7 @@ Emitted when a thumbstick or thumbpad on this controller is moved.
 
 **profile_changed**\ (\ role\: :ref:`String<class_String>`\ ) :ref:`🔗<class_XRController3D_signal_profile_changed>`
 
-Emitted when the interaction profile on this controller is changed.
+Được phát ra khi interaction profile trên bộ điều khiển này được thay đổi.
 
 .. rst-class:: classref-section-separator
 
@@ -125,8 +125,8 @@ Emitted when the interaction profile on this controller is changed.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_XRController3D_method_get_float:
 
@@ -134,9 +134,9 @@ Method Descriptions
 
 :ref:`float<class_float>` **get_float**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_XRController3D_method_get_float>`
 
-Returns a numeric value for the input with the given ``name``. This is used for triggers and grip sensors.
+Trả về một giá trị số cho đầu vào có ``name`` đã cho. Giá trị này được dùng cho các trigger và cảm biến tay cầm.
 
-\ **Note:** The current :ref:`XRInterface<class_XRInterface>` defines the ``name`` for each input. In the case of OpenXR, these are the names of actions in the current action set.
+\ **Lưu ý:** :ref:`XRInterface<class_XRInterface>` hiện tại xác định ``name`` cho mỗi đầu vào. Trong trường hợp OpenXR, đây là tên của các action trong action set hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -148,9 +148,9 @@ Returns a numeric value for the input with the given ``name``. This is used for 
 
 :ref:`Variant<class_Variant>` **get_input**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_XRController3D_method_get_input>`
 
-Returns a :ref:`Variant<class_Variant>` for the input with the given ``name``. This works for any input type, the variant will be typed according to the actions configuration.
+Trả về một :ref:`Variant<class_Variant>` cho đầu vào có ``name`` đã cho. Giá trị này hoạt động với mọi loại đầu vào; variant sẽ được định kiểu theo cấu hình actions.
 
-\ **Note:** The current :ref:`XRInterface<class_XRInterface>` defines the ``name`` for each input. In the case of OpenXR, these are the names of actions in the current action set.
+\ **Lưu ý:** :ref:`XRInterface<class_XRInterface>` hiện tại xác định ``name`` cho mỗi đầu vào. Trong trường hợp OpenXR, đây là tên của các action trong action set hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -162,7 +162,7 @@ Returns a :ref:`Variant<class_Variant>` for the input with the given ``name``. T
 
 :ref:`TrackerHand<enum_XRPositionalTracker_TrackerHand>` **get_tracker_hand**\ (\ ) |const| :ref:`🔗<class_XRController3D_method_get_tracker_hand>`
 
-Returns the hand holding this controller, if known.
+Trả về tay đang cầm controller này, nếu xác định được.
 
 .. rst-class:: classref-item-separator
 
@@ -174,9 +174,9 @@ Returns the hand holding this controller, if known.
 
 :ref:`Vector2<class_Vector2>` **get_vector2**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_XRController3D_method_get_vector2>`
 
-Returns a :ref:`Vector2<class_Vector2>` for the input with the given ``name``. This is used for thumbsticks and thumbpads found on many controllers.
+Trả về một :ref:`Vector2<class_Vector2>` cho đầu vào có ``name`` đã cho. Giá trị này được dùng cho thumbstick và thumbpad có trên nhiều controller.
 
-\ **Note:** The current :ref:`XRInterface<class_XRInterface>` defines the ``name`` for each input. In the case of OpenXR, these are the names of actions in the current action set.
+\ **Lưu ý:** :ref:`XRInterface<class_XRInterface>` hiện tại xác định ``name`` cho mỗi đầu vào. Trong trường hợp OpenXR, đây là tên của các action trong action set hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -188,16 +188,16 @@ Returns a :ref:`Vector2<class_Vector2>` for the input with the given ``name``. T
 
 :ref:`bool<class_bool>` **is_button_pressed**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_XRController3D_method_is_button_pressed>`
 
-Returns ``true`` if the button with the given ``name`` is pressed.
+Trả về ``true`` nếu nhấn nút có ``name`` đã cho.
 
-\ **Note:** The current :ref:`XRInterface<class_XRInterface>` defines the ``name`` for each input. In the case of OpenXR, these are the names of actions in the current action set.
+\ **Lưu ý:** :ref:`XRInterface<class_XRInterface>` hiện tại xác định ``name`` cho mỗi đầu vào. Trong trường hợp OpenXR, đây là tên của các action trong action set hiện tại.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask gồm các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

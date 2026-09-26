@@ -10,32 +10,32 @@
 VisualShaderNodeCompare
 =======================
 
-**Inherits:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A comparison function for common types within the visual shader graph.
+Một hàm so sánh cho các kiểu dữ liệu phổ biến trong visual shader graph.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Compares ``a`` and ``b`` of :ref:`type<class_VisualShaderNodeCompare_property_type>` by :ref:`function<class_VisualShaderNodeCompare_property_function>`. Returns a boolean scalar. Translates to ``if`` instruction in shader code.
+So sánh ``a`` và ``b`` của :ref:`type<class_VisualShaderNodeCompare_property_type>` theo :ref:`function<class_VisualShaderNodeCompare_property_function>`. Trả về một scalar boolean. Chuyển thành instruction ``if`` trong mã shader.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------------------------------+--------------------------------------------------------------------+-------+
-   | :ref:`Condition<enum_VisualShaderNodeCompare_Condition>`           | :ref:`condition<class_VisualShaderNodeCompare_property_condition>` | ``0`` |
-   +--------------------------------------------------------------------+--------------------------------------------------------------------+-------+
-   | :ref:`Function<enum_VisualShaderNodeCompare_Function>`             | :ref:`function<class_VisualShaderNodeCompare_property_function>`   | ``0`` |
-   +--------------------------------------------------------------------+--------------------------------------------------------------------+-------+
-   | :ref:`ComparisonType<enum_VisualShaderNodeCompare_ComparisonType>` | :ref:`type<class_VisualShaderNodeCompare_property_type>`           | ``0`` |
-   +--------------------------------------------------------------------+--------------------------------------------------------------------+-------+
+   +---------------------------------------------------------------------+--------------------------------------------------------------------+-------+
+   | :ref:`Condition <enum_VisualShaderNodeCompare_Condition>`           | :ref:`condition<class_VisualShaderNodeCompare_property_condition>` | ``0`` |
+   +---------------------------------------------------------------------+--------------------------------------------------------------------+-------+
+   | :ref:`Function <enum_VisualShaderNodeCompare_Function>`             | :ref:`function<class_VisualShaderNodeCompare_property_function>`   | ``0`` |
+   +---------------------------------------------------------------------+--------------------------------------------------------------------+-------+
+   | :ref:`ComparisonType <enum_VisualShaderNodeCompare_ComparisonType>` | :ref:`type<class_VisualShaderNodeCompare_property_type>`           | ``0`` |
+   +---------------------------------------------------------------------+--------------------------------------------------------------------+-------+
 
 .. rst-class:: classref-section-separator
 
@@ -43,14 +43,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_VisualShaderNodeCompare_ComparisonType:
 
 .. rst-class:: classref-enumeration
 
-enum **ComparisonType**: :ref:`🔗<enum_VisualShaderNodeCompare_ComparisonType>`
+enum **ComparisonType**: :ref:`🔗 <enum_VisualShaderNodeCompare_ComparisonType>`
 
 .. _class_VisualShaderNodeCompare_constant_CTYPE_SCALAR:
 
@@ -58,7 +58,7 @@ enum **ComparisonType**: :ref:`🔗<enum_VisualShaderNodeCompare_ComparisonType>
 
 :ref:`ComparisonType<enum_VisualShaderNodeCompare_ComparisonType>` **CTYPE_SCALAR** = ``0``
 
-A floating-point scalar.
+Một scalar số thực.
 
 .. _class_VisualShaderNodeCompare_constant_CTYPE_SCALAR_INT:
 
@@ -66,7 +66,7 @@ A floating-point scalar.
 
 :ref:`ComparisonType<enum_VisualShaderNodeCompare_ComparisonType>` **CTYPE_SCALAR_INT** = ``1``
 
-An integer scalar.
+Một scalar số nguyên.
 
 .. _class_VisualShaderNodeCompare_constant_CTYPE_SCALAR_UINT:
 
@@ -74,7 +74,7 @@ An integer scalar.
 
 :ref:`ComparisonType<enum_VisualShaderNodeCompare_ComparisonType>` **CTYPE_SCALAR_UINT** = ``2``
 
-An unsigned integer scalar.
+Một scalar số nguyên không dấu.
 
 .. _class_VisualShaderNodeCompare_constant_CTYPE_VECTOR_2D:
 
@@ -82,7 +82,7 @@ An unsigned integer scalar.
 
 :ref:`ComparisonType<enum_VisualShaderNodeCompare_ComparisonType>` **CTYPE_VECTOR_2D** = ``3``
 
-A 2D vector type.
+Một kiểu vector 2D.
 
 .. _class_VisualShaderNodeCompare_constant_CTYPE_VECTOR_3D:
 
@@ -90,7 +90,7 @@ A 2D vector type.
 
 :ref:`ComparisonType<enum_VisualShaderNodeCompare_ComparisonType>` **CTYPE_VECTOR_3D** = ``4``
 
-A 3D vector type.
+Một kiểu vector 3D.
 
 .. _class_VisualShaderNodeCompare_constant_CTYPE_VECTOR_4D:
 
@@ -98,7 +98,7 @@ A 3D vector type.
 
 :ref:`ComparisonType<enum_VisualShaderNodeCompare_ComparisonType>` **CTYPE_VECTOR_4D** = ``5``
 
-A 4D vector type.
+Một kiểu vector 4D.
 
 .. _class_VisualShaderNodeCompare_constant_CTYPE_BOOLEAN:
 
@@ -106,7 +106,7 @@ A 4D vector type.
 
 :ref:`ComparisonType<enum_VisualShaderNodeCompare_ComparisonType>` **CTYPE_BOOLEAN** = ``6``
 
-A boolean type.
+Một kiểu boolean.
 
 .. _class_VisualShaderNodeCompare_constant_CTYPE_TRANSFORM:
 
@@ -114,7 +114,7 @@ A boolean type.
 
 :ref:`ComparisonType<enum_VisualShaderNodeCompare_ComparisonType>` **CTYPE_TRANSFORM** = ``7``
 
-A transform (``mat4``) type.
+Một kiểu transform (``mat4``).
 
 .. _class_VisualShaderNodeCompare_constant_CTYPE_MAX:
 
@@ -122,7 +122,7 @@ A transform (``mat4``) type.
 
 :ref:`ComparisonType<enum_VisualShaderNodeCompare_ComparisonType>` **CTYPE_MAX** = ``8``
 
-Represents the size of the :ref:`ComparisonType<enum_VisualShaderNodeCompare_ComparisonType>` enum.
+Biểu thị kích thước của enum :ref:`ComparisonType <enum_VisualShaderNodeCompare_ComparisonType>`.
 
 .. rst-class:: classref-item-separator
 
@@ -132,7 +132,7 @@ Represents the size of the :ref:`ComparisonType<enum_VisualShaderNodeCompare_Com
 
 .. rst-class:: classref-enumeration
 
-enum **Function**: :ref:`🔗<enum_VisualShaderNodeCompare_Function>`
+enum **Function**: :ref:`🔗 <enum_VisualShaderNodeCompare_Function>`
 
 .. _class_VisualShaderNodeCompare_constant_FUNC_EQUAL:
 
@@ -140,7 +140,7 @@ enum **Function**: :ref:`🔗<enum_VisualShaderNodeCompare_Function>`
 
 :ref:`Function<enum_VisualShaderNodeCompare_Function>` **FUNC_EQUAL** = ``0``
 
-Comparison for equality (``a == b``).
+Phép so sánh bằng (``a == b``).
 
 .. _class_VisualShaderNodeCompare_constant_FUNC_NOT_EQUAL:
 
@@ -148,7 +148,7 @@ Comparison for equality (``a == b``).
 
 :ref:`Function<enum_VisualShaderNodeCompare_Function>` **FUNC_NOT_EQUAL** = ``1``
 
-Comparison for inequality (``a != b``).
+So sánh không bằng (``a != b``).
 
 .. _class_VisualShaderNodeCompare_constant_FUNC_GREATER_THAN:
 
@@ -156,7 +156,7 @@ Comparison for inequality (``a != b``).
 
 :ref:`Function<enum_VisualShaderNodeCompare_Function>` **FUNC_GREATER_THAN** = ``2``
 
-Comparison for greater than (``a > b``). Cannot be used if :ref:`type<class_VisualShaderNodeCompare_property_type>` set to :ref:`CTYPE_BOOLEAN<class_VisualShaderNodeCompare_constant_CTYPE_BOOLEAN>` or :ref:`CTYPE_TRANSFORM<class_VisualShaderNodeCompare_constant_CTYPE_TRANSFORM>`.
+So sánh lớn hơn (``a > b``). Không thể sử dụng nếu :ref:`type<class_VisualShaderNodeCompare_property_type>` được đặt thành :ref:`CTYPE_BOOLEAN<class_VisualShaderNodeCompare_constant_CTYPE_BOOLEAN>` hoặc :ref:`CTYPE_TRANSFORM<class_VisualShaderNodeCompare_constant_CTYPE_TRANSFORM>`.
 
 .. _class_VisualShaderNodeCompare_constant_FUNC_GREATER_THAN_EQUAL:
 
@@ -164,7 +164,7 @@ Comparison for greater than (``a > b``). Cannot be used if :ref:`type<class_Visu
 
 :ref:`Function<enum_VisualShaderNodeCompare_Function>` **FUNC_GREATER_THAN_EQUAL** = ``3``
 
-Comparison for greater than or equal (``a >= b``). Cannot be used if :ref:`type<class_VisualShaderNodeCompare_property_type>` set to :ref:`CTYPE_BOOLEAN<class_VisualShaderNodeCompare_constant_CTYPE_BOOLEAN>` or :ref:`CTYPE_TRANSFORM<class_VisualShaderNodeCompare_constant_CTYPE_TRANSFORM>`.
+So sánh lớn hơn hoặc bằng (``a >= b``). Không thể sử dụng nếu :ref:`type<class_VisualShaderNodeCompare_property_type>` được đặt thành :ref:`CTYPE_BOOLEAN<class_VisualShaderNodeCompare_constant_CTYPE_BOOLEAN>` hoặc :ref:`CTYPE_TRANSFORM<class_VisualShaderNodeCompare_constant_CTYPE_TRANSFORM>`.
 
 .. _class_VisualShaderNodeCompare_constant_FUNC_LESS_THAN:
 
@@ -172,7 +172,7 @@ Comparison for greater than or equal (``a >= b``). Cannot be used if :ref:`type<
 
 :ref:`Function<enum_VisualShaderNodeCompare_Function>` **FUNC_LESS_THAN** = ``4``
 
-Comparison for less than (``a < b``). Cannot be used if :ref:`type<class_VisualShaderNodeCompare_property_type>` set to :ref:`CTYPE_BOOLEAN<class_VisualShaderNodeCompare_constant_CTYPE_BOOLEAN>` or :ref:`CTYPE_TRANSFORM<class_VisualShaderNodeCompare_constant_CTYPE_TRANSFORM>`.
+So sánh nhỏ hơn (``a < b``). Không thể sử dụng nếu :ref:`type<class_VisualShaderNodeCompare_property_type>` được đặt thành :ref:`CTYPE_BOOLEAN<class_VisualShaderNodeCompare_constant_CTYPE_BOOLEAN>` hoặc :ref:`CTYPE_TRANSFORM<class_VisualShaderNodeCompare_constant_CTYPE_TRANSFORM>`.
 
 .. _class_VisualShaderNodeCompare_constant_FUNC_LESS_THAN_EQUAL:
 
@@ -180,7 +180,7 @@ Comparison for less than (``a < b``). Cannot be used if :ref:`type<class_VisualS
 
 :ref:`Function<enum_VisualShaderNodeCompare_Function>` **FUNC_LESS_THAN_EQUAL** = ``5``
 
-Comparison for less than or equal (``a <= b``). Cannot be used if :ref:`type<class_VisualShaderNodeCompare_property_type>` set to :ref:`CTYPE_BOOLEAN<class_VisualShaderNodeCompare_constant_CTYPE_BOOLEAN>` or :ref:`CTYPE_TRANSFORM<class_VisualShaderNodeCompare_constant_CTYPE_TRANSFORM>`.
+So sánh nhỏ hơn hoặc bằng (``a <= b``). Không thể sử dụng nếu :ref:`type<class_VisualShaderNodeCompare_property_type>` được đặt thành :ref:`CTYPE_BOOLEAN<class_VisualShaderNodeCompare_constant_CTYPE_BOOLEAN>` hoặc :ref:`CTYPE_TRANSFORM<class_VisualShaderNodeCompare_constant_CTYPE_TRANSFORM>`.
 
 .. _class_VisualShaderNodeCompare_constant_FUNC_MAX:
 
@@ -188,7 +188,7 @@ Comparison for less than or equal (``a <= b``). Cannot be used if :ref:`type<cla
 
 :ref:`Function<enum_VisualShaderNodeCompare_Function>` **FUNC_MAX** = ``6``
 
-Represents the size of the :ref:`Function<enum_VisualShaderNodeCompare_Function>` enum.
+Biểu thị kích thước của enum :ref:`Function <enum_VisualShaderNodeCompare_Function>`.
 
 .. rst-class:: classref-item-separator
 
@@ -198,7 +198,7 @@ Represents the size of the :ref:`Function<enum_VisualShaderNodeCompare_Function>
 
 .. rst-class:: classref-enumeration
 
-enum **Condition**: :ref:`🔗<enum_VisualShaderNodeCompare_Condition>`
+enum **Condition**: :ref:`🔗 <enum_VisualShaderNodeCompare_Condition>`
 
 .. _class_VisualShaderNodeCompare_constant_COND_ALL:
 
@@ -206,7 +206,7 @@ enum **Condition**: :ref:`🔗<enum_VisualShaderNodeCompare_Condition>`
 
 :ref:`Condition<enum_VisualShaderNodeCompare_Condition>` **COND_ALL** = ``0``
 
-The result will be ``true`` if all components in the vector satisfy the comparison condition.
+Kết quả sẽ là ``true`` nếu tất cả các thành phần trong vector thỏa mãn điều kiện so sánh.
 
 .. _class_VisualShaderNodeCompare_constant_COND_ANY:
 
@@ -214,7 +214,7 @@ The result will be ``true`` if all components in the vector satisfy the comparis
 
 :ref:`Condition<enum_VisualShaderNodeCompare_Condition>` **COND_ANY** = ``1``
 
-The result will be ``true`` if any component in the vector satisfies the comparison condition.
+Kết quả sẽ là ``true`` nếu bất kỳ thành phần nào trong vector thỏa mãn điều kiện so sánh.
 
 .. _class_VisualShaderNodeCompare_constant_COND_MAX:
 
@@ -222,7 +222,7 @@ The result will be ``true`` if any component in the vector satisfies the compari
 
 :ref:`Condition<enum_VisualShaderNodeCompare_Condition>` **COND_MAX** = ``2``
 
-Represents the size of the :ref:`Condition<enum_VisualShaderNodeCompare_Condition>` enum.
+Biểu thị kích thước của enum :ref:`Condition <enum_VisualShaderNodeCompare_Condition>`.
 
 .. rst-class:: classref-section-separator
 
@@ -230,8 +230,8 @@ Represents the size of the :ref:`Condition<enum_VisualShaderNodeCompare_Conditio
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeCompare_property_condition:
 
@@ -244,7 +244,7 @@ Property Descriptions
 - |void| **set_condition**\ (\ value\: :ref:`Condition<enum_VisualShaderNodeCompare_Condition>`\ )
 - :ref:`Condition<enum_VisualShaderNodeCompare_Condition>` **get_condition**\ (\ )
 
-Extra condition which is applied if :ref:`type<class_VisualShaderNodeCompare_property_type>` is set to :ref:`CTYPE_VECTOR_3D<class_VisualShaderNodeCompare_constant_CTYPE_VECTOR_3D>`.
+Điều kiện bổ sung được áp dụng nếu :ref:`type<class_VisualShaderNodeCompare_property_type>` được đặt thành :ref:`CTYPE_VECTOR_3D<class_VisualShaderNodeCompare_constant_CTYPE_VECTOR_3D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -261,7 +261,7 @@ Extra condition which is applied if :ref:`type<class_VisualShaderNodeCompare_pro
 - |void| **set_function**\ (\ value\: :ref:`Function<enum_VisualShaderNodeCompare_Function>`\ )
 - :ref:`Function<enum_VisualShaderNodeCompare_Function>` **get_function**\ (\ )
 
-A comparison function.
+Một hàm so sánh.
 
 .. rst-class:: classref-item-separator
 
@@ -278,14 +278,14 @@ A comparison function.
 - |void| **set_comparison_type**\ (\ value\: :ref:`ComparisonType<enum_VisualShaderNodeCompare_ComparisonType>`\ )
 - :ref:`ComparisonType<enum_VisualShaderNodeCompare_ComparisonType>` **get_comparison_type**\ (\ )
 
-The type to be used in the comparison.
+Kiểu được sử dụng trong phép so sánh.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được cấu thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,22 +10,22 @@
 WorldBoundaryShape3D
 ====================
 
-**Inherits:** :ref:`Shape3D<class_Shape3D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Shape3D<class_Shape3D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A 3D world boundary (half-space) shape used for physics collision.
+Một shape ranh giới thế giới 3D (nửa không gian) được dùng cho va chạm vật lý.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A 3D world boundary shape, intended for use in physics. **WorldBoundaryShape3D** works like an infinite plane that forces all physics bodies to stay above it. The :ref:`plane<class_WorldBoundaryShape3D_property_plane>`'s normal determines which direction is considered as "above" and in the editor, the line over the plane represents this direction. It can for example be used for endless flat floors.
+Một shape ranh giới thế giới 3D, предназначен để sử dụng trong vật lý. **WorldBoundaryShape3D** hoạt động như một mặt phẳng vô hạn, buộc tất cả các physics body phải ở phía trên nó. Pháp tuyến của :ref:`plane<class_WorldBoundaryShape3D_property_plane>` xác định hướng nào được xem là "phía trên"; trong editor, đường thẳng phía trên mặt phẳng biểu thị hướng này. Ví dụ, nó có thể được dùng làm các sàn phẳng kéo dài vô tận.
 
-\ **Note:** When the physics engine is set to **Jolt Physics** in the project settings (:ref:`ProjectSettings.physics/3d/physics_engine<class_ProjectSettings_property_physics/3d/physics_engine>`), **WorldBoundaryShape3D** has a finite size (centered at the shape's origin). It can be adjusted by changing :ref:`ProjectSettings.physics/jolt_physics_3d/limits/world_boundary_shape_size<class_ProjectSettings_property_physics/jolt_physics_3d/limits/world_boundary_shape_size>`.
+\ **Lưu ý:** Khi physics engine được đặt thành **Jolt Physics** trong project settings (:ref:`ProjectSettings.physics/3d/physics_engine <class_ProjectSettings_property_physics/3d/physics_engine>`), **WorldBoundaryShape3D** có kích thước hữu hạn (được căn giữa tại origin của shape). Bạn có thể điều chỉnh kích thước này bằng cách thay đổi :ref:`ProjectSettings.physics/jolt_physics_3d/limits/world_boundary_shape_size <class_ProjectSettings_property_physics/jolt_physics_3d/limits/world_boundary_shape_size>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -41,8 +41,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_WorldBoundaryShape3D_property_plane:
 
@@ -55,14 +55,14 @@ Property Descriptions
 - |void| **set_plane**\ (\ value\: :ref:`Plane<class_Plane>`\ )
 - :ref:`Plane<class_Plane>` **get_plane**\ (\ )
 
-The :ref:`Plane<class_Plane>` used by the **WorldBoundaryShape3D** for collision.
+:ref:`Plane<class_Plane>` được **WorldBoundaryShape3D** sử dụng để xử lý va chạm.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

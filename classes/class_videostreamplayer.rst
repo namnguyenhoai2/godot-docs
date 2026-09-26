@@ -10,31 +10,31 @@
 VideoStreamPlayer
 =================
 
-**Inherits:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A control used for video playback.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A control used for playback of :ref:`VideoStream<class_VideoStream>` resources.
-
-Supported video formats are `Ogg Theora <https://www.theora.org/>`__ (``.ogv``, :ref:`VideoStreamTheora<class_VideoStreamTheora>`) and any format exposed via a GDExtension plugin.
-
-\ **Warning:** On Web, video playback *will* perform poorly due to missing architecture-specific assembly optimizations.
+Một control được sử dụng để phát video.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một control được sử dụng để phát các tài nguyên :ref:`VideoStream<class_VideoStream>`.
+
+Các định dạng video được hỗ trợ là `Ogg Theora <https://www.theora.org/>`__ (``.ogv``, :ref:`VideoStreamTheora<class_VideoStreamTheora>`) và mọi định dạng được cung cấp thông qua plugin GDExtension.
+
+\ **Cảnh báo:** Trên Web, việc phát video *sẽ* hoạt động kém do thiếu các tối ưu hóa assembly dành riêng cho kiến trúc.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Playing videos <../tutorials/animation/playing_videos>`
+- :doc:`Phát video <../tutorials/animation/playing_videos>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -68,8 +68,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -94,8 +94,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_VideoStreamPlayer_signal_finished:
 
@@ -103,7 +103,7 @@ Signals
 
 **finished**\ (\ ) :ref:`🔗<class_VideoStreamPlayer_signal_finished>`
 
-Emitted when playback is finished.
+Được phát ra khi phát xong.
 
 .. rst-class:: classref-section-separator
 
@@ -111,8 +111,8 @@ Emitted when playback is finished.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VideoStreamPlayer_property_audio_track:
 
@@ -125,7 +125,7 @@ Property Descriptions
 - |void| **set_audio_track**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_audio_track**\ (\ )
 
-The embedded audio track to play.
+Bản nhạc âm thanh được nhúng để phát.
 
 .. rst-class:: classref-item-separator
 
@@ -142,7 +142,7 @@ The embedded audio track to play.
 - |void| **set_autoplay**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **has_autoplay**\ (\ )
 
-If ``true``, playback starts when the scene loads.
+Nếu ``true``, phát lại sẽ bắt đầu khi scene được tải.
 
 .. rst-class:: classref-item-separator
 
@@ -159,7 +159,7 @@ If ``true``, playback starts when the scene loads.
 - |void| **set_buffering_msec**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_buffering_msec**\ (\ )
 
-Amount of time in milliseconds to store in buffer while playing.
+Lượng thời gian tính bằng mili giây được lưu vào buffer trong khi phát.
 
 .. rst-class:: classref-item-separator
 
@@ -176,7 +176,7 @@ Amount of time in milliseconds to store in buffer while playing.
 - |void| **set_bus**\ (\ value\: :ref:`StringName<class_StringName>`\ )
 - :ref:`StringName<class_StringName>` **get_bus**\ (\ )
 
-Audio bus to use for sound playback.
+Audio bus được sử dụng để phát âm thanh.
 
 .. rst-class:: classref-item-separator
 
@@ -193,7 +193,7 @@ Audio bus to use for sound playback.
 - |void| **set_expand**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **has_expand**\ (\ )
 
-If ``true``, the video scales to the control size. Otherwise, the control minimum size will be automatically adjusted to match the video stream's dimensions.
+Nếu ``true``, video sẽ được điều chỉnh tỷ lệ theo kích thước của control. Nếu không, kích thước tối thiểu của control sẽ được tự động điều chỉnh để khớp với kích thước của video stream.
 
 .. rst-class:: classref-item-separator
 
@@ -210,7 +210,7 @@ If ``true``, the video scales to the control size. Otherwise, the control minimu
 - |void| **set_loop**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **has_loop**\ (\ )
 
-If ``true``, the video restarts when it reaches its end.
+Nếu ``true``, video sẽ phát lại từ đầu khi đến cuối.
 
 .. rst-class:: classref-item-separator
 
@@ -227,7 +227,7 @@ If ``true``, the video restarts when it reaches its end.
 - |void| **set_paused**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_paused**\ (\ )
 
-If ``true``, the video is paused.
+Nếu ``true``, video sẽ bị tạm dừng.
 
 .. rst-class:: classref-item-separator
 
@@ -244,7 +244,7 @@ If ``true``, the video is paused.
 - |void| **set_speed_scale**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_speed_scale**\ (\ )
 
-The stream's current speed scale. ``1.0`` is the normal speed, while ``2.0`` is double speed and ``0.5`` is half speed. A speed scale of ``0.0`` pauses the video, similar to setting :ref:`paused<class_VideoStreamPlayer_property_paused>` to ``true``.
+Tỷ lệ tốc độ hiện tại của stream. ``1.0`` là tốc độ bình thường, ``2.0`` là tốc độ gấp đôi và ``0.5`` là tốc độ bằng một nửa. Tỷ lệ tốc độ ``0.0`` sẽ tạm dừng video, tương tự như đặt :ref:`paused<class_VideoStreamPlayer_property_paused>` thành ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -254,14 +254,14 @@ The stream's current speed scale. ``1.0`` is the normal speed, while ``2.0`` is 
 
 .. rst-class:: classref-property
 
-:ref:`VideoStream<class_VideoStream>` **stream** :ref:`🔗<class_VideoStreamPlayer_property_stream>`
+:ref:`VideoStream<class_VideoStream>` **stream** :ref:`🔗 <class_VideoStreamPlayer_property_stream>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_stream**\ (\ value\: :ref:`VideoStream<class_VideoStream>`\ )
 - :ref:`VideoStream<class_VideoStream>` **get_stream**\ (\ )
 
-The assigned video stream. See description for supported formats.
+Luồng video được gán. Xem phần mô tả để biết các định dạng được hỗ trợ.
 
 .. rst-class:: classref-item-separator
 
@@ -271,14 +271,14 @@ The assigned video stream. See description for supported formats.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **stream_position** :ref:`🔗<class_VideoStreamPlayer_property_stream_position>`
+:ref:`float<class_float>` **stream_position** :ref:`🔗 <class_VideoStreamPlayer_property_stream_position>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_stream_position**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_stream_position**\ (\ )
 
-The current position of the stream, in seconds.
+Vị trí hiện tại của luồng, tính bằng giây.
 
 .. rst-class:: classref-item-separator
 
@@ -288,14 +288,14 @@ The current position of the stream, in seconds.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **volume** :ref:`🔗<class_VideoStreamPlayer_property_volume>`
+:ref:`float<class_float>` **volume** :ref:`🔗 <class_VideoStreamPlayer_property_volume>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_volume**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_volume**\ (\ )
 
-Audio volume as a linear value.
+Âm lượng âm thanh dưới dạng giá trị tuyến tính.
 
 .. rst-class:: classref-item-separator
 
@@ -312,7 +312,7 @@ Audio volume as a linear value.
 - |void| **set_volume_db**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_volume_db**\ (\ )
 
-Audio volume in dB.
+Âm lượng âm thanh tính bằng dB.
 
 .. rst-class:: classref-section-separator
 
@@ -320,8 +320,8 @@ Audio volume in dB.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_VideoStreamPlayer_method_get_stream_length:
 
@@ -329,7 +329,7 @@ Method Descriptions
 
 :ref:`float<class_float>` **get_stream_length**\ (\ ) |const| :ref:`🔗<class_VideoStreamPlayer_method_get_stream_length>`
 
-The length of the current stream, in seconds.
+Độ dài của stream hiện tại, tính bằng giây.
 
 .. rst-class:: classref-item-separator
 
@@ -341,7 +341,7 @@ The length of the current stream, in seconds.
 
 :ref:`String<class_String>` **get_stream_name**\ (\ ) |const| :ref:`🔗<class_VideoStreamPlayer_method_get_stream_name>`
 
-Returns the video stream's name, or ``"<No Stream>"`` if no video stream is assigned.
+Trả về tên của stream video hoặc ``"<No Stream>"`` nếu chưa gán stream video.
 
 .. rst-class:: classref-item-separator
 
@@ -353,7 +353,7 @@ Returns the video stream's name, or ``"<No Stream>"`` if no video stream is assi
 
 :ref:`Texture2D<class_Texture2D>` **get_video_texture**\ (\ ) |const| :ref:`🔗<class_VideoStreamPlayer_method_get_video_texture>`
 
-Returns the current frame as a :ref:`Texture2D<class_Texture2D>`.
+Trả về khung hình hiện tại dưới dạng :ref:`Texture2D<class_Texture2D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -365,9 +365,9 @@ Returns the current frame as a :ref:`Texture2D<class_Texture2D>`.
 
 :ref:`bool<class_bool>` **is_playing**\ (\ ) |const| :ref:`🔗<class_VideoStreamPlayer_method_is_playing>`
 
-Returns ``true`` if the video is playing.
+Trả về ``true`` nếu video đang phát.
 
-\ **Note:** The video is still considered playing if paused during playback.
+\ **Lưu ý:** Video vẫn được xem là đang phát nếu bị tạm dừng trong khi phát.
 
 .. rst-class:: classref-item-separator
 
@@ -379,7 +379,7 @@ Returns ``true`` if the video is playing.
 
 |void| **play**\ (\ ) :ref:`🔗<class_VideoStreamPlayer_method_play>`
 
-Starts the video playback from the beginning. If the video is paused, this will not unpause the video.
+Bắt đầu phát video từ đầu. Nếu video đang tạm dừng, thao tác này sẽ không tiếp tục phát video.
 
 .. rst-class:: classref-item-separator
 
@@ -391,16 +391,16 @@ Starts the video playback from the beginning. If the video is paused, this will 
 
 |void| **stop**\ (\ ) :ref:`🔗<class_VideoStreamPlayer_method_stop>`
 
-Stops the video playback and sets the stream position to 0.
+Dừng phát video và đặt vị trí của stream về 0.
 
-\ **Note:** Although the stream position will be set to 0, the first frame of the video stream won't become the current frame.
+\ **Lưu ý:** Mặc dù vị trí của stream sẽ được đặt về 0, frame đầu tiên của video stream sẽ không trở thành frame hiện tại.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override method này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận số lượng argument bất kỳ sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Method này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

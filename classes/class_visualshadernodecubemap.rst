@@ -10,16 +10,16 @@
 VisualShaderNodeCubemap
 =======================
 
-**Inherits:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A :ref:`Cubemap<class_Cubemap>` sampling node to be used within the visual shader graph.
+Một node sampling :ref:`Cubemap<class_Cubemap>` được sử dụng trong visual shader graph.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Translated to ``texture(cubemap, vec3)`` in the shader language. Returns a color vector and alpha channel as scalar.
+Được dịch thành ``texture(cubemap, vec3)`` trong ngôn ngữ shader. Trả về một vector màu và kênh alpha dưới dạng scalar.
 
 .. rst-class:: classref-reftable-group
 
@@ -29,13 +29,13 @@ Properties
 .. table::
    :widths: auto
 
-   +--------------------------------------------------------------+--------------------------------------------------------------------------+-------+
-   | :ref:`TextureLayered<class_TextureLayered>`                  | :ref:`cube_map<class_VisualShaderNodeCubemap_property_cube_map>`         |       |
-   +--------------------------------------------------------------+--------------------------------------------------------------------------+-------+
-   | :ref:`Source<enum_VisualShaderNodeCubemap_Source>`           | :ref:`source<class_VisualShaderNodeCubemap_property_source>`             | ``0`` |
-   +--------------------------------------------------------------+--------------------------------------------------------------------------+-------+
-   | :ref:`TextureType<enum_VisualShaderNodeCubemap_TextureType>` | :ref:`texture_type<class_VisualShaderNodeCubemap_property_texture_type>` | ``0`` |
-   +--------------------------------------------------------------+--------------------------------------------------------------------------+-------+
+   +---------------------------------------------------------------+--------------------------------------------------------------------------+-------+
+   | :ref:`TextureLayered<class_TextureLayered>`                   | :ref:`cube_map<class_VisualShaderNodeCubemap_property_cube_map>`         |       |
+   +---------------------------------------------------------------+--------------------------------------------------------------------------+-------+
+   | :ref:`Source <enum_VisualShaderNodeCubemap_Source>`           | :ref:`source<class_VisualShaderNodeCubemap_property_source>`             | ``0`` |
+   +---------------------------------------------------------------+--------------------------------------------------------------------------+-------+
+   | :ref:`TextureType <enum_VisualShaderNodeCubemap_TextureType>` | :ref:`texture_type<class_VisualShaderNodeCubemap_property_texture_type>` | ``0`` |
+   +---------------------------------------------------------------+--------------------------------------------------------------------------+-------+
 
 .. rst-class:: classref-section-separator
 
@@ -43,14 +43,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_VisualShaderNodeCubemap_Source:
 
 .. rst-class:: classref-enumeration
 
-enum **Source**: :ref:`🔗<enum_VisualShaderNodeCubemap_Source>`
+enum **Source**: :ref:`🔗 <enum_VisualShaderNodeCubemap_Source>`
 
 .. _class_VisualShaderNodeCubemap_constant_SOURCE_TEXTURE:
 
@@ -58,7 +58,7 @@ enum **Source**: :ref:`🔗<enum_VisualShaderNodeCubemap_Source>`
 
 :ref:`Source<enum_VisualShaderNodeCubemap_Source>` **SOURCE_TEXTURE** = ``0``
 
-Use the :ref:`Cubemap<class_Cubemap>` set via :ref:`cube_map<class_VisualShaderNodeCubemap_property_cube_map>`. If this is set to :ref:`source<class_VisualShaderNodeCubemap_property_source>`, the ``samplerCube`` port is ignored.
+Sử dụng :ref:`Cubemap<class_Cubemap>` được thiết lập qua :ref:`cube_map<class_VisualShaderNodeCubemap_property_cube_map>`. Nếu giá trị này được đặt thành :ref:`source<class_VisualShaderNodeCubemap_property_source>`, cổng ``samplerCube`` sẽ bị bỏ qua.
 
 .. _class_VisualShaderNodeCubemap_constant_SOURCE_PORT:
 
@@ -66,7 +66,7 @@ Use the :ref:`Cubemap<class_Cubemap>` set via :ref:`cube_map<class_VisualShaderN
 
 :ref:`Source<enum_VisualShaderNodeCubemap_Source>` **SOURCE_PORT** = ``1``
 
-Use the :ref:`Cubemap<class_Cubemap>` sampler reference passed via the ``samplerCube`` port. If this is set to :ref:`source<class_VisualShaderNodeCubemap_property_source>`, the :ref:`cube_map<class_VisualShaderNodeCubemap_property_cube_map>` texture is ignored.
+Sử dụng :ref:`Cubemap<class_Cubemap>` sampler reference được truyền qua cổng ``samplerCube``. Nếu giá trị này được đặt thành :ref:`source<class_VisualShaderNodeCubemap_property_source>`, texture :ref:`cube_map<class_VisualShaderNodeCubemap_property_cube_map>` sẽ bị bỏ qua.
 
 .. _class_VisualShaderNodeCubemap_constant_SOURCE_MAX:
 
@@ -74,7 +74,7 @@ Use the :ref:`Cubemap<class_Cubemap>` sampler reference passed via the ``sampler
 
 :ref:`Source<enum_VisualShaderNodeCubemap_Source>` **SOURCE_MAX** = ``2``
 
-Represents the size of the :ref:`Source<enum_VisualShaderNodeCubemap_Source>` enum.
+Biểu thị kích thước của enum :ref:`Source <enum_VisualShaderNodeCubemap_Source>`.
 
 .. rst-class:: classref-item-separator
 
@@ -84,7 +84,7 @@ Represents the size of the :ref:`Source<enum_VisualShaderNodeCubemap_Source>` en
 
 .. rst-class:: classref-enumeration
 
-enum **TextureType**: :ref:`🔗<enum_VisualShaderNodeCubemap_TextureType>`
+enum **TextureType**: :ref:`🔗 <enum_VisualShaderNodeCubemap_TextureType>`
 
 .. _class_VisualShaderNodeCubemap_constant_TYPE_DATA:
 
@@ -92,7 +92,7 @@ enum **TextureType**: :ref:`🔗<enum_VisualShaderNodeCubemap_TextureType>`
 
 :ref:`TextureType<enum_VisualShaderNodeCubemap_TextureType>` **TYPE_DATA** = ``0``
 
-No hints are added to the uniform declaration.
+Không có gợi ý nào được thêm vào khai báo uniform.
 
 .. _class_VisualShaderNodeCubemap_constant_TYPE_COLOR:
 
@@ -100,7 +100,7 @@ No hints are added to the uniform declaration.
 
 :ref:`TextureType<enum_VisualShaderNodeCubemap_TextureType>` **TYPE_COLOR** = ``1``
 
-Adds ``source_color`` as hint to the uniform declaration for proper conversion from nonlinear sRGB encoding to linear encoding.
+Thêm ``source_color`` làm gợi ý vào khai báo uniform để chuyển đổi đúng cách từ encoding sRGB phi tuyến sang encoding tuyến tính.
 
 .. _class_VisualShaderNodeCubemap_constant_TYPE_NORMAL_MAP:
 
@@ -108,7 +108,7 @@ Adds ``source_color`` as hint to the uniform declaration for proper conversion f
 
 :ref:`TextureType<enum_VisualShaderNodeCubemap_TextureType>` **TYPE_NORMAL_MAP** = ``2``
 
-Adds ``hint_normal`` as hint to the uniform declaration, which internally converts the texture for proper usage as normal map.
+Thêm ``hint_normal`` làm gợi ý vào khai báo uniform, thành phần này sẽ tự chuyển đổi texture để sử dụng đúng cách làm normal map.
 
 .. _class_VisualShaderNodeCubemap_constant_TYPE_MAX:
 
@@ -116,7 +116,7 @@ Adds ``hint_normal`` as hint to the uniform declaration, which internally conver
 
 :ref:`TextureType<enum_VisualShaderNodeCubemap_TextureType>` **TYPE_MAX** = ``3``
 
-Represents the size of the :ref:`TextureType<enum_VisualShaderNodeCubemap_TextureType>` enum.
+Biểu thị kích thước của enum :ref:`TextureType <enum_VisualShaderNodeCubemap_TextureType>`.
 
 .. rst-class:: classref-section-separator
 
@@ -124,21 +124,21 @@ Represents the size of the :ref:`TextureType<enum_VisualShaderNodeCubemap_Textur
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeCubemap_property_cube_map:
 
 .. rst-class:: classref-property
 
-:ref:`TextureLayered<class_TextureLayered>` **cube_map** :ref:`🔗<class_VisualShaderNodeCubemap_property_cube_map>`
+:ref:`TextureLayered<class_TextureLayered>` **cube_map** :ref:`🔗 <class_VisualShaderNodeCubemap_property_cube_map>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_cube_map**\ (\ value\: :ref:`TextureLayered<class_TextureLayered>`\ )
 - :ref:`TextureLayered<class_TextureLayered>` **get_cube_map**\ (\ )
 
-The :ref:`Cubemap<class_Cubemap>` texture to sample when using :ref:`SOURCE_TEXTURE<class_VisualShaderNodeCubemap_constant_SOURCE_TEXTURE>` as :ref:`source<class_VisualShaderNodeCubemap_property_source>`.
+Texture :ref:`Cubemap<class_Cubemap>` sẽ được lấy mẫu khi sử dụng :ref:`SOURCE_TEXTURE<class_VisualShaderNodeCubemap_constant_SOURCE_TEXTURE>` làm :ref:`source<class_VisualShaderNodeCubemap_property_source>`.
 
 .. rst-class:: classref-item-separator
 
@@ -155,7 +155,7 @@ The :ref:`Cubemap<class_Cubemap>` texture to sample when using :ref:`SOURCE_TEXT
 - |void| **set_source**\ (\ value\: :ref:`Source<enum_VisualShaderNodeCubemap_Source>`\ )
 - :ref:`Source<enum_VisualShaderNodeCubemap_Source>` **get_source**\ (\ )
 
-Defines which source should be used for the sampling.
+Xác định nguồn sẽ được sử dụng để lấy mẫu.
 
 .. rst-class:: classref-item-separator
 
@@ -172,14 +172,14 @@ Defines which source should be used for the sampling.
 - |void| **set_texture_type**\ (\ value\: :ref:`TextureType<enum_VisualShaderNodeCubemap_TextureType>`\ )
 - :ref:`TextureType<enum_VisualShaderNodeCubemap_TextureType>` **get_texture_type**\ (\ )
 
-Defines the type of data provided by the source texture.
+Xác định kiểu dữ liệu do texture nguồn cung cấp.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

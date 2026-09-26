@@ -10,28 +10,28 @@
 VisualShaderNodeParticleEmit
 ============================
 
-**Inherits:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A visual shader node that forces to emit a particle from a sub-emitter.
+Một node visual shader buộc phát ra một particle từ một sub-emitter.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This node internally calls ``emit_subparticle`` shader method. It will emit a particle from the configured sub-emitter and also allows to customize how its emitted. Requires a sub-emitter assigned to the particles node with this shader.
+Node này gọi nội bộ phương thức shader ``emit_subparticle``. Nó sẽ phát ra một particle từ sub-emitter đã cấu hình và cũng cho phép tùy chỉnh cách particle được phát ra. Yêu cầu phải gán một sub-emitter cho node particles sử dụng shader này.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------------------+-----------------------------------------------------------------+--------+
-   | :ref:`EmitFlags<enum_VisualShaderNodeParticleEmit_EmitFlags>` | :ref:`flags<class_VisualShaderNodeParticleEmit_property_flags>` | ``31`` |
-   +---------------------------------------------------------------+-----------------------------------------------------------------+--------+
+   +----------------------------------------------------------------+-----------------------------------------------------------------+--------+
+   | :ref:`EmitFlags <enum_VisualShaderNodeParticleEmit_EmitFlags>` | :ref:`flags<class_VisualShaderNodeParticleEmit_property_flags>` | ``31`` |
+   +----------------------------------------------------------------+-----------------------------------------------------------------+--------+
 
 .. rst-class:: classref-section-separator
 
@@ -39,14 +39,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_VisualShaderNodeParticleEmit_EmitFlags:
 
 .. rst-class:: classref-enumeration
 
-enum **EmitFlags**: :ref:`🔗<enum_VisualShaderNodeParticleEmit_EmitFlags>`
+enum **EmitFlags**: :ref:`🔗 <enum_VisualShaderNodeParticleEmit_EmitFlags>`
 
 .. _class_VisualShaderNodeParticleEmit_constant_EMIT_FLAG_POSITION:
 
@@ -54,7 +54,7 @@ enum **EmitFlags**: :ref:`🔗<enum_VisualShaderNodeParticleEmit_EmitFlags>`
 
 :ref:`EmitFlags<enum_VisualShaderNodeParticleEmit_EmitFlags>` **EMIT_FLAG_POSITION** = ``1``
 
-If enabled, the particle starts with the position defined by this node.
+Nếu được bật, particle bắt đầu với vị trí được xác định bởi node này.
 
 .. _class_VisualShaderNodeParticleEmit_constant_EMIT_FLAG_ROT_SCALE:
 
@@ -62,7 +62,7 @@ If enabled, the particle starts with the position defined by this node.
 
 :ref:`EmitFlags<enum_VisualShaderNodeParticleEmit_EmitFlags>` **EMIT_FLAG_ROT_SCALE** = ``2``
 
-If enabled, the particle starts with the rotation and scale defined by this node.
+Nếu được bật, particle bắt đầu với rotation và scale được xác định bởi node này.
 
 .. _class_VisualShaderNodeParticleEmit_constant_EMIT_FLAG_VELOCITY:
 
@@ -70,7 +70,7 @@ If enabled, the particle starts with the rotation and scale defined by this node
 
 :ref:`EmitFlags<enum_VisualShaderNodeParticleEmit_EmitFlags>` **EMIT_FLAG_VELOCITY** = ``4``
 
-If enabled,the particle starts with the velocity defined by this node.
+Nếu được bật, particle bắt đầu với velocity được xác định bởi node này.
 
 .. _class_VisualShaderNodeParticleEmit_constant_EMIT_FLAG_COLOR:
 
@@ -78,7 +78,7 @@ If enabled,the particle starts with the velocity defined by this node.
 
 :ref:`EmitFlags<enum_VisualShaderNodeParticleEmit_EmitFlags>` **EMIT_FLAG_COLOR** = ``8``
 
-If enabled, the particle starts with the color defined by this node.
+Nếu được bật, particle bắt đầu với color được xác định bởi node này.
 
 .. _class_VisualShaderNodeParticleEmit_constant_EMIT_FLAG_CUSTOM:
 
@@ -86,7 +86,7 @@ If enabled, the particle starts with the color defined by this node.
 
 :ref:`EmitFlags<enum_VisualShaderNodeParticleEmit_EmitFlags>` **EMIT_FLAG_CUSTOM** = ``16``
 
-If enabled, the particle starts with the ``CUSTOM`` data defined by this node.
+Nếu được bật, particle bắt đầu với dữ liệu ``CUSTOM`` được xác định bởi node này.
 
 .. rst-class:: classref-section-separator
 
@@ -94,8 +94,8 @@ If enabled, the particle starts with the ``CUSTOM`` data defined by this node.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeParticleEmit_property_flags:
 
@@ -108,14 +108,14 @@ Property Descriptions
 - |void| **set_flags**\ (\ value\: :ref:`EmitFlags<enum_VisualShaderNodeParticleEmit_EmitFlags>`\ )
 - :ref:`EmitFlags<enum_VisualShaderNodeParticleEmit_EmitFlags>` **get_flags**\ (\ )
 
-Flags used to override the properties defined in the sub-emitter's process material.
+Các cờ được sử dụng để ghi đè các thuộc tính được định nghĩa trong vật liệu xử lý của sub-emitter.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,26 +10,26 @@
 VisibleOnScreenNotifier3D
 =========================
 
-**Inherits:** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`VisibleOnScreenEnabler3D<class_VisibleOnScreenEnabler3D>`
+**Được kế thừa bởi:** :ref:`VisibleOnScreenEnabler3D<class_VisibleOnScreenEnabler3D>`
 
-A box-shaped region of 3D space that detects whether it is visible on screen.
+Một vùng không gian 3D hình hộp, phát hiện xem nó có hiển thị trên màn hình hay không.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**VisibleOnScreenNotifier3D** represents a box-shaped region of 3D space. When any part of this region becomes visible on screen or in a :ref:`Camera3D<class_Camera3D>`'s view, it will emit a :ref:`screen_entered<class_VisibleOnScreenNotifier3D_signal_screen_entered>` signal, and likewise it will emit a :ref:`screen_exited<class_VisibleOnScreenNotifier3D_signal_screen_exited>` signal when no part of it remains visible.
+**VisibleOnScreenNotifier3D**đại diện cho một vùng không gian 3D hình hộp. Khi bất kỳ phần nào của vùng này hiển thị trên màn hình hoặc trong tầm nhìn của :ref:`Camera3D<class_Camera3D>`, nó sẽ phát tín hiệu :ref:`screen_entered<class_VisibleOnScreenNotifier3D_signal_screen_entered>`, và tương tự sẽ phát tín hiệu :ref:`screen_exited<class_VisibleOnScreenNotifier3D_signal_screen_exited>` khi không còn phần nào của nó hiển thị.
 
-If you want a node to be enabled automatically when this region is visible on screen, use :ref:`VisibleOnScreenEnabler3D<class_VisibleOnScreenEnabler3D>`.
+Nếu muốn một node được tự động bật khi vùng này hiển thị trên màn hình, hãy sử dụng :ref:`VisibleOnScreenEnabler3D<class_VisibleOnScreenEnabler3D>`.
 
-\ **Note:** **VisibleOnScreenNotifier3D** uses an approximate heuristic that doesn't take walls and other occlusion into account, unless occlusion culling is used. It also won't function unless :ref:`Node3D.visible<class_Node3D_property_visible>` is set to ``true``.
+\ **Lưu ý:** **VisibleOnScreenNotifier3D** sử dụng một heuristic gần đúng, không tính đến tường và các vật cản khác, trừ khi sử dụng occlusion culling. Nó cũng sẽ không hoạt động nếu :ref:`Node3D.visible<class_Node3D_property_visible>` không được đặt thành ``true``.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -41,8 +41,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -57,8 +57,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_VisibleOnScreenNotifier3D_signal_screen_entered:
 
@@ -66,7 +66,7 @@ Signals
 
 **screen_entered**\ (\ ) :ref:`🔗<class_VisibleOnScreenNotifier3D_signal_screen_entered>`
 
-Emitted when the **VisibleOnScreenNotifier3D** enters the screen.
+Được phát ra khi **VisibleOnScreenNotifier3D** đi vào màn hình.
 
 .. rst-class:: classref-item-separator
 
@@ -78,7 +78,7 @@ Emitted when the **VisibleOnScreenNotifier3D** enters the screen.
 
 **screen_exited**\ (\ ) :ref:`🔗<class_VisibleOnScreenNotifier3D_signal_screen_exited>`
 
-Emitted when the **VisibleOnScreenNotifier3D** exits the screen.
+Được phát ra khi **VisibleOnScreenNotifier3D** rời khỏi màn hình.
 
 .. rst-class:: classref-section-separator
 
@@ -86,8 +86,8 @@ Emitted when the **VisibleOnScreenNotifier3D** exits the screen.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisibleOnScreenNotifier3D_property_aabb:
 
@@ -100,7 +100,7 @@ Property Descriptions
 - |void| **set_aabb**\ (\ value\: :ref:`AABB<class_AABB>`\ )
 - :ref:`AABB<class_AABB>` **get_aabb**\ (\ )
 
-The **VisibleOnScreenNotifier3D**'s bounding box.
+Hộp giới hạn của **VisibleOnScreenNotifier3D**.
 
 .. rst-class:: classref-section-separator
 
@@ -108,8 +108,8 @@ The **VisibleOnScreenNotifier3D**'s bounding box.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_VisibleOnScreenNotifier3D_method_is_on_screen:
 
@@ -117,16 +117,16 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **is_on_screen**\ (\ ) |const| :ref:`🔗<class_VisibleOnScreenNotifier3D_method_is_on_screen>`
 
-Returns ``true`` if the bounding box is on the screen.
+Trả về ``true`` nếu bounding box nằm trên màn hình.
 
-\ **Note:** It takes one frame for the **VisibleOnScreenNotifier3D**'s visibility to be assessed once added to the scene tree, so this method will always return ``false`` right after it is instantiated.
+\ **Lưu ý:** Cần một frame để đánh giá khả năng hiển thị của **VisibleOnScreenNotifier3D**'s sau khi được thêm vào scene tree, vì vậy phương thức này sẽ luôn trả về ``false`` ngay sau khi nó được khởi tạo.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không thay đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

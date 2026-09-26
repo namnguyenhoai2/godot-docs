@@ -10,28 +10,28 @@
 VisualShaderNodeVectorOp
 ========================
 
-**Inherits:** :ref:`VisualShaderNodeVectorBase<class_VisualShaderNodeVectorBase>` **<** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNodeVectorBase<class_VisualShaderNodeVectorBase>` **<** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A vector operator to be used within the visual shader graph.
+Một vector operator được sử dụng trong visual shader graph.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A visual shader node for use of vector operators. Operates on vector ``a`` and vector ``b``.
+Một node visual shader để sử dụng các vector operator. Hoạt động trên vector ``a`` và vector ``b``.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------------+-------------------------------------------------------------------+-------+
-   | :ref:`Operator<enum_VisualShaderNodeVectorOp_Operator>` | :ref:`operator<class_VisualShaderNodeVectorOp_property_operator>` | ``0`` |
-   +---------------------------------------------------------+-------------------------------------------------------------------+-------+
+   +----------------------------------------------------------+-------------------------------------------------------------------+-------+
+   | :ref:`Operator <enum_VisualShaderNodeVectorOp_Operator>` | :ref:`operator<class_VisualShaderNodeVectorOp_property_operator>` | ``0`` |
+   +----------------------------------------------------------+-------------------------------------------------------------------+-------+
 
 .. rst-class:: classref-section-separator
 
@@ -39,14 +39,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các enum
+--------
 
 .. _enum_VisualShaderNodeVectorOp_Operator:
 
 .. rst-class:: classref-enumeration
 
-enum **Operator**: :ref:`🔗<enum_VisualShaderNodeVectorOp_Operator>`
+enum **Operator**: :ref:`🔗 <enum_VisualShaderNodeVectorOp_Operator>`
 
 .. _class_VisualShaderNodeVectorOp_constant_OP_ADD:
 
@@ -54,7 +54,7 @@ enum **Operator**: :ref:`🔗<enum_VisualShaderNodeVectorOp_Operator>`
 
 :ref:`Operator<enum_VisualShaderNodeVectorOp_Operator>` **OP_ADD** = ``0``
 
-Adds two vectors.
+Cộng hai vector.
 
 .. _class_VisualShaderNodeVectorOp_constant_OP_SUB:
 
@@ -62,7 +62,7 @@ Adds two vectors.
 
 :ref:`Operator<enum_VisualShaderNodeVectorOp_Operator>` **OP_SUB** = ``1``
 
-Subtracts a vector from a vector.
+Trừ một vector cho một vector.
 
 .. _class_VisualShaderNodeVectorOp_constant_OP_MUL:
 
@@ -70,7 +70,7 @@ Subtracts a vector from a vector.
 
 :ref:`Operator<enum_VisualShaderNodeVectorOp_Operator>` **OP_MUL** = ``2``
 
-Multiplies two vectors.
+Nhân hai vector.
 
 .. _class_VisualShaderNodeVectorOp_constant_OP_DIV:
 
@@ -78,7 +78,7 @@ Multiplies two vectors.
 
 :ref:`Operator<enum_VisualShaderNodeVectorOp_Operator>` **OP_DIV** = ``3``
 
-Divides vector by vector.
+Chia vector cho vector.
 
 .. _class_VisualShaderNodeVectorOp_constant_OP_MOD:
 
@@ -86,7 +86,7 @@ Divides vector by vector.
 
 :ref:`Operator<enum_VisualShaderNodeVectorOp_Operator>` **OP_MOD** = ``4``
 
-Returns the remainder of the two vectors.
+Trả về phần dư của hai vector.
 
 .. _class_VisualShaderNodeVectorOp_constant_OP_POW:
 
@@ -94,7 +94,7 @@ Returns the remainder of the two vectors.
 
 :ref:`Operator<enum_VisualShaderNodeVectorOp_Operator>` **OP_POW** = ``5``
 
-Returns the value of the first parameter raised to the power of the second, for each component of the vectors.
+Trả về giá trị của tham số thứ nhất được lũy thừa với số mũ là tham số thứ hai cho từng thành phần của các vector.
 
 .. _class_VisualShaderNodeVectorOp_constant_OP_MAX:
 
@@ -102,7 +102,7 @@ Returns the value of the first parameter raised to the power of the second, for 
 
 :ref:`Operator<enum_VisualShaderNodeVectorOp_Operator>` **OP_MAX** = ``6``
 
-Returns the greater of two values, for each component of the vectors.
+Trả về giá trị lớn hơn trong hai giá trị, cho từng thành phần của các vector.
 
 .. _class_VisualShaderNodeVectorOp_constant_OP_MIN:
 
@@ -110,7 +110,7 @@ Returns the greater of two values, for each component of the vectors.
 
 :ref:`Operator<enum_VisualShaderNodeVectorOp_Operator>` **OP_MIN** = ``7``
 
-Returns the lesser of two values, for each component of the vectors.
+Trả về giá trị nhỏ hơn trong hai giá trị, cho từng thành phần của các vector.
 
 .. _class_VisualShaderNodeVectorOp_constant_OP_CROSS:
 
@@ -118,7 +118,7 @@ Returns the lesser of two values, for each component of the vectors.
 
 :ref:`Operator<enum_VisualShaderNodeVectorOp_Operator>` **OP_CROSS** = ``8``
 
-Calculates the cross product of two vectors.
+Tính tích có hướng của hai vector.
 
 .. _class_VisualShaderNodeVectorOp_constant_OP_ATAN2:
 
@@ -126,7 +126,7 @@ Calculates the cross product of two vectors.
 
 :ref:`Operator<enum_VisualShaderNodeVectorOp_Operator>` **OP_ATAN2** = ``9``
 
-Returns the arc-tangent of the parameters.
+Trả về arctan của các tham số.
 
 .. _class_VisualShaderNodeVectorOp_constant_OP_REFLECT:
 
@@ -134,7 +134,7 @@ Returns the arc-tangent of the parameters.
 
 :ref:`Operator<enum_VisualShaderNodeVectorOp_Operator>` **OP_REFLECT** = ``10``
 
-Returns the vector that points in the direction of reflection. ``a`` is incident vector and ``b`` is the normal vector.
+Trả về vector chỉ theo hướng phản xạ. ``a`` là vector tới và ``b`` là vector pháp tuyến.
 
 .. _class_VisualShaderNodeVectorOp_constant_OP_STEP:
 
@@ -142,7 +142,7 @@ Returns the vector that points in the direction of reflection. ``a`` is incident
 
 :ref:`Operator<enum_VisualShaderNodeVectorOp_Operator>` **OP_STEP** = ``11``
 
-Vector step operator. Returns ``0.0`` if ``a`` is smaller than ``b`` and ``1.0`` otherwise.
+Toán tử bước của vector. Trả về ``0.0`` nếu ``a`` nhỏ hơn ``b`` và trả về ``1.0`` trong các trường hợp khác.
 
 .. _class_VisualShaderNodeVectorOp_constant_OP_ENUM_SIZE:
 
@@ -150,7 +150,7 @@ Vector step operator. Returns ``0.0`` if ``a`` is smaller than ``b`` and ``1.0``
 
 :ref:`Operator<enum_VisualShaderNodeVectorOp_Operator>` **OP_ENUM_SIZE** = ``12``
 
-Represents the size of the :ref:`Operator<enum_VisualShaderNodeVectorOp_Operator>` enum.
+Biểu thị kích thước của enum :ref:`Operator <enum_VisualShaderNodeVectorOp_Operator>`.
 
 .. rst-class:: classref-section-separator
 
@@ -158,8 +158,8 @@ Represents the size of the :ref:`Operator<enum_VisualShaderNodeVectorOp_Operator
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeVectorOp_property_operator:
 
@@ -172,14 +172,14 @@ Property Descriptions
 - |void| **set_operator**\ (\ value\: :ref:`Operator<enum_VisualShaderNodeVectorOp_Operator>`\ )
 - :ref:`Operator<enum_VisualShaderNodeVectorOp_Operator>` **get_operator**\ (\ )
 
-The operator to be used.
+Toán tử được sử dụng.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

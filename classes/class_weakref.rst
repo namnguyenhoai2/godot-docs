@@ -10,21 +10,21 @@
 WeakRef
 =======
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Holds an :ref:`Object<class_Object>`. If the object is :ref:`RefCounted<class_RefCounted>`, it doesn't update the reference count.
+Chứa một :ref:`Object<class_Object>`. Nếu đối tượng bị :ref:`RefCounted<class_RefCounted>`, nó sẽ không cập nhật số lượng tham chiếu.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A weakref can hold a :ref:`RefCounted<class_RefCounted>` without contributing to the reference counter. A weakref can be created from an :ref:`Object<class_Object>` using :ref:`@GlobalScope.weakref()<class_@GlobalScope_method_weakref>`. If this object is not a reference, weakref still works, however, it does not have any effect on the object. Weakrefs are useful in cases where multiple classes have variables that refer to each other. Without weakrefs, using these classes could lead to memory leaks, since both references keep each other from being released. Making part of the variables a weakref can prevent this cyclic dependency, and allows the references to be released.
+Một weakref có thể chứa :ref:`RefCounted<class_RefCounted>` mà không làm tăng bộ đếm tham chiếu. Có thể tạo một weakref từ :ref:`Object<class_Object>` bằng :ref:`@GlobalScope.weakref() <class_@GlobalScope_method_weakref>`. Nếu đối tượng này không phải là một tham chiếu, weakref vẫn hoạt động, tuy nhiên nó không có tác động nào đến đối tượng. Weakref hữu ích trong trường hợp nhiều class có các biến tham chiếu lẫn nhau. Nếu không có weakref, việc sử dụng các class này có thể dẫn đến rò rỉ bộ nhớ, vì cả hai tham chiếu đều ngăn nhau được giải phóng. Chuyển một phần các biến thành weakref có thể ngăn chặn sự phụ thuộc vòng này và cho phép giải phóng các tham chiếu.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -39,8 +39,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_WeakRef_method_get_ref:
 
@@ -48,14 +48,14 @@ Method Descriptions
 
 :ref:`Variant<class_Variant>` **get_ref**\ (\ ) |const| :ref:`🔗<class_WeakRef_method_get_ref>`
 
-Returns the :ref:`Object<class_Object>` this weakref is referring to. Returns ``null`` if that object no longer exists.
+Trả về :ref:`Object<class_Object>` mà weakref này đang tham chiếu đến. Trả về ``null`` nếu đối tượng đó không còn tồn tại.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

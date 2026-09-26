@@ -10,48 +10,48 @@
 WebRTCMultiplayerPeer
 =====================
 
-**Inherits:** :ref:`MultiplayerPeer<class_MultiplayerPeer>` **<** :ref:`PacketPeer<class_PacketPeer>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`MultiplayerPeer<class_MultiplayerPeer>` **<** :ref:`PacketPeer<class_PacketPeer>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A simple interface to create a peer-to-peer mesh network composed of :ref:`WebRTCPeerConnection<class_WebRTCPeerConnection>` that is compatible with the :ref:`MultiplayerAPI<class_MultiplayerAPI>`.
+Một interface đơn giản để tạo mạng mesh peer-to-peer gồm :ref:`WebRTCPeerConnection<class_WebRTCPeerConnection>`, tương thích với :ref:`MultiplayerAPI<class_MultiplayerAPI>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This class constructs a full mesh of :ref:`WebRTCPeerConnection<class_WebRTCPeerConnection>` (one connection for each peer) that can be used as a :ref:`MultiplayerAPI.multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>`.
+Class này tạo một mesh đầy đủ gồm :ref:`WebRTCPeerConnection<class_WebRTCPeerConnection>` (mỗi peer có một kết nối) có thể được sử dụng như một :ref:`MultiplayerAPI.multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>`.
 
-You can add each :ref:`WebRTCPeerConnection<class_WebRTCPeerConnection>` via :ref:`add_peer()<class_WebRTCMultiplayerPeer_method_add_peer>` or remove them via :ref:`remove_peer()<class_WebRTCMultiplayerPeer_method_remove_peer>`. Peers must be added in :ref:`WebRTCPeerConnection.STATE_NEW<class_WebRTCPeerConnection_constant_STATE_NEW>` state to allow it to create the appropriate channels. This class will not create offers nor set descriptions, it will only poll them, and notify connections and disconnections.
+Bạn có thể thêm từng :ref:`WebRTCPeerConnection<class_WebRTCPeerConnection>` thông qua :ref:`add_peer()<class_WebRTCMultiplayerPeer_method_add_peer>` hoặc xóa chúng thông qua :ref:`remove_peer()<class_WebRTCMultiplayerPeer_method_remove_peer>`. Các peer phải được thêm ở trạng thái :ref:`WebRTCPeerConnection.STATE_NEW<class_WebRTCPeerConnection_constant_STATE_NEW>` để cho phép class này tạo các channel thích hợp. Class này sẽ không tạo offer hay thiết lập description; nó chỉ poll các offer và description, đồng thời thông báo khi có kết nối và ngắt kết nối.
 
-When creating the peer via :ref:`create_client()<class_WebRTCMultiplayerPeer_method_create_client>` or :ref:`create_server()<class_WebRTCMultiplayerPeer_method_create_server>` the :ref:`MultiplayerPeer.is_server_relay_supported()<class_MultiplayerPeer_method_is_server_relay_supported>` method will return ``true`` enabling peer exchange and packet relaying when supported by the :ref:`MultiplayerAPI<class_MultiplayerAPI>` implementation.
+Khi tạo peer thông qua :ref:`create_client()<class_WebRTCMultiplayerPeer_method_create_client>` hoặc :ref:`create_server()<class_WebRTCMultiplayerPeer_method_create_server>`, phương thức :ref:`MultiplayerPeer.is_server_relay_supported()<class_MultiplayerPeer_method_is_server_relay_supported>` sẽ trả về ``true``, cho phép trao đổi peer và chuyển tiếp packet khi được implementation :ref:`MultiplayerAPI<class_MultiplayerAPI>` hỗ trợ.
 
-\ **Note:** When exporting to Android, make sure to enable the ``INTERNET`` permission in the Android export preset before exporting the project or using one-click deploy. Otherwise, network communication of any kind will be blocked by Android.
+\ **Lưu ý:** Khi export sang Android, hãy bật quyền ``INTERNET`` trong Android export preset trước khi export project hoặc sử dụng one-click deploy. Nếu không, Android sẽ chặn mọi hình thức giao tiếp mạng.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`add_peer<class_WebRTCMultiplayerPeer_method_add_peer>`\ (\ peer\: :ref:`WebRTCPeerConnection<class_WebRTCPeerConnection>`, peer_id\: :ref:`int<class_int>`, unreliable_lifetime\: :ref:`int<class_int>` = 1\ ) |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`create_client<class_WebRTCMultiplayerPeer_method_create_client>`\ (\ peer_id\: :ref:`int<class_int>`, channels_config\: :ref:`Array<class_Array>` = []\ )                                                      |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`create_mesh<class_WebRTCMultiplayerPeer_method_create_mesh>`\ (\ peer_id\: :ref:`int<class_int>`, channels_config\: :ref:`Array<class_Array>` = []\ )                                                          |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`create_server<class_WebRTCMultiplayerPeer_method_create_server>`\ (\ channels_config\: :ref:`Array<class_Array>` = []\ )                                                                                       |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`   | :ref:`get_peer<class_WebRTCMultiplayerPeer_method_get_peer>`\ (\ peer_id\: :ref:`int<class_int>`\ )                                                                                                                  |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`   | :ref:`get_peers<class_WebRTCMultiplayerPeer_method_get_peers>`\ (\ )                                                                                                                                                 |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`               | :ref:`has_peer<class_WebRTCMultiplayerPeer_method_has_peer>`\ (\ peer_id\: :ref:`int<class_int>`\ )                                                                                                                  |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`remove_peer<class_WebRTCMultiplayerPeer_method_remove_peer>`\ (\ peer_id\: :ref:`int<class_int>`\ )                                                                                                            |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`add_peer<class_WebRTCMultiplayerPeer_method_add_peer>`\ (\ peer\: :ref:`WebRTCPeerConnection<class_WebRTCPeerConnection>`, peer_id\: :ref:`int<class_int>`, unreliable_lifetime\: :ref:`int<class_int>` = 1\ ) |
+   +----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`create_client<class_WebRTCMultiplayerPeer_method_create_client>`\ (\ peer_id\: :ref:`int<class_int>`, channels_config\: :ref:`Array<class_Array>` = []\ )                                                      |
+   +----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`create_mesh<class_WebRTCMultiplayerPeer_method_create_mesh>`\ (\ peer_id\: :ref:`int<class_int>`, channels_config\: :ref:`Array<class_Array>` = []\ )                                                          |
+   +----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`create_server<class_WebRTCMultiplayerPeer_method_create_server>`\ (\ channels_config\: :ref:`Array<class_Array>` = []\ )                                                                                       |
+   +----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`    | :ref:`get_peer<class_WebRTCMultiplayerPeer_method_get_peer>`\ (\ peer_id\: :ref:`int<class_int>`\ )                                                                                                                  |
+   +----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`    | :ref:`get_peers<class_WebRTCMultiplayerPeer_method_get_peers>`\ (\ )                                                                                                                                                 |
+   +----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                | :ref:`has_peer<class_WebRTCMultiplayerPeer_method_has_peer>`\ (\ peer_id\: :ref:`int<class_int>`\ )                                                                                                                  |
+   +----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                 | :ref:`remove_peer<class_WebRTCMultiplayerPeer_method_remove_peer>`\ (\ peer_id\: :ref:`int<class_int>`\ )                                                                                                            |
+   +----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -59,8 +59,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả các phương thức
+---------------------
 
 .. _class_WebRTCMultiplayerPeer_method_add_peer:
 
@@ -68,9 +68,9 @@ Method Descriptions
 
 :ref:`Error<enum_@GlobalScope_Error>` **add_peer**\ (\ peer\: :ref:`WebRTCPeerConnection<class_WebRTCPeerConnection>`, peer_id\: :ref:`int<class_int>`, unreliable_lifetime\: :ref:`int<class_int>` = 1\ ) :ref:`🔗<class_WebRTCMultiplayerPeer_method_add_peer>`
 
-Add a new peer to the mesh with the given ``peer_id``. The :ref:`WebRTCPeerConnection<class_WebRTCPeerConnection>` must be in state :ref:`WebRTCPeerConnection.STATE_NEW<class_WebRTCPeerConnection_constant_STATE_NEW>`.
+Thêm một peer mới vào mesh với ``peer_id`` đã cho. :ref:`WebRTCPeerConnection<class_WebRTCPeerConnection>` phải ở trạng thái :ref:`WebRTCPeerConnection.STATE_NEW<class_WebRTCPeerConnection_constant_STATE_NEW>`.
 
-Three channels will be created for reliable, unreliable, and ordered transport. The value of ``unreliable_lifetime`` will be passed to the ``"maxPacketLifetime"`` option when creating unreliable and ordered channels (see :ref:`WebRTCPeerConnection.create_data_channel()<class_WebRTCPeerConnection_method_create_data_channel>`).
+Ba kênh sẽ được tạo để truyền tải đáng tin cậy, không đáng tin cậy và có thứ tự. Giá trị của ``unreliable_lifetime`` sẽ được truyền vào tùy chọn ``"maxPacketLifetime"`` khi tạo các kênh không đáng tin cậy và có thứ tự (xem :ref:`WebRTCPeerConnection.create_data_channel()<class_WebRTCPeerConnection_method_create_data_channel>`).
 
 .. rst-class:: classref-item-separator
 
@@ -82,9 +82,9 @@ Three channels will be created for reliable, unreliable, and ordered transport. 
 
 :ref:`Error<enum_@GlobalScope_Error>` **create_client**\ (\ peer_id\: :ref:`int<class_int>`, channels_config\: :ref:`Array<class_Array>` = []\ ) :ref:`🔗<class_WebRTCMultiplayerPeer_method_create_client>`
 
-Initialize the multiplayer peer as a client with the given ``peer_id`` (must be between 2 and 2147483647). In this mode, you should only call :ref:`add_peer()<class_WebRTCMultiplayerPeer_method_add_peer>` once and with ``peer_id`` of ``1``. This mode enables :ref:`MultiplayerPeer.is_server_relay_supported()<class_MultiplayerPeer_method_is_server_relay_supported>`, allowing the upper :ref:`MultiplayerAPI<class_MultiplayerAPI>` layer to perform peer exchange and packet relaying.
+Khởi tạo multiplayer peer với vai trò client bằng ``peer_id`` đã cho (phải nằm trong khoảng từ 2 đến 2147483647). Ở chế độ này, bạn chỉ nên gọi :ref:`add_peer()<class_WebRTCMultiplayerPeer_method_add_peer>` một lần và với ``peer_id`` là ``1``. Chế độ này bật :ref:`MultiplayerPeer.is_server_relay_supported()<class_MultiplayerPeer_method_is_server_relay_supported>`, cho phép lớp :ref:`MultiplayerAPI<class_MultiplayerAPI>` bên trên thực hiện trao đổi peer và chuyển tiếp packet.
 
-You can optionally specify a ``channels_config`` array of :ref:`TransferMode<enum_MultiplayerPeer_TransferMode>` which will be used to create extra channels (WebRTC only supports one transfer mode per channel).
+Bạn có thể tùy chọn chỉ định một mảng ``channels_config`` gồm :ref:`TransferMode <enum_MultiplayerPeer_TransferMode>`, được dùng để tạo các kênh bổ sung (WebRTC chỉ hỗ trợ một transfer mode cho mỗi kênh).
 
 .. rst-class:: classref-item-separator
 
@@ -96,7 +96,7 @@ You can optionally specify a ``channels_config`` array of :ref:`TransferMode<enu
 
 :ref:`Error<enum_@GlobalScope_Error>` **create_mesh**\ (\ peer_id\: :ref:`int<class_int>`, channels_config\: :ref:`Array<class_Array>` = []\ ) :ref:`🔗<class_WebRTCMultiplayerPeer_method_create_mesh>`
 
-Initialize the multiplayer peer as a mesh (i.e. all peers connect to each other) with the given ``peer_id`` (must be between 1 and 2147483647).
+Khởi tạo multiplayer peer dưới dạng mesh (tức là tất cả peer kết nối với nhau) bằng ``peer_id`` đã cho (phải nằm trong khoảng từ 1 đến 2147483647).
 
 .. rst-class:: classref-item-separator
 
@@ -108,9 +108,9 @@ Initialize the multiplayer peer as a mesh (i.e. all peers connect to each other)
 
 :ref:`Error<enum_@GlobalScope_Error>` **create_server**\ (\ channels_config\: :ref:`Array<class_Array>` = []\ ) :ref:`🔗<class_WebRTCMultiplayerPeer_method_create_server>`
 
-Initialize the multiplayer peer as a server (with unique ID of ``1``). This mode enables :ref:`MultiplayerPeer.is_server_relay_supported()<class_MultiplayerPeer_method_is_server_relay_supported>`, allowing the upper :ref:`MultiplayerAPI<class_MultiplayerAPI>` layer to perform peer exchange and packet relaying.
+Khởi tạo multiplayer peer dưới dạng server (với ID duy nhất là ``1``). Chế độ này bật :ref:`MultiplayerPeer.is_server_relay_supported()<class_MultiplayerPeer_method_is_server_relay_supported>`, cho phép lớp :ref:`MultiplayerAPI<class_MultiplayerAPI>` bên trên thực hiện trao đổi peer và chuyển tiếp packet.
 
-You can optionally specify a ``channels_config`` array of :ref:`TransferMode<enum_MultiplayerPeer_TransferMode>` which will be used to create extra channels (WebRTC only supports one transfer mode per channel).
+Bạn có thể tùy chọn chỉ định một mảng ``channels_config`` gồm :ref:`TransferMode <enum_MultiplayerPeer_TransferMode>`, được dùng để tạo các kênh bổ sung (WebRTC chỉ hỗ trợ một transfer mode cho mỗi kênh).
 
 .. rst-class:: classref-item-separator
 
@@ -122,7 +122,7 @@ You can optionally specify a ``channels_config`` array of :ref:`TransferMode<enu
 
 :ref:`Dictionary<class_Dictionary>` **get_peer**\ (\ peer_id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_WebRTCMultiplayerPeer_method_get_peer>`
 
-Returns a dictionary representation of the peer with given ``peer_id`` with three keys. ``"connection"`` containing the :ref:`WebRTCPeerConnection<class_WebRTCPeerConnection>` to this peer, ``"channels"`` an array of three :ref:`WebRTCDataChannel<class_WebRTCDataChannel>`, and ``"connected"`` a boolean representing if the peer connection is currently connected (all three channels are open).
+Trả về biểu diễn dạng dictionary của peer có ``peer_id`` đã cho với ba khóa. ``"connection"`` chứa :ref:`WebRTCPeerConnection<class_WebRTCPeerConnection>` đến peer này, ``"channels"`` là một mảng gồm ba :ref:`WebRTCDataChannel<class_WebRTCDataChannel>`, và ``"connected"`` là một boolean biểu thị liệu kết nối peer hiện đang được kết nối hay không (cả ba kênh đều đang mở).
 
 .. rst-class:: classref-item-separator
 
@@ -134,7 +134,7 @@ Returns a dictionary representation of the peer with given ``peer_id`` with thre
 
 :ref:`Dictionary<class_Dictionary>` **get_peers**\ (\ ) :ref:`🔗<class_WebRTCMultiplayerPeer_method_get_peers>`
 
-Returns a dictionary which keys are the peer ids and values the peer representation as in :ref:`get_peer()<class_WebRTCMultiplayerPeer_method_get_peer>`.
+Trả về một dictionary trong đó các khóa là peer id và các giá trị là biểu diễn peer như trong :ref:`get_peer()<class_WebRTCMultiplayerPeer_method_get_peer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -146,7 +146,7 @@ Returns a dictionary which keys are the peer ids and values the peer representat
 
 :ref:`bool<class_bool>` **has_peer**\ (\ peer_id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_WebRTCMultiplayerPeer_method_has_peer>`
 
-Returns ``true`` if the given ``peer_id`` is in the peers map (it might not be connected though).
+Trả về ``true`` nếu ``peer_id`` đã cho nằm trong peer map (dù peer đó có thể chưa được kết nối).
 
 .. rst-class:: classref-item-separator
 
@@ -158,14 +158,14 @@ Returns ``true`` if the given ``peer_id`` is in the peers map (it might not be c
 
 |void| **remove_peer**\ (\ peer_id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_WebRTCMultiplayerPeer_method_remove_peer>`
 
-Remove the peer with given ``peer_id`` from the mesh. If the peer was connected, and :ref:`MultiplayerPeer.peer_connected<class_MultiplayerPeer_signal_peer_connected>` was emitted for it, then :ref:`MultiplayerPeer.peer_disconnected<class_MultiplayerPeer_signal_peer_disconnected>` will be emitted.
+Xóa peer có ``peer_id`` đã cho khỏi mesh. Nếu peer đó đã được kết nối và :ref:`MultiplayerPeer.peer_connected<class_MultiplayerPeer_signal_peer_connected>` đã được phát cho nó, thì :ref:`MultiplayerPeer.peer_disconnected<class_MultiplayerPeer_signal_peer_disconnected>` sẽ được phát.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override method này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng argument nào sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này ở vị trí toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,20 +10,20 @@
 UDPServer
 =========
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Helper class to implement a UDP server.
+Lớp trợ giúp để triển khai một UDP server.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A simple server that opens a UDP socket and returns connected :ref:`PacketPeerUDP<class_PacketPeerUDP>` upon receiving new packets. See also :ref:`PacketPeerUDP.connect_to_host()<class_PacketPeerUDP_method_connect_to_host>`.
+Một server đơn giản mở một UDP socket và trả về :ref:`PacketPeerUDP<class_PacketPeerUDP>` đã kết nối khi nhận được các packet mới. Xem thêm :ref:`PacketPeerUDP.connect_to_host()<class_PacketPeerUDP_method_connect_to_host>`.
 
-After starting the server (:ref:`listen()<class_UDPServer_method_listen>`), you will need to :ref:`poll()<class_UDPServer_method_poll>` it at regular intervals (e.g. inside :ref:`Node._process()<class_Node_private_method__process>`) for it to process new packets, delivering them to the appropriate :ref:`PacketPeerUDP<class_PacketPeerUDP>`, and taking new connections.
+Sau khi khởi động server (:ref:`listen()<class_UDPServer_method_listen>`), bạn sẽ cần :ref:`poll()<class_UDPServer_method_poll>` nó định kỳ (ví dụ: bên trong :ref:`Node._process()<class_Node_private_method__process>`) để server xử lý các packet mới, chuyển chúng đến :ref:`PacketPeerUDP<class_PacketPeerUDP>` thích hợp và tiếp nhận các kết nối mới.
 
-Below a small example of how it can be used:
+Dưới đây là một ví dụ nhỏ về cách sử dụng:
 
 
 .. tabs::
@@ -41,19 +41,19 @@ Below a small example of how it can be used:
         server.listen(4242)
 
     func _process(delta):
-        server.poll() # Important!
+        server.poll() # Quan trọng!
         if server.is_connection_available():
             var peer = server.take_connection()
             var packet = peer.get_packet()
             print("Accepted peer: %s:%s" % [peer.get_packet_ip(), peer.get_packet_port()])
             print("Received data: %s" % [packet.get_string_from_utf8()])
-            # Reply so it knows we received the message.
+            # Phản hồi để nó biết chúng ta đã nhận được tin nhắn.
             peer.put_packet(packet)
-            # Keep a reference so we can keep contacting the remote peer.
+            # Giữ một tham chiếu để chúng ta có thể tiếp tục liên lạc với peer từ xa.
             peers.append(peer)
 
         for i in range(0, peers.size()):
-            pass # Do something with the connected peers.
+            pass # Thực hiện một thao tác nào đó với các peer đã kết nối.
 
  .. code-tab:: csharp
 
@@ -73,21 +73,21 @@ Below a small example of how it can be used:
 
         public override void _Process(double delta)
         {
-            _server.Poll(); // Important!
+            _server.Poll(); // Quan trọng!
             if (_server.IsConnectionAvailable())
             {
                 PacketPeerUdp peer = _server.TakeConnection();
                 byte[] packet = peer.GetPacket();
                 GD.Print($"Accepted Peer: {peer.GetPacketIP()}:{peer.GetPacketPort()}");
                 GD.Print($"Received Data: {packet.GetStringFromUtf8()}");
-                // Reply so it knows we received the message.
+                // Phản hồi để nó biết chúng ta đã nhận được tin nhắn.
                 peer.PutPacket(packet);
-                // Keep a reference so we can keep contacting the remote peer.
+                // Giữ một tham chiếu để chúng ta có thể tiếp tục liên lạc với peer từ xa.
                 _peers.Add(peer);
             }
             foreach (var peer in _peers)
             {
-                // Do something with the peers.
+                // Thực hiện thao tác với các peer.
             }
         }
     }
@@ -111,7 +111,7 @@ Below a small example of how it can be used:
 
     func _process(delta):
         if !connected:
-            # Try to contact server
+            # Thử liên lạc với server
             udp.put_packet("The answer is... 42!".to_utf8_buffer())
         if udp.get_available_packet_count() > 0:
             print("Connected: %s" % udp.get_packet().get_string_from_utf8())
@@ -136,7 +136,7 @@ Below a small example of how it can be used:
         {
             if (!_connected)
             {
-                // Try to contact server
+                // Thử liên lạc với server
                 _udp.PutPacket("The Answer Is..42!".ToUtf8Buffer());
             }
             if (_udp.GetAvailablePacketCount() > 0)
@@ -151,7 +151,7 @@ Below a small example of how it can be used:
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -163,8 +163,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -176,9 +176,9 @@ Methods
    +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                   | :ref:`is_listening<class_UDPServer_method_is_listening>`\ (\ ) |const|                                                             |
    +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`     | :ref:`listen<class_UDPServer_method_listen>`\ (\ port\: :ref:`int<class_int>`, bind_address\: :ref:`String<class_String>` = "*"\ ) |
+   | :ref:`Error <enum_@GlobalScope_Error>`    | :ref:`listen<class_UDPServer_method_listen>`\ (\ port\: :ref:`int<class_int>`, bind_address\: :ref:`String<class_String>` = "*"\ ) |
    +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`     | :ref:`poll<class_UDPServer_method_poll>`\ (\ )                                                                                     |
+   | :ref:`Error <enum_@GlobalScope_Error>`    | :ref:`poll<class_UDPServer_method_poll>`\ (\ )                                                                                     |
    +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                    | :ref:`stop<class_UDPServer_method_stop>`\ (\ )                                                                                     |
    +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
@@ -191,8 +191,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_UDPServer_property_max_pending_connections:
 
@@ -205,7 +205,7 @@ Property Descriptions
 - |void| **set_max_pending_connections**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_max_pending_connections**\ (\ )
 
-Define the maximum number of pending connections, during :ref:`poll()<class_UDPServer_method_poll>`, any new pending connection exceeding that value will be automatically dropped. Setting this value to ``0`` effectively prevents any new pending connection to be accepted (e.g. when all your players have connected).
+Xác định số lượng kết nối đang chờ tối đa; trong :ref:`poll()<class_UDPServer_method_poll>`, mọi kết nối mới đang chờ vượt quá giá trị đó sẽ tự động bị loại bỏ. Việc đặt giá trị này thành ``0`` sẽ ngăn hiệu quả mọi kết nối mới đang chờ được chấp nhận (ví dụ: khi tất cả người chơi của bạn đã kết nối).
 
 .. rst-class:: classref-section-separator
 
@@ -213,8 +213,8 @@ Define the maximum number of pending connections, during :ref:`poll()<class_UDPS
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_UDPServer_method_get_local_port:
 
@@ -222,7 +222,7 @@ Method Descriptions
 
 :ref:`int<class_int>` **get_local_port**\ (\ ) |const| :ref:`🔗<class_UDPServer_method_get_local_port>`
 
-Returns the local port this server is listening to.
+Trả về cổng cục bộ mà máy chủ này đang lắng nghe.
 
 .. rst-class:: classref-item-separator
 
@@ -234,7 +234,7 @@ Returns the local port this server is listening to.
 
 :ref:`bool<class_bool>` **is_connection_available**\ (\ ) |const| :ref:`🔗<class_UDPServer_method_is_connection_available>`
 
-Returns ``true`` if a packet with a new address/port combination was received on the socket.
+Trả về ``true`` nếu một gói tin có tổ hợp địa chỉ/cổng mới được nhận trên socket.
 
 .. rst-class:: classref-item-separator
 
@@ -246,7 +246,7 @@ Returns ``true`` if a packet with a new address/port combination was received on
 
 :ref:`bool<class_bool>` **is_listening**\ (\ ) |const| :ref:`🔗<class_UDPServer_method_is_listening>`
 
-Returns ``true`` if the socket is open and listening on a port.
+Trả về ``true`` nếu socket đang mở và lắng nghe trên một cổng.
 
 .. rst-class:: classref-item-separator
 
@@ -258,7 +258,7 @@ Returns ``true`` if the socket is open and listening on a port.
 
 :ref:`Error<enum_@GlobalScope_Error>` **listen**\ (\ port\: :ref:`int<class_int>`, bind_address\: :ref:`String<class_String>` = "*"\ ) :ref:`🔗<class_UDPServer_method_listen>`
 
-Starts the server by opening a UDP socket listening on the given ``port``. You can optionally specify a ``bind_address`` to only listen for packets sent to that address. See also :ref:`PacketPeerUDP.bind()<class_PacketPeerUDP_method_bind>`.
+Khởi động máy chủ bằng cách mở một socket UDP lắng nghe trên ``port`` được chỉ định. Bạn có thể tùy chọn chỉ định ``bind_address`` để chỉ lắng nghe các gói tin được gửi đến địa chỉ đó. Xem thêm :ref:`PacketPeerUDP.bind()<class_PacketPeerUDP_method_bind>`.
 
 .. rst-class:: classref-item-separator
 
@@ -270,7 +270,7 @@ Starts the server by opening a UDP socket listening on the given ``port``. You c
 
 :ref:`Error<enum_@GlobalScope_Error>` **poll**\ (\ ) :ref:`🔗<class_UDPServer_method_poll>`
 
-Call this method at regular intervals (e.g. inside :ref:`Node._process()<class_Node_private_method__process>`) to process new packets. Any packet from a known address/port pair will be delivered to the appropriate :ref:`PacketPeerUDP<class_PacketPeerUDP>`, while any packet received from an unknown address/port pair will be added as a pending connection (see :ref:`is_connection_available()<class_UDPServer_method_is_connection_available>` and :ref:`take_connection()<class_UDPServer_method_take_connection>`). The maximum number of pending connections is defined via :ref:`max_pending_connections<class_UDPServer_property_max_pending_connections>`.
+Gọi phương thức này theo các khoảng thời gian đều đặn (ví dụ: bên trong :ref:`Node._process()<class_Node_private_method__process>`) để xử lý các gói tin mới. Mọi gói tin từ một cặp địa chỉ/cổng đã biết sẽ được chuyển đến :ref:`PacketPeerUDP<class_PacketPeerUDP>` tương ứng, còn mọi gói tin nhận được từ một cặp địa chỉ/cổng chưa biết sẽ được thêm vào dưới dạng kết nối đang chờ (xem :ref:`is_connection_available()<class_UDPServer_method_is_connection_available>` và :ref:`take_connection()<class_UDPServer_method_take_connection>`). Số lượng kết nối đang chờ tối đa được xác định thông qua :ref:`max_pending_connections<class_UDPServer_property_max_pending_connections>`.
 
 .. rst-class:: classref-item-separator
 
@@ -282,7 +282,7 @@ Call this method at regular intervals (e.g. inside :ref:`Node._process()<class_N
 
 |void| **stop**\ (\ ) :ref:`🔗<class_UDPServer_method_stop>`
 
-Stops the server, closing the UDP socket if open. Will close all connected :ref:`PacketPeerUDP<class_PacketPeerUDP>` accepted via :ref:`take_connection()<class_UDPServer_method_take_connection>` (remote peers will not be notified).
+Dừng máy chủ, đóng socket UDP nếu đang mở. Sẽ đóng tất cả :ref:`PacketPeerUDP<class_PacketPeerUDP>` đã kết nối được chấp nhận thông qua :ref:`take_connection()<class_UDPServer_method_take_connection>` (các peer từ xa sẽ không được thông báo).
 
 .. rst-class:: classref-item-separator
 
@@ -294,14 +294,14 @@ Stops the server, closing the UDP socket if open. Will close all connected :ref:
 
 :ref:`PacketPeerUDP<class_PacketPeerUDP>` **take_connection**\ (\ ) :ref:`🔗<class_UDPServer_method_take_connection>`
 
-Returns the first pending connection (connected to the appropriate address/port). Will return ``null`` if no new connection is available. See also :ref:`is_connection_available()<class_UDPServer_method_is_connection_available>`, :ref:`PacketPeerUDP.connect_to_host()<class_PacketPeerUDP_method_connect_to_host>`.
+Trả về kết nối đang chờ đầu tiên (được kết nối với địa chỉ/cổng tương ứng). Sẽ trả về ``null`` nếu không có kết nối mới nào khả dụng. Xem thêm :ref:`is_connection_available()<class_UDPServer_method_is_connection_available>`, :ref:`PacketPeerUDP.connect_to_host()<class_PacketPeerUDP_method_connect_to_host>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

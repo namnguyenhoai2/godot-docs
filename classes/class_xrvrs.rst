@@ -10,20 +10,20 @@
 XRVRS
 =====
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-Helper class for XR interfaces that generates VRS images.
+Lớp trợ giúp cho các interface XR, tạo ra hình ảnh VRS.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This class is used by various XR interfaces to generate VRS textures that can be used to speed up rendering.
+Lớp này được nhiều interface XR sử dụng để tạo các texture VRS, giúp tăng tốc quá trình kết xuất.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -39,8 +39,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -55,8 +55,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_XRVRS_property_vrs_min_radius:
 
@@ -69,7 +69,7 @@ Property Descriptions
 - |void| **set_vrs_min_radius**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_vrs_min_radius**\ (\ )
 
-The minimum radius around the focal point where full quality is guaranteed if VRS is used as a percentage of screen size.
+Bán kính tối thiểu xung quanh tiêu điểm, tại đó chất lượng đầy đủ được đảm bảo nếu VRS được sử dụng theo tỷ lệ phần trăm kích thước màn hình.
 
 .. rst-class:: classref-item-separator
 
@@ -86,7 +86,7 @@ The minimum radius around the focal point where full quality is guaranteed if VR
 - |void| **set_vrs_render_region**\ (\ value\: :ref:`Rect2i<class_Rect2i>`\ )
 - :ref:`Rect2i<class_Rect2i>` **get_vrs_render_region**\ (\ )
 
-The render region that the VRS texture will be scaled to when generated.
+Vùng kết xuất mà texture VRS sẽ được điều chỉnh tỷ lệ đến khi được tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -103,7 +103,7 @@ The render region that the VRS texture will be scaled to when generated.
 - |void| **set_vrs_strength**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_vrs_strength**\ (\ )
 
-The strength used to calculate the VRS density map. The greater this value, the more noticeable VRS is.
+Mức độ được sử dụng để tính toán bản đồ mật độ VRS. Giá trị này càng lớn thì VRS càng dễ nhận thấy.
 
 .. rst-class:: classref-section-separator
 
@@ -111,8 +111,8 @@ The strength used to calculate the VRS density map. The greater this value, the 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_XRVRS_method_make_vrs_texture:
 
@@ -120,16 +120,16 @@ Method Descriptions
 
 :ref:`RID<class_RID>` **make_vrs_texture**\ (\ target_size\: :ref:`Vector2<class_Vector2>`, eye_foci\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ ) :ref:`🔗<class_XRVRS_method_make_vrs_texture>`
 
-Generates the VRS texture based on a render ``target_size`` adjusted by our VRS tile size. For each eyes focal point passed in ``eye_foci`` a layer is created. Focal point should be in NDC.
+Tạo texture VRS dựa trên ``target_size`` kết xuất được điều chỉnh theo kích thước tile VRS của chúng tôi. Với mỗi tiêu điểm của mắt được truyền vào ``eye_foci``, một layer sẽ được tạo. Tiêu điểm phải ở dạng NDC.
 
-The result will be cached, requesting a VRS texture with unchanged parameters and settings will return the cached RID.
+Kết quả sẽ được lưu vào bộ nhớ đệm; yêu cầu texture VRS với các tham số và thiết lập không thay đổi sẽ trả về RID đã được lưu vào bộ nhớ đệm.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit gồm các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

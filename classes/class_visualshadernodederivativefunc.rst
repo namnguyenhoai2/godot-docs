@@ -10,32 +10,32 @@
 VisualShaderNodeDerivativeFunc
 ==============================
 
-**Inherits:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Calculates a derivative within the visual shader graph.
+Tính đạo hàm trong visual shader graph.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This node is only available in ``Fragment`` and ``Light`` visual shaders.
+Node này chỉ khả dụng trong các visual shader ``Fragment`` và ``Light``.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------+-------+
-   | :ref:`Function<enum_VisualShaderNodeDerivativeFunc_Function>`   | :ref:`function<class_VisualShaderNodeDerivativeFunc_property_function>`   | ``0`` |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------+-------+
-   | :ref:`OpType<enum_VisualShaderNodeDerivativeFunc_OpType>`       | :ref:`op_type<class_VisualShaderNodeDerivativeFunc_property_op_type>`     | ``0`` |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------+-------+
-   | :ref:`Precision<enum_VisualShaderNodeDerivativeFunc_Precision>` | :ref:`precision<class_VisualShaderNodeDerivativeFunc_property_precision>` | ``0`` |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------+-------+
+   +---------------------------------------------------------------------+---------------------------------------------------------------------------+-------+
+   | :ref:`Function <enum_VisualShaderNodeDerivativeFunc_Function>`      | :ref:`function<class_VisualShaderNodeDerivativeFunc_property_function>`   | ``0`` |
+   +---------------------------------------------------------------------+---------------------------------------------------------------------------+-------+
+   | :ref:`OpType <enum_VisualShaderNodeDerivativeFunc_OpType>`          | :ref:`op_type<class_VisualShaderNodeDerivativeFunc_property_op_type>`     | ``0`` |
+   +---------------------------------------------------------------------+---------------------------------------------------------------------------+-------+
+   | :ref:`Độ chính xác <enum_VisualShaderNodeDerivativeFunc_Precision>` | :ref:`precision<class_VisualShaderNodeDerivativeFunc_property_precision>` | ``0`` |
+   +---------------------------------------------------------------------+---------------------------------------------------------------------------+-------+
 
 .. rst-class:: classref-section-separator
 
@@ -43,14 +43,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_VisualShaderNodeDerivativeFunc_OpType:
 
 .. rst-class:: classref-enumeration
 
-enum **OpType**: :ref:`🔗<enum_VisualShaderNodeDerivativeFunc_OpType>`
+enum **OpType**: :ref:`🔗 <enum_VisualShaderNodeDerivativeFunc_OpType>`
 
 .. _class_VisualShaderNodeDerivativeFunc_constant_OP_TYPE_SCALAR:
 
@@ -58,7 +58,7 @@ enum **OpType**: :ref:`🔗<enum_VisualShaderNodeDerivativeFunc_OpType>`
 
 :ref:`OpType<enum_VisualShaderNodeDerivativeFunc_OpType>` **OP_TYPE_SCALAR** = ``0``
 
-A floating-point scalar.
+Một scalar dấu phẩy động.
 
 .. _class_VisualShaderNodeDerivativeFunc_constant_OP_TYPE_VECTOR_2D:
 
@@ -66,7 +66,7 @@ A floating-point scalar.
 
 :ref:`OpType<enum_VisualShaderNodeDerivativeFunc_OpType>` **OP_TYPE_VECTOR_2D** = ``1``
 
-A 2D vector type.
+Một kiểu vector 2D.
 
 .. _class_VisualShaderNodeDerivativeFunc_constant_OP_TYPE_VECTOR_3D:
 
@@ -74,7 +74,7 @@ A 2D vector type.
 
 :ref:`OpType<enum_VisualShaderNodeDerivativeFunc_OpType>` **OP_TYPE_VECTOR_3D** = ``2``
 
-A 3D vector type.
+Một kiểu vector 3D.
 
 .. _class_VisualShaderNodeDerivativeFunc_constant_OP_TYPE_VECTOR_4D:
 
@@ -82,7 +82,7 @@ A 3D vector type.
 
 :ref:`OpType<enum_VisualShaderNodeDerivativeFunc_OpType>` **OP_TYPE_VECTOR_4D** = ``3``
 
-A 4D vector type.
+Một kiểu vector 4D.
 
 .. _class_VisualShaderNodeDerivativeFunc_constant_OP_TYPE_MAX:
 
@@ -90,7 +90,7 @@ A 4D vector type.
 
 :ref:`OpType<enum_VisualShaderNodeDerivativeFunc_OpType>` **OP_TYPE_MAX** = ``4``
 
-Represents the size of the :ref:`OpType<enum_VisualShaderNodeDerivativeFunc_OpType>` enum.
+Biểu thị kích thước của enum :ref:`OpType <enum_VisualShaderNodeDerivativeFunc_OpType>`.
 
 .. rst-class:: classref-item-separator
 
@@ -100,7 +100,7 @@ Represents the size of the :ref:`OpType<enum_VisualShaderNodeDerivativeFunc_OpTy
 
 .. rst-class:: classref-enumeration
 
-enum **Function**: :ref:`🔗<enum_VisualShaderNodeDerivativeFunc_Function>`
+enum **Function**: :ref:`🔗 <enum_VisualShaderNodeDerivativeFunc_Function>`
 
 .. _class_VisualShaderNodeDerivativeFunc_constant_FUNC_SUM:
 
@@ -108,7 +108,7 @@ enum **Function**: :ref:`🔗<enum_VisualShaderNodeDerivativeFunc_Function>`
 
 :ref:`Function<enum_VisualShaderNodeDerivativeFunc_Function>` **FUNC_SUM** = ``0``
 
-Sum of absolute derivative in ``x`` and ``y``.
+Tổng đạo hàm tuyệt đối trong ``x`` và ``y``.
 
 .. _class_VisualShaderNodeDerivativeFunc_constant_FUNC_X:
 
@@ -116,7 +116,7 @@ Sum of absolute derivative in ``x`` and ``y``.
 
 :ref:`Function<enum_VisualShaderNodeDerivativeFunc_Function>` **FUNC_X** = ``1``
 
-Derivative in ``x`` using local differencing.
+Đạo hàm trong ``x`` bằng phương pháp sai phân cục bộ.
 
 .. _class_VisualShaderNodeDerivativeFunc_constant_FUNC_Y:
 
@@ -124,7 +124,7 @@ Derivative in ``x`` using local differencing.
 
 :ref:`Function<enum_VisualShaderNodeDerivativeFunc_Function>` **FUNC_Y** = ``2``
 
-Derivative in ``y`` using local differencing.
+Đạo hàm trong ``y`` bằng phương pháp sai phân cục bộ.
 
 .. _class_VisualShaderNodeDerivativeFunc_constant_FUNC_MAX:
 
@@ -132,7 +132,7 @@ Derivative in ``y`` using local differencing.
 
 :ref:`Function<enum_VisualShaderNodeDerivativeFunc_Function>` **FUNC_MAX** = ``3``
 
-Represents the size of the :ref:`Function<enum_VisualShaderNodeDerivativeFunc_Function>` enum.
+Biểu thị kích thước của enum :ref:`Function <enum_VisualShaderNodeDerivativeFunc_Function>`.
 
 .. rst-class:: classref-item-separator
 
@@ -142,7 +142,7 @@ Represents the size of the :ref:`Function<enum_VisualShaderNodeDerivativeFunc_Fu
 
 .. rst-class:: classref-enumeration
 
-enum **Precision**: :ref:`🔗<enum_VisualShaderNodeDerivativeFunc_Precision>`
+enum **Precision**: :ref:`🔗 <enum_VisualShaderNodeDerivativeFunc_Precision>`
 
 .. _class_VisualShaderNodeDerivativeFunc_constant_PRECISION_NONE:
 
@@ -150,7 +150,7 @@ enum **Precision**: :ref:`🔗<enum_VisualShaderNodeDerivativeFunc_Precision>`
 
 :ref:`Precision<enum_VisualShaderNodeDerivativeFunc_Precision>` **PRECISION_NONE** = ``0``
 
-No precision is specified, the GPU driver is allowed to use whatever level of precision it chooses. This is the default option and is equivalent to using ``dFdx()`` or ``dFdy()`` in text shaders.
+Không chỉ định độ chính xác, trình điều khiển GPU được phép sử dụng bất kỳ mức độ chính xác nào mà nó lựa chọn. Đây là tùy chọn mặc định và tương đương với việc sử dụng ``dFdx()`` hoặc ``dFdy()`` trong các shader dạng văn bản.
 
 .. _class_VisualShaderNodeDerivativeFunc_constant_PRECISION_COARSE:
 
@@ -158,7 +158,7 @@ No precision is specified, the GPU driver is allowed to use whatever level of pr
 
 :ref:`Precision<enum_VisualShaderNodeDerivativeFunc_Precision>` **PRECISION_COARSE** = ``1``
 
-The derivative will be calculated using the current fragment's neighbors (which may not include the current fragment). This tends to be faster than using :ref:`PRECISION_FINE<class_VisualShaderNodeDerivativeFunc_constant_PRECISION_FINE>`, but may not be suitable when more precision is needed. This is equivalent to using ``dFdxCoarse()`` or ``dFdyCoarse()`` in text shaders.
+Đạo hàm sẽ được tính bằng các fragment lân cận của fragment hiện tại (có thể không bao gồm fragment hiện tại). Cách này thường nhanh hơn so với sử dụng :ref:`PRECISION_FINE<class_VisualShaderNodeDerivativeFunc_constant_PRECISION_FINE>`, nhưng có thể không phù hợp khi cần độ chính xác cao hơn. Cách này tương đương với việc sử dụng ``dFdxCoarse()`` hoặc ``dFdyCoarse()`` trong các shader dạng văn bản.
 
 .. _class_VisualShaderNodeDerivativeFunc_constant_PRECISION_FINE:
 
@@ -166,7 +166,7 @@ The derivative will be calculated using the current fragment's neighbors (which 
 
 :ref:`Precision<enum_VisualShaderNodeDerivativeFunc_Precision>` **PRECISION_FINE** = ``2``
 
-The derivative will be calculated using the current fragment and its immediate neighbors. This tends to be slower than using :ref:`PRECISION_COARSE<class_VisualShaderNodeDerivativeFunc_constant_PRECISION_COARSE>`, but may be necessary when more precision is needed. This is equivalent to using ``dFdxFine()`` or ``dFdyFine()`` in text shaders.
+Đạo hàm sẽ được tính bằng fragment hiện tại và các fragment lân cận trực tiếp của nó. Cách này thường chậm hơn so với sử dụng :ref:`PRECISION_COARSE<class_VisualShaderNodeDerivativeFunc_constant_PRECISION_COARSE>`, nhưng có thể cần thiết khi cần độ chính xác cao hơn. Cách này tương đương với việc sử dụng ``dFdxFine()`` hoặc ``dFdyFine()`` trong các shader dạng văn bản.
 
 .. _class_VisualShaderNodeDerivativeFunc_constant_PRECISION_MAX:
 
@@ -174,7 +174,7 @@ The derivative will be calculated using the current fragment and its immediate n
 
 :ref:`Precision<enum_VisualShaderNodeDerivativeFunc_Precision>` **PRECISION_MAX** = ``3``
 
-Represents the size of the :ref:`Precision<enum_VisualShaderNodeDerivativeFunc_Precision>` enum.
+Biểu thị kích thước của enum :ref:`Precision <enum_VisualShaderNodeDerivativeFunc_Precision>`.
 
 .. rst-class:: classref-section-separator
 
@@ -182,8 +182,8 @@ Represents the size of the :ref:`Precision<enum_VisualShaderNodeDerivativeFunc_P
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeDerivativeFunc_property_function:
 
@@ -196,7 +196,7 @@ Property Descriptions
 - |void| **set_function**\ (\ value\: :ref:`Function<enum_VisualShaderNodeDerivativeFunc_Function>`\ )
 - :ref:`Function<enum_VisualShaderNodeDerivativeFunc_Function>` **get_function**\ (\ )
 
-A derivative function type.
+Một loại hàm đạo hàm.
 
 .. rst-class:: classref-item-separator
 
@@ -213,7 +213,7 @@ A derivative function type.
 - |void| **set_op_type**\ (\ value\: :ref:`OpType<enum_VisualShaderNodeDerivativeFunc_OpType>`\ )
 - :ref:`OpType<enum_VisualShaderNodeDerivativeFunc_OpType>` **get_op_type**\ (\ )
 
-A type of operands and returned value.
+Một kiểu của các toán hạng và giá trị trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -230,14 +230,14 @@ A type of operands and returned value.
 - |void| **set_precision**\ (\ value\: :ref:`Precision<enum_VisualShaderNodeDerivativeFunc_Precision>`\ )
 - :ref:`Precision<enum_VisualShaderNodeDerivativeFunc_Precision>` **get_precision**\ (\ )
 
-Sets the level of precision to use for the derivative function. When using the Compatibility renderer, this setting has no effect.
+Đặt mức độ chính xác được sử dụng cho hàm đạo hàm. Khi sử dụng Compatibility renderer, thiết lập này không có tác dụng.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này thì phương thức mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

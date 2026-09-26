@@ -10,38 +10,38 @@
 VisualShaderNodeFloatParameter
 ==============================
 
-**Inherits:** :ref:`VisualShaderNodeParameter<class_VisualShaderNodeParameter>` **<** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNodeParameter<class_VisualShaderNodeParameter>` **<** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A scalar float parameter to be used within the visual shader graph.
+Một tham số float vô hướng được sử dụng trong đồ thị visual shader.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Translated to ``uniform float`` in the shader language.
+Được dịch thành ``uniform float`` trong ngôn ngữ shader.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------+---------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                             | :ref:`default_value<class_VisualShaderNodeFloatParameter_property_default_value>`                 | ``0.0``   |
-   +-------------------------------------------------------+---------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                               | :ref:`default_value_enabled<class_VisualShaderNodeFloatParameter_property_default_value_enabled>` | ``false`` |
-   +-------------------------------------------------------+---------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`Hint<enum_VisualShaderNodeFloatParameter_Hint>` | :ref:`hint<class_VisualShaderNodeFloatParameter_property_hint>`                                   | ``0``     |
-   +-------------------------------------------------------+---------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                             | :ref:`max<class_VisualShaderNodeFloatParameter_property_max>`                                     | ``1.0``   |
-   +-------------------------------------------------------+---------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                             | :ref:`min<class_VisualShaderNodeFloatParameter_property_min>`                                     | ``0.0``   |
-   +-------------------------------------------------------+---------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                             | :ref:`step<class_VisualShaderNodeFloatParameter_property_step>`                                   | ``0.1``   |
-   +-------------------------------------------------------+---------------------------------------------------------------------------------------------------+-----------+
+   +---------------------------------------------------------+---------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                               | :ref:`default_value<class_VisualShaderNodeFloatParameter_property_default_value>`                 | ``0.0``   |
+   +---------------------------------------------------------+---------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                 | :ref:`default_value_enabled<class_VisualShaderNodeFloatParameter_property_default_value_enabled>` | ``false`` |
+   +---------------------------------------------------------+---------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`Gợi ý <enum_VisualShaderNodeFloatParameter_Hint>` | :ref:`hint<class_VisualShaderNodeFloatParameter_property_hint>`                                   | ``0``     |
+   +---------------------------------------------------------+---------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                               | :ref:`max<class_VisualShaderNodeFloatParameter_property_max>`                                     | ``1.0``   |
+   +---------------------------------------------------------+---------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                               | :ref:`min<class_VisualShaderNodeFloatParameter_property_min>`                                     | ``0.0``   |
+   +---------------------------------------------------------+---------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                               | :ref:`step<class_VisualShaderNodeFloatParameter_property_step>`                                   | ``0.1``   |
+   +---------------------------------------------------------+---------------------------------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-section-separator
 
@@ -49,14 +49,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_VisualShaderNodeFloatParameter_Hint:
 
 .. rst-class:: classref-enumeration
 
-enum **Hint**: :ref:`🔗<enum_VisualShaderNodeFloatParameter_Hint>`
+enum **Hint**: :ref:`🔗 <enum_VisualShaderNodeFloatParameter_Hint>`
 
 .. _class_VisualShaderNodeFloatParameter_constant_HINT_NONE:
 
@@ -64,7 +64,7 @@ enum **Hint**: :ref:`🔗<enum_VisualShaderNodeFloatParameter_Hint>`
 
 :ref:`Hint<enum_VisualShaderNodeFloatParameter_Hint>` **HINT_NONE** = ``0``
 
-No hint used.
+Không sử dụng hint.
 
 .. _class_VisualShaderNodeFloatParameter_constant_HINT_RANGE:
 
@@ -72,7 +72,7 @@ No hint used.
 
 :ref:`Hint<enum_VisualShaderNodeFloatParameter_Hint>` **HINT_RANGE** = ``1``
 
-A range hint for scalar value, which limits possible input values between :ref:`min<class_VisualShaderNodeFloatParameter_property_min>` and :ref:`max<class_VisualShaderNodeFloatParameter_property_max>`. Translated to ``hint_range(min, max)`` in shader code.
+Một hint về phạm vi cho giá trị vô hướng, giới hạn các giá trị đầu vào có thể có trong khoảng từ :ref:`min<class_VisualShaderNodeFloatParameter_property_min>` đến :ref:`max<class_VisualShaderNodeFloatParameter_property_max>`. Được chuyển thành ``hint_range(min, max)`` trong mã shader.
 
 .. _class_VisualShaderNodeFloatParameter_constant_HINT_RANGE_STEP:
 
@@ -80,7 +80,7 @@ A range hint for scalar value, which limits possible input values between :ref:`
 
 :ref:`Hint<enum_VisualShaderNodeFloatParameter_Hint>` **HINT_RANGE_STEP** = ``2``
 
-A range hint for scalar value with step, which limits possible input values between :ref:`min<class_VisualShaderNodeFloatParameter_property_min>` and :ref:`max<class_VisualShaderNodeFloatParameter_property_max>`, with a step (increment) of :ref:`step<class_VisualShaderNodeFloatParameter_property_step>`). Translated to ``hint_range(min, max, step)`` in shader code.
+Một hint về phạm vi cho giá trị vô hướng có bước, giới hạn các giá trị đầu vào có thể có trong khoảng từ :ref:`min<class_VisualShaderNodeFloatParameter_property_min>` đến :ref:`max<class_VisualShaderNodeFloatParameter_property_max>`, với bước (mức tăng) là :ref:`step<class_VisualShaderNodeFloatParameter_property_step>`). Được chuyển thành ``hint_range(min, max, step)`` trong mã shader.
 
 .. _class_VisualShaderNodeFloatParameter_constant_HINT_MAX:
 
@@ -88,7 +88,7 @@ A range hint for scalar value with step, which limits possible input values betw
 
 :ref:`Hint<enum_VisualShaderNodeFloatParameter_Hint>` **HINT_MAX** = ``3``
 
-Represents the size of the :ref:`Hint<enum_VisualShaderNodeFloatParameter_Hint>` enum.
+Biểu thị kích thước của enum :ref:`Hint <enum_VisualShaderNodeFloatParameter_Hint>`.
 
 .. rst-class:: classref-section-separator
 
@@ -96,8 +96,8 @@ Represents the size of the :ref:`Hint<enum_VisualShaderNodeFloatParameter_Hint>`
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeFloatParameter_property_default_value:
 
@@ -110,7 +110,7 @@ Property Descriptions
 - |void| **set_default_value**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_default_value**\ (\ )
 
-A default value to be assigned within the shader.
+Một giá trị mặc định được gán trong shader.
 
 .. rst-class:: classref-item-separator
 
@@ -127,7 +127,7 @@ A default value to be assigned within the shader.
 - |void| **set_default_value_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_default_value_enabled**\ (\ )
 
-Enables usage of the :ref:`default_value<class_VisualShaderNodeFloatParameter_property_default_value>`.
+Cho phép sử dụng :ref:`default_value<class_VisualShaderNodeFloatParameter_property_default_value>`.
 
 .. rst-class:: classref-item-separator
 
@@ -144,7 +144,7 @@ Enables usage of the :ref:`default_value<class_VisualShaderNodeFloatParameter_pr
 - |void| **set_hint**\ (\ value\: :ref:`Hint<enum_VisualShaderNodeFloatParameter_Hint>`\ )
 - :ref:`Hint<enum_VisualShaderNodeFloatParameter_Hint>` **get_hint**\ (\ )
 
-A hint applied to the uniform, which controls the values it can take when set through the Inspector.
+Gợi ý được áp dụng cho uniform, kiểm soát các giá trị mà uniform có thể nhận khi được thiết lập thông qua Inspector.
 
 .. rst-class:: classref-item-separator
 
@@ -161,7 +161,7 @@ A hint applied to the uniform, which controls the values it can take when set th
 - |void| **set_max**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_max**\ (\ )
 
-Minimum value for range hints. Used if :ref:`hint<class_VisualShaderNodeFloatParameter_property_hint>` is set to :ref:`HINT_RANGE<class_VisualShaderNodeFloatParameter_constant_HINT_RANGE>` or :ref:`HINT_RANGE_STEP<class_VisualShaderNodeFloatParameter_constant_HINT_RANGE_STEP>`.
+Giá trị tối thiểu cho các gợi ý phạm vi. Được sử dụng nếu :ref:`hint<class_VisualShaderNodeFloatParameter_property_hint>` được đặt thành :ref:`HINT_RANGE<class_VisualShaderNodeFloatParameter_constant_HINT_RANGE>` hoặc :ref:`HINT_RANGE_STEP<class_VisualShaderNodeFloatParameter_constant_HINT_RANGE_STEP>`.
 
 .. rst-class:: classref-item-separator
 
@@ -178,7 +178,7 @@ Minimum value for range hints. Used if :ref:`hint<class_VisualShaderNodeFloatPar
 - |void| **set_min**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_min**\ (\ )
 
-Maximum value for range hints. Used if :ref:`hint<class_VisualShaderNodeFloatParameter_property_hint>` is set to :ref:`HINT_RANGE<class_VisualShaderNodeFloatParameter_constant_HINT_RANGE>` or :ref:`HINT_RANGE_STEP<class_VisualShaderNodeFloatParameter_constant_HINT_RANGE_STEP>`.
+Giá trị tối đa cho các gợi ý phạm vi. Được sử dụng nếu :ref:`hint<class_VisualShaderNodeFloatParameter_property_hint>` được đặt thành :ref:`HINT_RANGE<class_VisualShaderNodeFloatParameter_constant_HINT_RANGE>` hoặc :ref:`HINT_RANGE_STEP<class_VisualShaderNodeFloatParameter_constant_HINT_RANGE_STEP>`.
 
 .. rst-class:: classref-item-separator
 
@@ -195,14 +195,14 @@ Maximum value for range hints. Used if :ref:`hint<class_VisualShaderNodeFloatPar
 - |void| **set_step**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_step**\ (\ )
 
-Step (increment) value for the range hint with step. Used if :ref:`hint<class_VisualShaderNodeFloatParameter_property_hint>` is set to :ref:`HINT_RANGE_STEP<class_VisualShaderNodeFloatParameter_constant_HINT_RANGE_STEP>`.
+Giá trị bước (mức tăng) cho gợi ý phạm vi có bước. Được sử dụng nếu :ref:`hint<class_VisualShaderNodeFloatParameter_property_hint>` được đặt thành :ref:`HINT_RANGE_STEP<class_VisualShaderNodeFloatParameter_constant_HINT_RANGE_STEP>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường nên được người dùng ghi đè để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

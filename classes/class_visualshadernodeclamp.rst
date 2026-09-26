@@ -10,28 +10,28 @@
 VisualShaderNodeClamp
 =====================
 
-**Inherits:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Clamps a value within the visual shader graph.
+Giới hạn một giá trị trong visual shader graph.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Constrains a value to lie between ``min`` and ``max`` values.
+Giới hạn một giá trị nằm giữa các giá trị ``min`` và ``max``.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------------+--------------------------------------------------------------+-------+
-   | :ref:`OpType<enum_VisualShaderNodeClamp_OpType>` | :ref:`op_type<class_VisualShaderNodeClamp_property_op_type>` | ``0`` |
-   +--------------------------------------------------+--------------------------------------------------------------+-------+
+   +---------------------------------------------------+--------------------------------------------------------------+-------+
+   | :ref:`OpType <enum_VisualShaderNodeClamp_OpType>` | :ref:`op_type<class_VisualShaderNodeClamp_property_op_type>` | ``0`` |
+   +---------------------------------------------------+--------------------------------------------------------------+-------+
 
 .. rst-class:: classref-section-separator
 
@@ -39,14 +39,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_VisualShaderNodeClamp_OpType:
 
 .. rst-class:: classref-enumeration
 
-enum **OpType**: :ref:`🔗<enum_VisualShaderNodeClamp_OpType>`
+enum **OpType**: :ref:`🔗 <enum_VisualShaderNodeClamp_OpType>`
 
 .. _class_VisualShaderNodeClamp_constant_OP_TYPE_FLOAT:
 
@@ -54,7 +54,7 @@ enum **OpType**: :ref:`🔗<enum_VisualShaderNodeClamp_OpType>`
 
 :ref:`OpType<enum_VisualShaderNodeClamp_OpType>` **OP_TYPE_FLOAT** = ``0``
 
-A floating-point scalar.
+Một scalar số thực.
 
 .. _class_VisualShaderNodeClamp_constant_OP_TYPE_INT:
 
@@ -62,7 +62,7 @@ A floating-point scalar.
 
 :ref:`OpType<enum_VisualShaderNodeClamp_OpType>` **OP_TYPE_INT** = ``1``
 
-An integer scalar.
+Một scalar số nguyên.
 
 .. _class_VisualShaderNodeClamp_constant_OP_TYPE_UINT:
 
@@ -70,7 +70,7 @@ An integer scalar.
 
 :ref:`OpType<enum_VisualShaderNodeClamp_OpType>` **OP_TYPE_UINT** = ``2``
 
-An unsigned integer scalar.
+Một scalar số nguyên không dấu.
 
 .. _class_VisualShaderNodeClamp_constant_OP_TYPE_VECTOR_2D:
 
@@ -78,7 +78,7 @@ An unsigned integer scalar.
 
 :ref:`OpType<enum_VisualShaderNodeClamp_OpType>` **OP_TYPE_VECTOR_2D** = ``3``
 
-A 2D vector type.
+Một kiểu vector 2D.
 
 .. _class_VisualShaderNodeClamp_constant_OP_TYPE_VECTOR_3D:
 
@@ -86,7 +86,7 @@ A 2D vector type.
 
 :ref:`OpType<enum_VisualShaderNodeClamp_OpType>` **OP_TYPE_VECTOR_3D** = ``4``
 
-A 3D vector type.
+Một kiểu vector 3D.
 
 .. _class_VisualShaderNodeClamp_constant_OP_TYPE_VECTOR_4D:
 
@@ -94,7 +94,7 @@ A 3D vector type.
 
 :ref:`OpType<enum_VisualShaderNodeClamp_OpType>` **OP_TYPE_VECTOR_4D** = ``5``
 
-A 4D vector type.
+Một kiểu vector 4D.
 
 .. _class_VisualShaderNodeClamp_constant_OP_TYPE_MAX:
 
@@ -102,7 +102,7 @@ A 4D vector type.
 
 :ref:`OpType<enum_VisualShaderNodeClamp_OpType>` **OP_TYPE_MAX** = ``6``
 
-Represents the size of the :ref:`OpType<enum_VisualShaderNodeClamp_OpType>` enum.
+Biểu thị kích thước của enum :ref:`OpType <enum_VisualShaderNodeClamp_OpType>`.
 
 .. rst-class:: classref-section-separator
 
@@ -110,8 +110,8 @@ Represents the size of the :ref:`OpType<enum_VisualShaderNodeClamp_OpType>` enum
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeClamp_property_op_type:
 
@@ -124,14 +124,14 @@ Property Descriptions
 - |void| **set_op_type**\ (\ value\: :ref:`OpType<enum_VisualShaderNodeClamp_OpType>`\ )
 - :ref:`OpType<enum_VisualShaderNodeClamp_OpType>` **get_op_type**\ (\ )
 
-A type of operands and returned value.
+Kiểu của các toán hạng và giá trị được trả về.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

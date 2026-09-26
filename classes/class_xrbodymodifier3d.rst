@@ -10,45 +10,45 @@
 XRBodyModifier3D
 ================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-**Inherits:** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A node for driving body meshes from :ref:`XRBodyTracker<class_XRBodyTracker>` data.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-This node uses body tracking data from an :ref:`XRBodyTracker<class_XRBodyTracker>` to pose the skeleton of a body mesh.
-
-Positioning of the body is performed by creating an :ref:`XRNode3D<class_XRNode3D>` ancestor of the body mesh driven by the same :ref:`XRBodyTracker<class_XRBodyTracker>`.
-
-The body tracking position-data is scaled by :ref:`Skeleton3D.motion_scale<class_Skeleton3D_property_motion_scale>` when applied to the skeleton, which can be used to adjust the tracked body to match the scale of the body model.
+Một node dùng để điều khiển các mesh cơ thể từ dữ liệu :ref:`XRBodyTracker<class_XRBodyTracker>`.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Node này sử dụng dữ liệu theo dõi cơ thể từ một :ref:`XRBodyTracker<class_XRBodyTracker>` để tạo dáng cho skeleton của mesh cơ thể.
+
+Việc định vị cơ thể được thực hiện bằng cách tạo một ancestor :ref:`XRNode3D<class_XRNode3D>` của mesh cơ thể, được điều khiển bởi cùng :ref:`XRBodyTracker<class_XRBodyTracker>`.
+
+Dữ liệu vị trí theo dõi cơ thể được nhân với :ref:`Skeleton3D.motion_scale<class_Skeleton3D_property_motion_scale>` khi áp dụng cho skeleton; hệ số này có thể được dùng để điều chỉnh cơ thể được theo dõi cho khớp với tỉ lệ của model cơ thể.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`XR documentation index <../tutorials/xr/index>`
+- :doc:`Mục lục tài liệu XR <../tutorials/xr/index>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------------------+-------------------------------------------------------------------+---------------------------+
-   | :ref:`StringName<class_StringName>`                               | :ref:`body_tracker<class_XRBodyModifier3D_property_body_tracker>` | ``&"/user/body_tracker"`` |
-   +-------------------------------------------------------------------+-------------------------------------------------------------------+---------------------------+
-   | |bitfield|\[:ref:`BodyUpdate<enum_XRBodyModifier3D_BodyUpdate>`\] | :ref:`body_update<class_XRBodyModifier3D_property_body_update>`   | ``7``                     |
-   +-------------------------------------------------------------------+-------------------------------------------------------------------+---------------------------+
-   | :ref:`BoneUpdate<enum_XRBodyModifier3D_BoneUpdate>`               | :ref:`bone_update<class_XRBodyModifier3D_property_bone_update>`   | ``0``                     |
-   +-------------------------------------------------------------------+-------------------------------------------------------------------+---------------------------+
+   +--------------------------------------------------------------------+-------------------------------------------------------------------+---------------------------+
+   | :ref:`StringName<class_StringName>`                                | :ref:`body_tracker<class_XRBodyModifier3D_property_body_tracker>` | ``&"/user/body_tracker"`` |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------+---------------------------+
+   | |bitfield|\[:ref:`BodyUpdate <enum_XRBodyModifier3D_BodyUpdate>`\] | :ref:`body_update<class_XRBodyModifier3D_property_body_update>`   | ``7``                     |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------+---------------------------+
+   | :ref:`BoneUpdate <enum_XRBodyModifier3D_BoneUpdate>`               | :ref:`bone_update<class_XRBodyModifier3D_property_bone_update>`   | ``0``                     |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------+---------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -56,14 +56,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_XRBodyModifier3D_BodyUpdate:
 
 .. rst-class:: classref-enumeration
 
-flags **BodyUpdate**: :ref:`🔗<enum_XRBodyModifier3D_BodyUpdate>`
+các cờ **BodyUpdate**: :ref:`🔗 <enum_XRBodyModifier3D_BodyUpdate>`
 
 .. _class_XRBodyModifier3D_constant_BODY_UPDATE_UPPER_BODY:
 
@@ -71,7 +71,7 @@ flags **BodyUpdate**: :ref:`🔗<enum_XRBodyModifier3D_BodyUpdate>`
 
 :ref:`BodyUpdate<enum_XRBodyModifier3D_BodyUpdate>` **BODY_UPDATE_UPPER_BODY** = ``1``
 
-The skeleton's upper body joints are updated.
+Các khớp phần thân trên của bộ xương được cập nhật.
 
 .. _class_XRBodyModifier3D_constant_BODY_UPDATE_LOWER_BODY:
 
@@ -79,7 +79,7 @@ The skeleton's upper body joints are updated.
 
 :ref:`BodyUpdate<enum_XRBodyModifier3D_BodyUpdate>` **BODY_UPDATE_LOWER_BODY** = ``2``
 
-The skeleton's lower body joints are updated.
+Các khớp phần thân dưới của bộ xương được cập nhật.
 
 .. _class_XRBodyModifier3D_constant_BODY_UPDATE_HANDS:
 
@@ -87,7 +87,7 @@ The skeleton's lower body joints are updated.
 
 :ref:`BodyUpdate<enum_XRBodyModifier3D_BodyUpdate>` **BODY_UPDATE_HANDS** = ``4``
 
-The skeleton's hand joints are updated.
+Các khớp bàn tay của bộ xương được cập nhật.
 
 .. rst-class:: classref-item-separator
 
@@ -97,7 +97,7 @@ The skeleton's hand joints are updated.
 
 .. rst-class:: classref-enumeration
 
-enum **BoneUpdate**: :ref:`🔗<enum_XRBodyModifier3D_BoneUpdate>`
+enum **BoneUpdate**: :ref:`🔗 <enum_XRBodyModifier3D_BoneUpdate>`
 
 .. _class_XRBodyModifier3D_constant_BONE_UPDATE_FULL:
 
@@ -105,7 +105,7 @@ enum **BoneUpdate**: :ref:`🔗<enum_XRBodyModifier3D_BoneUpdate>`
 
 :ref:`BoneUpdate<enum_XRBodyModifier3D_BoneUpdate>` **BONE_UPDATE_FULL** = ``0``
 
-The skeleton's bones are fully updated (both position and rotation) to match the tracked bones.
+Các xương của bộ xương được cập nhật hoàn toàn (cả vị trí và góc xoay) để khớp với các xương được theo dõi.
 
 .. _class_XRBodyModifier3D_constant_BONE_UPDATE_ROTATION_ONLY:
 
@@ -113,7 +113,7 @@ The skeleton's bones are fully updated (both position and rotation) to match the
 
 :ref:`BoneUpdate<enum_XRBodyModifier3D_BoneUpdate>` **BONE_UPDATE_ROTATION_ONLY** = ``1``
 
-The skeleton's bones are only rotated to align with the tracked bones, preserving bone length.
+Các xương của bộ xương chỉ được xoay để thẳng hàng với các xương được theo dõi, đồng thời giữ nguyên độ dài xương.
 
 .. _class_XRBodyModifier3D_constant_BONE_UPDATE_MAX:
 
@@ -121,7 +121,7 @@ The skeleton's bones are only rotated to align with the tracked bones, preservin
 
 :ref:`BoneUpdate<enum_XRBodyModifier3D_BoneUpdate>` **BONE_UPDATE_MAX** = ``2``
 
-Represents the size of the :ref:`BoneUpdate<enum_XRBodyModifier3D_BoneUpdate>` enum.
+Biểu thị kích thước của enum :ref:`BoneUpdate <enum_XRBodyModifier3D_BoneUpdate>`.
 
 .. rst-class:: classref-section-separator
 
@@ -129,8 +129,8 @@ Represents the size of the :ref:`BoneUpdate<enum_XRBodyModifier3D_BoneUpdate>` e
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_XRBodyModifier3D_property_body_tracker:
 
@@ -143,7 +143,7 @@ Property Descriptions
 - |void| **set_body_tracker**\ (\ value\: :ref:`StringName<class_StringName>`\ )
 - :ref:`StringName<class_StringName>` **get_body_tracker**\ (\ )
 
-The name of the :ref:`XRBodyTracker<class_XRBodyTracker>` registered with :ref:`XRServer<class_XRServer>` to obtain the body tracking data from.
+Tên của :ref:`XRBodyTracker<class_XRBodyTracker>` được đăng ký với :ref:`XRServer<class_XRServer>` để lấy dữ liệu theo dõi cơ thể.
 
 .. rst-class:: classref-item-separator
 
@@ -160,7 +160,7 @@ The name of the :ref:`XRBodyTracker<class_XRBodyTracker>` registered with :ref:`
 - |void| **set_body_update**\ (\ value\: |bitfield|\[:ref:`BodyUpdate<enum_XRBodyModifier3D_BodyUpdate>`\]\ )
 - |bitfield|\[:ref:`BodyUpdate<enum_XRBodyModifier3D_BodyUpdate>`\] **get_body_update**\ (\ )
 
-Specifies the body parts to update.
+Chỉ định các bộ phận cơ thể cần cập nhật.
 
 .. rst-class:: classref-item-separator
 
@@ -177,14 +177,14 @@ Specifies the body parts to update.
 - |void| **set_bone_update**\ (\ value\: :ref:`BoneUpdate<enum_XRBodyModifier3D_BoneUpdate>`\ )
 - :ref:`BoneUpdate<enum_XRBodyModifier3D_BoneUpdate>` **get_bone_update**\ (\ )
 
-Specifies the type of updates to perform on the bones.
+Chỉ định loại cập nhật cần thực hiện trên các xương.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của đối tượng.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

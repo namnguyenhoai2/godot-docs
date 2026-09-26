@@ -10,28 +10,28 @@
 VisualShaderNodeColorOp
 =======================
 
-**Inherits:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A :ref:`Color<class_Color>` operator to be used within the visual shader graph.
+Một toán tử :ref:`Color<class_Color>` được sử dụng trong visual shader graph.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Applies :ref:`operator<class_VisualShaderNodeColorOp_property_operator>` to two color inputs.
+Áp dụng :ref:`operator<class_VisualShaderNodeColorOp_property_operator>` cho hai đầu vào màu.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------------------+------------------------------------------------------------------+-------+
-   | :ref:`Operator<enum_VisualShaderNodeColorOp_Operator>` | :ref:`operator<class_VisualShaderNodeColorOp_property_operator>` | ``0`` |
-   +--------------------------------------------------------+------------------------------------------------------------------+-------+
+   +---------------------------------------------------------+------------------------------------------------------------------+-------+
+   | :ref:`Operator <enum_VisualShaderNodeColorOp_Operator>` | :ref:`operator<class_VisualShaderNodeColorOp_property_operator>` | ``0`` |
+   +---------------------------------------------------------+------------------------------------------------------------------+-------+
 
 .. rst-class:: classref-section-separator
 
@@ -39,14 +39,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_VisualShaderNodeColorOp_Operator:
 
 .. rst-class:: classref-enumeration
 
-enum **Operator**: :ref:`🔗<enum_VisualShaderNodeColorOp_Operator>`
+enum **Operator**: :ref:`🔗 <enum_VisualShaderNodeColorOp_Operator>`
 
 .. _class_VisualShaderNodeColorOp_constant_OP_SCREEN:
 
@@ -54,7 +54,7 @@ enum **Operator**: :ref:`🔗<enum_VisualShaderNodeColorOp_Operator>`
 
 :ref:`Operator<enum_VisualShaderNodeColorOp_Operator>` **OP_SCREEN** = ``0``
 
-Produce a screen effect with the following formula:
+Tạo hiệu ứng screen theo công thức sau:
 
 ::
 
@@ -66,7 +66,7 @@ Produce a screen effect with the following formula:
 
 :ref:`Operator<enum_VisualShaderNodeColorOp_Operator>` **OP_DIFFERENCE** = ``1``
 
-Produce a difference effect with the following formula:
+Tạo hiệu ứng difference theo công thức sau:
 
 ::
 
@@ -78,7 +78,7 @@ Produce a difference effect with the following formula:
 
 :ref:`Operator<enum_VisualShaderNodeColorOp_Operator>` **OP_DARKEN** = ``2``
 
-Produce a darken effect with the following formula:
+Tạo hiệu ứng darken theo công thức sau:
 
 ::
 
@@ -90,7 +90,7 @@ Produce a darken effect with the following formula:
 
 :ref:`Operator<enum_VisualShaderNodeColorOp_Operator>` **OP_LIGHTEN** = ``3``
 
-Produce a lighten effect with the following formula:
+Tạo hiệu ứng lighten theo công thức sau:
 
 ::
 
@@ -102,7 +102,7 @@ Produce a lighten effect with the following formula:
 
 :ref:`Operator<enum_VisualShaderNodeColorOp_Operator>` **OP_OVERLAY** = ``4``
 
-Produce an overlay effect with the following formula:
+Tạo hiệu ứng overlay theo công thức sau:
 
 ::
 
@@ -122,7 +122,7 @@ Produce an overlay effect with the following formula:
 
 :ref:`Operator<enum_VisualShaderNodeColorOp_Operator>` **OP_DODGE** = ``5``
 
-Produce a dodge effect with the following formula:
+Tạo hiệu ứng dodge theo công thức sau:
 
 ::
 
@@ -134,7 +134,7 @@ Produce a dodge effect with the following formula:
 
 :ref:`Operator<enum_VisualShaderNodeColorOp_Operator>` **OP_BURN** = ``6``
 
-Produce a burn effect with the following formula:
+Tạo hiệu ứng cháy bằng công thức sau:
 
 ::
 
@@ -146,7 +146,7 @@ Produce a burn effect with the following formula:
 
 :ref:`Operator<enum_VisualShaderNodeColorOp_Operator>` **OP_SOFT_LIGHT** = ``7``
 
-Produce a soft light effect with the following formula:
+Tạo hiệu ứng ánh sáng mềm bằng công thức sau:
 
 ::
 
@@ -166,7 +166,7 @@ Produce a soft light effect with the following formula:
 
 :ref:`Operator<enum_VisualShaderNodeColorOp_Operator>` **OP_HARD_LIGHT** = ``8``
 
-Produce a hard light effect with the following formula:
+Tạo hiệu ứng ánh sáng cứng bằng công thức sau:
 
 ::
 
@@ -186,7 +186,7 @@ Produce a hard light effect with the following formula:
 
 :ref:`Operator<enum_VisualShaderNodeColorOp_Operator>` **OP_MAX** = ``9``
 
-Represents the size of the :ref:`Operator<enum_VisualShaderNodeColorOp_Operator>` enum.
+Biểu thị kích thước của enum :ref:`Operator <enum_VisualShaderNodeColorOp_Operator>`.
 
 .. rst-class:: classref-section-separator
 
@@ -194,8 +194,8 @@ Represents the size of the :ref:`Operator<enum_VisualShaderNodeColorOp_Operator>
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeColorOp_property_operator:
 
@@ -208,14 +208,14 @@ Property Descriptions
 - |void| **set_operator**\ (\ value\: :ref:`Operator<enum_VisualShaderNodeColorOp_Operator>`\ )
 - :ref:`Operator<enum_VisualShaderNodeColorOp_Operator>` **get_operator**\ (\ )
 
-An operator to be applied to the inputs.
+Một operator được áp dụng cho các đầu vào.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,28 +10,28 @@
 VisualShaderNodeTransformOp
 ===========================
 
-**Inherits:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A :ref:`Transform3D<class_Transform3D>` operator to be used within the visual shader graph.
+Một toán tử :ref:`Transform3D<class_Transform3D>` được sử dụng trong visual shader graph.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Applies :ref:`operator<class_VisualShaderNodeTransformOp_property_operator>` to two transform (4×4 matrices) inputs.
+Áp dụng :ref:`operator<class_VisualShaderNodeTransformOp_property_operator>` cho hai đầu vào transform (ma trận 4×4).
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------+----------------------------------------------------------------------+-------+
-   | :ref:`Operator<enum_VisualShaderNodeTransformOp_Operator>` | :ref:`operator<class_VisualShaderNodeTransformOp_property_operator>` | ``0`` |
-   +------------------------------------------------------------+----------------------------------------------------------------------+-------+
+   +-------------------------------------------------------------+----------------------------------------------------------------------+-------+
+   | :ref:`Operator <enum_VisualShaderNodeTransformOp_Operator>` | :ref:`operator<class_VisualShaderNodeTransformOp_property_operator>` | ``0`` |
+   +-------------------------------------------------------------+----------------------------------------------------------------------+-------+
 
 .. rst-class:: classref-section-separator
 
@@ -39,14 +39,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các phép liệt kê
+----------------
 
 .. _enum_VisualShaderNodeTransformOp_Operator:
 
 .. rst-class:: classref-enumeration
 
-enum **Operator**: :ref:`🔗<enum_VisualShaderNodeTransformOp_Operator>`
+enum **Operator**: :ref:`🔗 <enum_VisualShaderNodeTransformOp_Operator>`
 
 .. _class_VisualShaderNodeTransformOp_constant_OP_AxB:
 
@@ -54,7 +54,7 @@ enum **Operator**: :ref:`🔗<enum_VisualShaderNodeTransformOp_Operator>`
 
 :ref:`Operator<enum_VisualShaderNodeTransformOp_Operator>` **OP_AxB** = ``0``
 
-Multiplies transform ``a`` by the transform ``b``.
+Nhân transform ``a`` với transform ``b``.
 
 .. _class_VisualShaderNodeTransformOp_constant_OP_BxA:
 
@@ -62,7 +62,7 @@ Multiplies transform ``a`` by the transform ``b``.
 
 :ref:`Operator<enum_VisualShaderNodeTransformOp_Operator>` **OP_BxA** = ``1``
 
-Multiplies transform ``b`` by the transform ``a``.
+Nhân transform ``b`` với transform ``a``.
 
 .. _class_VisualShaderNodeTransformOp_constant_OP_AxB_COMP:
 
@@ -70,7 +70,7 @@ Multiplies transform ``b`` by the transform ``a``.
 
 :ref:`Operator<enum_VisualShaderNodeTransformOp_Operator>` **OP_AxB_COMP** = ``2``
 
-Performs a component-wise multiplication of transform ``a`` by the transform ``b``.
+Thực hiện phép nhân theo từng thành phần của transform ``a`` với transform ``b``.
 
 .. _class_VisualShaderNodeTransformOp_constant_OP_BxA_COMP:
 
@@ -78,7 +78,7 @@ Performs a component-wise multiplication of transform ``a`` by the transform ``b
 
 :ref:`Operator<enum_VisualShaderNodeTransformOp_Operator>` **OP_BxA_COMP** = ``3``
 
-Performs a component-wise multiplication of transform ``b`` by the transform ``a``.
+Thực hiện phép nhân theo từng thành phần của transform ``b`` với transform ``a``.
 
 .. _class_VisualShaderNodeTransformOp_constant_OP_ADD:
 
@@ -86,7 +86,7 @@ Performs a component-wise multiplication of transform ``b`` by the transform ``a
 
 :ref:`Operator<enum_VisualShaderNodeTransformOp_Operator>` **OP_ADD** = ``4``
 
-Adds two transforms.
+Cộng hai transform.
 
 .. _class_VisualShaderNodeTransformOp_constant_OP_A_MINUS_B:
 
@@ -94,7 +94,7 @@ Adds two transforms.
 
 :ref:`Operator<enum_VisualShaderNodeTransformOp_Operator>` **OP_A_MINUS_B** = ``5``
 
-Subtracts the transform ``a`` from the transform ``b``.
+Trừ transform ``a`` khỏi transform ``b``.
 
 .. _class_VisualShaderNodeTransformOp_constant_OP_B_MINUS_A:
 
@@ -102,7 +102,7 @@ Subtracts the transform ``a`` from the transform ``b``.
 
 :ref:`Operator<enum_VisualShaderNodeTransformOp_Operator>` **OP_B_MINUS_A** = ``6``
 
-Subtracts the transform ``b`` from the transform ``a``.
+Trừ phép biến đổi ``b`` khỏi phép biến đổi ``a``.
 
 .. _class_VisualShaderNodeTransformOp_constant_OP_A_DIV_B:
 
@@ -110,7 +110,7 @@ Subtracts the transform ``b`` from the transform ``a``.
 
 :ref:`Operator<enum_VisualShaderNodeTransformOp_Operator>` **OP_A_DIV_B** = ``7``
 
-Divides the transform ``a`` by the transform ``b``.
+Chia phép biến đổi ``a`` cho phép biến đổi ``b``.
 
 .. _class_VisualShaderNodeTransformOp_constant_OP_B_DIV_A:
 
@@ -118,7 +118,7 @@ Divides the transform ``a`` by the transform ``b``.
 
 :ref:`Operator<enum_VisualShaderNodeTransformOp_Operator>` **OP_B_DIV_A** = ``8``
 
-Divides the transform ``b`` by the transform ``a``.
+Chia phép biến đổi ``b`` cho phép biến đổi ``a``.
 
 .. _class_VisualShaderNodeTransformOp_constant_OP_MAX:
 
@@ -126,7 +126,7 @@ Divides the transform ``b`` by the transform ``a``.
 
 :ref:`Operator<enum_VisualShaderNodeTransformOp_Operator>` **OP_MAX** = ``9``
 
-Represents the size of the :ref:`Operator<enum_VisualShaderNodeTransformOp_Operator>` enum.
+Biểu thị kích thước của enum :ref:`Operator <enum_VisualShaderNodeTransformOp_Operator>`.
 
 .. rst-class:: classref-section-separator
 
@@ -134,8 +134,8 @@ Represents the size of the :ref:`Operator<enum_VisualShaderNodeTransformOp_Opera
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeTransformOp_property_operator:
 
@@ -148,14 +148,14 @@ Property Descriptions
 - |void| **set_operator**\ (\ value\: :ref:`Operator<enum_VisualShaderNodeTransformOp_Operator>`\ )
 - :ref:`Operator<enum_VisualShaderNodeTransformOp_Operator>` **get_operator**\ (\ )
 
-The type of the operation to be performed on the transforms.
+Loại thao tác sẽ được thực hiện trên các phép biến đổi.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể được gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

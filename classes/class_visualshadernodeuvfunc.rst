@@ -10,28 +10,28 @@
 VisualShaderNodeUVFunc
 ======================
 
-**Inherits:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Contains functions to modify texture coordinates (``uv``) to be used within the visual shader graph.
+Chứa các hàm để sửa đổi tọa độ texture (``uv``) nhằm sử dụng trong đồ thị visual shader.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-UV functions are similar to :ref:`Vector2<class_Vector2>` functions, but the input port of this node uses the shader's UV value by default.
+Các hàm UV tương tự như các hàm :ref:`Vector2<class_Vector2>`, nhưng cổng đầu vào của node này mặc định sử dụng giá trị UV của shader.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------+-----------------------------------------------------------------+-------+
-   | :ref:`Function<enum_VisualShaderNodeUVFunc_Function>` | :ref:`function<class_VisualShaderNodeUVFunc_property_function>` | ``0`` |
-   +-------------------------------------------------------+-----------------------------------------------------------------+-------+
+   +--------------------------------------------------------+-----------------------------------------------------------------+-------+
+   | :ref:`Function <enum_VisualShaderNodeUVFunc_Function>` | :ref:`function<class_VisualShaderNodeUVFunc_property_function>` | ``0`` |
+   +--------------------------------------------------------+-----------------------------------------------------------------+-------+
 
 .. rst-class:: classref-section-separator
 
@@ -39,14 +39,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_VisualShaderNodeUVFunc_Function:
 
 .. rst-class:: classref-enumeration
 
-enum **Function**: :ref:`🔗<enum_VisualShaderNodeUVFunc_Function>`
+enum **Function**: :ref:`🔗 <enum_VisualShaderNodeUVFunc_Function>`
 
 .. _class_VisualShaderNodeUVFunc_constant_FUNC_PANNING:
 
@@ -54,7 +54,7 @@ enum **Function**: :ref:`🔗<enum_VisualShaderNodeUVFunc_Function>`
 
 :ref:`Function<enum_VisualShaderNodeUVFunc_Function>` **FUNC_PANNING** = ``0``
 
-Translates ``uv`` by using ``scale`` and ``offset`` values using the following formula: ``uv = uv + offset * scale``. ``uv`` port is connected to ``UV`` built-in by default.
+Dịch ``uv`` bằng cách sử dụng các giá trị ``scale`` và ``offset`` theo công thức sau: ``uv = uv + offset * scale``. Cổng ``uv`` được kết nối với built-in ``UV`` theo mặc định.
 
 .. _class_VisualShaderNodeUVFunc_constant_FUNC_SCALING:
 
@@ -62,7 +62,7 @@ Translates ``uv`` by using ``scale`` and ``offset`` values using the following f
 
 :ref:`Function<enum_VisualShaderNodeUVFunc_Function>` **FUNC_SCALING** = ``1``
 
-Scales ``uv`` by using ``scale`` and ``pivot`` values using the following formula: ``uv = (uv - pivot) * scale + pivot``. ``uv`` port is connected to ``UV`` built-in by default.
+Scale ``uv`` bằng cách sử dụng các giá trị ``scale`` và ``pivot`` theo công thức sau: ``uv = (uv - pivot) * scale + pivot``. Cổng ``uv`` được kết nối với built-in ``UV`` theo mặc định.
 
 .. _class_VisualShaderNodeUVFunc_constant_FUNC_MAX:
 
@@ -70,7 +70,7 @@ Scales ``uv`` by using ``scale`` and ``pivot`` values using the following formul
 
 :ref:`Function<enum_VisualShaderNodeUVFunc_Function>` **FUNC_MAX** = ``2``
 
-Represents the size of the :ref:`Function<enum_VisualShaderNodeUVFunc_Function>` enum.
+Biểu thị kích thước của enum :ref:`Function <enum_VisualShaderNodeUVFunc_Function>`.
 
 .. rst-class:: classref-section-separator
 
@@ -78,8 +78,8 @@ Represents the size of the :ref:`Function<enum_VisualShaderNodeUVFunc_Function>`
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeUVFunc_property_function:
 
@@ -92,14 +92,14 @@ Property Descriptions
 - |void| **set_function**\ (\ value\: :ref:`Function<enum_VisualShaderNodeUVFunc_Function>`\ )
 - :ref:`Function<enum_VisualShaderNodeUVFunc_Function>` **get_function**\ (\ )
 
-A function to be applied to the texture coordinates.
+Một function được áp dụng cho các tọa độ texture.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

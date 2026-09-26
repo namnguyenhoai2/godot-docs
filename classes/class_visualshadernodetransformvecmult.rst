@@ -10,28 +10,28 @@
 VisualShaderNodeTransformVecMult
 ================================
 
-**Inherits:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Multiplies a :ref:`Transform3D<class_Transform3D>` and a :ref:`Vector3<class_Vector3>` within the visual shader graph.
+Nhân một :ref:`Transform3D<class_Transform3D>` và một :ref:`Vector3<class_Vector3>` trong đồ thị visual shader.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A multiplication operation on a transform (4×4 matrix) and a vector, with support for different multiplication operators.
+Phép nhân giữa một phép biến đổi (ma trận 4×4) và một vector, hỗ trợ các toán tử nhân khác nhau.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------+-------+
-   | :ref:`Operator<enum_VisualShaderNodeTransformVecMult_Operator>` | :ref:`operator<class_VisualShaderNodeTransformVecMult_property_operator>` | ``0`` |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------+-------+
+   +------------------------------------------------------------------+---------------------------------------------------------------------------+-------+
+   | :ref:`Operator <enum_VisualShaderNodeTransformVecMult_Operator>` | :ref:`operator<class_VisualShaderNodeTransformVecMult_property_operator>` | ``0`` |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------+-------+
 
 .. rst-class:: classref-section-separator
 
@@ -39,14 +39,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_VisualShaderNodeTransformVecMult_Operator:
 
 .. rst-class:: classref-enumeration
 
-enum **Operator**: :ref:`🔗<enum_VisualShaderNodeTransformVecMult_Operator>`
+enum **Operator**: :ref:`🔗 <enum_VisualShaderNodeTransformVecMult_Operator>`
 
 .. _class_VisualShaderNodeTransformVecMult_constant_OP_AxB:
 
@@ -54,7 +54,7 @@ enum **Operator**: :ref:`🔗<enum_VisualShaderNodeTransformVecMult_Operator>`
 
 :ref:`Operator<enum_VisualShaderNodeTransformVecMult_Operator>` **OP_AxB** = ``0``
 
-Multiplies transform ``a`` by the vector ``b``.
+Nhân transform ``a`` với vector ``b``.
 
 .. _class_VisualShaderNodeTransformVecMult_constant_OP_BxA:
 
@@ -62,7 +62,7 @@ Multiplies transform ``a`` by the vector ``b``.
 
 :ref:`Operator<enum_VisualShaderNodeTransformVecMult_Operator>` **OP_BxA** = ``1``
 
-Multiplies vector ``b`` by the transform ``a``.
+Nhân vector ``b`` với transform ``a``.
 
 .. _class_VisualShaderNodeTransformVecMult_constant_OP_3x3_AxB:
 
@@ -70,7 +70,7 @@ Multiplies vector ``b`` by the transform ``a``.
 
 :ref:`Operator<enum_VisualShaderNodeTransformVecMult_Operator>` **OP_3x3_AxB** = ``2``
 
-Multiplies transform ``a`` by the vector ``b``, skipping the last row and column of the transform.
+Nhân transform ``a`` với vector ``b``, bỏ qua hàng và cột cuối cùng của transform.
 
 .. _class_VisualShaderNodeTransformVecMult_constant_OP_3x3_BxA:
 
@@ -78,7 +78,7 @@ Multiplies transform ``a`` by the vector ``b``, skipping the last row and column
 
 :ref:`Operator<enum_VisualShaderNodeTransformVecMult_Operator>` **OP_3x3_BxA** = ``3``
 
-Multiplies vector ``b`` by the transform ``a``, skipping the last row and column of the transform.
+Nhân vector ``b`` với transform ``a``, bỏ qua hàng và cột cuối cùng của transform.
 
 .. _class_VisualShaderNodeTransformVecMult_constant_OP_MAX:
 
@@ -86,7 +86,7 @@ Multiplies vector ``b`` by the transform ``a``, skipping the last row and column
 
 :ref:`Operator<enum_VisualShaderNodeTransformVecMult_Operator>` **OP_MAX** = ``4``
 
-Represents the size of the :ref:`Operator<enum_VisualShaderNodeTransformVecMult_Operator>` enum.
+Đại diện cho kích thước của enum :ref:`Operator <enum_VisualShaderNodeTransformVecMult_Operator>`.
 
 .. rst-class:: classref-section-separator
 
@@ -94,8 +94,8 @@ Represents the size of the :ref:`Operator<enum_VisualShaderNodeTransformVecMult_
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeTransformVecMult_property_operator:
 
@@ -108,14 +108,14 @@ Property Descriptions
 - |void| **set_operator**\ (\ value\: :ref:`Operator<enum_VisualShaderNodeTransformVecMult_Operator>`\ )
 - :ref:`Operator<enum_VisualShaderNodeTransformVecMult_Operator>` **get_operator**\ (\ )
 
-The multiplication type to be performed.
+Kiểu phép nhân sẽ được thực hiện.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau những đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Không cần instance để gọi phương thức này, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

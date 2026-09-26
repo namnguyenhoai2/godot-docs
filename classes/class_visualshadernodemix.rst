@@ -10,28 +10,28 @@
 VisualShaderNodeMix
 ===================
 
-**Inherits:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Linearly interpolates between two values within the visual shader graph.
+Nội suy tuyến tính giữa hai giá trị trong đồ thị visual shader.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Translates to ``mix(a, b, weight)`` in the shader language.
+Chuyển thành ``mix(a, b, weight)`` trong ngôn ngữ shader.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------+------------------------------------------------------------+-------+
-   | :ref:`OpType<enum_VisualShaderNodeMix_OpType>` | :ref:`op_type<class_VisualShaderNodeMix_property_op_type>` | ``0`` |
-   +------------------------------------------------+------------------------------------------------------------+-------+
+   +-------------------------------------------------+------------------------------------------------------------+-------+
+   | :ref:`OpType <enum_VisualShaderNodeMix_OpType>` | :ref:`op_type<class_VisualShaderNodeMix_property_op_type>` | ``0`` |
+   +-------------------------------------------------+------------------------------------------------------------+-------+
 
 .. rst-class:: classref-section-separator
 
@@ -39,14 +39,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_VisualShaderNodeMix_OpType:
 
 .. rst-class:: classref-enumeration
 
-enum **OpType**: :ref:`🔗<enum_VisualShaderNodeMix_OpType>`
+enum **OpType**: :ref:`🔗 <enum_VisualShaderNodeMix_OpType>`
 
 .. _class_VisualShaderNodeMix_constant_OP_TYPE_SCALAR:
 
@@ -54,7 +54,7 @@ enum **OpType**: :ref:`🔗<enum_VisualShaderNodeMix_OpType>`
 
 :ref:`OpType<enum_VisualShaderNodeMix_OpType>` **OP_TYPE_SCALAR** = ``0``
 
-A floating-point scalar.
+Một kiểu vô hướng dấu phẩy động.
 
 .. _class_VisualShaderNodeMix_constant_OP_TYPE_VECTOR_2D:
 
@@ -62,7 +62,7 @@ A floating-point scalar.
 
 :ref:`OpType<enum_VisualShaderNodeMix_OpType>` **OP_TYPE_VECTOR_2D** = ``1``
 
-A 2D vector type.
+Một kiểu vector 2D.
 
 .. _class_VisualShaderNodeMix_constant_OP_TYPE_VECTOR_2D_SCALAR:
 
@@ -70,7 +70,7 @@ A 2D vector type.
 
 :ref:`OpType<enum_VisualShaderNodeMix_OpType>` **OP_TYPE_VECTOR_2D_SCALAR** = ``2``
 
-The ``a`` and ``b`` ports use a 2D vector type. The ``weight`` port uses a scalar type.
+Các cổng ``a`` và ``b`` sử dụng kiểu vector 2D. Cổng ``weight`` sử dụng kiểu vô hướng.
 
 .. _class_VisualShaderNodeMix_constant_OP_TYPE_VECTOR_3D:
 
@@ -78,7 +78,7 @@ The ``a`` and ``b`` ports use a 2D vector type. The ``weight`` port uses a scala
 
 :ref:`OpType<enum_VisualShaderNodeMix_OpType>` **OP_TYPE_VECTOR_3D** = ``3``
 
-A 3D vector type.
+Một kiểu vector 3D.
 
 .. _class_VisualShaderNodeMix_constant_OP_TYPE_VECTOR_3D_SCALAR:
 
@@ -86,7 +86,7 @@ A 3D vector type.
 
 :ref:`OpType<enum_VisualShaderNodeMix_OpType>` **OP_TYPE_VECTOR_3D_SCALAR** = ``4``
 
-The ``a`` and ``b`` ports use a 3D vector type. The ``weight`` port uses a scalar type.
+Các cổng ``a`` và ``b`` sử dụng kiểu vector 3D. Cổng ``weight`` sử dụng kiểu vô hướng.
 
 .. _class_VisualShaderNodeMix_constant_OP_TYPE_VECTOR_4D:
 
@@ -94,7 +94,7 @@ The ``a`` and ``b`` ports use a 3D vector type. The ``weight`` port uses a scala
 
 :ref:`OpType<enum_VisualShaderNodeMix_OpType>` **OP_TYPE_VECTOR_4D** = ``5``
 
-A 4D vector type.
+Một kiểu vector 4D.
 
 .. _class_VisualShaderNodeMix_constant_OP_TYPE_VECTOR_4D_SCALAR:
 
@@ -102,7 +102,7 @@ A 4D vector type.
 
 :ref:`OpType<enum_VisualShaderNodeMix_OpType>` **OP_TYPE_VECTOR_4D_SCALAR** = ``6``
 
-The ``a`` and ``b`` ports use a 4D vector type. The ``weight`` port uses a scalar type.
+Các cổng ``a`` và ``b`` sử dụng kiểu vector 4D. Cổng ``weight`` sử dụng kiểu vô hướng.
 
 .. _class_VisualShaderNodeMix_constant_OP_TYPE_MAX:
 
@@ -110,7 +110,7 @@ The ``a`` and ``b`` ports use a 4D vector type. The ``weight`` port uses a scala
 
 :ref:`OpType<enum_VisualShaderNodeMix_OpType>` **OP_TYPE_MAX** = ``7``
 
-Represents the size of the :ref:`OpType<enum_VisualShaderNodeMix_OpType>` enum.
+Biểu thị kích thước của enum :ref:`OpType <enum_VisualShaderNodeMix_OpType>`.
 
 .. rst-class:: classref-section-separator
 
@@ -118,8 +118,8 @@ Represents the size of the :ref:`OpType<enum_VisualShaderNodeMix_OpType>` enum.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeMix_property_op_type:
 
@@ -132,14 +132,14 @@ Property Descriptions
 - |void| **set_op_type**\ (\ value\: :ref:`OpType<enum_VisualShaderNodeMix_OpType>`\ )
 - :ref:`OpType<enum_VisualShaderNodeMix_OpType>` **get_op_type**\ (\ )
 
-A type of operands and returned value.
+Một kiểu của các toán hạng và giá trị được trả về.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,41 +10,41 @@
 XRTracker
 =========
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa từ:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`XRFaceTracker<class_XRFaceTracker>`, :ref:`XRPositionalTracker<class_XRPositionalTracker>`
+**Được kế thừa bởi:** :ref:`XRFaceTracker<class_XRFaceTracker>`, :ref:`XRPositionalTracker<class_XRPositionalTracker>`
 
-A tracked object.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-This object is the base of all XR trackers.
+Một đối tượng được theo dõi.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Đối tượng này là lớp cơ sở của tất cả XR tracker.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`XR documentation index <../tutorials/xr/index>`
+- :doc:`Mục lục tài liệu XR <../tutorials/xr/index>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------+----------------------------------------------------------+----------------+
-   | :ref:`String<class_String>`                   | :ref:`description<class_XRTracker_property_description>` | ``""``         |
-   +-----------------------------------------------+----------------------------------------------------------+----------------+
-   | :ref:`StringName<class_StringName>`           | :ref:`name<class_XRTracker_property_name>`               | ``&"Unknown"`` |
-   +-----------------------------------------------+----------------------------------------------------------+----------------+
-   | :ref:`TrackerType<enum_XRServer_TrackerType>` | :ref:`type<class_XRTracker_property_type>`               | ``128``        |
-   +-----------------------------------------------+----------------------------------------------------------+----------------+
+   +------------------------------------------------+----------------------------------------------------------+----------------+
+   | :ref:`String<class_String>`                    | :ref:`description<class_XRTracker_property_description>` | ``""``         |
+   +------------------------------------------------+----------------------------------------------------------+----------------+
+   | :ref:`StringName<class_StringName>`            | :ref:`name<class_XRTracker_property_name>`               | ``&"Unknown"`` |
+   +------------------------------------------------+----------------------------------------------------------+----------------+
+   | :ref:`TrackerType <enum_XRServer_TrackerType>` | :ref:`type<class_XRTracker_property_type>`               | ``128``        |
+   +------------------------------------------------+----------------------------------------------------------+----------------+
 
 .. rst-class:: classref-section-separator
 
@@ -52,8 +52,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_XRTracker_property_description:
 
@@ -66,7 +66,7 @@ Property Descriptions
 - |void| **set_tracker_desc**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_tracker_desc**\ (\ )
 
-The description of this tracker.
+Mô tả của tracker này.
 
 .. rst-class:: classref-item-separator
 
@@ -83,21 +83,21 @@ The description of this tracker.
 - |void| **set_tracker_name**\ (\ value\: :ref:`StringName<class_StringName>`\ )
 - :ref:`StringName<class_StringName>` **get_tracker_name**\ (\ )
 
-The unique name of this tracker. The trackers that are available differ between various XR runtimes and can often be configured by the user. Godot maintains a number of reserved names that it expects the :ref:`XRInterface<class_XRInterface>` to implement if applicable:
+Tên duy nhất của tracker này. Các tracker khả dụng khác nhau giữa các XR runtime và thường có thể được người dùng cấu hình. Godot duy trì một số tên dành riêng mà nó mong đợi :ref:`XRInterface<class_XRInterface>` triển khai nếu phù hợp:
 
-- ``"head"`` identifies the :ref:`XRPositionalTracker<class_XRPositionalTracker>` of the player's head
+- ``"head"`` xác định :ref:`XRPositionalTracker<class_XRPositionalTracker>` đầu của người chơi
 
-- ``"left_hand"`` identifies the :ref:`XRControllerTracker<class_XRControllerTracker>` in the player's left hand
+- ``"left_hand"`` xác định :ref:`XRControllerTracker<class_XRControllerTracker>` trong tay trái của người chơi
 
-- ``"right_hand"`` identifies the :ref:`XRControllerTracker<class_XRControllerTracker>` in the player's right hand
+- ``"right_hand"`` xác định :ref:`XRControllerTracker<class_XRControllerTracker>` ở tay phải của người chơi
 
-- ``"/user/hand_tracker/left"`` identifies the :ref:`XRHandTracker<class_XRHandTracker>` for the player's left hand
+- ``"/user/hand_tracker/left"`` xác định :ref:`XRHandTracker<class_XRHandTracker>` cho tay trái của người chơi
 
-- ``"/user/hand_tracker/right"`` identifies the :ref:`XRHandTracker<class_XRHandTracker>` for the player's right hand
+- ``"/user/hand_tracker/right"`` xác định :ref:`XRHandTracker<class_XRHandTracker>` cho tay phải của người chơi
 
-- ``"/user/body_tracker"`` identifies the :ref:`XRBodyTracker<class_XRBodyTracker>` for the player's body
+- ``"/user/body_tracker"`` xác định :ref:`XRBodyTracker<class_XRBodyTracker>` cho cơ thể của người chơi
 
-- ``"/user/face_tracker"`` identifies the :ref:`XRFaceTracker<class_XRFaceTracker>` for the player's face
+- ``"/user/face_tracker"`` xác định :ref:`XRFaceTracker<class_XRFaceTracker>` cho khuôn mặt của người chơi
 
 .. rst-class:: classref-item-separator
 
@@ -114,14 +114,14 @@ The unique name of this tracker. The trackers that are available differ between 
 - |void| **set_tracker_type**\ (\ value\: :ref:`TrackerType<enum_XRServer_TrackerType>`\ )
 - :ref:`TrackerType<enum_XRServer_TrackerType>` **get_tracker_type**\ (\ )
 
-The type of tracker.
+Loại tracker.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

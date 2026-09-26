@@ -10,9 +10,9 @@
 WebRTCDataChannel
 =================
 
-**Inherits:** :ref:`PacketPeer<class_PacketPeer>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`PacketPeer<class_PacketPeer>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`WebRTCDataChannelExtension<class_WebRTCDataChannelExtension>`
+**Được kế thừa bởi:** :ref:`WebRTCDataChannelExtension<class_WebRTCDataChannelExtension>`
 
 .. container:: contribute
 
@@ -20,49 +20,49 @@ WebRTCDataChannel
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +----------------------------------------------------+----------------------------------------------------------------+-------+
-   | :ref:`WriteMode<enum_WebRTCDataChannel_WriteMode>` | :ref:`write_mode<class_WebRTCDataChannel_property_write_mode>` | ``1`` |
-   +----------------------------------------------------+----------------------------------------------------------------+-------+
+   +-----------------------------------------------------+----------------------------------------------------------------+-------+
+   | :ref:`WriteMode <enum_WebRTCDataChannel_WriteMode>` | :ref:`write_mode<class_WebRTCDataChannel_property_write_mode>` | ``1`` |
+   +-----------------------------------------------------+----------------------------------------------------------------+-------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-   | |void|                                                   | :ref:`close<class_WebRTCDataChannel_method_close>`\ (\ )                                               |
-   +----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                    | :ref:`get_buffered_amount<class_WebRTCDataChannel_method_get_buffered_amount>`\ (\ ) |const|           |
-   +----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                    | :ref:`get_id<class_WebRTCDataChannel_method_get_id>`\ (\ ) |const|                                     |
-   +----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                              | :ref:`get_label<class_WebRTCDataChannel_method_get_label>`\ (\ ) |const|                               |
-   +----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                    | :ref:`get_max_packet_life_time<class_WebRTCDataChannel_method_get_max_packet_life_time>`\ (\ ) |const| |
-   +----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                    | :ref:`get_max_retransmits<class_WebRTCDataChannel_method_get_max_retransmits>`\ (\ ) |const|           |
-   +----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                              | :ref:`get_protocol<class_WebRTCDataChannel_method_get_protocol>`\ (\ ) |const|                         |
-   +----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-   | :ref:`ChannelState<enum_WebRTCDataChannel_ChannelState>` | :ref:`get_ready_state<class_WebRTCDataChannel_method_get_ready_state>`\ (\ ) |const|                   |
-   +----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                  | :ref:`is_negotiated<class_WebRTCDataChannel_method_is_negotiated>`\ (\ ) |const|                       |
-   +----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                  | :ref:`is_ordered<class_WebRTCDataChannel_method_is_ordered>`\ (\ ) |const|                             |
-   +----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                    | :ref:`poll<class_WebRTCDataChannel_method_poll>`\ (\ )                                                 |
-   +----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                  | :ref:`was_string_packet<class_WebRTCDataChannel_method_was_string_packet>`\ (\ ) |const|               |
-   +----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+   +-----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+   | |void|                                                    | :ref:`close<class_WebRTCDataChannel_method_close>`\ (\ )                                               |
+   +-----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                     | :ref:`get_buffered_amount<class_WebRTCDataChannel_method_get_buffered_amount>`\ (\ ) |const|           |
+   +-----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                     | :ref:`get_id<class_WebRTCDataChannel_method_get_id>`\ (\ ) |const|                                     |
+   +-----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                               | :ref:`get_label<class_WebRTCDataChannel_method_get_label>`\ (\ ) |const|                               |
+   +-----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                     | :ref:`get_max_packet_life_time<class_WebRTCDataChannel_method_get_max_packet_life_time>`\ (\ ) |const| |
+   +-----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                     | :ref:`get_max_retransmits<class_WebRTCDataChannel_method_get_max_retransmits>`\ (\ ) |const|           |
+   +-----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                               | :ref:`get_protocol<class_WebRTCDataChannel_method_get_protocol>`\ (\ ) |const|                         |
+   +-----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+   | :ref:`ChannelState <enum_WebRTCDataChannel_ChannelState>` | :ref:`get_ready_state<class_WebRTCDataChannel_method_get_ready_state>`\ (\ ) |const|                   |
+   +-----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                   | :ref:`is_negotiated<class_WebRTCDataChannel_method_is_negotiated>`\ (\ ) |const|                       |
+   +-----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                   | :ref:`is_ordered<class_WebRTCDataChannel_method_is_ordered>`\ (\ ) |const|                             |
+   +-----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>`                    | :ref:`poll<class_WebRTCDataChannel_method_poll>`\ (\ )                                                 |
+   +-----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                   | :ref:`was_string_packet<class_WebRTCDataChannel_method_was_string_packet>`\ (\ ) |const|               |
+   +-----------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -70,14 +70,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_WebRTCDataChannel_WriteMode:
 
 .. rst-class:: classref-enumeration
 
-enum **WriteMode**: :ref:`🔗<enum_WebRTCDataChannel_WriteMode>`
+enum **WriteMode**: :ref:`🔗 <enum_WebRTCDataChannel_WriteMode>`
 
 .. _class_WebRTCDataChannel_constant_WRITE_MODE_TEXT:
 
@@ -85,7 +85,7 @@ enum **WriteMode**: :ref:`🔗<enum_WebRTCDataChannel_WriteMode>`
 
 :ref:`WriteMode<enum_WebRTCDataChannel_WriteMode>` **WRITE_MODE_TEXT** = ``0``
 
-Tells the channel to send data over this channel as text. An external peer (non-Godot) would receive this as a string.
+Cho biết channel sẽ gửi dữ liệu qua channel này dưới dạng văn bản. Một peer bên ngoài (không phải Godot) sẽ nhận dữ liệu này dưới dạng chuỗi.
 
 .. _class_WebRTCDataChannel_constant_WRITE_MODE_BINARY:
 
@@ -93,7 +93,7 @@ Tells the channel to send data over this channel as text. An external peer (non-
 
 :ref:`WriteMode<enum_WebRTCDataChannel_WriteMode>` **WRITE_MODE_BINARY** = ``1``
 
-Tells the channel to send data over this channel as binary. An external peer (non-Godot) would receive this as array buffer or blob.
+Cho biết channel sẽ gửi dữ liệu qua channel này dưới dạng nhị phân. Một peer bên ngoài (không phải Godot) sẽ nhận dữ liệu này dưới dạng array buffer hoặc blob.
 
 .. rst-class:: classref-item-separator
 
@@ -103,7 +103,7 @@ Tells the channel to send data over this channel as binary. An external peer (no
 
 .. rst-class:: classref-enumeration
 
-enum **ChannelState**: :ref:`🔗<enum_WebRTCDataChannel_ChannelState>`
+enum **ChannelState**: :ref:`🔗 <enum_WebRTCDataChannel_ChannelState>`
 
 .. _class_WebRTCDataChannel_constant_STATE_CONNECTING:
 
@@ -111,7 +111,7 @@ enum **ChannelState**: :ref:`🔗<enum_WebRTCDataChannel_ChannelState>`
 
 :ref:`ChannelState<enum_WebRTCDataChannel_ChannelState>` **STATE_CONNECTING** = ``0``
 
-The channel was created, but it's still trying to connect.
+Channel đã được tạo nhưng vẫn đang cố gắng kết nối.
 
 .. _class_WebRTCDataChannel_constant_STATE_OPEN:
 
@@ -119,7 +119,7 @@ The channel was created, but it's still trying to connect.
 
 :ref:`ChannelState<enum_WebRTCDataChannel_ChannelState>` **STATE_OPEN** = ``1``
 
-The channel is currently open, and data can flow over it.
+Channel hiện đang mở và dữ liệu có thể truyền qua đó.
 
 .. _class_WebRTCDataChannel_constant_STATE_CLOSING:
 
@@ -127,7 +127,7 @@ The channel is currently open, and data can flow over it.
 
 :ref:`ChannelState<enum_WebRTCDataChannel_ChannelState>` **STATE_CLOSING** = ``2``
 
-The channel is being closed, no new messages will be accepted, but those already in queue will be flushed.
+Kênh đang được đóng, sẽ không chấp nhận tin nhắn mới, nhưng các tin nhắn đã có trong hàng đợi sẽ được gửi hết.
 
 .. _class_WebRTCDataChannel_constant_STATE_CLOSED:
 
@@ -135,7 +135,7 @@ The channel is being closed, no new messages will be accepted, but those already
 
 :ref:`ChannelState<enum_WebRTCDataChannel_ChannelState>` **STATE_CLOSED** = ``3``
 
-The channel was closed, or connection failed.
+Kênh đã bị đóng hoặc kết nối không thành công.
 
 .. rst-class:: classref-section-separator
 
@@ -143,8 +143,8 @@ The channel was closed, or connection failed.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_WebRTCDataChannel_property_write_mode:
 
@@ -157,7 +157,7 @@ Property Descriptions
 - |void| **set_write_mode**\ (\ value\: :ref:`WriteMode<enum_WebRTCDataChannel_WriteMode>`\ )
 - :ref:`WriteMode<enum_WebRTCDataChannel_WriteMode>` **get_write_mode**\ (\ )
 
-The transfer mode to use when sending outgoing packet. Either text or binary.
+Chế độ truyền sẽ được sử dụng khi gửi packet đi. Có thể là text hoặc binary.
 
 .. rst-class:: classref-section-separator
 
@@ -165,8 +165,8 @@ The transfer mode to use when sending outgoing packet. Either text or binary.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_WebRTCDataChannel_method_close:
 
@@ -174,7 +174,7 @@ Method Descriptions
 
 |void| **close**\ (\ ) :ref:`🔗<class_WebRTCDataChannel_method_close>`
 
-Closes this data channel, notifying the other peer.
+Đóng data channel này và thông báo cho peer còn lại.
 
 .. rst-class:: classref-item-separator
 
@@ -186,7 +186,7 @@ Closes this data channel, notifying the other peer.
 
 :ref:`int<class_int>` **get_buffered_amount**\ (\ ) |const| :ref:`🔗<class_WebRTCDataChannel_method_get_buffered_amount>`
 
-Returns the number of bytes currently queued to be sent over this channel.
+Trả về số byte hiện đang được xếp hàng để gửi qua kênh này.
 
 .. rst-class:: classref-item-separator
 
@@ -198,9 +198,9 @@ Returns the number of bytes currently queued to be sent over this channel.
 
 :ref:`int<class_int>` **get_id**\ (\ ) |const| :ref:`🔗<class_WebRTCDataChannel_method_get_id>`
 
-Returns the ID assigned to this channel during creation (or auto-assigned during negotiation).
+Trả về ID được gán cho channel này trong quá trình tạo (hoặc được tự động gán trong quá trình thương lượng).
 
-If the channel is not negotiated out-of-band the ID will only be available after the connection is established (will return ``65535`` until then).
+Nếu channel không được thương lượng ngoài băng, ID sẽ chỉ khả dụng sau khi kết nối được thiết lập (trước thời điểm đó sẽ trả về ``65535``).
 
 .. rst-class:: classref-item-separator
 
@@ -212,7 +212,7 @@ If the channel is not negotiated out-of-band the ID will only be available after
 
 :ref:`String<class_String>` **get_label**\ (\ ) |const| :ref:`🔗<class_WebRTCDataChannel_method_get_label>`
 
-Returns the label assigned to this channel during creation.
+Trả về nhãn được gán cho channel này trong quá trình tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -224,9 +224,9 @@ Returns the label assigned to this channel during creation.
 
 :ref:`int<class_int>` **get_max_packet_life_time**\ (\ ) |const| :ref:`🔗<class_WebRTCDataChannel_method_get_max_packet_life_time>`
 
-Returns the ``maxPacketLifeTime`` value assigned to this channel during creation.
+Trả về giá trị ``maxPacketLifeTime`` được gán cho channel này trong quá trình tạo.
 
-Will be ``65535`` if not specified.
+Sẽ là ``65535`` nếu không được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -238,9 +238,9 @@ Will be ``65535`` if not specified.
 
 :ref:`int<class_int>` **get_max_retransmits**\ (\ ) |const| :ref:`🔗<class_WebRTCDataChannel_method_get_max_retransmits>`
 
-Returns the ``maxRetransmits`` value assigned to this channel during creation.
+Trả về giá trị ``maxRetransmits`` được gán cho channel này trong quá trình tạo.
 
-Will be ``65535`` if not specified.
+Sẽ là ``65535`` nếu không được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -252,7 +252,7 @@ Will be ``65535`` if not specified.
 
 :ref:`String<class_String>` **get_protocol**\ (\ ) |const| :ref:`🔗<class_WebRTCDataChannel_method_get_protocol>`
 
-Returns the sub-protocol assigned to this channel during creation. An empty string if not specified.
+Trả về sub-protocol được gán cho kênh này trong quá trình tạo. Một chuỗi rỗng nếu không được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -264,7 +264,7 @@ Returns the sub-protocol assigned to this channel during creation. An empty stri
 
 :ref:`ChannelState<enum_WebRTCDataChannel_ChannelState>` **get_ready_state**\ (\ ) |const| :ref:`🔗<class_WebRTCDataChannel_method_get_ready_state>`
 
-Returns the current state of this channel.
+Trả về trạng thái hiện tại của kênh này.
 
 .. rst-class:: classref-item-separator
 
@@ -276,7 +276,7 @@ Returns the current state of this channel.
 
 :ref:`bool<class_bool>` **is_negotiated**\ (\ ) |const| :ref:`🔗<class_WebRTCDataChannel_method_is_negotiated>`
 
-Returns ``true`` if this channel was created with out-of-band configuration.
+Trả về ``true`` nếu kênh này được tạo với cấu hình ngoài băng.
 
 .. rst-class:: classref-item-separator
 
@@ -288,7 +288,7 @@ Returns ``true`` if this channel was created with out-of-band configuration.
 
 :ref:`bool<class_bool>` **is_ordered**\ (\ ) |const| :ref:`🔗<class_WebRTCDataChannel_method_is_ordered>`
 
-Returns ``true`` if this channel was created with ordering enabled (default).
+Trả về ``true`` nếu kênh này được tạo khi bật tính năng ordering (mặc định).
 
 .. rst-class:: classref-item-separator
 
@@ -300,7 +300,7 @@ Returns ``true`` if this channel was created with ordering enabled (default).
 
 :ref:`Error<enum_@GlobalScope_Error>` **poll**\ (\ ) :ref:`🔗<class_WebRTCDataChannel_method_poll>`
 
-Reserved, but not used for now.
+Được dành riêng nhưng hiện chưa được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -312,14 +312,14 @@ Reserved, but not used for now.
 
 :ref:`bool<class_bool>` **was_string_packet**\ (\ ) |const| :ref:`🔗<class_WebRTCDataChannel_method_was_string_packet>`
 
-Returns ``true`` if the last received packet was transferred as text. See :ref:`write_mode<class_WebRTCDataChannel_property_write_mode>`.
+Trả về ``true`` nếu packet nhận được gần đây nhất được truyền dưới dạng văn bản. Xem :ref:`write_mode<class_WebRTCDataChannel_property_write_mode>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

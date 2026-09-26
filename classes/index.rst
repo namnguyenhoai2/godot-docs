@@ -7,11 +7,11 @@
 
 .. _doc_class_reference:
 
-All classes
-===========
+Tất cả các lớp
+==============
 
-Globals
-=======
+Biến toàn cục
+=============
 
 .. toctree::
     :maxdepth: 1
@@ -20,8 +20,8 @@ Globals
     class_@gdscript
     class_@globalscope
 
-Nodes
-=====
+Node
+====
 
 .. toctree::
     :maxdepth: 1
@@ -312,8 +312,8 @@ Nodes
     class_xrnode3d
     class_xrorigin3d
 
-Resources
-=========
+Tài nguyên
+==========
 
 .. toctree::
     :maxdepth: 1
@@ -738,8 +738,8 @@ Resources
     class_worldboundaryshape3d
     class_x509certificate
 
-Other objects
-=============
+Các đối tượng khác
+==================
 
 .. toctree::
     :maxdepth: 1
@@ -1084,8 +1084,8 @@ Other objects
     class_zippacker
     class_zipreader
 
-Editor-only
-===========
+Chỉ dành cho Editor
+===================
 
 .. toctree::
     :maxdepth: 1
@@ -1174,8 +1174,8 @@ Editor-only
     class_scripteditor
     class_scripteditorbase
 
-Variant types
-=============
+Các kiểu Variant
+================
 
 .. toctree::
     :maxdepth: 1

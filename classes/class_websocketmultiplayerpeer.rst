@@ -10,22 +10,22 @@
 WebSocketMultiplayerPeer
 ========================
 
-**Inherits:** :ref:`MultiplayerPeer<class_MultiplayerPeer>` **<** :ref:`PacketPeer<class_PacketPeer>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`MultiplayerPeer<class_MultiplayerPeer>` **<** :ref:`PacketPeer<class_PacketPeer>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Base class for WebSocket server and client.
+Lớp cơ sở cho WebSocket server và client.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Base class for WebSocket server and client, allowing them to be used as multiplayer peer for the :ref:`MultiplayerAPI<class_MultiplayerAPI>`.
+Lớp cơ sở cho WebSocket server và client, cho phép sử dụng chúng làm multiplayer peer cho :ref:`MultiplayerAPI<class_MultiplayerAPI>`.
 
-\ **Note:** When exporting to Android, make sure to enable the ``INTERNET`` permission in the Android export preset before exporting the project or using one-click deploy. Otherwise, network communication of any kind will be blocked by Android.
+\ **Lưu ý:** Khi export sang Android, hãy đảm bảo bật quyền ``INTERNET`` trong Android export preset trước khi export project hoặc sử dụng one-click deploy. Nếu không, Android sẽ chặn mọi hình thức giao tiếp mạng.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -47,16 +47,16 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
    +-------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`     | :ref:`create_client<class_WebSocketMultiplayerPeer_method_create_client>`\ (\ url\: :ref:`String<class_String>`, tls_client_options\: :ref:`TLSOptions<class_TLSOptions>` = null\ )                                              |
+   | :ref:`Error <enum_@GlobalScope_Error>`    | :ref:`create_client<class_WebSocketMultiplayerPeer_method_create_client>`\ (\ url\: :ref:`String<class_String>`, tls_client_options\: :ref:`TLSOptions<class_TLSOptions>` = null\ )                                              |
    +-------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`     | :ref:`create_server<class_WebSocketMultiplayerPeer_method_create_server>`\ (\ port\: :ref:`int<class_int>`, bind_address\: :ref:`String<class_String>` = "*", tls_server_options\: :ref:`TLSOptions<class_TLSOptions>` = null\ ) |
+   | :ref:`Error <enum_@GlobalScope_Error>`    | :ref:`create_server<class_WebSocketMultiplayerPeer_method_create_server>`\ (\ port\: :ref:`int<class_int>`, bind_address\: :ref:`String<class_String>` = "*", tls_server_options\: :ref:`TLSOptions<class_TLSOptions>` = null\ ) |
    +-------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`WebSocketPeer<class_WebSocketPeer>` | :ref:`get_peer<class_WebSocketMultiplayerPeer_method_get_peer>`\ (\ peer_id\: :ref:`int<class_int>`\ ) |const|                                                                                                                   |
    +-------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -71,8 +71,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_WebSocketMultiplayerPeer_property_handshake_headers:
 
@@ -85,9 +85,9 @@ Property Descriptions
 - |void| **set_handshake_headers**\ (\ value\: :ref:`PackedStringArray<class_PackedStringArray>`\ )
 - :ref:`PackedStringArray<class_PackedStringArray>` **get_handshake_headers**\ (\ )
 
-The extra headers to use during handshake. See :ref:`WebSocketPeer.handshake_headers<class_WebSocketPeer_property_handshake_headers>` for more details.
+Các header bổ sung được sử dụng trong quá trình bắt tay. Xem :ref:`WebSocketPeer.handshake_headers<class_WebSocketPeer_property_handshake_headers>` để biết thêm chi tiết.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedStringArray<class_PackedStringArray>` for more details.
+**Lưu ý:** Mảng được trả về là *được sao chép* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedStringArray<class_PackedStringArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -104,7 +104,7 @@ The extra headers to use during handshake. See :ref:`WebSocketPeer.handshake_hea
 - |void| **set_handshake_timeout**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_handshake_timeout**\ (\ )
 
-The maximum time each peer can stay in a connecting state before being dropped.
+Thời gian tối đa mà mỗi peer có thể ở trạng thái đang kết nối trước khi bị loại bỏ.
 
 .. rst-class:: classref-item-separator
 
@@ -121,7 +121,7 @@ The maximum time each peer can stay in a connecting state before being dropped.
 - |void| **set_inbound_buffer_size**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_inbound_buffer_size**\ (\ )
 
-The inbound buffer size for connected peers. See :ref:`WebSocketPeer.inbound_buffer_size<class_WebSocketPeer_property_inbound_buffer_size>` for more details.
+Kích thước bộ đệm inbound dành cho các peer đã kết nối. Xem :ref:`WebSocketPeer.inbound_buffer_size<class_WebSocketPeer_property_inbound_buffer_size>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -138,7 +138,7 @@ The inbound buffer size for connected peers. See :ref:`WebSocketPeer.inbound_buf
 - |void| **set_max_queued_packets**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_max_queued_packets**\ (\ )
 
-The maximum number of queued packets for connected peers. See :ref:`WebSocketPeer.max_queued_packets<class_WebSocketPeer_property_max_queued_packets>` for more details.
+Số lượng packet tối đa được xếp hàng dành cho các peer đã kết nối. Xem :ref:`WebSocketPeer.max_queued_packets<class_WebSocketPeer_property_max_queued_packets>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -155,7 +155,7 @@ The maximum number of queued packets for connected peers. See :ref:`WebSocketPee
 - |void| **set_outbound_buffer_size**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_outbound_buffer_size**\ (\ )
 
-The outbound buffer size for connected peers. See :ref:`WebSocketPeer.outbound_buffer_size<class_WebSocketPeer_property_outbound_buffer_size>` for more details.
+Kích thước bộ đệm outbound dành cho các peer đã kết nối. Xem :ref:`WebSocketPeer.outbound_buffer_size<class_WebSocketPeer_property_outbound_buffer_size>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -172,9 +172,9 @@ The outbound buffer size for connected peers. See :ref:`WebSocketPeer.outbound_b
 - |void| **set_supported_protocols**\ (\ value\: :ref:`PackedStringArray<class_PackedStringArray>`\ )
 - :ref:`PackedStringArray<class_PackedStringArray>` **get_supported_protocols**\ (\ )
 
-The supported WebSocket sub-protocols. See :ref:`WebSocketPeer.supported_protocols<class_WebSocketPeer_property_supported_protocols>` for more details.
+Các sub-protocol WebSocket được hỗ trợ. Xem :ref:`WebSocketPeer.supported_protocols<class_WebSocketPeer_property_supported_protocols>` để biết thêm chi tiết.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedStringArray<class_PackedStringArray>` for more details.
+**Lưu ý:** Mảng được trả về là *được sao chép* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedStringArray<class_PackedStringArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-section-separator
 
@@ -182,8 +182,8 @@ The supported WebSocket sub-protocols. See :ref:`WebSocketPeer.supported_protoco
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_WebSocketMultiplayerPeer_method_create_client:
 
@@ -191,9 +191,9 @@ Method Descriptions
 
 :ref:`Error<enum_@GlobalScope_Error>` **create_client**\ (\ url\: :ref:`String<class_String>`, tls_client_options\: :ref:`TLSOptions<class_TLSOptions>` = null\ ) :ref:`🔗<class_WebSocketMultiplayerPeer_method_create_client>`
 
-Starts a new multiplayer client connecting to the given ``url``. TLS certificates will be verified against the hostname when connecting using the ``wss://`` protocol. You can pass the optional ``tls_client_options`` parameter to customize the trusted certification authorities, or disable the common name verification. See :ref:`TLSOptions.client()<class_TLSOptions_method_client>` and :ref:`TLSOptions.client_unsafe()<class_TLSOptions_method_client_unsafe>`.
+Khởi động một multiplayer client mới kết nối đến ``url`` đã cho. Chứng chỉ TLS sẽ được xác minh dựa trên hostname khi kết nối bằng giao thức ``wss://``. Bạn có thể truyền tham số tùy chọn ``tls_client_options`` để tùy chỉnh các tổ chức chứng thực được tin cậy hoặc tắt việc xác minh common name. Xem :ref:`TLSOptions.client()<class_TLSOptions_method_client>` và :ref:`TLSOptions.client_unsafe()<class_TLSOptions_method_client_unsafe>`.
 
-\ **Note:** It is recommended to specify the scheme part of the URL, i.e. the ``url`` should start with either ``ws://`` or ``wss://``.
+\ **Lưu ý:** Bạn nên chỉ định phần scheme của URL, tức là ``url`` phải bắt đầu bằng ``ws://`` hoặc ``wss://``.
 
 .. rst-class:: classref-item-separator
 
@@ -205,7 +205,7 @@ Starts a new multiplayer client connecting to the given ``url``. TLS certificate
 
 :ref:`Error<enum_@GlobalScope_Error>` **create_server**\ (\ port\: :ref:`int<class_int>`, bind_address\: :ref:`String<class_String>` = "*", tls_server_options\: :ref:`TLSOptions<class_TLSOptions>` = null\ ) :ref:`🔗<class_WebSocketMultiplayerPeer_method_create_server>`
 
-Starts a new multiplayer server listening on the given ``port``. You can optionally specify a ``bind_address``, and provide valid ``tls_server_options`` to use TLS. See :ref:`TLSOptions.server()<class_TLSOptions_method_server>`.
+Khởi động một multiplayer server mới lắng nghe trên ``port`` đã cho. Bạn có thể tùy chọn chỉ định ``bind_address`` và cung cấp ``tls_server_options`` hợp lệ để sử dụng TLS. Xem :ref:`TLSOptions.server()<class_TLSOptions_method_server>`.
 
 .. rst-class:: classref-item-separator
 
@@ -217,7 +217,7 @@ Starts a new multiplayer server listening on the given ``port``. You can optiona
 
 :ref:`WebSocketPeer<class_WebSocketPeer>` **get_peer**\ (\ peer_id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_WebSocketMultiplayerPeer_method_get_peer>`
 
-Returns the :ref:`WebSocketPeer<class_WebSocketPeer>` associated to the given ``peer_id``.
+Trả về :ref:`WebSocketPeer<class_WebSocketPeer>` tương ứng với ``peer_id`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -229,7 +229,7 @@ Returns the :ref:`WebSocketPeer<class_WebSocketPeer>` associated to the given ``
 
 :ref:`String<class_String>` **get_peer_address**\ (\ id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_WebSocketMultiplayerPeer_method_get_peer_address>`
 
-Returns the IP address of the given peer.
+Trả về địa chỉ IP của peer được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -241,14 +241,14 @@ Returns the IP address of the given peer.
 
 :ref:`int<class_int>` **get_peer_port**\ (\ id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_WebSocketMultiplayerPeer_method_get_peer_port>`
 
-Returns the remote port of the given peer.
+Trả về cổng từ xa của peer được chỉ định.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

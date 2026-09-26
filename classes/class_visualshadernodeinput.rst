@@ -10,27 +10,27 @@
 VisualShaderNodeInput
 =====================
 
-**Inherits:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Represents the input shader parameter within the visual shader graph.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Gives access to input variables (built-ins) available for the shader. See the shading reference for the list of available built-ins for each shader type (check ``Tutorials`` section for link).
+Đại diện cho tham số shader đầu vào trong đồ thị visual shader.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Cho phép truy cập các biến đầu vào (built-in) có sẵn cho shader. Xem tài liệu tham chiếu về shading để biết danh sách built-in có sẵn cho từng loại shader (xem phần ``Tutorials`` để biết liên kết).
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Shading reference index <../tutorials/shaders/shader_reference/index>`
+- :doc:`Mục lục tài liệu tham chiếu về shading <../tutorials/shaders/shader_reference/index>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -42,8 +42,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -58,8 +58,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_VisualShaderNodeInput_signal_input_type_changed:
 
@@ -67,7 +67,7 @@ Signals
 
 **input_type_changed**\ (\ ) :ref:`🔗<class_VisualShaderNodeInput_signal_input_type_changed>`
 
-Emitted when input is changed via :ref:`input_name<class_VisualShaderNodeInput_property_input_name>`.
+Được phát ra khi đầu vào được thay đổi thông qua :ref:`input_name<class_VisualShaderNodeInput_property_input_name>`.
 
 .. rst-class:: classref-section-separator
 
@@ -75,8 +75,8 @@ Emitted when input is changed via :ref:`input_name<class_VisualShaderNodeInput_p
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeInput_property_input_name:
 
@@ -89,7 +89,7 @@ Property Descriptions
 - |void| **set_input_name**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_input_name**\ (\ )
 
-One of the several input constants in lower-case style like: "vertex" (``VERTEX``) or "point_size" (``POINT_SIZE``).
+Một trong một số hằng số đầu vào ở dạng chữ thường, chẳng hạn như: "vertex" (``VERTEX``) hoặc "point_size" (``POINT_SIZE``).
 
 .. rst-class:: classref-section-separator
 
@@ -97,8 +97,8 @@ One of the several input constants in lower-case style like: "vertex" (``VERTEX`
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_VisualShaderNodeInput_method_get_input_real_name:
 
@@ -106,14 +106,14 @@ Method Descriptions
 
 :ref:`String<class_String>` **get_input_real_name**\ (\ ) |const| :ref:`🔗<class_VisualShaderNodeInput_method_get_input_real_name>`
 
-Returns a translated name of the current constant in the Godot Shader Language. E.g. ``"ALBEDO"`` if the :ref:`input_name<class_VisualShaderNodeInput_property_input_name>` equal to ``"albedo"``.
+Trả về tên đã dịch của hằng số hiện tại trong Godot Shader Language. Ví dụ: ``"ALBEDO"`` nếu :ref:`input_name<class_VisualShaderNodeInput_property_input_name>` bằng ``"albedo"``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này thì nó mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

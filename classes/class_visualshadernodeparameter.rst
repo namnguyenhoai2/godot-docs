@@ -10,34 +10,34 @@
 VisualShaderNodeParameter
 =========================
 
-**Inherits:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa từ:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`VisualShaderNodeBooleanParameter<class_VisualShaderNodeBooleanParameter>`, :ref:`VisualShaderNodeColorParameter<class_VisualShaderNodeColorParameter>`, :ref:`VisualShaderNodeFloatParameter<class_VisualShaderNodeFloatParameter>`, :ref:`VisualShaderNodeIntParameter<class_VisualShaderNodeIntParameter>`, :ref:`VisualShaderNodeTextureParameter<class_VisualShaderNodeTextureParameter>`, :ref:`VisualShaderNodeTransformParameter<class_VisualShaderNodeTransformParameter>`, :ref:`VisualShaderNodeUIntParameter<class_VisualShaderNodeUIntParameter>`, :ref:`VisualShaderNodeVec2Parameter<class_VisualShaderNodeVec2Parameter>`, :ref:`VisualShaderNodeVec3Parameter<class_VisualShaderNodeVec3Parameter>`, :ref:`VisualShaderNodeVec4Parameter<class_VisualShaderNodeVec4Parameter>`
+**Được kế thừa bởi:** :ref:`VisualShaderNodeBooleanParameter<class_VisualShaderNodeBooleanParameter>`, :ref:`VisualShaderNodeColorParameter<class_VisualShaderNodeColorParameter>`, :ref:`VisualShaderNodeFloatParameter<class_VisualShaderNodeFloatParameter>`, :ref:`VisualShaderNodeIntParameter<class_VisualShaderNodeIntParameter>`, :ref:`VisualShaderNodeTextureParameter<class_VisualShaderNodeTextureParameter>`, :ref:`VisualShaderNodeTransformParameter<class_VisualShaderNodeTransformParameter>`, :ref:`VisualShaderNodeUIntParameter<class_VisualShaderNodeUIntParameter>`, :ref:`VisualShaderNodeVec2Parameter<class_VisualShaderNodeVec2Parameter>`, :ref:`VisualShaderNodeVec3Parameter<class_VisualShaderNodeVec3Parameter>`, :ref:`VisualShaderNodeVec4Parameter<class_VisualShaderNodeVec4Parameter>`
 
-A base type for the parameters within the visual shader graph.
+Một kiểu cơ sở cho các tham số trong visual shader graph.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A parameter represents a variable in the shader which is set externally, i.e. from the :ref:`ShaderMaterial<class_ShaderMaterial>`. Parameters are exposed as properties in the :ref:`ShaderMaterial<class_ShaderMaterial>` and can be assigned from the Inspector or from a script.
+Một tham số đại diện cho một biến trong shader được thiết lập từ bên ngoài, tức là từ :ref:`ShaderMaterial<class_ShaderMaterial>`. Các tham số được hiển thị dưới dạng thuộc tính trong :ref:`ShaderMaterial<class_ShaderMaterial>` và có thể được gán từ Inspector hoặc từ một script.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------+--------------------------------------------------------------------------------+--------+
-   | :ref:`int<class_int>`                                      | :ref:`instance_index<class_VisualShaderNodeParameter_property_instance_index>` | ``0``  |
-   +------------------------------------------------------------+--------------------------------------------------------------------------------+--------+
-   | :ref:`String<class_String>`                                | :ref:`parameter_name<class_VisualShaderNodeParameter_property_parameter_name>` | ``""`` |
-   +------------------------------------------------------------+--------------------------------------------------------------------------------+--------+
-   | :ref:`Qualifier<enum_VisualShaderNodeParameter_Qualifier>` | :ref:`qualifier<class_VisualShaderNodeParameter_property_qualifier>`           | ``0``  |
-   +------------------------------------------------------------+--------------------------------------------------------------------------------+--------+
+   +-------------------------------------------------------------+--------------------------------------------------------------------------------+--------+
+   | :ref:`int<class_int>`                                       | :ref:`instance_index<class_VisualShaderNodeParameter_property_instance_index>` | ``0``  |
+   +-------------------------------------------------------------+--------------------------------------------------------------------------------+--------+
+   | :ref:`String<class_String>`                                 | :ref:`parameter_name<class_VisualShaderNodeParameter_property_parameter_name>` | ``""`` |
+   +-------------------------------------------------------------+--------------------------------------------------------------------------------+--------+
+   | :ref:`Qualifier <enum_VisualShaderNodeParameter_Qualifier>` | :ref:`qualifier<class_VisualShaderNodeParameter_property_qualifier>`           | ``0``  |
+   +-------------------------------------------------------------+--------------------------------------------------------------------------------+--------+
 
 .. rst-class:: classref-section-separator
 
@@ -45,14 +45,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_VisualShaderNodeParameter_Qualifier:
 
 .. rst-class:: classref-enumeration
 
-enum **Qualifier**: :ref:`🔗<enum_VisualShaderNodeParameter_Qualifier>`
+enum **Qualifier**: :ref:`🔗 <enum_VisualShaderNodeParameter_Qualifier>`
 
 .. _class_VisualShaderNodeParameter_constant_QUAL_NONE:
 
@@ -60,7 +60,7 @@ enum **Qualifier**: :ref:`🔗<enum_VisualShaderNodeParameter_Qualifier>`
 
 :ref:`Qualifier<enum_VisualShaderNodeParameter_Qualifier>` **QUAL_NONE** = ``0``
 
-The parameter will be tied to the :ref:`ShaderMaterial<class_ShaderMaterial>` using this shader.
+Tham số sẽ được liên kết với :ref:`ShaderMaterial<class_ShaderMaterial>` bằng shader này.
 
 .. _class_VisualShaderNodeParameter_constant_QUAL_GLOBAL:
 
@@ -68,7 +68,7 @@ The parameter will be tied to the :ref:`ShaderMaterial<class_ShaderMaterial>` us
 
 :ref:`Qualifier<enum_VisualShaderNodeParameter_Qualifier>` **QUAL_GLOBAL** = ``1``
 
-The parameter will use a global value, defined in Project Settings.
+Tham số sẽ sử dụng một giá trị toàn cục được xác định trong Project Settings.
 
 .. _class_VisualShaderNodeParameter_constant_QUAL_INSTANCE:
 
@@ -76,7 +76,7 @@ The parameter will use a global value, defined in Project Settings.
 
 :ref:`Qualifier<enum_VisualShaderNodeParameter_Qualifier>` **QUAL_INSTANCE** = ``2``
 
-The parameter will be tied to the node with attached :ref:`ShaderMaterial<class_ShaderMaterial>` using this shader.
+Tham số sẽ được liên kết với node có :ref:`ShaderMaterial<class_ShaderMaterial>` được gắn vào bằng shader này.
 
 .. _class_VisualShaderNodeParameter_constant_QUAL_INSTANCE_INDEX:
 
@@ -84,7 +84,7 @@ The parameter will be tied to the node with attached :ref:`ShaderMaterial<class_
 
 :ref:`Qualifier<enum_VisualShaderNodeParameter_Qualifier>` **QUAL_INSTANCE_INDEX** = ``3``
 
-The parameter will be tied to the node with attached :ref:`ShaderMaterial<class_ShaderMaterial>` using this shader. Enables setting a :ref:`instance_index<class_VisualShaderNodeParameter_property_instance_index>` property.
+Tham số sẽ được liên kết với node có :ref:`ShaderMaterial<class_ShaderMaterial>` được gắn vào bằng shader này. Cho phép thiết lập thuộc tính :ref:`instance_index<class_VisualShaderNodeParameter_property_instance_index>`.
 
 .. _class_VisualShaderNodeParameter_constant_QUAL_MAX:
 
@@ -92,7 +92,7 @@ The parameter will be tied to the node with attached :ref:`ShaderMaterial<class_
 
 :ref:`Qualifier<enum_VisualShaderNodeParameter_Qualifier>` **QUAL_MAX** = ``4``
 
-Represents the size of the :ref:`Qualifier<enum_VisualShaderNodeParameter_Qualifier>` enum.
+Biểu thị kích thước của enum :ref:`Qualifier <enum_VisualShaderNodeParameter_Qualifier>`.
 
 .. rst-class:: classref-section-separator
 
@@ -100,8 +100,8 @@ Represents the size of the :ref:`Qualifier<enum_VisualShaderNodeParameter_Qualif
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeParameter_property_instance_index:
 
@@ -114,7 +114,7 @@ Property Descriptions
 - |void| **set_instance_index**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_instance_index**\ (\ )
 
-The index within 0-15 range, which is used to avoid clashes when shader used on multiple materials.
+Chỉ mục trong phạm vi 0-15, được dùng để tránh xung đột khi shader được sử dụng trên nhiều material.
 
 .. rst-class:: classref-item-separator
 
@@ -131,7 +131,7 @@ The index within 0-15 range, which is used to avoid clashes when shader used on 
 - |void| **set_parameter_name**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_parameter_name**\ (\ )
 
-Name of the parameter, by which it can be accessed through the :ref:`ShaderMaterial<class_ShaderMaterial>` properties.
+Tên của tham số, qua đó có thể truy cập tham số này thông qua :ref:`ShaderMaterial<class_ShaderMaterial>` các thuộc tính.
 
 .. rst-class:: classref-item-separator
 
@@ -148,14 +148,14 @@ Name of the parameter, by which it can be accessed through the :ref:`ShaderMater
 - |void| **set_qualifier**\ (\ value\: :ref:`Qualifier<enum_VisualShaderNodeParameter_Qualifier>`\ )
 - :ref:`Qualifier<enum_VisualShaderNodeParameter_Qualifier>` **get_qualifier**\ (\ )
 
-Defines the scope of the parameter.
+Xác định phạm vi của tham số.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của đối tượng.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,27 +10,27 @@
 World2D
 =======
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A resource that holds all components of a 2D world, such as a canvas and a physics space.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Class that has everything pertaining to a 2D world: A physics space, a canvas, and a sound space. 2D nodes register their resources into the current 2D world.
+Một resource chứa tất cả thành phần của một thế giới 2D, chẳng hạn như canvas và physics space.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Class chứa mọi thành phần liên quan đến một thế giới 2D: physics space, canvas và sound space. Các node 2D đăng ký resource của chúng vào thế giới 2D hiện tại.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
 - :doc:`Ray-casting <../tutorials/physics/ray-casting>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -52,20 +52,20 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_World2D_property_canvas:
 
 .. rst-class:: classref-property
 
-:ref:`RID<class_RID>` **canvas** :ref:`🔗<class_World2D_property_canvas>`
+:ref:`RID<class_RID>` **canvas** :ref:`🔗 <class_World2D_property_canvas>`
 
 .. rst-class:: classref-property-setget
 
 - :ref:`RID<class_RID>` **get_canvas**\ (\ )
 
-The :ref:`RID<class_RID>` of this world's canvas resource. Used by the :ref:`RenderingServer<class_RenderingServer>` for 2D drawing.
+:ref:`RID<class_RID>` của tài nguyên canvas của world này. Được :ref:`RenderingServer<class_RenderingServer>` sử dụng để vẽ 2D.
 
 .. rst-class:: classref-item-separator
 
@@ -75,13 +75,13 @@ The :ref:`RID<class_RID>` of this world's canvas resource. Used by the :ref:`Ren
 
 .. rst-class:: classref-property
 
-:ref:`PhysicsDirectSpaceState2D<class_PhysicsDirectSpaceState2D>` **direct_space_state** :ref:`🔗<class_World2D_property_direct_space_state>`
+:ref:`PhysicsDirectSpaceState2D<class_PhysicsDirectSpaceState2D>` **direct_space_state** :ref:`🔗 <class_World2D_property_direct_space_state>`
 
 .. rst-class:: classref-property-setget
 
 - :ref:`PhysicsDirectSpaceState2D<class_PhysicsDirectSpaceState2D>` **get_direct_space_state**\ (\ )
 
-Direct access to the world's physics 2D space state. Used for querying current and potential collisions. When using multi-threaded physics, access is limited to :ref:`Node._physics_process()<class_Node_private_method__physics_process>` in the main thread.
+Truy cập trực tiếp vào trạng thái không gian vật lý 2D của world. Được sử dụng để truy vấn các va chạm hiện tại và tiềm ẩn. Khi sử dụng vật lý đa luồng, quyền truy cập bị giới hạn ở :ref:`Node._physics_process()<class_Node_private_method__physics_process>` trong main thread.
 
 .. rst-class:: classref-item-separator
 
@@ -91,13 +91,13 @@ Direct access to the world's physics 2D space state. Used for querying current a
 
 .. rst-class:: classref-property
 
-:ref:`RID<class_RID>` **navigation_map** :ref:`🔗<class_World2D_property_navigation_map>`
+:ref:`RID<class_RID>` **navigation_map** :ref:`🔗 <class_World2D_property_navigation_map>`
 
 .. rst-class:: classref-property-setget
 
 - :ref:`RID<class_RID>` **get_navigation_map**\ (\ )
 
-The :ref:`RID<class_RID>` of this world's navigation map. Used by the :ref:`NavigationServer2D<class_NavigationServer2D>`.
+:ref:`RID<class_RID>` của bản đồ navigation của world này. Được :ref:`NavigationServer2D<class_NavigationServer2D>` sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -107,20 +107,20 @@ The :ref:`RID<class_RID>` of this world's navigation map. Used by the :ref:`Navi
 
 .. rst-class:: classref-property
 
-:ref:`RID<class_RID>` **space** :ref:`🔗<class_World2D_property_space>`
+:ref:`RID<class_RID>` **không gian** :ref:`🔗 <class_World2D_property_space>`
 
 .. rst-class:: classref-property-setget
 
 - :ref:`RID<class_RID>` **get_space**\ (\ )
 
-The :ref:`RID<class_RID>` of this world's physics space resource. Used by the :ref:`PhysicsServer2D<class_PhysicsServer2D>` for 2D physics, treating it as both a space and an area.
+:ref:`RID<class_RID>` của tài nguyên không gian vật lý của thế giới này. Được :ref:`PhysicsServer2D<class_PhysicsServer2D>` sử dụng cho vật lý 2D, coi nó vừa là một không gian vừa là một vùng.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè thì mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,33 +10,33 @@
 XROrigin3D
 ==========
 
-**Inherits:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-The origin point in AR/VR.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-This is a special node within the AR/VR system that maps the physical location of the center of our tracking space to the virtual location within our game world.
-
-Multiple origin points can be added to the scene tree, but only one can used at a time. All the :ref:`XRCamera3D<class_XRCamera3D>`, :ref:`XRController3D<class_XRController3D>`, and :ref:`XRAnchor3D<class_XRAnchor3D>` nodes should be direct children of this node for spatial tracking to work correctly.
-
-It is the position of this node that you update when your character needs to move through your game world while we're not moving in the real world. Movement in the real world is always in relation to this origin point.
-
-For example, if your character is driving a car, the **XROrigin3D** node should be a child node of this car. Or, if you're implementing a teleport system to move your character, you should change the position of this node.
+Điểm gốc trong AR/VR.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Đây là một node đặc biệt trong hệ thống AR/VR, ánh xạ vị trí vật lý của tâm không gian theo dõi đến vị trí ảo tương ứng trong thế giới game của chúng ta.
+
+Có thể thêm nhiều điểm gốc vào scene tree, nhưng mỗi lần chỉ có thể sử dụng một điểm. Tất cả các node :ref:`XRCamera3D<class_XRCamera3D>`, :ref:`XRController3D<class_XRController3D>` và :ref:`XRAnchor3D<class_XRAnchor3D>` phải là node con trực tiếp của node này để tính năng theo dõi không gian hoạt động chính xác.
+
+Bạn cập nhật vị trí của node này khi nhân vật cần di chuyển trong thế giới game nhưng chúng ta không di chuyển trong thế giới thực. Chuyển động trong thế giới thực luôn được xác định tương đối với điểm gốc này.
+
+Ví dụ: nếu nhân vật của bạn đang lái xe, node **XROrigin3D** phải là node con của chiếc xe này. Hoặc nếu bạn đang triển khai hệ thống dịch chuyển tức thời cho nhân vật, bạn nên thay đổi vị trí của node này.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`XR documentation index <../tutorials/xr/index>`
+- :doc:`Mục lục tài liệu XR <../tutorials/xr/index>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -54,8 +54,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_XROrigin3D_property_current:
 
@@ -68,7 +68,7 @@ Property Descriptions
 - |void| **set_current**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_current**\ (\ )
 
-If ``true``, this origin node is currently being used by the :ref:`XRServer<class_XRServer>`. Only one origin point can be used at a time.
+Nếu ``true``, nút origin này hiện đang được :ref:`XRServer<class_XRServer>`. Chỉ một điểm origin có thể được sử dụng tại một thời điểm.
 
 .. rst-class:: classref-item-separator
 
@@ -85,14 +85,14 @@ If ``true``, this origin node is currently being used by the :ref:`XRServer<clas
 - |void| **set_world_scale**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_world_scale**\ (\ )
 
-The scale of the game world compared to the real world. This is the same as :ref:`XRServer.world_scale<class_XRServer_property_world_scale>`. By default, most AR/VR platforms assume that 1 game unit corresponds to 1 real world meter.
+Tỷ lệ của thế giới game so với thế giới thực. Tỷ lệ này giống với :ref:`XRServer.world_scale<class_XRServer_property_world_scale>`. Theo mặc định, hầu hết các nền tảng AR/VR đều giả định rằng 1 đơn vị game tương ứng với 1 mét ngoài đời thực.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

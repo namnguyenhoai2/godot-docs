@@ -10,16 +10,16 @@
 ZIPReader
 =========
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Allows reading the content of a ZIP file.
+Cho phép đọc nội dung của một tệp ZIP.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This class implements a reader that can extract the content of individual files inside a ZIP archive. See also :ref:`ZIPPacker<class_ZIPPacker>`.
+Lớp này triển khai một reader có thể trích xuất nội dung của từng tệp riêng lẻ bên trong một kho lưu trữ ZIP. Xem thêm :ref:`ZIPPacker<class_ZIPPacker>`.
 
 ::
 
@@ -61,14 +61,14 @@ This class implements a reader that can extract the content of individual files 
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
    +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`             | :ref:`close<class_ZIPReader_method_close>`\ (\ )                                                                                                                      |
+   | :ref:`Error <enum_@GlobalScope_Error>`            | :ref:`close<class_ZIPReader_method_close>`\ (\ )                                                                                                                      |
    +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`file_exists<class_ZIPReader_method_file_exists>`\ (\ path\: :ref:`String<class_String>`, case_sensitive\: :ref:`bool<class_bool>` = true\ )                     |
    +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -76,7 +76,7 @@ Methods
    +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_files<class_ZIPReader_method_get_files>`\ (\ )                                                                                                              |
    +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`             | :ref:`open<class_ZIPReader_method_open>`\ (\ path\: :ref:`String<class_String>`\ )                                                                                    |
+   | :ref:`Error <enum_@GlobalScope_Error>`            | :ref:`open<class_ZIPReader_method_open>`\ (\ path\: :ref:`String<class_String>`\ )                                                                                    |
    +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedByteArray<class_PackedByteArray>`     | :ref:`read_file<class_ZIPReader_method_read_file>`\ (\ path\: :ref:`String<class_String>`, case_sensitive\: :ref:`bool<class_bool>` = true\ )                         |
    +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -87,8 +87,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ZIPReader_method_close:
 
@@ -96,7 +96,7 @@ Method Descriptions
 
 :ref:`Error<enum_@GlobalScope_Error>` **close**\ (\ ) :ref:`🔗<class_ZIPReader_method_close>`
 
-Closes the underlying resources used by this instance.
+Đóng các tài nguyên bên dưới được thực thể này sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -108,9 +108,9 @@ Closes the underlying resources used by this instance.
 
 :ref:`bool<class_bool>` **file_exists**\ (\ path\: :ref:`String<class_String>`, case_sensitive\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_ZIPReader_method_file_exists>`
 
-Returns ``true`` if the file exists in the loaded zip archive.
+Trả về ``true`` nếu tệp tồn tại trong kho lưu trữ zip đã được tải.
 
-Must be called after :ref:`open()<class_ZIPReader_method_open>`.
+Phải được gọi sau :ref:`open()<class_ZIPReader_method_open>`.
 
 .. rst-class:: classref-item-separator
 
@@ -122,7 +122,7 @@ Must be called after :ref:`open()<class_ZIPReader_method_open>`.
 
 :ref:`int<class_int>` **get_compression_level**\ (\ path\: :ref:`String<class_String>`, case_sensitive\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_ZIPReader_method_get_compression_level>`
 
-Returns the compression level of the file in the loaded zip archive. Returns ``-1`` if the file doesn't exist or any other error occurs. Must be called after :ref:`open()<class_ZIPReader_method_open>`.
+Trả về mức độ nén của tệp trong kho lưu trữ zip đã tải. Trả về ``-1`` nếu tệp không tồn tại hoặc xảy ra bất kỳ lỗi nào khác. Phải được gọi sau :ref:`open()<class_ZIPReader_method_open>`.
 
 .. rst-class:: classref-item-separator
 
@@ -134,9 +134,9 @@ Returns the compression level of the file in the loaded zip archive. Returns ``-
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_files**\ (\ ) :ref:`🔗<class_ZIPReader_method_get_files>`
 
-Returns the list of names of all files in the loaded archive.
+Trả về danh sách tên của tất cả các tệp trong kho lưu trữ đã tải.
 
-Must be called after :ref:`open()<class_ZIPReader_method_open>`.
+Phải được gọi sau :ref:`open()<class_ZIPReader_method_open>`.
 
 .. rst-class:: classref-item-separator
 
@@ -148,7 +148,7 @@ Must be called after :ref:`open()<class_ZIPReader_method_open>`.
 
 :ref:`Error<enum_@GlobalScope_Error>` **open**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_ZIPReader_method_open>`
 
-Opens the zip archive at the given ``path`` and reads its file index.
+Mở kho lưu trữ zip tại ``path`` đã cho và đọc chỉ mục tệp của kho lưu trữ.
 
 .. rst-class:: classref-item-separator
 
@@ -160,16 +160,16 @@ Opens the zip archive at the given ``path`` and reads its file index.
 
 :ref:`PackedByteArray<class_PackedByteArray>` **read_file**\ (\ path\: :ref:`String<class_String>`, case_sensitive\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_ZIPReader_method_read_file>`
 
-Loads the whole content of a file in the loaded zip archive into memory and returns it.
+Tải toàn bộ nội dung của một tệp trong kho lưu trữ zip đã tải vào bộ nhớ và trả về nội dung đó.
 
-Must be called after :ref:`open()<class_ZIPReader_method_open>`.
+Phải được gọi sau :ref:`open()<class_ZIPReader_method_open>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này thì phương thức mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,70 +10,70 @@
 VehicleWheel3D
 ==============
 
-**Inherits:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A 3D physics body for a :ref:`VehicleBody3D<class_VehicleBody3D>` that simulates the behavior of a wheel.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A node used as a child of a :ref:`VehicleBody3D<class_VehicleBody3D>` parent to simulate the behavior of one of its wheels. This node also acts as a collider to detect if the wheel is touching a surface.
-
-\ **Note:** This class has known issues and isn't designed to provide realistic 3D vehicle physics. If you want advanced vehicle physics, you may need to write your own physics integration using another :ref:`PhysicsBody3D<class_PhysicsBody3D>` class.
+Một physics body 3D dành cho :ref:`VehicleBody3D<class_VehicleBody3D>` mô phỏng hành vi của một bánh xe.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
----------
+Mô tả
+-----
+
+Một node được dùng làm node con của :ref:`VehicleBody3D<class_VehicleBody3D>` để mô phỏng hành vi của một trong các bánh xe của nó. Node này cũng hoạt động như một collider để phát hiện xem bánh xe có đang tiếp xúc với bề mặt hay không.
+
+\ **Lưu ý:** Class này có các vấn đề đã biết và không được thiết kế để cung cấp physics 3D chân thực. Nếu bạn cần physics nâng cao cho phương tiện, có thể bạn sẽ phải tự viết phần tích hợp physics bằng một class :ref:`PhysicsBody3D<class_PhysicsBody3D>` khác.
+
+.. rst-class:: classref-introduction-group
+
+Tutorial
+--------
 
 - `3D Truck Town Demo <https://godotengine.org/asset-library/asset/2752>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`brake<class_VehicleWheel3D_property_brake>`                               | ``0.0``                                                                       |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`damping_compression<class_VehicleWheel3D_property_damping_compression>`   | ``0.83``                                                                      |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`damping_relaxation<class_VehicleWheel3D_property_damping_relaxation>`     | ``0.88``                                                                      |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`engine_force<class_VehicleWheel3D_property_engine_force>`                 | ``0.0``                                                                       |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`PhysicsInterpolationMode<enum_Node_PhysicsInterpolationMode>` | physics_interpolation_mode                                                      | ``2`` (overrides :ref:`Node<class_Node_property_physics_interpolation_mode>`) |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`steering<class_VehicleWheel3D_property_steering>`                         | ``0.0``                                                                       |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`suspension_max_force<class_VehicleWheel3D_property_suspension_max_force>` | ``6000.0``                                                                    |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`suspension_stiffness<class_VehicleWheel3D_property_suspension_stiffness>` | ``5.88``                                                                      |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`suspension_travel<class_VehicleWheel3D_property_suspension_travel>`       | ``0.2``                                                                       |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                             | :ref:`use_as_steering<class_VehicleWheel3D_property_use_as_steering>`           | ``false``                                                                     |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                             | :ref:`use_as_traction<class_VehicleWheel3D_property_use_as_traction>`           | ``false``                                                                     |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`wheel_friction_slip<class_VehicleWheel3D_property_wheel_friction_slip>`   | ``10.5``                                                                      |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`wheel_radius<class_VehicleWheel3D_property_wheel_radius>`                 | ``0.5``                                                                       |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`wheel_rest_length<class_VehicleWheel3D_property_wheel_rest_length>`       | ``0.15``                                                                      |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`wheel_roll_influence<class_VehicleWheel3D_property_wheel_roll_influence>` | ``0.1``                                                                       |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`brake<class_VehicleWheel3D_property_brake>`                               | ``0.0``                                                                          |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`damping_compression<class_VehicleWheel3D_property_damping_compression>`   | ``0.83``                                                                         |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`damping_relaxation<class_VehicleWheel3D_property_damping_relaxation>`     | ``0.88``                                                                         |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`engine_force<class_VehicleWheel3D_property_engine_force>`                 | ``0.0``                                                                          |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`PhysicsInterpolationMode <enum_Node_PhysicsInterpolationMode>` | physics_interpolation_mode                                                      | ``2`` (ghi đè lên :ref:`Node<class_Node_property_physics_interpolation_mode>`)​​ |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`steering<class_VehicleWheel3D_property_steering>`                         | ``0.0``                                                                          |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`suspension_max_force<class_VehicleWheel3D_property_suspension_max_force>` | ``6000.0``                                                                       |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`suspension_stiffness<class_VehicleWheel3D_property_suspension_stiffness>` | ``5.88``                                                                         |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`suspension_travel<class_VehicleWheel3D_property_suspension_travel>`       | ``0.2``                                                                          |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                              | :ref:`use_as_steering<class_VehicleWheel3D_property_use_as_steering>`           | ``false``                                                                        |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                              | :ref:`use_as_traction<class_VehicleWheel3D_property_use_as_traction>`           | ``false``                                                                        |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`wheel_friction_slip<class_VehicleWheel3D_property_wheel_friction_slip>`   | ``10.5``                                                                         |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`wheel_radius<class_VehicleWheel3D_property_wheel_radius>`                 | ``0.5``                                                                          |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`wheel_rest_length<class_VehicleWheel3D_property_wheel_rest_length>`       | ``0.15``                                                                         |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`wheel_roll_influence<class_VehicleWheel3D_property_wheel_roll_influence>` | ``0.1``                                                                          |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -98,8 +98,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VehicleWheel3D_property_brake:
 
@@ -112,7 +112,7 @@ Property Descriptions
 - |void| **set_brake**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_brake**\ (\ )
 
-Slows down the wheel by applying a braking force. The wheel is only slowed down if it is in contact with a surface. The force you need to apply to adequately slow down your vehicle depends on the :ref:`RigidBody3D.mass<class_RigidBody3D_property_mass>` of the vehicle. For a vehicle with a mass set to 1000, try a value in the 25 - 30 range for hard braking.
+Làm bánh xe chậm lại bằng cách áp dụng lực phanh. Bánh xe chỉ chậm lại khi tiếp xúc với một bề mặt. Lực cần áp dụng để làm xe chậm lại một cách phù hợp phụ thuộc vào :ref:`RigidBody3D.mass<class_RigidBody3D_property_mass>` của xe. Với một chiếc xe có khối lượng được đặt là 1000, hãy thử giá trị trong khoảng 25 - 30 để phanh gấp.
 
 .. rst-class:: classref-item-separator
 
@@ -129,7 +129,7 @@ Slows down the wheel by applying a braking force. The wheel is only slowed down 
 - |void| **set_damping_compression**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_damping_compression**\ (\ )
 
-The damping applied to the suspension spring when being compressed, meaning when the wheel is moving up relative to the vehicle. It is measured in Newton-seconds per millimeter (N⋅s/mm), or megagrams per second (Mg/s). This value should be between 0.0 (no damping) and 1.0, but may be more. A value of 0.0 means the car will keep bouncing as the spring keeps its energy. A good value for this is around 0.3 for a normal car, 0.5 for a race car.
+Lực giảm chấn tác dụng lên lò xo hệ thống treo khi bị nén, nghĩa là khi bánh xe đang di chuyển lên so với xe. Lực này được đo bằng Newton-giây trên milimét (N⋅s/mm), hoặc megagram trên giây (Mg/s). Giá trị này nên nằm trong khoảng từ 0.0 (không giảm chấn) đến 1.0, nhưng cũng có thể lớn hơn. Giá trị 0.0 nghĩa là xe sẽ tiếp tục nảy lên khi lò xo giữ lại năng lượng của nó. Giá trị phù hợp thường là khoảng 0.3 đối với xe thông thường và 0.5 đối với xe đua.
 
 .. rst-class:: classref-item-separator
 
@@ -146,7 +146,7 @@ The damping applied to the suspension spring when being compressed, meaning when
 - |void| **set_damping_relaxation**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_damping_relaxation**\ (\ )
 
-The damping applied to the suspension spring when rebounding or extending, meaning when the wheel is moving down relative to the vehicle. It is measured in Newton-seconds per millimeter (N⋅s/mm), or megagrams per second (Mg/s). This value should be between 0.0 (no damping) and 1.0, but may be more. This value should always be slightly higher than the :ref:`damping_compression<class_VehicleWheel3D_property_damping_compression>` property. For a :ref:`damping_compression<class_VehicleWheel3D_property_damping_compression>` value of 0.3, try a relaxation value of 0.5.
+Lực giảm chấn tác dụng lên lò xo hệ thống treo khi bật lại hoặc duỗi ra, nghĩa là khi bánh xe đang di chuyển xuống so với xe. Lực này được đo bằng Newton-giây trên milimét (N⋅s/mm), hoặc megagram trên giây (Mg/s). Giá trị này nên nằm trong khoảng từ 0.0 (không giảm chấn) đến 1.0, nhưng cũng có thể lớn hơn. Giá trị này luôn phải cao hơn một chút so với thuộc tính :ref:`damping_compression<class_VehicleWheel3D_property_damping_compression>`. Với giá trị :ref:`damping_compression<class_VehicleWheel3D_property_damping_compression>` là 0.3, hãy thử giá trị thư giãn là 0.5.
 
 .. rst-class:: classref-item-separator
 
@@ -163,11 +163,11 @@ The damping applied to the suspension spring when rebounding or extending, meani
 - |void| **set_engine_force**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_engine_force**\ (\ )
 
-Accelerates the wheel by applying an engine force. The wheel is only sped up if it is in contact with a surface. The :ref:`RigidBody3D.mass<class_RigidBody3D_property_mass>` of the vehicle has an effect on the acceleration of the vehicle. For a vehicle with a mass set to 1000, try a value in the 25 - 50 range for acceleration.
+Tăng tốc bánh xe bằng cách tác dụng lực động cơ. Bánh xe chỉ tăng tốc nếu đang tiếp xúc với một bề mặt. :ref:`RigidBody3D.mass<class_RigidBody3D_property_mass>` của xe có ảnh hưởng đến khả năng tăng tốc của xe. Với xe có khối lượng được đặt là 1000, hãy thử giá trị trong khoảng 25 - 50 cho gia tốc.
 
-\ **Note:** The simulation does not take the effect of gears into account, you will need to add logic for this if you wish to simulate gears.
+\ **Lưu ý:** Mô phỏng không tính đến ảnh hưởng của các bánh răng; nếu muốn mô phỏng bánh răng, bạn sẽ cần thêm logic cho việc này.
 
-A negative value will result in the wheel reversing.
+Giá trị âm sẽ khiến bánh xe chạy lùi.
 
 .. rst-class:: classref-item-separator
 
@@ -184,7 +184,7 @@ A negative value will result in the wheel reversing.
 - |void| **set_steering**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_steering**\ (\ )
 
-The steering angle for the wheel, in radians. Setting this to a non-zero value will result in the vehicle turning when it's moving.
+Góc đánh lái của bánh xe, tính bằng radian. Đặt giá trị này khác 0 sẽ khiến xe chuyển hướng khi đang di chuyển.
 
 .. rst-class:: classref-item-separator
 
@@ -201,7 +201,7 @@ The steering angle for the wheel, in radians. Setting this to a non-zero value w
 - |void| **set_suspension_max_force**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_suspension_max_force**\ (\ )
 
-The maximum force the spring can resist. This value should be higher than a quarter of the :ref:`RigidBody3D.mass<class_RigidBody3D_property_mass>` of the :ref:`VehicleBody3D<class_VehicleBody3D>` or the spring will not carry the weight of the vehicle. Good results are often obtained by a value that is about 3× to 4× this number.
+Lực tối đa mà lò xo có thể chống lại. Giá trị này phải cao hơn một phần tư :ref:`RigidBody3D.mass<class_RigidBody3D_property_mass>` của :ref:`VehicleBody3D<class_VehicleBody3D>`, nếu không lò xo sẽ không chịu được trọng lượng của xe. Kết quả tốt thường đạt được với giá trị lớn khoảng 3× đến 4× con số này.
 
 .. rst-class:: classref-item-separator
 
@@ -218,7 +218,7 @@ The maximum force the spring can resist. This value should be higher than a quar
 - |void| **set_suspension_stiffness**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_suspension_stiffness**\ (\ )
 
-The stiffness of the suspension, measured in Newtons per millimeter (N/mm), or megagrams per second squared (Mg/s²). Use a value lower than 50 for an off-road car, a value between 50 and 100 for a race car and try something around 200 for something like a Formula 1 car.
+Độ cứng của hệ thống treo, được đo bằng Newton trên milimét (N/mm) hoặc megagram trên giây bình phương (Mg/s²). Sử dụng giá trị nhỏ hơn 50 cho xe địa hình, giá trị từ 50 đến 100 cho xe đua và thử giá trị khoảng 200 cho những xe như xe Formula 1.
 
 .. rst-class:: classref-item-separator
 
@@ -235,7 +235,7 @@ The stiffness of the suspension, measured in Newtons per millimeter (N/mm), or m
 - |void| **set_suspension_travel**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_suspension_travel**\ (\ )
 
-This is the distance the suspension can travel. As Godot units are equivalent to meters, keep this setting relatively low. Try a value between 0.1 and 0.3 depending on the type of car.
+Đây là khoảng cách mà hệ thống treo có thể di chuyển. Vì các đơn vị của Godot tương đương với mét, hãy giữ thiết lập này tương đối thấp. Hãy thử giá trị từ 0.1 đến 0.3 tùy theo loại xe.
 
 .. rst-class:: classref-item-separator
 
@@ -252,7 +252,7 @@ This is the distance the suspension can travel. As Godot units are equivalent to
 - |void| **set_use_as_steering**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_used_as_steering**\ (\ )
 
-If ``true``, this wheel will be turned when the car steers. This value is used in conjunction with :ref:`VehicleBody3D.steering<class_VehicleBody3D_property_steering>` and ignored if you are using the per-wheel :ref:`steering<class_VehicleWheel3D_property_steering>` value instead.
+Nếu ``true``, bánh xe này sẽ được xoay khi xe đánh lái. Giá trị này được sử dụng cùng với :ref:`VehicleBody3D.steering<class_VehicleBody3D_property_steering>` và bị bỏ qua nếu bạn đang sử dụng giá trị :ref:`steering<class_VehicleWheel3D_property_steering>` riêng cho từng bánh xe.
 
 .. rst-class:: classref-item-separator
 
@@ -269,7 +269,7 @@ If ``true``, this wheel will be turned when the car steers. This value is used i
 - |void| **set_use_as_traction**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_used_as_traction**\ (\ )
 
-If ``true``, this wheel transfers engine force to the ground to propel the vehicle forward. This value is used in conjunction with :ref:`VehicleBody3D.engine_force<class_VehicleBody3D_property_engine_force>` and ignored if you are using the per-wheel :ref:`engine_force<class_VehicleWheel3D_property_engine_force>` value instead.
+Nếu ``true``, bánh xe này truyền lực động cơ xuống mặt đất để đẩy xe tiến về phía trước. Giá trị này được sử dụng cùng với :ref:`VehicleBody3D.engine_force<class_VehicleBody3D_property_engine_force>` và bị bỏ qua nếu bạn đang sử dụng giá trị :ref:`engine_force<class_VehicleWheel3D_property_engine_force>` riêng cho từng bánh xe.
 
 .. rst-class:: classref-item-separator
 
@@ -286,9 +286,9 @@ If ``true``, this wheel transfers engine force to the ground to propel the vehic
 - |void| **set_friction_slip**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_friction_slip**\ (\ )
 
-This determines how much grip this wheel has. It is combined with the friction setting of the surface the wheel is in contact with. 0.0 means no grip, 1.0 is normal grip. For a drift car setup, try setting the grip of the rear wheels slightly lower than the front wheels, or use a lower value to simulate tire wear.
+Giá trị này xác định độ bám của bánh xe. Nó được kết hợp với thiết lập ma sát của bề mặt mà bánh xe đang tiếp xúc. 0.0 nghĩa là không có độ bám, còn 1.0 là độ bám bình thường. Để thiết lập xe drift, hãy thử đặt độ bám của bánh sau thấp hơn một chút so với bánh trước hoặc sử dụng giá trị thấp hơn để mô phỏng tình trạng lốp bị mòn.
 
-It's best to set this to 1.0 when starting out.
+Tốt nhất là đặt giá trị này thành 1.0 khi mới bắt đầu.
 
 .. rst-class:: classref-item-separator
 
@@ -305,7 +305,7 @@ It's best to set this to 1.0 when starting out.
 - |void| **set_radius**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_radius**\ (\ )
 
-The radius of the wheel in meters.
+Bán kính của bánh xe tính bằng mét.
 
 .. rst-class:: classref-item-separator
 
@@ -322,7 +322,7 @@ The radius of the wheel in meters.
 - |void| **set_suspension_rest_length**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_suspension_rest_length**\ (\ )
 
-This is the distance in meters the wheel is lowered from its origin point. Don't set this to 0.0 and move the wheel into position, instead move the origin point of your wheel (the gizmo in Godot) to the position the wheel will take when bottoming out, then use the rest length to move the wheel down to the position it should be in when the car is in rest.
+Đây là khoảng cách tính bằng mét mà bánh xe được hạ xuống từ điểm gốc của nó. Đừng đặt giá trị này thành 0.0 rồi di chuyển bánh xe vào vị trí, mà hãy di chuyển điểm gốc của bánh xe (gizmo trong Godot) đến vị trí mà bánh xe sẽ đạt tới khi chạm đáy, sau đó dùng rest length để di chuyển bánh xe xuống vị trí mà nó nên ở khi xe ở trạng thái nghỉ.
 
 .. rst-class:: classref-item-separator
 
@@ -339,7 +339,7 @@ This is the distance in meters the wheel is lowered from its origin point. Don't
 - |void| **set_roll_influence**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_roll_influence**\ (\ )
 
-This value affects the roll of your vehicle. If set to 1.0 for all wheels, your vehicle will resist body roll, while a value of 0.0 will be prone to rolling over.
+Giá trị này ảnh hưởng đến độ nghiêng thân xe của bạn. Nếu đặt thành 1.0 cho tất cả các bánh xe, xe của bạn sẽ chống lại hiện tượng nghiêng thân xe, còn giá trị 0.0 sẽ khiến xe dễ bị lật.
 
 .. rst-class:: classref-section-separator
 
@@ -347,8 +347,8 @@ This value affects the roll of your vehicle. If set to 1.0 for all wheels, your 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_VehicleWheel3D_method_get_contact_body:
 
@@ -356,9 +356,9 @@ Method Descriptions
 
 :ref:`Node3D<class_Node3D>` **get_contact_body**\ (\ ) |const| :ref:`🔗<class_VehicleWheel3D_method_get_contact_body>`
 
-Returns the contacting body node if valid in the tree, as :ref:`Node3D<class_Node3D>`. At the moment, :ref:`GridMap<class_GridMap>` is not supported so the node will be always of type :ref:`PhysicsBody3D<class_PhysicsBody3D>`.
+Trả về node body đang tiếp xúc nếu hợp lệ trong tree, dưới dạng :ref:`Node3D<class_Node3D>`. Hiện tại, :ref:`GridMap<class_GridMap>` chưa được hỗ trợ nên node sẽ luôn có kiểu :ref:`PhysicsBody3D<class_PhysicsBody3D>`.
 
-Returns ``null`` if the wheel is not in contact with a surface, or the contact body is not a :ref:`PhysicsBody3D<class_PhysicsBody3D>`.
+Trả về ``null`` nếu bánh xe không tiếp xúc với bề mặt hoặc body tiếp xúc không phải là :ref:`PhysicsBody3D<class_PhysicsBody3D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -370,7 +370,7 @@ Returns ``null`` if the wheel is not in contact with a surface, or the contact b
 
 :ref:`Vector3<class_Vector3>` **get_contact_normal**\ (\ ) |const| :ref:`🔗<class_VehicleWheel3D_method_get_contact_normal>`
 
-Returns the normal of the suspension's collision in world space if the wheel is in contact. If the wheel isn't in contact with anything, returns a vector pointing directly along the suspension axis toward the vehicle in world space.
+Trả về pháp tuyến của va chạm hệ thống treo trong không gian thế giới nếu bánh xe đang tiếp xúc. Nếu bánh xe không tiếp xúc với bất kỳ vật gì, trả về một vector hướng thẳng dọc theo trục hệ thống treo về phía xe trong không gian thế giới.
 
 .. rst-class:: classref-item-separator
 
@@ -382,7 +382,7 @@ Returns the normal of the suspension's collision in world space if the wheel is 
 
 :ref:`Vector3<class_Vector3>` **get_contact_point**\ (\ ) |const| :ref:`🔗<class_VehicleWheel3D_method_get_contact_point>`
 
-Returns the point of the suspension's collision in world space if the wheel is in contact. If the wheel isn't in contact with anything, returns the maximum point of the wheel's ray cast in world space, which is defined by ``wheel_rest_length + wheel_radius``.
+Trả về điểm va chạm của hệ thống treo trong không gian thế giới nếu bánh xe đang tiếp xúc. Nếu bánh xe không tiếp xúc với bất kỳ vật gì, trả về điểm xa nhất của phép ray cast của bánh xe trong không gian thế giới, được xác định bởi ``wheel_rest_length + wheel_radius``.
 
 .. rst-class:: classref-item-separator
 
@@ -394,7 +394,7 @@ Returns the point of the suspension's collision in world space if the wheel is i
 
 :ref:`float<class_float>` **get_rpm**\ (\ ) |const| :ref:`🔗<class_VehicleWheel3D_method_get_rpm>`
 
-Returns the rotational speed of the wheel in revolutions per minute.
+Trả về tốc độ quay của bánh xe, tính bằng số vòng mỗi phút.
 
 .. rst-class:: classref-item-separator
 
@@ -406,7 +406,7 @@ Returns the rotational speed of the wheel in revolutions per minute.
 
 :ref:`float<class_float>` **get_skidinfo**\ (\ ) |const| :ref:`🔗<class_VehicleWheel3D_method_get_skidinfo>`
 
-Returns a value between 0.0 and 1.0 that indicates whether this wheel is skidding. 0.0 is skidding (the wheel has lost grip, e.g. icy terrain), 1.0 means not skidding (the wheel has full grip, e.g. dry asphalt road).
+Trả về một giá trị từ 0.0 đến 1.0, cho biết bánh xe này có đang bị trượt hay không. 0.0 nghĩa là đang bị trượt (bánh xe đã mất độ bám, ví dụ: địa hình băng giá), 1.0 nghĩa là không bị trượt (bánh xe có độ bám đầy đủ, ví dụ: đường nhựa khô).
 
 .. rst-class:: classref-item-separator
 
@@ -418,14 +418,14 @@ Returns a value between 0.0 and 1.0 that indicates whether this wheel is skiddin
 
 :ref:`bool<class_bool>` **is_in_contact**\ (\ ) |const| :ref:`🔗<class_VehicleWheel3D_method_is_in_contact>`
 
-Returns ``true`` if this wheel is in contact with a surface.
+Trả về ``true`` nếu bánh xe này đang tiếp xúc với một bề mặt.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

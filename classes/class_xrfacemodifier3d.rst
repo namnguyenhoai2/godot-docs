@@ -10,33 +10,33 @@
 XRFaceModifier3D
 ================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Class này có thể được thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-**Inherits:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A node for driving standard face meshes from :ref:`XRFaceTracker<class_XRFaceTracker>` weights.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-This node applies weights from an :ref:`XRFaceTracker<class_XRFaceTracker>` to a mesh with supporting face blend shapes.
-
-The `Unified Expressions <https://docs.vrcft.io/docs/tutorial-avatars/tutorial-avatars-extras/unified-blendshapes>`__ blend shapes are supported, as well as ARKit and SRanipal blend shapes.
-
-The node attempts to identify blend shapes based on name matching. Blend shapes should match the names listed in the `Unified Expressions Compatibility <https://docs.vrcft.io/docs/tutorial-avatars/tutorial-avatars-extras/compatibility/overview>`__ chart.
+Một node để điều khiển các mesh khuôn mặt tiêu chuẩn từ :ref:`XRFaceTracker<class_XRFaceTracker>` các trọng số.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Node này áp dụng các trọng số từ một :ref:`XRFaceTracker<class_XRFaceTracker>` cho một mesh có các blend shape khuôn mặt tương thích.
+
+Các blend shape `Unified Expressions <https://docs.vrcft.io/docs/tutorial-avatars/tutorial-avatars-extras/unified-blendshapes>`__ được hỗ trợ, cũng như các blend shape của ARKit và SRanipal.
+
+Node này cố gắng xác định các blend shape dựa trên việc đối chiếu tên. Tên của các blend shape phải khớp với những tên được liệt kê trong biểu đồ `Unified Expressions Compatibility <https://docs.vrcft.io/docs/tutorial-avatars/tutorial-avatars-extras/compatibility/overview>`__.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`XR documentation index <../tutorials/xr/index>`
+- :doc:`Mục lục tài liệu XR <../tutorials/xr/index>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -54,8 +54,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_XRFaceModifier3D_property_face_tracker:
 
@@ -68,7 +68,7 @@ Property Descriptions
 - |void| **set_face_tracker**\ (\ value\: :ref:`StringName<class_StringName>`\ )
 - :ref:`StringName<class_StringName>` **get_face_tracker**\ (\ )
 
-The :ref:`XRFaceTracker<class_XRFaceTracker>` path.
+Đường dẫn :ref:`XRFaceTracker<class_XRFaceTracker>`.
 
 .. rst-class:: classref-item-separator
 
@@ -85,14 +85,14 @@ The :ref:`XRFaceTracker<class_XRFaceTracker>` path.
 - |void| **set_target**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_target**\ (\ )
 
-The :ref:`NodePath<class_NodePath>` of the face :ref:`MeshInstance3D<class_MeshInstance3D>`.
+:ref:`NodePath<class_NodePath>` của face :ref:`MeshInstance3D<class_MeshInstance3D>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

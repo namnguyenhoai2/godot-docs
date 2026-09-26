@@ -10,48 +10,48 @@
 Variant
 =======
 
-The most important data type in Godot.
+Kiểu dữ liệu quan trọng nhất trong Godot.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-In computer programming, a Variant class is a class that is designed to store a variety of other types. Dynamic programming languages like PHP, Lua, JavaScript and GDScript like to use them to store variables' data on the backend. With these Variants, properties are able to change value types freely.
+Trong lập trình máy tính, một lớp Variant là lớp được thiết kế để lưu trữ nhiều kiểu dữ liệu khác nhau. Các ngôn ngữ lập trình động như PHP, Lua, JavaScript và GDScript thường sử dụng chúng để lưu trữ dữ liệu của biến ở backend. Với các Variant này, các thuộc tính có thể tự do thay đổi kiểu giá trị.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    var foo = 2 # foo is dynamically an integer
+    var foo = 2 # foo là một số nguyên động
     foo = "Now foo is a string!"
-    foo = RefCounted.new() # foo is an Object
-    var bar: int = 2 # bar is a statically typed integer.
-    # bar = "Uh oh! I can't make statically typed variables become a different type!"
+    foo = RefCounted.new() # foo là một Object
+    var bar: int = 2 # bar là một số nguyên có kiểu tĩnh.
+    # bar = "Ôi không! Tôi không thể khiến các biến có kiểu tĩnh trở thành một kiểu khác!"
 
  .. code-tab:: csharp
 
-    // C# is statically typed. Once a variable has a type it cannot be changed. You can use the `var` keyword to let the compiler infer the type automatically.
-    var foo = 2; // Foo is a 32-bit integer (int). Be cautious, integers in GDScript are 64-bit and the direct C# equivalent is `long`.
-    // foo = "foo was and will always be an integer. It cannot be turned into a string!";
+    // C# là ngôn ngữ định kiểu tĩnh. Khi một biến đã có kiểu, kiểu đó không thể thay đổi. Bạn có thể sử dụng từ khóa `var` để trình biên dịch tự động suy luận kiểu.
+    var foo = 2; // Foo là một số nguyên 32-bit (int). Hãy cẩn thận, số nguyên trong GDScript là 64-bit và tương đương trực tiếp trong C# là `long`.
+    // foo = "foo đã và sẽ luôn là một số nguyên. Nó không thể chuyển thành một chuỗi!";
     var boo = "Boo is a string!";
-    var ref = new RefCounted(); // var is especially useful when used together with a constructor.
+    var ref = new RefCounted(); // var đặc biệt hữu ích khi được sử dụng cùng với một constructor.
 
-    // Godot also provides a Variant type that works like a union of all the Variant-compatible types.
-    Variant fooVar = 2; // fooVar is dynamically an integer (stored as a `long` in the Variant type).
+    // Godot cũng cung cấp kiểu Variant, hoạt động như một union của tất cả các kiểu tương thích với Variant.
+    Variant fooVar = 2; // fooVar về mặt động là một số nguyên (được lưu dưới dạng `long` trong kiểu Variant).
     fooVar = "Now fooVar is a string!";
-    fooVar = new RefCounted(); // fooVar is a GodotObject.
+    fooVar = new RefCounted(); // fooVar là một GodotObject.
 
 
 
-Godot tracks all scripting API variables within Variants. Without even realizing it, you use Variants all the time. When a particular language enforces its own rules for keeping data typed, then that language is applying its own custom logic over the base Variant scripting API.
+Godot theo dõi tất cả các biến của scripting API trong Variants. Bạn sử dụng Variants mọi lúc mà không hề nhận ra. Khi một ngôn ngữ cụ thể áp dụng các quy tắc riêng để duy trì kiểu dữ liệu, ngôn ngữ đó đang áp dụng logic tùy chỉnh riêng trên scripting API Variant cơ sở.
 
-- GDScript automatically wrap values in them. It keeps all data in plain Variants by default and then optionally enforces custom static typing rules on variable types.
+- GDScript tự động bao bọc các giá trị trong chúng. Theo mặc định, nó lưu trữ mọi dữ liệu dưới dạng Variants thuần túy, sau đó tùy chọn áp dụng các quy tắc static typing tùy chỉnh cho kiểu biến.
 
-- C# is statically typed, but uses its own implementation of the Variant type in place of Godot's **Variant** class when it needs to represent a dynamic value. C# Variant can be assigned any compatible type implicitly but converting requires an explicit cast.
+- C# được định kiểu tĩnh, nhưng sử dụng cách triển khai riêng của kiểu Variant thay cho lớp **Variant** của Godot khi cần biểu diễn một giá trị động. C# Variant có thể được gán ngầm định bất kỳ kiểu tương thích nào, nhưng việc chuyển đổi yêu cầu một phép ép kiểu tường minh.
 
-The global :ref:`@GlobalScope.typeof()<class_@GlobalScope_method_typeof>` function returns the enumerated value of the Variant type stored in the current variable (see :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>`).
+Hàm toàn cục :ref:`@GlobalScope.typeof() <class_@GlobalScope_method_typeof>` trả về giá trị liệt kê của kiểu Variant được lưu trong biến hiện tại (xem :ref:`Variant.Type <enum_@GlobalScope_Variant.Type>`).
 
 
 .. tabs::
@@ -65,11 +65,11 @@ The global :ref:`@GlobalScope.typeof()<class_@GlobalScope_method_typeof>` functi
         TYPE_INT:
             print("foo is an integer")
         TYPE_OBJECT:
-            # Note that Objects are their own special category.
-            # To get the name of the underlying Object type, you need the `get_class()` method.
-            print("foo is a(n) %s" % foo.get_class()) # inject the class name into a formatted string.
-            # Note that this does not get the script's `class_name` global identifier.
-            # If the `class_name` is needed, use `foo.get_script().get_global_name()` instead.
+            # Lưu ý rằng Objects thuộc một danh mục đặc biệt riêng.
+            # Để lấy tên của kiểu Object bên dưới, bạn cần phương thức `get_class()`.
+            print("foo is a(n) %s" % foo.get_class()) # chèn tên lớp vào một chuỗi được định dạng.
+            # Lưu ý rằng thao tác này không lấy được mã định danh toàn cục `class_name` của script.
+            # Nếu cần `class_name`, hãy sử dụng `foo.get_script().get_global_name()` thay thế.
 
  .. code-tab:: csharp
 
@@ -83,43 +83,43 @@ The global :ref:`@GlobalScope.typeof()<class_@GlobalScope_method_typeof>` functi
             GD.Print("foo is an integer");
             break;
         case Variant.Type.Object:
-            // Note that Objects are their own special category.
-            // You can convert a Variant to a GodotObject and use reflection to get its name.
+            // Lưu ý rằng Objects thuộc một danh mục đặc biệt riêng.
+            // Bạn có thể chuyển đổi một Variant thành GodotObject và sử dụng reflection để lấy tên của nó.
             GD.Print($"foo is a(n) {foo.AsGodotObject().GetType().Name}");
             break;
     }
 
 
 
-A Variant takes up only 20 bytes and can store almost any engine datatype inside of it. Variants are rarely used to hold information for long periods of time. Instead, they are used mainly for communication, editing, serialization and moving data around.
+Một Variant chỉ chiếm 20 byte và có thể lưu trữ gần như mọi kiểu dữ liệu của engine bên trong. Variant hiếm khi được dùng để lưu giữ thông tin trong thời gian dài. Thay vào đó, chúng chủ yếu được dùng cho việc giao tiếp, chỉnh sửa, serialization và di chuyển dữ liệu.
 
-Godot has specifically invested in making its Variant class as flexible as possible; so much so that it is used for a multitude of operations to facilitate communication between all of Godot's systems.
+Godot đặc biệt chú trọng việc làm cho lớp Variant linh hoạt nhất có thể; đến mức lớp này được sử dụng cho rất nhiều thao tác nhằm hỗ trợ giao tiếp giữa tất cả các hệ thống của Godot.
 
-A Variant:
+Một Variant:
 
-- Can store almost any datatype.
+- Có thể lưu trữ gần như mọi kiểu dữ liệu.
 
-- Can perform operations between many variants. GDScript uses Variant as its atomic/native datatype.
+- Có thể thực hiện các phép toán giữa nhiều biến thể. GDScript sử dụng Variant làm kiểu dữ liệu nguyên tử/bản địa.
 
-- Can be hashed, so it can be compared quickly to other variants.
+- Có thể được băm, vì vậy có thể so sánh nhanh với các Variant khác.
 
-- Can be used to convert safely between datatypes.
+- Có thể được dùng để chuyển đổi an toàn giữa các kiểu dữ liệu.
 
-- Can be used to abstract calling methods and their arguments. Godot exports all its functions through variants.
+- Có thể được dùng để trừu tượng hóa việc gọi các phương thức và đối số của chúng. Godot xuất tất cả các hàm của nó thông qua Variant.
 
-- Can be used to defer calls or move data between threads.
+- Có thể được dùng để trì hoãn các lệnh gọi hoặc di chuyển dữ liệu giữa các thread.
 
-- Can be serialized as binary and stored to disk, or transferred via network.
+- Có thể được tuần tự hóa dưới dạng nhị phân và lưu vào đĩa hoặc truyền qua mạng.
 
-- Can be serialized to text and use it for printing values and editable settings.
+- Có thể được tuần tự hóa thành văn bản và dùng để in các giá trị cũng như các thiết lập có thể chỉnh sửa.
 
-- Can work as an exported property, so the editor can edit it universally.
+- Có thể hoạt động như một thuộc tính được export, để editor có thể chỉnh sửa thuộc tính đó ở mọi nơi.
 
-- Can be used for dictionaries, arrays, parsers, etc.
+- Có thể được dùng cho dictionaries, arrays, parsers, v.v.
 
-\ **Containers (Array and Dictionary):** Both are implemented using variants. A :ref:`Dictionary<class_Dictionary>` can match any datatype used as key to any other datatype. An :ref:`Array<class_Array>` just holds an array of Variants. Of course, a Variant can also hold a :ref:`Dictionary<class_Dictionary>` and an :ref:`Array<class_Array>` inside, making it even more flexible.
+\ **Containers (Array và Dictionary):** Cả hai đều được triển khai bằng variants. Một :ref:`Dictionary<class_Dictionary>` có thể ánh xạ bất kỳ kiểu dữ liệu nào được dùng làm khóa với bất kỳ kiểu dữ liệu nào khác. Một :ref:`Array<class_Array>` chỉ chứa một mảng các Variants. Tất nhiên, một Variant cũng có thể chứa một :ref:`Dictionary<class_Dictionary>` và một :ref:`Array<class_Array>` bên trong, khiến nó càng linh hoạt hơn.
 
-Modifications to a container will modify all references to it. A :ref:`Mutex<class_Mutex>` should be created to lock it if multi-threaded access is desired.
+Các sửa đổi đối với một container sẽ sửa đổi mọi tham chiếu đến nó. Nên tạo một :ref:`Mutex<class_Mutex>` để khóa nó nếu muốn truy cập đa luồng.
 
 .. note::
 
@@ -130,14 +130,14 @@ Modifications to a container will modify all references to it. A :ref:`Mutex<cla
 Tutorials
 ---------
 
-- :doc:`Variant class introduction <../engine_details/architecture/variant_class>`
+- :doc:`Giới thiệu về lớp Variant <../engine_details/architecture/variant_class>`
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận thêm bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,29 +10,29 @@
 VoxelGIData
 ===========
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Contains baked voxel global illumination data for use in a :ref:`VoxelGI<class_VoxelGI>` node.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-**VoxelGIData** contains baked voxel global illumination for use in a :ref:`VoxelGI<class_VoxelGI>` node. **VoxelGIData** also offers several properties to adjust the final appearance of the global illumination. These properties can be adjusted at run-time without having to bake the :ref:`VoxelGI<class_VoxelGI>` node again.
-
-\ **Note:** To prevent text-based scene files (``.tscn``) from growing too much and becoming slow to load and save, always save **VoxelGIData** to an external binary resource file (``.res``) instead of embedding it within the scene. This can be done by clicking the dropdown arrow next to the **VoxelGIData** resource, choosing **Edit**, clicking the floppy disk icon at the top of the Inspector then choosing **Save As...**.
+Chứa dữ liệu chiếu sáng toàn cục voxel đã bake để sử dụng trong một :ref:`VoxelGI<class_VoxelGI>` node.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+**VoxelGIData** chứa dữ liệu chiếu sáng toàn cục voxel đã bake để sử dụng trong một node :ref:`VoxelGI<class_VoxelGI>`. **VoxelGIData** cũng cung cấp một số thuộc tính để điều chỉnh diện mạo cuối cùng của chiếu sáng toàn cục. Các thuộc tính này có thể được điều chỉnh trong runtime mà không cần bake lại node :ref:`VoxelGI<class_VoxelGI>`.
+
+\ **Lưu ý:** Để ngăn các tệp cảnh dạng văn bản (``.tscn``) phát triển quá lớn và trở nên chậm khi tải và lưu, hãy luôn lưu **VoxelGIData** vào một tệp tài nguyên nhị phân bên ngoài (``.res``) thay vì nhúng nó trong cảnh. Bạn có thể thực hiện việc này bằng cách nhấp vào mũi tên thả xuống bên cạnh tài nguyên **VoxelGIData**, chọn **Edit**, nhấp vào biểu tượng đĩa mềm ở đầu Inspector rồi chọn **Save As...**.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `Third Person Shooter (TPS) Demo <https://godotengine.org/asset-library/asset/2710>`__
+- `Bản demo game bắn súng góc nhìn thứ ba (TPS) <https://godotengine.org/asset-library/asset/2710>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -56,8 +56,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -84,8 +84,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VoxelGIData_property_bias:
 
@@ -98,7 +98,7 @@ Property Descriptions
 - |void| **set_bias**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_bias**\ (\ )
 
-The normal bias to use for indirect lighting and reflections. Higher values reduce self-reflections visible in non-rough materials, at the cost of more visible light leaking and flatter-looking indirect lighting. To prioritize hiding self-reflections over lighting quality, set :ref:`bias<class_VoxelGIData_property_bias>` to ``0.0`` and :ref:`normal_bias<class_VoxelGIData_property_normal_bias>` to a value between ``1.0`` and ``2.0``.
+Độ lệch pháp tuyến được sử dụng cho ánh sáng gián tiếp và các phản xạ. Giá trị cao hơn làm giảm các phản xạ trên chính vật liệu nhìn thấy ở những vật liệu không thô ráp, nhưng làm tăng hiện tượng rò rỉ ánh sáng nhìn thấy và khiến ánh sáng gián tiếp trông phẳng hơn. Để ưu tiên che giấu các phản xạ trên chính vật liệu hơn chất lượng chiếu sáng, hãy đặt :ref:`bias<class_VoxelGIData_property_bias>` thành ``0.0`` và :ref:`normal_bias<class_VoxelGIData_property_normal_bias>` thành một giá trị từ ``1.0`` đến ``2.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -115,7 +115,7 @@ The normal bias to use for indirect lighting and reflections. Higher values redu
 - |void| **set_dynamic_range**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_dynamic_range**\ (\ )
 
-The dynamic range to use (``1.0`` represents a low dynamic range scene brightness). Higher values can be used to provide brighter indirect lighting, at the cost of more visible color banding in dark areas (both in indirect lighting and reflections). To avoid color banding, it's recommended to use the lowest value that does not result in visible light clipping.
+Dải động được sử dụng (``1.0`` biểu thị độ sáng của cảnh có dải động thấp). Có thể sử dụng các giá trị cao hơn để tạo ra ánh sáng gián tiếp sáng hơn, nhưng sẽ làm tăng hiện tượng dải màu nhìn thấy ở các vùng tối (cả trong ánh sáng gián tiếp lẫn các phản xạ). Để tránh hiện tượng dải màu, bạn nên sử dụng giá trị thấp nhất không gây ra hiện tượng clipping ánh sáng nhìn thấy.
 
 .. rst-class:: classref-item-separator
 
@@ -132,7 +132,7 @@ The dynamic range to use (``1.0`` represents a low dynamic range scene brightnes
 - |void| **set_energy**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_energy**\ (\ )
 
-The energy of the indirect lighting and reflections produced by the :ref:`VoxelGI<class_VoxelGI>` node. Higher values result in brighter indirect lighting. If indirect lighting looks too flat, try decreasing :ref:`propagation<class_VoxelGIData_property_propagation>` while increasing :ref:`energy<class_VoxelGIData_property_energy>` at the same time. See also :ref:`use_two_bounces<class_VoxelGIData_property_use_two_bounces>` which influences the indirect lighting's effective brightness.
+Năng lượng của ánh sáng gián tiếp và các phản xạ do node :ref:`VoxelGI<class_VoxelGI>` tạo ra. Giá trị cao hơn tạo ra ánh sáng gián tiếp sáng hơn. Nếu ánh sáng gián tiếp trông quá phẳng, hãy thử giảm :ref:`propagation<class_VoxelGIData_property_propagation>` đồng thời tăng :ref:`energy<class_VoxelGIData_property_energy>`. Xem thêm :ref:`use_two_bounces<class_VoxelGIData_property_use_two_bounces>`, yếu tố ảnh hưởng đến độ sáng hiệu dụng của ánh sáng gián tiếp.
 
 .. rst-class:: classref-item-separator
 
@@ -149,7 +149,7 @@ The energy of the indirect lighting and reflections produced by the :ref:`VoxelG
 - |void| **set_interior**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_interior**\ (\ )
 
-If ``true``, :ref:`Environment<class_Environment>` lighting is ignored by the :ref:`VoxelGI<class_VoxelGI>` node. If ``false``, :ref:`Environment<class_Environment>` lighting is taken into account by the :ref:`VoxelGI<class_VoxelGI>` node. :ref:`Environment<class_Environment>` lighting updates in real-time, which means it can be changed without having to bake the :ref:`VoxelGI<class_VoxelGI>` node again.
+Nếu ``true``, ánh sáng :ref:`Environment<class_Environment>` sẽ bị node :ref:`VoxelGI<class_VoxelGI>` bỏ qua. Nếu ``false``, ánh sáng :ref:`Environment<class_Environment>` sẽ được node :ref:`VoxelGI<class_VoxelGI>` tính đến. Ánh sáng :ref:`Environment<class_Environment>` được cập nhật theo thời gian thực, nghĩa là có thể thay đổi mà không cần bake lại node :ref:`VoxelGI<class_VoxelGI>`.
 
 .. rst-class:: classref-item-separator
 
@@ -166,7 +166,7 @@ If ``true``, :ref:`Environment<class_Environment>` lighting is ignored by the :r
 - |void| **set_normal_bias**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_normal_bias**\ (\ )
 
-The normal bias to use for indirect lighting and reflections. Higher values reduce self-reflections visible in non-rough materials, at the cost of more visible light leaking and flatter-looking indirect lighting. See also :ref:`bias<class_VoxelGIData_property_bias>`. To prioritize hiding self-reflections over lighting quality, set :ref:`bias<class_VoxelGIData_property_bias>` to ``0.0`` and :ref:`normal_bias<class_VoxelGIData_property_normal_bias>` to a value between ``1.0`` and ``2.0``.
+Độ lệch pháp tuyến được sử dụng cho ánh sáng gián tiếp và phản chiếu. Giá trị cao hơn làm giảm hiện tượng tự phản chiếu nhìn thấy trên các vật liệu không thô ráp, nhưng khiến hiện tượng rò rỉ ánh sáng dễ thấy hơn và ánh sáng gián tiếp trông phẳng hơn. Xem thêm :ref:`bias<class_VoxelGIData_property_bias>`. Để ưu tiên che giấu hiện tượng tự phản chiếu hơn chất lượng ánh sáng, hãy đặt :ref:`bias<class_VoxelGIData_property_bias>` thành ``0.0`` và :ref:`normal_bias<class_VoxelGIData_property_normal_bias>` thành một giá trị trong khoảng từ ``1.0`` đến ``2.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -183,7 +183,7 @@ The normal bias to use for indirect lighting and reflections. Higher values redu
 - |void| **set_propagation**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_propagation**\ (\ )
 
-The multiplier to use when light bounces off a surface. Higher values result in brighter indirect lighting. If indirect lighting looks too flat, try decreasing :ref:`propagation<class_VoxelGIData_property_propagation>` while increasing :ref:`energy<class_VoxelGIData_property_energy>` at the same time. See also :ref:`use_two_bounces<class_VoxelGIData_property_use_two_bounces>` which influences the indirect lighting's effective brightness.
+Hệ số nhân được sử dụng khi ánh sáng bật lại từ một bề mặt. Giá trị cao hơn tạo ra ánh sáng gián tiếp sáng hơn. Nếu ánh sáng gián tiếp trông quá phẳng, hãy thử giảm :ref:`propagation<class_VoxelGIData_property_propagation>` đồng thời tăng :ref:`energy<class_VoxelGIData_property_energy>`. Xem thêm :ref:`use_two_bounces<class_VoxelGIData_property_use_two_bounces>`, yếu tố ảnh hưởng đến độ sáng hiệu dụng của ánh sáng gián tiếp.
 
 .. rst-class:: classref-item-separator
 
@@ -200,7 +200,7 @@ The multiplier to use when light bounces off a surface. Higher values result in 
 - |void| **set_use_two_bounces**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_using_two_bounces**\ (\ )
 
-If ``true``, performs two bounces of indirect lighting instead of one. This makes indirect lighting look more natural and brighter at a small performance cost. The second bounce is also visible in reflections. If the scene appears too bright after enabling :ref:`use_two_bounces<class_VoxelGIData_property_use_two_bounces>`, adjust :ref:`propagation<class_VoxelGIData_property_propagation>` and :ref:`energy<class_VoxelGIData_property_energy>`.
+Nếu ``true``, thực hiện hai lần bật lại ánh sáng gián tiếp thay vì một lần. Điều này khiến ánh sáng gián tiếp trông tự nhiên và sáng hơn với một chi phí hiệu năng nhỏ. Lần bật lại thứ hai cũng hiển thị trong các phần phản chiếu. Nếu cảnh trông quá sáng sau khi bật :ref:`use_two_bounces<class_VoxelGIData_property_use_two_bounces>`, hãy điều chỉnh :ref:`propagation<class_VoxelGIData_property_propagation>` và :ref:`energy<class_VoxelGIData_property_energy>`.
 
 .. rst-class:: classref-section-separator
 
@@ -208,8 +208,8 @@ If ``true``, performs two bounces of indirect lighting instead of one. This make
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_VoxelGIData_method_allocate:
 
@@ -217,7 +217,7 @@ Method Descriptions
 
 |void| **allocate**\ (\ to_cell_xform\: :ref:`Transform3D<class_Transform3D>`, aabb\: :ref:`AABB<class_AABB>`, octree_size\: :ref:`Vector3<class_Vector3>`, octree_cells\: :ref:`PackedByteArray<class_PackedByteArray>`, data_cells\: :ref:`PackedByteArray<class_PackedByteArray>`, distance_field\: :ref:`PackedByteArray<class_PackedByteArray>`, level_counts\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ ) :ref:`🔗<class_VoxelGIData_method_allocate>`
 
-Initializes this **VoxelGIData** with the specified data. ``octree_cells`` must be a multiple of 32. ``octree_cells`` must be double the size of ``data_cells``. The allocated data can be retrieved later using the various getter methods.
+Khởi tạo **VoxelGIData** này bằng dữ liệu được chỉ định. ``octree_cells`` phải là bội số của 32. ``octree_cells`` phải có kích thước gấp đôi ``data_cells``. Dữ liệu được cấp phát có thể được lấy lại sau đó bằng nhiều phương thức getter khác nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -229,9 +229,9 @@ Initializes this **VoxelGIData** with the specified data. ``octree_cells`` must 
 
 :ref:`AABB<class_AABB>` **get_bounds**\ (\ ) |const| :ref:`🔗<class_VoxelGIData_method_get_bounds>`
 
-Returns the bounds of the baked voxel data as an :ref:`AABB<class_AABB>`, which should match :ref:`VoxelGI.size<class_VoxelGI_property_size>` after being baked (which only contains the size as a :ref:`Vector3<class_Vector3>`).
+Trả về phạm vi giới hạn của dữ liệu voxel đã bake dưới dạng :ref:`AABB<class_AABB>`, giá trị này phải khớp với :ref:`VoxelGI.size<class_VoxelGI_property_size>` sau khi bake (vốn chỉ chứa kích thước dưới dạng :ref:`Vector3<class_Vector3>`).
 
-\ **Note:** If the size was modified without baking the VoxelGI data, then the value of :ref:`get_bounds()<class_VoxelGIData_method_get_bounds>` and :ref:`VoxelGI.size<class_VoxelGI_property_size>` will not match.
+\ **Lưu ý:** Nếu kích thước đã được thay đổi mà không bake dữ liệu VoxelGI, thì giá trị của :ref:`get_bounds()<class_VoxelGIData_method_get_bounds>` và :ref:`VoxelGI.size<class_VoxelGI_property_size>` sẽ không khớp.
 
 .. rst-class:: classref-item-separator
 
@@ -243,7 +243,7 @@ Returns the bounds of the baked voxel data as an :ref:`AABB<class_AABB>`, which 
 
 :ref:`PackedByteArray<class_PackedByteArray>` **get_data_cells**\ (\ ) |const| :ref:`🔗<class_VoxelGIData_method_get_data_cells>`
 
-Returns the baked cell data for this **VoxelGIData**.
+Trả về dữ liệu ô đã bake cho **VoxelGIData** này.
 
 .. rst-class:: classref-item-separator
 
@@ -255,7 +255,7 @@ Returns the baked cell data for this **VoxelGIData**.
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **get_level_counts**\ (\ ) |const| :ref:`🔗<class_VoxelGIData_method_get_level_counts>`
 
-Returns the baked level counts for this **VoxelGIData**.
+Trả về số lượng cấp độ đã bake cho **VoxelGIData** này.
 
 .. rst-class:: classref-item-separator
 
@@ -267,7 +267,7 @@ Returns the baked level counts for this **VoxelGIData**.
 
 :ref:`PackedByteArray<class_PackedByteArray>` **get_octree_cells**\ (\ ) |const| :ref:`🔗<class_VoxelGIData_method_get_octree_cells>`
 
-Returns the baked octree cell data for this **VoxelGIData**.
+Trả về dữ liệu ô octree đã bake cho **VoxelGIData** này.
 
 .. rst-class:: classref-item-separator
 
@@ -279,7 +279,7 @@ Returns the baked octree cell data for this **VoxelGIData**.
 
 :ref:`Vector3<class_Vector3>` **get_octree_size**\ (\ ) |const| :ref:`🔗<class_VoxelGIData_method_get_octree_size>`
 
-Returns the baked octree size for this **VoxelGIData**, which corresponds to the number of subdivisions per axis. This can be viewed in the editor by hovering the **Bake VoxelGI** button at the top of the 3D editor viewport when a :ref:`VoxelGI<class_VoxelGI>` node is selected and looking at the **Subdivisions** field in the tooltip.
+Trả về kích thước octree đã bake cho **VoxelGIData** này, tương ứng với số lần phân chia trên mỗi trục. Có thể xem giá trị này trong editor bằng cách di chuột lên nút **Bake VoxelGI** ở đầu khung nhìn trình chỉnh sửa 3D khi một node :ref:`VoxelGI<class_VoxelGI>` được chọn, rồi xem trường **Subdivisions** trong chú giải công cụ.
 
 .. rst-class:: classref-item-separator
 
@@ -291,14 +291,14 @@ Returns the baked octree size for this **VoxelGIData**, which corresponds to the
 
 :ref:`Transform3D<class_Transform3D>` **get_to_cell_xform**\ (\ ) |const| :ref:`🔗<class_VoxelGIData_method_get_to_cell_xform>`
 
-Returns the baked cell transform for this **VoxelGIData**.
+Trả về phép biến đổi của ô đã bake cho **VoxelGIData** này.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

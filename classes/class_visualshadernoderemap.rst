@@ -10,28 +10,28 @@
 VisualShaderNodeRemap
 =====================
 
-**Inherits:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A visual shader node for remap function.
+Một node visual shader cho hàm remap.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Remap will transform the input range into output range, e.g. you can change a ``0..1`` value to ``-2..2`` etc. See :ref:`@GlobalScope.remap()<class_@GlobalScope_method_remap>` for more details.
+Remap sẽ chuyển đổi phạm vi đầu vào thành phạm vi đầu ra, ví dụ: bạn có thể thay đổi giá trị ``0..1`` thành ``-2..2`` v.v. Xem :ref:`@GlobalScope.remap() <class_@GlobalScope_method_remap>` để biết thêm chi tiết.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------------+--------------------------------------------------------------+-------+
-   | :ref:`OpType<enum_VisualShaderNodeRemap_OpType>` | :ref:`op_type<class_VisualShaderNodeRemap_property_op_type>` | ``0`` |
-   +--------------------------------------------------+--------------------------------------------------------------+-------+
+   +---------------------------------------------------+--------------------------------------------------------------+-------+
+   | :ref:`OpType <enum_VisualShaderNodeRemap_OpType>` | :ref:`op_type<class_VisualShaderNodeRemap_property_op_type>` | ``0`` |
+   +---------------------------------------------------+--------------------------------------------------------------+-------+
 
 .. rst-class:: classref-section-separator
 
@@ -39,14 +39,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các enumeration
+---------------
 
 .. _enum_VisualShaderNodeRemap_OpType:
 
 .. rst-class:: classref-enumeration
 
-enum **OpType**: :ref:`🔗<enum_VisualShaderNodeRemap_OpType>`
+enum **OpType**: :ref:`🔗 <enum_VisualShaderNodeRemap_OpType>`
 
 .. _class_VisualShaderNodeRemap_constant_OP_TYPE_SCALAR:
 
@@ -54,7 +54,7 @@ enum **OpType**: :ref:`🔗<enum_VisualShaderNodeRemap_OpType>`
 
 :ref:`OpType<enum_VisualShaderNodeRemap_OpType>` **OP_TYPE_SCALAR** = ``0``
 
-A floating-point scalar type.
+Một kiểu vô hướng dấu phẩy động.
 
 .. _class_VisualShaderNodeRemap_constant_OP_TYPE_VECTOR_2D:
 
@@ -62,7 +62,7 @@ A floating-point scalar type.
 
 :ref:`OpType<enum_VisualShaderNodeRemap_OpType>` **OP_TYPE_VECTOR_2D** = ``1``
 
-A 2D vector type.
+Một kiểu vector 2D.
 
 .. _class_VisualShaderNodeRemap_constant_OP_TYPE_VECTOR_2D_SCALAR:
 
@@ -70,7 +70,7 @@ A 2D vector type.
 
 :ref:`OpType<enum_VisualShaderNodeRemap_OpType>` **OP_TYPE_VECTOR_2D_SCALAR** = ``2``
 
-The ``value`` port uses a 2D vector type, while the ``input min``, ``input max``, ``output min``, and ``output max`` ports use a floating-point scalar type.
+Cổng ``value`` sử dụng kiểu vector 2D, trong khi các cổng ``input min``, ``input max``, ``output min`` và ``output max`` sử dụng kiểu vô hướng dấu phẩy động.
 
 .. _class_VisualShaderNodeRemap_constant_OP_TYPE_VECTOR_3D:
 
@@ -78,7 +78,7 @@ The ``value`` port uses a 2D vector type, while the ``input min``, ``input max``
 
 :ref:`OpType<enum_VisualShaderNodeRemap_OpType>` **OP_TYPE_VECTOR_3D** = ``3``
 
-A 3D vector type.
+Một kiểu vector 3D.
 
 .. _class_VisualShaderNodeRemap_constant_OP_TYPE_VECTOR_3D_SCALAR:
 
@@ -86,7 +86,7 @@ A 3D vector type.
 
 :ref:`OpType<enum_VisualShaderNodeRemap_OpType>` **OP_TYPE_VECTOR_3D_SCALAR** = ``4``
 
-The ``value`` port uses a 3D vector type, while the ``input min``, ``input max``, ``output min``, and ``output max`` ports use a floating-point scalar type.
+Cổng ``value`` sử dụng kiểu vector 3D, trong khi các cổng ``input min``, ``input max``, ``output min`` và ``output max`` sử dụng kiểu vô hướng dấu phẩy động.
 
 .. _class_VisualShaderNodeRemap_constant_OP_TYPE_VECTOR_4D:
 
@@ -94,7 +94,7 @@ The ``value`` port uses a 3D vector type, while the ``input min``, ``input max``
 
 :ref:`OpType<enum_VisualShaderNodeRemap_OpType>` **OP_TYPE_VECTOR_4D** = ``5``
 
-A 4D vector type.
+Một kiểu vector 4D.
 
 .. _class_VisualShaderNodeRemap_constant_OP_TYPE_VECTOR_4D_SCALAR:
 
@@ -102,7 +102,7 @@ A 4D vector type.
 
 :ref:`OpType<enum_VisualShaderNodeRemap_OpType>` **OP_TYPE_VECTOR_4D_SCALAR** = ``6``
 
-The ``value`` port uses a 4D vector type, while the ``input min``, ``input max``, ``output min``, and ``output max`` ports use a floating-point scalar type.
+Cổng ``value`` sử dụng kiểu vector 4D, trong khi các cổng ``input min``, ``input max``, ``output min`` và ``output max`` sử dụng kiểu vô hướng dấu phẩy động.
 
 .. _class_VisualShaderNodeRemap_constant_OP_TYPE_MAX:
 
@@ -110,7 +110,7 @@ The ``value`` port uses a 4D vector type, while the ``input min``, ``input max``
 
 :ref:`OpType<enum_VisualShaderNodeRemap_OpType>` **OP_TYPE_MAX** = ``7``
 
-Represents the size of the :ref:`OpType<enum_VisualShaderNodeRemap_OpType>` enum.
+Biểu thị kích thước của enum :ref:`OpType <enum_VisualShaderNodeRemap_OpType>`.
 
 .. rst-class:: classref-section-separator
 
@@ -118,8 +118,8 @@ Represents the size of the :ref:`OpType<enum_VisualShaderNodeRemap_OpType>` enum
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeRemap_property_op_type:
 
@@ -136,12 +136,12 @@ Property Descriptions
 
 	There is currently no description for this property. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

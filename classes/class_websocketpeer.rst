@@ -10,20 +10,20 @@
 WebSocketPeer
 =============
 
-**Inherits:** :ref:`PacketPeer<class_PacketPeer>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`PacketPeer<class_PacketPeer>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A WebSocket connection.
+Một kết nối WebSocket.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This class represents WebSocket connection, and can be used as a WebSocket client (`RFC 6455 <https://datatracker.ietf.org/doc/html/rfc6455>`__-compliant) or as a remote peer of a WebSocket server.
+Lớp này biểu diễn một kết nối WebSocket và có thể được sử dụng làm WebSocket client (tuân thủ `RFC 6455 <https://datatracker.ietf.org/doc/html/rfc6455>`__) hoặc làm peer từ xa của máy chủ WebSocket.
 
-You can send WebSocket binary frames using :ref:`PacketPeer.put_packet()<class_PacketPeer_method_put_packet>`, and WebSocket text frames using :ref:`send()<class_WebSocketPeer_method_send>` (prefer text frames when interacting with text-based API). You can check the frame type of the last packet via :ref:`was_string_packet()<class_WebSocketPeer_method_was_string_packet>`.
+Bạn có thể gửi các frame nhị phân WebSocket bằng :ref:`PacketPeer.put_packet()<class_PacketPeer_method_put_packet>` và các frame văn bản WebSocket bằng :ref:`send()<class_WebSocketPeer_method_send>` (ưu tiên các frame văn bản khi tương tác với API dựa trên văn bản). Bạn có thể kiểm tra loại frame của packet cuối cùng thông qua :ref:`was_string_packet()<class_WebSocketPeer_method_was_string_packet>`.
 
-To start a WebSocket client, first call :ref:`connect_to_url()<class_WebSocketPeer_method_connect_to_url>`, then regularly call :ref:`poll()<class_WebSocketPeer_method_poll>` (e.g. during :ref:`Node<class_Node>` process). You can query the socket state via :ref:`get_ready_state()<class_WebSocketPeer_method_get_ready_state>`, get the number of pending packets using :ref:`PacketPeer.get_available_packet_count()<class_PacketPeer_method_get_available_packet_count>`, and retrieve them via :ref:`PacketPeer.get_packet()<class_PacketPeer_method_get_packet>`.
+Để khởi động một WebSocket client, trước tiên hãy gọi :ref:`connect_to_url()<class_WebSocketPeer_method_connect_to_url>`, sau đó thường xuyên gọi :ref:`poll()<class_WebSocketPeer_method_poll>` (ví dụ: trong quá trình :ref:`Node<class_Node>`). Bạn có thể truy vấn trạng thái socket thông qua :ref:`get_ready_state()<class_WebSocketPeer_method_get_ready_state>`, lấy số lượng packet đang chờ bằng :ref:`PacketPeer.get_available_packet_count()<class_PacketPeer_method_get_available_packet_count>` và truy xuất chúng thông qua :ref:`PacketPeer.get_packet()<class_PacketPeer_method_get_packet>`.
 
 
 .. tabs::
@@ -44,21 +44,21 @@ To start a WebSocket client, first call :ref:`connect_to_url()<class_WebSocketPe
             while socket.get_available_packet_count():
                 print("Packet: ", socket.get_packet())
         elif state == WebSocketPeer.STATE_CLOSING:
-            # Keep polling to achieve proper close.
+            # Tiếp tục polling để đóng kết nối đúng cách.
             pass
         elif state == WebSocketPeer.STATE_CLOSED:
             var code = socket.get_close_code()
             var reason = socket.get_close_reason()
             print("WebSocket closed with code: %d, reason %s. Clean: %s" % [code, reason, code != -1])
-            set_process(false) # Stop processing.
+            set_process(false) # Dừng xử lý.
 
 
 
-To use the peer as part of a WebSocket server refer to :ref:`accept_stream()<class_WebSocketPeer_method_accept_stream>` and the online tutorial.
+Để sử dụng peer như một phần của máy chủ WebSocket, hãy tham khảo :ref:`accept_stream()<class_WebSocketPeer_method_accept_stream>` và hướng dẫn trực tuyến.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -80,45 +80,45 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`  | :ref:`accept_stream<class_WebSocketPeer_method_accept_stream>`\ (\ stream\: :ref:`StreamPeer<class_StreamPeer>`\ )                                                           |
-   +----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                 | :ref:`close<class_WebSocketPeer_method_close>`\ (\ code\: :ref:`int<class_int>` = 1000, reason\: :ref:`String<class_String>` = ""\ )                                         |
-   +----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`  | :ref:`connect_to_url<class_WebSocketPeer_method_connect_to_url>`\ (\ url\: :ref:`String<class_String>`, tls_client_options\: :ref:`TLSOptions<class_TLSOptions>` = null\ )   |
-   +----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                  | :ref:`get_close_code<class_WebSocketPeer_method_get_close_code>`\ (\ ) |const|                                                                                               |
-   +----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`            | :ref:`get_close_reason<class_WebSocketPeer_method_get_close_reason>`\ (\ ) |const|                                                                                           |
-   +----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`            | :ref:`get_connected_host<class_WebSocketPeer_method_get_connected_host>`\ (\ ) |const|                                                                                       |
-   +----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                  | :ref:`get_connected_port<class_WebSocketPeer_method_get_connected_port>`\ (\ ) |const|                                                                                       |
-   +----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                  | :ref:`get_current_outbound_buffered_amount<class_WebSocketPeer_method_get_current_outbound_buffered_amount>`\ (\ ) |const|                                                   |
-   +----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`State<enum_WebSocketPeer_State>` | :ref:`get_ready_state<class_WebSocketPeer_method_get_ready_state>`\ (\ ) |const|                                                                                             |
-   +----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`            | :ref:`get_requested_url<class_WebSocketPeer_method_get_requested_url>`\ (\ ) |const|                                                                                         |
-   +----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`            | :ref:`get_selected_protocol<class_WebSocketPeer_method_get_selected_protocol>`\ (\ ) |const|                                                                                 |
-   +----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                 | :ref:`poll<class_WebSocketPeer_method_poll>`\ (\ )                                                                                                                           |
-   +----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`  | :ref:`send<class_WebSocketPeer_method_send>`\ (\ message\: :ref:`PackedByteArray<class_PackedByteArray>`, write_mode\: :ref:`WriteMode<enum_WebSocketPeer_WriteMode>` = 1\ ) |
-   +----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`  | :ref:`send_text<class_WebSocketPeer_method_send_text>`\ (\ message\: :ref:`String<class_String>`\ )                                                                          |
-   +----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                 | :ref:`set_no_delay<class_WebSocketPeer_method_set_no_delay>`\ (\ enabled\: :ref:`bool<class_bool>`\ )                                                                        |
-   +----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                | :ref:`was_string_packet<class_WebSocketPeer_method_was_string_packet>`\ (\ ) |const|                                                                                         |
-   +----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>`  | :ref:`accept_stream<class_WebSocketPeer_method_accept_stream>`\ (\ stream\: :ref:`StreamPeer<class_StreamPeer>`\ )                                                            |
+   +-----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                  | :ref:`close<class_WebSocketPeer_method_close>`\ (\ code\: :ref:`int<class_int>` = 1000, reason\: :ref:`String<class_String>` = ""\ )                                          |
+   +-----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>`  | :ref:`connect_to_url<class_WebSocketPeer_method_connect_to_url>`\ (\ url\: :ref:`String<class_String>`, tls_client_options\: :ref:`TLSOptions<class_TLSOptions>` = null\ )    |
+   +-----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                   | :ref:`get_close_code<class_WebSocketPeer_method_get_close_code>`\ (\ ) |const|                                                                                                |
+   +-----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`             | :ref:`get_close_reason<class_WebSocketPeer_method_get_close_reason>`\ (\ ) |const|                                                                                            |
+   +-----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`             | :ref:`get_connected_host<class_WebSocketPeer_method_get_connected_host>`\ (\ ) |const|                                                                                        |
+   +-----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                   | :ref:`get_connected_port<class_WebSocketPeer_method_get_connected_port>`\ (\ ) |const|                                                                                        |
+   +-----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                   | :ref:`get_current_outbound_buffered_amount<class_WebSocketPeer_method_get_current_outbound_buffered_amount>`\ (\ ) |const|                                                    |
+   +-----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`State <enum_WebSocketPeer_State>` | :ref:`get_ready_state<class_WebSocketPeer_method_get_ready_state>`\ (\ ) |const|                                                                                              |
+   +-----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`             | :ref:`get_requested_url<class_WebSocketPeer_method_get_requested_url>`\ (\ ) |const|                                                                                          |
+   +-----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`             | :ref:`get_selected_protocol<class_WebSocketPeer_method_get_selected_protocol>`\ (\ ) |const|                                                                                  |
+   +-----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                  | :ref:`poll<class_WebSocketPeer_method_poll>`\ (\ )                                                                                                                            |
+   +-----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>`  | :ref:`send<class_WebSocketPeer_method_send>`\ (\ message\: :ref:`PackedByteArray<class_PackedByteArray>`, write_mode\: :ref:`WriteMode <enum_WebSocketPeer_WriteMode>` = 1\ ) |
+   +-----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>`  | :ref:`send_text<class_WebSocketPeer_method_send_text>`\ (\ message\: :ref:`String<class_String>`\ )                                                                           |
+   +-----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                  | :ref:`set_no_delay<class_WebSocketPeer_method_set_no_delay>`\ (\ được bật\: :ref:`bool<class_bool>`\ )                                                                        |
+   +-----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                 | :ref:`was_string_packet<class_WebSocketPeer_method_was_string_packet>`\ (\ ) |const|                                                                                          |
+   +-----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -126,14 +126,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_WebSocketPeer_WriteMode:
 
 .. rst-class:: classref-enumeration
 
-enum **WriteMode**: :ref:`🔗<enum_WebSocketPeer_WriteMode>`
+enum **WriteMode**: :ref:`🔗 <enum_WebSocketPeer_WriteMode>`
 
 .. _class_WebSocketPeer_constant_WRITE_MODE_TEXT:
 
@@ -141,7 +141,7 @@ enum **WriteMode**: :ref:`🔗<enum_WebSocketPeer_WriteMode>`
 
 :ref:`WriteMode<enum_WebSocketPeer_WriteMode>` **WRITE_MODE_TEXT** = ``0``
 
-Specifies that WebSockets messages should be transferred as text payload (only valid UTF-8 is allowed).
+Chỉ định rằng các message của WebSockets phải được truyền dưới dạng payload văn bản (chỉ cho phép UTF-8 hợp lệ).
 
 .. _class_WebSocketPeer_constant_WRITE_MODE_BINARY:
 
@@ -149,7 +149,7 @@ Specifies that WebSockets messages should be transferred as text payload (only v
 
 :ref:`WriteMode<enum_WebSocketPeer_WriteMode>` **WRITE_MODE_BINARY** = ``1``
 
-Specifies that WebSockets messages should be transferred as binary payload (any byte combination is allowed).
+Chỉ định rằng các thông điệp WebSockets phải được truyền dưới dạng payload nhị phân (cho phép mọi tổ hợp byte).
 
 .. rst-class:: classref-item-separator
 
@@ -159,7 +159,7 @@ Specifies that WebSockets messages should be transferred as binary payload (any 
 
 .. rst-class:: classref-enumeration
 
-enum **State**: :ref:`🔗<enum_WebSocketPeer_State>`
+enum **State**: :ref:`🔗 <enum_WebSocketPeer_State>`
 
 .. _class_WebSocketPeer_constant_STATE_CONNECTING:
 
@@ -167,7 +167,7 @@ enum **State**: :ref:`🔗<enum_WebSocketPeer_State>`
 
 :ref:`State<enum_WebSocketPeer_State>` **STATE_CONNECTING** = ``0``
 
-Socket has been created. The connection is not yet open.
+Socket đã được tạo. Kết nối chưa mở.
 
 .. _class_WebSocketPeer_constant_STATE_OPEN:
 
@@ -175,7 +175,7 @@ Socket has been created. The connection is not yet open.
 
 :ref:`State<enum_WebSocketPeer_State>` **STATE_OPEN** = ``1``
 
-The connection is open and ready to communicate.
+Kết nối đang mở và sẵn sàng giao tiếp.
 
 .. _class_WebSocketPeer_constant_STATE_CLOSING:
 
@@ -183,7 +183,7 @@ The connection is open and ready to communicate.
 
 :ref:`State<enum_WebSocketPeer_State>` **STATE_CLOSING** = ``2``
 
-The connection is in the process of closing. This means a close request has been sent to the remote peer but confirmation has not been received.
+Kết nối đang trong quá trình đóng. Điều này có nghĩa là yêu cầu đóng đã được gửi đến peer từ xa nhưng chưa nhận được xác nhận.
 
 .. _class_WebSocketPeer_constant_STATE_CLOSED:
 
@@ -191,7 +191,7 @@ The connection is in the process of closing. This means a close request has been
 
 :ref:`State<enum_WebSocketPeer_State>` **STATE_CLOSED** = ``3``
 
-The connection is closed or couldn't be opened.
+Kết nối đã đóng hoặc không thể mở.
 
 .. rst-class:: classref-section-separator
 
@@ -199,8 +199,8 @@ The connection is closed or couldn't be opened.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_WebSocketPeer_property_handshake_headers:
 
@@ -213,11 +213,11 @@ Property Descriptions
 - |void| **set_handshake_headers**\ (\ value\: :ref:`PackedStringArray<class_PackedStringArray>`\ )
 - :ref:`PackedStringArray<class_PackedStringArray>` **get_handshake_headers**\ (\ )
 
-The extra HTTP headers to be sent during the WebSocket handshake.
+Các HTTP header bổ sung sẽ được gửi trong quá trình bắt tay WebSocket.
 
-\ **Note:** Not supported in Web exports due to browsers' restrictions.
+\ **Lưu ý:** Không được hỗ trợ trong Web export do các hạn chế của trình duyệt.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedStringArray<class_PackedStringArray>` for more details.
+**Lưu ý:** Mảng được trả về là *copied* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedStringArray<class_PackedStringArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -234,9 +234,9 @@ The extra HTTP headers to be sent during the WebSocket handshake.
 - |void| **set_heartbeat_interval**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_heartbeat_interval**\ (\ )
 
-The interval (in seconds) at which the peer will automatically send WebSocket "ping" control frames. When set to ``0``, no "ping" control frames will be sent.
+Khoảng thời gian (tính bằng giây) mà peer sẽ tự động gửi các control frame WebSocket "ping". Khi được đặt thành ``0``, sẽ không có control frame "ping" nào được gửi.
 
-\ **Note:** Has no effect in Web exports due to browser restrictions.
+\ **Lưu ý:** Không có tác dụng trong Web exports do các hạn chế của trình duyệt.
 
 .. rst-class:: classref-item-separator
 
@@ -253,7 +253,7 @@ The interval (in seconds) at which the peer will automatically send WebSocket "p
 - |void| **set_inbound_buffer_size**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_inbound_buffer_size**\ (\ )
 
-The size of the input buffer in bytes (roughly the maximum amount of memory that will be allocated for the inbound packets).
+Kích thước của bộ đệm đầu vào tính bằng byte (xấp xỉ lượng bộ nhớ tối đa sẽ được cấp phát cho các gói tin đến).
 
 .. rst-class:: classref-item-separator
 
@@ -270,7 +270,7 @@ The size of the input buffer in bytes (roughly the maximum amount of memory that
 - |void| **set_max_queued_packets**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_max_queued_packets**\ (\ )
 
-The maximum amount of packets that will be allowed in the queues (both inbound and outbound).
+Số lượng gói tin tối đa được phép trong các hàng đợi (cả đến và đi).
 
 .. rst-class:: classref-item-separator
 
@@ -287,7 +287,7 @@ The maximum amount of packets that will be allowed in the queues (both inbound a
 - |void| **set_outbound_buffer_size**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_outbound_buffer_size**\ (\ )
 
-The size of the input buffer in bytes (roughly the maximum amount of memory that will be allocated for the outbound packets).
+Kích thước của bộ đệm đầu vào tính bằng byte (xấp xỉ lượng bộ nhớ tối đa sẽ được cấp phát cho các gói tin đi).
 
 .. rst-class:: classref-item-separator
 
@@ -304,9 +304,9 @@ The size of the input buffer in bytes (roughly the maximum amount of memory that
 - |void| **set_supported_protocols**\ (\ value\: :ref:`PackedStringArray<class_PackedStringArray>`\ )
 - :ref:`PackedStringArray<class_PackedStringArray>` **get_supported_protocols**\ (\ )
 
-The WebSocket sub-protocols allowed during the WebSocket handshake.
+Các sub-protocol WebSocket được phép trong quá trình WebSocket handshake.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedStringArray<class_PackedStringArray>` for more details.
+**Lưu ý:** Mảng được trả về là *copied* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedStringArray<class_PackedStringArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-section-separator
 
@@ -314,8 +314,8 @@ The WebSocket sub-protocols allowed during the WebSocket handshake.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_WebSocketPeer_method_accept_stream:
 
@@ -323,9 +323,9 @@ Method Descriptions
 
 :ref:`Error<enum_@GlobalScope_Error>` **accept_stream**\ (\ stream\: :ref:`StreamPeer<class_StreamPeer>`\ ) :ref:`🔗<class_WebSocketPeer_method_accept_stream>`
 
-Accepts a peer connection performing the HTTP handshake as a WebSocket server. The ``stream`` must be a valid TCP stream retrieved via :ref:`TCPServer.take_connection()<class_TCPServer_method_take_connection>`, or a TLS stream accepted via :ref:`StreamPeerTLS.accept_stream()<class_StreamPeerTLS_method_accept_stream>`.
+Chấp nhận một kết nối peer thực hiện quá trình bắt tay HTTP với tư cách là máy chủ WebSocket. ``stream`` phải là một luồng TCP hợp lệ được truy xuất qua :ref:`TCPServer.take_connection()<class_TCPServer_method_take_connection>`, hoặc một luồng TLS được chấp nhận qua :ref:`StreamPeerTLS.accept_stream()<class_StreamPeerTLS_method_accept_stream>`.
 
-\ **Note:** Not supported in Web exports due to browsers' restrictions.
+\ **Lưu ý:** Không được hỗ trợ trong các bản xuất Web do các hạn chế của trình duyệt.
 
 .. rst-class:: classref-item-separator
 
@@ -337,15 +337,15 @@ Accepts a peer connection performing the HTTP handshake as a WebSocket server. T
 
 |void| **close**\ (\ code\: :ref:`int<class_int>` = 1000, reason\: :ref:`String<class_String>` = ""\ ) :ref:`🔗<class_WebSocketPeer_method_close>`
 
-Closes this WebSocket connection.
+Đóng kết nối WebSocket này.
 
-\ ``code`` is the status code for the closure (see `RFC 6455 section 7.4 <https://datatracker.ietf.org/doc/html/rfc6455#section-7.4.1>`__ for a list of valid status codes). If ``code`` is negative, the connection will be closed immediately without notifying the remote peer.
+\ ``code`` là mã trạng thái dùng để đóng kết nối (xem `RFC 6455 mục 7.4 <https://datatracker.ietf.org/doc/html/rfc6455#section-7.4.1>`__ để biết danh sách các mã trạng thái hợp lệ). Nếu ``code`` là số âm, kết nối sẽ được đóng ngay lập tức mà không thông báo cho peer từ xa.
 
-\ ``reason`` is the human-readable reason for closing the connection. It can be any UTF-8 string that's smaller than 123 bytes.
+\ ``reason`` là lý do đóng kết nối ở dạng văn bản mà con người có thể đọc được. Lý do này có thể là bất kỳ chuỗi UTF-8 nào nhỏ hơn 123 byte.
 
-\ **Note:** To achieve a clean closure, you will need to keep polling until :ref:`STATE_CLOSED<class_WebSocketPeer_constant_STATE_CLOSED>` is reached.
+\ **Lưu ý:** Để đóng kết nối một cách đúng quy trình, bạn cần tiếp tục polling cho đến khi đạt đến :ref:`STATE_CLOSED<class_WebSocketPeer_constant_STATE_CLOSED>`.
 
-\ **Note:** The Web export might not support all status codes. Please refer to browser-specific documentation for more details.
+\ **Lưu ý:** Web export có thể không hỗ trợ tất cả mã trạng thái. Vui lòng tham khảo tài liệu dành riêng cho từng trình duyệt để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -357,11 +357,11 @@ Closes this WebSocket connection.
 
 :ref:`Error<enum_@GlobalScope_Error>` **connect_to_url**\ (\ url\: :ref:`String<class_String>`, tls_client_options\: :ref:`TLSOptions<class_TLSOptions>` = null\ ) :ref:`🔗<class_WebSocketPeer_method_connect_to_url>`
 
-Connects to the given URL. TLS certificates will be verified against the hostname when connecting using the ``wss://`` protocol. You can pass the optional ``tls_client_options`` parameter to customize the trusted certification authorities, or disable the common name verification. See :ref:`TLSOptions.client()<class_TLSOptions_method_client>` and :ref:`TLSOptions.client_unsafe()<class_TLSOptions_method_client_unsafe>`.
+Kết nối đến URL đã cho. Chứng chỉ TLS sẽ được xác minh dựa trên hostname khi kết nối bằng giao thức ``wss://``. Bạn có thể truyền tham số ``tls_client_options`` tùy chọn để tùy chỉnh các cơ quan cấp chứng chỉ được tin cậy hoặc tắt việc xác minh common name. Xem :ref:`TLSOptions.client()<class_TLSOptions_method_client>` và :ref:`TLSOptions.client_unsafe()<class_TLSOptions_method_client_unsafe>`.
 
-\ **Note:** This method is non-blocking, and will return :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` before the connection is established as long as the provided parameters are valid and the peer is not in an invalid state (e.g. already connected). Regularly call :ref:`poll()<class_WebSocketPeer_method_poll>` (e.g. during :ref:`Node<class_Node>` process) and check the result of :ref:`get_ready_state()<class_WebSocketPeer_method_get_ready_state>` to know whether the connection succeeds or fails.
+\ **Lưu ý:** Phương thức này không chặn và sẽ trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` trước khi kết nối được thiết lập, miễn là các tham số đã cung cấp hợp lệ và peer không ở trạng thái không hợp lệ (ví dụ: đã được kết nối). Hãy gọi :ref:`poll()<class_WebSocketPeer_method_poll>` thường xuyên (ví dụ: trong quá trình :ref:`Node<class_Node>`) và kiểm tra kết quả của :ref:`get_ready_state()<class_WebSocketPeer_method_get_ready_state>` để biết kết nối thành công hay thất bại.
 
-\ **Note:** To avoid mixed content warnings or errors in Web, you may have to use a ``url`` that starts with ``wss://`` (secure) instead of ``ws://``. When doing so, make sure to use the fully qualified domain name that matches the one defined in the server's TLS certificate. Do not connect directly via the IP address for ``wss://`` connections, as it won't match with the TLS certificate.
+\ **Lưu ý:** Để tránh các cảnh báo hoặc lỗi mixed content trên Web, bạn có thể phải sử dụng ``url`` bắt đầu bằng ``wss://`` (an toàn) thay vì ``ws://``. Khi thực hiện việc này, hãy đảm bảo sử dụng fully qualified domain name khớp với tên được xác định trong chứng chỉ TLS của máy chủ. Không kết nối trực tiếp qua địa chỉ IP đối với các kết nối ``wss://``, vì địa chỉ này sẽ không khớp với chứng chỉ TLS.
 
 .. rst-class:: classref-item-separator
 
@@ -373,7 +373,7 @@ Connects to the given URL. TLS certificates will be verified against the hostnam
 
 :ref:`int<class_int>` **get_close_code**\ (\ ) |const| :ref:`🔗<class_WebSocketPeer_method_get_close_code>`
 
-Returns the received WebSocket close frame status code, or ``-1`` when the connection was not cleanly closed. Only call this method when :ref:`get_ready_state()<class_WebSocketPeer_method_get_ready_state>` returns :ref:`STATE_CLOSED<class_WebSocketPeer_constant_STATE_CLOSED>`.
+Trả về mã trạng thái frame đóng WebSocket đã nhận hoặc ``-1`` khi kết nối không được đóng một cách đúng quy trình. Chỉ gọi phương thức này khi :ref:`get_ready_state()<class_WebSocketPeer_method_get_ready_state>` trả về :ref:`STATE_CLOSED<class_WebSocketPeer_constant_STATE_CLOSED>`.
 
 .. rst-class:: classref-item-separator
 
@@ -385,7 +385,7 @@ Returns the received WebSocket close frame status code, or ``-1`` when the conne
 
 :ref:`String<class_String>` **get_close_reason**\ (\ ) |const| :ref:`🔗<class_WebSocketPeer_method_get_close_reason>`
 
-Returns the received WebSocket close frame status reason string. Only call this method when :ref:`get_ready_state()<class_WebSocketPeer_method_get_ready_state>` returns :ref:`STATE_CLOSED<class_WebSocketPeer_constant_STATE_CLOSED>`.
+Trả về chuỗi lý do của frame đóng WebSocket đã nhận. Chỉ gọi phương thức này khi :ref:`get_ready_state()<class_WebSocketPeer_method_get_ready_state>` trả về :ref:`STATE_CLOSED<class_WebSocketPeer_constant_STATE_CLOSED>`.
 
 .. rst-class:: classref-item-separator
 
@@ -397,9 +397,9 @@ Returns the received WebSocket close frame status reason string. Only call this 
 
 :ref:`String<class_String>` **get_connected_host**\ (\ ) |const| :ref:`🔗<class_WebSocketPeer_method_get_connected_host>`
 
-Returns the IP address of the connected peer.
+Trả về địa chỉ IP của peer đã kết nối.
 
-\ **Note:** Not available in the Web export.
+\ **Lưu ý:** Không khả dụng trong bản xuất Web.
 
 .. rst-class:: classref-item-separator
 
@@ -411,9 +411,9 @@ Returns the IP address of the connected peer.
 
 :ref:`int<class_int>` **get_connected_port**\ (\ ) |const| :ref:`🔗<class_WebSocketPeer_method_get_connected_port>`
 
-Returns the remote port of the connected peer.
+Trả về cổng từ xa của peer đã kết nối.
 
-\ **Note:** Not available in the Web export.
+\ **Lưu ý:** Không khả dụng trong bản xuất Web.
 
 .. rst-class:: classref-item-separator
 
@@ -425,7 +425,7 @@ Returns the remote port of the connected peer.
 
 :ref:`int<class_int>` **get_current_outbound_buffered_amount**\ (\ ) |const| :ref:`🔗<class_WebSocketPeer_method_get_current_outbound_buffered_amount>`
 
-Returns the current amount of data in the outbound websocket buffer. **Note:** Web exports use WebSocket.bufferedAmount, while other platforms use an internal buffer.
+Trả về lượng dữ liệu hiện tại trong bộ đệm WebSocket gửi đi. **Lưu ý:** Bản xuất Web sử dụng WebSocket.bufferedAmount, trong khi các nền tảng khác sử dụng bộ đệm nội bộ.
 
 .. rst-class:: classref-item-separator
 
@@ -437,7 +437,7 @@ Returns the current amount of data in the outbound websocket buffer. **Note:** W
 
 :ref:`State<enum_WebSocketPeer_State>` **get_ready_state**\ (\ ) |const| :ref:`🔗<class_WebSocketPeer_method_get_ready_state>`
 
-Returns the ready state of the connection.
+Trả về trạng thái sẵn sàng của kết nối.
 
 .. rst-class:: classref-item-separator
 
@@ -449,7 +449,7 @@ Returns the ready state of the connection.
 
 :ref:`String<class_String>` **get_requested_url**\ (\ ) |const| :ref:`🔗<class_WebSocketPeer_method_get_requested_url>`
 
-Returns the URL requested by this peer. The URL is derived from the ``url`` passed to :ref:`connect_to_url()<class_WebSocketPeer_method_connect_to_url>` or from the HTTP headers when acting as server (i.e. when using :ref:`accept_stream()<class_WebSocketPeer_method_accept_stream>`).
+Trả về URL được peer này yêu cầu. URL được lấy từ ``url`` được truyền vào :ref:`connect_to_url()<class_WebSocketPeer_method_connect_to_url>` hoặc từ các HTTP header khi hoạt động với vai trò máy chủ (tức là khi sử dụng :ref:`accept_stream()<class_WebSocketPeer_method_accept_stream>`).
 
 .. rst-class:: classref-item-separator
 
@@ -461,7 +461,7 @@ Returns the URL requested by this peer. The URL is derived from the ``url`` pass
 
 :ref:`String<class_String>` **get_selected_protocol**\ (\ ) |const| :ref:`🔗<class_WebSocketPeer_method_get_selected_protocol>`
 
-Returns the selected WebSocket sub-protocol for this connection or an empty string if the sub-protocol has not been selected yet.
+Trả về WebSocket sub-protocol được chọn cho kết nối này hoặc một chuỗi rỗng nếu sub-protocol vẫn chưa được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -473,7 +473,7 @@ Returns the selected WebSocket sub-protocol for this connection or an empty stri
 
 |void| **poll**\ (\ ) :ref:`🔗<class_WebSocketPeer_method_poll>`
 
-Updates the connection state and receive incoming packets. Call this function regularly to keep it in a clean state.
+Cập nhật trạng thái kết nối và nhận các gói tin đến. Gọi hàm này thường xuyên để giữ kết nối ở trạng thái ổn định.
 
 .. rst-class:: classref-item-separator
 
@@ -485,7 +485,7 @@ Updates the connection state and receive incoming packets. Call this function re
 
 :ref:`Error<enum_@GlobalScope_Error>` **send**\ (\ message\: :ref:`PackedByteArray<class_PackedByteArray>`, write_mode\: :ref:`WriteMode<enum_WebSocketPeer_WriteMode>` = 1\ ) :ref:`🔗<class_WebSocketPeer_method_send>`
 
-Sends the given ``message`` using the desired ``write_mode``. When sending a :ref:`String<class_String>`, prefer using :ref:`send_text()<class_WebSocketPeer_method_send_text>`.
+Gửi ``message`` đã cho bằng ``write_mode`` mong muốn. Khi gửi :ref:`String<class_String>`, nên sử dụng :ref:`send_text()<class_WebSocketPeer_method_send_text>`.
 
 .. rst-class:: classref-item-separator
 
@@ -497,7 +497,7 @@ Sends the given ``message`` using the desired ``write_mode``. When sending a :re
 
 :ref:`Error<enum_@GlobalScope_Error>` **send_text**\ (\ message\: :ref:`String<class_String>`\ ) :ref:`🔗<class_WebSocketPeer_method_send_text>`
 
-Sends the given ``message`` using WebSocket text mode. Prefer this method over :ref:`PacketPeer.put_packet()<class_PacketPeer_method_put_packet>` when interacting with third-party text-based API (e.g. when using :ref:`JSON<class_JSON>` formatted messages).
+Gửi ``message`` đã cho bằng chế độ văn bản WebSocket. Ưu tiên phương thức này hơn :ref:`PacketPeer.put_packet()<class_PacketPeer_method_put_packet>` khi tương tác với API dựa trên văn bản của bên thứ ba (ví dụ: khi sử dụng các thông báo được định dạng bằng :ref:`JSON<class_JSON>`).
 
 .. rst-class:: classref-item-separator
 
@@ -509,9 +509,9 @@ Sends the given ``message`` using WebSocket text mode. Prefer this method over :
 
 |void| **set_no_delay**\ (\ enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_WebSocketPeer_method_set_no_delay>`
 
-Disable Nagle's algorithm on the underlying TCP socket (default). See :ref:`StreamPeerTCP.set_no_delay()<class_StreamPeerTCP_method_set_no_delay>` for more information.
+Tắt thuật toán Nagle trên socket TCP bên dưới (mặc định). Xem :ref:`StreamPeerTCP.set_no_delay()<class_StreamPeerTCP_method_set_no_delay>` để biết thêm thông tin.
 
-\ **Note:** Not available in the Web export.
+\ **Lưu ý:** Không khả dụng trong bản xuất Web.
 
 .. rst-class:: classref-item-separator
 
@@ -523,14 +523,14 @@ Disable Nagle's algorithm on the underlying TCP socket (default). See :ref:`Stre
 
 :ref:`bool<class_bool>` **was_string_packet**\ (\ ) |const| :ref:`🔗<class_WebSocketPeer_method_was_string_packet>`
 
-Returns ``true`` if the last received packet was sent as a text payload. See :ref:`WriteMode<enum_WebSocketPeer_WriteMode>`.
+Trả về ``true`` nếu gói tin nhận được gần nhất được gửi dưới dạng payload văn bản. Xem :ref:`WriteMode <enum_WebSocketPeer_WriteMode>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

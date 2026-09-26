@@ -10,28 +10,28 @@
 World3D
 =======
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A resource that holds all components of a 3D world, such as a visual scenario and a physics space.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Class that has everything pertaining to a world: A physics space, a visual scenario, and a sound space. 3D nodes register their resources into the current 3D world.
+Một tài nguyên chứa tất cả thành phần của một thế giới 3D, chẳng hạn như một kịch bản trực quan và một không gian vật lý.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Lớp chứa mọi thứ liên quan đến một thế giới: Một không gian vật lý, một kịch bản trực quan và một không gian âm thanh. Các node 3D đăng ký tài nguyên của chúng vào thế giới 3D hiện tại.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
 - :doc:`Ray-casting <../tutorials/physics/ray-casting>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -58,21 +58,21 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_World3D_property_camera_attributes:
 
 .. rst-class:: classref-property
 
-:ref:`CameraAttributes<class_CameraAttributes>` **camera_attributes** :ref:`🔗<class_World3D_property_camera_attributes>`
+:ref:`CameraAttributes<class_CameraAttributes>` **camera_attributes** :ref:`🔗 <class_World3D_property_camera_attributes>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_camera_attributes**\ (\ value\: :ref:`CameraAttributes<class_CameraAttributes>`\ )
 - :ref:`CameraAttributes<class_CameraAttributes>` **get_camera_attributes**\ (\ )
 
-The default :ref:`CameraAttributes<class_CameraAttributes>` resource to use if none set on the :ref:`Camera3D<class_Camera3D>`.
+:ref:`CameraAttributes<class_CameraAttributes>` resource mặc định sẽ được sử dụng nếu chưa được thiết lập trên :ref:`Camera3D<class_Camera3D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -82,13 +82,13 @@ The default :ref:`CameraAttributes<class_CameraAttributes>` resource to use if n
 
 .. rst-class:: classref-property
 
-:ref:`PhysicsDirectSpaceState3D<class_PhysicsDirectSpaceState3D>` **direct_space_state** :ref:`🔗<class_World3D_property_direct_space_state>`
+:ref:`PhysicsDirectSpaceState3D<class_PhysicsDirectSpaceState3D>` **direct_space_state** :ref:`🔗 <class_World3D_property_direct_space_state>`
 
 .. rst-class:: classref-property-setget
 
 - :ref:`PhysicsDirectSpaceState3D<class_PhysicsDirectSpaceState3D>` **get_direct_space_state**\ (\ )
 
-Direct access to the world's physics 3D space state. Used for querying current and potential collisions. When using multi-threaded physics, access is limited to :ref:`Node._physics_process()<class_Node_private_method__physics_process>` in the main thread.
+Truy cập trực tiếp vào trạng thái không gian vật lý 3D của thế giới. Được sử dụng để truy vấn các va chạm hiện tại và có thể xảy ra. Khi sử dụng vật lý đa luồng, quyền truy cập bị giới hạn ở :ref:`Node._physics_process()<class_Node_private_method__physics_process>` trong luồng chính.
 
 .. rst-class:: classref-item-separator
 
@@ -98,14 +98,14 @@ Direct access to the world's physics 3D space state. Used for querying current a
 
 .. rst-class:: classref-property
 
-:ref:`Environment<class_Environment>` **environment** :ref:`🔗<class_World3D_property_environment>`
+:ref:`Environment<class_Environment>` **environment** :ref:`🔗 <class_World3D_property_environment>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_environment**\ (\ value\: :ref:`Environment<class_Environment>`\ )
 - :ref:`Environment<class_Environment>` **get_environment**\ (\ )
 
-The World3D's :ref:`Environment<class_Environment>`.
+:ref:`Environment<class_Environment>` của World3D.
 
 .. rst-class:: classref-item-separator
 
@@ -115,14 +115,14 @@ The World3D's :ref:`Environment<class_Environment>`.
 
 .. rst-class:: classref-property
 
-:ref:`Environment<class_Environment>` **fallback_environment** :ref:`🔗<class_World3D_property_fallback_environment>`
+:ref:`Environment<class_Environment>` **fallback_environment** :ref:`🔗 <class_World3D_property_fallback_environment>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_fallback_environment**\ (\ value\: :ref:`Environment<class_Environment>`\ )
 - :ref:`Environment<class_Environment>` **get_fallback_environment**\ (\ )
 
-The World3D's fallback environment will be used if :ref:`environment<class_World3D_property_environment>` fails or is missing.
+Môi trường dự phòng của World3D sẽ được sử dụng nếu :ref:`environment<class_World3D_property_environment>` không thành công hoặc bị thiếu.
 
 .. rst-class:: classref-item-separator
 
@@ -132,13 +132,13 @@ The World3D's fallback environment will be used if :ref:`environment<class_World
 
 .. rst-class:: classref-property
 
-:ref:`RID<class_RID>` **navigation_map** :ref:`🔗<class_World3D_property_navigation_map>`
+:ref:`RID<class_RID>` **navigation_map** :ref:`🔗 <class_World3D_property_navigation_map>`
 
 .. rst-class:: classref-property-setget
 
 - :ref:`RID<class_RID>` **get_navigation_map**\ (\ )
 
-The :ref:`RID<class_RID>` of this world's navigation map. Used by the :ref:`NavigationServer3D<class_NavigationServer3D>`.
+:ref:`RID<class_RID>` của bản đồ điều hướng của thế giới này. Được :ref:`NavigationServer3D<class_NavigationServer3D>` sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -148,13 +148,13 @@ The :ref:`RID<class_RID>` of this world's navigation map. Used by the :ref:`Navi
 
 .. rst-class:: classref-property
 
-:ref:`RID<class_RID>` **scenario** :ref:`🔗<class_World3D_property_scenario>`
+:ref:`RID<class_RID>` **scenario** :ref:`🔗 <class_World3D_property_scenario>`
 
 .. rst-class:: classref-property-setget
 
 - :ref:`RID<class_RID>` **get_scenario**\ (\ )
 
-The World3D's visual scenario.
+Kịch bản hình ảnh của World3D.
 
 .. rst-class:: classref-item-separator
 
@@ -164,20 +164,20 @@ The World3D's visual scenario.
 
 .. rst-class:: classref-property
 
-:ref:`RID<class_RID>` **space** :ref:`🔗<class_World3D_property_space>`
+:ref:`RID<class_RID>` **space** :ref:`🔗 <class_World3D_property_space>`
 
 .. rst-class:: classref-property-setget
 
 - :ref:`RID<class_RID>` **get_space**\ (\ )
 
-The World3D's physics space.
+Không gian vật lý của World3D.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

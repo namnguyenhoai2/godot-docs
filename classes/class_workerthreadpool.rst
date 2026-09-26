@@ -10,98 +10,98 @@
 WorkerThreadPool
 ================
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-A singleton that allocates some :ref:`Thread<class_Thread>`\ s on startup, used to offload tasks to these threads.
+Một singleton phân bổ một số :ref:`Thread<class_Thread>`\  khi khởi động, được dùng để chuyển các tác vụ sang những thread này.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The **WorkerThreadPool** singleton allocates a set of :ref:`Thread<class_Thread>`\ s (called worker threads) on project startup and provides methods for offloading tasks to them. This can be used for simple multithreading without having to create :ref:`Thread<class_Thread>`\ s.
+Singleton **WorkerThreadPool** phân bổ một tập hợp :ref:`Thread<class_Thread>`\  (gọi là worker thread) khi dự án khởi động và cung cấp các phương thức để chuyển tác vụ sang chúng. Có thể dùng cách này để thực hiện multithreading đơn giản mà không cần tạo :ref:`Thread<class_Thread>`\ .
 
-Tasks hold the :ref:`Callable<class_Callable>` to be run by the threads. **WorkerThreadPool** can be used to create regular tasks, which will be taken by one worker thread, or group tasks, which can be distributed between multiple worker threads. Group tasks execute the :ref:`Callable<class_Callable>` multiple times, which makes them useful for iterating over a lot of elements, such as the enemies in an arena.
+Các tác vụ chứa :ref:`Callable<class_Callable>` sẽ được các thread thực thi. Có thể dùng **WorkerThreadPool** để tạo các tác vụ thông thường, được một worker thread đảm nhận, hoặc các tác vụ nhóm, có thể được phân phối cho nhiều worker thread. Các tác vụ nhóm thực thi :ref:`Callable<class_Callable>` nhiều lần, nên rất hữu ích khi lặp qua một số lượng lớn phần tử, chẳng hạn như các enemy trong một arena.
 
-Here's a sample on how to offload an expensive function to worker threads:
+Sau đây là ví dụ về cách chuyển một hàm tốn nhiều tài nguyên sang các worker thread:
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    var enemies = [] # An array to be filled with enemies.
+    var enemies = [] # Một mảng sẽ được điền các enemy.
 
     func process_enemy_ai(enemy_index):
         var processed_enemy = enemies[enemy_index]
-        # Expensive logic...
+        # Logic tốn tài nguyên...
 
     func _process(delta):
         var task_id = WorkerThreadPool.add_group_task(process_enemy_ai, enemies.size())
-        # Other code...
+        # Code khác...
         WorkerThreadPool.wait_for_group_task_completion(task_id)
-        # Other code that depends on the enemy AI already being processed.
+        # Code khác phụ thuộc vào việc AI của kẻ địch đã được xử lý.
 
  .. code-tab:: csharp
 
-    private List<Node> _enemies = new List<Node>(); // A list to be filled with enemies.
+    private List<Node> _enemies = new List<Node>(); // Danh sách sẽ được điền các kẻ địch.
 
     private void ProcessEnemyAI(int enemyIndex)
     {
         Node processedEnemy = _enemies[enemyIndex];
-        // Expensive logic here.
+        // Logic tốn tài nguyên ở đây.
     }
 
     public override void _Process(double delta)
     {
         long taskId = WorkerThreadPool.AddGroupTask(Callable.From<int>(ProcessEnemyAI), _enemies.Count);
-        // Other code...
+        // Code khác...
         WorkerThreadPool.WaitForGroupTaskCompletion(taskId);
-        // Other code that depends on the enemy AI already being processed.
+        // Code khác phụ thuộc vào việc AI của kẻ địch đã được xử lý.
     }
 
 
 
-The above code relies on the number of elements in the ``enemies`` array remaining constant during the multithreaded part.
+Đoạn mã trên dựa vào việc số phần tử trong mảng ``enemies`` không thay đổi trong phần chạy đa luồng.
 
-\ **Note:** Using this singleton could affect performance negatively if the task being distributed between threads is not computationally expensive.
+\ **Lưu ý:** Việc sử dụng singleton này có thể ảnh hưởng tiêu cực đến hiệu năng nếu tác vụ được phân phối giữa các thread không yêu cầu nhiều tính toán.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
----------
+Các hướng dẫn
+-------------
 
-- :doc:`Using multiple threads <../tutorials/performance/using_multiple_threads>`
+- :doc:`Sử dụng nhiều thread <../tutorials/performance/using_multiple_threads>`
 
-- :doc:`Thread-safe APIs <../tutorials/performance/thread_safe_apis>`
+- :doc:`API an toàn với thread <../tutorials/performance/thread_safe_apis>`
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                 | :ref:`add_group_task<class_WorkerThreadPool_method_add_group_task>`\ (\ action\: :ref:`Callable<class_Callable>`, elements\: :ref:`int<class_int>`, tasks_needed\: :ref:`int<class_int>` = -1, high_priority\: :ref:`bool<class_bool>` = false, description\: :ref:`String<class_String>` = ""\ ) |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                 | :ref:`add_task<class_WorkerThreadPool_method_add_task>`\ (\ action\: :ref:`Callable<class_Callable>`, high_priority\: :ref:`bool<class_bool>` = false, description\: :ref:`String<class_String>` = ""\ )                                                                                          |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                 | :ref:`get_caller_group_id<class_WorkerThreadPool_method_get_caller_group_id>`\ (\ ) |const|                                                                                                                                                                                                       |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                 | :ref:`get_caller_task_id<class_WorkerThreadPool_method_get_caller_task_id>`\ (\ ) |const|                                                                                                                                                                                                         |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                 | :ref:`get_group_processed_element_count<class_WorkerThreadPool_method_get_group_processed_element_count>`\ (\ group_id\: :ref:`int<class_int>`\ ) |const|                                                                                                                                         |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`               | :ref:`is_group_task_completed<class_WorkerThreadPool_method_is_group_task_completed>`\ (\ group_id\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                             |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`               | :ref:`is_task_completed<class_WorkerThreadPool_method_is_task_completed>`\ (\ task_id\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                                          |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`wait_for_group_task_completion<class_WorkerThreadPool_method_wait_for_group_task_completion>`\ (\ group_id\: :ref:`int<class_int>`\ )                                                                                                                                                       |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`wait_for_task_completion<class_WorkerThreadPool_method_wait_for_task_completion>`\ (\ task_id\: :ref:`int<class_int>`\ )                                                                                                                                                                    |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                  | :ref:`add_group_task<class_WorkerThreadPool_method_add_group_task>`\ (\ action\: :ref:`Callable<class_Callable>`, elements\: :ref:`int<class_int>`, tasks_needed\: :ref:`int<class_int>` = -1, high_priority\: :ref:`bool<class_bool>` = false, description\: :ref:`String<class_String>` = ""\ ) |
+   +----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                  | :ref:`add_task<class_WorkerThreadPool_method_add_task>`\ (\ action\: :ref:`Callable<class_Callable>`, high_priority\: :ref:`bool<class_bool>` = false, description\: :ref:`String<class_String>` = ""\ )                                                                                          |
+   +----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                  | :ref:`get_caller_group_id<class_WorkerThreadPool_method_get_caller_group_id>`\ (\ ) |const|                                                                                                                                                                                                       |
+   +----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                  | :ref:`get_caller_task_id<class_WorkerThreadPool_method_get_caller_task_id>`\ (\ ) |const|                                                                                                                                                                                                         |
+   +----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                  | :ref:`get_group_processed_element_count<class_WorkerThreadPool_method_get_group_processed_element_count>`\ (\ group_id\: :ref:`int<class_int>`\ ) |const|                                                                                                                                         |
+   +----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                | :ref:`is_group_task_completed<class_WorkerThreadPool_method_is_group_task_completed>`\ (\ group_id\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                             |
+   +----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                | :ref:`is_task_completed<class_WorkerThreadPool_method_is_task_completed>`\ (\ task_id\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                                          |
+   +----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                 | :ref:`wait_for_group_task_completion<class_WorkerThreadPool_method_wait_for_group_task_completion>`\ (\ group_id\: :ref:`int<class_int>`\ )                                                                                                                                                       |
+   +----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`wait_for_task_completion<class_WorkerThreadPool_method_wait_for_task_completion>`\ (\ task_id\: :ref:`int<class_int>`\ )                                                                                                                                                                    |
+   +----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -109,8 +109,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_WorkerThreadPool_method_add_group_task:
 
@@ -118,13 +118,13 @@ Method Descriptions
 
 :ref:`int<class_int>` **add_group_task**\ (\ action\: :ref:`Callable<class_Callable>`, elements\: :ref:`int<class_int>`, tasks_needed\: :ref:`int<class_int>` = -1, high_priority\: :ref:`bool<class_bool>` = false, description\: :ref:`String<class_String>` = ""\ ) :ref:`🔗<class_WorkerThreadPool_method_add_group_task>`
 
-Adds ``action`` as a group task to be executed by the worker threads. The :ref:`Callable<class_Callable>` will be called a number of times based on ``elements``, with the first thread calling it with the value ``0`` as a parameter, and each consecutive execution incrementing this value by 1 until it reaches ``element - 1``.
+Thêm ``action`` dưới dạng một tác vụ nhóm để các worker thread thực thi. :ref:`Callable<class_Callable>` sẽ được gọi nhiều lần dựa trên ``elements``, trong đó thread đầu tiên gọi nó với giá trị ``0`` làm tham số, và mỗi lần thực thi tiếp theo tăng giá trị này lên 1 cho đến khi đạt ``element - 1``.
 
-The number of threads the task is distributed to is defined by ``tasks_needed``, where the default value ``-1`` means it is distributed to all worker threads. ``high_priority`` determines if the task has a high priority or a low priority (default). You can optionally provide a ``description`` to help with debugging.
+Số thread mà tác vụ được phân phối đến được xác định bởi ``tasks_needed``, trong đó giá trị mặc định ``-1`` có nghĩa là tác vụ được phân phối đến tất cả worker thread. ``high_priority`` xác định tác vụ có độ ưu tiên cao hay thấp (mặc định). Bạn cũng có thể cung cấp ``description`` để hỗ trợ việc gỡ lỗi.
 
-Returns a group task ID that can be used by other methods.
+Trả về ID của tác vụ nhóm, có thể được các phương thức khác sử dụng.
 
-\ **Warning:** Every task must be waited for completion using :ref:`wait_for_task_completion()<class_WorkerThreadPool_method_wait_for_task_completion>` or :ref:`wait_for_group_task_completion()<class_WorkerThreadPool_method_wait_for_group_task_completion>` at some point so that any allocated resources inside the task can be cleaned up.
+\ **Cảnh báo:** Mọi tác vụ phải được chờ hoàn thành bằng :ref:`wait_for_task_completion()<class_WorkerThreadPool_method_wait_for_task_completion>` hoặc :ref:`wait_for_group_task_completion()<class_WorkerThreadPool_method_wait_for_group_task_completion>` tại một thời điểm nào đó để các tài nguyên được cấp phát bên trong tác vụ có thể được dọn dẹp.
 
 .. rst-class:: classref-item-separator
 
@@ -136,11 +136,11 @@ Returns a group task ID that can be used by other methods.
 
 :ref:`int<class_int>` **add_task**\ (\ action\: :ref:`Callable<class_Callable>`, high_priority\: :ref:`bool<class_bool>` = false, description\: :ref:`String<class_String>` = ""\ ) :ref:`🔗<class_WorkerThreadPool_method_add_task>`
 
-Adds ``action`` as a task to be executed by a worker thread. ``high_priority`` determines if the task has a high priority or a low priority (default). You can optionally provide a ``description`` to help with debugging.
+Thêm ``action`` dưới dạng một tác vụ để một worker thread thực thi. ``high_priority`` xác định tác vụ có độ ưu tiên cao hay thấp (mặc định). Bạn cũng có thể cung cấp ``description`` để hỗ trợ việc gỡ lỗi.
 
-Returns a task ID that can be used by other methods.
+Trả về ID của tác vụ, có thể được các phương thức khác sử dụng.
 
-\ **Warning:** Every task must be waited for completion using :ref:`wait_for_task_completion()<class_WorkerThreadPool_method_wait_for_task_completion>` or :ref:`wait_for_group_task_completion()<class_WorkerThreadPool_method_wait_for_group_task_completion>` at some point so that any allocated resources inside the task can be cleaned up.
+\ **Cảnh báo:** Mọi tác vụ phải được chờ hoàn thành bằng :ref:`wait_for_task_completion()<class_WorkerThreadPool_method_wait_for_task_completion>` hoặc :ref:`wait_for_group_task_completion()<class_WorkerThreadPool_method_wait_for_group_task_completion>` tại một thời điểm nào đó để các tài nguyên được cấp phát bên trong tác vụ có thể được dọn dẹp.
 
 .. rst-class:: classref-item-separator
 
@@ -152,7 +152,7 @@ Returns a task ID that can be used by other methods.
 
 :ref:`int<class_int>` **get_caller_group_id**\ (\ ) |const| :ref:`🔗<class_WorkerThreadPool_method_get_caller_group_id>`
 
-Returns the task group ID of the current thread calling this method, or ``-1`` if invalid or the current thread is not part of a task group.
+Trả về ID của nhóm tác vụ của thread hiện tại đang gọi phương thức này hoặc ``-1`` nếu không hợp lệ hoặc thread hiện tại không thuộc một nhóm tác vụ.
 
 .. rst-class:: classref-item-separator
 
@@ -164,11 +164,11 @@ Returns the task group ID of the current thread calling this method, or ``-1`` i
 
 :ref:`int<class_int>` **get_caller_task_id**\ (\ ) |const| :ref:`🔗<class_WorkerThreadPool_method_get_caller_task_id>`
 
-Returns the task ID of the current thread calling this method, or ``-1`` if the task is a group task, invalid or the current thread is not part of the thread pool (e.g. the main thread).
+Trả về ID của tác vụ của thread hiện tại đang gọi phương thức này hoặc ``-1`` nếu tác vụ là tác vụ nhóm, không hợp lệ hoặc thread hiện tại không thuộc thread pool (ví dụ: main thread).
 
-Can be used by a task to get its own task ID, or to determine whether the current code is running inside the worker thread pool.
+Có thể được một tác vụ sử dụng để lấy ID tác vụ của chính nó hoặc xác định xem mã hiện tại có đang chạy bên trong worker thread pool hay không.
 
-\ **Note:** Group tasks have their own IDs, so this method will return ``-1`` for group tasks.
+\ **Lưu ý:** Tác vụ nhóm có ID riêng, vì vậy phương thức này sẽ trả về ``-1`` đối với các tác vụ nhóm.
 
 .. rst-class:: classref-item-separator
 
@@ -180,9 +180,9 @@ Can be used by a task to get its own task ID, or to determine whether the curren
 
 :ref:`int<class_int>` **get_group_processed_element_count**\ (\ group_id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_WorkerThreadPool_method_get_group_processed_element_count>`
 
-Returns how many times the :ref:`Callable<class_Callable>` of the group task with the given ID has already been executed by the worker threads.
+Trả về số lần :ref:`Callable<class_Callable>` của tác vụ nhóm có ID đã cho đã được các worker thread thực thi.
 
-\ **Note:** If a thread has started executing the :ref:`Callable<class_Callable>` but is yet to finish, it won't be counted.
+\ **Lưu ý:** Nếu một thread đã bắt đầu thực thi :ref:`Callable<class_Callable>` nhưng chưa hoàn tất, nó sẽ không được tính.
 
 .. rst-class:: classref-item-separator
 
@@ -194,9 +194,9 @@ Returns how many times the :ref:`Callable<class_Callable>` of the group task wit
 
 :ref:`bool<class_bool>` **is_group_task_completed**\ (\ group_id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_WorkerThreadPool_method_is_group_task_completed>`
 
-Returns ``true`` if the group task with the given ID is completed.
+Trả về ``true`` nếu group task có ID đã cho hoàn tất.
 
-\ **Note:** You should only call this method between adding the group task and awaiting its completion.
+\ **Lưu ý:** Bạn chỉ nên gọi method này trong khoảng thời gian từ khi thêm group task đến khi chờ tác vụ hoàn tất.
 
 .. rst-class:: classref-item-separator
 
@@ -208,9 +208,9 @@ Returns ``true`` if the group task with the given ID is completed.
 
 :ref:`bool<class_bool>` **is_task_completed**\ (\ task_id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_WorkerThreadPool_method_is_task_completed>`
 
-Returns ``true`` if the task with the given ID is completed.
+Trả về ``true`` nếu task có ID đã cho hoàn tất.
 
-\ **Note:** You should only call this method between adding the task and awaiting its completion.
+\ **Lưu ý:** Bạn chỉ nên gọi method này trong khoảng thời gian từ khi thêm task đến khi chờ tác vụ hoàn tất.
 
 .. rst-class:: classref-item-separator
 
@@ -222,7 +222,7 @@ Returns ``true`` if the task with the given ID is completed.
 
 |void| **wait_for_group_task_completion**\ (\ group_id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_WorkerThreadPool_method_wait_for_group_task_completion>`
 
-Pauses the thread that calls this method until the group task with the given ID is completed.
+Tạm dừng thread gọi method này cho đến khi group task có ID đã cho hoàn tất.
 
 .. rst-class:: classref-item-separator
 
@@ -234,20 +234,20 @@ Pauses the thread that calls this method until the group task with the given ID 
 
 :ref:`Error<enum_@GlobalScope_Error>` **wait_for_task_completion**\ (\ task_id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_WorkerThreadPool_method_wait_for_task_completion>`
 
-Pauses the thread that calls this method until the task with the given ID is completed.
+Tạm dừng thread gọi method này cho đến khi task có ID đã cho hoàn tất.
 
-Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` if the task could be successfully awaited.
+Trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` nếu có thể chờ task thành công.
 
-Returns :ref:`@GlobalScope.ERR_INVALID_PARAMETER<class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` if a task with the passed ID does not exist (maybe because it was already awaited and disposed of).
+Trả về :ref:`@GlobalScope.ERR_INVALID_PARAMETER <class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` nếu không tồn tại task có ID đã truyền (có thể vì task đó đã được await và giải phóng).
 
-Returns :ref:`@GlobalScope.ERR_BUSY<class_@GlobalScope_constant_ERR_BUSY>` if the call is made from another running task and, due to task scheduling, there's potential for deadlocking (e.g., the task to await may be at a lower level in the call stack and therefore can't progress). This is an advanced situation that should only matter when some tasks depend on others (in the current implementation, the tricky case is a task trying to wait on an older one).
+Trả về :ref:`@GlobalScope.ERR_BUSY <class_@GlobalScope_constant_ERR_BUSY>` nếu lệnh gọi được thực hiện từ một task khác đang chạy và, do việc lập lịch task, có khả năng xảy ra deadlock (ví dụ: task cần await có thể nằm ở mức thấp hơn trong call stack nên không thể tiếp tục). Đây là tình huống nâng cao, chỉ đáng lưu ý khi một số task phụ thuộc lẫn nhau (trong implementation hiện tại, trường hợp khó xử là một task cố chờ một task cũ hơn).
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

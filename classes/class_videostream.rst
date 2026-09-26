@@ -10,31 +10,31 @@
 VideoStream
 ===========
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa từ:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`VideoStreamTheora<class_VideoStreamTheora>`
+**Được kế thừa bởi:** :ref:`VideoStreamTheora<class_VideoStreamTheora>`
 
-Base resource for video streams.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Base resource type for all video streams. Classes that derive from **VideoStream** can all be used as resource types to play back videos in :ref:`VideoStreamPlayer<class_VideoStreamPlayer>`.
+Tài nguyên cơ sở cho các luồng video.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Loại tài nguyên cơ sở cho tất cả các luồng video. Tất cả các lớp dẫn xuất từ **VideoStream** đều có thể được sử dụng làm loại tài nguyên để phát video trong :ref:`VideoStreamPlayer<class_VideoStreamPlayer>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Playing videos <../tutorials/animation/playing_videos>`
+- :doc:`Phát video <../tutorials/animation/playing_videos>`
 
-- :doc:`Runtime file loading and saving <../tutorials/io/runtime_file_loading_and_saving>`
+- :doc:`Tải và lưu tệp trong runtime <../tutorials/io/runtime_file_loading_and_saving>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -46,8 +46,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -62,8 +62,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VideoStream_property_file:
 
@@ -76,9 +76,9 @@ Property Descriptions
 - |void| **set_file**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_file**\ (\ )
 
-The video file path or URI that this **VideoStream** resource handles.
+Đường dẫn tệp video hoặc URI mà tài nguyên **VideoStream** này xử lý.
 
-For :ref:`VideoStreamTheora<class_VideoStreamTheora>`, this filename should be an Ogg Theora video file with the ``.ogv`` extension.
+Đối với :ref:`VideoStreamTheora<class_VideoStreamTheora>`, tên tệp này phải là tệp video Ogg Theora có phần mở rộng ``.ogv``.
 
 .. rst-class:: classref-section-separator
 
@@ -86,8 +86,8 @@ For :ref:`VideoStreamTheora<class_VideoStreamTheora>`, this filename should be a
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_VideoStream_private_method__instantiate_playback:
 
@@ -95,14 +95,14 @@ Method Descriptions
 
 :ref:`VideoStreamPlayback<class_VideoStreamPlayback>` **_instantiate_playback**\ (\ ) |virtual| |required| :ref:`🔗<class_VideoStream_private_method__instantiate_playback>`
 
-Called when the video starts playing, to initialize and return a subclass of :ref:`VideoStreamPlayback<class_VideoStreamPlayback>`.
+Được gọi khi video bắt đầu phát để khởi tạo và trả về một lớp con của :ref:`VideoStreamPlayback<class_VideoStreamPlayback>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`
