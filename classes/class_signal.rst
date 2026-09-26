@@ -10,16 +10,16 @@
 Signal
 ======
 
-A built-in type representing a signal of an :ref:`Object<class_Object>`.
+Một kiểu dựng sẵn đại diện cho tín hiệu của một :ref:`Object<class_Object>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**Signal** is a built-in :ref:`Variant<class_Variant>` type that represents a signal of an :ref:`Object<class_Object>` instance. Like all :ref:`Variant<class_Variant>` types, it can be stored in variables and passed to functions. Signals allow all connected :ref:`Callable<class_Callable>`\ s (and by extension their respective objects) to listen and react to events, without directly referencing one another. This keeps the code flexible and easier to manage. You can check whether an :ref:`Object<class_Object>` has a given signal name using :ref:`Object.has_signal()<class_Object_method_has_signal>`.
+**Signal** là một kiểu :ref:`Variant<class_Variant>` dựng sẵn, đại diện cho tín hiệu của một thực thể :ref:`Object<class_Object>`. Giống như mọi kiểu :ref:`Variant<class_Variant>`, nó có thể được lưu trong các biến và truyền vào các hàm. Tín hiệu cho phép tất cả :ref:`Callable<class_Callable>`\  được kết nối (và qua đó là các đối tượng tương ứng của chúng) lắng nghe và phản hồi các sự kiện mà không cần tham chiếu trực tiếp đến nhau. Điều này giúp mã linh hoạt và dễ quản lý hơn. Bạn có thể kiểm tra xem một :ref:`Object<class_Object>` có tên tín hiệu nhất định hay không bằng :ref:`Object.has_signal()<class_Object_method_has_signal>`.
 
-In GDScript, signals can be declared with the ``signal`` keyword. In C#, you may use the ``[Signal]`` attribute on a delegate.
+Trong GDScript, có thể khai báo tín hiệu bằng từ khóa ``signal``. Trong C#, bạn có thể sử dụng thuộc tính ``[Signal]`` trên một delegate.
 
 
 .. tabs::
@@ -28,8 +28,8 @@ In GDScript, signals can be declared with the ``signal`` keyword. In C#, you may
 
     signal attacked
 
-    # Additional arguments may be declared.
-    # These arguments must be passed when the signal is emitted.
+    # Có thể khai báo các đối số bổ sung.
+    # Các đối số này phải được truyền khi tín hiệu được phát.
     signal item_dropped(item_name, amount)
 
  .. code-tab:: csharp
@@ -37,14 +37,14 @@ In GDScript, signals can be declared with the ``signal`` keyword. In C#, you may
     [Signal]
     delegate void AttackedEventHandler();
 
-    // Additional arguments may be declared.
-    // These arguments must be passed when the signal is emitted.
+    // Có thể khai báo các đối số bổ sung.
+    // Các đối số này phải được truyền khi tín hiệu được phát.
     [Signal]
     delegate void ItemDroppedEventHandler(string itemName, int amount);
 
 
 
-Connecting signals is one of the most common operations in Godot and the API gives many options to do so, which are described further down. The code block below shows the recommended approach.
+Kết nối tín hiệu là một trong những thao tác phổ biến nhất trong Godot và API cung cấp nhiều tùy chọn để thực hiện việc này, được mô tả ở phần dưới. Khối mã bên dưới cho thấy cách tiếp cận được khuyến nghị.
 
 
 .. tabs::
@@ -53,14 +53,14 @@ Connecting signals is one of the most common operations in Godot and the API giv
 
     func _ready():
         var button = Button.new()
-        # `button_down` here is a Signal Variant type. We therefore call the Signal.connect() method, not Object.connect().
-        # See discussion below for a more in-depth overview of the API.
+        # `button_down` ở đây là một kiểu Signal Variant. Vì vậy, chúng ta gọi phương thức Signal.connect(), không phải Object.connect().
+        # Xem phần thảo luận bên dưới để có cái nhìn tổng quan chuyên sâu hơn về API.
         button.button_down.connect(_on_button_down)
 
-        # This assumes that a `Player` class exists, which defines a `hit` signal.
+        # Điều này giả định rằng một lớp `Player` tồn tại và định nghĩa một tín hiệu `hit`.
         var player = Player.new()
-        # We use Signal.connect() again, and we also use the Callable.bind() method,
-        # which returns a new Callable with the parameter binds.
+        # Chúng ta lại sử dụng Signal.connect() và cũng sử dụng phương thức Callable.bind(),
+        # phương thức này trả về một Callable mới với các tham số được bind.
         player.hit.connect(_on_player_hit.bind("sword", 100))
 
     func _on_button_down():
@@ -74,12 +74,12 @@ Connecting signals is one of the most common operations in Godot and the API giv
     public override void _Ready()
     {
         var button = new Button();
-        // C# supports passing signals as events, so we can use this idiomatic construct:
+        // C# hỗ trợ truyền tín hiệu dưới dạng các event, vì vậy chúng ta có thể sử dụng cấu trúc đúng theo quy ước này:
         button.ButtonDown += OnButtonDown;
 
-        // This assumes that a `Player` class exists, which defines a `Hit` signal.
+        // Điều này giả định rằng một lớp `Player` tồn tại và định nghĩa một tín hiệu `Hit`.
         var player = new Player();
-        // We can use lambdas when we need to bind additional parameters.
+        // Chúng ta có thể sử dụng lambda khi cần bind các tham số bổ sung.
         player.Hit += () => OnPlayerHit("sword", 100);
     }
 
@@ -95,9 +95,9 @@ Connecting signals is one of the most common operations in Godot and the API giv
 
 
 
-\ ``Object.connect()`` **or** ``Signal.connect()``\ **?**\ 
+\ ``Object.connect()`` **hoặc** ``Signal.connect()``\ **?**\
 
-As seen above, the recommended method to connect signals is not :ref:`Object.connect()<class_Object_method_connect>`. The code block below shows the four options for connecting signals, using either this legacy method or the recommended :ref:`connect()<class_Signal_method_connect>`, and using either an implicit :ref:`Callable<class_Callable>` or a manually defined one.
+Như đã thấy ở trên, phương pháp được khuyến nghị để kết nối các tín hiệu không phải là :ref:`Object.connect()<class_Object_method_connect>`. Khối mã bên dưới trình bày bốn tùy chọn để kết nối các tín hiệu, sử dụng phương pháp cũ này hoặc :ref:`connect()<class_Signal_method_connect>` được khuyến nghị, đồng thời sử dụng :ref:`Callable<class_Callable>` ngầm định hoặc một phương thức được định nghĩa thủ công.
 
 
 .. tabs::
@@ -106,13 +106,13 @@ As seen above, the recommended method to connect signals is not :ref:`Object.con
 
     func _ready():
         var button = Button.new()
-        # Option 1: Object.connect() with an implicit Callable for the defined function.
+        # Tùy chọn 1: Object.connect() với một Callable ngầm định cho hàm đã định nghĩa.
         button.connect("button_down", _on_button_down)
-        # Option 2: Object.connect() with a constructed Callable using a target object and method name.
+        # Tùy chọn 2: Object.connect() với một Callable được tạo bằng đối tượng đích và tên phương thức.
         button.connect("button_down", Callable(self, "_on_button_down"))
-        # Option 3: Signal.connect() with an implicit Callable for the defined function.
+        # Tùy chọn 3: Signal.connect() với một Callable ngầm định cho hàm đã định nghĩa.
         button.button_down.connect(_on_button_down)
-        # Option 4: Signal.connect() with a constructed Callable using a target object and method name.
+        # Tùy chọn 4: Signal.connect() với một Callable được tạo bằng đối tượng đích và tên phương thức.
         button.button_down.connect(Callable(self, "_on_button_down"))
 
     func _on_button_down():
@@ -123,11 +123,11 @@ As seen above, the recommended method to connect signals is not :ref:`Object.con
     public override void _Ready()
     {
         var button = new Button();
-        // Option 1: In C#, we can use signals as events and connect with this idiomatic syntax:
+        // Tùy chọn 1: Trong C#, chúng ta có thể sử dụng tín hiệu như các event và kết nối bằng cú pháp đúng theo quy ước này:
         button.ButtonDown += OnButtonDown;
-        // Option 2: GodotObject.Connect() with a constructed Callable from a method group.
+        // Tùy chọn 2: GodotObject.Connect() với một Callable được tạo từ một method group.
         button.Connect(Button.SignalName.ButtonDown, Callable.From(OnButtonDown));
-        // Option 3: GodotObject.Connect() with a constructed Callable using a target object and method name.
+        // Tùy chọn 3: GodotObject.Connect() với một Callable được tạo bằng đối tượng đích và tên phương thức.
         button.Connect(Button.SignalName.ButtonDown, new Callable(this, MethodName.OnButtonDown));
     }
 
@@ -138,13 +138,13 @@ As seen above, the recommended method to connect signals is not :ref:`Object.con
 
 
 
-While all options have the same outcome (``button``'s :ref:`BaseButton.button_down<class_BaseButton_signal_button_down>` signal will be connected to ``_on_button_down``), **option 3** offers the best validation: it will print a compile-time error if either the ``button_down`` **Signal** or the ``_on_button_down`` :ref:`Callable<class_Callable>` are not defined. On the other hand, **option 2** only relies on string names and will only be able to validate either names at runtime: it will generate an error at runtime if ``"button_down"`` is not a signal, or if ``"_on_button_down"`` is not a method in the object ``self``. The main reason for using options 1, 2, or 4 would be if you actually need to use strings (e.g. to connect signals programmatically based on strings read from a configuration file). Otherwise, option 3 is the recommended (and fastest) method.
+Mặc dù tất cả các tùy chọn đều cho cùng một kết quả (tín hiệu :ref:`BaseButton.button_down<class_BaseButton_signal_button_down>` của ``button`` sẽ được kết nối với ``_on_button_down``), **tùy chọn 3** cung cấp khả năng xác thực tốt nhất: nó sẽ in ra lỗi khi biên dịch nếu ``button_down`` **Signal** hoặc ``_on_button_down`` :ref:`Callable<class_Callable>` chưa được định nghĩa. Mặt khác, **tùy chọn 2** chỉ dựa vào tên chuỗi và chỉ có thể xác thực một trong hai tên vào thời điểm chạy: nó sẽ tạo lỗi khi chạy nếu ``"button_down"`` không phải là một tín hiệu, hoặc nếu ``"_on_button_down"`` không phải là một phương thức trong đối tượng ``self``. Lý do chính để sử dụng tùy chọn 1, 2 hoặc 4 là khi bạn thực sự cần sử dụng chuỗi (ví dụ: để kết nối tín hiệu theo chương trình dựa trên các chuỗi được đọc từ tệp cấu hình). Nếu không, tùy chọn 3 là phương thức được khuyến nghị (và nhanh nhất).
 
-\ **Binding and passing parameters:**\ 
+\ **Liên kết và truyền tham số:**\
 
-The syntax to bind parameters is through :ref:`Callable.bind()<class_Callable_method_bind>`, which returns a copy of the :ref:`Callable<class_Callable>` with its parameters bound.
+Cú pháp để bind tham số là thông qua :ref:`Callable.bind()<class_Callable_method_bind>`, phương thức này trả về một bản sao của :ref:`Callable<class_Callable>` với các tham số đã được bind.
 
-When calling :ref:`emit()<class_Signal_method_emit>` or :ref:`Object.emit_signal()<class_Object_method_emit_signal>`, the signal parameters can be also passed. The examples below show the relationship between these signal parameters and bound parameters.
+Khi gọi :ref:`emit()<class_Signal_method_emit>` hoặc :ref:`Object.emit_signal()<class_Object_method_emit_signal>`, bạn cũng có thể truyền các tham số tín hiệu. Các ví dụ bên dưới cho thấy mối quan hệ giữa các tham số tín hiệu và các tham số đã bind.
 
 
 .. tabs::
@@ -152,16 +152,16 @@ When calling :ref:`emit()<class_Signal_method_emit>` or :ref:`Object.emit_signal
  .. code-tab:: gdscript
 
     func _ready():
-        # This assumes that a `Player` class exists, which defines a `hit` signal.
+        # Điều này giả định rằng một lớp `Player` tồn tại và định nghĩa một tín hiệu `hit`.
         var player = Player.new()
-        # Using Callable.bind().
+        # Sử dụng Callable.bind().
         player.hit.connect(_on_player_hit.bind("sword", 100))
 
-        # Parameters added when emitting the signal are passed first.
+        # Các tham số được thêm khi phát tín hiệu sẽ được truyền trước.
         player.hit.emit("Dark lord", 5)
 
-    # We pass two arguments when emitting (`hit_by`, `level`),
-    # and bind two more arguments when connecting (`weapon_type`, `damage`).
+    # Chúng ta truyền hai đối số khi phát (`hit_by`, `level`),
+    # và bind thêm hai đối số khi kết nối (`weapon_type`, `damage`).
     func _on_player_hit(hit_by, level, weapon_type, damage):
         print("Hit by %s (level %d) with weapon %s for %d damage." % [hit_by, level, weapon_type, damage])
 
@@ -169,18 +169,18 @@ When calling :ref:`emit()<class_Signal_method_emit>` or :ref:`Object.emit_signal
 
     public override void _Ready()
     {
-        // This assumes that a `Player` class exists, which defines a `Hit` signal.
+        // Điều này giả định rằng một lớp `Player` tồn tại và định nghĩa một tín hiệu `Hit`.
         var player = new Player();
-        // Using lambda expressions that create a closure that captures the additional parameters.
-        // The lambda only receives the parameters defined by the signal's delegate.
+        // Sử dụng các biểu thức lambda tạo một closure thu nhận các tham số bổ sung.
+        // Lambda chỉ nhận các tham số được định nghĩa bởi delegate của tín hiệu.
         player.Hit += (hitBy, level) => OnPlayerHit(hitBy, level, "sword", 100);
 
-        // Parameters added when emitting the signal are passed first.
+        // Các tham số được thêm khi phát tín hiệu sẽ được truyền trước.
         player.EmitSignal(SignalName.Hit, "Dark lord", 5);
     }
 
-    // We pass two arguments when emitting (`hit_by`, `level`),
-    // and bind two more arguments when connecting (`weapon_type`, `damage`).
+    // Chúng ta truyền hai đối số khi phát (`hit_by`, `level`),
+    // và bind thêm hai đối số khi kết nối (`weapon_type`, `damage`).
     private void OnPlayerHit(string hitBy, int level, string weaponType, int damage)
     {
         GD.Print($"Hit by {hitBy} (level {level}) with weapon {weaponType} for {damage} damage.");
@@ -188,7 +188,7 @@ When calling :ref:`emit()<class_Signal_method_emit>` or :ref:`Object.emit_signal
 
 
 
-\ **Note:** In a boolean context, a signal will evaluate to ``false`` if it's null (see :ref:`is_null()<class_Signal_method_is_null>`). Otherwise, a signal will always evaluate to ``true``.
+\ **Lưu ý:** Trong ngữ cảnh boolean, một tín hiệu sẽ có giá trị ``false`` nếu nó là null (xem :ref:`is_null()<class_Signal_method_is_null>`). Nếu không, một tín hiệu sẽ luôn có giá trị ``true``.
 
 .. note::
 
@@ -196,17 +196,17 @@ When calling :ref:`emit()<class_Signal_method_emit>` or :ref:`Object.emit_signal
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Using Signals <../getting_started/step_by_step/signals>`
+- :doc:`Sử dụng Signals <../getting_started/step_by_step/signals>`
 
-- `GDScript Basics <../tutorials/scripting/gdscript/gdscript_basics.html#signals>`__
+- `Kiến thức cơ bản về GDScript <../tutorials/scripting/gdscript/gdscript_basics.html#signals>`__
 
 .. rst-class:: classref-reftable-group
 
-Constructors
-------------
+Các hàm khởi tạo
+----------------
 
 .. table::
    :widths: auto
@@ -221,8 +221,8 @@ Constructors
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -251,17 +251,17 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Operators
----------
+Toán tử
+-------
 
 .. table::
    :widths: auto
 
-   +-------------------------+-------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`operator !=<class_Signal_operator_neq_Signal>`\ (\ right\: :ref:`Signal<class_Signal>`\ ) |
-   +-------------------------+-------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`operator ==<class_Signal_operator_eq_Signal>`\ (\ right\: :ref:`Signal<class_Signal>`\ )  |
-   +-------------------------+-------------------------------------------------------------------------------------------------+
+   +-------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`operator != <class_Signal_operator_neq_Signal>`\ (\ right\: :ref:`Signal<class_Signal>`\ ) |
+   +-------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`operator == <class_Signal_operator_eq_Signal>`\ (\ right\: :ref:`Signal<class_Signal>`\ )  |
+   +-------------------------+--------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -269,8 +269,8 @@ Operators
 
 .. rst-class:: classref-descriptions-group
 
-Constructor Descriptions
-------------------------
+Mô tả hàm khởi tạo
+------------------
 
 .. _class_Signal_constructor_Signal:
 
@@ -278,7 +278,7 @@ Constructor Descriptions
 
 :ref:`Signal<class_Signal>` **Signal**\ (\ ) :ref:`🔗<class_Signal_constructor_Signal>`
 
-Constructs an empty **Signal** with no object nor signal name bound.
+Tạo một **Signal** trống, không liên kết với đối tượng hay tên signal nào.
 
 .. rst-class:: classref-item-separator
 
@@ -288,7 +288,7 @@ Constructs an empty **Signal** with no object nor signal name bound.
 
 :ref:`Signal<class_Signal>` **Signal**\ (\ from\: :ref:`Signal<class_Signal>`\ )
 
-Constructs a **Signal** as a copy of the given **Signal**.
+Tạo một **Signal** dưới dạng bản sao của **Signal** đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -298,7 +298,7 @@ Constructs a **Signal** as a copy of the given **Signal**.
 
 :ref:`Signal<class_Signal>` **Signal**\ (\ object\: :ref:`Object<class_Object>`, signal\: :ref:`StringName<class_StringName>`\ )
 
-Creates a **Signal** object referencing a signal named ``signal`` in the specified ``object``.
+Tạo một đối tượng **Signal** tham chiếu đến signal có tên ``signal`` trong ``object`` được chỉ định.
 
 .. rst-class:: classref-section-separator
 
@@ -306,8 +306,8 @@ Creates a **Signal** object referencing a signal named ``signal`` in the specifi
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Signal_method_connect:
 
@@ -315,9 +315,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **connect**\ (\ callable\: :ref:`Callable<class_Callable>`, flags\: :ref:`int<class_int>` = 0\ ) :ref:`🔗<class_Signal_method_connect>`
 
-Connects this signal to the specified ``callable``. Optional ``flags`` can be also added to configure the connection's behavior (see :ref:`ConnectFlags<enum_Object_ConnectFlags>` constants). You can provide additional arguments to the connected ``callable`` by using :ref:`Callable.bind()<class_Callable_method_bind>`.
+Kết nối signal này với ``callable`` được chỉ định. Bạn cũng có thể thêm ``flags`` tùy chọn để cấu hình cách hoạt động của kết nối (xem các hằng số :ref:`ConnectFlags <enum_Object_ConnectFlags>`). Bạn có thể truyền các đối số bổ sung cho ``callable`` đã kết nối bằng cách sử dụng :ref:`Callable.bind()<class_Callable_method_bind>`.
 
-A signal can only be connected once to the same :ref:`Callable<class_Callable>`. If the signal is already connected, this method returns :ref:`@GlobalScope.ERR_INVALID_PARAMETER<class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` and generates an error, unless the signal is connected with :ref:`Object.CONNECT_REFERENCE_COUNTED<class_Object_constant_CONNECT_REFERENCE_COUNTED>`. To prevent this, use :ref:`is_connected()<class_Signal_method_is_connected>` first to check for existing connections.
+Một signal chỉ có thể được kết nối một lần với cùng một :ref:`Callable<class_Callable>`. Nếu signal đã được kết nối, phương thức này trả về :ref:`@GlobalScope.ERR_INVALID_PARAMETER <class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` và tạo ra lỗi, trừ khi signal được kết nối với :ref:`Object.CONNECT_REFERENCE_COUNTED<class_Object_constant_CONNECT_REFERENCE_COUNTED>`. Để ngăn điều này, trước tiên hãy sử dụng :ref:`is_connected()<class_Signal_method_is_connected>` để kiểm tra các kết nối hiện có.
 
 ::
 
@@ -327,7 +327,7 @@ A signal can only be connected once to the same :ref:`Callable<class_Callable>`.
     func _on_pressed(button):
         print(button.name, " was pressed")
 
-\ **Note:** If the ``callable``'s object is freed, the connection will be lost.
+\ **Lưu ý:** Nếu đối tượng của ``callable`` bị giải phóng, kết nối sẽ bị mất.
 
 .. rst-class:: classref-item-separator
 
@@ -339,7 +339,7 @@ A signal can only be connected once to the same :ref:`Callable<class_Callable>`.
 
 |void| **disconnect**\ (\ callable\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_Signal_method_disconnect>`
 
-Disconnects this signal from the specified :ref:`Callable<class_Callable>`. If the connection does not exist, generates an error. Use :ref:`is_connected()<class_Signal_method_is_connected>` to make sure that the connection exists.
+Ngắt kết nối signal này khỏi :ref:`Callable<class_Callable>` được chỉ định. Nếu kết nối không tồn tại, phương thức sẽ tạo ra lỗi. Sử dụng :ref:`is_connected()<class_Signal_method_is_connected>` để đảm bảo rằng kết nối tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -351,7 +351,7 @@ Disconnects this signal from the specified :ref:`Callable<class_Callable>`. If t
 
 |void| **emit**\ (\ ...\ ) |vararg| |const| :ref:`🔗<class_Signal_method_emit>`
 
-Emits this signal. All :ref:`Callable<class_Callable>`\ s connected to this signal will be triggered. This method supports a variable number of arguments, so parameters can be passed as a comma separated list.
+Phát signal này. Tất cả :ref:`Callable<class_Callable>`\ s được kết nối với signal này sẽ được kích hoạt. Phương thức này hỗ trợ số lượng đối số thay đổi, vì vậy có thể truyền các tham số dưới dạng danh sách phân tách bằng dấu phẩy.
 
 .. rst-class:: classref-item-separator
 
@@ -363,13 +363,13 @@ Emits this signal. All :ref:`Callable<class_Callable>`\ s connected to this sign
 
 :ref:`Array<class_Array>` **get_connections**\ (\ ) |const| :ref:`🔗<class_Signal_method_get_connections>`
 
-Returns an :ref:`Array<class_Array>` of connections for this signal. Each connection is represented as a :ref:`Dictionary<class_Dictionary>` that contains three entries:
+Trả về một :ref:`Array<class_Array>` gồm các kết nối của signal này. Mỗi kết nối được biểu diễn dưới dạng :ref:`Dictionary<class_Dictionary>` chứa ba mục:
 
-- ``signal`` is a reference to this signal;
+- ``signal`` là tham chiếu đến signal này;
 
-- ``callable`` is a reference to the connected :ref:`Callable<class_Callable>`;
+- ``callable`` là tham chiếu đến :ref:`Callable<class_Callable>` đã kết nối;
 
-- ``flags`` is a combination of :ref:`ConnectFlags<enum_Object_ConnectFlags>`.
+- ``flags`` là tổ hợp của :ref:`ConnectFlags <enum_Object_ConnectFlags>`.
 
 .. rst-class:: classref-item-separator
 
@@ -381,7 +381,7 @@ Returns an :ref:`Array<class_Array>` of connections for this signal. Each connec
 
 :ref:`StringName<class_StringName>` **get_name**\ (\ ) |const| :ref:`🔗<class_Signal_method_get_name>`
 
-Returns the name of this signal.
+Trả về tên của signal này.
 
 .. rst-class:: classref-item-separator
 
@@ -393,7 +393,7 @@ Returns the name of this signal.
 
 :ref:`Object<class_Object>` **get_object**\ (\ ) |const| :ref:`🔗<class_Signal_method_get_object>`
 
-Returns the object emitting this signal.
+Trả về đối tượng phát signal này.
 
 .. rst-class:: classref-item-separator
 
@@ -405,7 +405,7 @@ Returns the object emitting this signal.
 
 :ref:`int<class_int>` **get_object_id**\ (\ ) |const| :ref:`🔗<class_Signal_method_get_object_id>`
 
-Returns the ID of the object emitting this signal (see :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>`).
+Trả về ID của đối tượng phát signal này (xem :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>`).
 
 .. rst-class:: classref-item-separator
 
@@ -417,7 +417,7 @@ Returns the ID of the object emitting this signal (see :ref:`Object.get_instance
 
 :ref:`bool<class_bool>` **has_connections**\ (\ ) |const| :ref:`🔗<class_Signal_method_has_connections>`
 
-Returns ``true`` if any :ref:`Callable<class_Callable>` is connected to this signal.
+Trả về ``true`` nếu có bất kỳ :ref:`Callable<class_Callable>` nào được kết nối với signal này.
 
 .. rst-class:: classref-item-separator
 
@@ -429,7 +429,7 @@ Returns ``true`` if any :ref:`Callable<class_Callable>` is connected to this sig
 
 :ref:`bool<class_bool>` **is_connected**\ (\ callable\: :ref:`Callable<class_Callable>`\ ) |const| :ref:`🔗<class_Signal_method_is_connected>`
 
-Returns ``true`` if the specified :ref:`Callable<class_Callable>` is connected to this signal.
+Trả về ``true`` nếu :ref:`Callable<class_Callable>` được chỉ định đã được kết nối với signal này.
 
 .. rst-class:: classref-item-separator
 
@@ -441,7 +441,7 @@ Returns ``true`` if the specified :ref:`Callable<class_Callable>` is connected t
 
 :ref:`bool<class_bool>` **is_null**\ (\ ) |const| :ref:`🔗<class_Signal_method_is_null>`
 
-Returns ``true`` if this **Signal** has no object and the signal name is empty. Equivalent to ``signal == Signal()``.
+Trả về ``true`` nếu **Signal** này không có đối tượng và tên signal trống. Tương đương với ``signal == Signal()``.
 
 .. rst-class:: classref-section-separator
 
@@ -449,16 +449,16 @@ Returns ``true`` if this **Signal** has no object and the signal name is empty. 
 
 .. rst-class:: classref-descriptions-group
 
-Operator Descriptions
----------------------
+Mô tả toán tử
+-------------
 
 .. _class_Signal_operator_neq_Signal:
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Signal<class_Signal>`\ ) :ref:`🔗<class_Signal_operator_neq_Signal>`
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Signal<class_Signal>`\ ) :ref:`🔗 <class_Signal_operator_neq_Signal>`
 
-Returns ``true`` if the signals do not share the same object and name.
+Trả về ``true`` nếu các signal không dùng chung cùng một đối tượng và tên.
 
 .. rst-class:: classref-item-separator
 
@@ -468,16 +468,16 @@ Returns ``true`` if the signals do not share the same object and name.
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Signal<class_Signal>`\ ) :ref:`🔗<class_Signal_operator_eq_Signal>`
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Signal<class_Signal>`\ ) :ref:`🔗 <class_Signal_operator_eq_Signal>`
 
-Returns ``true`` if both signals share the same object and name.
+Trả về ``true`` nếu cả hai signal dùng chung cùng một đối tượng và tên.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

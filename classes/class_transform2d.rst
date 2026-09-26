@@ -10,22 +10,22 @@
 Transform2D
 ===========
 
-A 2×3 matrix representing a 2D transformation.
+Một ma trận 2×3 biểu diễn một phép biến đổi 2D.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The **Transform2D** built-in :ref:`Variant<class_Variant>` type is a 2×3 `matrix <https://en.wikipedia.org/wiki/Matrix_(mathematics)>`__ representing a transformation in 2D space. It contains three :ref:`Vector2<class_Vector2>` values: :ref:`x<class_Transform2D_property_x>`, :ref:`y<class_Transform2D_property_y>`, and :ref:`origin<class_Transform2D_property_origin>`. Together, they can represent translation, rotation, scale, and skew.
+Kiểu **Transform2D** tích hợp sẵn :ref:`Variant<class_Variant>` là một ma trận 2×3 `ma trận <https://en.wikipedia.org/wiki/Matrix_(mathematics)>`__ biểu diễn một phép biến đổi trong không gian 2D. Nó chứa ba giá trị :ref:`Vector2<class_Vector2>`: :ref:`x<class_Transform2D_property_x>`, :ref:`y<class_Transform2D_property_y>` và :ref:`origin<class_Transform2D_property_origin>`. Kết hợp lại, chúng có thể biểu diễn phép tịnh tiến, phép xoay, phép co giãn và phép nghiêng.
 
-The :ref:`x<class_Transform2D_property_x>` and :ref:`y<class_Transform2D_property_y>` axes form a 2×2 matrix, known as the transform's **basis**. The length of each axis (:ref:`Vector2.length()<class_Vector2_method_length>`) influences the transform's scale, while the direction of all axes influence the rotation. Usually, both axes are perpendicular to one another. However, when you rotate one axis individually, the transform becomes skewed. Applying a skewed transform to a 2D sprite will make the sprite appear distorted.
+Các trục :ref:`x<class_Transform2D_property_x>` và :ref:`y<class_Transform2D_property_y>` tạo thành một ma trận 2×2, được gọi là **cơ sở** của phép biến đổi. Độ dài của mỗi trục (:ref:`Vector2.length()<class_Vector2_method_length>`) ảnh hưởng đến tỷ lệ của phép biến đổi, còn hướng của tất cả các trục ảnh hưởng đến phép xoay. Thông thường, hai trục vuông góc với nhau. Tuy nhiên, khi bạn xoay riêng một trục, phép biến đổi sẽ bị nghiêng. Áp dụng một phép biến đổi bị nghiêng cho một sprite 2D sẽ khiến sprite trông bị biến dạng.
 
-For a general introduction, see the :doc:`Matrices and transforms <../tutorials/math/matrices_and_transforms>` tutorial.
+Để có phần giới thiệu tổng quát, hãy xem hướng dẫn :doc:`Ma trận và phép biến đổi <../tutorials/math/matrices_and_transforms>`.
 
-\ **Note:** Unlike :ref:`Transform3D<class_Transform3D>`, there is no 2D equivalent to the :ref:`Basis<class_Basis>` type. All mentions of "basis" refer to the :ref:`x<class_Transform2D_property_x>` and :ref:`y<class_Transform2D_property_y>` components of **Transform2D**.
+\ **Lưu ý:** Không giống :ref:`Transform3D<class_Transform3D>`, không có kiểu :ref:`Basis<class_Basis>` tương đương trong 2D. Mọi chỗ đề cập đến "cơ sở" đều nói đến các thành phần :ref:`x<class_Transform2D_property_x>` và :ref:`y<class_Transform2D_property_y>` của **Transform2D**.
 
-\ **Note:** In a boolean context, a Transform2D will evaluate to ``false`` if it's equal to :ref:`IDENTITY<class_Transform2D_constant_IDENTITY>`. Otherwise, a Transform2D will always evaluate to ``true``.
+\ **Lưu ý:** Trong ngữ cảnh boolean, Transform2D sẽ được đánh giá là ``false`` nếu nó bằng :ref:`IDENTITY<class_Transform2D_constant_IDENTITY>`. Nếu không, Transform2D sẽ luôn được đánh giá là ``true``.
 
 .. note::
 
@@ -33,20 +33,20 @@ For a general introduction, see the :doc:`Matrices and transforms <../tutorials/
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Math documentation index <../tutorials/math/index>`
+- :doc:`Mục lục tài liệu về toán học <../tutorials/math/index>`
 
-- :doc:`Matrices and transforms <../tutorials/math/matrices_and_transforms>`
+- :doc:`Ma trận và phép biến đổi <../tutorials/math/matrices_and_transforms>`
 
-- `Matrix Transform Demo <https://godotengine.org/asset-library/asset/2787>`__
+- `Bản minh họa phép biến đổi ma trận <https://godotengine.org/asset-library/asset/2787>`__
 
-- `2.5D Game Demo <https://godotengine.org/asset-library/asset/2783>`__
+- `Bản minh họa trò chơi 2.5D <https://godotengine.org/asset-library/asset/2783>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -62,7 +62,7 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Constructors
+Hàm khởi tạo
 ------------
 
 .. table::
@@ -82,8 +82,8 @@ Constructors
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -134,35 +134,35 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Operators
----------
+Toán tử
+-------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                             | :ref:`operator !=<class_Transform2D_operator_neq_Transform2D>`\ (\ right\: :ref:`Transform2D<class_Transform2D>`\ )                     |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedVector2Array<class_PackedVector2Array>` | :ref:`operator *<class_Transform2D_operator_mul_PackedVector2Array>`\ (\ right\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ ) |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Rect2<class_Rect2>`                           | :ref:`operator *<class_Transform2D_operator_mul_Rect2>`\ (\ right\: :ref:`Rect2<class_Rect2>`\ )                                        |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Transform2D<class_Transform2D>`               | :ref:`operator *<class_Transform2D_operator_mul_Transform2D>`\ (\ right\: :ref:`Transform2D<class_Transform2D>`\ )                      |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                       | :ref:`operator *<class_Transform2D_operator_mul_Vector2>`\ (\ right\: :ref:`Vector2<class_Vector2>`\ )                                  |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Transform2D<class_Transform2D>`               | :ref:`operator *<class_Transform2D_operator_mul_float>`\ (\ right\: :ref:`float<class_float>`\ )                                        |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Transform2D<class_Transform2D>`               | :ref:`operator *<class_Transform2D_operator_mul_int>`\ (\ right\: :ref:`int<class_int>`\ )                                              |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Transform2D<class_Transform2D>`               | :ref:`operator /<class_Transform2D_operator_div_float>`\ (\ right\: :ref:`float<class_float>`\ )                                        |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Transform2D<class_Transform2D>`               | :ref:`operator /<class_Transform2D_operator_div_int>`\ (\ right\: :ref:`int<class_int>`\ )                                              |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                             | :ref:`operator ==<class_Transform2D_operator_eq_Transform2D>`\ (\ right\: :ref:`Transform2D<class_Transform2D>`\ )                      |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                       | :ref:`operator []<class_Transform2D_operator_idx_int>`\ (\ index\: :ref:`int<class_int>`\ )                                             |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                             | :ref:`operator != <class_Transform2D_operator_neq_Transform2D>`\ (\ right\: :ref:`Transform2D<class_Transform2D>`\ )                     |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedVector2Array<class_PackedVector2Array>` | :ref:`operator * <class_Transform2D_operator_mul_PackedVector2Array>`\ (\ right\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ ) |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Rect2<class_Rect2>`                           | :ref:`operator * <class_Transform2D_operator_mul_Rect2>`\ (\ right\: :ref:`Rect2<class_Rect2>`\ )                                        |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Transform2D<class_Transform2D>`               | :ref:`operator * <class_Transform2D_operator_mul_Transform2D>`\ (\ right\: :ref:`Transform2D<class_Transform2D>`\ )                      |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                       | :ref:`operator * <class_Transform2D_operator_mul_Vector2>`\ (\ right\: :ref:`Vector2<class_Vector2>`\ )                                  |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Transform2D<class_Transform2D>`               | :ref:`toán tử * <class_Transform2D_operator_mul_float>`\ (\ right\: :ref:`float<class_float>`\ )                                         |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Transform2D<class_Transform2D>`               | :ref:`toán tử * <class_Transform2D_operator_mul_int>`\ (\ right\: :ref:`int<class_int>`\ )                                               |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Transform2D<class_Transform2D>`               | :ref:`toán tử / <class_Transform2D_operator_div_float>`\ (\ right\: :ref:`float<class_float>`\ )                                         |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Transform2D<class_Transform2D>`               | :ref:`toán tử / <class_Transform2D_operator_div_int>`\ (\ right\: :ref:`int<class_int>`\ )                                               |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                             | :ref:`toán tử == <class_Transform2D_operator_eq_Transform2D>`\ (\ right\: :ref:`Transform2D<class_Transform2D>`\ )                       |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                       | :ref:`toán tử [] <class_Transform2D_operator_idx_int>`\ (\ index\: :ref:`int<class_int>`\ )                                              |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -170,8 +170,8 @@ Operators
 
 .. rst-class:: classref-descriptions-group
 
-Constants
----------
+Hằng số
+-------
 
 .. _class_Transform2D_constant_IDENTITY:
 
@@ -179,11 +179,11 @@ Constants
 
 **IDENTITY** = ``Transform2D(1, 0, 0, 1, 0, 0)`` :ref:`🔗<class_Transform2D_constant_IDENTITY>`
 
-The identity **Transform2D**. This is a transform with no translation, no rotation, and a scale of :ref:`Vector2.ONE<class_Vector2_constant_ONE>`. This also means that:
+**Transform2D**identity. Đây là một phép biến đổi không có phép tịnh tiến, không có phép xoay và có tỷ lệ :ref:`Vector2.ONE<class_Vector2_constant_ONE>`. Điều này cũng có nghĩa là:
 
-- The :ref:`x<class_Transform2D_property_x>` points right (:ref:`Vector2.RIGHT<class_Vector2_constant_RIGHT>`);
+- :ref:`x<class_Transform2D_property_x>` trỏ sang phải (:ref:`Vector2.RIGHT<class_Vector2_constant_RIGHT>`);
 
-- The :ref:`y<class_Transform2D_property_y>` points down (:ref:`Vector2.DOWN<class_Vector2_constant_DOWN>`).
+- :ref:`y<class_Transform2D_property_y>` trỏ xuống (:ref:`Vector2.DOWN<class_Vector2_constant_DOWN>`).
 
 ::
 
@@ -196,9 +196,9 @@ The identity **Transform2D**. This is a transform with no translation, no rotati
     # | 1 | 0 | 0
     # | 0 | 1 | 0
 
-If a :ref:`Vector2<class_Vector2>`, a :ref:`Rect2<class_Rect2>`, a :ref:`PackedVector2Array<class_PackedVector2Array>`, or another **Transform2D** is transformed (multiplied) by this constant, no transformation occurs.
+Nếu một :ref:`Vector2<class_Vector2>`, một :ref:`Rect2<class_Rect2>`, một :ref:`PackedVector2Array<class_PackedVector2Array>` hoặc một **Transform2D** khác được biến đổi (nhân) với hằng số này thì không xảy ra phép biến đổi nào.
 
-\ **Note:** In GDScript, this constant is equivalent to creating a :ref:`Transform2D<class_Transform2D_constructor_Transform2D>` without any arguments. It can be used to make your code clearer, and for consistency with C#.
+\ **Lưu ý:** Trong GDScript, hằng số này tương đương với việc tạo một :ref:`Transform2D<class_Transform2D_constructor_Transform2D>` mà không có đối số nào. Có thể dùng nó để làm cho code rõ ràng hơn và nhất quán với C#.
 
 .. _class_Transform2D_constant_FLIP_X:
 
@@ -206,9 +206,9 @@ If a :ref:`Vector2<class_Vector2>`, a :ref:`Rect2<class_Rect2>`, a :ref:`PackedV
 
 **FLIP_X** = ``Transform2D(-1, 0, 0, 1, 0, 0)`` :ref:`🔗<class_Transform2D_constant_FLIP_X>`
 
-When any transform is multiplied by :ref:`FLIP_X<class_Transform2D_constant_FLIP_X>`, it negates all components of the :ref:`x<class_Transform2D_property_x>` axis (the X column).
+Khi bất kỳ phép biến đổi nào được nhân với :ref:`FLIP_X<class_Transform2D_constant_FLIP_X>`, nó phủ định tất cả các thành phần của trục :ref:`x<class_Transform2D_property_x>` (cột X).
 
-When :ref:`FLIP_X<class_Transform2D_constant_FLIP_X>` is multiplied by any transform, it negates the :ref:`Vector2.x<class_Vector2_property_x>` component of all axes (the X row).
+Khi :ref:`FLIP_X<class_Transform2D_constant_FLIP_X>` được nhân với bất kỳ phép biến đổi nào, nó phủ định thành phần :ref:`Vector2.x<class_Vector2_property_x>` của tất cả các trục (hàng X).
 
 .. _class_Transform2D_constant_FLIP_Y:
 
@@ -216,9 +216,9 @@ When :ref:`FLIP_X<class_Transform2D_constant_FLIP_X>` is multiplied by any trans
 
 **FLIP_Y** = ``Transform2D(1, 0, 0, -1, 0, 0)`` :ref:`🔗<class_Transform2D_constant_FLIP_Y>`
 
-When any transform is multiplied by :ref:`FLIP_Y<class_Transform2D_constant_FLIP_Y>`, it negates all components of the :ref:`y<class_Transform2D_property_y>` axis (the Y column).
+Khi bất kỳ phép biến đổi nào được nhân với :ref:`FLIP_Y<class_Transform2D_constant_FLIP_Y>`, nó phủ định tất cả các thành phần của trục :ref:`y<class_Transform2D_property_y>` (cột Y).
 
-When :ref:`FLIP_Y<class_Transform2D_constant_FLIP_Y>` is multiplied by any transform, it negates the :ref:`Vector2.y<class_Vector2_property_y>` component of all axes (the Y row).
+Khi :ref:`FLIP_Y<class_Transform2D_constant_FLIP_Y>` được nhân với bất kỳ phép biến đổi nào, nó phủ định thành phần :ref:`Vector2.y<class_Vector2_property_y>` của tất cả các trục (hàng Y).
 
 .. rst-class:: classref-section-separator
 
@@ -226,8 +226,8 @@ When :ref:`FLIP_Y<class_Transform2D_constant_FLIP_Y>` is multiplied by any trans
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Transform2D_property_origin:
 
@@ -235,7 +235,7 @@ Property Descriptions
 
 :ref:`Vector2<class_Vector2>` **origin** = ``Vector2(0, 0)`` :ref:`🔗<class_Transform2D_property_origin>`
 
-The translation offset of this transform, and the column ``2`` of the matrix. In 2D space, this can be seen as the position.
+Độ lệch tịnh tiến của phép biến đổi này và cột ``2`` của ma trận. Trong không gian 2D, nó có thể được xem là vị trí.
 
 .. rst-class:: classref-item-separator
 
@@ -247,9 +247,9 @@ The translation offset of this transform, and the column ``2`` of the matrix. In
 
 :ref:`Vector2<class_Vector2>` **x** = ``Vector2(1, 0)`` :ref:`🔗<class_Transform2D_property_x>`
 
-The transform basis's X axis, and the column ``0`` of the matrix. Combined with :ref:`y<class_Transform2D_property_y>`, this represents the transform's rotation, scale, and skew.
+Trục X của basis phép biến đổi và cột ``0`` của ma trận. Kết hợp với :ref:`y<class_Transform2D_property_y>`, nó biểu diễn phép xoay, tỷ lệ và độ xiên của phép biến đổi.
 
-On the identity transform, this vector points right (:ref:`Vector2.RIGHT<class_Vector2_constant_RIGHT>`).
+Trong phép biến đổi identity, vector này hướng sang phải (:ref:`Vector2.RIGHT<class_Vector2_constant_RIGHT>`).
 
 .. rst-class:: classref-item-separator
 
@@ -261,9 +261,9 @@ On the identity transform, this vector points right (:ref:`Vector2.RIGHT<class_V
 
 :ref:`Vector2<class_Vector2>` **y** = ``Vector2(0, 1)`` :ref:`🔗<class_Transform2D_property_y>`
 
-The transform basis's Y axis, and the column ``1`` of the matrix. Combined with :ref:`x<class_Transform2D_property_x>`, this represents the transform's rotation, scale, and skew.
+Trục Y của basis phép biến đổi và cột ``1`` của ma trận. Kết hợp với :ref:`x<class_Transform2D_property_x>`, nó biểu diễn phép xoay, tỷ lệ và độ xiên của phép biến đổi.
 
-On the identity transform, this vector points down (:ref:`Vector2.DOWN<class_Vector2_constant_DOWN>`).
+Trong phép biến đổi identity, vector này hướng xuống (:ref:`Vector2.DOWN<class_Vector2_constant_DOWN>`).
 
 .. rst-class:: classref-section-separator
 
@@ -271,8 +271,8 @@ On the identity transform, this vector points down (:ref:`Vector2.DOWN<class_Vec
 
 .. rst-class:: classref-descriptions-group
 
-Constructor Descriptions
-------------------------
+Mô tả hàm khởi tạo
+------------------
 
 .. _class_Transform2D_constructor_Transform2D:
 
@@ -280,9 +280,9 @@ Constructor Descriptions
 
 :ref:`Transform2D<class_Transform2D>` **Transform2D**\ (\ ) :ref:`🔗<class_Transform2D_constructor_Transform2D>`
 
-Constructs a **Transform2D** identical to :ref:`IDENTITY<class_Transform2D_constant_IDENTITY>`.
+Tạo một **Transform2D** giống hệt :ref:`IDENTITY<class_Transform2D_constant_IDENTITY>`.
 
-\ **Note:** In C#, this constructs a **Transform2D** with all of its components set to :ref:`Vector2.ZERO<class_Vector2_constant_ZERO>`.
+\ **Lưu ý:** Trong C#, hàm này tạo một **Transform2D** với tất cả các thành phần được đặt thành :ref:`Vector2.ZERO<class_Vector2_constant_ZERO>`.
 
 .. rst-class:: classref-item-separator
 
@@ -292,7 +292,7 @@ Constructs a **Transform2D** identical to :ref:`IDENTITY<class_Transform2D_const
 
 :ref:`Transform2D<class_Transform2D>` **Transform2D**\ (\ from\: :ref:`Transform2D<class_Transform2D>`\ )
 
-Constructs a **Transform2D** as a copy of the given **Transform2D**.
+Tạo một **Transform2D** dưới dạng bản sao của **Transform2D** đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -302,7 +302,7 @@ Constructs a **Transform2D** as a copy of the given **Transform2D**.
 
 :ref:`Transform2D<class_Transform2D>` **Transform2D**\ (\ rotation\: :ref:`float<class_float>`, position\: :ref:`Vector2<class_Vector2>`\ )
 
-Constructs a **Transform2D** from a given angle (in radians) and position.
+Tạo một **Transform2D** từ góc đã cho (tính bằng radian) và vị trí.
 
 .. rst-class:: classref-item-separator
 
@@ -312,7 +312,7 @@ Constructs a **Transform2D** from a given angle (in radians) and position.
 
 :ref:`Transform2D<class_Transform2D>` **Transform2D**\ (\ rotation\: :ref:`float<class_float>`, scale\: :ref:`Vector2<class_Vector2>`, skew\: :ref:`float<class_float>`, position\: :ref:`Vector2<class_Vector2>`\ )
 
-Constructs a **Transform2D** from a given angle (in radians), scale, skew (in radians), and position.
+Tạo một **Transform2D** từ góc đã cho (tính bằng radian), tỷ lệ, độ xiên (tính bằng radian) và vị trí.
 
 .. rst-class:: classref-item-separator
 
@@ -322,7 +322,7 @@ Constructs a **Transform2D** from a given angle (in radians), scale, skew (in ra
 
 :ref:`Transform2D<class_Transform2D>` **Transform2D**\ (\ x_axis\: :ref:`Vector2<class_Vector2>`, y_axis\: :ref:`Vector2<class_Vector2>`, origin\: :ref:`Vector2<class_Vector2>`\ )
 
-Constructs a **Transform2D** from 3 :ref:`Vector2<class_Vector2>` values representing :ref:`x<class_Transform2D_property_x>`, :ref:`y<class_Transform2D_property_y>`, and the :ref:`origin<class_Transform2D_property_origin>` (the three matrix columns).
+Tạo một **Transform2D** từ 3 giá trị :ref:`Vector2<class_Vector2>` biểu diễn :ref:`x<class_Transform2D_property_x>`, :ref:`y<class_Transform2D_property_y>` và :ref:`origin<class_Transform2D_property_origin>` (ba cột của ma trận).
 
 .. rst-class:: classref-section-separator
 
@@ -330,8 +330,8 @@ Constructs a **Transform2D** from 3 :ref:`Vector2<class_Vector2>` values represe
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Transform2D_method_affine_inverse:
 
@@ -339,9 +339,9 @@ Method Descriptions
 
 :ref:`Transform2D<class_Transform2D>` **affine_inverse**\ (\ ) |const| :ref:`🔗<class_Transform2D_method_affine_inverse>`
 
-Returns the inverted version of this transform. Unlike :ref:`inverse()<class_Transform2D_method_inverse>`, this method works with almost any basis, including non-uniform ones, but is slower.
+Trả về phiên bản nghịch đảo của phép biến đổi này. Không giống :ref:`inverse()<class_Transform2D_method_inverse>`, phương thức này hoạt động với hầu hết mọi basis, kể cả basis không đồng nhất, nhưng chậm hơn.
 
-\ **Note:** For this method to return correctly, the transform's basis needs to have a determinant that is not exactly ``0.0`` (see :ref:`determinant()<class_Transform2D_method_determinant>`).
+\ **Lưu ý:** Để phương thức này trả về kết quả chính xác, basis của phép biến đổi phải có định thức không chính xác bằng ``0.0`` (xem :ref:`determinant()<class_Transform2D_method_determinant>`).
 
 .. rst-class:: classref-item-separator
 
@@ -353,7 +353,7 @@ Returns the inverted version of this transform. Unlike :ref:`inverse()<class_Tra
 
 :ref:`Vector2<class_Vector2>` **basis_xform**\ (\ v\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Transform2D_method_basis_xform>`
 
-Returns a copy of the ``v`` vector, transformed (multiplied) by the transform basis's matrix. Unlike the multiplication operator (``*``), this method ignores the :ref:`origin<class_Transform2D_property_origin>`.
+Trả về một bản sao của vector ``v``, được biến đổi (nhân) với ma trận basis của phép biến đổi. Không giống toán tử nhân (``*``), phương thức này bỏ qua :ref:`origin<class_Transform2D_property_origin>`.
 
 .. rst-class:: classref-item-separator
 
@@ -365,9 +365,9 @@ Returns a copy of the ``v`` vector, transformed (multiplied) by the transform ba
 
 :ref:`Vector2<class_Vector2>` **basis_xform_inv**\ (\ v\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Transform2D_method_basis_xform_inv>`
 
-Returns a copy of the ``v`` vector, transformed (multiplied) by the inverse transform basis's matrix (see :ref:`inverse()<class_Transform2D_method_inverse>`). This method ignores the :ref:`origin<class_Transform2D_property_origin>`.
+Trả về một bản sao của vector ``v``, được biến đổi (nhân) với ma trận basis của phép biến đổi nghịch đảo (xem :ref:`inverse()<class_Transform2D_method_inverse>`). Phương thức này bỏ qua :ref:`origin<class_Transform2D_property_origin>`.
 
-\ **Note:** This method assumes that this transform's basis is *orthonormal* (see :ref:`orthonormalized()<class_Transform2D_method_orthonormalized>`). If the basis is not orthonormal, ``transform.affine_inverse().basis_xform(vector)`` should be used instead (see :ref:`affine_inverse()<class_Transform2D_method_affine_inverse>`).
+\ **Lưu ý:** Phương thức này giả định rằng basis của phép biến đổi là *orthonormal* (xem :ref:`orthonormalized()<class_Transform2D_method_orthonormalized>`). Nếu basis không orthonormal, nên dùng ``transform.affine_inverse().basis_xform(vector)`` thay thế (xem :ref:`affine_inverse()<class_Transform2D_method_affine_inverse>`).
 
 .. rst-class:: classref-item-separator
 
@@ -379,13 +379,13 @@ Returns a copy of the ``v`` vector, transformed (multiplied) by the inverse tran
 
 :ref:`float<class_float>` **determinant**\ (\ ) |const| :ref:`🔗<class_Transform2D_method_determinant>`
 
-Returns the `determinant <https://en.wikipedia.org/wiki/Determinant>`__ of this transform basis's matrix. For advanced math, this number can be used to determine a few attributes:
+Trả về `định thức <https://en.wikipedia.org/wiki/Determinant>`__ của ma trận basis của phép biến đổi này. Trong toán học nâng cao, số này có thể được dùng để xác định một số thuộc tính:
 
-- If the determinant is exactly ``0.0``, the basis is not invertible (see :ref:`inverse()<class_Transform2D_method_inverse>`).
+- Nếu định thức chính xác bằng ``0.0``, basis không khả nghịch (xem :ref:`inverse()<class_Transform2D_method_inverse>`).
 
-- If the determinant is a negative number, the basis represents a negative scale.
+- Nếu định thức là số âm, basis biểu diễn một tỷ lệ âm.
 
-\ **Note:** If the basis's scale is the same for every axis, its determinant is always that scale by the power of 2.
+\ **Lưu ý:** Nếu tỷ lệ của basis giống nhau trên mọi trục, định thức luôn bằng tỷ lệ đó lũy thừa 2.
 
 .. rst-class:: classref-item-separator
 
@@ -397,7 +397,7 @@ Returns the `determinant <https://en.wikipedia.org/wiki/Determinant>`__ of this 
 
 :ref:`Vector2<class_Vector2>` **get_origin**\ (\ ) |const| :ref:`🔗<class_Transform2D_method_get_origin>`
 
-Returns this transform's translation. Equivalent to :ref:`origin<class_Transform2D_property_origin>`.
+Trả về phép tịnh tiến của phép biến đổi này. Tương đương với :ref:`origin<class_Transform2D_property_origin>`.
 
 .. rst-class:: classref-item-separator
 
@@ -409,7 +409,7 @@ Returns this transform's translation. Equivalent to :ref:`origin<class_Transform
 
 :ref:`float<class_float>` **get_rotation**\ (\ ) |const| :ref:`🔗<class_Transform2D_method_get_rotation>`
 
-Returns this transform's rotation (in radians). This is equivalent to :ref:`x<class_Transform2D_property_x>`'s angle (see :ref:`Vector2.angle()<class_Vector2_method_angle>`).
+Trả về phép xoay của phép biến đổi này (tính bằng radian). Tương đương với góc của :ref:`x<class_Transform2D_property_x>` (xem :ref:`Vector2.angle()<class_Vector2_method_angle>`).
 
 .. rst-class:: classref-item-separator
 
@@ -421,7 +421,7 @@ Returns this transform's rotation (in radians). This is equivalent to :ref:`x<cl
 
 :ref:`Vector2<class_Vector2>` **get_scale**\ (\ ) |const| :ref:`🔗<class_Transform2D_method_get_scale>`
 
-Returns the length of both :ref:`x<class_Transform2D_property_x>` and :ref:`y<class_Transform2D_property_y>`, as a :ref:`Vector2<class_Vector2>`. If this transform's basis is not skewed, this value is the scaling factor. It is not affected by rotation.
+Trả về độ dài của cả :ref:`x<class_Transform2D_property_x>` và :ref:`y<class_Transform2D_property_y>`, dưới dạng :ref:`Vector2<class_Vector2>`. Nếu basis của phép biến đổi này không bị xiên, giá trị này là hệ số tỷ lệ. Nó không bị ảnh hưởng bởi phép xoay.
 
 
 .. tabs::
@@ -433,10 +433,10 @@ Returns the length of both :ref:`x<class_Transform2D_property_x>` and :ref:`y<cl
         Vector2(0, 4),
         Vector2(0, 0)
     )
-    # Rotating the Transform2D in any way preserves its scale.
+    # Xoay Transform2D theo bất kỳ cách nào cũng giữ nguyên tỷ lệ của nó.
     my_transform = my_transform.rotated(TAU / 2)
 
-    print(my_transform.get_scale()) # Prints (2.0, 4.0)
+    print(my_transform.get_scale()) # In ra (2.0, 4.0)
 
  .. code-tab:: csharp
 
@@ -445,14 +445,14 @@ Returns the length of both :ref:`x<class_Transform2D_property_x>` and :ref:`y<cl
         Vector3(0.0f, 4.0f),
         Vector3(0.0f, 0.0f)
     );
-    // Rotating the Transform2D in any way preserves its scale.
+    // Xoay Transform2D theo bất kỳ cách nào cũng giữ nguyên tỷ lệ của nó.
     myTransform = myTransform.Rotated(Mathf.Tau / 2.0f);
 
-    GD.Print(myTransform.GetScale()); // Prints (2, 4)
+    GD.Print(myTransform.GetScale()); // In (2, 4)
 
 
 
-\ **Note:** If the value returned by :ref:`determinant()<class_Transform2D_method_determinant>` is negative, the scale is also negative.
+\ **Lưu ý:** Nếu giá trị được :ref:`determinant()<class_Transform2D_method_determinant>` trả về là số âm, scale cũng là số âm.
 
 .. rst-class:: classref-item-separator
 
@@ -464,7 +464,7 @@ Returns the length of both :ref:`x<class_Transform2D_property_x>` and :ref:`y<cl
 
 :ref:`float<class_float>` **get_skew**\ (\ ) |const| :ref:`🔗<class_Transform2D_method_get_skew>`
 
-Returns this transform's skew (in radians).
+Trả về độ skew của transform này (tính bằng radian).
 
 .. rst-class:: classref-item-separator
 
@@ -476,9 +476,9 @@ Returns this transform's skew (in radians).
 
 :ref:`Transform2D<class_Transform2D>` **interpolate_with**\ (\ xform\: :ref:`Transform2D<class_Transform2D>`, weight\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Transform2D_method_interpolate_with>`
 
-Returns the result of the linear interpolation between this transform and ``xform`` by the given ``weight``.
+Trả về kết quả nội suy tuyến tính giữa transform này và ``xform`` theo ``weight`` đã cho.
 
-The ``weight`` should be between ``0.0`` and ``1.0`` (inclusive). Values outside this range are allowed and can be used to perform *extrapolation* instead.
+``weight`` phải nằm giữa ``0.0`` và ``1.0`` (bao gồm cả hai giá trị). Các giá trị nằm ngoài phạm vi này vẫn được phép và có thể được dùng để thực hiện *extrapolation* thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -490,9 +490,9 @@ The ``weight`` should be between ``0.0`` and ``1.0`` (inclusive). Values outside
 
 :ref:`Transform2D<class_Transform2D>` **inverse**\ (\ ) |const| :ref:`🔗<class_Transform2D_method_inverse>`
 
-Returns the `inverted version of this transform <https://en.wikipedia.org/wiki/Invertible_matrix>`__.
+Trả về phiên bản `đảo ngược của transform này <https://en.wikipedia.org/wiki/Invertible_matrix>`__.
 
-\ **Note:** For this method to return correctly, the transform's basis needs to be *orthonormal* (see :ref:`orthonormalized()<class_Transform2D_method_orthonormalized>`). That means the basis should only represent a rotation. If it does not, use :ref:`affine_inverse()<class_Transform2D_method_affine_inverse>` instead.
+\ **Lưu ý:** Để phương thức này trả về kết quả chính xác, basis của transform cần phải *orthonormal* (xem :ref:`orthonormalized()<class_Transform2D_method_orthonormalized>`). Điều đó có nghĩa là basis chỉ nên biểu diễn một phép xoay. Nếu không, hãy sử dụng :ref:`affine_inverse()<class_Transform2D_method_affine_inverse>`.
 
 .. rst-class:: classref-item-separator
 
@@ -504,7 +504,7 @@ Returns the `inverted version of this transform <https://en.wikipedia.org/wiki/I
 
 :ref:`bool<class_bool>` **is_conformal**\ (\ ) |const| :ref:`🔗<class_Transform2D_method_is_conformal>`
 
-Returns ``true`` if this transform's basis is conformal. A conformal basis is both *orthogonal* (the axes are perpendicular to each other) and *uniform* (the axes share the same length). This method can be especially useful during physics calculations.
+Trả về ``true`` nếu basis của transform này là conformal. Một basis conformal vừa *orthogonal* (các trục vuông góc với nhau), vừa *uniform* (các trục có cùng độ dài). Phương thức này đặc biệt hữu ích trong các phép tính vật lý.
 
 .. rst-class:: classref-item-separator
 
@@ -516,7 +516,7 @@ Returns ``true`` if this transform's basis is conformal. A conformal basis is bo
 
 :ref:`bool<class_bool>` **is_equal_approx**\ (\ xform\: :ref:`Transform2D<class_Transform2D>`\ ) |const| :ref:`🔗<class_Transform2D_method_is_equal_approx>`
 
-Returns ``true`` if this transform and ``xform`` are approximately equal, by running :ref:`@GlobalScope.is_equal_approx()<class_@GlobalScope_method_is_equal_approx>` on each component.
+Trả về ``true`` nếu transform này và ``xform`` xấp xỉ bằng nhau, bằng cách chạy :ref:`@GlobalScope.is_equal_approx() <class_@GlobalScope_method_is_equal_approx>` trên từng thành phần.
 
 .. rst-class:: classref-item-separator
 
@@ -528,7 +528,7 @@ Returns ``true`` if this transform and ``xform`` are approximately equal, by run
 
 :ref:`bool<class_bool>` **is_finite**\ (\ ) |const| :ref:`🔗<class_Transform2D_method_is_finite>`
 
-Returns ``true`` if this transform is finite, by calling :ref:`@GlobalScope.is_finite()<class_@GlobalScope_method_is_finite>` on each component.
+Trả về ``true`` nếu transform này là hữu hạn, bằng cách gọi :ref:`@GlobalScope.is_finite() <class_@GlobalScope_method_is_finite>` trên từng thành phần.
 
 .. rst-class:: classref-item-separator
 
@@ -540,7 +540,7 @@ Returns ``true`` if this transform is finite, by calling :ref:`@GlobalScope.is_f
 
 :ref:`Transform2D<class_Transform2D>` **looking_at**\ (\ target\: :ref:`Vector2<class_Vector2>` = Vector2(0, 0)\ ) |const| :ref:`🔗<class_Transform2D_method_looking_at>`
 
-Returns a copy of the transform rotated such that the rotated X-axis points towards the ``target`` position, in global space.
+Trả về một bản sao của transform được xoay sao cho trục X sau khi xoay hướng về phía vị trí ``target`` trong không gian toàn cục.
 
 .. rst-class:: classref-item-separator
 
@@ -552,7 +552,7 @@ Returns a copy of the transform rotated such that the rotated X-axis points towa
 
 :ref:`Transform2D<class_Transform2D>` **orthonormalized**\ (\ ) |const| :ref:`🔗<class_Transform2D_method_orthonormalized>`
 
-Returns a copy of this transform with its basis orthonormalized. An orthonormal basis is both *orthogonal* (the axes are perpendicular to each other) and *normalized* (the axes have a length of ``1.0``), which also means it can only represent a rotation.
+Trả về một bản sao của transform này với basis đã được orthonormalize. Một basis orthonormal vừa *orthogonal* (các trục vuông góc với nhau), vừa *normalized* (các trục có độ dài ``1.0``), điều này cũng có nghĩa là nó chỉ có thể biểu diễn một phép xoay.
 
 .. rst-class:: classref-item-separator
 
@@ -564,13 +564,13 @@ Returns a copy of this transform with its basis orthonormalized. An orthonormal 
 
 :ref:`Transform2D<class_Transform2D>` **rotated**\ (\ angle\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Transform2D_method_rotated>`
 
-Returns a copy of this transform rotated by the given ``angle`` (in radians).
+Trả về một bản sao của transform được xoay theo ``angle`` đã cho (tính bằng radian).
 
-If ``angle`` is positive, the transform is rotated clockwise.
+Nếu ``angle`` là số dương, transform sẽ được xoay theo chiều kim đồng hồ.
 
-This method is an optimized version of multiplying the given transform ``X`` with a corresponding rotation transform ``R`` from the left, i.e., ``R * X``.
+Phương thức này là phiên bản được tối ưu hóa của việc nhân transform ``X`` đã cho với một transform xoay tương ứng ``R`` từ bên trái, tức là ``R * X``.
 
-This can be seen as transforming with respect to the global/parent frame.
+Có thể xem đây là phép biến đổi theo frame toàn cục/cha.
 
 .. rst-class:: classref-item-separator
 
@@ -582,11 +582,11 @@ This can be seen as transforming with respect to the global/parent frame.
 
 :ref:`Transform2D<class_Transform2D>` **rotated_local**\ (\ angle\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Transform2D_method_rotated_local>`
 
-Returns a copy of the transform rotated by the given ``angle`` (in radians).
+Trả về một bản sao của transform được xoay theo ``angle`` đã cho (tính bằng radian).
 
-This method is an optimized version of multiplying the given transform ``X`` with a corresponding rotation transform ``R`` from the right, i.e., ``X * R``.
+Phương thức này là phiên bản được tối ưu hóa của việc nhân transform ``X`` đã cho với một transform xoay tương ứng ``R`` từ bên phải, tức là ``X * R``.
 
-This can be seen as transforming with respect to the local frame.
+Có thể xem đây là phép biến đổi theo frame cục bộ.
 
 .. rst-class:: classref-item-separator
 
@@ -598,11 +598,11 @@ This can be seen as transforming with respect to the local frame.
 
 :ref:`Transform2D<class_Transform2D>` **scaled**\ (\ scale\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Transform2D_method_scaled>`
 
-Returns a copy of the transform scaled by the given ``scale`` factor.
+Trả về một bản sao của transform được scale theo hệ số ``scale`` đã cho.
 
-This method is an optimized version of multiplying the given transform ``X`` with a corresponding scaling transform ``S`` from the left, i.e., ``S * X``.
+Phương thức này là phiên bản được tối ưu hóa của việc nhân transform ``X`` đã cho với một transform scale tương ứng ``S`` từ bên trái, tức là ``S * X``.
 
-This can be seen as transforming with respect to the global/parent frame.
+Có thể xem đây là phép biến đổi theo frame toàn cục/cha.
 
 .. rst-class:: classref-item-separator
 
@@ -614,11 +614,11 @@ This can be seen as transforming with respect to the global/parent frame.
 
 :ref:`Transform2D<class_Transform2D>` **scaled_local**\ (\ scale\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Transform2D_method_scaled_local>`
 
-Returns a copy of the transform scaled by the given ``scale`` factor.
+Trả về một bản sao của transform được scale theo hệ số ``scale`` đã cho.
 
-This method is an optimized version of multiplying the given transform ``X`` with a corresponding scaling transform ``S`` from the right, i.e., ``X * S``.
+Phương thức này là phiên bản được tối ưu hóa của việc nhân transform ``X`` đã cho với một transform scale tương ứng ``S`` từ bên phải, tức là ``X * S``.
 
-This can be seen as transforming with respect to the local frame.
+Có thể xem đây là phép biến đổi theo frame cục bộ.
 
 .. rst-class:: classref-item-separator
 
@@ -630,11 +630,11 @@ This can be seen as transforming with respect to the local frame.
 
 :ref:`Transform2D<class_Transform2D>` **translated**\ (\ offset\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Transform2D_method_translated>`
 
-Returns a copy of the transform translated by the given ``offset``.
+Trả về một bản sao của transform được translate theo ``offset`` đã cho.
 
-This method is an optimized version of multiplying the given transform ``X`` with a corresponding translation transform ``T`` from the left, i.e., ``T * X``.
+Phương thức này là phiên bản được tối ưu hóa của việc nhân transform ``X`` đã cho với một transform translation tương ứng ``T`` từ bên trái, tức là ``T * X``.
 
-This can be seen as transforming with respect to the global/parent frame.
+Có thể xem đây là phép biến đổi theo frame toàn cục/cha.
 
 .. rst-class:: classref-item-separator
 
@@ -646,11 +646,11 @@ This can be seen as transforming with respect to the global/parent frame.
 
 :ref:`Transform2D<class_Transform2D>` **translated_local**\ (\ offset\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Transform2D_method_translated_local>`
 
-Returns a copy of the transform translated by the given ``offset``.
+Trả về một bản sao của transform được translate theo ``offset`` đã cho.
 
-This method is an optimized version of multiplying the given transform ``X`` with a corresponding translation transform ``T`` from the right, i.e., ``X * T``.
+Phương thức này là phiên bản được tối ưu hóa của việc nhân transform ``X`` đã cho với một transform translation tương ứng ``T`` từ bên phải, tức là ``X * T``.
 
-This can be seen as transforming with respect to the local frame.
+Có thể xem đây là phép biến đổi theo frame cục bộ.
 
 .. rst-class:: classref-section-separator
 
@@ -658,18 +658,18 @@ This can be seen as transforming with respect to the local frame.
 
 .. rst-class:: classref-descriptions-group
 
-Operator Descriptions
----------------------
+Mô tả toán tử
+-------------
 
 .. _class_Transform2D_operator_neq_Transform2D:
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Transform2D<class_Transform2D>`\ ) :ref:`🔗<class_Transform2D_operator_neq_Transform2D>`
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Transform2D<class_Transform2D>`\ ) :ref:`🔗 <class_Transform2D_operator_neq_Transform2D>`
 
-Returns ``true`` if the components of both transforms are not equal.
+Trả về ``true`` nếu các thành phần của hai transform không bằng nhau.
 
-\ **Note:** Due to floating-point precision errors, consider using :ref:`is_equal_approx()<class_Transform2D_method_is_equal_approx>` instead, which is more reliable.
+\ **Lưu ý:** Do lỗi độ chính xác dấu phẩy động, hãy cân nhắc sử dụng :ref:`is_equal_approx()<class_Transform2D_method_is_equal_approx>` thay vào đó vì cách này đáng tin cậy hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -679,11 +679,11 @@ Returns ``true`` if the components of both transforms are not equal.
 
 .. rst-class:: classref-operator
 
-:ref:`PackedVector2Array<class_PackedVector2Array>` **operator ***\ (\ right\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ ) :ref:`🔗<class_Transform2D_operator_mul_PackedVector2Array>`
+:ref:`PackedVector2Array<class_PackedVector2Array>` **toán tử ***\ (\ phải\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ ) :ref:`🔗 <class_Transform2D_operator_mul_PackedVector2Array>`
 
-Transforms (multiplies) every :ref:`Vector2<class_Vector2>` element of the given :ref:`PackedVector2Array<class_PackedVector2Array>` by this transformation matrix.
+Biến đổi (nhân) mọi phần tử :ref:`Vector2<class_Vector2>` của :ref:`PackedVector2Array<class_PackedVector2Array>` đã cho bằng ma trận biến đổi này.
 
-On larger arrays, this operation is much faster than transforming each :ref:`Vector2<class_Vector2>` individually.
+Trên các mảng lớn, thao tác này nhanh hơn nhiều so với việc biến đổi từng :ref:`Vector2<class_Vector2>` riêng lẻ.
 
 .. rst-class:: classref-item-separator
 
@@ -693,9 +693,9 @@ On larger arrays, this operation is much faster than transforming each :ref:`Vec
 
 .. rst-class:: classref-operator
 
-:ref:`Rect2<class_Rect2>` **operator ***\ (\ right\: :ref:`Rect2<class_Rect2>`\ ) :ref:`🔗<class_Transform2D_operator_mul_Rect2>`
+:ref:`Rect2<class_Rect2>` **toán tử ***\ (\ phải\: :ref:`Rect2<class_Rect2>`\ ) :ref:`🔗 <class_Transform2D_operator_mul_Rect2>`
 
-Transforms (multiplies) the :ref:`Rect2<class_Rect2>` by this transformation matrix.
+Biến đổi (nhân) :ref:`Rect2<class_Rect2>` bằng ma trận biến đổi này.
 
 .. rst-class:: classref-item-separator
 
@@ -705,19 +705,19 @@ Transforms (multiplies) the :ref:`Rect2<class_Rect2>` by this transformation mat
 
 .. rst-class:: classref-operator
 
-:ref:`Transform2D<class_Transform2D>` **operator ***\ (\ right\: :ref:`Transform2D<class_Transform2D>`\ ) :ref:`🔗<class_Transform2D_operator_mul_Transform2D>`
+:ref:`Transform2D<class_Transform2D>` **toán tử ***\ (\ phải\: :ref:`Transform2D<class_Transform2D>`\ ) :ref:`🔗 <class_Transform2D_operator_mul_Transform2D>`
 
-Transforms (multiplies) this transform by the ``right`` transform.
+Biến đổi (nhân) transform này với transform ``right``.
 
-This is the operation performed between parent and child :ref:`CanvasItem<class_CanvasItem>` nodes.
+Đây là thao tác được thực hiện giữa các node :ref:`CanvasItem<class_CanvasItem>` cha và con.
 
-\ **Note:** If you need to only modify one attribute of this transform, consider using one of the following methods, instead:
+\ **Lưu ý:** Nếu chỉ cần sửa đổi một thuộc tính của transform này, hãy cân nhắc sử dụng một trong các phương thức sau:
 
-- For translation, see :ref:`translated()<class_Transform2D_method_translated>` or :ref:`translated_local()<class_Transform2D_method_translated_local>`.
+- Để translate, xem :ref:`translated()<class_Transform2D_method_translated>` hoặc :ref:`translated_local()<class_Transform2D_method_translated_local>`.
 
-- For rotation, see :ref:`rotated()<class_Transform2D_method_rotated>` or :ref:`rotated_local()<class_Transform2D_method_rotated_local>`.
+- Để xoay, xem :ref:`rotated()<class_Transform2D_method_rotated>` hoặc :ref:`rotated_local()<class_Transform2D_method_rotated_local>`.
 
-- For scale, see :ref:`scaled()<class_Transform2D_method_scaled>` or :ref:`scaled_local()<class_Transform2D_method_scaled_local>`.
+- Để scale, xem :ref:`scaled()<class_Transform2D_method_scaled>` hoặc :ref:`scaled_local()<class_Transform2D_method_scaled_local>`.
 
 .. rst-class:: classref-item-separator
 
@@ -727,9 +727,9 @@ This is the operation performed between parent and child :ref:`CanvasItem<class_
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator ***\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Transform2D_operator_mul_Vector2>`
+:ref:`Vector2<class_Vector2>` **toán tử ***\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗 <class_Transform2D_operator_mul_Vector2>`
 
-Transforms (multiplies) the :ref:`Vector2<class_Vector2>` by this transformation matrix.
+Biến đổi (nhân) :ref:`Vector2<class_Vector2>` bằng ma trận biến đổi này.
 
 .. rst-class:: classref-item-separator
 
@@ -739,9 +739,9 @@ Transforms (multiplies) the :ref:`Vector2<class_Vector2>` by this transformation
 
 .. rst-class:: classref-operator
 
-:ref:`Transform2D<class_Transform2D>` **operator ***\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Transform2D_operator_mul_float>`
+:ref:`Transform2D<class_Transform2D>` **toán tử ***\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗 <class_Transform2D_operator_mul_float>`
 
-Multiplies all components of the **Transform2D** by the given :ref:`float<class_float>`, including the :ref:`origin<class_Transform2D_property_origin>`. This affects the transform's scale uniformly.
+Nhân tất cả các thành phần của **Transform2D** với :ref:`float<class_float>` đã cho, bao gồm cả :ref:`origin<class_Transform2D_property_origin>`. Điều này tác động đồng đều đến scale của phép biến đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -751,9 +751,9 @@ Multiplies all components of the **Transform2D** by the given :ref:`float<class_
 
 .. rst-class:: classref-operator
 
-:ref:`Transform2D<class_Transform2D>` **operator ***\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Transform2D_operator_mul_int>`
+:ref:`Transform2D<class_Transform2D>` **toán tử ***\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_Transform2D_operator_mul_int>`
 
-Multiplies all components of the **Transform2D** by the given :ref:`int<class_int>`, including the :ref:`origin<class_Transform2D_property_origin>`. This affects the transform's scale uniformly.
+Nhân tất cả các thành phần của **Transform2D** với :ref:`int<class_int>` đã cho, bao gồm cả :ref:`origin<class_Transform2D_property_origin>`. Điều này tác động đồng đều đến scale của phép biến đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -763,9 +763,9 @@ Multiplies all components of the **Transform2D** by the given :ref:`int<class_in
 
 .. rst-class:: classref-operator
 
-:ref:`Transform2D<class_Transform2D>` **operator /**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Transform2D_operator_div_float>`
+:ref:`Transform2D<class_Transform2D>` **toán tử /**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗 <class_Transform2D_operator_div_float>`
 
-Divides all components of the **Transform2D** by the given :ref:`float<class_float>`, including the :ref:`origin<class_Transform2D_property_origin>`. This affects the transform's scale uniformly.
+Chia tất cả các thành phần của **Transform2D** cho :ref:`float<class_float>` đã cho, bao gồm cả :ref:`origin<class_Transform2D_property_origin>`. Điều này tác động đồng đều đến scale của phép biến đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -775,9 +775,9 @@ Divides all components of the **Transform2D** by the given :ref:`float<class_flo
 
 .. rst-class:: classref-operator
 
-:ref:`Transform2D<class_Transform2D>` **operator /**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Transform2D_operator_div_int>`
+:ref:`Transform2D<class_Transform2D>` **toán tử /**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_Transform2D_operator_div_int>`
 
-Divides all components of the **Transform2D** by the given :ref:`int<class_int>`, including the :ref:`origin<class_Transform2D_property_origin>`. This affects the transform's scale uniformly.
+Chia tất cả các thành phần của **Transform2D** cho :ref:`int<class_int>` đã cho, bao gồm cả :ref:`origin<class_Transform2D_property_origin>`. Điều này tác động đồng đều đến scale của phép biến đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -787,11 +787,11 @@ Divides all components of the **Transform2D** by the given :ref:`int<class_int>`
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Transform2D<class_Transform2D>`\ ) :ref:`🔗<class_Transform2D_operator_eq_Transform2D>`
+:ref:`bool<class_bool>` **toán tử ==**\ (\ right\: :ref:`Transform2D<class_Transform2D>`\ ) :ref:`🔗 <class_Transform2D_operator_eq_Transform2D>`
 
-Returns ``true`` if the components of both transforms are exactly equal.
+Trả về ``true`` nếu các thành phần của cả hai phép biến đổi hoàn toàn bằng nhau.
 
-\ **Note:** Due to floating-point precision errors, consider using :ref:`is_equal_approx()<class_Transform2D_method_is_equal_approx>` instead, which is more reliable.
+\ **Lưu ý:** Do lỗi độ chính xác dấu phẩy động, hãy cân nhắc sử dụng :ref:`is_equal_approx()<class_Transform2D_method_is_equal_approx>` thay vào đó vì cách này đáng tin cậy hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -801,16 +801,16 @@ Returns ``true`` if the components of both transforms are exactly equal.
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator []**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Transform2D_operator_idx_int>`
+:ref:`Vector2<class_Vector2>` **toán tử []**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_Transform2D_operator_idx_int>`
 
-Accesses each axis (column) of this transform by their index. Index ``0`` is the same as :ref:`x<class_Transform2D_property_x>`, index ``1`` is the same as :ref:`y<class_Transform2D_property_y>`, and index ``2`` is the same as :ref:`origin<class_Transform2D_property_origin>`.
+Truy cập từng trục (cột) của phép biến đổi này bằng chỉ mục của chúng. Chỉ mục ``0`` tương đương với :ref:`x<class_Transform2D_property_x>`, chỉ mục ``1`` tương đương với :ref:`y<class_Transform2D_property_y>`, và chỉ mục ``2`` tương đương với :ref:`origin<class_Transform2D_property_origin>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường nên được người dùng ghi đè để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả tại đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

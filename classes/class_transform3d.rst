@@ -10,20 +10,20 @@
 Transform3D
 ===========
 
-A 3×4 matrix representing a 3D transformation.
+Một ma trận 3×4 biểu diễn một phép biến đổi 3D.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The **Transform3D** built-in :ref:`Variant<class_Variant>` type is a 3×4 matrix representing a transformation in 3D space. It contains a :ref:`Basis<class_Basis>`, which on its own can represent rotation, scale, and shear. Additionally, combined with its own :ref:`origin<class_Transform3D_property_origin>`, the transform can also represent a translation.
+Kiểu tích hợp sẵn **Transform3D** :ref:`Variant<class_Variant>` là một ma trận 3×4 biểu diễn một phép biến đổi trong không gian 3D. Nó chứa một :ref:`Basis<class_Basis>`, bản thân thành phần này có thể biểu diễn phép xoay, thu phóng và biến dạng xiên. Ngoài ra, khi kết hợp với :ref:`origin<class_Transform3D_property_origin>` của chính nó, phép biến đổi cũng có thể biểu diễn phép tịnh tiến.
 
-For a general introduction, see the :doc:`Matrices and transforms <../tutorials/math/matrices_and_transforms>` tutorial.
+Để xem phần giới thiệu tổng quan, hãy xem tutorial :doc:`Matrices and transforms <../tutorials/math/matrices_and_transforms>`.
 
-\ **Note:** Godot uses a `right-handed coordinate system <https://en.wikipedia.org/wiki/Right-hand_rule>`__, which is a common standard. For directions, the convention for built-in types like :ref:`Camera3D<class_Camera3D>` is for -Z to point forward (+X is right, +Y is up, and +Z is back). Other objects may use different direction conventions. For more information, see the `3D asset direction conventions <../tutorials/assets_pipeline/importing_3d_scenes/model_export_considerations.html#d-asset-direction-conventions>`__ tutorial.
+\ **Lưu ý:** Godot sử dụng `hệ tọa độ thuận <https://en.wikipedia.org/wiki/Right-hand_rule>`__, đây là một tiêu chuẩn phổ biến. Đối với các hướng, quy ước của những kiểu tích hợp sẵn như :ref:`Camera3D<class_Camera3D>` là -Z hướng về phía trước (+X hướng sang phải, +Y hướng lên trên và +Z hướng ra phía sau). Các đối tượng khác có thể sử dụng những quy ước hướng khác. Để biết thêm thông tin, hãy xem tutorial `quy ước hướng của tài nguyên 3D <../tutorials/assets_pipeline/importing_3d_scenes/model_export_considerations.html#d-asset-direction-conventions>`__.
 
-\ **Note:** In a boolean context, a Transform3D will evaluate to ``false`` if it's equal to :ref:`IDENTITY<class_Transform3D_constant_IDENTITY>`. Otherwise, a Transform3D will always evaluate to ``true``.
+\ **Lưu ý:** Trong ngữ cảnh boolean, một Transform3D sẽ cho kết quả ``false`` nếu nó bằng :ref:`IDENTITY<class_Transform3D_constant_IDENTITY>`. Nếu không, Transform3D luôn cho kết quả ``true``.
 
 .. note::
 
@@ -31,10 +31,10 @@ For a general introduction, see the :doc:`Matrices and transforms <../tutorials/
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
----------
+Tutorial
+--------
 
-- :doc:`Math documentation index <../tutorials/math/index>`
+- :doc:`Chỉ mục tài liệu Math <../tutorials/math/index>`
 
 - :doc:`Matrices and transforms <../tutorials/math/matrices_and_transforms>`
 
@@ -48,7 +48,7 @@ Tutorials
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -62,8 +62,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Constructors
-------------
+Constructor
+-----------
 
 .. table::
    :widths: auto
@@ -82,8 +82,8 @@ Constructors
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -118,35 +118,35 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Operators
----------
+Toán tử
+-------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                             | :ref:`operator !=<class_Transform3D_operator_neq_Transform3D>`\ (\ right\: :ref:`Transform3D<class_Transform3D>`\ )                     |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`AABB<class_AABB>`                             | :ref:`operator *<class_Transform3D_operator_mul_AABB>`\ (\ right\: :ref:`AABB<class_AABB>`\ )                                           |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedVector3Array<class_PackedVector3Array>` | :ref:`operator *<class_Transform3D_operator_mul_PackedVector3Array>`\ (\ right\: :ref:`PackedVector3Array<class_PackedVector3Array>`\ ) |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Plane<class_Plane>`                           | :ref:`operator *<class_Transform3D_operator_mul_Plane>`\ (\ right\: :ref:`Plane<class_Plane>`\ )                                        |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Transform3D<class_Transform3D>`               | :ref:`operator *<class_Transform3D_operator_mul_Transform3D>`\ (\ right\: :ref:`Transform3D<class_Transform3D>`\ )                      |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector3<class_Vector3>`                       | :ref:`operator *<class_Transform3D_operator_mul_Vector3>`\ (\ right\: :ref:`Vector3<class_Vector3>`\ )                                  |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Transform3D<class_Transform3D>`               | :ref:`operator *<class_Transform3D_operator_mul_float>`\ (\ right\: :ref:`float<class_float>`\ )                                        |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Transform3D<class_Transform3D>`               | :ref:`operator *<class_Transform3D_operator_mul_int>`\ (\ right\: :ref:`int<class_int>`\ )                                              |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Transform3D<class_Transform3D>`               | :ref:`operator /<class_Transform3D_operator_div_float>`\ (\ right\: :ref:`float<class_float>`\ )                                        |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Transform3D<class_Transform3D>`               | :ref:`operator /<class_Transform3D_operator_div_int>`\ (\ right\: :ref:`int<class_int>`\ )                                              |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                             | :ref:`operator ==<class_Transform3D_operator_eq_Transform3D>`\ (\ right\: :ref:`Transform3D<class_Transform3D>`\ )                      |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                             | :ref:`operator != <class_Transform3D_operator_neq_Transform3D>`\ (\ right\: :ref:`Transform3D<class_Transform3D>`\ )                     |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`AABB<class_AABB>`                             | :ref:`operator * <class_Transform3D_operator_mul_AABB>`\ (\ right\: :ref:`AABB<class_AABB>`\ )                                           |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedVector3Array<class_PackedVector3Array>` | :ref:`operator * <class_Transform3D_operator_mul_PackedVector3Array>`\ (\ right\: :ref:`PackedVector3Array<class_PackedVector3Array>`\ ) |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Plane<class_Plane>`                           | :ref:`operator * <class_Transform3D_operator_mul_Plane>`\ (\ right\: :ref:`Plane<class_Plane>`\ )                                        |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Transform3D<class_Transform3D>`               | :ref:`operator * <class_Transform3D_operator_mul_Transform3D>`\ (\ right\: :ref:`Transform3D<class_Transform3D>`\ )                      |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>`                       | :ref:`operator * <class_Transform3D_operator_mul_Vector3>`\ (\ right\: :ref:`Vector3<class_Vector3>`\ )                                  |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Transform3D<class_Transform3D>`               | :ref:`operator * <class_Transform3D_operator_mul_float>`\ (\ right\: :ref:`float<class_float>`\ )                                        |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Transform3D<class_Transform3D>`               | :ref:`toán tử * <class_Transform3D_operator_mul_int>`\ (\ right\: :ref:`int<class_int>`\ )                                               |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Transform3D<class_Transform3D>`               | :ref:`toán tử / <class_Transform3D_operator_div_float>`\ (\ right\: :ref:`float<class_float>`\ )                                         |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Transform3D<class_Transform3D>`               | :ref:`toán tử / <class_Transform3D_operator_div_int>`\ (\ right\: :ref:`int<class_int>`\ )                                               |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                             | :ref:`toán tử == <class_Transform3D_operator_eq_Transform3D>`\ (\ right\: :ref:`Transform3D<class_Transform3D>`\ )                       |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -154,8 +154,8 @@ Operators
 
 .. rst-class:: classref-descriptions-group
 
-Constants
----------
+Hằng số
+-------
 
 .. _class_Transform3D_constant_IDENTITY:
 
@@ -163,13 +163,13 @@ Constants
 
 **IDENTITY** = ``Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)`` :ref:`🔗<class_Transform3D_constant_IDENTITY>`
 
-The identity **Transform3D**. This is a transform with no translation, no rotation, and a scale of :ref:`Vector3.ONE<class_Vector3_constant_ONE>`. Its :ref:`basis<class_Transform3D_property_basis>` is equal to :ref:`Basis.IDENTITY<class_Basis_constant_IDENTITY>`. This also means that:
+**Transform3D** identity. Đây là một phép biến đổi không có phép tịnh tiến, không có phép xoay và có tỷ lệ :ref:`Vector3.ONE<class_Vector3_constant_ONE>`. :ref:`basis<class_Transform3D_property_basis>` của nó bằng :ref:`Basis.IDENTITY<class_Basis_constant_IDENTITY>`. Điều này cũng có nghĩa là:
 
-- Its :ref:`Basis.x<class_Basis_property_x>` points right (:ref:`Vector3.RIGHT<class_Vector3_constant_RIGHT>`);
+- :ref:`Basis.x<class_Basis_property_x>` của nó hướng sang phải (:ref:`Vector3.RIGHT<class_Vector3_constant_RIGHT>`);
 
-- Its :ref:`Basis.y<class_Basis_property_y>` points up (:ref:`Vector3.UP<class_Vector3_constant_UP>`);
+- :ref:`Basis.y<class_Basis_property_y>` của nó hướng lên trên (:ref:`Vector3.UP<class_Vector3_constant_UP>`);
 
-- Its :ref:`Basis.z<class_Basis_property_z>` points back (:ref:`Vector3.BACK<class_Vector3_constant_BACK>`).
+- :ref:`Basis.z<class_Basis_property_z>` của nó hướng ra sau (:ref:`Vector3.BACK<class_Vector3_constant_BACK>`).
 
 ::
 
@@ -185,9 +185,9 @@ The identity **Transform3D**. This is a transform with no translation, no rotati
     # | 0 | 1 | 0 | 0
     # | 0 | 0 | 1 | 0
 
-If a :ref:`Vector3<class_Vector3>`, an :ref:`AABB<class_AABB>`, a :ref:`Plane<class_Plane>`, a :ref:`PackedVector3Array<class_PackedVector3Array>`, or another **Transform3D** is transformed (multiplied) by this constant, no transformation occurs.
+Nếu một :ref:`Vector3<class_Vector3>`, một :ref:`AABB<class_AABB>`, một :ref:`Plane<class_Plane>`, một :ref:`PackedVector3Array<class_PackedVector3Array>` hoặc một **Transform3D** khác được biến đổi (nhân) với hằng số này thì không có phép biến đổi nào xảy ra.
 
-\ **Note:** In GDScript, this constant is equivalent to creating a :ref:`Transform3D<class_Transform3D_constructor_Transform3D>` without any arguments. It can be used to make your code clearer, and for consistency with C#.
+\ **Lưu ý:** Trong GDScript, hằng số này tương đương với việc tạo một :ref:`Transform3D<class_Transform3D_constructor_Transform3D>` mà không truyền đối số nào. Bạn có thể dùng nó để làm cho code rõ ràng hơn và nhất quán với C#.
 
 .. _class_Transform3D_constant_FLIP_X:
 
@@ -195,7 +195,7 @@ If a :ref:`Vector3<class_Vector3>`, an :ref:`AABB<class_AABB>`, a :ref:`Plane<cl
 
 **FLIP_X** = ``Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)`` :ref:`🔗<class_Transform3D_constant_FLIP_X>`
 
-**Transform3D** with mirroring applied perpendicular to the YZ plane. Its :ref:`basis<class_Transform3D_property_basis>` is equal to :ref:`Basis.FLIP_X<class_Basis_constant_FLIP_X>`.
+**Transform3D** với phép đối xứng áp dụng theo phương vuông góc với mặt phẳng YZ. :ref:`basis<class_Transform3D_property_basis>` của nó bằng :ref:`Basis.FLIP_X<class_Basis_constant_FLIP_X>`.
 
 .. _class_Transform3D_constant_FLIP_Y:
 
@@ -203,7 +203,7 @@ If a :ref:`Vector3<class_Vector3>`, an :ref:`AABB<class_AABB>`, a :ref:`Plane<cl
 
 **FLIP_Y** = ``Transform3D(1, 0, 0, 0, -1, 0, 0, 0, 1, 0, 0, 0)`` :ref:`🔗<class_Transform3D_constant_FLIP_Y>`
 
-**Transform3D** with mirroring applied perpendicular to the XZ plane. Its :ref:`basis<class_Transform3D_property_basis>` is equal to :ref:`Basis.FLIP_Y<class_Basis_constant_FLIP_Y>`.
+**Transform3D** với phép đối xứng áp dụng theo phương vuông góc với mặt phẳng XZ. :ref:`basis<class_Transform3D_property_basis>` của nó bằng :ref:`Basis.FLIP_Y<class_Basis_constant_FLIP_Y>`.
 
 .. _class_Transform3D_constant_FLIP_Z:
 
@@ -211,7 +211,7 @@ If a :ref:`Vector3<class_Vector3>`, an :ref:`AABB<class_AABB>`, a :ref:`Plane<cl
 
 **FLIP_Z** = ``Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)`` :ref:`🔗<class_Transform3D_constant_FLIP_Z>`
 
-**Transform3D** with mirroring applied perpendicular to the XY plane. Its :ref:`basis<class_Transform3D_property_basis>` is equal to :ref:`Basis.FLIP_Z<class_Basis_constant_FLIP_Z>`.
+**Transform3D** với phép đối xứng áp dụng theo phương vuông góc với mặt phẳng XY. :ref:`basis<class_Transform3D_property_basis>` của nó bằng :ref:`Basis.FLIP_Z<class_Basis_constant_FLIP_Z>`.
 
 .. rst-class:: classref-section-separator
 
@@ -219,8 +219,8 @@ If a :ref:`Vector3<class_Vector3>`, an :ref:`AABB<class_AABB>`, a :ref:`Plane<cl
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Transform3D_property_basis:
 
@@ -228,7 +228,7 @@ Property Descriptions
 
 :ref:`Basis<class_Basis>` **basis** = ``Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)`` :ref:`🔗<class_Transform3D_property_basis>`
 
-The :ref:`Basis<class_Basis>` of this transform. It is composed by 3 axes (:ref:`Basis.x<class_Basis_property_x>`, :ref:`Basis.y<class_Basis_property_y>`, and :ref:`Basis.z<class_Basis_property_z>`). Together, these represent the transform's rotation, scale, and shear.
+:ref:`Basis<class_Basis>` của phép biến đổi này. Nó được tạo thành từ 3 trục (:ref:`Basis.x<class_Basis_property_x>`, :ref:`Basis.y<class_Basis_property_y>` và :ref:`Basis.z<class_Basis_property_z>`). Các trục này cùng nhau biểu diễn phép xoay, tỷ lệ và độ xiên của phép biến đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -240,7 +240,7 @@ The :ref:`Basis<class_Basis>` of this transform. It is composed by 3 axes (:ref:
 
 :ref:`Vector3<class_Vector3>` **origin** = ``Vector3(0, 0, 0)`` :ref:`🔗<class_Transform3D_property_origin>`
 
-The translation offset of this transform. In 3D space, this can be seen as the position.
+Độ lệch tịnh tiến của phép biến đổi này. Trong không gian 3D, giá trị này có thể được xem là vị trí.
 
 .. rst-class:: classref-section-separator
 
@@ -248,8 +248,8 @@ The translation offset of this transform. In 3D space, this can be seen as the p
 
 .. rst-class:: classref-descriptions-group
 
-Constructor Descriptions
-------------------------
+Mô tả hàm khởi tạo
+------------------
 
 .. _class_Transform3D_constructor_Transform3D:
 
@@ -257,9 +257,9 @@ Constructor Descriptions
 
 :ref:`Transform3D<class_Transform3D>` **Transform3D**\ (\ ) :ref:`🔗<class_Transform3D_constructor_Transform3D>`
 
-Constructs a **Transform3D** identical to :ref:`IDENTITY<class_Transform3D_constant_IDENTITY>`.
+Tạo một **Transform3D** giống hệt :ref:`IDENTITY<class_Transform3D_constant_IDENTITY>`.
 
-\ **Note:** In C#, this constructs a **Transform3D** with its :ref:`origin<class_Transform3D_property_origin>` and the components of its :ref:`basis<class_Transform3D_property_basis>` set to :ref:`Vector3.ZERO<class_Vector3_constant_ZERO>`.
+\ **Lưu ý:** Trong C#, hàm này tạo một **Transform3D** với :ref:`origin<class_Transform3D_property_origin>` và các thành phần của :ref:`basis<class_Transform3D_property_basis>` được đặt thành :ref:`Vector3.ZERO<class_Vector3_constant_ZERO>`.
 
 .. rst-class:: classref-item-separator
 
@@ -269,7 +269,7 @@ Constructs a **Transform3D** identical to :ref:`IDENTITY<class_Transform3D_const
 
 :ref:`Transform3D<class_Transform3D>` **Transform3D**\ (\ from\: :ref:`Transform3D<class_Transform3D>`\ )
 
-Constructs a **Transform3D** as a copy of the given **Transform3D**.
+Tạo một **Transform3D** dưới dạng bản sao của **Transform3D** đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -279,7 +279,7 @@ Constructs a **Transform3D** as a copy of the given **Transform3D**.
 
 :ref:`Transform3D<class_Transform3D>` **Transform3D**\ (\ basis\: :ref:`Basis<class_Basis>`, origin\: :ref:`Vector3<class_Vector3>`\ )
 
-Constructs a **Transform3D** from a :ref:`Basis<class_Basis>` and :ref:`Vector3<class_Vector3>`.
+Tạo một **Transform3D** từ một :ref:`Basis<class_Basis>` và :ref:`Vector3<class_Vector3>`.
 
 .. rst-class:: classref-item-separator
 
@@ -289,7 +289,7 @@ Constructs a **Transform3D** from a :ref:`Basis<class_Basis>` and :ref:`Vector3<
 
 :ref:`Transform3D<class_Transform3D>` **Transform3D**\ (\ from\: :ref:`Projection<class_Projection>`\ )
 
-Constructs a **Transform3D** from a :ref:`Projection<class_Projection>`. Because **Transform3D** is a 3×4 matrix and :ref:`Projection<class_Projection>` is a 4×4 matrix, this operation trims the last row of the projection matrix (``from.x.w``, ``from.y.w``, ``from.z.w``, and ``from.w.w`` are not included in the new transform).
+Tạo một **Transform3D** từ một :ref:`Projection<class_Projection>`. Vì **Transform3D** là ma trận 3×4 còn :ref:`Projection<class_Projection>` là ma trận 4×4, thao tác này loại bỏ hàng cuối cùng của ma trận chiếu (``from.x.w``, ``from.y.w``, ``from.z.w`` và ``from.w.w`` không được đưa vào phép biến đổi mới).
 
 .. rst-class:: classref-item-separator
 
@@ -299,9 +299,9 @@ Constructs a **Transform3D** from a :ref:`Projection<class_Projection>`. Because
 
 :ref:`Transform3D<class_Transform3D>` **Transform3D**\ (\ x_axis\: :ref:`Vector3<class_Vector3>`, y_axis\: :ref:`Vector3<class_Vector3>`, z_axis\: :ref:`Vector3<class_Vector3>`, origin\: :ref:`Vector3<class_Vector3>`\ )
 
-Constructs a **Transform3D** from four :ref:`Vector3<class_Vector3>` values (also called matrix columns).
+Tạo một **Transform3D** từ bốn giá trị :ref:`Vector3<class_Vector3>` (còn được gọi là các cột ma trận).
 
-The first three arguments are the :ref:`basis<class_Transform3D_property_basis>`'s axes (:ref:`Basis.x<class_Basis_property_x>`, :ref:`Basis.y<class_Basis_property_y>`, and :ref:`Basis.z<class_Basis_property_z>`).
+Ba đối số đầu tiên là các trục của :ref:`basis<class_Transform3D_property_basis>` (:ref:`Basis.x<class_Basis_property_x>`, :ref:`Basis.y<class_Basis_property_y>` và :ref:`Basis.z<class_Basis_property_z>`).
 
 .. rst-class:: classref-section-separator
 
@@ -309,8 +309,8 @@ The first three arguments are the :ref:`basis<class_Transform3D_property_basis>`
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Transform3D_method_affine_inverse:
 
@@ -318,9 +318,9 @@ Method Descriptions
 
 :ref:`Transform3D<class_Transform3D>` **affine_inverse**\ (\ ) |const| :ref:`🔗<class_Transform3D_method_affine_inverse>`
 
-Returns the inverted version of this transform. Unlike :ref:`inverse()<class_Transform3D_method_inverse>`, this method works with almost any :ref:`basis<class_Transform3D_property_basis>`, including non-uniform ones, but is slower. See also :ref:`Basis.inverse()<class_Basis_method_inverse>`.
+Trả về phiên bản nghịch đảo của phép biến đổi này. Khác với :ref:`inverse()<class_Transform3D_method_inverse>`, phương thức này hoạt động với hầu hết mọi :ref:`basis<class_Transform3D_property_basis>`, bao gồm cả các tỷ lệ không đồng nhất, nhưng chậm hơn. Xem thêm :ref:`Basis.inverse()<class_Basis_method_inverse>`.
 
-\ **Note:** For this method to return correctly, the transform's :ref:`basis<class_Transform3D_property_basis>` needs to have a determinant that is not exactly ``0.0`` (see :ref:`Basis.determinant()<class_Basis_method_determinant>`).
+\ **Lưu ý:** Để phương thức này trả về kết quả chính xác, :ref:`basis<class_Transform3D_property_basis>` của phép biến đổi phải có định thức không chính xác bằng ``0.0`` (xem :ref:`Basis.determinant()<class_Basis_method_determinant>`).
 
 .. rst-class:: classref-item-separator
 
@@ -332,9 +332,9 @@ Returns the inverted version of this transform. Unlike :ref:`inverse()<class_Tra
 
 :ref:`Transform3D<class_Transform3D>` **interpolate_with**\ (\ xform\: :ref:`Transform3D<class_Transform3D>`, weight\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Transform3D_method_interpolate_with>`
 
-Returns the result of the linear interpolation between this transform and ``xform`` by the given ``weight``.
+Trả về kết quả nội suy tuyến tính giữa phép biến đổi này và ``xform`` theo ``weight`` đã cho.
 
-The ``weight`` should be between ``0.0`` and ``1.0`` (inclusive). Values outside this range are allowed and can be used to perform *extrapolation* instead.
+``weight`` phải nằm giữa ``0.0`` và ``1.0`` (bao gồm cả hai giá trị). Các giá trị nằm ngoài phạm vi này vẫn được phép và có thể được dùng để thực hiện phép *ngoại suy*.
 
 .. rst-class:: classref-item-separator
 
@@ -346,9 +346,9 @@ The ``weight`` should be between ``0.0`` and ``1.0`` (inclusive). Values outside
 
 :ref:`Transform3D<class_Transform3D>` **inverse**\ (\ ) |const| :ref:`🔗<class_Transform3D_method_inverse>`
 
-Returns the `inverted version of this transform <https://en.wikipedia.org/wiki/Invertible_matrix>`__. See also :ref:`Basis.inverse()<class_Basis_method_inverse>`.
+Trả về `phiên bản nghịch đảo của phép biến đổi này <https://en.wikipedia.org/wiki/Invertible_matrix>`__. Xem thêm :ref:`Basis.inverse()<class_Basis_method_inverse>`.
 
-\ **Note:** For this method to return correctly, the transform's :ref:`basis<class_Transform3D_property_basis>` needs to be *orthonormal* (see :ref:`orthonormalized()<class_Transform3D_method_orthonormalized>`). That means the basis should only represent a rotation. If it does not, use :ref:`affine_inverse()<class_Transform3D_method_affine_inverse>` instead.
+\ **Lưu ý:** Để phương thức này trả về kết quả chính xác, :ref:`basis<class_Transform3D_property_basis>` của phép biến đổi phải *trực chuẩn* (xem :ref:`orthonormalized()<class_Transform3D_method_orthonormalized>`). Điều đó có nghĩa là basis chỉ được biểu diễn một phép xoay. Nếu không, hãy sử dụng :ref:`affine_inverse()<class_Transform3D_method_affine_inverse>`.
 
 .. rst-class:: classref-item-separator
 
@@ -360,7 +360,7 @@ Returns the `inverted version of this transform <https://en.wikipedia.org/wiki/I
 
 :ref:`bool<class_bool>` **is_equal_approx**\ (\ xform\: :ref:`Transform3D<class_Transform3D>`\ ) |const| :ref:`🔗<class_Transform3D_method_is_equal_approx>`
 
-Returns ``true`` if this transform and ``xform`` are approximately equal, by running :ref:`@GlobalScope.is_equal_approx()<class_@GlobalScope_method_is_equal_approx>` on each component.
+Trả về ``true`` nếu phép biến đổi này và ``xform`` gần bằng nhau, bằng cách gọi :ref:`@GlobalScope.is_equal_approx() <class_@GlobalScope_method_is_equal_approx>` trên từng thành phần.
 
 .. rst-class:: classref-item-separator
 
@@ -372,7 +372,7 @@ Returns ``true`` if this transform and ``xform`` are approximately equal, by run
 
 :ref:`bool<class_bool>` **is_finite**\ (\ ) |const| :ref:`🔗<class_Transform3D_method_is_finite>`
 
-Returns ``true`` if this transform is finite, by calling :ref:`@GlobalScope.is_finite()<class_@GlobalScope_method_is_finite>` on each component.
+Trả về ``true`` nếu phép biến đổi này hữu hạn, bằng cách gọi :ref:`@GlobalScope.is_finite() <class_@GlobalScope_method_is_finite>` trên từng thành phần.
 
 .. rst-class:: classref-item-separator
 
@@ -384,11 +384,11 @@ Returns ``true`` if this transform is finite, by calling :ref:`@GlobalScope.is_f
 
 :ref:`Transform3D<class_Transform3D>` **looking_at**\ (\ target\: :ref:`Vector3<class_Vector3>`, up\: :ref:`Vector3<class_Vector3>` = Vector3(0, 1, 0), use_model_front\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Transform3D_method_looking_at>`
 
-Returns a copy of this transform rotated so that the forward axis (-Z) points towards the ``target`` position.
+Trả về một bản sao của phép biến đổi này đã được xoay sao cho trục hướng về phía trước (-Z) hướng về vị trí ``target``.
 
-The up axis (+Y) points as close to the ``up`` vector as possible while staying perpendicular to the forward axis. The resulting transform is orthonormalized. The existing rotation, scale, and skew information from the original transform is discarded. The ``target`` and ``up`` vectors cannot be zero, cannot be parallel to each other, and are defined in global/parent space.
+Trục hướng lên (+Y) hướng gần nhất có thể đến vector ``up`` trong khi vẫn vuông góc với trục hướng về phía trước. Phép biến đổi kết quả được trực chuẩn hóa. Thông tin về phép xoay, tỷ lệ và độ xiên hiện có từ phép biến đổi ban đầu sẽ bị loại bỏ. Các vector ``target`` và ``up`` không được bằng 0, không được song song với nhau và được xác định trong không gian global/parent.
 
-If ``use_model_front`` is ``true``, the +Z axis (asset front) is treated as forward (implies +X is left) and points toward the ``target`` position. By default, the -Z axis (camera forward) is treated as forward (implies +X is right).
+Nếu ``use_model_front`` là ``true``, trục +Z (mặt trước của asset) được xem là hướng về phía trước (ngụ ý +X hướng sang trái) và hướng về vị trí ``target``. Theo mặc định, trục -Z (hướng về phía trước của camera) được xem là hướng về phía trước (ngụ ý +X hướng sang phải).
 
 .. rst-class:: classref-item-separator
 
@@ -400,7 +400,7 @@ If ``use_model_front`` is ``true``, the +Z axis (asset front) is treated as forw
 
 :ref:`Transform3D<class_Transform3D>` **orthonormalized**\ (\ ) |const| :ref:`🔗<class_Transform3D_method_orthonormalized>`
 
-Returns a copy of this transform with its :ref:`basis<class_Transform3D_property_basis>` orthonormalized. An orthonormal basis is both *orthogonal* (the axes are perpendicular to each other) and *normalized* (the axes have a length of ``1.0``), which also means it can only represent a rotation. See also :ref:`Basis.orthonormalized()<class_Basis_method_orthonormalized>`.
+Trả về một bản sao của phép biến đổi này với :ref:`basis<class_Transform3D_property_basis>` được trực chuẩn hóa. Một basis trực chuẩn vừa *trực giao* (các trục vuông góc với nhau) vừa *chuẩn hóa* (các trục có độ dài ``1.0``), điều này cũng có nghĩa là nó chỉ có thể biểu diễn một phép xoay. Xem thêm :ref:`Basis.orthonormalized()<class_Basis_method_orthonormalized>`.
 
 .. rst-class:: classref-item-separator
 
@@ -412,13 +412,13 @@ Returns a copy of this transform with its :ref:`basis<class_Transform3D_property
 
 :ref:`Transform3D<class_Transform3D>` **rotated**\ (\ axis\: :ref:`Vector3<class_Vector3>`, angle\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Transform3D_method_rotated>`
 
-Returns a copy of this transform rotated around the given ``axis`` by the given ``angle`` (in radians).
+Trả về một bản sao của phép biến đổi này được xoay quanh ``axis`` đã cho theo ``angle`` đã cho (tính bằng radian).
 
-The ``axis`` must be a normalized vector (see :ref:`Vector3.normalized()<class_Vector3_method_normalized>`). If ``angle`` is positive, the basis is rotated counter-clockwise around the axis.
+``axis`` phải là một vector đã chuẩn hóa (xem :ref:`Vector3.normalized()<class_Vector3_method_normalized>`). Nếu ``angle`` dương, basis sẽ được xoay ngược chiều kim đồng hồ quanh trục.
 
-This method is an optimized version of multiplying the given transform ``X`` with a corresponding rotation transform ``R`` from the left, i.e., ``R * X``.
+Phương thức này là phiên bản được tối ưu hóa của việc nhân phép biến đổi đã cho ``X`` với phép biến đổi xoay tương ứng ``R`` từ bên trái, tức là ``R * X``.
 
-This can be seen as transforming with respect to the global/parent frame.
+Có thể hiểu đây là phép biến đổi theo hệ quy chiếu global/parent.
 
 .. rst-class:: classref-item-separator
 
@@ -430,13 +430,13 @@ This can be seen as transforming with respect to the global/parent frame.
 
 :ref:`Transform3D<class_Transform3D>` **rotated_local**\ (\ axis\: :ref:`Vector3<class_Vector3>`, angle\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Transform3D_method_rotated_local>`
 
-Returns a copy of this transform rotated around the given ``axis`` by the given ``angle`` (in radians).
+Trả về một bản sao của phép biến đổi này được xoay quanh ``axis`` đã cho theo ``angle`` đã cho (tính bằng radian).
 
-The ``axis`` must be a normalized vector in the transform's local coordinate system. For example, to rotate around the local X-axis, use :ref:`Vector3.RIGHT<class_Vector3_constant_RIGHT>`.
+``axis`` phải là một vector chuẩn hóa trong hệ tọa độ cục bộ của phép biến đổi. Ví dụ, để xoay quanh trục X cục bộ, hãy sử dụng :ref:`Vector3.RIGHT<class_Vector3_constant_RIGHT>`.
 
-This method is an optimized version of multiplying the given transform ``X`` with a corresponding rotation transform ``R`` from the right, i.e., ``X * R``.
+Phương thức này là phiên bản được tối ưu hóa của phép nhân phép biến đổi đã cho ``X`` với phép biến đổi xoay tương ứng ``R`` từ bên phải, tức là ``X * R``.
 
-This can be seen as transforming with respect to the local frame.
+Có thể xem đây là phép biến đổi theo frame cục bộ.
 
 .. rst-class:: classref-item-separator
 
@@ -448,11 +448,11 @@ This can be seen as transforming with respect to the local frame.
 
 :ref:`Transform3D<class_Transform3D>` **scaled**\ (\ scale\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_Transform3D_method_scaled>`
 
-Returns a copy of this transform scaled by the given ``scale`` factor.
+Trả về một bản sao của phép biến đổi này được scale theo hệ số ``scale`` đã cho.
 
-This method is an optimized version of multiplying the given transform ``X`` with a corresponding scaling transform ``S`` from the left, i.e., ``S * X``.
+Phương thức này là phiên bản được tối ưu hóa của phép nhân phép biến đổi đã cho ``X`` với phép biến đổi scale tương ứng ``S`` từ bên trái, tức là ``S * X``.
 
-This can be seen as transforming with respect to the global/parent frame.
+Có thể hiểu đây là phép biến đổi theo hệ quy chiếu global/parent.
 
 .. rst-class:: classref-item-separator
 
@@ -464,11 +464,11 @@ This can be seen as transforming with respect to the global/parent frame.
 
 :ref:`Transform3D<class_Transform3D>` **scaled_local**\ (\ scale\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_Transform3D_method_scaled_local>`
 
-Returns a copy of this transform scaled by the given ``scale`` factor.
+Trả về một bản sao của phép biến đổi này được scale theo hệ số ``scale`` đã cho.
 
-This method is an optimized version of multiplying the given transform ``X`` with a corresponding scaling transform ``S`` from the right, i.e., ``X * S``.
+Phương thức này là phiên bản được tối ưu hóa của phép nhân phép biến đổi đã cho ``X`` với phép biến đổi scale tương ứng ``S`` từ bên phải, tức là ``X * S``.
 
-This can be seen as transforming with respect to the local frame.
+Có thể xem đây là phép biến đổi theo frame cục bộ.
 
 .. rst-class:: classref-item-separator
 
@@ -480,11 +480,11 @@ This can be seen as transforming with respect to the local frame.
 
 :ref:`Transform3D<class_Transform3D>` **translated**\ (\ offset\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_Transform3D_method_translated>`
 
-Returns a copy of this transform translated by the given ``offset``.
+Trả về một bản sao của phép biến đổi này được dịch theo ``offset`` đã cho.
 
-This method is an optimized version of multiplying the given transform ``X`` with a corresponding translation transform ``T`` from the left, i.e., ``T * X``.
+Phương thức này là phiên bản được tối ưu hóa của phép nhân phép biến đổi đã cho ``X`` với phép biến đổi dịch tương ứng ``T`` từ bên trái, tức là ``T * X``.
 
-This can be seen as transforming with respect to the global/parent frame.
+Có thể hiểu đây là phép biến đổi theo hệ quy chiếu global/parent.
 
 .. rst-class:: classref-item-separator
 
@@ -496,11 +496,11 @@ This can be seen as transforming with respect to the global/parent frame.
 
 :ref:`Transform3D<class_Transform3D>` **translated_local**\ (\ offset\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_Transform3D_method_translated_local>`
 
-Returns a copy of this transform translated by the given ``offset``.
+Trả về một bản sao của phép biến đổi này được dịch theo ``offset`` đã cho.
 
-This method is an optimized version of multiplying the given transform ``X`` with a corresponding translation transform ``T`` from the right, i.e., ``X * T``.
+Phương thức này là phiên bản được tối ưu hóa của phép nhân phép biến đổi đã cho ``X`` với phép biến đổi dịch tương ứng ``T`` từ bên phải, tức là ``X * T``.
 
-This can be seen as transforming with respect to the local frame.
+Có thể xem đây là phép biến đổi theo frame cục bộ.
 
 .. rst-class:: classref-section-separator
 
@@ -508,18 +508,18 @@ This can be seen as transforming with respect to the local frame.
 
 .. rst-class:: classref-descriptions-group
 
-Operator Descriptions
----------------------
+Mô tả toán tử
+-------------
 
 .. _class_Transform3D_operator_neq_Transform3D:
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗<class_Transform3D_operator_neq_Transform3D>`
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗 <class_Transform3D_operator_neq_Transform3D>`
 
-Returns ``true`` if the components of both transforms are not equal.
+Trả về ``true`` nếu các thành phần của hai phép biến đổi không bằng nhau.
 
-\ **Note:** Due to floating-point precision errors, consider using :ref:`is_equal_approx()<class_Transform3D_method_is_equal_approx>` instead, which is more reliable.
+\ **Lưu ý:** Do sai số độ chính xác dấu phẩy động, hãy cân nhắc sử dụng :ref:`is_equal_approx()<class_Transform3D_method_is_equal_approx>` thay thế vì cách này đáng tin cậy hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -529,9 +529,9 @@ Returns ``true`` if the components of both transforms are not equal.
 
 .. rst-class:: classref-operator
 
-:ref:`AABB<class_AABB>` **operator ***\ (\ right\: :ref:`AABB<class_AABB>`\ ) :ref:`🔗<class_Transform3D_operator_mul_AABB>`
+:ref:`AABB<class_AABB>` **toán tử ***\ (\ phải\: :ref:`AABB<class_AABB>`\ ) :ref:`🔗 <class_Transform3D_operator_mul_AABB>`
 
-Transforms (multiplies) the :ref:`AABB<class_AABB>` by this transformation matrix.
+Biến đổi (nhân) :ref:`AABB<class_AABB>` bằng ma trận biến đổi này.
 
 .. rst-class:: classref-item-separator
 
@@ -541,11 +541,11 @@ Transforms (multiplies) the :ref:`AABB<class_AABB>` by this transformation matri
 
 .. rst-class:: classref-operator
 
-:ref:`PackedVector3Array<class_PackedVector3Array>` **operator ***\ (\ right\: :ref:`PackedVector3Array<class_PackedVector3Array>`\ ) :ref:`🔗<class_Transform3D_operator_mul_PackedVector3Array>`
+:ref:`PackedVector3Array<class_PackedVector3Array>` **toán tử ***\ (\ phải\: :ref:`PackedVector3Array<class_PackedVector3Array>`\ ) :ref:`🔗 <class_Transform3D_operator_mul_PackedVector3Array>`
 
-Transforms (multiplies) every :ref:`Vector3<class_Vector3>` element of the given :ref:`PackedVector3Array<class_PackedVector3Array>` by this transformation matrix.
+Biến đổi (nhân) từng phần tử :ref:`Vector3<class_Vector3>` của :ref:`PackedVector3Array<class_PackedVector3Array>` đã cho bằng ma trận biến đổi này.
 
-On larger arrays, this operation is much faster than transforming each :ref:`Vector3<class_Vector3>` individually.
+Trên các mảng lớn, thao tác này nhanh hơn nhiều so với việc biến đổi từng :ref:`Vector3<class_Vector3>` riêng lẻ.
 
 .. rst-class:: classref-item-separator
 
@@ -555,9 +555,9 @@ On larger arrays, this operation is much faster than transforming each :ref:`Vec
 
 .. rst-class:: classref-operator
 
-:ref:`Plane<class_Plane>` **operator ***\ (\ right\: :ref:`Plane<class_Plane>`\ ) :ref:`🔗<class_Transform3D_operator_mul_Plane>`
+:ref:`Plane<class_Plane>` **toán tử ***\ (\ phải\: :ref:`Plane<class_Plane>`\ ) :ref:`🔗 <class_Transform3D_operator_mul_Plane>`
 
-Transforms (multiplies) the :ref:`Plane<class_Plane>` by this transformation matrix.
+Biến đổi (nhân) :ref:`Plane<class_Plane>` bằng ma trận biến đổi này.
 
 .. rst-class:: classref-item-separator
 
@@ -567,19 +567,19 @@ Transforms (multiplies) the :ref:`Plane<class_Plane>` by this transformation mat
 
 .. rst-class:: classref-operator
 
-:ref:`Transform3D<class_Transform3D>` **operator ***\ (\ right\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗<class_Transform3D_operator_mul_Transform3D>`
+:ref:`Transform3D<class_Transform3D>` **toán tử ***\ (\ phải\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗 <class_Transform3D_operator_mul_Transform3D>`
 
-Transforms (multiplies) this transform by the ``right`` transform.
+Biến đổi (nhân) phép biến đổi này với phép biến đổi ``right``.
 
-This is the operation performed between parent and child :ref:`Node3D<class_Node3D>`\ s.
+Đây là thao tác được thực hiện giữa các :ref:`Node3D<class_Node3D>`\ s cha và con.
 
-\ **Note:** If you need to only modify one attribute of this transform, consider using one of the following methods, instead:
+\ **Lưu ý:** Nếu chỉ cần sửa đổi một thuộc tính của phép biến đổi này, thay vào đó hãy cân nhắc sử dụng một trong các phương thức sau:
 
-- For translation, see :ref:`translated()<class_Transform3D_method_translated>` or :ref:`translated_local()<class_Transform3D_method_translated_local>`.
+- Để dịch, xem :ref:`translated()<class_Transform3D_method_translated>` hoặc :ref:`translated_local()<class_Transform3D_method_translated_local>`.
 
-- For rotation, see :ref:`rotated()<class_Transform3D_method_rotated>` or :ref:`rotated_local()<class_Transform3D_method_rotated_local>`.
+- Để xoay, xem :ref:`rotated()<class_Transform3D_method_rotated>` hoặc :ref:`rotated_local()<class_Transform3D_method_rotated_local>`.
 
-- For scale, see :ref:`scaled()<class_Transform3D_method_scaled>` or :ref:`scaled_local()<class_Transform3D_method_scaled_local>`.
+- Để scale, xem :ref:`scaled()<class_Transform3D_method_scaled>` hoặc :ref:`scaled_local()<class_Transform3D_method_scaled_local>`.
 
 .. rst-class:: classref-item-separator
 
@@ -589,9 +589,9 @@ This is the operation performed between parent and child :ref:`Node3D<class_Node
 
 .. rst-class:: classref-operator
 
-:ref:`Vector3<class_Vector3>` **operator ***\ (\ right\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_Transform3D_operator_mul_Vector3>`
+:ref:`Vector3<class_Vector3>` **toán tử ***\ (\ phải\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗 <class_Transform3D_operator_mul_Vector3>`
 
-Transforms (multiplies) the :ref:`Vector3<class_Vector3>` by this transformation matrix.
+Biến đổi (nhân) :ref:`Vector3<class_Vector3>` bằng ma trận biến đổi này.
 
 .. rst-class:: classref-item-separator
 
@@ -601,9 +601,9 @@ Transforms (multiplies) the :ref:`Vector3<class_Vector3>` by this transformation
 
 .. rst-class:: classref-operator
 
-:ref:`Transform3D<class_Transform3D>` **operator ***\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Transform3D_operator_mul_float>`
+:ref:`Transform3D<class_Transform3D>` **toán tử ***\ (\ phải\: :ref:`float<class_float>`\ ) :ref:`🔗 <class_Transform3D_operator_mul_float>`
 
-Multiplies all components of the **Transform3D** by the given :ref:`float<class_float>`, including the :ref:`origin<class_Transform3D_property_origin>`. This affects the transform's scale uniformly, scaling the :ref:`basis<class_Transform3D_property_basis>`.
+Nhân tất cả các thành phần của **Transform3D** với :ref:`float<class_float>` đã cho, bao gồm cả :ref:`origin<class_Transform3D_property_origin>`. Điều này tác động đồng đều đến scale của phép biến đổi, scale :ref:`basis<class_Transform3D_property_basis>`.
 
 .. rst-class:: classref-item-separator
 
@@ -613,9 +613,9 @@ Multiplies all components of the **Transform3D** by the given :ref:`float<class_
 
 .. rst-class:: classref-operator
 
-:ref:`Transform3D<class_Transform3D>` **operator ***\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Transform3D_operator_mul_int>`
+:ref:`Transform3D<class_Transform3D>` **toán tử ***\ (\ phải\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_Transform3D_operator_mul_int>`
 
-Multiplies all components of the **Transform3D** by the given :ref:`int<class_int>`, including the :ref:`origin<class_Transform3D_property_origin>`. This affects the transform's scale uniformly, scaling the :ref:`basis<class_Transform3D_property_basis>`.
+Nhân tất cả các thành phần của **Transform3D** với :ref:`int<class_int>` đã cho, bao gồm cả :ref:`origin<class_Transform3D_property_origin>`. Điều này tác động đồng đều đến scale của phép biến đổi, scale :ref:`basis<class_Transform3D_property_basis>`.
 
 .. rst-class:: classref-item-separator
 
@@ -625,9 +625,9 @@ Multiplies all components of the **Transform3D** by the given :ref:`int<class_in
 
 .. rst-class:: classref-operator
 
-:ref:`Transform3D<class_Transform3D>` **operator /**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Transform3D_operator_div_float>`
+:ref:`Transform3D<class_Transform3D>` **operator /**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗 <class_Transform3D_operator_div_float>`
 
-Divides all components of the **Transform3D** by the given :ref:`float<class_float>`, including the :ref:`origin<class_Transform3D_property_origin>`. This affects the transform's scale uniformly, scaling the :ref:`basis<class_Transform3D_property_basis>`.
+Chia tất cả các thành phần của **Transform3D** cho :ref:`float<class_float>` đã cho, bao gồm cả :ref:`origin<class_Transform3D_property_origin>`. Điều này tác động đồng đều đến scale của phép biến đổi, scale :ref:`basis<class_Transform3D_property_basis>`.
 
 .. rst-class:: classref-item-separator
 
@@ -637,9 +637,9 @@ Divides all components of the **Transform3D** by the given :ref:`float<class_flo
 
 .. rst-class:: classref-operator
 
-:ref:`Transform3D<class_Transform3D>` **operator /**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Transform3D_operator_div_int>`
+:ref:`Transform3D<class_Transform3D>` **operator /**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_Transform3D_operator_div_int>`
 
-Divides all components of the **Transform3D** by the given :ref:`int<class_int>`, including the :ref:`origin<class_Transform3D_property_origin>`. This affects the transform's scale uniformly, scaling the :ref:`basis<class_Transform3D_property_basis>`.
+Chia tất cả các thành phần của **Transform3D** cho :ref:`int<class_int>` đã cho, bao gồm cả :ref:`origin<class_Transform3D_property_origin>`. Điều này tác động đồng đều đến scale của phép biến đổi, scale :ref:`basis<class_Transform3D_property_basis>`.
 
 .. rst-class:: classref-item-separator
 
@@ -649,18 +649,18 @@ Divides all components of the **Transform3D** by the given :ref:`int<class_int>`
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗<class_Transform3D_operator_eq_Transform3D>`
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗 <class_Transform3D_operator_eq_Transform3D>`
 
-Returns ``true`` if the components of both transforms are exactly equal.
+Trả về ``true`` nếu các thành phần của hai phép biến đổi hoàn toàn bằng nhau.
 
-\ **Note:** Due to floating-point precision errors, consider using :ref:`is_equal_approx()<class_Transform3D_method_is_equal_approx>` instead, which is more reliable.
+\ **Lưu ý:** Do sai số độ chính xác dấu phẩy động, hãy cân nhắc sử dụng :ref:`is_equal_approx()<class_Transform3D_method_is_equal_approx>` thay thế vì cách này đáng tin cậy hơn.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả tại đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, nên có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`
