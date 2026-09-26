@@ -3,21 +3,18 @@
 WebXR
 =====
 
-WebXR is a web standard for delivering XR experiences right from a web browser,
-without the user needing to install anything. Godot has built-in support for WebXR.
+WebXR là một tiêu chuẩn web cho phép cung cấp trải nghiệm XR trực tiếp từ trình duyệt web mà người dùng không cần cài đặt bất kỳ thứ gì. Godot có hỗ trợ WebXR tích hợp sẵn.
 
 .. note::
 
-    As this uses the HTML export WebXR requires the use of the compatibility renderer.
-    Godot currently requires multiview support for stereo rendering which is not available on all WebXR capable devices.
+    Vì sử dụng tính năng xuất HTML, WebXR yêu cầu dùng compatibility renderer. Hiện tại Godot yêu cầu hỗ trợ multiview để kết xuất stereo, nhưng tính năng này không có trên mọi thiết bị hỗ trợ WebXR.
 
-Setup
------
+Thiết lập
+---------
 
-Setting up WebXR is a little different because your application always starts as a normal non-XR webpage.
-We thus define a 2D UI on our main page that includes a button that will switch to XR.
+Việc thiết lập WebXR hơi khác vì ứng dụng của bạn luôn khởi động dưới dạng một trang web thông thường, không phải XR. Do đó, chúng ta định nghĩa một UI 2D trên trang chính, trong đó có một nút chuyển sang XR.
 
-We will need the following code to make things work:
+Chúng ta cần đoạn mã sau để mọi thứ hoạt động:
 
 .. tabs::
   .. code-tab:: gdscript GDScript
@@ -26,41 +23,41 @@ We will need the following code to make things work:
 
     @onready var start_xr_button: Button = $EnterWebXR
 
-    # Our WebXR interface.
+    # Giao diện WebXR của chúng ta.
     var xr_interface: WebXRInterface
 
-    # Is a WebXR is_session_supported query running
+    # Đang chạy truy vấn is_session_supported của WebXR
     var webxr_session_query: bool = false
 
-    # Set this to true if we wish to have an AR session
+    # Đặt giá trị này thành true nếu muốn có một phiên AR
     var require_ar: bool = false
 
-    # Set this to true if we wish to have hand tracking
+    # Đặt giá trị này thành true nếu muốn có tính năng hand tracking
     var enable_hand_tracking: bool = false
 
-    # Handle the Enter VR button on the WebXR browser
+    # Xử lý nút Enter VR trên trình duyệt WebXR
     func _on_enter_webxr_button_pressed() -> void:
-        # Configure the WebXR interface
+        # Cấu hình giao diện WebXR
         xr_interface.session_mode = "immersive-ar" if require_ar else "immersive-vr"
         xr_interface.requested_reference_space_types = "local-floor, local"
         xr_interface.required_features = "local-floor"
         xr_interface.optional_features = ""
 
-        # Add hand-tracking if needed
+        # Thêm hand-tracking nếu cần
         if enable_hand_tracking:
             xr_interface.optional_features += ", hand-tracking"
 
-        # Initialize the interface. This should trigger either _on_webxr_session_started
-        # or _on_webxr_session_failed
+        # Khởi tạo giao diện. Thao tác này sẽ kích hoạt _on_webxr_session_started
+        # hoặc _on_webxr_session_failed
         if not xr_interface.initialize():
             OS.alert("Failed to initialize WebXR")
 
 
-    # Called when we're ready
+    # Được gọi khi chúng ta đã sẵn sàng
     func _ready() -> void:
         xr_interface = XRServer.find_interface("WebXR")
         if xr_interface:
-            # Connect our signals
+            # Kết nối các signal của chúng ta
             xr_interface.session_supported.connect(_on_webxr_session_supported)
             xr_interface.session_started.connect(_on_webxr_session_started)
             xr_interface.session_ended.connect(_on_webxr_session_ended)
@@ -72,101 +69,100 @@ We will need the following code to make things work:
             print("WebXR is not available")
 
 
-    # Handle WebXR session supported check
+    # Xử lý việc kiểm tra xem phiên WebXR có được hỗ trợ hay không
     func _on_webxr_session_supported(session_mode: String, supported: bool) -> void:
-        # Skip if not running session-query
+        # Bỏ qua nếu không chạy session-query
         if not webxr_session_query:
             return
 
-        # Clear the query flag
+        # Xóa cờ truy vấn
         webxr_session_query = false
 
-        # Report if not supported
+        # Báo cáo nếu không được hỗ trợ
         if not supported:
             OS.alert("Your web browser doesn't support " + session_mode + ". Sorry!")
             return
 
-        # WebXR supported - show canvas on web browser to enter WebVR
+        # WebXR được hỗ trợ - hiển thị canvas trên trình duyệt web để vào WebVR
         start_xr_button.visible = true
 
 
-    # Called when the WebXR session has started successfully
+    # Được gọi khi phiên WebXR đã khởi động thành công
     func _on_webxr_session_started() -> void:
-        # Hide the canvas and switch the viewport to XR
+        # Ẩn canvas và chuyển viewport sang XR
         start_xr_button.visible = false
 
         get_viewport().transparent_bg = require_ar
         get_viewport().use_xr = true
 
 
-    # Called when the user ends the immersive VR session
+    # Được gọi khi người dùng kết thúc phiên VR immersive
     func _on_webxr_session_ended() -> void:
-        # Show the canvas and switch the viewport to non-XR
+        # Hiển thị canvas và chuyển viewport sang non-XR
         start_xr_button.visible = true
 
         get_viewport().transparent_bg = false
         get_viewport().use_xr = false
 
 
-    # Called when the immersive VR session fails to start
+    # Được gọi khi phiên VR immersive không khởi động được
     func _on_webxr_session_failed(message: String) -> void:
         OS.alert("Unable to enter VR: " + message)
         start_xr_button.visible = true
 
 
-Make sure the "Enable WebXR" button's ``button_pressed`` signal calls the ``_on_enter_webxr_button_pressed`` method.
+Đảm bảo signal ``button_pressed`` của nút "Enable WebXR" gọi phương thức ``_on_enter_webxr_button_pressed``.
 
 .. note::
 
-    In the code above we attempt to use the ``local-floor`` reference spaces.
-    This reference spaces assumes gameplay where we need to know the player's height from the floor.
+    Trong đoạn mã trên, chúng ta cố gắng sử dụng các reference space ``local-floor``. Reference space này giả định lối chơi trong đó chúng ta cần biết độ cao của người chơi so với sàn.
 
-    For games where the player is seated inside of a vehicle, such as flight sims or racing games, the reference space ``local`` may be more appropriate.
+    Đối với các game trong đó người chơi ngồi trong một phương tiện, chẳng hạn như game mô phỏng bay hoặc game đua xe, reference space ``local`` có thể phù hợp hơn.
 
 
-Controller input
-----------------
+Đầu vào bộ điều khiển
+---------------------
 
-The input system in WebXR works against a fixed set of inputs that obfuscate the actual hardware being used. In order to allow for code to be portable between a WebXR and OpenXR application these inputs are mapped to actions that overlap with the default action map used by our OpenXR interface.
+Hệ thống input trong WebXR hoạt động với một tập input cố định, che giấu phần cứng thực tế đang được sử dụng. Để cho phép mã có thể dùng được giữa ứng dụng WebXR và OpenXR, các input này được ánh xạ tới những action trùng với action map mặc định mà interface OpenXR của chúng ta sử dụng.
 
-There are small differences such as WebXR separating touchpad and thumbsticks as separate inputs, instead of the primary and secondary input setup found in our default OpenXR action map.
+Có một số khác biệt nhỏ, chẳng hạn như WebXR tách touchpad và thumbstick thành các input riêng, thay vì thiết lập input primary và secondary trong action map OpenXR mặc định của chúng ta.
 
-The core inputs are available for WebXR:
+Các input cốt lõi có sẵn cho WebXR:
 
 
 .. table::
    :widths: auto
 
-   +-----------------------------+-----------+---------------------------------------------------------+
-   |  Name                       | Type      | Description                                             |
-   +-----------------------------+-----------+---------------------------------------------------------+
-   |  trigger_click              | Boolean   | ``true`` if the trigger is pressed                      |
-   +-----------------------------+-----------+---------------------------------------------------------+
-   |  trigger                    | Float     | Trigger value between 0.0 and 1.0                       |
-   +-----------------------------+-----------+---------------------------------------------------------+
-   |  grip_click                 | Boolean   | ``true`` if the grip button is pressed                  |
-   +-----------------------------+-----------+---------------------------------------------------------+
-   |  grip                       | Float     | Grip value between 0.0 and 1.0                          |
-   +-----------------------------+-----------+---------------------------------------------------------+
-   |  touchpad_click             | Boolean   | ``true`` if the touchpad is pressed                     |
-   +-----------------------------+-----------+---------------------------------------------------------+
-   |  thumbstick_click           | Boolean   | ``true`` if the thumbstick is pressed                   |
-   +-----------------------------+-----------+---------------------------------------------------------+
-   |  ax_button                  | Boolean   | ``true`` if the A or X button is pressed                |
-   +-----------------------------+-----------+---------------------------------------------------------+
-   |  by_button                  | Boolean   | ``true`` if the B or Y button is pressed                |
-   +-----------------------------+-----------+---------------------------------------------------------+
-   |  touchpad_x                 | Float     | Finger movement on the touchpad in the X direction      |
-   +-----------------------------+-----------+---------------------------------------------------------+
-   |  touchpad_y                 | Float     | Finger movement on the touchpad in the Y direction      |
-   +-----------------------------+-----------+---------------------------------------------------------+
-   |  touchpad                   | Vector2   | Touchpad input as a Vector2                             |
-   +-----------------------------+-----------+---------------------------------------------------------+
-   |  thumbstick_x               | Float     | Thumbstick movement in the X direction                  |
-   +-----------------------------+-----------+---------------------------------------------------------+
-   |  thumbstick_y               | Float     | Thumbstick movement in the Y direction                  |
-   +-----------------------------+-----------+---------------------------------------------------------+
-   |  thumbstick                 | Vector2   | Thumbstick input as a Vector2                           |
-   +-----------------------------+-----------+---------------------------------------------------------+
+   +------------------+---------+-----------------------------------------------------+
+   | Tên              | Kiểu    | Mô tả                                               |
+   +------------------+---------+-----------------------------------------------------+
+   | trigger_click    | Boolean | ``true`` nếu trigger được nhấn                      |
+   +------------------+---------+-----------------------------------------------------+
+   | trigger          | Float   | Giá trị trigger từ 0.0 đến 1.0                      |
+   +------------------+---------+-----------------------------------------------------+
+   | grip_click       | Boolean | ``true`` nếu nút grip được nhấn                     |
+   +------------------+---------+-----------------------------------------------------+
+   | grip             | Float   | Giá trị grip từ 0.0 đến 1.0                         |
+   +------------------+---------+-----------------------------------------------------+
+   | touchpad_click   | Boolean | ``true`` nếu touchpad được nhấn                     |
+   +------------------+---------+-----------------------------------------------------+
+   | thumbstick_click | Boolean | ``true`` nếu thumbstick được nhấn                   |
+   +------------------+---------+-----------------------------------------------------+
+   | ax_button        | Boolean | ``true`` nếu nút A hoặc X được nhấn                 |
+   +------------------+---------+-----------------------------------------------------+
+   | by_button        | Boolean | ``true`` nếu nhấn nút B hoặc Y                      |
+   +------------------+---------+-----------------------------------------------------+
+   | touchpad_x       | Float   | Chuyển động của ngón tay trên touchpad theo hướng X |
+   +------------------+---------+-----------------------------------------------------+
+   | touchpad_y       | Float   | Chuyển động của ngón tay trên touchpad theo hướng Y |
+   +------------------+---------+-----------------------------------------------------+
+   | touchpad         | Vector2 | Dữ liệu đầu vào của touchpad dưới dạng Vector2      |
+   +------------------+---------+-----------------------------------------------------+
+   | thumbstick_x     | Float   | Chuyển động của thumbstick theo hướng X             |
+   +------------------+---------+-----------------------------------------------------+
+   | thumbstick_y     | Float   | Chuyển động của thumbstick theo hướng Y             |
+   +------------------+---------+-----------------------------------------------------+
+   | thumbstick       | Vector2 | Dữ liệu đầu vào của thumbstick dưới dạng Vector2    |
+   +------------------+---------+-----------------------------------------------------+
 
-WebXR also exposes ``aim`` and ``grip`` poses that respectively identify a forward facing location at the tip of the controller and a position on the controller grip.
+WebXR cũng cung cấp các pose ``aim`` và ``grip``, lần lượt xác định một vị trí hướng về phía trước ở đầu controller và một vị trí trên tay cầm của controller.

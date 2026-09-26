@@ -1,85 +1,62 @@
 .. _doc_introducing_xr_tools:
 
-Introducing XR tools
-====================
+Giới thiệu các công cụ XR
+=========================
 
-Out of the box Godot gives you all the basic support to setup an XR project.
-XR specific game mechanics however need to be implemented on top of this foundation.
-While Godot makes this relatively easy this can still be a daunting task.
+Ngay khi cài đặt, Godot cung cấp cho bạn mọi hỗ trợ cơ bản để thiết lập một dự án XR. Tuy nhiên, các cơ chế gameplay dành riêng cho XR cần được triển khai dựa trên nền tảng này. Mặc dù Godot giúp việc này tương đối dễ dàng, đây vẫn có thể là một nhiệm vụ đáng ngại.
 
-For this reason Godot has developed a toolkit called `Godot XR Tools <https://github.com/GodotVR/godot-xr-tools>`_
-that implements many of the basic mechanics found in XR games, from locomotion to object interaction to UI interaction.
+Vì lý do này, Godot đã phát triển một bộ công cụ có tên là `Godot XR Tools <https://github.com/GodotVR/godot-xr-tools>`_, triển khai nhiều cơ chế cơ bản thường thấy trong các game XR, từ di chuyển đến tương tác với đối tượng và tương tác với UI.
 
-This toolkit is designed to work with both OpenXR and WebXR runtimes.
-We'll be using this as a base for our documentation here.
-It helps developers hit the ground running but for more specific use cases building your own logic is just as valid.
-In that case XR tools can help in providing inspiration.
+Bộ công cụ này được thiết kế để hoạt động với cả runtime OpenXR và WebXR. Chúng ta sẽ sử dụng bộ công cụ này làm nền tảng cho tài liệu ở đây. Nó giúp các nhà phát triển bắt tay vào thực hiện ngay, nhưng với những trường hợp sử dụng cụ thể hơn, việc tự xây dựng logic cũng hoàn toàn hợp lý. Trong trường hợp đó, XR tools có thể giúp cung cấp ý tưởng.
 
-Installing XR Tools
--------------------
+Cài đặt XR Tools
+----------------
 
-Continuing on from our project we started in :ref:`doc_setting_up_xr` we want to add in the Godot XR Tools library.
-This can be downloaded from the `Godot XR Tools releases page <https://github.com/GodotVR/godot-xr-tools/releases>`_.
-Find the latest release, and under **Assets**, download the ``godot-xr-tools.zip``
-file. You can also find it in the Asset Store with the title "Godot XR Tools".
+Tiếp tục từ dự án chúng ta đã bắt đầu trong :ref:`doc_setting_up_xr`, chúng ta muốn thêm thư viện Godot XR Tools. Bạn có thể tải thư viện này từ `trang phát hành Godot XR Tools <https://github.com/GodotVR/godot-xr-tools/releases>`_. Tìm bản phát hành mới nhất và trong **Assets**, tải xuống tệp ``godot-xr-tools.zip``. Bạn cũng có thể tìm thấy thư viện này trong Asset Store với tiêu đề "Godot XR Tools".
 
-If you're using the zip file, once it's downloaded unzip it.
-You will notice the files are held within a ``godot-xr-tools`` subfolder.
-Inside of this folder you will find an ``addons`` folder.
-It is this folder that you want to copy in its entirety to your Godot project folder. Your project should now look something like this:
+Nếu bạn sử dụng tệp zip, hãy giải nén tệp sau khi tải xuống. Bạn sẽ nhận thấy các tệp nằm trong một thư mục con ``godot-xr-tools``. Bên trong thư mục này, bạn sẽ tìm thấy một thư mục ``addons``. Đây là thư mục bạn cần sao chép toàn bộ vào thư mục dự án Godot của mình. Lúc này, dự án của bạn sẽ trông gần giống như sau:
 
 .. image:: img/godot_xr_tools_root_folder.webp
 
-Now open up your project in Godot, if you haven't already, and give it a minute or
-so to import all the resources of the plugin. If it asks for a path to Blender to
-be set you can just click the option to disable blender import and restart the
-editor.
+Bây giờ hãy mở dự án trong Godot nếu bạn chưa mở, rồi chờ khoảng một phút để Godot nhập tất cả tài nguyên của plugin. Nếu Godot yêu cầu thiết lập đường dẫn đến Blender, bạn chỉ cần nhấp vào tùy chọn tắt tính năng nhập blender rồi khởi động lại trình chỉnh sửa.
 
-After the import finishes you may notice that several "failed to load script"
-messages popped up, that's normal, the plugin just needs to be enabled in the
-project settings.
+Sau khi quá trình nhập hoàn tất, bạn có thể thấy một số thông báo "failed to load script" xuất hiện; điều đó là bình thường, plugin chỉ cần được bật trong phần cài đặt dự án.
 
-Next open the ``Project`` menu and select ``Project Settings..``.
-Now go to the ``Plugins`` tab and enable the plugin.
+Tiếp theo, mở menu ``Project`` và chọn ``Project Settings..``. Sau đó chuyển đến tab ``Plugins`` và bật plugin.
 
 .. image:: img/godot_xr_tools_enable.webp
 
-After doing that you need to close and re-open your project so everything is
-properly enabled.
+Sau khi thực hiện việc đó, bạn cần đóng rồi mở lại dự án để mọi thứ được bật đúng cách.
 
-Basic hands
------------
+Bàn tay cơ bản
+--------------
 
-Just to get a feel of things we're going to add a few standard components that dress up our scene starting with hands for our player.
+Để làm quen với mọi thứ, chúng ta sẽ thêm một vài thành phần tiêu chuẩn nhằm hoàn thiện cảnh, bắt đầu với bàn tay cho nhân vật người chơi.
 
-OpenXR supports full hand tracking however there currently are significant differences in capabilities between the different XR Runtimes.
+OpenXR hỗ trợ theo dõi toàn bộ bàn tay, tuy nhiên hiện tại có sự khác biệt đáng kể về khả năng giữa các XR Runtime khác nhau.
 
-As a reliable alternative Godot XR Tools comes with a number of rigged hand scenes that react on trigger and grip inputs of your controller.
-These hands come in low and high poly versions, come in a few configurations, a number of animation files to control finger positions and a number of different textures.
+Là một lựa chọn thay thế đáng tin cậy, Godot XR Tools đi kèm một số cảnh bàn tay đã được rig, phản ứng với đầu vào trigger và grip của bộ điều khiển. Các bàn tay này có phiên bản low poly và high poly, một số cấu hình, nhiều tệp animation để điều khiển vị trí các ngón tay và một số texture khác nhau.
 
-In your scene tree select your left hand :ref:`XRController3D <class_xrcontroller3d>` node.
-Now click on the **instantiate Child Scene** button to add a child scene. Click the
-**addons** toggle so the addons folder can be searched. Then search for ``left_hand_low.tscn``,
-and select it.
+Trong scene tree, hãy chọn node bàn tay trái :ref:`XRController3D <class_xrcontroller3d>`. Bây giờ nhấp vào nút **instantiate Child Scene** để thêm một cảnh con. Nhấp vào công tắc **addons** để có thể tìm kiếm trong thư mục addons. Sau đó tìm kiếm ``left_hand_low.tscn`` và chọn mục đó.
 
-As you can see from the path of this scene, low poly models are in the ``lowpoly`` subfolder while high poly models are in the ``highpoly`` subfolder.
-You will want to use the low poly versions if you plan to release your game on mobile devices.
+Như bạn có thể thấy từ đường dẫn của cảnh này, các model low poly nằm trong thư mục con ``lowpoly``, còn các model high poly nằm trong thư mục con ``highpoly``. Bạn nên sử dụng các phiên bản low poly nếu dự định phát hành game trên thiết bị di động.
 
-The default hand we chose is just a hand. The other options are:
+Bàn tay mặc định chúng ta đã chọn chỉ là một bàn tay. Các tùy chọn khác là:
 
-  * tac_glove - the hand is wearing a glove with fingers exposed
-  * full_glove - the hand is wearing a glove that covers the entire hand
+  * tac_glove - bàn tay đeo găng tay để hở các ngón
+  * full_glove - bàn tay đeo găng tay che kín toàn bộ bàn tay
 
-Finally each hand comes in a ``physics`` version.
-This exposes all the bones.
-We'll look at how that can be used in another tutorial.
+Cuối cùng, mỗi bàn tay đều có phiên bản ``physics``. Phiên bản này hiển thị toàn bộ các xương. Chúng ta sẽ xem cách sử dụng tính năng đó trong một tutorial khác.
 
-We repeat the same for the right hand.
+Chúng ta lặp lại các bước tương tự cho bàn tay phải.
 
 .. image:: img/xr_tools_basic_hands.webp
 
-More information
-----------------
+Thông tin thêm
+--------------
 
-We'll continue with adding features to our tutorial project using Godot XR tools in the next couple of pages.
-More detailed information about the toolkit can be found `on the toolkits help pages <https://godotvr.github.io/godot-xr-tools/>`_.
+Chúng ta sẽ tiếp tục thêm các tính năng vào dự án tutorial bằng Godot XR tools trong vài trang tiếp theo. Bạn có thể tìm thấy thông tin chi tiết hơn về bộ công cụ này `trong các trang trợ giúp của bộ công cụ <https://godotvr.github.io/godot-xr-tools/>`_.
+
+.. _`Godot XR Tools`: https://github.com/GodotVR/godot-xr-tools
+.. _`Godot XR Tools releases page`: https://github.com/GodotVR/godot-xr-tools/releases
+.. _`on the toolkits help pages`: https://godotvr.github.io/godot-xr-tools/

@@ -1,343 +1,258 @@
 .. _doc_openxr_settings:
 
-OpenXR Settings
-===============
+Cài đặt OpenXR
+==============
 
-OpenXR has its own set of settings that are applied when OpenXR starts.
-While it is possible for OpenXR extensions implemented through Godot plugins to add additional settings,
-we will only discuss the settings in the core of Godot here.
+OpenXR có bộ cài đặt riêng được áp dụng khi OpenXR khởi động. Mặc dù các extension OpenXR được triển khai thông qua plugin Godot có thể thêm các cài đặt bổ sung, ở đây chúng ta chỉ thảo luận về các cài đặt trong phần lõi của Godot.
 
 .. image:: img/openxr_settings.webp
 
-General settings
-----------------
+Cài đặt chung
+-------------
 
-Enabled
-~~~~~~~
+Đã bật
+~~~~~~
 
-This setting enables the OpenXR module when Godot starts.
-This is required when the Vulkan backend is used.
-For other backends you can enable OpenXR at any time by calling ``initialize`` on the :ref:`OpenXRInterface <class_openxrinterface>`.
+Cài đặt này bật module OpenXR khi Godot khởi động. Cài đặt này bắt buộc khi sử dụng backend Vulkan. Với các backend khác, bạn có thể bật OpenXR bất kỳ lúc nào bằng cách gọi ``initialize`` trên :ref:`OpenXRInterface <class_openxrinterface>`.
 
-This also needs to be enabled to get access to the action map editor.
+Bạn cũng cần bật cài đặt này để truy cập trình chỉnh sửa action map.
 
-You can use the ``--xr-mode on`` command line switch to force this to on.
+Bạn có thể sử dụng tùy chọn dòng lệnh ``--xr-mode on`` để buộc bật cài đặt này.
 
-Default Action Map
-~~~~~~~~~~~~~~~~~~
+Action Map mặc định
+~~~~~~~~~~~~~~~~~~~
 
-This specifies the path of the action map file that OpenXR will load and communicate to the XR Runtime.
+Cài đặt này chỉ định đường dẫn đến tệp action map mà OpenXR sẽ tải và giao tiếp với XR Runtime.
 
 Form Factor
 ~~~~~~~~~~~
 
-This specifies whether your game is designed for:
+Cài đặt này chỉ định game của bạn được thiết kế cho:
 
-- ``Head Mounted`` devices such as a Meta Quest, Valve Index, or Magic Leap,
-- ``Handheld`` devices such as phones.
+- thiết bị ``Head Mounted`` như Meta Quest, Valve Index hoặc Magic Leap,
+- thiết bị ``Handheld`` như điện thoại.
 
-If the device on which you run your game does not match the selection here, OpenXR will fail to initialise.
+Nếu thiết bị chạy game của bạn không khớp với lựa chọn ở đây, OpenXR sẽ không thể khởi tạo.
 
-View Configuration
-~~~~~~~~~~~~~~~~~~
+Cấu hình chế độ xem
+~~~~~~~~~~~~~~~~~~~
 
-This specifies the view configuration your game is designed for:
+Cài đặt này chỉ định cấu hình chế độ xem mà game của bạn được thiết kế cho:
 
-- ``Mono``, your game provides a single image output. E.g. phone based AR;
-- ``Stereo``, your game provides stereo image output. E.g. head mounted devices.
+- ``Mono``, game của bạn cung cấp đầu ra một hình ảnh. Ví dụ: AR dựa trên điện thoại;
+- ``Stereo``, game của bạn cung cấp đầu ra hình ảnh stereo. Ví dụ: các thiết bị đeo trên đầu.
 
-If the device on which you run your game does not match the selection here, OpenXR will fail to initialise.
+Nếu thiết bị chạy game của bạn không khớp với lựa chọn ở đây, OpenXR sẽ không thể khởi tạo.
 
 .. note::
-  OpenXR has additional view configurations for very specific devices that Godot doesn't support yet.
-  For instance, Varjo headsets have a quad view configuration that outputs two sets of stereo images.
-  These may be supported in the near future.
+  OpenXR có thêm các cấu hình chế độ xem dành cho những thiết bị rất đặc thù mà Godot chưa hỗ trợ. Chẳng hạn, headset Varjo có cấu hình chế độ xem quad, xuất ra hai bộ hình ảnh stereo. Các cấu hình này có thể được hỗ trợ trong tương lai gần.
 
-Reference Space
-~~~~~~~~~~~~~~~
+Không gian tham chiếu
+~~~~~~~~~~~~~~~~~~~~~
 
-Within XR all elements like the player's head and hands are tracked within a tracking volume.
-At the base of this tracking volume is our origin point, which maps our virtual space to the real space.
-There are however different scenarios that place this point in different locations,
-depending on the XR system used.
-In OpenXR these scenarios are well defined and selected by setting a reference space.
+Trong XR, mọi thành phần như đầu và tay của người chơi đều được theo dõi trong một vùng tracking. Ở đáy của vùng tracking này là điểm gốc, dùng để ánh xạ không gian ảo với không gian thực. Tuy nhiên, có những tình huống khác nhau đặt điểm này ở các vị trí khác nhau, tùy thuộc vào hệ thống XR được sử dụng. Trong OpenXR, các tình huống này được định nghĩa rõ ràng và được chọn bằng cách thiết lập một không gian tham chiếu.
 
-Local
-^^^^^
+Cục bộ
+^^^^^^
 
-The local reference space places our origin point at the player's head by default.
-Some XR runtimes will do this each time your game starts, others will make the position persist over sessions.
+Không gian tham chiếu cục bộ mặc định đặt điểm gốc tại đầu của người chơi. Một số XR runtime sẽ thực hiện việc này mỗi khi game khởi động, trong khi các runtime khác sẽ duy trì vị trí này qua các phiên.
 
-This reference space however does not prevent the user from walking away so you will need to detect if the user does so
-if you wish to prevent the user from leaving the vehicle they are controlling, which could potentially be game breaking.
+Tuy nhiên, không gian tham chiếu này không ngăn người dùng đi ra xa, vì vậy bạn sẽ cần phát hiện việc đó nếu muốn ngăn người dùng rời khỏi phương tiện mà họ đang điều khiển, điều có thể khiến game bị phá vỡ.
 
-This reference space is the best option for games like flight simulators or racing simulators
-where we want to place the :ref:`XROrigin3D <class_xrorigin3d>` node where the player's head should be.
+Không gian tham chiếu này là lựa chọn tốt nhất cho các game như trình mô phỏng bay hoặc trình mô phỏng đua xe, trong đó chúng ta muốn đặt node :ref:`XROrigin3D <class_xrorigin3d>` tại vị trí đầu của người chơi.
 
-When the user enacts the recenter option on their headset, the method of which is different per XR runtime,
-the XR runtime will move the :ref:`XRCamera3D <class_xrcamera3d>` to the :ref:`XROrigin3D <class_xrorigin3d>` node.
-The :ref:`OpenXRInterface <class_openxrinterface>` will also emit the ``pose_recentered`` signal
-so your game can react accordingly.
+Khi người dùng thực hiện tùy chọn căn giữa lại trên headset, với cách thực hiện khác nhau tùy XR runtime, XR runtime sẽ di chuyển :ref:`XRCamera3D <class_xrcamera3d>` đến node :ref:`XROrigin3D <class_xrorigin3d>`. :ref:`OpenXRInterface <class_openxrinterface>` cũng sẽ phát signal ``pose_recentered`` để game của bạn có thể phản ứng tương ứng.
 
 .. Note::
-  Any other XR tracked elements such as controllers or anchors will also be adjusted accordingly.
+  Mọi thành phần XR được theo dõi khác, chẳng hạn như controller hoặc anchor, cũng sẽ được điều chỉnh tương ứng.
 
 .. Warning::
-  You should **not** call ``center_on_hmd`` when using this reference space.
+  Bạn **không** nên gọi ``center_on_hmd`` khi sử dụng không gian tham chiếu này.
 
-Stage
-^^^^^
+Sân khấu
+^^^^^^^^
 
-The stage reference space is our default reference space and places our origin point at the center of our play space.
-For XR runtimes that allow you to draw out a guardian boundary this location and its orientation is often set by the user.
-Other XR runtimes may decide on the placement of this point by other means.
-It is however a stationary point in the real world.
+Không gian tham chiếu sân khấu là không gian tham chiếu mặc định của chúng ta và đặt điểm gốc tại trung tâm không gian chơi. Đối với các XR runtime cho phép bạn vẽ ranh giới guardian, vị trí và hướng của ranh giới này thường do người dùng thiết lập. Các XR runtime khác có thể quyết định vị trí của điểm này bằng những cách khác. Tuy nhiên, đây là một điểm cố định trong thế giới thực.
 
-This reference space is the best option for room scale games where the user is expected to walk around a larger space,
-or for games where there is a need to switch between game modes.
-See :ref:`Room Scale <doc_xr_room_scale>` for more information.
+Không gian tham chiếu này là lựa chọn tốt nhất cho các game quy mô phòng, trong đó người dùng dự kiến sẽ đi lại trong một không gian lớn hơn, hoặc cho các game cần chuyển đổi giữa các chế độ chơi. Xem :ref:`Room Scale <doc_xr_room_scale>` để biết thêm thông tin.
 
-When the user enacts the recenter option on their headset, the method of which is different per XR runtime,
-the XR runtime will not change the origin point.
-The :ref:`OpenXRInterface <class_openxrinterface>` will emit the ``pose_recentered`` signal
-and it is up to the game to react appropriately.
-Not doing so will prevent your game from being accepted on various stores.
+Khi người dùng thực hiện tùy chọn căn giữa lại trên headset, với cách thực hiện khác nhau tùy XR runtime, XR runtime sẽ không thay đổi điểm gốc. :ref:`OpenXRInterface <class_openxrinterface>` sẽ phát signal ``pose_recentered`` và game phải tự phản ứng phù hợp. Nếu không làm vậy, game của bạn sẽ không được chấp nhận trên nhiều store khác nhau.
 
-In Godot you can do this by calling the ``center_on_hmd`` function on the :ref:`XRServer <class_xrserver>`:
+Trong Godot, bạn có thể thực hiện việc này bằng cách gọi hàm ``center_on_hmd`` trên :ref:`XRServer <class_xrserver>`:
 
-- Calling ``XRServer.center_on_hmd(XRServer.RESET_BUT_KEEP_TILT, false)`` will move the :ref:`XRCamera3D <class_xrcamera3d>` node
-  to the :ref:`XROrigin3D <class_xrorigin3d>` node similar to the ``Local`` reference space.
-- Calling ``XRServer.center_on_hmd(XRServer.RESET_BUT_KEEP_TILT, true)`` will move the :ref:`XRCamera3D <class_xrcamera3d>` node
-  above the :ref:`XROrigin3D <class_xrorigin3d>` node keeping the player's height, similar to the ``Local Floor`` reference space.
+- Gọi ``XRServer.center_on_hmd(XRServer.RESET_BUT_KEEP_TILT, false)`` sẽ di chuyển node :ref:`XRCamera3D <class_xrcamera3d>` đến node :ref:`XROrigin3D <class_xrorigin3d>`, tương tự như không gian tham chiếu ``Local``.
+- Gọi ``XRServer.center_on_hmd(XRServer.RESET_BUT_KEEP_TILT, true)`` sẽ di chuyển node :ref:`XRCamera3D <class_xrcamera3d>` lên phía trên node :ref:`XROrigin3D <class_xrorigin3d>` trong khi giữ nguyên chiều cao của người chơi, tương tự như không gian tham chiếu ``Local Floor``.
 
 .. Note::
-  Any other XR tracked elements such as controllers or anchors will also be adjusted accordingly.
+  Mọi thành phần XR được theo dõi khác, chẳng hạn như controller hoặc anchor, cũng sẽ được điều chỉnh tương ứng.
 
-Local Floor
-^^^^^^^^^^^
+Sàn cục bộ
+^^^^^^^^^^
 
-The local floor reference space is similar to the local reference space as it positions the origin point where the player is.
-In this mode however the height of the player is kept.
-Same as with the local reference space, some XR runtimes will persist this location over sessions.
+Không gian tham chiếu sàn cục bộ tương tự không gian tham chiếu cục bộ vì nó đặt điểm gốc tại vị trí của người chơi. Tuy nhiên, trong chế độ này, chiều cao của người chơi được giữ nguyên. Tương tự không gian tham chiếu cục bộ, một số XR runtime sẽ duy trì vị trí này qua các phiên.
 
-It is thus not guaranteed the player will be standing on the origin point,
-the only guarantee is that they were standing there when the user last recentered.
-The player is thus also free to walk away.
+Do đó, không đảm bảo người chơi sẽ đứng trên điểm gốc; điều duy nhất được đảm bảo là họ đã đứng ở đó khi người dùng căn giữa lại lần cuối. Vì vậy, người chơi cũng có thể tự do đi ra xa.
 
-This reference space is the best option of games where the user is expected to stand in the same location
-or for AR type games where the user's interface elements are bound to the origin node
-and are quickly placed at the player's location on recenter.
+Không gian tham chiếu này là lựa chọn tốt nhất cho các game trong đó người dùng dự kiến đứng tại cùng một vị trí, hoặc cho các game dạng AR trong đó các thành phần giao diện của người dùng gắn với node gốc và nhanh chóng được đặt tại vị trí của người chơi khi căn giữa lại.
 
-When the user enacts the recenter option on their headset, the method of which is different per XR runtime,
-the XR runtime will move the :ref:`XRCamera3D <class_xrcamera3d>` above the :ref:`XROrigin3D <class_xrorigin3d>` node
-but keeping the player's height.
-The :ref:`OpenXRInterface <class_openxrinterface>` will also emit the ``pose_recentered`` signal
-so your game can react accordingly.
+Khi người dùng thực hiện tùy chọn căn giữa lại trên headset, với cách thực hiện khác nhau tùy XR runtime, XR runtime sẽ di chuyển :ref:`XRCamera3D <class_xrcamera3d>` lên phía trên node :ref:`XROrigin3D <class_xrorigin3d>` nhưng vẫn giữ nguyên chiều cao của người chơi. :ref:`OpenXRInterface <class_openxrinterface>` cũng sẽ phát signal ``pose_recentered`` để game của bạn có thể phản ứng tương ứng.
 
 .. Warning::
-  Be careful using this mode in combination with virtual movement of the player.
-  The user recentering in this scenario can be unpredictable unless you counter the move when handling the recenter signal.
-  This can even be game breaking as the effect in this scenario would be the player teleporting to whatever abstract location
-  the origin point was placed at during virtual movement, including the ability for players teleporting into
-  locations that should be off limits.
-  It is better to use the Stage mode in this scenario and limit resetting to orientation only when a ``pose_recentered`` signal is received.
+  Hãy cẩn thận khi sử dụng chế độ này kết hợp với chuyển động ảo của người chơi. Việc người dùng căn giữa lại trong tình huống này có thể không dự đoán được, trừ khi bạn bù lại chuyển động khi xử lý signal căn giữa lại. Điều này thậm chí có thể khiến game bị phá vỡ, vì trong tình huống này, người chơi sẽ dịch chuyển tức thời đến bất kỳ vị trí trừu tượng nào mà điểm gốc được đặt vào trong quá trình di chuyển ảo, bao gồm cả khả năng người chơi dịch chuyển vào những vị trí lẽ ra không được phép vào. Trong tình huống này, tốt hơn nên sử dụng chế độ Sân khấu và chỉ giới hạn việc đặt lại hướng khi nhận được signal ``pose_recentered``.
 
 .. Note::
-  Any other XR tracked elements such as controllers or anchors will also be adjusted accordingly.
+  Mọi thành phần XR được theo dõi khác, chẳng hạn như controller hoặc anchor, cũng sẽ được điều chỉnh tương ứng.
 
 .. Warning::
-  You should **not** call ``center_on_hmd`` when using this reference space.
+  Bạn **không** nên gọi ``center_on_hmd`` khi sử dụng không gian tham chiếu này.
 
-Environment Blend Mode
-~~~~~~~~~~~~~~~~~~~~~~
+Chế độ hòa trộn môi trường
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The environment blend mode defines how our rendered output is blended into "the real world" provided this is supported by the headset.
+Chế độ hòa trộn môi trường xác định cách đầu ra đã kết xuất của chúng ta được hòa trộn vào "thế giới thực", nếu headset hỗ trợ tính năng này.
 
-- ``Opaque`` means our output obscures the real world, we are in VR mode.
-- ``Additive`` means our output is added to the real world,
-  this is an AR mode where optics do not allow us to fully obscure the real world (e.g. Hololens),
-- ``Alpha`` means our output is blended with the real world using the alpha output (viewport should have transparent background enabled),
-  this is an AR mode where optics can fully obscure the real world (Magic Leap, all pass through devices, etc.).
+- ``Opaque`` nghĩa là đầu ra của chúng ta che khuất thế giới thực, tức là chúng ta đang ở chế độ VR.
+- ``Additive`` nghĩa là đầu ra của chúng ta được thêm vào thế giới thực; đây là chế độ AR trong đó hệ thống quang học không cho phép chúng ta che khuất hoàn toàn thế giới thực (ví dụ: Hololens),
+- ``Alpha`` nghĩa là đầu ra của chúng ta được hòa trộn với thế giới thực bằng đầu ra alpha (viewport phải bật nền trong suốt); đây là chế độ AR trong đó hệ thống quang học có thể che khuất hoàn toàn thế giới thực (Magic Leap, tất cả thiết bị passthrough, v.v.).
 
-If a mode is selected that is not supported by the headset, the first available mode will be selected.
+Nếu chọn một chế độ không được headset hỗ trợ, chế độ khả dụng đầu tiên sẽ được chọn.
 
 .. Note::
-  Some OpenXR devices have separate systems for enabling/disabling passthrough.
-  From Godot 4.3 onwards selecting the alpha blend mode will also perform these extra steps.
-  This does require the latest vendor plugin to be installed.
+  Một số thiết bị OpenXR có các hệ thống riêng để bật/tắt passthrough. Từ Godot 4.3 trở đi, việc chọn chế độ hòa trộn alpha cũng sẽ thực hiện các bước bổ sung này. Điều này yêu cầu đã cài đặt plugin mới nhất của nhà cung cấp.
 
 .. _doc_openxr_settings_foveation_level:
 
-Foveation Level
-~~~~~~~~~~~~~~~
+Mức độ Foveation
+~~~~~~~~~~~~~~~~
 
-Sets the foveation level used when rendering provided this feature is supported by the hardware used.
-Foveation is a technique where the further away from the center of the viewport we render content, the lower resolution we render at.
-Most XR runtimes only support fixed foveation, but some will take eye tracking into account and use the focal point for this effect.
+Thiết lập mức độ foveation được sử dụng khi kết xuất, nếu phần cứng đang dùng hỗ trợ tính năng này. Foveation là kỹ thuật trong đó nội dung càng được kết xuất xa tâm viewport thì độ phân giải kết xuất càng thấp. Hầu hết runtime XR chỉ hỗ trợ foveation cố định, nhưng một số runtime sẽ tính đến việc theo dõi mắt và sử dụng điểm hội tụ cho hiệu ứng này.
 
-The higher the level, the better the performance gains, but also the more reduction in quality there is in the user's peripheral vision.
+Mức càng cao thì hiệu năng đạt được càng tốt, nhưng chất lượng trong vùng nhìn ngoại vi của người dùng cũng bị giảm nhiều hơn.
 
 .. Note::
-  **Compatibility renderer only**,
-  for Mobile and Forward+ renderer, set the ``vrs_mode`` property on :ref:`Viewport <class_viewport>` to ``VRS_XR``.
+  **Chỉ renderer Compatibility**, đối với renderer Mobile và Forward+, hãy đặt thuộc tính ``vrs_mode`` trên :ref:`Viewport <class_viewport>` thành ``VRS_XR``.
 
 .. Warning::
-  This feature is disabled if post effects are used such as glow, bloom, or DOF.
+  Tính năng này bị vô hiệu hóa nếu sử dụng các hiệu ứng hậu kỳ như glow, bloom hoặc DOF.
 
-Foveation Dynamic
+Foveation động
+~~~~~~~~~~~~~~
+
+Khi được bật, mức độ foveation sẽ tự động được điều chỉnh tùy theo tải GPU hiện tại. Mức này sẽ được điều chỉnh trong khoảng từ thấp đến mức foveation đã chọn ở thiết lập trước đó. Vì vậy, tốt nhất nên kết hợp thiết lập này với mức foveation được đặt là cao.
+
+.. Note::
+  **Chỉ renderer Compatibility**
+
+Gửi bộ đệm độ sâu
 ~~~~~~~~~~~~~~~~~
 
-When enabled the foveation level will be adjusted automatically depending on current GPU load.
-It will be adjusted between low and the select foveation level in the previous setting.
-It is therefore best to combine this setting with foveation level set to high.
+Nếu được bật, một bộ đệm độ sâu do OpenXR cung cấp sẽ được sử dụng trong quá trình kết xuất và gửi cùng với hình ảnh đã kết xuất. Runtime XR có thể sử dụng bộ đệm này để cải thiện reprojection.
 
 .. Note::
-  **Compatibility renderer only**
+  Việc bật tính năng này sẽ vô hiệu hóa hỗ trợ stencil trong quá trình kết xuất. Không nhiều runtime XR sử dụng tính năng này; bạn nên tắt thiết lập này trừ khi nó mang lại lợi ích rõ rệt cho trường hợp sử dụng của mình.
 
-Submit Depth Buffer
-~~~~~~~~~~~~~~~~~~~
+Cảnh báo khi khởi động
+~~~~~~~~~~~~~~~~~~~~~~
 
-If enabled an OpenXR supplied depth buffer will be used while rendering which is submitted alongside the rendered image.
-The XR runtime can use this for improved reprojection.
+Nếu được bật, tùy chọn này sẽ hiển thị thông báo cảnh báo cho người dùng nếu OpenXR không khởi động được. Không phải lúc nào chúng ta cũng nhận được phản hồi từ hệ thống XR về lý do khởi động thất bại. Nếu có, chúng ta sẽ ghi lại thông tin này vào console. Các lý do thất bại thường gặp là:
 
-.. Note::
-  Enabling this feature will disable stencil support during rendering.
-  Not many XR runtimes make use of this,
-  it is advised to leave this setting off unless it provides noticeable benefits for your use case.
+- Không cài đặt runtime OpenXR nào trên hệ thống máy chủ.
+- Runtime OpenXR WMR của Microsoft hiện đang hoạt động; runtime này chỉ hỗ trợ DirectX và sẽ thất bại nếu sử dụng OpenGL hoặc Vulkan.
+- SteamVR được sử dụng nhưng không có headset nào được kết nối/bật.
 
-Startup Alert
-~~~~~~~~~~~~~
-
-If enabled, this will result in an alert message presented to the user if OpenXR fails to start.
-We don't always receive feedback from the XR system as to why starting fails. If we do, we log this to the console.
-Common failure reasons are:
-
-- No OpenXR runtime is installed on the host system.
-- Microsoft's WMR OpenXR runtime is currently active, this only supports DirectX and will fail if OpenGL or Vulkan is used.
-- SteamVR is used but no headset is connected/turned on.
-
-Disable this if you support a fallback mode in your game so it can be played in desktop mode when no VR headset is connected,
-or if you're handling the failure condition yourself by checking ``OpenXRInterface.is_initialized()``.
+Tắt tùy chọn này nếu game của bạn hỗ trợ chế độ dự phòng để có thể chơi ở chế độ desktop khi không kết nối headset VR, hoặc nếu bạn tự xử lý điều kiện thất bại bằng cách kiểm tra ``OpenXRInterface.is_initialized()``.
 
 Extensions
 ----------
 
-This subsection allows you to enable to various optional OpenXR extensions. Keep in
-mind that the extensions will only work if the OpenXR runtime (SteamVR, Oculus, etc)
-the project is ran with supports them.
+Phân mục này cho phép bạn bật nhiều OpenXR extension tùy chọn khác nhau. Lưu ý rằng các extension chỉ hoạt động nếu runtime OpenXR (SteamVR, Oculus, v.v.) mà dự án chạy cùng hỗ trợ chúng.
 
 Debug Utils
 ~~~~~~~~~~~
 
-Enabling this will log debug messages from the XR runtime.
+Việc bật tùy chọn này sẽ ghi các thông báo debug từ runtime XR.
 
-Debug Message Types
-~~~~~~~~~~~~~~~~~~~
-
-This allows you to choose which debug messages are logged.
-
-Frame Synthesis
-~~~~~~~~~~~~~~~
-
-When enabled, provided it's supported by the XR runtime, lower resolution motion
-vector and depth buffers are rendered and provided to the XR runtime. The XR
-runtime can now inject reprojection frames and compensate for lower framerates.
-
-It currently has the following limitations:
-
-- Does NOT work in the Forward+ renderer.
-- Only works with stereo rendering.
-
-Hand Tracking
-~~~~~~~~~~~~~
-
-This enables the hand tracking extension when supported by the device used. This is on by default for legacy reasons.
-The hand tracking extension provides access to data that allows you to visualise the user's hands with correct finger positions.
-Depending on platform capabilities the hand tracking data can be inferred from controller inputs, come from data gloves,
-come from optical hand tracking sensors or any other applicable source.
-
-If your game only supports controllers this should be turned off.
-
-See the page on :ref:`hand tracking <doc_openxr_hand_tracking>` for additional details.
-
-Hand Tracking Unobstructed Data Source
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Enabling this means hand tracking may use the exact position of fingers, usually
-what a headset camera sees.
-
-Hand Tracking Controller Data Source
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Enabling this means hand tracking may use the controller itself, and infer where
-fingers are based on controller input or sensors on the controller.
-
-Hand Interaction Profile
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-Enabling this extension allows the use of two new hand tracking poses. Pinch pose
-which is the location between the thumb and index finger pointing forward, and poke
-pose which is at the tip of the index finger.
-
-This also allows 3 more gesture based inputs. Pinch, when the user pinches their
-thumb and index finger together. Aim activation, when the index finger is fully
-extended. And Grasps, when the user makes a fist.
-
-When a hand interaction profile and controller interaction profile are supplied, the
-runtime will switch between profiles depending on if optical tracking is used or if
-the user is holding a controller.
-
-If only a hand interaction profile is supplied any runtime should use hand
-interaction even if a controller is being held.
-
-Spatial Entities
-~~~~~~~~~~~~~~~~
-
-This extension and its settings are used to obtain and interact with
-information about the user's real world environment. You can find more detailed
-information on how it works on the :ref:`spatial entities page <doc_openxr_spatial_entities>`.
-
-Eye Gaze Interaction
+Loại thông báo debug
 ~~~~~~~~~~~~~~~~~~~~
 
-This enables the eye gaze interaction extension when supported by the device used.
-When enabled we will get feedback from eye tracking through a pose situated between the user's eyes
-orientated in the direction the user is looking. This will be a unified orientation.
+Tùy chọn này cho phép bạn chọn những thông báo debug được ghi lại.
 
-In order to use this functionality you need to edit your action map and add a new pose action,
-say ``eye_pose``.
-Now add a new interaction profile for the eye gaze interaction and map the ``eye_pose``:
+Tổng hợp khung hình
+~~~~~~~~~~~~~~~~~~~
+
+Khi được bật, nếu runtime XR hỗ trợ, các vector chuyển động và bộ đệm độ sâu có độ phân giải thấp hơn sẽ được kết xuất và cung cấp cho runtime XR. Khi đó, runtime XR có thể chèn các khung hình reprojection và bù đắp cho tốc độ khung hình thấp hơn.
+
+Tính năng này hiện có các hạn chế sau:
+
+- KHÔNG hoạt động trong renderer Forward+.
+- Chỉ hoạt động với kết xuất stereo.
+
+Theo dõi bàn tay
+~~~~~~~~~~~~~~~~
+
+Tùy chọn này bật hand tracking extension khi thiết bị đang sử dụng hỗ trợ. Theo mặc định, tùy chọn này được bật vì lý do tương thích với phiên bản cũ. Hand tracking extension cung cấp quyền truy cập vào dữ liệu cho phép bạn hiển thị bàn tay của người dùng với vị trí ngón tay chính xác. Tùy theo khả năng của nền tảng, dữ liệu hand tracking có thể được suy ra từ đầu vào của controller, lấy từ găng tay dữ liệu, lấy từ các cảm biến theo dõi bàn tay quang học hoặc từ bất kỳ nguồn phù hợp nào khác.
+
+Nếu game của bạn chỉ hỗ trợ controller, bạn nên tắt tùy chọn này.
+
+Xem trang về :ref:`theo dõi bàn tay <doc_openxr_hand_tracking>` để biết thêm chi tiết.
+
+Nguồn dữ liệu theo dõi bàn tay không bị che khuất
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Việc bật tùy chọn này có nghĩa là hand tracking có thể sử dụng vị trí chính xác của các ngón tay, thường là vị trí mà camera của headset nhìn thấy.
+
+Nguồn dữ liệu controller cho theo dõi bàn tay
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Việc bật tùy chọn này có nghĩa là hand tracking có thể sử dụng chính controller và suy ra vị trí các ngón tay dựa trên đầu vào của controller hoặc các cảm biến trên controller.
+
+Hồ sơ tương tác bằng tay
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Việc bật extension này cho phép sử dụng hai tư thế hand tracking mới. Tư thế pinch là vị trí giữa ngón cái và ngón trỏ hướng về phía trước, còn tư thế poke nằm ở đầu ngón trỏ.
+
+Tùy chọn này cũng cho phép thêm 3 đầu vào dựa trên cử chỉ. Pinch là khi người dùng chụm ngón cái và ngón trỏ vào nhau. Aim activation là khi ngón trỏ duỗi hoàn toàn. Và Grasps là khi người dùng nắm tay lại.
+
+Khi hand interaction profile và controller interaction profile được cung cấp, runtime sẽ chuyển đổi giữa các profile tùy thuộc vào việc có sử dụng theo dõi quang học hay người dùng đang cầm controller.
+
+Nếu chỉ cung cấp hand interaction profile, mọi runtime đều phải sử dụng tương tác bằng tay ngay cả khi người dùng đang cầm controller.
+
+Thực thể không gian
+~~~~~~~~~~~~~~~~~~~
+
+Extension này và các thiết lập của nó được sử dụng để lấy và tương tác với thông tin về môi trường thế giới thực của người dùng. Bạn có thể tìm thông tin chi tiết hơn về cách hoạt động của extension này trên :ref:`trang về thực thể không gian <doc_openxr_spatial_entities>`.
+
+Tương tác bằng ánh mắt
+~~~~~~~~~~~~~~~~~~~~~~
+
+Tính năng này bật extension tương tác bằng ánh mắt khi thiết bị được sử dụng hỗ trợ. Khi được bật, chúng ta sẽ nhận được phản hồi từ tính năng theo dõi mắt thông qua một pose nằm giữa hai mắt của người dùng và định hướng theo hướng người dùng đang nhìn. Đây sẽ là một hướng thống nhất.
+
+Để sử dụng chức năng này, bạn cần chỉnh sửa action map và thêm một pose action mới, chẳng hạn ``eye_pose``. Bây giờ hãy thêm một interaction profile mới cho tương tác bằng ánh mắt và ánh xạ ``eye_pose``:
 
 .. image:: img/openxr_eye_gaze_interaction.webp
 
-Don't forget to save!
+Đừng quên lưu!
 
-Next add a new :ref:`XRController3D <class_xrcontroller3d>` node to your origin node
-and set its ``tracker`` property to ``/user/eyes_ext``
-and set its ``pose`` property to ``eye_pose``.
+Tiếp theo, hãy thêm một node :ref:`XRController3D <class_xrcontroller3d>` mới vào origin node của bạn, đặt thuộc tính ``tracker`` thành ``/user/eyes_ext`` và đặt thuộc tính ``pose`` thành ``eye_pose``.
 
-Now you can add things to this controller node such as a raycast, and control things with your eyes.
+Bây giờ bạn có thể thêm các thành phần vào controller node này, chẳng hạn như raycast, và điều khiển chúng bằng mắt.
 
-Render Models
+Mô hình Render
+~~~~~~~~~~~~~~
+
+Extension này được dùng để truy vấn XR runtime nhằm lấy các tài sản 3D của phần cứng đang được sử dụng, thường là một controller, cũng như vị trí của phần cứng đó. Bạn có thể tìm thấy hướng dẫn chi tiết về cách sử dụng :ref:`tại đây <doc_openxr_render_models>`.
+
+Bộ điều chỉnh Binding
+---------------------
+
+Các tùy chọn này kiểm soát việc có thể sử dụng binding modifier hay không. Binding modifier được dùng để áp dụng các ngưỡng hoặc giá trị offset. Bạn có thể tìm thông tin về cách sử dụng và thiết lập chúng trên trang XR action map :ref:`tại đây <doc_binding_modifiers>`.
+
+Ngưỡng Analog
 ~~~~~~~~~~~~~
 
-This extension is used to query the XR runtime for 3D assets of the hardware being
-used, usually a controller, as well as the position of that hardware. You can find a
-detailed guide on how to use it :ref:`here <doc_openxr_render_models>`.
+Cho phép các binding modifier ngưỡng analog.
 
-Binding Modifiers
------------------
-
-These control whether or not binding modifiers can be used. Binding modifiers are
-used to apply thresholds or offset values. You can find information on how to use
-and set them up on the XR action map page :ref:`here <doc_binding_modifiers>`.
-
-Analog Threshold
-~~~~~~~~~~~~~~~~
-
-Allow analog threshold binding modifiers.
-
-Dpad Binding
+Binding Dpad
 ~~~~~~~~~~~~
 
-Allow D-pad binding modifiers.
+Cho phép các binding modifier D-pad.

@@ -3,12 +3,10 @@
 TiltFive
 ========
 
-TiltFive is a PC based, multiplayer AR device specializing in table top gaming.
-Support for this platform is offered through the `TiltFive Godot plugin. <https://github.com/GodotVR/TiltFiveGodot4>`__
+TiltFive là một thiết bị AR đa người chơi dựa trên PC, chuyên về chơi game trên mặt bàn. Nền tảng này được hỗ trợ thông qua `plugin TiltFive Godot. <https://github.com/GodotVR/TiltFiveGodot4>`__
 
-For more information, please consult the documentation provided with the plugin.
+Để biết thêm thông tin, vui lòng tham khảo tài liệu đi kèm plugin.
 
 .. note::
 
-    This plugin is **not** maintained by the Godot Foundation.
-    A few intrepid contributors ensure development of the plugin as needed.
+    Plugin này **không** được Godot Foundation duy trì. Một vài contributor nhiệt huyết đảm bảo plugin được phát triển khi cần.

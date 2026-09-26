@@ -1,23 +1,18 @@
 .. _doc_openxr_body_tracking:
 
-OpenXR body tracking
-====================
+Theo dõi cơ thể bằng OpenXR
+===========================
 
-Support for full body tracking in OpenXR is only just becoming available for a select few platforms.
-As support solidifies information will be added to this page.
+Hỗ trợ theo dõi toàn thân trong OpenXR hiện chỉ mới bắt đầu khả dụng trên một số ít nền tảng. Khi hỗ trợ được hoàn thiện hơn, thông tin sẽ được bổ sung vào trang này.
 
-HTC Tracker support
--------------------
+Hỗ trợ HTC Tracker
+------------------
 
-An option that has been available for some time is doing full body tracking using HTC trackers.
-These are currently supported through SteamVR and on HTC Elite XR headsets.
-They are exposed through the action map system.
+Một tùy chọn đã khả dụng được một thời gian là thực hiện theo dõi toàn thân bằng HTC tracker. Hiện tại, các tracker này được hỗ trợ thông qua SteamVR và trên các headset HTC Elite XR. Chúng được cung cấp thông qua hệ thống action map.
 
-These trackers are identified by their roles which are assigned to them when configured.
-Simply add :ref:`XRController3D <class_xrcontroller3d>` nodes as children to
-the :ref:`XROrigin3D <class_xrorigin3d>` node and assign one of the following trackers:
+Các tracker này được xác định bằng vai trò được gán cho chúng khi cấu hình. Chỉ cần thêm các node :ref:`XRController3D <class_xrcontroller3d>` làm node con của node :ref:`XROrigin3D <class_xrorigin3d>` rồi gán một trong các tracker sau:
 
-.. list-table:: HTC trackers
+.. list-table:: HTC tracker
   :widths: 100
   :header-rows: 0
 
@@ -35,4 +30,4 @@ the :ref:`XROrigin3D <class_xrorigin3d>` node and assign one of the following tr
   * - /user/vive_tracker_htcx/role/camera
   * - /user/vive_tracker_htcx/role/keyboard
 
-You can now use these as targets for IK modifiers on a full body avatar.
+Giờ đây, bạn có thể sử dụng chúng làm mục tiêu cho các IK modifier trên avatar toàn thân.

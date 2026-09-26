@@ -1,35 +1,36 @@
 .. _doc_xr_next_steps:
 
-Where to go from here
-=====================
+Tiếp theo nên làm gì
+====================
 
-Now that we have the basics covered there are several options to look at for your XR game dev journey:
+Giờ đây, khi đã nắm được những kiến thức cơ bản, bạn có một số lựa chọn để tiếp tục hành trình phát triển game XR của mình:
 
-* You can take a look at the :ref:`Advanced topics <openxr-advanced-topics>` section.
-* You can look at a number of `XR demos here <https://github.com/godotengine/godot-demo-projects/tree/master/xr>`_.
-* You can find 3rd party tutorials on our :ref:`Tutorials and resources <doc_community_tutorials>` page.
+* Bạn có thể xem phần :ref:`Chủ đề nâng cao <openxr-advanced-topics>`.
+* Bạn có thể xem một số `bản demo XR tại đây <https://github.com/godotengine/godot-demo-projects/tree/master/xr>`_.
+* Bạn có thể tìm các tutorial của bên thứ ba trên trang :ref:`Tutorials and resources <doc_community_tutorials>` của chúng tôi.
 
 Godot OpenXR vendor plugin
 --------------------------
 
-The vendor plugin isn't just for :ref:`deploying to Android <doc_deploying_to_android>`.
-In the vendor plugin, we implement many OpenXR vendor extensions that unlock unique features on certain devices,
-or features that are new enough that a standardized implementation is not available yet.
+Vendor plugin không chỉ dành cho việc :ref:`deploy lên Android <doc_deploying_to_android>`. Trong vendor plugin, chúng tôi triển khai nhiều OpenXR vendor extension, giúp mở khóa các tính năng độc đáo trên một số thiết bị hoặc các tính năng còn mới đến mức chưa có implementation được chuẩn hóa.
 
-Together with the OpenXR working group we maintain a
-`client support matrix <https://github.khronos.org/OpenXR-Inventory/extension_support.html#client_matrix>`_ that lists
-all the OpenXR extensions Godot supports and whether they require the vendor plugin.
+Cùng với OpenXR working group, chúng tôi duy trì một `ma trận hỗ trợ client <https://github.khronos.org/OpenXR-Inventory/extension_support.html#client_matrix>`_, trong đó liệt kê tất cả OpenXR extension mà Godot hỗ trợ và cho biết chúng có yêu cầu vendor plugin hay không.
 
-XR Toolkits
------------
+XR Toolkit
+----------
 
-There are various XR toolkits available that implement more complex XR logic ready for you to use.
-We have a :Ref:`small introduction to Godot XR Tools <doc_introducing_xr_tools>` that you can look at,
-a toolkit developed by core contributors of Godot.
+Hiện có nhiều XR toolkit triển khai các logic XR phức tạp hơn để bạn sử dụng ngay. Chúng tôi có một :Ref:`phần giới thiệu ngắn về Godot XR Tools <doc_introducing_xr_tools>` mà bạn có thể tham khảo; đây là một toolkit được phát triển bởi các core contributor của Godot.
 
-There are more toolkits available for Godot:
+Có thêm các toolkit dành cho Godot:
 
 * `Godot XR handtracking toolkit <https://github.com/RevolNoom/godot_xr_handtracking>`_ (GDScript)
 * `Godot XR Kit <https://github.com/patrykkalinowski/godot-xr-kit>`_ (GDScript)
 * `Godot XR Tools <https://github.com/godotvr/godot-xr-tools>`_ (GDScript)
 * `NXR <https://github.com/stumpynub/NXR>`_ (C#)
+
+.. _`XR demos here`: https://github.com/godotengine/godot-demo-projects/tree/master/xr
+.. _`client support matrix`: https://github.khronos.org/OpenXR-Inventory/extension_support.html#client_matrix
+.. _`Godot XR handtracking toolkit`: https://github.com/RevolNoom/godot_xr_handtracking
+.. _`Godot XR Kit`: https://github.com/patrykkalinowski/godot-xr-kit
+.. _`Godot XR Tools`: https://github.com/godotvr/godot-xr-tools
+.. _`NXR`: https://github.com/stumpynub/NXR

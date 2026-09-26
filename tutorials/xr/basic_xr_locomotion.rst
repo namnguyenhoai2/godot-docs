@@ -1,92 +1,66 @@
 .. _doc_basic_xr_locomotion:
 
-Basic XR Locomotion
-===================
+Di chuyển cơ bản trong XR
+=========================
 
-For basic locomotion we're going to continue using our Godot XR Tools library. The library contains both basic movement features as more advanced features.
+Đối với tính năng di chuyển cơ bản, chúng ta sẽ tiếp tục sử dụng thư viện Godot XR Tools. Thư viện này chứa cả các tính năng di chuyển cơ bản lẫn các tính năng nâng cao hơn.
 
-Adding our player body
-----------------------
+Thêm thân nhân vật
+------------------
 
-The first step we need to do is to add a helper node to our :ref:`XROrigin3D <class_xrorigin3d>` node.
-Because XR supports roomscale tracking you can't simply add your XR setup to a :ref:`CharacterBody3D <class_characterbody3d>` node and expect things to work.
-You will run into trouble when the user moves around their physical space and is no longer standing in the center of their room.
-Godot XR Tools embeds the needed logic into a helper node called ``PlayerBody``.
+Bước đầu tiên chúng ta cần thực hiện là thêm một node trợ giúp vào node :ref:`XROrigin3D <class_xrorigin3d>`. Vì XR hỗ trợ tracking theo không gian phòng, bạn không thể chỉ cần thêm thiết lập XR vào node :ref:`CharacterBody3D <class_characterbody3d>` và mong mọi thứ hoạt động. Bạn sẽ gặp vấn đề khi người dùng di chuyển trong không gian vật lý của họ và không còn đứng ở giữa phòng. Godot XR Tools tích hợp logic cần thiết vào một node trợ giúp có tên ``PlayerBody``.
 
-Select your :ref:`XROrigin3D <class_xrorigin3d>` node and click on the :button:`Instantiate Child Scene` button to add a child scene.
-Select ``addons/godot-xr-tools/player/player_body.tscn`` and add this node.
+Chọn node :ref:`XROrigin3D <class_xrorigin3d>` của bạn và nhấp vào nút :button:`Instantiate Child Scene` để thêm một scene con. Chọn ``addons/godot-xr-tools/player/player_body.tscn`` và thêm node này.
 
-Adding a floor
---------------
+Thêm sàn
+--------
 
-This node governs the in game movement of your character and will immediately react to gravity.
-So to prevent our player from infinitely falling down we'll quickly add a floor to our scene.
+Node này điều khiển chuyển động trong game của nhân vật và sẽ ngay lập tức phản ứng với trọng lực. Vì vậy, để ngăn nhân vật của chúng ta rơi xuống vô hạn, chúng ta sẽ nhanh chóng thêm một sàn vào scene.
 
-We start by adding a :ref:`StaticBody3D <class_staticbody3d>` node to our root node and we rename this to ``Floor``.
-We add a :ref:`MeshInstance3D <class_meshinstance3d>` node as a child node for our ``Floor``.
-Then create a new :ref:`PlaneMesh <class_planemesh>` as its mesh.
-For now we set the size of the mesh to 100 x 100 meters.
-Next we add a :ref:`CollisionShape3D <class_collisionshape3d>` node as a child node for our ``Floor``.
-Then create a ``BoxShape`` as our shape.
-We set the size of this box shape to 100 x 1 x 100 meters.
-We also need to move our collision shape down by 0.5 meters so the top of our box is flush with the floor.
+Trước tiên, chúng ta thêm một node :ref:`StaticBody3D <class_staticbody3d>` vào node gốc và đổi tên node này thành ``Floor``. Chúng ta thêm một node :ref:`MeshInstance3D <class_meshinstance3d>` làm node con cho ``Floor``. Sau đó, tạo một :ref:`PlaneMesh <class_planemesh>` mới làm mesh của nó. Hiện tại, chúng ta đặt kích thước của mesh là 100 x 100 mét. Tiếp theo, chúng ta thêm một node :ref:`CollisionShape3D <class_collisionshape3d>` làm node con cho ``Floor``. Sau đó, tạo một ``BoxShape`` làm shape của nó. Chúng ta đặt kích thước của box shape này là 100 x 1 x 100 mét. Chúng ta cũng cần di chuyển collision shape xuống 0.5 mét để mặt trên của box ngang bằng với sàn.
 
-To make it easier to see that we're actually moving around our world, a white floor
-isn't going to do it. Create a texture using `Wahooneys excellent free texture generator <https://wahooney.itch.io/texture-grid-generator>`_.
-Once you've created the texture add it to your project. Then create a new material
-for the MeshInstance3D node, add your texture as the albedo, and enable
-**Triplanar** under **UV1** in the material properties.
+Để dễ nhận thấy rằng chúng ta thực sự đang di chuyển trong thế giới của mình, một sàn màu trắng sẽ không phù hợp. Hãy tạo một texture bằng `trình tạo texture miễn phí tuyệt vời của Wahooney <https://wahooney.itch.io/texture-grid-generator>`_. Sau khi tạo texture, hãy thêm texture đó vào project của bạn. Sau đó, tạo một material mới cho node MeshInstance3D, thêm texture của bạn làm albedo và bật **Triplanar** trong **UV1** ở các thuộc tính material.
 
 .. image:: img/godot_xr_tools_floor.webp
 
-Direct movement
----------------
+Di chuyển trực tiếp
+-------------------
 
-We're going to start adding some basic direct movement to our setup.
-This allows the user to move through the virtual world using joystick input.
+Chúng ta sẽ bắt đầu thêm tính năng di chuyển trực tiếp cơ bản vào thiết lập của mình. Tính năng này cho phép người dùng di chuyển trong thế giới ảo bằng đầu vào từ joystick.
 
 .. note::
-  It is important to note that moving through the virtual world while the player is standing still in the real world, can be nausea inducing especially for players who are new to VR.
-  The default settings on our movement functions are fairly conservative.
-  We advise you to stick to these defaults but offer features in game to enable less comfortable settings for more experienced users who are used to playing VR games.
+  Điều quan trọng cần lưu ý là việc di chuyển trong thế giới ảo khi người chơi đứng yên trong thế giới thực có thể gây buồn nôn, đặc biệt với những người chơi mới làm quen với VR. Các thiết lập mặc định cho những hàm di chuyển của chúng ta khá thận trọng. Chúng tôi khuyên bạn nên giữ các giá trị mặc định này, nhưng cung cấp các tính năng trong game để bật những thiết lập kém thoải mái hơn cho những người dùng có kinh nghiệm, vốn đã quen chơi game VR.
 
-We want to enable this on the right hand controller.
-We do this by adding a subscene to the right hand :ref:`XRController3D <class_xrcontroller3d>` node.
-Select ``addons/godot-xr-tools/functions/movement_direct.tscn`` as the scene to add.
+Chúng ta muốn bật tính năng này trên controller tay phải. Ta thực hiện việc này bằng cách thêm một subscene vào node :ref:`XRController3D <class_xrcontroller3d>` của tay phải. Chọn ``addons/godot-xr-tools/functions/movement_direct.tscn`` làm scene cần thêm.
 
-This function adds forward and backwards movement to the player by using the joystick on the right hand controller.
-It has an option to also add left/right strafe but by default this is disabled.
+Hàm này thêm chuyển động tiến và lùi cho người chơi bằng cách sử dụng joystick trên controller tay phải. Hàm cũng có tùy chọn thêm strafe trái/phải, nhưng theo mặc định tùy chọn này bị tắt.
 
-Instead, we are going to add the ability for the player to also turn with this joystick.
-We will add another subscene to our controller node, select ``addons/godot-xr-tools/functions/movement_turn.tscn`` for this.
+Thay vào đó, chúng ta sẽ thêm khả năng xoay cho người chơi bằng joystick này. Chúng ta sẽ thêm một subscene khác vào node controller và chọn ``addons/godot-xr-tools/functions/movement_turn.tscn`` cho mục đích này.
 
-The turn system by default uses a snap turn approach.
-This means that turning happens in steps.
-This may seem jarring however it is a tried and tested method of combating motion sickness.
-You can easily switch to a mode that offers smooth turning by changing the ``mode`` property on the turn node.
+Theo mặc định, hệ thống xoay sử dụng cách xoay snap. Điều này có nghĩa là việc xoay diễn ra theo từng bước. Cách này có thể gây cảm giác giật, tuy nhiên đây là một phương pháp đã được thử nghiệm và chứng minh hiệu quả trong việc chống say chuyển động. Bạn có thể dễ dàng chuyển sang chế độ xoay mượt bằng cách thay đổi thuộc tính ``mode`` trên node xoay.
 
-If you run your game at this point in time you will find that you can move through the world freely using the right hand joystick.
+Nếu chạy game vào thời điểm này, bạn sẽ thấy mình có thể tự do di chuyển trong thế giới bằng joystick tay phải.
 
-Teleport
---------
+Dịch chuyển tức thời
+--------------------
 
-An alternative to direct movement that some users find more pleasant is the ability to teleport to another location within your game world.
-Godot XR Tools supports this through the teleport function and we will be adding this to our left hand controller.
+Một lựa chọn thay thế cho việc di chuyển trực tiếp mà một số người dùng cảm thấy dễ chịu hơn là khả năng dịch chuyển tức thời đến một vị trí khác trong thế giới game. Godot XR Tools hỗ trợ tính năng này thông qua hàm teleport, và chúng ta sẽ thêm tính năng này vào controller tay trái.
 
-Add a new child scene to your left hand :ref:`XRController3D <class_xrcontroller3d>` node by selecting the ``addons/godot-xr-tools/functions/function_teleport.tscn`` scene.
+Thêm một scene con mới vào node :ref:`XRController3D <class_xrcontroller3d>` của tay trái bằng cách chọn scene ``addons/godot-xr-tools/functions/function_teleport.tscn``.
 
-With this scene added the player will be able to teleport around the world by pressing the trigger on the left hand controller, pointing where they want to go, and then releasing the trigger.
-The player can also adjust the orientation by using the left hand controller's joystick.
+Sau khi thêm scene này, người chơi sẽ có thể dịch chuyển tức thời trong thế giới bằng cách nhấn trigger trên controller tay trái, hướng đến nơi họ muốn đi rồi thả trigger. Người chơi cũng có thể điều chỉnh hướng bằng joystick của controller tay trái.
 
-If you've followed all instructions correctly your scene should now look something like this:
+Nếu bạn đã làm đúng tất cả hướng dẫn, scene của bạn lúc này sẽ trông tương tự như sau:
 
 .. image:: img/godot_xr_tools_basic_movement.webp
 
-More advanced movement features
--------------------------------
+Các tính năng di chuyển nâng cao hơn
+------------------------------------
 
-Godot XR Tools adds many more movement features such as gliding, a grapple hook implementation, a jetpack, climbing mechanics, etc.
+Godot XR Tools bổ sung nhiều tính năng di chuyển khác như lượn, triển khai móc vật, jetpack, cơ chế leo trèo, v.v.
 
-Most work similarly to the basic movement features we've handled so far, simply add the relevant subscene from the plugin to the controller that implements it.
+Hầu hết các tính năng này hoạt động tương tự những tính năng di chuyển cơ bản mà chúng ta đã xử lý, chỉ cần thêm subscene liên quan từ plugin vào controller triển khai tính năng đó.
 
-We'll look at some of these in more detail later on in this tutorial where additional setup is required (such as climbing) but for others please look at Godot XR Tools own help pages for details.
+Sau này trong tutorial này, chúng ta sẽ xem xét chi tiết hơn một số tính năng, trong đó có những tính năng yêu cầu thiết lập bổ sung như leo trèo; với các tính năng khác, vui lòng xem các trang trợ giúp riêng của Godot XR Tools để biết chi tiết.
+
+.. _`Wahooneys excellent free texture generator`: https://wahooney.itch.io/texture-grid-generator

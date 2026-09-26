@@ -1,132 +1,78 @@
 .. _doc_xr_action_map:
 
-The XR action map
-=================
+Bản đồ hành động XR
+===================
 
-Godot has an action map feature as part of the XR system.
-At this point in time this system is part of the OpenXR module.
-There are plans to encompass WebXR into this in the near future hence we call it
-the XR action map system in this document.
-It implements the built-in action map system of OpenXR mostly exactly as it is offered.
+Godot có tính năng bản đồ hành động (action map) như một phần của hệ thống XR. Hiện tại, hệ thống này là một phần của module OpenXR. Có kế hoạch tích hợp WebXR vào đây trong tương lai gần, vì vậy trong tài liệu này chúng tôi gọi đây là hệ thống bản đồ hành động XR. Hệ thống này triển khai gần như chính xác hệ thống bản đồ hành động tích hợp sẵn của OpenXR.
 
-The XR action map system exposes input, positional data and output for XR controllers
-to your game/application.
-It does this by exposing named actions that can be tailored to your game/application
-and binding these to the actual inputs and outputs on your XR devices.
+Hệ thống bản đồ hành động XR cung cấp dữ liệu đầu vào, dữ liệu vị trí và đầu ra của các bộ điều khiển XR cho game/ứng dụng của bạn. Hệ thống thực hiện điều đó bằng cách cung cấp các action có tên, có thể được tùy chỉnh cho game/ứng dụng của bạn, rồi liên kết chúng với các đầu vào và đầu ra thực tế trên thiết bị XR của bạn.
 
-As the XR action map is currently part of the OpenXR module, OpenXR needs to be enabled
-in your project settings to expose it:
+Vì bản đồ hành động XR hiện là một phần của module OpenXR, bạn cần bật OpenXR trong cài đặt dự án để hiển thị nó:
 
 .. image:: img/openxr_enabled.webp
 
-You will then find the XR Action Map interface in the bottom of the screen:
+Sau đó, bạn sẽ tìm thấy giao diện XR Action Map ở cuối màn hình:
 
 .. image:: img/xr_action_map.webp
 
 .. note::
-  Godot's built-in input system has many things in common with the XR action map system.
-  In fact our original idea was to add functionality to the existing input system and
-  expose the data to the OpenXR action map system.
-  We may revisit that idea at some point but as it turns out there were just too many
-  problems to overcome.
-  To name a few:
+  Hệ thống đầu vào tích hợp sẵn của Godot có nhiều điểm chung với hệ thống bản đồ hành động XR. Trên thực tế, ý tưởng ban đầu của chúng tôi là bổ sung chức năng vào hệ thống đầu vào hiện có và cung cấp dữ liệu cho hệ thống bản đồ hành động OpenXR. Có thể chúng tôi sẽ xem xét lại ý tưởng đó vào một thời điểm nào đó, nhưng hóa ra có quá nhiều vấn đề cần giải quyết. Có thể kể đến:
 
-    * Godot's input system mainly centers around button inputs, XR adds triggers, axis,
-      poses and haptics (output) into the mix.
-      This would greatly complicate the input system with features that won't work for
-      normal controllers or contrast with the current approach.
-      It was felt this would lead to confusion for the majority of Godot users.
-    * Godot's input system works with raw input data that is parsed and triggers emitting
-      actions.
-      This input data is made available to the end user.
-      OpenXR completely hides raw data and does all the parsing for us, we only get
-      access to already parsed action data.
-      This inconsistency is likely to lead to bugs when an unsuspecting user tries to use
-      an XR device as a normal input device.
-    * Godot's input system allows changes to what inputs are bound to actions in runtime,
-      OpenXR does not.
-    * Godot's input system is based on device ids which are meaningless in OpenXR.
+    * Hệ thống đầu vào của Godot chủ yếu xoay quanh các đầu vào dạng nút, còn XR bổ sung trigger, trục, pose và haptics (đầu ra) vào đó. Điều này sẽ khiến hệ thống đầu vào trở nên phức tạp hơn nhiều với các tính năng không hoạt động với những bộ điều khiển thông thường hoặc không phù hợp với cách tiếp cận hiện tại. Người ta cho rằng điều này sẽ gây nhầm lẫn cho phần lớn người dùng Godot.
+    * Hệ thống đầu vào của Godot hoạt động với dữ liệu đầu vào thô được phân tích cú pháp và kích hoạt các action. Dữ liệu đầu vào này được cung cấp cho người dùng cuối. OpenXR hoàn toàn ẩn dữ liệu thô và thực hiện toàn bộ việc phân tích cú pháp thay chúng ta; chúng ta chỉ có quyền truy cập vào dữ liệu action đã được phân tích cú pháp. Sự không nhất quán này có thể dẫn đến lỗi khi một người dùng không ngờ tới cố sử dụng thiết bị XR như một thiết bị đầu vào thông thường.
+    * Hệ thống đầu vào của Godot cho phép thay đổi các đầu vào được liên kết với action trong runtime, còn OpenXR thì không.
+    * Hệ thống đầu vào của Godot dựa trên device id, vốn không có ý nghĩa trong OpenXR.
 
-  This does mean that a game/application that mixes traditional inputs with XR
-  controllers will have a separation.
-  For most applications either one or the other is used and this is not seen as a problem.
-  In the end, it's a limitation of the system.
+  Điều này có nghĩa là game/ứng dụng kết hợp các đầu vào truyền thống với bộ điều khiển XR sẽ có sự phân tách. Với hầu hết ứng dụng, chỉ một trong hai loại được sử dụng và đây không được xem là vấn đề. Cuối cùng, đây là một giới hạn của hệ thống.
 
-The default action map
-----------------------
+Bản đồ hành động mặc định
+-------------------------
 
-Godot will automatically create a default action map if no action map file is found.
+Godot sẽ tự động tạo một bản đồ hành động mặc định nếu không tìm thấy tệp bản đồ hành động nào.
 
 .. warning::
-  This default map was designed to help developers port their XR games/applications from
-  Godot 3 to Godot 4.
-  As a result this map essentially binds all known inputs on all controllers supported by
-  default, to actions one on one.
-  This is not a good example of setting up an action map.
-  It does allow a new developer to have a starting point when they want to become
-  familiar with Godot XR.
-  It prevents having to design a proper action map for their game/application first.
+  Bản đồ mặc định này được thiết kế để giúp các nhà phát triển chuyển game/ứng dụng XR của họ từ Godot 3 sang Godot 4. Do đó, về cơ bản bản đồ này liên kết tất cả đầu vào đã biết trên mọi bộ điều khiển được hỗ trợ mặc định với các action tương ứng một-một. Đây không phải là ví dụ tốt về cách thiết lập bản đồ hành động. Tuy vậy, nó cho phép một nhà phát triển mới có điểm bắt đầu khi muốn làm quen với Godot XR. Bản đồ này giúp họ không phải thiết kế trước một bản đồ hành động phù hợp cho game/ứng dụng của mình.
 
-For this walkthrough we're going to start with a blank action map.
-You can delete the "Godot action set" entry at the top by pressing the trash can icon.
-This will clear out all actions.
-You might also want to remove the controllers that you do not wish to setup,
-more on this later.
+Trong phần hướng dẫn này, chúng ta sẽ bắt đầu với một bản đồ hành động trống. Bạn có thể xóa mục "Godot action set" ở trên cùng bằng cách nhấn biểu tượng thùng rác. Thao tác này sẽ xóa tất cả action. Bạn cũng có thể muốn xóa các bộ điều khiển mà mình không muốn thiết lập; nội dung này sẽ được nói thêm sau.
 
-Action sets
------------
+Các action set
+--------------
 
 .. note::
-  Before we dive in, you will see the term XR runtime used throughout this document.
-  With XR runtime we mean the software that is controlling and interacting with
-  the AR or VR headset.
-  The XR runtime then exposes this to us through an API such as OpenXR.
-  So:
+  Trước khi đi sâu vào nội dung, bạn sẽ thấy thuật ngữ XR runtime được sử dụng xuyên suốt tài liệu này. XR runtime là phần mềm điều khiển và tương tác với kính AR hoặc VR. Sau đó, XR runtime cung cấp các chức năng này cho chúng ta thông qua một API như OpenXR. Cụ thể:
 
-    * for Steam this is SteamVR,
-    * for Meta on desktop this is the Oculus Client (including when using Quest link),
-    * for Meta on Quest this is the Quest's native OpenXR client,
-    * on Linux this could be Monado, etc.
+    * với Steam, đó là SteamVR,
+    * với Meta trên máy tính để bàn, đó là Oculus Client (kể cả khi sử dụng Quest link),
+    * với Meta trên Quest, đó là OpenXR client gốc của Quest,
+    * trên Linux, đó có thể là Monado, v.v.
 
-The action map allows us to organize our actions in sets.
-Each set can be enabled or disabled on its own.
+Bản đồ hành động cho phép chúng ta tổ chức các action thành các set. Mỗi set có thể được bật hoặc tắt riêng.
 
-The concept here is that you could have different sets that provide bindings
-in different scenarios.
-You could have:
+Ý tưởng ở đây là bạn có thể có các set khác nhau, cung cấp các liên kết trong những tình huống khác nhau. Bạn có thể có:
 
-  * a ``Character control`` set for when you're walking around,
-  * a ``Vehicle control`` set for when you're operating a vehicle,
-  * a ``Menu`` set for when a menu is open.
+  * một set ``Character control`` khi bạn đang đi bộ,
+  * một set ``Vehicle control`` khi bạn đang điều khiển phương tiện,
+  * một set ``Menu`` khi một menu đang mở.
 
-Only the action set applicable to the current state of your game/application
-can then be enabled.
+Khi đó, chỉ action set phù hợp với trạng thái hiện tại của game/ứng dụng mới được bật.
 
-This is especially important if you wish to bind the same input on a controller
-to a different action.
-For instance:
+Điều này đặc biệt quan trọng nếu bạn muốn liên kết cùng một đầu vào trên bộ điều khiển với một action khác. Ví dụ:
 
-  * in your ``Character control`` set you may have an action ``Jump``,
-  * in your ``Vehicle control`` set you may have an action ``Accelerate``,
-  * in your ``Menu`` set you may have an action ``Select``.
+  * trong set ``Character control`` của bạn, bạn có thể có một action ``Jump``,
+  * trong set ``Vehicle control`` của bạn, bạn có thể có một action ``Accelerate``,
+  * trong set ``Menu`` của bạn, bạn có thể có một action ``Select``.
 
-All are bound to the trigger on your controller.
+Tất cả đều được liên kết với trigger trên bộ điều khiển của bạn.
 
-OpenXR will only bind an input or output to a single action.
-If the same input or output is bound to multiple actions the one in the active action set
-with the highest priority will be the one updated/used.
-So in our above example it will thus be important that only one action set is active.
+OpenXR chỉ liên kết một đầu vào hoặc đầu ra với một action duy nhất. Nếu cùng một đầu vào hoặc đầu ra được liên kết với nhiều action, action nằm trong action set đang hoạt động và có mức ưu tiên cao nhất sẽ là action được cập nhật/sử dụng. Vì vậy, trong ví dụ trên, điều quan trọng là chỉ một action set được hoạt động.
 
-For your first XR game/application we highly recommend starting with just
-a single action set and to not over-engineer things.
+Đối với game/ứng dụng XR đầu tiên, chúng tôi đặc biệt khuyến nghị bạn chỉ bắt đầu với một action set duy nhất và không thiết kế quá phức tạp.
 
-For our walkthrough in this document we will thus create a single action set
-called ``my_first_action_set``.
-We do this by pressing the :button:`Add action set` button:
+Do đó, trong phần hướng dẫn này, chúng ta sẽ tạo một action set duy nhất có tên là ``my_first_action_set``. Chúng ta thực hiện việc này bằng cách nhấn nút :button:`Add action set`:
 
 .. image:: img/xr_my_first_action_set.webp
 
-The columns in our table are as follows:
+Các cột trong bảng của chúng ta như sau:
 
 .. list-table::
   :class: wrap-normal
@@ -139,83 +85,46 @@ The columns in our table are as follows:
     - Description
   * - 1
     - my_first_action_set
-    - This is the internal name of the action set.
-      OpenXR doesn't specify specific restrictions on this name other than size, however
-      some XR runtimes will not like spaces or special characters.
+    - Đây là tên nội bộ của action set. OpenXR không quy định các hạn chế cụ thể đối với tên này ngoài giới hạn về kích thước, tuy nhiên một số XR runtime sẽ không chấp nhận khoảng trắng hoặc ký tự đặc biệt.
   * - 2
     - My first action set
-    - This is a human-readable name for the action set.
-      Some XR runtimes will display this name to the end user, for example in
-      configuration dialogs.
+    - Đây là tên dễ đọc đối với con người của action set. Một số XR runtime sẽ hiển thị tên này cho người dùng cuối, chẳng hạn trong các hộp thoại cấu hình.
   * - 3
     - 0
-    - This is the priority of the action set.
-      If multiple active action sets have actions bound to the same controller's inputs or
-      outputs, the action set with the highest priority value will determine the action
-      that is updated.
+    - Đây là mức ưu tiên của action set. Nếu nhiều action set đang hoạt động có các action được liên kết với cùng đầu vào hoặc đầu ra của bộ điều khiển, action set có giá trị ưu tiên cao nhất sẽ quyết định action được cập nhật.
 
-Actions
--------
+Các action
+----------
 
-In the XR action map, actions are the entities that your game/application will
-interact with.
-For instance, we can define an action ``Shoot`` and the input bound to that action will
-trigger the ``button_pressed`` signal on the relevant :ref:`XRController3D <class_xrcontroller3d>`
-node in your scene with ``Shoot`` as the ``name`` parameter of the signal.
+Trong bản đồ hành động XR, các action là những thực thể mà game/ứng dụng của bạn sẽ tương tác. Ví dụ, chúng ta có thể định nghĩa một action ``Shoot``, và đầu vào được liên kết với action đó sẽ kích hoạt signal ``button_pressed`` trên node :ref:`XRController3D <class_xrcontroller3d>` tương ứng trong scene của bạn, với ``Shoot`` là tham số ``name`` của signal.
 
-You can also poll the current state of an action.
-:ref:`XRController3D <class_xrcontroller3d>` for instance has
-an ``is_button_pressed`` method.
+Bạn cũng có thể truy vấn trạng thái hiện tại của một action.
+Ví dụ, :ref:`XRController3D <class_xrcontroller3d>` có một phương thức ``is_button_pressed``.
 
-Actions can be used for both input and output and each action has a type that defines
-its behavior.
+Action có thể được sử dụng cho cả đầu vào và đầu ra, và mỗi action có một kiểu xác định hành vi của nó.
 
-* The ``Bool`` type is used for discrete input like buttons.
-* The ``Float`` type is used for analogue input like triggers.
+* Loại ``Bool`` được dùng cho đầu vào rời rạc như các nút.
+* Loại ``Float`` được dùng cho đầu vào analog như các cần trigger.
 
-These two are special as they are the only ones that are interchangeable.
-OpenXR will handle conversions between ``Bool`` and ``Float`` inputs and actions.
-You can get the value of a ``Float`` type action by calling the method ``get_float`` on
-your :ref:`XRController3D <class_xrcontroller3d>` node.
-It emits the ``input_float_changed`` signal when changed.
+Hai loại này đặc biệt vì chúng là những loại duy nhất có thể thay thế cho nhau. OpenXR sẽ xử lý việc chuyển đổi giữa các đầu vào và action ``Bool`` và ``Float``. Bạn có thể lấy giá trị của action loại ``Float`` bằng cách gọi phương thức ``get_float`` trên node :ref:`XRController3D <class_xrcontroller3d>` của mình. Node này phát tín hiệu ``input_float_changed`` khi giá trị thay đổi.
 
 .. note::
-  Where analogue inputs are queried as buttons a threshold is applied.
-  This threshold is currently managed exclusively by the XR runtime.
-  There are plans to extend Godot to provide some level of control over these thresholds
-  in the future.
+  Khi đầu vào analog được truy vấn dưới dạng nút, một ngưỡng sẽ được áp dụng. Hiện tại, ngưỡng này chỉ được XR runtime quản lý. Trong tương lai, Godot có kế hoạch mở rộng để cung cấp một mức độ kiểm soát nhất định đối với các ngưỡng này.
 
-The ``Vector2`` type defines the input as an axis input.
-Touchpads, thumbsticks and similar inputs are exposed as vectors.
-You can get the value of a ``Vector2`` type action by calling the method ``get_vector2``
-on your :ref:`XRController3D <class_xrcontroller3d>` node.
-It emits the ``input_vector2_changed`` signal when changed.
+Loại ``Vector2`` xác định đầu vào là đầu vào trục. Touchpad, cần analog và các đầu vào tương tự được cung cấp dưới dạng vector. Bạn có thể lấy giá trị của action loại ``Vector2`` bằng cách gọi phương thức ``get_vector2`` trên node :ref:`XRController3D <class_xrcontroller3d>` của mình. Node này phát tín hiệu ``input_vector2_changed`` khi giá trị thay đổi.
 
-The ``Pose`` type defines a spatially tracked input.
-Multiple "pose" inputs are available in OpenXR: ``aim``, ``grip`` and ``palm``.
-Your :ref:`XRController3D <class_xrcontroller3d>` node is automatically positioned based
-on the pose action assigned to ``pose`` property of this node.
-More about poses later.
+Loại ``Pose`` xác định một đầu vào được theo dõi trong không gian. OpenXR cung cấp nhiều đầu vào "pose": ``aim``, ``grip`` và ``palm``. Node :ref:`XRController3D <class_xrcontroller3d>` của bạn sẽ tự động được định vị dựa trên pose action được gán cho thuộc tính ``pose`` của node này. Chúng ta sẽ tìm hiểu thêm về pose sau.
 
 .. note::
-  The OpenXR implementation in Godot also exposes a special pose called ``Skeleton``.
-  This is part of the hand tracking implementation.
-  This pose is exposed through the ``skeleton`` action that is supported outside of the
-  action map system.
-  It is thus always present if hand tracking is supported.
-  You don't need to bind actions to this pose to use it.
+  OpenXR trong Godot cũng cung cấp một pose đặc biệt có tên ``Skeleton``. Đây là một phần của tính năng theo dõi bàn tay. Pose này được cung cấp thông qua action ``skeleton``, được hỗ trợ bên ngoài hệ thống action map. Vì vậy, pose này luôn hiện diện nếu tính năng theo dõi bàn tay được hỗ trợ. Bạn không cần bind action vào pose này để sử dụng nó.
 
-Finally, the only output type is ``Haptic`` and it allows us to set the intensity of
-haptic feedback, such as controller vibration.
-Controllers can have multiple haptic outputs and support for haptic vests is coming
-to OpenXR.
+Cuối cùng, loại đầu ra duy nhất là ``Haptic``, cho phép chúng ta đặt cường độ phản hồi haptic, chẳng hạn như độ rung của controller. Controller có thể có nhiều đầu ra haptic và OpenXR sắp hỗ trợ cả áo haptic.
 
-So lets add an action for our aim pose, we do this by clicking on the ``+`` button for
-our action set:
+Vậy hãy thêm một action cho aim pose của chúng ta. Ta thực hiện việc này bằng cách nhấp vào nút ``+`` cho action set của mình:
 
 .. image:: img/xr_aim_pose.webp
 
-The columns in our table are as follows:
+Các cột trong bảng của chúng ta như sau:
 
 .. list-table::
   :class: wrap-normal
@@ -223,429 +132,268 @@ The columns in our table are as follows:
   :widths: 7 23 70
   :header-rows: 1
 
-  * - Col
-    - Value
-    - Description
+  * - Cột
+    - Giá trị
+    - Mô tả
   * - 1
     - aim_pose
-    - This is the internal name of the action.
-      OpenXR doesn't specify specific restrictions on this name other then size, however
-      some XR runtimes will not like spaces or special characters.
+    - Đây là tên nội bộ của action. OpenXR không quy định hạn chế cụ thể nào đối với tên này ngoài kích thước, tuy nhiên một số XR runtime sẽ không chấp nhận khoảng trắng hoặc ký tự đặc biệt.
   * - 2
-    - Aim pose
-    - This is a human-readable name for the action.
-      Some XR runtimes will display this name to the end user, for example in
-      configuration dialogs.
+    - Tư thế ngắm
+    - Đây là tên dễ đọc đối với người dùng của action. Một số XR runtime sẽ hiển thị tên này cho người dùng cuối, chẳng hạn như trong các hộp thoại cấu hình.
   * - 3
     - Pose
-    - The type of this action.
+    - Loại của action này.
 
-OpenXR defines a number of bindable input poses that are commonly available
-for controllers.
-There are no rules for which poses are supported for different controllers.
-The poses OpenXR currently defines are:
+OpenXR định nghĩa một số pose đầu vào có thể bind, thường có sẵn trên controller. Không có quy tắc nào quy định những pose nào được hỗ trợ trên các controller khác nhau. Các pose hiện được OpenXR định nghĩa là:
 
-  * The aim pose on most controllers is positioned slightly in front of the controller
-    and aims forward.
-    This is a great pose to use for laser pointers or to align the muzzle of a weapon
-    with.
-  * The grip pose on most controllers is positioned where the grip button is placed on
-    the controller.
-    The orientation of this pose differs between controllers and can differ for the same
-    controller on different XR runtimes.
-  * The palm pose on most controllers is positioned in the center of the palm of the hand
-    holding the controller.
-    This is a new pose that is not available on all XR runtimes.
+  * Aim pose trên hầu hết controller được đặt hơi chếch về phía trước controller và hướng về phía trước. Đây là một pose rất phù hợp để dùng cho con trỏ laser hoặc căn nòng vũ khí.
+  * Grip pose trên hầu hết controller được đặt tại vị trí của nút grip trên controller. Hướng của pose này khác nhau giữa các controller và có thể khác nhau đối với cùng một controller trên các XR runtime khác nhau.
+  * Palm pose trên hầu hết controller được đặt ở chính giữa lòng bàn tay đang cầm controller. Đây là một pose mới, không có trên tất cả XR runtime.
 
 .. note::
-  If hand tracking is used, there are currently big differences in implementations
-  between the different XR runtimes.
-  As a result the action map is currently not suitable for hand tracking. Work is being
-  done on this so stay tuned.
+  Nếu sử dụng tính năng theo dõi bàn tay, hiện có những khác biệt lớn giữa các cách triển khai của những XR runtime khác nhau. Do đó, action map hiện chưa phù hợp cho việc theo dõi bàn tay. Công việc cải thiện vấn đề này đang được tiến hành, vì vậy hãy đón chờ các cập nhật tiếp theo.
 
-Let's complete our list of actions for a very simple shooting game/application:
+Hãy hoàn thiện danh sách action cho một game/ứng dụng bắn súng rất đơn giản:
 
 .. image:: img/xr_all_actions.webp
 
-The actions we have added are:
+Các action chúng ta đã thêm là:
 
-  * movement, which allows the user to move around outside of normal room scale tracking.
-  * grab, which detects that the user wants to hold something.
-  * shoot, which detects that the user wants to fire the weapon they are holding.
-  * haptic, which allows us to output haptic feedback.
+  * movement, cho phép người dùng di chuyển bên ngoài phạm vi theo dõi room scale thông thường.
+  * grab, phát hiện khi người dùng muốn cầm một vật gì đó.
+  * shoot, phát hiện khi người dùng muốn bắn vũ khí đang cầm.
+  * haptic, cho phép chúng ta xuất phản hồi haptic.
 
-Now note that we don't distinguish between the left and right hand.
-This is something that is determined at the next stage.
-We've implemented the action system in such a way that you can bind the same action
-to both hands.
-The appropriate :ref:`XRController3D <class_xrcontroller3d>` node will emit the signal.
+Lưu ý rằng chúng ta không phân biệt tay trái và tay phải. Điều này được xác định ở giai đoạn tiếp theo. Chúng ta đã triển khai hệ thống action theo cách cho phép bind cùng một action vào cả hai tay. Node :ref:`XRController3D <class_xrcontroller3d>` tương ứng sẽ phát tín hiệu.
 
 .. warning::
-  For both grab and shoot we've used the ``Bool`` type.
-  As mentioned before, OpenXR does automatic conversions from an analogue controls
-  however not all XR Runtimes currently apply sensible thresholds.
+  Đối với cả grab và shoot, chúng ta đã sử dụng loại ``Bool``. Như đã đề cập trước đó, OpenXR tự động chuyển đổi từ các điều khiển analog, tuy nhiên hiện không phải tất cả XR runtime đều áp dụng các ngưỡng hợp lý.
 
-  We recommend as a workaround to use the ``Float`` type when interacting with triggers
-  and grip buttons and apply your own threshold.
+  Để khắc phục tạm thời, chúng tôi khuyến nghị sử dụng loại ``Float`` khi tương tác với trigger và nút grip, đồng thời tự áp dụng ngưỡng của bạn.
 
-  For buttons like A/B/X/Y and similar where there is no analogue option, the ``Bool``
-  type works fine.
+  Đối với các nút như A/B/X/Y và những nút tương tự không có tùy chọn analog, loại ``Bool`` hoạt động tốt.
 
 .. note::
-  You can bind the same action to multiple inputs for the same controller on the same
-  profile.
-  In this case the XR runtime will attempt to combine the inputs.
+  Bạn có thể bind cùng một action vào nhiều đầu vào trên cùng một controller trong cùng một profile. Trong trường hợp này, XR runtime sẽ cố gắng kết hợp các đầu vào.
 
-  * For ``Bool`` inputs, this will perform an ``OR`` operation between the buttons.
-  * For ``Float`` inputs, this will take the highest value of the bound inputs.
-  * The behavior for ``Pose`` inputs is undefined, but the first bound input is likely to
-    be used.
+  * Đối với các đầu vào ``Bool``, thao tác này sẽ thực hiện phép ``OR`` giữa các nút.
+  * Đối với các đầu vào ``Float``, thao tác này sẽ lấy giá trị cao nhất trong các đầu vào đã bind.
+  * Hành vi đối với các đầu vào ``Pose`` là không xác định, nhưng nhiều khả năng đầu vào được bind đầu tiên sẽ được sử dụng.
 
-  You shouldn't bind multiple actions of the same action set to the same controller input.
-  If you do this, or if actions are bound from multiple action sets but they have
-  overlapping priorities, the behavior is undefined.
-  The XR runtime may simply not accept your action map, or it may take this on a first
-  come first serve basis.
+  Bạn không nên bind nhiều action thuộc cùng một action set vào cùng một đầu vào của controller. Nếu làm vậy, hoặc nếu các action được bind từ nhiều action set nhưng có độ ưu tiên chồng lấn, hành vi sẽ không xác định. XR runtime có thể đơn giản là không chấp nhận action map của bạn, hoặc có thể xử lý theo nguyên tắc action nào đến trước được phục vụ trước.
 
-  We are still investigating the restrictions around binding multiple actions to the same
-  output as this scenario makes sense.
-  The OpenXR specification seems to not allow this.
+  Chúng tôi vẫn đang tìm hiểu các hạn chế liên quan đến việc bind nhiều action vào cùng một đầu ra, vì trường hợp này có ý nghĩa sử dụng. Đặc tả OpenXR dường như không cho phép điều này.
 
-Now that we have our basic actions defined, it's time to hook them up.
+Giờ chúng ta đã xác định các action cơ bản, đã đến lúc kết nối chúng.
 
 Profiles
 --------
 
-In OpenXR controller bindings are captured in so-called "Interaction Profiles".
-We've shortened it to "Profiles" because it takes up less space.
+Trong OpenXR, các binding của controller được gọi là "Interaction Profiles". Chúng tôi rút gọn thành "Profiles" vì cách viết này chiếm ít không gian hơn.
 
-This generic name is chosen because controllers don't cover the entire system.
-Currently there are also profiles for trackers, remotes and tracked pens.
-There are also provisions for devices such as treadmills, haptic vests and such even though those are not part of the specification yet.
+Tên gọi chung này được chọn vì controller không bao phủ toàn bộ hệ thống. Hiện tại cũng có profile dành cho tracker, remote và bút được theo dõi. Ngoài ra còn có các quy định dành cho những thiết bị như máy chạy bộ, áo haptic và các thiết bị tương tự, dù chúng vẫn chưa thuộc đặc tả.
 
 .. warning::
-  It is important to know that OpenXR has strict checking on supported devices.
-  The core specification identifies a number of controllers and similar devices with
-  their supported inputs and outputs.
-  Every XR runtime must accept these interaction profiles even if they aren't applicable.
+  Điều quan trọng cần biết là OpenXR kiểm tra nghiêm ngặt các thiết bị được hỗ trợ. Đặc tả cốt lõi xác định một số controller và thiết bị tương tự cùng với các đầu vào và đầu ra được hỗ trợ. Mọi XR runtime đều phải chấp nhận các interaction profile này, ngay cả khi chúng không áp dụng được.
 
-  New devices are added through extensions and XR runtimes must specify which ones they
-  support.
-  XR runtimes that do not support a device added through extensions will not accept these
-  profiles.
-  XR runtimes that do not support added input or output types will often crash if
-  supplied.
+  Các thiết bị mới được thêm thông qua extension và XR runtime phải chỉ rõ những extension nào chúng hỗ trợ. XR runtime không hỗ trợ thiết bị được thêm thông qua extension sẽ không chấp nhận các profile này. XR runtime không hỗ trợ các loại đầu vào hoặc đầu ra mới được thêm thường sẽ bị crash nếu được cung cấp các loại đó.
 
-  As such Godot keeps meta data of all available devices, their inputs and outputs and
-  which extension adds support for them.
-  You can create interaction profiles for all devices you wish to support.
-  Godot will filter out those not supported by the XR runtime the user is using.
+  Do đó, Godot lưu siêu dữ liệu của tất cả các thiết bị hiện có, đầu vào và đầu ra của chúng, cũng như extension nào bổ sung hỗ trợ cho chúng. Bạn có thể tạo interaction profile cho tất cả thiết bị mà mình muốn hỗ trợ. Godot sẽ lọc ra những thiết bị không được XR runtime mà người dùng đang sử dụng hỗ trợ.
 
-  This does mean that in order to support new devices, you might need to update to a more
-  recent version of Godot.
+  Điều này có nghĩa là để hỗ trợ các thiết bị mới, bạn có thể cần cập nhật lên phiên bản Godot mới hơn.
 
-It is however also important to note that the action map has been designed
-with this in mind.
-When new devices enter the market, or when your users use devices that you
-do not have access to, the action map system relies on the XR runtime.
-It is the XR runtime's job to choose the best fitting interaction profile that has
-been specified and adapt it for the controller the user is using.
+Tuy nhiên, cũng cần lưu ý rằng action map đã được thiết kế với điều này. Khi các thiết bị mới xuất hiện trên thị trường hoặc khi người dùng sử dụng những thiết bị mà bạn không có quyền truy cập, hệ thống action map sẽ dựa vào XR runtime. XR runtime có nhiệm vụ chọn interaction profile phù hợp nhất đã được chỉ định và điều chỉnh nó cho bộ điều khiển mà người dùng đang sử dụng.
 
-How the XR runtime does this is left to the implementation of the runtime and there
-are thus vast differences between the runtimes.
-Some runtimes might even permit users to edit the bindings themselves.
+Cách XR runtime thực hiện việc này phụ thuộc vào cách triển khai runtime, vì vậy có sự khác biệt rất lớn giữa các runtime. Một số runtime thậm chí có thể cho phép người dùng tự chỉnh sửa các binding.
 
-A common approach for a runtime is to look for a matching interaction profile first.
-If this is not found it will check the most common profiles such as that of
-the "Touch controller" and do a conversion.
-If all else fails, it will check the generic :ref:`"Simple controller" <doc_xr_action_map_simple>`.
+Một cách tiếp cận phổ biến của runtime là trước tiên tìm interaction profile phù hợp. Nếu không tìm thấy, nó sẽ kiểm tra các profile phổ biến nhất, chẳng hạn như profile của "Touch controller", rồi thực hiện chuyển đổi. Nếu mọi cách khác đều thất bại, nó sẽ kiểm tra :ref:`"Simple controller" <doc_xr_action_map_simple>` chung.
 
 .. note::
-  There is an important conclusion to be made here:
-  When a controller is found, and the action map is applied to it, the XR runtime is not
-  limited to the exact configurations you set up in Godot's action map editor.
-  While the runtime will generally choose a suitable mapping based on one of the bindings
-  you set up in the action map, it can deviate from it.
+  Ở đây có một kết luận quan trọng: Khi một bộ điều khiển được tìm thấy và action map được áp dụng cho nó, XR runtime không bị giới hạn bởi các cấu hình chính xác mà bạn đã thiết lập trong trình chỉnh sửa action map của Godot. Mặc dù runtime thường sẽ chọn một ánh xạ phù hợp dựa trên một trong các binding bạn đã thiết lập trong action map, nó vẫn có thể điều chỉnh khác đi.
 
-  For example, when the Touch controller profile is used any of the following scenarios
-  could be true:
+  Ví dụ, khi profile Touch controller được sử dụng, bất kỳ kịch bản nào sau đây cũng có thể xảy ra:
 
-    * we could be using a Quest 1 controller,
-    * we could be using a Quest 2 controller,
-    * we could be using a Quest Pro controller but no Quest Pro profile was given or the
-      XR runtime being used does not support the Quest Pro controller,
-    * it could be a completely different controller for which no profile was given but
-      the XR runtime is using the touch bindings as a base.
+    * chúng ta có thể đang sử dụng bộ điều khiển Quest 1,
+    * chúng ta có thể đang sử dụng bộ điều khiển Quest 2,
+    * chúng ta có thể đang sử dụng bộ điều khiển Quest Pro nhưng không cung cấp profile Quest Pro, hoặc XR runtime đang được sử dụng không hỗ trợ bộ điều khiển Quest Pro,
+    * đó có thể là một bộ điều khiển hoàn toàn khác, không được cung cấp profile, nhưng XR runtime đang sử dụng các binding của touch làm cơ sở.
 
-  Ergo, there currently is no way to know with certainty,
-  which controller the user is actually using.
+  Vì vậy, hiện tại không có cách nào để biết chắc chắn người dùng thực sự đang sử dụng bộ điều khiển nào.
 
 .. warning::
-  Finally, and this trips up a lot of people, the bindings aren't set in stone.
-  It is fully allowed, and even expected, that an XR runtime allows a user
-  to customise the bindings.
+  Cuối cùng, và đây là điều khiến nhiều người nhầm lẫn, các binding không cố định. Việc XR runtime cho phép người dùng tùy chỉnh các binding là hoàn toàn hợp lệ, thậm chí còn được mong đợi.
 
-  At the moment none of the XR runtimes offer this functionality though SteamVR has
-  an existing UI from OpenVRs action map system that is still accessible.
-  This is actively being worked on however.
+  Hiện tại, không XR runtime nào cung cấp chức năng này, mặc dù SteamVR có một UI hiện có từ hệ thống action map của OpenVR vẫn có thể truy cập được. Tuy nhiên, chức năng này đang được tích cực phát triển.
 
-Our first controller binding
-----------------------------
+Binding bộ điều khiển đầu tiên của chúng ta
+-------------------------------------------
 
-Let's set up our first controller binding, using the Touch controller as an example.
+Hãy thiết lập binding bộ điều khiển đầu tiên, sử dụng Touch controller làm ví dụ.
 
-Press "Add profile", find the Touch controller, and add it.
-If it is not in the list, then it may already have been added.
+Nhấn "Add profile", tìm Touch controller và thêm nó. Nếu nó không có trong danh sách thì có thể nó đã được thêm rồi.
 
 .. image:: img/xr_add_touch_controller.webp
 
-Our UI now shows panels for both the left and right controllers.
-The panels contain all of the possible inputs and outputs for each controller.
-We can use the ``+`` next to each entry to bind it to an action:
+UI của chúng ta hiện hiển thị các bảng cho cả bộ điều khiển bên trái và bên phải. Các bảng chứa tất cả đầu vào và đầu ra có thể có của từng bộ điều khiển. Chúng ta có thể sử dụng ``+`` bên cạnh mỗi mục để binding mục đó với một action:
 
 .. image:: img/xr_select_action.webp
 
-Let's finish our configuration:
+Hãy hoàn tất cấu hình của chúng ta:
 
 .. image:: img/xr_touch_completed.webp
 
-Each action is bound the given input or output for both controllers to indicate that
-we support the action on either controller.
-The exception is the movement action which is bound only to the right hand controller.
-It is likely that we would want to use the left hand thumbstick for a different purpose,
-say a teleport function.
+Mỗi action được binding với đầu vào hoặc đầu ra đã cho trên cả hai bộ điều khiển để cho biết rằng chúng ta hỗ trợ action đó trên một trong hai bộ điều khiển. Ngoại lệ là action di chuyển, chỉ được binding với bộ điều khiển tay phải. Có thể chúng ta sẽ muốn sử dụng cần analog tay trái cho một mục đích khác, chẳng hạn như chức năng dịch chuyển.
 
-In developing your game/application you have to account for the possibility that
-the user changes the binding and binds the movement to the left hand thumbstick.
+Khi phát triển game/application, bạn phải tính đến khả năng người dùng thay đổi binding và binding chuyển động với cần analog tay trái.
 
-Also note that our shoot and grab boolean actions are linked to inputs of type ``Float``.
-As mentioned before OpenXR will do conversions between the two, but do read the warning
-given on that subject earlier in this document.
+Cũng lưu ý rằng các action boolean bắn và nắm của chúng ta được liên kết với các đầu vào thuộc loại ``Float``. Như đã đề cập trước đó, OpenXR sẽ thực hiện chuyển đổi giữa hai loại này, nhưng hãy đọc cảnh báo về chủ đề đó ở phần trước của tài liệu này.
 
 .. note::
-  Some of the inputs seem to appear in our list multiple times.
+  Một số đầu vào dường như xuất hiện nhiều lần trong danh sách của chúng ta.
 
-  For instance we can find the ``X`` button twice, once as ``X click`` and then
-  as ``X touch``.
-  This is due to the Touch controller having a capacitive sensor.
+  Chẳng hạn, chúng ta có thể tìm thấy nút ``X`` hai lần, một lần dưới dạng ``X click`` và sau đó dưới dạng ``X touch``. Điều này là do Touch controller có cảm biến điện dung.
 
-  * ``X touch`` will be true if the user is merely touching the X button.
-  * ``X click`` will be true when the user is actually pressing down on the button.
+  * ``X touch`` sẽ là true nếu người dùng chỉ chạm vào nút X.
+  * ``X click`` sẽ là true khi người dùng thực sự nhấn nút xuống.
 
-  Similarly for the thumbstick we have:
+  Tương tự, với cần analog, chúng ta có:
 
-  * ``Thumbstick touch`` which will be true if the user is touching the thumbstick.
-  * ``Thumbstick`` which gives a value for the direction the thumbstick is pushed to.
-  * ``Thumbstick click`` which is true when the user is pressing down on the thumbstick.
+  * ``Thumbstick touch`` sẽ là true nếu người dùng chạm vào cần analog.
+  * ``Thumbstick`` cung cấp giá trị cho hướng mà cần analog được đẩy tới.
+  * ``Thumbstick click`` là true khi người dùng nhấn cần analog xuống.
 
-  It is important to note that only a select number of XR controllers support
-  touch sensors or have click features on thumbsticks.
-  Keep that in mind when designing your game/application.
-  Make sure these are used for optional features of your game/application.
+  Điều quan trọng cần lưu ý là chỉ một số ít XR controller hỗ trợ cảm biến chạm hoặc có tính năng click trên cần analog. Hãy ghi nhớ điều này khi thiết kế game/application. Đảm bảo những tính năng này chỉ được dùng cho các tính năng tùy chọn của game/application.
 
 .. _doc_xr_action_map_simple:
 
-The simple controller
----------------------
+Bộ điều khiển đơn giản
+----------------------
 
-The "Simple controller" is a generic controller that OpenXR offers as a fallback.
-We'll apply our mapping:
+"Simple controller" là một bộ điều khiển chung mà OpenXR cung cấp để dự phòng. Hãy áp dụng ánh xạ của chúng ta:
 
 .. image:: img/xr_simple_controller.webp
 
-As becomes painfully clear, the simple controller is often far too simple
-and falls short for anything but the simplest of VR games/applications.
+Như đã thấy rất rõ, bộ điều khiển đơn giản thường quá đơn giản và không đáp ứng được nhu cầu của bất kỳ game/application VR nào ngoài những game/application đơn giản nhất.
 
-This is why many XR runtimes only use it as a last resort and will attempt
-to use bindings from one of the more popular systems as a fallback first.
+Đó là lý do nhiều XR runtime chỉ sử dụng nó như phương án cuối cùng và trước tiên sẽ cố gắng sử dụng các binding từ một trong những hệ thống phổ biến hơn làm phương án dự phòng.
 
 .. note::
-  Due to the simple controller likely not covering the needs of your game,
-  it is tempting to provide bindings for every controller supported by OpenXR.
-  The default action map seems to suggest this as a valid course of action.
-  As mentioned before, the default action map was designed for ease of migration
-  from Godot 3.
+  Vì bộ điều khiển đơn giản có thể không đáp ứng đủ nhu cầu của game, bạn có thể muốn cung cấp binding cho mọi bộ điều khiển được OpenXR hỗ trợ. Action map mặc định dường như gợi ý rằng đây là một hướng xử lý hợp lệ. Như đã đề cập trước đó, action map mặc định được thiết kế để dễ dàng chuyển đổi từ Godot 3.
 
-  It is the recommendation from the OpenXR Working Group that only bindings
-  for controllers actually tested by the developer are setup.
-  The XR runtimes are designed with this in mind.
-  They can perform a better job of rebinding a provided binding than
-  a developer can make educated guesses.
-  Especially as the developer can't test if this leads to a comfortable experience
-  for the end user.
+  OpenXR Working Group khuyến nghị chỉ thiết lập binding cho những bộ điều khiển mà nhà phát triển thực sự đã kiểm thử. Các XR runtime được thiết kế với điều này. Chúng có thể thực hiện việc binding lại cho một binding được cung cấp tốt hơn so với việc nhà phát triển đưa ra các phỏng đoán có cơ sở. Đặc biệt là vì nhà phát triển không thể kiểm thử xem việc này có mang lại trải nghiệm thoải mái cho người dùng cuối hay không.
 
-  This is our advice as well: limit your action map to the interaction profiles
-  for devices you have actually tested your game with.
-  The Oculus Touch controller is widely used as a fallback controller by many runtimes.
-  If you are able to test your game using a Meta Rift or Quest and add this profile
-  there is a high probability your game will work with other headsets.
+  Đây cũng là lời khuyên của chúng tôi: giới hạn action map ở các interaction profile của những thiết bị mà bạn thực sự đã kiểm thử game của mình. Oculus Touch controller được nhiều runtime sử dụng rộng rãi làm bộ điều khiển dự phòng. Nếu bạn có thể kiểm thử game bằng Meta Rift hoặc Quest và thêm profile này, khả năng cao game của bạn sẽ hoạt động với các headset khác.
 
 .. _doc_binding_modifiers:
 
-Binding Modifiers
------------------
+Bộ sửa đổi binding
+------------------
 
-One of the main goals of the action map is to remove the need for the application
-to know the hardware used.
-However, sometimes the hardware has physical differences that require inputs to
-be altered in ways other than how they are bound to actions.
-This need ranges from setting thresholds, to altering the inputs available
-on a controller.
+Một trong những mục tiêu chính của action map là loại bỏ nhu cầu để application biết phần cứng được sử dụng. Tuy nhiên, đôi khi phần cứng có những khác biệt vật lý đòi hỏi đầu vào phải được điều chỉnh theo cách khác với cách chúng được binding với các action. Nhu cầu này có thể bao gồm từ việc thiết lập các ngưỡng cho đến thay đổi những đầu vào có sẵn trên một bộ điều khiển.
 
-Binding modifiers are not enabled by default and require enabling in
-the OpenXR project settings.
-Also there is no guarantee that these modifiers are supported by every runtime.
-You will need to consult the support for the runtimes you are targeting
-and decide whether to rely on the modifiers or implement some form of fallback mechanism.
+Các binding modifier không được bật theo mặc định và cần được bật trong phần cài đặt dự án OpenXR. Ngoài ra, không có gì đảm bảo rằng mọi runtime đều hỗ trợ các modifier này. Bạn cần kiểm tra khả năng hỗ trợ của các runtime mà mình nhắm đến và quyết định xem có nên dựa vào các modifier hay triển khai một dạng cơ chế dự phòng nào đó.
 
-If you are targeting multiple runtimes that have support for the same controllers,
-you may need to create separate action maps for each runtime.
-You can control which action map Godot uses by using different export templates
-for each runtime and using a custom :ref:`feature tag <doc_feature_tags>`
-to set the action map.
+Nếu nhắm đến nhiều runtime hỗ trợ cùng một bộ điều khiển, bạn có thể cần tạo action map riêng cho từng runtime. Bạn có thể kiểm soát action map mà Godot sử dụng bằng cách dùng các export template khác nhau cho từng runtime và dùng một :ref:`thẻ feature <doc_feature_tags>` tùy chỉnh để thiết lập action map.
 
-In Godot, binding modifiers are divided into two groups:
-modifiers that work on the interaction profile level,
-and modifiers that work on individual bindings.
+Trong Godot, binding modifier được chia thành hai nhóm: các modifier hoạt động ở cấp interaction profile và các modifier hoạt động trên từng binding riêng lẻ.
 
-Binding modifiers on an interaction profile
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Binding modifier trên một interaction profile
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Binding modifiers that are applied to the whole interaction profile can be accessed
-through the modifier button on the right side of the interaction profile editor.
+Bạn có thể truy cập các binding modifier được áp dụng cho toàn bộ interaction profile thông qua nút modifier ở bên phải trình chỉnh sửa interaction profile.
 
 .. image:: img/openxr_ip_binding_modifier.webp
 
-You can add a new modifier by pressing the :button:`Add binding modifier` button.
+Bạn có thể thêm một modifier mới bằng cách nhấn nút :button:`Add binding modifier`.
 
 .. warning::
-  As Godot doesn't know which controllers and runtimes support a modifier,
-  there is no restriction to adding modifiers.
-  Unsupported modifiers will be ignored.
+  Vì Godot không biết bộ điều khiển và runtime nào hỗ trợ một modifier, nên không có hạn chế nào đối với việc thêm modifier. Các modifier không được hỗ trợ sẽ bị bỏ qua.
 
 Dpad Binding modifier
 ^^^^^^^^^^^^^^^^^^^^^
 
-The dpad binding modifier adds new inputs to an interaction profile for each joystick
-and thumbpad input on this controller.
-It turns the input into a dpad with separate up, down, left and right inputs
-that are exposed as buttons:
+Dpad binding modifier thêm các input mới vào một interaction profile cho mỗi input joystick và thumbpad trên bộ điều khiển này. Modifier này chuyển input thành một dpad với các input riêng biệt cho lên, xuống, trái và phải, được hiển thị dưới dạng các nút:
 
 .. image:: img/openxr_thumbstick_dpad.webp
 
 .. note::
-  Inputs related to extensions are denoted with an asterix.
+  Các input liên quan đến extension được đánh dấu bằng dấu hoa thị.
 
-In order to use the dpad binding modifier you need to enable
-the dpad binding modifier extension in project settings:
+Để sử dụng dpad binding modifier, bạn cần bật extension dpad binding modifier trong phần cài đặt dự án:
 
 .. image:: img/openxr_project_settings_dpad_modifier.webp
 
-Enabling the extension is enough to make this functionality work using default settings.
+Chỉ cần bật extension là đủ để chức năng này hoạt động với các cài đặt mặc định.
 
-Adding the modifier is optional and allows you to fine tune the way
-the dpad functionality behaves.
-You can add the modifier multiple times to set different settings for different inputs.
+Việc thêm modifier là tùy chọn và cho phép bạn tinh chỉnh cách hoạt động của chức năng dpad. Bạn có thể thêm modifier nhiều lần để thiết lập các cài đặt khác nhau cho những input khác nhau.
 
 .. image:: img/openxr_dpad_modifier.webp
 
-These settings are used as follows:
+Các cài đặt này được sử dụng như sau:
 
-  * ``Action Set`` defines the action set to which these settings are applied.
-  * ``Input Path`` defines the original input that is mapped to the new dpad inputs.
-  * ``Threshold`` specifies the threshold value that will enable a dpad action,
-    e.g. a value of ``0.6`` means that if the distance from center goes above ``0.6``
-    the dpad action is pressed.
-  * ``Threshold Released`` specifies the threshold value that will disable a dpad action,
-    e.g. a value of ``0.4`` means that if the distance from center goes below ``0.4``
-    the dpad action is released.
-  * ``Center Region`` specifies the distance from center that enabled the center action,
-    this is only supported for trackpads.
-  * ``Wedge Angle`` specifies the angle of each wedge.
-    A value of ``90 degrees`` or lower means that up, down, left and right each have
-    a separate slice in which they are in the pressed state.
-    A value above ``90 degrees`` means that the slices overlap and that multiple
-    actions can be in the pressed state.
-  * ``Is Sticky``, when enabled means that an action stays in the pressed state until
-    the thumbstick or trackpad moves into another wedge even if it has left the wedge
-    for that action.
-  * ``On Haptic`` lets us define a haptic output that is automatically activated
-    when an action becomes pressed.
-  * ``Off Haptic`` lets us define a haptic output that is automatically activated
-    when an action is released.
+  * ``Action Set`` xác định action set mà các cài đặt này được áp dụng cho.
+  * ``Input Path`` xác định input gốc được ánh xạ tới các input dpad mới.
+  * ``Threshold`` chỉ định giá trị ngưỡng để kích hoạt một hành động dpad; ví dụ, giá trị ``0.6`` có nghĩa là nếu khoảng cách từ tâm vượt quá ``0.6`` thì hành động dpad được nhấn.
+  * ``Threshold Released`` chỉ định giá trị ngưỡng để tắt một hành động dpad; ví dụ, giá trị ``0.4`` có nghĩa là nếu khoảng cách từ tâm nhỏ hơn ``0.4`` thì hành động dpad được nhả.
+  * ``Center Region`` chỉ định khoảng cách từ tâm để kích hoạt hành động trung tâm; tính năng này chỉ được hỗ trợ cho trackpad.
+  * ``Wedge Angle`` chỉ định góc của mỗi phần hình quạt. Giá trị ``90 degrees`` hoặc nhỏ hơn có nghĩa là lên, xuống, trái và phải đều có một phần riêng mà trong đó chúng ở trạng thái được nhấn. Giá trị lớn hơn ``90 degrees`` có nghĩa là các phần bị chồng lấn và nhiều hành động có thể ở trạng thái được nhấn.
+  * ``Is Sticky``, khi được bật, có nghĩa là một hành động vẫn ở trạng thái được nhấn cho đến khi thumbstick hoặc trackpad di chuyển vào một phần hình quạt khác, ngay cả khi nó đã rời khỏi phần hình quạt tương ứng với hành động đó.
+  * ``On Haptic`` cho phép chúng ta xác định một đầu ra haptic sẽ tự động được kích hoạt khi một hành động chuyển sang trạng thái được nhấn.
+  * ``Off Haptic`` cho phép chúng ta xác định một đầu ra haptic sẽ tự động được kích hoạt khi một hành động được nhả.
 
 
-Binding modifiers on individual bindings
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Binding modifier trên từng binding riêng lẻ
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Binding modifiers that are applied to individual bindings can be accessed through
-the binding modifier button next to action attached to an input:
+Bạn có thể truy cập các binding modifier được áp dụng cho từng binding riêng lẻ thông qua nút binding modifier bên cạnh action được gắn với một input:
 
 .. image:: img/openxr_action_binding_modifier.webp
 
-You can add a new modifier by pressing the :button:`Add binding modifier` button.
+Bạn có thể thêm một modifier mới bằng cách nhấn nút :button:`Add binding modifier`.
 
 .. warning::
-  As Godot doesn't know which inputs on each runtime support a modifier,
-  there is no restriction to adding modifiers.
-  If the modifier extension is unsupported, modifiers will be filtered out at runtime.
-  Modifiers added to the wrong input may result in a runtime error.
+  Vì Godot không biết input nào trên từng runtime hỗ trợ một modifier, nên không có hạn chế nào đối với việc thêm modifier. Nếu extension của modifier không được hỗ trợ, các modifier sẽ bị lọc tại runtime. Các modifier được thêm vào sai input có thể gây ra lỗi runtime.
 
-  You should test your action map on the actual hardware and runtime to verify
-  the proper setup.
+  Bạn nên kiểm tra action map trên phần cứng và runtime thực tế để xác minh thiết lập chính xác.
 
 Analog threshold modifier
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The analog threshold modifier allows you to specify the thresholds used for any analog
-input, like the trigger, that has a boolean input. This controls when the input is in
-the pressed state.
+Analog threshold modifier cho phép bạn chỉ định các ngưỡng được sử dụng cho bất kỳ analog input nào, chẳng hạn như trigger, có boolean input. Modifier này kiểm soát thời điểm input ở trạng thái được nhấn.
 
-In order to use this modifier you must enable the analog threshold extension in
-the project settings:
+Để sử dụng modifier này, bạn phải bật extension analog threshold trong phần cài đặt dự án:
 
 .. image:: img/openxr_project_settings_analog_threshold_modifier.webp
 
-The analog threshold modifier has the following settings:
+Analog threshold modifier có các cài đặt sau:
 
 .. image:: img/openxr_analog_threshold_modifier.webp
 
-These are defined as follows:
+Các cài đặt này được xác định như sau:
 
-  * ``On Threshold`` specifies the threshold value that will enable the action,
-    e.g. a value of ``0.6`` means that when the analog value gets above ``0.6``
-    the action is set to the pressed state.
-  * ``Off Threshold`` specifies the threshold value that will disable the action,
-    e.g. a value of ``0.4`` means that when the analog value goes below ``0.4``
-    the action is set in to the released state.
-  * ``On Haptic`` lets us define a haptic output that is automatically activated
-    when the input is pressed.
-  * ``Off Haptic`` lets us define a haptic output that is automatically activated
-    when the input is released.
+  * ``On Threshold`` chỉ định giá trị ngưỡng để kích hoạt hành động; ví dụ, giá trị ``0.6`` có nghĩa là khi giá trị analog lớn hơn ``0.6`` thì hành động được đặt ở trạng thái được nhấn.
+  * ``Off Threshold`` chỉ định giá trị ngưỡng để tắt hành động; ví dụ, giá trị ``0.4`` có nghĩa là khi giá trị analog nhỏ hơn ``0.4`` thì hành động được đặt ở trạng thái đã nhả.
+  * ``On Haptic`` cho phép chúng ta xác định một đầu ra haptic sẽ tự động được kích hoạt khi input được nhấn.
+  * ``Off Haptic`` cho phép chúng ta xác định một đầu ra haptic sẽ tự động được kích hoạt khi input được nhả.
 
-Haptics on modifiers
+Haptic trên modifier
 ~~~~~~~~~~~~~~~~~~~~
 
-Modifiers can support automatic haptic output that is triggered when thresholds
-are reached.
+Modifier có thể hỗ trợ đầu ra haptic tự động, được kích hoạt khi đạt đến các ngưỡng.
 
 .. note::
-  Currently both available modifiers support this feature however there is no rule future
-  modifiers also have this capability.
-  Only one type of haptic feedback is supported but in the future other options
-  may become available.
+  Hiện tại, cả hai modifier hiện có đều hỗ trợ tính năng này, tuy nhiên không có quy định nào đảm bảo các modifier trong tương lai cũng có khả năng này. Chỉ một loại phản hồi haptic được hỗ trợ, nhưng trong tương lai có thể sẽ có thêm các tùy chọn khác.
 
-Haptic vibration
-^^^^^^^^^^^^^^^^
+Rung haptic
+^^^^^^^^^^^
 
-The haptic vibration allows us to specify a simple haptic pulse:
+Rung haptic cho phép chúng ta chỉ định một xung haptic đơn giản:
 
 .. image:: img/openxr_haptic_vibration.webp
 
-It has the following options:
+Nó có các tùy chọn sau:
 
-  * ``Duration`` is the duration of the pulse in nanoseconds. ``-1`` lets the runtime
-    choose an optimal value for a short pulse suitable for the current hardware.
-  * ``Frequency`` is the frequency of the pulse in Hz. ``0`` lets the runtime choose
-    an optimal frequency for a short pulse suitable for the current hardware.
-  * ``Amplitude`` is the amplitude of the pulse.
+  * ``Duration`` là thời lượng của xung tính bằng nanosecond. ``-1`` cho phép runtime chọn một giá trị tối ưu cho xung ngắn, phù hợp với phần cứng hiện tại.
+  * ``Frequency`` là tần số của xung tính bằng Hz. ``0`` cho phép runtime chọn một tần số tối ưu cho xung ngắn, phù hợp với phần cứng hiện tại.
+  * ``Amplitude`` là biên độ của xung.

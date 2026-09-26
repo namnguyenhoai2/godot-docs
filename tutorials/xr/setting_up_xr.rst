@@ -1,94 +1,76 @@
 .. _doc_setting_up_xr:
 
-Setting up XR
-=============
+Thiết lập XR
+============
 
-Introduction to the XR system in Godot
---------------------------------------
+Giới thiệu về hệ thống XR trong Godot
+-------------------------------------
 
-Godot provides a modular XR system that abstracts many of the different XR platform specifics away from the user.
-At the core sits the :ref:`XRServer <class_xrserver>` which acts as a central interface to the XR system that allows users to discover interfaces and interact with the components of the XR system.
+Godot cung cấp một hệ thống XR dạng mô-đun, giúp trừu tượng hóa nhiều chi tiết riêng biệt của các nền tảng XR khác nhau khỏi người dùng. Ở trung tâm là :ref:`XRServer <class_xrserver>`, đóng vai trò như một giao diện trung tâm với hệ thống XR, cho phép người dùng phát hiện các giao diện và tương tác với các thành phần của hệ thống XR.
 
-Each supported XR platform is implemented as an :ref:`XRInterface <class_xrinterface>`.
-A list of supported platforms can be found on the list of features page :ref:`here <doc_xr_support>`.
-Supported interfaces register themselves with the :ref:`XRServer <class_xrserver>`
-and can be queried with the ``find_interface`` method on the :ref:`XRServer <class_xrserver>`.
-When the desired interface is found it can be initialized by calling ``initialize``
-on the interface.
+Mỗi nền tảng XR được hỗ trợ đều được triển khai dưới dạng :ref:`XRInterface <class_xrinterface>`. Bạn có thể tìm thấy danh sách các nền tảng được hỗ trợ trên trang danh sách tính năng :ref:`tại đây <doc_xr_support>`. Các giao diện được hỗ trợ sẽ đăng ký với :ref:`XRServer <class_xrserver>` và có thể được truy vấn bằng phương thức ``find_interface`` trên :ref:`XRServer <class_xrserver>`. Khi tìm thấy giao diện mong muốn, bạn có thể khởi tạo giao diện đó bằng cách gọi ``initialize``.
 
 .. warning::
-    A registered interface means nothing more than that the interface is available, if the interface is not supported by the host system, initialization may fail and return ``false``. This can have many reasons and sadly the reasons differ from platform to platform. It can be because the user hasn't installed the required software, or that the user simply hasn't plugged in their headset. You as a developer must thus react properly on an interface failing to initialize.
+    Một giao diện đã đăng ký chỉ có nghĩa là giao diện đó khả dụng; nếu hệ thống máy chủ không hỗ trợ giao diện, việc khởi tạo có thể thất bại và trả về ``false``. Điều này có thể xảy ra vì nhiều lý do, và đáng tiếc là lý do sẽ khác nhau tùy nền tảng. Có thể người dùng chưa cài đặt phần mềm cần thiết hoặc đơn giản là chưa cắm headset. Vì vậy, với tư cách nhà phát triển, bạn phải xử lý đúng cách khi một giao diện không thể khởi tạo.
 
-Due to the special requirements for output in XR, especially for head mounted devices that supply different images to each eye, the :ref:`XRServer <class_xrserver>` in Godot will override various features in the rendering system. For stand-alone devices this means the final output is handled by the :ref:`XRInterface <class_xrinterface>` and Godot's usual output system is disabled. For desktop XR devices that work as a second screen it is possible to dedicate a separate :ref:`Viewport <class_viewport>` to handle the XR output, leaving the main Godot window available for displaying alternative content.
+Do các yêu cầu đặc biệt đối với đầu ra trong XR, đặc biệt là với các thiết bị đeo trên đầu cung cấp hình ảnh khác nhau cho mỗi mắt, :ref:`XRServer <class_xrserver>` trong Godot sẽ ghi đè nhiều tính năng khác nhau trong hệ thống kết xuất. Với các thiết bị độc lập, điều này có nghĩa là đầu ra cuối cùng được xử lý bởi :ref:`XRInterface <class_xrinterface>` và hệ thống đầu ra thông thường của Godot bị vô hiệu hóa. Với các thiết bị XR dành cho máy tính để bàn hoạt động như màn hình thứ hai, bạn có thể dành riêng một :ref:`Viewport <class_viewport>` để xử lý đầu ra XR, trong khi vẫn giữ cửa sổ Godot chính để hiển thị nội dung thay thế.
 
 .. note::
-    Note that only one interface can be responsible for handling the output to an XR device, this is known as the primary interface and by default will be the first interface that is initialized. Godot currently thus only supports implementations with a single headset.
-    It is possible, but increasingly uncommon, to have a secondary interface, for example to add tracking to an otherwise 3DOF only device.
+    Lưu ý rằng chỉ một giao diện có thể chịu trách nhiệm xử lý đầu ra đến thiết bị XR; giao diện này được gọi là giao diện chính và theo mặc định sẽ là giao diện đầu tiên được khởi tạo. Vì vậy, hiện tại Godot chỉ hỗ trợ các triển khai với một headset duy nhất. Có thể có một giao diện phụ, dù ngày càng hiếm gặp, chẳng hạn để bổ sung khả năng tracking cho một thiết bị vốn chỉ hỗ trợ 3DOF.
 
-There are three XR specific node types that you will find in nearly all XR applications:
+Có ba loại node đặc thù của XR mà bạn sẽ thấy trong gần như mọi ứng dụng XR:
 
-- :ref:`XROrigin3D <class_xrorigin3d>` represents, for all intents and purposes, the center point of your play space. That is an oversimplified statement but we'll go into more detail later. All objects tracked in physical space by the XR platform are positioned in relation to this point.
-- :ref:`XRCamera3D <class_xrcamera3d>` represents the (stereo) camera that is used when rendering output for the XR device. The positioning of this node is controlled by the XR system and updated automatically using the tracking information provided by the XR platform.
-- :ref:`XRController3D <class_xrcontroller3d>` represents a controller used by the player, commonly there are two, one held in each hand. These nodes give access to various states on these controllers and send out signals when the player presses buttons on them. The positioning of this node is controlled by the XR system and updated automatically using the tracking information provided by the XR platform.
+- :ref:`XROrigin3D <class_xrorigin3d>` về cơ bản đại diện cho tâm của không gian chơi. Đây là một cách diễn đạt quá đơn giản, nhưng chúng ta sẽ tìm hiểu chi tiết hơn sau. Tất cả các đối tượng được nền tảng XR tracking trong không gian thực đều được định vị tương quan với điểm này.
+- :ref:`XRCamera3D <class_xrcamera3d>` đại diện cho camera (stereo) được sử dụng khi kết xuất đầu ra cho thiết bị XR. Vị trí của node này do hệ thống XR điều khiển và tự động cập nhật bằng thông tin tracking do nền tảng XR cung cấp.
+- :ref:`XRController3D <class_xrcontroller3d>` đại diện cho một controller được người chơi sử dụng; thông thường sẽ có hai controller, mỗi tay cầm một chiếc. Các node này cung cấp quyền truy cập vào nhiều trạng thái khác nhau của controller và phát các signal khi người chơi nhấn các nút trên đó. Vị trí của node này do hệ thống XR điều khiển và tự động cập nhật bằng thông tin tracking do nền tảng XR cung cấp.
 
-There are other XR related nodes and there is much more to say about these three nodes, but we'll get into that later on.
+Có những node liên quan đến XR khác và còn nhiều điều cần nói về ba node này, nhưng chúng ta sẽ tìm hiểu sau.
 
-Which Renderer to use
----------------------
+Nên sử dụng Renderer nào
+------------------------
 
-Godot has 3 renderer options for projects: Compatibility, Mobile, and Forward+.
-The current recommendation is to use the Mobile renderer for any desktop VR project,
-or any project running on a standalone headset like the Meta Quest 3. XR projects
-will run with the Forward+ renderer, but it isn't well optimized for XR right now
-compared to the other two.
+Godot có 3 tùy chọn renderer cho dự án: Compatibility, Mobile và Forward+. Khuyến nghị hiện tại là sử dụng renderer Mobile cho mọi dự án VR trên máy tính để bàn hoặc mọi dự án chạy trên headset độc lập như Meta Quest 3. Các dự án XR sẽ chạy với renderer Forward+, nhưng hiện tại renderer này chưa được tối ưu tốt cho XR so với hai renderer còn lại.
 
 OpenXR
 ------
 
-OpenXR is the industry standard API that allows different XR platforms to interact with XR applications. This standard is an open standard maintained by the Khronos Group and thus aligns very well with Godot's interests.
-We are thus using this as the example in this introduction. Check the respective chapters for differences in other APIs.
+OpenXR là API tiêu chuẩn của ngành, cho phép các nền tảng XR khác nhau tương tác với ứng dụng XR. Tiêu chuẩn này là một open standard do Khronos Group duy trì, vì vậy rất phù hợp với định hướng của Godot. Do đó, chúng ta sẽ sử dụng nó làm ví dụ trong phần giới thiệu này. Hãy xem các chương tương ứng để biết sự khác biệt trong các API khác.
 
-The Vulkan implementation of OpenXR is closely integrated with Vulkan, taking over part of the Vulkan system. This requires tight integration of certain core graphics features in the Vulkan renderer which are needed before the XR system is setup. This was one of the main deciding factors to include OpenXR as a core interface.
+Triển khai Vulkan của OpenXR được tích hợp chặt chẽ với Vulkan và đảm nhiệm một phần hệ thống Vulkan. Điều này đòi hỏi tích hợp chặt chẽ một số tính năng đồ họa cốt lõi vào Vulkan renderer, vốn cần được thiết lập trước hệ thống XR. Đây là một trong những yếu tố chính quyết định việc đưa OpenXR vào làm giao diện cốt lõi.
 
-This also means OpenXR needs to be enabled when Godot starts in order to set things
-up correctly. Check the :ref:`Enabled<class_ProjectSettings_property_xr/openxr/enabled>`
-setting in your project settings under **XR > OpenXR**.
+Điều này cũng có nghĩa là OpenXR cần được bật khi Godot khởi động để thiết lập mọi thứ đúng cách. Hãy kiểm tra thiết lập :ref:`Enabled<class_ProjectSettings_property_xr/openxr/enabled>` trong phần cài đặt dự án, tại **XR > OpenXR**.
 
 .. image:: img/openxr_enabled.webp
 
-You can find several other settings related to OpenXR here as well. These can't be
-changed while your application is running. The default settings will get us started,
-but for more information on what's here see :ref:`doc_openxr_settings`.
+Bạn cũng có thể tìm thấy một số thiết lập khác liên quan đến OpenXR tại đây. Không thể thay đổi các thiết lập này khi ứng dụng đang chạy. Các thiết lập mặc định sẽ giúp chúng ta bắt đầu, nhưng để biết thêm thông tin về những mục này, hãy xem :ref:`doc_openxr_settings`.
 
-You'll also need to go to **XR > Shaders** in the project settings and check the
-:ref:`Enabled<class_ProjectSettings_property_xr/shaders/enabled>`
-box to enable them. Once you've done that click the **Save & Restart** button.
+Bạn cũng cần đi đến **XR > Shaders** trong phần cài đặt dự án và chọn
+:ref:`Enabled<class_ProjectSettings_property_xr/shaders/enabled>` để bật chúng. Sau đó, hãy nhấp vào nút **Save & Restart**.
 
 .. image:: img/xr_shaders.webp
 
 .. warning::
-    Many post process effects have not yet been updated to support stereoscopic rendering. Using these will have adverse effects.
+    Nhiều hiệu ứng hậu kỳ vẫn chưa được cập nhật để hỗ trợ kết xuất lập thể. Việc sử dụng các hiệu ứng này sẽ gây ra tác động không mong muốn.
 
 
-Setting up the XR scene
------------------------
+Thiết lập scene XR
+------------------
 
-Every XR application needs at least an :ref:`XROrigin3D <class_xrorigin3d>` and an :ref:`XRCamera3D <class_xrcamera3d>` node. Most will have two :ref:`XRController3D <class_xrcontroller3d>`, one for the left hand and one for the right. Keep in mind that the camera and controller nodes should be children of the origin node. Add these nodes to a new scene and rename the controller nodes to ``LeftHand`` and ``RightHand``, your scene should look something like this:
+Mọi ứng dụng XR cần ít nhất một node :ref:`XROrigin3D <class_xrorigin3d>` và một node :ref:`XRCamera3D <class_xrcamera3d>`. Hầu hết ứng dụng sẽ có hai :ref:`XRController3D <class_xrcontroller3d>`, một cho tay trái và một cho tay phải. Hãy nhớ rằng các node camera và controller phải là node con của node origin. Thêm các node này vào một scene mới và đổi tên các node controller thành ``LeftHand`` và ``RightHand``; scene của bạn sẽ trông tương tự như sau:
 
 .. image:: img/xr_basic_scene.webp
 
-The warning icons are expected and should go away after you configure the
-controllers. Select the left hand and set it up as follows:
+Các biểu tượng cảnh báo là điều bình thường và sẽ biến mất sau khi bạn cấu hình các controller. Chọn tay trái và thiết lập như sau:
 
 .. image:: img/xr_left_hand.webp
 
-And the right hand:
+Và tay phải:
 
 .. image:: img/xr_right_hand.webp
 
-Right now all these nodes are on the floor, they will be positioned correctly in runtime. To help during development, it can be helpful to move the camera upwards so its ``y`` is set to ``1.7``, and move the controller nodes to ``-0.5, 1.0, -0.5`` and ``0.5, 1.0, -0.5`` for respectively the left and right hand.
+Hiện tại, tất cả các node này đều nằm trên sàn; chúng sẽ được định vị chính xác khi runtime chạy. Để hỗ trợ quá trình phát triển, bạn có thể di chuyển camera lên trên để ``y`` được đặt thành ``1.7``, đồng thời di chuyển các node controller đến ``-0.5, 1.0, -0.5`` và ``0.5, 1.0, -0.5`` tương ứng cho tay trái và tay phải.
 
-Next we need to add a script to our root node. Add the following code into this script:
+Tiếp theo, chúng ta cần thêm một script vào node gốc. Thêm đoạn mã sau vào script này:
 
 .. tabs::
   .. code-tab:: gdscript GDScript
@@ -102,7 +84,7 @@ Next we need to add a script to our root node. Add the following code into this 
         if xr_interface and xr_interface.is_initialized():
             print("OpenXR initialized successfully")
 
-            # Change our main viewport to output to the HMD.
+            # Thay đổi viewport chính để xuất ra HMD.
             get_viewport().use_xr = true
         else:
             print("OpenXR not initialized, please check if your headset is connected")
@@ -122,7 +104,7 @@ Next we need to add a script to our root node. Add the following code into this 
             {
                 GD.Print("OpenXR initialized successfully");
 
-                // Change our main viewport to output to the HMD.
+                // Thay đổi viewport chính để xuất ra HMD.
                 GetViewport().UseXR = true;
             }
             else
@@ -135,31 +117,28 @@ Next we need to add a script to our root node. Add the following code into this 
 
 .. note::
 
-    There is no restriction to where this code is executed from. It is common to add this script to the :ref:`XROrigin3D <class_xrorigin3d>` node or as a :ref:`Node3D <class_node3d>` child of the root node.
+    Không có giới hạn nào về nơi thực thi đoạn mã này. Thông thường, bạn sẽ thêm script này vào node :ref:`XROrigin3D <class_xrorigin3d>` hoặc dưới dạng một :ref:`Node3D <class_node3d>` node con của node gốc.
 
-    The OpenXR interface is unique in that we have to start it before the project loads, hence ``is_initialized`` is checked here. Most interfaces require a call to their ``initialize`` function instead.
+    Giao diện OpenXR đặc biệt ở chỗ chúng ta phải khởi động nó trước khi dự án tải, do đó ``is_initialized`` được kiểm tra tại đây. Hầu hết các giao diện yêu cầu thay vào đó phải gọi hàm ``initialize`` của chúng.
 
-    If you wish to support multiple XR interfaces, say release a game both targeting OpenXR hardware and deploy over WebXR, you can check one after the other until a functioning interface is found.
+    Nếu muốn hỗ trợ nhiều giao diện XR, chẳng hạn phát hành một game vừa nhắm đến phần cứng OpenXR vừa triển khai qua WebXR, bạn có thể lần lượt kiểm tra từng giao diện cho đến khi tìm thấy một giao diện hoạt động.
 
 
 .. warning::
 
-    As OpenXR outputs the rendering result to an HMD, which often runs at a higher framerate than the monitor, Godot's V-Sync settings are ignored and V-sync will always be disabled.
+    Vì OpenXR xuất kết quả kết xuất đến HMD, vốn thường chạy ở framerate cao hơn màn hình, các thiết lập V-Sync của Godot sẽ bị bỏ qua và V-sync luôn bị vô hiệu hóa.
 
-    Instead, OpenXR perform its own frame timing to ensure a consistent framerate.
+    Thay vào đó, OpenXR tự thực hiện việc định thời khung hình để đảm bảo tốc độ khung hình ổn định.
 
-    Also note that by default the physics engine runs at 60Hz as well and this can result in choppy physics.
-    You should set ``Engine.physics_ticks_per_second`` to a higher value.
+    Cũng lưu ý rằng theo mặc định, physics engine cũng chạy ở 60Hz, và điều này có thể khiến physics bị giật. Bạn nên đặt ``Engine.physics_ticks_per_second`` thành một giá trị cao hơn.
 
 
-If you run your project at this point in time, everything will work but you will be in a dark world. So to finish off our starting point add a :ref:`DirectionalLight3D <class_directionallight3d>` and a :ref:`WorldEnvironment <class_worldenvironment>` node to your scene.
-You may wish to also add a mesh instance as a child to each controller node just to temporarily visualise them.
-Make sure you configure a sky in your world environment.
+Nếu bạn chạy project vào lúc này, mọi thứ sẽ hoạt động, nhưng bạn sẽ ở trong một thế giới tối. Vì vậy, để hoàn thiện điểm khởi đầu, hãy thêm một node :ref:`DirectionalLight3D <class_directionallight3d>` và một node :ref:`WorldEnvironment <class_worldenvironment>` vào scene của bạn. Bạn cũng có thể thêm một mesh instance làm node con cho mỗi node controller để tạm thời hiển thị chúng. Hãy đảm bảo bạn cấu hình một sky trong world environment.
 
-Now run your project, you should be floating somewhere in space and be able to look around.
+Bây giờ hãy chạy project; bạn sẽ lơ lửng đâu đó trong không gian và có thể nhìn xung quanh.
 
 .. note::
 
-    While traditional level switching can definitely be used with XR applications, where this scene setup is repeated in each level, most find it easier to set this up once and loading levels as a subscene. If you do switch scenes and replicate the XR setup in each one, do make sure you do not run ``initialize`` multiple times. The effect can be unpredictable depending on the XR interface used.
+    Mặc dù việc chuyển level theo cách truyền thống chắc chắn có thể được sử dụng với các ứng dụng XR, trong đó thiết lập scene này được lặp lại ở mỗi level, hầu hết mọi người thấy việc thiết lập một lần rồi tải các level dưới dạng subscene sẽ dễ dàng hơn. Nếu bạn chuyển scene và sao chép thiết lập XR vào từng scene, hãy đảm bảo bạn không chạy ``initialize`` nhiều lần. Hiệu ứng có thể không dự đoán được tùy thuộc vào XR interface được sử dụng.
 
-    For the rest of this basic tutorial series we will create a game that uses a single scene.
+    Trong phần còn lại của loạt tutorial cơ bản này, chúng ta sẽ tạo một game sử dụng một scene duy nhất.

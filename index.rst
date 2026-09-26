@@ -119,7 +119,7 @@ Tài liệu ngoại tuyến
 .. toctree::
    :hidden:
    :maxdepth: 1
-   :caption: About
+   :caption: Giới thiệu
    :name: sec-general
 
    about/introduction
@@ -133,7 +133,7 @@ Tài liệu ngoại tuyến
 .. toctree::
    :hidden:
    :maxdepth: 1
-   :caption: Getting started
+   :caption: Bắt đầu
    :name: sec-learn
 
    getting_started/introduction/index
@@ -148,7 +148,7 @@ Tài liệu ngoại tuyến
 .. toctree::
    :hidden:
    :maxdepth: 1
-   :caption: Manual
+   :caption: Tài liệu hướng dẫn
    :name: sec-tutorials
 
    tutorials/best_practices/index
@@ -182,7 +182,7 @@ Tài liệu ngoại tuyến
 .. toctree::
    :hidden:
    :maxdepth: 1
-   :caption: Engine details
+   :caption: Chi tiết về engine
    :name: sec-engine-details
 
    engine_details/architecture/index
@@ -196,7 +196,7 @@ Tài liệu ngoại tuyến
 .. toctree::
    :hidden:
    :maxdepth: 1
-   :caption: Community
+   :caption: Cộng đồng
    :name: sec-community
 
    community/asset_library/index
@@ -208,7 +208,7 @@ Tài liệu ngoại tuyến
 .. toctree::
    :hidden:
    :maxdepth: 1
-   :caption: Class reference
+   :caption: Tham chiếu class
    :name: sec-class-ref
 
    classes/index

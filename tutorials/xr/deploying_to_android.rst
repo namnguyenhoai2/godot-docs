@@ -1,95 +1,78 @@
 .. _doc_deploying_to_android:
 
-Deploying to Android
-====================
+Triển khai lên Android
+======================
 
-Setup
-------------
-Most standalone headsets run on Android and OpenXR support is making its way to these platforms.
+Thiết lập
+---------
+Hầu hết headset độc lập đều chạy trên Android và hỗ trợ OpenXR đang dần được đưa lên các nền tảng này.
 
-Before following the OpenXR-specific instructions here, you'll need to first setup your system to export to Android in general, including:
+Trước khi làm theo các hướng dẫn dành riêng cho OpenXR tại đây, trước tiên bạn cần thiết lập hệ thống để xuất sang Android nói chung, bao gồm:
 
-- Installing OpenJDK 17
-- Installing Android Studio
-- Configuring the location of the Android SDK in Godot
+- Cài đặt OpenJDK 17
+- Cài đặt Android Studio
+- Cấu hình vị trí của Android SDK trong Godot
 
-See :ref:`doc_exporting_for_android` for the full details, and return here when you've finished these steps.
+Xem :ref:`doc_exporting_for_android` để biết đầy đủ chi tiết, rồi quay lại đây khi bạn đã hoàn tất các bước này.
 
 .. warning::
 
-    While the Mobile Vulkan renderer has many optimizations targeted at mobile devices, we're still working out the kinks.
-    It is highly advisable to use the compatibility renderer (OpenGL) for the time being when targeting Android based XR devices.
+    Mặc dù renderer Mobile Vulkan có nhiều tối ưu hóa hướng đến các thiết bị di động, chúng tôi vẫn đang khắc phục một số vấn đề. Hiện tại, bạn rất nên sử dụng renderer compatibility (OpenGL) khi nhắm đến các thiết bị XR dựa trên Android.
 
-Gradle Android build
---------------------
+Bản build Android bằng Gradle
+-----------------------------
 
 .. note::
 
-    Official support for the Android platform wasn't added to the OpenXR specification initially resulting in various vendors creating custom loaders to make OpenXR available on their headsets.
-    While the long term expectation is that all vendors will adopt the official OpenXR loader, for now these loaders need to be added to your project.
+    Ban đầu, đặc tả OpenXR chưa hỗ trợ chính thức nền tảng Android, dẫn đến việc nhiều vendor tạo các loader tùy chỉnh để cung cấp OpenXR trên headset của họ. Mặc dù về lâu dài, kỳ vọng là tất cả vendor sẽ áp dụng OpenXR loader chính thức, hiện tại bạn vẫn cần thêm các loader này vào project của mình.
 
-In order to include the vendor-specific OpenXR loader into your project, you will need to setup a gradle Android build.
+Để đưa OpenXR loader dành riêng cho vendor vào project, bạn cần thiết lập bản build Android bằng gradle.
 
-Select **Install Android Build Template...** from the **Project** menu:
+Chọn **Install Android Build Template...** từ menu **Project**:
 
 .. image:: img/android_gradle_build.webp
 
-This will create a folder called **android** inside of your project that contains all the runtime files needed on Android. You can now customize this installation. Godot won't show this in the editor but you can find it with a file browser.
+Thao tác này sẽ tạo một thư mục có tên **android** bên trong project của bạn, chứa tất cả các tệp runtime cần thiết trên Android. Giờ bạn có thể tùy chỉnh bản cài đặt này. Godot sẽ không hiển thị thư mục này trong editor, nhưng bạn có thể tìm thấy nó bằng trình duyệt tệp.
 
-You can read more about gradle builds here: :ref:`doc_android_gradle_build`.
+Bạn có thể đọc thêm về các bản build gradle tại đây: :ref:`doc_android_gradle_build`.
 
-Installing the vendors plugin
------------------------------
+Cài đặt plugin của vendor
+-------------------------
 
-The vendors plugin can be downloaded from the Asset Store, search for "OpenXR
-vendors".
+Có thể tải plugin của vendor từ Asset Store, hãy tìm kiếm "OpenXR vendors".
 
 .. image:: img/openxr_loader_asset_lib.webp
 
-You will find the installed files inside the **addons** folder. Alternatively you
-can manually install the vendors plugin by downloading it `from the release page here <https://github.com/GodotVR/godot_openxr_vendors/releases>`__.
-You will need to copy the `assets/addons/godotopenxrvendors` folder from the zip
-file into your projects `addons` folder.
+Bạn sẽ tìm thấy các tệp đã cài đặt bên trong thư mục **addons**. Ngoài ra, bạn có thể cài đặt thủ công plugin của vendor bằng cách tải xuống `from the release page here <https://github.com/GodotVR/godot_openxr_vendors/releases>`__. Bạn cần sao chép thư mục `assets/addons/godotopenxrvendors` từ tệp zip vào thư mục `addons` của project.
 
-You can find the main repository of the vendors plugin `here <https://github.com/GodotVR/godot_openxr_vendors>`__.
+Bạn có thể tìm repository chính của plugin của vendor `here <https://github.com/GodotVR/godot_openxr_vendors>`__.
 
 .. note::
 
-    From Godot 4.6 onwards, the vendor plugin is now an optional but recommended plugin.
-    Godot can export directly to most Android-compatible devices.
-    This can be useful for demonstration and tutorial projects where a single APK can be deployed to multiple devices.
-    The vendor plugin unlocks vendor specific implementations and settings, and may be required to release on app stores.
+    Từ Godot 4.6 trở đi, plugin của vendor là plugin tùy chọn nhưng được khuyến nghị. Godot có thể xuất trực tiếp sang hầu hết các thiết bị tương thích với Android. Điều này có thể hữu ích cho các project minh họa và hướng dẫn, trong đó một APK duy nhất có thể được triển khai lên nhiều thiết bị. Plugin của vendor mở khóa các triển khai và thiết lập dành riêng cho vendor, đồng thời có thể được yêu cầu để phát hành trên các app store.
 
-Creating the export presets
----------------------------
-You will need to setup a separate export preset for each device, as each device will need its own loader included.
+Tạo các export preset
+---------------------
+Bạn cần thiết lập một export preset riêng cho từng thiết bị, vì mỗi thiết bị sẽ cần loader riêng được đưa vào.
 
-Open **Project** and select **Export..**.
-Click on **Add..** and select **Android**.
-Next change the name of the export preset for the device you're setting this up for, say **Meta Quest**.
-And enable **Use Gradle Build**.
-Next change the **XR Mode** to **OpenXR**.
-If you want to use one-click deploy (described below), ensure that **Runnable** is enabled.
+Mở **Project** và chọn **Export..**. Nhấp vào **Add..** và chọn **Android**. Tiếp theo, đổi tên export preset cho thiết bị mà bạn đang thiết lập, chẳng hạn **Meta Quest**. Sau đó bật **Use Gradle Build**. Tiếp theo, đổi **XR Mode** thành **OpenXR**. Nếu bạn muốn sử dụng one-click deploy (được mô tả bên dưới), hãy đảm bảo **Runnable** đã được bật.
 
-If you've installed the vendor plugin you will also find entries for the different headsets under **XR Features**.
-Select the entry for your headset, if you see one.
-Otherwise, enable the Khronos plugin.
+Nếu đã cài plugin của vendor, bạn cũng sẽ thấy các mục dành cho những headset khác nhau bên dưới **XR Features**. Nếu thấy mục dành cho headset của mình, hãy chọn mục đó. Nếu không, hãy bật plugin Khronos.
 
 .. image:: img/android_meta_quest.webp
 
-Scroll to the bottom of the list and you'll find additional XR feature sections,
-currently only **Meta XR Features**, **Pico XR Features**, **Magicleap XR Features**
-and **Khronos XR Features** for HTC are available. You will need to select the
-appropriate settings if you wish to use these features.
+Cuộn xuống cuối danh sách, bạn sẽ thấy các phần XR feature bổ sung; hiện chỉ có **Meta XR Features**, **Pico XR Features**, **Magicleap XR Features** và **Khronos XR Features** dành cho HTC là khả dụng. Bạn cần chọn các thiết lập phù hợp nếu muốn sử dụng những tính năng này.
 
-Running on your device from the Godot editor
---------------------------------------------
-If you've setup your export settings as described above, and your headset is connected to your computer and correctly recognized, you can launch it directly from the Godot editor using :ref:`doc_one-click_deploy`:
+Chạy trên thiết bị từ Godot editor
+----------------------------------
+Nếu bạn đã thiết lập các tùy chọn export như mô tả ở trên, đồng thời headset đã được kết nối với máy tính và được nhận diện chính xác, bạn có thể khởi chạy trực tiếp từ Godot editor bằng :ref:`doc_one-click_deploy`:
 
 .. image:: img/android_one_click_deploy.webp
 
-For some devices on some platforms, you may need to perform some extra steps in order for your device to be recognized correctly, so be sure to check the developer documentation from your headset vendor.
+Đối với một số thiết bị trên một số nền tảng, bạn có thể cần thực hiện thêm một số bước để thiết bị được nhận diện chính xác, vì vậy hãy nhớ xem tài liệu dành cho developer từ vendor của headset.
 
-For example, with the Meta Quest 2, you need to enable developer mode on the headset, and if you're on Windows, you'll need to install special ADB drivers. See the `official Meta Quest developer documentation <https://developer.oculus.com/documentation/native/android/mobile-device-setup/>`_ for more details.
+Ví dụ, với Meta Quest 2, bạn cần bật developer mode trên headset; nếu đang dùng Windows, bạn sẽ cần cài đặt các ADB driver đặc biệt. Xem `official Meta Quest developer documentation <https://developer.oculus.com/documentation/native/android/mobile-device-setup/>`_ để biết thêm chi tiết.
 
-If you're having any issues with one-click deploy, check the :ref:`Troubleshooting section <doc_one-click_deploy_troubleshooting>`.
+Nếu gặp bất kỳ vấn đề nào với one-click deploy, hãy xem :ref:`Troubleshooting section <doc_one-click_deploy_troubleshooting>`.
+
+.. _`official Meta Quest developer documentation`: https://developer.oculus.com/documentation/native/android/mobile-device-setup/
